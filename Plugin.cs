@@ -49,11 +49,15 @@ namespace CardLoaderPlugin
     {
       public static List<CardInfo> cards = new List<CardInfo>();
 
+      // TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
+      // TODO Change parameter order, and function setter call order to make more sense
+      // TODO Rename parameters to be more user friendly
       public static void AddCard(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple, string displayedName, int baseAttack, int baseHealth, string description = "",
                                 bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
                                 List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null, List<Ability> abilities = null, EvolveParams evolveParams = null,
                                 string defaultEvolutionName = "", TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool flipPortraitForStrafe = false, bool onePerDeck = false,
-                                List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null)
+                                List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null, Texture2D altTex = null, Texture titleGraphics = null, Texture2D pixelTex = null,
+                                GameObject animatedPortrait = null)
       {
           CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
           var cardTraverse = Traverse.Create(card);
@@ -91,8 +95,30 @@ namespace CardLoaderPlugin
           card.onePerDeck = onePerDeck;
           card.hideAttackAndHealth = hideAttackAndHealth;
           if(tex!=null){
+            tex.name = "portrait_"+name;;
             card.portraitTex = Sprite.Create(tex, new Rect(0.0f,0.0f,114.0f,94.0f), new Vector2(0.5f,0.5f));
             card.portraitTex.name = "portrait_"+name;
+          }
+          if(altTex!=null){
+            altTex.name = "portrait_"+name;;
+            card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f,0.0f,114.0f,94.0f), new Vector2(0.5f,0.5f));
+            card.alternatePortrait.name = "portrait_"+name;
+          }
+          if(titleGraphic!=null){
+            card.titleGraphic = titleGraphic;
+          }
+          if(pixelTex!=null){
+            pixelTex.name = "portrait_"+name;;
+            card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f,0.0f,114.0f,94.0f), new Vector2(0.5f,0.5f));
+            card.pixelPortrait.name = "portrait_"+name;
+          }
+          if(animatedPortrait!=null){
+            // TODO Provide a function to create animated card textures
+            card.animatedPortrait = animatedPortrait;
+          }
+          if(decals!=null){
+            // TODO Access and provide default decals
+            cardTraverse.Field("decals").SetValue(decals);
           }
           card.name = name;
           Plugin.Log.LogInfo($"Loaded custom card {name}!");
