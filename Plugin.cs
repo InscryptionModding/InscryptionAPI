@@ -56,8 +56,8 @@ namespace CardLoaderPlugin
                                 bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
                                 List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null, List<Ability> abilities = null, EvolveParams evolveParams = null,
                                 string defaultEvolutionName = "", TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool flipPortraitForStrafe = false, bool onePerDeck = false,
-                                List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null, Texture2D altTex = null, Texture titleGraphics = null, Texture2D pixelTex = null,
-                                GameObject animatedPortrait = null)
+                                List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null, Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
+                                GameObject animatedPortrait = null, List<Texture> decals = null)
       {
           CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
           var cardTraverse = Traverse.Create(card);
@@ -114,7 +114,7 @@ namespace CardLoaderPlugin
           }
           if(animatedPortrait!=null){
             // TODO Provide a function to create animated card textures
-            card.animatedPortrait = animatedPortrait;
+            cardTraverse.Field("animatedPortrait").SetValue(animatedPortrait);
           }
           if(decals!=null){
             // TODO Access and provide default decals
