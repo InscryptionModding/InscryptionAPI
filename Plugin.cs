@@ -95,7 +95,7 @@ namespace CardLoaderPlugin
             card.portraitTex.name = "portrait_"+name;
           }
           card.name = name;
-
+          Plugin.Log.LogInfo($"Loaded custom card {name}!");
           NewCards.cards.Add(card);
       }
 
@@ -109,11 +109,9 @@ namespace CardLoaderPlugin
             if (NewCards.cards.Exists((CardInfo x) => x.name == name))
             {
                 __result = Traverse.Create<CardLoader>().Method("Clone", new object[] {NewCards.cards.Find((CardInfo x) => x.name == name)}).GetValue<CardInfo>();
-                Plugin.Log.LogInfo(NewCards.cards.Find((CardInfo x) => x.name == name).portraitTex.pivot);
                 Plugin.Log.LogInfo($"Loaded custom card by name!");
                 return false;
             }
-            Plugin.Log.LogInfo(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name).portraitTex);
             return true;
         }
     }
