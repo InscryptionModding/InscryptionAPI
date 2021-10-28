@@ -17,7 +17,7 @@ namespace CardLoaderPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.cardLoader";
         private const string PluginName = "Cardloader";
-        private const string PluginVersion = "1.0.0.0";
+        private const string PluginVersion = "1.1.0.0";
 
         internal static ManualLogSource Log;
 
