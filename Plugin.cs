@@ -125,15 +125,6 @@ namespace CardLoaderPlugin
           NewCards.cards.Add(card);
       }
 
-      public static void AddCards(){
-          var allData = Traverse.Create<ScriptableObjectLoader<CardInfo>>().Field("allData");
-          if(allData.GetValue<List<CardInfo>>() == null)
-          {
-              allData.SetValue(ScriptableObjectLoader<CardInfo>.AllData.Concat(NewCards.cards).ToList());
-              Plugin.Log.LogInfo($"Loaded custom cards into data");
-          }
-      }
-
     }
 
     [HarmonyPatch(typeof(LoadingScreenManager), "LoadGameData")]
@@ -141,70 +132,12 @@ namespace CardLoaderPlugin
     {
         public static void Prefix()
         {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] {typeof(string)})]
-    public class CardLoader_GetCardByName
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "GetPixelCards")]
-    public class CardLoader_GetPixelCards
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "GetPureRandomCard")]
-    public class CardLoader_GetPureRandomCard
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "GetRandomRareCard")]
-    public class CardLoader_GetRandomRareCard
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "GetUnlockedCards", new Type[] {typeof(CardMetaCategory), typeof(CardTemple)})]
-    public class CardLoader_GetUnlockedCards
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(CardLoader), "LearnedCards", MethodType.Getter)]
-    public class CardLoader_get_LearnedCards
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
-        }
-    }
-
-    [HarmonyPatch(typeof(DrawRandomCardOnDeath), "CardToDraw", MethodType.Getter)]
-    public class DrawRandomCardOnDeath_get_CardToDraw
-    {
-        public static void Prefix()
-        {
-            NewCards.AddCards();
+            var allData = Traverse.Create<ScriptableObjectLoader<CardInfo>>().Field("allData");
+            if(allData.GetValue<List<CardInfo>>() == null)
+            {
+                allData.SetValue(ScriptableObjectLoader<CardInfo>.AllData.Concat(NewCards.cards).ToList());
+                Plugin.Log.LogInfo($"Loaded custom cards into data");
+            }
         }
     }
 }
