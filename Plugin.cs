@@ -125,92 +125,86 @@ namespace CardLoaderPlugin
           NewCards.cards.Add(card);
       }
 
+      public static void AddCards(){
+          var allData = Traverse.Create<ScriptableObjectLoader<CardInfo>>().Field("allData");
+          if(allData.GetValue<List<CardInfo>>() == null)
+          {
+              allData.SetValue(ScriptableObjectLoader<CardInfo>.AllData.Concat(NewCards.cards).ToList());
+              Plugin.Log.LogInfo($"Loaded custom cards into data");
+          }
+      }
+
+    }
+
+    [HarmonyPatch(typeof(LoadingScreenManager), "LoadGameData")]
+    public class LoadingScreenManager_LoadGameData
+    {
+        public static void Prefix()
+        {
+            NewCards.AddCards();
+        }
     }
 
     [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] {typeof(string)})]
     public class CardLoader_GetCardByName
     {
-        public static bool Prefix(string name, ref CardInfo __result)
+        public static void Prefix()
         {
-            if (NewCards.cards.Exists((CardInfo x) => x.name == name))
-            {
-                __result = Traverse.Create<CardLoader>().Method("Clone", new object[] {NewCards.cards.Find((CardInfo x) => x.name == name)}).GetValue<CardInfo>();
-                Plugin.Log.LogInfo($"Loaded custom card by name!");
-                return false;
-            }
-            return true;
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(CardLoader), "GetPixelCards")]
     public class CardLoader_GetPixelCards
     {
-        public static void Postfix(ref List<CardInfo> __result)
+        public static void Prefix()
         {
-            __result = __result.Concat(NewCards.cards.FindAll((CardInfo x) => x.pixelPortrait != null)).ToList();
-            Plugin.Log.LogInfo("Loaded custom pixel cards");
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(CardLoader), "GetPureRandomCard")]
     public class CardLoader_GetPureRandomCard
     {
-        public static bool Prefix(ref CardInfo __result)
+        public static void Prefix()
         {
-            List<CardInfo> allCards = ScriptableObjectLoader<CardInfo>.AllData.Concat(NewCards.cards).ToList();
-            __result = Traverse.Create<CardLoader>().Method("Clone", new object[] {allCards[UnityEngine.Random.Range(0, allCards.Count)]}).GetValue<CardInfo>();
-            Plugin.Log.LogInfo("Added custom cards to pure random card pool");
-            return false;
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(CardLoader), "GetRandomRareCard")]
     public class CardLoader_GetRandomRareCard
     {
-        public static bool Prefix(CardTemple temple, ref CardInfo __result)
+        public static void Prefix()
         {
-            List<CardInfo> list = ScriptableObjectLoader<CardInfo>.AllData.FindAll((CardInfo x) => x.metaCategories.Contains(CardMetaCategory.Rare) && x.temple == temple);
-            __result = Traverse.Create<CardLoader>().Method("Clone", new object[] {list.Concat(NewCards.cards.FindAll((CardInfo x) => x.metaCategories.Contains(CardMetaCategory.Rare) && x.temple == temple))}).GetValue<CardInfo>();
-            Plugin.Log.LogInfo("Added custom cards to random rare card pool");
-            return false;
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(CardLoader), "GetUnlockedCards", new Type[] {typeof(CardMetaCategory), typeof(CardTemple)})]
     public class CardLoader_GetUnlockedCards
     {
-        public static void Postfix(CardMetaCategory category, CardTemple temple, ref List<CardInfo> __result)
+        public static void Prefix()
         {
-            __result = __result.Concat(Traverse.Create<CardLoader>().Method("RemoveDeckSingletonsIfInDeck", new object[] {NewCards.cards.FindAll((CardInfo x) => x.metaCategories.Contains(category) && x.temple == temple && ConceptProgressionTree.Tree.CardUnlocked(x, false))}).GetValue<List<CardInfo>>()).ToList();
-            Plugin.Log.LogInfo("Added custom cards to unlocked card pool");
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(CardLoader), "LearnedCards", MethodType.Getter)]
     public class CardLoader_get_LearnedCards
     {
-        public static void Postfix(ref List<CardInfo> __result)
+        public static void Prefix()
         {
-            __result = __result.Concat(NewCards.cards.FindAll((CardInfo x) => x.metaCategories.Contains(CardMetaCategory.ChoiceNode) && ProgressionData.LearnedCard(x))).ToList();
-            Plugin.Log.LogInfo("Added custom cards to learned card pool");
+            NewCards.AddCards();
         }
     }
 
     [HarmonyPatch(typeof(DrawRandomCardOnDeath), "CardToDraw", MethodType.Getter)]
     public class DrawRandomCardOnDeath_get_CardToDraw
     {
-        public static bool Prefix(ref CardInfo __result, DrawRandomCardOnDeath __instance)
+        public static void Prefix()
         {
-            Traverse.Create(__instance).Field("wasGoodFish").SetValue(false);
-            if (!Traverse.Create(__instance).Field("IsAngler").GetValue<bool>())
-            {
-              List<CardInfo> list = ScriptableObjectLoader<CardInfo>.AllData.FindAll((CardInfo x) => x.metaCategories.Contains(CardMetaCategory.Part3Random));
-              list = list.Concat(NewCards.cards.FindAll((CardInfo x) => x.metaCategories.Contains(CardMetaCategory.Part3Random))).ToList();
-              __result = list[SeededRandom.Range(0, list.Count, Traverse.Create(new TriggerReceiver()).Method("GetRandomSeed").GetValue<int>())];
-              Plugin.Log.LogInfo("Added custom cards to card on death card pool");
-              return false;
-            }
-            return true;
+            NewCards.AddCards();
         }
     }
 }
