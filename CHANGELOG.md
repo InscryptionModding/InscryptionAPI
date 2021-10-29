@@ -1,4 +1,7 @@
 # Changelog
+## v1.3
+- Set up project to work as a library for other plugins to use.
+
 ## v1.2.1.1
 - Fixed previous patch
 

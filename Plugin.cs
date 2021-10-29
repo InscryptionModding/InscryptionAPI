@@ -15,9 +15,9 @@ namespace CardLoaderPlugin
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
     {
-        private const string PluginGuid = "cyantist.inscryption.cardLoader";
-        private const string PluginName = "Cardloader";
-        private const string PluginVersion = "1.2.1.1";
+        private const string PluginGuid = "cyantist.inscryption.cardloader";
+        private const string PluginName = "CardLoader";
+        private const string PluginVersion = "1.3.0.0";
 
         internal static ManualLogSource Log;
 
@@ -26,27 +26,8 @@ namespace CardLoaderPlugin
             Logger.LogInfo($"Loaded {PluginName}!");
             Plugin.Log = base.Logger;
 
-            AddBears();
-            ChangeWolf();
-
 	          Harmony harmony = new Harmony(PluginGuid);
             harmony.PatchAll();
-        }
-
-        private void AddBears(){
-            List<CardMetaCategory> metaCategories = new List<CardMetaCategory>();
-            metaCategories.Add(CardMetaCategory.ChoiceNode);
-            metaCategories.Add(CardMetaCategory.Rare);
-            List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = new List<CardAppearanceBehaviour.Appearance>();
-            appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.RareCardBackground);
-            byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/eightfuckingbears.png");
-            Texture2D tex = new Texture2D(2,2);
-            tex.LoadImage(imgBytes);
-            new NewCard("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
-        }
-
-        private void ChangeWolf(){
-            new CustomCard("Wolf", baseAttack:10);
         }
     }
 
