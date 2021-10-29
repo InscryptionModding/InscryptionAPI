@@ -17,7 +17,7 @@ namespace CardLoaderPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.cardLoader";
         private const string PluginName = "Cardloader";
-        private const string PluginVersion = "1.2.0.0";
+        private const string PluginVersion = "1.2.1.0";
 
         internal static ManualLogSource Log;
 
@@ -262,6 +262,32 @@ namespace CardLoaderPlugin
 
     [HarmonyPatch(typeof(LoadingScreenManager), "LoadGameData")]
     public class LoadingScreenManager_LoadGameData
+    {
+        public static void Prefix()
+        {
+            var allData = Traverse.Create<ScriptableObjectLoader<CardInfo>>().Field("allData");
+            if(allData.GetValue<List<CardInfo>>() == null)
+            {
+                List<CardInfo> official = ScriptableObjectLoader<CardInfo>.AllData;
+                foreach(CustomCard card in CustomCard.cards){
+                    int index = official.FindIndex((CardInfo x) => x.name == card.name);
+                    if(index == -1)
+                    {
+                        Plugin.Log.LogInfo($"Could not find card {card.name} to modify");
+                    } else
+                    {
+                        Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
+                        official[index] = card.AdjustCard(official[index]);
+                    }
+                }
+                allData.SetValue(official.Concat(NewCard.cards).ToList());
+                Plugin.Log.LogInfo($"Loaded custom cards into data");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(ProgressionData), "UnlockAll")]
+    public class ProgressionData_UnlockAll
     {
         public static void Prefix()
         {

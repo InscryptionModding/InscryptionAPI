@@ -2736,7 +2736,7 @@
     "C:\\Users\\Scott\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.2.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\Scott\\CardLoader\\CardLoaderPlugin.csproj",
       "projectName": "CardLoaderPlugin",

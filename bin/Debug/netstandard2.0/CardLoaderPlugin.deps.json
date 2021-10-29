@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "CardLoaderPlugin/1.0.0": {
+      "CardLoaderPlugin/1.2.1": {
         "dependencies": {
           "BepInEx.Analyzers": "1.0.6",
           "BepInEx.Core": "5.4.16",
@@ -406,7 +406,7 @@
     }
   },
   "libraries": {
-    "CardLoaderPlugin/1.0.0": {
+    "CardLoaderPlugin/1.2.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

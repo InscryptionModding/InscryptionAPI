@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2.1
+- Fixed cards not being inserted into the card pool on chapter select
+
 ## v1.2
 ### Not compatible with v1.1
 - Added customising default cards through CustomCard.
