@@ -1,4 +1,6 @@
 # Changelog
+## v1.2.1.1
+- Fixed previous patch
 
 ## v1.2.1
 - Fixed cards not being inserted into the card pool on chapter select

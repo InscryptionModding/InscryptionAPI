@@ -17,7 +17,7 @@ namespace CardLoaderPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.cardLoader";
         private const string PluginName = "Cardloader";
-        private const string PluginVersion = "1.2.1.0";
+        private const string PluginVersion = "1.2.1.1";
 
         internal static ManualLogSource Log;
 
@@ -286,8 +286,8 @@ namespace CardLoaderPlugin
         }
     }
 
-    [HarmonyPatch(typeof(ProgressionData), "UnlockAll")]
-    public class ProgressionData_UnlockAll
+    [HarmonyPatch(typeof(ChapterSelectMenu), "OnChapterConfirmed")]
+    public class ChapterSelectMenu_OnChapterConfirmed
     {
         public static void Prefix()
         {
