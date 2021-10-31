@@ -1,4 +1,7 @@
 # Changelog
+## v1.4
+- Set up support for customising and adding regions.
+
 ## v1.3
 - Set up project to work as a library for other plugins to use.
 

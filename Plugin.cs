@@ -14,7 +14,7 @@ namespace CardLoaderPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.cardloader";
         private const string PluginName = "CardLoader";
-        private const string PluginVersion = "1.3.0.0";
+        private const string PluginVersion = "1.4.0.0";
 
         internal static ManualLogSource Log;
 
@@ -224,8 +224,8 @@ namespace CardLoaderPlugin
 
         public NewCard(CardInfo card)
         {
-            Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
             NewCard.cards.Add(card);
+            Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
         }
 
         // TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
@@ -253,70 +253,255 @@ namespace CardLoaderPlugin
             card.cost = cost;
             card.bonesCost = bonesCost;
             card.energyCost = energyCost;
-            if (gemsCost != null)
+            if (gemsCost is not null)
             {
                 card.gemsCost = gemsCost;
             }
             card.specialStatIcon = specialStatIcon;
-            if (tribes != null)
+            if (tribes is not null)
             {
                 card.tribes = tribes;
             }
-            if (traits != null)
+            if (traits is not null)
             {
                 card.traits = traits;
             }
-            if (specialAbilities != null)
+            if (specialAbilities is not null)
             {
                 card.specialAbilities = specialAbilities;
             }
-            if (abilities != null)
+            if (abilities is not null)
             {
                 card.abilities = abilities;
             }
-            if (appearanceBehaviour != null)
+            if (appearanceBehaviour is not null)
             {
                 card.appearanceBehaviour = appearanceBehaviour;
             }
             card.onePerDeck = onePerDeck;
             card.hideAttackAndHealth = hideAttackAndHealth;
-            if (tex != null)
+            if (tex is not null)
             {
                 tex.name = "portrait_" + name;
                 card.portraitTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.portraitTex.name = "portrait_" + name;
             }
-            if (altTex != null)
+            if (altTex is not null)
             {
                 altTex.name = "portrait_" + name;
                 card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.alternatePortrait.name = "portrait_" + name;
             }
-            if (titleGraphic != null)
+            if (titleGraphic is not null)
             {
                 card.titleGraphic = titleGraphic;
             }
-            if (pixelTex != null)
+            if (pixelTex is not null)
             {
                 pixelTex.name = "portrait_" + name;
                 card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
             }
-            if (animatedPortrait != null)
+            if (animatedPortrait is not null)
             {
                 // TODO Provide a function to create animated card textures
                 card.animatedPortrait = animatedPortrait;
             }
-            if (decals != null)
+            if (decals is not null)
             {
                 // TODO Access and provide default decals
                 card.decals = decals;
             }
             card.name = name;
-            Plugin.Log.LogInfo($"Loaded custom card {name}!");
             NewCard.cards.Add(card);
+            Plugin.Log.LogInfo($"Loaded custom card {name}!");
         }
 
+    }
+
+    public class CustomRegion
+    {
+        public static List<CustomRegion> regions = new List<CustomRegion>();
+        public string name;
+        public int? tier;
+        private List<CardInfo> terrainCards;
+        private List<ConsumableItemData> consumableItems;
+        private List<EncounterBlueprintData> encounters;
+        private List<Opponent.Type> bosses;
+        private List<CardInfo> likelyCards;
+        private List<Tribe> dominantTribes;
+        private PredefinedNodes predefinedNodes;
+        private EncounterBlueprintData bossPrepEncounter;
+        private StoryEventCondition bossPrepCondition;
+        private List<ScarceSceneryEntry> scarceScenery;
+        private List<FillerSceneryEntry> fillerScenery;
+        private PredefinedScenery predefinedScenery;
+        private string ambientLoopId;
+        private bool? silenceCabinAmbience;
+        private Color? boardLightColor;
+        private Color? cardsLightColor;
+        private bool? dustParticlesDisabled;
+        private bool? fogEnabled;
+        private VolumetricFogAndMist.VolumetricFogProfile fogProfile;
+        private float? fogAlpha;
+        private Texture mapAlbedo;
+        private Texture mapEmission;
+        private Color? mapEmissionColor;
+        private List<GameObject> mapParticlesPrefabs;
+
+        public CustomRegion(string name, int? tier = null, List<CardInfo> terrainCards = null, List<ConsumableItemData> consumableItems = null, List<EncounterBlueprintData> encounters = null,
+                            List<Opponent.Type> bosses = null, List<CardInfo> likelyCards = null, List<Tribe> dominantTribes = null, PredefinedNodes predefinedNodes = null,
+                            EncounterBlueprintData bossPrepEncounter = null, StoryEventCondition bossPrepCondition = null, List<ScarceSceneryEntry> scarceScenery = null,
+                            List<FillerSceneryEntry> fillerScenery = null, PredefinedScenery predefinedScenery = null, string ambientLoopId = "", bool? silenceCabinAmbience = null,
+                            Color? boardLightColor = null, Color? cardsLightColor = null, bool? dustParticlesDisabled = null, bool? fogEnabled = null, VolumetricFogAndMist.VolumetricFogProfile fogProfile = null,
+                            float? fogAlpha = null, Texture mapAlbedo = null, Texture mapEmission = null, Color? mapEmissionColor = null, List<GameObject> mapParticlesPrefabs = null)
+        {
+            this.name = name;
+            this.tier = tier;
+            this.terrainCards = terrainCards;
+            this.consumableItems = consumableItems;
+            this.encounters = encounters;
+            this.bosses = bosses;
+            this.likelyCards = likelyCards;
+            this.dominantTribes = dominantTribes;
+            this.predefinedNodes = predefinedNodes;
+            this.bossPrepEncounter = bossPrepEncounter;
+            this.bossPrepCondition = bossPrepCondition;
+            this.scarceScenery = scarceScenery;
+            this.fillerScenery = fillerScenery;
+            this.predefinedScenery = predefinedScenery;
+            this.ambientLoopId = ambientLoopId;
+            this.silenceCabinAmbience = silenceCabinAmbience;
+            this.boardLightColor = boardLightColor;
+            this.cardsLightColor = cardsLightColor;
+            this.dustParticlesDisabled = dustParticlesDisabled;
+            this.fogEnabled = fogEnabled;
+            this.fogProfile = fogProfile;
+            this.fogAlpha = fogAlpha;
+            this.mapAlbedo = mapAlbedo;
+            this.mapEmission = mapEmission;
+            this.mapEmissionColor = mapEmissionColor;
+            this.mapParticlesPrefabs = mapParticlesPrefabs;
+            CustomRegion.regions.Add(this);
+        }
+
+        public RegionData AdjustRegion(RegionData region)
+        {
+            region.name = this.name;
+            if (this.terrainCards is not null)
+            {
+            		region.terrainCards = this.terrainCards;
+            }
+            if (this.consumableItems is not null)
+            {
+            		region.consumableItems = this.consumableItems;
+            }
+            if (this.encounters is not null)
+            {
+            		region.encounters = this.encounters;
+            }
+            if (this.bosses is not null)
+            {
+            		region.bosses = this.bosses;
+            }
+            if (this.likelyCards is not null)
+            {
+            		region.likelyCards = this.likelyCards;
+            }
+            if (this.dominantTribes is not null)
+            {
+            		region.dominantTribes = this.dominantTribes;
+            }
+            if (this.predefinedNodes is not null)
+            {
+            		region.predefinedNodes = this.predefinedNodes;
+            }
+            if (this.bossPrepEncounter is not null)
+            {
+            		region.bossPrepEncounter = this.bossPrepEncounter;
+            }
+            if (this.bossPrepCondition is not null)
+            {
+            		region.bossPrepCondition = this.bossPrepCondition;
+            }
+            if (this.scarceScenery is not null)
+            {
+            		region.scarceScenery = this.scarceScenery;
+            }
+            if (this.fillerScenery is not null)
+            {
+            		region.fillerScenery = this.fillerScenery;
+            }
+            if (this.predefinedScenery is not null)
+            {
+            		region.predefinedScenery = this.predefinedScenery;
+            }
+            if (!String.IsNullOrEmpty(this.ambientLoopId))
+            {
+            		region.ambientLoopId = this.ambientLoopId;
+            }
+            if (this.silenceCabinAmbience is not null)
+            {
+            		region.silenceCabinAmbience = (bool)this.silenceCabinAmbience;
+            }
+            if (this.boardLightColor is not null)
+            {
+            		region.boardLightColor = (Color)this.boardLightColor;
+            }
+            if (this.cardsLightColor is not null)
+            {
+            		region.cardsLightColor = (Color)this.cardsLightColor;
+            }
+            if (this.dustParticlesDisabled is not null)
+            {
+            		region.dustParticlesDisabled = (bool)this.dustParticlesDisabled;
+            }
+            if (this.fogEnabled is not null)
+            {
+            		region.fogEnabled = (bool)this.fogEnabled;
+            }
+            if (this.fogProfile is not null)
+            {
+            		region.fogProfile = this.fogProfile;
+            }
+            if (this.fogAlpha is not null)
+            {
+            		region.fogAlpha = (float)this.fogAlpha;
+            }
+            if (this.mapAlbedo is not null)
+            {
+            		region.mapAlbedo = this.mapAlbedo;
+            }
+            if (this.mapEmission is not null)
+            {
+            		region.mapEmission = this.mapEmission;
+            }
+            if (this.mapEmissionColor is not null)
+            {
+            		region.mapEmissionColor = (Color)this.mapEmissionColor;
+            }
+            if (this.mapParticlesPrefabs is not null)
+            {
+            		region.mapParticlesPrefabs = this.mapParticlesPrefabs;
+            }
+            Plugin.Log.LogInfo($"Adjusted default region {name}!");
+            return region;
+        }
+
+    }
+
+    public class NewRegion
+    {
+        public static List<NewRegion> regions = new List<NewRegion>();
+        public RegionData region;
+        public int tier;
+
+        public NewRegion(RegionData region, int tier){
+            this.region = region;
+            this.tier = tier;
+            NewRegion.regions.Add(this);
+            Plugin.Log.LogInfo($"Loaded custom region {region.name}!");
+        }
     }
 
     [HarmonyPatch(typeof(LoadingScreenManager), "LoadGameData")]
@@ -336,8 +521,8 @@ namespace CardLoaderPlugin
                     }
                     else
                     {
-                        Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
                         official[index] = card.AdjustCard(official[index]);
+                        Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
                     }
                 }
                 ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
@@ -363,12 +548,64 @@ namespace CardLoaderPlugin
                     }
                     else
                     {
-                        Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
                         official[index] = card.AdjustCard(official[index]);
+                        Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
                     }
                 }
                 ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
                 Plugin.Log.LogInfo($"Loaded custom cards into data");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(RegionProgression), "Instance", MethodType.Getter)]
+    public class RegionProgression_get_Instance
+    {
+        public static void Prefix(RegionProgression instance)
+        {
+            if(instance == null)
+            {
+                RegionProgression official = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
+                foreach(CustomRegion region in CustomRegion.regions){
+                    int tier = 0;
+                    bool found = false;
+                    foreach(List<RegionData> regions in official.regions){
+                        int index = regions.FindIndex((RegionData x) => x.name == region.name);
+                        if (index != -1)
+                        {
+                            if (region.tier == null || (int)region.tier == tier)
+                            {
+                                official.regions[tier][index] = region.AdjustRegion(regions[index]);
+                            }
+                            else
+                            {
+                                RegionData officialRegion = regions[index];
+                                official.regions[tier].Remove(officialRegion);
+                                while ((int)region.tier >= official.regions.Count)
+                                {
+                                    official.regions.Add(new List<RegionData>());
+                                }
+                                official.regions[(int)region.tier].Add(region.AdjustRegion(officialRegion));
+                            }
+                            found = true;
+                            Plugin.Log.LogInfo($"Loaded modified {region.name} into data");
+                        }
+                        tier++;
+                    }
+                    if (!found)
+                    {
+                        Plugin.Log.LogInfo($"Could not find region {region.name} to modify");
+                    }
+                }
+
+                foreach(NewRegion region in NewRegion.regions){
+                    while (region.tier >= official.regions.Count)
+                    {
+                        official.regions.Add(new List<RegionData>());
+                    }
+                    official.regions[region.tier].Add(region.region);
+                }
+                Plugin.Log.LogInfo($"Loaded custom regions into data");
             }
         }
     }
