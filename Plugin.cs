@@ -390,99 +390,99 @@ namespace CardLoaderPlugin
             region.name = this.name;
             if (this.terrainCards is not null)
             {
-            		region.terrainCards = this.terrainCards;
+                region.terrainCards = this.terrainCards;
             }
             if (this.consumableItems is not null)
             {
-            		region.consumableItems = this.consumableItems;
+                region.consumableItems = this.consumableItems;
             }
             if (this.encounters is not null)
             {
-            		region.encounters = this.encounters;
+                region.encounters = this.encounters;
             }
             if (this.bosses is not null)
             {
-            		region.bosses = this.bosses;
+                region.bosses = this.bosses;
             }
             if (this.likelyCards is not null)
             {
-            		region.likelyCards = this.likelyCards;
+                region.likelyCards = this.likelyCards;
             }
             if (this.dominantTribes is not null)
             {
-            		region.dominantTribes = this.dominantTribes;
+                region.dominantTribes = this.dominantTribes;
             }
             if (this.predefinedNodes is not null)
             {
-            		region.predefinedNodes = this.predefinedNodes;
+                region.predefinedNodes = this.predefinedNodes;
             }
             if (this.bossPrepEncounter is not null)
             {
-            		region.bossPrepEncounter = this.bossPrepEncounter;
+                region.bossPrepEncounter = this.bossPrepEncounter;
             }
             if (this.bossPrepCondition is not null)
             {
-            		region.bossPrepCondition = this.bossPrepCondition;
+                region.bossPrepCondition = this.bossPrepCondition;
             }
             if (this.scarceScenery is not null)
             {
-            		region.scarceScenery = this.scarceScenery;
+                region.scarceScenery = this.scarceScenery;
             }
             if (this.fillerScenery is not null)
             {
-            		region.fillerScenery = this.fillerScenery;
+                region.fillerScenery = this.fillerScenery;
             }
             if (this.predefinedScenery is not null)
             {
-            		region.predefinedScenery = this.predefinedScenery;
+                region.predefinedScenery = this.predefinedScenery;
             }
             if (!String.IsNullOrEmpty(this.ambientLoopId))
             {
-            		region.ambientLoopId = this.ambientLoopId;
+                region.ambientLoopId = this.ambientLoopId;
             }
             if (this.silenceCabinAmbience is not null)
             {
-            		region.silenceCabinAmbience = (bool)this.silenceCabinAmbience;
+                region.silenceCabinAmbience = (bool)this.silenceCabinAmbience;
             }
             if (this.boardLightColor is not null)
             {
-            		region.boardLightColor = (Color)this.boardLightColor;
+                region.boardLightColor = (Color)this.boardLightColor;
             }
             if (this.cardsLightColor is not null)
             {
-            		region.cardsLightColor = (Color)this.cardsLightColor;
+                region.cardsLightColor = (Color)this.cardsLightColor;
             }
             if (this.dustParticlesDisabled is not null)
             {
-            		region.dustParticlesDisabled = (bool)this.dustParticlesDisabled;
+                region.dustParticlesDisabled = (bool)this.dustParticlesDisabled;
             }
             if (this.fogEnabled is not null)
             {
-            		region.fogEnabled = (bool)this.fogEnabled;
+                region.fogEnabled = (bool)this.fogEnabled;
             }
             if (this.fogProfile is not null)
             {
-            		region.fogProfile = this.fogProfile;
+                region.fogProfile = this.fogProfile;
             }
             if (this.fogAlpha is not null)
             {
-            		region.fogAlpha = (float)this.fogAlpha;
+                region.fogAlpha = (float)this.fogAlpha;
             }
             if (this.mapAlbedo is not null)
             {
-            		region.mapAlbedo = this.mapAlbedo;
+                region.mapAlbedo = this.mapAlbedo;
             }
             if (this.mapEmission is not null)
             {
-            		region.mapEmission = this.mapEmission;
+                region.mapEmission = this.mapEmission;
             }
             if (this.mapEmissionColor is not null)
             {
-            		region.mapEmissionColor = (Color)this.mapEmissionColor;
+                region.mapEmissionColor = (Color)this.mapEmissionColor;
             }
             if (this.mapParticlesPrefabs is not null)
             {
-            		region.mapParticlesPrefabs = this.mapParticlesPrefabs;
+                region.mapParticlesPrefabs = this.mapParticlesPrefabs;
             }
             Plugin.Log.LogInfo($"Adjusted default region {name}!");
             return region;
