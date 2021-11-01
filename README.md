@@ -56,3 +56,6 @@ Future planned features for this plugin include:
 Use the plugin and report bugs you find! Lots of traits won't be designed to work well together and may cause bugs or crashes. At the very least we can document this. Ideally we can create generic patches for them.
 ### But really, I want to help develop this mod
 Great! I'm more than happy to accept help. Either make a pull request or come join us over in Daniel Mullins Discord, you can normally find me in the thread Modding in #inscribe-datamine but hopefully we'll have a dedicated channel soon
+
+##Contributors
+Windows10CE
