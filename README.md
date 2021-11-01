@@ -58,4 +58,5 @@ Use the plugin and report bugs you find! Lots of traits won't be designed to wor
 Great! I'm more than happy to accept help. Either make a pull request or come join us over in Daniel Mullins Discord, you can normally find me in the thread Modding in #inscribe-datamine but hopefully we'll have a dedicated channel soon
 
 ##Contributors
+
 Windows10CE
