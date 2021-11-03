@@ -14,11 +14,13 @@ namespace CardLoaderPlugin
         private struct GetFieldDelegate
         {
             public delegate*<S, object> Del;
+            public Type FieldType;
         }
 
         private struct SetFieldDelegate
         {
             public delegate*<D, object, void> Del;
+            public Type FieldType;
         }
 
         private static Dictionary<string, GetFieldDelegate> _accessors = null;
@@ -39,7 +41,11 @@ namespace CardLoaderPlugin
                         if (field.FieldType.IsValueType)
                             il.Emit(OpCodes.Box);
                         il.Emit(OpCodes.Ret);
-                        _accessors.Add(field.Name, new GetFieldDelegate { Del = (delegate*<S, object>)accessor.Generate().MethodHandle.GetFunctionPointer() });
+                        _accessors.Add(field.Name, new GetFieldDelegate
+                        {
+                            Del = (delegate*<S, object>)accessor.Generate().MethodHandle.GetFunctionPointer(),
+                            FieldType = field.FieldType
+                        });
                     }
                 }
                 return _accessors;
@@ -62,10 +68,10 @@ namespace CardLoaderPlugin
                         var il = setter.GetILProcessor();
                         il.Emit(OpCodes.Ldarg_0);
                         il.Emit(OpCodes.Ldarg_1);
-                        if (field.FieldType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                        if (FieldAccessors.TryGetValue(field.Name, out var getter) && getter.FieldType.GetGenericTypeDefinition() == typeof(Nullable<>) && getter.FieldType.GetGenericArguments()[0] == field.FieldType)
                         {
                             il.Emit(OpCodes.Call, AccessTools.DeclaredPropertyGetter(fieldType, "Value"));
-                            fieldType = fieldType.GetGenericArguments()[0];
+                            fieldType = getter.FieldType.GetGenericArguments()[0];
                         }
                         else if (fieldType.IsValueType)
                             il.Emit(OpCodes.Unbox, setter.Module.ImportReference(field.FieldType));
@@ -73,7 +79,11 @@ namespace CardLoaderPlugin
                             il.Emit(OpCodes.Castclass, setter.Module.ImportReference(field.FieldType));
                         il.Emit(OpCodes.Stfld, setter.Module.ImportReference(field));
                         il.Emit(OpCodes.Ret);
-                        _setters.Add(field.Name, new SetFieldDelegate { Del = (delegate*<D, object, void>)setter.Generate().MethodHandle.GetFunctionPointer() });
+                        _setters.Add(field.Name, new SetFieldDelegate
+                        {
+                            Del = (delegate*<D, object, void>)setter.Generate().MethodHandle.GetFunctionPointer(),
+                            FieldType = field.FieldType
+                        });
                     }
                 }
                 return _setters;
