@@ -7,13 +7,13 @@ using UnityEngine;
 using DiskCardGame;
 using HarmonyLib;
 
-namespace CardLoaderPlugin
+namespace APIPlugin
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
     {
-        private const string PluginGuid = "cyantist.inscryption.cardloader";
-        private const string PluginName = "CardLoader";
+        private const string PluginGuid = "cyantist.inscryption.api";
+        private const string PluginName = "API";
         private const string PluginVersion = "1.4.0.0";
 
         internal static ManualLogSource Log;

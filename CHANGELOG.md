@@ -1,4 +1,8 @@
 # Changelog
+## v1.5
+### Not compatible with v1.4
+- Changed all references to API including guid
+
 ## v1.4
 - Set up support for customising and adding regions.
 
