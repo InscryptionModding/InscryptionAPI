@@ -1,15 +1,16 @@
 
 # API
-## Inscryption Card Loader Plugin made by Cyantist
+## Inscryption API made by Cyantist
 
-This plugin is a BepInEx plugin made for Inscryption to create custom cards and inject them into the card pool, or modify existing cards in the card pool.
+This plugin is a BepInEx plugin made for Inscryption as an API.
+It can currently create custom cards and inject them into the card pool, or modify existing cards in the card pool.
 
 ## Installation
 To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.
 
 To install Inscryption API you simply need to copy **API.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to **Inscryption/BepInEx/plugins**.
 
-An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/Inscryption ExampleMod).
+An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
 
 ## Debugging
 The easiest way to check if the plugin is working properly or to debug an error is to enable the console. This can be done by changing
