@@ -10,7 +10,7 @@ To install this plugin first you need to install BepInEx as a mod loader for Ins
 
 To install Inscryption API you simply need to copy **API.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to **Inscryption/BepInEx/plugins**.
 
-An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/Inscryption ExampleMod).
+An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
 
 ## Debugging
 The easiest way to check if the plugin is working properly or to debug an error is to enable the console. This can be done by changing
