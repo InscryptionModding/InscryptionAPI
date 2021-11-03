@@ -1,4 +1,7 @@
 # Changelog
+## v1.5.1
+- Fix to accessing private instance for regions
+
 ## v1.5
 ### Not compatible with v1.4
 - Changed all references to API including guid

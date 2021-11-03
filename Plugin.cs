@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.5.0.0";
+        private const string PluginVersion = "1.5.1.0";
 
         internal static ManualLogSource Log;
 
@@ -561,9 +561,9 @@ namespace APIPlugin
     [HarmonyPatch(typeof(RegionProgression), "Instance", MethodType.Getter)]
     public class RegionProgression_get_Instance
     {
-        public static void Prefix(RegionProgression instance)
+        public static void Prefix(ref RegionProgression ___instance)
         {
-            if(instance == null)
+            if(___instance == null)
             {
                 RegionProgression official = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
                 foreach(CustomRegion region in CustomRegion.regions){
@@ -605,6 +605,7 @@ namespace APIPlugin
                     }
                     official.regions[region.tier].Add(region.region);
                 }
+                ___instance = official;
                 Plugin.Log.LogInfo($"Loaded custom regions into data");
             }
         }
