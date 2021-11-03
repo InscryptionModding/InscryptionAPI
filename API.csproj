@@ -22,9 +22,11 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>lib\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sirenix.Serialization">
       <HintPath>lib\Sirenix.Serialization.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 </Project>
