@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.5.1.0";
+        private const string PluginVersion = "1.5.2.0";
 
         internal static ManualLogSource Log;
 
@@ -171,9 +171,33 @@ namespace APIPlugin
             {
                 card.abilities = abilities;
             }
+            if (evolveParams is not null)
+            {
+                card.evolveParams = evolveParams;
+            }
+            if (evolveParams is not null)
+            {
+                card.evolveParams = evolveParams;
+            }
+            if (!String.IsNullOrEmpty(defaultEvolutionName))
+            {
+                card.defaultEvolutionName = defaultEvolutionName;
+            }
+            if (tailParams is not null)
+            {
+                card.tailParams = tailParams;
+            }
+            if (iceCubeParams is not null)
+            {
+                card.iceCubeParams = iceCubeParams;
+            }
             if (this.appearanceBehaviour is not null)
             {
                 card.appearanceBehaviour = this.appearanceBehaviour;
+            }
+            if (this.flipPortraitForStrafe is not null)
+            {
+                card.flipPortraitForStrafe = (bool)this.flipPortraitForStrafe;
             }
             if (this.onePerDeck is not null)
             {
@@ -274,10 +298,24 @@ namespace APIPlugin
             {
                 card.abilities = abilities;
             }
-            if (appearanceBehaviour is not null)
+            if (abilities is not null)
             {
-                card.appearanceBehaviour = appearanceBehaviour;
+                card.abilities = abilities;
             }
+            if (evolveParams is not null)
+            {
+                card.evolveParams = evolveParams;
+            }
+            card.defaultEvolutionName = defaultEvolutionName;
+            if (tailParams is not null)
+            {
+                card.tailParams = tailParams;
+            }
+            if (iceCubeParams is not null)
+            {
+                card.iceCubeParams = iceCubeParams;
+            }
+            card.flipPortraitForStrafe = flipPortraitForStrafe;
             card.onePerDeck = onePerDeck;
             card.hideAttackAndHealth = hideAttackAndHealth;
             if (tex is not null)

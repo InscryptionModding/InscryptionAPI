@@ -1,4 +1,7 @@
 # Changelog
+## v1.5.2
+- Enabled fix for evolveParams and some other disabled options
+
 ## v1.5.1
 - Fix to accessing private instance for regions
 
