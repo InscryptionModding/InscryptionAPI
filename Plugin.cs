@@ -56,9 +56,12 @@ namespace APIPlugin
         public bool? flipPortraitForStrafe;
         public bool? onePerDeck;
         public List<CardAppearanceBehaviour.Appearance> appearanceBehaviour;
+        [IgnoreMapping]
         public Texture2D tex;
+        [IgnoreMapping]
         public Texture2D altTex;
         public Texture titleGraphic;
+        [IgnoreMapping]
         public Texture2D pixelTex;
         public GameObject animatedPortrait;
         public List<Texture> decals;
@@ -107,106 +110,7 @@ namespace APIPlugin
 
         public CardInfo AdjustCard(CardInfo card)
         {
-            if (this.metaCategories is not null)
-            {
-                card.metaCategories = this.metaCategories;
-            }
-            if (this.cardComplexity is not null)
-            {
-                card.cardComplexity = (CardComplexity)this.cardComplexity;
-            }
-            if (this.temple is not null)
-            {
-                card.temple = (CardTemple)this.temple;
-            }
-            if (!String.IsNullOrEmpty(displayedName))
-            {
-                card.displayedName = displayedName;
-            }
-            if (this.baseAttack is not null)
-            {
-                card.baseAttack = baseAttack.Value;
-            }
-            if (this.baseHealth is not null)
-            {
-                card.baseHealth = baseHealth.Value;
-            }
-            if (!String.IsNullOrEmpty(description))
-            {
-                card.description = this.description;
-            }
-            if (this.cost is not null)
-            {
-                card.cost = cost.Value;
-            }
-            if (this.bonesCost is not null)
-            {
-                card.bonesCost = bonesCost.Value;
-            }
-            if (this.energyCost is not null)
-            {
-                card.energyCost = energyCost.Value;
-            }
-            if (this.gemsCost is not null)
-            {
-                card.gemsCost = gemsCost;
-            }
-            if (this.specialStatIcon is not null)
-            {
-                card.specialStatIcon = specialStatIcon.Value;
-            }
-            if (this.tribes is not null)
-            {
-                card.tribes = this.tribes;
-            }
-            if (this.traits is not null)
-            {
-                card.traits = this.traits;
-            }
-            if (this.specialAbilities is not null)
-            {
-                card.specialAbilities = specialAbilities;
-            }
-            if (this.abilities is not null)
-            {
-                card.abilities = abilities;
-            }
-            if (evolveParams is not null)
-            {
-                card.evolveParams = evolveParams;
-            }
-            if (evolveParams is not null)
-            {
-                card.evolveParams = evolveParams;
-            }
-            if (!String.IsNullOrEmpty(defaultEvolutionName))
-            {
-                card.defaultEvolutionName = defaultEvolutionName;
-            }
-            if (tailParams is not null)
-            {
-                card.tailParams = tailParams;
-            }
-            if (iceCubeParams is not null)
-            {
-                card.iceCubeParams = iceCubeParams;
-            }
-            if (this.appearanceBehaviour is not null)
-            {
-                card.appearanceBehaviour = this.appearanceBehaviour;
-            }
-            if (this.flipPortraitForStrafe is not null)
-            {
-                card.flipPortraitForStrafe = (bool)this.flipPortraitForStrafe;
-            }
-            if (this.onePerDeck is not null)
-            {
-                card.onePerDeck = (bool)this.onePerDeck;
-            }
-            if (this.hideAttackAndHealth is not null)
-            {
-                card.hideAttackAndHealth = (bool)this.hideAttackAndHealth;
-            }
+            TypeMapper<CustomCard, CardInfo>.Convert(this, card);
             if (this.tex is not null)
             {
                 tex.name = "portrait_" + name;
@@ -221,24 +125,12 @@ namespace APIPlugin
                 card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.alternatePortrait.name = "portrait_" + name;
             }
-            if (this.titleGraphic is not null)
-            {
-                card.titleGraphic = this.titleGraphic;
-            }
             if (this.pixelTex is not null)
             {
                 pixelTex.name = "portrait_" + name;
                 pixelTex.filterMode = FilterMode.Point;
                 card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
-            }
-            if (animatedPortrait is not null)
-            {
-                card.animatedPortrait = animatedPortrait;
-            }
-            if (decals is not null)
-            {
-                card.decals = decals;
             }
             Plugin.Log.LogInfo($"Adjusted default card {name}!");
             return card;
