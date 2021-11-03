@@ -5,7 +5,7 @@ using HarmonyLib;
 using Mono.Cecil.Cil;
 using MonoMod.Utils;
 
-namespace CardLoaderPlugin
+namespace APIPlugin
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class IgnoreMappingAttribute : Attribute {}
@@ -93,7 +93,7 @@ namespace CardLoaderPlugin
         public static D Convert(S source, D destination = null)
         {
             destination ??= new();
-            
+
             foreach (var field in FieldAccessors)
             {
                 object val = field.Value.Del(source);
