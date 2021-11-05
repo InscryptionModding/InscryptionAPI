@@ -757,12 +757,13 @@ namespace APIPlugin
             foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges) {
                 if (pageRangeInfo.type == PageRangeType.Abilities)
                 {
+                    List<int> customAbilities = NewAbility.abilities.Select(x => (int)x.ability).ToList();
+                    int min = customAbilities.AsQueryable().Min();
+                    int max = customAbilities.AsQueryable().Max();
                     PageRangeInfo pageRange = pageRangeInfo;
-                    int numPages = NewAbility.abilities.Count;
-                    int startIndex = 0;
                     Func<int, bool> doAddPageFunc;
-                    doAddPageFunc = (int index) => AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
-                    __result.AddRange(__instance.ConstructPages(pageRange, numPages, startIndex, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION VI - CUSTOM ABILITIES {0}")));
+                    doAddPageFunc = (int index) => customAbilities.Contains(index) && AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
+                    __result.AddRange(__instance.ConstructPages(pageRange, max+1, min, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION VI - CUSTOM ABILITIES {0}")));
                 }
             }
         }
