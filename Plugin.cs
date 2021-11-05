@@ -748,4 +748,23 @@ namespace APIPlugin
             }
         }
     }
+
+    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] {typeof(AbilityMetaCategory)})]
+    public class RuleBookInfo_ConstructPageData
+    {
+        public static void Postfix(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+        {
+            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges) {
+                if (pageRangeInfo.type == PageRangeType.Abilities)
+                {
+                    PageRangeInfo pageRange = pageRangeInfo;
+                    int numPages = NewAbility.abilities.Count;
+                    int startIndex = 0;
+                    Func<int, bool> doAddPageFunc;
+                    doAddPageFunc = (int index) => AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
+                    __result.AddRange(__instance.ConstructPages(pageRange, numPages, startIndex, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION VI - CUSTOM ABILITIES {0}")));
+                }
+            }
+        }
+    }
 }
