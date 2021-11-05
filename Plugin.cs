@@ -548,6 +548,25 @@ namespace APIPlugin
         }
     }
 
+    public class NewAbility
+    {
+        public static List<NewAbility> abilities = new List<NewAbility>();
+        public Ability ability;
+        public AbilityInfo info;
+        public Type abilityBehaviour;
+        public Texture tex;
+
+        public NewAbility(Ability ability, AbilityInfo info, Type abilityBehaviour, Texture tex)
+        {
+            this.ability = ability;
+            this.info = info;
+            this.abilityBehaviour = abilityBehaviour;
+            this.tex = tex;
+            NewAbility.abilities.Add(this);
+            Plugin.Log.LogInfo($"Loaded custom ability {info.rulebookName}!");
+        }
+    }
+
     [HarmonyPatch(typeof(LoadingScreenManager), "LoadGameData")]
     public class LoadingScreenManager_LoadGameData
     {
@@ -571,6 +590,16 @@ namespace APIPlugin
                 }
                 ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
                 Plugin.Log.LogInfo($"Loaded custom cards into data");
+            }
+            if (ScriptableObjectLoader<AbilityInfo>.allData == null)
+            {
+                List<AbilityInfo> official = ScriptableObjectLoader<AbilityInfo>.AllData;
+                foreach (NewAbility newAbility in NewAbility.abilities)
+                {
+                    official.Add(newAbility.info);
+                }
+                ScriptableObjectLoader<AbilityInfo>.allData = official;
+                Plugin.Log.LogInfo($"Loaded custom abilities into data");
             }
         }
     }
@@ -651,6 +680,71 @@ namespace APIPlugin
                 }
                 ___instance = official;
                 Plugin.Log.LogInfo($"Loaded custom regions into data");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(CardTriggerHandler), "AddAbility", new Type[] {typeof(Ability)})]
+    public class CardTriggerHandler_AddAbility
+    {
+        public static bool Prefix(Ability ability, CardTriggerHandler __instance)
+        {
+            if ((int)ability < 99)
+            {
+                return true;
+            }
+            if ((!__instance.triggeredAbilities.Exists((Tuple<Ability, AbilityBehaviour> x) => x.Item1 == ability) || AbilitiesUtil.GetInfo(ability).canStack) && !AbilitiesUtil.GetInfo(ability).passive)
+            {
+                NewAbility newAbility = NewAbility.abilities.Find((NewAbility x) => x.ability == ability);
+                Type type = newAbility.abilityBehaviour;
+                Component baseC = (Component)__instance;
+                AbilityBehaviour item = baseC.gameObject.GetComponent(type) as AbilityBehaviour;
+          			if (item == null)
+          			{
+                    item = baseC.gameObject.AddComponent(type) as AbilityBehaviour;
+                }
+                __instance.triggeredAbilities.Add(new Tuple<Ability, AbilityBehaviour>(ability, item));
+            }
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon", new Type[] {typeof(string), typeof(bool), typeof(bool)})]
+    public class AbilitiesUtil_LoadAbilityIcon
+    {
+        public static bool Prefix(string abilityName, CardTriggerHandler __instance, ref Texture __result)
+        {
+            int ability = 0;
+            if (!int.TryParse(abilityName, out ability))
+            {
+                return true;
+            }
+            NewAbility newAbility = NewAbility.abilities.Find((NewAbility x) => x.ability == (Ability)ability);
+            __result = newAbility.tex;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(AbilitiesUtil), "GetAbilities", new Type[] {typeof(bool), typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory)})]
+    public class AbilitiesUtil_GetAbilities
+    {
+        public static void Postfix(bool learned, bool opponentUsable, int minPower, int maxPower, AbilityMetaCategory categoryCriteria, ref List<Ability> __result)
+        {
+            foreach (NewAbility newAbility in NewAbility.abilities)
+            {
+                AbilityInfo info = newAbility.info;
+                bool flag = !opponentUsable || info.opponentUsable;
+                bool flag2 = info.powerLevel >= minPower && info.powerLevel <= maxPower;
+                bool flag3 = info.metaCategories.Contains(categoryCriteria);
+                bool flag4 = true;
+                if (learned)
+                {
+                  flag4 = ProgressionData.LearnedAbility(info.ability);
+                }
+                if (flag && flag2 && flag3 && flag4)
+                {
+                    __result.Add(newAbility.ability);
+                }
             }
         }
     }
