@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.5.2.0";
+        private const string PluginVersion = "1.6.0.0";
 
         internal static ManualLogSource Log;
 
@@ -210,12 +210,14 @@ namespace APIPlugin
             if (this.tex is not null)
             {
                 tex.name = "portrait_" + name;
+                tex.filterMode = FilterMode.Point;
                 card.portraitTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.portraitTex.name = "portrait_" + name;
             }
             if (this.altTex is not null)
             {
                 altTex.name = "portrait_" + name;
+                altTex.filterMode = FilterMode.Point;
                 card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.alternatePortrait.name = "portrait_" + name;
             }
@@ -226,6 +228,7 @@ namespace APIPlugin
             if (this.pixelTex is not null)
             {
                 pixelTex.name = "portrait_" + name;
+                pixelTex.filterMode = FilterMode.Point;
                 card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
             }
@@ -321,12 +324,14 @@ namespace APIPlugin
             if (tex is not null)
             {
                 tex.name = "portrait_" + name;
+                tex.filterMode = FilterMode.Point;
                 card.portraitTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.portraitTex.name = "portrait_" + name;
             }
             if (altTex is not null)
             {
                 altTex.name = "portrait_" + name;
+                altTex.filterMode = FilterMode.Point;
                 card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.alternatePortrait.name = "portrait_" + name;
             }
@@ -337,6 +342,7 @@ namespace APIPlugin
             if (pixelTex is not null)
             {
                 pixelTex.name = "portrait_" + name;
+                pixelTex.filterMode = FilterMode.Point;
                 card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
             }

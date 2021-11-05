@@ -1,13 +1,16 @@
 # Changelog
+## v1.6
+- Changed textures to point filter to reduce blur.
+
 ## v1.5.2
-- Enabled fix for evolveParams and some other disabled options
+- Enabled fix for evolveParams and some other disabled options.
 
 ## v1.5.1
-- Fix to accessing private instance for regions
+- Fix to accessing private instance for regions.
 
 ## v1.5
 ### Not compatible with v1.4
-- Changed all references to API including guid
+- Changed all references to API including guid.
 
 ## v1.4
 - Set up support for customising and adding regions.
@@ -16,10 +19,10 @@
 - Set up project to work as a library for other plugins to use.
 
 ## v1.2.1.1
-- Fixed previous patch
+- Fixed previous patch.
 
 ## v1.2.1
-- Fixed cards not being inserted into the card pool on chapter select
+- Fixed cards not being inserted into the card pool on chapter select.
 
 ## v1.2
 ### Not compatible with v1.1
