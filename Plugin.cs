@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.7.1.0";
+        private const string PluginVersion = "1.7.0.0";
 
         internal static ManualLogSource Log;
 
@@ -255,7 +255,9 @@ namespace APIPlugin
             Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
         }
 
+        // TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
         // TODO Change parameter order, and function setter call order to make more sense
+        // TODO Rename parameters to be more user friendly
         public NewCard(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple, string displayedName, int baseAttack, int baseHealth,
             string description = "",
             bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
@@ -318,10 +320,6 @@ namespace APIPlugin
             }
             card.flipPortraitForStrafe = flipPortraitForStrafe;
             card.onePerDeck = onePerDeck;
-            if (appearanceBehaviour is not null)
-            {
-                card.appearanceBehaviour = appearanceBehaviour;
-            }
             card.hideAttackAndHealth = hideAttackAndHealth;
             if (tex is not null)
             {
