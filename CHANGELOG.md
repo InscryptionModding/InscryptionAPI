@@ -1,4 +1,7 @@
 # Changelog
+## v1.7
+- Added support for custom abilities!
+
 ## v1.6
 - Changed textures to point filter to reduce blur.
 

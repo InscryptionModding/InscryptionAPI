@@ -3,7 +3,11 @@
 ## Inscryption API made by Cyantist
 
 This plugin is a BepInEx plugin made for Inscryption as an API.
-It can currently create custom cards and inject them into the card pool, or modify existing cards in the card pool.
+It can currently:
+- Create custom cards and inject them into the card pool
+- Modify existing cards in the card pool
+- Create custom abilities and inject them into the ability pool
+- Create custom regions
 
 ## Installation (automated)
 This is the recommended way to install the API on the game.
@@ -43,25 +47,21 @@ If you want help debugging you can find me on the [Inscryption Modding Discord](
 ## Development
 At the moment I am working on:
 
- - Cleaning the plugins code up
  - Adding comments
- - Improving the parameter handle order and names
  - Documentation
+ - Custom special abilities
 
 The next planned features for this plugin are:
 
- - Extending the loader to handle and load custom abilities, boons and items.
-
-Future planned features for this plugin include:
-
- - Automatic installation
+ - Extending the loader to handle and load custom ~~abilities,~~ boons and items.
 
 ## Contribution
 ### How can you help?
 Use the plugin and report bugs you find! Lots of traits won't be designed to work well together and may cause bugs or crashes. At the very least we can document this. Ideally we can create generic patches for them.
 ### But really, I want to help develop this mod
-Great! I'm more than happy to accept help. Either make a pull request or come join us over in Daniel Mullins Discord, you can normally find me in the thread Modding in #inscribe-datamine but hopefully we'll have a dedicated channel soon
+Great! I'm more than happy to accept help. Either make a pull request or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
+### Can I donate?
+Donations are totally not needed, this is a passion project before anything else. If you do still want to donate though, you can buy me a coffee on [ko-fi](https://ko-fi.com/madcyantist).
 
 ## Contributors
-
-Windows10CE
+- Windows10CE

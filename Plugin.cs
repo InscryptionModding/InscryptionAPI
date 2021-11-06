@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.6.0.0";
+        private const string PluginVersion = "1.7.0.0";
 
         internal static ManualLogSource Log;
 
@@ -556,9 +556,10 @@ namespace APIPlugin
         public Type abilityBehaviour;
         public Texture tex;
 
-        public NewAbility(Ability ability, AbilityInfo info, Type abilityBehaviour, Texture tex)
+        public NewAbility(AbilityInfo info, Type abilityBehaviour, Texture tex)
         {
-            this.ability = ability;
+            this.ability = (Ability) 100 + NewAbility.abilities.Count;
+            info.ability = this.ability;
             this.info = info;
             this.abilityBehaviour = abilityBehaviour;
             this.tex = tex;
@@ -763,7 +764,7 @@ namespace APIPlugin
                     PageRangeInfo pageRange = pageRangeInfo;
                     Func<int, bool> doAddPageFunc;
                     doAddPageFunc = (int index) => customAbilities.Contains(index) && AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
-                    __result.AddRange(__instance.ConstructPages(pageRange, max+1, min, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION VI - CUSTOM ABILITIES {0}")));
+                    __result.AddRange(__instance.ConstructPages(pageRange, max+1, min, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}")));
                 }
             }
         }
