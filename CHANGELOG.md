@@ -1,4 +1,7 @@
 # Changelog
+## v1.7.1
+- Fixed appearanceBehaviour for NewCards.
+
 ## v1.7
 - Added support for custom abilities!
 
