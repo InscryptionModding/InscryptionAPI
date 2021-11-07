@@ -14,7 +14,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.7.0.0";
+        private const string PluginVersion = "1.7.1.0";
 
         internal static ManualLogSource Log;
 
@@ -755,16 +755,19 @@ namespace APIPlugin
     {
         public static void Postfix(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
         {
-            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges) {
-                if (pageRangeInfo.type == PageRangeType.Abilities)
-                {
-                    List<int> customAbilities = NewAbility.abilities.Select(x => (int)x.ability).ToList();
-                    int min = customAbilities.AsQueryable().Min();
-                    int max = customAbilities.AsQueryable().Max();
-                    PageRangeInfo pageRange = pageRangeInfo;
-                    Func<int, bool> doAddPageFunc;
-                    doAddPageFunc = (int index) => customAbilities.Contains(index) && AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
-                    __result.AddRange(__instance.ConstructPages(pageRange, max+1, min, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}")));
+            if (NewAbility.abilities.Count > 0)
+            {
+                foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges) {
+                    if (pageRangeInfo.type == PageRangeType.Abilities)
+                    {
+                        List<int> customAbilities = NewAbility.abilities.Select(x => (int)x.ability).ToList();
+                        int min = customAbilities.AsQueryable().Min();
+                        int max = customAbilities.AsQueryable().Max();
+                        PageRangeInfo pageRange = pageRangeInfo;
+                        Func<int, bool> doAddPageFunc;
+                        doAddPageFunc = (int index) => customAbilities.Contains(index) && AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
+                        __result.AddRange(__instance.ConstructPages(pageRange, max+1, min, doAddPageFunc, new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage), Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}")));
+                    }
                 }
             }
         }
