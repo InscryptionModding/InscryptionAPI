@@ -1,4 +1,14 @@
 # Changelog
+## v1.8
+### Not compatible with v1.7
+- Changed code to use TypeMapper.
+
+## v1.7.2
+- Fixed error when not adding any abilities.
+
+## v1.7.1
+- Fixed appearance behaviours not loading properly.
+
 ## v1.7
 - Added support for custom abilities!
 
