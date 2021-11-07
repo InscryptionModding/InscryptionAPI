@@ -15,7 +15,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.7.0.0";
+        private const string PluginVersion = "1.8.0.0";
 
         internal static ManualLogSource Log;
 
@@ -76,7 +76,7 @@ namespace APIPlugin
         public CardInfo AdjustCard(CardInfo card)
         {
             TypeMapper<CustomCard, CardInfo>.Convert(this, card);
-    
+
             if (this.tex is not null)
             {
                 tex.name = "portrait_" + name;
