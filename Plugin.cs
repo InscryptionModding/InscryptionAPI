@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using DiskCardGame;
 using HarmonyLib;
+#pragma warning disable 169
 
 namespace APIPlugin
 {
@@ -66,51 +67,16 @@ namespace APIPlugin
         public GameObject animatedPortrait;
         public List<Texture> decals;
 
-        public CustomCard(string name, List<CardMetaCategory> metaCategories = null, CardComplexity? cardComplexity = null, CardTemple? temple = null, string displayedName = "",
-            int? baseAttack = null, int? baseHealth = null, string description = "", bool? hideAttackAndHealth = null, int? cost = null, int? bonesCost = null,
-            int? energyCost = null, List<GemType> gemsCost = null, SpecialStatIcon? specialStatIcon = null, List<Tribe> tribes = null, List<Trait> traits = null,
-            List<SpecialTriggeredAbility> specialAbilities = null, List<Ability> abilities = null, EvolveParams evolveParams = null, string defaultEvolutionName = "",
-            TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool? flipPortraitForStrafe = null, bool? onePerDeck = null,
-            List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null, Texture2D altTex = null, Texture titleGraphic = null,
-            Texture2D pixelTex = null, GameObject animatedPortrait = null, List<Texture> decals = null)
+        public CustomCard(string name)
         {
             this.name = name;
-            this.metaCategories = metaCategories;
-            this.cardComplexity = cardComplexity;
-            this.temple = temple;
-            this.displayedName = displayedName;
-            this.baseAttack = baseAttack;
-            this.baseHealth = baseHealth;
-            this.description = description;
-            this.hideAttackAndHealth = hideAttackAndHealth;
-            this.cost = cost;
-            this.bonesCost = bonesCost;
-            this.energyCost = energyCost;
-            this.gemsCost = gemsCost;
-            this.specialStatIcon = specialStatIcon;
-            this.tribes = tribes;
-            this.traits = traits;
-            this.specialAbilities = specialAbilities;
-            this.abilities = abilities;
-            this.evolveParams = evolveParams;
-            this.defaultEvolutionName = defaultEvolutionName;
-            this.tailParams = tailParams;
-            this.iceCubeParams = iceCubeParams;
-            this.flipPortraitForStrafe = flipPortraitForStrafe;
-            this.onePerDeck = onePerDeck;
-            this.appearanceBehaviour = appearanceBehaviour;
-            this.tex = tex;
-            this.altTex = altTex;
-            this.titleGraphic = titleGraphic;
-            this.pixelTex = pixelTex;
-            this.animatedPortrait = animatedPortrait;
-            this.decals = decals;
             CustomCard.cards.Add(this);
         }
 
         public CardInfo AdjustCard(CardInfo card)
         {
             TypeMapper<CustomCard, CardInfo>.Convert(this, card);
+    
             if (this.tex is not null)
             {
                 tex.name = "portrait_" + name;
@@ -137,11 +103,11 @@ namespace APIPlugin
         }
     }
 
-    public class NewCard
+    public static class NewCard
     {
         public static List<CardInfo> cards = new List<CardInfo>();
 
-        public NewCard(CardInfo card)
+        public static void Add(CardInfo card)
         {
             NewCard.cards.Add(card);
             Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
@@ -150,11 +116,11 @@ namespace APIPlugin
         // TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
         // TODO Change parameter order, and function setter call order to make more sense
         // TODO Rename parameters to be more user friendly
-        public NewCard(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple, string displayedName, int baseAttack, int baseHealth,
-            string description = "",
+        public static void Add(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple, string displayedName, int baseAttack, int baseHealth,
+            string description = null,
             bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
             List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null, List<Ability> abilities = null, EvolveParams evolveParams = null,
-            string defaultEvolutionName = "", TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool flipPortraitForStrafe = false, bool onePerDeck = false,
+            string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool flipPortraitForStrafe = false, bool onePerDeck = false,
             List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null, Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
             GameObject animatedPortrait = null, List<Texture> decals = null)
         {
@@ -285,39 +251,9 @@ namespace APIPlugin
         private Color? mapEmissionColor;
         private List<GameObject> mapParticlesPrefabs;
 
-        public CustomRegion(string name, int? tier = null, List<CardInfo> terrainCards = null, List<ConsumableItemData> consumableItems = null, List<EncounterBlueprintData> encounters = null,
-                            List<Opponent.Type> bosses = null, List<CardInfo> likelyCards = null, List<Tribe> dominantTribes = null, PredefinedNodes predefinedNodes = null,
-                            EncounterBlueprintData bossPrepEncounter = null, StoryEventCondition bossPrepCondition = null, List<ScarceSceneryEntry> scarceScenery = null,
-                            List<FillerSceneryEntry> fillerScenery = null, PredefinedScenery predefinedScenery = null, string ambientLoopId = "", bool? silenceCabinAmbience = null,
-                            Color? boardLightColor = null, Color? cardsLightColor = null, bool? dustParticlesDisabled = null, bool? fogEnabled = null, VolumetricFogAndMist.VolumetricFogProfile fogProfile = null,
-                            float? fogAlpha = null, Texture mapAlbedo = null, Texture mapEmission = null, Color? mapEmissionColor = null, List<GameObject> mapParticlesPrefabs = null)
+        public CustomRegion(string name)
         {
             this.name = name;
-            this.tier = tier;
-            this.terrainCards = terrainCards;
-            this.consumableItems = consumableItems;
-            this.encounters = encounters;
-            this.bosses = bosses;
-            this.likelyCards = likelyCards;
-            this.dominantTribes = dominantTribes;
-            this.predefinedNodes = predefinedNodes;
-            this.bossPrepEncounter = bossPrepEncounter;
-            this.bossPrepCondition = bossPrepCondition;
-            this.scarceScenery = scarceScenery;
-            this.fillerScenery = fillerScenery;
-            this.predefinedScenery = predefinedScenery;
-            this.ambientLoopId = ambientLoopId;
-            this.silenceCabinAmbience = silenceCabinAmbience;
-            this.boardLightColor = boardLightColor;
-            this.cardsLightColor = cardsLightColor;
-            this.dustParticlesDisabled = dustParticlesDisabled;
-            this.fogEnabled = fogEnabled;
-            this.fogProfile = fogProfile;
-            this.fogAlpha = fogAlpha;
-            this.mapAlbedo = mapAlbedo;
-            this.mapEmission = mapEmission;
-            this.mapEmissionColor = mapEmissionColor;
-            this.mapParticlesPrefabs = mapParticlesPrefabs;
             CustomRegion.regions.Add(this);
         }
 
