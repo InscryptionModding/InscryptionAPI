@@ -1,6 +1,9 @@
 # Changelog
-## v1.7.1
+## v1.7.2
 - Fixed error when not adding any abilities.
+
+## v1.7.1
+- Fixed appearance behaviours not loading properly.
 
 ## v1.7
 - Added support for custom abilities!
