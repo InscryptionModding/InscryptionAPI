@@ -1,4 +1,11 @@
 # Changelog
+## v1.8.1
+- Fix pixelTex dimensions.
+
+## v1.8
+### Not compatible with v1.7.2
+- Changes to using TypeMapper.
+
 ## v1.7.2
 - Fixed error when not adding any abilities.
 

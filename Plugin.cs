@@ -15,7 +15,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.7.2.0";
+        private const string PluginVersion = "1.8.1.0";
 
         internal static ManualLogSource Log;
 
@@ -76,7 +76,7 @@ namespace APIPlugin
         public CardInfo AdjustCard(CardInfo card)
         {
             TypeMapper<CustomCard, CardInfo>.Convert(this, card);
-    
+
             if (this.tex is not null)
             {
                 tex.name = "portrait_" + name;
@@ -95,7 +95,7 @@ namespace APIPlugin
             {
                 pixelTex.name = "portrait_" + name;
                 pixelTex.filterMode = FilterMode.Point;
-                card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
+                card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 41.0f, 28.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
             }
             Plugin.Log.LogInfo($"Adjusted default card {name}!");
@@ -201,7 +201,7 @@ namespace APIPlugin
             {
                 pixelTex.name = "portrait_" + name;
                 pixelTex.filterMode = FilterMode.Point;
-                card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
+                card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 41.0f, 28.0f), new Vector2(0.5f, 0.5f));
                 card.pixelPortrait.name = "portrait_" + name;
             }
             if (animatedPortrait is not null)
