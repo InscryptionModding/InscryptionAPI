@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -56,21 +57,21 @@ namespace APIPlugin
 			{
 				tex.name = "portrait_" + name;
 				tex.filterMode = FilterMode.Point;
-				card.portraitTex = Sprite.Create(tex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
+				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
 			}
 			if (this.altTex is not null)
 			{
 				altTex.name = "portrait_" + name;
 				altTex.filterMode = FilterMode.Point;
-				card.alternatePortrait = Sprite.Create(altTex, new Rect(0.0f, 0.0f, 114.0f, 94.0f), new Vector2(0.5f, 0.5f));
+				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
 			}
 			if (this.pixelTex is not null)
 			{
 				pixelTex.name = "portrait_" + name;
 				pixelTex.filterMode = FilterMode.Point;
-				card.pixelPortrait = Sprite.Create(pixelTex, new Rect(0.0f, 0.0f, 41.0f, 28.0f), new Vector2(0.5f, 0.5f));
+				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = "portrait_" + name;
 			}
 			Plugin.Log.LogInfo($"Adjusted default card {name}!");

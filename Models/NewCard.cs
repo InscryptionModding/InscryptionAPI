@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -7,9 +8,6 @@ namespace APIPlugin
 	public static class NewCard
 	{
 		public static List<CardInfo> cards = new List<CardInfo>();
-		private static readonly Vector2 DefaultVector2 = new Vector2(0.5f, 0.5f);
-		private static readonly Rect DefaultCardArtRect = new Rect(0.0f, 0.0f, 114.0f, 94.0f);
-		private static readonly Rect DefaultCardPixelArtRect = new Rect(0.0f, 0.0f, 41.0f, 28.0f);
 
 		public static void Add(CardInfo card)
 		{
@@ -140,7 +138,7 @@ namespace APIPlugin
 				tex.name = newName;
 				tex.filterMode = FilterMode.Point;
 
-				card.portraitTex = Sprite.Create(tex, DefaultCardArtRect, DefaultVector2);
+				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = newName;
 			}
 
@@ -149,7 +147,7 @@ namespace APIPlugin
 				altTex.name = newName;
 				altTex.filterMode = FilterMode.Point;
 
-				card.alternatePortrait = Sprite.Create(altTex, DefaultCardArtRect, DefaultVector2);
+				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = newName;
 			}
 
@@ -158,7 +156,7 @@ namespace APIPlugin
 				pixelTex.name = newName;
 				pixelTex.filterMode = FilterMode.Point;
 
-				card.pixelPortrait = Sprite.Create(pixelTex, DefaultCardPixelArtRect, DefaultVector2);
+				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
 		}
