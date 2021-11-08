@@ -15,7 +15,7 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.8.1.0";
+        private const string PluginVersion = "1.8.2.0";
 
         internal static ManualLogSource Log;
 
@@ -178,6 +178,10 @@ namespace APIPlugin
             }
             card.flipPortraitForStrafe = flipPortraitForStrafe;
             card.onePerDeck = onePerDeck;
+            if (appearanceBehaviour is not null)
+            {
+                card.appearanceBehaviour = appearanceBehaviour;
+            }
             card.hideAttackAndHealth = hideAttackAndHealth;
             if (tex is not null)
             {

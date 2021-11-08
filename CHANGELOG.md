@@ -1,4 +1,7 @@
 # Changelog
+## v1.8.2
+- Fixed appearanceBehaviour (again).
+
 ## v1.8.1
 - Fix pixelTex dimensions.
 
