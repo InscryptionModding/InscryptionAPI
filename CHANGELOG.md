@@ -1,4 +1,7 @@
 # Changelog
+## v1.10.1
+- Fix for abilities which do not have identifier.
+
 ## v1.10
 - Added ability identifers.
 
