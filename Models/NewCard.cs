@@ -8,6 +8,7 @@ namespace APIPlugin
 	public static class NewCard
 	{
 		public static List<CardInfo> cards = new List<CardInfo>();
+		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
 
 		public static void Add(CardInfo card)
 		{
@@ -24,7 +25,7 @@ namespace APIPlugin
 			bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, EvolveParams evolveParams = null,
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null,
@@ -125,6 +126,19 @@ namespace APIPlugin
 			}
 
 			NewCard.cards.Add(card);
+
+			foreach (AbilityIdentifier id in abilityIds)
+			{
+				if (id.id != 0)
+				{
+					card.abilities.Add(id.id);
+					abilityIds.Remove(id);
+				}
+			}
+			if (abilityIds is not null)
+			{
+				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIds;
+			}
 			Plugin.Log.LogInfo($"Loaded custom card {name}!");
 		}
 

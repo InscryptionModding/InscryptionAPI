@@ -49,6 +49,40 @@ namespace APIPlugin
             harmony.PatchAll();
         }
 
+        private void Start()
+        {
+          foreach(var item in NewCard.abilityIds)
+          {
+            foreach (AbilityIdentifier id in item.Value)
+            {
+              if (id.id != 0)
+              {
+                NewCard.cards[item.Key].abilities.Add(id.id);
+                item.Value.Remove(id);
+              }
+              else
+              {
+                Plugin.Log.LogWarning($"Ability {id} not found for card {NewCard.cards[item.Key]}");
+              }
+            }
+          }
+          foreach(var item in CustomCard.abilityIds)
+          {
+            foreach (AbilityIdentifier id in item.Value)
+            {
+              if (id.id != 0)
+              {
+                CustomCard.cards[item.Key].abilities.Add(id.id);
+                item.Value.Remove(id);
+              }
+              else
+              {
+                Plugin.Log.LogWarning($"Ability {id} not found for card {CustomCard.cards[item.Key]}");
+              }
+            }
+          }
+        }
+
         private void OnEnable()
         {
             SceneManager.sceneLoaded += this.OnSceneLoaded;

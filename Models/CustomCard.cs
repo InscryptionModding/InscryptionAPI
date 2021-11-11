@@ -8,6 +8,7 @@ namespace APIPlugin
 	public class CustomCard
 	{
 		public static List<CustomCard> cards = new List<CustomCard>();
+		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -47,6 +48,24 @@ namespace APIPlugin
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
+		}
+
+		public CustomCard(string name, List<AbilityIdentifier> abilityIds)
+		{
+			this.name = name;
+			CustomCard.cards.Add(this);
+			foreach (AbilityIdentifier id in abilityIds)
+			{
+				if (id.id != 0)
+				{
+					this.abilities.Add(id.id);
+					abilityIds.Remove(id);
+				}
+			}
+			if (abilityIds is not null)
+			{
+				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIds;
+			}
 		}
 
 		public CardInfo AdjustCard(CardInfo card)
