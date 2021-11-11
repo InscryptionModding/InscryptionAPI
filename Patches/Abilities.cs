@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace API.Patches
 {
-	[HarmonyPatch(typeof(AbilitiesUtil), 
-		"LoadAbilityIcon", 
+	[HarmonyPatch(typeof(AbilitiesUtil),
+		"LoadAbilityIcon",
 		new Type[] { typeof(string), typeof(bool), typeof(bool) })]
 	public class AbilitiesUtil_LoadAbilityIcon
 	{

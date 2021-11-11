@@ -15,11 +15,11 @@ namespace API.Patches
 			{
 				return true;
 			}
-			
+
 			Predicate<Tuple<Ability, AbilityBehaviour>> checkAbilityExists = tuple =>
 				tuple.Item1 == ability || AbilityCanStackAndIsNotPassive(ability);
 
-			// return true if the ability is equal to pair item1 OR if ability cannot stack and is passive 
+			// return true if the ability is equal to pair item1 OR if ability cannot stack and is passive
 			if (!__instance.triggeredAbilities.Exists(checkAbilityExists))
 			{
 				NewAbility newAbility = NewAbility.abilities.Find((NewAbility x) => x.ability == ability);

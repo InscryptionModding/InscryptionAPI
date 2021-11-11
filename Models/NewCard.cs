@@ -53,7 +53,7 @@ namespace APIPlugin
 			card.onePerDeck = onePerDeck;
 			card.specialStatIcon = specialStatIcon;
 			card.temple = temple;
-			
+
 			if (tribes is not null)
 			{
 				card.tribes = tribes;
