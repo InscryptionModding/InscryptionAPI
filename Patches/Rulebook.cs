@@ -25,11 +25,11 @@ namespace API.Patches
 						PageRangeInfo pageRange = pageRangeInfo;
 						Func<int, bool> doAddPageFunc;
 						doAddPageFunc = (int index) =>
-							customAbilities.Contains(index) 
+							customAbilities.Contains(index)
 							&& AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
-						__result.AddRange(__instance.ConstructPages(pageRange, 
-							max + 1, 
-							min, 
+						__result.AddRange(__instance.ConstructPages(pageRange,
+							max + 1,
+							min,
 							doAddPageFunc,
 							new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillAbilityPage),
 							Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}")));

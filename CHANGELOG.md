@@ -1,4 +1,7 @@
 # Changelog
+## v1.9
+- Added config options for energy.
+
 ## v1.8.2
 - Fixed appearanceBehaviour (again).
 
