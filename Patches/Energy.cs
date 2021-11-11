@@ -13,6 +13,15 @@ using Mono.Cecil.Cil;
 
 namespace API.Patches
 {
+  [HarmonyPatch(typeof(ResourceDrone), "SetOnBoard")]
+  public class ResourceDrone_SetOnBoard
+  {
+    public static void Postfix(ResourceDrone __instance)
+    {
+      __instance.Gems.gameObject.SetActive(Plugin.configDroneMox.Value);
+    }
+  }
+
   [HarmonyPatch(typeof(Part1ResourcesManager), "CleanUp")]
   public class Part1ResourcesManager_CleanUp
   {
@@ -21,14 +30,23 @@ namespace API.Patches
       ResourcesManager baseResourceManager = (ResourcesManager) __instance;
       if (Plugin.configEnergy.Value)
       {
-        var baseTraverse = Traverse.Create(baseResourceManager);
-        baseTraverse.Property("PlayerEnergy").SetValue(0);
-        baseTraverse.Property("PlayerMaxEnergy").SetValue(0);
+      var baseTraverse = Traverse.Create(baseResourceManager);
+      baseTraverse.Property("PlayerEnergy").SetValue(0);
+      baseTraverse.Property("PlayerMaxEnergy").SetValue(0);
       }
       if ( Plugin.configDrone.Value)
       {
+  			Singleton<ResourceDrone>.Instance.Gems.SetAllGemsOn(false, false);
   			Singleton<ResourceDrone>.Instance.CloseAllCells(false);
   			Singleton<ResourceDrone>.Instance.SetOnBoard(false, false);
+        if (Plugin.configDroneMox.Value)
+        {
+          Singleton<ResourceDrone>.Instance.Gems.SetAllGemsOn(false, false);
+        }
+      }
+      if (Plugin.configMox.Value)
+      {
+        __instance.gems.Clear();
       }
     }
   }
@@ -41,6 +59,10 @@ namespace API.Patches
       if (__instance is Part1ResourcesManager && Plugin.configDrone.Value)
       {
         Singleton<ResourceDrone>.Instance.SetOnBoard(true, false);
+        if (Plugin.configDroneMox.Value)
+        {
+			    Singleton<ResourceDrone>.Instance.Gems.SetAllGemsOn(false, true);
+        }
       }
     }
   }
@@ -95,6 +117,43 @@ namespace API.Patches
   			}
       }
       yield return result;
+    }
+  }
+
+  [HarmonyPatch(typeof(ResourcesManager), "ShowAddGem")]
+  public class ResourcesManager_ShowAddGem
+  {
+    public static IEnumerator Postfix(IEnumerator result, GemType gem, ResourcesManager __instance)
+    {
+      if (__instance is Part1ResourcesManager && Plugin.configDroneMox.Value)
+      {
+        __instance.SetGemOnImmediate(gem, true);
+			  yield return new WaitForSeconds(0.05f);
+      }
+      yield return result;
+    }
+  }
+
+  [HarmonyPatch(typeof(ResourcesManager), "ShowLoseGem")]
+  public class ResourcesManager_ShowLoseGem
+  {
+    public static IEnumerator Postfix(IEnumerator result, GemType gem, ResourcesManager __instance)
+    {
+      if (__instance is Part1ResourcesManager && Plugin.configDroneMox.Value)
+      {
+        __instance.SetGemOnImmediate(gem, false);
+			  yield return new WaitForSeconds(0.05f);
+      }
+      yield return result;
+    }
+  }
+
+  [HarmonyPatch(typeof(ResourcesManager), "SetGemOnImmediate")]
+  public class ResourcesManager_SetGemOnImmediate
+  {
+    public static void Postfix(GemType gem, bool on)
+    {
+      Singleton<ResourceDrone>.Instance.Gems.SetGemOn(gem, on, false);
     }
   }
 

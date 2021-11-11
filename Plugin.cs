@@ -16,11 +16,13 @@ namespace APIPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.api";
         private const string PluginName = "API";
-        private const string PluginVersion = "1.9.0.0";
+        private const string PluginVersion = "1.9.1.0";
 
         internal static ManualLogSource Log;
         internal static ConfigEntry<bool> configEnergy;
         internal static ConfigEntry<bool> configDrone;
+        internal static ConfigEntry<bool> configMox;
+        internal static ConfigEntry<bool> configDroneMox;
 
         private void Awake()
         {
@@ -31,10 +33,18 @@ namespace APIPlugin
                                          "Energy Refresh",
                                          false,
                                          "Max energy increaces and energy refreshes at end of turn");
-           configDrone = Config.Bind("Energy",
-                                        "Energy Drone",
-                                        false,
-                                        "Drone is visible to display energy");
+            configDrone = Config.Bind("Energy",
+                                         "Energy Drone",
+                                         false,
+                                         "Drone is visible to display energy (requires Energy Refresh)");
+            configMox = Config.Bind("Mox",
+                                    "Mox Refresh",
+                                    false,
+                                    "Mox refreshes at end of battle");
+            configDroneMox = Config.Bind("Mox",
+                                         "Mox Drone",
+                                         false,
+                                         "Drone displays mox (requires Energy Drone and Mox Refresh)");
             Harmony harmony = new Harmony(PluginGuid);
             harmony.PatchAll();
         }
@@ -60,6 +70,8 @@ namespace APIPlugin
         {
           yield return new WaitForSeconds(1);
           Singleton<ResourceDrone>.Instance.Awake();
+          yield return new WaitForSeconds(1);
+          Singleton<ResourceDrone>.Instance.AttachGemsModule();
         }
       }
 }
