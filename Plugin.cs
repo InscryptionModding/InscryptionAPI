@@ -58,7 +58,6 @@ namespace APIPlugin
               if (id.id != 0)
               {
                 NewCard.cards[item.Key].abilities.Add(id.id);
-                item.Value.Remove(id);
               }
               else
               {
@@ -73,7 +72,6 @@ namespace APIPlugin
               if (id.id != 0)
               {
                 CustomCard.cards[item.Key].abilities.Add(id.id);
-                item.Value.Remove(id);
               }
               else
               {

@@ -54,12 +54,14 @@ namespace APIPlugin
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
-			foreach (AbilityIdentifier id in abilityIds)
+			if (abilityIds is not null)
 			{
-				if (id.id != 0)
+				foreach (AbilityIdentifier id in abilityIds)
 				{
-					this.abilities.Add(id.id);
-					abilityIds.Remove(id);
+					if (id.id != 0)
+					{
+						this.abilities.Add(id.id);
+					}
 				}
 			}
 			if (abilityIds is not null)
