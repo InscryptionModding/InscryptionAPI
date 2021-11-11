@@ -1,4 +1,7 @@
 # Changelog
+## v1.10
+- Added ability identifers.
+
 ## v1.9.1
 - Added support for mox.
 - Forced ability texture to point filter.
