@@ -12,8 +12,9 @@ namespace APIPlugin
 		public AbilityInfo info;
 		public Type abilityBehaviour;
 		public Texture tex;
+		public AbilityIdentifier id;
 
-		public NewAbility(AbilityInfo info, Type abilityBehaviour, Texture tex)
+		public NewAbility(AbilityInfo info, Type abilityBehaviour, Texture tex, AbilityIdentifier id = null)
 		{
 			this.ability = (Ability) 100 + NewAbility.abilities.Count;
 			info.ability = this.ability;
@@ -21,7 +22,9 @@ namespace APIPlugin
 			this.abilityBehaviour = abilityBehaviour;
 			tex.filterMode = FilterMode.Point;
 			this.tex = tex;
+			this.id = id;
 			NewAbility.abilities.Add(this);
+			id.id = ability;
 			Plugin.Log.LogInfo($"Loaded custom ability {info.rulebookName}!");
 		}
 	}
