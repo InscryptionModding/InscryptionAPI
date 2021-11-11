@@ -24,7 +24,9 @@ namespace APIPlugin
 			this.tex = tex;
 			this.id = id;
 			NewAbility.abilities.Add(this);
-			id.id = ability;
+			if (id != null){
+				id.id = ability;
+			}
 			Plugin.Log.LogInfo($"Loaded custom ability {info.rulebookName}!");
 		}
 	}
