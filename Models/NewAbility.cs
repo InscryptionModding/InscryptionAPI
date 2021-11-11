@@ -19,6 +19,7 @@ namespace APIPlugin
 			info.ability = this.ability;
 			this.info = info;
 			this.abilityBehaviour = abilityBehaviour;
+			tex.filterMode = FilterMode.Point;
 			this.tex = tex;
 			NewAbility.abilities.Add(this);
 			Plugin.Log.LogInfo($"Loaded custom ability {info.rulebookName}!");

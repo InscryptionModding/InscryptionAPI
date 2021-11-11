@@ -1,4 +1,8 @@
 # Changelog
+## v1.9.1
+- Added support for mox.
+- Forced ability texture to point filter.
+
 ## v1.9
 - Added config options for energy.
 

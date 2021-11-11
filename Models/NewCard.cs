@@ -33,7 +33,7 @@ namespace APIPlugin
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
 
-			// names / descryptions
+			// names / descriptions
 			card.defaultEvolutionName = defaultEvolutionName;
 			card.displayedName = displayedName;
 			card.name = name;
