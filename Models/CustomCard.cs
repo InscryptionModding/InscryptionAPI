@@ -51,7 +51,7 @@ namespace APIPlugin
 		public IceCubeIdentifier iceCubeId;
 		public TailIdentifier tailId;
 
-		public CustomCard(string name)
+		public CustomCard(string name, List<AbilityIdentifier> abilityId=null, EvolveIdentifier evolveId=null, IceCubeIdentifier iceCubeId=null, TailIdentifier tailId=null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
@@ -60,7 +60,7 @@ namespace APIPlugin
 			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
 			if (this.abilityId is not null)
 			{
-				foreach (AbilityIdentifier id in this.abilityId)
+				foreach (AbilityIdentifier id in abilityId)
 				{
 					if (id.id != 0)
 					{
@@ -72,27 +72,27 @@ namespace APIPlugin
 					this.abilityId.Remove(id);
 				}
 			}
-			if (this.abilityId is not null && this.abilityId.Count > 0)
+			if (abilityId is not null && this.abilityId.Count > 0)
 			{
-				CustomCard.abilityIds[CustomCard.cards.Count - 1] = this.abilityId;
+				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityId;
 			}
 
 			// Handle EvolveIdentifier
-			if (this.evolveId is not null)
+			if (evolveId is not null)
 			{
-				CustomCard.evolveIds[CustomCard.cards.Count - 1] = this.evolveId;
+				CustomCard.evolveIds[CustomCard.cards.Count - 1] = evolveId;
 			}
 
 			// Handle IceCubeIdentifier
-			if (this.iceCubeId is not null)
+			if (iceCubeId is not null)
 			{
-				CustomCard.iceCubeIds[CustomCard.cards.Count - 1] = this.iceCubeId;
+				CustomCard.iceCubeIds[CustomCard.cards.Count - 1] = iceCubeId;
 			}
 
 			// Handle TailIdentifier
-			if (this.tailId is not null)
+			if (tailId is not null)
 			{
-				CustomCard.tailIds[CustomCard.cards.Count - 1] = this.tailId;
+				CustomCard.tailIds[CustomCard.cards.Count - 1] = tailId;
 			}
 		}
 
