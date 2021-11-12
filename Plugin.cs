@@ -136,11 +136,11 @@ namespace APIPlugin
         EvolveIdentifier id = item.Value;
         if (id.Evolution != null)
         {
-          NewCard.cards[item.Key].evolveParams = id.Evolution;
+          CustomCard.cards[item.Key].evolveParams = id.Evolution;
         }
         else
         {
-          Plugin.Log.LogWarning($"Evolution card {id} not found for card {NewCard.cards[item.Key]}");
+          Plugin.Log.LogWarning($"Evolution card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }
@@ -165,11 +165,11 @@ namespace APIPlugin
         IceCubeIdentifier id = item.Value;
         if (id.IceCube != null)
         {
-          NewCard.cards[item.Key].iceCubeParams = id.IceCube;
+          CustomCard.cards[item.Key].iceCubeParams = id.IceCube;
         }
         else
         {
-          Plugin.Log.LogWarning($"IceCube card {id} not found for card {NewCard.cards[item.Key]}");
+          Plugin.Log.LogWarning($"IceCube card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }
@@ -194,11 +194,11 @@ namespace APIPlugin
         TailIdentifier id = item.Value;
         if (id.Tail != null)
         {
-          NewCard.cards[item.Key].tailParams = id.Tail;
+          CustomCard.cards[item.Key].tailParams = id.Tail;
         }
         else
         {
-          Plugin.Log.LogWarning($"Tail card {id} not found for card {NewCard.cards[item.Key]}");
+          Plugin.Log.LogWarning($"Tail card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }
