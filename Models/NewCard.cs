@@ -9,6 +9,9 @@ namespace APIPlugin
 	{
 		public static List<CardInfo> cards = new List<CardInfo>();
 		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
+		public static Dictionary<int,EvolveIdentifier> evolveIds = new Dictionary<int,EvolveIdentifier>();
+		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
+		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
 
 		public static void Add(CardInfo card)
 		{
@@ -30,7 +33,8 @@ namespace APIPlugin
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			GameObject animatedPortrait = null, List<Texture> decals = null)
+			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
 
@@ -127,6 +131,9 @@ namespace APIPlugin
 
 			NewCard.cards.Add(card);
 
+			// Handle Identifiers:
+			// Handle AbilityIdentifier
+			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
 			if (abilityIds is not null)
 			{
 				foreach (AbilityIdentifier id in abilityIds)
@@ -136,11 +143,34 @@ namespace APIPlugin
 						card.abilities.Add(id.id);
 					}
 				}
+				foreach (AbilityIdentifier id in toRemove)
+				{
+					abilityIds.Remove(id);
+				}
 			}
-			if (abilityIds is not null)
+			if (abilityIds is not null && abilityIds.Count > 0)
 			{
 				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIds;
 			}
+
+			// Handle EvolveIdentifier
+			if (evolveId is not null)
+			{
+				NewCard.evolveIds[NewCard.cards.Count - 1] = evolveId;
+			}
+
+			// Handle IceCubeIdentifier
+			if (iceCubeId is not null)
+			{
+				NewCard.iceCubeIds[NewCard.cards.Count - 1] = iceCubeId;
+			}
+
+			// Handle TailIdentifier
+			if (tailId is not null)
+			{
+				NewCard.tailIds[NewCard.cards.Count - 1] = tailId;
+			}
+
 			Plugin.Log.LogInfo($"Loaded custom card {name}!");
 		}
 
