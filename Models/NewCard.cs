@@ -13,9 +13,11 @@ namespace APIPlugin
 		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
 		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
 
-		public static void Add(CardInfo card)
+		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIds = null, EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			NewCard.cards.Add(card);
+			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
 			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
 		}
 
@@ -131,7 +133,14 @@ namespace APIPlugin
 
 			NewCard.cards.Add(card);
 
-			// Handle Identifiers:
+			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
+
+			Plugin.Log.LogInfo($"Loaded custom card {name}!");
+		}
+
+		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIds, EvolveIdentifier evolveId,
+		IceCubeIdentifier iceCubeId, TailIdentifier tailId)
+		{
 			// Handle AbilityIdentifier
 			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
 			if (abilityIds is not null)
@@ -170,8 +179,6 @@ namespace APIPlugin
 			{
 				NewCard.tailIds[NewCard.cards.Count - 1] = tailId;
 			}
-
-			Plugin.Log.LogInfo($"Loaded custom card {name}!");
 		}
 
 		private static void DetermineAndSetCardArt(

@@ -7,7 +7,6 @@ using APIPlugin;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
 

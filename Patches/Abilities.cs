@@ -5,12 +5,9 @@ using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
 
-
 namespace API.Patches
 {
-	[HarmonyPatch(typeof(AbilitiesUtil),
-		"LoadAbilityIcon",
-		new Type[] { typeof(string), typeof(bool), typeof(bool) })]
+	[HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon", new Type[] { typeof(string), typeof(bool), typeof(bool) })]
 	public class AbilitiesUtil_LoadAbilityIcon
 	{
 		public static bool Prefix(string abilityName, CardTriggerHandler __instance, ref Texture __result)
