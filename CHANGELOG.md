@@ -1,9 +1,12 @@
 # Changelog
+## v1.11
+- Added support for more identifiers
+
 ## v1.10.1
 - Fix for abilities which do not have identifier.
 
 ## v1.10
-- Added ability identifers.
+- Added ability identifiers.
 
 ## v1.9.1
 - Added support for mox.

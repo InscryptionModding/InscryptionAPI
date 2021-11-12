@@ -16,7 +16,7 @@ namespace APIPlugin
   {
     private const string PluginGuid = "cyantist.inscryption.api";
     private const string PluginName = "API";
-    private const string PluginVersion = "1.10.1.0";
+    private const string PluginVersion = "1.11.0.0";
 
     internal static ManualLogSource Log;
     internal static ConfigEntry<bool> configEnergy;
