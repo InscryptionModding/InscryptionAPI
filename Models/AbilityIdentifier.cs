@@ -7,7 +7,7 @@ namespace APIPlugin
 {
 	public class AbilityIdentifier
 	{
-    private static List<AbilityIdentifier> ids = new List<AbilityIdentifier>();
+    public static List<AbilityIdentifier> ids = new List<AbilityIdentifier>();
 		private string guid;
     private string name;
     public Ability id;
