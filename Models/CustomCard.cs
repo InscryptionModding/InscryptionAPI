@@ -9,6 +9,9 @@ namespace APIPlugin
 	{
 		public static List<CustomCard> cards = new List<CustomCard>();
 		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
+		public static Dictionary<int,EvolveIdentifier> evolveIds = new Dictionary<int,EvolveIdentifier>();
+		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
+		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -43,30 +46,53 @@ namespace APIPlugin
 		public Texture2D pixelTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
+		public List<AbilityIdentifier> abilityId;
+		public EvolveIdentifier evolveId;
+		public IceCubeIdentifier iceCubeId;
+		public TailIdentifier tailId;
 
-		public CustomCard(string name)
+		public CustomCard(string name, List<AbilityIdentifier> abilityId=null, EvolveIdentifier evolveId=null, IceCubeIdentifier iceCubeId=null, TailIdentifier tailId=null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
-		}
 
-		public CustomCard(string name, List<AbilityIdentifier> abilityIds)
-		{
-			this.name = name;
-			CustomCard.cards.Add(this);
-			if (abilityIds is not null)
+			// Handle AbilityIdentifier
+			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
+			if (this.abilityId is not null)
 			{
-				foreach (AbilityIdentifier id in abilityIds)
+				foreach (AbilityIdentifier id in abilityId)
 				{
 					if (id.id != 0)
 					{
 						this.abilities.Add(id.id);
 					}
 				}
+				foreach (AbilityIdentifier id in toRemove)
+				{
+					this.abilityId.Remove(id);
+				}
 			}
-			if (abilityIds is not null)
+			if (abilityId is not null && this.abilityId.Count > 0)
 			{
-				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIds;
+				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityId;
+			}
+
+			// Handle EvolveIdentifier
+			if (evolveId is not null)
+			{
+				CustomCard.evolveIds[CustomCard.cards.Count - 1] = evolveId;
+			}
+
+			// Handle IceCubeIdentifier
+			if (iceCubeId is not null)
+			{
+				CustomCard.iceCubeIds[CustomCard.cards.Count - 1] = iceCubeId;
+			}
+
+			// Handle TailIdentifier
+			if (tailId is not null)
+			{
+				CustomCard.tailIds[CustomCard.cards.Count - 1] = tailId;
 			}
 		}
 

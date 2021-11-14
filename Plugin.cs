@@ -1,109 +1,57 @@
-using System.Collections;
 using BepInEx;
-using BepInEx.Configuration;
 using BepInEx.Logging;
-using DiskCardGame;
+using BepInEx.Configuration;
 using HarmonyLib;
-using UnityEngine;
+using DiskCardGame;
 using UnityEngine.SceneManagement;
-
 #pragma warning disable 169
 
 namespace APIPlugin
 {
-    [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-    public class Plugin : BaseUnityPlugin
+  [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+  public partial class Plugin : BaseUnityPlugin
+  {
+    private const string PluginGuid = "cyantist.inscryption.api";
+    private const string PluginName = "API";
+    private const string PluginVersion = "1.11.0.0";
+
+    internal static ManualLogSource Log;
+    internal static ConfigEntry<bool> configEnergy;
+    internal static ConfigEntry<bool> configDrone;
+    internal static ConfigEntry<bool> configMox;
+    internal static ConfigEntry<bool> configDroneMox;
+
+    private void Awake()
     {
-        private const string PluginGuid = "cyantist.inscryption.api";
-        private const string PluginName = "API";
-        private const string PluginVersion = "1.10.1.0";
+      Logger.LogInfo($"Loaded {PluginName}!");
+      Plugin.Log = base.Logger;
 
-        internal static ManualLogSource Log;
-        internal static ConfigEntry<bool> configEnergy;
-        internal static ConfigEntry<bool> configDrone;
-        internal static ConfigEntry<bool> configMox;
-        internal static ConfigEntry<bool> configDroneMox;
+      configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increaces and energy refreshes at end of turn");
+      configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
+      configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
+      configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
 
-        private void Awake()
-        {
-            Logger.LogInfo($"Loaded {PluginName}!");
-            Plugin.Log = base.Logger;
+      Harmony harmony = new Harmony(PluginGuid);
+      harmony.PatchAll();
+    }
 
-            configEnergy = Config.Bind("Energy",
-                                         "Energy Refresh",
-                                         false,
-                                         "Max energy increases and energy refreshes at end of turn");
-            configDrone = Config.Bind("Energy",
-                                         "Energy Drone",
-                                         false,
-                                         "Drone is visible to display energy (requires Energy Refresh)");
-            configMox = Config.Bind("Mox",
-                                    "Mox Refresh",
-                                    false,
-                                    "Mox refreshes at end of battle");
-            configDroneMox = Config.Bind("Mox",
-                                         "Mox Drone",
-                                         false,
-                                         "Drone displays mox (requires Energy Drone and Mox Refresh)");
-            Harmony harmony = new Harmony(PluginGuid);
-            harmony.PatchAll();
-        }
+    private void Start()
+    {
+      SetAbilityIdentifiers();
+      SetEvolveIdentifiers();
+      SetIceCubeIdentifiers();
+      SetTailIdentifiers();
+      ScriptableObjectLoader<CardInfo>.allData = null;
+    }
 
-        private void Start()
-        {
-          foreach(var item in NewCard.abilityIds)
-          {
-            foreach (AbilityIdentifier id in item.Value)
-            {
-              if (id.id != 0)
-              {
-                NewCard.cards[item.Key].abilities.Add(id.id);
-              }
-              else
-              {
-                Plugin.Log.LogWarning($"Ability {id} not found for card {NewCard.cards[item.Key]}");
-              }
-            }
-          }
-          foreach(var item in CustomCard.abilityIds)
-          {
-            foreach (AbilityIdentifier id in item.Value)
-            {
-              if (id.id != 0)
-              {
-                CustomCard.cards[item.Key].abilities.Add(id.id);
-              }
-              else
-              {
-                Plugin.Log.LogWarning($"Ability {id} not found for card {CustomCard.cards[item.Key]}");
-              }
-            }
-          }
-        }
+    private void OnEnable()
+    {
+      SceneManager.sceneLoaded += this.OnSceneLoaded;
+    }
 
-        private void OnEnable()
-        {
-            SceneManager.sceneLoaded += this.OnSceneLoaded;
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-          if (scene.name == "Part1_Cabin")
-          {
-            UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
-            if(Plugin.configDrone.Value)
-            {
-              StartCoroutine(AwakeDrone());
-            }
-          }
-        }
-
-        private IEnumerator AwakeDrone()
-        {
-          yield return new WaitForSeconds(1);
-          Singleton<ResourceDrone>.Instance.Awake();
-          yield return new WaitForSeconds(1);
-          Singleton<ResourceDrone>.Instance.AttachGemsModule();
-        }
-      }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+      EnableEnergy(scene.name);
+    }
+  }
 }
