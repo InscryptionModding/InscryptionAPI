@@ -7,29 +7,28 @@ namespace APIPlugin
 {
 	public static class NewCard
 	{
-		public static List<CardInfo> cards = new List<CardInfo>();
-		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
+		public static List<CardInfo> cards = new();
 
-		public static void Add(CardInfo card)
-		{
-			NewCard.cards.Add(card);
-			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
-		}
-
-		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
-		// TODO Change parameter order, and function setter call order to make more sense
-		// TODO Rename parameters to be more user friendly
-		public static void Add(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity,
-			CardTemple temple, string displayedName, int baseAttack, int baseHealth,
+		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+		
+		public static CardInfo CreateCard(
+			string name, string displayedName, int baseAttack, int baseHealth,
+			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
 			string description = null,
-			bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0,
-			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
-			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
+			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
+			List<Trait> traits = null,
+			List<Tribe> tribes = null,
+			List<GemType> gemsCost = null,
+			bool hideAttackAndHealth = false,
+			List<Ability> abilities = null, List<SpecialTriggeredAbility> specialAbilities = null,
+			SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
+			EvolveParams evolveParams = null,
+			List<AbilityIdentifier> abilityIds = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
-			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null,
-			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
+			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTexture = null,
+			Texture2D altTexture = null, Texture2D pixelTex = null,
+			Texture titleGraphic = null,
 			GameObject animatedPortrait = null, List<Texture> decals = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
@@ -96,7 +95,7 @@ namespace APIPlugin
 			}
 
 			// costs
-			card.cost = cost;
+			card.cost = bloodCost;
 			card.bonesCost = bonesCost;
 			card.energyCost = energyCost;
 
@@ -106,7 +105,7 @@ namespace APIPlugin
 			}
 
 			// textures
-			DetermineAndSetCardArt(name, card, tex, altTex, pixelTex);
+			DetermineAndSetCardArt(name, card, defaultTexture, altTexture, pixelTex);
 
 			if (animatedPortrait is not null)
 			{
@@ -125,7 +124,6 @@ namespace APIPlugin
 				card.titleGraphic = titleGraphic;
 			}
 
-			NewCard.cards.Add(card);
 
 			if (abilityIds is not null)
 			{
@@ -137,10 +135,51 @@ namespace APIPlugin
 					}
 				}
 			}
+
 			if (abilityIds is not null)
 			{
 				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIds;
 			}
+
+			return card;
+		}
+		
+		public static void AddToPool(CardInfo card)
+		{
+			NewCard.cards.Add(card);
+			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
+		}
+
+		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
+		// TODO Change parameter order, and function setter call order to make more sense
+		// TODO Rename parameters to be more user friendly
+		public static void AddToPool(string name, string displayedName, int baseAttack, int baseHealth,
+			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
+			string description = null,
+			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
+			List<Trait> traits = null,
+			List<Tribe> tribes = null,
+			List<GemType> gemsCost = null,
+			bool hideAttackAndHealth = false,
+			List<Ability> abilities = null, List<SpecialTriggeredAbility> specialAbilities = null,
+			SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
+			EvolveParams evolveParams = null,
+			List<AbilityIdentifier> abilityIds = null,
+			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
+			bool flipPortraitForStrafe = false, bool onePerDeck = false,
+			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTexture = null,
+			Texture2D altTexture = null, Texture2D pixelTex = null,
+			Texture titleGraphic = null,
+			GameObject animatedPortrait = null, List<Texture> decals = null)
+		{
+			NewCard.cards.Add(CreateCard(
+				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, 
+				description, bloodCost, bonesCost, energyCost, traits, tribes, gemsCost, hideAttackAndHealth, 
+				abilities, specialAbilities, specialStatIcon, evolveParams, abilityIds, defaultEvolutionName, 
+				tailParams, iceCubeParams, flipPortraitForStrafe, onePerDeck, appearanceBehaviour, 
+				defaultTexture, altTexture, pixelTex, titleGraphic, animatedPortrait, decals)
+			);
+
 			Plugin.Log.LogInfo($"Loaded custom card {name}!");
 		}
 
@@ -172,7 +211,8 @@ namespace APIPlugin
 				pixelTex.name = newName;
 				pixelTex.filterMode = FilterMode.Point;
 
-				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
+				card.pixelPortrait =
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
 		}
