@@ -13,27 +13,16 @@ namespace APIPlugin
 		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
 		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
 
-		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIds = null, EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
-		{
-			NewCard.cards.Add(card);
-			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
-			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
-		}
-
-		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
-		// TODO Change parameter order, and function setter call order to make more sense
-		// TODO Rename parameters to be more user friendly
-		public static void Add(string name, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity,
-			CardTemple temple, string displayedName, int baseAttack, int baseHealth,
-			string description = null,
-			bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0,
+		public static CardInfo CreateCard(string name, string displayedName, int baseAttack, int baseHealth,
+			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
+			string description = null, bool hideAttackAndHealth = false, 
+			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
 			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
-			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null,
+			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
 			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
 			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
@@ -102,7 +91,7 @@ namespace APIPlugin
 			}
 
 			// costs
-			card.cost = cost;
+			card.cost = bloodCost;
 			card.bonesCost = bonesCost;
 			card.energyCost = energyCost;
 
@@ -112,7 +101,7 @@ namespace APIPlugin
 			}
 
 			// textures
-			DetermineAndSetCardArt(name, card, tex, altTex, pixelTex);
+			DetermineAndSetCardArt(name, card, defaultTex, altTex, pixelTex);
 
 			if (animatedPortrait is not null)
 			{
@@ -130,12 +119,45 @@ namespace APIPlugin
 			{
 				card.titleGraphic = titleGraphic;
 			}
-
+			
+			return card;
+		}
+		
+		public static void AddToPool(CardInfo card, List<AbilityIdentifier> abilityIds = null, EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+		{
 			NewCard.cards.Add(card);
-
 			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
+			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
+		}
 
-			Plugin.Log.LogInfo($"Loaded custom card {name}!");
+		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
+		// TODO Change parameter order, and function setter call order to make more sense
+		// TODO Rename parameters to be more user friendly
+		public static void AddToPool(string name, string displayedName, int baseAttack, int baseHealth,
+			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
+			string description = null, bool hideAttackAndHealth = false, 
+			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
+			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
+			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
+			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
+			bool flipPortraitForStrafe = false, bool onePerDeck = false,
+			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
+			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
+			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+		{
+			var createdCard = CreateCard(
+				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, description, 
+				hideAttackAndHealth, bloodCost, bonesCost, energyCost, gemsCost, specialStatIcon, tribes, traits, 
+				specialAbilities, abilities, abilityIds, evolveParams, defaultEvolutionName, tailParams, iceCubeParams,
+				flipPortraitForStrafe, onePerDeck, appearanceBehaviour, 
+				defaultTex, altTex, titleGraphic, pixelTex, animatedPortrait, decals, 
+				evolveId, iceCubeId, tailId
+			);
+
+			NewCard.AddToPool(createdCard);
 		}
 
 		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIds, EvolveIdentifier evolveId,
@@ -183,15 +205,15 @@ namespace APIPlugin
 
 		private static void DetermineAndSetCardArt(
 			string name, CardInfo card,
-			Texture2D tex, Texture2D altTex, Texture2D pixelTex)
+			Texture2D defaultTex, Texture2D altTex, Texture2D pixelTex)
 		{
 			var newName = "portrait_" + name;
-			if (tex is not null)
+			if (defaultTex is not null)
 			{
-				tex.name = newName;
-				tex.filterMode = FilterMode.Point;
+				defaultTex.name = newName;
+				defaultTex.filterMode = FilterMode.Point;
 
-				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+				card.portraitTex = Sprite.Create(defaultTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = newName;
 			}
 
