@@ -15,11 +15,11 @@ namespace APIPlugin
 			string name, string displayedName, int baseAttack, int baseHealth)
 		{
 			return CreateCard(
-				name, displayedName, baseAttack, baseHealth, 
+				name, displayedName, baseAttack, baseHealth,
 				CardUtils.getNormalCardMetadata, CardComplexity.Simple, CardTemple.Nature
 			);
 		}
-		
+
 		public static CardInfo CreateCard(
 			string name, string displayedName, int baseAttack, int baseHealth,
 			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
@@ -114,25 +114,10 @@ namespace APIPlugin
 			}
 
 			// textures
-			DetermineAndSetCardArt(name, card, defaultTexture, altTexture, pixelTex);
-
-			if (animatedPortrait is not null)
-			{
-				// TODO Provide a function to create animated card textures
-				card.animatedPortrait = animatedPortrait;
-			}
-
-			if (decals is not null)
-			{
-				// TODO Access and provide default decals
-				card.decals = decals;
-			}
-
-			if (titleGraphic is not null)
-			{
-				card.titleGraphic = titleGraphic;
-			}
-
+			DetermineAndSetCardArt(
+				name, card, defaultTexture, altTexture, pixelTex,
+				animatedPortrait, decals, titleGraphic
+			);
 
 			if (abilityIds is not null)
 			{
@@ -152,7 +137,7 @@ namespace APIPlugin
 
 			return card;
 		}
-		
+
 		public static void AddToPool(CardInfo card)
 		{
 			NewCard.cards.Add(card);
@@ -182,10 +167,10 @@ namespace APIPlugin
 			GameObject animatedPortrait = null, List<Texture> decals = null)
 		{
 			var createdCard = CreateCard(
-				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, 
-				description, bloodCost, bonesCost, energyCost, traits, tribes, gemsCost, hideAttackAndHealth, 
-				abilities, specialAbilities, specialStatIcon, evolveParams, abilityIds, defaultEvolutionName, 
-				tailParams, iceCubeParams, flipPortraitForStrafe, onePerDeck, appearanceBehaviour, 
+				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple,
+				description, bloodCost, bonesCost, energyCost, traits, tribes, gemsCost, hideAttackAndHealth,
+				abilities, specialAbilities, specialStatIcon, evolveParams, abilityIds, defaultEvolutionName,
+				tailParams, iceCubeParams, flipPortraitForStrafe, onePerDeck, appearanceBehaviour,
 				defaultTexture, altTexture, pixelTex, titleGraphic, animatedPortrait, decals
 			);
 
@@ -194,7 +179,8 @@ namespace APIPlugin
 
 		private static void DetermineAndSetCardArt(
 			string name, CardInfo card,
-			Texture2D tex, Texture2D altTex, Texture2D pixelTex)
+			Texture2D tex, Texture2D altTex, Texture2D pixelTex,
+			GameObject animatedPortrait, List<Texture> decals, Texture titleGraphic)
 		{
 			var newName = "portrait_" + name;
 			if (tex is not null)
@@ -224,6 +210,14 @@ namespace APIPlugin
 					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
+
+			// TODO Provide a function to create animated card textures
+			card.animatedPortrait ??= animatedPortrait;
+
+			// TODO Access and provide default decals
+			card.decals ??= decals;
+
+			card.titleGraphic ??= titleGraphic;
 		}
 	}
 }
