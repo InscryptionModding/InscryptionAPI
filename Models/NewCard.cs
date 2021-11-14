@@ -181,15 +181,15 @@ namespace APIPlugin
 			Texture titleGraphic = null,
 			GameObject animatedPortrait = null, List<Texture> decals = null)
 		{
-			NewCard.cards.Add(CreateCard(
+			var createdCard = CreateCard(
 				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, 
 				description, bloodCost, bonesCost, energyCost, traits, tribes, gemsCost, hideAttackAndHealth, 
 				abilities, specialAbilities, specialStatIcon, evolveParams, abilityIds, defaultEvolutionName, 
 				tailParams, iceCubeParams, flipPortraitForStrafe, onePerDeck, appearanceBehaviour, 
-				defaultTexture, altTexture, pixelTex, titleGraphic, animatedPortrait, decals)
+				defaultTexture, altTexture, pixelTex, titleGraphic, animatedPortrait, decals
 			);
 
-			Plugin.Log.LogInfo($"Loaded custom card {name}!");
+			NewCard.AddToPool(createdCard);
 		}
 
 		private static void DetermineAndSetCardArt(
