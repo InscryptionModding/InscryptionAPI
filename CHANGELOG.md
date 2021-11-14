@@ -1,4 +1,17 @@
 # Changelog
+## v1.10.1
+- Fix for abilities which do not have identifier.
+
+## v1.10
+- Added ability identifers.
+
+## v1.9.1
+- Added support for mox.
+- Forced ability texture to point filter.
+
+## v1.9
+- Added config options for energy.
+
 ## v1.8.2
 - Fixed appearanceBehaviour (again).
 

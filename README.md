@@ -7,13 +7,15 @@ It can currently:
 - Create custom cards and inject them into the card pool
 - Modify existing cards in the card pool
 - Create custom abilities and inject them into the ability pool
+- Reference abilities between mods
 - Create custom regions
+- Enable energy
 
 ## Installation (automated)
 This is the recommended way to install the API on the game.
 
 - Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://timberborn.thunderstore.io/package/ebkr/r2modman/)
-- Click Install with Mod Manager button on top of the [page](https://inscryption.thunderstore.io/package/BepInEx/BepInExPack_Inscryption/)
+- Click Install with Mod Manager button on top of the [page](https://inscryption.thunderstore.io/package/API_dev/API/)
 - Run the game via the mod manager
 
 ## Installation (manual)
