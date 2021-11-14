@@ -197,7 +197,7 @@ namespace CardLoaderPlugin.lib
 			);
 		}
 
-		public static Texture2D getImageAsTexture(string pathCardArt)
+		public static Texture2D getAndloadImageAsTexture(string pathCardArt)
 		{
 			Texture2D texture = new Texture2D(2, 2);
 			byte[] imgBytes = File.ReadAllBytes(pathCardArt);
