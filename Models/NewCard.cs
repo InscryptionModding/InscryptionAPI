@@ -10,6 +10,15 @@ namespace APIPlugin
 		public static List<CardInfo> cards = new();
 
 		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+
+		public static CardInfo CreateCardWithDefaultSettings(
+			string name, string displayedName, int baseAttack, int baseHealth)
+		{
+			return CreateCard(
+				name, displayedName, baseAttack, baseHealth, 
+				CardUtils.getNormalCardMetadata, CardComplexity.Simple, CardTemple.Nature
+			);
+		}
 		
 		public static CardInfo CreateCard(
 			string name, string displayedName, int baseAttack, int baseHealth,
