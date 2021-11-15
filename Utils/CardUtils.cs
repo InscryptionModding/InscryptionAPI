@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using APIPlugin;
 using BepInEx;
 using DiskCardGame;
 using UnityEngine;
 
-namespace CardLoaderPlugin.lib
+namespace APIPlugin
 {
 	public static class CardUtils
 	{
@@ -84,7 +83,7 @@ namespace CardLoaderPlugin.lib
 		public static void PrintCardInfo(CardInfo info)
 		{
 			Plugin.Log.LogInfo($"===============");
-			Plugin.Log.LogInfo($"\nName [{info.name}]");
+			Plugin.Log.LogInfo($"Name [{info.name}]");
 			Plugin.Log.LogInfo($"Displayed Name [{info.displayedName}]");
 			Plugin.Log.LogInfo($"Description [{info.description}]");
 			Plugin.Log.LogInfo($"Attack [{info.baseAttack}] Health [{info.baseHealth}]");
@@ -115,6 +114,17 @@ namespace CardLoaderPlugin.lib
 			PrintCardModInfoList(info.mods);
 
 			Plugin.Log.LogInfo($"===============\n");
+		}
+
+		public static string cleanCardName(string name)
+		{
+			if (name.StartsWith("Card "))
+			{
+				string[] nameSplit = name.Split('('); // [Card (, name_of_card)]
+				return nameSplit[nameSplit.Length - 1].Replace(")", "");	
+			}
+
+			return name;
 		}
 		
 		public static List<CardMetaCategory> getNormalCardMetadata = new()
