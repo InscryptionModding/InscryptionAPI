@@ -102,7 +102,8 @@ namespace APIPlugin
 				Plugin.Log.LogInfo($"IceCubeParams = [{info.iceCubeParams.creatureWithin.name}]");
 			Plugin.Log.LogInfo($"SpecialStatIcon [{info.specialStatIcon}]");
 			Plugin.Log.LogInfo($"One per deck? [{info.onePerDeck}]");
-			Plugin.Log.LogInfo($"Power Level [{info.PowerLevel}]");
+			// TODO: possible to get an NRE if the power level is not set?
+			// Plugin.Log.LogInfo($"Power Level [{info.PowerLevel}]");
 			PrintList("Abilities", info.Abilities);
 			PrintList("Special Abilities", info.SpecialAbilities);
 			PrintList("Appearance Behavior", info.appearanceBehaviour);
