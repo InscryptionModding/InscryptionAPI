@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -58,20 +57,6 @@ namespace APIPlugin
 
 			// Handle AbilityIdentifier
 			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
-			if (this.abilityId is not null)
-			{
-				foreach (AbilityIdentifier id in abilityId)
-				{
-					if (id.id != 0)
-					{
-						this.abilities.Add(id.id);
-					}
-				}
-				foreach (AbilityIdentifier id in toRemove)
-				{
-					this.abilityId.Remove(id);
-				}
-			}
 			if (abilityId is not null && this.abilityId.Count > 0)
 			{
 				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityId;

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -8,24 +7,24 @@ namespace APIPlugin
 	public static class NewCard
 	{
 		public static List<CardInfo> cards = new List<CardInfo>();
-		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
-		public static Dictionary<int,EvolveIdentifier> evolveIds = new Dictionary<int,EvolveIdentifier>();
-		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
-		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
+
+		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int, TailIdentifier> tailIds = new();
 
 		public static CardInfo CreateCard(string name, string displayedName, int baseAttack, int baseHealth,
 			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
-			string description = null, bool hideAttackAndHealth = false, 
+			string description = null, bool hideAttackAndHealth = false,
 			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
+			List<Ability> abilities = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+			GameObject animatedPortrait = null, List<Texture> decals = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
 
@@ -119,15 +118,17 @@ namespace APIPlugin
 			{
 				card.titleGraphic = titleGraphic;
 			}
-			
+
 			return card;
 		}
-		
-		public static void AddToPool(CardInfo card, List<AbilityIdentifier> abilityIds = null, EvolveIdentifier evolveId = null,
+
+		public static void AddToPool(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
+			EvolveIdentifier evolveId = null,
 			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			NewCard.cards.Add(card);
-			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
+			handleIdentifiers(card, abilityIdsParam, evolveId, iceCubeId, tailId);
+
 			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
 		}
 
@@ -136,11 +137,12 @@ namespace APIPlugin
 		// TODO Rename parameters to be more user friendly
 		public static void AddToPool(string name, string displayedName, int baseAttack, int baseHealth,
 			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
-			string description = null, bool hideAttackAndHealth = false, 
+			string description = null, bool hideAttackAndHealth = false,
 			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null,
+			EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
@@ -149,39 +151,24 @@ namespace APIPlugin
 			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			var createdCard = CreateCard(
-				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, description, 
-				hideAttackAndHealth, bloodCost, bonesCost, energyCost, gemsCost, specialStatIcon, tribes, traits, 
-				specialAbilities, abilities, abilityIds, evolveParams, defaultEvolutionName, tailParams, iceCubeParams,
-				flipPortraitForStrafe, onePerDeck, appearanceBehaviour, 
-				defaultTex, altTex, titleGraphic, pixelTex, animatedPortrait, decals, 
-				evolveId, iceCubeId, tailId
+				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, description,
+				hideAttackAndHealth, bloodCost, bonesCost, energyCost, gemsCost, specialStatIcon, tribes, traits,
+				specialAbilities, abilities, evolveParams, defaultEvolutionName, tailParams, iceCubeParams,
+				flipPortraitForStrafe, onePerDeck, appearanceBehaviour,
+				defaultTex, altTex, titleGraphic, pixelTex, animatedPortrait, decals
 			);
 
-			NewCard.AddToPool(createdCard);
+			NewCard.AddToPool(createdCard, abilityIdsParam, evolveId, iceCubeId, tailId);
 		}
 
-		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIds, EvolveIdentifier evolveId,
-		IceCubeIdentifier iceCubeId, TailIdentifier tailId)
+		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
+			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			// Handle AbilityIdentifier
-			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
-			if (abilityIds is not null)
+
+			if (abilityIdsParam is not null && abilityIdsParam.Count > 0)
 			{
-				foreach (AbilityIdentifier id in abilityIds)
-				{
-					if (id.id != 0)
-					{
-						card.abilities.Add(id.id);
-					}
-				}
-				foreach (AbilityIdentifier id in toRemove)
-				{
-					abilityIds.Remove(id);
-				}
-			}
-			if (abilityIds is not null && abilityIds.Count > 0)
-			{
-				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIds;
+				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIdsParam;
 			}
 
 			// Handle EvolveIdentifier
