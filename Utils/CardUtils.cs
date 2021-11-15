@@ -46,7 +46,7 @@ namespace APIPlugin
 
 		public static void PrintCardModInfo(CardModificationInfo mod)
 		{
-			Plugin.Log.LogInfo($"\nID [{mod.singletonId}]");
+			Plugin.Log.LogInfo($"ID [{mod.singletonId}]");
 			Plugin.Log.LogInfo($"Gemify? [{mod.gemify}]");
 			Plugin.Log.LogInfo($"Attack Adjustment [{mod.attackAdjustment}]");
 			Plugin.Log.LogInfo($"Health Adjustment [{mod.healthAdjustment}]");
@@ -117,8 +117,12 @@ namespace APIPlugin
 			Plugin.Log.LogInfo($"===============\n");
 		}
 
+		public static Predicate<CardInfo> IsNonLivingCard = card
+			=> card.traits.Exists(t => t is Trait.Terrain or Trait.Pelt);
+
 		public static string cleanCardName(string name)
 		{
+			// for card names that for some reason equal to 'Card (Sparrow)' instead of just 'Sparrow' 
 			if (name.StartsWith("Card "))
 			{
 				string[] nameSplit = name.Split('('); // [Card (, name_of_card)]

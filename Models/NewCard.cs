@@ -13,18 +13,33 @@ namespace APIPlugin
 		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
 		public static Dictionary<int, TailIdentifier> tailIds = new();
 
-		public static CardInfo CreateCard(string name, string displayedName, int baseAttack, int baseHealth,
+		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
+			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null
+		)
+		{
+			NewCard.cards.Add(card);
+			handleIdentifiers(abilityIdsParam, evolveId, iceCubeId, tailId);
+			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
+		}
+
+
+		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
+		// TODO Change parameter order, and function setter call order to make more sense
+		// TODO Rename parameters to be more user friendly
+		public static void Add(string name, string displayedName, int baseAttack, int baseHealth,
 			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
 			string description = null, bool hideAttackAndHealth = false,
 			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, EvolveParams evolveParams = null,
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null,
+			EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			GameObject animatedPortrait = null, List<Texture> decals = null)
+			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
 
@@ -119,50 +134,13 @@ namespace APIPlugin
 				card.titleGraphic = titleGraphic;
 			}
 
-			return card;
+			NewCard.Add(card, abilityIdsParam, evolveId, iceCubeId, tailId);
 		}
 
-		public static void AddToPool(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
-			EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
-		{
-			NewCard.cards.Add(card);
-			handleIdentifiers(card, abilityIdsParam, evolveId, iceCubeId, tailId);
-
-			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
-		}
-
-		// TODO Implement a handler for custom appearanceBehaviour - in particular custom card backs
-		// TODO Change parameter order, and function setter call order to make more sense
-		// TODO Rename parameters to be more user friendly
-		public static void AddToPool(string name, string displayedName, int baseAttack, int baseHealth,
-			List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple,
-			string description = null, bool hideAttackAndHealth = false,
-			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
-			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
-			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null,
-			EvolveParams evolveParams = null,
-			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
-			bool flipPortraitForStrafe = false, bool onePerDeck = false,
-			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
-			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
-		{
-			var createdCard = CreateCard(
-				name, displayedName, baseAttack, baseHealth, metaCategories, cardComplexity, temple, description,
-				hideAttackAndHealth, bloodCost, bonesCost, energyCost, gemsCost, specialStatIcon, tribes, traits,
-				specialAbilities, abilities, evolveParams, defaultEvolutionName, tailParams, iceCubeParams,
-				flipPortraitForStrafe, onePerDeck, appearanceBehaviour,
-				defaultTex, altTex, titleGraphic, pixelTex, animatedPortrait, decals
-			);
-
-			NewCard.AddToPool(createdCard, abilityIdsParam, evolveId, iceCubeId, tailId);
-		}
-
-		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
-			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+		private static void handleIdentifiers(
+			List<AbilityIdentifier> abilityIdsParam = null, EvolveIdentifier evolveId = null, 
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null
+		)
 		{
 			// Handle AbilityIdentifier
 
@@ -218,7 +196,8 @@ namespace APIPlugin
 				pixelTex.name = newName;
 				pixelTex.filterMode = FilterMode.Point;
 
-				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
+				card.pixelPortrait =
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
 		}
