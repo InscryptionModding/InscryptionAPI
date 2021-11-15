@@ -7,10 +7,12 @@ namespace APIPlugin
 	public class CustomCard
 	{
 		public static List<CustomCard> cards = new List<CustomCard>();
-		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
-		public static Dictionary<int,EvolveIdentifier> evolveIds = new Dictionary<int,EvolveIdentifier>();
-		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
-		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
+
+		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int, TailIdentifier> tailIds = new();
+
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -28,7 +30,7 @@ namespace APIPlugin
 		public List<Tribe> tribes;
 		public List<Trait> traits;
 		public List<SpecialTriggeredAbility> specialAbilities;
-		public List<Ability> abilities;
+		public List<Ability> abilities = new();
 		public EvolveParams evolveParams;
 		public string defaultEvolutionName;
 		public TailParams tailParams;
@@ -36,30 +38,45 @@ namespace APIPlugin
 		public bool? flipPortraitForStrafe;
 		public bool? onePerDeck;
 		public List<CardAppearanceBehaviour.Appearance> appearanceBehaviour;
-		[IgnoreMapping]
-		public Texture2D tex;
-		[IgnoreMapping]
-		public Texture2D altTex;
+		[IgnoreMapping] public Texture2D tex;
+		[IgnoreMapping] public Texture2D altTex;
 		public Texture titleGraphic;
-		[IgnoreMapping]
-		public Texture2D pixelTex;
+		[IgnoreMapping] public Texture2D pixelTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
-		public List<AbilityIdentifier> abilityId;
+		public List<AbilityIdentifier> abilityIdList = new();
 		public EvolveIdentifier evolveId;
 		public IceCubeIdentifier iceCubeId;
 		public TailIdentifier tailId;
 
-		public CustomCard(string name, List<AbilityIdentifier> abilityId=null, EvolveIdentifier evolveId=null, IceCubeIdentifier iceCubeId=null, TailIdentifier tailId=null)
+		public CustomCard(string name, List<AbilityIdentifier> abilityIdListParam = null,
+			EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
 
 			// Handle AbilityIdentifier
 			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
-			if (abilityId is not null && this.abilityId.Count > 0)
+			if (abilityIdListParam is not null)
 			{
-				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityId;
+				foreach (AbilityIdentifier id in abilityIdListParam)
+				{
+					if (id.id != 0)
+					{
+						this.abilities.Add(id.id);
+					}
+				}
+
+				foreach (AbilityIdentifier id in toRemove)
+				{
+					this.abilityIdList.Remove(id);
+				}
+			}
+
+			if (abilityIdListParam is not null && this.abilityIdList.Count > 0)
+			{
+				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdListParam;
 			}
 
 			// Handle EvolveIdentifier
@@ -92,6 +109,7 @@ namespace APIPlugin
 				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
 			}
+
 			if (this.altTex is not null)
 			{
 				altTex.name = "portrait_" + name;
@@ -99,13 +117,16 @@ namespace APIPlugin
 				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
 			}
+
 			if (this.pixelTex is not null)
 			{
 				pixelTex.name = "portrait_" + name;
 				pixelTex.filterMode = FilterMode.Point;
-				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
+				card.pixelPortrait =
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = "portrait_" + name;
 			}
+
 			Plugin.Log.LogInfo($"Adjusted default card {name}!");
 			return card;
 		}

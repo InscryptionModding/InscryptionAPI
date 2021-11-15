@@ -142,6 +142,15 @@ namespace APIPlugin
 			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null
 		)
 		{
+			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
+			if (abilityIdsParam is not null)
+			{
+				foreach (AbilityIdentifier id in toRemove)
+				{
+					abilityIdsParam.Remove(id);
+				}
+			}
+			
 			// Handle AbilityIdentifier
 
 			if (abilityIdsParam is not null && abilityIdsParam.Count > 0)
