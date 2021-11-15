@@ -28,7 +28,7 @@ namespace API.Patches
 					}
 				}
 				ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
-				Plugin.Log.LogInfo($"Loaded custom cards into data");
+				Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
 			}
 			if (ScriptableObjectLoader<AbilityInfo>.allData == null)
 			{
@@ -38,7 +38,7 @@ namespace API.Patches
 					official.Add(newAbility.info);
 				}
 				ScriptableObjectLoader<AbilityInfo>.allData = official;
-				Plugin.Log.LogInfo($"Loaded custom abilities into data");
+				Plugin.Log.LogInfo($"Loaded {NewAbility.abilities.Count} custom abilities into data");
 			}
 		}
 	}
