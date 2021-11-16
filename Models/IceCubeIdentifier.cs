@@ -42,7 +42,7 @@ namespace APIPlugin
 		{
 			IceCubeParams iceCube = new IceCubeParams();
 
-			iceCube.creatureWithin = CardLoader.Clone(card);
+			iceCube.creatureWithin = card;
 
 			if (this.mods != null)
 			{

@@ -54,7 +54,7 @@ namespace APIPlugin
 				tail.tailLostPortrait.name = this.name;
 			}
 
-			tail.tail = CardLoader.Clone(card);
+			tail.tail = card;
 
 			if (this.mods != null)
 			{
