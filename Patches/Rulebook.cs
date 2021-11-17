@@ -35,11 +35,20 @@ namespace API.Patches
 							__instance.FillAbilityPage,
 							Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}")));
 					}
-					
+				}
+			}
+
+			if (NewSpecialAbility.specialAbilities.Count > 0)
+			{
+				foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
+				{
 					// special abilities
 					if (pageRangeInfo.type == PageRangeType.StatIcons)
 					{
-						List<int> customAbilities = NewAbility.abilities.Select(x => (int)x.ability).ToList();
+						List<int> customAbilities = NewSpecialAbility.specialAbilities
+							.Select(x => (int)x.statIconInfo.iconType).ToList();
+						Plugin.Log.LogInfo(
+							$"Number of custom abilities found to add to rulebook [{customAbilities.Count}]");
 						int min = customAbilities.AsQueryable().Min();
 						int max = customAbilities.AsQueryable().Max();
 						PageRangeInfo pageRange = pageRangeInfo;

@@ -12,26 +12,24 @@ namespace APIPlugin
 		public StatIconInfo statIconInfo;
 		public Type abilityBehaviour;
 		public Texture tex;
-		public AbilityIdentifier id;
+		public SpecialAbilityIdentifier id;
 
 		public NewSpecialAbility(
 			StatIconInfo statIconInfo,
 			Type abilityBehaviour,
 			Texture tex,
-			AbilityIdentifier id = null
+			SpecialAbilityIdentifier id
 		)
 		{
-			this.specialTriggeredAbility = (SpecialTriggeredAbility)100 + specialAbilities.Count;
+			specialTriggeredAbility = (SpecialTriggeredAbility)26 + specialAbilities.Count;
 			this.statIconInfo = statIconInfo;
 			this.abilityBehaviour = abilityBehaviour;
 			tex.filterMode = FilterMode.Point;
 			this.tex = tex;
 			this.id = id;
 			specialAbilities.Add(this);
-			// if (id != null)
-			// {
-			// 	id.id = specialTriggeredAbility;
-			// }
+			id.id = specialTriggeredAbility;
+			this.id = id;
 
 			Plugin.Log.LogInfo($"Loaded custom special ability [{statIconInfo.rulebookName}]!");
 		}
