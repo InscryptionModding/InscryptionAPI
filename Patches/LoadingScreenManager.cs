@@ -43,20 +43,6 @@ namespace API.Patches
 				ScriptableObjectLoader<AbilityInfo>.allData = official;
 				Plugin.Log.LogInfo($"Loaded custom abilities into data");
 			}
-
-			if (ScriptableObjectLoader<StatIconInfo>.allData == null)
-			{
-				List<StatIconInfo> official = ScriptableObjectLoader<StatIconInfo>.AllData;
-				official
-					.AddRange(
-						NewSpecialAbility.specialAbilities
-							.Select(newSpecialAbility => newSpecialAbility.statIconInfo)
-					);
-
-				ScriptableObjectLoader<StatIconInfo>.allData = official;
-				Plugin.Log.LogInfo(
-					$"Loaded {NewSpecialAbility.specialAbilities.Count} custom special abilities into data");
-			}
 		}
 	}
 }
