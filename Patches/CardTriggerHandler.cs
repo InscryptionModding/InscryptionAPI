@@ -18,17 +18,20 @@ namespace API.Patches
 
 			Predicate<Tuple<Ability, AbilityBehaviour>> checkAbilityExists = tuple =>
 				tuple.Item1 == ability || AbilityCanStackAndIsNotPassive(ability);
-
+			Plugin.Log.LogDebug($"Attempting to add regular ability in card trigger handler [{ability}]");
 			// return true if the ability is equal to the ability in the pair OR if ability cannot stack and is passive
 			if (!__instance.triggeredAbilities.Exists(checkAbilityExists))
 			{
+				Plugin.Log.LogDebug($"-> Ability [{ability}] does not exist, adding...");
 				NewAbility newAbility = NewAbility.abilities.Find(x => x.ability == ability);
+				Plugin.Log.LogDebug($"-> New Ability is [{newAbility.ability}]");
 				Type type = newAbility.abilityBehaviour;
 				Component baseC = __instance;
 				AbilityBehaviour item = baseC.gameObject.GetComponent(type) as AbilityBehaviour;
 				if (item == null)
 				{
 					item = baseC.gameObject.AddComponent(type) as AbilityBehaviour;
+					Plugin.Log.LogDebug($"--> Item is [{item}] | Ability toString [{ability}]");
 				}
 
 				__instance.triggeredAbilities.Add(new Tuple<Ability, AbilityBehaviour>(ability, item));
@@ -48,14 +51,14 @@ namespace API.Patches
 	{
 		public static bool Prefix(SpecialTriggeredAbility ability, CardTriggerHandler __instance)
 		{
-			Plugin.Log.LogInfo($"Attempting to add spec ability to card trigger handler [{ability}]");
+			Plugin.Log.LogDebug($"Attempting to add spec ability to card trigger handler [{ability}]");
 			if ((int)ability < 25)
 			{
 				return true;
 			}
 			if (!__instance.specialAbilities.Exists(ab => ab.Item1 == ability))
 			{
-				Plugin.Log.LogInfo("-> spec ability does not exist yet, adding");
+				Plugin.Log.LogDebug("-> spec ability does not exist yet, adding...");
 				NewSpecialAbility newAbility = NewSpecialAbility.specialAbilities
 					.Find(x => x.specialTriggeredAbility == ability);
 				Type type = newAbility.abilityBehaviour;
