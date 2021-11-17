@@ -1,39 +1,32 @@
-using System;
 using System.Collections.Generic;
 using DiskCardGame;
-using UnityEngine;
 
 namespace APIPlugin
 {
 	public class AbilityIdentifier
 	{
-    private static List<AbilityIdentifier> ids = new List<AbilityIdentifier>();
+		private static List<AbilityIdentifier> ids = new();
 		private string guid;
-    private string name;
-    public Ability id;
+		private string name;
+		public Ability id;
 
 		private AbilityIdentifier(string guid, string name)
 		{
 			this.guid = guid;
 			this.name = name;
-      ids.Add(this);
+			ids.Add(this);
 		}
 
-    public static AbilityIdentifier GetAbilityIdentifier(string guid, string name)
-    {
-      if (ids.Exists((AbilityIdentifier x) => x.guid == guid && x.name == name))
-      {
-        return ids.Find((AbilityIdentifier x) => x.guid == guid && x.name == name);
-      }
-      else
-      {
-        return new AbilityIdentifier(guid, name);
-      }
-    }
-
-		public override String ToString()
+		public static AbilityIdentifier GetAbilityIdentifier(string guid, string name)
 		{
-			return $"{this.guid}({this.name})";
+			return ids.Exists(x => x.guid == guid && x.name == name)
+				? ids.Find(x => x.guid == guid && x.name == name)
+				: new AbilityIdentifier(guid, name);
+		}
+
+		public override string ToString()
+		{
+			return $"{guid}({name})";
 		}
 	}
 }

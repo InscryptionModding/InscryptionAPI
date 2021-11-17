@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
@@ -7,17 +8,21 @@ namespace APIPlugin
 {
 	public static class NewCard
 	{
-		public static List<CardInfo> cards = new List<CardInfo>();
-		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new Dictionary<int,List<AbilityIdentifier>>();
-		public static Dictionary<int,EvolveIdentifier> evolveIds = new Dictionary<int,EvolveIdentifier>();
-		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new Dictionary<int,IceCubeIdentifier>();
-		public static Dictionary<int,TailIdentifier> tailIds = new Dictionary<int,TailIdentifier>();
+		public static List<CardInfo> cards = new();
 
-		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIds = null, EvolveIdentifier evolveId = null,
+		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
+		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int, TailIdentifier> tailIds = new();
+		
+		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
+			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null,
+			EvolveIdentifier evolveId = null,
 			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			NewCard.cards.Add(card);
-			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
+			HandleIdentifiers(card, abilityIdsParam, specialAbilitiesIdsParam, evolveId, iceCubeId, tailId);
 			Plugin.Log.LogInfo($"Loaded custom card {card.name}!");
 		}
 
@@ -30,7 +35,8 @@ namespace APIPlugin
 			bool hideAttackAndHealth = false, int cost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIds = null, EvolveParams evolveParams = null,
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null, 
+			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D tex = null,
@@ -133,33 +139,51 @@ namespace APIPlugin
 
 			NewCard.cards.Add(card);
 
-			handleIdentifiers(card, abilityIds, evolveId, iceCubeId, tailId);
+			HandleIdentifiers(card, abilityIdsParam, specialAbilitiesIdsParam, evolveId, iceCubeId, tailId);
 
 			Plugin.Log.LogInfo($"Loaded custom card {name}!");
 		}
 
-		private static void handleIdentifiers(CardInfo card, List<AbilityIdentifier> abilityIds, EvolveIdentifier evolveId,
-		IceCubeIdentifier iceCubeId, TailIdentifier tailId)
+		private static void HandleIdentifiers(
+			CardInfo card,
+			List<AbilityIdentifier> abilityIdsParam,
+			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam,
+			EvolveIdentifier evolveId,
+			IceCubeIdentifier iceCubeId,
+			TailIdentifier tailId)
 		{
 			// Handle AbilityIdentifier
 			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
-			if (abilityIds is not null)
+			if (abilityIdsParam is not null)
 			{
-				foreach (AbilityIdentifier id in abilityIds)
+				foreach (var id in abilityIdsParam.Where(id => id.id != 0))
 				{
-					if (id.id != 0)
-					{
-						card.abilities.Add(id.id);
-					}
+					card.abilities.Add(id.id);
 				}
+
 				foreach (AbilityIdentifier id in toRemove)
 				{
-					abilityIds.Remove(id);
+					abilityIdsParam.Remove(id);
+				}
+				
+				if (abilityIdsParam.Count > 0)
+				{
+					NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIdsParam;
 				}
 			}
-			if (abilityIds is not null && abilityIds.Count > 0)
+			
+			// Handle SpecialAbilityIds
+			if (specialAbilitiesIdsParam is not null)
 			{
-				NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIds;
+				foreach (var id in specialAbilitiesIdsParam.Where(id => id.id != 0))
+				{
+					card.specialAbilities.Add(id.id);
+				}
+
+				if (specialAbilitiesIdsParam.Count > 0)
+				{
+					NewCard.specialAbilityIds[NewCard.cards.Count - 1] = specialAbilitiesIdsParam;
+				}
 			}
 
 			// Handle EvolveIdentifier
@@ -209,7 +233,8 @@ namespace APIPlugin
 				pixelTex.name = newName;
 				pixelTex.filterMode = FilterMode.Point;
 
-				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
+				card.pixelPortrait =
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
 		}
