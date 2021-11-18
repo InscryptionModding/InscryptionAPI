@@ -61,7 +61,7 @@ namespace API.Patches
 							min,
 							doAddPageFunc,
 							__instance.FillStatIconPage,
-							Localization.Translate("APPENDIX XII, SUBSECTION I - MOD SPEC. ABILITIES {0}")));
+							Localization.Translate("APPENDIX XII, SUBSECTION II - VARIABLE STATS {0}")));
 					}
 				}
 			}
