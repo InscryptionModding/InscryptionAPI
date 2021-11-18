@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
 using DiskCardGame;
 using UnityEngine;
-using CardLoaderPlugin.lib;
 
 namespace APIPlugin
 {
 	public class TailIdentifier
 	{
-    private string name;
+		private string name;
 		private CardModificationInfo mods;
 		private Texture2D tailLostTex;
 		private TailParams tail;
+
 		public TailParams Tail
 		{
 			get
@@ -37,7 +35,7 @@ namespace APIPlugin
 		public TailIdentifier(string name, Texture2D tailLostTex = null, CardModificationInfo mods = null)
 		{
 			this.name = name;
-      this.mods = mods;
+			this.mods = mods;
 			this.tailLostTex = tailLostTex;
 		}
 

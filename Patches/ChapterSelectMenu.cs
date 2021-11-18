@@ -28,7 +28,7 @@ namespace API.Patches
 					}
 				}
 				ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
-				Plugin.Log.LogInfo($"Loaded custom cards into data");
+				Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
 			}
 		}
 	}

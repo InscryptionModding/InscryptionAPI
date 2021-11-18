@@ -27,7 +27,7 @@ namespace APIPlugin
       Logger.LogInfo($"Loaded {PluginName}!");
       Plugin.Log = base.Logger;
 
-      configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increaces and energy refreshes at end of turn");
+      configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
       configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
       configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
       configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");

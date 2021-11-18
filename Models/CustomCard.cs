@@ -9,6 +9,7 @@ namespace APIPlugin
 	public class CustomCard
 	{
 		public static List<CustomCard> cards = new();
+    
 		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
 		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
 		public static Dictionary<int,EvolveIdentifier> evolveIds = new();
@@ -39,16 +40,13 @@ namespace APIPlugin
 		public bool? flipPortraitForStrafe;
 		public bool? onePerDeck;
 		public List<CardAppearanceBehaviour.Appearance> appearanceBehaviour;
-		[IgnoreMapping]
-		public Texture2D tex;
-		[IgnoreMapping]
-		public Texture2D altTex;
+		[IgnoreMapping] public Texture2D tex;
+		[IgnoreMapping] public Texture2D altTex;
 		public Texture titleGraphic;
-		[IgnoreMapping]
-		public Texture2D pixelTex;
+		[IgnoreMapping] public Texture2D pixelTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
-		public List<AbilityIdentifier> abilityId;
+		public List<AbilityIdentifier> abilityIdList = new();
 		public EvolveIdentifier evolveId;
 		public IceCubeIdentifier iceCubeId;
 		public TailIdentifier tailId;
@@ -71,6 +69,7 @@ namespace APIPlugin
 				foreach (var id in abilityIdParam.Where(id => id.id != 0))
 				{
 					this.abilities.Add(id.id);
+          abilitiesToRemove.Add(id);
 				}
 				
 				foreach (AbilityIdentifier id in abilitiesToRemove)
@@ -90,6 +89,7 @@ namespace APIPlugin
 				foreach (var id in specialAbilityIdParam.Where(id => id.id != 0))
 				{
 					this.specialAbilities.Add(id.id);
+          specialAbilitiesToRemove.Add(id);
 				}
 				
 				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
@@ -134,6 +134,7 @@ namespace APIPlugin
 				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
 			}
+
 			if (this.altTex is not null)
 			{
 				altTex.name = "portrait_" + name;
@@ -141,13 +142,16 @@ namespace APIPlugin
 				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
 			}
+
 			if (this.pixelTex is not null)
 			{
 				pixelTex.name = "portrait_" + name;
 				pixelTex.filterMode = FilterMode.Point;
-				card.pixelPortrait = Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
+				card.pixelPortrait =
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = "portrait_" + name;
 			}
+
 			Plugin.Log.LogInfo($"Adjusted default card {name}!");
 			return card;
 		}
