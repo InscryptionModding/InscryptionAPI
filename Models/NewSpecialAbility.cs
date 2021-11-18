@@ -11,27 +11,51 @@ namespace APIPlugin
 		public SpecialTriggeredAbility specialTriggeredAbility;
 		public StatIconInfo statIconInfo;
 		public Type abilityBehaviour;
-		public Texture tex;
 		public SpecialAbilityIdentifier id;
 
 		public NewSpecialAbility(
-			StatIconInfo statIconInfo,
 			Type abilityBehaviour,
-			Texture tex,
-			SpecialAbilityIdentifier id
+			SpecialAbilityIdentifier id,
+			StatIconInfo statIconInfo = null
 		)
 		{
 			specialTriggeredAbility = (SpecialTriggeredAbility)26 + specialAbilities.Count;
-			this.statIconInfo = statIconInfo;
+			var logNameOrIdNumber = specialTriggeredAbility.ToString();
+			if (statIconInfo)
+			{
+				this.statIconInfo = statIconInfo;
+				HandleStatIconInfo(statIconInfo);
+				logNameOrIdNumber = this.statIconInfo.rulebookName;
+			}
 			this.abilityBehaviour = abilityBehaviour;
-			tex.filterMode = FilterMode.Point;
-			this.tex = tex;
 			this.id = id;
-			specialAbilities.Add(this);
 			id.id = specialTriggeredAbility;
-			this.id = id;
 
-			Plugin.Log.LogInfo($"Loaded custom special ability [{statIconInfo.rulebookName}]!");
+			HandleStatIconInfo(statIconInfo);
+
+			specialAbilities.Add(this);
+			Plugin.Log.LogInfo($"Loaded custom special ability [{logNameOrIdNumber}]!");
+		}
+
+		// is only called if StatIconInfo is not null
+		private static void HandleStatIconInfo(StatIconInfo statIconInfo)
+		{
+			statIconInfo.iconType = (SpecialStatIcon)8 + specialAbilities.Count;
+			
+			if (statIconInfo.iconGraphic is not null)
+			{
+				// the reason for this is just one less step for the end user to setup
+				statIconInfo.iconGraphic.filterMode = FilterMode.Point;
+			}
+
+			// a lazy initializer
+			if (statIconInfo.metaCategories.Count == 0)
+			{
+				statIconInfo.metaCategories = new List<AbilityMetaCategory>
+				{
+					AbilityMetaCategory.Part1Modular, AbilityMetaCategory.Part1Rulebook
+				};
+			}
 		}
 	}
 }
