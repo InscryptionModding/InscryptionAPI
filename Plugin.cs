@@ -1,9 +1,10 @@
 using BepInEx;
-using BepInEx.Logging;
 using BepInEx.Configuration;
-using HarmonyLib;
+using BepInEx.Logging;
 using DiskCardGame;
+using HarmonyLib;
 using UnityEngine.SceneManagement;
+
 #pragma warning disable 169
 
 namespace APIPlugin
@@ -38,6 +39,7 @@ namespace APIPlugin
     private void Start()
     {
       SetAbilityIdentifiers();
+      SetSpecialAbilityIdentifiers();
       SetEvolveIdentifiers();
       SetIceCubeIdentifiers();
       SetTailIdentifiers();

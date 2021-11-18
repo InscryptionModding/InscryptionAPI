@@ -7,7 +7,7 @@ namespace APIPlugin
 {
 	public class NewAbility
 	{
-		public static List<NewAbility> abilities = new List<NewAbility>();
+		public static List<NewAbility> abilities = new();
 		public Ability ability;
 		public AbilityInfo info;
 		public Type abilityBehaviour;
@@ -16,14 +16,14 @@ namespace APIPlugin
 
 		public NewAbility(AbilityInfo info, Type abilityBehaviour, Texture tex, AbilityIdentifier id = null)
 		{
-			this.ability = (Ability) 100 + NewAbility.abilities.Count;
-			info.ability = this.ability;
+			ability = (Ability) 100 + abilities.Count;
+			info.ability = ability;
 			this.info = info;
 			this.abilityBehaviour = abilityBehaviour;
 			tex.filterMode = FilterMode.Point;
 			this.tex = tex;
 			this.id = id;
-			NewAbility.abilities.Add(this);
+			abilities.Add(this);
 			if (id != null){
 				id.id = ability;
 			}

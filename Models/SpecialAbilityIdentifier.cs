@@ -1,27 +1,27 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DiskCardGame;
 
 namespace APIPlugin
 {
-	public class AbilityIdentifier
+	public class SpecialAbilityIdentifier
 	{
-		private static List<AbilityIdentifier> ids = new();
+		private static List<SpecialAbilityIdentifier> ids = new();
 		private string guid;
 		private string name;
-		public Ability id;
+		public SpecialTriggeredAbility id;
 
-		private AbilityIdentifier(string guid, string name)
+		private SpecialAbilityIdentifier(string guid, string name)
 		{
 			this.guid = guid;
 			this.name = name;
 			ids.Add(this);
 		}
 
-		public static AbilityIdentifier GetAbilityIdentifier(string guid, string name)
+		public static SpecialAbilityIdentifier GetID(string guid, string name)
 		{
 			return ids.Exists(x => x.guid == guid && x.name == name)
 				? ids.Find(x => x.guid == guid && x.name == name)
-				: new AbilityIdentifier(guid, name);
+				: new SpecialAbilityIdentifier(guid, name);
 		}
 
 		public override string ToString()

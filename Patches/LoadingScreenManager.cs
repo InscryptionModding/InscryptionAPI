@@ -27,9 +27,11 @@ namespace API.Patches
 						Plugin.Log.LogInfo($"Loaded modified {card.name} into data");
 					}
 				}
+
 				ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
 				Plugin.Log.LogInfo($"Loaded custom cards into data");
 			}
+
 			if (ScriptableObjectLoader<AbilityInfo>.allData == null)
 			{
 				List<AbilityInfo> official = ScriptableObjectLoader<AbilityInfo>.AllData;
@@ -37,6 +39,7 @@ namespace API.Patches
 				{
 					official.Add(newAbility.info);
 				}
+
 				ScriptableObjectLoader<AbilityInfo>.allData = official;
 				Plugin.Log.LogInfo($"Loaded custom abilities into data");
 			}
