@@ -26,7 +26,7 @@ namespace API.Patches
 					NewSpecialAbility newAbility = NewSpecialAbility.specialAbilities
 						.Find(x => x.specialTriggeredAbility == specialTriggeredAbility);
 					Type type = newAbility.abilityBehaviour;
-					Plugin.Log.LogInfo($"-> Type is [{type}]");
+					Plugin.Log.LogDebug($"-> Special Card Behaviour Type is [{type}]");
 					Component baseC = __instance;
 					SpecialCardBehaviour item = baseC.gameObject.GetComponent(type) as SpecialCardBehaviour 
 					                            ?? baseC.gameObject.AddComponent(type) as SpecialCardBehaviour;

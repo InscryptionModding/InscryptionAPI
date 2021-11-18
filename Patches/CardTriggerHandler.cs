@@ -58,15 +58,17 @@ namespace API.Patches
 			}
 			if (!__instance.specialAbilities.Exists(ab => ab.Item1 == ability))
 			{
-				Plugin.Log.LogDebug("-> spec ability does not exist yet, adding...");
+				Plugin.Log.LogDebug($"-> Special ability [{ability}] does not exist, adding...");
 				NewSpecialAbility newAbility = NewSpecialAbility.specialAbilities
 					.Find(x => x.specialTriggeredAbility == ability);
+				Plugin.Log.LogDebug($"-> New Ability is [{newAbility.specialTriggeredAbility}]");
 				Type type = newAbility.abilityBehaviour;
 				Component baseC = __instance;
 				SpecialCardBehaviour item = baseC.gameObject.GetComponent(type) as SpecialCardBehaviour;
 				if (item == null)
 				{
 					item = baseC.gameObject.AddComponent(type) as SpecialCardBehaviour;
+					Plugin.Log.LogDebug($"--> Item is [{item}] | Ability toString [{ability}]");
 				}
 
 				__instance.specialAbilities.Add(new Tuple<SpecialTriggeredAbility, SpecialCardBehaviour>(ability, item));
