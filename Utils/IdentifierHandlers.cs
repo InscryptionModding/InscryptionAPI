@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using DiskCardGame;
+
 namespace APIPlugin
 {
   public partial class Plugin
@@ -12,7 +15,8 @@ namespace APIPlugin
           if (id.id != 0)
           {
             // if the card already has the ability then no point and adding it
-            if (!newCard.abilities.Contains(id.id)) newCard.abilities.Add(id.id);
+            if (AbilityDoesNotExistOrCanStack(newCard.abilities, id))
+              newCard.abilities.Add(id.id);
           }
           else
           {
@@ -28,8 +32,8 @@ namespace APIPlugin
           var customCard = CustomCard.cards[item.Key];
           if (id.id != 0)
           {
-            // if the card already has the ability then no point and adding it
-            if (!customCard.abilities.Contains(id.id)) customCard.abilities.Add(id.id);
+            if (AbilityDoesNotExistOrCanStack(customCard.abilities, id)) 
+              customCard.abilities.Add(id.id);
           }
           else
           {
@@ -48,7 +52,7 @@ namespace APIPlugin
           var newCard = NewCard.cards[item.Key];
           if (id.id != 0)
           {
-            // if the card already has the ability then no point and adding it
+            // Special Abilities do not stack, unlike regular Abilities
             if (!newCard.specialAbilities.Contains(id.id)) newCard.specialAbilities.Add(id.id);
           }
           else
@@ -65,7 +69,7 @@ namespace APIPlugin
           var customCard = CustomCard.cards[item.Key];
           if (id.id != 0)
           {
-            // if the card already has the ability then no point and adding it
+            // Special Abilities do not stack, unlike regular Abilities
             if (!customCard.specialAbilities.Contains(id.id)) customCard.specialAbilities.Add(id.id);
           }
           else
@@ -74,6 +78,11 @@ namespace APIPlugin
           }
         }
       }
+    }
+    
+    private static bool AbilityDoesNotExistOrCanStack(List<Ability> abilities, AbilityIdentifier id)
+    {
+      return !abilities.Contains(id.id) || AbilitiesUtil.GetInfo(id.id).canStack;
     }
 
     private void SetEvolveIdentifiers()
