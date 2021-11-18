@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using DiskCardGame;
+
 namespace APIPlugin
 {
   public partial class Plugin
@@ -8,13 +11,16 @@ namespace APIPlugin
       {
         foreach (AbilityIdentifier id in item.Value)
         {
+          var newCard = NewCard.cards[item.Key];
           if (id.id != 0)
           {
-            NewCard.cards[item.Key].abilities.Add(id.id);
+            // if the card already has the ability then no point and adding it
+            if (AbilityDoesNotExistOrCanStack(newCard.abilities, id))
+              newCard.abilities.Add(id.id);
           }
           else
           {
-            Plugin.Log.LogWarning($"Ability {id} not found for card {NewCard.cards[item.Key]}");
+            Log.LogWarning($"Ability {id} not found for card {newCard}");
           }
         }
       }
@@ -23,16 +29,60 @@ namespace APIPlugin
       {
         foreach (AbilityIdentifier id in item.Value)
         {
+          var customCard = CustomCard.cards[item.Key];
           if (id.id != 0)
           {
-            CustomCard.cards[item.Key].abilities.Add(id.id);
+            if (AbilityDoesNotExistOrCanStack(customCard.abilities, id)) 
+              customCard.abilities.Add(id.id);
           }
           else
           {
-            Plugin.Log.LogWarning($"Ability {id} not found for card {CustomCard.cards[item.Key]}");
+            Log.LogWarning($"Ability {id} not found for card {customCard}");
           }
         }
       }
+    }
+    
+    private void SetSpecialAbilityIdentifiers()
+    {
+      foreach(var item in NewCard.specialAbilityIds)
+      {
+        foreach (SpecialAbilityIdentifier id in item.Value)
+        {
+          var newCard = NewCard.cards[item.Key];
+          if (id.id != 0)
+          {
+            // Special Abilities do not stack, unlike regular Abilities
+            if (!newCard.specialAbilities.Contains(id.id)) newCard.specialAbilities.Add(id.id);
+          }
+          else
+          {
+            Log.LogWarning($"Special Ability {id} not found for card {newCard}");
+          }
+        }
+      }
+    
+      foreach(var item in CustomCard.specialAbilityIds)
+      {
+        foreach (SpecialAbilityIdentifier id in item.Value)
+        {
+          var customCard = CustomCard.cards[item.Key];
+          if (id.id != 0)
+          {
+            // Special Abilities do not stack, unlike regular Abilities
+            if (!customCard.specialAbilities.Contains(id.id)) customCard.specialAbilities.Add(id.id);
+          }
+          else
+          {
+            Log.LogWarning($"Special Ability {id} not found for card {customCard}");
+          }
+        }
+      }
+    }
+    
+    private static bool AbilityDoesNotExistOrCanStack(List<Ability> abilities, AbilityIdentifier id)
+    {
+      return !abilities.Contains(id.id) || AbilitiesUtil.GetInfo(id.id).canStack;
     }
 
     private void SetEvolveIdentifiers()
@@ -46,7 +96,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"Evolution card {id} not found for card {NewCard.cards[item.Key]}");
+          Log.LogWarning($"Evolution card {id} not found for card {NewCard.cards[item.Key]}");
         }
       }
 
@@ -59,7 +109,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"Evolution card {id} not found for card {CustomCard.cards[item.Key]}");
+          Log.LogWarning($"Evolution card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }
@@ -75,7 +125,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"IceCube card {id} not found for card {NewCard.cards[item.Key]}");
+          Log.LogWarning($"IceCube card {id} not found for card {NewCard.cards[item.Key]}");
         }
       }
 
@@ -88,7 +138,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"IceCube card {id} not found for card {CustomCard.cards[item.Key]}");
+          Log.LogWarning($"IceCube card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }
@@ -104,7 +154,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"Tail card {id} not found for card {NewCard.cards[item.Key]}");
+          Log.LogWarning($"Tail card {id} not found for card {NewCard.cards[item.Key]}");
         }
       }
 
@@ -117,7 +167,7 @@ namespace APIPlugin
         }
         else
         {
-          Plugin.Log.LogWarning($"Tail card {id} not found for card {CustomCard.cards[item.Key]}");
+          Log.LogWarning($"Tail card {id} not found for card {CustomCard.cards[item.Key]}");
         }
       }
     }

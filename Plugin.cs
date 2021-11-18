@@ -39,6 +39,7 @@ namespace APIPlugin
     private void Start()
     {
       SetAbilityIdentifiers();
+      SetSpecialAbilityIdentifiers();
       SetEvolveIdentifiers();
       SetIceCubeIdentifiers();
       SetTailIdentifiers();

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -6,13 +8,13 @@ namespace APIPlugin
 {
 	public class CustomCard
 	{
-		public static List<CustomCard> cards = new List<CustomCard>();
-
-		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
-		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
-		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
-		public static Dictionary<int, TailIdentifier> tailIds = new();
-
+		public static List<CustomCard> cards = new();
+    
+		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
+		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
+		public static Dictionary<int,EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int,TailIdentifier> tailIds = new();
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -29,7 +31,7 @@ namespace APIPlugin
 		public SpecialStatIcon? specialStatIcon;
 		public List<Tribe> tribes;
 		public List<Trait> traits;
-		public List<SpecialTriggeredAbility> specialAbilities;
+		public List<SpecialTriggeredAbility> specialAbilities = new();
 		public List<Ability> abilities = new();
 		public EvolveParams evolveParams;
 		public string defaultEvolutionName;
@@ -49,35 +51,58 @@ namespace APIPlugin
 		public IceCubeIdentifier iceCubeId;
 		public TailIdentifier tailId;
 
-		public CustomCard(string name, List<AbilityIdentifier> abilityIdListParam = null,
-			EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+		public CustomCard(
+			string name, 
+			List<AbilityIdentifier> abilityIdParam=null, 
+			List<SpecialAbilityIdentifier> specialAbilityIdParam=null, 
+			EvolveIdentifier evolveId=null, 
+			IceCubeIdentifier iceCubeId=null, 
+			TailIdentifier tailId=null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
 
 			// Handle AbilityIdentifier
-			List<AbilityIdentifier> toRemove = new List<AbilityIdentifier>();
-			if (abilityIdListParam is not null)
+			List<AbilityIdentifier> abilitiesToRemove = new List<AbilityIdentifier>();
+			if (abilityIdParam is not null)
 			{
-				foreach (AbilityIdentifier id in abilityIdListParam)
+				foreach (var id in abilityIdParam.Where(id => id.id != 0))
 				{
-					if (id.id != 0)
-					{
-						this.abilities.Add(id.id);
-					}
+					this.abilities.Add(id.id);
+          abilitiesToRemove.Add(id);
 				}
-
-				foreach (AbilityIdentifier id in toRemove)
+				
+				foreach (AbilityIdentifier id in abilitiesToRemove)
 				{
-					this.abilityIdList.Remove(id);
+					abilityIdParam.Remove(id);
+				}
+				
+				if (abilityIdParam.Count > 0)
+				{
+					CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdParam;
 				}
 			}
 
-			if (abilityIdListParam is not null && this.abilityIdList.Count > 0)
+			List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
+			if (specialAbilityIdParam is not null)
 			{
-				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdListParam;
+				foreach (var id in specialAbilityIdParam.Where(id => id.id != 0))
+				{
+					this.specialAbilities.Add(id.id);
+          specialAbilitiesToRemove.Add(id);
+				}
+				
+				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
+				{
+					specialAbilityIdParam.Remove(id);
+				}
+				
+				if (specialAbilityIdParam.Count > 0)
+				{
+					CustomCard.specialAbilityIds[CustomCard.cards.Count - 1] = specialAbilityIdParam;
+				}
 			}
+
 
 			// Handle EvolveIdentifier
 			if (evolveId is not null)

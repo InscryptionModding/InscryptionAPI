@@ -43,7 +43,7 @@ namespace APIPlugin
 
 			evolution.turnsToEvolve = this.turnsToEvolve;
 
-			evolution.evolution = CardLoader.Clone(card);
+			evolution.evolution = card;
 
 			if (this.mods != null)
 			{

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using APIPlugin;
 using DiskCardGame;
 using HarmonyLib;
@@ -7,7 +6,8 @@ using UnityEngine;
 
 namespace API.Patches
 {
-	[HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon", new Type[] { typeof(string), typeof(bool), typeof(bool) })]
+	[HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon", 
+		typeof(string), typeof(bool), typeof(bool))]
 	public class AbilitiesUtil_LoadAbilityIcon
 	{
 		public static bool Prefix(string abilityName, CardTriggerHandler __instance, ref Texture __result)
@@ -18,16 +18,14 @@ namespace API.Patches
 				return true;
 			}
 
-			NewAbility newAbility = NewAbility.abilities.Find((NewAbility x) => x.ability == (Ability)ability);
+			NewAbility newAbility = NewAbility.abilities.Find(x => x.ability == (Ability)ability);
 			__result = newAbility.tex;
 			return false;
 		}
 	}
 
-	[HarmonyPatch(typeof(AbilitiesUtil),
-		"GetAbilities",
-		new Type[] { typeof(bool), typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory) }
-	)]
+	[HarmonyPatch(typeof(AbilitiesUtil), "GetAbilities", 
+		typeof(bool), typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory))]
 	public class AbilitiesUtil_GetAbilities
 	{
 		public static void Postfix(
