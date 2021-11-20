@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ namespace APIPlugin
 		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
 		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
 		public static Dictionary<int, TailIdentifier> tailIds = new();
-		
+
 		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
 			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null,
 			EvolveIdentifier evolveId = null,
@@ -36,7 +35,7 @@ namespace APIPlugin
 			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null, 
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null,
 			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
@@ -159,31 +158,31 @@ namespace APIPlugin
 				foreach (var id in abilityIdsParam.Where(id => id.id != 0))
 				{
 					card.abilities.Add(id.id);
-          abilitiesToRemove.Add(id);
+					abilitiesToRemove.Add(id);
 				}
 
 				foreach (AbilityIdentifier id in abilitiesToRemove)
 				{
 					abilityIdsParam.Remove(id);
 				}
-				
+
 				if (abilityIdsParam.Count > 0)
 				{
 					NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIdsParam;
 				}
 			}
-			
+
 			// Handle SpecialAbilityIds
-      List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<AbilityIdentifier>();
+			List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
 			if (specialAbilitiesIdsParam is not null)
 			{
 				foreach (var id in specialAbilitiesIdsParam.Where(id => id.id != 0))
 				{
 					card.specialAbilities.Add(id.id);
-          specialAbilitiesToRemove.Add(id);
+					specialAbilitiesToRemove.Add(id);
 				}
-        
-        foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
+
+				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
 				{
 					specialAbilitiesIdsParam.Remove(id);
 				}

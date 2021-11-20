@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -9,12 +8,12 @@ namespace APIPlugin
 	public class CustomCard
 	{
 		public static List<CustomCard> cards = new();
-    
-		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
+
+		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
 		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
-		public static Dictionary<int,EvolveIdentifier> evolveIds = new();
-		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new();
-		public static Dictionary<int,TailIdentifier> tailIds = new();
+		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int, TailIdentifier> tailIds = new();
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -52,12 +51,12 @@ namespace APIPlugin
 		public TailIdentifier tailId;
 
 		public CustomCard(
-			string name, 
-			List<AbilityIdentifier> abilityIdParam=null, 
-			List<SpecialAbilityIdentifier> specialAbilityIdParam=null, 
-			EvolveIdentifier evolveId=null, 
-			IceCubeIdentifier iceCubeId=null, 
-			TailIdentifier tailId=null)
+			string name,
+			List<AbilityIdentifier> abilityIdParam = null,
+			List<SpecialAbilityIdentifier> specialAbilityIdParam = null,
+			EvolveIdentifier evolveId = null,
+			IceCubeIdentifier iceCubeId = null,
+			TailIdentifier tailId = null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
@@ -69,14 +68,14 @@ namespace APIPlugin
 				foreach (var id in abilityIdParam.Where(id => id.id != 0))
 				{
 					this.abilities.Add(id.id);
-          abilitiesToRemove.Add(id);
+					abilitiesToRemove.Add(id);
 				}
-				
+
 				foreach (AbilityIdentifier id in abilitiesToRemove)
 				{
 					abilityIdParam.Remove(id);
 				}
-				
+
 				if (abilityIdParam.Count > 0)
 				{
 					CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdParam;
@@ -89,14 +88,14 @@ namespace APIPlugin
 				foreach (var id in specialAbilityIdParam.Where(id => id.id != 0))
 				{
 					this.specialAbilities.Add(id.id);
-          specialAbilitiesToRemove.Add(id);
+					specialAbilitiesToRemove.Add(id);
 				}
-				
+
 				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
 				{
 					specialAbilityIdParam.Remove(id);
 				}
-				
+
 				if (specialAbilityIdParam.Count > 0)
 				{
 					CustomCard.specialAbilityIds[CustomCard.cards.Count - 1] = specialAbilityIdParam;

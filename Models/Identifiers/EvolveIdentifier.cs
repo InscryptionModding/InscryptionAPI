@@ -4,10 +4,11 @@ namespace APIPlugin
 {
 	public class EvolveIdentifier
 	{
-    private string name;
-    private int turnsToEvolve;
+		private string name;
+		private int turnsToEvolve;
 		private CardModificationInfo mods;
 		private EvolveParams evolution;
+
 		public EvolveParams Evolution
 		{
 			get
@@ -26,6 +27,7 @@ namespace APIPlugin
 						}
 					}
 				}
+
 				return this.evolution;
 			}
 		}
@@ -34,7 +36,7 @@ namespace APIPlugin
 		{
 			this.name = name;
 			this.turnsToEvolve = turnsToEvolve;
-      this.mods = mods;
+			this.mods = mods;
 		}
 
 		private void SetParams(CardInfo card)
