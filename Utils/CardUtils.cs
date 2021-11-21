@@ -16,19 +16,6 @@ namespace APIPlugin
 		public static Predicate<CardInfo> IsNonLivingCard = card
 			=> card.traits.Exists(t => t is Trait.Terrain or Trait.Pelt);
 
-		public static string CleanCardName(string name)
-		{
-			// When calling PlayableCard.name, it will look like 'Card (Sparrow)' instead of just 'Sparrow'
-			// For some reason CardInfo.name is not available to call
-			if (name.StartsWith("Card "))
-			{
-				string[] nameSplit = name.Split('('); // [Card (, name_of_card)]
-				return nameSplit[nameSplit.Length - 1].Replace(")", "");	
-			}
-
-			return name;
-		}
-		
 		public static List<CardMetaCategory> getNormalCardMetadata = new()
 			{ CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer };
 
