@@ -5,9 +5,8 @@ using HarmonyLib;
 namespace API.Patches
 {
 	[HarmonyPatch(typeof(StatIconInfo), "LoadAbilityData")]
-	public class StatIconInfoPatch
+	public class StatIconInfo_LoadAbilityData
 	{
-		[HarmonyPostfix]
 		static void Postfix()
 		{
 			foreach (var ability in NewSpecialAbility.specialAbilities)

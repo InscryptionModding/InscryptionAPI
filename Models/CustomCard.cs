@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -9,12 +8,14 @@ namespace APIPlugin
 	public class CustomCard
 	{
 		public static List<CustomCard> cards = new();
-    
+
 		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
 		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
 		public static Dictionary<int,EvolveIdentifier> evolveIds = new();
 		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new();
 		public static Dictionary<int,TailIdentifier> tailIds = new();
+
+		public static Dictionary<string, Sprite> emissions = new();
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -44,6 +45,7 @@ namespace APIPlugin
 		[IgnoreMapping] public Texture2D altTex;
 		public Texture titleGraphic;
 		[IgnoreMapping] public Texture2D pixelTex;
+		[IgnoreMapping] public Texture2D emissionTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
 		public List<AbilityIdentifier> abilityIdList = new();
@@ -52,11 +54,11 @@ namespace APIPlugin
 		public TailIdentifier tailId;
 
 		public CustomCard(
-			string name, 
-			List<AbilityIdentifier> abilityIdParam=null, 
-			List<SpecialAbilityIdentifier> specialAbilityIdParam=null, 
-			EvolveIdentifier evolveId=null, 
-			IceCubeIdentifier iceCubeId=null, 
+			string name,
+			List<AbilityIdentifier> abilityIdParam=null,
+			List<SpecialAbilityIdentifier> specialAbilityIdParam=null,
+			EvolveIdentifier evolveId=null,
+			IceCubeIdentifier iceCubeId=null,
 			TailIdentifier tailId=null)
 		{
 			this.name = name;
@@ -71,12 +73,12 @@ namespace APIPlugin
 					this.abilities.Add(id.id);
           abilitiesToRemove.Add(id);
 				}
-				
+
 				foreach (AbilityIdentifier id in abilitiesToRemove)
 				{
 					abilityIdParam.Remove(id);
 				}
-				
+
 				if (abilityIdParam.Count > 0)
 				{
 					CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdParam;
@@ -91,12 +93,12 @@ namespace APIPlugin
 					this.specialAbilities.Add(id.id);
           specialAbilitiesToRemove.Add(id);
 				}
-				
+
 				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
 				{
 					specialAbilityIdParam.Remove(id);
 				}
-				
+
 				if (specialAbilityIdParam.Count > 0)
 				{
 					CustomCard.specialAbilityIds[CustomCard.cards.Count - 1] = specialAbilityIdParam;
@@ -133,6 +135,14 @@ namespace APIPlugin
 				tex.filterMode = FilterMode.Point;
 				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
+				if (this.emissionTex is not null)
+				{
+					emissionTex.name = tex.name + "_emission";
+					emissionTex.filterMode = FilterMode.Point;
+					Sprite emissionSprite = Sprite.Create(emissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+					emissionSprite.name = tex.name + "_emission";
+					emissions.Add(tex.name, emissionSprite);
+				}
 			}
 
 			if (this.altTex is not null)

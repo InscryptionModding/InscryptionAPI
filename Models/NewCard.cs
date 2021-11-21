@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CardLoaderPlugin.lib;
 using DiskCardGame;
 using UnityEngine;
 
@@ -15,7 +14,9 @@ namespace APIPlugin
 		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
 		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
 		public static Dictionary<int, TailIdentifier> tailIds = new();
-		
+
+		public static Dictionary<string, Sprite> emissions = new();
+
 		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
 			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null,
 			EvolveIdentifier evolveId = null,
@@ -36,14 +37,14 @@ namespace APIPlugin
 			int bloodCost = 0, int bonesCost = 0, int energyCost = 0,
 			List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None,
 			List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null,
-			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null, 
+			List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null,
 			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null, EvolveParams evolveParams = null,
 			string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null,
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+			Texture2D emissionTex = null, GameObject animatedPortrait = null, List<Texture> decals = null,
+			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
 
@@ -119,7 +120,7 @@ namespace APIPlugin
 			}
 
 			// textures
-			DetermineAndSetCardArt(name, card, defaultTex, altTex, pixelTex);
+			DetermineAndSetCardArt(name, card, defaultTex, altTex, pixelTex, emissionTex);
 
 			if (animatedPortrait is not null)
 			{
@@ -166,15 +167,15 @@ namespace APIPlugin
 				{
 					abilityIdsParam.Remove(id);
 				}
-				
+
 				if (abilityIdsParam.Count > 0)
 				{
 					NewCard.abilityIds[NewCard.cards.Count - 1] = abilityIdsParam;
 				}
 			}
-			
+
 			// Handle SpecialAbilityIds
-      List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<AbilityIdentifier>();
+      List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
 			if (specialAbilitiesIdsParam is not null)
 			{
 				foreach (var id in specialAbilitiesIdsParam.Where(id => id.id != 0))
@@ -182,7 +183,7 @@ namespace APIPlugin
 					card.specialAbilities.Add(id.id);
           specialAbilitiesToRemove.Add(id);
 				}
-        
+
         foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
 				{
 					specialAbilitiesIdsParam.Remove(id);
@@ -215,7 +216,7 @@ namespace APIPlugin
 
 		private static void DetermineAndSetCardArt(
 			string name, CardInfo card,
-			Texture2D defaultTex, Texture2D altTex, Texture2D pixelTex)
+			Texture2D defaultTex, Texture2D altTex, Texture2D pixelTex, Texture2D emissionTex)
 		{
 			var newName = "portrait_" + name;
 			if (defaultTex is not null)
@@ -225,6 +226,14 @@ namespace APIPlugin
 
 				card.portraitTex = Sprite.Create(defaultTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = newName;
+				if (emissionTex is not null)
+				{
+					emissionTex.name = newName + "_emission";
+					emissionTex.filterMode = FilterMode.Point;
+					Sprite emissionSprite = Sprite.Create(emissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+					emissionSprite.name = newName + "_emission";
+					emissions.Add(newName, emissionSprite);
+				}
 			}
 
 			if (altTex is not null)

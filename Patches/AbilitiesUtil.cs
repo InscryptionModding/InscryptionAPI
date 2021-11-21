@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace API.Patches
 {
-	[HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon", 
+	[HarmonyPatch(typeof(AbilitiesUtil), "LoadAbilityIcon",
 		typeof(string), typeof(bool), typeof(bool))]
 	public class AbilitiesUtil_LoadAbilityIcon
 	{
@@ -24,7 +24,7 @@ namespace API.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(AbilitiesUtil), "GetAbilities", 
+	[HarmonyPatch(typeof(AbilitiesUtil), "GetAbilities",
 		typeof(bool), typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory))]
 	public class AbilitiesUtil_GetAbilities
 	{
