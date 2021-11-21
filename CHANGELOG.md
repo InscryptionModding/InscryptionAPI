@@ -1,8 +1,11 @@
 # Changelog
+## v1.12.1
+- Bugfix so CustomCard doesn't wipe ability information.
+
 ## v1.12
-- Fixes params
-- Adds feature for special abilities and special stat icons
-- Added support for emissions
+- Fixes params.
+- Adds feature for special abilities and special stat icons.
+- Added support for emissions.
 
 ## v1.11
 - Added support for more identifiers

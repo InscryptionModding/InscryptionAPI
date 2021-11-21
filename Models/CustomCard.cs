@@ -16,6 +16,7 @@ namespace APIPlugin
 		public static Dictionary<int,TailIdentifier> tailIds = new();
 
 		public static Dictionary<string, Sprite> emissions = new();
+
 		public string name;
 		public List<CardMetaCategory> metaCategories;
 		public CardComplexity? cardComplexity;
@@ -32,8 +33,8 @@ namespace APIPlugin
 		public SpecialStatIcon? specialStatIcon;
 		public List<Tribe> tribes;
 		public List<Trait> traits;
-		public List<SpecialTriggeredAbility> specialAbilities = new();
-		public List<Ability> abilities = new();
+		public List<SpecialTriggeredAbility> specialAbilities;
+		public List<Ability> abilities;
 		public EvolveParams evolveParams;
 		public string defaultEvolutionName;
 		public TailParams tailParams;
@@ -48,10 +49,6 @@ namespace APIPlugin
 		[IgnoreMapping] public Texture2D emissionTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
-		public List<AbilityIdentifier> abilityIdList = new();
-		public EvolveIdentifier evolveId;
-		public IceCubeIdentifier iceCubeId;
-		public TailIdentifier tailId;
 
 		public CustomCard(
 			string name,
@@ -65,46 +62,15 @@ namespace APIPlugin
 			CustomCard.cards.Add(this);
 
 			// Handle AbilityIdentifier
-			List<AbilityIdentifier> abilitiesToRemove = new List<AbilityIdentifier>();
-			if (abilityIdParam is not null)
+			if (abilityIdParam is not null && abilityIdParam.Count > 0)
 			{
-				foreach (var id in abilityIdParam.Where(id => id.id != 0))
-				{
-					this.abilities.Add(id.id);
-          abilitiesToRemove.Add(id);
-				}
-
-				foreach (AbilityIdentifier id in abilitiesToRemove)
-				{
-					abilityIdParam.Remove(id);
-				}
-
-				if (abilityIdParam.Count > 0)
-				{
-					CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdParam;
-				}
+				CustomCard.abilityIds[CustomCard.cards.Count - 1] = abilityIdParam;
 			}
 
-			List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
-			if (specialAbilityIdParam is not null)
+			if (specialAbilityIdParam is not null && specialAbilityIdParam.Count > 0)
 			{
-				foreach (var id in specialAbilityIdParam.Where(id => id.id != 0))
-				{
-					this.specialAbilities.Add(id.id);
-          specialAbilitiesToRemove.Add(id);
-				}
-
-				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
-				{
-					specialAbilityIdParam.Remove(id);
-				}
-
-				if (specialAbilityIdParam.Count > 0)
-				{
-					CustomCard.specialAbilityIds[CustomCard.cards.Count - 1] = specialAbilityIdParam;
-				}
+				CustomCard.specialAbilityIds[CustomCard.cards.Count - 1] = specialAbilityIdParam;
 			}
-
 
 			// Handle EvolveIdentifier
 			if (evolveId is not null)
