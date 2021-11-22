@@ -42,7 +42,7 @@ namespace APIPlugin
 		public static List<CardAppearanceBehaviour.Appearance> getRareAppearance = new()
 			{ CardAppearanceBehaviour.Appearance.RareCardBackground };
 
-		public static List<CardAppearanceBehaviour.Appearance> getTerrainBackroundAppearance = new()
+		public static List<CardAppearanceBehaviour.Appearance> getTerrainBackgroundAppearance = new()
 		{
 			CardAppearanceBehaviour.Appearance.TerrainBackground
 		};

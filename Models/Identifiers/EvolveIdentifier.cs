@@ -41,18 +41,18 @@ namespace APIPlugin
 
 		private void SetParams(CardInfo card)
 		{
-			EvolveParams evolution = new EvolveParams();
+			EvolveParams _evolution = new EvolveParams();
 
-			evolution.turnsToEvolve = this.turnsToEvolve;
+			_evolution.turnsToEvolve = this.turnsToEvolve;
 
-			evolution.evolution = card;
+			_evolution.evolution = card;
 
 			if (this.mods != null)
 			{
-				evolution.evolution.mods.Add(this.mods);
+				_evolution.evolution.mods.Add(this.mods);
 			}
 
-			this.evolution = evolution;
+			this.evolution = _evolution;
 		}
 
 		public override string ToString()
