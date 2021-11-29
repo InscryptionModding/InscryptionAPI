@@ -13,34 +13,50 @@ namespace API.Patches
 			if(___instance == null)
 			{
 				RegionProgression official = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
-				foreach(CustomRegion region in CustomRegion.regions){
-					int tier = 0;
-					bool found = false;
-					foreach(List<RegionData> regions in official.regions){
-						int index = regions.FindIndex((RegionData x) => x.name == region.name);
-						if (index != -1)
+
+				// If no custom region is defined for the default region, but custom encounters for that region exist, create one
+				for (int t = 0; t <= 3; t++)
+                {
+					if (NewEncounter.encounters.Exists(encounter => (encounter.regionName == official.regions[t][0].name)))
+                    {
+						if (!CustomRegion.regions.Exists(region => (region.tier == t && region.name == official.regions[t][0].name)))
 						{
-							if (region.tier == null || (int)region.tier == tier)
+							new CustomRegion(official.regions[t][0].name);
+                        }
+                    }
+                }
+
+				foreach(CustomRegion region in CustomRegion.regions){
+					bool found = false;
+					foreach (List<RegionData> tier in official.regions) {
+						RegionData officialRegion = tier.Find((RegionData x) => x.name == region.name);
+						if (officialRegion != null)
+						{
+							region.AdjustRegion(officialRegion);
+							List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.regionName == region.name);
+							foreach (NewEncounter encounter in customEncounters)
 							{
-								official.regions[tier][index] = region.AdjustRegion(regions[index]);
-							}
-							else
-							{
-								RegionData officialRegion = regions[index];
-								official.regions[tier].Remove(officialRegion);
-								while ((int)region.tier >= official.regions.Count)
+								if (encounter.regular)
 								{
-									official.regions.Add(new List<RegionData>());
+									officialRegion.encounters.Add(encounter.encounterBlueprintData);
 								}
-								official.regions[(int)region.tier].Add(region.AdjustRegion(officialRegion));
+								if (encounter.bossPrep)
+                                {
+									Plugin.Log.LogInfo($"Loaded custom encounter {encounter.name} as boss prep encounter into region {region.name}");
+									officialRegion.bossPrepEncounter = encounter.encounterBlueprintData;
+                                }
 							}
+							if (customEncounters.Count > 0)
+							{
+								Plugin.Log.LogInfo($"Loaded {customEncounters.Count} custom encounters into region {region.name}");
+							}
+							Plugin.Log.LogInfo($"Loaded modified region {officialRegion.name} into data");
 							found = true;
-							Plugin.Log.LogInfo($"Loaded modified {region.name} into data");
+							break;
 						}
-						tier++;
 					}
 					if (!found)
-					{
+                    {
 						Plugin.Log.LogInfo($"Could not find region {region.name} to modify");
 					}
 				}
@@ -51,9 +67,20 @@ namespace API.Patches
 						official.regions.Add(new List<RegionData>());
 					}
 					official.regions[region.tier].Add(region.region);
+					
+					List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.name == region.region.name);
+					foreach (NewEncounter encounter in customEncounters)
+					{
+						region.region.encounters.Add(encounter.encounterBlueprintData);
+					}
+
+					if (customEncounters.Count > 0)
+					{
+						Plugin.Log.LogInfo($"Loaded {customEncounters.Count} custom encounters into new custom region {region.region.name}");
+					}
 				}
 				___instance = official;
-				Plugin.Log.LogInfo($"Loaded custom regions into data");
+				Plugin.Log.LogInfo($"Loaded {CustomRegion.regions.Count} new custom regions into data");
 			}
 		}
 	}
