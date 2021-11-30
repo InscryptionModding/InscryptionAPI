@@ -102,7 +102,6 @@ namespace APIPlugin
     
     private static bool AbilityDoesNotExistOrCanStack(List<Ability> abilities, AbilityIdentifier id)
     {
-      Log.LogDebug($"List of abilities [{abilities}] with id [{id.id}]");
       return !abilities.Contains(id.id) || AbilitiesUtil.GetInfo(id.id).canStack;
     }
 
