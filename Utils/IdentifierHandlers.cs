@@ -7,6 +7,9 @@ namespace APIPlugin
   {
     private void SetAbilityIdentifiers()
     {
+      ImportNewAbilities();
+
+      Log.LogDebug($"Number of ability IDs to set from NewCard.abilityIds: [{NewCard.abilityIds.Count}]");
       foreach(var item in NewCard.abilityIds)
       {
         foreach (AbilityIdentifier id in item.Value)
@@ -25,6 +28,7 @@ namespace APIPlugin
         }
       }
 
+      Log.LogDebug($"Number of ability IDs to set from CustomCard.abilityIds: [{CustomCard.abilityIds.Count}]");
       foreach(var item in CustomCard.abilityIds)
       {
         foreach (AbilityIdentifier id in item.Value)
@@ -42,7 +46,23 @@ namespace APIPlugin
         }
       }
     }
-    
+
+    private static void ImportNewAbilities()
+    {
+      Log.LogDebug($"Starting pre-emptive data load for AbilityInfo before adding custom abilities...");
+      List<AbilityInfo> official = ScriptableObjectLoader<AbilityInfo>.AllData;
+      
+      foreach (NewAbility newAbility in NewAbility.abilities)
+      {
+        Log.LogDebug($"Added [{newAbility.info.rulebookName}] to official ability list!");
+        official.Add(newAbility.info);
+      }
+
+      ScriptableObjectLoader<AbilityInfo>.allData = official;
+      Log.LogInfo($"Loaded {NewAbility.abilities.Count} custom abilities into data! " +
+                  $"Total of [{ScriptableObjectLoader<AbilityInfo>.allData}]");
+    }
+
     private void SetSpecialAbilityIdentifiers()
     {
       foreach(var item in NewCard.specialAbilityIds)
@@ -82,6 +102,7 @@ namespace APIPlugin
     
     private static bool AbilityDoesNotExistOrCanStack(List<Ability> abilities, AbilityIdentifier id)
     {
+      Log.LogDebug($"List of abilities [{abilities}] with id [{id.id}]");
       return !abilities.Contains(id.id) || AbilitiesUtil.GetInfo(id.id).canStack;
     }
 

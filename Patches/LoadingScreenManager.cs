@@ -31,18 +31,6 @@ namespace API.Patches
 				ScriptableObjectLoader<CardInfo>.allData = official.Concat(NewCard.cards).ToList();
 				Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
 			}
-
-			if (ScriptableObjectLoader<AbilityInfo>.allData == null)
-			{
-				List<AbilityInfo> official = ScriptableObjectLoader<AbilityInfo>.AllData;
-				foreach (NewAbility newAbility in NewAbility.abilities)
-				{
-					official.Add(newAbility.info);
-				}
-
-				ScriptableObjectLoader<AbilityInfo>.allData = official;
-				Plugin.Log.LogInfo($"Loaded {NewAbility.abilities.Count} custom abilities into data");
-			}
 		}
 	}
 }
