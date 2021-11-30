@@ -24,8 +24,7 @@ namespace API.Patches
 						int min = customAbilities.AsQueryable().Min();
 						int max = customAbilities.AsQueryable().Max();
 						PageRangeInfo pageRange = pageRangeInfo;
-						Func<int, bool> doAddPageFunc;
-						doAddPageFunc = (int index) =>
+						Func<int, bool> doAddPageFunc = (int index) =>
 							customAbilities.Contains(index)
 							&& AbilitiesUtil.GetInfo((Ability)index).metaCategories.Contains(metaCategory);
 						__result.AddRange(__instance.ConstructPages(pageRange,
@@ -38,7 +37,7 @@ namespace API.Patches
 				}
 			}
 
-			if (NewSpecialAbility.specialAbilities.Count > 0)
+			if (NewSpecialAbility.specialAbilities.Count > 0 && NewSpecialAbility.specialAbilities.Any(ab => ab.statIconInfo))
 			{
 				foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
 				{
@@ -46,14 +45,14 @@ namespace API.Patches
 					if (pageRangeInfo.type == PageRangeType.StatIcons)
 					{
 						List<int> customAbilities = NewSpecialAbility.specialAbilities
+							.Where(x => x.statIconInfo)
 							.Select(x => (int)x.statIconInfo.iconType).ToList();
 						Plugin.Log.LogInfo(
 							$"Number of custom abilities found to add to rulebook [{customAbilities.Count}]");
 						int min = customAbilities.AsQueryable().Min();
 						int max = customAbilities.AsQueryable().Max();
 						PageRangeInfo pageRange = pageRangeInfo;
-						Func<int, bool> doAddPageFunc;
-						doAddPageFunc = (int index) =>
+						Func<int, bool> doAddPageFunc = (int index) =>
 							customAbilities.Contains(index)
 							&& StatIconInfo.GetIconInfo((SpecialStatIcon)index).metaCategories.Contains(metaCategory);
 						__result.AddRange(__instance.ConstructPages(pageRange,
