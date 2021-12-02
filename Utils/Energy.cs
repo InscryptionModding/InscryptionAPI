@@ -21,9 +21,15 @@ namespace APIPlugin
     private IEnumerator AwakeDrone()
     {
       yield return new WaitForSeconds(1);
-      Singleton<ResourceDrone>.Instance.Awake();
+      if (Singleton<ResourceDrone>.Instance != null)
+      {
+        Singleton<ResourceDrone>.Instance.Awake();
+      }
       yield return new WaitForSeconds(1);
-      Singleton<ResourceDrone>.Instance.AttachGemsModule();
+      if (Singleton<ResourceDrone>.Instance != null)
+      {
+        Singleton<ResourceDrone>.Instance.AttachGemsModule();
+      }
     }
   }
 }
