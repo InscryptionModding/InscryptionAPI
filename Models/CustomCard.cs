@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using DiskCardGame;
 using UnityEngine;
 
@@ -94,15 +93,19 @@ namespace APIPlugin
 		public CardInfo AdjustCard(CardInfo card)
 		{
 			TypeMapper<CustomCard, CardInfo>.Convert(this, card);
-
+			Plugin.Log.LogDebug($"Finished TypeMapping for card [{card.name}]!");
+			
+			Plugin.Log.LogDebug($"Checking default tex is not null...");
 			if (this.tex is not null)
 			{
+				Plugin.Log.LogDebug($"Default tex is not null, setting fields...");
 				tex.name = "portrait_" + name;
 				tex.filterMode = FilterMode.Point;
 				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
 				if (this.emissionTex is not null)
 				{
+					Plugin.Log.LogDebug($"Emission tex is not null, setting fields...");
 					emissionTex.name = tex.name + "_emission";
 					emissionTex.filterMode = FilterMode.Point;
 					Sprite emissionSprite = Sprite.Create(emissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
@@ -111,21 +114,36 @@ namespace APIPlugin
 				}
 			}
 
+			Plugin.Log.LogDebug($"Checking AltTex is not null...");
 			if (this.altTex is not null)
 			{
+				Plugin.Log.LogDebug($"--> AltTex is not null, setting fields...");
 				altTex.name = "portrait_" + name;
 				altTex.filterMode = FilterMode.Point;
 				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
 			}
 
+			Plugin.Log.LogDebug($"Checking pixelTex is not null...");
 			if (this.pixelTex is not null)
 			{
+				Plugin.Log.LogDebug($"PixelTex is not null, setting fields...");
 				pixelTex.name = "portrait_" + name;
 				pixelTex.filterMode = FilterMode.Point;
 				card.pixelPortrait =
 					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = "portrait_" + name;
+			}
+
+			Plugin.Log.LogDebug($"Checking decals is not null...");
+			if (this.decals is not null)
+			{
+				foreach (var decal in this.decals)
+				{
+					decal.filterMode = FilterMode.Point;
+				}
+
+				card.decals = this.decals;
 			}
 
 			Plugin.Log.LogInfo($"Adjusted default card {name}!");
