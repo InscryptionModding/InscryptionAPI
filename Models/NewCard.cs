@@ -131,6 +131,11 @@ namespace APIPlugin
 			if (decals is not null)
 			{
 				// TODO Access and provide default decals
+				foreach (var texture in decals)
+				{
+					texture.filterMode = FilterMode.Point;
+				}
+
 				card.decals = decals;
 			}
 
