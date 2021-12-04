@@ -68,7 +68,7 @@ namespace API.Patches
 					}
 					official.regions[region.tier].Add(region.region);
 					
-					List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.name == region.region.name);
+					List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.regionName == region.region.name);
 					foreach (NewEncounter encounter in customEncounters)
 					{
 						region.region.encounters.Add(encounter.encounterBlueprintData);
