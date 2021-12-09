@@ -88,8 +88,15 @@ namespace APIPlugin
         }
       }
 
-      ScriptableObjectLoader<CardInfo>.allData = officialCardInfo.Concat(NewCard.cards).ToList();
-      Plugin.Log.LogInfo($"Loaded {CustomCard.cards.Count} custom cards into data");
+      ScriptableObjectLoader<CardInfo>.allData = officialCardInfo.Concat(
+        NewCard.cards.Select(cardInfo =>
+          {
+            Log.LogInfo($"Loaded custom card to card pool: [{cardInfo.name}]");
+            return cardInfo; 
+          }
+        )
+      ).ToList();
+      Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
     }
 
     private void SetSpecialAbilityIdentifiers()
