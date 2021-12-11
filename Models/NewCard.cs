@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using DiskCardGame;
 using UnityEngine;
+using static DiskCardGame.CharacterFace;
+using static UnityEngine.Object;
 
 namespace APIPlugin
 {
@@ -127,6 +130,11 @@ namespace APIPlugin
 				// TODO Provide a function to create animated card textures
 				card.animatedPortrait = animatedPortrait;
 			}
+			else if (specialAbilities.Contains(SpecialTriggeredAbility.TalkingCardChooser))
+			{
+				// TODO: Make talking cards not depend on animated portraits
+				CreateAnimatedPortrait(card);
+			}
 
 			if (decals is not null)
 			{
@@ -160,7 +168,7 @@ namespace APIPlugin
 				foreach (var id in abilityIdsParam.Where(id => id.id != 0))
 				{
 					card.abilities.Add(id.id);
-          abilitiesToRemove.Add(id);
+					abilitiesToRemove.Add(id);
 				}
 
 				foreach (AbilityIdentifier id in abilitiesToRemove)
@@ -175,16 +183,16 @@ namespace APIPlugin
 			}
 
 			// Handle SpecialAbilityIds
-      List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
+			List<SpecialAbilityIdentifier> specialAbilitiesToRemove = new List<SpecialAbilityIdentifier>();
 			if (specialAbilitiesIdsParam is not null)
 			{
 				foreach (var id in specialAbilitiesIdsParam.Where(id => id.id != 0))
 				{
 					card.specialAbilities.Add(id.id);
-          specialAbilitiesToRemove.Add(id);
+					specialAbilitiesToRemove.Add(id);
 				}
 
-        foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
+				foreach (SpecialAbilityIdentifier id in specialAbilitiesToRemove)
 				{
 					specialAbilitiesIdsParam.Remove(id);
 				}
@@ -254,6 +262,39 @@ namespace APIPlugin
 					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
+		}
+
+		private static void CreateAnimatedPortrait(CardInfo card)
+		{
+			if (!card.appearanceBehaviour.Contains(CardAppearanceBehaviour.Appearance.AnimatedPortrait))
+			{
+				card.appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
+			}
+			Sprite mainSprite = Sprite.Create(card.portraitTex.texture, card.portraitTex.rect, new Vector2(0.5f, 0f));
+
+			Sprite empty = Sprite.Create(mainSprite.texture, new Rect(0, 0, 0, 0), new Vector2(0.5f, 0.5f));
+
+			GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Cards/AnimatedPortraits/TalkingCardPortrait"));
+			obj.transform.localScale = new Vector3(obj.transform.localScale.x * 0.9f, obj.transform.localScale.y * 0.9f, obj.transform.localScale.z * 0.9f);
+			DontDestroyOnLoad(obj);
+
+			CharacterFace face = obj.GetComponentInChildren<CharacterFace>();
+			List<EmotionSprites> emotes = (List<EmotionSprites>) face.GetType().GetField("emotionSprites", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(face);
+
+			emotes.Clear();
+			emotes.Add(new EmotionSprites()
+			{
+				emotion = Emotion.Neutral,
+				face = mainSprite,
+				eyesClosed = empty,
+				eyesClosedEmission = empty,
+				eyesOpen = empty,
+				eyesOpenEmission = empty,
+				mouthClosed = empty,
+				mouthOpen = empty
+			});
+
+			card.animatedPortrait = obj;
 		}
 	}
 }
