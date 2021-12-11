@@ -8,32 +8,33 @@ namespace APIPlugin
 	public class CustomRegion
 	{
 		public static List<CustomRegion> regions = new List<CustomRegion>();
+
 		public string name;
 		public int? tier;
-		private List<CardInfo> terrainCards;
-		private List<ConsumableItemData> consumableItems;
-		private List<EncounterBlueprintData> encounters;
-		private List<Opponent.Type> bosses;
-		private List<CardInfo> likelyCards;
-		private List<Tribe> dominantTribes;
-		private PredefinedNodes predefinedNodes;
-		private EncounterBlueprintData bossPrepEncounter;
-		private StoryEventCondition bossPrepCondition;
-		private List<ScarceSceneryEntry> scarceScenery;
-		private List<FillerSceneryEntry> fillerScenery;
-		private PredefinedScenery predefinedScenery;
-		private string ambientLoopId;
-		private bool? silenceCabinAmbience;
-		private Color? boardLightColor;
-		private Color? cardsLightColor;
-		private bool? dustParticlesDisabled;
-		private bool? fogEnabled;
-		private VolumetricFogAndMist.VolumetricFogProfile fogProfile;
-		private float? fogAlpha;
-		private Texture mapAlbedo;
-		private Texture mapEmission;
-		private Color? mapEmissionColor;
-		private List<GameObject> mapParticlesPrefabs;
+		public List<CardInfo> terrainCards;
+		public List<ConsumableItemData> consumableItems;
+		public List<EncounterBlueprintData> encounters;
+		public List<Opponent.Type> bosses;
+		public List<CardInfo> likelyCards;
+		public List<Tribe> dominantTribes;
+		public PredefinedNodes predefinedNodes;
+		public EncounterBlueprintData bossPrepEncounter;
+		public StoryEventCondition bossPrepCondition;
+		public List<ScarceSceneryEntry> scarceScenery;
+		public List<FillerSceneryEntry> fillerScenery;
+		public PredefinedScenery predefinedScenery;
+		public string ambientLoopId;
+		public bool? silenceCabinAmbience;
+		public Color? boardLightColor;
+		public Color? cardsLightColor;
+		public bool? dustParticlesDisabled;
+		public bool? fogEnabled;
+		public VolumetricFogAndMist.VolumetricFogProfile fogProfile;
+		public float? fogAlpha;
+		public Texture mapAlbedo;
+		public Texture mapEmission;
+		public Color? mapEmissionColor;
+		public List<GameObject> mapParticlesPrefabs;
 
 		public CustomRegion(string name)
 		{

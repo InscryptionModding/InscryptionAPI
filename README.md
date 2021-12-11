@@ -8,7 +8,7 @@ It can currently:
 - Modify existing cards in the card pool
 - Create custom abilities and inject them into the ability pool
 - Reference abilities between mods
-- Create custom regions
+- Create custom regions and encounters
 - Enable energy
 
 ## Installation (automated)
