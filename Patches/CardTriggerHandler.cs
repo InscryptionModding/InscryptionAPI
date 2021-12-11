@@ -77,4 +77,22 @@ namespace API.Patches
 			return false;
 		}
 	}
+
+	[HarmonyPatch(typeof(CardTriggerHandler), "GetType", typeof(string))]
+	public class TriggerTypePatch
+	{
+		public static bool Prefix(ref Type __result, string typeName)
+		{
+			Type t = NewTalkingCard.types.Find(type => type.Name == typeName);
+			if (t != null)
+			{
+				__result = t;
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	}
 }
