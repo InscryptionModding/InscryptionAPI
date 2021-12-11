@@ -17,7 +17,7 @@ namespace APIPlugin
 			ids.Add(this);
 		}
 
-		public static AbilityIdentifier GetAbilityIdentifier(string guid, string name)
+		public static AbilityIdentifier GetID(string guid, string name)
 		{
 			return ids.Exists(x => x.guid == guid && x.name == name)
 				? ids.Find(x => x.guid == guid && x.name == name)

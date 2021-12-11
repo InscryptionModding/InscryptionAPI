@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using APIPlugin;
 using DiskCardGame;
 using HarmonyLib;
@@ -21,13 +21,14 @@ namespace API.Patches
 			if (NewSpecialAbility.specialAbilities.Exists(ability =>
 				info.specialAbilities.Contains(ability.specialTriggeredAbility)))
 			{
-				foreach (var specialTriggeredAbility in info.specialAbilities)
+				foreach (var type in info.specialAbilities
+					.Select(specialTriggeredAbility => NewSpecialAbility.specialAbilities
+					.Find(x => x.specialTriggeredAbility == specialTriggeredAbility))
+					.Select(newAbility => newAbility.abilityBehaviour))
 				{
-					NewSpecialAbility newAbility = NewSpecialAbility.specialAbilities
-						.Find(x => x.specialTriggeredAbility == specialTriggeredAbility);
-					Type type = newAbility.abilityBehaviour;
 					Plugin.Log.LogDebug($"-> Special Card Behaviour Type is [{type}]");
 					Component baseC = __instance;
+					// This assigns it to the gameObject. We do not need to call CardTriggerHandler.AddReceiverToGameObject
 					SpecialCardBehaviour item = baseC.gameObject.GetComponent(type) as SpecialCardBehaviour 
 					                            ?? baseC.gameObject.AddComponent(type) as SpecialCardBehaviour;
 				}
