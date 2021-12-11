@@ -5,5 +5,3 @@ bin/
 .vs/
 .vscode/
 *.user
-
-GameFolder.props

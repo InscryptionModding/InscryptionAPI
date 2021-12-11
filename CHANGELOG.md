@@ -1,4 +1,7 @@
 # Changelog
+## 1.13.0
+- TBA
+
 ## v1.12.1
 - Bugfix so CustomCard doesn't wipe ability information.
 
