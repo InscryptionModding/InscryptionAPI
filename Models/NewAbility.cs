@@ -27,7 +27,7 @@ namespace APIPlugin
 			if (id != null){
 				id.id = ability;
 			}
-			Plugin.Log.LogInfo($"Loaded custom ability {info.rulebookName}!");
+			Plugin.Log.LogDebug($"ADded custom ability {info.rulebookName}!");
 		}
 	}
 }

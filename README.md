@@ -57,6 +57,21 @@ The next planned features for this plugin are:
 
  - Extending the loader to handle and load custom ~~abilities,~~ boons and items.
 
+## Building This Project
+To build this project, you must add a GameFolder.props file inside the same directory that contains your Dependencies.props file.
+
+Inside the GameFolder.props file, it should look something like this:
+
+```
+<Project>
+  <PropertyGroup>
+    <GameFolder>PATH_TO_GAME</GameFolder>
+  </PropertyGroup>
+</Project>
+```
+
+You'd obviously replace `PATH_TO_GAME` with the path to where Inscription.exe is located. For example, this would be `C:/Program Files (x86)/Steam/steamapps/common/Inscryption`
+
 ## Contribution
 ### How can you help?
 Use the plugin and report bugs you find! Lots of traits won't be designed to work well together and may cause bugs or crashes. At the very least we can document this. Ideally we can create generic patches for them.

@@ -131,6 +131,11 @@ namespace APIPlugin
 			if (decals is not null)
 			{
 				// TODO Access and provide default decals
+				foreach (var texture in decals)
+				{
+					texture.filterMode = FilterMode.Point;
+				}
+
 				card.decals = decals;
 			}
 
@@ -143,7 +148,7 @@ namespace APIPlugin
 
 			HandleIdentifiers(card, abilityIdsParam, specialAbilitiesIdsParam, evolveId, iceCubeId, tailId);
 
-			Plugin.Log.LogInfo($"Loaded custom card {name}!");
+			Plugin.Log.LogDebug($"Added custom card {name}!");
 		}
 
 		private static void HandleIdentifiers(

@@ -1,0 +1,33 @@
+<Project InitialTargets="ValidateGamePath;ValidateBepInEx">
+    <Import Project="$(MSBuildThisFileDirectory)/GameFolder.props" Condition="Exists('$(MSBuildThisFileDirectory)/GameFolder.props')"/>
+    
+    <!-- GameFolder.props Validation -->
+    <Target Name="ValidateGamePath">
+        <Error Text="The GameFolder property must be set to the game folder of Inscryption. Look at the README.md under 'Building this Project' for more information" Condition="'$(GameFolder)' == '' or !Exists('$(GameFolder)')"  Code="VAL01" />
+    </Target>
+    
+    <!-- BepInEx Validation -->
+    <Target Name="ValidateBepInEx">
+        <Error Text="BepInEx must be installed for Inscryption (at $(GameFolder))" Condition="!Exists('$(GameFolder)/BepInEx')" Code="VAL02" />
+    </Target>
+
+    <!-- General properties -->
+    <PropertyGroup>
+        <BIELibsFolder>$(GameFolder)/BepInEx/core</BIELibsFolder>
+        <ManagedFolder>$(GameFolder)/Inscryption_Data/Managed</ManagedFolder>
+    </PropertyGroup>
+    
+    <!-- BepInEx dependencies -->
+    <ItemGroup>
+        <Reference Include="$(BIELibsFolder)/BepInEx.*.dll" />
+        <Reference Include="$(BIELibsFolder)/0Harmony.dll" />
+    </ItemGroup>
+    
+    <!-- Game dependencies -->
+    <ItemGroup>
+        <Reference Include="$(ManagedFolder)/*.dll" />
+        <Reference Remove="$(ManagedFolder)/System*.dll" />
+        <Reference Remove="$(ManagedFolder)/netstandard.dll" />
+        <Reference Remove="$(ManagedFolder)/mscorlib.dll" />
+    </ItemGroup>
+</Project>

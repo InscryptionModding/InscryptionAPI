@@ -27,21 +27,20 @@ namespace APIPlugin
 				HandleStatIconInfo(statIconInfo);
 				logNameOrIdNumber = this.statIconInfo.rulebookName;
 			}
+
 			this.abilityBehaviour = abilityBehaviour;
 			this.id = id;
 			id.id = specialTriggeredAbility;
 
-			HandleStatIconInfo(statIconInfo);
-
 			specialAbilities.Add(this);
-			Plugin.Log.LogInfo($"Loaded custom special ability [{logNameOrIdNumber}]!");
+			Plugin.Log.LogDebug($"Added custom special ability [{logNameOrIdNumber}]!");
 		}
 
 		// is only called if StatIconInfo is not null
 		private static void HandleStatIconInfo(StatIconInfo statIconInfo)
 		{
 			statIconInfo.iconType = (SpecialStatIcon)8 + specialAbilities.Count;
-			
+
 			if (statIconInfo.iconGraphic is not null)
 			{
 				// the reason for this is just one less step for the end user to setup
