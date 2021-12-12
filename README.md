@@ -66,4 +66,8 @@ Great! I'm more than happy to accept help. Either make a pull request or come jo
 Donations are totally not needed, this is a passion project before anything else. If you do still want to donate though, you can buy me a coffee on [ko-fi](https://ko-fi.com/madcyantist).
 
 ## Contributors
+- divisionbyz0rro
+- IngoH
+- JamesVeug
+- julian-perge
 - Windows10CE
