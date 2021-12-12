@@ -130,7 +130,7 @@ namespace APIPlugin
 				// TODO Provide a function to create animated card textures
 				card.animatedPortrait = animatedPortrait;
 			}
-			else if (specialAbilities.Contains(SpecialTriggeredAbility.TalkingCardChooser))
+			else if (specialAbilities is not null && specialAbilities.Contains(SpecialTriggeredAbility.TalkingCardChooser))
 			{
 				// TODO: Make talking cards not depend on animated portraits
 				CreateAnimatedPortrait(card);
