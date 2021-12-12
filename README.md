@@ -6,9 +6,11 @@ This plugin is a BepInEx plugin made for Inscryption as an API.
 It can currently:
 - Create custom cards and inject them into the card pool
 - Modify existing cards in the card pool
+- Create custom card backgrounds
 - Create custom abilities and inject them into the ability pool
 - Reference abilities between mods
 - Create custom regions and encounters
+- Create talking cards and add dialogues
 - Enable energy
 
 ## Installation (automated)
@@ -66,4 +68,8 @@ Great! I'm more than happy to accept help. Either make a pull request or come jo
 Donations are totally not needed, this is a passion project before anything else. If you do still want to donate though, you can buy me a coffee on [ko-fi](https://ko-fi.com/madcyantist).
 
 ## Contributors
+- divisionbyz0rro
+- IngoH
+- JamesVeug
+- julian-perge
 - Windows10CE
