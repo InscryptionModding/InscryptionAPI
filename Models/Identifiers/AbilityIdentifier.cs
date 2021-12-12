@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DiskCardGame;
 
@@ -15,6 +16,12 @@ namespace APIPlugin
 			this.guid = guid;
 			this.name = name;
 			ids.Add(this);
+		}
+
+		[Obsolete("GetIdentifier is deprecated, use GetID instead")]
+		public static AbilityIdentifier GetIdentifier(string guid, string name)
+		{
+			return GetID(guid, name);
 		}
 
 		public static AbilityIdentifier GetID(string guid, string name)
