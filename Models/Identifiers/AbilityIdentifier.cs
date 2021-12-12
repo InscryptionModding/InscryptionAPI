@@ -21,9 +21,7 @@ namespace APIPlugin
 		[Obsolete("Replaced by GetID")]
 		public static AbilityIdentifier GetAbilityIdentifier(string guid, string name)
 		{
-			return ids.Exists(x => x.guid == guid && x.name == name)
-				? ids.Find(x => x.guid == guid && x.name == name)
-				: new AbilityIdentifier(guid, name);
+			return GetID(guid, name);
 		}
 
 		public static AbilityIdentifier GetID(string guid, string name)
