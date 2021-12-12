@@ -15,13 +15,13 @@ namespace APIPlugin
             }
 			if (dialogueEvents.Count > 0)
 			{
-				Plugin.Log.LogInfo($"Loaded {dialogueEvents.Count} custom dialogues!");
+				Plugin.Log.LogInfo($"Added {dialogueEvents.Count} custom dialogues!");
 			}
 		}
 
 		public static void Add(string id, DialogueEvent dialogueEvent) {
 			NewDialogue.dialogueEvents.Add(id, dialogueEvent);
-			Plugin.Log.LogInfo($"Loaded custom dialogue {id}!");
+			Plugin.Log.LogInfo($"Added custom dialogue {id}!");
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace APIPlugin
 			NewTalkingCard.talkingCards.Add(name.Replace(" ", "_"), typeof(T));
 			NewTalkingCard.types.Add(typeof(T));
 			NewDialogue.AddAll(dialogueEvents);
-			Plugin.Log.LogInfo($"Loaded talking card {name}!");
+			Plugin.Log.LogInfo($"Added talking card {name}!");
 		}
 
 		public static void Add<T>(string name) {

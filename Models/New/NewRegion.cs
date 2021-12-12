@@ -13,7 +13,7 @@ namespace APIPlugin
 			this.region = region;
 			this.tier = tier;
 			NewRegion.regions.Add(this);
-			Plugin.Log.LogInfo($"Loaded custom region {region.name}!");
+			Plugin.Log.LogInfo($"Added custom region {region.name}!");
 		}
 	}
 }

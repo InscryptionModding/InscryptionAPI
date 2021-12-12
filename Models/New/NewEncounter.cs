@@ -27,7 +27,7 @@ namespace APIPlugin
 			this.bossPrep = bossPrep;
 			this.regular = regular;
 			NewEncounter.encounters.Add(this);
-			Plugin.Log.LogInfo($"Loaded custom encounter {name} for region {regionName}!");
+			Plugin.Log.LogInfo($"Added custom encounter {name} to region {regionName}!");
 		}
 
 		public static void Add(

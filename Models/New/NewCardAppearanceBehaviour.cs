@@ -22,7 +22,7 @@ namespace APIPlugin
             
             behaviours[backgroundBehaviour.Appearance] = backgroundBehaviour;
             allBehaviours.Add(backgroundBehaviour);
-            Plugin.Log.LogInfo($"Loaded custom card appearance behaviour {name}!");
+            Plugin.Log.LogInfo($"Added custom card appearance behaviour {name}!");
 
             return backgroundBehaviour;
         }

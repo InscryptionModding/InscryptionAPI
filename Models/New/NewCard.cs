@@ -156,7 +156,7 @@ namespace APIPlugin
 
 			HandleIdentifiers(card, abilityIdsParam, specialAbilitiesIdsParam, evolveId, iceCubeId, tailId);
 
-			Plugin.Log.LogDebug($"Added custom card {name}!");
+			Plugin.Log.LogInfo($"Added custom card {name}!");
 		}
 
 		private static void HandleIdentifiers(

@@ -33,7 +33,7 @@ namespace APIPlugin
 			id.id = specialTriggeredAbility;
 
 			specialAbilities.Add(this);
-			Plugin.Log.LogDebug($"Added custom special ability [{logNameOrIdNumber}]!");
+			Plugin.Log.LogInfo($"Added custom special ability [{logNameOrIdNumber}]!");
 		}
 
 		// is only called if StatIconInfo is not null
