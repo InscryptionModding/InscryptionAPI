@@ -1,7 +1,6 @@
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
-using DiskCardGame;
 using HarmonyLib;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +13,7 @@ namespace APIPlugin
   {
     private const string PluginGuid = "cyantist.inscryption.api";
     private const string PluginName = "API";
-    private const string PluginVersion = "1.12.1.0";
+    private const string PluginVersion = "1.13.0.0";
 
     internal static ManualLogSource Log;
     internal static ConfigEntry<bool> configEnergy;
@@ -38,12 +37,13 @@ namespace APIPlugin
 
     private void Start()
     {
+      Log.LogDebug($"APIPlugin Start() begin");
       SetAbilityIdentifiers();
       SetSpecialAbilityIdentifiers();
       SetEvolveIdentifiers();
       SetIceCubeIdentifiers();
       SetTailIdentifiers();
-      ScriptableObjectLoader<CardInfo>.allData = null;
+      Log.LogDebug($"APIPlugin Start() end");
     }
 
     private void OnEnable()

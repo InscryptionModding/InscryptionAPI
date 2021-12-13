@@ -16,11 +16,9 @@ namespace API.Patches
 				return true;
 			}
 
-			Predicate<Tuple<Ability, AbilityBehaviour>> checkAbilityExists = tuple =>
-				tuple.Item1 == ability || AbilityCanStackAndIsNotPassive(ability);
 			Plugin.Log.LogDebug($"Attempting to add regular ability in card trigger handler [{ability}]");
 			// return true if the ability is equal to the ability in the pair OR if ability cannot stack and is passive
-			if (!__instance.triggeredAbilities.Exists(checkAbilityExists))
+			if (!__instance.triggeredAbilities.Exists(tuple => tuple.Item1 == ability) || AbilityCanStackAndIsNotPassive(ability))
 			{
 				Plugin.Log.LogDebug($"-> Ability [{ability}] does not exist, adding...");
 				NewAbility newAbility = NewAbility.abilities.Find(x => x.ability == ability);
@@ -75,6 +73,24 @@ namespace API.Patches
 			}
 
 			return false;
+		}
+	}
+
+	[HarmonyPatch(typeof(CardTriggerHandler), "GetType", typeof(string))]
+	public class TriggerTypePatch
+	{
+		public static bool Prefix(ref Type __result, string typeName)
+		{
+			Type t = NewTalkingCard.types.Find(type => type.Name == typeName);
+			if (t != null)
+			{
+				__result = t;
+				return false;
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}
 }
