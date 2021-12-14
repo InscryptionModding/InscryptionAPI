@@ -1,6 +1,6 @@
 {
     "name": "API",
-    "version_number": "1.12.1",
+    "version_number": "1.13.0",
     "website_url": "https://github.com/ScottWilson0903/InscryptionAPI",
     "description": "This plugin is a BepInEx plugin made for Inscryption as an API. It can currently create custom cards and abilities and inject them into the data pool, or modify existing cards in the card pool.",
     "dependencies": [
