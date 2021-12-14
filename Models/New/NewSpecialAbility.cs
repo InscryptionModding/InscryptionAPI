@@ -19,7 +19,7 @@ namespace APIPlugin
 			StatIconInfo statIconInfo = null
 		)
 		{
-			specialTriggeredAbility = (SpecialTriggeredAbility)26 + specialAbilities.Count;
+			specialTriggeredAbility = (SpecialTriggeredAbility.NUM_ABILITIES + 1) + specialAbilities.Count;
 			var logNameOrIdNumber = specialTriggeredAbility.ToString();
 			if (statIconInfo)
 			{
