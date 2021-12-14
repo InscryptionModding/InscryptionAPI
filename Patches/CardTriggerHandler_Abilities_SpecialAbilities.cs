@@ -4,6 +4,8 @@ using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
 
+#pragma warning disable Harmony003
+
 namespace API.Patches
 {
 	[HarmonyPatch(typeof(CardTriggerHandler), "AddAbility", typeof(Ability))]
@@ -11,7 +13,7 @@ namespace API.Patches
 	{
 		public static bool Prefix(Ability ability, CardTriggerHandler __instance)
 		{
-			if ((int)ability < 99)
+			if ((int) ability < (int) Ability.NUM_ABILITIES)
 			{
 				return true;
 			}
@@ -50,8 +52,8 @@ namespace API.Patches
 		public static bool Prefix(SpecialTriggeredAbility ability, CardTriggerHandler __instance)
 		{
 			Plugin.Log.LogDebug($"Attempting to add spec ability to card trigger handler [{ability}]");
-			if ((int)ability < 25)
-			{
+            if ((int) ability < (int) SpecialTriggeredAbility.NUM_ABILITIES)
+            {
 				return true;
 			}
 			if (!__instance.specialAbilities.Exists(ab => ab.Item1 == ability))
