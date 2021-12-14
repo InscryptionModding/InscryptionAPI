@@ -24,12 +24,11 @@ namespace API.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(AbilitiesUtil), "GetAbilities",
-		typeof(bool), typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory))]
-	public class AbilitiesUtil_GetAbilities
+	[HarmonyPatch(typeof(AbilitiesUtil), "GetLearnedAbilities",
+		typeof(bool), typeof(int), typeof(int), typeof(AbilityMetaCategory))]
+	public class AbilitiesUtil_GetLearnedAbilities
 	{
 		public static void Postfix(
-			bool learned,
 			bool opponentUsable,
 			int minPower,
 			int maxPower,
@@ -43,11 +42,7 @@ namespace API.Patches
 				bool flag = !opponentUsable || info.opponentUsable;
 				bool flag2 = info.powerLevel >= minPower && info.powerLevel <= maxPower;
 				bool flag3 = info.metaCategories.Contains(categoryCriteria);
-				bool flag4 = true;
-				if (learned)
-				{
-					flag4 = ProgressionData.LearnedAbility(info.ability);
-				}
+				bool flag4 = ProgressionData.LearnedAbility(info.ability);
 
 				if (flag && flag2 && flag3 && flag4)
 				{

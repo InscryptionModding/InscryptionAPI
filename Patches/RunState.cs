@@ -10,7 +10,8 @@ namespace API.Patches
 	{
 		static void Postfix(ref RunState __instance)
 		{
-			__instance.regionIndex = RegionProgression.GetRandomRegionIndexForTier(0);
+			// Random regions have been removed
+			//__instance.regionIndex = RegionProgression.GetRandomRegionIndexForTier(0);
 		}
 	}
 }

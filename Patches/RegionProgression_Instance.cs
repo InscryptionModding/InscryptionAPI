@@ -17,11 +17,11 @@ namespace API.Patches
 				// If no custom region is defined for the default region, but custom encounters for that region exist, create one
 				for (int t = 0; t <= 3; t++)
 				{
-					if (NewEncounter.encounters.Exists(encounter => (encounter.regionName == official.regions[t][0].name)))
+					if (NewEncounter.encounters.Exists(encounter => (encounter.regionName == official.regions[t].name)))
 					{
-						if (!CustomRegion.regions.Exists(region => (region.tier == t && region.name == official.regions[t][0].name)))
+						if (!CustomRegion.regions.Exists(region => (region.tier == t && region.name == official.regions[t].name)))
 						{
-							new CustomRegion(official.regions[t][0].name);
+							new CustomRegion(official.regions[t].name);
 						}
 					}
 				}
@@ -29,9 +29,8 @@ namespace API.Patches
 				foreach (CustomRegion region in CustomRegion.regions)
 				{
 					bool found = false;
-					foreach (List<RegionData> tier in official.regions)
+					foreach (RegionData officialRegion in official.regions)
 					{
-						RegionData officialRegion = tier.Find((RegionData x) => x.name == region.name);
 						if (officialRegion != null)
 						{
 							region.AdjustRegion(officialRegion);
@@ -65,11 +64,7 @@ namespace API.Patches
 
 				foreach (NewRegion region in NewRegion.regions)
 				{
-					while (region.tier >= official.regions.Count)
-					{
-						official.regions.Add(new List<RegionData>());
-					}
-					official.regions[region.tier].Add(region.region);
+					official.regions.Add(region.region);
 
 					List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.regionName == region.region.name);
 					foreach (NewEncounter encounter in customEncounters)

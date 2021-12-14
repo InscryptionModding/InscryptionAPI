@@ -171,7 +171,7 @@ namespace API.Patches
 	{
 		static IEnumerable<MethodBase> TargetMethods()
 		{
-			Type targetType = AccessTools.TypeByName("DiskCardGame.TurnManager+<PlayerTurn>d__73");
+			Type targetType = AccessTools.TypeByName("DiskCardGame.TurnManager+<PlayerTurn>d__77");
 			return AccessTools.GetDeclaredMethods(targetType).Where(m => m.Name.Equals("MoveNext"));
 		}
 
@@ -182,7 +182,7 @@ namespace API.Patches
 		{
 			if (Plugin.configEnergy.Value)
 			{
-				Type targetType = AccessTools.TypeByName("DiskCardGame.TurnManager+<PlayerTurn>d__73");
+				Type targetType = AccessTools.TypeByName("DiskCardGame.TurnManager+<PlayerTurn>d__77");
 				ILCursor c = new ILCursor(il);
 				c.GotoNext(inst => inst.MatchCall(AccessTools.Method(typeof(SaveManager), "get_SaveFile")));
 				c.RemoveRange(6);
@@ -191,7 +191,7 @@ namespace API.Patches
 				c.Next.OpCode = OpCodes.Ldc_I4_1;
 				foreach (ILLabel branch in c.IncomingLabels)
 				{
-					c.GotoNext(inst => inst.MatchStfld(AccessTools.Field(targetType, "<showEnergyModule>5__2")));
+					c.GotoNext(inst => inst.MatchStfld(AccessTools.Field(targetType, "<showEnergyModule>5__1")));
 					branch.Target = c.Next;
 					foreach (Instruction inst in branch.Branches)
 					{
