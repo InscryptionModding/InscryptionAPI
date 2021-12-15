@@ -16,7 +16,7 @@ namespace APIPlugin
 
 		public NewAbility(AbilityInfo info, Type abilityBehaviour, Texture tex, AbilityIdentifier id = null)
 		{
-			ability = (Ability) Ability.NUM_ABILITIES + 1 + abilities.Count;
+			ability = Ability.NUM_ABILITIES + 1 + abilities.Count;
 			info.ability = ability;
 			this.info = info;
 			this.abilityBehaviour = abilityBehaviour;

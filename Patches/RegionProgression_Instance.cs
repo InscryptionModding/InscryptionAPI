@@ -31,7 +31,7 @@ namespace API.Patches
 					bool found = false;
 					foreach (RegionData officialRegion in official.regions)
 					{
-						if (officialRegion != null)
+						if (officialRegion != null && region.name == officialRegion.name)
 						{
 							region.AdjustRegion(officialRegion);
 							List<NewEncounter> customEncounters = NewEncounter.encounters.FindAll(x => x.regionName == region.name);
