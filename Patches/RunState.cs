@@ -23,7 +23,7 @@ namespace API.Patches
 		public static bool Prefix(ref RunState __instance)
 		{
 			List<RegionData> original = RegionProgression.Instance.regions;
-			int tier = __instance.regionTier < 4 ? __instance.regionTier + 1 : NewRegion.regions[__instance.regionTier - original.Count].tier + 1;
+			int tier = RegionUtils.TrueTier();
 			__instance.regionTier = RegionUtils.GetRandomRegionFromTier(tier);
 			__instance.map = MapGenerator.GenerateMap(RunState.CurrentMapRegion, 3, 13);
 			__instance.currentNodeId = __instance.map.RootNode.id;

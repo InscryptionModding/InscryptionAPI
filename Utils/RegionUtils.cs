@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using APIPlugin;
+using System;
 
 namespace API.Utils
 {
@@ -22,6 +23,11 @@ namespace API.Utils
                 return 3;
             }
             return regions[SeededRandom.Range(0, regions.Count, SaveManager.SaveFile.GetCurrentRandomSeed())];
+        }
+
+        public static int TrueTier()
+        {
+            return RunState.Run.regionTier < 4 ? RunState.Run.regionTier + 1 : NewRegion.regions[RunState.Run.regionTier - 4].tier + 1;
         }
     }
 }
