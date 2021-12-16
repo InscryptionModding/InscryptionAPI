@@ -1,4 +1,6 @@
-﻿using BepInEx;
+﻿global using UnityObject = UnityEngine.Object;
+
+using BepInEx;
 using HarmonyLib;
 
 namespace InscryptionAPI;
@@ -10,8 +12,15 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModName = "InscryptionAPI";
     public const string ModVer = "2.0.0";
 
-    public void Awake()
+    private readonly Harmony HarmonyInstance = new(ModGUID);
+    
+    public void OnEnable()
     {
-        Harmony.CreateAndPatchAll(typeof(InscryptionAPIPlugin).Assembly, ModGUID);
+        HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
+    }
+
+    public void OnDisable()
+    {
+        HarmonyInstance.UnpatchSelf();
     }
 }
