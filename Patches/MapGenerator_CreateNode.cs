@@ -16,7 +16,14 @@ namespace API.Patches
 		{
 			if (__result is CardBattleNodeData)
             {
-				((CardBattleNodeData) __result).difficulty = RegionUtils.TrueTier() * 6 + (y + 1) / 3 - 1;
+				if (SaveManager.SaveFile.ascensionActive)
+				{
+					((CardBattleNodeData) __result).difficulty = Array.IndexOf(RunState.Run.regionOrder, RegionUtils.TrueTier()) * 6 + (y + 1) / 3 - 1;
+				}
+				else
+				{
+					((CardBattleNodeData) __result).difficulty = RegionUtils.TrueTier() * 6 + (y + 1) / 3 - 1;
+				}
 			}
 		}
 	}

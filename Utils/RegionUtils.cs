@@ -20,7 +20,7 @@ namespace API.Utils
             if (regions.Count == 0)
             {
                 Plugin.Log.LogError($"No regions have been defined for tier {tier}");
-                return 3;
+                return 0;
             }
             return regions[SeededRandom.Range(0, regions.Count, SaveManager.SaveFile.GetCurrentRandomSeed())];
         }

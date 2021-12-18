@@ -77,6 +77,10 @@ namespace API.Patches
 						Plugin.Log.LogInfo($"Loaded {customEncounters.Count} custom encounters into new custom region {region.region.name}");
 					}
 				}
+
+				// The final tier is reserved for ascensionFinalRegion
+				official.regions.Add(official.ascensionFinalRegion);
+
 				___instance = official;
 				Plugin.Log.LogInfo($"Loaded {CustomRegion.regions.Count} new custom regions into data");
 			}

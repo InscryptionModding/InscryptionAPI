@@ -2,6 +2,7 @@ using API.Utils;
 using APIPlugin;
 using DiskCardGame;
 using HarmonyLib;
+using System;
 using System.Collections.Generic;
 
 namespace API.Patches
@@ -13,7 +14,10 @@ namespace API.Patches
 	{
 		public static void Postfix(ref RunState __instance)
 		{
-			__instance.regionTier = RegionUtils.GetRandomRegionFromTier(0);
+			if (!SaveManager.SaveFile.ascensionActive)
+			{
+				__instance.regionTier = RegionUtils.GetRandomRegionFromTier(RunState.Run.regionOrder[0]);
+			}
 		}
 	}
 
@@ -24,9 +28,35 @@ namespace API.Patches
 		{
 			List<RegionData> original = RegionProgression.Instance.regions;
 			int tier = RegionUtils.TrueTier();
-			__instance.regionTier = RegionUtils.GetRandomRegionFromTier(tier);
+			int progressionTier = Array.IndexOf(RunState.Run.regionOrder, tier);
+			__instance.regionTier = RegionUtils.GetRandomRegionFromTier((progressionTier == -1 || progressionTier == RunState.Run.regionOrder.Length - 1) ? RunState.Run.regionOrder.Length : RunState.Run.regionOrder[progressionTier + 1]);
+			if (__instance.regionTier == RunState.Run.regionOrder.Length)
+            {
+				if (SaveManager.SaveFile.ascensionActive)
+                {
+					__instance.regionTier = original.Count - 1;
+
+				}
+            }
 			__instance.map = MapGenerator.GenerateMap(RunState.CurrentMapRegion, 3, 13);
 			__instance.currentNodeId = __instance.map.RootNode.id;
+			return false;
+		}
+	}
+
+	[HarmonyPatch(typeof(RunState), "CurrentMapRegion", MethodType.Getter)]
+	public class RunState_get_CurrentMapRegion
+	{
+		public static bool Prefix(ref RegionData __result)
+		{
+			if (SaveManager.SaveFile.IsPart3 || SaveManager.SaveFile.IsGrimora)
+			{
+				__result = ResourceBank.Get<RegionData>("Data/Map/Regions/!TEST_PART3");
+			}
+			else
+            {
+				__result = RegionProgression.Instance.regions[RunState.Run.regionTier];
+			}
 			return false;
 		}
 	}
