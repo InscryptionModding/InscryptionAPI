@@ -45,7 +45,10 @@ namespace InscryptionAPI.Saves
         public static void ReadDataFromFile()
         {
             if (isSystemDirty)
+            {
                 SaveDataToFile();
+                isSystemDirty = false;
+            }
 
             if (File.Exists(saveFilePath))
             {
