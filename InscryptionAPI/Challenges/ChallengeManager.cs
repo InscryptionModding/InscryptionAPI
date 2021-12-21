@@ -7,6 +7,7 @@ using Sirenix.Serialization.Utilities;
 using UnityEngine;
 using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
+using InscryptionAPI.Guid;
 
 namespace InscryptionAPI.Challenges
 {
@@ -15,8 +16,6 @@ namespace InscryptionAPI.Challenges
     {
         public static readonly ReadOnlyCollection<AscensionChallengeInfo> BaseGameChallenges = new(Resources.LoadAll<AscensionChallengeInfo>("Data/"));
         
-        private static AscensionChallenge lastCustomChallenge = (AscensionChallenge)500;
-
         private static Dictionary<AscensionChallenge, bool> stackableMap = new();
 
         private static Dictionary<AscensionChallenge, int> unlockLevelMap = new();
@@ -44,23 +43,22 @@ namespace InscryptionAPI.Challenges
             return stackableMap.ContainsKey(id) ? stackableMap[id] : false;
         }
 
-        public static AscensionChallenge Add(AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
+        public static AscensionChallenge Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
         {
-            AscensionChallenge newId = (AscensionChallenge)((int)lastCustomChallenge + 1);
-            lastCustomChallenge = newId;
-            info.challengeType = newId;
+            info.challengeType = (AscensionChallenge)GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
 
             newInfos.Add(info);
 
             ModifyAscensionChallengeList?.Invoke(newInfos);
 
-            stackableMap.Add(newId, stackable);
-            unlockLevelMap.Add(newId, unlockLevel);
+            stackableMap.Add(info.challengeType, stackable);
+            unlockLevelMap.Add(info.challengeType, unlockLevel);
 
-            return newId;
+            return info.challengeType;
         }
 
         public static AscensionChallenge Add(
+            string pluginGuid,
             string title,
             string description,
             int pointValue,
@@ -80,7 +78,7 @@ namespace InscryptionAPI.Challenges
             Texture2D infoActivationTexture = activatedTexture ?? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default");
             info.activatedSprite = Sprite.Create(infoActivationTexture, SPRITE_RECT, SPRITE_PIVOT);
 
-            return Add(info, unlockLevel, stackable);
+            return Add(pluginGuid, info, unlockLevel, stackable);
         }
 
         [HarmonyPatch(typeof(AscensionChallengesUtil), "GetInfo")]
