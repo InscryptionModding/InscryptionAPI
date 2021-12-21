@@ -1,7 +1,5 @@
 using DiskCardGame;
-using System.Linq;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace InscryptionAPI.Challenges
 {

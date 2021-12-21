@@ -1,6 +1,7 @@
 ﻿global using UnityObject = UnityEngine.Object;
 
 using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 
 namespace InscryptionAPI;
@@ -13,9 +14,12 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModVer = "2.0.0";
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
+
+    internal static ManualLogSource Log;
     
     public void OnEnable()
     {
+        Log = this.Logger;
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 

@@ -1,15 +1,3 @@
-using DiskCardGame;
-using System;
-using System.Linq;
-using HarmonyLib;
-using Mono.Collections.Generic;
-using Sirenix.Serialization.Utilities;
-using UnityEngine;
-using System.Diagnostics.CodeAnalysis;
-using System.Collections.Generic;
-using System.Reflection;
-using System.IO;
-using APIPlugin;
 using InscryptionAPI.Saves;
 
 namespace InscryptionAPI.Guid
@@ -28,7 +16,7 @@ namespace InscryptionAPI.Guid
         public static int GetEnumValue<T>(string guid, string value) where T : System.Enum
         {
             string saveKey = GetFullyQualifiedName(guid, value);
-            string saveGuid = GetFullyQualifiedName("cyantist.inscryption.api", typeof(T).Name);
+            string saveGuid = GetFullyQualifiedName(InscryptionAPIPlugin.ModGUID, typeof(T).Name);
             
             int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(saveGuid, saveKey);
 

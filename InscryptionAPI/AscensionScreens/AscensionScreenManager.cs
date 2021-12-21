@@ -1,11 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
-using System;
 using UnityEngine;
-using System.Linq;
-using APIPlugin;
-using System.Collections.Generic;
-using GBC;
 using System.Collections;
 
 namespace InscryptionAPI.AscensionScreens
@@ -72,7 +67,7 @@ namespace InscryptionAPI.AscensionScreens
                     nextScreen = (AscensionMenuScreens.Screen)((int)nextScreen + 1);
                 } catch (Exception ex)
                 {
-                    Plugin.Log.LogError(ex);
+                    InscryptionAPIPlugin.Log.LogError(ex);
                 }
             }
 

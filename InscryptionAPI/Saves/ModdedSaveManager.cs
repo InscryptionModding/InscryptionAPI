@@ -1,15 +1,6 @@
 using DiskCardGame;
-using System;
-using System.Linq;
 using HarmonyLib;
-using Mono.Collections.Generic;
-using Sirenix.Serialization.Utilities;
-using UnityEngine;
-using System.Diagnostics.CodeAnalysis;
-using System.Collections.Generic;
 using System.Reflection;
-using System.IO;
-using APIPlugin;
 
 namespace InscryptionAPI.Saves
 {
@@ -53,10 +44,8 @@ namespace InscryptionAPI.Saves
             if (File.Exists(saveFilePath))
             {
                 string json = File.ReadAllText(saveFilePath);
-                Plugin.Log.LogInfo($"Save data {json}");
                 Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>> saveData;
                 saveData = SaveManager.FromJSON<Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>>>(json);
-                Plugin.Log.LogInfo($"Save data {saveData}");
 
                 if (SaveData == null)
                     SaveData = new();
