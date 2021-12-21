@@ -26,6 +26,17 @@ namespace InscryptionAPI.Challenges
         {
             if (info.activatedSprite == null)
                 __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
+
+            if (info.pointValue > 0)
+            {
+                __instance.blinkEffect.blinkOffColor = GameColors.Instance.red;
+                __instance.iconRenderer.color = GameColors.Instance.red;
+            }
+            else
+            {
+                __instance.blinkEffect.blinkOffColor = GameColors.Instance.darkLimeGreen;
+                __instance.iconRenderer.color = GameColors.Instance.darkLimeGreen;
+            }
         }
 
         [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]

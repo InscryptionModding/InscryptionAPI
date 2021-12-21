@@ -1,11 +1,6 @@
 using DiskCardGame;
-using System;
 using System.Linq;
-using HarmonyLib;
-using Mono.Collections.Generic;
-using Sirenix.Serialization.Utilities;
 using UnityEngine;
-using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 
 namespace InscryptionAPI.Challenges
@@ -26,16 +21,10 @@ namespace InscryptionAPI.Challenges
 
         public List<List<bool>> pageStates = new();
 
-        public void GeneratePages()
+        private void PageBuilder(List<AscensionChallengeInfo> challenges, int startIdx)
         {
-            // The first page is nice and easy
-            List<AscensionChallengeInfo> pageOne = new List<AscensionChallengeInfo>();
-            pageOne.AddRange(availableChallenges.GetRange(0, 14));
-            pages.Add(pageOne);
-
-            // The rest get more challenging
             List<AscensionChallengeInfo> curPage = new List<AscensionChallengeInfo>();
-            for (int i = 14; i < availableChallenges.Count; i++)
+            for (int i = startIdx; i < challenges.Count; i++)
             {
                 // Check to see if we need a new page
                 if (curPage.Count == 14)
@@ -47,13 +36,31 @@ namespace InscryptionAPI.Challenges
                 // Check to see if we need a blank buffer
                 // This happens if the next icon is the same as the current, and the
                 // current icon would be on the bottom row
-                if (i < availableChallenges.Count - 1 && availableChallenges[i + 1].challengeType == availableChallenges[i].challengeType && curPage.Count % 2 == 1)
+                if (i < challenges.Count - 1 && challenges[i + 1].challengeType == challenges[i].challengeType && curPage.Count % 2 == 1)
                     curPage.Add(null);
 
-                curPage.Add(availableChallenges[i]);
+                curPage.Add(challenges[i]);
             }
-
             pages.Add(curPage);
+        }
+
+        public void GeneratePages()
+        {
+            // The first page is nice and easy
+            List<AscensionChallengeInfo> pageOne = new List<AscensionChallengeInfo>();
+            pageOne.AddRange(availableChallenges.GetRange(0, 14));
+            pages.Add(pageOne);
+
+            // Do the challenges first:
+            List<AscensionChallengeInfo> challenges = availableChallenges.Where(i => i.pointValue > 0).ToList();
+            List<AscensionChallengeInfo> assists = availableChallenges.Where(i => i.pointValue < 0).ToList();
+
+            // Do the challenges
+            if (challenges.Count > 14)
+                PageBuilder(challenges, 14);
+
+            if (assists.Count > 0)
+                PageBuilder(assists, 0);
 
             while (pageStates.Count < pages.Count)
             {
