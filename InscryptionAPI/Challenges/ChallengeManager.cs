@@ -75,7 +75,9 @@ namespace InscryptionAPI.Challenges
             info.pointValue = pointValue;
             info.iconSprite = Sprite.Create(iconTexture, SPRITE_RECT, SPRITE_PIVOT);
 
-            Texture2D infoActivationTexture = activatedTexture ?? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default");
+            Texture2D infoActivationTexture = activatedTexture ?? 
+                ((pointValue > 0 ) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
+                                   : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
             info.activatedSprite = Sprite.Create(infoActivationTexture, SPRITE_RECT, SPRITE_PIVOT);
 
             return Add(pluginGuid, info, unlockLevel, stackable);
