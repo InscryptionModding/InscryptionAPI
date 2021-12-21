@@ -49,6 +49,8 @@ namespace InscryptionAPI.Challenges
             stackableMap.Add(info.challengeType, stackable);
             unlockLevelMap.Add(info.challengeType, unlockLevel);
 
+            _hasLoaded = false; // Force a reload in case something happened out of the expected order
+
             return info.challengeType;
         }
 
