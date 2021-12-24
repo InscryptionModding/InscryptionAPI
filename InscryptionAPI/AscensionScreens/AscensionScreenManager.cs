@@ -16,12 +16,7 @@ namespace InscryptionAPI.AscensionScreens
 
         internal const int CUSTOM_SCREEN_START = 100;
 
-        private static string challengeScreenHoverText = "START RUN";
-
-        public static void AdvanceScreenQueue(bool forward=true)
-        {
-
-        }        
+        private static string challengeScreenHoverText = "START RUN";   
 
         public static void RegisterScreen<T>() where T : AscensionRunSetupScreenBase
         {
