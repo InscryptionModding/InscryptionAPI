@@ -52,20 +52,20 @@ namespace InscryptionAPI.AscensionScreens
         public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
         {
             // Create the new screen
-            InscryptionAPIPlugin.Log.LogInfo($"Creating screen for {screenType.Name}");
+            InscryptionAPIPlugin.Log.LogDebug($"Creating screen for {screenType.Name}");
 
             GameObject pseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen;
             GameObject screenObject = GameObject.Instantiate(pseudoPrefab, pseudoPrefab.transform.parent);
             screenObject.name = screenType.Name;
 
-            InscryptionAPIPlugin.Log.LogInfo($"Getting old logic");
+            InscryptionAPIPlugin.Log.LogDebug($"Getting old logic");
             AscensionCardsSummaryScreen oldController = screenObject.GetComponent<AscensionCardsSummaryScreen>();
 
-            InscryptionAPIPlugin.Log.LogInfo($"Adding new logic");
+            InscryptionAPIPlugin.Log.LogDebug($"Adding new logic");
             AscensionRunSetupScreenBase controller = screenObject.AddComponent(screenType) as AscensionRunSetupScreenBase;
 
                         // Update the title of the screen
-            InscryptionAPIPlugin.Log.LogInfo($"Updating screen title");
+            InscryptionAPIPlugin.Log.LogDebug($"Updating screen title");
             GameObject textHeader = screenObject.transform.Find("Header/Mid").gameObject;
             textHeader.transform.localPosition = new Vector3(0f, -0.575f, 0f);
             controller.screenTitle = textHeader.GetComponent<PixelText>();
@@ -79,7 +79,7 @@ namespace InscryptionAPI.AscensionScreens
             GameObject footerLowline = screenObject.transform.Find("Footer/PixelTextLine_DIV").gameObject;
             if (controller.showCardDisplayer)
             {
-                InscryptionAPIPlugin.Log.LogInfo($"Resetting card information displayer");
+                InscryptionAPIPlugin.Log.LogDebug($"Resetting card information displayer");
 
                 // Move the stuff
                 cardTextDisplayer.transform.localPosition = new Vector3(2.38f, 0.27f, 0f);
@@ -97,12 +97,12 @@ namespace InscryptionAPI.AscensionScreens
             }
             else
             {
-                InscryptionAPIPlugin.Log.LogInfo($"Destroying unwanted card information displayer");
+                InscryptionAPIPlugin.Log.LogDebug($"Destroying unwanted card information displayer");
                 // Destroy the card text displayer and footer low line
                 GameObject.Destroy(cardTextDisplayer);
                 GameObject.Destroy(footerLowline);
 
-                InscryptionAPIPlugin.Log.LogInfo($"Creating new information displayer");
+                InscryptionAPIPlugin.Log.LogDebug($"Creating new information displayer");
                 GameObject newInfoDisplayer = GameObject.Instantiate(textHeader);
                 controller.secondaryInfoDisplayer = newInfoDisplayer.GetComponent<PixelText>();
                 controller.secondaryInfoDisplayer.SetColor(GameColors.Instance.nearWhite);
@@ -111,16 +111,16 @@ namespace InscryptionAPI.AscensionScreens
 
             if (controller.showCardPanel)
             {
-                InscryptionAPIPlugin.Log.LogInfo($"Transferring ownership of cards");
+                InscryptionAPIPlugin.Log.LogDebug($"Transferring ownership of cards");
                 controller.cards = oldController.cards;
             }    
 
             // Destroy the old game logic
-            InscryptionAPIPlugin.Log.LogInfo($"Destroying old game logic");
+            InscryptionAPIPlugin.Log.LogDebug($"Destroying old game logic");
             Component.Destroy(oldController);
 
             // Sort out the unlocks block
-            InscryptionAPIPlugin.Log.LogInfo($"Handling card panel");
+            InscryptionAPIPlugin.Log.LogDebug($"Handling card panel");
             controller.cardPanel = screenObject.transform.Find("Unlocks").gameObject;
             if (controller.showCardDisplayer)
                 controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
@@ -128,7 +128,7 @@ namespace InscryptionAPI.AscensionScreens
                 GameObject.Destroy(controller.cardPanel);
 
             // Clone the challenge information from a challenge screen
-            InscryptionAPIPlugin.Log.LogInfo($"Creating challenge text header");
+            InscryptionAPIPlugin.Log.LogDebug($"Creating challenge text header");
             GameObject header = screenObject.transform.Find("Header").gameObject;
             SequentialPixelTextLines headerLines = header.AddComponent<SequentialPixelTextLines>();
 
@@ -141,19 +141,19 @@ namespace InscryptionAPI.AscensionScreens
 
             // Set the old header lines to the lines of the sequential pixel text lines
             // Fundamentally, the old header now controls these new challenge level lines
-            InscryptionAPIPlugin.Log.LogInfo($"Assigning new lines of text to header");
+            InscryptionAPIPlugin.Log.LogDebug($"Assigning new lines of text to header");
             headerLines.lines = new List<PixelText>() {
                 challengeLevel.GetComponent<PixelText>(),
                 challengePoints.GetComponent<PixelText>()
             };
 
             // And add those lines to the new challenge level controller
-            InscryptionAPIPlugin.Log.LogInfo($"Giving controller access to header");
+            InscryptionAPIPlugin.Log.LogDebug($"Giving controller access to header");
             ChallengeLevelText challengeLevelController = screenObject.AddComponent<ChallengeLevelText>();
             challengeLevelController.headerPointsLines = headerLines;
             controller.challengeHeaderDisplay = challengeLevelController;
 
-            InscryptionAPIPlugin.Log.LogInfo($"Creating challenge footer text");
+            InscryptionAPIPlugin.Log.LogDebug($"Creating challenge footer text");
 
             List<Transform> footerLinePseudos = new List<Transform>();
             GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject; 
@@ -162,7 +162,7 @@ namespace InscryptionAPI.AscensionScreens
                     footerLinePseudos.Add(child);
             footerLinePseudos.Sort((a, b) => a.localPosition.y < b.localPosition.y ? -1 : 1);
 
-            InscryptionAPIPlugin.Log.LogInfo($"Building footer text controller");
+            InscryptionAPIPlugin.Log.LogDebug($"Building footer text controller");
             List<GameObject> newFooterLines = footerLinePseudos.Select(t => GameObject.Instantiate(t.gameObject, footer.transform)).ToList();
             SequentialPixelTextLines footerLines = footer.AddComponent<SequentialPixelTextLines>();
             footerLines.lines = newFooterLines.Select(o => o.GetComponent<PixelText>()).ToList();
@@ -174,14 +174,14 @@ namespace InscryptionAPI.AscensionScreens
             controller.rightButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject.GetComponent<MainInputInteractable>();
             if (controller.showCardPanel)
             {
-                InscryptionAPIPlugin.Log.LogInfo($"Reassigning left/right scroll buttons");
+                InscryptionAPIPlugin.Log.LogDebug($"Reassigning left/right scroll buttons");
                 controller.leftButton.CursorSelectStarted = controller.LeftButtonClicked;
                 controller.rightButton.CursorSelectStarted = controller.RightButtonClicked;
                 controller.leftButton.gameObject.transform.localPosition = controller.leftButton.gameObject.transform.localPosition - (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
                 controller.rightButton.gameObject.transform.localPosition = controller.rightButton.gameObject.transform.localPosition + (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
 
                 // Let's add three more cards to the panel
-                InscryptionAPIPlugin.Log.LogInfo($"Expanding card panel");
+                InscryptionAPIPlugin.Log.LogDebug($"Expanding card panel");
                 GameObject cardPrefab = Resources.Load<GameObject>("prefabs/gbccardbattle/pixelselectablecard");
                 Transform cardsParent = screenObject.transform.Find("Unlocks/ScreenAnchor/Cards");
                 for (int i = 0; i < 3; i++)
@@ -196,7 +196,7 @@ namespace InscryptionAPI.AscensionScreens
                     Traverse.Create(newPixelComponent).Field("pixelBorder").SetValue(pixelBorder);
                 }
 
-                InscryptionAPIPlugin.Log.LogInfo($"Assigning click action to cards in card panel");
+                InscryptionAPIPlugin.Log.LogDebug($"Assigning click action to cards in card panel");
                 foreach (PixelSelectableCard card in controller.cards)
                 {
                     card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
@@ -215,7 +215,7 @@ namespace InscryptionAPI.AscensionScreens
             }
             else
             {
-                InscryptionAPIPlugin.Log.LogInfo($"Destroying scroll buttons");
+                InscryptionAPIPlugin.Log.LogDebug($"Destroying scroll buttons");
                 GameObject.Destroy(controller.leftButton.gameObject);
                 GameObject.Destroy(controller.rightButton.gameObject);
 
@@ -225,13 +225,13 @@ namespace InscryptionAPI.AscensionScreens
 
 
             // Reroute the back button
-            InscryptionAPIPlugin.Log.LogInfo($"Rerouting back button");
+            InscryptionAPIPlugin.Log.LogDebug($"Rerouting back button");
             GameObject backButton = screenObject.transform.Find("BackButton").gameObject;
             controller.backButton = backButton.GetComponent<AscensionMenuBackButton>();
             controller.backButton.screenToReturnTo = previousScreen;
 
             // Add a continue button
-            InscryptionAPIPlugin.Log.LogInfo($"Adding continue button");
+            InscryptionAPIPlugin.Log.LogDebug($"Adding continue button");
             GameObject continuePrefab = Resources.Load<GameObject>("prefabs/ui/ascension/ascensionmenucontinuebutton");
             GameObject continueButton = GameObject.Instantiate(continuePrefab, screenObject.transform);
             continueButton.transform.localPosition = new Vector3(2.08f, 1.15f, 0f);
@@ -248,11 +248,11 @@ namespace InscryptionAPI.AscensionScreens
             controller.continueButton.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(controller.continueButton.CursorSelectStarted, clickAction);
 
             // Let the base class do its magic
-            InscryptionAPIPlugin.Log.LogInfo($"Calling screen implementation to finish creating screen UI elements");
+            InscryptionAPIPlugin.Log.LogDebug($"Calling screen implementation to finish creating screen UI elements");
             controller.InitializeScreen(screenObject);
 
             // And we're done
-            InscryptionAPIPlugin.Log.LogInfo($"Done building screen");
+            InscryptionAPIPlugin.Log.LogDebug($"Done building screen");
             return controller;
         }
 
@@ -260,12 +260,12 @@ namespace InscryptionAPI.AscensionScreens
         {
             if (!AscensionSaveData.Data.ChallengeLevelIsMet() && AscensionSaveData.Data.challengeLevel <= 12)
             {
-                InscryptionAPIPlugin.Log.LogInfo("Sending the player to the confirmation screen");
+                InscryptionAPIPlugin.Log.LogDebug("Sending the player to the confirmation screen");
                 AscensionMenuScreens.Instance.SwitchToScreen(AscensionMenuScreens.Screen.SelectChallengesConfirm);
             }
             else
             {
-                InscryptionAPIPlugin.Log.LogInfo("Starting a new run");
+                InscryptionAPIPlugin.Log.LogDebug("Starting a new run");
                 AscensionMenuScreens.Instance.TransitionToGame(true);
             }
         }
