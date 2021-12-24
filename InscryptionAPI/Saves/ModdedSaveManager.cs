@@ -7,7 +7,7 @@ namespace InscryptionAPI.Saves
     [HarmonyPatch]
     public static class ModdedSaveManager
     {
-        private static readonly string saveFilePath = Path.Combine(Assembly.GetExecutingAssembly().Location, "..", "..", "ModdedSaveFile.gwsave");
+        private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
 
         public static ModdedSaveData SaveData { get; private set; } 
 
