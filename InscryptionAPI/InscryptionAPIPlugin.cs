@@ -9,7 +9,7 @@ namespace InscryptionAPI;
 [BepInPlugin(ModGUID, ModName, ModVer)]
 public class InscryptionAPIPlugin : BaseUnityPlugin
 {
-    public const string ModGUID = "cyanist.inscryption.api";
+    public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
     public const string ModVer = "2.0.0";
 
