@@ -26,5 +26,53 @@ namespace APIPlugin
 		{
 			Add<T>(name, new Dictionary<string, DialogueEvent>());
 		}
+
+
+		#region Static_CreateTalkingCardAnimation
+
+		public static UnityEngine.GameObject CreateTalkingCardAnimation(
+			List<CharacterFace.EmotionSprites> emotionSpritesList,
+			float blinkRate = 3f
+		)
+		{
+			CharacterFace characterFace = CharacterFaceBase;
+			characterFace.eyes.blinkRate = blinkRate;
+			characterFace.emotionSprites = emotionSpritesList;
+			return characterFace.gameObject;
+		}
+
+		public static UnityEngine.GameObject CreateTalkingCardAnimation(
+			CharacterFace.EmotionSprites emotionSprites,
+			float blinkRate = 3f
+		)
+		{
+			return CreateTalkingCardAnimation(
+				new List<CharacterFace.EmotionSprites>() { emotionSprites },
+				blinkRate
+			);
+		}
+
+		#endregion
+
+		public static CharacterFace.EmotionSprites CreateSpritesForEmotion(
+			Emotion emotion,
+			string facePng,
+			string eyesOpenPng, string eyesClosedPng,
+			string eyesOpenEmissionPng, string eyesClosedEmissionPng,
+			string mouthOpenPng, string mouthClosedPng
+		)
+		{
+			return new CharacterFace.EmotionSprites()
+			{
+				emotion = emotion,
+				face = CardUtils.CreateSpriteFromPng(facePng),
+				eyesOpen = CardUtils.CreateSpriteFromPng(eyesOpenPng),
+				eyesClosed = CardUtils.CreateSpriteFromPng(eyesClosedPng),
+				eyesOpenEmission = CardUtils.CreateSpriteFromPng(eyesOpenEmissionPng),
+				eyesClosedEmission = CardUtils.CreateSpriteFromPng(eyesClosedEmissionPng),
+				mouthOpen = CardUtils.CreateSpriteFromPng(mouthOpenPng),
+				mouthClosed = CardUtils.CreateSpriteFromPng(mouthClosedPng),
+			};
+		}
 	}
 }

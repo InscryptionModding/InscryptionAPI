@@ -82,19 +82,44 @@ namespace APIPlugin
 			CardAppearanceBehaviour.Appearance.DynamicPortrait
 		};
 
-		public static byte[] ReadArtworkFileAsBytes(string nameOfCardArt)
+		public static string GetFullPathOfFile(string fileToLookFor)
 		{
-			return File.ReadAllBytes(
-						Directory.GetFiles(Paths.PluginPath, nameOfCardArt, SearchOption.AllDirectories)[0]
-				);
+			return Directory.GetFiles(Paths.PluginPath, fileToLookFor, SearchOption.AllDirectories)[0];
 		}
 
-		public static Texture2D getAndloadImageAsTexture(string pathCardArt)
+		public static byte[] ReadArtworkFileAsBytes(string nameOfCardArt)
+		{
+			return File.ReadAllBytes(GetFullPathOfFile(nameOfCardArt));
+		}
+
+		public static Texture2D LoadImageAndGetTexture(string nameOfCardArt)
 		{
 			Texture2D texture = new Texture2D(2, 2);
-			byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
+			byte[] imgBytes = ReadArtworkFileAsBytes(nameOfCardArt);
 			bool isLoaded = texture.LoadImage(imgBytes);
 			return texture;
+		}
+
+		public static Sprite CreateSpriteFromPng(string pngFile)
+		{
+			if (string.IsNullOrEmpty(pngFile))
+			{
+				return null;
+			}
+
+			if (!pngFile.EndsWith(".png"))
+			{
+				pngFile = string.Concat(pngFile, ".png");
+			}
+
+			byte[] pngBytes = ReadArtworkFileAsBytes(pngFile);
+			Texture2D texture2D = new Texture2D(2, 2)
+			{
+				filterMode = FilterMode.Point
+			};
+
+			texture2D.LoadImage(pngBytes);
+			return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero);
 		}
 	}
 }
