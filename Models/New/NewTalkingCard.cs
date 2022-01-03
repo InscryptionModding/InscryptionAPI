@@ -9,9 +9,6 @@ namespace APIPlugin
 	{
 		private const string TalkingCardPortraitPrefab = "Prefabs/Cards/AnimatedPortraits/TalkingCardPortrait";
 
-		private static readonly CharacterFace
-			CharacterFaceBase = ResourceBank.Get<CharacterFace>(TalkingCardPortraitPrefab);
-
 		public static readonly Dictionary<string, Type> TalkingCards = new();
 		public static readonly List<Type> Types = new(); // For easy access by CardTriggerHandler.GetType
 
@@ -36,7 +33,8 @@ namespace APIPlugin
 			float blinkRate = 3f
 		)
 		{
-			CharacterFace characterFace = CharacterFaceBase;
+			CharacterFace characterFace = ResourceBank.Get<CharacterFace>(TalkingCardPortraitPrefab);
+			;
 			characterFace.eyes.blinkRate = blinkRate;
 			characterFace.emotionSprites = emotionSpritesList;
 			return characterFace.gameObject;
