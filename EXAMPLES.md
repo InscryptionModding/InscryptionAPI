@@ -302,6 +302,10 @@ public class EightBearsTalkingCard : PaperTalkingCard
 
 ### Creating card with an animated portrait
 
+- All `.png` files below like `testingcard_character_face.png` exist in `\BepInEx\plugins\ `
+- If `.png` is not suffixed in the string, like `testingcard_character_face`, the image file will to be able to be
+  found.
+
 ```c#
 void AddTalkingCardToCardPool()
 {
