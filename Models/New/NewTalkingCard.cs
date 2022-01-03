@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DiskCardGame;
+using UnityEngine;
 
 namespace APIPlugin
 {
@@ -52,20 +53,40 @@ namespace APIPlugin
 			);
 		}
 
+		public static UnityEngine.GameObject CreateTalkingCardAnimation(
+			Emotion emotion = Emotion.Neutral,
+			string facePng = null,
+			string eyesOpenPng = null, string eyesClosedPng = null,
+			string eyesOpenEmissionPng = null, string eyesClosedEmissionPng = null,
+			string mouthOpenPng = null, string mouthClosedPng = null,
+			float blinkRate = 3f
+		)
+		{
+			return CreateTalkingCardAnimation(
+				CreateSpritesForEmotion(
+					emotion,
+					facePng, eyesOpenPng, eyesClosedPng,
+					eyesOpenEmissionPng, eyesClosedEmissionPng,
+					mouthOpenPng, mouthClosedPng
+				),
+				blinkRate
+			);
+		}
+
 		#endregion
 
 		public static CharacterFace.EmotionSprites CreateSpritesForEmotion(
-			Emotion emotion,
-			string facePng,
-			string eyesOpenPng, string eyesClosedPng,
-			string eyesOpenEmissionPng, string eyesClosedEmissionPng,
-			string mouthOpenPng, string mouthClosedPng
+			Emotion emotion = Emotion.Neutral,
+			string facePng = null,
+			string eyesOpenPng = null, string eyesClosedPng = null,
+			string eyesOpenEmissionPng = null, string eyesClosedEmissionPng = null,
+			string mouthOpenPng = null, string mouthClosedPng = null
 		)
 		{
 			return new CharacterFace.EmotionSprites()
 			{
 				emotion = emotion,
-				face = CardUtils.CreateSpriteFromPng(facePng),
+				face = CardUtils.CreateSpriteFromPng(facePng, new Vector2(0.5f, 0f)),
 				eyesOpen = CardUtils.CreateSpriteFromPng(eyesOpenPng),
 				eyesClosed = CardUtils.CreateSpriteFromPng(eyesClosedPng),
 				eyesOpenEmission = CardUtils.CreateSpriteFromPng(eyesOpenEmissionPng),
