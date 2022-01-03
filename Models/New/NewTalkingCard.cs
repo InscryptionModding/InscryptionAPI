@@ -34,7 +34,6 @@ namespace APIPlugin
 		)
 		{
 			CharacterFace characterFace = ResourceBank.Get<CharacterFace>(TalkingCardPortraitPrefab);
-			;
 			characterFace.eyes.blinkRate = blinkRate;
 			characterFace.emotionSprites = emotionSpritesList;
 			return characterFace.gameObject;
