@@ -28,6 +28,7 @@ namespace APIPlugin
 						}
 					}
 				}
+
 				return this.tail;
 			}
 		}
@@ -48,7 +49,8 @@ namespace APIPlugin
 				this.tailLostTex.name = this.name;
 				this.tailLostTex.filterMode = FilterMode.Point;
 
-				tail.tailLostPortrait = Sprite.Create(this.tailLostTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+				tail.tailLostPortrait =
+					Sprite.Create(this.tailLostTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
 				tail.tailLostPortrait.name = this.name;
 			}
 

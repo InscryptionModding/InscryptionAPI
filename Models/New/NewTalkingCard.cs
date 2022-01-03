@@ -83,13 +83,13 @@ namespace APIPlugin
 			return new CharacterFace.EmotionSprites()
 			{
 				emotion = emotion,
-				face = CardUtils.CreateSpriteFromPng(facePng, new Vector2(0.5f, 0f)),
-				eyesOpen = CardUtils.CreateSpriteFromPng(eyesOpenPng),
-				eyesClosed = CardUtils.CreateSpriteFromPng(eyesClosedPng),
-				eyesOpenEmission = CardUtils.CreateSpriteFromPng(eyesOpenEmissionPng),
-				eyesClosedEmission = CardUtils.CreateSpriteFromPng(eyesClosedEmissionPng),
-				mouthOpen = CardUtils.CreateSpriteFromPng(mouthOpenPng),
-				mouthClosed = CardUtils.CreateSpriteFromPng(mouthClosedPng),
+				face = ImageUtils.CreateSpriteFromPng(facePng, new Vector2(0.5f, 0f)),
+				eyesOpen = ImageUtils.CreateSpriteFromPng(eyesOpenPng),
+				eyesClosed = ImageUtils.CreateSpriteFromPng(eyesClosedPng),
+				eyesOpenEmission = ImageUtils.CreateSpriteFromPng(eyesOpenEmissionPng),
+				eyesClosedEmission = ImageUtils.CreateSpriteFromPng(eyesClosedEmissionPng),
+				mouthOpen = ImageUtils.CreateSpriteFromPng(mouthOpenPng),
+				mouthClosed = ImageUtils.CreateSpriteFromPng(mouthClosedPng),
 			};
 		}
 	}
