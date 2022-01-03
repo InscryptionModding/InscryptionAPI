@@ -102,6 +102,11 @@ namespace APIPlugin
 
 		public static Sprite CreateSpriteFromPng(string pngFile)
 		{
+			return CreateSpriteFromPng(pngFile, DefaultVector2);
+		}
+
+		public static Sprite CreateSpriteFromPng(string pngFile, Vector2 pivot)
+		{
 			if (string.IsNullOrEmpty(pngFile))
 			{
 				return null;
@@ -119,7 +124,7 @@ namespace APIPlugin
 			};
 
 			texture2D.LoadImage(pngBytes);
-			return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero);
+			return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), pivot);
 		}
 	}
 }
