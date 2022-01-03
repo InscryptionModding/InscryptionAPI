@@ -94,7 +94,7 @@ namespace APIPlugin
 
 		public static Texture2D LoadImageAndGetTexture(string nameOfCardArt)
 		{
-			Texture2D texture = new Texture2D(2, 2);
+			Texture2D texture = new Texture2D(2, 2) { filterMode = FilterMode.Point };
 			byte[] imgBytes = ReadArtworkFileAsBytes(nameOfCardArt);
 			bool isLoaded = texture.LoadImage(imgBytes);
 			return texture;
@@ -117,13 +117,8 @@ namespace APIPlugin
 				pngFile = string.Concat(pngFile, ".png");
 			}
 
-			byte[] pngBytes = ReadArtworkFileAsBytes(pngFile);
-			Texture2D texture2D = new Texture2D(2, 2)
-			{
-				filterMode = FilterMode.Point
-			};
+			Texture2D texture2D = LoadImageAndGetTexture(pngFile);
 
-			texture2D.LoadImage(pngBytes);
 			return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), pivot);
 		}
 	}
