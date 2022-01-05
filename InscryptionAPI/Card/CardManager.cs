@@ -1,7 +1,7 @@
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
-using Mono.Collections.Generic;
 using Sirenix.Serialization.Utilities;
 using UnityEngine;
 
@@ -11,43 +11,28 @@ namespace InscryptionAPI.Card;
 public static class CardManager
 {
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(Resources.LoadAll<CardInfo>("Data/Cards"));
-    private static readonly List<CardInfo> NewCards = new();
-
-    private static long _counter = 0;
-    private static long _lastBuilt = -1;
+    private static readonly ObservableCollection<CardInfo> NewCards = new();
     
-    public static event Action<List<CardInfo>> ModifyCardList;
+    public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
-    private static List<CardInfo> _allCards;
-
-    public static List<CardInfo> AllCards
+    static CardManager()
     {
-        get
+        AllCards = BaseGameCards.ToList();
+        NewCards.CollectionChanged += static (_, _) =>
         {
-            if (_counter != _lastBuilt)
-            {
-                _lastBuilt = _counter;
-                _allCards = BaseGameCards.Append(NewCards).ToList();
-                ModifyCardList?.Invoke(_allCards);
-            }
-            return _allCards;
-        }
+            var cards = BaseGameCards.Append(NewCards).ToList();
+            AllCards = ModifyCardList?.Invoke(cards) ?? cards;
+        };
     }
 
-    public static void Add(CardInfo newCard)
-    {
-        NewCards.Add(newCard);
-        ++_counter;
-    }
-    public static void Remove(CardInfo card)
-    {
-        NewCards.Remove(card);
-        ++_counter;
-    }
+    public static List<CardInfo> AllCards { get; private set; }
+
+    public static void Add(CardInfo newCard) => NewCards.Add(newCard);
+    public static void Remove(CardInfo card) => NewCards.Remove(card);
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
-    [SuppressMessage("Member Access", "Publicizer001")]
+    [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of cards")]
     private static void CardLoadPrefix()
     {
         ScriptableObjectLoader<CardInfo>.allData = AllCards;
