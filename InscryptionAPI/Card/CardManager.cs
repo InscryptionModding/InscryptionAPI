@@ -10,11 +10,11 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class CardManager
 {
-    public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(Resources.LoadAll<CardInfo>("Data/"));
+    public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(Resources.LoadAll<CardInfo>("Data/Cards"));
     private static readonly List<CardInfo> NewCards = new();
 
     private static long _counter = 0;
-    private static long lastBuilt = -1;
+    private static long _lastBuilt = -1;
     
     public static event Action<List<CardInfo>> ModifyCardList;
 
@@ -24,9 +24,9 @@ public static class CardManager
     {
         get
         {
-            if (_counter != lastBuilt)
+            if (_counter != _lastBuilt)
             {
-                lastBuilt = _counter;
+                _lastBuilt = _counter;
                 _allCards = BaseGameCards.Append(NewCards).ToList();
                 ModifyCardList?.Invoke(_allCards);
             }
@@ -45,7 +45,7 @@ public static class CardManager
         ++_counter;
     }
 
-    [HarmonyPostfix]
+    [HarmonyPrefix]
     [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
     [SuppressMessage("Member Access", "Publicizer001")]
     private static void CardLoadPrefix()

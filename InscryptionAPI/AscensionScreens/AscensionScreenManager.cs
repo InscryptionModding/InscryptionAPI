@@ -62,7 +62,7 @@ namespace InscryptionAPI.AscensionScreens
                     nextScreen = (AscensionMenuScreens.Screen)((int)nextScreen + 1);
                 } catch (Exception ex)
                 {
-                    InscryptionAPIPlugin.Log.LogError(ex);
+                    InscryptionAPIPlugin.Logger.LogError(ex);
                 }
             }
 
