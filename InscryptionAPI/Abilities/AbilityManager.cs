@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
@@ -21,8 +22,8 @@ public static class AbilityManager
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
     private readonly static ObservableCollection<FullAbility> NewAbilities = new();
     
-    public static List<FullAbility> AllAbilities { get; private set; }
-    public static List<AbilityInfo> AllAbilityInfos { get; private set; }
+    public static List<FullAbility> AllAbilities { get; private set; } = BaseGameAbilities.ToList();
+    public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
 
     private static int _abilityCounter = (int)Ability.NUM_ABILITIES;
 
@@ -47,7 +48,7 @@ public static class AbilityManager
                 Id = ability.ability,
                 Info = ability,
                 AbilityBehavior = gameAsm.GetType($"DiskCardGame.{name}"),
-                Texture = AbilitiesUtil.LoadAbilityIcon(name)
+                Texture = OriginalLoadAbilityIcon(name)
             });
         }
         return baseGame;
@@ -69,7 +70,7 @@ public static class AbilityManager
 
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
-
+    
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
     [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of abilities")]
@@ -77,6 +78,11 @@ public static class AbilityManager
     {
         ScriptableObjectLoader<AbilityInfo>.allData = AllAbilityInfos;
     }
+
+    [HarmonyReversePatch(HarmonyReversePatchType.Original)]
+    [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbility = false, bool something = false) { throw new NotImplementedException(); }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
