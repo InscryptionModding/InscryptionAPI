@@ -19,6 +19,7 @@ namespace APIPlugin
 		public static Dictionary<int, TailIdentifier> tailIds = new();
 
 		public static Dictionary<string, Sprite> emissions = new();
+		public static Dictionary<string, Sprite> altEmissions = new();
 
 		public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null,
 			List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null,
@@ -46,7 +47,7 @@ namespace APIPlugin
 			bool flipPortraitForStrafe = false, bool onePerDeck = false,
 			List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null,
 			Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null,
-			Texture2D emissionTex = null, GameObject animatedPortrait = null, List<Texture> decals = null,
+			Texture2D emissionTex = null, Texture2D altEmissionTex = null, GameObject animatedPortrait = null, List<Texture> decals = null,
 			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
 			CardInfo card = ScriptableObject.CreateInstance<CardInfo>();
@@ -123,7 +124,7 @@ namespace APIPlugin
 			}
 
 			// textures
-			DetermineAndSetCardArt(name, card, defaultTex, altTex, pixelTex, emissionTex);
+			DetermineAndSetCardArt(name, card, defaultTex, altTex, pixelTex, emissionTex, altEmissionTex);
 
 			if (animatedPortrait is not null)
 			{
@@ -229,7 +230,7 @@ namespace APIPlugin
 
 		private static void DetermineAndSetCardArt(
 			string name, CardInfo card,
-			Texture2D defaultTex, Texture2D altTex, Texture2D pixelTex, Texture2D emissionTex)
+			Texture2D defaultTex, Texture2D altTex, Texture2D pixelTex, Texture2D emissionTex, Texture2D altEmissionTex)
 		{
 			var newName = "portrait_" + name;
 			if (defaultTex is not null)
@@ -256,6 +257,23 @@ namespace APIPlugin
 
 				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = newName;
+				if (altEmissionTex is not null)
+				{
+					Plugin.Log.LogInfo(newName + " found alt Emission!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					altEmissionTex.name = newName + "_emission";
+					altEmissionTex.filterMode = FilterMode.Point;
+					Sprite emissionSprite = Sprite.Create(altEmissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+					emissionSprite.name = newName + "_emission";
+					altEmissions.Add(newName, emissionSprite);
+				}
+				else
+				{
+					Plugin.Log.LogInfo(newName + " no alt Emission.");
+				}
+			}
+			else
+			{
+				Plugin.Log.LogInfo(newName + " not alt Texture.");
 			}
 
 			if (pixelTex is not null)

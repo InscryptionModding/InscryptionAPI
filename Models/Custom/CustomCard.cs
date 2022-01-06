@@ -15,6 +15,7 @@ namespace APIPlugin
 		public static Dictionary<int,TailIdentifier> tailIds = new();
 
 		public static Dictionary<string, Sprite> emissions = new();
+		public static Dictionary<string, Sprite> altEmissions = new();
 
 		public string name;
 		public List<CardMetaCategory> metaCategories;
@@ -46,6 +47,7 @@ namespace APIPlugin
 		public Texture titleGraphic;
 		[IgnoreMapping] public Texture2D pixelTex;
 		[IgnoreMapping] public Texture2D emissionTex;
+		[IgnoreMapping] public Texture2D altEmissionTex;
 		public GameObject animatedPortrait;
 		public List<Texture> decals;
 
@@ -122,6 +124,14 @@ namespace APIPlugin
 				altTex.filterMode = FilterMode.Point;
 				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
+				if (this.altEmissionTex is not null)
+				{
+					altEmissionTex.name = tex.name + "_emission";
+					altEmissionTex.filterMode = FilterMode.Point;
+					Sprite emissionSprite = Sprite.Create(altEmissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
+					emissionSprite.name = tex.name + "_emission";
+					altEmissions.Add(tex.name, emissionSprite);
+				}
 			}
 
 			Plugin.Log.LogDebug($"Checking pixelTex is not null...");
