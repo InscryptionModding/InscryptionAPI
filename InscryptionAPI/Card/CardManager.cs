@@ -17,7 +17,6 @@ public static class CardManager
 
     static CardManager()
     {
-        AllCards = BaseGameCards.ToList();
         NewCards.CollectionChanged += static (_, _) =>
         {
             var cards = BaseGameCards.Append(NewCards).ToList();
@@ -25,7 +24,7 @@ public static class CardManager
         };
     }
 
-    public static List<CardInfo> AllCards { get; private set; }
+    public static List<CardInfo> AllCards { get; private set; } = BaseGameCards.ToList();
 
     public static void Add(CardInfo newCard) => NewCards.Add(newCard);
     public static void Remove(CardInfo card) => NewCards.Remove(card);

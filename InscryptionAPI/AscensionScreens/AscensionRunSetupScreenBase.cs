@@ -3,431 +3,430 @@ using HarmonyLib;
 using UnityEngine;
 using GBC;
 
-namespace InscryptionAPI.AscensionScreens
+namespace InscryptionAPI.AscensionScreens;
+
+public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 {
-    public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
+    // This will display near the top of the screen.
+    // The very top will be the challenge level text; below that will be this
+    public abstract string headerText { get; }
+
+    // If this is true, it will show the card displayer at the footer below the challenge text
+    // Seting this to true will also enable the DisplayCardInfo and ClearCardInfo methods
+    // If this is not true, those methods will do nothing
+    public abstract bool showCardDisplayer { get; }
+
+    // If this is true, it will put a card panel in the middle of the screen
+    // The card panel will be able to display up to 7 cards
+    // and will have a left/right button
+    public abstract bool showCardPanel { get; }
+
+    // This is the hook for the implementer to build their own UI elements.
+    public virtual void InitializeScreen(GameObject partialScreen)
     {
-        // This will display near the top of the screen.
-        // The very top will be the challenge level text; below that will be this
-        public abstract string headerText { get; }
 
-        // If this is true, it will show the card displayer at the footer below the challenge text
-        // Seting this to true will also enable the DisplayCardInfo and ClearCardInfo methods
-        // If this is not true, those methods will do nothing
-        public abstract bool showCardDisplayer { get; }
+    }
 
-        // If this is true, it will put a card panel in the middle of the screen
-        // The card panel will be able to display up to 7 cards
-        // and will have a left/right button
-        public abstract bool showCardPanel { get; }
+    public SequentialPixelTextLines cardInfoLines;
 
-        // This is the hook for the implementer to build their own UI elements.
-        public virtual void InitializeScreen(GameObject partialScreen)
+    public SequentialPixelTextLines challengeFooterLines;
+
+    public ChallengeLevelText challengeHeaderDisplay;
+
+    public List<PixelSelectableCard> cards;
+
+    public GameObject cardPanel;
+
+    public MainInputInteractable leftButton;
+
+    public MainInputInteractable rightButton;
+
+    public AscensionMenuInteractable continueButton;
+
+    public AscensionMenuBackButton backButton;
+
+    public PixelText screenTitle;
+
+    public PixelText secondaryInfoDisplayer;
+
+    public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
+    {
+        // Create the new screen
+        InscryptionAPIPlugin.Logger.LogDebug($"Creating screen for {screenType.Name}");
+
+        GameObject pseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen;
+        GameObject screenObject = GameObject.Instantiate(pseudoPrefab, pseudoPrefab.transform.parent);
+        screenObject.name = screenType.Name;
+
+        InscryptionAPIPlugin.Logger.LogDebug($"Getting old logic");
+        AscensionCardsSummaryScreen oldController = screenObject.GetComponent<AscensionCardsSummaryScreen>();
+
+        InscryptionAPIPlugin.Logger.LogDebug($"Adding new logic");
+        AscensionRunSetupScreenBase controller = screenObject.AddComponent(screenType) as AscensionRunSetupScreenBase;
+
+        // Update the title of the screen
+        InscryptionAPIPlugin.Logger.LogDebug($"Updating screen title");
+        GameObject textHeader = screenObject.transform.Find("Header/Mid").gameObject;
+        textHeader.transform.localPosition = new Vector3(0f, -0.575f, 0f);
+        controller.screenTitle = textHeader.GetComponent<PixelText>();
+        controller.screenTitle.SetText(Localization.ToUpper(Localization.Translate(controller.headerText)));
+
+        // Check to see if we need the card information displayer
+        GameObject footer = screenObject.transform.Find("Footer").gameObject;
+        footer.SetActive(true);
+
+        GameObject cardTextDisplayer = screenObject.transform.Find("Footer/CardTextDisplayer").gameObject;
+        GameObject footerLowline = screenObject.transform.Find("Footer/PixelTextLine_DIV").gameObject;
+        if (controller.showCardDisplayer)
         {
+            InscryptionAPIPlugin.Logger.LogDebug($"Resetting card information displayer");
 
-        }
+            // Move the stuff
+            cardTextDisplayer.transform.localPosition = new Vector3(2.38f, 0.27f, 0f);
+            footerLowline.transform.localPosition = new Vector3(0f, 0.33f, 0f);
+            footerLowline.transform.SetParent(cardTextDisplayer.transform, true);
 
-        public SequentialPixelTextLines cardInfoLines;
-
-        public SequentialPixelTextLines challengeFooterLines;
-
-        public ChallengeLevelText challengeHeaderDisplay;
-
-        public List<PixelSelectableCard> cards;
-
-        public GameObject cardPanel;
-
-        public MainInputInteractable leftButton;
-
-        public MainInputInteractable rightButton;
-
-        public AscensionMenuInteractable continueButton;
-
-        public AscensionMenuBackButton backButton;
-
-        public PixelText screenTitle;
-
-        public PixelText secondaryInfoDisplayer;
-
-        public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
-        {
-            // Create the new screen
-            InscryptionAPIPlugin.Logger.LogDebug($"Creating screen for {screenType.Name}");
-
-            GameObject pseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen;
-            GameObject screenObject = GameObject.Instantiate(pseudoPrefab, pseudoPrefab.transform.parent);
-            screenObject.name = screenType.Name;
-
-            InscryptionAPIPlugin.Logger.LogDebug($"Getting old logic");
-            AscensionCardsSummaryScreen oldController = screenObject.GetComponent<AscensionCardsSummaryScreen>();
-
-            InscryptionAPIPlugin.Logger.LogDebug($"Adding new logic");
-            AscensionRunSetupScreenBase controller = screenObject.AddComponent(screenType) as AscensionRunSetupScreenBase;
-
-                        // Update the title of the screen
-            InscryptionAPIPlugin.Logger.LogDebug($"Updating screen title");
-            GameObject textHeader = screenObject.transform.Find("Header/Mid").gameObject;
-            textHeader.transform.localPosition = new Vector3(0f, -0.575f, 0f);
-            controller.screenTitle = textHeader.GetComponent<PixelText>();
-            controller.screenTitle.SetText(Localization.ToUpper(Localization.Translate(controller.headerText)));
-
-            // Check to see if we need the card information displayer
-            GameObject footer = screenObject.transform.Find("Footer").gameObject;
-            footer.SetActive(true);
-
-            GameObject cardTextDisplayer = screenObject.transform.Find("Footer/CardTextDisplayer").gameObject;
-            GameObject footerLowline = screenObject.transform.Find("Footer/PixelTextLine_DIV").gameObject;
-            if (controller.showCardDisplayer)
-            {
-                InscryptionAPIPlugin.Logger.LogDebug($"Resetting card information displayer");
-
-                // Move the stuff
-                cardTextDisplayer.transform.localPosition = new Vector3(2.38f, 0.27f, 0f);
-                footerLowline.transform.localPosition = new Vector3(0f, 0.33f, 0f);
-                footerLowline.transform.SetParent(cardTextDisplayer.transform, true);
-
-                // Copy over a reference to the card info lines
-                Component.Destroy(footer.GetComponent<SequentialPixelTextLines>());
-                controller.cardInfoLines = cardTextDisplayer.AddComponent<SequentialPixelTextLines>();
-                controller.cardInfoLines.lines = new List<PixelText>() {
-                    footerLowline.GetComponent<PixelText>(),
-                    cardTextDisplayer.transform.Find("PixelTextLine_DESC1").gameObject.GetComponent<PixelText>(),
-                    cardTextDisplayer.transform.Find("PixelTextLine_NAME").gameObject.GetComponent<PixelText>()
-                };
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogDebug($"Destroying unwanted card information displayer");
-                // Destroy the card text displayer and footer low line
-                GameObject.Destroy(cardTextDisplayer);
-                GameObject.Destroy(footerLowline);
-
-                InscryptionAPIPlugin.Logger.LogDebug($"Creating new information displayer");
-                GameObject newInfoDisplayer = GameObject.Instantiate(textHeader);
-                controller.secondaryInfoDisplayer = newInfoDisplayer.GetComponent<PixelText>();
-                controller.secondaryInfoDisplayer.SetColor(GameColors.Instance.nearWhite);
-                newInfoDisplayer.transform.localPosition = new Vector3(0f, -2.25f, 0f);
-            }
-
-            if (controller.showCardPanel)
-            {
-                InscryptionAPIPlugin.Logger.LogDebug($"Transferring ownership of cards");
-                controller.cards = oldController.cards;
-            }    
-
-            // Destroy the old game logic
-            InscryptionAPIPlugin.Logger.LogDebug($"Destroying old game logic");
-            Component.Destroy(oldController);
-
-            // Sort out the unlocks block
-            InscryptionAPIPlugin.Logger.LogDebug($"Handling card panel");
-            controller.cardPanel = screenObject.transform.Find("Unlocks").gameObject;
-            if (controller.showCardDisplayer)
-                controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
-            else
-                GameObject.Destroy(controller.cardPanel);
-
-            // Clone the challenge information from a challenge screen
-            InscryptionAPIPlugin.Logger.LogDebug($"Creating challenge text header");
-            GameObject header = screenObject.transform.Find("Header").gameObject;
-            SequentialPixelTextLines headerLines = header.AddComponent<SequentialPixelTextLines>();
-
-            GameObject challengeScreen = AscensionMenuScreens.Instance.selectChallengesScreen;
-            GameObject challengePseudoPrefab = challengeScreen.transform.Find("Header/ChallengeLevel").gameObject;
-            GameObject pointsPseudoPrefab = challengeScreen.transform.Find("Header/ChallengePoints").gameObject;
-
-            GameObject challengeLevel = GameObject.Instantiate(challengePseudoPrefab, header.transform);
-            GameObject challengePoints = GameObject.Instantiate(pointsPseudoPrefab, header.transform);
-
-            // Set the old header lines to the lines of the sequential pixel text lines
-            // Fundamentally, the old header now controls these new challenge level lines
-            InscryptionAPIPlugin.Logger.LogDebug($"Assigning new lines of text to header");
-            headerLines.lines = new List<PixelText>() {
-                challengeLevel.GetComponent<PixelText>(),
-                challengePoints.GetComponent<PixelText>()
+            // Copy over a reference to the card info lines
+            Component.Destroy(footer.GetComponent<SequentialPixelTextLines>());
+            controller.cardInfoLines = cardTextDisplayer.AddComponent<SequentialPixelTextLines>();
+            controller.cardInfoLines.lines = new List<PixelText>() {
+                footerLowline.GetComponent<PixelText>(),
+                cardTextDisplayer.transform.Find("PixelTextLine_DESC1").gameObject.GetComponent<PixelText>(),
+                cardTextDisplayer.transform.Find("PixelTextLine_NAME").gameObject.GetComponent<PixelText>()
             };
+        }
+        else
+        {
+            InscryptionAPIPlugin.Logger.LogDebug($"Destroying unwanted card information displayer");
+            // Destroy the card text displayer and footer low line
+            GameObject.Destroy(cardTextDisplayer);
+            GameObject.Destroy(footerLowline);
 
-            // And add those lines to the new challenge level controller
-            InscryptionAPIPlugin.Logger.LogDebug($"Giving controller access to header");
-            ChallengeLevelText challengeLevelController = screenObject.AddComponent<ChallengeLevelText>();
-            challengeLevelController.headerPointsLines = headerLines;
-            controller.challengeHeaderDisplay = challengeLevelController;
+            InscryptionAPIPlugin.Logger.LogDebug($"Creating new information displayer");
+            GameObject newInfoDisplayer = GameObject.Instantiate(textHeader);
+            controller.secondaryInfoDisplayer = newInfoDisplayer.GetComponent<PixelText>();
+            controller.secondaryInfoDisplayer.SetColor(GameColors.Instance.nearWhite);
+            newInfoDisplayer.transform.localPosition = new Vector3(0f, -2.25f, 0f);
+        }
 
-            InscryptionAPIPlugin.Logger.LogDebug($"Creating challenge footer text");
+        if (controller.showCardPanel)
+        {
+            InscryptionAPIPlugin.Logger.LogDebug($"Transferring ownership of cards");
+            controller.cards = oldController.cards;
+        }    
 
-            List<Transform> footerLinePseudos = new List<Transform>();
-            GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject; 
-            foreach (Transform child in challengeFooter.transform)
-                if (child.name.ToLowerInvariant() == "pixeltextline")
-                    footerLinePseudos.Add(child);
-            footerLinePseudos.Sort((a, b) => a.localPosition.y < b.localPosition.y ? -1 : 1);
+        // Destroy the old game logic
+        InscryptionAPIPlugin.Logger.LogDebug($"Destroying old game logic");
+        Component.Destroy(oldController);
 
-            InscryptionAPIPlugin.Logger.LogDebug($"Building footer text controller");
-            List<GameObject> newFooterLines = footerLinePseudos.Select(t => GameObject.Instantiate(t.gameObject, footer.transform)).ToList();
-            SequentialPixelTextLines footerLines = footer.AddComponent<SequentialPixelTextLines>();
-            footerLines.lines = newFooterLines.Select(o => o.GetComponent<PixelText>()).ToList();
-            footerLines.linePrefix = challengeFooter.GetComponent<SequentialPixelTextLines>().linePrefix;
-            controller.challengeFooterLines = footerLines;
+        // Sort out the unlocks block
+        InscryptionAPIPlugin.Logger.LogDebug($"Handling card panel");
+        controller.cardPanel = screenObject.transform.Find("Unlocks").gameObject;
+        if (controller.showCardDisplayer)
+            controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+        else
+            GameObject.Destroy(controller.cardPanel);
 
-            // Let's reroute the left and right buttons
-            controller.leftButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject.GetComponent<MainInputInteractable>();
-            controller.rightButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject.GetComponent<MainInputInteractable>();
-            if (controller.showCardPanel)
+        // Clone the challenge information from a challenge screen
+        InscryptionAPIPlugin.Logger.LogDebug($"Creating challenge text header");
+        GameObject header = screenObject.transform.Find("Header").gameObject;
+        SequentialPixelTextLines headerLines = header.AddComponent<SequentialPixelTextLines>();
+
+        GameObject challengeScreen = AscensionMenuScreens.Instance.selectChallengesScreen;
+        GameObject challengePseudoPrefab = challengeScreen.transform.Find("Header/ChallengeLevel").gameObject;
+        GameObject pointsPseudoPrefab = challengeScreen.transform.Find("Header/ChallengePoints").gameObject;
+
+        GameObject challengeLevel = GameObject.Instantiate(challengePseudoPrefab, header.transform);
+        GameObject challengePoints = GameObject.Instantiate(pointsPseudoPrefab, header.transform);
+
+        // Set the old header lines to the lines of the sequential pixel text lines
+        // Fundamentally, the old header now controls these new challenge level lines
+        InscryptionAPIPlugin.Logger.LogDebug($"Assigning new lines of text to header");
+        headerLines.lines = new List<PixelText>() {
+            challengeLevel.GetComponent<PixelText>(),
+            challengePoints.GetComponent<PixelText>()
+        };
+
+        // And add those lines to the new challenge level controller
+        InscryptionAPIPlugin.Logger.LogDebug($"Giving controller access to header");
+        ChallengeLevelText challengeLevelController = screenObject.AddComponent<ChallengeLevelText>();
+        challengeLevelController.headerPointsLines = headerLines;
+        controller.challengeHeaderDisplay = challengeLevelController;
+
+        InscryptionAPIPlugin.Logger.LogDebug($"Creating challenge footer text");
+
+        List<Transform> footerLinePseudos = new List<Transform>();
+        GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject; 
+        foreach (Transform child in challengeFooter.transform)
+            if (child.name.ToLowerInvariant() == "pixeltextline")
+                footerLinePseudos.Add(child);
+        footerLinePseudos.Sort((a, b) => a.localPosition.y < b.localPosition.y ? -1 : 1);
+
+        InscryptionAPIPlugin.Logger.LogDebug($"Building footer text controller");
+        List<GameObject> newFooterLines = footerLinePseudos.Select(t => GameObject.Instantiate(t.gameObject, footer.transform)).ToList();
+        SequentialPixelTextLines footerLines = footer.AddComponent<SequentialPixelTextLines>();
+        footerLines.lines = newFooterLines.Select(o => o.GetComponent<PixelText>()).ToList();
+        footerLines.linePrefix = challengeFooter.GetComponent<SequentialPixelTextLines>().linePrefix;
+        controller.challengeFooterLines = footerLines;
+
+        // Let's reroute the left and right buttons
+        controller.leftButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject.GetComponent<MainInputInteractable>();
+        controller.rightButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject.GetComponent<MainInputInteractable>();
+        if (controller.showCardPanel)
+        {
+            InscryptionAPIPlugin.Logger.LogDebug($"Reassigning left/right scroll buttons");
+            controller.leftButton.CursorSelectStarted = controller.LeftButtonClicked;
+            controller.rightButton.CursorSelectStarted = controller.RightButtonClicked;
+            controller.leftButton.gameObject.transform.localPosition = controller.leftButton.gameObject.transform.localPosition - (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
+            controller.rightButton.gameObject.transform.localPosition = controller.rightButton.gameObject.transform.localPosition + (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
+
+            // Let's add three more cards to the panel
+            InscryptionAPIPlugin.Logger.LogDebug($"Expanding card panel");
+            GameObject cardPrefab = Resources.Load<GameObject>("prefabs/gbccardbattle/pixelselectablecard");
+            Transform cardsParent = screenObject.transform.Find("Unlocks/ScreenAnchor/Cards");
+            for (int i = 0; i < 3; i++)
             {
-                InscryptionAPIPlugin.Logger.LogDebug($"Reassigning left/right scroll buttons");
-                controller.leftButton.CursorSelectStarted = controller.LeftButtonClicked;
-                controller.rightButton.CursorSelectStarted = controller.RightButtonClicked;
-                controller.leftButton.gameObject.transform.localPosition = controller.leftButton.gameObject.transform.localPosition - (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
-                controller.rightButton.gameObject.transform.localPosition = controller.rightButton.gameObject.transform.localPosition + (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
+                GameObject newCard = GameObject.Instantiate(cardPrefab, cardsParent);
+                PixelSelectableCard newPixelComponent = newCard.GetComponent<PixelSelectableCard>();
+                controller.cards.Add(newPixelComponent);
 
-                // Let's add three more cards to the panel
-                InscryptionAPIPlugin.Logger.LogDebug($"Expanding card panel");
-                GameObject cardPrefab = Resources.Load<GameObject>("prefabs/gbccardbattle/pixelselectablecard");
-                Transform cardsParent = screenObject.transform.Find("Unlocks/ScreenAnchor/Cards");
-                for (int i = 0; i < 3; i++)
-                {
-                    GameObject newCard = GameObject.Instantiate(cardPrefab, cardsParent);
-                    PixelSelectableCard newPixelComponent = newCard.GetComponent<PixelSelectableCard>();
-                    controller.cards.Add(newPixelComponent);
-
-                    // I have to manually connect the pixel border to the component for some reason
-                    GameObject pixelBorder = newCard.transform.Find("Base/PixelSnap/CardElements/PixelSelectionBorder").gameObject;
-                    pixelBorder.GetComponent<SpriteRenderer>().color = new Color(.619f, .149f, .188f); // Got this color off of the unityexplorer
-                    Traverse.Create(newPixelComponent).Field("pixelBorder").SetValue(pixelBorder);
-                }
-
-                InscryptionAPIPlugin.Logger.LogDebug($"Assigning click action to cards in card panel");
-                foreach (PixelSelectableCard card in controller.cards)
-                {
-                    card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
-                    {
-                        controller.CardClicked(card);
-                    }));
-                    card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(card.CursorEntered, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
-                    {
-                        controller.CardCursorEntered(card);
-                    }));
-
-                    Transform lockTexture = card.gameObject.transform.Find("Locked");
-                    if (lockTexture != null)
-                        GameObject.Destroy(lockTexture.gameObject);
-                }
+                // I have to manually connect the pixel border to the component for some reason
+                GameObject pixelBorder = newCard.transform.Find("Base/PixelSnap/CardElements/PixelSelectionBorder").gameObject;
+                pixelBorder.GetComponent<SpriteRenderer>().color = new Color(.619f, .149f, .188f); // Got this color off of the unityexplorer
+                Traverse.Create(newPixelComponent).Field("pixelBorder").SetValue(pixelBorder);
             }
-            else
+
+            InscryptionAPIPlugin.Logger.LogDebug($"Assigning click action to cards in card panel");
+            foreach (PixelSelectableCard card in controller.cards)
             {
-                InscryptionAPIPlugin.Logger.LogDebug($"Destroying scroll buttons");
-                GameObject.Destroy(controller.leftButton.gameObject);
-                GameObject.Destroy(controller.rightButton.gameObject);
+                card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
+                {
+                    controller.CardClicked(card);
+                }));
+                card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(card.CursorEntered, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
+                {
+                    controller.CardCursorEntered(card);
+                }));
 
-                controller.leftButton = null;
-                controller.rightButton = null;
+                Transform lockTexture = card.gameObject.transform.Find("Locked");
+                if (lockTexture != null)
+                    GameObject.Destroy(lockTexture.gameObject);
             }
+        }
+        else
+        {
+            InscryptionAPIPlugin.Logger.LogDebug($"Destroying scroll buttons");
+            GameObject.Destroy(controller.leftButton.gameObject);
+            GameObject.Destroy(controller.rightButton.gameObject);
+
+            controller.leftButton = null;
+            controller.rightButton = null;
+        }
 
 
-            // Reroute the back button
-            InscryptionAPIPlugin.Logger.LogDebug($"Rerouting back button");
-            GameObject backButton = screenObject.transform.Find("BackButton").gameObject;
-            controller.backButton = backButton.GetComponent<AscensionMenuBackButton>();
-            controller.backButton.screenToReturnTo = previousScreen;
+        // Reroute the back button
+        InscryptionAPIPlugin.Logger.LogDebug($"Rerouting back button");
+        GameObject backButton = screenObject.transform.Find("BackButton").gameObject;
+        controller.backButton = backButton.GetComponent<AscensionMenuBackButton>();
+        controller.backButton.screenToReturnTo = previousScreen;
 
-            // Add a continue button
-            InscryptionAPIPlugin.Logger.LogDebug($"Adding continue button");
-            GameObject continuePrefab = Resources.Load<GameObject>("prefabs/ui/ascension/ascensionmenucontinuebutton");
-            GameObject continueButton = GameObject.Instantiate(continuePrefab, screenObject.transform);
-            continueButton.transform.localPosition = new Vector3(2.08f, 1.15f, 0f);
+        // Add a continue button
+        InscryptionAPIPlugin.Logger.LogDebug($"Adding continue button");
+        GameObject continuePrefab = Resources.Load<GameObject>("prefabs/ui/ascension/ascensionmenucontinuebutton");
+        GameObject continueButton = GameObject.Instantiate(continuePrefab, screenObject.transform);
+        continueButton.transform.localPosition = new Vector3(2.08f, 1.15f, 0f);
 
-            controller.continueButton = continueButton.GetComponent<AscensionMenuInteractable>();
+        controller.continueButton = continueButton.GetComponent<AscensionMenuInteractable>();
 
-            // What we do depends upon the screen we're told is next
-            Action<MainInputInteractable> clickAction;
-            if (nextScreen == AscensionMenuScreens.Screen.SelectChallengesConfirm)
-                clickAction = (MainInputInteractable i) => TransitionToGame();
-            else
-                clickAction = (MainInputInteractable i) => AscensionMenuScreens.Instance.SwitchToScreen(nextScreen);
+        // What we do depends upon the screen we're told is next
+        Action<MainInputInteractable> clickAction;
+        if (nextScreen == AscensionMenuScreens.Screen.SelectChallengesConfirm)
+            clickAction = (MainInputInteractable i) => TransitionToGame();
+        else
+            clickAction = (MainInputInteractable i) => AscensionMenuScreens.Instance.SwitchToScreen(nextScreen);
             
-            controller.continueButton.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(controller.continueButton.CursorSelectStarted, clickAction);
+        controller.continueButton.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(controller.continueButton.CursorSelectStarted, clickAction);
 
-            // Let the base class do its magic
-            InscryptionAPIPlugin.Logger.LogDebug($"Calling screen implementation to finish creating screen UI elements");
-            controller.InitializeScreen(screenObject);
+        // Let the base class do its magic
+        InscryptionAPIPlugin.Logger.LogDebug($"Calling screen implementation to finish creating screen UI elements");
+        controller.InitializeScreen(screenObject);
 
-            // And we're done
-            InscryptionAPIPlugin.Logger.LogDebug($"Done building screen");
-            return controller;
-        }
+        // And we're done
+        InscryptionAPIPlugin.Logger.LogDebug($"Done building screen");
+        return controller;
+    }
 
-        private static void TransitionToGame()
+    private static void TransitionToGame()
+    {
+        if (!AscensionSaveData.Data.ChallengeLevelIsMet() && AscensionSaveData.Data.challengeLevel <= 12)
         {
-            if (!AscensionSaveData.Data.ChallengeLevelIsMet() && AscensionSaveData.Data.challengeLevel <= 12)
-            {
-                InscryptionAPIPlugin.Logger.LogDebug("Sending the player to the confirmation screen");
-                AscensionMenuScreens.Instance.SwitchToScreen(AscensionMenuScreens.Screen.SelectChallengesConfirm);
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogDebug("Starting a new run");
-                AscensionMenuScreens.Instance.TransitionToGame(true);
-            }
+            InscryptionAPIPlugin.Logger.LogDebug("Sending the player to the confirmation screen");
+            AscensionMenuScreens.Instance.SwitchToScreen(AscensionMenuScreens.Screen.SelectChallengesConfirm);
         }
-
-        public virtual void ClearMessage()
+        else
         {
-            if (this.gameObject.activeSelf)
-            {
-                if (this.showCardDisplayer)
-                {
-                    this.DisplayCardInfo(null, " ", " ");
-                }
-                else
-                {
-                    this.secondaryInfoDisplayer.gameObject.SetActive(false);
-                }
-            }
+            InscryptionAPIPlugin.Logger.LogDebug("Starting a new run");
+            AscensionMenuScreens.Instance.TransitionToGame(true);
         }
+    }
 
-        public virtual void DisplayMessage(string message)
+    public virtual void ClearMessage()
+    {
+        if (this.gameObject.activeSelf)
         {
             if (this.showCardDisplayer)
             {
-                this.DisplayCardInfo(null, message, " ");
+                this.DisplayCardInfo(null, " ", " ");
             }
             else
             {
-                this.secondaryInfoDisplayer.SetText(message);
-                this.secondaryInfoDisplayer.gameObject.SetActive(true);
+                this.secondaryInfoDisplayer.gameObject.SetActive(false);
             }
         }
+    }
 
-        public virtual void LeftButtonClicked(MainInputInteractable button)
+    public virtual void DisplayMessage(string message)
+    {
+        if (this.showCardDisplayer)
         {
-
+            this.DisplayCardInfo(null, message, " ");
         }
-
-        public virtual void RightButtonClicked(MainInputInteractable button)
+        else
         {
+            this.secondaryInfoDisplayer.SetText(message);
+            this.secondaryInfoDisplayer.gameObject.SetActive(true);
+        }
+    }
+
+    public virtual void LeftButtonClicked(MainInputInteractable button)
+    {
+
+    }
+
+    public virtual void RightButtonClicked(MainInputInteractable button)
+    {
             
-        }
+    }
 
-        public virtual void CardCursorEntered(PixelSelectableCard card)
+    public virtual void CardCursorEntered(PixelSelectableCard card)
+    {
+        if (this.showCardDisplayer)
+            this.DisplayCardInfo(card.Info);
+    }
+
+    public virtual void CardClicked(PixelSelectableCard card)
+    {
+
+    }
+
+    private static Vector2 FIRST_CARD_OFFSET = new Vector2(-1.5f, 0f);
+
+    private static Vector2 BETWEEN_CARD_OFFSET = new Vector2(0.5f, 0f);
+
+    public void ShowCards(List<CardInfo> cardsToDisplay)
+    {
+        if (!this.showCardDisplayer)
+            return;
+
+        foreach (PixelSelectableCard card in this.cards)
+            card.gameObject.SetActive(false);
+
+        int numToShow = Math.Min(this.cards.Count, cardsToDisplay.Count);
+
+        float gaps = ((float)(this.cards.Count - numToShow)) / 2f;
+        Vector2 startPos = FIRST_CARD_OFFSET + BETWEEN_CARD_OFFSET * gaps;
+
+        for (int i = 0; i < numToShow; i++)
         {
-            if (this.showCardDisplayer)
-                this.DisplayCardInfo(card.Info);
+            this.cards[i].SetInfo(cardsToDisplay[i]);
+            this.cards[i].gameObject.transform.localPosition = startPos + (float)i * BETWEEN_CARD_OFFSET;
+            this.cards[i].gameObject.SetActive(true);
         }
+    }
 
-        public virtual void CardClicked(PixelSelectableCard card)
-        {
+    public const string CENTER_DASHES = "-------------------------------------------------------------------------------------------------------------------------------";
+    public const string FULL_DASHES = "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
 
-        }
+    public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate=false)
+    {
+        if (!showCardDisplayer)
+            return;
 
-        private static Vector2 FIRST_CARD_OFFSET = new Vector2(-1.5f, 0f);
-
-        private static Vector2 BETWEEN_CARD_OFFSET = new Vector2(0.5f, 0f);
-
-        public void ShowCards(List<CardInfo> cardsToDisplay)
-        {
-            if (!this.showCardDisplayer)
-                return;
-
-            foreach (PixelSelectableCard card in this.cards)
-                card.gameObject.SetActive(false);
-
-            int numToShow = Math.Min(this.cards.Count, cardsToDisplay.Count);
-
-            float gaps = ((float)(this.cards.Count - numToShow)) / 2f;
-            Vector2 startPos = FIRST_CARD_OFFSET + BETWEEN_CARD_OFFSET * gaps;
-
-            for (int i = 0; i < numToShow; i++)
-            {
-                this.cards[i].SetInfo(cardsToDisplay[i]);
-                this.cards[i].gameObject.transform.localPosition = startPos + (float)i * BETWEEN_CARD_OFFSET;
-                this.cards[i].gameObject.SetActive(true);
-            }
-        }
-
-        public const string CENTER_DASHES = "-------------------------------------------------------------------------------------------------------------------------------";
-        public const string FULL_DASHES = "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-
-        public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate=false)
-        {
-            if (!showCardDisplayer)
-                return;
-
-            string lineOne = $"{CENTER_DASHES} <color=#eef4c6>{nameOverride ?? info.DisplayedNameLocalized}</color> {CENTER_DASHES}";
-            string lineTwo = descOverride ?? info.GetGBCDescriptionLocalized(info.Abilities);
-            string lineThree = FULL_DASHES;
+        string lineOne = $"{CENTER_DASHES} <color=#eef4c6>{nameOverride ?? info.DisplayedNameLocalized}</color> {CENTER_DASHES}";
+        string lineTwo = descOverride ?? info.GetGBCDescriptionLocalized(info.Abilities);
+        string lineThree = FULL_DASHES;
 	
-	        this.cardInfoLines.ShowText(0.1f, new string[]
-	        {
-		        lineThree,
-		        lineTwo,
-		        lineOne
-	        }, immediate);
+        this.cardInfoLines.ShowText(0.1f, new string[]
+        {
+            lineThree,
+            lineTwo,
+            lineOne
+        }, immediate);
+    }
+
+    public void ClearCardInfo(bool immediate=true)
+    {
+        if (!showCardDisplayer)
+            return;
+
+        this.cardInfoLines.ShowText(0.1f, new string[]
+        {
+            FULL_DASHES,
+            string.Empty,
+            FULL_DASHES
+        }, immediate);
+    }
+
+    public void DisplayChallengeInfo(string message, int points, bool immediate=false)
+    {
+        string lineOne = Localization.Translate(message);
+
+        string lineTwo;
+        if (points == 0)
+        {
+            lineTwo = string.Format(Localization.Translate("{0} Challenge Points"), 0);
+        }
+        else if (points < 0)
+        {
+            lineTwo = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), -points);
+        } else
+        {
+            lineTwo = string.Format(Localization.Translate("{0} Challenge Points Added"), points);
         }
 
-        public void ClearCardInfo(bool immediate=true)
+        int challengeLevel = AscensionSaveData.Data.challengeLevel;
+        int activeChallengePoints = AscensionSaveData.Data.GetActiveChallengePoints();
+        string lineThree;
+        if (activeChallengePoints > challengeLevel * 10)
         {
-            if (!showCardDisplayer)
-                return;
-
-            this.cardInfoLines.ShowText(0.1f, new string[]
-	        {
-		        FULL_DASHES,
-		        string.Empty,
-		        FULL_DASHES
-	        }, immediate);
+            lineThree = string.Format(Localization.Translate("WARNING(!) Lvl Reqs EXCEEDED"), Array.Empty<object>());
         }
-
-        public void DisplayChallengeInfo(string message, int points, bool immediate=false)
+        else
         {
-            string lineOne = Localization.Translate(message);
-
-            string lineTwo;
-			if (points == 0)
+            if (activeChallengePoints == challengeLevel * 10)
             {
-				lineTwo = string.Format(Localization.Translate("{0} Challenge Points"), 0);
-			}
-			else if (points < 0)
-			{
-				lineTwo = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), -points);
-			} else
-            {
-                lineTwo = string.Format(Localization.Translate("{0} Challenge Points Added"), points);
+                lineThree = string.Format(Localization.Translate("Lvl Reqs Met"), Array.Empty<object>());
             }
-
-            int challengeLevel = AscensionSaveData.Data.challengeLevel;
-			int activeChallengePoints = AscensionSaveData.Data.GetActiveChallengePoints();
-			string lineThree;
-			if (activeChallengePoints > challengeLevel * 10)
-			{
-				lineThree = string.Format(Localization.Translate("WARNING(!) Lvl Reqs EXCEEDED"), Array.Empty<object>());
-			}
-			else
-			{
-				if (activeChallengePoints == challengeLevel * 10)
-				{
-					lineThree = string.Format(Localization.Translate("Lvl Reqs Met"), Array.Empty<object>());
-				}
-				else
-				{
-					lineThree = string.Format(Localization.Translate("Lvl Reqs NOT MET"), Array.Empty<object>());
-				}
-			}
-
-            this.challengeFooterLines.ShowText(0.1f, new string[]
-			{
-				lineOne,
-				lineTwo,
-				lineThree
-			}, immediate);
-
-            challengeHeaderDisplay.UpdateText();
+            else
+            {
+                lineThree = string.Format(Localization.Translate("Lvl Reqs NOT MET"), Array.Empty<object>());
+            }
         }
 
-        public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate=false)
+        this.challengeFooterLines.ShowText(0.1f, new string[]
         {
-            AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
-            int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
-            DisplayChallengeInfo(info.title, points, immediate);
-        }
+            lineOne,
+            lineTwo,
+            lineThree
+        }, immediate);
+
+        challengeHeaderDisplay.UpdateText();
+    }
+
+    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate=false)
+    {
+        AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
+        int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
+        DisplayChallengeInfo(info.title, points, immediate);
     }
 }
