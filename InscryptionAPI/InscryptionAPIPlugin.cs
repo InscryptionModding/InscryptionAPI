@@ -21,7 +21,6 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     private static readonly (Type, string)[] ObjectLoaderTypes =
     {
-        (typeof(AbilityInfo), "Abilities"),
         (typeof(AscensionChallengeInfo), "Ascension/Challenges"),
         (typeof(BoonData), "Boons"),
         (typeof(CommandLineTextSegment), ""),

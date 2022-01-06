@@ -2,7 +2,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
-using Sirenix.Serialization.Utilities;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -19,7 +18,7 @@ public static class CardManager
     {
         NewCards.CollectionChanged += static (_, _) =>
         {
-            var cards = BaseGameCards.Append(NewCards).ToList();
+            var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
             AllCards = ModifyCardList?.Invoke(cards) ?? cards;
         };
     }
