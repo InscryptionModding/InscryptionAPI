@@ -131,6 +131,13 @@ public static class AbilityManager
             return false;
         }
 
+        if (Enum.TryParse<Ability>(abilityName, out Ability abilityEnum))
+        {
+            FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == abilityEnum);
+            __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
+            return false;
+        }
+
         return true;
     }
 
