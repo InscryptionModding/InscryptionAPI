@@ -2,10 +2,10 @@ using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
 
-namespace InscryptionAPI.Challenges;
+namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
-public static class AscensionChallengeScreen
+public static class AscensionChallengeScreenPatches
 {
     private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = Sprite.Create(
         Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),

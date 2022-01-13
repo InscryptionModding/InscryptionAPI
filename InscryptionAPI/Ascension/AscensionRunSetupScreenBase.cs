@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using GBC;
 
-namespace InscryptionAPI.AscensionScreens;
+namespace InscryptionAPI.Ascension;
 
 public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 {

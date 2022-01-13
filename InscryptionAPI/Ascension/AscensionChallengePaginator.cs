@@ -1,7 +1,7 @@
 using DiskCardGame;
 using UnityEngine;
 
-namespace InscryptionAPI.Challenges;
+namespace InscryptionAPI.Ascension;
 
 public class AscensionChallengePaginator : MonoBehaviour
 {

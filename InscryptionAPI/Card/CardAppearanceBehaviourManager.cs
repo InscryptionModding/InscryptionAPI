@@ -1,0 +1,59 @@
+using System.Collections.ObjectModel;
+using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Guid;
+
+namespace InscryptionAPI.Card;
+
+[HarmonyPatch]
+public static class CardAppearanceBehaviourManager
+{
+    public class FullCardAppearanceBehaviour
+    {
+        public CardAppearanceBehaviour.Appearance Id { get; internal set; }
+        public Type AppearanceBehaviour { get; internal set; }
+    }
+
+    public readonly static ReadOnlyCollection<FullCardAppearanceBehaviour> BaseGameAppearances = new(GenBaseGameAppearanceList());
+    private readonly static ObservableCollection<FullCardAppearanceBehaviour> NewAppearances = new();
+    
+    public static List<FullCardAppearanceBehaviour> AllAppearances { get; private set; } = BaseGameAppearances.ToList();
+
+    static CardAppearanceBehaviourManager()
+    {
+        NewAppearances.CollectionChanged += static (_, _) =>
+        {
+            AllAppearances = BaseGameAppearances.Concat(NewAppearances).ToList();
+        };
+    }
+
+    private static List<FullCardAppearanceBehaviour> GenBaseGameAppearanceList()
+    {
+        List<FullCardAppearanceBehaviour> baseGame = new();
+        var gameAsm = typeof(CardAppearanceBehaviour).Assembly;
+        foreach (CardAppearanceBehaviour.Appearance ability in Enum.GetValues(typeof(CardAppearanceBehaviour.Appearance)))
+        {
+            var name = ability.ToString();
+            baseGame.Add(new FullCardAppearanceBehaviour
+            {
+                Id = ability,
+                AppearanceBehaviour = gameAsm.GetType($"DiskCardGame.{name}")
+            });
+        }
+        return baseGame;
+    }
+
+    public static FullCardAppearanceBehaviour Add(string guid, string abilityName, Type behavior)
+    {
+        FullCardAppearanceBehaviour full = new()
+        {
+            AppearanceBehaviour = behavior,
+            Id = GuidManager.GetEnumValue<CardAppearanceBehaviour.Appearance>(guid, abilityName)
+        };
+        NewAppearances.Add(full);
+        return full;
+    }
+
+    public static void Remove(CardAppearanceBehaviour.Appearance id) => NewAppearances.Remove(NewAppearances.FirstOrDefault(x => x.Id == id));
+    public static void Remove(FullCardAppearanceBehaviour ability) => NewAppearances.Remove(ability);
+}

@@ -25,6 +25,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         (typeof(BoonData), "Boons"),
         (typeof(CommandLineTextSegment), ""),
         (typeof(HoloMapWorldData), "Map/HoloMapWorlds"),
+        (typeof(StarterDeckInfo), ""),
         (typeof(ItemData), "Consumables")
     };
     

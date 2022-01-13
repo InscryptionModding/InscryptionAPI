@@ -1,4 +1,4 @@
-namespace InscryptionAPI.AscensionScreens;
+namespace InscryptionAPI.Ascension;
 
 // Decorates a custom screen and marks how it should be sorted
 public class AscensionScreenSort : System.Attribute

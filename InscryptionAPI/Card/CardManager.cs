@@ -25,8 +25,21 @@ public static class CardManager
 
     public static List<CardInfo> AllCards { get; private set; } = BaseGameCards.ToList();
 
-    public static void Add(CardInfo newCard) => NewCards.Add(newCard);
+    public static void Add(CardInfo newCard) { if (!NewCards.Contains(newCard)) NewCards.Add(newCard); }
     public static void Remove(CardInfo card) => NewCards.Remove(card);
+
+    public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), bool addToPool = true)
+    {
+        CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
+        retval.name = name;
+        retval.SetBasic(displayName, attack, health, description);
+
+        // Go ahead and add this as well
+        if (addToPool)
+            Add(retval);
+
+        return retval;
+    }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]

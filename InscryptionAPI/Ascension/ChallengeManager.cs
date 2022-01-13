@@ -4,7 +4,7 @@ using Mono.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.Guid;
 
-namespace InscryptionAPI.Challenges;
+namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
 public static class ChallengeManager
@@ -38,9 +38,9 @@ public static class ChallengeManager
         return stackableMap.ContainsKey(id) ? stackableMap[id] : false;
     }
 
-    public static AscensionChallenge Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
+    public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
     {
-        info.challengeType = (AscensionChallenge)GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
+        info.challengeType = GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
 
         newInfos.Add(info);
 
@@ -51,10 +51,10 @@ public static class ChallengeManager
 
         _hasLoaded = false; // Force a reload in case something happened out of the expected order
 
-        return info.challengeType;
+        return info;
     }
 
-    public static AscensionChallenge Add(
+    public static AscensionChallengeInfo Add(
         string pluginGuid,
         string title,
         string description,
