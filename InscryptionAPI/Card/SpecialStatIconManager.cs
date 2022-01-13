@@ -61,6 +61,15 @@ public static class StatIconManager
         return full;
     }
 
+    public static StatIconInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior)
+    {
+        StatIconInfo info = ScriptableObject.CreateInstance<StatIconInfo>();
+        info.rulebookDescription = rulebookDescription;
+        info.rulebookName = rulebookName;
+
+        return Add(guid, info, behavior).Info;
+    }
+
     public static void Remove(SpecialStatIcon id) => NewStatIcons.Remove(NewStatIcons.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullStatIcon ability) => NewStatIcons.Remove(ability);
     

@@ -24,6 +24,22 @@ public static class AbilityExtensions
         info.Info.customFlippedIcon = true;
     }
 
+    public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
+    {
+        info.iconGraphic = icon;
+        if (filterMode.HasValue)
+            info.iconGraphic.filterMode = filterMode.Value;
+        return info;
+    }
+    
+    public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
+    {
+        info.iconGraphic = TextureHelper.GetImageAsTexture(pathToArt);
+        if (filterMode.HasValue)
+            info.iconGraphic.filterMode = filterMode.Value;
+        return info;
+    }
+    
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
         if (!filterMode.HasValue)
