@@ -266,4 +266,11 @@ public static class CardExtensions
                 info.specialAbilities.Add(app);
         return info;
     }
+
+    public static CardInfo SetGBCPlayable(this CardInfo info, CardTemple temple)
+    {
+        info.AddMetaCategories(CardMetaCategory.GBCPack, CardMetaCategory.GBCPlayable);
+        info.temple = temple;
+        return info;
+    }
 }
