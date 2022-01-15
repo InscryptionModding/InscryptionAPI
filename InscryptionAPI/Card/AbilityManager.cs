@@ -16,11 +16,21 @@ public static class AbilityManager
 {
     public class FullAbility
     {
-        public Ability Id { get; internal set; }
-        public AbilityInfo Info { get; internal set; }
-        public Type AbilityBehavior { get; internal set; }
+        public readonly Ability Id;
+        public readonly AbilityInfo Info;
+        public readonly Type AbilityBehavior;
         public Texture Texture { get; internal set; }
         public Texture CustomFlippedTexture { get; internal set; }
+
+        public FullAbility(Ability id, AbilityInfo info, Type behaviour, Texture texture)
+        {
+            Id = id;
+            Info = info;
+            AbilityBehavior = behaviour;
+            Texture = texture;
+
+            TypeManager.Add(id.ToString(), behaviour);
+        }
     }
 
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
@@ -56,25 +66,19 @@ public static class AbilityManager
         {
             var name = ability.ability.ToString();
             baseGame.Add(new FullAbility
-            {
-                Id = ability.ability,
-                Info = ability,
-                AbilityBehavior = gameAsm.GetType($"DiskCardGame.{name}"),
-                Texture = useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
-            });
+            (
+                ability.ability,
+                ability,
+                gameAsm.GetType($"DiskCardGame.{name}"),
+                useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
+            ));
         }
         return baseGame;
     }
 
     public static FullAbility Add(string guid, AbilityInfo info, Type behavior, Texture tex)
     {
-        FullAbility full = new()
-        {
-            Info = info,
-            AbilityBehavior = behavior,
-            Texture = tex,
-            Id = GuidManager.GetEnumValue<Ability>(guid, info.rulebookName)
-        };
+        FullAbility full = new(GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, behavior, tex);
         full.Info.ability = full.Id;
         NewAbilities.Add(full);
         return full;

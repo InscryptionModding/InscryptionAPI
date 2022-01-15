@@ -10,8 +10,16 @@ public static class SpecialTriggeredAbilityManager
 {
     public class FullSpecialTriggeredAbility
     {
-        public SpecialTriggeredAbility Id { get; internal set; }
-        public Type AbilityBehaviour { get; internal set; }
+        public readonly SpecialTriggeredAbility Id;
+        public readonly Type AbilityBehaviour;
+
+        public FullSpecialTriggeredAbility(SpecialTriggeredAbility id, Type abilityBehaviour)
+        {
+            Id = id;
+            AbilityBehaviour = abilityBehaviour;
+
+            TypeManager.Add(id.ToString(), abilityBehaviour);
+        }
     }
 
     public readonly static ReadOnlyCollection<FullSpecialTriggeredAbility> BaseGameSpecialTriggers = new(GenBaseGameSpecialTriggersList());
@@ -34,22 +42,14 @@ public static class SpecialTriggeredAbilityManager
         foreach (SpecialTriggeredAbility ability in Enum.GetValues(typeof(SpecialTriggeredAbility)))
         {
             var name = ability.ToString();
-            baseGame.Add(new FullSpecialTriggeredAbility
-            {
-                Id = ability,
-                AbilityBehaviour = gameAsm.GetType($"DiskCardGame.{name}")
-            });
+            baseGame.Add(new(ability, gameAsm.GetType($"DiskCardGame.{name}")));
         }
         return baseGame;
     }
 
     public static FullSpecialTriggeredAbility Add(string guid, string abilityName, Type behavior)
     {
-        FullSpecialTriggeredAbility full = new()
-        {
-            AbilityBehaviour = behavior,
-            Id = GuidManager.GetEnumValue<SpecialTriggeredAbility>(guid, abilityName)
-        };
+        FullSpecialTriggeredAbility full = new(GuidManager.GetEnumValue<SpecialTriggeredAbility>(guid, abilityName), behavior);
         NewSpecialTriggers.Add(full);
         return full;
     }

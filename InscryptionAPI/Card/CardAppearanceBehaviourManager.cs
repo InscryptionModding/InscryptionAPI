@@ -10,8 +10,16 @@ public static class CardAppearanceBehaviourManager
 {
     public class FullCardAppearanceBehaviour
     {
-        public CardAppearanceBehaviour.Appearance Id { get; internal set; }
-        public Type AppearanceBehaviour { get; internal set; }
+        public readonly CardAppearanceBehaviour.Appearance Id;
+        public readonly Type AppearanceBehaviour;
+
+        public FullCardAppearanceBehaviour(CardAppearanceBehaviour.Appearance id, Type appearanceBehaviour)
+        {
+            Id = id;
+            AppearanceBehaviour = appearanceBehaviour;
+
+            TypeManager.Add(id.ToString(), appearanceBehaviour);
+        }
     }
 
     public readonly static ReadOnlyCollection<FullCardAppearanceBehaviour> BaseGameAppearances = new(GenBaseGameAppearanceList());
@@ -34,22 +42,14 @@ public static class CardAppearanceBehaviourManager
         foreach (CardAppearanceBehaviour.Appearance ability in Enum.GetValues(typeof(CardAppearanceBehaviour.Appearance)))
         {
             var name = ability.ToString();
-            baseGame.Add(new FullCardAppearanceBehaviour
-            {
-                Id = ability,
-                AppearanceBehaviour = gameAsm.GetType($"DiskCardGame.{name}")
-            });
+            baseGame.Add(new FullCardAppearanceBehaviour(ability, gameAsm.GetType($"DiskCardGame.{name}")));
         }
         return baseGame;
     }
 
     public static FullCardAppearanceBehaviour Add(string guid, string abilityName, Type behavior)
     {
-        FullCardAppearanceBehaviour full = new()
-        {
-            AppearanceBehaviour = behavior,
-            Id = GuidManager.GetEnumValue<CardAppearanceBehaviour.Appearance>(guid, abilityName)
-        };
+        FullCardAppearanceBehaviour full = new(GuidManager.GetEnumValue<CardAppearanceBehaviour.Appearance>(guid, abilityName), behavior);
         NewAppearances.Add(full);
         return full;
     }

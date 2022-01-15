@@ -11,9 +11,18 @@ public static class StatIconManager
 {
     public class FullStatIcon
     {
-        public SpecialStatIcon Id { get; internal set; }
-        public StatIconInfo Info { get; internal set; }
-        public Type VariableStatBehavior { get; internal set; }
+        public readonly SpecialStatIcon Id;
+        public readonly StatIconInfo Info;
+        public readonly Type VariableStatBehavior;
+
+        public FullStatIcon(SpecialStatIcon id, StatIconInfo info, Type variableStatBehavior)
+        {
+            Id = id;
+            Info = info;
+            VariableStatBehavior = variableStatBehavior;
+
+            TypeManager.Add(id.ToString(), variableStatBehavior);
+        }
     }
 
     public readonly static ReadOnlyCollection<FullStatIcon> BaseGameStatIcons = new(GenBaseGameStatIconList());
@@ -38,24 +47,14 @@ public static class StatIconManager
         foreach (var staticon in Resources.LoadAll<StatIconInfo>("Data/staticons"))
         {
             var name = staticon.iconType.ToString();
-            baseGame.Add(new FullStatIcon
-            {
-                Id = staticon.iconType,
-                Info = staticon,
-                VariableStatBehavior = gameAsm.GetType($"DiskCardGame.{name}")
-            });
+            baseGame.Add(new FullStatIcon(staticon.iconType, staticon, gameAsm.GetType($"DiskCardGame.{name}")));
         }
         return baseGame;
     }
 
     public static FullStatIcon Add(string guid, StatIconInfo info, Type behavior)
     {
-        FullStatIcon full = new()
-        {
-            Info = info,
-            VariableStatBehavior = behavior,
-            Id = GuidManager.GetEnumValue<SpecialStatIcon>(guid, info.rulebookName)
-        };
+        FullStatIcon full = new(GuidManager.GetEnumValue<SpecialStatIcon>(guid, info.rulebookName), info, behavior);
         full.Info.iconType = full.Id;
         NewStatIcons.Add(full);
         return full;

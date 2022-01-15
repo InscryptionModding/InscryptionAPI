@@ -8,6 +8,17 @@ namespace InscryptionAPI.Guid;
 [HarmonyPatch]
 public static class TypeManager
 {
+    private static Dictionary<string, Type> TypeCache = new();
+
+    internal static void Add(string key, Type value)
+    {
+        if (TypeCache.ContainsKey(key) && TypeCache[key] == value)
+            return;
+
+        TypeCache.Add(key, value);
+    }
+
+
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -18,6 +29,13 @@ public static class TypeManager
     public static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
     {
         InscryptionAPIPlugin.Logger.LogInfo($"Trying to get type for {nameSpace}.{typeName}");
+
+        if (TypeCache.ContainsKey(typeName))
+        {
+            __result = TypeCache[typeName];
+            return false;
+        }
+
         int enumValue;
         if (int.TryParse(typeName, out enumValue))
         {
@@ -30,7 +48,7 @@ public static class TypeManager
                 if (ability != null)
                 {
                     __result = ability.AbilityBehavior;
-                    InscryptionAPIPlugin.Logger.LogInfo($"I found behavior {__result.Name}");
+                    TypeCache.Add(typeName, __result);
                     return false;
                 }
             }
@@ -41,6 +59,7 @@ public static class TypeManager
                 if (staticon != null)
                 {
                     __result = staticon.VariableStatBehavior;
+                    TypeCache.Add(typeName, __result);
                     return false;
                 }
             }
@@ -51,6 +70,7 @@ public static class TypeManager
                 if (ability != null)
                 {
                     __result = ability.AbilityBehaviour;
+                    TypeCache.Add(typeName, __result);
                     return false;
                 }
             }
@@ -61,12 +81,14 @@ public static class TypeManager
                 if (ability != null)
                 {
                     __result = ability.AppearanceBehaviour;
+                    TypeCache.Add(typeName, __result);
                     return false;
                 }
             }
         }
         
         __result = AccessTools.TypeByName($"{nameSpace}.{typeName}");
+        TypeCache.Add(typeName, __result);
         return false;
     }
 }
