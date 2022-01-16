@@ -18,7 +18,8 @@ public static class CardManager
     {
         NewCards.CollectionChanged += static (_, _) =>
         {
-            var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
+            //var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
+            var cards = BaseGameCards.Concat(NewCards).ToList();
             AllCards = ModifyCardList?.Invoke(cards) ?? cards;
         };
     }
