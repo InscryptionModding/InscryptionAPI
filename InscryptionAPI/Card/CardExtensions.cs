@@ -6,7 +6,7 @@ namespace InscryptionAPI.Card;
 
 public static class CardExtensions
 {
-    public static CardInfo CardByName(this List<CardInfo> cards, string name) => cards.FirstOrDefault(x => x.name == name);
+    public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(x => x.name == name);
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
     {
@@ -170,7 +170,7 @@ public static class CardExtensions
     public static CardInfo SetTail(this CardInfo info, string tailName)
     {
         info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCards.CardByName(tailName);
+        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
         info.tailParams.tailLostPortrait = info.portraitTex;
         return info;
     }
@@ -178,7 +178,7 @@ public static class CardExtensions
     public static CardInfo SetTail(this CardInfo info, string tailName, string pathToLostTailArt)
     {
         info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCards.CardByName(tailName);
+        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
         info.tailParams.SetLostTailPortrait(pathToLostTailArt, info);
         return info;
     }
@@ -186,7 +186,7 @@ public static class CardExtensions
     public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null)
     {
         info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCards.CardByName(tailName);
+        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
         info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
         return info;
     }
@@ -194,7 +194,7 @@ public static class CardExtensions
     public static CardInfo SetIceCube(this CardInfo info, string iceCubeName)
     {
         info.iceCubeParams = new();
-        info.iceCubeParams.creatureWithin = CardManager.AllCards.CardByName(iceCubeName);
+        info.iceCubeParams.creatureWithin = CardManager.AllCardsCopy.CardByName(iceCubeName);
         return info;
     }
 
@@ -202,7 +202,7 @@ public static class CardExtensions
     {
         info.evolveParams = new();
         info.evolveParams.turnsToEvolve = numberOfTurns;
-        info.evolveParams.evolution = CardManager.AllCards.CardByName(evolveInto);
+        info.evolveParams.evolution = CardManager.AllCardsCopy.CardByName(evolveInto);
         return info;
     }
 

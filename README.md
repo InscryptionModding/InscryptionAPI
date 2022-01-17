@@ -131,6 +131,31 @@ The following card extensions are available:
 - **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
 - **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
 
+### Editing existing cards
+
+If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
+
+```c#
+CardInfo card = CardManager.BaseGameCards.CardByName("Porcupine");
+card.AddTraits(Trait.KillsSurvivors);
+```
+
+There is also an advanced editing pattern that you can use to not only edit base game cards, but also potentially edit cards that might be added by other mods. To do this, you will add an event handler to the CardManager.ModifyCardList event. This handler must accept a list of CardInfo objects and return a list of CardInfo objects. In that handlers, look for the cards you want to modify and modify them there.
+
+In this example, we want to make all cards that have either the Touch of Death or Sharp Quills ability to also gain the trait "Kills Survivors":
+
+```c#
+CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+{
+    foreach (CardInfo card in cards.Where(c => c.HasAbility(Ability.Sharp) || c.HasAbility(Ability.Deathtouch)))
+        card.AddTraits(Trait.KillsSurvivors);
+
+    return cards;
+};
+```
+
+By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.
+
 ### Ability Management
 
 Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached 'AbilityBehaviour' type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).

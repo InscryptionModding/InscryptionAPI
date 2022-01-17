@@ -4,6 +4,7 @@ using BepInEx;
 using BepInEx.Logging;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 
 namespace InscryptionAPI;
 
@@ -28,7 +29,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         (typeof(StarterDeckInfo), ""),
         (typeof(ItemData), "Consumables")
     };
-    
+
     public void OnEnable()
     {
         Logger = base.Logger;
@@ -46,5 +47,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public void OnDisable()
     {
         HarmonyInstance.UnpatchSelf();
+    }
+
+    public void Start()
+    {
+        CardManager.SyncCardList();
     }
 }

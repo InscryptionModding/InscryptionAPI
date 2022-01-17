@@ -14,17 +14,22 @@ public static class CardManager
     
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
+    internal static void SyncCardList()
+    {
+        var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
+        //var cards = BaseGameCards.Concat(NewCards).ToList();
+        AllCardsCopy = ModifyCardList?.Invoke(cards) ?? cards;
+    }
+
     static CardManager()
     {
         NewCards.CollectionChanged += static (_, _) =>
         {
-            //var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-            var cards = BaseGameCards.Concat(NewCards).ToList();
-            AllCards = ModifyCardList?.Invoke(cards) ?? cards;
+            SyncCardList();
         };
     }
 
-    public static List<CardInfo> AllCards { get; private set; } = BaseGameCards.ToList();
+    public static List<CardInfo> AllCardsCopy { get; private set; } = BaseGameCards.ToList();
 
     public static void Add(CardInfo newCard) { if (!NewCards.Contains(newCard)) NewCards.Add(newCard); }
     public static void Remove(CardInfo card) => NewCards.Remove(card);
@@ -47,6 +52,6 @@ public static class CardManager
     [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of cards")]
     private static void CardLoadPrefix()
     {
-        ScriptableObjectLoader<CardInfo>.allData = AllCards;
+        ScriptableObjectLoader<CardInfo>.allData = AllCardsCopy;
     }
 }
