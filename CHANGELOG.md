@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.13.2-kaycee
+- Fix for JSONLoader cards
+
 ## v1.13.1-kaycee
 - Fixes to Ascension Mode
 
