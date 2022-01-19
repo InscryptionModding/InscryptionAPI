@@ -11,8 +11,9 @@ namespace API.Patches
 	{
 		public static void Prefix()
 		{
-			if (ScriptableObjectLoader<CardInfo>.allData == null)
+			if (!Plugin.CardsLoaded)
 			{
+				Plugin.CardsLoaded = true;
 				List<CardInfo> official = ScriptableObjectLoader<CardInfo>.AllData;
 				foreach (CustomCard card in CustomCard.cards)
 				{

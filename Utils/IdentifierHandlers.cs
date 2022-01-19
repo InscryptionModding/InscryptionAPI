@@ -6,6 +6,15 @@ namespace APIPlugin
 {
   public partial class Plugin
   {
+
+    private static bool cardsLoaded = false;
+
+    public static bool CardsLoaded { get => cardsLoaded; set => cardsLoaded = value; }
+
+    private static bool abilitiesLoaded = false;
+
+    public static bool AbilitiesLoaded { get => abilitiesLoaded; set => abilitiesLoaded = value; }
+
     private void SetAbilityIdentifiers()
     {
       Log.LogDebug($"Number of ability IDs to set from NewCard.abilityIds: [{NewCard.abilityIds.Count}]");
