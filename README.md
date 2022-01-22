@@ -27,6 +27,9 @@ To install Inscryption API you simply need to copy **API.dll** from [releases](h
 
 An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
 
+## Modded Save File
+With this API installed, an additional 'modded save file' will be created by the game. This file will be found in the 'BepInEx' subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.
+
 ## Debugging
 The easiest way to check if the plugin is working properly or to debug an error is to enable the console. This can be done by changing
 ```
@@ -50,12 +53,194 @@ If you want help debugging you can find me on the [Inscryption Modding Discord](
 
 ## Using the API
 
+Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.
+The API does provide a number of helper methods to make this process simpler for you.
+
+### Extending Enumerations
+
+The base game uses a number of hard-coded lists, called 'Enumerations' or 'Enums,' to manage behaviors. For example, the ability "Brittle" is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.
+
+Lets say that you want to create a new story event. These are managed by the enumeration StoryEvent. To create a new story event, you should use this pattern to create a single static reference to that new value:
+
+```c#
+public static readonly StoryEvent MyEvent = GuidManager.GetEnumValue<StoryEvent>(MyPlugin.guid, "MyNewStoryEvent");
+```
+
+GuidManager requires you to give it the guid of your plugin as well as a friendly name for the value you want to create (the plugin guid is required to avoid any issues if multiple mods try to create a new value with the same name).
+
+If you want to get a value that was created by another mod (for example: you want to make a card that uses an ability created by another mod), you can follow this exact same pattern. You just need to know the plugin guid for the mod that it is contained in:
+
+```c#
+public static readonly Ability OtherAbility = GuidManager.GetEnumValue<Ability>("other.mod.plugin.guid", "Ability Name");
+```
+
+All of these values are stored in the modded save file.
+
+### Card Management
+
+Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:
+
+```c#
+CardInfo myCard = ...;
+CardManager.Add(myCard); // Boom: done
+```
+
+You can create CardInfo objects however you want. However, there are some helper methods available to simplify this process for you.
+The most import of these is CardManager.New(name, displayName, attack, health, optional description) which creates a new card and adds it for you automatically:
+
+```c#
+CardInfo myCard = CardManager.New("example_card", "Sample Card", 2, 2, "This is just a sample card");
+```
+
+From here, you can modify the card as you wish, and the changes will stay synced with the game:
+```c#
+CardInfo myCard = CardManager.New("example_card", "Sample Card", 2, 2, "This is just a sample card");
+myCard.cost = 2;
+```
+
+However, there are also a number of extension methods you can chain together to perform a number of common tasks when creating a new card. Here is an example of them in action, followed by a full list:
+
+```c#
+CardInfo myCard = CardManager.New("example_card", "Sample Card", 2, 2, "This is just a sample card")
+    .SetDefaultPart1Card()
+    .SetCost(bloodCost: 1, bonesCost: 2)
+    .SetPortrait("/art/sample_portrait.png", "/art/sample_emissive_portrait.png")
+    .AddAbilities(Ability.BuffEnemies, Ability.TailOnHit)
+    .SetTail("Geck", "/art/sample_lost_tail.png")
+    .SetRare();
+```
+
+The following card extensions are available:
+- **SetPortrait:** Assigns the cards primary art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card's art.
+- **SetEmissivePortrait:** If a card already has a portrait and you just want to modify it's emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
+- **SetAltPortrait:** Assigns the card's alternate portrait
+- **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode)
+- **SetCost:** Sets the cost for the card
+- **SetDefaultPart1Card:** Sets all of the metadata necessary to make this card playable in Part 1 (Leshy's cabin).
+- **SetGBCPlayable:** Sets all of the metadata necessary to make this card playable in Part 2.
+- **SetDefaultPart3Card:** Sets all of the metadata necessary to make this card playable in Part 3 (P03's cabin).
+- **SetRare:** Sets all of the metadata ncessary to make this card look and play as Rare.
+- **SetTerrain:** Sets all of the metadata necessary to make this card look and play as terrain
+- **SetTail:** Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything
+- **SetIceCube:** Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything
+- **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything
+- **AddAbilities:** Add any number of abilities to the card. This will add duplicates.
+- **AddAppearances:** Add any number of appearance behaviors to the card. No duplicates will be added.
+- **AddMetaCategories:** Add any number of metacategories to the card. No duplicates will be added.
+- **AddTraits:** Add any number of traits to the card. No duplicates will be added.
+- **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
+- **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
+
+### Editing existing cards
+
+If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
+
+```c#
+CardInfo card = CardManager.BaseGameCards.CardByName("Porcupine");
+card.AddTraits(Trait.KillsSurvivors);
+```
+
+There is also an advanced editing pattern that you can use to not only edit base game cards, but also potentially edit cards that might be added by other mods. To do this, you will add an event handler to the CardManager.ModifyCardList event. This handler must accept a list of CardInfo objects and return a list of CardInfo objects. In that handlers, look for the cards you want to modify and modify them there.
+
+In this example, we want to make all cards that have either the Touch of Death or Sharp Quills ability to also gain the trait "Kills Survivors":
+
+```c#
+CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+{
+    foreach (CardInfo card in cards.Where(c => c.HasAbility(Ability.Sharp) || c.HasAbility(Ability.Deathtouch)))
+        card.AddTraits(Trait.KillsSurvivors);
+
+    return cards;
+};
+```
+
+By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.
+
+### Ability Management
+
+Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached 'AbilityBehaviour' type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).
+
+Regardless, the API will help you manage all of this with the helpful AbilityManager class. Simply create an AbilityInfo object, and then call AbilityManager.Add with that info object, the texture for the icon, and the type that implements the ability.
+
+Abilities inherit from DiskCardGame.AbilityBehaviour
+
+```c#
+AbilityInfo myinfo = ...;
+Texture2D myTexture = ...;
+AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
+```
+
+You can also use the AbilityManager.New method to simplify some of this process:
+
+```c#
+AbilityInfo myInfo = AbilityManager.New(MyPlugin.guid, "Ability Name", "Ability Description", typeof(MyAbilityType), "/art/my_icon.png");
+```
+
+And there are also extension methods to help you here as well:
+
+```c#
+AbilityManager.New(MyPlugin.guid, "Ability Name", "Ability Description", typeof(MyAbilityType), "/art/my_icon.png")
+    .SetDefaultPart1Ability()
+    .SetPixelIcon("/art/my_pixel_icon.png");
+```
+
+- **SetCustomFlippedTexture:** Use this to give the ability a custom texture when it belongs to the opponent.
+- **SetPixelIcon:** Use this to set the texture used when rendered as a GBC card.
+- **AddMetaCategories:** Adds any number of metacategories to the ability. Will not duplicate.
+- **SetDefaultPart1Ability:** Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.
+- **SetDefaultPart3Ability:** Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)
+
+### Special Stat Icons
+
+Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
+
+Special stat icons inherit from DiskCardGame.VariableStatBehaviour
+
+```c#
+StatIconInfo myinfo = ...;
+SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
+```
+
+**or**
+
+```c#
+SpecialStatIconManager.Add(MyPlugin.guid, "Stat", "My special stat", typeof(MyStatBehaviour))
+    .SetIcon("/art/special_stat_icon.png")
+    .SetPixelIcon("/art/special_pixel_stat_icon.png")
+    .SetDefaultPart1Ability()
+    .SetDefaultPart3Ability();
+```
+
+Because StatIconInfo is so simple, there aren't very many helpers for it.
+
+### Special Triggered Abilities
+
+Special triggered abilities are a lot like regular abilities; however, they are 'invisible' to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.
+
+Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour
+
+```c#
+public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, "Special Ability", typeof(MySpecialTriggeredAbility));
+```
+
+And now MyAbilityID can be added to CardInfo objects.
+
+### Card Appearance Behaviours
+
+These behave the same as special triggered abilities from the perspective of the API.
+
+Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour
+
+```c#
+public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour));
+```
+
 ### Custom Save Game Data
 If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: 'SaveData' (which persists across runs) and 'RunState' (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod's plugin GUID, and an arbitrary key, which you can select for each property to you want to save.
 
 The easiest way to use these helpers is to map them behind static properties, like so:
 
-```
+```c#
 public static int NumberOfItems
 {
     get { return ModdedSaveManager.SaveData.GetValueAsInt(Plugin.PluginGuid, "NumberOfItems"); }
@@ -76,7 +261,7 @@ You will be responsible to write all of the necessary patches for your challenge
 
 You should also make sure to alert the user whenever your challenge has triggered some change in the game. The ChallengeActivationUI class (from DiskCardGame) has a helper to alert the user.
 
-```
+```c#
 private static AscensionChallenge ID = ChallengeManager.Add
     (
         Plugin.PluginGuid,
@@ -123,7 +308,7 @@ In general, you are responsible for doing all the hard work of building your scr
 
 Once you've written the custom screen class, you need to register it with AscensionScreenManager like so:
 
-```
+```c#
 AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
 

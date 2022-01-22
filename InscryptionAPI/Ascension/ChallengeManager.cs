@@ -3,8 +3,9 @@ using HarmonyLib;
 using Mono.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Helpers;
 
-namespace InscryptionAPI.Challenges;
+namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
 public static class ChallengeManager
@@ -14,10 +15,6 @@ public static class ChallengeManager
     private static Dictionary<AscensionChallenge, bool> stackableMap = new();
 
     private static Dictionary<AscensionChallenge, int> unlockLevelMap = new();
-
-    public static readonly Rect SPRITE_RECT = new Rect(0f, 0f, 49f, 49f);
-
-    public static readonly Vector2 SPRITE_PIVOT = new Vector2(0.5f, 0.5f);
 
     internal static readonly List<AscensionChallengeInfo> newInfos = new();
 
@@ -38,9 +35,9 @@ public static class ChallengeManager
         return stackableMap.ContainsKey(id) ? stackableMap[id] : false;
     }
 
-    public static AscensionChallenge Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
+    public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
     {
-        info.challengeType = (AscensionChallenge)GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
+        info.challengeType = GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
 
         newInfos.Add(info);
 
@@ -51,10 +48,10 @@ public static class ChallengeManager
 
         _hasLoaded = false; // Force a reload in case something happened out of the expected order
 
-        return info.challengeType;
+        return info;
     }
 
-    public static AscensionChallenge Add(
+    public static AscensionChallengeInfo Add(
         string pluginGuid,
         string title,
         string description,
@@ -70,12 +67,12 @@ public static class ChallengeManager
         info.challengeType = AscensionChallenge.None;
         info.description = description;
         info.pointValue = pointValue;
-        info.iconSprite = Sprite.Create(iconTexture, SPRITE_RECT, SPRITE_PIVOT);
+        info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         Texture2D infoActivationTexture = activatedTexture ?? 
             ((pointValue > 0 ) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
                 : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
-        info.activatedSprite = Sprite.Create(infoActivationTexture, SPRITE_RECT, SPRITE_PIVOT);
+        info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         return Add(pluginGuid, info, unlockLevel, stackable);
     }

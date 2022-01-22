@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Collections;
 
-namespace InscryptionAPI.AscensionScreens;
+namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
 public static class AscensionScreenManager
