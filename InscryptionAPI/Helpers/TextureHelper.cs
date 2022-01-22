@@ -13,7 +13,8 @@ public static class TextureHelper
         CardPortrait = 0,
         PixelPortrait = 1,
         PixelAbilityIcon = 2,
-        PixelStatIcon = 3
+        PixelStatIcon = 3,
+        ChallengeIcon = 4
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
@@ -25,7 +26,8 @@ public static class TextureHelper
         { SpriteType.CardPortrait, new Rect(0.0f, 0.0f, 114.0f, 94.0f) },
         { SpriteType.PixelPortrait, new Rect(0.0f, 0.0f, 41.0f, 28.0f) },
         { SpriteType.PixelAbilityIcon, new Rect(0f, 0f, 17f, 17f) },
-        { SpriteType.PixelStatIcon, new Rect(0f, 0f, 16f, 8f) }
+        { SpriteType.PixelStatIcon, new Rect(0f, 0f, 16f, 8f) },
+        { SpriteType.ChallengeIcon, new Rect(0f, 0f, 49f, 49f) }
     };
 
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)

@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
@@ -7,11 +8,9 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class AscensionChallengeScreenPatches
 {
-    private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = Sprite.Create(
+    private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = TextureHelper.ConvertTexture(
         Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),
-        ChallengeManager.SPRITE_RECT,
-        ChallengeManager.SPRITE_PIVOT
-    );
+        TextureHelper.SpriteType.ChallengeIcon);
 
     [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
     [HarmonyPostfix]
