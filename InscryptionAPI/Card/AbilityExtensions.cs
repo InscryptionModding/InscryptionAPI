@@ -8,6 +8,18 @@ public static class AbilityExtensions
 {
     public static AbilityInfo AbilityByID(this List<AbilityInfo> abilities, Ability id) => abilities.FirstOrDefault(x => x.ability == id);
 
+    public static AbilityManager.FullAbility AbilityByID(this List<AbilityManager.FullAbility> abilities, Ability id) => abilities.FirstOrDefault(x => x.Id == id);
+
+    public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
+    {
+        AbilityManager.FullAbility ability = AbilityManager.AllAbilities.FirstOrDefault(fab => fab.Id == info.ability);
+        if (ability == default(AbilityManager.FullAbility))
+            throw new InvalidOperationException("Cannot set custom texture directly on AbilityInfo unless it has been added via AbilityManager.Add");
+
+        ability.SetIcon(icon);
+        return info;
+    }
+
     public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
     {
         AbilityManager.FullAbility ability = AbilityManager.AllAbilities.FirstOrDefault(fab => fab.Id == info.ability);
@@ -16,6 +28,11 @@ public static class AbilityExtensions
 
         ability.SetCustomFlippedTexture(icon);
         return info;        
+    }
+
+    public static void SetIcon(this AbilityManager.FullAbility info, Texture2D icon)
+    {
+        info.Texture = icon;
     }
 
     public static void SetCustomFlippedTexture(this AbilityManager.FullAbility info, Texture2D icon)
