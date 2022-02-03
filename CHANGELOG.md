@@ -2,6 +2,7 @@
 
 ## v1.13.1-nonkc
 - Fix for JSONLoader cards
+- Fix not allowing base game and modded special abilites on the same card
 
 ## v1.13.0
 - Added support for custom card backgrounds, dialogs, encounters and talking cards
