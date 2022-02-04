@@ -234,7 +234,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         InscryptionAPIPlugin.Logger.LogDebug($"Adding continue button");
         GameObject continuePrefab = Resources.Load<GameObject>("prefabs/ui/ascension/ascensionmenucontinuebutton");
         GameObject continueButton = GameObject.Instantiate(continuePrefab, screenObject.transform);
-        continueButton.transform.localPosition = new Vector3(2.08f, 1.15f, 0f);
+        continueButton.transform.localPosition = new Vector3(2.15f, 1.13f, 0f);
 
         controller.continueButton = continueButton.GetComponent<AscensionMenuInteractable>();
 

@@ -51,10 +51,12 @@ in **Inscryption/BepInEx/Config/BepInEx/cfg**
 ___
 If you want help debugging you can find me on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) or on [Daniel Mullins Discord](https://discord.com/invite/danielmullinsgames) as Cyantist.
 
-## Using the API
+# Using the API
 
 Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.
 The API does provide a number of helper methods to make this process simpler for you.
+
+## Core Features
 
 ### Extending Enumerations
 
@@ -75,6 +77,23 @@ public static readonly Ability OtherAbility = GuidManager.GetEnumValue<Ability>(
 ```
 
 All of these values are stored in the modded save file.
+
+### Custom Save Game Data
+If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: 'SaveData' (which persists across runs) and 'RunState' (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod's plugin GUID, and an arbitrary key, which you can select for each property to you want to save.
+
+The easiest way to use these helpers is to map them behind static properties, like so:
+
+```c#
+public static int NumberOfItems
+{
+    get { return ModdedSaveManager.SaveData.GetValueAsInt(Plugin.PluginGuid, "NumberOfItems"); }
+    set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, "NumberOfItems", value); }
+}
+```
+
+When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
+
+## Cards and Abilities
 
 ### Card Management
 
@@ -235,20 +254,93 @@ Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour
 public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour));
 ```
 
-### Custom Save Game Data
-If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: 'SaveData' (which persists across runs) and 'RunState' (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod's plugin GUID, and an arbitrary key, which you can select for each property to you want to save.
+## Custom Maps and Encounters
 
-The easiest way to use these helpers is to map them behind static properties, like so:
+Unlike abilities, encounters are encoded into the game's data through a combination of enumerations and strings. For example, Opponents are enumerated by the enumeration Opponent.Type, but special sequencers and unique AI rules are represented as strings buried in each encounters data.
+
+To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.
+
+### Special Sequencers
+
+Special sequencers are essentially 'global abilities;' they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). 
+
+While you can inherit directly from SpecialBattleSequencer, there is a hierarchy of existing special sequencers that you may wish to inherit from depending upon your use case. You can use dnSpy to see all of them, but these are three you should be specifically aware of:
+
+- **SpecialBattleSequencer**: The base class for all special sequencers. Use this by default.
+- **BossBattleSequencer**: Used for boss battles
+- **Part1BossBattleSequencer**: Use for boss battles in Act 1 (Angler, Prospector, Trapper/Trader, and Leshy)
+
+Special sequencers are set directly on the NodeData instance corresponding to the map node that the player touches to start the battle. This is done using a string value corresponding to the sequencer. To set this yourself, use the SpecialSequenceManager class in the API:
 
 ```c#
-public static int NumberOfItems
+public class MyCustomBattleSequencer : Part1BossBattleSequencer
 {
-    get { return ModdedSaveManager.SaveData.GetValueAsInt(Plugin.PluginGuid, "NumberOfItems"); }
-    set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, "NumberOfItems", value); }
+    public static readonly string ID = SpecialSequenceManager.Add(Plugin.PluginGuid, "MySequencer", typeof(MyCustomBattleSequencer));
 }
 ```
 
-When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
+### Opponents
+
+In the context of this API, think of opponents as basically just bosses. There is a enumeration of Opponents called Opponent.Type that refers to the opponent. This name can be confusing in some IDEs, as they may simply show the parameter type as Type, which should not be confused with the System.Type type.
+
+Like everything else, Opponents are classes that you have to write that are responsible for handling the weird things that happen during battle. Depending upon which type of opponent you are buiding, you will need to use one of the following base classes:
+
+- **Opponent**: The base class for all Opponents. You should probably never inherit from this one directly.
+- **Part1Opponent**: Used for battles in Leshy's cabin
+- **Part1BossOpponent**: Used for boss battles in Leshy's cabin
+- **PixelOpponent**: Used for battles in the GBC game
+- **PixelBossOpponent**: Used for boss battles in the GBC game
+- **Part3Opponent**: Used for battles in Botopia
+- **Part3BossOpponent**: Used for boss battles in Botopia
+
+Custom opponents will need a custom Special Sequencer as a companion (please, don't ask why we need Special Sequencers and Opponents and why they couldn't just be the same thing). So in this case, the following code snippet shows how to create an opponent that is linked to its special sequencer:
+
+```c#
+public class MyBossOpponent : Part1BossOpponent
+{
+    public static readonly Opponent.Type ID = OpponentManager.Add(Plugin.PluginGuid, "MyBossOpponent", MyCustomBattleSequencer.ID, typeof(MyBossOpponent)).Id;
+}
+```
+
+Note that the third parameter in OpponentManager.Add is a string, and that string is the same ID that was set in the code snippet for the special sequencer in the previous example.
+
+### AI
+
+In most cases, you will probably not need to create a custom AI. By default, the game will look at the cards that the computer is preparing to play and then use brute force to test every possible slot that the computer could queue those slots for. It will then simulate a full turn of the game for each of those positions and determine which one has the best outcome. There are very few exceptions to this rule.
+
+As an example, one exception is the Prospector boss fight, where the computer will always play the Pack Mule in slot 0 and a coyote in slot 1. It's important that these cards always get played in this position, so the game has a custom AI that detects this part of the game and overrides the default AI.
+
+If you want to use a custom AI, you need to build a class that inherits from DiskCardGame.AI and overrides the virtual method SelectSlotsForCards. That one method is where you implement your custom AI logic.
+
+To register a new AI with the game, use the AIManager class in the API, and keep a reference to the string ID that you receive back:
+
+```c#
+public class MyCustomAI : AI
+{
+    public static readonly string ID = AIManager.Add(Plugin.PluginGuid, "MyAI", typeof(MyCustomAI)).Id;
+
+    public override List<CardSlot> SelectSlotsForCards(List<CardInfo> cards, CardSlot[] slots)
+    {
+        // Do stuff here
+    }
+}
+```
+
+To actually *use* your new AI, you need to set it inside of a special sequencer; specifically in the BuildCustomEncounter method:
+
+```c#
+public class MyCustomBattleSequencer : Part1BossBattleSequencer
+{
+    public override EncounterData BuildCustomEncounter(CardBattleNodeData nodeData)
+    {
+        EncounterData data = base.BuildCustomEncounter(nodeData);
+        data.aiId = MyCustomAI.ID;
+        return data;
+    }
+}
+```
+
+## Ascension (Kaycee's Mod)
 
 ### Adding new Challenges
 The API supports adding new Challenges as part of Kaycee's Mod using the ChallengeManager class. You can add a new Challenge using ChallengeManager.Add, either by passing in a new AscensionChallengeInfo object or by passing the individual properties of your challenge (which will construct the information object for you). This will make your challenge automatically appear in the challenge selection screen.

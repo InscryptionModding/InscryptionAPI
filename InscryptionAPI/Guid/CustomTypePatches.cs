@@ -18,6 +18,14 @@ public static class TypeManager
         TypeCache.Add(key, value);
     }
 
+    internal static void Replace(string key, Type value)
+    {
+        if (TypeCache.ContainsKey(key))
+            TypeCache.Remove(key);
+
+        Add(key, value);
+    }
+
 
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
@@ -28,7 +36,7 @@ public static class TypeManager
     [HarmonyPrefix]
     public static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"Trying to get type for {nameSpace}.{typeName}");
+        //InscryptionAPIPlugin.Logger.LogInfo($"Trying to get type for {nameSpace}.{typeName}");
 
         if (TypeCache.ContainsKey(typeName))
         {
@@ -39,7 +47,7 @@ public static class TypeManager
         int enumValue;
         if (int.TryParse(typeName, out enumValue))
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"This appears to be a custom type");
+            //InscryptionAPIPlugin.Logger.LogInfo($"This appears to be a custom type");
             Type enumType = GuidManager.GetEnumType(enumValue);
 
             if (enumType == typeof(Ability))
