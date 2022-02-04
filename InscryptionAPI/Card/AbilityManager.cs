@@ -41,6 +41,13 @@ public static class AbilityManager
 
     static AbilityManager()
     {
+        InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
+        {
+            if (type == typeof(AbilityInfo))
+            {
+                ScriptableObjectLoader<AbilityInfo>.allData = AllAbilityInfos;
+            }
+        };
         NewAbilities.CollectionChanged += static (_, _) =>
         {
             AllAbilities = BaseGameAbilities.Concat(NewAbilities).ToList();
@@ -100,14 +107,6 @@ public static class AbilityManager
 
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
-    
-    [HarmonyPrefix]
-    [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
-    [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of abilities")]
-    private static void AbilityLoadPrefix()
-    {
-        ScriptableObjectLoader<AbilityInfo>.allData = AllAbilityInfos;
-    }
 
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]

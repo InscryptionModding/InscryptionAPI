@@ -2,9 +2,11 @@
 
 using BepInEx;
 using BepInEx.Logging;
-using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Assembly-CSharp")]
 
 namespace InscryptionAPI;
 
@@ -20,27 +22,16 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
 
-    private static readonly (Type, string)[] ObjectLoaderTypes =
+    public static event Action<Type> ScriptableObjectLoaderLoad;
+    internal static void InvokeSOLEvent(Type type)
     {
-        (typeof(AscensionChallengeInfo), "Ascension/Challenges"),
-        (typeof(BoonData), "Boons"),
-        (typeof(CommandLineTextSegment), ""),
-        (typeof(HoloMapWorldData), "Map/HoloMapWorlds"),
-        (typeof(StarterDeckInfo), ""),
-        (typeof(ItemData), "Consumables")
-    };
+        ScriptableObjectLoaderLoad?.Invoke(type);
+    }
 
     public void OnEnable()
     {
         Logger = base.Logger;
-        
-        var loaderType = typeof(ScriptableObjectLoader<>);
-        foreach (var type in ObjectLoaderTypes)
-        {
-            Logger.LogMessage($"Loading {type.Item1.FullName}...");
-            AccessTools.DeclaredMethod(loaderType.MakeGenericType(type.Item1), "LoadData").Invoke(null, new object[] { type.Item2 });
-        }
-        
+
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 

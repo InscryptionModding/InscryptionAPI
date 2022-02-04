@@ -23,6 +23,13 @@ public static class CardManager
 
     static CardManager()
     {
+        InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
+        {
+            if (type == typeof(CardInfo))
+            {
+                ScriptableObjectLoader<CardInfo>.allData = AllCardsCopy;
+            }
+        };
         NewCards.CollectionChanged += static (_, _) =>
         {
             SyncCardList();
@@ -45,13 +52,5 @@ public static class CardManager
             Add(retval);
 
         return retval;
-    }
-
-    [HarmonyPrefix]
-    [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
-    [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of cards")]
-    private static void CardLoadPrefix()
-    {
-        ScriptableObjectLoader<CardInfo>.allData = AllCardsCopy;
     }
 }

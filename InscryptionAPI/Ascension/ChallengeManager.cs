@@ -20,15 +20,18 @@ public static class ChallengeManager
 
     public static event Action<List<AscensionChallengeInfo>> ModifyAscensionChallengeList;
 
-    private static bool _hasLoaded = false;
-
-    public static List<AscensionChallengeInfo> AllInfo
+    static ChallengeManager()
     {
-        get
+        InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
         {
-            return BaseGameChallenges.Concat(newInfos).ToList();
-        }
+            if (type == typeof(AscensionChallengeInfo))
+            {
+                ScriptableObjectLoader<AscensionChallengeInfo>.allData = AllInfo;
+            }
+        };
     }
+
+    public static List<AscensionChallengeInfo> AllInfo = BaseGameChallenges.ToList();
 
     public static bool IsStackable(AscensionChallenge id)
     {
@@ -42,11 +45,11 @@ public static class ChallengeManager
         newInfos.Add(info);
 
         ModifyAscensionChallengeList?.Invoke(newInfos);
+        newInfos.Sort((a, b) => unlockLevelMap[a.challengeType] - unlockLevelMap[b.challengeType]);
+        AllInfo = BaseGameChallenges.Concat(newInfos).ToList();
 
         stackableMap.Add(info.challengeType, stackable);
         unlockLevelMap.Add(info.challengeType, unlockLevel);
-
-        _hasLoaded = false; // Force a reload in case something happened out of the expected order
 
         return info;
     }
@@ -75,18 +78,6 @@ public static class ChallengeManager
         info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         return Add(pluginGuid, info, unlockLevel, stackable);
-    }
-
-    [HarmonyPatch(typeof(AscensionChallengesUtil), "GetInfo")]
-    [HarmonyPrefix]
-    private static void CardLoadPrefix()
-    {
-        if (!_hasLoaded)
-        {
-            // Sort the new challenges in order of unlocks
-            newInfos.Sort((a, b) => unlockLevelMap[a.challengeType] - unlockLevelMap[b.challengeType]);
-            ScriptableObjectLoader<AscensionChallengeInfo>.allData = AllInfo;
-        }
     }
 
     [HarmonyPatch(typeof(AscensionUnlockSchedule), "ChallengeIsUnlockedForLevel")]

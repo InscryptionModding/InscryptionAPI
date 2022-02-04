@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscryptionAPI", "InscryptionAPI\InscryptionAPI.csproj", "{8C7A7246-7033-4E9F-BCC7-4E76D6E5F679}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIPatcher", "APIPatcher\APIPatcher.csproj", "{CF5A34DF-24FC-4356-BD87-0FBDD9D352C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8C7A7246-7033-4E9F-BCC7-4E76D6E5F679}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C7A7246-7033-4E9F-BCC7-4E76D6E5F679}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C7A7246-7033-4E9F-BCC7-4E76D6E5F679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5A34DF-24FC-4356-BD87-0FBDD9D352C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5A34DF-24FC-4356-BD87-0FBDD9D352C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5A34DF-24FC-4356-BD87-0FBDD9D352C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5A34DF-24FC-4356-BD87-0FBDD9D352C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
