@@ -107,4 +107,19 @@ public static class OpponentManager
         __result = AllOpponents.First(o => o.Id == bossType).SpecialSequencerId;
         return false;
     }
+
+    [HarmonyPatch(typeof(BossBattleNodeData), nameof(BossBattleNodeData.PrefabPath), MethodType.Getter)]
+    [HarmonyPrefix]
+    public static bool ReplacePrefabPath(ref string __result, Opponent.Type ___bossType)
+    {
+        GameObject obj = ResourceBank.Get<GameObject>("Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType);
+        if (obj != null)
+        {
+            __result = "Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType;
+        } else
+        {
+            __result = "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
+        }
+        return false;
+    }
 }
