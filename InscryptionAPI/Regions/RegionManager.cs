@@ -23,6 +23,13 @@ public static class RegionManager
 
     static RegionManager()
     {
+        InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
+        {
+            if (type == typeof(RegionData))
+            {
+                ScriptableObjectLoader<RegionData>.allData = AllRegionsCopy;
+            }
+        };
         NewRegions.CollectionChanged += static (_, _) =>
         {
             SyncRegionList();
@@ -96,14 +103,6 @@ public static class RegionManager
     public static RegionData FromTierBasic(string name, int originalTier, bool addToPool = true)
     {
         return FromTierBasic(name, originalTier, originalTier, addToPool);
-    }
-
-    [HarmonyPrefix]
-    [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
-    [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of regions")]
-    private static void RegionLoadPrefix()
-    {
-        ScriptableObjectLoader<RegionData>.allData = AllRegionsCopy;
     }
 
     [HarmonyPrefix]

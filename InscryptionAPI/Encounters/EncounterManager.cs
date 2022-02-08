@@ -23,6 +23,13 @@ public static class EncounterManager
 
     static EncounterManager()
     {
+        InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
+        {
+            if (type == typeof(EncounterBlueprintData))
+            {
+                ScriptableObjectLoader<EncounterBlueprintData>.allData = AllEncountersCopy;
+            }
+        };
         NewEncounters.CollectionChanged += static (_, _) =>
         {
             SyncEncounterList();
@@ -43,13 +50,5 @@ public static class EncounterManager
             Add(retval);
 
         return retval;
-    }
-
-    [HarmonyPrefix]
-    [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
-    [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of encounters")]
-    private static void EncounterLoadPrefix()
-    {
-        ScriptableObjectLoader<EncounterBlueprintData>.allData = AllEncountersCopy;
     }
 }
