@@ -9,7 +9,7 @@ namespace InscryptionAPI.Regions;
 [HarmonyPatch]
 public static class RegionManager
 {
-    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(Resources.LoadAll<RegionData>("Data/Regions"));
+    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(Resources.LoadAll<RegionData>("Data"));
     private static readonly ObservableCollection<Part1RegionData> NewRegions = new();
 
     public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList;
@@ -98,7 +98,6 @@ public static class RegionManager
         return FromTierBasic(name, originalTier, originalTier, addToPool);
     }
 
-
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ScriptableObjectLoader<UnityObject>), nameof(ScriptableObjectLoader<UnityObject>.LoadData))]
     [SuppressMessage("Member Access", "Publicizer001", Justification = "Need to set internal list of regions")]
@@ -145,6 +144,6 @@ public static class RegionManager
         {
             return RegionProgression.Instance.regions[tier];
         }
-        
+
     }
 }

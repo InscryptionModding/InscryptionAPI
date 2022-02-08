@@ -9,7 +9,7 @@ namespace InscryptionAPI.Encounters;
 [HarmonyPatch]
 public static class EncounterManager
 {
-    public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data/Encounters"));
+    public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data"));
     private static readonly ObservableCollection<EncounterBlueprintData> NewEncounters = new();
 
     public static event Func<List<EncounterBlueprintData>, List<EncounterBlueprintData>> ModifyEncountersList;
