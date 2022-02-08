@@ -56,7 +56,7 @@ public static class RegionManager
     public static RegionData FromTierFull(string name, int originalTier, int newTier, bool addToPool = true)
     {
         RegionProgression copy = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
-        RegionData retval = copy.regions[originalTier];
+        RegionData retval = (RegionData) RegionData.Internal_CloneSingle(copy.regions[originalTier]);
         retval.name = name;
 
         if (addToPool)
