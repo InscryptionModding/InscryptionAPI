@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.13.2-nonkc
+- Using normal API with Kaycee's Mod now shows an error.
+
 ## v1.13.1-nonkc
 - Fix for JSONLoader cards
 - Fix not allowing base game and modded special abilites on the same card
