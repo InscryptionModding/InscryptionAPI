@@ -17,6 +17,12 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Adds terrain cards to this region.<br/>
+    /// Terrain cards require the <c>Terrain</c> trait to appear.<br/>
+    /// Every region must have at least one valid terrain card.
+    /// </summary>
+    /// <param name="cards">The terrain cards to add.</param>
     public static RegionData AddTerrainCards(this RegionData region, params string[] cards)
     {
         region.terrainCards = region.terrainCards ?? new();
@@ -31,6 +37,12 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Adds likely cards to this region.<br/>
+    /// Likely cards require the <c>ChoiceNode</c> metacategory to appear.<br/>
+    /// One of three normal card choices is guaranteed to contain a card from the region's likely cards.
+    /// </summary>
+    /// <param name="cards">The likely cards to add.</param>
     public static RegionData AddLikelyCards(this RegionData region, params string[] cards)
     {
         region.likelyCards = region.likelyCards ?? new();
@@ -45,6 +57,11 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Adds consumables to this region.<br/>
+    /// This only applies to consumables that are <c>regionSpecific</c>. Adding non-region-specific consumables will increase the probability of the consumable appearing.
+    /// </summary>
+    /// <param name="consumables"></param>
     public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)
     {
         region.consumableItems = region.consumableItems ?? new();
@@ -65,6 +82,12 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Adds dominant tribes to this region.<br/>
+    /// One of three normal card choices is guaranteed to contain a card from the region's dominant tribes.<br/>
+    /// Every region must have at least one dominant tribe.
+    /// </summary>
+    /// <param name="tribes">The tribes to add.</param>
     public static RegionData AddDominantTribes(this RegionData region, params Tribe[] tribes)
     {
         region.dominantTribes = region.dominantTribes ?? new();
@@ -87,6 +110,11 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Creates a new encounter for this region and returns the builder.<br/>
+    /// Every region with battles needs at least one encounter.
+    /// </summary>
+    /// <param name="name">The name for the encounter.</param>
     public static EncounterBuilderBlueprintData CreateEncounter(this RegionData region, string name = null)
     {
         EncounterBuilderBlueprintData blueprint = ScriptableObject.CreateInstance<EncounterBuilderBlueprintData>();
@@ -94,6 +122,11 @@ public static class RegionExtensions
         return blueprint;
     }
 
+    /// <summary>
+    /// Adds normal (card battle node) encounters to this region.<br/>
+    /// Every region with battles needs at least one encounter.
+    /// </summary>
+    /// <param name="encounters">The encounters to add.</param>
     public static RegionData AddEncounters(this RegionData region, params EncounterBlueprintData[] encounters)
     {
         region.encounters = region.encounters ?? new();
@@ -107,12 +140,20 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Sets the boss prep encounter condition for this region. If this condition is not met, the 'boss prep encounter' will not appear.
+    /// </summary>
+    /// <param name="condition">The condition that needs to be fulfilled</param>
     public static RegionData SetBossPrepCondition(this RegionData region, StoryEventCondition condition)
     {
         region.bossPrepCondition = condition;
         return region;
     }
 
+    /// <summary>
+    /// Sets the boss prep encounter for this region. The boss prep encounter is the final battle node in the region, before the boss.
+    /// </summary>
+    /// <param name="encounter">The encounter to set.</param>
     public static RegionData SetBossPrepEncounter(this RegionData region, EncounterBlueprintData encounter)
     {
         region.bossPrepEncounter = encounter;
@@ -168,6 +209,10 @@ public static class RegionExtensions
         return region;
     }
 
+    /// <summary>
+    /// Sets the music loop ID for this region.
+    /// </summary>
+    /// <param name="id">The music ID to use.</param>
     public static RegionData SetAmbientLoopId(this RegionData region, string id)
     {
         region.ambientLoopId = id;
@@ -216,15 +261,16 @@ public static class RegionExtensions
         return region;
     }
 
-    public static RegionData Build(this RegionData region) {
+    public static RegionData Build(this RegionData region, bool ignoreTerrainWarning = false, bool ignoreTribesWarning = false,
+                                   bool ignoreEncountersWarning = false, bool ignoreBossesWarning = false) {
 
-        if (region.terrainCards == null || region.terrainCards.Count == 0)
+        if (!ignoreTerrainWarning && (region.terrainCards == null || region.terrainCards.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any terrain cards!");
-        if (region.dominantTribes == null || region.dominantTribes.Count == 0)
+        if (!ignoreTribesWarning && (region.dominantTribes == null || region.dominantTribes.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any dominant tribes!");
-        if (region.encounters == null || region.encounters.Count == 0)
+        if (!ignoreEncountersWarning && (region.encounters == null || region.encounters.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any encounters!");
-        if (region.bosses == null || region.bosses.Count == 0)
+        if (!ignoreBossesWarning && (region.bosses == null || region.bosses.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any bosses!");
 
         return region;
