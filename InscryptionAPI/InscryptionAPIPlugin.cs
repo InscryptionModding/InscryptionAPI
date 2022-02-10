@@ -1,10 +1,13 @@
 ﻿global using UnityObject = UnityEngine.Object;
 
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.ResourceManagers;
 using System.Runtime.CompilerServices;
+using UnityEngine.SceneManagement;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 
@@ -17,6 +20,13 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
     public const string ModVer = "2.0.0";
+
+    internal static InscryptionAPIPlugin Instance;
+
+    internal static ConfigEntry<bool> configEnergy;
+    internal static ConfigEntry<bool> configDrone;
+    internal static ConfigEntry<bool> configMox;
+    internal static ConfigEntry<bool> configDroneMox;
 
     static InscryptionAPIPlugin()
     {
@@ -46,6 +56,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         Logger = base.Logger;
 
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
+        SceneManager.sceneLoaded += this.OnSceneLoaded;
     }
 
     public void OnDisable()
@@ -57,5 +68,19 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     {
         CardManager.SyncCardList();
         AbilityManager.SyncAbilityList();
+    }
+
+    public void Awake()
+    {
+        Instance = this;
+        configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
+        configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
+        configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
+        configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ActOneEnergyDrone.TryEnableEnergy(scene.name);
     }
 }
