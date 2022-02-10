@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.13.3-kaycee
+- Fix not allowing base game and modded special abilites on the same card.
+- Add error message for using base game.
+
 ## v1.13.2-kaycee
 - Fix for JSONLoader cards
 

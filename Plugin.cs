@@ -13,7 +13,7 @@ namespace APIPlugin
   {
     private const string PluginGuid = "cyantist.inscryption.api";
     private const string PluginName = "API";
-    private const string PluginVersion = "1.13.2.0";
+    private const string PluginVersion = "1.13.3.0";
 
     internal static ManualLogSource Log;
     internal static ConfigEntry<bool> configEnergy;
@@ -32,7 +32,14 @@ namespace APIPlugin
       configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
 
       Harmony harmony = new Harmony(PluginGuid);
-      harmony.PatchAll();
+      try
+      {
+        harmony.PatchAll();
+      }
+      catch
+      {
+        Log.LogError("Failed to apply patches for API. Are you using the base version of the game?");
+      }
     }
 
     private void Start()

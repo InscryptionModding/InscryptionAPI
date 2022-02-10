@@ -24,6 +24,7 @@ namespace API.Patches
 				foreach (var type in info.SpecialAbilities
 					.Select(specialTriggeredAbility => NewSpecialAbility.specialAbilities
 					.Find(x => x.specialTriggeredAbility == specialTriggeredAbility))
+					.Where(x => x is not null)
 					.Select(newAbility => newAbility.abilityBehaviour))
 				{
 					Plugin.Log.LogDebug($"-> Special Card Behaviour Type is [{type}]");
