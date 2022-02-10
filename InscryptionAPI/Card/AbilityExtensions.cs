@@ -6,9 +6,9 @@ namespace InscryptionAPI.Card;
 
 public static class AbilityExtensions
 {
-    public static AbilityInfo AbilityByID(this List<AbilityInfo> abilities, Ability id) => abilities.FirstOrDefault(x => x.ability == id);
+    public static AbilityInfo AbilityByID(this IEnumerable<AbilityInfo> abilities, Ability id) => abilities.FirstOrDefault(x => x.ability == id);
 
-    public static AbilityManager.FullAbility AbilityByID(this List<AbilityManager.FullAbility> abilities, Ability id) => abilities.FirstOrDefault(x => x.Id == id);
+    public static AbilityManager.FullAbility AbilityByID(this IEnumerable<AbilityManager.FullAbility> abilities, Ability id) => abilities.FirstOrDefault(x => x.Id == id);
 
     public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
     {
