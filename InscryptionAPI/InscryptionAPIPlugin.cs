@@ -18,6 +18,19 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModName = "InscryptionAPI";
     public const string ModVer = "2.0.0";
 
+    static InscryptionAPIPlugin()
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
+            Logger.LogInfo($"Assembly resolve attempt for {e.Name}");
+            if (e.Name.StartsWith("API, Version=1"))
+            {
+                Logger.LogInfo($"Resolving old API to new API");
+                return typeof(InscryptionAPIPlugin).Assembly;
+            }
+            return null;
+        };
+    }
+
     new internal static ManualLogSource Logger;
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
@@ -43,5 +56,6 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public void Start()
     {
         CardManager.SyncCardList();
+        AbilityManager.SyncAbilityList();
     }
 }

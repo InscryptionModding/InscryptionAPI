@@ -150,6 +150,20 @@ The following card extensions are available:
 - **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
 - **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
 
+### Evolve, Tail, Ice Cube, and delayed loading
+It's possible that at the time your card is built, the card that you want to evolve into has not been built yet. You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.
+
+However, note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null. You will not see the evolve parameters until you add the evolution to the card list **and** you get a fresh copy of the card from CardLoader (as would happen in game).
+
+```c#
+CardManager.New("Base", "Base Card", 2, 2).SetEvolve("Evolve Card", 1); // "Evolve Card" hasn't been built yet
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // TRUE!
+
+CardInfo myEvolveCard = CardManager.New("Evolve", "Evolve Card", 2, 5);
+
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // FALSE!
+```
+
 ### Editing existing cards
 
 If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
