@@ -17,7 +17,7 @@ namespace APIPlugin
   {
     private const string PluginGuid = "cyantist.inscryption.api";
     private const string PluginName = "API";
-    private const string PluginVersion = "1.13.2";
+    private const string PluginVersion = "1.13.3";
 
     internal static ManualLogSource Log;
     internal static ConfigEntry<bool> configEnergy;
@@ -53,7 +53,7 @@ namespace APIPlugin
       yield return new WaitUntil(() => asyncOp.isDone);
       GameObject[] objects = SceneManager.GetSceneByName("CorruptedSaveMessage").GetRootGameObjects();
       TextMeshProUGUI text = objects.ToList().Find(name => name.name == "Screen").GetComponentInChildren<TextMeshProUGUI>();
-      text.text = "Oh no! It looks like you're using the <color=#FB3F4F>normal API</color>\nfor Kaycee's Mod.\nYou need to use Kaycee's API if you want to use\nmods for Kaycee's Mod, or switch back to the base\ngame through Steam.\nKeep in mind that some mods may require a\ndifferent version to work, or are entirely\nincompatible with Kaycee's Mod.\n\n(Press Escape to quit)";
+      text.text = "Oh no! It looks like you're using the <color=#FB3F4F>normal API</color>\nfor Kaycee's Mod.\nYou need to use Kaycee's API if you want to use\nmods for Kaycee's Mod, or switch back to the base\ngame through Steam. Kaycee's API be\nfound in the <color=#FB3F4F>Inscryption Modding Discord\n#mod-showcase</color> channel.\nKeep in mind that some mods may require a\ndifferent version to work, or are entirely\nincompatible with Kaycee's Mod.\n\n(Press Escape to quit)";
     }
 
     private void Start()

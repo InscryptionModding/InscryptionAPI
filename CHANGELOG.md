@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.13.3-nonkc
+- Updated KCM error text.
+
 ## v1.13.2-nonkc
 - Using normal API with Kaycee's Mod now shows an error.
 
