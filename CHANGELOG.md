@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.13.4-nonkc
+- Fix minor grammar mistake.
+
 ## v1.13.3-nonkc
 - Updated KCM error text.
 
