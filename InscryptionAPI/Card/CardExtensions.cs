@@ -115,6 +115,9 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card so it shows up for normal card choices in Act 1.
+    /// </summary>
     public static CardInfo SetDefaultPart1Card(this CardInfo info)
     {
         if (!info.metaCategories.Contains(CardMetaCategory.Rare))
@@ -126,6 +129,9 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card so it shows up for normal card choices in Act 3.
+    /// </summary>
     public static CardInfo SetDefaultPart3Card(this CardInfo info)
     {
         if (!info.metaCategories.Contains(CardMetaCategory.Rare))
@@ -137,6 +143,9 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card so it shows up for rare card choices and applies the rare background.
+    /// </summary>
     public static CardInfo SetRare(this CardInfo info)
     {
         info.AddMetaCategories(CardMetaCategory.Rare);
@@ -151,6 +160,9 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds the terrain trait and background to this card.
+    /// </summary>
     public static CardInfo SetTerrain(this CardInfo info)
     {
         info.AddTraits(Trait.Terrain);
@@ -267,6 +279,9 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds this card to Act 2 packs and collection.
+    /// </summary>
     public static CardInfo SetGBCPlayable(this CardInfo info, CardTemple temple)
     {
         info.AddMetaCategories(CardMetaCategory.GBCPack, CardMetaCategory.GBCPlayable);
