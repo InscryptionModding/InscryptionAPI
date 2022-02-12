@@ -28,6 +28,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configMox;
     internal static ConfigEntry<bool> configDroneMox;
 
+    internal static ConfigEntry<bool> rightAct2Cost;
+
     static InscryptionAPIPlugin()
     {
         AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
@@ -77,6 +79,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
         configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
+        rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
