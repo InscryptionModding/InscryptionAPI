@@ -31,6 +31,35 @@ public static class AbilityManager
 
             TypeManager.Add(id.ToString(), behaviour);
         }
+
+        public FullAbility Clone()
+        {
+            AbilityInfo clonedInfo = ScriptableObject.CreateInstance<AbilityInfo>();
+            clonedInfo.ability = Info.ability;
+            clonedInfo.abilityLearnedDialogue = Info.abilityLearnedDialogue;
+            clonedInfo.activated = Info.activated;
+            clonedInfo.canStack = Info.canStack;
+            clonedInfo.colorOverride = Info.colorOverride;
+            clonedInfo.conduit = Info.conduit;
+            clonedInfo.conduitCell = Info.conduitCell;
+            clonedInfo.customFlippedIcon = Info.customFlippedIcon;
+            clonedInfo.customFlippedPixelIcon = Info.customFlippedPixelIcon;
+            clonedInfo.flipYIfOpponent = Info.flipYIfOpponent;
+            clonedInfo.hasColorOverride = Info.hasColorOverride;
+            clonedInfo.keywordAbility = Info.keywordAbility;
+            clonedInfo.mesh3D = Info.mesh3D;
+            clonedInfo.metaCategories = new(Info.metaCategories);
+            clonedInfo.name = Info.name;
+            clonedInfo.opponentUsable = Info.opponentUsable;
+            clonedInfo.passive = Info.passive;
+            clonedInfo.pixelIcon = Info.pixelIcon;
+            clonedInfo.powerLevel = Info.powerLevel;
+            clonedInfo.rulebookDescription = Info.rulebookDescription;
+            clonedInfo.rulebookName = Info.rulebookName;
+            clonedInfo.triggerText = Info.triggerText;
+
+            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture);
+        }
     }
 
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
@@ -38,6 +67,15 @@ public static class AbilityManager
     
     public static List<FullAbility> AllAbilities { get; private set; } = BaseGameAbilities.ToList();
     public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
+
+    public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
+
+    public static void SyncAbilityList()
+    {
+        AllAbilities = BaseGameAbilities.Concat(NewAbilities).Select(a => a.Clone()).ToList();
+        AllAbilities = ModifyAbilityList?.Invoke(AllAbilities) ?? AllAbilities;
+        AllAbilityInfos = AllAbilities.Select(x => x.Info).ToList();
+    }
 
     static AbilityManager()
     {
@@ -50,8 +88,7 @@ public static class AbilityManager
         };
         NewAbilities.CollectionChanged += static (_, _) =>
         {
-            AllAbilities = BaseGameAbilities.Concat(NewAbilities).ToList();
-            AllAbilityInfos = AllAbilities.Select(x => x.Info).ToList();
+            SyncAbilityList();
         };
     }
 

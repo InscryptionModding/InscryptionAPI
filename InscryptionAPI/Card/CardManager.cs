@@ -14,7 +14,7 @@ public static class CardManager
     
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
-    internal static void SyncCardList()
+    public static void SyncCardList()
     {
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
         //var cards = BaseGameCards.Concat(NewCards).ToList();

@@ -56,6 +56,18 @@ If you want help debugging you can find me on the [Inscryption Modding Discord](
 Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.
 The API does provide a number of helper methods to make this process simpler for you.
 
+## Tweaks
+
+### Energy Drone in Act One/Kaycee's Mod
+
+With the API installed, the energy management drone can be made available in Act 1 and in Kaycee's Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.
+
+### Card cost display
+
+Cards in Act 1 can now display multiple costs at the same time, and can display gem and energy cost in addition to blood and bones cost.
+
+Cards in Act 2 can now display multiple costs at the same time.
+
 ## Core Features
 
 ### Extending Enumerations
@@ -149,6 +161,20 @@ The following card extensions are available:
 - **AddTraits:** Add any number of traits to the card. No duplicates will be added.
 - **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
 - **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
+
+### Evolve, Tail, Ice Cube, and delayed loading
+It's possible that at the time your card is built, the card that you want to evolve into has not been built yet. You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.
+
+However, note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null. You will not see the evolve parameters until you add the evolution to the card list **and** you get a fresh copy of the card from CardLoader (as would happen in game).
+
+```c#
+CardManager.New("Base", "Base Card", 2, 2).SetEvolve("Evolve Card", 1); // "Evolve Card" hasn't been built yet
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // TRUE!
+
+CardInfo myEvolveCard = CardManager.New("Evolve", "Evolve Card", 2, 5);
+
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // FALSE!
+```
 
 ### Editing existing cards
 
@@ -416,16 +442,21 @@ The next planned features for this plugin are:
  - Extending the loader to handle and load custom ~~abilities,~~ boons and items.
 
 ## Contribution
+
 ### How can you help?
 Use the plugin and report bugs you find! Lots of traits won't be designed to work well together and may cause bugs or crashes. At the very least we can document this. Ideally we can create generic patches for them.
+
 ### But really, I want to help develop this mod
 Great! I'm more than happy to accept help. Either make a pull request or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
+
 ### Can I donate?
 Donations are totally not needed, this is a passion project before anything else. If you do still want to donate though, you can buy me a coffee on [ko-fi](https://ko-fi.com/madcyantist).
 
 ## Contributors
 - divisionbyz0rro
+- Eri
 - IngoH
 - JamesVeug
 - julian-perge
 - Windows10CE
+- Void Slime

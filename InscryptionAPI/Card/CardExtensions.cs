@@ -179,42 +179,121 @@ public static class CardExtensions
         return info;
     }
 
-    public static CardInfo SetTail(this CardInfo info, string tailName)
+    public static CardInfo SetTail(this CardInfo info, string tailName, string pathToLostTailArt = null, IEnumerable<CardModificationInfo> mods = null)
+    {
+        Texture2D lostTailPortrait = pathToLostTailArt == null ? null : TextureHelper.GetImageAsTexture(pathToLostTailArt);
+        return info.SetTail(tailName, lostTailPortrait, mods:mods);
+    }
+
+    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
-        info.tailParams.tailLostPortrait = info.portraitTex;
+        info.tailParams.tail = CardLoader.Clone(tail);
+
+        if (tailLostPortrait != null)
+            info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
+
+        if (mods != null)
+            (info.tailParams.tail.mods = info.tailParams.tail.mods ?? new()).AddRange(mods);
+
         return info;
     }
 
-    public static CardInfo SetTail(this CardInfo info, string tailName, string pathToLostTailArt)
+    public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
-        info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
-        info.tailParams.SetLostTailPortrait(pathToLostTailArt, info);
+        CardInfo tail = CardManager.AllCardsCopy.CardByName(tailName);
+
+        if (tail == null) // Try delayed loading
+        {
+            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            {
+                CardInfo target = cards.CardByName(info.name);
+                CardInfo tailCard = cards.CardByName(tailName);
+
+                if (target != null && tailCard != null)
+                    target.SetTail(tailCard, tailLostPortrait, filterMode, mods);
+
+                return cards;
+            };
+        }
+        else
+        {
+            info.SetTail(tail, tailLostPortrait, filterMode, mods);
+        }
+
         return info;
     }
 
-    public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null)
-    {
-        info.tailParams = new();
-        info.tailParams.tail = CardManager.AllCardsCopy.CardByName(tailName);
-        info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
-        return info;
-    }
-
-    public static CardInfo SetIceCube(this CardInfo info, string iceCubeName)
+    public static CardInfo SetIceCube(this CardInfo info, CardInfo iceCube, IEnumerable<CardModificationInfo> mods)
     {
         info.iceCubeParams = new();
-        info.iceCubeParams.creatureWithin = CardManager.AllCardsCopy.CardByName(iceCubeName);
+        info.iceCubeParams.creatureWithin = CardLoader.Clone(iceCube);
+
+        if (mods != null)
+            (info.iceCubeParams.creatureWithin.mods = info.iceCubeParams.creatureWithin.mods ?? new ()).AddRange(mods);
+
         return info;
     }
 
-    public static CardInfo SetEvolve(this CardInfo info, string evolveInto, int numberOfTurns)
+    public static CardInfo SetIceCube(this CardInfo info, string iceCubeName, IEnumerable<CardModificationInfo> mods)
+    {
+        CardInfo creatureWithin = CardManager.AllCardsCopy.CardByName(iceCubeName);
+
+        if (creatureWithin == null) // Try delayed loading
+        {
+            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            {
+                CardInfo target = cards.CardByName(info.name);
+                CardInfo creatureWithinCard = cards.CardByName(iceCubeName);
+
+                if (target != null && creatureWithinCard != null)
+                    target.SetIceCube(creatureWithinCard, mods);
+
+                return cards;
+            };
+        }
+        else
+        {
+            info.SetIceCube(creatureWithin, mods);
+        }
+
+        return info;
+    }
+
+    public static CardInfo SetEvolve(this CardInfo info, CardInfo evolveCard, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
     {
         info.evolveParams = new();
+        info.evolveParams.evolution = CardLoader.Clone(evolveCard);
+
+        if (mods != null)
+            (info.evolveParams.evolution.mods = info.evolveParams.evolution.mods ?? new ()).AddRange(mods);
+
         info.evolveParams.turnsToEvolve = numberOfTurns;
-        info.evolveParams.evolution = CardManager.AllCardsCopy.CardByName(evolveInto);
+
+        return info;
+    }
+
+    public static CardInfo SetEvolve(this CardInfo info, string evolveInto, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
+    {
+        CardInfo evolution = CardManager.AllCardsCopy.CardByName(evolveInto);
+
+        if (evolution == null) // Try delayed loading
+        {
+            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            {
+                CardInfo target = cards.CardByName(info.name);
+                CardInfo evolveIntoCard = cards.CardByName(evolveInto);
+
+                if (target != null && evolveIntoCard != null)
+                    target.SetEvolve(evolveIntoCard, numberOfTurns, mods);
+
+                return cards;
+            };
+        }
+        else
+        {
+            info.SetEvolve(evolution, numberOfTurns, mods);
+        }
         return info;
     }
 
@@ -287,5 +366,23 @@ public static class CardExtensions
         info.AddMetaCategories(CardMetaCategory.GBCPack, CardMetaCategory.GBCPlayable);
         info.temple = temple;
         return info;
+    }
+
+    public static CardInfo AddDecal(this CardInfo info, params Texture[] decals)
+    {
+        info.decals = info.decals ?? new();
+        foreach (var dec in decals)
+            if (!info.decals.Contains(dec))
+                info.decals.Add(dec);
+
+        return info;
+    }
+
+    public static CardInfo AddDecal(this CardInfo info, params string[] decals)
+    {
+        if (decals == null)
+            return info;
+
+        return info.AddDecal(decals.Select(d => TextureHelper.GetImageAsTexture(d)).ToArray());
     }
 }

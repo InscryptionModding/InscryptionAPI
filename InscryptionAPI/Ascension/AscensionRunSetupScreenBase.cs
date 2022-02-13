@@ -49,6 +49,22 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
     public PixelText secondaryInfoDisplayer;
 
+    public AscensionMenuScreenTransition transitionController;
+
+    private static void CleanupGameObject(GameObject obj, AscensionMenuScreenTransition transition, bool destroy = true)
+    {
+        MainInputInteractable intact = obj.GetComponent<MainInputInteractable>();
+        if (intact != null)
+            transition.screenInteractables.Remove(intact);
+        transition.onEnableRevealedObjects.Remove(obj);
+
+        foreach (Transform child in obj.transform)
+            CleanupGameObject(child.gameObject, transition, destroy:false);
+
+        if (destroy)
+            GameObject.Destroy(obj);
+    }
+
     public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
     {
         // Create the new screen
@@ -70,6 +86,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         textHeader.transform.localPosition = new Vector3(0f, -0.575f, 0f);
         controller.screenTitle = textHeader.GetComponent<PixelText>();
         controller.screenTitle.SetText(Localization.ToUpper(Localization.Translate(controller.headerText)));
+
+        controller.transitionController = screenObject.GetComponent<AscensionMenuScreenTransition>();
 
         // Check to see if we need the card information displayer
         GameObject footer = screenObject.transform.Find("Footer").gameObject;
@@ -99,8 +117,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         {
             InscryptionAPIPlugin.Logger.LogDebug($"Destroying unwanted card information displayer");
             // Destroy the card text displayer and footer low line
-            GameObject.Destroy(cardTextDisplayer);
-            GameObject.Destroy(footerLowline);
+            CleanupGameObject(cardTextDisplayer, controller.transitionController);
+            CleanupGameObject(footerLowline, controller.transitionController);
 
             InscryptionAPIPlugin.Logger.LogDebug($"Creating new information displayer");
             GameObject newInfoDisplayer = GameObject.Instantiate(textHeader);
@@ -122,10 +140,6 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         // Sort out the unlocks block
         InscryptionAPIPlugin.Logger.LogDebug($"Handling card panel");
         controller.cardPanel = screenObject.transform.Find("Unlocks").gameObject;
-        if (controller.showCardDisplayer)
-            controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
-        else
-            GameObject.Destroy(controller.cardPanel);
 
         // Clone the challenge information from a challenge screen
         InscryptionAPIPlugin.Logger.LogDebug($"Creating challenge text header");
@@ -174,6 +188,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         controller.rightButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject.GetComponent<MainInputInteractable>();
         if (controller.showCardPanel)
         {
+            controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+
             InscryptionAPIPlugin.Logger.LogDebug($"Reassigning left/right scroll buttons");
             controller.leftButton.CursorSelectStarted = controller.LeftButtonClicked;
             controller.rightButton.CursorSelectStarted = controller.RightButtonClicked;
@@ -210,14 +226,15 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
                 Transform lockTexture = card.gameObject.transform.Find("Locked");
                 if (lockTexture != null)
-                    GameObject.Destroy(lockTexture.gameObject);
+                    CleanupGameObject(lockTexture.gameObject, controller.transitionController);
             }
         }
         else
         {
             InscryptionAPIPlugin.Logger.LogDebug($"Destroying scroll buttons");
-            GameObject.Destroy(controller.leftButton.gameObject);
-            GameObject.Destroy(controller.rightButton.gameObject);
+            CleanupGameObject(controller.cardPanel, controller.transitionController);
+            CleanupGameObject(controller.leftButton.gameObject, controller.transitionController);
+            CleanupGameObject(controller.rightButton.gameObject, controller.transitionController);
 
             controller.leftButton = null;
             controller.rightButton = null;
@@ -234,7 +251,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         InscryptionAPIPlugin.Logger.LogDebug($"Adding continue button");
         GameObject continuePrefab = Resources.Load<GameObject>("prefabs/ui/ascension/ascensionmenucontinuebutton");
         GameObject continueButton = GameObject.Instantiate(continuePrefab, screenObject.transform);
-        continueButton.transform.localPosition = new Vector3(2.15f, 1.13f, 0f);
+        //continueButton.transform.localPosition = new Vector3(2.15f, 1.13f, 0f);
 
         controller.continueButton = continueButton.GetComponent<AscensionMenuInteractable>();
 
@@ -249,7 +266,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
         // Let the base class do its magic
         InscryptionAPIPlugin.Logger.LogDebug($"Calling screen implementation to finish creating screen UI elements");
-        controller.InitializeScreen(screenObject);
+        controller.InitializeScreen(screenObject);        
 
         // And we're done
         InscryptionAPIPlugin.Logger.LogDebug($"Done building screen");
@@ -421,6 +438,15 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }, immediate);
 
         challengeHeaderDisplay.UpdateText();
+    }
+
+    public override void OnEnable()
+    {
+        // Set all the viewport camera stuff
+        foreach (var vrp in this.gameObject.GetComponentsInChildren<ViewportRelativePosition>())
+            vrp.viewportCam = Camera.main;
+
+        base.OnEnable();
     }
 
     public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate=false)
