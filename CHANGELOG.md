@@ -1,4 +1,8 @@
 # Changelog
+
+## v2.0
+- Rewrite (Specifics to be added)
+
 ## v1.13.0
 - Added support for custom card backgrounds, dialogs, encounters and talking cards
 - Fixes to abilities loading and stackable custom abilities
