@@ -19,7 +19,8 @@ public static class TextureHelper
         CostDecal = 5,
         OversizedCostDecal = 6,
         Act2CostDecalLeft = 7,
-        Act2CostDecalRight = 8
+        Act2CostDecalRight = 8,
+        StarterDeckIcon = 9
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
@@ -37,6 +38,7 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Rect(0f, 0f, 64f, 28f * 4f) },
         { SpriteType.Act2CostDecalLeft, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
+        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
     };
 
     private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new () 
@@ -50,6 +52,7 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Vector2(0.5f, (28f * 4f - 14f) / (28f * 4f)) },
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
+        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) }
     };
 
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)

@@ -63,26 +63,6 @@ public static class AscensionChallengeScreenPatches
             paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>());
         }
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Original challenge info");
-        paginator.availableChallenges = new List<AscensionChallengeInfo>();
-        for (int i = 0; i < 7; i++)
-        {
-            paginator.availableChallenges.Add(paginator.topRow[i].challengeInfo);
-            paginator.availableChallenges.Add(paginator.bottomRow[i].challengeInfo);
-        }
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Custom challenge info");
-        foreach (AscensionChallengeInfo info in ChallengeManager.newInfos.Where(i => ChallengeManager.IsStackable(i.challengeType)))
-        {
-            paginator.availableChallenges.Add(info); // Add stackables twice
-            paginator.availableChallenges.Add(info); // Do them first so they stack nice
-        }
-
-        foreach (AscensionChallengeInfo info in ChallengeManager.newInfos.Where(i => !ChallengeManager.IsStackable(i.challengeType)))
-        {
-            paginator.availableChallenges.Add(info);
-        }
-
         paginator.GeneratePages();
 
         InscryptionAPIPlugin.Logger.LogDebug($"Creating page turners");
@@ -106,7 +86,7 @@ public static class AscensionChallengeScreenPatches
 
         paginator.challengePageIndex = 0;
 
-        if (ChallengeManager.newInfos.Count == 0)
+        if (ChallengeManager.NewInfos.Count == 0)
         {
             GameObject.Destroy(leftController.gameObject);
             GameObject.Destroy(rightController.gameObject);
