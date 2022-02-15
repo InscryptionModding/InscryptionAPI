@@ -65,17 +65,11 @@ public static class AscensionChallengeScreenPatches
 
         paginator.GeneratePages();
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Creating page turners");
-        GameObject leftIcon = GameObject.Instantiate(leftPseudoPrefab, challengeIconGrid.transform);
-        GameObject rightIcon = GameObject.Instantiate(rightPseudoPrefab, challengeIconGrid.transform);
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Positioning page turners");
-        leftIcon.transform.localPosition = leftIcon.transform.localPosition + (Vector3)(new Vector2(-0.75f, 0.25f));
-        rightIcon.transform.localPosition = rightIcon.transform.localPosition + (Vector3)(new Vector2(0.75f, 0.25f));;
-
         InscryptionAPIPlugin.Logger.LogDebug($"Getting pagination controllers");
-        AscensionMenuInteractable leftController = leftIcon.GetComponent<AscensionMenuInteractable>();
-        AscensionMenuInteractable rightController = rightIcon.GetComponent<AscensionMenuInteractable>();
+        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform);
+
+        AscensionMenuInteractable leftController = pageTuple.Item1;
+        AscensionMenuInteractable rightController = pageTuple.Item2;
 
         Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.ChallengePageLeft(i);
         Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.ChallengePageRight(i);

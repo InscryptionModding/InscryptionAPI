@@ -26,11 +26,7 @@ public static class StarterDeckSelectscreenPatches
         if (paginator == null)
             paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.AddComponent<StarterDeckPaginator>();
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Getting pseudo prefabs");
-
-        GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
-        GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
-
+       
         InscryptionAPIPlugin.Logger.LogDebug($"Getting icon grid");
 
         GameObject starterDeckContainer = AscensionMenuScreens.Instance.starterDeckSelectScreen.transform.Find("Icons").gameObject;
@@ -41,17 +37,11 @@ public static class StarterDeckSelectscreenPatches
         for (int i = 1; i <= 8; i++)
             paginator.icons.Add(starterDeckContainer.transform.Find($"StarterDeckIcon_{i}").gameObject.GetComponent<AscensionStarterDeckIcon>());
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Creating page turners");
-        GameObject leftIcon = GameObject.Instantiate(leftPseudoPrefab, starterDeckContainer.transform);
-        GameObject rightIcon = GameObject.Instantiate(rightPseudoPrefab, starterDeckContainer.transform);
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Positioning page turners");
-        leftIcon.transform.localPosition = leftIcon.transform.localPosition + (Vector3)(new Vector2(-0.75f, 0.25f));
-        rightIcon.transform.localPosition = rightIcon.transform.localPosition + (Vector3)(new Vector2(0.75f, 0.25f));;
-
         InscryptionAPIPlugin.Logger.LogDebug($"Getting pagination controllers");
-        AscensionMenuInteractable leftController = leftIcon.GetComponent<AscensionMenuInteractable>();
-        AscensionMenuInteractable rightController = rightIcon.GetComponent<AscensionMenuInteractable>();
+        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(starterDeckContainer.transform);
+
+        AscensionMenuInteractable leftController = pageTuple.Item1;
+        AscensionMenuInteractable rightController = pageTuple.Item2;
 
         Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.StarterDeckPageLeft(i);
         Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.StarterDeckPageRight(i);
