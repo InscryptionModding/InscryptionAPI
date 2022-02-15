@@ -1,11 +1,18 @@
 using DiskCardGame;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Saves;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
 public static class CardExtensions
 {
+    /// <summary>
+    /// Gets the first card matching the given name, or null if it does not exist
+    /// </summary>
+    /// <param name="cards">An enumeration of Inscryption cards</param>
+    /// <param name="name">The name to search for (case sensitive).</param>
+    /// <returns>The first matching card, or null if no match</returns>
     public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(x => x.name == name);
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
@@ -16,11 +23,22 @@ public static class CardExtensions
             return TextureHelper.ConvertTexture(portrait, spriteType, filterMode.Value);
     }
 
+    /// <summary>
+    /// Sets the default card portrait for the card
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
+    /// <returns>The card</returns>
     public static CardInfo SetPortrait(this CardInfo info, string pathToArt)
     {
         return info.SetPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Sets the default card portrait for the card
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
     public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         info.portraitTex = GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode);
@@ -31,22 +49,39 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// </summary>
+    /// <param name="portrait">The texture containing the emission</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         if (info.portraitTex == null)
             throw new InvalidOperationException($"Cannot set emissive portrait before setting normal portrait");
-
 
         info.portraitTex.RegisterEmissionForSprite(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
 
         return info;
     }
 
+    /// <summary>
+    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, string pathToArt)
     {
         return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Sets the cards portrait and emission at the same time.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="emission">The texture containing the emission</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
     public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, Texture2D emission, FilterMode? filterMode = null)
     {
         info.SetPortrait(portrait, filterMode);
@@ -54,6 +89,12 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the cards portrait and emission at the same time.
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <param name="pathToEmission">The path to the .png file containing the emission artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
     public static CardInfo SetPortrait(this CardInfo info, string pathToArt, string pathToEmission)
     {
         info.SetPortrait(pathToArt);
@@ -61,11 +102,22 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card's alternate portrait. This portrait is only used when asked for by an ability or an appearance behavior.
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
     public static CardInfo SetAltPortrait(this CardInfo info, string pathToArt)
     {
         return info.SetAltPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Sets the card's alternate portrait. This portrait is only used when asked for by an ability or an appearance behavior.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
     public static CardInfo SetAltPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         info.alternatePortrait = GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode);
@@ -77,11 +129,22 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card's pixel portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
     public static CardInfo SetPixelPortrait(this CardInfo info, string pathToArt)
     {
         return info.SetPixelPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Sets the card's pixel portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
     public static CardInfo SetPixelPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         if (!filterMode.HasValue)
@@ -95,11 +158,56 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
+    public static CardInfo SetLostTailPortrait(this CardInfo info, string pathToArt)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set lost tail portrait without tail params being set first");
+
+        info.tailParams.SetLostTailPortrait(pathToArt, info);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
+    public static CardInfo SetLostTailPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set lost tail portrait without tail params being set first");
+
+        info.tailParams.SetLostTailPortrait(portrait, info, filterMode);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <param name="owner">The card that the tail parameters belongs to.</param>
+    /// <returns></returns>
     public static TailParams SetLostTailPortrait(this TailParams info, string pathToArt, CardInfo owner)
     {
+        owner.tailParams = info;
         return info.SetLostTailPortrait(TextureHelper.GetImageAsTexture(pathToArt), owner);
     }
 
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <param name="owner">The card that the tail parameters belongs to.</param>
+    /// <returns></returns>
     public static TailParams SetLostTailPortrait(this TailParams info, Texture2D portrait, CardInfo owner, FilterMode? filterMode = null)
     {
         if (!filterMode.HasValue)
@@ -116,7 +224,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the card so it shows up for normal card choices in Act 1.
+    /// Sets the card to behave as a "normal" card in Part 1. The CardTemple is Nature and it will appear in choice nodes and trader nodes.
     /// </summary>
     public static CardInfo SetDefaultPart1Card(this CardInfo info)
     {
@@ -130,7 +238,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the card so it shows up for normal card choices in Act 3.
+    /// Sets the card to behave as a "normal" card in Part 3. The CardTemple is Tech and it will appear in choice nodes and as a potential random card from GiftBot.
     /// </summary>
     public static CardInfo SetDefaultPart3Card(this CardInfo info)
     {
@@ -170,6 +278,14 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets a number of basic properties of the card
+    /// </summary>
+    /// <param name="displayedName">Displayed name of the card</param>
+    /// <param name="attack">Attack of the card</param>
+    /// <param name="health">Health of the card</param>
+    /// <param name="description">The description that plays when the card is seen for the first time.</param>
+    /// <returns></returns>
     public static CardInfo SetBasic(this CardInfo info, string displayedName, int attack, int health, string description = default(string))
     {
         info.displayedName = displayedName;
@@ -179,12 +295,28 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// This function uses delayed loading to attach the tail to the card, so if the tail card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="tailName">The name of the card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="pathToLostTailArt">The path to the .png file containing the lost tail artwork (relative to the Plugins directory)</param>
+    /// <param name="mods">A set of card mods to be applied to the tail</param>
+    /// <returns></returns>
     public static CardInfo SetTail(this CardInfo info, string tailName, string pathToLostTailArt = null, IEnumerable<CardModificationInfo> mods = null)
     {
         Texture2D lostTailPortrait = pathToLostTailArt == null ? null : TextureHelper.GetImageAsTexture(pathToLostTailArt);
         return info.SetTail(tailName, lostTailPortrait, mods:mods);
     }
 
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// </summary>
+    /// <param name="tail">The card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="tailLostPortrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <param name="mods">A set of card mods to be applied to the tail</param>
+    /// <returns></returns>
     public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         info.tailParams = new();
@@ -199,6 +331,15 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// This function uses delayed loading to attach the tail to the card, so if the tail card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="tailName">The name of the card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="tailLostPortrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <param name="mods">A set of card mods to be applied to the tail</param>
+    /// <returns></returns>
     public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         CardInfo tail = CardManager.AllCardsCopy.CardByName(tailName);
@@ -224,6 +365,12 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the ice cube parameters of the card. These parameters are used to make the IceCube ability function correctly.
+    /// </summary>
+    /// <param name="iceCube">The card that will be generated when this card dies.</param>
+    /// <param name="mods">A set of card mods to be applied to the ice cube contents</param>
+    /// <returns></returns>
     public static CardInfo SetIceCube(this CardInfo info, CardInfo iceCube, IEnumerable<CardModificationInfo> mods)
     {
         info.iceCubeParams = new();
@@ -235,6 +382,13 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the ice cube parameters of the card. These parameters are used to make the IceCube ability function correctly.
+    /// This function uses delayed loading to attach the ice cube to the card, so if the ice cube card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="iceCubeName">The name of the card that will be generated when this card dies.</param>
+    /// <param name="mods">A set of card mods to be applied to the ice cube contents</param>
+    /// <returns></returns>
     public static CardInfo SetIceCube(this CardInfo info, string iceCubeName, IEnumerable<CardModificationInfo> mods)
     {
         CardInfo creatureWithin = CardManager.AllCardsCopy.CardByName(iceCubeName);
@@ -260,6 +414,13 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the evolve parameters of the card. These parameters are used to make the Evolve ability function correctly.
+    /// </summary>
+    /// <param name="evolveCard">The card that will be generated after the set number of turns.</param>
+    /// <param name="numberOfTurns">The number of turns before the card evolves</param>
+    /// <param name="mods">A set of card mods to be applied to the evolved card</param>
+    /// <returns></returns>
     public static CardInfo SetEvolve(this CardInfo info, CardInfo evolveCard, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
     {
         info.evolveParams = new();
@@ -273,6 +434,14 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the evolve parameters of the card. These parameters are used to make the Evolve ability function correctly.
+    /// This function uses delayed loading to attach the evolution to the card, so if the evolve card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="evolveInfo">The name of card that will be generated after the set number of turns.</param>
+    /// <param name="numberOfTurns">The number of turns before the card evolves</param>
+    /// <param name="mods">A set of card mods to be applied to the evolved card</param>
+    /// <returns></returns>
     public static CardInfo SetEvolve(this CardInfo info, string evolveInto, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
     {
         CardInfo evolution = CardManager.AllCardsCopy.CardByName(evolveInto);
@@ -297,6 +466,14 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets the cost of the card. Any and all costs can be set this way.
+    /// </summary>
+    /// <param name="bloodCost">The cost in blood (sacrifices)</param>
+    /// <param name="bonesCost">The cost in bones</param>
+    /// <param name="energyCost">The cost in energy</param>
+    /// <param name="gemsCost">The cost in gems</param>
+    /// <returns></returns>
     public static CardInfo SetCost(this CardInfo info, int bloodCost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null)
     {
         info.cost = bloodCost;
@@ -306,6 +483,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of abilities to the the card. Abilities can be added multiple times.
+    /// </summary>
+    /// <param name="abilities">The abilities to add</param>
+    /// <returns></returns>
     public static CardInfo AddAbilities(this CardInfo info, params Ability[] abilities)
     {
         info.abilities = info.abilities ?? new();
@@ -313,6 +495,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of appearance behaviors to the the card. Duplicate appearance behaviors are ignored.
+    /// </summary>
+    /// <param name="appearances">The appearances to add</param>
+    /// <returns></returns>
     public static CardInfo AddAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
     {
         info.appearanceBehaviour = info.appearanceBehaviour ?? new();
@@ -322,6 +509,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of metacategories to the the card. Duplicate metacategories are ignored.
+    /// </summary>
+    /// <param name="categories">The categories to add</param>
+    /// <returns></returns>
     public static CardInfo AddMetaCategories(this CardInfo info, params CardMetaCategory[] categories)
     {
         info.metaCategories = info.metaCategories ?? new();
@@ -331,6 +523,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of traits to the the card. Duplicate traits are ignored.
+    /// </summary>
+    /// <param name="traits">The traits to add</param>
+    /// <returns></returns>
     public static CardInfo AddTraits(this CardInfo info, params Trait[] traits)
     {
         info.traits = info.traits ?? new();
@@ -340,6 +537,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of tribes to the the card. Duplicate tribes are ignored.
+    /// </summary>
+    /// <param name="tribes">The tribes to add</param>
+    /// <returns></returns>
     public static CardInfo AddTribes(this CardInfo info, params Tribe[] tribes)
     {
         info.tribes = info.tribes ?? new();
@@ -349,6 +551,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of special abilities to the the card. Duplicate special abilities are ignored.
+    /// </summary>
+    /// <param name="abilities">The abilities to add</param>
+    /// <returns></returns>
     public static CardInfo AddSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
     {
         info.specialAbilities = info.specialAbilities ?? new();
@@ -359,7 +566,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds this card to Act 2 packs and collection.
+    /// Makes the card fully playable in GBC mode and able to appear in card packs.
     /// </summary>
     public static CardInfo SetGBCPlayable(this CardInfo info, CardTemple temple)
     {
@@ -368,6 +575,11 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of decals to the the card. Duplicate decals are ignored.
+    /// </summary>
+    /// <param name="decals">The decals to add</param>
+    /// <returns></returns>
     public static CardInfo AddDecal(this CardInfo info, params Texture[] decals)
     {
         info.decals = info.decals ?? new();
@@ -378,11 +590,58 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Adds any number of decals to the the card. Duplicate decals are ignored.
+    /// </summary>
+    /// <param name="decals">The paths to the .png files containing the decals (relative to the Plugins directory)</param>
+    /// <returns></returns>
     public static CardInfo AddDecal(this CardInfo info, params string[] decals)
     {
         if (decals == null)
             return info;
 
         return info.AddDecal(decals.Select(d => TextureHelper.GetImageAsTexture(d)).ToArray());
+    }
+
+    /// <summary>
+    /// Adds a custom property value to the card.
+    /// </summary>
+    /// <param name="propertyName">The name of the property to set</param>
+    /// <param name="value">The value of the property</param>
+    /// <returns></returns>
+    public static CardInfo SetExtendedProperty(this CardInfo info, string propertyName, object value)
+    {
+        ModdedSaveManager.SaveData.SetValue($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName, value);
+        return info;
+    }
+
+    /// <summary>
+    /// Gets a custom property value from the card
+    /// </summary>
+    /// <param name="propertyName">The name of the property to get the value of</param>
+    /// <returns></returns>
+    public static string GetExtendedProperty(this CardInfo info, string propertyName)
+    {
+        return ModdedSaveManager.SaveData.GetValue($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
+    }
+
+    /// <summary>
+    /// Gets a custom property value from the card as an integer
+    /// </summary>
+    /// <param name="propertyName">The name of the property to get the value of</param>
+    /// <returns></returns>
+    public static int GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
+    {
+        return ModdedSaveManager.SaveData.GetValueAsInt($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
+    }
+
+    /// <summary>
+    /// Gets a custom property value from the card as a float
+    /// </summary>
+    /// <param name="propertyName">The name of the property to get the value of</param>
+    /// <returns></returns>
+    public static float GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
+    {
+        return ModdedSaveManager.SaveData.GetValueAsFloat($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
     }
 }

@@ -201,6 +201,18 @@ CardManager.ModifyCardList += delegate(List<CardInfo> cards)
 
 By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.
 
+### Custom card properties
+
+The API allows you to add custom properties to a card, and then retrieve them for use inside of abilities. In the same way that you can use Evolve parameters to make the evolve ability work, or the Ice Cube parameters to make the IceCube ability work, this can allow you to set custom parameters to make your custom abilities work.
+
+```c#
+
+CardInfo sample = CardLoader.CardByName("MyCustomCard");
+sample.SetExtendedProperty("CustomPropertyName", "CustomPropertyValue");
+
+string propValue = sample.GetExtendedProperty("CustomPropertyName");
+```
+
 ### Ability Management
 
 Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached 'AbilityBehaviour' type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).
