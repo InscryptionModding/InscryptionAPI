@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
@@ -52,5 +53,30 @@ public static class CardManager
             Add(retval);
 
         return retval;
+    }
+
+    internal static ConditionalWeakTable<CardInfo, Dictionary<string, string>> ExtensionProperties = new();
+
+    internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
+    {
+        Dictionary<string, string> retval;
+        ExtensionProperties.TryGetValue(card, out retval);
+        if (retval == null)
+        {
+            retval = new();
+            ExtensionProperties.Add(card, retval);
+        }
+        return retval;
+    }
+
+    [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.Clone))]
+    [HarmonyPostfix]
+    public static void CloneExtensionProperties(CardInfo c, CardInfo __result)
+    {
+        Dictionary<string, string> oldExtensionTable = c.GetCardExtensionTable();
+        Dictionary<string, string> newExtensionTable = __result.GetCardExtensionTable();
+
+        foreach(var item in oldExtensionTable)
+            newExtensionTable.Add(item.Key, item.Value);
     }
 }

@@ -611,7 +611,13 @@ public static class CardExtensions
     /// <returns></returns>
     public static CardInfo SetExtendedProperty(this CardInfo info, string propertyName, object value)
     {
-        ModdedSaveManager.SaveData.SetValue($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName, value);
+        Dictionary<string, string> table = info.GetCardExtensionTable();
+        string key = $"{InscryptionAPIPlugin.ModGUID}_{info.name}";
+        string valueString = value == null ? default(string) : value.ToString();
+        if (table.ContainsKey(key))
+            table[key] = valueString;
+        else
+            table.Add(key, valueString);
         return info;
     }
 
@@ -622,7 +628,12 @@ public static class CardExtensions
     /// <returns></returns>
     public static string GetExtendedProperty(this CardInfo info, string propertyName)
     {
-        return ModdedSaveManager.SaveData.GetValue($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
+        Dictionary<string, string> table = info.GetCardExtensionTable();
+        string key = $"{InscryptionAPIPlugin.ModGUID}_{info.name}";
+        if (table.ContainsKey(key))
+            return table[key];
+        else
+            return default(string);
     }
 
     /// <summary>
@@ -632,7 +643,10 @@ public static class CardExtensions
     /// <returns></returns>
     public static int GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
     {
-        return ModdedSaveManager.SaveData.GetValueAsInt($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
+        string value = info.GetExtendedProperty(propertyName);
+        int result = default(int);
+        int.TryParse(value, out result);
+        return result;
     }
 
     /// <summary>
@@ -642,6 +656,9 @@ public static class CardExtensions
     /// <returns></returns>
     public static float GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
     {
-        return ModdedSaveManager.SaveData.GetValueAsFloat($"{InscryptionAPIPlugin.ModGUID}_{info.name}", propertyName);
+        string value = info.GetExtendedProperty(propertyName);
+        float result = default(float);
+        float.TryParse(value, out result);
+        return result;
     }
 }
