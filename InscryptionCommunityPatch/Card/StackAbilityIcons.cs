@@ -11,7 +11,6 @@ public static class StackAbilityIcons
 {
     // This patch modifies ability sigils such that multiple instances of the same sigil
     // are displayed as a single sigil with a number to indicate how many copies there are
-
     private static Texture2D[] NUMBER_TEXTURES = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_1.png", typeof(StackAbilityIcons).Assembly),

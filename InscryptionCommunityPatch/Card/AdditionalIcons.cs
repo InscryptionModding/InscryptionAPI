@@ -9,7 +9,6 @@ namespace InscryptionCommunityPatch.Card;
 public class RenderAdditionalSigils
 {
     // This patch modifies the way cards are rendered so that more than two sigils can be displayed on a single card
-
     private static Transform Find(Transform start, string target = "CardBase")
     {
         foreach (Transform child in start)
