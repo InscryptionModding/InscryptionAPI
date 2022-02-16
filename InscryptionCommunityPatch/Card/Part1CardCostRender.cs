@@ -3,7 +3,7 @@ using HarmonyLib;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
-namespace InscryptionAPI.Card;
+namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
 public class Part1CardCostRender

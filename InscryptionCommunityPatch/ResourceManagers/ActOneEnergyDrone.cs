@@ -7,7 +7,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using UnityEngine;
 
-namespace InscryptionAPI.ResourceManagers;
+namespace InscryptionCommunityPatch.ResourceManagers;
 
 [HarmonyPatch]
 public static class ActOneEnergyDrone
@@ -37,12 +37,12 @@ public static class ActOneEnergyDrone
             bool poolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && CardVisibleInActOne(ci));
             bool poolHasMox = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && CardVisibleInActOne(ci));
 
-            configEnergy = poolHasEnergy || InscryptionAPIPlugin.configEnergy.Value;
-            configMox = poolHasMox || InscryptionAPIPlugin.configMox.Value;
-            configDroneMox = poolHasMox || InscryptionAPIPlugin.configDroneMox.Value;
-            configDrone = configDroneMox || poolHasEnergy || InscryptionAPIPlugin.configDrone.Value;
+            configEnergy = poolHasEnergy || PatchPlugin.configEnergy.Value;
+            configMox = poolHasMox || PatchPlugin.configMox.Value;
+            configDroneMox = poolHasMox || PatchPlugin.configDroneMox.Value;
+            configDrone = configDroneMox || poolHasEnergy || PatchPlugin.configDrone.Value;
 
-            InscryptionAPIPlugin.Logger.LogDebug($"Act 1 Energy Config: energy {configEnergy}, mox {configMox}, drone {configDroneMox}, drone mox {configDrone}");
+            PatchPlugin.Logger.LogDebug($"Act 1 Energy Config: energy {configEnergy}, mox {configMox}, drone {configDroneMox}, drone mox {configDrone}");
         }
     }
 
@@ -50,7 +50,7 @@ public static class ActOneEnergyDrone
 
     internal static void TryEnableEnergy(string sceneName)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Checking to see if I need to enable energy for scene {sceneName}");
+        PatchPlugin.Logger.LogDebug($"Checking to see if I need to enable energy for scene {sceneName}");
 
         if (sceneName == "Part1_Cabin")
         {
@@ -59,7 +59,7 @@ public static class ActOneEnergyDrone
             UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
             if(EnergyConfig.configDrone)
-                InscryptionAPIPlugin.Instance.StartCoroutine(AwakeDrone());
+                PatchPlugin.Instance.StartCoroutine(AwakeDrone());
         }
     }
 
@@ -67,7 +67,7 @@ public static class ActOneEnergyDrone
     {
         yield return new WaitForSeconds(1);
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Awaking drone. Exists? {ResourceDrone.Instance}");
+        PatchPlugin.Logger.LogDebug($"Awaking drone. Exists? {ResourceDrone.Instance}");
 
         if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.Awake();
@@ -130,7 +130,7 @@ public static class ActOneEnergyDrone
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.configDrone)
         {
-            InscryptionAPIPlugin.Logger.LogDebug($"Setting up extra resources: drone {ResourceDrone.Instance}");
+            PatchPlugin.Logger.LogDebug($"Setting up extra resources: drone {ResourceDrone.Instance}");
             ResourceDrone.Instance.SetOnBoard(true, false);
             if (EnergyConfig.configDroneMox)
             {
