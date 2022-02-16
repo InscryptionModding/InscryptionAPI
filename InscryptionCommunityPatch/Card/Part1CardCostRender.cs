@@ -8,6 +8,10 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 public class Part1CardCostRender
 {
+	// This patches the way card costs are rendered in Act 1 (Leshy's cabin)
+	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
+	// And allows gem cost and energy cost to render on the card at all.
+
 	private static Dictionary<string, Texture2D> AssembledTextures = new();
 
 	public const int COST_OFFSET = 28;
