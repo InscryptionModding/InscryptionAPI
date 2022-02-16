@@ -201,6 +201,18 @@ CardManager.ModifyCardList += delegate(List<CardInfo> cards)
 
 By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.
 
+### Custom card properties
+
+The API allows you to add custom properties to a card, and then retrieve them for use inside of abilities. In the same way that you can use Evolve parameters to make the evolve ability work, or the Ice Cube parameters to make the IceCube ability work, this can allow you to set custom parameters to make your custom abilities work.
+
+```c#
+
+CardInfo sample = CardLoader.CardByName("MyCustomCard");
+sample.SetExtendedProperty("CustomPropertyName", "CustomPropertyValue");
+
+string propValue = sample.GetExtendedProperty("CustomPropertyName");
+```
+
 ### Ability Management
 
 Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached 'AbilityBehaviour' type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).
@@ -265,7 +277,7 @@ Special triggered abilities are a lot like regular abilities; however, they are 
 Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour
 
 ```c#
-public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, "Special Ability", typeof(MySpecialTriggeredAbility));
+public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, "Special Ability", typeof(MySpecialTriggeredAbility)).Id;
 ```
 
 And now MyAbilityID can be added to CardInfo objects.
@@ -277,7 +289,7 @@ These behave the same as special triggered abilities from the perspective of the
 Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour
 
 ```c#
-public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour));
+public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour)).Id;
 ```
 
 ## Custom Maps and Encounters
@@ -398,6 +410,27 @@ public static void DoSomething()
         // Do some actual stuff
     }
 }
+```
+
+### Adding new Starter Decks
+
+Starter decks are relatively simple. They simply need a title, an icon, and a set of three cards. You can also optionally add an "unlock level" which prevents your starter deck from being unlocked until the player reaches a certain challenge level. This defaults to 0, which means that the starter deck will always be unlocked.
+
+What if you want to make a starter deck with cards from another mod? What if you aren't 100% sure that those cards are loaded at the time that your starter deck is loaded? You can solve this manually by creating a dependency, which forces BepInEx to load the other mod first. However, if that mod uses JSON Loader, you need to create a dependency on JSON Loader instead, which could (in some very bizarre situations) create a situation where you both need to load before and after JSON Loader. Rather than sort out all of these possible scenarios one-by-one, you can instead create a starter deck with a set of three card names (strings) instead of three CardInfo objects. This will create a "delayed loading" scenario where the actual starter deck info won't be built until right before the Starter Deck screen loads.
+
+Both patterns are shown here:
+
+```c#
+StarterDeckInfo myDeck = ScriptableObject.CreateInstance<StarterDeckInfo>();
+myDeck.title = "Pelts";
+myDeck.iconSprite = TextureHelper.GetImageAsSprite("art/pelts_deck_icon.png", TextureHelper.SpriteType.StarterDeckIcon);
+myDeck.cards = new () { CardLoader.GetCardByName("PeltWolf"), CardLoader.GetCardByName("PeltHare"), CardLoader.GetCardByName("PeltHare") };
+
+StarterDeckManager.Add(MyPlugin.Guid, myDeck);
+```
+
+```c#
+StarterDeckManager.New(MyPlugin.Guid, "Pelts", "art/pelts_deck_icon.png", new string[] { "PeltWolf", "PeltHare", "PeltHare"});
 ```
 
 ### Adding Custom Screens to Kaycee's Mod

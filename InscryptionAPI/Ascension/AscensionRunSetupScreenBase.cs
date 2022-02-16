@@ -65,6 +65,57 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             GameObject.Destroy(obj);
     }
 
+    public static Tuple<AscensionMenuInteractable, AscensionMenuInteractable> BuildPaginators(Transform parent)
+    {
+        InscryptionAPIPlugin.Logger.LogDebug($"Getting pseudo prefabs");
+
+        // Find the leftmost and rightmost x values
+        // We'll put the arrows halfway between the edge of the screen and the leftmost/rightmost objects
+        float leftX = 1f;
+        float rightX = 0f;
+
+        foreach (Renderer renderer in parent.gameObject.GetComponentsInChildren<Renderer>())
+        {
+            Vector3 min = Camera.main.WorldToViewportPoint(renderer.bounds.min);
+            Vector3 max = Camera.main.WorldToViewportPoint(renderer.bounds.max);
+
+            InscryptionAPIPlugin.Logger.LogDebug($"For object {renderer.gameObject} min is {renderer.bounds.min.x} mincamera is {min.x}");
+
+            if (min.x < leftX)
+                leftX = min.x;
+
+            if (max.x > rightX)
+                rightX = max.x;
+        }
+
+        leftX = leftX / 2f;
+        rightX = 1f - ((1f - rightX) / 2f);
+
+        GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
+        GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
+
+        InscryptionAPIPlugin.Logger.LogDebug($"Creating page turners");
+        GameObject leftIcon = GameObject.Instantiate(leftPseudoPrefab, parent);
+        GameObject rightIcon = GameObject.Instantiate(rightPseudoPrefab, parent);
+
+        leftIcon.transform.localPosition = Vector3.zero;
+        rightIcon.transform.localPosition = Vector3.zero;
+
+        ViewportRelativePosition leftPos = leftIcon.AddComponent<ViewportRelativePosition>();
+        ViewportRelativePosition rightPos = rightIcon.AddComponent<ViewportRelativePosition>();
+
+        leftPos.viewportCam = Camera.main;
+        rightPos.viewportCam = Camera.main;
+
+        leftPos.viewportAnchor = new Vector2(leftX, 0.565f);
+        rightPos.viewportAnchor = new Vector2(rightX, 0.565f);
+
+        leftPos.offset = new (0f, 0f);
+        rightPos.offset = new (0f, 0f);
+
+        return new(leftIcon.GetComponent<AscensionMenuInteractable>(), rightIcon.GetComponent<AscensionMenuInteractable>());
+    }
+
     public static AscensionRunSetupScreenBase BuildScreen(Type screenType, AscensionMenuScreens.Screen previousScreen, AscensionMenuScreens.Screen nextScreen)
     {
         // Create the new screen
