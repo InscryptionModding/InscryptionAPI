@@ -27,58 +27,58 @@ public class RenderAdditionalSigils
         return null;
     }
 
-    private static void AddTripleIconSlotToCard(Transform abilityIconParent)
-    {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
+    // private static void AddTripleIconSlotToCard(Transform abilityIconParent)
+    // {
+    //     //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
 
-        if (abilityIconParent == null)
-        {
-            return;
-        }
+    //     if (abilityIconParent == null)
+    //     {
+    //         return;
+    //     }
 
-        if (abilityIconParent.Find("DefaultIcons_3Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
+    //     if (abilityIconParent.Find("DefaultIcons_3Abilities") == null)
+    //     {
+    //         CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
 
-            if (controller == null)
-            {
-                return;
-            }
+    //         if (controller == null)
+    //         {
+    //             return;
+    //         }
 
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
+    //         //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
 
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject threeAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            threeAbilities.name = "DefaultIcons_3Abilities";
+    //         // Create the three abilities slot
+    //         GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
+    //         //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
+    //         GameObject threeAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
+    //         threeAbilities.name = "DefaultIcons_3Abilities";
 
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in threeAbilities.transform)
-            {
-                icons.Add(icon);
-            }
+    //         // Move the existing icons
+    //         List<Transform> icons = new();
+    //         foreach (Transform icon in threeAbilities.transform)
+    //         {
+    //             icons.Add(icon);
+    //         }
 
-            //PLugin.Log.LogInfo($"Moving icons");
-            icons[0].localPosition = new Vector3(-0.115f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f);
-            icons[1].localPosition = new Vector3(0.115f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f);
+    //         //PLugin.Log.LogInfo($"Moving icons");
+    //         icons[0].localPosition = new Vector3(-0.115f, .06f, 0f);
+    //         icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f);
+    //         icons[1].localPosition = new Vector3(0.115f, .06f, 0f);
+    //         icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f);
 
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, threeAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(0f, -.07f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
+    //         // Make a new icon
+    //         //PLugin.Log.LogInfo($"Making third icon");
+    //         GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, threeAbilities.transform);
+    //         thirdIcon.name = "AbilityIcon";
+    //         thirdIcon.transform.localPosition = new Vector3(0f, -.07f, 0f);
+    //         thirdIcon.transform.localScale = icons[1].localScale;
 
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(threeAbilities);
+    //         // Update the abilityicon list
+    //         //PLugin.Log.LogInfo($"Updating list");
+    //         controller.defaultIconGroups.Add(threeAbilities);
 
-        }
-    }
+    //     }
+    // }
 
     private static void AddQuadrupleIconSlotToCard(Transform abilityIconParent)
     {
@@ -443,7 +443,7 @@ public class RenderAdditionalSigils
         if (cardBase != null)
         {
             Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
-            AddTripleIconSlotToCard(parent);
+            //AddTripleIconSlotToCard(parent);
             AddQuadrupleIconSlotToCard(parent);
             AddQuintupleIconSlotToCard(parent);
             AddSextupleIconSlotToCard(parent);
@@ -460,7 +460,7 @@ public class RenderAdditionalSigils
         if (cardBase != null)
         {
             Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
-            AddTripleIconSlotToCard(parent);
+            //AddTripleIconSlotToCard(parent);
             AddQuadrupleIconSlotToCard(parent);
             AddQuintupleIconSlotToCard(parent);
             AddSextupleIconSlotToCard(parent);
@@ -477,7 +477,7 @@ public class RenderAdditionalSigils
         if (cardBase != null)
         {
             Transform parent = Find(cardBase, "CardAbilityIcons");
-            AddTripleIconSlotToCard(parent);
+            //AddTripleIconSlotToCard(parent);
             AddQuadrupleIconSlotToCard(parent);
             AddQuintupleIconSlotToCard(parent);
             AddSextupleIconSlotToCard(parent);

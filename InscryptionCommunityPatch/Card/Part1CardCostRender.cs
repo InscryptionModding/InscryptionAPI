@@ -22,13 +22,13 @@ public class Part1CardCostRender
 	{
 		while (costs.Count < 4)
 			costs.Add(null);
-		Texture2D baseTexture = TextureHelper.GetImageAsTexture("empty_cost.png", typeof(TextureHelper).Assembly);
+		Texture2D baseTexture = TextureHelper.GetImageAsTexture("empty_cost.png", typeof(Part1CardCostRender).Assembly);
 		return TextureHelper.CombineTextures(costs, baseTexture, yStep:COST_OFFSET);
 	}
 
 	public static Texture2D CombineMoxTextures(List<Texture2D> costs)
 	{
-		Texture2D baseTexture = TextureHelper.GetImageAsTexture("mox_cost_empty.png", typeof(TextureHelper).Assembly);
+		Texture2D baseTexture = TextureHelper.GetImageAsTexture("mox_cost_empty.png", typeof(Part1CardCostRender).Assembly);
 		return TextureHelper.CombineTextures(costs, baseTexture, xStep:MOX_OFFSET);
 	}	
 
@@ -42,7 +42,7 @@ public class Part1CardCostRender
 			AssembledTextures.Remove(key);
 		}
 
-		Texture2D texture = TextureHelper.GetImageAsTexture($"{key}.png", typeof(TextureHelper).Assembly);
+		Texture2D texture = TextureHelper.GetImageAsTexture($"{key}.png", typeof(Part1CardCostRender).Assembly);
 		AssembledTextures.Add(key, texture);
 		return texture;
 	}
