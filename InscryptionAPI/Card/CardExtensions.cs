@@ -611,13 +611,7 @@ public static class CardExtensions
     /// <returns></returns>
     public static CardInfo SetExtendedProperty(this CardInfo info, string propertyName, object value)
     {
-        Dictionary<string, string> table = info.GetCardExtensionTable();
-        string key = $"{InscryptionAPIPlugin.ModGUID}_{info.name}";
-        string valueString = value == null ? default(string) : value.ToString();
-        if (table.ContainsKey(key))
-            table[key] = valueString;
-        else
-            table.Add(key, valueString);
+        info.GetCardExtensionTable()[propertyName] = value?.ToString();
         return info;
     }
 
@@ -628,37 +622,31 @@ public static class CardExtensions
     /// <returns></returns>
     public static string GetExtendedProperty(this CardInfo info, string propertyName)
     {
-        Dictionary<string, string> table = info.GetCardExtensionTable();
-        string key = $"{InscryptionAPIPlugin.ModGUID}_{info.name}";
-        if (table.ContainsKey(key))
-            return table[key];
-        else
-            return default(string);
+        info.GetCardExtensionTable().TryGetValue(propertyName, out var ret);
+        return ret;
     }
 
     /// <summary>
-    /// Gets a custom property value from the card as an integer
+    /// Gets a custom property as an int (can by null)
     /// </summary>
-    /// <param name="propertyName">The name of the property to get the value of</param>
-    /// <returns></returns>
-    public static int GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
+    /// <param name="info">Card to acesss</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int</returns>
+    public static int? GetExtenededPropertyAsInt(this CardInfo info, string propertyName)
     {
-        string value = info.GetExtendedProperty(propertyName);
-        int result = default(int);
-        int.TryParse(value, out result);
-        return result;
+        info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
+        return int.TryParse(str, out var ret) ? ret : null;
     }
-
+    
     /// <summary>
-    /// Gets a custom property value from the card as a float
+    /// Gets a custom property as a float (can by null)
     /// </summary>
-    /// <param name="propertyName">The name of the property to get the value of</param>
-    /// <returns></returns>
-    public static float GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
+    /// <param name="info">Card to acesss</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float</returns>
+    public static float? GetExtenededPropertyAsFloat(this CardInfo info, string propertyName)
     {
-        string value = info.GetExtendedProperty(propertyName);
-        float result = default(float);
-        float.TryParse(value, out result);
-        return result;
+        info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
+        return float.TryParse(str, out var ret) ? ret : null;
     }
 }

@@ -55,28 +55,49 @@ public static class CardManager
         return retval;
     }
 
-    internal static ConditionalWeakTable<CardInfo, Dictionary<string, string>> ExtensionProperties = new();
+    private class CardExt
+    {
+        public readonly Dictionary<Type, object> TypeMap = new();
+        public readonly Dictionary<string, string> StringMap = new();
+    }
+    private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
+    
+    /// <summary>
+    /// Get a custom extension class that will exist on all clones of a card
+    /// </summary>
+    /// <param name="card">Card to access</param>
+    /// <typeparam name="T">The custom class</typeparam>
+    /// <returns>The instance of T for this card</returns>
+    public static T GetExtendedClass<T>(this CardInfo card) where T : class, new()
+    {
+        var typeMap = ExtensionProperties.GetOrCreateValue(card).TypeMap;
+        if (typeMap.TryGetValue(typeof(T), out object tObj))
+        {
+            return (T)tObj;
+        }
+        else
+        {
+            T tInst = new();
+            typeMap[typeof(T)] = tInst;
+            return tInst;
+        }
+    }
 
     internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
     {
-        Dictionary<string, string> retval;
-        ExtensionProperties.TryGetValue(card, out retval);
-        if (retval == null)
-        {
-            retval = new();
-            ExtensionProperties.Add(card, retval);
-        }
-        return retval;
+        return ExtensionProperties.GetOrCreateValue(card).StringMap;
     }
 
-    [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.Clone))]
-    [HarmonyPostfix]
-    public static void CloneExtensionProperties(CardInfo c, CardInfo __result)
+    [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
+    [HarmonyPrefix]
+    private static bool ClonePrefix(CardInfo c, out object __result)
     {
-        Dictionary<string, string> oldExtensionTable = c.GetCardExtensionTable();
-        Dictionary<string, string> newExtensionTable = __result.GetCardExtensionTable();
-
-        foreach(var item in oldExtensionTable)
-            newExtensionTable.Add(item.Key, item.Value);
+        // so, this patch actually does two things.
+        // first, it fixes clone to *actually* clone with scriptableobject, not memberwise
+        // then it ensures that every clone has the same CardExt attached to it
+        CardInfo ret = CardInfo.Instantiate(c);
+        ExtensionProperties.Add(ret, ExtensionProperties.GetOrCreateValue(c));
+        __result = ret;
+        return false;
     }
 }
