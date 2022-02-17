@@ -5,9 +5,7 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using InscryptionAPI.ResourceManagers;
 using System.Runtime.CompilerServices;
-using UnityEngine.SceneManagement;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 
@@ -58,7 +56,6 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         Logger = base.Logger;
 
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
-        SceneManager.sceneLoaded += this.OnSceneLoaded;
     }
 
     public void OnDisable()
@@ -80,10 +77,5 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
         rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
-    }
-
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        ActOneEnergyDrone.TryEnableEnergy(scene.name);
     }
 }

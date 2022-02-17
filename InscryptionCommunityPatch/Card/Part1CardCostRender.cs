@@ -3,11 +3,15 @@ using HarmonyLib;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
-namespace InscryptionAPI.Card;
+namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
 public class Part1CardCostRender
 {
+	// This patches the way card costs are rendered in Act 1 (Leshy's cabin)
+	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
+	// And allows gem cost and energy cost to render on the card at all.
+
 	private static Dictionary<string, Texture2D> AssembledTextures = new();
 
 	public const int COST_OFFSET = 28;
@@ -18,13 +22,13 @@ public class Part1CardCostRender
 	{
 		while (costs.Count < 4)
 			costs.Add(null);
-		Texture2D baseTexture = TextureHelper.GetImageAsTexture("empty_cost.png", typeof(TextureHelper).Assembly);
+		Texture2D baseTexture = TextureHelper.GetImageAsTexture("empty_cost.png", typeof(Part1CardCostRender).Assembly);
 		return TextureHelper.CombineTextures(costs, baseTexture, yStep:COST_OFFSET);
 	}
 
 	public static Texture2D CombineMoxTextures(List<Texture2D> costs)
 	{
-		Texture2D baseTexture = TextureHelper.GetImageAsTexture("mox_cost_empty.png", typeof(TextureHelper).Assembly);
+		Texture2D baseTexture = TextureHelper.GetImageAsTexture("mox_cost_empty.png", typeof(Part1CardCostRender).Assembly);
 		return TextureHelper.CombineTextures(costs, baseTexture, xStep:MOX_OFFSET);
 	}	
 
@@ -38,7 +42,7 @@ public class Part1CardCostRender
 			AssembledTextures.Remove(key);
 		}
 
-		Texture2D texture = TextureHelper.GetImageAsTexture($"{key}.png", typeof(TextureHelper).Assembly);
+		Texture2D texture = TextureHelper.GetImageAsTexture($"{key}.png", typeof(Part1CardCostRender).Assembly);
 		AssembledTextures.Add(key, texture);
 		return texture;
 	}

@@ -1,17 +1,20 @@
 
 # API
-## Inscryption API made by Cyantist
+## Inscryption API
 
 This plugin is a BepInEx plugin made for Inscryption as an API.
-It can currently:
-- Create custom cards and inject them into the card pool
-- Modify existing cards in the card pool
-- Create custom card backgrounds
-- Create custom abilities and inject them into the ability pool
-- Reference abilities between mods
-- Create custom regions and encounters
-- Create talking cards and add dialogues
-- Enable energy
+It can currently create and modify:
+- Cards
+- Abilities
+- Appearance behaviours
+- Stat icons
+- Challenges
+- Starter Decks
+- Regions
+- Encounters
+- And much more!
+
+Additionally, a number of quality-of-life patches from the community have been included in this release.
 
 ## Installation (automated)
 This is the recommended way to install the API on the game.
@@ -23,7 +26,7 @@ This is the recommended way to install the API on the game.
 ## Installation (manual)
 To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.
 
-To install Inscryption API you simply need to copy **API.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to **Inscryption/BepInEx/plugins**.
+To install Inscryption API you simply need to copy **InscryptionAPI.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to **Inscryption/BepInEx/plugins**.
 
 An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
 
@@ -50,6 +53,34 @@ Enabled = true
 in **Inscryption/BepInEx/Config/BepInEx/cfg**
 ___
 If you want help debugging you can find me on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) or on [Daniel Mullins Discord](https://discord.com/invite/danielmullinsgames) as Cyantist.
+
+# Community Patches
+
+The following patches from the Inscryption modding community have been included in this package to improve the overall quality-of-life for modding and compatibility.
+
+## SigilArtPatch by MADH95Mods
+Fixes the art for abilities that previously only appeared in Act 2 so they appear correctly in Act 1 and Act 3
+
+## Conduit Attack Fix by MADH95Mods
+Fixes the behavior of conduits so they function correctly in Act 1.
+
+## Activated Sigil Fix by MADH95Mods
+Allows activated sigils to work correctly in Act 1 and Act 3 by clicking the sigil icon on the card.
+
+## AnthonysLatchFix by AnthonyPython
+Fixes latch sigils to work in Act 1
+
+## Sigil Art Fix by Memez4Life
+Allows up to 8 sigils to be displayed on Act 1 cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).
+
+## Visually Stackable Sigils by DivisionByZ0rro
+Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.
+
+## Cost Render Fix by Void Slime
+Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards
+
+## Cost choice node fix by Void Slime
+If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in ACt 1.
 
 # Using the API
 

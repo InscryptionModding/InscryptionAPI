@@ -7,11 +7,15 @@ using System.Collections.Generic;
 using InscryptionAPI.Helpers;
 using GBC;
 
-namespace InscryptionAPI.Card;
+namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
 public static class Part2CardCostRender
 {
+    // This patches the way card costs are rendered in Act 2 (GBC)
+	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
+	// And makes the card costs take up a smaller amount of space on the card, showing off more art.
+
     private static Dictionary<string, Texture2D> AssembledTextures = new();
 
     public static Texture2D GetFinalTexture(int cardCost, Texture2D artCost, bool left)
@@ -102,7 +106,7 @@ public static class Part2CardCostRender
 		if (__instance is PixelCardDisplayer) 
 		{ 
 			/// Set the results as the new sprite
-			__result = Part2SpriteFinal(card, !InscryptionAPIPlugin.rightAct2Cost.Value);
+			__result = Part2SpriteFinal(card, !PatchPlugin.rightAct2Cost.Value);
 			return false;
 		}
 

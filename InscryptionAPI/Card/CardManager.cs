@@ -100,4 +100,20 @@ public static class CardManager
         __result = ret;
         return false;
     }
+
+    [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
+    [HarmonyPrefix]
+    public static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
+    {
+        CardManager.SyncCardList();
+        AbilityManager.SyncAbilityList();
+    }
+
+    [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
+    [HarmonyPrefix]
+    public static void SyncCardsAndAbilitiesWhenTransitioningToGame()
+    {
+        CardManager.SyncCardList();
+        AbilityManager.SyncAbilityList();
+    }
 }
