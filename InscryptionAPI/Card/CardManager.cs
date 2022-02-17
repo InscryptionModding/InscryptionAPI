@@ -79,4 +79,20 @@ public static class CardManager
         foreach(var item in oldExtensionTable)
             newExtensionTable.Add(item.Key, item.Value);
     }
+
+    [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
+    [HarmonyPrefix]
+    public static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
+    {
+        CardManager.SyncCardList();
+        AbilityManager.SyncAbilityList();
+    }
+
+    [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
+    [HarmonyPrefix]
+    public static void SyncCardsAndAbilitiesWhenTransitioningToGame()
+    {
+        CardManager.SyncCardList();
+        AbilityManager.SyncAbilityList();
+    }
 }
