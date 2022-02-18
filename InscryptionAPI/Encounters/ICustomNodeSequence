@@ -1,8 +1,0 @@
-using System.Collections;
-
-namespace InscryptionAPI.Encounters;
-
-public interface ICustomNodeSequence
-{
-    public IEnumerator ExecuteCustomSequence(CustomNodeData nodeData);
-}
