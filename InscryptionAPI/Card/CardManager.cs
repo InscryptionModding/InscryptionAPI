@@ -90,13 +90,14 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
     [HarmonyPrefix]
-    private static bool ClonePrefix(CardInfo c, out object __result)
+    private static bool ClonePrefix(CardInfo __instance, out object __result)
     {
         // so, this patch actually does two things.
         // first, it fixes clone to *actually* clone with scriptableobject, not memberwise
         // then it ensures that every clone has the same CardExt attached to it
-        CardInfo ret = CardInfo.Instantiate(c);
-        ExtensionProperties.Add(ret, ExtensionProperties.GetOrCreateValue(c));
+        CardInfo ret = UnityObject.Instantiate(__instance);
+        ExtensionProperties.Add(ret, ExtensionProperties.GetOrCreateValue(__instance));
+        ret.Mods = new List<CardModificationInfo>();
         __result = ret;
         return false;
     }
