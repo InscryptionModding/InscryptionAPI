@@ -113,7 +113,7 @@ public static class AbilityExtensions
 
     public static StatIconInfo SetDefaultPart3Ability(this StatIconInfo info)
     {
-        info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook);
+        info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
         return info;
     }
 }
