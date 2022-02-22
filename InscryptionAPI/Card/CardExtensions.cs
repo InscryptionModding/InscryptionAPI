@@ -66,6 +66,22 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// </summary>
+    /// <param name="portrait">The texture containing the emission</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
+    public static CardInfo SetEmissiveAltPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        if (info.alternatePortrait == null)
+            throw new InvalidOperationException($"Cannot set emissive portrait before setting normal portrait");
+
+        info.alternatePortrait.RegisterEmissionForSprite(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+
+        return info;
+    }
+
+    /// <summary>
     /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
     /// </summary>
     /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
@@ -73,6 +89,16 @@ public static class CardExtensions
     public static CardInfo SetEmissivePortrait(this CardInfo info, string pathToArt)
     {
         return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// </summary>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
+    /// <returns></returns>
+    public static CardInfo SetEmissiveAltPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetEmissiveAltPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
     /// <summary>
@@ -371,7 +397,7 @@ public static class CardExtensions
     /// <param name="iceCube">The card that will be generated when this card dies.</param>
     /// <param name="mods">A set of card mods to be applied to the ice cube contents</param>
     /// <returns></returns>
-    public static CardInfo SetIceCube(this CardInfo info, CardInfo iceCube, IEnumerable<CardModificationInfo> mods)
+    public static CardInfo SetIceCube(this CardInfo info, CardInfo iceCube, IEnumerable<CardModificationInfo> mods = null)
     {
         info.iceCubeParams = new();
         info.iceCubeParams.creatureWithin = CardLoader.Clone(iceCube);
@@ -389,7 +415,7 @@ public static class CardExtensions
     /// <param name="iceCubeName">The name of the card that will be generated when this card dies.</param>
     /// <param name="mods">A set of card mods to be applied to the ice cube contents</param>
     /// <returns></returns>
-    public static CardInfo SetIceCube(this CardInfo info, string iceCubeName, IEnumerable<CardModificationInfo> mods)
+    public static CardInfo SetIceCube(this CardInfo info, string iceCubeName, IEnumerable<CardModificationInfo> mods = null)
     {
         CardInfo creatureWithin = CardManager.AllCardsCopy.CardByName(iceCubeName);
 
@@ -474,11 +500,17 @@ public static class CardExtensions
     /// <param name="energyCost">The cost in energy</param>
     /// <param name="gemsCost">The cost in gems</param>
     /// <returns></returns>
-    public static CardInfo SetCost(this CardInfo info, int bloodCost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null)
+    public static CardInfo SetCost(this CardInfo info, int? bloodCost = 0, int? bonesCost = 0, int? energyCost = 0, List<GemType> gemsCost = null)
     {
-        info.cost = bloodCost;
-        info.bonesCost = bonesCost;
-        info.energyCost = energyCost;
+        if (bloodCost.HasValue)
+            info.cost = bloodCost.Value;
+
+        if (bonesCost.HasValue)
+            info.bonesCost = bonesCost.Value;
+
+        if (energyCost.HasValue)
+            info.energyCost = energyCost.Value;
+            
         info.gemsCost = gemsCost ?? new();
         return info;
     }
@@ -632,7 +664,7 @@ public static class CardExtensions
     /// <param name="info">Card to acesss</param>
     /// <param name="propertyName">Property name to get value of</param>
     /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int</returns>
-    public static int? GetExtenededPropertyAsInt(this CardInfo info, string propertyName)
+    public static int? GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
         return int.TryParse(str, out var ret) ? ret : null;
@@ -644,9 +676,88 @@ public static class CardExtensions
     /// <param name="info">Card to acesss</param>
     /// <param name="propertyName">Property name to get value of</param>
     /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float</returns>
-    public static float? GetExtenededPropertyAsFloat(this CardInfo info, string propertyName)
+    public static float? GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
         return float.TryParse(str, out var ret) ? ret : null;
+    }
+
+    /// <summary>
+    /// Gets a custom property as a boolean (can be null)
+    /// </summary>
+    /// <param name="info">Card to acesss</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean</returns>
+    public static bool? GetExtendedPropertyAsBool(this CardInfo info, string propertyName)
+    {
+        info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
+        return bool.TryParse(str, out var ret) ? ret : null;
+    }
+
+    /// <summary>
+    /// Sets the mod guid that was derived from the call stack
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="modGuid">Mod Guid</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    internal static CardInfo SetModTag(this CardInfo info, string modGuid)
+    {
+        info.SetExtendedProperty("CallStackModGUID", modGuid);
+        return info;
+    }
+
+    /// <summary>
+    /// Gets the GUID of the mod that created this card
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>The ID of the mod that created this card, or null if it wasn't found</returns>
+    public static string GetModTag(this CardInfo info)
+    {
+        return info.GetExtendedProperty("CallStackModGUID");
+    }
+
+    /// <summary>
+    /// Sets the mod prefix for the card
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="modGuid">Mod prefix</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    internal static CardInfo SetModPrefix(this CardInfo info, string modPrefix)
+    {
+        info.SetExtendedProperty("ModPrefix", modPrefix);
+        return info;
+    }
+
+    /// <summary>
+    /// Gets the card name prefix for this card
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>The mod prefix for this card, or null if it wasn't found</returns>
+    public static string GetModPrefix(this CardInfo info)
+    {
+        return info.GetExtendedProperty("ModPrefix");
+    }
+
+    /// <summary>
+    /// Sets an indicator of whether this is a base game card or not
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="modGuid">Mod prefix</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    internal static CardInfo SetBaseGameCard(this CardInfo info, bool isBaseGameCard=true)
+    {
+        info.SetExtendedProperty("BaseGameCard", isBaseGameCard);
+        return info;
+    }
+
+    /// <summary>
+    /// Indicates if this is a base game card or not
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>True of this card came from the base game; false otherwise/returns>
+    public static bool IsBaseGameCard(this CardInfo info)
+    {
+        bool? isBGC = info.GetExtendedPropertyAsBool("BaseGameCard");
+        return isBGC.HasValue && isBGC.Value;
     }
 }
