@@ -59,8 +59,9 @@ public static class TypeManager
     {
         InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id from callstack");
 
-        if (ModIds.ContainsKey(callingAssembly.FullName))
-            return ModIds[callingAssembly.FullName];
+        string cacheVal = GetModIdFromAssembly(callingAssembly);
+        if (!string.IsNullOrEmpty(cacheVal))
+            return cacheVal;
 
         StackTrace trace = new StackTrace();
         foreach (var frame in trace.GetFrames())
