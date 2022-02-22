@@ -71,7 +71,7 @@ public static class NodeManager
     /// <param name="nodeType">Flags to indicate where the node should appear on the map</param>
     /// <typeparam name="S">Implements the sequence logic for the special node</typeparam>
     /// <returns>The internal representation of this node</returns>
-    public static NodeInfo Add<S>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : ICustomNodeSequence
+    public static NodeInfo Add<S>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : ManagedBehaviour, ICustomNodeSequence
     {
         return NodeManager.Add<S, CustomNodeData>(animatedMapNode, nodeType);
     }
@@ -84,7 +84,7 @@ public static class NodeManager
     /// <typeparam name="S">Implements the sequence logic for the special node</typeparam>
     /// <typeparam name="N">Implements the custom data and map generation logic for the special node</typeparam>
     /// <returns>The internal representation of this node</returns>
-    public static NodeInfo Add<S, N>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : ICustomNodeSequence where N : CustomNodeData
+    public static NodeInfo Add<S, N>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : ManagedBehaviour, ICustomNodeSequence where N : CustomNodeData
     {
         if (animatedMapNode.Length != 4)
             throw new InvalidDataException($"There must be exactly four animated map textures");
