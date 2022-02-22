@@ -70,6 +70,9 @@ public static class CardManager
         {
             InscryptionAPIPlugin.Logger.LogDebug($"Working on mod prefix for {group.ModId}");
 
+            if (string.IsNullOrEmpty(group.ModId))
+                continue;
+
             if (group.ModId.Equals("MADH.inscryption.JSONLoader", StringComparison.OrdinalIgnoreCase))
             {
                 // This is a special case, but this is the most logical way to handle this
