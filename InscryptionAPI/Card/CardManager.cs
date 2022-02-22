@@ -145,7 +145,12 @@ public static class CardManager
         newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
 
         newCard.SetModPrefix(modPrefix);
-        newCard.SetModTag(TypeManager.GetModIdFromCallstack(Assembly.GetCallingAssembly()));
+
+        if (string.IsNullOrEmpty(newCard.GetModTag()))
+        {
+            Assembly callingAssembly = Assembly.GetCallingAssembly();
+            newCard.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
+        }
 
         if (!NewCards.Contains(newCard)) 
             NewCards.Add(newCard); 
@@ -157,6 +162,9 @@ public static class CardManager
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
         retval.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
         retval.SetBasic(displayName, attack, health, description);
+        
+        Assembly callingAssembly = Assembly.GetCallingAssembly();
+        retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
 
         Add(retval, modPrefix:modPrefix);
 
@@ -190,18 +198,16 @@ public static class CardManager
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
-    [HarmonyPrefix]
-    private static bool ClonePrefix(CardInfo __instance, ref object __result)
+    [HarmonyPostfix]
+    private static void ClonePrefix(CardInfo __instance, ref object __result)
     {
-        // so, this patch actually does two things.
-        // first, it fixes clone to *actually* clone with scriptableobject, not memberwise
         // then it ensures that every clone has the same CardExt attached to it
-        CardInfo ret = ScriptableObject.Instantiate<CardInfo>(__instance);
-        ret.name = __instance.name;
-        ExtensionProperties.Add(ret as CardInfo, ExtensionProperties.GetOrCreateValue(__instance));
-        ret.Mods = new List<CardModificationInfo>();
-        __result = ret;
-        return false;
+        //CardInfo ret = ScriptableObject.Instantiate<CardInfo>(__instance);
+        //ret.name = __instance.name;
+        ExtensionProperties.Add(__result as CardInfo, ExtensionProperties.GetOrCreateValue(__instance));
+        //ret.Mods = new List<CardModificationInfo>();
+        //__result = ret;
+        //return false;
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

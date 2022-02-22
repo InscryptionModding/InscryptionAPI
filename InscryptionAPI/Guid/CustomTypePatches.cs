@@ -30,14 +30,14 @@ public static class TypeManager
         Add(key, value);
     }
 
-    private static Dictionary<Assembly, string> ModIds = new();
+    private static Dictionary<string, string> ModIds = new();
 
     private static string GetModIdFromAssembly(Assembly assembly)
     {
         InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id for assembly {assembly.FullName}");
 
-        if (ModIds.ContainsKey(assembly))
-            return ModIds[assembly];
+        if (ModIds.ContainsKey(assembly.FullName))
+            return ModIds[assembly.FullName];
 
         foreach (var t in assembly.GetTypes())
         {
@@ -46,22 +46,21 @@ public static class TypeManager
                 if (d.GUID == InscryptionAPIPlugin.ModGUID)
                     continue;
                     
-                ModIds.Add(assembly, d.GUID);
+                ModIds.Add(assembly.FullName, d.GUID);
                 return d.GUID;
             }
         }
 
-        ModIds.Add(assembly, default(string));
+        ModIds.Add(assembly.FullName, default(string));
         return default(string);
     }
 
-    public static string GetModIdFromCallstack(Assembly assembly)
+    public static string GetModIdFromCallstack(Assembly callingAssembly)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id from callstack starting with assembly {assembly.FullName}");
+        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id from callstack");
 
-        string retval = GetModIdFromAssembly(assembly);
-        if (!string.IsNullOrEmpty(retval))
-            return retval;
+        if (ModIds.ContainsKey(callingAssembly.FullName))
+            return ModIds[callingAssembly.FullName];
 
         StackTrace trace = new StackTrace();
         foreach (var frame in trace.GetFrames())
