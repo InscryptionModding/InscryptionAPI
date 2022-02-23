@@ -81,7 +81,7 @@ namespace API.Patches
 	{
 		public static bool Prefix(ref Type __result, string typeName)
 		{
-			Type t = NewTalkingCard.types.Find(type => type.Name == typeName);
+			Type t = NewTalkingCard.Types.Find(type => type.Name == typeName);
 			if (t != null)
 			{
 				__result = t;
