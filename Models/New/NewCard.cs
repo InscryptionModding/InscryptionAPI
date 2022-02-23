@@ -237,14 +237,13 @@ namespace APIPlugin
 				defaultTex.name = newName;
 				defaultTex.filterMode = FilterMode.Point;
 
-				card.portraitTex = Sprite.Create(defaultTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+				card.portraitTex = Sprite.Create(defaultTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = newName;
 				if (emissionTex is not null)
 				{
 					emissionTex.name = newName + "_emission";
 					emissionTex.filterMode = FilterMode.Point;
-					Sprite emissionSprite =
-						Sprite.Create(emissionTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+					Sprite emissionSprite = Sprite.Create(emissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 					emissionSprite.name = newName + "_emission";
 					emissions.Add(newName, emissionSprite);
 				}
@@ -255,7 +254,7 @@ namespace APIPlugin
 				altTex.name = newName;
 				altTex.filterMode = FilterMode.Point;
 
-				card.alternatePortrait = Sprite.Create(altTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = newName;
 			}
 
@@ -265,7 +264,7 @@ namespace APIPlugin
 				pixelTex.filterMode = FilterMode.Point;
 
 				card.pixelPortrait =
-					Sprite.Create(pixelTex, ImageUtils.DefaultCardPixelArtRect, ImageUtils.DefaultVector2Pivot);
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = newName;
 			}
 		}
@@ -276,19 +275,16 @@ namespace APIPlugin
 			{
 				card.appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
 			}
-
 			Sprite mainSprite = Sprite.Create(card.portraitTex.texture, card.portraitTex.rect, new Vector2(0.5f, 0f));
 
 			Sprite empty = Sprite.Create(mainSprite.texture, new Rect(0, 0, 0, 0), new Vector2(0.5f, 0.5f));
 
 			GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Cards/AnimatedPortraits/TalkingCardPortrait"));
-			obj.transform.localScale = new Vector3(obj.transform.localScale.x * 0.9f, obj.transform.localScale.y * 0.9f,
-				obj.transform.localScale.z * 0.9f);
+			obj.transform.localScale = new Vector3(obj.transform.localScale.x * 0.9f, obj.transform.localScale.y * 0.9f, obj.transform.localScale.z * 0.9f);
 			DontDestroyOnLoad(obj);
 
 			CharacterFace face = obj.GetComponentInChildren<CharacterFace>();
-			List<EmotionSprites> emotes = (List<EmotionSprites>)face.GetType()
-				.GetField("emotionSprites", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(face);
+			List<EmotionSprites> emotes = (List<EmotionSprites>) face.GetType().GetField("emotionSprites", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(face);
 
 			emotes.Clear();
 			emotes.Add(new EmotionSprites()

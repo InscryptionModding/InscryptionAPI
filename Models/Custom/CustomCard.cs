@@ -8,11 +8,11 @@ namespace APIPlugin
 	{
 		public static List<CustomCard> cards = new();
 
-		public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
+		public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
 		public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
-		public static Dictionary<int, EvolveIdentifier> evolveIds = new();
-		public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
-		public static Dictionary<int, TailIdentifier> tailIds = new();
+		public static Dictionary<int,EvolveIdentifier> evolveIds = new();
+		public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new();
+		public static Dictionary<int,TailIdentifier> tailIds = new();
 
 		public static Dictionary<string, Sprite> emissions = new();
 
@@ -51,11 +51,11 @@ namespace APIPlugin
 
 		public CustomCard(
 			string name,
-			List<AbilityIdentifier> abilityIdParam = null,
-			List<SpecialAbilityIdentifier> specialAbilityIdParam = null,
-			EvolveIdentifier evolveId = null,
-			IceCubeIdentifier iceCubeId = null,
-			TailIdentifier tailId = null)
+			List<AbilityIdentifier> abilityIdParam=null,
+			List<SpecialAbilityIdentifier> specialAbilityIdParam=null,
+			EvolveIdentifier evolveId=null,
+			IceCubeIdentifier iceCubeId=null,
+			TailIdentifier tailId=null)
 		{
 			this.name = name;
 			CustomCard.cards.Add(this);
@@ -94,22 +94,21 @@ namespace APIPlugin
 		{
 			TypeMapper<CustomCard, CardInfo>.Convert(this, card);
 			Plugin.Log.LogDebug($"Finished TypeMapping for card [{card.name}]!");
-
+			
 			Plugin.Log.LogDebug($"Checking default tex is not null...");
 			if (this.tex is not null)
 			{
 				Plugin.Log.LogDebug($"Default tex is not null, setting fields...");
 				tex.name = "portrait_" + name;
 				tex.filterMode = FilterMode.Point;
-				card.portraitTex = Sprite.Create(tex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+				card.portraitTex = Sprite.Create(tex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.portraitTex.name = "portrait_" + name;
 				if (this.emissionTex is not null)
 				{
 					Plugin.Log.LogDebug($"Emission tex is not null, setting fields...");
 					emissionTex.name = tex.name + "_emission";
 					emissionTex.filterMode = FilterMode.Point;
-					Sprite emissionSprite =
-						Sprite.Create(emissionTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+					Sprite emissionSprite = Sprite.Create(emissionTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 					emissionSprite.name = tex.name + "_emission";
 					emissions.Add(tex.name, emissionSprite);
 				}
@@ -121,7 +120,7 @@ namespace APIPlugin
 				Plugin.Log.LogDebug($"--> AltTex is not null, setting fields...");
 				altTex.name = "portrait_" + name;
 				altTex.filterMode = FilterMode.Point;
-				card.alternatePortrait = Sprite.Create(altTex, ImageUtils.DefaultCardArtRect, ImageUtils.DefaultVector2Pivot);
+				card.alternatePortrait = Sprite.Create(altTex, CardUtils.DefaultCardArtRect, CardUtils.DefaultVector2);
 				card.alternatePortrait.name = "portrait_" + name;
 			}
 
@@ -132,7 +131,7 @@ namespace APIPlugin
 				pixelTex.name = "portrait_" + name;
 				pixelTex.filterMode = FilterMode.Point;
 				card.pixelPortrait =
-					Sprite.Create(pixelTex, ImageUtils.DefaultCardPixelArtRect, ImageUtils.DefaultVector2Pivot);
+					Sprite.Create(pixelTex, CardUtils.DefaultCardPixelArtRect, CardUtils.DefaultVector2);
 				card.pixelPortrait.name = "portrait_" + name;
 			}
 
