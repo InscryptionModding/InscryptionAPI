@@ -1,3 +1,4 @@
+
 # API
 ## Inscryption API made by Cyantist
 
@@ -9,7 +10,7 @@ It can currently:
 - Create custom abilities and inject them into the ability pool
 - Reference abilities between mods
 - Create custom regions and encounters
-- Create talking cards with animated portraits and add dialogues
+- Create talking cards and add dialogues
 - Enable energy
 
 ## Installation (automated)
@@ -52,10 +53,11 @@ At the moment I am working on:
 
  - Adding comments
  - Documentation
+ - Custom special abilities
 
 The next planned features for this plugin are:
 
-- Extending the loader to handle and load custom boons and items.
+ - Extending the loader to handle and load custom ~~abilities,~~ boons and items.
 
 ## Contribution
 ### How can you help?
