@@ -11,7 +11,7 @@ namespace API.Patches
 	{
 		public static void Prefix()
 		{
-			if (ScriptableObjectLoader<CardInfo>.allData == null)
+			if (!Plugin.CardsLoaded)
 			{
 				List<CardInfo> official = ScriptableObjectLoader<CardInfo>.AllData;
 				foreach (CustomCard card in CustomCard.cards)
@@ -32,7 +32,7 @@ namespace API.Patches
 				Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
 			}
 
-			if (ScriptableObjectLoader<AbilityInfo>.allData == null)
+			if (!Plugin.AbilitiesLoaded)
 			{
 				List<AbilityInfo> official = ScriptableObjectLoader<AbilityInfo>.AllData;
 				foreach (NewAbility newAbility in NewAbility.abilities)

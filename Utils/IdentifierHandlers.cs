@@ -6,10 +6,16 @@ namespace APIPlugin
 {
   public partial class Plugin
   {
+    private static bool cardsLoaded = false;
+
+    public static bool CardsLoaded { get => cardsLoaded; set => cardsLoaded = value; }
+
+    private static bool abilitiesLoaded = false;
+
+    public static bool AbilitiesLoaded { get => abilitiesLoaded; set => abilitiesLoaded = value; }
+
     private void SetAbilityIdentifiers()
     {
-      ImportCustomAbilities();
-
       Log.LogDebug($"Number of ability IDs to set from NewCard.abilityIds: [{NewCard.abilityIds.Count}]");
       foreach(var item in NewCard.abilityIds)
       {
@@ -49,54 +55,6 @@ namespace APIPlugin
           }
         }
       }
-      
-      ImportCustomCards();
-    }
-
-    private static void ImportCustomAbilities()
-    {
-      Plugin.Log.LogDebug($"Starting pre-emptive data load for AbilityInfo before adding custom abilities...");
-      List<AbilityInfo> officialAbilityInfo = ScriptableObjectLoader<AbilityInfo>.AllData;
-
-      foreach (NewAbility newAbility in NewAbility.abilities)
-      {
-        officialAbilityInfo.Add(newAbility.info);
-        Plugin.Log.LogDebug($"Official ability list now contains [{newAbility.info.rulebookName}]!");
-      }
-
-      ScriptableObjectLoader<AbilityInfo>.allData = officialAbilityInfo;
-      Plugin.Log.LogInfo($"Loaded {NewAbility.abilities.Count} custom abilities into data! " +
-                         $"Total of [{ScriptableObjectLoader<AbilityInfo>.allData.Count}]");
-    }
-
-    private static void ImportCustomCards()
-    {
-      Plugin.Log.LogDebug($"Starting pre-emptive data load for CardInfo before adding modified and new cards...");
-      List<CardInfo> officialCardInfo = ScriptableObjectLoader<CardInfo>.AllData;
-      Plugin.Log.LogDebug($"CustomCards count [{CustomCard.cards.Count}] NewCard.cards count [{NewCard.cards.Count}]");
-      foreach (CustomCard card in CustomCard.cards)
-      {
-        int index = officialCardInfo.FindIndex((CardInfo x) => x.name == card.name);
-        if (index == -1)
-        {
-          Plugin.Log.LogWarning($"Could not find card {card.name} to modify");
-        }
-        else
-        {
-          officialCardInfo[index] = card.AdjustCard(officialCardInfo[index]);
-          Plugin.Log.LogInfo($"Loaded modified [{card.name}] into data");
-        }
-      }
-
-      ScriptableObjectLoader<CardInfo>.allData = officialCardInfo.Concat(
-        NewCard.cards.Select(cardInfo =>
-          {
-            Log.LogInfo($"Loaded custom card to card pool: [{cardInfo.name}]");
-            return cardInfo; 
-          }
-        )
-      ).ToList();
-      Plugin.Log.LogInfo($"Loaded {NewCard.cards.Count} custom cards into data");
     }
 
     private void SetSpecialAbilityIdentifiers()
