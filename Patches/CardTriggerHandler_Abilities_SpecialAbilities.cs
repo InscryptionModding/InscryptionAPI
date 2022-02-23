@@ -18,8 +18,7 @@ namespace API.Patches
 
 			Plugin.Log.LogDebug($"Attempting to add regular ability in card trigger handler [{ability}]");
 			// return true if the ability is equal to the ability in the pair OR if ability cannot stack and is passive
-			if (!__instance.triggeredAbilities.Exists(tuple => tuple.Item1 == ability) ||
-			    AbilityCanStackAndIsNotPassive(ability))
+			if (!__instance.triggeredAbilities.Exists(tuple => tuple.Item1 == ability) || AbilityCanStackAndIsNotPassive(ability))
 			{
 				Plugin.Log.LogDebug($"-> Ability [{ability}] does not exist, adding...");
 				NewAbility newAbility = NewAbility.abilities.Find(x => x.ability == ability);
@@ -44,7 +43,7 @@ namespace API.Patches
 			return AbilitiesUtil.GetInfo(ability).canStack && !AbilitiesUtil.GetInfo(ability).passive;
 		}
 	}
-
+	
 	[HarmonyPatch(typeof(CardTriggerHandler), "AddAbility", typeof(SpecialTriggeredAbility))]
 	public class CardTriggerHandler_AddAbility_SpecialTriggeredAbility
 	{
@@ -55,7 +54,6 @@ namespace API.Patches
 			{
 				return true;
 			}
-
 			if (!__instance.specialAbilities.Exists(ab => ab.Item1 == ability))
 			{
 				Plugin.Log.LogDebug($"-> Special ability [{ability}] does not exist, adding...");
@@ -83,7 +81,7 @@ namespace API.Patches
 	{
 		public static bool Prefix(ref Type __result, string typeName)
 		{
-			Type t = NewTalkingCard.Types.Find(type => type.Name == typeName);
+			Type t = NewTalkingCard.types.Find(type => type.Name == typeName);
 			if (t != null)
 			{
 				__result = t;
