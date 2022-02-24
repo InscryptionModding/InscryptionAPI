@@ -3,6 +3,7 @@
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using System.Runtime.CompilerServices;
@@ -27,6 +28,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configDroneMox;
 
     internal static ConfigEntry<bool> rightAct2Cost;
+
+    internal static ConfigEntry<bool> printAllCards;
 
     static InscryptionAPIPlugin()
     {
@@ -65,8 +68,13 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     public void Start()
     {
+        CardManager.ResolveMissingModPrefixes();
         CardManager.SyncCardList();
         AbilityManager.SyncAbilityList();
+
+        if (printAllCards.Value)
+            foreach (CardInfo card in CardManager.AllCardsCopy.Where(ci => !ci.IsBaseGameCard()))
+                Logger.LogDebug($"Card [{card.name}] Mod: {card.GetModTag()}, Prefix: {card.GetModPrefix()}");
     }
 
     public void Awake()
@@ -77,5 +85,6 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
         rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
+        printAllCards = Config.Bind("Debug","Log All New Cards",true,"If true, write all of the new cards to the log on start");
     }
 }

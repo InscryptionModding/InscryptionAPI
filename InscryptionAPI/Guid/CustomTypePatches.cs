@@ -2,6 +2,10 @@ using HarmonyLib;
 using DiskCardGame;
 using InscryptionAPI.Card;
 using System.Runtime.CompilerServices;
+using System.Reflection;
+using System.Diagnostics;
+using BepInEx;
+using BepInEx.Bootstrap;
 
 namespace InscryptionAPI.Guid;
 
@@ -24,6 +28,50 @@ public static class TypeManager
             TypeCache.Remove(key);
 
         Add(key, value);
+    }
+
+    private static Dictionary<string, string> ModIds = new();
+
+    private static string GetModIdFromAssembly(Assembly assembly)
+    {
+        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id for assembly {assembly.FullName}");
+
+        if (ModIds.ContainsKey(assembly.FullName))
+            return ModIds[assembly.FullName];
+
+        foreach (var t in assembly.GetTypes())
+        {
+            foreach (var d in t.GetCustomAttributes<BepInPlugin>())
+            {
+                if (d.GUID == InscryptionAPIPlugin.ModGUID)
+                    continue;
+                    
+                ModIds.Add(assembly.FullName, d.GUID);
+                return d.GUID;
+            }
+        }
+
+        ModIds.Add(assembly.FullName, default(string));
+        return default(string);
+    }
+
+    public static string GetModIdFromCallstack(Assembly callingAssembly)
+    {
+        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id from callstack");
+
+        string cacheVal = GetModIdFromAssembly(callingAssembly);
+        if (!string.IsNullOrEmpty(cacheVal))
+            return cacheVal;
+
+        StackTrace trace = new StackTrace();
+        foreach (var frame in trace.GetFrames())
+        {
+            string newVal = GetModIdFromAssembly(frame.GetMethod().DeclaringType.Assembly);
+            if (!string.IsNullOrEmpty(newVal))
+                return newVal;
+        }
+
+        return default(string);
     }
 
 
