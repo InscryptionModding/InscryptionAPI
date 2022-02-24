@@ -197,15 +197,10 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
     [HarmonyPostfix]
-    private static void ClonePrefix(CardInfo __instance, ref object __result)
+    private static void ClonePostfix(CardInfo __instance, object __result)
     {
-        // then it ensures that every clone has the same CardExt attached to it
-        //CardInfo ret = ScriptableObject.Instantiate<CardInfo>(__instance);
-        //ret.name = __instance.name;
-        ExtensionProperties.Add(__result as CardInfo, ExtensionProperties.GetOrCreateValue(__instance));
-        //ret.Mods = new List<CardModificationInfo>();
-        //__result = ret;
-        //return false;
+        // just ensures that clones of a card have the same extension properties
+        ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
