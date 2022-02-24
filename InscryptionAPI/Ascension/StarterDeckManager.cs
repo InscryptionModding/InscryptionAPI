@@ -28,16 +28,14 @@ public static class StarterDeckManager
     private static List<FullStarterDeck> GetBaseGameDecks()
     {
         List<StarterDeckInfo> decks = new(Resources.LoadAll<StarterDeckInfo>("Data/Ascension/StarterDecks"));
-        InscryptionAPIPlugin.Logger.LogDebug($"Known starter decks: {String.Join(",", decks.Select(asci => asci.name))}");
-
+        
         GameObject screen = Resources.Load<GameObject>("prefabs/ui/ascension/AscensionStarterDeckScreen");
         Transform iconContainer = screen.transform.Find("Icons");
         List<FullStarterDeck> retval = new ();
         for (int i = 1; i <= 8; i++)
         {
             AscensionStarterDeckIcon icon = iconContainer.Find($"StarterDeckIcon_{i}").gameObject.GetComponent<AscensionStarterDeckIcon>();
-            InscryptionAPIPlugin.Logger.LogDebug($"Looking for deck named {icon.Info.name}");
-
+            
             FullStarterDeck fdeck = new() { Info = decks.First(d => d.name == icon.Info.name), UnlockLevel = -1 };
             fdeck.CardNames = fdeck.Info.cards.Select(ci => ci.name).ToList();
             retval.Add(fdeck);

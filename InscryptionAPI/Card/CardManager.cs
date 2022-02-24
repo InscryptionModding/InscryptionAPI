@@ -36,7 +36,6 @@ public static class CardManager
 
     public static void SyncCardList()
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Synchronizing card list");
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
         AllCardsCopy = ModifyCardList?.Invoke(cards) ?? cards;
     }
@@ -63,13 +62,9 @@ public static class CardManager
 
     internal static void ResolveMissingModPrefixes()
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Resolving mod prefixes");
-
         // Group all cards by the mod guid
         foreach (var group in NewCards.Where(ci => !ci.IsBaseGameCard()).GroupBy(ci => ci.GetModTag(), ci => ci, (key, g) => new { ModId = key, Cards = g.ToList() }))
         {
-            InscryptionAPIPlugin.Logger.LogDebug($"Working on mod prefix for {group.ModId}");
-
             if (string.IsNullOrEmpty(group.ModId))
                 continue;
 

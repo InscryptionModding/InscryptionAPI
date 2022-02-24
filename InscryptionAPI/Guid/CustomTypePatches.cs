@@ -34,8 +34,6 @@ public static class TypeManager
 
     private static string GetModIdFromAssembly(Assembly assembly)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id for assembly {assembly.FullName}");
-
         if (ModIds.ContainsKey(assembly.FullName))
             return ModIds[assembly.FullName];
 
@@ -57,8 +55,6 @@ public static class TypeManager
 
     public static string GetModIdFromCallstack(Assembly callingAssembly)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Trying to get mod id from callstack");
-
         string cacheVal = GetModIdFromAssembly(callingAssembly);
         if (!string.IsNullOrEmpty(cacheVal))
             return cacheVal;

@@ -35,25 +35,17 @@ public static class AscensionChallengeScreenPatches
     [HarmonyPostfix]
     public static void AddPaginationToChallengeScreen()
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"Creating Paginator");
-
         AscensionChallengePaginator paginator = AscensionMenuScreens.Instance.selectChallengesScreen.GetComponent<AscensionChallengePaginator>();
         if (paginator == null)
             paginator = AscensionMenuScreens.Instance.selectChallengesScreen.AddComponent<AscensionChallengePaginator>();
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Getting pseudo prefabs");
-
         GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
         GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Getting icon grid");
 
         GameObject challengeIconGrid = AscensionMenuScreens.Instance.selectChallengesScreen.transform.Find("Icons/ChallengeIconGrid").gameObject;
 
         GameObject topRow = challengeIconGrid.transform.Find("TopRow").gameObject;
         GameObject bottomRow = challengeIconGrid.transform.Find("BottomRow").gameObject;
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Initializing data");
 
         paginator.topRow = new List<AscensionIconInteractable>();
         paginator.bottomRow = new List<AscensionIconInteractable>();
@@ -65,7 +57,6 @@ public static class AscensionChallengeScreenPatches
 
         paginator.GeneratePages();
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Getting pagination controllers");
         var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform);
 
         AscensionMenuInteractable leftController = pageTuple.Item1;
@@ -74,7 +65,6 @@ public static class AscensionChallengeScreenPatches
         Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.ChallengePageLeft(i);
         Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.ChallengePageRight(i);
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Setting click actions");
         leftController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(leftController.CursorSelectStarted, leftClickAction);
         rightController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(rightController.CursorSelectStarted, rightClickAction);
 

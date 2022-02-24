@@ -27,27 +27,16 @@ public static class ChallengeManager
 
         GameObject screen = Resources.Load<GameObject>("prefabs/ui/ascension/AscensionChallengesScreen");
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Challenge manager init - loaded screen {screen}");
-
         GameObject challengeIconGrid = screen.transform.Find("Icons/ChallengeIconGrid").gameObject;
 
         GameObject topRow = challengeIconGrid.transform.Find("TopRow").gameObject;
         GameObject bottomRow = challengeIconGrid.transform.Find("BottomRow").gameObject;
 
-        InscryptionAPIPlugin.Logger.LogDebug($"Initializing challenge data from toprow {topRow} bottomrow {bottomRow}:");
-
         List<AscensionChallengeInfo> retval = new();
         for (int i = 1; i <= 7; i++)
         {
-            InscryptionAPIPlugin.Logger.LogDebug($"Top icon {i}: icon = {topRow.transform.Find($"Icon_{i}")}");
-            InscryptionAPIPlugin.Logger.LogDebug($"Top icon {i}: component = {topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>()}");
-            InscryptionAPIPlugin.Logger.LogDebug($"Top icon {i}: info = {topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>().Info}");
             AscensionChallenge icon = topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
             retval.Add(infos.First(i => i.challengeType == icon));
-
-            InscryptionAPIPlugin.Logger.LogDebug($"Bottom icon {i}: icon = {bottomRow.transform.Find($"Icon_{i+7}")}");
-            InscryptionAPIPlugin.Logger.LogDebug($"Bottom icon {i}: component = {bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>()}");
-            InscryptionAPIPlugin.Logger.LogDebug($"TBottomop icon {i}: info = {bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>().Info}");
 
             AscensionChallenge icon2 = bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
 
@@ -56,8 +45,6 @@ public static class ChallengeManager
             else
                 retval.Add(infos.First(i => i.challengeType == icon2));
         }
-
-        InscryptionAPIPlugin.Logger.LogDebug($"Initializing challenge data: {String.Join(",", retval.Select(i => i.challengeType.ToString()))}");
 
         return retval;
     }
