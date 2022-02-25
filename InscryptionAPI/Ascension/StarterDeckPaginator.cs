@@ -98,7 +98,6 @@ public class StarterDeckPaginator : MonoBehaviour
     {
         StarterDeckManager.SyncDeckList();
         starterDeckPageIndex = 0;
-        InscryptionAPIPlugin.Logger.LogDebug($"Starter Deck Screen On Enable. {string.Join(",", StarterDeckManager.AllDeckInfos.Select(a => a.name))}");
         GeneratePages();
         ShowVisibleStarterDecks();
     }
