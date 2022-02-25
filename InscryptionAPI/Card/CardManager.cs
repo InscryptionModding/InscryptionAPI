@@ -221,11 +221,24 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.GetCardByName))]
     [HarmonyPrefix]
-    private static bool GetNonGuidName(string name, ref CardInfo __result)
+    private static bool GetNonGuidName(string name, out CardInfo __result)
     {
-        CardInfo retval = CardManager.AllCardsCopy.FirstOrDefault(ci => ci.name == name);
-        if (retval == null)
-            retval = CardManager.AllCardsCopy.FirstOrDefault(ci => ci.name.EndsWith($"_{name}"));
-        return CardLoader.Clone(retval);
+        CardInfo backup = null;
+        foreach (var card in AllCardsCopy)
+        {
+            var cardName = card.name;
+            if (cardName == name)
+            {
+                __result = card;
+                return false;
+            }
+            else if (backup is null && cardName.EndsWith("_" + name))
+            {
+                backup = card;
+            }
+        }
+
+        __result = backup;
+        return false;
     }
 }
