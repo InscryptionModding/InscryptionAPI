@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using MonoMod.Cil;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -240,5 +241,19 @@ public static class CardManager
 
         __result = CardLoader.Clone(retVal);
         return false;
+    }
+
+    [HarmonyILManipulator]
+    [HarmonyPatch(typeof(ConceptProgressionTree), nameof(ConceptProgressionTree.CardUnlocked))]
+    private static void FixCardUnlocked(ILContext il)
+    {
+        ILCursor c = new(il);
+
+        c.GotoNext(MoveType.Before,
+            x => x.MatchCallOrCallvirt(AccessTools.Method(typeof(UnityObject), "op_Equality", new Type[] { typeof(UnityObject), typeof(UnityObject) }))
+        );
+
+        c.Remove();
+        c.EmitDelegate<Func<CardInfo, CardInfo, bool>>(static (c1, c2) => c1.name == c2.name);
     }
 }
