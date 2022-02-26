@@ -91,6 +91,24 @@ The API does provide a number of helper methods to make this process simpler for
 
 ## Tweaks
 
+### Custom card costs
+
+If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel cards), you can simply hook into one of the following events:
+
+```c#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
+    if (myCustomCost > 0)
+        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}.png"));
+}
+```
+
+Card costs for Act 1 cards must be exactly 64x28 pixels. Card costs for Pixel cards (GBC) must be exactly 30x8 pixels.
+
 ### Energy Drone in Act One/Kaycee's Mod
 
 With the API installed, the energy management drone can be made available in Act 1 and in Kaycee's Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.

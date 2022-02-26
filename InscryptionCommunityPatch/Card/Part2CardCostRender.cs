@@ -16,6 +16,8 @@ public static class Part2CardCostRender
 	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
 	// And makes the card costs take up a smaller amount of space on the card, showing off more art.
 
+    public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
+
     private static Dictionary<string, Texture2D> AssembledTextures = new();
 
     public static Texture2D GetFinalTexture(int cardCost, Texture2D artCost, bool left)
@@ -83,6 +85,9 @@ public static class Part2CardCostRender
 
             masterList.Add(TextureHelper.CombineTextures(gemCost, gemBaseTexture, xOffset:left ? 0 : 30 - 7 * gemCost.Count, xStep:7));
         }
+
+        // Call the event and allow others to modify the list of textures
+		UpdateCardCost?.Invoke(card, masterList);
 
         while (masterList.Count < 4)
             masterList.Add(null);
