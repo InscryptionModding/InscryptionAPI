@@ -10,55 +10,110 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.ResourceManagers;
 
 [HarmonyPatch]
-public static class ActOneEnergyDrone
+public static class EnergyDrone
 {
-    public class ActOneEnergyConfig
+    public class EnergyConfigInfo
     {
-        public bool configEnergy { get; private set; }
-        public bool configDrone { get; private set; }
-        public bool configMox { get; private set; }
-        public bool configDroneMox { get; private set; }
-
-        public static bool CardVisibleInActOne(CardInfo info)
-        {
-            if (info.temple != CardTemple.Nature) // Non-nature cards can't be selected in Act 1
-                return false;
-
-            // Now we check metacategories
-            // If the card's metacategories are set such that it can't actually appear, don't count it
-            return (info.metaCategories.Contains(CardMetaCategory.ChoiceNode) || 
-                    info.metaCategories.Contains(CardMetaCategory.TraderOffer) || 
-                    info.metaCategories.Contains(CardMetaCategory.Rare));
+        private bool _configEnergyOverride = false;
+        public bool ConfigEnergy
+        { 
+            get
+            {
+                return EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
+            }
+            set { _configEnergyOverride = value; }
         }
 
-        public ActOneEnergyConfig()
+        private bool _configDroneOverride = false;
+        public bool ConfigDrone
         {
-            // Check the entire pool of cards for mox and energy
-            bool poolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && CardVisibleInActOne(ci));
-            bool poolHasMox = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && CardVisibleInActOne(ci));
+            get 
+            {
+                return this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+            }
+            set { _configDroneOverride = value;}
+        }
 
-            configEnergy = poolHasEnergy || PatchPlugin.configEnergy.Value;
-            configMox = poolHasMox || PatchPlugin.configMox.Value;
-            configDroneMox = poolHasMox || PatchPlugin.configDroneMox.Value;
-            configDrone = configDroneMox || poolHasEnergy || PatchPlugin.configDrone.Value;
+        private bool _configMoxOverride = false;
+        public bool ConfigMox
+        { 
+            get
+            {
+                return EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
+            }
+            set { _configMoxOverride = value; }
+        }
 
-            PatchPlugin.Logger.LogDebug($"Act 1 Energy Config: energy {configEnergy}, mox {configMox}, drone {configDroneMox}, drone mox {configDrone}");
+        private bool _configDroneMoxOverride = false;
+        public bool ConfigDroneMox
+        { 
+            get
+            {
+                return this.ConfigMox || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
+            }
+            set { _configDroneMoxOverride = value; }
         }
     }
 
-    public static ActOneEnergyConfig EnergyConfig;
+    public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
+    {
+        { CardTemple.Nature, new() },
+        { CardTemple.Undead, new() },
+        { CardTemple.Tech, new() },
+        { CardTemple.Wizard, new() }
+    };
+
+    private static EnergyConfigInfo EnergyConfig
+    {
+        get
+        {
+            if (SaveManager.SaveFile.IsPart3)
+                return ZoneConfigs[CardTemple.Tech];
+
+            if (SaveManager.SaveFile.IsGrimora)
+                return ZoneConfigs[CardTemple.Undead];
+
+            if (SaveManager.SaveFile.IsMagnificus)
+                return ZoneConfigs[CardTemple.Wizard];
+
+            return ZoneConfigs[CardTemple.Nature];
+        }
+    }
+
+    private static bool PoolHasEnergy { get; set; }
+
+    private static bool PoolHasGems { get; set; }
+
+    private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
+    {
+        if (info.temple != targetTemple) // Non-nature cards can't be selected in Act 1
+            return false;
+
+        // Now we check metacategories
+        // If the card's metacategories are set such that it can't actually appear, don't count it
+        return (info.metaCategories.Contains(CardMetaCategory.ChoiceNode) || 
+                info.metaCategories.Contains(CardMetaCategory.TraderOffer) || 
+                info.metaCategories.Contains(CardMetaCategory.Rare));
+    }
 
     internal static void TryEnableEnergy(string sceneName)
     {
         PatchPlugin.Logger.LogDebug($"Checking to see if I need to enable energy for scene {sceneName}");
 
-        if (sceneName == "Part1_Cabin")
-        {
-            EnergyConfig = new ActOneEnergyConfig();
+        // Check the entire pool of cards for mox and energy
+        CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead : 
+                                  SaveManager.saveFile.IsMagnificus ? CardTemple.Wizard :
+                                  CardTemple.Nature;
 
+
+        PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
+        PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
+
+        if (!SaveManager.SaveFile.IsPart3)
+        {
             UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
-            if(EnergyConfig.configDrone)
+            if(EnergyConfig.ConfigDrone)
                 PatchPlugin.Instance.StartCoroutine(AwakeDrone());
         }
     }
@@ -82,7 +137,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static void ResourceDrone_SetOnBoard(ResourceDrone __instance)
     {
-        if (SaveManager.SaveFile.IsPart1)
+        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsGrimora)
         {
             // These three settings came from playing around with the UnityExplorer plugin
             __instance.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -93,7 +148,7 @@ public static class ActOneEnergyDrone
 
             __instance.gameObject.transform.Find("Anim/Module-Energy/Propellers").gameObject.SetActive(false);
 
-            __instance.Gems.gameObject.SetActive(EnergyConfig.configDroneMox);
+            __instance.Gems.gameObject.SetActive(EnergyConfig.ConfigDroneMox);
         }
     }
 
@@ -102,23 +157,23 @@ public static class ActOneEnergyDrone
 	public static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
         ResourcesManager baseResourceManager = (ResourcesManager)__instance;
-        if (EnergyConfig.configEnergy)
+        if (EnergyConfig.ConfigEnergy)
         {
             baseResourceManager.PlayerEnergy = 0;
             baseResourceManager.PlayerMaxEnergy = 0;
         }
 
-        if (EnergyConfig.configDrone)
+        if (EnergyConfig.ConfigDrone)
         {
             ResourceDrone.Instance.CloseAllCells(false);
             ResourceDrone.Instance.SetOnBoard(false, false);
-            if (EnergyConfig.configDroneMox)
+            if (EnergyConfig.ConfigDroneMox)
             {
                 ResourceDrone.Instance.Gems.SetAllGemsOn(false, false);
             }
         }
 
-        if (EnergyConfig.configMox)
+        if (EnergyConfig.ConfigMox)
         {
             __instance.gems.Clear();
         }
@@ -128,11 +183,11 @@ public static class ActOneEnergyDrone
     [HarmonyPrefix]
 	public static void ResourcesManager_Setup(ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             PatchPlugin.Logger.LogDebug($"Setting up extra resources: drone {ResourceDrone.Instance}");
             ResourceDrone.Instance.SetOnBoard(true, false);
-            if (EnergyConfig.configDroneMox)
+            if (EnergyConfig.ConfigDroneMox)
             {
                 ResourceDrone.Instance.Gems.SetAllGemsOn(false, true);
             }
@@ -143,7 +198,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowAddMaxEnergy(IEnumerator result, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             ResourceDrone.Instance.OpenCell(__instance.PlayerMaxEnergy - 1);
             yield return new WaitForSeconds(0.4f);
@@ -156,7 +211,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int num;
             for (int i = __instance.PlayerEnergy - amount; i < __instance.PlayerEnergy; i = num + 1)
@@ -174,7 +229,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int num;
             for (int i = __instance.PlayerEnergy + amount - 1; i >= __instance.PlayerEnergy; i = num - 1)
@@ -196,7 +251,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowAddGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDroneMox)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
             __instance.SetGemOnImmediate(gem, true);
             yield return new WaitForSeconds(0.05f);
@@ -209,7 +264,7 @@ public static class ActOneEnergyDrone
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowLoseGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.configDroneMox)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
             __instance.SetGemOnImmediate(gem, false);
             yield return new WaitForSeconds(0.05f);
@@ -234,7 +289,7 @@ public static class ActOneEnergyDrone
         // If the game is not going to automatically update the energy, I'll do it
         yield return sequence;
 
-        if (SaveManager.SaveFile.IsPart1 && EnergyConfig.configEnergy && playerUpkeep)
+        if (SaveManager.SaveFile.IsPart1 && EnergyConfig.ConfigEnergy && playerUpkeep)
         {
             bool showEnergyModule = !ResourcesManager.Instance.EnergyAtMax || ResourcesManager.Instance.PlayerEnergy < ResourcesManager.Instance.PlayerMaxEnergy;
             if (showEnergyModule)

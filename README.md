@@ -95,6 +95,19 @@ The API does provide a number of helper methods to make this process simpler for
 
 With the API installed, the energy management drone can be made available in Act 1 and in Kaycee's Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.
 
+You can also force these drones to appear in different areas of the game by overriding the following values.
+
+```c#
+using InscryptionCommunityPatch.ResourceManagers;
+
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the mox drone appear
+```
+
+At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
+
 ### Card cost display
 
 Cards in Act 1 can now display multiple costs at the same time, and can display gem and energy cost in addition to blood and bones cost.

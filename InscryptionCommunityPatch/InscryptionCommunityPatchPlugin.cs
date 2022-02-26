@@ -76,6 +76,6 @@ public class PatchPlugin : BaseUnityPlugin
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        ActOneEnergyDrone.TryEnableEnergy(scene.name);
+        EnergyDrone.TryEnableEnergy(scene.name);
     }
 }
