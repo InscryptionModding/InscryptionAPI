@@ -1,8 +1,10 @@
 
 # API
+
 ## Inscryption API
 
-This plugin is a BepInEx plugin made for Inscryption as an API.
+This plugin is a BepInEx plugin made for Inscryption as an API. This is the de-facto standard API for Inscryption modders.
+
 It can currently create and modify:
 - Cards
 - Abilities
@@ -89,9 +91,40 @@ The API does provide a number of helper methods to make this process simpler for
 
 ## Tweaks
 
+### Custom card costs
+
+If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel cards), you can simply hook into one of the following events:
+
+```c#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
+    if (myCustomCost > 0)
+        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}.png"));
+}
+```
+
+Card costs for Act 1 cards must be exactly 64x28 pixels. Card costs for Pixel cards (GBC) must be exactly 30x8 pixels.
+
 ### Energy Drone in Act One/Kaycee's Mod
 
 With the API installed, the energy management drone can be made available in Act 1 and in Kaycee's Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.
+
+You can also force these drones to appear in different areas of the game by overriding the following values.
+
+```c#
+using InscryptionCommunityPatch.ResourceManagers;
+
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the mox drone appear
+```
+
+At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
 
 ### Card cost display
 
@@ -278,6 +311,32 @@ AbilityManager.New(MyPlugin.guid, "Ability Name", "Ability Description", typeof(
 - **SetDefaultPart1Ability:** Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.
 - **SetDefaultPart3Ability:** Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)
 
+#### How abilities are programmed
+Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.
+
+AbilityBehaviour contains a *lot* of virtual methods. For each event that can happen during a battle, there will be a 'RespondsToXXX' and an 'OnXXX' method that you need to override. The purpose of the 'RespondsToXXX' is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the 'OnXXX' method.
+
+See this example from the base game:
+
+```c#
+public class Sharp : AbilityBehaviour
+{
+    public override Ability Ability => Ability.Sharp;
+
+    public override bool RespondsToTakeDamage(PlayableCard source) => source != null && source.Health > 0;
+
+    public override IEnumerator OnTakeDamage(PlayableCard source)
+    {
+        yield return base.PreSuccessfulTriggerSequence();
+        base.Card.Anim.StrongNegationEffect();
+        yield return new WaitForSeconds(0.55f);
+        yield return source.TakeDamage(1, base.Card);
+        yield return base.LearnAbility(0.4f);
+        yield break;
+    }
+}
+```
+
 ### Special Stat Icons
 
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
@@ -301,6 +360,28 @@ SpecialStatIconManager.Add(MyPlugin.guid, "Stat", "My special stat", typeof(MySt
 
 Because StatIconInfo is so simple, there aren't very many helpers for it.
 
+### How Stat Icons are programmed
+Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.
+
+When you implement a variable stat behavior, you need to implement the abstract method GetStateValues. This method returns an array of integers: the value at index 0 is the variable attack power, and the value at index 1 is the variable health.
+
+Here is an example from the base game:
+
+```c#
+public class BellProximity : VariableStatBehaviour
+{
+    protected override SpecialStatIcon IconType => SpecialStatIcon.Bell;
+
+    protected override int[] GetStatValues()
+    {
+        int num = BoardManager.Instance.PlayerSlotsCopy.Count - base.PlayableCard.Slot.Index;
+        int[] array = new int[2];
+        array[0] = num;
+        return array;
+    }
+}
+```
+
 ### Special Triggered Abilities
 
 Special triggered abilities are a lot like regular abilities; however, they are 'invisible' to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.
@@ -313,6 +394,26 @@ public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbi
 
 And now MyAbilityID can be added to CardInfo objects.
 
+#### How special triggered abilities are programmed
+Special abilities are the same as regular abilities, except they do not have a metadata object associated with them (because they are not described or documented for the player) and the inherit from SpecialCardBehaviour instead of AbilityBehaviour.
+
+Here is an example from the base game:
+
+```c#
+public class TrapSpawner : SpecialCardBehaviour
+{
+    public override bool RespondsToDie(bool wasSacrifice, PlayableCard killer) => base.PlayableCard.OnBoard;
+
+    public override IEnumerator OnDie(bool wasSacrifice, PlayableCard killer)
+    {
+        yield return new WaitForSeconds(0.35f);
+        yield return BoardManager.Instance.CreateCardInSlot(CardLoader.GetCardByName("Trap"), base.PlayableCard.Slot, 0.1f, true);
+        yield return new WaitForSeconds(0.35f);
+        yield break;
+    }
+}
+```
+
 ### Card Appearance Behaviours
 
 These behave the same as special triggered abilities from the perspective of the API.
@@ -321,6 +422,28 @@ Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour
 
 ```c#
 public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour)).Id;
+```
+
+#### How appearance behaviours are programmed
+Appearance behaviours implement CardAppearanceBehaviour. There is an abstract method called ApplyAppearance that you must implement - here you override the default appearance of the card. There are also three other virtual methods: ResetAppearance, OnCardAddedToDeck, and OnPreRenderCard that give other hooks in which you can change the card's appearance.
+
+Here is an example from the base game:
+
+```c#
+public class RedEmission : CardAppearanceBehaviour
+{
+    public override void ApplyAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = true;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowRed);
+    }
+
+    public override void ResetAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = false;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowSeafoam);
+    }
+}
 ```
 
 ## Custom Maps and Encounters
@@ -566,29 +689,21 @@ Once you've written the custom screen class, you need to register it with Ascens
 AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
 
-## Development
-At the moment I am working on:
-
- - Adding comments
- - Documentation
- - Custom special abilities
-
-The next planned features for this plugin are:
-
- - Extending the loader to handle and load custom ~~abilities,~~ boons and items.
-
 ## Contribution
 
 ### How can you help?
-Use the plugin and report bugs you find! Lots of traits won't be designed to work well together and may cause bugs or crashes. At the very least we can document this. Ideally we can create generic patches for them.
+Use the plugin and report bugs you find! Ping us on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) server in the api channel with what you find.
 
 ### But really, I want to help develop this mod
 Great! I'm more than happy to accept help. Either make a pull request or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
 
 ### Can I donate?
-Donations are totally not needed, this is a passion project before anything else. If you do still want to donate though, you can buy me a coffee on [ko-fi](https://ko-fi.com/madcyantist).
+Donations are totally not needed, this is a passion project before anything else.
 
 ## Contributors
+Original version by cyantist
+
+Contributors and builders of API 2.0
 - divisionbyz0rro
 - Eri
 - IngoH

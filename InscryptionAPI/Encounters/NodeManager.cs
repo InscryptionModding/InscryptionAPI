@@ -308,10 +308,13 @@ public static class NodeManager
 
     [HarmonyPatch(typeof(MapGenerator), nameof(MapGenerator.GenerateMap))]
     [HarmonyPostfix]
-    private static void FixMapLength(ref MapData __result, int gridWidth)
+    private static void FixMapLength(ref MapData __result, int gridWidth, RegionData region)
     {
-        __result.gridLength = __result.nodeData.Select(n => n.gridY).Max() + 1;
-        __result.mapLength = (float)__result.gridLength * 0.185f;
-        MapGenerator.PositionNodes(__result.nodeData, __result.mapLength, gridWidth, __result.gridLength);
+        if (region.predefinedNodes == null)
+        {
+            __result.gridLength = __result.nodeData.Select(n => n.gridY).Max() + 1;
+            __result.mapLength = (float)__result.gridLength * 0.185f;
+            MapGenerator.PositionNodes(__result.nodeData, __result.mapLength, gridWidth, __result.gridLength);
+        }
     }
 }

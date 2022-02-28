@@ -6,11 +6,13 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
-public class Part1CardCostRender
+public static class Part1CardCostRender
 {
 	// This patches the way card costs are rendered in Act 1 (Leshy's cabin)
 	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
 	// And allows gem cost and energy cost to render on the card at all.
+
+	public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
 	private static Dictionary<string, Texture2D> AssembledTextures = new();
 
@@ -97,6 +99,9 @@ public class Part1CardCostRender
 
 		if (card.cost > 0)
 			list.Add(GetTextureByName($"blood_cost_{card.cost}"));
+
+		// Call the event and allow others to modify the list of textures
+		UpdateCardCost?.Invoke(card, list);
 
 		//Combine all the textures from the list into one texture
 		Texture2D finalTexture = CombineCostTextures(list);
