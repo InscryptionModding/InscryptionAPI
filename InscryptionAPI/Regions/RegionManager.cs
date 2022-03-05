@@ -37,7 +37,7 @@ public static class RegionManager
         return retval;
     }
 
-    internal static void SyncRegionList()
+    public static void SyncRegionList()
     {
         var regions = BaseGameRegions.Concat(NewRegions.Select(x => x.Region)).Select(x => x.CloneRegion()).ToList();
         AllRegionsCopy = ModifyRegionsList?.Invoke(regions) ?? regions;

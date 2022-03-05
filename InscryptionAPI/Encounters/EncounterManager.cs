@@ -23,7 +23,7 @@ public static class EncounterManager
         return retval;
     }
 
-    internal static void SyncEncounterList()
+    public static void SyncEncounterList()
     {
         var encounters = BaseGameEncounters.Concat(NewEncounters).Select(x => x.CloneAndReplace()).ToList();
         //var encounters = BaseGameEncounters.Concat(NewEncounters).ToList();
