@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Regions;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
@@ -14,9 +15,17 @@ public static class EncounterManager
 
     public static event Func<List<EncounterBlueprintData>, List<EncounterBlueprintData>> ModifyEncountersList;
 
+    private static EncounterBlueprintData CloneAndReplace(this EncounterBlueprintData data)
+    {
+        EncounterBlueprintData retval = (EncounterBlueprintData)UnityEngine.Object.Internal_CloneSingle(data);
+        retval.name = data.name;
+        RegionManager.ReplaceBlueprintInCore(retval);
+        return retval;
+    }
+
     internal static void SyncEncounterList()
     {
-        var encounters = BaseGameEncounters.Concat(NewEncounters).Select(x => (EncounterBlueprintData)UnityEngine.Object.Internal_CloneSingle(x)).ToList();
+        var encounters = BaseGameEncounters.Concat(NewEncounters).Select(x => x.CloneAndReplace()).ToList();
         //var encounters = BaseGameEncounters.Concat(NewEncounters).ToList();
         AllEncountersCopy = ModifyEncountersList?.Invoke(encounters) ?? encounters;
     }

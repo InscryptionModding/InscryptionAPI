@@ -204,22 +204,6 @@ public static class CardManager
         ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
     }
 
-    [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
-    [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
-    {
-        CardManager.SyncCardList();
-        AbilityManager.SyncAbilityList();
-    }
-
-    [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
-    [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToGame()
-    {
-        CardManager.SyncCardList();
-        AbilityManager.SyncAbilityList();
-    }
-
     [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.GetCardByName))]
     [HarmonyPrefix]
     private static bool GetNonGuidName(string name, out CardInfo __result)
