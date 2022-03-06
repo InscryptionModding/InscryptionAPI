@@ -72,6 +72,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     public void Start()
     {
+        CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
     }

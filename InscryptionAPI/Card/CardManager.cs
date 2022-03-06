@@ -24,6 +24,7 @@ public static class CardManager
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
     
+    private static bool EventActive = false;
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
     private static IEnumerable<CardInfo> GetBaseGameCards()
@@ -35,10 +36,15 @@ public static class CardManager
         }
     }
 
+    internal static void ActivateEvents()
+    {
+        EventActive = true;
+    }
+
     public static void SyncCardList()
     {
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-        AllCardsCopy = ModifyCardList?.Invoke(cards) ?? cards;
+        AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
     }
 
     private static string GetCardPrefixFromName(this CardInfo info)
