@@ -65,28 +65,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             GameObject.Destroy(obj);
     }
 
-    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent)
+    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool upperPosition = false)
     {
-        // Find the leftmost and rightmost x values
-        // We'll put the arrows halfway between the edge of the screen and the leftmost/rightmost objects
-        float leftX = 1f;
-        float rightX = 0f;
-
-        foreach (Renderer renderer in parent.gameObject.GetComponentsInChildren<Renderer>())
-        {
-            Vector3 min = Camera.main.WorldToViewportPoint(renderer.bounds.min);
-            Vector3 max = Camera.main.WorldToViewportPoint(renderer.bounds.max);
-
-            if (min.x < leftX)
-                leftX = min.x;
-
-            if (max.x > rightX)
-                rightX = max.x;
-        }
-
-        leftX = leftX / 2f;
-        rightX = 1f - ((1f - rightX) / 2f);
-
         GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
         GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
 
@@ -102,8 +82,37 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         leftPos.viewportCam = Camera.main;
         rightPos.viewportCam = Camera.main;
 
-        leftPos.viewportAnchor = new Vector2(leftX, 0.565f);
-        rightPos.viewportAnchor = new Vector2(rightX, 0.565f);
+        if (!upperPosition)
+        {
+
+            // Find the leftmost and rightmost x values
+            // We'll put the arrows halfway between the edge of the screen and the leftmost/rightmost objects
+            float leftX = 1f;
+            float rightX = 0f;
+
+            foreach (Renderer renderer in parent.gameObject.GetComponentsInChildren<Renderer>())
+            {
+                Vector3 min = Camera.main.WorldToViewportPoint(renderer.bounds.min);
+                Vector3 max = Camera.main.WorldToViewportPoint(renderer.bounds.max);
+
+                if (min.x < leftX)
+                    leftX = min.x;
+
+                if (max.x > rightX)
+                    rightX = max.x;
+            }
+
+            leftX = leftX / 2f;
+            rightX = 1f - ((1f - rightX) / 2f);
+
+            leftPos.viewportAnchor = new Vector2(leftX, 0.565f);
+            rightPos.viewportAnchor = new Vector2(rightX, 0.565f);
+        }
+        else
+        {
+            leftPos.viewportAnchor = new Vector2(0.25f, 0.8f);
+            rightPos.viewportAnchor = new Vector2(0.75f, 0.8f);
+        }
 
         leftPos.offset = new (0f, 0f);
         rightPos.offset = new (0f, 0f);

@@ -13,6 +13,10 @@ public class AscensionChallengePaginator : MonoBehaviour
 
     public List<AscensionIconInteractable> bottomRow;
 
+    public AscensionIconInteractable extraIcon;
+
+    public bool showExtraIcon;
+
     public List<List<AscensionChallenge>> pages = new();
 
     private void PageBuilder(List<AscensionChallenge> challenges, int startIdx)
@@ -94,6 +98,11 @@ public class AscensionChallengePaginator : MonoBehaviour
             targetIcon.activatedRenderer.enabled = numActive > target;
             targetIcon.gameObject.SetActive(true);
         }
+
+        if (challengePageIndex == 0 && showExtraIcon)
+            this.extraIcon.gameObject.SetActive(true);
+        else
+            this.extraIcon.gameObject.SetActive(false);
     }
 
     public void ChallengePageLeft(MainInputInteractable button)
