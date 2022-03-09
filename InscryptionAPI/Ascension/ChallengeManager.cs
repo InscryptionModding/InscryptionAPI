@@ -46,6 +46,10 @@ public static class ChallengeManager
                 retval.Add(infos.First(i => i.challengeType == icon2));
         }
 
+        // Can't forget the 15th challenge
+        AscensionChallenge iconFinal = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
+        retval.Add(infos.First(i => i.challengeType == iconFinal));
+
         return retval;
     }
 
