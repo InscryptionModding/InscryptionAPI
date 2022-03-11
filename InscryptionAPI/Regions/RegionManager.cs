@@ -52,6 +52,9 @@ public static class RegionManager
 
         RegionData ascensionFinalRegion = AllRegionsCopy.FirstOrDefault(rd => rd.name.Equals(RegionProgression.Instance.ascensionFinalRegion.name));
         RegionProgression.Instance.ascensionFinalRegion = ascensionFinalRegion;
+
+        RegionData specialFinalRegion = AllRegionsCopy.FirstOrDefault(rd => rd.name.Equals(RegionProgression.Instance.ascensionFinalBossRegion.name));
+        RegionProgression.Instance.ascensionFinalBossRegion = specialFinalRegion;
     }
 
     static RegionManager()
@@ -151,7 +154,10 @@ public static class RegionManager
         {
             if (RunState.Run.regionTier == RegionProgression.Instance.regions.Count - 1)
             {
-                __result = RegionProgression.Instance.ascensionFinalRegion;
+                if (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.FinalBoss))
+                    __result = RegionProgression.Instance.ascensionFinalBossRegion;
+                else
+                    __result = RegionProgression.Instance.ascensionFinalRegion;
                 return false;
             }
             __result = GetRandomRegionFromTier(RunState.Run.regionOrder[RunState.Run.regionTier]);
