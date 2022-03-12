@@ -337,6 +337,24 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
+#### Additional functionality
+
+There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. However, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
+
+**Modify which card slots the card attacks**: To do this, you need to override RespondsToGetOpposingSlots to return true, and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
+
+**Add a passive attack or health buff**: To do this, you need to override ProvidesPassiveAttackBuff or ProvidesPassiveHealthBuff to return true, then override GetPassiveAttackBuffs or GetPassiveHealthBuffs to calculate the appropriate buffs. These return an array of integers, which corresponds to the card slots on the battlefield.
+
+For example: Let's assume the card slots look like this:
+
+```
+[A][B][C][D]
+```
+
+If card C wants to provide a +1 attack buff to cards B and D, it needs to return the array \[0, 1, 0, 1\] from GetPassiveAttackBuffs.
+
+Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These will be called *every frame!!* If you're not careful, you could bog the game down substantially.
+
 ### Special Stat Icons
 
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
@@ -381,6 +399,8 @@ public class BellProximity : VariableStatBehaviour
     }
 }
 ```
+
+Note: you need to be very careful about how complicated the logic is in GetStatValues. This will be called *every frame!!* If you're not careful, you could bog the game down substantially.
 
 ### Special Triggered Abilities
 
