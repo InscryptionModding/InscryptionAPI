@@ -214,21 +214,7 @@ public static class CardManager
     [HarmonyPrefix]
     private static bool GetNonGuidName(string name, out CardInfo __result)
     {
-        CardInfo retVal = null;
-        foreach (var card in AllCardsCopy)
-        {
-            var cardName = card.name;
-            if (cardName == name)
-            {
-                retVal = card;
-                break;
-            }
-            else if (retVal is null && cardName.EndsWith("_" + name))
-            {
-                retVal = card;
-            }
-        }
-
+        CardInfo retVal = AllCardsCopy.CardByName(name);
         __result = CardLoader.Clone(retVal);
         return false;
     }

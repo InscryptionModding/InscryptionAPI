@@ -13,7 +13,20 @@ public static class CardExtensions
     /// <param name="cards">An enumeration of Inscryption cards</param>
     /// <param name="name">The name to search for (case sensitive).</param>
     /// <returns>The first matching card, or null if no match</returns>
-    public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(x => x.name == name);
+    public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name)
+    {
+        CardInfo retVal = null;
+        foreach (var card in cards)
+        {
+            var cardName = card.name;
+
+            if (cardName.Equals(name, StringComparison.OrdinalIgnoreCase))
+                return card;
+            else if (retVal is null && cardName.EndsWith("_" + name))
+                retVal = card;
+        }
+        return retVal;
+    }
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
     {
