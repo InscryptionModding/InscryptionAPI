@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
+using System.Linq;
 
 namespace InscryptionAPI.Regions;
 
@@ -14,11 +15,46 @@ public static class RegionManager
 
     public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList;
 
-    internal static void SyncRegionList()
+    internal static void ReplaceBlueprintInCore(EncounterBlueprintData newData)
     {
-        var regions = BaseGameRegions.Concat(NewRegions.Select(x => x.Region)).Select(x => (RegionData) UnityEngine.Object.Internal_CloneSingle(x)).ToList();
-        //var regions = BaseGameRegions.Concat(NewRegions).ToList();
+        foreach (RegionData region in NewRegions.Select(s => s.Region).Concat(BaseGameRegions))
+        {
+            if (region.encounters != null)
+                for (int i = 0; i < region.encounters.Count; i++)
+                    if (region.encounters[i].name.Equals(newData.name))
+                        region.encounters[i] = newData;
+            
+            if (region.bossPrepEncounter != null)
+                if (region.bossPrepEncounter.name.Equals(newData.name))
+                    region.bossPrepEncounter = newData;
+        }
+    }
+
+    private static RegionData CloneRegion(this RegionData data)
+    {
+        RegionData retval = (RegionData) UnityEngine.Object.Internal_CloneSingle(data);
+        retval.name = data.name;
+        return retval;
+    }
+
+    public static void SyncRegionList()
+    {
+        var regions = BaseGameRegions.Concat(NewRegions.Select(x => x.Region)).Select(x => x.CloneRegion()).ToList();
         AllRegionsCopy = ModifyRegionsList?.Invoke(regions) ?? regions;
+
+        // Sync the regions to the RegionProgression
+        for (int i = 0; i < RegionProgression.Instance.regions.Count; i++)
+        {
+            RegionData replacementRegion = AllRegionsCopy.FirstOrDefault(rd => rd.name.Equals(RegionProgression.Instance.regions[i].name));
+            if (replacementRegion != null)
+                RegionProgression.Instance.regions[i] = replacementRegion;
+        }
+
+        RegionData ascensionFinalRegion = AllRegionsCopy.FirstOrDefault(rd => rd.name.Equals(RegionProgression.Instance.ascensionFinalRegion.name));
+        RegionProgression.Instance.ascensionFinalRegion = ascensionFinalRegion;
+
+        RegionData specialFinalRegion = AllRegionsCopy.FirstOrDefault(rd => rd.name.Equals(RegionProgression.Instance.ascensionFinalBossRegion.name));
+        RegionProgression.Instance.ascensionFinalBossRegion = specialFinalRegion;
     }
 
     static RegionManager()
@@ -118,7 +154,10 @@ public static class RegionManager
         {
             if (RunState.Run.regionTier == RegionProgression.Instance.regions.Count - 1)
             {
-                __result = RegionProgression.Instance.ascensionFinalRegion;
+                if (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.FinalBoss))
+                    __result = RegionProgression.Instance.ascensionFinalBossRegion;
+                else
+                    __result = RegionProgression.Instance.ascensionFinalRegion;
                 return false;
             }
             __result = GetRandomRegionFromTier(RunState.Run.regionOrder[RunState.Run.regionTier]);
@@ -132,7 +171,6 @@ public static class RegionManager
     {
         List<RegionData> valid = new();
 
-        // TODO: Change to be more customizable
         if (tier < 3)
         {
             valid.Add(RegionProgression.Instance.regions[tier]);
@@ -143,6 +181,5 @@ public static class RegionManager
         {
             return RegionProgression.Instance.regions[tier];
         }
-
     }
 }

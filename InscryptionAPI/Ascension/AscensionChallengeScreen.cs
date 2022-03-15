@@ -54,10 +54,13 @@ public static class AscensionChallengeScreenPatches
             paginator.topRow.Add(topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>());
             paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>());
         }
+        paginator.extraIcon = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>();
+        paginator.showExtraIcon = paginator.extraIcon.gameObject.activeSelf;
+
 
         paginator.GeneratePages();
 
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform);
+        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, upperPosition:true);
 
         AscensionMenuInteractable leftController = pageTuple.Item1;
         AscensionMenuInteractable rightController = pageTuple.Item2;

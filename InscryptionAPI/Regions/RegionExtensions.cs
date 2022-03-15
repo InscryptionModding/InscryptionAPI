@@ -132,10 +132,19 @@ public static class RegionExtensions
         region.encounters = region.encounters ?? new();
         foreach (EncounterBlueprintData encounterData in encounters)
         {
-            if (!region.encounters.Contains(encounterData))
+            bool assigned = false;
+            for (int i = 0; i < region.encounters.Count; i++)
             {
-                region.encounters.Add(encounterData);
+                if (region.encounters[i].name.Equals(encounterData))
+                {
+                    region.encounters[i] = encounterData;
+                    assigned = true;
+                    break;
+                }
             }
+
+            if (!assigned)
+                region.encounters.Add(encounterData);
         }
         return region;
     }

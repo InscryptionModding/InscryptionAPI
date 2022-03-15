@@ -2,8 +2,11 @@
 
 using BepInEx;
 using BepInEx.Logging;
+using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.Encounters;
+using InscryptionAPI.Regions;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
@@ -59,10 +62,32 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         HarmonyInstance.UnpatchSelf();
     }
 
-    public void Start()
+    internal static void ResyncAll()
     {
-        CardManager.ResolveMissingModPrefixes();
         CardManager.SyncCardList();
         AbilityManager.SyncAbilityList();
+        EncounterManager.SyncEncounterList();
+        RegionManager.SyncRegionList();
+    }
+
+    public void Start()
+    {
+        CardManager.ActivateEvents();
+        CardManager.ResolveMissingModPrefixes();
+        ResyncAll();
+    }
+
+    [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
+    [HarmonyPrefix]
+    private static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
+    {
+        ResyncAll();
+    }
+
+    [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
+    [HarmonyPrefix]
+    private static void SyncCardsAndAbilitiesWhenTransitioningToGame()
+    {
+        ResyncAll();
     }
 }

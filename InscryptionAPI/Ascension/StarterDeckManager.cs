@@ -64,7 +64,7 @@ public static class StarterDeckManager
         var decks = BaseGameDecks.Concat(NewDecks).Select(x => CloneStarterDeck(x)).ToList();       
 
         foreach (var deck in decks)
-            deck.Info.cards = deck.CardNames.Select(n => CardManager.AllCardsCopy.CardByName(n)).ToList();
+            deck.Info.cards = deck.CardNames.Select(n => CardLoader.GetCardByName(n)).ToList();
 
         AllDecks = ModifyDeckList?.Invoke(decks) ?? decks;
         AllDeckInfos = AllDecks.Select(fsd => fsd.Info).ToList();

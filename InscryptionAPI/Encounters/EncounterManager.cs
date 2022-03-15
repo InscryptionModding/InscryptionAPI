@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Regions;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
@@ -14,9 +15,34 @@ public static class EncounterManager
 
     public static event Func<List<EncounterBlueprintData>, List<EncounterBlueprintData>> ModifyEncountersList;
 
-    internal static void SyncEncounterList()
+    private static EncounterBlueprintData CloneAndReplace(this EncounterBlueprintData data)
     {
-        var encounters = BaseGameEncounters.Concat(NewEncounters).Select(x => (EncounterBlueprintData)UnityEngine.Object.Internal_CloneSingle(x)).ToList();
+        EncounterBlueprintData retval = (EncounterBlueprintData)UnityEngine.Object.Internal_CloneSingle(data);
+        retval.name = data.name;
+
+        // Repair the blueprint if it is invalid
+        if (retval.dominantTribes == null || retval.dominantTribes.Count == 0)
+        {
+            List<Tribe> tribes = retval.turns.SelectMany(l => l).Select(cb => cb.card)
+                                  .Concat(data.turns.SelectMany(l => l).Select(cb => cb.replacement))
+                                  .Concat(data.randomReplacementCards)
+                                  .Where(ci => ci != null && ci.tribes != null)
+                                  .SelectMany(ci => ci.tribes)
+                                  .ToList();
+
+            if (tribes.Count > 0)
+                retval.dominantTribes = new() { tribes.GroupBy(t => t).OrderByDescending(g => g.Count()).First().Key };
+            else
+                retval.dominantTribes = new List<Tribe>() { Tribe.Insect };
+        }
+
+        RegionManager.ReplaceBlueprintInCore(retval);
+        return retval;
+    }
+
+    public static void SyncEncounterList()
+    {
+        var encounters = BaseGameEncounters.Concat(NewEncounters).Select(x => x.CloneAndReplace()).ToList();
         //var encounters = BaseGameEncounters.Concat(NewEncounters).ToList();
         AllEncountersCopy = ModifyEncountersList?.Invoke(encounters) ?? encounters;
     }

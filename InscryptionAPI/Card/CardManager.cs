@@ -24,6 +24,7 @@ public static class CardManager
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
     
+    private static bool EventActive = false;
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
     private static IEnumerable<CardInfo> GetBaseGameCards()
@@ -35,10 +36,15 @@ public static class CardManager
         }
     }
 
+    internal static void ActivateEvents()
+    {
+        EventActive = true;
+    }
+
     public static void SyncCardList()
     {
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-        AllCardsCopy = ModifyCardList?.Invoke(cards) ?? cards;
+        AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
     }
 
     private static string GetCardPrefixFromName(this CardInfo info)
@@ -204,41 +210,11 @@ public static class CardManager
         ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
     }
 
-    [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
-    [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
-    {
-        CardManager.SyncCardList();
-        AbilityManager.SyncAbilityList();
-    }
-
-    [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
-    [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToGame()
-    {
-        CardManager.SyncCardList();
-        AbilityManager.SyncAbilityList();
-    }
-
     [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.GetCardByName))]
     [HarmonyPrefix]
     private static bool GetNonGuidName(string name, out CardInfo __result)
     {
-        CardInfo retVal = null;
-        foreach (var card in AllCardsCopy)
-        {
-            var cardName = card.name;
-            if (cardName == name)
-            {
-                retVal = card;
-                break;
-            }
-            else if (retVal is null && cardName.EndsWith("_" + name))
-            {
-                retVal = card;
-            }
-        }
-
+        CardInfo retVal = AllCardsCopy.CardByName(name);
         __result = CardLoader.Clone(retVal);
         return false;
     }
