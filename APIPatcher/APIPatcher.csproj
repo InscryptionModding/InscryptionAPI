@@ -12,4 +12,14 @@
       <PackageReference Include="BepInEx.Core" Version="5.4.19" />
     </ItemGroup>
 
+    <Target Name="CopyDLLs" AfterTargets="Build" Condition="$(Configuration) == 'Debug' or $(Configuration) == 'Release' ">
+        <Message Text="Executing CopyDLLs task" Importance="High" />
+
+        <!--        <Copy Condition="Exists('C:\inscryption-mods\')" SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\inscryption-mods\Inscryption\profiles\Default\BepInEx\plugins\API_dev-API" />-->
+
+        <Copy Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Inscryption\')" SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Inscryption\BepInEx\patchers" />
+
+        <Message Text="Copied build files" Importance="High" />
+    </Target>
+
 </Project>
