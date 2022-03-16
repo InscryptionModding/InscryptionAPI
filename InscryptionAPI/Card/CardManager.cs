@@ -18,38 +18,43 @@ public static class CardManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
+
     private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
 
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
-    
-    private static bool EventActive = false;
+
+    private static bool _eventActive = false;
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
     private static IEnumerable<CardInfo> GetBaseGameCards()
     {
         foreach (CardInfo card in Resources.LoadAll<CardInfo>("Data/Cards"))
         {
-            card.SetBaseGameCard(true);
+            card.SetBaseGameCard();
             yield return card;
         }
     }
 
     internal static void ActivateEvents()
     {
-        EventActive = true;
+        _eventActive = true;
     }
 
     public static void SyncCardList()
     {
-        var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-        AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
+        var cards = BaseGameCards.Concat(NewCards).Select(CardLoader.Clone).ToList();
+        AllCardsCopy = _eventActive
+            ? ModifyCardList?.Invoke(cards) ?? cards
+            : cards;
     }
 
     private static string GetCardPrefixFromName(this CardInfo info)
     {
         string[] splitName = info.name.Split('_');
-        return splitName.Length > 1 ? splitName[0] : string.Empty;
+        return splitName.Length > 1
+            ? splitName[0]
+            : string.Empty;
     }
 
     private static void AddPrefixesToCards(IEnumerable<CardInfo> cards, string prefix)
@@ -91,7 +96,7 @@ public static class CardManager
             // If there is EXACTLY ONE prefix in the group, we can apply it to the rest of the group
             if (setPrefixes.Count == 1)
             {
-                AddPrefixesToCards(group.Cards, setPrefixes[0]);                
+                AddPrefixesToCards(group.Cards, setPrefixes[0]);
                 continue;
             }
 
@@ -102,9 +107,9 @@ public static class CardManager
             // Okay, let's try to derive prefixes from card names
             bool appliedPrefixes = false;
             foreach (var nameGroup in group.Cards.Select(ci => ci.GetCardPrefixFromName())
-                                                 .GroupBy(s => s)
-                                                 .Select(g => new { Prefix = g.Key, Count = g.Count() })
-                                                 .ToList())
+                         .GroupBy(s => s)
+                         .Select(g => new { Prefix = g.Key, Count = g.Count() })
+                         .ToList())
             {
                 if (nameGroup.Count >= group.Cards.Count / 2)
                 {
@@ -144,9 +149,11 @@ public static class CardManager
 
     public static List<CardInfo> AllCardsCopy { get; private set; } = BaseGameCards.ToList();
 
-    public static void Add(CardInfo newCard, string modPrefix=default(string)) 
-    { 
-        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
+    public static void Add(CardInfo newCard, string modPrefix = default(string))
+    {
+        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix)
+            ? $"{modPrefix}_{newCard.name}"
+            : newCard.name;
 
         newCard.SetModPrefix(modPrefix);
 
@@ -156,25 +163,27 @@ public static class CardManager
             newCard.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
         }
 
-        if (!NewCards.Contains(newCard)) 
-            NewCards.Add(newCard); 
+        if (!NewCards.Contains(newCard))
+            NewCards.Add(newCard);
     }
     public static void Remove(CardInfo card) => NewCards.Remove(card);
 
-    public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), string modPrefix=default(string))
+    public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), string modPrefix = default(string))
     {
-        CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
-        retval.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
-        retval.SetBasic(displayName, attack, health, description);
-        
+        CardInfo returnValue = ScriptableObject.CreateInstance<CardInfo>();
+        returnValue.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix)
+            ? $"{modPrefix}_{name}"
+            : name;
+        returnValue.SetBasic(displayName, attack, health, description);
+
         Assembly callingAssembly = Assembly.GetCallingAssembly();
-        retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
+        returnValue.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
 
-        Add(retval, modPrefix:modPrefix);
+        Add(returnValue, modPrefix);
 
-        return retval;
+        return returnValue;
     }
-    
+
     /// <summary>
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
@@ -188,12 +197,10 @@ public static class CardManager
         {
             return (T)tObj;
         }
-        else
-        {
-            T tInst = new();
-            typeMap[typeof(T)] = tInst;
-            return tInst;
-        }
+
+        T tInst = new();
+        typeMap[typeof(T)] = tInst;
+        return tInst;
     }
 
     internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
@@ -213,8 +220,8 @@ public static class CardManager
     [HarmonyPrefix]
     private static bool GetNonGuidName(string name, out CardInfo __result)
     {
-        CardInfo retVal = AllCardsCopy.CardByName(name);
-        __result = CardLoader.Clone(retVal);
+        CardInfo returnValue = AllCardsCopy.CardByName(name);
+        __result = CardLoader.Clone(returnValue);
         return false;
     }
 
@@ -224,8 +231,9 @@ public static class CardManager
     {
         ILCursor c = new(il);
 
-        c.GotoNext(MoveType.Before,
-            x => x.MatchCallOrCallvirt(AccessTools.Method(typeof(UnityObject), "op_Equality", new Type[] { typeof(UnityObject), typeof(UnityObject) }))
+        c.GotoNext(
+            MoveType.Before,
+            x => x.MatchCallOrCallvirt(AccessTools.Method(typeof(UnityObject), "op_Equality", new[] { typeof(UnityObject), typeof(UnityObject) }))
         );
 
         c.Remove();

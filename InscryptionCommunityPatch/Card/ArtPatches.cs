@@ -30,7 +30,7 @@ public static class CommunityArtPatches
         Ability.SubmergeSquid
     };
 
-    internal static readonly List<Ability> gbcIconsToPatch = new() 
+    internal static readonly List<Ability> gbcIconsToPatch = new()
     {
         Ability.ConduitSpawnGems,
         Ability.LatchBrittle,
@@ -65,10 +65,10 @@ public static class CommunityArtPatches
 
     public static void PatchCommunityArt()
     {
-        foreach(Ability ability in regularIconsToPatch)
+        foreach (Ability ability in regularIconsToPatch)
             AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability.ToString()}.png", typeof(CommunityArtPatches).Assembly));
 
-        foreach(Ability ability in gbcIconsToPatch)
+        foreach (Ability ability in gbcIconsToPatch)
             AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability.ToString()}.png", typeof(CommunityArtPatches).Assembly));
     }
 }

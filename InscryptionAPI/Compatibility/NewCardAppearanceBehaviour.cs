@@ -17,10 +17,12 @@ public class NewCardAppearanceBehaviour
     {
         var fab = CardAppearanceBehaviourManager.Add(type.Namespace, name, type);
 
-        NewCardAppearanceBehaviour backgroundBehaviour = new NewCardAppearanceBehaviour();
-        backgroundBehaviour.Appearance = fab.Id;
-        backgroundBehaviour.Name = name;
-        backgroundBehaviour.Behaviour = type;
+        NewCardAppearanceBehaviour backgroundBehaviour = new NewCardAppearanceBehaviour
+        {
+            Appearance = fab.Id,
+            Name = name,
+            Behaviour = type
+        };
 
         return backgroundBehaviour;
     }

@@ -7,19 +7,19 @@ namespace APIPlugin;
 [Obsolete("Use CardManager and CardInfo extension methods", true)]
 public class TailIdentifier
 {
-    internal string name;
-    internal CardModificationInfo mods;
-    internal Texture2D tailLostTex;
-    private TailParams tail;
+    internal readonly string name;
+    internal readonly CardModificationInfo mods;
+    internal readonly Texture2D tailLostTex;
+    private TailParams _tail;
 
     public TailParams Tail
     {
         get
         {
-            if (this.tail == null)
+            if (this._tail == null)
                 SetParams(CardLoader.GetCardByName(this.name));
-				
-            return this.tail;
+
+            return this._tail;
         }
     }
 
@@ -32,25 +32,25 @@ public class TailIdentifier
 
     private void SetParams(CardInfo card)
     {
-        TailParams tail = new TailParams();
+        TailParams iTail = new TailParams();
 
         if (this.tailLostTex is not null)
         {
             this.tailLostTex.name = this.name;
             this.tailLostTex.filterMode = FilterMode.Point;
 
-            tail.tailLostPortrait = TextureHelper.ConvertTexture(this.tailLostTex, TextureHelper.SpriteType.CardPortrait);
-            tail.tailLostPortrait.name = this.name;
+            iTail.tailLostPortrait = this.tailLostTex.ConvertTexture(TextureHelper.SpriteType.CardPortrait);
+            iTail.tailLostPortrait.name = this.name;
         }
 
-        tail.tail = card;
+        iTail.tail = card;
 
         if (this.mods != null)
         {
-            tail.tail.mods.Add(this.mods);
+            iTail.tail.mods.Add(this.mods);
         }
 
-        this.tail = tail;
+        this._tail = iTail;
     }
 
     public override string ToString()

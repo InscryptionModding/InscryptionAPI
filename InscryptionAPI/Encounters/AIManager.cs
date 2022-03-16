@@ -18,13 +18,13 @@ public static class AIManager
             Id = id;
             AI = aiType;
 
-            TypeManager.Add(Id.ToString(), AI);
+            TypeManager.Add(Id, AI);
         }
     }
 
     public readonly static ReadOnlyCollection<FullAI> BaseGameAIs = new(GenBaseGameAIsList());
     private readonly static ObservableCollection<FullAI> NewAIs = new();
-    
+
     public static List<FullAI> AllAIs { get; private set; } = BaseGameAIs.ToList();
 
     static AIManager()
@@ -37,13 +37,8 @@ public static class AIManager
 
     private static List<FullAI> GenBaseGameAIsList()
     {
-        List<FullAI> baseGame = new();
         var gameAsm = typeof(AI).Assembly;
-        foreach (Type aiType in gameAsm.GetTypes().Where(type => type.IsSubclassOf(typeof(AI))))
-        {
-            baseGame.Add(new(aiType.Name, aiType));
-        }
-        return baseGame;
+        return gameAsm.GetTypes().Where(type => type.IsSubclassOf(typeof(AI))).Select(aiType => new FullAI(aiType.Name, aiType)).ToList();
     }
 
     public static FullAI Add(string guid, string aiName, Type sequencer)

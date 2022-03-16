@@ -20,50 +20,48 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
     private static void UpdateOpposingSlots(ref PlayableCard __instance, ref List<CardSlot> __result)
     {
         bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
-        CardSlot defaultslot = __instance.Slot.opposingSlot;
+        CardSlot defaultSlot = __instance.Slot.opposingSlot;
 
-        List<CardSlot> alteredOpposings = new List<CardSlot>();
+        List<CardSlot> alteredOpposingSlots = new List<CardSlot>();
         bool removeDefaultAttackSlot = false;
 
-        List<ExtendedAbilityBehaviour> behaviours = __instance.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.RespondsToGetOpposingSlots()).ToList();            
+        List<ExtendedAbilityBehaviour> behaviours = __instance.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.RespondsToGetOpposingSlots()).ToList();
         foreach (ExtendedAbilityBehaviour component in behaviours)
         {
-            alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
-            removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
+            alteredOpposingSlots.AddRange(component.GetOpposingSlots(__result, new(alteredOpposingSlots)));
+            removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();
         }
-        
-        if (alteredOpposings.Count > 0) 
-            __result.AddRange(alteredOpposings);
+
+        if (alteredOpposingSlots.Count > 0)
+            __result.AddRange(alteredOpposingSlots);
 
         if (isAttackingDefaultSlot && removeDefaultAttackSlot)
-            __result.Remove(defaultslot);
+            __result.Remove(defaultSlot);
     }
 
     // This section handles passive attack/health buffs
 
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> AttackBuffAbilities = new();
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> HealthBuffAbilities = new();
+    private static readonly ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> AttackBuffAbilities = new();
+    private static readonly ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> HealthBuffAbilities = new();
 
     private static List<ExtendedAbilityBehaviour> GetAttackBuffs(PlayableCard card)
     {
-        List<ExtendedAbilityBehaviour> retval;
-        if (AttackBuffAbilities.TryGetValue(card, out retval))
-            return retval;
+        if (AttackBuffAbilities.TryGetValue(card, out var returnValue))
+            return returnValue;
 
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveAttackBuff).ToList();
-        AttackBuffAbilities.Add(card, retval);
-        return retval;
+        returnValue = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveAttackBuff).ToList();
+        AttackBuffAbilities.Add(card, returnValue);
+        return returnValue;
     }
 
     private static List<ExtendedAbilityBehaviour> GetHealthBuffs(PlayableCard card)
     {
-        List<ExtendedAbilityBehaviour> retval;
-        if (HealthBuffAbilities.TryGetValue(card, out retval))
-            return retval;
+        if (HealthBuffAbilities.TryGetValue(card, out var returnValue))
+            return returnValue;
 
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveHealthBuff).ToList();
-        HealthBuffAbilities.Add(card, retval);
-        return retval;
+        returnValue = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveHealthBuff).ToList();
+        HealthBuffAbilities.Add(card, returnValue);
+        return returnValue;
     }
 
     public virtual bool ProvidesPassiveAttackBuff => false;
@@ -79,7 +77,9 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
         if (__instance.slot == null)
             return;
 
-        List<CardSlot> slots = __instance.OpponentCard ? BoardManager.Instance.opponentSlots : BoardManager.Instance.playerSlots;
+        List<CardSlot> slots = __instance.OpponentCard
+            ? BoardManager.Instance.opponentSlots
+            : BoardManager.Instance.playerSlots;
 
         foreach (CardSlot slot in slots.Where(s => s.Card != null))
         {
@@ -105,7 +105,9 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
         if (__instance.slot == null)
             return;
 
-        List<CardSlot> slots = __instance.OpponentCard ? BoardManager.Instance.opponentSlots : BoardManager.Instance.playerSlots;
+        List<CardSlot> slots = __instance.OpponentCard
+            ? BoardManager.Instance.opponentSlots
+            : BoardManager.Instance.playerSlots;
 
         foreach (CardSlot slot in slots.Where(s => s.Card != null))
         {

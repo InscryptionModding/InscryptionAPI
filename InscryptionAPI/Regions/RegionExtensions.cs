@@ -24,7 +24,7 @@ public static class RegionExtensions
     /// <param name="cards">The terrain cards to add.</param>
     public static RegionData AddTerrainCards(this RegionData region, params string[] cards)
     {
-        region.terrainCards = region.terrainCards ?? new();
+        region.terrainCards ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);
@@ -44,7 +44,7 @@ public static class RegionExtensions
     /// <param name="cards">The likely cards to add.</param>
     public static RegionData AddLikelyCards(this RegionData region, params string[] cards)
     {
-        region.likelyCards = region.likelyCards ?? new();
+        region.likelyCards ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);
@@ -63,7 +63,7 @@ public static class RegionExtensions
     /// <param name="consumables"></param>
     public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)
     {
-        region.consumableItems = region.consumableItems ?? new();
+        region.consumableItems ??= new();
         foreach (string consumable in consumables)
         {
             region.consumableItems.Add(ItemsUtil.GetConsumableByName(consumable));
@@ -73,7 +73,7 @@ public static class RegionExtensions
 
     public static RegionData AddConsumableItems(this RegionData region, params ConsumableItemData[] consumables)
     {
-        region.consumableItems = region.consumableItems ?? new();
+        region.consumableItems ??= new();
         foreach (ConsumableItemData consumable in consumables)
         {
             region.consumableItems.Add(consumable);
@@ -89,7 +89,7 @@ public static class RegionExtensions
     /// <param name="tribes">The tribes to add.</param>
     public static RegionData AddDominantTribes(this RegionData region, params Tribe[] tribes)
     {
-        region.dominantTribes = region.dominantTribes ?? new();
+        region.dominantTribes ??= new();
         foreach (Tribe tribe in tribes)
         {
             region.dominantTribes.Add(tribe);
@@ -128,13 +128,13 @@ public static class RegionExtensions
     /// <param name="encounters">The encounters to add.</param>
     public static RegionData AddEncounters(this RegionData region, params EncounterBlueprintData[] encounters)
     {
-        region.encounters = region.encounters ?? new();
+        region.encounters ??= new();
         foreach (EncounterBlueprintData encounterData in encounters)
         {
             bool assigned = false;
             for (int i = 0; i < region.encounters.Count; i++)
             {
-                if (region.encounters[i].name.Equals(encounterData))
+                if (region.encounters[i].name.Equals(encounterData.name))
                 {
                     region.encounters[i] = encounterData;
                     assigned = true;
@@ -170,7 +170,7 @@ public static class RegionExtensions
 
     public static RegionData AddBosses(this RegionData region, params Opponent.Type[] bosses)
     {
-        region.bosses = region.bosses ?? new();
+        region.bosses ??= new();
         foreach (Opponent.Type bossType in bosses)
         {
             if (!region.bosses.Contains(bossType))
@@ -229,7 +229,7 @@ public static class RegionExtensions
 
     public static RegionData AddFillerScenery(this RegionData region, params FillerSceneryEntry[] fillerScenery)
     {
-        region.fillerScenery = region.fillerScenery ?? new();
+        region.fillerScenery ??= new();
         foreach (FillerSceneryEntry entry in fillerScenery)
         {
             region.fillerScenery.Add(entry);
@@ -239,7 +239,7 @@ public static class RegionExtensions
 
     public static RegionData AddScarceScenery(this RegionData region, params ScarceSceneryEntry[] scarceScenery)
     {
-        region.scarceScenery = region.scarceScenery ?? new();
+        region.scarceScenery ??= new();
         foreach (ScarceSceneryEntry entry in scarceScenery)
         {
             region.scarceScenery.Add(entry);
@@ -261,7 +261,7 @@ public static class RegionExtensions
 
     public static RegionData SetMapParticlesPrefabs(this RegionData region, params GameObject[] particles)
     {
-        region.mapParticlesPrefabs = region.mapParticlesPrefabs ?? new();
+        region.mapParticlesPrefabs ??= new();
         foreach (GameObject particle in particles)
         {
             region.mapParticlesPrefabs.Add(particle);
@@ -269,8 +269,14 @@ public static class RegionExtensions
         return region;
     }
 
-    public static RegionData Build(this RegionData region, bool ignoreTerrainWarning = false, bool ignoreTribesWarning = false,
-                                   bool ignoreEncountersWarning = false, bool ignoreBossesWarning = false) {
+    public static RegionData Build(
+        this RegionData region,
+        bool ignoreTerrainWarning = false,
+        bool ignoreTribesWarning = false,
+        bool ignoreEncountersWarning = false,
+        bool ignoreBossesWarning = false
+    )
+    {
 
         if (!ignoreTerrainWarning && (region.terrainCards == null || region.terrainCards.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any terrain cards!");

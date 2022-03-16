@@ -9,27 +9,25 @@ public static class GuidManager
         return $"{guid}_{value}";
     }
 
-    private static Dictionary<int, Type> reverseMapper = new();
+    private static readonly Dictionary<int, Type> ReverseMapper = new();
 
-    private static object lockObject = new object();
+    private static readonly object LockObject = new object();
 
-    public static readonly int START_INDEX = 1000;
+    public const int START_INDEX = 1000;
 
     public const string MAX_DATA = "maximumStoredValueForEnum";
 
     public static Type GetEnumType(int number)
     {
-        if (!reverseMapper.ContainsKey(number))
-            return default(Type);
+        return !ReverseMapper.ContainsKey(number)
+            ? default(Type)
+            : ReverseMapper[number];
 
-        return reverseMapper[number];
     }
 
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
     {
-        List<T> itemList = new();
-        foreach(T item in Enum.GetValues(typeof(T)))
-            itemList.Add(item);
+        List<T> itemList = Enum.GetValues(typeof(T)).Cast<T>().ToList();
 
         string startKey = typeof(T).Name + "_";
         foreach (var item in ModdedSaveManager.SaveData.SaveData[InscryptionAPIPlugin.ModGUID])
@@ -41,25 +39,25 @@ public static class GuidManager
                 itemList.Add(convertedEnumVal);
             }
         }
-        
+
         return itemList;
     }
 
     unsafe public static T GetEnumValue<T>(string guid, string value) where T : unmanaged, System.Enum
     {
         if (sizeof(T) != sizeof(int))
-            throw new NotSupportedException($"Cannot manage values of type {typeof(T).Name} in GuidManager.GetEnumValue");        
+            throw new NotSupportedException($"Cannot manage values of type {typeof(T).Name} in GuidManager.GetEnumValue");
 
         string saveKey = $"{typeof(T).Name}_{guid}_{value}";
-            
+
         int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, saveKey);
 
-        lock (lockObject)
+        lock (LockObject)
         {
             if (enumValue > 0)
             {
-                if (!reverseMapper.ContainsKey(enumValue))
-                    reverseMapper.Add(enumValue, typeof(T));
+                if (!ReverseMapper.ContainsKey(enumValue))
+                    ReverseMapper.Add(enumValue, typeof(T));
 
                 return *(T*)&enumValue;
             }
@@ -67,13 +65,13 @@ public static class GuidManager
             enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
             if (enumValue < START_INDEX)
                 enumValue = START_INDEX;
-                
+
             ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue);
             ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, saveKey, enumValue);
 
             ModdedSaveManager.isSystemDirty = true;
 
-            reverseMapper.Add(enumValue, typeof(T));
+            ReverseMapper.Add(enumValue, typeof(T));
 
             return *(T*)&enumValue;
         }

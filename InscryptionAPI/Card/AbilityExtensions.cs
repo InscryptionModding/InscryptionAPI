@@ -27,7 +27,7 @@ public static class AbilityExtensions
             throw new InvalidOperationException("Cannot set custom texture directly on AbilityInfo unless it has been added via AbilityManager.Add");
 
         ability.SetCustomFlippedTexture(icon);
-        return info;        
+        return info;
     }
 
     public static void SetIcon(this AbilityManager.FullAbility info, Texture2D icon)
@@ -48,7 +48,7 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
     {
         info.iconGraphic = TextureHelper.GetImageAsTexture(pathToArt);
@@ -56,37 +56,35 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon);
-        else
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode.Value);
+        info.pixelIconGraphic = !filterMode.HasValue
+            ? icon.ConvertTexture(TextureHelper.SpriteType.PixelStatIcon)
+            : icon.ConvertTexture(TextureHelper.SpriteType.PixelStatIcon, filterMode.Value);
         return info;
     }
 
     public static AbilityInfo SetPixelAbilityIcon(this AbilityInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon);
-        else
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon, filterMode.Value);
+        info.pixelIcon = !filterMode.HasValue
+            ? icon.ConvertTexture(TextureHelper.SpriteType.PixelAbilityIcon)
+            : icon.ConvertTexture(TextureHelper.SpriteType.PixelAbilityIcon, filterMode.Value);
         return info;
     }
 
     public static AbilityInfo AddMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
     {
-        info.metaCategories = info.metaCategories ?? new();
+        info.metaCategories ??= new();
         foreach (var app in categories)
             if (!info.metaCategories.Contains(app))
                 info.metaCategories.Add(app);
         return info;
     }
 
-     public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories)
+    public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories)
     {
-        info.metaCategories = info.metaCategories ?? new();
+        info.metaCategories ??= new();
         foreach (var app in categories)
             if (!info.metaCategories.Contains(app))
                 info.metaCategories.Add(app);

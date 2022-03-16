@@ -11,7 +11,7 @@ namespace InscryptionAPI.Guid;
 [HarmonyPatch]
 public static class TypeManager
 {
-    private static Dictionary<string, Type> TypeCache = new();
+    private static readonly Dictionary<string, Type> TypeCache = new();
 
     internal static void Add(string key, Type value)
     {
@@ -29,7 +29,7 @@ public static class TypeManager
         Add(key, value);
     }
 
-    private static Dictionary<string, string> ModIds = new();
+    private static readonly Dictionary<string, string> ModIds = new();
 
     private static string GetModIdFromAssembly(Assembly assembly)
     {
@@ -42,7 +42,7 @@ public static class TypeManager
             {
                 if (d.GUID == InscryptionAPIPlugin.ModGUID)
                     continue;
-                    
+
                 ModIds.Add(assembly.FullName, d.GUID);
                 return d.GUID;
             }
@@ -70,12 +70,12 @@ public static class TypeManager
     }
 
 
-    [HarmonyReversePatch(HarmonyReversePatchType.Original)]
-    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
+    [HarmonyReversePatch]
+    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), typeof(string), typeof(string))]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static Type OriginalGetType(string nameSpace, string typeName) { throw new NotImplementedException(); }
 
-    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
+    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), typeof(string), typeof(string))]
     [HarmonyPrefix]
     public static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
     {
@@ -87,8 +87,7 @@ public static class TypeManager
             return false;
         }
 
-        int enumValue;
-        if (int.TryParse(typeName, out enumValue))
+        if (int.TryParse(typeName, out var enumValue))
         {
             //InscryptionAPIPlugin.Logger.LogInfo($"This appears to be a custom type");
             Type enumType = GuidManager.GetEnumType(enumValue);
@@ -106,10 +105,10 @@ public static class TypeManager
 
             if (enumType == typeof(SpecialStatIcon))
             {
-                StatIconManager.FullStatIcon staticon = StatIconManager.AllStatIcons.FirstOrDefault(fab => (int)fab.Id == enumValue);
-                if (staticon != null)
+                StatIconManager.FullStatIcon statIcon = StatIconManager.AllStatIcons.FirstOrDefault(fab => (int)fab.Id == enumValue);
+                if (statIcon != null)
                 {
-                    __result = staticon.VariableStatBehavior;
+                    __result = statIcon.VariableStatBehavior;
                     TypeCache.Add(typeName, __result);
                     return false;
                 }
@@ -137,7 +136,7 @@ public static class TypeManager
                 }
             }
         }
-        
+
         __result = AccessTools.TypeByName($"{nameSpace}.{typeName}");
         TypeCache.Add(typeName, __result);
         return false;

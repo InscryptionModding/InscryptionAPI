@@ -16,7 +16,7 @@ public class Act1LatchAbilityFix
         {
             if (_clawPrefab == null)
                 _clawPrefab = ResourceBank.Get<GameObject>("Prefabs/Cards/SpecificCardModels/LatchClaw");
-            
+
             return _clawPrefab;
         }
     }
@@ -41,7 +41,7 @@ public class Act1LatchAbilityFix
         List<CardSlot> validTargets = BoardManager.Instance.AllSlotsCopy;
         validTargets.RemoveAll(slot => slot.Card == null || slot.Card.Dead || __state.CardHasLatchMod(slot.Card) || slot.Card == __state.Card);
 
-        PatchPlugin.Logger.LogInfo("Count of Valid Targets : " + validTargets.Count.ToString());
+        PatchPlugin.Logger.LogInfo("Count of Valid Targets : " + validTargets.Count);
 
         if (validTargets.Count > 0)
         {
@@ -52,13 +52,18 @@ public class Act1LatchAbilityFix
 
             CardAnimationController anim = __state.Card.Anim;
 
-            GameObject gameObject = new GameObject();
-            gameObject.name = "LatchParent";
-            gameObject.transform.position = anim.transform.position;
+            GameObject gameObject = new GameObject
+            {
+                name = "LatchParent",
+                transform =
+                {
+                    position = anim.transform.position
+                }
+            };
             gameObject.gameObject.transform.parent = anim.transform;
 
-            Transform Latchparent = gameObject.transform;
-            GameObject claw = UnityEngine.Object.Instantiate<GameObject>(ClawPrefab, Latchparent);
+            Transform latchParent = gameObject.transform;
+            GameObject claw = UnityEngine.Object.Instantiate<GameObject>(ClawPrefab, latchParent);
 
             CardSlot selectedSlot = null;
 
@@ -69,7 +74,7 @@ public class Act1LatchAbilityFix
 
                 if (selectedSlot != null && selectedSlot.Card != null)
                 {
-                    AimWeaponAnim(Latchparent.gameObject, selectedSlot.transform.position);
+                    AimWeaponAnim(latchParent.gameObject, selectedSlot.transform.position);
                     yield return new WaitForSeconds(0.3f);
                 }
             }
@@ -78,18 +83,24 @@ public class Act1LatchAbilityFix
                 List<CardSlot> allSlotsCopy = BoardManager.Instance.AllSlotsCopy;
                 allSlotsCopy.Remove(__state.Card.Slot);
 
-                yield return BoardManager.Instance.ChooseTarget(allSlotsCopy, validTargets, 
-                    s => selectedSlot = s, // target selected callback
-                    __state.OnInvalidTarget, // invalid target callback
-                    s =>                    // slot cusor enter callback
+                yield return BoardManager.Instance.ChooseTarget(
+                    allSlotsCopy,
+                    validTargets,
+                    // target selected callback
+                    s => selectedSlot = s,
+                    // invalid target callback
+                    __state.OnInvalidTarget,
+                    // slot cursor enter callback
+                    s =>
                     {
                         if (s.Card == null)
                             return;
 
-                        AimWeaponAnim(Latchparent.gameObject, s.transform.position);
-                    }, 
-                    null,                   // cancel condition
-                    CursorType.Target);
+                        AimWeaponAnim(latchParent.gameObject, s.transform.position);
+                    },
+                    null, // cancel condition
+                    CursorType.Target
+                );
             }
 
             claw.SetActive(true);
@@ -98,9 +109,11 @@ public class Act1LatchAbilityFix
 
             if (selectedSlot != null && selectedSlot.Card != null)
             {
-                CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility);
-                mod.fromCardMerge = true;
-                mod.fromLatch = true;
+                CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility)
+                {
+                    fromCardMerge = true,
+                    fromLatch = true
+                };
                 PatchPlugin.Logger.LogInfo(selectedSlot.Card.name);
 
                 if (selectedSlot.Card.Info.name == "!DEATHCARD_BASE")

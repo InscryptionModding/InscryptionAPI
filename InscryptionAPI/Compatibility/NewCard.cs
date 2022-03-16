@@ -113,13 +113,13 @@ public static class NewCard
             info.decals = new List<Texture>(decals);
 
         if (evolveId != null)
-            info.SetEvolve(evolveId.name, evolveId.turnsToEvolve, new List<CardModificationInfo>() { evolveId.mods });
+            info.SetEvolve(evolveId.name, evolveId.turnsToEvolve, new List<CardModificationInfo> { evolveId.mods });
 
         if (iceCubeId != null)
-            info.SetIceCube(iceCubeId.name, new List<CardModificationInfo>() { iceCubeId.mods });
+            info.SetIceCube(iceCubeId.name, new List<CardModificationInfo> { iceCubeId.mods });
 
         if (tailId != null)
-            info.SetTail(tailId.name, tailId.tailLostTex, mods:new List<CardModificationInfo>() { tailId.mods });
+            info.SetTail(tailId.name, tailId.tailLostTex, mods:new List<CardModificationInfo> { tailId.mods });
     }
 
     internal static void AssignSpecialAbilities(this CardInfo info, IEnumerable<SpecialAbilityIdentifier> ids)

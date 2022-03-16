@@ -108,7 +108,7 @@ public class CustomCard
             // We're already in the mapper. I don't want to add another event handler
             CardInfo evolveTarget = cardsToSearch.CardByName(this.evolveId.name);
             if (evolveTarget != null)
-                card.SetEvolve(evolveTarget, this.evolveId.turnsToEvolve, new List<CardModificationInfo>() { this.evolveId.mods });
+                card.SetEvolve(evolveTarget, this.evolveId.turnsToEvolve, new List<CardModificationInfo> { this.evolveId.mods });
         }
 
         if (this.tailId != null)
@@ -116,7 +116,7 @@ public class CustomCard
             // We're already in the mapper. I don't want to add another event handler
             CardInfo tail = cardsToSearch.CardByName(this.tailId.name);
             if (tail != null)
-                card.SetTail(tail, this.tailId.tailLostTex, mods:new List<CardModificationInfo>() { this.tailId.mods });
+                card.SetTail(tail, this.tailId.tailLostTex, mods:new List<CardModificationInfo> { this.tailId.mods });
         }
 
         if (this.iceCubeId != null)
@@ -124,7 +124,7 @@ public class CustomCard
             // We're already in the mapper. I don't want to add another event handler
             CardInfo iceCubeTarget = cardsToSearch.CardByName(this.iceCubeId.name);
             if (iceCubeTarget != null)
-                card.SetIceCube(iceCubeTarget, new List<CardModificationInfo>() { this.iceCubeId.mods });
+                card.SetIceCube(iceCubeTarget, new List<CardModificationInfo> { this.iceCubeId.mods });
         }
 
         return card;

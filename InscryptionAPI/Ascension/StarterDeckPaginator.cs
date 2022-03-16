@@ -9,7 +9,7 @@ public class StarterDeckPaginator : MonoBehaviour
 
     public int starterDeckPageIndex = 0;
 
-    public readonly static int CHALLENGES_PER_ROW = 7;
+    public const int CHALLENGES_PER_ROW = 7;
 
     public List<AscensionStarterDeckIcon> icons;
 
@@ -20,8 +20,7 @@ public class StarterDeckPaginator : MonoBehaviour
         List<StarterDeckInfo> curPage = null;
         for (int i = startIdx; i < starterDecks.Count; i++)
         {
-            if (curPage == null)
-                curPage = new List<StarterDeckInfo>();
+            curPage ??= new List<StarterDeckInfo>();
 
             // Check to see if we need a new page
             if (curPage.Count == ICONS_PER_PAGE)
@@ -40,10 +39,9 @@ public class StarterDeckPaginator : MonoBehaviour
     public void GeneratePages()
     {
         // The first page is nice and easy
-        pages = new();
         List<StarterDeckInfo> pageOne = new List<StarterDeckInfo>();
         pageOne.AddRange(StarterDeckManager.AllDeckInfos.GetRange(0, ICONS_PER_PAGE));
-        pages.Add(pageOne);
+        pages = new() { pageOne };
 
         // Do the starterDecks
         if (StarterDeckManager.AllDeckInfos.Count > ICONS_PER_PAGE)
