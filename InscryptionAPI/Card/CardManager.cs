@@ -63,9 +63,7 @@ public static class CardManager
     private static string GetCardPrefixFromName(this CardInfo info)
     {
         string[] splitName = info.name.Split('_');
-        return splitName.Length > 1
-            ? splitName[0]
-            : string.Empty;
+        return splitName.Length > 1 ? splitName[0] : string.Empty;
     }
 
     private static void AddPrefixesToCards(IEnumerable<CardInfo> cards, string prefix)
