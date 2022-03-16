@@ -19,10 +19,8 @@ public static class GuidManager
 
     public static Type GetEnumType(int number)
     {
-        return !ReverseMapper.ContainsKey(number)
-            ? default(Type)
-            : ReverseMapper[number];
-
+        ReverseMapper.TryGetValue(number, out var res);
+        return res;
     }
 
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
