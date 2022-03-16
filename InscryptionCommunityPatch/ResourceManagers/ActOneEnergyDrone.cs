@@ -112,14 +112,12 @@ public static class EnergyDrone
 
     private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
     {
-        if (info.temple != targetTemple) // Non-nature cards can't be selected in Act 1
-            return false;
+        // Non-nature cards can't be selected in Act 1
+        return info.temple == targetTemple
+            // Now we check metacategories
+            // If the card's metacategories are set such that it can't actually appear, don't count it
+            && info.metaCategories.Exists(cat => cat is CardMetaCategory.ChoiceNode or CardMetaCategory.TraderOffer or CardMetaCategory.Rare);
 
-        // Now we check metacategories
-        // If the card's metacategories are set such that it can't actually appear, don't count it
-        return (info.metaCategories.Contains(CardMetaCategory.ChoiceNode) || 
-                info.metaCategories.Contains(CardMetaCategory.TraderOffer) || 
-                info.metaCategories.Contains(CardMetaCategory.Rare));
     }
 
     internal static void TryEnableEnergy(string sceneName)
@@ -134,9 +132,11 @@ public static class EnergyDrone
         }
 
         // Check the entire pool of cards for mox and energy
-        CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead : 
-                                  SaveManager.saveFile.IsMagnificus ? CardTemple.Wizard :
-                                  CardTemple.Nature;
+        CardTemple targetTemple = SaveManager.saveFile.IsGrimora
+            ? CardTemple.Undead
+            : SaveManager.saveFile.IsMagnificus
+                ? CardTemple.Wizard
+                : CardTemple.Nature;
 
 
         PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
@@ -160,12 +160,12 @@ public static class EnergyDrone
             ResourceDrone.Instance.Awake();
 
         yield return new WaitForSeconds(1);
-        
+
         if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.AttachGemsModule();
     }
 
-    [HarmonyPatch(typeof(ResourceDrone), "SetOnBoard")]
+    [HarmonyPatch(typeof(ResourceDrone), nameof(ResourceDrone.SetOnBoard))]
     [HarmonyPostfix]
 	public static void ResourceDrone_SetOnBoard(ResourceDrone __instance, bool onBoard)
     {
@@ -185,11 +185,11 @@ public static class EnergyDrone
         }
     }
 
-    [HarmonyPatch(typeof(Part1ResourcesManager), "CleanUp")]
+    [HarmonyPatch(typeof(Part1ResourcesManager), nameof(Part1ResourcesManager.CleanUp))]
     [HarmonyPrefix]
-	public static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
+    public static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
-        ResourcesManager baseResourceManager = (ResourcesManager)__instance;
+        ResourcesManager baseResourceManager = __instance;
         if (EnergyConfig.ConfigEnergy)
         {
             baseResourceManager.PlayerEnergy = 0;
@@ -198,11 +198,11 @@ public static class EnergyDrone
 
         if (EnergyConfig.ConfigDrone)
         {
-            ResourceDrone.Instance.CloseAllCells(false);
-            ResourceDrone.Instance.SetOnBoard(false, false);
+            ResourceDrone.Instance.CloseAllCells();
+            ResourceDrone.Instance.SetOnBoard(false);
             if (EnergyConfig.ConfigDroneMox)
             {
-                ResourceDrone.Instance.Gems.SetAllGemsOn(false, false);
+                ResourceDrone.Instance.Gems.SetAllGemsOn(false);
             }
         }
 
@@ -214,7 +214,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.Setup))]
     [HarmonyPrefix]
-	public static void ResourcesManager_Setup(ResourcesManager __instance)
+    public static void ResourcesManager_Setup(ResourcesManager __instance)
     {
         PatchPlugin.Logger.LogDebug($"Setting up extra resources? {EnergyConfig.ConfigDrone}: drone {ResourceDrone.Instance}");
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
@@ -227,7 +227,7 @@ public static class EnergyDrone
         }
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "ShowAddMaxEnergy")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowAddMaxEnergy))]
     [HarmonyPostfix]
 	public static IEnumerator ResourcesManager_ShowAddMaxEnergy(IEnumerator result, ResourcesManager __instance)
     {
@@ -240,16 +240,16 @@ public static class EnergyDrone
         yield return result;
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "ShowAddEnergy")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowAddEnergy))]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
+    public static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int num;
             for (int i = __instance.PlayerEnergy - amount; i < __instance.PlayerEnergy; i = num + 1)
             {
-                ResourceDrone.Instance.SetCellOn(i, true, false);
+                ResourceDrone.Instance.SetCellOn(i, true);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -258,20 +258,24 @@ public static class EnergyDrone
         yield return result;
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "ShowSpendEnergy")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowSpendEnergy))]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
+    public static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int num;
             for (int i = __instance.PlayerEnergy + amount - 1; i >= __instance.PlayerEnergy; i = num - 1)
             {
-                AudioController.Instance.PlaySound3D("crushBlip3", MixerGroup.TableObjectsSFX,
-                    __instance.transform.position, 0.4f, 0f,
-                    new AudioParams.Pitch(0.9f + (float)(__instance.PlayerEnergy + i) * 0.05f), null, null, null,
-                    false);
-                ResourceDrone.Instance.SetCellOn(i, false, false);
+                AudioController.Instance.PlaySound3D(
+                    "crushBlip3",
+                    MixerGroup.TableObjectsSFX,
+                    __instance.transform.position,
+                    0.4f,
+                    0f,
+                    new AudioParams.Pitch(0.9f + (__instance.PlayerEnergy + i) * 0.05f)
+                );
+                ResourceDrone.Instance.SetCellOn(i, false);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -280,9 +284,9 @@ public static class EnergyDrone
         yield return result;
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "ShowAddGem")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowAddGem))]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowAddGem(IEnumerator result, GemType gem, ResourcesManager __instance)
+    public static IEnumerator ResourcesManager_ShowAddGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
@@ -293,9 +297,9 @@ public static class EnergyDrone
         yield return result;
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "ShowLoseGem")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowLoseGem))]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowLoseGem(IEnumerator result, GemType gem, ResourcesManager __instance)
+    public static IEnumerator ResourcesManager_ShowLoseGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
@@ -306,12 +310,12 @@ public static class EnergyDrone
         yield return result;
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "SetGemOnImmediate")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.SetGemOnImmediate))]
     [HarmonyPostfix]
-	public static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
+    public static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager)
-            ResourceDrone.Instance.Gems.SetGemOn(gem, on, false);
+            ResourceDrone.Instance.Gems.SetGemOn(gem, on);
     }
 
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
@@ -328,17 +332,17 @@ public static class EnergyDrone
             if (showEnergyModule)
             {
                 ViewManager.Instance.SwitchToView(View.Default, false, true);
-			    yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f);
             }
 
             yield return ResourcesManager.Instance.AddMaxEnergy(1);
-		    yield return ResourcesManager.Instance.RefreshEnergy();
+            yield return ResourcesManager.Instance.RefreshEnergy();
 
             if (showEnergyModule)
             {
                 yield return new WaitForSeconds(0.25f);
-			    Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
+                Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
             }
         }
-	}
+    }
 }

@@ -9,23 +9,20 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 {
     // This will display near the top of the screen.
     // The very top will be the challenge level text; below that will be this
-    public abstract string headerText { get; }
+    public abstract string HeaderText { get; }
 
     // If this is true, it will show the card displayer at the footer below the challenge text
-    // Seting this to true will also enable the DisplayCardInfo and ClearCardInfo methods
+    // Setting this to true will also enable the DisplayCardInfo and ClearCardInfo methods
     // If this is not true, those methods will do nothing
-    public abstract bool showCardDisplayer { get; }
+    public abstract bool ShowCardDisplayer { get; }
 
     // If this is true, it will put a card panel in the middle of the screen
     // The card panel will be able to display up to 7 cards
     // and will have a left/right button
-    public abstract bool showCardPanel { get; }
+    public abstract bool ShowCardPanel { get; }
 
     // This is the hook for the implementer to build their own UI elements.
-    public virtual void InitializeScreen(GameObject partialScreen)
-    {
-
-    }
+    public virtual void InitializeScreen(GameObject partialScreen) { }
 
     public SequentialPixelTextLines cardInfoLines;
 
@@ -59,7 +56,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         transition.onEnableRevealedObjects.Remove(obj);
 
         foreach (Transform child in obj.transform)
-            CleanupGameObject(child.gameObject, transition, destroy:false);
+            CleanupGameObject(child.gameObject, transition, false);
 
         if (destroy)
             GameObject.Destroy(obj);
@@ -102,7 +99,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
                     rightX = max.x;
             }
 
-            leftX = leftX / 2f;
+            leftX /= 2f;
             rightX = 1f - ((1f - rightX) / 2f);
 
             leftPos.viewportAnchor = new Vector2(leftX, 0.565f);
@@ -114,8 +111,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             rightPos.viewportAnchor = new Vector2(0.75f, 0.8f);
         }
 
-        leftPos.offset = new (0f, 0f);
-        rightPos.offset = new (0f, 0f);
+        leftPos.offset = new(0f, 0f);
+        rightPos.offset = new(0f, 0f);
 
         return (leftIcon.GetComponent<AscensionMenuInteractable>(), rightIcon.GetComponent<AscensionMenuInteractable>());
     }
@@ -135,7 +132,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         GameObject textHeader = screenObject.transform.Find("Header/Mid").gameObject;
         textHeader.transform.localPosition = new Vector3(0f, -0.575f, 0f);
         controller.screenTitle = textHeader.GetComponent<PixelText>();
-        controller.screenTitle.SetText(Localization.ToUpper(Localization.Translate(controller.headerText)));
+        controller.screenTitle.SetText(Localization.ToUpper(Localization.Translate(controller.HeaderText)));
 
         controller.transitionController = screenObject.GetComponent<AscensionMenuScreenTransition>();
 
@@ -145,7 +142,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
         GameObject cardTextDisplayer = screenObject.transform.Find("Footer/CardTextDisplayer").gameObject;
         GameObject footerLowline = screenObject.transform.Find("Footer/PixelTextLine_DIV").gameObject;
-        if (controller.showCardDisplayer)
+        if (controller.ShowCardDisplayer)
         {
             // Move the stuff
             cardTextDisplayer.transform.localPosition = new Vector3(2.38f, 0.27f, 0f);
@@ -155,7 +152,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             // Copy over a reference to the card info lines
             Component.Destroy(footer.GetComponent<SequentialPixelTextLines>());
             controller.cardInfoLines = cardTextDisplayer.AddComponent<SequentialPixelTextLines>();
-            controller.cardInfoLines.lines = new List<PixelText>() {
+            controller.cardInfoLines.lines = new List<PixelText>
+            {
                 footerLowline.GetComponent<PixelText>(),
                 cardTextDisplayer.transform.Find("PixelTextLine_DESC1").gameObject.GetComponent<PixelText>(),
                 cardTextDisplayer.transform.Find("PixelTextLine_NAME").gameObject.GetComponent<PixelText>()
@@ -173,10 +171,10 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             newInfoDisplayer.transform.localPosition = new Vector3(0f, -2.25f, 0f);
         }
 
-        if (controller.showCardPanel)
+        if (controller.ShowCardPanel)
         {
             controller.cards = oldController.cards;
-        }    
+        }
 
         // Destroy the old game logic
         Component.Destroy(oldController);
@@ -197,7 +195,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
         // Set the old header lines to the lines of the sequential pixel text lines
         // Fundamentally, the old header now controls these new challenge level lines
-        headerLines.lines = new List<PixelText>() {
+        headerLines.lines = new List<PixelText>
+        {
             challengeLevel.GetComponent<PixelText>(),
             challengePoints.GetComponent<PixelText>()
         };
@@ -207,12 +206,13 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         challengeLevelController.headerPointsLines = headerLines;
         controller.challengeHeaderDisplay = challengeLevelController;
 
-        List<Transform> footerLinePseudos = new List<Transform>();
-        GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject; 
-        foreach (Transform child in challengeFooter.transform)
-            if (child.name.ToLowerInvariant() == "pixeltextline")
-                footerLinePseudos.Add(child);
-        footerLinePseudos.Sort((a, b) => a.localPosition.y < b.localPosition.y ? -1 : 1);
+        GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject;
+        List<Transform> footerLinePseudos = challengeFooter.transform.Cast<Transform>().Where(child => child.name.ToLowerInvariant() == "pixeltextline").ToList();
+        footerLinePseudos.Sort(
+            (a, b) => a.localPosition.y < b.localPosition.y
+                ? -1
+                : 1
+        );
 
         List<GameObject> newFooterLines = footerLinePseudos.Select(t => GameObject.Instantiate(t.gameObject, footer.transform)).ToList();
         SequentialPixelTextLines footerLines = footer.AddComponent<SequentialPixelTextLines>();
@@ -223,14 +223,14 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         // Let's reroute the left and right buttons
         controller.leftButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject.GetComponent<MainInputInteractable>();
         controller.rightButton = screenObject.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject.GetComponent<MainInputInteractable>();
-        if (controller.showCardPanel)
+        if (controller.ShowCardPanel)
         {
             controller.cardPanel.transform.localPosition = new Vector3(0f, 0.2f, 0f);
 
             controller.leftButton.CursorSelectStarted = controller.LeftButtonClicked;
             controller.rightButton.CursorSelectStarted = controller.RightButtonClicked;
-            controller.leftButton.gameObject.transform.localPosition = controller.leftButton.gameObject.transform.localPosition - (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
-            controller.rightButton.gameObject.transform.localPosition = controller.rightButton.gameObject.transform.localPosition + (Vector3)BETWEEN_CARD_OFFSET * 1.5f;
+            controller.leftButton.gameObject.transform.localPosition -= (Vector3)BetweenCardOffset * 1.5f;
+            controller.rightButton.gameObject.transform.localPosition += (Vector3)BetweenCardOffset * 1.5f;
 
             // Let's add three more cards to the panel
             GameObject cardPrefab = Resources.Load<GameObject>("prefabs/gbccardbattle/pixelselectablecard");
@@ -249,14 +249,24 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
             foreach (PixelSelectableCard card in controller.cards)
             {
-                card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
-                {
-                    controller.CardClicked(card);
-                }));
-                card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(card.CursorEntered, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
-                {
-                    controller.CardCursorEntered(card);
-                }));
+                card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(
+                    card.CursorSelectStarted,
+                    new Action<MainInputInteractable>(
+                        delegate
+                        {
+                            controller.CardClicked(card);
+                        }
+                    )
+                );
+                card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(
+                    card.CursorEntered,
+                    new Action<MainInputInteractable>(
+                        delegate
+                        {
+                            controller.CardCursorEntered(card);
+                        }
+                    )
+                );
 
                 Transform lockTexture = card.gameObject.transform.Find("Locked");
                 if (lockTexture != null)
@@ -289,14 +299,14 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         // What we do depends upon the screen we're told is next
         Action<MainInputInteractable> clickAction;
         if (nextScreen == AscensionMenuScreens.Screen.SelectChallengesConfirm)
-            clickAction = (MainInputInteractable i) => TransitionToGame();
+            clickAction = i => TransitionToGame();
         else
-            clickAction = (MainInputInteractable i) => AscensionMenuScreens.Instance.SwitchToScreen(nextScreen);
-            
+            clickAction = i => AscensionMenuScreens.Instance.SwitchToScreen(nextScreen);
+
         controller.continueButton.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(controller.continueButton.CursorSelectStarted, clickAction);
 
         // Let the base class do its magic
-        controller.InitializeScreen(screenObject);        
+        controller.InitializeScreen(screenObject);
 
         // And we're done
         return controller;
@@ -310,7 +320,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
         else
         {
-            AscensionMenuScreens.Instance.TransitionToGame(true);
+            AscensionMenuScreens.Instance.TransitionToGame();
         }
     }
 
@@ -318,7 +328,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
     {
         if (this.gameObject.activeSelf)
         {
-            if (this.showCardDisplayer)
+            if (this.ShowCardDisplayer)
             {
                 this.DisplayCardInfo(null, " ", " ");
             }
@@ -331,7 +341,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
     public virtual void DisplayMessage(string message)
     {
-        if (this.showCardDisplayer)
+        if (this.ShowCardDisplayer)
         {
             this.DisplayCardInfo(null, message, " ");
         }
@@ -342,34 +352,25 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
     }
 
-    public virtual void LeftButtonClicked(MainInputInteractable button)
-    {
+    public virtual void LeftButtonClicked(MainInputInteractable button) { }
 
-    }
-
-    public virtual void RightButtonClicked(MainInputInteractable button)
-    {
-            
-    }
+    public virtual void RightButtonClicked(MainInputInteractable button) { }
 
     public virtual void CardCursorEntered(PixelSelectableCard card)
     {
-        if (this.showCardDisplayer)
+        if (this.ShowCardDisplayer)
             this.DisplayCardInfo(card.Info);
     }
 
-    public virtual void CardClicked(PixelSelectableCard card)
-    {
+    public virtual void CardClicked(PixelSelectableCard card) { }
 
-    }
+    private static readonly Vector2 FirstCardOffset = new Vector2(-1.5f, 0f);
 
-    private static Vector2 FIRST_CARD_OFFSET = new Vector2(-1.5f, 0f);
-
-    private static Vector2 BETWEEN_CARD_OFFSET = new Vector2(0.5f, 0f);
+    private static readonly Vector2 BetweenCardOffset = new Vector2(0.5f, 0f);
 
     public void ShowCards(List<CardInfo> cardsToDisplay)
     {
-        if (!this.showCardDisplayer)
+        if (!this.ShowCardDisplayer)
             return;
 
         foreach (PixelSelectableCard card in this.cards)
@@ -377,51 +378,60 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
         int numToShow = Math.Min(this.cards.Count, cardsToDisplay.Count);
 
-        float gaps = ((float)(this.cards.Count - numToShow)) / 2f;
-        Vector2 startPos = FIRST_CARD_OFFSET + BETWEEN_CARD_OFFSET * gaps;
+        float gaps = (this.cards.Count - numToShow) / 2f;
+        Vector2 startPos = FirstCardOffset + BetweenCardOffset * gaps;
 
         for (int i = 0; i < numToShow; i++)
         {
             this.cards[i].SetInfo(cardsToDisplay[i]);
-            this.cards[i].gameObject.transform.localPosition = startPos + (float)i * BETWEEN_CARD_OFFSET;
+            this.cards[i].gameObject.transform.localPosition = startPos + i * BetweenCardOffset;
             this.cards[i].gameObject.SetActive(true);
         }
     }
 
     public const string CENTER_DASHES = "-------------------------------------------------------------------------------------------------------------------------------";
-    public const string FULL_DASHES = "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
 
-    public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate=false)
+    public const string FULL_DASHES =
+        "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+
+    public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate = false)
     {
-        if (!showCardDisplayer)
+        if (!ShowCardDisplayer)
             return;
 
         string lineOne = $"{CENTER_DASHES} <color=#eef4c6>{nameOverride ?? info.DisplayedNameLocalized}</color> {CENTER_DASHES}";
         string lineTwo = descOverride ?? info.GetGBCDescriptionLocalized(info.Abilities);
-        string lineThree = FULL_DASHES;
-	
-        this.cardInfoLines.ShowText(0.1f, new string[]
-        {
-            lineThree,
-            lineTwo,
-            lineOne
-        }, immediate);
+
+        this.cardInfoLines.ShowText(
+            0.1f,
+            new[]
+            {
+                FULL_DASHES,
+                lineTwo,
+                lineOne
+            },
+            immediate
+        );
     }
 
-    public void ClearCardInfo(bool immediate=true)
+    public void ClearCardInfo(bool immediate = true)
     {
-        if (!showCardDisplayer)
+        if (!ShowCardDisplayer)
             return;
 
-        this.cardInfoLines.ShowText(0.1f, new string[]
-        {
-            FULL_DASHES,
-            string.Empty,
-            FULL_DASHES
-        }, immediate);
+        this.cardInfoLines.ShowText(
+            0.1f,
+            new[]
+            {
+                FULL_DASHES,
+                string.Empty,
+                FULL_DASHES
+            },
+            immediate
+        );
     }
 
-    public void DisplayChallengeInfo(string message, int points, bool immediate=false)
+    public void DisplayChallengeInfo(string message, int points, bool immediate = false)
     {
         string lineOne = Localization.Translate(message);
 
@@ -433,7 +443,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         else if (points < 0)
         {
             lineTwo = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), -points);
-        } else
+        }
+        else
         {
             lineTwo = string.Format(Localization.Translate("{0} Challenge Points Added"), points);
         }
@@ -447,22 +458,24 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }
         else
         {
-            if (activeChallengePoints == challengeLevel * 10)
-            {
-                lineThree = string.Format(Localization.Translate("Lvl Reqs Met"), Array.Empty<object>());
-            }
-            else
-            {
-                lineThree = string.Format(Localization.Translate("Lvl Reqs NOT MET"), Array.Empty<object>());
-            }
+            lineThree = string.Format(
+                activeChallengePoints == challengeLevel * 10
+                    ? Localization.Translate("Lvl Reqs Met")
+                    : Localization.Translate("Lvl Reqs NOT MET"),
+                Array.Empty<object>()
+            );
         }
 
-        this.challengeFooterLines.ShowText(0.1f, new string[]
-        {
-            lineOne,
-            lineTwo,
-            lineThree
-        }, immediate);
+        this.challengeFooterLines.ShowText(
+            0.1f,
+            new[]
+            {
+                lineOne,
+                lineTwo,
+                lineThree
+            },
+            immediate
+        );
 
         challengeHeaderDisplay.UpdateText();
     }
@@ -476,10 +489,13 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         base.OnEnable();
     }
 
-    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate=false)
+    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate = false)
     {
         AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
-        int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
+        int points = info.pointValue
+            * (AscensionSaveData.Data.ChallengeIsActive(challenge)
+                ? 1
+                : -1);
         DisplayChallengeInfo(info.title, points, immediate);
     }
 }

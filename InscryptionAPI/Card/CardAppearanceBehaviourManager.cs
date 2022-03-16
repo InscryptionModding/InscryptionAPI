@@ -24,7 +24,7 @@ public static class CardAppearanceBehaviourManager
 
     public readonly static ReadOnlyCollection<FullCardAppearanceBehaviour> BaseGameAppearances = new(GenBaseGameAppearanceList());
     private readonly static ObservableCollection<FullCardAppearanceBehaviour> NewAppearances = new();
-    
+
     public static List<FullCardAppearanceBehaviour> AllAppearances { get; private set; } = BaseGameAppearances.ToList();
 
     static CardAppearanceBehaviourManager()

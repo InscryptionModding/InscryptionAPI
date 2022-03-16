@@ -61,7 +61,7 @@ public static class AbilityManager
 
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
     private readonly static ObservableCollection<FullAbility> NewAbilities = new();
-    
+
     public static List<FullAbility> AllAbilities { get; private set; } = BaseGameAbilities.ToList();
     public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
 
@@ -90,7 +90,7 @@ public static class AbilityManager
     }
 
     private static List<FullAbility> GenBaseGameAbilityList()
-    {           
+    {
         bool useReversePatch = true;
         try
         {
@@ -106,13 +106,16 @@ public static class AbilityManager
         foreach (var ability in Resources.LoadAll<AbilityInfo>("Data/Abilities"))
         {
             var name = ability.ability.ToString();
-            baseGame.Add(new FullAbility
-            (
-                ability.ability,
-                ability,
-                gameAsm.GetType($"DiskCardGame.{name}"),
-                useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
-            ));
+            baseGame.Add(
+                new FullAbility(
+                    ability.ability,
+                    ability,
+                    gameAsm.GetType($"DiskCardGame.{name}"),
+                    useReversePatch
+                        ? OriginalLoadAbilityIcon(name)
+                        : AbilitiesUtil.LoadAbilityIcon(name)
+                )
+            );
         }
         return baseGame;
     }
@@ -142,14 +145,14 @@ public static class AbilityManager
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
 
-    [HarmonyReversePatch(HarmonyReversePatchType.Original)]
+    [HarmonyReversePatch]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbility = false, bool something = false) { throw new NotImplementedException(); }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
-    private static bool LoadAbilityIconReplacement(string abilityName, ref Texture __result)
+    private static bool LoadAbilityIconReplacement(ref string abilityName, ref Texture __result)
     {
         if (string.IsNullOrEmpty(abilityName))
             return true;
@@ -164,14 +167,18 @@ public static class AbilityManager
         if (int.TryParse(abilityName, out int abilityId))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == (Ability)abilityId);
-            __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
+            __result = (normalTexture || ability.CustomFlippedTexture == null)
+                ? ability.Texture
+                : ability.CustomFlippedTexture;
             return false;
         }
 
         if (Enum.TryParse<Ability>(abilityName, out Ability abilityEnum))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == abilityEnum);
-            __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
+            __result = (normalTexture || ability.CustomFlippedTexture == null)
+                ? ability.Texture
+                : ability.CustomFlippedTexture;
             return false;
         }
 
@@ -180,7 +187,7 @@ public static class AbilityManager
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.GetLearnedAbilities))]
-    private static bool GetLearnedAbilitesReplacement(bool opponentUsable, int minPower, int maxPower, AbilityMetaCategory categoryCriteria, ref List<Ability> __result)
+    private static bool GetLearnedAbilitiesReplacement(bool opponentUsable, int minPower, int maxPower, AbilityMetaCategory categoryCriteria, ref List<Ability> __result)
     {
         __result = new();
 
@@ -197,7 +204,7 @@ public static class AbilityManager
                 __result.Add(ability.ability);
             }
         }
-        
+
         return false;
     }
 
@@ -219,9 +226,9 @@ public static class AbilityManager
     //     return false;
     // }
 
-    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
+    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", typeof(AbilityMetaCategory))]
     [HarmonyPostfix]
-	public static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+    public static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {NewAbilities.Count}");
         if (NewAbilities.Count > 0)
@@ -235,11 +242,13 @@ public static class AbilityManager
                     int curPageNum = (int)Ability.NUM_ABILITIES;
                     List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
-                    foreach(FullAbility fab in abilitiesToAdd)
+                    foreach (FullAbility fab in abilitiesToAdd)
                     {
-                        RuleBookPageInfo info = new();
-                        info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum);
+                        RuleBookPageInfo info = new()
+                        {
+                            pagePrefab = pageRangeInfo.rangePrefab,
+                            headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
+                        };
                         __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;

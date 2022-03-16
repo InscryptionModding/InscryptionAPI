@@ -21,7 +21,7 @@ public static class RegionManager
                 for (int i = 0; i < region.encounters.Count; i++)
                     if (region.encounters[i].name.Equals(newData.name))
                         region.encounters[i] = newData;
-            
+
             if (region.bossPrepEncounter != null)
                 if (region.bossPrepEncounter.name.Equals(newData.name))
                     region.bossPrepEncounter = newData;
@@ -30,9 +30,9 @@ public static class RegionManager
 
     private static RegionData CloneRegion(this RegionData data)
     {
-        RegionData retval = (RegionData) UnityObject.Internal_CloneSingle(data);
-        retval.name = data.name;
-        return retval;
+        RegionData returnValue = (RegionData)UnityObject.Internal_CloneSingle(data);
+        returnValue.name = data.name;
+        return returnValue;
     }
 
     public static void SyncRegionList()
@@ -72,23 +72,24 @@ public static class RegionManager
 
     public static List<RegionData> AllRegionsCopy { get; private set; } = BaseGameRegions.ToList();
 
-    public static void Add(RegionData newRegion, int tier) {
+    public static void Add(RegionData newRegion, int tier)
+    {
         if (!NewRegions.Select(x => x.Region).Contains(newRegion))
         {
             NewRegions.Add(new Part1RegionData(newRegion, tier));
         }
     }
-    public static void Remove(RegionData region) => NewRegions.Remove(NewRegions.Where(x => x.Region == region).First());
+    public static void Remove(RegionData region) => NewRegions.Remove(NewRegions.First(x => x.Region == region));
 
     public static RegionData New(string name, int tier, bool addToPool = true)
     {
-        RegionData retval = ScriptableObject.CreateInstance<RegionData>();
-        retval.name = name;
+        RegionData returnValue = ScriptableObject.CreateInstance<RegionData>();
+        returnValue.name = name;
 
         if (addToPool)
-            Add(retval, tier);
+            Add(returnValue, tier);
 
-        return retval;
+        return returnValue;
     }
 
     /// <summary>
@@ -97,13 +98,13 @@ public static class RegionManager
     public static RegionData FromTierFull(string name, int originalTier, int newTier, bool addToPool = true)
     {
         RegionProgression copy = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
-        RegionData retval = (RegionData) RegionData.Internal_CloneSingle(copy.regions[originalTier]);
-        retval.name = name;
+        RegionData returnValue = (RegionData)UnityObject.Internal_CloneSingle(copy.regions[originalTier]);
+        returnValue.name = name;
 
         if (addToPool)
-            Add(retval, newTier);
+            Add(returnValue, newTier);
 
-        return retval;
+        return returnValue;
     }
 
     /// <summary>
@@ -119,16 +120,16 @@ public static class RegionManager
     /// </summary>
     public static RegionData FromTierBasic(string name, int originalTier, int newTier, bool addToPool = true)
     {
-        RegionData retval = FromTierFull(name, originalTier, newTier, addToPool);
+        RegionData returnValue = FromTierFull(name, originalTier, newTier, addToPool);
 
-        retval.encounters = new();
-        retval.bossPrepCondition = null;
-        retval.consumableItems = new();
-        retval.dominantTribes = new();
-        retval.likelyCards = new();
-        retval.terrainCards = new();
+        returnValue.encounters = new();
+        returnValue.bossPrepCondition = null;
+        returnValue.consumableItems = new();
+        returnValue.dominantTribes = new();
+        returnValue.likelyCards = new();
+        returnValue.terrainCards = new();
 
-        return retval;
+        return returnValue;
     }
 
     /// <summary>
@@ -152,10 +153,9 @@ public static class RegionManager
         {
             if (RunState.Run.regionTier == RegionProgression.Instance.regions.Count - 1)
             {
-                if (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.FinalBoss))
-                    __result = RegionProgression.Instance.ascensionFinalBossRegion;
-                else
-                    __result = RegionProgression.Instance.ascensionFinalRegion;
+                __result = AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.FinalBoss)
+                    ? RegionProgression.Instance.ascensionFinalBossRegion
+                    : RegionProgression.Instance.ascensionFinalRegion;
                 return false;
             }
             __result = GetRandomRegionFromTier(RunState.Run.regionOrder[RunState.Run.regionTier]);
@@ -175,9 +175,6 @@ public static class RegionManager
             valid.AddRange(NewRegions.Where(x => x.Tier == tier).Select(x => x.Region));
             return valid[SeededRandom.Range(0, valid.Count, SaveManager.SaveFile.randomSeed + tier + 1)];
         }
-        else
-        {
-            return RegionProgression.Instance.regions[tier];
-        }
+        return RegionProgression.Instance.regions[tier];
     }
 }

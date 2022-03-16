@@ -8,16 +8,14 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class AscensionChallengeScreenPatches
 {
-    private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = TextureHelper.ConvertTexture(
-        Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),
-        TextureHelper.SpriteType.ChallengeIcon);
+    private static readonly Sprite DefaultActivatedSprite = Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default").ConvertTexture(TextureHelper.SpriteType.ChallengeIcon);
 
     [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
     [HarmonyPostfix]
     public static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
     {
         if (info.activatedSprite == null)
-            __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
+            __instance.activatedRenderer.sprite = DefaultActivatedSprite;
 
         if (info.pointValue > 0)
         {
@@ -52,7 +50,7 @@ public static class AscensionChallengeScreenPatches
         for (int i = 1; i <= 7; i++)
         {
             paginator.topRow.Add(topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>());
-            paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>());
+            paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i + 7}").gameObject.GetComponent<AscensionIconInteractable>());
         }
         paginator.extraIcon = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>();
         paginator.showExtraIcon = AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel);
@@ -60,13 +58,13 @@ public static class AscensionChallengeScreenPatches
 
         paginator.GeneratePages();
 
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, upperPosition:true);
+        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, true);
 
         AscensionMenuInteractable leftController = pageTuple.Item1;
         AscensionMenuInteractable rightController = pageTuple.Item2;
 
-        Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.ChallengePageLeft(i);
-        Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.ChallengePageRight(i);
+        Action<MainInputInteractable> leftClickAction = i => paginator.ChallengePageLeft(i);
+        Action<MainInputInteractable> rightClickAction = i => paginator.ChallengePageRight(i);
 
         leftController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(leftController.CursorSelectStarted, leftClickAction);
         rightController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(rightController.CursorSelectStarted, rightClickAction);
@@ -75,8 +73,8 @@ public static class AscensionChallengeScreenPatches
 
         if (ChallengeManager.NewInfos.Count == 0)
         {
-            GameObject.Destroy(leftController.gameObject);
-            GameObject.Destroy(rightController.gameObject);
+            UnityObject.Destroy(leftController.gameObject);
+            UnityObject.Destroy(rightController.gameObject);
         }
     }
 }

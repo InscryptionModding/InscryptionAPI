@@ -7,18 +7,18 @@ namespace InscryptionAPI.Encounters;
 public class TurnBuilder<T> where T : EncounterBlueprintData
 {
     internal T blueprint;
-    internal List<CardBlueprint> cards;
+    internal readonly List<CardBlueprint> cards;
 
     public TurnBuilder()
     {
         cards = new();
     }
 
-    public void SetBlueprint(T blueprint)
+    public void SetBlueprint(T blueprintData)
     {
-        this.blueprint = blueprint;
-        blueprint.turns = blueprint.turns ?? new();
-        blueprint.turns.Add(cards);
+        this.blueprint = blueprintData;
+        blueprintData.turns ??= new();
+        blueprintData.turns.Add(cards);
     }
 
 }
@@ -28,6 +28,7 @@ public static class TurnExtensions
     /// <summary>
     /// Adds a card blueprint to this turn.
     /// </summary>
+    /// <param name="turnBuilder">The TurnBuilder object that will be returned</param>
     /// <param name="card">The default card. Can be null for no card.</param>
     /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c></param>
     /// <param name="minDifficulty">The minimum difficulty for this card to appear.</param>
@@ -35,21 +36,30 @@ public static class TurnExtensions
     /// <param name="difficultyReplace">Whether to replace this card when a certain difficulty threshold is met.</param>
     /// <param name="difficultyReplaceReq">The difficulty threshold for the <c>replacement</c> card to be used instead.</param>
     /// <param name="replacement">The replacement card for the difficulty replacement.</param>
-    public static TurnBuilder<T> AddCardBlueprint<T>(this TurnBuilder<T> turnBuilder, string card, int randomReplaceChance = 0,
-        int minDifficulty = 1, int maxDifficulty = 20,
-        bool difficultyReplace = false, int difficultyReplaceReq = 0, string replacement = null)
+    public static TurnBuilder<T> AddCardBlueprint<T>(
+        this TurnBuilder<T> turnBuilder,
+        string card,
+        int randomReplaceChance = 0,
+        int minDifficulty = 1,
+        int maxDifficulty = 20,
+        bool difficultyReplace = false,
+        int difficultyReplaceReq = 0,
+        string replacement = null
+    )
         where T : EncounterBlueprintData
     {
-        turnBuilder.cards.Add(new CardBlueprint()
-        {
-            card = CardManager.AllCardsCopy.CardByName(card),
-            randomReplaceChance = randomReplaceChance,
-            minDifficulty = minDifficulty,
-            maxDifficulty = maxDifficulty,
-            difficultyReplace = difficultyReplace,
-            difficultyReq = difficultyReplaceReq,
-            replacement = CardManager.AllCardsCopy.CardByName(card)
-        });
+        turnBuilder.cards.Add(
+            new CardBlueprint
+            {
+                card = CardManager.AllCardsCopy.CardByName(card),
+                randomReplaceChance = randomReplaceChance,
+                minDifficulty = minDifficulty,
+                maxDifficulty = maxDifficulty,
+                difficultyReplace = difficultyReplace,
+                difficultyReq = difficultyReplaceReq,
+                replacement = CardManager.AllCardsCopy.CardByName(card)
+            }
+        );
         return turnBuilder;
     }
 

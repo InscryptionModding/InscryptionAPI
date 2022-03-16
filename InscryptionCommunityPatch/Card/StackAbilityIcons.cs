@@ -11,7 +11,7 @@ public static class StackAbilityIcons
 {
     // This patch modifies ability sigils such that multiple instances of the same sigil
     // are displayed as a single sigil with a number to indicate how many copies there are
-    private static Texture2D[] NUMBER_TEXTURES = new Texture2D[]
+    private static readonly Texture2D[] NumberTextures = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_1.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_2.png", typeof(StackAbilityIcons).Assembly),
@@ -24,7 +24,7 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_9.png", typeof(StackAbilityIcons).Assembly)
     };
 
-    private static Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
+    private static readonly Texture2D[] MediumNumberTextures = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_1_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_2_med.png", typeof(StackAbilityIcons).Assembly),
@@ -40,10 +40,10 @@ public static class StackAbilityIcons
     private static Sprite GetGBCNumberSprite(int number)
     {
         Texture2D texture = TextureHelper.GetImageAsTexture("stack_gbc.png", typeof(StackAbilityIcons).Assembly);
-        return Sprite.Create(texture, new Rect(0f, 10f * (9f-number), 15f, 10f), new Vector2(0.5f, 0.5f));
+        return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
     }
 
-    private static Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
+    private static readonly Sprite[] GbcNumberSprites = new Sprite[]
     {
         GetGBCNumberSprite(1),
         GetGBCNumberSprite(2),
@@ -57,13 +57,13 @@ public static class StackAbilityIcons
     };
 
     private static Color[] _topBorder = null;
-    private static Color[] TOP_BORDER
+    private static Color[] TopBorder
     {
         get
         {
             if (_topBorder == null)
             {
-                _topBorder = new Color[NUMBER_TEXTURES[0].width + 1];
+                _topBorder = new Color[NumberTextures[0].width + 1];
                 for (int i = 0; i < _topBorder.Length; i++)
                     _topBorder[i] = new Color(0f, 0f, 0f, 0f); // Add a completely transparent pixel
             }
@@ -72,13 +72,13 @@ public static class StackAbilityIcons
     }
 
     private static Color[] _leftBorder = null;
-    private static Color[] LEFT_BORDER
+    private static Color[] LeftBorder
     {
         get
         {
             if (_leftBorder == null)
             {
-                _leftBorder = new Color[NUMBER_TEXTURES[0].height + 1];
+                _leftBorder = new Color[NumberTextures[0].height + 1];
                 for (int i = 0; i < _leftBorder.Length; i++)
                     _leftBorder[i] = new Color(0f, 0f, 0f, 0f); // Add a completely transparent pixel
             }
@@ -86,14 +86,14 @@ public static class StackAbilityIcons
         }
     }
 
-    private static int NORMAL = 1;
-    private static int MEDIUM = 2;
-    private static int FORCED = 3;
+    private const int Normal = 1;
+    private const int Medium = 2;
+    private const int Forced = 3;
 
-    private static Dictionary<string, Texture2D> patchedTexture = new Dictionary<string, Texture2D>();
-    private static Dictionary<Ability, Tuple<Vector2Int, int>> patchLocations = new Dictionary<Ability, Tuple<Vector2Int, int>>();
+    private static readonly Dictionary<string, Texture2D> PatchedTexture = new Dictionary<string, Texture2D>();
+    private static readonly Dictionary<Ability, Tuple<Vector2Int, int>> PatchLocations = new Dictionary<Ability, Tuple<Vector2Int, int>>();
 
-    [HarmonyPatch(typeof(CardAbilityIcons), "GetDistinctShownAbilities")]
+    [HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.GetDistinctShownAbilities))]
     [HarmonyPostfix]
     public static void ClearStackableIcons(ref List<Ability> __result)
     {
@@ -104,7 +104,9 @@ public static class StackAbilityIcons
 
     private static Vector2Int FindMatchingOnesDigit(Texture2D searchTex, bool normalSize = true)
     {
-        Texture2D onesTexture = normalSize ? NUMBER_TEXTURES[0] : MEDIUM_NUMBER_TEXTURES[0];
+        Texture2D onesTexture = normalSize
+            ? NumberTextures[0]
+            : MediumNumberTextures[0];
         Color[] onesColor = onesTexture.GetPixels();
         return FindMatchingTexture(searchTex, onesTexture.width, onesTexture.height, onesColor);
     }
@@ -137,8 +139,8 @@ public static class StackAbilityIcons
                                 failed = true;
                                 break;
                             }
-                        } 
-                        else 
+                        }
+                        else
                         {
                             if (searchPixels[i].a > 0)
                             {
@@ -174,7 +176,7 @@ public static class StackAbilityIcons
         // We will call it available if it's all blank and there is a one-pixel border around it
         Color[] pixels = texture.GetPixels();
 
-        Vector2Int lowerRight = new Vector2Int(texture.width - NUMBER_TEXTURES[0].width, 0);
+        Vector2Int lowerRight = new Vector2Int(texture.width - NumberTextures[0].width, 0);
         bool success = true;
         for (int sX = lowerRight.x - 1; sX < texture.width; sX++)
         {
@@ -194,58 +196,59 @@ public static class StackAbilityIcons
         }
 
         if (success)
-            return new Tuple<Vector2Int, int>(lowerRight, NORMAL);
+            return new Tuple<Vector2Int, int>(lowerRight, Normal);
 
         // Okay, the lower right is not clear.
         // At this point, we're just going to look for any clear space.
         // A clear space is all blank and has a one-pixel gap around it
-        Vector2Int nextBest = FindMatchingTexture(texture, NUMBER_TEXTURES[0].width + 2, NUMBER_TEXTURES[0].height + 2);
-        if (nextBest.x != -1)
-            return new Tuple<Vector2Int, int>(nextBest, NORMAL);
+        Vector2Int nextBest = FindMatchingTexture(texture, NumberTextures[0].width + 2, NumberTextures[0].height + 2);
+        return nextBest.x != -1
+            ? new Tuple<Vector2Int, int>(nextBest, Normal)
+            // Ugh. Okay, we have to use the lower right now.
+            // And we'll just have to deal with what that looks like.
+            : new Tuple<Vector2Int, int>(lowerRight, Forced);
 
-        // Ugh. Okay, we have to use the lower right now.
-        // And we'll just have to deal with what that looks like.
-        return new Tuple<Vector2Int, int>(lowerRight, FORCED);
     }
 
     private static Tuple<Vector2Int, int> GetPatchLocationForAbility(Ability ability, Texture2D abilityTexture)
     {
-        if (patchLocations.ContainsKey(ability))
-            return patchLocations[ability];
+        if (PatchLocations.ContainsKey(ability))
+            return PatchLocations[ability];
 
         // We have to calculate the location
 
         // First, see if the texture has the 'one' icon on it. If so, we will replace at that location
-        Vector2Int oneLoc = FindMatchingOnesDigit(abilityTexture, true);
+        Vector2Int oneLoc = FindMatchingOnesDigit(abilityTexture);
         if (oneLoc.x != -1)
         {
-            patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, NORMAL));
-            return patchLocations[ability];
+            PatchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, Normal));
+            return PatchLocations[ability];
         }
 
         // Let's try the medium-sized digit
         oneLoc = FindMatchingOnesDigit(abilityTexture, false);
         if (oneLoc.x != -1)
         {
-            patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, MEDIUM));
-            return patchLocations[ability];
+            PatchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, Medium));
+            return PatchLocations[ability];
         }
 
         // Now we just use the next best space
-        patchLocations.Add(ability, FindNextBestLocation(abilityTexture));
-        return patchLocations[ability];
+        PatchLocations.Add(ability, FindNextBestLocation(abilityTexture));
+        return PatchLocations[ability];
     }
 
     private static Texture2D DuplicateTexture(Texture2D texture)
     {
         // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
         // Create a temporary RenderTexture of the same size as the texture
-        RenderTexture tmp = RenderTexture.GetTemporary( 
-                            texture.width,
-                            texture.height,
-                            0,
-                            RenderTextureFormat.Default,
-                            RenderTextureReadWrite.Linear);
+        RenderTexture tmp = RenderTexture.GetTemporary(
+            texture.width,
+            texture.height,
+            0,
+            RenderTextureFormat.Default,
+            RenderTextureReadWrite.Linear
+        );
 
 
         // Blit the pixels on texture to the RenderTexture
@@ -275,30 +278,32 @@ public static class StackAbilityIcons
 
     private static Texture2D PatchTexture(Ability ability, int count)
     {
-        if (count <= 1 || count >= 10) // We can't actually patch anything more than 9 stacks right now.
+        if (count is <= 1 or >= 10) // We can't actually patch anything more than 9 stacks right now.
             return null;
 
         string textureName = $"{ability.ToString()}-icon-{count}-PATCHEDINF";
-        if (patchedTexture.ContainsKey(textureName))
-            return patchedTexture[textureName];
+        if (PatchedTexture.ContainsKey(textureName))
+            return PatchedTexture[textureName];
 
         // Copy the old texture to the new texture
-        Texture2D newTexture = DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString(), false, false) as Texture2D);
+        Texture2D newTexture = DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString()) as Texture2D);
         newTexture.name = textureName;
 
         Tuple<Vector2Int, int> patchTuple = GetPatchLocationForAbility(ability, newTexture);
         Vector2Int patchLocation = patchTuple.Item1;
         int textureType = patchTuple.Item2; // This means that it's on the lower-right and needs a one-pixel border
 
-        if (textureType == FORCED)
+        if (textureType == Forced)
         {
             // We will set a one-pixel border around the location
-            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, TOP_BORDER.Length, 1, TOP_BORDER, 0);
-            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, 1, LEFT_BORDER.Length, LEFT_BORDER, 0);
+            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, TopBorder.Length, 1, TopBorder, 0);
+            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, 1, LeftBorder.Length, LeftBorder, 0);
         }
-        
+
         // Set the new number
-        Texture2D newNumber = (textureType == NORMAL) ? NUMBER_TEXTURES[count - 1] : MEDIUM_NUMBER_TEXTURES[count - 1];
+        Texture2D newNumber = (textureType == Normal)
+            ? NumberTextures[count - 1]
+            : MediumNumberTextures[count - 1];
         newTexture.SetPixels(patchLocation.x, patchLocation.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
 
         newTexture.filterMode = FilterMode.Point;
@@ -307,11 +312,11 @@ public static class StackAbilityIcons
         newTexture.Apply();
 
         // Upload to the dictionary
-        patchedTexture.Add(textureName, newTexture);
+        PatchedTexture.Add(textureName, newTexture);
         return newTexture;
     }
 
-    [HarmonyPatch(typeof(AbilityIconInteractable), "AssignAbility")]
+    [HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
     [HarmonyPostfix]
     public static void AddIconNumber(Ability ability, CardInfo info, PlayableCard card, ref AbilityIconInteractable __instance)
     {
@@ -330,8 +335,8 @@ public static class StackAbilityIcons
         List<Ability> baseAbilities = info.Abilities;
         if (card != null)
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
-        
-        int count = baseAbilities.Where(ab => ab == ability).Count();
+
+        int count = baseAbilities.Count(ab => ab == ability);
 
         if (count > 1)
         {
@@ -341,35 +346,31 @@ public static class StackAbilityIcons
         }
     }
 
-    [HarmonyPatch(typeof(PixelCardAbilityIcons), "DisplayAbilities", new Type[] { typeof(List<Ability>), typeof(PlayableCard)})]
+    [HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), typeof(List<Ability>), typeof(PlayableCard))]
     [HarmonyPrefix]
     public static bool PatchPixelCardStacks(ref PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
     {
-        List<Tuple<Ability, int>> grps = abilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Where(ab => ab == a).Count())).ToList();
+        List<Tuple<Ability, int>> distinctGroups = abilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Count(ab => ab == a))).ToList();
         List<GameObject> abilityIconGroups = __instance.abilityIconGroups;
-
-        //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"abilityIconGroups {abilityIconGroups}");
 
         if (abilityIconGroups.Count > 0)
         {
             foreach (GameObject gameObject in abilityIconGroups)
                 gameObject.gameObject.SetActive(false);
-            
-            if (grps.Count > 0 && grps.Count - 1 < abilityIconGroups.Count)
+
+            if (distinctGroups.Count > 0 && distinctGroups.Count - 1 < abilityIconGroups.Count)
             {
-                GameObject iconGroup = abilityIconGroups[grps.Count - 1];
+                GameObject iconGroup = abilityIconGroups[distinctGroups.Count - 1];
                 iconGroup.gameObject.SetActive(true);
 
-                List<SpriteRenderer> componentsInChildren = new();
-                foreach (Transform child in iconGroup.transform)
-                    componentsInChildren.Add(child.gameObject.GetComponent<SpriteRenderer>());
+                List<SpriteRenderer> componentsInChildren = (from Transform child in iconGroup.transform select child.gameObject.GetComponent<SpriteRenderer>()).ToList();
 
                 componentsInChildren.RemoveAll(sr => sr == null);
 
                 for (int i = 0; i < componentsInChildren.Count; i++)
                 {
                     SpriteRenderer abilityRenderer = componentsInChildren[i];
-                    AbilityInfo info = AbilitiesUtil.GetInfo(grps[i].Item1);
+                    AbilityInfo info = AbilitiesUtil.GetInfo(distinctGroups[i].Item1);
                     abilityRenderer.sprite = info.pixelIcon;
                     if (info.flipYIfOpponent && card != null && card.OpponentCard)
                     {
@@ -387,10 +388,9 @@ public static class StackAbilityIcons
                     // But only if we need to
                     Transform countTransform = abilityRenderer.transform.Find("Count");
 
-                    if (countTransform == null && grps[i].Item2 <= 1)
+                    if (countTransform == null && distinctGroups[i].Item2 <= 1)
                         continue;
 
-//InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform {countTransform}");
                     if (countTransform == null)
                     {
                         GameObject counter = new GameObject();
@@ -408,20 +408,18 @@ public static class StackAbilityIcons
                         counter.transform.localPosition = new Vector3(.03f, -.05f, 0f);
                         countTransform = counter.transform;
                     }
-                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform.gameObject {countTransform.gameObject}");
-                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform.gameObject.spriterenderer {countTransform.gameObject.GetComponent<SpriteRenderer>()}");
 
-                    if (grps[i].Item2 <= 1)
+                    if (distinctGroups[i].Item2 <= 1)
                         countTransform.gameObject.SetActive(false);
                     else
                     {
                         countTransform.gameObject.SetActive(true);
-                        countTransform.gameObject.GetComponent<SpriteRenderer>().sprite = GBC_NUMBER_SPRITES[grps[i].Item2 - 1];
+                        countTransform.gameObject.GetComponent<SpriteRenderer>().sprite = GbcNumberSprites[distinctGroups[i].Item2 - 1];
                     }
                 }
             }
-            __instance.conduitIcon.SetActive(abilities.Exists((Ability x) => AbilitiesUtil.GetInfo(x).conduit));
-            Ability ability = abilities.Find((Ability x) => AbilitiesUtil.GetInfo(x).activated);
+            __instance.conduitIcon.SetActive(abilities.Exists(x => AbilitiesUtil.GetInfo(x).conduit));
+            Ability ability = abilities.Find(x => AbilitiesUtil.GetInfo(x).activated);
 
             PixelActivatedAbilityButton button = __instance.activatedAbilityButton;
             if (ability > Ability.None)
@@ -440,33 +438,33 @@ public static class StackAbilityIcons
     public static string StackDescription(string input)
     {
         string[] lines = input.Split('\n');
-        string retval = lines[0];
+        string returnValue = lines[0];
         int duplicateCount = 0;
         for (int i = 1; i < lines.Length; i++)
         {
-            if (lines[i] == lines[i-1])
+            if (lines[i] == lines[i - 1])
             {
                 duplicateCount += 1;
             }
             else
             {
                 if (duplicateCount > 0)
-                    retval = retval + $" (x{duplicateCount + 1})";
-                retval = retval + "\n" + lines[i];
+                    returnValue += $" (x{duplicateCount + 1})";
+                returnValue = returnValue + "\n" + lines[i];
                 duplicateCount = 0;
             }
         }
-        if (duplicateCount > 0 )
+        if (duplicateCount > 0)
         {
-            retval = retval + $" (x{duplicateCount + 1})";
-        } 
-        return retval;
+            returnValue += $" (x{duplicateCount + 1})";
+        }
+        return returnValue;
     }
 
-    [HarmonyPatch(typeof(CardInfo), "GetGBCDescriptionLocalized")]
+    [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GetGBCDescriptionLocalized))]
     [HarmonyPostfix]
     public static void GetStackedGBCDescriptionLocalized(ref string __result)
     {
-        __result = StackDescription(__result);        
+        __result = StackDescription(__result);
     }
 }

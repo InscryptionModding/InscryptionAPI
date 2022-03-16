@@ -17,19 +17,15 @@ public class CustomNodeData : SpecialNodeData
     /// <returns>TRUE if the node is able to be added to the map. FALSE if it is not.</returns>
     public delegate bool NodeGenerationCondition(int gridY, List<NodeData> previousNodes);
 
-    private List<SelectionCondition> prerequisiteConditions = new();
-
     /// <summary>
     /// All prerequisite conditions must return TRUE for the node to be eligible to be added to the map
     /// </summary>
-    public override List<SelectionCondition> GenerationPrerequisiteConditions => prerequisiteConditions;
-
-    private List<SelectionCondition> forceGenerationConditions = new();
+    public override List<SelectionCondition> GenerationPrerequisiteConditions { get; } = new();
 
     /// <summary>
     /// If even a single one of these conditions returns TRUE, the node will be added to the map.
     /// </summary>
-    public override List<SelectionCondition> ForceGenerationConditions => forceGenerationConditions;
+    public override List<SelectionCondition> ForceGenerationConditions { get; } = new();
 
     public CustomNodeData()
     {
@@ -77,33 +73,26 @@ public class CustomNodeData : SpecialNodeData
         this.ForceGenerationConditions.Add(new DelegateCondition(condition));
     }
 
-    [SerializeField]
     internal string guid;
 
     /// <summary>
     /// This prefab path has been specially formatted to work with the custom patches created by the API.
+    /// This syntax works with our custom resource bank loaders.
     /// </summary>
-    public sealed override string PrefabPath
-    {
-        get
-        {
-            // This syntax works with our custom resource bank loaders
-            return $"Prefabs/Map/MapNodesPart1/MapNode_BuyPelts@{guid}";
-        }
-    }
+    public sealed override string PrefabPath => $"Prefabs/Map/MapNodesPart1/MapNode_BuyPelts@{guid}";
 
     private class DelegateCondition : SelectionCondition
     {
-        private NodeGenerationCondition internalDelegate;
+        private readonly NodeGenerationCondition _internalDelegate;
 
         public DelegateCondition(NodeGenerationCondition condition)
         {
-            internalDelegate = condition;
+            _internalDelegate = condition;
         }
 
         public override bool Satisfied(int gridY, List<NodeData> previousNodes)
         {
-            return internalDelegate(gridY, previousNodes);
+            return _internalDelegate(gridY, previousNodes);
         }
     }
 }

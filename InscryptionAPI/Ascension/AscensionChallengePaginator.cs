@@ -87,7 +87,9 @@ public class AscensionChallengePaginator : MonoBehaviour
         {
             if (visibleChallenges[i] == AscensionChallenge.None) // this is a spacer
                 continue;
-            AscensionIconInteractable targetIcon = (i % 2 == 0) ? this.topRow[i / 2] : this.bottomRow[i / 2];
+            AscensionIconInteractable targetIcon = (i % 2 == 0)
+                ? this.topRow[i / 2]
+                : this.bottomRow[i / 2];
             targetIcon.AssignInfo(ChallengeManager.AllInfo.First(sci => sci.challengeType == visibleChallenges[i]));
 
             int numActive = AscensionSaveData.Data.GetNumChallengesOfTypeActive(visibleChallenges[i]);

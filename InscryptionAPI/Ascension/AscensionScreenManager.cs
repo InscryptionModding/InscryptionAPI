@@ -8,7 +8,7 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class AscensionScreenManager
 {
-    internal static List<Type> registeredScreens = new List<Type>();
+    internal static readonly List<Type> registeredScreens = new List<Type>();
 
     internal static Dictionary<AscensionMenuScreens.Screen, AscensionRunSetupScreenBase> screens;
 
@@ -16,7 +16,7 @@ public static class AscensionScreenManager
 
     internal const int CUSTOM_SCREEN_START = 100;
 
-    private static string challengeScreenHoverText = "START RUN";   
+    private static string _challengeScreenHoverText = "START RUN";
 
     public static void RegisterScreen<T>() where T : AscensionRunSetupScreenBase
     {
@@ -26,10 +26,7 @@ public static class AscensionScreenManager
     private static AscensionScreenSort.Direction GetPreferredDirection(Type t)
     {
         AscensionScreenSort sortAttr = Attribute.GetCustomAttribute(t, typeof(AscensionScreenSort)) as AscensionScreenSort;
-        if (sortAttr == null)
-            return AscensionScreenSort.Direction.NoPreference;
-        else
-            return sortAttr.preferredDirection;
+        return sortAttr?.preferredDirection ?? AscensionScreenSort.Direction.NoPreference;
     }
 
     public static void InitializeAllScreens()
@@ -60,7 +57,8 @@ public static class AscensionScreenManager
                 previousScreen = currentScreen;
                 currentScreen = nextScreen;
                 nextScreen = (AscensionMenuScreens.Screen)((int)nextScreen + 1);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 InscryptionAPIPlugin.Logger.LogError(ex);
             }
@@ -74,20 +72,24 @@ public static class AscensionScreenManager
         previousScreen = AscensionMenuScreens.Screen.SelectChallenges;
         currentScreen = (AscensionMenuScreens.Screen)CUSTOM_SCREEN_START;
         nextScreen = (AscensionMenuScreens.Screen)(CUSTOM_SCREEN_START + 1);
-            
-        // Set the hover text of the challenge screen to be the title of the first custom screen
-        challengeScreenHoverText = screens[currentScreen].headerText;
 
-        for (int i = 0; i < screens.Count; i++)
+        // Set the hover text of the challenge screen to be the title of the first custom screen
+        _challengeScreenHoverText = screens[currentScreen].HeaderText;
+
+        foreach (var setupScreenBase in screens)
         {
             AscensionRunSetupScreenBase cur = screens[currentScreen];
 
-            string prevText = screens.ContainsKey(previousScreen) ? screens[previousScreen].headerText : "SELECT CHALLENGES";
-            string nextText = screens.ContainsKey(nextScreen) ? screens[nextScreen].headerText : "START RUN";
+            string prevText = screens.ContainsKey(previousScreen)
+                ? screens[previousScreen].HeaderText
+                : "SELECT CHALLENGES";
+            string nextText = screens.ContainsKey(nextScreen)
+                ? screens[nextScreen].HeaderText
+                : "START RUN";
 
-            Action<MainInputInteractable> prevHoverAction = (MainInputInteractable i) => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(prevText)));
-            Action<MainInputInteractable> nextHoverAction = (MainInputInteractable i) => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(nextText)));
-            Action<MainInputInteractable> unHoverAction = (MainInputInteractable i) => cur.ClearMessage();
+            Action<MainInputInteractable> prevHoverAction = mii => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(prevText)));
+            Action<MainInputInteractable> nextHoverAction = mii => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(nextText)));
+            Action<MainInputInteractable> unHoverAction = mii => cur.ClearMessage();
 
             cur.backButton.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(cur.backButton.CursorEntered, prevHoverAction);
             cur.backButton.CursorExited = (Action<MainInputInteractable>)Delegate.Combine(cur.backButton.CursorExited, unHoverAction);
@@ -123,8 +125,6 @@ public static class AscensionScreenManager
 
         if (AscensionScreenManager.screens.ContainsKey(screen))
             AscensionScreenManager.screens[screen].gameObject.SetActive(true);
-
-        yield break;
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
@@ -138,18 +138,17 @@ public static class AscensionScreenManager
     [HarmonyPostfix]
     public static void DeactivateAllCustomScreens()
     {
-        if (screens != null && screens.Count > 0)
-            foreach (AscensionRunSetupScreenBase screenbase in screens.Values)
-                if (screenbase != null && screenbase.gameObject != null)
-                    screenbase.gameObject.SetActive(false);
+        if (screens is { Count: > 0 })
+            foreach (var screenBase in screens.Values.Where(iScreenBase => iScreenBase && iScreenBase.gameObject))
+                screenBase.gameObject.SetActive(false);
     }
 
     [HarmonyPatch(typeof(AscensionChallengeScreen), "OnContinueCursorEnter")]
     [HarmonyPrefix]
     public static bool HoverTextFirstCustomScreen(ref AscensionChallengeScreen __instance)
     {
-        string line = Localization.Translate(challengeScreenHoverText);
-        __instance.challengeDisplayer.DisplayText("", line, "", false);
+        string line = Localization.Translate(_challengeScreenHoverText);
+        __instance.challengeDisplayer.DisplayText("", line, "");
         return false;
     }
 }
