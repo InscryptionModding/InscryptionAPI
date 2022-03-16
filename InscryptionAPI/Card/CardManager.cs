@@ -149,7 +149,7 @@ public static class CardManager
 
     public static void Add(CardInfo newCard, string modPrefix = default(string))
     {
-        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
+        newCard.SetName(newCard.name, modPrefix);
 
         newCard.SetModPrefix(modPrefix);
 
