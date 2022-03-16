@@ -39,7 +39,7 @@ public static class CardManager
     {
         foreach (CardInfo card in Resources.LoadAll<CardInfo>("Data/Cards"))
         {
-            card.SetBaseGameCard(true);
+            card.SetBaseGameCard();
             yield return card;
         }
     }
@@ -54,14 +54,18 @@ public static class CardManager
     /// </summary>
     public static void SyncCardList()
     {
-        var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-        AllCardsCopy = _eventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
+        var cards = BaseGameCards.Concat(NewCards).Select(CardLoader.Clone).ToList();
+        AllCardsCopy = _eventActive
+            ? ModifyCardList?.Invoke(cards) ?? cards
+            : cards;
     }
 
     private static string GetCardPrefixFromName(this CardInfo info)
     {
         string[] splitName = info.name.Split('_');
-        return splitName.Length > 1 ? splitName[0] : string.Empty;
+        return splitName.Length > 1
+            ? splitName[0]
+            : string.Empty;
     }
 
     private static void AddPrefixesToCards(IEnumerable<CardInfo> cards, string prefix)

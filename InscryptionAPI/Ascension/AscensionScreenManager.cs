@@ -80,12 +80,8 @@ public static class AscensionScreenManager
         {
             AscensionRunSetupScreenBase cur = screens[currentScreen];
 
-            string prevText = screens.ContainsKey(previousScreen)
-                ? screens[previousScreen].HeaderText
-                : "SELECT CHALLENGES";
-            string nextText = screens.ContainsKey(nextScreen)
-                ? screens[nextScreen].HeaderText
-                : "START RUN";
+            string prevText = screens.ContainsKey(previousScreen) ? screens[previousScreen].HeaderText : "SELECT CHALLENGES";
+            string nextText = screens.ContainsKey(nextScreen) ? screens[nextScreen].HeaderText : "START RUN";
 
             Action<MainInputInteractable> prevHoverAction = mii => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(prevText)));
             Action<MainInputInteractable> nextHoverAction = mii => cur.DisplayMessage(Localization.ToUpper(Localization.Translate(nextText)));

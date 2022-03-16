@@ -205,9 +205,7 @@ public static class NodeManager
             if (!nodes[i]
                     .MapGenerationPrequisitesMet(
                         startY + i,
-                        i == 0
-                            ? previousNodes
-                            : previousNodes.Concat(nodes.Take(i)).ToList()
+                        i == 0 ? previousNodes : previousNodes.Concat(nodes.Take(i)).ToList()
                     ))
             {
                 nodes.RemoveAt(i);
@@ -246,9 +244,7 @@ public static class NodeManager
     private static void AddStartEndCustomNodes(ref List<NodeData> __result)
     {
         // We need to create a list of all of the new nodes that go at the front
-        int frontStart = MapGenerator.ForceFirstNodeTraderForAscension(1)
-            ? 2
-            : 1;
+        int frontStart = MapGenerator.ForceFirstNodeTraderForAscension(1) ? 2 : 1;
         List<NodeData> frontNodes = AllNodes.Where(ni => ni.NodePosition.ValidFor(NodePosition.MapStart)).Select(info => info.BuildNode()).Cast<NodeData>().ToList();
 
         // This filters out nodes that shouldn't be there and links them in order
