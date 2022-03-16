@@ -21,16 +21,19 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModVer = "2.0.0";
 
     private static bool _hasShownOldApiWarning = false;
-    
+
     static InscryptionAPIPlugin()
     {
-        AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
+        AppDomain.CurrentDomain.AssemblyResolve += static (_, e) =>
+        {
             if (e.Name.StartsWith("API, Version=1"))
             {
                 if (!_hasShownOldApiWarning)
                 {
-                    Logger.LogWarning("Some plugins installed require an outdated version of the API.\n" +
-                        "An attempt has been made that these still work, but it isn't perfect, so please search for those to disable if you experience any problems.");
+                    Logger.LogWarning(
+                        "Some plugins installed require an outdated version of the API.\n"
+                        + "An attempt has been made that these still work, but it isn't perfect, so please search for those to disable if you experience any problems."
+                    );
                     _hasShownOldApiWarning = true;
                 }
                 return typeof(InscryptionAPIPlugin).Assembly;
@@ -41,7 +44,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     new internal static ManualLogSource Logger;
 
-    private readonly Harmony HarmonyInstance = new(ModGUID);
+    private readonly Harmony _harmonyInstance = new(ModGUID);
 
     public static event Action<Type> ScriptableObjectLoaderLoad;
     internal static void InvokeSOLEvent(Type type)
@@ -53,12 +56,12 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     {
         Logger = base.Logger;
 
-        HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
+        _harmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
     public void OnDisable()
     {
-        HarmonyInstance.UnpatchSelf();
+        _harmonyInstance.UnpatchSelf();
     }
 
     internal static void ResyncAll()

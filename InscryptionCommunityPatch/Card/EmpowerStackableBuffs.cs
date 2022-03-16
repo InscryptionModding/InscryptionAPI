@@ -19,14 +19,12 @@ public static class EmpowerStackableBuffs
         // We just need to know how many beyond 1 there was
 
         int count = card.Info.Abilities
-                    .Concat(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods))
-                    .Where(ab => ab == ability)
-                    .Count();
+            .Concat(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods))
+            .Count(ab => ab == ability);
 
         if (count >= 2)
             return count - 1;
-        else
-            return 0;
+        return 0;
     }
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
@@ -38,9 +36,9 @@ public static class EmpowerStackableBuffs
         // Let's change that.
         if (__instance.OnBoard)
         {
-            foreach (CardSlot cardSlot in Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot))
-                if (cardSlot.Card != null)
-                    __result += cardSlot.Card.ExcessAbilityCount(Ability.BuffNeighbours);
+            __result += Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot)
+                .Where(cardSlot => cardSlot.Card)
+                .Sum(cardSlot => cardSlot.Card.ExcessAbilityCount(Ability.BuffNeighbours));
 
             // Deal with buff and debuff enemy
             // We have to handle giant cards separately (i.e., the moon)
@@ -48,34 +46,29 @@ public static class EmpowerStackableBuffs
             {
                 if (!__instance.HasAbility(Ability.MadeOfStone))
                 {
-                    foreach (CardSlot slot in BoardManager.Instance.GetSlots(true))
-                    {
-                        if (slot.Card != null)
-                        {
-                            __result += slot.Card.ExcessAbilityCount(Ability.BuffEnemy) - slot.Card.ExcessAbilityCount(Ability.DebuffEnemy);
-                        }
-                    }
+                    __result += BoardManager.Instance.GetSlots(true)
+                        .Where(slot => slot.Card)
+                        .Sum(slot => slot.Card.ExcessAbilityCount(Ability.BuffEnemy) - slot.Card.ExcessAbilityCount(Ability.DebuffEnemy));
                 }
             }
-            else if (__instance.Slot.opposingSlot.Card != null)
+            else if (__instance.Slot.opposingSlot.Card)
             {
                 __result += __instance.Slot.opposingSlot.Card.ExcessAbilityCount(Ability.BuffEnemy);
-                
+
                 if (!__instance.HasAbility(Ability.MadeOfStone))
                     __result -= __instance.Slot.opposingSlot.Card.ExcessAbilityCount(Ability.DebuffEnemy);
             }
 
-            if (ConduitCircuitManager.Instance != null) // No need to check save file location
+            if (ConduitCircuitManager.Instance) // No need to check save file location
             {
                 List<PlayableCard> conduitsForSlot = ConduitCircuitManager.Instance.GetConduitsForSlot(__instance.Slot);
-                foreach (PlayableCard conduit in conduitsForSlot)
-                    __result += conduit.ExcessAbilityCount(Ability.ConduitBuffAttack);
+                __result += conduitsForSlot.Sum(conduit => conduit.ExcessAbilityCount(Ability.ConduitBuffAttack));
             }
 
             if (__instance.Info.HasTrait(Trait.Gem))
-                foreach (CardSlot slot in BoardManager.Instance.GetSlots(!__instance.OpponentCard))
-                    if (slot.Card != null)
-                        __result += slot.Card.ExcessAbilityCount(Ability.BuffGems);
+                __result += BoardManager.Instance.GetSlots(!__instance.OpponentCard)
+                    .Where(slot => slot.Card)
+                    .Sum(slot => slot.Card.ExcessAbilityCount(Ability.BuffGems));
         }
     }
 }

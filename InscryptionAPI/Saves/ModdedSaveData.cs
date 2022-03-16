@@ -18,24 +18,21 @@ public class ModdedSaveData
     public int GetValueAsInt(string guid, string key)
     {
         string value = GetValue(guid, key);
-        int result;
-        int.TryParse(value, out result);
+        int.TryParse(value, out int result);
         return result;
     }
 
     public float GetValueAsFloat(string guid, string key)
     {
         string value = GetValue(guid, key);
-        float result;
-        float.TryParse(value, out result);
+        float.TryParse(value, out float result);
         return result;
     }
 
     public bool GetValueAsBoolean(string guid, string key)
     {
         string value = GetValue(guid, key);
-        bool result;
-        bool.TryParse(value, out result);
+        bool.TryParse(value, out bool result);
         return result;
     }
 
@@ -44,7 +41,7 @@ public class ModdedSaveData
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
 
-        string valueString = value == null ? default(string) : value.ToString();
+        string valueString = value?.ToString();
 
         if (!SaveData[guid].ContainsKey(key))
             SaveData[guid].Add(key, valueString);

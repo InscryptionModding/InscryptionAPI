@@ -2,8 +2,6 @@ using DiskCardGame;
 using HarmonyLib;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using System.Reflection;
-
 namespace InscryptionCommunityPatch.ResourceManagers;
 
 [HarmonyPatch]
@@ -16,11 +14,11 @@ public static class ActOneConduitManager
         // This modifies the if statement in GetPassiveAttackBuffs so that it doesn't needlessly exlude act 1
         ILCursor ilCursor = new ILCursor(il);
         ILLabel label = null;
-        ilCursor.GotoNext(MoveType.After, new Func<Instruction, bool>[]
-        {
-            ins => ILPatternMatchingExt.MatchCallvirt(ins, AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart2))),
-            ins => ILPatternMatchingExt.MatchBrtrue(ins, out label)
-        });
+        ilCursor.GotoNext(
+            MoveType.After,
+            ins => ins.MatchCallvirt(AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart2))),
+            ins => ins.MatchBrtrue(out label)
+        );
         ilCursor.Emit(OpCodes.Call, AccessTools.PropertyGetter(typeof(SaveManager), nameof(SaveManager.SaveFile)));
         ilCursor.Emit(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart1)));
         ilCursor.Emit(OpCodes.Brtrue, label);

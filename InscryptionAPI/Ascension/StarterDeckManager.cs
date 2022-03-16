@@ -27,43 +27,47 @@ public static class StarterDeckManager
     private static List<FullStarterDeck> GetBaseGameDecks()
     {
         List<StarterDeckInfo> decks = new(Resources.LoadAll<StarterDeckInfo>("Data/Ascension/StarterDecks"));
-        
+
         GameObject screen = Resources.Load<GameObject>("prefabs/ui/ascension/AscensionStarterDeckScreen");
         Transform iconContainer = screen.transform.Find("Icons");
-        List<FullStarterDeck> retval = new ();
+        List<FullStarterDeck> returnValue = new();
         for (int i = 1; i <= 8; i++)
         {
             AscensionStarterDeckIcon icon = iconContainer.Find($"StarterDeckIcon_{i}").gameObject.GetComponent<AscensionStarterDeckIcon>();
-            
+
             FullStarterDeck fdeck = new() { Info = decks.First(d => d.name == icon.Info.name), UnlockLevel = -1 };
             fdeck.CardNames = fdeck.Info.cards.Select(ci => ci.name).ToList();
-            retval.Add(fdeck);
+            returnValue.Add(fdeck);
         }
-        return retval;
+        return returnValue;
     }
 
     private static FullStarterDeck CloneStarterDeck(FullStarterDeck info)
     {
-        FullStarterDeck retval = new();
         StarterDeckInfo deckInfo = ScriptableObject.CreateInstance<StarterDeckInfo>();
-        deckInfo.cards = info.Info.cards == null ? null : new List<CardInfo>(info.Info.cards);
+        deckInfo.cards = info.Info.cards == null
+            ? null
+            : new List<CardInfo>(info.Info.cards);
         deckInfo.iconSprite = info.Info.iconSprite;
         deckInfo.name = info.Info.name;
         deckInfo.title = info.Info.title;
-        retval.Info = deckInfo;
-        retval.CardNames = new(info.CardNames);
-        retval.UnlockLevel = info.UnlockLevel;
-        return retval;
+        FullStarterDeck returnValue = new()
+        {
+            Info = deckInfo,
+            CardNames = new(info.CardNames),
+            UnlockLevel = info.UnlockLevel
+        };
+        return returnValue;
     }
 
     public static event Func<List<FullStarterDeck>, List<FullStarterDeck>> ModifyDeckList;
 
     public static void SyncDeckList()
     {
-        var decks = BaseGameDecks.Concat(NewDecks).Select(x => CloneStarterDeck(x)).ToList();       
+        var decks = BaseGameDecks.Concat(NewDecks).Select(CloneStarterDeck).ToList();
 
         foreach (var deck in decks)
-            deck.Info.cards = deck.CardNames.Select(n => CardLoader.GetCardByName(n)).ToList();
+            deck.Info.cards = deck.CardNames.Select(CardLoader.GetCardByName).ToList();
 
         AllDecks = ModifyDeckList?.Invoke(decks) ?? decks;
         AllDeckInfos = AllDecks.Select(fsd => fsd.Info).ToList();
@@ -88,11 +92,13 @@ public static class StarterDeckManager
     {
         info.name = pluginGuid + "_" + (info.title ?? info.name);
 
-        FullStarterDeck fsd = new();
-        fsd.Info = info;
-        fsd.UnlockLevel  = unlockLevel;
-        fsd.CardNames = info.cards.Select(ci => ci.name).ToList();
-        
+        FullStarterDeck fsd = new()
+        {
+            Info = info,
+            UnlockLevel = unlockLevel,
+            CardNames = info.cards.Select(ci => ci.name).ToList()
+        };
+
         if (NewDecks.FirstOrDefault(sdi => sdi.Info.name == info.name) == null)
             NewDecks.Add(fsd);
 
@@ -103,13 +109,15 @@ public static class StarterDeckManager
     {
         StarterDeckInfo info = ScriptableObject.CreateInstance<StarterDeckInfo>();
         info.title = title;
-        info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.StarterDeckIcon);
+        info.iconSprite = iconTexture.ConvertTexture(TextureHelper.SpriteType.StarterDeckIcon);
         info.name = pluginGuid + "_" + title;
-        
-        FullStarterDeck fsd = new();
-        fsd.Info = info;
-        fsd.UnlockLevel = unlockLevel;
-        fsd.CardNames = cardNames.ToList();
+
+        FullStarterDeck fsd = new()
+        {
+            Info = info,
+            UnlockLevel = unlockLevel,
+            CardNames = cardNames.ToList()
+        };
 
         NewDecks.Add(fsd);
 
@@ -132,5 +140,5 @@ public static class StarterDeckManager
 
         __result = level >= fsd.UnlockLevel;
         return false;
-    }  
+    }
 }

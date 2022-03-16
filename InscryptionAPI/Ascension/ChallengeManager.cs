@@ -10,18 +10,18 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class ChallengeManager
 {
-    public static readonly ReadOnlyCollection<AscensionChallengeInfo> BaseGameChallenges = new(GenBaseGameChallengs());
-        
-    private static Dictionary<AscensionChallenge, bool> stackableMap;
+    public static readonly ReadOnlyCollection<AscensionChallengeInfo> BaseGameChallenges = new(GenBaseGameChallenges());
 
-    private static Dictionary<AscensionChallenge, int> unlockLevelMap;
+    private static Dictionary<AscensionChallenge, bool> _stackableMap;
+
+    private static Dictionary<AscensionChallenge, int> _unlockLevelMap;
 
     internal static readonly ObservableCollection<AscensionChallengeInfo> NewInfos = new();
 
-    public static List<AscensionChallengeInfo> GenBaseGameChallengs()
+    public static List<AscensionChallengeInfo> GenBaseGameChallenges()
     {
-        stackableMap = new();
-        unlockLevelMap = new();
+        _stackableMap = new();
+        _unlockLevelMap = new();
 
         List<AscensionChallengeInfo> infos = new(Resources.LoadAll<AscensionChallengeInfo>("Data/Ascension/Challenges"));
 
@@ -32,48 +32,50 @@ public static class ChallengeManager
         GameObject topRow = challengeIconGrid.transform.Find("TopRow").gameObject;
         GameObject bottomRow = challengeIconGrid.transform.Find("BottomRow").gameObject;
 
-        List<AscensionChallengeInfo> retval = new();
+        List<AscensionChallengeInfo> returnValue = new();
         for (int i = 1; i <= 7; i++)
         {
             AscensionChallenge icon = topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
-            retval.Add(infos.First(i => i.challengeType == icon));
+            returnValue.Add(infos.First(aci => aci.challengeType == icon));
 
-            AscensionChallenge icon2 = bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
+            AscensionChallenge icon2 = bottomRow.transform.Find($"Icon_{i + 7}").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
 
             if (icon2 == icon)
-                stackableMap.Add(icon, true);
+                _stackableMap.Add(icon, true);
             else
-                retval.Add(infos.First(i => i.challengeType == icon2));
+                returnValue.Add(infos.First(aci => aci.challengeType == icon2));
         }
 
         // Can't forget the 15th challenge
         AscensionChallenge iconFinal = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>().Info.challengeType;
-        retval.Add(infos.First(i => i.challengeType == iconFinal));
+        returnValue.Add(infos.First(i => i.challengeType == iconFinal));
 
-        return retval;
+        return returnValue;
     }
 
     public static event Func<List<AscensionChallengeInfo>, List<AscensionChallengeInfo>> ModifyChallenges;
 
     private static AscensionChallengeInfo CloneChallengeInfo(AscensionChallengeInfo info)
     {
-        AscensionChallengeInfo retval = new();
-        retval.activatedSprite = info.activatedSprite;
-        retval.challengeType = info.challengeType;
-        retval.description = info.description;
-        retval.iconSprite = info.iconSprite;
-        retval.name = info.name;
-        retval.pointValue = info.pointValue;
-        retval.title = info.title;
-        return retval;
+        AscensionChallengeInfo returnValue = new()
+        {
+            activatedSprite = info.activatedSprite,
+            challengeType = info.challengeType,
+            description = info.description,
+            iconSprite = info.iconSprite,
+            name = info.name,
+            pointValue = info.pointValue,
+            title = info.title
+        };
+        return returnValue;
     }
 
     public static void SyncChallengeList()
     {
-        List<AscensionChallengeInfo> asci = new (NewInfos);
-        asci.Sort((a, b) => unlockLevelMap[a.challengeType] - unlockLevelMap[b.challengeType]);
-        var challenges = BaseGameChallenges.Concat(asci).Select(x => CloneChallengeInfo(x)).ToList();
-        AllInfo = ModifyChallenges?.Invoke(challenges) ?? challenges;        
+        List<AscensionChallengeInfo> asci = new(NewInfos);
+        asci.Sort((a, b) => _unlockLevelMap[a.challengeType] - _unlockLevelMap[b.challengeType]);
+        var challenges = BaseGameChallenges.Concat(asci).Select(CloneChallengeInfo).ToList();
+        AllInfo = ModifyChallenges?.Invoke(challenges) ?? challenges;
     }
 
     static ChallengeManager()
@@ -95,15 +97,15 @@ public static class ChallengeManager
 
     public static bool IsStackable(AscensionChallenge id)
     {
-        return stackableMap.ContainsKey(id) ? stackableMap[id] : false;
+        return _stackableMap.ContainsKey(id) && _stackableMap[id];
     }
 
-    public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
+    public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, bool stackable = false)
     {
         info.challengeType = GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
 
-        stackableMap.Add(info.challengeType, stackable);
-        unlockLevelMap.Add(info.challengeType, unlockLevel);
+        _stackableMap.Add(info.challengeType, stackable);
+        _unlockLevelMap.Add(info.challengeType, unlockLevel);
 
         NewInfos.Add(info);
 
@@ -117,7 +119,7 @@ public static class ChallengeManager
         int pointValue,
         Texture2D iconTexture,
         Texture2D activatedTexture = null,
-        int unlockLevel = 0, 
+        int unlockLevel = 0,
         bool stackable = false
     )
     {
@@ -126,12 +128,13 @@ public static class ChallengeManager
         info.challengeType = AscensionChallenge.None;
         info.description = description;
         info.pointValue = pointValue;
-        info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.ChallengeIcon);
+        info.iconSprite = iconTexture.ConvertTexture(TextureHelper.SpriteType.ChallengeIcon);
 
-        Texture2D infoActivationTexture = activatedTexture ?? 
-            ((pointValue > 0 ) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
+        Texture2D infoActivationTexture = activatedTexture
+            ?? ((pointValue > 0)
+                ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
                 : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
-        info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
+        info.activatedSprite = infoActivationTexture.ConvertTexture(TextureHelper.SpriteType.ChallengeIcon);
 
         return Add(pluginGuid, info, unlockLevel, stackable);
     }
@@ -140,8 +143,8 @@ public static class ChallengeManager
     [HarmonyPostfix]
     public static void IsCustomChallengeUnlocked(ref bool __result, int level, AscensionChallenge challenge)
     {
-        if (unlockLevelMap.ContainsKey(challenge))
-            __result = unlockLevelMap[challenge] <= level;
+        if (_unlockLevelMap.ContainsKey(challenge))
+            __result = _unlockLevelMap[challenge] <= level;
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

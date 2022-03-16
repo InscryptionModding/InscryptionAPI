@@ -6,12 +6,12 @@ public class EncounterBuilderBlueprintData : EncounterBlueprintData
 {
     internal RegionData region;
 
-    public void SetBasic(string name, RegionData region)
+    public void SetBasic(string regionName, RegionData regionData)
     {
-        this.region = region;
-        this.name = name;
-        region.encounters = region.encounters ?? new();
-        region.encounters.Add(this);
+        this.region = regionData;
+        this.name = regionName;
+        regionData.encounters ??= new();
+        regionData.encounters.Add(this);
     }
 }
 

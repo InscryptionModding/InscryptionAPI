@@ -27,7 +27,7 @@ public static class StatIconManager
 
     public readonly static ReadOnlyCollection<FullStatIcon> BaseGameStatIcons = new(GenBaseGameStatIconList());
     private readonly static ObservableCollection<FullStatIcon> NewStatIcons = new();
-    
+
     public static List<FullStatIcon> AllStatIcons { get; private set; } = BaseGameStatIcons.ToList();
     public static List<StatIconInfo> AllStatIconInfos { get; private set; } = BaseGameStatIcons.Select(x => x.Info).ToList();
 
@@ -44,10 +44,10 @@ public static class StatIconManager
     {
         List<FullStatIcon> baseGame = new();
         var gameAsm = typeof(AbilityInfo).Assembly;
-        foreach (var staticon in Resources.LoadAll<StatIconInfo>("Data/staticons"))
+        foreach (var iconInfo in Resources.LoadAll<StatIconInfo>("Data/staticons"))
         {
-            var name = staticon.iconType.ToString();
-            baseGame.Add(new FullStatIcon(staticon.iconType, staticon, gameAsm.GetType($"DiskCardGame.{name}")));
+            var name = iconInfo.iconType.ToString();
+            baseGame.Add(new FullStatIcon(iconInfo.iconType, iconInfo, gameAsm.GetType($"DiskCardGame.{name}")));
         }
         return baseGame;
     }
@@ -71,7 +71,7 @@ public static class StatIconManager
 
     public static void Remove(SpecialStatIcon id) => NewStatIcons.Remove(NewStatIcons.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullStatIcon ability) => NewStatIcons.Remove(ability);
-    
+
     [HarmonyPrefix]
     [HarmonyPatch(typeof(StatIconInfo), nameof(StatIconInfo.LoadAbilityData))]
     private static void AbilityLoadPrefix()
@@ -79,9 +79,9 @@ public static class StatIconManager
         StatIconInfo.allIconInfo = AllStatIconInfos;
     }
 
-    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
+    [HarmonyPatch(typeof(RuleBookInfo), nameof(RuleBookInfo.ConstructPageData), typeof(AbilityMetaCategory))]
     [HarmonyPostfix]
-	public static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+    public static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         if (NewStatIcons.Count > 0)
         {
@@ -92,11 +92,13 @@ public static class StatIconManager
                 {
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
                     int curPageNum = (int)SpecialStatIcon.NUM_ICONS;
-                    foreach(FullStatIcon fab in NewStatIcons.Where(x => __instance.StatIconShouldBeAdded((int)x.Id, metaCategory)))
+                    foreach (FullStatIcon fab in NewStatIcons.Where(x => __instance.StatIconShouldBeAdded((int)x.Id, metaCategory)))
                     {
-                        RuleBookPageInfo info = new();
-                        info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION VII - VARIABLE STATS {0}"), curPageNum);
+                        RuleBookPageInfo info = new()
+                        {
+                            pagePrefab = pageRangeInfo.rangePrefab,
+                            headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION VII - VARIABLE STATS {0}"), curPageNum)
+                        };
                         __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;

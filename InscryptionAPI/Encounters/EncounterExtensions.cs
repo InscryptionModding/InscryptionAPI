@@ -50,7 +50,7 @@ public static class EncounterExtensions
     /// <param name="tribes">The tribes to add.</param>
     public static T AddDominantTribes<T>(this T blueprint, params Tribe[] tribes) where T : EncounterBlueprintData
     {
-        blueprint.dominantTribes = blueprint.dominantTribes ?? new();
+        blueprint.dominantTribes ??= new();
         foreach (Tribe tribe in tribes)
         {
             blueprint.dominantTribes.Add(tribe);
@@ -72,7 +72,7 @@ public static class EncounterExtensions
     /// <param name="cards">The cards to add.</param>
     public static T AddRandomReplacementCards<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
-        blueprint.randomReplacementCards = blueprint.randomReplacementCards ?? new();
+        blueprint.randomReplacementCards ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);
@@ -97,7 +97,7 @@ public static class EncounterExtensions
 
     public static T SetUnlockedCardPrerequisites<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
-        blueprint.unlockedCardPrerequisites = blueprint.unlockedCardPrerequisites ?? new();
+        blueprint.unlockedCardPrerequisites ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);

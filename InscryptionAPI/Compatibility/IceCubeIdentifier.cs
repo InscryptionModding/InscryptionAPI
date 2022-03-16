@@ -5,18 +5,18 @@ namespace APIPlugin;
 [Obsolete("Use CardManager and CardInfo extension methods instead", true)]
 public class IceCubeIdentifier
 {
-    internal string name;
-    internal CardModificationInfo mods;
-		
-    private IceCubeParams iceCube;
+    internal readonly string name;
+    internal readonly CardModificationInfo mods;
+
+    private IceCubeParams _iceCube;
     public IceCubeParams IceCube
     {
         get
         {
-            if (this.iceCube == null)
+            if (this._iceCube == null)
                 SetParams(CardLoader.GetCardByName(this.name));
 
-            return this.iceCube;
+            return this._iceCube;
         }
     }
 
@@ -28,13 +28,14 @@ public class IceCubeIdentifier
 
     private void SetParams(CardInfo card)
     {
-        this.iceCube = new IceCubeParams();
-
-        this.iceCube.creatureWithin = card;
+        this._iceCube = new IceCubeParams
+        {
+            creatureWithin = card
+        };
 
         if (this.mods != null)
         {
-            this.iceCube.creatureWithin.mods.Add(this.mods);
+            this._iceCube.creatureWithin.mods.Add(this.mods);
         }
     }
 
