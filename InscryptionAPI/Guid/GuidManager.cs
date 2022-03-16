@@ -50,16 +50,16 @@ public static class GuidManager
 
         int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, saveKey);
 
+        if (enumValue > 0)
+        {
+            if (!ReverseMapper.ContainsKey(enumValue))
+                ReverseMapper.Add(enumValue, typeof(T));
+
+            return *(T*)&enumValue;
+        }
+
         lock (LockObject)
         {
-            if (enumValue > 0)
-            {
-                if (!ReverseMapper.ContainsKey(enumValue))
-                    ReverseMapper.Add(enumValue, typeof(T));
-
-                return *(T*)&enumValue;
-            }
-
             enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
             if (enumValue < START_INDEX)
                 enumValue = START_INDEX;
