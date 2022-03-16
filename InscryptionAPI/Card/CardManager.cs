@@ -167,7 +167,7 @@ public static class CardManager
     public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), string modPrefix = default(string))
     {
         CardInfo returnValue = ScriptableObject.CreateInstance<CardInfo>();
-        returnValue.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
+        returnValue.SetName(name, modPrefix);
         returnValue.SetBasic(displayName, attack, health, description);
 
         Assembly callingAssembly = Assembly.GetCallingAssembly();
