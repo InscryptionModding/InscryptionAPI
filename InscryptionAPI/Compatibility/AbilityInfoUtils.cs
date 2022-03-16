@@ -12,7 +12,7 @@ public class AbilityInfoUtils
         info.powerLevel = 0;
         info.rulebookName = rulebookName;
         info.rulebookDescription = rulebookDescription;
-        info.metaCategories = new List<AbilityMetaCategory>()
+        info.metaCategories = new List<AbilityMetaCategory>
         {
             AbilityMetaCategory.Part1Modular, AbilityMetaCategory.Part1Rulebook
         };

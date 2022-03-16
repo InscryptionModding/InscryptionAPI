@@ -45,7 +45,9 @@ public static class StarterDeckManager
     private static FullStarterDeck CloneStarterDeck(FullStarterDeck info)
     {
         StarterDeckInfo deckInfo = ScriptableObject.CreateInstance<StarterDeckInfo>();
-        deckInfo.cards = info.Info.cards == null ? null : new List<CardInfo>(info.Info.cards);
+        deckInfo.cards = info.Info.cards == null
+            ? null
+            : new List<CardInfo>(info.Info.cards);
         deckInfo.iconSprite = info.Info.iconSprite;
         deckInfo.name = info.Info.name;
         deckInfo.title = info.Info.title;
