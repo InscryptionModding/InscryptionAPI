@@ -66,16 +66,12 @@ internal static class ChoiceNodePatch
     public static CardInfo GetRandomChoosableEnergyCard(int randomSeed)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature).FindAll(x => x.energyCost > 0);
-        return list.Count == 0
-            ? null
-            : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
+        return list.Count == 0 ? null : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
     }
 
     public static CardInfo GetRandomChoosableMoxCard(int randomSeed)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature).FindAll(x => x.gemsCost.Count > 0);
-        return list.Count == 0
-            ? null
-            : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
+        return list.Count == 0 ? null : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
     }
 }

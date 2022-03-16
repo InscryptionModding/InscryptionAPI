@@ -52,9 +52,7 @@ public static class CardManager
     private static string GetCardPrefixFromName(this CardInfo info)
     {
         string[] splitName = info.name.Split('_');
-        return splitName.Length > 1
-            ? splitName[0]
-            : string.Empty;
+        return splitName.Length > 1 ? splitName[0] : string.Empty;
     }
 
     private static void AddPrefixesToCards(IEnumerable<CardInfo> cards, string prefix)
@@ -151,9 +149,7 @@ public static class CardManager
 
     public static void Add(CardInfo newCard, string modPrefix = default(string))
     {
-        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix)
-            ? $"{modPrefix}_{newCard.name}"
-            : newCard.name;
+        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
 
         newCard.SetModPrefix(modPrefix);
 
@@ -171,9 +167,7 @@ public static class CardManager
     public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), string modPrefix = default(string))
     {
         CardInfo returnValue = ScriptableObject.CreateInstance<CardInfo>();
-        returnValue.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix)
-            ? $"{modPrefix}_{name}"
-            : name;
+        returnValue.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
         returnValue.SetBasic(displayName, attack, health, description);
 
         Assembly callingAssembly = Assembly.GetCallingAssembly();

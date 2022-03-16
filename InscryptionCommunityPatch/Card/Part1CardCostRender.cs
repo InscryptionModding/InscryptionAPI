@@ -51,15 +51,9 @@ public static class Part1CardCostRender
 
     internal static string GemCost(CardInfo info)
     {
-        return (info.gemsCost.Contains(GemType.Orange)
-                ? "o"
-                : string.Empty)
-            + (info.gemsCost.Contains(GemType.Blue)
-                ? "b"
-                : string.Empty)
-            + (info.gemsCost.Contains(GemType.Green)
-                ? "g"
-                : string.Empty);
+        return (info.gemsCost.Contains(GemType.Orange) ? "o" : string.Empty)
+            + (info.gemsCost.Contains(GemType.Blue) ? "b" : string.Empty)
+            + (info.gemsCost.Contains(GemType.Green) ? "g" : string.Empty);
     }
 
     public static Sprite Part1SpriteFinal(CardInfo card)
@@ -84,21 +78,9 @@ public static class Part1CardCostRender
             List<Texture2D> gemCost = new List<Texture2D>();
 
             //load up the mox textures as "empty"
-            Texture2D orange = GetTextureByName(
-                card.GemsCost.Contains(GemType.Orange)
-                    ? "mox_cost_o"
-                    : "mox_cost_e"
-            );
-            Texture2D blue = GetTextureByName(
-                card.GemsCost.Contains(GemType.Blue)
-                    ? "mox_cost_b"
-                    : "mox_cost_e"
-            );
-            Texture2D green = GetTextureByName(
-                card.GemsCost.Contains(GemType.Green)
-                    ? "mox_cost_g"
-                    : "mox_cost_e"
-            );
+            Texture2D orange = GetTextureByName(card.GemsCost.Contains(GemType.Orange) ? "mox_cost_o" : "mox_cost_e");
+            Texture2D blue = GetTextureByName(card.GemsCost.Contains(GemType.Blue) ? "mox_cost_b" : "mox_cost_e");
+            Texture2D green = GetTextureByName(card.GemsCost.Contains(GemType.Green) ? "mox_cost_g" : "mox_cost_e");
 
             //Add all moxes to the gemcost list
             gemCost.Add(orange);

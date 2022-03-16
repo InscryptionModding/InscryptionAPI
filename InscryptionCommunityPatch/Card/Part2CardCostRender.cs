@@ -52,12 +52,7 @@ public static class Part2CardCostRender
             if (AssembledTextures[costKey] == null)
                 AssembledTextures.Remove(costKey);
             else
-                return AssembledTextures[costKey]
-                    .ConvertTexture(
-                        left
-                            ? TextureHelper.SpriteType.Act2CostDecalLeft
-                            : TextureHelper.SpriteType.Act2CostDecalRight
-                    );
+                return AssembledTextures[costKey].ConvertTexture(left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
         }
 
         //A list to hold the textures (important later, to combine them all)
@@ -95,9 +90,7 @@ public static class Part2CardCostRender
                 TextureHelper.CombineTextures(
                     gemCost,
                     gemBaseTexture,
-                    xOffset: left
-                        ? 0
-                        : 30 - 7 * gemCost.Count,
+                    xOffset: left ? 0 : 30 - 7 * gemCost.Count,
                     xStep: 7
                 )
             );
@@ -116,11 +109,7 @@ public static class Part2CardCostRender
         AssembledTextures.Add(costKey, finalTexture);
 
         //Convert the final texture to a sprite
-        Sprite finalSprite = finalTexture.ConvertTexture(
-            left
-                ? TextureHelper.SpriteType.Act2CostDecalLeft
-                : TextureHelper.SpriteType.Act2CostDecalRight
-        );
+        Sprite finalSprite = finalTexture.ConvertTexture(left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
         return finalSprite;
     }
 

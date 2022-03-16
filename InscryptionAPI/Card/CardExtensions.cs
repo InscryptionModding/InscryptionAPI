@@ -29,9 +29,7 @@ public static class CardExtensions
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
     {
-        return !filterMode.HasValue
-            ? portrait.ConvertTexture(spriteType)
-            : portrait.ConvertTexture(spriteType, filterMode.Value);
+        return !filterMode.HasValue ? portrait.ConvertTexture(spriteType) : portrait.ConvertTexture(spriteType, filterMode.Value);
     }
 
     #region SetPortrait
@@ -396,9 +394,7 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetTail(this CardInfo info, string tailName, string pathToLostTailArt = null, IEnumerable<CardModificationInfo> mods = null)
     {
-        Texture2D lostTailPortrait = pathToLostTailArt == null
-            ? null
-            : TextureHelper.GetImageAsTexture(pathToLostTailArt);
+        Texture2D lostTailPortrait = pathToLostTailArt == null ? null : TextureHelper.GetImageAsTexture(pathToLostTailArt);
         return info.SetTail(tailName, lostTailPortrait, mods: mods);
     }
 
