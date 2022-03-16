@@ -1,46 +1,47 @@
 using DiskCardGame;
+using InscryptionAPI.Card;
 
-namespace APIPlugin;
-
-[Obsolete("Use CardManager and CardInfo extension methods instead", true)]
-public class IceCubeIdentifier
+namespace APIPlugin
 {
-    internal readonly string name;
-    internal readonly CardModificationInfo mods;
+    [Obsolete("Use CardManager and CardInfo extension methods instead", true)]
+	public class IceCubeIdentifier
+	{
+        internal string name;
+		internal CardModificationInfo mods;
+		
+        private IceCubeParams iceCube;
+		public IceCubeParams IceCube
+		{
+			get
+			{
+				if (this.iceCube == null)
+                    SetParams(CardLoader.GetCardByName(this.name));
 
-    private IceCubeParams _iceCube;
-    public IceCubeParams IceCube
-    {
-        get
-        {
-            if (this._iceCube == null)
-                SetParams(CardLoader.GetCardByName(this.name));
+				return this.iceCube;
+			}
+		}
 
-            return this._iceCube;
-        }
-    }
+		public IceCubeIdentifier(string name, CardModificationInfo mods = null)
+		{
+			this.name = name;
+            this.mods = mods;
+		}
 
-    public IceCubeIdentifier(string name, CardModificationInfo mods = null)
-    {
-        this.name = name;
-        this.mods = mods;
-    }
+		private void SetParams(CardInfo card)
+		{
+			this.iceCube = new IceCubeParams();
 
-    private void SetParams(CardInfo card)
-    {
-        this._iceCube = new IceCubeParams
-        {
-            creatureWithin = card
-        };
+			this.iceCube.creatureWithin = card;
 
-        if (this.mods != null)
-        {
-            this._iceCube.creatureWithin.mods.Add(this.mods);
-        }
-    }
+			if (this.mods != null)
+			{
+				this.iceCube.creatureWithin.mods.Add(this.mods);
+			}
+		}
 
-    public override string ToString()
-    {
-        return name;
-    }
+		public override string ToString()
+		{
+			return name;
+		}
+	}
 }
