@@ -30,7 +30,7 @@ public static class RegionManager
 
     private static RegionData CloneRegion(this RegionData data)
     {
-        RegionData retval = (RegionData) UnityEngine.Object.Internal_CloneSingle(data);
+        RegionData retval = (RegionData) UnityObject.Internal_CloneSingle(data);
         retval.name = data.name;
         return retval;
     }

@@ -1,7 +1,7 @@
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using UnityEngine;
-using GBC;
 
 namespace InscryptionAPI.Ascension;
 

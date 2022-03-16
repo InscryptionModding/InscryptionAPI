@@ -17,14 +17,14 @@ public class CustomNodeData : SpecialNodeData
     /// <returns>TRUE if the node is able to be added to the map. FALSE if it is not.</returns>
     public delegate bool NodeGenerationCondition(int gridY, List<NodeData> previousNodes);
 
-    private List<NodeData.SelectionCondition> prerequisiteConditions = new();
+    private List<SelectionCondition> prerequisiteConditions = new();
 
     /// <summary>
     /// All prerequisite conditions must return TRUE for the node to be eligible to be added to the map
     /// </summary>
     public override List<SelectionCondition> GenerationPrerequisiteConditions => prerequisiteConditions;
 
-    private List<NodeData.SelectionCondition> forceGenerationConditions = new();
+    private List<SelectionCondition> forceGenerationConditions = new();
 
     /// <summary>
     /// If even a single one of these conditions returns TRUE, the node will be added to the map.
@@ -92,7 +92,7 @@ public class CustomNodeData : SpecialNodeData
         }
     }
 
-    private class DelegateCondition : NodeData.SelectionCondition
+    private class DelegateCondition : SelectionCondition
     {
         private NodeGenerationCondition internalDelegate;
 
