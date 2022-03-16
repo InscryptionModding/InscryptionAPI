@@ -1,29 +1,30 @@
+using System;
+using System.Collections.Generic;
 using DiskCardGame;
 using InscryptionAPI.Card;
 
-namespace APIPlugin;
-
-[Obsolete("Use CardAppearanceBehaviourManager instead", true)]
-public class NewCardAppearanceBehaviour
+namespace APIPlugin
 {
-    public static Dictionary<CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour> behaviours = new();
-    public static List<NewCardAppearanceBehaviour> allBehaviours = new();
-
-    public CardAppearanceBehaviour.Appearance Appearance;
-    public string Name;
-    public Type Behaviour;
-
-    public static NewCardAppearanceBehaviour AddNewBackground(Type type, string name)
+    [Obsolete("Use CardAppearanceBehaviourManager instead", true)]
+    public class NewCardAppearanceBehaviour
     {
-        var fab = CardAppearanceBehaviourManager.Add(type.Namespace, name, type);
+        public static Dictionary<CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour> behaviours = new();
+        public static List<NewCardAppearanceBehaviour> allBehaviours = new();
 
-        NewCardAppearanceBehaviour backgroundBehaviour = new NewCardAppearanceBehaviour
+        public CardAppearanceBehaviour.Appearance Appearance;
+        public string Name;
+        public Type Behaviour;
+
+        public static NewCardAppearanceBehaviour AddNewBackground(Type type, string name)
         {
-            Appearance = fab.Id,
-            Name = name,
-            Behaviour = type
-        };
+            var fab = CardAppearanceBehaviourManager.Add(type.Namespace, name, type);
 
-        return backgroundBehaviour;
+            NewCardAppearanceBehaviour backgroundBehaviour = new NewCardAppearanceBehaviour();
+            backgroundBehaviour.Appearance = fab.Id;
+            backgroundBehaviour.Name = name;
+            backgroundBehaviour.Behaviour = type;
+
+            return backgroundBehaviour;
+        }
     }
 }
