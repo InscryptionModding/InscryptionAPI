@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Reflection;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.ResourceManagers;
@@ -39,7 +36,7 @@ public static class EnergyDrone
         { 
             get
             {
-                return EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
+                return PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
             }
             set { _configMoxOverride = value; }
         }
@@ -111,7 +108,7 @@ public static class EnergyDrone
 
         if (!SaveManager.SaveFile.IsPart3)
         {
-            UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
+            UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
             if(EnergyConfig.ConfigDrone)
                 PatchPlugin.Instance.StartCoroutine(AwakeDrone());

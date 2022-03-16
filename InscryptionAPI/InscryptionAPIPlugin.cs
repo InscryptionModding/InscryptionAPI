@@ -1,5 +1,5 @@
 ﻿global using UnityObject = UnityEngine.Object;
-
+using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Logging;
 using DiskCardGame;
@@ -7,7 +7,6 @@ using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Regions;
-using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 

@@ -1,14 +1,13 @@
 using DiskCardGame;
 using InscryptionAPI.Regions;
 
-namespace APIPlugin
+namespace APIPlugin;
+
+[Obsolete("Use RegionManager instead", true)]
+public class NewRegion
 {
-    [Obsolete("Use RegionManager instead", true)]
-	public class NewRegion
-	{
-		public NewRegion(RegionData region, int tier)
-		{
-            RegionManager.Add(region, tier);
-		}
-	}
+    public NewRegion(RegionData region, int tier)
+    {
+        RegionManager.Add(region, tier);
+    }
 }

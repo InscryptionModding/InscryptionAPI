@@ -1,10 +1,7 @@
-﻿using System.Security;
-using BepInEx;
-using BepInEx.Logging;
+﻿using BepInEx;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using MonoMod.Utils;
 
 namespace APIPatcher;
 

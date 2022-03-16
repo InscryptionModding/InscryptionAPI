@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Regions;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace InscryptionAPI.Encounters;
 
@@ -17,7 +17,7 @@ public static class EncounterManager
 
     private static EncounterBlueprintData CloneAndReplace(this EncounterBlueprintData data)
     {
-        EncounterBlueprintData retval = (EncounterBlueprintData)UnityEngine.Object.Internal_CloneSingle(data);
+        EncounterBlueprintData retval = (EncounterBlueprintData)Object.Internal_CloneSingle(data);
         retval.name = data.name;
 
         // Repair the blueprint if it is invalid
