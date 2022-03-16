@@ -9,9 +9,9 @@ public static class GuidManager
         return $"{guid}_{value}";
     }
 
-    private static readonly Dictionary<int, Type> reverseMapper = new();
+    private static readonly Dictionary<int, Type> ReverseMapper = new();
 
-    private static readonly object lockObject = new object();
+    private static readonly object LockObject = new object();
 
     public const int START_INDEX = 1000;
 
@@ -19,15 +19,13 @@ public static class GuidManager
 
     public static Type GetEnumType(int number)
     {
-        reverseMapper.TryGetValue(number, out var res);
+        ReverseMapper.TryGetValue(number, out var res);
         return res;
     }
 
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
     {
-        List<T> itemList = new();
-        foreach(T item in Enum.GetValues(typeof(T)))
-            itemList.Add(item);
+        List<T> itemList = Enum.GetValues(typeof(T)).Cast<T>().ToList();
 
         string startKey = typeof(T).Name + "_";
         foreach (var item in ModdedSaveManager.SaveData.SaveData[InscryptionAPIPlugin.ModGUID])
@@ -39,7 +37,7 @@ public static class GuidManager
                 itemList.Add(convertedEnumVal);
             }
         }
-        
+
         return itemList;
     }
 
@@ -54,7 +52,7 @@ public static class GuidManager
 
         if (enumValue == default)
         {
-            lock (lockObject)
+            lock (LockObject)
             {
                 enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
                 if (enumValue < START_INDEX)
@@ -67,7 +65,7 @@ public static class GuidManager
             }
         }
 
-        reverseMapper[enumValue] = typeof(T);
+        ReverseMapper[enumValue] = typeof(T);
 
         return *(T*)&enumValue;
     }
