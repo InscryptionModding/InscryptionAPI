@@ -492,10 +492,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
     public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate = false)
     {
         AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
-        int points = info.pointValue
-            * (AscensionSaveData.Data.ChallengeIsActive(challenge)
-                ? 1
-                : -1);
+        int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
         DisplayChallengeInfo(info.title, points, immediate);
     }
 }
