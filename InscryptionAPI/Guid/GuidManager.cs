@@ -9,20 +9,18 @@ public static class GuidManager
         return $"{guid}_{value}";
     }
 
-    private static Dictionary<int, Type> reverseMapper = new();
+    private static readonly Dictionary<int, Type> reverseMapper = new();
 
-    private static object lockObject = new object();
+    private static readonly object lockObject = new object();
 
-    public static readonly int START_INDEX = 1000;
+    public const int START_INDEX = 1000;
 
     public const string MAX_DATA = "maximumStoredValueForEnum";
 
     public static Type GetEnumType(int number)
     {
-        if (!reverseMapper.ContainsKey(number))
-            return default(Type);
-
-        return reverseMapper[number];
+        reverseMapper.TryGetValue(number, out var res);
+        return res;
     }
 
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
@@ -54,28 +52,23 @@ public static class GuidManager
             
         int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, saveKey);
 
-        lock (lockObject)
+        if (enumValue == default)
         {
-            if (enumValue > 0)
+            lock (lockObject)
             {
-                if (!reverseMapper.ContainsKey(enumValue))
-                    reverseMapper.Add(enumValue, typeof(T));
-
-                return *(T*)&enumValue;
-            }
-
-            enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
-            if (enumValue < START_INDEX)
-                enumValue = START_INDEX;
+                enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
+                if (enumValue < START_INDEX)
+                    enumValue = START_INDEX;
                 
-            ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue);
-            ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, saveKey, enumValue);
+                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue);
+                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, saveKey, enumValue);
 
-            ModdedSaveManager.isSystemDirty = true;
-
-            reverseMapper.Add(enumValue, typeof(T));
-
-            return *(T*)&enumValue;
+                ModdedSaveManager.isSystemDirty = true;
+            }
         }
+
+        reverseMapper[enumValue] = typeof(T);
+
+        return *(T*)&enumValue;
     }
 }
