@@ -104,9 +104,7 @@ public static class StackAbilityIcons
 
     private static Vector2Int FindMatchingOnesDigit(Texture2D searchTex, bool normalSize = true)
     {
-        Texture2D onesTexture = normalSize
-            ? NumberTextures[0]
-            : MediumNumberTextures[0];
+        Texture2D onesTexture = normalSize ? NumberTextures[0] : MediumNumberTextures[0];
         Color[] onesColor = onesTexture.GetPixels();
         return FindMatchingTexture(searchTex, onesTexture.width, onesTexture.height, onesColor);
     }
@@ -301,9 +299,7 @@ public static class StackAbilityIcons
         }
 
         // Set the new number
-        Texture2D newNumber = (textureType == Normal)
-            ? NumberTextures[count - 1]
-            : MediumNumberTextures[count - 1];
+        Texture2D newNumber = (textureType == Normal) ? NumberTextures[count - 1] : MediumNumberTextures[count - 1];
         newTexture.SetPixels(patchLocation.x, patchLocation.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
 
         newTexture.filterMode = FilterMode.Point;

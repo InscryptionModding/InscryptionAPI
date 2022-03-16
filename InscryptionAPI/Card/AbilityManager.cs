@@ -111,9 +111,7 @@ public static class AbilityManager
                     ability.ability,
                     ability,
                     gameAsm.GetType($"DiskCardGame.{name}"),
-                    useReversePatch
-                        ? OriginalLoadAbilityIcon(name)
-                        : AbilitiesUtil.LoadAbilityIcon(name)
+                    useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
                 )
             );
         }
@@ -167,18 +165,14 @@ public static class AbilityManager
         if (int.TryParse(abilityName, out int abilityId))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == (Ability)abilityId);
-            __result = (normalTexture || ability.CustomFlippedTexture == null)
-                ? ability.Texture
-                : ability.CustomFlippedTexture;
+            __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
             return false;
         }
 
         if (Enum.TryParse<Ability>(abilityName, out Ability abilityEnum))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == abilityEnum);
-            __result = (normalTexture || ability.CustomFlippedTexture == null)
-                ? ability.Texture
-                : ability.CustomFlippedTexture;
+            __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
             return false;
         }
 
