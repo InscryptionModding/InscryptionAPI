@@ -10,6 +10,14 @@
         <DebugType>full</DebugType>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
     <ItemGroup>
       <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
     </ItemGroup>
@@ -23,19 +31,9 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="BepInEx.Core" Version="5.4.19" />
+      <PackageReference Include="BepInEx.Core" Version="5.4.16" />
       <PackageReference Include="Inscryption.GameLibs" Version="0.30.0-r.0" />
       <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
-
-    <Target Name="CopyDLLs" AfterTargets="Build" Condition="$(Configuration) == 'Debug' or $(Configuration) == 'Release' ">
-        <Message Text="Executing CopyDLLs task" Importance="High" />
-
-        <!--        <Copy Condition="Exists('C:\inscryption-mods\')" SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\inscryption-mods\Inscryption\profiles\Default\BepInEx\plugins\API_dev-API" />-->
-
-        <Copy Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Inscryption\')" SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Inscryption\BepInEx\plugins\API_dev-API" />
-
-        <Message Text="Copied build files" Importance="High" />
-    </Target>
 
 </Project>
