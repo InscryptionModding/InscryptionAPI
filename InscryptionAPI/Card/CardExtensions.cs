@@ -377,6 +377,9 @@ public static class CardExtensions
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo tailCard = cards.CardByName(tailName);
 
+                if (target != null && tailCard == null && target.IsOldApiCard()) // Maybe this is due to poor naming conventions allowed by the old API.
+                    tailCard = cards.CardByName($"{target.GetModPrefix()}_{tailName}");
+
                 if (target != null && tailCard != null)
                     target.SetTail(tailCard, tailLostPortrait, filterMode, mods);
 
@@ -425,6 +428,9 @@ public static class CardExtensions
             {
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo creatureWithinCard = cards.CardByName(iceCubeName);
+
+                if (target != null && creatureWithinCard == null && target.IsOldApiCard()) // Maybe this is due to poor naming conventions allowed by the old API.
+                    creatureWithinCard = cards.CardByName($"{target.GetModPrefix()}_{iceCubeName}");
 
                 if (target != null && creatureWithinCard != null)
                     target.SetIceCube(creatureWithinCard, mods);
@@ -478,6 +484,9 @@ public static class CardExtensions
             {
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo evolveIntoCard = cards.CardByName(evolveInto);
+
+                if (target != null && evolveIntoCard == null && target.IsOldApiCard()) // Maybe this is due to poor naming conventions allowed by the old API.
+                    evolveIntoCard = cards.CardByName($"{target.GetModPrefix()}_{evolveInto}");
 
                 if (target != null && evolveIntoCard != null)
                     target.SetEvolve(evolveIntoCard, numberOfTurns, mods);
