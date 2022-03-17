@@ -21,10 +21,18 @@ public static class CardManager
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
 
+    /// <summary>
+    /// The set of cards that are in the base game
+    /// </summary>
+    /// <returns></returns>
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
     
     private static bool EventActive = false;
+
+    /// <summary>
+    /// This event runs every time the card list is resynced. By adding listeners to this event, you can modify cards that have been added to the list after your mod was loaded.
+    /// </summary>
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
     private static IEnumerable<CardInfo> GetBaseGameCards()
@@ -41,6 +49,9 @@ public static class CardManager
         EventActive = true;
     }
 
+    /// <summary>
+    /// Re-executes events and rebuilds the card pool
+    /// </summary>
     public static void SyncCardList()
     {
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
@@ -70,7 +81,7 @@ public static class CardManager
     internal static void ResolveMissingModPrefixes()
     {
         // Group all cards by the mod guid
-        foreach (var group in NewCards.Where(ci => !ci.IsBaseGameCard()).GroupBy(ci => ci.GetModTag(), ci => ci, (key, g) => new { ModId = key, Cards = g.ToList() }))
+        foreach (var group in NewCards.Where(ci => !ci.IsBaseGameCard() && ci.IsOldApiCard()).GroupBy(ci => ci.GetModTag(), ci => ci, (key, g) => new { ModId = key, Cards = g.ToList() }))
         {
             if (string.IsNullOrEmpty(group.ModId))
                 continue;
@@ -143,14 +154,18 @@ public static class CardManager
         };
     }
 
+    /// <summary>
+    /// A copy of all cards in the card pool.
+    /// </summary>
+    /// <returns></returns>
     public static List<CardInfo> AllCardsCopy { get; private set; } = BaseGameCards.ToList();
 
-    public static void Add(CardInfo newCard, string modPrefix=default(string)) 
-    { 
-        newCard.name = !string.IsNullOrEmpty(modPrefix) && !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
-
-        newCard.SetModPrefix(modPrefix);
-
+    /// <summary>
+    /// INTERNAL USE ONLY. Adds a new card to the card pool
+    /// </summary>
+    /// <param name="newCard">The card to add</param>
+    internal static void Add(CardInfo newCard)
+    {
         if (string.IsNullOrEmpty(newCard.GetModTag()))
         {
             Assembly callingAssembly = Assembly.GetCallingAssembly();
@@ -160,18 +175,46 @@ public static class CardManager
         if (!NewCards.Contains(newCard)) 
             NewCards.Add(newCard); 
     }
+
+    /// <summary>
+    /// Adds a new card to the card pool. If your card's name does not match your mod prefix, it will be updated to match.
+    /// </summary>
+    /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
+    /// <param name="newCard">The card to add</param>
+    public static void Add(string modPrefix, CardInfo newCard) 
+    { 
+        newCard.name = !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
+        newCard.SetModPrefix(modPrefix);
+
+        Add(newCard);
+    }
+
+    /// <summary>
+    /// Removes a custom card from the card pool. Cannot be used to remove base game cards.
+    /// </summary>
+    /// <param name="card">The card to remove</param>
     public static void Remove(CardInfo card) => NewCards.Remove(card);
 
-    public static CardInfo New(string name, string displayName, int attack, int health, string description = default(string), string modPrefix=default(string))
+    /// <summary>
+    /// Adds a new card to the card pool
+    /// </summary>
+    /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
+    /// <param name="name">The name of your card in the card pool. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name]</param>
+    /// <param name="displayName">The displayed name of the card</param>
+    /// <param name="attack">The attack power of the card</param>
+    /// <param name="health">The health of the card</param>
+    /// <param name="description">The spoken description when the card is first encountered.</param>
+    /// <returns></returns>
+    public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default(string))
     {
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
-        retval.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
+        retval.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
         retval.SetBasic(displayName, attack, health, description);
         
         Assembly callingAssembly = Assembly.GetCallingAssembly();
         retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
 
-        Add(retval, modPrefix:modPrefix);
+        Add(modPrefix, retval);
 
         return retval;
     }
@@ -208,15 +251,6 @@ public static class CardManager
     {
         // just ensures that clones of a card have the same extension properties
         ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
-    }
-
-    [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.GetCardByName))]
-    [HarmonyPrefix]
-    private static bool GetNonGuidName(string name, out CardInfo __result)
-    {
-        CardInfo retVal = AllCardsCopy.CardByName(name);
-        __result = CardLoader.Clone(retVal);
-        return false;
     }
 
     [HarmonyILManipulator]

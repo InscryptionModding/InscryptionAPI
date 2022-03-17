@@ -13,20 +13,7 @@ public static class CardExtensions
     /// <param name="cards">An enumeration of Inscryption cards</param>
     /// <param name="name">The name to search for (case sensitive).</param>
     /// <returns>The first matching card, or null if no match</returns>
-    public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name)
-    {
-        CardInfo retVal = null;
-        foreach (var card in cards)
-        {
-            var cardName = card.name;
-
-            if (cardName.Equals(name, StringComparison.OrdinalIgnoreCase))
-                return card;
-            else if (retVal is null && cardName.EndsWith("_" + name))
-                retVal = card;
-        }
-        return retVal;
-    }
+    public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(c => c.name.Equals(name));
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
     {
@@ -772,5 +759,17 @@ public static class CardExtensions
     {
         bool? isBGC = info.GetExtendedPropertyAsBool("BaseGameCard");
         return isBGC.HasValue && isBGC.Value;
+    }
+
+    internal static CardInfo SetOldApiCard(this CardInfo info, bool isOldApiCard = true)
+    {
+        info.SetExtendedProperty("AddedByOldApi", isOldApiCard);
+        return info;
+    }
+
+    internal static bool IsOldApiCard(this CardInfo info)
+    {
+        bool? isOAPI = info.GetExtendedPropertyAsBool("AddedByOldApi");
+        return isOAPI.HasValue && isOAPI.Value;
     }
 }

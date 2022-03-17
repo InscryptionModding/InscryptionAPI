@@ -232,12 +232,12 @@ It's possible that at the time your card is built, the card that you want to evo
 However, note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null. You will not see the evolve parameters until you add the evolution to the card list **and** you get a fresh copy of the card from CardLoader (as would happen in game).
 
 ```c#
-CardManager.New("Base", "Base Card", 2, 2).SetEvolve("Evolve Card", 1); // "Evolve Card" hasn't been built yet
-Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // TRUE!
+CardManager.New("Example", "Base", "Base Card", 2, 2).SetEvolve("Evolve Card", 1); // "Evolve Card" hasn't been built yet
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Example_Base").evolveParams == null); // TRUE!
 
-CardInfo myEvolveCard = CardManager.New("Evolve", "Evolve Card", 2, 5);
+CardInfo myEvolveCard = CardManager.New("Example", "Evolve", "Evolve Card", 2, 5);
 
-Plugin.Log.LogInfo(CardLoader.GetCardByName("Base").evolveParams == null); // FALSE!
+Plugin.Log.LogInfo(CardLoader.GetCardByName("Example_Base").evolveParams == null); // FALSE!
 ```
 
 ### Editing existing cards

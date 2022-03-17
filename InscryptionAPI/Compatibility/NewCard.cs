@@ -60,8 +60,17 @@ namespace APIPlugin
 			Texture2D emissionTex = null, GameObject animatedPortrait = null, List<Texture> decals = null,
 			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
-            CardInfo info = CardManager.New(name, displayedName, baseAttack, baseHealth, description)
-                                       .SetCost(bloodCost, bonesCost, energyCost, gemsCost);
+
+            CardInfo info = ScriptableObject.CreateInstance<CardInfo>();
+            info.SetOldApiCard(true);
+
+            info.name = name;
+            info.displayedName = displayedName;
+            info.baseAttack = baseAttack;
+            info.baseHealth = baseHealth;
+            info.description = description;
+            
+            info.SetCost(bloodCost, bonesCost, energyCost, gemsCost);
 
             info.hideAttackAndHealth = hideAttackAndHealth;
             info.cardComplexity = cardComplexity;
@@ -125,6 +134,8 @@ namespace APIPlugin
 
             if (tailId != null)
                 info.SetTail(tailId.name, tailId.tailLostTex, mods:new List<CardModificationInfo>() { tailId.mods });
+
+            CardManager.Add(info);
 		}
 
         internal static void AssignSpecialAbilities(this CardInfo info, IEnumerable<SpecialAbilityIdentifier> ids)
