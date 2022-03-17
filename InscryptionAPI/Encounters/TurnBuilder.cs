@@ -57,7 +57,7 @@ public static class TurnExtensions
                 maxDifficulty = maxDifficulty,
                 difficultyReplace = difficultyReplace,
                 difficultyReq = difficultyReplaceReq,
-                replacement = CardManager.AllCardsCopy.CardByName(card)
+                replacement = CardManager.AllCardsCopy.CardByName(replacement ?? card)
             }
         );
         return turnBuilder;
