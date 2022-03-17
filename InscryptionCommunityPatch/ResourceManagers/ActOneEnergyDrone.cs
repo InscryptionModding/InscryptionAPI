@@ -6,6 +6,7 @@ using InscryptionAPI.Card;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace InscryptionCommunityPatch.ResourceManagers;
 
@@ -29,7 +30,7 @@ public static class EnergyDrone
         {
             get 
             {
-                return this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+                return this.ConfigEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
             }
             set { _configDroneOverride = value;}
         }
@@ -52,6 +53,34 @@ public static class EnergyDrone
                 return this.ConfigMox || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
             }
             set { _configDroneMoxOverride = value; }
+        }
+    }
+
+    public static bool SceneCanHaveEnergyDrone(string sceneName)
+    {
+        string activeSceneName = sceneName.ToLowerInvariant();
+
+        if (activeSceneName.Contains("part1"))
+            return true;
+
+        if (activeSceneName.Contains("magnificus"))
+            return true;
+
+        if (activeSceneName.Contains("grimora"))
+            return true;
+
+        return false;
+    }
+
+    public static bool CurrentSceneCanHaveEnergyDrone
+    {
+        get
+        {
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene == null || String.IsNullOrEmpty(activeScene.name))
+                return false;
+
+            return SceneCanHaveEnergyDrone(activeScene.name);
         }
     }
 
@@ -80,9 +109,9 @@ public static class EnergyDrone
         }
     }
 
-    private static bool PoolHasEnergy { get; set; }
+    public static bool PoolHasEnergy { get; private set; }
 
-    private static bool PoolHasGems { get; set; }
+    public static bool PoolHasGems { get; private set; }
 
     private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
     {
@@ -100,6 +129,13 @@ public static class EnergyDrone
     {
         PatchPlugin.Logger.LogDebug($"Checking to see if I need to enable energy for scene {sceneName}");
 
+        // We only need to do this in these specific scenes.
+        if (!SceneCanHaveEnergyDrone(sceneName))
+        {
+            PatchPlugin.Logger.LogDebug($"The active scene should not have the energy drone");
+            return;
+        }
+
         // Check the entire pool of cards for mox and energy
         CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead : 
                                   SaveManager.saveFile.IsMagnificus ? CardTemple.Wizard :
@@ -109,13 +145,12 @@ public static class EnergyDrone
         PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
         PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
-        if (!SaveManager.SaveFile.IsPart3)
-        {
-            UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
+        PatchPlugin.Logger.LogDebug($"Card pool has energy cards {PoolHasEnergy}. Card pool has Gem cards {PoolHasGems}");
 
-            if(EnergyConfig.ConfigDrone)
-                PatchPlugin.Instance.StartCoroutine(AwakeDrone());
-        }
+        UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
+
+        if (EnergyConfig.ConfigDrone)
+            PatchPlugin.Instance.StartCoroutine(AwakeDrone());
     }
 
     private static IEnumerator AwakeDrone()
@@ -135,9 +170,9 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourceDrone), "SetOnBoard")]
     [HarmonyPostfix]
-	public static void ResourceDrone_SetOnBoard(ResourceDrone __instance)
+	public static void ResourceDrone_SetOnBoard(ResourceDrone __instance, bool onBoard)
     {
-        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsGrimora)
+        if (CurrentSceneCanHaveEnergyDrone)
         {
             // These three settings came from playing around with the UnityExplorer plugin
             __instance.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -148,6 +183,7 @@ public static class EnergyDrone
 
             __instance.gameObject.transform.Find("Anim/Module-Energy/Propellers").gameObject.SetActive(false);
 
+            __instance.gameObject.SetActive(onBoard);
             __instance.Gems.gameObject.SetActive(EnergyConfig.ConfigDroneMox);
         }
     }
@@ -179,13 +215,13 @@ public static class EnergyDrone
         }
     }
 
-    [HarmonyPatch(typeof(ResourcesManager), "Setup")]
+    [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.Setup))]
     [HarmonyPrefix]
 	public static void ResourcesManager_Setup(ResourcesManager __instance)
     {
+        PatchPlugin.Logger.LogDebug($"Setting up extra resources? {EnergyConfig.ConfigDrone}: drone {ResourceDrone.Instance}");
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
-            PatchPlugin.Logger.LogDebug($"Setting up extra resources: drone {ResourceDrone.Instance}");
             ResourceDrone.Instance.SetOnBoard(true, false);
             if (EnergyConfig.ConfigDroneMox)
             {
@@ -289,7 +325,7 @@ public static class EnergyDrone
         // If the game is not going to automatically update the energy, I'll do it
         yield return sequence;
 
-        if (SaveManager.SaveFile.IsPart1 && EnergyConfig.ConfigEnergy && playerUpkeep)
+        if (CurrentSceneCanHaveEnergyDrone && EnergyConfig.ConfigEnergy && playerUpkeep)
         {
             bool showEnergyModule = !ResourcesManager.Instance.EnergyAtMax || ResourcesManager.Instance.PlayerEnergy < ResourcesManager.Instance.PlayerMaxEnergy;
             if (showEnergyModule)
