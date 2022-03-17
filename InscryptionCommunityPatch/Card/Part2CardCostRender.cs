@@ -42,7 +42,7 @@ public static class Part2CardCostRender
 
     public static Sprite Part2SpriteFinal(CardInfo card, bool left=true)
     {
-        string costKey = $"b{card.cost}_o{card.bonesCost}_g{card.energyCost}_e{Part1CardCostRender.GemCost(card)}";
+        string costKey = $"b{card.BloodCost}_o{card.BonesCost}_g{card.EnergyCost}_e{Part1CardCostRender.GemCost(card)}";
 
         if (AssembledTextures.ContainsKey(costKey))
 		{
@@ -55,14 +55,14 @@ public static class Part2CardCostRender
         //A list to hold the textures (important later, to combine them all)
         List<Texture2D> masterList = new List<Texture2D>();
 
-        if (card.cost > 0)
-            masterList.Add(GetFinalTexture(card.cost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly), left)); 
+        if (card.BloodCost > 0)
+            masterList.Add(GetFinalTexture(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly), left)); 
 
-        if (card.bonesCost > 0)
-            masterList.Add(GetFinalTexture(card.bonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly), left));
+        if (card.BonesCost > 0)
+            masterList.Add(GetFinalTexture(card.BonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly), left));
 
-        if (card.energyCost > 0)
-            masterList.Add(GetFinalTexture(card.energyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly), left));
+        if (card.EnergyCost > 0)
+            masterList.Add(GetFinalTexture(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly), left));
         
         if (card.gemsCost.Count > 0)
         {

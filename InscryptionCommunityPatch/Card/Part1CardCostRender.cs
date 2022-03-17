@@ -51,14 +51,14 @@ public static class Part1CardCostRender
 
 	internal static string GemCost(CardInfo info)
 	{
-		return (info.gemsCost.Contains(GemType.Orange) ? "o": string.Empty) + 
-			   (info.gemsCost.Contains(GemType.Blue) ? "b": string.Empty) + 
-			   (info.gemsCost.Contains(GemType.Green) ? "g": string.Empty);
+		return (info.GemsCost.Contains(GemType.Orange) ? "o": string.Empty) + 
+			   (info.GemsCost.Contains(GemType.Blue) ? "b": string.Empty) + 
+			   (info.GemsCost.Contains(GemType.Green) ? "g": string.Empty);
 	}
 
 	public static Sprite Part1SpriteFinal(CardInfo card)
 	{
-		string costKey = $"b{card.cost}_o{card.bonesCost}_g{card.energyCost}_e{GemCost(card)}";
+		string costKey = $"b{card.BloodCost}_o{card.BonesCost}_g{card.EnergyCost}_e{GemCost(card)}";
 
 		if (AssembledTextures.ContainsKey(costKey))
 		{
@@ -91,14 +91,14 @@ public static class Part1CardCostRender
 			list.Add(CombineMoxTextures(gemCost));
 		}
 
-		if (card.energyCost > 0)
-			list.Add(GetTextureByName($"energy_cost_{card.energyCost}"));
+		if (card.EnergyCost > 0)
+			list.Add(GetTextureByName($"energy_cost_{card.EnergyCost}"));
 
-		if (card.bonesCost > 0)
-			list.Add(GetTextureByName($"bone_cost_{card.bonesCost}"));
+		if (card.BonesCost > 0)
+			list.Add(GetTextureByName($"bone_cost_{card.BonesCost}"));
 
-		if (card.cost > 0)
-			list.Add(GetTextureByName($"blood_cost_{card.cost}"));
+		if (card.BloodCost > 0)
+			list.Add(GetTextureByName($"blood_cost_{card.BloodCost}"));
 
 		// Call the event and allow others to modify the list of textures
 		UpdateCardCost?.Invoke(card, list);
