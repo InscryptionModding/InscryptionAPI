@@ -67,7 +67,7 @@ public class MergedSigilOnBottom
                 {
                     foreach (CardModificationInfo mod in MergeSigils)
                     {
-                        if (mod.abilities.Contains(ability.ability) && __instance.name is "AbilityIcon" or "DefaultIcons_1Ability")
+                        if (mod.abilities.Contains(ability.ability) && (__instance.name is "AbilityIcon" or "DefaultIcons_1Ability"))
                         {
                             if (PatchPlugin.configRemovePatches.Value)
                             {
