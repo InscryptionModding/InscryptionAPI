@@ -61,7 +61,7 @@ namespace APIPlugin
 			EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
 		{
             CardInfo info = CardManager.New(name, displayedName, baseAttack, baseHealth, description)
-                                       .SetCost(bloodCost, bonesCost, energyCost, gemsCost);
+                                       .SetCosts(bloodCost, bonesCost, energyCost, gemsCost);
 
             info.hideAttackAndHealth = hideAttackAndHealth;
             info.cardComplexity = cardComplexity;

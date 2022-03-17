@@ -206,25 +206,42 @@ CardInfo myCard = CardManager.New("example_card", "Sample Card", 2, 2, "This is 
 ```
 
 The following card extensions are available:
-- **SetPortrait:** Assigns the cards primary art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card's art.
-- **SetEmissivePortrait:** If a card already has a portrait and you just want to modify it's emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
-- **SetAltPortrait:** Assigns the card's alternate portrait
-- **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode)
-- **SetCost:** Sets the cost for the card
-- **SetDefaultPart1Card:** Sets all of the metadata necessary to make this card playable in Part 1 (Leshy's cabin).
-- **SetGBCPlayable:** Sets all of the metadata necessary to make this card playable in Part 2.
-- **SetDefaultPart3Card:** Sets all of the metadata necessary to make this card playable in Part 3 (P03's cabin).
-- **SetRare:** Sets all of the metadata ncessary to make this card look and play as Rare.
-- **SetTerrain:** Sets all of the metadata necessary to make this card look and play as terrain
-- **SetTail:** Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything
-- **SetIceCube:** Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything
-- **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything
 - **AddAbilities:** Add any number of abilities to the card. This will add duplicates.
 - **AddAppearances:** Add any number of appearance behaviors to the card. No duplicates will be added.
+- **AddDecal:** Add any number of decals to the card. No duplicates will be added.
 - **AddMetaCategories:** Add any number of metacategories to the card. No duplicates will be added.
 - **AddTraits:** Add any number of traits to the card. No duplicates will be added.
 - **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
 - **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
+- **SetAltPortrait:** Assigns the card's alternate portrait.
+- **SetBasic:** Sets a number of basic properties of the card.
+- **SetBaseGameCard:** Sets an indicator of whether this is a base game card or not.
+- **SetBaseAttackAndHealth:** Sets the base attack and health of the card.
+- **SetDisplayedName:** Sets the displayed name of the card.
+- **SetCosts:** Sets the costs for the card.
+- **SetBloodCost:** Sets the blood cost for the card.
+- **SetBonesCost:** Sets the bones cost for the card.
+- **SetEnergyCost:** Sets the energy cost for the card.
+- **SetGemsCost:** Sets the gems cost of the card..
+- **SetDefaultPart1Card:** Sets all of the metadata necessary to make this card playable in Part 1 (Leshy's cabin).
+- **SetDefaultPart3Card:** Sets all of the metadata necessary to make this card playable in Part 3 (P03's cabin).
+- **SetEmissivePortrait:** If a card already has a portrait and you just want to modify it's emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
+- **SetEmissiveAltPortrait:** If a card already has a portrait and you just want to modify it's emissive alt portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
+- **SetLostTailPortrait:** Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+- **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.
+- **SetGBCPlayable:** Sets all of the metadata necessary to make this card playable in Part 2.
+- **SetIceCube:** Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything.
+- **SetName:** Sets the displayed name of the card.
+- **SetNames:** Sets the card name and displayed name of the card.
+- **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode).
+- **SetPortrait:** Assigns the cards primary art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card's art.
+- **SetRare:** Sets all of the metadata necessary to make this card look and play as Rare.
+- **SetTail:** Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything.
+- **SetSpecialAbilities:** Sets any number of special abilities to the the card.
+- **SetStatIcon:** Sets the stat icon to the card.
+- **SetTerrain:** Sets all of the metadata necessary to make this card look and play as terrain.
+- **SetTraits:** Sets any number of traits to the the card.
+- **SetTribes:** Set any number of tribes to the the card.
 
 ### Evolve, Tail, Ice Cube, and delayed loading
 It's possible that at the time your card is built, the card that you want to evolve into has not been built yet. You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.
