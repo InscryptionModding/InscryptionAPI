@@ -166,7 +166,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets an indicator of whether this is a base game card or not
+    /// Sets an indicator of whether this is a base game card or not.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="isBaseGameCard">Whether this is a base game card or not</param>
@@ -223,7 +223,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the displayed name of the card.
+    /// Sets the name of the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="name">The name for the card</param>
@@ -238,7 +238,7 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// Sets the displayed name of the card.
+    /// Sets the card name and displayed name of the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="name">The name for the card</param>
@@ -250,7 +250,30 @@ public static class CardExtensions
         info.SetDisplayedName(displayedName);
         return info.SetName(name, modPrefix);
     }
+    
+    /// <summary>
+    /// Sets any number of special abilities to the the card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="abilities">The abilities to add</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo SetSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
+    {
+        info.specialAbilities = abilities?.ToList();
+        return info;
+    }
 
+    /// <summary>
+    /// Sets the stat icon to the card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="statIcon">The stat icon to set</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo SetStatIcon(this CardInfo info, SpecialStatIcon statIcon)
+    {
+        info.specialStatIcon = statIcon;
+        return info;
+    }
 
     /// <summary>
     /// Sets any number of traits to the the card.
@@ -274,25 +297,6 @@ public static class CardExtensions
     public static CardInfo SetTribes(this CardInfo info, params Tribe[] tribes)
     {
         info.tribes = tribes?.ToList();
-        return info;
-    }
-
-
-    /// <summary>
-    /// Sets any number of special abilities to the the card.
-    /// </summary>
-    /// <param name="info">Card to access</param>
-    /// <param name="abilities">The abilities to add</param>
-    /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
-    {
-        info.specialAbilities = abilities?.ToList();
-        return info;
-    }
-
-    public static CardInfo SetStatIcon(this CardInfo info, SpecialStatIcon statIcon)
-    {
-        info.specialStatIcon = statIcon;
         return info;
     }
 
@@ -584,13 +588,12 @@ public static class CardExtensions
     /// <param name="energyCost">The cost in energy</param>
     /// <param name="gemsCost">The cost in gems</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetCost(this CardInfo info, int? bloodCost = 0, int? bonesCost = 0, int? energyCost = 0, List<GemType> gemsCost = null)
+    public static CardInfo SetCosts(this CardInfo info, int? bloodCost = 0, int? bonesCost = 0, int? energyCost = 0, List<GemType> gemsCost = null)
     {
         info.SetBloodCost(bloodCost);
         info.SetBonesCost(bonesCost);
         info.SetEnergyCost(energyCost);
-        info.SetGemsCost(gemsCost);
-        return info;
+        return info.SetGemsCost(gemsCost);
     }
 
     /// <summary>
@@ -633,7 +636,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the cost of the card. Any and all costs can be set this way.
+    /// Sets the gems cost of the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="gemsCost">The cost in gems</param>
