@@ -283,7 +283,7 @@ public static class CardExtensions
     public static CardInfo SetRare(this CardInfo info)
     {
         info.AddMetaCategories(CardMetaCategory.Rare);
-        info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardColors, CardAppearanceBehaviour.Appearance.RareCardBackground);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardBackground);
 
         info.metaCategories.Remove(CardMetaCategory.ChoiceNode);
         info.metaCategories.Remove(CardMetaCategory.TraderOffer);
