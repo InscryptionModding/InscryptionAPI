@@ -15,7 +15,7 @@ public static class Part2CardCostRender
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
-    private static Dictionary<string, Texture2D> AssembledTextures = new();
+    //private static Dictionary<string, Texture2D> AssembledTextures = new();
 
     public static Texture2D GetFinalTexture(int cardCost, Texture2D artCost, bool left)
     {
@@ -39,17 +39,7 @@ public static class Part2CardCostRender
 
     public static Sprite Part2SpriteFinal(CardInfo card, bool left=true)
     {
-        string costKey = $"b{card.BloodCost}_o{card.BonesCost}_g{card.EnergyCost}_e{Part1CardCostRender.GemCost(card)}";
-
-        if (AssembledTextures.ContainsKey(costKey))
-		{
-			if (AssembledTextures[costKey] == null)
-				AssembledTextures.Remove(costKey);
-			else			
-				return TextureHelper.ConvertTexture(AssembledTextures[costKey], left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
-		}
-
-        //A list to hold the textures (important later, to combine them all)
+        // A list to hold the textures (important later, to combine them all)
         List<Texture2D> masterList = new List<Texture2D>();
 
         if (card.BloodCost > 0)
@@ -92,8 +82,6 @@ public static class Part2CardCostRender
         //Combine all the textures from the list into one texture
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_base.png", typeof(Part2CardCostRender).Assembly);
         Texture2D finalTexture = TextureHelper.CombineTextures(masterList, baseTexture, yStep:8);
-
-        AssembledTextures.Add(costKey, finalTexture);
 
         //Convert the final texture to a sprite
         Sprite finalSprite = TextureHelper.ConvertTexture(finalTexture, left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
