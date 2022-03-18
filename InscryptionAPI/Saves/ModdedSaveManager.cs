@@ -25,7 +25,7 @@ public static class ModdedSaveManager
     [HarmonyPostfix]
     public static void SaveDataToFile()
     {
-        Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>> saveData = new(SaveData.SaveData, RunState.SaveData);
+        var saveData = (SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
         File.WriteAllText(saveFilePath, moddedSaveData);
     }
