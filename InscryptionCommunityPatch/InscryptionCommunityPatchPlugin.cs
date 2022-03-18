@@ -65,7 +65,7 @@ public class PatchPlugin : BaseUnityPlugin
         Instance = this;
         configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
         configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
-        configMox = Config.Bind("Mox","Mox Refresh",false,"Mox refreshes at end of battle");
+        configMox = Config.Bind("Mox","Mox Refresh",true,"Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
         rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
         configMergeOnBottom = Config.Bind("Sigil Display", "Merge_On_Botom", false, "Makes it so if enabled, merged sigils will display on the bottom of the card instead of on the artwork. In extreme cases, this can cause some visual bugs.");
