@@ -8,22 +8,15 @@
         <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <DebugType>full</DebugType>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-
+    
     <ItemGroup>
       <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InscryptionAPI\InscryptionAPI.csproj" />
+      <ProjectReference Private="false" Include="..\InscryptionAPI\InscryptionAPI.csproj" />
     </ItemGroup>
 
     <ItemGroup>

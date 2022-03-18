@@ -1,9 +1,0 @@
-{
-    "name": "API",
-    "version_number": "2.0.0",
-    "website_url": "https://github.com/ScottWilson0903/InscryptionAPI",
-    "description": "The de-facto standard core API for all Inscryption mods. This lets you create new cards, abilities, challenges, map nodes, starter decks, and more.",
-    "dependencies": [
-        "BepInEx-BepInExPack_Inscryption-5.4.1701"
-    ]
-}

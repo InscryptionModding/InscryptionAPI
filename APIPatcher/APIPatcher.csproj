@@ -5,10 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <LangVersion>latest</LangVersion>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="BepInEx.Core" Version="5.4.17" />
+      <PackageReference Include="BepInEx.Core" Version="5.4.19" />
     </ItemGroup>
 
 </Project>
