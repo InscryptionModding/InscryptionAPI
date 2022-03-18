@@ -58,17 +58,7 @@ public static class Part1CardCostRender
 
 	public static Sprite Part1SpriteFinal(CardInfo card)
 	{
-		string costKey = $"b{card.BloodCost}_o{card.BonesCost}_g{card.EnergyCost}_e{GemCost(card)}";
-
-		if (AssembledTextures.ContainsKey(costKey))
-		{
-			if (AssembledTextures[costKey] == null)
-				AssembledTextures.Remove(costKey);
-			else			
-				return TextureHelper.ConvertTexture(AssembledTextures[costKey], TextureHelper.SpriteType.OversizedCostDecal);
-		}
-
-		//A list to hold the textures (important later, to combine them all)
+		// A list to hold the textures (important later, to combine them all)
 		List<Texture2D> list = new List<Texture2D>();
 
 		//Setting mox first
@@ -103,11 +93,10 @@ public static class Part1CardCostRender
 		// Call the event and allow others to modify the list of textures
 		UpdateCardCost?.Invoke(card, list);
 
-		//Combine all the textures from the list into one texture
+		// Combine all the textures from the list into one texture
 		Texture2D finalTexture = CombineCostTextures(list);
 
-		//Convert the final texture to a sprite
-		AssembledTextures.Add(costKey, finalTexture);
+		// Convert the final texture to a sprite
 		return TextureHelper.ConvertTexture(finalTexture, TextureHelper.SpriteType.OversizedCostDecal);
 	}
 
