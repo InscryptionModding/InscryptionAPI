@@ -17,8 +17,9 @@ public static class Part2CardCostRender
 
     //private static Dictionary<string, Texture2D> AssembledTextures = new();
 
-    public static Texture2D GetFinalTexture(int cardCost, Texture2D artCost, bool left)
+    public static Texture2D CombineIconAndCount(int cardCost, Texture2D artCost)
     {
+        bool left = !PatchPlugin.rightAct2Cost.Value;
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
 
         List<Texture2D> list = new List<Texture2D>();
@@ -37,19 +38,21 @@ public static class Part2CardCostRender
         return TextureHelper.CombineTextures(list, baseTexture, xOffset:xOffset, xStep:artCost.width);
     }
 
-    public static Sprite Part2SpriteFinal(CardInfo card, bool left=true)
+    public static Sprite Part2SpriteFinal(CardInfo card)
     {
+        bool left = !PatchPlugin.rightAct2Cost.Value;
+
         // A list to hold the textures (important later, to combine them all)
         List<Texture2D> masterList = new List<Texture2D>();
 
         if (card.BloodCost > 0)
-            masterList.Add(GetFinalTexture(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly), left)); 
+            masterList.Add(CombineIconAndCount(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly))); 
 
         if (card.BonesCost > 0)
-            masterList.Add(GetFinalTexture(card.BonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly), left));
+            masterList.Add(CombineIconAndCount(card.BonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly)));
 
         if (card.EnergyCost > 0)
-            masterList.Add(GetFinalTexture(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly), left));
+            masterList.Add(CombineIconAndCount(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly)));
         
         if (card.gemsCost.Count > 0)
         {
@@ -96,7 +99,7 @@ public static class Part2CardCostRender
 		if (__instance is PixelCardDisplayer) 
 		{ 
 			/// Set the results as the new sprite
-			__result = Part2SpriteFinal(card, !PatchPlugin.rightAct2Cost.Value);
+			__result = Part2SpriteFinal(card);
 			return false;
 		}
 
