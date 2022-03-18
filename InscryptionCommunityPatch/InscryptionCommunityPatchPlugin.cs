@@ -4,7 +4,6 @@ using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
-using InscryptionAPI.Card;
 using InscryptionCommunityPatch.Card;
 using InscryptionCommunityPatch.ResourceManagers;
 using InscryptionCommunityPatch.Tests;

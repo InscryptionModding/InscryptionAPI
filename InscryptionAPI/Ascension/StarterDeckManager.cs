@@ -3,7 +3,6 @@ using HarmonyLib;
 using UnityEngine;
 using System.Collections.ObjectModel;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Ascension;
 

@@ -1,9 +1,6 @@
-using BepInEx;
-using BepInEx.Logging;
 using DiskCardGame;
 using UnityEngine;
 using HarmonyLib;
-using System.Collections.Generic;
 using InscryptionAPI.Helpers;
 using GBC;
 

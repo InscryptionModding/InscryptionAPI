@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Reflection;
 using System.Diagnostics;
 using BepInEx;
-using BepInEx.Bootstrap;
 
 namespace InscryptionAPI.Guid;
 

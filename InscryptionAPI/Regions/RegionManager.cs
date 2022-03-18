@@ -1,9 +1,7 @@
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
-using System.Linq;
 
 namespace InscryptionAPI.Regions;
 

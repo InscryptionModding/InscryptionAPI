@@ -1,7 +1,6 @@
 using HarmonyLib;
 using DiskCardGame;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace InscryptionCommunityPatch.Card;
 

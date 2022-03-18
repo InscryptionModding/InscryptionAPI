@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using DiskCardGame;
@@ -182,8 +181,11 @@ public static class CardManager
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
     /// <param name="newCard">The card to add</param>
     public static void Add(string modPrefix, CardInfo newCard) 
-    { 
-        newCard.name = !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
+    {
+        if (!newCard.name.StartsWith(modPrefix))
+        {
+            newCard.name = $"{modPrefix}_{newCard.name}";
+        }
         newCard.SetModPrefix(modPrefix);
 
         Add(newCard);

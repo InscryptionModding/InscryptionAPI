@@ -1,6 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using System.Reflection;
 
 namespace InscryptionAPI.Saves;
 
@@ -44,8 +43,8 @@ public static class ModdedSaveManager
         if (File.Exists(saveFilePath))
         {
             string json = File.ReadAllText(saveFilePath);
-            Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>> saveData;
-            saveData = SaveManager.FromJSON<Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>>>(json);
+            (Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>) saveData 
+                = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
 
             if (SaveData == null)
                 SaveData = new();

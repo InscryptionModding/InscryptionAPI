@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using APIPlugin;
 using DiskCardGame;
 using UnityEngine;
 using HarmonyLib;
-using System;
 using InscryptionAPI.Helpers;
 
 namespace InscryptionCommunityPatch.Sequencers;
