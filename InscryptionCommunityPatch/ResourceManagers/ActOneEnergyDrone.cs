@@ -30,7 +30,7 @@ public static class EnergyDrone
         {
             get 
             {
-                return this.ConfigEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+                return EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
             }
             set { _configDroneOverride = value;}
         }
@@ -50,7 +50,7 @@ public static class EnergyDrone
         { 
             get
             {
-                return this.ConfigMox || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
+                return EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
             }
             set { _configDroneMoxOverride = value; }
         }
