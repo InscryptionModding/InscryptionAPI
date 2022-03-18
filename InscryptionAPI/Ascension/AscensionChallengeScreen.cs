@@ -55,7 +55,7 @@ public static class AscensionChallengeScreenPatches
             paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>());
         }
         paginator.extraIcon = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>();
-        paginator.showExtraIcon = paginator.extraIcon.gameObject.activeSelf;
+        paginator.showExtraIcon = AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel);
 
 
         paginator.GeneratePages();

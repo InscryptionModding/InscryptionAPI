@@ -51,7 +51,7 @@ public class AscensionChallengePaginator : MonoBehaviour
         List<AscensionChallenge> challenges = new();
         List<AscensionChallenge> assists = new();
 
-        foreach (AscensionChallenge ch in ChallengeManager.AllInfo.Where(i => i.pointValue >= 0).Select(sci => sci.challengeType))
+        foreach (AscensionChallenge ch in ChallengeManager.AllInfo.Where(i => i.pointValue >= 0 && i.challengeType != extraIcon.Info.challengeType).Select(sci => sci.challengeType))
         {
             challenges.Add(ch);
             if (ChallengeManager.IsStackable(ch))
