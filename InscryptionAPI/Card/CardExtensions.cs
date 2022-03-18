@@ -280,13 +280,10 @@ public static class CardExtensions
     /// <summary>
     /// Sets the card so it shows up for rare card choices and applies the rare background.
     /// </summary>
-    public static CardInfo SetRare(this CardInfo info, bool setRareCardColors=false)
+    public static CardInfo SetRare(this CardInfo info)
     {
         info.AddMetaCategories(CardMetaCategory.Rare);
         info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardBackground);
-
-        if (setRareCardColors)
-            info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardColors);
 
         info.metaCategories.Remove(CardMetaCategory.ChoiceNode);
         info.metaCategories.Remove(CardMetaCategory.TraderOffer);
