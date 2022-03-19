@@ -87,6 +87,12 @@ public static class TextureHelper
         return retval;
     }
 
+    public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
+    {
+        pivot ??= new Vector2(0.5f, 0.5f);
+        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+    }
+
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);

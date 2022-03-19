@@ -1,4 +1,4 @@
-﻿global using UnityObject = UnityEngine.Object;
+global using UnityObject = UnityEngine.Object;
 
 using BepInEx;
 using BepInEx.Logging;
