@@ -11,6 +11,14 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <NoWarn>1701;1702;Publicizer001</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <NoWarn>1701;1702;Publicizer001</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
     </ItemGroup>
