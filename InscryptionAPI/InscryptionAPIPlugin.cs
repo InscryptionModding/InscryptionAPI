@@ -75,6 +75,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
+        CardManager.AuditCardList();
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

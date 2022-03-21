@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Saves;
 using MonoMod.Cil;
 using UnityEngine;
 
@@ -245,6 +246,82 @@ public static class CardManager
     internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
     {
         return ExtensionProperties.GetOrCreateValue(card).StringMap;
+    }
+
+    private const string ERROR = "ERROR";
+
+    private static string ReverseKey(string key)
+    {
+        foreach (var pair in ModdedSaveManager.SaveData.SaveData[InscryptionAPIPlugin.ModGUID])
+            if (pair.Value.Equals(key))
+                return pair.Key;
+        
+        return ERROR;
+    }
+
+    internal static void AuditCardList()
+    {
+        foreach (CardInfo card in AllCardsCopy)
+        {
+            // Audit the abilities for issues
+            foreach (Ability ability in card.Abilities)
+            {
+                string printKey = (int)ability >= GuidManager.START_INDEX ?
+                                  ReverseKey(ability.ToString()).Replace("Ability_", "") :
+                                  $"Inscryption_{ability.ToString()}";
+
+                if (printKey.Equals(ERROR))
+                {
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    continue;
+                }
+                
+                AbilityInfo info = AbilitiesUtil.GetInfo(ability);
+
+                if (info == null)
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {printKey} that has not been properly registered!");
+            }
+
+            // Audit the special abilities for issues
+            foreach (SpecialTriggeredAbility ability in card.SpecialAbilities)
+            {
+                string printKey = (int)ability >= GuidManager.START_INDEX ?
+                                  ReverseKey(ability.ToString()).Replace("SpecialTriggeredAbility_", "") :
+                                  $"Inscryption_{ability.ToString()}";
+
+                if (printKey.Equals(ERROR))
+                {
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    continue;
+                }
+
+
+                var fst = SpecialTriggeredAbilityManager.AllSpecialTriggers.FirstOrDefault(st => st.Id == ability);
+
+                if (fst == null)
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {printKey} that has not been properly registered!");
+            }
+
+            // Audit the appearance behaviors for issues
+            foreach (var ability in card.appearanceBehaviour)
+            {
+                string printKey = (int)ability >= GuidManager.START_INDEX ?
+                                  ReverseKey(ability.ToString()).Replace("CardAppearanceBehaviour.Appearance_", "") :
+                                  $"Inscryption_{ability.ToString()}";
+
+                if (printKey.Equals(ERROR))
+                {
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    continue;
+                }
+
+
+                var fst = CardAppearanceBehaviourManager.AllAppearances.FirstOrDefault(f => f.Id == ability);
+
+                if (fst == null)
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {printKey} that has not been properly registered!");
+            }
+        }
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
