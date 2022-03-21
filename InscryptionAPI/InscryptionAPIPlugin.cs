@@ -19,10 +19,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.0.1";
+    public const string ModVer = "2.0.2";
 
     private static bool _hasShownOldApiWarning = false;
-    
+
     static InscryptionAPIPlugin()
     {
         AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
