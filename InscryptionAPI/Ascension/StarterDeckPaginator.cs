@@ -1,10 +1,14 @@
 using DiskCardGame;
+using InscryptionAPI.Helpers;
+using System.Reflection;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
 public class StarterDeckPaginator : MonoBehaviour
 {
+    public static readonly Sprite noneDeckSprite = TextureHelper.GetTextureFromResource("InscryptionAPI/starterdeck_icon_none.png").ConvertTexture();
+
     public void Initialize(AscensionChooseStarterDeckScreen screen)
     {
         if (pages == null)
@@ -58,7 +62,7 @@ public class StarterDeckPaginator : MonoBehaviour
 
     public void LoadPage(List<StarterDeckInfo> page)
     {
-        List<AscensionStarterDeckIcon> sorted = screen.deckIcons;
+        List<AscensionStarterDeckIcon> sorted = new List<AscensionStarterDeckIcon>(screen.deckIcons);
         sorted.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.y - x2.transform.position.y) < 0.1f ? x.transform.position.x - x2.transform.position.x : x2.transform.position.y - x.transform.position.y) * 100));
         for (int i = 0; i < pageLength; i++)
         {
@@ -78,9 +82,16 @@ public class StarterDeckPaginator : MonoBehaviour
                     sorted[i].starterDeckInfo = null;
                     sorted[i].AssignInfo(null);
                     sorted[i].conqueredRenderer.enabled = false;
+                    sorted[i].iconRenderer.sprite = noneDeckSprite;
                 }
             }
         }
+        foreach(AscensionStarterDeckIcon icon in screen.deckIcons)
+        {
+            if(icon.Info == null)
+                icon.iconRenderer.sprite = noneDeckSprite;
+        }
+        CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
 
     public int pageIndex;

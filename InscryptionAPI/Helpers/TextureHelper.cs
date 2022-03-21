@@ -124,6 +124,44 @@ public static class TextureHelper
             if (emissionMap.ContainsKey(info.portraitTex))
                 emissionMap.Add(alternatePortrait, emissionMap[info.portraitTex]);
     }
+    
+    public static Texture2D GetTextureFromResource(string resourceName)
+    {
+        string file = resourceName;
+        file = file.Replace("/", ".");
+        file = file.Replace("\\", ".");
+        byte[] bytes = ExtractEmbeddedResource(file, Assembly.GetCallingAssembly());
+        if (bytes == null)
+        {
+            Debug.LogWarning("No bytes found in \"" + file + "\"");
+            return null;
+        }
+        Texture2D texture = new(1, 1, TextureFormat.RGBA32, false);
+        texture.LoadImage(bytes);
+        texture.filterMode = FilterMode.Point;
+        string name = file.Substring(0, file.LastIndexOf('.'));
+        if (name.LastIndexOf('.') >= 0)
+        {
+            name = name.Substring(name.LastIndexOf('.') + 1);
+        }
+        texture.name = name;
+        return texture;
+    }
+
+    public static byte[] ExtractEmbeddedResource(string filePath, Assembly overrideAssembly = null)
+    {
+        filePath = filePath.Replace("/", ".");
+        filePath = filePath.Replace("\\", ".");
+        var baseAssembly = overrideAssembly ?? Assembly.GetCallingAssembly();
+        using Stream resFilestream = baseAssembly.GetManifestResourceStream(filePath);
+        if (resFilestream == null)
+        {
+            return null;
+        }
+        byte[] ba = new byte[resFilestream.Length];
+        resFilestream.Read(ba, 0, ba.Length);
+        return ba;
+    }
 
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.GetEmissivePortrait))]
     [HarmonyPrefix]

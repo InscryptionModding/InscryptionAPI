@@ -12,15 +12,23 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <NoWarn>1701;1702;Publicizer001</NoWarn>
+      <NoWarn>1701;1702;Publicizer001;Harmony003</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <NoWarn>1701;1702;Publicizer001</NoWarn>
+      <NoWarn>1701;1702;Publicizer001;Harmony003</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="starterdeck_icon_none.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>
