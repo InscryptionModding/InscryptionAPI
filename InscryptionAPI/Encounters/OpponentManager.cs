@@ -84,7 +84,8 @@ public static class OpponentManager
         
         __result = gameObject.AddComponent(AllOpponents.First(o => o.Id == encounterData.opponentType).Opponent) as Opponent;
 
-        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", encounterData.aiId ?? "AI")) as AI;
+        string typeName = string.IsNullOrWhiteSpace(encounterData.aiId) ? "AI" : encounterData.aiId;
+        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", typeName)) as AI;
         __result.NumLives = __result.StartingLives;
         __result.OpponentType = encounterData.opponentType;
         __result.TurnPlan = __result.ModifyTurnPlan(encounterData.opponentTurnPlan);
