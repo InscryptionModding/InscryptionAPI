@@ -605,6 +605,13 @@ public static class CardExtensions
         return info;
     }
 
+    public static CardInfo SetStatIcon(this CardInfo info, SpecialStatIcon icon)
+    {
+        info.specialStatIcon = icon;
+        info.AddSpecialAbilities(StatIconManager.AllStatIcons.FirstOrDefault(sii => sii.Id == icon).AbilityId);
+        return info;
+    }
+
     /// <summary>
     /// Makes the card fully playable in GBC mode and able to appear in card packs.
     /// </summary>
