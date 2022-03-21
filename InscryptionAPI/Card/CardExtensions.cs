@@ -345,7 +345,7 @@ public static class CardExtensions
     public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         info.tailParams = new();
-        info.tailParams.tail = CardLoader.Clone(tail);
+        info.tailParams.tail = tail;
 
         if (tailLostPortrait != null)
             info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
@@ -402,7 +402,7 @@ public static class CardExtensions
     public static CardInfo SetIceCube(this CardInfo info, CardInfo iceCube, IEnumerable<CardModificationInfo> mods = null)
     {
         info.iceCubeParams = new();
-        info.iceCubeParams.creatureWithin = CardLoader.Clone(iceCube);
+        info.iceCubeParams.creatureWithin = iceCube;
 
         if (mods != null)
             (info.iceCubeParams.creatureWithin.mods = info.iceCubeParams.creatureWithin.mods ?? new ()).AddRange(mods);
@@ -455,7 +455,7 @@ public static class CardExtensions
     public static CardInfo SetEvolve(this CardInfo info, CardInfo evolveCard, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
     {
         info.evolveParams = new();
-        info.evolveParams.evolution = CardLoader.Clone(evolveCard);
+        info.evolveParams.evolution = evolveCard;
 
         if (mods != null)
             (info.evolveParams.evolution.mods = info.evolveParams.evolution.mods ?? new ()).AddRange(mods);

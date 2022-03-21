@@ -55,6 +55,20 @@ public static class CardManager
     public static void SyncCardList()
     {
         var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
+
+        // Fix card copies on params
+        foreach (CardInfo card in cards)
+        {
+            if (card.evolveParams != null && card.evolveParams.evolution != null)
+                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name);
+
+            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null)
+                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name);
+
+            if (card.tailParams != null && card.tailParams.tail != null)
+                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name);
+        }
+
         AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
     }
 
