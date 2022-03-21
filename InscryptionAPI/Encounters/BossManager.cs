@@ -44,7 +44,7 @@ public static class OpponentManager
         foreach (Opponent.Type opponent in Enum.GetValues(typeof(Opponent.Type)))
         {
             string specialSequencerId = useReversePatch ? OriginalGetSequencerIdForBoss(opponent) : BossBattleSequencer.GetSequencerIdForBoss(opponent);
-            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent");
+            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent") ?? gameAsm.GetType($"GBC.{opponent.ToString()}Opponent");
 
             baseGame.Add(new FullOpponent(opponent, opponentType, specialSequencerId));
         }
