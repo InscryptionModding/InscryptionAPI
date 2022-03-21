@@ -347,11 +347,14 @@ public static class CardExtensions
         info.tailParams = new();
         info.tailParams.tail = tail;
 
+        if (mods != null)
+        {
+            info.tailParams.tail = CardLoader.Clone(info.tailParams.tail);
+            (info.tailParams.tail.mods = info.tailParams.tail.mods ?? new()).AddRange(mods);
+        }
+
         if (tailLostPortrait != null)
             info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
-
-        if (mods != null)
-            (info.tailParams.tail.mods = info.tailParams.tail.mods ?? new()).AddRange(mods);
 
         return info;
     }
@@ -405,7 +408,10 @@ public static class CardExtensions
         info.iceCubeParams.creatureWithin = iceCube;
 
         if (mods != null)
+        {
+            info.iceCubeParams.creatureWithin = CardLoader.Clone(info.iceCubeParams.creatureWithin);
             (info.iceCubeParams.creatureWithin.mods = info.iceCubeParams.creatureWithin.mods ?? new ()).AddRange(mods);
+        }
 
         return info;
     }
@@ -450,7 +456,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="evolveCard">The card that will be generated after the set number of turns.</param>
     /// <param name="numberOfTurns">The number of turns before the card evolves</param>
-    /// <param name="mods">A set of card mods to be applied to the evolved card</param>
+    /// <param name="mods">A set of card mods to be applied to the evolved card. If you do this, it will clone the evolve card, which may create unexpected behavior.</param>
     /// <returns></returns>
     public static CardInfo SetEvolve(this CardInfo info, CardInfo evolveCard, int numberOfTurns, IEnumerable<CardModificationInfo> mods = null)
     {
@@ -458,7 +464,10 @@ public static class CardExtensions
         info.evolveParams.evolution = evolveCard;
 
         if (mods != null)
+        {
+            info.evolveParams.evolution = CardLoader.Clone(info.evolveParams.evolution);
             (info.evolveParams.evolution.mods = info.evolveParams.evolution.mods ?? new ()).AddRange(mods);
+        }
 
         info.evolveParams.turnsToEvolve = numberOfTurns;
 
