@@ -54,6 +54,13 @@ public static class SpecialTriggeredAbilityManager
         return full;
     }
 
+    public static FullSpecialTriggeredAbility Add<T>(string guid, string abilityName) where T : SpecialCardBehaviour
+    {
+        FullSpecialTriggeredAbility full = new(GuidManager.GetEnumValue<SpecialTriggeredAbility>(guid, abilityName), typeof(T));
+        NewSpecialTriggers.Add(full);
+        return full;
+    }
+
     public static void Remove(SpecialTriggeredAbility id) => NewSpecialTriggers.Remove(NewSpecialTriggers.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullSpecialTriggeredAbility ability) => NewSpecialTriggers.Remove(ability);
 }

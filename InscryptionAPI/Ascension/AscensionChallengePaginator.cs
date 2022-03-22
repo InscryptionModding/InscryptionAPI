@@ -1,10 +1,13 @@
 using DiskCardGame;
+using InscryptionAPI.Helpers;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
 public class AscensionChallengePaginator : MonoBehaviour
 {
+    public static Sprite missingChallengeSprite = TextureHelper.GetTextureFromResource("InscryptionAPI/ascensionicon_none.png").ConvertTexture();
+
     public void Initialize(AscensionChallengeScreen screen, AscensionMenuScreenTransition transition = null)
     {
         if (challengeObjectsForPages == null)
@@ -75,6 +78,10 @@ public class AscensionChallengePaginator : MonoBehaviour
         {
             var o = obj[i];
             o.GetComponent<AscensionIconInteractable>().challengeInfo = i < page.Count ? page[i] : missing;
+            if (i >= page.Count)
+            {
+                o.AddComponent<NoneChallengeDisplayer>();
+            }
         }
         challengeObjectsForPages.Add(challengeObjectsForPages.Count, obj);
     }
@@ -124,4 +131,14 @@ public class AscensionChallengePaginator : MonoBehaviour
     public AscensionChallengeScreen screen;
     private AscensionChallengeInfo missing;
     public AscensionMenuScreenTransition transition;
+
+    private class NoneChallengeDisplayer : MonoBehaviour
+    {
+        public void Start()
+        {
+            gameObject.GetComponent<AscensionIconInteractable>().iconRenderer.sprite = missingChallengeSprite;
+            gameObject.GetComponent<AscensionIconInteractable>().blinkEffect.blinkOffColor = gameObject.GetComponent<AscensionIconInteractable>().conqueredColor;
+            gameObject.GetComponent<AscensionIconInteractable>().blinkEffect.SetBlinkingEnabled(false);
+        }
+    }
 }

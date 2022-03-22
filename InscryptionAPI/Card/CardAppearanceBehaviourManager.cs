@@ -54,6 +54,13 @@ public static class CardAppearanceBehaviourManager
         return full;
     }
 
+    public static FullCardAppearanceBehaviour Add<T>(string guid, string abilityName)
+    {
+        FullCardAppearanceBehaviour full = new(GuidManager.GetEnumValue<CardAppearanceBehaviour.Appearance>(guid, abilityName), typeof(T));
+        NewAppearances.Add(full);
+        return full;
+    }
+
     public static void Remove(CardAppearanceBehaviour.Appearance id) => NewAppearances.Remove(NewAppearances.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullCardAppearanceBehaviour ability) => NewAppearances.Remove(ability);
 }

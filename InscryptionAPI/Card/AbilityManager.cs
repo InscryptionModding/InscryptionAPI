@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using DiskCardGame;
@@ -125,6 +126,14 @@ public static class AbilityManager
         return full;
     }
 
+    public static FullAbility Add<T>(string guid, AbilityInfo info, Texture tex) where T : AbilityBehaviour
+    {
+        FullAbility full = new(GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, typeof(T), tex);
+        full.Info.ability = full.Id;
+        NewAbilities.Add(full);
+        return full;
+    }
+
     public static AbilityInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior, string pathToArt)
     {
         return New(guid, rulebookName, rulebookDescription, behavior, TextureHelper.GetImageAsTexture(pathToArt));
@@ -168,7 +177,7 @@ public static class AbilityManager
             return false;
         }
 
-        if (Enum.TryParse<Ability>(abilityName, out Ability abilityEnum))
+        if (Enum.TryParse(abilityName, out Ability abilityEnum))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == abilityEnum);
             __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
@@ -249,4 +258,47 @@ public static class AbilityManager
             }
         }
     }
+
+    [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]
+    [HarmonyPostfix]
+    public static IEnumerator WaterborneFix(IEnumerator result, Trigger trigger, bool triggerFacedown, params object[] otherArgs)
+    {
+        yield return result;
+        if (!triggerFacedown)
+        {
+            bool RespondsToTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+            {
+                foreach (TriggerReceiver receiver in r.GetAllReceivers())
+                {
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && receiver is ActivateWhenFacedown)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            IEnumerator OnTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+            {
+                foreach (TriggerReceiver receiver in r.GetAllReceivers())
+                {
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && receiver is ActivateWhenFacedown)
+                    {
+                        yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
+                    }
+                }
+                yield break;
+            }
+            List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+            foreach (PlayableCard playableCard in list)
+            {
+                if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, trigger, otherArgs))
+                {
+                    yield return OnTrigger(playableCard.TriggerHandler, trigger, otherArgs);
+                }
+            }
+        }
+        yield break;
+    }
 }
+
+public interface ActivateWhenFacedown { }
