@@ -58,7 +58,7 @@ public static class TextureHelper
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
     {
         return File.ReadAllBytes(
-            Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
+            Path.IsPathRooted(pathCardArt) ? pathCardArt : Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
         );
     }
 
