@@ -85,6 +85,11 @@ public static class TextureHelper
 
     public static Sprite ConvertTexture(this Texture2D texture, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
+        if (!texture)
+        {
+            InscryptionAPIPlugin.Logger.LogWarning("CovertTexture was called with a null texture object, defaulting to black texture.");
+            return Sprite.Create(Rect.zero, Vector2.zero, 100f, Texture2D.blackTexture);
+        }
         texture.filterMode = filterMode;
         return Sprite.Create(texture, SpriteRects[spriteType], SpritePivots[spriteType]);
     }
