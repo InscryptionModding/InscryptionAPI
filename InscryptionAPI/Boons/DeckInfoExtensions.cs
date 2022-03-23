@@ -1,49 +1,41 @@
 using DiskCardGame;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 
-namespace InscryptionAPI.Boons
+namespace InscryptionAPI.Boons;
+
+public static class DeckInfoExtensions
 {
-    public static class DeckInfoExtensions
+    public static void RemoveBoon(this DeckInfo self, BoonData.Type type)
     {
-        public static void RemoveBoon(this DeckInfo self, BoonData.Type type)
+        self.boonIds.Remove(type);
+        bool removedItem = false;
+        self.Boons.RemoveAll(delegate (BoonData boonData)
         {
-            self.boonIds.Remove(type);
-            bool removedItem = false;
-            self.Boons.RemoveAll(delegate (BoonData d)
+            if(boonData && boonData.type == type && !removedItem)
             {
-                if(d != null && d.type == type && !removedItem)
-                {
-                    removedItem = true;
-                    return true;
-                }
-                return false;
-            });
-            List<BoonBehaviour> behaviors = BoonBehaviour.FindInstancesOfType(type);
-            if(behaviors.Count > 0)
-            {
-                UnityEngine.Object.Destroy(behaviors[0].gameObject);
+                removedItem = true;
+                return true;
             }
+            return false;
+        });
+        List<BoonBehaviour> behaviors = BoonBehaviour.FindInstancesOfType(type);
+        if(behaviors.Count > 0)
+        {
+            UnityObject.Destroy(behaviors[0].gameObject);
         }
+    }
 
-        public static void RemoveAllBoonsOfType(this DeckInfo self, BoonData.Type type)
+    public static void RemoveAllBoonsOfType(this DeckInfo self, BoonData.Type type)
+    {
+        self.boonIds.RemoveAll((x) => x == type);
+        self.Boons.RemoveAll((boonData) => boonData && boonData.type == type);
+        List<BoonBehaviour> behaviors = new List<BoonBehaviour>(BoonBehaviour.FindInstancesOfType(type)).Where(bh => bh && bh.gameObject).ToList();
+        if (behaviors.Count > 0)
         {
-            self.boonIds.RemoveAll((x) => x == type);
-            self.Boons.RemoveAll((x) => x != null && x.type == type);
-            List<BoonBehaviour> behaviors = new List<BoonBehaviour>(BoonBehaviour.FindInstancesOfType(type));
-            if (behaviors.Count > 0)
+            foreach (BoonBehaviour ins in behaviors)
             {
-                foreach (BoonBehaviour ins in behaviors)
-                {
-                    if (ins != null && ins.gameObject != null)
-                    {
-                        UnityEngine.Object.Destroy(ins.gameObject);
-                    }
-                }
-                BoonBehaviour.EnsureInstancesLoaded();
+                UnityObject.Destroy(ins.gameObject);
             }
+            BoonBehaviour.EnsureInstancesLoaded();
         }
     }
 }
