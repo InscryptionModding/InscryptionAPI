@@ -6,9 +6,9 @@ namespace InscryptionAPI.Saves;
 [HarmonyPatch]
 public static class ModdedSaveManager
 {
-    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
+    private static readonly string SaveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
 
-    public static ModdedSaveData SaveData { get; private set; } 
+    public static ModdedSaveData SaveData { get; private set; }
 
     public static ModdedSaveData RunState { get; private set; }
 
@@ -25,9 +25,9 @@ public static class ModdedSaveManager
     [HarmonyPostfix]
     public static void SaveDataToFile()
     {
-        var saveData = (SaveData.SaveData, RunState.SaveData);
+        Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>> saveData = new(SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
-        File.WriteAllText(saveFilePath, moddedSaveData);
+        File.WriteAllText(SaveFilePath, moddedSaveData);
     }
 
     [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]
@@ -40,17 +40,14 @@ public static class ModdedSaveManager
             isSystemDirty = false;
         }
 
-        if (File.Exists(saveFilePath))
+        if (File.Exists(SaveFilePath))
         {
-            string json = File.ReadAllText(saveFilePath);
-            (Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>) saveData 
-                = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
+            string json = File.ReadAllText(SaveFilePath);
+            var saveData = SaveManager.FromJSON<Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>>>(json);
 
-            if (SaveData == null)
-                SaveData = new();
+            SaveData ??= new();
 
-            if (RunState == null)
-                RunState = new();
+            RunState ??= new();
 
             SaveData.SaveData = saveData.Item1;
             RunState.SaveData = saveData.Item2;

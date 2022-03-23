@@ -10,23 +10,21 @@ namespace InscryptionCommunityPatch.Card;
 public static class Part2CardCostRender
 {
     // This patches the way card costs are rendered in Act 2 (GBC)
-	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
-	// And makes the card costs take up a smaller amount of space on the card, showing off more art.
-    // Also allows for custom costs to hook in and be displayed without the creator needing to patch cost render
+    // It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
+    // And makes the card costs take up a smaller amount of space on the card, showing off more art.
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
-    //private static Dictionary<string, Texture2D> AssembledTextures = new();
+    private static readonly Dictionary<string, Texture2D> AssembledTextures = new();
 
-    public static Texture2D CombineIconAndCount(int cardCost, Texture2D artCost)
+    public static Texture2D GetFinalTexture(int cardCost, Texture2D artCost, bool left)
     {
-        bool left = !PatchPlugin.rightAct2Cost.Value;
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
 
         List<Texture2D> list = new List<Texture2D>();
         if (cardCost <= 4)
         {
-            for (int i = 0; i < cardCost; i ++)
+            for (int i = 0; i < cardCost; i++)
                 list.Add(artCost);
         }
         else
@@ -42,24 +40,32 @@ public static class Part2CardCostRender
                 : cardCost <= 4
                     ? 30 - artCost.width * cardCost
                     : 30 - 14 - artCost.width;
-        return TextureHelper.CombineTextures(list, baseTexture, xOffset:xOffset, xStep:artCost.width);
+        return TextureHelper.CombineTextures(list, baseTexture, xOffset: xOffset, xStep: artCost.width);
     }
 
-    public static Sprite Part2SpriteFinal(CardInfo card)
+    public static Sprite Part2SpriteFinal(CardInfo card, bool left = true)
     {
-        bool left = !PatchPlugin.rightAct2Cost.Value;
+        string costKey = $"b{card.BloodCost}_o{card.BonesCost}_g{card.EnergyCost}_e{Part1CardCostRender.GemCost(card)}";
 
-        // A list to hold the textures (important later, to combine them all)
+        if (AssembledTextures.ContainsKey(costKey))
+        {
+            if (AssembledTextures[costKey] == null)
+                AssembledTextures.Remove(costKey);
+            else
+                return AssembledTextures[costKey].ConvertTexture(left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
+        }
+
+        //A list to hold the textures (important later, to combine them all)
         List<Texture2D> masterList = new List<Texture2D>();
 
         if (card.BloodCost > 0)
-            masterList.Add(CombineIconAndCount(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly))); 
+            masterList.Add(GetFinalTexture(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly), left)); 
 
         if (card.BonesCost > 0)
-            masterList.Add(CombineIconAndCount(card.BonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly)));
+            masterList.Add(GetFinalTexture(card.BonesCost, TextureHelper.GetImageAsTexture("pixel_bone.png", typeof(Part2CardCostRender).Assembly), left));
 
         if (card.EnergyCost > 0)
-            masterList.Add(CombineIconAndCount(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly)));
+            masterList.Add(GetFinalTexture(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly), left));
         
         if (card.gemsCost.Count > 0)
         {
@@ -80,18 +86,27 @@ public static class Part2CardCostRender
             if (!left)
                 gemCost.Reverse();
 
-            masterList.Add(TextureHelper.CombineTextures(gemCost, gemBaseTexture, xOffset:left ? 0 : 30 - 7 * gemCost.Count, xStep:7));
+            masterList.Add(
+                TextureHelper.CombineTextures(
+                    gemCost,
+                    gemBaseTexture,
+                    xOffset: left ? 0 : 30 - 7 * gemCost.Count,
+                    xStep: 7
+                )
+            );
         }
 
         // Call the event and allow others to modify the list of textures
-		UpdateCardCost?.Invoke(card, masterList);
+        UpdateCardCost?.Invoke(card, masterList);
 
         while (masterList.Count < 4)
             masterList.Add(null);
 
         //Combine all the textures from the list into one texture
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_base.png", typeof(Part2CardCostRender).Assembly);
-        Texture2D finalTexture = TextureHelper.CombineTextures(masterList, baseTexture, yStep:8);
+        Texture2D finalTexture = TextureHelper.CombineTextures(masterList, baseTexture, yStep: 8);
+
+        AssembledTextures.Add(costKey, finalTexture);
 
         //Convert the final texture to a sprite
         Sprite finalSprite = finalTexture.ConvertTexture(left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
@@ -99,17 +114,17 @@ public static class Part2CardCostRender
     }
 
     [HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.GetCostSpriteForCard))]
-	[HarmonyPrefix]
-	public static bool Part2CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
-	{	
-		// Make sure we are only modifying pixel cards
-		if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value) 
-		{ 
-			// Set the results as the new sprite
-			__result = Part2SpriteFinal(card);
-			return false;
-		}
+    [HarmonyPrefix]
+    public static bool Part2CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
+    {
+        //Make sure we are in Leshy's Cabin
+        if (__instance is PixelCardDisplayer)
+        {
+            // Set the results as the new sprite
+            __result = Part2SpriteFinal(card, !PatchPlugin.rightAct2Cost.Value);
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

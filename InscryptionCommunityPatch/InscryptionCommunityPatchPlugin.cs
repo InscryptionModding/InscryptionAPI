@@ -1,5 +1,4 @@
-global using UnityObject = UnityEngine.Object;
-
+﻿global using UnityObject = UnityEngine.Object;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -30,7 +29,6 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configDroneMox;
 
     internal static ConfigEntry<bool> rightAct2Cost;
-    internal static ConfigEntry<bool> act2CostRender;
 
     internal static ConfigEntry<bool> configMergeOnBottom;
 
@@ -40,13 +38,13 @@ public class PatchPlugin : BaseUnityPlugin
 
     new internal static ManualLogSource Logger;
 
-    private readonly Harmony HarmonyInstance = new(ModGUID);
+    private readonly Harmony _harmonyInstance = new(ModGUID);
 
     public void OnEnable()
     {
         Logger = base.Logger;
 
-        HarmonyInstance.PatchAll(typeof(PatchPlugin).Assembly);
+        _harmonyInstance.PatchAll(typeof(PatchPlugin).Assembly);
         SceneManager.sceneLoaded += this.OnSceneLoaded;
 
         if (configTestState.Value)
@@ -57,22 +55,36 @@ public class PatchPlugin : BaseUnityPlugin
 
     public void OnDisable()
     {
-        HarmonyInstance.UnpatchSelf();
+        _harmonyInstance.UnpatchSelf();
     }
 
     public void Awake()
     {
         Instance = this;
-        configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
-        configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
-        configMox = Config.Bind("Mox","Mox Refresh",true,"Mox refreshes at end of battle");
-        configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
-        act2CostRender = Config.Bind("Card Costs", "GBC Cost render", true, "GBC Cards are able to display custom costs and hybrid costs through the API.");
-        rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
-        configMergeOnBottom = Config.Bind("Sigil Display", "Merge_On_Bottom", false, "Makes it so if enabled, merged sigils will display on the bottom of the card instead of on the artwork. In extreme cases, this can cause some visual bugs.");
-		configRemovePatches = Config.Bind("Sigil Display", "Remove_Patches", false, "Makes it so if enabled, merged sigils will not have a patch behind them anymore and will instead be glowing yellow (only works with Merge_On_Bottom).");
+        configEnergy = Config.Bind("Energy", "Energy Refresh", true, "Max energy increases and energy refreshes at end of turn");
+        configDrone = Config.Bind("Energy", "Energy Drone", false, "Drone is visible to display energy (requires Energy Refresh)");
+        configMox = Config.Bind("Mox", "Mox Refresh", false, "Mox refreshes at end of battle");
+        configDroneMox = Config.Bind("Mox", "Mox Drone", false, "Drone displays mox (requires Energy Drone and Mox Refresh)");
+        rightAct2Cost = Config.Bind("Card Costs", "GBC Cost On Right", true, "GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
+        configMergeOnBottom = Config.Bind(
+            "Sigil Display",
+            "Merge_On_Bottom",
+            false,
+            "Makes it so if enabled, merged sigils will display on the bottom of the card instead of on the artwork. In extreme cases, this can cause some visual bugs."
+        );
+        configRemovePatches = Config.Bind(
+            "Sigil Display",
+            "Remove_Patches",
+            false,
+            "Makes it so if enabled, merged sigils will not have a patch behind them anymore and will instead be glowing yellow (only works with Merge_On_Bottom)."
+        );
 
-        configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");        
+        configTestState = Config.Bind(
+            "General",
+            "Test Mode",
+            false,
+            "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors."
+        );
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)

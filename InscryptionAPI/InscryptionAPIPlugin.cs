@@ -1,5 +1,5 @@
-global using UnityObject = UnityEngine.Object;
-
+﻿global using UnityObject = UnityEngine.Object;
+using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Logging;
 using DiskCardGame;
@@ -7,7 +7,6 @@ using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Regions;
-using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 
@@ -19,7 +18,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.0.2";
+    public const string ModVer = "2.0.0";
 
     private static bool _hasShownOldApiWarning = false;
 
@@ -78,7 +77,6 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
-        CardManager.AuditCardList();
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

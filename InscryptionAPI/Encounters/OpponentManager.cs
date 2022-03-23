@@ -43,8 +43,10 @@ public static class OpponentManager
         var gameAsm = typeof(Opponent).Assembly;
         foreach (Opponent.Type opponent in Enum.GetValues(typeof(Opponent.Type)))
         {
-            string specialSequencerId = useReversePatch ? OriginalGetSequencerIdForBoss(opponent) : BossBattleSequencer.GetSequencerIdForBoss(opponent);
-            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent") ?? gameAsm.GetType($"GBC.{opponent.ToString()}Opponent");
+            string specialSequencerId = useReversePatch
+                ? OriginalGetSequencerIdForBoss(opponent)
+                : BossBattleSequencer.GetSequencerIdForBoss(opponent);
+            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent");
 
             baseGame.Add(new FullOpponent(opponent, opponentType, specialSequencerId));
         }
@@ -64,7 +66,7 @@ public static class OpponentManager
     public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType)
     {
         Opponent.Type opponentId = GuidManager.GetEnumValue<Opponent.Type>(guid, opponentName);
-        FullOpponent opp = new (opponentId, opponentType, sequencerID);
+        FullOpponent opp = new(opponentId, opponentType, sequencerID);
         NewOpponents.Add(opp);
         return opp;
     }
@@ -79,13 +81,14 @@ public static class OpponentManager
         // This mostly just follows the logic of the base game, other than the fact that the
         // opponent gets instantiated by looking up the type from the list
 
-        GameObject gameObject = new GameObject();
-        gameObject.name = "Opponent";
-        
+        GameObject gameObject = new GameObject
+        {
+            name = "Opponent"
+        };
+
         __result = gameObject.AddComponent(AllOpponents.First(o => o.Id == encounterData.opponentType).Opponent) as Opponent;
 
-        string typeName = string.IsNullOrWhiteSpace(encounterData.aiId) ? "AI" : encounterData.aiId;
-        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", typeName)) as AI;
+        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", encounterData.aiId ?? "AI")) as AI;
         __result.NumLives = __result.StartingLives;
         __result.OpponentType = encounterData.opponentType;
         __result.TurnPlan = __result.ModifyTurnPlan(encounterData.opponentTurnPlan);
@@ -95,7 +98,7 @@ public static class OpponentManager
         return false;
     }
 
-    [HarmonyReversePatch(HarmonyReversePatchType.Original)]
+    [HarmonyReversePatch]
     [HarmonyPatch(typeof(BossBattleSequencer), nameof(BossBattleSequencer.GetSequencerIdForBoss))]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType) { throw new NotImplementedException(); }
@@ -116,7 +119,8 @@ public static class OpponentManager
         if (obj != null)
         {
             __result = "Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType;
-        } else
+        }
+        else
         {
             __result = "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
         }

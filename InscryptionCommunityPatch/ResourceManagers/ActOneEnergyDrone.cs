@@ -15,29 +15,41 @@ public static class EnergyDrone
         private bool _configEnergyOverride = false;
         public bool ConfigEnergy
         { 
-            get => EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
-            set => _configEnergyOverride = value;
+            get
+            {
+                return EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
+            }
+            set { _configEnergyOverride = value; }
         }
 
         private bool _configDroneOverride = false;
         public bool ConfigDrone
         {
-            get => EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
-            set => _configDroneOverride = value;
+            get 
+            {
+                return this.ConfigEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+            }
+            set { _configDroneOverride = value;}
         }
 
         private bool _configMoxOverride = false;
         public bool ConfigMox
         { 
-            get => EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
-            set => _configMoxOverride = value;
+            get
+            {
+                return EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
+            }
+            set { _configMoxOverride = value; }
         }
 
         private bool _configDroneMoxOverride = false;
         public bool ConfigDroneMox
         { 
-            get => EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
-            set => _configDroneMoxOverride = value;
+            get
+            {
+                return this.ConfigMox || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
+            }
+            set { _configDroneMoxOverride = value; }
         }
     }
 
@@ -62,12 +74,14 @@ public static class EnergyDrone
         get
         {
             Scene activeScene = SceneManager.GetActiveScene();
-            return !string.IsNullOrEmpty(activeScene.name) && SceneCanHaveEnergyDrone(activeScene.name);
+            if (activeScene == null || String.IsNullOrEmpty(activeScene.name))
+                return false;
 
+            return SceneCanHaveEnergyDrone(activeScene.name);
         }
     }
 
-    public static readonly Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
+    public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
     {
         { CardTemple.Nature, new() },
         { CardTemple.Undead, new() },
@@ -142,12 +156,12 @@ public static class EnergyDrone
 
         PatchPlugin.Logger.LogDebug($"Awaking drone. Exists? {ResourceDrone.Instance}");
 
-        if (ResourceDrone.Instance)
+        if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.Awake();
 
         yield return new WaitForSeconds(1);
 
-        if (ResourceDrone.Instance)
+        if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.AttachGemsModule();
     }
 

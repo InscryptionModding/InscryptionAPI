@@ -58,7 +58,7 @@ public static class TextureHelper
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
     {
         return File.ReadAllBytes(
-            Path.IsPathRooted(pathCardArt) ? pathCardArt : Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
+            Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
         );
     }
 
@@ -84,12 +84,6 @@ public static class TextureHelper
     {
         texture.filterMode = filterMode;
         return Sprite.Create(texture, SpriteRects[spriteType], SpritePivots[spriteType]);
-    }
-
-    public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
-    {
-        pivot ??= new Vector2(0.5f, 0.5f);
-        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
     }
 
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)

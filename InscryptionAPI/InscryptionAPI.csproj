@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Configurations>Debug;Release</Configurations>
+        <DebugType>full</DebugType>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>
         <IsPackable>false</IsPackable>
         <LangVersion>latest</LangVersion>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugType>full</DebugType>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <Nullable>disable</Nullable>
+        <Platforms>AnyCPU</Platforms>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,12 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all" IncludeAssets="all" />
         <PackageReference Include="BepInEx.Core" Version="5.4.19" />
-        <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
+        <PackageReference Include="Inscryption.GameLibs" Version="0.30.0-r.0" />
         <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
 

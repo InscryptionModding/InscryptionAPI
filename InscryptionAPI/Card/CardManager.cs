@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
-using InscryptionAPI.Saves;
 using MonoMod.Cil;
 using UnityEngine;
 
@@ -19,6 +18,7 @@ public static class CardManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
+
     private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
 
     /// <summary>
@@ -27,26 +27,26 @@ public static class CardManager
     /// <returns></returns>
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
-    
-    private static bool EventActive = false;
 
     /// <summary>
     /// This event runs every time the card list is resynced. By adding listeners to this event, you can modify cards that have been added to the list after your mod was loaded.
     /// </summary>
+
+    private static bool _eventActive = false;
     public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList;
 
     private static IEnumerable<CardInfo> GetBaseGameCards()
     {
         foreach (CardInfo card in Resources.LoadAll<CardInfo>("Data/Cards"))
         {
-            card.SetBaseGameCard(true);
+            card.SetBaseGameCard();
             yield return card;
         }
     }
 
     internal static void ActivateEvents()
     {
-        EventActive = true;
+        _eventActive = true;
     }
 
     /// <summary>
@@ -54,22 +54,10 @@ public static class CardManager
     /// </summary>
     public static void SyncCardList()
     {
-        var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
-
-        // Fix card copies on params
-        foreach (CardInfo card in cards)
-        {
-            if (card.evolveParams != null && card.evolveParams.evolution != null)
-                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name);
-
-            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null)
-                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name);
-
-            if (card.tailParams != null && card.tailParams.tail != null)
-                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name);
-        }
-
-        AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
+        var cards = BaseGameCards.Concat(NewCards).Select(CardLoader.Clone).ToList();
+        AllCardsCopy = _eventActive
+            ? ModifyCardList?.Invoke(cards) ?? cards
+            : cards;
     }
 
     private static string GetCardPrefixFromName(this CardInfo info)
@@ -117,7 +105,7 @@ public static class CardManager
             // If there is EXACTLY ONE prefix in the group, we can apply it to the rest of the group
             if (setPrefixes.Count == 1)
             {
-                AddPrefixesToCards(group.Cards, setPrefixes[0]);                
+                AddPrefixesToCards(group.Cards, setPrefixes[0]);
                 continue;
             }
 
@@ -128,9 +116,9 @@ public static class CardManager
             // Okay, let's try to derive prefixes from card names
             bool appliedPrefixes = false;
             foreach (var nameGroup in group.Cards.Select(ci => ci.GetCardPrefixFromName())
-                                                 .GroupBy(s => s)
-                                                 .Select(g => new { Prefix = g.Key, Count = g.Count() })
-                                                 .ToList())
+                         .GroupBy(s => s)
+                         .Select(g => new { Prefix = g.Key, Count = g.Count() })
+                         .ToList())
             {
                 if (nameGroup.Count >= group.Cards.Count / 2)
                 {
@@ -186,8 +174,8 @@ public static class CardManager
             newCard.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
         }
 
-        if (!NewCards.Contains(newCard)) 
-            NewCards.Add(newCard); 
+        if (!NewCards.Contains(newCard))
+            NewCards.Add(newCard);
     }
 
     /// <summary>
@@ -196,11 +184,8 @@ public static class CardManager
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
     /// <param name="newCard">The card to add</param>
     public static void Add(string modPrefix, CardInfo newCard) 
-    {
-        if (!newCard.name.StartsWith(modPrefix))
-        {
-            newCard.name = $"{modPrefix}_{newCard.name}";
-        }
+    { 
+        newCard.name = !newCard.name.StartsWith(modPrefix) ? $"{modPrefix}_{newCard.name}" : newCard.name;
         newCard.SetModPrefix(modPrefix);
 
         Add(newCard);
@@ -224,18 +209,18 @@ public static class CardManager
     /// <returns></returns>
     public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default(string))
     {
-        CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
-        retval.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
-        retval.SetBasic(displayName, attack, health, description);
-        
+        CardInfo returnValue = ScriptableObject.CreateInstance<CardInfo>();
+        returnValue.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
+        returnValue.SetBasic(displayName, attack, health, description);
+
         Assembly callingAssembly = Assembly.GetCallingAssembly();
-        retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
+        returnValue.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
 
-        Add(modPrefix, retval);
+        Add(modPrefix, returnValue);
 
-        return retval;
+        return returnValue;
     }
-    
+
     /// <summary>
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
@@ -249,93 +234,15 @@ public static class CardManager
         {
             return (T)tObj;
         }
-        else
-        {
-            T tInst = new();
-            typeMap[typeof(T)] = tInst;
-            return tInst;
-        }
+
+        T tInst = new();
+        typeMap[typeof(T)] = tInst;
+        return tInst;
     }
 
     internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
     {
         return ExtensionProperties.GetOrCreateValue(card).StringMap;
-    }
-
-    private const string ERROR = "ERROR";
-
-    private static string ReverseKey(string key)
-    {
-        foreach (var pair in ModdedSaveManager.SaveData.SaveData[InscryptionAPIPlugin.ModGUID])
-            if (pair.Value.Equals(key))
-                return pair.Key;
-        
-        return ERROR;
-    }
-
-    internal static void AuditCardList()
-    {
-        foreach (CardInfo card in AllCardsCopy)
-        {
-            // Audit the abilities for issues
-            foreach (Ability ability in card.Abilities)
-            {
-                string printKey = (int)ability >= GuidManager.START_INDEX ?
-                                  ReverseKey(ability.ToString()).Replace("Ability_", "") :
-                                  $"Inscryption_{ability.ToString()}";
-
-                if (printKey.Equals(ERROR))
-                {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
-                    continue;
-                }
-                
-                AbilityInfo info = AbilitiesUtil.GetInfo(ability);
-
-                if (info == null)
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {printKey} that has not been properly registered!");
-            }
-
-            // Audit the special abilities for issues
-            foreach (SpecialTriggeredAbility ability in card.SpecialAbilities)
-            {
-                string printKey = (int)ability >= GuidManager.START_INDEX ?
-                                  ReverseKey(ability.ToString()).Replace("SpecialTriggeredAbility_", "") :
-                                  $"Inscryption_{ability.ToString()}";
-
-                if (printKey.Equals(ERROR))
-                {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
-                    continue;
-                }
-
-
-                var fst = SpecialTriggeredAbilityManager.AllSpecialTriggers.FirstOrDefault(st => st.Id == ability);
-
-                if (fst == null)
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {printKey} that has not been properly registered!");
-            }
-
-            // Audit the appearance behaviors for issues
-            foreach (var ability in card.appearanceBehaviour)
-            {
-                string printKey = (int)ability >= GuidManager.START_INDEX ?
-                                  ReverseKey(ability.ToString()).Replace("CardAppearanceBehaviour.Appearance_", "") :
-                                  $"Inscryption_{ability.ToString()}";
-
-                if (printKey.Equals(ERROR))
-                {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
-                    continue;
-                }
-
-
-                var fst = CardAppearanceBehaviourManager.AllAppearances.FirstOrDefault(f => f.Id == ability);
-
-                if (fst == null)
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {printKey} that has not been properly registered!");
-            }
-        }
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
@@ -346,14 +253,24 @@ public static class CardManager
         ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
     }
 
+    [HarmonyPatch(typeof(CardLoader), nameof(CardLoader.GetCardByName))]
+    [HarmonyPrefix]
+    private static bool GetNonGuidName(string name, out CardInfo __result)
+    {
+        CardInfo returnValue = AllCardsCopy.CardByName(name);
+        __result = CardLoader.Clone(returnValue);
+        return false;
+    }
+
     [HarmonyILManipulator]
     [HarmonyPatch(typeof(ConceptProgressionTree), nameof(ConceptProgressionTree.CardUnlocked))]
     private static void FixCardUnlocked(ILContext il)
     {
         ILCursor c = new(il);
 
-        c.GotoNext(MoveType.Before,
-            x => x.MatchCallOrCallvirt(AccessTools.Method(typeof(UnityObject), "op_Equality", new Type[] { typeof(UnityObject), typeof(UnityObject) }))
+        c.GotoNext(
+            MoveType.Before,
+            x => x.MatchCallOrCallvirt(AccessTools.Method(typeof(UnityObject), "op_Equality", new[] { typeof(UnityObject), typeof(UnityObject) }))
         );
 
         c.Remove();
