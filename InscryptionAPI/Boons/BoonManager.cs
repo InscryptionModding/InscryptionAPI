@@ -1,12 +1,9 @@
-using DiskCardGame;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using HarmonyLib;
 using System.Collections;
 using System.Collections.ObjectModel;
+using DiskCardGame;
+using HarmonyLib;
 using InscryptionAPI.Guid;
+using UnityEngine;
 
 namespace InscryptionAPI.Boons
 {
@@ -17,8 +14,17 @@ namespace InscryptionAPI.Boons
         public static readonly ObservableCollection<FullBoon> NewBoons = new();
         public static List<BoonData> AllBoonsCopy { get; private set; } = BaseGameBoons.ToList();
 
-        public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool 
-            appearInRulebook = true)
+        public static BoonData.Type New(
+            string guid,
+            string name,
+            Type boonHandlerType,
+            string rulebookDescription,
+            Texture icon,
+            Texture cardArt,
+            bool stackable = true,
+            bool appearInLeshyTrials = true,
+            bool appearInRulebook = true
+        )
         {
             FullBoon fb = new();
             BoonData data = ScriptableObject.CreateInstance<BoonData>();
@@ -37,15 +43,23 @@ namespace InscryptionAPI.Boons
             return data.type;
         }
 
-        public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
-            appearInRulebook = true) where T : BoonBehaviour
+        public static BoonData.Type New<T>(
+            string guid,
+            string name,
+            string rulebookDescription,
+            Texture icon,
+            Texture cardArt,
+            bool stackable = true,
+            bool appearInLeshyTrials = true,
+            bool appearInRulebook = true
+        ) where T : BoonBehaviour
         {
             return New(guid, name, typeof(T), rulebookDescription, icon, cardArt, stackable, appearInLeshyTrials, appearInRulebook);
         }
 
         public static void SyncCardList()
         {
-            var boons = BaseGameBoons.Concat(NewBoons.Select((x) => x.boon)).ToList();
+            var boons = BaseGameBoons.Concat(NewBoons.Select(x => x.boon)).ToList();
             AllBoonsCopy = boons;
         }
 
@@ -64,7 +78,7 @@ namespace InscryptionAPI.Boons
             };
         }
 
-        [HarmonyPatch(typeof(BoonsHandler), "ActivatePreCombatBoons")]
+        [HarmonyPatch(typeof(BoonsHandler), nameof(BoonsHandler.ActivatePreCombatBoons))]
         [HarmonyPostfix]
         public static IEnumerator ActivatePreCombatBoons(IEnumerator result, BoonsHandler __instance)
         {
@@ -73,23 +87,23 @@ namespace InscryptionAPI.Boons
             {
                 foreach (BoonData boon in RunState.Run.playerDeck.Boons)
                 {
-                    if (boon != null)
+                    if (boon)
                     {
-                        FullBoon nb = NewBoons.ToList().Find((x) => x.boon.type == boon.type);
+                        FullBoon nb = NewBoons.ToList().Find(x => x.boon.type == boon.type);
                         if (nb != null && nb.boonHandlerType != null && nb.boonHandlerType.IsSubclassOf(typeof(BoonBehaviour)) && (nb.stacks || BoonBehaviour.CountInstancesOfType(nb.boon.type) < 1))
                         {
                             int instances = BoonBehaviour.CountInstancesOfType(nb.boon.type);
-                            GameObject boonhandler = new(nb.boon.name + " Boon Handler");
-                            BoonBehaviour behav = boonhandler.AddComponent(nb.boonHandlerType) as BoonBehaviour;
-                            if (behav != null)
+                            GameObject boonHandler = new(nb.boon.name + " Boon Handler");
+                            BoonBehaviour boonBehaviour = boonHandler.AddComponent(nb.boonHandlerType) as BoonBehaviour;
+                            if (boonBehaviour)
                             {
-                                GlobalTriggerHandler.Instance?.RegisterNonCardReceiver(behav);
-                                behav.boon = nb;
-                                behav.instanceNumber = instances + 1;
-                                BoonBehaviour.Instances.Add(behav);
-                                if (behav.RespondToPreBoonActivation())
+                                GlobalTriggerHandler.Instance?.RegisterNonCardReceiver(boonBehaviour);
+                                boonBehaviour.boon = nb;
+                                boonBehaviour.instanceNumber = instances + 1;
+                                BoonBehaviour.Instances.Add(boonBehaviour);
+                                if (boonBehaviour.RespondToPreBoonActivation())
                                 {
-                                    yield return behav.OnPreBoonActivation();
+                                    yield return boonBehaviour.OnPreBoonActivation();
                                 }
                             }
                         }
@@ -99,21 +113,20 @@ namespace InscryptionAPI.Boons
             yield return result;
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPostBoonActivation())
+                if (bb && bb.RespondToPostBoonActivation())
                 {
                     yield return bb.OnPostBoonActivation();
                 }
             }
-            yield break;
         }
 
-        [HarmonyPatch(typeof(TurnManager), "CleanupPhase")]
+        [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
         [HarmonyPostfix]
         public static IEnumerator Postfix(IEnumerator result)
         {
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPreBattleCleanup())
+                if (bb && bb.RespondToPreBattleCleanup())
                 {
                     yield return bb.OnPreBattleCleanup();
                 }
@@ -121,46 +134,45 @@ namespace InscryptionAPI.Boons
             yield return result;
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPostBattleCleanup())
+                if (bb && bb.RespondToPostBattleCleanup())
                 {
                     yield return bb.OnPostBattleCleanup();
                 }
             }
             BoonBehaviour.DestroyAllInstances();
-            yield break;
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "AddBoon")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.AddBoon))]
         [HarmonyPostfix]
         public static void AddBoon(BoonData.Type boonType)
         {
             if (TurnManager.Instance != null && !TurnManager.Instance.GameEnded && !TurnManager.Instance.GameEnding && !TurnManager.Instance.IsSetupPhase && TurnManager.Instance.Opponent != null)
             {
-                FullBoon nb = NewBoons.ToList().Find((x) => x.boon.type == boonType);
+                FullBoon nb = NewBoons.ToList().Find(x => x.boon.type == boonType);
                 if (nb != null && nb.boonHandlerType != null && (nb.stacks || BoonBehaviour.CountInstancesOfType(nb.boon.type) < 1))
                 {
                     int instances = BoonBehaviour.CountInstancesOfType(nb.boon.type);
-                    GameObject boonhandler = new GameObject(nb.boon.name + " Boon Handler");
-                    BoonBehaviour behav = boonhandler.AddComponent(nb.boonHandlerType) as BoonBehaviour;
-                    if (behav != null)
+                    GameObject boonHandler = new GameObject(nb.boon.name + " Boon Handler");
+                    BoonBehaviour boonBehaviour = boonHandler.AddComponent(nb.boonHandlerType) as BoonBehaviour;
+                    if (boonBehaviour)
                     {
-                        GlobalTriggerHandler.Instance?.RegisterNonCardReceiver(behav);
-                        behav.boon = nb;
-                        behav.instanceNumber = instances + 1;
-                        BoonBehaviour.Instances.Add(behav);
+                        GlobalTriggerHandler.Instance?.RegisterNonCardReceiver(boonBehaviour);
+                        boonBehaviour.boon = nb;
+                        boonBehaviour.instanceNumber = instances + 1;
+                        BoonBehaviour.Instances.Add(boonBehaviour);
                     }
                 }
             }
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "ClearBoons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ClearBoons))]
         [HarmonyPostfix]
         public static void ClearBoons()
         {
             BoonBehaviour.DestroyAllInstances();
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "get_Boons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.Boons), MethodType.Getter)]
         [HarmonyPostfix]
         public static void get_Boons(ref List<BoonData> __result, DeckInfo __instance)
         {
@@ -171,14 +183,14 @@ namespace InscryptionAPI.Boons
             __result = __instance.boons;
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "LoadBoons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.LoadBoons))]
         [HarmonyPostfix]
         public static void LoadBoons(DeckInfo __instance)
         {
-            __instance.boons.RemoveAll((x) => x == null);
+            __instance.boons.RemoveAll(x => x == null);
         }
 
-        [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData")]
+        [HarmonyPatch(typeof(RuleBookInfo), nameof(RuleBookInfo.ConstructPageData))]
         [HarmonyPostfix]
         public static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
         {
@@ -191,10 +203,18 @@ namespace InscryptionAPI.Boons
                         List<int> customBoons = NewBoons.Select(x => (int)x.boon.type).ToList();
                         int min = customBoons.AsQueryable().Min();
                         int max = customBoons.AsQueryable().Max();
-                        List<RuleBookPageInfo> infos = __instance.ConstructPages(info, max + 1, min, (int index) => metaCategory == AbilityMetaCategory.Part1Rulebook && BoonsUtil.GetData((BoonData.Type)index).icon != null && customBoons.Contains(index) &&
-                            (NewBoons.ToList().Find((x) => (int)x.boon.type == index)?.appearInRulebook).GetValueOrDefault(),
-                            new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillBoonPage), Localization.Translate("APPENDIX XII, SUBSECTION VIII - BOONS {0}"));
-                        __result.InsertRange(__result.FindLastIndex((x) => x.pagePrefab == info.rangePrefab), infos);
+                        List<RuleBookPageInfo> infos = __instance.ConstructPages(
+                            info,
+                            max + 1,
+                            min,
+                            (int index) => metaCategory == AbilityMetaCategory.Part1Rulebook
+                                && BoonsUtil.GetData((BoonData.Type)index).icon != null
+                                && customBoons.Contains(index)
+                                && (NewBoons.ToList().Find(x => (int)x.boon.type == index)?.appearInRulebook).GetValueOrDefault(),
+                            __instance.FillBoonPage,
+                            Localization.Translate("APPENDIX XII, SUBSECTION VIII - BOONS {0}")
+                        );
+                        __result.InsertRange(__result.FindLastIndex(x => x.pagePrefab == info.rangePrefab), infos);
                     }
                 }
             }
