@@ -287,20 +287,18 @@ public static class StackAbilityIcons
         Texture2D newTexture = DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString()) as Texture2D);
         newTexture.name = textureName;
 
-        Tuple<Vector2Int, int> patchTuple = GetPatchLocationForAbility(ability, newTexture);
-        Vector2Int patchLocation = patchTuple.Item1;
-        int textureType = patchTuple.Item2; // This means that it's on the lower-right and needs a one-pixel border
+        var (vector2Int, textureType) = GetPatchLocationForAbility(ability, newTexture);
 
         if (textureType == Forced)
         {
             // We will set a one-pixel border around the location
-            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, TopBorder.Length, 1, TopBorder, 0);
-            newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, 1, LeftBorder.Length, LeftBorder, 0);
+            newTexture.SetPixels(vector2Int.x - 1, vector2Int.y + 1, TopBorder.Length, 1, TopBorder, 0);
+            newTexture.SetPixels(vector2Int.x - 1, vector2Int.y + 1, 1, LeftBorder.Length, LeftBorder, 0);
         }
 
         // Set the new number
         Texture2D newNumber = (textureType == Normal) ? NumberTextures[count - 1] : MediumNumberTextures[count - 1];
-        newTexture.SetPixels(patchLocation.x, patchLocation.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
+        newTexture.SetPixels(vector2Int.x, vector2Int.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
 
         newTexture.filterMode = FilterMode.Point;
 
