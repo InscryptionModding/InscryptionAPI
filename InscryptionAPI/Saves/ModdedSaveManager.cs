@@ -43,14 +43,15 @@ public static class ModdedSaveManager
         if (File.Exists(SaveFilePath))
         {
             string json = File.ReadAllText(SaveFilePath);
-            var saveData = SaveManager.FromJSON<Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>>>(json);
+            var (saveData, runStateSaveData) 
+                = SaveManager.FromJSON<Tuple<Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>>>(json);
 
             SaveData ??= new();
 
             RunState ??= new();
 
-            SaveData.SaveData = saveData.Item1;
-            RunState.SaveData = saveData.Item2;
+            SaveData.SaveData = saveData;
+            RunState.SaveData = runStateSaveData;
         }
         else
         {
