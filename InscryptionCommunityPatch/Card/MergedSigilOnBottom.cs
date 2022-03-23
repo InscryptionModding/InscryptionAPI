@@ -61,11 +61,11 @@ public class MergedSigilOnBottom
         {
             if (info.Mods.Count > 0)
             {
-                List<CardModificationInfo> MergeSigils = info.Mods.FindAll(x => x.fromCardMerge);
+                List<CardModificationInfo> mergeSigils = info.Mods.FindAll(x => x.fromCardMerge);
 
-                if (MergeSigils.Count > 0)
+                if (mergeSigils.Count > 0)
                 {
-                    foreach (CardModificationInfo mod in MergeSigils)
+                    foreach (CardModificationInfo mod in mergeSigils)
                     {
                         if (mod.abilities.Contains(ability.ability) && (__instance.name is "AbilityIcon" or "DefaultIcons_1Ability"))
                         {
@@ -79,7 +79,7 @@ public class MergedSigilOnBottom
                                 __instance.SetColor(Color.white);
                                 return;
                             }
-                            int sigils = (info.DefaultAbilities.Count + MergeSigils.Count);
+                            int sigils = (info.DefaultAbilities.Count + mergeSigils.Count);
                             if (sigils <= 8)
                             {
                                 //Plugin.Log.LogInfo(sigils + " " + ability.ToString() + " " + info.name);
