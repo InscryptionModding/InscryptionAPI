@@ -94,7 +94,7 @@ public static class CardManager
 
                 // We will trust JSON loader to handle its own prefixes
                 // This is mainly because it's completely impossible to derive prefixes from JSON loader
-                // JSON loader handles loading cards from potentialy dozens of mods.
+                // JSON loader handles loading cards from potentially dozens of mods.
                 // We will be completely unable to observe any sort of pattern from cards loaded by JSON loader
                 continue;
             }
