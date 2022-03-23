@@ -34,6 +34,7 @@ public static class EncounterExtensions
     /// Sets the difficulty range of this encounter.<br/>
     /// Difficulty is determined by the formula (6 * <c>tier</c>) + <c>battle#</c> + <c>modifier</c>.
     /// </summary>
+    /// <param name="blueprint">The blueprint to access.</param>
     /// <param name="min">The minimum difficulty.</param>
     /// <param name="max">The maximum difficulty.</param>
     public static T SetDifficulty<T>(this T blueprint, int min, int max) where T : EncounterBlueprintData
@@ -47,6 +48,7 @@ public static class EncounterExtensions
     /// Adds dominant tribes to this region.<br/>
     /// The dominant tribes list determines the totems for this battle.
     /// </summary>
+    /// <param name="blueprint">The blueprint to access.</param>
     /// <param name="tribes">The tribes to add.</param>
     public static T AddDominantTribes<T>(this T blueprint, params Tribe[] tribes) where T : EncounterBlueprintData
     {
@@ -69,6 +71,7 @@ public static class EncounterExtensions
     /// Adds random replacement cards to this region.<br/>
     /// A card from this list is selected whenever a card is randomly replaced by <c>randomReplaceChance</c>.
     /// </summary>
+    /// <param name="blueprint">The blueprint to access.</param>
     /// <param name="cards">The cards to add.</param>
     public static T AddRandomReplacementCards<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
@@ -88,6 +91,7 @@ public static class EncounterExtensions
     /// Adds redundant abilities to this region.<br/>
     /// Redundant abilities will not be used on totems for this encounter.
     /// </summary>
+    /// <param name="blueprint">The blueprint to access.</param>
     /// <param name="abilities">The abilities to add.</param>
     public static T SetRedundantAbilities<T>(this T blueprint, params Ability[] abilities) where T : EncounterBlueprintData
     {
@@ -124,6 +128,7 @@ public static class EncounterExtensions
     /// <summary>
     /// Creates a new turn for this encounter and returns the builder.
     /// </summary>
+    /// <param name="blueprint">The blueprint to access.</param>
     public static TurnBuilder<T> CreateTurn<T>(this T blueprint) where T : EncounterBlueprintData
     {
         TurnBuilder<T> turnBuilder = new();

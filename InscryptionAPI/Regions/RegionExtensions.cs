@@ -21,6 +21,7 @@ public static class RegionExtensions
     /// Terrain cards require the <c>Terrain</c> trait to appear.<br/>
     /// Every region must have at least one valid terrain card.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="cards">The terrain cards to add.</param>
     public static RegionData AddTerrainCards(this RegionData region, params string[] cards)
     {
@@ -41,6 +42,7 @@ public static class RegionExtensions
     /// Likely cards require the <c>ChoiceNode</c> metacategory to appear.<br/>
     /// One of three normal card choices is guaranteed to contain a card from the region's likely cards.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="cards">The likely cards to add.</param>
     public static RegionData AddLikelyCards(this RegionData region, params string[] cards)
     {
@@ -60,6 +62,7 @@ public static class RegionExtensions
     /// Adds consumables to this region.<br/>
     /// This only applies to consumables that are <c>regionSpecific</c>. Adding non-region-specific consumables will increase the probability of the consumable appearing.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="consumables"></param>
     public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)
     {
@@ -86,6 +89,7 @@ public static class RegionExtensions
     /// One of three normal card choices is guaranteed to contain a card from the region's dominant tribes.<br/>
     /// Every region must have at least one dominant tribe.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="tribes">The tribes to add.</param>
     public static RegionData AddDominantTribes(this RegionData region, params Tribe[] tribes)
     {
@@ -113,6 +117,7 @@ public static class RegionExtensions
     /// Creates a new encounter for this region and returns the builder.<br/>
     /// Every region with battles needs at least one encounter.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="name">The name for the encounter.</param>
     public static EncounterBuilderBlueprintData CreateEncounter(this RegionData region, string name = null)
     {
@@ -125,6 +130,7 @@ public static class RegionExtensions
     /// Adds normal (card battle node) encounters to this region.<br/>
     /// Every region with battles needs at least one encounter.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="encounters">The encounters to add.</param>
     public static RegionData AddEncounters(this RegionData region, params EncounterBlueprintData[] encounters)
     {
@@ -151,6 +157,7 @@ public static class RegionExtensions
     /// <summary>
     /// Sets the boss prep encounter condition for this region. If this condition is not met, the 'boss prep encounter' will not appear.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="condition">The condition that needs to be fulfilled</param>
     public static RegionData SetBossPrepCondition(this RegionData region, StoryEventCondition condition)
     {
@@ -161,6 +168,7 @@ public static class RegionExtensions
     /// <summary>
     /// Sets the boss prep encounter for this region. The boss prep encounter is the final battle node in the region, before the boss.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="encounter">The encounter to set.</param>
     public static RegionData SetBossPrepEncounter(this RegionData region, EncounterBlueprintData encounter)
     {
@@ -220,6 +228,7 @@ public static class RegionExtensions
     /// <summary>
     /// Sets the music loop ID for this region.
     /// </summary>
+    /// <param name="region">The RegionData to access.</param>
     /// <param name="id">The music ID to use.</param>
     public static RegionData SetAmbientLoopId(this RegionData region, string id)
     {
