@@ -54,59 +54,55 @@ public class MergedSigilOnBottom
     [HarmonyPostfix]
     public static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref Texture __result, ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
     {
-        if (!PatchPlugin.configMergeOnBottom.Value)
+        if (!PatchPlugin.configMergeOnBottom.Value || info == null || info.Mods.Count == 0)
             return;
 
-        if (info != null)
+        List<CardModificationInfo> mergeSigils = info.Mods.FindAll(x => x.fromCardMerge);
+
+        if (mergeSigils.Count > 0)
         {
-            if (info.Mods.Count > 0)
+            foreach (CardModificationInfo mod in mergeSigils)
             {
-                List<CardModificationInfo> mergeSigils = info.Mods.FindAll(x => x.fromCardMerge);
-
-                if (mergeSigils.Count > 0)
+                if (mod.abilities.Contains(ability.ability) && (__instance.name is "AbilityIcon" or "DefaultIcons_1Ability"))
                 {
-                    foreach (CardModificationInfo mod in mergeSigils)
+                    if (PatchPlugin.configRemovePatches.Value)
                     {
-                        if (mod.abilities.Contains(ability.ability) && (__instance.name is "AbilityIcon" or "DefaultIcons_1Ability"))
+                        __instance.SetMaterial(Singleton<CardAbilityIcons>.Instance.totemIconMat);
+                        if (__instance.GetComponentInParent<MeshRenderer>() != null)
                         {
-                            if (PatchPlugin.configRemovePatches.Value)
-                            {
-                                __instance.SetMaterial(Singleton<CardAbilityIcons>.Instance.totemIconMat);
-                                if (__instance.GetComponentInParent<MeshRenderer>() != null)
-                                {
-                                    __instance.GetComponentInParent<MeshRenderer>().enabled = true;
-                                }
-                                __instance.SetColor(Color.white);
-                                return;
-                            }
-                            int sigils = (info.DefaultAbilities.Count + mergeSigils.Count);
-                            if (sigils <= 8)
-                            {
-                                //Plugin.Log.LogInfo(sigils + " " + ability.ToString() + " " + info.name);
+                            __instance.GetComponentInParent<MeshRenderer>().enabled = true;
+                        }
+                        __instance.SetColor(Color.white);
+                        return;
+                    }
+                    int sigils = (info.DefaultAbilities.Count + mergeSigils.Count);
+                    if (sigils <= 8)
+                    {
+                        //Plugin.Log.LogInfo(sigils + " " + ability.ToString() + " " + info.name);
 
-                                Transform[] allChildren = __instance.transform.parent.transform.parent.GetComponentsInChildren<Transform>();
-                                //Plugin.Log.LogInfo(__instance.name);
-                                if (__instance.name == "DefaultIcons_1Ability")
-                                {
-                                    allChildren = __instance.transform.parent.GetComponentsInChildren<Transform>();
-                                }
+                        Transform[] allChildren = __instance.transform.parent.transform.parent.GetComponentsInChildren<Transform>();
+                        //Plugin.Log.LogInfo(__instance.name);
+                        if (__instance.name == "DefaultIcons_1Ability")
+                        {
+                            allChildren = __instance.transform.parent.GetComponentsInChildren<Transform>();
+                        }
 
-                                foreach (Transform child in allChildren)
+                        foreach (Transform child in allChildren)
+                        {
+                            if (child.gameObject.activeSelf && child.gameObject.name.StartsWith("CardMergeIcon_"))
+                            {
+                                if (child.gameObject.GetComponent<AbilityIconInteractable>().Ability == __instance.Ability)
                                 {
-                                    if (child.gameObject.activeSelf && child.gameObject.name.StartsWith("CardMergeIcon_"))
-                                    {
-                                        if (child.gameObject.GetComponent<AbilityIconInteractable>().Ability == __instance.Ability)
-                                        {
-                                            child.gameObject.transform.localPosition = __instance.transform.localPosition;
-                                            child.gameObject.transform.localScale = __instance.transform.localScale;
-                                        }
-                                    }
+                                    child.gameObject.transform.localPosition = __instance.transform.localPosition;
+                                    child.gameObject.transform.localScale = __instance.transform.localScale;
                                 }
                             }
                         }
                     }
                 }
             }
+
+
         }
     }
 }
