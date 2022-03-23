@@ -20,7 +20,8 @@ public static class TextureHelper
         OversizedCostDecal = 6,
         Act2CostDecalLeft = 7,
         Act2CostDecalRight = 8,
-        StarterDeckIcon = 9
+        StarterDeckIcon = 9,
+        TribeIcon = 10
     }
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
@@ -38,21 +39,23 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Rect(0f, 0f, 64f, 28f * 4f) },
         { SpriteType.Act2CostDecalLeft, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
-        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
+        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) },
+        { SpriteType.TribeIcon, new Rect(0f, 0f, 109f, 149f) }
     };
 
     private static readonly Dictionary<SpriteType, Vector2> SpritePivots = new()
     {
-        { SpriteType.CardPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelAbilityIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelStatIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.ChallengeIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.CostDecal, new Vector2(0.5f, 0.5f) },
+        { SpriteType.CardPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelAbilityIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelStatIcon, DEFAULT_PIVOT },
+        { SpriteType.ChallengeIcon, DEFAULT_PIVOT },
+        { SpriteType.CostDecal, DEFAULT_PIVOT },
         { SpriteType.OversizedCostDecal, new Vector2(0.5f, (28f * 4f - 14f) / (28f * 4f)) },
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
-        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) }
+        { SpriteType.StarterDeckIcon, DEFAULT_PIVOT },
+        { SpriteType.TribeIcon, DEFAULT_PIVOT }
     };
 
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
