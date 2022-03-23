@@ -97,7 +97,7 @@ public static class Part1CardCostRender
 		Texture2D finalTexture = CombineCostTextures(list);
 
 		// Convert the final texture to a sprite
-		return TextureHelper.ConvertTexture(finalTexture, TextureHelper.SpriteType.OversizedCostDecal);
+		return finalTexture.ConvertTexture(TextureHelper.SpriteType.OversizedCostDecal);
 	}
 
 	[HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.GetCostSpriteForCard))]

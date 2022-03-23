@@ -88,7 +88,7 @@ public static class Part2CardCostRender
         Texture2D finalTexture = TextureHelper.CombineTextures(masterList, baseTexture, yStep:8);
 
         //Convert the final texture to a sprite
-        Sprite finalSprite = TextureHelper.ConvertTexture(finalTexture, left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
+        Sprite finalSprite = finalTexture.ConvertTexture(left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
         return finalSprite;
     }
 
