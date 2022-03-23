@@ -202,25 +202,7 @@ public static class AbilityManager
         return false;
     }
 
-    // [HarmonyPrefix]
-    // [HarmonyPatch(typeof(CardTriggerHandler), nameof(CardTriggerHandler.AddAbility), new[] { typeof(Ability) })]
-    // private static bool AddAbilityReplacement(CardTriggerHandler __instance, Ability ability)
-    // {
-    //     var full = AllAbilities.FirstOrDefault(x => x.Id == ability);
-    //     if (!__instance.triggeredAbilities.Exists(x => x.Item1 == ability) || full.Info.canStack && !full.Info.passive)
-    //     {
-    //         var reciever = (AbilityBehaviour)__instance.gameObject.GetComponent(full.AbilityBehavior);
-    //         if (!reciever)
-    //         {
-    //             reciever = (AbilityBehaviour)__instance.gameObject.AddComponent(full.AbilityBehavior);
-    //         }
-    //         __instance.triggeredAbilities.Add(new Tuple<Ability, AbilityBehaviour>(ability, reciever));
-    //     }
-
-    //     return false;
-    // }
-
-    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", typeof(AbilityMetaCategory))]
+    [HarmonyPatch(typeof(RuleBookInfo), nameof(RuleBookInfo.ConstructPageData), typeof(AbilityMetaCategory))]
     [HarmonyPostfix]
     public static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
