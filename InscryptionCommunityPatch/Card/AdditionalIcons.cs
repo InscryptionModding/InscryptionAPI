@@ -18,7 +18,7 @@ public class RenderAdditionalSigils
             }
 
             Transform result = Find(child, target);
-            if (result != null)
+            if (result)
             {
                 return result;
             }
@@ -305,7 +305,7 @@ public class RenderAdditionalSigils
     public static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
+        if (cardBase)
         {
             Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
             AddQuadrupleIconSlotToCard(parent);
@@ -321,7 +321,7 @@ public class RenderAdditionalSigils
     public static void UpdateCardDisplayer(ref CardDisplayer3D __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
+        if (cardBase)
         {
             Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
             AddQuadrupleIconSlotToCard(parent);
@@ -337,7 +337,7 @@ public class RenderAdditionalSigils
     public static void UpdateCamera(ref CardRenderCamera __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
+        if (cardBase)
         {
             Transform parent = Find(cardBase, "CardAbilityIcons");
             AddQuadrupleIconSlotToCard(parent);
