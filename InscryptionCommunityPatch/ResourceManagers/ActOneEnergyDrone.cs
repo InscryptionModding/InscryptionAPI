@@ -142,12 +142,12 @@ public static class EnergyDrone
 
         PatchPlugin.Logger.LogDebug($"Awaking drone. Exists? {ResourceDrone.Instance}");
 
-        if (ResourceDrone.Instance != null)
+        if (ResourceDrone.Instance)
             ResourceDrone.Instance.Awake();
 
         yield return new WaitForSeconds(1);
 
-        if (ResourceDrone.Instance != null)
+        if (ResourceDrone.Instance)
             ResourceDrone.Instance.AttachGemsModule();
     }
 
