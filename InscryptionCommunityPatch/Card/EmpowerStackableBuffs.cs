@@ -32,7 +32,7 @@ public static class EmpowerStackableBuffs
     public static void MakeAttackBuffsStack(ref int __result, ref PlayableCard __instance)
     {
         // Right now, attack buffs don't stack because this method just checks if the
-        // buff exists, and doens't check how many of them you have.
+        // buff exists, and doesn't check how many of them you have.
         // Let's change that.
         if (__instance.OnBoard)
         {
