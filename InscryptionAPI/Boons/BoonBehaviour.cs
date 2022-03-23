@@ -1,8 +1,5 @@
-using DiskCardGame;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+using DiskCardGame;
 
 namespace InscryptionAPI.Boons
 {
@@ -11,15 +8,9 @@ namespace InscryptionAPI.Boons
         private static List<BoonBehaviour> instances;
         public BoonManager.FullBoon boon;
 		public int instanceNumber;
-		public int InstanceIndex
-        {
-            get
-            {
-				return instanceNumber - 1;
-            }
-        }
+		public int InstanceIndex => instanceNumber - 1;
 
-		public void Start()
+        public void Start()
         {
             if (!Instances.Contains(this))
             {
@@ -72,11 +63,8 @@ namespace InscryptionAPI.Boons
 
         public static void EnsureInstancesLoaded()
         {
-            if(instances == null)
-            {
-                instances = new List<BoonBehaviour>();
-            }
-			instances.RemoveAll((x) => x == null || x.gameObject == null);
+            instances ??= new List<BoonBehaviour>();
+            instances.RemoveAll((x) => x == null || x.gameObject == null);
         }
 
         public IEnumerator PlayBoonAnimation()
