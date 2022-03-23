@@ -15,41 +15,29 @@ public static class EnergyDrone
         private bool _configEnergyOverride = false;
         public bool ConfigEnergy
         { 
-            get
-            {
-                return EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
-            }
-            set { _configEnergyOverride = value; }
+            get => EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
+            set => _configEnergyOverride = value;
         }
 
         private bool _configDroneOverride = false;
         public bool ConfigDrone
         {
-            get 
-            {
-                return EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
-            }
-            set { _configDroneOverride = value;}
+            get => EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+            set => _configDroneOverride = value;
         }
 
         private bool _configMoxOverride = false;
         public bool ConfigMox
         { 
-            get
-            {
-                return EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
-            }
-            set { _configMoxOverride = value; }
+            get => EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
+            set => _configMoxOverride = value;
         }
 
         private bool _configDroneMoxOverride = false;
         public bool ConfigDroneMox
         { 
-            get
-            {
-                return EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
-            }
-            set { _configDroneMoxOverride = value; }
+            get => EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
+            set => _configDroneMoxOverride = value;
         }
     }
 
