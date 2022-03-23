@@ -6,7 +6,20 @@ namespace InscryptionAPI.Ascension;
 
 public class AscensionChallengePaginator : MonoBehaviour
 {
+    public int challengePageIndex = 0;
     public static Sprite missingChallengeSprite = TextureHelper.GetTextureFromResource("InscryptionAPI/ascensionicon_none.png").ConvertTexture();
+
+    public readonly static int CHALLENGES_PER_ROW = 7;
+
+    public List<AscensionIconInteractable> topRow;
+
+    public List<AscensionIconInteractable> bottomRow;
+
+    public AscensionIconInteractable extraIcon;
+
+    public bool showExtraIcon;
+
+    public List<List<AscensionChallenge>> pages = new();
 
     public void Initialize(AscensionChallengeScreen screen, AscensionMenuScreenTransition transition = null)
     {
@@ -42,6 +55,7 @@ public class AscensionChallengePaginator : MonoBehaviour
 
     public void AddPage(List<AscensionChallengeInfo> page)
     {
+        pages?.Add(page.ConvertAll(x => x.challengeType));
         if (missing == null)
         {
             missing = ScriptableObject.CreateInstance<AscensionChallengeInfo>();
@@ -88,22 +102,22 @@ public class AscensionChallengePaginator : MonoBehaviour
 
     public void NextPage()
     {
-        pageIndex++;
-        if (pageIndex >= challengeObjectsForPages.Count)
+        challengePageIndex++;
+        if (challengePageIndex >= challengeObjectsForPages.Count)
         {
-            pageIndex = 0;
+            challengePageIndex = 0;
         }
-        LoadPage(pageIndex);
+        LoadPage(challengePageIndex);
     }
 
     public void PreviousPage()
     {
-        pageIndex--;
-        if (pageIndex < 0)
+        challengePageIndex--;
+        if (challengePageIndex < 0)
         {
-            pageIndex = challengeObjectsForPages.Count - 1;
+            challengePageIndex = challengeObjectsForPages.Count - 1;
         }
-        LoadPage(pageIndex);
+        LoadPage(challengePageIndex);
     }
 
     public void LoadPage(int page)
@@ -125,7 +139,6 @@ public class AscensionChallengePaginator : MonoBehaviour
         CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
 
-    public int pageIndex;
     public Dictionary<int, List<GameObject>> challengeObjectsForPages;
     public int pageLength;
     public AscensionChallengeScreen screen;
