@@ -35,7 +35,13 @@ public static class Part2CardCostRender
             list.Add(TextureHelper.GetImageAsTexture($"pixel_L_{cardCost}.png", typeof(Part2CardCostRender).Assembly));
         }
 
-        int xOffset = left ? 0 : cardCost >= 10 ? 30 - 20 - artCost.width : cardCost <= 4 ? 30 - artCost.width * cardCost : 30 - 14 - artCost.width;
+        int xOffset = left
+            ? 0
+            : cardCost >= 10
+                ? 30 - 20 - artCost.width
+                : cardCost <= 4
+                    ? 30 - artCost.width * cardCost
+                    : 30 - 14 - artCost.width;
         return TextureHelper.CombineTextures(list, baseTexture, xOffset:xOffset, xStep:artCost.width);
     }
 
