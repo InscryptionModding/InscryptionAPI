@@ -16,6 +16,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="ascensionicon_none.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="ascensionicon_none.png" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

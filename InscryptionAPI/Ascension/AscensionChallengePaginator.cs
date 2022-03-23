@@ -1,139 +1,144 @@
 using DiskCardGame;
+using InscryptionAPI.Helpers;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
 public class AscensionChallengePaginator : MonoBehaviour
 {
-    public int challengePageIndex = 0;
+    public static Sprite missingChallengeSprite = TextureHelper.GetTextureFromResource("InscryptionAPI/ascensionicon_none.png").ConvertTexture();
 
-    public readonly static int CHALLENGES_PER_ROW = 7;
-
-    public List<AscensionIconInteractable> topRow;
-
-    public List<AscensionIconInteractable> bottomRow;
-
-    public AscensionIconInteractable extraIcon;
-
-    public bool showExtraIcon;
-
-    public List<List<AscensionChallenge>> pages = new();
-
-    private void PageBuilder(List<AscensionChallenge> challenges, int startIdx)
+    public void Initialize(AscensionChallengeScreen screen, AscensionMenuScreenTransition transition = null)
     {
-        List<AscensionChallenge> curPage = new List<AscensionChallenge>();
-        for (int i = startIdx; i < challenges.Count; i++)
+        if (challengeObjectsForPages == null)
         {
-            // Check to see if we need a new page
-            if (curPage.Count == 14)
+            if (screen != null)
             {
-                pages.Add(curPage);
-                curPage = new List<AscensionChallenge>();
+                pageLength = screen.icons.Count;
+                List<GameObject> toSort = screen.icons.ConvertAll((x) => x.gameObject);
+                challengeObjectsForPages = new Dictionary<int, List<GameObject>>
+                    {
+                        { 0, toSort }
+                    };
             }
-
-            // Check to see if we need a blank buffer
-            // This happens if the next icon is the same as the current, and the
-            // current icon would be on the bottom row
-            if (i < challenges.Count - 1 && challenges[i + 1] == challenges[i] && curPage.Count % 2 == 1)
-                curPage.Add(AscensionChallenge.None);
-
-            curPage.Add(challenges[i]);
+            else
+            {
+                List<AscensionIconInteractable> icons = new(transition.screenInteractables.FindAll((x) => x.GetComponent<AscensionIconInteractable>() != null).ConvertAll((x) =>
+                    x.GetComponent<AscensionIconInteractable>()));
+                pageLength = icons.Count;
+                List<GameObject> toSort = icons.ConvertAll((x) => x.gameObject);
+                challengeObjectsForPages = new Dictionary<int, List<GameObject>>
+                    {
+                        { 0, toSort }
+                    };
+            }
         }
-        pages.Add(curPage);
-    }
-
-    public void GeneratePages()
-    {
-        // The first page is nice and easy
-        pages = new();
-
-        // Do the challenges first:
-        List<AscensionChallenge> challenges = new();
-        List<AscensionChallenge> assists = new();
-
-        foreach (AscensionChallenge ch in ChallengeManager.AllInfo.Where(i => i.pointValue >= 0 && i.challengeType != extraIcon.Info.challengeType).Select(sci => sci.challengeType))
+        this.screen = screen;
+        if (screen == null)
         {
-            challenges.Add(ch);
-            if (ChallengeManager.IsStackable(ch))
-                challenges.Add(ch);
-        }
-
-        foreach (AscensionChallenge ch in ChallengeManager.AllInfo.Where(i => i.pointValue < 0).Select(sci => sci.challengeType))
-        {
-            assists.Add(ch);
-            if (ChallengeManager.IsStackable(ch))
-                assists.Add(ch);
-        }
-
-        // Do the challenges
-        if (challenges.Count > 0)
-            PageBuilder(challenges, 0);
-
-        if (assists.Count > 0)
-            PageBuilder(assists, 0);
-    }
-
-    public void ShowVisibleChallenges()
-    {
-        // Sort out which list of challenges are the visible ones
-        List<AscensionChallenge> visibleChallenges = pages[challengePageIndex];
-
-        // Make all challenge icons inactive
-        foreach (AscensionIconInteractable icon in topRow.Concat(bottomRow))
-            icon.gameObject.SetActive(false);
-
-        // Start going through and setting the icons
-        for (int i = 0; i < visibleChallenges.Count; i++)
-        {
-            if (visibleChallenges[i] == AscensionChallenge.None) // this is a spacer
-                continue;
-            AscensionIconInteractable targetIcon = (i % 2 == 0) ? this.topRow[i / 2] : this.bottomRow[i / 2];
-            targetIcon.AssignInfo(ChallengeManager.AllInfo.First(sci => sci.challengeType == visibleChallenges[i]));
-
-            int numActive = AscensionSaveData.Data.GetNumChallengesOfTypeActive(visibleChallenges[i]);
-            int target = 0;
-            if (i > 0 && visibleChallenges[i] == visibleChallenges[i - 1])
-                target = 1;
-
-            targetIcon.activatedRenderer.enabled = numActive > target;
-            targetIcon.gameObject.SetActive(true);
-        }
-
-        if (challengePageIndex == 0 && showExtraIcon)
-            this.extraIcon.gameObject.SetActive(true);
-        else
-            this.extraIcon.gameObject.SetActive(false);
-    }
-
-    public void ChallengePageLeft(MainInputInteractable button)
-    {
-        if (!AscensionMenuScreens.Instance.selectChallengesScreen.activeSelf)
-            return;
-
-        if (challengePageIndex > 0)
-        {
-            challengePageIndex -= 1;
-            ShowVisibleChallenges();
+            this.transition = transition;
         }
     }
 
-    public void ChallengePageRight(MainInputInteractable button)
+    public void AddPage(List<AscensionChallengeInfo> page)
     {
-        if (!AscensionMenuScreens.Instance.selectChallengesScreen.activeSelf)
-            return;
-
-        if (challengePageIndex < pages.Count - 1)
+        if (missing == null)
         {
-            challengePageIndex += 1;
-            ShowVisibleChallenges();
+            missing = ScriptableObject.CreateInstance<AscensionChallengeInfo>();
+            missing.name = "MISSING";
+            missing.activatedSprite = null;
+            missing.iconSprite = null;
+            missing.challengeType = AscensionChallenge.None;
+            missing.description = "";
+            missing.title = "";
+            missing.pointValue = 0;
         }
+        Initialize(GetComponent<AscensionChallengeScreen>(), GetComponent<AscensionMenuScreenTransition>());
+        List<GameObject> obj = new List<GameObject>();
+        for (int i = 0; i < Mathf.Min(challengeObjectsForPages[0].Count, 14); i++)
+        {
+            GameObject go = challengeObjectsForPages[0][i];
+            if (go != null)
+            {
+                GameObject go2 = Instantiate(go);
+                go2.transform.parent = go.transform.parent;
+                AscensionIconInteractable chall = go2.GetComponent<AscensionIconInteractable>();
+                go2.SetActive(false);
+                chall.SetEnabled(true);
+                go2.transform.position = go.transform.position + Vector3.right / 4;
+                if (screen != null)
+                {
+                    screen.icons.Add(chall);
+                }
+                obj.Add(go2);
+            }
+        }
+        obj.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.y - x2.transform.position.y) < 0.1f ? x.transform.position.x - x2.transform.position.x : x2.transform.position.y - x.transform.position.y) * 100));
+        for (int i = 0; i < obj.Count; i++)
+        {
+            var o = obj[i];
+            o.GetComponent<AscensionIconInteractable>().challengeInfo = i < page.Count ? page[i] : missing;
+            if (i >= page.Count)
+            {
+                o.AddComponent<NoneChallengeDisplayer>();
+            }
+        }
+        challengeObjectsForPages.Add(challengeObjectsForPages.Count, obj);
     }
 
-    public void OnEnable()
+    public void NextPage()
     {
-        ChallengeManager.SyncChallengeList();
-        challengePageIndex = 0;
-        GeneratePages();
-        ShowVisibleChallenges();
+        pageIndex++;
+        if (pageIndex >= challengeObjectsForPages.Count)
+        {
+            pageIndex = 0;
+        }
+        LoadPage(pageIndex);
+    }
+
+    public void PreviousPage()
+    {
+        pageIndex--;
+        if (pageIndex < 0)
+        {
+            pageIndex = challengeObjectsForPages.Count - 1;
+        }
+        LoadPage(pageIndex);
+    }
+
+    public void LoadPage(int page)
+    {
+        if (challengeObjectsForPages.ContainsKey(page))
+        {
+            foreach (KeyValuePair<int, List<GameObject>> kvp in challengeObjectsForPages)
+            {
+                if (kvp.Key == page)
+                {
+                    kvp.Value.ForEach((x) => x.SetActive(true));
+                }
+                else
+                {
+                    kvp.Value.ForEach((x) => x.SetActive(false));
+                }
+            }
+        }
+        CommandLineTextDisplayer.PlayCommandLineClickSound();
+    }
+
+    public int pageIndex;
+    public Dictionary<int, List<GameObject>> challengeObjectsForPages;
+    public int pageLength;
+    public AscensionChallengeScreen screen;
+    private AscensionChallengeInfo missing;
+    public AscensionMenuScreenTransition transition;
+
+    private class NoneChallengeDisplayer : MonoBehaviour
+    {
+        public void Start()
+        {
+            gameObject.GetComponent<AscensionIconInteractable>().iconRenderer.sprite = missingChallengeSprite;
+            gameObject.GetComponent<AscensionIconInteractable>().blinkEffect.blinkOffColor = gameObject.GetComponent<AscensionIconInteractable>().conqueredColor;
+            gameObject.GetComponent<AscensionIconInteractable>().blinkEffect.SetBlinkingEnabled(false);
+        }
     }
 }

@@ -27,7 +27,7 @@ public static class TextureHelper
 
     private static Dictionary<Sprite, Sprite> emissionMap = new();
 
-    private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new () 
+    private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
         { SpriteType.CardPortrait, new Rect(0.0f, 0.0f, 114.0f, 94.0f) },
         { SpriteType.PixelPortrait, new Rect(0.0f, 0.0f, 41.0f, 28.0f) },
@@ -41,7 +41,7 @@ public static class TextureHelper
         { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
     };
 
-    private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new () 
+    private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
         { SpriteType.CardPortrait, new Vector2(0.5f, 0.5f) },
         { SpriteType.PixelPortrait, new Vector2(0.5f, 0.5f) },
@@ -87,6 +87,12 @@ public static class TextureHelper
         return retval;
     }
 
+    public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
+    {
+        pivot ??= new Vector2(0.5f, 0.5f);
+        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+    }
+
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);
@@ -117,6 +123,44 @@ public static class TextureHelper
         if (info.portraitTex != null)
             if (emissionMap.ContainsKey(info.portraitTex))
                 emissionMap.Add(alternatePortrait, emissionMap[info.portraitTex]);
+    }
+
+    public static Texture2D GetTextureFromResource(string resourceName)
+    {
+        string file = resourceName;
+        file = file.Replace("/", ".");
+        file = file.Replace("\\", ".");
+        byte[] bytes = ExtractEmbeddedResource(file, Assembly.GetCallingAssembly());
+        if (bytes == null)
+        {
+            Debug.LogWarning("No bytes found in \"" + file + "\"");
+            return null;
+        }
+        Texture2D texture = new(1, 1, TextureFormat.RGBA32, false);
+        texture.LoadImage(bytes);
+        texture.filterMode = FilterMode.Point;
+        string name = file.Substring(0, file.LastIndexOf('.'));
+        if (name.LastIndexOf('.') >= 0)
+        {
+            name = name.Substring(name.LastIndexOf('.') + 1);
+        }
+        texture.name = name;
+        return texture;
+    }
+
+    public static byte[] ExtractEmbeddedResource(string filePath, Assembly overrideAssembly = null)
+    {
+        filePath = filePath.Replace("/", ".");
+        filePath = filePath.Replace("\\", ".");
+        var baseAssembly = overrideAssembly ?? Assembly.GetCallingAssembly();
+        using Stream resFilestream = baseAssembly.GetManifestResourceStream(filePath);
+        if (resFilestream == null)
+        {
+            return null;
+        }
+        byte[] ba = new byte[resFilestream.Length];
+        resFilestream.Read(ba, 0, ba.Length);
+        return ba;
     }
 
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.GetEmissivePortrait))]
@@ -150,16 +194,16 @@ public static class TextureHelper
     }
 
     public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
-	{
-		if (pieces != null)
-		{
-			for (int j = 0; j < pieces.Count; j++)
+    {
+        if (pieces != null)
+        {
+            for (int j = 0; j < pieces.Count; j++)
                 if (pieces[j] != null)
-				    baseTexture.SetPixels(xOffset + xStep * j, yOffset + yStep * (pieces.Count - j - 1), pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
-			
-			baseTexture.Apply();
-		}
-		
-		return baseTexture;
-	}
+                    baseTexture.SetPixels(xOffset + xStep * j, yOffset + yStep * (pieces.Count - j - 1), pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
+
+            baseTexture.Apply();
+        }
+
+        return baseTexture;
+    }
 }
