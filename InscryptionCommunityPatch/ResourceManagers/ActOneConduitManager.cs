@@ -12,7 +12,7 @@ public static class ActOneConduitManager
     [HarmonyILManipulator]
     private static void EnablePart1IL(ILContext il)
     {
-        // This modifies the if statement in GetPassiveAttackBuffs so that it doesn't needlessly exlude act 1
+        // This modifies the if statement in GetPassiveAttackBuffs so that it doesn't needlessly exclude act 1
         ILCursor ilCursor = new ILCursor(il);
         ILLabel label = null;
         ilCursor.GotoNext(MoveType.After, new Func<Instruction, bool>[]
