@@ -17,8 +17,8 @@ public static class ActOneConduitManager
         ILLabel label = null;
         ilCursor.GotoNext(MoveType.After, new Func<Instruction, bool>[]
         {
-            ins => ILPatternMatchingExt.MatchCallvirt(ins, AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart2))),
-            ins => ILPatternMatchingExt.MatchBrtrue(ins, out label)
+            ins => ins.MatchCallvirt(AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart2))),
+            ins => ins.MatchBrtrue(out label)
         });
         ilCursor.Emit(OpCodes.Call, AccessTools.PropertyGetter(typeof(SaveManager), nameof(SaveManager.SaveFile)));
         ilCursor.Emit(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(SaveFile), nameof(SaveFile.IsPart1)));
