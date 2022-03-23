@@ -107,7 +107,7 @@ public static class Part1CardCostRender
 		//Make sure we are in Leshy's Cabin
 		if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1")) 
 		{ 
-			/// Set the results as the new sprite
+			// Set the results as the new sprite
 			__result = Part1SpriteFinal(card);
 			return false;
 		}
