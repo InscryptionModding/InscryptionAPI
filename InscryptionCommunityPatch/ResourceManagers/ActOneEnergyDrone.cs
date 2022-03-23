@@ -67,7 +67,7 @@ public static class EnergyDrone
         }
     }
 
-    public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
+    public static readonly Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
     {
         { CardTemple.Nature, new() },
         { CardTemple.Undead, new() },
