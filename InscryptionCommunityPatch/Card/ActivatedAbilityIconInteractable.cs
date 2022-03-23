@@ -13,7 +13,7 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable
 
     public Ability Ability { get; private set; }
 
-    public void AssigneAbility(Ability ability)
+    public void AssignAbility(Ability ability)
     {
         this.Ability = ability;
         this.originalColor = base.GetComponent<Renderer>().material.color;
