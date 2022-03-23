@@ -96,10 +96,10 @@ public static class Part2CardCostRender
 	[HarmonyPrefix]
 	public static bool Part2CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
 	{	
-		//Make sure we are only modifying pixel cards
+		// Make sure we are only modifying pixel cards
 		if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value) 
 		{ 
-			/// Set the results as the new sprite
+			// Set the results as the new sprite
 			__result = Part2SpriteFinal(card);
 			return false;
 		}
