@@ -62,10 +62,8 @@ public static class EnergyDrone
         get
         {
             Scene activeScene = SceneManager.GetActiveScene();
-            if (activeScene == null || String.IsNullOrEmpty(activeScene.name))
-                return false;
+            return !string.IsNullOrEmpty(activeScene.name) && SceneCanHaveEnergyDrone(activeScene.name);
 
-            return SceneCanHaveEnergyDrone(activeScene.name);
         }
     }
 
