@@ -39,7 +39,7 @@ public static class ActivatedAbilityIconFix
 
         var activatedAbilityComponents = card.gameObject.GetComponentsInChildren<ActivatedAbilityIconInteractable>(true).ToList();
 
-        if (abilityIcons.Count() == activatedAbilityComponents.Count())
+        if (abilityIcons.Count == activatedAbilityComponents.Count)
             return;
 
         abilityIcons.RemoveAll(elem => activatedAbilityComponents.Exists(elem2 => elem.Ability == elem2.Ability));
