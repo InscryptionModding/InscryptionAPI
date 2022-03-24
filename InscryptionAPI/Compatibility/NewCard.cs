@@ -65,7 +65,7 @@ public static class NewCard
         info.baseHealth = baseHealth;
         info.description = description;
             
-        info.SetCosts(bloodCost, bonesCost, energyCost, gemsCost);
+        info.SetCost(bloodCost, bonesCost, energyCost, gemsCost);
 
         info.hideAttackAndHealth = hideAttackAndHealth;
         info.cardComplexity = cardComplexity;

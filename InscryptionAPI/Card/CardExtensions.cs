@@ -596,7 +596,7 @@ public static class CardExtensions
     /// <param name="energyCost">The cost in energy</param>
     /// <param name="gemsCost">The cost in gems</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetCosts(this CardInfo info, int? bloodCost = 0, int? bonesCost = 0, int? energyCost = 0, List<GemType> gemsCost = null)
+    public static CardInfo SetCost(this CardInfo info, int? bloodCost = 0, int? bonesCost = 0, int? energyCost = 0, List<GemType> gemsCost = null)
     {
         info.SetBloodCost(bloodCost);
         info.SetBonesCost(bonesCost);
