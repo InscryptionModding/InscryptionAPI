@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <PackageReference Include="BepInEx.Core" Version="5.4.19" />
+      <PackageReference Include="HarmonyX" Version="2.9.0" />
     </ItemGroup>
 
 </Project>
