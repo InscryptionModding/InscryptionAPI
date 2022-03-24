@@ -126,9 +126,20 @@ public static class AscensionChallengeScreenPatches
     {
         if (__instance.GetComponent<AscensionChallengePaginator>() == null)
         {
+            List<T> Repeat<T>(T h, int h2)
+            {
+                List<T> ret = new();
+                for(int i = 0; i < h2; i++)
+                {
+                    ret.Add(h);
+                }
+                return ret;
+            }
             AscensionChallengePaginator manager = __instance.gameObject.AddComponent<AscensionChallengePaginator>();
             manager.Initialize(__instance);
-            List<AscensionChallengeInfo> challengesToAdd = new(ChallengeManager.NewInfos.ToList().ConvertAll(x => x.Info));
+            List<ChallengeManager.FullChallenge> fullchallengesToAdd = new(ChallengeManager.NewInfos);
+            fullchallengesToAdd.Sort((x, x2) => Math.Sign(x.Info.pointValue) == Math.Sign(x2.Info.pointValue) ? x.UnlockLevel - x2.UnlockLevel : Math.Sign(x2.Info.pointValue) - Math.Sign(x.Info.pointValue));
+            List<AscensionChallengeInfo> challengesToAdd = fullchallengesToAdd.ConvertAll(x => Repeat(x.Info, x.AppearancesInChallengeScreen)).SelectMany(x => x).ToList();
             List<AscensionIconInteractable> icons = __instance.icons;
             icons.ForEach(delegate (AscensionIconInteractable ic)
             {

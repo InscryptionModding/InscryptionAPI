@@ -13,6 +13,15 @@ namespace InscryptionAPI.Ascension
         {
             if (gameObject.GetComponent<AscensionMenuScreenTransition>() != null)
             {
+                List<T> Repeat<T>(T h, int h2)
+                {
+                    List<T> ret = new();
+                    for (int i = 0; i < h2; i++)
+                    {
+                        ret.Add(h);
+                    }
+                    return ret;
+                }
                 GameObject challengeScreen = gameObject;
                 AscensionMenuScreenTransition screen = challengeScreen.GetComponent<AscensionMenuScreenTransition>();
                 List<AscensionIconInteractable> icons = new(screen.screenInteractables.FindAll((x) => x.GetComponent<AscensionIconInteractable>() != null).ConvertAll((x) =>
@@ -21,7 +30,9 @@ namespace InscryptionAPI.Ascension
                 {
                     AscensionChallengePaginator manager = challengeScreen.gameObject.AddComponent<AscensionChallengePaginator>();
                     manager.Initialize(null, screen);
-                    List<AscensionChallengeInfo> challengesToAdd = new(ChallengeManager.NewInfos.ToList().ConvertAll(x => x.Info));
+                    List<ChallengeManager.FullChallenge> fullchallengesToAdd = new(ChallengeManager.NewInfos);
+                    fullchallengesToAdd.Sort((x, x2) => Math.Sign(x.Info.pointValue) == Math.Sign(x2.Info.pointValue) ? x.UnlockLevel - x2.UnlockLevel : Math.Sign(x2.Info.pointValue) - Math.Sign(x.Info.pointValue));
+                    List<AscensionChallengeInfo> challengesToAdd = fullchallengesToAdd.ConvertAll(x => Repeat(x.Info, x.AppearancesInChallengeScreen)).SelectMany(x => x).ToList();
                     icons.ForEach(delegate (AscensionIconInteractable ic)
                     {
                         if (ic != null && ic.Info == null && challengesToAdd.Count > 0)

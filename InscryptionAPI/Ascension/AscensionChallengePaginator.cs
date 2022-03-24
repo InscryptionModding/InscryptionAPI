@@ -29,6 +29,12 @@ public class AscensionChallengePaginator : MonoBehaviour
             {
                 pageLength = screen.icons.Count;
                 List<GameObject> toSort = screen.icons.ConvertAll((x) => x.gameObject);
+                try
+                {
+                    var toSort2 = toSort.GetRange(0, 14);
+                    defaultPage = toSort2;
+                }
+                catch { defaultPage = toSort; }
                 challengeObjectsForPages = new Dictionary<int, List<GameObject>>
                     {
                         { 0, toSort }
@@ -40,6 +46,12 @@ public class AscensionChallengePaginator : MonoBehaviour
                     x.GetComponent<AscensionIconInteractable>()));
                 pageLength = icons.Count;
                 List<GameObject> toSort = icons.ConvertAll((x) => x.gameObject);
+                try
+                {
+                    var toSort2 = toSort.GetRange(0, 14);
+                    defaultPage = toSort2;
+                }
+                catch { defaultPage = toSort; }
                 challengeObjectsForPages = new Dictionary<int, List<GameObject>>
                     {
                         { 0, toSort }
@@ -68,10 +80,10 @@ public class AscensionChallengePaginator : MonoBehaviour
             missing.pointValue = 0;
         }
         Initialize(GetComponent<AscensionChallengeScreen>(), GetComponent<AscensionMenuScreenTransition>());
-        List<GameObject> obj = new List<GameObject>();
-        for (int i = 0; i < Mathf.Min(challengeObjectsForPages[0].Count, 14); i++)
+        List<GameObject> obj = new();
+        for (int i = 0; i < defaultPage.Count; i++)
         {
-            GameObject go = challengeObjectsForPages[0][i];
+            GameObject go = defaultPage[i];
             if (go != null)
             {
                 GameObject go2 = Instantiate(go);
@@ -87,7 +99,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                 obj.Add(go2);
             }
         }
-        obj.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.y - x2.transform.position.y) < 0.1f ? x.transform.position.x - x2.transform.position.x : x2.transform.position.y - x.transform.position.y) * 100));
+        obj.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.x - x2.transform.position.x) < 0.1f ? x2.transform.position.y - x.transform.position.y : x.transform.position.x - x2.transform.position.x) * 100));
         for (int i = 0; i < obj.Count; i++)
         {
             var o = obj[i];
@@ -144,7 +156,7 @@ public class AscensionChallengePaginator : MonoBehaviour
     public AscensionChallengeScreen screen;
     private AscensionChallengeInfo missing;
     public AscensionMenuScreenTransition transition;
-
+    public List<GameObject> defaultPage;
     private class NoneChallengeDisplayer : MonoBehaviour
     {
         public void Start()

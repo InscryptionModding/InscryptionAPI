@@ -15,7 +15,21 @@ public static class ChallengeManager
     {
         public AscensionChallengeInfo Info { get; set; }
         public int UnlockLevel { get; set; }
-        public bool Stackable { get; set; }
+        public bool Stackable
+        {
+            get
+            {
+                return AppearancesInChallengeScreen > 1;
+            }
+            set
+            {
+                if(value != Stackable)
+                {
+                    AppearancesInChallengeScreen = value ? 2 : 1;
+                }
+            }
+        }
+        public int AppearancesInChallengeScreen { get; set; }
         public Type Handler { get; set; }
     }
 
@@ -111,6 +125,16 @@ public static class ChallengeManager
         return stackableMap.ContainsKey(id) ? stackableMap[id] : false || NewInfos.ToList().Exists(x => x != null && x.Info != null && x.Info.challengeType == id && x.Stackable);
     }
 
+    public static AscensionChallengeInfo AddSpecific(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, int numAppearancesInChallengeScreen = 1)
+    {
+        return AddSpecific(pluginGuid, info, unlockLevel, null, numAppearancesInChallengeScreen);
+    }
+
+    public static AscensionChallengeInfo AddSpecific<T>(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, int numAppearancesInChallengeScreen = 1) where T : ChallengeBehaviour
+    {
+        return AddSpecific(pluginGuid, info, unlockLevel, typeof(T), numAppearancesInChallengeScreen);
+    }
+
     public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel=0, bool stackable=false)
     {
         return Add(pluginGuid, info, unlockLevel, null, stackable);
@@ -123,22 +147,56 @@ public static class ChallengeManager
 
     public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, Type handlerType = null, bool stackable = false)
     {
+        return AddSpecific(pluginGuid, info, unlockLevel, handlerType, stackable ? 2 : 1);
+    }
+
+    public static AscensionChallengeInfo AddSpecific(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, Type handlerType = null, int numAppearancesInChallengeScreen = 1)
+    {
         info.challengeType = GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
 
         FullChallenge chall = new()
         {
             Info = info,
             UnlockLevel = unlockLevel,
-            Stackable = stackable,
+            AppearancesInChallengeScreen = numAppearancesInChallengeScreen,
             Handler = handlerType
         };
 
-        stackableMap.Add(info.challengeType, stackable);
+        if (!stackableMap.ContainsKey(info.challengeType))
+        {
+            stackableMap.Add(info.challengeType, chall.Stackable);
+        }
         //unlockLevelMap.Add(info.challengeType, unlockLevel);
 
         NewInfos.Add(chall);
 
         return info;
+    }
+
+    public static AscensionChallengeInfo AddSpecific(
+        string pluginGuid,
+        string title,
+        string description,
+        int pointValue,
+        Texture2D iconTexture,
+        Texture2D activatedTexture = null,
+        int unlockLevel = 0,
+        int numAppearancesInChallengeScreen = 1)
+    {
+        return AddSpecific(pluginGuid, title, description, pointValue, iconTexture, activatedTexture, unlockLevel, null, numAppearancesInChallengeScreen);
+    }
+
+    public static AscensionChallengeInfo AddSpecific<T>(
+        string pluginGuid,
+        string title,
+        string description,
+        int pointValue,
+        Texture2D iconTexture,
+        Texture2D activatedTexture = null,
+        int unlockLevel = 0,
+        int numAppearancesInChallengeScreen = 1) where T : ChallengeBehaviour
+    {
+        return AddSpecific(pluginGuid, title, description, pointValue, iconTexture, activatedTexture, unlockLevel, typeof(T), numAppearancesInChallengeScreen);
     }
 
     public static AscensionChallengeInfo Add(
@@ -179,6 +237,21 @@ public static class ChallengeManager
         bool stackable = false
     )
     {
+        return AddSpecific(pluginGuid, title, description, pointValue, iconTexture, activatedTexture, unlockLevel, handlerType, stackable ? 2 : 1);
+    }
+
+    public static AscensionChallengeInfo AddSpecific(
+        string pluginGuid,
+        string title,
+        string description,
+        int pointValue,
+        Texture2D iconTexture,
+        Texture2D activatedTexture = null,
+        int unlockLevel = 0,
+        Type handlerType = null,
+        int numAppearancesInChallengeScreen = 1
+    )
+    {
         AscensionChallengeInfo info = ScriptableObject.CreateInstance<AscensionChallengeInfo>();
         info.title = title;
         info.challengeType = AscensionChallenge.None;
@@ -191,7 +264,7 @@ public static class ChallengeManager
                 : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
         info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
 
-        return Add(pluginGuid, info, unlockLevel, handlerType, stackable);
+        return AddSpecific(pluginGuid, info, unlockLevel, handlerType, numAppearancesInChallengeScreen);
     }
 
     [HarmonyPatch(typeof(AscensionUnlockSchedule), "ChallengeIsUnlockedForLevel")]
