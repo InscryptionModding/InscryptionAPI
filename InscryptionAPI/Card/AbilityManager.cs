@@ -74,6 +74,34 @@ public static class AbilityManager
         AllAbilityInfos = AllAbilities.Select(x => x.Info).ToList();
     }
 
+    public static void RegisterOpposingSlotCountModifier(Ability ab, Func<PlayableCard, int> modifier)
+    {
+        if (!opposingSlotModifiers.ContainsKey(ab))
+        {
+            opposingSlotModifiers.Add(ab, modifier);
+        }
+    }
+
+    public static void RegisterOpposingSlotCountModifier(Ability ab, int modifier)
+    {
+        RegisterOpposingSlotCountModifier(ab, x => modifier);
+    }
+
+    private static Dictionary<Ability, Func<PlayableCard, int>> opposingSlotModifiers = new();
+
+    public static int GetOpposingSlotModifierFromAbility(PlayableCard c, Ability ab)
+    {
+        try
+        {
+            if (opposingSlotModifiers.TryGetValue(ab, out var mod))
+            {
+                return mod(c);
+            }
+        }
+        catch { }
+        return 0;
+    }
+
     static AbilityManager()
     {
         InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
