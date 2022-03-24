@@ -26,8 +26,7 @@ public static class CommunityArtPatches
         Ability.GainGemTriple,
         Ability.Loot,
         Ability.SkeletonStrafe,
-        Ability.SquirrelStrafe,
-        Ability.SubmergeSquid
+        Ability.SquirrelStrafe
     };
 
     internal static readonly List<Ability> gbcIconsToPatch = new() 
