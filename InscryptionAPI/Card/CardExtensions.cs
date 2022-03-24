@@ -15,7 +15,7 @@ public static class CardExtensions
     /// <returns>The first matching card, or null if no match</returns>
     public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(c => c.name.Equals(name));
 
-    private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode)
+    private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode = null)
     {
         return !filterMode.HasValue
             ? portrait.ConvertTexture(spriteType)
@@ -945,7 +945,7 @@ public static class CardExtensions
     /// <param name="portrait">The texture containing the card portrait</param>
     /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetLostTailPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode)
+    public static CardInfo SetLostTailPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         if (info.tailParams == null)
             throw new InvalidOperationException("Cannot set lost tail portrait without tail params being set first");
