@@ -1,12 +1,10 @@
 using DiskCardGame;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using HarmonyLib;
 using System.Collections;
 using System.Collections.ObjectModel;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Helpers;
 
 namespace InscryptionAPI.Boons
 {
@@ -17,7 +15,7 @@ namespace InscryptionAPI.Boons
         public static readonly ObservableCollection<FullBoon> NewBoons = new();
         public static List<BoonData> AllBoonsCopy { get; private set; } = BaseGameBoons.ToList();
 
-        public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool 
+        public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
             appearInRulebook = true)
         {
             FullBoon fb = new();
@@ -41,6 +39,18 @@ namespace InscryptionAPI.Boons
             appearInRulebook = true) where T : BoonBehaviour
         {
             return New(guid, name, typeof(T), rulebookDescription, icon, cardArt, stackable, appearInLeshyTrials, appearInRulebook);
+        }
+
+        public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
+            appearInRulebook = true)
+        {
+            return New(guid, name, boonHandlerType, rulebookDescription, TextureHelper.GetImageAsTexture(pathToIcon), TextureHelper.GetImageAsTexture(pathToCardArt), stackable, appearInLeshyTrials, appearInRulebook);
+        }
+
+        public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
+            appearInRulebook = true) where T : BoonBehaviour
+        {
+            return New<T>(guid, name, rulebookDescription, pathToIcon, pathToCardArt, stackable, appearInLeshyTrials, appearInRulebook);
         }
 
         public static void SyncCardList()
