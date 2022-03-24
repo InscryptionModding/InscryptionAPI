@@ -35,7 +35,6 @@ namespace InscryptionCommunityPatch.Card
                 }
                 try
                 {
-
                     List<Ability> list = new();
                     list.AddRange(slot.Card.Info.Abilities);
                     foreach (CardModificationInfo cardModificationInfo in slot.Card.TemporaryMods)
@@ -46,6 +45,12 @@ namespace InscryptionCommunityPatch.Card
                     list.ForEach((x) => numAttacks += InscryptionAPI.Card.AbilityManager.GetOpposingSlotModifierFromAbility(slot.Card, x));
                 }
                 catch(Exception ex) { Debug.LogWarning("InscryptionAPI not accesible? " + ex); }
+                try
+                {
+                    slot.Card.TriggerHandler.GetAllReceivers().FindAll(x => x is InscryptionAPI.Card.ExtendedAbilityBehaviour).ConvertAll(x => x as InscryptionAPI.Card.ExtendedAbilityBehaviour).ForEach(x =>
+                        numAttacks += x.ExtraAttacks);
+                }
+                catch (Exception ex) { Debug.LogWarning("InscryptionAPI not accesible? " + ex); }
                 opposingSlots.Clear();
                 Singleton<ViewManager>.Instance.Controller.SwitchToControlMode(Singleton<BoardManager>.Instance.ChoosingSlotViewMode, false);
                 Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
