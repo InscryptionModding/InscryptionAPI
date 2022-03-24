@@ -353,7 +353,7 @@ public static class CardExtensions
     public static CardInfo SetRare(this CardInfo info)
     {
         info.AddMetaCategories(CardMetaCategory.Rare);
-        info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardColors, CardAppearanceBehaviour.Appearance.RareCardBackground);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.RareCardBackground);
 
         info.metaCategories.Remove(CardMetaCategory.ChoiceNode);
         info.metaCategories.Remove(CardMetaCategory.TraderOffer);
@@ -392,10 +392,10 @@ public static class CardExtensions
     {
         info.evolveParams = new()
         {
-            evolution = CardLoader.Clone(evolveCard)
+            evolution = evolveCard
         };
 
-        if (mods != null)
+        if (mods != null && mods.Any())
         {
             info.evolveParams.evolution = CardLoader.Clone(info.evolveParams.evolution);
             (info.evolveParams.evolution.mods ??= new ()).AddRange(mods);
@@ -456,7 +456,7 @@ public static class CardExtensions
             creatureWithin = iceCube
         };
 
-        if (mods != null)
+        if (mods != null && mods.Any())
         {
             info.iceCubeParams.creatureWithin = CardLoader.Clone(info.iceCubeParams.creatureWithin);
             (info.iceCubeParams.creatureWithin.mods ??= new ()).AddRange(mods);
@@ -529,10 +529,10 @@ public static class CardExtensions
     {
         info.tailParams = new()
         {
-            tail = CardLoader.Clone(tail)
+            tail = tail
         };
 
-        if (mods != null)
+        if (mods != null && mods.Any())
         {
             info.tailParams.tail = CardLoader.Clone(info.tailParams.tail);
             (info.tailParams.tail.mods ??= new()).AddRange(mods);
