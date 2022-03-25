@@ -996,6 +996,81 @@ public static class CardExtensions
 
     #endregion
 
+    #region Helpers
+
+    /// <summary>
+    /// Create a basic CardBlueprint based off the .
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
+    {
+        return new EncounterBlueprintData.CardBlueprint
+        {
+            card = cardInfo
+        };
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not having a specific Ability.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access</param>
+    /// <param name="ability">The ability to check for</param>
+    /// <returns>true if the ability does not exist</returns>
+    public static bool DoesNotHaveAbility(this CardInfo cardInfo, Ability ability)
+    {
+        return !cardInfo.HasAbility(ability);
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not having a specific Ability.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access</param>
+    /// <param name="ability">The specialTriggeredAbility to check for</param>
+    /// <returns>true if the specialTriggeredAbility does not exist</returns>
+    public static bool DoesNotHaveSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
+    {
+        return !cardInfo.SpecialAbilities.Contains(ability);
+    }
+    
+    /// <summary>
+    /// Check the PlayableCard not having a specific Ability.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The ability to check for</param>
+    /// <returns>true if the ability does not exist</returns>
+    public static bool DoesNotHaveAbility(this PlayableCard playableCard, Ability ability)
+    {
+        return !playableCard.HasAbility(ability);
+    }
+    
+    /// <summary>
+    /// Check the PlayableCard not having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The specialTriggeredAbility to check for</param>
+    /// <returns>true if the specialTriggeredAbility does not exist</returns>
+    public static bool DoesNotHaveSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
+    {
+        return playableCard.Info.DoesNotHaveSpecialAbility(ability);
+    }
+    
+    /// <summary>
+    /// Check the PlayableCard having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The specialTriggeredAbility to check for</param>
+    /// <returns>true if the specialTriggeredAbility does exist</returns>
+    public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
+    {
+        return playableCard.Info.SpecialAbilities.Contains(ability);
+    }
+
+    #endregion
 
     #region ExtendedProperties
 
