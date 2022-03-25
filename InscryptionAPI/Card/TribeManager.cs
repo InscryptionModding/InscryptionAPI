@@ -1,7 +1,4 @@
 using DiskCardGame;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using HarmonyLib;
 using InscryptionAPI.Guid;
@@ -99,6 +96,12 @@ namespace InscryptionAPI.Card
             TribeInfo info = new() { tribe = tribe, icon = tribeIcon.ConvertTexture(), cardback = choiceCardbackTexture, tribeChoice = appearInTribeChoices };
             tribes.Add(info);
             return tribe;
+        }
+
+        public static Tribe Add(string guid, string name, string pathToTribeIcon = null, bool appearInTribeChoices = false, string pathToChoiceCardBackTexture = null)
+        {
+            // Reason for 'is not null' is because if we pass 'null' to GetImageAsTexture, It will thorw an exception.
+            return Add(guid, name, pathToTribeIcon is not null ? TextureHelper.GetImageAsTexture(pathToTribeIcon) : null, appearInTribeChoices, pathToChoiceCardBackTexture is not null ? TextureHelper.GetImageAsTexture(pathToChoiceCardBackTexture) : null);
         }
 
         private class TribeInfo

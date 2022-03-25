@@ -64,7 +64,7 @@ public static class TextureHelper
 
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2);
+        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
@@ -73,7 +73,7 @@ public static class TextureHelper
 
     public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2);
+        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
