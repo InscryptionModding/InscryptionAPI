@@ -1,0 +1,35 @@
+{
+    "metadata": [
+        {
+            "src": [
+                {
+                    "files": ["**/*.csproj"]
+                }
+            ],
+            "dest": "docs/api"
+        }
+    ],
+    "build": {
+        "content": [
+            {
+                "files": ["docs/api/**.yml", "docs/api/index.md"]
+            },
+            {
+                "files": ["toc.yml", "*.md"]
+            }
+        ],
+        "overwrite": "docs/apiSpec/*.md",
+        "globalMetadata": {
+            "_appTitle": "InscryptionAPI",
+            "_gitContribute": {
+                "repo": "https://github.com/InscryptionModding/InscryptionAPI",
+                "branch": "main",
+                "apiSpecFolder": "docs/apiSpec"
+            },
+            "_enableSearch": true
+        },
+        "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"],
+        "dest": "docs/destination",
+        "template": ["default", "docs/theme/darkfx"]
+    }
+}

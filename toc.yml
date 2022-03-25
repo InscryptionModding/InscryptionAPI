@@ -1,0 +1,3 @@
+- name: API
+  href: docs/api/
+  homepage: docs/api/index.md
