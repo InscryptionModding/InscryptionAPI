@@ -671,7 +671,14 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetPortrait(this CardInfo info, string pathToArt)
     {
-        return info.SetPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        try
+        {
+            return info.SetPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            throw new ArgumentException($"Image file not found for card \"{info.name}\"!", fnfe);
+        }
     }
 
     /// <summary>
@@ -801,7 +808,14 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, string pathToArt)
     {
-        return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        try
+        {
+            return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            throw new ArgumentException($"Image file not found for card \"{info.name}\"!", fnfe);
+        }
     }
 
     /// <summary>
