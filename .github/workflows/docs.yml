@@ -1,0 +1,26 @@
+name: Documentation
+
+on: [push, pull_request]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 6.0.x
+
+            - name: Install DocFX
+              run: curl -LJO https://github.com/dotnet/docfx/releases/download/3.0.0-beta1.1176%2B7f427ec07c/docfx-linux-x64-3.0.0-beta1.1176+7f427ec07c.zip -o docfx.zip; unzip -d docfx/ docfx.zip; chmod +x docfx/docfx
+
+            - name: Generate Documentation
+              run: docfx/docfx docfx.json
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v3
+              with:
+                  name: Documentation
+                  path: docs/destination
