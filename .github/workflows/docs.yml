@@ -20,7 +20,7 @@ jobs:
               run: sudo apt-get install mono-runtime mono-devel msbuild
 
             - name: Install DocFX
-              run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip; chmod +x docfx/docfx
+              run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip
 
             - name: Generate Documentation
               run: mono docfx/docfx.exe docfx.json
