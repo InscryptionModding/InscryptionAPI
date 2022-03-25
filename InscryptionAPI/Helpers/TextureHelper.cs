@@ -57,14 +57,21 @@ public static class TextureHelper
 
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
     {
-        return File.ReadAllBytes(
-            Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
-        );
+        if (!Path.IsPathRooted(pathCardArt))
+        {
+            var files = Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories);
+            if (files.Length < 1) throw new FileNotFoundException("Could not find relative artwork file!", pathCardArt);
+            pathCardArt = files[0];
+        }
+
+        if (!File.Exists(pathCardArt)) throw new FileNotFoundException("Absolute path to artwork file does not exist!", pathCardArt);
+
+        return File.ReadAllBytes(pathCardArt);
     }
 
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2);
+        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
@@ -73,7 +80,7 @@ public static class TextureHelper
 
     public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2);
+        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
@@ -85,6 +92,12 @@ public static class TextureHelper
         texture.filterMode = filterMode;
         Sprite retval = Sprite.Create(texture, SPRITE_RECTS[spriteType], SPRITE_PIVOTS[spriteType]);
         return retval;
+    }
+
+    public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
+    {
+        pivot ??= new Vector2(0.5f, 0.5f);
+        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
     }
 
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)

@@ -9,15 +9,28 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class StatIconManager
 {
+    private static readonly Dictionary<SpecialStatIcon, SpecialTriggeredAbility> BASE_GAME_ABILITIES = new ()
+    {
+        { SpecialStatIcon.Ants, SpecialTriggeredAbility.Ant },
+        { SpecialStatIcon.Bell, SpecialTriggeredAbility.BellProximity },
+        { SpecialStatIcon.Bones, SpecialTriggeredAbility.Lammergeier },
+        { SpecialStatIcon.CardsInHand, SpecialTriggeredAbility.CardsInHand },
+        { SpecialStatIcon.GreenGems, SpecialTriggeredAbility.GreenMage },
+        { SpecialStatIcon.Mirror, SpecialTriggeredAbility.Mirror },
+        { SpecialStatIcon.SacrificesThisTurn, SpecialTriggeredAbility.SacrificesThisTurn }
+    };
+
     public class FullStatIcon
     {
         public readonly SpecialStatIcon Id;
+        public readonly SpecialTriggeredAbility AbilityId;
         public readonly StatIconInfo Info;
         public readonly Type VariableStatBehavior;
 
-        public FullStatIcon(SpecialStatIcon id, StatIconInfo info, Type variableStatBehavior)
+        public FullStatIcon(SpecialStatIcon id, SpecialTriggeredAbility abilityId, StatIconInfo info, Type variableStatBehavior)
         {
             Id = id;
+            AbilityId = abilityId;
             Info = info;
             VariableStatBehavior = variableStatBehavior;
 
@@ -38,6 +51,24 @@ public static class StatIconManager
             AllStatIcons = BaseGameStatIcons.Concat(NewStatIcons).ToList();
             AllStatIconInfos = AllStatIcons.Select(x => x.Info).ToList();
         };
+
+        // Let's help people fix the most common mistake with special stat icons
+        CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+        {
+            foreach (CardInfo card in cards)
+            {
+                if (card.specialStatIcon != SpecialStatIcon.None)
+                {
+                    FullStatIcon icon = AllStatIcons.FirstOrDefault(i => i.Id == card.specialStatIcon);
+                    if (icon != null && icon.AbilityId != SpecialTriggeredAbility.None)
+                    {
+                        card.specialAbilities = new(card.specialAbilities);
+                        card.AddSpecialAbilities(icon.AbilityId);
+                    }
+                }
+            }
+            return cards;
+        };
     }
 
     private static List<FullStatIcon> GenBaseGameStatIconList()
@@ -47,14 +78,18 @@ public static class StatIconManager
         foreach (var staticon in Resources.LoadAll<StatIconInfo>("Data/staticons"))
         {
             var name = staticon.iconType.ToString();
-            baseGame.Add(new FullStatIcon(staticon.iconType, staticon, gameAsm.GetType($"DiskCardGame.{name}")));
+            SpecialTriggeredAbility ab = BASE_GAME_ABILITIES.ContainsKey(staticon.iconType) ? BASE_GAME_ABILITIES[staticon.iconType] : (SpecialTriggeredAbility)Enum.Parse(typeof(SpecialTriggeredAbility), staticon.iconType.ToString());
+            baseGame.Add(new FullStatIcon(staticon.iconType, ab, staticon, gameAsm.GetType($"DiskCardGame.{name}")));
         }
         return baseGame;
     }
 
     public static FullStatIcon Add(string guid, StatIconInfo info, Type behavior)
     {
-        FullStatIcon full = new(GuidManager.GetEnumValue<SpecialStatIcon>(guid, info.rulebookName), info, behavior);
+        // Register the special ability at the same time
+        SpecialTriggeredAbility abilityId = SpecialTriggeredAbilityManager.Add(guid, info.rulebookName, behavior).Id;
+
+        FullStatIcon full = new(GuidManager.GetEnumValue<SpecialStatIcon>(guid, info.rulebookName), abilityId, info, behavior);
         full.Info.iconType = full.Id;
         NewStatIcons.Add(full);
         return full;

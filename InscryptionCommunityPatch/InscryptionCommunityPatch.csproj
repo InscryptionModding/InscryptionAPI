@@ -25,6 +25,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="BepInEx.Core" Version="5.4.19" />
+      <PackageReference Include="HarmonyX" Version="2.9.0" />
       <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
       <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
