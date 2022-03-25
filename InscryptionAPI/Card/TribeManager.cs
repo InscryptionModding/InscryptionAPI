@@ -47,7 +47,7 @@ namespace InscryptionAPI.Card
         [HarmonyPostfix]
         public static void GetCardbackTexture(ref Texture __result, CardChoice choice)
         {
-            if (__result == null && choice.resourceType != ResourceType.Blood && choice.resourceType != ResourceType.Bone)
+            if (__result == null && choice.resourceType == ResourceType.None)
             {
                 __result = tribes.Find((x) => x.tribe == choice.tribe).cardback;
             }
