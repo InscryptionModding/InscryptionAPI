@@ -57,9 +57,16 @@ public static class TextureHelper
 
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
     {
-        return File.ReadAllBytes(
-            Path.IsPathRooted(pathCardArt) ? pathCardArt : Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories)[0]
-        );
+        if (!Path.IsPathRooted(pathCardArt))
+        {
+            var files = Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories);
+            if (files.Length < 1) throw new FileNotFoundException("Could not find relative artwork file!", pathCardArt);
+            pathCardArt = files[0];
+        }
+
+        if (!File.Exists(pathCardArt)) throw new FileNotFoundException("Absolute path to artwork file does not exist!", pathCardArt);
+
+        return File.ReadAllBytes(pathCardArt);
     }
 
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
