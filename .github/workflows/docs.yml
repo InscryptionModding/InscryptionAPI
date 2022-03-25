@@ -23,7 +23,7 @@ jobs:
               run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip
 
             - name: Generate Documentation
-              run: mono docfx/docfx.exe docfx.json
+              run: mono docfx/docfx.exe docs/docfx.json
 
             - name: Upload Artifact
               uses: actions/upload-artifact@v3
