@@ -999,7 +999,7 @@ public static class CardExtensions
     #region Helpers
 
     /// <summary>
-    /// Create a basic CardBlueprint based off the .
+    /// Create a basic CardBlueprint based off the CardInfo object.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access</param>
     /// <returns>The same card info so a chain can continue</returns>
