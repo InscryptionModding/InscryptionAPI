@@ -73,8 +73,12 @@ public class DialogueBuilder
         { DialogueEnums.Colors.GlowSeafoam, "bSG" },
     };
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InscryptionAPI.Helpers.Extensions.DialogueBuilder"/> class.
+    /// </summary>
     public static DialogueBuilder Builder => new();
 
+    /// <summary>Initializes a new instance of the <see cref="T:System.Text.StringBuilder"></see> class.</summary>
     private readonly StringBuilder _builder = new();
 
     public string Build(bool endLineWithoutNeedingInput = false)
@@ -87,7 +91,7 @@ public class DialogueBuilder
     }
 
     /// <summary>
-    /// A helper method to immediately call ShowUntilInput from TextDisplayer without having to wrap the Build call.
+    /// A helper method to immediately call ShowUntilInput from <see cref="DiskCardGame.TextDisplayer"/> class without having to wrap the Build call.
     /// </summary>
     /// <param name="endLineWithoutNeedingInput">(ONLY WORKS IN ACT 2) if true, will immediately go to the next line in the dialogue without player input.</param>
     /// <returns>The text being displayed</returns>
@@ -97,7 +101,7 @@ public class DialogueBuilder
     }
 
     /// <summary>
-    /// A helper method to immediately call ShowThenClear from TextDisplayer without having to wrap the Build call.
+    /// A helper method to immediately call ShowThenClear from <see cref="DiskCardGame.TextDisplayer"/> class without having to wrap the Build call.
     /// </summary>
     /// <param name="lengthToShowMessage">How long the message to stay on screen for</param>
     /// <returns>The text being displayed</returns>
@@ -107,7 +111,7 @@ public class DialogueBuilder
     }
 
     /// <summary>
-    /// A helper method to immediately call ShowMessage from TextDisplayer without having to wrap the Build call.
+    /// A helper method to immediately call ShowMessage from <see cref="DiskCardGame.TextDisplayer"/> class without having to wrap the Build call.
     /// </summary>
     /// <returns>The text being displayed</returns>
     public IEnumerator ShowMessage()
@@ -120,10 +124,10 @@ public class DialogueBuilder
     ///
     /// You may also adjust the size and/or color of the text as well.
     /// </summary>
-    /// <param name="text">The text to add to the dialogue</param>
-    /// <param name="color">The color the text is displayed in</param>
-    /// <param name="size">How large the text is displayed at. Max is 5, Giant</param>
-    /// <returns>This DialogueBuilder</returns>
+    /// <param name="text">The text to add to the dialogue.</param>
+    /// <param name="color">The color the text is displayed in.</param>
+    /// <param name="size">How large the text is displayed at. Max is 5, Giant.</param>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder AddText(
         string               text,
         DialogueEnums.Colors color = DialogueEnums.Colors.None,
@@ -175,7 +179,7 @@ public class DialogueBuilder
     /// ```
     /// </summary>
     /// <param name="animToPlay">The name of the animation to play</param>
-    /// <returns>This DialogueBuilder</returns>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder PlayAnim(string animToPlay)
     {
         _builder.Append($"[anim:{animToPlay}]");
@@ -187,7 +191,7 @@ public class DialogueBuilder
     ///
     /// Play a light shaking animation for the card at a specific point in the dialogue.
     /// </summary>
-    /// <returns>This DialogueBuilder</returns>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder ShakeLightly()
     {
         _builder.Append("[shake:0.5]");
@@ -199,7 +203,7 @@ public class DialogueBuilder
     ///
     /// Play a strong shaking animation for the card at a specific point in the dialogue.
     /// </summary>
-    /// <returns>This DialogueBuilder</returns>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder ShakeStrongly()
     {
         _builder.Append("[shake:1]");
@@ -223,7 +227,7 @@ public class DialogueBuilder
     /// None
     /// </summary>
     /// <param name="emotion">The emotion to want to change the speaker to use.</param>
-    /// <returns>This DialogueBuilder</returns>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder ChangeEmotionTo(Emotion emotion)
     {
         _builder.Append($"[e:{emotion.ToString()}]");
@@ -234,7 +238,7 @@ public class DialogueBuilder
     /// Adjust the pitch of the speaker. Caps at 1.
     /// </summary>
     /// <param name="pitch">The number to increase the pitch.</param>
-    /// <returns>This DialogueBuilder</returns>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder ChangePitchTo(float pitch)
     {
         _builder.Append($"[p:{pitch}]");
@@ -256,8 +260,8 @@ public class DialogueBuilder
     ///         .ShowUntilInput();
     ///     ```
     /// </example>
-    /// <param name="wait">Seconds to wait before the next word is displayed</param>
-    /// <returns>This DialogueBuilder</returns>
+    /// <param name="wait">Seconds to wait before the next word is displayed.</param>
+    /// <returns>A reference to this instance after appending has completed.</returns>
     public DialogueBuilder ThenWait(float wait)
     {
         _builder.Append($"[w:{wait}]");
