@@ -4,6 +4,7 @@ using System.Text;
 using DiskCardGame;
 using System.Reflection;
 using System.Collections;
+using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Triggers
 {
@@ -209,7 +210,7 @@ namespace InscryptionAPI.Triggers
                     }
                 }
                 yield return CustomTriggerNonCardReceivers(false, identification, otherArgs);
-                /*if (!triggerFacedown)
+                if (!triggerFacedown)
                 {
                     bool RespondsToTrigger(CardTriggerHandler r, TriggerIdentification identification, params object[] otherArgs)
                     {
@@ -235,15 +236,15 @@ namespace InscryptionAPI.Triggers
                         }
                         yield break;
                     }
-                    List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
-                    foreach (PlayableCard playableCard in list)
+                    List<PlayableCard> list2 = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+                    foreach (PlayableCard playableCard in list2)
                     {
                         if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, identification, otherArgs))
                         {
                             yield return OnTrigger(playableCard.TriggerHandler, identification, otherArgs);
                         }
                     }
-                }*/ //uncomment this when waterborne fix gets added
+                }
             }
             yield break;
         }
