@@ -1,0 +1,6 @@
+- name: Wiki
+  href: wiki/
+  homepage: wiki/index.md
+- name: API
+  href: api/
+  homepage: api/index.md

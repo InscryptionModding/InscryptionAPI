@@ -6,6 +6,9 @@ public class ModdedSaveData
 
     public string GetValue(string guid, string key)
     {
+        if (SaveData == null)
+            SaveData = new();
+
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
 
