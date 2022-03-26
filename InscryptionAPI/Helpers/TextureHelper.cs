@@ -110,11 +110,11 @@ public static class TextureHelper
         if (!Path.IsPathRooted(pathCardArt))
         {
             var files = Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories);
-            if (files.Length < 1) throw new FileNotFoundException("Could not find relative artwork file!", pathCardArt);
+            if (files.Length < 1) throw new FileNotFoundException($"Could not find relative artwork file!\nFile name: {pathCardArt}", pathCardArt);
             pathCardArt = files[0];
         }
 
-        if (!File.Exists(pathCardArt)) throw new FileNotFoundException("Absolute path to artwork file does not exist!", pathCardArt);
+        if (!File.Exists(pathCardArt)) throw new FileNotFoundException($"Absolute path to artwork file does not exist!\nFile name: {pathCardArt}", pathCardArt);
 
         return File.ReadAllBytes(pathCardArt);
     }
