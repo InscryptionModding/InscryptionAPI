@@ -44,6 +44,6 @@
         ],
         "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"],
         "dest": "_site",
-        "template": ["default", "template/darkfx"]
+        "template": ["default", "template/darkfx", "template/no_inherited_members"]
     }
 }
