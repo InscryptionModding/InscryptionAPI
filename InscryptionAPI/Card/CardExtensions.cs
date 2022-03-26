@@ -694,6 +694,20 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Sets the cards portrait and emission at the same time.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="emission">The texture containing the emission</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
+    public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, Texture2D emission, FilterMode? filterMode = null)
+    {
+        info.SetPortrait(portrait, filterMode);
+        info.SetEmissivePortrait(emission, filterMode);
+        return info;
+    }
+
+    /// <summary>
     /// Sets the default card portrait for the card
     /// </summary>
     /// <param name="info">Card to access</param>
