@@ -39,7 +39,12 @@ public static class StackAbilityIcons
 
     private static Sprite GetGBCNumberSprite(int number)
     {
-        Texture2D texture = TextureHelper.GetImageAsTexture("stack_gbc.png", typeof(StackAbilityIcons).Assembly);
+        var stackGBC = "stack_gbc.png";
+        if (!PatchPlugin.act2StackIconType.Value)
+        {
+            stackGBC = "stack_gbc_alt.png";
+        }
+        Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
         return Sprite.Create(texture, new Rect(0f, 10f * (9f-number), 15f, 10f), new Vector2(0.5f, 0.5f));
     }
 
