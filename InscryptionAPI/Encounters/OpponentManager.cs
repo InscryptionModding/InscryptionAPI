@@ -44,7 +44,7 @@ public static class OpponentManager
         foreach (Opponent.Type opponent in Enum.GetValues(typeof(Opponent.Type)))
         {
             string specialSequencerId = useReversePatch ? OriginalGetSequencerIdForBoss(opponent) : BossBattleSequencer.GetSequencerIdForBoss(opponent);
-            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent");
+            Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent") ?? gameAsm.GetType($"GBC.{opponent.ToString()}Opponent");
 
             baseGame.Add(new FullOpponent(opponent, opponentType, specialSequencerId));
         }
@@ -84,7 +84,8 @@ public static class OpponentManager
         
         __result = gameObject.AddComponent(AllOpponents.First(o => o.Id == encounterData.opponentType).Opponent) as Opponent;
 
-        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", encounterData.aiId ?? "AI")) as AI;
+        string typeName = string.IsNullOrWhiteSpace(encounterData.aiId) ? "AI" : encounterData.aiId;
+        __result.AI = Activator.CreateInstance(CustomType.GetType("DiskCardGame", typeName)) as AI;
         __result.NumLives = __result.StartingLives;
         __result.OpponentType = encounterData.opponentType;
         __result.TurnPlan = __result.ModifyTurnPlan(encounterData.opponentTurnPlan);
