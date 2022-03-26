@@ -23,7 +23,11 @@
                 "files": ["toc.yml", "index.md"]
             }
         ],
-        "overwrite": "apiSpec/*.md",
+        "overwrite": [
+            {
+                "files": ["apiSpec/*.md", "namespace/*.md"]
+            }
+        ],
         "globalMetadata": {
             "_appTitle": "InscryptionAPI",
             "_enableNewTab": true,
@@ -35,7 +39,9 @@
                 "apiSpecFolder": "docs/apiSpec"
             }
         },
-        "xref": ["https://normanderwan.github.io/UnityXrefMaps/2019.4/xrefmap.yml"],
+        "xref": [
+            "https://normanderwan.github.io/UnityXrefMaps/2019.4/xrefmap.yml"
+        ],
         "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"],
         "dest": "_site",
         "template": ["default", "template/darkfx"]
