@@ -999,10 +999,30 @@ public static class CardExtensions
     #region Helpers
 
     /// <summary>
-    /// Create a basic CardBlueprint based off the CardInfo object.
+    /// Get the CardInfo object based off the card name. A much more robust way that's the same as `CardLoader.GetCardByName()`.
     /// </summary>
-    /// <param name="cardInfo">CardInfo to access</param>
+    /// <param name="cardName">The name of the card.</param>
+    /// <returns>The CardInfo object.</returns>
+    public static CardInfo GetCardInfo(this string cardName)
+    {
+        return CardManager.AllCardsCopy.Find(info => info.name == cardName);
+    }
+    
+    /// <summary>
+    /// Create a basic EncounterBlueprintData.CardBlueprint based off the card name.
+    /// </summary>
+    /// <param name="cardName">The name of the card.</param>
     /// <returns>The same card info so a chain can continue</returns>
+    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this string cardName)
+    {
+        return CreateBlueprint(cardName.GetCardInfo());
+    }
+    
+    /// <summary>
+    /// Create a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
+    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
     public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
     {
         return new EncounterBlueprintData.CardBlueprint
