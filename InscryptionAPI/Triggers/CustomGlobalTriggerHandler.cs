@@ -212,11 +212,23 @@ namespace InscryptionAPI.Triggers
                 yield return CustomTriggerNonCardReceivers(false, identification, otherArgs);
                 if (!triggerFacedown)
                 {
+                    bool ActivatesWhenFaceDown(ActivateWhenFacedown awf)
+                    {
+                        if (identification.trigger > CustomTrigger.None)
+                        {
+                            return awf.ShouldCustomTriggerFaceDown(identification.trigger, otherArgs);
+                        }
+                        if(!string.IsNullOrEmpty(identification.triggerName) && !string.IsNullOrEmpty(identification.pluginGuid))
+                        {
+                            return awf.ShouldCustomTriggerFaceDown(identification.pluginGuid, identification.triggerName, otherArgs);
+                        }
+                        return false;
+                    }
                     bool RespondsToTrigger(CardTriggerHandler r, TriggerIdentification identification, params object[] otherArgs)
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && (receiver is ActivateWhenFacedown || 
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && ActivatesWhenFaceDown(receiver as ActivateWhenFacedown)) || 
                                 (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 return true;
@@ -228,8 +240,8 @@ namespace InscryptionAPI.Triggers
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && (receiver is ActivateWhenFacedown) ||
-                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown))
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && ActivatesWhenFaceDown(receiver as ActivateWhenFacedown)) ||
+                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 yield return CustomTriggerSequence(identification, receiver, otherArgs);
                             }

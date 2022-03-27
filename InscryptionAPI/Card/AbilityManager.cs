@@ -5,6 +5,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Triggers;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -262,7 +263,7 @@ public static class AbilityManager
             {
                 foreach (TriggerReceiver receiver in r.GetAllReceivers())
                 {
-                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && (receiver is ActivateWhenFacedown || 
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && (receiver as ActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs)) || 
                         (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                     {
                         return true;
@@ -274,8 +275,8 @@ public static class AbilityManager
             {
                 foreach (TriggerReceiver receiver in r.GetAllReceivers())
                 {
-                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && (receiver is ActivateWhenFacedown) ||
-                            (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown))
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && (receiver as ActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs)) ||
+                            (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                     {
                         yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
                     }
@@ -295,4 +296,9 @@ public static class AbilityManager
     }
 }
 
-public interface ActivateWhenFacedown { }
+public interface ActivateWhenFacedown
+{
+    public bool ShouldTriggerWhenFaceDown(Trigger trigger, object[] otherArgs);
+    public bool ShouldCustomTriggerFaceDown(CustomTrigger trigger, object[] otherArgs);
+    public bool ShouldCustomTriggerFaceDown(string pluginGuid, string triggerName, object[] otherArgs);
+}
