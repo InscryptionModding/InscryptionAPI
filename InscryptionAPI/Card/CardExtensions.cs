@@ -978,9 +978,23 @@ public static class CardExtensions
     /// <returns>The same TailParams so a chain can continue</returns>
     public static TailParams SetLostTailPortrait(this TailParams info, Texture2D portrait, CardInfo owner, FilterMode? filterMode = null)
     {
-        info.tailLostPortrait = !filterMode.HasValue
+        var tailSprite = !filterMode.HasValue
             ? portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
             : portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+
+        return info.SetLostTailPortrait(tailSprite, owner);
+    }
+    
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="info">Tail to access</param>
+    /// <param name="portrait">The sprite containing the card portrait</param>
+    /// <param name="owner">The card that the tail parameters belongs to.</param>
+    /// <returns>The same TailParams so a chain can continue</returns>
+    public static TailParams SetLostTailPortrait(this TailParams info, Sprite portrait, CardInfo owner)
+    {
+        info.tailLostPortrait = portrait;
 
         if (!string.IsNullOrEmpty(owner.name))
             info.tailLostPortrait.name = owner.name + "_tailportrait";
