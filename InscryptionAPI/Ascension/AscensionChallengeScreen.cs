@@ -24,10 +24,14 @@ public static class AscensionChallengeScreenPatches
             __instance.blinkEffect.blinkOffColor = GameColors.Instance.red;
             __instance.iconRenderer.color = GameColors.Instance.red;
         }
-        else
+        else if (info.pointValue < 0)
         {
             __instance.blinkEffect.blinkOffColor = GameColors.Instance.darkLimeGreen;
             __instance.iconRenderer.color = GameColors.Instance.darkLimeGreen;
+        } else
+        {
+            __instance.blinkEffect.blinkOffColor = GameColors.Instance.yellow;
+            __instance.iconRenderer.color = GameColors.Instance.yellow;
         }
     }
 
