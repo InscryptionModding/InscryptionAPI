@@ -11,9 +11,6 @@ public static class ModdedSaveManager
 
     private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.GameRootPath, "ModdedSaveFile.gwsave");
 
-    private static readonly string backupSaveFilePath = Path.Combine(BepInEx.Paths.GameRootPath, "ModdedSaveFile-Backup.gwsave");
-
-
     /// <summary>
     /// Current modded SaveData.
     /// </summary>
@@ -40,7 +37,6 @@ public static class ModdedSaveManager
         var saveData = (SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
         File.WriteAllText(saveFilePath, moddedSaveData);
-        File.Copy(saveFilePath, backupSaveFilePath, true);
     }
 
     [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]

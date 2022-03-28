@@ -5,17 +5,6 @@ public class ModdedSaveData
     internal Dictionary<string, Dictionary<string, object>> SaveData = new();
 
     /// <summary>
-    /// Get the value of a key as a string in the save data.
-    /// </summary>
-    /// <param name="guid">The GUID of the mod.</param>
-    /// <param name="key">The key to get the value of.</param>
-    /// <returns>The value of the key as a string.</returns>
-    public string GetValue(string guid, string key)
-    {
-        return GetValueAsObject<string>(guid, key);
-    }
-
-    /// <summary>
     /// Get the value of a key as an object in the save data.
     /// </summary>
     /// <param name="guid">The GUID of the mod.</param>
@@ -33,6 +22,18 @@ public class ModdedSaveData
             SaveData[guid].Add(key, null);
 
         return (T)SaveData[guid][key];
+    }
+
+    /// <summary>
+    /// Get the value of a key as a string in the save data.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod.</param>
+    /// <param name="key">The key to get the value of.</param>
+    /// <returns>The value of the key as a string.</returns>
+    public string GetValue(string guid, string key)
+    {
+        var value = GetValueAsObject<object>(guid, key);
+        return value == null ? default(string) : value.ToString();
     }
 
     /// <summary>
@@ -78,12 +79,12 @@ public class ModdedSaveData
     }
 
     /// <summary>
-    /// Set the value of a key in the save data.
+    /// Set the value of a key as an object in the save data.
     /// </summary>
     /// <param name="guid">The GUID of the mod.</param>
     /// <param name="key">The key to set the value of.</param>
-    /// <param name="value">The value to set.</param>
-    public void SetValue(string guid, string key, object value)
+    /// <param name="value">The object value to set.</param>
+    public void SetValueAsObject(string guid, string key, object value)
     {
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
@@ -92,5 +93,16 @@ public class ModdedSaveData
             SaveData[guid].Add(key, value);
         else
             SaveData[guid][key] = value;
+    }
+
+    /// <summary>
+    /// Set the value of a key in the save data.
+    /// </summary>
+    /// <param name="guid">The GUID of the mod.</param>
+    /// <param name="key">The key to set the value of.</param>
+    /// <param name="value">The value to set.</param>
+    public void SetValue(string guid, string key, object value)
+    {
+        SetValueAsObject(guid, key, value == null ? default(string) : value.ToString());
     }
 }
