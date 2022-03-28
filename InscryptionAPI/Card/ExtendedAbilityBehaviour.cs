@@ -9,6 +9,8 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
 {
     // This section handles attack slot management
 
+    public virtual bool TriggerWhenFacedown => false;
+
     public virtual bool RespondsToGetOpposingSlots() => false;
 
     public virtual List<CardSlot> GetOpposingSlots(List<CardSlot> originalSlots, List<CardSlot> otherAddedSlots) => new();

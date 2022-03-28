@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Triggers;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -248,5 +250,48 @@ public static class AbilityManager
                 }
             }
         }
+    }
+
+    [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]
+    [HarmonyPostfix]
+    public static IEnumerator WaterborneFix(IEnumerator result, Trigger trigger, bool triggerFacedown, params object[] otherArgs)
+    {
+        yield return result;
+        if (!triggerFacedown)
+        {
+            bool RespondsToTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+            {
+                foreach (TriggerReceiver receiver in r.GetAllReceivers())
+                {
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs)) || 
+                        (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            IEnumerator OnTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+            {
+                foreach (TriggerReceiver receiver in r.GetAllReceivers())
+                {
+                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs)) ||
+                            (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
+                    {
+                        yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
+                    }
+                }
+                yield break;
+            }
+            List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+            foreach (PlayableCard playableCard in list)
+            {
+                if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, trigger, otherArgs))
+                {
+                    yield return OnTrigger(playableCard.TriggerHandler, trigger, otherArgs);
+                }
+            }
+        }
+        yield break;
     }
 }
