@@ -34,7 +34,7 @@ public static class GuidManager
         {
             if (item.Key.StartsWith(startKey))
             {
-                int enumVal = int.Parse(item.Value);
+                int enumVal = int.Parse((string) item.Value);
                 T convertedEnumVal = *(T*)&enumVal;
                 itemList.Add(convertedEnumVal);
             }
