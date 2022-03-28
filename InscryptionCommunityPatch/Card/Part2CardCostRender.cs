@@ -12,6 +12,7 @@ public static class Part2CardCostRender
     // This patches the way card costs are rendered in Act 2 (GBC)
 	// It allows mixed card costs to display correctly (i.e., 2 blood, 1 bone)
 	// And makes the card costs take up a smaller amount of space on the card, showing off more art.
+    // Also allows for custom costs to hook in and be displayed without the creator needing to patch cost render
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
@@ -95,8 +96,8 @@ public static class Part2CardCostRender
 	[HarmonyPrefix]
 	public static bool Part2CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
 	{	
-		//Make sure we are in Leshy's Cabin
-		if (__instance is PixelCardDisplayer) 
+		//Make sure we are only modifying pixel cards
+		if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value) 
 		{ 
 			/// Set the results as the new sprite
 			__result = Part2SpriteFinal(card);
