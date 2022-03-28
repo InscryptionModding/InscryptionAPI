@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InscryptionAPI.Card
 {
-    public interface ActivateWhenFacedown
+    public interface IActivateWhenFacedown
     {
         public bool ShouldTriggerWhenFaceDown(Trigger trigger, object[] otherArgs);
         public bool ShouldCustomTriggerFaceDown(CustomTrigger trigger, object[] otherArgs);

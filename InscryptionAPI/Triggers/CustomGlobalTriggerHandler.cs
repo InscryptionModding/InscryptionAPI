@@ -212,7 +212,7 @@ namespace InscryptionAPI.Triggers
                 yield return CustomTriggerNonCardReceivers(false, identification, otherArgs);
                 if (!triggerFacedown)
                 {
-                    bool ActivatesWhenFaceDown(ActivateWhenFacedown awf)
+                    bool ActivatesWhenFaceDown(IActivateWhenFacedown awf)
                     {
                         if (identification.trigger > CustomTrigger.None)
                         {
@@ -228,7 +228,7 @@ namespace InscryptionAPI.Triggers
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && ActivatesWhenFaceDown(receiver as ActivateWhenFacedown)) || 
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) || 
                                 (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 return true;
@@ -240,7 +240,7 @@ namespace InscryptionAPI.Triggers
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is ActivateWhenFacedown && ActivatesWhenFaceDown(receiver as ActivateWhenFacedown)) ||
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) ||
                                 (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 yield return CustomTriggerSequence(identification, receiver, otherArgs);
