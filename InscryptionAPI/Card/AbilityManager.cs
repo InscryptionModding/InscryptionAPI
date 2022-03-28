@@ -295,10 +295,3 @@ public static class AbilityManager
         yield break;
     }
 }
-
-public interface ActivateWhenFacedown
-{
-    public bool ShouldTriggerWhenFaceDown(Trigger trigger, object[] otherArgs);
-    public bool ShouldCustomTriggerFaceDown(CustomTrigger trigger, object[] otherArgs);
-    public bool ShouldCustomTriggerFaceDown(string pluginGuid, string triggerName, object[] otherArgs);
-}
