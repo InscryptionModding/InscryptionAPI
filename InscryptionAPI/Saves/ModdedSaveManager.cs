@@ -6,10 +6,20 @@ namespace InscryptionAPI.Saves;
 [HarmonyPatch]
 public static class ModdedSaveManager
 {
-    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
+    [Obsolete("Use 'saveFilePath' instead")]
+    private static readonly string oldSaveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
 
-    public static ModdedSaveData SaveData { get; private set; } 
+    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.GameRootPath, "ModdedSaveFile.gwsave");
 
+
+    /// <summary>
+    /// Get the current SaveData from the modded save file.
+    /// </summary>
+    public static ModdedSaveData SaveData { get; private set; }
+
+    /// <summary>
+    /// Get the current RunState from the modded save file.
+    /// </summary>
     public static ModdedSaveData RunState { get; private set; }
 
     internal static bool isSystemDirty = false; // This set whenever we save important system data
@@ -40,11 +50,15 @@ public static class ModdedSaveManager
             isSystemDirty = false;
         }
 
-        if (File.Exists(saveFilePath))
+        var oldSaveFileExist = File.Exists(oldSaveFilePath);
+
+        // If old save file exists, move it to new save file location
+        if (File.Exists(saveFilePath) || oldSaveFileExist)
         {
+            if (oldSaveFileExist) File.Move(oldSaveFilePath, saveFilePath);
+
             string json = File.ReadAllText(saveFilePath);
-            (Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>) saveData 
-                = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
+            var saveData = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
 
             if (SaveData == null)
                 SaveData = new();
