@@ -79,7 +79,8 @@ public class ModdedSaveData
     }
 
     /// <summary>
-    /// Set the value of a key as an object in the save data.
+    /// Set the value of a key as an object in the save data,
+    /// It's recommended to not save an object that implements Unity's Object class as it can cause a infinite recursion and crash the game.
     /// </summary>
     /// <param name="guid">The GUID of the mod.</param>
     /// <param name="key">The key to set the value of.</param>
