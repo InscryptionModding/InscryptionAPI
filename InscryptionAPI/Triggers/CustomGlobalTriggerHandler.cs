@@ -4,6 +4,7 @@ using System.Text;
 using DiskCardGame;
 using System.Reflection;
 using System.Collections;
+using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Triggers
 {
@@ -209,13 +210,25 @@ namespace InscryptionAPI.Triggers
                     }
                 }
                 yield return CustomTriggerNonCardReceivers(false, identification, otherArgs);
-                /*if (!triggerFacedown)
+                if (!triggerFacedown)
                 {
+                    bool ActivatesWhenFaceDown(IActivateWhenFacedown awf)
+                    {
+                        if (identification.trigger > CustomTrigger.None)
+                        {
+                            return awf.ShouldCustomTriggerFaceDown(identification.trigger, otherArgs);
+                        }
+                        if(!string.IsNullOrEmpty(identification.triggerName) && !string.IsNullOrEmpty(identification.pluginGuid))
+                        {
+                            return awf.ShouldCustomTriggerFaceDown(identification.pluginGuid, identification.triggerName, otherArgs);
+                        }
+                        return false;
+                    }
                     bool RespondsToTrigger(CardTriggerHandler r, TriggerIdentification identification, params object[] otherArgs)
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && (receiver is ActivateWhenFacedown || 
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) || 
                                 (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 return true;
@@ -227,23 +240,23 @@ namespace InscryptionAPI.Triggers
                     {
                         foreach (TriggerReceiver receiver in r.GetAllReceivers())
                         {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && (receiver is ActivateWhenFacedown) ||
-                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown))
+                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) ||
+                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
                             {
                                 yield return CustomTriggerSequence(identification, receiver, otherArgs);
                             }
                         }
                         yield break;
                     }
-                    List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
-                    foreach (PlayableCard playableCard in list)
+                    List<PlayableCard> list2 = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+                    foreach (PlayableCard playableCard in list2)
                     {
                         if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, identification, otherArgs))
                         {
                             yield return OnTrigger(playableCard.TriggerHandler, identification, otherArgs);
                         }
                     }
-                }*/ //uncomment this when waterborne fix gets added
+                }
             }
             yield break;
         }
