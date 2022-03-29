@@ -687,7 +687,14 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetPortrait(this CardInfo info, string pathToArt)
     {
-        return info.SetPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        try
+        {
+            return info.SetPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            throw new ArgumentException($"Image file not found for card \"{info.name}\"!", fnfe);
+        }
     }
 
     /// <summary>
@@ -700,6 +707,20 @@ public static class CardExtensions
     public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+    }
+
+    /// <summary>
+    /// Sets the cards portrait and emission at the same time.
+    /// </summary>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="emission">The texture containing the emission</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns></returns>
+    public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, Texture2D emission, FilterMode? filterMode = null)
+    {
+        info.SetPortrait(portrait, filterMode);
+        info.SetEmissivePortrait(emission, filterMode);
+        return info;
     }
 
     /// <summary>
@@ -817,7 +838,14 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, string pathToArt)
     {
-        return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        try
+        {
+            return info.SetEmissivePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            throw new ArgumentException($"Image file not found for card \"{info.name}\"!", fnfe);
+        }
     }
 
     /// <summary>

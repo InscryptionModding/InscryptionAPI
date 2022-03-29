@@ -1,0 +1,49 @@
+{
+    "metadata": [
+        {
+            "src": [
+                {
+                    "files": ["**/*.csproj"],
+                    "exclude": ["**/bin/**", "**/obj/**"],
+                    "src": "../"
+                }
+            ],
+            "dest": "api"
+        }
+    ],
+    "build": {
+        "content": [
+            {
+                "files": ["api/**.yml", "api/index.md"]
+            },
+            {
+                "files": ["wiki/**.yml", "wiki/index.md"]
+            },
+            {
+                "files": ["toc.yml", "index.md"]
+            }
+        ],
+        "overwrite": [
+            {
+                "files": ["apiSpec/*.md", "namespace/*.md"]
+            }
+        ],
+        "globalMetadata": {
+            "_appTitle": "InscryptionAPI",
+            "_enableNewTab": true,
+            "_enableSearch": true,
+            "_noindex": true,
+            "_gitContribute": {
+                "repo": "https://github.com/InscryptionModding/InscryptionAPI",
+                "branch": "main",
+                "apiSpecFolder": "docs/apiSpec"
+            }
+        },
+        "xref": [
+            "https://normanderwan.github.io/UnityXrefMaps/2019.4/xrefmap.yml"
+        ],
+        "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"],
+        "dest": "_site",
+        "template": ["default", "template/darkfx", "template/no_inherited_members"]
+    }
+}

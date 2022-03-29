@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
-[HarmonyPatch(typeof(Latch), nameof(Latch.OnPreDeathAnimation))]
+[HarmonyPatch]
 public class Act1LatchAbilityFix
 {
     private static GameObject _clawPrefab;
@@ -21,11 +21,53 @@ public class Act1LatchAbilityFix
         }
     }
 
+    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ChooseTarget))]
+    [HarmonyPostfix]
+    public static IEnumerator ReEnanbleSlots(IEnumerator result, BoardManager __instance, List<CardSlot> allTargets)
+    {
+        List<CardSlot> validSlots = __instance.currentValidSlots;
+        __instance.currentValidSlots = null;
+        (__instance.GetComponent<SelectTargetHolder>() ?? __instance.gameObject.AddComponent<SelectTargetHolder>()).isSelectingTarget = true;
+        List<CardSlot> toDisable = new();
+        foreach (CardSlot cs in allTargets)
+        {
+            if (!cs.Enabled)
+            {
+                cs.SetEnabled(true);
+                toDisable.Add(cs);
+            }
+        }
+        yield return result;
+        foreach (CardSlot cs in toDisable)
+        {
+            cs.SetEnabled(false);
+        }
+            (__instance.GetComponent<SelectTargetHolder>() ?? __instance.gameObject.AddComponent<SelectTargetHolder>()).isSelectingTarget = false;
+        __instance.currentValidSlots = validSlots;
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(CardSlot), nameof(CardSlot.OnCursorEnter))]
+    [HarmonyPostfix]
+    public static void NoSacrificeMarker(CardSlot __instance)
+    {
+        if ((Singleton<BoardManager>.Instance?.GetComponent<SelectTargetHolder>()?.isSelectingTarget).GetValueOrDefault())
+        {
+            __instance.Card?.Anim?.SetSacrificeHoverMarkerShown(false);
+        }
+    }
+
+    private class SelectTargetHolder : MonoBehaviour
+    {
+        public bool isSelectingTarget;
+    }
+
     private static void AimWeaponAnim(GameObject TweenObj, Vector3 target) => Tween.LookAt(TweenObj.transform, target, Vector3.up, 0.075f, 0.0f, Tween.EaseInOut);
 
     [HarmonyPrefix]
     public static void Prefix1(out Latch __state, ref Latch __instance) => __state = __instance;
 
+    [HarmonyPatch(typeof(Latch), nameof(Latch.OnPreDeathAnimation))]
     [HarmonyPostfix]
     public static IEnumerator Postfix(IEnumerator enumerator, Latch __state, bool wasSacrifice)
     {
@@ -58,7 +100,24 @@ public class Act1LatchAbilityFix
             gameObject.gameObject.transform.parent = anim.transform;
 
             Transform Latchparent = gameObject.transform;
-            GameObject claw = UnityEngine.Object.Instantiate<GameObject>(ClawPrefab, Latchparent);
+            GameObject claw = UnityEngine.Object.Instantiate(ClawPrefab, Latchparent);
+            Material cannonmat = null;
+            try
+            {
+                cannonmat = new Material(ResourceBank.Get<GameObject>("Prefabs/Cards/SpecificCardModels/CannonTargetIcon").GetComponentInChildren<Renderer>().material);
+            }
+            catch { }
+            if (cannonmat != null)
+            {
+                Renderer[] renderers = claw.GetComponentsInChildren<Renderer>();
+                foreach (Renderer rend in renderers)
+                {
+                    if (rend != null)
+                    {
+                        rend.material = cannonmat;
+                    }
+                }
+            }
 
             CardSlot selectedSlot = null;
 
