@@ -22,6 +22,9 @@ namespace InscryptionAPI.Triggers
         OnOtherCardAssignedToSlotInHand,
         OnOtherCardPreDeathInHand,
         OnOtherCardDealtDamageInHand,
-        OnOtherCardDieInHand
+        OnOtherCardDieInHand,
+        OnGetOpposingSlots,
+        OnBuffOtherCardAttack,
+        OnBuffOtherCardHealth
     }
 }

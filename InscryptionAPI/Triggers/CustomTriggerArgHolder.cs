@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using DiskCardGame;
 
@@ -7,43 +9,63 @@ namespace InscryptionAPI.Triggers
 {
     internal static class CustomTriggerArgHolder
     {
-        internal static readonly Dictionary<CustomTrigger, List<Type>> argsForTriggers = new()
+        internal static MethodInfo GetMethodInfo(this Type t) => t.GetMethod("Invoke");
+
+        internal static readonly Dictionary<CustomTrigger, MethodInfo> methodSignaturesForTriggers = new()
         {
             //trigger                                       args
-            { CustomTrigger.OnAddedToHand,                  new() { } },
-            { CustomTrigger.OnOtherCardAddedToHand,         new() { typeof(PlayableCard) } },
-            { CustomTrigger.OnCardAssignedToSlotNoResolve,  new() { typeof(PlayableCard) } },
-            { CustomTrigger.OnBellRung,                     new() { typeof(bool) } },
-            { CustomTrigger.OnPreSlotAttackSequence,        new() { typeof(CardSlot) } },
-            { CustomTrigger.OnPostSlotAttackSequence,       new() { typeof(CardSlot) } },
-            { CustomTrigger.OnPostSingularSlotAttackSlot,   new() { typeof(CardSlot), typeof(CardSlot) } },
-            { CustomTrigger.OnPreScalesChanged,             new() { typeof(int), typeof(bool) } },
-            { CustomTrigger.OnPostScalesChanged,            new() { typeof(int), typeof(bool) } },
-            { CustomTrigger.OnUpkeepInHand,                 new() { typeof(bool) } },
-            { CustomTrigger.OnOtherCardResolveInHand,       new() { typeof(PlayableCard) } },
-            { CustomTrigger.OnTurnEndInHand,                new() { typeof(bool) } },
-            { CustomTrigger.OnOtherCardAssignedToSlotInHand,new() { typeof(PlayableCard) } },
-            { CustomTrigger.OnOtherCardPreDeathInHand,      new() { typeof(CardSlot), typeof(bool), typeof(PlayableCard) } },
-            { CustomTrigger.OnOtherCardDealtDamageInHand,   new() { typeof(PlayableCard), typeof(int), typeof(PlayableCard) } },
-            { CustomTrigger.OnOtherCardDieInHand,           new() { typeof(PlayableCard), typeof(CardSlot), typeof(bool), typeof(PlayableCard) } },
+            { CustomTrigger.OnAddedToHand,                  typeof(TriggerDelegates.OnAddedToHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardAddedToHand,         typeof(TriggerDelegates.OnOtherCardAddedToHand).GetMethodInfo() },
+            { CustomTrigger.OnCardAssignedToSlotNoResolve,  typeof(TriggerDelegates.OnCardAssignedToSlotNoResolve).GetMethodInfo() },
+            { CustomTrigger.OnBellRung,                     typeof(TriggerDelegates.OnBellRung).GetMethodInfo() },
+            { CustomTrigger.OnPreSlotAttackSequence,        typeof(TriggerDelegates.OnPreSlotAttackSequence).GetMethodInfo() },
+            { CustomTrigger.OnPostSlotAttackSequence,       typeof(TriggerDelegates.OnPostSlotAttackSequence).GetMethodInfo() },
+            { CustomTrigger.OnPostSingularSlotAttackSlot,   typeof(TriggerDelegates.OnPostSingularSlotAttackSlot).GetMethodInfo() },
+            { CustomTrigger.OnPreScalesChanged,             typeof(TriggerDelegates.OnPreScalesChanged).GetMethodInfo() },
+            { CustomTrigger.OnPostScalesChanged,            typeof(TriggerDelegates.OnPostScalesChanged).GetMethodInfo() },
+            { CustomTrigger.OnUpkeepInHand,                 typeof(TriggerDelegates.OnUpkeepInHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardResolveInHand,       typeof(TriggerDelegates.OnOtherCardResolveInHand).GetMethodInfo() },
+            { CustomTrigger.OnTurnEndInHand,                typeof(TriggerDelegates.OnTurnEndInHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardAssignedToSlotInHand,typeof(TriggerDelegates.OnOtherCardAssignedToSlotInHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardPreDeathInHand,      typeof(TriggerDelegates.OnOtherCardPreDeathInHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardDealtDamageInHand,   typeof(TriggerDelegates.OnOtherCardDealtDamageInHand).GetMethodInfo() },
+            { CustomTrigger.OnOtherCardDieInHand,           typeof(TriggerDelegates.OnOtherCardDieInHand).GetMethodInfo() },
+            { CustomTrigger.OnGetOpposingSlots,             typeof(TriggerDelegates.OnGetOpposingSlots).GetMethodInfo() },
+            { CustomTrigger.OnBuffOtherCardAttack,          typeof(TriggerDelegates.OnBuffOtherCardAttack).GetMethodInfo() },
+            { CustomTrigger.OnBuffOtherCardHealth,          typeof(TriggerDelegates.OnBuffOtherCardHealth).GetMethodInfo() }
         };
 
-        internal static readonly Dictionary<(string, string), List<Type>> customArgsForTriggers = new();
+        internal static readonly Dictionary<CustomTrigger, MethodInfo> customArgsForTriggers = new();
 
-        internal static bool TryGetArgs(TriggerIdentification identification, out List<Type> args)
+        internal static bool TryGetArgs(CustomTrigger identification, out List<Type> args)
         {
-            if (argsForTriggers != null && identification.trigger > CustomTrigger.None && argsForTriggers.ContainsKey(identification.trigger))
+            if (methodSignaturesForTriggers != null && identification > CustomTrigger.None && methodSignaturesForTriggers.ContainsKey(identification))
             {
-                args = new(argsForTriggers[identification.trigger]);
+                args = new(methodSignaturesForTriggers[identification].GetParameters().Select(pi => pi.ParameterType));
                 return true;
             }
-            else if (customArgsForTriggers != null && !string.IsNullOrEmpty(identification.pluginGuid) && !string.IsNullOrEmpty(identification.triggerName) &&
-                customArgsForTriggers.ContainsKey((identification.pluginGuid, identification.triggerName)))
+            else if (customArgsForTriggers != null && identification > CustomTrigger.None && customArgsForTriggers.ContainsKey(identification))
             {
-                args = new(customArgsForTriggers[(identification.pluginGuid, identification.triggerName)]);
+                args = new(customArgsForTriggers[identification].GetParameters().Select(pi => pi.ParameterType));
                 return true;
             }
             args = new();
+            return false;
+        }
+
+        internal static bool TryGetReturnType(CustomTrigger identification, out Type args)
+        {
+            if (methodSignaturesForTriggers != null && identification > CustomTrigger.None && methodSignaturesForTriggers.ContainsKey(identification))
+            {
+                args = methodSignaturesForTriggers[identification].ReturnType;
+                return true;
+            }
+            else if (customArgsForTriggers != null && identification > CustomTrigger.None && customArgsForTriggers.ContainsKey(identification))
+            {
+                args = customArgsForTriggers[identification].ReturnType;
+                return true;
+            }
+            args = typeof(IEnumerator);
             return false;
         }
     }
