@@ -1,3 +1,5 @@
+using InscryptionAPI.Guid;
+
 namespace InscryptionAPI.Triggers
 {
     /// <summary>
@@ -13,9 +15,24 @@ namespace InscryptionAPI.Triggers
     /// </remarks>
     public class CustomTriggerResponderAttribute : Attribute
     {
+
+        /// <summary>
+        /// Decorates a trigger acknowledgement to an enumerated custom trigger
+        /// </summary>
+        /// <param name="trigger">The trigger to respond to</param>
         public CustomTriggerResponderAttribute(CustomTrigger trigger)
         {
             this.trigger = trigger;
+        }
+
+        /// <summary>
+        /// Decorates a trigger acknowledgement to a mod-added custom trigger
+        /// </summary>
+        /// <param name="pluginGuid">The guid of the plugin that created the custom trigger</param>
+        /// <param name="triggerName">The name of the custom trigger</param>
+        public CustomTriggerResponderAttribute(string pluginGuid, string triggerName)
+        {
+            this.trigger = GuidManager.GetEnumValue<CustomTrigger>(pluginGuid, triggerName);
         }
 
         internal CustomTrigger trigger;
@@ -43,6 +60,16 @@ namespace InscryptionAPI.Triggers
             this.trigger = trigger;
         }
 
+        /// <summary>
+        /// Decorates a trigger response to a mod-added custom trigger
+        /// </summary>
+        /// <param name="pluginGuid">The guid of the plugin that created the custom trigger</param>
+        /// <param name="triggerName">The name of the custom trigger</param>
+        public CustomTriggerCoroutineAttribute(string pluginGuid, string triggerName)
+        {
+            this.trigger = GuidManager.GetEnumValue<CustomTrigger>(pluginGuid, triggerName);
+        }
+
         internal CustomTrigger trigger;
     }
 
@@ -65,12 +92,22 @@ namespace InscryptionAPI.Triggers
     public class CustomTriggerDataAttribute : Attribute
     {
         /// <summary>
-        /// Decorates a response to an enumerated custom trigger
+        /// Decorates a data response to an enumerated custom trigger
         /// </summary>
         /// <param name="trigger">The trigger to respond to</param>
         public CustomTriggerDataAttribute(CustomTrigger trigger)
         {
             this.trigger = trigger;
+        }
+
+        /// <summary>
+        /// Decorates a data response to a mod-added custom trigger
+        /// </summary>
+        /// <param name="pluginGuid">The guid of the plugin that created the custom trigger</param>
+        /// <param name="triggerName">The name of the custom trigger</param>
+        public CustomTriggerDataAttribute(string pluginGuid, string triggerName)
+        {
+            this.trigger = GuidManager.GetEnumValue<CustomTrigger>(pluginGuid, triggerName);
         }
 
         internal CustomTrigger trigger;
