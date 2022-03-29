@@ -7,18 +7,20 @@ body:
     id: detail
     attributes:
       label: Detail
-      description: Please explain the feature in details.
+      description: Please give a detailed explanation of the feature you want to see in the API.
     validations:
       required: true
   - type: textarea
     id: reason
     attributes:
       label: Reason
-      description: Reason for adding this feature.
+      description: Please give an explanation for why you want this feature in the API, as opposed to something you would write yourself in your own mod.
     validations:
       required: true
   - type: textarea
     id: pseudo-code
     attributes:
       label: Pseudo Code
-      description: If possible, Please include a pseudo code on how the feature will work.
+      description: Give an example of how you imagine this feature would be used, using pseudo-code.
+    validations:
+      required: true
