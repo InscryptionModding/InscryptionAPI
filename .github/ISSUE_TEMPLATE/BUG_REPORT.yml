@@ -18,7 +18,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction
-      description: Give us the step to re-produce the bug.
+      description: Give us the steps necessary to reproduce the bug.
       render: markdown
     validations:
       required: true
@@ -30,10 +30,10 @@ body:
       render: shell
     validations:
       required: true
-  - type: text
+  - type: textarea
     attributes:
       label: Code sample
-      description: If there's a code that trigger this bug, Please include it here.
+      description: Please include a sample of code that will trigger this bug (if applicable)
       render: csharp
   - type: textarea
     id: additional-context
