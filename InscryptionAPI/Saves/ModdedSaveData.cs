@@ -10,6 +10,7 @@ public class ModdedSaveData
     /// <param name="guid">The GUID of the mod.</param>
     /// <param name="key">The key to get the value of.</param>
     /// <returns>The value of the key as an object.</returns>
+    /// <typeparam name="T">The type of object.</typeparam>
     public T GetValueAsObject<T>(string guid, string key)
     {
         if (SaveData == null)
@@ -85,7 +86,8 @@ public class ModdedSaveData
     /// <param name="guid">The GUID of the mod.</param>
     /// <param name="key">The key to set the value of.</param>
     /// <param name="value">The object value to set.</param>
-    public void SetValueAsObject(string guid, string key, object value)
+    /// <typeparam name="T">The type of object you are setting.</typeparam>
+    public void SetValueAsObject<T>(string guid, string key, T value)
     {
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
