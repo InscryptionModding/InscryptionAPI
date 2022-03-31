@@ -17,31 +17,40 @@ namespace InscryptionAPI.Triggers
         private static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
         {
             yield return result;
-            if (card.TriggerHandler.RespondsToCustomTrigger(CustomTrigger.OnAddedToHand, Array.Empty<object>()))
+            foreach (var onCard in CustomTriggerFinder.FindTriggersOnCard<IAddedToHand>(card))
             {
-                yield return card.TriggerHandler.OnCustomTrigger(CustomTrigger.OnAddedToHand, Array.Empty<object>());
+                yield return onCard.OnAddedToHand();
             }
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnOtherCardAddedToHand, false, card);
-            yield break;
+            foreach (var otherCard in CustomTriggerFinder.FindGlobalTriggers<IOtherAddedToHand>(TriggerSearchCategory.ALL, card))
+            {
+                yield return otherCard.OnOtherAddedToHand(card);
+            }
         }
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.DoCombatPhase))]
         [HarmonyPostfix]
         private static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnBellRung, false, playerIsAttacker);
+            foreach (var i in CustomTriggerFinder.FindGlobalTriggers<IBellRung>())
+            {
+                yield return i.OnBellRung(playerIsAttacker);
+            }
             yield return result;
-            yield break;
         }
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSequence))]
         [HarmonyPostfix]
         private static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPreSlotAttackSequence, false, slot);
+            foreach (var pre in CustomTriggerFinder.FindGlobalTriggers<IPreSlotAttackSequence>())
+            {
+                yield return pre.OnPreSlotAttackSequence(slot);
+            }
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostSlotAttackSequence, false, slot);
-            yield break;
+            foreach (var post in CustomTriggerFinder.FindGlobalTriggers<IPostSlotAttackSequence>())
+            {
+                yield return post.OnPostSlotAttackSequence(slot);
+            }
         }
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
@@ -49,18 +58,25 @@ namespace InscryptionAPI.Triggers
         private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
         {
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostSingularSlotAttackSlot, false, attackingSlot, opposingSlot);
-            yield break;
+            foreach (var i in CustomTriggerFinder.FindGlobalTriggers<IPostSingularSlotAttackSlot>())
+            {
+                yield return i.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot);
+            }
         }
 
         [HarmonyPatch(typeof(LifeManager), nameof(LifeManager.ShowDamageSequence))]
         [HarmonyPostfix]
         private static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, bool toPlayer)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPreScalesChanged, false, damage, toPlayer);
+            foreach (var pre in CustomTriggerFinder.FindGlobalTriggers<IPreScalesChanged>())
+            {
+                yield return pre.OnPreScalesChanged(damage, toPlayer);
+            }
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostScalesChanged, false, damage, toPlayer);
-            yield break;
+            foreach (var post in CustomTriggerFinder.FindGlobalTriggers<IPostScalesChanged>())
+            {
+                yield return post.OnPostScalesChanged(damage, toPlayer);
+            }
         }
 
         [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
@@ -68,17 +84,20 @@ namespace InscryptionAPI.Triggers
         private static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
         {
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnUpkeepInHand, playerUpkeep);
-            yield break;
+            foreach (var i in CustomTriggerFinder.FindTriggersInHand<IUpkeepInHand>())
+            {
+                yield return i.OnUpkeepInHand(playerUpkeep);
+            }
         }
 
         [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ResolveCardOnBoard))]
         [HarmonyPostfix]
-        private static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers = true)
+        private static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
         {
             yield return result;
             if (resolveTriggers)
             {
+                
                 yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardResolveInHand, card);
             }
             yield break;
