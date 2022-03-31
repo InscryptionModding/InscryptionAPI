@@ -54,9 +54,7 @@ public static class ModdedSaveManager
         // If old save file exists, move it to new save file location
         if (File.Exists(saveFilePath) || oldSaveFileExist)
         {
-            if (oldSaveFileExist) File.Move(oldSaveFilePath, saveFilePath);
-
-            string json = File.ReadAllText(saveFilePath);
+            string json = oldSaveFileExist ? File.ReadAllText(oldSaveFilePath) : File.ReadAllText(saveFilePath);
             var saveData = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, object>>, Dictionary<string, Dictionary<string, object>>)>(json);
 
             if (SaveData == null)
