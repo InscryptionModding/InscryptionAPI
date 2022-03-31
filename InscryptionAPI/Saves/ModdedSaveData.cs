@@ -10,7 +10,7 @@ public class ModdedSaveData
     /// <param name="guid">The GUID of the mod.</param>
     /// <param name="key">The key to get the value of.</param>
     /// <returns>The value of the key as an object.</returns>
-    /// <typeparam name="T">The type of object.</typeparam>
+    /// <typeparam name="T">The type of object you are getting.</typeparam>
     public T GetValueAsObject<T>(string guid, string key)
     {
         if (SaveData == null)
