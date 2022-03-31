@@ -25,14 +25,8 @@ public static class ModdedSaveManager
     // This only happens during initialization
     // We use it to make sure that loading data doesn't overwrite system data.
 
-    /// <summary>
-    /// If we are using the old save file path, this will return true.
-    /// </summary>
-    public static bool isOldPath = false;
-
     static ModdedSaveManager()
     {
-        isOldPath = File.Exists(oldSaveFilePath);
         ReadDataFromFile();
     }
 
@@ -42,7 +36,7 @@ public static class ModdedSaveManager
     {
         var saveData = (SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
-        File.WriteAllText(isOldPath ? oldSaveFilePath : saveFilePath, moddedSaveData);
+        File.WriteAllText(saveFilePath, moddedSaveData);
     }
 
     [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]
@@ -55,10 +49,15 @@ public static class ModdedSaveManager
             isSystemDirty = false;
         }
 
-        // If old save file exists, Use the old save file.
-        if (File.Exists(saveFilePath) || isOldPath)
+        var oldSaveFileExist = File.Exists(oldSaveFilePath);
+        var newSaveFileExist = File.Exists(saveFilePath);
+
+        // If old save file exists, move it to new save file location
+        if (newSaveFileExist || oldSaveFileExist)
         {
-            string json = isOldPath ? File.ReadAllText(oldSaveFilePath) : File.ReadAllText(saveFilePath);
+            if (newSaveFileExist && oldSaveFileExist) File.Delete(saveFilePath);
+            if (oldSaveFileExist) File.Move(oldSaveFilePath, saveFilePath);
+            string json = File.ReadAllText(saveFilePath);
             var saveData = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, object>>, Dictionary<string, Dictionary<string, object>>)>(json);
 
             if (SaveData == null)
