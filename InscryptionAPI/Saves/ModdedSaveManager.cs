@@ -52,7 +52,7 @@ public static class ModdedSaveManager
         var oldSaveFileExist = File.Exists(oldSaveFilePath);
         var newSaveFileExist = File.Exists(saveFilePath);
 
-        // If old save file exists, move it to new save file location
+        // If both old and new file exists, Delete the new one and move the old one to new path
         if (newSaveFileExist || oldSaveFileExist)
         {
             if (newSaveFileExist && oldSaveFileExist) File.Delete(saveFilePath);
