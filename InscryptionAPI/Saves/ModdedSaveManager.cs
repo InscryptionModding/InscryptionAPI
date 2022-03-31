@@ -6,10 +6,19 @@ namespace InscryptionAPI.Saves;
 [HarmonyPatch]
 public static class ModdedSaveManager
 {
-    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
+    [Obsolete("Use 'saveFilePath' instead")]
+    private static readonly string oldSaveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
 
-    public static ModdedSaveData SaveData { get; private set; } 
+    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.GameRootPath, "ModdedSaveFile.gwsave");
 
+    /// <summary>
+    /// Current modded SaveData.
+    /// </summary>
+    public static ModdedSaveData SaveData { get; private set; }
+
+    /// <summary>
+    /// Current modded RunState.
+    /// </summary>
     public static ModdedSaveData RunState { get; private set; }
 
     internal static bool isSystemDirty = false; // This set whenever we save important system data
@@ -40,11 +49,16 @@ public static class ModdedSaveManager
             isSystemDirty = false;
         }
 
-        if (File.Exists(saveFilePath))
+        var oldSaveFileExist = File.Exists(oldSaveFilePath);
+        var newSaveFileExist = File.Exists(saveFilePath);
+
+        // If both old and new file exists, Delete the new one and move the old one to new path
+        if (newSaveFileExist || oldSaveFileExist)
         {
+            if (newSaveFileExist && oldSaveFileExist) File.Delete(saveFilePath);
+            if (oldSaveFileExist) File.Move(oldSaveFilePath, saveFilePath);
             string json = File.ReadAllText(saveFilePath);
-            (Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>) saveData 
-                = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
+            var saveData = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, object>>, Dictionary<string, Dictionary<string, object>>)>(json);
 
             if (SaveData == null)
                 SaveData = new();
