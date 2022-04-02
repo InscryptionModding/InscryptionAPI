@@ -1195,6 +1195,26 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Checks if the card is not dead.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <returns>true if card is not dead.</returns>
+    public static bool NotDead(this PlayableCard playableCard)
+    {
+        return !playableCard.Dead;
+    }
+    
+    /// <summary>
+    /// Checks if the card is not the opponent's card.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <returns>true if card is not the opponent's card.</returns>
+    public static bool IsPlayerCard(this PlayableCard playableCard)
+    {
+        return !playableCard.OpponentCard;
+    } 
+
+    /// <summary>
     /// Check the PlayableCard not having a specific Ability.
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>

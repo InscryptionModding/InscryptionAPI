@@ -5,6 +5,16 @@ namespace InscryptionAPI.Helpers.Extensions;
 public static class CardSlotExtensions
 {
     /// <summary>
+    /// Check if the slot is an opponent's slot.
+    /// </summary>
+    /// <param name="cardSlot">The slot to check.</param>
+    /// <returns>true if the slot is not a player slot.</returns>
+    public static bool IsOpponentSlot(this CardSlot cardSlot)
+    {
+        return !cardSlot.IsPlayerSlot;
+    }
+    
+    /// <summary>
     /// Retrieve all the PlayableCard objects from the collection of slots provided.
     /// </summary>
     /// <param name="slots">Collection of CardSlots</param>
