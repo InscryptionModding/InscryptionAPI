@@ -16,6 +16,18 @@ public static class CardSlotExtensions
     }
     
     /// <summary>
+    /// Check if the card in the slot has a specific card name.
+    /// This is primarily useful if you don't have a Trait, Tribe, or other distinct attribute to check the card against.
+    /// </summary>
+    /// <param name="cardSlot">The slot to check.</param>
+    /// <param name="cardName">The name of the card check.</param>
+    /// <returns>true if the slot has a card and that card has the specific cardName.</returns>
+    public static bool CardInSlotIs(this CardSlot cardSlot, string cardName)
+    {
+        return cardSlot.Card && cardSlot.Card.Info.name == cardName;
+    }
+
+    /// <summary>
     /// Create a card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.CreateCardInSlot()`.
     /// </summary>
     /// <param name="slotToSpawnIn">The slot to spawn in.</param>
