@@ -4,12 +4,10 @@ using HarmonyLib;
 
 namespace InscryptionAPI.Card;
 
-[HarmonyPatch]
+//[HarmonyPatch] until extended ability behaviour is removed for real
 public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
 {
     // This section handles attack slot management
-
-    public virtual bool TriggerWhenFacedown => false;
 
     public virtual bool RespondsToGetOpposingSlots() => false;
 
@@ -17,8 +15,8 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
 
     public virtual bool RemoveDefaultAttackSlot() => false;
 
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
-    [HarmonyPostfix]
+    //[HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))] until extended ability behaviour is removed for real
+    //[HarmonyPostfix]
     private static void UpdateOpposingSlots(ref PlayableCard __instance, ref List<CardSlot> __result)
     {
         bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
@@ -74,8 +72,8 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
     public virtual int[] GetPassiveAttackBuffs() => null;
     public virtual int[] GetPassiveHealthBuffs() => null;
 
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
-    [HarmonyPostfix]
+    //[HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))] until extended ability behaviour is removed for real
+    //[HarmonyPostfix]
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
         if (__instance.slot == null)
@@ -100,8 +98,8 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
         }
     }
 
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
-    [HarmonyPostfix]
+    //[HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))] until extended ability behaviour is removed for real
+    //[HarmonyPostfix]
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
         if (__instance.slot == null)

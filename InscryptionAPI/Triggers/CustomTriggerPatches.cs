@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using UnityEngine;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InscryptionAPI.Triggers
 {
@@ -17,11 +18,8 @@ namespace InscryptionAPI.Triggers
         public static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
         {
             yield return result;
-            if (card.TriggerHandler.RespondsToCustomTrigger(CustomTrigger.OnAddedToHand, Array.Empty<object>()))
-            {
-                yield return card.TriggerHandler.OnCustomTrigger(CustomTrigger.OnAddedToHand, Array.Empty<object>());
-            }
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnOtherCardAddedToHand, false, card);
+            yield return card.TriggerHandler.Trigger<IOnAddedToHand>(x => x.RespondsToAddedToHand(), x => x.OnAddedToHand());
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnOtherCardAddedToHand>(false, x => x.RespondsToOtherCardAddedToHand(card), x => x.OnOtherCardAddedToHand(card));
             yield break;
         }
 
@@ -29,7 +27,7 @@ namespace InscryptionAPI.Triggers
         [HarmonyPostfix]
         public static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnBellRung, false, playerIsAttacker);
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnBellRung>(false, x => x.RespondsToBellRung(playerIsAttacker), x => x.OnBellRung(playerIsAttacker));
             yield return result;
             yield break;
         }
@@ -38,9 +36,9 @@ namespace InscryptionAPI.Triggers
         [HarmonyPostfix]
         public static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPreSlotAttackSequence, false, slot);
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnPreSlotAttackSequence>(false, x => x.RespondsToPreSlotAttackSequence(slot), x => x.OnPreSlotAttackSequence(slot));
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostSlotAttackSequence, false, slot);
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostSlotAttackSequence>(false, x => x.RespondsToPostSlotAttackSequence(slot), x => x.OnPostSlotAttackSequence(slot));
             yield break;
         }
 
@@ -49,17 +47,37 @@ namespace InscryptionAPI.Triggers
         public static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
         {
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostSingularSlotAttackSlot, false, attackingSlot, opposingSlot);
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x => 
+                x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
             yield break;
         }
 
         [HarmonyPatch(typeof(LifeManager), nameof(LifeManager.ShowDamageSequence))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, bool toPlayer)
+        public static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, int numWeights, bool toPlayer)
         {
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPreScalesChanged, false, damage, toPlayer);
-            yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnPostScalesChanged, false, damage, toPlayer);
+            int initialDamage = damage;
+            bool initialToPlayer = toPlayer;
+            CustomGlobalTriggerHandler.CollectDataAll<IOnPreScalesChangedRef, int>(false, x => x.RespondsToPreScalesChangedRef(damage, numWeights, toPlayer), x => 
+            {
+                damage = x.CollectPreScalesChangedRef(damage, ref numWeights, ref toPlayer);
+                if(damage < 0)
+                {
+                    damage = -damage;
+                    toPlayer = !toPlayer;
+                }
+                return damage;
+            });
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnPreScalesChanged>(false, x => x.RespondsToPreScalesChanged(damage, toPlayer), x => x.OnPreScalesChanged(damage, toPlayer));
+            if(damage != 0)
+            {
+                result?.GetType()?.GetField("damage")?.SetValue(result, damage);
+                result?.GetType()?.GetField("toPlayer")?.SetValue(result, toPlayer);
+                result?.GetType()?.GetField("numWeights")?.SetValue(result, numWeights);
+                yield return result;
+            }
+            yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostScalesChanged>(false, x => x.RespondsToPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x => 
+                x.OnPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer));
             yield break;
         }
 
@@ -68,7 +86,7 @@ namespace InscryptionAPI.Triggers
         public static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
         {
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnUpkeepInHand, playerUpkeep);
+            yield return CustomGlobalTriggerHandler.TriggerInHand<IOnUpkeepInHand>(x => x.RespondsToUpkeepInHand(playerUpkeep), x => x.OnUpkeepInHand(playerUpkeep));
             yield break;
         }
 
@@ -79,7 +97,7 @@ namespace InscryptionAPI.Triggers
             yield return result;
             if (resolveTriggers)
             {
-                yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardResolveInHand, card);
+                yield return CustomGlobalTriggerHandler.TriggerInHand<IOnOtherCardResolveInHand>(x => x.RespondsToOtherCardResolveInHand(card), x => x.OnOtherCardResolveInHand(card));
             }
             yield break;
         }
@@ -89,7 +107,7 @@ namespace InscryptionAPI.Triggers
         public static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result)
         {
             yield return result;
-            yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnTurnEndInHand, true);
+            yield return CustomGlobalTriggerHandler.TriggerInHand<IOnTurnEndInHand>(x => x.RespondsToTurnEndInHand(true), x => x.OnTurnEndInHand(true));
             yield break;
         }
 
@@ -101,7 +119,7 @@ namespace InscryptionAPI.Triggers
             yield return result;
             if (!turnSkipped)
             {
-                yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnTurnEndInHand, false);
+                yield return CustomGlobalTriggerHandler.TriggerInHand<IOnTurnEndInHand>(x => x.RespondsToTurnEndInHand(false), x => x.OnTurnEndInHand(false));
             }
             yield break;
         }
@@ -114,11 +132,16 @@ namespace InscryptionAPI.Triggers
             yield return result;
             if (resolveTriggers && slot2 != card.Slot)
             {
-                yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardAssignedToSlotInHand, card);
+                yield return CustomGlobalTriggerHandler.TriggerAll<IOnCardAssignedToSlotContext>(false, x => x.RespondsToCardAssignedToSlotContext(card, slot2, card.Slot), x => 
+                    x.OnCardAssignedToSlotContext(card, slot2, card.Slot));
+            }
+            if (resolveTriggers && slot2 != card.Slot)
+            {
+                yield return CustomGlobalTriggerHandler.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(x => x.RespondsToOtherCardAssignedToSlotInHand(card), x => x.OnOtherCardAssignedToSlotInHand(card));
             }
             if (resolveTriggers && slot2 != card.Slot && slot2 != null)
             {
-                yield return CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger.OnCardAssignedToSlotNoResolve, card);
+                yield return CustomGlobalTriggerHandler.TriggerAll<IOnCardAssignedToSlotNoResolve>(false, x => x.RespondsToCardAssignedToSlotNoResolve(card), x => x.OnCardAssignedToSlotNoResolve(card));
             }
             yield break;
         }
@@ -141,11 +164,13 @@ namespace InscryptionAPI.Triggers
                     catch { }
                     if (t == Trigger.OtherCardPreDeath)
                     {
-                        yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardPreDeathInHand, slotBeforeDeath, !wasSacrifice, killer);
+                        yield return CustomGlobalTriggerHandler.TriggerInHand<IOnOtherCardPreDeathInHand>(x => x.RespondsToOtherCardPreDeathInHand(slotBeforeDeath, !wasSacrifice, killer), x => 
+                            x.OnOtherCardPreDeathInHand(slotBeforeDeath, !wasSacrifice, killer));
                     }
                     else if (t == Trigger.OtherCardDie)
                     {
-                        yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardDieInHand, __instance, slotBeforeDeath, !wasSacrifice, killer);
+                        yield return CustomGlobalTriggerHandler.TriggerInHand<IOnOtherCardDieInHand>(x => x.RespondsToOtherCardDieInHand(__instance, slotBeforeDeath, !wasSacrifice, killer), x => 
+                            x.OnOtherCardDieInHand(__instance, slotBeforeDeath, !wasSacrifice, killer));
                     }
                 }
             }
@@ -154,17 +179,107 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, PlayableCard attacker)
+        public static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
         {
-            bool hasshield = __instance.HasShield();
-            yield return result;
-            if (!hasshield && attacker != null)
+            CustomGlobalTriggerHandler.CollectDataAll<ICardTakenDamageModifier, int>(true, x => x.RespondsToCardTakenDamageModifier(__instance, damage), x => damage = x.CollectCardTakenDamageModifier(__instance, damage));
+            if(damage != 0)
             {
-                yield return CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger.OnOtherCardDealtDamageInHand, attacker, attacker.Attack, __instance);
+                result?.GetType()?.GetField("damage")?.SetValue(result, damage);
+                bool hasshield = __instance.HasShield();
+                yield return result;
+                if (!hasshield && attacker != null)
+                {
+                    yield return CustomGlobalTriggerHandler.TriggerInHand<IOnOtherCardDealtDamageInHand>(x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
+                        x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
+                }
             }
             yield break;
         }
 
-        static Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
+        [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
+        [HarmonyPostfix]
+        public static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
+        {
+            bool itemCanBeUsed = true;
+            string consumableName = __instance?.Consumable?.Data?.name;
+            if (!string.IsNullOrEmpty(consumableName))
+            {
+                CustomGlobalTriggerHandler.CollectDataAll<IItemCanBeUsed, bool>(false, x => x.RespondsToItemCanBeUsed(consumableName, itemCanBeUsed), x => itemCanBeUsed = x.CollectItemCanBeUsed(consumableName, itemCanBeUsed));
+            }
+            if (itemCanBeUsed)
+            {
+                bool successInActivation = false;
+                Type activationtype = __instance.Consumable.ActivateSequence().GetType();
+                if (!string.IsNullOrEmpty(consumableName))
+                {
+                    yield return CustomGlobalTriggerHandler.TriggerAll<IOnPreItemUsed>(false, x => x.RespondsToPreItemUsed(consumableName, __instance is HammerItemSlot), x =>
+                        x.OnPreItemUsed(consumableName, __instance is HammerItemSlot));
+                }
+                while (result.MoveNext())
+                {
+                    yield return result.Current;
+                    if (result.Current.GetType() == activationtype)
+                    {
+                        if (!string.IsNullOrEmpty(consumableName) && __instance.Consumable != null)
+                        {
+                            successInActivation = !__instance.Consumable.ActivationCancelled;
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(consumableName))
+                {
+                    yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostItemUsed>(false, x => x.RespondsToPostItemUsed(consumableName, successInActivation, __instance is HammerItemSlot), x =>
+                        x.OnPostItemUsed(consumableName, successInActivation, __instance is HammerItemSlot));
+                }
+            }
+            else
+            {
+                __instance?.Consumable?.PlayShakeAnimation();
+                if (!string.IsNullOrEmpty(consumableName))
+                {
+                    yield return CustomGlobalTriggerHandler.TriggerAll<IOnItemPreventedFromUse>(false, x => x.RespondsToItemPreventedFromUse(consumableName), x => x.OnItemPreventedFromUse(consumableName));
+                }
+            }
+            yield break;
+        }
+
+        [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
+        [HarmonyPostfix]
+        public static void PassiveAttackBuffs(PlayableCard __instance, ref int __result)
+        {
+            int dummyResult = __result;
+            CustomGlobalTriggerHandler.CollectDataAll<IOnCardPassiveAttackBuffs, int>(true, x => x.RespondsToCardPassiveAttackBuffs(__instance, dummyResult), x => dummyResult = 
+                x.CollectCardPassiveAttackBuffs(__instance, dummyResult));
+            __result = dummyResult;
+        }
+
+        [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
+        [HarmonyPostfix]
+        public static void PassiveHealthBuffs(PlayableCard __instance, ref int __result)
+        {
+            int dummyResult = __result;
+            CustomGlobalTriggerHandler.CollectDataAll<IOnCardPassiveHealthBuffs, int>(true, x => x.RespondsToCardPassiveHealthBuffs(__instance, dummyResult), x => dummyResult =
+                x.CollectCardPassiveHealthBuffs(__instance, dummyResult));
+            __result = dummyResult;
+        }
+
+        [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
+        [HarmonyPostfix]
+        public static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result)
+        {
+            bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && !__instance.HasTriStrike();
+            List<IAttackModification> all = CustomGlobalTriggerHandler.GetAll<IAttackModification>(true);
+            all.Sort((x, x2) => -x.BringsOriginalSlotBack(__instance).CompareTo(x2.BringsOriginalSlotBack(__instance)));
+            foreach(IAttackModification trigg in all)
+            {
+                if(trigg.RespondsToModifyAttackSlots(__instance, __result, didRemoveOriginalSlot))
+                {
+                    __result = trigg.CollectModifyAttackSlots(__instance, __result, ref didRemoveOriginalSlot);
+                }
+            }
+            __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
+        }
+
+        static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
     }
 }

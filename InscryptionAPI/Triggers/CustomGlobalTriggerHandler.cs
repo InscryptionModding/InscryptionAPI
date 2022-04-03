@@ -10,62 +10,205 @@ namespace InscryptionAPI.Triggers
 {
     public static class CustomGlobalTriggerHandler
     {
-        public static void RegisterCustomTrigger(string pluginGuid, string triggerName, params Type[] args)
+        #region Triggering
+        public static IEnumerator TriggerAll<T>(bool triggerFacedown, Func<T, bool> respond, Func<T, IEnumerator> trigger)
         {
-            CustomTriggerArgHolder.customArgsForTriggers.Add((pluginGuid, triggerName), args.ToList());
+            List<T> all = GetAll<T>(triggerFacedown);
+            foreach(T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
+                }
+            }
+            if (!triggerFacedown)
+            {
+            }
+            yield break;
         }
 
-        private static bool IsValidTriggerMethod(MethodInfo method, TriggerIdentification identification, bool isResponder)
+        public static IEnumerator Trigger<T>(this CardTriggerHandler handler, Func<T, bool> respond, Func<T, IEnumerator> trigger)
         {
-            if (method != null)
+            List<T> all = handler.GetReceivers<T>();
+            foreach (T trigg in all)
             {
-                if ((isResponder && method.ReturnType == typeof(bool)) || (!isResponder && (method.ReturnType == typeof(IEnumerator) || method.ReturnType.IsSubclassOf(typeof(IEnumerator)) ||
-                    method.ReturnType.GetInterfaces().Contains(typeof(IEnumerator)))))
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
                 {
-                    bool ctca = method.GetCustomAttributes(true).ToList().Exists(x => x != null && x is CustomTriggerCoroutineAttribute && (x as CustomTriggerCoroutineAttribute).identification.Matches(identification));
-                    bool ctra = method.GetCustomAttributes(true).ToList().Exists(x => x != null && x is CustomTriggerResponderAttribute && (x as CustomTriggerResponderAttribute).identification.Matches(identification));
-                    if ((isResponder && ctra) || (!isResponder && ctca))
+                    yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
+                }
+            }
+            yield break;
+        }
+
+        public static IEnumerator TriggerOnBoard<T>(bool triggerFacedown, Func<T, bool> respond, Func<T, IEnumerator> trigger)
+        {
+            List<T> all = GetOnBoard<T>(triggerFacedown);
+            foreach (T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
+                }
+            }
+            yield break;
+        }
+
+        public static IEnumerator TriggerInHand<T>(Func<T, bool> respond, Func<T, IEnumerator> trigger)
+        {
+            List<T> all = GetInHand<T>();
+            foreach (T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
+                }
+            }
+            yield break;
+        }
+        #endregion
+
+        #region DataCollection
+        public static List<(TriggerReceiver, T2)> CollectDataAll<T, T2>(bool collectFromFacedown, Func<T, bool> respond, Func<T, T2> collect)
+        {
+            List<(TriggerReceiver, T2)> ret = new();
+            List<T> all = GetAll<T>(collectFromFacedown);
+            foreach (T trigg in all)
+            {
+                if(respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    ret.Add((trigg as TriggerReceiver, collect(trigg)));
+                }
+            }
+            return ret;
+        }
+
+        public static List<(TriggerReceiver, T2)> CollectDataOnBoard<T, T2>(bool collectFromFacedown, Func<T, bool> respond, Func<T, T2> collect)
+        {
+            List<(TriggerReceiver, T2)> ret = new();
+            List<T> all = GetOnBoard<T>(collectFromFacedown);
+            foreach (T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    ret.Add((trigg as TriggerReceiver, collect(trigg)));
+                }
+            }
+            return ret;
+        }
+
+        public static List<(TriggerReceiver, T2)> CollectDataInHand<T, T2>(Func<T, bool> respond, Func<T, T2> collect)
+        {
+            List<(TriggerReceiver, T2)> ret = new();
+            List<T> all = GetInHand<T>();
+            foreach (T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    ret.Add((trigg as TriggerReceiver, collect(trigg)));
+                }
+            }
+            return ret;
+        }
+
+        public static List<(TriggerReceiver, T2)> CollectData<T, T2>(this CardTriggerHandler self, Func<T, bool> respond, Func<T, T2> collect)
+        {
+            List<(TriggerReceiver, T2)> ret = new();
+            List<T> all = self.GetReceivers<T>();
+            foreach (T trigg in all)
+            {
+                if (respond(trigg) && (trigg as TriggerReceiver) != null)
+                {
+                    ret.Add((trigg as TriggerReceiver, collect(trigg)));
+                }
+            }
+            return ret;
+        }
+        #endregion
+
+        #region Getting
+        public static List<T> GetAll<T>(bool getFacedown)
+        {
+            List<T> ret = new(GetOnBoard<T>(getFacedown));
+            ret.AddRange(GetInHand<T>());
+            return ret;
+        }
+
+        public static List<T> GetOnBoard<T>(bool getFacedown)
+        {
+            List<T> ret = new();
+            if(BoardManager.Instance != null && BoardManager.Instance.CardsOnBoard != null)
+            {
+                ret.AddRange(GetNonCardReceivers<T>(true));
+                List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+                List<T> toAddLater = new();
+                foreach (PlayableCard playableCard in list)
+                {
+                    if (playableCard != null && (!playableCard.FaceDown || getFacedown) && playableCard.TriggerHandler != null)
                     {
-                        if (CustomTriggerArgHolder.TryGetArgs(identification, out var types))
-                        {
-                            ParameterInfo[] parameters = method.GetParameters();
-                            if (parameters.Length == types.Count && types.SequenceEqual(parameters.Where(x => x != null).Select(x => x.ParameterType)))
-                            {
-                                return true;
-                            }
-                        }
+                        ret.AddRange(playableCard.TriggerHandler.GetReceivers<T>());
+                    }
+                    else if(playableCard != null && playableCard.FaceDown && !getFacedown && playableCard.TriggerHandler != null)
+                    {
+                        toAddLater.AddRange(playableCard.TriggerHandler.GetReceivers<T>(true));
+                    }
+                }
+                ret.AddRange(GetNonCardReceivers<T>(false));
+                ret.AddRange(toAddLater); // to mimic how facedown triggers marked with IActivateWhenFacedown activate later than anything else. for consistency
+            }
+            return ret;
+        }
+
+        public static List<T> GetInHand<T>()
+        {
+            List<T> ret = new();
+            if(PlayerHand.Instance != null && PlayerHand.Instance.CardsInHand != null)
+            {
+                List<PlayableCard> list = new(PlayerHand.Instance.CardsInHand);
+                foreach (PlayableCard playableCard in list)
+                {
+                    if (playableCard != null && playableCard.TriggerHandler != null)
+                    {
+                        ret.AddRange(playableCard.TriggerHandler.GetReceivers<T>());
                     }
                 }
             }
-            return false;
+            return ret;
         }
 
-        private static bool ReceiverRespondsToCustomTrigger(TriggerIdentification identification, TriggerReceiver receiver, params object[] otherArgs)
+        public static List<T> GetReceivers<T>(this CardTriggerHandler self, bool getFacedownReceivers = false)
         {
-            otherArgs ??= Array.Empty<object>();
-            if (receiver != null)
+            List<T> ret = new();
+            if(self != null)
             {
-                try
+                foreach (TriggerReceiver receiver in self.GetAllReceivers())
                 {
-                    MethodInfo respondTo = receiver.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).ToList().Find(x => IsValidTriggerMethod(x, identification, true));
-                    return respondTo != null && otherArgs != null && respondTo.GetParameters().Length == otherArgs.Length && (bool)respondTo.Invoke(receiver, otherArgs);
+                    if (receiver != null && receiver is T && (!getFacedownReceivers || (receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldCustomTriggerFaceDown<T>())))
+                    {
+                        ret.Add((T)(object)receiver);
+                    }
                 }
-                catch { }
             }
-            return false;
+            return ret;
         }
 
-        public static bool ReceiverRespondsToCustomTrigger(CustomTrigger trigger, TriggerReceiver receiver, params object[] otherArgs)
+        public static List<T> GetNonCardReceivers<T>(bool beforeCards)
         {
-            return ReceiverRespondsToCustomTrigger(new TriggerIdentification(trigger), receiver, otherArgs);
+            List<T> ret = new();
+            if(GlobalTriggerHandler.Instance != null && GlobalTriggerHandler.Instance.nonCardReceivers != null)
+            {
+                foreach (NonCardTriggerReceiver nonCardTriggerReceiver in GlobalTriggerHandler.Instance.nonCardReceivers)
+                {
+                    if (nonCardTriggerReceiver != null && nonCardTriggerReceiver.TriggerBeforeCards == beforeCards && nonCardTriggerReceiver is T)
+                    {
+                        ret.Add((T)(object)nonCardTriggerReceiver);
+                    }
+                }
+            }
+            return ret;
         }
+        #endregion
 
-        public static bool ReceiverRespondsToCustomTrigger(string pluginGuid, string triggerName, TriggerReceiver receiver, params object[] otherArgs)
-        {
-            return ReceiverRespondsToCustomTrigger(new TriggerIdentification(pluginGuid, triggerName), receiver, otherArgs);
-        }
-
-        public static IEnumerator CustomTriggerSequence(TriggerReceiver receiver, IEnumerator triggerCoroutine)
+        public static IEnumerator CustomTriggerSequence(this TriggerReceiver receiver, IEnumerator triggerCoroutine)
         {
             GlobalTriggerHandler self = GlobalTriggerHandler.Instance;
             if (self != null)
@@ -79,223 +222,6 @@ namespace InscryptionAPI.Triggers
                 if (receiver.DestroyAfterActivation)
                 {
                     receiver.Destroy();
-                }
-            }
-            yield break;
-        }
-
-        private static IEnumerator CustomTriggerSequence(TriggerIdentification identification, TriggerReceiver receiver, params object[] otherArgs)
-        {
-            otherArgs ??= Array.Empty<object>();
-            if (GlobalTriggerHandler.Instance != null)
-            {
-                if (receiver != null)
-                {
-                    MethodInfo respondTo = receiver.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).ToList().Find(x => IsValidTriggerMethod(x, identification, false));
-                    if (respondTo != null && otherArgs != null && respondTo.GetParameters().Length == otherArgs.Length)
-                    {
-                        bool success = true;
-                        IEnumerator rat = default;
-                        try
-                        {
-                            rat = (IEnumerator)respondTo.Invoke(receiver, otherArgs);
-                            success = true;
-                        }
-                        catch { }
-                        if (success)
-                        {
-                            yield return CustomTriggerSequence(receiver, rat);
-                        }
-                    }
-                }
-            }
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerSequence(CustomTrigger trigger, TriggerReceiver receiver, params object[] otherArgs)
-        {
-            yield return CustomTriggerSequence(new TriggerIdentification(trigger), receiver, otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerSequence(string pluginGuid, string triggerName, TriggerReceiver receiver, params object[] otherArgs)
-        {
-            yield return CustomTriggerSequence(new TriggerIdentification(pluginGuid, triggerName), receiver, otherArgs);
-            yield break;
-        }
-
-        private static bool RespondsToCustomTrigger(this CardTriggerHandler cth, TriggerIdentification identification, params object[] otherArgs)
-        {
-            foreach (TriggerReceiver receiver in cth.GetAllReceivers())
-            {
-                if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private static IEnumerator OnCustomTrigger(this CardTriggerHandler cth, TriggerIdentification identification, params object[] otherArgs)
-        {
-            foreach (TriggerReceiver receiver in cth.GetAllReceivers())
-            {
-                if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs))
-                {
-                    yield return CustomTriggerSequence(identification, receiver, otherArgs);
-                }
-            }
-            yield break;
-        }
-
-        public static bool RespondsToCustomTrigger(this CardTriggerHandler cth, CustomTrigger trigger, params object[] otherArgs)
-        {
-            return RespondsToCustomTrigger(cth, new TriggerIdentification(trigger), otherArgs);
-        }
-
-        public static IEnumerator OnCustomTrigger(this CardTriggerHandler cth, CustomTrigger trigger, params object[] otherArgs)
-        {
-            yield return OnCustomTrigger(cth, new TriggerIdentification(trigger), otherArgs);
-            yield break;
-        }
-
-        public static bool RespondsToCustomTrigger(this CardTriggerHandler cth, string pluginGuid, string triggerName, params object[] otherArgs)
-        {
-            return RespondsToCustomTrigger(cth, new TriggerIdentification(pluginGuid, triggerName), otherArgs);
-        }
-
-        public static IEnumerator OnCustomTrigger(this CardTriggerHandler cth, string pluginGuid, string triggerName, params object[] otherArgs)
-        {
-            yield return OnCustomTrigger(cth, new TriggerIdentification(pluginGuid, triggerName), otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerAll(CustomTrigger trigger, bool triggerFacedown, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsOnBoard(trigger, triggerFacedown, otherArgs);
-            yield return CustomTriggerCardsInHand(trigger, otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerAll(string pluginGuid, string triggerName, bool triggerFacedown, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsOnBoard(pluginGuid, triggerName, triggerFacedown, otherArgs);
-            yield return CustomTriggerCardsInHand(pluginGuid, triggerName, otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerCardsOnBoard(CustomTrigger trigger, bool triggerFacedown, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsOnBoard(new TriggerIdentification(trigger), triggerFacedown, otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerCardsOnBoard(string pluginGuid, string triggerName, bool triggerFacedown, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsOnBoard(new TriggerIdentification(pluginGuid, triggerName), triggerFacedown, otherArgs);
-            yield break;
-        }
-
-        private static IEnumerator CustomTriggerCardsOnBoard(TriggerIdentification identification, bool triggerFacedown, params object[] otherArgs)
-        {
-            if (Singleton<BoardManager>.Instance != null && Singleton<BoardManager>.Instance.CardsOnBoard != null)
-            {
-                yield return CustomTriggerNonCardReceivers(true, identification, otherArgs);
-                List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
-                foreach (PlayableCard playableCard in list)
-                {
-                    if (playableCard != null && (!playableCard.FaceDown || triggerFacedown) && playableCard.TriggerHandler.RespondsToCustomTrigger(identification, otherArgs))
-                    {
-                        yield return playableCard.TriggerHandler.OnCustomTrigger(identification, otherArgs);
-                    }
-                }
-                yield return CustomTriggerNonCardReceivers(false, identification, otherArgs);
-                if (!triggerFacedown)
-                {
-                    bool ActivatesWhenFaceDown(IActivateWhenFacedown awf)
-                    {
-                        if (identification.trigger > CustomTrigger.None)
-                        {
-                            return awf.ShouldCustomTriggerFaceDown(identification.trigger, otherArgs);
-                        }
-                        if(!string.IsNullOrEmpty(identification.triggerName) && !string.IsNullOrEmpty(identification.pluginGuid))
-                        {
-                            return awf.ShouldCustomTriggerFaceDown(identification.pluginGuid, identification.triggerName, otherArgs);
-                        }
-                        return false;
-                    }
-                    bool RespondsToTrigger(CardTriggerHandler r, TriggerIdentification identification, params object[] otherArgs)
-                    {
-                        foreach (TriggerReceiver receiver in r.GetAllReceivers())
-                        {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) || 
-                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
-                            {
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-                    IEnumerator OnTrigger(CardTriggerHandler r, TriggerIdentification identification, params object[] otherArgs)
-                    {
-                        foreach (TriggerReceiver receiver in r.GetAllReceivers())
-                        {
-                            if (ReceiverRespondsToCustomTrigger(identification, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && ActivatesWhenFaceDown(receiver as IActivateWhenFacedown)) ||
-                                (receiver is ExtendedAbilityBehaviour && (receiver as ExtendedAbilityBehaviour).TriggerWhenFacedown)))
-                            {
-                                yield return CustomTriggerSequence(identification, receiver, otherArgs);
-                            }
-                        }
-                        yield break;
-                    }
-                    List<PlayableCard> list2 = new(Singleton<BoardManager>.Instance.CardsOnBoard);
-                    foreach (PlayableCard playableCard in list2)
-                    {
-                        if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, identification, otherArgs))
-                        {
-                            yield return OnTrigger(playableCard.TriggerHandler, identification, otherArgs);
-                        }
-                    }
-                }
-            }
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerCardsInHand(CustomTrigger trigger, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsInHand(new TriggerIdentification(trigger), otherArgs);
-            yield break;
-        }
-
-        public static IEnumerator CustomTriggerCardsInHand(string pluginGuid, string triggerName, params object[] otherArgs)
-        {
-            yield return CustomTriggerCardsInHand(new TriggerIdentification(pluginGuid, triggerName), otherArgs);
-            yield break;
-        }
-
-        private static IEnumerator CustomTriggerCardsInHand(TriggerIdentification identification, params object[] otherArgs)
-        {
-            if (Singleton<PlayerHand>.Instance != null && Singleton<PlayerHand>.Instance.CardsInHand != null)
-            {
-                List<PlayableCard> list = new(Singleton<PlayerHand>.Instance.CardsInHand);
-                foreach (PlayableCard playableCard in list)
-                {
-                    if (playableCard != null && playableCard.TriggerHandler.RespondsToCustomTrigger(identification, otherArgs))
-                    {
-                        yield return playableCard.TriggerHandler.OnCustomTrigger(identification, otherArgs);
-                    }
-                }
-            }
-            yield break;
-        }
-
-        private static IEnumerator CustomTriggerNonCardReceivers(bool beforeCards, TriggerIdentification identification, params object[] otherArgs)
-        {
-            foreach (NonCardTriggerReceiver nonCardTriggerReceiver in GlobalTriggerHandler.Instance?.nonCardReceivers ?? new())
-            {
-                if (nonCardTriggerReceiver != null && nonCardTriggerReceiver.TriggerBeforeCards == beforeCards && ReceiverRespondsToCustomTrigger(identification, nonCardTriggerReceiver, otherArgs))
-                {
-                    yield return CustomTriggerSequence(identification, nonCardTriggerReceiver, otherArgs);
                 }
             }
             yield break;
