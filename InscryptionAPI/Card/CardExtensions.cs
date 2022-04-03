@@ -1057,42 +1057,6 @@ public static class CardExtensions
 
     #region Helpers
 
-    /// <summary>
-    /// Create a card in a specific slot based off the name. A much more robust way that's the same as `yield return BoardManager.Instance.CreateCardInSlot()`.
-    /// </summary>
-    /// <param name="cardName">The name of the card.</param>
-    /// <param name="slotToSpawnIn">The slot to spawn in.</param>
-    /// <param name="transitionLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
-    /// <param name="resolveTriggers">Whether or not to activate other card triggers.</param>
-    /// <returns>The enumeration of the card being placed in the slot.</returns>
-    public static IEnumerator CreateCardInSlot(
-        this string cardName,
-        CardSlot slotToSpawnIn,
-        float transitionLength = 0.1f,
-        bool resolveTriggers = true
-    )
-    {
-        yield return CreateCardInSlot(cardName.GetCardInfo(), slotToSpawnIn, transitionLength, resolveTriggers);
-    }
-    
-    /// <summary>
-    /// Create a card in a specific slot from the CardInfo object. A much more robust way that's the same as `yield return BoardManager.Instance.CreateCardInSlot()`.
-    /// </summary>
-    /// <param name="cardInfo">The CardInfo object.</param>
-    /// <param name="slotToSpawnIn">The slot to spawn in.</param>
-    /// <param name="transitionLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
-    /// <param name="resolveTriggers">Whether or not to activate other card triggers.</param>
-    /// <returns>The enumeration of the card being placed in the slot.</returns>
-    public static IEnumerator CreateCardInSlot(
-        this CardInfo cardInfo,
-        CardSlot slotToSpawnIn,
-        float transitionLength = 0.1f,
-        bool resolveTriggers = true
-    )
-    {
-        yield return BoardManager.Instance.CreateCardInSlot(cardInfo, slotToSpawnIn, transitionLength, resolveTriggers);
-    }
-
     
     /// <summary>
     /// Get the CardInfo object based off the card name. A much more robust way that's the same as `CardLoader.GetCardByName()`.
