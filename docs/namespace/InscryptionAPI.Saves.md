@@ -2,4 +2,4 @@
 uid: InscryptionAPI.Saves
 summary: *content
 ---
-This is an example to override namespace.
+This namespace is dedicated to management of save file (Especially modded save file).
