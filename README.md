@@ -1,0 +1,5 @@
+# InscryptionAPI Wiki
+
+I don't know what to put here yet so have some lorem ipsum
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum massa ipsum, ut egestas lectus mattis at. Aliquam erat volutpat. Etiam elementum ullamcorper nisl id convallis. Praesent luctus ex vitae dolor venenatis ornare in eu nulla. Vestibulum vel quam turpis. Donec auctor efficitur maximus. Sed pretium felis nisi, in hendrerit mauris tempor nec. Morbi lobortis vel orci in consequat. Aliquam a nulla risus. Maecenas et est et nisl pretium tempus eu eu diam. Vivamus vitae nibh quis augue lobortis hendrerit. Duis ultrices massa lobortis sem ultrices porta sed id ipsum. Nullam molestie sem in felis aliquam, non iaculis lectus dapibus. Ut suscipit neque magna, non sagittis sapien vehicula vitae. Donec facilisis odio vitae urna mattis, id ornare eros euismod. 
