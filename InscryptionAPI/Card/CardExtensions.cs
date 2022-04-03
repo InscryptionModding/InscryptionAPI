@@ -1,4 +1,3 @@
-using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
@@ -1056,27 +1055,7 @@ public static class CardExtensions
     #endregion
 
     #region Helpers
-
     
-    /// <summary>
-    /// Get the CardInfo object based off the card name. A much more robust way that's the same as `CardLoader.GetCardByName()`.
-    /// </summary>
-    /// <param name="cardName">The name of the card.</param>
-    /// <returns>The CardInfo object.</returns>
-    public static CardInfo GetCardInfo(this string cardName)
-    {
-        return CardManager.AllCardsCopy.Find(info => info.name == cardName);
-    }
-
-    /// <summary>
-    /// Create a basic EncounterBlueprintData.CardBlueprint based off the card name.
-    /// </summary>
-    /// <param name="cardName">The name of the card.</param>
-    /// <returns>The same card info so a chain can continue</returns>
-    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this string cardName)
-    {
-        return CreateBlueprint(cardName.GetCardInfo());
-    }
 
     /// <summary>
     /// Create a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
@@ -1099,29 +1078,7 @@ public static class CardExtensions
     /// <returns>true if the ability does not exist.</returns>
     public static bool DoesNotHaveAbility(this CardInfo cardInfo, Ability ability)
     {
-        return cardInfo.DoesNotHaveOneOfTheseAbilities(ability);
-    }
-    
-    /// <summary>
-    /// Determines if the CardInfo object does not have one of the abilities passed in.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="abilities">The abilities to check for.</param>
-    /// <returns>true if any one of the abilities does not exist.</returns>
-    public static bool DoesNotHaveOneOfTheseAbilities(this CardInfo cardInfo, params Ability[] abilities)
-    {
-        return abilities.Any(ability => !cardInfo.HasAbility(ability));
-    }
-    
-    /// <summary>
-    /// Determines if the CardInfo object does not have any the abilities passed in.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="abilities">The abilities to check for.</param>
-    /// <returns>true if all of the abilities do not exist.</returns>
-    public static bool DoesNotHaveAnyOfTheseAbilities(this CardInfo cardInfo, params Ability[] abilities)
-    {
-        return Array.TrueForAll(abilities, cardInfo.DoesNotHaveAbility);
+        return !cardInfo.HasAbility(ability);
     }
 
 
@@ -1134,28 +1091,6 @@ public static class CardExtensions
     public static bool DoesNotHaveSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
     {
         return !cardInfo.SpecialAbilities.Contains(ability);
-    }
-    
-    /// <summary>
-    /// Determines if the CardInfo object does not have one of the specialTriggeredAbilities passed in.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="abilities">The specialTriggeredAbilities to check for.</param>
-    /// <returns>true if any of the specialTriggeredAbilities do not exist.</returns>
-    public static bool DoesNotHaveOneOfTheseSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] abilities)
-    {
-        return abilities.Any(cardInfo.DoesNotHaveSpecialAbility);
-    }
-    
-    /// <summary>
-    /// Determines if the CardInfo object does not have any the specialTriggeredAbilities passed in.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="abilities">The specialTriggeredAbilities to check for.</param>
-    /// <returns>true if all of the specialTriggeredAbilities do not exist.</returns>
-    public static bool DoesNotHaveAnyOfTheseSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] abilities)
-    {
-        return Array.TrueForAll(abilities, cardInfo.DoesNotHaveSpecialAbility);
     }
 
     /// <summary>
@@ -1188,17 +1123,6 @@ public static class CardExtensions
     {
         return playableCard.Info.DoesNotHaveAbility(ability);
     }
-    
-    /// <summary>
-    /// Determines if the PlayableCard object does not have one of the abilities passed in.
-    /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
-    /// <param name="abilities">The abilities to check for.</param>
-    /// <returns>true if any one of the abilities does not exist.</returns>
-    public static bool DoesNotHaveOneOfTheseAbilities(this PlayableCard playableCard, params Ability[] abilities)
-    {
-        return playableCard.Info.DoesNotHaveOneOfTheseAbilities(abilities);
-    }
 
     /// <summary>
     /// Check the PlayableCard not having a specific SpecialTriggeredAbility.
@@ -1211,28 +1135,6 @@ public static class CardExtensions
     public static bool DoesNotHaveSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
         return playableCard.Info.DoesNotHaveSpecialAbility(ability);
-    }
-    
-    /// <summary>
-    /// Determines if the PlayableCard object does not have one of the abilities passed in.
-    /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
-    /// <param name="abilities">The specialTriggeredAbilities to check for.</param>
-    /// <returns>true if any one of the abilities does not exist.</returns>
-    public static bool DoesNotHaveOneOfTheseSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] abilities)
-    {
-        return playableCard.Info.DoesNotHaveOneOfTheseSpecialAbilities(abilities);
-    }
-    
-    /// <summary>
-    /// Determines if the PlayableCard object does not have one of the abilities passed in.
-    /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
-    /// <param name="abilities">The specialTriggeredAbilities to check for.</param>
-    /// <returns>true if all of the abilities does not exist.</returns>
-    public static bool DoesNotHaveAnyOfTheseSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] abilities)
-    {
-        return playableCard.Info.DoesNotHaveAnyOfTheseSpecialAbilities(abilities);
     }
 
     /// <summary>
