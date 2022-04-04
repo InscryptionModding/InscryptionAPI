@@ -43,7 +43,7 @@ jobs:
               run: rm -rf $(ls -A gh-pages | grep -v .git)
 
             - name: Move documentation
-              run: cp -R docs/_site/** gh-pages/*
+              run: cp -R docs/_site/* gh-pages/
             
             - name: Push update
               run: |
