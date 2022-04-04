@@ -22,7 +22,7 @@ public static class CardSlotExtensions
     /// <param name="cardSlot">The slot to check.</param>
     /// <param name="cardName">The name of the card check.</param>
     /// <returns>true if the slot has a card and that card has the specific cardName.</returns>
-    public static bool CardInSlotIs(this CardSlot cardSlot, string cardName)
+    public static bool HasCard(this CardSlot cardSlot, string cardName)
     {
         return cardSlot.Card && cardSlot.Card.Info.name == cardName;
     }
