@@ -150,18 +150,11 @@ namespace InscryptionAPI.Triggers
             yield return result;
             if (resolveTriggers && slot2 != card.Slot)
             {
+                bool fromHand = slot2 == null;
                 foreach (var i in CustomTriggerFinder.FindTriggersInHand<IOtherCardAssignedToSlotInHand>())
                 {
-                    if (i.RespondsToOtherCardAssignedToSlotInHand(card))
-                        yield return i.OnOtherCardAssignedToSlotInHand(card);
-                }
-            }
-            if (resolveTriggers && slot2 != card.Slot && slot2 != null)
-            {
-                foreach (var i in CustomTriggerFinder.FindGlobalTriggers<ICardAssignedToSlotNoResolve>())
-                {
-                    if (i.RespondsToCardAssignedToSlotNoResolve(card))
-                        yield return i.OnCardAssignedToSlotNoResolve(card);
+                    if (i.RespondsToOtherCardAssignedToSlotInHand(card, fromHand))
+                        yield return i.OnOtherCardAssignedToSlotInHand(card, fromHand);
                 }
             }
         }
