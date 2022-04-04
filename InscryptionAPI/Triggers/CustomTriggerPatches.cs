@@ -19,13 +19,13 @@ internal static class CustomTriggerPatches
     public static void UpdateAllCards()
     {
         var cardsInHandAndBoard = BoardManager.Instance.CardsOnBoard.Concat(PlayerHand.Instance.CardsInHand).ToList();
-        foreach (PlayableCard c in cardsInHandAndBoard)
+        foreach (PlayableCard playableCard in cardsInHandAndBoard)
         {
-            OriginalManagedUpdate(c);
-            if (c.OnBoard && c.GetComponent<VariableStatBehaviour>())
+            if (playableCard.OnBoard && playableCard.GetComponent<VariableStatBehaviour>())
             {
-                c.GetComponent<VariableStatBehaviour>().UpdateStats();
+                playableCard.GetComponent<VariableStatBehaviour>().UpdateStats();
             }
+            OriginalManagedUpdate(playableCard);
         }
     }
         
@@ -36,9 +36,8 @@ internal static class CustomTriggerPatches
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]
-    public static IEnumerator UpdateCardStatsForCardsOnBoard(IEnumerator enumerator, Trigger trigger, bool triggerFacedown, params object[] otherArgs)
+    public static void UpdateCardStatsForCardsOnBoard(Trigger trigger, bool triggerFacedown, params object[] otherArgs)
     {
-        yield return enumerator;
         UpdateAllCards();
     }
         
