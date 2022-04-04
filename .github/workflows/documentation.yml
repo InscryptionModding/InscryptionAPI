@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - main
+            - patch-7
 
 jobs:
     build:
