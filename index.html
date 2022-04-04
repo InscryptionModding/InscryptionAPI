@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta name="searchOption" content="noindex">
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api">API</h1>
+
+<h2 id="inscryption-api">Inscryption API</h2>
+<p>This plugin is a BepInEx plugin made for Inscryption as an API. This is the de-facto standard API for Inscryption modders.</p>
+<p>It can currently create and modify:</p>
+<ul>
+<li>Cards</li>
+<li>Abilities</li>
+<li>Appearance behaviours</li>
+<li>Stat icons</li>
+<li>Challenges</li>
+<li>Starter Decks</li>
+<li>Regions</li>
+<li>Encounters</li>
+<li>And much more!</li>
+</ul>
+<p>Additionally, a number of quality-of-life patches from the community have been included in this release.</p>
+<h2 id="installation-automated">Installation (automated)</h2>
+<p>This is the recommended way to install the API on the game.</p>
+<ul>
+<li>Download and install <a href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager">Thunderstore Mod Manager</a> or <a href="https://timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a></li>
+<li>Click Install with Mod Manager button on top of the <a href="https://inscryption.thunderstore.io/package/API_dev/API/">page</a></li>
+<li>Run the game via the mod manager</li>
+</ul>
+<h2 id="installation-manual">Installation (manual)</h2>
+<p>To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found <a href="https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex">here</a>. Inscryption needs the 86x (32 bit) mono version.</p>
+<p>To install Inscryption API you simply need to copy <strong>InscryptionAPI.dll</strong> from <a href="https://github.com/ScottWilson0903/InscryptionAPI/releases">releases</a> to <strong>Inscryption/BepInEx/plugins</strong>.</p>
+<p>An example Mod utilising this plugin can be found <a href="https://github.com/ScottWilson0903/InscryptionExampleMod">here</a>.</p>
+<h2 id="modded-save-file">Modded Save File</h2>
+<p>With this API installed, an additional &#39;modded save file&#39; will be created by the game. This file will be found in the &#39;BepInEx&#39; subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.</p>
+<h1 id="community-patches">Community Patches</h1>
+<p>The following patches from the Inscryption modding community have been included in this package to improve the overall quality-of-life for modding and compatibility.</p>
+<h2 id="sigilartpatch-by-madh95mods">SigilArtPatch by MADH95Mods</h2>
+<p>Fixes the art for abilities that previously only appeared in Act 2 so they appear correctly in Act 1 and Act 3</p>
+<h2 id="conduit-attack-fix-by-madh95mods">Conduit Attack Fix by MADH95Mods</h2>
+<p>Fixes the behavior of conduits so they function correctly in Act 1.</p>
+<h2 id="activated-sigil-fix-by-madh95mods">Activated Sigil Fix by MADH95Mods</h2>
+<p>Allows activated sigils to work correctly in Act 1 and Act 3 by clicking the sigil icon on the card.</p>
+<h2 id="anthonyslatchfix-by-anthonypython">AnthonysLatchFix by AnthonyPython</h2>
+<p>Fixes latch sigils to work in Act 1</p>
+<h2 id="sigil-art-fix-by-memez4life">Sigil Art Fix by Memez4Life</h2>
+<p>Allows up to 8 sigils to be displayed on Act 1 cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).</p>
+<h2 id="visually-stackable-sigils-by-divisionbyz0rro">Visually Stackable Sigils by DivisionByZ0rro</h2>
+<p>Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.</p>
+<h2 id="cost-render-fix-by-void-slime">Cost Render Fix by Void Slime</h2>
+<p>Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards</p>
+<h2 id="cost-choice-node-fix-by-void-slime">Cost choice node fix by Void Slime</h2>
+<p>If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in ACt 1.</p>
+<h1 id="using-the-api">Using the API</h1>
+<p>Inscryption API 2.0 tries to have you use the original game&#39;s objects as much as possible. For example, there are no more &#39;NewCard&#39; and &#39;CustomCard&#39; objects; instead, you are responsible to create CardInfo objects yourself and add them.
+The API does provide a number of helper methods to make this process simpler for you.</p>
+<p>For more information, please check out the wiki: <a href="https://github.com/ScottWilson0903/InscryptionAPI/wiki">https://github.com/ScottWilson0903/InscryptionAPI/wiki</a></p>
+<h2 id="contribution">Contribution</h2>
+<h3 id="how-can-you-help">How can you help?</h3>
+<p>Use the plugin and report bugs you find! Ping us on the <a href="https://discord.gg/QrJEF5Denm">Inscryption Modding Discord</a> server in the api channel with what you find.</p>
+<h3 id="but-really-i-want-to-help-develop-this-mod">But really, I want to help develop this mod</h3>
+<p>Great! I&#39;m more than happy to accept help. Either make a pull request or come join us over in the <a href="https://discord.gg/QrJEF5Denm">Inscryption Modding Discord</a>.</p>
+<h3 id="can-i-donate">Can I donate?</h3>
+<p>Donations are totally not needed, this is a passion project before anything else.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Original version by cyantist</p>
+<p>Contributors and builders of API 2.0</p>
+<ul>
+<li>divisionbyz0rro</li>
+<li>Eri</li>
+<li>IngoH</li>
+<li>JamesVeug</li>
+<li>julian-perge</li>
+<li>Windows10CE</li>
+<li>Void Slime</li>
+</ul>
+<!-- Placeholder, Will replace with something else later --></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
