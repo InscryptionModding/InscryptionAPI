@@ -3,3 +3,5 @@ apiRules:
       uidRegex: ^APIPlugin
   - exclude:
       uidRegex: ^InscryptionCommunityPatch
+  - exclude:
+      uidRegex: ^APIPatcher

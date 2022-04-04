@@ -5,7 +5,6 @@ using InscryptionAPI.Guid;
 
 namespace InscryptionAPI.Card;
 
-[HarmonyPatch]
 public static class CardAppearanceBehaviourManager
 {
     public class FullCardAppearanceBehaviour

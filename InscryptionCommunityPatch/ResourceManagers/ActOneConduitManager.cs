@@ -6,7 +6,7 @@ using MonoMod.Cil;
 namespace InscryptionCommunityPatch.ResourceManagers;
 
 [HarmonyPatch]
-public static class ActOneConduitManager
+internal static class ActOneConduitManager
 {
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
     [HarmonyILManipulator]

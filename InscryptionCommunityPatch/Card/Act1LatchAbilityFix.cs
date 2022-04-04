@@ -23,7 +23,7 @@ public class Act1LatchAbilityFix
 
     [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ChooseTarget))]
     [HarmonyPostfix]
-    public static IEnumerator ReEnableSlots(IEnumerator result, BoardManager __instance, List<CardSlot> allTargets)
+    private static IEnumerator ReEnableSlots(IEnumerator result, BoardManager __instance, List<CardSlot> allTargets)
     {
         List<CardSlot> validSlots = __instance.currentValidSlots;
         __instance.currentValidSlots = null;
@@ -45,7 +45,7 @@ public class Act1LatchAbilityFix
 
     [HarmonyPatch(typeof(CardSlot), nameof(CardSlot.OnCursorEnter))]
     [HarmonyPostfix]
-    public static void NoSacrificeMarker(CardSlot __instance)
+    private static void NoSacrificeMarker(CardSlot __instance)
     {
         if (__instance.Card && BoardManager.Instance
             && (BoardManager.Instance.GetComponent<SelectTargetHolder>()?.isSelectingTarget).GetValueOrDefault())
@@ -62,10 +62,10 @@ public class Act1LatchAbilityFix
     private static void AimWeaponAnim(GameObject tweenObj, Vector3 target) => Tween.LookAt(tweenObj.transform, target, Vector3.up, 0.075f, 0.0f, Tween.EaseInOut);
 
     [HarmonyPrefix, HarmonyPatch(typeof(Latch), nameof(Latch.OnPreDeathAnimation))]
-    public static void PrefixPassStateOnPreDeath(out Latch __state, ref Latch __instance) => __state = __instance;
+    private static void PrefixPassStateOnPreDeath(out Latch __state, ref Latch __instance) => __state = __instance;
 
     [HarmonyPostfix, HarmonyPatch(typeof(Latch), nameof(Latch.OnPreDeathAnimation))]
-    public static IEnumerator Postfix(IEnumerator enumerator, Latch __state, bool wasSacrifice)
+    private static IEnumerator Postfix(IEnumerator enumerator, Latch __state, bool wasSacrifice)
     {
         if (SceneLoader.ActiveSceneName != "Part1_Cabin" || !SceneLoader.ActiveSceneName.StartsWith("finale"))
         {

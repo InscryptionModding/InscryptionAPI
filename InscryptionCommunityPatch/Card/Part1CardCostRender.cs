@@ -102,7 +102,7 @@ public static class Part1CardCostRender
 
 	[HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.GetCostSpriteForCard))]
 	[HarmonyPrefix]
-	public static bool Part1CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
+    private static bool Part1CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
 	{	
 		//Make sure we are in Leshy's Cabin
 		if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1")) 

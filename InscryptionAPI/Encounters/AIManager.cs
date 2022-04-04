@@ -5,7 +5,6 @@ using InscryptionAPI.Guid;
 
 namespace InscryptionAPI.Encounters;
 
-[HarmonyPatch]
 public static class AIManager
 {
     public class FullAI

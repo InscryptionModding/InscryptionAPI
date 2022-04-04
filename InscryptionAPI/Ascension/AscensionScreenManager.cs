@@ -103,7 +103,7 @@ public static class AscensionScreenManager
     // This patches the confirmation button of the challenge screen to ensure it starts the queue
     [HarmonyPatch(typeof(AscensionChallengeScreen), "OnContinuePressed")]
     [HarmonyPrefix]
-    public static bool TransitionToSideDeckScreen(ref AscensionChallengeScreen __instance)
+    private static bool TransitionToSideDeckScreen(ref AscensionChallengeScreen __instance)
     {
         if (screens == null || screens.Count == 0)
             return true; // No custom screens; execute the original method
@@ -114,7 +114,7 @@ public static class AscensionScreenManager
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "ScreenSwitchSequence")]
     [HarmonyPostfix]
-    public static IEnumerator SwitchToScreen(IEnumerator sequenceEvent, AscensionMenuScreens.Screen screen)
+    private static IEnumerator SwitchToScreen(IEnumerator sequenceEvent, AscensionMenuScreens.Screen screen)
     {
         while (sequenceEvent.MoveNext())
             yield return sequenceEvent.Current;
@@ -129,14 +129,14 @@ public static class AscensionScreenManager
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
     [HarmonyPostfix]
-    public static void InitializeScreensOnStart()
+    private static void InitializeScreensOnStart()
     {
         InitializeAllScreens();
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "DeactivateAllScreens")]
     [HarmonyPostfix]
-    public static void DeactivateAllCustomScreens()
+    private static void DeactivateAllCustomScreens()
     {
         if (screens != null && screens.Count > 0)
             foreach (AscensionRunSetupScreenBase screenbase in screens.Values)
@@ -146,7 +146,7 @@ public static class AscensionScreenManager
 
     [HarmonyPatch(typeof(AscensionChallengeScreen), "OnContinueCursorEnter")]
     [HarmonyPrefix]
-    public static bool HoverTextFirstCustomScreen(ref AscensionChallengeScreen __instance)
+    private static bool HoverTextFirstCustomScreen(ref AscensionChallengeScreen __instance)
     {
         string line = Localization.Translate(challengeScreenHoverText);
         __instance.challengeDisplayer.DisplayText("", line, "", false);

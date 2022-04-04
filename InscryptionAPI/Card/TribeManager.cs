@@ -13,7 +13,7 @@ namespace InscryptionAPI.Card
 
         [HarmonyPatch(typeof(CardDisplayer3D), "UpdateTribeIcon")]
         [HarmonyPostfix]
-        public static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
+        private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
         {
             foreach (TribeInfo tribe in tribes)
             {
@@ -45,7 +45,7 @@ namespace InscryptionAPI.Card
 
         [HarmonyPatch(typeof(CardSingleChoicesSequencer), "GetCardbackTexture")]
         [HarmonyPostfix]
-        public static void GetCardbackTexture(ref Texture __result, CardChoice choice)
+        private static void GetCardbackTexture(ref Texture __result, CardChoice choice)
         {
             if (choice.tribe != Tribe.None)
             {
@@ -55,7 +55,7 @@ namespace InscryptionAPI.Card
 
         [HarmonyPatch(typeof(Part1CardChoiceGenerator), "GenerateTribeChoices")]
         [HarmonyPrefix]
-        public static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
+        private static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
         {
             List<Tribe> list = new()
             {
