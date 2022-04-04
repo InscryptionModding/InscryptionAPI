@@ -15,7 +15,6 @@ using UnityEngine.SceneManagement;
 namespace InscryptionCommunityPatch;
 
 [BepInPlugin(ModGUID, ModName, ModVer)]
-[HarmonyPatch]
 public class PatchPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "community.inscryption.patch";
@@ -44,7 +43,7 @@ public class PatchPlugin : BaseUnityPlugin
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
 
-    public void OnEnable()
+    private void OnEnable()
     {
         Logger = base.Logger;
 
@@ -57,12 +56,12 @@ public class PatchPlugin : BaseUnityPlugin
         CommunityArtPatches.PatchCommunityArt();
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         HarmonyInstance.UnpatchSelf();
     }
 
-    public void Awake()
+    private void Awake()
     {
         Instance = this;
         configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
@@ -78,7 +77,7 @@ public class PatchPlugin : BaseUnityPlugin
         configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");        
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         EnergyDrone.TryEnableEnergy(scene.name);
     }

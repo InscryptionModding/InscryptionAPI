@@ -76,7 +76,7 @@ namespace InscryptionAPI.Boons
 
         [HarmonyPatch(typeof(BoonsHandler), "ActivatePreCombatBoons")]
         [HarmonyPostfix]
-        public static IEnumerator ActivatePreCombatBoons(IEnumerator result, BoonsHandler __instance)
+        private static IEnumerator ActivatePreCombatBoons(IEnumerator result, BoonsHandler __instance)
         {
             BoonBehaviour.DestroyAllInstances();
             if (__instance.BoonsEnabled && RunState.Run != null && RunState.Run.playerDeck != null && RunState.Run.playerDeck.Boons != null && NewBoons != null)
@@ -119,7 +119,7 @@ namespace InscryptionAPI.Boons
 
         [HarmonyPatch(typeof(TurnManager), "CleanupPhase")]
         [HarmonyPostfix]
-        public static IEnumerator Postfix(IEnumerator result)
+        private static IEnumerator Postfix(IEnumerator result)
         {
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
@@ -142,7 +142,7 @@ namespace InscryptionAPI.Boons
 
         [HarmonyPatch(typeof(DeckInfo), "AddBoon")]
         [HarmonyPostfix]
-        public static void AddBoon(BoonData.Type boonType)
+        private static void AddBoon(BoonData.Type boonType)
         {
             if (TurnManager.Instance != null && !TurnManager.Instance.GameEnded && !TurnManager.Instance.GameEnding && !TurnManager.Instance.IsSetupPhase && TurnManager.Instance.Opponent != null)
             {
@@ -165,14 +165,14 @@ namespace InscryptionAPI.Boons
 
         [HarmonyPatch(typeof(DeckInfo), "ClearBoons")]
         [HarmonyPostfix]
-        public static void ClearBoons()
+        private static void ClearBoons()
         {
             BoonBehaviour.DestroyAllInstances();
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "get_Boons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.Boons), MethodType.Getter)]
         [HarmonyPostfix]
-        public static void get_Boons(ref List<BoonData> __result, DeckInfo __instance)
+        private static void get_Boons(ref List<BoonData> __result, DeckInfo __instance)
         {
             if (__instance.boons != null && __instance.boonIds != null && __instance.boons.Count != __instance.boonIds.Count)
             {
@@ -183,14 +183,14 @@ namespace InscryptionAPI.Boons
 
         [HarmonyPatch(typeof(DeckInfo), "LoadBoons")]
         [HarmonyPostfix]
-        public static void LoadBoons(DeckInfo __instance)
+        private static void LoadBoons(DeckInfo __instance)
         {
             __instance.boons.RemoveAll((x) => x == null);
         }
 
         [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData")]
         [HarmonyPostfix]
-        public static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
+        private static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
         {
             if (NewBoons.Count > 0)
             {

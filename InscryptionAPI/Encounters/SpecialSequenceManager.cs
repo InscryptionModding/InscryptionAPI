@@ -5,7 +5,6 @@ using InscryptionAPI.Guid;
 
 namespace InscryptionAPI.Encounters;
 
-[HarmonyPatch]
 public static class SpecialSequenceManager
 {
     public class FullSpecialSequencer

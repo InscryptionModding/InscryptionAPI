@@ -32,7 +32,7 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(SaveManager), "SaveToFile")]
     [HarmonyPostfix]
-    public static void SaveDataToFile()
+    private static void SaveDataToFile()
     {
         var saveData = (SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
@@ -41,7 +41,7 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]
     [HarmonyPostfix]
-    public static void ReadDataFromFile()
+    private static void ReadDataFromFile()
     {
         if (isSystemDirty)
         {
@@ -78,14 +78,14 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(AscensionSaveData), "NewRun")]
     [HarmonyPostfix]
-    public static void ResetRunStateOnNewAscensionRun()
+    private static void ResetRunStateOnNewAscensionRun()
     {
         RunState = new();
     }
 
     [HarmonyPatch(typeof(SaveFile), "NewPart1Run")]
     [HarmonyPrefix]
-    public static void ResetRunStateOnPart1Run()
+    private static void ResetRunStateOnPart1Run()
     {
         RunState = new();
     }

@@ -18,14 +18,14 @@ public static class ActivatedAbilityIconFix
 
     [HarmonyPatch(typeof(ActivatedAbilityBehaviour), nameof(ActivatedAbilityBehaviour.RespondsToResolveOnBoard))]
     [HarmonyPostfix]
-    public static void RespondsToResolveOnBoard_PostFix(ref bool __result)
+    private static void RespondsToResolveOnBoard_PostFix(ref bool __result)
     {
         __result &= SaveManager.saveFile.IsPart2;
     }
 
     [HarmonyPatch(typeof(DiskCardGame.Card), nameof(DiskCardGame.Card.UpdateInteractableIcons))]
     [HarmonyPostfix]
-    public static void UpdateInteractableIcons_PostFix(ref DiskCardGame.Card __instance)
+    private static void UpdateInteractableIcons_PostFix(ref DiskCardGame.Card __instance)
     {
         if (SaveManager.saveFile.IsPart2 || __instance is not PlayableCard card || !card.HasActivatedAbility())
             return;
