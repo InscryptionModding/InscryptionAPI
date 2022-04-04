@@ -1,0 +1,55 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - patch-7
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 6.0.x
+            
+            - name: Restore Project
+              run: dotnet restore
+
+            - name: Add Mono Repository
+              run: sudo apt install gnupg ca-certificates; sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF; echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list; sudo apt update
+
+            - name: Install Mono
+              run: sudo apt install mono-runtime mono-devel msbuild
+
+            - name: Install DocFX
+              run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip
+
+            - name: Generate documentation
+              run: mono docfx/docfx.exe docs/docfx.json
+
+            - name: Setup gh-pages folder
+              uses: actions/checkout@v3
+              with:
+                ref: gh-pages
+                path: gh-pages
+            
+            - name: Clean gh-pages folder
+              run: rm -rf $(ls -A gh-pages | grep -v .git)
+
+            - name: Move documentation
+              run: cp -R docs/_site/** gh-pages/*
+            
+            - name: Push update
+              run: |
+                cd gh-pages
+                git config user.name github-actions
+                git config user.email github-actions@github.com
+                git add .
+                git commit -m "Automatically Generated"
+                git push
