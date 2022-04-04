@@ -3393,6 +3393,19 @@ references:
   commentId: T:InscryptionAPI.Card.IActivateWhenFacedown
   fullName: InscryptionAPI.Card.IActivateWhenFacedown
   nameWithType: IActivateWhenFacedown
+- uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
+  name: ShouldTriggerCustomWhenFaceDown(Type)
+  href: api/InscryptionAPI.Card.IActivateWhenFacedown.html#InscryptionAPI_Card_IActivateWhenFacedown_ShouldTriggerCustomWhenFaceDown_System_Type_
+  commentId: M:InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
+  fullName: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
+  nameWithType: IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(Type)
+- uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown*
+  name: ShouldTriggerCustomWhenFaceDown
+  href: api/InscryptionAPI.Card.IActivateWhenFacedown.html#InscryptionAPI_Card_IActivateWhenFacedown_ShouldTriggerCustomWhenFaceDown_
+  commentId: Overload:InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown
+  nameWithType: IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown
 - uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerWhenFaceDown(DiskCardGame.Trigger,System.Object[])
   name: ShouldTriggerWhenFaceDown(Trigger, Object[])
   href: api/InscryptionAPI.Card.IActivateWhenFacedown.html#InscryptionAPI_Card_IActivateWhenFacedown_ShouldTriggerWhenFaceDown_DiskCardGame_Trigger_System_Object___

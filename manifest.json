@@ -316,7 +316,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.html",
-          "hash": "Q7g8MFAa8mkiv8fvCy4e+lZmFl3xmaMA7D2lw7ir0Mc="
+          "hash": "wNialqVcsqE5yIKM5yKb9nPG+MdUibO8FbSlvSdfrqA="
         }
       },
       "is_incremental": false,
@@ -844,7 +844,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.CustomTriggerFinder.html",
-          "hash": "b5WRkWvyNYLHFJSby7Gls8MfYBjt2PNJDonPFNu+wMc="
+          "hash": "w6Zpz4I0TF45wRtOCgVbgxvgElvL9gKuLnHKE0LkHnc="
         }
       },
       "is_incremental": false,
@@ -1036,7 +1036,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "2bZgXekXaJwzK7qbJ5aHh6P1sWxh7Ifeu/1XMgTujpI="
+          "hash": "tWRm62UvsaRXVgj5nUR+PzNtYAUEh7ZYs9IKF+F8vAw="
         }
       },
       "is_incremental": false,
