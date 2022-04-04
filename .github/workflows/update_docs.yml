@@ -1,6 +1,10 @@
 name: Update documentation
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - patch-7
 
 jobs:
     build:
