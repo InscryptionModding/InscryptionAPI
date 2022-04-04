@@ -98,7 +98,7 @@ public static class AbilityManager
             clonedInfo.rulebookName = Info.rulebookName;
             clonedInfo.triggerText = Info.triggerText;
 
-            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture);
+            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
         }
     }
 
