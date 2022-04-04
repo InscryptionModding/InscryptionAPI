@@ -1121,7 +1121,7 @@ public static class CardExtensions
     /// <returns>true if the ability does not exist</returns>
     public static bool DoesNotHaveAbility(this PlayableCard playableCard, Ability ability)
     {
-        return playableCard.Info.DoesNotHaveAbility(ability);
+        return !playableCard.HasAbility(ability);
     }
 
     /// <summary>
@@ -1134,7 +1134,7 @@ public static class CardExtensions
     /// <returns>true if the specialTriggeredAbility does not exist</returns>
     public static bool DoesNotHaveSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
-        return playableCard.Info.DoesNotHaveSpecialAbility(ability);
+        return !playableCard.HasSpecialAbility(ability);
     }
 
     /// <summary>
