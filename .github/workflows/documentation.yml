@@ -39,14 +39,10 @@ jobs:
                 path: gh-pages
             
             - name: Setup gh-pages folder
-              run: rm -rf $(ls -A gh-pages | grep -v .git); cp -R docs/_site/* gh-pages/
-            
-            - name: Debug
-              run: ls -A gh-pages
+              run: cd gh-pages; rm -rf $(ls -A | grep -v .git); cp -R ../docs/_site/* gh-pages/
             
             - name: Push update
               run: |
-                cd gh-pages
                 git config user.name github-actions
                 git config user.email github-actions@github.com
                 git commit -a -m "Automatically Generated"
