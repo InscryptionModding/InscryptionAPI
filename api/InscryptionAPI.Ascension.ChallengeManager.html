@@ -304,80 +304,6 @@ public static class ChallengeManager</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_GenBaseGameChallengs.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L21">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Ascension_ChallengeManager_GenBaseGameChallengs_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs*"></a>
-  <h4 id="InscryptionAPI_Ascension_ChallengeManager_GenBaseGameChallengs" data-uid="InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs">GenBaseGameChallengs()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;AscensionChallengeInfo&gt; GenBaseGameChallengs()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AscensionChallengeInfo</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_IsCustomChallengeUnlocked_System_Boolean__System_Int32_DiskCardGame_AscensionChallenge_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean%40%2CSystem.Int32%2CDiskCardGame.AscensionChallenge)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L139">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Ascension_ChallengeManager_IsCustomChallengeUnlocked_" data-uid="InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked*"></a>
-  <h4 id="InscryptionAPI_Ascension_ChallengeManager_IsCustomChallengeUnlocked_System_Boolean__System_Int32_DiskCardGame_AscensionChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)">IsCustomChallengeUnlocked(ref Boolean, Int32, AscensionChallenge)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch(typeof(AscensionUnlockSchedule), &quot;ChallengeIsUnlockedForLevel&quot;)]
-[HarmonyPostfix]
-public static void IsCustomChallengeUnlocked(ref bool __result, int level, AscensionChallenge challenge)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">__result</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">level</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.AscensionChallenge</span></td>
-        <td><span class="parametername">challenge</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -423,23 +349,6 @@ public static void IsCustomChallengeUnlocked(ref bool __result, int level, Ascen
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_ResyncWhenTransitioningToGame.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L147">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Ascension_ChallengeManager_ResyncWhenTransitioningToGame_" data-uid="InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame*"></a>
-  <h4 id="InscryptionAPI_Ascension_ChallengeManager_ResyncWhenTransitioningToGame" data-uid="InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame">ResyncWhenTransitioningToGame()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch(typeof(AscensionMenuScreens), &quot;TransitionToGame&quot;)]
-[HarmonyPrefix]
-public static void ResyncWhenTransitioningToGame()</code></pre>
-  </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>

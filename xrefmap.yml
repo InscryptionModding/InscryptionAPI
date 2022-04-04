@@ -1,44 +1,6 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: APIPatcher
-  name: APIPatcher
-  href: api/APIPatcher.html
-  commentId: N:APIPatcher
-  fullName: APIPatcher
-  nameWithType: APIPatcher
-- uid: APIPatcher.InscryptionAPIPatcher
-  name: InscryptionAPIPatcher
-  href: api/APIPatcher.InscryptionAPIPatcher.html
-  commentId: T:APIPatcher.InscryptionAPIPatcher
-  fullName: APIPatcher.InscryptionAPIPatcher
-  nameWithType: InscryptionAPIPatcher
-- uid: APIPatcher.InscryptionAPIPatcher.Patch(Mono.Cecil.AssemblyDefinition)
-  name: Patch(AssemblyDefinition)
-  href: api/APIPatcher.InscryptionAPIPatcher.html#APIPatcher_InscryptionAPIPatcher_Patch_Mono_Cecil_AssemblyDefinition_
-  commentId: M:APIPatcher.InscryptionAPIPatcher.Patch(Mono.Cecil.AssemblyDefinition)
-  fullName: APIPatcher.InscryptionAPIPatcher.Patch(Mono.Cecil.AssemblyDefinition)
-  nameWithType: InscryptionAPIPatcher.Patch(AssemblyDefinition)
-- uid: APIPatcher.InscryptionAPIPatcher.Patch*
-  name: Patch
-  href: api/APIPatcher.InscryptionAPIPatcher.html#APIPatcher_InscryptionAPIPatcher_Patch_
-  commentId: Overload:APIPatcher.InscryptionAPIPatcher.Patch
-  isSpec: "True"
-  fullName: APIPatcher.InscryptionAPIPatcher.Patch
-  nameWithType: InscryptionAPIPatcher.Patch
-- uid: APIPatcher.InscryptionAPIPatcher.TargetDLLs
-  name: TargetDLLs
-  href: api/APIPatcher.InscryptionAPIPatcher.html#APIPatcher_InscryptionAPIPatcher_TargetDLLs
-  commentId: P:APIPatcher.InscryptionAPIPatcher.TargetDLLs
-  fullName: APIPatcher.InscryptionAPIPatcher.TargetDLLs
-  nameWithType: InscryptionAPIPatcher.TargetDLLs
-- uid: APIPatcher.InscryptionAPIPatcher.TargetDLLs*
-  name: TargetDLLs
-  href: api/APIPatcher.InscryptionAPIPatcher.html#APIPatcher_InscryptionAPIPatcher_TargetDLLs_
-  commentId: Overload:APIPatcher.InscryptionAPIPatcher.TargetDLLs
-  isSpec: "True"
-  fullName: APIPatcher.InscryptionAPIPatcher.TargetDLLs
-  nameWithType: InscryptionAPIPatcher.TargetDLLs
 - uid: InscryptionAPI
   name: InscryptionAPI
   href: api/InscryptionAPI.html
@@ -164,41 +126,6 @@ references:
   commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.topRow
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.topRow
   nameWithType: AscensionChallengePaginator.topRow
-- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
-  name: AscensionChallengeScreenPatches
-  href: api/InscryptionAPI.Ascension.AscensionChallengeScreenPatches.html
-  commentId: T:InscryptionAPI.Ascension.AscensionChallengeScreenPatches
-  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
-  nameWithType: AscensionChallengeScreenPatches
-- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
-  name: AddPaginationToChallengeScreen()
-  href: api/InscryptionAPI.Ascension.AscensionChallengeScreenPatches.html#InscryptionAPI_Ascension_AscensionChallengeScreenPatches_AddPaginationToChallengeScreen
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
-  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen()
-  nameWithType: AscensionChallengeScreenPatches.AddPaginationToChallengeScreen()
-- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen*
-  name: AddPaginationToChallengeScreen
-  href: api/InscryptionAPI.Ascension.AscensionChallengeScreenPatches.html#InscryptionAPI_Ascension_AscensionChallengeScreenPatches_AddPaginationToChallengeScreen_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
-  nameWithType: AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
-- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
-  name: ReassignableIconFixes(ref AscensionIconInteractable, AscensionChallengeInfo)
-  href: api/InscryptionAPI.Ascension.AscensionChallengeScreenPatches.html#InscryptionAPI_Ascension_AscensionChallengeScreenPatches_ReassignableIconFixes_DiskCardGame_AscensionIconInteractable__DiskCardGame_AscensionChallengeInfo_
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
-  name.vb: ReassignableIconFixes(ByRef AscensionIconInteractable, AscensionChallengeInfo)
-  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(ref DiskCardGame.AscensionIconInteractable, DiskCardGame.AscensionChallengeInfo)
-  fullName.vb: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(ByRef DiskCardGame.AscensionIconInteractable, DiskCardGame.AscensionChallengeInfo)
-  nameWithType: AscensionChallengeScreenPatches.ReassignableIconFixes(ref AscensionIconInteractable, AscensionChallengeInfo)
-  nameWithType.vb: AscensionChallengeScreenPatches.ReassignableIconFixes(ByRef AscensionIconInteractable, AscensionChallengeInfo)
-- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes*
-  name: ReassignableIconFixes
-  href: api/InscryptionAPI.Ascension.AscensionChallengeScreenPatches.html#InscryptionAPI_Ascension_AscensionChallengeScreenPatches_ReassignableIconFixes_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes
-  nameWithType: AscensionChallengeScreenPatches.ReassignableIconFixes
 - uid: InscryptionAPI.Ascension.AscensionRunSetupScreenBase
   name: AscensionRunSetupScreenBase
   href: api/InscryptionAPI.Ascension.AscensionRunSetupScreenBase.html
@@ -525,35 +452,6 @@ references:
   commentId: T:InscryptionAPI.Ascension.AscensionScreenManager
   fullName: InscryptionAPI.Ascension.AscensionScreenManager
   nameWithType: AscensionScreenManager
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens
-  name: DeactivateAllCustomScreens()
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_DeactivateAllCustomScreens
-  commentId: M:InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens()
-  nameWithType: AscensionScreenManager.DeactivateAllCustomScreens()
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens*
-  name: DeactivateAllCustomScreens
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_DeactivateAllCustomScreens_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.DeactivateAllCustomScreens
-  nameWithType: AscensionScreenManager.DeactivateAllCustomScreens
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen(DiskCardGame.AscensionChallengeScreen@)
-  name: HoverTextFirstCustomScreen(ref AscensionChallengeScreen)
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_HoverTextFirstCustomScreen_DiskCardGame_AscensionChallengeScreen__
-  commentId: M:InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen(DiskCardGame.AscensionChallengeScreen@)
-  name.vb: HoverTextFirstCustomScreen(ByRef AscensionChallengeScreen)
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen(ref DiskCardGame.AscensionChallengeScreen)
-  fullName.vb: InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen(ByRef DiskCardGame.AscensionChallengeScreen)
-  nameWithType: AscensionScreenManager.HoverTextFirstCustomScreen(ref AscensionChallengeScreen)
-  nameWithType.vb: AscensionScreenManager.HoverTextFirstCustomScreen(ByRef AscensionChallengeScreen)
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen*
-  name: HoverTextFirstCustomScreen
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_HoverTextFirstCustomScreen_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.HoverTextFirstCustomScreen
-  nameWithType: AscensionScreenManager.HoverTextFirstCustomScreen
 - uid: InscryptionAPI.Ascension.AscensionScreenManager.InitializeAllScreens
   name: InitializeAllScreens()
   href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_InitializeAllScreens
@@ -567,19 +465,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.AscensionScreenManager.InitializeAllScreens
   nameWithType: AscensionScreenManager.InitializeAllScreens
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart
-  name: InitializeScreensOnStart()
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_InitializeScreensOnStart
-  commentId: M:InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart()
-  nameWithType: AscensionScreenManager.InitializeScreensOnStart()
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart*
-  name: InitializeScreensOnStart
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_InitializeScreensOnStart_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.InitializeScreensOnStart
-  nameWithType: AscensionScreenManager.InitializeScreensOnStart
 - uid: InscryptionAPI.Ascension.AscensionScreenManager.RegisterScreen*
   name: RegisterScreen
   href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_RegisterScreen_
@@ -596,35 +481,6 @@ references:
   fullName.vb: InscryptionAPI.Ascension.AscensionScreenManager.RegisterScreen(Of T)()
   nameWithType: AscensionScreenManager.RegisterScreen<T>()
   nameWithType.vb: AscensionScreenManager.RegisterScreen(Of T)()
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen(System.Collections.IEnumerator,DiskCardGame.AscensionMenuScreens.Screen)
-  name: SwitchToScreen(IEnumerator, AscensionMenuScreens.Screen)
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_SwitchToScreen_System_Collections_IEnumerator_DiskCardGame_AscensionMenuScreens_Screen_
-  commentId: M:InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen(System.Collections.IEnumerator,DiskCardGame.AscensionMenuScreens.Screen)
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen(System.Collections.IEnumerator, DiskCardGame.AscensionMenuScreens.Screen)
-  nameWithType: AscensionScreenManager.SwitchToScreen(IEnumerator, AscensionMenuScreens.Screen)
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen*
-  name: SwitchToScreen
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_SwitchToScreen_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.SwitchToScreen
-  nameWithType: AscensionScreenManager.SwitchToScreen
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen(DiskCardGame.AscensionChallengeScreen@)
-  name: TransitionToSideDeckScreen(ref AscensionChallengeScreen)
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_TransitionToSideDeckScreen_DiskCardGame_AscensionChallengeScreen__
-  commentId: M:InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen(DiskCardGame.AscensionChallengeScreen@)
-  name.vb: TransitionToSideDeckScreen(ByRef AscensionChallengeScreen)
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen(ref DiskCardGame.AscensionChallengeScreen)
-  fullName.vb: InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen(ByRef DiskCardGame.AscensionChallengeScreen)
-  nameWithType: AscensionScreenManager.TransitionToSideDeckScreen(ref AscensionChallengeScreen)
-  nameWithType.vb: AscensionScreenManager.TransitionToSideDeckScreen(ByRef AscensionChallengeScreen)
-- uid: InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen*
-  name: TransitionToSideDeckScreen
-  href: api/InscryptionAPI.Ascension.AscensionScreenManager.html#InscryptionAPI_Ascension_AscensionScreenManager_TransitionToSideDeckScreen_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionScreenManager.TransitionToSideDeckScreen
-  nameWithType: AscensionScreenManager.TransitionToSideDeckScreen
 - uid: InscryptionAPI.Ascension.AscensionScreenSort
   name: AscensionScreenSort
   href: api/InscryptionAPI.Ascension.AscensionScreenSort.html
@@ -723,35 +579,6 @@ references:
   commentId: F:InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
   fullName: InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
   nameWithType: ChallengeManager.BaseGameChallenges
-- uid: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
-  name: GenBaseGameChallengs()
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GenBaseGameChallengs
-  commentId: M:InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
-  fullName: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs()
-  nameWithType: ChallengeManager.GenBaseGameChallengs()
-- uid: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs*
-  name: GenBaseGameChallengs
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GenBaseGameChallengs_
-  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
-  nameWithType: ChallengeManager.GenBaseGameChallengs
-- uid: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
-  name: IsCustomChallengeUnlocked(ref Boolean, Int32, AscensionChallenge)
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_IsCustomChallengeUnlocked_System_Boolean__System_Int32_DiskCardGame_AscensionChallenge_
-  commentId: M:InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
-  name.vb: IsCustomChallengeUnlocked(ByRef Boolean, Int32, AscensionChallenge)
-  fullName: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(ref System.Boolean, System.Int32, DiskCardGame.AscensionChallenge)
-  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(ByRef System.Boolean, System.Int32, DiskCardGame.AscensionChallenge)
-  nameWithType: ChallengeManager.IsCustomChallengeUnlocked(ref Boolean, Int32, AscensionChallenge)
-  nameWithType.vb: ChallengeManager.IsCustomChallengeUnlocked(ByRef Boolean, Int32, AscensionChallenge)
-- uid: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked*
-  name: IsCustomChallengeUnlocked
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_IsCustomChallengeUnlocked_
-  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked
-  nameWithType: ChallengeManager.IsCustomChallengeUnlocked
 - uid: InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
   name: IsStackable(AscensionChallenge)
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_
@@ -771,19 +598,6 @@ references:
   commentId: E:InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   fullName: InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   nameWithType: ChallengeManager.ModifyChallenges
-- uid: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
-  name: ResyncWhenTransitioningToGame()
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_ResyncWhenTransitioningToGame
-  commentId: M:InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
-  fullName: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame()
-  nameWithType: ChallengeManager.ResyncWhenTransitioningToGame()
-- uid: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame*
-  name: ResyncWhenTransitioningToGame
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_ResyncWhenTransitioningToGame_
-  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
-  nameWithType: ChallengeManager.ResyncWhenTransitioningToGame
 - uid: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
   name: SyncChallengeList()
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList
@@ -834,22 +648,6 @@ references:
   commentId: F:InscryptionAPI.Ascension.StarterDeckManager.BaseGameDecks
   fullName: InscryptionAPI.Ascension.StarterDeckManager.BaseGameDecks
   nameWithType: StarterDeckManager.BaseGameDecks
-- uid: InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel(System.Boolean@,System.String,System.Int32)
-  name: CustomStarterLevel(ref Boolean, String, Int32)
-  href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_CustomStarterLevel_System_Boolean__System_String_System_Int32_
-  commentId: M:InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel(System.Boolean@,System.String,System.Int32)
-  name.vb: CustomStarterLevel(ByRef Boolean, String, Int32)
-  fullName: InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel(ref System.Boolean, System.String, System.Int32)
-  fullName.vb: InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel(ByRef System.Boolean, System.String, System.Int32)
-  nameWithType: StarterDeckManager.CustomStarterLevel(ref Boolean, String, Int32)
-  nameWithType.vb: StarterDeckManager.CustomStarterLevel(ByRef Boolean, String, Int32)
-- uid: InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel*
-  name: CustomStarterLevel
-  href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_CustomStarterLevel_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckManager.CustomStarterLevel
-  nameWithType: StarterDeckManager.CustomStarterLevel
 - uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
   name: StarterDeckManager.FullStarterDeck
   href: api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html
@@ -1040,41 +838,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight
   nameWithType: StarterDeckPaginator.StarterDeckPageRight
-- uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches
-  name: StarterDeckSelectscreenPatches
-  href: api/InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.html
-  commentId: T:InscryptionAPI.Ascension.StarterDeckSelectscreenPatches
-  fullName: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches
-  nameWithType: StarterDeckSelectscreenPatches
-- uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen
-  name: AddPaginationToStarterDeckScreen()
-  href: api/InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.html#InscryptionAPI_Ascension_StarterDeckSelectscreenPatches_AddPaginationToStarterDeckScreen
-  commentId: M:InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen
-  fullName: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen()
-  nameWithType: StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen()
-- uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen*
-  name: AddPaginationToStarterDeckScreen
-  href: api/InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.html#InscryptionAPI_Ascension_StarterDeckSelectscreenPatches_AddPaginationToStarterDeckScreen_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen
-  nameWithType: StarterDeckSelectscreenPatches.AddPaginationToStarterDeckScreen
-- uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo(DiskCardGame.AscensionStarterDeckIcon@,DiskCardGame.StarterDeckInfo)
-  name: ForceAssignInfo(ref AscensionStarterDeckIcon, StarterDeckInfo)
-  href: api/InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.html#InscryptionAPI_Ascension_StarterDeckSelectscreenPatches_ForceAssignInfo_DiskCardGame_AscensionStarterDeckIcon__DiskCardGame_StarterDeckInfo_
-  commentId: M:InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo(DiskCardGame.AscensionStarterDeckIcon@,DiskCardGame.StarterDeckInfo)
-  name.vb: ForceAssignInfo(ByRef AscensionStarterDeckIcon, StarterDeckInfo)
-  fullName: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo(ref DiskCardGame.AscensionStarterDeckIcon, DiskCardGame.StarterDeckInfo)
-  fullName.vb: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo(ByRef DiskCardGame.AscensionStarterDeckIcon, DiskCardGame.StarterDeckInfo)
-  nameWithType: StarterDeckSelectscreenPatches.ForceAssignInfo(ref AscensionStarterDeckIcon, StarterDeckInfo)
-  nameWithType.vb: StarterDeckSelectscreenPatches.ForceAssignInfo(ByRef AscensionStarterDeckIcon, StarterDeckInfo)
-- uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo*
-  name: ForceAssignInfo
-  href: api/InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.html#InscryptionAPI_Ascension_StarterDeckSelectscreenPatches_ForceAssignInfo_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches.ForceAssignInfo
-  nameWithType: StarterDeckSelectscreenPatches.ForceAssignInfo
 - uid: InscryptionAPI.Boons
   name: InscryptionAPI.Boons
   href: api/InscryptionAPI.Boons.html
@@ -1885,32 +1648,6 @@ references:
   commentId: T:InscryptionAPI.Boons.BoonManager
   fullName: InscryptionAPI.Boons.BoonManager
   nameWithType: BoonManager
-- uid: InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons(System.Collections.IEnumerator,DiskCardGame.BoonsHandler)
-  name: ActivatePreCombatBoons(IEnumerator, BoonsHandler)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ActivatePreCombatBoons_System_Collections_IEnumerator_DiskCardGame_BoonsHandler_
-  commentId: M:InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons(System.Collections.IEnumerator,DiskCardGame.BoonsHandler)
-  fullName: InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons(System.Collections.IEnumerator, DiskCardGame.BoonsHandler)
-  nameWithType: BoonManager.ActivatePreCombatBoons(IEnumerator, BoonsHandler)
-- uid: InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons*
-  name: ActivatePreCombatBoons
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ActivatePreCombatBoons_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.ActivatePreCombatBoons
-  nameWithType: BoonManager.ActivatePreCombatBoons
-- uid: InscryptionAPI.Boons.BoonManager.AddBoon(DiskCardGame.BoonData.Type)
-  name: AddBoon(BoonData.Type)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AddBoon_DiskCardGame_BoonData_Type_
-  commentId: M:InscryptionAPI.Boons.BoonManager.AddBoon(DiskCardGame.BoonData.Type)
-  fullName: InscryptionAPI.Boons.BoonManager.AddBoon(DiskCardGame.BoonData.Type)
-  nameWithType: BoonManager.AddBoon(BoonData.Type)
-- uid: InscryptionAPI.Boons.BoonManager.AddBoon*
-  name: AddBoon
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AddBoon_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.AddBoon
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.AddBoon
-  nameWithType: BoonManager.AddBoon
 - uid: InscryptionAPI.Boons.BoonManager.AllBoonsCopy
   name: AllBoonsCopy
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AllBoonsCopy
@@ -1930,35 +1667,6 @@ references:
   commentId: F:InscryptionAPI.Boons.BoonManager.BaseGameBoons
   fullName: InscryptionAPI.Boons.BoonManager.BaseGameBoons
   nameWithType: BoonManager.BaseGameBoons
-- uid: InscryptionAPI.Boons.BoonManager.ClearBoons
-  name: ClearBoons()
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ClearBoons
-  commentId: M:InscryptionAPI.Boons.BoonManager.ClearBoons
-  fullName: InscryptionAPI.Boons.BoonManager.ClearBoons()
-  nameWithType: BoonManager.ClearBoons()
-- uid: InscryptionAPI.Boons.BoonManager.ClearBoons*
-  name: ClearBoons
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ClearBoons_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.ClearBoons
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.ClearBoons
-  nameWithType: BoonManager.ClearBoons
-- uid: InscryptionAPI.Boons.BoonManager.ConstructPageData(List{DiskCardGame.RuleBookPageInfo}@,DiskCardGame.RuleBookInfo,DiskCardGame.AbilityMetaCategory)
-  name: ConstructPageData(ref List<RuleBookPageInfo>, RuleBookInfo, AbilityMetaCategory)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ConstructPageData_List_DiskCardGame_RuleBookPageInfo___DiskCardGame_RuleBookInfo_DiskCardGame_AbilityMetaCategory_
-  commentId: M:InscryptionAPI.Boons.BoonManager.ConstructPageData(List{DiskCardGame.RuleBookPageInfo}@,DiskCardGame.RuleBookInfo,DiskCardGame.AbilityMetaCategory)
-  name.vb: ConstructPageData(ByRef List(Of RuleBookPageInfo), RuleBookInfo, AbilityMetaCategory)
-  fullName: InscryptionAPI.Boons.BoonManager.ConstructPageData(ref List<DiskCardGame.RuleBookPageInfo>, DiskCardGame.RuleBookInfo, DiskCardGame.AbilityMetaCategory)
-  fullName.vb: InscryptionAPI.Boons.BoonManager.ConstructPageData(ByRef List(Of DiskCardGame.RuleBookPageInfo), DiskCardGame.RuleBookInfo, DiskCardGame.AbilityMetaCategory)
-  nameWithType: BoonManager.ConstructPageData(ref List<RuleBookPageInfo>, RuleBookInfo, AbilityMetaCategory)
-  nameWithType.vb: BoonManager.ConstructPageData(ByRef List(Of RuleBookPageInfo), RuleBookInfo, AbilityMetaCategory)
-- uid: InscryptionAPI.Boons.BoonManager.ConstructPageData*
-  name: ConstructPageData
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_ConstructPageData_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.ConstructPageData
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.ConstructPageData
-  nameWithType: BoonManager.ConstructPageData
 - uid: InscryptionAPI.Boons.BoonManager.FullBoon
   name: BoonManager.FullBoon
   href: api/InscryptionAPI.Boons.BoonManager.FullBoon.html
@@ -1989,35 +1697,6 @@ references:
   commentId: F:InscryptionAPI.Boons.BoonManager.FullBoon.stacks
   fullName: InscryptionAPI.Boons.BoonManager.FullBoon.stacks
   nameWithType: BoonManager.FullBoon.stacks
-- uid: InscryptionAPI.Boons.BoonManager.get_Boons(List{DiskCardGame.BoonData}@,DiskCardGame.DeckInfo)
-  name: get_Boons(ref List<BoonData>, DeckInfo)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_get_Boons_List_DiskCardGame_BoonData___DiskCardGame_DeckInfo_
-  commentId: M:InscryptionAPI.Boons.BoonManager.get_Boons(List{DiskCardGame.BoonData}@,DiskCardGame.DeckInfo)
-  name.vb: get_Boons(ByRef List(Of BoonData), DeckInfo)
-  fullName: InscryptionAPI.Boons.BoonManager.get_Boons(ref List<DiskCardGame.BoonData>, DiskCardGame.DeckInfo)
-  fullName.vb: InscryptionAPI.Boons.BoonManager.get_Boons(ByRef List(Of DiskCardGame.BoonData), DiskCardGame.DeckInfo)
-  nameWithType: BoonManager.get_Boons(ref List<BoonData>, DeckInfo)
-  nameWithType.vb: BoonManager.get_Boons(ByRef List(Of BoonData), DeckInfo)
-- uid: InscryptionAPI.Boons.BoonManager.get_Boons*
-  name: get_Boons
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_get_Boons_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.get_Boons
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.get_Boons
-  nameWithType: BoonManager.get_Boons
-- uid: InscryptionAPI.Boons.BoonManager.LoadBoons(DiskCardGame.DeckInfo)
-  name: LoadBoons(DeckInfo)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_LoadBoons_DiskCardGame_DeckInfo_
-  commentId: M:InscryptionAPI.Boons.BoonManager.LoadBoons(DiskCardGame.DeckInfo)
-  fullName: InscryptionAPI.Boons.BoonManager.LoadBoons(DiskCardGame.DeckInfo)
-  nameWithType: BoonManager.LoadBoons(DeckInfo)
-- uid: InscryptionAPI.Boons.BoonManager.LoadBoons*
-  name: LoadBoons
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_LoadBoons_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.LoadBoons
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.LoadBoons
-  nameWithType: BoonManager.LoadBoons
 - uid: InscryptionAPI.Boons.BoonManager.New(System.String,System.String,Type,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
   name: New(String, String, Type, String, String, String, Boolean, Boolean, Boolean)
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_New_System_String_System_String_Type_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Boolean_
@@ -2061,19 +1740,6 @@ references:
   commentId: F:InscryptionAPI.Boons.BoonManager.NewBoons
   fullName: InscryptionAPI.Boons.BoonManager.NewBoons
   nameWithType: BoonManager.NewBoons
-- uid: InscryptionAPI.Boons.BoonManager.Postfix(System.Collections.IEnumerator)
-  name: Postfix(IEnumerator)
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_Postfix_System_Collections_IEnumerator_
-  commentId: M:InscryptionAPI.Boons.BoonManager.Postfix(System.Collections.IEnumerator)
-  fullName: InscryptionAPI.Boons.BoonManager.Postfix(System.Collections.IEnumerator)
-  nameWithType: BoonManager.Postfix(IEnumerator)
-- uid: InscryptionAPI.Boons.BoonManager.Postfix*
-  name: Postfix
-  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_Postfix_
-  commentId: Overload:InscryptionAPI.Boons.BoonManager.Postfix
-  isSpec: "True"
-  fullName: InscryptionAPI.Boons.BoonManager.Postfix
-  nameWithType: BoonManager.Postfix
 - uid: InscryptionAPI.Boons.BoonManager.SyncCardList
   name: SyncCardList()
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_SyncCardList
@@ -2358,22 +2024,6 @@ references:
   commentId: F:InscryptionAPI.Card.AbilityManager.BaseGameAbilities
   fullName: InscryptionAPI.Card.AbilityManager.BaseGameAbilities
   nameWithType: AbilityManager.BaseGameAbilities
-- uid: InscryptionAPI.Card.AbilityManager.FixRulebook(DiskCardGame.AbilityMetaCategory,DiskCardGame.RuleBookInfo,List{DiskCardGame.RuleBookPageInfo}@)
-  name: FixRulebook(AbilityMetaCategory, RuleBookInfo, ref List<RuleBookPageInfo>)
-  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_FixRulebook_DiskCardGame_AbilityMetaCategory_DiskCardGame_RuleBookInfo_List_DiskCardGame_RuleBookPageInfo___
-  commentId: M:InscryptionAPI.Card.AbilityManager.FixRulebook(DiskCardGame.AbilityMetaCategory,DiskCardGame.RuleBookInfo,List{DiskCardGame.RuleBookPageInfo}@)
-  name.vb: FixRulebook(AbilityMetaCategory, RuleBookInfo, ByRef List(Of RuleBookPageInfo))
-  fullName: InscryptionAPI.Card.AbilityManager.FixRulebook(DiskCardGame.AbilityMetaCategory, DiskCardGame.RuleBookInfo, ref List<DiskCardGame.RuleBookPageInfo>)
-  fullName.vb: InscryptionAPI.Card.AbilityManager.FixRulebook(DiskCardGame.AbilityMetaCategory, DiskCardGame.RuleBookInfo, ByRef List(Of DiskCardGame.RuleBookPageInfo))
-  nameWithType: AbilityManager.FixRulebook(AbilityMetaCategory, RuleBookInfo, ref List<RuleBookPageInfo>)
-  nameWithType.vb: AbilityManager.FixRulebook(AbilityMetaCategory, RuleBookInfo, ByRef List(Of RuleBookPageInfo))
-- uid: InscryptionAPI.Card.AbilityManager.FixRulebook*
-  name: FixRulebook
-  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_FixRulebook_
-  commentId: Overload:InscryptionAPI.Card.AbilityManager.FixRulebook
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.AbilityManager.FixRulebook
-  nameWithType: AbilityManager.FixRulebook
 - uid: InscryptionAPI.Card.AbilityManager.FullAbility
   name: AbilityManager.FullAbility
   href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html
@@ -2520,22 +2170,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityManager.SyncAbilityList
   nameWithType: AbilityManager.SyncAbilityList
-- uid: InscryptionAPI.Card.AbilityManager.WaterborneFix(System.Collections.IEnumerator,DiskCardGame.Trigger,System.Boolean,System.Object[])
-  name: WaterborneFix(IEnumerator, Trigger, Boolean, Object[])
-  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_WaterborneFix_System_Collections_IEnumerator_DiskCardGame_Trigger_System_Boolean_System_Object___
-  commentId: M:InscryptionAPI.Card.AbilityManager.WaterborneFix(System.Collections.IEnumerator,DiskCardGame.Trigger,System.Boolean,System.Object[])
-  name.vb: WaterborneFix(IEnumerator, Trigger, Boolean, Object())
-  fullName: InscryptionAPI.Card.AbilityManager.WaterborneFix(System.Collections.IEnumerator, DiskCardGame.Trigger, System.Boolean, System.Object[])
-  fullName.vb: InscryptionAPI.Card.AbilityManager.WaterborneFix(System.Collections.IEnumerator, DiskCardGame.Trigger, System.Boolean, System.Object())
-  nameWithType: AbilityManager.WaterborneFix(IEnumerator, Trigger, Boolean, Object[])
-  nameWithType.vb: AbilityManager.WaterborneFix(IEnumerator, Trigger, Boolean, Object())
-- uid: InscryptionAPI.Card.AbilityManager.WaterborneFix*
-  name: WaterborneFix
-  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_WaterborneFix_
-  commentId: Overload:InscryptionAPI.Card.AbilityManager.WaterborneFix
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.AbilityManager.WaterborneFix
-  nameWithType: AbilityManager.WaterborneFix
 - uid: InscryptionAPI.Card.CardAppearanceBehaviourManager
   name: CardAppearanceBehaviourManager
   href: api/InscryptionAPI.Card.CardAppearanceBehaviourManager.html
@@ -3939,22 +3573,6 @@ references:
   commentId: F:InscryptionAPI.Card.StatIconManager.BaseGameStatIcons
   fullName: InscryptionAPI.Card.StatIconManager.BaseGameStatIcons
   nameWithType: StatIconManager.BaseGameStatIcons
-- uid: InscryptionAPI.Card.StatIconManager.FixRulebook(DiskCardGame.AbilityMetaCategory,DiskCardGame.RuleBookInfo,List{DiskCardGame.RuleBookPageInfo}@)
-  name: FixRulebook(AbilityMetaCategory, RuleBookInfo, ref List<RuleBookPageInfo>)
-  href: api/InscryptionAPI.Card.StatIconManager.html#InscryptionAPI_Card_StatIconManager_FixRulebook_DiskCardGame_AbilityMetaCategory_DiskCardGame_RuleBookInfo_List_DiskCardGame_RuleBookPageInfo___
-  commentId: M:InscryptionAPI.Card.StatIconManager.FixRulebook(DiskCardGame.AbilityMetaCategory,DiskCardGame.RuleBookInfo,List{DiskCardGame.RuleBookPageInfo}@)
-  name.vb: FixRulebook(AbilityMetaCategory, RuleBookInfo, ByRef List(Of RuleBookPageInfo))
-  fullName: InscryptionAPI.Card.StatIconManager.FixRulebook(DiskCardGame.AbilityMetaCategory, DiskCardGame.RuleBookInfo, ref List<DiskCardGame.RuleBookPageInfo>)
-  fullName.vb: InscryptionAPI.Card.StatIconManager.FixRulebook(DiskCardGame.AbilityMetaCategory, DiskCardGame.RuleBookInfo, ByRef List(Of DiskCardGame.RuleBookPageInfo))
-  nameWithType: StatIconManager.FixRulebook(AbilityMetaCategory, RuleBookInfo, ref List<RuleBookPageInfo>)
-  nameWithType.vb: StatIconManager.FixRulebook(AbilityMetaCategory, RuleBookInfo, ByRef List(Of RuleBookPageInfo))
-- uid: InscryptionAPI.Card.StatIconManager.FixRulebook*
-  name: FixRulebook
-  href: api/InscryptionAPI.Card.StatIconManager.html#InscryptionAPI_Card_StatIconManager_FixRulebook_
-  commentId: Overload:InscryptionAPI.Card.StatIconManager.FixRulebook
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.StatIconManager.FixRulebook
-  nameWithType: StatIconManager.FixRulebook
 - uid: InscryptionAPI.Card.StatIconManager.FullStatIcon
   name: StatIconManager.FullStatIcon
   href: api/InscryptionAPI.Card.StatIconManager.FullStatIcon.html
@@ -4055,51 +3673,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.TribeManager.Add
   nameWithType: TribeManager.Add
-- uid: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
-  name: GenerateTribeChoices(ref List<CardChoice>, Int32)
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GenerateTribeChoices_List_DiskCardGame_CardChoice___System_Int32_
-  commentId: M:InscryptionAPI.Card.TribeManager.GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
-  name.vb: GenerateTribeChoices(ByRef List(Of CardChoice), Int32)
-  fullName: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(ref List<DiskCardGame.CardChoice>, System.Int32)
-  fullName.vb: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(ByRef List(Of DiskCardGame.CardChoice), System.Int32)
-  nameWithType: TribeManager.GenerateTribeChoices(ref List<CardChoice>, Int32)
-  nameWithType.vb: TribeManager.GenerateTribeChoices(ByRef List(Of CardChoice), Int32)
-- uid: InscryptionAPI.Card.TribeManager.GenerateTribeChoices*
-  name: GenerateTribeChoices
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GenerateTribeChoices_
-  commentId: Overload:InscryptionAPI.Card.TribeManager.GenerateTribeChoices
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.TribeManager.GenerateTribeChoices
-  nameWithType: TribeManager.GenerateTribeChoices
-- uid: InscryptionAPI.Card.TribeManager.GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
-  name: GetCardbackTexture(ref Texture, CardChoice)
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GetCardbackTexture_UnityEngine_Texture__DiskCardGame_CardChoice_
-  commentId: M:InscryptionAPI.Card.TribeManager.GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
-  name.vb: GetCardbackTexture(ByRef Texture, CardChoice)
-  fullName: InscryptionAPI.Card.TribeManager.GetCardbackTexture(ref UnityEngine.Texture, DiskCardGame.CardChoice)
-  fullName.vb: InscryptionAPI.Card.TribeManager.GetCardbackTexture(ByRef UnityEngine.Texture, DiskCardGame.CardChoice)
-  nameWithType: TribeManager.GetCardbackTexture(ref Texture, CardChoice)
-  nameWithType.vb: TribeManager.GetCardbackTexture(ByRef Texture, CardChoice)
-- uid: InscryptionAPI.Card.TribeManager.GetCardbackTexture*
-  name: GetCardbackTexture
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GetCardbackTexture_
-  commentId: Overload:InscryptionAPI.Card.TribeManager.GetCardbackTexture
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.TribeManager.GetCardbackTexture
-  nameWithType: TribeManager.GetCardbackTexture
-- uid: InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
-  name: UpdateTribeIcon(CardDisplayer3D, CardInfo)
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_UpdateTribeIcon_DiskCardGame_CardDisplayer3D_DiskCardGame_CardInfo_
-  commentId: M:InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
-  fullName: InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D, DiskCardGame.CardInfo)
-  nameWithType: TribeManager.UpdateTribeIcon(CardDisplayer3D, CardInfo)
-- uid: InscryptionAPI.Card.TribeManager.UpdateTribeIcon*
-  name: UpdateTribeIcon
-  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_UpdateTribeIcon_
-  commentId: Overload:InscryptionAPI.Card.TribeManager.UpdateTribeIcon
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.TribeManager.UpdateTribeIcon
-  nameWithType: TribeManager.UpdateTribeIcon
 - uid: InscryptionAPI.Encounters
   name: InscryptionAPI.Encounters
   href: api/InscryptionAPI.Encounters.html
@@ -4892,54 +4465,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss
   nameWithType: OpponentManager.OriginalGetSequencerIdForBoss
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId(DiskCardGame.Opponent.Type,System.String@)
-  name: ReplaceGetSequencerId(Opponent.Type, ref String)
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplaceGetSequencerId_DiskCardGame_Opponent_Type_System_String__
-  commentId: M:InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId(DiskCardGame.Opponent.Type,System.String@)
-  name.vb: ReplaceGetSequencerId(Opponent.Type, ByRef String)
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId(DiskCardGame.Opponent.Type, ref System.String)
-  fullName.vb: InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId(DiskCardGame.Opponent.Type, ByRef System.String)
-  nameWithType: OpponentManager.ReplaceGetSequencerId(Opponent.Type, ref String)
-  nameWithType.vb: OpponentManager.ReplaceGetSequencerId(Opponent.Type, ByRef String)
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId*
-  name: ReplaceGetSequencerId
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplaceGetSequencerId_
-  commentId: Overload:InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId
-  isSpec: "True"
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplaceGetSequencerId
-  nameWithType: OpponentManager.ReplaceGetSequencerId
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath(System.String@,DiskCardGame.Opponent.Type)
-  name: ReplacePrefabPath(ref String, Opponent.Type)
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplacePrefabPath_System_String__DiskCardGame_Opponent_Type_
-  commentId: M:InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath(System.String@,DiskCardGame.Opponent.Type)
-  name.vb: ReplacePrefabPath(ByRef String, Opponent.Type)
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath(ref System.String, DiskCardGame.Opponent.Type)
-  fullName.vb: InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath(ByRef System.String, DiskCardGame.Opponent.Type)
-  nameWithType: OpponentManager.ReplacePrefabPath(ref String, Opponent.Type)
-  nameWithType.vb: OpponentManager.ReplacePrefabPath(ByRef String, Opponent.Type)
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath*
-  name: ReplacePrefabPath
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplacePrefabPath_
-  commentId: Overload:InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath
-  isSpec: "True"
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplacePrefabPath
-  nameWithType: OpponentManager.ReplacePrefabPath
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent(DiskCardGame.EncounterData,DiskCardGame.Opponent@)
-  name: ReplaceSpawnOpponent(EncounterData, ref Opponent)
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplaceSpawnOpponent_DiskCardGame_EncounterData_DiskCardGame_Opponent__
-  commentId: M:InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent(DiskCardGame.EncounterData,DiskCardGame.Opponent@)
-  name.vb: ReplaceSpawnOpponent(EncounterData, ByRef Opponent)
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent(DiskCardGame.EncounterData, ref DiskCardGame.Opponent)
-  fullName.vb: InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent(DiskCardGame.EncounterData, ByRef DiskCardGame.Opponent)
-  nameWithType: OpponentManager.ReplaceSpawnOpponent(EncounterData, ref Opponent)
-  nameWithType.vb: OpponentManager.ReplaceSpawnOpponent(EncounterData, ByRef Opponent)
-- uid: InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent*
-  name: ReplaceSpawnOpponent
-  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_ReplaceSpawnOpponent_
-  commentId: Overload:InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent
-  isSpec: "True"
-  fullName: InscryptionAPI.Encounters.OpponentManager.ReplaceSpawnOpponent
-  nameWithType: OpponentManager.ReplaceSpawnOpponent
 - uid: InscryptionAPI.Encounters.SpecialSequenceManager
   name: SpecialSequenceManager
   href: api/InscryptionAPI.Encounters.SpecialSequenceManager.html
@@ -5185,22 +4710,6 @@ references:
   commentId: T:InscryptionAPI.Guid.TypeManager
   fullName: InscryptionAPI.Guid.TypeManager
   nameWithType: TypeManager
-- uid: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String,System.String,Type@)
-  name: GetCustomType(String, String, ref Type)
-  href: api/InscryptionAPI.Guid.TypeManager.html#InscryptionAPI_Guid_TypeManager_GetCustomType_System_String_System_String_Type__
-  commentId: M:InscryptionAPI.Guid.TypeManager.GetCustomType(System.String,System.String,Type@)
-  name.vb: GetCustomType(String, String, ByRef Type)
-  fullName: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String, System.String, ref Type)
-  fullName.vb: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String, System.String, ByRef Type)
-  nameWithType: TypeManager.GetCustomType(String, String, ref Type)
-  nameWithType.vb: TypeManager.GetCustomType(String, String, ByRef Type)
-- uid: InscryptionAPI.Guid.TypeManager.GetCustomType*
-  name: GetCustomType
-  href: api/InscryptionAPI.Guid.TypeManager.html#InscryptionAPI_Guid_TypeManager_GetCustomType_
-  commentId: Overload:InscryptionAPI.Guid.TypeManager.GetCustomType
-  isSpec: "True"
-  fullName: InscryptionAPI.Guid.TypeManager.GetCustomType
-  nameWithType: TypeManager.GetCustomType
 - uid: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)
   name: GetModIdFromCallstack(Assembly)
   href: api/InscryptionAPI.Guid.TypeManager.html#InscryptionAPI_Guid_TypeManager_GetModIdFromCallstack_System_Reflection_Assembly_
@@ -5577,51 +5086,12 @@ references:
   commentId: F:InscryptionAPI.InscryptionAPIPlugin.ModVer
   fullName: InscryptionAPI.InscryptionAPIPlugin.ModVer
   nameWithType: InscryptionAPIPlugin.ModVer
-- uid: InscryptionAPI.InscryptionAPIPlugin.OnDisable
-  name: OnDisable()
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_OnDisable
-  commentId: M:InscryptionAPI.InscryptionAPIPlugin.OnDisable
-  fullName: InscryptionAPI.InscryptionAPIPlugin.OnDisable()
-  nameWithType: InscryptionAPIPlugin.OnDisable()
-- uid: InscryptionAPI.InscryptionAPIPlugin.OnDisable*
-  name: OnDisable
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_OnDisable_
-  commentId: Overload:InscryptionAPI.InscryptionAPIPlugin.OnDisable
-  isSpec: "True"
-  fullName: InscryptionAPI.InscryptionAPIPlugin.OnDisable
-  nameWithType: InscryptionAPIPlugin.OnDisable
-- uid: InscryptionAPI.InscryptionAPIPlugin.OnEnable
-  name: OnEnable()
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_OnEnable
-  commentId: M:InscryptionAPI.InscryptionAPIPlugin.OnEnable
-  fullName: InscryptionAPI.InscryptionAPIPlugin.OnEnable()
-  nameWithType: InscryptionAPIPlugin.OnEnable()
-- uid: InscryptionAPI.InscryptionAPIPlugin.OnEnable*
-  name: OnEnable
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_OnEnable_
-  commentId: Overload:InscryptionAPI.InscryptionAPIPlugin.OnEnable
-  isSpec: "True"
-  fullName: InscryptionAPI.InscryptionAPIPlugin.OnEnable
-  nameWithType: InscryptionAPIPlugin.OnEnable
 - uid: InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   name: ScriptableObjectLoaderLoad
   href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_ScriptableObjectLoaderLoad
   commentId: E:InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   fullName: InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   nameWithType: InscryptionAPIPlugin.ScriptableObjectLoaderLoad
-- uid: InscryptionAPI.InscryptionAPIPlugin.Start
-  name: Start()
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_Start
-  commentId: M:InscryptionAPI.InscryptionAPIPlugin.Start
-  fullName: InscryptionAPI.InscryptionAPIPlugin.Start()
-  nameWithType: InscryptionAPIPlugin.Start()
-- uid: InscryptionAPI.InscryptionAPIPlugin.Start*
-  name: Start
-  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_Start_
-  commentId: Overload:InscryptionAPI.InscryptionAPIPlugin.Start
-  isSpec: "True"
-  fullName: InscryptionAPI.InscryptionAPIPlugin.Start
-  nameWithType: InscryptionAPIPlugin.Start
 - uid: InscryptionAPI.Regions
   name: InscryptionAPI.Regions
   href: api/InscryptionAPI.Regions.html
@@ -6305,45 +5775,6 @@ references:
   commentId: T:InscryptionAPI.Saves.ModdedSaveManager
   fullName: InscryptionAPI.Saves.ModdedSaveManager
   nameWithType: ModdedSaveManager
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
-  name: ReadDataFromFile()
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ReadDataFromFile
-  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile()
-  nameWithType: ModdedSaveManager.ReadDataFromFile()
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile*
-  name: ReadDataFromFile
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ReadDataFromFile_
-  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
-  isSpec: "True"
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
-  nameWithType: ModdedSaveManager.ReadDataFromFile
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
-  name: ResetRunStateOnNewAscensionRun()
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ResetRunStateOnNewAscensionRun
-  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun()
-  nameWithType: ModdedSaveManager.ResetRunStateOnNewAscensionRun()
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun*
-  name: ResetRunStateOnNewAscensionRun
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ResetRunStateOnNewAscensionRun_
-  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
-  isSpec: "True"
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
-  nameWithType: ModdedSaveManager.ResetRunStateOnNewAscensionRun
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
-  name: ResetRunStateOnPart1Run()
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ResetRunStateOnPart1Run
-  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run()
-  nameWithType: ModdedSaveManager.ResetRunStateOnPart1Run()
-- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run*
-  name: ResetRunStateOnPart1Run
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_ResetRunStateOnPart1Run_
-  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
-  isSpec: "True"
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
-  nameWithType: ModdedSaveManager.ResetRunStateOnPart1Run
 - uid: InscryptionAPI.Saves.ModdedSaveManager.RunState
   name: RunState
   href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_RunState
@@ -6370,19 +5801,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveData
   nameWithType: ModdedSaveManager.SaveData
-- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
-  name: SaveDataToFile()
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_SaveDataToFile
-  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile()
-  nameWithType: ModdedSaveManager.SaveDataToFile()
-- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile*
-  name: SaveDataToFile
-  href: api/InscryptionAPI.Saves.ModdedSaveManager.html#InscryptionAPI_Saves_ModdedSaveManager_SaveDataToFile_
-  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
-  isSpec: "True"
-  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
-  nameWithType: ModdedSaveManager.SaveDataToFile
 - uid: InscryptionAPI.Triggers
   name: InscryptionAPI.Triggers
   href: api/InscryptionAPI.Triggers.html
@@ -6725,161 +6143,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute.CustomTriggerCoroutineAttribute
   nameWithType: CustomTriggerCoroutineAttribute.CustomTriggerCoroutineAttribute
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches
-  name: CustomTriggerPatches
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html
-  commentId: T:InscryptionAPI.Triggers.CustomTriggerPatches
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches
-  nameWithType: CustomTriggerPatches
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean,DiskCardGame.PlayableCard)
-  name: TriggerDeathTriggers(IEnumerator, PlayableCard, Boolean, PlayableCard)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerDeathTriggers_System_Collections_IEnumerator_DiskCardGame_PlayableCard_System_Boolean_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers(System.Collections.IEnumerator, DiskCardGame.PlayableCard, System.Boolean, DiskCardGame.PlayableCard)
-  nameWithType: CustomTriggerPatches.TriggerDeathTriggers(IEnumerator, PlayableCard, Boolean, PlayableCard)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers*
-  name: TriggerDeathTriggers
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerDeathTriggers_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerDeathTriggers
-  nameWithType: CustomTriggerPatches.TriggerDeathTriggers
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard)
-  name: TriggerOnAddedToHand(IEnumerator, PlayableCard)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnAddedToHand_System_Collections_IEnumerator_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand(System.Collections.IEnumerator, DiskCardGame.PlayableCard)
-  nameWithType: CustomTriggerPatches.TriggerOnAddedToHand(IEnumerator, PlayableCard)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand*
-  name: TriggerOnAddedToHand
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnAddedToHand_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnAddedToHand
-  nameWithType: CustomTriggerPatches.TriggerOnAddedToHand
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung(System.Collections.IEnumerator,System.Boolean)
-  name: TriggerOnBellRung(IEnumerator, Boolean)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnBellRung_System_Collections_IEnumerator_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung(System.Collections.IEnumerator,System.Boolean)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung(System.Collections.IEnumerator, System.Boolean)
-  nameWithType: CustomTriggerPatches.TriggerOnBellRung(IEnumerator, Boolean)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung*
-  name: TriggerOnBellRung
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnBellRung_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnBellRung
-  nameWithType: CustomTriggerPatches.TriggerOnBellRung
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean)
-  name: TriggerOnOtherCardAssignedToSlotInHand(IEnumerator, PlayableCard, Boolean)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnOtherCardAssignedToSlotInHand_System_Collections_IEnumerator_DiskCardGame_PlayableCard_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand(System.Collections.IEnumerator, DiskCardGame.PlayableCard, System.Boolean)
-  nameWithType: CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand(IEnumerator, PlayableCard, Boolean)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand*
-  name: TriggerOnOtherCardAssignedToSlotInHand
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnOtherCardAssignedToSlotInHand_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand
-  nameWithType: CustomTriggerPatches.TriggerOnOtherCardAssignedToSlotInHand
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean)
-  name: TriggerOnOtherCardResolveInHand(IEnumerator, PlayableCard, Boolean)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnOtherCardResolveInHand_System_Collections_IEnumerator_DiskCardGame_PlayableCard_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand(System.Collections.IEnumerator,DiskCardGame.PlayableCard,System.Boolean)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand(System.Collections.IEnumerator, DiskCardGame.PlayableCard, System.Boolean)
-  nameWithType: CustomTriggerPatches.TriggerOnOtherCardResolveInHand(IEnumerator, PlayableCard, Boolean)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand*
-  name: TriggerOnOtherCardResolveInHand
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnOtherCardResolveInHand_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnOtherCardResolveInHand
-  nameWithType: CustomTriggerPatches.TriggerOnOtherCardResolveInHand
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot(System.Collections.IEnumerator,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  name: TriggerOnPostSingularSlotAttackSlot(IEnumerator, CardSlot, CardSlot)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnPostSingularSlotAttackSlot_System_Collections_IEnumerator_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot(System.Collections.IEnumerator,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot(System.Collections.IEnumerator, DiskCardGame.CardSlot, DiskCardGame.CardSlot)
-  nameWithType: CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot(IEnumerator, CardSlot, CardSlot)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot*
-  name: TriggerOnPostSingularSlotAttackSlot
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnPostSingularSlotAttackSlot_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot
-  nameWithType: CustomTriggerPatches.TriggerOnPostSingularSlotAttackSlot
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged(System.Collections.IEnumerator,System.Int32,System.Boolean)
-  name: TriggerOnScalesChanged(IEnumerator, Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnScalesChanged_System_Collections_IEnumerator_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged(System.Collections.IEnumerator,System.Int32,System.Boolean)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged(System.Collections.IEnumerator, System.Int32, System.Boolean)
-  nameWithType: CustomTriggerPatches.TriggerOnScalesChanged(IEnumerator, Int32, Boolean)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged*
-  name: TriggerOnScalesChanged
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnScalesChanged_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnScalesChanged
-  nameWithType: CustomTriggerPatches.TriggerOnScalesChanged
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence(System.Collections.IEnumerator,DiskCardGame.CardSlot)
-  name: TriggerOnSlotAttackSequence(IEnumerator, CardSlot)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnSlotAttackSequence_System_Collections_IEnumerator_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence(System.Collections.IEnumerator,DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence(System.Collections.IEnumerator, DiskCardGame.CardSlot)
-  nameWithType: CustomTriggerPatches.TriggerOnSlotAttackSequence(IEnumerator, CardSlot)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence*
-  name: TriggerOnSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnSlotAttackSequence_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnSlotAttackSequence
-  nameWithType: CustomTriggerPatches.TriggerOnSlotAttackSequence
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent(System.Collections.IEnumerator,DiskCardGame.TurnManager)
-  name: TriggerOnTurnEndInHandOpponent(IEnumerator, TurnManager)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnTurnEndInHandOpponent_System_Collections_IEnumerator_DiskCardGame_TurnManager_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent(System.Collections.IEnumerator,DiskCardGame.TurnManager)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent(System.Collections.IEnumerator, DiskCardGame.TurnManager)
-  nameWithType: CustomTriggerPatches.TriggerOnTurnEndInHandOpponent(IEnumerator, TurnManager)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent*
-  name: TriggerOnTurnEndInHandOpponent
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnTurnEndInHandOpponent_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandOpponent
-  nameWithType: CustomTriggerPatches.TriggerOnTurnEndInHandOpponent
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator)
-  name: TriggerOnTurnEndInHandPlayer(IEnumerator)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnTurnEndInHandPlayer_System_Collections_IEnumerator_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator)
-  nameWithType: CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(IEnumerator)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator,DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
-  name: TriggerOnTurnEndInHandPlayer(IEnumerator, PlayableCard, PlayableCard)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnTurnEndInHandPlayer_System_Collections_IEnumerator_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator,DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(System.Collections.IEnumerator, DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
-  nameWithType: CustomTriggerPatches.TriggerOnTurnEndInHandPlayer(IEnumerator, PlayableCard, PlayableCard)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer*
-  name: TriggerOnTurnEndInHandPlayer
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnTurnEndInHandPlayer_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnTurnEndInHandPlayer
-  nameWithType: CustomTriggerPatches.TriggerOnTurnEndInHandPlayer
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand(System.Collections.IEnumerator,System.Boolean)
-  name: TriggerOnUpkeepInHand(IEnumerator, Boolean)
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnUpkeepInHand_System_Collections_IEnumerator_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand(System.Collections.IEnumerator,System.Boolean)
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand(System.Collections.IEnumerator, System.Boolean)
-  nameWithType: CustomTriggerPatches.TriggerOnUpkeepInHand(IEnumerator, Boolean)
-- uid: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand*
-  name: TriggerOnUpkeepInHand
-  href: api/InscryptionAPI.Triggers.CustomTriggerPatches.html#InscryptionAPI_Triggers_CustomTriggerPatches_TriggerOnUpkeepInHand_
-  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.CustomTriggerPatches.TriggerOnUpkeepInHand
-  nameWithType: CustomTriggerPatches.TriggerOnUpkeepInHand
 - uid: InscryptionAPI.Triggers.CustomTriggerResponderAttribute
   name: CustomTriggerResponderAttribute
   href: api/InscryptionAPI.Triggers.CustomTriggerResponderAttribute.html
