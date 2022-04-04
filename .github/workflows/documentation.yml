@@ -33,17 +33,16 @@ jobs:
             - name: Generate documentation
               run: mono docfx/docfx.exe docs/docfx.json
 
-            - name: Setup gh-pages folder
-              uses: actions/checkout@v3
+            - uses: actions/checkout@v3
               with:
                 ref: gh-pages
                 path: gh-pages
             
-            - name: Clean gh-pages folder
-              run: rm -rf $(ls -A gh-pages | grep -v .git)
-
-            - name: Move documentation
-              run: cp -R docs/_site/* gh-pages/
+            - name: Setup gh-pages folder
+              run: rm -rf $(ls -A gh-pages | grep -v .git); cp -R docs/_site/* gh-pages/
+            
+            - name: Debug
+              run: ls -A gh-pages
             
             - name: Push update
               run: |
