@@ -89,6 +89,9 @@ public class ModdedSaveData
     /// <typeparam name="T">The type of object you are setting.</typeparam>
     public void SetValueAsObject<T>(string guid, string key, T value)
     {
+        if (SaveData == null)
+            SaveData = new();
+            
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
 

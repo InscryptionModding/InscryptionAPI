@@ -8,13 +8,63 @@ using InscryptionAPI.Helpers;
 
 namespace InscryptionAPI.Boons
 {
+    /// <summary>
+    /// This manager handles the creation of new Boons and ensures they are properly attached to battles
+    /// </summary>
     [HarmonyPatch]
     public static class BoonManager
     {
+        /// <summary>
+        /// Maps custom BoonData objects to the trigger handler that manages them
+        /// </summary>
+        public class FullBoon
+        {
+            /// <summary>
+            /// Describes the boon
+            /// </summary>
+            public BoonData boon;
+
+            /// <summary>
+            /// A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour
+            /// </summary>
+            public Type boonHandlerType;
+
+            /// <summary>
+            /// Indicates if the boon should appear in the rulebook under the Boons section
+            /// </summary>
+            public bool appearInRulebook;
+
+            /// <summary>
+            /// Indicates if the player can have multiple instances of this boon in their deck
+            /// </summary>
+            public bool stacks;
+        }
+
+        /// <summary>
+        /// All boons that come as part of the vanilla game
+        /// </summary>
         public static readonly ReadOnlyCollection<BoonData> BaseGameBoons = new(Resources.LoadAll<BoonData>("Data/Boons"));
-        public static readonly ObservableCollection<FullBoon> NewBoons = new();
+
+        internal static readonly ObservableCollection<FullBoon> NewBoons = new();
+
+        /// <summary>
+        /// All boons, including vanilla and mod-added boons
+        /// </summary>
         public static List<BoonData> AllBoonsCopy { get; private set; } = BaseGameBoons.ToList();
 
+        /// <summary>
+        /// Creates a new boon and adds it to the list of boons the player can receive
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the boon</param>
+        /// <param name="name">The name of the boom as it should appear in the rulebook</param>
+        /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</param>
+        /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
+        /// <param name="icon">The icon that appears in the center of the card art and in the rulebook</param>
+        /// <param name="cardArt">The art that surrounds the boon</param>
+        /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
+        /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
+        /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+        /// <returns>The unique identifier for this boon</returns>
         public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
             appearInRulebook = true)
         {
@@ -35,25 +85,64 @@ namespace InscryptionAPI.Boons
             return data.type;
         }
 
+        /// <summary>
+        /// Creates a new boon and adds it to the list of boons the player can receive
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the boon</param>
+        /// <param name="name">The name of the boom as it should appear in the rulebook</param>
+        /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
+        /// <param name="icon">The icon that appears in the center of the card art and in the rulebook</param>
+        /// <param name="cardArt">The art that surrounds the boon</param>
+        /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
+        /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
+        /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+        /// <typeparam name="T">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</typeparam>
+        /// <returns>The unique identifier for this boon</returns>
         public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
             appearInRulebook = true) where T : BoonBehaviour
         {
             return New(guid, name, typeof(T), rulebookDescription, icon, cardArt, stackable, appearInLeshyTrials, appearInRulebook);
         }
 
+        /// <summary>
+        /// Creates a new boon and adds it to the list of boons the player can receive
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the boon</param>
+        /// <param name="name">The name of the boom as it should appear in the rulebook</param>
+        /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</param>
+        /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
+        /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook</param>
+        /// <param name="pathToCardArt">Path to the art that surrounds the boon</param>
+        /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
+        /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
+        /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+        /// <returns>The unique identifier for this boon</returns>
         public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
             appearInRulebook = true)
         {
             return New(guid, name, boonHandlerType, rulebookDescription, TextureHelper.GetImageAsTexture(pathToIcon), TextureHelper.GetImageAsTexture(pathToCardArt), stackable, appearInLeshyTrials, appearInRulebook);
         }
 
+        /// <summary>
+        /// Creates a new boon and adds it to the list of boons the player can receive
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the boon</param>
+        /// <param name="name">The name of the boom as it should appear in the rulebook</param>
+        /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
+        /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook</param>
+        /// <param name="pathToCardArt">Path to the art that surrounds the boon</param>
+        /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
+        /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
+        /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+        /// <typeparam name="T">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</typeparam>
+        /// <returns>The unique identifier for this boon</returns>
         public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
             appearInRulebook = true) where T : BoonBehaviour
         {
             return New<T>(guid, name, rulebookDescription, pathToIcon, pathToCardArt, stackable, appearInLeshyTrials, appearInRulebook);
         }
 
-        public static void SyncCardList()
+        internal static void SyncBoonList()
         {
             var boons = BaseGameBoons.Concat(NewBoons.Select((x) => x.boon)).ToList();
             AllBoonsCopy = boons;
@@ -70,13 +159,13 @@ namespace InscryptionAPI.Boons
             };
             NewBoons.CollectionChanged += static (_, _) =>
             {
-                SyncCardList();
+                SyncBoonList();
             };
         }
 
-        [HarmonyPatch(typeof(BoonsHandler), "ActivatePreCombatBoons")]
+        [HarmonyPatch(typeof(BoonsHandler), nameof(BoonsHandler.ActivatePreCombatBoons))]
         [HarmonyPostfix]
-        public static IEnumerator ActivatePreCombatBoons(IEnumerator result, BoonsHandler __instance)
+        private static IEnumerator ActivatePreCombatBoons(IEnumerator result, BoonsHandler __instance)
         {
             BoonBehaviour.DestroyAllInstances();
             if (__instance.BoonsEnabled && RunState.Run != null && RunState.Run.playerDeck != null && RunState.Run.playerDeck.Boons != null && NewBoons != null)
@@ -86,9 +175,9 @@ namespace InscryptionAPI.Boons
                     if (boon != null)
                     {
                         FullBoon nb = NewBoons.ToList().Find((x) => x.boon.type == boon.type);
-                        if (nb != null && nb.boonHandlerType != null && nb.boonHandlerType.IsSubclassOf(typeof(BoonBehaviour)) && (nb.stacks || BoonBehaviour.CountInstancesOfType(nb.boon.type) < 1))
+                        int instances = BoonBehaviour.CountInstancesOfType(nb.boon.type);
+                        if (nb != null && nb.boonHandlerType != null && nb.boonHandlerType.IsSubclassOf(typeof(BoonBehaviour)) && (nb.stacks || instances < 1))
                         {
-                            int instances = BoonBehaviour.CountInstancesOfType(nb.boon.type);
                             GameObject boonhandler = new(nb.boon.name + " Boon Handler");
                             BoonBehaviour behav = boonhandler.AddComponent(nb.boonHandlerType) as BoonBehaviour;
                             if (behav != null)
@@ -97,7 +186,7 @@ namespace InscryptionAPI.Boons
                                 behav.boon = nb;
                                 behav.instanceNumber = instances + 1;
                                 BoonBehaviour.Instances.Add(behav);
-                                if (behav.RespondToPreBoonActivation())
+                                if (behav.RespondsToPreBoonActivation())
                                 {
                                     yield return behav.OnPreBoonActivation();
                                 }
@@ -109,7 +198,7 @@ namespace InscryptionAPI.Boons
             yield return result;
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPostBoonActivation())
+                if (bb != null && bb.RespondsToPostBoonActivation())
                 {
                     yield return bb.OnPostBoonActivation();
                 }
@@ -117,13 +206,13 @@ namespace InscryptionAPI.Boons
             yield break;
         }
 
-        [HarmonyPatch(typeof(TurnManager), "CleanupPhase")]
+        [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
         [HarmonyPostfix]
-        public static IEnumerator Postfix(IEnumerator result)
+        private static IEnumerator Postfix(IEnumerator result)
         {
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPreBattleCleanup())
+                if (bb != null && bb.RespondsToPreBattleCleanup())
                 {
                     yield return bb.OnPreBattleCleanup();
                 }
@@ -131,7 +220,7 @@ namespace InscryptionAPI.Boons
             yield return result;
             foreach (BoonBehaviour bb in BoonBehaviour.Instances)
             {
-                if (bb != null && bb.RespondToPostBattleCleanup())
+                if (bb != null && bb.RespondsToPostBattleCleanup())
                 {
                     yield return bb.OnPostBattleCleanup();
                 }
@@ -140,9 +229,9 @@ namespace InscryptionAPI.Boons
             yield break;
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "AddBoon")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.AddBoon))]
         [HarmonyPostfix]
-        public static void AddBoon(BoonData.Type boonType)
+        private static void AddBoon(BoonData.Type boonType)
         {
             if (TurnManager.Instance != null && !TurnManager.Instance.GameEnded && !TurnManager.Instance.GameEnding && !TurnManager.Instance.IsSetupPhase && TurnManager.Instance.Opponent != null)
             {
@@ -163,34 +252,31 @@ namespace InscryptionAPI.Boons
             }
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "ClearBoons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ClearBoons))]
         [HarmonyPostfix]
-        public static void ClearBoons()
+        private static void ClearBoons()
         {
             BoonBehaviour.DestroyAllInstances();
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "get_Boons")]
-        [HarmonyPostfix]
-        public static void get_Boons(ref List<BoonData> __result, DeckInfo __instance)
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.Boons), MethodType.Getter)]
+        [HarmonyPrefix]
+        private static void get_Boons(DeckInfo __instance)
         {
             if (__instance.boons != null && __instance.boonIds != null && __instance.boons.Count != __instance.boonIds.Count)
-            {
                 __instance.LoadBoons();
-            }
-            __result = __instance.boons;
         }
 
-        [HarmonyPatch(typeof(DeckInfo), "LoadBoons")]
+        [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.LoadBoons))]
         [HarmonyPostfix]
-        public static void LoadBoons(DeckInfo __instance)
+        private static void LoadBoons(DeckInfo __instance)
         {
             __instance.boons.RemoveAll((x) => x == null);
         }
 
-        [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData")]
+        [HarmonyPatch(typeof(RuleBookInfo), nameof(RuleBookInfo.ConstructPageData))]
         [HarmonyPostfix]
-        public static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
+        private static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
         {
             if (NewBoons.Count > 0)
             {
@@ -208,14 +294,6 @@ namespace InscryptionAPI.Boons
                     }
                 }
             }
-        }
-
-        public class FullBoon
-        {
-            public BoonData boon;
-            public Type boonHandlerType;
-            public bool appearInRulebook;
-            public bool stacks;
         }
     }
 }
