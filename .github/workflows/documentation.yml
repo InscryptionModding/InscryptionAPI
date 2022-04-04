@@ -1,10 +1,10 @@
 name: Documentation
 
 on:
-  push:
-    branches:
-      - main
-      - patch-7
+    push:
+        branches:
+            - main
+            - patch-7
 
 jobs:
     build:
@@ -17,33 +17,43 @@ jobs:
               uses: actions/setup-dotnet@v1
               with:
                   dotnet-version: 6.0.x
-            
+
             - name: Restore Project
               run: dotnet restore
 
             - name: Add Mono Repository
-              run: sudo apt install gnupg ca-certificates; sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF; echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list; sudo apt update
+              run: |
+                  sudo apt install gnupg ca-certificates
+                  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+                  echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+                  sudo apt update
 
             - name: Install Mono
               run: sudo apt install mono-runtime mono-devel msbuild
 
             - name: Install DocFX
-              run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip
+              run: |
+                  curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip
+                  unzip -d docfx/ docfx.zip
 
             - name: Generate documentation
               run: mono docfx/docfx.exe docs/docfx.json
 
             - uses: actions/checkout@v3
               with:
-                ref: gh-pages
-                path: gh-pages
-            
+                  ref: gh-pages
+                  path: gh-pages
+
             - name: Setup gh-pages folder
-              run: cd gh-pages; rm -rf $(ls -A | grep -v .git); cp -R ../docs/_site/* .
-            
+              run: |
+                  cd gh-pages
+                  rm -rf $(ls -A | grep -v .git)
+                  cp -R ../docs/_site/* .
+
             - name: Push update
               run: |
-                git config user.name github-actions
-                git config user.email github-actions@github.com
-                git commit -a -m "Automatically Generated"
-                git push
+                  cd gh-pages
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  git commit -a -m "Automatically Generated"
+                  git push
