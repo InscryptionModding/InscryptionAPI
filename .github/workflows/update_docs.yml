@@ -21,7 +21,7 @@ jobs:
                 path: gh-pages
             
             - name: Clean gh-pages folder
-              run: rm -rf !(".github"|".git"|".gitignore")
+              run: rm -rf !(".github"|".git"|".gitignore") gh-pages/*
             
             - name: Restore Project
               run: dotnet restore
