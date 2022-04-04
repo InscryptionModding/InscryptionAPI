@@ -51,6 +51,7 @@ jobs:
                   cp -R ../docs/_site/* .
 
             - name: Push update
+              continue-on-error: true
               run: |
                   cd gh-pages
                   git config user.name github-actions
