@@ -39,7 +39,7 @@ jobs:
                 path: gh-pages
             
             - name: Setup gh-pages folder
-              run: cd gh-pages; rm -rf $(ls -A | grep -v .git); cp -R ../docs/_site/* gh-pages/
+              run: cd gh-pages; rm -rf $(ls -A | grep -v .git); cp -R ../docs/_site/* .
             
             - name: Push update
               run: |
