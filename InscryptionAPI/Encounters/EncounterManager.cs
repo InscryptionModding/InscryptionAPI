@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
 
-[HarmonyPatch]
 public static class EncounterManager
 {
     public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data"));

@@ -167,7 +167,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourceDrone), "SetOnBoard")]
     [HarmonyPostfix]
-	public static void ResourceDrone_SetOnBoard(ResourceDrone __instance, bool onBoard)
+    private static void ResourceDrone_SetOnBoard(ResourceDrone __instance, bool onBoard)
     {
         if (CurrentSceneCanHaveEnergyDrone)
         {
@@ -187,7 +187,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(Part1ResourcesManager), "CleanUp")]
     [HarmonyPrefix]
-	public static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
+    private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
         ResourcesManager baseResourceManager = (ResourcesManager)__instance;
         if (EnergyConfig.ConfigEnergy)
@@ -214,7 +214,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.Setup))]
     [HarmonyPrefix]
-	public static void ResourcesManager_Setup(ResourcesManager __instance)
+    private static void ResourcesManager_Setup(ResourcesManager __instance)
     {
         PatchPlugin.Logger.LogDebug($"Setting up extra resources? {EnergyConfig.ConfigDrone}: drone {ResourceDrone.Instance}");
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
@@ -229,7 +229,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "ShowAddMaxEnergy")]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowAddMaxEnergy(IEnumerator result, ResourcesManager __instance)
+    private static IEnumerator ResourcesManager_ShowAddMaxEnergy(IEnumerator result, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
@@ -242,7 +242,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "ShowAddEnergy")]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
+    private static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
@@ -260,7 +260,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "ShowSpendEnergy")]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
+    private static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
@@ -282,7 +282,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "ShowAddGem")]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowAddGem(IEnumerator result, GemType gem, ResourcesManager __instance)
+    private static IEnumerator ResourcesManager_ShowAddGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
@@ -295,7 +295,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "ShowLoseGem")]
     [HarmonyPostfix]
-	public static IEnumerator ResourcesManager_ShowLoseGem(IEnumerator result, GemType gem, ResourcesManager __instance)
+    private static IEnumerator ResourcesManager_ShowLoseGem(IEnumerator result, GemType gem, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDroneMox)
         {
@@ -308,7 +308,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(ResourcesManager), "SetGemOnImmediate")]
     [HarmonyPostfix]
-	public static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
+    private static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager)
             ResourceDrone.Instance.Gems.SetGemOn(gem, on, false);
@@ -316,7 +316,7 @@ public static class EnergyDrone
 
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
     [HarmonyPostfix]
-    public static IEnumerator TurnManager_UpkeepPhase(IEnumerator sequence, bool playerUpkeep)
+    private static IEnumerator TurnManager_UpkeepPhase(IEnumerator sequence, bool playerUpkeep)
     {
         // This replaces a complex IL patch
         // If the game is not going to automatically update the energy, I'll do it

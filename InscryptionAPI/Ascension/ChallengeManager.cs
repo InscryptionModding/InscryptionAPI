@@ -18,7 +18,7 @@ public static class ChallengeManager
 
     internal static readonly ObservableCollection<AscensionChallengeInfo> NewInfos = new();
 
-    public static List<AscensionChallengeInfo> GenBaseGameChallengs()
+    private static List<AscensionChallengeInfo> GenBaseGameChallengs()
     {
         stackableMap = new();
         unlockLevelMap = new();
@@ -138,7 +138,7 @@ public static class ChallengeManager
 
     [HarmonyPatch(typeof(AscensionUnlockSchedule), "ChallengeIsUnlockedForLevel")]
     [HarmonyPostfix]
-    public static void IsCustomChallengeUnlocked(ref bool __result, int level, AscensionChallenge challenge)
+    private static void IsCustomChallengeUnlocked(ref bool __result, int level, AscensionChallenge challenge)
     {
         if (unlockLevelMap.ContainsKey(challenge))
             __result = unlockLevelMap[challenge] <= level;
@@ -146,7 +146,7 @@ public static class ChallengeManager
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
     [HarmonyPrefix]
-    public static void ResyncWhenTransitioningToGame()
+    private static void ResyncWhenTransitioningToGame()
     {
         SyncChallengeList();
     }

@@ -26,7 +26,7 @@ public static class ExecuteCommunityPatchTests
 
     [HarmonyPatch(typeof(AscensionSaveData), nameof(AscensionSaveData.NewRun))]
     [HarmonyPostfix]
-    public static void StartRunInTestMode(ref AscensionSaveData __instance)
+    private static void StartRunInTestMode(ref AscensionSaveData __instance)
     {
         if (PatchPlugin.configTestState.Value)
         {
