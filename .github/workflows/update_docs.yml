@@ -30,6 +30,9 @@ jobs:
             - name: Install DocFX
               run: curl -LJ https://github.com/dotnet/docfx/releases/download/v2.59.0/docfx.zip -o docfx.zip; unzip -d docfx/ docfx.zip
 
+            - name: Generate documentation
+              run: mono docfx/docfx.exe docs/docfx.json
+
             - name: Setup gh-pages folder
               uses: actions/checkout@v3
               with:
@@ -39,8 +42,8 @@ jobs:
             - name: Clean gh-pages folder
               run: rm -rf $(ls -A gh-pages | grep -v .git)
 
-            - name: Generate documentation
-              run: mono docfx/docfx.exe docs/docfx.json -o gh-pages/
+            - name: Move documentation
+              run: cp docs/_site/**/*.* gh-pages/*
             
             - name: Push update
               run: |
