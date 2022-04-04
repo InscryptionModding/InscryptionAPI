@@ -828,18 +828,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Triggers.CustomTrigger.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Triggers.CustomTrigger.html",
-          "hash": "WPkzR0qLs/4SpA/Hsa9Kkdm5qHbtFtwRm8nbfB5O7Fs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.CustomTriggerFinder.yml",
       "output": {
         ".html": {
@@ -1036,7 +1024,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "tWRm62UvsaRXVgj5nUR+PzNtYAUEh7ZYs9IKF+F8vAw="
+          "hash": "j2cRDihlKHSujhc4FJrGazL1KR6CCe+0ObPXE6DvGps="
         }
       },
       "is_incremental": false,
@@ -1072,7 +1060,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "957yZy3xQBnBAIGAYHomaSVjFSNfDYafbZQutOhx5MA="
+          "hash": "wga/ThP/gE5rUN5D0mZ0VHa/H0UJjAKqLsZlfRM8qKQ="
         }
       },
       "is_incremental": false,
@@ -1135,7 +1123,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 95,
+          "total_file_count": 94,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
