@@ -124,7 +124,7 @@ public static class StarterDeckManager
 
     [HarmonyPatch(typeof(AscensionUnlockSchedule), "StarterDeckIsUnlockedForLevel")]
     [HarmonyPrefix]
-    public static bool CustomStarterLevel(ref bool __result, string id, int level)
+    private static bool CustomStarterLevel(ref bool __result, string id, int level)
     {
         FullStarterDeck fsd = AllDecks.FirstOrDefault(d => d.Info.name == id);
         if (fsd == null || fsd.UnlockLevel < 0)
