@@ -55,5 +55,6 @@ jobs:
                   cd gh-pages
                   git config user.name github-actions
                   git config user.email github-actions@github.com
+                  git add .
                   git commit -a -m "Generated from ${{ github.event.head_commit.id }}"
                   git push
