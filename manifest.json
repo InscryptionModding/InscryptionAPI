@@ -316,7 +316,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.html",
-          "hash": "eM9SIGQBhApzwjB3NxbS7VLeqtHEGYtYRSIHR3f8vTw="
+          "hash": "Q7g8MFAa8mkiv8fvCy4e+lZmFl3xmaMA7D2lw7ir0Mc="
         }
       },
       "is_incremental": false,
@@ -828,18 +828,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Triggers.CustomGlobalTriggerHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Triggers.CustomGlobalTriggerHandler.html",
-          "hash": "tOFu7sMKogN45ZzK90pJlq0kLeNIllkDAjsfrV9cxgA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.CustomTrigger.yml",
       "output": {
         ".html": {
@@ -852,11 +840,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute.yml",
+      "source_relative_path": "api/InscryptionAPI.Triggers.CustomTriggerFinder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute.html",
-          "hash": "1h5+Oc2bGu962kVFe/OhDuWIRSemYgAEJhaIYRUKMlo="
+          "relative_path": "api/InscryptionAPI.Triggers.CustomTriggerFinder.html",
+          "hash": "b5WRkWvyNYLHFJSby7Gls8MfYBjt2PNJDonPFNu+wMc="
         }
       },
       "is_incremental": false,
@@ -864,11 +852,179 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Triggers.CustomTriggerResponderAttribute.yml",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IAddedToHand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/InscryptionAPI.Triggers.CustomTriggerResponderAttribute.html",
-          "hash": "clWqJ2UDWhrpokALh8eyOXXpmeu0Kxzl/jwtbFYzkvw="
+          "relative_path": "api/InscryptionAPI.Triggers.IAddedToHand.html",
+          "hash": "jJEhIDA2JkcKzsteJYZhEDfUsM3XZWrU2xZw7ygb+yc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IBellRung.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IBellRung.html",
+          "hash": "AgfRhoB0lcM8Mb5FsAR1odMqdz8wrWxhGLwVTpThjdU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherAddedToHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherAddedToHand.html",
+          "hash": "pYR47Vy5qHIhhQG2sASIgkOG/EkQ5uSAdMjck0peiV0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html",
+          "hash": "w4SMKiRScA9xabTvEMqJJoTpukx07SCryoQHtXxpHxM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html",
+          "hash": "Dh5sB7ZBI7g5VZ/y1asaFgqUy7tn7RYyMdR+HhQwP98="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherCardDieInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherCardDieInHand.html",
+          "hash": "wrA8cD9O1extIVNufMD45ftFXK5mJi/zriMOS3sl/U8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html",
+          "hash": "pdh0+kuIVtrKbiVyPyEpicDIIggh/YeM+tTjX6D2QGY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IOtherCardResolveInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html",
+          "hash": "eEpS2Wh/qgIrKVXxRDHvCPBDUFmvKC7nDKs+yHA/VPg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPostScalesChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPostScalesChanged.html",
+          "hash": "//R8WgNwUy6tvwwpS6mVELFGxxrgVyoh9EFAtXnnJ4A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html",
+          "hash": "VJdr075iMZOsIQ9qmCiTgcrX/3gL+1cEJCVASthJYgs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPostSlotAttackSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html",
+          "hash": "FKNyj/iEAqXhccf6bzd5vQhpyzBVQr2sDXTqbdDT63U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPreScalesChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPreScalesChanged.html",
+          "hash": "YNH1pBw1MMYu8vhL+oLD5iiFf7J5f+ueQINSVZ1cRfo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPreSlotAttackSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html",
+          "hash": "niUZNCTdBrSd1Toccj4G/aNTm4UNPRJjWyjLa6UIJ3s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.ITurnEndInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.ITurnEndInHand.html",
+          "hash": "vaQNfdO2gqvTTfNC63XDlw2tM8+a2YI6kEwpyNWari8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IUpkeepInHand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IUpkeepInHand.html",
+          "hash": "RXVjqFq9FeABu1lt40iCnUEfXbDxCBSAzQ1gHedyg4M="
         }
       },
       "is_incremental": false,
@@ -880,7 +1036,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "37jq0CtS3k3XbZcGK6wppY4mztJzleq/XhmvLduxGxA="
+          "hash": "2bZgXekXaJwzK7qbJ5aHh6P1sWxh7Ifeu/1XMgTujpI="
         }
       },
       "is_incremental": false,
@@ -916,7 +1072,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "UERvLoZNZ6BHwV2d+z+9d8DVfM5mGrLHYBo15kU+5Ak="
+          "hash": "957yZy3xQBnBAIGAYHomaSVjFSNfDYafbZQutOhx5MA="
         }
       },
       "is_incremental": false,
@@ -979,7 +1135,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 82,
+          "total_file_count": 95,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
