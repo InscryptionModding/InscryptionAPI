@@ -33,7 +33,7 @@ jobs:
                 path: gh-pages
             
             - name: Clean gh-pages folder
-              run: -r $(ls -A gh-pages | grep -v .git)
+              run: rm -rf $(ls -A gh-pages | grep -v .git)
 
             - name: Generate documentation
               run: mono docfx/docfx.exe docs/docfx.json -o gh-pages/
