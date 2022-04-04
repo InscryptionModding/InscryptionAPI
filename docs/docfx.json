@@ -12,6 +12,15 @@
         }
     ],
     "build": {
+        "resource": [
+            {
+                "files": ["README.md"]
+            },
+            {
+                "files": ["LICENSE"],
+                "src": "../"
+            }
+        ],
         "content": [
             {
                 "files": ["api/**.yml", "api/index.md"]
@@ -44,6 +53,10 @@
         ],
         "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"],
         "dest": "_site",
-        "template": ["default", "template/darkfx", "template/no_inherited_members"]
+        "template": [
+            "default",
+            "template/darkfx",
+            "template/no_inherited_members"
+        ]
     }
 }
