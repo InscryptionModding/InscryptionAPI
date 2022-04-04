@@ -1,0 +1,5 @@
+apiRules:
+  - exclude:
+      uidRegex: ^APIPlugin
+  - exclude:
+      uidRegex: ^InscryptionCommunityPatch
