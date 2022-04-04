@@ -1,0 +1,57 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.IgnoreMappingAttribute
+  commentId: T:APIPlugin.IgnoreMappingAttribute
+  id: IgnoreMappingAttribute
+  parent: APIPlugin
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IgnoreMappingAttribute
+  nameWithType: IgnoreMappingAttribute
+  fullName: APIPlugin.IgnoreMappingAttribute
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/TypeMapper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: IgnoreMappingAttribute
+    path: ../InscryptionAPI/Compatibility/TypeMapper.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: 'public class IgnoreMappingAttribute : Attribute'
+    content.vb: >-
+      Public Class IgnoreMappingAttribute
+          Inherits Attribute
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System

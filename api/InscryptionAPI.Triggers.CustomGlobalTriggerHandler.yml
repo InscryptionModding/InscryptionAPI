@@ -1,0 +1,1227 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  commentId: T:InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  id: CustomGlobalTriggerHandler
+  parent: InscryptionAPI.Triggers
+  children:
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(System.String,System.String,System.Boolean,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(System.String,System.String,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(System.String,System.String,System.Boolean,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger(System.String,System.String,System.Type[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  langs:
+  - csharp
+  - vb
+  name: CustomGlobalTriggerHandler
+  nameWithType: CustomGlobalTriggerHandler
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomGlobalTriggerHandler
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static class CustomGlobalTriggerHandler
+    content.vb: Public Module CustomGlobalTriggerHandler
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger(System.String,System.String,System.Type[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger(System.String,System.String,System.Type[])
+  id: RegisterCustomTrigger(System.String,System.String,System.Type[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: RegisterCustomTrigger(String, String, Type[])
+  nameWithType: CustomGlobalTriggerHandler.RegisterCustomTrigger(String, String, Type[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger(System.String, System.String, System.Type[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegisterCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static void RegisterCustomTrigger(string pluginGuid, string triggerName, params Type[] args)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: args
+      type: System.Type[]
+    content.vb: Public Shared Sub RegisterCustomTrigger(pluginGuid As String, triggerName As String, ParamArray args As Type())
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.RegisterCustomTrigger(String, String, Type())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger(System.String, System.String, System.Type())
+  name.vb: RegisterCustomTrigger(String, String, Type())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  id: ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: ReceiverRespondsToCustomTrigger(CustomTrigger, TriggerReceiver, Object[])
+  nameWithType: CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(CustomTrigger, TriggerReceiver, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger, DiskCardGame.TriggerReceiver, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReceiverRespondsToCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 57
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static bool ReceiverRespondsToCustomTrigger(CustomTrigger trigger, TriggerReceiver receiver, params object[] otherArgs)
+    parameters:
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: receiver
+      type: DiskCardGame.TriggerReceiver
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ReceiverRespondsToCustomTrigger(trigger As CustomTrigger, receiver As TriggerReceiver, ParamArray otherArgs As Object()) As Boolean
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(CustomTrigger, TriggerReceiver, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(InscryptionAPI.Triggers.CustomTrigger, DiskCardGame.TriggerReceiver, System.Object())
+  name.vb: ReceiverRespondsToCustomTrigger(CustomTrigger, TriggerReceiver, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  id: ReceiverRespondsToCustomTrigger(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: ReceiverRespondsToCustomTrigger(String, String, TriggerReceiver, Object[])
+  nameWithType: CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(String, String, TriggerReceiver, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(System.String, System.String, DiskCardGame.TriggerReceiver, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReceiverRespondsToCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 62
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static bool ReceiverRespondsToCustomTrigger(string pluginGuid, string triggerName, TriggerReceiver receiver, params object[] otherArgs)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: receiver
+      type: DiskCardGame.TriggerReceiver
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ReceiverRespondsToCustomTrigger(pluginGuid As String, triggerName As String, receiver As TriggerReceiver, ParamArray otherArgs As Object()) As Boolean
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(String, String, TriggerReceiver, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger(System.String, System.String, DiskCardGame.TriggerReceiver, System.Object())
+  name.vb: ReceiverRespondsToCustomTrigger(String, String, TriggerReceiver, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  id: CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerSequence(TriggerReceiver, IEnumerator)
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerSequence(TriggerReceiver, IEnumerator)
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(DiskCardGame.TriggerReceiver, System.Collections.IEnumerator)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerSequence
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 67
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerSequence(TriggerReceiver receiver, IEnumerator triggerCoroutine)
+    parameters:
+    - id: receiver
+      type: DiskCardGame.TriggerReceiver
+    - id: triggerCoroutine
+      type: System.Collections.IEnumerator
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerSequence(receiver As TriggerReceiver, triggerCoroutine As IEnumerator) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  id: CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger,DiskCardGame.TriggerReceiver,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerSequence(CustomTrigger, TriggerReceiver, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerSequence(CustomTrigger, TriggerReceiver, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger, DiskCardGame.TriggerReceiver, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerSequence
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 114
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerSequence(CustomTrigger trigger, TriggerReceiver receiver, params object[] otherArgs)
+    parameters:
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: receiver
+      type: DiskCardGame.TriggerReceiver
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerSequence(trigger As CustomTrigger, receiver As TriggerReceiver, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerSequence(CustomTrigger, TriggerReceiver, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(InscryptionAPI.Triggers.CustomTrigger, DiskCardGame.TriggerReceiver, System.Object())
+  name.vb: CustomTriggerSequence(CustomTrigger, TriggerReceiver, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  id: CustomTriggerSequence(System.String,System.String,DiskCardGame.TriggerReceiver,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerSequence(String, String, TriggerReceiver, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerSequence(String, String, TriggerReceiver, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(System.String, System.String, DiskCardGame.TriggerReceiver, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerSequence
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 120
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerSequence(string pluginGuid, string triggerName, TriggerReceiver receiver, params object[] otherArgs)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: receiver
+      type: DiskCardGame.TriggerReceiver
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerSequence(pluginGuid As String, triggerName As String, receiver As TriggerReceiver, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerSequence(String, String, TriggerReceiver, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence(System.String, System.String, DiskCardGame.TriggerReceiver, System.Object())
+  name.vb: CustomTriggerSequence(String, String, TriggerReceiver, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  id: RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: RespondsToCustomTrigger(CardTriggerHandler, CustomTrigger, Object[])
+  nameWithType: CustomGlobalTriggerHandler.RespondsToCustomTrigger(CardTriggerHandler, CustomTrigger, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler, InscryptionAPI.Triggers.CustomTrigger, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RespondsToCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 150
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static bool RespondsToCustomTrigger(this CardTriggerHandler cth, CustomTrigger trigger, params object[] otherArgs)
+    parameters:
+    - id: cth
+      type: DiskCardGame.CardTriggerHandler
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RespondsToCustomTrigger(cth As CardTriggerHandler, trigger As CustomTrigger, ParamArray otherArgs As Object()) As Boolean
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.RespondsToCustomTrigger(CardTriggerHandler, CustomTrigger, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler, InscryptionAPI.Triggers.CustomTrigger, System.Object())
+  name.vb: RespondsToCustomTrigger(CardTriggerHandler, CustomTrigger, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  id: OnCustomTrigger(DiskCardGame.CardTriggerHandler,InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: OnCustomTrigger(CardTriggerHandler, CustomTrigger, Object[])
+  nameWithType: CustomGlobalTriggerHandler.OnCustomTrigger(CardTriggerHandler, CustomTrigger, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler, InscryptionAPI.Triggers.CustomTrigger, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: OnCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 155
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator OnCustomTrigger(this CardTriggerHandler cth, CustomTrigger trigger, params object[] otherArgs)
+    parameters:
+    - id: cth
+      type: DiskCardGame.CardTriggerHandler
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function OnCustomTrigger(cth As CardTriggerHandler, trigger As CustomTrigger, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.OnCustomTrigger(CardTriggerHandler, CustomTrigger, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler, InscryptionAPI.Triggers.CustomTrigger, System.Object())
+  name.vb: OnCustomTrigger(CardTriggerHandler, CustomTrigger, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  id: RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: RespondsToCustomTrigger(CardTriggerHandler, String, String, Object[])
+  nameWithType: CustomGlobalTriggerHandler.RespondsToCustomTrigger(CardTriggerHandler, String, String, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler, System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RespondsToCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 161
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static bool RespondsToCustomTrigger(this CardTriggerHandler cth, string pluginGuid, string triggerName, params object[] otherArgs)
+    parameters:
+    - id: cth
+      type: DiskCardGame.CardTriggerHandler
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RespondsToCustomTrigger(cth As CardTriggerHandler, pluginGuid As String, triggerName As String, ParamArray otherArgs As Object()) As Boolean
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.RespondsToCustomTrigger(CardTriggerHandler, String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger(DiskCardGame.CardTriggerHandler, System.String, System.String, System.Object())
+  name.vb: RespondsToCustomTrigger(CardTriggerHandler, String, String, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  id: OnCustomTrigger(DiskCardGame.CardTriggerHandler,System.String,System.String,System.Object[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: OnCustomTrigger(CardTriggerHandler, String, String, Object[])
+  nameWithType: CustomGlobalTriggerHandler.OnCustomTrigger(CardTriggerHandler, String, String, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler, System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: OnCustomTrigger
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 166
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator OnCustomTrigger(this CardTriggerHandler cth, string pluginGuid, string triggerName, params object[] otherArgs)
+    parameters:
+    - id: cth
+      type: DiskCardGame.CardTriggerHandler
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function OnCustomTrigger(cth As CardTriggerHandler, pluginGuid As String, triggerName As String, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger*
+  nameWithType.vb: CustomGlobalTriggerHandler.OnCustomTrigger(CardTriggerHandler, String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger(DiskCardGame.CardTriggerHandler, System.String, System.String, System.Object())
+  name.vb: OnCustomTrigger(CardTriggerHandler, String, String, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  id: CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerAll(CustomTrigger, Boolean, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger, Boolean, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger, System.Boolean, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerAll
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 172
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerAll(CustomTrigger trigger, bool triggerFacedown, params object[] otherArgs)
+    parameters:
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: triggerFacedown
+      type: System.Boolean
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerAll(trigger As CustomTrigger, triggerFacedown As Boolean, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerAll(CustomTrigger, Boolean, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(InscryptionAPI.Triggers.CustomTrigger, System.Boolean, System.Object())
+  name.vb: CustomTriggerAll(CustomTrigger, Boolean, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(System.String,System.String,System.Boolean,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(System.String,System.String,System.Boolean,System.Object[])
+  id: CustomTriggerAll(System.String,System.String,System.Boolean,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerAll(String, String, Boolean, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerAll(String, String, Boolean, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(System.String, System.String, System.Boolean, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerAll
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 179
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerAll(string pluginGuid, string triggerName, bool triggerFacedown, params object[] otherArgs)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: triggerFacedown
+      type: System.Boolean
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerAll(pluginGuid As String, triggerName As String, triggerFacedown As Boolean, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerAll(String, String, Boolean, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll(System.String, System.String, System.Boolean, System.Object())
+  name.vb: CustomTriggerAll(String, String, Boolean, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  id: CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger,System.Boolean,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerCardsOnBoard(CustomTrigger, Boolean, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(CustomTrigger, Boolean, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger, System.Boolean, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerCardsOnBoard
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 186
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerCardsOnBoard(CustomTrigger trigger, bool triggerFacedown, params object[] otherArgs)
+    parameters:
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: triggerFacedown
+      type: System.Boolean
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerCardsOnBoard(trigger As CustomTrigger, triggerFacedown As Boolean, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(CustomTrigger, Boolean, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(InscryptionAPI.Triggers.CustomTrigger, System.Boolean, System.Object())
+  name.vb: CustomTriggerCardsOnBoard(CustomTrigger, Boolean, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(System.String,System.String,System.Boolean,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(System.String,System.String,System.Boolean,System.Object[])
+  id: CustomTriggerCardsOnBoard(System.String,System.String,System.Boolean,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerCardsOnBoard(String, String, Boolean, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(String, String, Boolean, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(System.String, System.String, System.Boolean, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerCardsOnBoard
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 192
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerCardsOnBoard(string pluginGuid, string triggerName, bool triggerFacedown, params object[] otherArgs)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: triggerFacedown
+      type: System.Boolean
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerCardsOnBoard(pluginGuid As String, triggerName As String, triggerFacedown As Boolean, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(String, String, Boolean, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard(System.String, System.String, System.Boolean, System.Object())
+  name.vb: CustomTriggerCardsOnBoard(String, String, Boolean, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  id: CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerCardsInHand(CustomTrigger, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerCardsInHand
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 263
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerCardsInHand(CustomTrigger trigger, params object[] otherArgs)
+    parameters:
+    - id: trigger
+      type: InscryptionAPI.Triggers.CustomTrigger
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerCardsInHand(trigger As CustomTrigger, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerCardsInHand(CustomTrigger, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(InscryptionAPI.Triggers.CustomTrigger, System.Object())
+  name.vb: CustomTriggerCardsInHand(CustomTrigger, Object())
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(System.String,System.String,System.Object[])
+  commentId: M:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(System.String,System.String,System.Object[])
+  id: CustomTriggerCardsInHand(System.String,System.String,System.Object[])
+  parent: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  langs:
+  - csharp
+  - vb
+  name: CustomTriggerCardsInHand(String, String, Object[])
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsInHand(String, String, Object[])
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(System.String, System.String, System.Object[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CustomTriggerCardsInHand
+    path: ../InscryptionAPI/Triggers/CustomGlobalTriggerHandler.cs
+    startLine: 269
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Triggers
+  syntax:
+    content: public static IEnumerator CustomTriggerCardsInHand(string pluginGuid, string triggerName, params object[] otherArgs)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: triggerName
+      type: System.String
+    - id: otherArgs
+      type: System.Object[]
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: Public Shared Function CustomTriggerCardsInHand(pluginGuid As String, triggerName As String, ParamArray otherArgs As Object()) As IEnumerator
+  overload: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand*
+  nameWithType.vb: CustomGlobalTriggerHandler.CustomTriggerCardsInHand(String, String, Object())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand(System.String, System.String, System.Object())
+  name.vb: CustomTriggerCardsInHand(String, String, Object())
+references:
+- uid: InscryptionAPI.Triggers
+  commentId: N:InscryptionAPI.Triggers
+  name: InscryptionAPI.Triggers
+  nameWithType: InscryptionAPI.Triggers
+  fullName: InscryptionAPI.Triggers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger
+  name: RegisterCustomTrigger
+  nameWithType: CustomGlobalTriggerHandler.RegisterCustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RegisterCustomTrigger
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Type[]
+  isExternal: true
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  nameWithType.vb: Type()
+  fullName.vb: System.Type()
+  name.vb: Type()
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: System.Type
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: System.Type
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger
+  name: ReceiverRespondsToCustomTrigger
+  nameWithType: CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.ReceiverRespondsToCustomTrigger
+- uid: InscryptionAPI.Triggers.CustomTrigger
+  commentId: T:InscryptionAPI.Triggers.CustomTrigger
+  parent: InscryptionAPI.Triggers
+  name: CustomTrigger
+  nameWithType: CustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomTrigger
+- uid: DiskCardGame.TriggerReceiver
+  commentId: T:DiskCardGame.TriggerReceiver
+  parent: DiskCardGame
+  isExternal: true
+  name: TriggerReceiver
+  nameWithType: TriggerReceiver
+  fullName: DiskCardGame.TriggerReceiver
+- uid: System.Object[]
+  isExternal: true
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  nameWithType.vb: Object()
+  fullName.vb: System.Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence
+  name: CustomTriggerSequence
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerSequence
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerSequence
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger
+  name: RespondsToCustomTrigger
+  nameWithType: CustomGlobalTriggerHandler.RespondsToCustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.RespondsToCustomTrigger
+- uid: DiskCardGame.CardTriggerHandler
+  commentId: T:DiskCardGame.CardTriggerHandler
+  parent: DiskCardGame
+  isExternal: true
+  name: CardTriggerHandler
+  nameWithType: CardTriggerHandler
+  fullName: DiskCardGame.CardTriggerHandler
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger
+  name: OnCustomTrigger
+  nameWithType: CustomGlobalTriggerHandler.OnCustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.OnCustomTrigger
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll
+  name: CustomTriggerAll
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerAll
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerAll
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard
+  name: CustomTriggerCardsOnBoard
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsOnBoard
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand*
+  commentId: Overload:InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand
+  name: CustomTriggerCardsInHand
+  nameWithType: CustomGlobalTriggerHandler.CustomTriggerCardsInHand
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler.CustomTriggerCardsInHand

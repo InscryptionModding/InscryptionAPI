@@ -1,0 +1,28 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Guid
+  commentId: N:InscryptionAPI.Guid
+  id: InscryptionAPI.Guid
+  children:
+  - InscryptionAPI.Guid.GuidManager
+  - InscryptionAPI.Guid.TypeManager
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Guid
+  nameWithType: InscryptionAPI.Guid
+  fullName: InscryptionAPI.Guid
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Guid.TypeManager
+  commentId: T:InscryptionAPI.Guid.TypeManager
+  name: TypeManager
+  nameWithType: TypeManager
+  fullName: InscryptionAPI.Guid.TypeManager
+- uid: InscryptionAPI.Guid.GuidManager
+  commentId: T:InscryptionAPI.Guid.GuidManager
+  name: GuidManager
+  nameWithType: GuidManager
+  fullName: InscryptionAPI.Guid.GuidManager

@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Encounters
+  commentId: N:InscryptionAPI.Encounters
+  id: InscryptionAPI.Encounters
+  children:
+  - InscryptionAPI.Encounters.AIManager
+  - InscryptionAPI.Encounters.AIManager.FullAI
+  - InscryptionAPI.Encounters.CustomNodeData
+  - InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition
+  - InscryptionAPI.Encounters.EncounterBuilder
+  - InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+  - InscryptionAPI.Encounters.EncounterExtensions
+  - InscryptionAPI.Encounters.EncounterManager
+  - InscryptionAPI.Encounters.ICustomNodeSequence
+  - InscryptionAPI.Encounters.NodeManager
+  - InscryptionAPI.Encounters.NodeManager.NodeInfo
+  - InscryptionAPI.Encounters.NodeManager.NodePosition
+  - InscryptionAPI.Encounters.OpponentManager
+  - InscryptionAPI.Encounters.OpponentManager.FullOpponent
+  - InscryptionAPI.Encounters.SpecialSequenceManager
+  - InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer
+  - InscryptionAPI.Encounters.TurnBuilder`1
+  - InscryptionAPI.Encounters.TurnExtensions
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Encounters
+  nameWithType: InscryptionAPI.Encounters
+  fullName: InscryptionAPI.Encounters
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Encounters.AIManager
+  commentId: T:InscryptionAPI.Encounters.AIManager
+  name: AIManager
+  nameWithType: AIManager
+  fullName: InscryptionAPI.Encounters.AIManager
+- uid: InscryptionAPI.Encounters.AIManager.FullAI
+  commentId: T:InscryptionAPI.Encounters.AIManager.FullAI
+  parent: InscryptionAPI.Encounters
+  name: AIManager.FullAI
+  nameWithType: AIManager.FullAI
+  fullName: InscryptionAPI.Encounters.AIManager.FullAI
+- uid: InscryptionAPI.Encounters.CustomNodeData
+  commentId: T:InscryptionAPI.Encounters.CustomNodeData
+  parent: InscryptionAPI.Encounters
+  name: CustomNodeData
+  nameWithType: CustomNodeData
+  fullName: InscryptionAPI.Encounters.CustomNodeData
+- uid: InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition
+  commentId: T:InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition
+  parent: InscryptionAPI.Encounters
+  name: CustomNodeData.NodeGenerationCondition
+  nameWithType: CustomNodeData.NodeGenerationCondition
+  fullName: InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition
+- uid: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+  commentId: T:InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+  parent: InscryptionAPI.Encounters
+  name: EncounterBuilderBlueprintData
+  nameWithType: EncounterBuilderBlueprintData
+  fullName: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+- uid: InscryptionAPI.Encounters.EncounterBuilder
+  commentId: T:InscryptionAPI.Encounters.EncounterBuilder
+  parent: InscryptionAPI.Encounters
+  name: EncounterBuilder
+  nameWithType: EncounterBuilder
+  fullName: InscryptionAPI.Encounters.EncounterBuilder
+- uid: InscryptionAPI.Encounters.EncounterExtensions
+  commentId: T:InscryptionAPI.Encounters.EncounterExtensions
+  parent: InscryptionAPI.Encounters
+  name: EncounterExtensions
+  nameWithType: EncounterExtensions
+  fullName: InscryptionAPI.Encounters.EncounterExtensions
+- uid: InscryptionAPI.Encounters.EncounterManager
+  commentId: T:InscryptionAPI.Encounters.EncounterManager
+  name: EncounterManager
+  nameWithType: EncounterManager
+  fullName: InscryptionAPI.Encounters.EncounterManager
+- uid: InscryptionAPI.Encounters.ICustomNodeSequence
+  commentId: T:InscryptionAPI.Encounters.ICustomNodeSequence
+  name: ICustomNodeSequence
+  nameWithType: ICustomNodeSequence
+  fullName: InscryptionAPI.Encounters.ICustomNodeSequence
+- uid: InscryptionAPI.Encounters.NodeManager
+  commentId: T:InscryptionAPI.Encounters.NodeManager
+  name: NodeManager
+  nameWithType: NodeManager
+  fullName: InscryptionAPI.Encounters.NodeManager
+- uid: InscryptionAPI.Encounters.NodeManager.NodePosition
+  commentId: T:InscryptionAPI.Encounters.NodeManager.NodePosition
+  parent: InscryptionAPI.Encounters
+  name: NodeManager.NodePosition
+  nameWithType: NodeManager.NodePosition
+  fullName: InscryptionAPI.Encounters.NodeManager.NodePosition
+- uid: InscryptionAPI.Encounters.NodeManager.NodeInfo
+  commentId: T:InscryptionAPI.Encounters.NodeManager.NodeInfo
+  parent: InscryptionAPI.Encounters
+  name: NodeManager.NodeInfo
+  nameWithType: NodeManager.NodeInfo
+  fullName: InscryptionAPI.Encounters.NodeManager.NodeInfo
+- uid: InscryptionAPI.Encounters.OpponentManager
+  commentId: T:InscryptionAPI.Encounters.OpponentManager
+  name: OpponentManager
+  nameWithType: OpponentManager
+  fullName: InscryptionAPI.Encounters.OpponentManager
+- uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent
+  commentId: T:InscryptionAPI.Encounters.OpponentManager.FullOpponent
+  parent: InscryptionAPI.Encounters
+  name: OpponentManager.FullOpponent
+  nameWithType: OpponentManager.FullOpponent
+  fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent
+- uid: InscryptionAPI.Encounters.SpecialSequenceManager
+  commentId: T:InscryptionAPI.Encounters.SpecialSequenceManager
+  name: SpecialSequenceManager
+  nameWithType: SpecialSequenceManager
+  fullName: InscryptionAPI.Encounters.SpecialSequenceManager
+- uid: InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer
+  commentId: T:InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer
+  parent: InscryptionAPI.Encounters
+  name: SpecialSequenceManager.FullSpecialSequencer
+  nameWithType: SpecialSequenceManager.FullSpecialSequencer
+  fullName: InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer
+- uid: InscryptionAPI.Encounters.TurnBuilder`1
+  commentId: T:InscryptionAPI.Encounters.TurnBuilder`1
+  name: TurnBuilder<T>
+  nameWithType: TurnBuilder<T>
+  fullName: InscryptionAPI.Encounters.TurnBuilder<T>
+  nameWithType.vb: TurnBuilder(Of T)
+  fullName.vb: InscryptionAPI.Encounters.TurnBuilder(Of T)
+  name.vb: TurnBuilder(Of T)
+  spec.csharp:
+  - uid: InscryptionAPI.Encounters.TurnBuilder`1
+    name: TurnBuilder
+    nameWithType: TurnBuilder
+    fullName: InscryptionAPI.Encounters.TurnBuilder
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: InscryptionAPI.Encounters.TurnBuilder`1
+    name: TurnBuilder
+    nameWithType: TurnBuilder
+    fullName: InscryptionAPI.Encounters.TurnBuilder
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Encounters.TurnExtensions
+  commentId: T:InscryptionAPI.Encounters.TurnExtensions
+  parent: InscryptionAPI.Encounters
+  name: TurnExtensions
+  nameWithType: TurnExtensions
+  fullName: InscryptionAPI.Encounters.TurnExtensions
+- uid: InscryptionAPI.Encounters
+  commentId: N:InscryptionAPI.Encounters
+  name: InscryptionAPI.Encounters
+  nameWithType: InscryptionAPI.Encounters
+  fullName: InscryptionAPI.Encounters

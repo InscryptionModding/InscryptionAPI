@@ -1,0 +1,1811 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.NewCard
+  commentId: T:APIPlugin.NewCard
+  id: NewCard
+  parent: APIPlugin
+  children:
+  - APIPlugin.NewCard.abilityIds
+  - APIPlugin.NewCard.Add(DiskCardGame.CardInfo,List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  - APIPlugin.NewCard.Add(System.String,System.String,System.Int32,System.Int32,List{DiskCardGame.CardMetaCategory},DiskCardGame.CardComplexity,CardTemple,System.String,System.Boolean,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType},DiskCardGame.SpecialStatIcon,List{DiskCardGame.Tribe},List{DiskCardGame.Trait},List{DiskCardGame.SpecialTriggeredAbility},List{DiskCardGame.Ability},List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},DiskCardGame.EvolveParams,System.String,DiskCardGame.TailParams,DiskCardGame.IceCubeParams,System.Boolean,System.Boolean,List{DiskCardGame.CardAppearanceBehaviour.Appearance},UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.GameObject,List{UnityEngine.Texture},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  - APIPlugin.NewCard.cards
+  - APIPlugin.NewCard.emissions
+  - APIPlugin.NewCard.evolveIds
+  - APIPlugin.NewCard.iceCubeIds
+  - APIPlugin.NewCard.specialAbilityIds
+  - APIPlugin.NewCard.tailIds
+  langs:
+  - csharp
+  - vb
+  name: NewCard
+  nameWithType: NewCard
+  fullName: APIPlugin.NewCard
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NewCard
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 6
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static class NewCard
+    content.vb: Public Module NewCard
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: APIPlugin.NewCard.cards
+  commentId: F:APIPlugin.NewCard.cards
+  id: cards
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: cards
+  nameWithType: NewCard.cards
+  fullName: APIPlugin.NewCard.cards
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: cards
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 9
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardInfo> cards
+    return:
+      type: List{DiskCardGame.CardInfo}
+    content.vb: Public Shared cards As List(Of CardInfo)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.abilityIds
+  commentId: F:APIPlugin.NewCard.abilityIds
+  id: abilityIds
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: abilityIds
+  nameWithType: NewCard.abilityIds
+  fullName: APIPlugin.NewCard.abilityIds
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: abilityIds
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<int, List<AbilityIdentifier>> abilityIds
+    return:
+      type: Dictionary{System.Int32,List{APIPlugin.AbilityIdentifier}}
+    content.vb: Public Shared abilityIds As Dictionary(Of Integer, List(Of AbilityIdentifier))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.specialAbilityIds
+  commentId: F:APIPlugin.NewCard.specialAbilityIds
+  id: specialAbilityIds
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: specialAbilityIds
+  nameWithType: NewCard.specialAbilityIds
+  fullName: APIPlugin.NewCard.specialAbilityIds
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: specialAbilityIds
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds
+    return:
+      type: Dictionary{System.Int32,List{APIPlugin.SpecialAbilityIdentifier}}
+    content.vb: Public Shared specialAbilityIds As Dictionary(Of Integer, List(Of SpecialAbilityIdentifier))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.evolveIds
+  commentId: F:APIPlugin.NewCard.evolveIds
+  id: evolveIds
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: evolveIds
+  nameWithType: NewCard.evolveIds
+  fullName: APIPlugin.NewCard.evolveIds
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: evolveIds
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 13
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<int, EvolveIdentifier> evolveIds
+    return:
+      type: Dictionary{System.Int32,APIPlugin.EvolveIdentifier}
+    content.vb: Public Shared evolveIds As Dictionary(Of Integer, EvolveIdentifier)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.iceCubeIds
+  commentId: F:APIPlugin.NewCard.iceCubeIds
+  id: iceCubeIds
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: iceCubeIds
+  nameWithType: NewCard.iceCubeIds
+  fullName: APIPlugin.NewCard.iceCubeIds
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: iceCubeIds
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<int, IceCubeIdentifier> iceCubeIds
+    return:
+      type: Dictionary{System.Int32,APIPlugin.IceCubeIdentifier}
+    content.vb: Public Shared iceCubeIds As Dictionary(Of Integer, IceCubeIdentifier)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.tailIds
+  commentId: F:APIPlugin.NewCard.tailIds
+  id: tailIds
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: tailIds
+  nameWithType: NewCard.tailIds
+  fullName: APIPlugin.NewCard.tailIds
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: tailIds
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 15
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<int, TailIdentifier> tailIds
+    return:
+      type: Dictionary{System.Int32,APIPlugin.TailIdentifier}
+    content.vb: Public Shared tailIds As Dictionary(Of Integer, TailIdentifier)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.emissions
+  commentId: F:APIPlugin.NewCard.emissions
+  id: emissions
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: emissions
+  nameWithType: NewCard.emissions
+  fullName: APIPlugin.NewCard.emissions
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: emissions
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 17
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<string, Sprite> emissions
+    return:
+      type: Dictionary{System.String,UnityEngine.Sprite}
+    content.vb: Public Shared emissions As Dictionary(Of String, Sprite)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCard.Add(DiskCardGame.CardInfo,List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  commentId: M:APIPlugin.NewCard.Add(DiskCardGame.CardInfo,List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  id: Add(DiskCardGame.CardInfo,List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: Add(CardInfo, List<AbilityIdentifier>, List<SpecialAbilityIdentifier>, EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  nameWithType: NewCard.Add(CardInfo, List<AbilityIdentifier>, List<SpecialAbilityIdentifier>, EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  fullName: APIPlugin.NewCard.Add(DiskCardGame.CardInfo, List<APIPlugin.AbilityIdentifier>, List<APIPlugin.SpecialAbilityIdentifier>, APIPlugin.EvolveIdentifier, APIPlugin.IceCubeIdentifier, APIPlugin.TailIdentifier)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 19
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static void Add(CardInfo card, List<AbilityIdentifier> abilityIdsParam = null, List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null, EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+    parameters:
+    - id: card
+      type: DiskCardGame.CardInfo
+    - id: abilityIdsParam
+      type: List{APIPlugin.AbilityIdentifier}
+    - id: specialAbilitiesIdsParam
+      type: List{APIPlugin.SpecialAbilityIdentifier}
+    - id: evolveId
+      type: APIPlugin.EvolveIdentifier
+    - id: iceCubeId
+      type: APIPlugin.IceCubeIdentifier
+    - id: tailId
+      type: APIPlugin.TailIdentifier
+    content.vb: Public Shared Sub Add(card As CardInfo, abilityIdsParam As List(Of AbilityIdentifier) = Nothing, specialAbilitiesIdsParam As List(Of SpecialAbilityIdentifier) = Nothing, evolveId As EvolveIdentifier = Nothing, iceCubeId As IceCubeIdentifier = Nothing, tailId As TailIdentifier = Nothing)
+  overload: APIPlugin.NewCard.Add*
+  nameWithType.vb: NewCard.Add(CardInfo, List(Of AbilityIdentifier), List(Of SpecialAbilityIdentifier), EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: APIPlugin.NewCard.Add(DiskCardGame.CardInfo, List(Of APIPlugin.AbilityIdentifier), List(Of APIPlugin.SpecialAbilityIdentifier), APIPlugin.EvolveIdentifier, APIPlugin.IceCubeIdentifier, APIPlugin.TailIdentifier)
+  name.vb: Add(CardInfo, List(Of AbilityIdentifier), List(Of SpecialAbilityIdentifier), EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+- uid: APIPlugin.NewCard.Add(System.String,System.String,System.Int32,System.Int32,List{DiskCardGame.CardMetaCategory},DiskCardGame.CardComplexity,CardTemple,System.String,System.Boolean,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType},DiskCardGame.SpecialStatIcon,List{DiskCardGame.Tribe},List{DiskCardGame.Trait},List{DiskCardGame.SpecialTriggeredAbility},List{DiskCardGame.Ability},List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},DiskCardGame.EvolveParams,System.String,DiskCardGame.TailParams,DiskCardGame.IceCubeParams,System.Boolean,System.Boolean,List{DiskCardGame.CardAppearanceBehaviour.Appearance},UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.GameObject,List{UnityEngine.Texture},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  commentId: M:APIPlugin.NewCard.Add(System.String,System.String,System.Int32,System.Int32,List{DiskCardGame.CardMetaCategory},DiskCardGame.CardComplexity,CardTemple,System.String,System.Boolean,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType},DiskCardGame.SpecialStatIcon,List{DiskCardGame.Tribe},List{DiskCardGame.Trait},List{DiskCardGame.SpecialTriggeredAbility},List{DiskCardGame.Ability},List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},DiskCardGame.EvolveParams,System.String,DiskCardGame.TailParams,DiskCardGame.IceCubeParams,System.Boolean,System.Boolean,List{DiskCardGame.CardAppearanceBehaviour.Appearance},UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.GameObject,List{UnityEngine.Texture},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  id: Add(System.String,System.String,System.Int32,System.Int32,List{DiskCardGame.CardMetaCategory},DiskCardGame.CardComplexity,CardTemple,System.String,System.Boolean,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType},DiskCardGame.SpecialStatIcon,List{DiskCardGame.Tribe},List{DiskCardGame.Trait},List{DiskCardGame.SpecialTriggeredAbility},List{DiskCardGame.Ability},List{APIPlugin.AbilityIdentifier},List{APIPlugin.SpecialAbilityIdentifier},DiskCardGame.EvolveParams,System.String,DiskCardGame.TailParams,DiskCardGame.IceCubeParams,System.Boolean,System.Boolean,List{DiskCardGame.CardAppearanceBehaviour.Appearance},UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.Texture,UnityEngine.Texture2D,UnityEngine.Texture2D,UnityEngine.GameObject,List{UnityEngine.Texture},APIPlugin.EvolveIdentifier,APIPlugin.IceCubeIdentifier,APIPlugin.TailIdentifier)
+  parent: APIPlugin.NewCard
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, Int32, Int32, List<CardMetaCategory>, CardComplexity, CardTemple, String, Boolean, Int32, Int32, Int32, List<GemType>, SpecialStatIcon, List<Tribe>, List<Trait>, List<SpecialTriggeredAbility>, List<Ability>, List<AbilityIdentifier>, List<SpecialAbilityIdentifier>, EvolveParams, String, TailParams, IceCubeParams, Boolean, Boolean, List<CardAppearanceBehaviour.Appearance>, Texture2D, Texture2D, Texture, Texture2D, Texture2D, GameObject, List<Texture>, EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  nameWithType: NewCard.Add(String, String, Int32, Int32, List<CardMetaCategory>, CardComplexity, CardTemple, String, Boolean, Int32, Int32, Int32, List<GemType>, SpecialStatIcon, List<Tribe>, List<Trait>, List<SpecialTriggeredAbility>, List<Ability>, List<AbilityIdentifier>, List<SpecialAbilityIdentifier>, EvolveParams, String, TailParams, IceCubeParams, Boolean, Boolean, List<CardAppearanceBehaviour.Appearance>, Texture2D, Texture2D, Texture, Texture2D, Texture2D, GameObject, List<Texture>, EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  fullName: APIPlugin.NewCard.Add(System.String, System.String, System.Int32, System.Int32, List<DiskCardGame.CardMetaCategory>, DiskCardGame.CardComplexity, CardTemple, System.String, System.Boolean, System.Int32, System.Int32, System.Int32, List<DiskCardGame.GemType>, DiskCardGame.SpecialStatIcon, List<DiskCardGame.Tribe>, List<DiskCardGame.Trait>, List<DiskCardGame.SpecialTriggeredAbility>, List<DiskCardGame.Ability>, List<APIPlugin.AbilityIdentifier>, List<APIPlugin.SpecialAbilityIdentifier>, DiskCardGame.EvolveParams, System.String, DiskCardGame.TailParams, DiskCardGame.IceCubeParams, System.Boolean, System.Boolean, List<DiskCardGame.CardAppearanceBehaviour.Appearance>, UnityEngine.Texture2D, UnityEngine.Texture2D, UnityEngine.Texture, UnityEngine.Texture2D, UnityEngine.Texture2D, UnityEngine.GameObject, List<UnityEngine.Texture>, APIPlugin.EvolveIdentifier, APIPlugin.IceCubeIdentifier, APIPlugin.TailIdentifier)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCard.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Compatibility/NewCard.cs
+    startLine: 42
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static void Add(string name, string displayedName, int baseAttack, int baseHealth, List<CardMetaCategory> metaCategories, CardComplexity cardComplexity, CardTemple temple, string description = null, bool hideAttackAndHealth = false, int bloodCost = 0, int bonesCost = 0, int energyCost = 0, List<GemType> gemsCost = null, SpecialStatIcon specialStatIcon = SpecialStatIcon.None, List<Tribe> tribes = null, List<Trait> traits = null, List<SpecialTriggeredAbility> specialAbilities = null, List<Ability> abilities = null, List<AbilityIdentifier> abilityIdsParam = null, List<SpecialAbilityIdentifier> specialAbilitiesIdsParam = null, EvolveParams evolveParams = null, string defaultEvolutionName = null, TailParams tailParams = null, IceCubeParams iceCubeParams = null, bool flipPortraitForStrafe = false, bool onePerDeck = false, List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = null, Texture2D defaultTex = null, Texture2D altTex = null, Texture titleGraphic = null, Texture2D pixelTex = null, Texture2D emissionTex = null, GameObject animatedPortrait = null, List<Texture> decals = null, EvolveIdentifier evolveId = null, IceCubeIdentifier iceCubeId = null, TailIdentifier tailId = null)
+    parameters:
+    - id: name
+      type: System.String
+    - id: displayedName
+      type: System.String
+    - id: baseAttack
+      type: System.Int32
+    - id: baseHealth
+      type: System.Int32
+    - id: metaCategories
+      type: List{DiskCardGame.CardMetaCategory}
+    - id: cardComplexity
+      type: DiskCardGame.CardComplexity
+    - id: temple
+      type: CardTemple
+    - id: description
+      type: System.String
+    - id: hideAttackAndHealth
+      type: System.Boolean
+    - id: bloodCost
+      type: System.Int32
+    - id: bonesCost
+      type: System.Int32
+    - id: energyCost
+      type: System.Int32
+    - id: gemsCost
+      type: List{DiskCardGame.GemType}
+    - id: specialStatIcon
+      type: DiskCardGame.SpecialStatIcon
+    - id: tribes
+      type: List{DiskCardGame.Tribe}
+    - id: traits
+      type: List{DiskCardGame.Trait}
+    - id: specialAbilities
+      type: List{DiskCardGame.SpecialTriggeredAbility}
+    - id: abilities
+      type: List{DiskCardGame.Ability}
+    - id: abilityIdsParam
+      type: List{APIPlugin.AbilityIdentifier}
+    - id: specialAbilitiesIdsParam
+      type: List{APIPlugin.SpecialAbilityIdentifier}
+    - id: evolveParams
+      type: DiskCardGame.EvolveParams
+    - id: defaultEvolutionName
+      type: System.String
+    - id: tailParams
+      type: DiskCardGame.TailParams
+    - id: iceCubeParams
+      type: DiskCardGame.IceCubeParams
+    - id: flipPortraitForStrafe
+      type: System.Boolean
+    - id: onePerDeck
+      type: System.Boolean
+    - id: appearanceBehaviour
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    - id: defaultTex
+      type: UnityEngine.Texture2D
+    - id: altTex
+      type: UnityEngine.Texture2D
+    - id: titleGraphic
+      type: UnityEngine.Texture
+    - id: pixelTex
+      type: UnityEngine.Texture2D
+    - id: emissionTex
+      type: UnityEngine.Texture2D
+    - id: animatedPortrait
+      type: UnityEngine.GameObject
+    - id: decals
+      type: List{UnityEngine.Texture}
+    - id: evolveId
+      type: APIPlugin.EvolveIdentifier
+    - id: iceCubeId
+      type: APIPlugin.IceCubeIdentifier
+    - id: tailId
+      type: APIPlugin.TailIdentifier
+    content.vb: Public Shared Sub Add(name As String, displayedName As String, baseAttack As Integer, baseHealth As Integer, metaCategories As List(Of CardMetaCategory), cardComplexity As CardComplexity, temple As CardTemple, description As String = Nothing, hideAttackAndHealth As Boolean = False, bloodCost As Integer = 0, bonesCost As Integer = 0, energyCost As Integer = 0, gemsCost As List(Of GemType) = Nothing, specialStatIcon As SpecialStatIcon = SpecialStatIcon.None, tribes As List(Of Tribe) = Nothing, traits As List(Of Trait) = Nothing, specialAbilities As List(Of SpecialTriggeredAbility) = Nothing, abilities As List(Of Ability) = Nothing, abilityIdsParam As List(Of AbilityIdentifier) = Nothing, specialAbilitiesIdsParam As List(Of SpecialAbilityIdentifier) = Nothing, evolveParams As EvolveParams = Nothing, defaultEvolutionName As String = Nothing, tailParams As TailParams = Nothing, iceCubeParams As IceCubeParams = Nothing, flipPortraitForStrafe As Boolean = False, onePerDeck As Boolean = False, appearanceBehaviour As List(Of CardAppearanceBehaviour.Appearance) = Nothing, defaultTex As Texture2D = Nothing, altTex As Texture2D = Nothing, titleGraphic As Texture = Nothing, pixelTex As Texture2D = Nothing, emissionTex As Texture2D = Nothing, animatedPortrait As GameObject = Nothing, decals As List(Of Texture) = Nothing, evolveId As EvolveIdentifier = Nothing, iceCubeId As IceCubeIdentifier = Nothing, tailId As TailIdentifier = Nothing)
+  overload: APIPlugin.NewCard.Add*
+  nameWithType.vb: NewCard.Add(String, String, Int32, Int32, List(Of CardMetaCategory), CardComplexity, CardTemple, String, Boolean, Int32, Int32, Int32, List(Of GemType), SpecialStatIcon, List(Of Tribe), List(Of Trait), List(Of SpecialTriggeredAbility), List(Of Ability), List(Of AbilityIdentifier), List(Of SpecialAbilityIdentifier), EvolveParams, String, TailParams, IceCubeParams, Boolean, Boolean, List(Of CardAppearanceBehaviour.Appearance), Texture2D, Texture2D, Texture, Texture2D, Texture2D, GameObject, List(Of Texture), EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: APIPlugin.NewCard.Add(System.String, System.String, System.Int32, System.Int32, List(Of DiskCardGame.CardMetaCategory), DiskCardGame.CardComplexity, CardTemple, System.String, System.Boolean, System.Int32, System.Int32, System.Int32, List(Of DiskCardGame.GemType), DiskCardGame.SpecialStatIcon, List(Of DiskCardGame.Tribe), List(Of DiskCardGame.Trait), List(Of DiskCardGame.SpecialTriggeredAbility), List(Of DiskCardGame.Ability), List(Of APIPlugin.AbilityIdentifier), List(Of APIPlugin.SpecialAbilityIdentifier), DiskCardGame.EvolveParams, System.String, DiskCardGame.TailParams, DiskCardGame.IceCubeParams, System.Boolean, System.Boolean, List(Of DiskCardGame.CardAppearanceBehaviour.Appearance), UnityEngine.Texture2D, UnityEngine.Texture2D, UnityEngine.Texture, UnityEngine.Texture2D, UnityEngine.Texture2D, UnityEngine.GameObject, List(Of UnityEngine.Texture), APIPlugin.EvolveIdentifier, APIPlugin.IceCubeIdentifier, APIPlugin.TailIdentifier)
+  name.vb: Add(String, String, Int32, Int32, List(Of CardMetaCategory), CardComplexity, CardTemple, String, Boolean, Int32, Int32, Int32, List(Of GemType), SpecialStatIcon, List(Of Tribe), List(Of Trait), List(Of SpecialTriggeredAbility), List(Of Ability), List(Of AbilityIdentifier), List(Of SpecialAbilityIdentifier), EvolveParams, String, TailParams, IceCubeParams, Boolean, Boolean, List(Of CardAppearanceBehaviour.Appearance), Texture2D, Texture2D, Texture, Texture2D, Texture2D, GameObject, List(Of Texture), EvolveIdentifier, IceCubeIdentifier, TailIdentifier)
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: List{DiskCardGame.CardInfo}
+  commentId: '!:List{DiskCardGame.CardInfo}'
+  definition: List`1
+  name: List<CardInfo>
+  nameWithType: List<CardInfo>
+  fullName: List<DiskCardGame.CardInfo>
+  nameWithType.vb: List(Of CardInfo)
+  fullName.vb: List(Of DiskCardGame.CardInfo)
+  name.vb: List(Of CardInfo)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.Int32,List{APIPlugin.AbilityIdentifier}}
+  commentId: '!:Dictionary{System.Int32,List{APIPlugin.AbilityIdentifier}}'
+  definition: Dictionary`2
+  name: Dictionary<Int32, List<AbilityIdentifier>>
+  nameWithType: Dictionary<Int32, List<AbilityIdentifier>>
+  fullName: Dictionary<System.Int32, List<APIPlugin.AbilityIdentifier>>
+  nameWithType.vb: Dictionary(Of Int32, List(Of AbilityIdentifier))
+  fullName.vb: Dictionary(Of System.Int32, List(Of APIPlugin.AbilityIdentifier))
+  name.vb: Dictionary(Of Int32, List(Of AbilityIdentifier))
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.AbilityIdentifier
+    name: AbilityIdentifier
+    nameWithType: AbilityIdentifier
+    fullName: APIPlugin.AbilityIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.AbilityIdentifier
+    name: AbilityIdentifier
+    nameWithType: AbilityIdentifier
+    fullName: APIPlugin.AbilityIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary`2
+  isExternal: true
+  name: Dictionary<, >
+  nameWithType: Dictionary<, >
+  fullName: Dictionary<, >
+  nameWithType.vb: Dictionary(Of , )
+  fullName.vb: Dictionary(Of , )
+  name.vb: Dictionary(Of , )
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.Int32,List{APIPlugin.SpecialAbilityIdentifier}}
+  commentId: '!:Dictionary{System.Int32,List{APIPlugin.SpecialAbilityIdentifier}}'
+  definition: Dictionary`2
+  name: Dictionary<Int32, List<SpecialAbilityIdentifier>>
+  nameWithType: Dictionary<Int32, List<SpecialAbilityIdentifier>>
+  fullName: Dictionary<System.Int32, List<APIPlugin.SpecialAbilityIdentifier>>
+  nameWithType.vb: Dictionary(Of Int32, List(Of SpecialAbilityIdentifier))
+  fullName.vb: Dictionary(Of System.Int32, List(Of APIPlugin.SpecialAbilityIdentifier))
+  name.vb: Dictionary(Of Int32, List(Of SpecialAbilityIdentifier))
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.SpecialAbilityIdentifier
+    name: SpecialAbilityIdentifier
+    nameWithType: SpecialAbilityIdentifier
+    fullName: APIPlugin.SpecialAbilityIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.SpecialAbilityIdentifier
+    name: SpecialAbilityIdentifier
+    nameWithType: SpecialAbilityIdentifier
+    fullName: APIPlugin.SpecialAbilityIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.Int32,APIPlugin.EvolveIdentifier}
+  commentId: '!:Dictionary{System.Int32,APIPlugin.EvolveIdentifier}'
+  definition: Dictionary`2
+  name: Dictionary<Int32, EvolveIdentifier>
+  nameWithType: Dictionary<Int32, EvolveIdentifier>
+  fullName: Dictionary<System.Int32, APIPlugin.EvolveIdentifier>
+  nameWithType.vb: Dictionary(Of Int32, EvolveIdentifier)
+  fullName.vb: Dictionary(Of System.Int32, APIPlugin.EvolveIdentifier)
+  name.vb: Dictionary(Of Int32, EvolveIdentifier)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.EvolveIdentifier
+    name: EvolveIdentifier
+    nameWithType: EvolveIdentifier
+    fullName: APIPlugin.EvolveIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.EvolveIdentifier
+    name: EvolveIdentifier
+    nameWithType: EvolveIdentifier
+    fullName: APIPlugin.EvolveIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.Int32,APIPlugin.IceCubeIdentifier}
+  commentId: '!:Dictionary{System.Int32,APIPlugin.IceCubeIdentifier}'
+  definition: Dictionary`2
+  name: Dictionary<Int32, IceCubeIdentifier>
+  nameWithType: Dictionary<Int32, IceCubeIdentifier>
+  fullName: Dictionary<System.Int32, APIPlugin.IceCubeIdentifier>
+  nameWithType.vb: Dictionary(Of Int32, IceCubeIdentifier)
+  fullName.vb: Dictionary(Of System.Int32, APIPlugin.IceCubeIdentifier)
+  name.vb: Dictionary(Of Int32, IceCubeIdentifier)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.IceCubeIdentifier
+    name: IceCubeIdentifier
+    nameWithType: IceCubeIdentifier
+    fullName: APIPlugin.IceCubeIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.IceCubeIdentifier
+    name: IceCubeIdentifier
+    nameWithType: IceCubeIdentifier
+    fullName: APIPlugin.IceCubeIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.Int32,APIPlugin.TailIdentifier}
+  commentId: '!:Dictionary{System.Int32,APIPlugin.TailIdentifier}'
+  definition: Dictionary`2
+  name: Dictionary<Int32, TailIdentifier>
+  nameWithType: Dictionary<Int32, TailIdentifier>
+  fullName: Dictionary<System.Int32, APIPlugin.TailIdentifier>
+  nameWithType.vb: Dictionary(Of Int32, TailIdentifier)
+  fullName.vb: Dictionary(Of System.Int32, APIPlugin.TailIdentifier)
+  name.vb: Dictionary(Of Int32, TailIdentifier)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.TailIdentifier
+    name: TailIdentifier
+    nameWithType: TailIdentifier
+    fullName: APIPlugin.TailIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.TailIdentifier
+    name: TailIdentifier
+    nameWithType: TailIdentifier
+    fullName: APIPlugin.TailIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary{System.String,UnityEngine.Sprite}
+  commentId: '!:Dictionary{System.String,UnityEngine.Sprite}'
+  definition: Dictionary`2
+  name: Dictionary<String, Sprite>
+  nameWithType: Dictionary<String, Sprite>
+  fullName: Dictionary<System.String, UnityEngine.Sprite>
+  nameWithType.vb: Dictionary(Of String, Sprite)
+  fullName.vb: Dictionary(Of System.String, UnityEngine.Sprite)
+  name.vb: Dictionary(Of String, Sprite)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: UnityEngine.Sprite
+    name: Sprite
+    nameWithType: Sprite
+    fullName: UnityEngine.Sprite
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: UnityEngine.Sprite
+    name: Sprite
+    nameWithType: Sprite
+    fullName: UnityEngine.Sprite
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin.NewCard.Add*
+  commentId: Overload:APIPlugin.NewCard.Add
+  name: Add
+  nameWithType: NewCard.Add
+  fullName: APIPlugin.NewCard.Add
+- uid: DiskCardGame.CardInfo
+  commentId: T:DiskCardGame.CardInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardInfo
+  nameWithType: CardInfo
+  fullName: DiskCardGame.CardInfo
+- uid: List{APIPlugin.AbilityIdentifier}
+  commentId: '!:List{APIPlugin.AbilityIdentifier}'
+  definition: List`1
+  name: List<AbilityIdentifier>
+  nameWithType: List<AbilityIdentifier>
+  fullName: List<APIPlugin.AbilityIdentifier>
+  nameWithType.vb: List(Of AbilityIdentifier)
+  fullName.vb: List(Of APIPlugin.AbilityIdentifier)
+  name.vb: List(Of AbilityIdentifier)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.AbilityIdentifier
+    name: AbilityIdentifier
+    nameWithType: AbilityIdentifier
+    fullName: APIPlugin.AbilityIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.AbilityIdentifier
+    name: AbilityIdentifier
+    nameWithType: AbilityIdentifier
+    fullName: APIPlugin.AbilityIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{APIPlugin.SpecialAbilityIdentifier}
+  commentId: '!:List{APIPlugin.SpecialAbilityIdentifier}'
+  definition: List`1
+  name: List<SpecialAbilityIdentifier>
+  nameWithType: List<SpecialAbilityIdentifier>
+  fullName: List<APIPlugin.SpecialAbilityIdentifier>
+  nameWithType.vb: List(Of SpecialAbilityIdentifier)
+  fullName.vb: List(Of APIPlugin.SpecialAbilityIdentifier)
+  name.vb: List(Of SpecialAbilityIdentifier)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.SpecialAbilityIdentifier
+    name: SpecialAbilityIdentifier
+    nameWithType: SpecialAbilityIdentifier
+    fullName: APIPlugin.SpecialAbilityIdentifier
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.SpecialAbilityIdentifier
+    name: SpecialAbilityIdentifier
+    nameWithType: SpecialAbilityIdentifier
+    fullName: APIPlugin.SpecialAbilityIdentifier
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin.EvolveIdentifier
+  commentId: T:APIPlugin.EvolveIdentifier
+  parent: APIPlugin
+  name: EvolveIdentifier
+  nameWithType: EvolveIdentifier
+  fullName: APIPlugin.EvolveIdentifier
+- uid: APIPlugin.IceCubeIdentifier
+  commentId: T:APIPlugin.IceCubeIdentifier
+  parent: APIPlugin
+  name: IceCubeIdentifier
+  nameWithType: IceCubeIdentifier
+  fullName: APIPlugin.IceCubeIdentifier
+- uid: APIPlugin.TailIdentifier
+  commentId: T:APIPlugin.TailIdentifier
+  parent: APIPlugin
+  name: TailIdentifier
+  nameWithType: TailIdentifier
+  fullName: APIPlugin.TailIdentifier
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: List{DiskCardGame.CardMetaCategory}
+  commentId: '!:List{DiskCardGame.CardMetaCategory}'
+  definition: List`1
+  name: List<CardMetaCategory>
+  nameWithType: List<CardMetaCategory>
+  fullName: List<DiskCardGame.CardMetaCategory>
+  nameWithType.vb: List(Of CardMetaCategory)
+  fullName.vb: List(Of DiskCardGame.CardMetaCategory)
+  name.vb: List(Of CardMetaCategory)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardMetaCategory
+    name: CardMetaCategory
+    nameWithType: CardMetaCategory
+    fullName: DiskCardGame.CardMetaCategory
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardMetaCategory
+    name: CardMetaCategory
+    nameWithType: CardMetaCategory
+    fullName: DiskCardGame.CardMetaCategory
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.CardComplexity
+  commentId: T:DiskCardGame.CardComplexity
+  parent: DiskCardGame
+  isExternal: true
+  name: CardComplexity
+  nameWithType: CardComplexity
+  fullName: DiskCardGame.CardComplexity
+- uid: CardTemple
+  commentId: T:CardTemple
+  isExternal: true
+  name: CardTemple
+  nameWithType: CardTemple
+  fullName: CardTemple
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: List{DiskCardGame.GemType}
+  commentId: '!:List{DiskCardGame.GemType}'
+  definition: List`1
+  name: List<GemType>
+  nameWithType: List<GemType>
+  fullName: List<DiskCardGame.GemType>
+  nameWithType.vb: List(Of GemType)
+  fullName.vb: List(Of DiskCardGame.GemType)
+  name.vb: List(Of GemType)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.GemType
+    name: GemType
+    nameWithType: GemType
+    fullName: DiskCardGame.GemType
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.GemType
+    name: GemType
+    nameWithType: GemType
+    fullName: DiskCardGame.GemType
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.SpecialStatIcon
+  commentId: T:DiskCardGame.SpecialStatIcon
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialStatIcon
+  nameWithType: SpecialStatIcon
+  fullName: DiskCardGame.SpecialStatIcon
+- uid: List{DiskCardGame.Tribe}
+  commentId: '!:List{DiskCardGame.Tribe}'
+  definition: List`1
+  name: List<Tribe>
+  nameWithType: List<Tribe>
+  fullName: List<DiskCardGame.Tribe>
+  nameWithType.vb: List(Of Tribe)
+  fullName.vb: List(Of DiskCardGame.Tribe)
+  name.vb: List(Of Tribe)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.Trait}
+  commentId: '!:List{DiskCardGame.Trait}'
+  definition: List`1
+  name: List<Trait>
+  nameWithType: List<Trait>
+  fullName: List<DiskCardGame.Trait>
+  nameWithType.vb: List(Of Trait)
+  fullName.vb: List(Of DiskCardGame.Trait)
+  name.vb: List(Of Trait)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.Trait
+    name: Trait
+    nameWithType: Trait
+    fullName: DiskCardGame.Trait
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.Trait
+    name: Trait
+    nameWithType: Trait
+    fullName: DiskCardGame.Trait
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.SpecialTriggeredAbility}
+  commentId: '!:List{DiskCardGame.SpecialTriggeredAbility}'
+  definition: List`1
+  name: List<SpecialTriggeredAbility>
+  nameWithType: List<SpecialTriggeredAbility>
+  fullName: List<DiskCardGame.SpecialTriggeredAbility>
+  nameWithType.vb: List(Of SpecialTriggeredAbility)
+  fullName.vb: List(Of DiskCardGame.SpecialTriggeredAbility)
+  name.vb: List(Of SpecialTriggeredAbility)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.SpecialTriggeredAbility
+    name: SpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbility
+    fullName: DiskCardGame.SpecialTriggeredAbility
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.SpecialTriggeredAbility
+    name: SpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbility
+    fullName: DiskCardGame.SpecialTriggeredAbility
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.Ability}
+  commentId: '!:List{DiskCardGame.Ability}'
+  definition: List`1
+  name: List<Ability>
+  nameWithType: List<Ability>
+  fullName: List<DiskCardGame.Ability>
+  nameWithType.vb: List(Of Ability)
+  fullName.vb: List(Of DiskCardGame.Ability)
+  name.vb: List(Of Ability)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.Ability
+    name: Ability
+    nameWithType: Ability
+    fullName: DiskCardGame.Ability
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.Ability
+    name: Ability
+    nameWithType: Ability
+    fullName: DiskCardGame.Ability
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.EvolveParams
+  commentId: T:DiskCardGame.EvolveParams
+  parent: DiskCardGame
+  isExternal: true
+  name: EvolveParams
+  nameWithType: EvolveParams
+  fullName: DiskCardGame.EvolveParams
+- uid: DiskCardGame.TailParams
+  commentId: T:DiskCardGame.TailParams
+  parent: DiskCardGame
+  isExternal: true
+  name: TailParams
+  nameWithType: TailParams
+  fullName: DiskCardGame.TailParams
+- uid: DiskCardGame.IceCubeParams
+  commentId: T:DiskCardGame.IceCubeParams
+  parent: DiskCardGame
+  isExternal: true
+  name: IceCubeParams
+  nameWithType: IceCubeParams
+  fullName: DiskCardGame.IceCubeParams
+- uid: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+  commentId: '!:List{DiskCardGame.CardAppearanceBehaviour.Appearance}'
+  definition: List`1
+  name: List<CardAppearanceBehaviour.Appearance>
+  nameWithType: List<CardAppearanceBehaviour.Appearance>
+  fullName: List<DiskCardGame.CardAppearanceBehaviour.Appearance>
+  nameWithType.vb: List(Of CardAppearanceBehaviour.Appearance)
+  fullName.vb: List(Of DiskCardGame.CardAppearanceBehaviour.Appearance)
+  name.vb: List(Of CardAppearanceBehaviour.Appearance)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: UnityEngine.Texture
+  commentId: T:UnityEngine.Texture
+  parent: UnityEngine
+  isExternal: true
+  name: Texture
+  nameWithType: Texture
+  fullName: UnityEngine.Texture
+- uid: UnityEngine.GameObject
+  commentId: T:UnityEngine.GameObject
+  parent: UnityEngine
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: UnityEngine.GameObject
+- uid: List{UnityEngine.Texture}
+  commentId: '!:List{UnityEngine.Texture}'
+  definition: List`1
+  name: List<Texture>
+  nameWithType: List<Texture>
+  fullName: List<UnityEngine.Texture>
+  nameWithType.vb: List(Of Texture)
+  fullName.vb: List(Of UnityEngine.Texture)
+  name.vb: List(Of Texture)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Texture
+    name: Texture
+    nameWithType: Texture
+    fullName: UnityEngine.Texture
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Texture
+    name: Texture
+    nameWithType: Texture
+    fullName: UnityEngine.Texture
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine

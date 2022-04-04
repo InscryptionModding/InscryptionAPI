@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  commentId: T:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  id: ActivatedAbilityIconFix
+  parent: InscryptionCommunityPatch.Card
+  children:
+  - InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility(DiskCardGame.PlayableCard)
+  - InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(System.Boolean@)
+  - InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(DiskCardGame.Card@)
+  langs:
+  - csharp
+  - vb
+  name: ActivatedAbilityIconFix
+  nameWithType: ActivatedAbilityIconFix
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  type: Class
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ActivatedAbilityIconFix
+    path: ../InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+    startLine: 5
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class ActivatedAbilityIconFix
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module ActivatedAbilityIconFix
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility(DiskCardGame.PlayableCard)
+  commentId: M:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility(DiskCardGame.PlayableCard)
+  id: HasActivatedAbility(DiskCardGame.PlayableCard)
+  isExtensionMethod: true
+  parent: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  langs:
+  - csharp
+  - vb
+  name: HasActivatedAbility(PlayableCard)
+  nameWithType: ActivatedAbilityIconFix.HasActivatedAbility(PlayableCard)
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility(DiskCardGame.PlayableCard)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: HasActivatedAbility
+    path: ../InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+    startLine: 8
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public static bool HasActivatedAbility(this PlayableCard card)
+    parameters:
+    - id: card
+      type: DiskCardGame.PlayableCard
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function HasActivatedAbility(card As PlayableCard) As Boolean
+  overload: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(System.Boolean@)
+  commentId: M:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(System.Boolean@)
+  id: RespondsToResolveOnBoard_PostFix(System.Boolean@)
+  parent: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  langs:
+  - csharp
+  - vb
+  name: RespondsToResolveOnBoard_PostFix(ref Boolean)
+  nameWithType: ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(ref Boolean)
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(ref System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RespondsToResolveOnBoard_PostFix
+    path: ../InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+    startLine: 18
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(ActivatedAbilityBehaviour), "RespondsToResolveOnBoard")]
+
+      [HarmonyPostfix]
+
+      public static void RespondsToResolveOnBoard_PostFix(ref bool __result)
+    parameters:
+    - id: __result
+      type: System.Boolean
+    content.vb: >-
+      <HarmonyPatch(GetType(ActivatedAbilityBehaviour), "RespondsToResolveOnBoard")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub RespondsToResolveOnBoard_PostFix(ByRef __result As Boolean)
+  overload: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.ActivatedAbilityBehaviour
+    - type: System.String
+      value: RespondsToResolveOnBoard
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(ByRef Boolean)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix(ByRef System.Boolean)
+  name.vb: RespondsToResolveOnBoard_PostFix(ByRef Boolean)
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(DiskCardGame.Card@)
+  commentId: M:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(DiskCardGame.Card@)
+  id: UpdateInteractableIcons_PostFix(DiskCardGame.Card@)
+  parent: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+  langs:
+  - csharp
+  - vb
+  name: UpdateInteractableIcons_PostFix(ref Card)
+  nameWithType: ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(ref Card)
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(ref DiskCardGame.Card)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: UpdateInteractableIcons_PostFix
+    path: ../InscryptionCommunityPatch/Card/ActivatedAbilityIconFix.cs
+    startLine: 25
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(Card), "UpdateInteractableIcons")]
+
+      [HarmonyPostfix]
+
+      public static void UpdateInteractableIcons_PostFix(ref Card __instance)
+    parameters:
+    - id: __instance
+      type: DiskCardGame.Card
+    content.vb: >-
+      <HarmonyPatch(GetType(Card), "UpdateInteractableIcons")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub UpdateInteractableIcons_PostFix(ByRef __instance As Card)
+  overload: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.Card
+    - type: System.String
+      value: UpdateInteractableIcons
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(ByRef Card)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix(ByRef DiskCardGame.Card)
+  name.vb: UpdateInteractableIcons_PostFix(ByRef Card)
+references:
+- uid: InscryptionCommunityPatch.Card
+  commentId: N:InscryptionCommunityPatch.Card
+  name: InscryptionCommunityPatch.Card
+  nameWithType: InscryptionCommunityPatch.Card
+  fullName: InscryptionCommunityPatch.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility*
+  commentId: Overload:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility
+  name: HasActivatedAbility
+  nameWithType: ActivatedAbilityIconFix.HasActivatedAbility
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.HasActivatedAbility
+- uid: DiskCardGame.PlayableCard
+  commentId: T:DiskCardGame.PlayableCard
+  parent: DiskCardGame
+  isExternal: true
+  name: PlayableCard
+  nameWithType: PlayableCard
+  fullName: DiskCardGame.PlayableCard
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix*
+  commentId: Overload:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix
+  name: RespondsToResolveOnBoard_PostFix
+  nameWithType: ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.RespondsToResolveOnBoard_PostFix
+- uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix*
+  commentId: Overload:InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix
+  name: UpdateInteractableIcons_PostFix
+  nameWithType: ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix
+  fullName: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix.UpdateInteractableIcons_PostFix
+- uid: DiskCardGame.Card
+  commentId: T:DiskCardGame.Card
+  parent: DiskCardGame
+  isExternal: true
+  name: Card
+  nameWithType: Card
+  fullName: DiskCardGame.Card

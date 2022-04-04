@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Regions
+  commentId: N:InscryptionAPI.Regions
+  id: InscryptionAPI.Regions
+  children:
+  - InscryptionAPI.Regions.Part1RegionData
+  - InscryptionAPI.Regions.RegionExtensions
+  - InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Regions
+  nameWithType: InscryptionAPI.Regions
+  fullName: InscryptionAPI.Regions
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Regions.Part1RegionData
+  commentId: T:InscryptionAPI.Regions.Part1RegionData
+  name: Part1RegionData
+  nameWithType: Part1RegionData
+  fullName: InscryptionAPI.Regions.Part1RegionData
+- uid: InscryptionAPI.Regions.RegionExtensions
+  commentId: T:InscryptionAPI.Regions.RegionExtensions
+  name: RegionExtensions
+  nameWithType: RegionExtensions
+  fullName: InscryptionAPI.Regions.RegionExtensions
+- uid: InscryptionAPI.Regions.RegionManager
+  commentId: T:InscryptionAPI.Regions.RegionManager
+  name: RegionManager
+  nameWithType: RegionManager
+  fullName: InscryptionAPI.Regions.RegionManager

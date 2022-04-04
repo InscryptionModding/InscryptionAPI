@@ -1,0 +1,1391 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.AbilityExtensions
+  commentId: T:InscryptionAPI.Card.AbilityExtensions
+  id: AbilityExtensions
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{DiskCardGame.AbilityInfo},DiskCardGame.Ability)
+  - InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},DiskCardGame.Ability)
+  - InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  - InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo,DiskCardGame.AbilityMetaCategory[])
+  - InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  - InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  - InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.AbilityInfo)
+  - InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.StatIconInfo)
+  - InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.AbilityInfo)
+  - InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.StatIconInfo)
+  - InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  - InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  - InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  - InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  - InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  - InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  langs:
+  - csharp
+  - vb
+  name: AbilityExtensions
+  nameWithType: AbilityExtensions
+  fullName: InscryptionAPI.Card.AbilityExtensions
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AbilityExtensions
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 6
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static class AbilityExtensions
+    content.vb: Public Module AbilityExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{DiskCardGame.AbilityInfo},DiskCardGame.Ability)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{DiskCardGame.AbilityInfo},DiskCardGame.Ability)
+  id: AbilityByID(IEnumerable{DiskCardGame.AbilityInfo},DiskCardGame.Ability)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AbilityByID(IEnumerable<AbilityInfo>, Ability)
+  nameWithType: AbilityExtensions.AbilityByID(IEnumerable<AbilityInfo>, Ability)
+  fullName: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable<DiskCardGame.AbilityInfo>, DiskCardGame.Ability)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AbilityByID
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo AbilityByID(this IEnumerable<AbilityInfo> abilities, Ability id)
+    parameters:
+    - id: abilities
+      type: IEnumerable{DiskCardGame.AbilityInfo}
+    - id: id
+      type: DiskCardGame.Ability
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AbilityByID(abilities As IEnumerable(Of AbilityInfo), id As Ability) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.AbilityByID*
+  nameWithType.vb: AbilityExtensions.AbilityByID(IEnumerable(Of AbilityInfo), Ability)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable(Of DiskCardGame.AbilityInfo), DiskCardGame.Ability)
+  name.vb: AbilityByID(IEnumerable(Of AbilityInfo), Ability)
+- uid: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},DiskCardGame.Ability)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},DiskCardGame.Ability)
+  id: AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},DiskCardGame.Ability)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AbilityByID(IEnumerable<AbilityManager.FullAbility>, Ability)
+  nameWithType: AbilityExtensions.AbilityByID(IEnumerable<AbilityManager.FullAbility>, Ability)
+  fullName: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable<InscryptionAPI.Card.AbilityManager.FullAbility>, DiskCardGame.Ability)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AbilityByID
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityManager.FullAbility AbilityByID(this IEnumerable<AbilityManager.FullAbility> abilities, Ability id)
+    parameters:
+    - id: abilities
+      type: IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility}
+    - id: id
+      type: DiskCardGame.Ability
+    return:
+      type: InscryptionAPI.Card.AbilityManager.FullAbility
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AbilityByID(abilities As IEnumerable(Of AbilityManager.FullAbility), id As Ability) As AbilityManager.FullAbility
+  overload: InscryptionAPI.Card.AbilityExtensions.AbilityByID*
+  nameWithType.vb: AbilityExtensions.AbilityByID(IEnumerable(Of AbilityManager.FullAbility), Ability)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable(Of InscryptionAPI.Card.AbilityManager.FullAbility), DiskCardGame.Ability)
+  name.vb: AbilityByID(IEnumerable(Of AbilityManager.FullAbility), Ability)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  id: SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetIcon(AbilityInfo, Texture2D)
+  nameWithType: AbilityExtensions.SetIcon(AbilityInfo, Texture2D)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    - id: icon
+      type: UnityEngine.Texture2D
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetIcon(info As AbilityInfo, icon As Texture2D) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetIcon*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  id: SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetCustomFlippedTexture(AbilityInfo, Texture2D)
+  nameWithType: AbilityExtensions.SetCustomFlippedTexture(AbilityInfo, Texture2D)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetCustomFlippedTexture
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 22
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    - id: icon
+      type: UnityEngine.Texture2D
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetCustomFlippedTexture(info As AbilityInfo, icon As Texture2D) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  id: SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetIcon(AbilityManager.FullAbility, Texture2D)
+  nameWithType: AbilityExtensions.SetIcon(AbilityManager.FullAbility, Texture2D)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 32
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static void SetIcon(this AbilityManager.FullAbility info, Texture2D icon)
+    parameters:
+    - id: info
+      type: InscryptionAPI.Card.AbilityManager.FullAbility
+    - id: icon
+      type: UnityEngine.Texture2D
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetIcon(info As AbilityManager.FullAbility, icon As Texture2D)
+  overload: InscryptionAPI.Card.AbilityExtensions.SetIcon*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  id: SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)
+  nameWithType: AbilityExtensions.SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetCustomFlippedTexture
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 37
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static void SetCustomFlippedTexture(this AbilityManager.FullAbility info, Texture2D icon)
+    parameters:
+    - id: info
+      type: InscryptionAPI.Card.AbilityManager.FullAbility
+    - id: icon
+      type: UnityEngine.Texture2D
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub SetCustomFlippedTexture(info As AbilityManager.FullAbility, icon As Texture2D)
+  overload: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  id: SetIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetIcon(StatIconInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType: AbilityExtensions.SetIcon(StatIconInfo, Texture2D, Nullable<FilterMode>)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 43
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    - id: icon
+      type: UnityEngine.Texture2D
+    - id: filterMode
+      type: System.Nullable{UnityEngine.FilterMode}
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetIcon(info As StatIconInfo, icon As Texture2D, filterMode As FilterMode? = Nothing) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetIcon*
+  nameWithType.vb: AbilityExtensions.SetIcon(StatIconInfo, Texture2D, Nullable(Of FilterMode))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  name.vb: SetIcon(StatIconInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  id: SetIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetIcon(StatIconInfo, String, Nullable<FilterMode>)
+  nameWithType: AbilityExtensions.SetIcon(StatIconInfo, String, Nullable<FilterMode>)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo, System.String, System.Nullable<UnityEngine.FilterMode>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 51
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    - id: pathToArt
+      type: System.String
+    - id: filterMode
+      type: System.Nullable{UnityEngine.FilterMode}
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetIcon(info As StatIconInfo, pathToArt As String, filterMode As FilterMode? = Nothing) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetIcon*
+  nameWithType.vb: AbilityExtensions.SetIcon(StatIconInfo, String, Nullable(Of FilterMode))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo, System.String, System.Nullable(Of UnityEngine.FilterMode))
+  name.vb: SetIcon(StatIconInfo, String, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  id: SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPixelIcon(StatIconInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType: AbilityExtensions.SetPixelIcon(StatIconInfo, Texture2D, Nullable<FilterMode>)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetPixelIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 59
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    - id: icon
+      type: UnityEngine.Texture2D
+    - id: filterMode
+      type: System.Nullable{UnityEngine.FilterMode}
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetPixelIcon(info As StatIconInfo, icon As Texture2D, filterMode As FilterMode? = Nothing) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon*
+  nameWithType.vb: AbilityExtensions.SetPixelIcon(StatIconInfo, Texture2D, Nullable(Of FilterMode))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  name.vb: SetPixelIcon(StatIconInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  id: SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType: AbilityExtensions.SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable<FilterMode>)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetPixelAbilityIcon
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 68
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo SetPixelAbilityIcon(this AbilityInfo info, Texture2D icon, FilterMode? filterMode = null)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    - id: icon
+      type: UnityEngine.Texture2D
+    - id: filterMode
+      type: System.Nullable{UnityEngine.FilterMode}
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetPixelAbilityIcon(info As AbilityInfo, icon As Texture2D, filterMode As FilterMode? = Nothing) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon*
+  nameWithType.vb: AbilityExtensions.SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable(Of FilterMode))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  name.vb: SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  id: AddMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddMetaCategories(AbilityInfo, AbilityMetaCategory[])
+  nameWithType: AbilityExtensions.AddMetaCategories(AbilityInfo, AbilityMetaCategory[])
+  fullName: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo, DiskCardGame.AbilityMetaCategory[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddMetaCategories
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 77
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo AddMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    - id: categories
+      type: DiskCardGame.AbilityMetaCategory[]
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddMetaCategories(info As AbilityInfo, ParamArray categories As AbilityMetaCategory()) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories*
+  nameWithType.vb: AbilityExtensions.AddMetaCategories(AbilityInfo, AbilityMetaCategory())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo, DiskCardGame.AbilityMetaCategory())
+  name.vb: AddMetaCategories(AbilityInfo, AbilityMetaCategory())
+- uid: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo,DiskCardGame.AbilityMetaCategory[])
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo,DiskCardGame.AbilityMetaCategory[])
+  id: AddMetaCategories(DiskCardGame.StatIconInfo,DiskCardGame.AbilityMetaCategory[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddMetaCategories(StatIconInfo, AbilityMetaCategory[])
+  nameWithType: AbilityExtensions.AddMetaCategories(StatIconInfo, AbilityMetaCategory[])
+  fullName: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo, DiskCardGame.AbilityMetaCategory[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddMetaCategories
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 86
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    - id: categories
+      type: DiskCardGame.AbilityMetaCategory[]
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddMetaCategories(info As StatIconInfo, ParamArray categories As AbilityMetaCategory()) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories*
+  nameWithType.vb: AbilityExtensions.AddMetaCategories(StatIconInfo, AbilityMetaCategory())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo, DiskCardGame.AbilityMetaCategory())
+  name.vb: AddMetaCategories(StatIconInfo, AbilityMetaCategory())
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.AbilityInfo)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.AbilityInfo)
+  id: SetDefaultPart1Ability(DiskCardGame.AbilityInfo)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDefaultPart1Ability(AbilityInfo)
+  nameWithType: AbilityExtensions.SetDefaultPart1Ability(AbilityInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.AbilityInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetDefaultPart1Ability
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 95
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo SetDefaultPart1Ability(this AbilityInfo info)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetDefaultPart1Ability(info As AbilityInfo) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.StatIconInfo)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.StatIconInfo)
+  id: SetDefaultPart1Ability(DiskCardGame.StatIconInfo)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDefaultPart1Ability(StatIconInfo)
+  nameWithType: AbilityExtensions.SetDefaultPart1Ability(StatIconInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.StatIconInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetDefaultPart1Ability
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 101
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo SetDefaultPart1Ability(this StatIconInfo info)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetDefaultPart1Ability(info As StatIconInfo) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.AbilityInfo)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.AbilityInfo)
+  id: SetDefaultPart3Ability(DiskCardGame.AbilityInfo)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDefaultPart3Ability(AbilityInfo)
+  nameWithType: AbilityExtensions.SetDefaultPart3Ability(AbilityInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.AbilityInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetDefaultPart3Ability
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 107
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static AbilityInfo SetDefaultPart3Ability(this AbilityInfo info)
+    parameters:
+    - id: info
+      type: DiskCardGame.AbilityInfo
+    return:
+      type: DiskCardGame.AbilityInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetDefaultPart3Ability(info As AbilityInfo) As AbilityInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.StatIconInfo)
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.StatIconInfo)
+  id: SetDefaultPart3Ability(DiskCardGame.StatIconInfo)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.AbilityExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDefaultPart3Ability(StatIconInfo)
+  nameWithType: AbilityExtensions.SetDefaultPart3Ability(StatIconInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.StatIconInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/AbilityExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetDefaultPart3Ability
+    path: ../InscryptionAPI/Card/AbilityExtensions.cs
+    startLine: 113
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static StatIconInfo SetDefaultPart3Ability(this StatIconInfo info)
+    parameters:
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetDefaultPart3Ability(info As StatIconInfo) As StatIconInfo
+  overload: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Card.AbilityExtensions.AbilityByID*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.AbilityByID
+  name: AbilityByID
+  nameWithType: AbilityExtensions.AbilityByID
+  fullName: InscryptionAPI.Card.AbilityExtensions.AbilityByID
+- uid: IEnumerable{DiskCardGame.AbilityInfo}
+  commentId: '!:IEnumerable{DiskCardGame.AbilityInfo}'
+  definition: IEnumerable`1
+  name: IEnumerable<AbilityInfo>
+  nameWithType: IEnumerable<AbilityInfo>
+  fullName: IEnumerable<DiskCardGame.AbilityInfo>
+  nameWithType.vb: IEnumerable(Of AbilityInfo)
+  fullName.vb: IEnumerable(Of DiskCardGame.AbilityInfo)
+  name.vb: IEnumerable(Of AbilityInfo)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.AbilityInfo
+    name: AbilityInfo
+    nameWithType: AbilityInfo
+    fullName: DiskCardGame.AbilityInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.AbilityInfo
+    name: AbilityInfo
+    nameWithType: AbilityInfo
+    fullName: DiskCardGame.AbilityInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.Ability
+  commentId: T:DiskCardGame.Ability
+  parent: DiskCardGame
+  isExternal: true
+  name: Ability
+  nameWithType: Ability
+  fullName: DiskCardGame.Ability
+- uid: DiskCardGame.AbilityInfo
+  commentId: T:DiskCardGame.AbilityInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: AbilityInfo
+  nameWithType: AbilityInfo
+  fullName: DiskCardGame.AbilityInfo
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility}
+  commentId: '!:IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility}'
+  definition: IEnumerable`1
+  name: IEnumerable<AbilityManager.FullAbility>
+  nameWithType: IEnumerable<AbilityManager.FullAbility>
+  fullName: IEnumerable<InscryptionAPI.Card.AbilityManager.FullAbility>
+  nameWithType.vb: IEnumerable(Of AbilityManager.FullAbility)
+  fullName.vb: IEnumerable(Of InscryptionAPI.Card.AbilityManager.FullAbility)
+  name.vb: IEnumerable(Of AbilityManager.FullAbility)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: InscryptionAPI.Card.AbilityManager.FullAbility
+    name: AbilityManager.FullAbility
+    nameWithType: AbilityManager.FullAbility
+    fullName: InscryptionAPI.Card.AbilityManager.FullAbility
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: InscryptionAPI.Card.AbilityManager.FullAbility
+    name: AbilityManager.FullAbility
+    nameWithType: AbilityManager.FullAbility
+    fullName: InscryptionAPI.Card.AbilityManager.FullAbility
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility
+  commentId: T:InscryptionAPI.Card.AbilityManager.FullAbility
+  parent: InscryptionAPI.Card
+  name: AbilityManager.FullAbility
+  nameWithType: AbilityManager.FullAbility
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility
+- uid: InscryptionAPI.Card.AbilityExtensions.SetIcon*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetIcon
+  name: SetIcon
+  nameWithType: AbilityExtensions.SetIcon
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture
+  name: SetCustomFlippedTexture
+  nameWithType: AbilityExtensions.SetCustomFlippedTexture
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture
+- uid: DiskCardGame.StatIconInfo
+  commentId: T:DiskCardGame.StatIconInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: StatIconInfo
+  nameWithType: StatIconInfo
+  fullName: DiskCardGame.StatIconInfo
+- uid: System.Nullable{UnityEngine.FilterMode}
+  commentId: T:System.Nullable{UnityEngine.FilterMode}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<FilterMode>
+  nameWithType: Nullable<FilterMode>
+  fullName: System.Nullable<UnityEngine.FilterMode>
+  nameWithType.vb: Nullable(Of FilterMode)
+  fullName.vb: System.Nullable(Of UnityEngine.FilterMode)
+  name.vb: Nullable(Of FilterMode)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.FilterMode
+    name: FilterMode
+    nameWithType: FilterMode
+    fullName: UnityEngine.FilterMode
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.FilterMode
+    name: FilterMode
+    nameWithType: FilterMode
+    fullName: UnityEngine.FilterMode
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetPixelIcon
+  name: SetPixelIcon
+  nameWithType: AbilityExtensions.SetPixelIcon
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon
+  name: SetPixelAbilityIcon
+  nameWithType: AbilityExtensions.SetPixelAbilityIcon
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon
+- uid: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.AddMetaCategories
+  name: AddMetaCategories
+  nameWithType: AbilityExtensions.AddMetaCategories
+  fullName: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories
+- uid: DiskCardGame.AbilityMetaCategory[]
+  isExternal: true
+  name: AbilityMetaCategory[]
+  nameWithType: AbilityMetaCategory[]
+  fullName: DiskCardGame.AbilityMetaCategory[]
+  nameWithType.vb: AbilityMetaCategory()
+  fullName.vb: DiskCardGame.AbilityMetaCategory()
+  name.vb: AbilityMetaCategory()
+  spec.csharp:
+  - uid: DiskCardGame.AbilityMetaCategory
+    name: AbilityMetaCategory
+    nameWithType: AbilityMetaCategory
+    fullName: DiskCardGame.AbilityMetaCategory
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.AbilityMetaCategory
+    name: AbilityMetaCategory
+    nameWithType: AbilityMetaCategory
+    fullName: DiskCardGame.AbilityMetaCategory
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability
+  name: SetDefaultPart1Ability
+  nameWithType: AbilityExtensions.SetDefaultPart1Ability
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability
+- uid: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability*
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability
+  name: SetDefaultPart3Ability
+  nameWithType: AbilityExtensions.SetDefaultPart3Ability
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability

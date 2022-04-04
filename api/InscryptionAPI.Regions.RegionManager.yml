@@ -1,0 +1,1225 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Regions.RegionManager
+  commentId: T:InscryptionAPI.Regions.RegionManager
+  id: RegionManager
+  parent: InscryptionAPI.Regions
+  children:
+  - InscryptionAPI.Regions.RegionManager.Add(DiskCardGame.RegionData,System.Int32)
+  - InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+  - InscryptionAPI.Regions.RegionManager.BaseGameRegions
+  - InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Boolean)
+  - InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Int32,System.Boolean)
+  - InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Boolean)
+  - InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Int32,System.Boolean)
+  - InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
+  - InscryptionAPI.Regions.RegionManager.ModifyRegionsList
+  - InscryptionAPI.Regions.RegionManager.New(System.String,System.Int32,System.Boolean)
+  - InscryptionAPI.Regions.RegionManager.Remove(DiskCardGame.RegionData)
+  - InscryptionAPI.Regions.RegionManager.SyncRegionList
+  langs:
+  - csharp
+  - vb
+  name: RegionManager
+  nameWithType: RegionManager
+  fullName: InscryptionAPI.Regions.RegionManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegionManager
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class RegionManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module RegionManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Regions.RegionManager.BaseGameRegions
+  commentId: F:InscryptionAPI.Regions.RegionManager.BaseGameRegions
+  id: BaseGameRegions
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: BaseGameRegions
+  nameWithType: RegionManager.BaseGameRegions
+  fullName: InscryptionAPI.Regions.RegionManager.BaseGameRegions
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: BaseGameRegions
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static readonly ReadOnlyCollection<RegionData> BaseGameRegions
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.RegionData}
+    content.vb: Public Shared ReadOnly BaseGameRegions As ReadOnlyCollection(Of RegionData)
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Regions.RegionManager.ModifyRegionsList
+  commentId: E:InscryptionAPI.Regions.RegionManager.ModifyRegionsList
+  id: ModifyRegionsList
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: ModifyRegionsList
+  nameWithType: RegionManager.ModifyRegionsList
+  fullName: InscryptionAPI.Regions.RegionManager.ModifyRegionsList
+  type: Event
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ModifyRegionsList
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 13
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList
+    return:
+      type: Func{List{DiskCardGame.RegionData},List{DiskCardGame.RegionData}}
+    content.vb: Public Shared Event ModifyRegionsList As Func(Of List(Of RegionData), List(Of RegionData))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.SyncRegionList
+  commentId: M:InscryptionAPI.Regions.RegionManager.SyncRegionList
+  id: SyncRegionList
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: SyncRegionList()
+  nameWithType: RegionManager.SyncRegionList()
+  fullName: InscryptionAPI.Regions.RegionManager.SyncRegionList()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SyncRegionList
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 37
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static void SyncRegionList()
+    content.vb: Public Shared Sub SyncRegionList
+  overload: InscryptionAPI.Regions.RegionManager.SyncRegionList*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+  commentId: P:InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+  id: AllRegionsCopy
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: AllRegionsCopy
+  nameWithType: RegionManager.AllRegionsCopy
+  fullName: InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AllRegionsCopy
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 72
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static List<RegionData> AllRegionsCopy { get; }
+    parameters: []
+    return:
+      type: List{DiskCardGame.RegionData}
+    content.vb: Public Shared ReadOnly Property AllRegionsCopy As List(Of RegionData)
+  overload: InscryptionAPI.Regions.RegionManager.AllRegionsCopy*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Regions.RegionManager.Add(DiskCardGame.RegionData,System.Int32)
+  commentId: M:InscryptionAPI.Regions.RegionManager.Add(DiskCardGame.RegionData,System.Int32)
+  id: Add(DiskCardGame.RegionData,System.Int32)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: Add(RegionData, Int32)
+  nameWithType: RegionManager.Add(RegionData, Int32)
+  fullName: InscryptionAPI.Regions.RegionManager.Add(DiskCardGame.RegionData, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 74
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static void Add(RegionData newRegion, int tier)
+    parameters:
+    - id: newRegion
+      type: DiskCardGame.RegionData
+    - id: tier
+      type: System.Int32
+    content.vb: Public Shared Sub Add(newRegion As RegionData, tier As Integer)
+  overload: InscryptionAPI.Regions.RegionManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.Remove(DiskCardGame.RegionData)
+  commentId: M:InscryptionAPI.Regions.RegionManager.Remove(DiskCardGame.RegionData)
+  id: Remove(DiskCardGame.RegionData)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(RegionData)
+  nameWithType: RegionManager.Remove(RegionData)
+  fullName: InscryptionAPI.Regions.RegionManager.Remove(DiskCardGame.RegionData)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Remove
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 80
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static void Remove(RegionData region)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Sub Remove(region As RegionData)
+  overload: InscryptionAPI.Regions.RegionManager.Remove*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.New(System.String,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionManager.New(System.String,System.Int32,System.Boolean)
+  id: New(System.String,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: New(String, Int32, Boolean)
+  nameWithType: RegionManager.New(String, Int32, Boolean)
+  fullName: InscryptionAPI.Regions.RegionManager.New(System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: New
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 82
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData New(string name, int tier, bool addToPool = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: tier
+      type: System.Int32
+    - id: addToPool
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function New(name As String, tier As Integer, addToPool As Boolean = True) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.New*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Int32,System.Boolean)
+  id: FromTierFull(System.String,System.Int32,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: FromTierFull(String, Int32, Int32, Boolean)
+  nameWithType: RegionManager.FromTierFull(String, Int32, Int32, Boolean)
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierFull(System.String, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FromTierFull
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 96
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nKeeps encounters, cards, tribes, consumables\n"
+  example: []
+  syntax:
+    content: public static RegionData FromTierFull(string name, int originalTier, int newTier, bool addToPool = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: originalTier
+      type: System.Int32
+    - id: newTier
+      type: System.Int32
+    - id: addToPool
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function FromTierFull(name As String, originalTier As Integer, newTier As Integer, addToPool As Boolean = True) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.FromTierFull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionManager.FromTierFull(System.String,System.Int32,System.Boolean)
+  id: FromTierFull(System.String,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: FromTierFull(String, Int32, Boolean)
+  nameWithType: RegionManager.FromTierFull(String, Int32, Boolean)
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierFull(System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FromTierFull
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 111
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nKeeps encounters, cards, tribes, consumables\n"
+  example: []
+  syntax:
+    content: public static RegionData FromTierFull(string name, int originalTier, bool addToPool = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: originalTier
+      type: System.Int32
+    - id: addToPool
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function FromTierFull(name As String, originalTier As Integer, addToPool As Boolean = True) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.FromTierFull*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Int32,System.Boolean)
+  id: FromTierBasic(System.String,System.Int32,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: FromTierBasic(String, Int32, Int32, Boolean)
+  nameWithType: RegionManager.FromTierBasic(String, Int32, Int32, Boolean)
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String, System.Int32, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FromTierBasic
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 119
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nRemoves all encounters, cards, tribes, consumables\n"
+  example: []
+  syntax:
+    content: public static RegionData FromTierBasic(string name, int originalTier, int newTier, bool addToPool = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: originalTier
+      type: System.Int32
+    - id: newTier
+      type: System.Int32
+    - id: addToPool
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function FromTierBasic(name As String, originalTier As Integer, newTier As Integer, addToPool As Boolean = True) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.FromTierBasic*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String,System.Int32,System.Boolean)
+  id: FromTierBasic(System.String,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: FromTierBasic(String, Int32, Boolean)
+  nameWithType: RegionManager.FromTierBasic(String, Int32, Boolean)
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierBasic(System.String, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FromTierBasic
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 136
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nRemoves all encounters, cards, tribes, consumables\n"
+  example: []
+  syntax:
+    content: public static RegionData FromTierBasic(string name, int originalTier, bool addToPool = true)
+    parameters:
+    - id: name
+      type: System.String
+    - id: originalTier
+      type: System.Int32
+    - id: addToPool
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function FromTierBasic(name As String, originalTier As Integer, addToPool As Boolean = True) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.FromTierBasic*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
+  commentId: M:InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
+  id: GetRandomRegionFromTier(System.Int32)
+  parent: InscryptionAPI.Regions.RegionManager
+  langs:
+  - csharp
+  - vb
+  name: GetRandomRegionFromTier(Int32)
+  nameWithType: RegionManager.GetRandomRegionFromTier(Int32)
+  fullName: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetRandomRegionFromTier
+    path: ../InscryptionAPI/Regions/RegionManager.cs
+    startLine: 167
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData GetRandomRegionFromTier(int tier)
+    parameters:
+    - id: tier
+      type: System.Int32
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: Public Shared Function GetRandomRegionFromTier(tier As Integer) As RegionData
+  overload: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Regions
+  commentId: N:InscryptionAPI.Regions
+  name: InscryptionAPI.Regions
+  nameWithType: InscryptionAPI.Regions
+  fullName: InscryptionAPI.Regions
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.RegionData}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.RegionData}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  name: ReadOnlyCollection<RegionData>
+  nameWithType: ReadOnlyCollection<RegionData>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<DiskCardGame.RegionData>
+  nameWithType.vb: ReadOnlyCollection(Of RegionData)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of DiskCardGame.RegionData)
+  name.vb: ReadOnlyCollection(Of RegionData)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+- uid: Func{List{DiskCardGame.RegionData},List{DiskCardGame.RegionData}}
+  commentId: '!:Func{List{DiskCardGame.RegionData},List{DiskCardGame.RegionData}}'
+  definition: Func`2
+  name: Func<List<RegionData>, List<RegionData>>
+  nameWithType: Func<List<RegionData>, List<RegionData>>
+  fullName: Func<List<DiskCardGame.RegionData>, List<DiskCardGame.RegionData>>
+  nameWithType.vb: Func(Of List(Of RegionData), List(Of RegionData))
+  fullName.vb: Func(Of List(Of DiskCardGame.RegionData), List(Of DiskCardGame.RegionData))
+  name.vb: Func(Of List(Of RegionData), List(Of RegionData))
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Regions.RegionManager.SyncRegionList*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.SyncRegionList
+  name: SyncRegionList
+  nameWithType: RegionManager.SyncRegionList
+  fullName: InscryptionAPI.Regions.RegionManager.SyncRegionList
+- uid: InscryptionAPI.Regions.RegionManager.AllRegionsCopy*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+  name: AllRegionsCopy
+  nameWithType: RegionManager.AllRegionsCopy
+  fullName: InscryptionAPI.Regions.RegionManager.AllRegionsCopy
+- uid: List{DiskCardGame.RegionData}
+  commentId: '!:List{DiskCardGame.RegionData}'
+  definition: List`1
+  name: List<RegionData>
+  nameWithType: List<RegionData>
+  fullName: List<DiskCardGame.RegionData>
+  nameWithType.vb: List(Of RegionData)
+  fullName.vb: List(Of DiskCardGame.RegionData)
+  name.vb: List(Of RegionData)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Regions.RegionManager.Add*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.Add
+  name: Add
+  nameWithType: RegionManager.Add
+  fullName: InscryptionAPI.Regions.RegionManager.Add
+- uid: DiskCardGame.RegionData
+  commentId: T:DiskCardGame.RegionData
+  parent: DiskCardGame
+  isExternal: true
+  name: RegionData
+  nameWithType: RegionData
+  fullName: DiskCardGame.RegionData
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Regions.RegionManager.Remove*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.Remove
+  name: Remove
+  nameWithType: RegionManager.Remove
+  fullName: InscryptionAPI.Regions.RegionManager.Remove
+- uid: InscryptionAPI.Regions.RegionManager.New*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.New
+  name: New
+  nameWithType: RegionManager.New
+  fullName: InscryptionAPI.Regions.RegionManager.New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: InscryptionAPI.Regions.RegionManager.FromTierFull*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.FromTierFull
+  name: FromTierFull
+  nameWithType: RegionManager.FromTierFull
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierFull
+- uid: InscryptionAPI.Regions.RegionManager.FromTierBasic*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.FromTierBasic
+  name: FromTierBasic
+  nameWithType: RegionManager.FromTierBasic
+  fullName: InscryptionAPI.Regions.RegionManager.FromTierBasic
+- uid: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier*
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier
+  name: GetRandomRegionFromTier
+  nameWithType: RegionManager.GetRandomRegionFromTier
+  fullName: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier

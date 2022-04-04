@@ -1,0 +1,748 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  commentId: T:InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  id: Act1LatchAbilityFix
+  parent: InscryptionCommunityPatch.Card
+  children:
+  - InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker(DiskCardGame.CardSlot)
+  - InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix(System.Collections.IEnumerator,DiskCardGame.Latch,System.Boolean)
+  - InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath(DiskCardGame.Latch@,DiskCardGame.Latch@)
+  - InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots(System.Collections.IEnumerator,DiskCardGame.BoardManager,List{DiskCardGame.CardSlot})
+  langs:
+  - csharp
+  - vb
+  name: Act1LatchAbilityFix
+  nameWithType: Act1LatchAbilityFix
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  type: Class
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Act1LatchAbilityFix
+    path: ../InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+    startLine: 8
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public class Act1LatchAbilityFix
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Class Act1LatchAbilityFix
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots(System.Collections.IEnumerator,DiskCardGame.BoardManager,List{DiskCardGame.CardSlot})
+  commentId: M:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots(System.Collections.IEnumerator,DiskCardGame.BoardManager,List{DiskCardGame.CardSlot})
+  id: ReEnableSlots(System.Collections.IEnumerator,DiskCardGame.BoardManager,List{DiskCardGame.CardSlot})
+  parent: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  langs:
+  - csharp
+  - vb
+  name: ReEnableSlots(IEnumerator, BoardManager, List<CardSlot>)
+  nameWithType: Act1LatchAbilityFix.ReEnableSlots(IEnumerator, BoardManager, List<CardSlot>)
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots(System.Collections.IEnumerator, DiskCardGame.BoardManager, List<DiskCardGame.CardSlot>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReEnableSlots
+    path: ../InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+    startLine: 23
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(BoardManager), "ChooseTarget")]
+
+      [HarmonyPostfix]
+
+      public static IEnumerator ReEnableSlots(IEnumerator result, BoardManager __instance, List<CardSlot> allTargets)
+    parameters:
+    - id: result
+      type: System.Collections.IEnumerator
+    - id: __instance
+      type: DiskCardGame.BoardManager
+    - id: allTargets
+      type: List{DiskCardGame.CardSlot}
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: >-
+      <HarmonyPatch(GetType(BoardManager), "ChooseTarget")>
+
+      <HarmonyPostfix>
+
+      Public Shared Function ReEnableSlots(result As IEnumerator, __instance As BoardManager, allTargets As List(Of CardSlot)) As IEnumerator
+  overload: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.BoardManager
+    - type: System.String
+      value: ChooseTarget
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: Act1LatchAbilityFix.ReEnableSlots(IEnumerator, BoardManager, List(Of CardSlot))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots(System.Collections.IEnumerator, DiskCardGame.BoardManager, List(Of DiskCardGame.CardSlot))
+  name.vb: ReEnableSlots(IEnumerator, BoardManager, List(Of CardSlot))
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker(DiskCardGame.CardSlot)
+  commentId: M:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker(DiskCardGame.CardSlot)
+  id: NoSacrificeMarker(DiskCardGame.CardSlot)
+  parent: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  langs:
+  - csharp
+  - vb
+  name: NoSacrificeMarker(CardSlot)
+  nameWithType: Act1LatchAbilityFix.NoSacrificeMarker(CardSlot)
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker(DiskCardGame.CardSlot)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NoSacrificeMarker
+    path: ../InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+    startLine: 45
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(CardSlot), "OnCursorEnter")]
+
+      [HarmonyPostfix]
+
+      public static void NoSacrificeMarker(CardSlot __instance)
+    parameters:
+    - id: __instance
+      type: DiskCardGame.CardSlot
+    content.vb: >-
+      <HarmonyPatch(GetType(CardSlot), "OnCursorEnter")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub NoSacrificeMarker(__instance As CardSlot)
+  overload: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.CardSlot
+    - type: System.String
+      value: OnCursorEnter
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath(DiskCardGame.Latch@,DiskCardGame.Latch@)
+  commentId: M:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath(DiskCardGame.Latch@,DiskCardGame.Latch@)
+  id: PrefixPassStateOnPreDeath(DiskCardGame.Latch@,DiskCardGame.Latch@)
+  parent: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  langs:
+  - csharp
+  - vb
+  name: PrefixPassStateOnPreDeath(out Latch, ref Latch)
+  nameWithType: Act1LatchAbilityFix.PrefixPassStateOnPreDeath(out Latch, ref Latch)
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath(out DiskCardGame.Latch, ref DiskCardGame.Latch)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PrefixPassStateOnPreDeath
+    path: ../InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+    startLine: 63
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPrefix]
+
+      [HarmonyPatch(typeof(Latch), "OnPreDeathAnimation")]
+
+      public static void PrefixPassStateOnPreDeath(out Latch __state, ref Latch __instance)
+    parameters:
+    - id: __state
+      type: DiskCardGame.Latch
+    - id: __instance
+      type: DiskCardGame.Latch
+    content.vb: >-
+      <HarmonyPrefix>
+
+      <HarmonyPatch(GetType(Latch), "OnPreDeathAnimation")>
+
+      Public Shared Sub PrefixPassStateOnPreDeath(ByRef __state As Latch, ByRef __instance As Latch)
+  overload: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath*
+  attributes:
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.Latch
+    - type: System.String
+      value: OnPreDeathAnimation
+  nameWithType.vb: Act1LatchAbilityFix.PrefixPassStateOnPreDeath(ByRef Latch, ByRef Latch)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath(ByRef DiskCardGame.Latch, ByRef DiskCardGame.Latch)
+  name.vb: PrefixPassStateOnPreDeath(ByRef Latch, ByRef Latch)
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix(System.Collections.IEnumerator,DiskCardGame.Latch,System.Boolean)
+  commentId: M:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix(System.Collections.IEnumerator,DiskCardGame.Latch,System.Boolean)
+  id: Postfix(System.Collections.IEnumerator,DiskCardGame.Latch,System.Boolean)
+  parent: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+  langs:
+  - csharp
+  - vb
+  name: Postfix(IEnumerator, Latch, Boolean)
+  nameWithType: Act1LatchAbilityFix.Postfix(IEnumerator, Latch, Boolean)
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix(System.Collections.IEnumerator, DiskCardGame.Latch, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Postfix
+    path: ../InscryptionCommunityPatch/Card/Act1LatchAbilityFix.cs
+    startLine: 66
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPostfix]
+
+      [HarmonyPatch(typeof(Latch), "OnPreDeathAnimation")]
+
+      public static IEnumerator Postfix(IEnumerator enumerator, Latch __state, bool wasSacrifice)
+    parameters:
+    - id: enumerator
+      type: System.Collections.IEnumerator
+    - id: __state
+      type: DiskCardGame.Latch
+    - id: wasSacrifice
+      type: System.Boolean
+    return:
+      type: System.Collections.IEnumerator
+    content.vb: >-
+      <HarmonyPostfix>
+
+      <HarmonyPatch(GetType(Latch), "OnPreDeathAnimation")>
+
+      Public Shared Function Postfix(enumerator As IEnumerator, __state As Latch, wasSacrifice As Boolean) As IEnumerator
+  overload: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix*
+  attributes:
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.Latch
+    - type: System.String
+      value: OnPreDeathAnimation
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionCommunityPatch.Card
+  commentId: N:InscryptionCommunityPatch.Card
+  name: InscryptionCommunityPatch.Card
+  nameWithType: InscryptionCommunityPatch.Card
+  fullName: InscryptionCommunityPatch.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots*
+  commentId: Overload:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots
+  name: ReEnableSlots
+  nameWithType: Act1LatchAbilityFix.ReEnableSlots
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.ReEnableSlots
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: DiskCardGame.BoardManager
+  commentId: T:DiskCardGame.BoardManager
+  parent: DiskCardGame
+  isExternal: true
+  name: BoardManager
+  nameWithType: BoardManager
+  fullName: DiskCardGame.BoardManager
+- uid: List{DiskCardGame.CardSlot}
+  commentId: '!:List{DiskCardGame.CardSlot}'
+  definition: List`1
+  name: List<CardSlot>
+  nameWithType: List<CardSlot>
+  fullName: List<DiskCardGame.CardSlot>
+  nameWithType.vb: List(Of CardSlot)
+  fullName.vb: List(Of DiskCardGame.CardSlot)
+  name.vb: List(Of CardSlot)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardSlot
+    name: CardSlot
+    nameWithType: CardSlot
+    fullName: DiskCardGame.CardSlot
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardSlot
+    name: CardSlot
+    nameWithType: CardSlot
+    fullName: DiskCardGame.CardSlot
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker*
+  commentId: Overload:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker
+  name: NoSacrificeMarker
+  nameWithType: Act1LatchAbilityFix.NoSacrificeMarker
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.NoSacrificeMarker
+- uid: DiskCardGame.CardSlot
+  commentId: T:DiskCardGame.CardSlot
+  parent: DiskCardGame
+  isExternal: true
+  name: CardSlot
+  nameWithType: CardSlot
+  fullName: DiskCardGame.CardSlot
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath*
+  commentId: Overload:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath
+  name: PrefixPassStateOnPreDeath
+  nameWithType: Act1LatchAbilityFix.PrefixPassStateOnPreDeath
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.PrefixPassStateOnPreDeath
+- uid: DiskCardGame.Latch
+  commentId: T:DiskCardGame.Latch
+  parent: DiskCardGame
+  isExternal: true
+  name: Latch
+  nameWithType: Latch
+  fullName: DiskCardGame.Latch
+- uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix*
+  commentId: Overload:InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix
+  name: Postfix
+  nameWithType: Act1LatchAbilityFix.Postfix
+  fullName: InscryptionCommunityPatch.Card.Act1LatchAbilityFix.Postfix
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

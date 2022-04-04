@@ -1,0 +1,398 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  commentId: T:InscryptionAPI.Helpers.TextureHelper.SpriteType
+  id: TextureHelper.SpriteType
+  parent: InscryptionAPI.Helpers
+  children:
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalLeft
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.CardPortrait
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.ChallengeIcon
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.CostDecal
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.OversizedCostDecal
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStatIcon
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType.StarterDeckIcon
+  langs:
+  - csharp
+  - vb
+  name: TextureHelper.SpriteType
+  nameWithType: TextureHelper.SpriteType
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  type: Enum
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SpriteType
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 17
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThie is used to indicate what type of sprite you wish to create so that the appropriate size and pivot point can be determined.\n"
+  example: []
+  syntax:
+    content: public enum SpriteType
+    content.vb: Public Enum SpriteType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.CardPortrait
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.CardPortrait
+  id: CardPortrait
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: CardPortrait
+  nameWithType: TextureHelper.SpriteType.CardPortrait
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.CardPortrait
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CardPortrait
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 22
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nA card&apos;s portrait art in Act 1 or Act 3\n"
+  example: []
+  syntax:
+    content: CardPortrait = 0
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
+  id: PixelPortrait
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: PixelPortrait
+  nameWithType: TextureHelper.SpriteType.PixelPortrait
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PixelPortrait
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 27
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nA card&apos;s portrait art in Act 2\n"
+  example: []
+  syntax:
+    content: PixelPortrait = 1
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
+  id: PixelAbilityIcon
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: PixelAbilityIcon
+  nameWithType: TextureHelper.SpriteType.PixelAbilityIcon
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PixelAbilityIcon
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 32
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nAn ability icon (sigil) in Act 2 \n"
+  example: []
+  syntax:
+    content: PixelAbilityIcon = 2
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStatIcon
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStatIcon
+  id: PixelStatIcon
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: PixelStatIcon
+  nameWithType: TextureHelper.SpriteType.PixelStatIcon
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStatIcon
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PixelStatIcon
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 37
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nA special stat icon in Act 2\n"
+  example: []
+  syntax:
+    content: PixelStatIcon = 3
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.ChallengeIcon
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.ChallengeIcon
+  id: ChallengeIcon
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: ChallengeIcon
+  nameWithType: TextureHelper.SpriteType.ChallengeIcon
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.ChallengeIcon
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ChallengeIcon
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 42
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nA challenge skull displayed on the challenge UI during the setup of a Kaycee&apos;s Mod run\n"
+  example: []
+  syntax:
+    content: ChallengeIcon = 4
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.CostDecal
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.CostDecal
+  id: CostDecal
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: CostDecal
+  nameWithType: TextureHelper.SpriteType.CostDecal
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.CostDecal
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CostDecal
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 47
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThe texture that displays the card&apos;s cost in Act 1\n"
+  example: []
+  syntax:
+    content: CostDecal = 5
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.OversizedCostDecal
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.OversizedCostDecal
+  id: OversizedCostDecal
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: OversizedCostDecal
+  nameWithType: TextureHelper.SpriteType.OversizedCostDecal
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.OversizedCostDecal
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: OversizedCostDecal
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 52
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThe large decal used to display multiple/hybrid card costs in Act 1\n"
+  example: []
+  syntax:
+    content: OversizedCostDecal = 6
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalLeft
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalLeft
+  id: Act2CostDecalLeft
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: Act2CostDecalLeft
+  nameWithType: TextureHelper.SpriteType.Act2CostDecalLeft
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalLeft
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Act2CostDecalLeft
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 57
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThe decal used to display card costs in Act 2, on the top-left of the card\n"
+  example: []
+  syntax:
+    content: Act2CostDecalLeft = 7
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
+  id: Act2CostDecalRight
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: Act2CostDecalRight
+  nameWithType: TextureHelper.SpriteType.Act2CostDecalRight
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Act2CostDecalRight
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 62
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThe decal used to display card costs in Act 2, on the top-right of the card\n"
+  example: []
+  syntax:
+    content: Act2CostDecalRight = 8
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.StarterDeckIcon
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.StarterDeckIcon
+  id: StarterDeckIcon
+  parent: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: StarterDeckIcon
+  nameWithType: TextureHelper.SpriteType.StarterDeckIcon
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.StarterDeckIcon
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: StarterDeckIcon
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 67
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThe starter deck icon displayed on the challenge UI during the setup on a Kaycee&apos;s Mod run\n"
+  example: []
+  syntax:
+    content: StarterDeckIcon = 9
+    return:
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: InscryptionAPI.Helpers
+  commentId: N:InscryptionAPI.Helpers
+  name: InscryptionAPI.Helpers
+  nameWithType: InscryptionAPI.Helpers
+  fullName: InscryptionAPI.Helpers
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  commentId: T:InscryptionAPI.Helpers.TextureHelper.SpriteType
+  parent: InscryptionAPI.Helpers
+  name: TextureHelper.SpriteType
+  nameWithType: TextureHelper.SpriteType
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType

@@ -1,0 +1,1238 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Helpers.TextureHelper
+  commentId: T:InscryptionAPI.Helpers.TextureHelper
+  id: TextureHelper
+  parent: InscryptionAPI.Helpers
+  children:
+  - InscryptionAPI.Helpers.TextureHelper.CombineTextures(List{UnityEngine.Texture2D},UnityEngine.Texture2D,System.Int32,System.Int32,System.Int32,System.Int32)
+  - InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,System.Nullable{UnityEngine.Vector2})
+  - InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,System.Reflection.Assembly,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.GetResourceBytes(System.String,System.Reflection.Assembly)
+  - InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes(System.String)
+  - InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Sprite)
+  - InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  - InscryptionAPI.Helpers.TextureHelper.TryReuseEmission(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  langs:
+  - csharp
+  - vb
+  name: TextureHelper
+  nameWithType: TextureHelper
+  fullName: InscryptionAPI.Helpers.TextureHelper
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: TextureHelper
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nThis class contains a number of helper methods for managing textures.\n"
+  example: []
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class TextureHelper
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module TextureHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes(System.String)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes(System.String)
+  id: ReadArtworkFileAsBytes(System.String)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: ReadArtworkFileAsBytes(String)
+  nameWithType: TextureHelper.ReadArtworkFileAsBytes(String)
+  fullName: InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes(System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReadArtworkFileAsBytes
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 107
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nReads the contents of an image file on disk and returns it as a byte array.\n"
+  example: []
+  syntax:
+    content: public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
+    parameters:
+    - id: pathCardArt
+      type: System.String
+      description: The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.
+    return:
+      type: System.Byte[]
+      description: The contents of the file in pathCardArt as a byte array
+    content.vb: Public Shared Function ReadArtworkFileAsBytes(pathCardArt As String) As Byte()
+  overload: InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,UnityEngine.FilterMode)
+  id: GetImageAsTexture(System.String,UnityEngine.FilterMode)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: GetImageAsTexture(String, FilterMode)
+  nameWithType: TextureHelper.GetImageAsTexture(String, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetImageAsTexture
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 127
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nConverts an artwork file on disk to a Unity Texture2D object\n"
+  example: []
+  syntax:
+    content: public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: pathCardArt
+      type: System.String
+      description: The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.
+    - id: filterMode
+      type: UnityEngine.FilterMode
+      description: Sets the filter mode of the art. Leave this alone unless you know why you&apos;re changing it.
+    return:
+      type: UnityEngine.Texture2D
+      description: The image file on disk as a Texture2D object
+    content.vb: Public Shared Function GetImageAsTexture(pathCardArt As String, filterMode As FilterMode = FilterMode.Point) As Texture2D
+  overload: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,System.Reflection.Assembly,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String,System.Reflection.Assembly,UnityEngine.FilterMode)
+  id: GetImageAsTexture(System.String,System.Reflection.Assembly,UnityEngine.FilterMode)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: GetImageAsTexture(String, Assembly, FilterMode)
+  nameWithType: TextureHelper.GetImageAsTexture(String, Assembly, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture(System.String, System.Reflection.Assembly, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetImageAsTexture
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 143
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nConverts an artwork file stored as a resource in an assembly file to a Unity Texture2D object\n"
+  example: []
+  syntax:
+    content: public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: pathCardArt
+      type: System.String
+      description: The name of the artwork file in the assembly
+    - id: target
+      type: System.Reflection.Assembly
+      description: The assembly to pull the artwork file from
+    - id: filterMode
+      type: UnityEngine.FilterMode
+      description: Sets the filter mode of the art. Leave this alone unless you know why you&apos;re changing it.
+    return:
+      type: UnityEngine.Texture2D
+      description: The image file from the assembly as a Texture2D object
+    content.vb: Public Shared Function GetImageAsTexture(pathCardArt As String, target As Assembly, filterMode As FilterMode = FilterMode.Point) As Texture2D
+  overload: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  id: ConvertTexture(UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: ConvertTexture(Texture2D, TextureHelper.SpriteType, FilterMode)
+  nameWithType: TextureHelper.ConvertTexture(Texture2D, TextureHelper.SpriteType, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ConvertTexture
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 159
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nConverts a Unity Texture2D object to a Sprite that conforms to the expectations for the given sprite type\n"
+  example: []
+  syntax:
+    content: public static Sprite ConvertTexture(this Texture2D texture, TextureHelper.SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: texture
+      type: UnityEngine.Texture2D
+      description: The Texture2D object to convert
+    - id: spriteType
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+      description: The type of sprite to create
+    - id: filterMode
+      type: UnityEngine.FilterMode
+      description: Sets the filter mode of the art. Leave this alone unless you know why you&apos;re changing it.
+    return:
+      type: UnityEngine.Sprite
+      description: A sprite containing the given texture
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ConvertTexture(texture As Texture2D, spriteType As TextureHelper.SpriteType, filterMode As FilterMode = FilterMode.Point) As Sprite
+  overload: InscryptionAPI.Helpers.TextureHelper.ConvertTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,System.Nullable{UnityEngine.Vector2})
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D,System.Nullable{UnityEngine.Vector2})
+  id: ConvertTexture(UnityEngine.Texture2D,System.Nullable{UnityEngine.Vector2})
+  isExtensionMethod: true
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: ConvertTexture(Texture2D, Nullable<Vector2>)
+  nameWithType: TextureHelper.ConvertTexture(Texture2D, Nullable<Vector2>)
+  fullName: InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D, System.Nullable<UnityEngine.Vector2>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ConvertTexture
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 172
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nConverts a Unity Texture2D object to a Sprite with the same dimensions as the texture\n"
+  example: []
+  syntax:
+    content: public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
+    parameters:
+    - id: texture
+      type: UnityEngine.Texture2D
+      description: The Texture2D object to convert
+    - id: pivot
+      type: System.Nullable{UnityEngine.Vector2}
+      description: The pivot of the sprite. If null/default, the pivot will be the middle of the texture.
+    return:
+      type: UnityEngine.Sprite
+      description: A sprite containing the given texture
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function ConvertTexture(texture As Texture2D, pivot As Vector2? = Nothing) As Sprite
+  overload: InscryptionAPI.Helpers.TextureHelper.ConvertTexture*
+  nameWithType.vb: TextureHelper.ConvertTexture(Texture2D, Nullable(Of Vector2))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Helpers.TextureHelper.ConvertTexture(UnityEngine.Texture2D, System.Nullable(Of UnityEngine.Vector2))
+  name.vb: ConvertTexture(Texture2D, Nullable(Of Vector2))
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  id: GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: GetImageAsSprite(String, TextureHelper.SpriteType, FilterMode)
+  nameWithType: TextureHelper.GetImageAsSprite(String, TextureHelper.SpriteType, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetImageAsSprite
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 185
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nConverts an image on disk to a Sprite that conforms to the expectations for the given sprite type\n"
+  example: []
+  syntax:
+    content: public static Sprite GetImageAsSprite(string pathCardArt, TextureHelper.SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: pathCardArt
+      type: System.String
+      description: The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.
+    - id: spriteType
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+      description: The type of sprite to create
+    - id: filterMode
+      type: UnityEngine.FilterMode
+      description: Sets the filter mode of the art. Leave this alone unless you know why you&apos;re changing it.
+    return:
+      type: UnityEngine.Sprite
+      description: A sprite containing the image file on disk
+    content.vb: Public Shared Function GetImageAsSprite(pathCardArt As String, spriteType As TextureHelper.SpriteType, filterMode As FilterMode = FilterMode.Point) As Sprite
+  overload: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Sprite)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Sprite)
+  id: RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Sprite)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterEmissionForSprite(Sprite, Sprite)
+  nameWithType: TextureHelper.RegisterEmissionForSprite(Sprite, Sprite)
+  fullName: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite, UnityEngine.Sprite)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegisterEmissionForSprite
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 195
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nSets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.\n"
+  example: []
+  syntax:
+    content: public static void RegisterEmissionForSprite(this Sprite regularSprite, Sprite emissionSprite)
+    parameters:
+    - id: regularSprite
+      type: UnityEngine.Sprite
+      description: The normal sprite
+    - id: emissionSprite
+      type: UnityEngine.Sprite
+      description: The emissive sprite
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RegisterEmissionForSprite(regularSprite As Sprite, emissionSprite As Sprite)
+  overload: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  id: RegisterEmissionForSprite(UnityEngine.Sprite,UnityEngine.Texture2D,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterEmissionForSprite(Sprite, Texture2D, TextureHelper.SpriteType, FilterMode)
+  nameWithType: TextureHelper.RegisterEmissionForSprite(Sprite, Texture2D, TextureHelper.SpriteType, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite, UnityEngine.Texture2D, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegisterEmissionForSprite
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 206
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nSets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.\n"
+  example: []
+  syntax:
+    content: public static void RegisterEmissionForSprite(this Sprite regularSprite, Texture2D texture, TextureHelper.SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: regularSprite
+      type: UnityEngine.Sprite
+      description: The normal sprite
+    - id: texture
+      type: UnityEngine.Texture2D
+    - id: spriteType
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+    - id: filterMode
+      type: UnityEngine.FilterMode
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RegisterEmissionForSprite(regularSprite As Sprite, texture As Texture2D, spriteType As TextureHelper.SpriteType, filterMode As FilterMode = FilterMode.Point)
+  overload: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite,System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  id: RegisterEmissionForSprite(UnityEngine.Sprite,System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: RegisterEmissionForSprite(Sprite, String, TextureHelper.SpriteType, FilterMode)
+  nameWithType: TextureHelper.RegisterEmissionForSprite(Sprite, String, TextureHelper.SpriteType, FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite(UnityEngine.Sprite, System.String, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegisterEmissionForSprite
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 220
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nSets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.\n"
+  example: []
+  syntax:
+    content: public static void RegisterEmissionForSprite(this Sprite regularSprite, string pathToArt, TextureHelper.SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    parameters:
+    - id: regularSprite
+      type: UnityEngine.Sprite
+      description: The normal sprite
+    - id: pathToArt
+      type: System.String
+    - id: spriteType
+      type: InscryptionAPI.Helpers.TextureHelper.SpriteType
+      description: The type of sprite to create
+    - id: filterMode
+      type: UnityEngine.FilterMode
+      description: Sets the filter mode of the art. Leave this alone unless you know why you&apos;re changing it.
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Sub RegisterEmissionForSprite(regularSprite As Sprite, pathToArt As String, spriteType As TextureHelper.SpriteType, filterMode As FilterMode = FilterMode.Point)
+  overload: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.TryReuseEmission(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  id: TryReuseEmission(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: TryReuseEmission(CardInfo, Sprite)
+  nameWithType: TextureHelper.TryReuseEmission(CardInfo, Sprite)
+  fullName: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: TryReuseEmission
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 232
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nSets the emissive portrait for the card&apos;s alternate portrait using the same emission as the default portrait\n"
+  example: []
+  syntax:
+    content: public static void TryReuseEmission(CardInfo info, Sprite alternatePortrait)
+    parameters:
+    - id: info
+      type: DiskCardGame.CardInfo
+      description: The card to set the emission for
+    - id: alternatePortrait
+      type: UnityEngine.Sprite
+      description: The alternate portrait for the card
+    content.vb: Public Shared Sub TryReuseEmission(info As CardInfo, alternatePortrait As Sprite)
+  overload: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.GetResourceBytes(System.String,System.Reflection.Assembly)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetResourceBytes(System.String,System.Reflection.Assembly)
+  id: GetResourceBytes(System.String,System.Reflection.Assembly)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: GetResourceBytes(String, Assembly)
+  nameWithType: TextureHelper.GetResourceBytes(String, Assembly)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetResourceBytes(System.String, System.Reflection.Assembly)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetResourceBytes
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 257
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nReads the contents of an image file in an assembly and returns it as a byte array.\n"
+  example: []
+  syntax:
+    content: public static byte[] GetResourceBytes(string filename, Assembly target)
+    parameters:
+    - id: filename
+      type: System.String
+    - id: target
+      type: System.Reflection.Assembly
+      description: The assembly to pull the art from
+    return:
+      type: System.Byte[]
+      description: The contents of the file in pathCardArt as a byte array
+    content.vb: Public Shared Function GetResourceBytes(filename As String, target As Assembly) As Byte()
+  overload: InscryptionAPI.Helpers.TextureHelper.GetResourceBytes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Helpers.TextureHelper.CombineTextures(List{UnityEngine.Texture2D},UnityEngine.Texture2D,System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.CombineTextures(List{UnityEngine.Texture2D},UnityEngine.Texture2D,System.Int32,System.Int32,System.Int32,System.Int32)
+  id: CombineTextures(List{UnityEngine.Texture2D},UnityEngine.Texture2D,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: InscryptionAPI.Helpers.TextureHelper
+  langs:
+  - csharp
+  - vb
+  name: CombineTextures(List<Texture2D>, Texture2D, Int32, Int32, Int32, Int32)
+  nameWithType: TextureHelper.CombineTextures(List<Texture2D>, Texture2D, Int32, Int32, Int32, Int32)
+  fullName: InscryptionAPI.Helpers.TextureHelper.CombineTextures(List<UnityEngine.Texture2D>, UnityEngine.Texture2D, System.Int32, System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Helpers/TextureHelper.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CombineTextures
+    path: ../InscryptionAPI/Helpers/TextureHelper.cs
+    startLine: 293
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Helpers
+  summary: "\nCombines multiple textures into one, using a tiled approach.\n"
+  remarks: "\nThis helper has a very specific purpose. The pixels in  will be iteratively replaced with the pixels\nin the  array. The X position for the i-th texture will be \n+  * i. The Y position for the i-th texture will be\n+  * (.Count - i - 1).\n\n**Note**:  will be modified in-place!\n"
+  example: []
+  syntax:
+    content: public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
+    parameters:
+    - id: pieces
+      type: List{UnityEngine.Texture2D}
+      description: The individual textures to combine into the base texture
+    - id: baseTexture
+      type: UnityEngine.Texture2D
+      description: The background texture for the combined texture
+    - id: xStep
+      type: System.Int32
+      description: Used to set the position for individual textures
+    - id: yStep
+      type: System.Int32
+      description: Used to set the position for individual textures
+    - id: xOffset
+      type: System.Int32
+      description: Used to set the position for individual textures
+    - id: yOffset
+      type: System.Int32
+      description: Used to set the position for individual textures
+    return:
+      type: UnityEngine.Texture2D
+      description: 'The modified texture (the same Texture references as '
+    content.vb: Public Shared Function CombineTextures(pieces As List(Of Texture2D), baseTexture As Texture2D, xStep As Integer = 0, yStep As Integer = 0, xOffset As Integer = 0, yOffset As Integer = 0) As Texture2D
+  overload: InscryptionAPI.Helpers.TextureHelper.CombineTextures*
+  nameWithType.vb: TextureHelper.CombineTextures(List(Of Texture2D), Texture2D, Int32, Int32, Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Helpers.TextureHelper.CombineTextures(List(Of UnityEngine.Texture2D), UnityEngine.Texture2D, System.Int32, System.Int32, System.Int32, System.Int32)
+  name.vb: CombineTextures(List(Of Texture2D), Texture2D, Int32, Int32, Int32, Int32)
+references:
+- uid: InscryptionAPI.Helpers
+  commentId: N:InscryptionAPI.Helpers
+  name: InscryptionAPI.Helpers
+  nameWithType: InscryptionAPI.Helpers
+  fullName: InscryptionAPI.Helpers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes
+  name: ReadArtworkFileAsBytes
+  nameWithType: TextureHelper.ReadArtworkFileAsBytes
+  fullName: InscryptionAPI.Helpers.TextureHelper.ReadArtworkFileAsBytes
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Byte[]
+  isExternal: true
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture
+  name: GetImageAsTexture
+  nameWithType: TextureHelper.GetImageAsTexture
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsTexture
+- uid: UnityEngine.FilterMode
+  commentId: T:UnityEngine.FilterMode
+  parent: UnityEngine
+  isExternal: true
+  name: FilterMode
+  nameWithType: FilterMode
+  fullName: UnityEngine.FilterMode
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.Reflection.Assembly
+  commentId: T:System.Reflection.Assembly
+  parent: System.Reflection
+  isExternal: true
+  name: Assembly
+  nameWithType: Assembly
+  fullName: System.Reflection.Assembly
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+- uid: InscryptionAPI.Helpers.TextureHelper.ConvertTexture*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.ConvertTexture
+  name: ConvertTexture
+  nameWithType: TextureHelper.ConvertTexture
+  fullName: InscryptionAPI.Helpers.TextureHelper.ConvertTexture
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  commentId: T:InscryptionAPI.Helpers.TextureHelper.SpriteType
+  parent: InscryptionAPI.Helpers
+  name: TextureHelper.SpriteType
+  nameWithType: TextureHelper.SpriteType
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType
+- uid: UnityEngine.Sprite
+  commentId: T:UnityEngine.Sprite
+  parent: UnityEngine
+  isExternal: true
+  name: Sprite
+  nameWithType: Sprite
+  fullName: UnityEngine.Sprite
+- uid: System.Nullable{UnityEngine.Vector2}
+  commentId: T:System.Nullable{UnityEngine.Vector2}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Vector2>
+  nameWithType: Nullable<Vector2>
+  fullName: System.Nullable<UnityEngine.Vector2>
+  nameWithType.vb: Nullable(Of Vector2)
+  fullName.vb: System.Nullable(Of UnityEngine.Vector2)
+  name.vb: Nullable(Of Vector2)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    nameWithType: Vector2
+    fullName: UnityEngine.Vector2
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    nameWithType: Vector2
+    fullName: UnityEngine.Vector2
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite
+  name: GetImageAsSprite
+  nameWithType: TextureHelper.GetImageAsSprite
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite
+- uid: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite
+  name: RegisterEmissionForSprite
+  nameWithType: TextureHelper.RegisterEmissionForSprite
+  fullName: InscryptionAPI.Helpers.TextureHelper.RegisterEmissionForSprite
+- uid: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.TryReuseEmission
+  name: TryReuseEmission
+  nameWithType: TextureHelper.TryReuseEmission
+  fullName: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission
+- uid: DiskCardGame.CardInfo
+  commentId: T:DiskCardGame.CardInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardInfo
+  nameWithType: CardInfo
+  fullName: DiskCardGame.CardInfo
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Helpers.TextureHelper.GetResourceBytes*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.GetResourceBytes
+  name: GetResourceBytes
+  nameWithType: TextureHelper.GetResourceBytes
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetResourceBytes
+- uid: InscryptionAPI.Helpers.TextureHelper.CombineTextures*
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.CombineTextures
+  name: CombineTextures
+  nameWithType: TextureHelper.CombineTextures
+  fullName: InscryptionAPI.Helpers.TextureHelper.CombineTextures
+- uid: List{UnityEngine.Texture2D}
+  commentId: '!:List{UnityEngine.Texture2D}'
+  definition: List`1
+  name: List<Texture2D>
+  nameWithType: List<Texture2D>
+  fullName: List<UnityEngine.Texture2D>
+  nameWithType.vb: List(Of Texture2D)
+  fullName.vb: List(Of UnityEngine.Texture2D)
+  name.vb: List(Of Texture2D)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

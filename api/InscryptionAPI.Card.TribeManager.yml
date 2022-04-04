@@ -1,0 +1,805 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.TribeManager
+  commentId: T:InscryptionAPI.Card.TribeManager
+  id: TribeManager
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.TribeManager.Add(System.String,System.String,System.String,System.Boolean,System.String)
+  - InscryptionAPI.Card.TribeManager.Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)
+  - InscryptionAPI.Card.TribeManager.GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
+  - InscryptionAPI.Card.TribeManager.GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
+  - InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
+  langs:
+  - csharp
+  - vb
+  name: TribeManager
+  nameWithType: TribeManager
+  fullName: InscryptionAPI.Card.TribeManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: TribeManager
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public class TribeManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Class TribeManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
+  commentId: M:InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
+  id: UpdateTribeIcon(DiskCardGame.CardDisplayer3D,DiskCardGame.CardInfo)
+  parent: InscryptionAPI.Card.TribeManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateTribeIcon(CardDisplayer3D, CardInfo)
+  nameWithType: TribeManager.UpdateTribeIcon(CardDisplayer3D, CardInfo)
+  fullName: InscryptionAPI.Card.TribeManager.UpdateTribeIcon(DiskCardGame.CardDisplayer3D, DiskCardGame.CardInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: UpdateTribeIcon
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 13
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(CardDisplayer3D), "UpdateTribeIcon")]
+
+      [HarmonyPostfix]
+
+      public static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
+    parameters:
+    - id: __instance
+      type: DiskCardGame.CardDisplayer3D
+    - id: info
+      type: DiskCardGame.CardInfo
+    content.vb: >-
+      <HarmonyPatch(GetType(CardDisplayer3D), "UpdateTribeIcon")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub UpdateTribeIcon(__instance As CardDisplayer3D, info As CardInfo)
+  overload: InscryptionAPI.Card.TribeManager.UpdateTribeIcon*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.CardDisplayer3D
+    - type: System.String
+      value: UpdateTribeIcon
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.TribeManager.GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
+  commentId: M:InscryptionAPI.Card.TribeManager.GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
+  id: GetCardbackTexture(UnityEngine.Texture@,DiskCardGame.CardChoice)
+  parent: InscryptionAPI.Card.TribeManager
+  langs:
+  - csharp
+  - vb
+  name: GetCardbackTexture(ref Texture, CardChoice)
+  nameWithType: TribeManager.GetCardbackTexture(ref Texture, CardChoice)
+  fullName: InscryptionAPI.Card.TribeManager.GetCardbackTexture(ref UnityEngine.Texture, DiskCardGame.CardChoice)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetCardbackTexture
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 45
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(CardSingleChoicesSequencer), "GetCardbackTexture")]
+
+      [HarmonyPostfix]
+
+      public static void GetCardbackTexture(ref Texture __result, CardChoice choice)
+    parameters:
+    - id: __result
+      type: UnityEngine.Texture
+    - id: choice
+      type: DiskCardGame.CardChoice
+    content.vb: >-
+      <HarmonyPatch(GetType(CardSingleChoicesSequencer), "GetCardbackTexture")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub GetCardbackTexture(ByRef __result As Texture, choice As CardChoice)
+  overload: InscryptionAPI.Card.TribeManager.GetCardbackTexture*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.CardSingleChoicesSequencer
+    - type: System.String
+      value: GetCardbackTexture
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: TribeManager.GetCardbackTexture(ByRef Texture, CardChoice)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.TribeManager.GetCardbackTexture(ByRef UnityEngine.Texture, DiskCardGame.CardChoice)
+  name.vb: GetCardbackTexture(ByRef Texture, CardChoice)
+- uid: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
+  commentId: M:InscryptionAPI.Card.TribeManager.GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
+  id: GenerateTribeChoices(List{DiskCardGame.CardChoice}@,System.Int32)
+  parent: InscryptionAPI.Card.TribeManager
+  langs:
+  - csharp
+  - vb
+  name: GenerateTribeChoices(ref List<CardChoice>, Int32)
+  nameWithType: TribeManager.GenerateTribeChoices(ref List<CardChoice>, Int32)
+  fullName: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(ref List<DiskCardGame.CardChoice>, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GenerateTribeChoices
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 55
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(Part1CardChoiceGenerator), "GenerateTribeChoices")]
+
+      [HarmonyPrefix]
+
+      public static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
+    parameters:
+    - id: __result
+      type: List{DiskCardGame.CardChoice}
+    - id: randomSeed
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <HarmonyPatch(GetType(Part1CardChoiceGenerator), "GenerateTribeChoices")>
+
+      <HarmonyPrefix>
+
+      Public Shared Function GenerateTribeChoices(ByRef __result As List(Of CardChoice), randomSeed As Integer) As Boolean
+  overload: InscryptionAPI.Card.TribeManager.GenerateTribeChoices*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.Part1CardChoiceGenerator
+    - type: System.String
+      value: GenerateTribeChoices
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  nameWithType.vb: TribeManager.GenerateTribeChoices(ByRef List(Of CardChoice), Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.TribeManager.GenerateTribeChoices(ByRef List(Of DiskCardGame.CardChoice), System.Int32)
+  name.vb: GenerateTribeChoices(ByRef List(Of CardChoice), Int32)
+- uid: InscryptionAPI.Card.TribeManager.Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Card.TribeManager.Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)
+  id: Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)
+  parent: InscryptionAPI.Card.TribeManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, Texture2D, Boolean, Texture2D)
+  nameWithType: TribeManager.Add(String, String, Texture2D, Boolean, Texture2D)
+  fullName: InscryptionAPI.Card.TribeManager.Add(System.String, System.String, UnityEngine.Texture2D, System.Boolean, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 92
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
+    parameters:
+    - id: guid
+      type: System.String
+    - id: name
+      type: System.String
+    - id: tribeIcon
+      type: UnityEngine.Texture2D
+    - id: appearInTribeChoices
+      type: System.Boolean
+    - id: choiceCardbackTexture
+      type: UnityEngine.Texture2D
+    return:
+      type: DiskCardGame.Tribe
+    content.vb: Public Shared Function Add(guid As String, name As String, tribeIcon As Texture2D = Nothing, appearInTribeChoices As Boolean = False, choiceCardbackTexture As Texture2D = Nothing) As Tribe
+  overload: InscryptionAPI.Card.TribeManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.TribeManager.Add(System.String,System.String,System.String,System.Boolean,System.String)
+  commentId: M:InscryptionAPI.Card.TribeManager.Add(System.String,System.String,System.String,System.Boolean,System.String)
+  id: Add(System.String,System.String,System.String,System.Boolean,System.String)
+  parent: InscryptionAPI.Card.TribeManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, String, Boolean, String)
+  nameWithType: TribeManager.Add(String, String, String, Boolean, String)
+  fullName: InscryptionAPI.Card.TribeManager.Add(System.String, System.String, System.String, System.Boolean, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/TribeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Card/TribeManager.cs
+    startLine: 100
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static Tribe Add(string guid, string name, string pathToTribeIcon = null, bool appearInTribeChoices = false, string pathToChoiceCardBackTexture = null)
+    parameters:
+    - id: guid
+      type: System.String
+    - id: name
+      type: System.String
+    - id: pathToTribeIcon
+      type: System.String
+    - id: appearInTribeChoices
+      type: System.Boolean
+    - id: pathToChoiceCardBackTexture
+      type: System.String
+    return:
+      type: DiskCardGame.Tribe
+    content.vb: Public Shared Function Add(guid As String, name As String, pathToTribeIcon As String = Nothing, appearInTribeChoices As Boolean = False, pathToChoiceCardBackTexture As String = Nothing) As Tribe
+  overload: InscryptionAPI.Card.TribeManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Card.TribeManager.UpdateTribeIcon*
+  commentId: Overload:InscryptionAPI.Card.TribeManager.UpdateTribeIcon
+  name: UpdateTribeIcon
+  nameWithType: TribeManager.UpdateTribeIcon
+  fullName: InscryptionAPI.Card.TribeManager.UpdateTribeIcon
+- uid: DiskCardGame.CardDisplayer3D
+  commentId: T:DiskCardGame.CardDisplayer3D
+  parent: DiskCardGame
+  isExternal: true
+  name: CardDisplayer3D
+  nameWithType: CardDisplayer3D
+  fullName: DiskCardGame.CardDisplayer3D
+- uid: DiskCardGame.CardInfo
+  commentId: T:DiskCardGame.CardInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardInfo
+  nameWithType: CardInfo
+  fullName: DiskCardGame.CardInfo
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Card.TribeManager.GetCardbackTexture*
+  commentId: Overload:InscryptionAPI.Card.TribeManager.GetCardbackTexture
+  name: GetCardbackTexture
+  nameWithType: TribeManager.GetCardbackTexture
+  fullName: InscryptionAPI.Card.TribeManager.GetCardbackTexture
+- uid: UnityEngine.Texture
+  commentId: T:UnityEngine.Texture
+  parent: UnityEngine
+  isExternal: true
+  name: Texture
+  nameWithType: Texture
+  fullName: UnityEngine.Texture
+- uid: DiskCardGame.CardChoice
+  commentId: T:DiskCardGame.CardChoice
+  parent: DiskCardGame
+  isExternal: true
+  name: CardChoice
+  nameWithType: CardChoice
+  fullName: DiskCardGame.CardChoice
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: InscryptionAPI.Card.TribeManager.GenerateTribeChoices*
+  commentId: Overload:InscryptionAPI.Card.TribeManager.GenerateTribeChoices
+  name: GenerateTribeChoices
+  nameWithType: TribeManager.GenerateTribeChoices
+  fullName: InscryptionAPI.Card.TribeManager.GenerateTribeChoices
+- uid: List{DiskCardGame.CardChoice}
+  commentId: '!:List{DiskCardGame.CardChoice}'
+  definition: List`1
+  name: List<CardChoice>
+  nameWithType: List<CardChoice>
+  fullName: List<DiskCardGame.CardChoice>
+  nameWithType.vb: List(Of CardChoice)
+  fullName.vb: List(Of DiskCardGame.CardChoice)
+  name.vb: List(Of CardChoice)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardChoice
+    name: CardChoice
+    nameWithType: CardChoice
+    fullName: DiskCardGame.CardChoice
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardChoice
+    name: CardChoice
+    nameWithType: CardChoice
+    fullName: DiskCardGame.CardChoice
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Card.TribeManager.Add*
+  commentId: Overload:InscryptionAPI.Card.TribeManager.Add
+  name: Add
+  nameWithType: TribeManager.Add
+  fullName: InscryptionAPI.Card.TribeManager.Add
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: DiskCardGame.Tribe
+  commentId: T:DiskCardGame.Tribe
+  parent: DiskCardGame
+  isExternal: true
+  name: Tribe
+  nameWithType: Tribe
+  fullName: DiskCardGame.Tribe

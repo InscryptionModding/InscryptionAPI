@@ -1,0 +1,545 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Guid.TypeManager
+  commentId: T:InscryptionAPI.Guid.TypeManager
+  id: TypeManager
+  parent: InscryptionAPI.Guid
+  children:
+  - InscryptionAPI.Guid.TypeManager.GetCustomType(System.String,System.String,Type@)
+  - InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)
+  - InscryptionAPI.Guid.TypeManager.OriginalGetType(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: TypeManager
+  nameWithType: TypeManager
+  fullName: InscryptionAPI.Guid.TypeManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Guid/CustomTypePatches.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: TypeManager
+    path: ../InscryptionAPI/Guid/CustomTypePatches.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Guid
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class TypeManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module TypeManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)
+  commentId: M:InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)
+  id: GetModIdFromCallstack(System.Reflection.Assembly)
+  parent: InscryptionAPI.Guid.TypeManager
+  langs:
+  - csharp
+  - vb
+  name: GetModIdFromCallstack(Assembly)
+  nameWithType: TypeManager.GetModIdFromCallstack(Assembly)
+  fullName: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Guid/CustomTypePatches.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetModIdFromCallstack
+    path: ../InscryptionAPI/Guid/CustomTypePatches.cs
+    startLine: 54
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Guid
+  syntax:
+    content: public static string GetModIdFromCallstack(Assembly callingAssembly)
+    parameters:
+    - id: callingAssembly
+      type: System.Reflection.Assembly
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetModIdFromCallstack(callingAssembly As Assembly) As String
+  overload: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Guid.TypeManager.OriginalGetType(System.String,System.String)
+  commentId: M:InscryptionAPI.Guid.TypeManager.OriginalGetType(System.String,System.String)
+  id: OriginalGetType(System.String,System.String)
+  parent: InscryptionAPI.Guid.TypeManager
+  langs:
+  - csharp
+  - vb
+  name: OriginalGetType(String, String)
+  nameWithType: TypeManager.OriginalGetType(String, String)
+  fullName: InscryptionAPI.Guid.TypeManager.OriginalGetType(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Guid/CustomTypePatches.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: OriginalGetType
+    path: ../InscryptionAPI/Guid/CustomTypePatches.cs
+    startLine: 72
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Guid
+  syntax:
+    content: >-
+      [HarmonyReversePatch(HarmonyReversePatchType.Original)]
+
+      public static Type OriginalGetType(string nameSpace, string typeName)
+    parameters:
+    - id: nameSpace
+      type: System.String
+    - id: typeName
+      type: System.String
+    return:
+      type: Type
+    content.vb: >-
+      <HarmonyReversePatch(HarmonyReversePatchType.Original)>
+
+      Public Shared Function OriginalGetType(nameSpace As String, typeName As String) As Type
+  overload: InscryptionAPI.Guid.TypeManager.OriginalGetType*
+  attributes:
+  - type: HarmonyLib.HarmonyReversePatch
+    ctor: HarmonyLib.HarmonyReversePatch.#ctor(HarmonyLib.HarmonyReversePatchType)
+    arguments:
+    - type: HarmonyLib.HarmonyReversePatchType
+      value: 0
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String,System.String,Type@)
+  commentId: M:InscryptionAPI.Guid.TypeManager.GetCustomType(System.String,System.String,Type@)
+  id: GetCustomType(System.String,System.String,Type@)
+  parent: InscryptionAPI.Guid.TypeManager
+  langs:
+  - csharp
+  - vb
+  name: GetCustomType(String, String, ref Type)
+  nameWithType: TypeManager.GetCustomType(String, String, ref Type)
+  fullName: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String, System.String, ref Type)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Guid/CustomTypePatches.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetCustomType
+    path: ../InscryptionAPI/Guid/CustomTypePatches.cs
+    startLine: 77
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Guid
+  syntax:
+    content: >-
+      [HarmonyPrefix]
+
+      public static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
+    parameters:
+    - id: nameSpace
+      type: System.String
+    - id: typeName
+      type: System.String
+    - id: __result
+      type: Type
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <HarmonyPrefix>
+
+      Public Shared Function GetCustomType(nameSpace As String, typeName As String, ByRef __result As Type) As Boolean
+  overload: InscryptionAPI.Guid.TypeManager.GetCustomType*
+  attributes:
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  nameWithType.vb: TypeManager.GetCustomType(String, String, ByRef Type)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Guid.TypeManager.GetCustomType(System.String, System.String, ByRef Type)
+  name.vb: GetCustomType(String, String, ByRef Type)
+references:
+- uid: InscryptionAPI.Guid
+  commentId: N:InscryptionAPI.Guid
+  name: InscryptionAPI.Guid
+  nameWithType: InscryptionAPI.Guid
+  fullName: InscryptionAPI.Guid
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack*
+  commentId: Overload:InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack
+  name: GetModIdFromCallstack
+  nameWithType: TypeManager.GetModIdFromCallstack
+  fullName: InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack
+- uid: System.Reflection.Assembly
+  commentId: T:System.Reflection.Assembly
+  parent: System.Reflection
+  isExternal: true
+  name: Assembly
+  nameWithType: Assembly
+  fullName: System.Reflection.Assembly
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+- uid: InscryptionAPI.Guid.TypeManager.OriginalGetType*
+  commentId: Overload:InscryptionAPI.Guid.TypeManager.OriginalGetType
+  name: OriginalGetType
+  nameWithType: TypeManager.OriginalGetType
+  fullName: InscryptionAPI.Guid.TypeManager.OriginalGetType
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: InscryptionAPI.Guid.TypeManager.GetCustomType*
+  commentId: Overload:InscryptionAPI.Guid.TypeManager.GetCustomType
+  name: GetCustomType
+  nameWithType: TypeManager.GetCustomType
+  fullName: InscryptionAPI.Guid.TypeManager.GetCustomType
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

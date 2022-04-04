@@ -1,0 +1,252 @@
+### YamlMime:TableOfContent
+- uid: APIPatcher
+  name: APIPatcher
+  items:
+  - uid: APIPatcher.InscryptionAPIPatcher
+    name: InscryptionAPIPatcher
+- uid: APIPlugin
+  name: APIPlugin
+  items:
+  - uid: APIPlugin.AbilityIdentifier
+    name: AbilityIdentifier
+  - uid: APIPlugin.AbilityInfoUtils
+    name: AbilityInfoUtils
+  - uid: APIPlugin.CardUtils
+    name: CardUtils
+  - uid: APIPlugin.CustomCard
+    name: CustomCard
+  - uid: APIPlugin.CustomRegion
+    name: CustomRegion
+  - uid: APIPlugin.EvolveIdentifier
+    name: EvolveIdentifier
+  - uid: APIPlugin.IceCubeIdentifier
+    name: IceCubeIdentifier
+  - uid: APIPlugin.IgnoreMappingAttribute
+    name: IgnoreMappingAttribute
+  - uid: APIPlugin.NewAbility
+    name: NewAbility
+  - uid: APIPlugin.NewCard
+    name: NewCard
+  - uid: APIPlugin.NewCardAppearanceBehaviour
+    name: NewCardAppearanceBehaviour
+  - uid: APIPlugin.NewEncounter
+    name: NewEncounter
+  - uid: APIPlugin.NewRegion
+    name: NewRegion
+  - uid: APIPlugin.NewSpecialAbility
+    name: NewSpecialAbility
+  - uid: APIPlugin.SpecialAbilityIdentifier
+    name: SpecialAbilityIdentifier
+  - uid: APIPlugin.TailIdentifier
+    name: TailIdentifier
+  - uid: APIPlugin.TypeMapper`2
+    name: TypeMapper<S, D>
+    name.vb: TypeMapper(Of S, D)
+- uid: InscryptionAPI
+  name: InscryptionAPI
+  items:
+  - uid: InscryptionAPI.InscryptionAPIPlugin
+    name: InscryptionAPIPlugin
+- uid: InscryptionAPI.Ascension
+  name: InscryptionAPI.Ascension
+  items:
+  - uid: InscryptionAPI.Ascension.AscensionChallengePaginator
+    name: AscensionChallengePaginator
+  - uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+    name: AscensionChallengeScreenPatches
+  - uid: InscryptionAPI.Ascension.AscensionRunSetupScreenBase
+    name: AscensionRunSetupScreenBase
+  - uid: InscryptionAPI.Ascension.AscensionScreenManager
+    name: AscensionScreenManager
+  - uid: InscryptionAPI.Ascension.AscensionScreenSort
+    name: AscensionScreenSort
+  - uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+    name: AscensionScreenSort.Direction
+  - uid: InscryptionAPI.Ascension.ChallengeManager
+    name: ChallengeManager
+  - uid: InscryptionAPI.Ascension.StarterDeckManager
+    name: StarterDeckManager
+  - uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+    name: StarterDeckManager.FullStarterDeck
+  - uid: InscryptionAPI.Ascension.StarterDeckPaginator
+    name: StarterDeckPaginator
+  - uid: InscryptionAPI.Ascension.StarterDeckSelectscreenPatches
+    name: StarterDeckSelectscreenPatches
+- uid: InscryptionAPI.Boons
+  name: InscryptionAPI.Boons
+  items:
+  - uid: InscryptionAPI.Boons.BoonBehaviour
+    name: BoonBehaviour
+  - uid: InscryptionAPI.Boons.BoonManager
+    name: BoonManager
+  - uid: InscryptionAPI.Boons.BoonManager.FullBoon
+    name: BoonManager.FullBoon
+  - uid: InscryptionAPI.Boons.DeckInfoExtensions
+    name: DeckInfoExtensions
+- uid: InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  items:
+  - uid: InscryptionAPI.Card.AbilityExtensions
+    name: AbilityExtensions
+  - uid: InscryptionAPI.Card.AbilityManager
+    name: AbilityManager
+  - uid: InscryptionAPI.Card.AbilityManager.FullAbility
+    name: AbilityManager.FullAbility
+  - uid: InscryptionAPI.Card.CardAppearanceBehaviourManager
+    name: CardAppearanceBehaviourManager
+  - uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+    name: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  - uid: InscryptionAPI.Card.CardExtensions
+    name: CardExtensions
+  - uid: InscryptionAPI.Card.CardManager
+    name: CardManager
+  - uid: InscryptionAPI.Card.ExtendedAbilityBehaviour
+    name: ExtendedAbilityBehaviour
+  - uid: InscryptionAPI.Card.IActivateWhenFacedown
+    name: IActivateWhenFacedown
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+    name: SpecialTriggeredAbilityManager
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  - uid: InscryptionAPI.Card.StatIconManager
+    name: StatIconManager
+  - uid: InscryptionAPI.Card.StatIconManager.FullStatIcon
+    name: StatIconManager.FullStatIcon
+  - uid: InscryptionAPI.Card.TribeManager
+    name: TribeManager
+- uid: InscryptionAPI.Encounters
+  name: InscryptionAPI.Encounters
+  items:
+  - uid: InscryptionAPI.Encounters.AIManager
+    name: AIManager
+  - uid: InscryptionAPI.Encounters.AIManager.FullAI
+    name: AIManager.FullAI
+  - uid: InscryptionAPI.Encounters.CustomNodeData
+    name: CustomNodeData
+  - uid: InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition
+    name: CustomNodeData.NodeGenerationCondition
+  - uid: InscryptionAPI.Encounters.EncounterBuilder
+    name: EncounterBuilder
+  - uid: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+    name: EncounterBuilderBlueprintData
+  - uid: InscryptionAPI.Encounters.EncounterExtensions
+    name: EncounterExtensions
+  - uid: InscryptionAPI.Encounters.EncounterManager
+    name: EncounterManager
+  - uid: InscryptionAPI.Encounters.ICustomNodeSequence
+    name: ICustomNodeSequence
+  - uid: InscryptionAPI.Encounters.NodeManager
+    name: NodeManager
+  - uid: InscryptionAPI.Encounters.NodeManager.NodeInfo
+    name: NodeManager.NodeInfo
+  - uid: InscryptionAPI.Encounters.NodeManager.NodePosition
+    name: NodeManager.NodePosition
+  - uid: InscryptionAPI.Encounters.OpponentManager
+    name: OpponentManager
+  - uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent
+    name: OpponentManager.FullOpponent
+  - uid: InscryptionAPI.Encounters.SpecialSequenceManager
+    name: SpecialSequenceManager
+  - uid: InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer
+    name: SpecialSequenceManager.FullSpecialSequencer
+  - uid: InscryptionAPI.Encounters.TurnBuilder`1
+    name: TurnBuilder<T>
+    name.vb: TurnBuilder(Of T)
+  - uid: InscryptionAPI.Encounters.TurnExtensions
+    name: TurnExtensions
+- uid: InscryptionAPI.Guid
+  name: InscryptionAPI.Guid
+  items:
+  - uid: InscryptionAPI.Guid.GuidManager
+    name: GuidManager
+  - uid: InscryptionAPI.Guid.TypeManager
+    name: TypeManager
+- uid: InscryptionAPI.Helpers
+  name: InscryptionAPI.Helpers
+  items:
+  - uid: InscryptionAPI.Helpers.TextureHelper
+    name: TextureHelper
+  - uid: InscryptionAPI.Helpers.TextureHelper.SpriteType
+    name: TextureHelper.SpriteType
+- uid: InscryptionAPI.Helpers.Extensions
+  name: InscryptionAPI.Helpers.Extensions
+  items:
+  - uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions
+    name: BoardManagerExtensions
+  - uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions
+    name: CardSlotExtensions
+- uid: InscryptionAPI.Regions
+  name: InscryptionAPI.Regions
+  items:
+  - uid: InscryptionAPI.Regions.Part1RegionData
+    name: Part1RegionData
+  - uid: InscryptionAPI.Regions.RegionExtensions
+    name: RegionExtensions
+  - uid: InscryptionAPI.Regions.RegionManager
+    name: RegionManager
+- uid: InscryptionAPI.Saves
+  name: InscryptionAPI.Saves
+  items:
+  - uid: InscryptionAPI.Saves.ModdedSaveData
+    name: ModdedSaveData
+  - uid: InscryptionAPI.Saves.ModdedSaveManager
+    name: ModdedSaveManager
+- uid: InscryptionAPI.Triggers
+  name: InscryptionAPI.Triggers
+  items:
+  - uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+    name: CustomGlobalTriggerHandler
+  - uid: InscryptionAPI.Triggers.CustomTrigger
+    name: CustomTrigger
+  - uid: InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute
+    name: CustomTriggerCoroutineAttribute
+  - uid: InscryptionAPI.Triggers.CustomTriggerPatches
+    name: CustomTriggerPatches
+  - uid: InscryptionAPI.Triggers.CustomTriggerResponderAttribute
+    name: CustomTriggerResponderAttribute
+- uid: InscryptionCommunityPatch
+  name: InscryptionCommunityPatch
+  items:
+  - uid: InscryptionCommunityPatch.PatchPlugin
+    name: PatchPlugin
+- uid: InscryptionCommunityPatch.Card
+  name: InscryptionCommunityPatch.Card
+  items:
+  - uid: InscryptionCommunityPatch.Card.Act1LatchAbilityFix
+    name: Act1LatchAbilityFix
+  - uid: InscryptionCommunityPatch.Card.ActivatedAbilityHandler3D
+    name: ActivatedAbilityHandler3D
+  - uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconFix
+    name: ActivatedAbilityIconFix
+  - uid: InscryptionCommunityPatch.Card.ActivatedAbilityIconInteractable
+    name: ActivatedAbilityIconInteractable
+  - uid: InscryptionCommunityPatch.Card.CommunityArtPatches
+    name: CommunityArtPatches
+  - uid: InscryptionCommunityPatch.Card.DefaultEvolveFix
+    name: DefaultEvolveFix
+  - uid: InscryptionCommunityPatch.Card.EmpowerStackableBuffs
+    name: EmpowerStackableBuffs
+  - uid: InscryptionCommunityPatch.Card.MergedSigilOnBottom
+    name: MergedSigilOnBottom
+  - uid: InscryptionCommunityPatch.Card.Part1CardCostRender
+    name: Part1CardCostRender
+  - uid: InscryptionCommunityPatch.Card.Part2CardCostRender
+    name: Part2CardCostRender
+  - uid: InscryptionCommunityPatch.Card.RenderAdditionalSigils
+    name: RenderAdditionalSigils
+  - uid: InscryptionCommunityPatch.Card.StackAbilityIcons
+    name: StackAbilityIcons
+- uid: InscryptionCommunityPatch.ResourceManagers
+  name: InscryptionCommunityPatch.ResourceManagers
+  items:
+  - uid: InscryptionCommunityPatch.ResourceManagers.ActOneConduitManager
+    name: ActOneConduitManager
+  - uid: InscryptionCommunityPatch.ResourceManagers.EnergyDrone
+    name: EnergyDrone
+  - uid: InscryptionCommunityPatch.ResourceManagers.EnergyDrone.EnergyConfigInfo
+    name: EnergyDrone.EnergyConfigInfo
+- uid: InscryptionCommunityPatch.Tests
+  name: InscryptionCommunityPatch.Tests
+  items:
+  - uid: InscryptionCommunityPatch.Tests.ExecuteCommunityPatchTests
+    name: ExecuteCommunityPatchTests

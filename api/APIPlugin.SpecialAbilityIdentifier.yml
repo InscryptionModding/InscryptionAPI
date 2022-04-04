@@ -1,0 +1,485 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.SpecialAbilityIdentifier
+  commentId: T:APIPlugin.SpecialAbilityIdentifier
+  id: SpecialAbilityIdentifier
+  parent: APIPlugin
+  children:
+  - APIPlugin.SpecialAbilityIdentifier.GetID(System.String,System.String)
+  - APIPlugin.SpecialAbilityIdentifier.id
+  - APIPlugin.SpecialAbilityIdentifier.ToString
+  langs:
+  - csharp
+  - vb
+  name: SpecialAbilityIdentifier
+  nameWithType: SpecialAbilityIdentifier
+  fullName: APIPlugin.SpecialAbilityIdentifier
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SpecialAbilityIdentifier
+    path: ../InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+    startLine: 5
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public class SpecialAbilityIdentifier
+    content.vb: Public Class SpecialAbilityIdentifier
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: APIPlugin.SpecialAbilityIdentifier.id
+  commentId: F:APIPlugin.SpecialAbilityIdentifier.id
+  id: id
+  parent: APIPlugin.SpecialAbilityIdentifier
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: SpecialAbilityIdentifier.id
+  fullName: APIPlugin.SpecialAbilityIdentifier.id
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: id
+    path: ../InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public SpecialTriggeredAbility id
+    return:
+      type: DiskCardGame.SpecialTriggeredAbility
+    content.vb: Public id As SpecialTriggeredAbility
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.SpecialAbilityIdentifier.GetID(System.String,System.String)
+  commentId: M:APIPlugin.SpecialAbilityIdentifier.GetID(System.String,System.String)
+  id: GetID(System.String,System.String)
+  parent: APIPlugin.SpecialAbilityIdentifier
+  langs:
+  - csharp
+  - vb
+  name: GetID(String, String)
+  nameWithType: SpecialAbilityIdentifier.GetID(String, String)
+  fullName: APIPlugin.SpecialAbilityIdentifier.GetID(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetID
+    path: ../InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+    startLine: 23
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static SpecialAbilityIdentifier GetID(string guid, string name)
+    parameters:
+    - id: guid
+      type: System.String
+    - id: name
+      type: System.String
+    return:
+      type: APIPlugin.SpecialAbilityIdentifier
+    content.vb: Public Shared Function GetID(guid As String, name As String) As SpecialAbilityIdentifier
+  overload: APIPlugin.SpecialAbilityIdentifier.GetID*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.SpecialAbilityIdentifier.ToString
+  commentId: M:APIPlugin.SpecialAbilityIdentifier.ToString
+  id: ToString
+  parent: APIPlugin.SpecialAbilityIdentifier
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: SpecialAbilityIdentifier.ToString()
+  fullName: APIPlugin.SpecialAbilityIdentifier.ToString()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ToString
+    path: ../InscryptionAPI/Compatibility/SpecialAbilityIdentifier.cs
+    startLine: 28
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: APIPlugin.SpecialAbilityIdentifier.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DiskCardGame.SpecialTriggeredAbility
+  commentId: T:DiskCardGame.SpecialTriggeredAbility
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialTriggeredAbility
+  nameWithType: SpecialTriggeredAbility
+  fullName: DiskCardGame.SpecialTriggeredAbility
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: APIPlugin.SpecialAbilityIdentifier.GetID*
+  commentId: Overload:APIPlugin.SpecialAbilityIdentifier.GetID
+  name: GetID
+  nameWithType: SpecialAbilityIdentifier.GetID
+  fullName: APIPlugin.SpecialAbilityIdentifier.GetID
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: APIPlugin.SpecialAbilityIdentifier
+  commentId: T:APIPlugin.SpecialAbilityIdentifier
+  parent: APIPlugin
+  name: SpecialAbilityIdentifier
+  nameWithType: SpecialAbilityIdentifier
+  fullName: APIPlugin.SpecialAbilityIdentifier
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin.SpecialAbilityIdentifier.ToString*
+  commentId: Overload:APIPlugin.SpecialAbilityIdentifier.ToString
+  name: ToString
+  nameWithType: SpecialAbilityIdentifier.ToString
+  fullName: APIPlugin.SpecialAbilityIdentifier.ToString

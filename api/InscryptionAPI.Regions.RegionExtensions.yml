@@ -1,0 +1,2115 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Regions.RegionExtensions
+  commentId: T:InscryptionAPI.Regions.RegionExtensions
+  id: RegionExtensions
+  parent: InscryptionAPI.Regions
+  children:
+  - InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData,DiskCardGame.Opponent.Type[])
+  - InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,DiskCardGame.ConsumableItemData[])
+  - InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,System.String[])
+  - InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData,DiskCardGame.Tribe[])
+  - InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData[])
+  - InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData,DiskCardGame.FillerSceneryEntry[])
+  - InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData,System.String[])
+  - InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData,DiskCardGame.ScarceSceneryEntry[])
+  - InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData,System.String[])
+  - InscryptionAPI.Regions.RegionExtensions.Build(DiskCardGame.RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - InscryptionAPI.Regions.RegionExtensions.CreateEncounter(DiskCardGame.RegionData,System.String)
+  - InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable{DiskCardGame.RegionData},System.String)
+  - InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(DiskCardGame.RegionData,System.String)
+  - InscryptionAPI.Regions.RegionExtensions.SetBoardColor(DiskCardGame.RegionData,UnityEngine.Color)
+  - InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(DiskCardGame.RegionData,DiskCardGame.StoryEventCondition)
+  - InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData)
+  - InscryptionAPI.Regions.RegionExtensions.SetCardsColor(DiskCardGame.RegionData,UnityEngine.Color)
+  - InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(DiskCardGame.RegionData,System.Boolean)
+  - InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(DiskCardGame.RegionData,System.Single)
+  - InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(DiskCardGame.RegionData,System.Boolean)
+  - InscryptionAPI.Regions.RegionExtensions.SetFogProfile(DiskCardGame.RegionData,VolumetricFogAndMist.VolumetricFogProfile)
+  - InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(DiskCardGame.RegionData,UnityEngine.Texture)
+  - InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture2D)
+  - InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(DiskCardGame.RegionData,UnityEngine.Color)
+  - InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData,UnityEngine.GameObject[])
+  - InscryptionAPI.Regions.RegionExtensions.SetName(DiskCardGame.RegionData,System.String)
+  - InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(DiskCardGame.RegionData,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: RegionExtensions
+  nameWithType: RegionExtensions
+  fullName: InscryptionAPI.Regions.RegionExtensions
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegionExtensions
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static class RegionExtensions
+    content.vb: Public Module RegionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable{DiskCardGame.RegionData},System.String)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable{DiskCardGame.RegionData},System.String)
+  id: RegionByName(IEnumerable{DiskCardGame.RegionData},System.String)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: RegionByName(IEnumerable<RegionData>, String)
+  nameWithType: RegionExtensions.RegionByName(IEnumerable<RegionData>, String)
+  fullName: InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable<DiskCardGame.RegionData>, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RegionByName
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData RegionByName(this IEnumerable<RegionData> regions, string name)
+    parameters:
+    - id: regions
+      type: IEnumerable{DiskCardGame.RegionData}
+    - id: name
+      type: System.String
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function RegionByName(regions As IEnumerable(Of RegionData), name As String) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.RegionByName*
+  nameWithType.vb: RegionExtensions.RegionByName(IEnumerable(Of RegionData), String)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable(Of DiskCardGame.RegionData), System.String)
+  name.vb: RegionByName(IEnumerable(Of RegionData), String)
+- uid: InscryptionAPI.Regions.RegionExtensions.SetName(DiskCardGame.RegionData,System.String)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetName(DiskCardGame.RegionData,System.String)
+  id: SetName(DiskCardGame.RegionData,System.String)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetName(RegionData, String)
+  nameWithType: RegionExtensions.SetName(RegionData, String)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetName(DiskCardGame.RegionData, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetName
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetName(this RegionData region, string name)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: name
+      type: System.String
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetName(region As RegionData, name As String) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData,System.String[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData,System.String[])
+  id: AddTerrainCards(DiskCardGame.RegionData,System.String[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddTerrainCards(RegionData, String[])
+  nameWithType: RegionExtensions.AddTerrainCards(RegionData, String[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData, System.String[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddTerrainCards
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 24
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nAdds terrain cards to this region.<br />\nTerrain cards require the <code>Terrain</code> trait to appear.<br />\nEvery region must have at least one valid terrain card.\n"
+  example: []
+  syntax:
+    content: public static RegionData AddTerrainCards(this RegionData region, params string[] cards)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: cards
+      type: System.String[]
+      description: The terrain cards to add.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddTerrainCards(region As RegionData, ParamArray cards As String()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards*
+  nameWithType.vb: RegionExtensions.AddTerrainCards(RegionData, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData, System.String())
+  name.vb: AddTerrainCards(RegionData, String())
+- uid: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData,System.String[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData,System.String[])
+  id: AddLikelyCards(DiskCardGame.RegionData,System.String[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddLikelyCards(RegionData, String[])
+  nameWithType: RegionExtensions.AddLikelyCards(RegionData, String[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData, System.String[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddLikelyCards
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 44
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nAdds likely cards to this region.<br />\nLikely cards require the <code>ChoiceNode</code> metacategory to appear.<br />\nOne of three normal card choices is guaranteed to contain a card from the region&apos;s likely cards.\n"
+  example: []
+  syntax:
+    content: public static RegionData AddLikelyCards(this RegionData region, params string[] cards)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: cards
+      type: System.String[]
+      description: The likely cards to add.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddLikelyCards(region As RegionData, ParamArray cards As String()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards*
+  nameWithType.vb: RegionExtensions.AddLikelyCards(RegionData, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData, System.String())
+  name.vb: AddLikelyCards(RegionData, String())
+- uid: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,System.String[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,System.String[])
+  id: AddConsumableItems(DiskCardGame.RegionData,System.String[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddConsumableItems(RegionData, String[])
+  nameWithType: RegionExtensions.AddConsumableItems(RegionData, String[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData, System.String[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddConsumableItems
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 63
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nAdds consumables to this region.<br />\nThis only applies to consumables that are <code>regionSpecific</code>. Adding non-region-specific consumables will increase the probability of the consumable appearing.\n"
+  example: []
+  syntax:
+    content: public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: consumables
+      type: System.String[]
+      description: ''
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddConsumableItems(region As RegionData, ParamArray consumables As String()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems*
+  nameWithType.vb: RegionExtensions.AddConsumableItems(RegionData, String())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData, System.String())
+  name.vb: AddConsumableItems(RegionData, String())
+- uid: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,DiskCardGame.ConsumableItemData[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,DiskCardGame.ConsumableItemData[])
+  id: AddConsumableItems(DiskCardGame.RegionData,DiskCardGame.ConsumableItemData[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddConsumableItems(RegionData, ConsumableItemData[])
+  nameWithType: RegionExtensions.AddConsumableItems(RegionData, ConsumableItemData[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData, DiskCardGame.ConsumableItemData[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddConsumableItems
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 73
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData AddConsumableItems(this RegionData region, params ConsumableItemData[] consumables)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: consumables
+      type: DiskCardGame.ConsumableItemData[]
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddConsumableItems(region As RegionData, ParamArray consumables As ConsumableItemData()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems*
+  nameWithType.vb: RegionExtensions.AddConsumableItems(RegionData, ConsumableItemData())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData, DiskCardGame.ConsumableItemData())
+  name.vb: AddConsumableItems(RegionData, ConsumableItemData())
+- uid: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData,DiskCardGame.Tribe[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData,DiskCardGame.Tribe[])
+  id: AddDominantTribes(DiskCardGame.RegionData,DiskCardGame.Tribe[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddDominantTribes(RegionData, Tribe[])
+  nameWithType: RegionExtensions.AddDominantTribes(RegionData, Tribe[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData, DiskCardGame.Tribe[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddDominantTribes
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 89
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nAdds dominant tribes to this region.<br />\nOne of three normal card choices is guaranteed to contain a card from the region&apos;s dominant tribes.<br />\nEvery region must have at least one dominant tribe.\n"
+  example: []
+  syntax:
+    content: public static RegionData AddDominantTribes(this RegionData region, params Tribe[] tribes)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: tribes
+      type: DiskCardGame.Tribe[]
+      description: The tribes to add.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddDominantTribes(region As RegionData, ParamArray tribes As Tribe()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes*
+  nameWithType.vb: RegionExtensions.AddDominantTribes(RegionData, Tribe())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData, DiskCardGame.Tribe())
+  name.vb: AddDominantTribes(RegionData, Tribe())
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBoardColor(DiskCardGame.RegionData,UnityEngine.Color)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetBoardColor(DiskCardGame.RegionData,UnityEngine.Color)
+  id: SetBoardColor(DiskCardGame.RegionData,UnityEngine.Color)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetBoardColor(RegionData, Color)
+  nameWithType: RegionExtensions.SetBoardColor(RegionData, Color)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBoardColor(DiskCardGame.RegionData, UnityEngine.Color)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetBoardColor
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 99
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetBoardColor(this RegionData region, Color color)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: color
+      type: UnityEngine.Color
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetBoardColor(region As RegionData, color As Color) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetBoardColor*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetCardsColor(DiskCardGame.RegionData,UnityEngine.Color)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetCardsColor(DiskCardGame.RegionData,UnityEngine.Color)
+  id: SetCardsColor(DiskCardGame.RegionData,UnityEngine.Color)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetCardsColor(RegionData, Color)
+  nameWithType: RegionExtensions.SetCardsColor(RegionData, Color)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetCardsColor(DiskCardGame.RegionData, UnityEngine.Color)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetCardsColor
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 105
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetCardsColor(this RegionData region, Color color)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: color
+      type: UnityEngine.Color
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetCardsColor(region As RegionData, color As Color) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetCardsColor*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.CreateEncounter(DiskCardGame.RegionData,System.String)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.CreateEncounter(DiskCardGame.RegionData,System.String)
+  id: CreateEncounter(DiskCardGame.RegionData,System.String)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: CreateEncounter(RegionData, String)
+  nameWithType: RegionExtensions.CreateEncounter(RegionData, String)
+  fullName: InscryptionAPI.Regions.RegionExtensions.CreateEncounter(DiskCardGame.RegionData, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CreateEncounter
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 116
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nCreates a new encounter for this region and returns the builder.<br />\nEvery region with battles needs at least one encounter.\n"
+  example: []
+  syntax:
+    content: public static EncounterBuilderBlueprintData CreateEncounter(this RegionData region, string name = null)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: name
+      type: System.String
+      description: The name for the encounter.
+    return:
+      type: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function CreateEncounter(region As RegionData, name As String = Nothing) As EncounterBuilderBlueprintData
+  overload: InscryptionAPI.Regions.RegionExtensions.CreateEncounter*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData[])
+  id: AddEncounters(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddEncounters(RegionData, EncounterBlueprintData[])
+  nameWithType: RegionExtensions.AddEncounters(RegionData, EncounterBlueprintData[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData, DiskCardGame.EncounterBlueprintData[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddEncounters
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 128
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nAdds normal (card battle node) encounters to this region.<br />\nEvery region with battles needs at least one encounter.\n"
+  example: []
+  syntax:
+    content: public static RegionData AddEncounters(this RegionData region, params EncounterBlueprintData[] encounters)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: encounters
+      type: DiskCardGame.EncounterBlueprintData[]
+      description: The encounters to add.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddEncounters(region As RegionData, ParamArray encounters As EncounterBlueprintData()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddEncounters*
+  nameWithType.vb: RegionExtensions.AddEncounters(RegionData, EncounterBlueprintData())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData, DiskCardGame.EncounterBlueprintData())
+  name.vb: AddEncounters(RegionData, EncounterBlueprintData())
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(DiskCardGame.RegionData,DiskCardGame.StoryEventCondition)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(DiskCardGame.RegionData,DiskCardGame.StoryEventCondition)
+  id: SetBossPrepCondition(DiskCardGame.RegionData,DiskCardGame.StoryEventCondition)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetBossPrepCondition(RegionData, StoryEventCondition)
+  nameWithType: RegionExtensions.SetBossPrepCondition(RegionData, StoryEventCondition)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(DiskCardGame.RegionData, DiskCardGame.StoryEventCondition)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetBossPrepCondition
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 154
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nSets the boss prep encounter condition for this region. If this condition is not met, the &apos;boss prep encounter&apos; will not appear.\n"
+  example: []
+  syntax:
+    content: public static RegionData SetBossPrepCondition(this RegionData region, StoryEventCondition condition)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: condition
+      type: DiskCardGame.StoryEventCondition
+      description: The condition that needs to be fulfilled
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetBossPrepCondition(region As RegionData, condition As StoryEventCondition) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData)
+  id: SetBossPrepEncounter(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetBossPrepEncounter(RegionData, EncounterBlueprintData)
+  nameWithType: RegionExtensions.SetBossPrepEncounter(RegionData, EncounterBlueprintData)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(DiskCardGame.RegionData, DiskCardGame.EncounterBlueprintData)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetBossPrepEncounter
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 164
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nSets the boss prep encounter for this region. The boss prep encounter is the final battle node in the region, before the boss.\n"
+  example: []
+  syntax:
+    content: public static RegionData SetBossPrepEncounter(this RegionData region, EncounterBlueprintData encounter)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: encounter
+      type: DiskCardGame.EncounterBlueprintData
+      description: The encounter to set.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetBossPrepEncounter(region As RegionData, encounter As EncounterBlueprintData) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData,DiskCardGame.Opponent.Type[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData,DiskCardGame.Opponent.Type[])
+  id: AddBosses(DiskCardGame.RegionData,DiskCardGame.Opponent.Type[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBosses(RegionData, Opponent.Type[])
+  nameWithType: RegionExtensions.AddBosses(RegionData, Opponent.Type[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData, DiskCardGame.Opponent.Type[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddBosses
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 170
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData AddBosses(this RegionData region, params Opponent.Type[] bosses)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: bosses
+      type: DiskCardGame.Opponent.Type[]
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBosses(region As RegionData, ParamArray bosses As Opponent.Type()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddBosses*
+  nameWithType.vb: RegionExtensions.AddBosses(RegionData, Opponent.Type())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData, DiskCardGame.Opponent.Type())
+  name.vb: AddBosses(RegionData, Opponent.Type())
+- uid: InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(DiskCardGame.RegionData,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(DiskCardGame.RegionData,System.Boolean)
+  id: SetDustParticlesEnabled(DiskCardGame.RegionData,System.Boolean)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetDustParticlesEnabled(RegionData, Boolean)
+  nameWithType: RegionExtensions.SetDustParticlesEnabled(RegionData, Boolean)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(DiskCardGame.RegionData, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetDustParticlesEnabled
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 183
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetDustParticlesEnabled(this RegionData region, bool enabled)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: enabled
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetDustParticlesEnabled(region As RegionData, enabled As Boolean) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(DiskCardGame.RegionData,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(DiskCardGame.RegionData,System.Boolean)
+  id: SetFogEnabled(DiskCardGame.RegionData,System.Boolean)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFogEnabled(RegionData, Boolean)
+  nameWithType: RegionExtensions.SetFogEnabled(RegionData, Boolean)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(DiskCardGame.RegionData, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetFogEnabled
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 189
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetFogEnabled(this RegionData region, bool enabled)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: enabled
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetFogEnabled(region As RegionData, enabled As Boolean) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetFogEnabled*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(DiskCardGame.RegionData,System.Single)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(DiskCardGame.RegionData,System.Single)
+  id: SetFogAlpha(DiskCardGame.RegionData,System.Single)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFogAlpha(RegionData, Single)
+  nameWithType: RegionExtensions.SetFogAlpha(RegionData, Single)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(DiskCardGame.RegionData, System.Single)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetFogAlpha
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 195
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetFogAlpha(this RegionData region, float alpha)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: alpha
+      type: System.Single
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetFogAlpha(region As RegionData, alpha As Single) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetFogAlpha*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture2D)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture2D)
+  id: SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture2D)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMapEmission(RegionData, Texture2D)
+  nameWithType: RegionExtensions.SetMapEmission(RegionData, Texture2D)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData, UnityEngine.Texture2D)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetMapEmission
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 201
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetMapEmission(this RegionData region, Texture2D texture)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: texture
+      type: UnityEngine.Texture2D
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetMapEmission(region As RegionData, texture As Texture2D) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetMapEmission*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(DiskCardGame.RegionData,UnityEngine.Color)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(DiskCardGame.RegionData,UnityEngine.Color)
+  id: SetMapEmissionColor(DiskCardGame.RegionData,UnityEngine.Color)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMapEmissionColor(RegionData, Color)
+  nameWithType: RegionExtensions.SetMapEmissionColor(RegionData, Color)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(DiskCardGame.RegionData, UnityEngine.Color)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetMapEmissionColor
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 207
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetMapEmissionColor(this RegionData region, Color color)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: color
+      type: UnityEngine.Color
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetMapEmissionColor(region As RegionData, color As Color) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(DiskCardGame.RegionData,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(DiskCardGame.RegionData,System.Boolean)
+  id: SetSilenceCabinAmbience(DiskCardGame.RegionData,System.Boolean)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetSilenceCabinAmbience(RegionData, Boolean)
+  nameWithType: RegionExtensions.SetSilenceCabinAmbience(RegionData, Boolean)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(DiskCardGame.RegionData, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetSilenceCabinAmbience
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 213
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetSilenceCabinAmbience(this RegionData region, bool enabled)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: enabled
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetSilenceCabinAmbience(region As RegionData, enabled As Boolean) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(DiskCardGame.RegionData,System.String)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(DiskCardGame.RegionData,System.String)
+  id: SetAmbientLoopId(DiskCardGame.RegionData,System.String)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetAmbientLoopId(RegionData, String)
+  nameWithType: RegionExtensions.SetAmbientLoopId(RegionData, String)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(DiskCardGame.RegionData, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetAmbientLoopId
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 223
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  summary: "\nSets the music loop ID for this region.\n"
+  example: []
+  syntax:
+    content: public static RegionData SetAmbientLoopId(this RegionData region, string id)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: id
+      type: System.String
+      description: The music ID to use.
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetAmbientLoopId(region As RegionData, id As String) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData,DiskCardGame.FillerSceneryEntry[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData,DiskCardGame.FillerSceneryEntry[])
+  id: AddFillerScenery(DiskCardGame.RegionData,DiskCardGame.FillerSceneryEntry[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddFillerScenery(RegionData, FillerSceneryEntry[])
+  nameWithType: RegionExtensions.AddFillerScenery(RegionData, FillerSceneryEntry[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData, DiskCardGame.FillerSceneryEntry[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddFillerScenery
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 229
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData AddFillerScenery(this RegionData region, params FillerSceneryEntry[] fillerScenery)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: fillerScenery
+      type: DiskCardGame.FillerSceneryEntry[]
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddFillerScenery(region As RegionData, ParamArray fillerScenery As FillerSceneryEntry()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery*
+  nameWithType.vb: RegionExtensions.AddFillerScenery(RegionData, FillerSceneryEntry())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData, DiskCardGame.FillerSceneryEntry())
+  name.vb: AddFillerScenery(RegionData, FillerSceneryEntry())
+- uid: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData,DiskCardGame.ScarceSceneryEntry[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData,DiskCardGame.ScarceSceneryEntry[])
+  id: AddScarceScenery(DiskCardGame.RegionData,DiskCardGame.ScarceSceneryEntry[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddScarceScenery(RegionData, ScarceSceneryEntry[])
+  nameWithType: RegionExtensions.AddScarceScenery(RegionData, ScarceSceneryEntry[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData, DiskCardGame.ScarceSceneryEntry[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddScarceScenery
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 239
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData AddScarceScenery(this RegionData region, params ScarceSceneryEntry[] scarceScenery)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: scarceScenery
+      type: DiskCardGame.ScarceSceneryEntry[]
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddScarceScenery(region As RegionData, ParamArray scarceScenery As ScarceSceneryEntry()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery*
+  nameWithType.vb: RegionExtensions.AddScarceScenery(RegionData, ScarceSceneryEntry())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData, DiskCardGame.ScarceSceneryEntry())
+  name.vb: AddScarceScenery(RegionData, ScarceSceneryEntry())
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogProfile(DiskCardGame.RegionData,VolumetricFogAndMist.VolumetricFogProfile)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetFogProfile(DiskCardGame.RegionData,VolumetricFogAndMist.VolumetricFogProfile)
+  id: SetFogProfile(DiskCardGame.RegionData,VolumetricFogAndMist.VolumetricFogProfile)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetFogProfile(RegionData, VolumetricFogProfile)
+  nameWithType: RegionExtensions.SetFogProfile(RegionData, VolumetricFogProfile)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogProfile(DiskCardGame.RegionData, VolumetricFogAndMist.VolumetricFogProfile)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetFogProfile
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 249
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetFogProfile(this RegionData region, VolumetricFogProfile fogProfile)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: fogProfile
+      type: VolumetricFogAndMist.VolumetricFogProfile
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetFogProfile(region As RegionData, fogProfile As VolumetricFogProfile) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetFogProfile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(DiskCardGame.RegionData,UnityEngine.Texture)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(DiskCardGame.RegionData,UnityEngine.Texture)
+  id: SetMapAlbedo(DiskCardGame.RegionData,UnityEngine.Texture)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMapAlbedo(RegionData, Texture)
+  nameWithType: RegionExtensions.SetMapAlbedo(RegionData, Texture)
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(DiskCardGame.RegionData, UnityEngine.Texture)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetMapAlbedo
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 255
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetMapAlbedo(this RegionData region, Texture mapAlbedo)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: mapAlbedo
+      type: UnityEngine.Texture
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetMapAlbedo(region As RegionData, mapAlbedo As Texture) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData,UnityEngine.GameObject[])
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData,UnityEngine.GameObject[])
+  id: SetMapParticlesPrefabs(DiskCardGame.RegionData,UnityEngine.GameObject[])
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: SetMapParticlesPrefabs(RegionData, GameObject[])
+  nameWithType: RegionExtensions.SetMapParticlesPrefabs(RegionData, GameObject[])
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData, UnityEngine.GameObject[])
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SetMapParticlesPrefabs
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 261
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData SetMapParticlesPrefabs(this RegionData region, params GameObject[] particles)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: particles
+      type: UnityEngine.GameObject[]
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function SetMapParticlesPrefabs(region As RegionData, ParamArray particles As GameObject()) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs*
+  nameWithType.vb: RegionExtensions.SetMapParticlesPrefabs(RegionData, GameObject())
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData, UnityEngine.GameObject())
+  name.vb: SetMapParticlesPrefabs(RegionData, GameObject())
+- uid: InscryptionAPI.Regions.RegionExtensions.Build(DiskCardGame.RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:InscryptionAPI.Regions.RegionExtensions.Build(DiskCardGame.RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  id: Build(DiskCardGame.RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Regions.RegionExtensions
+  langs:
+  - csharp
+  - vb
+  name: Build(RegionData, Boolean, Boolean, Boolean, Boolean)
+  nameWithType: RegionExtensions.Build(RegionData, Boolean, Boolean, Boolean, Boolean)
+  fullName: InscryptionAPI.Regions.RegionExtensions.Build(DiskCardGame.RegionData, System.Boolean, System.Boolean, System.Boolean, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Regions/RegionExtensions.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Build
+    path: ../InscryptionAPI/Regions/RegionExtensions.cs
+    startLine: 271
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Regions
+  syntax:
+    content: public static RegionData Build(this RegionData region, bool ignoreTerrainWarning = false, bool ignoreTribesWarning = false, bool ignoreEncountersWarning = false, bool ignoreBossesWarning = false)
+    parameters:
+    - id: region
+      type: DiskCardGame.RegionData
+    - id: ignoreTerrainWarning
+      type: System.Boolean
+    - id: ignoreTribesWarning
+      type: System.Boolean
+    - id: ignoreEncountersWarning
+      type: System.Boolean
+    - id: ignoreBossesWarning
+      type: System.Boolean
+    return:
+      type: DiskCardGame.RegionData
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function Build(region As RegionData, ignoreTerrainWarning As Boolean = False, ignoreTribesWarning As Boolean = False, ignoreEncountersWarning As Boolean = False, ignoreBossesWarning As Boolean = False) As RegionData
+  overload: InscryptionAPI.Regions.RegionExtensions.Build*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Regions
+  commentId: N:InscryptionAPI.Regions
+  name: InscryptionAPI.Regions
+  nameWithType: InscryptionAPI.Regions
+  fullName: InscryptionAPI.Regions
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Regions.RegionExtensions.RegionByName*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.RegionByName
+  name: RegionByName
+  nameWithType: RegionExtensions.RegionByName
+  fullName: InscryptionAPI.Regions.RegionExtensions.RegionByName
+- uid: IEnumerable{DiskCardGame.RegionData}
+  commentId: '!:IEnumerable{DiskCardGame.RegionData}'
+  definition: IEnumerable`1
+  name: IEnumerable<RegionData>
+  nameWithType: IEnumerable<RegionData>
+  fullName: IEnumerable<DiskCardGame.RegionData>
+  nameWithType.vb: IEnumerable(Of RegionData)
+  fullName.vb: IEnumerable(Of DiskCardGame.RegionData)
+  name.vb: IEnumerable(Of RegionData)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.RegionData
+    name: RegionData
+    nameWithType: RegionData
+    fullName: DiskCardGame.RegionData
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: DiskCardGame.RegionData
+  commentId: T:DiskCardGame.RegionData
+  parent: DiskCardGame
+  isExternal: true
+  name: RegionData
+  nameWithType: RegionData
+  fullName: DiskCardGame.RegionData
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Regions.RegionExtensions.SetName*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetName
+  name: SetName
+  nameWithType: RegionExtensions.SetName
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetName
+- uid: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddTerrainCards
+  name: AddTerrainCards
+  nameWithType: RegionExtensions.AddTerrainCards
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddTerrainCards
+- uid: System.String[]
+  isExternal: true
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  nameWithType.vb: String()
+  fullName.vb: System.String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddLikelyCards
+  name: AddLikelyCards
+  nameWithType: RegionExtensions.AddLikelyCards
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddLikelyCards
+- uid: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddConsumableItems
+  name: AddConsumableItems
+  nameWithType: RegionExtensions.AddConsumableItems
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddConsumableItems
+- uid: DiskCardGame.ConsumableItemData[]
+  isExternal: true
+  name: ConsumableItemData[]
+  nameWithType: ConsumableItemData[]
+  fullName: DiskCardGame.ConsumableItemData[]
+  nameWithType.vb: ConsumableItemData()
+  fullName.vb: DiskCardGame.ConsumableItemData()
+  name.vb: ConsumableItemData()
+  spec.csharp:
+  - uid: DiskCardGame.ConsumableItemData
+    name: ConsumableItemData
+    nameWithType: ConsumableItemData
+    fullName: DiskCardGame.ConsumableItemData
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.ConsumableItemData
+    name: ConsumableItemData
+    nameWithType: ConsumableItemData
+    fullName: DiskCardGame.ConsumableItemData
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddDominantTribes
+  name: AddDominantTribes
+  nameWithType: RegionExtensions.AddDominantTribes
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddDominantTribes
+- uid: DiskCardGame.Tribe[]
+  isExternal: true
+  name: Tribe[]
+  nameWithType: Tribe[]
+  fullName: DiskCardGame.Tribe[]
+  nameWithType.vb: Tribe()
+  fullName.vb: DiskCardGame.Tribe()
+  name.vb: Tribe()
+  spec.csharp:
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBoardColor*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetBoardColor
+  name: SetBoardColor
+  nameWithType: RegionExtensions.SetBoardColor
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBoardColor
+- uid: UnityEngine.Color
+  commentId: T:UnityEngine.Color
+  parent: UnityEngine
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: UnityEngine.Color
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: InscryptionAPI.Regions.RegionExtensions.SetCardsColor*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetCardsColor
+  name: SetCardsColor
+  nameWithType: RegionExtensions.SetCardsColor
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetCardsColor
+- uid: InscryptionAPI.Regions.RegionExtensions.CreateEncounter*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.CreateEncounter
+  name: CreateEncounter
+  nameWithType: RegionExtensions.CreateEncounter
+  fullName: InscryptionAPI.Regions.RegionExtensions.CreateEncounter
+- uid: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+  commentId: T:InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+  parent: InscryptionAPI.Encounters
+  name: EncounterBuilderBlueprintData
+  nameWithType: EncounterBuilderBlueprintData
+  fullName: InscryptionAPI.Encounters.EncounterBuilderBlueprintData
+- uid: InscryptionAPI.Encounters
+  commentId: N:InscryptionAPI.Encounters
+  name: InscryptionAPI.Encounters
+  nameWithType: InscryptionAPI.Encounters
+  fullName: InscryptionAPI.Encounters
+- uid: InscryptionAPI.Regions.RegionExtensions.AddEncounters*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddEncounters
+  name: AddEncounters
+  nameWithType: RegionExtensions.AddEncounters
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddEncounters
+- uid: DiskCardGame.EncounterBlueprintData[]
+  isExternal: true
+  name: EncounterBlueprintData[]
+  nameWithType: EncounterBlueprintData[]
+  fullName: DiskCardGame.EncounterBlueprintData[]
+  nameWithType.vb: EncounterBlueprintData()
+  fullName.vb: DiskCardGame.EncounterBlueprintData()
+  name.vb: EncounterBlueprintData()
+  spec.csharp:
+  - uid: DiskCardGame.EncounterBlueprintData
+    name: EncounterBlueprintData
+    nameWithType: EncounterBlueprintData
+    fullName: DiskCardGame.EncounterBlueprintData
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.EncounterBlueprintData
+    name: EncounterBlueprintData
+    nameWithType: EncounterBlueprintData
+    fullName: DiskCardGame.EncounterBlueprintData
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition
+  name: SetBossPrepCondition
+  nameWithType: RegionExtensions.SetBossPrepCondition
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition
+- uid: DiskCardGame.StoryEventCondition
+  commentId: T:DiskCardGame.StoryEventCondition
+  parent: DiskCardGame
+  isExternal: true
+  name: StoryEventCondition
+  nameWithType: StoryEventCondition
+  fullName: DiskCardGame.StoryEventCondition
+- uid: InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter
+  name: SetBossPrepEncounter
+  nameWithType: RegionExtensions.SetBossPrepEncounter
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter
+- uid: DiskCardGame.EncounterBlueprintData
+  commentId: T:DiskCardGame.EncounterBlueprintData
+  parent: DiskCardGame
+  isExternal: true
+  name: EncounterBlueprintData
+  nameWithType: EncounterBlueprintData
+  fullName: DiskCardGame.EncounterBlueprintData
+- uid: InscryptionAPI.Regions.RegionExtensions.AddBosses*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddBosses
+  name: AddBosses
+  nameWithType: RegionExtensions.AddBosses
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddBosses
+- uid: DiskCardGame.Opponent.Type[]
+  isExternal: true
+  name: Opponent.Type[]
+  nameWithType: Opponent.Type[]
+  fullName: DiskCardGame.Opponent.Type[]
+  nameWithType.vb: Opponent.Type()
+  fullName.vb: DiskCardGame.Opponent.Type()
+  name.vb: Opponent.Type()
+  spec.csharp:
+  - uid: DiskCardGame.Opponent.Type
+    name: Opponent.Type
+    nameWithType: Opponent.Type
+    fullName: DiskCardGame.Opponent.Type
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.Opponent.Type
+    name: Opponent.Type
+    nameWithType: Opponent.Type
+    fullName: DiskCardGame.Opponent.Type
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled
+  name: SetDustParticlesEnabled
+  nameWithType: RegionExtensions.SetDustParticlesEnabled
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogEnabled*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetFogEnabled
+  name: SetFogEnabled
+  nameWithType: RegionExtensions.SetFogEnabled
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogEnabled
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogAlpha*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetFogAlpha
+  name: SetFogAlpha
+  nameWithType: RegionExtensions.SetFogAlpha
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogAlpha
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapEmission*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetMapEmission
+  name: SetMapEmission
+  nameWithType: RegionExtensions.SetMapEmission
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapEmission
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor
+  name: SetMapEmissionColor
+  nameWithType: RegionExtensions.SetMapEmissionColor
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor
+- uid: InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience
+  name: SetSilenceCabinAmbience
+  nameWithType: RegionExtensions.SetSilenceCabinAmbience
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience
+- uid: InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId
+  name: SetAmbientLoopId
+  nameWithType: RegionExtensions.SetAmbientLoopId
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId
+- uid: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddFillerScenery
+  name: AddFillerScenery
+  nameWithType: RegionExtensions.AddFillerScenery
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddFillerScenery
+- uid: DiskCardGame.FillerSceneryEntry[]
+  isExternal: true
+  name: FillerSceneryEntry[]
+  nameWithType: FillerSceneryEntry[]
+  fullName: DiskCardGame.FillerSceneryEntry[]
+  nameWithType.vb: FillerSceneryEntry()
+  fullName.vb: DiskCardGame.FillerSceneryEntry()
+  name.vb: FillerSceneryEntry()
+  spec.csharp:
+  - uid: DiskCardGame.FillerSceneryEntry
+    name: FillerSceneryEntry
+    nameWithType: FillerSceneryEntry
+    fullName: DiskCardGame.FillerSceneryEntry
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.FillerSceneryEntry
+    name: FillerSceneryEntry
+    nameWithType: FillerSceneryEntry
+    fullName: DiskCardGame.FillerSceneryEntry
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.AddScarceScenery
+  name: AddScarceScenery
+  nameWithType: RegionExtensions.AddScarceScenery
+  fullName: InscryptionAPI.Regions.RegionExtensions.AddScarceScenery
+- uid: DiskCardGame.ScarceSceneryEntry[]
+  isExternal: true
+  name: ScarceSceneryEntry[]
+  nameWithType: ScarceSceneryEntry[]
+  fullName: DiskCardGame.ScarceSceneryEntry[]
+  nameWithType.vb: ScarceSceneryEntry()
+  fullName.vb: DiskCardGame.ScarceSceneryEntry()
+  name.vb: ScarceSceneryEntry()
+  spec.csharp:
+  - uid: DiskCardGame.ScarceSceneryEntry
+    name: ScarceSceneryEntry
+    nameWithType: ScarceSceneryEntry
+    fullName: DiskCardGame.ScarceSceneryEntry
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: DiskCardGame.ScarceSceneryEntry
+    name: ScarceSceneryEntry
+    nameWithType: ScarceSceneryEntry
+    fullName: DiskCardGame.ScarceSceneryEntry
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.SetFogProfile*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetFogProfile
+  name: SetFogProfile
+  nameWithType: RegionExtensions.SetFogProfile
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetFogProfile
+- uid: VolumetricFogAndMist.VolumetricFogProfile
+  commentId: T:VolumetricFogAndMist.VolumetricFogProfile
+  parent: VolumetricFogAndMist
+  isExternal: true
+  name: VolumetricFogProfile
+  nameWithType: VolumetricFogProfile
+  fullName: VolumetricFogAndMist.VolumetricFogProfile
+- uid: VolumetricFogAndMist
+  commentId: N:VolumetricFogAndMist
+  isExternal: true
+  name: VolumetricFogAndMist
+  nameWithType: VolumetricFogAndMist
+  fullName: VolumetricFogAndMist
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo
+  name: SetMapAlbedo
+  nameWithType: RegionExtensions.SetMapAlbedo
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo
+- uid: UnityEngine.Texture
+  commentId: T:UnityEngine.Texture
+  parent: UnityEngine
+  isExternal: true
+  name: Texture
+  nameWithType: Texture
+  fullName: UnityEngine.Texture
+- uid: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs
+  name: SetMapParticlesPrefabs
+  nameWithType: RegionExtensions.SetMapParticlesPrefabs
+  fullName: InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs
+- uid: UnityEngine.GameObject[]
+  isExternal: true
+  name: GameObject[]
+  nameWithType: GameObject[]
+  fullName: UnityEngine.GameObject[]
+  nameWithType.vb: GameObject()
+  fullName.vb: UnityEngine.GameObject()
+  name.vb: GameObject()
+  spec.csharp:
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    nameWithType: GameObject
+    fullName: UnityEngine.GameObject
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: UnityEngine.GameObject
+    name: GameObject
+    nameWithType: GameObject
+    fullName: UnityEngine.GameObject
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: InscryptionAPI.Regions.RegionExtensions.Build*
+  commentId: Overload:InscryptionAPI.Regions.RegionExtensions.Build
+  name: Build
+  nameWithType: RegionExtensions.Build
+  fullName: InscryptionAPI.Regions.RegionExtensions.Build

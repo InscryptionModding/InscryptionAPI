@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Boons
+  commentId: N:InscryptionAPI.Boons
+  id: InscryptionAPI.Boons
+  children:
+  - InscryptionAPI.Boons.BoonBehaviour
+  - InscryptionAPI.Boons.BoonManager
+  - InscryptionAPI.Boons.BoonManager.FullBoon
+  - InscryptionAPI.Boons.DeckInfoExtensions
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Boons
+  nameWithType: InscryptionAPI.Boons
+  fullName: InscryptionAPI.Boons
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Boons.BoonBehaviour
+  commentId: T:InscryptionAPI.Boons.BoonBehaviour
+  name: BoonBehaviour
+  nameWithType: BoonBehaviour
+  fullName: InscryptionAPI.Boons.BoonBehaviour
+- uid: InscryptionAPI.Boons.BoonManager
+  commentId: T:InscryptionAPI.Boons.BoonManager
+  name: BoonManager
+  nameWithType: BoonManager
+  fullName: InscryptionAPI.Boons.BoonManager
+- uid: InscryptionAPI.Boons.BoonManager.FullBoon
+  commentId: T:InscryptionAPI.Boons.BoonManager.FullBoon
+  parent: InscryptionAPI.Boons
+  name: BoonManager.FullBoon
+  nameWithType: BoonManager.FullBoon
+  fullName: InscryptionAPI.Boons.BoonManager.FullBoon
+- uid: InscryptionAPI.Boons.DeckInfoExtensions
+  commentId: T:InscryptionAPI.Boons.DeckInfoExtensions
+  name: DeckInfoExtensions
+  nameWithType: DeckInfoExtensions
+  fullName: InscryptionAPI.Boons.DeckInfoExtensions
+- uid: InscryptionAPI.Boons
+  commentId: N:InscryptionAPI.Boons
+  name: InscryptionAPI.Boons
+  nameWithType: InscryptionAPI.Boons
+  fullName: InscryptionAPI.Boons

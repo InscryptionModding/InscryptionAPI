@@ -1,0 +1,211 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  commentId: T:InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  id: AscensionScreenSort.Direction
+  parent: InscryptionAPI.Ascension
+  children:
+  - InscryptionAPI.Ascension.AscensionScreenSort.Direction.NoPreference
+  - InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersEnd
+  - InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersStart
+  - InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresEnd
+  - InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresStart
+  langs:
+  - csharp
+  - vb
+  name: AscensionScreenSort.Direction
+  nameWithType: AscensionScreenSort.Direction
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  type: Enum
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Direction
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 5
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public enum Direction
+    content.vb: Public Enum Direction
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresStart
+  commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresStart
+  id: RequiresStart
+  parent: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  langs:
+  - csharp
+  - vb
+  name: RequiresStart
+  nameWithType: AscensionScreenSort.Direction.RequiresStart
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresStart
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RequiresStart
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: RequiresStart = 1
+    return:
+      type: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersStart
+  commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersStart
+  id: PrefersStart
+  parent: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  langs:
+  - csharp
+  - vb
+  name: PrefersStart
+  nameWithType: AscensionScreenSort.Direction.PrefersStart
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersStart
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PrefersStart
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: PrefersStart = 2
+    return:
+      type: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction.NoPreference
+  commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.Direction.NoPreference
+  id: NoPreference
+  parent: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  langs:
+  - csharp
+  - vb
+  name: NoPreference
+  nameWithType: AscensionScreenSort.Direction.NoPreference
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction.NoPreference
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NoPreference
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 9
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: NoPreference = 3
+    return:
+      type: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersEnd
+  commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersEnd
+  id: PrefersEnd
+  parent: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  langs:
+  - csharp
+  - vb
+  name: PrefersEnd
+  nameWithType: AscensionScreenSort.Direction.PrefersEnd
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction.PrefersEnd
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: PrefersEnd
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: PrefersEnd = 4
+    return:
+      type: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresEnd
+  commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresEnd
+  id: RequiresEnd
+  parent: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  langs:
+  - csharp
+  - vb
+  name: RequiresEnd
+  nameWithType: AscensionScreenSort.Direction.RequiresEnd
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction.RequiresEnd
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionScreenSort.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RequiresEnd
+    path: ../InscryptionAPI/Ascension/AscensionScreenSort.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: RequiresEnd = 5
+    return:
+      type: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: InscryptionAPI.Ascension
+  commentId: N:InscryptionAPI.Ascension
+  name: InscryptionAPI.Ascension
+  nameWithType: InscryptionAPI.Ascension
+  fullName: InscryptionAPI.Ascension
+- uid: InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  commentId: T:InscryptionAPI.Ascension.AscensionScreenSort.Direction
+  parent: InscryptionAPI.Ascension
+  name: AscensionScreenSort.Direction
+  nameWithType: AscensionScreenSort.Direction
+  fullName: InscryptionAPI.Ascension.AscensionScreenSort.Direction

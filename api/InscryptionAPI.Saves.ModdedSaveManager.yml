@@ -1,0 +1,685 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Saves.ModdedSaveManager
+  commentId: T:InscryptionAPI.Saves.ModdedSaveManager
+  id: ModdedSaveManager
+  parent: InscryptionAPI.Saves
+  children:
+  - InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
+  - InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
+  - InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
+  - InscryptionAPI.Saves.ModdedSaveManager.RunState
+  - InscryptionAPI.Saves.ModdedSaveManager.SaveData
+  - InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
+  langs:
+  - csharp
+  - vb
+  name: ModdedSaveManager
+  nameWithType: ModdedSaveManager
+  fullName: InscryptionAPI.Saves.ModdedSaveManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ModdedSaveManager
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 5
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class ModdedSaveManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module ModdedSaveManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveData
+  commentId: P:InscryptionAPI.Saves.ModdedSaveManager.SaveData
+  id: SaveData
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: SaveData
+  nameWithType: ModdedSaveManager.SaveData
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveData
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SaveData
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 16
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  summary: "\nCurrent modded SaveData.\n"
+  example: []
+  syntax:
+    content: public static ModdedSaveData SaveData { get; }
+    parameters: []
+    return:
+      type: InscryptionAPI.Saves.ModdedSaveData
+    content.vb: Public Shared ReadOnly Property SaveData As ModdedSaveData
+  overload: InscryptionAPI.Saves.ModdedSaveManager.SaveData*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Saves.ModdedSaveManager.RunState
+  commentId: P:InscryptionAPI.Saves.ModdedSaveManager.RunState
+  id: RunState
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: RunState
+  nameWithType: ModdedSaveManager.RunState
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.RunState
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: RunState
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 21
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  summary: "\nCurrent modded RunState.\n"
+  example: []
+  syntax:
+    content: public static ModdedSaveData RunState { get; }
+    parameters: []
+    return:
+      type: InscryptionAPI.Saves.ModdedSaveData
+    content.vb: Public Shared ReadOnly Property RunState As ModdedSaveData
+  overload: InscryptionAPI.Saves.ModdedSaveManager.RunState*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
+  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
+  id: SaveDataToFile
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: SaveDataToFile()
+  nameWithType: ModdedSaveManager.SaveDataToFile()
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SaveDataToFile
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 32
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(SaveManager), "SaveToFile")]
+
+      [HarmonyPostfix]
+
+      public static void SaveDataToFile()
+    content.vb: >-
+      <HarmonyPatch(GetType(SaveManager), "SaveToFile")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub SaveDataToFile
+  overload: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: SaveManager
+    - type: System.String
+      value: SaveToFile
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
+  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
+  id: ReadDataFromFile
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: ReadDataFromFile()
+  nameWithType: ModdedSaveManager.ReadDataFromFile()
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReadDataFromFile
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 41
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]
+
+      [HarmonyPostfix]
+
+      public static void ReadDataFromFile()
+    content.vb: >-
+      <HarmonyPatch(GetType(SaveManager), "LoadFromFile")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub ReadDataFromFile
+  overload: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: SaveManager
+    - type: System.String
+      value: LoadFromFile
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
+  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
+  id: ResetRunStateOnNewAscensionRun
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: ResetRunStateOnNewAscensionRun()
+  nameWithType: ModdedSaveManager.ResetRunStateOnNewAscensionRun()
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ResetRunStateOnNewAscensionRun
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 78
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(AscensionSaveData), "NewRun")]
+
+      [HarmonyPostfix]
+
+      public static void ResetRunStateOnNewAscensionRun()
+    content.vb: >-
+      <HarmonyPatch(GetType(AscensionSaveData), "NewRun")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub ResetRunStateOnNewAscensionRun
+  overload: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.AscensionSaveData
+    - type: System.String
+      value: NewRun
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
+  commentId: M:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
+  id: ResetRunStateOnPart1Run
+  parent: InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: ResetRunStateOnPart1Run()
+  nameWithType: ModdedSaveManager.ResetRunStateOnPart1Run()
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Saves/ModdedSaveManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ResetRunStateOnPart1Run
+    path: ../InscryptionAPI/Saves/ModdedSaveManager.cs
+    startLine: 85
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Saves
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(SaveFile), "NewPart1Run")]
+
+      [HarmonyPrefix]
+
+      public static void ResetRunStateOnPart1Run()
+    content.vb: >-
+      <HarmonyPatch(GetType(SaveFile), "NewPart1Run")>
+
+      <HarmonyPrefix>
+
+      Public Shared Sub ResetRunStateOnPart1Run
+  overload: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: SaveFile
+    - type: System.String
+      value: NewPart1Run
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Saves
+  commentId: N:InscryptionAPI.Saves
+  name: InscryptionAPI.Saves
+  nameWithType: InscryptionAPI.Saves
+  fullName: InscryptionAPI.Saves
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveData*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.SaveData
+  name: SaveData
+  nameWithType: ModdedSaveManager.SaveData
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveData
+- uid: InscryptionAPI.Saves.ModdedSaveData
+  commentId: T:InscryptionAPI.Saves.ModdedSaveData
+  parent: InscryptionAPI.Saves
+  name: ModdedSaveData
+  nameWithType: ModdedSaveData
+  fullName: InscryptionAPI.Saves.ModdedSaveData
+- uid: InscryptionAPI.Saves.ModdedSaveManager.RunState*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.RunState
+  name: RunState
+  nameWithType: ModdedSaveManager.RunState
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.RunState
+- uid: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
+  name: SaveDataToFile
+  nameWithType: ModdedSaveManager.SaveDataToFile
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveDataToFile
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
+  name: ReadDataFromFile
+  nameWithType: ModdedSaveManager.ReadDataFromFile
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ReadDataFromFile
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
+  name: ResetRunStateOnNewAscensionRun
+  nameWithType: ModdedSaveManager.ResetRunStateOnNewAscensionRun
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnNewAscensionRun
+- uid: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run*
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run
+  name: ResetRunStateOnPart1Run
+  nameWithType: ModdedSaveManager.ResetRunStateOnPart1Run
+  fullName: InscryptionAPI.Saves.ModdedSaveManager.ResetRunStateOnPart1Run

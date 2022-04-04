@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Saves
+  commentId: N:InscryptionAPI.Saves
+  id: InscryptionAPI.Saves
+  children:
+  - InscryptionAPI.Saves.ModdedSaveData
+  - InscryptionAPI.Saves.ModdedSaveManager
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Saves
+  nameWithType: InscryptionAPI.Saves
+  fullName: InscryptionAPI.Saves
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Saves.ModdedSaveData
+  commentId: T:InscryptionAPI.Saves.ModdedSaveData
+  parent: InscryptionAPI.Saves
+  name: ModdedSaveData
+  nameWithType: ModdedSaveData
+  fullName: InscryptionAPI.Saves.ModdedSaveData
+- uid: InscryptionAPI.Saves.ModdedSaveManager
+  commentId: T:InscryptionAPI.Saves.ModdedSaveManager
+  name: ModdedSaveManager
+  nameWithType: ModdedSaveManager
+  fullName: InscryptionAPI.Saves.ModdedSaveManager
+- uid: InscryptionAPI.Saves
+  commentId: N:InscryptionAPI.Saves
+  name: InscryptionAPI.Saves
+  nameWithType: InscryptionAPI.Saves
+  fullName: InscryptionAPI.Saves

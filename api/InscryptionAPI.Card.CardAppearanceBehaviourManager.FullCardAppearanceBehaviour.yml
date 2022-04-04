@@ -1,0 +1,469 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  commentId: T:InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  id: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor(DiskCardGame.CardAppearanceBehaviour.Appearance,Type)
+  - InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.AppearanceBehaviour
+  - InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.Id
+  langs:
+  - csharp
+  - vb
+  name: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  nameWithType: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  fullName: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FullCardAppearanceBehaviour
+    path: ../InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public class FullCardAppearanceBehaviour
+    content.vb: Public Class FullCardAppearanceBehaviour
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.Id
+  commentId: F:InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.Id
+  id: Id
+  parent: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.Id
+  fullName: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.Id
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Id
+    path: ../InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly CardAppearanceBehaviour.Appearance Id
+    return:
+      type: DiskCardGame.CardAppearanceBehaviour.Appearance
+    content.vb: Public ReadOnly Id As CardAppearanceBehaviour.Appearance
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.AppearanceBehaviour
+  commentId: F:InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.AppearanceBehaviour
+  id: AppearanceBehaviour
+  parent: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: AppearanceBehaviour
+  nameWithType: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.AppearanceBehaviour
+  fullName: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.AppearanceBehaviour
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AppearanceBehaviour
+    path: ../InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+    startLine: 13
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly Type AppearanceBehaviour
+    return:
+      type: Type
+    content.vb: Public ReadOnly AppearanceBehaviour As Type
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor(DiskCardGame.CardAppearanceBehaviour.Appearance,Type)
+  commentId: M:InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor(DiskCardGame.CardAppearanceBehaviour.Appearance,Type)
+  id: '#ctor(DiskCardGame.CardAppearanceBehaviour.Appearance,Type)'
+  parent: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: FullCardAppearanceBehaviour(CardAppearanceBehaviour.Appearance, Type)
+  nameWithType: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.FullCardAppearanceBehaviour(CardAppearanceBehaviour.Appearance, Type)
+  fullName: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.FullCardAppearanceBehaviour(DiskCardGame.CardAppearanceBehaviour.Appearance, Type)
+  type: Constructor
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: .ctor
+    path: ../InscryptionAPI/Card/CardAppearanceBehaviourManager.cs
+    startLine: 15
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public FullCardAppearanceBehaviour(CardAppearanceBehaviour.Appearance id, Type appearanceBehaviour)
+    parameters:
+    - id: id
+      type: DiskCardGame.CardAppearanceBehaviour.Appearance
+    - id: appearanceBehaviour
+      type: Type
+    content.vb: Public Sub New(id As CardAppearanceBehaviour.Appearance, appearanceBehaviour As Type)
+  overload: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+  commentId: T:DiskCardGame.CardAppearanceBehaviour.Appearance
+  parent: DiskCardGame
+  isExternal: true
+  name: CardAppearanceBehaviour.Appearance
+  nameWithType: CardAppearanceBehaviour.Appearance
+  fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor*
+  commentId: Overload:InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.#ctor
+  name: FullCardAppearanceBehaviour
+  nameWithType: CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.FullCardAppearanceBehaviour
+  fullName: InscryptionAPI.Card.CardAppearanceBehaviourManager.FullCardAppearanceBehaviour.FullCardAppearanceBehaviour

@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Triggers
+  commentId: N:InscryptionAPI.Triggers
+  id: InscryptionAPI.Triggers
+  children:
+  - InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  - InscryptionAPI.Triggers.CustomTrigger
+  - InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute
+  - InscryptionAPI.Triggers.CustomTriggerPatches
+  - InscryptionAPI.Triggers.CustomTriggerResponderAttribute
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Triggers
+  nameWithType: InscryptionAPI.Triggers
+  fullName: InscryptionAPI.Triggers
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Triggers.CustomTriggerResponderAttribute
+  commentId: T:InscryptionAPI.Triggers.CustomTriggerResponderAttribute
+  name: CustomTriggerResponderAttribute
+  nameWithType: CustomTriggerResponderAttribute
+  fullName: InscryptionAPI.Triggers.CustomTriggerResponderAttribute
+- uid: InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute
+  commentId: T:InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute
+  name: CustomTriggerCoroutineAttribute
+  nameWithType: CustomTriggerCoroutineAttribute
+  fullName: InscryptionAPI.Triggers.CustomTriggerCoroutineAttribute
+- uid: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  commentId: T:InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+  name: CustomGlobalTriggerHandler
+  nameWithType: CustomGlobalTriggerHandler
+  fullName: InscryptionAPI.Triggers.CustomGlobalTriggerHandler
+- uid: InscryptionAPI.Triggers.CustomTrigger
+  commentId: T:InscryptionAPI.Triggers.CustomTrigger
+  parent: InscryptionAPI.Triggers
+  name: CustomTrigger
+  nameWithType: CustomTrigger
+  fullName: InscryptionAPI.Triggers.CustomTrigger
+- uid: InscryptionAPI.Triggers.CustomTriggerPatches
+  commentId: T:InscryptionAPI.Triggers.CustomTriggerPatches
+  name: CustomTriggerPatches
+  nameWithType: CustomTriggerPatches
+  fullName: InscryptionAPI.Triggers.CustomTriggerPatches
+- uid: InscryptionAPI.Triggers
+  commentId: N:InscryptionAPI.Triggers
+  name: InscryptionAPI.Triggers
+  nameWithType: InscryptionAPI.Triggers
+  fullName: InscryptionAPI.Triggers

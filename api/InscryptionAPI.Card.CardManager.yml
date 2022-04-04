@@ -1,0 +1,1086 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.CardManager
+  commentId: T:InscryptionAPI.Card.CardManager
+  id: CardManager
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.CardManager.Add(System.String,DiskCardGame.CardInfo)
+  - InscryptionAPI.Card.CardManager.AllCardsCopy
+  - InscryptionAPI.Card.CardManager.BaseGameCards
+  - InscryptionAPI.Card.CardManager.GetExtendedClass``1(DiskCardGame.CardInfo)
+  - InscryptionAPI.Card.CardManager.ModifyCardList
+  - InscryptionAPI.Card.CardManager.New(System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  - InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)
+  - InscryptionAPI.Card.CardManager.SyncCardList
+  langs:
+  - csharp
+  - vb
+  name: CardManager
+  nameWithType: CardManager
+  fullName: InscryptionAPI.Card.CardManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CardManager
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class CardManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module CardManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Card.CardManager.BaseGameCards
+  commentId: F:InscryptionAPI.Card.CardManager.BaseGameCards
+  id: BaseGameCards
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: BaseGameCards
+  nameWithType: CardManager.BaseGameCards
+  fullName: InscryptionAPI.Card.CardManager.BaseGameCards
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: BaseGameCards
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 27
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nThe set of cards that are in the base game\n"
+  example: []
+  syntax:
+    content: public static readonly ReadOnlyCollection<CardInfo> BaseGameCards
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.CardInfo}
+      description: ''
+    content.vb: Public Shared ReadOnly BaseGameCards As ReadOnlyCollection(Of CardInfo)
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Card.CardManager.ModifyCardList
+  commentId: E:InscryptionAPI.Card.CardManager.ModifyCardList
+  id: ModifyCardList
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: ModifyCardList
+  nameWithType: CardManager.ModifyCardList
+  fullName: InscryptionAPI.Card.CardManager.ModifyCardList
+  type: Event
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ModifyCardList
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 35
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nThis event runs every time the card list is resynced. By adding listeners to this event, you can modify cards that have been added to the list after your mod was loaded.\n"
+  example: []
+  syntax:
+    content: public static event Func<List<CardInfo>, List<CardInfo>> ModifyCardList
+    return:
+      type: Func{List{DiskCardGame.CardInfo},List{DiskCardGame.CardInfo}}
+    content.vb: Public Shared Event ModifyCardList As Func(Of List(Of CardInfo), List(Of CardInfo))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.CardManager.SyncCardList
+  commentId: M:InscryptionAPI.Card.CardManager.SyncCardList
+  id: SyncCardList
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: SyncCardList()
+  nameWithType: CardManager.SyncCardList()
+  fullName: InscryptionAPI.Card.CardManager.SyncCardList()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SyncCardList
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 54
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nRe-executes events and rebuilds the card pool\n"
+  example: []
+  syntax:
+    content: public static void SyncCardList()
+    content.vb: Public Shared Sub SyncCardList
+  overload: InscryptionAPI.Card.CardManager.SyncCardList*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.CardManager.AllCardsCopy
+  commentId: P:InscryptionAPI.Card.CardManager.AllCardsCopy
+  id: AllCardsCopy
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: AllCardsCopy
+  nameWithType: CardManager.AllCardsCopy
+  fullName: InscryptionAPI.Card.CardManager.AllCardsCopy
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AllCardsCopy
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 174
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nA copy of all cards in the card pool.\n"
+  example: []
+  syntax:
+    content: public static List<CardInfo> AllCardsCopy { get; }
+    parameters: []
+    return:
+      type: List{DiskCardGame.CardInfo}
+      description: ''
+    content.vb: Public Shared ReadOnly Property AllCardsCopy As List(Of CardInfo)
+  overload: InscryptionAPI.Card.CardManager.AllCardsCopy*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Card.CardManager.Add(System.String,DiskCardGame.CardInfo)
+  commentId: M:InscryptionAPI.Card.CardManager.Add(System.String,DiskCardGame.CardInfo)
+  id: Add(System.String,DiskCardGame.CardInfo)
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, CardInfo)
+  nameWithType: CardManager.Add(String, CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.Add(System.String, DiskCardGame.CardInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 197
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nAdds a new card to the card pool. If your card&apos;s name does not match your mod prefix, it will be updated to match.\n"
+  example: []
+  syntax:
+    content: public static void Add(string modPrefix, CardInfo newCard)
+    parameters:
+    - id: modPrefix
+      type: System.String
+      description: The unique prefix that identifies your card mod in the card pool.
+    - id: newCard
+      type: DiskCardGame.CardInfo
+      description: The card to add
+    content.vb: Public Shared Sub Add(modPrefix As String, newCard As CardInfo)
+  overload: InscryptionAPI.Card.CardManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)
+  commentId: M:InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)
+  id: Remove(DiskCardGame.CardInfo)
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(CardInfo)
+  nameWithType: CardManager.Remove(CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Remove
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 212
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nRemoves a custom card from the card pool. Cannot be used to remove base game cards.\n"
+  example: []
+  syntax:
+    content: public static void Remove(CardInfo card)
+    parameters:
+    - id: card
+      type: DiskCardGame.CardInfo
+      description: The card to remove
+    content.vb: Public Shared Sub Remove(card As CardInfo)
+  overload: InscryptionAPI.Card.CardManager.Remove*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.CardManager.New(System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  commentId: M:InscryptionAPI.Card.CardManager.New(System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  id: New(System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: New(String, String, String, Int32, Int32, String)
+  nameWithType: CardManager.New(String, String, String, Int32, Int32, String)
+  fullName: InscryptionAPI.Card.CardManager.New(System.String, System.String, System.String, System.Int32, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: New
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 224
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nAdds a new card to the card pool\n"
+  example: []
+  syntax:
+    content: public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = null)
+    parameters:
+    - id: modPrefix
+      type: System.String
+      description: The unique prefix that identifies your card mod in the card pool.
+    - id: name
+      type: System.String
+      description: The name of your card in the card pool. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name]
+    - id: displayName
+      type: System.String
+      description: The displayed name of the card
+    - id: attack
+      type: System.Int32
+      description: The attack power of the card
+    - id: health
+      type: System.Int32
+      description: The health of the card
+    - id: description
+      type: System.String
+      description: The spoken description when the card is first encountered.
+    return:
+      type: DiskCardGame.CardInfo
+      description: ''
+    content.vb: Public Shared Function New(modPrefix As String, name As String, displayName As String, attack As Integer, health As Integer, description As String = Nothing) As CardInfo
+  overload: InscryptionAPI.Card.CardManager.New*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.CardManager.GetExtendedClass``1(DiskCardGame.CardInfo)
+  commentId: M:InscryptionAPI.Card.CardManager.GetExtendedClass``1(DiskCardGame.CardInfo)
+  id: GetExtendedClass``1(DiskCardGame.CardInfo)
+  isExtensionMethod: true
+  parent: InscryptionAPI.Card.CardManager
+  langs:
+  - csharp
+  - vb
+  name: GetExtendedClass<T>(CardInfo)
+  nameWithType: CardManager.GetExtendedClass<T>(CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.GetExtendedClass<T>(DiskCardGame.CardInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/CardManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GetExtendedClass
+    path: ../InscryptionAPI/Card/CardManager.cs
+    startLine: 244
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  summary: "\nGet a custom extension class that will exist on all clones of a card\n"
+  example: []
+  syntax:
+    content: >-
+      public static T GetExtendedClass<T>(this CardInfo card)
+          where T : class, new()
+    parameters:
+    - id: card
+      type: DiskCardGame.CardInfo
+      description: Card to access
+    typeParameters:
+    - id: T
+      description: The custom class
+    return:
+      type: '{T}'
+      description: The instance of T for this card
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetExtendedClass(Of T As {Class, New})(card As CardInfo) As T
+  overload: InscryptionAPI.Card.CardManager.GetExtendedClass*
+  nameWithType.vb: CardManager.GetExtendedClass(Of T)(CardInfo)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Card.CardManager.GetExtendedClass(Of T)(DiskCardGame.CardInfo)
+  name.vb: GetExtendedClass(Of T)(CardInfo)
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.CardInfo}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.CardInfo}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  name: ReadOnlyCollection<CardInfo>
+  nameWithType: ReadOnlyCollection<CardInfo>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<DiskCardGame.CardInfo>
+  nameWithType.vb: ReadOnlyCollection(Of CardInfo)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of DiskCardGame.CardInfo)
+  name.vb: ReadOnlyCollection(Of CardInfo)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+- uid: Func{List{DiskCardGame.CardInfo},List{DiskCardGame.CardInfo}}
+  commentId: '!:Func{List{DiskCardGame.CardInfo},List{DiskCardGame.CardInfo}}'
+  definition: Func`2
+  name: Func<List<CardInfo>, List<CardInfo>>
+  nameWithType: Func<List<CardInfo>, List<CardInfo>>
+  fullName: Func<List<DiskCardGame.CardInfo>, List<DiskCardGame.CardInfo>>
+  nameWithType.vb: Func(Of List(Of CardInfo), List(Of CardInfo))
+  fullName.vb: Func(Of List(Of DiskCardGame.CardInfo), List(Of DiskCardGame.CardInfo))
+  name.vb: Func(Of List(Of CardInfo), List(Of CardInfo))
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Card.CardManager.SyncCardList*
+  commentId: Overload:InscryptionAPI.Card.CardManager.SyncCardList
+  name: SyncCardList
+  nameWithType: CardManager.SyncCardList
+  fullName: InscryptionAPI.Card.CardManager.SyncCardList
+- uid: InscryptionAPI.Card.CardManager.AllCardsCopy*
+  commentId: Overload:InscryptionAPI.Card.CardManager.AllCardsCopy
+  name: AllCardsCopy
+  nameWithType: CardManager.AllCardsCopy
+  fullName: InscryptionAPI.Card.CardManager.AllCardsCopy
+- uid: List{DiskCardGame.CardInfo}
+  commentId: '!:List{DiskCardGame.CardInfo}'
+  definition: List`1
+  name: List<CardInfo>
+  nameWithType: List<CardInfo>
+  fullName: List<DiskCardGame.CardInfo>
+  nameWithType.vb: List(Of CardInfo)
+  fullName.vb: List(Of DiskCardGame.CardInfo)
+  name.vb: List(Of CardInfo)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Card.CardManager.Add*
+  commentId: Overload:InscryptionAPI.Card.CardManager.Add
+  name: Add
+  nameWithType: CardManager.Add
+  fullName: InscryptionAPI.Card.CardManager.Add
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: DiskCardGame.CardInfo
+  commentId: T:DiskCardGame.CardInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardInfo
+  nameWithType: CardInfo
+  fullName: DiskCardGame.CardInfo
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Card.CardManager.Remove*
+  commentId: Overload:InscryptionAPI.Card.CardManager.Remove
+  name: Remove
+  nameWithType: CardManager.Remove
+  fullName: InscryptionAPI.Card.CardManager.Remove
+- uid: InscryptionAPI.Card.CardManager.New*
+  commentId: Overload:InscryptionAPI.Card.CardManager.New
+  name: New
+  nameWithType: CardManager.New
+  fullName: InscryptionAPI.Card.CardManager.New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: InscryptionAPI.Card.CardManager.GetExtendedClass*
+  commentId: Overload:InscryptionAPI.Card.CardManager.GetExtendedClass
+  name: GetExtendedClass
+  nameWithType: CardManager.GetExtendedClass
+  fullName: InscryptionAPI.Card.CardManager.GetExtendedClass
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

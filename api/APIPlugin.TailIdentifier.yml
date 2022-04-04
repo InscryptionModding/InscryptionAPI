@@ -1,0 +1,506 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.TailIdentifier
+  commentId: T:APIPlugin.TailIdentifier
+  id: TailIdentifier
+  parent: APIPlugin
+  children:
+  - APIPlugin.TailIdentifier.#ctor(System.String,UnityEngine.Texture2D,DiskCardGame.CardModificationInfo)
+  - APIPlugin.TailIdentifier.Tail
+  - APIPlugin.TailIdentifier.ToString
+  langs:
+  - csharp
+  - vb
+  name: TailIdentifier
+  nameWithType: TailIdentifier
+  fullName: APIPlugin.TailIdentifier
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/TailIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: TailIdentifier
+    path: ../InscryptionAPI/Compatibility/TailIdentifier.cs
+    startLine: 6
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public class TailIdentifier
+    content.vb: Public Class TailIdentifier
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: APIPlugin.TailIdentifier.Tail
+  commentId: P:APIPlugin.TailIdentifier.Tail
+  id: Tail
+  parent: APIPlugin.TailIdentifier
+  langs:
+  - csharp
+  - vb
+  name: Tail
+  nameWithType: TailIdentifier.Tail
+  fullName: APIPlugin.TailIdentifier.Tail
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/TailIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Tail
+    path: ../InscryptionAPI/Compatibility/TailIdentifier.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public TailParams Tail { get; }
+    parameters: []
+    return:
+      type: DiskCardGame.TailParams
+    content.vb: Public ReadOnly Property Tail As TailParams
+  overload: APIPlugin.TailIdentifier.Tail*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: APIPlugin.TailIdentifier.#ctor(System.String,UnityEngine.Texture2D,DiskCardGame.CardModificationInfo)
+  commentId: M:APIPlugin.TailIdentifier.#ctor(System.String,UnityEngine.Texture2D,DiskCardGame.CardModificationInfo)
+  id: '#ctor(System.String,UnityEngine.Texture2D,DiskCardGame.CardModificationInfo)'
+  parent: APIPlugin.TailIdentifier
+  langs:
+  - csharp
+  - vb
+  name: TailIdentifier(String, Texture2D, CardModificationInfo)
+  nameWithType: TailIdentifier.TailIdentifier(String, Texture2D, CardModificationInfo)
+  fullName: APIPlugin.TailIdentifier.TailIdentifier(System.String, UnityEngine.Texture2D, DiskCardGame.CardModificationInfo)
+  type: Constructor
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/TailIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: .ctor
+    path: ../InscryptionAPI/Compatibility/TailIdentifier.cs
+    startLine: 25
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public TailIdentifier(string name, Texture2D tailLostTex = null, CardModificationInfo mods = null)
+    parameters:
+    - id: name
+      type: System.String
+    - id: tailLostTex
+      type: UnityEngine.Texture2D
+    - id: mods
+      type: DiskCardGame.CardModificationInfo
+    content.vb: Public Sub New(name As String, tailLostTex As Texture2D = Nothing, mods As CardModificationInfo = Nothing)
+  overload: APIPlugin.TailIdentifier.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.TailIdentifier.ToString
+  commentId: M:APIPlugin.TailIdentifier.ToString
+  id: ToString
+  parent: APIPlugin.TailIdentifier
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: TailIdentifier.ToString()
+  fullName: APIPlugin.TailIdentifier.ToString()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/TailIdentifier.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ToString
+    path: ../InscryptionAPI/Compatibility/TailIdentifier.cs
+    startLine: 55
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: APIPlugin.TailIdentifier.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: APIPlugin.TailIdentifier.Tail*
+  commentId: Overload:APIPlugin.TailIdentifier.Tail
+  name: Tail
+  nameWithType: TailIdentifier.Tail
+  fullName: APIPlugin.TailIdentifier.Tail
+- uid: DiskCardGame.TailParams
+  commentId: T:DiskCardGame.TailParams
+  parent: DiskCardGame
+  isExternal: true
+  name: TailParams
+  nameWithType: TailParams
+  fullName: DiskCardGame.TailParams
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: APIPlugin.TailIdentifier.#ctor*
+  commentId: Overload:APIPlugin.TailIdentifier.#ctor
+  name: TailIdentifier
+  nameWithType: TailIdentifier.TailIdentifier
+  fullName: APIPlugin.TailIdentifier.TailIdentifier
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: DiskCardGame.CardModificationInfo
+  commentId: T:DiskCardGame.CardModificationInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardModificationInfo
+  nameWithType: CardModificationInfo
+  fullName: DiskCardGame.CardModificationInfo
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin.TailIdentifier.ToString*
+  commentId: Overload:APIPlugin.TailIdentifier.ToString
+  name: ToString
+  nameWithType: TailIdentifier.ToString
+  fullName: APIPlugin.TailIdentifier.ToString

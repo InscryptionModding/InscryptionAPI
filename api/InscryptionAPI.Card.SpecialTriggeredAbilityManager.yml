@@ -1,0 +1,753 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  commentId: T:InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  id: SpecialTriggeredAbilityManager
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add(System.String,System.String,Type)
+  - InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+  - InscryptionAPI.Card.SpecialTriggeredAbilityManager.BaseGameSpecialTriggers
+  - InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(DiskCardGame.SpecialTriggeredAbility)
+  - InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  langs:
+  - csharp
+  - vb
+  name: SpecialTriggeredAbilityManager
+  nameWithType: SpecialTriggeredAbilityManager
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SpecialTriggeredAbilityManager
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class SpecialTriggeredAbilityManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module SpecialTriggeredAbilityManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.BaseGameSpecialTriggers
+  commentId: F:InscryptionAPI.Card.SpecialTriggeredAbilityManager.BaseGameSpecialTriggers
+  id: BaseGameSpecialTriggers
+  parent: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  langs:
+  - csharp
+  - vb
+  name: BaseGameSpecialTriggers
+  nameWithType: SpecialTriggeredAbilityManager.BaseGameSpecialTriggers
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.BaseGameSpecialTriggers
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: BaseGameSpecialTriggers
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 24
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static readonly ReadOnlyCollection<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility> BaseGameSpecialTriggers
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}
+    content.vb: Public Shared ReadOnly BaseGameSpecialTriggers As ReadOnlyCollection(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+  commentId: P:InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+  id: AllSpecialTriggers
+  parent: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  langs:
+  - csharp
+  - vb
+  name: AllSpecialTriggers
+  nameWithType: SpecialTriggeredAbilityManager.AllSpecialTriggers
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AllSpecialTriggers
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 27
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static List<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility> AllSpecialTriggers { get; }
+    parameters: []
+    return:
+      type: List{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}
+    content.vb: Public Shared ReadOnly Property AllSpecialTriggers As List(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  overload: InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add(System.String,System.String,Type)
+  commentId: M:InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add(System.String,System.String,Type)
+  id: Add(System.String,System.String,Type)
+  parent: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, Type)
+  nameWithType: SpecialTriggeredAbilityManager.Add(String, String, Type)
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add(System.String, System.String, Type)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 49
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility Add(string guid, string abilityName, Type behavior)
+    parameters:
+    - id: guid
+      type: System.String
+    - id: abilityName
+      type: System.String
+    - id: behavior
+      type: Type
+    return:
+      type: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    content.vb: Public Shared Function Add(guid As String, abilityName As String, behavior As Type) As SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  overload: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(DiskCardGame.SpecialTriggeredAbility)
+  commentId: M:InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(DiskCardGame.SpecialTriggeredAbility)
+  id: Remove(DiskCardGame.SpecialTriggeredAbility)
+  parent: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(SpecialTriggeredAbility)
+  nameWithType: SpecialTriggeredAbilityManager.Remove(SpecialTriggeredAbility)
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(DiskCardGame.SpecialTriggeredAbility)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Remove
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 56
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static void Remove(SpecialTriggeredAbility id)
+    parameters:
+    - id: id
+      type: DiskCardGame.SpecialTriggeredAbility
+    content.vb: Public Shared Sub Remove(id As SpecialTriggeredAbility)
+  overload: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  commentId: M:InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  id: Remove(InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  parent: InscryptionAPI.Card.SpecialTriggeredAbilityManager
+  langs:
+  - csharp
+  - vb
+  name: Remove(SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  nameWithType: SpecialTriggeredAbilityManager.Remove(SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Remove
+    path: ../InscryptionAPI/Card/SpecialTriggeredAbilityManager.cs
+    startLine: 57
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public static void Remove(SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility ability)
+    parameters:
+    - id: ability
+      type: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    content.vb: Public Shared Sub Remove(ability As SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  overload: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  name: ReadOnlyCollection<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  nameWithType: ReadOnlyCollection<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  nameWithType.vb: ReadOnlyCollection(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  name.vb: ReadOnlyCollection(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers*
+  commentId: Overload:InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+  name: AllSpecialTriggers
+  nameWithType: SpecialTriggeredAbilityManager.AllSpecialTriggers
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.AllSpecialTriggers
+- uid: List{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}
+  commentId: '!:List{InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility}'
+  definition: List`1
+  name: List<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  nameWithType: List<SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  fullName: List<InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility>
+  nameWithType.vb: List(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  fullName.vb: List(Of InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  name.vb: List(Of SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+    fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add*
+  commentId: Overload:InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add
+  name: Add
+  nameWithType: SpecialTriggeredAbilityManager.Add
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Add
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  commentId: T:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  parent: InscryptionAPI.Card
+  name: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove*
+  commentId: Overload:InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove
+  name: Remove
+  nameWithType: SpecialTriggeredAbilityManager.Remove
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove
+- uid: DiskCardGame.SpecialTriggeredAbility
+  commentId: T:DiskCardGame.SpecialTriggeredAbility
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialTriggeredAbility
+  nameWithType: SpecialTriggeredAbility
+  fullName: DiskCardGame.SpecialTriggeredAbility
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame

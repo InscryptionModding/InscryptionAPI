@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Helpers
+  commentId: N:InscryptionAPI.Helpers
+  id: InscryptionAPI.Helpers
+  children:
+  - InscryptionAPI.Helpers.TextureHelper
+  - InscryptionAPI.Helpers.TextureHelper.SpriteType
+  langs:
+  - csharp
+  - vb
+  name: InscryptionAPI.Helpers
+  nameWithType: InscryptionAPI.Helpers
+  fullName: InscryptionAPI.Helpers
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: InscryptionAPI.Helpers.TextureHelper
+  commentId: T:InscryptionAPI.Helpers.TextureHelper
+  name: TextureHelper
+  nameWithType: TextureHelper
+  fullName: InscryptionAPI.Helpers.TextureHelper
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType
+  commentId: T:InscryptionAPI.Helpers.TextureHelper.SpriteType
+  parent: InscryptionAPI.Helpers
+  name: TextureHelper.SpriteType
+  nameWithType: TextureHelper.SpriteType
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType
+- uid: InscryptionAPI.Helpers
+  commentId: N:InscryptionAPI.Helpers
+  name: InscryptionAPI.Helpers
+  nameWithType: InscryptionAPI.Helpers
+  fullName: InscryptionAPI.Helpers

@@ -1,0 +1,555 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  commentId: T:InscryptionAPI.Card.StatIconManager.FullStatIcon
+  id: StatIconManager.FullStatIcon
+  parent: InscryptionAPI.Card
+  children:
+  - InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor(DiskCardGame.SpecialStatIcon,DiskCardGame.SpecialTriggeredAbility,DiskCardGame.StatIconInfo,Type)
+  - InscryptionAPI.Card.StatIconManager.FullStatIcon.AbilityId
+  - InscryptionAPI.Card.StatIconManager.FullStatIcon.Id
+  - InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
+  - InscryptionAPI.Card.StatIconManager.FullStatIcon.VariableStatBehavior
+  langs:
+  - csharp
+  - vb
+  name: StatIconManager.FullStatIcon
+  nameWithType: StatIconManager.FullStatIcon
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FullStatIcon
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 22
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public class FullStatIcon
+    content.vb: Public Class FullStatIcon
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.Id
+  commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.Id
+  id: Id
+  parent: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: StatIconManager.FullStatIcon.Id
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.Id
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Id
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 24
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly SpecialStatIcon Id
+    return:
+      type: DiskCardGame.SpecialStatIcon
+    content.vb: Public ReadOnly Id As SpecialStatIcon
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.AbilityId
+  commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.AbilityId
+  id: AbilityId
+  parent: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  langs:
+  - csharp
+  - vb
+  name: AbilityId
+  nameWithType: StatIconManager.FullStatIcon.AbilityId
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.AbilityId
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AbilityId
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 25
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly SpecialTriggeredAbility AbilityId
+    return:
+      type: DiskCardGame.SpecialTriggeredAbility
+    content.vb: Public ReadOnly AbilityId As SpecialTriggeredAbility
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
+  commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
+  id: Info
+  parent: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: StatIconManager.FullStatIcon.Info
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Info
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 26
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly StatIconInfo Info
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: Public ReadOnly Info As StatIconInfo
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.VariableStatBehavior
+  commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.VariableStatBehavior
+  id: VariableStatBehavior
+  parent: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  langs:
+  - csharp
+  - vb
+  name: VariableStatBehavior
+  nameWithType: StatIconManager.FullStatIcon.VariableStatBehavior
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.VariableStatBehavior
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: VariableStatBehavior
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 27
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public readonly Type VariableStatBehavior
+    return:
+      type: Type
+    content.vb: Public ReadOnly VariableStatBehavior As Type
+  modifiers.csharp:
+  - public
+  - readonly
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor(DiskCardGame.SpecialStatIcon,DiskCardGame.SpecialTriggeredAbility,DiskCardGame.StatIconInfo,Type)
+  commentId: M:InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor(DiskCardGame.SpecialStatIcon,DiskCardGame.SpecialTriggeredAbility,DiskCardGame.StatIconInfo,Type)
+  id: '#ctor(DiskCardGame.SpecialStatIcon,DiskCardGame.SpecialTriggeredAbility,DiskCardGame.StatIconInfo,Type)'
+  parent: InscryptionAPI.Card.StatIconManager.FullStatIcon
+  langs:
+  - csharp
+  - vb
+  name: FullStatIcon(SpecialStatIcon, SpecialTriggeredAbility, StatIconInfo, Type)
+  nameWithType: StatIconManager.FullStatIcon.FullStatIcon(SpecialStatIcon, SpecialTriggeredAbility, StatIconInfo, Type)
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.FullStatIcon(DiskCardGame.SpecialStatIcon, DiskCardGame.SpecialTriggeredAbility, DiskCardGame.StatIconInfo, Type)
+  type: Constructor
+  source:
+    remote:
+      path: InscryptionAPI/Card/SpecialStatIconManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: .ctor
+    path: ../InscryptionAPI/Card/SpecialStatIconManager.cs
+    startLine: 29
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Card
+  syntax:
+    content: public FullStatIcon(SpecialStatIcon id, SpecialTriggeredAbility abilityId, StatIconInfo info, Type variableStatBehavior)
+    parameters:
+    - id: id
+      type: DiskCardGame.SpecialStatIcon
+    - id: abilityId
+      type: DiskCardGame.SpecialTriggeredAbility
+    - id: info
+      type: DiskCardGame.StatIconInfo
+    - id: variableStatBehavior
+      type: Type
+    content.vb: Public Sub New(id As SpecialStatIcon, abilityId As SpecialTriggeredAbility, info As StatIconInfo, variableStatBehavior As Type)
+  overload: InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: InscryptionAPI.Card
+  commentId: N:InscryptionAPI.Card
+  name: InscryptionAPI.Card
+  nameWithType: InscryptionAPI.Card
+  fullName: InscryptionAPI.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DiskCardGame.SpecialStatIcon
+  commentId: T:DiskCardGame.SpecialStatIcon
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialStatIcon
+  nameWithType: SpecialStatIcon
+  fullName: DiskCardGame.SpecialStatIcon
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: DiskCardGame.SpecialTriggeredAbility
+  commentId: T:DiskCardGame.SpecialTriggeredAbility
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialTriggeredAbility
+  nameWithType: SpecialTriggeredAbility
+  fullName: DiskCardGame.SpecialTriggeredAbility
+- uid: DiskCardGame.StatIconInfo
+  commentId: T:DiskCardGame.StatIconInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: StatIconInfo
+  nameWithType: StatIconInfo
+  fullName: DiskCardGame.StatIconInfo
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor*
+  commentId: Overload:InscryptionAPI.Card.StatIconManager.FullStatIcon.#ctor
+  name: FullStatIcon
+  nameWithType: StatIconManager.FullStatIcon.FullStatIcon
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.FullStatIcon

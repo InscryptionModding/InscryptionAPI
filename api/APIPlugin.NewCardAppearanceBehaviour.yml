@@ -1,0 +1,768 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.NewCardAppearanceBehaviour
+  commentId: T:APIPlugin.NewCardAppearanceBehaviour
+  id: NewCardAppearanceBehaviour
+  parent: APIPlugin
+  children:
+  - APIPlugin.NewCardAppearanceBehaviour.AddNewBackground(Type,System.String)
+  - APIPlugin.NewCardAppearanceBehaviour.allBehaviours
+  - APIPlugin.NewCardAppearanceBehaviour.Appearance
+  - APIPlugin.NewCardAppearanceBehaviour.Behaviour
+  - APIPlugin.NewCardAppearanceBehaviour.behaviours
+  - APIPlugin.NewCardAppearanceBehaviour.Name
+  langs:
+  - csharp
+  - vb
+  name: NewCardAppearanceBehaviour
+  nameWithType: NewCardAppearanceBehaviour
+  fullName: APIPlugin.NewCardAppearanceBehaviour
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NewCardAppearanceBehaviour
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 5
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public class NewCardAppearanceBehaviour
+    content.vb: Public Class NewCardAppearanceBehaviour
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: APIPlugin.NewCardAppearanceBehaviour.behaviours
+  commentId: F:APIPlugin.NewCardAppearanceBehaviour.behaviours
+  id: behaviours
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: behaviours
+  nameWithType: NewCardAppearanceBehaviour.behaviours
+  fullName: APIPlugin.NewCardAppearanceBehaviour.behaviours
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: behaviours
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Dictionary<CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour> behaviours
+    return:
+      type: Dictionary{DiskCardGame.CardAppearanceBehaviour.Appearance,APIPlugin.NewCardAppearanceBehaviour}
+    content.vb: Public Shared behaviours As Dictionary(Of CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCardAppearanceBehaviour.allBehaviours
+  commentId: F:APIPlugin.NewCardAppearanceBehaviour.allBehaviours
+  id: allBehaviours
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: allBehaviours
+  nameWithType: NewCardAppearanceBehaviour.allBehaviours
+  fullName: APIPlugin.NewCardAppearanceBehaviour.allBehaviours
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: allBehaviours
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 9
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<NewCardAppearanceBehaviour> allBehaviours
+    return:
+      type: List{APIPlugin.NewCardAppearanceBehaviour}
+    content.vb: Public Shared allBehaviours As List(Of NewCardAppearanceBehaviour)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewCardAppearanceBehaviour.Appearance
+  commentId: F:APIPlugin.NewCardAppearanceBehaviour.Appearance
+  id: Appearance
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Appearance
+  nameWithType: NewCardAppearanceBehaviour.Appearance
+  fullName: APIPlugin.NewCardAppearanceBehaviour.Appearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Appearance
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public CardAppearanceBehaviour.Appearance Appearance
+    return:
+      type: DiskCardGame.CardAppearanceBehaviour.Appearance
+    content.vb: Public Appearance As CardAppearanceBehaviour.Appearance
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewCardAppearanceBehaviour.Name
+  commentId: F:APIPlugin.NewCardAppearanceBehaviour.Name
+  id: Name
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: NewCardAppearanceBehaviour.Name
+  fullName: APIPlugin.NewCardAppearanceBehaviour.Name
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Name
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public string Name
+    return:
+      type: System.String
+    content.vb: Public Name As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewCardAppearanceBehaviour.Behaviour
+  commentId: F:APIPlugin.NewCardAppearanceBehaviour.Behaviour
+  id: Behaviour
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Behaviour
+  nameWithType: NewCardAppearanceBehaviour.Behaviour
+  fullName: APIPlugin.NewCardAppearanceBehaviour.Behaviour
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Behaviour
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 13
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public Type Behaviour
+    return:
+      type: Type
+    content.vb: Public Behaviour As Type
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewCardAppearanceBehaviour.AddNewBackground(Type,System.String)
+  commentId: M:APIPlugin.NewCardAppearanceBehaviour.AddNewBackground(Type,System.String)
+  id: AddNewBackground(Type,System.String)
+  parent: APIPlugin.NewCardAppearanceBehaviour
+  langs:
+  - csharp
+  - vb
+  name: AddNewBackground(Type, String)
+  nameWithType: NewCardAppearanceBehaviour.AddNewBackground(Type, String)
+  fullName: APIPlugin.NewCardAppearanceBehaviour.AddNewBackground(Type, System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddNewBackground
+    path: ../InscryptionAPI/Compatibility/NewCardAppearanceBehaviour.cs
+    startLine: 15
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static NewCardAppearanceBehaviour AddNewBackground(Type type, string name)
+    parameters:
+    - id: type
+      type: Type
+    - id: name
+      type: System.String
+    return:
+      type: APIPlugin.NewCardAppearanceBehaviour
+    content.vb: Public Shared Function AddNewBackground(type As Type, name As String) As NewCardAppearanceBehaviour
+  overload: APIPlugin.NewCardAppearanceBehaviour.AddNewBackground*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Dictionary{DiskCardGame.CardAppearanceBehaviour.Appearance,APIPlugin.NewCardAppearanceBehaviour}
+  commentId: '!:Dictionary{DiskCardGame.CardAppearanceBehaviour.Appearance,APIPlugin.NewCardAppearanceBehaviour}'
+  definition: Dictionary`2
+  name: Dictionary<CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour>
+  nameWithType: Dictionary<CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour>
+  fullName: Dictionary<DiskCardGame.CardAppearanceBehaviour.Appearance, APIPlugin.NewCardAppearanceBehaviour>
+  nameWithType.vb: Dictionary(Of CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour)
+  fullName.vb: Dictionary(Of DiskCardGame.CardAppearanceBehaviour.Appearance, APIPlugin.NewCardAppearanceBehaviour)
+  name.vb: Dictionary(Of CardAppearanceBehaviour.Appearance, NewCardAppearanceBehaviour)
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.NewCardAppearanceBehaviour
+    name: NewCardAppearanceBehaviour
+    nameWithType: NewCardAppearanceBehaviour
+    fullName: APIPlugin.NewCardAppearanceBehaviour
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: APIPlugin.NewCardAppearanceBehaviour
+    name: NewCardAppearanceBehaviour
+    nameWithType: NewCardAppearanceBehaviour
+    fullName: APIPlugin.NewCardAppearanceBehaviour
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Dictionary`2
+  isExternal: true
+  name: Dictionary<, >
+  nameWithType: Dictionary<, >
+  fullName: Dictionary<, >
+  nameWithType.vb: Dictionary(Of , )
+  fullName.vb: Dictionary(Of , )
+  name.vb: Dictionary(Of , )
+  spec.csharp:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{APIPlugin.NewCardAppearanceBehaviour}
+  commentId: '!:List{APIPlugin.NewCardAppearanceBehaviour}'
+  definition: List`1
+  name: List<NewCardAppearanceBehaviour>
+  nameWithType: List<NewCardAppearanceBehaviour>
+  fullName: List<APIPlugin.NewCardAppearanceBehaviour>
+  nameWithType.vb: List(Of NewCardAppearanceBehaviour)
+  fullName.vb: List(Of APIPlugin.NewCardAppearanceBehaviour)
+  name.vb: List(Of NewCardAppearanceBehaviour)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.NewCardAppearanceBehaviour
+    name: NewCardAppearanceBehaviour
+    nameWithType: NewCardAppearanceBehaviour
+    fullName: APIPlugin.NewCardAppearanceBehaviour
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.NewCardAppearanceBehaviour
+    name: NewCardAppearanceBehaviour
+    nameWithType: NewCardAppearanceBehaviour
+    fullName: APIPlugin.NewCardAppearanceBehaviour
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+  commentId: T:DiskCardGame.CardAppearanceBehaviour.Appearance
+  parent: DiskCardGame
+  isExternal: true
+  name: CardAppearanceBehaviour.Appearance
+  nameWithType: CardAppearanceBehaviour.Appearance
+  fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: APIPlugin.NewCardAppearanceBehaviour.AddNewBackground*
+  commentId: Overload:APIPlugin.NewCardAppearanceBehaviour.AddNewBackground
+  name: AddNewBackground
+  nameWithType: NewCardAppearanceBehaviour.AddNewBackground
+  fullName: APIPlugin.NewCardAppearanceBehaviour.AddNewBackground
+- uid: APIPlugin.NewCardAppearanceBehaviour
+  commentId: T:APIPlugin.NewCardAppearanceBehaviour
+  parent: APIPlugin
+  name: NewCardAppearanceBehaviour
+  nameWithType: NewCardAppearanceBehaviour
+  fullName: APIPlugin.NewCardAppearanceBehaviour

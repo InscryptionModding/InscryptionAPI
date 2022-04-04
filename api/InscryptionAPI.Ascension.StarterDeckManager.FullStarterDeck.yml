@@ -1,0 +1,566 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  commentId: T:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  id: StarterDeckManager.FullStarterDeck
+  parent: InscryptionAPI.Ascension
+  children:
+  - InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+  - InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+  - InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+  langs:
+  - csharp
+  - vb
+  name: StarterDeckManager.FullStarterDeck
+  nameWithType: StarterDeckManager.FullStarterDeck
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/StarterDeckManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: FullStarterDeck
+    path: ../InscryptionAPI/Ascension/StarterDeckManager.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public class FullStarterDeck
+    content.vb: Public Class FullStarterDeck
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+  commentId: P:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+  id: Info
+  parent: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: StarterDeckManager.FullStarterDeck.Info
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/StarterDeckManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Info
+    path: ../InscryptionAPI/Ascension/StarterDeckManager.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public StarterDeckInfo Info { get; set; }
+    parameters: []
+    return:
+      type: DiskCardGame.StarterDeckInfo
+    content.vb: Public Property Info As StarterDeckInfo
+  overload: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+  commentId: P:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+  id: UnlockLevel
+  parent: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  langs:
+  - csharp
+  - vb
+  name: UnlockLevel
+  nameWithType: StarterDeckManager.FullStarterDeck.UnlockLevel
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/StarterDeckManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: UnlockLevel
+    path: ../InscryptionAPI/Ascension/StarterDeckManager.cs
+    startLine: 15
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public int UnlockLevel { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property UnlockLevel As Integer
+  overload: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+  commentId: P:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+  id: CardNames
+  parent: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck
+  langs:
+  - csharp
+  - vb
+  name: CardNames
+  nameWithType: StarterDeckManager.FullStarterDeck.CardNames
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+  type: Property
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/StarterDeckManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CardNames
+    path: ../InscryptionAPI/Ascension/StarterDeckManager.cs
+    startLine: 16
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public List<string> CardNames { get; set; }
+    parameters: []
+    return:
+      type: List{System.String}
+    content.vb: Public Property CardNames As List(Of String)
+  overload: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: InscryptionAPI.Ascension
+  commentId: N:InscryptionAPI.Ascension
+  name: InscryptionAPI.Ascension
+  nameWithType: InscryptionAPI.Ascension
+  fullName: InscryptionAPI.Ascension
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info*
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+  name: Info
+  nameWithType: StarterDeckManager.FullStarterDeck.Info
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
+- uid: DiskCardGame.StarterDeckInfo
+  commentId: T:DiskCardGame.StarterDeckInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: StarterDeckInfo
+  nameWithType: StarterDeckInfo
+  fullName: DiskCardGame.StarterDeckInfo
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel*
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+  name: UnlockLevel
+  nameWithType: StarterDeckManager.FullStarterDeck.UnlockLevel
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.UnlockLevel
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames*
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+  name: CardNames
+  nameWithType: StarterDeckManager.FullStarterDeck.CardNames
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
+- uid: List{System.String}
+  commentId: '!:List{System.String}'
+  definition: List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

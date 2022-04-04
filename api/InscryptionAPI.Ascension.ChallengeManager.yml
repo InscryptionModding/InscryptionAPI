@@ -1,0 +1,1184 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Ascension.ChallengeManager
+  commentId: T:InscryptionAPI.Ascension.ChallengeManager
+  id: ChallengeManager
+  parent: InscryptionAPI.Ascension
+  children:
+  - InscryptionAPI.Ascension.ChallengeManager.Add(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Boolean)
+  - InscryptionAPI.Ascension.ChallengeManager.Add(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Boolean)
+  - InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  - InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
+  - InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
+  - InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
+  - InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
+  - InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
+  - InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
+  - InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
+  langs:
+  - csharp
+  - vb
+  name: ChallengeManager
+  nameWithType: ChallengeManager
+  fullName: InscryptionAPI.Ascension.ChallengeManager
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ChallengeManager
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 9
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class ChallengeManager
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module ChallengeManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
+  id: BaseGameChallenges
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: BaseGameChallenges
+  nameWithType: ChallengeManager.BaseGameChallenges
+  fullName: InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: BaseGameChallenges
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static readonly ReadOnlyCollection<AscensionChallengeInfo> BaseGameChallenges
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.AscensionChallengeInfo}
+    content.vb: Public Shared ReadOnly BaseGameChallenges As ReadOnlyCollection(Of AscensionChallengeInfo)
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
+  id: GenBaseGameChallengs
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: GenBaseGameChallengs()
+  nameWithType: ChallengeManager.GenBaseGameChallengs()
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: GenBaseGameChallengs
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 20
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static List<AscensionChallengeInfo> GenBaseGameChallengs()
+    return:
+      type: List{DiskCardGame.AscensionChallengeInfo}
+    content.vb: Public Shared Function GenBaseGameChallengs As List(Of AscensionChallengeInfo)
+  overload: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
+  commentId: E:InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
+  id: ModifyChallenges
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: ModifyChallenges
+  nameWithType: ChallengeManager.ModifyChallenges
+  fullName: InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
+  type: Event
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ModifyChallenges
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 55
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static event Func<List<AscensionChallengeInfo>, List<AscensionChallengeInfo>> ModifyChallenges
+    return:
+      type: Func{List{DiskCardGame.AscensionChallengeInfo},List{DiskCardGame.AscensionChallengeInfo}}
+    content.vb: Public Shared Event ModifyChallenges As Func(Of List(Of AscensionChallengeInfo), List(Of AscensionChallengeInfo))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
+  id: SyncChallengeList
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: SyncChallengeList()
+  nameWithType: ChallengeManager.SyncChallengeList()
+  fullName: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: SyncChallengeList
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 70
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static void SyncChallengeList()
+    content.vb: Public Shared Sub SyncChallengeList
+  overload: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  id: AllInfo
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: AllInfo
+  nameWithType: ChallengeManager.AllInfo
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AllInfo
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 93
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static List<AscensionChallengeInfo> AllInfo
+    return:
+      type: List{DiskCardGame.AscensionChallengeInfo}
+    content.vb: Public Shared AllInfo As List(Of AscensionChallengeInfo)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
+  id: IsStackable(DiskCardGame.AscensionChallenge)
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: IsStackable(AscensionChallenge)
+  nameWithType: ChallengeManager.IsStackable(AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: IsStackable
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 95
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static bool IsStackable(AscensionChallenge id)
+    parameters:
+    - id: id
+      type: DiskCardGame.AscensionChallenge
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsStackable(id As AscensionChallenge) As Boolean
+  overload: InscryptionAPI.Ascension.ChallengeManager.IsStackable*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.Add(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.Add(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Boolean)
+  id: Add(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, AscensionChallengeInfo, Int32, Boolean)
+  nameWithType: ChallengeManager.Add(String, AscensionChallengeInfo, Int32, Boolean)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.Add(System.String, DiskCardGame.AscensionChallengeInfo, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 100
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, bool stackable = false)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: info
+      type: DiskCardGame.AscensionChallengeInfo
+    - id: unlockLevel
+      type: System.Int32
+    - id: stackable
+      type: System.Boolean
+    return:
+      type: DiskCardGame.AscensionChallengeInfo
+    content.vb: Public Shared Function Add(pluginGuid As String, info As AscensionChallengeInfo, unlockLevel As Integer = 0, stackable As Boolean = False) As AscensionChallengeInfo
+  overload: InscryptionAPI.Ascension.ChallengeManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.Add(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Boolean)
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.Add(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Boolean)
+  id: Add(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Boolean)
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, String, Int32, Texture2D, Texture2D, Int32, Boolean)
+  nameWithType: ChallengeManager.Add(String, String, String, Int32, Texture2D, Texture2D, Int32, Boolean)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.Add(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, System.Int32, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 112
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: public static AscensionChallengeInfo Add(string pluginGuid, string title, string description, int pointValue, Texture2D iconTexture, Texture2D activatedTexture = null, int unlockLevel = 0, bool stackable = false)
+    parameters:
+    - id: pluginGuid
+      type: System.String
+    - id: title
+      type: System.String
+    - id: description
+      type: System.String
+    - id: pointValue
+      type: System.Int32
+    - id: iconTexture
+      type: UnityEngine.Texture2D
+    - id: activatedTexture
+      type: UnityEngine.Texture2D
+    - id: unlockLevel
+      type: System.Int32
+    - id: stackable
+      type: System.Boolean
+    return:
+      type: DiskCardGame.AscensionChallengeInfo
+    content.vb: Public Shared Function Add(pluginGuid As String, title As String, description As String, pointValue As Integer, iconTexture As Texture2D, activatedTexture As Texture2D = Nothing, unlockLevel As Integer = 0, stackable As Boolean = False) As AscensionChallengeInfo
+  overload: InscryptionAPI.Ascension.ChallengeManager.Add*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
+  id: IsCustomChallengeUnlocked(System.Boolean@,System.Int32,DiskCardGame.AscensionChallenge)
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: IsCustomChallengeUnlocked(ref Boolean, Int32, AscensionChallenge)
+  nameWithType: ChallengeManager.IsCustomChallengeUnlocked(ref Boolean, Int32, AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(ref System.Boolean, System.Int32, DiskCardGame.AscensionChallenge)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: IsCustomChallengeUnlocked
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 138
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(AscensionUnlockSchedule), "ChallengeIsUnlockedForLevel")]
+
+      [HarmonyPostfix]
+
+      public static void IsCustomChallengeUnlocked(ref bool __result, int level, AscensionChallenge challenge)
+    parameters:
+    - id: __result
+      type: System.Boolean
+    - id: level
+      type: System.Int32
+    - id: challenge
+      type: DiskCardGame.AscensionChallenge
+    content.vb: >-
+      <HarmonyPatch(GetType(AscensionUnlockSchedule), "ChallengeIsUnlockedForLevel")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub IsCustomChallengeUnlocked(ByRef __result As Boolean, level As Integer, challenge As AscensionChallenge)
+  overload: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.AscensionUnlockSchedule
+    - type: System.String
+      value: ChallengeIsUnlockedForLevel
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: ChallengeManager.IsCustomChallengeUnlocked(ByRef Boolean, Int32, AscensionChallenge)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked(ByRef System.Boolean, System.Int32, DiskCardGame.AscensionChallenge)
+  name.vb: IsCustomChallengeUnlocked(ByRef Boolean, Int32, AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
+  id: ResyncWhenTransitioningToGame
+  parent: InscryptionAPI.Ascension.ChallengeManager
+  langs:
+  - csharp
+  - vb
+  name: ResyncWhenTransitioningToGame()
+  nameWithType: ChallengeManager.ResyncWhenTransitioningToGame()
+  fullName: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/ChallengeManager.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ResyncWhenTransitioningToGame
+    path: ../InscryptionAPI/Ascension/ChallengeManager.cs
+    startLine: 146
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(AscensionMenuScreens), "TransitionToGame")]
+
+      [HarmonyPrefix]
+
+      public static void ResyncWhenTransitioningToGame()
+    content.vb: >-
+      <HarmonyPatch(GetType(AscensionMenuScreens), "TransitionToGame")>
+
+      <HarmonyPrefix>
+
+      Public Shared Sub ResyncWhenTransitioningToGame
+  overload: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.AscensionMenuScreens
+    - type: System.String
+      value: TransitionToGame
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Ascension
+  commentId: N:InscryptionAPI.Ascension
+  name: InscryptionAPI.Ascension
+  nameWithType: InscryptionAPI.Ascension
+  fullName: InscryptionAPI.Ascension
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.AscensionChallengeInfo}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{DiskCardGame.AscensionChallengeInfo}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  name: ReadOnlyCollection<AscensionChallengeInfo>
+  nameWithType: ReadOnlyCollection<AscensionChallengeInfo>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<DiskCardGame.AscensionChallengeInfo>
+  nameWithType.vb: ReadOnlyCollection(Of AscensionChallengeInfo)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of DiskCardGame.AscensionChallengeInfo)
+  name.vb: ReadOnlyCollection(Of AscensionChallengeInfo)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: System.Collections.ObjectModel.ReadOnlyCollection
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+- uid: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
+  name: GenBaseGameChallengs
+  nameWithType: ChallengeManager.GenBaseGameChallengs
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GenBaseGameChallengs
+- uid: List{DiskCardGame.AscensionChallengeInfo}
+  commentId: '!:List{DiskCardGame.AscensionChallengeInfo}'
+  definition: List`1
+  name: List<AscensionChallengeInfo>
+  nameWithType: List<AscensionChallengeInfo>
+  fullName: List<DiskCardGame.AscensionChallengeInfo>
+  nameWithType.vb: List(Of AscensionChallengeInfo)
+  fullName.vb: List(Of DiskCardGame.AscensionChallengeInfo)
+  name.vb: List(Of AscensionChallengeInfo)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func{List{DiskCardGame.AscensionChallengeInfo},List{DiskCardGame.AscensionChallengeInfo}}
+  commentId: '!:Func{List{DiskCardGame.AscensionChallengeInfo},List{DiskCardGame.AscensionChallengeInfo}}'
+  definition: Func`2
+  name: Func<List<AscensionChallengeInfo>, List<AscensionChallengeInfo>>
+  nameWithType: Func<List<AscensionChallengeInfo>, List<AscensionChallengeInfo>>
+  fullName: Func<List<DiskCardGame.AscensionChallengeInfo>, List<DiskCardGame.AscensionChallengeInfo>>
+  nameWithType.vb: Func(Of List(Of AscensionChallengeInfo), List(Of AscensionChallengeInfo))
+  fullName.vb: Func(Of List(Of DiskCardGame.AscensionChallengeInfo), List(Of DiskCardGame.AscensionChallengeInfo))
+  name.vb: Func(Of List(Of AscensionChallengeInfo), List(Of AscensionChallengeInfo))
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.AscensionChallengeInfo
+    name: AscensionChallengeInfo
+    nameWithType: AscensionChallengeInfo
+    fullName: DiskCardGame.AscensionChallengeInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
+  name: SyncChallengeList
+  nameWithType: ChallengeManager.SyncChallengeList
+  fullName: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
+- uid: InscryptionAPI.Ascension.ChallengeManager.IsStackable*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.IsStackable
+  name: IsStackable
+  nameWithType: ChallengeManager.IsStackable
+  fullName: InscryptionAPI.Ascension.ChallengeManager.IsStackable
+- uid: DiskCardGame.AscensionChallenge
+  commentId: T:DiskCardGame.AscensionChallenge
+  parent: DiskCardGame
+  isExternal: true
+  name: AscensionChallenge
+  nameWithType: AscensionChallenge
+  fullName: DiskCardGame.AscensionChallenge
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Ascension.ChallengeManager.Add*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.Add
+  name: Add
+  nameWithType: ChallengeManager.Add
+  fullName: InscryptionAPI.Ascension.ChallengeManager.Add
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: DiskCardGame.AscensionChallengeInfo
+  commentId: T:DiskCardGame.AscensionChallengeInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: AscensionChallengeInfo
+  nameWithType: AscensionChallengeInfo
+  fullName: DiskCardGame.AscensionChallengeInfo
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked
+  name: IsCustomChallengeUnlocked
+  nameWithType: ChallengeManager.IsCustomChallengeUnlocked
+  fullName: InscryptionAPI.Ascension.ChallengeManager.IsCustomChallengeUnlocked
+- uid: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame*
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame
+  name: ResyncWhenTransitioningToGame
+  nameWithType: ChallengeManager.ResyncWhenTransitioningToGame
+  fullName: InscryptionAPI.Ascension.ChallengeManager.ResyncWhenTransitioningToGame

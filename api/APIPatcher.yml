@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPatcher
+  commentId: N:APIPatcher
+  id: APIPatcher
+  children:
+  - APIPatcher.InscryptionAPIPatcher
+  langs:
+  - csharp
+  - vb
+  name: APIPatcher
+  nameWithType: APIPatcher
+  fullName: APIPatcher
+  type: Namespace
+  assemblies:
+  - APIPatcher
+references:
+- uid: APIPatcher.InscryptionAPIPatcher
+  commentId: T:APIPatcher.InscryptionAPIPatcher
+  name: InscryptionAPIPatcher
+  nameWithType: InscryptionAPIPatcher
+  fullName: APIPatcher.InscryptionAPIPatcher

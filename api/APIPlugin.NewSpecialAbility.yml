@@ -1,0 +1,657 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.NewSpecialAbility
+  commentId: T:APIPlugin.NewSpecialAbility
+  id: NewSpecialAbility
+  parent: APIPlugin
+  children:
+  - APIPlugin.NewSpecialAbility.#ctor(Type,APIPlugin.SpecialAbilityIdentifier,DiskCardGame.StatIconInfo)
+  - APIPlugin.NewSpecialAbility.abilityBehaviour
+  - APIPlugin.NewSpecialAbility.id
+  - APIPlugin.NewSpecialAbility.specialAbilities
+  - APIPlugin.NewSpecialAbility.specialTriggeredAbility
+  - APIPlugin.NewSpecialAbility.statIconInfo
+  langs:
+  - csharp
+  - vb
+  name: NewSpecialAbility
+  nameWithType: NewSpecialAbility
+  fullName: APIPlugin.NewSpecialAbility
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NewSpecialAbility
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 5
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public class NewSpecialAbility
+    content.vb: Public Class NewSpecialAbility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: APIPlugin.NewSpecialAbility.specialAbilities
+  commentId: F:APIPlugin.NewSpecialAbility.specialAbilities
+  id: specialAbilities
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: specialAbilities
+  nameWithType: NewSpecialAbility.specialAbilities
+  fullName: APIPlugin.NewSpecialAbility.specialAbilities
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: specialAbilities
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<NewSpecialAbility> specialAbilities
+    return:
+      type: List{APIPlugin.NewSpecialAbility}
+    content.vb: Public Shared specialAbilities As List(Of NewSpecialAbility)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewSpecialAbility.specialTriggeredAbility
+  commentId: F:APIPlugin.NewSpecialAbility.specialTriggeredAbility
+  id: specialTriggeredAbility
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: specialTriggeredAbility
+  nameWithType: NewSpecialAbility.specialTriggeredAbility
+  fullName: APIPlugin.NewSpecialAbility.specialTriggeredAbility
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: specialTriggeredAbility
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 9
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public SpecialTriggeredAbility specialTriggeredAbility
+    return:
+      type: DiskCardGame.SpecialTriggeredAbility
+    content.vb: Public specialTriggeredAbility As SpecialTriggeredAbility
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewSpecialAbility.statIconInfo
+  commentId: F:APIPlugin.NewSpecialAbility.statIconInfo
+  id: statIconInfo
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: statIconInfo
+  nameWithType: NewSpecialAbility.statIconInfo
+  fullName: APIPlugin.NewSpecialAbility.statIconInfo
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: statIconInfo
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public StatIconInfo statIconInfo
+    return:
+      type: DiskCardGame.StatIconInfo
+    content.vb: Public statIconInfo As StatIconInfo
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewSpecialAbility.abilityBehaviour
+  commentId: F:APIPlugin.NewSpecialAbility.abilityBehaviour
+  id: abilityBehaviour
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: abilityBehaviour
+  nameWithType: NewSpecialAbility.abilityBehaviour
+  fullName: APIPlugin.NewSpecialAbility.abilityBehaviour
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: abilityBehaviour
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public Type abilityBehaviour
+    return:
+      type: Type
+    content.vb: Public abilityBehaviour As Type
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewSpecialAbility.id
+  commentId: F:APIPlugin.NewSpecialAbility.id
+  id: id
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: NewSpecialAbility.id
+  fullName: APIPlugin.NewSpecialAbility.id
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: id
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public SpecialAbilityIdentifier id
+    return:
+      type: APIPlugin.SpecialAbilityIdentifier
+    content.vb: Public id As SpecialAbilityIdentifier
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewSpecialAbility.#ctor(Type,APIPlugin.SpecialAbilityIdentifier,DiskCardGame.StatIconInfo)
+  commentId: M:APIPlugin.NewSpecialAbility.#ctor(Type,APIPlugin.SpecialAbilityIdentifier,DiskCardGame.StatIconInfo)
+  id: '#ctor(Type,APIPlugin.SpecialAbilityIdentifier,DiskCardGame.StatIconInfo)'
+  parent: APIPlugin.NewSpecialAbility
+  langs:
+  - csharp
+  - vb
+  name: NewSpecialAbility(Type, SpecialAbilityIdentifier, StatIconInfo)
+  nameWithType: NewSpecialAbility.NewSpecialAbility(Type, SpecialAbilityIdentifier, StatIconInfo)
+  fullName: APIPlugin.NewSpecialAbility.NewSpecialAbility(Type, APIPlugin.SpecialAbilityIdentifier, DiskCardGame.StatIconInfo)
+  type: Constructor
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewSpecialAbility.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: .ctor
+    path: ../InscryptionAPI/Compatibility/NewSpecialAbility.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public NewSpecialAbility(Type abilityBehaviour, SpecialAbilityIdentifier id, StatIconInfo statIconInfo = null)
+    parameters:
+    - id: abilityBehaviour
+      type: Type
+    - id: id
+      type: APIPlugin.SpecialAbilityIdentifier
+    - id: statIconInfo
+      type: DiskCardGame.StatIconInfo
+    content.vb: Public Sub New(abilityBehaviour As Type, id As SpecialAbilityIdentifier, statIconInfo As StatIconInfo = Nothing)
+  overload: APIPlugin.NewSpecialAbility.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: List{APIPlugin.NewSpecialAbility}
+  commentId: '!:List{APIPlugin.NewSpecialAbility}'
+  definition: List`1
+  name: List<NewSpecialAbility>
+  nameWithType: List<NewSpecialAbility>
+  fullName: List<APIPlugin.NewSpecialAbility>
+  nameWithType.vb: List(Of NewSpecialAbility)
+  fullName.vb: List(Of APIPlugin.NewSpecialAbility)
+  name.vb: List(Of NewSpecialAbility)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.NewSpecialAbility
+    name: NewSpecialAbility
+    nameWithType: NewSpecialAbility
+    fullName: APIPlugin.NewSpecialAbility
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.NewSpecialAbility
+    name: NewSpecialAbility
+    nameWithType: NewSpecialAbility
+    fullName: APIPlugin.NewSpecialAbility
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: DiskCardGame.SpecialTriggeredAbility
+  commentId: T:DiskCardGame.SpecialTriggeredAbility
+  parent: DiskCardGame
+  isExternal: true
+  name: SpecialTriggeredAbility
+  nameWithType: SpecialTriggeredAbility
+  fullName: DiskCardGame.SpecialTriggeredAbility
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: DiskCardGame.StatIconInfo
+  commentId: T:DiskCardGame.StatIconInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: StatIconInfo
+  nameWithType: StatIconInfo
+  fullName: DiskCardGame.StatIconInfo
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: APIPlugin.SpecialAbilityIdentifier
+  commentId: T:APIPlugin.SpecialAbilityIdentifier
+  parent: APIPlugin
+  name: SpecialAbilityIdentifier
+  nameWithType: SpecialAbilityIdentifier
+  fullName: APIPlugin.SpecialAbilityIdentifier
+- uid: APIPlugin.NewSpecialAbility.#ctor*
+  commentId: Overload:APIPlugin.NewSpecialAbility.#ctor
+  name: NewSpecialAbility
+  nameWithType: NewSpecialAbility.NewSpecialAbility
+  fullName: APIPlugin.NewSpecialAbility.NewSpecialAbility

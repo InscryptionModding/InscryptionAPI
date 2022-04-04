@@ -1,0 +1,1003 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.NewEncounter
+  commentId: T:APIPlugin.NewEncounter
+  id: NewEncounter
+  parent: APIPlugin
+  children:
+  - APIPlugin.NewEncounter.#ctor(System.String,DiskCardGame.EncounterBlueprintData,System.String,System.Boolean,System.Boolean)
+  - APIPlugin.NewEncounter.Add(System.String,System.String,List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint},List{DiskCardGame.Tribe},List{DiskCardGame.Ability},List{DiskCardGame.CardInfo},System.Boolean,System.Int32,System.Int32,List{DiskCardGame.CardInfo},List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}},System.Boolean,System.Boolean,System.Int32)
+  - APIPlugin.NewEncounter.bossPrep
+  - APIPlugin.NewEncounter.encounterBlueprintData
+  - APIPlugin.NewEncounter.encounters
+  - APIPlugin.NewEncounter.name
+  - APIPlugin.NewEncounter.regionName
+  - APIPlugin.NewEncounter.regular
+  langs:
+  - csharp
+  - vb
+  name: NewEncounter
+  nameWithType: NewEncounter
+  fullName: APIPlugin.NewEncounter
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: NewEncounter
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 8
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public class NewEncounter
+    content.vb: Public Class NewEncounter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: APIPlugin.NewEncounter.#ctor(System.String,DiskCardGame.EncounterBlueprintData,System.String,System.Boolean,System.Boolean)
+  commentId: M:APIPlugin.NewEncounter.#ctor(System.String,DiskCardGame.EncounterBlueprintData,System.String,System.Boolean,System.Boolean)
+  id: '#ctor(System.String,DiskCardGame.EncounterBlueprintData,System.String,System.Boolean,System.Boolean)'
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: NewEncounter(String, EncounterBlueprintData, String, Boolean, Boolean)
+  nameWithType: NewEncounter.NewEncounter(String, EncounterBlueprintData, String, Boolean, Boolean)
+  fullName: APIPlugin.NewEncounter.NewEncounter(System.String, DiskCardGame.EncounterBlueprintData, System.String, System.Boolean, System.Boolean)
+  type: Constructor
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: .ctor
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 53
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public NewEncounter(string name, EncounterBlueprintData encounterBlueprintData, string regionName, bool regular, bool bossPrep)
+    parameters:
+    - id: name
+      type: System.String
+    - id: encounterBlueprintData
+      type: DiskCardGame.EncounterBlueprintData
+    - id: regionName
+      type: System.String
+    - id: regular
+      type: System.Boolean
+    - id: bossPrep
+      type: System.Boolean
+    content.vb: Public Sub New(name As String, encounterBlueprintData As EncounterBlueprintData, regionName As String, regular As Boolean, bossPrep As Boolean)
+  overload: APIPlugin.NewEncounter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewEncounter.Add(System.String,System.String,List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint},List{DiskCardGame.Tribe},List{DiskCardGame.Ability},List{DiskCardGame.CardInfo},System.Boolean,System.Int32,System.Int32,List{DiskCardGame.CardInfo},List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}},System.Boolean,System.Boolean,System.Int32)
+  commentId: M:APIPlugin.NewEncounter.Add(System.String,System.String,List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint},List{DiskCardGame.Tribe},List{DiskCardGame.Ability},List{DiskCardGame.CardInfo},System.Boolean,System.Int32,System.Int32,List{DiskCardGame.CardInfo},List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}},System.Boolean,System.Boolean,System.Int32)
+  id: Add(System.String,System.String,List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint},List{DiskCardGame.Tribe},List{DiskCardGame.Ability},List{DiskCardGame.CardInfo},System.Boolean,System.Int32,System.Int32,List{DiskCardGame.CardInfo},List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}},System.Boolean,System.Boolean,System.Int32)
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: Add(String, String, List<EncounterBlueprintData.TurnModBlueprint>, List<Tribe>, List<Ability>, List<CardInfo>, Boolean, Int32, Int32, List<CardInfo>, List<List<EncounterBlueprintData.CardBlueprint>>, Boolean, Boolean, Int32)
+  nameWithType: NewEncounter.Add(String, String, List<EncounterBlueprintData.TurnModBlueprint>, List<Tribe>, List<Ability>, List<CardInfo>, Boolean, Int32, Int32, List<CardInfo>, List<List<EncounterBlueprintData.CardBlueprint>>, Boolean, Boolean, Int32)
+  fullName: APIPlugin.NewEncounter.Add(System.String, System.String, List<DiskCardGame.EncounterBlueprintData.TurnModBlueprint>, List<DiskCardGame.Tribe>, List<DiskCardGame.Ability>, List<DiskCardGame.CardInfo>, System.Boolean, System.Int32, System.Int32, List<DiskCardGame.CardInfo>, List<List<DiskCardGame.EncounterBlueprintData.CardBlueprint>>, System.Boolean, System.Boolean, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Add
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 67
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static void Add(string name, string regionName, List<EncounterBlueprintData.TurnModBlueprint> turnMods = null, List<Tribe> dominantTribes = null, List<Ability> redundantAbilities = null, List<CardInfo> unlockedCardPrerequisites = null, bool regionSpecific = true, int minDifficulty = 0, int maxDifficulty = 30, List<CardInfo> randomReplacementCards = null, List<List<EncounterBlueprintData.CardBlueprint>> turns = null, bool regular = true, bool bossPrep = false, int oldPreviewDifficulty = 0)
+    parameters:
+    - id: name
+      type: System.String
+    - id: regionName
+      type: System.String
+    - id: turnMods
+      type: List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint}
+    - id: dominantTribes
+      type: List{DiskCardGame.Tribe}
+    - id: redundantAbilities
+      type: List{DiskCardGame.Ability}
+    - id: unlockedCardPrerequisites
+      type: List{DiskCardGame.CardInfo}
+    - id: regionSpecific
+      type: System.Boolean
+    - id: minDifficulty
+      type: System.Int32
+    - id: maxDifficulty
+      type: System.Int32
+    - id: randomReplacementCards
+      type: List{DiskCardGame.CardInfo}
+    - id: turns
+      type: List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}}
+    - id: regular
+      type: System.Boolean
+    - id: bossPrep
+      type: System.Boolean
+    - id: oldPreviewDifficulty
+      type: System.Int32
+    content.vb: Public Shared Sub Add(name As String, regionName As String, turnMods As List(Of EncounterBlueprintData.TurnModBlueprint) = Nothing, dominantTribes As List(Of Tribe) = Nothing, redundantAbilities As List(Of Ability) = Nothing, unlockedCardPrerequisites As List(Of CardInfo) = Nothing, regionSpecific As Boolean = True, minDifficulty As Integer = 0, maxDifficulty As Integer = 30, randomReplacementCards As List(Of CardInfo) = Nothing, turns As List(Of List(Of EncounterBlueprintData.CardBlueprint)) = Nothing, regular As Boolean = True, bossPrep As Boolean = False, oldPreviewDifficulty As Integer = 0)
+  overload: APIPlugin.NewEncounter.Add*
+  nameWithType.vb: NewEncounter.Add(String, String, List(Of EncounterBlueprintData.TurnModBlueprint), List(Of Tribe), List(Of Ability), List(Of CardInfo), Boolean, Int32, Int32, List(Of CardInfo), List(Of List(Of EncounterBlueprintData.CardBlueprint)), Boolean, Boolean, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: APIPlugin.NewEncounter.Add(System.String, System.String, List(Of DiskCardGame.EncounterBlueprintData.TurnModBlueprint), List(Of DiskCardGame.Tribe), List(Of DiskCardGame.Ability), List(Of DiskCardGame.CardInfo), System.Boolean, System.Int32, System.Int32, List(Of DiskCardGame.CardInfo), List(Of List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint)), System.Boolean, System.Boolean, System.Int32)
+  name.vb: Add(String, String, List(Of EncounterBlueprintData.TurnModBlueprint), List(Of Tribe), List(Of Ability), List(Of CardInfo), Boolean, Int32, Int32, List(Of CardInfo), List(Of List(Of EncounterBlueprintData.CardBlueprint)), Boolean, Boolean, Int32)
+- uid: APIPlugin.NewEncounter.encounters
+  commentId: F:APIPlugin.NewEncounter.encounters
+  id: encounters
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: encounters
+  nameWithType: NewEncounter.encounters
+  fullName: APIPlugin.NewEncounter.encounters
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: encounters
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 101
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<NewEncounter> encounters
+    return:
+      type: List{APIPlugin.NewEncounter}
+    content.vb: Public Shared encounters As List(Of NewEncounter)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.NewEncounter.name
+  commentId: F:APIPlugin.NewEncounter.name
+  id: name
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: NewEncounter.name
+  fullName: APIPlugin.NewEncounter.name
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: name
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 102
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public string name
+    return:
+      type: System.String
+    content.vb: Public name As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewEncounter.regionName
+  commentId: F:APIPlugin.NewEncounter.regionName
+  id: regionName
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: regionName
+  nameWithType: NewEncounter.regionName
+  fullName: APIPlugin.NewEncounter.regionName
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: regionName
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 103
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public string regionName
+    return:
+      type: System.String
+    content.vb: Public regionName As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewEncounter.regular
+  commentId: F:APIPlugin.NewEncounter.regular
+  id: regular
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: regular
+  nameWithType: NewEncounter.regular
+  fullName: APIPlugin.NewEncounter.regular
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: regular
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 104
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public bool regular
+    return:
+      type: System.Boolean
+    content.vb: Public regular As Boolean
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewEncounter.bossPrep
+  commentId: F:APIPlugin.NewEncounter.bossPrep
+  id: bossPrep
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: bossPrep
+  nameWithType: NewEncounter.bossPrep
+  fullName: APIPlugin.NewEncounter.bossPrep
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: bossPrep
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 105
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public bool bossPrep
+    return:
+      type: System.Boolean
+    content.vb: Public bossPrep As Boolean
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: APIPlugin.NewEncounter.encounterBlueprintData
+  commentId: F:APIPlugin.NewEncounter.encounterBlueprintData
+  id: encounterBlueprintData
+  parent: APIPlugin.NewEncounter
+  langs:
+  - csharp
+  - vb
+  name: encounterBlueprintData
+  nameWithType: NewEncounter.encounterBlueprintData
+  fullName: APIPlugin.NewEncounter.encounterBlueprintData
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/NewEncounter.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: encounterBlueprintData
+    path: ../InscryptionAPI/Compatibility/NewEncounter.cs
+    startLine: 106
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public EncounterBlueprintData encounterBlueprintData
+    return:
+      type: DiskCardGame.EncounterBlueprintData
+    content.vb: Public encounterBlueprintData As EncounterBlueprintData
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: APIPlugin.NewEncounter.#ctor*
+  commentId: Overload:APIPlugin.NewEncounter.#ctor
+  name: NewEncounter
+  nameWithType: NewEncounter.NewEncounter
+  fullName: APIPlugin.NewEncounter.NewEncounter
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: DiskCardGame.EncounterBlueprintData
+  commentId: T:DiskCardGame.EncounterBlueprintData
+  parent: DiskCardGame
+  isExternal: true
+  name: EncounterBlueprintData
+  nameWithType: EncounterBlueprintData
+  fullName: DiskCardGame.EncounterBlueprintData
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: APIPlugin.NewEncounter.Add*
+  commentId: Overload:APIPlugin.NewEncounter.Add
+  name: Add
+  nameWithType: NewEncounter.Add
+  fullName: APIPlugin.NewEncounter.Add
+- uid: List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint}
+  commentId: '!:List{DiskCardGame.EncounterBlueprintData.TurnModBlueprint}'
+  definition: List`1
+  name: List<EncounterBlueprintData.TurnModBlueprint>
+  nameWithType: List<EncounterBlueprintData.TurnModBlueprint>
+  fullName: List<DiskCardGame.EncounterBlueprintData.TurnModBlueprint>
+  nameWithType.vb: List(Of EncounterBlueprintData.TurnModBlueprint)
+  fullName.vb: List(Of DiskCardGame.EncounterBlueprintData.TurnModBlueprint)
+  name.vb: List(Of EncounterBlueprintData.TurnModBlueprint)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.EncounterBlueprintData.TurnModBlueprint
+    name: EncounterBlueprintData.TurnModBlueprint
+    nameWithType: EncounterBlueprintData.TurnModBlueprint
+    fullName: DiskCardGame.EncounterBlueprintData.TurnModBlueprint
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.EncounterBlueprintData.TurnModBlueprint
+    name: EncounterBlueprintData.TurnModBlueprint
+    nameWithType: EncounterBlueprintData.TurnModBlueprint
+    fullName: DiskCardGame.EncounterBlueprintData.TurnModBlueprint
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.Tribe}
+  commentId: '!:List{DiskCardGame.Tribe}'
+  definition: List`1
+  name: List<Tribe>
+  nameWithType: List<Tribe>
+  fullName: List<DiskCardGame.Tribe>
+  nameWithType.vb: List(Of Tribe)
+  fullName.vb: List(Of DiskCardGame.Tribe)
+  name.vb: List(Of Tribe)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.Tribe
+    name: Tribe
+    nameWithType: Tribe
+    fullName: DiskCardGame.Tribe
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.Ability}
+  commentId: '!:List{DiskCardGame.Ability}'
+  definition: List`1
+  name: List<Ability>
+  nameWithType: List<Ability>
+  fullName: List<DiskCardGame.Ability>
+  nameWithType.vb: List(Of Ability)
+  fullName.vb: List(Of DiskCardGame.Ability)
+  name.vb: List(Of Ability)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.Ability
+    name: Ability
+    nameWithType: Ability
+    fullName: DiskCardGame.Ability
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.Ability
+    name: Ability
+    nameWithType: Ability
+    fullName: DiskCardGame.Ability
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.CardInfo}
+  commentId: '!:List{DiskCardGame.CardInfo}'
+  definition: List`1
+  name: List<CardInfo>
+  nameWithType: List<CardInfo>
+  fullName: List<DiskCardGame.CardInfo>
+  nameWithType.vb: List(Of CardInfo)
+  fullName.vb: List(Of DiskCardGame.CardInfo)
+  name.vb: List(Of CardInfo)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}}
+  commentId: '!:List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}}'
+  definition: List`1
+  name: List<List<EncounterBlueprintData.CardBlueprint>>
+  nameWithType: List<List<EncounterBlueprintData.CardBlueprint>>
+  fullName: List<List<DiskCardGame.EncounterBlueprintData.CardBlueprint>>
+  nameWithType.vb: List(Of List(Of EncounterBlueprintData.CardBlueprint))
+  fullName.vb: List(Of List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint))
+  name.vb: List(Of List(Of EncounterBlueprintData.CardBlueprint))
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.EncounterBlueprintData.CardBlueprint
+    name: EncounterBlueprintData.CardBlueprint
+    nameWithType: EncounterBlueprintData.CardBlueprint
+    fullName: DiskCardGame.EncounterBlueprintData.CardBlueprint
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.EncounterBlueprintData.CardBlueprint
+    name: EncounterBlueprintData.CardBlueprint
+    nameWithType: EncounterBlueprintData.CardBlueprint
+    fullName: DiskCardGame.EncounterBlueprintData.CardBlueprint
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{APIPlugin.NewEncounter}
+  commentId: '!:List{APIPlugin.NewEncounter}'
+  definition: List`1
+  name: List<NewEncounter>
+  nameWithType: List<NewEncounter>
+  fullName: List<APIPlugin.NewEncounter>
+  nameWithType.vb: List(Of NewEncounter)
+  fullName.vb: List(Of APIPlugin.NewEncounter)
+  name.vb: List(Of NewEncounter)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: APIPlugin.NewEncounter
+    name: NewEncounter
+    nameWithType: NewEncounter
+    fullName: APIPlugin.NewEncounter
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: APIPlugin.NewEncounter
+    name: NewEncounter
+    nameWithType: NewEncounter
+    fullName: APIPlugin.NewEncounter
+  - name: )
+    nameWithType: )
+    fullName: )

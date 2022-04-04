@@ -1,0 +1,927 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender
+  commentId: T:InscryptionCommunityPatch.Card.Part1CardCostRender
+  id: Part1CardCostRender
+  parent: InscryptionCommunityPatch.Card
+  children:
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures(List{UnityEngine.Texture2D})
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures(List{UnityEngine.Texture2D})
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.COST_OFFSET
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.MOX_OFFSET
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch(UnityEngine.Sprite@,DiskCardGame.CardInfo@,DiskCardGame.CardDisplayer@)
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal(DiskCardGame.CardInfo)
+  - InscryptionCommunityPatch.Card.Part1CardCostRender.UpdateCardCost
+  langs:
+  - csharp
+  - vb
+  name: Part1CardCostRender
+  nameWithType: Part1CardCostRender
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender
+  type: Class
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Part1CardCostRender
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 7
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class Part1CardCostRender
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module Part1CardCostRender
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.UpdateCardCost
+  commentId: E:InscryptionCommunityPatch.Card.Part1CardCostRender.UpdateCardCost
+  id: UpdateCardCost
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: UpdateCardCost
+  nameWithType: Part1CardCostRender.UpdateCardCost
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.UpdateCardCost
+  type: Event
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: UpdateCardCost
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 14
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public static event Action<CardInfo, List<Texture2D>> UpdateCardCost
+    return:
+      type: Action{DiskCardGame.CardInfo,List{UnityEngine.Texture2D}}
+    content.vb: Public Shared Event UpdateCardCost As Action(Of CardInfo, List(Of Texture2D))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.COST_OFFSET
+  commentId: F:InscryptionCommunityPatch.Card.Part1CardCostRender.COST_OFFSET
+  id: COST_OFFSET
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: COST_OFFSET
+  nameWithType: Part1CardCostRender.COST_OFFSET
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.COST_OFFSET
+  type: Field
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: COST_OFFSET
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 18
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public const int COST_OFFSET = 28
+    return:
+      type: System.Int32
+    content.vb: Public Const COST_OFFSET As Integer = 28
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.MOX_OFFSET
+  commentId: F:InscryptionCommunityPatch.Card.Part1CardCostRender.MOX_OFFSET
+  id: MOX_OFFSET
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: MOX_OFFSET
+  nameWithType: Part1CardCostRender.MOX_OFFSET
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.MOX_OFFSET
+  type: Field
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: MOX_OFFSET
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 20
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public const int MOX_OFFSET = 21
+    return:
+      type: System.Int32
+    content.vb: Public Const MOX_OFFSET As Integer = 21
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures(List{UnityEngine.Texture2D})
+  commentId: M:InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures(List{UnityEngine.Texture2D})
+  id: CombineCostTextures(List{UnityEngine.Texture2D})
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: CombineCostTextures(List<Texture2D>)
+  nameWithType: Part1CardCostRender.CombineCostTextures(List<Texture2D>)
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures(List<UnityEngine.Texture2D>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CombineCostTextures
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 22
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public static Texture2D CombineCostTextures(List<Texture2D> costs)
+    parameters:
+    - id: costs
+      type: List{UnityEngine.Texture2D}
+    return:
+      type: UnityEngine.Texture2D
+    content.vb: Public Shared Function CombineCostTextures(costs As List(Of Texture2D)) As Texture2D
+  overload: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures*
+  nameWithType.vb: Part1CardCostRender.CombineCostTextures(List(Of Texture2D))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures(List(Of UnityEngine.Texture2D))
+  name.vb: CombineCostTextures(List(Of Texture2D))
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures(List{UnityEngine.Texture2D})
+  commentId: M:InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures(List{UnityEngine.Texture2D})
+  id: CombineMoxTextures(List{UnityEngine.Texture2D})
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: CombineMoxTextures(List<Texture2D>)
+  nameWithType: Part1CardCostRender.CombineMoxTextures(List<Texture2D>)
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures(List<UnityEngine.Texture2D>)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CombineMoxTextures
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 30
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public static Texture2D CombineMoxTextures(List<Texture2D> costs)
+    parameters:
+    - id: costs
+      type: List{UnityEngine.Texture2D}
+    return:
+      type: UnityEngine.Texture2D
+    content.vb: Public Shared Function CombineMoxTextures(costs As List(Of Texture2D)) As Texture2D
+  overload: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures*
+  nameWithType.vb: Part1CardCostRender.CombineMoxTextures(List(Of Texture2D))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures(List(Of UnityEngine.Texture2D))
+  name.vb: CombineMoxTextures(List(Of Texture2D))
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal(DiskCardGame.CardInfo)
+  commentId: M:InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal(DiskCardGame.CardInfo)
+  id: Part1SpriteFinal(DiskCardGame.CardInfo)
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: Part1SpriteFinal(CardInfo)
+  nameWithType: Part1CardCostRender.Part1SpriteFinal(CardInfo)
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal(DiskCardGame.CardInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Part1SpriteFinal
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 58
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: public static Sprite Part1SpriteFinal(CardInfo card)
+    parameters:
+    - id: card
+      type: DiskCardGame.CardInfo
+    return:
+      type: UnityEngine.Sprite
+    content.vb: Public Shared Function Part1SpriteFinal(card As CardInfo) As Sprite
+  overload: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch(UnityEngine.Sprite@,DiskCardGame.CardInfo@,DiskCardGame.CardDisplayer@)
+  commentId: M:InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch(UnityEngine.Sprite@,DiskCardGame.CardInfo@,DiskCardGame.CardDisplayer@)
+  id: Part1CardCostDisplayerPatch(UnityEngine.Sprite@,DiskCardGame.CardInfo@,DiskCardGame.CardDisplayer@)
+  parent: InscryptionCommunityPatch.Card.Part1CardCostRender
+  langs:
+  - csharp
+  - vb
+  name: Part1CardCostDisplayerPatch(ref Sprite, ref CardInfo, ref CardDisplayer)
+  nameWithType: Part1CardCostRender.Part1CardCostDisplayerPatch(ref Sprite, ref CardInfo, ref CardDisplayer)
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch(ref UnityEngine.Sprite, ref DiskCardGame.CardInfo, ref DiskCardGame.CardDisplayer)
+  type: Method
+  source:
+    remote:
+      path: InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: Part1CardCostDisplayerPatch
+    path: ../InscryptionCommunityPatch/Card/Part1CardCostRender.cs
+    startLine: 102
+  assemblies:
+  - InscryptionCommunityPatch
+  namespace: InscryptionCommunityPatch.Card
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(CardDisplayer), "GetCostSpriteForCard")]
+
+      [HarmonyPrefix]
+
+      public static bool Part1CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
+    parameters:
+    - id: __result
+      type: UnityEngine.Sprite
+    - id: card
+      type: DiskCardGame.CardInfo
+    - id: __instance
+      type: DiskCardGame.CardDisplayer
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <HarmonyPatch(GetType(CardDisplayer), "GetCostSpriteForCard")>
+
+      <HarmonyPrefix>
+
+      Public Shared Function Part1CardCostDisplayerPatch(ByRef __result As Sprite, ByRef card As CardInfo, ByRef __instance As CardDisplayer) As Boolean
+  overload: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.CardDisplayer
+    - type: System.String
+      value: GetCostSpriteForCard
+  - type: HarmonyLib.HarmonyPrefix
+    ctor: HarmonyLib.HarmonyPrefix.#ctor
+    arguments: []
+  nameWithType.vb: Part1CardCostRender.Part1CardCostDisplayerPatch(ByRef Sprite, ByRef CardInfo, ByRef CardDisplayer)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch(ByRef UnityEngine.Sprite, ByRef DiskCardGame.CardInfo, ByRef DiskCardGame.CardDisplayer)
+  name.vb: Part1CardCostDisplayerPatch(ByRef Sprite, ByRef CardInfo, ByRef CardDisplayer)
+references:
+- uid: InscryptionCommunityPatch.Card
+  commentId: N:InscryptionCommunityPatch.Card
+  name: InscryptionCommunityPatch.Card
+  nameWithType: InscryptionCommunityPatch.Card
+  fullName: InscryptionCommunityPatch.Card
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Action{DiskCardGame.CardInfo,List{UnityEngine.Texture2D}}
+  commentId: '!:Action{DiskCardGame.CardInfo,List{UnityEngine.Texture2D}}'
+  definition: Action`2
+  name: Action<CardInfo, List<Texture2D>>
+  nameWithType: Action<CardInfo, List<Texture2D>>
+  fullName: Action<DiskCardGame.CardInfo, List<UnityEngine.Texture2D>>
+  nameWithType.vb: Action(Of CardInfo, List(Of Texture2D))
+  fullName.vb: Action(Of DiskCardGame.CardInfo, List(Of UnityEngine.Texture2D))
+  name.vb: Action(Of CardInfo, List(Of Texture2D))
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`2
+  isExternal: true
+  name: Action<, >
+  nameWithType: Action<, >
+  fullName: Action<, >
+  nameWithType.vb: Action(Of , )
+  fullName.vb: Action(Of , )
+  name.vb: Action(Of , )
+  spec.csharp:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`2
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures*
+  commentId: Overload:InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures
+  name: CombineCostTextures
+  nameWithType: Part1CardCostRender.CombineCostTextures
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineCostTextures
+- uid: List{UnityEngine.Texture2D}
+  commentId: '!:List{UnityEngine.Texture2D}'
+  definition: List`1
+  name: List<Texture2D>
+  nameWithType: List<Texture2D>
+  fullName: List<UnityEngine.Texture2D>
+  nameWithType.vb: List(Of Texture2D)
+  fullName.vb: List(Of UnityEngine.Texture2D)
+  name.vb: List(Of Texture2D)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures*
+  commentId: Overload:InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures
+  name: CombineMoxTextures
+  nameWithType: Part1CardCostRender.CombineMoxTextures
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.CombineMoxTextures
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal*
+  commentId: Overload:InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal
+  name: Part1SpriteFinal
+  nameWithType: Part1CardCostRender.Part1SpriteFinal
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1SpriteFinal
+- uid: DiskCardGame.CardInfo
+  commentId: T:DiskCardGame.CardInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: CardInfo
+  nameWithType: CardInfo
+  fullName: DiskCardGame.CardInfo
+- uid: UnityEngine.Sprite
+  commentId: T:UnityEngine.Sprite
+  parent: UnityEngine
+  isExternal: true
+  name: Sprite
+  nameWithType: Sprite
+  fullName: UnityEngine.Sprite
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch*
+  commentId: Overload:InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch
+  name: Part1CardCostDisplayerPatch
+  nameWithType: Part1CardCostRender.Part1CardCostDisplayerPatch
+  fullName: InscryptionCommunityPatch.Card.Part1CardCostRender.Part1CardCostDisplayerPatch
+- uid: DiskCardGame.CardDisplayer
+  commentId: T:DiskCardGame.CardDisplayer
+  parent: DiskCardGame
+  isExternal: true
+  name: CardDisplayer
+  nameWithType: CardDisplayer
+  fullName: DiskCardGame.CardDisplayer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

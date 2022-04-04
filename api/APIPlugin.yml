@@ -1,0 +1,172 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  id: APIPlugin
+  children:
+  - APIPlugin.AbilityIdentifier
+  - APIPlugin.AbilityInfoUtils
+  - APIPlugin.CardUtils
+  - APIPlugin.CustomCard
+  - APIPlugin.CustomRegion
+  - APIPlugin.EvolveIdentifier
+  - APIPlugin.IceCubeIdentifier
+  - APIPlugin.IgnoreMappingAttribute
+  - APIPlugin.NewAbility
+  - APIPlugin.NewCard
+  - APIPlugin.NewCardAppearanceBehaviour
+  - APIPlugin.NewEncounter
+  - APIPlugin.NewRegion
+  - APIPlugin.NewSpecialAbility
+  - APIPlugin.SpecialAbilityIdentifier
+  - APIPlugin.TailIdentifier
+  - APIPlugin.TypeMapper`2
+  langs:
+  - csharp
+  - vb
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+  type: Namespace
+  assemblies:
+  - InscryptionAPI
+references:
+- uid: APIPlugin.AbilityIdentifier
+  commentId: T:APIPlugin.AbilityIdentifier
+  parent: APIPlugin
+  name: AbilityIdentifier
+  nameWithType: AbilityIdentifier
+  fullName: APIPlugin.AbilityIdentifier
+- uid: APIPlugin.AbilityInfoUtils
+  commentId: T:APIPlugin.AbilityInfoUtils
+  name: AbilityInfoUtils
+  nameWithType: AbilityInfoUtils
+  fullName: APIPlugin.AbilityInfoUtils
+- uid: APIPlugin.CardUtils
+  commentId: T:APIPlugin.CardUtils
+  name: CardUtils
+  nameWithType: CardUtils
+  fullName: APIPlugin.CardUtils
+- uid: APIPlugin.CustomCard
+  commentId: T:APIPlugin.CustomCard
+  name: CustomCard
+  nameWithType: CustomCard
+  fullName: APIPlugin.CustomCard
+- uid: APIPlugin.CustomRegion
+  commentId: T:APIPlugin.CustomRegion
+  name: CustomRegion
+  nameWithType: CustomRegion
+  fullName: APIPlugin.CustomRegion
+- uid: APIPlugin.EvolveIdentifier
+  commentId: T:APIPlugin.EvolveIdentifier
+  parent: APIPlugin
+  name: EvolveIdentifier
+  nameWithType: EvolveIdentifier
+  fullName: APIPlugin.EvolveIdentifier
+- uid: APIPlugin.IceCubeIdentifier
+  commentId: T:APIPlugin.IceCubeIdentifier
+  parent: APIPlugin
+  name: IceCubeIdentifier
+  nameWithType: IceCubeIdentifier
+  fullName: APIPlugin.IceCubeIdentifier
+- uid: APIPlugin.NewAbility
+  commentId: T:APIPlugin.NewAbility
+  name: NewAbility
+  nameWithType: NewAbility
+  fullName: APIPlugin.NewAbility
+- uid: APIPlugin.NewCard
+  commentId: T:APIPlugin.NewCard
+  name: NewCard
+  nameWithType: NewCard
+  fullName: APIPlugin.NewCard
+- uid: APIPlugin.NewCardAppearanceBehaviour
+  commentId: T:APIPlugin.NewCardAppearanceBehaviour
+  parent: APIPlugin
+  name: NewCardAppearanceBehaviour
+  nameWithType: NewCardAppearanceBehaviour
+  fullName: APIPlugin.NewCardAppearanceBehaviour
+- uid: APIPlugin.NewEncounter
+  commentId: T:APIPlugin.NewEncounter
+  name: NewEncounter
+  nameWithType: NewEncounter
+  fullName: APIPlugin.NewEncounter
+- uid: APIPlugin.NewRegion
+  commentId: T:APIPlugin.NewRegion
+  name: NewRegion
+  nameWithType: NewRegion
+  fullName: APIPlugin.NewRegion
+- uid: APIPlugin.NewSpecialAbility
+  commentId: T:APIPlugin.NewSpecialAbility
+  name: NewSpecialAbility
+  nameWithType: NewSpecialAbility
+  fullName: APIPlugin.NewSpecialAbility
+- uid: APIPlugin.SpecialAbilityIdentifier
+  commentId: T:APIPlugin.SpecialAbilityIdentifier
+  parent: APIPlugin
+  name: SpecialAbilityIdentifier
+  nameWithType: SpecialAbilityIdentifier
+  fullName: APIPlugin.SpecialAbilityIdentifier
+- uid: APIPlugin.TailIdentifier
+  commentId: T:APIPlugin.TailIdentifier
+  parent: APIPlugin
+  name: TailIdentifier
+  nameWithType: TailIdentifier
+  fullName: APIPlugin.TailIdentifier
+- uid: APIPlugin.IgnoreMappingAttribute
+  commentId: T:APIPlugin.IgnoreMappingAttribute
+  name: IgnoreMappingAttribute
+  nameWithType: IgnoreMappingAttribute
+  fullName: APIPlugin.IgnoreMappingAttribute
+- uid: APIPlugin.TypeMapper`2
+  commentId: T:APIPlugin.TypeMapper`2
+  name: TypeMapper<S, D>
+  nameWithType: TypeMapper<S, D>
+  fullName: APIPlugin.TypeMapper<S, D>
+  nameWithType.vb: TypeMapper(Of S, D)
+  fullName.vb: APIPlugin.TypeMapper(Of S, D)
+  name.vb: TypeMapper(Of S, D)
+  spec.csharp:
+  - uid: APIPlugin.TypeMapper`2
+    name: TypeMapper
+    nameWithType: TypeMapper
+    fullName: APIPlugin.TypeMapper
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: S
+    nameWithType: S
+    fullName: S
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: D
+    nameWithType: D
+    fullName: D
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: APIPlugin.TypeMapper`2
+    name: TypeMapper
+    nameWithType: TypeMapper
+    fullName: APIPlugin.TypeMapper
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: S
+    nameWithType: S
+    fullName: S
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: D
+    nameWithType: D
+    fullName: D
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin

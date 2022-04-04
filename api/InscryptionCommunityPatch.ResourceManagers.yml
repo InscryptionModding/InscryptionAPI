@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionCommunityPatch.ResourceManagers
+  commentId: N:InscryptionCommunityPatch.ResourceManagers
+  id: InscryptionCommunityPatch.ResourceManagers
+  children:
+  - InscryptionCommunityPatch.ResourceManagers.ActOneConduitManager
+  - InscryptionCommunityPatch.ResourceManagers.EnergyDrone
+  - InscryptionCommunityPatch.ResourceManagers.EnergyDrone.EnergyConfigInfo
+  langs:
+  - csharp
+  - vb
+  name: InscryptionCommunityPatch.ResourceManagers
+  nameWithType: InscryptionCommunityPatch.ResourceManagers
+  fullName: InscryptionCommunityPatch.ResourceManagers
+  type: Namespace
+  assemblies:
+  - InscryptionCommunityPatch
+references:
+- uid: InscryptionCommunityPatch.ResourceManagers.ActOneConduitManager
+  commentId: T:InscryptionCommunityPatch.ResourceManagers.ActOneConduitManager
+  name: ActOneConduitManager
+  nameWithType: ActOneConduitManager
+  fullName: InscryptionCommunityPatch.ResourceManagers.ActOneConduitManager
+- uid: InscryptionCommunityPatch.ResourceManagers.EnergyDrone
+  commentId: T:InscryptionCommunityPatch.ResourceManagers.EnergyDrone
+  name: EnergyDrone
+  nameWithType: EnergyDrone
+  fullName: InscryptionCommunityPatch.ResourceManagers.EnergyDrone
+- uid: InscryptionCommunityPatch.ResourceManagers.EnergyDrone.EnergyConfigInfo
+  commentId: T:InscryptionCommunityPatch.ResourceManagers.EnergyDrone.EnergyConfigInfo
+  name: EnergyDrone.EnergyConfigInfo
+  nameWithType: EnergyDrone.EnergyConfigInfo
+  fullName: InscryptionCommunityPatch.ResourceManagers.EnergyDrone.EnergyConfigInfo

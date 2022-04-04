@@ -1,0 +1,1312 @@
+### YamlMime:ManagedReference
+items:
+- uid: APIPlugin.CardUtils
+  commentId: T:APIPlugin.CardUtils
+  id: CardUtils
+  parent: APIPlugin
+  children:
+  - APIPlugin.CardUtils.DefaultCardArtRect
+  - APIPlugin.CardUtils.DefaultCardPixelArtRect
+  - APIPlugin.CardUtils.DefaultVector2
+  - APIPlugin.CardUtils.getAllActsCardMetadata
+  - APIPlugin.CardUtils.getAndloadImageAsTexture(System.String)
+  - APIPlugin.CardUtils.getAnimatedAppearance
+  - APIPlugin.CardUtils.getBloodDecalAppearance
+  - APIPlugin.CardUtils.getDynamicAppearance
+  - APIPlugin.CardUtils.getGBCCardMetadata
+  - APIPlugin.CardUtils.getGBCRareCardMetadata
+  - APIPlugin.CardUtils.getGoldAppearance
+  - APIPlugin.CardUtils.getHologramAppearance
+  - APIPlugin.CardUtils.getNormalCardMetadata
+  - APIPlugin.CardUtils.getRareAppearance
+  - APIPlugin.CardUtils.getRareCardMetadata
+  - APIPlugin.CardUtils.getTerrainAppearance
+  - APIPlugin.CardUtils.getTerrainBackgroundAppearance
+  - APIPlugin.CardUtils.getTerrainLayoutAppearance
+  - APIPlugin.CardUtils.IsNonLivingCard
+  - APIPlugin.CardUtils.ReadArtworkFileAsBytes(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CardUtils
+  nameWithType: CardUtils
+  fullName: APIPlugin.CardUtils
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: CardUtils
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static class CardUtils
+    content.vb: Public Module CardUtils
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: APIPlugin.CardUtils.DefaultVector2
+  commentId: F:APIPlugin.CardUtils.DefaultVector2
+  id: DefaultVector2
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: DefaultVector2
+  nameWithType: CardUtils.DefaultVector2
+  fullName: APIPlugin.CardUtils.DefaultVector2
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: DefaultVector2
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 10
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static readonly Vector2 DefaultVector2
+    return:
+      type: UnityEngine.Vector2
+    content.vb: Public Shared ReadOnly DefaultVector2 As Vector2
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: APIPlugin.CardUtils.DefaultCardArtRect
+  commentId: F:APIPlugin.CardUtils.DefaultCardArtRect
+  id: DefaultCardArtRect
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: DefaultCardArtRect
+  nameWithType: CardUtils.DefaultCardArtRect
+  fullName: APIPlugin.CardUtils.DefaultCardArtRect
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: DefaultCardArtRect
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 11
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static readonly Rect DefaultCardArtRect
+    return:
+      type: UnityEngine.Rect
+    content.vb: Public Shared ReadOnly DefaultCardArtRect As Rect
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: APIPlugin.CardUtils.DefaultCardPixelArtRect
+  commentId: F:APIPlugin.CardUtils.DefaultCardPixelArtRect
+  id: DefaultCardPixelArtRect
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: DefaultCardPixelArtRect
+  nameWithType: CardUtils.DefaultCardPixelArtRect
+  fullName: APIPlugin.CardUtils.DefaultCardPixelArtRect
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: DefaultCardPixelArtRect
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 12
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static readonly Rect DefaultCardPixelArtRect
+    return:
+      type: UnityEngine.Rect
+    content.vb: Public Shared ReadOnly DefaultCardPixelArtRect As Rect
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: APIPlugin.CardUtils.IsNonLivingCard
+  commentId: F:APIPlugin.CardUtils.IsNonLivingCard
+  id: IsNonLivingCard
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: IsNonLivingCard
+  nameWithType: CardUtils.IsNonLivingCard
+  fullName: APIPlugin.CardUtils.IsNonLivingCard
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: IsNonLivingCard
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Predicate<CardInfo> IsNonLivingCard
+    return:
+      type: Predicate{DiskCardGame.CardInfo}
+    content.vb: Public Shared IsNonLivingCard As Predicate(Of CardInfo)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getNormalCardMetadata
+  commentId: F:APIPlugin.CardUtils.getNormalCardMetadata
+  id: getNormalCardMetadata
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getNormalCardMetadata
+  nameWithType: CardUtils.getNormalCardMetadata
+  fullName: APIPlugin.CardUtils.getNormalCardMetadata
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getNormalCardMetadata
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 17
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardMetaCategory> getNormalCardMetadata
+    return:
+      type: List{DiskCardGame.CardMetaCategory}
+    content.vb: Public Shared getNormalCardMetadata As List(Of CardMetaCategory)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getRareCardMetadata
+  commentId: F:APIPlugin.CardUtils.getRareCardMetadata
+  id: getRareCardMetadata
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getRareCardMetadata
+  nameWithType: CardUtils.getRareCardMetadata
+  fullName: APIPlugin.CardUtils.getRareCardMetadata
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getRareCardMetadata
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 20
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardMetaCategory> getRareCardMetadata
+    return:
+      type: List{DiskCardGame.CardMetaCategory}
+    content.vb: Public Shared getRareCardMetadata As List(Of CardMetaCategory)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getGBCCardMetadata
+  commentId: F:APIPlugin.CardUtils.getGBCCardMetadata
+  id: getGBCCardMetadata
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getGBCCardMetadata
+  nameWithType: CardUtils.getGBCCardMetadata
+  fullName: APIPlugin.CardUtils.getGBCCardMetadata
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getGBCCardMetadata
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 23
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardMetaCategory> getGBCCardMetadata
+    return:
+      type: List{DiskCardGame.CardMetaCategory}
+    content.vb: Public Shared getGBCCardMetadata As List(Of CardMetaCategory)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getGBCRareCardMetadata
+  commentId: F:APIPlugin.CardUtils.getGBCRareCardMetadata
+  id: getGBCRareCardMetadata
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getGBCRareCardMetadata
+  nameWithType: CardUtils.getGBCRareCardMetadata
+  fullName: APIPlugin.CardUtils.getGBCRareCardMetadata
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getGBCRareCardMetadata
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 26
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardMetaCategory> getGBCRareCardMetadata
+    return:
+      type: List{DiskCardGame.CardMetaCategory}
+    content.vb: Public Shared getGBCRareCardMetadata As List(Of CardMetaCategory)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getAllActsCardMetadata
+  commentId: F:APIPlugin.CardUtils.getAllActsCardMetadata
+  id: getAllActsCardMetadata
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getAllActsCardMetadata
+  nameWithType: CardUtils.getAllActsCardMetadata
+  fullName: APIPlugin.CardUtils.getAllActsCardMetadata
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getAllActsCardMetadata
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 31
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardMetaCategory> getAllActsCardMetadata
+    return:
+      type: List{DiskCardGame.CardMetaCategory}
+    content.vb: Public Shared getAllActsCardMetadata As List(Of CardMetaCategory)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getRareAppearance
+  commentId: F:APIPlugin.CardUtils.getRareAppearance
+  id: getRareAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getRareAppearance
+  nameWithType: CardUtils.getRareAppearance
+  fullName: APIPlugin.CardUtils.getRareAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getRareAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 40
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getRareAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getRareAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getTerrainBackgroundAppearance
+  commentId: F:APIPlugin.CardUtils.getTerrainBackgroundAppearance
+  id: getTerrainBackgroundAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getTerrainBackgroundAppearance
+  nameWithType: CardUtils.getTerrainBackgroundAppearance
+  fullName: APIPlugin.CardUtils.getTerrainBackgroundAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getTerrainBackgroundAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 43
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getTerrainBackgroundAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getTerrainBackgroundAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getTerrainLayoutAppearance
+  commentId: F:APIPlugin.CardUtils.getTerrainLayoutAppearance
+  id: getTerrainLayoutAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getTerrainLayoutAppearance
+  nameWithType: CardUtils.getTerrainLayoutAppearance
+  fullName: APIPlugin.CardUtils.getTerrainLayoutAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getTerrainLayoutAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 48
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getTerrainLayoutAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getTerrainLayoutAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getTerrainAppearance
+  commentId: F:APIPlugin.CardUtils.getTerrainAppearance
+  id: getTerrainAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getTerrainAppearance
+  nameWithType: CardUtils.getTerrainAppearance
+  fullName: APIPlugin.CardUtils.getTerrainAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getTerrainAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 53
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getTerrainAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getTerrainAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getHologramAppearance
+  commentId: F:APIPlugin.CardUtils.getHologramAppearance
+  id: getHologramAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getHologramAppearance
+  nameWithType: CardUtils.getHologramAppearance
+  fullName: APIPlugin.CardUtils.getHologramAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getHologramAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 58
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getHologramAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getHologramAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getAnimatedAppearance
+  commentId: F:APIPlugin.CardUtils.getAnimatedAppearance
+  id: getAnimatedAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getAnimatedAppearance
+  nameWithType: CardUtils.getAnimatedAppearance
+  fullName: APIPlugin.CardUtils.getAnimatedAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getAnimatedAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 63
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getAnimatedAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getAnimatedAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getGoldAppearance
+  commentId: F:APIPlugin.CardUtils.getGoldAppearance
+  id: getGoldAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getGoldAppearance
+  nameWithType: CardUtils.getGoldAppearance
+  fullName: APIPlugin.CardUtils.getGoldAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getGoldAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 68
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getGoldAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getGoldAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getBloodDecalAppearance
+  commentId: F:APIPlugin.CardUtils.getBloodDecalAppearance
+  id: getBloodDecalAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getBloodDecalAppearance
+  nameWithType: CardUtils.getBloodDecalAppearance
+  fullName: APIPlugin.CardUtils.getBloodDecalAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getBloodDecalAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 73
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getBloodDecalAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getBloodDecalAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getDynamicAppearance
+  commentId: F:APIPlugin.CardUtils.getDynamicAppearance
+  id: getDynamicAppearance
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getDynamicAppearance
+  nameWithType: CardUtils.getDynamicAppearance
+  fullName: APIPlugin.CardUtils.getDynamicAppearance
+  type: Field
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getDynamicAppearance
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 78
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static List<CardAppearanceBehaviour.Appearance> getDynamicAppearance
+    return:
+      type: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+    content.vb: Public Shared getDynamicAppearance As List(Of CardAppearanceBehaviour.Appearance)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.ReadArtworkFileAsBytes(System.String)
+  commentId: M:APIPlugin.CardUtils.ReadArtworkFileAsBytes(System.String)
+  id: ReadArtworkFileAsBytes(System.String)
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: ReadArtworkFileAsBytes(String)
+  nameWithType: CardUtils.ReadArtworkFileAsBytes(String)
+  fullName: APIPlugin.CardUtils.ReadArtworkFileAsBytes(System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReadArtworkFileAsBytes
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 83
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static byte[] ReadArtworkFileAsBytes(string nameOfCardArt)
+    parameters:
+    - id: nameOfCardArt
+      type: System.String
+    return:
+      type: System.Byte[]
+    content.vb: Public Shared Function ReadArtworkFileAsBytes(nameOfCardArt As String) As Byte()
+  overload: APIPlugin.CardUtils.ReadArtworkFileAsBytes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: APIPlugin.CardUtils.getAndloadImageAsTexture(System.String)
+  commentId: M:APIPlugin.CardUtils.getAndloadImageAsTexture(System.String)
+  id: getAndloadImageAsTexture(System.String)
+  parent: APIPlugin.CardUtils
+  langs:
+  - csharp
+  - vb
+  name: getAndloadImageAsTexture(String)
+  nameWithType: CardUtils.getAndloadImageAsTexture(String)
+  fullName: APIPlugin.CardUtils.getAndloadImageAsTexture(System.String)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Compatibility/CardUtils.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: getAndloadImageAsTexture
+    path: ../InscryptionAPI/Compatibility/CardUtils.cs
+    startLine: 90
+  assemblies:
+  - InscryptionAPI
+  namespace: APIPlugin
+  syntax:
+    content: public static Texture2D getAndloadImageAsTexture(string pathCardArt)
+    parameters:
+    - id: pathCardArt
+      type: System.String
+    return:
+      type: UnityEngine.Texture2D
+    content.vb: Public Shared Function getAndloadImageAsTexture(pathCardArt As String) As Texture2D
+  overload: APIPlugin.CardUtils.getAndloadImageAsTexture*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: APIPlugin
+  commentId: N:APIPlugin
+  name: APIPlugin
+  nameWithType: APIPlugin
+  fullName: APIPlugin
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: UnityEngine.Rect
+  commentId: T:UnityEngine.Rect
+  parent: UnityEngine
+  isExternal: true
+  name: Rect
+  nameWithType: Rect
+  fullName: UnityEngine.Rect
+- uid: Predicate{DiskCardGame.CardInfo}
+  commentId: '!:Predicate{DiskCardGame.CardInfo}'
+  definition: Predicate`1
+  name: Predicate<CardInfo>
+  nameWithType: Predicate<CardInfo>
+  fullName: Predicate<DiskCardGame.CardInfo>
+  nameWithType.vb: Predicate(Of CardInfo)
+  fullName.vb: Predicate(Of DiskCardGame.CardInfo)
+  name.vb: Predicate(Of CardInfo)
+  spec.csharp:
+  - uid: Predicate`1
+    name: Predicate
+    nameWithType: Predicate
+    fullName: Predicate
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Predicate`1
+    name: Predicate
+    nameWithType: Predicate
+    fullName: Predicate
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardInfo
+    name: CardInfo
+    nameWithType: CardInfo
+    fullName: DiskCardGame.CardInfo
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Predicate`1
+  isExternal: true
+  name: Predicate<>
+  nameWithType: Predicate<>
+  fullName: Predicate<>
+  nameWithType.vb: Predicate(Of )
+  fullName.vb: Predicate(Of )
+  name.vb: Predicate(Of )
+  spec.csharp:
+  - uid: Predicate`1
+    name: Predicate
+    nameWithType: Predicate
+    fullName: Predicate
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Predicate`1
+    name: Predicate
+    nameWithType: Predicate
+    fullName: Predicate
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.CardMetaCategory}
+  commentId: '!:List{DiskCardGame.CardMetaCategory}'
+  definition: List`1
+  name: List<CardMetaCategory>
+  nameWithType: List<CardMetaCategory>
+  fullName: List<DiskCardGame.CardMetaCategory>
+  nameWithType.vb: List(Of CardMetaCategory)
+  fullName.vb: List(Of DiskCardGame.CardMetaCategory)
+  name.vb: List(Of CardMetaCategory)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardMetaCategory
+    name: CardMetaCategory
+    nameWithType: CardMetaCategory
+    fullName: DiskCardGame.CardMetaCategory
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardMetaCategory
+    name: CardMetaCategory
+    nameWithType: CardMetaCategory
+    fullName: DiskCardGame.CardMetaCategory
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List{DiskCardGame.CardAppearanceBehaviour.Appearance}
+  commentId: '!:List{DiskCardGame.CardAppearanceBehaviour.Appearance}'
+  definition: List`1
+  name: List<CardAppearanceBehaviour.Appearance>
+  nameWithType: List<CardAppearanceBehaviour.Appearance>
+  fullName: List<DiskCardGame.CardAppearanceBehaviour.Appearance>
+  nameWithType.vb: List(Of CardAppearanceBehaviour.Appearance)
+  fullName.vb: List(Of DiskCardGame.CardAppearanceBehaviour.Appearance)
+  name.vb: List(Of CardAppearanceBehaviour.Appearance)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DiskCardGame.CardAppearanceBehaviour.Appearance
+    name: CardAppearanceBehaviour.Appearance
+    nameWithType: CardAppearanceBehaviour.Appearance
+    fullName: DiskCardGame.CardAppearanceBehaviour.Appearance
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: APIPlugin.CardUtils.ReadArtworkFileAsBytes*
+  commentId: Overload:APIPlugin.CardUtils.ReadArtworkFileAsBytes
+  name: ReadArtworkFileAsBytes
+  nameWithType: CardUtils.ReadArtworkFileAsBytes
+  fullName: APIPlugin.CardUtils.ReadArtworkFileAsBytes
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Byte[]
+  isExternal: true
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: System.Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: System.Byte
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: APIPlugin.CardUtils.getAndloadImageAsTexture*
+  commentId: Overload:APIPlugin.CardUtils.getAndloadImageAsTexture
+  name: getAndloadImageAsTexture
+  nameWithType: CardUtils.getAndloadImageAsTexture
+  fullName: APIPlugin.CardUtils.getAndloadImageAsTexture
+- uid: UnityEngine.Texture2D
+  commentId: T:UnityEngine.Texture2D
+  parent: UnityEngine
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: UnityEngine.Texture2D

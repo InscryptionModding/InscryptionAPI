@@ -1,0 +1,499 @@
+### YamlMime:ManagedReference
+items:
+- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+  commentId: T:InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+  id: AscensionChallengeScreenPatches
+  parent: InscryptionAPI.Ascension
+  children:
+  - InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
+  - InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
+  langs:
+  - csharp
+  - vb
+  name: AscensionChallengeScreenPatches
+  nameWithType: AscensionChallengeScreenPatches
+  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+  type: Class
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AscensionChallengeScreenPatches
+    path: ../InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+    startLine: 7
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch]
+
+      public static class AscensionChallengeScreenPatches
+    content.vb: >-
+      <HarmonyPatch>
+
+      Public Module AscensionChallengeScreenPatches
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
+  id: ReassignableIconFixes(DiskCardGame.AscensionIconInteractable@,DiskCardGame.AscensionChallengeInfo)
+  parent: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+  langs:
+  - csharp
+  - vb
+  name: ReassignableIconFixes(ref AscensionIconInteractable, AscensionChallengeInfo)
+  nameWithType: AscensionChallengeScreenPatches.ReassignableIconFixes(ref AscensionIconInteractable, AscensionChallengeInfo)
+  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(ref DiskCardGame.AscensionIconInteractable, DiskCardGame.AscensionChallengeInfo)
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: ReassignableIconFixes
+    path: ../InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+    startLine: 14
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
+
+      [HarmonyPostfix]
+
+      public static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
+    parameters:
+    - id: __instance
+      type: DiskCardGame.AscensionIconInteractable
+    - id: info
+      type: DiskCardGame.AscensionChallengeInfo
+    content.vb: >-
+      <HarmonyPatch(GetType(AscensionIconInteractable), "AssignInfo")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub ReassignableIconFixes(ByRef __instance As AscensionIconInteractable, info As AscensionChallengeInfo)
+  overload: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.AscensionIconInteractable
+    - type: System.String
+      value: AssignInfo
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  nameWithType.vb: AscensionChallengeScreenPatches.ReassignableIconFixes(ByRef AscensionIconInteractable, AscensionChallengeInfo)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes(ByRef DiskCardGame.AscensionIconInteractable, DiskCardGame.AscensionChallengeInfo)
+  name.vb: ReassignableIconFixes(ByRef AscensionIconInteractable, AscensionChallengeInfo)
+- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
+  id: AddPaginationToChallengeScreen
+  parent: InscryptionAPI.Ascension.AscensionChallengeScreenPatches
+  langs:
+  - csharp
+  - vb
+  name: AddPaginationToChallengeScreen()
+  nameWithType: AscensionChallengeScreenPatches.AddPaginationToChallengeScreen()
+  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen()
+  type: Method
+  source:
+    remote:
+      path: InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+      branch: patch-7
+      repo: https://github.com/xhayper/InscryptionAPI
+    id: AddPaginationToChallengeScreen
+    path: ../InscryptionAPI/Ascension/AscensionChallengeScreen.cs
+    startLine: 37
+  assemblies:
+  - InscryptionAPI
+  namespace: InscryptionAPI.Ascension
+  syntax:
+    content: >-
+      [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
+
+      [HarmonyPostfix]
+
+      public static void AddPaginationToChallengeScreen()
+    content.vb: >-
+      <HarmonyPatch(GetType(AscensionMenuScreens), "ConfigurePostGameScreens")>
+
+      <HarmonyPostfix>
+
+      Public Shared Sub AddPaginationToChallengeScreen
+  overload: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen*
+  attributes:
+  - type: HarmonyLib.HarmonyPatch
+    ctor: HarmonyLib.HarmonyPatch.#ctor(System.Type,System.String)
+    arguments:
+    - type: System.Type
+      value: DiskCardGame.AscensionMenuScreens
+    - type: System.String
+      value: ConfigurePostGameScreens
+  - type: HarmonyLib.HarmonyPostfix
+    ctor: HarmonyLib.HarmonyPostfix.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: InscryptionAPI.Ascension
+  commentId: N:InscryptionAPI.Ascension
+  name: InscryptionAPI.Ascension
+  nameWithType: InscryptionAPI.Ascension
+  fullName: InscryptionAPI.Ascension
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes*
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes
+  name: ReassignableIconFixes
+  nameWithType: AscensionChallengeScreenPatches.ReassignableIconFixes
+  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.ReassignableIconFixes
+- uid: DiskCardGame.AscensionIconInteractable
+  commentId: T:DiskCardGame.AscensionIconInteractable
+  parent: DiskCardGame
+  isExternal: true
+  name: AscensionIconInteractable
+  nameWithType: AscensionIconInteractable
+  fullName: DiskCardGame.AscensionIconInteractable
+- uid: DiskCardGame.AscensionChallengeInfo
+  commentId: T:DiskCardGame.AscensionChallengeInfo
+  parent: DiskCardGame
+  isExternal: true
+  name: AscensionChallengeInfo
+  nameWithType: AscensionChallengeInfo
+  fullName: DiskCardGame.AscensionChallengeInfo
+- uid: DiskCardGame
+  commentId: N:DiskCardGame
+  isExternal: true
+  name: DiskCardGame
+  nameWithType: DiskCardGame
+  fullName: DiskCardGame
+- uid: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen*
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
+  name: AddPaginationToChallengeScreen
+  nameWithType: AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
+  fullName: InscryptionAPI.Ascension.AscensionChallengeScreenPatches.AddPaginationToChallengeScreen
