@@ -220,31 +220,37 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "SpUgFz8CUuK/fgFdSMVyMVgVuGUIQN4S+mJ1ie7CXeA="
+          "hash": "6Kk69ZxcTQopIh+QAwjdN2OZWts6/p/LolJLY8eSWJE="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.html",
-          "hash": "iUZgjNgX+r5BgARWx0mvbybkySVTZAk30hea6WB+NVM="
+          "hash": "PoguN76bBSYhFmdpsBC5WT+VETNEHZBcbFe3SCU9yMM="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "UidNotFound"
+      ],
       "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.AbilityManager.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "F7u8Yby4U6g49f7gbZTih9swrxnUpVLdi5MkcggYxLE="
+          "hash": "sT9S9nTOIdCMBSZgBjQ/0wFPEZsDK7+XPjXIhbBQPmg="
         }
       },
       "is_incremental": false,
@@ -388,7 +394,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "M1TApolfA6IR8zKFh0ayzKUBgaglvRIxX1hbbPiXi5k="
+          "hash": "YRHu+tL6HXjf8TyCz2IAcz+g6nJz2d/Y/ZhVY3lDG6U="
         }
       },
       "is_incremental": false,
