@@ -10,17 +10,53 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// This manager class handles the creation and management of mod-added abilities (sigils).
+/// </summary>
 [HarmonyPatch]
 public static class AbilityManager
 {
+    /// <summary>
+    /// A utility class that holds all of the required information about an ability in order to be able to use it in-game
+    /// </summary>
     public class FullAbility
     {
+        /// <summary>
+        /// The unique ID for this ability
+        /// </summary>
         public readonly Ability Id;
+
+        /// <summary>
+        /// The description object for this ability
+        /// </summary>        
         public readonly AbilityInfo Info;
+
+        /// <summary>
+        /// A subclass of AbilityBehaviour that implements the logic for the ability
+        /// </summary>
         public readonly Type AbilityBehavior;
+
+        /// <summary>
+        /// A 49x49 texture for the ability icon
+        /// </summary>
+        /// <value></value>
         public Texture Texture { get; internal set; }
+
+        /// <summary>
+        /// A 49x49 texture for the ability icon, used when the card belongs to the opponent
+        /// </summary>
+        /// <value></value>
         public Texture CustomFlippedTexture { get; internal set; }
 
+        internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new ();
+
+        /// <summary>
+        /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// </summary>
+        /// <param name="id">The unique ID for this ability</param>
+        /// <param name="info">The description object for this ability</param>
+        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability</param>
+        /// <param name="texture">A 49x49 texture  for the ability icon</param>
         public FullAbility(Ability id, AbilityInfo info, Type behaviour, Texture texture)
         {
             Id = id;
@@ -28,9 +64,14 @@ public static class AbilityManager
             AbilityBehavior = behaviour;
             Texture = texture;
 
+            ReverseMapper.Add(info, this);
+
             TypeManager.Add(id.ToString(), behaviour);
         }
 
+        /// <summary>
+        /// Makes a deep copy of the current FullAbility object
+        /// </summary>
         public FullAbility Clone()
         {
             AbilityInfo clonedInfo = ScriptableObject.CreateInstance<AbilityInfo>();
@@ -57,18 +98,69 @@ public static class AbilityManager
             clonedInfo.rulebookName = Info.rulebookName;
             clonedInfo.triggerText = Info.triggerText;
 
-            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture);
+            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
         }
     }
 
+    /// <summary>
+    /// All of the vanilla game's abilities
+    /// </summary>
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
-    private readonly static ObservableCollection<FullAbility> NewAbilities = new();
+    internal readonly static ObservableCollection<FullAbility> NewAbilities = new();
     
+    /// <summary>
+    /// The current processed list of all abilities in the game, including vanilla and mod-added abilities.
+    /// </summary>
     public static List<FullAbility> AllAbilities { get; private set; } = BaseGameAbilities.ToList();
+
+    /// <summary>
+    /// The current processed list of all AbilityInfos in the game, including vanilla and mod-added abilities.
+    /// </summary>
     public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
 
+    /// <summary>
+    /// A hook for modders to add custom code to modify the ability list dynamically
+    /// </summary>
+    /// <remarks>There are two primary use cases for this hook:
+    /// 
+    /// - Making changes to abilities that may be added after your plugin initializes
+    /// - Making context-aware changes to abilities.
+    /// 
+    /// The way this operates is as follows:
+    /// 
+    /// 1. The AbilityManager makes a copy of all FullAbility objects. Note that unlike the similar code in CardManager, this is actually a *deep* copy of the AbilityInfo.
+    /// 2. The code in ModifyAbiltyList is executed on the copy of those abilities.
+    /// 3. The modified list becomes the game's new official list of abilities.
+    /// 
+    /// The reason the abilities are cloned before processing is so that you can make any change to them you wish
+    /// without affecting the original ability. This means that you do not need to try to track changes or remember
+    /// what the original version of the ability looked like before you started changing it; the next time 
+    /// [SyncAbilityList](xref:InscryptionAPI.AbilityManager.SyncAbilityList) is called, all changes will be reverted
+    /// and then re-applied.
+    /// 
+    /// To use this, you need to add a delegate that accepts the current list of all abilities, then returns
+    /// that same list back.
+    /// 
+    /// ```c#
+    /// AbilityManager.ModifyAbilityList += delegate(List<FullAbility> abilities)
+    /// {
+    ///     // Add the rulebook metacategories to every single ability
+    ///     foreach (var ability in abilities)
+    ///         ability.info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part3Rulebook);
+    ///     return abilities;
+    /// }
+    /// ```
+    /// </remarks>
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
+    /// <summary>
+    /// Resynchronizes the ablity list
+    /// </summary>
+    /// <remarks>Most importantly, this re-executes all custom code that was added to the [ModifyAbilityList](xref:InscryptionAPI.AbilityManager.ModifyAbilityList)
+    /// event. If you are doing any sort of context-aware processing of the ability list, you may need to manually
+    /// call this method in order to make sure that your code executes correctly. However, this automatically gets called
+    /// every time that the game transitions from either the main menu into the base game, or whenever a new run is 
+    /// started inside of Kaycee's Mod. Only in extreme edge cases should you need to manually call this.</remarks>
     public static void SyncAbilityList()
     {
         AllAbilities = BaseGameAbilities.Concat(NewAbilities).Select(a => a.Clone()).ToList();
@@ -119,6 +211,22 @@ public static class AbilityManager
         return baseGame;
     }
 
+    /// <summary>
+    /// Creates a new ability and registers it to be able to be added to cards
+    /// </summary>
+    /// <param name="guid">The guid of the mod adding the ability</param>
+    /// <param name="info">An instance of AbilityInfo describing the ability</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
+    /// <param name="tex">The ability icon as a 49x49 texture</param>
+    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
+    /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+    /// always be assigned by the API.
+    /// 
+    /// **NOTE**: Even if you manually create an Ability identifier for your ability and attach it to the AbilityInfo 
+    /// object before you pass it to the API, the API will *still* generate a unique ability ID for you, which may
+    /// or may not be the same as the ID you created for yourself. As such, it is best practice to *not* set the 
+    /// ablity ID yourself and leave it as its default value.</remarks>
     public static FullAbility Add(string guid, AbilityInfo info, Type behavior, Texture tex)
     {
         FullAbility full = new(GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, behavior, tex);
@@ -127,11 +235,35 @@ public static class AbilityManager
         return full;
     }
 
+    /// <summary>
+    /// Creates a new ability and registers it to be able to be added to cards
+    /// </summary>
+    /// <param name="guid">The guid of the mod adding the ability</param>
+    /// <param name="rulebookName">The name of the ability</param>
+    /// <param name="rulebookDescription">The description as it appears in the game's rulebook</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
+    /// <param name="pathToArt">Path to the ability texture on disk</param>
+    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
+    /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+    /// always be assigned by the API.</remarks>
     public static AbilityInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior, string pathToArt)
     {
         return New(guid, rulebookName, rulebookDescription, behavior, TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Creates a new ability and registers it to be able to be added to cards
+    /// </summary>
+    /// <param name="guid">The guid of the mod adding the ability</param>
+    /// <param name="rulebookName">The name of the ability</param>
+    /// <param name="rulebookDescription">The description as it appears in the game's rulebook</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
+    /// <param name="tex">The ability icon as a 49x49 texture</param>
+    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
+    /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+    /// always be assigned by the API.</remarks>
     public static AbilityInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior, Texture tex)
     {
         AbilityInfo info = ScriptableObject.CreateInstance<AbilityInfo>();
@@ -141,7 +273,16 @@ public static class AbilityManager
         return info;
     }
 
+    /// <summary>
+    /// Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.
+    /// </summary>
+    /// <param name="id">The unique ID of the ability to remove</param>
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
+
+    /// <summary>
+    /// Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.
+    /// </summary>
+    /// <param name="ability">The instance of the ability to remove</param>
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
 
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
