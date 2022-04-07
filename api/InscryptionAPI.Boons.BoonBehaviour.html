@@ -82,7 +82,8 @@
   
   <h1 id="InscryptionAPI_Boons_BoonBehaviour" data-uid="InscryptionAPI.Boons.BoonBehaviour" class="text-break">Class BoonBehaviour
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Base class for all custom Boons</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -103,23 +104,25 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BoonBehaviour : NonCardTriggerReceiver</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_boon.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.boon%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L9">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L16">View Source</a>
   </span>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_boon_" data-uid="InscryptionAPI.Boons.BoonBehaviour.boon*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_boon" data-uid="InscryptionAPI.Boons.BoonBehaviour.boon">boon</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The unique id for this boon</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoonManager.FullBoon boon</code></pre>
+    <pre><code class="lang-csharp hljs">public BoonManager.FullBoon boon { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -139,46 +142,16 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_instanceNumber.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.instanceNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L10">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L21">View Source</a>
   </span>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_instanceNumber_" data-uid="InscryptionAPI.Boons.BoonBehaviour.instanceNumber*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_instanceNumber" data-uid="InscryptionAPI.Boons.BoonBehaviour.instanceNumber">instanceNumber</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The instance number for this boon once instantiated</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int instanceNumber</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_InstanceIndex.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.InstanceIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L11">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_InstanceIndex_" data-uid="InscryptionAPI.Boons.BoonBehaviour.InstanceIndex*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_InstanceIndex" data-uid="InscryptionAPI.Boons.BoonBehaviour.InstanceIndex">InstanceIndex</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int InstanceIndex { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int instanceNumber { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,36 +164,6 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_Instances.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.Instances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L47">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_Instances_" data-uid="InscryptionAPI.Boons.BoonBehaviour.Instances*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_Instances" data-uid="InscryptionAPI.Boons.BoonBehaviour.Instances">Instances</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;BoonBehaviour&gt; Instances { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Boons.BoonBehaviour.html">BoonBehaviour</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -232,11 +175,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_AnyInstancesOfType_DiskCardGame_BoonData_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.AnyInstancesOfType(DiskCardGame.BoonData.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L42">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L67">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_AnyInstancesOfType_" data-uid="InscryptionAPI.Boons.BoonBehaviour.AnyInstancesOfType*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_AnyInstancesOfType_DiskCardGame_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonBehaviour.AnyInstancesOfType(DiskCardGame.BoonData.Type)">AnyInstancesOfType(BoonData.Type)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates if there are any active boon behaviours of the given type</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -255,7 +199,8 @@
       <tr>
         <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The boon type to search for</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -270,7 +215,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if there is at least one boon of the given type; false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -279,11 +225,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_CountInstancesOfType_DiskCardGame_BoonData_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.CountInstancesOfType(DiskCardGame.BoonData.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L37">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L57">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_CountInstancesOfType_" data-uid="InscryptionAPI.Boons.BoonBehaviour.CountInstancesOfType*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_CountInstancesOfType_DiskCardGame_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonBehaviour.CountInstancesOfType(DiskCardGame.BoonData.Type)">CountInstancesOfType(BoonData.Type)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the count of active boon behaviours for the given boon type</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -302,7 +249,8 @@
       <tr>
         <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The boon type to search for</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -317,50 +265,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
+        <td><p>The count of all boon behaviours that are active in battle</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_DestroyAllInstances.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.DestroyAllInstances%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L56">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_DestroyAllInstances_" data-uid="InscryptionAPI.Boons.BoonBehaviour.DestroyAllInstances*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_DestroyAllInstances" data-uid="InscryptionAPI.Boons.BoonBehaviour.DestroyAllInstances">DestroyAllInstances()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void DestroyAllInstances()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_EnsureInstancesLoaded.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.EnsureInstancesLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L70">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_EnsureInstancesLoaded_" data-uid="InscryptionAPI.Boons.BoonBehaviour.EnsureInstancesLoaded*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_EnsureInstancesLoaded" data-uid="InscryptionAPI.Boons.BoonBehaviour.EnsureInstancesLoaded">EnsureInstancesLoaded()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void EnsureInstancesLoaded()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_FindInstancesOfType_DiskCardGame_BoonData_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.FindInstancesOfType(DiskCardGame.BoonData.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L32">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L47">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_FindInstancesOfType_" data-uid="InscryptionAPI.Boons.BoonBehaviour.FindInstancesOfType*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_FindInstancesOfType_DiskCardGame_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonBehaviour.FindInstancesOfType(DiskCardGame.BoonData.Type)">FindInstancesOfType(BoonData.Type)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets all active boon behaviours for the given boon type</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -379,7 +299,8 @@
       <tr>
         <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
         <td><span class="parametername">type</span></td>
-        <td></td>
+        <td><p>The boon type to search for</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -394,7 +315,8 @@
     <tbody>
       <tr>
         <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Boons.BoonBehaviour.html">BoonBehaviour</a>&gt;</td>
-        <td></td>
+        <td><p>A list of all boon behaviours that are active in battle</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -403,11 +325,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_OnDestroy.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.OnDestroy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L27">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L37">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_OnDestroy_" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnDestroy*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_OnDestroy" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnDestroy">OnDestroy()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fires when the boon behaviour is destroyed</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -418,11 +341,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_OnPostBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.OnPostBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L123">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L184">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_OnPostBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPostBattleCleanup*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_OnPostBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPostBattleCleanup">OnPostBattleCleanup()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override this to have your boon take an action at the end of battle <strong>after</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -439,7 +363,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><p>A sequence of Unity events containing those actions</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -448,11 +373,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_OnPostBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.OnPostBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L103">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L148">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_OnPostBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPostBoonActivation*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_OnPostBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPostBoonActivation">OnPostBoonActivation()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override this to have your boon take an action at the beginning of battle <strong>after</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -469,7 +395,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><p>A sequence of Unity events containing those actions</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -478,11 +405,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_OnPreBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.OnPreBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L113">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L166">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_OnPreBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPreBattleCleanup*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_OnPreBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPreBattleCleanup">OnPreBattleCleanup()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override this to have your boon take an action at the end of battle <strong>before</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -499,7 +427,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><p>A sequence of Unity events containing those actions</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -508,11 +437,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_OnPreBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.OnPreBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L93">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L130">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_OnPreBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPreBoonActivation*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_OnPreBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.OnPreBoonActivation">OnPreBoonActivation()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Override this to have your boon take an action at the beginning of battle <strong>before</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -529,7 +459,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><p>A sequence of Unity events containing those actions</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -538,15 +469,16 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_PlayBoonAnimation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.PlayBoonAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L79">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L108">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_PlayBoonAnimation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.PlayBoonAnimation*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_PlayBoonAnimation" data-uid="InscryptionAPI.Boons.BoonBehaviour.PlayBoonAnimation">PlayBoonAnimation()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Displays the boon card in battle to indicate to the player that the boon is responsible for the effect that is happening</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator PlayBoonAnimation()</code></pre>
+    <pre><code class="lang-csharp hljs">protected IEnumerator PlayBoonAnimation()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -559,73 +491,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><p>A sequence of Unity events that plays the boon card animation</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToActivatedAbility_DiskCardGame_Ability_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L334">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L175">View Source</a>
   </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToActivatedAbility_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToActivatedAbility*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToActivatedAbility_DiskCardGame_Ability_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)">RespondsToActivatedAbility(Ability)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBattleCleanup*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBattleCleanup">RespondsToPostBattleCleanup()</h4>
+  <div class="markdown level1 summary"><p>Override this to indicate if this boon needs to take an action at the end of battle <strong>after</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToActivatedAbility(Ability ability)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
-        <td><span class="parametername">ability</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToActivatedAbility(DiskCardGame.Ability)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToAttackEnded.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToAttackEnded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L324">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToAttackEnded_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToAttackEnded*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToAttackEnded" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToAttackEnded">RespondsToAttackEnded()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToAttackEnded()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool RespondsToPostBattleCleanup()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -638,1428 +523,27 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToAttackEnded()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToCardGettingAttacked_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToCardGettingAttacked(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L279">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToCardGettingAttacked_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToCardGettingAttacked*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToCardGettingAttacked_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToCardGettingAttacked(DiskCardGame.PlayableCard)">RespondsToCardGettingAttacked(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToCardGettingAttacked(PlayableCard source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToCardGettingAttacked(DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamage_System_Int32_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamage(System.Int32%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L289">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamage_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamage(System.Int32,DiskCardGame.PlayableCard)">RespondsToDealDamage(Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToDealDamage(int amount, PlayableCard target)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToDealDamage(System.Int32, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamageDirectly_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamageDirectly(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L294">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamageDirectly_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamageDirectly*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDealDamageDirectly_System_Int32_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDealDamageDirectly(System.Int32)">RespondsToDealDamageDirectly(Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToDealDamageDirectly(int amount)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToDealDamageDirectly(System.Int32)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToDie_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToDie(System.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L304">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDie_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDie*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDie_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDie(System.Boolean,DiskCardGame.PlayableCard)">RespondsToDie(Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToDie(bool wasSacrifice, PlayableCard killer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrifice</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToDie(System.Boolean, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToDrawn.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToDrawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L239">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDrawn_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDrawn*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToDrawn" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToDrawn">RespondsToDrawn()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToDrawn()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToDrawn()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardAssignedToSlot_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L264">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardAssignedToSlot_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardAssignedToSlot*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardAssignedToSlot_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)">RespondsToOtherCardAssignedToSlot(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardAssignedToSlot(PlayableCard otherCard)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">otherCard</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDealtDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDealtDamage(DiskCardGame.PlayableCard%2CSystem.Int32%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L299">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDealtDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDealtDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDealtDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDealtDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">RespondsToOtherCardDealtDamage(PlayableCard, Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardDealtDamage(PlayableCard attacker, int amount, PlayableCard target)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardDealtDamage(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDie_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDie(DiskCardGame.PlayableCard%2CDiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L319">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDie_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDie*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDie_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDie(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">RespondsToOtherCardDie(PlayableCard, CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardDie(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">card</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">deathSlot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">fromCombat</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardDie(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDrawn_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDrawn(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L244">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDrawn_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDrawn*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardDrawn_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardDrawn(DiskCardGame.PlayableCard)">RespondsToOtherCardDrawn(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardDrawn(PlayableCard card)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">card</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardDrawn(DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardPreDeath_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardPreDeath(DiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L314">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardPreDeath_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardPreDeath*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardPreDeath_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardPreDeath(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">RespondsToOtherCardPreDeath(CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardPreDeath(CardSlot deathSlot, bool fromCombat, PlayableCard killer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">deathSlot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">fromCombat</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardPreDeath(DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardResolve_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardResolve(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L259">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardResolve_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardResolve*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToOtherCardResolve_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToOtherCardResolve(DiskCardGame.PlayableCard)">RespondsToOtherCardResolve(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToOtherCardResolve(PlayableCard otherCard)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">otherCard</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToOtherCardResolve(DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPlayFromHand.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPlayFromHand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L249">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPlayFromHand_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPlayFromHand*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPlayFromHand" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPlayFromHand">RespondsToPlayFromHand()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToPlayFromHand()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToPlayFromHand()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPreDeathAnimation_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPreDeathAnimation(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L309">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreDeathAnimation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreDeathAnimation*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreDeathAnimation_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreDeathAnimation(System.Boolean)">RespondsToPreDeathAnimation(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToPreDeathAnimation(bool wasSacrifice)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrifice</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToPreDeathAnimation(System.Boolean)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToResolveOnBoard.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToResolveOnBoard%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L254">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToResolveOnBoard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToResolveOnBoard*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToResolveOnBoard" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToResolveOnBoard">RespondsToResolveOnBoard()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToResolveOnBoard()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToResolveOnBoard()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToSacrifice.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToSacrifice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L269">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToSacrifice_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToSacrifice*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToSacrifice" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToSacrifice">RespondsToSacrifice()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToSacrifice()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToSacrifice()</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToSlotTargetedForAttack_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToSlotTargetedForAttack(DiskCardGame.CardSlot%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L274">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToSlotTargetedForAttack_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToSlotTargetedForAttack*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToSlotTargetedForAttack_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToSlotTargetedForAttack(DiskCardGame.CardSlot,DiskCardGame.PlayableCard)">RespondsToSlotTargetedForAttack(CardSlot, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToSlotTargetedForAttack(CardSlot slot, PlayableCard attacker)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">slot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToSlotTargetedForAttack(DiskCardGame.CardSlot, DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToTakeDamage_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToTakeDamage(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L284">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToTakeDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToTakeDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToTakeDamage_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToTakeDamage(DiskCardGame.PlayableCard)">RespondsToTakeDamage(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToTakeDamage(PlayableCard source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToTakeDamage(DiskCardGame.PlayableCard)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToTurnEnd_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToTurnEnd(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L329">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToTurnEnd_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToTurnEnd*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToTurnEnd_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToTurnEnd(System.Boolean)">RespondsToTurnEnd(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToTurnEnd(bool playerTurnEnd)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">playerTurnEnd</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToTurnEnd(System.Boolean)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToUpkeep_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToUpkeep(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L234">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToUpkeep_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToUpkeep*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToUpkeep_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToUpkeep(System.Boolean)">RespondsToUpkeep(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToUpkeep(bool playerUpkeep)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">playerUpkeep</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToUpkeep(System.Boolean)</span></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToActivatedAbility_DiskCardGame_Ability_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToActivatedAbility(DiskCardGame.Ability)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L229">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToActivatedAbility_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToActivatedAbility*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToActivatedAbility_DiskCardGame_Ability_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToActivatedAbility(DiskCardGame.Ability)">RespondToActivatedAbility(Ability)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToActivatedAbility(Ability ability)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
-        <td><span class="parametername">ability</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if the boon wants to respond, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToAttackEnded.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToAttackEnded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L219">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToAttackEnded_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToAttackEnded*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToAttackEnded" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToAttackEnded">RespondToAttackEnded()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToAttackEnded()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToCardGettingAttacked_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToCardGettingAttacked(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L174">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToCardGettingAttacked_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToCardGettingAttacked*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToCardGettingAttacked_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToCardGettingAttacked(DiskCardGame.PlayableCard)">RespondToCardGettingAttacked(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToCardGettingAttacked(PlayableCard source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamage_System_Int32_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamage(System.Int32%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L184">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamage_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamage(System.Int32,DiskCardGame.PlayableCard)">RespondToDealDamage(Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToDealDamage(int amount, PlayableCard target)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamageDirectly_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamageDirectly(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L189">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamageDirectly_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamageDirectly*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToDealDamageDirectly_System_Int32_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDealDamageDirectly(System.Int32)">RespondToDealDamageDirectly(Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToDealDamageDirectly(int amount)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToDie_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToDie(System.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L199">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToDie_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDie*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToDie_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDie(System.Boolean,DiskCardGame.PlayableCard)">RespondToDie(Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToDie(bool wasSacrifice, PlayableCard killer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrifice</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToDrawn.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToDrawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L134">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToDrawn_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDrawn*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToDrawn" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToDrawn">RespondToDrawn()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToDrawn()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardAssignedToSlot_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L159">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardAssignedToSlot_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardAssignedToSlot*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardAssignedToSlot_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)">RespondToOtherCardAssignedToSlot(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardAssignedToSlot(PlayableCard otherCard)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">otherCard</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDealtDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDealtDamage(DiskCardGame.PlayableCard%2CSystem.Int32%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L194">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDealtDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDealtDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDealtDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDealtDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">RespondToOtherCardDealtDamage(PlayableCard, Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardDealtDamage(PlayableCard attacker, int amount, PlayableCard target)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">amount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDie_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDie(DiskCardGame.PlayableCard%2CDiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L214">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDie_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDie*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDie_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDie(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">RespondToOtherCardDie(PlayableCard, CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardDie(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">card</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">deathSlot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">fromCombat</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDrawn_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDrawn(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L139">View Source</a>
   </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDrawn_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDrawn*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardDrawn_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardDrawn(DiskCardGame.PlayableCard)">RespondToOtherCardDrawn(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBoonActivation*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPostBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPostBoonActivation">RespondsToPostBoonActivation()</h4>
+  <div class="markdown level1 summary"><p>Override this to indicate if this boon needs to take an action at the beginning of battle <strong>after</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardDrawn(PlayableCard card)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool RespondsToPostBoonActivation()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">card</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -2071,52 +555,27 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if the boon wants to respond, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardPreDeath_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardPreDeath(DiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L209">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L157">View Source</a>
   </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardPreDeath_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardPreDeath*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardPreDeath_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardPreDeath(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">RespondToOtherCardPreDeath(CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBattleCleanup*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBattleCleanup">RespondsToPreBattleCleanup()</h4>
+  <div class="markdown level1 summary"><p>Override this to indicate if this boon needs to take an action at the end of battle <strong>before</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardPreDeath(CardSlot deathSlot, bool fromCombat, PlayableCard killer)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool RespondsToPreBattleCleanup()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">deathSlot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">fromCombat</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -2128,71 +587,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if the boon wants to respond, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardResolve_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardResolve(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L154">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L121">View Source</a>
   </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardResolve_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardResolve*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToOtherCardResolve_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToOtherCardResolve(DiskCardGame.PlayableCard)">RespondToOtherCardResolve(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBoonActivation*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondsToPreBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondsToPreBoonActivation">RespondsToPreBoonActivation()</h4>
+  <div class="markdown level1 summary"><p>Override this to indicate if this boon needs to take an action at the beginning of battle <strong>before</strong> vanilla boons activate</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToOtherCardResolve(PlayableCard otherCard)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">otherCard</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPlayFromHand.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPlayFromHand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L144">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPlayFromHand_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPlayFromHand*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPlayFromHand" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPlayFromHand">RespondToPlayFromHand()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPlayFromHand()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool RespondsToPreBoonActivation()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2205,427 +619,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPostBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPostBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L118">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPostBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPostBattleCleanup*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPostBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPostBattleCleanup">RespondToPostBattleCleanup()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPostBattleCleanup()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPostBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPostBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L98">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPostBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPostBoonActivation*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPostBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPostBoonActivation">RespondToPostBoonActivation()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPostBoonActivation()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPreBattleCleanup.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPreBattleCleanup%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L108">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreBattleCleanup_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreBattleCleanup*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreBattleCleanup" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreBattleCleanup">RespondToPreBattleCleanup()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPreBattleCleanup()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPreBoonActivation.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPreBoonActivation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L88">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreBoonActivation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreBoonActivation*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreBoonActivation" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreBoonActivation">RespondToPreBoonActivation()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPreBoonActivation()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToPreDeathAnimation_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToPreDeathAnimation(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L204">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreDeathAnimation_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreDeathAnimation*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToPreDeathAnimation_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToPreDeathAnimation(System.Boolean)">RespondToPreDeathAnimation(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToPreDeathAnimation(bool wasSacrifice)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrifice</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToResolveOnBoard.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToResolveOnBoard%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L149">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToResolveOnBoard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToResolveOnBoard*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToResolveOnBoard" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToResolveOnBoard">RespondToResolveOnBoard()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToResolveOnBoard()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToSacrifice.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToSacrifice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L164">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToSacrifice_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToSacrifice*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToSacrifice" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToSacrifice">RespondToSacrifice()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToSacrifice()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToSlotTargetedForAttack_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToSlotTargetedForAttack(DiskCardGame.CardSlot%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L169">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToSlotTargetedForAttack_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToSlotTargetedForAttack*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToSlotTargetedForAttack_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToSlotTargetedForAttack(DiskCardGame.CardSlot,DiskCardGame.PlayableCard)">RespondToSlotTargetedForAttack(CardSlot, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToSlotTargetedForAttack(CardSlot slot, PlayableCard attacker)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">slot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToTakeDamage_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToTakeDamage(DiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L179">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToTakeDamage_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToTakeDamage*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToTakeDamage_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToTakeDamage(DiskCardGame.PlayableCard)">RespondToTakeDamage(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToTakeDamage(PlayableCard source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToTurnEnd_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToTurnEnd(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L224">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToTurnEnd_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToTurnEnd*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToTurnEnd_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToTurnEnd(System.Boolean)">RespondToTurnEnd(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToTurnEnd(bool playerTurnEnd)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">playerTurnEnd</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_RespondToUpkeep_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.RespondToUpkeep(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L129">View Source</a>
-  </span>
-  <a id="InscryptionAPI_Boons_BoonBehaviour_RespondToUpkeep_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToUpkeep*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonBehaviour_RespondToUpkeep_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonBehaviour.RespondToUpkeep(System.Boolean)">RespondToUpkeep(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RespondToUpkeep(bool playerUpkeep)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">playerUpkeep</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if the boon wants to respond, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2634,11 +629,12 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour_Start.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour.Start%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L19">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L26">View Source</a>
   </span>
   <a id="InscryptionAPI_Boons_BoonBehaviour_Start_" data-uid="InscryptionAPI.Boons.BoonBehaviour.Start*"></a>
   <h4 id="InscryptionAPI_Boons_BoonBehaviour_Start" data-uid="InscryptionAPI.Boons.BoonBehaviour.Start">Start()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fires when the boon behavior starts up</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -2655,7 +651,7 @@
                     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Boons_BoonBehaviour.md&amp;value=---%0Auid%3A%20InscryptionAPI.Boons.BoonBehaviour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Boons/BoonBehaviour.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

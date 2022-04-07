@@ -82,7 +82,8 @@
   
   <h1 id="InscryptionAPI_Card_TribeManager" data-uid="InscryptionAPI.Card.TribeManager" class="text-break">Class TribeManager
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>This class handles the addition of new tribes into the game</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -96,6 +97,10 @@
     <pre><code class="lang-csharp hljs">[HarmonyPatch]
 public class TribeManager</code></pre>
   </div>
+  <h5 id="InscryptionAPI_Card_TribeManager_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This manager can currently handle watermarking cards with tribes and having 
+them appear at tribal choice nodes. Totems are not currently supported.</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -103,11 +108,12 @@ public class TribeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Card_TribeManager_Add_System_String_System_String_System_String_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Card.TribeManager.Add(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L101">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L124">View Source</a>
   </span>
   <a id="InscryptionAPI_Card_TribeManager_Add_" data-uid="InscryptionAPI.Card.TribeManager.Add*"></a>
   <h4 id="InscryptionAPI_Card_TribeManager_Add_System_String_System_String_System_String_System_Boolean_System_String_" data-uid="InscryptionAPI.Card.TribeManager.Add(System.String,System.String,System.String,System.Boolean,System.String)">Add(String, String, String, Boolean, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a new tribe to the game</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -126,22 +132,26 @@ public class TribeManager</code></pre>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">guid</span></td>
-        <td></td>
+        <td><p>The guid of the mod adding the tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">name</span></td>
-        <td></td>
+        <td><p>The name of the tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">pathToTribeIcon</span></td>
-        <td></td>
+        <td><p>Path to the tribal icon that will appear as a watermark on all cards belonging to this tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">appearInTribeChoices</span></td>
-        <td></td>
+        <td><p>Indicates if the card should appear in tribal choice nodes</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
@@ -161,7 +171,8 @@ public class TribeManager</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">DiskCardGame.Tribe</span></td>
-        <td></td>
+        <td><p>The unique identifier for the new tribe</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -170,11 +181,12 @@ public class TribeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Card_TribeManager_Add_System_String_System_String_UnityEngine_Texture2D_System_Boolean_UnityEngine_Texture2D_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Card.TribeManager.Add(System.String%2CSystem.String%2CUnityEngine.Texture2D%2CSystem.Boolean%2CUnityEngine.Texture2D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L93">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L107">View Source</a>
   </span>
   <a id="InscryptionAPI_Card_TribeManager_Add_" data-uid="InscryptionAPI.Card.TribeManager.Add*"></a>
   <h4 id="InscryptionAPI_Card_TribeManager_Add_System_String_System_String_UnityEngine_Texture2D_System_Boolean_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.TribeManager.Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)">Add(String, String, Texture2D, Boolean, Texture2D)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a new tribe to the game</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -193,27 +205,32 @@ public class TribeManager</code></pre>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">guid</span></td>
-        <td></td>
+        <td><p>The guid of the mod adding the tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">name</span></td>
-        <td></td>
+        <td><p>The name of the tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
         <td><span class="parametername">tribeIcon</span></td>
-        <td></td>
+        <td><p>The tribal icon that will appear as a watermark on all cards belonging to this tribe</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">appearInTribeChoices</span></td>
-        <td></td>
+        <td><p>Indicates if the card should appear in tribal choice nodes</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
         <td><span class="parametername">choiceCardbackTexture</span></td>
-        <td></td>
+        <td><p>The card back texture to display if the card should appear in tribal choice nodes</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -228,7 +245,8 @@ public class TribeManager</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">DiskCardGame.Tribe</span></td>
-        <td></td>
+        <td><p>The unique identifier for the new tribe</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -243,7 +261,7 @@ public class TribeManager</code></pre>
                     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Card_TribeManager.md&amp;value=---%0Auid%3A%20InscryptionAPI.Card.TribeManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Card/TribeManager.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
