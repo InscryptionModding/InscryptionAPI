@@ -18,10 +18,14 @@ internal static class CustomTriggerPatches
 
     public static void UpdateAllCards()
     {
-        var cardsInHandAndBoard = BoardManager.Instance.CardsOnBoard.Concat(PlayerHand.Instance.CardsInHand).ToList();
+        var cardsInHandAndBoard
+            = BoardManager.Instance.CardsOnBoard
+                .Concat(PlayerHand.Instance.CardsInHand)
+                .Where(card => !card.Dead)
+                .ToList();
         foreach (PlayableCard playableCard in cardsInHandAndBoard)
         {
-            if (playableCard.OnBoard && playableCard.GetComponent<VariableStatBehaviour>())
+            if (playableCard.GetComponent<VariableStatBehaviour>())
             {
                 playableCard.GetComponent<VariableStatBehaviour>().UpdateStats();
             }
