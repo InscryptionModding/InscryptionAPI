@@ -25,11 +25,11 @@ internal static class CustomTriggerPatches
                 .ToList();
         foreach (PlayableCard playableCard in cardsInHandAndBoard)
         {
+            OriginalManagedUpdate(playableCard);
             if (playableCard.GetComponent<VariableStatBehaviour>())
             {
                 playableCard.GetComponent<VariableStatBehaviour>().UpdateStats();
             }
-            OriginalManagedUpdate(playableCard);
         }
     }
         
