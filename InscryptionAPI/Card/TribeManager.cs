@@ -6,14 +6,19 @@ using InscryptionAPI.Helpers;
 
 namespace InscryptionAPI.Card
 {
+    /// <summary>
+    /// This class handles the addition of new tribes into the game
+    /// </summary>
+    /// <remarks>This manager can currently handle watermarking cards with tribes and having 
+    /// them appear at tribal choice nodes. Totems are not currently supported.</remarks>
     [HarmonyPatch]
     public class TribeManager
     {
         private static readonly List<TribeInfo> tribes = new();
 
-        [HarmonyPatch(typeof(CardDisplayer3D), "UpdateTribeIcon")]
+        [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
         [HarmonyPostfix]
-        public static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
+        private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
         {
             foreach (TribeInfo tribe in tribes)
             {
@@ -43,19 +48,19 @@ namespace InscryptionAPI.Card
             }
         }
 
-        [HarmonyPatch(typeof(CardSingleChoicesSequencer), "GetCardbackTexture")]
+        [HarmonyPatch(typeof(CardSingleChoicesSequencer), nameof(CardSingleChoicesSequencer.GetCardbackTexture))]
         [HarmonyPostfix]
-        public static void GetCardbackTexture(ref Texture __result, CardChoice choice)
+        private static void GetCardbackTexture(ref Texture __result, CardChoice choice)
         {
-            if (choice.tribe != Tribe.None)
+            if (choice.tribe != Tribe.None && __result == null)
             {
                 __result = tribes.Find((x) => x.tribe == choice.tribe).cardback;
             }
         }
 
-        [HarmonyPatch(typeof(Part1CardChoiceGenerator), "GenerateTribeChoices")]
+        [HarmonyPatch(typeof(Part1CardChoiceGenerator), nameof(Part1CardChoiceGenerator.GenerateTribeChoices))]
         [HarmonyPrefix]
-        public static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
+        private static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
         {
             List<Tribe> list = new()
             {
@@ -90,6 +95,15 @@ namespace InscryptionAPI.Card
             return false;
         }
 
+        /// <summary>
+        /// Adds a new tribe to the game
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the tribe</param>
+        /// <param name="name">The name of the tribe</param>
+        /// <param name="tribeIcon">The tribal icon that will appear as a watermark on all cards belonging to this tribe</param>
+        /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes</param>
+        /// <param name="choiceCardbackTexture">The card back texture to display if the card should appear in tribal choice nodes</param>
+        /// <returns>The unique identifier for the new tribe</returns>
         public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
         {
             Tribe tribe = GuidManager.GetEnumValue<Tribe>(guid, name);
@@ -98,6 +112,15 @@ namespace InscryptionAPI.Card
             return tribe;
         }
 
+        /// <summary>
+        /// Adds a new tribe to the game
+        /// </summary>
+        /// <param name="guid">The guid of the mod adding the tribe</param>
+        /// <param name="name">The name of the tribe</param>
+        /// <param name="pathToTribeIcon">Path to the tribal icon that will appear as a watermark on all cards belonging to this tribe</param>
+        /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes</param>
+        /// <param name="pathToChoiceCardbackTexture">Path to the card back texture to display if the card should appear in tribal choice nodes</param>
+        /// <returns>The unique identifier for the new tribe</returns>
         public static Tribe Add(string guid, string name, string pathToTribeIcon = null, bool appearInTribeChoices = false, string pathToChoiceCardBackTexture = null)
         {
             // Reason for 'is not null' is because if we pass 'null' to GetImageAsTexture, It will thorw an exception.

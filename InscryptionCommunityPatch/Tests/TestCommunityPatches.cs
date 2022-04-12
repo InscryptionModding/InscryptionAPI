@@ -2,29 +2,38 @@ using HarmonyLib;
 using DiskCardGame;
 using InscryptionAPI.Card;
 using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Boons;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Tests;
 
 [HarmonyPatch]
 public static class ExecuteCommunityPatchTests
 {
+    public static BoonData.Type TestBoon;
+
     public static void PrepareForTests()
     {
         AbilityManager.BaseGameAbilities.AbilityByID(Ability.Sharp).Info.canStack = true;
         AbilityManager.BaseGameAbilities.AbilityByID(Ability.BuffNeighbours).Info.canStack = true;
         AbilityManager.BaseGameAbilities.AbilityByID(Ability.RandomConsumable).Info.canStack = true;
+
+        // Creates a boon
+        TestBoon = BoonManager.New(PatchPlugin.ModGUID, "Sacrificial Squirrels", typeof(SacrificeSquirrels), 
+        "Squirrels are super OP now", Resources.Load<Texture2D>("art/cards/abilityicons/ability_drawcopyondeath"),
+        Resources.Load<Texture2D>("art/cards/boons/boonportraits/boon_startinggoat"), false, true, true);
     }
 
     [HarmonyPatch(typeof(AscensionSaveData), nameof(AscensionSaveData.NewRun))]
     [HarmonyPostfix]
-    public static void StartRunInTestMode(ref AscensionSaveData __instance)
+    private static void StartRunInTestMode(ref AscensionSaveData __instance)
     {
         if (PatchPlugin.configTestState.Value)
         {
             List<Ability> testAbilityList = new() { Ability.Sharp, Ability.DebuffEnemy, Ability.CreateDams, Ability.DrawRabbits, Ability.Strafe, Ability.Deathtouch, Ability.DoubleStrike, Ability.Reach, Ability.BeesOnHit };
 
             // This tests how cardmerge abilities work and tests abilities beyond 2
-            for (int i = 1; i < 9; i++)
+            for (int i = 2; i < 4; i++)
             {
                 CardInfo cardToAdd = CardLoader.GetCardByName("Rabbit");
                 CardModificationInfo mod = new();
@@ -41,7 +50,7 @@ public static class ExecuteCommunityPatchTests
 
             // This tests stackable icons
             // We need to make these abilities stackable to make it work of course
-            for (int i = 1; i <= 9; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 CardInfo cardToAdd = CardLoader.GetCardByName("Rabbit");
                 CardModificationInfo mod = new();
@@ -57,21 +66,7 @@ public static class ExecuteCommunityPatchTests
                 __instance.currentRun.playerDeck.AddCard(cardToAdd);
             }
 
-            // Test all of the new icon artworks
-            List<Ability> iconsToTest = new(CommunityArtPatches.regularIconsToPatch);
-            while(iconsToTest.Count > 0)
-            {
-                CardInfo cardToAdd = CardLoader.GetCardByName("Rabbit");
-                CardModificationInfo mod = new();
-                mod.abilities = new();
-                while(mod.abilities.Count < 6 && iconsToTest.Count > 0)
-                {
-                    mod.abilities.Add(iconsToTest[0]);
-                    iconsToTest.RemoveAt(0);
-                }
-                cardToAdd.mods.Add(mod);
-                __instance.currentRun.playerDeck.AddCard(cardToAdd);
-            }
+            __instance.currentRun.playerDeck.AddBoon(TestBoon);
         }
     }
 }

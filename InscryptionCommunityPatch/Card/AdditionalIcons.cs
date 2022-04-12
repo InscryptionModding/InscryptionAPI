@@ -383,7 +383,7 @@ public class RenderAdditionalSigils
 
     [HarmonyPatch(typeof(DiskCardGame.Card), "RenderCard")]
     [HarmonyPrefix]
-    public static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
+    private static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
         if (cardBase != null)
@@ -399,7 +399,7 @@ public class RenderAdditionalSigils
 
     [HarmonyPatch(typeof(CardDisplayer3D), "DisplayInfo")]
     [HarmonyPrefix]
-    public static void UpdateCardDisplayer(ref CardDisplayer3D __instance)
+    private static void UpdateCardDisplayer(ref CardDisplayer3D __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
         if (cardBase != null)
@@ -415,7 +415,7 @@ public class RenderAdditionalSigils
 
     [HarmonyPatch(typeof(CardRenderCamera), "LiveRenderCard")]
     [HarmonyPrefix]
-    public static void UpdateCamera(ref CardRenderCamera __instance)
+    private static void UpdateCamera(ref CardRenderCamera __instance)
     {
         Transform cardBase = Find(__instance.gameObject.transform);
         if (cardBase != null)

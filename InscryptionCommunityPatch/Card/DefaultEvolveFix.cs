@@ -10,7 +10,7 @@ public class DefaultEvolveFix
 {
     [HarmonyILManipulator]
     [HarmonyPatch(typeof(EvolveParams), nameof(EvolveParams.GetDefaultEvolution))]
-    public static void FixDefaultEvolveParamsIL(ILContext il)
+    private static void FixDefaultEvolveParamsIL(ILContext il)
     {
         ILCursor c = new(il);
 

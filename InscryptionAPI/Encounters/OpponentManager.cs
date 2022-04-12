@@ -71,7 +71,7 @@ public static class OpponentManager
 
     [HarmonyPatch(typeof(Opponent), nameof(Opponent.SpawnOpponent))]
     [HarmonyPrefix]
-    public static bool ReplaceSpawnOpponent(EncounterData encounterData, ref Opponent __result)
+    private static bool ReplaceSpawnOpponent(EncounterData encounterData, ref Opponent __result)
     {
         if (encounterData.opponentType == Opponent.Type.Default || !ProgressionData.LearnedMechanic(MechanicsConcept.OpponentQueue))
             return true; // For default opponents or if we're in the tutorial, just let the base game logic flow
@@ -102,7 +102,7 @@ public static class OpponentManager
 
     [HarmonyPatch(typeof(BossBattleSequencer), nameof(BossBattleSequencer.GetSequencerIdForBoss))]
     [HarmonyPrefix]
-    public static bool ReplaceGetSequencerId(Opponent.Type bossType, ref string __result)
+    private static bool ReplaceGetSequencerId(Opponent.Type bossType, ref string __result)
     {
         __result = AllOpponents.First(o => o.Id == bossType).SpecialSequencerId;
         return false;
@@ -110,7 +110,7 @@ public static class OpponentManager
 
     [HarmonyPatch(typeof(BossBattleNodeData), nameof(BossBattleNodeData.PrefabPath), MethodType.Getter)]
     [HarmonyPrefix]
-    public static bool ReplacePrefabPath(ref string __result, Opponent.Type ___bossType)
+    private static bool ReplacePrefabPath(ref string __result, Opponent.Type ___bossType)
     {
         GameObject obj = ResourceBank.Get<GameObject>("Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType);
         if (obj != null)

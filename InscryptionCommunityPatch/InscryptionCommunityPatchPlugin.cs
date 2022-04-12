@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 namespace InscryptionCommunityPatch;
 
 [BepInPlugin(ModGUID, ModName, ModVer)]
-[HarmonyPatch]
+[BepInDependency("cyantist.inscryption.api")]
 public class PatchPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "community.inscryption.patch";
@@ -44,7 +44,7 @@ public class PatchPlugin : BaseUnityPlugin
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
 
-    public void OnEnable()
+    private void OnEnable()
     {
         Logger = base.Logger;
 
@@ -57,12 +57,12 @@ public class PatchPlugin : BaseUnityPlugin
         CommunityArtPatches.PatchCommunityArt();
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         HarmonyInstance.UnpatchSelf();
     }
 
-    public void Awake()
+    private void Awake()
     {
         Instance = this;
         configEnergy = Config.Bind("Energy","Energy Refresh",true,"Max energy increases and energy refreshes at end of turn");
@@ -75,10 +75,10 @@ public class PatchPlugin : BaseUnityPlugin
 		configRemovePatches = Config.Bind("Sigil Display", "Remove_Patches", false, "Makes it so if enabled, merged sigils will not have a patch behind them anymore and will instead be glowing yellow (only works with Merge_On_Bottom).");
         act2StackIconType = Config.Bind("Sigil Display", "Act 2 Sigil icon type", true, "If true, stacking icons are a cream outline with a black center. If false, stacking icons are a black outline with a cream center. Act 2");
 
-        configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");        
+        configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         EnergyDrone.TryEnableEnergy(scene.name);
     }

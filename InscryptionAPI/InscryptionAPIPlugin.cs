@@ -50,14 +50,14 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         ScriptableObjectLoaderLoad?.Invoke(type);
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         Logger = base.Logger;
 
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         HarmonyInstance.UnpatchSelf();
     }
@@ -70,7 +70,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         RegionManager.SyncRegionList();
     }
 
-    public void Start()
+    private void Start()
     {
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();

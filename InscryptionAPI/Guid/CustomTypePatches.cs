@@ -77,7 +77,7 @@ public static class TypeManager
 
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
     [HarmonyPrefix]
-    public static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
+    private static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"Trying to get type for {nameSpace}.{typeName}");
 
