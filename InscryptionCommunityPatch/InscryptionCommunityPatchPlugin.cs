@@ -76,8 +76,6 @@ public class PatchPlugin : BaseUnityPlugin
         act2StackIconType = Config.Bind("Sigil Display", "Act 2 Sigil icon type", true, "If true, stacking icons are a cream outline with a black center. If false, stacking icons are a black outline with a cream center. Act 2");
 
         configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");
-
-        PassiveAttackBuffPatches.CacheLookups();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
