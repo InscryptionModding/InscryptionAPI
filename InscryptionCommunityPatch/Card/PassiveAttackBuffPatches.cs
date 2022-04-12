@@ -11,9 +11,9 @@ public static class PassiveAttackBuffPatches
     private static int AbilityCount (this PlayableCard card, Ability ability)
     {
         int count = 0;
-        count += card.Info.Abilities.Where(a => a == ability).Count();
-        count += AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods).Where(a => a == ability).Count();
-        count -= card.TemporaryMods.SelectMany(m => m.negateAbilities).Where(a => a == ability).Count();
+        count += card.Info.Abilities.Count(a => a == ability);
+        count += AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods).Count(a => a == ability);
+        count -= card.TemporaryMods.SelectMany(m => m.negateAbilities).Count(a => a == ability);
         if (AbilitiesUtil.GetInfo(ability).canStack)
             return count;
         else
