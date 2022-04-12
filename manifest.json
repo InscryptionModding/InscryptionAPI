@@ -306,18 +306,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html",
-          "hash": "X95HeN7FfAR7DwE8kommAspFwq+UJN6HtujmcoL/4rQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.yml",
       "output": {
         ".html": {
@@ -394,7 +382,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "FvU2fG+uwQxb1Rucku205TUd1sYNpLQij4ZttTIPriA="
+          "hash": "lr/f+3MpHcyuAtAB65IIu/p5z9CXjfqrZFrMdzHTlq0="
         }
       },
       "is_incremental": false,
@@ -1066,7 +1054,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "wga/ThP/gE5rUN5D0mZ0VHa/H0UJjAKqLsZlfRM8qKQ="
+          "hash": "Z0DiFhdhS3Yic3+2ibYw6r9SE5CMmwBcgy1PE5FXxvA="
         }
       },
       "is_incremental": false,
@@ -1129,7 +1117,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 94,
+          "total_file_count": 93,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
