@@ -24,7 +24,7 @@ public static class ActivatedAbilityIconFix
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.OnStatsChanged))]
     private static void FixActivatedAbilitiesOnAnyChange(ref PlayableCard __instance)
     {
-        if (!__instance.HasActivatedAbility())
+        if (SaveManager.SaveFile.IsPart2 || !__instance.HasActivatedAbility())
             return;
 
         ActivatedAbilityHandler3D abilityHandler3D = __instance.GetComponent<ActivatedAbilityHandler3D>();
