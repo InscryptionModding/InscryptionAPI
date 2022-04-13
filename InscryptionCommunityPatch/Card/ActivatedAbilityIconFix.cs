@@ -1,5 +1,7 @@
-using HarmonyLib;
 using DiskCardGame;
+using HarmonyLib;
+using Sirenix.Utilities;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -8,54 +10,38 @@ public static class ActivatedAbilityIconFix
 {
     public static bool HasActivatedAbility(this PlayableCard card)
     {
-        if (!card.Info.Abilities.Exists(elem => AbilitiesUtil.GetInfo(elem).activated))
-        {
-            return card.temporaryMods.Exists(elem => elem.abilities.Exists(elem2 => AbilitiesUtil.GetInfo(elem2).activated));
-        }
+        return card.Info.Abilities.Exists(elem => AbilitiesUtil.GetInfo(elem).activated)
+            || card.temporaryMods.Exists(elem => elem.abilities.Exists(elem2 => AbilitiesUtil.GetInfo(elem2).activated));
 
-        return true;
     }
 
-    [HarmonyPatch(typeof(ActivatedAbilityBehaviour), nameof(ActivatedAbilityBehaviour.RespondsToResolveOnBoard))]
-    [HarmonyPostfix]
+    [HarmonyPostfix, HarmonyPatch(typeof(ActivatedAbilityBehaviour), nameof(ActivatedAbilityBehaviour.RespondsToResolveOnBoard))]
     private static void RespondsToResolveOnBoard_PostFix(ref bool __result)
     {
         __result &= SaveManager.saveFile.IsPart2;
     }
 
-    [HarmonyPatch(typeof(DiskCardGame.Card), nameof(DiskCardGame.Card.UpdateInteractableIcons))]
-    [HarmonyPostfix]
-    private static void UpdateInteractableIcons_PostFix(ref DiskCardGame.Card __instance)
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.OnStatsChanged))]
+    private static void FixActivatedAbilitiesOnAnyChange(ref PlayableCard __instance)
     {
-        if (SaveManager.saveFile.IsPart2 || __instance is not PlayableCard card || !card.HasActivatedAbility())
+        if (!__instance.HasActivatedAbility())
             return;
 
-        var abilityHandler = __instance.gameObject.GetComponent<ActivatedAbilityHandler3D>();
+        ActivatedAbilityHandler3D abilityHandler3D = __instance.GetComponent<ActivatedAbilityHandler3D>();
 
-        if (abilityHandler is null)
+        // at least 1 group will always be active
+        GameObject activeDefaultIconGroup = __instance.AbilityIcons.defaultIconGroups.Find(group => group.activeInHierarchy);
+
+        if (abilityHandler3D.SafeIsUnityNull())
         {
-            abilityHandler = __instance.gameObject.AddComponent<ActivatedAbilityHandler3D>();
-            abilityHandler.SetCard(__instance as PlayableCard);
+            PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] Adding activated ability handler to card [{__instance.Info.displayedName}]");
+            abilityHandler3D = __instance.gameObject.AddComponent<ActivatedAbilityHandler3D>();
         }
 
-        var abilityIcons = __instance.gameObject.GetComponentsInChildren<AbilityIconInteractable>().Where(elem => AbilitiesUtil.GetInfo(elem.Ability).activated).ToList();
-
-        var activatedAbilityComponents = __instance.gameObject.GetComponentsInChildren<ActivatedAbilityIconInteractable>(true).ToList();
-
-        if (abilityIcons.Count() == activatedAbilityComponents.Count())
-            return;
-
-        abilityIcons.RemoveAll(elem => activatedAbilityComponents.Exists(elem2 => elem.Ability == elem2.Ability));
-
-        foreach (var icon in abilityIcons)
+        if (abilityHandler3D.currentIconGroup != activeDefaultIconGroup)
         {
-            var go = icon.gameObject;
-            go.layer = 0;
-
-            var interactable = go.AddComponent<ActivatedAbilityIconInteractable>();
-            interactable.AssigneAbility(icon.Ability);
-
-            abilityHandler.AddInteractable(interactable);
+            PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] -> Need to reassign activated ability list as icon list has changed for card [{__instance.Info.displayedName}]");
+            abilityHandler3D.UpdateInteractableList(activeDefaultIconGroup);
         }
     }
 }
