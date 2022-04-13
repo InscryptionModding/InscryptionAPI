@@ -12,7 +12,7 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable
 
     private PlayableCard _playableCard;
 
-    private bool CanPress =>
+    private bool CanActivate =>
         TurnManager.Instance
         && TurnManager.Instance.IsPlayerMainPhase
         && IsValidPlayableCard
@@ -47,7 +47,7 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable
 
     private void OnButtonPressed()
     {
-        if (CanPress)
+        if (CanActivate)
         {
             CustomCoroutine.Instance.StartCoroutine(_playableCard.TriggerHandler.OnTrigger(Trigger.ActivatedAbility, Ability));
         }
