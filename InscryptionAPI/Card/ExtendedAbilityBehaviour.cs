@@ -32,8 +32,11 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
 
         foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
         {
-            alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
-            removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
+            if (component.RespondsToGetOpposingSlots())
+            {
+                alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
+                removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
+            }
         }
         
         if (alteredOpposings.Count > 0) 
