@@ -1,54 +1,52 @@
-using UnityEngine;
-
 using DiskCardGame;
+using HarmonyLib;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
 public class ActivatedAbilityHandler3D : ManagedBehaviour
 {
-    private readonly List<ActivatedAbilityIconInteractable> interactables = new();
+    public GameObject currentIconGroup;
+    
+    public List<ActivatedAbilityIconInteractable> interactables = new();
 
-    private PlayableCard playableCard;
-
-    private bool CanPress
-    {
-        get
-        {
-            return TurnManager.Instance != null && this.playableCard != null && this.playableCard.OnBoard && this.playableCard.slot.IsPlayerSlot && !BoardManager.Instance.ChoosingSacrifices && !BoardManager.Instance.ChoosingSlot && TurnManager.Instance.IsPlayerMainPhase && GlobalTriggerHandler.Instance.StackSize == 0;
-        }
-    }
-
-    //TODO: fix this to work with multiple
     public void AddInteractable(ActivatedAbilityIconInteractable interactable)
     {
-        this.interactables.Add(interactable);
-
-        interactable.CursorSelectEnded = (Action<MainInputInteractable>) Delegate.Combine(interactable.CursorSelectEnded, new Action<MainInputInteractable>(
-            delegate (MainInputInteractable i)
-        {
-            if (this.CanPress && i is ActivatedAbilityIconInteractable icon)
-                this.OnButtonPressed(icon.Ability);
-        }));
+        interactables.Add(interactable);
     }
 
-    public void SetCard(PlayableCard card)
+    public void UpdateInteractableList(GameObject defaultIconGroup)
     {
-        this.playableCard = card;
+        interactables.Clear();
+        currentIconGroup = defaultIconGroup;
+        currentIconGroup
+            .GetComponentsInChildren<AbilityIconInteractable>()
+            .Where(elem => AbilitiesUtil.GetInfo(elem.Ability).activated)
+            .Do(abIcon =>
+            {
+                if (abIcon.GetComponent<ActivatedAbilityIconInteractable>())
+                {
+                    AddInteractable(abIcon.GetComponent<ActivatedAbilityIconInteractable>());
+                }
+                else
+                {
+                    var go = abIcon.gameObject;
+                    go.layer = 0;
+
+                    var interactable = go.AddComponent<ActivatedAbilityIconInteractable>();
+                    interactable.AssignAbility(abIcon.Ability);
+
+                    AddInteractable(interactable);
+                }
+            });
+        PatchPlugin.Logger.LogDebug($"[Handler3D] Updated interactable list: [{interactables.Join(interactable => $"GO [{interactable.gameObject}] Ability [{interactable.Ability}]")}]");
     }
 
     public void OnDestroy()
     {
-        foreach(var interactable in this.interactables)
+        foreach(var interactable in interactables)
         {
-            GameObject.Destroy(interactable);
+            Destroy(interactable);
         }
-    }
-
-    private void OnButtonPressed(Ability ability)
-    {
-        CustomCoroutine.Instance.StartCoroutine(this.playableCard.TriggerHandler.OnTrigger(Trigger.ActivatedAbility, new object[]
-        {
-            ability
-        }));
     }
 }

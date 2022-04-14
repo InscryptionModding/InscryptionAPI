@@ -1,36 +1,67 @@
-using UnityEngine;
 using DiskCardGame;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
 public class ActivatedAbilityIconInteractable : MainInputInteractable
 {
-    private Color originalColor;
-    private Color enterColor = new(.7f, .7f, .7f, .7f);
-    private Color selectedColor = new(.4f, .4f, .4f, .4f);
+    private Material _renderMaterial;
+    private Color _originalColor;
+    private readonly Color _enterColor = new(.7f, .7f, .7f, .7f);
+    private readonly Color _selectedColor = new(.4f, .4f, .4f, .4f);
 
-    public bool AbilityAssigned { get => this.Ability > Ability.None; }
+    private PlayableCard _playableCard;
+
+    private bool CanActivate =>
+        TurnManager.Instance
+        && TurnManager.Instance.IsPlayerMainPhase
+        && IsValidPlayableCard
+        && !BoardManager.Instance.ChoosingSacrifices
+        && !BoardManager.Instance.ChoosingSlot
+        && GlobalTriggerHandler.Instance.StackSize == 0;
+
+    private void Start()
+    {
+        _playableCard = GetComponentInParent<PlayableCard>();
+    }
+
+    private bool IsValidPlayableCard => _playableCard && _playableCard.OnBoard && !_playableCard.OpponentCard;
+
+    public bool AbilityAssigned => Ability > Ability.None;
 
     public Ability Ability { get; private set; }
 
-    public void AssigneAbility(Ability ability)
+    public void AssignAbility(Ability ability)
     {
-        this.Ability = ability;
-        this.originalColor = base.GetComponent<Renderer>().material.color;
+        Ability = ability;
+        _renderMaterial = GetComponent<Renderer>().material;
+        _originalColor = _renderMaterial.color;
+        CursorSelectEnded = (Action<MainInputInteractable>)Delegate.Combine(
+            CursorSelectEnded,
+            (Action<MainInputInteractable>)delegate
+            {
+                OnButtonPressed();
+            }
+        );
     }
 
-    public void SetColor(Color color)
+    private void OnButtonPressed()
     {
-        base.GetComponent<Renderer>().material.color = color;
+        if (CanActivate)
+        {
+            CustomCoroutine.Instance.StartCoroutine(_playableCard.TriggerHandler.OnTrigger(Trigger.ActivatedAbility, Ability));
+        }
     }
 
-    public override void OnCursorEnter() => this.SetColor(enterColor);
+    public void SetColor(Color color) => _renderMaterial.color = color;
 
-    public override void OnCursorExit() => this.SetColor(originalColor);
+    public override void OnCursorEnter() => SetColor(_enterColor);
 
-    public override void OnCursorSelectStart() => this.SetColor(selectedColor);
+    public override void OnCursorExit() => SetColor(_originalColor);
 
-    public override void OnCursorSelectEnd() => this.SetColor(originalColor);
+    public override void OnCursorSelectStart() => SetColor(_selectedColor);
 
-    public override void OnCursorDrag() => this.SetColor(originalColor);
+    public override void OnCursorSelectEnd() => SetColor(_originalColor);
+
+    public override void OnCursorDrag() => SetColor(_originalColor);
 }
