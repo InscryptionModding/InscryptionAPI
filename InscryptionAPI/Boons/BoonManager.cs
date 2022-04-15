@@ -175,6 +175,10 @@ namespace InscryptionAPI.Boons
                     if (boon != null)
                     {
                         FullBoon nb = NewBoons.ToList().Find((x) => x.boon.type == boon.type);
+
+                        if (nb == null)
+                            continue;
+
                         int instances = BoonBehaviour.CountInstancesOfType(nb.boon.type);
                         if (nb != null && nb.boonHandlerType != null && nb.boonHandlerType.IsSubclassOf(typeof(BoonBehaviour)) && (nb.stacks || instances < 1))
                         {
