@@ -99,13 +99,268 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(IEnumerable%7BDiskCardGame.CardSlot%7D%2CPredicate%7BDiskCardGame.PlayableCard%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot(DiskCardGame.CardSlot%2CDiskCardGame.PlayableCard%2CSystem.Single%2CAction%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L13">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L57">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">AssignCardToSlot(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Assign a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.AssignCardToSlot()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator AssignCardToSlot(this CardSlot slotToSpawnIn, PlayableCard playableCard, float transitionDuration = 0.1F, Action tweenCompleteCallback = null, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">transitionDuration</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">tweenCompleteCallback</span></td>
+        <td><p>An action to do after the assignment has completed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate the &apos;Trigger.OtherCardAssignedToSlot&apos; for the cards on board.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_DiskCardGame_CardSlot_DiskCardGame_CardInfo_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot(DiskCardGame.CardSlot%2CDiskCardGame.CardInfo%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L38">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_DiskCardGame_CardSlot_DiskCardGame_CardInfo_System_Single_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot(DiskCardGame.CardSlot,DiskCardGame.CardInfo,System.Single,System.Boolean)">CreateCardInSlot(CardSlot, CardInfo, Single, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create a card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.CreateCardInSlot()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator CreateCardInSlot(this CardSlot slotToSpawnIn, CardInfo cardInfo, float transitionLength = 0.1F, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">cardInfo</span></td>
+        <td><p>The CardInfo object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">transitionLength</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_DiskCardGame_CardSlot_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent(DiskCardGame.CardSlot%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L108">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent(DiskCardGame.CardSlot,System.Boolean)">GetAdjacent(CardSlot, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardSlot GetAdjacent(this CardSlot cardSlot, bool adjacentOnLeft)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot that is being accessed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">adjacentOnLeft</span></td>
+        <td><p>Whether or not to retrieve the slot on the left.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><p>The list of card slots that is to the left and to the right. Results can be null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_DiskCardGame_CardSlot_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(DiskCardGame.CardSlot%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L97">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(DiskCardGame.CardSlot,System.Boolean)">GetAdjacentSlots(CardSlot, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;CardSlot&gt; GetAdjacentSlots(this CardSlot cardSlot, bool removeNulls = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot that is being accessed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">removeNulls</span></td>
+        <td><p>If true, remove slots that are null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><p>The list of card slots that is to the left and to the right.
+Results can be null unless removeNulls parameter is set to true.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable%7BDiskCardGame.CardSlot%7D%2CPredicate%7BDiskCardGame.PlayableCard%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L119">View Source</a>
   </span>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})">GetCards(IEnumerable&lt;CardSlot&gt;, Predicate&lt;PlayableCard&gt;)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})">GetCards(IEnumerable&lt;CardSlot&gt;, Predicate&lt;PlayableCard&gt;)</h4>
   <div class="markdown level1 summary"><p>Retrieve all the PlayableCard objects from the collection of slots provided.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -124,7 +379,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
         <td><span class="parametername">slots</span></td>
         <td><p>Collection of CardSlots</p>
 </td>
@@ -155,13 +410,120 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(IEnumerable%7BDiskCardGame.CardSlot%7D%2CPredicate%7BDiskCardGame.CardSlot%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_DiskCardGame_CardSlot_System_String_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(DiskCardGame.CardSlot%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L27">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L25">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_DiskCardGame_CardSlot_System_String_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(DiskCardGame.CardSlot,System.String)">HasCard(CardSlot, String)</h4>
+  <div class="markdown level1 summary"><p>Check if the card in the slot has a specific card name.
+This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinct attribute to check the card against.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasCard(this CardSlot cardSlot, string cardName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot to check.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">cardName</span></td>
+        <td><p>The name of the card check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>true if the slot has a card and that card has the specific cardName.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_DiskCardGame_CardSlot_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot(DiskCardGame.CardSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L13">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot(DiskCardGame.CardSlot)">IsOpponentSlot(CardSlot)</h4>
+  <div class="markdown level1 summary"><p>Check if the slot is an opponent&apos;s slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsOpponentSlot(this CardSlot cardSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>true if the slot is not a player slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable%7BDiskCardGame.CardSlot%7D%2CPredicate%7BDiskCardGame.CardSlot%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L133">View Source</a>
   </span>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})">OpenSlots(IEnumerable&lt;CardSlot&gt;, Predicate&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})">OpenSlots(IEnumerable&lt;CardSlot&gt;, Predicate&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"><p>Retrieve all the CardSlot objects that are not occupied by a PlayableCard object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -180,7 +542,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
         <td><span class="parametername">slots</span></td>
         <td><p>Collection of CardSlots</p>
 </td>
@@ -209,6 +571,80 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(DiskCardGame.CardSlot%2CDiskCardGame.PlayableCard%2CSystem.Single%2CAction%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L77">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">ResolveCardOnBoard(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Resolve a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.ResolveCardOnBoard()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator ResolveCardOnBoard(this CardSlot slotToSpawnIn, PlayableCard playableCard, float tweenLength = 0.1F, Action landOnBoardCallback = null, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><span class="parametername">tweenLength</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">landOnBoardCallback</span></td>
+        <td><p>An action to do after the assignment has completed, but before &apos;ResolveOnBoard&apos; triggers.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -220,7 +656,7 @@
                     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Helpers_Extensions_CardSlotExtensions.md&amp;value=---%0Auid%3A%20InscryptionAPI.Helpers.Extensions.CardSlotExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Helpers/Extensions/CardSlotExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
