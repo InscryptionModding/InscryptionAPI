@@ -1081,7 +1081,19 @@ public static class CardExtensions
         return !cardInfo.HasAbility(ability);
     }
 
-
+    /// <summary>
+    /// Check the CardInfo having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="ability">The specialTriggeredAbility to check for.</param>
+    /// <returns>true if the specialTriggeredAbility does exist.</returns>
+    public static bool HasSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
+    {
+        return cardInfo.SpecialAbilities.Contains(ability);
+    }
+    
     /// <summary>
     /// Check the CardInfo not having a specific Ability.
     /// </summary>
@@ -1090,7 +1102,7 @@ public static class CardExtensions
     /// <returns>true if the specialTriggeredAbility does not exist.</returns>
     public static bool DoesNotHaveSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
     {
-        return !cardInfo.SpecialAbilities.Contains(ability);
+        return !cardInfo.HasSpecialAbility(ability);
     }
 
     /// <summary>
