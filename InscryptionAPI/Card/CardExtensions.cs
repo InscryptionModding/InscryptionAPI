@@ -1159,7 +1159,7 @@ public static class CardExtensions
     /// <returns>true if the specialTriggeredAbility does exist</returns>
     public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
-        return playableCard.Info.SpecialAbilities.Contains(ability);
+        return playableCard.Info.HasSpecialAbility(ability);
     }
 
     #endregion
