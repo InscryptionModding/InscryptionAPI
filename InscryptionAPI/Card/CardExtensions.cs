@@ -1,3 +1,4 @@
+using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
@@ -1125,6 +1126,16 @@ public static class CardExtensions
     public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe)
     {
         return !cardInfo.IsOfTribe(tribe);
+    }
+
+    /// <summary>
+    /// Spawn the CardInfo object to the player's hand.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <returns>The enumeration of the card being placed in the player's hand.</returns>
+    public static IEnumerator SpawnInHand(this CardInfo cardInfo)
+    {
+        yield return CardSpawner.Instance.SpawnCardToHand(cardInfo);
     }
 
     #region PlayableCard
