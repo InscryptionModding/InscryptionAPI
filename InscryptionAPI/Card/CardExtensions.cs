@@ -1104,12 +1104,81 @@ public static class CardExtensions
     {
         return !cardInfo.HasSpecialAbility(ability);
     }
+    
+    /// <summary>
+    /// Check the CardInfo not having a specific Trait.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="trait">The specialTriggeredAbility to check for.</param>
+    /// <returns>true if the card is does not have the specified trait.</returns>
+    public static bool DoesNotHaveTrait(this CardInfo cardInfo, Trait trait)
+    {
+        return !cardInfo.HasTrait(trait);
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not being of a specific Tribe.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe)
+    {
+        return !cardInfo.IsOfTribe(tribe);
+    }
 
+    #region PlayableCard
+
+    
+    /// <summary>
+    /// Checks if the card has a specific Trait.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="trait">The trait to check for.</param>
+    /// <returns>true if the card has the specified trait.</returns>
+    public static bool HasTrait(this PlayableCard playableCard, Trait trait)
+    {
+        return playableCard.Info.HasTrait(trait);
+    }
+    
+    /// <summary>
+    /// Checks if the card has a specific Trait.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="trait">The trait to check for.</param>
+    /// <returns>true if the card does not have the specified trait.</returns>
+    public static bool DoesNotHaveTrait(this PlayableCard playableCard, Trait trait)
+    {
+        return playableCard.Info.HasTrait(trait);
+    }
+    
+    /// <summary>
+    /// Checks if the PlayableCard is of a specified Tribe.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is of the specified tribe.</returns>
+    public static bool IsOfTribe(this PlayableCard playableCard, Tribe tribe)
+    {
+        return playableCard.Info.IsOfTribe(tribe);
+    }
+    
+    /// <summary>
+    /// Checks if the PlayableCard is not of a specified Tribe.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this PlayableCard playableCard, Tribe tribe)
+    {
+        return playableCard.Info.IsNotOfTribe(tribe);
+    }
+    
     /// <summary>
     /// Checks if the card is not dead.
     /// </summary>
     /// <param name="playableCard">PlayableCard to access.</param>
-    /// <returns>true if card is not dead.</returns>
+    /// <returns>true if the card is not dead.</returns>
     public static bool NotDead(this PlayableCard playableCard)
     {
         return playableCard && !playableCard.Dead;
@@ -1161,6 +1230,43 @@ public static class CardExtensions
     {
         return playableCard.Info.HasSpecialAbility(ability);
     }
+
+    /// <summary>
+    /// Check if the PlayableCard has a card opposing it in the opposite slot.
+    ///
+    /// Also acts as a null check if this PlayableCard is in a slot.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>true if a card exists in the opposing slot</returns>
+    public static bool HasOpposingCard(this PlayableCard playableCard)
+    {
+        return playableCard.Slot && playableCard.Slot.opposingSlot.Card;
+    }
+    
+    /// <summary>
+    /// Retrieve the CardSlot object that is opposing this PlayableCard.
+    /// </summary>
+    /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>The card slot opposite of this playableCard, otherwise return null.</returns>
+    public static CardSlot OpposingSlot(this PlayableCard playableCard)
+    {
+        return playableCard.Slot ? playableCard.Slot.opposingSlot : null;
+    }
+    
+    /// <summary>
+    /// Retrieve the PlayableCard that is opposing this PlayableCard in the opposite slot.
+    /// </summary>
+    /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>The card in the opposing slot, otherwise return null.</returns>
+    public static PlayableCard OpposingCard(this PlayableCard playableCard)
+    {
+        return playableCard.OpposingSlot()?.Card;
+    }
+    
+
+    #endregion
 
     #endregion
 
