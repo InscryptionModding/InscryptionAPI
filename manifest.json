@@ -306,6 +306,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html",
+          "hash": "HOnfTa0DDlc6xSYvB7ogjSYM4KLy5ZZf4vbgrlR0oNY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.yml",
       "output": {
         ".html": {
@@ -382,7 +394,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "lr/f+3MpHcyuAtAB65IIu/p5z9CXjfqrZFrMdzHTlq0="
+          "hash": "FvU2fG+uwQxb1Rucku205TUd1sYNpLQij4ZttTIPriA="
         }
       },
       "is_incremental": false,
@@ -858,6 +870,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IGetOpposingSlots.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IGetOpposingSlots.html",
+          "hash": "IfsK9f2f1zleFv8KxaWSuo9XfEQekPpIq6lbRZOdchU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.IOtherAddedToHand.yml",
       "output": {
         ".html": {
@@ -923,6 +947,30 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html",
           "hash": "eEpS2Wh/qgIrKVXxRDHvCPBDUFmvKC7nDKs+yHA/VPg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPassiveAttackBuff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPassiveAttackBuff.html",
+          "hash": "yWeMZo3VVpJv3gdX9B6se1iJGXpi/PO+tGi/1u57cQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPassiveHealthBuff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPassiveHealthBuff.html",
+          "hash": "Mns4Zuv0Wh/P/jxBq8vj9HwrYSpJS8jcB9bk5f5UPQU="
         }
       },
       "is_incremental": false,
@@ -1018,7 +1066,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "j2cRDihlKHSujhc4FJrGazL1KR6CCe+0ObPXE6DvGps="
+          "hash": "PMeUXzcj7hE1b8HBrfJw2xymbyHUah8hd8ZdSBpPAmo="
         }
       },
       "is_incremental": false,
@@ -1054,7 +1102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Z0DiFhdhS3Yic3+2ibYw6r9SE5CMmwBcgy1PE5FXxvA="
+          "hash": "9h5wZMEqi4ERHVbIIvHIbuvVjMjm6QgmTIMvHwB434U="
         }
       },
       "is_incremental": false,
@@ -1117,7 +1165,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 93,
+          "total_file_count": 97,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
