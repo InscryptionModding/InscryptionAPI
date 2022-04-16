@@ -1112,7 +1112,7 @@ public static class CardExtensions
     /// <returns>true if card is not dead.</returns>
     public static bool NotDead(this PlayableCard playableCard)
     {
-        return !playableCard.Dead;
+        return playableCard && !playableCard.Dead;
     }
     
     /// <summary>
