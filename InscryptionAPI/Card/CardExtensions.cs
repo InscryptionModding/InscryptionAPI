@@ -1076,7 +1076,7 @@ public static class CardExtensions
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The ability to check for.</param>
     /// <returns>true if the ability does not exist.</returns>
-    public static bool DoesNotHaveAbility(this CardInfo cardInfo, Ability ability)
+    public static bool LacksAbility(this CardInfo cardInfo, Ability ability)
     {
         return !cardInfo.HasAbility(ability);
     }
@@ -1100,7 +1100,7 @@ public static class CardExtensions
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
     /// <returns>true if the specialTriggeredAbility does not exist.</returns>
-    public static bool DoesNotHaveSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
+    public static bool LacksSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
     {
         return !cardInfo.HasSpecialAbility(ability);
     }
@@ -1111,7 +1111,7 @@ public static class CardExtensions
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="trait">The specialTriggeredAbility to check for.</param>
     /// <returns>true if the card is does not have the specified trait.</returns>
-    public static bool DoesNotHaveTrait(this CardInfo cardInfo, Trait trait)
+    public static bool LacksTrait(this CardInfo cardInfo, Trait trait)
     {
         return !cardInfo.HasTrait(trait);
     }
@@ -1147,9 +1147,9 @@ public static class CardExtensions
     /// <param name="playableCard">PlayableCard to access.</param>
     /// <param name="trait">The trait to check for.</param>
     /// <returns>true if the card does not have the specified trait.</returns>
-    public static bool DoesNotHaveTrait(this PlayableCard playableCard, Trait trait)
+    public static bool LacksTrait(this PlayableCard playableCard, Trait trait)
     {
-        return playableCard.Info.HasTrait(trait);
+        return playableCard.Info.LacksTrait(trait);
     }
     
     /// <summary>
@@ -1200,7 +1200,7 @@ public static class CardExtensions
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The ability to check for</param>
     /// <returns>true if the ability does not exist</returns>
-    public static bool DoesNotHaveAbility(this PlayableCard playableCard, Ability ability)
+    public static bool LacksAbility(this PlayableCard playableCard, Ability ability)
     {
         return !playableCard.HasAbility(ability);
     }
@@ -1213,7 +1213,7 @@ public static class CardExtensions
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The specialTriggeredAbility to check for</param>
     /// <returns>true if the specialTriggeredAbility does not exist</returns>
-    public static bool DoesNotHaveSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
+    public static bool LacksSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
         return !playableCard.HasSpecialAbility(ability);
     }
