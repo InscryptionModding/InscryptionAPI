@@ -46,6 +46,46 @@ public static class CardSlotExtensions
     }
     
     /// <summary>
+    /// Assign a playable card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.AssignCardToSlot()`.
+    /// </summary>
+    /// <param name="slotToSpawnIn">The slot to spawn in.</param>
+    /// <param name="playableCard">The PlayableCard object to spawn in said slot.</param>
+    /// <param name="transitionDuration">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
+    /// <param name="tweenCompleteCallback">An action to do after the assignment has completed.</param>
+    /// <param name="resolveTriggers">Whether or not to activate the 'Trigger.OtherCardAssignedToSlot' for the cards on board.</param>
+    /// <returns>The enumeration of the card being placed in the slot.</returns>
+    public static IEnumerator AssignCardToSlot(
+        this CardSlot slotToSpawnIn,
+        PlayableCard playableCard,
+        float transitionDuration = 0.1f, 
+        Action tweenCompleteCallback = null, 
+        bool resolveTriggers = true
+    )
+    {
+        yield return BoardManager.Instance.AssignCardToSlot(playableCard, slotToSpawnIn, transitionDuration, tweenCompleteCallback, resolveTriggers);
+    }
+    
+    /// <summary>
+    /// Resolve a playable card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.ResolveCardOnBoard()`.
+    /// </summary>
+    /// <param name="slotToSpawnIn">The slot to spawn in.</param>
+    /// <param name="playableCard">The PlayableCard object to spawn in said slot.</param>
+    /// <param name="tweenLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
+    /// <param name="landOnBoardCallback">An action to do after the assignment has completed, but before 'ResolveOnBoard' triggers.</param>
+    /// <param name="resolveTriggers">Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</param>
+    /// <returns>The enumeration of the card being placed in the slot.</returns>
+    public static IEnumerator ResolveCardOnBoard(
+        this CardSlot slotToSpawnIn,
+        PlayableCard playableCard,
+        float tweenLength = 0.1f, 
+        Action landOnBoardCallback = null,
+        bool resolveTriggers = true
+    )
+    {
+        yield return BoardManager.Instance.ResolveCardOnBoard(playableCard, slotToSpawnIn, tweenLength, landOnBoardCallback, resolveTriggers);
+    }
+    
+    /// <summary>
     /// Get the adjacent slots of the slot that is being accessed.
     /// </summary>
     /// <param name="cardSlot">The slot that is being accessed.</param>
