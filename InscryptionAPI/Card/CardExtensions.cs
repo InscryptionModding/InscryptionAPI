@@ -573,6 +573,23 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
+        var tailLostSprite = !filterMode.HasValue
+            ? tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+            : tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+        return info.SetTail(tailName, tailLostSprite, mods);
+    }
+    
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// This function uses delayed loading to attach the tail to the card, so if the tail card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="tailName">The name of the card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="tailLostPortrait">The sprite containing the card portrait.</param>
+    /// <param name="mods">A set of card mods to be applied to the tail.</param>
+    /// <returns>The same card info so a chain can continue.</returns>
+    public static CardInfo SetTail(this CardInfo info, string tailName, Sprite tailLostPortrait, IEnumerable<CardModificationInfo> mods = null)
+    {
         CardInfo tail = CardManager.AllCardsCopy.CardByName(tailName);
 
         if (tail == null) // Try delayed loading
@@ -586,7 +603,7 @@ public static class CardExtensions
                     tailCard = cards.CardByName($"{target.GetModPrefix()}_{tailName}");
 
                 if (target != null && tailCard != null)
-                    target.SetTail(tailCard, tailLostPortrait, filterMode, mods);
+                    target.SetTail(tailCard, tailLostPortrait, mods);
 
 
                 return cards;
@@ -594,7 +611,7 @@ public static class CardExtensions
         }
         else
         {
-            info.SetTail(tail, tailLostPortrait, filterMode, mods);
+            info.SetTail(tail, tailLostPortrait, mods);
         }
 
         return info;
