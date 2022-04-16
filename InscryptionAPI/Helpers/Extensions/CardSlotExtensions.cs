@@ -33,7 +33,7 @@ public static class CardSlotExtensions
     /// <param name="slotToSpawnIn">The slot to spawn in.</param>
     /// <param name="cardInfo">The CardInfo object to spawn in said slot.</param>
     /// <param name="transitionLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
-    /// <param name="resolveTriggers">Whether or not to activate other card triggers.</param>
+    /// <param name="resolveTriggers">Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</param>
     /// <returns>The enumeration of the card being placed in the slot.</returns>
     public static IEnumerator CreateCardInSlot(
         this CardSlot slotToSpawnIn,
