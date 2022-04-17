@@ -1,10 +1,13 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Nodes;
+using System.Linq;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
 
 [HarmonyPatch]
+[Obsolete("NodeManager is deprecated, use NewNodeManager instead.")]
 public static class NodeManager
 {
     private static List<NodeInfo> AllNodes = new();
@@ -104,8 +107,72 @@ public static class NodeManager
     [HarmonyPrefix]
     private static bool CustomNodeGenericSelect(ref SpecialNodeHandler __instance, SpecialNodeData nodeData)
     {
+        if (nodeData is CustomSpecialNodeData node)
+        {
+            if(node.Node == null)
+            {
+                __instance.DoMissingNodeSequence();
+            }
+            else if(node.Node.IsValidSequencerType())
+            {
+                List<Transform> children = new();
+                for (int i = 0; i < __instance.transform.childCount; i++)
+                {
+                    Transform child = __instance.transform.GetChild(i);
+                    if (child != null)
+                    {
+                        children.Add(child);
+                    }
+                }
+                Type target = node.Node.GetSequencerType();
+                ICustomNodeSequencer existing = children.Find(x => x.GetComponent(target) != null)?.GetComponent<ICustomNodeSequencer>();
+                if (existing != null)
+                {
+                    __instance.StartCoroutine(NewNodeManager.CustomNodeSequence(existing, node));
+                }
+                else
+                {
+                    GameObject sequencerObject;
+                    if (node.Node.sequencerPrefab != null)
+                    {
+                        sequencerObject = UnityObject.Instantiate(node.Node.sequencerPrefab, __instance.transform);
+                    }
+                    else
+                    {
+                        sequencerObject = new(target.Name);
+                        sequencerObject.transform.parent = __instance.transform;
+                    }
+                    sequencerObject.transform.localPosition = Vector3.zero;
+                    if (node.Node.nodeSequencerType != null)
+                    {
+                        existing = (sequencerObject.GetComponent(node.Node.nodeSequencerType) ?? sequencerObject.AddComponent(node.Node.nodeSequencerType)) as ICustomNodeSequencer;
+                    }
+                    else
+                    {
+                        existing = sequencerObject.GetComponent(target) as ICustomNodeSequencer;
+                    }
+                    if (existing != null)
+                    {
+                        if (existing is IInherit inherit)
+                        {
+                            inherit.Inherit(node);
+                        }
+                        __instance.StartCoroutine(NewNodeManager.CustomNodeSequence(existing, node));
+                    }
+                    else
+                    {
+                        __instance.DoMissingSequenceSequence();
+                    }
+                }
+            }
+            else
+            {
+                __instance.DoMissingSequenceSequence();
+            }
+            return false;
+        }
         // This sends the player to the upgrade shop if the triggering node is SpendExcessTeeth
-        if (nodeData is CustomNodeData genericNode)
+        else if (nodeData is CustomNodeData genericNode)
         {
             NodeInfo info = AllNodes.FirstOrDefault(ni => ni.guid == genericNode.guid);
 
@@ -142,38 +209,71 @@ public static class NodeManager
 
     [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
     [HarmonyPostfix]
-    private static void TransformMapNode(ref GameObject __result, MapElementData data)
+    private static bool CreateNodePrefab(MapDataReader __instance, ref GameObject __result, MapElementData data, Vector2 sampleRange, bool isScenery)
     {
-        // First, let's see if we need to do anything
-        if (data.PrefabPath.Contains('@'))
-        {   
-            string guid = data.PrefabPath.Substring(data.PrefabPath.IndexOf('@') + 1);
+        if(!isScenery && data is CustomSpecialNodeData sdata && sdata.Node?.nodePrefab != null)
+        {
+            GameObject gameObject;
+            gameObject = UnityObject.Instantiate(sdata.Node.nodePrefab);
+            gameObject.transform.SetParent(__instance.nodesParent);
+            gameObject.transform.localPosition = __instance.GetRealPosFromDataPos(data.position, sampleRange);
+            __result = gameObject;
+            return false;
+        }
+        return true;
+    }
 
-            NodeInfo info = AllNodes.FirstOrDefault(ni => ni.guid == guid);
-
-            if (info == null)
-                return;
-
-            Texture2D[] nodeTextures = info.animatedMapNode;
-
-            if (nodeTextures == null)
-                return;
-
-            // Replace the sprite
-            AnimatingSprite sprite = __result.GetComponentInChildren<AnimatingSprite>();
-
-            bool loadedTexture = false;
-            for (int i = 0; i < sprite.textureFrames.Count; i++)
+    [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
+    [HarmonyPostfix]
+    private static void TransformMapNode(ref GameObject __result, MapElementData data, bool isScenery)
+    {
+        if (!isScenery)
+        {
+            // First, let's see if we need to do anything
+            if (data is CustomSpecialNodeData)
             {
-                if (sprite.textureFrames[i].name != $"InscryptionAPI_{guid}_{i+1}")
+                (data as CustomSpecialNodeData).OnPostGeneration(__result.GetComponentInChildren<MapNode2D>());
+            }
+            else if (data.PrefabPath.Contains('@'))
+            {
+                string guid = data.PrefabPath.Substring(data.PrefabPath.IndexOf('@') + 1);
+
+                NodeInfo info = AllNodes.FirstOrDefault(ni => ni.guid == guid);
+
+                if (info == null)
+                    return;
+
+                Texture2D[] nodeTextures = info.animatedMapNode;
+
+                if (nodeTextures == null)
+                    return;
+
+                // Replace the sprite
+                AnimatingSprite sprite = __result.GetComponentInChildren<AnimatingSprite>();
+
+                bool loadedTexture = false;
+                for (int i = 0; i < sprite.textureFrames.Count; i++)
                 {
-                    sprite.textureFrames[i] = nodeTextures[i];
-                    loadedTexture = true;
+                    if (sprite.textureFrames[i].name != $"InscryptionAPI_{guid}_{i + 1}")
+                    {
+                        sprite.textureFrames[i] = nodeTextures[i];
+                        loadedTexture = true;
+                    }
+                }
+
+                if (loadedTexture)
+                    sprite.IterateFrame();
+            }
+            else if(data is BossBattleNodeData boss)
+            {
+                AnimatingSprite sprite = __result.GetComponentInChildren<AnimatingSprite>();
+                OpponentManager.FullOpponent opponent = OpponentManager.NewOpponents.ToList().Find(x => x.Id == boss.bossType);
+                if (sprite != null && opponent != null && opponent.NodeAnimation != null && opponent.NodeAnimation.Count > 0)
+                {
+                    sprite.textureFrames = new(opponent.NodeAnimation);
+                    sprite.SetTexture(sprite.textureFrames[0]);
                 }
             }
-
-            if (loadedTexture)
-                sprite.IterateFrame();
         }
     }
     
@@ -194,6 +294,14 @@ public static class NodeManager
         // This means that we're being asked to pick a special event (what happens after picking a card but before battling)
         foreach (NodeInfo info in AllNodes.Where(ni => ni.nodePosition.HasFlag(type)))
             possibilities.Add(info.BuildNode());
+        GenerationType type2 = type is NodePosition.SpecialEventRandom ? GenerationType.SpecialEvent : GenerationType.SpecialCardChoice;
+        foreach(NewNodeManager.FullNode node in NewNodeManager.NewNodes)
+        {
+            if(node != null && node.generationType.HasFlag(type2))
+            {
+                possibilities.Add(new CustomSpecialNodeData(node));
+            }
+        }
     }
 
     private static void LinkNodes(List<NodeData> nodes, int startY, List<NodeData> previousNodes)
@@ -244,7 +352,17 @@ public static class NodeManager
         int frontStart = MapGenerator.ForceFirstNodeTraderForAscension(1) ? 2 : 1;
         List<NodeData> frontNodes = new List<NodeData>();
         foreach (NodeInfo info in AllNodes.Where(ni => ni.nodePosition.ValidFor(NodePosition.MapStart)))
+        {
             frontNodes.Add(info.BuildNode());
+        }
+
+        foreach (NewNodeManager.FullNode node in NewNodeManager.NewNodes)
+        {
+            if (node != null && node.generationType.HasFlag(GenerationType.RegionStart))
+            {
+                frontNodes.Add(new CustomSpecialNodeData(node));
+            }
+        }
 
         // This filters out nodes that shouldn't be there and links them in order
         LinkNodes(frontNodes, frontStart, new());
@@ -272,6 +390,15 @@ public static class NodeManager
 
         int bossY = __result.Select(n => n.gridY).Max();
         NodeData bossBattleNode = __result.First(n => n.gridY == bossY);
+
+        foreach (NewNodeManager.FullNode node in NewNodeManager.NewNodes)
+        {
+            if (node != null && node.generationType.HasFlag(GenerationType.PreBoss))
+            {
+                preBossNodes.Add(new CustomSpecialNodeData(node));
+            }
+        }
+
         LinkNodes(preBossNodes, bossY, new(__result.Where(n => n.gridY < bossY)));
 
         if (preBossNodes.Count > 0)
@@ -295,6 +422,14 @@ public static class NodeManager
         List<NodeData> postBossNodes = new List<NodeData>();
         foreach (NodeInfo info in AllNodes.Where(ni => ni.nodePosition.ValidFor(NodePosition.PostBoss)))
             postBossNodes.Add(info.BuildNode());
+
+        foreach (NewNodeManager.FullNode node in NewNodeManager.NewNodes)
+        {
+            if (node != null && node.generationType.HasFlag(GenerationType.PostBoss))
+            {
+                postBossNodes.Add(new CustomSpecialNodeData(node));
+            }
+        }
 
         LinkNodes(postBossNodes, bossBattleNode.gridY + 1, new(__result));
 
