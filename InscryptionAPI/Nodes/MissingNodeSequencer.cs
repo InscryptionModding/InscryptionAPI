@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InscryptionAPI.Nodes
 {
-    public class MissingNodeSequencer : CustomNodeSequencer
+    internal class MissingNodeSequencer : CustomNodeSequencer
     {
         public override IEnumerator DoCustomSequence(CustomSpecialNodeData node)
         {
