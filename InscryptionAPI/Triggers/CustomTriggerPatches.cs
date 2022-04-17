@@ -6,16 +6,15 @@ using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using UnityEngine;
-using System.Security.Cryptography.X509Certificates;
 
 namespace InscryptionAPI.Triggers
 {
     [HarmonyPatch]
-    public static class CustomTriggerPatches
+    internal static class CustomTriggerPatches
     {
         [HarmonyPatch(typeof(PlayerHand), nameof(PlayerHand.AddCardToHand))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
+        private static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
         {
             yield return result;
             yield return card.TriggerHandler.Trigger<IOnAddedToHand>(x => x.RespondsToAddedToHand(), x => x.OnAddedToHand());
@@ -25,7 +24,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.DoCombatPhase))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
+        private static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
         {
             yield return CustomGlobalTriggerHandler.TriggerAll<IOnBellRung>(false, x => x.RespondsToBellRung(playerIsAttacker), x => x.OnBellRung(playerIsAttacker));
             yield return result;
@@ -34,7 +33,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSequence))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
+        private static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
         {
             yield return CustomGlobalTriggerHandler.TriggerAll<IOnPreSlotAttackSequence>(false, x => x.RespondsToPreSlotAttackSequence(slot), x => x.OnPreSlotAttackSequence(slot));
             yield return result;
@@ -44,7 +43,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
+        private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
         {
             yield return result;
             yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x =>
@@ -52,9 +51,14 @@ namespace InscryptionAPI.Triggers
             yield break;
         }
 
+        private static Type scaleChangedCoroutine;
+        private static FieldInfo scaleChangedDamage;
+        private static FieldInfo scaleChangedToPlayer;
+        private static FieldInfo scaleChangedNumWeights;
+
         [HarmonyPatch(typeof(LifeManager), nameof(LifeManager.ShowDamageSequence))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, int numWeights, bool toPlayer)
+        private static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, int numWeights, bool toPlayer)
         {
             int initialDamage = damage;
             bool initialToPlayer = toPlayer;
@@ -71,9 +75,9 @@ namespace InscryptionAPI.Triggers
             yield return CustomGlobalTriggerHandler.TriggerAll<IOnPreScalesChanged>(false, x => x.RespondsToPreScalesChanged(damage, toPlayer), x => x.OnPreScalesChanged(damage, toPlayer));
             if (damage != 0)
             {
-                result?.GetType()?.GetField("damage")?.SetValue(result, damage);
-                result?.GetType()?.GetField("toPlayer")?.SetValue(result, toPlayer);
-                result?.GetType()?.GetField("numWeights")?.SetValue(result, numWeights);
+                (scaleChangedDamage ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
+                (scaleChangedToPlayer ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("toPlayer"))?.SetValue(result, toPlayer);
+                (scaleChangedNumWeights ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("numWeights"))?.SetValue(result, numWeights);
                 yield return result;
             }
             yield return CustomGlobalTriggerHandler.TriggerAll<IOnPostScalesChanged>(false, x => x.RespondsToPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x =>
@@ -83,7 +87,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
+        private static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
         {
             yield return result;
             yield return CustomGlobalTriggerHandler.TriggerInHand<IOnUpkeepInHand>(x => x.RespondsToUpkeepInHand(playerUpkeep), x => x.OnUpkeepInHand(playerUpkeep));
@@ -92,7 +96,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ResolveCardOnBoard))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers = true)
+        private static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers = true)
         {
             yield return result;
             if (resolveTriggers)
@@ -104,7 +108,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.PlayerTurn))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result)
+        private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result)
         {
             yield return result;
             yield return CustomGlobalTriggerHandler.TriggerInHand<IOnTurnEndInHand>(x => x.RespondsToTurnEndInHand(true), x => x.OnTurnEndInHand(true));
@@ -113,7 +117,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.OpponentTurn))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnTurnEndInHandOpponent(IEnumerator result, TurnManager __instance)
+        private static IEnumerator TriggerOnTurnEndInHandOpponent(IEnumerator result, TurnManager __instance)
         {
             bool turnSkipped = __instance.Opponent.SkipNextTurn;
             yield return result;
@@ -126,7 +130,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.AssignCardToSlot))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
+        private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
         {
             CardSlot slot2 = card.Slot;
             yield return result;
@@ -146,9 +150,11 @@ namespace InscryptionAPI.Triggers
             yield break;
         }
 
+        private static FieldInfo triggerField;
+
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Die))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerDeathTriggers(IEnumerator result, PlayableCard __instance, bool wasSacrifice, PlayableCard killer = null)
+        private static IEnumerator TriggerDeathTriggers(IEnumerator result, PlayableCard __instance, bool wasSacrifice, PlayableCard killer = null)
         {
             CardSlot slotBeforeDeath = __instance.Slot;
             while (result.MoveNext())
@@ -159,7 +165,7 @@ namespace InscryptionAPI.Triggers
                     Trigger t = Trigger.None;
                     try
                     {
-                        t = (Trigger)result.Current.GetType().GetField("trigger").GetValue(result.Current);
+                        t = (Trigger)(triggerField ??= triggerType.GetField("trigger")).GetValue(result.Current);
                     }
                     catch { }
                     if (t == Trigger.OtherCardPreDeath)
@@ -177,14 +183,17 @@ namespace InscryptionAPI.Triggers
             yield break;
         }
 
+        private static Type takeDamageCoroutine;
+        private static FieldInfo takeDamageDamage;
+
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
+        private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
         {
             CustomGlobalTriggerHandler.CollectDataAll<ICardTakenDamageModifier, int>(true, x => x.RespondsToCardTakenDamageModifier(__instance, damage), x => damage = x.CollectCardTakenDamageModifier(__instance, damage));
             if (damage != 0)
             {
-                result?.GetType()?.GetField("damage")?.SetValue(result, damage);
+                (takeDamageDamage ??= (takeDamageCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
                 bool hasshield = __instance.HasShield();
                 yield return result;
                 if (!hasshield && attacker != null)
@@ -198,7 +207,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
         [HarmonyPostfix]
-        public static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
+        private static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
         {
             bool itemCanBeUsed = true;
             string consumableName = __instance?.Consumable?.Data?.name;
@@ -245,7 +254,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
         [HarmonyPostfix]
-        public static void PassiveAttackBuffs(PlayableCard __instance, ref int __result)
+        private static void PassiveAttackBuffs(PlayableCard __instance, ref int __result)
         {
             int dummyResult = __result;
             CustomGlobalTriggerHandler.CollectDataAll<IOnCardPassiveAttackBuffs, int>(true, x => x.RespondsToCardPassiveAttackBuffs(__instance, dummyResult), x => dummyResult =
@@ -255,7 +264,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
         [HarmonyPostfix]
-        public static void PassiveHealthBuffs(PlayableCard __instance, ref int __result)
+        private static void PassiveHealthBuffs(PlayableCard __instance, ref int __result)
         {
             int dummyResult = __result;
             CustomGlobalTriggerHandler.CollectDataAll<IOnCardPassiveHealthBuffs, int>(true, x => x.RespondsToCardPassiveHealthBuffs(__instance, dummyResult), x => dummyResult =
@@ -265,7 +274,7 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
         [HarmonyPostfix]
-        public static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result)
+        private static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result)
         {
             List<CardSlot> original = new(__result);
             bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && !__instance.HasTriStrike();
