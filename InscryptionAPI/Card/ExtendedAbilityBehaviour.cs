@@ -6,45 +6,18 @@ using InscryptionAPI.Triggers;
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
-public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff
+public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IAttackModification, IActivateWhenFacedown, IOnCardPassiveAttackBuffs, IOnCardPassiveHealthBuffs
 {
     // This section handles attack slot management
 
     public virtual bool TriggerWhenFacedown => false;
     public virtual bool ShouldTriggerWhenFaceDown(Trigger trigger, object[] otherArgs) => TriggerWhenFacedown;
     public virtual bool ShouldTriggerCustomWhenFaceDown(Type customTrigger) => TriggerWhenFacedown;
-
     public virtual bool RespondsToGetOpposingSlots() => false;
 
     public virtual List<CardSlot> GetOpposingSlots(List<CardSlot> originalSlots, List<CardSlot> otherAddedSlots) => new();
 
     public virtual bool RemoveDefaultAttackSlot() => false;
-
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
-    [HarmonyPostfix]
-    private static void UpdateOpposingSlots(ref PlayableCard __instance, ref List<CardSlot> __result)
-    {
-        bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
-        CardSlot defaultslot = __instance.Slot.opposingSlot;
-
-        List<CardSlot> alteredOpposings = new List<CardSlot>();
-        bool removeDefaultAttackSlot = false;
-
-        foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
-        {
-            if (component.RespondsToGetOpposingSlots())
-            {
-                alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
-                removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
-            }
-        }
-        
-        if (alteredOpposings.Count > 0) 
-            __result.AddRange(alteredOpposings);
-
-        if (isAttackingDefaultSlot && removeDefaultAttackSlot)
-            __result.Remove(defaultslot);
-    }
 
     // This section handles passive attack/health buffs
 
@@ -85,28 +58,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [Obsolete("Use IPassiveHealthBuff instead")]
     public virtual int[] GetPassiveHealthBuffs() => null;
 
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
-    [HarmonyPostfix]
-    private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
-    {
-        if (__instance.slot == null)
-            return;
-
-        foreach (IPassiveAttackBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>(c)))
-            __result += buffer.GetPassiveAttackBuff(__instance);
-    }
-
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
-    [HarmonyPostfix]
-    private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
-    {
-        if (__instance.slot == null)
-            return;
-
-        foreach (IPassiveHealthBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>(c)))
-            __result += buffer.GetPassiveHealthBuff(__instance);
-    }
-
     public virtual int GetPassiveAttackBuff(PlayableCard target)
     {
         if (ProvidesPassiveAttackBuff)
@@ -125,17 +76,56 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
 
     public virtual int GetPassiveHealthBuff(PlayableCard target)
     {
-        if (ProvidesPassiveHealthBuff)
-        {
-            if (target.OpponentCard == this.Card.OpponentCard)
-            {
-                int[] result = GetPassiveHealthBuffs();
-                if (result != null && target.Slot.Index < result.Length)
-                {
-                    return result[target.Slot.Index];
-                }
-            }
-        }
         return 0;
     }
+
+    public virtual bool RespondsToCardPassiveAttackBuffs(PlayableCard card, int currentValue)
+    {
+        return ProvidesPassiveAttackBuff;
+    }
+
+    public virtual int CollectCardPassiveAttackBuffs(PlayableCard card, int currentValue)
+    {
+        if (card.OpponentCard == Card.OpponentCard)
+        {
+            int[] result = GetPassiveAttackBuffs();
+            if (result != null && card.Slot.Index < result.Length)
+            {
+                return currentValue + result[card.Slot.Index];
+            }
+        }
+        return currentValue;
+    }
+
+    public virtual bool RespondsToCardPassiveHealthBuffs(PlayableCard card, int currentValue)
+    {
+        return ProvidesPassiveHealthBuff;
+    }
+
+    public virtual int CollectCardPassiveHealthBuffs(PlayableCard card, int currentValue)
+    {
+        if (card.OpponentCard == Card.OpponentCard)
+        {
+            int[] result = GetPassiveHealthBuffs();
+            if (result != null && card.Slot.Index < result.Length)
+            {
+                return currentValue + result[card.Slot.Index];
+            }
+        }
+        return currentValue;
+    }
+
+    public virtual bool RespondsToModifyAttackSlots(PlayableCard card, List<CardSlot> currentSlots, bool didRemoveDefaultSlot) => RespondsToGetOpposingSlots();
+
+    public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot)
+    {
+        didRemoveDefaultSlot = RemoveDefaultAttackSlot();
+        return GetOpposingSlots(originalSlots, currentSlots);
+    }
+
+    public bool BringsOriginalSlotBack(PlayableCard card) => false;
+
+    public bool RespondsToGetAttackSlotCount(PlayableCard card) => false;
+
+    public int CollectGetAttackSlotCount(PlayableCard card) => 0;
 }

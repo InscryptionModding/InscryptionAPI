@@ -1,240 +1,271 @@
-using System.Collections;
 using DiskCardGame;
+using InscryptionAPI.Helpers;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
-namespace InscryptionAPI.Triggers;
-
-/// <summary>
-/// Run when the card this trigger is attached to is added to the hand
-/// </summary>
-public interface IAddedToHand
-{
-    bool RespondsToAddedToHand();
-    IEnumerator OnAddedToHand();
-}
-
-/// <summary>
-/// Run when a card other than the card this trigger is attached to is added to the hand
-/// </summary>
-public interface IOtherAddedToHand
-{
-    bool RespondsToOtherAddedToHand(PlayableCard card);
-    IEnumerator OnOtherAddedToHand(PlayableCard card);
-}
-
-/// <summary>
-/// Run when the combat phase starts
-/// </summary>
-public interface IBellRung
-{
-    /// <param name="playerIsAttacker">Whether this is the player's or the AIs combat phase</param>
-    bool RespondsToBellRung(bool playerIsAttacker);
-    /// <param name="playerIsAttacker">Whether this is the player's or the AIs combat phase</param>
-    IEnumerator OnBellRung(bool playerIsAttacker);
-}
-
-/// <summary>
-/// Run before a slot begins attacking
-/// </summary>
-public interface IPreSlotAttackSequence
-{
-    /// <param name="slot">The slot attacking</param>
-    bool RespondsToPreSlotAttackSequence(CardSlot slot);
-    /// <param name="slot">The slot attacking</param>
-    IEnumerator OnPreSlotAttackSequence(CardSlot slot);
-}
-
-/// <summary>
-/// Run after a card slot attacks
-/// </summary>
-public interface IPostSlotAttackSequence
-{
-    /// <param name="slot">The slot that attacked</param>
-    bool RespondsToPostSlotAttackSequence(CardSlot slot);
-    /// <param name="slot">The slot that attacked</param>
-    IEnumerator OnPostSlotAttackSequence(CardSlot slot);
-}
-
-/// <summary>
-/// Run after a slot is attacked
-/// </summary>
-public interface IPostSingularSlotAttackSlot
-{
-    /// <param name="attacker">The attacking slot</param>
-    /// <param name="defender">The defending slot</param>
-    bool RespondsToPostSingularSlotAttackSlot(CardSlot attacker, CardSlot defender);
-    /// <param name="attacker">The attacking slot</param>
-    /// <param name="defender">The defending slot</param>
-    IEnumerator OnPostSingularSlotAttackSlot(CardSlot attacker, CardSlot defender);
-}
-
-/// <summary>
-/// Run before the scales are changed
-/// </summary>
-public interface IPreScalesChanged
-{
-    /// <param name="damage">The amount of damage being dealt</param>
-    /// <param name="toPlayer">Whether the damage is to the player or to the AI</param>
-    bool RespondsToPreScalesChanged(int damage, bool toPlayer);
-    /// <param name="damage">The amount of damage being dealt</param>
-    /// <param name="toPlayer">Whether the damage is to the player or to the AI</param>
-    IEnumerator OnPreScalesChanged(int damage, bool toPlayer);
-}
-
-/// <summary>
-/// Run after the scales are changed
-/// </summary>
-public interface IPostScalesChanged
-{
-    /// <param name="damage">The amount of damage being dealt</param>
-    /// <param name="toPlayer">Whether the damage is to the player or to the AI</param>
-    bool RespondsToPostScalesChanged(int damage, bool toPlayer);
-    /// <param name="damage">The amount of damage being dealt</param>
-    /// <param name="toPlayer">Whether the damage is to the player or to the AI</param>
-    IEnumerator OnPostScalesChanged(int damage, bool toPlayer);
-}
-
-/// <summary>
-/// Triggered during the upkeep phase while in the hand
-/// </summary>
-public interface IUpkeepInHand
-{
-    /// <param name="playerUpkeep">Whether this is during the player's turn or the AI's turn</param>
-    bool RespondsToUpkeepInHand(bool playerUpkeep);
-    /// <param name="playerUpkeep">Whether this is during the player's turn or the AI's turn</param>
-    IEnumerator OnUpkeepInHand(bool playerUpkeep);
-}
-
-/// <summary>
-/// Run when another card is resolved on the board while in the hand
-/// </summary>
-public interface IOtherCardResolveInHand
-{
-    /// <param name="card">Card being resolved</param>
-    bool RespondsToOtherCardResolveInHand(PlayableCard card);
-    /// <param name="card">Card being resolved</param>
-    IEnumerator OnOtherCardResolveInHand(PlayableCard card);
-}
-
-/// <summary>
-/// Run when the turn is ended while in the hand
-/// </summary>
-public interface ITurnEndInHand
-{
-    bool RespondsToTurnEndedInHand();
-    IEnumerator OnTurnEndInHand();
-}
-
-/// <summary>
-/// Run when another card is assigned to a slot while in the hand
-/// </summary>
-public interface IOtherCardAssignedToSlotInHand
-{
-    /// <param name="card">Card being assigned to a slot</param>
-    /// <param name="fromHand">Whether it is being assigned from the hand</param>
-    bool RespondsToOtherCardAssignedToSlotInHand(PlayableCard card, bool fromHand);
-    /// <param name="card">Card being assigned to a slot</param>
-    /// <param name="fromHand">Whether it is being assigned from the hand</param>
-    IEnumerator OnOtherCardAssignedToSlotInHand(PlayableCard card, bool fromHand);
-}
-
-/// <summary>
-/// Runs before a card on the board dies in the hand
-/// </summary>
-public interface IOtherCardPreDeathInHand
-{
-    /// <param name="slot">Slot dying</param>
-    /// <param name="wasSacrificed">Whether the card was sacrificed</param>
-    /// <param name="killer">The killer, <see langword="null"/> if card was sacrificed</param>
-    bool RespondsToOtherCardPreDeathInHand(CardSlot slot, bool wasSacrificed, PlayableCard killer);
-    /// <param name="slot">Slot dying</param>
-    /// <param name="wasSacrificed">Whether the card was sacrificed</param>
-    /// <param name="killer">The killer, <see langword="null"/> if card was sacrificed</param>
-    IEnumerator OnOtherCardPreDeathInHand(CardSlot slot, bool wasSacrificed, PlayableCard killer);
-}
-
-/// <summary>
-/// Runs after a card on the board dies in the hand
-/// </summary>
-public interface IOtherCardDieInHand
-{
-    /// <param name="card">The card that died</param>
-    /// <param name="slot">The slot before death</param>
-    /// <param name="wasSacrificed">Whether the card was sacrificed</param>
-    /// <param name="killer">The killer, <see langword="null"/> if card was sacrificed</param>
-    bool RespondsToOtherCardDieInHand(PlayableCard card, CardSlot slot, bool wasSacrificed, PlayableCard killer);
-    /// <param name="card">The card that died</param>
-    /// <param name="slot">The slot before death</param>
-    /// <param name="wasSacrificed">Whether the card was sacrificed</param>
-    /// <param name="killer">The killer, <see langword="null"/> if card was sacrificed</param>
-    IEnumerator OnOtherCardDieInHand(PlayableCard card, CardSlot slot, bool wasSacrificed, PlayableCard killer);
-}
-
-/// <summary>
-/// Run when another card deals damage while in the hand
-/// </summary>
-public interface IOtherCardDealtDamageInHand
-{
-    /// <param name="attacker">The attacker</param>
-    /// <param name="attack">The amount of damage being dealt</param>
-    /// <param name="defender">The defender</param>
-    bool RespondsToOtherCardDealtDamageInHand(PlayableCard attacker, int attack, PlayableCard defender);
-    /// <param name="attacker">The attacker</param>
-    /// <param name="attack">The amount of damage being dealt</param>
-    /// <param name="defender">The defender</param>
-    IEnumerator OnOtherCardDealtDamageInHand(PlayableCard attacker, int attack, PlayableCard defender);
-}
-
-/// <summary>
-/// Run whenever a card is asked what its opposing slots are as part of the attack sequence
-/// </summary>
-public interface IGetOpposingSlots
+namespace InscryptionAPI.Triggers
 {
     /// <summary>
-    /// Indicates if this card wants to respond to getting the opposing slots
+    /// Trigger that is triggered when the card is drawn, but after it has been added to the list of cards in hand.
     /// </summary>
-    /// <returns>True to provide opposing slots, False to leave the slots as default</returns>
-    bool RespondsToGetOpposingSlots();
+    public interface IOnAddedToHand
+    {
+        public bool RespondsToAddedToHand();
+        public IEnumerator OnAddedToHand();
+    }
 
     /// <summary>
-    /// Gets the card slots that the card wants to attack
+    /// Trigger that is triggered when any card is drawn, but after it has been added to the list of cards in hand.
     /// </summary>
-    /// <param name="originalSlots">The set of original card slots that the card would attack (as set by abilities in the base game)</param>
-    /// <param name="otherAddedSlots">Slots that have been added by other custom abilities</param>
-    /// <returns>The list of card slots you want to attack</returns>
-    /// <remarks>If your card is replacing the default attack slot (the opposing slot) see 'RemoveDefaultAttackSlot'
-    /// If you are **not** replacing the default attack slot, do **not** include that here. Simple ensure 'RemoveDefaultAttackSlot' returns false.
-    /// Only return the default attack slot if you want to attack it an additional time.</remarks>
-    List<CardSlot> GetOpposingSlots(List<CardSlot> originalSlots, List<CardSlot> otherAddedSlots);
+    public interface IOnOtherCardAddedToHand
+    {
+        public bool RespondsToOtherCardAddedToHand(PlayableCard card);
+        public IEnumerator OnOtherCardAddedToHand(PlayableCard card);
+    }
 
     /// <summary>
-    /// If true, this means that the attack slots provided by GetOpposingSlots should override the default attack slot. 
-    /// If false, it means they should be in addition to the default opposing slot.
+    /// Trigger that is triggered after any card is assigned to a slot, but only if it was assigned to a slot before.
     /// </summary>
-    bool RemoveDefaultAttackSlot();
-}
+    public interface IOnCardAssignedToSlotNoResolve
+    {
+        public bool RespondsToCardAssignedToSlotNoResolve(PlayableCard card);
+        public IEnumerator OnCardAssignedToSlotNoResolve(PlayableCard card);
+    }
 
-/// <summary>
-/// Used when a card wants to provide a passive buff to other cards on the board
-/// </summary>
-public interface IPassiveAttackBuff
-{
     /// <summary>
-    /// Used to provide a passive attack buff to a target
+    /// Trigger that is triggered after any card is assigned to a slot. The difference between this and normal OnOtherCardAssignedToSlot is that this trigger also provides information about the new and old slot.
     /// </summary>
-    /// <returns>The amount of attack you want to buff the target by</returns>
-    /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
-    int GetPassiveAttackBuff(PlayableCard target);
-}
+    public interface IOnCardAssignedToSlotContext
+    {
+        public bool RespondsToCardAssignedToSlotContext(PlayableCard card, CardSlot oldSlot, CardSlot newSlot);
+        public IEnumerator OnCardAssignedToSlotContext(PlayableCard card, CardSlot oldSlot, CardSlot newSlot);
+    }
 
-/// <summary>
-/// Used when a card wants to provide a passive buff to other cards on the board
-/// </summary>
-public interface IPassiveHealthBuff
-{
     /// <summary>
-    /// Used to provide a passive health buff to a target
+    /// Trigger that is triggered after the combat phase starts.
     /// </summary>
-    /// <returns>The amount of health you want to buff the target by</returns>
-    /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
-    int GetPassiveHealthBuff(PlayableCard target);
+    public interface IOnBellRung
+    {
+        public bool RespondsToBellRung(bool playerCombatPhase);
+        public IEnumerator OnBellRung(bool playerCombatPhase);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered before a slot does its attacks.
+    /// </summary>
+    public interface IOnPreSlotAttackSequence
+    {
+        public bool RespondsToPreSlotAttackSequence(CardSlot attackingSlot);
+        public IEnumerator OnPreSlotAttackSequence(CardSlot attackingSlot);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered after a slot does its attacks.
+    /// </summary>
+    public interface IOnPostSlotAttackSequence
+    {
+        public bool RespondsToPostSlotAttackSequence(CardSlot attackingSlot);
+        public IEnumerator OnPostSlotAttackSequence(CardSlot attackingSlot);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered after a slot does an individual attack.
+    /// </summary>
+    public interface IOnPostSingularSlotAttackSlot
+    {
+        public bool RespondsToPostSingularSlotAttackSlot(CardSlot attackingSlot, CardSlot targetSlot);
+        public IEnumerator OnPostSingularSlotAttackSlot(CardSlot attackingSlot, CardSlot targetSlot);
+    }
+
+    /// <summary>
+    /// Data collection trigger that is triggered before the scales are changed, can be used to change the amount of damage added and to which side it's added.
+    /// </summary>
+    public interface IOnPreScalesChangedRef
+    {
+        public bool RespondsToPreScalesChangedRef(int damage, int numWeights, bool toPlayer);
+        public int CollectPreScalesChangedRef(int damage, ref int numWeights, ref bool toPlayer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered before the scales are changed, after IOnPreScalesChangedRef.
+    /// </summary>
+    public interface IOnPreScalesChanged
+    {
+        public bool RespondsToPreScalesChanged(int damage, bool toPlayer);
+        public IEnumerator OnPreScalesChanged(int damage, bool toPlayer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered after the scales are changed. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.
+    /// </summary>
+    public interface IOnPostScalesChanged
+    {
+        public bool RespondsToPostScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
+        public IEnumerator OnPostScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered each turn, but unlike normal OnUpkeep this one only works in hand.
+    /// </summary>
+    public interface IOnUpkeepInHand
+    {
+        public bool RespondsToUpkeepInHand(bool playerUpkeep);
+        public IEnumerator OnUpkeepInHand(bool playerUpkeep);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered when any card gets played, but unlike normal OnOtherCardResolveOnBoard this one only works in hand.
+    /// </summary>
+    public interface IOnOtherCardResolveInHand
+    {
+        public bool RespondsToOtherCardResolveInHand(PlayableCard resolvingCard);
+        public IEnumerator OnOtherCardResolveInHand(PlayableCard resolvingCard);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works in hand.
+    /// </summary>
+    public interface IOnTurnEndInHand
+    {
+        public bool RespondsToTurnEndInHand(bool playerTurn);
+        public IEnumerator OnTurnEndInHand(bool playerTurn);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered when any card is assigned to a slot, but unlike normal OnOtherCardAssignedToSlotInHand this one only works in hand.
+    /// </summary>
+    public interface IOnOtherCardAssignedToSlotInHand
+    {
+        public bool RespondsToOtherCardAssignedToSlotInHand(PlayableCard card);
+        public IEnumerator OnOtherCardAssignedToSlotInHand(PlayableCard card);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered before any card dies, but unlike normal OnOtherCardPreDeath this one only works in hand.
+    /// </summary>
+    public interface IOnOtherCardPreDeathInHand
+    {
+        public bool RespondsToOtherCardPreDeathInHand(CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+        public IEnumerator OnOtherCardPreDeathInHand(CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered when any card deals damage to another card, but unlike normal OnOtherCardDealtDamage this one only works in hand.
+    /// </summary>
+    public interface IOnOtherCardDealtDamageInHand
+    {
+        public bool RespondsToOtherCardDealtDamageInHand(PlayableCard attacker, int amount, PlayableCard target);
+        public IEnumerator OnOtherCardDealtDamageInHand(PlayableCard attacker, int amount, PlayableCard target);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered after any card dies, but unlike normal OnOtherCardDie this one only works in hand.
+    /// </summary>
+    public interface IOnOtherCardDieInHand
+    {
+        public bool RespondsToOtherCardDieInHand(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+        public IEnumerator OnOtherCardDieInHand(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered before any item is used.
+    /// </summary>
+    public interface IOnPreItemUsed
+    {
+        public bool RespondsToPreItemUsed(string itemname, bool isHammer);
+        public IEnumerator OnPreItemUsed(string itemname, bool isHammer);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered after any item is used.
+    /// </summary>
+    public interface IOnPostItemUsed
+    {
+        public bool RespondsToPostItemUsed(string itemname, bool success, bool isHammer);
+        public IEnumerator OnPostItemUsed(string itemname, bool success, bool isHammer);
+    }
+
+    /// <summary>
+    /// Data collection trigger that collects data related to attacked slots.
+    /// </summary>
+    public interface IAttackModification
+    {
+        /// <summary>
+        /// If true, this trigger will collect data from CollectModifyAttackSlots.
+        /// </summary>
+        /// <param name="currentSlots">Current slots that are targeted.</param>
+        /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
+        /// <returns>True if this trigger will collect data from CollectModifyAttackSlots.</returns>
+        public bool RespondsToModifyAttackSlots(PlayableCard card, List<CardSlot> currentSlots, bool didRemoveDefaultSlot);
+        /// <summary>
+        /// Modifies data about targeted slots for attack.
+        /// </summary>
+        /// <param name="currentSlots">Current slots that are targeted.</param>
+        /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
+        /// <returns>Modified data about targeted slots for attack.</returns>
+        public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot);
+        /// <summary>
+        /// True if this attack modification brings back the original slot removed by other modifications. This doesn't automatically bring it back, it just puts this modification further in the list so it triggers after others.
+        /// </summary>
+        /// <param name="card">Card this is affecting.</param>
+        /// <returns>True if this attack modification brings back the original slot removed by other modifications.</returns>
+        public bool BringsOriginalSlotBack(PlayableCard card);
+        /// <summary>
+        /// If true, this trigger will collect data from CollectGetAttackSlotCount.
+        /// </summary>
+        /// <returns>True if this trigger will collect data from CollectGetAttackSlotCount.</returns>
+        public bool RespondsToGetAttackSlotCount(PlayableCard card);
+        /// <summary>
+        /// Modifies data about the amount of slots that will be selected for the Sniper ability (and any other ability that may require that).
+        /// </summary>
+        /// <returns>Modified data about the amount of slots that will be selected.</returns>
+        public int CollectGetAttackSlotCount(PlayableCard card);
+    }
+
+    /// <summary>
+    /// Data collection trigger that collects data about the usability of an item.
+    /// </summary>
+    public interface IItemCanBeUsed
+    {
+        public bool RespondsToItemCanBeUsed(string itemname, bool currentValue);
+        public bool CollectItemCanBeUsed(string itemname, bool currentValue);
+    }
+
+    /// <summary>
+    /// Trigger that is triggered when an item is prevented from use using IItemCanBeUsed.
+    /// </summary>
+    public interface IOnItemPreventedFromUse
+    {
+        public bool RespondsToItemPreventedFromUse(string itemname);
+        public IEnumerator OnItemPreventedFromUse(string itemname);
+    }
+
+    /// <summary>
+    /// Data collection trigger that modifies the passive attack buffs of any card.
+    /// </summary>
+    public interface IOnCardPassiveAttackBuffs
+    {
+        public bool RespondsToCardPassiveAttackBuffs(PlayableCard card, int currentValue);
+        public int CollectCardPassiveAttackBuffs(PlayableCard card, int currentValue);
+    }
+
+    /// <summary>
+    /// Data collection trigger that modifies the passive health buffs of any card.
+    /// </summary>
+    public interface IOnCardPassiveHealthBuffs
+    {
+        public bool RespondsToCardPassiveHealthBuffs(PlayableCard card, int currentValue);
+        public int CollectCardPassiveHealthBuffs(PlayableCard card, int currentValue);
+    }
+
+    /// <summary>
+    /// Data collection trigger that modifies the damage taken by any card.
+    /// </summary>
+    public interface ICardTakenDamageModifier
+    {
+        public bool RespondsToCardTakenDamageModifier(PlayableCard card, int currentValue);
+        public int CollectCardTakenDamageModifier(PlayableCard card, int currentValue);
+    }
 }
