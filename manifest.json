@@ -514,7 +514,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.NodeInfo.html",
-          "hash": "Inl5pyciuQ1byAXvG3TOrB3bpX7uGox0lxgADxp/Fnw="
+          "hash": "wNag8FStIse3skdKApGy8fig4gi6R+bupc+RllcZLsA="
         }
       },
       "is_incremental": false,
@@ -526,7 +526,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.NodePosition.html",
-          "hash": "jM3sAra2SlmeGyEcWdnY+BlY+uq32aOOXHwRhbkDFM0="
+          "hash": "yjzR/rFjZ4amd1P6h9K1vOOaxvLOnc0NB/qWimTcq0I="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.html",
-          "hash": "9yAxNJ/7S2sR55qVZToPeSOCn2D1kpiHMDQKFmZ+FkI="
+          "hash": "CteVION3Z16nTADsKUMAhY4XCkUOrmIofFa7cxcGuyg="
         }
       },
       "is_incremental": false,
@@ -550,7 +550,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html",
-          "hash": "nHZCzb/91DhRMOImV2EVzsW3Z27cfcfee+nvhaodshE="
+          "hash": "IcXlPohcMdqe44S2VEHY2c7rtp9mCcAylhqRKYZbXhE="
         }
       },
       "is_incremental": false,
@@ -562,7 +562,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.html",
-          "hash": "d4KUO0HKWd2Rex/+PMk5ZK+Fuq8W49oFDb5vqusi5GM="
+          "hash": "/Qr66T9mguHTpBt7dlOAlYhJZwTN4DhCWGoOYDXCKOc="
         }
       },
       "is_incremental": false,
@@ -743,6 +743,234 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
           "hash": "g4nDe8jOFuIcvAa4tZcoLFu9q+c2wxuKL/y4xywJYXY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.And.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.And.html",
+          "hash": "lE2xdCTrzr871WtZgZmj9v2BqLWJEUQMe4M1h8C1Iz4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html",
+          "hash": "jzRJJGJIG1WhTotO41OpzqTSf/3GNdx/tnPx3q4C3/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.CustomNodeSequencer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.CustomNodeSequencer.html",
+          "hash": "z1NmoBHzvMx7uZlpx7ujzczCMDPIbL3FYNW1cFWJpVs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.CustomPreviousNodesContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html",
+          "hash": "tBfqYJffvR53sxSva/wLI5lJwsjtTnxSqgokLoSUqN8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.CustomPreviousRowContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.CustomPreviousRowContent.html",
+          "hash": "XsNOjeOgx939XmOj9QT2FMj3pMhMCxJFlxSpoQ9KVeo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.CustomSpecialNodeData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.CustomSpecialNodeData.html",
+          "hash": "gsIf8xk6kLzjrPShIY3QkcwKn/n+NxuKRvqCKEqUgmw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.EasyAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.EasyAccess.html",
+          "hash": "lb55kTYpQKhFZ8SC2SS/BRFXZp8AYgdRzJOn+OjxrOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.False.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.False.html",
+          "hash": "r4MZrUlRmtcRmbqmjHW4Tp6s0Ns4CLRlVYuBsbt5dek="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.Func.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.Func.html",
+          "hash": "scekS6K9FYwR4UlPlmGrwZ1M/jSFFUq29R8guVlxiRg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.GenerationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.GenerationType.html",
+          "hash": "s3BtiQZ7nwuK+lvNrgDL414olAdQWaZps6FyyHMzamU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.ICustomNodeSequencer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.ICustomNodeSequencer.html",
+          "hash": "taFvE1ICo0f1GTBPcRjWl160Y//GvEVJ2z+yKcTsdcs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.IDestroyOnEnd.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.IDestroyOnEnd.html",
+          "hash": "9llas1U9Wldnd0QHFG9gvhiu0sgf8TPEoZ4i4xX7BrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.html",
+          "hash": "ZDpJ5MXAlteLN0RUpqLOmxKzLm9cWLvBCNfOVsvbQGc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.IInherit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.IInherit.html",
+          "hash": "zwjJ5YQ++Pp9VdUyJACkp8L+wsxFQ02ZJlRQDTW84A8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.FullNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html",
+          "hash": "XPNIWFhtsKSO2OuxsIfSWxSVgZyOng3+MRLqOSXuoqM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.html",
+          "hash": "85/lxLqxqIhz4aGiD28Lcw8rIB7PBYg9BQbINGeevNs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.Not.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.Not.html",
+          "hash": "Kxhpy/D6Hh77VK+ldcTpDGvE6vOg05y/2jp/3sR8JAA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.True.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.True.html",
+          "hash": "5jX+HtOH3Mye3qYeXwPa9AymcjaA2sboHYT6/B25xMg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Nodes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Nodes.html",
+          "hash": "ZDMG9MbqOl9WeIlbfncZRBPDIc2pJ4PPf5w6ylG1dcQ="
         }
       },
       "is_incremental": false,
@@ -1102,7 +1330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "9h5wZMEqi4ERHVbIIvHIbuvVjMjm6QgmTIMvHwB434U="
+          "hash": "T7kklhWatVsUds4mYZS1GNEOsu7ziui2FsW+Nyho9YM="
         }
       },
       "is_incremental": false,
@@ -1165,7 +1393,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 97,
+          "total_file_count": 116,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

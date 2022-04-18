@@ -3967,6 +3967,15 @@ references:
   commentId: M:InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type)
   fullName: InscryptionAPI.Encounters.OpponentManager.Add(System.String, System.String, System.String, Type)
   nameWithType: OpponentManager.Add(String, String, String, Type)
+- uid: InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type,List{UnityEngine.Texture2D})
+  name: Add(String, String, String, Type, List<Texture2D>)
+  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_Add_System_String_System_String_System_String_Type_List_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type,List{UnityEngine.Texture2D})
+  name.vb: Add(String, String, String, Type, List(Of Texture2D))
+  fullName: InscryptionAPI.Encounters.OpponentManager.Add(System.String, System.String, System.String, Type, List<UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.Encounters.OpponentManager.Add(System.String, System.String, System.String, Type, List(Of UnityEngine.Texture2D))
+  nameWithType: OpponentManager.Add(String, String, String, Type, List<Texture2D>)
+  nameWithType.vb: OpponentManager.Add(String, String, String, Type, List(Of Texture2D))
 - uid: InscryptionAPI.Encounters.OpponentManager.Add*
   name: Add
   href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_Add_
@@ -4005,6 +4014,15 @@ references:
   commentId: M:InscryptionAPI.Encounters.OpponentManager.FullOpponent.#ctor(DiskCardGame.Opponent.Type,Type,System.String)
   fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.FullOpponent(DiskCardGame.Opponent.Type, Type, System.String)
   nameWithType: OpponentManager.FullOpponent.FullOpponent(Opponent.Type, Type, String)
+- uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.#ctor(DiskCardGame.Opponent.Type,Type,System.String,List{UnityEngine.Texture2D})
+  name: FullOpponent(Opponent.Type, Type, String, List<Texture2D>)
+  href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent__ctor_DiskCardGame_Opponent_Type_Type_System_String_List_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.Encounters.OpponentManager.FullOpponent.#ctor(DiskCardGame.Opponent.Type,Type,System.String,List{UnityEngine.Texture2D})
+  name.vb: FullOpponent(Opponent.Type, Type, String, List(Of Texture2D))
+  fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.FullOpponent(DiskCardGame.Opponent.Type, Type, System.String, List<UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.Encounters.OpponentManager.FullOpponent.FullOpponent(DiskCardGame.Opponent.Type, Type, System.String, List(Of UnityEngine.Texture2D))
+  nameWithType: OpponentManager.FullOpponent.FullOpponent(Opponent.Type, Type, String, List<Texture2D>)
+  nameWithType.vb: OpponentManager.FullOpponent.FullOpponent(Opponent.Type, Type, String, List(Of Texture2D))
 - uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.#ctor*
   name: FullOpponent
   href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent__ctor_
@@ -4018,6 +4036,12 @@ references:
   commentId: F:InscryptionAPI.Encounters.OpponentManager.FullOpponent.Id
   fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.Id
   nameWithType: OpponentManager.FullOpponent.Id
+- uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.NodeAnimation
+  name: NodeAnimation
+  href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent_NodeAnimation
+  commentId: F:InscryptionAPI.Encounters.OpponentManager.FullOpponent.NodeAnimation
+  fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.NodeAnimation
+  nameWithType: OpponentManager.FullOpponent.NodeAnimation
 - uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.Opponent
   name: Opponent
   href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent_Opponent
@@ -4761,6 +4785,1200 @@ references:
   commentId: E:InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   fullName: InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   nameWithType: InscryptionAPIPlugin.ScriptableObjectLoaderLoad
+- uid: InscryptionAPI.Nodes
+  name: InscryptionAPI.Nodes
+  href: api/InscryptionAPI.Nodes.html
+  commentId: N:InscryptionAPI.Nodes
+  fullName: InscryptionAPI.Nodes
+  nameWithType: InscryptionAPI.Nodes
+- uid: InscryptionAPI.Nodes.And
+  name: And
+  href: api/InscryptionAPI.Nodes.And.html
+  commentId: T:InscryptionAPI.Nodes.And
+  fullName: InscryptionAPI.Nodes.And
+  nameWithType: And
+- uid: InscryptionAPI.Nodes.And.#ctor(DiskCardGame.NodeData.SelectionCondition,DiskCardGame.NodeData.SelectionCondition)
+  name: And(NodeData.SelectionCondition, NodeData.SelectionCondition)
+  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And__ctor_DiskCardGame_NodeData_SelectionCondition_DiskCardGame_NodeData_SelectionCondition_
+  commentId: M:InscryptionAPI.Nodes.And.#ctor(DiskCardGame.NodeData.SelectionCondition,DiskCardGame.NodeData.SelectionCondition)
+  fullName: InscryptionAPI.Nodes.And.And(DiskCardGame.NodeData.SelectionCondition, DiskCardGame.NodeData.SelectionCondition)
+  nameWithType: And.And(NodeData.SelectionCondition, NodeData.SelectionCondition)
+- uid: InscryptionAPI.Nodes.And.#ctor*
+  name: And
+  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.And.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.And.And
+  nameWithType: And.And
+- uid: InscryptionAPI.Nodes.And.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.And.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.And.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.And.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: And.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: And.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.And.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.And.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.And.Satisfied
+  nameWithType: And.Satisfied
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer
+  name: CustomCardChoiceNodeSequencer
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html
+  commentId: T:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer
+  nameWithType: CustomCardChoiceNodeSequencer
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+  name: DeckPileInheritsOffsets
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPileInheritsOffsets
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets*
+  name: DeckPileInheritsOffsets
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPileInheritsOffsets_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPileInheritsOffsets
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+  name: DeckPilePositionOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPilePositionOffset
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset*
+  name: DeckPilePositionOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPilePositionOffset_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPilePositionOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+  name: DeckPileRotationOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPileRotationOffset
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset*
+  name: DeckPileRotationOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DeckPileRotationOffset_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+  nameWithType: CustomCardChoiceNodeSequencer.DeckPileRotationOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: DoCustomSequence(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DoCustomSequence_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomCardChoiceNodeSequencer.DoCustomSequence(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence*
+  name: DoCustomSequence
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_DoCustomSequence_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.DoCustomSequence
+  nameWithType: CustomCardChoiceNodeSequencer.DoCustomSequence
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: Inherit(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_Inherit_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomCardChoiceNodeSequencer.Inherit(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit*
+  name: Inherit
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_Inherit_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.Inherit
+  nameWithType: CustomCardChoiceNodeSequencer.Inherit
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget
+  name: InheritTarget
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_InheritTarget
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget
+  nameWithType: CustomCardChoiceNodeSequencer.InheritTarget
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget*
+  name: InheritTarget
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_InheritTarget_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.InheritTarget
+  nameWithType: CustomCardChoiceNodeSequencer.InheritTarget
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset
+  name: PositionOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_PositionOffset
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset
+  nameWithType: CustomCardChoiceNodeSequencer.PositionOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset*
+  name: PositionOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_PositionOffset_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.PositionOffset
+  nameWithType: CustomCardChoiceNodeSequencer.PositionOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset
+  name: RotationOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_RotationOffset
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset
+  nameWithType: CustomCardChoiceNodeSequencer.RotationOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset*
+  name: RotationOffset
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_RotationOffset_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.RotationOffset
+  nameWithType: CustomCardChoiceNodeSequencer.RotationOffset
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldDestroyOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldDestroyOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd*
+  name: ShouldDestroyOnEnd
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldDestroyOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldDestroyOnEnd
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit
+  name: ShouldInherit
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldInherit
+  commentId: P:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldInherit
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit*
+  name: ShouldInherit
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldInherit_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldInherit
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldInherit
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldNotReturnToMapOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd*
+  name: ShouldNotReturnToMapOnEnd
+  href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html#InscryptionAPI_Nodes_CustomCardChoiceNodeSequencer_ShouldNotReturnToMapOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd
+  nameWithType: CustomCardChoiceNodeSequencer.ShouldNotReturnToMapOnEnd
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer
+  name: CustomNodeSequencer
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html
+  commentId: T:InscryptionAPI.Nodes.CustomNodeSequencer
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer
+  nameWithType: CustomNodeSequencer
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: DoCustomSequence(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_DoCustomSequence_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomNodeSequencer.DoCustomSequence(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence*
+  name: DoCustomSequence
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_DoCustomSequence_
+  commentId: Overload:InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.DoCustomSequence
+  nameWithType: CustomNodeSequencer.DoCustomSequence
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: Inherit(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_Inherit_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomNodeSequencer.Inherit(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.Inherit*
+  name: Inherit
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_Inherit_
+  commentId: Overload:InscryptionAPI.Nodes.CustomNodeSequencer.Inherit
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.Inherit
+  nameWithType: CustomNodeSequencer.Inherit
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldDestroyOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_ShouldDestroyOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomNodeSequencer.ShouldDestroyOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd*
+  name: ShouldDestroyOnEnd
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_ShouldDestroyOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldDestroyOnEnd
+  nameWithType: CustomNodeSequencer.ShouldDestroyOnEnd
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_ShouldNotReturnToMapOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: CustomNodeSequencer.ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd*
+  name: ShouldNotReturnToMapOnEnd
+  href: api/InscryptionAPI.Nodes.CustomNodeSequencer.html#InscryptionAPI_Nodes_CustomNodeSequencer_ShouldNotReturnToMapOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomNodeSequencer.ShouldNotReturnToMapOnEnd
+  nameWithType: CustomNodeSequencer.ShouldNotReturnToMapOnEnd
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent
+  name: CustomPreviousNodesContent
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html
+  commentId: T:InscryptionAPI.Nodes.CustomPreviousNodesContent
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent
+  nameWithType: CustomPreviousNodesContent
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.#ctor(System.String,System.String,System.Boolean)
+  name: CustomPreviousNodesContent(String, String, Boolean)
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent__ctor_System_String_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousNodesContent.#ctor(System.String,System.String,System.Boolean)
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.CustomPreviousNodesContent(System.String, System.String, System.Boolean)
+  nameWithType: CustomPreviousNodesContent.CustomPreviousNodesContent(String, String, Boolean)
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.#ctor*
+  name: CustomPreviousNodesContent
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.CustomPreviousNodesContent.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.CustomPreviousNodesContent
+  nameWithType: CustomPreviousNodesContent.CustomPreviousNodesContent
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: CustomPreviousNodesContent.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: CustomPreviousNodesContent.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied
+  nameWithType: CustomPreviousNodesContent.Satisfied
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent
+  name: CustomPreviousRowContent
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html
+  commentId: T:InscryptionAPI.Nodes.CustomPreviousRowContent
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent
+  nameWithType: CustomPreviousRowContent
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.#ctor(System.String,System.String,System.Boolean)
+  name: CustomPreviousRowContent(String, String, Boolean)
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent__ctor_System_String_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousRowContent.#ctor(System.String,System.String,System.Boolean)
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.CustomPreviousRowContent(System.String, System.String, System.Boolean)
+  nameWithType: CustomPreviousRowContent.CustomPreviousRowContent(String, String, Boolean)
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.#ctor*
+  name: CustomPreviousRowContent
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.CustomPreviousRowContent.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.CustomPreviousRowContent
+  nameWithType: CustomPreviousRowContent.CustomPreviousRowContent
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: CustomPreviousRowContent.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: CustomPreviousRowContent.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied
+  nameWithType: CustomPreviousRowContent.Satisfied
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData
+  name: CustomSpecialNodeData
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html
+  commentId: T:InscryptionAPI.Nodes.CustomSpecialNodeData
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData
+  nameWithType: CustomSpecialNodeData
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.#ctor(InscryptionAPI.Nodes.NewNodeManager.FullNode)
+  name: CustomSpecialNodeData(NewNodeManager.FullNode)
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData__ctor_InscryptionAPI_Nodes_NewNodeManager_FullNode_
+  commentId: M:InscryptionAPI.Nodes.CustomSpecialNodeData.#ctor(InscryptionAPI.Nodes.NewNodeManager.FullNode)
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.CustomSpecialNodeData(InscryptionAPI.Nodes.NewNodeManager.FullNode)
+  nameWithType: CustomSpecialNodeData.CustomSpecialNodeData(NewNodeManager.FullNode)
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.#ctor*
+  name: CustomSpecialNodeData
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.CustomSpecialNodeData
+  nameWithType: CustomSpecialNodeData.CustomSpecialNodeData
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions
+  name: ForceGenerationConditions
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_ForceGenerationConditions
+  commentId: P:InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions
+  nameWithType: CustomSpecialNodeData.ForceGenerationConditions
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions*
+  name: ForceGenerationConditions
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_ForceGenerationConditions_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.ForceGenerationConditions
+  nameWithType: CustomSpecialNodeData.ForceGenerationConditions
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions
+  name: GenerationPrerequisiteConditions
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_GenerationPrerequisiteConditions
+  commentId: P:InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions
+  nameWithType: CustomSpecialNodeData.GenerationPrerequisiteConditions
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions*
+  name: GenerationPrerequisiteConditions
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_GenerationPrerequisiteConditions_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.GenerationPrerequisiteConditions
+  nameWithType: CustomSpecialNodeData.GenerationPrerequisiteConditions
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Get(System.String)
+  name: Get(String)
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Get_System_String_
+  commentId: M:InscryptionAPI.Nodes.CustomSpecialNodeData.Get(System.String)
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Get(System.String)
+  nameWithType: CustomSpecialNodeData.Get(String)
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Get*
+  name: Get
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Get_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.Get
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Get
+  nameWithType: CustomSpecialNodeData.Get
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Get``1(System.String)
+  name: Get<T>(String)
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Get__1_System_String_
+  commentId: M:InscryptionAPI.Nodes.CustomSpecialNodeData.Get``1(System.String)
+  name.vb: Get(Of T)(String)
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Get<T>(System.String)
+  fullName.vb: InscryptionAPI.Nodes.CustomSpecialNodeData.Get(Of T)(System.String)
+  nameWithType: CustomSpecialNodeData.Get<T>(String)
+  nameWithType.vb: CustomSpecialNodeData.Get(Of T)(String)
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.guid
+  name: guid
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_guid
+  commentId: F:InscryptionAPI.Nodes.CustomSpecialNodeData.guid
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.guid
+  nameWithType: CustomSpecialNodeData.guid
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.name
+  name: name
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_name
+  commentId: F:InscryptionAPI.Nodes.CustomSpecialNodeData.name
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.name
+  nameWithType: CustomSpecialNodeData.name
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Node
+  name: Node
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Node
+  commentId: P:InscryptionAPI.Nodes.CustomSpecialNodeData.Node
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Node
+  nameWithType: CustomSpecialNodeData.Node
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Node*
+  name: Node
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Node_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.Node
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Node
+  nameWithType: CustomSpecialNodeData.Node
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath
+  name: PrefabPath
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_PrefabPath
+  commentId: P:InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath
+  nameWithType: CustomSpecialNodeData.PrefabPath
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath*
+  name: PrefabPath
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_PrefabPath_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.PrefabPath
+  nameWithType: CustomSpecialNodeData.PrefabPath
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Set(System.String,System.Object)
+  name: Set(String, Object)
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Set_System_String_System_Object_
+  commentId: M:InscryptionAPI.Nodes.CustomSpecialNodeData.Set(System.String,System.Object)
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Set(System.String, System.Object)
+  nameWithType: CustomSpecialNodeData.Set(String, Object)
+- uid: InscryptionAPI.Nodes.CustomSpecialNodeData.Set*
+  name: Set
+  href: api/InscryptionAPI.Nodes.CustomSpecialNodeData.html#InscryptionAPI_Nodes_CustomSpecialNodeData_Set_
+  commentId: Overload:InscryptionAPI.Nodes.CustomSpecialNodeData.Set
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.CustomSpecialNodeData.Set
+  nameWithType: CustomSpecialNodeData.Set
+- uid: InscryptionAPI.Nodes.EasyAccess
+  name: EasyAccess
+  href: api/InscryptionAPI.Nodes.EasyAccess.html
+  commentId: T:InscryptionAPI.Nodes.EasyAccess
+  fullName: InscryptionAPI.Nodes.EasyAccess
+  nameWithType: EasyAccess
+- uid: InscryptionAPI.Nodes.EasyAccess.BoulderChoice
+  name: BoulderChoice
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BoulderChoice
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.BoulderChoice
+  fullName: InscryptionAPI.Nodes.EasyAccess.BoulderChoice
+  nameWithType: EasyAccess.BoulderChoice
+- uid: InscryptionAPI.Nodes.EasyAccess.BoulderChoice*
+  name: BoulderChoice
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BoulderChoice_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.BoulderChoice
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.BoulderChoice
+  nameWithType: EasyAccess.BoulderChoice
+- uid: InscryptionAPI.Nodes.EasyAccess.BuildTotem
+  name: BuildTotem
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BuildTotem
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.BuildTotem
+  fullName: InscryptionAPI.Nodes.EasyAccess.BuildTotem
+  nameWithType: EasyAccess.BuildTotem
+- uid: InscryptionAPI.Nodes.EasyAccess.BuildTotem*
+  name: BuildTotem
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BuildTotem_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.BuildTotem
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.BuildTotem
+  nameWithType: EasyAccess.BuildTotem
+- uid: InscryptionAPI.Nodes.EasyAccess.BuyPelts
+  name: BuyPelts
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BuyPelts
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.BuyPelts
+  fullName: InscryptionAPI.Nodes.EasyAccess.BuyPelts
+  nameWithType: EasyAccess.BuyPelts
+- uid: InscryptionAPI.Nodes.EasyAccess.BuyPelts*
+  name: BuyPelts
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_BuyPelts_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.BuyPelts
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.BuyPelts
+  nameWithType: EasyAccess.BuyPelts
+- uid: InscryptionAPI.Nodes.EasyAccess.CardMerge
+  name: CardMerge
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardMerge
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.CardMerge
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardMerge
+  nameWithType: EasyAccess.CardMerge
+- uid: InscryptionAPI.Nodes.EasyAccess.CardMerge*
+  name: CardMerge
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardMerge_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.CardMerge
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardMerge
+  nameWithType: EasyAccess.CardMerge
+- uid: InscryptionAPI.Nodes.EasyAccess.CardRemove
+  name: CardRemove
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardRemove
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.CardRemove
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardRemove
+  nameWithType: EasyAccess.CardRemove
+- uid: InscryptionAPI.Nodes.EasyAccess.CardRemove*
+  name: CardRemove
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardRemove_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.CardRemove
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardRemove
+  nameWithType: EasyAccess.CardRemove
+- uid: InscryptionAPI.Nodes.EasyAccess.CardSingleChoices
+  name: CardSingleChoices
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardSingleChoices
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.CardSingleChoices
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardSingleChoices
+  nameWithType: EasyAccess.CardSingleChoices
+- uid: InscryptionAPI.Nodes.EasyAccess.CardSingleChoices*
+  name: CardSingleChoices
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardSingleChoices_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.CardSingleChoices
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardSingleChoices
+  nameWithType: EasyAccess.CardSingleChoices
+- uid: InscryptionAPI.Nodes.EasyAccess.CardStatBoost
+  name: CardStatBoost
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardStatBoost
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.CardStatBoost
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardStatBoost
+  nameWithType: EasyAccess.CardStatBoost
+- uid: InscryptionAPI.Nodes.EasyAccess.CardStatBoost*
+  name: CardStatBoost
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CardStatBoost_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.CardStatBoost
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.CardStatBoost
+  nameWithType: EasyAccess.CardStatBoost
+- uid: InscryptionAPI.Nodes.EasyAccess.ChooseEyeball
+  name: ChooseEyeball
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_ChooseEyeball
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.ChooseEyeball
+  fullName: InscryptionAPI.Nodes.EasyAccess.ChooseEyeball
+  nameWithType: EasyAccess.ChooseEyeball
+- uid: InscryptionAPI.Nodes.EasyAccess.ChooseEyeball*
+  name: ChooseEyeball
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_ChooseEyeball_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.ChooseEyeball
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.ChooseEyeball
+  nameWithType: EasyAccess.ChooseEyeball
+- uid: InscryptionAPI.Nodes.EasyAccess.CopyCard
+  name: CopyCard
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CopyCard
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.CopyCard
+  fullName: InscryptionAPI.Nodes.EasyAccess.CopyCard
+  nameWithType: EasyAccess.CopyCard
+- uid: InscryptionAPI.Nodes.EasyAccess.CopyCard*
+  name: CopyCard
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_CopyCard_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.CopyCard
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.CopyCard
+  nameWithType: EasyAccess.CopyCard
+- uid: InscryptionAPI.Nodes.EasyAccess.DeckTrial
+  name: DeckTrial
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_DeckTrial
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.DeckTrial
+  fullName: InscryptionAPI.Nodes.EasyAccess.DeckTrial
+  nameWithType: EasyAccess.DeckTrial
+- uid: InscryptionAPI.Nodes.EasyAccess.DeckTrial*
+  name: DeckTrial
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_DeckTrial_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.DeckTrial
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.DeckTrial
+  nameWithType: EasyAccess.DeckTrial
+- uid: InscryptionAPI.Nodes.EasyAccess.DuplicateMerge
+  name: DuplicateMerge
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_DuplicateMerge
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.DuplicateMerge
+  fullName: InscryptionAPI.Nodes.EasyAccess.DuplicateMerge
+  nameWithType: EasyAccess.DuplicateMerge
+- uid: InscryptionAPI.Nodes.EasyAccess.DuplicateMerge*
+  name: DuplicateMerge
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_DuplicateMerge_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.DuplicateMerge
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.DuplicateMerge
+  nameWithType: EasyAccess.DuplicateMerge
+- uid: InscryptionAPI.Nodes.EasyAccess.GainConsumables
+  name: GainConsumables
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_GainConsumables
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.GainConsumables
+  fullName: InscryptionAPI.Nodes.EasyAccess.GainConsumables
+  nameWithType: EasyAccess.GainConsumables
+- uid: InscryptionAPI.Nodes.EasyAccess.GainConsumables*
+  name: GainConsumables
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_GainConsumables_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.GainConsumables
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.GainConsumables
+  nameWithType: EasyAccess.GainConsumables
+- uid: InscryptionAPI.Nodes.EasyAccess.NodeHandler
+  name: NodeHandler
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_NodeHandler
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.NodeHandler
+  fullName: InscryptionAPI.Nodes.EasyAccess.NodeHandler
+  nameWithType: EasyAccess.NodeHandler
+- uid: InscryptionAPI.Nodes.EasyAccess.NodeHandler*
+  name: NodeHandler
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_NodeHandler_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.NodeHandler
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.NodeHandler
+  nameWithType: EasyAccess.NodeHandler
+- uid: InscryptionAPI.Nodes.EasyAccess.RareCardChoices
+  name: RareCardChoices
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_RareCardChoices
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.RareCardChoices
+  fullName: InscryptionAPI.Nodes.EasyAccess.RareCardChoices
+  nameWithType: EasyAccess.RareCardChoices
+- uid: InscryptionAPI.Nodes.EasyAccess.RareCardChoices*
+  name: RareCardChoices
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_RareCardChoices_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.RareCardChoices
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.RareCardChoices
+  nameWithType: EasyAccess.RareCardChoices
+- uid: InscryptionAPI.Nodes.EasyAccess.TradePelts
+  name: TradePelts
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_TradePelts
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.TradePelts
+  fullName: InscryptionAPI.Nodes.EasyAccess.TradePelts
+  nameWithType: EasyAccess.TradePelts
+- uid: InscryptionAPI.Nodes.EasyAccess.TradePelts*
+  name: TradePelts
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_TradePelts_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.TradePelts
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.TradePelts
+  nameWithType: EasyAccess.TradePelts
+- uid: InscryptionAPI.Nodes.EasyAccess.VictoryFeast
+  name: VictoryFeast
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_VictoryFeast
+  commentId: P:InscryptionAPI.Nodes.EasyAccess.VictoryFeast
+  fullName: InscryptionAPI.Nodes.EasyAccess.VictoryFeast
+  nameWithType: EasyAccess.VictoryFeast
+- uid: InscryptionAPI.Nodes.EasyAccess.VictoryFeast*
+  name: VictoryFeast
+  href: api/InscryptionAPI.Nodes.EasyAccess.html#InscryptionAPI_Nodes_EasyAccess_VictoryFeast_
+  commentId: Overload:InscryptionAPI.Nodes.EasyAccess.VictoryFeast
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.EasyAccess.VictoryFeast
+  nameWithType: EasyAccess.VictoryFeast
+- uid: InscryptionAPI.Nodes.False
+  name: "False"
+  href: api/InscryptionAPI.Nodes.False.html
+  commentId: T:InscryptionAPI.Nodes.False
+  fullName: InscryptionAPI.Nodes.False
+  nameWithType: "False"
+- uid: InscryptionAPI.Nodes.False.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.False.html#InscryptionAPI_Nodes_False_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.False.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.False.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.False.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: False.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: False.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.False.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.False.html#InscryptionAPI_Nodes_False_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.False.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.False.Satisfied
+  nameWithType: False.Satisfied
+- uid: InscryptionAPI.Nodes.Func
+  name: Func
+  href: api/InscryptionAPI.Nodes.Func.html
+  commentId: T:InscryptionAPI.Nodes.Func
+  fullName: InscryptionAPI.Nodes.Func
+  nameWithType: Func
+- uid: InscryptionAPI.Nodes.Func.#ctor(System.Func{System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData},System.Boolean})
+  name: Func(Func<Int32, List<NodeData>, Boolean>)
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func__ctor_System_Func_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__System_Boolean__
+  commentId: M:InscryptionAPI.Nodes.Func.#ctor(System.Func{System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData},System.Boolean})
+  name.vb: Func(Func(Of Int32, List(Of NodeData), Boolean))
+  fullName: InscryptionAPI.Nodes.Func.Func(System.Func<System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>, System.Boolean>)
+  fullName.vb: InscryptionAPI.Nodes.Func.Func(System.Func(Of System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData), System.Boolean))
+  nameWithType: Func.Func(Func<Int32, List<NodeData>, Boolean>)
+  nameWithType.vb: Func.Func(Func(Of Int32, List(Of NodeData), Boolean))
+- uid: InscryptionAPI.Nodes.Func.#ctor*
+  name: Func
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.Func.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.Func.Func
+  nameWithType: Func.Func
+- uid: InscryptionAPI.Nodes.Func.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.Func.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: Func.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: Func.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.Func.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.Func.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.Func.Satisfied
+  nameWithType: Func.Satisfied
+- uid: InscryptionAPI.Nodes.GenerationType
+  name: GenerationType
+  href: api/InscryptionAPI.Nodes.GenerationType.html
+  commentId: T:InscryptionAPI.Nodes.GenerationType
+  fullName: InscryptionAPI.Nodes.GenerationType
+  nameWithType: GenerationType
+- uid: InscryptionAPI.Nodes.GenerationType.None
+  name: None
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_None
+  commentId: F:InscryptionAPI.Nodes.GenerationType.None
+  fullName: InscryptionAPI.Nodes.GenerationType.None
+  nameWithType: GenerationType.None
+- uid: InscryptionAPI.Nodes.GenerationType.PostBoss
+  name: PostBoss
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_PostBoss
+  commentId: F:InscryptionAPI.Nodes.GenerationType.PostBoss
+  fullName: InscryptionAPI.Nodes.GenerationType.PostBoss
+  nameWithType: GenerationType.PostBoss
+- uid: InscryptionAPI.Nodes.GenerationType.PreBoss
+  name: PreBoss
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_PreBoss
+  commentId: F:InscryptionAPI.Nodes.GenerationType.PreBoss
+  fullName: InscryptionAPI.Nodes.GenerationType.PreBoss
+  nameWithType: GenerationType.PreBoss
+- uid: InscryptionAPI.Nodes.GenerationType.RegionStart
+  name: RegionStart
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_RegionStart
+  commentId: F:InscryptionAPI.Nodes.GenerationType.RegionStart
+  fullName: InscryptionAPI.Nodes.GenerationType.RegionStart
+  nameWithType: GenerationType.RegionStart
+- uid: InscryptionAPI.Nodes.GenerationType.SpecialCardChoice
+  name: SpecialCardChoice
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_SpecialCardChoice
+  commentId: F:InscryptionAPI.Nodes.GenerationType.SpecialCardChoice
+  fullName: InscryptionAPI.Nodes.GenerationType.SpecialCardChoice
+  nameWithType: GenerationType.SpecialCardChoice
+- uid: InscryptionAPI.Nodes.GenerationType.SpecialEvent
+  name: SpecialEvent
+  href: api/InscryptionAPI.Nodes.GenerationType.html#InscryptionAPI_Nodes_GenerationType_SpecialEvent
+  commentId: F:InscryptionAPI.Nodes.GenerationType.SpecialEvent
+  fullName: InscryptionAPI.Nodes.GenerationType.SpecialEvent
+  nameWithType: GenerationType.SpecialEvent
+- uid: InscryptionAPI.Nodes.ICustomNodeSequencer
+  name: ICustomNodeSequencer
+  href: api/InscryptionAPI.Nodes.ICustomNodeSequencer.html
+  commentId: T:InscryptionAPI.Nodes.ICustomNodeSequencer
+  fullName: InscryptionAPI.Nodes.ICustomNodeSequencer
+  nameWithType: ICustomNodeSequencer
+- uid: InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: DoCustomSequence(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.ICustomNodeSequencer.html#InscryptionAPI_Nodes_ICustomNodeSequencer_DoCustomSequence_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: ICustomNodeSequencer.DoCustomSequence(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence*
+  name: DoCustomSequence
+  href: api/InscryptionAPI.Nodes.ICustomNodeSequencer.html#InscryptionAPI_Nodes_ICustomNodeSequencer_DoCustomSequence_
+  commentId: Overload:InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.ICustomNodeSequencer.DoCustomSequence
+  nameWithType: ICustomNodeSequencer.DoCustomSequence
+- uid: InscryptionAPI.Nodes.IDestroyOnEnd
+  name: IDestroyOnEnd
+  href: api/InscryptionAPI.Nodes.IDestroyOnEnd.html
+  commentId: T:InscryptionAPI.Nodes.IDestroyOnEnd
+  fullName: InscryptionAPI.Nodes.IDestroyOnEnd
+  nameWithType: IDestroyOnEnd
+- uid: InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldDestroyOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.IDestroyOnEnd.html#InscryptionAPI_Nodes_IDestroyOnEnd_ShouldDestroyOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: IDestroyOnEnd.ShouldDestroyOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd*
+  name: ShouldDestroyOnEnd
+  href: api/InscryptionAPI.Nodes.IDestroyOnEnd.html#InscryptionAPI_Nodes_IDestroyOnEnd_ShouldDestroyOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.IDestroyOnEnd.ShouldDestroyOnEnd
+  nameWithType: IDestroyOnEnd.ShouldDestroyOnEnd
+- uid: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd
+  name: IDoNotReturnToMapOnEnd
+  href: api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.html
+  commentId: T:InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd
+  fullName: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd
+  nameWithType: IDoNotReturnToMapOnEnd
+- uid: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.html#InscryptionAPI_Nodes_IDoNotReturnToMapOnEnd_ShouldNotReturnToMapOnEnd_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd*
+  name: ShouldNotReturnToMapOnEnd
+  href: api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.html#InscryptionAPI_Nodes_IDoNotReturnToMapOnEnd_ShouldNotReturnToMapOnEnd_
+  commentId: Overload:InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd
+  nameWithType: IDoNotReturnToMapOnEnd.ShouldNotReturnToMapOnEnd
+- uid: InscryptionAPI.Nodes.IInherit
+  name: IInherit
+  href: api/InscryptionAPI.Nodes.IInherit.html
+  commentId: T:InscryptionAPI.Nodes.IInherit
+  fullName: InscryptionAPI.Nodes.IInherit
+  nameWithType: IInherit
+- uid: InscryptionAPI.Nodes.IInherit.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  name: Inherit(CustomSpecialNodeData)
+  href: api/InscryptionAPI.Nodes.IInherit.html#InscryptionAPI_Nodes_IInherit_Inherit_InscryptionAPI_Nodes_CustomSpecialNodeData_
+  commentId: M:InscryptionAPI.Nodes.IInherit.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  fullName: InscryptionAPI.Nodes.IInherit.Inherit(InscryptionAPI.Nodes.CustomSpecialNodeData)
+  nameWithType: IInherit.Inherit(CustomSpecialNodeData)
+- uid: InscryptionAPI.Nodes.IInherit.Inherit*
+  name: Inherit
+  href: api/InscryptionAPI.Nodes.IInherit.html#InscryptionAPI_Nodes_IInherit_Inherit_
+  commentId: Overload:InscryptionAPI.Nodes.IInherit.Inherit
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.IInherit.Inherit
+  nameWithType: IInherit.Inherit
+- uid: InscryptionAPI.Nodes.NewNodeManager
+  name: NewNodeManager
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html
+  commentId: T:InscryptionAPI.Nodes.NewNodeManager
+  fullName: InscryptionAPI.Nodes.NewNodeManager
+  nameWithType: NewNodeManager
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode
+  name: NewNodeManager.FullNode
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html
+  commentId: T:InscryptionAPI.Nodes.NewNodeManager.FullNode
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode
+  nameWithType: NewNodeManager.FullNode
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.forceGenerationConditions
+  name: forceGenerationConditions
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_forceGenerationConditions
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.forceGenerationConditions
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.forceGenerationConditions
+  nameWithType: NewNodeManager.FullNode.forceGenerationConditions
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.generationPrerequisites
+  name: generationPrerequisites
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_generationPrerequisites
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.generationPrerequisites
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.generationPrerequisites
+  nameWithType: NewNodeManager.FullNode.generationPrerequisites
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.generationType
+  name: generationType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_generationType
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.generationType
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.generationType
+  nameWithType: NewNodeManager.FullNode.generationType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType
+  name: GetSequencerType()
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_GetSequencerType
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType()
+  nameWithType: NewNodeManager.FullNode.GetSequencerType()
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType*
+  name: GetSequencerType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_GetSequencerType_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.GetSequencerType
+  nameWithType: NewNodeManager.FullNode.GetSequencerType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.guid
+  name: guid
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_guid
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.guid
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.guid
+  nameWithType: NewNodeManager.FullNode.guid
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType
+  name: IsValidSequencerType()
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_IsValidSequencerType
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType()
+  nameWithType: NewNodeManager.FullNode.IsValidSequencerType()
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType*
+  name: IsValidSequencerType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_IsValidSequencerType_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.IsValidSequencerType
+  nameWithType: NewNodeManager.FullNode.IsValidSequencerType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.name
+  name: name
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_name
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.name
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.name
+  nameWithType: NewNodeManager.FullNode.name
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeAnimation
+  name: nodeAnimation
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_nodeAnimation
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeAnimation
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeAnimation
+  nameWithType: NewNodeManager.FullNode.nodeAnimation
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodePrefab
+  name: nodePrefab
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_nodePrefab
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.nodePrefab
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodePrefab
+  nameWithType: NewNodeManager.FullNode.nodePrefab
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeSequencerType
+  name: nodeSequencerType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_nodeSequencerType
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeSequencerType
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.nodeSequencerType
+  nameWithType: NewNodeManager.FullNode.nodeSequencerType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.onPostNodeGeneration
+  name: onPostNodeGeneration
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_onPostNodeGeneration
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.onPostNodeGeneration
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.onPostNodeGeneration
+  nameWithType: NewNodeManager.FullNode.onPostNodeGeneration
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.onPreNodeGeneration
+  name: onPreNodeGeneration
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_onPreNodeGeneration
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.onPreNodeGeneration
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.onPreNodeGeneration
+  nameWithType: NewNodeManager.FullNode.onPreNodeGeneration
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.sequencerPrefab
+  name: sequencerPrefab
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_sequencerPrefab
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.sequencerPrefab
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.sequencerPrefab
+  nameWithType: NewNodeManager.FullNode.sequencerPrefab
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
+  name: SequencerTypeIsValid(Type)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SequencerTypeIsValid_System_Type_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
+  nameWithType: NewNodeManager.FullNode.SequencerTypeIsValid(Type)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid*
+  name: SequencerTypeIsValid
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SequencerTypeIsValid_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid
+  nameWithType: NewNodeManager.FullNode.SequencerTypeIsValid
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  name: SetForceGenerationConditions(List<NodeData.SelectionCondition>)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetForceGenerationConditions_System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  name.vb: SetForceGenerationConditions(List(Of NodeData.SelectionCondition))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition))
+  nameWithType: NewNodeManager.FullNode.SetForceGenerationConditions(List<NodeData.SelectionCondition>)
+  nameWithType.vb: NewNodeManager.FullNode.SetForceGenerationConditions(List(Of NodeData.SelectionCondition))
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions*
+  name: SetForceGenerationConditions
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetForceGenerationConditions_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions
+  nameWithType: NewNodeManager.FullNode.SetForceGenerationConditions
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  name: SetGenerationPrerequisites(List<NodeData.SelectionCondition>)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationPrerequisites_System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  name.vb: SetGenerationPrerequisites(List(Of NodeData.SelectionCondition))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition))
+  nameWithType: NewNodeManager.FullNode.SetGenerationPrerequisites(List<NodeData.SelectionCondition>)
+  nameWithType.vb: NewNodeManager.FullNode.SetGenerationPrerequisites(List(Of NodeData.SelectionCondition))
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites*
+  name: SetGenerationPrerequisites
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationPrerequisites_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites
+  nameWithType: NewNodeManager.FullNode.SetGenerationPrerequisites
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType(InscryptionAPI.Nodes.GenerationType)
+  name: SetGenerationType(GenerationType)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationType_InscryptionAPI_Nodes_GenerationType_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType(InscryptionAPI.Nodes.GenerationType)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType(InscryptionAPI.Nodes.GenerationType)
+  nameWithType: NewNodeManager.FullNode.SetGenerationType(GenerationType)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType*
+  name: SetGenerationType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationType_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationType
+  nameWithType: NewNodeManager.FullNode.SetGenerationType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid(System.String)
+  name: SetGuid(String)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGuid_System_String_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid(System.String)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid(System.String)
+  nameWithType: NewNodeManager.FullNode.SetGuid(String)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid*
+  name: SetGuid
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGuid_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGuid
+  nameWithType: NewNodeManager.FullNode.SetGuid
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName(System.String)
+  name: SetName(String)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetName_System_String_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName(System.String)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName(System.String)
+  nameWithType: NewNodeManager.FullNode.SetName(String)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName*
+  name: SetName
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetName_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName
+  nameWithType: NewNodeManager.FullNode.SetName
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List{UnityEngine.Texture2D})
+  name: SetNodeAnimation(List<Texture2D>)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeAnimation_System_Collections_Generic_List_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List{UnityEngine.Texture2D})
+  name.vb: SetNodeAnimation(List(Of Texture2D))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List<UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List(Of UnityEngine.Texture2D))
+  nameWithType: NewNodeManager.FullNode.SetNodeAnimation(List<Texture2D>)
+  nameWithType.vb: NewNodeManager.FullNode.SetNodeAnimation(List(Of Texture2D))
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation*
+  name: SetNodeAnimation
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeAnimation_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation
+  nameWithType: NewNodeManager.FullNode.SetNodeAnimation
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab(UnityEngine.GameObject)
+  name: SetNodePrefab(GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodePrefab_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab(UnityEngine.GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab(UnityEngine.GameObject)
+  nameWithType: NewNodeManager.FullNode.SetNodePrefab(GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab*
+  name: SetNodePrefab
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodePrefab_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab
+  nameWithType: NewNodeManager.FullNode.SetNodePrefab
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
+  name: SetNodeSequencerType(Type)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeSequencerType_System_Type_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
+  nameWithType: NewNodeManager.FullNode.SetNodeSequencerType(Type)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType*
+  name: SetNodeSequencerType
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeSequencerType_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType
+  nameWithType: NewNodeManager.FullNode.SetNodeSequencerType
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType``1
+  name: SetNodeSequencerType<T>()
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeSequencerType__1
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType``1
+  name.vb: SetNodeSequencerType(Of T)()
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType<T>()
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(Of T)()
+  nameWithType: NewNodeManager.FullNode.SetNodeSequencerType<T>()
+  nameWithType.vb: NewNodeManager.FullNode.SetNodeSequencerType(Of T)()
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
+  name: SetOnPostNodeGeneration(Action<CustomSpecialNodeData, MapNode2D>)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPostNodeGeneration_System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
+  name.vb: SetOnPostNodeGeneration(Action(Of CustomSpecialNodeData, MapNode2D))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D))
+  nameWithType: NewNodeManager.FullNode.SetOnPostNodeGeneration(Action<CustomSpecialNodeData, MapNode2D>)
+  nameWithType.vb: NewNodeManager.FullNode.SetOnPostNodeGeneration(Action(Of CustomSpecialNodeData, MapNode2D))
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration*
+  name: SetOnPostNodeGeneration
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPostNodeGeneration_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration
+  nameWithType: NewNodeManager.FullNode.SetOnPostNodeGeneration
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
+  name: SetOnPreNodeGeneration(Action<CustomSpecialNodeData>)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPreNodeGeneration_System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
+  name.vb: SetOnPreNodeGeneration(Action(Of CustomSpecialNodeData))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData))
+  nameWithType: NewNodeManager.FullNode.SetOnPreNodeGeneration(Action<CustomSpecialNodeData>)
+  nameWithType.vb: NewNodeManager.FullNode.SetOnPreNodeGeneration(Action(Of CustomSpecialNodeData))
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration*
+  name: SetOnPreNodeGeneration
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPreNodeGeneration_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration
+  nameWithType: NewNodeManager.FullNode.SetOnPreNodeGeneration
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab(UnityEngine.GameObject)
+  name: SetSequencerPrefab(GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetSequencerPrefab_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab(UnityEngine.GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab(UnityEngine.GameObject)
+  nameWithType: NewNodeManager.FullNode.SetSequencerPrefab(GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab*
+  name: SetSequencerPrefab
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetSequencerPrefab_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab
+  nameWithType: NewNodeManager.FullNode.SetSequencerPrefab
+- uid: InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Type,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  name: New(String, String, GenerationType, Type, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New_System_String_System_String_InscryptionAPI_Nodes_GenerationType_System_Type_System_Collections_Generic_List_UnityEngine_Texture2D__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Type,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  name.vb: New(String, String, GenerationType, Type, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Type, System.Collections.Generic.List<UnityEngine.Texture2D>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Type, System.Collections.Generic.List(Of UnityEngine.Texture2D), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
+  nameWithType: NewNodeManager.New(String, String, GenerationType, Type, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
+  nameWithType.vb: NewNodeManager.New(String, String, GenerationType, Type, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.New*
+  name: New
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New_
+  commentId: Overload:InscryptionAPI.Nodes.NewNodeManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NewNodeManager.New
+  nameWithType: NewNodeManager.New
+- uid: InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  name: New<T>(String, String, GenerationType, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New__1_System_String_System_String_InscryptionAPI_Nodes_GenerationType_System_Collections_Generic_List_UnityEngine_Texture2D__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  name.vb: New(Of T)(String, String, GenerationType, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.New<T>(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Collections.Generic.List<UnityEngine.Texture2D>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(Of T)(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Collections.Generic.List(Of UnityEngine.Texture2D), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
+  nameWithType: NewNodeManager.New<T>(String, String, GenerationType, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
+  nameWithType.vb: NewNodeManager.New(Of T)(String, String, GenerationType, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
+- uid: InscryptionAPI.Nodes.Not
+  name: Not
+  href: api/InscryptionAPI.Nodes.Not.html
+  commentId: T:InscryptionAPI.Nodes.Not
+  fullName: InscryptionAPI.Nodes.Not
+  nameWithType: Not
+- uid: InscryptionAPI.Nodes.Not.#ctor(DiskCardGame.NodeData.SelectionCondition)
+  name: Not(NodeData.SelectionCondition)
+  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not__ctor_DiskCardGame_NodeData_SelectionCondition_
+  commentId: M:InscryptionAPI.Nodes.Not.#ctor(DiskCardGame.NodeData.SelectionCondition)
+  fullName: InscryptionAPI.Nodes.Not.Not(DiskCardGame.NodeData.SelectionCondition)
+  nameWithType: Not.Not(NodeData.SelectionCondition)
+- uid: InscryptionAPI.Nodes.Not.#ctor*
+  name: Not
+  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.Not.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.Not.Not
+  nameWithType: Not.Not
+- uid: InscryptionAPI.Nodes.Not.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.Not.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: Not.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: Not.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.Not.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.Not.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.Not.Satisfied
+  nameWithType: Not.Satisfied
+- uid: InscryptionAPI.Nodes.True
+  name: "True"
+  href: api/InscryptionAPI.Nodes.True.html
+  commentId: T:InscryptionAPI.Nodes.True
+  fullName: InscryptionAPI.Nodes.True
+  nameWithType: "True"
+- uid: InscryptionAPI.Nodes.True.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.True.html#InscryptionAPI_Nodes_True_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.True.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.True.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.True.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  nameWithType: True.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: True.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.True.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.True.html#InscryptionAPI_Nodes_True_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.True.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.True.Satisfied
+  nameWithType: True.Satisfied
 - uid: InscryptionAPI.Regions
   name: InscryptionAPI.Regions
   href: api/InscryptionAPI.Regions.html
