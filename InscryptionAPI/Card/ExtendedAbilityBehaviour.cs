@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Triggers;
@@ -66,8 +65,10 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     {
         if (TurnManager.Instance.GameEnding) return;
 
-        foreach (IPassiveAttackBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>(c)))
-            __result += buffer.GetPassiveAttackBuff(__instance);
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>)
+            .Sum(buffer => buffer.GetPassiveAttackBuff(card));
     }
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
@@ -76,8 +77,10 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     {
         if (TurnManager.Instance.GameEnding) return;
 
-        foreach (IPassiveHealthBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>(c)))
-            __result += buffer.GetPassiveHealthBuff(__instance);
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>)
+            .Sum(buffer => buffer.GetPassiveHealthBuff(card));
     }
 
     public virtual int GetPassiveAttackBuff(PlayableCard target)
