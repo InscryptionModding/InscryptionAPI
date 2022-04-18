@@ -64,8 +64,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [HarmonyPostfix]
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
         foreach (IPassiveAttackBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>(c)))
             __result += buffer.GetPassiveAttackBuff(__instance);
@@ -75,8 +74,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [HarmonyPostfix]
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
         foreach (IPassiveHealthBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>(c)))
             __result += buffer.GetPassiveHealthBuff(__instance);
