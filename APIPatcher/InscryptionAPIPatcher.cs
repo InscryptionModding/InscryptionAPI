@@ -42,34 +42,23 @@ public static class InscryptionAPIPatcher
         ILContext ctx = new(findInstMethod);
         ILCursor c = new(ctx);
 
-        c.GotoNext(MoveType.Before,
+        c.GotoNext(MoveType.After,
             x => x.MatchLdtoken(out _),
             x => x.MatchCall(out _),
             x => x.MatchCall("UnityEngine.Object", "FindObjectOfType")
         );
 
-        c.RemoveRange(3);
-
-        // var @object = InscryptionAPIPatcher.GetFrameLoopInstance<T>();
-
         // if (Object.FindObjectOfType(typeof(T)) == null) {
         c.Emit(OpCodes.Dup);
         c.Emit(OpCodes.Brtrue_S, c.Next);
 
-        // string errorStr = "Got a null instance in Singleton<T>.FindInstance for type: " + typeof(T).FullName;
+        // APIPatcher.EasyLogWarning("Got a null instance in Singleton<T>.FindInstance for type: " + typeof(T).FullName);
         c.Emit(OpCodes.Ldstr, "Got a null instance in Singleton<T>.FindInstance for type: ");
         c.Emit(OpCodes.Ldtoken, singletonType.GenericParameters[0]);
         c.Emit(OpCodes.Call, ctx.Import(typeof(Type).GetMethod(nameof(Type.GetTypeFromHandle))));
         c.Emit(OpCodes.Callvirt, ctx.Import(typeof(Type).GetProperty(nameof(Type.FullName)).GetGetMethod()));
         c.Emit(OpCodes.Call, ctx.Import(typeof(string).GetMethod(nameof(string.Concat), new Type[] { typeof(string), typeof(string) })));
-        c.Emit(OpCodes.Dup);
-
-        // APIPatcher.EasyLogWarning(errorStr);
         c.Emit(OpCodes.Call, ctx.Import(typeof(InscryptionAPIPatcher).GetMethod(nameof(EasyLogWarning))));
-
-        // throw new NullReferenceException(errorStr);
-        c.Emit(OpCodes.Newobj, ctx.Import(typeof(NullReferenceException).GetConstructor(new Type[] { typeof(string) })));
-        c.Emit(OpCodes.Throw);
 
         // }
     }
