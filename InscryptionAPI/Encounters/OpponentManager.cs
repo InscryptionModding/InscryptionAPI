@@ -15,17 +15,24 @@ public static class OpponentManager
         public readonly Opponent.Type Id;
         public Type Opponent;
         public string SpecialSequencerId;
+        public List<Texture2D> NodeAnimation = new();
 
-        public FullOpponent(Opponent.Type id, Type opponent, string specialSequencerId)
+        public FullOpponent(Opponent.Type id, Type opponent, string specialSequencerId) : this(id, opponent, specialSequencerId, null) { }
+
+        public FullOpponent(Opponent.Type id, Type opponent, string specialSequencerId, List<Texture2D> nodeAnimation)
         {
             Id = id;
             SpecialSequencerId = specialSequencerId;
             Opponent = opponent;
+            if(nodeAnimation != null)
+            {
+                NodeAnimation = new(nodeAnimation);
+            }
         }
     }
 
     public static readonly ReadOnlyCollection<FullOpponent> BaseGameOpponents = new(GenBaseGameOpponents());
-    private static readonly ObservableCollection<FullOpponent> NewOpponents = new();
+    internal static readonly ObservableCollection<FullOpponent> NewOpponents = new();
 
     private static List<FullOpponent> GenBaseGameOpponents()
     {
@@ -63,8 +70,13 @@ public static class OpponentManager
 
     public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType)
     {
+        return Add(guid, opponentName, sequencerID, opponentType, null);
+    }
+
+    public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType, List<Texture2D> nodeAnimation)
+    {
         Opponent.Type opponentId = GuidManager.GetEnumValue<Opponent.Type>(guid, opponentName);
-        FullOpponent opp = new (opponentId, opponentType, sequencerID);
+        FullOpponent opp = new (opponentId, opponentType, sequencerID, nodeAnimation);
         NewOpponents.Add(opp);
         return opp;
     }
