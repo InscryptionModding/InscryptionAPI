@@ -20,28 +20,31 @@ namespace InscryptionAPI.Card
         [HarmonyPostfix]
         private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
         {
-            foreach (TribeInfo tribe in tribes)
+            if (info != null)
             {
-                if (tribe.icon != null)
+                foreach (TribeInfo tribe in tribes)
                 {
-                    if (info.IsOfTribe(tribe.tribe))
+                    if (tribe?.icon != null)
                     {
-                        bool foundSpriteRenderer = false;
-                        foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
+                        if (info.IsOfTribe(tribe.tribe))
                         {
-                            if (spriteRenderer.sprite == null)
+                            bool foundSpriteRenderer = false;
+                            foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
                             {
-                                foundSpriteRenderer = true;
-                                spriteRenderer.sprite = tribe.icon;
-                                break;
+                                if (spriteRenderer.sprite == null)
+                                {
+                                    foundSpriteRenderer = true;
+                                    spriteRenderer.sprite = tribe.icon;
+                                    break;
+                                }
                             }
-                        }
-                        if (!foundSpriteRenderer)
-                        {
-                            SpriteRenderer last = __instance.tribeIconRenderers.Last();
-                            SpriteRenderer spriteRenderer = UnityEngine.Object.Instantiate(last);
-                            spriteRenderer.transform.parent = last.transform.parent;
-                            spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
+                            if (!foundSpriteRenderer)
+                            {
+                                SpriteRenderer last = __instance.tribeIconRenderers.Last();
+                                SpriteRenderer spriteRenderer = UnityEngine.Object.Instantiate(last);
+                                spriteRenderer.transform.parent = last.transform.parent;
+                                spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
+                            }
                         }
                     }
                 }
@@ -52,9 +55,9 @@ namespace InscryptionAPI.Card
         [HarmonyPostfix]
         private static void GetCardbackTexture(ref Texture __result, CardChoice choice)
         {
-            if (choice.tribe != Tribe.None && __result == null)
+            if (choice != null && choice.tribe != Tribe.None && __result == null)
             {
-                __result = tribes.Find((x) => x.tribe == choice.tribe).cardback;
+                __result = tribes?.Find((x) => x != null && x.tribe == choice.tribe)?.cardback;
             }
         }
 
@@ -70,7 +73,7 @@ namespace InscryptionAPI.Card
                 Tribe.Insect,
                 Tribe.Reptile
             };
-            list.AddRange(TribeManager.tribes.FindAll((x) => x.tribeChoice).ConvertAll((x) => x.tribe));
+            list.AddRange(TribeManager.tribes.FindAll((x) => x != null && x.tribeChoice).ConvertAll((x) => x.tribe));
             List<Tribe> tribes = new(RunState.CurrentMapRegion.dominantTribes);
             list.RemoveAll((Tribe x) => tribes.Contains(x));
             while (tribes.Count < 3)
@@ -107,7 +110,7 @@ namespace InscryptionAPI.Card
         public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
         {
             Tribe tribe = GuidManager.GetEnumValue<Tribe>(guid, name);
-            TribeInfo info = new() { tribe = tribe, icon = tribeIcon.ConvertTexture(), cardback = choiceCardbackTexture, tribeChoice = appearInTribeChoices };
+            TribeInfo info = new() { tribe = tribe, icon = tribeIcon?.ConvertTexture(), cardback = choiceCardbackTexture, tribeChoice = appearInTribeChoices };
             tribes.Add(info);
             return tribe;
         }
