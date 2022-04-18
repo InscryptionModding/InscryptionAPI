@@ -48,31 +48,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
 
     // This section handles passive attack/health buffs
 
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> AttackBuffAbilities = new();
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> HealthBuffAbilities = new();
-
-    private static List<ExtendedAbilityBehaviour> GetAttackBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (AttackBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveAttackBuff).ToList();
-        AttackBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
-    private static List<ExtendedAbilityBehaviour> GetHealthBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (HealthBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveHealthBuff).ToList();
-        HealthBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
     [Obsolete("Use IPassiveAttackBuff instead")]
     public virtual bool ProvidesPassiveAttackBuff => false;
 
