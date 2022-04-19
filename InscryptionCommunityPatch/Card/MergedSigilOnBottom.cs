@@ -18,7 +18,7 @@ public class MergedSigilOnBottom
 
     [HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.ApplyAbilitiesToIcons))]
 	[HarmonyPrefix]
-	public static bool DontPlaceCardModIcons_IfShowOnBottom(CardAbilityIcons __instance, List<AbilityIconInteractable> icons,Material iconMat)
+    private static bool DontPlaceCardModIcons_IfShowOnBottom(CardAbilityIcons __instance, List<AbilityIconInteractable> icons,Material iconMat)
 	{
 		// If we are showing card modifications sigils on the bottom, we don't allow the
 		// AppyAbilitiesToIcons method to do anything
@@ -34,7 +34,7 @@ public class MergedSigilOnBottom
 
 	[HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.PositionModIcons))]
 	[HarmonyPrefix]
-	public static void MoveMergeIconsToDefaultGroup_IfShowOnBottom(List<Ability> defaultAbilities, List<Ability> mergeAbilities)
+    private static void MoveMergeIconsToDefaultGroup_IfShowOnBottom(List<Ability> defaultAbilities, List<Ability> mergeAbilities)
 	{
 		// This is the first time that the default abilities list is used once it has been built
 		// What we want to do is take all of the abilities from the merge group and move them to the default group
@@ -52,7 +52,7 @@ public class MergedSigilOnBottom
     // Token: 0x060000D0 RID: 208 RVA: 0x00004C0C File Offset: 0x00002E0C
     [HarmonyPatch(typeof(AbilityIconInteractable), "LoadIcon")]
     [HarmonyPostfix]
-    public static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref Texture __result, ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
+    private static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref Texture __result, ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
     {
         if (!PatchPlugin.configMergeOnBottom.Value)
             return;

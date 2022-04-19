@@ -6,10 +6,19 @@ namespace InscryptionAPI.Saves;
 [HarmonyPatch]
 public static class ModdedSaveManager
 {
-    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
+    [Obsolete("Use 'saveFilePath' instead")]
+    private static readonly string oldSaveFilePath = Path.Combine(BepInEx.Paths.BepInExRootPath, "ModdedSaveFile.gwsave");
 
-    public static ModdedSaveData SaveData { get; private set; } 
+    private static readonly string saveFilePath = Path.Combine(BepInEx.Paths.GameRootPath, "ModdedSaveFile.gwsave");
 
+    /// <summary>
+    /// Current modded SaveData.
+    /// </summary>
+    public static ModdedSaveData SaveData { get; private set; }
+
+    /// <summary>
+    /// Current modded RunState.
+    /// </summary>
     public static ModdedSaveData RunState { get; private set; }
 
     internal static bool isSystemDirty = false; // This set whenever we save important system data
@@ -23,7 +32,7 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(SaveManager), "SaveToFile")]
     [HarmonyPostfix]
-    public static void SaveDataToFile()
+    private static void SaveDataToFile()
     {
         var saveData = (SaveData.SaveData, RunState.SaveData);
         string moddedSaveData = SaveManager.ToJSON(saveData);
@@ -32,7 +41,7 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(SaveManager), "LoadFromFile")]
     [HarmonyPostfix]
-    public static void ReadDataFromFile()
+    private static void ReadDataFromFile()
     {
         if (isSystemDirty)
         {
@@ -40,11 +49,16 @@ public static class ModdedSaveManager
             isSystemDirty = false;
         }
 
-        if (File.Exists(saveFilePath))
+        var oldSaveFileExist = File.Exists(oldSaveFilePath);
+        var newSaveFileExist = File.Exists(saveFilePath);
+
+        // If both old and new file exists, Delete the new one and move the old one to new path
+        if (newSaveFileExist || oldSaveFileExist)
         {
+            if (newSaveFileExist && oldSaveFileExist) File.Delete(saveFilePath);
+            if (oldSaveFileExist) File.Move(oldSaveFilePath, saveFilePath);
             string json = File.ReadAllText(saveFilePath);
-            (Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>) saveData 
-                = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, string>>, Dictionary<string, Dictionary<string, string>>)>(json);
+            var saveData = SaveManager.FromJSON<(Dictionary<string, Dictionary<string, object>>, Dictionary<string, Dictionary<string, object>>)>(json);
 
             if (SaveData == null)
                 SaveData = new();
@@ -64,14 +78,14 @@ public static class ModdedSaveManager
 
     [HarmonyPatch(typeof(AscensionSaveData), "NewRun")]
     [HarmonyPostfix]
-    public static void ResetRunStateOnNewAscensionRun()
+    private static void ResetRunStateOnNewAscensionRun()
     {
         RunState = new();
     }
 
     [HarmonyPatch(typeof(SaveFile), "NewPart1Run")]
     [HarmonyPrefix]
-    public static void ResetRunStateOnPart1Run()
+    private static void ResetRunStateOnPart1Run()
     {
         RunState = new();
     }

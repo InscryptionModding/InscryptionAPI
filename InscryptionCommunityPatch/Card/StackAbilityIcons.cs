@@ -100,7 +100,7 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(CardAbilityIcons), "GetDistinctShownAbilities")]
     [HarmonyPostfix]
-    public static void ClearStackableIcons(ref List<Ability> __result)
+    private static void ClearStackableIcons(ref List<Ability> __result)
     {
         // We'll start by completely removing the stackable icons from the list
         // We will be patching the AbilityIconInteractable class to display the icon
@@ -318,7 +318,7 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(AbilityIconInteractable), "AssignAbility")]
     [HarmonyPostfix]
-    public static void AddIconNumber(Ability ability, CardInfo info, PlayableCard card, ref AbilityIconInteractable __instance)
+    private static void AddIconNumber(Ability ability, CardInfo info, PlayableCard card, ref AbilityIconInteractable __instance)
     {
         if (info == null && card == null)
             return;
@@ -348,7 +348,7 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(PixelCardAbilityIcons), "DisplayAbilities", new Type[] { typeof(List<Ability>), typeof(PlayableCard)})]
     [HarmonyPrefix]
-    public static bool PatchPixelCardStacks(ref PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
+    private static bool PatchPixelCardStacks(ref PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
     {
         List<Tuple<Ability, int>> grps = abilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Where(ab => ab == a).Count())).ToList();
         List<GameObject> abilityIconGroups = __instance.abilityIconGroups;
@@ -470,7 +470,7 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(CardInfo), "GetGBCDescriptionLocalized")]
     [HarmonyPostfix]
-    public static void GetStackedGBCDescriptionLocalized(ref string __result)
+    private static void GetStackedGBCDescriptionLocalized(ref string __result)
     {
         __result = StackDescription(__result);        
     }

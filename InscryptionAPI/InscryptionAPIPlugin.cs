@@ -10,6 +10,8 @@ using InscryptionAPI.Regions;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
+[assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
+[assembly: InternalsVisibleTo("APIPatcher")]
 
 namespace InscryptionAPI;
 
@@ -19,7 +21,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.1.0";
+    public const string ModVer = "2.2.0";
 
     private static bool _hasShownOldApiWarning = false;
 
@@ -50,14 +52,14 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         ScriptableObjectLoaderLoad?.Invoke(type);
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         Logger = base.Logger;
 
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         HarmonyInstance.UnpatchSelf();
     }
@@ -70,7 +72,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         RegionManager.SyncRegionList();
     }
 
-    public void Start()
+    private void Start()
     {
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();

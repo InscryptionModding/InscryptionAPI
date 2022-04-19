@@ -1,3 +1,4 @@
+using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
@@ -232,7 +233,7 @@ public static class CardExtensions
         info.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
         return info;
     }
-    
+
     /// <summary>
     /// Sets the card name and displayed name of the card.
     /// </summary>
@@ -246,7 +247,7 @@ public static class CardExtensions
         info.SetDisplayedName(displayedName);
         return info.SetName(name, modPrefix);
     }
-    
+
     /// <summary>
     /// Sets any number of special abilities to the the card.
     /// </summary>
@@ -398,7 +399,7 @@ public static class CardExtensions
         if (mods != null && mods.Any())
         {
             info.evolveParams.evolution = CardLoader.Clone(info.evolveParams.evolution);
-            (info.evolveParams.evolution.mods ??= new ()).AddRange(mods);
+            (info.evolveParams.evolution.mods ??= new()).AddRange(mods);
         }
 
         info.evolveParams.turnsToEvolve = numberOfTurns;
@@ -459,7 +460,7 @@ public static class CardExtensions
         if (mods != null && mods.Any())
         {
             info.iceCubeParams.creatureWithin = CardLoader.Clone(info.iceCubeParams.creatureWithin);
-            (info.iceCubeParams.creatureWithin.mods ??= new ()).AddRange(mods);
+            (info.iceCubeParams.creatureWithin.mods ??= new()).AddRange(mods);
         }
 
         return info;
@@ -527,6 +528,22 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
+        var tailLostSprite = !filterMode.HasValue
+                                 ? tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+                                 : tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+        return info.SetTail(tail, tailLostSprite, mods);
+    }
+
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="tail">The card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="tailLostPortrait">The sprite containing the card portrait</param>
+    /// <param name="mods">A set of card mods to be applied to the tail</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Sprite tailLostPortrait, IEnumerable<CardModificationInfo> mods = null)
+    {
         info.tailParams = new()
         {
             tail = tail
@@ -539,7 +556,7 @@ public static class CardExtensions
         }
 
         if (tailLostPortrait != null)
-            info.tailParams.SetLostTailPortrait(tailLostPortrait, info, filterMode);
+            info.tailParams.SetLostTailPortrait(tailLostPortrait, info);
 
         return info;
     }
@@ -556,6 +573,23 @@ public static class CardExtensions
     /// <returns>The same card info so a chain can continue</returns>
     public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
+        var tailLostSprite = !filterMode.HasValue
+            ? tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+            : tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+        return info.SetTail(tailName, tailLostSprite, mods);
+    }
+    
+    /// <summary>
+    /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
+    /// This function uses delayed loading to attach the tail to the card, so if the tail card doesn't exist yet, this function will still work.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="tailName">The name of the card that will be generated as the "tail" when the first hit is dodged.</param>
+    /// <param name="tailLostPortrait">The sprite containing the card portrait.</param>
+    /// <param name="mods">A set of card mods to be applied to the tail.</param>
+    /// <returns>The same card info so a chain can continue.</returns>
+    public static CardInfo SetTail(this CardInfo info, string tailName, Sprite tailLostPortrait, IEnumerable<CardModificationInfo> mods = null)
+    {
         CardInfo tail = CardManager.AllCardsCopy.CardByName(tailName);
 
         if (tail == null) // Try delayed loading
@@ -569,7 +603,7 @@ public static class CardExtensions
                     tailCard = cards.CardByName($"{target.GetModPrefix()}_{tailName}");
 
                 if (target != null && tailCard != null)
-                    target.SetTail(tailCard, tailLostPortrait, filterMode, mods);
+                    target.SetTail(tailCard, tailLostPortrait, mods);
 
 
                 return cards;
@@ -577,7 +611,7 @@ public static class CardExtensions
         }
         else
         {
-            info.SetTail(tail, tailLostPortrait, filterMode, mods);
+            info.SetTail(tail, tailLostPortrait, mods);
         }
 
         return info;
@@ -1006,9 +1040,23 @@ public static class CardExtensions
     /// <returns>The same TailParams so a chain can continue</returns>
     public static TailParams SetLostTailPortrait(this TailParams info, Texture2D portrait, CardInfo owner, FilterMode? filterMode = null)
     {
-        info.tailLostPortrait = !filterMode.HasValue
-            ? portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
-            : portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+        var tailSprite = !filterMode.HasValue
+                             ? portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+                             : portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+
+        return info.SetLostTailPortrait(tailSprite, owner);
+    }
+
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
+    /// <param name="info">Tail to access</param>
+    /// <param name="portrait">The sprite containing the card portrait</param>
+    /// <param name="owner">The card that the tail parameters belongs to.</param>
+    /// <returns>The same TailParams so a chain can continue</returns>
+    public static TailParams SetLostTailPortrait(this TailParams info, Sprite portrait, CardInfo owner)
+    {
+        info.tailLostPortrait = portrait;
 
         if (!string.IsNullOrEmpty(owner.name))
             info.tailLostPortrait.name = owner.name + "_tailportrait";
@@ -1024,6 +1072,232 @@ public static class CardExtensions
 
     #endregion
 
+    #region Helpers
+    
+
+    /// <summary>
+    /// Create a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
+    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
+    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
+    {
+        return new EncounterBlueprintData.CardBlueprint
+        {
+            card = cardInfo
+        };
+    }
+
+    /// <summary>
+    /// Check the CardInfo not having a specific Ability.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="ability">The ability to check for.</param>
+    /// <returns>true if the ability does not exist.</returns>
+    public static bool LacksAbility(this CardInfo cardInfo, Ability ability)
+    {
+        return !cardInfo.HasAbility(ability);
+    }
+
+    /// <summary>
+    /// Check the CardInfo having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="ability">The specialTriggeredAbility to check for.</param>
+    /// <returns>true if the specialTriggeredAbility does exist.</returns>
+    public static bool HasSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
+    {
+        return cardInfo.SpecialAbilities.Contains(ability);
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not having a specific Ability.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="ability">The specialTriggeredAbility to check for.</param>
+    /// <returns>true if the specialTriggeredAbility does not exist.</returns>
+    public static bool LacksSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
+    {
+        return !cardInfo.HasSpecialAbility(ability);
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not having a specific Trait.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="trait">The specialTriggeredAbility to check for.</param>
+    /// <returns>true if the card is does not have the specified trait.</returns>
+    public static bool LacksTrait(this CardInfo cardInfo, Trait trait)
+    {
+        return !cardInfo.HasTrait(trait);
+    }
+    
+    /// <summary>
+    /// Check the CardInfo not being of a specific Tribe.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe)
+    {
+        return !cardInfo.IsOfTribe(tribe);
+    }
+
+    /// <summary>
+    /// Spawn the CardInfo object to the player's hand.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <returns>The enumeration of the card being placed in the player's hand.</returns>
+    public static IEnumerator SpawnInHand(this CardInfo cardInfo)
+    {
+        yield return CardSpawner.Instance.SpawnCardToHand(cardInfo);
+    }
+
+    #region PlayableCard
+
+    
+    /// <summary>
+    /// Checks if the card has a specific Trait.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="trait">The trait to check for.</param>
+    /// <returns>true if the card has the specified trait.</returns>
+    public static bool HasTrait(this PlayableCard playableCard, Trait trait)
+    {
+        return playableCard.Info.HasTrait(trait);
+    }
+    
+    /// <summary>
+    /// Checks if the card has a specific Trait.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="trait">The trait to check for.</param>
+    /// <returns>true if the card does not have the specified trait.</returns>
+    public static bool LacksTrait(this PlayableCard playableCard, Trait trait)
+    {
+        return playableCard.Info.LacksTrait(trait);
+    }
+    
+    /// <summary>
+    /// Checks if the PlayableCard is of a specified Tribe.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is of the specified tribe.</returns>
+    public static bool IsOfTribe(this PlayableCard playableCard, Tribe tribe)
+    {
+        return playableCard.Info.IsOfTribe(tribe);
+    }
+    
+    /// <summary>
+    /// Checks if the PlayableCard is not of a specified Tribe.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this PlayableCard playableCard, Tribe tribe)
+    {
+        return playableCard.Info.IsNotOfTribe(tribe);
+    }
+    
+    /// <summary>
+    /// Checks if the card is not dead.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <returns>true if the card is not dead.</returns>
+    public static bool NotDead(this PlayableCard playableCard)
+    {
+        return playableCard && !playableCard.Dead;
+    }
+    
+    /// <summary>
+    /// Checks if the card is not the opponent's card.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <returns>true if card is not the opponent's card.</returns>
+    public static bool IsPlayerCard(this PlayableCard playableCard)
+    {
+        return !playableCard.OpponentCard;
+    } 
+
+    /// <summary>
+    /// Check the PlayableCard not having a specific Ability.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The ability to check for</param>
+    /// <returns>true if the ability does not exist</returns>
+    public static bool LacksAbility(this PlayableCard playableCard, Ability ability)
+    {
+        return !playableCard.HasAbility(ability);
+    }
+
+    /// <summary>
+    /// Check the PlayableCard not having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The specialTriggeredAbility to check for</param>
+    /// <returns>true if the specialTriggeredAbility does not exist</returns>
+    public static bool LacksSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
+    {
+        return !playableCard.HasSpecialAbility(ability);
+    }
+
+    /// <summary>
+    /// Check the PlayableCard having a specific SpecialTriggeredAbility.
+    ///
+    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="ability">The specialTriggeredAbility to check for</param>
+    /// <returns>true if the specialTriggeredAbility does exist</returns>
+    public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
+    {
+        return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability)) 
+            || playableCard.Info.HasSpecialAbility(ability);
+    }
+
+    /// <summary>
+    /// Check if the PlayableCard has a card opposing it in the opposite slot.
+    ///
+    /// Also acts as a null check if this PlayableCard is in a slot.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>true if a card exists in the opposing slot</returns>
+    public static bool HasOpposingCard(this PlayableCard playableCard)
+    {
+        return playableCard.Slot && playableCard.Slot.opposingSlot.Card;
+    }
+    
+    /// <summary>
+    /// Retrieve the CardSlot object that is opposing this PlayableCard.
+    /// </summary>
+    /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>The card slot opposite of this playableCard, otherwise return null.</returns>
+    public static CardSlot OpposingSlot(this PlayableCard playableCard)
+    {
+        return playableCard.Slot ? playableCard.Slot.opposingSlot : null;
+    }
+    
+    /// <summary>
+    /// Retrieve the PlayableCard that is opposing this PlayableCard in the opposite slot.
+    /// </summary>
+    /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <returns>The card in the opposing slot, otherwise return null.</returns>
+    public static PlayableCard OpposingCard(this PlayableCard playableCard)
+    {
+        return playableCard.OpposingSlot()?.Card;
+    }
+    
+
+    #endregion
+
+    #endregion
 
     #region ExtendedProperties
 
@@ -1137,7 +1411,7 @@ public static class CardExtensions
     }
 
     #endregion
-    
+
     internal static CardInfo SetOldApiCard(this CardInfo info, bool isOldApiCard = true)
     {
         info.SetExtendedProperty("AddedByOldApi", isOldApiCard);

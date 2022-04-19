@@ -34,7 +34,7 @@ public static class GuidManager
         {
             if (item.Key.StartsWith(startKey))
             {
-                int enumVal = int.Parse(item.Value);
+                int enumVal = int.Parse((string)item.Value);
                 T convertedEnumVal = *(T*)&enumVal;
                 itemList.Add(convertedEnumVal);
             }
@@ -56,11 +56,11 @@ public static class GuidManager
         {
             lock (lockObject)
             {
-                enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA) + 1;
+                enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA);
                 if (enumValue < START_INDEX)
                     enumValue = START_INDEX;
                 
-                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue);
+                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue+1);
                 ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, saveKey, enumValue);
 
                 ModdedSaveManager.isSystemDirty = true;

@@ -5,11 +5,11 @@ using UnityEngine;
 namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
-public static class StarterDeckSelectscreenPatches
+internal static class StarterDeckSelectscreenPatches
 {
     [HarmonyPatch(typeof(AscensionStarterDeckIcon), nameof(AscensionStarterDeckIcon.AssignInfo))]
     [HarmonyPrefix]
-    public static void ForceAssignInfo(ref AscensionStarterDeckIcon __instance, StarterDeckInfo info)
+    private static void ForceAssignInfo(ref AscensionStarterDeckIcon __instance, StarterDeckInfo info)
     {
         __instance.starterDeckInfo = info;
         __instance.conqueredRenderer.enabled = false;
@@ -17,7 +17,7 @@ public static class StarterDeckSelectscreenPatches
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
     [HarmonyPostfix]
-    public static void AddPaginationToStarterDeckScreen()
+    private static void AddPaginationToStarterDeckScreen()
     {
         StarterDeckPaginator paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.GetComponent<StarterDeckPaginator>();
         if (paginator == null)

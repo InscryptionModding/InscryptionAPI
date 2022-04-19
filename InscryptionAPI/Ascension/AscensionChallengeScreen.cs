@@ -6,7 +6,7 @@ using UnityEngine;
 namespace InscryptionAPI.Ascension;
 
 [HarmonyPatch]
-public static class AscensionChallengeScreenPatches
+internal static class AscensionChallengeScreenPatches
 {
     private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = TextureHelper.ConvertTexture(
         Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),
@@ -14,7 +14,7 @@ public static class AscensionChallengeScreenPatches
 
     [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
     [HarmonyPostfix]
-    public static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
+    private static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
     {
         if (info.activatedSprite == null)
             __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
@@ -37,7 +37,7 @@ public static class AscensionChallengeScreenPatches
 
     [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
     [HarmonyPostfix]
-    public static void AddPaginationToChallengeScreen()
+    private static void AddPaginationToChallengeScreen()
     {
         AscensionChallengePaginator paginator = AscensionMenuScreens.Instance.selectChallengesScreen.GetComponent<AscensionChallengePaginator>();
         if (paginator == null)

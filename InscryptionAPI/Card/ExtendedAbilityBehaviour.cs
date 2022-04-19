@@ -1,13 +1,17 @@
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Triggers;
 
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
-public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
+public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff
 {
     // This section handles attack slot management
+
+    public virtual bool TriggerWhenFacedown => false;
+    public virtual bool ShouldTriggerWhenFaceDown(Trigger trigger, object[] otherArgs) => TriggerWhenFacedown;
+    public virtual bool ShouldTriggerCustomWhenFaceDown(Type customTrigger) => TriggerWhenFacedown;
 
     public virtual bool RespondsToGetOpposingSlots() => false;
 
@@ -25,11 +29,13 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
         List<CardSlot> alteredOpposings = new List<CardSlot>();
         bool removeDefaultAttackSlot = false;
 
-        List<ExtendedAbilityBehaviour> behaviours = __instance.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.RespondsToGetOpposingSlots()).ToList();            
-        foreach (ExtendedAbilityBehaviour component in behaviours)
+        foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
         {
-            alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
-            removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
+            if (component.RespondsToGetOpposingSlots())
+            {
+                alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
+                removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();  
+            }
         }
         
         if (alteredOpposings.Count > 0) 
@@ -41,86 +47,71 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour
 
     // This section handles passive attack/health buffs
 
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> AttackBuffAbilities = new();
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> HealthBuffAbilities = new();
-
-    private static List<ExtendedAbilityBehaviour> GetAttackBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (AttackBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveAttackBuff).ToList();
-        AttackBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
-    private static List<ExtendedAbilityBehaviour> GetHealthBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (HealthBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveHealthBuff).ToList();
-        HealthBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
+    [Obsolete("Use IPassiveAttackBuff instead")]
     public virtual bool ProvidesPassiveAttackBuff => false;
+
+    [Obsolete("Use IPassiveHealthBuff instead")]
     public virtual bool ProvidesPassiveHealthBuff => false;
 
+    [Obsolete("Use IPassiveAttackBuff instead")]
     public virtual int[] GetPassiveAttackBuffs() => null;
+
+    [Obsolete("Use IPassiveHealthBuff instead")]
     public virtual int[] GetPassiveHealthBuffs() => null;
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
     [HarmonyPostfix]
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
-        List<CardSlot> slots = __instance.OpponentCard ? BoardManager.Instance.opponentSlots : BoardManager.Instance.playerSlots;
-
-        foreach (CardSlot slot in slots.Where(s => s.Card != null))
-        {
-            foreach (var b in GetAttackBuffs(slot.Card).Where(ab => ab != null))
-            {
-                int[] buffs = b.GetPassiveAttackBuffs();
-                if (buffs == null)
-                    continue;
-
-                for (int i = 0; i < buffs.Length; i++)
-                {
-                    if (__instance.slot.Index == i)
-                        __result += buffs[i];
-                }
-            }
-        }
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>)
+            .Sum(buffer => buffer.GetPassiveAttackBuff(card));
     }
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
     [HarmonyPostfix]
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
-        List<CardSlot> slots = __instance.OpponentCard ? BoardManager.Instance.opponentSlots : BoardManager.Instance.playerSlots;
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>)
+            .Sum(buffer => buffer.GetPassiveHealthBuff(card));
+    }
 
-        foreach (CardSlot slot in slots.Where(s => s.Card != null))
+    public virtual int GetPassiveAttackBuff(PlayableCard target)
+    {
+        if (ProvidesPassiveAttackBuff)
         {
-            foreach (ExtendedAbilityBehaviour b in GetHealthBuffs(slot.Card))
+            if (target.OpponentCard == this.Card.OpponentCard)
             {
-                int[] buffs = b.GetPassiveHealthBuffs();
-                if (buffs == null)
-                    continue;
-
-                for (int i = 0; i < buffs.Length; i++)
+                int[] result = GetPassiveAttackBuffs();
+                if (result != null && target.Slot.Index < result.Length)
                 {
-                    if (__instance.slot.Index == i)
-                        __result += buffs[i];
+                    return result[target.Slot.Index];
                 }
             }
         }
+        return 0;
+    }
+
+    public virtual int GetPassiveHealthBuff(PlayableCard target)
+    {
+        if (ProvidesPassiveHealthBuff)
+        {
+            if (target.OpponentCard == this.Card.OpponentCard)
+            {
+                int[] result = GetPassiveHealthBuffs();
+                if (result != null && target.Slot.Index < result.Length)
+                {
+                    return result[target.Slot.Index];
+                }
+            }
+        }
+        return 0;
     }
 }

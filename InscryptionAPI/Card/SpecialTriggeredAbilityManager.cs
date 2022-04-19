@@ -5,7 +5,6 @@ using InscryptionAPI.Guid;
 
 namespace InscryptionAPI.Card;
 
-[HarmonyPatch]
 public static class SpecialTriggeredAbilityManager
 {
     public class FullSpecialTriggeredAbility

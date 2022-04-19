@@ -11,7 +11,7 @@ internal static class ChoiceNodePatch
 {
     [HarmonyPatch(typeof(CardSingleChoicesSequencer), nameof(CardSingleChoicesSequencer.GetCardbackTexture))]
     [HarmonyPostfix]
-    public static void CardSingleChoicesSequencer_GetCardbackTexture(ref Texture __result, CardChoice choice)
+    private static void CardSingleChoicesSequencer_GetCardbackTexture(ref Texture __result, CardChoice choice)
     {
         switch (choice.resourceType)
         {
@@ -26,7 +26,7 @@ internal static class ChoiceNodePatch
 
     [HarmonyPatch(typeof(Part1CardChoiceGenerator), "GenerateCostChoices")]
     [HarmonyPostfix]
-    public static void Part1CardChoiceGenerator_GenerateCostChoices(ref List<CardChoice> __result, int randomSeed)
+    private static void Part1CardChoiceGenerator_GenerateCostChoices(ref List<CardChoice> __result, int randomSeed)
     {
         var list = __result;
         if (GetRandomChoosableEnergyCard(randomSeed++) != null)
@@ -44,7 +44,7 @@ internal static class ChoiceNodePatch
 
     [HarmonyPatch(typeof(CardSingleChoicesSequencer), nameof(CardSingleChoicesSequencer.CostChoiceChosen))]
     [HarmonyPostfix]
-    public static IEnumerator PostfixGameLogicPatch(IEnumerator enumerator, CardSingleChoicesSequencer __instance, SelectableCard card)
+    private static IEnumerator PostfixGameLogicPatch(IEnumerator enumerator, CardSingleChoicesSequencer __instance, SelectableCard card)
     {
         if (card.ChoiceInfo.resourceType == ResourceType.Energy || card.ChoiceInfo.resourceType == ResourceType.Gems)
         {

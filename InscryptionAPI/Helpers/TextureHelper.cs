@@ -191,8 +191,8 @@ public static class TextureHelper
     /// <summary>
     /// Sets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.
     /// </summary>
-    /// <param name="regularSprite">The normal sprite</param>
-    /// <param name="emissionSprite">The emissive sprite</param>
+    /// <param name="regularSprite">The normal sprite.</param>
+    /// <param name="emissionSprite">The emissive sprite.</param>
     public static void RegisterEmissionForSprite(this Sprite regularSprite, Sprite emissionSprite)
     {
         emissionSprite.name = regularSprite.name + "_emission";
@@ -202,27 +202,27 @@ public static class TextureHelper
     /// <summary>
     /// Sets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.
     /// </summary>
-    /// <param name="regularSprite">The normal sprite</param>
-    /// <param name="emissionSprite">The emissive sprite</param>
-    public static void RegisterEmissionForSprite(this Sprite regularSprite, Texture2D texture, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    /// <param name="regularSprite">The normal sprite.</param>
+    /// <param name="emissiveTexture">The emissive texture to register.</param>
+    /// <param name="spriteType">The type of sprite to create.</param>
+    /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
+    public static void RegisterEmissionForSprite(this Sprite regularSprite, Texture2D emissiveTexture, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
-        Sprite emissionSprite = texture.ConvertTexture(spriteType, filterMode);
-        emissionSprite.name = regularSprite.name + "_emission";
-        emissionMap[regularSprite] = emissionSprite;
+        Sprite emissionSprite = emissiveTexture.ConvertTexture(spriteType, filterMode);
+        regularSprite.RegisterEmissionForSprite(emissionSprite);
     }
 
     /// <summary>
     /// Sets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.
     /// </summary>
-    /// <param name="regularSprite">The normal sprite</param>
-    /// <param name="texture">The Texture2D object to convert to the emissive sprite</param>
-    /// <param name="spriteType">The type of sprite to create</param>
+    /// <param name="regularSprite">The normal sprite.</param>
+    /// <param name="pathToArt">The path to the card art.</param>
+    /// <param name="spriteType">The type of sprite to create.</param>
     /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
     public static void RegisterEmissionForSprite(this Sprite regularSprite, string pathToArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         Sprite emissionSprite = GetImageAsSprite(pathToArt, spriteType, filterMode);
-        emissionSprite.name = regularSprite.name + "_emission";
-        emissionMap[regularSprite] = emissionSprite;
+        regularSprite.RegisterEmissionForSprite(emissionSprite);
     }
 
     /// <summary>
