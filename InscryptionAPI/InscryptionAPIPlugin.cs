@@ -10,6 +10,8 @@ using InscryptionAPI.Regions;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
+[assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
+[assembly: InternalsVisibleTo("APIPatcher")]
 
 namespace InscryptionAPI;
 
