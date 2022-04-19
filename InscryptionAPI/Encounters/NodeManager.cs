@@ -208,7 +208,7 @@ public static class NodeManager
     }
 
     [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
-    [HarmonyPostfix]
+    [HarmonyPrefix]
     private static bool CreateNodePrefab(MapDataReader __instance, ref GameObject __result, MapElementData data, Vector2 sampleRange, bool isScenery)
     {
         if(!isScenery && data is CustomSpecialNodeData sdata && sdata.Node?.nodePrefab != null)
