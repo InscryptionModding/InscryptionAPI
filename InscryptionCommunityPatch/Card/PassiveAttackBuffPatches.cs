@@ -80,6 +80,10 @@ public static class PassiveAttackBuffPatches
                     if (slot.Card != null)
                         __result += slot.Card.AbilityCount(Ability.BuffGems);
         }
+
+        if (__instance.Info.Gemified && ResourcesManager.Instance.HasGem(GemType.Orange))
+            __result += 1;
+
         return false;
     }
 }
