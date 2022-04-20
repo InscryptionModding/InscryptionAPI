@@ -2600,6 +2600,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetStatIcon
   nameWithType: CardExtensions.SetStatIcon
+- uid: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,DiskCardGame.CardInfo,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
+  name: SetTail(CardInfo, CardInfo, IEnumerable<CardModificationInfo>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTail_DiskCardGame_CardInfo_DiskCardGame_CardInfo_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,DiskCardGame.CardInfo,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
+  name.vb: SetTail(CardInfo, CardInfo, IEnumerable(Of CardModificationInfo))
+  fullName: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo, DiskCardGame.CardInfo, System.Collections.IEnumerable<DiskCardGame.CardModificationInfo>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo, DiskCardGame.CardInfo, System.Collections.IEnumerable(Of DiskCardGame.CardModificationInfo))
+  nameWithType: CardExtensions.SetTail(CardInfo, CardInfo, IEnumerable<CardModificationInfo>)
+  nameWithType.vb: CardExtensions.SetTail(CardInfo, CardInfo, IEnumerable(Of CardModificationInfo))
 - uid: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,DiskCardGame.CardInfo,UnityEngine.Sprite,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
   name: SetTail(CardInfo, CardInfo, Sprite, IEnumerable<CardModificationInfo>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTail_DiskCardGame_CardInfo_DiskCardGame_CardInfo_UnityEngine_Sprite_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
@@ -2618,6 +2627,15 @@ references:
   fullName.vb: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo, DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode), System.Collections.IEnumerable(Of DiskCardGame.CardModificationInfo))
   nameWithType: CardExtensions.SetTail(CardInfo, CardInfo, Texture2D, Nullable<FilterMode>, IEnumerable<CardModificationInfo>)
   nameWithType.vb: CardExtensions.SetTail(CardInfo, CardInfo, Texture2D, Nullable(Of FilterMode), IEnumerable(Of CardModificationInfo))
+- uid: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,System.String,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
+  name: SetTail(CardInfo, String, IEnumerable<CardModificationInfo>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTail_DiskCardGame_CardInfo_System_String_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,System.String,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
+  name.vb: SetTail(CardInfo, String, IEnumerable(Of CardModificationInfo))
+  fullName: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo, System.String, System.Collections.IEnumerable<DiskCardGame.CardModificationInfo>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo, System.String, System.Collections.IEnumerable(Of DiskCardGame.CardModificationInfo))
+  nameWithType: CardExtensions.SetTail(CardInfo, String, IEnumerable<CardModificationInfo>)
+  nameWithType.vb: CardExtensions.SetTail(CardInfo, String, IEnumerable(Of CardModificationInfo))
 - uid: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,System.String,System.String,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
   name: SetTail(CardInfo, String, String, IEnumerable<CardModificationInfo>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTail_DiskCardGame_CardInfo_System_String_System_String_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
