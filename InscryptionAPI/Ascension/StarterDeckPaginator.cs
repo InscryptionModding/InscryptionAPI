@@ -78,8 +78,15 @@ public class StarterDeckPaginator : MonoBehaviour
         if (starterDeckPageIndex > 0)
         {
             starterDeckPageIndex -= 1;
-            ShowVisibleStarterDecks();
         }
+
+        // Loop to the last page.
+        else
+        {
+            starterDeckPageIndex = pages.Count - 1;
+        }
+
+        ShowVisibleStarterDecks();
     }
 
     public void StarterDeckPageRight(MainInputInteractable button)
@@ -90,8 +97,15 @@ public class StarterDeckPaginator : MonoBehaviour
         if (starterDeckPageIndex < pages.Count - 1)
         {
             starterDeckPageIndex += 1;
-            ShowVisibleStarterDecks();
         }
+
+        // Loop to the first page.
+        else
+        {
+            starterDeckPageIndex = 0;
+        }
+
+        ShowVisibleStarterDecks();
     }
 
     public void OnEnable()

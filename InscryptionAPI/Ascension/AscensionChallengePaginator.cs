@@ -113,8 +113,14 @@ public class AscensionChallengePaginator : MonoBehaviour
         if (challengePageIndex > 0)
         {
             challengePageIndex -= 1;
-            ShowVisibleChallenges();
         }
+
+        else
+        {
+            challengePageIndex = pages.Count - 1;
+        }
+
+        ShowVisibleChallenges();
     }
 
     public void ChallengePageRight(MainInputInteractable button)
@@ -125,8 +131,14 @@ public class AscensionChallengePaginator : MonoBehaviour
         if (challengePageIndex < pages.Count - 1)
         {
             challengePageIndex += 1;
-            ShowVisibleChallenges();
         }
+
+        else
+        {
+            challengePageIndex = 0;
+        }
+
+        ShowVisibleChallenges();
     }
 
     public void OnEnable()

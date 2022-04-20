@@ -65,7 +65,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             GameObject.Destroy(obj);
     }
 
-    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool upperPosition = false)
+    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool upperPosition = false, bool vertical = false)
     {
         GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
         GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
@@ -108,14 +108,18 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             leftPos.viewportAnchor = new Vector2(leftX, 0.565f);
             rightPos.viewportAnchor = new Vector2(rightX, 0.565f);
         }
+
         else
         {
-            leftPos.viewportAnchor = new Vector2(0.25f, 0.8f);
-            rightPos.viewportAnchor = new Vector2(0.75f, 0.8f);
+            leftPos.viewportAnchor = new Vector2(0.5f, 0.8f);
+            rightPos.viewportAnchor = new Vector2(0.5f, 0.36f);
+
+            leftPos.transform.Rotate(0, 0, -90);
+            rightPos.transform.Rotate(0, 0, -90);
         }
 
-        leftPos.offset = new (0f, 0f);
-        rightPos.offset = new (0f, 0f);
+        leftPos.offset = new(0f, 0f);
+        rightPos.offset = new(0f, 0f);
 
         return (leftIcon.GetComponent<AscensionMenuInteractable>(), rightIcon.GetComponent<AscensionMenuInteractable>());
     }
