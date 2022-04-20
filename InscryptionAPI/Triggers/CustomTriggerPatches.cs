@@ -288,6 +288,29 @@ namespace InscryptionAPI.Triggers
                     discard = false;
                 }
             }
+            if (didModify)
+            {
+                if (__instance.HasAbility(Ability.SplitStrike))
+                {
+                    ProgressionData.SetAbilityLearned(Ability.SplitStrike);
+                    __result.Remove(__instance.Slot.opposingSlot);
+                    __result.AddRange(Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot.opposingSlot));
+                }
+                if (__instance.HasTriStrike())
+                {
+                    ProgressionData.SetAbilityLearned(Ability.TriStrike);
+                    __result.AddRange(Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot.opposingSlot));
+                    if (!__result.Contains(__instance.Slot.opposingSlot))
+                    {
+                        __result.Add(__instance.Slot.opposingSlot);
+                    }
+                }
+                if (__instance.HasAbility(Ability.DoubleStrike))
+                {
+                    ProgressionData.SetAbilityLearned(Ability.DoubleStrike);
+                    __result.Add(__instance.slot.opposingSlot);
+                }
+            }
             __result?.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
             return !didModify;
         }
