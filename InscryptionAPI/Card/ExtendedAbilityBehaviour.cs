@@ -6,7 +6,7 @@ using InscryptionAPI.Triggers;
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
-public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IAttackModification, IActivateWhenFacedown, IOnCardPassiveAttackBuffs, IOnCardPassiveHealthBuffs
+public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IOnCardPassiveAttackBuffs, IOnCardPassiveHealthBuffs
 {
     // This section handles attack slot management
 
@@ -115,9 +115,9 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IAttackModifi
         return currentValue;
     }
 
-    public virtual bool RespondsToModifyAttackSlots(PlayableCard card, List<CardSlot> currentSlots, bool didRemoveDefaultSlot) => RespondsToGetOpposingSlots();
+    public virtual bool RespondsToModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority priority, List<CardSlot> originalSlots, List<CardSlot> currentSlots, bool didRemoveDefaultSlot) => RespondsToGetOpposingSlots();
 
-    public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot)
+    public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority priority, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot)
     {
         didRemoveDefaultSlot = RemoveDefaultAttackSlot();
         return GetOpposingSlots(originalSlots, currentSlots);

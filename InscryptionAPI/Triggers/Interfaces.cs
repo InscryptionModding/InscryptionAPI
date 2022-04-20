@@ -190,7 +190,7 @@ namespace InscryptionAPI.Triggers
     /// <summary>
     /// Data collection trigger that collects data related to attacked slots.
     /// </summary>
-    public interface IAttackModification
+    public interface IGetOpposingSlots
     {
         /// <summary>
         /// If true, this trigger will collect data from CollectModifyAttackSlots.
@@ -198,20 +198,14 @@ namespace InscryptionAPI.Triggers
         /// <param name="currentSlots">Current slots that are targeted.</param>
         /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
         /// <returns>True if this trigger will collect data from CollectModifyAttackSlots.</returns>
-        public bool RespondsToModifyAttackSlots(PlayableCard card, List<CardSlot> currentSlots, bool didRemoveDefaultSlot);
+        public bool RespondsToModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, bool didRemoveDefaultSlot);
         /// <summary>
         /// Modifies data about targeted slots for attack.
         /// </summary>
         /// <param name="currentSlots">Current slots that are targeted.</param>
         /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
         /// <returns>Modified data about targeted slots for attack.</returns>
-        public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot);
-        /// <summary>
-        /// True if this attack modification brings back the original slot removed by other modifications. This doesn't automatically bring it back, it just puts this modification further in the list so it triggers after others.
-        /// </summary>
-        /// <param name="card">Card this is affecting.</param>
-        /// <returns>True if this attack modification brings back the original slot removed by other modifications.</returns>
-        public bool BringsOriginalSlotBack(PlayableCard card);
+        public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot);
         /// <summary>
         /// If true, this trigger will collect data from CollectGetAttackSlotCount.
         /// </summary>
@@ -222,6 +216,29 @@ namespace InscryptionAPI.Triggers
         /// </summary>
         /// <returns>Modified data about the amount of slots that will be selected.</returns>
         public int CollectGetAttackSlotCount(PlayableCard card);
+    }
+
+    /// <summary>
+    /// Flag that tells IGetOpposingSlots when to trigger.
+    /// </summary>
+    public enum OpposingSlotTriggerPriority
+    {
+        /// <summary>
+        /// Normal mode - use this for opposing slot modifications that either don't do anything to the original opposing slots or remove it.
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// Bring back opposing slot - use this for opposing slot modifications that bring back the original opposing slot if it was removed like Trifurcated Strike.
+        /// </summary>
+        BringsBackOpposingSlot,
+        /// <summary>
+        /// Post slot addition modification - use this for opposing slot modifications that don't interact with any other modification and instead just statically modify the finished result like Double Strike.
+        /// </summary>
+        PostAdditionModification,
+        /// <summary>
+        /// Replaces default opposing slot - use this for opposing slot modifications that replace the original opposing slot like Omni Strike.
+        /// </summary>
+        ReplacesDefaultOpposingSlot
     }
 
     /// <summary>
