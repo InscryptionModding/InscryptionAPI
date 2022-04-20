@@ -526,11 +526,11 @@ public static class CardExtensions
     /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
     /// <param name="mods">A set of card mods to be applied to the tail</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
+    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Texture2D tailLostPortrait = null, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         var tailLostSprite = !filterMode.HasValue
-                                 ? tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
-                                 : tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+                                 ? tailLostPortrait?.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+                                 : tailLostPortrait?.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
         return info.SetTail(tail, tailLostSprite, mods);
     }
 
@@ -542,7 +542,7 @@ public static class CardExtensions
     /// <param name="tailLostPortrait">The sprite containing the card portrait</param>
     /// <param name="mods">A set of card mods to be applied to the tail</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Sprite tailLostPortrait, IEnumerable<CardModificationInfo> mods = null)
+    public static CardInfo SetTail(this CardInfo info, CardInfo tail, Sprite tailLostPortrait = null, IEnumerable<CardModificationInfo> mods = null)
     {
         info.tailParams = new()
         {
@@ -571,11 +571,11 @@ public static class CardExtensions
     /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
     /// <param name="mods">A set of card mods to be applied to the tail</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
+    public static CardInfo SetTail(this CardInfo info, string tailName, Texture2D tailLostPortrait = null, FilterMode? filterMode = null, IEnumerable<CardModificationInfo> mods = null)
     {
         var tailLostSprite = !filterMode.HasValue
-            ? tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
-            : tailLostPortrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
+            ? tailLostPortrait?.ConvertTexture(TextureHelper.SpriteType.CardPortrait)
+            : tailLostPortrait?.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
         return info.SetTail(tailName, tailLostSprite, mods);
     }
     
@@ -588,7 +588,7 @@ public static class CardExtensions
     /// <param name="tailLostPortrait">The sprite containing the card portrait.</param>
     /// <param name="mods">A set of card mods to be applied to the tail.</param>
     /// <returns>The same card info so a chain can continue.</returns>
-    public static CardInfo SetTail(this CardInfo info, string tailName, Sprite tailLostPortrait, IEnumerable<CardModificationInfo> mods = null)
+    public static CardInfo SetTail(this CardInfo info, string tailName, Sprite tailLostPortrait = null, IEnumerable<CardModificationInfo> mods = null)
     {
         CardInfo tail = CardManager.AllCardsCopy.CardByName(tailName);
 
