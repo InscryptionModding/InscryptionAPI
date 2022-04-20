@@ -64,7 +64,7 @@ internal static class AscensionChallengeScreenPatches
 
         paginator.GeneratePages();
 
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, upperPosition:true);
+        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, vertical:true);
 
         AscensionMenuInteractable leftController = pageTuple.Item1;
         AscensionMenuInteractable rightController = pageTuple.Item2;

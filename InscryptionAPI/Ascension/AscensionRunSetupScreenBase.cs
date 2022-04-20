@@ -65,7 +65,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             GameObject.Destroy(obj);
     }
 
-    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool upperPosition = false, bool vertical = false)
+    public static (AscensionMenuInteractable, AscensionMenuInteractable) BuildPaginators(Transform parent, bool vertical = false)
     {
         GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
         GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
@@ -82,7 +82,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         leftPos.viewportCam = Camera.main;
         rightPos.viewportCam = Camera.main;
 
-        if (!upperPosition)
+        if (!vertical)
         {
 
             // Find the leftmost and rightmost x values
