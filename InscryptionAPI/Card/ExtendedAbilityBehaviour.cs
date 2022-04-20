@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Triggers;
@@ -48,31 +47,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
 
     // This section handles passive attack/health buffs
 
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> AttackBuffAbilities = new();
-    private static ConditionalWeakTable<PlayableCard, List<ExtendedAbilityBehaviour>> HealthBuffAbilities = new();
-
-    private static List<ExtendedAbilityBehaviour> GetAttackBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (AttackBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveAttackBuff).ToList();
-        AttackBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
-    private static List<ExtendedAbilityBehaviour> GetHealthBuffs(PlayableCard card)
-    {
-        List<ExtendedAbilityBehaviour> retval;
-        if (HealthBuffAbilities.TryGetValue(card, out retval))
-            return retval;
-
-        retval = card.GetComponents<ExtendedAbilityBehaviour>().Where(x => x.ProvidesPassiveHealthBuff).ToList();
-        HealthBuffAbilities.Add(card, retval);
-        return retval;
-    }
-
     [Obsolete("Use IPassiveAttackBuff instead")]
     public virtual bool ProvidesPassiveAttackBuff => false;
 
@@ -89,22 +63,24 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [HarmonyPostfix]
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
-        foreach (IPassiveAttackBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>(c)))
-            __result += buffer.GetPassiveAttackBuff(__instance);
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>)
+            .Sum(buffer => buffer.GetPassiveAttackBuff(card));
     }
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
     [HarmonyPostfix]
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (__instance.slot == null)
-            return;
+        if (TurnManager.Instance.GameEnding) return;
 
-        foreach (IPassiveHealthBuff buffer in BoardManager.Instance.CardsOnBoard.SelectMany(c => CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>(c)))
-            __result += buffer.GetPassiveHealthBuff(__instance);
+        var card = __instance;
+        __result += BoardManager.Instance.CardsOnBoard
+            .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>)
+            .Sum(buffer => buffer.GetPassiveHealthBuff(card));
     }
 
     public virtual int GetPassiveAttackBuff(PlayableCard target)

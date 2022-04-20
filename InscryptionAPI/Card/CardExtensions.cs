@@ -1256,7 +1256,8 @@ public static class CardExtensions
     /// <returns>true if the specialTriggeredAbility does exist</returns>
     public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
-        return playableCard.Info.HasSpecialAbility(ability);
+        return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability)) 
+            || playableCard.Info.HasSpecialAbility(ability);
     }
 
     /// <summary>

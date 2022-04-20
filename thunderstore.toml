@@ -2,15 +2,16 @@
 schemaVersion = "0.0.1"
 
 [package]
-namespace = "api_dev"
+namespace = "API_dev"
 name = "API"
-versionNumber = "2.1.0"
+versionNumber = "2.2.0"
 description = "The de-facto standard core API for all Inscryption mods. This lets you create new cards, abilities, challenges, map nodes, starter decks, and more."
 websiteUrl = "https://github.com/ScottWilson0903/InscryptionAPI"
 containsNsfwContent = false
 
 [package.dependencies]
 BepInEx-BepInExPack_Inscryption = "5.4.1901"
+BepInEx-MonoMod_Loader_Inscryption = "1.0.0"
 
 [build]
 icon = "./icon.png"
@@ -22,8 +23,8 @@ source = "InscryptionAPI/bin/Release/InscryptionAPI.dll"
 target = "plugins/InscryptionAPI.dll"
 
 [[build.copy]]
-source = "APIPatcher/bin/Release/APIPatcher.dll"
-target = "patchers/APIPatcher.dll"
+source = "APIPatcher/bin/Release/Assembly-CSharp.APIPatcher.mm.dll"
+target = "monomod/Assembly-CSharp.APIPatcher.mm.dll"
 
 [[build.copy]]
 source = "InscryptionCommunityPatch/bin/Release/InscryptionCommunityPatch.dll"
