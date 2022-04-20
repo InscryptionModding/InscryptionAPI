@@ -75,6 +75,7 @@ namespace InscryptionAPI.Card
             };
             list.AddRange(TribeManager.tribes.FindAll((x) => x != null && x.tribeChoice).ConvertAll((x) => x.tribe));
             List<Tribe> tribes = new(RunState.CurrentMapRegion.dominantTribes);
+            tribes.RemoveAll(x => TribeManager.tribes.Exists(x2 => x2.tribe == x) && !TribeManager.tribes.Find(x2 => x2.tribe == x).tribeChoice);
             list.RemoveAll((Tribe x) => tribes.Contains(x));
             while (tribes.Count < 3)
             {
