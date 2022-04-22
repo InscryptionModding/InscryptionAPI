@@ -7,46 +7,87 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 internal static class StarterDeckSelectscreenPatches
 {
-    [HarmonyPatch(typeof(AscensionStarterDeckIcon), nameof(AscensionStarterDeckIcon.AssignInfo))]
-    [HarmonyPrefix]
-    private static void ForceAssignInfo(ref AscensionStarterDeckIcon __instance, StarterDeckInfo info)
-    {
-        __instance.starterDeckInfo = info;
-        __instance.conqueredRenderer.enabled = false;
-    }
-
-    [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
+    [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), "Start")]
     [HarmonyPostfix]
-    private static void AddPaginationToStarterDeckScreen()
+    public static void Postfix(AscensionChooseStarterDeckScreen __instance)
     {
-        StarterDeckPaginator paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.GetComponent<StarterDeckPaginator>();
-        if (paginator == null)
-            paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.AddComponent<StarterDeckPaginator>();
-
-       
-        GameObject starterDeckContainer = AscensionMenuScreens.Instance.starterDeckSelectScreen.transform.Find("Icons").gameObject;
-
-        paginator.icons = new List<AscensionStarterDeckIcon>();
-        for (int i = 1; i <= 8; i++)
-            paginator.icons.Add(starterDeckContainer.transform.Find($"StarterDeckIcon_{i}").gameObject.GetComponent<AscensionStarterDeckIcon>());
-
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(starterDeckContainer.transform);
-
-        AscensionMenuInteractable leftController = pageTuple.Item1;
-        AscensionMenuInteractable rightController = pageTuple.Item2;
-
-        Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.StarterDeckPageLeft(i);
-        Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.StarterDeckPageRight(i);
-
-        leftController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(leftController.CursorSelectStarted, leftClickAction);
-        rightController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(rightController.CursorSelectStarted, rightClickAction);
-
-        paginator.starterDeckPageIndex = 0;
-
-        if (StarterDeckManager.NewDecks.Count == 0)
+        if (__instance.GetComponent<StarterDeckPaginator>() == null)
         {
-            GameObject.Destroy(leftController.gameObject);
-            GameObject.Destroy(rightController.gameObject);
+            List<StarterDeckInfo> decksToAdd = new(StarterDeckManager.AllDecks.ConvertAll((x) => x.Info));
+            List<AscensionStarterDeckIcon> icons = __instance.deckIcons;
+            icons.ForEach(delegate (AscensionStarterDeckIcon ic)
+            {
+                if (ic != null && ic.Info != null && !string.IsNullOrEmpty(ic.Info.title) && decksToAdd.FindAll((StarterDeckInfo inf) => inf.title.ToLower() == ic.Info.title.ToLower()).Count > 0)
+                {
+                    decksToAdd.Remove(decksToAdd.Find((StarterDeckInfo inf) => inf.title.ToLower() == ic.Info.title.ToLower()));
+                }
+            });
+            icons.ForEach(delegate (AscensionStarterDeckIcon ic)
+            {
+                if (ic != null && ic.Info == null && decksToAdd.Count > 0)
+                {
+                    ic.starterDeckInfo = decksToAdd[0];
+                    ic.AssignInfo(decksToAdd[0]);
+                    decksToAdd.RemoveAt(0);
+                }
+            });
+            List<List<StarterDeckInfo>> pagesToAdd = new();
+            while (decksToAdd.Count > 0)
+            {
+                List<StarterDeckInfo> page = new();
+                for (int i = 0; i < icons.Count; i++)
+                {
+                    if (decksToAdd.Count > 0)
+                    {
+                        page.Add(decksToAdd[0]);
+                        decksToAdd.RemoveAt(0);
+                    }
+                }
+                pagesToAdd.Add(page);
+            }
+            if (pagesToAdd.Count > 0)
+            {
+                StarterDeckPaginator manager = __instance.gameObject.AddComponent<StarterDeckPaginator>();
+                manager.Initialize(__instance);
+                foreach (List<StarterDeckInfo> page in pagesToAdd)
+                {
+                    manager.AddPage(page);
+                }
+                Vector3 topRight = new Vector3(float.MinValue, float.MinValue);
+                Vector3 bottomLeft = new Vector3(float.MaxValue, float.MaxValue);
+                foreach (AscensionStarterDeckIcon icon in icons)
+                {
+                    if (icon != null && icon.iconRenderer != null)
+                    {
+                        if (icon.iconRenderer.transform.position.x < bottomLeft.x)
+                        {
+                            bottomLeft.x = icon.iconRenderer.transform.position.x;
+                        }
+                        if (icon.iconRenderer.transform.position.x > topRight.x)
+                        {
+                            topRight.x = icon.iconRenderer.transform.position.x;
+                        }
+                        if (icon.iconRenderer.transform.position.y < bottomLeft.y)
+                        {
+                            bottomLeft.y = icon.iconRenderer.transform.position.y;
+                        }
+                        if (icon.iconRenderer.transform.position.y > topRight.y)
+                        {
+                            topRight.y = icon.iconRenderer.transform.position.y;
+                        }
+                    }
+                }
+                GameObject leftArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
+                leftArrow.transform.parent = __instance.transform;
+                leftArrow.transform.position = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 2f;
+                leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+                leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.PreviousPage();
+                GameObject rightArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
+                rightArrow.transform.parent = __instance.transform;
+                rightArrow.transform.position = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 2f;
+                rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+                rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.NextPage();
+            }
         }
     }
 }
