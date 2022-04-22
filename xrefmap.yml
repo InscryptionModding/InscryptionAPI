@@ -4483,6 +4483,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent
   nameWithType: CardSlotExtensions.GetAdjacent
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(DiskCardGame.CardSlot)
+  name: GetAdjacentCards(CardSlot)
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(DiskCardGame.CardSlot)
+  nameWithType: CardSlotExtensions.GetAdjacentCards(CardSlot)
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards*
+  name: GetAdjacentCards
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards
+  nameWithType: CardSlotExtensions.GetAdjacentCards
 - uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(DiskCardGame.CardSlot,System.Boolean)
   name: GetAdjacentSlots(CardSlot, Boolean)
   href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_DiskCardGame_CardSlot_System_Boolean_
@@ -4496,22 +4509,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots
   nameWithType: CardSlotExtensions.GetAdjacentSlots
-- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})
-  name: GetCards(IEnumerable<CardSlot>, Predicate<PlayableCard>)
-  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__
-  commentId: M:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})
-  name.vb: GetCards(IEnumerable(Of CardSlot), Predicate(Of PlayableCard))
-  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable<DiskCardGame.CardSlot>, Predicate<DiskCardGame.PlayableCard>)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards(System.Collections.IEnumerable(Of DiskCardGame.CardSlot), Predicate(Of DiskCardGame.PlayableCard))
-  nameWithType: CardSlotExtensions.GetCards(IEnumerable<CardSlot>, Predicate<PlayableCard>)
-  nameWithType.vb: CardSlotExtensions.GetCards(IEnumerable(Of CardSlot), Predicate(Of PlayableCard))
-- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards*
-  name: GetCards
-  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetCards_
-  commentId: Overload:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards
-  isSpec: "True"
-  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetCards
-  nameWithType: CardSlotExtensions.GetCards
 - uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(DiskCardGame.CardSlot,System.String)
   name: HasCard(CardSlot, String)
   href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_DiskCardGame_CardSlot_System_String_
@@ -4538,22 +4535,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot
   nameWithType: CardSlotExtensions.IsOpponentSlot
-- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})
-  name: OpenSlots(IEnumerable<CardSlot>, Predicate<CardSlot>)
-  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__
-  commentId: M:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})
-  name.vb: OpenSlots(IEnumerable(Of CardSlot), Predicate(Of CardSlot))
-  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable<DiskCardGame.CardSlot>, Predicate<DiskCardGame.CardSlot>)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots(System.Collections.IEnumerable(Of DiskCardGame.CardSlot), Predicate(Of DiskCardGame.CardSlot))
-  nameWithType: CardSlotExtensions.OpenSlots(IEnumerable<CardSlot>, Predicate<CardSlot>)
-  nameWithType.vb: CardSlotExtensions.OpenSlots(IEnumerable(Of CardSlot), Predicate(Of CardSlot))
-- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots*
-  name: OpenSlots
-  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_OpenSlots_
-  commentId: Overload:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots
-  isSpec: "True"
-  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.OpenSlots
-  nameWithType: CardSlotExtensions.OpenSlots
 - uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)
   name: ResolveCardOnBoard(CardSlot, PlayableCard, Single, Action, Boolean)
   href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_
@@ -4567,6 +4548,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard
   nameWithType: CardSlotExtensions.ResolveCardOnBoard
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})
+  name: SelectCards(IEnumerable<CardSlot>, Predicate<PlayableCard>)
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__
+  commentId: M:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})
+  name.vb: SelectCards(IEnumerable(Of CardSlot), Predicate(Of PlayableCard))
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable<DiskCardGame.CardSlot>, Predicate<DiskCardGame.PlayableCard>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable(Of DiskCardGame.CardSlot), Predicate(Of DiskCardGame.PlayableCard))
+  nameWithType: CardSlotExtensions.SelectCards(IEnumerable<CardSlot>, Predicate<PlayableCard>)
+  nameWithType.vb: CardSlotExtensions.SelectCards(IEnumerable(Of CardSlot), Predicate(Of PlayableCard))
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards*
+  name: SelectCards
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards
+  nameWithType: CardSlotExtensions.SelectCards
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})
+  name: SelectOpenSlots(IEnumerable<CardSlot>, Predicate<CardSlot>)
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})
+  name.vb: SelectOpenSlots(IEnumerable(Of CardSlot), Predicate(Of CardSlot))
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable<DiskCardGame.CardSlot>, Predicate<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable(Of DiskCardGame.CardSlot), Predicate(Of DiskCardGame.CardSlot))
+  nameWithType: CardSlotExtensions.SelectOpenSlots(IEnumerable<CardSlot>, Predicate<CardSlot>)
+  nameWithType.vb: CardSlotExtensions.SelectOpenSlots(IEnumerable(Of CardSlot), Predicate(Of CardSlot))
+- uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots*
+  name: SelectOpenSlots
+  href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html#InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots
+  nameWithType: CardSlotExtensions.SelectOpenSlots
 - uid: InscryptionAPI.Helpers.TextureHelper
   name: TextureHelper
   href: api/InscryptionAPI.Helpers.TextureHelper.html
