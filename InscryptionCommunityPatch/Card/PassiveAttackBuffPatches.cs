@@ -72,7 +72,7 @@ public static class PassiveAttackBuffPatches
                     __result += card.AbilityCount(Ability.ConduitBuffAttack);
 
                 if (conduitsForSlot.Count > 0)
-                    __result += __instance.AbilityCount(Ability.CellBuffSelf);
+                    __result += 2 * __instance.AbilityCount(Ability.CellBuffSelf);
             }
 
             if (__instance.Info.HasTrait(Trait.Gem))
@@ -80,6 +80,10 @@ public static class PassiveAttackBuffPatches
                     if (slot.Card != null)
                         __result += slot.Card.AbilityCount(Ability.BuffGems);
         }
+
+        if (__instance.Info.Gemified && ResourcesManager.Instance.HasGem(GemType.Orange))
+            __result += 1;
+
         return false;
     }
 }
