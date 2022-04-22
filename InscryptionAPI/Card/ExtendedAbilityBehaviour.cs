@@ -1,6 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Triggers;
+using Sirenix.Utilities;
 
 namespace InscryptionAPI.Card;
 
@@ -63,9 +64,10 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [HarmonyPostfix]
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (TurnManager.Instance.GameEnding) return;
-
         var card = __instance;
+        
+        if (TurnManager.Instance.GameEnding || card.SafeIsUnityNull() || card.Dead) return;
+
         __result += BoardManager.Instance.CardsOnBoard
             .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveAttackBuff>)
             .Sum(buffer => buffer.GetPassiveAttackBuff(card));
@@ -75,9 +77,10 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     [HarmonyPostfix]
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
-        if (TurnManager.Instance.GameEnding) return;
-
         var card = __instance;
+        
+        if (TurnManager.Instance.GameEnding || card.SafeIsUnityNull() || card.Dead) return;
+
         __result += BoardManager.Instance.CardsOnBoard
             .SelectMany(CustomTriggerFinder.FindTriggersOnCard<IPassiveHealthBuff>)
             .Sum(buffer => buffer.GetPassiveHealthBuff(card));
