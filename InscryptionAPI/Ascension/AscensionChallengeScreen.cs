@@ -1,6 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
@@ -8,79 +9,230 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 internal static class AscensionChallengeScreenPatches
 {
-    private static readonly Sprite DEFAULT_ACTIVATED_SPRITE = TextureHelper.ConvertTexture(
-        Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),
-        TextureHelper.SpriteType.ChallengeIcon);
 
     [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
     [HarmonyPostfix]
     private static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
     {
-        if (info.activatedSprite == null)
-            __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
-
-        if (info.pointValue > 0)
+        //if (info.activatedSprite == null)
+        //    __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
+        if (info.pointValue > 0 || info.challengeType == AscensionChallenge.None)
         {
-            __instance.blinkEffect.blinkOffColor = GameColors.Instance.red;
-            __instance.iconRenderer.color = GameColors.Instance.red;
+            var conquered = GameColors.Instance.darkFuschia;
+            if (__instance.Conquered && __instance.showConquered)
+            {
+                __instance.blinkEffect.blinkOffColor = conquered;
+                __instance.iconRenderer.color = conquered;
+            }
+            else
+            {
+                __instance.blinkEffect.blinkOffColor = GameColors.Instance.red;
+                __instance.iconRenderer.color = GameColors.Instance.red;
+            }
+            __instance.conqueredColor = conquered;
         }
         else if (info.pointValue < 0)
         {
-            __instance.blinkEffect.blinkOffColor = GameColors.Instance.darkLimeGreen;
-            __instance.iconRenderer.color = GameColors.Instance.darkLimeGreen;
-        } else
+            Color32 conquered = new(0, 52, 33, 255);
+            if (__instance.Conquered && __instance.showConquered)
+            {
+                __instance.blinkEffect.blinkOffColor = conquered;
+                __instance.iconRenderer.color = conquered;
+            }
+            else
+            {
+                __instance.blinkEffect.blinkOffColor = GameColors.Instance.darkLimeGreen;
+                __instance.iconRenderer.color = GameColors.Instance.darkLimeGreen;
+            }
+            __instance.conqueredColor = conquered;
+        }
+        else
         {
-            __instance.blinkEffect.blinkOffColor = GameColors.Instance.yellow;
-            __instance.iconRenderer.color = GameColors.Instance.yellow;
+            var darkGold = GameColors.Instance.darkGold / 2;
+            var conquered = new Color(darkGold.r, darkGold.g, darkGold.b, 1f);
+            if (__instance.Conquered && __instance.showConquered)
+            {
+                __instance.blinkEffect.blinkOffColor = conquered;
+                __instance.iconRenderer.color = conquered;
+            }
+            else
+            {
+                __instance.blinkEffect.blinkOffColor = GameColors.Instance.gold;
+                __instance.iconRenderer.color = GameColors.Instance.gold;
+            }
+            __instance.conqueredColor = conquered;
         }
     }
 
-    [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
-    [HarmonyPostfix]
-    private static void AddPaginationToChallengeScreen()
+    [HarmonyPatch(typeof(AscensionChallengeDisplayer), "DisplayChallenge")]
+    [HarmonyPrefix]
+    public static bool DisplayChallenge(AscensionChallengeDisplayer __instance, AscensionChallengeInfo challengeInfo, bool immediate)
     {
-        AscensionChallengePaginator paginator = AscensionMenuScreens.Instance.selectChallengesScreen.GetComponent<AscensionChallengePaginator>();
-        if (paginator == null)
-            paginator = AscensionMenuScreens.Instance.selectChallengesScreen.AddComponent<AscensionChallengePaginator>();
-
-        GameObject leftPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageLeftButton").gameObject;
-        GameObject rightPseudoPrefab = AscensionMenuScreens.Instance.cardUnlockSummaryScreen.transform.Find("Unlocks/ScreenAnchor/PageRightButton").gameObject;
-
-        GameObject challengeIconGrid = AscensionMenuScreens.Instance.selectChallengesScreen.transform.Find("Icons/ChallengeIconGrid").gameObject;
-
-        GameObject topRow = challengeIconGrid.transform.Find("TopRow").gameObject;
-        GameObject bottomRow = challengeIconGrid.transform.Find("BottomRow").gameObject;
-
-        paginator.topRow = new List<AscensionIconInteractable>();
-        paginator.bottomRow = new List<AscensionIconInteractable>();
-        for (int i = 1; i <= 7; i++)
+        if (challengeInfo != null && (challengeInfo.challengeType == AscensionChallenge.None || (AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(challengeInfo.challengeType, AscensionSaveData.Data.challengeLevel) &&
+            challengeInfo.pointValue < 0)))
         {
-            paginator.topRow.Add(topRow.transform.Find($"Icon_{i}").gameObject.GetComponent<AscensionIconInteractable>());
-            paginator.bottomRow.Add(bottomRow.transform.Find($"Icon_{i+7}").gameObject.GetComponent<AscensionIconInteractable>());
+            string title = "";
+            string line = "";
+            string line2 = "";
+            if (challengeInfo.challengeType == AscensionChallenge.None)
+            {
+                title = " ??? ";
+                line = Localization.Translate("CHALLENGE UNAVAILABLE");
+                line2 = "";
+            }
+            else if (AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(challengeInfo.challengeType, AscensionSaveData.Data.challengeLevel) && challengeInfo.pointValue < 0)
+            {
+                title = " " + Localization.ToUpper(Localization.Translate(challengeInfo.title)) + " ";
+                line = Localization.Translate(challengeInfo.description);
+                line2 = string.Format(Localization.Translate("+{0} CHALLENGE POINTS").Substring(1), challengeInfo.pointValue.ToString()); //because not including the + would mess up the translation
+            }
+            ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(__instance).DisplayChallenge(challengeInfo, immediate);
+            __instance.DisplayText(title, line, line2, immediate);
+            return false;
         }
-        paginator.extraIcon = bottomRow.transform.Find($"Icon_15").gameObject.GetComponent<AscensionIconInteractable>();
-        paginator.showExtraIcon = AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel);
+        ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(__instance).DisplayChallenge(challengeInfo, immediate);
+        return true;
+    }
 
-
-        paginator.GeneratePages();
-
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(challengeIconGrid.transform, upperPosition:true);
-
-        AscensionMenuInteractable leftController = pageTuple.Item1;
-        AscensionMenuInteractable rightController = pageTuple.Item2;
-
-        Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.ChallengePageLeft(i);
-        Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.ChallengePageRight(i);
-
-        leftController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(leftController.CursorSelectStarted, leftClickAction);
-        rightController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(rightController.CursorSelectStarted, rightClickAction);
-
-        paginator.challengePageIndex = 0;
-
-        if (ChallengeManager.NewInfos.Count == 0)
+    [HarmonyPatch(typeof(AscensionChallengeScreen), "UpdateFooterText")]
+    [HarmonyPrefix]
+    public static bool UpdateFooterText(AscensionChallengeScreen __instance, AscensionChallengeInfo challengeInfo, bool activated)
+    {
+        if (challengeInfo.pointValue < 0)
         {
-            GameObject.Destroy(leftController.gameObject);
-            GameObject.Destroy(rightController.gameObject);
+            string arg = Localization.ToUpper(Localization.Translate(challengeInfo.title));
+            string text;
+            if (activated)
+            {
+                text = string.Format(Localization.Translate("{0} ENABLED"), arg);
+            }
+            else
+            {
+                text = string.Format(Localization.Translate("{0} DISABLED"), arg);
+            }
+            string text2;
+            if (activated)
+            {
+                text2 = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), (-challengeInfo.pointValue).ToString());
+            }
+            else
+            {
+                text2 = string.Format(Localization.Translate("{0} Challenge Points Added"), (-challengeInfo.pointValue).ToString());
+            }
+            int challengeLevel = AscensionSaveData.Data.challengeLevel;
+            int activeChallengePoints = AscensionSaveData.Data.GetActiveChallengePoints();
+            string text3;
+            if (activeChallengePoints > AscensionSaveData.GetChallengePointsForLevel(challengeLevel))
+            {
+                text3 = string.Format(Localization.Translate("WARNING(!) Lvl Reqs EXCEEDED"), Array.Empty<object>());
+            }
+            else if (activeChallengePoints == AscensionSaveData.GetChallengePointsForLevel(challengeLevel))
+            {
+                text3 = string.Format(Localization.Translate("Lvl Reqs Met"), Array.Empty<object>());
+            }
+            else
+            {
+                text3 = string.Format(Localization.Translate("Lvl Reqs NOT MET"), Array.Empty<object>());
+            }
+            __instance.footerLines.ShowText(0.1f, new string[]
+            {
+                text,
+                text2,
+                text3
+            }, false);
+            return false;
+        }
+        return true;
+    }
+
+    [HarmonyPatch(typeof(AscensionMenuScreens), "Start")]
+    [HarmonyPostfix]
+    public static void Postfix(AscensionMenuScreens __instance)
+    {
+        if (__instance.challengeUnlockSummaryScreen != null && __instance.challengeUnlockSummaryScreen.GetComponent<AscensionMenuScreenTransition>() != null &&
+            __instance.challengeUnlockSummaryScreen.GetComponent<AscensionChallengePaginatorSetupifier>() == null)
+        {
+            GameObject challengeScreen = __instance.challengeUnlockSummaryScreen;
+            challengeScreen.AddComponent<AscensionChallengePaginatorSetupifier>();
+        }
+    }
+
+    [HarmonyPatch(typeof(AscensionChallengeScreen), "Start")]
+    [HarmonyPostfix]
+    public static void Postfix(AscensionChallengeScreen __instance)
+    {
+        if (__instance.GetComponent<AscensionChallengePaginator>() == null)
+        {
+            AscensionChallengePaginator manager = __instance.gameObject.AddComponent<AscensionChallengePaginator>();
+            manager.Initialize(__instance);
+            List<ChallengeManager.FullChallenge> fcs = ChallengeManager.NewInfos.ToList();
+            fcs.Sort((x, x2) => x.SortValue != x2.SortValue ? x.SortValue - x2.SortValue : x2.UnlockLevel - x.UnlockLevel);
+            List<AscensionChallengeInfo> challengesToAdd = new(fcs.ConvertAll(x => x.Challenge.Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
+            List<AscensionIconInteractable> icons = __instance.icons;
+            icons.ForEach(delegate (AscensionIconInteractable ic)
+            {
+                if (ic != null && ic.Info == null && challengesToAdd.Count > 0)
+                {
+                    ic.challengeInfo = challengesToAdd[0];
+                    ic.AssignInfo(challengesToAdd[0]);
+                    challengesToAdd.RemoveAt(0);
+                }
+            });
+            List<List<AscensionChallengeInfo>> pagesToAdd = new();
+            while (challengesToAdd.Count > 0)
+            {
+                List<AscensionChallengeInfo> page = new();
+                for (int i = 0; i < icons.Count; i++)
+                {
+                    if (challengesToAdd.Count > 0)
+                    {
+                        page.Add(challengesToAdd.Last());
+                        challengesToAdd.RemoveAt(challengesToAdd.Count - 1);
+                    }
+                }
+                pagesToAdd.Add(page);
+            }
+            if (pagesToAdd.Count > 0)
+            {
+                foreach (List<AscensionChallengeInfo> page in pagesToAdd)
+                {
+                    manager.AddPage(page);
+                }
+                Vector3 topRight = new(float.MinValue, float.MinValue);
+                Vector3 bottomLeft = new(float.MaxValue, float.MaxValue);
+                foreach (AscensionIconInteractable icon in icons)
+                {
+                    if (icon != null && icon.iconRenderer != null)
+                    {
+                        if (icon.iconRenderer.transform.position.x < bottomLeft.x)
+                        {
+                            bottomLeft.x = icon.iconRenderer.transform.position.x;
+                        }
+                        if (icon.iconRenderer.transform.position.x > topRight.x)
+                        {
+                            topRight.x = icon.iconRenderer.transform.position.x;
+                        }
+                        if (icon.iconRenderer.transform.position.y < bottomLeft.y)
+                        {
+                            bottomLeft.y = icon.iconRenderer.transform.position.y;
+                        }
+                        if (icon.iconRenderer.transform.position.y > topRight.y)
+                        {
+                            topRight.y = icon.iconRenderer.transform.position.y;
+                        }
+                    }
+                }
+                GameObject leftArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
+                leftArrow.transform.parent = __instance.transform;
+                leftArrow.transform.position = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 3f;
+                leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+                leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.PreviousPage();
+                GameObject rightArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
+                rightArrow.transform.parent = __instance.transform;
+                rightArrow.transform.position = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f;
+                rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+                rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.NextPage();
+            }
         }
     }
 }

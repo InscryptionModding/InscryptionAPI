@@ -16,10 +16,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="ascensionicon_none.png" />
       <None Remove="mapevent_missing.png" />
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="ascensionicon_none.png" />
       <EmbeddedResource Include="mapevent_missing.png" />
     </ItemGroup>
 
