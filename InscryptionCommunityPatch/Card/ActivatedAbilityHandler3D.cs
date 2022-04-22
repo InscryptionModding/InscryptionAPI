@@ -6,7 +6,7 @@ namespace InscryptionCommunityPatch.Card;
 
 public class ActivatedAbilityHandler3D : ManagedBehaviour
 {
-    public GameObject currentIconGroup;
+    public List<AbilityIconInteractable> currentIconGroup;
     
     public List<ActivatedAbilityIconInteractable> interactables = new();
 
@@ -15,18 +15,19 @@ public class ActivatedAbilityHandler3D : ManagedBehaviour
         interactables.Add(interactable);
     }
 
-    public void UpdateInteractableList(GameObject defaultIconGroup)
+    public void UpdateInteractableList(List<AbilityIconInteractable> controllerActiveIcons)
     {
         interactables.Clear();
-        currentIconGroup = defaultIconGroup;
-        currentIconGroup
-            .GetComponentsInChildren<AbilityIconInteractable>()
+        currentIconGroup = controllerActiveIcons;
+        controllerActiveIcons
             .Where(elem => AbilitiesUtil.GetInfo(elem.Ability).activated)
             .Do(abIcon =>
             {
-                if (abIcon.GetComponent<ActivatedAbilityIconInteractable>())
+                ActivatedAbilityIconInteractable currentIcon = abIcon.gameObject.GetComponent<ActivatedAbilityIconInteractable>();
+                if (currentIcon)
                 {
-                    AddInteractable(abIcon.GetComponent<ActivatedAbilityIconInteractable>());
+                    currentIcon.AssignAbility(abIcon.Ability);
+                    AddInteractable(currentIcon);
                 }
                 else
                 {
