@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 public static class PassiveAttackBuffPatches
 {
-    private static int AbilityCount (this PlayableCard card, Ability ability)
+    private static int AbilityCount(this PlayableCard card, Ability ability)
     {
         int count = 0;
         count += card.Info.Abilities.Count(a => a == ability);
@@ -44,7 +44,7 @@ public static class PassiveAttackBuffPatches
 
             // Deal with buff and debuff enemy
             // We have to handle giant cards separately (i.e., the moon)
-            if (__instance.Info.HasTrait(Trait.Giant))
+            if (__instance.HasTrait(Trait.Giant))
             {
                 foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard).Where(slot => slot.Card))
                 {
@@ -55,12 +55,12 @@ public static class PassiveAttackBuffPatches
                     }
                 }
             }
-            else if (__instance.Slot.opposingSlot.Card)
+            else if (__instance.HasOpposingCard())
             {
-                __result += __instance.Slot.opposingSlot.Card.AbilityCount(Ability.BuffEnemy);
+                __result += __instance.OpposingCard().AbilityCount(Ability.BuffEnemy);
                 if(__instance.LacksAbility(Ability.MadeOfStone))
                 {
-                    __result -= __instance.Slot.opposingSlot.Card.AbilityCount(Ability.DebuffEnemy);
+                    __result -= __instance.OpposingCard().AbilityCount(Ability.DebuffEnemy);
                 }
             }
 
