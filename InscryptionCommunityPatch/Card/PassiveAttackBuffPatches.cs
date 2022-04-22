@@ -43,20 +43,23 @@ public static class PassiveAttackBuffPatches
             __result += __instance.Slot.GetAdjacentCards().Sum(playableCard => playableCard.AbilityCount(Ability.BuffNeighbours));
 
             // Deal with buff and debuff enemy
-            if (!__instance.HasAbility(Ability.MadeOfStone))
+            // We have to handle giant cards separately (i.e., the moon)
+            if (__instance.Info.HasTrait(Trait.Giant))
             {
-                // We have to handle giant cards separately (i.e., the moon)
-                if (__instance.Info.HasTrait(Trait.Giant))
+                foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard).Where(slot => slot.Card))
                 {
-                    foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard).Where(slot => slot.Card))
+                    __result += slot.Card.AbilityCount(Ability.BuffEnemy);
+                    if(__instance.LacksAbility(Ability.MadeOfStone))
                     {
-                        __result += slot.Card.AbilityCount(Ability.BuffEnemy);
                         __result -= slot.Card.AbilityCount(Ability.DebuffEnemy);
                     }
                 }
-                else if (__instance.Slot.opposingSlot.Card)
+            }
+            else if (__instance.Slot.opposingSlot.Card)
+            {
+                __result += __instance.Slot.opposingSlot.Card.AbilityCount(Ability.BuffEnemy);
+                if(__instance.LacksAbility(Ability.MadeOfStone))
                 {
-                    __result += __instance.Slot.opposingSlot.Card.AbilityCount(Ability.BuffEnemy);
                     __result -= __instance.Slot.opposingSlot.Card.AbilityCount(Ability.DebuffEnemy);
                 }
             }
