@@ -1,14 +1,15 @@
-using HarmonyLib;
-using DiskCardGame;
-using InscryptionAPI.Card;
 using System.Collections;
+using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Card;
+using InscryptionAPI.Helpers.Extensions;
 
 namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
 public static class PassiveAttackBuffPatches
 {
-    private static int AbilityCount (this PlayableCard card, Ability ability)
+    private static int AbilityCount(this PlayableCard card, Ability ability)
     {
         int count = 0;
         count += card.Info.Abilities.Count(a => a == ability);
@@ -39,46 +40,44 @@ public static class PassiveAttackBuffPatches
         if (__instance.OnBoard)
         {
             // Check BuffNeighbors:
-            foreach (CardSlot neighbor in BoardManager.Instance.GetAdjacentSlots(__instance.slot).Where(s => s.Card != null))
-                if (neighbor.Card != null)
-                    __result += neighbor.Card.AbilityCount(Ability.BuffNeighbours);
+            __result += __instance.Slot.GetAdjacentCards().Sum(playableCard => playableCard.AbilityCount(Ability.BuffNeighbours));
 
             // Deal with buff and debuff enemy
-            if (!__instance.HasAbility(Ability.MadeOfStone))
+            // We have to handle giant cards separately (i.e., the moon)
+            if (__instance.HasTrait(Trait.Giant))
             {
-                // We have to handle giant cards separately (i.e., the moon)
-                if (__instance.Info.HasTrait(Trait.Giant))
-                {    
-                    foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard))
+                foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard).Where(slot => slot.Card))
+                {
+                    __result += slot.Card.AbilityCount(Ability.BuffEnemy);
+                    if(__instance.LacksAbility(Ability.MadeOfStone))
                     {
-                        if (slot.Card != null)
-                        {
-                            __result += slot.Card.AbilityCount(Ability.BuffEnemy);
-                            __result -= slot.Card.AbilityCount(Ability.DebuffEnemy);
-                        }
+                        __result -= slot.Card.AbilityCount(Ability.DebuffEnemy);
                     }
                 }
-                else if (__instance.Slot.opposingSlot.Card != null)
+            }
+            else if (__instance.HasOpposingCard())
+            {
+                __result += __instance.OpposingCard().AbilityCount(Ability.BuffEnemy);
+                if(__instance.LacksAbility(Ability.MadeOfStone))
                 {
-                    __result += __instance.Slot.opposingSlot.Card.AbilityCount(Ability.BuffEnemy);
-                    __result -= __instance.Slot.opposingSlot.Card.AbilityCount(Ability.DebuffEnemy);
+                    __result -= __instance.OpposingCard().AbilityCount(Ability.DebuffEnemy);
                 }
             }
 
             if (ConduitCircuitManager.Instance != null) // No need to check save file location - this lets conduits work in all acts
             {
                 List<PlayableCard> conduitsForSlot = ConduitCircuitManager.Instance.GetConduitsForSlot(__instance.Slot);
-                foreach (PlayableCard card in conduitsForSlot)
-                    __result += card.AbilityCount(Ability.ConduitBuffAttack);
+                __result += conduitsForSlot.Sum(playableCard => playableCard.AbilityCount(Ability.ConduitBuffAttack));
 
                 if (conduitsForSlot.Count > 0)
                     __result += 2 * __instance.AbilityCount(Ability.CellBuffSelf);
             }
 
             if (__instance.Info.HasTrait(Trait.Gem))
-                foreach (CardSlot slot in BoardManager.Instance.GetSlots(!__instance.OpponentCard))
-                    if (slot.Card != null)
-                        __result += slot.Card.AbilityCount(Ability.BuffGems);
+                __result += BoardManager.Instance
+                    .GetSlots(__instance.IsPlayerCard())
+                    .Where(slot => slot.Card)
+                    .Sum(slot => slot.Card.AbilityCount(Ability.BuffGems));
         }
 
         if (__instance.Info.Gemified && ResourcesManager.Instance.HasGem(GemType.Orange))
