@@ -25,10 +25,11 @@ namespace InscryptionAPI.Boons
                 }
                 return false;
             });
-            List<BoonBehaviour> behaviors = BoonBehaviour.FindInstancesOfType(type);
+            List<BoonBehaviour> behaviors = BoonBehaviour.FindInstancesOfType(type).FindAll(x => x.GetComponent<DestroyingFlag>() == null);
             if(behaviors.Count > 0)
             {
-                UnityEngine.Object.Destroy(behaviors[0].gameObject);
+                behaviors[0].gameObject.DestroyWhenStackClear();
+                BoonBehaviour.EnsureInstancesLoaded();
             }
         }
 
@@ -41,14 +42,14 @@ namespace InscryptionAPI.Boons
         {
             self.boonIds.RemoveAll((x) => x == type);
             self.Boons.RemoveAll((x) => x != null && x.type == type);
-            List<BoonBehaviour> behaviors = new List<BoonBehaviour>(BoonBehaviour.FindInstancesOfType(type));
+            List<BoonBehaviour> behaviors = new(BoonBehaviour.FindInstancesOfType(type));
             if (behaviors.Count > 0)
             {
                 foreach (BoonBehaviour ins in behaviors)
                 {
                     if (ins != null && ins.gameObject != null)
                     {
-                        UnityEngine.Object.Destroy(ins.gameObject);
+                        ins.gameObject.DestroyWhenStackClear();
                     }
                 }
                 BoonBehaviour.EnsureInstancesLoaded();

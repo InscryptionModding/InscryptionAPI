@@ -15,7 +15,7 @@ public static class BoardManagerExtensions
         Predicate<PlayableCard> filterOnPredicate = null
     )
     {
-        return manager.PlayerSlotsCopy.GetCards(filterOnPredicate);
+        return manager.PlayerSlotsCopy.SelectCards(filterOnPredicate).ToList();
     }
 	
     /// <summary>
@@ -29,7 +29,7 @@ public static class BoardManagerExtensions
         Predicate<CardSlot> filterOnPredicate = null
     )
     {
-        return manager.PlayerSlotsCopy.OpenSlots(filterOnPredicate);
+        return manager.PlayerSlotsCopy.SelectOpenSlots(filterOnPredicate).ToList();
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public static class BoardManagerExtensions
         Predicate<PlayableCard> filterOnPredicate = null
     )
     {
-        return manager.OpponentSlotsCopy.GetCards(filterOnPredicate);
+        return manager.OpponentSlotsCopy.SelectCards(filterOnPredicate).ToList();
     }
 
     /// <summary>
@@ -57,6 +57,6 @@ public static class BoardManagerExtensions
         Predicate<CardSlot> filterOnPredicate = null
     )
     {
-        return manager.OpponentSlotsCopy.OpenSlots(filterOnPredicate);
+        return manager.OpponentSlotsCopy.SelectOpenSlots(filterOnPredicate).ToList();
     }
 }
