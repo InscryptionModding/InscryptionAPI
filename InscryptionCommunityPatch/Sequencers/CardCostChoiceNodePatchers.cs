@@ -19,7 +19,7 @@ internal static class ChoiceNodePatch
                 __result = TextureHelper.GetImageAsTexture("energyCost.png", typeof(ChoiceNodePatch).Assembly);
                 break;
             case ResourceType.Gems:
-                __result = TextureHelper.GetImageAsTexture("gemCost.png", typeof(ChoiceNodePatch).Assembly);
+                __result = TextureHelper.GetImageAsTexture("moxCost.png", typeof(ChoiceNodePatch).Assembly);
                 break;
         }
     }
