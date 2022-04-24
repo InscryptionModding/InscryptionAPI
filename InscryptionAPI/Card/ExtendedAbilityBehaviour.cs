@@ -6,7 +6,7 @@ using InscryptionAPI.Triggers;
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
-public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IOnCardPassiveAttackBuffs, IOnCardPassiveHealthBuffs
+public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff
 {
     // This section handles attack slot management
 
@@ -76,6 +76,17 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
 
     public virtual int GetPassiveHealthBuff(PlayableCard target)
     {
+        if (ProvidesPassiveHealthBuff)
+        {
+            if (target.OpponentCard == this.Card.OpponentCard)
+            {
+                int[] result = GetPassiveHealthBuffs();
+                if (result != null && target.Slot.Index < result.Length)
+                {
+                    return result[target.Slot.Index];
+                }
+            }
+        }
         return 0;
     }
 

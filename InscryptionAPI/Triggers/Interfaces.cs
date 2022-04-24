@@ -188,9 +188,38 @@ namespace InscryptionAPI.Triggers
     }
 
     /// <summary>
-    /// Data collection trigger that collects data related to attacked slots.
+    /// Run whenever a card is asked what its opposing slots are as part of the attack sequence
     /// </summary>
     public interface IGetOpposingSlots
+    {
+        /// <summary>
+        /// Indicates if this card wants to respond to getting the opposing slots
+        /// </summary>
+        /// <returns>True to provide opposing slots, False to leave the slots as default</returns>
+        bool RespondsToGetOpposingSlots();
+
+        /// <summary>
+        /// Gets the card slots that the card wants to attack
+        /// </summary>
+        /// <param name="originalSlots">The set of original card slots that the card would attack (as set by abilities in the base game)</param>
+        /// <param name="otherAddedSlots">Slots that have been added by other custom abilities</param>
+        /// <returns>The list of card slots you want to attack</returns>
+        /// <remarks>If your card is replacing the default attack slot (the opposing slot) see 'RemoveDefaultAttackSlot'
+        /// If you are **not** replacing the default attack slot, do **not** include that here. Simple ensure 'RemoveDefaultAttackSlot' returns false.
+        /// Only return the default attack slot if you want to attack it an additional time.</remarks>
+        List<CardSlot> GetOpposingSlots(List<CardSlot> originalSlots, List<CardSlot> otherAddedSlots);
+
+        /// <summary>
+        /// If true, this means that the attack slots provided by GetOpposingSlots should override the default attack slot. 
+        /// If false, it means they should be in addition to the default opposing slot.
+        /// </summary>
+        bool RemoveDefaultAttackSlot();
+    }
+    
+    /// <summary>
+     /// Data collection trigger that collects data related to attacked slots.
+     /// </summary>
+    public interface INewGetOpposingSlots
     {
         /// <summary>
         /// If true, this trigger will collect data from CollectModifyAttackSlots.
@@ -275,6 +304,32 @@ namespace InscryptionAPI.Triggers
     {
         public bool RespondsToCardPassiveHealthBuffs(PlayableCard card, int currentValue);
         public int CollectCardPassiveHealthBuffs(PlayableCard card, int currentValue);
+    }
+
+    /// <summary>
+    /// Used when a card wants to provide a passive buff to other cards on the board
+    /// </summary>
+    public interface IPassiveHealthBuff
+    {
+        /// <summary>
+        /// Used to provide a passive health buff to a target
+        /// </summary>
+        /// <returns>The amount of health you want to buff the target by</returns>
+        /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
+        int GetPassiveHealthBuff(PlayableCard target);
+    }
+
+    /// <summary>
+    /// Used when a card wants to provide a passive buff to other cards on the board
+    /// </summary>
+    public interface IPassiveAttackBuff
+    {
+        /// <summary>
+        /// Used to provide a passive attack buff to a target
+        /// </summary>
+        /// <returns>The amount of attack you want to buff the target by</returns>
+        /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
+        int GetPassiveAttackBuff(PlayableCard target);
     }
 
     /// <summary>
