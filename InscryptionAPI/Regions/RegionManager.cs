@@ -180,4 +180,89 @@ public static class RegionManager
             return RegionProgression.Instance.regions[tier];
         }
     }
+
+    [HarmonyPatch(typeof(EncounterBuilder), nameof(EncounterBuilder.BuildTerrainCondition))]
+    [HarmonyPrefix]
+    private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
+    {
+        var customregion = NewRegions.ToList().Find(x => x.Region == RunState.CurrentMapRegion);
+        if(customregion != null)
+        {
+            reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
+            __result = new EncounterData.StartCondition();
+            int num = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
+            int num2 = 0;
+            int num3 = 0;
+            for (int i = 0; i < num; i++)
+            {
+                bool flag;
+                if (customregion.AllowTerrainOnEnemySide && customregion.AllowTerrainOnPlayerSide)
+                {
+                    flag = SeededRandom.Bool(randomSeed++);
+                    if (flag && num2 == 1)
+                    {
+                        flag = false;
+                    }
+                    else if (!flag && num3 == 1)
+                    {
+                        flag = true;
+                    }
+                }
+                else
+                {
+                    flag = customregion.AllowTerrainOnPlayerSide;
+                }
+                CardInfo[] array = flag ? __result.cardsInPlayerSlots : __result.cardsInOpponentSlots;
+                CardInfo[] array2 = flag ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
+                int num4 = SeededRandom.Range(0, array.Length, randomSeed++);
+                bool availableSpace = false;
+                for (int j = 0; j < 4; j++)
+                {
+                    if (array[j] == null && array2[j] == null)
+                    {
+                        availableSpace = true;
+                    }
+                }
+                if (!availableSpace)
+                {
+                    break;
+                }
+                while (array[num4] != null || array2[num4] != null)
+                {
+                    num4 = SeededRandom.Range(0, array.Length, randomSeed++);
+                }
+                if (flag && reachTerrainOnPlayerSide)
+                {
+                    CardInfo cardInfo = RunState.CurrentMapRegion.terrainCards.Find((CardInfo x) => x.HasAbility(Ability.Reach));
+                    if (cardInfo == null && !customregion.RemoveDefaultReachTerrain)
+                    {
+                        cardInfo = CardLoader.GetCardByName("Tree");
+                    }
+                    if (cardInfo != null)
+                    {
+                        array[num4] = CardLoader.GetCardByName(cardInfo.name);
+                    }
+                }
+                else
+                {
+                    List<CardInfo> list = RunState.CurrentMapRegion.terrainCards.FindAll((CardInfo x) => (ConceptProgressionTree.Tree.CardUnlocked(x, true) || customregion.AllowLockedTerrainCards) &&
+                        (x.traits.Contains(Trait.Terrain) || customregion.AllowSacrificableTerrainCards));
+                    if (list.Count > 0)
+                    {
+                        array[num4] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
+                    }
+                }
+                if (flag)
+                {
+                    num2++;
+                }
+                else
+                {
+                    num3++;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
 }
