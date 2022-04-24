@@ -115,7 +115,10 @@ public class AscensionChallengePaginator : MonoBehaviour
             {
                 if (kvp.Key == page)
                 {
-                    kvp.Value.ForEach((x) => x.SetActive(true));
+                    kvp.Value.ForEach((x) => x.SetActive(
+                        x.GetComponentInChildren<AscensionIconInteractable>()?.Info == null ||
+                        x.GetComponentInChildren<AscensionIconInteractable>().Info.challengeType != AscensionChallenge.FinalBoss ||
+                        AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel)));
                 }
                 else
                 {
