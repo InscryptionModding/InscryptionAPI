@@ -95,6 +95,11 @@ public class StarterDeckPaginator : MonoBehaviour
         CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
 
+    public void OnEnable()
+    {
+        StarterDeckManager.SyncDeckList();
+    }
+
     public int pageIndex;
     public List<List<StarterDeckInfo>> pages;
     public int pageLength;
