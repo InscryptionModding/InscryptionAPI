@@ -129,6 +129,11 @@ public class AscensionChallengePaginator : MonoBehaviour
         CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
 
+    public void OnEnable()
+    {
+        ChallengeManager.SyncChallengeList();
+    }
+
     public int pageIndex;
     public Dictionary<int, List<GameObject>> challengeObjectsForPages;
     public int pageLength;

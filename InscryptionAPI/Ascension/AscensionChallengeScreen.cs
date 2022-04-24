@@ -165,6 +165,7 @@ internal static class AscensionChallengeScreenPatches
         {
             AscensionChallengePaginator manager = __instance.gameObject.AddComponent<AscensionChallengePaginator>();
             manager.Initialize(__instance);
+            ChallengeManager.SyncChallengeList();
             List<ChallengeManager.FullChallenge> fcs = ChallengeManager.NewInfos.ToList();
             fcs.Sort((x, x2) => x.SortValue != x2.SortValue ? x.SortValue - x2.SortValue : x2.UnlockLevel - x.UnlockLevel);
             List<AscensionChallengeInfo> challengesToAdd = new(fcs.ConvertAll(x => x.Challenge.Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
