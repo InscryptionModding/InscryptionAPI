@@ -84,7 +84,21 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPreScalesChangedRef
     {
+        /// <summary>
+        /// Returns true if this should modify the damage added to the scales.
+        /// </summary>
+        /// <param name="damage">Number of damage currently dealt.</param>
+        /// <param name="numWeights">Number of weights currently added to the scales.</param>
+        /// <param name="toPlayer">True if the damage is dealt to the player.</param>
+        /// <returns></returns>
         public bool RespondsToPreScalesChangedRef(int damage, int numWeights, bool toPlayer);
+        /// <summary>
+        /// Returns the new amount of damage that will be added to the scales.
+        /// </summary>
+        /// <param name="damage">Number of damage currently dealt.</param>
+        /// <param name="numWeights">Number of weights currently added to the scales. Change this value to modify that number.</param>
+        /// <param name="toPlayer">True if the damage is dealt to the player. Change this value to modify the side the damage is getting added to.</param>
+        /// <returns>The new amount of damage that will be added to the scales.</returns>
         public int CollectPreScalesChangedRef(int damage, ref int numWeights, ref bool toPlayer);
     }
 
@@ -275,7 +289,19 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IItemCanBeUsed
     {
+        /// <summary>
+        /// Returns true if this should modify if an item can be used.
+        /// </summary>
+        /// <param name="itemname">The name of the item that is about to get used.</param>
+        /// <param name="currentValue">True if it can be used currently.</param>
+        /// <returns>True if this should modify if an item can be used.</returns>
         public bool RespondsToItemCanBeUsed(string itemname, bool currentValue);
+        /// <summary>
+        /// Returns true if an item can be used.
+        /// </summary>
+        /// <param name="itemname">The name of the item that is about to get used.</param>
+        /// <param name="currentValue">True if it can be used currently.</param>
+        /// <returns>True if the item can be used, false otherwise.</returns>
         public bool CollectItemCanBeUsed(string itemname, bool currentValue);
     }
 
@@ -293,7 +319,19 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnCardPassiveAttackBuffs
     {
+        /// <summary>
+        /// Returns true if this should modify the passive attack buffs given to a card.
+        /// </summary>
+        /// <param name="card">Card the buffs will be given to.</param>
+        /// <param name="currentValue">The current buff value.</param>
+        /// <returns>True if this should modify the passive attack buffs given to a card.</returns>
         public bool RespondsToCardPassiveAttackBuffs(PlayableCard card, int currentValue);
+        /// <summary>
+        /// Returns the new attack buff value for a card.
+        /// </summary>
+        /// <param name="card">Card the buffs will be given to.</param>
+        /// <param name="currentValue">The current buff value.</param>
+        /// <returns>The new attack buff value for a card.</returns>
         public int CollectCardPassiveAttackBuffs(PlayableCard card, int currentValue);
     }
 
@@ -302,7 +340,19 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnCardPassiveHealthBuffs
     {
+        /// <summary>
+        /// Returns true if this should modify the passive health buffs given to a card.
+        /// </summary>
+        /// <param name="card">Card the buffs will be given to.</param>
+        /// <param name="currentValue">The current buff value.</param>
+        /// <returns>True if this should modify the passive health buffs given to a card.</returns>
         public bool RespondsToCardPassiveHealthBuffs(PlayableCard card, int currentValue);
+        /// <summary>
+        /// Returns the new health buff value for a card.
+        /// </summary>
+        /// <param name="card">Card the buffs will be given to.</param>
+        /// <param name="currentValue">The current buff value.</param>
+        /// <returns>The new health buff value for a card.</returns>
         public int CollectCardPassiveHealthBuffs(PlayableCard card, int currentValue);
     }
 
@@ -337,7 +387,19 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface ICardTakenDamageModifier
     {
+        /// <summary>
+        /// Returns true if this should modify the amount of damage taken by a card.
+        /// </summary>
+        /// <param name="card">Card that took damage.</param>
+        /// <param name="currentValue">The current amount of damage dealt.</param>
+        /// <returns>True if this should modify the amount of damage taken by a card.</returns>
         public bool RespondsToCardTakenDamageModifier(PlayableCard card, int currentValue);
+        /// <summary>
+        /// Returns the new amount of damage that will be taken by a card.
+        /// </summary>
+        /// <param name="card">Card that took damage.</param>
+        /// <param name="currentValue">The current amount of damage dealt.</param>
+        /// <returns>The new amount of damage that will be taken by a card.</returns>
         public int CollectCardTakenDamageModifier(PlayableCard card, int currentValue);
     }
 }
