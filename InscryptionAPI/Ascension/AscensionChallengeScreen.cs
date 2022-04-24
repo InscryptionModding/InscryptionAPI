@@ -163,10 +163,9 @@ internal static class AscensionChallengeScreenPatches
     {
         if (__instance.GetComponent<AscensionChallengePaginator>() == null)
         {
+            ChallengeManager.SyncChallengeList();
             AscensionChallengePaginator manager = __instance.gameObject.AddComponent<AscensionChallengePaginator>();
             manager.Initialize(__instance);
-            ChallengeManager.SyncChallengeList();
-            
         }
     }
 }

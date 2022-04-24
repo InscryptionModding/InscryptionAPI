@@ -151,6 +151,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                 kvp.Value.ForEach(x => Destroy(x));
             }
         }
+        screen?.icons?.RemoveAll(x => x == null);
         List<ChallengeManager.FullChallenge> fcs = ChallengeManager.NewInfos.ToList();
         fcs.Sort((x, x2) => x.SortValue != x2.SortValue ? x.SortValue - x2.SortValue : x2.UnlockLevel - x.UnlockLevel);
         List<AscensionChallengeInfo> challengesToAdd = new(fcs.ConvertAll(x => x.Challenge.Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
