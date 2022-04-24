@@ -98,7 +98,7 @@ namespace InscryptionAPI.Boons
             {
                 instances = new List<BoonBehaviour>();
             }
-			instances.RemoveAll((x) => x == null || x.gameObject == null);
+			instances.RemoveAll((x) => x == null || x.gameObject == null || x.GetComponent<DestroyingFlag>() != null);
         }
 
 		/// <summary>

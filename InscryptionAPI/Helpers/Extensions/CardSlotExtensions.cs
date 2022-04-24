@@ -100,6 +100,16 @@ public static class CardSlotExtensions
     }
     
     /// <summary>
+    /// Get the adjacent cards of the slot that is being accessed.
+    /// </summary>
+    /// <param name="cardSlot">The slot that is being accessed.</param>
+    /// <returns>The list of Playable Cards that is to the left and to the right of the this slot.</returns>
+    public static List<PlayableCard> GetAdjacentCards(this CardSlot cardSlot)
+    {
+        return BoardManager.Instance.GetAdjacentSlots(cardSlot).Where(slot => slot).SelectCards().ToList();
+    }
+    
+    /// <summary>
     /// Get the adjacent slots of the slot that is being accessed.
     /// </summary>
     /// <param name="cardSlot">The slot that is being accessed.</param>
@@ -113,27 +123,24 @@ public static class CardSlotExtensions
     /// <summary>
     /// Retrieve all the PlayableCard objects from the collection of slots provided.
     /// </summary>
-    /// <param name="slots">Collection of CardSlots</param>
-    /// <param name="filterOnPredicate">Predicate to filter each slot's playable card against, if one exists.</param>
-    /// <returns>The list of cards from each slot</returns>
-    public static List<PlayableCard> GetCards(this IEnumerable<CardSlot> slots, Predicate<PlayableCard> filterOnPredicate = null)
+    /// <param name="slots">Collection of CardSlots.</param>
+    /// <param name="filterOnPredicate">Predicate to filter each slot's playable card for a condition, if one exists.</param>
+    /// <returns>An IEnumerable of PlayableCard from the CardSlots sequence.</returns>
+    public static IEnumerable<PlayableCard> SelectCards(this IEnumerable<CardSlot> slots, Predicate<PlayableCard> filterOnPredicate = null)
     {
         return slots
             .Where(slot => slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot.Card)))
-            .Select(slot => slot.Card)
-            .ToList();
+            .Select(slot => slot.Card);
     }
     
     /// <summary>
     /// Retrieve all the CardSlot objects that are not occupied by a PlayableCard object.
     /// </summary>
-    /// <param name="slots">Collection of CardSlots</param>
-    /// <param name="filterOnPredicate">Predicate to filter each slot against</param>
-    /// <returns>The list of slots not occupied by a playable card.</returns>
-    public static List<CardSlot> OpenSlots(this IEnumerable<CardSlot> slots, Predicate<CardSlot> filterOnPredicate = null)
+    /// <param name="slots">Collection of CardSlots.</param>
+    /// <param name="filterOnPredicate">Predicate to test each slot for a condition.</param>
+    /// <returns>An IEnumerable of CardSlot that do not have occupying PlayableCards.</returns>
+    public static IEnumerable<CardSlot> SelectOpenSlots(this IEnumerable<CardSlot> slots, Predicate<CardSlot> filterOnPredicate = null)
     {
-        return slots
-            .Where(slot => !slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot)))
-            .ToList();
+        return slots.Where(slot => !slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot)));
     }
 }
