@@ -16,6 +16,7 @@ internal static class StarterDeckSelectscreenPatches
     {
         if (__instance.GetComponent<StarterDeckPaginator>() == null)
         {
+            StarterDeckManager.SyncDeckList();
             List<StarterDeckInfo> decksToAdd = new(StarterDeckManager.AllDecks.ConvertAll((x) => x.Info));
             List<AscensionStarterDeckIcon> icons = __instance.deckIcons;
             icons.ForEach(delegate (AscensionStarterDeckIcon ic)
