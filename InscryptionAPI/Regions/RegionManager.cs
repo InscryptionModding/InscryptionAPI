@@ -168,16 +168,24 @@ public static class RegionManager
     public static RegionData GetRandomRegionFromTier(int tier)
     {
         List<RegionData> valid = new();
-
-        if (tier < 3)
+        if (RegionProgression.Instance.regions.Count > tier)
         {
             valid.Add(RegionProgression.Instance.regions[tier]);
-            valid.AddRange(NewRegions.Where(x => x.Tier == tier).Select(x => x.Region));
-            return valid[SeededRandom.Range(0, valid.Count, SaveManager.SaveFile.randomSeed + tier + 1)];
         }
-        else
+        valid.AddRange(NewRegions.Where(x => x.Tier == tier).Select(x => x.Region));
+        if (valid.Count <= 0)
         {
-            return RegionProgression.Instance.regions[tier];
+            return null;
         }
+        if (valid.Count == 1)
+        {
+            return valid[0];
+        }
+        int randomseed = 0;
+        if (SaveManager.SaveFile != null && RunState.Run != null && (!SaveFile.IsAscension || AscensionSaveData.Data != null))
+        {
+            randomseed = SaveManager.SaveFile.randomSeed + (SaveFile.IsAscension ? AscensionSaveData.Data.currentRunSeed : (SaveManager.SaveFile.pastRuns.Count * 1000)) + (RunState.Run.regionTier + 1) * 100;
+        }
+        return valid[SeededRandom.Range(0, valid.Count, randomseed)];
     }
 }
