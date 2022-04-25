@@ -98,8 +98,88 @@ public class StarterDeckPaginator : MonoBehaviour
     public void OnEnable()
     {
         StarterDeckManager.SyncDeckList();
+        Initialize(GetComponent<AscensionChooseStarterDeckScreen>());
+        StarterDeckManager.SyncDeckList();
+        if (rightArrow)
+        {
+            Destroy(rightArrow);
+        }
+        if (leftArrow)
+        {
+            Destroy(leftArrow);
+        }
+        List<StarterDeckInfo> decksToAdd = new(StarterDeckManager.AllDecks.ConvertAll((x) => x.Info));
+        List<AscensionStarterDeckIcon> icons = screen.deckIcons;
+        icons.ForEach(delegate (AscensionStarterDeckIcon ic)
+        {
+            if (decksToAdd.Count > 0)
+            {
+                ic.starterDeckInfo = decksToAdd[0];
+                ic.AssignInfo(decksToAdd[0]);
+                decksToAdd.RemoveAt(0);
+            }
+        });
+        List<List<StarterDeckInfo>> pagesToAdd = new();
+        while (decksToAdd.Count > 0)
+        {
+            List<StarterDeckInfo> page = new();
+            for (int i = 0; i < icons.Count; i++)
+            {
+                if (decksToAdd.Count > 0)
+                {
+                    page.Add(decksToAdd[0]);
+                    decksToAdd.RemoveAt(0);
+                }
+            }
+            pagesToAdd.Add(page);
+        }
+        if (pagesToAdd.Count > 0)
+        {
+            foreach (List<StarterDeckInfo> page in pagesToAdd)
+            {
+                AddPage(page);
+            }
+            Vector3 topRight = new Vector3(float.MinValue, float.MinValue);
+            Vector3 bottomLeft = new Vector3(float.MaxValue, float.MaxValue);
+            foreach (AscensionStarterDeckIcon icon in icons)
+            {
+                if (icon != null && icon.iconRenderer != null)
+                {
+                    if (icon.iconRenderer.transform.position.x < bottomLeft.x)
+                    {
+                        bottomLeft.x = icon.iconRenderer.transform.position.x;
+                    }
+                    if (icon.iconRenderer.transform.position.x > topRight.x)
+                    {
+                        topRight.x = icon.iconRenderer.transform.position.x;
+                    }
+                    if (icon.iconRenderer.transform.position.y < bottomLeft.y)
+                    {
+                        bottomLeft.y = icon.iconRenderer.transform.position.y;
+                    }
+                    if (icon.iconRenderer.transform.position.y > topRight.y)
+                    {
+                        topRight.y = icon.iconRenderer.transform.position.y;
+                    }
+                }
+            }
+            leftArrow = UnityEngine.Object.Instantiate(screen.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
+            leftArrow.transform.parent = screen.transform;
+            leftArrow.transform.position = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 2f;
+            leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+            leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => PreviousPage();
+            rightArrow = UnityEngine.Object.Instantiate(screen.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
+            rightArrow.transform.parent = screen.transform;
+            rightArrow.transform.position = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 2f;
+            rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
+            rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => NextPage();
+        }
+        pageIndex = 0;
+        LoadPage(pages[0]);
     }
 
+    public GameObject leftArrow;
+    public GameObject rightArrow;
     public int pageIndex;
     public List<List<StarterDeckInfo>> pages;
     public int pageLength;

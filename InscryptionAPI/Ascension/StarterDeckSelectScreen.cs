@@ -16,82 +16,8 @@ internal static class StarterDeckSelectscreenPatches
     {
         if (__instance.GetComponent<StarterDeckPaginator>() == null)
         {
-            StarterDeckManager.SyncDeckList();
-            List<StarterDeckInfo> decksToAdd = new(StarterDeckManager.AllDecks.ConvertAll((x) => x.Info));
-            List<AscensionStarterDeckIcon> icons = __instance.deckIcons;
-            icons.ForEach(delegate (AscensionStarterDeckIcon ic)
-            {
-                if (ic != null && ic.Info != null && !string.IsNullOrEmpty(ic.Info.title) && decksToAdd.FindAll((StarterDeckInfo inf) => inf.title.ToLower() == ic.Info.title.ToLower()).Count > 0)
-                {
-                    decksToAdd.Remove(decksToAdd.Find((StarterDeckInfo inf) => inf.title.ToLower() == ic.Info.title.ToLower()));
-                }
-            });
-            icons.ForEach(delegate (AscensionStarterDeckIcon ic)
-            {
-                if (ic != null && ic.Info == null && decksToAdd.Count > 0)
-                {
-                    ic.starterDeckInfo = decksToAdd[0];
-                    ic.AssignInfo(decksToAdd[0]);
-                    decksToAdd.RemoveAt(0);
-                }
-            });
-            List<List<StarterDeckInfo>> pagesToAdd = new();
-            while (decksToAdd.Count > 0)
-            {
-                List<StarterDeckInfo> page = new();
-                for (int i = 0; i < icons.Count; i++)
-                {
-                    if (decksToAdd.Count > 0)
-                    {
-                        page.Add(decksToAdd[0]);
-                        decksToAdd.RemoveAt(0);
-                    }
-                }
-                pagesToAdd.Add(page);
-            }
-            if (pagesToAdd.Count > 0)
-            {
-                StarterDeckPaginator manager = __instance.gameObject.AddComponent<StarterDeckPaginator>();
-                manager.Initialize(__instance);
-                foreach (List<StarterDeckInfo> page in pagesToAdd)
-                {
-                    manager.AddPage(page);
-                }
-                Vector3 topRight = new Vector3(float.MinValue, float.MinValue);
-                Vector3 bottomLeft = new Vector3(float.MaxValue, float.MaxValue);
-                foreach (AscensionStarterDeckIcon icon in icons)
-                {
-                    if (icon != null && icon.iconRenderer != null)
-                    {
-                        if (icon.iconRenderer.transform.position.x < bottomLeft.x)
-                        {
-                            bottomLeft.x = icon.iconRenderer.transform.position.x;
-                        }
-                        if (icon.iconRenderer.transform.position.x > topRight.x)
-                        {
-                            topRight.x = icon.iconRenderer.transform.position.x;
-                        }
-                        if (icon.iconRenderer.transform.position.y < bottomLeft.y)
-                        {
-                            bottomLeft.y = icon.iconRenderer.transform.position.y;
-                        }
-                        if (icon.iconRenderer.transform.position.y > topRight.y)
-                        {
-                            topRight.y = icon.iconRenderer.transform.position.y;
-                        }
-                    }
-                }
-                GameObject leftArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
-                leftArrow.transform.parent = __instance.transform;
-                leftArrow.transform.position = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 2f;
-                leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
-                leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.PreviousPage();
-                GameObject rightArrow = UnityEngine.Object.Instantiate(__instance.GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
-                rightArrow.transform.parent = __instance.transform;
-                rightArrow.transform.position = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 2f;
-                rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
-                rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => manager.NextPage();
-            }
+            StarterDeckPaginator manager = __instance.gameObject.AddComponent<StarterDeckPaginator>();
+            manager.Initialize(__instance);
         }
     }
 
@@ -169,6 +95,31 @@ internal static class StarterDeckSelectscreenPatches
         {
             x.gameObject.SetActive(true);
         });
+        return true;
+    }
+
+    [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), nameof(AscensionChooseStarterDeckScreen.OnRandomSelected))]
+    [HarmonyPrefix]
+    public static bool TrueRandom(AscensionChooseStarterDeckScreen __instance)
+    {
+        var paginator = __instance.GetComponent<StarterDeckPaginator>();
+        if (paginator != null)
+        {
+            var decks = paginator.pages.SelectMany(x => x).Where(x => x != null && AscensionUnlockSchedule.StarterDeckIsUnlockedForLevel(x.name, AscensionSaveData.Data.challengeLevel)).ToArray();
+            var deck = decks[UnityEngine.Random.Range(0, decks.Length)];
+            var index = paginator.pages.FindIndex(x => x.Contains(deck));
+            if(index >= 0 && index < paginator.pages.Count)
+            {
+                paginator.LoadPage(paginator.pages[index]);
+                var icon = __instance.deckIcons.Find(x => x.starterDeckInfo.name == deck.name);
+                if(icon != null)
+                {
+                    __instance.OnSelectStarterDeck(icon, false);
+                    __instance.randomButton.GetComponent<AscensionMenuBlinkEffect>().SetBlinkingEnabled(false);
+                }
+                return false;
+            }
+        }
         return true;
     }
 }
