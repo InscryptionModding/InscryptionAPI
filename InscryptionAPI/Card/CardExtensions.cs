@@ -1199,6 +1199,18 @@ public static class CardExtensions
     #region PlayableCard
 
     /// <summary>
+    /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <param name="otherCard">The other PlayableCard.</param>
+    /// <returns>true if both cards are on the board and both are opponent cards or both are player cards.</returns>
+    public static bool OtherCardIsOnSameSide(this PlayableCard playableCard, PlayableCard otherCard)
+    {
+        return playableCard.OnBoard && otherCard.OnBoard 
+            && (playableCard.OpponentCard && otherCard.OpponentCard || playableCard.IsPlayerCard() && otherCard.IsPlayerCard());
+    }
+    
+    /// <summary>
     /// Retrieve a list of all abilities that exist on the PlayableCard.
     ///
     /// This will retrieve all Ability from both TemporaryMods and from the underlying CardInfo object.
