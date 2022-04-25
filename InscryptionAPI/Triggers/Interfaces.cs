@@ -233,32 +233,41 @@ namespace InscryptionAPI.Triggers
     /// <summary>
      /// Data collection trigger that collects data related to attacked slots.
      /// </summary>
-    public interface INewGetOpposingSlots
+    public interface ISetupAttackSequence
     {
         /// <summary>
         /// If true, this trigger will collect data from CollectModifyAttackSlots.
         /// </summary>
+        /// <param name="card">Card whose slots will be modified.</param>
+        /// <param name="modType">Type of modification that is currently triggering.</param>
+        /// <param name="originalSlots">Original slots for attack.</param>
         /// <param name="currentSlots">Current slots that are targeted.</param>
+        /// <param name="attackCount">How many attacks the card does.</param>
         /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
         /// <returns>True if this trigger will collect data from CollectModifyAttackSlots.</returns>
-        public bool RespondsToModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, bool didRemoveDefaultSlot);
+        public bool RespondsToModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, int attackCount, bool didRemoveDefaultSlot);
         /// <summary>
         /// Modifies data about targeted slots for attack.
         /// </summary>
+        /// <param name="card">Card whose slots will be modified.</param>
+        /// <param name="modType">Type of modification that is currently triggering.</param>
+        /// <param name="originalSlots">Original slots for attack.</param>
         /// <param name="currentSlots">Current slots that are targeted.</param>
+        /// <param name="attackCount">How many attacks the card does.</param>
         /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it.</param>
         /// <returns>Modified data about targeted slots for attack.</returns>
-        public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref bool didRemoveDefaultSlot);
+        public List<CardSlot> CollectModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, ref int attackCount, ref bool didRemoveDefaultSlot);
         /// <summary>
-        /// If true, this trigger will collect data from CollectGetAttackSlotCount.
+        /// Gets the priority for this trigger. Triggers with a higher priority will trigger first.
         /// </summary>
-        /// <returns>True if this trigger will collect data from CollectGetAttackSlotCount.</returns>
-        public bool RespondsToGetAttackSlotCount(PlayableCard card);
-        /// <summary>
-        /// Modifies data about the amount of slots that will be selected for the Sniper ability (and any other ability that may require that).
-        /// </summary>
-        /// <returns>Modified data about the amount of slots that will be selected.</returns>
-        public int CollectGetAttackSlotCount(PlayableCard card);
+        /// <param name="card">Card whose slots will be modified.</param>
+        /// <param name="modType">Type of modification that is currently triggering.</param>
+        /// <param name="originalSlots">Original slots for attack.</param>
+        /// <param name="currentSlots">Current slots that are targeted. NOTE: THIS VALUE IS *NOT* UP TO DATE, GETTING PRIORITIES HAPPENS *BEFORE* THE MODIFICATION ITSELF.</param>
+        /// <param name="attackCount">How many attacks the card does. NOTE: THIS VALUE IS *NOT* UP TO DATE, GETTING PRIORITIES HAPPENS *BEFORE* THE MODIFICATION ITSELF.</param>
+        /// <param name="didRemoveDefaultSlot">True if the original (opposing) slot was removed by Bifurcated Strike or any other ability that does it. NOTE: THIS VALUE IS *NOT* UP TO DATE, GETTING PRIORITIES HAPPENS *BEFORE* THE MODIFICATION ITSELF.</param>
+        /// <returns>The priority for this trigger.</returns>
+        public int GetTriggerPriority(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, int attackCount, bool didRemoveDefaultSlot);
     }
 
     /// <summary>

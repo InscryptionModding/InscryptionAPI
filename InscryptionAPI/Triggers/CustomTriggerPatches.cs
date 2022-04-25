@@ -278,19 +278,27 @@ namespace InscryptionAPI.Triggers
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
         [HarmonyPrefix]
-        private static bool OpposingSlotsPrefix(PlayableCard __instance, ref List<CardSlot> __result)
+        private static bool OpposingSlotsPrefix(PlayableCard __instance, ref List<CardSlot> __result, ref int __state)
         {
-            var all = CustomTriggerFinder.FindGlobalTriggers<INewGetOpposingSlots>(true);
+            var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+            all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false) - 
+                                x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false));
             bool didModify = false;
             bool discard = false;
+            __state = 1;
             foreach(var opposing in all)
             {
-                if(opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), __result ?? new(), false))
+                if(opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), __result ?? new(), __state, false))
                 {
                     didModify = true;
-                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new List<CardSlot>(), __result ?? new(), ref discard);
+                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new List<CardSlot>(), __result ?? new(), ref __state, ref discard);
                     discard = false;
                 }
+            }
+            if (!didModify && __instance.HasAbility(Ability.AllStrike))
+            {
+                __state = Mathf.Max(1, (__instance.OpponentCard ? Singleton<BoardManager>.Instance.PlayerSlotsCopy : Singleton<BoardManager>.Instance.OpponentSlotsCopy).FindAll(x => x.Card != null && 
+                    !__instance.CanAttackDirectly(x)).Count);
             }
             if (didModify)
             {
@@ -315,14 +323,31 @@ namespace InscryptionAPI.Triggers
                     __result.Add(__instance.slot.opposingSlot);
                 }
             }
+            if (__instance.HasAbility(Ability.SplitStrike))
+            {
+                __state += 1;
+            }
+            if (__instance.HasTriStrike())
+            {
+                __state += 2;
+                if (__instance.HasAbility(Ability.SplitStrike))
+                {
+                    __state += 1;
+                }
+            }
+            if (__instance.HasAbility(Ability.DoubleStrike))
+            {
+                __state += 1;
+            }
             __result?.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
             return !didModify;
         }
 
         [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
         [HarmonyPostfix]
-        private static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result)
+        private static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result, int __state)
         {
+            List<CardSlot> original = new(__result);
             bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
             CardSlot defaultslot = __instance.Slot.opposingSlot;
 
@@ -343,29 +368,36 @@ namespace InscryptionAPI.Triggers
 
             if (isAttackingDefaultSlot && removeDefaultAttackSlot)
                 __result.Remove(defaultslot);
-
-            List<CardSlot> original = new(__result);
             bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
-            var all = CustomTriggerFinder.FindGlobalTriggers<INewGetOpposingSlots>(true);
+            var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+            var dummyresult = __result;
+            all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
+                                x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
             foreach (var opposing in all)
             {
-                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), didRemoveOriginalSlot))
+                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), __state, didRemoveOriginalSlot))
                 {
-                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), ref didRemoveOriginalSlot);
+                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
                 }
             }
+            dummyresult = __result;
+            all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, __state, didRemoveOriginalSlot) -
+                                x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, __state, didRemoveOriginalSlot));
             foreach (var opposing in all)
             {
-                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), didRemoveOriginalSlot))
+                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), __state, didRemoveOriginalSlot))
                 {
-                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), ref didRemoveOriginalSlot);
+                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
                 }
             }
+            dummyresult = __result;
+            all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, __state, didRemoveOriginalSlot) -
+                                x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, __state, didRemoveOriginalSlot));
             foreach (var opposing in all)
             {
-                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), didRemoveOriginalSlot))
+                if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), __state, didRemoveOriginalSlot))
                 {
-                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), ref didRemoveOriginalSlot);
+                    __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
                 }
             }
             if (didRemoveOriginalSlot && __instance.HasTriStrike())
