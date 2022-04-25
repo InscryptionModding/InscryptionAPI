@@ -1225,7 +1225,7 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// A more compact way of saying 'AbilitiesUtil.GetAbilitiesFromMods(playableCard.TemporaryMods)'
+    /// Retrieve a list of Ability that exist in TemporaryMods and the underlying CardInfo.Mods lists.
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>
     /// <returns>A list of SpecialTriggeredAbility from the PlayableCard and underlying CardInfo object.</returns>
