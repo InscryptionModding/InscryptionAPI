@@ -1782,6 +1782,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.AddTribes
   nameWithType: CardExtensions.AddTribes
+- uid: InscryptionAPI.Card.CardExtensions.AllAbilities(DiskCardGame.PlayableCard)
+  name: AllAbilities(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllAbilities_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.AllAbilities(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.AllAbilities(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.AllAbilities(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.AllAbilities*
+  name: AllAbilities
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.AllAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.AllAbilities
+  nameWithType: CardExtensions.AllAbilities
+- uid: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities(DiskCardGame.PlayableCard)
+  name: AllSpecialAbilities(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllSpecialAbilities_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.AllSpecialAbilities(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.AllSpecialAbilities(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities*
+  name: AllSpecialAbilities
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllSpecialAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.AllSpecialAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities
+  nameWithType: CardExtensions.AllSpecialAbilities
 - uid: InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable{DiskCardGame.CardInfo},System.String)
   name: CardByName(IEnumerable<CardInfo>, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_CardByName_System_Collections_IEnumerable_DiskCardGame_CardInfo__System_String_
@@ -1811,6 +1837,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.CreateBlueprint
   nameWithType: CardExtensions.CreateBlueprint
+- uid: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods(DiskCardGame.PlayableCard)
+  name: GetAbilitiesFromAllMods(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilitiesFromAllMods_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetAbilitiesFromAllMods(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods*
+  name: GetAbilitiesFromAllMods
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilitiesFromAllMods_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods
+  nameWithType: CardExtensions.GetAbilitiesFromAllMods
 - uid: InscryptionAPI.Card.CardExtensions.GetExtendedProperty(DiskCardGame.CardInfo,System.String)
   name: GetExtendedProperty(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetExtendedProperty_DiskCardGame_CardInfo_System_String_
@@ -2088,6 +2127,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.OpposingSlot
   nameWithType: CardExtensions.OpposingSlot
+- uid: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  name: OtherCardIsOnSameSide(PlayableCard, PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_OtherCardIsOnSameSide_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide(DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.OtherCardIsOnSameSide(PlayableCard, PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide*
+  name: OtherCardIsOnSameSide
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_OtherCardIsOnSameSide_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide
+  nameWithType: CardExtensions.OtherCardIsOnSameSide
 - uid: InscryptionAPI.Card.CardExtensions.SetAltPortrait(DiskCardGame.CardInfo,System.String)
   name: SetAltPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetAltPortrait_DiskCardGame_CardInfo_System_String_
@@ -2715,12 +2767,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetTribes
   nameWithType: CardExtensions.SetTribes
-- uid: InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo)
-  name: SpawnInHand(CardInfo)
-  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SpawnInHand_DiskCardGame_CardInfo_
-  commentId: M:InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo)
-  fullName: InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo)
-  nameWithType: CardExtensions.SpawnInHand(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo,List{DiskCardGame.CardModificationInfo},UnityEngine.Vector3,System.Single,Action{DiskCardGame.PlayableCard})
+  name: SpawnInHand(CardInfo, List<CardModificationInfo>, Vector3, Single, Action<PlayableCard>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SpawnInHand_DiskCardGame_CardInfo_List_DiskCardGame_CardModificationInfo__UnityEngine_Vector3_System_Single_Action_DiskCardGame_PlayableCard__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo,List{DiskCardGame.CardModificationInfo},UnityEngine.Vector3,System.Single,Action{DiskCardGame.PlayableCard})
+  name.vb: SpawnInHand(CardInfo, List(Of CardModificationInfo), Vector3, Single, Action(Of PlayableCard))
+  fullName: InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo, List<DiskCardGame.CardModificationInfo>, UnityEngine.Vector3, System.Single, Action<DiskCardGame.PlayableCard>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SpawnInHand(DiskCardGame.CardInfo, List(Of DiskCardGame.CardModificationInfo), UnityEngine.Vector3, System.Single, Action(Of DiskCardGame.PlayableCard))
+  nameWithType: CardExtensions.SpawnInHand(CardInfo, List<CardModificationInfo>, Vector3, Single, Action<PlayableCard>)
+  nameWithType.vb: CardExtensions.SpawnInHand(CardInfo, List(Of CardModificationInfo), Vector3, Single, Action(Of PlayableCard))
 - uid: InscryptionAPI.Card.CardExtensions.SpawnInHand*
   name: SpawnInHand
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SpawnInHand_
