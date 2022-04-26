@@ -259,8 +259,11 @@ namespace InscryptionAPI.Triggers
             int dummyResult = __result;
             CustomTriggerFinder.CollectDataAll<IOnCardPassiveAttackBuffs, int>(true, x => x.RespondsToCardPassiveAttackBuffs(__instance, dummyResult), x => dummyResult =
                 x.CollectCardPassiveAttackBuffs(__instance, dummyResult));
-            CustomTriggerFinder.CollectDataAll<IPassiveAttackBuff, int>(true, x => true, x => dummyResult +=
-                x.GetPassiveAttackBuff(__instance));
+            if (__instance.OnBoard)
+            {
+                CustomTriggerFinder.CollectDataAll<IPassiveAttackBuff, int>(true, x => true, x => dummyResult +=
+                    x.GetPassiveAttackBuff(__instance));
+            }
             __result = dummyResult;
         }
 
@@ -271,8 +274,11 @@ namespace InscryptionAPI.Triggers
             int dummyResult = __result;
             CustomTriggerFinder.CollectDataAll<IOnCardPassiveHealthBuffs, int>(true, x => x.RespondsToCardPassiveHealthBuffs(__instance, dummyResult), x => dummyResult =
                 x.CollectCardPassiveHealthBuffs(__instance, dummyResult));
-            CustomTriggerFinder.CollectDataAll<IPassiveHealthBuff, int>(true, x => true, x => dummyResult +=
-                x.GetPassiveHealthBuff(__instance));
+            if (__instance.OnBoard)
+            {
+                CustomTriggerFinder.CollectDataAll<IPassiveHealthBuff, int>(true, x => true, x => dummyResult +=
+                    x.GetPassiveHealthBuff(__instance));
+            }
             __result = dummyResult;
         }
 
