@@ -11,25 +11,13 @@ public class StarterDeckPaginator : MonoBehaviour
 
     public void Initialize(AscensionChooseStarterDeckScreen screen)
     {
-        if (pages == null)
-        {
-            pages = new List<List<StarterDeckInfo>>();
-            pageLength = screen.deckIcons.Count;
-            List<AscensionStarterDeckIcon> sorted = screen.deckIcons;
-            sorted.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.y - x2.transform.position.y) < 0.1f ? x.transform.position.x - x2.transform.position.x : x2.transform.position.y - x.transform.position.y) * 100));
-            List<StarterDeckInfo> page = new List<StarterDeckInfo>();
-            foreach (AscensionStarterDeckIcon icon in sorted)
-            {
-                page.Add(icon.Info);
-            }
-            pages.Add(page);
-        }
+        pages = new List<List<StarterDeckInfo>>();
+        pageLength = screen.deckIcons.Count;
         this.screen = screen;
     }
 
     public void AddPage(List<StarterDeckInfo> page)
     {
-        Initialize(GetComponent<AscensionChooseStarterDeckScreen>());
         if (page.Count < pageLength)
         {
             while (page.Count < pageLength)
@@ -110,15 +98,6 @@ public class StarterDeckPaginator : MonoBehaviour
         }
         List<StarterDeckInfo> decksToAdd = new(StarterDeckManager.AllDecks.ConvertAll((x) => x.Info));
         List<AscensionStarterDeckIcon> icons = screen.deckIcons;
-        icons.ForEach(delegate (AscensionStarterDeckIcon ic)
-        {
-            if (decksToAdd.Count > 0)
-            {
-                ic.starterDeckInfo = decksToAdd[0];
-                ic.AssignInfo(decksToAdd[0]);
-                decksToAdd.RemoveAt(0);
-            }
-        });
         List<List<StarterDeckInfo>> pagesToAdd = new();
         while (decksToAdd.Count > 0)
         {
