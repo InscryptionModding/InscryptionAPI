@@ -9,7 +9,7 @@ public class StarterDeckPaginator : MonoBehaviour
 {
     private static Sprite noneDeckSprite;
 
-    public void Initialize(AscensionChooseStarterDeckScreen screen)
+    private void Initialize(AscensionChooseStarterDeckScreen screen)
     {
         pages = new List<List<StarterDeckInfo>>();
         pageLength = screen.deckIcons.Count;
@@ -87,7 +87,6 @@ public class StarterDeckPaginator : MonoBehaviour
     {
         StarterDeckManager.SyncDeckList();
         Initialize(GetComponent<AscensionChooseStarterDeckScreen>());
-        StarterDeckManager.SyncDeckList();
         if (rightArrow)
         {
             Destroy(rightArrow);

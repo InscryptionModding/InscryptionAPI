@@ -17,7 +17,6 @@ internal static class StarterDeckSelectscreenPatches
         if (__instance.GetComponent<StarterDeckPaginator>() == null)
         {
             StarterDeckPaginator manager = __instance.gameObject.AddComponent<StarterDeckPaginator>();
-            manager.Initialize(__instance);
         }
     }
 
