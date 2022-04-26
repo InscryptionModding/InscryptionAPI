@@ -1,5 +1,8 @@
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
+using InscryptionAPI.Helpers;
+using System.Reflection;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
@@ -7,46 +10,115 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 internal static class StarterDeckSelectscreenPatches
 {
-    [HarmonyPatch(typeof(AscensionStarterDeckIcon), nameof(AscensionStarterDeckIcon.AssignInfo))]
-    [HarmonyPrefix]
-    private static void ForceAssignInfo(ref AscensionStarterDeckIcon __instance, StarterDeckInfo info)
+    [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), "Start")]
+    [HarmonyPostfix]
+    private static void Postfix(AscensionChooseStarterDeckScreen __instance)
     {
-        __instance.starterDeckInfo = info;
-        __instance.conqueredRenderer.enabled = false;
+        if (__instance.GetComponent<StarterDeckPaginator>() == null)
+        {
+            StarterDeckPaginator manager = __instance.gameObject.AddComponent<StarterDeckPaginator>();
+        }
     }
 
-    [HarmonyPatch(typeof(AscensionMenuScreens), "ConfigurePostGameScreens")]
-    [HarmonyPostfix]
-    private static void AddPaginationToStarterDeckScreen()
+    private static Sprite noneCard;
+
+    [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), nameof(AscensionChooseStarterDeckScreen.OnCursorEnterDeckIcon))]
+    [HarmonyPrefix]
+    private static bool FixDeckPreview(AscensionChooseStarterDeckScreen __instance, AscensionStarterDeckIcon icon)
     {
-        StarterDeckPaginator paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.GetComponent<StarterDeckPaginator>();
-        if (paginator == null)
-            paginator = AscensionMenuScreens.Instance.starterDeckSelectScreen.AddComponent<StarterDeckPaginator>();
-
-       
-        GameObject starterDeckContainer = AscensionMenuScreens.Instance.starterDeckSelectScreen.transform.Find("Icons").gameObject;
-
-        paginator.icons = new List<AscensionStarterDeckIcon>();
-        for (int i = 1; i <= 8; i++)
-            paginator.icons.Add(starterDeckContainer.transform.Find($"StarterDeckIcon_{i}").gameObject.GetComponent<AscensionStarterDeckIcon>());
-
-        var pageTuple = AscensionRunSetupScreenBase.BuildPaginators(starterDeckContainer.transform);
-
-        AscensionMenuInteractable leftController = pageTuple.Item1;
-        AscensionMenuInteractable rightController = pageTuple.Item2;
-
-        Action<MainInputInteractable> leftClickAction = (MainInputInteractable i) => paginator.StarterDeckPageLeft(i);
-        Action<MainInputInteractable> rightClickAction = (MainInputInteractable i) => paginator.StarterDeckPageRight(i);
-
-        leftController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(leftController.CursorSelectStarted, leftClickAction);
-        rightController.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(rightController.CursorSelectStarted, rightClickAction);
-
-        paginator.starterDeckPageIndex = 0;
-
-        if (StarterDeckManager.NewDecks.Count == 0)
+        var screenPlus = __instance.GetComponent<StarterDeckScreenPlus>() ?? __instance.gameObject.AddComponent<StarterDeckScreenPlus>();
+        screenPlus.tempCards?.ForEach(x => x.SetActive(false));
+        if(icon.starterDeckInfo == null)
         {
-            GameObject.Destroy(leftController.gameObject);
-            GameObject.Destroy(rightController.gameObject);
+            screenPlus.noneCardObjects ??= new();
+            if (screenPlus.noneCardObjects.Count <= 0)
+            {
+                foreach (var card in __instance.cardLockedSprites)
+                {
+                    var cloned = UnityObject.Instantiate(card.gameObject);
+                    cloned.transform.parent = card.transform.parent;
+                    cloned.transform.localPosition = card.transform.localPosition;
+                    cloned.GetComponent<SpriteRenderer>().sprite = noneCard ??= TextureHelper.GetImageAsTexture("ascension_card_none_darker.png", Assembly.GetExecutingAssembly()).ConvertTexture();
+                    cloned.GetComponent<SpriteRenderer>().enabled = true;
+                    screenPlus.noneCardObjects.Add(cloned);
+                }
+            }
+            screenPlus.noneCardObjects.ForEach(x => x.SetActive(true));
+            __instance.cardLockedSprites.ForEach(x => x.gameObject.SetActive(false));
         }
+        else
+        {
+            screenPlus?.noneCardObjects.ForEach(x => x.SetActive(false));
+            __instance.cardLockedSprites.ForEach(x => x.gameObject.SetActive(true));
+            if(icon.Unlocked && icon.starterDeckInfo.cards != null && icon.starterDeckInfo.cards.Count != __instance.cards.Count)
+            {
+                __instance.cardLockedSprites.ForEach(delegate (SpriteRenderer x)
+                {
+                    x.enabled = false;
+                });
+                __instance.cards.ForEach(delegate (PixelSelectableCard x)
+                {
+                    x.gameObject.SetActive(false);
+                });
+                var firstOrDefault = __instance.cards.FirstOrDefault();
+                if(firstOrDefault != null)
+                {
+                    screenPlus.tempCards ??= new();
+                    var cards = icon.starterDeckInfo.cards;
+                    for (int i = 0; i < cards.Count; i++)
+                    {
+                        var card = cards[i];
+                        float distance = 0.5f;
+                        float position = -((cards.Count - 1) / 2 * distance) + distance * i;
+                        if(Math.Abs(position) < 2.6f)
+                        {
+                            var cloned = screenPlus.tempCards.Find(x => !x.activeSelf)?.GetComponentInChildren<PixelSelectableCard>() ?? UnityObject.Instantiate(firstOrDefault);
+                            cloned.transform.parent = firstOrDefault.transform.parent;
+                            cloned.transform.localPosition = new(position, firstOrDefault.transform.localPosition.y, firstOrDefault.transform.localPosition.z);
+                            cloned.SetInfo(card);
+                            cloned.SetEnabled(false);
+                            cloned.gameObject.SetActive(true);
+                            if (!screenPlus.tempCards.Contains(cloned.gameObject))
+                            {
+                                screenPlus.tempCards.Add(cloned.gameObject);
+                            }
+                        }
+                    }
+                    __instance.StopAllCoroutines();
+                    __instance.StartCoroutine(__instance.ShowCardsSequence());
+                    return false;
+                }
+            }
+        }
+        __instance.cards.ForEach(delegate (PixelSelectableCard x)
+        {
+            x.gameObject.SetActive(true);
+        });
+        return true;
+    }
+
+    [HarmonyPatch(typeof(AscensionChooseStarterDeckScreen), nameof(AscensionChooseStarterDeckScreen.OnRandomSelected))]
+    [HarmonyPrefix]
+    public static bool TrueRandom(AscensionChooseStarterDeckScreen __instance)
+    {
+        var paginator = __instance.GetComponent<StarterDeckPaginator>();
+        if (paginator != null)
+        {
+            var decks = paginator.pages.SelectMany(x => x).Where(x => x != null && AscensionUnlockSchedule.StarterDeckIsUnlockedForLevel(x.name, AscensionSaveData.Data.challengeLevel)).ToArray();
+            var deck = decks[UnityEngine.Random.Range(0, decks.Length)];
+            var index = paginator.pages.FindIndex(x => x.Contains(deck));
+            if(index >= 0 && index < paginator.pages.Count)
+            {
+                paginator.LoadPage(paginator.pages[index]);
+                var icon = __instance.deckIcons.Find(x => x.starterDeckInfo.name == deck.name);
+                if(icon != null)
+                {
+                    __instance.OnSelectStarterDeck(icon, false);
+                    __instance.randomButton.GetComponent<AscensionMenuBlinkEffect>().SetBlinkingEnabled(false);
+                }
+                return false;
+            }
+        }
+        return true;
     }
 }
