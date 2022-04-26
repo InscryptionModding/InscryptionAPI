@@ -1141,7 +1141,7 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// Check the CardInfo not having a specific Ability.
+    /// Check the CardInfo not having a specific SpecialAbility.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
@@ -1177,15 +1177,75 @@ public static class CardExtensions
     /// Spawn the CardInfo object to the player's hand.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="temporaryMods">The mods that will be added to the PlayableCard object.</param>
+    /// <param name="spawnOffset">The position of where the card will appear from. Default is a Vector3 of (0, 6, 1.5)</param>
+    /// <param name="onDrawnTriggerDelay">The amount of time to wait before being added to the hand.</param>
+    /// <param name="cardSpawnedCallback">
+    /// The action to invoke after the card has spawned but before being added to the hand.
+    /// 1. One of two uses in the vanilla game is if the player has completed the event 'ImprovedSmokeCardDiscovered'.
+    ///     If this event is complete, the 'Improved Smoke' PlayableCard has the emissive portrait forced on and is then re-rendered.
+    /// 2. The other use is during Grimora's fight in Act 2. During the reanimation sequence, the background sprite is replaced with a rare card background.
+    /// </param>
     /// <returns>The enumeration of the card being placed in the player's hand.</returns>
-    public static IEnumerator SpawnInHand(this CardInfo cardInfo)
+    public static IEnumerator SpawnInHand(this CardInfo cardInfo, List<CardModificationInfo> temporaryMods = null, Vector3 spawnOffset = default, float onDrawnTriggerDelay = 0f, Action<PlayableCard> cardSpawnedCallback = null)
     {
-        yield return CardSpawner.Instance.SpawnCardToHand(cardInfo);
+        if (spawnOffset == default)
+        {
+            spawnOffset = CardSpawner.Instance.spawnedPositionOffset;
+        }
+        yield return CardSpawner.Instance.SpawnCardToHand(cardInfo, temporaryMods, spawnOffset, onDrawnTriggerDelay, cardSpawnedCallback);
     }
 
     #region PlayableCard
 
+    /// <summary>
+    /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <param name="otherCard">The other PlayableCard.</param>
+    /// <returns>true if both cards are on the board and both are opponent cards or both are player cards.</returns>
+    public static bool OtherCardIsOnSameSide(this PlayableCard playableCard, PlayableCard otherCard)
+    {
+        return playableCard.OnBoard && otherCard.OnBoard 
+            && (playableCard.OpponentCard && otherCard.OpponentCard || playableCard.IsPlayerCard() && otherCard.IsPlayerCard());
+    }
     
+    /// <summary>
+    /// Retrieve a list of all abilities that exist on the PlayableCard.
+    ///
+    /// This will retrieve all Ability from both TemporaryMods and from the underlying CardInfo object.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <returns>A list of Ability from the PlayableCard and underlying CardInfo object.</returns>
+    public static List<Ability> AllAbilities(this PlayableCard playableCard)
+    {
+        return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
+    }
+    
+    /// <summary>
+    /// Retrieve a list of all special triggered abilities that exist on the PlayableCard.
+    ///
+    /// This will retrieve all SpecialTriggeredAbility from both TemporaryMods and from the underlying CardInfo object.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <returns>A list of SpecialTriggeredAbility from the PlayableCard and underlying CardInfo object.</returns>
+    public static List<SpecialTriggeredAbility> AllSpecialAbilities(this PlayableCard playableCard)
+    {
+        return new List<SpecialTriggeredAbility>(
+            playableCard.TemporaryMods.Concat(playableCard.Info.Mods).SelectMany(mod => mod.specialAbilities)
+        );
+    }
+    
+    /// <summary>
+    /// Retrieve a list of Ability that exist in TemporaryMods and the underlying CardInfo.Mods lists.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <returns>A list of Ability from the PlayableCard and underlying CardInfo object.</returns>
+    public static List<Ability> GetAbilitiesFromAllMods(this PlayableCard playableCard)
+    {
+        return AbilitiesUtil.GetAbilitiesFromMods(playableCard.TemporaryMods.Concat(playableCard.Info.Mods).ToList());
+    }
+
     /// <summary>
     /// Checks if the card has a specific Trait.
     /// </summary>
@@ -1231,10 +1291,10 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// Checks if the card is not dead.
+    /// Checks if the card is not null and not Dead.
     /// </summary>
     /// <param name="playableCard">PlayableCard to access.</param>
-    /// <returns>true if the card is not dead.</returns>
+    /// <returns>true if the card is not null or not Dead.</returns>
     public static bool NotDead(this PlayableCard playableCard)
     {
         return playableCard && !playableCard.Dead;
