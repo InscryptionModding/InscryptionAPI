@@ -743,37 +743,57 @@ references:
   commentId: T:InscryptionAPI.Ascension.StarterDeckPaginator
   fullName: InscryptionAPI.Ascension.StarterDeckPaginator
   nameWithType: StarterDeckPaginator
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.CHALLENGES_PER_ROW
-  name: CHALLENGES_PER_ROW
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_CHALLENGES_PER_ROW
-  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.CHALLENGES_PER_ROW
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.CHALLENGES_PER_ROW
-  nameWithType: StarterDeckPaginator.CHALLENGES_PER_ROW
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages
-  name: GeneratePages()
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_GeneratePages
-  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages()
-  nameWithType: StarterDeckPaginator.GeneratePages()
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages*
-  name: GeneratePages
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_GeneratePages_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.AddPage(List{DiskCardGame.StarterDeckInfo})
+  name: AddPage(List<StarterDeckInfo>)
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_AddPage_List_DiskCardGame_StarterDeckInfo__
+  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.AddPage(List{DiskCardGame.StarterDeckInfo})
+  name.vb: AddPage(List(Of StarterDeckInfo))
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.AddPage(List<DiskCardGame.StarterDeckInfo>)
+  fullName.vb: InscryptionAPI.Ascension.StarterDeckPaginator.AddPage(List(Of DiskCardGame.StarterDeckInfo))
+  nameWithType: StarterDeckPaginator.AddPage(List<StarterDeckInfo>)
+  nameWithType.vb: StarterDeckPaginator.AddPage(List(Of StarterDeckInfo))
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.AddPage*
+  name: AddPage
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_AddPage_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.AddPage
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.GeneratePages
-  nameWithType: StarterDeckPaginator.GeneratePages
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.icons
-  name: icons
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_icons
-  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.icons
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.icons
-  nameWithType: StarterDeckPaginator.icons
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.ICONS_PER_PAGE
-  name: ICONS_PER_PAGE
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_ICONS_PER_PAGE
-  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.ICONS_PER_PAGE
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.ICONS_PER_PAGE
-  nameWithType: StarterDeckPaginator.ICONS_PER_PAGE
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.AddPage
+  nameWithType: StarterDeckPaginator.AddPage
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.leftArrow
+  name: leftArrow
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_leftArrow
+  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.leftArrow
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.leftArrow
+  nameWithType: StarterDeckPaginator.leftArrow
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage(List{DiskCardGame.StarterDeckInfo})
+  name: LoadPage(List<StarterDeckInfo>)
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_LoadPage_List_DiskCardGame_StarterDeckInfo__
+  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage(List{DiskCardGame.StarterDeckInfo})
+  name.vb: LoadPage(List(Of StarterDeckInfo))
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage(List<DiskCardGame.StarterDeckInfo>)
+  fullName.vb: InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage(List(Of DiskCardGame.StarterDeckInfo))
+  nameWithType: StarterDeckPaginator.LoadPage(List<StarterDeckInfo>)
+  nameWithType.vb: StarterDeckPaginator.LoadPage(List(Of StarterDeckInfo))
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage*
+  name: LoadPage
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_LoadPage_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.LoadPage
+  nameWithType: StarterDeckPaginator.LoadPage
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.NextPage
+  name: NextPage()
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_NextPage
+  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.NextPage
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.NextPage()
+  nameWithType: StarterDeckPaginator.NextPage()
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.NextPage*
+  name: NextPage
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_NextPage_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.NextPage
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.NextPage
+  nameWithType: StarterDeckPaginator.NextPage
 - uid: InscryptionAPI.Ascension.StarterDeckPaginator.OnEnable
   name: OnEnable()
   href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_OnEnable
@@ -787,57 +807,49 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.StarterDeckPaginator.OnEnable
   nameWithType: StarterDeckPaginator.OnEnable
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.pageIndex
+  name: pageIndex
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_pageIndex
+  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.pageIndex
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.pageIndex
+  nameWithType: StarterDeckPaginator.pageIndex
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.pageLength
+  name: pageLength
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_pageLength
+  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.pageLength
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.pageLength
+  nameWithType: StarterDeckPaginator.pageLength
 - uid: InscryptionAPI.Ascension.StarterDeckPaginator.pages
   name: pages
   href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_pages
   commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.pages
   fullName: InscryptionAPI.Ascension.StarterDeckPaginator.pages
   nameWithType: StarterDeckPaginator.pages
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks
-  name: ShowVisibleStarterDecks()
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_ShowVisibleStarterDecks
-  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks()
-  nameWithType: StarterDeckPaginator.ShowVisibleStarterDecks()
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks*
-  name: ShowVisibleStarterDecks
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_ShowVisibleStarterDecks_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage
+  name: PreviousPage()
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_PreviousPage
+  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage()
+  nameWithType: StarterDeckPaginator.PreviousPage()
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage*
+  name: PreviousPage
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_PreviousPage_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.ShowVisibleStarterDecks
-  nameWithType: StarterDeckPaginator.ShowVisibleStarterDecks
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.starterDeckPageIndex
-  name: starterDeckPageIndex
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_starterDeckPageIndex
-  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.starterDeckPageIndex
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.starterDeckPageIndex
-  nameWithType: StarterDeckPaginator.starterDeckPageIndex
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft(DiskCardGame.MainInputInteractable)
-  name: StarterDeckPageLeft(MainInputInteractable)
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_StarterDeckPageLeft_DiskCardGame_MainInputInteractable_
-  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft(DiskCardGame.MainInputInteractable)
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft(DiskCardGame.MainInputInteractable)
-  nameWithType: StarterDeckPaginator.StarterDeckPageLeft(MainInputInteractable)
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft*
-  name: StarterDeckPageLeft
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_StarterDeckPageLeft_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageLeft
-  nameWithType: StarterDeckPaginator.StarterDeckPageLeft
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight(DiskCardGame.MainInputInteractable)
-  name: StarterDeckPageRight(MainInputInteractable)
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_StarterDeckPageRight_DiskCardGame_MainInputInteractable_
-  commentId: M:InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight(DiskCardGame.MainInputInteractable)
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight(DiskCardGame.MainInputInteractable)
-  nameWithType: StarterDeckPaginator.StarterDeckPageRight(MainInputInteractable)
-- uid: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight*
-  name: StarterDeckPageRight
-  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_StarterDeckPageRight_
-  commentId: Overload:InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight
-  isSpec: "True"
-  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.StarterDeckPageRight
-  nameWithType: StarterDeckPaginator.StarterDeckPageRight
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.PreviousPage
+  nameWithType: StarterDeckPaginator.PreviousPage
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.rightArrow
+  name: rightArrow
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_rightArrow
+  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.rightArrow
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.rightArrow
+  nameWithType: StarterDeckPaginator.rightArrow
+- uid: InscryptionAPI.Ascension.StarterDeckPaginator.screen
+  name: screen
+  href: api/InscryptionAPI.Ascension.StarterDeckPaginator.html#InscryptionAPI_Ascension_StarterDeckPaginator_screen
+  commentId: F:InscryptionAPI.Ascension.StarterDeckPaginator.screen
+  fullName: InscryptionAPI.Ascension.StarterDeckPaginator.screen
+  nameWithType: StarterDeckPaginator.screen
 - uid: InscryptionAPI.Boons
   name: InscryptionAPI.Boons
   href: api/InscryptionAPI.Boons.html
