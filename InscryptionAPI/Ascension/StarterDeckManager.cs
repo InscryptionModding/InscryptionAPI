@@ -3,6 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Collections.ObjectModel;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Ascension;
 
@@ -60,10 +61,37 @@ public static class StarterDeckManager
 
     public static void SyncDeckList()
     {
-        var decks = BaseGameDecks.Concat(NewDecks).Select(x => CloneStarterDeck(x)).ToList();       
+        var decks = BaseGameDecks.Concat(NewDecks).Select(x => CloneStarterDeck(x)).ToList();
 
         foreach (var deck in decks)
-            deck.Info.cards = deck.CardNames.Select(n => CardLoader.GetCardByName(n)).ToList();
+        {
+            void UpdateCardsList(List<CardInfo> allcards)
+            {
+                List<CardInfo> cards = new();
+                foreach (var c in deck.CardNames)
+                {
+                    if (allcards.Exists(x => x.name == c))
+                    {
+                        cards.Add(CardLoader.Clone(allcards.Find(x => x.name == c)));
+                    }
+                }
+                deck.Info.cards = cards;
+            }
+            UpdateCardsList(CardLoader.AllData);
+            if(deck.Info.cards.Count != deck.CardNames.Count)
+            {
+                List<CardInfo> TryAddMissingCards(List<CardInfo> x)
+                {
+                    UpdateCardsList(x);
+                    if (deck.Info.cards.Count == deck.CardNames.Count)
+                    {
+                        CardManager.ModifyCardList -= TryAddMissingCards;
+                    }
+                    return x;
+                }
+                CardManager.ModifyCardList += TryAddMissingCards;
+            }
+        }
 
         AllDecks = ModifyDeckList?.Invoke(decks) ?? decks;
         AllDeckInfos = AllDecks.Select(fsd => fsd.Info).ToList();
