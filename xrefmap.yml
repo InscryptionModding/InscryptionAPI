@@ -4429,6 +4429,180 @@ references:
   commentId: N:InscryptionAPI.Helpers
   fullName: InscryptionAPI.Helpers
   nameWithType: InscryptionAPI.Helpers
+- uid: InscryptionAPI.Helpers.CustomLine
+  name: CustomLine
+  href: api/InscryptionAPI.Helpers.CustomLine.html
+  commentId: T:InscryptionAPI.Helpers.CustomLine
+  fullName: InscryptionAPI.Helpers.CustomLine
+  nameWithType: CustomLine
+- uid: InscryptionAPI.Helpers.CustomLine.emotion
+  name: emotion
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_emotion
+  commentId: F:InscryptionAPI.Helpers.CustomLine.emotion
+  fullName: InscryptionAPI.Helpers.CustomLine.emotion
+  nameWithType: CustomLine.emotion
+- uid: InscryptionAPI.Helpers.CustomLine.letterAnimation
+  name: letterAnimation
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_letterAnimation
+  commentId: F:InscryptionAPI.Helpers.CustomLine.letterAnimation
+  fullName: InscryptionAPI.Helpers.CustomLine.letterAnimation
+  nameWithType: CustomLine.letterAnimation
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Helpers.CustomLine
+  name: Implicit(String to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_String__InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening(String to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.String to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.String to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit(String to CustomLine)
+  nameWithType.vb: CustomLine.Widening(String to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, DialogueEvent.Speaker) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, DialogueEvent.Speaker)(Of String, DialogueEvent.Speaker) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, DialogueEvent.Speaker) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, DialogueEvent.Speaker)(Of String, DialogueEvent.Speaker) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, Emotion, DialogueEvent.Speaker) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_Emotion_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, Emotion, DialogueEvent.Speaker)(Of String, Emotion, DialogueEvent.Speaker) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.Emotion, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.Emotion, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, Emotion, DialogueEvent.Speaker) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, Emotion, DialogueEvent.Speaker)(Of String, Emotion, DialogueEvent.Speaker) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, Emotion) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, Emotion)(Of String, Emotion) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, Emotion) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, Emotion)(Of String, Emotion) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DialogueEvent_Speaker_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, TextDisplayer.LetterAnimation, Emotion)(Of String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, Emotion)(Of String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation})~InscryptionAPI.Helpers.CustomLine
+  name: Implicit((String, TextDisplayer.LetterAnimation) to CustomLine)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation___InscryptionAPI_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation})~InscryptionAPI.Helpers.CustomLine
+  name.vb: Widening((String, TextDisplayer.LetterAnimation)(Of String, TextDisplayer.LetterAnimation) to CustomLine)
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation> to InscryptionAPI.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation) to InscryptionAPI.Helpers.CustomLine)
+  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation) to CustomLine)
+  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation)(Of String, TextDisplayer.LetterAnimation) to CustomLine)
+- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_
+  commentId: Overload:InscryptionAPI.Helpers.CustomLine.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.Helpers.CustomLine.Implicit
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening
+  nameWithType: CustomLine.Implicit
+  nameWithType.vb: CustomLine.Widening
+- uid: InscryptionAPI.Helpers.CustomLine.p03Face
+  name: p03Face
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_p03Face
+  commentId: F:InscryptionAPI.Helpers.CustomLine.p03Face
+  fullName: InscryptionAPI.Helpers.CustomLine.p03Face
+  nameWithType: CustomLine.p03Face
+- uid: InscryptionAPI.Helpers.CustomLine.speaker
+  name: speaker
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_speaker
+  commentId: F:InscryptionAPI.Helpers.CustomLine.speaker
+  fullName: InscryptionAPI.Helpers.CustomLine.speaker
+  nameWithType: CustomLine.speaker
+- uid: InscryptionAPI.Helpers.CustomLine.specialInstruction
+  name: specialInstruction
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_specialInstruction
+  commentId: F:InscryptionAPI.Helpers.CustomLine.specialInstruction
+  fullName: InscryptionAPI.Helpers.CustomLine.specialInstruction
+  nameWithType: CustomLine.specialInstruction
+- uid: InscryptionAPI.Helpers.CustomLine.storyCondition
+  name: storyCondition
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_storyCondition
+  commentId: F:InscryptionAPI.Helpers.CustomLine.storyCondition
+  fullName: InscryptionAPI.Helpers.CustomLine.storyCondition
+  nameWithType: CustomLine.storyCondition
+- uid: InscryptionAPI.Helpers.CustomLine.storyConditionMustBeMet
+  name: storyConditionMustBeMet
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_storyConditionMustBeMet
+  commentId: F:InscryptionAPI.Helpers.CustomLine.storyConditionMustBeMet
+  fullName: InscryptionAPI.Helpers.CustomLine.storyConditionMustBeMet
+  nameWithType: CustomLine.storyConditionMustBeMet
+- uid: InscryptionAPI.Helpers.CustomLine.text
+  name: text
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_text
+  commentId: F:InscryptionAPI.Helpers.CustomLine.text
+  fullName: InscryptionAPI.Helpers.CustomLine.text
+  nameWithType: CustomLine.text
+- uid: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name: ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_ToLine_System_Collections_Generic_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name.vb: ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  nameWithType: CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  nameWithType.vb: CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+- uid: InscryptionAPI.Helpers.CustomLine.ToLine*
+  name: ToLine
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_ToLine_
+  commentId: Overload:InscryptionAPI.Helpers.CustomLine.ToLine
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomLine.ToLine
+  nameWithType: CustomLine.ToLine
+- uid: InscryptionAPI.Helpers.DialogueEventGenerator
+  name: DialogueEventGenerator
+  href: api/InscryptionAPI.Helpers.DialogueEventGenerator.html
+  commentId: T:InscryptionAPI.Helpers.DialogueEventGenerator
+  fullName: InscryptionAPI.Helpers.DialogueEventGenerator
+  nameWithType: DialogueEventGenerator
+- uid: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine},System.Collections.Generic.List{System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name: GenerateEvent(String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Helpers.DialogueEventGenerator.html#InscryptionAPI_Helpers_DialogueEventGenerator_GenerateEvent_System_String_System_Collections_Generic_List_InscryptionAPI_Helpers_CustomLine__System_Collections_Generic_List_System_Collections_Generic_List_InscryptionAPI_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine},System.Collections.Generic.List{System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name.vb: GenerateEvent(String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, System.Collections.Generic.List<InscryptionAPI.Helpers.CustomLine>, System.Collections.Generic.List<System.Collections.Generic.List<InscryptionAPI.Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, System.Collections.Generic.List(Of InscryptionAPI.Helpers.CustomLine), System.Collections.Generic.List(Of System.Collections.Generic.List(Of InscryptionAPI.Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType: DialogueEventGenerator.GenerateEvent(String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType.vb: DialogueEventGenerator.GenerateEvent(String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+- uid: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent*
+  name: GenerateEvent
+  href: api/InscryptionAPI.Helpers.DialogueEventGenerator.html#InscryptionAPI_Helpers_DialogueEventGenerator_GenerateEvent_
+  commentId: Overload:InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent
+  nameWithType: DialogueEventGenerator.GenerateEvent
 - uid: InscryptionAPI.Helpers.Extensions
   name: InscryptionAPI.Helpers.Extensions
   href: api/InscryptionAPI.Helpers.Extensions.html

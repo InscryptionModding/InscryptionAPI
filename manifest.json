@@ -666,6 +666,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Helpers.CustomLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Helpers.CustomLine.html",
+          "hash": "l9pLEgXbUgJt/gtAjf7+ss7RLqCLpJbc7LWdSyLNyiM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Helpers.DialogueEventGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Helpers.DialogueEventGenerator.html",
+          "hash": "WwBYO0CtUmcAOiWusc8D54DT14BFt4dtF7jmgYj11l8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.yml",
       "output": {
         ".html": {
@@ -730,7 +754,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.html",
-          "hash": "D1y6svRRcCIO/0APKOAvMzP3tB9Yab+wwjj1OZWxBEc="
+          "hash": "FEYMoODpQoic8m+cRED7lD4Ye2JLj4tKOQLoj/3LUJc="
         }
       },
       "is_incremental": false,
@@ -1330,7 +1354,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "T7kklhWatVsUds4mYZS1GNEOsu7ziui2FsW+Nyho9YM="
+          "hash": "I698fCqszfbYJu6bdQtm8rHHdRzBM6d879bn17uCW04="
         }
       },
       "is_incremental": false,
@@ -1393,7 +1417,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 116,
+          "total_file_count": 118,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
