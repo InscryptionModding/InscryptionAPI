@@ -6276,6 +6276,97 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.Part1RegionData.Part1RegionData
   nameWithType: Part1RegionData.Part1RegionData
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards
+  name: AllowLockedTerrainCards
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowLockedTerrainCards
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards
+  nameWithType: Part1RegionData.AllowLockedTerrainCards
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards*
+  name: AllowLockedTerrainCards
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowLockedTerrainCards_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowLockedTerrainCards
+  nameWithType: Part1RegionData.AllowLockedTerrainCards
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards
+  name: AllowSacrificableTerrainCards
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowSacrificableTerrainCards
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards
+  nameWithType: Part1RegionData.AllowSacrificableTerrainCards
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards*
+  name: AllowSacrificableTerrainCards
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowSacrificableTerrainCards_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowSacrificableTerrainCards
+  nameWithType: Part1RegionData.AllowSacrificableTerrainCards
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide
+  name: AllowTerrainOnEnemySide
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowTerrainOnEnemySide
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide
+  nameWithType: Part1RegionData.AllowTerrainOnEnemySide
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide*
+  name: AllowTerrainOnEnemySide
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowTerrainOnEnemySide_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnEnemySide
+  nameWithType: Part1RegionData.AllowTerrainOnEnemySide
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide
+  name: AllowTerrainOnPlayerSide
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowTerrainOnPlayerSide
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide
+  nameWithType: Part1RegionData.AllowTerrainOnPlayerSide
+- uid: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide*
+  name: AllowTerrainOnPlayerSide
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_AllowTerrainOnPlayerSide_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.AllowTerrainOnPlayerSide
+  nameWithType: Part1RegionData.AllowTerrainOnPlayerSide
+- uid: InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
+  name: DoNotForceReachTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_DoNotForceReachTerrain
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
+  fullName: InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
+  nameWithType: Part1RegionData.DoNotForceReachTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain*
+  name: DoNotForceReachTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_DoNotForceReachTerrain_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
+  nameWithType: Part1RegionData.DoNotForceReachTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.MaxTerrain
+  name: MaxTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_MaxTerrain
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.MaxTerrain
+  fullName: InscryptionAPI.Regions.Part1RegionData.MaxTerrain
+  nameWithType: Part1RegionData.MaxTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.MaxTerrain*
+  name: MaxTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_MaxTerrain_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.MaxTerrain
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.MaxTerrain
+  nameWithType: Part1RegionData.MaxTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.MinTerrain
+  name: MinTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_MinTerrain
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.MinTerrain
+  fullName: InscryptionAPI.Regions.Part1RegionData.MinTerrain
+  nameWithType: Part1RegionData.MinTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.MinTerrain*
+  name: MinTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_MinTerrain_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.MinTerrain
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.MinTerrain
+  nameWithType: Part1RegionData.MinTerrain
 - uid: InscryptionAPI.Regions.Part1RegionData.Region
   name: Region
   href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_Region
@@ -6289,6 +6380,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.Part1RegionData.Region
   nameWithType: Part1RegionData.Region
+- uid: InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain
+  name: RemoveDefaultReachTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_RemoveDefaultReachTerrain
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain
+  fullName: InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain
+  nameWithType: Part1RegionData.RemoveDefaultReachTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain*
+  name: RemoveDefaultReachTerrain
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_RemoveDefaultReachTerrain_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.RemoveDefaultReachTerrain
+  nameWithType: Part1RegionData.RemoveDefaultReachTerrain
 - uid: InscryptionAPI.Regions.Part1RegionData.Tier
   name: Tier
   href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_Tier
