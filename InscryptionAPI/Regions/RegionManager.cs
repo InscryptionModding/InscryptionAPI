@@ -198,35 +198,35 @@ public static class RegionManager
         {
             reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
             __result = new EncounterData.StartCondition();
-            int num = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
-            int num2 = 0;
-            int num3 = 0;
-            for (int i = 0; i < num; i++)
+            int numTerrain = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
+            int playerTerrain = 0;
+            int enemyTerrain = 0;
+            for (int i = 0; i < numTerrain; i++)
             {
-                bool flag;
+                bool terrainIsForPlayer;
                 if (customregion.AllowTerrainOnEnemySide && customregion.AllowTerrainOnPlayerSide)
                 {
-                    flag = SeededRandom.Bool(randomSeed++);
-                    if (flag && num2 == 1)
+                    terrainIsForPlayer = SeededRandom.Bool(randomSeed++);
+                    if (terrainIsForPlayer && playerTerrain == 1)
                     {
-                        flag = false;
+                        terrainIsForPlayer = false;
                     }
-                    else if (!flag && num3 == 1)
+                    else if (!terrainIsForPlayer && enemyTerrain == 1)
                     {
-                        flag = true;
+                        terrainIsForPlayer = true;
                     }
                 }
                 else
                 {
-                    flag = customregion.AllowTerrainOnPlayerSide;
+                    terrainIsForPlayer = customregion.AllowTerrainOnPlayerSide;
                 }
-                CardInfo[] array = flag ? __result.cardsInPlayerSlots : __result.cardsInOpponentSlots;
-                CardInfo[] array2 = flag ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
-                int num4 = SeededRandom.Range(0, array.Length, randomSeed++);
+                CardInfo[] sameSideSlots = terrainIsForPlayer ? __result.cardsInPlayerSlots : __result.cardsInOpponentSlots;
+                CardInfo[] otherSideSlots = terrainIsForPlayer ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
+                int slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
                 bool availableSpace = false;
                 for (int j = 0; j < 4; j++)
                 {
-                    if (array[j] == null && array2[j] == null)
+                    if (sameSideSlots[j] == null && otherSideSlots[j] == null)
                     {
                         availableSpace = true;
                     }
@@ -235,11 +235,11 @@ public static class RegionManager
                 {
                     break;
                 }
-                while (array[num4] != null || array2[num4] != null)
+                while (sameSideSlots[slotForTerrain] != null || otherSideSlots[slotForTerrain] != null)
                 {
-                    num4 = SeededRandom.Range(0, array.Length, randomSeed++);
+                    slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
                 }
-                if (flag && reachTerrainOnPlayerSide)
+                if (terrainIsForPlayer && reachTerrainOnPlayerSide)
                 {
                     CardInfo cardInfo = RunState.CurrentMapRegion.terrainCards.Find((CardInfo x) => x.HasAbility(Ability.Reach));
                     if (cardInfo == null && !customregion.RemoveDefaultReachTerrain)
@@ -248,7 +248,7 @@ public static class RegionManager
                     }
                     if (cardInfo != null)
                     {
-                        array[num4] = CardLoader.GetCardByName(cardInfo.name);
+                        sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(cardInfo.name);
                     }
                 }
                 else
@@ -257,16 +257,16 @@ public static class RegionManager
                         (x.traits.Contains(Trait.Terrain) || customregion.AllowSacrificableTerrainCards));
                     if (list.Count > 0)
                     {
-                        array[num4] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
+                        sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
                     }
                 }
-                if (flag)
+                if (terrainIsForPlayer)
                 {
-                    num2++;
+                    playerTerrain++;
                 }
                 else
                 {
-                    num3++;
+                    enemyTerrain++;
                 }
             }
             return false;
