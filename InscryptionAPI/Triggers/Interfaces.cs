@@ -12,7 +12,15 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnAddedToHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when drawn, *after* being added to the list of cards in hand.
+        /// </summary>
+        /// <returns>True if this should trigger when drawn, *after* being added to the list of cards in hand.</returns>
         public bool RespondsToAddedToHand();
+        /// <summary>
+        /// Trigger whatever events you want to run when the card is drawn, *after* being added to the list of cards in hand.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator OnAddedToHand();
     }
 
@@ -21,7 +29,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardAddedToHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card is drawn, *after* being added to the list of cards in hand.
+        /// </summary>
+        /// <param name="card">The card that was drawn.</param>
+        /// <returns>True if this should trigger when any card is drawn, *after* being added to the list of cards in hand.</returns>
         public bool RespondsToOtherCardAddedToHand(PlayableCard card);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card is drawn, *after* being added to the list of cards in hand.
+        /// </summary>
+        /// <param name="card">The card that was drawn.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardAddedToHand(PlayableCard card);
     }
 
@@ -30,7 +48,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnCardAssignedToSlotNoResolve
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card gets assigned to a new slot, with an exception of being placed on board for the first time.
+        /// </summary>
+        /// <param name="card">The card that was assigned to a new slot.</param>
+        /// <returns>True if this should trigger when any card gets assigned to a new slot, with an exception of being placed on board for the first time.</returns>
         public bool RespondsToCardAssignedToSlotNoResolve(PlayableCard card);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card gets assigned to a new slot, with an exception of being placed on board for the first time.
+        /// </summary>
+        /// <param name="card">The card that was assigned to a new slot.</param>
+        /// <returns></returns>
         public IEnumerator OnCardAssignedToSlotNoResolve(PlayableCard card);
     }
 
@@ -39,7 +67,21 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnCardAssignedToSlotContext
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card gets assigned to a new slot.
+        /// </summary>
+        /// <param name="card">The card that got assigned to a new slot.</param>
+        /// <param name="oldSlot">The slot for the card before it moved.</param>
+        /// <param name="newSlot">The slot for the card after it moved.</param>
+        /// <returns>True if this should trigger when any card gets assigned to a new slot.</returns>
         public bool RespondsToCardAssignedToSlotContext(PlayableCard card, CardSlot oldSlot, CardSlot newSlot);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card gets assigned to a new slot.
+        /// </summary>
+        /// <param name="card">The card that got assigned to a new slot.</param>
+        /// <param name="oldSlot">The slot for the card before it moved.</param>
+        /// <param name="newSlot">The slot for the card after it moved.</param>
+        /// <returns></returns>
         public IEnumerator OnCardAssignedToSlotContext(PlayableCard card, CardSlot oldSlot, CardSlot newSlot);
     }
 
@@ -48,7 +90,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnBellRung
     {
+        /// <summary>
+        /// Returns true if this should trigger after the combat phase starts.
+        /// </summary>
+        /// <param name="playerCombatPhase">True if the player is the attacker in the attack phase.</param>
+        /// <returns>True if this should trigger after the combat phase starts.</returns>
         public bool RespondsToBellRung(bool playerCombatPhase);
+        /// <summary>
+        /// Trigger whatever events you want to run after the combat phase starts.
+        /// </summary>
+        /// <param name="playerCombatPhase">True if the player is the attacker in the attack phase.</param>
+        /// <returns></returns>
         public IEnumerator OnBellRung(bool playerCombatPhase);
     }
 
@@ -57,7 +109,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPreSlotAttackSequence
     {
+        /// <summary>
+        /// Returns true if this should trigger before a slot does its attacks.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that is about to do its attacks.</param>
+        /// <returns>True if this should trigger before a slot does its attacks.</returns>
         public bool RespondsToPreSlotAttackSequence(CardSlot attackingSlot);
+        /// <summary>
+        /// Trigger whatever events you want to run before a slot does its attacks.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that is about to do its attacks.</param>
+        /// <returns></returns>
         public IEnumerator OnPreSlotAttackSequence(CardSlot attackingSlot);
     }
 
@@ -66,7 +128,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPostSlotAttackSequence
     {
+        /// <summary>
+        /// Returns true if this should trigger after a slot does its attacks.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that just did its attacks.</param>
+        /// <returns>True if this should trigger after a slot does its attacks.</returns>
         public bool RespondsToPostSlotAttackSequence(CardSlot attackingSlot);
+        /// <summary>
+        /// Trigger whatever events you want to run after a slot does its attacks.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that just did its attacks.</param>
+        /// <returns></returns>
         public IEnumerator OnPostSlotAttackSequence(CardSlot attackingSlot);
     }
 
@@ -75,7 +147,19 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPostSingularSlotAttackSlot
     {
+        /// <summary>
+        /// Returns true if this should trigger after a slot does an individual attack.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that has just did the attack.</param>
+        /// <param name="targetSlot">The slot that the attacking slot attacked.</param>
+        /// <returns>True if this should trigger after a slot does an individual attack.</returns>
         public bool RespondsToPostSingularSlotAttackSlot(CardSlot attackingSlot, CardSlot targetSlot);
+        /// <summary>
+        /// Trigger whatever events you want to run after a slot does an individual attack.
+        /// </summary>
+        /// <param name="attackingSlot">The slot that has just did the attack.</param>
+        /// <param name="targetSlot">The slot that the attacking slot attacked.</param>
+        /// <returns></returns>
         public IEnumerator OnPostSingularSlotAttackSlot(CardSlot attackingSlot, CardSlot targetSlot);
     }
 
@@ -103,12 +187,28 @@ namespace InscryptionAPI.Triggers
     }
 
     /// <summary>
-    /// Trigger that is triggered before the scales are changed, after IOnPreScalesChangedRef.
+    /// Trigger that is triggered before the scales are changed, after IOnPreScalesChangedRef. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.
     /// </summary>
     public interface IOnPreScalesChanged
     {
-        public bool RespondsToPreScalesChanged(int damage, bool toPlayer);
-        public IEnumerator OnPreScalesChanged(int damage, bool toPlayer);
+        /// <summary>
+        /// Returns true if this should trigger before damage is added to the scales.
+        /// </summary>
+        /// <param name="damage">The damage that is about to get added.</param>
+        /// <param name="toPlayer">True if the damage is getting added to the player's side of the scales.</param>
+        /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <returns>True if this should trigger before damage is added to the scales.</returns>
+        public bool RespondsToPreScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
+        /// <summary>
+        /// Run whatever events you want to trigger before damage is added to the scales.
+        /// </summary>
+        /// <param name="damage">The damage that is about to get added.</param>
+        /// <param name="toPlayer">True if the damage is getting added to the player's side of the scales.</param>
+        /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <returns></returns>
+        public IEnumerator OnPreScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
     }
 
     /// <summary>
@@ -116,7 +216,23 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPostScalesChanged
     {
+        /// <summary>
+        /// Returns true if this should trigger after damage is added to the scales.
+        /// </summary>
+        /// <param name="damage">The damage that got added to the scales.</param>
+        /// <param name="toPlayer">True if the damage got added to the player's side of the scales.</param>
+        /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <returns>True if this should trigger after damage is added to the scales.</returns>
         public bool RespondsToPostScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
+        /// <summary>
+        /// Run whatever events you want to trigger after damage is added to the scales.
+        /// </summary>
+        /// <param name="damage">The damage that got added to the scales.</param>
+        /// <param name="toPlayer">True if the damage got added to the player's side of the scales.</param>
+        /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
+        /// <returns></returns>
         public IEnumerator OnPostScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
     }
 
@@ -125,7 +241,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnUpkeepInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger at the start of the turn, but only if this card is in hand.
+        /// </summary>
+        /// <param name="playerUpkeep">True if it's the start of the player's turn, false otherwise.</param>
+        /// <returns>True if this should trigger at the start of the turn, but only if this card is in hand.</returns>
         public bool RespondsToUpkeepInHand(bool playerUpkeep);
+        /// <summary>
+        /// Trigger whatever events you want to run at the start of the turn, but only if this card is in hand.
+        /// </summary>
+        /// <param name="playerUpkeep">True if it's the start of the player's turn, false otherwise.</param>
+        /// <returns></returns>
         public IEnumerator OnUpkeepInHand(bool playerUpkeep);
     }
 
@@ -134,7 +260,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardResolveInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card gets played, but only if this card is in hand. 
+        /// </summary>
+        /// <param name="resolvingCard">The card that got played.</param>
+        /// <returns>True if this should trigger when any card gets played, but only if this card is in hand. </returns>
         public bool RespondsToOtherCardResolveInHand(PlayableCard resolvingCard);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card gets played, but only if this card is in hand.
+        /// </summary>
+        /// <param name="resolvingCard">The card that got played.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardResolveInHand(PlayableCard resolvingCard);
     }
 
@@ -143,7 +279,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnTurnEndInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when the turn ends, but only if this card is in hand.
+        /// </summary>
+        /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+        /// <returns>True if this should trigger when the turn ends, but only if this card is in hand.</returns>
         public bool RespondsToTurnEndInHand(bool playerTurn);
+        /// <summary>
+        /// Trigger whatever events you want to run when the turn ends, but only if this card is in hand.
+        /// </summary>
+        /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+        /// <returns></returns>
         public IEnumerator OnTurnEndInHand(bool playerTurn);
     }
 
@@ -152,7 +298,17 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardAssignedToSlotInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card is assigned to a new slot, but only if this card is in hand.
+        /// </summary>
+        /// <param name="card">The card that got assigned to a new slot.</param>
+        /// <returns>True if this should trigger when any card is assigned to a new slot, but only if this card is in hand.</returns>
         public bool RespondsToOtherCardAssignedToSlotInHand(PlayableCard card);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card is assigned to a new slot, but only if this card is in hand.
+        /// </summary>
+        /// <param name="card">The card that got assigned to a new slot.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardAssignedToSlotInHand(PlayableCard card);
     }
 
@@ -161,7 +317,21 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardPreDeathInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger before any card dies, but only if this card is in hand.
+        /// </summary>
+        /// <param name="deathSlot">The slot that the dying card died in.</param>
+        /// <param name="fromCombat">False if it was killed by a sacrifice, true otherwise.</param>
+        /// <param name="killer">The card that killed the dying card. Can be null.</param>
+        /// <returns>True if this should trigger before any card dies, but only if this card is in hand.</returns>
         public bool RespondsToOtherCardPreDeathInHand(CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+        /// <summary>
+        /// Trigger whatever events you want to run before any card dies, but only if this card is in hand.
+        /// </summary>
+        /// <param name="deathSlot">The slot that the dying card died in.</param>
+        /// <param name="fromCombat">False if it was killed by a sacrifice, true otherwise.</param>
+        /// <param name="killer">The card that killed the dying card. Can be null.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardPreDeathInHand(CardSlot deathSlot, bool fromCombat, PlayableCard killer);
     }
 
@@ -170,7 +340,21 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardDealtDamageInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger when any card deals damage to another card, but only if this card is in hand.
+        /// </summary>
+        /// <param name="attacker">The card that attacked another card.</param>
+        /// <param name="amount">The damage that was dealt to the target.</param>
+        /// <param name="target">The card that got attacked by the attacker.</param>
+        /// <returns>True if this should trigger when any card deals damage to another card, but only if this card is in hand.</returns>
         public bool RespondsToOtherCardDealtDamageInHand(PlayableCard attacker, int amount, PlayableCard target);
+        /// <summary>
+        /// Trigger whatever events you want to run when any card deals damage to another card, but only if this card is in hand.
+        /// </summary>
+        /// <param name="attacker">The card that attacked another card.</param>
+        /// <param name="amount">The damage that was dealt to the target.</param>
+        /// <param name="target">The card that got attacked by the attacker.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardDealtDamageInHand(PlayableCard attacker, int amount, PlayableCard target);
     }
 
@@ -179,7 +363,23 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnOtherCardDieInHand
     {
+        /// <summary>
+        /// Returns true if this should trigger after any card dies, but only if this card is in hand.
+        /// </summary>
+        /// <param name="card">The card that is dying.</param>
+        /// <param name="deathSlot">The slot that the card died in.</param>
+        /// <param name="fromCombat">False if the card was killed by a sacrifice, true otherwise.</param>
+        /// <param name="killer">The card that killed the dying card. Can be null.</param>
+        /// <returns>True if this should trigger after any card dies, but only if this card is in hand.</returns>
         public bool RespondsToOtherCardDieInHand(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer);
+        /// <summary>
+        /// Trigger whatever events you want to run after any card dies, but only if this card is in hand.
+        /// </summary>
+        /// <param name="card">The card that is dying.</param>
+        /// <param name="deathSlot">The slot that the card died in.</param>
+        /// <param name="fromCombat">False if the card was killed by a sacrifice, true otherwise.</param>
+        /// <param name="killer">The card that killed the dying card. Can be null.</param>
+        /// <returns></returns>
         public IEnumerator OnOtherCardDieInHand(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer);
     }
 
@@ -188,8 +388,20 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPreItemUsed
     {
-        public bool RespondsToPreItemUsed(string itemname, bool isHammer);
-        public IEnumerator OnPreItemUsed(string itemname, bool isHammer);
+        /// <summary>
+        /// Returns true if this should trigger before an item is used.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
+        /// <returns>True if this should trigger before an item is used.</returns>
+        public bool RespondsToPreItemUsed(string itemName, bool isHammer);
+        /// <summary>
+        /// Trigger whatever events you want to run before an item is used.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
+        /// <returns></returns>
+        public IEnumerator OnPreItemUsed(string itemName, bool isHammer);
     }
 
     /// <summary>
@@ -197,8 +409,22 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnPostItemUsed
     {
-        public bool RespondsToPostItemUsed(string itemname, bool success, bool isHammer);
-        public IEnumerator OnPostItemUsed(string itemname, bool success, bool isHammer);
+        /// <summary>
+        /// Returns true if this should trigger after an item is used.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <param name="success">Normally true, but false if a targeted use item (e.g. scissors) got the use cancelled.</param>
+        /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
+        /// <returns>True if this should trigger after an item is used.</returns>
+        public bool RespondsToPostItemUsed(string itemName, bool success, bool isHammer);
+        /// <summary>
+        /// Trigger whatever events you want to run after an item is used.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <param name="success">Normally true, but false if a targeted use item (e.g. scissors) got the use cancelled.</param>
+        /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
+        /// <returns></returns>
+        public IEnumerator OnPostItemUsed(string itemName, bool success, bool isHammer);
     }
 
     /// <summary>
@@ -247,7 +473,7 @@ namespace InscryptionAPI.Triggers
         /// <returns>True if this trigger will collect data from CollectModifyAttackSlots.</returns>
         public bool RespondsToModifyAttackSlots(PlayableCard card, OpposingSlotTriggerPriority modType, List<CardSlot> originalSlots, List<CardSlot> currentSlots, int attackCount, bool didRemoveDefaultSlot);
         /// <summary>
-        /// Modifies data about targeted slots for attack.
+        /// Modifies the slots that will be targeted of any card.
         /// </summary>
         /// <param name="card">Card whose slots will be modified.</param>
         /// <param name="modType">Type of modification that is currently triggering.</param>
@@ -319,8 +545,18 @@ namespace InscryptionAPI.Triggers
     /// </summary>
     public interface IOnItemPreventedFromUse
     {
-        public bool RespondsToItemPreventedFromUse(string itemname);
-        public IEnumerator OnItemPreventedFromUse(string itemname);
+        /// <summary>
+        /// Returns true if this should trigger when an item is prevented from use using IItemCanBeUsed.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <returns>True if this should trigger when an item is prevented from use using IItemCanBeUsed.</returns>
+        public bool RespondsToItemPreventedFromUse(string itemName);
+        /// <summary>
+        /// Trigger whatever events you want to run when an item is prevented from use using IItemCanBeUsed.
+        /// </summary>
+        /// <param name="itemName">Internal name of the item.</param>
+        /// <returns></returns>
+        public IEnumerator OnItemPreventedFromUse(string itemName);
     }
 
     /// <summary>

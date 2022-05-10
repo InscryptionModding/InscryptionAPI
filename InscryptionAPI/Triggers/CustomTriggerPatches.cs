@@ -72,14 +72,14 @@ namespace InscryptionAPI.Triggers
                 }
                 return damage;
             });
-            yield return CustomTriggerFinder.TriggerAll<IOnPreScalesChanged>(false, x => x.RespondsToPreScalesChanged(damage, toPlayer), x => x.OnPreScalesChanged(damage, toPlayer));
-            if (damage != 0)
-            {
-                (scaleChangedDamage ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
-                (scaleChangedToPlayer ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("toPlayer"))?.SetValue(result, toPlayer);
-                (scaleChangedNumWeights ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("numWeights"))?.SetValue(result, numWeights);
-                yield return result;
-            }
+            yield return CustomTriggerFinder.TriggerAll<IOnPreScalesChanged>(false, x => x.RespondsToPreScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x => x.OnPreScalesChanged(damage, toPlayer, initialDamage, initialToPlayer));
+            //if (damage != 0)
+            //{
+            (scaleChangedDamage ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
+            (scaleChangedToPlayer ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("toPlayer"))?.SetValue(result, toPlayer);
+            (scaleChangedNumWeights ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("numWeights"))?.SetValue(result, numWeights);
+            yield return result;
+            //}
             yield return CustomTriggerFinder.TriggerAll<IOnPostScalesChanged>(false, x => x.RespondsToPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x =>
                 x.OnPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer));
             yield break;
