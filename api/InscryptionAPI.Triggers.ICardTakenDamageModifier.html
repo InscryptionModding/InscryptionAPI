@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IOtherCardDieInHand
+    <title>Interface ICardTakenDamageModifier
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IOtherCardDieInHand
+    <meta name="title" content="Interface ICardTakenDamageModifier
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -77,36 +77,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier">
   
   
-  <h1 id="InscryptionAPI_Triggers_IOtherCardDieInHand" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand" class="text-break">Interface IOtherCardDieInHand
+  <h1 id="InscryptionAPI_Triggers_ICardTakenDamageModifier" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier" class="text-break">Interface ICardTakenDamageModifier
   </h1>
-  <div class="markdown level0 summary"><p>Runs after a card on the board dies in the hand</p>
+  <div class="markdown level0 summary"><p>Data collection trigger that modifies the damage taken by any card.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Triggers_IOtherCardDieInHand_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Triggers_ICardTakenDamageModifier_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IOtherCardDieInHand</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ICardTakenDamageModifier</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOtherCardDieInHand_OnOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard%2CDiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_ICardTakenDamageModifier_CollectCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier(DiskCardGame.PlayableCard%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L169">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L648">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IOtherCardDieInHand_OnOtherCardDieInHand_" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand*"></a>
-  <h4 id="InscryptionAPI_Triggers_IOtherCardDieInHand_OnOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">OnOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_ICardTakenDamageModifier_CollectCardTakenDamageModifier_" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier*"></a>
+  <h4 id="InscryptionAPI_Triggers_ICardTakenDamageModifier_CollectCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)">CollectCardTakenDamageModifier(PlayableCard, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the new amount of damage that will be taken by a card.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator OnOtherCardDieInHand(PlayableCard card, CardSlot slot, bool wasSacrificed, PlayableCard killer)</code></pre>
+    <pre><code class="lang-csharp hljs">int CollectCardTakenDamageModifier(PlayableCard card, int currentValue)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -121,25 +122,13 @@
       <tr>
         <td><span class="xref">DiskCardGame.PlayableCard</span></td>
         <td><span class="parametername">card</span></td>
-        <td><p>The card that died</p>
+        <td><p>Card that took damage.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">slot</span></td>
-        <td><p>The slot before death</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrificed</span></td>
-        <td><p>Whether the card was sacrificed</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td><p>The killer, <span class="xref">null</span> if card was sacrificed</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">currentValue</span></td>
+        <td><p>The current amount of damage dealt.</p>
 </td>
       </tr>
     </tbody>
@@ -154,25 +143,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The new amount of damage that will be taken by a card.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOtherCardDieInHand_RespondsToOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard%2CDiskCardGame.CardSlot%2CSystem.Boolean%2CDiskCardGame.PlayableCard)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_ICardTakenDamageModifier_RespondsToCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(DiskCardGame.PlayableCard%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L164">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L641">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IOtherCardDieInHand_RespondsToOtherCardDieInHand_" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand*"></a>
-  <h4 id="InscryptionAPI_Triggers_IOtherCardDieInHand_RespondsToOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)">RespondsToOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_ICardTakenDamageModifier_RespondsToCardTakenDamageModifier_" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier*"></a>
+  <h4 id="InscryptionAPI_Triggers_ICardTakenDamageModifier_RespondsToCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_" data-uid="InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)">RespondsToCardTakenDamageModifier(PlayableCard, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns true if this should modify the amount of damage taken by a card.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RespondsToOtherCardDieInHand(PlayableCard card, CardSlot slot, bool wasSacrificed, PlayableCard killer)</code></pre>
+    <pre><code class="lang-csharp hljs">bool RespondsToCardTakenDamageModifier(PlayableCard card, int currentValue)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -187,25 +178,13 @@
       <tr>
         <td><span class="xref">DiskCardGame.PlayableCard</span></td>
         <td><span class="parametername">card</span></td>
-        <td><p>The card that died</p>
+        <td><p>Card that took damage.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">slot</span></td>
-        <td><p>The slot before death</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">wasSacrificed</span></td>
-        <td><p>Whether the card was sacrificed</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">killer</span></td>
-        <td><p>The killer, <span class="xref">null</span> if card was sacrificed</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">currentValue</span></td>
+        <td><p>The current amount of damage dealt.</p>
 </td>
       </tr>
     </tbody>
@@ -221,7 +200,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if this should modify the amount of damage taken by a card.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -233,10 +213,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOtherCardDieInHand.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOtherCardDieInHand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_ICardTakenDamageModifier.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.ICardTakenDamageModifier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L158" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L633" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

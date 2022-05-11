@@ -7076,6 +7076,165 @@ references:
   commentId: T:InscryptionAPI.Triggers.CustomTriggerFinder
   fullName: InscryptionAPI.Triggers.CustomTriggerFinder
   nameWithType: CustomTriggerFinder
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Call*
+  name: Call
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Call_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.Call
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Call
+  nameWithType: CustomTriggerFinder.Call
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Action{``0})
+  name: Call<T>(CardTriggerHandler, Func<T, Boolean>, Action<T>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Call__1_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Action___0__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Action{``0})
+  name.vb: Call(Of T)(CardTriggerHandler, Func(Of T, Boolean), Action(Of T))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Call<T>(DiskCardGame.CardTriggerHandler, Func<T, System.Boolean>, Action<T>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.Call(Of T)(DiskCardGame.CardTriggerHandler, Func(Of T, System.Boolean), Action(Of T))
+  nameWithType: CustomTriggerFinder.Call<T>(CardTriggerHandler, Func<T, Boolean>, Action<T>)
+  nameWithType.vb: CustomTriggerFinder.Call(Of T)(CardTriggerHandler, Func(Of T, Boolean), Action(Of T))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Action{``0})
+  name: Call<T>(PlayableCard, Func<T, Boolean>, Action<T>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Call__1_DiskCardGame_PlayableCard_Func___0_System_Boolean__Action___0__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Action{``0})
+  name.vb: Call(Of T)(PlayableCard, Func(Of T, Boolean), Action(Of T))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Call<T>(DiskCardGame.PlayableCard, Func<T, System.Boolean>, Action<T>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.Call(Of T)(DiskCardGame.PlayableCard, Func(Of T, System.Boolean), Action(Of T))
+  nameWithType: CustomTriggerFinder.Call<T>(PlayableCard, Func<T, Boolean>, Action<T>)
+  nameWithType.vb: CustomTriggerFinder.Call(Of T)(PlayableCard, Func(Of T, Boolean), Action(Of T))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallAll*
+  name: CallAll
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallAll_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CallAll
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallAll
+  nameWithType: CustomTriggerFinder.CallAll
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallAll``1(System.Boolean,Func{``0,System.Boolean},Action{``0})
+  name: CallAll<T>(Boolean, Func<T, Boolean>, Action<T>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallAll__1_System_Boolean_Func___0_System_Boolean__Action___0__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CallAll``1(System.Boolean,Func{``0,System.Boolean},Action{``0})
+  name.vb: CallAll(Of T)(Boolean, Func(Of T, Boolean), Action(Of T))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallAll<T>(System.Boolean, Func<T, System.Boolean>, Action<T>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CallAll(Of T)(System.Boolean, Func(Of T, System.Boolean), Action(Of T))
+  nameWithType: CustomTriggerFinder.CallAll<T>(Boolean, Func<T, Boolean>, Action<T>)
+  nameWithType.vb: CustomTriggerFinder.CallAll(Of T)(Boolean, Func(Of T, Boolean), Action(Of T))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand*
+  name: CallInHand
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallInHand_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand
+  nameWithType: CustomTriggerFinder.CallInHand
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand``1(Func{``0,System.Boolean},Action{``0})
+  name: CallInHand<T>(Func<T, Boolean>, Action<T>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallInHand__1_Func___0_System_Boolean__Action___0__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand``1(Func{``0,System.Boolean},Action{``0})
+  name.vb: CallInHand(Of T)(Func(Of T, Boolean), Action(Of T))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand<T>(Func<T, System.Boolean>, Action<T>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand(Of T)(Func(Of T, System.Boolean), Action(Of T))
+  nameWithType: CustomTriggerFinder.CallInHand<T>(Func<T, Boolean>, Action<T>)
+  nameWithType.vb: CustomTriggerFinder.CallInHand(Of T)(Func(Of T, Boolean), Action(Of T))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard*
+  name: CallOnBoard
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallOnBoard_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard
+  nameWithType: CustomTriggerFinder.CallOnBoard
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard``1(System.Boolean,Func{``0,System.Boolean},Action{``0})
+  name: CallOnBoard<T>(Boolean, Func<T, Boolean>, Action<T>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CallOnBoard__1_System_Boolean_Func___0_System_Boolean__Action___0__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard``1(System.Boolean,Func{``0,System.Boolean},Action{``0})
+  name.vb: CallOnBoard(Of T)(Boolean, Func(Of T, Boolean), Action(Of T))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard<T>(System.Boolean, Func<T, System.Boolean>, Action<T>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard(Of T)(System.Boolean, Func(Of T, System.Boolean), Action(Of T))
+  nameWithType: CustomTriggerFinder.CallOnBoard<T>(Boolean, Func<T, Boolean>, Action<T>)
+  nameWithType.vb: CustomTriggerFinder.CallOnBoard(Of T)(Boolean, Func(Of T, Boolean), Action(Of T))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData*
+  name: CollectData
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectData_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CollectData
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData
+  nameWithType: CustomTriggerFinder.CollectData
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,``1})
+  name: CollectData<T, T2>(CardTriggerHandler, Func<T, Boolean>, Func<T, T2>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectData__2_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Func___0___1__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,``1})
+  name.vb: CollectData(Of T, T2)(CardTriggerHandler, Func(Of T, Boolean), Func(Of T, T2))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData<T, T2>(DiskCardGame.CardTriggerHandler, Func<T, System.Boolean>, Func<T, T2>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData(Of T, T2)(DiskCardGame.CardTriggerHandler, Func(Of T, System.Boolean), Func(Of T, T2))
+  nameWithType: CustomTriggerFinder.CollectData<T, T2>(CardTriggerHandler, Func<T, Boolean>, Func<T, T2>)
+  nameWithType.vb: CustomTriggerFinder.CollectData(Of T, T2)(CardTriggerHandler, Func(Of T, Boolean), Func(Of T, T2))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,``1})
+  name: CollectData<T, T2>(PlayableCard, Func<T, Boolean>, Func<T, T2>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectData__2_DiskCardGame_PlayableCard_Func___0_System_Boolean__Func___0___1__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,``1})
+  name.vb: CollectData(Of T, T2)(PlayableCard, Func(Of T, Boolean), Func(Of T, T2))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData<T, T2>(DiskCardGame.PlayableCard, Func<T, System.Boolean>, Func<T, T2>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CollectData(Of T, T2)(DiskCardGame.PlayableCard, Func(Of T, System.Boolean), Func(Of T, T2))
+  nameWithType: CustomTriggerFinder.CollectData<T, T2>(PlayableCard, Func<T, Boolean>, Func<T, T2>)
+  nameWithType.vb: CustomTriggerFinder.CollectData(Of T, T2)(PlayableCard, Func(Of T, Boolean), Func(Of T, T2))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll*
+  name: CollectDataAll
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataAll_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll
+  nameWithType: CustomTriggerFinder.CollectDataAll
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})
+  name: CollectDataAll<T, T2>(Boolean, Func<T, Boolean>, Func<T, T2>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataAll__2_System_Boolean_Func___0_System_Boolean__Func___0___1__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})
+  name.vb: CollectDataAll(Of T, T2)(Boolean, Func(Of T, Boolean), Func(Of T, T2))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll<T, T2>(System.Boolean, Func<T, System.Boolean>, Func<T, T2>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll(Of T, T2)(System.Boolean, Func(Of T, System.Boolean), Func(Of T, T2))
+  nameWithType: CustomTriggerFinder.CollectDataAll<T, T2>(Boolean, Func<T, Boolean>, Func<T, T2>)
+  nameWithType.vb: CustomTriggerFinder.CollectDataAll(Of T, T2)(Boolean, Func(Of T, Boolean), Func(Of T, T2))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand*
+  name: CollectDataInHand
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataInHand_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand
+  nameWithType: CustomTriggerFinder.CollectDataInHand
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand``2(Func{``0,System.Boolean},Func{``0,``1})
+  name: CollectDataInHand<T, T2>(Func<T, Boolean>, Func<T, T2>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataInHand__2_Func___0_System_Boolean__Func___0___1__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand``2(Func{``0,System.Boolean},Func{``0,``1})
+  name.vb: CollectDataInHand(Of T, T2)(Func(Of T, Boolean), Func(Of T, T2))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand<T, T2>(Func<T, System.Boolean>, Func<T, T2>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand(Of T, T2)(Func(Of T, System.Boolean), Func(Of T, T2))
+  nameWithType: CustomTriggerFinder.CollectDataInHand<T, T2>(Func<T, Boolean>, Func<T, T2>)
+  nameWithType.vb: CustomTriggerFinder.CollectDataInHand(Of T, T2)(Func(Of T, Boolean), Func(Of T, T2))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard*
+  name: CollectDataOnBoard
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataOnBoard_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard
+  nameWithType: CustomTriggerFinder.CollectDataOnBoard
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})
+  name: CollectDataOnBoard<T, T2>(Boolean, Func<T, Boolean>, Func<T, T2>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataOnBoard__2_System_Boolean_Func___0_System_Boolean__Func___0___1__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})
+  name.vb: CollectDataOnBoard(Of T, T2)(Boolean, Func(Of T, Boolean), Func(Of T, T2))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard<T, T2>(System.Boolean, Func<T, System.Boolean>, Func<T, T2>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard(Of T, T2)(System.Boolean, Func(Of T, System.Boolean), Func(Of T, T2))
+  nameWithType: CustomTriggerFinder.CollectDataOnBoard<T, T2>(Boolean, Func<T, Boolean>, Func<T, T2>)
+  nameWithType.vb: CustomTriggerFinder.CollectDataOnBoard(Of T, T2)(Boolean, Func(Of T, Boolean), Func(Of T, T2))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  name: CustomTriggerSequence(TriggerReceiver, IEnumerator)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_DiskCardGame_TriggerReceiver_System_Collections_IEnumerator_
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence(DiskCardGame.TriggerReceiver, System.Collections.IEnumerator)
+  nameWithType: CustomTriggerFinder.CustomTriggerSequence(TriggerReceiver, IEnumerator)
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence*
+  name: CustomTriggerSequence
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence
+  nameWithType: CustomTriggerFinder.CustomTriggerSequence
 - uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers*
   name: FindGlobalTriggers
   href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers_
@@ -7092,6 +7251,15 @@ references:
   fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers(Of T)(DiskCardGame.PlayableCard)
   nameWithType: CustomTriggerFinder.FindGlobalTriggers<T>(PlayableCard)
   nameWithType.vb: CustomTriggerFinder.FindGlobalTriggers(Of T)(PlayableCard)
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers``1(System.Boolean,DiskCardGame.PlayableCard)
+  name: FindGlobalTriggers<T>(Boolean, PlayableCard)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers__1_System_Boolean_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers``1(System.Boolean,DiskCardGame.PlayableCard)
+  name.vb: FindGlobalTriggers(Of T)(Boolean, PlayableCard)
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers<T>(System.Boolean, DiskCardGame.PlayableCard)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers(Of T)(System.Boolean, DiskCardGame.PlayableCard)
+  nameWithType: CustomTriggerFinder.FindGlobalTriggers<T>(Boolean, PlayableCard)
+  nameWithType.vb: CustomTriggerFinder.FindGlobalTriggers(Of T)(Boolean, PlayableCard)
 - uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHand*
   name: FindTriggersInHand
   href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInHand_
@@ -7124,6 +7292,31 @@ references:
   fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHandExcluding(Of T)(DiskCardGame.PlayableCard)
   nameWithType: CustomTriggerFinder.FindTriggersInHandExcluding<T>(PlayableCard)
   nameWithType.vb: CustomTriggerFinder.FindTriggersInHandExcluding(Of T)(PlayableCard)
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard*
+  name: FindTriggersOnBoard
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard
+  nameWithType: CustomTriggerFinder.FindTriggersOnBoard
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1
+  name: FindTriggersOnBoard<T>()
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard__1
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1
+  name.vb: FindTriggersOnBoard(Of T)()
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard<T>()
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard(Of T)()
+  nameWithType: CustomTriggerFinder.FindTriggersOnBoard<T>()
+  nameWithType.vb: CustomTriggerFinder.FindTriggersOnBoard(Of T)()
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1(System.Boolean)
+  name: FindTriggersOnBoard<T>(Boolean)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard__1_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1(System.Boolean)
+  name.vb: FindTriggersOnBoard(Of T)(Boolean)
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard<T>(System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard(Of T)(System.Boolean)
+  nameWithType: CustomTriggerFinder.FindTriggersOnBoard<T>(Boolean)
+  nameWithType.vb: CustomTriggerFinder.FindTriggersOnBoard(Of T)(Boolean)
 - uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard*
   name: FindTriggersOnCard
   href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard_
@@ -7131,6 +7324,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard
   nameWithType: CustomTriggerFinder.FindTriggersOnCard
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard``1(DiskCardGame.CardTriggerHandler)
+  name: FindTriggersOnCard<T>(CardTriggerHandler)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard__1_DiskCardGame_CardTriggerHandler_
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard``1(DiskCardGame.CardTriggerHandler)
+  name.vb: FindTriggersOnCard(Of T)(CardTriggerHandler)
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard<T>(DiskCardGame.CardTriggerHandler)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard(Of T)(DiskCardGame.CardTriggerHandler)
+  nameWithType: CustomTriggerFinder.FindTriggersOnCard<T>(CardTriggerHandler)
+  nameWithType.vb: CustomTriggerFinder.FindTriggersOnCard(Of T)(CardTriggerHandler)
 - uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard``1(DiskCardGame.PlayableCard)
   name: FindTriggersOnCard<T>(PlayableCard)
   href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard__1_DiskCardGame_PlayableCard_
@@ -7140,83 +7342,124 @@ references:
   fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard(Of T)(DiskCardGame.PlayableCard)
   nameWithType: CustomTriggerFinder.FindTriggersOnCard<T>(PlayableCard)
   nameWithType.vb: CustomTriggerFinder.FindTriggersOnCard(Of T)(PlayableCard)
-- uid: InscryptionAPI.Triggers.IAddedToHand
-  name: IAddedToHand
-  href: api/InscryptionAPI.Triggers.IAddedToHand.html
-  commentId: T:InscryptionAPI.Triggers.IAddedToHand
-  fullName: InscryptionAPI.Triggers.IAddedToHand
-  nameWithType: IAddedToHand
-- uid: InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand
-  name: OnAddedToHand()
-  href: api/InscryptionAPI.Triggers.IAddedToHand.html#InscryptionAPI_Triggers_IAddedToHand_OnAddedToHand
-  commentId: M:InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand
-  fullName: InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand()
-  nameWithType: IAddedToHand.OnAddedToHand()
-- uid: InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand*
-  name: OnAddedToHand
-  href: api/InscryptionAPI.Triggers.IAddedToHand.html#InscryptionAPI_Triggers_IAddedToHand_OnAddedToHand_
-  commentId: Overload:InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger*
+  name: Trigger
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Trigger_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.Trigger
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IAddedToHand.OnAddedToHand
-  nameWithType: IAddedToHand.OnAddedToHand
-- uid: InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand
-  name: RespondsToAddedToHand()
-  href: api/InscryptionAPI.Triggers.IAddedToHand.html#InscryptionAPI_Triggers_IAddedToHand_RespondsToAddedToHand
-  commentId: M:InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand
-  fullName: InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand()
-  nameWithType: IAddedToHand.RespondsToAddedToHand()
-- uid: InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand*
-  name: RespondsToAddedToHand
-  href: api/InscryptionAPI.Triggers.IAddedToHand.html#InscryptionAPI_Triggers_IAddedToHand_RespondsToAddedToHand_
-  commentId: Overload:InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger
+  nameWithType: CustomTriggerFinder.Trigger
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name: Trigger<T>(CardTriggerHandler, Func<T, Boolean>, Func<T, IEnumerator>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Trigger__1_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name.vb: Trigger(Of T)(CardTriggerHandler, Func(Of T, Boolean), Func(Of T, IEnumerator))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger<T>(DiskCardGame.CardTriggerHandler, Func<T, System.Boolean>, Func<T, System.Collections.IEnumerator>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger(Of T)(DiskCardGame.CardTriggerHandler, Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
+  nameWithType: CustomTriggerFinder.Trigger<T>(CardTriggerHandler, Func<T, Boolean>, Func<T, IEnumerator>)
+  nameWithType.vb: CustomTriggerFinder.Trigger(Of T)(CardTriggerHandler, Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name: Trigger<T>(PlayableCard, Func<T, Boolean>, Func<T, IEnumerator>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_Trigger__1_DiskCardGame_PlayableCard_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name.vb: Trigger(Of T)(PlayableCard, Func(Of T, Boolean), Func(Of T, IEnumerator))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger<T>(DiskCardGame.PlayableCard, Func<T, System.Boolean>, Func<T, System.Collections.IEnumerator>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.Trigger(Of T)(DiskCardGame.PlayableCard, Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
+  nameWithType: CustomTriggerFinder.Trigger<T>(PlayableCard, Func<T, Boolean>, Func<T, IEnumerator>)
+  nameWithType.vb: CustomTriggerFinder.Trigger(Of T)(PlayableCard, Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll*
+  name: TriggerAll
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerAll_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IAddedToHand.RespondsToAddedToHand
-  nameWithType: IAddedToHand.RespondsToAddedToHand
-- uid: InscryptionAPI.Triggers.IBellRung
-  name: IBellRung
-  href: api/InscryptionAPI.Triggers.IBellRung.html
-  commentId: T:InscryptionAPI.Triggers.IBellRung
-  fullName: InscryptionAPI.Triggers.IBellRung
-  nameWithType: IBellRung
-- uid: InscryptionAPI.Triggers.IBellRung.OnBellRung(System.Boolean)
-  name: OnBellRung(Boolean)
-  href: api/InscryptionAPI.Triggers.IBellRung.html#InscryptionAPI_Triggers_IBellRung_OnBellRung_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IBellRung.OnBellRung(System.Boolean)
-  fullName: InscryptionAPI.Triggers.IBellRung.OnBellRung(System.Boolean)
-  nameWithType: IBellRung.OnBellRung(Boolean)
-- uid: InscryptionAPI.Triggers.IBellRung.OnBellRung*
-  name: OnBellRung
-  href: api/InscryptionAPI.Triggers.IBellRung.html#InscryptionAPI_Triggers_IBellRung_OnBellRung_
-  commentId: Overload:InscryptionAPI.Triggers.IBellRung.OnBellRung
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll
+  nameWithType: CustomTriggerFinder.TriggerAll
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name: TriggerAll<T>(Boolean, Func<T, Boolean>, Func<T, IEnumerator>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerAll__1_System_Boolean_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name.vb: TriggerAll(Of T)(Boolean, Func(Of T, Boolean), Func(Of T, IEnumerator))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll<T>(System.Boolean, Func<T, System.Boolean>, Func<T, System.Collections.IEnumerator>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll(Of T)(System.Boolean, Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
+  nameWithType: CustomTriggerFinder.TriggerAll<T>(Boolean, Func<T, Boolean>, Func<T, IEnumerator>)
+  nameWithType.vb: CustomTriggerFinder.TriggerAll(Of T)(Boolean, Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand*
+  name: TriggerInHand
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerInHand_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IBellRung.OnBellRung
-  nameWithType: IBellRung.OnBellRung
-- uid: InscryptionAPI.Triggers.IBellRung.RespondsToBellRung(System.Boolean)
-  name: RespondsToBellRung(Boolean)
-  href: api/InscryptionAPI.Triggers.IBellRung.html#InscryptionAPI_Triggers_IBellRung_RespondsToBellRung_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IBellRung.RespondsToBellRung(System.Boolean)
-  fullName: InscryptionAPI.Triggers.IBellRung.RespondsToBellRung(System.Boolean)
-  nameWithType: IBellRung.RespondsToBellRung(Boolean)
-- uid: InscryptionAPI.Triggers.IBellRung.RespondsToBellRung*
-  name: RespondsToBellRung
-  href: api/InscryptionAPI.Triggers.IBellRung.html#InscryptionAPI_Triggers_IBellRung_RespondsToBellRung_
-  commentId: Overload:InscryptionAPI.Triggers.IBellRung.RespondsToBellRung
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand
+  nameWithType: CustomTriggerFinder.TriggerInHand
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand``1(Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name: TriggerInHand<T>(Func<T, Boolean>, Func<T, IEnumerator>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerInHand__1_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand``1(Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name.vb: TriggerInHand(Of T)(Func(Of T, Boolean), Func(Of T, IEnumerator))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand<T>(Func<T, System.Boolean>, Func<T, System.Collections.IEnumerator>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand(Of T)(Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
+  nameWithType: CustomTriggerFinder.TriggerInHand<T>(Func<T, Boolean>, Func<T, IEnumerator>)
+  nameWithType.vb: CustomTriggerFinder.TriggerInHand(Of T)(Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard*
+  name: TriggerOnBoard
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerOnBoard_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IBellRung.RespondsToBellRung
-  nameWithType: IBellRung.RespondsToBellRung
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard
+  nameWithType: CustomTriggerFinder.TriggerOnBoard
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name: TriggerOnBoard<T>(Boolean, Func<T, Boolean>, Func<T, IEnumerator>)
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_TriggerOnBoard__1_System_Boolean_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})
+  name.vb: TriggerOnBoard(Of T)(Boolean, Func(Of T, Boolean), Func(Of T, IEnumerator))
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard<T>(System.Boolean, Func<T, System.Boolean>, Func<T, System.Collections.IEnumerator>)
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard(Of T)(System.Boolean, Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
+  nameWithType: CustomTriggerFinder.TriggerOnBoard<T>(Boolean, Func<T, Boolean>, Func<T, IEnumerator>)
+  nameWithType.vb: CustomTriggerFinder.TriggerOnBoard(Of T)(Boolean, Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.ICardTakenDamageModifier
+  name: ICardTakenDamageModifier
+  href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html
+  commentId: T:InscryptionAPI.Triggers.ICardTakenDamageModifier
+  fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier
+  nameWithType: ICardTakenDamageModifier
+- uid: InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)
+  name: CollectCardTakenDamageModifier(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html#InscryptionAPI_Triggers_ICardTakenDamageModifier_CollectCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: ICardTakenDamageModifier.CollectCardTakenDamageModifier(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier*
+  name: CollectCardTakenDamageModifier
+  href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html#InscryptionAPI_Triggers_ICardTakenDamageModifier_CollectCardTakenDamageModifier_
+  commentId: Overload:InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier.CollectCardTakenDamageModifier
+  nameWithType: ICardTakenDamageModifier.CollectCardTakenDamageModifier
+- uid: InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToCardTakenDamageModifier(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html#InscryptionAPI_Triggers_ICardTakenDamageModifier_RespondsToCardTakenDamageModifier_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: ICardTakenDamageModifier.RespondsToCardTakenDamageModifier(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier*
+  name: RespondsToCardTakenDamageModifier
+  href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html#InscryptionAPI_Triggers_ICardTakenDamageModifier_RespondsToCardTakenDamageModifier_
+  commentId: Overload:InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier
+  nameWithType: ICardTakenDamageModifier.RespondsToCardTakenDamageModifier
 - uid: InscryptionAPI.Triggers.IGetOpposingSlots
   name: IGetOpposingSlots
   href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html
   commentId: T:InscryptionAPI.Triggers.IGetOpposingSlots
   fullName: InscryptionAPI.Triggers.IGetOpposingSlots
   nameWithType: IGetOpposingSlots
-- uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+- uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot})
   name: GetOpposingSlots(List<CardSlot>, List<CardSlot>)
-  href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html#InscryptionAPI_Triggers_IGetOpposingSlots_GetOpposingSlots_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__
-  commentId: M:InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+  href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html#InscryptionAPI_Triggers_IGetOpposingSlots_GetOpposingSlots_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot})
   name.vb: GetOpposingSlots(List(Of CardSlot), List(Of CardSlot))
-  fullName: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>)
-  fullName.vb: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot))
+  fullName: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot))
   nameWithType: IGetOpposingSlots.GetOpposingSlots(List<CardSlot>, List<CardSlot>)
   nameWithType.vb: IGetOpposingSlots.GetOpposingSlots(List(Of CardSlot), List(Of CardSlot))
 - uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots*
@@ -7252,198 +7495,777 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IGetOpposingSlots.RespondsToGetOpposingSlots
   nameWithType: IGetOpposingSlots.RespondsToGetOpposingSlots
-- uid: InscryptionAPI.Triggers.IOtherAddedToHand
-  name: IOtherAddedToHand
-  href: api/InscryptionAPI.Triggers.IOtherAddedToHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherAddedToHand
-  fullName: InscryptionAPI.Triggers.IOtherAddedToHand
-  nameWithType: IOtherAddedToHand
-- uid: InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand(DiskCardGame.PlayableCard)
-  name: OnOtherAddedToHand(PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherAddedToHand.html#InscryptionAPI_Triggers_IOtherAddedToHand_OnOtherAddedToHand_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand(DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand(DiskCardGame.PlayableCard)
-  nameWithType: IOtherAddedToHand.OnOtherAddedToHand(PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand*
-  name: OnOtherAddedToHand
-  href: api/InscryptionAPI.Triggers.IOtherAddedToHand.html#InscryptionAPI_Triggers_IOtherAddedToHand_OnOtherAddedToHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand
+- uid: InscryptionAPI.Triggers.IItemCanBeUsed
+  name: IItemCanBeUsed
+  href: api/InscryptionAPI.Triggers.IItemCanBeUsed.html
+  commentId: T:InscryptionAPI.Triggers.IItemCanBeUsed
+  fullName: InscryptionAPI.Triggers.IItemCanBeUsed
+  nameWithType: IItemCanBeUsed
+- uid: InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed(System.String,System.Boolean)
+  name: CollectItemCanBeUsed(String, Boolean)
+  href: api/InscryptionAPI.Triggers.IItemCanBeUsed.html#InscryptionAPI_Triggers_IItemCanBeUsed_CollectItemCanBeUsed_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed(System.String,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed(System.String, System.Boolean)
+  nameWithType: IItemCanBeUsed.CollectItemCanBeUsed(String, Boolean)
+- uid: InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed*
+  name: CollectItemCanBeUsed
+  href: api/InscryptionAPI.Triggers.IItemCanBeUsed.html#InscryptionAPI_Triggers_IItemCanBeUsed_CollectItemCanBeUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherAddedToHand.OnOtherAddedToHand
-  nameWithType: IOtherAddedToHand.OnOtherAddedToHand
-- uid: InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand(DiskCardGame.PlayableCard)
-  name: RespondsToOtherAddedToHand(PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherAddedToHand.html#InscryptionAPI_Triggers_IOtherAddedToHand_RespondsToOtherAddedToHand_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand(DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand(DiskCardGame.PlayableCard)
-  nameWithType: IOtherAddedToHand.RespondsToOtherAddedToHand(PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand*
-  name: RespondsToOtherAddedToHand
-  href: api/InscryptionAPI.Triggers.IOtherAddedToHand.html#InscryptionAPI_Triggers_IOtherAddedToHand_RespondsToOtherAddedToHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand
+  fullName: InscryptionAPI.Triggers.IItemCanBeUsed.CollectItemCanBeUsed
+  nameWithType: IItemCanBeUsed.CollectItemCanBeUsed
+- uid: InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed(System.String,System.Boolean)
+  name: RespondsToItemCanBeUsed(String, Boolean)
+  href: api/InscryptionAPI.Triggers.IItemCanBeUsed.html#InscryptionAPI_Triggers_IItemCanBeUsed_RespondsToItemCanBeUsed_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed(System.String,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed(System.String, System.Boolean)
+  nameWithType: IItemCanBeUsed.RespondsToItemCanBeUsed(String, Boolean)
+- uid: InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed*
+  name: RespondsToItemCanBeUsed
+  href: api/InscryptionAPI.Triggers.IItemCanBeUsed.html#InscryptionAPI_Triggers_IItemCanBeUsed_RespondsToItemCanBeUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherAddedToHand.RespondsToOtherAddedToHand
-  nameWithType: IOtherAddedToHand.RespondsToOtherAddedToHand
-- uid: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand
-  name: IOtherCardAssignedToSlotInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand
-  fullName: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand
-  nameWithType: IOtherCardAssignedToSlotInHand
-- uid: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard,System.Boolean)
-  name: OnOtherCardAssignedToSlotInHand(PlayableCard, Boolean)
-  href: api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOtherCardAssignedToSlotInHand_OnOtherCardAssignedToSlotInHand_DiskCardGame_PlayableCard_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard, System.Boolean)
-  nameWithType: IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(PlayableCard, Boolean)
-- uid: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand*
+  fullName: InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed
+  nameWithType: IItemCanBeUsed.RespondsToItemCanBeUsed
+- uid: InscryptionAPI.Triggers.IOnAddedToHand
+  name: IOnAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnAddedToHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnAddedToHand
+  fullName: InscryptionAPI.Triggers.IOnAddedToHand
+  nameWithType: IOnAddedToHand
+- uid: InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand
+  name: OnAddedToHand()
+  href: api/InscryptionAPI.Triggers.IOnAddedToHand.html#InscryptionAPI_Triggers_IOnAddedToHand_OnAddedToHand
+  commentId: M:InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand
+  fullName: InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand()
+  nameWithType: IOnAddedToHand.OnAddedToHand()
+- uid: InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand*
+  name: OnAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnAddedToHand.html#InscryptionAPI_Triggers_IOnAddedToHand_OnAddedToHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnAddedToHand.OnAddedToHand
+  nameWithType: IOnAddedToHand.OnAddedToHand
+- uid: InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand
+  name: RespondsToAddedToHand()
+  href: api/InscryptionAPI.Triggers.IOnAddedToHand.html#InscryptionAPI_Triggers_IOnAddedToHand_RespondsToAddedToHand
+  commentId: M:InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand
+  fullName: InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand()
+  nameWithType: IOnAddedToHand.RespondsToAddedToHand()
+- uid: InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand*
+  name: RespondsToAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnAddedToHand.html#InscryptionAPI_Triggers_IOnAddedToHand_RespondsToAddedToHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnAddedToHand.RespondsToAddedToHand
+  nameWithType: IOnAddedToHand.RespondsToAddedToHand
+- uid: InscryptionAPI.Triggers.IOnBellRung
+  name: IOnBellRung
+  href: api/InscryptionAPI.Triggers.IOnBellRung.html
+  commentId: T:InscryptionAPI.Triggers.IOnBellRung
+  fullName: InscryptionAPI.Triggers.IOnBellRung
+  nameWithType: IOnBellRung
+- uid: InscryptionAPI.Triggers.IOnBellRung.OnBellRung(System.Boolean)
+  name: OnBellRung(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnBellRung.html#InscryptionAPI_Triggers_IOnBellRung_OnBellRung_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnBellRung.OnBellRung(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnBellRung.OnBellRung(System.Boolean)
+  nameWithType: IOnBellRung.OnBellRung(Boolean)
+- uid: InscryptionAPI.Triggers.IOnBellRung.OnBellRung*
+  name: OnBellRung
+  href: api/InscryptionAPI.Triggers.IOnBellRung.html#InscryptionAPI_Triggers_IOnBellRung_OnBellRung_
+  commentId: Overload:InscryptionAPI.Triggers.IOnBellRung.OnBellRung
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnBellRung.OnBellRung
+  nameWithType: IOnBellRung.OnBellRung
+- uid: InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung(System.Boolean)
+  name: RespondsToBellRung(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnBellRung.html#InscryptionAPI_Triggers_IOnBellRung_RespondsToBellRung_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung(System.Boolean)
+  nameWithType: IOnBellRung.RespondsToBellRung(Boolean)
+- uid: InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung*
+  name: RespondsToBellRung
+  href: api/InscryptionAPI.Triggers.IOnBellRung.html#InscryptionAPI_Triggers_IOnBellRung_RespondsToBellRung_
+  commentId: Overload:InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung
+  nameWithType: IOnBellRung.RespondsToBellRung
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext
+  name: IOnCardAssignedToSlotContext
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html
+  commentId: T:InscryptionAPI.Triggers.IOnCardAssignedToSlotContext
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext
+  nameWithType: IOnCardAssignedToSlotContext
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  name: OnCardAssignedToSlotContext(PlayableCard, CardSlot, CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotContext_OnCardAssignedToSlotContext_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, DiskCardGame.CardSlot)
+  nameWithType: IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext(PlayableCard, CardSlot, CardSlot)
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext*
+  name: OnCardAssignedToSlotContext
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotContext_OnCardAssignedToSlotContext_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext
+  nameWithType: IOnCardAssignedToSlotContext.OnCardAssignedToSlotContext
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  name: RespondsToCardAssignedToSlotContext(PlayableCard, CardSlot, CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotContext_RespondsToCardAssignedToSlotContext_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, DiskCardGame.CardSlot)
+  nameWithType: IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext(PlayableCard, CardSlot, CardSlot)
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext*
+  name: RespondsToCardAssignedToSlotContext
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotContext_RespondsToCardAssignedToSlotContext_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext
+  nameWithType: IOnCardAssignedToSlotContext.RespondsToCardAssignedToSlotContext
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve
+  name: IOnCardAssignedToSlotNoResolve
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html
+  commentId: T:InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve
+  nameWithType: IOnCardAssignedToSlotNoResolve
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  name: OnCardAssignedToSlotNoResolve(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotNoResolve_OnCardAssignedToSlotNoResolve_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  nameWithType: IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve*
+  name: OnCardAssignedToSlotNoResolve
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotNoResolve_OnCardAssignedToSlotNoResolve_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve
+  nameWithType: IOnCardAssignedToSlotNoResolve.OnCardAssignedToSlotNoResolve
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  name: RespondsToCardAssignedToSlotNoResolve(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotNoResolve_RespondsToCardAssignedToSlotNoResolve_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve(DiskCardGame.PlayableCard)
+  nameWithType: IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve*
+  name: RespondsToCardAssignedToSlotNoResolve
+  href: api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html#InscryptionAPI_Triggers_IOnCardAssignedToSlotNoResolve_RespondsToCardAssignedToSlotNoResolve_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve
+  nameWithType: IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve
+- uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs
+  name: IOnCardPassiveAttackBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html
+  commentId: T:InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs
+  nameWithType: IOnCardPassiveAttackBuffs
+- uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs(DiskCardGame.PlayableCard,System.Int32)
+  name: CollectCardPassiveAttackBuffs(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveAttackBuffs_CollectCardPassiveAttackBuffs_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs*
+  name: CollectCardPassiveAttackBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveAttackBuffs_CollectCardPassiveAttackBuffs_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs
+  nameWithType: IOnCardPassiveAttackBuffs.CollectCardPassiveAttackBuffs
+- uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs(DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToCardPassiveAttackBuffs(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveAttackBuffs_RespondsToCardPassiveAttackBuffs_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs*
+  name: RespondsToCardPassiveAttackBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveAttackBuffs_RespondsToCardPassiveAttackBuffs_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs
+  nameWithType: IOnCardPassiveAttackBuffs.RespondsToCardPassiveAttackBuffs
+- uid: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs
+  name: IOnCardPassiveHealthBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html
+  commentId: T:InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs
+  nameWithType: IOnCardPassiveHealthBuffs
+- uid: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs(DiskCardGame.PlayableCard,System.Int32)
+  name: CollectCardPassiveHealthBuffs(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveHealthBuffs_CollectCardPassiveHealthBuffs_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs*
+  name: CollectCardPassiveHealthBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveHealthBuffs_CollectCardPassiveHealthBuffs_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs
+  nameWithType: IOnCardPassiveHealthBuffs.CollectCardPassiveHealthBuffs
+- uid: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs(DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToCardPassiveHealthBuffs(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveHealthBuffs_RespondsToCardPassiveHealthBuffs_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs*
+  name: RespondsToCardPassiveHealthBuffs
+  href: api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html#InscryptionAPI_Triggers_IOnCardPassiveHealthBuffs_RespondsToCardPassiveHealthBuffs_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs
+  nameWithType: IOnCardPassiveHealthBuffs.RespondsToCardPassiveHealthBuffs
+- uid: InscryptionAPI.Triggers.IOnItemPreventedFromUse
+  name: IOnItemPreventedFromUse
+  href: api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html
+  commentId: T:InscryptionAPI.Triggers.IOnItemPreventedFromUse
+  fullName: InscryptionAPI.Triggers.IOnItemPreventedFromUse
+  nameWithType: IOnItemPreventedFromUse
+- uid: InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse(System.String)
+  name: OnItemPreventedFromUse(String)
+  href: api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html#InscryptionAPI_Triggers_IOnItemPreventedFromUse_OnItemPreventedFromUse_System_String_
+  commentId: M:InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse(System.String)
+  fullName: InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse(System.String)
+  nameWithType: IOnItemPreventedFromUse.OnItemPreventedFromUse(String)
+- uid: InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse*
+  name: OnItemPreventedFromUse
+  href: api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html#InscryptionAPI_Triggers_IOnItemPreventedFromUse_OnItemPreventedFromUse_
+  commentId: Overload:InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnItemPreventedFromUse.OnItemPreventedFromUse
+  nameWithType: IOnItemPreventedFromUse.OnItemPreventedFromUse
+- uid: InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse(System.String)
+  name: RespondsToItemPreventedFromUse(String)
+  href: api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html#InscryptionAPI_Triggers_IOnItemPreventedFromUse_RespondsToItemPreventedFromUse_System_String_
+  commentId: M:InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse(System.String)
+  fullName: InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse(System.String)
+  nameWithType: IOnItemPreventedFromUse.RespondsToItemPreventedFromUse(String)
+- uid: InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse*
+  name: RespondsToItemPreventedFromUse
+  href: api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html#InscryptionAPI_Triggers_IOnItemPreventedFromUse_RespondsToItemPreventedFromUse_
+  commentId: Overload:InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnItemPreventedFromUse.RespondsToItemPreventedFromUse
+  nameWithType: IOnItemPreventedFromUse.RespondsToItemPreventedFromUse
+- uid: InscryptionAPI.Triggers.IOnOtherCardAddedToHand
+  name: IOnOtherCardAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardAddedToHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAddedToHand
+  nameWithType: IOnOtherCardAddedToHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  name: OnOtherCardAddedToHand(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html#InscryptionAPI_Triggers_IOnOtherCardAddedToHand_OnOtherCardAddedToHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardAddedToHand.OnOtherCardAddedToHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand*
+  name: OnOtherCardAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html#InscryptionAPI_Triggers_IOnOtherCardAddedToHand_OnOtherCardAddedToHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.OnOtherCardAddedToHand
+  nameWithType: IOnOtherCardAddedToHand.OnOtherCardAddedToHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  name: RespondsToOtherCardAddedToHand(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html#InscryptionAPI_Triggers_IOnOtherCardAddedToHand_RespondsToOtherCardAddedToHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand*
+  name: RespondsToOtherCardAddedToHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html#InscryptionAPI_Triggers_IOnOtherCardAddedToHand_RespondsToOtherCardAddedToHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand
+  nameWithType: IOnOtherCardAddedToHand.RespondsToOtherCardAddedToHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand
+  name: IOnOtherCardAssignedToSlotInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand
+  nameWithType: IOnOtherCardAssignedToSlotInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  name: OnOtherCardAssignedToSlotInHand(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOnOtherCardAssignedToSlotInHand_OnOtherCardAssignedToSlotInHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand*
   name: OnOtherCardAssignedToSlotInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOtherCardAssignedToSlotInHand_OnOtherCardAssignedToSlotInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOnOtherCardAssignedToSlotInHand_OnOtherCardAssignedToSlotInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
-  nameWithType: IOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
-- uid: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard,System.Boolean)
-  name: RespondsToOtherCardAssignedToSlotInHand(PlayableCard, Boolean)
-  href: api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOtherCardAssignedToSlotInHand_RespondsToOtherCardAssignedToSlotInHand_DiskCardGame_PlayableCard_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard, System.Boolean)
-  nameWithType: IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(PlayableCard, Boolean)
-- uid: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand*
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
+  nameWithType: IOnOtherCardAssignedToSlotInHand.OnOtherCardAssignedToSlotInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  name: RespondsToOtherCardAssignedToSlotInHand(PlayableCard)
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOnOtherCardAssignedToSlotInHand_RespondsToOtherCardAssignedToSlotInHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand*
   name: RespondsToOtherCardAssignedToSlotInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOtherCardAssignedToSlotInHand_RespondsToOtherCardAssignedToSlotInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html#InscryptionAPI_Triggers_IOnOtherCardAssignedToSlotInHand_RespondsToOtherCardAssignedToSlotInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
-  nameWithType: IOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand
-  name: IOtherCardDealtDamageInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherCardDealtDamageInHand
-  fullName: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand
-  nameWithType: IOtherCardDealtDamageInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
+  nameWithType: IOnOtherCardAssignedToSlotInHand.RespondsToOtherCardAssignedToSlotInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand
+  name: IOnOtherCardDealtDamageInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand
+  nameWithType: IOnOtherCardDealtDamageInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
   name: OnOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOtherCardDealtDamageInHand_OnOtherCardDealtDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOnOtherCardDealtDamageInHand_OnOtherCardDealtDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand*
   name: OnOtherCardDealtDamageInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOtherCardDealtDamageInHand_OnOtherCardDealtDamageInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOnOtherCardDealtDamageInHand_OnOtherCardDealtDamageInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
-  nameWithType: IOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
+  nameWithType: IOnOtherCardDealtDamageInHand.OnOtherCardDealtDamageInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
   name: RespondsToOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOtherCardDealtDamageInHand_RespondsToOtherCardDealtDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOnOtherCardDealtDamageInHand_RespondsToOtherCardDealtDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand*
   name: RespondsToOtherCardDealtDamageInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOtherCardDealtDamageInHand_RespondsToOtherCardDealtDamageInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html#InscryptionAPI_Triggers_IOnOtherCardDealtDamageInHand_RespondsToOtherCardDealtDamageInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
-  nameWithType: IOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDieInHand
-  name: IOtherCardDieInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDieInHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherCardDieInHand
-  fullName: InscryptionAPI.Triggers.IOtherCardDieInHand
-  nameWithType: IOtherCardDieInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
+  nameWithType: IOnOtherCardDealtDamageInHand.RespondsToOtherCardDealtDamageInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDieInHand
+  name: IOnOtherCardDieInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardDieInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDieInHand
+  nameWithType: IOnOtherCardDieInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
   name: OnOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardDieInHand.html#InscryptionAPI_Triggers_IOtherCardDieInHand_OnOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardDieInHand.OnOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html#InscryptionAPI_Triggers_IOnOtherCardDieInHand_OnOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardDieInHand.OnOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand*
   name: OnOtherCardDieInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDieInHand.html#InscryptionAPI_Triggers_IOtherCardDieInHand_OnOtherCardDieInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html#InscryptionAPI_Triggers_IOnOtherCardDieInHand_OnOtherCardDieInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardDieInHand.OnOtherCardDieInHand
-  nameWithType: IOtherCardDieInHand.OnOtherCardDieInHand
-- uid: InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDieInHand.OnOtherCardDieInHand
+  nameWithType: IOnOtherCardDieInHand.OnOtherCardDieInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
   name: RespondsToOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardDieInHand.html#InscryptionAPI_Triggers_IOtherCardDieInHand_RespondsToOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardDieInHand.RespondsToOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html#InscryptionAPI_Triggers_IOnOtherCardDieInHand_RespondsToOtherCardDieInHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardDieInHand.RespondsToOtherCardDieInHand(PlayableCard, CardSlot, Boolean, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand*
   name: RespondsToOtherCardDieInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardDieInHand.html#InscryptionAPI_Triggers_IOtherCardDieInHand_RespondsToOtherCardDieInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html#InscryptionAPI_Triggers_IOnOtherCardDieInHand_RespondsToOtherCardDieInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardDieInHand.RespondsToOtherCardDieInHand
-  nameWithType: IOtherCardDieInHand.RespondsToOtherCardDieInHand
-- uid: InscryptionAPI.Triggers.IOtherCardPreDeathInHand
-  name: IOtherCardPreDeathInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherCardPreDeathInHand
-  fullName: InscryptionAPI.Triggers.IOtherCardPreDeathInHand
-  nameWithType: IOtherCardPreDeathInHand
-- uid: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardDieInHand.RespondsToOtherCardDieInHand
+  nameWithType: IOnOtherCardDieInHand.RespondsToOtherCardDieInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand
+  name: IOnOtherCardPreDeathInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand
+  nameWithType: IOnOtherCardPreDeathInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
   name: OnOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOtherCardPreDeathInHand_OnOtherCardPreDeathInHand_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOnOtherCardPreDeathInHand_OnOtherCardPreDeathInHand_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand*
   name: OnOtherCardPreDeathInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOtherCardPreDeathInHand_OnOtherCardPreDeathInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOnOtherCardPreDeathInHand_OnOtherCardPreDeathInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
-  nameWithType: IOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
-- uid: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
+  nameWithType: IOnOtherCardPreDeathInHand.OnOtherCardPreDeathInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
   name: RespondsToOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOtherCardPreDeathInHand_RespondsToOtherCardPreDeathInHand_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOnOtherCardPreDeathInHand_RespondsToOtherCardPreDeathInHand_DiskCardGame_CardSlot_System_Boolean_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot,System.Boolean,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(DiskCardGame.CardSlot, System.Boolean, DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand(CardSlot, Boolean, PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand*
   name: RespondsToOtherCardPreDeathInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOtherCardPreDeathInHand_RespondsToOtherCardPreDeathInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html#InscryptionAPI_Triggers_IOnOtherCardPreDeathInHand_RespondsToOtherCardPreDeathInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
-  nameWithType: IOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
-- uid: InscryptionAPI.Triggers.IOtherCardResolveInHand
-  name: IOtherCardResolveInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html
-  commentId: T:InscryptionAPI.Triggers.IOtherCardResolveInHand
-  fullName: InscryptionAPI.Triggers.IOtherCardResolveInHand
-  nameWithType: IOtherCardResolveInHand
-- uid: InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
+  nameWithType: IOnOtherCardPreDeathInHand.RespondsToOtherCardPreDeathInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardResolveInHand
+  name: IOnOtherCardResolveInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnOtherCardResolveInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardResolveInHand
+  nameWithType: IOnOtherCardResolveInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
   name: OnOtherCardResolveInHand(PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOtherCardResolveInHand_OnOtherCardResolveInHand_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardResolveInHand.OnOtherCardResolveInHand(PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOnOtherCardResolveInHand_OnOtherCardResolveInHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardResolveInHand.OnOtherCardResolveInHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand*
   name: OnOtherCardResolveInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOtherCardResolveInHand_OnOtherCardResolveInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOnOtherCardResolveInHand_OnOtherCardResolveInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardResolveInHand.OnOtherCardResolveInHand
-  nameWithType: IOtherCardResolveInHand.OnOtherCardResolveInHand
-- uid: InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.OnOtherCardResolveInHand
+  nameWithType: IOnOtherCardResolveInHand.OnOtherCardResolveInHand
+- uid: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
   name: RespondsToOtherCardResolveInHand(PlayableCard)
-  href: api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOtherCardResolveInHand_RespondsToOtherCardResolveInHand_DiskCardGame_PlayableCard_
-  commentId: M:InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
-  fullName: InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
-  nameWithType: IOtherCardResolveInHand.RespondsToOtherCardResolveInHand(PlayableCard)
-- uid: InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand*
+  href: api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOnOtherCardResolveInHand_RespondsToOtherCardResolveInHand_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand(DiskCardGame.PlayableCard)
+  nameWithType: IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand(PlayableCard)
+- uid: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand*
   name: RespondsToOtherCardResolveInHand
-  href: api/InscryptionAPI.Triggers.IOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOtherCardResolveInHand_RespondsToOtherCardResolveInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand
+  href: api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html#InscryptionAPI_Triggers_IOnOtherCardResolveInHand_RespondsToOtherCardResolveInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IOtherCardResolveInHand.RespondsToOtherCardResolveInHand
-  nameWithType: IOtherCardResolveInHand.RespondsToOtherCardResolveInHand
+  fullName: InscryptionAPI.Triggers.IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand
+  nameWithType: IOnOtherCardResolveInHand.RespondsToOtherCardResolveInHand
+- uid: InscryptionAPI.Triggers.IOnPostItemUsed
+  name: IOnPostItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPostItemUsed.html
+  commentId: T:InscryptionAPI.Triggers.IOnPostItemUsed
+  fullName: InscryptionAPI.Triggers.IOnPostItemUsed
+  nameWithType: IOnPostItemUsed
+- uid: InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed(System.String,System.Boolean,System.Boolean)
+  name: OnPostItemUsed(String, Boolean, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPostItemUsed.html#InscryptionAPI_Triggers_IOnPostItemUsed_OnPostItemUsed_System_String_System_Boolean_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed(System.String,System.Boolean,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed(System.String, System.Boolean, System.Boolean)
+  nameWithType: IOnPostItemUsed.OnPostItemUsed(String, Boolean, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed*
+  name: OnPostItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPostItemUsed.html#InscryptionAPI_Triggers_IOnPostItemUsed_OnPostItemUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostItemUsed.OnPostItemUsed
+  nameWithType: IOnPostItemUsed.OnPostItemUsed
+- uid: InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed(System.String,System.Boolean,System.Boolean)
+  name: RespondsToPostItemUsed(String, Boolean, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPostItemUsed.html#InscryptionAPI_Triggers_IOnPostItemUsed_RespondsToPostItemUsed_System_String_System_Boolean_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed(System.String,System.Boolean,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed(System.String, System.Boolean, System.Boolean)
+  nameWithType: IOnPostItemUsed.RespondsToPostItemUsed(String, Boolean, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed*
+  name: RespondsToPostItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPostItemUsed.html#InscryptionAPI_Triggers_IOnPostItemUsed_RespondsToPostItemUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostItemUsed.RespondsToPostItemUsed
+  nameWithType: IOnPostItemUsed.RespondsToPostItemUsed
+- uid: InscryptionAPI.Triggers.IOnPostScalesChanged
+  name: IOnPostScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPostScalesChanged.html
+  commentId: T:InscryptionAPI.Triggers.IOnPostScalesChanged
+  fullName: InscryptionAPI.Triggers.IOnPostScalesChanged
+  nameWithType: IOnPostScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  name: OnPostScalesChanged(Int32, Boolean, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPostScalesChanged.html#InscryptionAPI_Triggers_IOnPostScalesChanged_OnPostScalesChanged_System_Int32_System_Boolean_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged(System.Int32, System.Boolean, System.Int32, System.Boolean)
+  nameWithType: IOnPostScalesChanged.OnPostScalesChanged(Int32, Boolean, Int32, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged*
+  name: OnPostScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPostScalesChanged.html#InscryptionAPI_Triggers_IOnPostScalesChanged_OnPostScalesChanged_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostScalesChanged.OnPostScalesChanged
+  nameWithType: IOnPostScalesChanged.OnPostScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  name: RespondsToPostScalesChanged(Int32, Boolean, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPostScalesChanged.html#InscryptionAPI_Triggers_IOnPostScalesChanged_RespondsToPostScalesChanged_System_Int32_System_Boolean_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged(System.Int32, System.Boolean, System.Int32, System.Boolean)
+  nameWithType: IOnPostScalesChanged.RespondsToPostScalesChanged(Int32, Boolean, Int32, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged*
+  name: RespondsToPostScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPostScalesChanged.html#InscryptionAPI_Triggers_IOnPostScalesChanged_RespondsToPostScalesChanged_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostScalesChanged.RespondsToPostScalesChanged
+  nameWithType: IOnPostScalesChanged.RespondsToPostScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot
+  name: IOnPostSingularSlotAttackSlot
+  href: api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html
+  commentId: T:InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot
+  fullName: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot
+  nameWithType: IOnPostSingularSlotAttackSlot
+- uid: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  name: OnPostSingularSlotAttackSlot(CardSlot, CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IOnPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot, DiskCardGame.CardSlot)
+  nameWithType: IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(CardSlot, CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot*
+  name: OnPostSingularSlotAttackSlot
+  href: api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IOnPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
+  nameWithType: IOnPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
+- uid: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  name: RespondsToPostSingularSlotAttackSlot(CardSlot, CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IOnPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot, DiskCardGame.CardSlot)
+  nameWithType: IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(CardSlot, CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot*
+  name: RespondsToPostSingularSlotAttackSlot
+  href: api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IOnPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
+  nameWithType: IOnPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
+- uid: InscryptionAPI.Triggers.IOnPostSlotAttackSequence
+  name: IOnPostSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html
+  commentId: T:InscryptionAPI.Triggers.IOnPostSlotAttackSequence
+  fullName: InscryptionAPI.Triggers.IOnPostSlotAttackSequence
+  nameWithType: IOnPostSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
+  name: OnPostSlotAttackSequence(CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPostSlotAttackSequence_OnPostSlotAttackSequence_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
+  nameWithType: IOnPostSlotAttackSequence.OnPostSlotAttackSequence(CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence*
+  name: OnPostSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPostSlotAttackSequence_OnPostSlotAttackSequence_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.OnPostSlotAttackSequence
+  nameWithType: IOnPostSlotAttackSequence.OnPostSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
+  name: RespondsToPostSlotAttackSequence(CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPostSlotAttackSequence_RespondsToPostSlotAttackSequence_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
+  nameWithType: IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence(CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence*
+  name: RespondsToPostSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPostSlotAttackSequence_RespondsToPostSlotAttackSequence_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence
+  nameWithType: IOnPostSlotAttackSequence.RespondsToPostSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnPreItemUsed
+  name: IOnPreItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPreItemUsed.html
+  commentId: T:InscryptionAPI.Triggers.IOnPreItemUsed
+  fullName: InscryptionAPI.Triggers.IOnPreItemUsed
+  nameWithType: IOnPreItemUsed
+- uid: InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed(System.String,System.Boolean)
+  name: OnPreItemUsed(String, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreItemUsed.html#InscryptionAPI_Triggers_IOnPreItemUsed_OnPreItemUsed_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed(System.String,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed(System.String, System.Boolean)
+  nameWithType: IOnPreItemUsed.OnPreItemUsed(String, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed*
+  name: OnPreItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPreItemUsed.html#InscryptionAPI_Triggers_IOnPreItemUsed_OnPreItemUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreItemUsed.OnPreItemUsed
+  nameWithType: IOnPreItemUsed.OnPreItemUsed
+- uid: InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed(System.String,System.Boolean)
+  name: RespondsToPreItemUsed(String, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreItemUsed.html#InscryptionAPI_Triggers_IOnPreItemUsed_RespondsToPreItemUsed_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed(System.String,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed(System.String, System.Boolean)
+  nameWithType: IOnPreItemUsed.RespondsToPreItemUsed(String, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed*
+  name: RespondsToPreItemUsed
+  href: api/InscryptionAPI.Triggers.IOnPreItemUsed.html#InscryptionAPI_Triggers_IOnPreItemUsed_RespondsToPreItemUsed_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreItemUsed.RespondsToPreItemUsed
+  nameWithType: IOnPreItemUsed.RespondsToPreItemUsed
+- uid: InscryptionAPI.Triggers.IOnPreScalesChanged
+  name: IOnPreScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChanged.html
+  commentId: T:InscryptionAPI.Triggers.IOnPreScalesChanged
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChanged
+  nameWithType: IOnPreScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  name: OnPreScalesChanged(Int32, Boolean, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChanged.html#InscryptionAPI_Triggers_IOnPreScalesChanged_OnPreScalesChanged_System_Int32_System_Boolean_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged(System.Int32, System.Boolean, System.Int32, System.Boolean)
+  nameWithType: IOnPreScalesChanged.OnPreScalesChanged(Int32, Boolean, Int32, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged*
+  name: OnPreScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChanged.html#InscryptionAPI_Triggers_IOnPreScalesChanged_OnPreScalesChanged_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChanged.OnPreScalesChanged
+  nameWithType: IOnPreScalesChanged.OnPreScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  name: RespondsToPreScalesChanged(Int32, Boolean, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChanged.html#InscryptionAPI_Triggers_IOnPreScalesChanged_RespondsToPreScalesChanged_System_Int32_System_Boolean_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged(System.Int32,System.Boolean,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged(System.Int32, System.Boolean, System.Int32, System.Boolean)
+  nameWithType: IOnPreScalesChanged.RespondsToPreScalesChanged(Int32, Boolean, Int32, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged*
+  name: RespondsToPreScalesChanged
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChanged.html#InscryptionAPI_Triggers_IOnPreScalesChanged_RespondsToPreScalesChanged_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChanged.RespondsToPreScalesChanged
+  nameWithType: IOnPreScalesChanged.RespondsToPreScalesChanged
+- uid: InscryptionAPI.Triggers.IOnPreScalesChangedRef
+  name: IOnPreScalesChangedRef
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html
+  commentId: T:InscryptionAPI.Triggers.IOnPreScalesChangedRef
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChangedRef
+  nameWithType: IOnPreScalesChangedRef
+- uid: InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32,System.Int32@,System.Boolean@)
+  name: CollectPreScalesChangedRef(Int32, ref Int32, ref Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html#InscryptionAPI_Triggers_IOnPreScalesChangedRef_CollectPreScalesChangedRef_System_Int32_System_Int32__System_Boolean__
+  commentId: M:InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32,System.Int32@,System.Boolean@)
+  name.vb: CollectPreScalesChangedRef(Int32, ByRef Int32, ByRef Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32, ref System.Int32, ref System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32, ByRef System.Int32, ByRef System.Boolean)
+  nameWithType: IOnPreScalesChangedRef.CollectPreScalesChangedRef(Int32, ref Int32, ref Boolean)
+  nameWithType.vb: IOnPreScalesChangedRef.CollectPreScalesChangedRef(Int32, ByRef Int32, ByRef Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef*
+  name: CollectPreScalesChangedRef
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html#InscryptionAPI_Triggers_IOnPreScalesChangedRef_CollectPreScalesChangedRef_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef
+  nameWithType: IOnPreScalesChangedRef.CollectPreScalesChangedRef
+- uid: InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(System.Int32,System.Int32,System.Boolean)
+  name: RespondsToPreScalesChangedRef(Int32, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html#InscryptionAPI_Triggers_IOnPreScalesChangedRef_RespondsToPreScalesChangedRef_System_Int32_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(System.Int32,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(System.Int32, System.Int32, System.Boolean)
+  nameWithType: IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(Int32, Int32, Boolean)
+- uid: InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef*
+  name: RespondsToPreScalesChangedRef
+  href: api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html#InscryptionAPI_Triggers_IOnPreScalesChangedRef_RespondsToPreScalesChangedRef_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef
+  nameWithType: IOnPreScalesChangedRef.RespondsToPreScalesChangedRef
+- uid: InscryptionAPI.Triggers.IOnPreSlotAttackSequence
+  name: IOnPreSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html
+  commentId: T:InscryptionAPI.Triggers.IOnPreSlotAttackSequence
+  fullName: InscryptionAPI.Triggers.IOnPreSlotAttackSequence
+  nameWithType: IOnPreSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
+  name: OnPreSlotAttackSequence(CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPreSlotAttackSequence_OnPreSlotAttackSequence_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
+  nameWithType: IOnPreSlotAttackSequence.OnPreSlotAttackSequence(CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence*
+  name: OnPreSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPreSlotAttackSequence_OnPreSlotAttackSequence_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.OnPreSlotAttackSequence
+  nameWithType: IOnPreSlotAttackSequence.OnPreSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
+  name: RespondsToPreSlotAttackSequence(CardSlot)
+  href: api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPreSlotAttackSequence_RespondsToPreSlotAttackSequence_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
+  nameWithType: IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence(CardSlot)
+- uid: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence*
+  name: RespondsToPreSlotAttackSequence
+  href: api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html#InscryptionAPI_Triggers_IOnPreSlotAttackSequence_RespondsToPreSlotAttackSequence_
+  commentId: Overload:InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence
+  nameWithType: IOnPreSlotAttackSequence.RespondsToPreSlotAttackSequence
+- uid: InscryptionAPI.Triggers.IOnTurnEndInHand
+  name: IOnTurnEndInHand
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnTurnEndInHand
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInHand
+  nameWithType: IOnTurnEndInHand
+- uid: InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand(System.Boolean)
+  name: OnTurnEndInHand(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInHand.html#InscryptionAPI_Triggers_IOnTurnEndInHand_OnTurnEndInHand_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand(System.Boolean)
+  nameWithType: IOnTurnEndInHand.OnTurnEndInHand(Boolean)
+- uid: InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand*
+  name: OnTurnEndInHand
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInHand.html#InscryptionAPI_Triggers_IOnTurnEndInHand_OnTurnEndInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInHand.OnTurnEndInHand
+  nameWithType: IOnTurnEndInHand.OnTurnEndInHand
+- uid: InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand(System.Boolean)
+  name: RespondsToTurnEndInHand(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInHand.html#InscryptionAPI_Triggers_IOnTurnEndInHand_RespondsToTurnEndInHand_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand(System.Boolean)
+  nameWithType: IOnTurnEndInHand.RespondsToTurnEndInHand(Boolean)
+- uid: InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand*
+  name: RespondsToTurnEndInHand
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInHand.html#InscryptionAPI_Triggers_IOnTurnEndInHand_RespondsToTurnEndInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand
+  nameWithType: IOnTurnEndInHand.RespondsToTurnEndInHand
+- uid: InscryptionAPI.Triggers.IOnUpkeepInHand
+  name: IOnUpkeepInHand
+  href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html
+  commentId: T:InscryptionAPI.Triggers.IOnUpkeepInHand
+  fullName: InscryptionAPI.Triggers.IOnUpkeepInHand
+  nameWithType: IOnUpkeepInHand
+- uid: InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand(System.Boolean)
+  name: OnUpkeepInHand(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html#InscryptionAPI_Triggers_IOnUpkeepInHand_OnUpkeepInHand_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand(System.Boolean)
+  nameWithType: IOnUpkeepInHand.OnUpkeepInHand(Boolean)
+- uid: InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand*
+  name: OnUpkeepInHand
+  href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html#InscryptionAPI_Triggers_IOnUpkeepInHand_OnUpkeepInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnUpkeepInHand.OnUpkeepInHand
+  nameWithType: IOnUpkeepInHand.OnUpkeepInHand
+- uid: InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
+  name: RespondsToUpkeepInHand(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html#InscryptionAPI_Triggers_IOnUpkeepInHand_RespondsToUpkeepInHand_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
+  nameWithType: IOnUpkeepInHand.RespondsToUpkeepInHand(Boolean)
+- uid: InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand*
+  name: RespondsToUpkeepInHand
+  href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html#InscryptionAPI_Triggers_IOnUpkeepInHand_RespondsToUpkeepInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnUpkeepInHand.RespondsToUpkeepInHand
+  nameWithType: IOnUpkeepInHand.RespondsToUpkeepInHand
 - uid: InscryptionAPI.Triggers.IPassiveAttackBuff
   name: IPassiveAttackBuff
   href: api/InscryptionAPI.Triggers.IPassiveAttackBuff.html
@@ -7482,227 +8304,87 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IPassiveHealthBuff.GetPassiveHealthBuff
   nameWithType: IPassiveHealthBuff.GetPassiveHealthBuff
-- uid: InscryptionAPI.Triggers.IPostScalesChanged
-  name: IPostScalesChanged
-  href: api/InscryptionAPI.Triggers.IPostScalesChanged.html
-  commentId: T:InscryptionAPI.Triggers.IPostScalesChanged
-  fullName: InscryptionAPI.Triggers.IPostScalesChanged
-  nameWithType: IPostScalesChanged
-- uid: InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged(System.Int32,System.Boolean)
-  name: OnPostScalesChanged(Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.IPostScalesChanged.html#InscryptionAPI_Triggers_IPostScalesChanged_OnPostScalesChanged_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged(System.Int32,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged(System.Int32, System.Boolean)
-  nameWithType: IPostScalesChanged.OnPostScalesChanged(Int32, Boolean)
-- uid: InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged*
-  name: OnPostScalesChanged
-  href: api/InscryptionAPI.Triggers.IPostScalesChanged.html#InscryptionAPI_Triggers_IPostScalesChanged_OnPostScalesChanged_
-  commentId: Overload:InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence
+  name: ISetupAttackSequence
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html
+  commentId: T:InscryptionAPI.Triggers.ISetupAttackSequence
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence
+  nameWithType: ISetupAttackSequence
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
+  name: CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, ref Int32, ref Boolean)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_CollectModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32__System_Boolean__
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
+  name.vb: CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), ByRef Int32, ByRef Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, ref System.Int32, ref System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), ByRef System.Int32, ByRef System.Boolean)
+  nameWithType: ISetupAttackSequence.CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, ref Int32, ref Boolean)
+  nameWithType.vb: ISetupAttackSequence.CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), ByRef Int32, ByRef Boolean)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots*
+  name: CollectModifyAttackSlots
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_CollectModifyAttackSlots_
+  commentId: Overload:InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostScalesChanged.OnPostScalesChanged
-  nameWithType: IPostScalesChanged.OnPostScalesChanged
-- uid: InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged(System.Int32,System.Boolean)
-  name: RespondsToPostScalesChanged(Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.IPostScalesChanged.html#InscryptionAPI_Triggers_IPostScalesChanged_RespondsToPostScalesChanged_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged(System.Int32,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged(System.Int32, System.Boolean)
-  nameWithType: IPostScalesChanged.RespondsToPostScalesChanged(Int32, Boolean)
-- uid: InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged*
-  name: RespondsToPostScalesChanged
-  href: api/InscryptionAPI.Triggers.IPostScalesChanged.html#InscryptionAPI_Triggers_IPostScalesChanged_RespondsToPostScalesChanged_
-  commentId: Overload:InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots
+  nameWithType: ISetupAttackSequence.CollectModifyAttackSlots
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  name: GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_GetTriggerPriority_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  name.vb: GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
+  nameWithType: ISetupAttackSequence.GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
+  nameWithType.vb: ISetupAttackSequence.GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority*
+  name: GetTriggerPriority
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_GetTriggerPriority_
+  commentId: Overload:InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostScalesChanged.RespondsToPostScalesChanged
-  nameWithType: IPostScalesChanged.RespondsToPostScalesChanged
-- uid: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot
-  name: IPostSingularSlotAttackSlot
-  href: api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html
-  commentId: T:InscryptionAPI.Triggers.IPostSingularSlotAttackSlot
-  fullName: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot
-  nameWithType: IPostSingularSlotAttackSlot
-- uid: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  name: OnPostSingularSlotAttackSlot(CardSlot, CardSlot)
-  href: api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot, DiskCardGame.CardSlot)
-  nameWithType: IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(CardSlot, CardSlot)
-- uid: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot*
-  name: OnPostSingularSlotAttackSlot
-  href: api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_
-  commentId: Overload:InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority
+  nameWithType: ISetupAttackSequence.GetTriggerPriority
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  name: RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_RespondsToModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  name.vb: RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
+  nameWithType: ISetupAttackSequence.RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
+  nameWithType.vb: ISetupAttackSequence.RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots*
+  name: RespondsToModifyAttackSlots
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_RespondsToModifyAttackSlots_
+  commentId: Overload:InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots
   isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
-  nameWithType: IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot
-- uid: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  name: RespondsToPostSingularSlotAttackSlot(CardSlot, CardSlot)
-  href: api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot, DiskCardGame.CardSlot)
-  nameWithType: IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(CardSlot, CardSlot)
-- uid: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot*
-  name: RespondsToPostSingularSlotAttackSlot
-  href: api/InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html#InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_
-  commentId: Overload:InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
-  nameWithType: IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot
-- uid: InscryptionAPI.Triggers.IPostSlotAttackSequence
-  name: IPostSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html
-  commentId: T:InscryptionAPI.Triggers.IPostSlotAttackSequence
-  fullName: InscryptionAPI.Triggers.IPostSlotAttackSequence
-  nameWithType: IPostSlotAttackSequence
-- uid: InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
-  name: OnPostSlotAttackSequence(CardSlot)
-  href: api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html#InscryptionAPI_Triggers_IPostSlotAttackSequence_OnPostSlotAttackSequence_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence(DiskCardGame.CardSlot)
-  nameWithType: IPostSlotAttackSequence.OnPostSlotAttackSequence(CardSlot)
-- uid: InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence*
-  name: OnPostSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html#InscryptionAPI_Triggers_IPostSlotAttackSequence_OnPostSlotAttackSequence_
-  commentId: Overload:InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostSlotAttackSequence.OnPostSlotAttackSequence
-  nameWithType: IPostSlotAttackSequence.OnPostSlotAttackSequence
-- uid: InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
-  name: RespondsToPostSlotAttackSequence(CardSlot)
-  href: api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html#InscryptionAPI_Triggers_IPostSlotAttackSequence_RespondsToPostSlotAttackSequence_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence(DiskCardGame.CardSlot)
-  nameWithType: IPostSlotAttackSequence.RespondsToPostSlotAttackSequence(CardSlot)
-- uid: InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence*
-  name: RespondsToPostSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPostSlotAttackSequence.html#InscryptionAPI_Triggers_IPostSlotAttackSequence_RespondsToPostSlotAttackSequence_
-  commentId: Overload:InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPostSlotAttackSequence.RespondsToPostSlotAttackSequence
-  nameWithType: IPostSlotAttackSequence.RespondsToPostSlotAttackSequence
-- uid: InscryptionAPI.Triggers.IPreScalesChanged
-  name: IPreScalesChanged
-  href: api/InscryptionAPI.Triggers.IPreScalesChanged.html
-  commentId: T:InscryptionAPI.Triggers.IPreScalesChanged
-  fullName: InscryptionAPI.Triggers.IPreScalesChanged
-  nameWithType: IPreScalesChanged
-- uid: InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged(System.Int32,System.Boolean)
-  name: OnPreScalesChanged(Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.IPreScalesChanged.html#InscryptionAPI_Triggers_IPreScalesChanged_OnPreScalesChanged_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged(System.Int32,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged(System.Int32, System.Boolean)
-  nameWithType: IPreScalesChanged.OnPreScalesChanged(Int32, Boolean)
-- uid: InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged*
-  name: OnPreScalesChanged
-  href: api/InscryptionAPI.Triggers.IPreScalesChanged.html#InscryptionAPI_Triggers_IPreScalesChanged_OnPreScalesChanged_
-  commentId: Overload:InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged
-  nameWithType: IPreScalesChanged.OnPreScalesChanged
-- uid: InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged(System.Int32,System.Boolean)
-  name: RespondsToPreScalesChanged(Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.IPreScalesChanged.html#InscryptionAPI_Triggers_IPreScalesChanged_RespondsToPreScalesChanged_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged(System.Int32,System.Boolean)
-  fullName: InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged(System.Int32, System.Boolean)
-  nameWithType: IPreScalesChanged.RespondsToPreScalesChanged(Int32, Boolean)
-- uid: InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged*
-  name: RespondsToPreScalesChanged
-  href: api/InscryptionAPI.Triggers.IPreScalesChanged.html#InscryptionAPI_Triggers_IPreScalesChanged_RespondsToPreScalesChanged_
-  commentId: Overload:InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged
-  nameWithType: IPreScalesChanged.RespondsToPreScalesChanged
-- uid: InscryptionAPI.Triggers.IPreSlotAttackSequence
-  name: IPreSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html
-  commentId: T:InscryptionAPI.Triggers.IPreSlotAttackSequence
-  fullName: InscryptionAPI.Triggers.IPreSlotAttackSequence
-  nameWithType: IPreSlotAttackSequence
-- uid: InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
-  name: OnPreSlotAttackSequence(CardSlot)
-  href: api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html#InscryptionAPI_Triggers_IPreSlotAttackSequence_OnPreSlotAttackSequence_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence(DiskCardGame.CardSlot)
-  nameWithType: IPreSlotAttackSequence.OnPreSlotAttackSequence(CardSlot)
-- uid: InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence*
-  name: OnPreSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html#InscryptionAPI_Triggers_IPreSlotAttackSequence_OnPreSlotAttackSequence_
-  commentId: Overload:InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPreSlotAttackSequence.OnPreSlotAttackSequence
-  nameWithType: IPreSlotAttackSequence.OnPreSlotAttackSequence
-- uid: InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
-  name: RespondsToPreSlotAttackSequence(CardSlot)
-  href: api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html#InscryptionAPI_Triggers_IPreSlotAttackSequence_RespondsToPreSlotAttackSequence_DiskCardGame_CardSlot_
-  commentId: M:InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
-  fullName: InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence(DiskCardGame.CardSlot)
-  nameWithType: IPreSlotAttackSequence.RespondsToPreSlotAttackSequence(CardSlot)
-- uid: InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence*
-  name: RespondsToPreSlotAttackSequence
-  href: api/InscryptionAPI.Triggers.IPreSlotAttackSequence.html#InscryptionAPI_Triggers_IPreSlotAttackSequence_RespondsToPreSlotAttackSequence_
-  commentId: Overload:InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IPreSlotAttackSequence.RespondsToPreSlotAttackSequence
-  nameWithType: IPreSlotAttackSequence.RespondsToPreSlotAttackSequence
-- uid: InscryptionAPI.Triggers.ITurnEndInHand
-  name: ITurnEndInHand
-  href: api/InscryptionAPI.Triggers.ITurnEndInHand.html
-  commentId: T:InscryptionAPI.Triggers.ITurnEndInHand
-  fullName: InscryptionAPI.Triggers.ITurnEndInHand
-  nameWithType: ITurnEndInHand
-- uid: InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand
-  name: OnTurnEndInHand()
-  href: api/InscryptionAPI.Triggers.ITurnEndInHand.html#InscryptionAPI_Triggers_ITurnEndInHand_OnTurnEndInHand
-  commentId: M:InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand
-  fullName: InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand()
-  nameWithType: ITurnEndInHand.OnTurnEndInHand()
-- uid: InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand*
-  name: OnTurnEndInHand
-  href: api/InscryptionAPI.Triggers.ITurnEndInHand.html#InscryptionAPI_Triggers_ITurnEndInHand_OnTurnEndInHand_
-  commentId: Overload:InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.ITurnEndInHand.OnTurnEndInHand
-  nameWithType: ITurnEndInHand.OnTurnEndInHand
-- uid: InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand
-  name: RespondsToTurnEndedInHand()
-  href: api/InscryptionAPI.Triggers.ITurnEndInHand.html#InscryptionAPI_Triggers_ITurnEndInHand_RespondsToTurnEndedInHand
-  commentId: M:InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand
-  fullName: InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand()
-  nameWithType: ITurnEndInHand.RespondsToTurnEndedInHand()
-- uid: InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand*
-  name: RespondsToTurnEndedInHand
-  href: api/InscryptionAPI.Triggers.ITurnEndInHand.html#InscryptionAPI_Triggers_ITurnEndInHand_RespondsToTurnEndedInHand_
-  commentId: Overload:InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.ITurnEndInHand.RespondsToTurnEndedInHand
-  nameWithType: ITurnEndInHand.RespondsToTurnEndedInHand
-- uid: InscryptionAPI.Triggers.IUpkeepInHand
-  name: IUpkeepInHand
-  href: api/InscryptionAPI.Triggers.IUpkeepInHand.html
-  commentId: T:InscryptionAPI.Triggers.IUpkeepInHand
-  fullName: InscryptionAPI.Triggers.IUpkeepInHand
-  nameWithType: IUpkeepInHand
-- uid: InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand(System.Boolean)
-  name: OnUpkeepInHand(Boolean)
-  href: api/InscryptionAPI.Triggers.IUpkeepInHand.html#InscryptionAPI_Triggers_IUpkeepInHand_OnUpkeepInHand_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand(System.Boolean)
-  fullName: InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand(System.Boolean)
-  nameWithType: IUpkeepInHand.OnUpkeepInHand(Boolean)
-- uid: InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand*
-  name: OnUpkeepInHand
-  href: api/InscryptionAPI.Triggers.IUpkeepInHand.html#InscryptionAPI_Triggers_IUpkeepInHand_OnUpkeepInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IUpkeepInHand.OnUpkeepInHand
-  nameWithType: IUpkeepInHand.OnUpkeepInHand
-- uid: InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
-  name: RespondsToUpkeepInHand(Boolean)
-  href: api/InscryptionAPI.Triggers.IUpkeepInHand.html#InscryptionAPI_Triggers_IUpkeepInHand_RespondsToUpkeepInHand_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
-  fullName: InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand(System.Boolean)
-  nameWithType: IUpkeepInHand.RespondsToUpkeepInHand(Boolean)
-- uid: InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand*
-  name: RespondsToUpkeepInHand
-  href: api/InscryptionAPI.Triggers.IUpkeepInHand.html#InscryptionAPI_Triggers_IUpkeepInHand_RespondsToUpkeepInHand_
-  commentId: Overload:InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand
-  isSpec: "True"
-  fullName: InscryptionAPI.Triggers.IUpkeepInHand.RespondsToUpkeepInHand
-  nameWithType: IUpkeepInHand.RespondsToUpkeepInHand
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots
+  nameWithType: ISetupAttackSequence.RespondsToModifyAttackSlots
+- uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority
+  name: OpposingSlotTriggerPriority
+  href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html
+  commentId: T:InscryptionAPI.Triggers.OpposingSlotTriggerPriority
+  fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority
+  nameWithType: OpposingSlotTriggerPriority
+- uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot
+  name: BringsBackOpposingSlot
+  href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html#InscryptionAPI_Triggers_OpposingSlotTriggerPriority_BringsBackOpposingSlot
+  commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot
+  fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot
+  nameWithType: OpposingSlotTriggerPriority.BringsBackOpposingSlot
+- uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal
+  name: Normal
+  href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html#InscryptionAPI_Triggers_OpposingSlotTriggerPriority_Normal
+  commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal
+  fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal
+  nameWithType: OpposingSlotTriggerPriority.Normal
+- uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification
+  name: PostAdditionModification
+  href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html#InscryptionAPI_Triggers_OpposingSlotTriggerPriority_PostAdditionModification
+  commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification
+  fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification
+  nameWithType: OpposingSlotTriggerPriority.PostAdditionModification
+- uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
+  name: ReplacesDefaultOpposingSlot
+  href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html#InscryptionAPI_Triggers_OpposingSlotTriggerPriority_ReplacesDefaultOpposingSlot
+  commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
+  fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
+  nameWithType: OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot

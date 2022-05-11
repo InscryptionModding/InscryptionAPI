@@ -93,32 +93,83 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IAddedToHand.html">IAddedToHand</a></h4>
-      <section><p>Run when the card this trigger is attached to is added to the hand</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IBellRung.html">IBellRung</a></h4>
-      <section><p>Run when the combat phase starts</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.ICardTakenDamageModifier.html">ICardTakenDamageModifier</a></h4>
+      <section><p>Data collection trigger that modifies the damage taken by any card.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IGetOpposingSlots.html">IGetOpposingSlots</a></h4>
       <section><p>Run whenever a card is asked what its opposing slots are as part of the attack sequence</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherAddedToHand.html">IOtherAddedToHand</a></h4>
-      <section><p>Run when a card other than the card this trigger is attached to is added to the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IItemCanBeUsed.html">IItemCanBeUsed</a></h4>
+      <section><p>Data collection trigger that collects data about the usability of an item.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherCardAssignedToSlotInHand.html">IOtherCardAssignedToSlotInHand</a></h4>
-      <section><p>Run when another card is assigned to a slot while in the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnAddedToHand.html">IOnAddedToHand</a></h4>
+      <section><p>Trigger that is triggered when the card is drawn, but after it has been added to the list of cards in hand.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherCardDealtDamageInHand.html">IOtherCardDealtDamageInHand</a></h4>
-      <section><p>Run when another card deals damage while in the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnBellRung.html">IOnBellRung</a></h4>
+      <section><p>Trigger that is triggered after the combat phase starts.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherCardDieInHand.html">IOtherCardDieInHand</a></h4>
-      <section><p>Runs after a card on the board dies in the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html">IOnCardAssignedToSlotContext</a></h4>
+      <section><p>Trigger that is triggered after any card is assigned to a slot. The difference between this and normal OnOtherCardAssignedToSlot is that this trigger also provides information about the new and old slot.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherCardPreDeathInHand.html">IOtherCardPreDeathInHand</a></h4>
-      <section><p>Runs before a card on the board dies in the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html">IOnCardAssignedToSlotNoResolve</a></h4>
+      <section><p>Trigger that is triggered after any card is assigned to a slot, but only if it was assigned to a slot before.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IOtherCardResolveInHand.html">IOtherCardResolveInHand</a></h4>
-      <section><p>Run when another card is resolved on the board while in the hand</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html">IOnCardPassiveAttackBuffs</a></h4>
+      <section><p>Data collection trigger that modifies the passive attack buffs of any card.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html">IOnCardPassiveHealthBuffs</a></h4>
+      <section><p>Data collection trigger that modifies the passive health buffs of any card.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnItemPreventedFromUse.html">IOnItemPreventedFromUse</a></h4>
+      <section><p>Trigger that is triggered when an item is prevented from use using IItemCanBeUsed.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html">IOnOtherCardAddedToHand</a></h4>
+      <section><p>Trigger that is triggered when any card is drawn, but after it has been added to the list of cards in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html">IOnOtherCardAssignedToSlotInHand</a></h4>
+      <section><p>Trigger that is triggered when any card is assigned to a slot, but unlike normal OnOtherCardAssignedToSlotInHand this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html">IOnOtherCardDealtDamageInHand</a></h4>
+      <section><p>Trigger that is triggered when any card deals damage to another card, but unlike normal OnOtherCardDealtDamage this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardDieInHand.html">IOnOtherCardDieInHand</a></h4>
+      <section><p>Trigger that is triggered after any card dies, but unlike normal OnOtherCardDie this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html">IOnOtherCardPreDeathInHand</a></h4>
+      <section><p>Trigger that is triggered before any card dies, but unlike normal OnOtherCardPreDeath this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html">IOnOtherCardResolveInHand</a></h4>
+      <section><p>Trigger that is triggered when any card gets played, but unlike normal OnOtherCardResolveOnBoard this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostItemUsed.html">IOnPostItemUsed</a></h4>
+      <section><p>Trigger that is triggered after any item is used.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostScalesChanged.html">IOnPostScalesChanged</a></h4>
+      <section><p>Trigger that is triggered after the scales are changed. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html">IOnPostSingularSlotAttackSlot</a></h4>
+      <section><p>Trigger that is triggered after a slot does an individual attack.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html">IOnPostSlotAttackSequence</a></h4>
+      <section><p>Trigger that is triggered after a slot does its attacks.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreItemUsed.html">IOnPreItemUsed</a></h4>
+      <section><p>Trigger that is triggered before any item is used.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreScalesChanged.html">IOnPreScalesChanged</a></h4>
+      <section><p>Trigger that is triggered before the scales are changed, after IOnPreScalesChangedRef. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreScalesChangedRef.html">IOnPreScalesChangedRef</a></h4>
+      <section><p>Data collection trigger that is triggered before the scales are changed, can be used to change the amount of damage added and to which side it&apos;s added.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html">IOnPreSlotAttackSequence</a></h4>
+      <section><p>Trigger that is triggered before a slot does its attacks.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnTurnEndInHand.html">IOnTurnEndInHand</a></h4>
+      <section><p>Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnUpkeepInHand.html">IOnUpkeepInHand</a></h4>
+      <section><p>Trigger that is triggered each turn, but unlike normal OnUpkeep this one only works in hand.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IPassiveAttackBuff.html">IPassiveAttackBuff</a></h4>
       <section><p>Used when a card wants to provide a passive buff to other cards on the board</p>
@@ -126,26 +177,13 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
       <h4><a class="xref" href="InscryptionAPI.Triggers.IPassiveHealthBuff.html">IPassiveHealthBuff</a></h4>
       <section><p>Used when a card wants to provide a passive buff to other cards on the board</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IPostScalesChanged.html">IPostScalesChanged</a></h4>
-      <section><p>Run after the scales are changed</p>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.ISetupAttackSequence.html">ISetupAttackSequence</a></h4>
+      <section><p>Data collection trigger that collects data related to attacked slots.</p>
 </section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.html">IPostSingularSlotAttackSlot</a></h4>
-      <section><p>Run after a slot is attacked</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IPostSlotAttackSequence.html">IPostSlotAttackSequence</a></h4>
-      <section><p>Run after a card slot attacks</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IPreScalesChanged.html">IPreScalesChanged</a></h4>
-      <section><p>Run before the scales are changed</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IPreSlotAttackSequence.html">IPreSlotAttackSequence</a></h4>
-      <section><p>Run before a slot begins attacking</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.ITurnEndInHand.html">ITurnEndInHand</a></h4>
-      <section><p>Run when the turn is ended while in the hand</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Triggers.IUpkeepInHand.html">IUpkeepInHand</a></h4>
-      <section><p>Triggered during the upkeep phase while in the hand</p>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html">OpposingSlotTriggerPriority</a></h4>
+      <section><p>Flag that tells IGetOpposingSlots when to trigger.</p>
 </section>
 </article>
           </div>

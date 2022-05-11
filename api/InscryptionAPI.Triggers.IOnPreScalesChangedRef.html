@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPostSingularSlotAttackSlot
+    <title>Interface IOnPreScalesChangedRef
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPostSingularSlotAttackSlot
+    <meta name="title" content="Interface IOnPreScalesChangedRef
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -77,36 +77,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef">
   
   
-  <h1 id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot" class="text-break">Interface IPostSingularSlotAttackSlot
+  <h1 id="InscryptionAPI_Triggers_IOnPreScalesChangedRef" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef" class="text-break">Interface IOnPreScalesChangedRef
   </h1>
-  <div class="markdown level0 summary"><p>Run after a slot is attacked</p>
+  <div class="markdown level0 summary"><p>Data collection trigger that is triggered before the scales are changed, can be used to change the amount of damage added and to which side it&apos;s added.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Triggers_IOnPreScalesChangedRef_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IPostSingularSlotAttackSlot</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IOnPreScalesChangedRef</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot%2CDiskCardGame.CardSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnPreScalesChangedRef_CollectPreScalesChangedRef_System_Int32_System_Int32__System_Boolean__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32%2CSystem.Int32%40%2CSystem.Boolean%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L67">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L186">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot*"></a>
-  <h4 id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_OnPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.OnPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)">OnPostSingularSlotAttackSlot(CardSlot, CardSlot)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_IOnPreScalesChangedRef_CollectPreScalesChangedRef_" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef*"></a>
+  <h4 id="InscryptionAPI_Triggers_IOnPreScalesChangedRef_CollectPreScalesChangedRef_System_Int32_System_Int32__System_Boolean__" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef.CollectPreScalesChangedRef(System.Int32,System.Int32@,System.Boolean@)">CollectPreScalesChangedRef(Int32, ref Int32, ref Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns the new amount of damage that will be added to the scales.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator OnPostSingularSlotAttackSlot(CardSlot attacker, CardSlot defender)</code></pre>
+    <pre><code class="lang-csharp hljs">int CollectPreScalesChangedRef(int damage, ref int numWeights, ref bool toPlayer)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -119,15 +120,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td><p>The attacking slot</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">damage</span></td>
+        <td><p>Number of damage currently dealt.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">defender</span></td>
-        <td><p>The defending slot</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numWeights</span></td>
+        <td><p>Number of weights currently added to the scales. Change this value to modify that number.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">toPlayer</span></td>
+        <td><p>True if the damage is dealt to the player. Change this value to modify the side the damage is getting added to.</p>
 </td>
       </tr>
     </tbody>
@@ -142,25 +149,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
-        <td></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The new amount of damage that will be added to the scales.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot%2CDiskCardGame.CardSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnPreScalesChangedRef_RespondsToPreScalesChangedRef_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(System.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L64">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L178">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot*"></a>
-  <h4 id="InscryptionAPI_Triggers_IPostSingularSlotAttackSlot_RespondsToPostSingularSlotAttackSlot_DiskCardGame_CardSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Triggers.IPostSingularSlotAttackSlot.RespondsToPostSingularSlotAttackSlot(DiskCardGame.CardSlot,DiskCardGame.CardSlot)">RespondsToPostSingularSlotAttackSlot(CardSlot, CardSlot)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_IOnPreScalesChangedRef_RespondsToPreScalesChangedRef_" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef*"></a>
+  <h4 id="InscryptionAPI_Triggers_IOnPreScalesChangedRef_RespondsToPreScalesChangedRef_System_Int32_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Triggers.IOnPreScalesChangedRef.RespondsToPreScalesChangedRef(System.Int32,System.Int32,System.Boolean)">RespondsToPreScalesChangedRef(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns true if this should modify the damage added to the scales.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RespondsToPostSingularSlotAttackSlot(CardSlot attacker, CardSlot defender)</code></pre>
+    <pre><code class="lang-csharp hljs">bool RespondsToPreScalesChangedRef(int damage, int numWeights, bool toPlayer)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,15 +182,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td><p>The attacking slot</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">damage</span></td>
+        <td><p>Number of damage currently dealt.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">defender</span></td>
-        <td><p>The defending slot</p>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numWeights</span></td>
+        <td><p>Number of weights currently added to the scales.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">toPlayer</span></td>
+        <td><p>True if the damage is dealt to the player.</p>
 </td>
       </tr>
     </tbody>
@@ -209,10 +224,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPostSingularSlotAttackSlot.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPostSingularSlotAttackSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnPreScalesChangedRef.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnPreScalesChangedRef%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L60" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L169" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

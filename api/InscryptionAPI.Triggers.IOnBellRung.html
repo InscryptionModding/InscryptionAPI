@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IPreScalesChanged
+    <title>Interface IOnBellRung
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IPreScalesChanged
+    <meta name="title" content="Interface IOnBellRung
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -77,36 +77,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IPreScalesChanged">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IOnBellRung">
   
   
-  <h1 id="InscryptionAPI_Triggers_IPreScalesChanged" data-uid="InscryptionAPI.Triggers.IPreScalesChanged" class="text-break">Interface IPreScalesChanged
+  <h1 id="InscryptionAPI_Triggers_IOnBellRung" data-uid="InscryptionAPI.Triggers.IOnBellRung" class="text-break">Interface IOnBellRung
   </h1>
-  <div class="markdown level0 summary"><p>Run before the scales are changed</p>
+  <div class="markdown level0 summary"><p>Trigger that is triggered after the combat phase starts.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Triggers_IPreScalesChanged_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Triggers_IOnBellRung_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IPreScalesChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IOnBellRung</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPreScalesChanged_OnPreScalesChanged_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged(System.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnBellRung_OnBellRung_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnBellRung.OnBellRung(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L80">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L104">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IPreScalesChanged_OnPreScalesChanged_" data-uid="InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged*"></a>
-  <h4 id="InscryptionAPI_Triggers_IPreScalesChanged_OnPreScalesChanged_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Triggers.IPreScalesChanged.OnPreScalesChanged(System.Int32,System.Boolean)">OnPreScalesChanged(Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_IOnBellRung_OnBellRung_" data-uid="InscryptionAPI.Triggers.IOnBellRung.OnBellRung*"></a>
+  <h4 id="InscryptionAPI_Triggers_IOnBellRung_OnBellRung_System_Boolean_" data-uid="InscryptionAPI.Triggers.IOnBellRung.OnBellRung(System.Boolean)">OnBellRung(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Trigger whatever events you want to run after the combat phase starts.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerator OnPreScalesChanged(int damage, bool toPlayer)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerator OnBellRung(bool playerCombatPhase)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -119,15 +120,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">damage</span></td>
-        <td><p>The amount of damage being dealt</p>
-</td>
-      </tr>
-      <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">toPlayer</span></td>
-        <td><p>Whether the damage is to the player or to the AI</p>
+        <td><span class="parametername">playerCombatPhase</span></td>
+        <td><p>True if the player is the attacker in the attack phase.</p>
 </td>
       </tr>
     </tbody>
@@ -149,18 +144,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPreScalesChanged_RespondsToPreScalesChanged_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged(System.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnBellRung_RespondsToBellRung_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L77">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L98">View Source</a>
   </span>
-  <a id="InscryptionAPI_Triggers_IPreScalesChanged_RespondsToPreScalesChanged_" data-uid="InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged*"></a>
-  <h4 id="InscryptionAPI_Triggers_IPreScalesChanged_RespondsToPreScalesChanged_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Triggers.IPreScalesChanged.RespondsToPreScalesChanged(System.Int32,System.Boolean)">RespondsToPreScalesChanged(Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_Triggers_IOnBellRung_RespondsToBellRung_" data-uid="InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung*"></a>
+  <h4 id="InscryptionAPI_Triggers_IOnBellRung_RespondsToBellRung_System_Boolean_" data-uid="InscryptionAPI.Triggers.IOnBellRung.RespondsToBellRung(System.Boolean)">RespondsToBellRung(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns true if this should trigger after the combat phase starts.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RespondsToPreScalesChanged(int damage, bool toPlayer)</code></pre>
+    <pre><code class="lang-csharp hljs">bool RespondsToBellRung(bool playerCombatPhase)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,15 +169,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">damage</span></td>
-        <td><p>The amount of damage being dealt</p>
-</td>
-      </tr>
-      <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><span class="parametername">toPlayer</span></td>
-        <td><p>Whether the damage is to the player or to the AI</p>
+        <td><span class="parametername">playerCombatPhase</span></td>
+        <td><p>True if the player is the attacker in the attack phase.</p>
 </td>
       </tr>
     </tbody>
@@ -197,7 +187,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if this should trigger after the combat phase starts.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -209,10 +200,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IPreScalesChanged.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IPreScalesChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Triggers_IOnBellRung.md&amp;value=---%0Auid%3A%20InscryptionAPI.Triggers.IOnBellRung%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L73" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Triggers/Interfaces.cs/#L91" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
