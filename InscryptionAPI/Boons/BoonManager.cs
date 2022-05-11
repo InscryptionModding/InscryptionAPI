@@ -200,7 +200,8 @@ namespace InscryptionAPI.Boons
                 }
             }
             yield return result;
-            foreach (BoonBehaviour bb in BoonBehaviour.Instances)
+            BoonBehaviour[] bbs = BoonBehaviour.Instances.ToArray();
+            foreach (BoonBehaviour bb in bbs)
             {
                 if (bb != null && bb.RespondsToPostBoonActivation())
                 {
@@ -214,7 +215,8 @@ namespace InscryptionAPI.Boons
         [HarmonyPostfix]
         private static IEnumerator Postfix(IEnumerator result)
         {
-            foreach (BoonBehaviour bb in BoonBehaviour.Instances)
+            BoonBehaviour[] bbs = BoonBehaviour.Instances.ToArray();
+            foreach (BoonBehaviour bb in bbs)
             {
                 if (bb != null && bb.RespondsToPreBattleCleanup())
                 {
@@ -222,7 +224,8 @@ namespace InscryptionAPI.Boons
                 }
             }
             yield return result;
-            foreach (BoonBehaviour bb in BoonBehaviour.Instances)
+            bbs = BoonBehaviour.Instances.ToArray();
+            foreach (BoonBehaviour bb in bbs)
             {
                 if (bb != null && bb.RespondsToPostBattleCleanup())
                 {
@@ -256,6 +259,15 @@ namespace InscryptionAPI.Boons
             }
         }
 
+        internal static void DestroyWhenStackClear(this GameObject obj)
+        {
+            if(obj.GetComponent<DestroyingFlag>() == null)
+            {
+                var flag = obj.AddComponent<DestroyingFlag>();
+                flag.StartCoroutine(flag.WaitForStackClearThenDestroy());
+            }
+        }
+
         [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ClearBoons))]
         [HarmonyPostfix]
         private static void ClearBoons()
@@ -282,19 +294,27 @@ namespace InscryptionAPI.Boons
         [HarmonyPostfix]
         private static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
         {
-            if (NewBoons.Count > 0)
+            if (NewBoons.Count > 0 && metaCategory == AbilityMetaCategory.Part1Rulebook)
             {
-                foreach (PageRangeInfo info in __instance.pageRanges)
+                foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
                 {
-                    if (info.type == PageRangeType.Boons)
+                    // regular abilities
+                    if (pageRangeInfo.type == PageRangeType.Boons)
                     {
-                        List<int> customBoons = NewBoons.Select(x => (int)x.boon.type).ToList();
-                        int min = customBoons.AsQueryable().Min();
-                        int max = customBoons.AsQueryable().Max();
-                        List<RuleBookPageInfo> infos = __instance.ConstructPages(info, max + 1, min, (int index) => metaCategory == AbilityMetaCategory.Part1Rulebook && BoonsUtil.GetData((BoonData.Type)index).icon != null && customBoons.Contains(index) &&
-                            (NewBoons.ToList().Find((x) => (int)x.boon.type == index)?.appearInRulebook).GetValueOrDefault(),
-                            new Action<RuleBookPageInfo, PageRangeInfo, int>(__instance.FillBoonPage), Localization.Translate("APPENDIX XII, SUBSECTION VIII - BOONS {0}"));
-                        __result.InsertRange(__result.FindLastIndex((x) => x.pagePrefab == info.rangePrefab), infos);
+                        int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
+                        int curPageNum = (int)Ability.NUM_ABILITIES;
+                        List<FullBoon> abilitiesToAdd = NewBoons.Where(x => x != null && x.boon != null && BoonsUtil.GetData(x.boon.type)?.icon != null).ToList();
+                        //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
+                        foreach (FullBoon fboo in abilitiesToAdd)
+                        {
+                            RuleBookPageInfo info = new();
+                            info.pagePrefab = pageRangeInfo.rangePrefab;
+                            info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD BOONS {0}"), curPageNum);
+                            __instance.FillBoonPage(info, pageRangeInfo, (int)fboo.boon.type);
+                            __result.Insert(insertPosition, info);
+                            curPageNum += 1;
+                            insertPosition += 1;
+                        }
                     }
                 }
             }

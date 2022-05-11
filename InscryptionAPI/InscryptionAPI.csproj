@@ -16,11 +16,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="ascension_card_none_darker.png" />
       <None Remove="mapevent_missing.png" />
+      <None Remove="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="ascension_card_none_darker.png" />
       <EmbeddedResource Include="mapevent_missing.png" />
+      <EmbeddedResource Include="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>
