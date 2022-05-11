@@ -65,7 +65,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     private static void AddPassiveAttackBuffs(ref PlayableCard __instance, ref int __result)
     {
         var card = __instance;
-
         if (TurnManager.Instance.GameEnding || card.SafeIsUnityNull() || card.Dead) return;
 
         __result += BoardManager.Instance.CardsOnBoard
@@ -78,7 +77,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     private static void AddPassiveHealthBuffs(ref PlayableCard __instance, ref int __result)
     {
         var card = __instance;
-
         if (TurnManager.Instance.GameEnding || card.SafeIsUnityNull() || card.Dead) return;
 
         __result += BoardManager.Instance.CardsOnBoard
