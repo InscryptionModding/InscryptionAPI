@@ -1,7 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
 using Sirenix.Utilities;
-using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 

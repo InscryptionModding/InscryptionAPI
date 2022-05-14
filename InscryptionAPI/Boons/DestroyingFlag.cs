@@ -1,22 +1,18 @@
 using DiskCardGame;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
-namespace InscryptionAPI.Boons
+namespace InscryptionAPI.Boons;
+
+internal class DestroyingFlag : MonoBehaviour
 {
-    internal class DestroyingFlag : MonoBehaviour
+    public IEnumerator WaitForStackClearThenDestroy()
     {
-        public IEnumerator WaitForStackClearThenDestroy()
+        yield return new WaitUntil(() => GlobalTriggerHandler.Instance == null || GlobalTriggerHandler.Instance.StackSize <= 0);
+        if(gameObject != null)
         {
-            yield return new WaitUntil(() => GlobalTriggerHandler.Instance == null || GlobalTriggerHandler.Instance.StackSize <= 0);
-            if(gameObject != null)
-            {
-                Destroy(gameObject);
-            }
-            yield break;
+            Destroy(gameObject);
         }
+        yield break;
     }
 }
