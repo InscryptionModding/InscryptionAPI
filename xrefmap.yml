@@ -3068,11 +3068,11 @@ references:
   commentId: T:InscryptionAPI.Card.IActivateWhenFacedown
   fullName: InscryptionAPI.Card.IActivateWhenFacedown
   nameWithType: IActivateWhenFacedown
-- uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
+- uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(Type)
   name: ShouldTriggerCustomWhenFaceDown(Type)
-  href: api/InscryptionAPI.Card.IActivateWhenFacedown.html#InscryptionAPI_Card_IActivateWhenFacedown_ShouldTriggerCustomWhenFaceDown_System_Type_
-  commentId: M:InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
-  fullName: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(System.Type)
+  href: api/InscryptionAPI.Card.IActivateWhenFacedown.html#InscryptionAPI_Card_IActivateWhenFacedown_ShouldTriggerCustomWhenFaceDown_Type_
+  commentId: M:InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(Type)
+  fullName: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(Type)
   nameWithType: IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown(Type)
 - uid: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerCustomWhenFaceDown*
   name: ShouldTriggerCustomWhenFaceDown
@@ -4435,6 +4435,19 @@ references:
   commentId: T:InscryptionAPI.Helpers.CustomLine
   fullName: InscryptionAPI.Helpers.CustomLine
   nameWithType: CustomLine
+- uid: InscryptionAPI.Helpers.CustomLine.#ctor
+  name: CustomLine()
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine__ctor
+  commentId: M:InscryptionAPI.Helpers.CustomLine.#ctor
+  fullName: InscryptionAPI.Helpers.CustomLine.CustomLine()
+  nameWithType: CustomLine.CustomLine()
+- uid: InscryptionAPI.Helpers.CustomLine.#ctor*
+  name: CustomLine
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine__ctor_
+  commentId: Overload:InscryptionAPI.Helpers.CustomLine.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomLine.CustomLine
+  nameWithType: CustomLine.CustomLine
 - uid: InscryptionAPI.Helpers.CustomLine.emotion
   name: emotion
   href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_emotion
@@ -4456,69 +4469,6 @@ references:
   fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.String to InscryptionAPI.Helpers.CustomLine)
   nameWithType: CustomLine.Implicit(String to CustomLine)
   nameWithType.vb: CustomLine.Widening(String to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, DialogueEvent.Speaker) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, DialogueEvent.Speaker)(Of String, DialogueEvent.Speaker) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, DialogueEvent.Speaker) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, DialogueEvent.Speaker)(Of String, DialogueEvent.Speaker) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, Emotion, DialogueEvent.Speaker) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_Emotion_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, Emotion, DialogueEvent.Speaker)(Of String, Emotion, DialogueEvent.Speaker) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.Emotion, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.Emotion, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, Emotion, DialogueEvent.Speaker) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, Emotion, DialogueEvent.Speaker)(Of String, Emotion, DialogueEvent.Speaker) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, Emotion) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, Emotion)(Of String, Emotion) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, Emotion) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, Emotion)(Of String, Emotion) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DialogueEvent_Speaker_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker, Emotion) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DialogueEvent_Speaker___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DialogueEvent.Speaker})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker)(Of String, TextDisplayer.LetterAnimation, DialogueEvent.Speaker) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation_DiskCardGame_Emotion___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation,DiskCardGame.Emotion})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, TextDisplayer.LetterAnimation, Emotion)(Of String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation, DiskCardGame.Emotion> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation, DiskCardGame.Emotion) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation, Emotion)(Of String, TextDisplayer.LetterAnimation, Emotion) to CustomLine)
-- uid: InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation})~InscryptionAPI.Helpers.CustomLine
-  name: Implicit((String, TextDisplayer.LetterAnimation) to CustomLine)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_System_ValueTuple_System_String_DiskCardGame_TextDisplayer_LetterAnimation___InscryptionAPI_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Helpers.CustomLine.op_Implicit(System.ValueTuple{System.String,DiskCardGame.TextDisplayer.LetterAnimation})~InscryptionAPI.Helpers.CustomLine
-  name.vb: Widening((String, TextDisplayer.LetterAnimation)(Of String, TextDisplayer.LetterAnimation) to CustomLine)
-  fullName: InscryptionAPI.Helpers.CustomLine.Implicit(System.ValueTuple<System.String, DiskCardGame.TextDisplayer.LetterAnimation> to InscryptionAPI.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.Widening(System.ValueTuple(Of System.String, DiskCardGame.TextDisplayer.LetterAnimation) to InscryptionAPI.Helpers.CustomLine)
-  nameWithType: CustomLine.Implicit((String, TextDisplayer.LetterAnimation) to CustomLine)
-  nameWithType.vb: CustomLine.Widening((String, TextDisplayer.LetterAnimation)(Of String, TextDisplayer.LetterAnimation) to CustomLine)
 - uid: InscryptionAPI.Helpers.CustomLine.op_Implicit*
   name: Implicit
   href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_op_Implicit_
@@ -4565,13 +4515,13 @@ references:
   commentId: F:InscryptionAPI.Helpers.CustomLine.text
   fullName: InscryptionAPI.Helpers.CustomLine.text
   nameWithType: CustomLine.text
-- uid: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+- uid: InscryptionAPI.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
   name: ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
-  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_ToLine_System_Collections_Generic_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
-  commentId: M:InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Helpers.CustomLine.html#InscryptionAPI_Helpers_CustomLine_ToLine_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
   name.vb: ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
-  fullName: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
-  fullName.vb: InscryptionAPI.Helpers.CustomLine.ToLine(System.Collections.Generic.List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Helpers.CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Helpers.CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
   nameWithType: CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
   nameWithType.vb: CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
 - uid: InscryptionAPI.Helpers.CustomLine.ToLine*
@@ -4587,13 +4537,13 @@ references:
   commentId: T:InscryptionAPI.Helpers.DialogueEventGenerator
   fullName: InscryptionAPI.Helpers.DialogueEventGenerator
   nameWithType: DialogueEventGenerator
-- uid: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine},System.Collections.Generic.List{System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+- uid: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,List{InscryptionAPI.Helpers.CustomLine},List{List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
   name: GenerateEvent(String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  href: api/InscryptionAPI.Helpers.DialogueEventGenerator.html#InscryptionAPI_Helpers_DialogueEventGenerator_GenerateEvent_System_String_System_Collections_Generic_List_InscryptionAPI_Helpers_CustomLine__System_Collections_Generic_List_System_Collections_Generic_List_InscryptionAPI_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
-  commentId: M:InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine},System.Collections.Generic.List{System.Collections.Generic.List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Helpers.DialogueEventGenerator.html#InscryptionAPI_Helpers_DialogueEventGenerator_GenerateEvent_System_String_List_InscryptionAPI_Helpers_CustomLine__List_List_InscryptionAPI_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String,List{InscryptionAPI.Helpers.CustomLine},List{List{InscryptionAPI.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
   name.vb: GenerateEvent(String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  fullName: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, System.Collections.Generic.List<InscryptionAPI.Helpers.CustomLine>, System.Collections.Generic.List<System.Collections.Generic.List<InscryptionAPI.Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  fullName.vb: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, System.Collections.Generic.List(Of InscryptionAPI.Helpers.CustomLine), System.Collections.Generic.List(Of System.Collections.Generic.List(Of InscryptionAPI.Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, List<InscryptionAPI.Helpers.CustomLine>, List<List<InscryptionAPI.Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent(System.String, List(Of InscryptionAPI.Helpers.CustomLine), List(Of List(Of InscryptionAPI.Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
   nameWithType: DialogueEventGenerator.GenerateEvent(String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
   nameWithType.vb: DialogueEventGenerator.GenerateEvent(String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
 - uid: InscryptionAPI.Helpers.DialogueEventGenerator.GenerateEvent*
@@ -5082,13 +5032,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.And.And
   nameWithType: And.And
-- uid: InscryptionAPI.Nodes.And.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.And.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.And.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.And.html#InscryptionAPI_Nodes_And_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.And.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.And.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.And.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.And.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.And.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: And.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: And.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.And.Satisfied*
@@ -5324,13 +5274,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.CustomPreviousNodesContent
   nameWithType: CustomPreviousNodesContent.CustomPreviousNodesContent
-- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html#InscryptionAPI_Nodes_CustomPreviousNodesContent_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: CustomPreviousNodesContent.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: CustomPreviousNodesContent.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.CustomPreviousNodesContent.Satisfied*
@@ -5359,13 +5309,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.CustomPreviousRowContent
   nameWithType: CustomPreviousRowContent.CustomPreviousRowContent
-- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.CustomPreviousRowContent.html#InscryptionAPI_Nodes_CustomPreviousRowContent_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: CustomPreviousRowContent.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: CustomPreviousRowContent.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.CustomPreviousRowContent.Satisfied*
@@ -5713,13 +5663,13 @@ references:
   commentId: T:InscryptionAPI.Nodes.False
   fullName: InscryptionAPI.Nodes.False
   nameWithType: "False"
-- uid: InscryptionAPI.Nodes.False.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.False.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.False.html#InscryptionAPI_Nodes_False_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.False.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.False.html#InscryptionAPI_Nodes_False_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.False.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.False.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.False.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.False.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.False.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: False.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: False.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.False.Satisfied*
@@ -5735,13 +5685,13 @@ references:
   commentId: T:InscryptionAPI.Nodes.Func
   fullName: InscryptionAPI.Nodes.Func
   nameWithType: Func
-- uid: InscryptionAPI.Nodes.Func.#ctor(System.Func{System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData},System.Boolean})
+- uid: InscryptionAPI.Nodes.Func.#ctor(InscryptionAPI.Nodes.Func{System.Int32,List{DiskCardGame.NodeData},System.Boolean})
   name: Func(Func<Int32, List<NodeData>, Boolean>)
-  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func__ctor_System_Func_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__System_Boolean__
-  commentId: M:InscryptionAPI.Nodes.Func.#ctor(System.Func{System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData},System.Boolean})
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func__ctor_InscryptionAPI_Nodes_Func_System_Int32_List_DiskCardGame_NodeData__System_Boolean__
+  commentId: M:InscryptionAPI.Nodes.Func.#ctor(InscryptionAPI.Nodes.Func{System.Int32,List{DiskCardGame.NodeData},System.Boolean})
   name.vb: Func(Func(Of Int32, List(Of NodeData), Boolean))
-  fullName: InscryptionAPI.Nodes.Func.Func(System.Func<System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>, System.Boolean>)
-  fullName.vb: InscryptionAPI.Nodes.Func.Func(System.Func(Of System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData), System.Boolean))
+  fullName: InscryptionAPI.Nodes.Func.Func(InscryptionAPI.Nodes.Func<System.Int32, List<DiskCardGame.NodeData>, System.Boolean>)
+  fullName.vb: InscryptionAPI.Nodes.Func.Func(InscryptionAPI.Nodes.Func(Of System.Int32, List(Of DiskCardGame.NodeData), System.Boolean))
   nameWithType: Func.Func(Func<Int32, List<NodeData>, Boolean>)
   nameWithType.vb: Func.Func(Func(Of Int32, List(Of NodeData), Boolean))
 - uid: InscryptionAPI.Nodes.Func.#ctor*
@@ -5751,13 +5701,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.Func.Func
   nameWithType: Func.Func
-- uid: InscryptionAPI.Nodes.Func.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.Func.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.Func.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.Func.html#InscryptionAPI_Nodes_Func_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.Func.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.Func.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: Func.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: Func.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.Func.Satisfied*
@@ -5989,11 +5939,11 @@ references:
   commentId: F:InscryptionAPI.Nodes.NewNodeManager.FullNode.sequencerPrefab
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.sequencerPrefab
   nameWithType: NewNodeManager.FullNode.sequencerPrefab
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(Type)
   name: SequencerTypeIsValid(Type)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SequencerTypeIsValid_System_Type_
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(System.Type)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SequencerTypeIsValid_Type_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(Type)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid(Type)
   nameWithType: NewNodeManager.FullNode.SequencerTypeIsValid(Type)
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid*
   name: SequencerTypeIsValid
@@ -6002,13 +5952,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SequencerTypeIsValid
   nameWithType: NewNodeManager.FullNode.SequencerTypeIsValid
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(List{DiskCardGame.NodeData.SelectionCondition})
   name: SetForceGenerationConditions(List<NodeData.SelectionCondition>)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetForceGenerationConditions_System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetForceGenerationConditions_List_DiskCardGame_NodeData_SelectionCondition__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(List{DiskCardGame.NodeData.SelectionCondition})
   name.vb: SetForceGenerationConditions(List(Of NodeData.SelectionCondition))
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(List<DiskCardGame.NodeData.SelectionCondition>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions(List(Of DiskCardGame.NodeData.SelectionCondition))
   nameWithType: NewNodeManager.FullNode.SetForceGenerationConditions(List<NodeData.SelectionCondition>)
   nameWithType.vb: NewNodeManager.FullNode.SetForceGenerationConditions(List(Of NodeData.SelectionCondition))
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions*
@@ -6018,13 +5968,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetForceGenerationConditions
   nameWithType: NewNodeManager.FullNode.SetForceGenerationConditions
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(List{DiskCardGame.NodeData.SelectionCondition})
   name: SetGenerationPrerequisites(List<NodeData.SelectionCondition>)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationPrerequisites_System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition})
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetGenerationPrerequisites_List_DiskCardGame_NodeData_SelectionCondition__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(List{DiskCardGame.NodeData.SelectionCondition})
   name.vb: SetGenerationPrerequisites(List(Of NodeData.SelectionCondition))
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(List<DiskCardGame.NodeData.SelectionCondition>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites(List(Of DiskCardGame.NodeData.SelectionCondition))
   nameWithType: NewNodeManager.FullNode.SetGenerationPrerequisites(List<NodeData.SelectionCondition>)
   nameWithType.vb: NewNodeManager.FullNode.SetGenerationPrerequisites(List(Of NodeData.SelectionCondition))
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetGenerationPrerequisites*
@@ -6073,13 +6023,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetName
   nameWithType: NewNodeManager.FullNode.SetName
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List{UnityEngine.Texture2D})
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(List{UnityEngine.Texture2D})
   name: SetNodeAnimation(List<Texture2D>)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeAnimation_System_Collections_Generic_List_UnityEngine_Texture2D__
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List{UnityEngine.Texture2D})
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeAnimation_List_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(List{UnityEngine.Texture2D})
   name.vb: SetNodeAnimation(List(Of Texture2D))
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List<UnityEngine.Texture2D>)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(System.Collections.Generic.List(Of UnityEngine.Texture2D))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(List<UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation(List(Of UnityEngine.Texture2D))
   nameWithType: NewNodeManager.FullNode.SetNodeAnimation(List<Texture2D>)
   nameWithType.vb: NewNodeManager.FullNode.SetNodeAnimation(List(Of Texture2D))
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeAnimation*
@@ -6102,11 +6052,11 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodePrefab
   nameWithType: NewNodeManager.FullNode.SetNodePrefab
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(Type)
   name: SetNodeSequencerType(Type)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeSequencerType_System_Type_
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(System.Type)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetNodeSequencerType_Type_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(Type)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(Type)
   nameWithType: NewNodeManager.FullNode.SetNodeSequencerType(Type)
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType*
   name: SetNodeSequencerType
@@ -6124,13 +6074,13 @@ references:
   fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetNodeSequencerType(Of T)()
   nameWithType: NewNodeManager.FullNode.SetNodeSequencerType<T>()
   nameWithType.vb: NewNodeManager.FullNode.SetNodeSequencerType(Of T)()
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
   name: SetOnPostNodeGeneration(Action<CustomSpecialNodeData, MapNode2D>)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPostNodeGeneration_System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPostNodeGeneration_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D})
   name.vb: SetOnPostNodeGeneration(Action(Of CustomSpecialNodeData, MapNode2D))
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration(Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D))
   nameWithType: NewNodeManager.FullNode.SetOnPostNodeGeneration(Action<CustomSpecialNodeData, MapNode2D>)
   nameWithType.vb: NewNodeManager.FullNode.SetOnPostNodeGeneration(Action(Of CustomSpecialNodeData, MapNode2D))
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration*
@@ -6140,13 +6090,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPostNodeGeneration
   nameWithType: NewNodeManager.FullNode.SetOnPostNodeGeneration
-- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
+- uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
   name: SetOnPreNodeGeneration(Action<CustomSpecialNodeData>)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPreNodeGeneration_System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
+  href: api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html#InscryptionAPI_Nodes_NewNodeManager_FullNode_SetOnPreNodeGeneration_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(Action{InscryptionAPI.Nodes.CustomSpecialNodeData})
   name.vb: SetOnPreNodeGeneration(Action(Of CustomSpecialNodeData))
-  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData))
+  fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(Action<InscryptionAPI.Nodes.CustomSpecialNodeData>)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration(Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData))
   nameWithType: NewNodeManager.FullNode.SetOnPreNodeGeneration(Action<CustomSpecialNodeData>)
   nameWithType.vb: NewNodeManager.FullNode.SetOnPreNodeGeneration(Action(Of CustomSpecialNodeData))
 - uid: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetOnPreNodeGeneration*
@@ -6169,13 +6119,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.FullNode.SetSequencerPrefab
   nameWithType: NewNodeManager.FullNode.SetSequencerPrefab
-- uid: InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Type,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,Type,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
   name: New(String, String, GenerationType, Type, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New_System_String_System_String_InscryptionAPI_Nodes_GenerationType_System_Type_System_Collections_Generic_List_UnityEngine_Texture2D__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Type,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New_System_String_System_String_InscryptionAPI_Nodes_GenerationType_Type_List_UnityEngine_Texture2D__List_DiskCardGame_NodeData_SelectionCondition__List_DiskCardGame_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,Type,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
   name.vb: New(String, String, GenerationType, Type, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
-  fullName: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Type, System.Collections.Generic.List<UnityEngine.Texture2D>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Type, System.Collections.Generic.List(Of UnityEngine.Texture2D), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, Type, List<UnityEngine.Texture2D>, List<DiskCardGame.NodeData.SelectionCondition>, List<DiskCardGame.NodeData.SelectionCondition>, Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(System.String, System.String, InscryptionAPI.Nodes.GenerationType, Type, List(Of UnityEngine.Texture2D), List(Of DiskCardGame.NodeData.SelectionCondition), List(Of DiskCardGame.NodeData.SelectionCondition), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
   nameWithType: NewNodeManager.New(String, String, GenerationType, Type, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
   nameWithType.vb: NewNodeManager.New(String, String, GenerationType, Type, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
 - uid: InscryptionAPI.Nodes.NewNodeManager.New*
@@ -6185,13 +6135,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.NewNodeManager.New
   nameWithType: NewNodeManager.New
-- uid: InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
   name: New<T>(String, String, GenerationType, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
-  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New__1_System_String_System_String_InscryptionAPI_Nodes_GenerationType_System_Collections_Generic_List_UnityEngine_Texture2D__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Collections_Generic_List_DiskCardGame_NodeData_SelectionCondition__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData__System_Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
-  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,System.Collections.Generic.List{UnityEngine.Texture2D},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Collections.Generic.List{DiskCardGame.NodeData.SelectionCondition},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData},System.Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_New__1_System_String_System_String_InscryptionAPI_Nodes_GenerationType_List_UnityEngine_Texture2D__List_DiskCardGame_NodeData_SelectionCondition__List_DiskCardGame_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)
   name.vb: New(Of T)(String, String, GenerationType, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
-  fullName: InscryptionAPI.Nodes.NewNodeManager.New<T>(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Collections.Generic.List<UnityEngine.Texture2D>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Collections.Generic.List<DiskCardGame.NodeData.SelectionCondition>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, System.Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
-  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(Of T)(System.String, System.String, InscryptionAPI.Nodes.GenerationType, System.Collections.Generic.List(Of UnityEngine.Texture2D), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Collections.Generic.List(Of DiskCardGame.NodeData.SelectionCondition), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), System.Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName: InscryptionAPI.Nodes.NewNodeManager.New<T>(System.String, System.String, InscryptionAPI.Nodes.GenerationType, List<UnityEngine.Texture2D>, List<DiskCardGame.NodeData.SelectionCondition>, List<DiskCardGame.NodeData.SelectionCondition>, Action<InscryptionAPI.Nodes.CustomSpecialNodeData>, Action<InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D>, UnityEngine.GameObject, UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(Of T)(System.String, System.String, InscryptionAPI.Nodes.GenerationType, List(Of UnityEngine.Texture2D), List(Of DiskCardGame.NodeData.SelectionCondition), List(Of DiskCardGame.NodeData.SelectionCondition), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
   nameWithType: NewNodeManager.New<T>(String, String, GenerationType, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
   nameWithType.vb: NewNodeManager.New(Of T)(String, String, GenerationType, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
 - uid: InscryptionAPI.Nodes.Not
@@ -6213,13 +6163,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.Not.Not
   nameWithType: Not.Not
-- uid: InscryptionAPI.Nodes.Not.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.Not.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.Not.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.Not.html#InscryptionAPI_Nodes_Not_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.Not.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.Not.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: Not.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: Not.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.Not.Satisfied*
@@ -6235,13 +6185,13 @@ references:
   commentId: T:InscryptionAPI.Nodes.True
   fullName: InscryptionAPI.Nodes.True
   nameWithType: "True"
-- uid: InscryptionAPI.Nodes.True.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+- uid: InscryptionAPI.Nodes.True.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name: Satisfied(Int32, List<NodeData>)
-  href: api/InscryptionAPI.Nodes.True.html#InscryptionAPI_Nodes_True_Satisfied_System_Int32_System_Collections_Generic_List_DiskCardGame_NodeData__
-  commentId: M:InscryptionAPI.Nodes.True.Satisfied(System.Int32,System.Collections.Generic.List{DiskCardGame.NodeData})
+  href: api/InscryptionAPI.Nodes.True.html#InscryptionAPI_Nodes_True_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.True.Satisfied(System.Int32,List{DiskCardGame.NodeData})
   name.vb: Satisfied(Int32, List(Of NodeData))
-  fullName: InscryptionAPI.Nodes.True.Satisfied(System.Int32, System.Collections.Generic.List<DiskCardGame.NodeData>)
-  fullName.vb: InscryptionAPI.Nodes.True.Satisfied(System.Int32, System.Collections.Generic.List(Of DiskCardGame.NodeData))
+  fullName: InscryptionAPI.Nodes.True.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.True.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
   nameWithType: True.Satisfied(Int32, List<NodeData>)
   nameWithType.vb: True.Satisfied(Int32, List(Of NodeData))
 - uid: InscryptionAPI.Nodes.True.Satisfied*
@@ -7453,13 +7403,13 @@ references:
   commentId: T:InscryptionAPI.Triggers.IGetOpposingSlots
   fullName: InscryptionAPI.Triggers.IGetOpposingSlots
   nameWithType: IGetOpposingSlots
-- uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot})
+- uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
   name: GetOpposingSlots(List<CardSlot>, List<CardSlot>)
-  href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html#InscryptionAPI_Triggers_IGetOpposingSlots_GetOpposingSlots_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__
-  commentId: M:InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot})
+  href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html#InscryptionAPI_Triggers_IGetOpposingSlots_GetOpposingSlots_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
   name.vb: GetOpposingSlots(List(Of CardSlot), List(Of CardSlot))
-  fullName: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>)
-  fullName.vb: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot))
+  fullName: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots(List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot))
   nameWithType: IGetOpposingSlots.GetOpposingSlots(List<CardSlot>, List<CardSlot>)
   nameWithType.vb: IGetOpposingSlots.GetOpposingSlots(List(Of CardSlot), List(Of CardSlot))
 - uid: InscryptionAPI.Triggers.IGetOpposingSlots.GetOpposingSlots*
@@ -8310,13 +8260,13 @@ references:
   commentId: T:InscryptionAPI.Triggers.ISetupAttackSequence
   fullName: InscryptionAPI.Triggers.ISetupAttackSequence
   nameWithType: ISetupAttackSequence
-- uid: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
   name: CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, ref Int32, ref Boolean)
-  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_CollectModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32__System_Boolean__
-  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_CollectModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__System_Int32__System_Boolean__
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32@,System.Boolean@)
   name.vb: CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), ByRef Int32, ByRef Boolean)
-  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, ref System.Int32, ref System.Boolean)
-  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), ByRef System.Int32, ByRef System.Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>, ref System.Int32, ref System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot), ByRef System.Int32, ByRef System.Boolean)
   nameWithType: ISetupAttackSequence.CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, ref Int32, ref Boolean)
   nameWithType.vb: ISetupAttackSequence.CollectModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), ByRef Int32, ByRef Boolean)
 - uid: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots*
@@ -8326,13 +8276,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.ISetupAttackSequence.CollectModifyAttackSlots
   nameWithType: ISetupAttackSequence.CollectModifyAttackSlots
-- uid: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
   name: GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_GetTriggerPriority_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_GetTriggerPriority_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
   name.vb: GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
-  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
-  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
   nameWithType: ISetupAttackSequence.GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
   nameWithType.vb: ISetupAttackSequence.GetTriggerPriority(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
 - uid: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority*
@@ -8342,13 +8292,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.ISetupAttackSequence.GetTriggerPriority
   nameWithType: ISetupAttackSequence.GetTriggerPriority
-- uid: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+- uid: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
   name: RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
-  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_RespondsToModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_System_Collections_Generic_List_DiskCardGame_CardSlot__System_Collections_Generic_List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,System.Collections.Generic.List{DiskCardGame.CardSlot},System.Collections.Generic.List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
+  href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html#InscryptionAPI_Triggers_ISetupAttackSequence_RespondsToModifyAttackSlots_DiskCardGame_PlayableCard_InscryptionAPI_Triggers_OpposingSlotTriggerPriority_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard,InscryptionAPI.Triggers.OpposingSlotTriggerPriority,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot},System.Int32,System.Boolean)
   name.vb: RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
-  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Collections.Generic.List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
-  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Collections.Generic.List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
+  fullName: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>, System.Int32, System.Boolean)
+  fullName.vb: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots(DiskCardGame.PlayableCard, InscryptionAPI.Triggers.OpposingSlotTriggerPriority, List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot), System.Int32, System.Boolean)
   nameWithType: ISetupAttackSequence.RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List<CardSlot>, List<CardSlot>, Int32, Boolean)
   nameWithType.vb: ISetupAttackSequence.RespondsToModifyAttackSlots(PlayableCard, OpposingSlotTriggerPriority, List(Of CardSlot), List(Of CardSlot), Int32, Boolean)
 - uid: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots*
