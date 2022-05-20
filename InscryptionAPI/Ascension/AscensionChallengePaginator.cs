@@ -176,18 +176,35 @@ public class AscensionChallengePaginator : MonoBehaviour
                         toSort
                     };
         }
-        List<ChallengeManager.FullChallenge> fcs = ChallengeManager.NewInfos.ToList();
-        fcs.Sort((x, x2) => x.SortValue != x2.SortValue ? x.SortValue - x2.SortValue : x2.UnlockLevel - x.UnlockLevel);
-        List<AscensionChallengeInfo> challengesToAdd = new(fcs.ConvertAll(x => x.Challenge.Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
-        icons.ForEach(delegate (AscensionIconInteractable ic)
+        List<ChallengeManager.FullChallenge> fcs = ChallengeManager.AllChallenges.ToList();
+        List<(ChallengeManager.FullChallenge, AscensionChallengeInfo)> challengesToAdd = new(fcs.ConvertAll(x => (x, x.Challenge).Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
+        List<AscensionIconInteractable> sortedicons = new(screen.icons);
+        sortedicons.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.x - x2.transform.position.x) < 0.1f ? x2.transform.position.y - x.transform.position.y : x.transform.position.x - x2.transform.position.x) * 100));
+        foreach(var icon in sortedicons)
         {
-            if (ic != null && ic.Info == null && challengesToAdd.Count > 0)
+            if(challengesToAdd.Count > 0)
             {
-                ic.challengeInfo = challengesToAdd[0];
-                ic.AssignInfo(challengesToAdd[0]);
+                icon.AssignInfo(challengesToAdd[0].Item2);
                 challengesToAdd.RemoveAt(0);
             }
-        });
+            else
+            {
+                if (missing == null)
+                {
+                    missing = ScriptableObject.CreateInstance<AscensionChallengeInfo>();
+                    missing.name = "MISSING";
+                    missing.activatedSprite = null;
+                    missing.iconSprite = null;
+                    missing.challengeType = AscensionChallenge.None;
+                    missing.description = "";
+                    missing.title = "";
+                    missing.pointValue = 0;
+                }
+                icon.AssignInfo(missing);
+            }
+            icon.conqueredRenderer.gameObject.SetActive(icon.Conquered && icon.showConquered);
+        }
+        challengesToAdd.Sort((x, x2) => x.Item1.SortValue != x2.Item1.SortValue ? x.Item1.SortValue - x2.Item1.SortValue : x2.Item1.UnlockLevel - x.Item1.UnlockLevel);
         List<List<AscensionChallengeInfo>> pagesToAdd = new();
         while (challengesToAdd.Count > 0)
         {
@@ -196,7 +213,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             {
                 if (challengesToAdd.Count > 0)
                 {
-                    page.Add(challengesToAdd.Last());
+                    page.Add(challengesToAdd.Last().Item2);
                     challengesToAdd.RemoveAt(challengesToAdd.Count - 1);
                 }
             }

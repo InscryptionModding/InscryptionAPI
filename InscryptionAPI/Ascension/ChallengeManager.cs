@@ -149,7 +149,9 @@ public static class ChallengeManager
         AscensionUnlockSchedule schedule = AscensionUnlockSchedule.instance;
         List<FullChallenge> retval = new();
         AscensionChallengeScreen screen = screenobj.GetComponentInChildren<AscensionChallengeScreen>();
-        foreach(AscensionIconInteractable icon in screen.icons)
+        List<AscensionIconInteractable> sortedicons = new(screen.icons);
+        sortedicons.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.x - x2.transform.position.x) < 0.1f ? x2.transform.position.y - x.transform.position.y : x.transform.position.x - x2.transform.position.x) * 100));
+        foreach (AscensionIconInteractable icon in sortedicons)
         {
             FullChallenge existing = retval.Find(x => x != null && x.Challenge == icon.Info);
             if(existing != null)
