@@ -2,21 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InscryptionAPI.Helpers.Extensions
+namespace InscryptionAPI.Helpers.Extensions;
+
+public static class ListExtensions
 {
-    public static class ListExtensions
+    public static List<T> Repeat<T>(this T toRepeat, int times)
     {
-        public static List<T> Repeat<T>(this T toRepeat, int times)
+        List<T> repeated = new();
+        if(toRepeat != null)
         {
-            List<T> repeated = new();
-            if(toRepeat != null)
+            for(int i = 0; i < times; i++)
             {
-                for(int i = 0; i < times; i++)
-                {
-                    repeated.Add(toRepeat);
-                }
+                repeated.Add(toRepeat);
             }
-            return repeated;
         }
+        return repeated;
     }
 }
