@@ -1,214 +1,414 @@
 using DiskCardGame;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using HarmonyLib;
 using UnityEngine;
 
-namespace InscryptionAPI.Triggers
+namespace InscryptionAPI.Triggers;
+
+[HarmonyPatch]
+internal static class CustomTriggerPatches
 {
-    [HarmonyPatch]
-    internal static class CustomTriggerPatches
+    [HarmonyPatch(typeof(PlayerHand), nameof(PlayerHand.AddCardToHand))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
     {
-        [HarmonyPatch(typeof(PlayerHand), nameof(PlayerHand.AddCardToHand))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnAddedToHand(IEnumerator result, PlayableCard card)
-        {
-            yield return result;
-            foreach (var onCard in CustomTriggerFinder.FindTriggersOnCard<IAddedToHand>(card))
-            {
-                if (onCard.RespondsToAddedToHand())
-                    yield return onCard.OnAddedToHand();
-            }
-            foreach (var otherCard in CustomTriggerFinder.FindGlobalTriggers<IOtherAddedToHand>(card))
-            {
-                if (otherCard.RespondsToOtherAddedToHand(card))
-                    yield return otherCard.OnOtherAddedToHand(card);
-            }
-        }
+        yield return result;
+        yield return card.TriggerHandler.Trigger<IOnAddedToHand>(x => x.RespondsToAddedToHand(), x => x.OnAddedToHand());
+        yield return CustomTriggerFinder.TriggerAll<IOnOtherCardAddedToHand>(false, x => x.RespondsToOtherCardAddedToHand(card), x => x.OnOtherCardAddedToHand(card));
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.DoCombatPhase))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
-        {
-            foreach (var i in CustomTriggerFinder.FindGlobalTriggers<IBellRung>())
-            {
-                if (i.RespondsToBellRung(playerIsAttacker))
-                    yield return i.OnBellRung(playerIsAttacker);
-            }
-            yield return result;
-        }
+    [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.DoCombatPhase))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnBellRung(IEnumerator result, bool playerIsAttacker)
+    {
+        yield return CustomTriggerFinder.TriggerAll<IOnBellRung>(false, x => x.RespondsToBellRung(playerIsAttacker), x => x.OnBellRung(playerIsAttacker));
+        yield return result;
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSequence))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
-        {
-            foreach (var pre in CustomTriggerFinder.FindGlobalTriggers<IPreSlotAttackSequence>())
-            {
-                if (pre.RespondsToPreSlotAttackSequence(slot))
-                    yield return pre.OnPreSlotAttackSequence(slot);
-            }
-            yield return result;
-            foreach (var post in CustomTriggerFinder.FindGlobalTriggers<IPostSlotAttackSequence>())
-            {
-                if (post.RespondsToPostSlotAttackSequence(slot))
-                    yield return post.OnPostSlotAttackSequence(slot);
-            }
-        }
+    [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSequence))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnSlotAttackSequence(IEnumerator result, CardSlot slot)
+    {
+        yield return CustomTriggerFinder.TriggerAll<IOnPreSlotAttackSequence>(false, x => x.RespondsToPreSlotAttackSequence(slot), x => x.OnPreSlotAttackSequence(slot));
+        yield return result;
+        yield return CustomTriggerFinder.TriggerAll<IOnPostSlotAttackSequence>(false, x => x.RespondsToPostSlotAttackSequence(slot), x => x.OnPostSlotAttackSequence(slot));
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
-        {
-            yield return result;
-            foreach (var i in CustomTriggerFinder.FindGlobalTriggers<IPostSingularSlotAttackSlot>())
-            {
-                if (i.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot))
-                    yield return i.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot);
-            }
-        }
+    [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
+    {
+        yield return result;
+        yield return CustomTriggerFinder.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x =>
+            x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(LifeManager), nameof(LifeManager.ShowDamageSequence))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, bool toPlayer)
-        {
-            foreach (var pre in CustomTriggerFinder.FindGlobalTriggers<IPreScalesChanged>())
-            {
-                if (pre.RespondsToPreScalesChanged(damage, toPlayer))
-                    yield return pre.OnPreScalesChanged(damage, toPlayer);
-            }
-            yield return result;
-            foreach (var post in CustomTriggerFinder.FindGlobalTriggers<IPostScalesChanged>())
-            {
-                if (post.RespondsToPostScalesChanged(damage, toPlayer))
-                    yield return post.OnPostScalesChanged(damage, toPlayer);
-            }
-        }
+    private static Type scaleChangedCoroutine;
+    private static FieldInfo scaleChangedDamage;
+    private static FieldInfo scaleChangedToPlayer;
+    private static FieldInfo scaleChangedNumWeights;
 
-        [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
+    [HarmonyPatch(typeof(LifeManager), nameof(LifeManager.ShowDamageSequence))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnScalesChanged(IEnumerator result, int damage, int numWeights, bool toPlayer)
+    {
+        int initialDamage = damage;
+        bool initialToPlayer = toPlayer;
+        CustomTriggerFinder.CollectDataAll<IOnPreScalesChangedRef, int>(false, x => x.RespondsToPreScalesChangedRef(damage, numWeights, toPlayer), x =>
         {
-            yield return result;
-            foreach (var i in CustomTriggerFinder.FindTriggersInHand<IUpkeepInHand>())
+            damage = x.CollectPreScalesChangedRef(damage, ref numWeights, ref toPlayer);
+            if (damage < 0)
             {
-                if (i.RespondsToUpkeepInHand(playerUpkeep))
-                    yield return i.OnUpkeepInHand(playerUpkeep);
+                damage = -damage;
+                toPlayer = !toPlayer;
             }
-        }
+            return damage;
+        });
+        yield return CustomTriggerFinder.TriggerAll<IOnPreScalesChanged>(false, x => x.RespondsToPreScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x => x.OnPreScalesChanged(damage, toPlayer, initialDamage, initialToPlayer));
+        //if (damage != 0)
+        //{
+        (scaleChangedDamage ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
+        (scaleChangedToPlayer ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("toPlayer"))?.SetValue(result, toPlayer);
+        (scaleChangedNumWeights ??= (scaleChangedCoroutine ??= result?.GetType())?.GetField("numWeights"))?.SetValue(result, numWeights);
+        yield return result;
+        //}
+        yield return CustomTriggerFinder.TriggerAll<IOnPostScalesChanged>(false, x => x.RespondsToPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer), x =>
+            x.OnPostScalesChanged(damage, toPlayer, initialDamage, initialToPlayer));
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ResolveCardOnBoard))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
+    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnUpkeepInHand(IEnumerator result, bool playerUpkeep)
+    {
+        yield return result;
+        yield return CustomTriggerFinder.TriggerInHand<IOnUpkeepInHand>(x => x.RespondsToUpkeepInHand(playerUpkeep), x => x.OnUpkeepInHand(playerUpkeep));
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ResolveCardOnBoard))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnOtherCardResolveInHand(IEnumerator result, PlayableCard card, bool resolveTriggers = true)
+    {
+        yield return result;
+        if (resolveTriggers)
         {
-            yield return result;
-            if (resolveTriggers)
+            yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardResolveInHand>(x => x.RespondsToOtherCardResolveInHand(card), x => x.OnOtherCardResolveInHand(card));
+        }
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.PlayerTurn))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result)
+    {
+        yield return result;
+        yield return CustomTriggerFinder.TriggerInHand<IOnTurnEndInHand>(x => x.RespondsToTurnEndInHand(true), x => x.OnTurnEndInHand(true));
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.OpponentTurn))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnTurnEndInHandOpponent(IEnumerator result, TurnManager __instance)
+    {
+        bool turnSkipped = __instance.Opponent.SkipNextTurn;
+        yield return result;
+        if (!turnSkipped)
+        {
+            yield return CustomTriggerFinder.TriggerInHand<IOnTurnEndInHand>(x => x.RespondsToTurnEndInHand(false), x => x.OnTurnEndInHand(false));
+        }
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.AssignCardToSlot))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
+    {
+        CardSlot slot2 = card.Slot;
+        yield return result;
+        if (resolveTriggers && slot2 != card.Slot)
+        {
+            yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotContext>(false, x => x.RespondsToCardAssignedToSlotContext(card, slot2, card.Slot), x =>
+                x.OnCardAssignedToSlotContext(card, slot2, card.Slot));
+        }
+        if (resolveTriggers && slot2 != card.Slot)
+        {
+            yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardAssignedToSlotInHand>(x => x.RespondsToOtherCardAssignedToSlotInHand(card), x => x.OnOtherCardAssignedToSlotInHand(card));
+        }
+        if (resolveTriggers && slot2 != card.Slot && slot2 != null)
+        {
+            yield return CustomTriggerFinder.TriggerAll<IOnCardAssignedToSlotNoResolve>(false, x => x.RespondsToCardAssignedToSlotNoResolve(card), x => x.OnCardAssignedToSlotNoResolve(card));
+        }
+        yield break;
+    }
+
+    private static FieldInfo triggerField;
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Die))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerDeathTriggers(IEnumerator result, PlayableCard __instance, bool wasSacrifice, PlayableCard killer = null)
+    {
+        CardSlot slotBeforeDeath = __instance.Slot;
+        while (result.MoveNext())
+        {
+            yield return result.Current;
+            if (result.Current.GetType() == triggerType)
             {
-                foreach (var i in CustomTriggerFinder.FindTriggersInHandExcluding<IOtherCardResolveInHand>(card))
+                Trigger t = Trigger.None;
+                try
                 {
-                    if (i.RespondsToOtherCardResolveInHand(card))
-                        yield return i.OnOtherCardResolveInHand(card);
+                    t = (Trigger)(triggerField ??= triggerType.GetField("trigger")).GetValue(result.Current);
+                }
+                catch { }
+                if (t == Trigger.OtherCardPreDeath)
+                {
+                    yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardPreDeathInHand>(x => x.RespondsToOtherCardPreDeathInHand(slotBeforeDeath, !wasSacrifice, killer), x =>
+                        x.OnOtherCardPreDeathInHand(slotBeforeDeath, !wasSacrifice, killer));
+                }
+                else if (t == Trigger.OtherCardDie)
+                {
+                    yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDieInHand>(x => x.RespondsToOtherCardDieInHand(__instance, slotBeforeDeath, !wasSacrifice, killer), x =>
+                        x.OnOtherCardDieInHand(__instance, slotBeforeDeath, !wasSacrifice, killer));
                 }
             }
         }
+        yield break;
+    }
 
-        [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.PlayerTurn))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result)
+    private static Type takeDamageCoroutine;
+    private static FieldInfo takeDamageDamage;
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
+    {
+        CustomTriggerFinder.CollectDataAll<ICardTakenDamageModifier, int>(true, x => x.RespondsToCardTakenDamageModifier(__instance, damage), x => damage = x.CollectCardTakenDamageModifier(__instance, damage));
+        if (damage != 0)
         {
-            yield return result;
-            foreach (var i in CustomTriggerFinder.FindGlobalTriggers<ITurnEndInHand>())
-            {
-                if (i.RespondsToTurnEndedInHand())
-                    yield return i.OnTurnEndInHand();
-            }
-        }
-
-        [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.OpponentTurn))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnTurnEndInHandOpponent(IEnumerator result, TurnManager __instance)
-        {
-            bool turnSkipped = __instance.Opponent.SkipNextTurn;
-            yield return result;
-            if (!turnSkipped)
-            {
-                foreach (var i in CustomTriggerFinder.FindGlobalTriggers<ITurnEndInHand>())
-                {
-                    if (i.RespondsToTurnEndedInHand())
-                        yield return i.OnTurnEndInHand();
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.AssignCardToSlot))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnOtherCardAssignedToSlotInHand(IEnumerator result, PlayableCard card, bool resolveTriggers)
-        {
-            CardSlot slot2 = card.Slot;
-            yield return result;
-            if (resolveTriggers && slot2 != card.Slot)
-            {
-                bool fromHand = slot2 == null;
-                foreach (var i in CustomTriggerFinder.FindTriggersInHand<IOtherCardAssignedToSlotInHand>())
-                {
-                    if (i.RespondsToOtherCardAssignedToSlotInHand(card, fromHand))
-                        yield return i.OnOtherCardAssignedToSlotInHand(card, fromHand);
-                }
-            }
-        }
-
-        private static readonly Type TriggerCardsOnBoardEnumerator =
-            AccessTools.EnumeratorMoveNext(AccessTools.DeclaredMethod(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))).DeclaringType;
-
-        private static readonly FieldInfo TriggerField = AccessTools.Field(TriggerCardsOnBoardEnumerator, "trigger");
-        
-        [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Die))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerDeathTriggers(IEnumerator result, PlayableCard __instance, bool wasSacrifice, PlayableCard killer = null)
-        {
-            CardSlot slotBeforeDeath = __instance.Slot;
-            while (result.MoveNext())
-            {
-                yield return result.Current;
-                if (result.Current.GetType() == TriggerCardsOnBoardEnumerator)
-                {
-                    Trigger t = (Trigger)TriggerField.GetValue(result.Current);
-                    if (t == Trigger.OtherCardPreDeath)
-                    {
-                        foreach (var pre in CustomTriggerFinder.FindTriggersInHand<IOtherCardPreDeathInHand>())
-                        {
-                            if (pre.RespondsToOtherCardPreDeathInHand(slotBeforeDeath, wasSacrifice, killer))
-                                yield return pre.OnOtherCardPreDeathInHand(slotBeforeDeath, wasSacrifice, killer);
-                        }
-                    }
-                    else if (t == Trigger.OtherCardDie)
-                    {
-                        foreach (var i in CustomTriggerFinder.FindTriggersInHand<IOtherCardDieInHand>())
-                        {
-                            if (i.RespondsToOtherCardDieInHand(__instance, slotBeforeDeath, wasSacrifice, killer))
-                                yield return i.OnOtherCardDieInHand(__instance, slotBeforeDeath, wasSacrifice, killer);
-                        }
-                    }
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
-        [HarmonyPostfix]
-        private static IEnumerator TriggerOnOtherCardDealtDamageInHand(IEnumerator result, PlayableCard __instance, PlayableCard attacker)
-        {
+            (takeDamageDamage ??= (takeDamageCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
             bool hasshield = __instance.HasShield();
             yield return result;
             if (!hasshield && attacker != null)
             {
-                foreach (var i in CustomTriggerFinder.FindTriggersInHand<IOtherCardDealtDamageInHand>())
-                {
-                    if (i.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance))
-                        yield return i.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance);
-                }
+                yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
+                    x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
             }
         }
+        yield break;
     }
+
+    [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
+    [HarmonyPostfix]
+    private static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
+    {
+        bool itemCanBeUsed = true;
+        string consumableName = __instance?.Consumable?.Data?.name;
+        if (!string.IsNullOrEmpty(consumableName))
+        {
+            CustomTriggerFinder.CollectDataAll<IItemCanBeUsed, bool>(false, x => x.RespondsToItemCanBeUsed(consumableName, itemCanBeUsed), x => itemCanBeUsed = x.CollectItemCanBeUsed(consumableName, itemCanBeUsed));
+        }
+        if (itemCanBeUsed)
+        {
+            bool successInActivation = false;
+            Type activationtype = __instance.Consumable.ActivateSequence().GetType();
+            if (!string.IsNullOrEmpty(consumableName))
+            {
+                yield return CustomTriggerFinder.TriggerAll<IOnPreItemUsed>(false, x => x.RespondsToPreItemUsed(consumableName, __instance is HammerItemSlot), x =>
+                    x.OnPreItemUsed(consumableName, __instance is HammerItemSlot));
+            }
+            while (result.MoveNext())
+            {
+                yield return result.Current;
+                if (result.Current.GetType() == activationtype)
+                {
+                    if (!string.IsNullOrEmpty(consumableName) && __instance.Consumable != null)
+                    {
+                        successInActivation = !__instance.Consumable.ActivationCancelled;
+                    }
+                }
+            }
+            if (!string.IsNullOrEmpty(consumableName))
+            {
+                yield return CustomTriggerFinder.TriggerAll<IOnPostItemUsed>(false, x => x.RespondsToPostItemUsed(consumableName, successInActivation, __instance is HammerItemSlot), x =>
+                    x.OnPostItemUsed(consumableName, successInActivation, __instance is HammerItemSlot));
+            }
+        }
+        else
+        {
+            __instance?.Consumable?.PlayShakeAnimation();
+            if (!string.IsNullOrEmpty(consumableName))
+            {
+                yield return CustomTriggerFinder.TriggerAll<IOnItemPreventedFromUse>(false, x => x.RespondsToItemPreventedFromUse(consumableName), x => x.OnItemPreventedFromUse(consumableName));
+            }
+        }
+        yield break;
+    }
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
+    [HarmonyPostfix]
+    private static void PassiveAttackBuffs(PlayableCard __instance, ref int __result)
+    {
+        int dummyResult = __result;
+        CustomTriggerFinder.CollectDataAll<IOnCardPassiveAttackBuffs, int>(true, x => x.RespondsToCardPassiveAttackBuffs(__instance, dummyResult), x => dummyResult =
+            x.CollectCardPassiveAttackBuffs(__instance, dummyResult));
+        if (__instance.OnBoard)
+        {
+            CustomTriggerFinder.CollectDataAll<IPassiveAttackBuff, int>(true, x => true, x => dummyResult +=
+                x.GetPassiveAttackBuff(__instance));
+        }
+        __result = dummyResult;
+    }
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
+    [HarmonyPostfix]
+    private static void PassiveHealthBuffs(PlayableCard __instance, ref int __result)
+    {
+        int dummyResult = __result;
+        CustomTriggerFinder.CollectDataAll<IOnCardPassiveHealthBuffs, int>(true, x => x.RespondsToCardPassiveHealthBuffs(__instance, dummyResult), x => dummyResult =
+            x.CollectCardPassiveHealthBuffs(__instance, dummyResult));
+        if (__instance.OnBoard)
+        {
+            CustomTriggerFinder.CollectDataAll<IPassiveHealthBuff, int>(true, x => true, x => dummyResult +=
+                x.GetPassiveHealthBuff(__instance));
+        }
+        __result = dummyResult;
+    }
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
+    [HarmonyPrefix]
+    private static bool OpposingSlotsPrefix(PlayableCard __instance, ref List<CardSlot> __result, ref int __state)
+    {
+        var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false) - 
+            x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false));
+        bool didModify = false;
+        bool discard = false;
+        __state = 1;
+        foreach(var opposing in all)
+        {
+            if(opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), __result ?? new(), __state, false))
+            {
+                didModify = true;
+                __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new List<CardSlot>(), __result ?? new(), ref __state, ref discard);
+                discard = false;
+            }
+        }
+        if (!didModify && __instance.HasAbility(Ability.AllStrike))
+        {
+            __state = Mathf.Max(1, (__instance.OpponentCard ? Singleton<BoardManager>.Instance.PlayerSlotsCopy : Singleton<BoardManager>.Instance.OpponentSlotsCopy).FindAll(x => x.Card != null && 
+                !__instance.CanAttackDirectly(x)).Count);
+        }
+        if (didModify)
+        {
+            if (__instance.HasAbility(Ability.SplitStrike))
+            {
+                ProgressionData.SetAbilityLearned(Ability.SplitStrike);
+                __result.Remove(__instance.Slot.opposingSlot);
+                __result.AddRange(Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot.opposingSlot));
+            }
+            if (__instance.HasTriStrike())
+            {
+                ProgressionData.SetAbilityLearned(Ability.TriStrike);
+                __result.AddRange(Singleton<BoardManager>.Instance.GetAdjacentSlots(__instance.Slot.opposingSlot));
+                if (!__result.Contains(__instance.Slot.opposingSlot))
+                {
+                    __result.Add(__instance.Slot.opposingSlot);
+                }
+            }
+            if (__instance.HasAbility(Ability.DoubleStrike))
+            {
+                ProgressionData.SetAbilityLearned(Ability.DoubleStrike);
+                __result.Add(__instance.slot.opposingSlot);
+            }
+        }
+        if (__instance.HasAbility(Ability.SplitStrike))
+        {
+            __state += 1;
+        }
+        if (__instance.HasTriStrike())
+        {
+            __state += 2;
+            if (__instance.HasAbility(Ability.SplitStrike))
+            {
+                __state += 1;
+            }
+        }
+        if (__instance.HasAbility(Ability.DoubleStrike))
+        {
+            __state += 1;
+        }
+        __result?.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
+        return !didModify;
+    }
+
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
+    [HarmonyPostfix]
+    private static void OpposingSlots(PlayableCard __instance, ref List<CardSlot> __result, int __state)
+    {
+        List<CardSlot> original = new(__result);
+        bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
+        CardSlot defaultslot = __instance.Slot.opposingSlot;
+
+        List<CardSlot> alteredOpposings = new List<CardSlot>();
+        bool removeDefaultAttackSlot = false;
+
+        foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
+        {
+            if (component.RespondsToGetOpposingSlots())
+            {
+                alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
+                removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();
+            }
+        }
+
+        if (alteredOpposings.Count > 0)
+            __result.AddRange(alteredOpposings);
+
+        if (isAttackingDefaultSlot && removeDefaultAttackSlot)
+            __result.Remove(defaultslot);
+        bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
+        var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+        var dummyresult = __result;
+        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
+            x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
+        foreach (var opposing in all)
+        {
+            if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), __state, didRemoveOriginalSlot))
+            {
+                __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.Normal, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
+            }
+        }
+        dummyresult = __result;
+        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, __state, didRemoveOriginalSlot) -
+            x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, __state, didRemoveOriginalSlot));
+        foreach (var opposing in all)
+        {
+            if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), __state, didRemoveOriginalSlot))
+            {
+                __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
+            }
+        }
+        dummyresult = __result;
+        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, __state, didRemoveOriginalSlot) -
+            x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, __state, didRemoveOriginalSlot));
+        foreach (var opposing in all)
+        {
+            if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), __state, didRemoveOriginalSlot))
+            {
+                __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), ref __state, ref didRemoveOriginalSlot);
+            }
+        }
+        if (didRemoveOriginalSlot && __instance.HasTriStrike())
+        {
+            __result.Add(__instance.Slot.opposingSlot);
+        }
+        __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
+    }
+
+    static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }

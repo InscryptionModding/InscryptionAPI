@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <DebugType>full</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,12 +18,16 @@
 
     <ItemGroup>
       <None Remove="ascensionicon_none.png" />
+      <None Remove="ascension_card_none_darker.png" />
       <None Remove="mapevent_missing.png" />
+      <None Remove="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Include="ascensionicon_none.png" />
+      <EmbeddedResource Include="ascension_card_none_darker.png" />
       <EmbeddedResource Include="mapevent_missing.png" />
+      <EmbeddedResource Include="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>

@@ -188,4 +188,89 @@ public static class RegionManager
         }
         return valid[SeededRandom.Range(0, valid.Count, randomseed)];
     }
+
+    [HarmonyPatch(typeof(EncounterBuilder), nameof(EncounterBuilder.BuildTerrainCondition))]
+    [HarmonyPrefix]
+    private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
+    {
+        var customregion = NewRegions.ToList().Find(x => x.Region == RunState.CurrentMapRegion);
+        if(customregion != null)
+        {
+            reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
+            __result = new EncounterData.StartCondition();
+            int numTerrain = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
+            int playerTerrain = 0;
+            int enemyTerrain = 0;
+            for (int i = 0; i < numTerrain; i++)
+            {
+                bool terrainIsForPlayer;
+                if (customregion.AllowTerrainOnEnemySide && customregion.AllowTerrainOnPlayerSide)
+                {
+                    terrainIsForPlayer = SeededRandom.Bool(randomSeed++);
+                    if (terrainIsForPlayer && playerTerrain == 1)
+                    {
+                        terrainIsForPlayer = false;
+                    }
+                    else if (!terrainIsForPlayer && enemyTerrain == 1)
+                    {
+                        terrainIsForPlayer = true;
+                    }
+                }
+                else
+                {
+                    terrainIsForPlayer = customregion.AllowTerrainOnPlayerSide;
+                }
+                CardInfo[] sameSideSlots = terrainIsForPlayer ? __result.cardsInPlayerSlots : __result.cardsInOpponentSlots;
+                CardInfo[] otherSideSlots = terrainIsForPlayer ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
+                int slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
+                bool availableSpace = false;
+                for (int j = 0; j < 4; j++)
+                {
+                    if (sameSideSlots[j] == null && otherSideSlots[j] == null)
+                    {
+                        availableSpace = true;
+                    }
+                }
+                if (!availableSpace)
+                {
+                    break;
+                }
+                while (sameSideSlots[slotForTerrain] != null || otherSideSlots[slotForTerrain] != null)
+                {
+                    slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
+                }
+                if (terrainIsForPlayer && reachTerrainOnPlayerSide)
+                {
+                    CardInfo cardInfo = RunState.CurrentMapRegion.terrainCards.Find((CardInfo x) => x.HasAbility(Ability.Reach));
+                    if (cardInfo == null && !customregion.RemoveDefaultReachTerrain)
+                    {
+                        cardInfo = CardLoader.GetCardByName("Tree");
+                    }
+                    if (cardInfo != null)
+                    {
+                        sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(cardInfo.name);
+                    }
+                }
+                else
+                {
+                    List<CardInfo> list = RunState.CurrentMapRegion.terrainCards.FindAll((CardInfo x) => (ConceptProgressionTree.Tree.CardUnlocked(x, true) || customregion.AllowLockedTerrainCards) &&
+                        (x.traits.Contains(Trait.Terrain) || customregion.AllowSacrificableTerrainCards));
+                    if (list.Count > 0)
+                    {
+                        sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
+                    }
+                }
+                if (terrainIsForPlayer)
+                {
+                    playerTerrain++;
+                }
+                else
+                {
+                    enemyTerrain++;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
 }
