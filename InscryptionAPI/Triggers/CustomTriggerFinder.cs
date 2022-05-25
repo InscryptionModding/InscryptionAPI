@@ -397,7 +397,8 @@ public static class CustomTriggerFinder
     /// <returns>All trigger recievers of type T in the hand</returns>
     public static IEnumerable<T> FindTriggersInHand<T>()
     {
-        return PlayerHand.Instance.CardsInHand.SelectMany(FindTriggersOnCard<T>);
+        List<PlayableCard> handCache = new (PlayerHand.Instance.CardsInHand);
+        return handCache.Where(c => c != null && c.InHand).SelectMany(FindTriggersOnCard<T>);
     }
 
     /// <summary>
@@ -417,9 +418,10 @@ public static class CustomTriggerFinder
     /// <returns>All trigger recievers of type T in the hand</returns>
     public static IEnumerable<T> FindTriggersOnBoard<T>(bool findFacedown)
     {
-        return GlobalTriggerHandler.Instance.nonCardReceivers.Where(x => x.TriggerBeforeCards).OfType<T>().Concat(BoardManager.Instance.CardsOnBoard.Where(x => !x.FaceDown || findFacedown).SelectMany(FindTriggersOnCard<T>))
+        List<PlayableCard> cardsOnBoardCache = new(BoardManager.Instance.CardsOnBoard);
+        return GlobalTriggerHandler.Instance.nonCardReceivers.Where(x => x.TriggerBeforeCards).OfType<T>().Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && (!x.FaceDown || findFacedown)).SelectMany(FindTriggersOnCard<T>))
             .Concat(GlobalTriggerHandler.Instance.nonCardReceivers.Where(x => !x.TriggerBeforeCards).OfType<T>())
-            .Concat(BoardManager.Instance.CardsOnBoard.Where(x => x.FaceDown && !findFacedown).SelectMany(FindTriggersOnCard<T>)
+            .Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && x.FaceDown && !findFacedown).SelectMany(FindTriggersOnCard<T>)
             .Where(x => x is IActivateWhenFacedown && (x as IActivateWhenFacedown).ShouldTriggerCustomWhenFaceDown(typeof(T))));
     }
 
@@ -431,7 +433,8 @@ public static class CustomTriggerFinder
     /// <returns>All trigger recievers of type T in the hand</returns>
     public static IEnumerable<T> FindTriggersInHandExcluding<T>(PlayableCard card)
     {
-        return PlayerHand.Instance.CardsInHand.Where(x => x != card).SelectMany(FindTriggersOnCard<T>);
+        List<PlayableCard> handCache = new (PlayerHand.Instance.CardsInHand);
+        return handCache.Where(x => x != null && x.InHand && x != card).SelectMany(FindTriggersOnCard<T>);
     }
 
     /// <summary>
