@@ -150,7 +150,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             Destroy(leftArrow);
         for(int i = 1; i < challengeObjectsForPages.Count; i++)
         {
-            challengeObjectsForPages[i].ForEach(x => Destroy(x));
+            challengeObjectsForPages[i].ForEach(x => DestroyImmediate(x));
         }
         challengeObjectsForPages.Clear();
         screen?.icons?.RemoveAll(x => x == null);
