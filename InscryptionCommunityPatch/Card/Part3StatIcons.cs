@@ -22,18 +22,28 @@ internal static class Part3StatIcons
     [HarmonyPrefix]
     private static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
     {
-        if (SaveManager.SaveFile.IsPart3)
+        if (SaveManager.SaveFile != null && SaveManager.SaveFile.IsPart3)
         {
             CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
-            icons.attackIconRenderer.gameObject.transform.localPosition = RIGHT_ICON; // Flipped for some reason??
-            icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.attackIconRenderer.material.color = ICON_COLOR;
-            icons.attackIconRenderer.enabled = false;
 
-            icons.healthIconRenderer.gameObject.transform.localPosition = LEFT_ICON;  // Flipped for some reason??
-            icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.healthIconRenderer.material.color = ICON_COLOR;
-            icons.healthIconRenderer.enabled = false;
+            if (icons == null)
+                return;
+
+            if (icons.attackIconRenderer != null)
+            {
+                icons.attackIconRenderer.gameObject.transform.localPosition = RIGHT_ICON; // Flipped for some reason??
+                icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.attackIconRenderer.material.color = ICON_COLOR;
+                icons.attackIconRenderer.enabled = false;
+            }
+
+            if (icons.healthIconRenderer != null)
+            {
+                icons.healthIconRenderer.gameObject.transform.localPosition = LEFT_ICON;  // Flipped for some reason??
+                icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.healthIconRenderer.material.color = ICON_COLOR;
+                icons.healthIconRenderer.enabled = false;
+            }
         }
     }
 
@@ -44,17 +54,27 @@ internal static class Part3StatIcons
         if (__instance is DiskScreenCardDisplayer)
         {
             CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
-            icons.attackIconRenderer.gameObject.transform.localPosition = LEFT_ICON;
-            icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.attackIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.attackIconRenderer.material.color = ICON_COLOR;
-            icons.attackIconRenderer.enabled = true;
 
-            icons.healthIconRenderer.gameObject.transform.localPosition = RIGHT_ICON;
-            icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.healthIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.healthIconRenderer.material.color = ICON_COLOR;
-            icons.healthIconRenderer.enabled = true;
+            if (icons == null)
+                return;
+
+            if (icons.attackIconRenderer != null)
+            {
+                icons.attackIconRenderer.gameObject.transform.localPosition = LEFT_ICON;
+                icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.attackIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
+                icons.attackIconRenderer.material.color = ICON_COLOR;
+                icons.attackIconRenderer.enabled = true;
+            }
+
+            if (icons.healthIconRenderer != null)
+            {
+                icons.healthIconRenderer.gameObject.transform.localPosition = RIGHT_ICON;
+                icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.healthIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
+                icons.healthIconRenderer.material.color = ICON_COLOR;
+                icons.healthIconRenderer.enabled = true;
+            }
         }
     }
 
@@ -65,17 +85,27 @@ internal static class Part3StatIcons
         if (SaveManager.SaveFile.IsPart3)
         {
             CardStatIcons icons = __instance.gameObject.GetComponentInChildren<CardStatIcons>();
-            icons.attackIconRenderer.gameObject.transform.localPosition = RIGHT_ICON; // Flipped for some reason??
-            icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.attackIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.attackIconRenderer.material.color = ICON_COLOR;
-            icons.attackIconRenderer.enabled = true;
 
-            icons.healthIconRenderer.gameObject.transform.localPosition = LEFT_ICON; // Flipped for some reason??
-            icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
-            icons.healthIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
-            icons.healthIconRenderer.material.color = ICON_COLOR;
-            icons.healthIconRenderer.enabled = true;
+            if (icons == null)
+                return;
+
+            if (icons.attackIconRenderer != null)
+            {
+                icons.attackIconRenderer.gameObject.transform.localPosition = RIGHT_ICON; // Flipped for some reason??
+                icons.attackIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.attackIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
+                icons.attackIconRenderer.material.color = ICON_COLOR;
+                icons.attackIconRenderer.enabled = true;
+            }
+
+            if (icons.healthIconRenderer != null)
+            {
+                icons.healthIconRenderer.gameObject.transform.localPosition = LEFT_ICON; // Flipped for some reason??
+                icons.healthIconRenderer.gameObject.transform.localScale = ICON_SCALE;
+                icons.healthIconRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
+                icons.healthIconRenderer.material.color = ICON_COLOR;
+                icons.healthIconRenderer.enabled = true;
+            }
         }
     }
 }
