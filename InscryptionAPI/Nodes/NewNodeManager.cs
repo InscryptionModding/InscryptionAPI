@@ -1,5 +1,6 @@
 using DiskCardGame;
 using System.Collections;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace InscryptionAPI.Nodes;
@@ -224,7 +225,12 @@ public static class NewNodeManager
         }
     }
 
-    internal readonly static List<FullNode> NewNodes = new();
+    internal readonly static List<FullNode> addedNodes = new();
+
+    /// <summary>
+    /// A collection of all new nodes added using the API.
+    /// </summary>
+    public readonly static ReadOnlyCollection<FullNode> NewNodes = new(addedNodes);
 
     /// <summary>
     /// Creates a new node.
@@ -288,6 +294,7 @@ public static class NewNodeManager
         fn.onPostNodeGeneration = onPostGeneration;
         fn.sequencerPrefab = sequencerPrefab;
         fn.nodePrefab = nodePrefab;
+        addedNodes.Add(fn);
         return fn;
     }
 

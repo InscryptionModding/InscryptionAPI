@@ -26,7 +26,7 @@ public class CustomSpecialNodeData : SpecialNodeData
     /// <summary>
     /// FullNode this NodeData originated from.
     /// </summary>
-    public NewNodeManager.FullNode Node => NewNodeManager.NewNodes.Find(x => x != null && x.guid == guid && x.name == name);
+    public NewNodeManager.FullNode Node => NewNodeManager.addedNodes.Find(x => x != null && x.guid == guid && x.name == name);
 
     internal void OnPreGeneration() => Node?.onPreNodeGeneration?.Invoke(this);
 
