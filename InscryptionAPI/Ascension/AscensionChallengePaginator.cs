@@ -219,6 +219,11 @@ public class AscensionChallengePaginator : MonoBehaviour
             }
             pagesToAdd.Add(page);
         }
+
+        challengeObjectsForPages.ForEach(x => x.RemoveAll(x => x == null));
+        pageIndex = 0;
+        LoadPage(0);
+
         if (pagesToAdd.Count > 0)
         {
             foreach (List<AscensionChallengeInfo> page in pagesToAdd)
@@ -260,9 +265,6 @@ public class AscensionChallengePaginator : MonoBehaviour
             rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
             rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => NextPage();
         }
-        challengeObjectsForPages.ForEach(x => x.RemoveAll(x => x == null));
-        pageIndex = 0;
-        LoadPage(0);
     }
 
     public int pageIndex;
