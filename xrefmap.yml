@@ -1444,6 +1444,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.GetInfo
   nameWithType: ChallengeManager.GetInfo
+- uid: InscryptionAPI.Ascension.ChallengeManager.HAPPY_ACTIVATED_SPRITE
+  name: HAPPY_ACTIVATED_SPRITE
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_HAPPY_ACTIVATED_SPRITE
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.HAPPY_ACTIVATED_SPRITE
+  fullName: InscryptionAPI.Ascension.ChallengeManager.HAPPY_ACTIVATED_SPRITE
+  nameWithType: ChallengeManager.HAPPY_ACTIVATED_SPRITE
 - uid: InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
   name: IsStackable(AscensionChallenge)
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_
@@ -1463,12 +1469,6 @@ references:
   commentId: E:InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   fullName: InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   nameWithType: ChallengeManager.ModifyChallenges
-- uid: InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
-  name: MOREDIFFICULT_ACTIVATED_SPRITE
-  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_MOREDIFFICULT_ACTIVATED_SPRITE
-  commentId: F:InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
-  fullName: InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
-  nameWithType: ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
 - uid: InscryptionAPI.Ascension.ChallengeManager.NewChallenges
   name: NewChallenges
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_NewChallenges
