@@ -1,7 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Nodes;
-using System.Linq;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;

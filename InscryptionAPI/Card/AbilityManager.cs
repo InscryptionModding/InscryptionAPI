@@ -5,7 +5,6 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Triggers;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
