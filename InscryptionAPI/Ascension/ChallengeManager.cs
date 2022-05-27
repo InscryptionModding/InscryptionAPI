@@ -9,6 +9,9 @@ using System.Collections;
 
 namespace InscryptionAPI.Ascension;
 
+/// <summary>
+/// The core class for handling and adding challenges,
+/// </summary>
 [HarmonyPatch]
 public static class ChallengeManager
 {
