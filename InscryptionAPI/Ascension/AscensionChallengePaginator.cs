@@ -229,7 +229,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             Vector3 bottomLeft = new(float.MaxValue, float.MaxValue);
             foreach (AscensionIconInteractable icon in icons)
             {
-                if (icon != null && icon.iconRenderer != null)
+                if (icon != null && icon.iconRenderer != null && icon.gameObject.activeSelf)
                 {
                     if (icon.iconRenderer.transform.position.x < bottomLeft.x)
                     {
