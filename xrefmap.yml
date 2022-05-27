@@ -19,69 +19,85 @@ references:
   commentId: T:InscryptionAPI.Ascension.AscensionChallengePaginator
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator
   nameWithType: AscensionChallengePaginator
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.bottomRow
-  name: bottomRow
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_bottomRow
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.bottomRow
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.bottomRow
-  nameWithType: AscensionChallengePaginator.bottomRow
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.challengePageIndex
-  name: challengePageIndex
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_challengePageIndex
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.challengePageIndex
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.challengePageIndex
-  nameWithType: AscensionChallengePaginator.challengePageIndex
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft(DiskCardGame.MainInputInteractable)
-  name: ChallengePageLeft(MainInputInteractable)
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ChallengePageLeft_DiskCardGame_MainInputInteractable_
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft(DiskCardGame.MainInputInteractable)
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft(DiskCardGame.MainInputInteractable)
-  nameWithType: AscensionChallengePaginator.ChallengePageLeft(MainInputInteractable)
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft*
-  name: ChallengePageLeft
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ChallengePageLeft_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage(List{DiskCardGame.AscensionChallengeInfo})
+  name: AddPage(List<AscensionChallengeInfo>)
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_AddPage_List_DiskCardGame_AscensionChallengeInfo__
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage(List{DiskCardGame.AscensionChallengeInfo})
+  name.vb: AddPage(List(Of AscensionChallengeInfo))
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage(List<DiskCardGame.AscensionChallengeInfo>)
+  fullName.vb: InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage(List(Of DiskCardGame.AscensionChallengeInfo))
+  nameWithType: AscensionChallengePaginator.AddPage(List<AscensionChallengeInfo>)
+  nameWithType.vb: AscensionChallengePaginator.AddPage(List(Of AscensionChallengeInfo))
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage*
+  name: AddPage
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_AddPage_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageLeft
-  nameWithType: AscensionChallengePaginator.ChallengePageLeft
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight(DiskCardGame.MainInputInteractable)
-  name: ChallengePageRight(MainInputInteractable)
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ChallengePageRight_DiskCardGame_MainInputInteractable_
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight(DiskCardGame.MainInputInteractable)
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight(DiskCardGame.MainInputInteractable)
-  nameWithType: AscensionChallengePaginator.ChallengePageRight(MainInputInteractable)
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight*
-  name: ChallengePageRight
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ChallengePageRight_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.AddPage
+  nameWithType: AscensionChallengePaginator.AddPage
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages
+  name: challengeObjectsForPages
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_challengeObjectsForPages
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages
+  nameWithType: AscensionChallengePaginator.challengeObjectsForPages
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize(DiskCardGame.AscensionChallengeScreen,DiskCardGame.AscensionMenuScreenTransition)
+  name: Initialize(AscensionChallengeScreen, AscensionMenuScreenTransition)
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_Initialize_DiskCardGame_AscensionChallengeScreen_DiskCardGame_AscensionMenuScreenTransition_
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize(DiskCardGame.AscensionChallengeScreen,DiskCardGame.AscensionMenuScreenTransition)
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize(DiskCardGame.AscensionChallengeScreen, DiskCardGame.AscensionMenuScreenTransition)
+  nameWithType: AscensionChallengePaginator.Initialize(AscensionChallengeScreen, AscensionMenuScreenTransition)
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize*
+  name: Initialize
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_Initialize_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ChallengePageRight
-  nameWithType: AscensionChallengePaginator.ChallengePageRight
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.CHALLENGES_PER_ROW
-  name: CHALLENGES_PER_ROW
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_CHALLENGES_PER_ROW
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.CHALLENGES_PER_ROW
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.CHALLENGES_PER_ROW
-  nameWithType: AscensionChallengePaginator.CHALLENGES_PER_ROW
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.extraIcon
-  name: extraIcon
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_extraIcon
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.extraIcon
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.extraIcon
-  nameWithType: AscensionChallengePaginator.extraIcon
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages
-  name: GeneratePages()
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_GeneratePages
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages()
-  nameWithType: AscensionChallengePaginator.GeneratePages()
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages*
-  name: GeneratePages
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_GeneratePages_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize
+  nameWithType: AscensionChallengePaginator.Initialize
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.initialized
+  name: initialized
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_initialized
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.initialized
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.initialized
+  nameWithType: AscensionChallengePaginator.initialized
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.leftArrow
+  name: leftArrow
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_leftArrow
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.leftArrow
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.leftArrow
+  nameWithType: AscensionChallengePaginator.leftArrow
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage(System.Int32)
+  name: LoadPage(Int32)
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_LoadPage_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage(System.Int32)
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage(System.Int32)
+  nameWithType: AscensionChallengePaginator.LoadPage(Int32)
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage*
+  name: LoadPage
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_LoadPage_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.GeneratePages
-  nameWithType: AscensionChallengePaginator.GeneratePages
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage
+  nameWithType: AscensionChallengePaginator.LoadPage
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeSprite
+  name: missingChallengeSprite
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_missingChallengeSprite
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeSprite
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeSprite
+  nameWithType: AscensionChallengePaginator.missingChallengeSprite
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage
+  name: NextPage()
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_NextPage
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage()
+  nameWithType: AscensionChallengePaginator.NextPage()
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage*
+  name: NextPage
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_NextPage_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.NextPage
+  nameWithType: AscensionChallengePaginator.NextPage
 - uid: InscryptionAPI.Ascension.AscensionChallengePaginator.OnEnable
   name: OnEnable()
   href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_OnEnable
@@ -95,37 +111,68 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.OnEnable
   nameWithType: AscensionChallengePaginator.OnEnable
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.pages
-  name: pages
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_pages
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.pages
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.pages
-  nameWithType: AscensionChallengePaginator.pages
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.showExtraIcon
-  name: showExtraIcon
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_showExtraIcon
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.showExtraIcon
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.showExtraIcon
-  nameWithType: AscensionChallengePaginator.showExtraIcon
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges
-  name: ShowVisibleChallenges()
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ShowVisibleChallenges
-  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges()
-  nameWithType: AscensionChallengePaginator.ShowVisibleChallenges()
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges*
-  name: ShowVisibleChallenges
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_ShowVisibleChallenges_
-  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.pageIndex
+  name: pageIndex
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_pageIndex
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.pageIndex
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.pageIndex
+  nameWithType: AscensionChallengePaginator.pageIndex
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.pageLength
+  name: pageLength
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_pageLength
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.pageLength
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.pageLength
+  nameWithType: AscensionChallengePaginator.pageLength
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage
+  name: PreviousPage()
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_PreviousPage
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage()
+  nameWithType: AscensionChallengePaginator.PreviousPage()
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage*
+  name: PreviousPage
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_PreviousPage_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage
   isSpec: "True"
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.ShowVisibleChallenges
-  nameWithType: AscensionChallengePaginator.ShowVisibleChallenges
-- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.topRow
-  name: topRow
-  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_topRow
-  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.topRow
-  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.topRow
-  nameWithType: AscensionChallengePaginator.topRow
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.PreviousPage
+  nameWithType: AscensionChallengePaginator.PreviousPage
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.rightArrow
+  name: rightArrow
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_rightArrow
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.rightArrow
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.rightArrow
+  nameWithType: AscensionChallengePaginator.rightArrow
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.screen
+  name: screen
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_screen
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.screen
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.screen
+  nameWithType: AscensionChallengePaginator.screen
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.transition
+  name: transition
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_transition
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.transition
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.transition
+  nameWithType: AscensionChallengePaginator.transition
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier
+  name: AscensionChallengePaginatorSetupifier
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.html
+  commentId: T:InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier
+  nameWithType: AscensionChallengePaginatorSetupifier
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start
+  name: Start()
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.html#InscryptionAPI_Ascension_AscensionChallengePaginatorSetupifier_Start
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start()
+  nameWithType: AscensionChallengePaginatorSetupifier.Start()
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start*
+  name: Start
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.html#InscryptionAPI_Ascension_AscensionChallengePaginatorSetupifier_Start_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginatorSetupifier.Start
+  nameWithType: AscensionChallengePaginatorSetupifier.Start
 - uid: InscryptionAPI.Ascension.AscensionRunSetupScreenBase
   name: AscensionRunSetupScreenBase
   href: api/InscryptionAPI.Ascension.AscensionRunSetupScreenBase.html
@@ -542,6 +589,341 @@ references:
   commentId: F:InscryptionAPI.Ascension.AscensionScreenSort.preferredDirection
   fullName: InscryptionAPI.Ascension.AscensionScreenSort.preferredDirection
   nameWithType: AscensionScreenSort.preferredDirection
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour
+  name: ChallengeBehaviour
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html
+  commentId: T:InscryptionAPI.Ascension.ChallengeBehaviour
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour
+  nameWithType: ChallengeBehaviour
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType(DiskCardGame.AscensionChallenge)
+  name: AnyInstancesOfType(AscensionChallenge)
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_AnyInstancesOfType_DiskCardGame_AscensionChallenge_
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType(DiskCardGame.AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType(DiskCardGame.AscensionChallenge)
+  nameWithType: ChallengeBehaviour.AnyInstancesOfType(AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType*
+  name: AnyInstancesOfType
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_AnyInstancesOfType_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.AnyInstancesOfType
+  nameWithType: ChallengeBehaviour.AnyInstancesOfType
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.challenge
+  name: challenge
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_challenge
+  commentId: P:InscryptionAPI.Ascension.ChallengeBehaviour.challenge
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.challenge
+  nameWithType: ChallengeBehaviour.challenge
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.challenge*
+  name: challenge
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_challenge_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.challenge
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.challenge
+  nameWithType: ChallengeBehaviour.challenge
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType(DiskCardGame.AscensionChallenge)
+  name: CountInstancesOfType(AscensionChallenge)
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_CountInstancesOfType_DiskCardGame_AscensionChallenge_
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType(DiskCardGame.AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType(DiskCardGame.AscensionChallenge)
+  nameWithType: ChallengeBehaviour.CountInstancesOfType(AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType*
+  name: CountInstancesOfType
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_CountInstancesOfType_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.CountInstancesOfType
+  nameWithType: ChallengeBehaviour.CountInstancesOfType
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType(DiskCardGame.AscensionChallenge)
+  name: FindInstancesOfType(AscensionChallenge)
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_FindInstancesOfType_DiskCardGame_AscensionChallenge_
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType(DiskCardGame.AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType(DiskCardGame.AscensionChallenge)
+  nameWithType: ChallengeBehaviour.FindInstancesOfType(AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType*
+  name: FindInstancesOfType
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_FindInstancesOfType_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.FindInstancesOfType
+  nameWithType: ChallengeBehaviour.FindInstancesOfType
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber
+  name: instanceNumber
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_instanceNumber
+  commentId: P:InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber
+  nameWithType: ChallengeBehaviour.instanceNumber
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber*
+  name: instanceNumber
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_instanceNumber_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.instanceNumber
+  nameWithType: ChallengeBehaviour.instanceNumber
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy
+  name: OnDestroy()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnDestroy
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy()
+  nameWithType: ChallengeBehaviour.OnDestroy()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy*
+  name: OnDestroy
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnDestroy_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnDestroy
+  nameWithType: ChallengeBehaviour.OnDestroy
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup
+  name: OnPostBattleCleanup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPostBattleCleanup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup()
+  nameWithType: ChallengeBehaviour.OnPostBattleCleanup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup*
+  name: OnPostBattleCleanup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPostBattleCleanup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleCleanup
+  nameWithType: ChallengeBehaviour.OnPostBattleCleanup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup
+  name: OnPostBattleSetup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPostBattleSetup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup()
+  nameWithType: ChallengeBehaviour.OnPostBattleSetup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup*
+  name: OnPostBattleSetup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPostBattleSetup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPostBattleSetup
+  nameWithType: ChallengeBehaviour.OnPostBattleSetup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup
+  name: OnPreBattleCleanup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPreBattleCleanup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup()
+  nameWithType: ChallengeBehaviour.OnPreBattleCleanup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup*
+  name: OnPreBattleCleanup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPreBattleCleanup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleCleanup
+  nameWithType: ChallengeBehaviour.OnPreBattleCleanup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup
+  name: OnPreBattleSetup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPreBattleSetup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup()
+  nameWithType: ChallengeBehaviour.OnPreBattleSetup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup*
+  name: OnPreBattleSetup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_OnPreBattleSetup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.OnPreBattleSetup
+  nameWithType: ChallengeBehaviour.OnPreBattleSetup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup
+  name: RespondsToPostBattleCleanup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPostBattleCleanup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup()
+  nameWithType: ChallengeBehaviour.RespondsToPostBattleCleanup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup*
+  name: RespondsToPostBattleCleanup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPostBattleCleanup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleCleanup
+  nameWithType: ChallengeBehaviour.RespondsToPostBattleCleanup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup
+  name: RespondsToPostBattleSetup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPostBattleSetup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup()
+  nameWithType: ChallengeBehaviour.RespondsToPostBattleSetup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup*
+  name: RespondsToPostBattleSetup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPostBattleSetup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPostBattleSetup
+  nameWithType: ChallengeBehaviour.RespondsToPostBattleSetup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup
+  name: RespondsToPreBattleCleanup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPreBattleCleanup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup()
+  nameWithType: ChallengeBehaviour.RespondsToPreBattleCleanup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup*
+  name: RespondsToPreBattleCleanup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPreBattleCleanup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleCleanup
+  nameWithType: ChallengeBehaviour.RespondsToPreBattleCleanup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup
+  name: RespondsToPreBattleSetup()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPreBattleSetup
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup()
+  nameWithType: ChallengeBehaviour.RespondsToPreBattleSetup()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup*
+  name: RespondsToPreBattleSetup
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_RespondsToPreBattleSetup_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.RespondsToPreBattleSetup
+  nameWithType: ChallengeBehaviour.RespondsToPreBattleSetup
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation
+  name: ShowActivation()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_ShowActivation
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation()
+  nameWithType: ChallengeBehaviour.ShowActivation()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation*
+  name: ShowActivation
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_ShowActivation_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.ShowActivation
+  nameWithType: ChallengeBehaviour.ShowActivation
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.Start
+  name: Start()
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_Start
+  commentId: M:InscryptionAPI.Ascension.ChallengeBehaviour.Start
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.Start()
+  nameWithType: ChallengeBehaviour.Start()
+- uid: InscryptionAPI.Ascension.ChallengeBehaviour.Start*
+  name: Start
+  href: api/InscryptionAPI.Ascension.ChallengeBehaviour.html#InscryptionAPI_Ascension_ChallengeBehaviour_Start_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeBehaviour.Start
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeBehaviour.Start
+  nameWithType: ChallengeBehaviour.Start
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus
+  name: ChallengeDisplayerPlus
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html
+  commentId: T:InscryptionAPI.Ascension.ChallengeDisplayerPlus
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus
+  nameWithType: ChallengeDisplayerPlus
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge(DiskCardGame.AscensionChallengeInfo,System.Boolean)
+  name: DisplayChallenge(AscensionChallengeInfo, Boolean)
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_DisplayChallenge_DiskCardGame_AscensionChallengeInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge(DiskCardGame.AscensionChallengeInfo,System.Boolean)
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge(DiskCardGame.AscensionChallengeInfo, System.Boolean)
+  nameWithType: ChallengeDisplayerPlus.DisplayChallenge(AscensionChallengeInfo, Boolean)
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge*
+  name: DisplayChallenge
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_DisplayChallenge_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayChallenge
+  nameWithType: ChallengeDisplayerPlus.DisplayChallenge
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer
+  name: displayer
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_displayer
+  commentId: P:InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer
+  nameWithType: ChallengeDisplayerPlus.displayer
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer*
+  name: displayer
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_displayer_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.displayer
+  nameWithType: ChallengeDisplayerPlus.displayer
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText(System.String,System.String,System.Boolean)
+  name: DisplayText(String, String, Boolean)
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_DisplayText_System_String_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText(System.String,System.String,System.Boolean)
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText(System.String, System.String, System.Boolean)
+  nameWithType: ChallengeDisplayerPlus.DisplayText(String, String, Boolean)
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText*
+  name: DisplayText
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_DisplayText_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.DisplayText
+  nameWithType: ChallengeDisplayerPlus.DisplayText
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY
+  name: GetBestAvailableY()
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_GetBestAvailableY
+  commentId: M:InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY()
+  nameWithType: ChallengeDisplayerPlus.GetBestAvailableY()
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY*
+  name: GetBestAvailableY
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_GetBestAvailableY_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.GetBestAvailableY
+  nameWithType: ChallengeDisplayerPlus.GetBestAvailableY
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString
+  name: ChallengeDisplayerPlus.PrefixedString
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html
+  commentId: T:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString
+  nameWithType: ChallengeDisplayerPlus.PrefixedString
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.challenge
+  name: challenge
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_challenge
+  commentId: F:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.challenge
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.challenge
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.challenge
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText
+  name: FullText
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_FullText
+  commentId: P:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.FullText
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText*
+  name: FullText
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_FullText_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.FullText
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.FullText
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.number
+  name: number
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_number
+  commentId: F:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.number
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.number
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.number
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.prefix
+  name: prefix
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_prefix
+  commentId: F:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.prefix
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.prefix
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.prefix
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+  name: RedPrefixText
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_RedPrefixText
+  commentId: P:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText*
+  name: RedPrefixText
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_PrefixedString_RedPrefixText_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+  nameWithType: ChallengeDisplayerPlus.PrefixedString.RedPrefixText
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(DiskCardGame.AscensionChallengeDisplayer)
+  name: TryAddChallengeDisplayerPlusToDisplayer(AscensionChallengeDisplayer)
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_TryAddChallengeDisplayerPlusToDisplayer_DiskCardGame_AscensionChallengeDisplayer_
+  commentId: M:InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(DiskCardGame.AscensionChallengeDisplayer)
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(DiskCardGame.AscensionChallengeDisplayer)
+  nameWithType: ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer(AscensionChallengeDisplayer)
+- uid: InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer*
+  name: TryAddChallengeDisplayerPlusToDisplayer
+  href: api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html#InscryptionAPI_Ascension_ChallengeDisplayerPlus_TryAddChallengeDisplayerPlusToDisplayer_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer
+  nameWithType: ChallengeDisplayerPlus.TryAddChallengeDisplayerPlusToDisplayer
 - uid: InscryptionAPI.Ascension.ChallengeManager
   name: ChallengeManager
   href: api/InscryptionAPI.Ascension.ChallengeManager.html
@@ -567,10 +949,78 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.Add
   nameWithType: ChallengeManager.Add
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Int32)
+  name: AddSpecific(String, AscensionChallengeInfo, Int32, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, DiskCardGame.AscensionChallengeInfo, System.Int32, System.Int32)
+  nameWithType: ChallengeManager.AddSpecific(String, AscensionChallengeInfo, Int32, Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name: AddSpecific(String, AscensionChallengeInfo, Type, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name.vb: AddSpecific(String, AscensionChallengeInfo, Type, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, DiskCardGame.AscensionChallengeInfo, Type, System.Int32, List<System.Object>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, DiskCardGame.AscensionChallengeInfo, Type, System.Int32, List(Of System.Object), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), System.Int32)
+  nameWithType: ChallengeManager.AddSpecific(String, AscensionChallengeInfo, Type, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  nameWithType.vb: ChallengeManager.AddSpecific(String, AscensionChallengeInfo, Type, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Int32)
+  name: AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Int32, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, System.Int32, System.Int32)
+  nameWithType: ChallengeManager.AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Int32, Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name: AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Type, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name.vb: AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Type, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, Type, System.Int32, List<System.Object>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, Type, System.Int32, List(Of System.Object), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), System.Int32)
+  nameWithType: ChallengeManager.AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Type, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  nameWithType.vb: ChallengeManager.AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Type, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific*
+  name: AddSpecific
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.AddSpecific
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific
+  nameWithType: ChallengeManager.AddSpecific
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name: AddSpecific<T>(String, AscensionChallengeInfo, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name.vb: AddSpecific(Of T)(String, AscensionChallengeInfo, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific<T>(System.String, DiskCardGame.AscensionChallengeInfo, System.Int32, List<System.Object>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(Of T)(System.String, DiskCardGame.AscensionChallengeInfo, System.Int32, List(Of System.Object), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), System.Int32)
+  nameWithType: ChallengeManager.AddSpecific<T>(String, AscensionChallengeInfo, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  nameWithType.vb: ChallengeManager.AddSpecific(Of T)(String, AscensionChallengeInfo, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name: AddSpecific<T>(String, String, String, Int32, Texture2D, Texture2D, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)
+  name.vb: AddSpecific(Of T)(String, String, String, Int32, Texture2D, Texture2D, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AddSpecific<T>(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, System.Int32, List<System.Object>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>, System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.AddSpecific(Of T)(System.String, System.String, System.String, System.Int32, UnityEngine.Texture2D, UnityEngine.Texture2D, System.Int32, List(Of System.Object), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)), System.Int32)
+  nameWithType: ChallengeManager.AddSpecific<T>(String, String, String, Int32, Texture2D, Texture2D, Int32, List<Object>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>, Int32)
+  nameWithType.vb: ChallengeManager.AddSpecific(Of T)(String, String, String, Int32, Texture2D, Texture2D, Int32, List(Of Object), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)), Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.AllChallenges
+  name: AllChallenges
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AllChallenges
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.AllChallenges
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AllChallenges
+  nameWithType: ChallengeManager.AllChallenges
 - uid: InscryptionAPI.Ascension.ChallengeManager.AllInfo
   name: AllInfo
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AllInfo
-  commentId: F:InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  fullName: InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  nameWithType: ChallengeManager.AllInfo
+- uid: InscryptionAPI.Ascension.ChallengeManager.AllInfo*
+  name: AllInfo
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_AllInfo_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.AllInfo
+  isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.AllInfo
   nameWithType: ChallengeManager.AllInfo
 - uid: InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
@@ -579,6 +1029,421 @@ references:
   commentId: F:InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
   fullName: InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges
   nameWithType: ChallengeManager.BaseGameChallenges
+- uid: InscryptionAPI.Ascension.ChallengeManager.DEFAULT_ACTIVATED_SPRITE
+  name: DEFAULT_ACTIVATED_SPRITE
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_DEFAULT_ACTIVATED_SPRITE
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.DEFAULT_ACTIVATED_SPRITE
+  fullName: InscryptionAPI.Ascension.ChallengeManager.DEFAULT_ACTIVATED_SPRITE
+  nameWithType: ChallengeManager.DEFAULT_ACTIVATED_SPRITE
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge
+  name: ChallengeManager.FullChallenge
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html
+  commentId: T:InscryptionAPI.Ascension.ChallengeManager.FullChallenge
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge
+  nameWithType: ChallengeManager.FullChallenge
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+  name: AppearancesInChallengeScreen
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_AppearancesInChallengeScreen
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+  nameWithType: ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen*
+  name: AppearancesInChallengeScreen
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_AppearancesInChallengeScreen_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+  nameWithType: ChallengeManager.FullChallenge.AppearancesInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
+  name: AppearsInChallengeScreen
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_AppearsInChallengeScreen
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
+  nameWithType: ChallengeManager.FullChallenge.AppearsInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen*
+  name: AppearsInChallengeScreen
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_AppearsInChallengeScreen_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
+  nameWithType: ChallengeManager.FullChallenge.AppearsInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
+  name: Challenge
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Challenge
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
+  nameWithType: ChallengeManager.FullChallenge.Challenge
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge*
+  name: Challenge
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Challenge_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
+  nameWithType: ChallengeManager.FullChallenge.Challenge
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
+  name: ChallengeHandler
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_ChallengeHandler
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
+  nameWithType: ChallengeManager.FullChallenge.ChallengeHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler*
+  name: ChallengeHandler
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_ChallengeHandler_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
+  nameWithType: ChallengeManager.FullChallenge.ChallengeHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
+  name: DependantChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_DependantChallengeGetter
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.DependantChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter*
+  name: DependantChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_DependantChallengeGetter_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.DependantChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags
+  name: Flags
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Flags
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags
+  nameWithType: ChallengeManager.FullChallenge.Flags
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags*
+  name: Flags
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Flags_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Flags
+  nameWithType: ChallengeManager.FullChallenge.Flags
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler
+  name: HasValidHandler()
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_HasValidHandler
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler()
+  nameWithType: ChallengeManager.FullChallenge.HasValidHandler()
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler*
+  name: HasValidHandler
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_HasValidHandler_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.HasValidHandler
+  nameWithType: ChallengeManager.FullChallenge.HasValidHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+  name: IncompatibleChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_IncompatibleChallengeGetter
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter*
+  name: IncompatibleChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_IncompatibleChallengeGetter_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.IncompatibleChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.op_Implicit(InscryptionAPI.Ascension.ChallengeManager.FullChallenge)~DiskCardGame.AscensionChallengeInfo
+  name: Implicit(ChallengeManager.FullChallenge to AscensionChallengeInfo)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_op_Implicit_InscryptionAPI_Ascension_ChallengeManager_FullChallenge__DiskCardGame_AscensionChallengeInfo
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.op_Implicit(InscryptionAPI.Ascension.ChallengeManager.FullChallenge)~DiskCardGame.AscensionChallengeInfo
+  name.vb: Widening(ChallengeManager.FullChallenge to AscensionChallengeInfo)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Implicit(InscryptionAPI.Ascension.ChallengeManager.FullChallenge to DiskCardGame.AscensionChallengeInfo)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Widening(InscryptionAPI.Ascension.ChallengeManager.FullChallenge to DiskCardGame.AscensionChallengeInfo)
+  nameWithType: ChallengeManager.FullChallenge.Implicit(ChallengeManager.FullChallenge to AscensionChallengeInfo)
+  nameWithType.vb: ChallengeManager.FullChallenge.Widening(ChallengeManager.FullChallenge to AscensionChallengeInfo)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_op_Implicit_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Implicit
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Widening
+  nameWithType: ChallengeManager.FullChallenge.Implicit
+  nameWithType.vb: ChallengeManager.FullChallenge.Widening
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen(System.Int32)
+  name: SetAppearancesInChallengeScreen(Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetAppearancesInChallengeScreen_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen(System.Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen(System.Int32)
+  nameWithType: ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen(Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen*
+  name: SetAppearancesInChallengeScreen
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetAppearancesInChallengeScreen_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen
+  nameWithType: ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge(DiskCardGame.AscensionChallengeInfo)
+  name: SetChallenge(AscensionChallengeInfo)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetChallenge_DiskCardGame_AscensionChallengeInfo_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge(DiskCardGame.AscensionChallengeInfo)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge(DiskCardGame.AscensionChallengeInfo)
+  nameWithType: ChallengeManager.FullChallenge.SetChallenge(AscensionChallengeInfo)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge*
+  name: SetChallenge
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetChallenge_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge
+  nameWithType: ChallengeManager.FullChallenge.SetChallenge
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler(Type)
+  name: SetChallengeHandler(Type)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetChallengeHandler_Type_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler(Type)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler(Type)
+  nameWithType: ChallengeManager.FullChallenge.SetChallengeHandler(Type)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler*
+  name: SetChallengeHandler
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetChallengeHandler_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler
+  nameWithType: ChallengeManager.FullChallenge.SetChallengeHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}})
+  name: SetDependantChallengeGetter(Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetter_Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}})
+  name.vb: SetDependantChallengeGetter(Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)))
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)))
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>)
+  nameWithType.vb: ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)))
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter*
+  name: SetDependantChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetter_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(System.String[])
+  name: SetDependantChallengeGetterFlagBlacklist(String[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterFlagBlacklist_System_String___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(System.String[])
+  name.vb: SetDependantChallengeGetterFlagBlacklist(String())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(System.String[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(System.String())
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(String[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist(String())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist*
+  name: SetDependantChallengeGetterFlagBlacklist
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterFlagBlacklist_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagBlacklist
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(System.String[])
+  name: SetDependantChallengeGetterFlagWhitelist(String[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterFlagWhitelist_System_String___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(System.String[])
+  name.vb: SetDependantChallengeGetterFlagWhitelist(String())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(System.String[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(System.String())
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(String[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist(String())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist*
+  name: SetDependantChallengeGetterFlagWhitelist
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterFlagWhitelist_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterFlagWhitelist
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  name: SetDependantChallengeGetterStatic(AscensionChallenge[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterStatic_DiskCardGame_AscensionChallenge___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  name.vb: SetDependantChallengeGetterStatic(AscensionChallenge())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(DiskCardGame.AscensionChallenge())
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(AscensionChallenge[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic(AscensionChallenge())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic*
+  name: SetDependantChallengeGetterStatic
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetterStatic_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic
+  nameWithType: ChallengeManager.FullChallenge.SetDependantChallengeGetterStatic
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags(System.Object[])
+  name: SetFlags(Object[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetFlags_System_Object___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags(System.Object[])
+  name.vb: SetFlags(Object())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags(System.Object[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags(System.Object())
+  nameWithType: ChallengeManager.FullChallenge.SetFlags(Object[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetFlags(Object())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags*
+  name: SetFlags
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetFlags_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetFlags
+  nameWithType: ChallengeManager.FullChallenge.SetFlags
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}})
+  name: SetIncompatibleChallengeGetter(Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetter_Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}})
+  name.vb: SetIncompatibleChallengeGetter(Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)))
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func<InscryptionAPI.Ascension.ChallengeManager.FullChallenge[], System.Collections.IEnumerable<DiskCardGame.AscensionChallenge>>)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func(Of InscryptionAPI.Ascension.ChallengeManager.FullChallenge(), System.Collections.IEnumerable(Of DiskCardGame.AscensionChallenge)))
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>)
+  nameWithType.vb: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter(Func(Of ChallengeManager.FullChallenge(), IEnumerable(Of AscensionChallenge)))
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter*
+  name: SetIncompatibleChallengeGetter
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetter_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetter
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(System.String[])
+  name: SetIncompatibleChallengeGetterFlagBlacklist(String[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterFlagBlacklist_System_String___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(System.String[])
+  name.vb: SetIncompatibleChallengeGetterFlagBlacklist(String())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(System.String[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(System.String())
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(String[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist(String())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist*
+  name: SetIncompatibleChallengeGetterFlagBlacklist
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterFlagBlacklist_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagBlacklist
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(System.String[])
+  name: SetIncompatibleChallengeGetterFlagWhitelist(String[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterFlagWhitelist_System_String___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(System.String[])
+  name.vb: SetIncompatibleChallengeGetterFlagWhitelist(String())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(System.String[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(System.String())
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(String[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist(String())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist*
+  name: SetIncompatibleChallengeGetterFlagWhitelist
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterFlagWhitelist_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterFlagWhitelist
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  name: SetIncompatibleChallengeGetterStatic(AscensionChallenge[])
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterStatic_DiskCardGame_AscensionChallenge___
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  name.vb: SetIncompatibleChallengeGetterStatic(AscensionChallenge())
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(DiskCardGame.AscensionChallenge[])
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(DiskCardGame.AscensionChallenge())
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(AscensionChallenge[])
+  nameWithType.vb: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic(AscensionChallenge())
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic*
+  name: SetIncompatibleChallengeGetterStatic
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetIncompatibleChallengeGetterStatic_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic
+  nameWithType: ChallengeManager.FullChallenge.SetIncompatibleChallengeGetterStatic
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel(System.Int32)
+  name: SetUnlockLevel(Int32)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetUnlockLevel_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel(System.Int32)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel(System.Int32)
+  nameWithType: ChallengeManager.FullChallenge.SetUnlockLevel(Int32)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel*
+  name: SetUnlockLevel
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetUnlockLevel_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetUnlockLevel
+  nameWithType: ChallengeManager.FullChallenge.SetUnlockLevel
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue
+  name: SortValue
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SortValue
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue
+  nameWithType: ChallengeManager.FullChallenge.SortValue
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue*
+  name: SortValue
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SortValue_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue
+  nameWithType: ChallengeManager.FullChallenge.SortValue
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable
+  name: Stackable
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Stackable
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable
+  nameWithType: ChallengeManager.FullChallenge.Stackable
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable*
+  name: Stackable
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Stackable_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Stackable
+  nameWithType: ChallengeManager.FullChallenge.Stackable
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel
+  name: UnlockLevel
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_UnlockLevel
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel
+  nameWithType: ChallengeManager.FullChallenge.UnlockLevel
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel*
+  name: UnlockLevel
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_UnlockLevel_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.UnlockLevel
+  nameWithType: ChallengeManager.FullChallenge.UnlockLevel
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType(Type)
+  name: ValidHandlerType(Type)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_ValidHandlerType_Type_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType(Type)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType(Type)
+  nameWithType: ChallengeManager.FullChallenge.ValidHandlerType(Type)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType*
+  name: ValidHandlerType
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_ValidHandlerType_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ValidHandlerType
+  nameWithType: ChallengeManager.FullChallenge.ValidHandlerType
+- uid: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallenge)
+  name: GetFullChallenge(AscensionChallenge)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallenge_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallenge)
+  nameWithType: ChallengeManager.GetFullChallenge(AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallengeInfo)
+  name: GetFullChallenge(AscensionChallengeInfo)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallengeInfo_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallengeInfo)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallengeInfo)
+  nameWithType: ChallengeManager.GetFullChallenge(AscensionChallengeInfo)
+- uid: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge*
+  name: GetFullChallenge
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge
+  nameWithType: ChallengeManager.GetFullChallenge
+- uid: InscryptionAPI.Ascension.ChallengeManager.GetInfo(DiskCardGame.AscensionChallenge)
+  name: GetInfo(AscensionChallenge)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GetInfo_DiskCardGame_AscensionChallenge_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.GetInfo(DiskCardGame.AscensionChallenge)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GetInfo(DiskCardGame.AscensionChallenge)
+  nameWithType: ChallengeManager.GetInfo(AscensionChallenge)
+- uid: InscryptionAPI.Ascension.ChallengeManager.GetInfo*
+  name: GetInfo
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_GetInfo_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.GetInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.GetInfo
+  nameWithType: ChallengeManager.GetInfo
 - uid: InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)
   name: IsStackable(AscensionChallenge)
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_
@@ -598,6 +1463,18 @@ references:
   commentId: E:InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   fullName: InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges
   nameWithType: ChallengeManager.ModifyChallenges
+- uid: InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
+  name: MOREDIFFICULT_ACTIVATED_SPRITE
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_MOREDIFFICULT_ACTIVATED_SPRITE
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
+  fullName: InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
+  nameWithType: ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE
+- uid: InscryptionAPI.Ascension.ChallengeManager.NewChallenges
+  name: NewChallenges
+  href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_NewChallenges
+  commentId: F:InscryptionAPI.Ascension.ChallengeManager.NewChallenges
+  fullName: InscryptionAPI.Ascension.ChallengeManager.NewChallenges
+  nameWithType: ChallengeManager.NewChallenges
 - uid: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
   name: SyncChallengeList()
   href: api/InscryptionAPI.Ascension.ChallengeManager.html#InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList
@@ -4771,6 +5648,28 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots
   nameWithType: CardSlotExtensions.SelectOpenSlots
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions
+  name: ListExtensions
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html
+  commentId: T:InscryptionAPI.Helpers.Extensions.ListExtensions
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions
+  nameWithType: ListExtensions
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat*
+  name: Repeat
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat
+  nameWithType: ListExtensions.Repeat
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat``1(``0,System.Int32)
+  name: Repeat<T>(T, Int32)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat``1(``0,System.Int32)
+  name.vb: Repeat(Of T)(T, Int32)
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat<T>(T, System.Int32)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat(Of T)(T, System.Int32)
+  nameWithType: ListExtensions.Repeat<T>(T, Int32)
+  nameWithType.vb: ListExtensions.Repeat(Of T)(T, Int32)
 - uid: InscryptionAPI.Helpers.TextureHelper
   name: TextureHelper
   href: api/InscryptionAPI.Helpers.TextureHelper.html

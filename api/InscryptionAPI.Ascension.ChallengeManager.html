@@ -82,7 +82,8 @@
   
   <h1 id="InscryptionAPI_Ascension_ChallengeManager" data-uid="InscryptionAPI.Ascension.ChallengeManager" class="text-break">Class ChallengeManager
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The core class for handling and adding challenges,</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -100,19 +101,173 @@ public static class ChallengeManager</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AllInfo.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AllInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AllChallenges.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AllChallenges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L94">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L383">View Source</a>
   </span>
-  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AllInfo" data-uid="InscryptionAPI.Ascension.ChallengeManager.AllInfo">AllInfo</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AllChallenges" data-uid="InscryptionAPI.Ascension.ChallengeManager.AllChallenges">AllChallenges</h4>
+  <div class="markdown level1 summary"><p>All challenges in the form of ChallengeManager.FullChallenge, including both basegame and new challenges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;AscensionChallengeInfo&gt; AllInfo</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;ChallengeManager.FullChallenge&gt; AllChallenges</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_BaseGameChallenges.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L257">View Source</a>
+  </span>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_BaseGameChallenges" data-uid="InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges">BaseGameChallenges</h4>
+  <div class="markdown level1 summary"><p>The list of all base game challenges in the form of ChallengeManager.FullChallenge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyCollection&lt;ChallengeManager.FullChallenge&gt; BaseGameChallenges</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_DEFAULT_ACTIVATED_SPRITE.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.DEFAULT_ACTIVATED_SPRITE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L21">View Source</a>
+  </span>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_DEFAULT_ACTIVATED_SPRITE" data-uid="InscryptionAPI.Ascension.ChallengeManager.DEFAULT_ACTIVATED_SPRITE">DEFAULT_ACTIVATED_SPRITE</h4>
+  <div class="markdown level1 summary"><p>The default activated eye sprite for challenges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Texture2D DEFAULT_ACTIVATED_SPRITE</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_MOREDIFFICULT_ACTIVATED_SPRITE.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L25">View Source</a>
+  </span>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_MOREDIFFICULT_ACTIVATED_SPRITE" data-uid="InscryptionAPI.Ascension.ChallengeManager.MOREDIFFICULT_ACTIVATED_SPRITE">MOREDIFFICULT_ACTIVATED_SPRITE</h4>
+  <div class="markdown level1 summary"><p>The activated eye sprite for the &quot;More Difficult&quot; challenge. Can be used for other challenges with that form of eyes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Texture2D MOREDIFFICULT_ACTIVATED_SPRITE</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_NewChallenges.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.NewChallenges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L262">View Source</a>
+  </span>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_NewChallenges" data-uid="InscryptionAPI.Ascension.ChallengeManager.NewChallenges">NewChallenges</h4>
+  <div class="markdown level1 summary"><p>The list of all new challenges added with the API in the form of ChallengeManager.FullChallenge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyCollection&lt;ChallengeManager.FullChallenge&gt; NewChallenges</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AllInfo.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AllInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L387">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AllInfo_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AllInfo*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AllInfo" data-uid="InscryptionAPI.Ascension.ChallengeManager.AllInfo">AllInfo</h4>
+  <div class="markdown level1 summary"><p>All challenges in the form of AscensionChallengeInfo, including both basegame and new challenges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;AscensionChallengeInfo&gt; AllInfo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -127,35 +282,6 @@ public static class ChallengeManager</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_BaseGameChallenges.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L13">View Source</a>
-  </span>
-  <h4 id="InscryptionAPI_Ascension_ChallengeManager_BaseGameChallenges" data-uid="InscryptionAPI.Ascension.ChallengeManager.BaseGameChallenges">BaseGameChallenges</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyCollection&lt;AscensionChallengeInfo&gt; BaseGameChallenges</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<span class="xref">DiskCardGame.AscensionChallengeInfo</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -163,15 +289,16 @@ public static class ChallengeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_Add_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.Add(System.String%2CDiskCardGame.AscensionChallengeInfo%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L101">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L407">View Source</a>
   </span>
   <a id="InscryptionAPI_Ascension_ChallengeManager_Add_" data-uid="InscryptionAPI.Ascension.ChallengeManager.Add*"></a>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_Add_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Ascension.ChallengeManager.Add(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Boolean)">Add(String, AscensionChallengeInfo, Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AscensionChallengeInfo Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, bool stackable = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, bool stackable = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -186,22 +313,26 @@ public static class ChallengeManager</code></pre>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">pluginGuid</span></td>
-        <td></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
         <td><span class="parametername">info</span></td>
-        <td></td>
+        <td><p>The challenge info to add.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">unlockLevel</span></td>
-        <td></td>
+        <td><p>The minimum unlock level required for the challenge to be playable. Defaults to 0.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">stackable</span></td>
-        <td></td>
+        <td><p>True if the challenge should appear twice in the challenge screen, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -215,8 +346,9 @@ public static class ChallengeManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
-        <td></td>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -225,11 +357,12 @@ public static class ChallengeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_Add_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.Add(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CUnityEngine.Texture2D%2CUnityEngine.Texture2D%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L113">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L606">View Source</a>
   </span>
   <a id="InscryptionAPI_Ascension_ChallengeManager_Add_" data-uid="InscryptionAPI.Ascension.ChallengeManager.Add*"></a>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_Add_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Ascension.ChallengeManager.Add(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Boolean)">Add(String, String, String, Int32, Texture2D, Texture2D, Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -248,42 +381,50 @@ public static class ChallengeManager</code></pre>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">pluginGuid</span></td>
-        <td></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">title</span></td>
-        <td></td>
+        <td><p>The name of the challenge that will be displayed in the challenge screen.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">description</span></td>
-        <td></td>
+        <td><p>The description of the challenge that will be displayed in the challenge screen.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">pointValue</span></td>
-        <td></td>
+        <td><p>The points given for activating the challenge.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
         <td><span class="parametername">iconTexture</span></td>
-        <td></td>
+        <td><p>The icon of the challenge that will appear in the challenge screen.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
         <td><span class="parametername">activatedTexture</span></td>
-        <td></td>
+        <td><p>The glowy part of the icon that will be shown when the challenge is activated.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">unlockLevel</span></td>
-        <td></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">stackable</span></td>
-        <td></td>
+        <td><p>True if the challenge should appear twice in the challenge screen, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -298,7 +439,756 @@ public static class ChallengeManager</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
-        <td></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String%2CDiskCardGame.AscensionChallengeInfo%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L420">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,System.Int32)">AddSpecific(String, AscensionChallengeInfo, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, int numAppearancesInChallengeScreen = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The challenge info to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum unlock level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String%2CDiskCardGame.AscensionChallengeInfo%2CType%2CSystem.Int32%2CList%7BSystem.Object%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L535">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_DiskCardGame_AscensionChallengeInfo_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,DiskCardGame.AscensionChallengeInfo,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)">AddSpecific(String, AscensionChallengeInfo, Type, Int32, List&lt;Object&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, Type handlerType = null, int unlockLevel = 0, List&lt;object&gt; flags = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; dependantChallengeGetter = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The challenge info to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">handlerType</span></td>
+        <td><p>The challenge handler type for the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The object flags for the challenge. Doesn&apos;t do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">dependantChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">incompatibleChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CUnityEngine.Texture2D%2CUnityEngine.Texture2D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L568">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,System.Int32)">AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Creates and registers a new challenge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific(string pluginGuid, string title, string description, int pointValue, Texture2D iconTexture, Texture2D activatedTexture = null, int unlockLevel = 0, int numAppearancesInChallengeScreen = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>The name of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">pointValue</span></td>
+        <td><p>The points given for activating the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">iconTexture</span></td>
+        <td><p>The icon of the challenge that will appear in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">activatedTexture</span></td>
+        <td><p>The glowy part of the icon that will be shown when the challenge is activated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CUnityEngine.Texture2D%2CUnityEngine.Texture2D%2CType%2CSystem.Int32%2CList%7BSystem.Object%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L474">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_Type_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,Type,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)">AddSpecific(String, String, String, Int32, Texture2D, Texture2D, Type, Int32, List&lt;Object&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Creates and registers a new challenge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific(string pluginGuid, string title, string description, int pointValue, Texture2D iconTexture, Texture2D activatedTexture = null, Type handlerType = null, int unlockLevel = 0, List&lt;object&gt; flags = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; dependantChallengeGetter = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>The name of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">pointValue</span></td>
+        <td><p>The points given for activating the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">iconTexture</span></td>
+        <td><p>The icon of the challenge that will appear in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">activatedTexture</span></td>
+        <td><p>The glowy part of the icon that will be shown when the challenge is activated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">handlerType</span></td>
+        <td><p>The challenge handler type for the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The object flags for the challenge. Doesn&apos;t do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">dependantChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">incompatibleChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific%60%601(System.String%2CDiskCardGame.AscensionChallengeInfo%2CSystem.Int32%2CList%7BSystem.Object%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L516">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_DiskCardGame_AscensionChallengeInfo_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,DiskCardGame.AscensionChallengeInfo,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)">AddSpecific&lt;T&gt;(String, AscensionChallengeInfo, Int32, List&lt;Object&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific&lt;T&gt;(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, List&lt;object&gt; flags = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; dependantChallengeGetter = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)
+    where T : ChallengeBehaviour</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The challenge info to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The object flags for the challenge. Doesn&apos;t do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">dependantChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">incompatibleChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The challenge handler type for the challenge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.AddSpecific%60%601(System.String%2CSystem.String%2CSystem.String%2CSystem.Int32%2CUnityEngine.Texture2D%2CUnityEngine.Texture2D%2CSystem.Int32%2CList%7BSystem.Object%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CFunc%7BInscryptionAPI.Ascension.ChallengeManager.FullChallenge%5B%5D%2CSystem.Collections.IEnumerable%7BDiskCardGame.AscensionChallenge%7D%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L441">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_AddSpecific__1_System_String_System_String_System_String_System_Int32_UnityEngine_Texture2D_UnityEngine_Texture2D_System_Int32_List_System_Object__Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___System_Int32_" data-uid="InscryptionAPI.Ascension.ChallengeManager.AddSpecific``1(System.String,System.String,System.String,System.Int32,UnityEngine.Texture2D,UnityEngine.Texture2D,System.Int32,List{System.Object},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}},System.Int32)">AddSpecific&lt;T&gt;(String, String, String, Int32, Texture2D, Texture2D, Int32, List&lt;Object&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Creates and registers a new challenge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge AddSpecific&lt;T&gt;(string pluginGuid, string title, string description, int pointValue, Texture2D iconTexture, Texture2D activatedTexture = null, int unlockLevel = 0, List&lt;object&gt; flags = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; dependantChallengeGetter = null, Func&lt;ChallengeManager.FullChallenge[], IEnumerable&lt;AscensionChallenge&gt;&gt; incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)
+    where T : ChallengeBehaviour</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td><p>The GUID of the plugin adding the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>The name of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>The description of the challenge that will be displayed in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">pointValue</span></td>
+        <td><p>The points given for activating the challenge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">iconTexture</span></td>
+        <td><p>The icon of the challenge that will appear in the challenge screen.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">activatedTexture</span></td>
+        <td><p>The glowy part of the icon that will be shown when the challenge is activated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">unlockLevel</span></td>
+        <td><p>The minimum level required for the challenge to be playable. Defaults to 0.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The object flags for the challenge. Doesn&apos;t do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">dependantChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>[], <span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.AscensionChallenge</span>&gt;&gt;</td>
+        <td><span class="parametername">incompatibleChallengeGetter</span></td>
+        <td><p>A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">numAppearancesInChallengeScreen</span></td>
+        <td><p>The number of times this challenge should appear in the challenge screen. Defaults to 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The challenge handler type for the challenge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallenge_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallenge)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L361">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallenge)">GetFullChallenge(AscensionChallenge)</h4>
+  <div class="markdown level1 summary"><p>Gets the ChallengeManager.FullChallenge with the challengeType equal to info.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge GetFullChallenge(this AscensionChallenge info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallenge</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The challenge type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The full challenge that was found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallengeInfo_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallengeInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L371">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_GetFullChallenge_DiskCardGame_AscensionChallengeInfo_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetFullChallenge(DiskCardGame.AscensionChallengeInfo)">GetFullChallenge(AscensionChallengeInfo)</h4>
+  <div class="markdown level1 summary"><p>Gets the ChallengeManager.FullChallenge with the challengeType equal to info&apos;s challengeType.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ChallengeManager.FullChallenge GetFullChallenge(this AscensionChallengeInfo info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The AscensionChallengeInfo with the challenge type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td><p>The full challenge that was found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_GetInfo_DiskCardGame_AscensionChallenge_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.GetInfo(DiskCardGame.AscensionChallenge)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L351">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_GetInfo_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetInfo*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_GetInfo_DiskCardGame_AscensionChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.GetInfo(DiskCardGame.AscensionChallenge)">GetInfo(AscensionChallenge)</h4>
+  <div class="markdown level1 summary"><p>Gets the AscensionChallengeInfo with the challengeType equal to info.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AscensionChallengeInfo GetInfo(this AscensionChallenge info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallenge</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The challenge type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
+        <td><p>The challenge that was found.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -307,11 +1197,12 @@ public static class ChallengeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L96">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L394">View Source</a>
   </span>
   <a id="InscryptionAPI_Ascension_ChallengeManager_IsStackable_" data-uid="InscryptionAPI.Ascension.ChallengeManager.IsStackable*"></a>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_IsStackable_DiskCardGame_AscensionChallenge_" data-uid="InscryptionAPI.Ascension.ChallengeManager.IsStackable(DiskCardGame.AscensionChallenge)">IsStackable(AscensionChallenge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns true if the challenge with the challengeType of id is stackable, false otherwise.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -330,7 +1221,8 @@ public static class ChallengeManager</code></pre>
       <tr>
         <td><span class="xref">DiskCardGame.AscensionChallenge</span></td>
         <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>The challenge type to search for.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -345,7 +1237,8 @@ public static class ChallengeManager</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td></td>
+        <td><p>True if the challenge with the challengeType of id is stackable, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -354,7 +1247,7 @@ public static class ChallengeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L71">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L324">View Source</a>
   </span>
   <a id="InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList_" data-uid="InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList*"></a>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_SyncChallengeList" data-uid="InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList">SyncChallengeList()</h4>
@@ -371,14 +1264,14 @@ public static class ChallengeManager</code></pre>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager_ModifyChallenges.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L56">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L309">View Source</a>
   </span>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_ModifyChallenges" data-uid="InscryptionAPI.Ascension.ChallengeManager.ModifyChallenges">ModifyChallenges</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static event Func&lt;List&lt;AscensionChallengeInfo&gt;, List&lt;AscensionChallengeInfo&gt;&gt; ModifyChallenges</code></pre>
+    <pre><code class="lang-csharp hljs">public static event Func&lt;List&lt;ChallengeManager.FullChallenge&gt;, List&lt;ChallengeManager.FullChallenge&gt;&gt; ModifyChallenges</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -390,7 +1283,7 @@ public static class ChallengeManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AscensionChallengeInfo</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AscensionChallengeInfo</span>&gt;&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>&gt;, <span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -406,7 +1299,7 @@ public static class ChallengeManager</code></pre>
                     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Ascension_ChallengeManager.md&amp;value=---%0Auid%3A%20InscryptionAPI.Ascension.ChallengeManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Ascension/ChallengeManager.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
