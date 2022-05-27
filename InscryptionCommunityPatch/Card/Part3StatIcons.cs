@@ -108,4 +108,43 @@ internal static class Part3StatIcons
             }
         }
     }
+
+    private static bool OpponentHasGem(GemType gem)
+    {
+        if (BoardManager.Instance == null || BoardManager.Instance.OpponentSlotsCopy == null)
+            return false;
+
+        Ability singleton = gem == GemType.Green ? Ability.GainGemGreen :
+                            gem == GemType.Orange ? Ability.GainGemOrange :
+                            Ability.GainGemBlue;
+
+        return BoardManager.Instance.OpponentSlotsCopy.Any(slot => 
+            slot.Card != null && (
+                slot.Card.HasAbility(singleton) ||
+                slot.Card.HasAbility(Ability.GainGemTriple)
+            )
+        );
+    }
+
+    [HarmonyPatch(typeof(DiskRenderStatsLayer), nameof(DiskRenderStatsLayer.ManagedUpdate))]
+    [HarmonyPrefix]
+    private static bool RenderOpposingGemification(DiskRenderStatsLayer __instance)
+    {
+        if (__instance.gemSquares[0].activeInHierarchy && GameFlowManager.IsCardBattle)
+        {
+            for (int i = 0; i < __instance.gemRenderers.Count; i++)
+            {
+                __instance.gemRenderers[i].GetPropertyBlock(__instance.gemsPropertyBlock);
+
+                GemType target = (GemType)i;
+
+                bool show = (__instance.PlayableCard.OpponentCard && OpponentHasGem(target)) ||
+                            (!__instance.PlayableCard.OpponentCard && ResourcesManager.Instance.HasGem(target));
+                
+                __instance.gemsPropertyBlock.SetColor("_EmissionColor", show ? Color.white : Color.black);
+                __instance.gemRenderers[i].SetPropertyBlock(__instance.gemsPropertyBlock);
+            }
+        }
+        return false;
+    }
 }
