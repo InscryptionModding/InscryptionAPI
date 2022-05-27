@@ -12,15 +12,31 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class ChallengeManager
 {
+    /// <summary>
+    /// The default activated eye sprite for challenges.
+    /// </summary>
+    public static readonly Texture2D DEFAULT_ACTIVATED_SPRITE = Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default");
+    /// <summary>
+    /// The activated eye sprite for the "More Difficult" challenge. Can be used for other challenges with that form of eyes.
+    /// </summary>
+    public static readonly Texture2D MOREDIFFICULT_ACTIVATED_SPRITE = Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty");
 
-    public static readonly Sprite DEFAULT_ACTIVATED_SPRITE = TextureHelper.ConvertTexture(
-        Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default"),
-        TextureHelper.SpriteType.ChallengeIcon);
-
+    /// <summary>
+    /// Class that stores full info about challenges, including unlock level, stackability, handlers and incompatible/dependant challenges.
+    /// </summary>
     public class FullChallenge
     {
+        /// <summary>
+        /// The challenge info of this FullChallenge.
+        /// </summary>
         public AscensionChallengeInfo Challenge { get; set; }
+        /// <summary>
+        /// Number of times this challenge appears in the challenge screen.
+        /// </summary>
         public int AppearancesInChallengeScreen { get; set; }
+        /// <summary>
+        /// True if this challenge appears more than 1 time in the challenge screen, false otherwise.
+        /// </summary>
         public bool Stackable
         {
             get
@@ -35,6 +51,9 @@ public static class ChallengeManager
                 }
             }
         }
+        /// <summary>
+        /// True if this challenge appears in the challenge screen (AppearancesInChallengeScreen > 0), false otherwise.
+        /// </summary>
         public bool AppearsInChallengeScreen
         {
             get
@@ -49,95 +68,195 @@ public static class ChallengeManager
                 }
             }
         }
+        /// <summary>
+        /// The minimum unlock level required for the challenge to be playable.
+        /// </summary>
         public int UnlockLevel { get; set; }
+        /// <summary>
+        /// The challenge handler type for this challenge. For this to be valid, it should inherit ChallengeBehaviour, not be abstract and not be null. This is basically a trigger receiver that will be instantiated every time the player enters a card battle for easy challenge effects.
+        /// </summary>
         public Type ChallengeHandler { get; set; }
+        /// <summary>
+        /// A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.
+        /// </summary>
         public Func<FullChallenge[], IEnumerable<AscensionChallenge>> DependantChallengeGetter { get; set; }
+        /// <summary>
+        /// A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.
+        /// </summary>
         public Func<FullChallenge[], IEnumerable<AscensionChallenge>> IncompatibleChallengeGetter { get; set; }
+        /// <summary>
+        /// The object flags for the challenge. Doesn't do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.
+        /// </summary>
         public List<object> Flags { get; set; }
+        /// <summary>
+        /// Returns true if t is a valid challenge handler type (inherits ChallengeBehaviour, not abstract and not null), false otherwise.
+        /// </summary>
+        /// <param name="t">The type to check.</param>
+        /// <returns>True if t is a valid challenge handler type (inherits ChallengeBehaviour, not abstract and not null), false otherwise.</returns>
         public static bool ValidHandlerType(Type t)
         {
             return t != null && !t.IsAbstract && t.IsSubclassOf(typeof(ChallengeBehaviour));
         }
+        /// <summary>
+        /// If the challenge's point value is over 0, returns 1, if under 0, returns -1, if equal to 0, returns 0. Used for sorting challenges.
+        /// </summary>
         public int SortValue => Challenge.pointValue == 0 ? 0 : Math.Sign(Challenge.pointValue);
+        /// <summary>
+        /// Returns true if this challenge has a valid handler type (inherits ChallengeBehaviour, not abstract and not null), false otherwise.
+        /// </summary>
+        /// <returns>True if this challenge has a valid handler type (inherits ChallengeBehaviour, not abstract and not null), false otherwise.</returns>
         public bool HasValidHandler()
         {
             return ValidHandlerType(ChallengeHandler);
         }
+        /// <summary>
+        /// Converts this full challenge to an AscensionChallengeInfo, returning this.Challenge.
+        /// </summary>
+        /// <param name="fc">this.Challenge</param>
         public static implicit operator AscensionChallengeInfo(FullChallenge fc)
         {
             return fc.Challenge;
         }
+        /// <summary>
+        /// Sets the AscensionChallengeInfo of this full challenge.
+        /// </summary>
+        /// <param name="challenge">The new AscensionChallengeInfo for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetChallenge(AscensionChallengeInfo challenge)
         {
             Challenge = challenge;
             return this;
         }
+        /// <summary>
+        /// Sets the number of appearances in challenge screen of this full challenge.
+        /// </summary>
+        /// <param name="appearancesInChallengeScreen">The new number of appearances in challenge screen for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetAppearancesInChallengeScreen(int appearancesInChallengeScreen)
         {
             AppearancesInChallengeScreen = appearancesInChallengeScreen;
             return this;
         }
+        /// <summary>
+        /// Sets the unlock level of this full challenge.
+        /// </summary>
+        /// <param name="unlockLevel">The new unlock level for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetUnlockLevel(int unlockLevel)
         {
             UnlockLevel = unlockLevel;
             return this;
         }
+        /// <summary>
+        /// Sets the challenge handler type of this full challenge.
+        /// </summary>
+        /// <param name="challengeHandler">The new challenge handler for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetChallengeHandler(Type challengeHandler)
         {
             ChallengeHandler = challengeHandler;
             return this;
         }
+        /// <summary>
+        /// Sets the dependant challenge getter of this full challenge.
+        /// </summary>
+        /// <param name="dependantChallengeGetter">The new dependant challenge getter for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetDependantChallengeGetter(Func<FullChallenge[], IEnumerable<AscensionChallenge>> dependantChallengeGetter)
         {
             DependantChallengeGetter = dependantChallengeGetter;
             return this;
         }
+        /// <summary>
+        /// Sets the dependency challenges of this full challenge.
+        /// </summary>
+        /// <param name="dependantChallenges">The new dependency challenges for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetDependantChallengeGetterStatic(params AscensionChallenge[] dependantChallenges)
         {
             DependantChallengeGetter = (x) => dependantChallenges;
             return this;
         }
+        /// <summary>
+        /// Sets the dependant whitelist challenge flags (flags that challenges should have to be counted dependencies for this challenge) of this full challenge.
+        /// </summary>
+        /// <param name="whitelistFlags">The new dependant whitelist challenge flags for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetDependantChallengeGetterFlagWhitelist(params string[] whitelistFlags)
         {
-            DependantChallengeGetter = (x) => x.Where(x2 => x2.Flags.Exists(x3 => whitelistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
+            DependantChallengeGetter = (x) => x.Where(x2 => x2.Flags != null && x2.Flags.Exists(x3 => whitelistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
             return this;
         }
+        /// <summary>
+        /// Sets the dependant blacklist challenge flags (flags that challenges should *NOT* have to be counted dependencies for this challenge) of this full challenge.
+        /// </summary>
+        /// <param name="blacklistFlags">The new dependant blacklist challenge flags for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetDependantChallengeGetterFlagBlacklist(params string[] blacklistFlags)
         {
-            DependantChallengeGetter = (x) => x.Where(x2 => !x2.Flags.Exists(x3 => blacklistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
+            DependantChallengeGetter = (x) => x.Where(x2 => x2.Flags == null || !x2.Flags.Exists(x3 => blacklistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
             return this;
         }
-
+        /// <summary>
+        /// Sets the incompatible challenge getter of this full challenge.
+        /// </summary>
+        /// <param name="incompatibleChallengeGetter">The new incompatible challenge getter for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetIncompatibleChallengeGetter(Func<FullChallenge[], IEnumerable<AscensionChallenge>> incompatibleChallengeGetter)
         {
             IncompatibleChallengeGetter = incompatibleChallengeGetter;
             return this;
         }
+        /// <summary>
+        /// Sets the incompatible challenges of this full challenge.
+        /// </summary>
+        /// <param name="incompatibleChallenges">The new incompatible challenges for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetIncompatibleChallengeGetterStatic(params AscensionChallenge[] incompatibleChallenges)
         {
             IncompatibleChallengeGetter = (x) => incompatibleChallenges;
             return this;
         }
+        /// <summary>
+        /// Sets the incompatible whitelist challenge flags (flags that challenges should have to be counted incompatible with this challenge) of this full challenge.
+        /// </summary>
+        /// <param name="whitelistFlags">The new incompatible whitelist challenge flags for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetIncompatibleChallengeGetterFlagWhitelist(params string[] whitelistFlags)
         {
             IncompatibleChallengeGetter = (x) => x.Where(x2 => x2.Flags.Exists(x3 => whitelistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
             return this;
         }
+        /// <summary>
+        /// Sets the incompatible blacklist challenge flags (flags that challenges should *NOT* have to be counted incompatible with this challenge) of this full challenge.
+        /// </summary>
+        /// <param name="blacklistFlags">The new incompatible blacklist challenge flags for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetIncompatibleChallengeGetterFlagBlacklist(params string[] blacklistFlags)
         {
             IncompatibleChallengeGetter = (x) => x.Where(x2 => !x2.Flags.Exists(x3 => blacklistFlags.Contains(x3))).Select(x => x.Challenge.challengeType);
             return this;
         }
+        /// <summary>
+        /// Sets the flags of this full challenge
+        /// </summary>
+        /// <param name="flags">The new flags for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
         public FullChallenge SetFlags(params object[] flags)
         {
             Flags = flags.ToList();
             return this;
         }
     }
-
+    /// <summary>
+    /// The list of all base game challenges in the form of ChallengeManager.FullChallenge.
+    /// </summary>
     public static readonly ReadOnlyCollection<FullChallenge> BaseGameChallenges = new(GenBaseGameChallengs());
-
     internal static readonly ObservableCollection<FullChallenge> NewInfos = new();
+    /// <summary>
+    /// The list of all new challenges added with the API in the form of ChallengeManager.FullChallenge.
+    /// </summary>
+    public static readonly ReadOnlyCollection<FullChallenge> NewChallenges = new(NewInfos);
 
     private static List<FullChallenge> GenBaseGameChallengs()
     {
@@ -221,16 +340,31 @@ public static class ChallengeManager
         };
     }
 
+    /// <summary>
+    /// Gets the AscensionChallengeInfo with the challengeType equal to info.
+    /// </summary>
+    /// <param name="info">The challenge type to search for.</param>
+    /// <returns>The challenge that was found.</returns>
     public static AscensionChallengeInfo GetInfo(this AscensionChallenge info)
     {
         return AllChallenges.Find(x => x != null && x.Challenge != null && x.Challenge.challengeType == info)?.Challenge;
     }
 
+    /// <summary>
+    /// Gets the ChallengeManager.FullChallenge with the challengeType equal to info.
+    /// </summary>
+    /// <param name="info">The challenge type to search for.</param>
+    /// <returns>The full challenge that was found.</returns>
     public static FullChallenge GetFullChallenge(this AscensionChallenge info)
     {
         return AllChallenges.Find(x => x != null && x.Challenge != null && x.Challenge.challengeType == info);
     }
 
+    /// <summary>
+    /// Gets the ChallengeManager.FullChallenge with the challengeType equal to info's challengeType.
+    /// </summary>
+    /// <param name="info">The AscensionChallengeInfo with the challenge type to search for.</param>
+    /// <returns>The full challenge that was found.</returns>
     public static FullChallenge GetFullChallenge(this AscensionChallengeInfo info)
     {
         if(info == null)
@@ -240,24 +374,67 @@ public static class ChallengeManager
         return info.challengeType.GetFullChallenge();
     }
 
+    /// <summary>
+    /// All challenges in the form of ChallengeManager.FullChallenge, including both basegame and new challenges.
+    /// </summary>
     public static List<FullChallenge> AllChallenges = BaseGameChallenges.ToList();
+    /// <summary>
+    /// All challenges in the form of AscensionChallengeInfo, including both basegame and new challenges.
+    /// </summary>
     public static List<AscensionChallengeInfo> AllInfo => AllChallenges.ConvertAll(x => x.Challenge);
 
+    /// <summary>
+    /// Returns true if the challenge with the challengeType of id is stackable, false otherwise.
+    /// </summary>
+    /// <param name="id">The challenge type to search for.</param>
+    /// <returns>True if the challenge with the challengeType of id is stackable, false otherwise</returns>
     public static bool IsStackable(AscensionChallenge id)
     {
         return (AllChallenges.Find(x => x != null && x.Challenge != null && x.Challenge.challengeType == id)?.Stackable).GetValueOrDefault();
     }
 
+    /// <summary>
+    /// Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="info">The challenge info to add.</param>
+    /// <param name="unlockLevel">The minimum unlock level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="stackable">True if the challenge should appear twice in the challenge screen, false otherwise.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</returns>
     public static FullChallenge Add(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, bool stackable = false)
     {
         return AddSpecific(pluginGuid, info, unlockLevel, stackable ? 2 : 1);
     }
 
+    /// <summary>
+    /// Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="info">The challenge info to add.</param>
+    /// <param name="unlockLevel">The minimum unlock level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, int numAppearancesInChallengeScreen = 1)
     {
         return AddSpecific(pluginGuid, info, null, unlockLevel, null, null, null, numAppearancesInChallengeScreen);
     }
 
+    /// <summary>
+    /// Creates and registers a new challenge.
+    /// </summary>
+    /// <typeparam name="T">The challenge handler type for the challenge.</typeparam>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="title">The name of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="description">The description of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="pointValue">The points given for activating the challenge.</param>
+    /// <param name="iconTexture">The icon of the challenge that will appear in the challenge screen.</param>
+    /// <param name="activatedTexture">The glowy part of the icon that will be shown when the challenge is activated.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="flags">The object flags for the challenge. Doesn't do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</param>
+    /// <param name="dependantChallengeGetter">A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</param>
+    /// <param name="incompatibleChallengeGetter">A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific<T>(
         string pluginGuid,
         string title,
@@ -275,6 +452,22 @@ public static class ChallengeManager
         return AddSpecific(pluginGuid, title, description, pointValue, iconTexture, activatedTexture, typeof(T), unlockLevel, flags, dependantChallengeGetter, incompatibleChallengeGetter, numAppearancesInChallengeScreen);
     }
 
+    /// <summary>
+    /// Creates and registers a new challenge.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="title">The name of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="description">The description of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="pointValue">The points given for activating the challenge.</param>
+    /// <param name="iconTexture">The icon of the challenge that will appear in the challenge screen.</param>
+    /// <param name="activatedTexture">The glowy part of the icon that will be shown when the challenge is activated.</param>
+    /// <param name="handlerType">The challenge handler type for the challenge.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="flags">The object flags for the challenge. Doesn't do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</param>
+    /// <param name="dependantChallengeGetter">A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</param>
+    /// <param name="incompatibleChallengeGetter">A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific(
         string pluginGuid,
         string title,
@@ -305,6 +498,18 @@ public static class ChallengeManager
         return AddSpecific(pluginGuid, info, handlerType, unlockLevel, flags, dependantChallengeGetter, incompatibleChallengeGetter, numAppearancesInChallengeScreen);
     }
 
+    /// <summary>
+    /// Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.
+    /// </summary>
+    /// <typeparam name="T">The challenge handler type for the challenge.</typeparam>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="info">The challenge info to add.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="flags">The object flags for the challenge. Doesn't do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</param>
+    /// <param name="dependantChallengeGetter">A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</param>
+    /// <param name="incompatibleChallengeGetter">A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific<T>(string pluginGuid, AscensionChallengeInfo info, int unlockLevel = 0, List<object> flags = null,
         Func<FullChallenge[], IEnumerable<AscensionChallenge>> dependantChallengeGetter = null, Func<FullChallenge[], IEnumerable<AscensionChallenge>> incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)
         where T : ChallengeBehaviour
@@ -312,6 +517,18 @@ public static class ChallengeManager
         return AddSpecific(pluginGuid, info, typeof(T), unlockLevel, flags, dependantChallengeGetter, incompatibleChallengeGetter, numAppearancesInChallengeScreen);
     }
 
+    /// <summary>
+    /// Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="info">The challenge info to add.</param>
+    /// <param name="handlerType">The challenge handler type for the challenge.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="flags">The object flags for the challenge. Doesn't do anything by itself, but can be used for building a list of incompatible and dependant challenges. Defaults to null.</param>
+    /// <param name="dependantChallengeGetter">A func that will return the list of the challenges required for this challenge to be activated. Defaults to null, or no dependencies.</param>
+    /// <param name="incompatibleChallengeGetter">A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, Type handlerType = null, int unlockLevel = 0, List<object> flags = null, 
         Func<FullChallenge[], IEnumerable<AscensionChallenge>> dependantChallengeGetter = null, Func<FullChallenge[], IEnumerable<AscensionChallenge>> incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)
     {
@@ -333,6 +550,18 @@ public static class ChallengeManager
         return fc;
     }
 
+    /// <summary>
+    /// Creates and registers a new challenge.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="title">The name of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="description">The description of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="pointValue">The points given for activating the challenge.</param>
+    /// <param name="iconTexture">The icon of the challenge that will appear in the challenge screen.</param>
+    /// <param name="activatedTexture">The glowy part of the icon that will be shown when the challenge is activated.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</returns>
     public static FullChallenge AddSpecific(
         string pluginGuid,
         string title,
@@ -351,14 +580,26 @@ public static class ChallengeManager
         info.pointValue = pointValue;
         info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.ChallengeIcon);
 
-        Texture2D infoActivationTexture = activatedTexture ??
-            ((pointValue > 0) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
-                : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
+        Texture2D infoActivationTexture = activatedTexture;// ??
+        //    ((pointValue > 0) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
+        //        : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
         info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         return AddSpecific(pluginGuid, info, unlockLevel, numAppearancesInChallengeScreen);
     }
 
+    /// <summary>
+    /// Adds a new challenge with the info of AscensionChallengeInfo, adds the additional info to it and returns it.
+    /// </summary>
+    /// <param name="pluginGuid">The GUID of the plugin adding the challenge.</param>
+    /// <param name="title">The name of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="description">The description of the challenge that will be displayed in the challenge screen.</param>
+    /// <param name="pointValue">The points given for activating the challenge.</param>
+    /// <param name="iconTexture">The icon of the challenge that will appear in the challenge screen.</param>
+    /// <param name="activatedTexture">The glowy part of the icon that will be shown when the challenge is activated.</param>
+    /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
+    /// <param name="stackable">True if the challenge should appear twice in the challenge screen, false otherwise.</param>
+    /// <returns>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</returns>
     public static AscensionChallengeInfo Add(
         string pluginGuid,
         string title,
