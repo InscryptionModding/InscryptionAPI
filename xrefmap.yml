@@ -7043,6 +7043,12 @@ references:
   fullName.vb: InscryptionAPI.Nodes.NewNodeManager.New(Of T)(System.String, System.String, InscryptionAPI.Nodes.GenerationType, List(Of UnityEngine.Texture2D), List(Of DiskCardGame.NodeData.SelectionCondition), List(Of DiskCardGame.NodeData.SelectionCondition), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData), Action(Of InscryptionAPI.Nodes.CustomSpecialNodeData, DiskCardGame.MapNode2D), UnityEngine.GameObject, UnityEngine.GameObject)
   nameWithType: NewNodeManager.New<T>(String, String, GenerationType, List<Texture2D>, List<NodeData.SelectionCondition>, List<NodeData.SelectionCondition>, Action<CustomSpecialNodeData>, Action<CustomSpecialNodeData, MapNode2D>, GameObject, GameObject)
   nameWithType.vb: NewNodeManager.New(Of T)(String, String, GenerationType, List(Of Texture2D), List(Of NodeData.SelectionCondition), List(Of NodeData.SelectionCondition), Action(Of CustomSpecialNodeData), Action(Of CustomSpecialNodeData, MapNode2D), GameObject, GameObject)
+- uid: InscryptionAPI.Nodes.NewNodeManager.NewNodes
+  name: NewNodes
+  href: api/InscryptionAPI.Nodes.NewNodeManager.html#InscryptionAPI_Nodes_NewNodeManager_NewNodes
+  commentId: F:InscryptionAPI.Nodes.NewNodeManager.NewNodes
+  fullName: InscryptionAPI.Nodes.NewNodeManager.NewNodes
+  nameWithType: NewNodeManager.NewNodes
 - uid: InscryptionAPI.Nodes.Not
   name: Not
   href: api/InscryptionAPI.Nodes.Not.html

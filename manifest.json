@@ -958,7 +958,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.GenerationType.html",
-          "hash": "yREZR2oHwcj0uKuyX59Li6OG/b2OKOHVVpe9gn99tvo="
+          "hash": "sqQ+wbX2NbXLfemsaMwBZd2pSXIOQN1zZBT46mpTiQc="
         }
       },
       "is_incremental": false,
@@ -1018,7 +1018,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html",
-          "hash": "dwA1TvTtl5g+d5ZIiu/RaYG0IgBC2Ngw+fC9E4vAg48="
+          "hash": "pXwXJ3p1jUjzJnQaqaMW1QfZLv+Sb8DgbPnVBeXLpk8="
         }
       },
       "is_incremental": false,
@@ -1030,7 +1030,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.html",
-          "hash": "ZxWuF5eRHSOFCzLHKRD2aI/BqjjbwEb4MVSlzZO/ck8="
+          "hash": "XVP+zFD7U2c07RHovOpiYu4RfLlaZRRJdkciBa13jGg="
         }
       },
       "is_incremental": false,
