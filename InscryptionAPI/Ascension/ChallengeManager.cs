@@ -22,7 +22,7 @@ public static class ChallengeManager
     /// <summary>
     /// The activated eye sprite for the "More Difficult" challenge. Can be used for other challenges with that form of eyes.
     /// </summary>
-    public static readonly Texture2D MOREDIFFICULT_ACTIVATED_SPRITE = Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty");
+    public static readonly Texture2D HAPPY_ACTIVATED_SPRITE = Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty");
 
     /// <summary>
     /// Class that stores full info about challenges, including unlock level, stackability, handlers and incompatible/dependant challenges.
@@ -444,7 +444,7 @@ public static class ChallengeManager
         string description,
         int pointValue,
         Texture2D iconTexture,
-        Texture2D activatedTexture = null,
+        Texture2D activatedTexture,
         int unlockLevel = 0,
         List<object> flags = null,
         Func<FullChallenge[], IEnumerable<AscensionChallenge>> dependantChallengeGetter = null,
@@ -477,7 +477,7 @@ public static class ChallengeManager
         string description,
         int pointValue,
         Texture2D iconTexture,
-        Texture2D activatedTexture = null,
+        Texture2D activatedTexture,
         Type handlerType = null,
         int unlockLevel = 0,
         List<object> flags = null,
@@ -492,11 +492,7 @@ public static class ChallengeManager
         info.description = description;
         info.pointValue = pointValue;
         info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.ChallengeIcon);
-
-        Texture2D infoActivationTexture = activatedTexture ??
-            ((pointValue > 0) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
-                : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
-        info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
+        info.activatedSprite = TextureHelper.ConvertTexture(activatedTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         return AddSpecific(pluginGuid, info, handlerType, unlockLevel, flags, dependantChallengeGetter, incompatibleChallengeGetter, numAppearancesInChallengeScreen);
     }
@@ -571,7 +567,7 @@ public static class ChallengeManager
         string description,
         int pointValue,
         Texture2D iconTexture,
-        Texture2D activatedTexture = null,
+        Texture2D activatedTexture,
         int unlockLevel = 0,
         int numAppearancesInChallengeScreen = 1
     )
@@ -582,11 +578,7 @@ public static class ChallengeManager
         info.description = description;
         info.pointValue = pointValue;
         info.iconSprite = TextureHelper.ConvertTexture(iconTexture, TextureHelper.SpriteType.ChallengeIcon);
-
-        Texture2D infoActivationTexture = activatedTexture;// ??
-        //    ((pointValue > 0) ? Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_default")
-        //        : Resources.Load<Texture2D>("art/ui/ascension/ascensionicon_activated_difficulty"));
-        info.activatedSprite = TextureHelper.ConvertTexture(infoActivationTexture, TextureHelper.SpriteType.ChallengeIcon);
+        info.activatedSprite = TextureHelper.ConvertTexture(activatedTexture, TextureHelper.SpriteType.ChallengeIcon);
 
         return AddSpecific(pluginGuid, info, unlockLevel, numAppearancesInChallengeScreen);
     }
@@ -603,13 +595,13 @@ public static class ChallengeManager
     /// <param name="unlockLevel">The minimum level required for the challenge to be playable. Defaults to 0.</param>
     /// <param name="stackable">True if the challenge should appear twice in the challenge screen, false otherwise.</param>
     /// <returns>The built ChallengeManager.FullChallenge, with the built challenge info and other additional info.</returns>
-    public static AscensionChallengeInfo Add(
+    public static FullChallenge Add(
         string pluginGuid,
         string title,
         string description,
         int pointValue,
         Texture2D iconTexture,
-        Texture2D activatedTexture = null,
+        Texture2D activatedTexture,
         int unlockLevel = 0, 
         bool stackable = false
     )
