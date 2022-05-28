@@ -31,6 +31,22 @@ public static class PassiveAttackBuffPatches
         yield return sequence;
     }
 
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
+    [HarmonyPrefix]
+    private static bool BetterHealthBuffs(ref int __result, ref PlayableCard __instance)
+    {
+        __result = 0;
+        if (__instance.Info.Gemified)
+        {
+            if (!__instance.OpponentCard && ResourcesManager.Instance.HasGem(GemType.Green))
+                __result += 2;
+
+            if (__instance.OpponentCard && BoardManager.Instance.OpponentSlotsCopy.Any(c => c.Card != null && (c.Card.HasAbility(Ability.GainGemGreen) || c.Card.HasAbility(Ability.GainGemTriple))))
+                __result += 2;
+        }
+        return false;
+    }
+
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveAttackBuffs))]
     [HarmonyPrefix]
     private static bool BetterAttackBuffs(ref int __result, ref PlayableCard __instance)
@@ -80,8 +96,14 @@ public static class PassiveAttackBuffPatches
                     .Sum(slot => slot.Card.AbilityCount(Ability.BuffGems));
         }
 
-        if (__instance.Info.Gemified && ResourcesManager.Instance.HasGem(GemType.Orange))
-            __result += 1;
+        if (__instance.Info.Gemified)
+        {
+            if (!__instance.OpponentCard && ResourcesManager.Instance.HasGem(GemType.Orange))
+                __result += 1;
+
+            if (__instance.OpponentCard && BoardManager.Instance.OpponentSlotsCopy.Any(c => c.Card != null && (c.Card.HasAbility(Ability.GainGemOrange) || c.Card.HasAbility(Ability.GainGemTriple))))
+                __result += 1;
+        }   
 
         return false;
     }
