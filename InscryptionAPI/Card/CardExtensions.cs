@@ -1500,6 +1500,32 @@ public static class CardExtensions
 
     #endregion
 
+    /// <summary>
+    /// Sets the custom unlock check for the card.
+    /// </summary>
+    /// <param name="c">The card</param>
+    /// <param name="check">The custom unlock check, a func that needs to return true for the card to be unlocked. The bool argument is true when the game is in Kaycee's Mod mode and the int argument is the current Kaycee's Mod challenge level.</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo SetCustomUnlockCheck(this CardInfo c, Func<bool, int, bool> check)
+    {
+        if(check == null && CardManager.CustomCardUnlocks.ContainsKey(c.name))
+        {
+            CardManager.CustomCardUnlocks.Remove(c.name);
+        }
+        else
+        {
+            if (!CardManager.CustomCardUnlocks.ContainsKey(c.name))
+            {
+                CardManager.CustomCardUnlocks.Add(c.name, check);
+            }
+            else
+            {
+                CardManager.CustomCardUnlocks[c.name] = check;
+            }
+        }
+        return c;
+    }
+
     internal static CardInfo SetOldApiCard(this CardInfo info, bool isOldApiCard = true)
     {
         info.SetExtendedProperty("AddedByOldApi", isOldApiCard);

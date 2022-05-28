@@ -21,6 +21,8 @@ public static class CardManager
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
 
+    internal static readonly Dictionary<string, Func<bool, int, bool>> CustomCardUnlocks = new();
+
     /// <summary>
     /// The set of cards that are in the base game
     /// </summary>
@@ -358,5 +360,12 @@ public static class CardManager
 
         c.Remove();
         c.EmitDelegate<Func<CardInfo, CardInfo, bool>>(static (c1, c2) => c1.name == c2.name);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(ConceptProgressionTree), nameof(ConceptProgressionTree.CardUnlocked))]
+    private static void AddCustomCardUnlock(ref bool __result, CardInfo card)
+    {
+        __result &= !CustomCardUnlocks.ContainsKey(card.name) || CustomCardUnlocks[card.name](SaveFile.IsAscension, (AscensionSaveData.Data?.challengeLevel).GetValueOrDefault());
     }
 }

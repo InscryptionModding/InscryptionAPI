@@ -38,6 +38,10 @@ public static class ChallengeManager
         /// </summary>
         public int AppearancesInChallengeScreen { get; set; }
         /// <summary>
+        /// A function that needs to return true for the challenge to be unlocked. Optional. If this isn't set, this check will be bypassed. The int argument is the current Kaycee's Mod challenge level.
+        /// </summary>
+        public Func<int, bool> CustomUnlockCheck { get; set; }
+        /// <summary>
         /// True if this challenge appears more than 1 time in the challenge screen, false otherwise.
         /// </summary>
         public bool Stackable
@@ -248,6 +252,16 @@ public static class ChallengeManager
         public FullChallenge SetFlags(params object[] flags)
         {
             Flags = flags.ToList();
+            return this;
+        }
+        /// <summary>
+        /// Sets the custom unlock check of this full challenge
+        /// </summary>
+        /// <param name="check">The new custom unlock check for this challenge.</param>
+        /// <returns>This full challenge, for chaining purposes.</returns>
+        public FullChallenge SetCustomUnlock(Func<int, bool> check)
+        {
+            CustomUnlockCheck = check;
             return this;
         }
     }
@@ -618,6 +632,7 @@ public static class ChallengeManager
             FullChallenge fc = NewInfos.ToList().Find(x => x != null && x.Challenge != null && x.Challenge.challengeType == challenge);
             __result = fc != null && level >= fc.UnlockLevel;
         }
+        __result &= challenge.GetFullChallenge()?.CustomUnlockCheck == null || challenge.GetFullChallenge().CustomUnlockCheck(level);
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
