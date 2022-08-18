@@ -58,13 +58,13 @@ Allows up to 8 sigils to be displayed on Act 1 cards and adds the option to disp
 Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.
 
 ## Cost Render Fix by Void Slime
-Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards
+Displays hybrid cost cards correctly and makes energy and mox show up on Act 1 cards.
 
 ## Cost Choice Node fix by Void Slime
 If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in Act 1.
 
 ## Sniper Sigil Fix by SpecialAPI
-Displays targets for attacks made with the sniper sigil in Act 1.
+Displays targets for attacks made with the sniper sigil in Act 1, makes enemies able to use sniper properly, and makes sniper work with sigils that add extra attacks (also fixes split strike and tri-strike stacking, and makes double-strike work with it).
 
 # Using the API
 
