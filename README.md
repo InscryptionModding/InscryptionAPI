@@ -54,14 +54,17 @@ Fixes latch sigils to work in Act 1
 ## Sigil Art Fix by Memez4Life
 Allows up to 8 sigils to be displayed on Act 1 cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).
 
-## Visually Stackable Sigils by DivisionByZ0rro
+## Visually Stackable Sigils by divisionbyz0rro
 Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.
 
 ## Cost Render Fix by Void Slime
 Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards
 
-## Cost choice node fix by Void Slime
-If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in ACt 1.
+## Cost Choice Node fix by Void Slime
+If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in Act 1.
+
+## Sniper Sigil Fix by SpecialAPI
+Displays targets for attacks made with the sniper sigil in Act 1.
 
 # Using the API
 
@@ -90,5 +93,6 @@ Contributors and builders of API 2.0
 - IngoH
 - JamesVeug
 - julian-perge
-- Windows10CE
+- SpecialAPI
 - Void Slime
+- Windows10CE
