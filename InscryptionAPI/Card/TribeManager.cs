@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using DiskCardGame;
 using UnityEngine;
 using HarmonyLib;
@@ -15,6 +18,7 @@ namespace InscryptionAPI.Card;
 public class TribeManager
 {
     private static readonly List<TribeInfo> tribes = new();
+    public static readonly ReadOnlyCollection<TribeInfo> NewTribes = new(tribes);
 
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
     [HarmonyPostfix]
@@ -131,7 +135,12 @@ public class TribeManager
         return Add(guid, name, pathToTribeIcon is not null ? TextureHelper.GetImageAsTexture(pathToTribeIcon) : null, appearInTribeChoices, pathToChoiceCardBackTexture is not null ? TextureHelper.GetImageAsTexture(pathToChoiceCardBackTexture) : null);
     }
 
-    private class TribeInfo
+    public static bool IsCustomTribe(Tribe tribe)
+    {
+        return tribes.Find((a)=>a.tribe == tribe) != null;
+    }
+
+    public class TribeInfo
     {
         public Tribe tribe;
         public Sprite icon;
