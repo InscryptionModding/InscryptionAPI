@@ -2,20 +2,23 @@
 
 namespace InscryptionAPI.Helpers;
 
-public class AssetBundleHelper
+public static class AssetBundleHelper
 {
-    public static bool TryGet<T>(string pathToAssetBundle, string prefabName, out T prefab) where T : Object
+    public static bool TryGet<T>(string pathToAssetBundle, string prefabName, out T prefab) where T : UnityObject
     {
-        AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile(pathToAssetBundle);
-        if (myLoadedAssetBundle == null)
+        AssetBundle bundle = AssetBundle.LoadFromFile(pathToAssetBundle);
+        if (bundle == null)
         {
             InscryptionAPIPlugin.Logger.LogError($"Tried getting asset bundle at path: '{pathToAssetBundle}' but failed! Is the path wrong?");
             prefab = default(T);
             return false;
         }
 
-        prefab = myLoadedAssetBundle.LoadAsset<T>(prefabName);
-        myLoadedAssetBundle.Unload(false);
+        // Get object from bundle
+        prefab = bundle.LoadAsset<T>(prefabName);
+        
+        // Unload bundle but don't unload the assets
+        bundle.Unload(false);
         
         if (prefab == null)
         {
