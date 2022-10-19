@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
@@ -11,6 +9,7 @@ using UnityEngine;
 
 namespace InscryptionAPI.Totems;
 
+[HarmonyPatch]
 public static class TotemManager
 {
     [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new System.Type[] {typeof(BuildTotemNodeData), typeof(int)})]
@@ -70,26 +69,19 @@ public static class TotemManager
 
         public static void AddCustomTribesToList(List<Tribe> list)
         {
-            foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes)
+            List<CardInfo> cards = CardManager.AllCardsCopy;
+            foreach (Tribe tribe in TribeManager.NewTribesTypes)
             {
-                if (UsedByAtleastOneCard(tribeInfo.tribe))
+                // Only add 
+                foreach (CardInfo info in cards)
                 {
-                    list.Add(tribeInfo.tribe);
+                    if (info.IsOfTribe(tribe))
+                    {
+                        list.Add(tribe);
+                        break;
+                    }
                 }
             }
-        }
-        
-        public static bool UsedByAtleastOneCard(Tribe tribeTribe)
-        {
-            foreach (CardInfo info in CardManager.AllCardsCopy)
-            {
-                if (info.IsOfTribe(tribeTribe))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
         }
     }
     
@@ -146,6 +138,7 @@ public static class TotemManager
     {
         public static void Postfix(ResourceBank __instance)
         {
+            InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Awake] Postfix");
             if (defaultTotemTop == null)
             {
                 Initialize();
