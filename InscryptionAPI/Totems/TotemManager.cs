@@ -69,7 +69,6 @@ public static class TotemManager
 
         public static void AddCustomTribesToList(List<Tribe> list)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[AddCustomTribesToList] " + list.Count);
             List<CardInfo> cards = CardManager.AllCardsCopy;
             foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes)
             {
@@ -83,7 +82,6 @@ public static class TotemManager
                     }
                 }
             }
-            InscryptionAPIPlugin.Logger.LogInfo($"[AddCustomTribesToList] " + list.Count);
         }
     }
     
@@ -92,15 +90,18 @@ public static class TotemManager
     {
         public static bool Prefix(CompositeTotemPiece __instance)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_Start] Start");
             if (__instance.emissiveRenderer == null)
             {
                 GameObject icon = __instance.gameObject.FindChild("Icon");
-                InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_Start] icon: " + icon);
-                __instance.emissiveRenderer = icon.GetComponent<Renderer>();
-                InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_Start] Assigned new renderer: " + __instance.emissiveRenderer);
+                if (icon != null)
+                {       
+                    __instance.emissiveRenderer = icon.GetComponent<Renderer>();
+                }
+                else
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Could not find Icon Gameobject t oassign emissiveRenderer!");
+                }
             }
-            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_Start] End");
 
             return true;
         }
@@ -111,7 +112,6 @@ public static class TotemManager
     {
         public static bool Prefix(CompositeTotemPiece __instance, ItemData data)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_SetData] " + data);
             if (__instance.emissiveRenderer == null)
             {
                 if (data is TotemTopData topData)
@@ -120,19 +120,29 @@ public static class TotemManager
                     {
                         if (tribeInfo.tribe == topData.prerequisites.tribe)
                         {
-                            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_SetData] tribeInfo");
-                            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_SetData] tribeInfo " + tribeInfo.tribe);
-                
-                            Renderer Icon = __instance.gameObject.FindChild("Icon")?.GetComponent<Renderer>();
-                            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_SetData] Icon " + Icon);
-                            Icon.material.mainTexture = tribeInfo.icon.texture;
+                            GameObject icon = __instance.gameObject.FindChild("Icon");
+                            if (icon != null)
+                            {
+                                Renderer iconRenderer = icon?.GetComponent<Renderer>();
+                                if (iconRenderer != null)
+                                {
+                                    iconRenderer.material.mainTexture = tribeInfo.icon.texture;
+                                }
+                                else
+                                {
+                                    InscryptionAPIPlugin.Logger.LogError($"Could not find Renderer on Icon GameObject to assign tribe icon!");
+                                }
+                            }
+                            else
+                            {
+                                InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign tribe icon!");
+                            }
                             break;
                         }
                     }
                 }
             }
 
-            InscryptionAPIPlugin.Logger.LogInfo($"[CompositeTotemPiece_SetData] " + data + " Done");
             return true;
         }
     }
@@ -142,9 +152,10 @@ public static class TotemManager
     {
         public static void Postfix(ResourceBank __instance)
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Awake] Postfix");
-            if (defaultTotemTop == null)
+            InscryptionAPIPlugin.Logger.LogError($"[ResourceBank_Awake] Starting");
+            if (ResourceBank.Get<GameObject>(CustomTotemTopResourcePath) == null)
             {
+                InscryptionAPIPlugin.Logger.LogError($"[ResourceBank_Awake] Initializing");
                 Initialize();
             }
         }
@@ -155,25 +166,22 @@ public static class TotemManager
     {
         public static bool Prefix(Totem __instance, TotemTopData data, ref GameObject __result)
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[Totem_GetTopPiecePrefab] Start");
             if (TribeManager.IsCustomTribe(data.prerequisites.tribe))
             {
-                InscryptionAPIPlugin.Logger.LogInfo("[Totem_GetTopPiecePrefab] Custom Tribe");
                 CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == data.prerequisites.tribe);
                 if (customTribeTotem == null)
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo("[Totem_GetTopPiecePrefab] Custom tribe totem");
+                    // Get custom totem model
                     __result = ResourceBank.Get<GameObject>(CustomTotemTopResourcePath);
                 }
                 else
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo("[Totem_GetTopPiecePrefab] Start default totem");
+                    // No custom totem model - use default model
                     __result = defaultTotemTop.Prefab;
                 }
                 return false;
             }
 
-            InscryptionAPIPlugin.Logger.LogInfo("[Totem_GetTopPiecePrefab] Not a custom tribe " + data.prerequisites.tribe);
             return true;
         }
     }
@@ -192,21 +200,16 @@ public static class TotemManager
     {
         public static bool Prefix(TotemTopData __instance, ref string __result)
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[TotemTopData_PrefabId] " + __instance.prerequisites.tribe);
             if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe))
             {
                 CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == __instance.prerequisites.tribe);
                 if (customTribeTotem == null)
                 {
                     __result = CustomTotemTopID;
-                    InscryptionAPIPlugin.Logger.LogInfo("[TotemTopData_PrefabId] Fallback " + __result);
                     return false;
                 }
-                
-                InscryptionAPIPlugin.Logger.LogInfo("[TotemTopData_PrefabId] We should have an override!");
             }
             
-            InscryptionAPIPlugin.Logger.LogInfo("[TotemTopData_PrefabId] Done");
             return true;
         }
     }
@@ -224,7 +227,6 @@ public static class TotemManager
 
     private static CustomTotemTop Add(CustomTotemTop totem)
     {
-        InscryptionAPIPlugin.Logger.LogInfo("Adding totem top " + totem.Name + " => " + totem.Tribe);
         totemTops.Add(totem);
         return totem;
     }
@@ -237,16 +239,20 @@ public static class TotemManager
     
     private static void Initialize()
     {
-        byte[] resourceBytes = TextureHelper.GetResourceBytes("customtotemtop", typeof(InscryptionAPIPlugin).Assembly);
-        if (AssetBundleHelper.TryGet(resourceBytes, "CustomTotemTop", out GameObject go))
+        if (defaultTotemTop == null)
         {
-            defaultTotemTop = NewTopPiece("DefaultTotemTop",
-                InscryptionAPIPlugin.ModGUID,
-                go,
-                Tribe.None
-            );
+            byte[] resourceBytes = TextureHelper.GetResourceBytes("customtotemtop", typeof(InscryptionAPIPlugin).Assembly);
+            if (AssetBundleHelper.TryGet(resourceBytes, "CustomTotemTop", out GameObject go))
+            {
+                defaultTotemTop = NewTopPiece("DefaultTotemTop",
+                    InscryptionAPIPlugin.ModGUID,
+                    go,
+                    Tribe.None
+                );
+            }
         }
-        
+
+        // Add all totem tops to the game
         foreach (CustomTotemTop totem in totemTops)
         {
             string path = "Prefabs/Items/TotemPieces/TotemTop_" + totem.Tribe;
@@ -256,6 +262,8 @@ public static class TotemManager
             }
             
             GameObject prefab = totem.Prefab;
+            
+            // Add require components in case the prefab doesn't have them
             if (prefab.GetComponent<CompositeTotemPiece>() == null)
             {
                 prefab.AddComponent<CompositeTotemPiece>();
@@ -266,8 +274,10 @@ public static class TotemManager
                 addComponent.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("animation/items/ItemAnim");
                 addComponent.Rebind();
             }
+
+            // Mark as dont destroy on load so it doesn't get removed between levels
+            UnityObject.DontDestroyOnLoad(prefab);
             
-            InscryptionAPIPlugin.Logger.LogInfo("Adding totem top to resource bank: " + totem.Name + " " + path);
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
                 path = path,
