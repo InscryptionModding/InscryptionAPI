@@ -236,8 +236,11 @@ public static class StackAbilityIcons
             return patchLocations[ability];
         }
 
-        // Now we just use the next best space
-        patchLocations.Add(ability, FindNextBestLocation(abilityTexture));
+        // Simplified the logic for next best to prevent issues - can be easily reverted if more issues arise
+        Vector2Int lowerRight = new Vector2Int(abilityTexture.width - NUMBER_TEXTURES[0].width, 0);
+        Tuple<Vector2Int, int> nextBest = new Tuple<Vector2Int, int>(lowerRight, NORMAL);
+
+        patchLocations.Add(ability, nextBest);
         return patchLocations[ability];
     }
 
