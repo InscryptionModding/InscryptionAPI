@@ -9,8 +9,7 @@ using Pixelplacement.TweenSystem;
 
 namespace InscryptionCommunityPatch.Card;
 
-// These patches relate to the null error caused by a card with PackMule dying before fully resolving (eg Sentry)
-// Caused by the pack object not being instantiated (ie null)
+// Fixes PackMule breaking the game when killed before instantiating its pack object
 [HarmonyPatch]
 public class SentryPackMuleFixes
 {
@@ -25,7 +24,6 @@ public class SentryPackMuleFixes
         return true;
     }
 
-    // Instantiates the pack object if it's null
     [HarmonyPatch(typeof(PackMule), nameof(PackMule.OnDie))]
     [HarmonyPostfix]
     public static IEnumerator FixPackNotExisting(IEnumerator enumerator, PackMule __instance)
@@ -33,6 +31,9 @@ public class SentryPackMuleFixes
         if (__instance.pack == null)
         {
             PatchPlugin.Logger.LogDebug($"{__instance.PlayableCard.name} died before fully resolving on board, instantiating pack.");
+
+            // Instantiates the pack object if it's null
+            // Code copied from PackMule's OnResolveOnBoard logic
             yield return new WaitForSeconds(0.4f);
             GameObject gameObject = UnityEngine.Object.Instantiate(ResourceBank.Get<GameObject>("Prefabs/Cards/SpecificCardModels/CardPack"));
             __instance.pack = gameObject.transform;
@@ -43,6 +44,7 @@ public class SentryPackMuleFixes
             yield return new WaitForSeconds(0.1f);
             yield return new WaitUntil(() => !Tween.activeTweens.Exists((TweenBase t) => t.targetInstanceID == __instance.PlayableCard.transform.GetInstanceID()));
             __instance.pack.SetParent(__instance.PlayableCard.transform);
+
             PatchPlugin.Logger.LogDebug($"Pack has been instantiated. Reality has been saved.");
         }
         yield return enumerator;
