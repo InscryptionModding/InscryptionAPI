@@ -183,7 +183,7 @@ public static class StackAbilityIcons
         bool success = true;
         for (int sX = lowerRight.x - 1; sX < texture.width; sX++)
         {
-            for (int sY = lowerRight.y; sY < texture.height + 1; sY++)
+            for (int sY = lowerRight.y; sY < texture.height; sY++)
             {
                 int i = sX + (texture.width * sY);
 
