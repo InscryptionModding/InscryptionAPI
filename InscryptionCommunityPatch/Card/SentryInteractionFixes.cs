@@ -9,14 +9,11 @@ using Pixelplacement.TweenSystem;
 
 namespace InscryptionCommunityPatch.Card;
 
-// Fixes a number of issues relating to Sentry interacting with Act 1-exclusive abilities
-// A lot of these issues are interwoven with core parts of the game (because of course they are, why would it be easy)
-// Currently fixes bugs relating to:
-// PackMule, TailOnHit
+// Fixes a few issues relating to Sentry interacting with certain Act 1 abilities / mechanics
 [HarmonyPatch]
-public class SentryInteractionsFixes
+public class SentryInteractionFixes
 {
-    // Fixes an issue relating to enemy totems and cards being killed before the game can check if they're viable for a totem sigil
+    // Fixes a soft crash that occurs when the enemy totem tries to perform its check OnAssignedToSlot
     [HarmonyPatch(typeof(CardGainAbility), nameof(CardGainAbility.RespondsToOtherCardAssignedToSlot))]
     [HarmonyPrefix]
     public static bool CardGainAbilityNullCheckPatch(ref PlayableCard otherCard)
@@ -28,6 +25,7 @@ public class SentryInteractionsFixes
     }
 
     // Override Sentry.FireAtOpposingSlot with the fixed version
+    // Fixes Sentry: not triggering OnCardGettingAttacked freezing mid-animation
     [HarmonyPatch(typeof(Sentry), nameof(Sentry.FireAtOpposingSlot))]
     [HarmonyPrefix]
     public static bool FireAtOpposingSlotPatch(Sentry __instance, PlayableCard otherCard, ref IEnumerator __result)
@@ -37,11 +35,11 @@ public class SentryInteractionsFixes
     }
 
     // Override CombatPhaseManager.SlotAttackSlot with the fixed version
+    // Fixes a bug caused by the opposing card dying mid-attack and becoming null
     [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
     [HarmonyPrefix]
     public static bool SlotAttackSlotPatch(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot, float waitAfter, ref IEnumerator __result)
     {
-        // Fixes the 
         __result = NewSlotAttackSlot(__instance, attackingSlot, opposingSlot, waitAfter);
         return false;
     }
@@ -49,9 +47,13 @@ public class SentryInteractionsFixes
     // Fixes Sentry not triggering OnCardGettingAttacked and freezing
     private static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
     {
+        // Copy otherCard so we can change it later
         PlayableCard opposingCard = otherCard;
-        if ((!(opposingCard != instance.lastShotCard) || instance.Card.Anim.Anim.speed == 0f)
-            && Singleton<TurnManager>.Instance.TurnNumber == instance.lastShotTurn)
+
+        // || instance.Card.Anim.Anim.speed == 0f
+        // The above line of code prevents Sentry from activating multiple times during normal combat
+
+        if (!(opposingCard != instance.lastShotCard) && Singleton<TurnManager>.Instance.TurnNumber == instance.lastShotTurn)
             yield break;
 
         bool midCombat = false;
@@ -69,6 +71,8 @@ public class SentryInteractionsFixes
                 // Check if the animation is paused then unpause it
                 if (instance.Card.Anim.Anim.speed == 0f)
                 {
+                    PatchPlugin.Logger.LogDebug($"{instance.Card} is frozen, unpausing animation.");
+                    // indicates that we need to restart the attack animation at the end of the sequence
                     midCombat = true;
 
                     ShowPart3Turret(instance.Card, opposingCard);

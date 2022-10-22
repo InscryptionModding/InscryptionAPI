@@ -329,7 +329,8 @@ public static class StackAbilityIcons
         // Here's the goal
         // Find all abilities on the card
         // Replace all of the textures where it stacks with a texture showing that it stacks
-        PatchPlugin.Logger.LogDebug("Adding new icon; testing for stacks");
+        
+        // PatchPlugin.Logger.LogDebug("Adding new icon; testing for stacks");
 
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = info.Abilities;
