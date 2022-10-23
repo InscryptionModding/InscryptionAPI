@@ -9,7 +9,7 @@ using InscryptionAPI.Encounters;
 using InscryptionAPI.Regions;
 using System.Runtime.CompilerServices;
 using BepInEx.Configuration;
-using InscryptionAPI.Consumables;
+using InscryptionAPI.Items;
 using InscryptionAPI.Totems;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
