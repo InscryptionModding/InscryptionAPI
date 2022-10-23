@@ -4,6 +4,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.Items.Extensions;
 using UnityEngine;
 
 namespace InscryptionAPI.Items;
@@ -33,16 +34,13 @@ public static class ConsumableItemManager
     {
         public static void Postfix(ref List<ConsumableItemData> __result)
         {
-            foreach (CustomConsumableItem item in AllItems)
-            {
-                __result.Add(item.ConsumableItemData);
-            }
+            __result.AddRange(AllItems);
         }
     }
     
     private static GameObject defaultItemModel = null;
-    private static List<CustomConsumableItem> items = new();
-    public static ReadOnlyCollection<CustomConsumableItem> AllItems = new(items);
+    private static List<ConsumableItemData> items = new();
+    public static ReadOnlyCollection<ConsumableItemData> AllItems = new(items);
 
     private static void Initialize()
     {
@@ -63,19 +61,19 @@ public static class ConsumableItemManager
         List<ConsumableItemData> baseConsumableItems = ItemsUtil.AllConsumables;
 
         // Add all totem tops to the game
-        foreach (CustomConsumableItem item in items)
+        foreach (ConsumableItemData item in items)
         {
-            GameObject prefab = item.Prefab;
+            GameObject prefab = item.GetPrefab();
             if (prefab == null)
             {
-                prefab = CloneBasePrefab(item.ConsumableItemData);
+                prefab = CloneBasePrefab(item);
             }
 
-            SetupPrefab(prefab, item.ItemType);
+            SetupPrefab(prefab, item.GetComponentType());
 
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
-                path = "Prefabs/Items/" + item.ConsumableItemData.prefabId,
+                path = "Prefabs/Items/" + item.prefabId,
                 asset = prefab
             });
         }
@@ -86,14 +84,14 @@ public static class ConsumableItemManager
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItems)
             {
-                if (!CanUseBaseModel(data))
+                if (AllItems.Contains(data) || !CanUseBaseModel(data))
                 {
                     continue;
                 }
                 
                 string path = ("Prefabs/Items/" + data.prefabId).ToLowerInvariant();
                 GameObject item = ResourceBank.Get<GameObject>(path);
-                if (item == null || !item.TryGetComponent<ConsumableItem>(out ConsumableItem prefabConsumableItem))
+                if (item == null || !item.TryGetComponent(out ConsumableItem prefabConsumableItem))
                 {
                     InscryptionAPIPlugin.Logger.LogError($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
                     continue;
@@ -148,6 +146,7 @@ public static class ConsumableItemManager
     private static GameObject CloneBasePrefab(ConsumableItemData data)
     {
         GameObject prefab = GameObject.Instantiate(defaultItemModel);
+        prefab.name = $"Custom Item ({data.rulebookName})";
                 
         // Populate icon
         if (data.rulebookSprite != null)
@@ -212,60 +211,42 @@ public static class ConsumableItemManager
         return consumableItem;
     }
 
-    public static CustomConsumableItem New(string pluginGUID,
-        int powerLevel,  
+    public static ConsumableItemData New(string pluginGUID,
         string rulebookName, 
         string rulebookDescription, 
         Texture2D rulebookSprite,
         Type itemType,
-        string learnText=null,
-        GameObject prefab=null,
-        bool regionSpecific=false, 
-        AbilityMetaCategory rulebookCategory=AbilityMetaCategory.Part1Rulebook, 
-        bool notRandomlyGiven=false)
+        AbilityMetaCategory rulebookCategory=AbilityMetaCategory.Part1Rulebook)
     {
         string name = pluginGUID + "_" + rulebookName;
         ConsumableItemData data = ScriptableObject.CreateInstance<ConsumableItemData>();
         data.name = name;
-        data.powerLevel = powerLevel;
-        data.description = learnText;
-        data.rulebookCategory = rulebookCategory;
-        data.rulebookName = rulebookName;
-        data.rulebookDescription = rulebookDescription;
-        data.rulebookSprite = TextureHelper.ConvertTexture(rulebookSprite);
-        data.regionSpecific = regionSpecific;
-        data.notRandomlyGiven = notRandomlyGiven;
-        data.prefabId = name;
-        data.pickupSoundId = "stone_object_up";
-        data.placedSoundId = "stone_object_hit";
+        data.SetRulebookCategory(rulebookCategory);
+        data.SetRulebookName(rulebookName);
+        data.SetRulebookDescription(rulebookDescription);
+        data.SetRulebookSprite(rulebookSprite.ConvertTexture());
+        data.SetRegionSpecific(false);
+        data.SetNotRandomlyGiven(false);
+        data.SetPrefabID(name);
+        data.SetPickupSoundId("stone_object_up");
+        data.SetPlacedSoundId("stone_object_hit");
+        data.SetExamineSoundId("stone_object_hit");
         
-        return Add(pluginGUID, itemType, prefab, data);
+        data.SetModPrefix(pluginGUID);
+        data.SetComponentType(itemType);
+        data.SetPowerLevel(1);
+        return Add(data);
     }
 
-    internal static CustomConsumableItem Add(string guid, Type itemType, GameObject prefab, ConsumableItemData data)
+    public static ConsumableItemData Add(ConsumableItemData data)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"{data.rulebookName} prefab: " + prefab);
+        GameObject prefab = data.GetPrefab();
         if (prefab != null)
         {
             GameObject.DontDestroyOnLoad(prefab);
         }
         
-        CustomConsumableItem item = new CustomConsumableItem()
-        {
-            PluginGUID = guid,
-            ItemType = itemType,
-            Prefab = prefab,
-            ConsumableItemData = data
-        };
-        items.Add(item);
-        return item;
-    }
-    
-    public class CustomConsumableItem
-    {
-        public string PluginGUID;
-        public Type ItemType;
-        public GameObject Prefab;
-        public ConsumableItemData ConsumableItemData;
+        items.Add(data);
+        return data;
     }
 }
