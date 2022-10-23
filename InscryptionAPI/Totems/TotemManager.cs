@@ -199,10 +199,10 @@ public static class TotemManager
             if (TribeManager.IsCustomTribe(data.prerequisites.tribe))
             {
                 CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == data.prerequisites.tribe);
-                if (customTribeTotem == null)
+                if (customTribeTotem != null)
                 {
                     // Get custom totem model
-                    __result = ResourceBank.Get<GameObject>(CustomTotemTopResourcePath);
+                    __result = customTribeTotem.Prefab;
                 }
                 else
                 {
@@ -258,7 +258,7 @@ public static class TotemManager
         }
     }
 
-    public static CustomTotemTop NewTopPiece(string name, string guid, GameObject prefab, Tribe tribe)
+    public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab=null)
     {
         return Add(new CustomTotemTop()
         {
@@ -296,8 +296,8 @@ public static class TotemManager
             {
                 defaultTotemTop = NewTopPiece("DefaultTotemTop",
                     InscryptionAPIPlugin.ModGUID,
-                    go,
-                    Tribe.None
+                    Tribe.None,
+                    go
                 );
             }
         }
