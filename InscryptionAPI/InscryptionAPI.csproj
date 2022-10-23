@@ -16,6 +16,8 @@
         <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
         <None Remove="customtotemtop" />
         <EmbeddedResource Include="customtotemtop" />
+        <None Remove="customitem" />
+        <EmbeddedResource Include="customitem" />
     </ItemGroup>
 
     <ItemGroup>
