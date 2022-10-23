@@ -67,7 +67,8 @@ public class Act1LatchAbilityFix
     [HarmonyPostfix, HarmonyPatch(typeof(Latch), nameof(Latch.OnPreDeathAnimation))]
     private static IEnumerator Postfix(IEnumerator enumerator, Latch __state, bool wasSacrifice)
     {
-        if (SceneLoader.ActiveSceneName != "Part1_Cabin" || !SceneLoader.ActiveSceneName.StartsWith("finale"))
+        // if this isn't Act 1 or Grimora/Magnificus, return the default logic (Act 3)
+        if (SceneLoader.ActiveSceneName != "Part1_Cabin" && !SceneLoader.ActiveSceneName.StartsWith("finale"))
         {
             yield return enumerator;
             yield break;
