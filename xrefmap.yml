@@ -8142,12 +8142,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler
   nameWithType: TotemManager.ItemsUtil_AllConsumables.Transpiler
-- uid: InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String,System.String,UnityEngine.GameObject,DiskCardGame.Tribe)
-  name: NewTopPiece(String, String, GameObject, Tribe)
-  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTopPiece_System_String_System_String_UnityEngine_GameObject_DiskCardGame_Tribe_
-  commentId: M:InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String,System.String,UnityEngine.GameObject,DiskCardGame.Tribe)
-  fullName: InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String, System.String, UnityEngine.GameObject, DiskCardGame.Tribe)
-  nameWithType: TotemManager.NewTopPiece(String, String, GameObject, Tribe)
+- uid: InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String,System.String,DiskCardGame.Tribe,UnityEngine.GameObject)
+  name: NewTopPiece(String, String, Tribe, GameObject)
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTopPiece_System_String_System_String_DiskCardGame_Tribe_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String,System.String,DiskCardGame.Tribe,UnityEngine.GameObject)
+  fullName: InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String, System.String, DiskCardGame.Tribe, UnityEngine.GameObject)
+  nameWithType: TotemManager.NewTopPiece(String, String, Tribe, GameObject)
 - uid: InscryptionAPI.Totems.TotemManager.NewTopPiece*
   name: NewTopPiece
   href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTopPiece_
