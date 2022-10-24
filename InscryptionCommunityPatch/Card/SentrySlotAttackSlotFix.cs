@@ -6,7 +6,7 @@ using System.Reflection.Emit;
 namespace InscryptionCommunityPatch.Card;
 
 // Inserts a null check for opposingSlot.Card into SlotAttackSlot after CardGettingAttacked has been triggered
-// Should prevent compatibility issues with anyone trying to patch the method
+// Doing it this way should prevent compatibility issues with anyone that patches the method (sry Nevernamed)
 [HarmonyPatch]
 public class SentrySlotAttackSlotFix
 {
