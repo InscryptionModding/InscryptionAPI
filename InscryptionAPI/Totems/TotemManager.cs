@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
@@ -19,7 +20,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new System.Type[] {typeof(BuildTotemNodeData), typeof(int)})]
-    public class ItemsUtil_AllConsumables
+    private class ItemsUtil_AllConsumables
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
@@ -97,7 +98,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(CompositeTotemPiece), "Start", new Type[]{})]
-    public class CompositeTotemPiece_Start
+    private class CompositeTotemPiece_Start
     {
         public static bool Prefix(CompositeTotemPiece __instance)
         {
@@ -119,7 +120,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(CompositeTotemPiece), "SetData", new Type[]{typeof(ItemData)})]
-    public class CompositeTotemPiece_SetData
+    private class CompositeTotemPiece_SetData
     {
         public static bool Prefix(CompositeTotemPiece __instance, ItemData data)
         {
@@ -179,7 +180,7 @@ public static class TotemManager
     }
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
-    public class ResourceBank_Awake
+    private class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)
         {
@@ -192,7 +193,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[]{typeof(TotemTopData)})]
-    public class Totem_GetTopPiecePrefab
+    private class Totem_GetTopPiecePrefab
     {
         public static bool Prefix(Totem __instance, TotemTopData data, ref GameObject __result)
         {
@@ -222,7 +223,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(Totem), "SetData", new Type[]{typeof(ItemData)})]
-    public class Totem_SetData
+    private class Totem_SetData
     {
         public static void Postfix(Totem __instance, ItemData data)
         {
@@ -231,7 +232,7 @@ public static class TotemManager
     }
     
     [HarmonyPatch(typeof(TotemTopData), "PrefabId", MethodType.Getter)]
-    public class TotemTopData_PrefabId
+    private class TotemTopData_PrefabId
     {
         public static bool Prefix(TotemTopData __instance, ref string __result)
         {
@@ -279,7 +280,42 @@ public static class TotemManager
     private const string CustomTotemTopResourcePath = "Prefabs/Items/" + CustomTotemTopID;
 
     private static CustomTotemTop defaultTotemTop = null;
-    private static List<CustomTotemTop> totemTops = new();
+    private readonly static List<CustomTotemTop> totemTops = new();
+    
+    /// <summary>
+    /// A collection of all new totem tops added using the API.
+    /// </summary>
+    public readonly static ReadOnlyCollection<CustomTotemTop> NewTotemTops = new(totemTops);
+
+    /// <summary>
+    /// Totem top that is used for custom tribes if no custom model is provided
+    /// </summary>
+    public static CustomTotemTop DefaultTotemTop => defaultTotemTop;
+
+    public static void SetDefaultTotemTop(GameObject gameObject)
+    {
+        if (defaultTotemTop == null)
+        {
+            InitializeDefaultTotemTop();
+        }
+        
+        defaultTotemTop.Prefab = gameObject;
+        GameObject.DontDestroyOnLoad(gameObject);
+    }
+
+    private static void InitializeDefaultTotemTop()
+    {
+        byte[] resourceBytes = TextureHelper.GetResourceBytes("customtotemtop", typeof(InscryptionAPIPlugin).Assembly);
+        if (AssetBundleHelper.TryGet(resourceBytes, "CustomTotemTop", out GameObject go))
+        {
+            defaultTotemTop = NewTopPiece("DefaultTotemTop",
+                InscryptionAPIPlugin.ModGUID,
+                Tribe.None,
+                go
+            );
+            GameObject.DontDestroyOnLoad(go);
+        }
+    }
     
     private static void Initialize()
     {
@@ -291,15 +327,7 @@ public static class TotemManager
         
         if (defaultTotemTop == null)
         {
-            byte[] resourceBytes = TextureHelper.GetResourceBytes("customtotemtop", typeof(InscryptionAPIPlugin).Assembly);
-            if (AssetBundleHelper.TryGet(resourceBytes, "CustomTotemTop", out GameObject go))
-            {
-                defaultTotemTop = NewTopPiece("DefaultTotemTop",
-                    InscryptionAPIPlugin.ModGUID,
-                    Tribe.None,
-                    go
-                );
-            }
+            InitializeDefaultTotemTop();
         }
 
         // Add all totem tops to the game
