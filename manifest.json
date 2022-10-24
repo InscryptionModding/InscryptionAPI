@@ -1194,95 +1194,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.html",
-          "hash": "bXEJ8UYuAxYiOURtoUzkCWaIDs4jDBI5WuzzsTJTnxI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.html",
-          "hash": "FbyG+5xHoKIKYeVJ7ANKV7ocieQmzDXS/RvjYr8+wYA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.html",
-          "hash": "/dr+nC2iHtYEOGM5kK1yx2nf98p1y5HEpP669ZuYy7Y="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html",
-          "hash": "7BsAt22tO48Dirf5PgrSj5wyutLsU1YxMwA9kKfRlvo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.html",
-          "hash": "/EiBHZJoDWuTqve/0iWzAbZz3Sk2PJ4SMkKDVd5wLLw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.html",
-          "hash": "x1AGH9mGfHpKPfiu0PZxU58CFXlwqrSTMgqSppFLvpk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.html",
-          "hash": "+ixgSB+hKEnYBZn17YR/LMtuXTwoLSbM6Oa6linh58U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.Totem_SetData.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Totems.TotemManager.Totem_SetData.html",
-          "hash": "RTMtFxCFJuDvMv524FFc/bdavru34bnmkkOMLfoh5yU="
+          "hash": "LgNinS8vQc5TP8pe0nt53ZoITeQagU4SM8CDQw7/I1A="
         }
       },
       "is_incremental": false,
@@ -1294,7 +1210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Totems.TotemManager.html",
-          "hash": "S3U3X3xgurcgf1u0BGd/kntf6ujndLWrLQNtG3zBH7o="
+          "hash": "RlFKL1ZZshQ8w3iphuc8+DwMksr5VYtlUQU625F5sUc="
         }
       },
       "is_incremental": false,
@@ -1306,7 +1222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Totems.html",
-          "hash": "kacQwhTmLfRFp749kd19P7PD60r0Z0JukLD0HOP236Y="
+          "hash": "E4A8JRnw0TPsnqyzvqv4g2UjyqFAnvqybrvAKSzlWHA="
         }
       },
       "is_incremental": false,
@@ -1726,7 +1642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "grj1cs26UL/XWqhkwjHavuTVLFKCJOZIq1KqSus/zAQ="
+          "hash": "R+/lxMiv0SN82wX5KjpGOXeyrtsEun+ZQr/6uEl5Rqo="
         }
       },
       "is_incremental": false,
@@ -1789,7 +1705,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 149,
+          "total_file_count": 142,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

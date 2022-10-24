@@ -8036,44 +8036,6 @@ references:
   commentId: T:InscryptionAPI.Totems.TotemManager
   fullName: InscryptionAPI.Totems.TotemManager
   nameWithType: TotemManager
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData
-  name: TotemManager.CompositeTotemPiece_SetData
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData
-  nameWithType: TotemManager.CompositeTotemPiece_SetData
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix(DiskCardGame.CompositeTotemPiece,DiskCardGame.ItemData)
-  name: Prefix(CompositeTotemPiece, ItemData)
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.html#InscryptionAPI_Totems_TotemManager_CompositeTotemPiece_SetData_Prefix_DiskCardGame_CompositeTotemPiece_DiskCardGame_ItemData_
-  commentId: M:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix(DiskCardGame.CompositeTotemPiece,DiskCardGame.ItemData)
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix(DiskCardGame.CompositeTotemPiece, DiskCardGame.ItemData)
-  nameWithType: TotemManager.CompositeTotemPiece_SetData.Prefix(CompositeTotemPiece, ItemData)
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix*
-  name: Prefix
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.html#InscryptionAPI_Totems_TotemManager_CompositeTotemPiece_SetData_Prefix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_SetData.Prefix
-  nameWithType: TotemManager.CompositeTotemPiece_SetData.Prefix
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start
-  name: TotemManager.CompositeTotemPiece_Start
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start
-  nameWithType: TotemManager.CompositeTotemPiece_Start
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix(DiskCardGame.CompositeTotemPiece)
-  name: Prefix(CompositeTotemPiece)
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.html#InscryptionAPI_Totems_TotemManager_CompositeTotemPiece_Start_Prefix_DiskCardGame_CompositeTotemPiece_
-  commentId: M:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix(DiskCardGame.CompositeTotemPiece)
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix(DiskCardGame.CompositeTotemPiece)
-  nameWithType: TotemManager.CompositeTotemPiece_Start.Prefix(CompositeTotemPiece)
-- uid: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix*
-  name: Prefix
-  href: api/InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.html#InscryptionAPI_Totems_TotemManager_CompositeTotemPiece_Start_Prefix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.CompositeTotemPiece_Start.Prefix
-  nameWithType: TotemManager.CompositeTotemPiece_Start.Prefix
 - uid: InscryptionAPI.Totems.TotemManager.CustomTotemTop
   name: TotemManager.CustomTotemTop
   href: api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.html
@@ -8104,44 +8066,19 @@ references:
   commentId: F:InscryptionAPI.Totems.TotemManager.CustomTotemTop.Tribe
   fullName: InscryptionAPI.Totems.TotemManager.CustomTotemTop.Tribe
   nameWithType: TotemManager.CustomTotemTop.Tribe
-- uid: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables
-  name: TotemManager.ItemsUtil_AllConsumables
-  href: api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables
-  fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables
-  nameWithType: TotemManager.ItemsUtil_AllConsumables
-- uid: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List{DiskCardGame.Tribe})
-  name: AddCustomTribesToList(List<Tribe>)
-  href: api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html#InscryptionAPI_Totems_TotemManager_ItemsUtil_AllConsumables_AddCustomTribesToList_List_DiskCardGame_Tribe__
-  commentId: M:InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List{DiskCardGame.Tribe})
-  name.vb: AddCustomTribesToList(List(Of Tribe))
-  fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List<DiskCardGame.Tribe>)
-  fullName.vb: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List(Of DiskCardGame.Tribe))
-  nameWithType: TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List<Tribe>)
-  nameWithType.vb: TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList(List(Of Tribe))
-- uid: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList*
-  name: AddCustomTribesToList
-  href: api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html#InscryptionAPI_Totems_TotemManager_ItemsUtil_AllConsumables_AddCustomTribesToList_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList
+- uid: InscryptionAPI.Totems.TotemManager.DefaultTotemTop
+  name: DefaultTotemTop
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_DefaultTotemTop
+  commentId: P:InscryptionAPI.Totems.TotemManager.DefaultTotemTop
+  fullName: InscryptionAPI.Totems.TotemManager.DefaultTotemTop
+  nameWithType: TotemManager.DefaultTotemTop
+- uid: InscryptionAPI.Totems.TotemManager.DefaultTotemTop*
+  name: DefaultTotemTop
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_DefaultTotemTop_
+  commentId: Overload:InscryptionAPI.Totems.TotemManager.DefaultTotemTop
   isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList
-  nameWithType: TotemManager.ItemsUtil_AllConsumables.AddCustomTribesToList
-- uid: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name: Transpiler(IEnumerable<CodeInstruction>)
-  href: api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html#InscryptionAPI_Totems_TotemManager_ItemsUtil_AllConsumables_Transpiler_IEnumerable_HarmonyLib_CodeInstruction__
-  commentId: M:InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name.vb: Transpiler(IEnumerable(Of CodeInstruction))
-  fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable<HarmonyLib.CodeInstruction>)
-  fullName.vb: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable(Of HarmonyLib.CodeInstruction))
-  nameWithType: TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable<CodeInstruction>)
-  nameWithType.vb: TotemManager.ItemsUtil_AllConsumables.Transpiler(IEnumerable(Of CodeInstruction))
-- uid: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler*
-  name: Transpiler
-  href: api/InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.html#InscryptionAPI_Totems_TotemManager_ItemsUtil_AllConsumables_Transpiler_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.ItemsUtil_AllConsumables.Transpiler
-  nameWithType: TotemManager.ItemsUtil_AllConsumables.Transpiler
+  fullName: InscryptionAPI.Totems.TotemManager.DefaultTotemTop
+  nameWithType: TotemManager.DefaultTotemTop
 - uid: InscryptionAPI.Totems.TotemManager.NewTopPiece(System.String,System.String,DiskCardGame.Tribe,UnityEngine.GameObject)
   name: NewTopPiece(String, String, Tribe, GameObject)
   href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTopPiece_System_String_System_String_DiskCardGame_Tribe_UnityEngine_GameObject_
@@ -8155,88 +8092,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Totems.TotemManager.NewTopPiece
   nameWithType: TotemManager.NewTopPiece
-- uid: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake
-  name: TotemManager.ResourceBank_Awake
-  href: api/InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.ResourceBank_Awake
-  fullName: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake
-  nameWithType: TotemManager.ResourceBank_Awake
-- uid: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix(ResourceBank)
-  name: Postfix(ResourceBank)
-  href: api/InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.html#InscryptionAPI_Totems_TotemManager_ResourceBank_Awake_Postfix_ResourceBank_
-  commentId: M:InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix(ResourceBank)
-  fullName: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix(ResourceBank)
-  nameWithType: TotemManager.ResourceBank_Awake.Postfix(ResourceBank)
-- uid: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix*
-  name: Postfix
-  href: api/InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.html#InscryptionAPI_Totems_TotemManager_ResourceBank_Awake_Postfix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix
+- uid: InscryptionAPI.Totems.TotemManager.NewTotemTops
+  name: NewTotemTops
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTotemTops
+  commentId: F:InscryptionAPI.Totems.TotemManager.NewTotemTops
+  fullName: InscryptionAPI.Totems.TotemManager.NewTotemTops
+  nameWithType: TotemManager.NewTotemTops
+- uid: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop(UnityEngine.GameObject)
+  name: SetDefaultTotemTop(GameObject)
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_SetDefaultTotemTop_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop(UnityEngine.GameObject)
+  fullName: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop(UnityEngine.GameObject)
+  nameWithType: TotemManager.SetDefaultTotemTop(GameObject)
+- uid: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop*
+  name: SetDefaultTotemTop
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_SetDefaultTotemTop_
+  commentId: Overload:InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop
   isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.ResourceBank_Awake.Postfix
-  nameWithType: TotemManager.ResourceBank_Awake.Postfix
-- uid: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab
-  name: TotemManager.Totem_GetTopPiecePrefab
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab
-  nameWithType: TotemManager.Totem_GetTopPiecePrefab
-- uid: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix(DiskCardGame.Totem,DiskCardGame.TotemTopData,UnityEngine.GameObject@)
-  name: Prefix(Totem, TotemTopData, ref GameObject)
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.html#InscryptionAPI_Totems_TotemManager_Totem_GetTopPiecePrefab_Prefix_DiskCardGame_Totem_DiskCardGame_TotemTopData_UnityEngine_GameObject__
-  commentId: M:InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix(DiskCardGame.Totem,DiskCardGame.TotemTopData,UnityEngine.GameObject@)
-  name.vb: Prefix(Totem, TotemTopData, ByRef GameObject)
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix(DiskCardGame.Totem, DiskCardGame.TotemTopData, ref UnityEngine.GameObject)
-  fullName.vb: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix(DiskCardGame.Totem, DiskCardGame.TotemTopData, ByRef UnityEngine.GameObject)
-  nameWithType: TotemManager.Totem_GetTopPiecePrefab.Prefix(Totem, TotemTopData, ref GameObject)
-  nameWithType.vb: TotemManager.Totem_GetTopPiecePrefab.Prefix(Totem, TotemTopData, ByRef GameObject)
-- uid: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix*
-  name: Prefix
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.html#InscryptionAPI_Totems_TotemManager_Totem_GetTopPiecePrefab_Prefix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_GetTopPiecePrefab.Prefix
-  nameWithType: TotemManager.Totem_GetTopPiecePrefab.Prefix
-- uid: InscryptionAPI.Totems.TotemManager.Totem_SetData
-  name: TotemManager.Totem_SetData
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_SetData.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.Totem_SetData
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_SetData
-  nameWithType: TotemManager.Totem_SetData
-- uid: InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix(DiskCardGame.Totem,DiskCardGame.ItemData)
-  name: Postfix(Totem, ItemData)
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_SetData.html#InscryptionAPI_Totems_TotemManager_Totem_SetData_Postfix_DiskCardGame_Totem_DiskCardGame_ItemData_
-  commentId: M:InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix(DiskCardGame.Totem,DiskCardGame.ItemData)
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix(DiskCardGame.Totem, DiskCardGame.ItemData)
-  nameWithType: TotemManager.Totem_SetData.Postfix(Totem, ItemData)
-- uid: InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix*
-  name: Postfix
-  href: api/InscryptionAPI.Totems.TotemManager.Totem_SetData.html#InscryptionAPI_Totems_TotemManager_Totem_SetData_Postfix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.Totem_SetData.Postfix
-  nameWithType: TotemManager.Totem_SetData.Postfix
-- uid: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId
-  name: TotemManager.TotemTopData_PrefabId
-  href: api/InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.html
-  commentId: T:InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId
-  fullName: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId
-  nameWithType: TotemManager.TotemTopData_PrefabId
-- uid: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix(DiskCardGame.TotemTopData,System.String@)
-  name: Prefix(TotemTopData, ref String)
-  href: api/InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.html#InscryptionAPI_Totems_TotemManager_TotemTopData_PrefabId_Prefix_DiskCardGame_TotemTopData_System_String__
-  commentId: M:InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix(DiskCardGame.TotemTopData,System.String@)
-  name.vb: Prefix(TotemTopData, ByRef String)
-  fullName: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix(DiskCardGame.TotemTopData, ref System.String)
-  fullName.vb: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix(DiskCardGame.TotemTopData, ByRef System.String)
-  nameWithType: TotemManager.TotemTopData_PrefabId.Prefix(TotemTopData, ref String)
-  nameWithType.vb: TotemManager.TotemTopData_PrefabId.Prefix(TotemTopData, ByRef String)
-- uid: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix*
-  name: Prefix
-  href: api/InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.html#InscryptionAPI_Totems_TotemManager_TotemTopData_PrefabId_Prefix_
-  commentId: Overload:InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix
-  isSpec: "True"
-  fullName: InscryptionAPI.Totems.TotemManager.TotemTopData_PrefabId.Prefix
-  nameWithType: TotemManager.TotemTopData_PrefabId.Prefix
+  fullName: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop
+  nameWithType: TotemManager.SetDefaultTotemTop
 - uid: InscryptionAPI.Triggers
   name: InscryptionAPI.Triggers
   href: api/InscryptionAPI.Triggers.html
