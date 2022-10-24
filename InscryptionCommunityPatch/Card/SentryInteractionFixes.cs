@@ -34,15 +34,16 @@ public class SentryInteractionFixes
         return false;
     }
 
+    // COMMENTED OUT UNTIL A BETTER FIX CAN BE MADE
     // Override CombatPhaseManager.SlotAttackSlot with the fixed version
     // Fixes a bug caused by the opposing card dying mid-attack and becoming null
-    [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
-    [HarmonyPrefix]
-    public static bool SlotAttackSlotPatch(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot, float waitAfter, ref IEnumerator __result)
-    {
-        __result = NewSlotAttackSlot(__instance, attackingSlot, opposingSlot, waitAfter);
-        return false;
-    }
+    // [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
+    // [HarmonyPrefix]
+    // public static bool SlotAttackSlotPatch(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot, float waitAfter, ref IEnumerator __result)
+    // {
+    //     __result = NewSlotAttackSlot(__instance, attackingSlot, opposingSlot, waitAfter);
+    //     return false;
+    // }
 
     // Fixes Sentry not triggering OnCardGettingAttacked and freezing
     private static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
