@@ -14,8 +14,6 @@ public static class ConsumableItemDataExtensions
     }
     private static readonly ConditionalWeakTable<ConsumableItemData, ConsumableItemDataExt> ExtensionProperties = new();
     
-    private static readonly Dictionary<string, GameObject> ConsumableItemPrefabLookup = new();
-    
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetPowerLevel(this ConsumableItemData data, int powerLevel)
     {
@@ -71,13 +69,6 @@ public static class ConsumableItemDataExtensions
         data.notRandomlyGiven = notRandomlyGiven;
         return data;
     }
-    
-    /// <returns>The same ConsumableItemData so a chain can continue</returns>
-    public static ConsumableItemData SetPrefab(this ConsumableItemData data, GameObject prefab)
-    {
-        ConsumableItemPrefabLookup[data.prefabId] = prefab;
-        return data;
-    }
 
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetComponentType(this ConsumableItemData data, Type type)
@@ -114,11 +105,38 @@ public static class ConsumableItemDataExtensions
         return data;
     }
 
-    /// <returns>Prefab used to create the item</returns>
-    public static GameObject GetPrefab(this ConsumableItemData data)
+    /// <summary>
+    /// Sets the item ready to be accessed in act 1
+    /// </summary>
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemData SetAct1(this ConsumableItemData data)
     {
-        ConsumableItemPrefabLookup.TryGetValue(data.prefabId, out GameObject go);
-        return go;
+        data.rulebookCategory = AbilityMetaCategory.Part1Rulebook;
+        return data;
+    }
+
+    /// <summary>
+    /// Sets the item ready to be accessed in act 3
+    /// </summary>
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemData SetAct3(this ConsumableItemData data)
+    {
+        data.rulebookCategory = AbilityMetaCategory.Part3Rulebook;
+        return data;
+    }
+
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    internal static ConsumableItemData SetPrefabModelType(this ConsumableItemData data, ConsumableItemManager.ModelType modelType)
+    {
+        data.SetExtendedProperty("PrefabModelType", (int)modelType);
+        return data;
+    }
+
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemManager.ModelType GetPrefabModelType(this ConsumableItemData data)
+    {
+        int? i = data.GetExtendedPropertyAsInt("PrefabModelType");
+        return i.HasValue ? (ConsumableItemManager.ModelType)i : ConsumableItemManager.ModelType.Unknown;
     }
 
     /// <returns>Mod Prefix</returns>

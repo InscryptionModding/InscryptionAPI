@@ -2,6 +2,7 @@
 using System.Reflection;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using InscryptionAPI.Items.Extensions;
@@ -18,6 +19,16 @@ public static class ConsumableItemManager
         Custom,
         All
     }
+    
+    public enum ModelType
+    {
+        Unknown,
+        Basic,
+        BasicVeins,
+        Hover
+    }
+    
+#region Patches
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
     internal class ResourceBank_Awake
@@ -25,7 +36,10 @@ public static class ConsumableItemManager
         public static void Postfix(ResourceBank __instance)
         {
             // The resource bank has been cleared. refill it
-            Initialize();
+            if (defaultItemModel == null)
+            {
+                Initialize();
+            }
         }
     }
     
@@ -34,13 +48,32 @@ public static class ConsumableItemManager
     {
         public static void Postfix(ref List<ConsumableItemData> __result)
         {
-            __result.AddRange(AllItems);
+            __result.AddRange(NewConsumableItems);
         }
     }
     
+#endregion
+    
+    private static Dictionary<ModelType, GameObject> typeToPrefabLookup = new();
     private static GameObject defaultItemModel = null;
     private static List<ConsumableItemData> items = new();
-    public static ReadOnlyCollection<ConsumableItemData> AllItems = new(items);
+    public static ReadOnlyCollection<ConsumableItemData> NewConsumableItems = new(items);
+
+    private static void InitializeDefaultModels()
+    {
+        LoadModel("runeroundedbottom", "RuneRoundedBottom", ModelType.Basic);
+        LoadModel("customitem", "RuneRoundedBottomVeins", ModelType.BasicVeins);
+        LoadModel("customhoveringitem", "RuneHoveringItem", ModelType.Hover);
+    }
+
+    private static void LoadModel(string assetBundlePath, string prefabName, ModelType type)
+    {
+        byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
+        if (AssetBundleHelper.TryGet(resourceBytes, prefabName, out GameObject prefab))
+        {
+            typeToPrefabLookup[type] = prefab;
+        }
+    }
 
     private static void Initialize()
     {
@@ -54,8 +87,8 @@ public static class ConsumableItemManager
         {
             // TODO: Get the actual custom item model
             // NOTE: Do not add a ConsumableItem component here so we can override default models with this!
-            byte[] resourceBytes = TextureHelper.GetResourceBytes("customitem", typeof(InscryptionAPIPlugin).Assembly);
-            AssetBundleHelper.TryGet(resourceBytes, "CustomItem", out defaultItemModel);
+            InitializeDefaultModels();
+            defaultItemModel = typeToPrefabLookup[ModelType.Basic];
         }
 
         List<ConsumableItemData> baseConsumableItems = ItemsUtil.AllConsumables;
@@ -63,18 +96,22 @@ public static class ConsumableItemManager
         // Add all totem tops to the game
         foreach (ConsumableItemData item in items)
         {
-            GameObject prefab = item.GetPrefab();
-            if (prefab == null)
+            ModelType modelType = item.GetPrefabModelType();
+            if (!typeToPrefabLookup.TryGetValue(modelType, out GameObject prefab))
             {
-                prefab = CloneBasePrefab(item);
+                // No model assigned. use default model!
+                prefab = defaultItemModel;
             }
+            
+            // TODO: Do not error if this is a custom model!
+            GameObject gameObject = CloneBasePrefab(item, prefab);
 
-            SetupPrefab(prefab, item.GetComponentType());
+            SetupPrefab(gameObject, item.GetComponentType());
 
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
                 path = "Prefabs/Items/" + item.prefabId,
-                asset = prefab
+                asset = gameObject
             });
         }
         
@@ -84,7 +121,7 @@ public static class ConsumableItemManager
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItems)
             {
-                if (AllItems.Contains(data) || !CanUseBaseModel(data))
+                if (NewConsumableItems.Contains(data) || !CanUseBaseModel(data))
                 {
                     continue;
                 }
@@ -97,7 +134,7 @@ public static class ConsumableItemManager
                     continue;
                 }
 
-                GameObject cloneBasePrefab = CloneBasePrefab(data);
+                GameObject cloneBasePrefab = CloneBasePrefab(data, defaultItemModel);
                 ConsumableItem cloneConsumableItem = SetupPrefab(cloneBasePrefab, prefabConsumableItem.GetType());
 
                 bool replaced = false;
@@ -143,9 +180,9 @@ public static class ConsumableItemManager
         }
     }
 
-    private static GameObject CloneBasePrefab(ConsumableItemData data)
+    private static GameObject CloneBasePrefab(ConsumableItemData data, GameObject gameObject)
     {
-        GameObject prefab = GameObject.Instantiate(defaultItemModel);
+        GameObject prefab = GameObject.Instantiate(gameObject);
         prefab.name = $"Custom Item ({data.rulebookName})";
                 
         // Populate icon
@@ -211,22 +248,48 @@ public static class ConsumableItemManager
         return consumableItem;
     }
 
+    private static ModelType RegisterPrefab(string guid, string name, GameObject o)
+    {
+        foreach (KeyValuePair<ModelType,GameObject> pair in typeToPrefabLookup)
+        {
+            if (pair.Value == o)
+            {
+                return pair.Key;
+            }
+        }
+
+        ModelType type = GuidManager.GetEnumValue<ModelType>(guid, name);
+        typeToPrefabLookup[type] = o;
+        return type;
+    }
+
     public static ConsumableItemData New(string pluginGUID,
         string rulebookName, 
         string rulebookDescription, 
         Texture2D rulebookSprite,
         Type itemType,
-        AbilityMetaCategory rulebookCategory=AbilityMetaCategory.Part1Rulebook)
+        GameObject prefab)
+    {
+        ModelType registerPrefab = RegisterPrefab(pluginGUID, rulebookName, prefab);
+        return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, registerPrefab);
+    }
+
+    public static ConsumableItemData New(string pluginGUID,
+        string rulebookName, 
+        string rulebookDescription, 
+        Texture2D rulebookSprite,
+        Type itemType,
+        ModelType modelType)
     {
         string name = pluginGUID + "_" + rulebookName;
         ConsumableItemData data = ScriptableObject.CreateInstance<ConsumableItemData>();
         data.name = name;
-        data.SetRulebookCategory(rulebookCategory);
         data.SetRulebookName(rulebookName);
         data.SetRulebookDescription(rulebookDescription);
         data.SetRulebookSprite(rulebookSprite.ConvertTexture());
         data.SetRegionSpecific(false);
         data.SetNotRandomlyGiven(false);
+        data.SetPrefabModelType(modelType);
         data.SetPrefabID(name);
         data.SetPickupSoundId("stone_object_up");
         data.SetPlacedSoundId("stone_object_hit");
@@ -235,16 +298,6 @@ public static class ConsumableItemManager
         data.SetModPrefix(pluginGUID);
         data.SetComponentType(itemType);
         data.SetPowerLevel(1);
-        return Add(data);
-    }
-
-    public static ConsumableItemData Add(ConsumableItemData data)
-    {
-        GameObject prefab = data.GetPrefab();
-        if (prefab != null)
-        {
-            GameObject.DontDestroyOnLoad(prefab);
-        }
         
         items.Add(data);
         return data;
