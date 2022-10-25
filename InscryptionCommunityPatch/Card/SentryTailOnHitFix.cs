@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
-using Pixelplacement;
-using Pixelplacement.TweenSystem;
 
 namespace InscryptionCommunityPatch.Card;
 
