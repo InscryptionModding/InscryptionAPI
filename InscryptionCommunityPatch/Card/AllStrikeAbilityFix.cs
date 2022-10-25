@@ -45,7 +45,7 @@ public class AllStrikeAbilityFix
         if (startIndex > -1 && endIndex > -1)
         {
             // get our custom method
-            MethodInfo customMethod = AccessTools.Method(typeof(AllStrikeAbilityFix), nameof(AllStrikeAbilityFix.OmniStrikeSingleStrikeFix), new Type[] { typeof(List<CardSlot>), typeof(List<CardSlot>), typeof(PlayableCard) });
+            MethodInfo customMethod = AccessTools.Method(typeof(AllStrikeAbilityFix), nameof(AllStrikeAbilityFix.AllStrikeDirectAttackFix), new Type[] { typeof(List<CardSlot>), typeof(List<CardSlot>), typeof(PlayableCard) });
 
             // remove the previous code then insert our own
             codes.RemoveRange(startIndex, endIndex - startIndex);
@@ -55,25 +55,19 @@ public class AllStrikeAbilityFix
 
         return codes;
     }
-    public static void JustFixTheEntireStupidThingIGuess()
-    {
-
-    }
-    public static void OmniStrikeSingleStrikeFix(List<CardSlot> list, List<CardSlot> list2, PlayableCard __instance)
+    public static void AllStrikeDirectAttackFix(List<CardSlot> list, List<CardSlot> list2, PlayableCard __instance)
     {
         // for whatever reason the transpiler breaks the if-else statement so we need to put this check here
         if (!list2.Exists((CardSlot x) => x.Card != null && !__instance.CanAttackDirectly(x)))
         {
             // if this card isn't a giant add opposingSlot, otherwise add slot 0
-            if (__instance.Info.HasTrait(Trait.Giant))
-            {
-                list.Add(list2[0]);
-                PatchPlugin.Logger.LogWarning($"Giant card - {list.Count} {list[0] == list2[0]}");
-            }
             if (!__instance.Info.HasTrait(Trait.Giant))
             {
                 list.Add(__instance.Slot.opposingSlot);
-                PatchPlugin.Logger.LogWarning($"Regular card - {list.Count} {list[0] == __instance.Slot.opposingSlot}");
+            }
+            else
+            {
+                list.Add(list2[0]);
             }
         }
     }
