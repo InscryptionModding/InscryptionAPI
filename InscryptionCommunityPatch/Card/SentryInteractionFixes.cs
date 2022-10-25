@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
-using Pixelplacement;
-using Pixelplacement.TweenSystem;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -34,16 +30,8 @@ public class SentryInteractionFixes
         return false;
     }
 
-    // COMMENTED OUT UNTIL A BETTER FIX CAN BE MADE
     // Override CombatPhaseManager.SlotAttackSlot with the fixed version
     // Fixes a bug caused by the opposing card dying mid-attack and becoming null
-    // [HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot))]
-    // [HarmonyPrefix]
-    // public static bool SlotAttackSlotPatch(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot, float waitAfter, ref IEnumerator __result)
-    // {
-    //     __result = NewSlotAttackSlot(__instance, attackingSlot, opposingSlot, waitAfter);
-    //     return false;
-    // }
 
     // Fixes Sentry not triggering OnCardGettingAttacked and freezing
     private static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
@@ -133,75 +121,6 @@ public class SentryInteractionFixes
             yield return new WaitForSeconds(0.07f);
             instance.Card.Anim.SetAnimationPaused(paused: true);
         }
-    }
-
-    // Fixes a bug caused by the opposing card dying mid-attack and becoming null
-    private static IEnumerator NewSlotAttackSlot(CombatPhaseManager instance, CardSlot attackingSlot, CardSlot opposingSlot, float waitAfter)
-    {
-        yield return Singleton<GlobalTriggerHandler>.Instance.TriggerCardsOnBoard(Trigger.SlotTargetedForAttack, false, opposingSlot, attackingSlot.Card);
-        yield return new WaitForSeconds(0.025f);
-        if (!(attackingSlot.Card != null))
-            yield break;
-
-        if (attackingSlot.Card.Anim.DoingAttackAnimation)
-        {
-            yield return new WaitUntil(() => !attackingSlot.Card.Anim.DoingAttackAnimation);
-            yield return new WaitForSeconds(0.25f);
-        }
-        if (opposingSlot.Card != null && attackingSlot.Card.AttackIsBlocked(opposingSlot))
-        {
-            ProgressionData.SetAbilityLearned(Ability.PreventAttack);
-            yield return instance.ShowCardBlocked(attackingSlot.Card);
-        }
-        else if (attackingSlot.Card.CanAttackDirectly(opposingSlot))
-        {
-            instance.DamageDealtThisPhase += attackingSlot.Card.Attack;
-            yield return instance.VisualizeCardAttackingDirectly(attackingSlot, opposingSlot, attackingSlot.Card.Attack);
-            if (attackingSlot.Card.TriggerHandler.RespondsToTrigger(Trigger.DealDamageDirectly, attackingSlot.Card.Attack))
-                yield return attackingSlot.Card.TriggerHandler.OnTrigger(Trigger.DealDamageDirectly, attackingSlot.Card.Attack);
-
-        }
-        else
-        {
-            float heightOffset = ((opposingSlot.Card == null) ? 0f : opposingSlot.Card.SlotHeightOffset);
-            if (heightOffset > 0f)
-                Tween.Position(attackingSlot.Card.transform, attackingSlot.Card.transform.position + Vector3.up * heightOffset, 0.05f, 0f, Tween.EaseInOut);
-
-            // Start attack animation
-            attackingSlot.Card.Anim.PlayAttackAnimation(attackingSlot.Card.IsFlyingAttackingReach(), opposingSlot, null);
-            yield return new WaitForSeconds(0.07f);
-            attackingSlot.Card.Anim.SetAnimationPaused(paused: true);
-
-            // Trigger CardGettingAttacked
-            PlayableCard attackingCard = attackingSlot.Card;
-            yield return Singleton<GlobalTriggerHandler>.Instance.TriggerCardsOnBoard(Trigger.CardGettingAttacked, false, opposingSlot.Card);
-
-            // If attacking card and its slot aren't null
-            if (attackingCard != null && attackingCard.Slot != null)
-            {
-                CardSlot attackingSlot2 = attackingCard.Slot;
-
-                // If the opposing card is still alive, attack it
-                if (opposingSlot.Card != null)
-                {
-                    if (attackingSlot2.Card.IsFlyingAttackingReach())
-                    {
-                        opposingSlot.Card.Anim.PlayJumpAnimation();
-                        yield return new WaitForSeconds(0.3f);
-                        attackingSlot2.Card.Anim.PlayAttackInAirAnimation();
-                    }
-                    attackingSlot2.Card.Anim.SetAnimationPaused(paused: false);
-                    yield return new WaitForSeconds(0.05f);
-                    int overkillDamage = attackingSlot2.Card.Attack - opposingSlot.Card.Health;
-                    yield return opposingSlot.Card.TakeDamage(attackingSlot2.Card.Attack, attackingSlot2.Card);
-                    yield return instance.DealOverkillDamage(overkillDamage, attackingSlot2, opposingSlot);
-                }
-
-                if (attackingSlot2.Card != null && heightOffset > 0f)
-                    yield return Singleton<BoardManager>.Instance.AssignCardToSlot(attackingSlot2.Card, attackingSlot2.Card.Slot, 0.1f, null, resolveTriggers: false);
-            }
-        }
-        yield return new WaitForSeconds(waitAfter);
     }
 
     private static void ShowPart3Turret(PlayableCard card, PlayableCard otherCard)

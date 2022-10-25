@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
