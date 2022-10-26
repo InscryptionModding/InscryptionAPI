@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.5.2
+- Fixed the sentry fix affecting SlotAttackSlot
+
+## v2.5.1
+- Reverted one of the Sentry fixes temporarily to prevent issues with patching SlotAttackSlot
+- Made it easier to replace the default totem head
+
 ## v2.5.0
 - Added support for custom totem heads
 - Fixes for Sentry ability in Act 1 relating to PackMule, Loose Tail, and enemy totems
