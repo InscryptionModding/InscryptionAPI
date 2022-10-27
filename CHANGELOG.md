@@ -2,6 +2,7 @@
 
 ## v2.5.0
 - Added support for custom totem heads
+- Custom Tribes now appear as a totem in the Wood Carver nodes
 - Fixes for Sentry ability in Act 1 relating to PackMule, Loose Tail, and enemy totems
 - Fixed stacked ability icons causing issues when trying to render numbers on some sigil icons
 - Fixed Latches not working in Act 1
