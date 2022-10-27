@@ -147,6 +147,7 @@ public static class ConsumableItemManager
             }
         }
     }
+    
     private static void InitializeConsumableItemDataPrefab(ConsumableItemData item)
     {
         ModelType modelType = item.GetPrefabModelType();
@@ -154,6 +155,7 @@ public static class ConsumableItemManager
         {
             // No model assigned. use default model!
             prefab = defaultItemModel;
+            InscryptionAPIPlugin.Logger.LogWarning($"Could not find ModelType for ConsumableItemData {item.rulebookName}!");
         }
 
         GameObject gameObject = CloneAndSetupPrefab(item, prefab, item.GetComponentType(), modelType).gameObject;
@@ -253,18 +255,18 @@ public static class ConsumableItemManager
         return consumableItem;
     }
 
-    private static ModelType RegisterPrefab(string guid, string name, GameObject o)
+    public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, GameObject prefab)
     {
         foreach (KeyValuePair<ModelType,GameObject> pair in typeToPrefabLookup)
         {
-            if (pair.Value == o)
+            if (pair.Value == prefab)
             {
                 return pair.Key;
             }
         }
 
-        ModelType type = GuidManager.GetEnumValue<ModelType>(guid, name);
-        typeToPrefabLookup[type] = o;
+        ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, rulebookName);
+        typeToPrefabLookup[type] = prefab;
         return type;
     }
 
