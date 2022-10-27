@@ -136,7 +136,7 @@ public static class ConsumableItemDataExtensions
     public static ConsumableItemManager.ModelType GetPrefabModelType(this ConsumableItemData data)
     {
         int? i = data.GetExtendedPropertyAsInt("PrefabModelType");
-        return i.HasValue ? (ConsumableItemManager.ModelType)i : ConsumableItemManager.ModelType.Unknown;
+        return i.HasValue ? (ConsumableItemManager.ModelType)i : 0;
     }
 
     /// <returns>Mod Prefix</returns>

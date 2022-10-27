@@ -22,10 +22,9 @@ public static class ConsumableItemManager
     
     public enum ModelType
     {
-        Unknown,
-        Basic,
-        BasicVeins,
-        Hover
+        Basic = 1,
+        BasicVeins = 2,
+        Hover = 3
     }
     
 #region Patches
@@ -155,7 +154,7 @@ public static class ConsumableItemManager
         {
             // No model assigned. use default model!
             prefab = defaultItemModel;
-            InscryptionAPIPlugin.Logger.LogWarning($"Could not find ModelType for ConsumableItemData {item.rulebookName}!");
+            InscryptionAPIPlugin.Logger.LogWarning($"Could not find ModelType {modelType} for ConsumableItemData {item.rulebookName}!");
         }
 
         GameObject gameObject = CloneAndSetupPrefab(item, prefab, item.GetComponentType(), modelType).gameObject;
@@ -186,7 +185,7 @@ public static class ConsumableItemManager
 
     private static ConsumableItem CloneAndSetupPrefab(ConsumableItemData data, GameObject prefab, Type itemType, ModelType modelType)
     {
-        GameObject clone = GameObject.Instantiate(prefab);
+        GameObject clone = UnityObject.Instantiate(prefab);
         clone.name = $"Custom Item ({data.rulebookName})";
         
         // Populate icon. Only for default fallback types - If anyone wants to use this then they can add to that fallback type list i guss??
@@ -288,25 +287,29 @@ public static class ConsumableItemManager
         Type itemType,
         ModelType modelType)
     {
-        string name = pluginGUID + "_" + rulebookName;
         ConsumableItemData data = ScriptableObject.CreateInstance<ConsumableItemData>();
-        data.name = name;
         data.SetRulebookName(rulebookName);
         data.SetRulebookDescription(rulebookDescription);
         data.SetRulebookSprite(rulebookSprite.ConvertTexture());
         data.SetRegionSpecific(false);
         data.SetNotRandomlyGiven(false);
         data.SetPrefabModelType(modelType);
-        data.SetPrefabID(name);
         data.SetPickupSoundId("stone_object_up");
         data.SetPlacedSoundId("stone_object_hit");
         data.SetExamineSoundId("stone_object_hit");
-        
-        data.SetModPrefix(pluginGUID);
         data.SetComponentType(itemType);
         data.SetPowerLevel(1);
         
-        InscryptionAPIPlugin.Logger.LogInfo("[InitializeDefaultModels] Recorded new item " + name);
+        return Add(pluginGUID, data);
+    }
+
+    public static ConsumableItemData Add(string pluginGUID, ConsumableItemData data)
+    {
+        string name = pluginGUID + "_" + data.rulebookName;
+        data.name = name;
+        data.SetPrefabID(name);
+        data.SetModPrefix(pluginGUID);
+        
         allNewItems.Add(data);
         return data;
     }
