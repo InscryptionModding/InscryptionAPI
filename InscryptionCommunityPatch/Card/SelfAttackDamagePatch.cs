@@ -10,7 +10,7 @@ namespace InscryptionCommunityPatch.Card;
 
 // Inserts a null check for opposingSlot.Card after CardGettingAttacked is triggered
 // Tweaks the direct damage logic to subtract from DamageDealtThisPhase if the opposing and attacking are on the same side
-[HarmonyPatch, HarmonyDebug]
+[HarmonyPatch]
 public class SelfAttackDamagePatch
 {
     private const string name_GetDamageDealt = "Int32 get_DamageDealtThisPhase()";
