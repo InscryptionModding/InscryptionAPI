@@ -14,6 +14,8 @@ It can currently create and modify:
 - Starter Decks
 - Regions
 - Encounters
+- Totem Tops
+- Consumable Items
 - And much more!
 
 Additionally, a number of quality-of-life patches from the community have been included in this release.
