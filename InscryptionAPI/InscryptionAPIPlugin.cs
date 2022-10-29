@@ -8,6 +8,8 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Regions;
 using System.Runtime.CompilerServices;
+using BepInEx.Configuration;
+using InscryptionAPI.Totems;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 [assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
@@ -21,8 +23,11 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.3.0";
+    public const string ModVer = "2.5.0";
 
+    internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
+    
+    
     private static bool _hasShownOldApiWarning = false;
 
     static InscryptionAPIPlugin()
@@ -70,6 +75,11 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         AbilityManager.SyncAbilityList();
         EncounterManager.SyncEncounterList();
         RegionManager.SyncRegionList();
+    }
+
+    private void Awake()
+    {
+        configCustomTotemTopTypes = Config.Bind("Totems","Top Types",TotemManager.TotemTopState.CustomTribes,"If Vanilla, Don't change totem tops, If CustomTribes, all custom tribes added will use custom totem tops. If AllTribes then all totem tops will use a custom top.");
     }
 
     private void Start()
