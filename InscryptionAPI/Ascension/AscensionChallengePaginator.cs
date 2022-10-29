@@ -209,7 +209,7 @@ public class AscensionChallengePaginator : MonoBehaviour
         while (challengesToAdd.Count > 0)
         {
             List<AscensionChallengeInfo> page = new();
-            for (int i = 0; i < icons.Count; i++)
+            for (int i = 0; i < 14; i++) // icons.Count
             {
                 if (challengesToAdd.Count > 0)
                 {
