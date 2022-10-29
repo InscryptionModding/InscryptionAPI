@@ -15,6 +15,11 @@ public static class StarterDeckManager
     {
         public StarterDeckInfo Info { get; set; }
         public int UnlockLevel { get; set; }
+
+        /// <summary>
+        /// A function that needs to return true for the starter deck to be unlocked. Optional. If this isn't set, this check will be bypassed. The int argument is the current Kaycee's Mod challenge level.
+        /// </summary>
+        public Func<int, bool> CustomUnlockCheck { get; set; }
         public List<string> CardNames { get; set; } // For delayed loading of actual card names
     }
 
@@ -155,10 +160,10 @@ public static class StarterDeckManager
     private static bool CustomStarterLevel(ref bool __result, string id, int level)
     {
         FullStarterDeck fsd = AllDecks.FirstOrDefault(d => d.Info.name == id);
-        if (fsd == null || fsd.UnlockLevel < 0)
+        if (fsd == null || (fsd.UnlockLevel < 0 && fsd.CustomUnlockCheck == null))
             return true;
 
-        __result = level >= fsd.UnlockLevel;
+        __result = level >= fsd.UnlockLevel && (fsd.CustomUnlockCheck == null || fsd.CustomUnlockCheck(level));
         return false;
-    }  
+    }
 }
