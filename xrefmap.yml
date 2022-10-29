@@ -1093,6 +1093,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.ChallengeHandler
   nameWithType: ChallengeManager.FullChallenge.ChallengeHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck
+  name: CustomUnlockCheck
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_CustomUnlockCheck
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck
+  nameWithType: ChallengeManager.FullChallenge.CustomUnlockCheck
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck*
+  name: CustomUnlockCheck
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_CustomUnlockCheck_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.CustomUnlockCheck
+  nameWithType: ChallengeManager.FullChallenge.CustomUnlockCheck
 - uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.DependantChallengeGetter
   name: DependantChallengeGetter
   href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_DependantChallengeGetter
@@ -1203,6 +1216,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallengeHandler
   nameWithType: ChallengeManager.FullChallenge.SetChallengeHandler
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock(Func{System.Int32,System.Boolean})
+  name: SetCustomUnlock(Func<Int32, Boolean>)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetCustomUnlock_Func_System_Int32_System_Boolean__
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock(Func{System.Int32,System.Boolean})
+  name.vb: SetCustomUnlock(Func(Of Int32, Boolean))
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock(Func<System.Int32, System.Boolean>)
+  fullName.vb: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock(Func(Of System.Int32, System.Boolean))
+  nameWithType: ChallengeManager.FullChallenge.SetCustomUnlock(Func<Int32, Boolean>)
+  nameWithType.vb: ChallengeManager.FullChallenge.SetCustomUnlock(Func(Of Int32, Boolean))
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock*
+  name: SetCustomUnlock
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetCustomUnlock_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetCustomUnlock
+  nameWithType: ChallengeManager.FullChallenge.SetCustomUnlock
 - uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetDependantChallengeGetter(Func{InscryptionAPI.Ascension.ChallengeManager.FullChallenge[],System.Collections.IEnumerable{DiskCardGame.AscensionChallenge}})
   name: SetDependantChallengeGetter(Func<ChallengeManager.FullChallenge[], IEnumerable<AscensionChallenge>>)
   href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetDependantChallengeGetter_Func_InscryptionAPI_Ascension_ChallengeManager_FullChallenge___System_Collections_IEnumerable_DiskCardGame_AscensionChallenge___
@@ -1544,6 +1573,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CardNames
   nameWithType: StarterDeckManager.FullStarterDeck.CardNames
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+  name: CustomUnlockCheck
+  href: api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html#InscryptionAPI_Ascension_StarterDeckManager_FullStarterDeck_CustomUnlockCheck
+  commentId: P:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+  nameWithType: StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+- uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck*
+  name: CustomUnlockCheck
+  href: api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html#InscryptionAPI_Ascension_StarterDeckManager_FullStarterDeck_CustomUnlockCheck_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.CustomUnlockCheck
+  nameWithType: StarterDeckManager.FullStarterDeck.CustomUnlockCheck
 - uid: InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.Info
   name: Info
   href: api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html#InscryptionAPI_Ascension_StarterDeckManager_FullStarterDeck_Info
@@ -3134,6 +3176,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetCost
   nameWithType: CardExtensions.SetCost
+- uid: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo,Func{System.Boolean,System.Int32,System.Boolean})
+  name: SetCustomUnlockCheck(CardInfo, Func<Boolean, Int32, Boolean>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCustomUnlockCheck_DiskCardGame_CardInfo_Func_System_Boolean_System_Int32_System_Boolean__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo,Func{System.Boolean,System.Int32,System.Boolean})
+  name.vb: SetCustomUnlockCheck(CardInfo, Func(Of Boolean, Int32, Boolean))
+  fullName: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo, Func<System.Boolean, System.Int32, System.Boolean>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo, Func(Of System.Boolean, System.Int32, System.Boolean))
+  nameWithType: CardExtensions.SetCustomUnlockCheck(CardInfo, Func<Boolean, Int32, Boolean>)
+  nameWithType.vb: CardExtensions.SetCustomUnlockCheck(CardInfo, Func(Of Boolean, Int32, Boolean))
+- uid: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck*
+  name: SetCustomUnlockCheck
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCustomUnlockCheck_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck
+  nameWithType: CardExtensions.SetCustomUnlockCheck
 - uid: InscryptionAPI.Card.CardExtensions.SetDefaultPart1Card(DiskCardGame.CardInfo)
   name: SetDefaultPart1Card(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetDefaultPart1Card_DiskCardGame_CardInfo_
