@@ -48,10 +48,20 @@ public static class ConsumableItemManager
         }
     }
     
+    /*[HarmonyPatch(typeof(ConsumableItemSlot), "CreateItem", new Type[]{typeof(ItemData), typeof(bool)})]
+    private class ConsumableItemSlot_CreateItem
+    {
+        public static bool Prefix(ItemData data, bool skipDropAnimation)
+        {
+            InscryptionAPIPlugin.Logger.LogInfo("[ConsumableItemSlot_CreateItem] " + data.prefabId);
+            return true;
+        }
+    }*/
+    
 #endregion
     
     private static GameObject defaultItemModel = null;
-    private static ModelType defaultItemModelType = ModelType.Hover;
+    private static ModelType defaultItemModelType = ModelType.BasicVeins;
     private static Dictionary<ModelType, GameObject> typeToPrefabLookup = new();
     private static HashSet<ModelType> defaultModelTypes = new();
     private static List<ConsumableItemData> allNewItems = new();
@@ -63,7 +73,6 @@ public static class ConsumableItemManager
         LoadDefaultModel("runeroundedbottom", "RuneRoundedBottom", ModelType.Basic);
         LoadDefaultModel("customitem", "RuneRoundedBottomVeins", ModelType.BasicVeins);
         LoadDefaultModel("customhoveringitem", "RuneHoveringItem", ModelType.Hover);
-        InscryptionAPIPlugin.Logger.LogInfo("[InitializeDefaultModels] Default items " + typeToPrefabLookup.Count);
     }
 
     private static void LoadDefaultModel(string assetBundlePath, string prefabName, ModelType type)
@@ -78,9 +87,8 @@ public static class ConsumableItemManager
 
     private static void Initialize()
     {
-        InscryptionAPIPlugin.Logger.LogInfo("[InitializeDefaultModels] Initializing");
         baseConsumableItemsDatas.Clear();
-        baseConsumableItemsDatas.AddRange(ItemsUtil.AllConsumables);
+        baseConsumableItemsDatas.AddRange(ItemsUtil.AllConsumables.FindAll((a)=>a != null && string.IsNullOrEmpty(a.GetModPrefix())));
         if (InscryptionAPIPlugin.configCustomItemTypes.Value == ConsumableState.Vanilla)
         {
             // Don't change any items!
@@ -106,7 +114,6 @@ public static class ConsumableItemManager
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItemsDatas)
             {
-                InscryptionAPIPlugin.Logger.LogInfo("[InitializeDefaultModels] Overriding data " + data.name);
                 if (!CanUseBaseModel(data))
                 {
                     continue;
@@ -116,7 +123,7 @@ public static class ConsumableItemManager
                 GameObject item = ResourceBank.Get<GameObject>(path);
                 if (item == null || !item.TryGetComponent(out ConsumableItem prefabConsumableItem))
                 {
-                    InscryptionAPIPlugin.Logger.LogError($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
+                    InscryptionAPIPlugin.Logger.LogInfo($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
                     continue;
                 }
 
@@ -155,6 +162,12 @@ public static class ConsumableItemManager
             // No model assigned. use default model!
             prefab = defaultItemModel;
             InscryptionAPIPlugin.Logger.LogWarning($"Could not find ModelType {modelType} for ConsumableItemData {item.rulebookName}!");
+        }
+        if (prefab == null)
+        {
+            // Model assigned but model has been deleted?
+            prefab = defaultItemModel;
+            InscryptionAPIPlugin.Logger.LogError($"Prefab missing for ConsumableItemData {item.rulebookName}! Using default instead.");
         }
 
         GameObject gameObject = CloneAndSetupPrefab(item, prefab, item.GetComponentType(), modelType).gameObject;
@@ -256,16 +269,12 @@ public static class ConsumableItemManager
 
     public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, GameObject prefab)
     {
-        foreach (KeyValuePair<ModelType,GameObject> pair in typeToPrefabLookup)
-        {
-            if (pair.Value == prefab)
-            {
-                return pair.Key;
-            }
-        }
-
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, rulebookName);
         typeToPrefabLookup[type] = prefab;
+
+        // Mark as dont destroy on load so it doesn't get removed between levels
+        UnityObject.DontDestroyOnLoad(prefab);
+        
         return type;
     }
 
