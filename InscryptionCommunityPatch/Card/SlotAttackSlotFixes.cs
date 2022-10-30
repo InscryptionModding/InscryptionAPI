@@ -19,10 +19,10 @@ public class SlotAttackSlotPatches
     private const string name_SetDamageDealt = "Void set_DamageDealtThisPhase(Int32)";
 
     // Get the method MoveNext, which is where the actual code for SlotAttackSlot is located
-    private static IEnumerable<MethodBase> TargetMethods()
+    private static MethodBase TargetMethod()
     {
         MethodBase baseMethod = AccessTools.Method(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot));
-        yield return AccessTools.EnumeratorMoveNext(baseMethod);
+        return AccessTools.EnumeratorMoveNext(baseMethod);
     }
 
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
