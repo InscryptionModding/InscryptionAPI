@@ -21,16 +21,6 @@ public static class PassiveAttackBuffPatches
             return count > 0 ? 1 : 0; // If it's not stackable, you get at most one
     }
 
-    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.SetupPhase))]
-    [HarmonyPostfix]
-    private static IEnumerator AlwaysInstantiateConduitManager(IEnumerator sequence)
-    {
-        if (ConduitCircuitManager.Instance == null)
-            BoardManager.Instance.gameObject.AddComponent<ConduitCircuitManager>();
-
-        yield return sequence;
-    }
-
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetPassiveHealthBuffs))]
     [HarmonyPrefix]
     private static bool BetterHealthBuffs(ref int __result, ref PlayableCard __instance)
