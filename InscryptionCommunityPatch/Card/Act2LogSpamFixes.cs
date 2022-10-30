@@ -3,6 +3,7 @@ using DiskCardGame;
 using HarmonyLib;
 using System.Reflection;
 using UnityEngine;
+using GBC;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -19,6 +20,7 @@ public class Act2LogSpamFixes
         return !SaveManager.SaveFile.IsPart2;
     }
 
+    // Since GameFlowManager is null in Act 2, there's no point in checking for that
     [HarmonyPatch(typeof(ConduitCircuitManager), nameof(ConduitCircuitManager.UpdateCircuits))]
     [HarmonyPrefix]
     private static bool RemoveConduitManagerSpam(ConduitCircuitManager __instance)
@@ -29,6 +31,14 @@ public class Act2LogSpamFixes
         __instance.UpdateCircuitsForSlots(Singleton<BoardManager>.Instance.GetSlots(getPlayerSlots: true));
         __instance.UpdateCircuitsForSlots(Singleton<BoardManager>.Instance.GetSlots(getPlayerSlots: false));
         return false;
+    }
+
+    // Prevents log spam when you open a card pack with an activated sigil in it
+    [HarmonyPatch(typeof(PixelActivatedAbilityButton), nameof(PixelActivatedAbilityButton.ManagedUpdate))]
+    [HarmonyPrefix]
+    private static bool RemovePixelActivatedSpam()
+    {
+        return SceneLoader.ActiveSceneName == "GBC_CardBattle";
     }
 
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.SetupPhase))]
@@ -45,6 +55,7 @@ public class Act2LogSpamFixes
             yield break;
         }
 
+        // Removes unnecessary checks for Boons and Rulebook
         __instance.IsSetupPhase = true;
         Singleton<PlayerHand>.Instance.PlayingLocked = true;
         if (__instance.SpecialSequencer != null)
@@ -83,6 +94,7 @@ public class Act2LogSpamFixes
             yield break;
         }
 
+        // Removes unnecessary check for Rulebook
         __instance.PlayerWon = __instance.PlayerIsWinner();
         __instance.GameEnding = true;
 
@@ -138,6 +150,7 @@ public class Act2LogSpamFixes
             yield break;
         }
 
+        // Removes unnecessary calls to unused classes
         __instance.CardsInHand.ForEach(delegate (PlayableCard x)
         {
             x.SetEnabled(enabled: false);
@@ -202,6 +215,7 @@ public class Act2LogSpamFixes
             yield break;
         }
 
+        // removes unnecessary calls to OpponentAnimationController
         if (__instance.scales != null)
         {
             if (changeView)
