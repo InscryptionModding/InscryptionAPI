@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 
 // Fixes a number of warnings that get spammed in Act 2 by removing the cause of the warnings
 [HarmonyPatch]
-public class Act2LogSpamFixes
+internal class Act2LogSpamFixes
 {
     // For parts of the game that aren't needed in Act 2
     [HarmonyPatch(typeof(GameFlowManager), nameof(GameFlowManager.UpdateForTransitionToFirstPerson))]
