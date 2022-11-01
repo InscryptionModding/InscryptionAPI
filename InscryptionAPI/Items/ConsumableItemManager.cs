@@ -341,27 +341,46 @@ public static class ConsumableItemManager
         
         return Add(pluginGUID, data);
     }
-
+    
     public static ConsumableItemData NewCardInABottle(string pluginGUID, string cardName, Texture2D rulebookTexture=null)
     {
-        ConsumableItemData data = ScriptableObject.Instantiate(Resources.Load<ConsumableItemData>("data/consumables/FrozenOpossumBottle"));
-
         CardInfo cardInfo = CardLoader.GetCardByName(cardName);
         if (cardInfo == null)
         {
-            InscryptionAPIPlugin.Logger.LogError("Could not get card using name: " + cardName);
+            InscryptionAPIPlugin.Logger.LogError("Could not add NewCardInABottle. Could not get card using name " + cardName);
+            return null;
+        }
+        
+        return NewCardInABottle(pluginGUID, cardInfo, rulebookTexture);
+    }
+
+    public static ConsumableItemData NewCardInABottle(string pluginGUID, CardInfo cardInfo, Texture2D rulebookTexture=null)
+    {
+        if (cardInfo == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("Could not add NewCardInABottle. CardInfo is null!");
             return null;
         }
 
+        ConsumableItemData data = ScriptableObject.Instantiate(Resources.Load<ConsumableItemData>("data/consumables/FrozenOpossumBottle"));
+        
         string rulebookName = $"{cardInfo.displayedName} Bottle";
         data.SetRulebookName(rulebookName);
         
         string rulebookDescription = $"A {cardInfo.displayedName} is created in your hand. [define:{cardInfo.name}]";
         data.SetRulebookDescription(rulebookDescription);
 
-        cardinbottleSprite ??= TextureHelper.GetImageAsTexture("rulebookitemicon_cardinbottle.png", Assembly.GetExecutingAssembly()).ConvertTexture();
-        var x = rulebookTexture != null ? rulebookTexture.ConvertTexture() : cardinbottleSprite;
-        data.SetRulebookSprite(x);
+        Sprite sprite = null;
+        if (rulebookTexture != null)
+        {
+            sprite = rulebookTexture.ConvertTexture();
+        }
+        else
+        {
+            cardinbottleSprite ??= TextureHelper.GetImageAsTexture("rulebookitemicon_cardinbottle.png", Assembly.GetExecutingAssembly()).ConvertTexture();
+        }
+        
+        data.SetRulebookSprite(sprite);
         data.SetRegionSpecific(false);
         data.SetNotRandomlyGiven(false);
         
