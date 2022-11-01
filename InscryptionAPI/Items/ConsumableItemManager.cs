@@ -2,7 +2,6 @@
 using System.Reflection;
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
@@ -28,6 +27,64 @@ public static class ConsumableItemManager
         HoveringRune = 3,
         CardInABottle = 4,
     }
+
+    public class ResourceLookup
+    {
+        public string AssetBundlePath;
+        public string AssetBundlePrefabName;
+        public string ResourcePath;
+        public string ResourceBankID;
+        public GameObject Prefab;
+        
+        public T Get<T>() where T : UnityObject
+        {
+            if (!string.IsNullOrEmpty(AssetBundlePath))
+            {
+                byte[] resourceBytes = TextureHelper.GetResourceBytes(AssetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
+                if (AssetBundleHelper.TryGet(resourceBytes, AssetBundlePrefabName, out T prefab))
+                {
+                    return prefab;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(ResourcePath))
+            {
+                return Resources.Load<T>(ResourcePath);
+            }
+
+            if (!string.IsNullOrEmpty(ResourceBankID))
+            {
+                return ResourceBank.Get<T>(ResourceBankID);
+            }
+
+            if (Prefab != null)
+            {
+                if (Prefab.GetType() == typeof(T))
+                {
+                    return (T)(UnityObject)Prefab;
+                }
+                else if (typeof(T).IsSubclassOf(typeof(Component)))
+                {
+                    return Prefab.GetComponent<T>();
+                }
+                
+                InscryptionAPIPlugin.Logger.LogError("No way to get Type " + typeof(T) + " from prefab " + Prefab.name);
+                return null;
+            }
+
+            InscryptionAPIPlugin.Logger.LogError("ResourceLookup not setup correctly!");
+            return default(T);
+        }
+
+        public override string ToString()
+        {
+            return $"ResourceLookup(AssetBundlePath:{AssetBundlePath}, AssetBundlePrefabName:{AssetBundlePrefabName}, ResourcePath:{ResourcePath})";
+        }
+    }
     
 #region Patches
 
@@ -41,6 +98,44 @@ public static class ConsumableItemManager
         }
     }
     
+    /*[HarmonyPatch]
+    private class ResourceBank_Get
+    {
+        public static MethodBase TargetMethod() {
+            // refer to C# reflection documentation:
+            return typeof(ResourceBank).GetMethod("Get").MakeGenericMethod(typeof(GameObject));
+        }
+        
+        public static bool Prefix(ResourceBank __instance, string pathName, ref GameObject __result)
+        {
+            if (prefabIDToResourceLookup.TryGetValue(pathName, out ResourceLookup lookup))
+            {
+                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Overridden " + pathName + " " + lookup);
+                GameObject gameObject = lookup.Get<GameObject>();
+                if (gameObject != null)
+                {
+                    __result = gameObject;
+                    return false;
+                }
+            }
+
+            InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Default " + pathName);
+            return true;
+        }
+        
+        public static void Postfix(string pathName, ref GameObject __result)
+        {
+            if (__result == null)
+            {
+                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Postfix " + pathName + " null");
+            }
+            else
+            {
+                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Postfix " + pathName + " " + __result);
+            }
+        }
+    }*/
+    
     [HarmonyPatch(typeof(ItemsUtil), "AllConsumables", MethodType.Getter)]
     private class ItemsUtil_AllConsumables
     {
@@ -53,11 +148,46 @@ public static class ConsumableItemManager
     [HarmonyPatch(typeof(ItemSlot), "CreateItem", new Type[]{typeof(ItemData), typeof(bool)})]
     private class ItemSlot_CreateItem
     {
-        public static void Postfix(ItemSlot __instance, ItemData data, bool skipDropAnimation)
+        public static bool Prefix(ItemSlot __instance, ItemData data, bool skipDropAnimation)
         {
-            if (__instance.Item is CardBottleItem cardBottleItem && data is ConsumableItemData consumableItemData)
+            if (__instance.Item != null)
             {
-                string cardWithinBottle = consumableItemData.GetCardWithinBottle();
+                UnityObject.Destroy(__instance.Item.gameObject);
+            }
+            
+            string prefabId = "Prefabs/Items/" + data.PrefabId;
+            GameObject original = null;
+            if (prefabIDToResourceLookup.TryGetValue(prefabId.ToLowerInvariant(), out ResourceLookup resource) && data is ConsumableItemData consumableItemData)
+            {
+                original = resource.Get<GameObject>();
+                SetupPrefab(consumableItemData, original, consumableItemData.GetComponentType(), consumableItemData.GetPrefabModelType());
+                InscryptionAPIPlugin.Logger.LogError("[ItemSlot_CreateItem] overriden " + consumableItemData.rulebookName);
+            }
+            else
+            {
+                original = ResourceBank.Get<GameObject>(prefabId);
+                InscryptionAPIPlugin.Logger.LogError("[ItemSlot_CreateItem] Vanilla " + prefabId);
+            }
+            
+            GameObject gameObject = UnityObject.Instantiate<GameObject>(original, __instance.transform);
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
+            
+            gameObject.transform.localPosition = Vector3.zero;
+            __instance.Item = gameObject.GetComponent<Item>();
+            __instance.Item.SetData(data);
+            if (skipDropAnimation)
+            {
+                __instance.Item.PlayEnterAnimation(true);
+            }
+            
+            
+            // Setup cards
+            if (__instance.Item is CardBottleItem cardBottleItem && data is ConsumableItemData consumableItemData2)
+            {
+                string cardWithinBottle = consumableItemData2.GetCardWithinBottle();
                 if (!string.IsNullOrEmpty(cardWithinBottle))
                 {
                     CardInfo cardInfo = CardLoader.GetCardByName(cardWithinBottle);
@@ -73,15 +203,18 @@ public static class ConsumableItemManager
                     }
                 }
             }
+
+            return false;
         }
     }
     
 #endregion
 
     private static Sprite cardinbottleSprite;
-    private static GameObject defaultItemModel = null;
+    private static ResourceLookup defaultItemModel = null;
     private static ModelType defaultItemModelType = ModelType.BasicRuneWithVeins;
-    private static Dictionary<ModelType, GameObject> typeToPrefabLookup = new();
+    private static Dictionary<string, ResourceLookup> prefabIDToResourceLookup = new();
+    private static Dictionary<ModelType, ResourceLookup> typeToPrefabLookup = new();
     private static HashSet<ModelType> defaultModelTypes = new();
     private static List<ConsumableItemData> allNewItems = new();
     private static List<ConsumableItemData> baseConsumableItemsDatas = new();
@@ -97,22 +230,21 @@ public static class ConsumableItemManager
 
     private static void LoadDefaultModelFromBundle(string assetBundlePath, string prefabName, ModelType type)
     {
-        byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
-        if (AssetBundleHelper.TryGet(resourceBytes, prefabName, out GameObject prefab))
+        typeToPrefabLookup[type] = new ResourceLookup()
         {
-            typeToPrefabLookup[type] = prefab;
-            defaultModelTypes.Add(type);
-        }
+            AssetBundlePath = assetBundlePath,
+            AssetBundlePrefabName = prefabName
+        };
+        defaultModelTypes.Add(type);
     }
 
     private static void LoadDefaultModelFromResources(string resourcePath, string prefabName, ModelType type)
     {
-        GameObject prefab = Resources.Load<GameObject>(resourcePath);
-        if (prefab != null)
+        typeToPrefabLookup[type] = new ResourceLookup()
         {
-            typeToPrefabLookup[type] = prefab;
-            defaultModelTypes.Add(type);
-        }
+            ResourcePath = resourcePath
+        };
+        defaultModelTypes.Add(type);
     }
 
     private static void Initialize()
@@ -149,7 +281,8 @@ public static class ConsumableItemManager
                     continue;
                 }
                 
-                string path = ("Prefabs/Items/" + data.prefabId).ToLowerInvariant();
+                // TODO: Copy old type over to new prefab when its instantiated!
+                string path = "Prefabs/Items/" + data.prefabId;
                 GameObject item = ResourceBank.Get<GameObject>(path);
                 if (item == null || !item.TryGetComponent(out ConsumableItem prefabConsumableItem))
                 {
@@ -157,29 +290,11 @@ public static class ConsumableItemManager
                     continue;
                 }
 
-                ConsumableItem clone = CloneAndSetupPrefab(data, defaultItemModel, prefabConsumableItem.GetType(), defaultItemModelType);
-
-                bool replaced = false;
-                for (int i = 0; i < ResourceBank.instance.resources.Count; i++)
-                {
-                    ResourceBank.Resource resource = ResourceBank.instance.resources[i];
-                    if (resource.path.ToLowerInvariant() == path)
-                    {
-                        resource.asset = clone.gameObject;
-                        replaced = true;
-                        break;
-                    }
-                }
-                if (!replaced)
-                {
-                    MoveComponent(prefabConsumableItem, clone);
-                    
-                    ResourceBank.instance.resources.Add(new ResourceBank.Resource()
-                    {
-                        path = path,
-                        asset = clone.gameObject
-                    });
-                }
+                // TODO: Specify values to copy over to new prefab.
+                data.SetComponentType(data.GetType());
+                
+                prefabIDToResourceLookup[path.ToLowerInvariant()] = defaultItemModel;
+                InscryptionAPIPlugin.Logger.LogError("[Initializing vanilla] path " + path);
             }
         }
     }
@@ -187,7 +302,7 @@ public static class ConsumableItemManager
     private static void InitializeConsumableItemDataPrefab(ConsumableItemData item)
     {
         ModelType modelType = item.GetPrefabModelType();
-        if (!typeToPrefabLookup.TryGetValue(modelType, out GameObject prefab))
+        if (!typeToPrefabLookup.TryGetValue(modelType, out ResourceLookup prefab))
         {
             // No model assigned. use default model!
             prefab = defaultItemModel;
@@ -200,12 +315,8 @@ public static class ConsumableItemManager
             InscryptionAPIPlugin.Logger.LogError($"Prefab missing for ConsumableItemData {item.rulebookName}! Using default instead.");
         }
 
-        GameObject gameObject = CloneAndSetupPrefab(item, prefab, item.GetComponentType(), modelType).gameObject;
-        ResourceBank.instance.resources.Add(new ResourceBank.Resource()
-        {
-            path = "Prefabs/Items/" + item.prefabId,
-            asset = gameObject
-        });
+        string prefabId = "Prefabs/Items/" + item.prefabId;
+        prefabIDToResourceLookup[prefabId.ToLowerInvariant()] = prefab;
     }
 
     private static bool CanUseBaseModel(ConsumableItemData data)
@@ -226,17 +337,16 @@ public static class ConsumableItemManager
         }
     }
 
-    private static ConsumableItem CloneAndSetupPrefab(ConsumableItemData data, GameObject prefab, Type itemType, ModelType modelType)
+    private static ConsumableItem SetupPrefab(ConsumableItemData data, GameObject prefab, Type itemType, ModelType modelType)
     {
-        GameObject clone = UnityObject.Instantiate(prefab);
-        clone.name = $"Custom Item ({data.rulebookName})";
+        prefab.name = $"Custom Item ({data.rulebookName})";
         
         // Populate icon. Only for default fallback types - If anyone wants to use this then they can add to that fallback type list i guss??
         if (defaultModelTypes.Contains(modelType) && modelType != ModelType.CardInABottle)
         {
             if (data.rulebookSprite != null)
             {
-                GameObject icon = clone.gameObject.FindChild("Icon");
+                GameObject icon = prefab.gameObject.FindChild("Icon");
                 if (icon != null)
                 {
                     Renderer iconRenderer = icon.GetComponent<Renderer>();
@@ -261,10 +371,10 @@ public static class ConsumableItemManager
         }
 
         // Add default animation if it doesn't have one
-        Animator animator = clone.GetComponentInChildren<Animator>();
+        Animator animator = prefab.GetComponentInChildren<Animator>();
         if (animator == null)
         {
-            Transform child = clone.transform.GetChild(0);
+            Transform child = prefab.transform.GetChild(0);
             if (child != null)
             {
                 animator = child.gameObject.AddComponent<Animator>();
@@ -281,10 +391,10 @@ public static class ConsumableItemManager
         }
 
         // Add component if it doesn't exist
-        ConsumableItem consumableItem = clone.GetComponent<ConsumableItem>();
+        ConsumableItem consumableItem = prefab.GetComponent<ConsumableItem>();
         if (consumableItem == null)
         {
-            consumableItem = clone.AddComponent(itemType) as ConsumableItem;
+            consumableItem = prefab.AddComponent(itemType) as ConsumableItem;
             if (consumableItem == null)
             {
                 InscryptionAPIPlugin.Logger.LogError($"Type given is not a ConsumableItem! You may encounter unexpected bugs");
@@ -292,18 +402,15 @@ public static class ConsumableItemManager
         }
 
         // Mark as dont destroy on load so it doesn't get removed between levels
-        UnityObject.DontDestroyOnLoad(clone);
+        UnityObject.DontDestroyOnLoad(prefab);
 
         return consumableItem;
     }
 
-    public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, GameObject prefab)
+    public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, ResourceLookup resource)
     {
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, rulebookName);
-        typeToPrefabLookup[type] = prefab;
-
-        // Mark as dont destroy on load so it doesn't get removed between levels
-        UnityObject.DontDestroyOnLoad(prefab);
+        typeToPrefabLookup[type] = resource;
         
         return type;
     }
@@ -315,7 +422,25 @@ public static class ConsumableItemManager
         Type itemType,
         GameObject prefab)
     {
-        ModelType registerPrefab = RegisterPrefab(pluginGUID, rulebookName, prefab);
+        ModelType modelType = RegisterPrefab(pluginGUID, rulebookName, new ResourceLookup()
+        {
+            Prefab = prefab
+        });
+        
+        GameObject.DontDestroyOnLoad(prefab);
+        prefab.SetActive(false);
+        
+        return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, modelType);
+    }
+
+    public static ConsumableItemData New(string pluginGUID,
+        string rulebookName, 
+        string rulebookDescription, 
+        Texture2D rulebookSprite,
+        Type itemType,
+        ResourceLookup resource)
+    {
+        ModelType registerPrefab = RegisterPrefab(pluginGUID, rulebookName, resource);
         return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, registerPrefab);
     }
 
@@ -378,6 +503,7 @@ public static class ConsumableItemManager
         else
         {
             cardinbottleSprite ??= TextureHelper.GetImageAsTexture("rulebookitemicon_cardinbottle.png", Assembly.GetExecutingAssembly()).ConvertTexture();
+            sprite = cardinbottleSprite;
         }
         
         data.SetRulebookSprite(sprite);
