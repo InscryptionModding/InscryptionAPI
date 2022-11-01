@@ -125,6 +125,16 @@ public static class ConsumableItemDataExtensions
         return data;
     }
 
+    /// <summary>
+    /// Sets the item ready to be accessed in Ascension
+    /// </summary>
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemData SetAscensionUnlocked(this ConsumableItemData data)
+    {
+        data.rulebookCategory = AbilityMetaCategory.AscensionUnlocked;
+        return data;
+    }
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     internal static ConsumableItemData SetPrefabModelType(this ConsumableItemData data, ConsumableItemManager.ModelType modelType)
     {
