@@ -28,114 +28,17 @@ public static class ConsumableItemManager
         CardInABottle = 4,
     }
 
-    public class ResourceLookup
-    {
-        public string AssetBundlePath;
-        public string AssetBundlePrefabName;
-        public string ResourcePath;
-        public string ResourceBankID;
-        public GameObject Prefab;
-        
-        public T Get<T>() where T : UnityObject
-        {
-            if (!string.IsNullOrEmpty(AssetBundlePath))
-            {
-                byte[] resourceBytes = TextureHelper.GetResourceBytes(AssetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
-                if (AssetBundleHelper.TryGet(resourceBytes, AssetBundlePrefabName, out T prefab))
-                {
-                    return prefab;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(ResourcePath))
-            {
-                return Resources.Load<T>(ResourcePath);
-            }
-
-            if (!string.IsNullOrEmpty(ResourceBankID))
-            {
-                return ResourceBank.Get<T>(ResourceBankID);
-            }
-
-            if (Prefab != null)
-            {
-                if (Prefab.GetType() == typeof(T))
-                {
-                    return (T)(UnityObject)Prefab;
-                }
-                else if (typeof(T).IsSubclassOf(typeof(Component)))
-                {
-                    return Prefab.GetComponent<T>();
-                }
-                
-                InscryptionAPIPlugin.Logger.LogError("No way to get Type " + typeof(T) + " from prefab " + Prefab.name);
-                return null;
-            }
-
-            InscryptionAPIPlugin.Logger.LogError("ResourceLookup not setup correctly!");
-            return default(T);
-        }
-
-        public override string ToString()
-        {
-            return $"ResourceLookup(AssetBundlePath:{AssetBundlePath}, AssetBundlePrefabName:{AssetBundlePrefabName}, ResourcePath:{ResourcePath})";
-        }
-    }
-    
-#region Patches
+    #region Patches
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
     private class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Awake] Postfix");
             Initialize();
         }
     }
-    
-    /*[HarmonyPatch]
-    private class ResourceBank_Get
-    {
-        public static MethodBase TargetMethod() {
-            // refer to C# reflection documentation:
-            return typeof(ResourceBank).GetMethod("Get").MakeGenericMethod(typeof(GameObject));
-        }
-        
-        public static bool Prefix(ResourceBank __instance, string pathName, ref GameObject __result)
-        {
-            if (prefabIDToResourceLookup.TryGetValue(pathName, out ResourceLookup lookup))
-            {
-                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Overridden " + pathName + " " + lookup);
-                GameObject gameObject = lookup.Get<GameObject>();
-                if (gameObject != null)
-                {
-                    __result = gameObject;
-                    return false;
-                }
-            }
 
-            InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Default " + pathName);
-            return true;
-        }
-        
-        public static void Postfix(string pathName, ref GameObject __result)
-        {
-            if (__result == null)
-            {
-                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Postfix " + pathName + " null");
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogInfo("[ResourceBank_Get] Postfix " + pathName + " " + __result);
-            }
-        }
-    }*/
-    
     [HarmonyPatch(typeof(ItemsUtil), "AllConsumables", MethodType.Getter)]
     private class ItemsUtil_AllConsumables
     {
@@ -160,13 +63,24 @@ public static class ConsumableItemManager
             if (prefabIDToResourceLookup.TryGetValue(prefabId.ToLowerInvariant(), out ResourceLookup resource) && data is ConsumableItemData consumableItemData)
             {
                 original = resource.Get<GameObject>();
+                if (original == null)
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Failed to get {consumableItemData.rulebookName} model from ResourceLookup " + resource);
+                }
+                
+                if (resource.PreSetupCallback != null)
+                {
+                    resource.PreSetupCallback(original);
+                }
                 SetupPrefab(consumableItemData, original, consumableItemData.GetComponentType(), consumableItemData.GetPrefabModelType());
-                InscryptionAPIPlugin.Logger.LogError("[ItemSlot_CreateItem] overriden " + consumableItemData.rulebookName);
             }
             else
             {
                 original = ResourceBank.Get<GameObject>(prefabId);
-                InscryptionAPIPlugin.Logger.LogError("[ItemSlot_CreateItem] Vanilla " + prefabId);
+                if (original == null)
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Failed to get {data.name} model from ResourceBank " + prefabId);
+                }
             }
             
             GameObject gameObject = UnityObject.Instantiate<GameObject>(original, __instance.transform);
@@ -281,20 +195,28 @@ public static class ConsumableItemManager
                     continue;
                 }
                 
-                // TODO: Copy old type over to new prefab when its instantiated!
                 string path = "Prefabs/Items/" + data.prefabId;
-                GameObject item = ResourceBank.Get<GameObject>(path);
-                if (item == null || !item.TryGetComponent(out ConsumableItem prefabConsumableItem))
+                GameObject prefab = ResourceBank.Get<GameObject>(path);
+                if (prefab == null)
                 {
                     InscryptionAPIPlugin.Logger.LogInfo($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
                     continue;
                 }
 
-                // TODO: Specify values to copy over to new prefab.
-                data.SetComponentType(data.GetType());
+                data.SetComponentType(prefab.GetComponent<ConsumableItem>().GetType());
+                data.SetPrefabModelType(defaultItemModelType);
+
+                ResourceLookup resource = (ResourceLookup)defaultItemModel.Clone();
+                resource.PreSetupCallback = (clone) =>
+                {
+                    GameObject defaultObject = ResourceBank.Get<GameObject>(path);
+                    
+                    ConsumableItem sourceComp = defaultObject.GetComponent<ConsumableItem>();
+                    ConsumableItem targetComp = ((GameObject)clone).AddComponent<ConsumableItem>();
+                    MoveComponent(sourceComp, targetComp);
+                };
                 
                 prefabIDToResourceLookup[path.ToLowerInvariant()] = defaultItemModel;
-                InscryptionAPIPlugin.Logger.LogError("[Initializing vanilla] path " + path);
             }
         }
     }
@@ -339,6 +261,7 @@ public static class ConsumableItemManager
 
     private static ConsumableItem SetupPrefab(ConsumableItemData data, GameObject prefab, Type itemType, ModelType modelType)
     {
+        InscryptionAPIPlugin.Logger.LogInfo($"{data}, {prefab}, {itemType}, {modelType}");
         prefab.name = $"Custom Item ({data.rulebookName})";
         
         // Populate icon. Only for default fallback types - If anyone wants to use this then they can add to that fallback type list i guss??
@@ -509,6 +432,7 @@ public static class ConsumableItemManager
         data.SetRulebookSprite(sprite);
         data.SetRegionSpecific(false);
         data.SetNotRandomlyGiven(false);
+        data.SetLearnItemDescription("");
         
         data.SetPrefabModelType(ModelType.CardInABottle);
         data.SetComponentType(typeof(CardBottleItem));
