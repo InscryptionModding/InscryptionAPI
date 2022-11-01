@@ -22,6 +22,8 @@
         <EmbeddedResource Include="customhoveringitem" />
         <None Remove="runeroundedbottom" />
         <EmbeddedResource Include="runeroundedbottom" />
+        <None Remove="rulebookitemicon_cardinbottle.png" />
+        <EmbeddedResource Include="rulebookitemicon_cardinbottle.png" />
     </ItemGroup>
 
     <ItemGroup>

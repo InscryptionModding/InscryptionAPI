@@ -2,6 +2,7 @@
 using System.Reflection;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
@@ -22,9 +23,10 @@ public static class ConsumableItemManager
     
     public enum ModelType
     {
-        Basic = 1,
-        BasicVeins = 2,
-        Hover = 3
+        BasicRune = 1,
+        BasicRuneWithVeins = 2,
+        HoveringRune = 3,
+        CardInABottle = 4,
     }
     
 #region Patches
@@ -48,20 +50,37 @@ public static class ConsumableItemManager
         }
     }
     
-    /*[HarmonyPatch(typeof(ConsumableItemSlot), "CreateItem", new Type[]{typeof(ItemData), typeof(bool)})]
-    private class ConsumableItemSlot_CreateItem
+    [HarmonyPatch(typeof(ItemSlot), "CreateItem", new Type[]{typeof(ItemData), typeof(bool)})]
+    private class ItemSlot_CreateItem
     {
-        public static bool Prefix(ItemData data, bool skipDropAnimation)
+        public static void Postfix(ItemSlot __instance, ItemData data, bool skipDropAnimation)
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[ConsumableItemSlot_CreateItem] " + data.prefabId);
-            return true;
+            if (__instance.Item is CardBottleItem cardBottleItem && data is ConsumableItemData consumableItemData)
+            {
+                string cardWithinBottle = consumableItemData.GetCardWithinBottle();
+                if (!string.IsNullOrEmpty(cardWithinBottle))
+                {
+                    CardInfo cardInfo = CardLoader.GetCardByName(cardWithinBottle);
+                    if (cardInfo != null)
+                    {
+                        cardBottleItem.cardInfo = cardInfo;
+                        cardBottleItem.GetComponentInChildren<SelectableCard>().SetInfo(cardInfo);
+                        cardBottleItem.gameObject.GetComponent<AssignCardOnStart>().enabled = false;
+                    }
+                    else
+                    {
+                        InscryptionAPIPlugin.Logger.LogError("Could not get card for bottled card item: " + cardWithinBottle);
+                    }
+                }
+            }
         }
-    }*/
+    }
     
 #endregion
-    
+
+    private static Sprite cardinbottleSprite;
     private static GameObject defaultItemModel = null;
-    private static ModelType defaultItemModelType = ModelType.BasicVeins;
+    private static ModelType defaultItemModelType = ModelType.BasicRuneWithVeins;
     private static Dictionary<ModelType, GameObject> typeToPrefabLookup = new();
     private static HashSet<ModelType> defaultModelTypes = new();
     private static List<ConsumableItemData> allNewItems = new();
@@ -70,15 +89,26 @@ public static class ConsumableItemManager
 
     private static void InitializeDefaultModels()
     {
-        LoadDefaultModel("runeroundedbottom", "RuneRoundedBottom", ModelType.Basic);
-        LoadDefaultModel("customitem", "RuneRoundedBottomVeins", ModelType.BasicVeins);
-        LoadDefaultModel("customhoveringitem", "RuneHoveringItem", ModelType.Hover);
+        LoadDefaultModelFromBundle("runeroundedbottom", "RuneRoundedBottom", ModelType.BasicRune);
+        LoadDefaultModelFromBundle("customitem", "RuneRoundedBottomVeins", ModelType.BasicRuneWithVeins);
+        LoadDefaultModelFromBundle("customhoveringitem", "RuneHoveringItem", ModelType.HoveringRune);
+        LoadDefaultModelFromResources("prefabs/items/FrozenOpossumBottleItem", "RuneHoveringItem", ModelType.CardInABottle);
     }
 
-    private static void LoadDefaultModel(string assetBundlePath, string prefabName, ModelType type)
+    private static void LoadDefaultModelFromBundle(string assetBundlePath, string prefabName, ModelType type)
     {
         byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
         if (AssetBundleHelper.TryGet(resourceBytes, prefabName, out GameObject prefab))
+        {
+            typeToPrefabLookup[type] = prefab;
+            defaultModelTypes.Add(type);
+        }
+    }
+
+    private static void LoadDefaultModelFromResources(string resourcePath, string prefabName, ModelType type)
+    {
+        GameObject prefab = Resources.Load<GameObject>(resourcePath);
+        if (prefab != null)
         {
             typeToPrefabLookup[type] = prefab;
             defaultModelTypes.Add(type);
@@ -202,7 +232,7 @@ public static class ConsumableItemManager
         clone.name = $"Custom Item ({data.rulebookName})";
         
         // Populate icon. Only for default fallback types - If anyone wants to use this then they can add to that fallback type list i guss??
-        if (defaultModelTypes.Contains(modelType))
+        if (defaultModelTypes.Contains(modelType) && modelType != ModelType.CardInABottle)
         {
             if (data.rulebookSprite != null)
             {
@@ -308,6 +338,36 @@ public static class ConsumableItemManager
         data.SetExamineSoundId("stone_object_hit");
         data.SetComponentType(itemType);
         data.SetPowerLevel(1);
+        
+        return Add(pluginGUID, data);
+    }
+
+    public static ConsumableItemData NewCardInABottle(string pluginGUID, string cardName, Texture2D rulebookTexture=null)
+    {
+        ConsumableItemData data = ScriptableObject.Instantiate(Resources.Load<ConsumableItemData>("data/consumables/FrozenOpossumBottle"));
+
+        CardInfo cardInfo = CardLoader.GetCardByName(cardName);
+        if (cardInfo == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("Could not get card using name: " + cardName);
+            return null;
+        }
+
+        string rulebookName = $"{cardInfo.displayedName} Bottle";
+        data.SetRulebookName(rulebookName);
+        
+        string rulebookDescription = $"A {cardInfo.displayedName} is created in your hand. [define:{cardInfo.name}]";
+        data.SetRulebookDescription(rulebookDescription);
+
+        cardinbottleSprite ??= TextureHelper.GetImageAsTexture("rulebookitemicon_cardinbottle.png", Assembly.GetExecutingAssembly()).ConvertTexture();
+        var x = rulebookTexture != null ? rulebookTexture.ConvertTexture() : cardinbottleSprite;
+        data.SetRulebookSprite(x);
+        data.SetRegionSpecific(false);
+        data.SetNotRandomlyGiven(false);
+        
+        data.SetPrefabModelType(ModelType.CardInABottle);
+        data.SetComponentType(typeof(CardBottleItem));
+        data.SetCardWithinBottle(cardInfo.name);
         
         return Add(pluginGUID, data);
     }

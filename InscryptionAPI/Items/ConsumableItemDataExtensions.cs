@@ -135,6 +135,22 @@ public static class ConsumableItemDataExtensions
         return data;
     }
 
+    /// <summary>
+    /// Sets the card that is contained within a bottle
+    /// </summary>
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemData SetCardWithinBottle(this ConsumableItemData data, string cardName)
+    {
+        data.SetExtendedProperty("CardWithinBottle", cardName);
+        return data;
+    }
+
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static string GetCardWithinBottle(this ConsumableItemData data)
+    {
+        return data.GetExtendedProperty("CardWithinBottle");
+    }
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     internal static ConsumableItemData SetPrefabModelType(this ConsumableItemData data, ConsumableItemManager.ModelType modelType)
     {
