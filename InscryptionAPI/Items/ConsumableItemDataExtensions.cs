@@ -22,7 +22,7 @@ public static class ConsumableItemDataExtensions
     }
     
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
-    public static ConsumableItemData SetDescription(this ConsumableItemData data, string description)
+    public static ConsumableItemData SetLearnItemDescription(this ConsumableItemData data, string description)
     {
         data.description = description;
         return data;
