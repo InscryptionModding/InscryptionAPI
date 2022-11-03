@@ -8,7 +8,7 @@ namespace InscryptionCommunityPatch.Card;
 // Inserts a null check for opposingSlot.Card after CardGettingAttacked is triggered
 // Tweaks the direct damage logic to subtract from DamageDealtThisPhase if the opposing and attacking are on the same side
 [HarmonyPatch]
-public class SlotAttackSlotPatches
+internal class SlotAttackSlotPatches
 {
     private const string name_GlobalTrigger = "DiskCardGame.GlobalTriggerHandler get_Instance()";
     private const string name_GetCard = "DiskCardGame.PlayableCard get_Card()";
@@ -26,7 +26,7 @@ public class SlotAttackSlotPatches
     }
 
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
 

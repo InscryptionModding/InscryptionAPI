@@ -15,7 +15,7 @@ public class SentryTailOnHitFix
     // Override TailOnHit.OnCardGettingAttacked with fixed version
     [HarmonyPatch(typeof(TailOnHit), nameof(TailOnHit.OnCardGettingAttacked))]
     [HarmonyPrefix]
-    public static bool TailOnHitGettingAttackedPatch(TailOnHit __instance, ref IEnumerator __result)
+    private static bool TailOnHitGettingAttackedPatch(TailOnHit __instance, ref IEnumerator __result)
     {
         __result = NewOnCardGettingAttacked(__instance);
         return false;
@@ -24,7 +24,7 @@ public class SentryTailOnHitFix
     // Fixes visual and gameplay bugs relating to TailOnHit's sequence
     // Firstly prevents TailOnHit from activating multiple times in a single turn (no back-to-back shimmying between Sentries)
     // Also negates a couple visual bugs relating to the cards (both base and tail) reappearing as vengeful spirits to do a quick shake before popping away again
-    private static IEnumerator NewOnCardGettingAttacked(TailOnHit instance)
+    public static IEnumerator NewOnCardGettingAttacked(TailOnHit instance)
     {
         CardSlot slot = instance.Card.Slot;
         CardSlot toLeft = Singleton<BoardManager>.Instance.GetAdjacent(instance.Card.Slot, adjacentOnLeft: true);
