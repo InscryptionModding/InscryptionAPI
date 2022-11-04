@@ -60,12 +60,12 @@ public static class ConsumableItemManager
             
             string prefabId = "Prefabs/Items/" + data.PrefabId;
             GameObject original = null;
-            if (prefabIDToResourceLookup.TryGetValue(prefabId.ToLowerInvariant(), out ResourceLookup resource) && data is ConsumableItemData consumableItemData)
+            if (prefabIDToResourceLookup.TryGetValue(prefabId.ToLowerInvariant(), out ConsumableItemResource resource) && data is ConsumableItemData consumableItemData)
             {
                 original = resource.Get<GameObject>();
                 if (original == null)
                 {
-                    InscryptionAPIPlugin.Logger.LogError($"Failed to get {consumableItemData.rulebookName} model from ResourceLookup " + resource);
+                    InscryptionAPIPlugin.Logger.LogError($"Failed to get {consumableItemData.rulebookName} model from ConsumableItemAssetGetter " + resource);
                 }
                 
                 if (resource.PreSetupCallback != null)
@@ -125,10 +125,10 @@ public static class ConsumableItemManager
 #endregion
 
     private static Sprite cardinbottleSprite;
-    private static ResourceLookup defaultItemModel = null;
-    private static ModelType defaultItemModelType = ModelType.BasicRuneWithVeins;
-    private static Dictionary<string, ResourceLookup> prefabIDToResourceLookup = new();
-    private static Dictionary<ModelType, ResourceLookup> typeToPrefabLookup = new();
+    private static ConsumableItemResource defaultItemModel = null;
+    private static ModelType defaultItemModelType = ModelType.HoveringRune;
+    private static Dictionary<string, ConsumableItemResource> prefabIDToResourceLookup = new();
+    private static Dictionary<ModelType, ConsumableItemResource> typeToPrefabLookup = new();
     private static HashSet<ModelType> defaultModelTypes = new();
     private static List<ConsumableItemData> allNewItems = new();
     private static List<ConsumableItemData> baseConsumableItemsDatas = new();
@@ -139,25 +139,23 @@ public static class ConsumableItemManager
         LoadDefaultModelFromBundle("runeroundedbottom", "RuneRoundedBottom", ModelType.BasicRune);
         LoadDefaultModelFromBundle("customitem", "RuneRoundedBottomVeins", ModelType.BasicRuneWithVeins);
         LoadDefaultModelFromBundle("customhoveringitem", "RuneHoveringItem", ModelType.HoveringRune);
-        LoadDefaultModelFromResources("prefabs/items/FrozenOpossumBottleItem", "RuneHoveringItem", ModelType.CardInABottle);
+        LoadDefaultModelFromResources("prefabs/items/FrozenOpossumBottleItem", ModelType.CardInABottle);
     }
 
     private static void LoadDefaultModelFromBundle(string assetBundlePath, string prefabName, ModelType type)
     {
-        typeToPrefabLookup[type] = new ResourceLookup()
-        {
-            AssetBundlePath = assetBundlePath,
-            AssetBundlePrefabName = prefabName
-        };
+        ConsumableItemResource resource = new ConsumableItemResource();
+        resource.FromAssetBundle(assetBundlePath, prefabName);
+        typeToPrefabLookup[type] = resource;
         defaultModelTypes.Add(type);
     }
 
-    private static void LoadDefaultModelFromResources(string resourcePath, string prefabName, ModelType type)
+    private static void LoadDefaultModelFromResources(string resourcePath, ModelType type)
     {
-        typeToPrefabLookup[type] = new ResourceLookup()
-        {
-            ResourcePath = resourcePath
-        };
+        ConsumableItemResource resource = new ConsumableItemResource();
+        resource.FromResources(resourcePath);
+        
+        typeToPrefabLookup[type] = resource;
         defaultModelTypes.Add(type);
     }
 
@@ -206,7 +204,7 @@ public static class ConsumableItemManager
                 data.SetComponentType(prefab.GetComponent<ConsumableItem>().GetType());
                 data.SetPrefabModelType(defaultItemModelType);
 
-                ResourceLookup resource = (ResourceLookup)defaultItemModel.Clone();
+                ConsumableItemResource resource = (ConsumableItemResource)defaultItemModel.Clone();
                 resource.PreSetupCallback = (clone) =>
                 {
                     GameObject defaultObject = ResourceBank.Get<GameObject>(path);
@@ -224,7 +222,7 @@ public static class ConsumableItemManager
     private static void InitializeConsumableItemDataPrefab(ConsumableItemData item)
     {
         ModelType modelType = item.GetPrefabModelType();
-        if (!typeToPrefabLookup.TryGetValue(modelType, out ResourceLookup prefab))
+        if (!typeToPrefabLookup.TryGetValue(modelType, out ConsumableItemResource prefab))
         {
             // No model assigned. use default model!
             prefab = defaultItemModel;
@@ -330,7 +328,7 @@ public static class ConsumableItemManager
         return consumableItem;
     }
 
-    public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, ResourceLookup resource)
+    public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, ConsumableItemResource resource)
     {
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, rulebookName);
         typeToPrefabLookup[type] = resource;
@@ -345,10 +343,10 @@ public static class ConsumableItemManager
         Type itemType,
         GameObject prefab)
     {
-        ModelType modelType = RegisterPrefab(pluginGUID, rulebookName, new ResourceLookup()
-        {
-            Prefab = prefab
-        });
+        ConsumableItemResource resource = new ConsumableItemResource();
+        resource.FromPrefab(prefab);
+        
+        ModelType modelType = RegisterPrefab(pluginGUID, rulebookName, resource);
         
         GameObject.DontDestroyOnLoad(prefab);
         prefab.SetActive(false);
@@ -361,7 +359,7 @@ public static class ConsumableItemManager
         string rulebookDescription, 
         Texture2D rulebookSprite,
         Type itemType,
-        ResourceLookup resource)
+        ConsumableItemResource resource)
     {
         ModelType registerPrefab = RegisterPrefab(pluginGUID, rulebookName, resource);
         return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, registerPrefab);

@@ -3,23 +3,39 @@ using UnityEngine;
 
 namespace InscryptionAPI.Items;
 
+/// <summary>
+/// Define how an asset should be retrieved so we can fetch it at any time.
+/// </summary>
 public class ResourceLookup : ICloneable
 {
-    public string AssetBundlePath = null;
-    public string AssetBundlePrefabName = null;
-    public string ResourcePath = null;
-    public string ResourceBankID = null;
-    public GameObject Prefab = null;
+    public string AssetBundlePath { get; private set; }
+    public string AssetBundlePrefabName { get; private set; }
+    public string ResourcePath { get; private set; }
+    public string ResourceBankID { get; private set; }
+    public GameObject Prefab { get; private set; }
 
-    public Action<UnityObject> PreSetupCallback = null;
-
-    public object Clone()
+    public void FromAssetBundle(string assetBundlePath, string assetBundlePrefabName)
     {
-        ResourceLookup cardInfo = (ResourceLookup)base.MemberwiseClone();
-        return cardInfo;
+        this.AssetBundlePath = assetBundlePath;
+        this.AssetBundlePrefabName = assetBundlePrefabName;
     }
     
-    public T Get<T>() where T : UnityObject
+    public void FromResources(string resourcePath)
+    {
+        this.ResourcePath = resourcePath;
+    }
+    
+    public void FromResourceBank(string resourceBankID)
+    {
+        this.ResourceBankID = resourceBankID;
+    }
+    
+    public void FromPrefab(GameObject prefab)
+    {
+        this.Prefab = prefab;
+    }
+    
+    public virtual T Get<T>() where T : UnityObject
     {
         if (!string.IsNullOrEmpty(AssetBundlePath))
         {
@@ -66,5 +82,11 @@ public class ResourceLookup : ICloneable
     public override string ToString()
     {
         return $"ResourceLookup(AssetBundlePath:{AssetBundlePath}, AssetBundlePrefabName:{AssetBundlePrefabName}, ResourcePath:{ResourcePath})";
+    }
+
+    public object Clone()
+    {
+        ResourceLookup cardInfo = (ResourceLookup)base.MemberwiseClone();
+        return cardInfo;
     }
 }
