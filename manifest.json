@@ -586,7 +586,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.NodeInfo.html",
-          "hash": "64gUtFU/YtI8Wwfi7ma0fkE9cwCmkMczB6D7z83yfwk="
+          "hash": "+TWTXt1XFi3RtaPyRGLXfc9mpt3p04Gg9zx34y9Dz6s="
         }
       },
       "is_incremental": false,
@@ -598,7 +598,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.NodePosition.html",
-          "hash": "VshzXe8VwEjAqlkBwtzTj0Yxd1S5Xjm032nbIuWuwC4="
+          "hash": "MiifU7VAnT5eg7mDUdZDst06MDnNset2OwZBqUdfztc="
         }
       },
       "is_incremental": false,
@@ -610,7 +610,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.NodeManager.html",
-          "hash": "SjRFcjQwjTDm19+OOIx5y+0dUs9rgvDZcHnb184FG4E="
+          "hash": "3BE/n8eANOV6wFmWvZdzrXqQIZLRR57tuTUcUi3gC9Y="
         }
       },
       "is_incremental": false,
@@ -874,7 +874,91 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "gCS9/tnr4aB75hztviZF1znWnGIBXNsLkumfeE0hKw4="
+          "hash": "34e3QqhYKc30Bq91keYPh2+auylr1O6JLXhBWRPaMFI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.ConsumableItemManager.ModelType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html",
+          "hash": "nge8pz/VIcx2SbSCnJ4OEzQGX8/zMxpsbwLdNNuwwlU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.ConsumableItemManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.ConsumableItemManager.html",
+          "hash": "iMfK/cQ+kCVlhxoBC0TGxNv0fy8CvSR2RhOqloU0n9g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.ConsumableItemResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.ConsumableItemResource.html",
+          "hash": "CoNmWOYt1tHmmXWTVkNR/o4xvkfZe80ZaaKScAgsoNU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html",
+          "hash": "PFzZ75AnapetbxeQS0Mv6wC7dH09rxMy8yJPUUXYDvM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.Extensions.html",
+          "hash": "dJwDfeMng+2DSCmcUZiqkuZCV0+HV7JV56JUeEfSa08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.ResourceLookup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.ResourceLookup.html",
+          "hash": "LwtEKtDXYTmtLjf3HM6o5CewQpJzu3tLt2f0j5mReYE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Items.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Items.html",
+          "hash": "rgY6Bq1J5BTRAu9hBj4EBWIytA69UiUhsFMPdLoPtCk="
         }
       },
       "is_incremental": false,
@@ -1642,7 +1726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "R+/lxMiv0SN82wX5KjpGOXeyrtsEun+ZQr/6uEl5Rqo="
+          "hash": "IUFtH1MVi6PZI071PQFxk6WfSGitKNgCb5Dz37LHLBs="
         }
       },
       "is_incremental": false,
@@ -1678,7 +1762,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "tMecp9yooCSEjizqRx0Vb4Rdq9MphD8uEsrb1XG2NR8="
+          "hash": "zV407k7LtaJTnhniu87KpHdhaRiDn9rApuNwma8CT5k="
         }
       },
       "is_incremental": false,
@@ -1705,7 +1789,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 142,
+          "total_file_count": 149,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

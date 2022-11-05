@@ -5168,6 +5168,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.NodeManager.NodeInfo.guid
   nameWithType: NodeManager.NodeInfo.guid
+- uid: InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID
+  name: ModGUID
+  href: api/InscryptionAPI.Encounters.NodeManager.NodeInfo.html#InscryptionAPI_Encounters_NodeManager_NodeInfo_ModGUID
+  commentId: P:InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID
+  fullName: InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID
+  nameWithType: NodeManager.NodeInfo.ModGUID
+- uid: InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID*
+  name: ModGUID
+  href: api/InscryptionAPI.Encounters.NodeManager.NodeInfo.html#InscryptionAPI_Encounters_NodeManager_NodeInfo_ModGUID_
+  commentId: Overload:InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.NodeManager.NodeInfo.ModGUID
+  nameWithType: NodeManager.NodeInfo.ModGUID
 - uid: InscryptionAPI.Encounters.NodeManager.NodeInfo.nodeDataType
   name: nodeDataType
   href: api/InscryptionAPI.Encounters.NodeManager.NodeInfo.html#InscryptionAPI_Encounters_NodeManager_NodeInfo_nodeDataType
@@ -6294,6 +6307,651 @@ references:
   commentId: E:InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   fullName: InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad
   nameWithType: InscryptionAPIPlugin.ScriptableObjectLoaderLoad
+- uid: InscryptionAPI.Items
+  name: InscryptionAPI.Items
+  href: api/InscryptionAPI.Items.html
+  commentId: N:InscryptionAPI.Items
+  fullName: InscryptionAPI.Items
+  nameWithType: InscryptionAPI.Items
+- uid: InscryptionAPI.Items.ConsumableItemManager
+  name: ConsumableItemManager
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html
+  commentId: T:InscryptionAPI.Items.ConsumableItemManager
+  fullName: InscryptionAPI.Items.ConsumableItemManager
+  nameWithType: ConsumableItemManager
+- uid: InscryptionAPI.Items.ConsumableItemManager.Add(System.String,DiskCardGame.ConsumableItemData)
+  name: Add(String, ConsumableItemData)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_Add_System_String_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.Add(System.String,DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.Add(System.String, DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemManager.Add(String, ConsumableItemData)
+- uid: InscryptionAPI.Items.ConsumableItemManager.Add*
+  name: Add
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_Add_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemManager.Add
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemManager.Add
+  nameWithType: ConsumableItemManager.Add
+- uid: InscryptionAPI.Items.ConsumableItemManager.ModelType
+  name: ConsumableItemManager.ModelType
+  href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html
+  commentId: T:InscryptionAPI.Items.ConsumableItemManager.ModelType
+  fullName: InscryptionAPI.Items.ConsumableItemManager.ModelType
+  nameWithType: ConsumableItemManager.ModelType
+- uid: InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRune
+  name: BasicRune
+  href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html#InscryptionAPI_Items_ConsumableItemManager_ModelType_BasicRune
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRune
+  fullName: InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRune
+  nameWithType: ConsumableItemManager.ModelType.BasicRune
+- uid: InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRuneWithVeins
+  name: BasicRuneWithVeins
+  href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html#InscryptionAPI_Items_ConsumableItemManager_ModelType_BasicRuneWithVeins
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRuneWithVeins
+  fullName: InscryptionAPI.Items.ConsumableItemManager.ModelType.BasicRuneWithVeins
+  nameWithType: ConsumableItemManager.ModelType.BasicRuneWithVeins
+- uid: InscryptionAPI.Items.ConsumableItemManager.ModelType.CardInABottle
+  name: CardInABottle
+  href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html#InscryptionAPI_Items_ConsumableItemManager_ModelType_CardInABottle
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.ModelType.CardInABottle
+  fullName: InscryptionAPI.Items.ConsumableItemManager.ModelType.CardInABottle
+  nameWithType: ConsumableItemManager.ModelType.CardInABottle
+- uid: InscryptionAPI.Items.ConsumableItemManager.ModelType.HoveringRune
+  name: HoveringRune
+  href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html#InscryptionAPI_Items_ConsumableItemManager_ModelType_HoveringRune
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.ModelType.HoveringRune
+  fullName: InscryptionAPI.Items.ConsumableItemManager.ModelType.HoveringRune
+  nameWithType: ConsumableItemManager.ModelType.HoveringRune
+- uid: InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  name: New(String, String, String, Texture2D, Type, ConsumableItemManager.ModelType)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_New_System_String_System_String_System_String_UnityEngine_Texture2D_Type_InscryptionAPI_Items_ConsumableItemManager_ModelType_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.New(System.String, System.String, System.String, UnityEngine.Texture2D, Type, InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  nameWithType: ConsumableItemManager.New(String, String, String, Texture2D, Type, ConsumableItemManager.ModelType)
+- uid: InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,InscryptionAPI.Items.ConsumableItemResource)
+  name: New(String, String, String, Texture2D, Type, ConsumableItemResource)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_New_System_String_System_String_System_String_UnityEngine_Texture2D_Type_InscryptionAPI_Items_ConsumableItemResource_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,InscryptionAPI.Items.ConsumableItemResource)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.New(System.String, System.String, System.String, UnityEngine.Texture2D, Type, InscryptionAPI.Items.ConsumableItemResource)
+  nameWithType: ConsumableItemManager.New(String, String, String, Texture2D, Type, ConsumableItemResource)
+- uid: InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,UnityEngine.GameObject)
+  name: New(String, String, String, Texture2D, Type, GameObject)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_New_System_String_System_String_System_String_UnityEngine_Texture2D_Type_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.New(System.String,System.String,System.String,UnityEngine.Texture2D,Type,UnityEngine.GameObject)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.New(System.String, System.String, System.String, UnityEngine.Texture2D, Type, UnityEngine.GameObject)
+  nameWithType: ConsumableItemManager.New(String, String, String, Texture2D, Type, GameObject)
+- uid: InscryptionAPI.Items.ConsumableItemManager.New*
+  name: New
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_New_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemManager.New
+  nameWithType: ConsumableItemManager.New
+- uid: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String,DiskCardGame.CardInfo,UnityEngine.Texture2D)
+  name: NewCardInABottle(String, CardInfo, Texture2D)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_NewCardInABottle_System_String_DiskCardGame_CardInfo_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String,DiskCardGame.CardInfo,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String, DiskCardGame.CardInfo, UnityEngine.Texture2D)
+  nameWithType: ConsumableItemManager.NewCardInABottle(String, CardInfo, Texture2D)
+- uid: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String,System.String,UnityEngine.Texture2D)
+  name: NewCardInABottle(String, String, Texture2D)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_NewCardInABottle_System_String_System_String_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String,System.String,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle(System.String, System.String, UnityEngine.Texture2D)
+  nameWithType: ConsumableItemManager.NewCardInABottle(String, String, Texture2D)
+- uid: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle*
+  name: NewCardInABottle
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_NewCardInABottle_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemManager.NewCardInABottle
+  nameWithType: ConsumableItemManager.NewCardInABottle
+- uid: InscryptionAPI.Items.ConsumableItemManager.NewConsumableItemDatas
+  name: NewConsumableItemDatas
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_NewConsumableItemDatas
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.NewConsumableItemDatas
+  fullName: InscryptionAPI.Items.ConsumableItemManager.NewConsumableItemDatas
+  nameWithType: ConsumableItemManager.NewConsumableItemDatas
+- uid: InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab(System.String,System.String,InscryptionAPI.Items.ConsumableItemResource)
+  name: RegisterPrefab(String, String, ConsumableItemResource)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_RegisterPrefab_System_String_System_String_InscryptionAPI_Items_ConsumableItemResource_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab(System.String,System.String,InscryptionAPI.Items.ConsumableItemResource)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab(System.String, System.String, InscryptionAPI.Items.ConsumableItemResource)
+  nameWithType: ConsumableItemManager.RegisterPrefab(String, String, ConsumableItemResource)
+- uid: InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab*
+  name: RegisterPrefab
+  href: api/InscryptionAPI.Items.ConsumableItemManager.html#InscryptionAPI_Items_ConsumableItemManager_RegisterPrefab_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab
+  nameWithType: ConsumableItemManager.RegisterPrefab
+- uid: InscryptionAPI.Items.ConsumableItemResource
+  name: ConsumableItemResource
+  href: api/InscryptionAPI.Items.ConsumableItemResource.html
+  commentId: T:InscryptionAPI.Items.ConsumableItemResource
+  fullName: InscryptionAPI.Items.ConsumableItemResource
+  nameWithType: ConsumableItemResource
+- uid: InscryptionAPI.Items.ConsumableItemResource.PreSetupCallback
+  name: PreSetupCallback
+  href: api/InscryptionAPI.Items.ConsumableItemResource.html#InscryptionAPI_Items_ConsumableItemResource_PreSetupCallback
+  commentId: F:InscryptionAPI.Items.ConsumableItemResource.PreSetupCallback
+  fullName: InscryptionAPI.Items.ConsumableItemResource.PreSetupCallback
+  nameWithType: ConsumableItemResource.PreSetupCallback
+- uid: InscryptionAPI.Items.Extensions
+  name: InscryptionAPI.Items.Extensions
+  href: api/InscryptionAPI.Items.Extensions.html
+  commentId: N:InscryptionAPI.Items.Extensions
+  fullName: InscryptionAPI.Items.Extensions
+  nameWithType: InscryptionAPI.Items.Extensions
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
+  name: ConsumableItemDataExtensions
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html
+  commentId: T:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
+  nameWithType: ConsumableItemDataExtensions
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle(DiskCardGame.ConsumableItemData)
+  name: GetCardWithinBottle(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetCardWithinBottle_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.GetCardWithinBottle(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle*
+  name: GetCardWithinBottle
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetCardWithinBottle_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle
+  nameWithType: ConsumableItemDataExtensions.GetCardWithinBottle
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType(DiskCardGame.ConsumableItemData)
+  name: GetComponentType(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetComponentType_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.GetComponentType(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType*
+  name: GetComponentType
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetComponentType_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetComponentType
+  nameWithType: ConsumableItemDataExtensions.GetComponentType
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty(DiskCardGame.ConsumableItemData,System.String)
+  name: GetExtendedProperty(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedProperty_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.GetExtendedProperty(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty*
+  name: GetExtendedProperty
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedProperty
+  nameWithType: ConsumableItemDataExtensions.GetExtendedProperty
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool(DiskCardGame.ConsumableItemData,System.String)
+  name: GetExtendedPropertyAsBool(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsBool_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsBool(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool*
+  name: GetExtendedPropertyAsBool
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsBool_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsBool
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsBool
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat(DiskCardGame.ConsumableItemData,System.String)
+  name: GetExtendedPropertyAsFloat(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsFloat_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsFloat(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat*
+  name: GetExtendedPropertyAsFloat
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsFloat_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsFloat
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsFloat
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt(DiskCardGame.ConsumableItemData,System.String)
+  name: GetExtendedPropertyAsInt(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsInt_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsInt(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt*
+  name: GetExtendedPropertyAsInt
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetExtendedPropertyAsInt_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt
+  nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsInt
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix(DiskCardGame.ConsumableItemData)
+  name: GetModPrefix(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetModPrefix_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.GetModPrefix(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix*
+  name: GetModPrefix
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetModPrefix_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix
+  nameWithType: ConsumableItemDataExtensions.GetModPrefix
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType(DiskCardGame.ConsumableItemData)
+  name: GetPrefabModelType(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetPrefabModelType_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.GetPrefabModelType(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType*
+  name: GetPrefabModelType
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetPrefabModelType_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetPrefabModelType
+  nameWithType: ConsumableItemDataExtensions.GetPrefabModelType
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1(DiskCardGame.ConsumableItemData)
+  name: SetAct1(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAct1_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.SetAct1(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1*
+  name: SetAct1
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAct1_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct1
+  nameWithType: ConsumableItemDataExtensions.SetAct1
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3(DiskCardGame.ConsumableItemData)
+  name: SetAct3(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAct3_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.SetAct3(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3*
+  name: SetAct3
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAct3_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAct3
+  nameWithType: ConsumableItemDataExtensions.SetAct3
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked(DiskCardGame.ConsumableItemData)
+  name: SetAscensionUnlocked(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAscensionUnlocked_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.SetAscensionUnlocked(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked*
+  name: SetAscensionUnlocked
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetAscensionUnlocked_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked
+  nameWithType: ConsumableItemDataExtensions.SetAscensionUnlocked
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle(DiskCardGame.ConsumableItemData,System.String)
+  name: SetCardWithinBottle(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetCardWithinBottle_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetCardWithinBottle(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle*
+  name: SetCardWithinBottle
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetCardWithinBottle_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle
+  nameWithType: ConsumableItemDataExtensions.SetCardWithinBottle
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType(DiskCardGame.ConsumableItemData,Type)
+  name: SetComponentType(ConsumableItemData, Type)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetComponentType_DiskCardGame_ConsumableItemData_Type_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType(DiskCardGame.ConsumableItemData,Type)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType(DiskCardGame.ConsumableItemData, Type)
+  nameWithType: ConsumableItemDataExtensions.SetComponentType(ConsumableItemData, Type)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType*
+  name: SetComponentType
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetComponentType_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetComponentType
+  nameWithType: ConsumableItemDataExtensions.SetComponentType
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId(DiskCardGame.ConsumableItemData,System.String)
+  name: SetExamineSoundId(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetExamineSoundId_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetExamineSoundId(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId*
+  name: SetExamineSoundId
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetExamineSoundId_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExamineSoundId
+  nameWithType: ConsumableItemDataExtensions.SetExamineSoundId
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty(DiskCardGame.ConsumableItemData,System.String,System.Object)
+  name: SetExtendedProperty(ConsumableItemData, String, Object)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetExtendedProperty_DiskCardGame_ConsumableItemData_System_String_System_Object_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty(DiskCardGame.ConsumableItemData,System.String,System.Object)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty(DiskCardGame.ConsumableItemData, System.String, System.Object)
+  nameWithType: ConsumableItemDataExtensions.SetExtendedProperty(ConsumableItemData, String, Object)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty*
+  name: SetExtendedProperty
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetExtendedProperty
+  nameWithType: ConsumableItemDataExtensions.SetExtendedProperty
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription(DiskCardGame.ConsumableItemData,System.String)
+  name: SetLearnItemDescription(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetLearnItemDescription_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetLearnItemDescription(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription*
+  name: SetLearnItemDescription
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetLearnItemDescription_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetLearnItemDescription
+  nameWithType: ConsumableItemDataExtensions.SetLearnItemDescription
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven(DiskCardGame.ConsumableItemData,System.Boolean)
+  name: SetNotRandomlyGiven(ConsumableItemData, Boolean)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetNotRandomlyGiven_DiskCardGame_ConsumableItemData_System_Boolean_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven(DiskCardGame.ConsumableItemData,System.Boolean)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven(DiskCardGame.ConsumableItemData, System.Boolean)
+  nameWithType: ConsumableItemDataExtensions.SetNotRandomlyGiven(ConsumableItemData, Boolean)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven*
+  name: SetNotRandomlyGiven
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetNotRandomlyGiven_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetNotRandomlyGiven
+  nameWithType: ConsumableItemDataExtensions.SetNotRandomlyGiven
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId(DiskCardGame.ConsumableItemData,System.String)
+  name: SetPickupSoundId(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPickupSoundId_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetPickupSoundId(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId*
+  name: SetPickupSoundId
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPickupSoundId_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPickupSoundId
+  nameWithType: ConsumableItemDataExtensions.SetPickupSoundId
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId(DiskCardGame.ConsumableItemData,System.String)
+  name: SetPlacedSoundId(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPlacedSoundId_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetPlacedSoundId(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId*
+  name: SetPlacedSoundId
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPlacedSoundId_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPlacedSoundId
+  nameWithType: ConsumableItemDataExtensions.SetPlacedSoundId
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel(DiskCardGame.ConsumableItemData,System.Int32)
+  name: SetPowerLevel(ConsumableItemData, Int32)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPowerLevel_DiskCardGame_ConsumableItemData_System_Int32_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel(DiskCardGame.ConsumableItemData,System.Int32)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel(DiskCardGame.ConsumableItemData, System.Int32)
+  nameWithType: ConsumableItemDataExtensions.SetPowerLevel(ConsumableItemData, Int32)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel*
+  name: SetPowerLevel
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPowerLevel_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPowerLevel
+  nameWithType: ConsumableItemDataExtensions.SetPowerLevel
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID(DiskCardGame.ConsumableItemData,System.String)
+  name: SetPrefabID(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPrefabID_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetPrefabID(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID*
+  name: SetPrefabID
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPrefabID_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID
+  nameWithType: ConsumableItemDataExtensions.SetPrefabID
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific(DiskCardGame.ConsumableItemData,System.Boolean)
+  name: SetRegionSpecific(ConsumableItemData, Boolean)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRegionSpecific_DiskCardGame_ConsumableItemData_System_Boolean_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific(DiskCardGame.ConsumableItemData,System.Boolean)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific(DiskCardGame.ConsumableItemData, System.Boolean)
+  nameWithType: ConsumableItemDataExtensions.SetRegionSpecific(ConsumableItemData, Boolean)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific*
+  name: SetRegionSpecific
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRegionSpecific_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific
+  nameWithType: ConsumableItemDataExtensions.SetRegionSpecific
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory)
+  name: SetRulebookCategory(ConsumableItemData, AbilityMetaCategory)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookCategory_DiskCardGame_ConsumableItemData_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory(DiskCardGame.ConsumableItemData, DiskCardGame.AbilityMetaCategory)
+  nameWithType: ConsumableItemDataExtensions.SetRulebookCategory(ConsumableItemData, AbilityMetaCategory)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory*
+  name: SetRulebookCategory
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookCategory_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookCategory
+  nameWithType: ConsumableItemDataExtensions.SetRulebookCategory
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription(DiskCardGame.ConsumableItemData,System.String)
+  name: SetRulebookDescription(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookDescription_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetRulebookDescription(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription*
+  name: SetRulebookDescription
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookDescription_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookDescription
+  nameWithType: ConsumableItemDataExtensions.SetRulebookDescription
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName(DiskCardGame.ConsumableItemData,System.String)
+  name: SetRulebookName(ConsumableItemData, String)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookName_DiskCardGame_ConsumableItemData_System_String_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName(DiskCardGame.ConsumableItemData,System.String)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName(DiskCardGame.ConsumableItemData, System.String)
+  nameWithType: ConsumableItemDataExtensions.SetRulebookName(ConsumableItemData, String)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName*
+  name: SetRulebookName
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookName_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookName
+  nameWithType: ConsumableItemDataExtensions.SetRulebookName
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite(DiskCardGame.ConsumableItemData,UnityEngine.Sprite)
+  name: SetRulebookSprite(ConsumableItemData, Sprite)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookSprite_DiskCardGame_ConsumableItemData_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite(DiskCardGame.ConsumableItemData,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite(DiskCardGame.ConsumableItemData, UnityEngine.Sprite)
+  nameWithType: ConsumableItemDataExtensions.SetRulebookSprite(ConsumableItemData, Sprite)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite*
+  name: SetRulebookSprite
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRulebookSprite_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRulebookSprite
+  nameWithType: ConsumableItemDataExtensions.SetRulebookSprite
+- uid: InscryptionAPI.Items.ResourceLookup
+  name: ResourceLookup
+  href: api/InscryptionAPI.Items.ResourceLookup.html
+  commentId: T:InscryptionAPI.Items.ResourceLookup
+  fullName: InscryptionAPI.Items.ResourceLookup
+  nameWithType: ResourceLookup
+- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
+  name: AssetBundlePath
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePath
+  commentId: P:InscryptionAPI.Items.ResourceLookup.AssetBundlePath
+  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
+  nameWithType: ResourceLookup.AssetBundlePath
+- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePath*
+  name: AssetBundlePath
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePath_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.AssetBundlePath
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
+  nameWithType: ResourceLookup.AssetBundlePath
+- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
+  name: AssetBundlePrefabName
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePrefabName
+  commentId: P:InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
+  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
+  nameWithType: ResourceLookup.AssetBundlePrefabName
+- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName*
+  name: AssetBundlePrefabName
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePrefabName_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
+  nameWithType: ResourceLookup.AssetBundlePrefabName
+- uid: InscryptionAPI.Items.ResourceLookup.Clone
+  name: Clone()
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Clone
+  commentId: M:InscryptionAPI.Items.ResourceLookup.Clone
+  fullName: InscryptionAPI.Items.ResourceLookup.Clone()
+  nameWithType: ResourceLookup.Clone()
+- uid: InscryptionAPI.Items.ResourceLookup.Clone*
+  name: Clone
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Clone_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.Clone
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.Clone
+  nameWithType: ResourceLookup.Clone
+- uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundle(System.String,System.String)
+  name: FromAssetBundle(String, String)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundle_System_String_System_String_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromAssetBundle(System.String,System.String)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundle(System.String, System.String)
+  nameWithType: ResourceLookup.FromAssetBundle(String, String)
+- uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundle*
+  name: FromAssetBundle
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundle_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.FromAssetBundle
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundle
+  nameWithType: ResourceLookup.FromAssetBundle
+- uid: InscryptionAPI.Items.ResourceLookup.FromPrefab(UnityEngine.GameObject)
+  name: FromPrefab(GameObject)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromPrefab_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromPrefab(UnityEngine.GameObject)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromPrefab(UnityEngine.GameObject)
+  nameWithType: ResourceLookup.FromPrefab(GameObject)
+- uid: InscryptionAPI.Items.ResourceLookup.FromPrefab*
+  name: FromPrefab
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromPrefab_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.FromPrefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.FromPrefab
+  nameWithType: ResourceLookup.FromPrefab
+- uid: InscryptionAPI.Items.ResourceLookup.FromResourceBank(System.String)
+  name: FromResourceBank(String)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromResourceBank_System_String_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromResourceBank(System.String)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromResourceBank(System.String)
+  nameWithType: ResourceLookup.FromResourceBank(String)
+- uid: InscryptionAPI.Items.ResourceLookup.FromResourceBank*
+  name: FromResourceBank
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromResourceBank_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.FromResourceBank
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.FromResourceBank
+  nameWithType: ResourceLookup.FromResourceBank
+- uid: InscryptionAPI.Items.ResourceLookup.FromResources(System.String)
+  name: FromResources(String)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromResources_System_String_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromResources(System.String)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromResources(System.String)
+  nameWithType: ResourceLookup.FromResources(String)
+- uid: InscryptionAPI.Items.ResourceLookup.FromResources*
+  name: FromResources
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromResources_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.FromResources
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.FromResources
+  nameWithType: ResourceLookup.FromResources
+- uid: InscryptionAPI.Items.ResourceLookup.Get*
+  name: Get
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Get_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.Get
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.Get
+  nameWithType: ResourceLookup.Get
+- uid: InscryptionAPI.Items.ResourceLookup.Get``1
+  name: Get<T>()
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Get__1
+  commentId: M:InscryptionAPI.Items.ResourceLookup.Get``1
+  name.vb: Get(Of T)()
+  fullName: InscryptionAPI.Items.ResourceLookup.Get<T>()
+  fullName.vb: InscryptionAPI.Items.ResourceLookup.Get(Of T)()
+  nameWithType: ResourceLookup.Get<T>()
+  nameWithType.vb: ResourceLookup.Get(Of T)()
+- uid: InscryptionAPI.Items.ResourceLookup.Prefab
+  name: Prefab
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Prefab
+  commentId: P:InscryptionAPI.Items.ResourceLookup.Prefab
+  fullName: InscryptionAPI.Items.ResourceLookup.Prefab
+  nameWithType: ResourceLookup.Prefab
+- uid: InscryptionAPI.Items.ResourceLookup.Prefab*
+  name: Prefab
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Prefab_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.Prefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.Prefab
+  nameWithType: ResourceLookup.Prefab
+- uid: InscryptionAPI.Items.ResourceLookup.ResourceBankID
+  name: ResourceBankID
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ResourceBankID
+  commentId: P:InscryptionAPI.Items.ResourceLookup.ResourceBankID
+  fullName: InscryptionAPI.Items.ResourceLookup.ResourceBankID
+  nameWithType: ResourceLookup.ResourceBankID
+- uid: InscryptionAPI.Items.ResourceLookup.ResourceBankID*
+  name: ResourceBankID
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ResourceBankID_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.ResourceBankID
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.ResourceBankID
+  nameWithType: ResourceLookup.ResourceBankID
+- uid: InscryptionAPI.Items.ResourceLookup.ResourcePath
+  name: ResourcePath
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ResourcePath
+  commentId: P:InscryptionAPI.Items.ResourceLookup.ResourcePath
+  fullName: InscryptionAPI.Items.ResourceLookup.ResourcePath
+  nameWithType: ResourceLookup.ResourcePath
+- uid: InscryptionAPI.Items.ResourceLookup.ResourcePath*
+  name: ResourcePath
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ResourcePath_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.ResourcePath
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.ResourcePath
+  nameWithType: ResourceLookup.ResourcePath
+- uid: InscryptionAPI.Items.ResourceLookup.ToString
+  name: ToString()
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ToString
+  commentId: M:InscryptionAPI.Items.ResourceLookup.ToString
+  fullName: InscryptionAPI.Items.ResourceLookup.ToString()
+  nameWithType: ResourceLookup.ToString()
+- uid: InscryptionAPI.Items.ResourceLookup.ToString*
+  name: ToString
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_ToString_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.ToString
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.ToString
+  nameWithType: ResourceLookup.ToString
 - uid: InscryptionAPI.Nodes
   name: InscryptionAPI.Nodes
   href: api/InscryptionAPI.Nodes.html

@@ -519,6 +519,54 @@ StarterDeckManager.Add(MyPlugin.Guid, myDeck);
 <p>In general, you are responsible for doing all the hard work of building your screen. However, all the boilerplate content is built for you. You will automatically be given the continue and back buttons, the header (which shows the current challenge level), the footer (which displays changes as the challenge level changes), and the title of your screen. You can also optionally be given a scrollable card selection panel and card information displayer panel if you need them (using the properties shown above).</p>
 <p>Once you&#39;ve written the custom screen class, you need to register it with AscensionScreenManager like so:</p>
 <pre><code class="lang-c#">AscensionScreenManager.RegisterScreen&lt;MyCustomScreen&gt;();
+</code></pre><h3 id="adding-a-custom-tribe-totem-top">Adding a Custom Tribe Totem Top</h3>
+<p>This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
+Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.</p>
+<p>If you want to add your own model for your tribe then you can use the example below.</p>
+<pre><code class="lang-csharp">TotemManager.NewTopPiece(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+</code></pre><p>If you are using a model that you have created then here is an example of how to use asset bundles to include it.</p>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
+{
+    TotemManager.NewTopPiece(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+}
+</code></pre><h3 id="adding-a-custom-consumable-item">Adding a Custom Consumable Item</h3>
+<p>This API supports adding a custom item into the game. </p>
+<p>Specify the class for your item and what happens when its used.</p>
+<pre><code class="lang-csharp">public class CustomConsumableItem : ConsumableItem
+{
+    public override IEnumerator ActivateSequence()
+    {
+        base.PlayExitAnimation();
+        yield return new WaitForSeconds(0.25f);
+        yield return base.StartCoroutine(Singleton&lt;ResourcesManager&gt;.Instance.AddBones(4, null));
+        yield break;
+    }
+
+    public override bool ExtraActivationPrerequisitesMet()
+    {
+        if (!base.ExtraActivationPrerequisitesMet())
+        {
+            return false;
+        }
+
+        // Optional: Stop player from using the item!
+        return true;
+    }
+}
+</code></pre><p>Add the new item to the ConsumableItemManager.</p>
+<p>If you don&#39;t have a custom model you can specify one of the default types from ConsumableItemManager.ModelType.</p>
+<pre><code class="lang-csharp">ConsumableItemManager.ModelType modelType = ConsumableItemManager.ModelType.Basic;
+ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), modelType)
+                .SetDescription(learnText)
+                .SetAct1();
+</code></pre><p>To add a card that has a card ina bottle use this</p>
+<pre><code class="lang-csharp">ConsumableItemManager.NewCardInABottle(PluginGuid, cardInfo.name)
+                    .SetAct1();
+</code></pre><p>If you have a custom model for your item you can specify it in the different constructor</p>
+<pre><code class="lang-csharp">GameObject prefab = ...
+ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
+                .SetDescription(learnText)
+                .SetAct1();
 </code></pre></article>
           </div>
           
