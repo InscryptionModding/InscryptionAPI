@@ -70,7 +70,7 @@ public static class ConsumableItemManager
                 
                 if (resource.PreSetupCallback != null)
                 {
-                    resource.PreSetupCallback(original);
+                    resource.PreSetupCallback(original, consumableItemData);
                 }
                 SetupPrefab(consumableItemData, original, consumableItemData.GetComponentType(), consumableItemData.GetPrefabModelType());
             }
@@ -188,16 +188,16 @@ public static class ConsumableItemManager
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItemsDatas)
             {
-                if (!CanUseBaseModel(data))
-                {
-                    continue;
-                }
-                
                 string path = "Prefabs/Items/" + data.prefabId;
                 GameObject prefab = ResourceBank.Get<GameObject>(path);
                 if (prefab == null)
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
+                    InscryptionAPIPlugin.Logger.LogWarning($"Couldn't override item {data.rulebookName}. Couldn't get prefab from ResourceBank");
+                    continue;
+                }
+                
+                if (!CanUseBaseModel(data, prefab))
+                {
                     continue;
                 }
 
@@ -205,12 +205,13 @@ public static class ConsumableItemManager
                 data.SetPrefabModelType(defaultItemModelType);
 
                 ConsumableItemResource resource = (ConsumableItemResource)defaultItemModel.Clone();
-                resource.PreSetupCallback = (clone) =>
+                resource.PreSetupCallback = static (clone, data) =>
                 {
+                    string path = "Prefabs/Items/" + data.prefabId;
                     GameObject defaultObject = ResourceBank.Get<GameObject>(path);
                     
                     ConsumableItem sourceComp = defaultObject.GetComponent<ConsumableItem>();
-                    ConsumableItem targetComp = ((GameObject)clone).AddComponent<ConsumableItem>();
+                    ConsumableItem targetComp = clone.AddComponent<ConsumableItem>();
                     MoveComponent(sourceComp, targetComp);
                 };
                 
@@ -239,9 +240,9 @@ public static class ConsumableItemManager
         prefabIDToResourceLookup[prefabId.ToLowerInvariant()] = prefab;
     }
 
-    private static bool CanUseBaseModel(ConsumableItemData data)
+    private static bool CanUseBaseModel(ConsumableItemData data, GameObject gameObject)
     {
-        return data.rulebookSprite != null;
+        return data.rulebookSprite != null && gameObject.GetComponent<CardBottleItem>() == null;
     }
     
     private static void MoveComponent(Component sourceComp, Component targetComp) 

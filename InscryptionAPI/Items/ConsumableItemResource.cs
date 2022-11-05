@@ -1,6 +1,9 @@
-﻿namespace InscryptionAPI.Items;
+﻿using DiskCardGame;
+using UnityEngine;
+
+namespace InscryptionAPI.Items;
 
 public class ConsumableItemResource : ResourceLookup
 {
-    public Action<UnityObject> PreSetupCallback = null;
+    public Action<GameObject, ConsumableItemData> PreSetupCallback = null;
 }
