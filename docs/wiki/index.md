@@ -740,6 +740,12 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetAct1();
 ```
 
+To add a card that has a card ina bottle use this
+```csharp
+ConsumableItemManager.NewCardInABottle(PluginGuid, cardInfo.name)
+			        .SetAct1();
+```
+
 If you have a custom model for your item you can specify it in the different constructor
 ```csharp
 GameObject prefab = ...
