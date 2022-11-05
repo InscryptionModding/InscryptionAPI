@@ -124,14 +124,9 @@ public static class EnergyDrone
 
     internal static void TryEnableEnergy(string sceneName)
     {
-        PatchPlugin.Logger.LogDebug($"Checking to see if I need to enable energy for scene {sceneName}");
-
         // We only need to do this in these specific scenes.
         if (!SceneCanHaveEnergyDrone(sceneName))
-        {
-            PatchPlugin.Logger.LogDebug($"The active scene should not have the energy drone");
             return;
-        }
 
         // Check the entire pool of cards for mox and energy
         CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead : 

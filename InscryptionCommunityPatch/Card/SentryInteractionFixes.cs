@@ -12,7 +12,7 @@ public class SentryInteractionFixes
     // Fixes a soft crash that occurs when the enemy totem tries to perform its check OnAssignedToSlot
     [HarmonyPatch(typeof(CardGainAbility), nameof(CardGainAbility.RespondsToOtherCardAssignedToSlot))]
     [HarmonyPrefix]
-    public static bool CardGainAbilityNullCheckPatch(ref PlayableCard otherCard)
+    private static bool CardGainAbilityNullCheckPatch(ref PlayableCard otherCard)
     {
         if (!otherCard.Dead && otherCard.Slot.IsPlayerSlot && Singleton<CardGainAbility>.Instance.RespondsToOtherCardDrawn(otherCard) && !otherCard.HasAbility(Singleton<TotemTriggerReceiver>.Instance.Data.bottom.effectParams.ability))
             return !otherCard.Info.Mods.Exists((CardModificationInfo x) => x.fromEvolve);
@@ -24,7 +24,7 @@ public class SentryInteractionFixes
     // Fixes Sentry: not triggering OnCardGettingAttacked freezing mid-animation
     [HarmonyPatch(typeof(Sentry), nameof(Sentry.FireAtOpposingSlot))]
     [HarmonyPrefix]
-    public static bool FireAtOpposingSlotPatch(Sentry __instance, PlayableCard otherCard, ref IEnumerator __result)
+    private static bool FireAtOpposingSlotPatch(Sentry __instance, PlayableCard otherCard, ref IEnumerator __result)
     {
         __result = NewFireAtOpposingSlot(__instance, otherCard);
         return false;
@@ -34,7 +34,7 @@ public class SentryInteractionFixes
     // Fixes a bug caused by the opposing card dying mid-attack and becoming null
 
     // Fixes Sentry not triggering OnCardGettingAttacked and freezing
-    private static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
+    public static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
     {
         // Copy otherCard so we can change it later
         PlayableCard opposingCard = otherCard;

@@ -1128,6 +1128,54 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Check if the CardInfo has all of the given abilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if cardInfo has all of the given Abilities.</returns>
+    public static bool HasAllAbilities(this CardInfo cardInfo, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (cardInfo.LacksAbility(ability))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has none of the specified Abilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if cardInfo has none of the given Abilities.</returns>
+    public static bool LacksAllAbilities(this CardInfo cardInfo, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (cardInfo.HasAbility(ability))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Check if the CardInfo has any of the specified Abilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if cardInfo has at least one of the given Abilities.</returns>
+    public static bool HasAnyOfAbilities(this CardInfo cardInfo, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (cardInfo.HasAbility(ability))
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Check the CardInfo having a specific SpecialTriggeredAbility.
     ///
     /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
@@ -1150,18 +1198,114 @@ public static class CardExtensions
     {
         return !cardInfo.HasSpecialAbility(ability);
     }
-    
+
+    /// <summary>
+    /// Checks if the CardInfo has all of the specified SpecialTriggeredAbilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
+    /// <returns>true if cardInfo has all of the specified SpecialTriggeredAbilities.</returns>
+    public static bool HasAllSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (cardInfo.LacksSpecialAbility(special))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has none of the specified SpecialTriggeredAbilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilitiess to check for.</param>
+    /// <returns>true if cardInfo has none of the specified SpecialTriggeredAbilities.</returns>
+    public static bool LacksAllSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (cardInfo.HasSpecialAbility(special))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has any of the specified SpecialTriggeredAbilities.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
+    /// <returns>true if cardInfo has at least one of the specified SpecialTriggeredAbilities.</returns>
+    public static bool HasAnyOfSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (cardInfo.HasSpecialAbility(special))
+                return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Check the CardInfo not having a specific Trait.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="trait">The specialTriggeredAbility to check for.</param>
-    /// <returns>true if the card is does not have the specified trait.</returns>
+    /// <param name="trait">The Trait to check for.</param>
+    /// <returns>true if the card is does not have the specified Trait.</returns>
     public static bool LacksTrait(this CardInfo cardInfo, Trait trait)
     {
         return !cardInfo.HasTrait(trait);
     }
-    
+
+    /// <summary>
+    /// Checks if the CardInfo has all of the specified Traits.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if cardInfo has all of the specified Traits.</returns>
+    public static bool HasAllTraits(this CardInfo cardInfo, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (cardInfo.LacksTrait(trait))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has none of the specified Traits.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if cardInfo has none of the specified Traits.</returns>
+    public static bool LacksAllTraits(this CardInfo cardInfo, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (cardInfo.HasTrait(trait))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has any of the specified Traits.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if cardInfo has at least one of the specified Traits.</returns>
+    public static bool HasAnyOfTraits(this CardInfo cardInfo, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (cardInfo.HasTrait(trait))
+                return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Check the CardInfo not being of a specific Tribe.
     /// </summary>
@@ -1203,11 +1347,10 @@ public static class CardExtensions
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>
     /// <param name="otherCard">The other PlayableCard.</param>
-    /// <returns>true if both cards are on the board and both are opponent cards or both are player cards.</returns>
+    /// <returns>true if both cards are on the board and both are on the opponent cards or both are player cards.</returns>
     public static bool OtherCardIsOnSameSide(this PlayableCard playableCard, PlayableCard otherCard)
     {
-        return playableCard.OnBoard && otherCard.OnBoard 
-            && (playableCard.OpponentCard && otherCard.OpponentCard || playableCard.IsPlayerCard() && otherCard.IsPlayerCard());
+        return playableCard.OnBoard && otherCard.OnBoard && playableCard.OpponentCard == otherCard.OpponentCard;
     }
     
     /// <summary>
@@ -1267,7 +1410,61 @@ public static class CardExtensions
     {
         return playableCard.Info.LacksTrait(trait);
     }
-    
+
+    /// <summary>
+    /// Checks if the PlayableCard has all of the specified Traits.
+    ///
+    /// A condensed version of `CardInfo.HasAllTraits`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if playableCard has all of the specified Traits.</returns>
+    public static bool HasAllTraits(this PlayableCard playableCard, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (playableCard.Info.LacksTrait(trait))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has none of the specified Traits.
+    ///
+    /// A condensed version of `CardInfo.LacksAllTraits`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if playableCard has none of the specified Traits.</returns>
+    public static bool LacksAllTraits(this PlayableCard playableCard, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (playableCard.Info.HasTrait(trait))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has any of the specified Traits.
+    ///
+    /// A condensed version of `CardInfo.HasAnyOfTraits`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="traits">The Traits to check for.</param>
+    /// <returns>true if playableCard has at least one of the specified Traits.</returns>
+    public static bool HasAnyOfTraits(this PlayableCard playableCard, params Trait[] traits)
+    {
+        foreach (Trait trait in traits)
+        {
+            if (playableCard.Info.HasTrait(trait))
+                return true;
+        }
+        return false;
+    }
+
     /// <summary>
     /// Checks if the PlayableCard is of a specified Tribe.
     /// </summary>
@@ -1322,9 +1519,63 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Check if the PlayableCard has all of the given abilities.
+    ///
+    /// A condensed version of `CardInfo.HasAllAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if playableCard has all of the given Abilities.</returns>
+    public static bool HasAllAbilities(this PlayableCard playableCard, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (playableCard.Info.LacksAbility(ability))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has none of the specified Abilities.
+    ///
+    /// A condensed version of `CardInfo.LacksAllSpecialAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if playableCard has none of the given Abilities.</returns>
+    public static bool LacksAllAbilities(this PlayableCard playableCard, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (playableCard.Info.HasAbility(ability))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Check if the PlayableCard has any of the specified Abilities.
+    ///
+    /// A condensed version of `CardInfo.HasAnyOfAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="abilities">The Abilities to check for.</param>
+    /// <returns>true if playableCard has at least one of the given Abilities.</returns>
+    public static bool HasAnyOfAbilities(this PlayableCard playableCard, params Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+        {
+            if (playableCard.Info.HasAbility(ability))
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Check the PlayableCard not having a specific SpecialTriggeredAbility.
     ///
-    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// A condensed version of `!playableCard.Info.SpecialAbilities.Contains(ability)`.
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The specialTriggeredAbility to check for</param>
@@ -1346,6 +1597,60 @@ public static class CardExtensions
     {
         return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability)) 
             || playableCard.Info.HasSpecialAbility(ability);
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has all of the specified SpecialTriggeredAbilities.
+    ///
+    /// A condensed version of `CardInfo.HasAllSpecialAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
+    /// <returns>true if playableCard has all of the specified SpecialTriggeredAbilities.</returns>
+    public static bool HasAllSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (playableCard.Info.LacksSpecialAbility(special))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has none of the specified SpecialTriggeredAbilities.
+    ///
+    /// A condensed version of `CardInfo.LacksAllSpecialAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilitiess to check for.</param>
+    /// <returns>true if playableCard has none of the specified SpecialTriggeredAbilities.</returns>
+    public static bool LacksAllSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (playableCard.Info.HasSpecialAbility(special))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Checks if the PlayableCard has any of the specified SpecialTriggeredAbilities.
+    ///
+    /// A condensed version of `CardInfo.HasAnyOfSpecialAbilities`.
+    /// </summary>
+    /// <param name="playableCard">PlayableCard to access</param>
+    /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
+    /// <returns>true if playableCard has at least one of the specified SpecialTriggeredAbilities.</returns>
+    public static bool HasAnyOfSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
+    {
+        foreach (SpecialTriggeredAbility special in specialAbilities)
+        {
+            if (playableCard.Info.HasSpecialAbility(special))
+                return true;
+        }
+        return false;
     }
 
     /// <summary>
