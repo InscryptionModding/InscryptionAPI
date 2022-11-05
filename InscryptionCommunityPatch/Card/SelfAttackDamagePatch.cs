@@ -21,10 +21,10 @@ public class SelfAttackDamagePatch
     private const string name_CombatCurrent = "System.Object <>2__current";
 
     // Get the method MoveNext, which is where the actual code for SlotAttackSlot is located
-    private static IEnumerable<MethodBase> TargetMethods()
+    private static MethodBase TargetMethod()
     {
         MethodBase baseMethod = AccessTools.Method(typeof(CombatPhaseManager), nameof(CombatPhaseManager.DoCombatPhase));
-        yield return AccessTools.EnumeratorMoveNext(baseMethod);
+        return AccessTools.EnumeratorMoveNext(baseMethod);
     }
 
     // We want to add support for negative values of DamageDealtThisPhase so modders can add self damage behaviours more easily
