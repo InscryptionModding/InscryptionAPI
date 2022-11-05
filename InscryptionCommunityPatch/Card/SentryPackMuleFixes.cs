@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 
 // Fixes PackMule breaking the game when killed before instantiating its pack object
 [HarmonyPatch]
-public class SentryPackMuleFixes
+internal class SentryPackMuleFixes
 {
     // Prevents the logic for opening the pack from running if the pack object is null
     [HarmonyPatch(typeof(PackMule), nameof(PackMule.SpawnAndOpenPack))]
