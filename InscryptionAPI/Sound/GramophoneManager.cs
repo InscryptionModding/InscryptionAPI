@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -6,24 +7,42 @@ using UnityEngine.Networking;
 using UnityEngine;
 using HarmonyLib;
 using DiskCardGame;
+using InscryptionAPI.Saves;
+using BepInEx;
+using BepInEx.Logging;
+using System.Xml.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace InscryptionAPI.Sound;
 
 [HarmonyPatch]
-internal class GramophoneManager
+public static class GramophoneManager
 {
-    public static List<AudioClip> NewGramophoneTracks = new List<AudioClip>();
+    private static string APIGuid = InscryptionAPIPlugin.ModGUID;
+    internal static int TrackIndex
+    {
+        get { return ModdedSaveManager.SaveData.GetValueAsInt(APIGuid, "GramophoneIndex");  }
+        set { ModdedSaveManager.SaveData.SetValue(APIGuid, "GramophoneIndex", value);       }
+    }
 
-    public static List<TrackInfo> TracksToAdd = new List<TrackInfo>();
+    internal static List<AudioClip> NewGramophoneTracks = new List<AudioClip>();
+
+    internal static List<TrackInfo> TracksToAdd = new List<TrackInfo>();
+    internal static List<string> AlreadyAddedTracks = new List<string>();
+    private static bool noNewTracks => NewGramophoneTracks.Count == 0;
+    private static bool isLeshyCabin => SceneManager.GetActiveScene().name == "Part1_Cabin";
 
     public class TrackInfo
     {
-        public string TrackName, Guid;
-        public string GuidAndTrackName => Guid + TrackName;
-        public TrackInfo(string trackName, string guid)
+        public string FilePath, Guid;
+        public bool CanSkip;
+        public string AudioClipName => Guid + TrackName;
+        public string TrackName => Path.GetFileName(FilePath);
+        public TrackInfo(string guid, string filePath, bool canSkip = false)
         {
-            TrackName = trackName;
             Guid = guid ?? string.Empty;
+            FilePath = filePath;
+            CanSkip = canSkip;
         }
     }
 
@@ -35,6 +54,11 @@ internal class GramophoneManager
     public static void AddTrack(string guid, string filename)
     {
         string path = SoundManager.GetAudioFile(filename);
+        if (path.IsNullOrWhiteSpace())
+        {
+            ErrorLog($"Couldn't load audio track: File {filename} not found!");
+            return;
+        }
         TrackInfo trackInfo = new TrackInfo(guid, path);
         TracksToAdd.Add(trackInfo);
     }
@@ -43,21 +67,42 @@ internal class GramophoneManager
     [HarmonyPrefix]
     private static void LoadGramophoneTracks()
     {
-        var audioTracks = TracksToAdd.Select(x => SoundManager.LoadAudioClip(x.TrackName, x.Guid)).ToList();
-        NewGramophoneTracks.AddRange(audioTracks);
+        if (TracksToAdd.Count == 0) return;
 
-        // Add to TRACK_IDS
-        foreach(TrackInfo x in TracksToAdd)
+        // Track index patch
+        // AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
+        InfoLog(TrackIndex.ToString());
+
+        List<TrackInfo> newTracks = TracksToAdd
+            .Where(x => !AlreadyAddedTracks.Contains(x.AudioClipName))
+            .ToList();
+
+        if (newTracks.Count == 0) return;
+
+        List<AudioClip> audioTracks = newTracks
+            .Select(x => SoundManager.LoadAudioClip(x))
+            .ToList();
+
+        foreach (AudioClip track in audioTracks)
         {
-            GramophoneInteractable.TRACK_IDS.Add(x.GuidAndTrackName);
-            GramophoneInteractable.TRACK_VOLUMES.Add(1f);
+            if (track == null) continue;
+            if (!NewGramophoneTracks.Contains(track))
+            {
+                NewGramophoneTracks.Add(track);
+                GramophoneInteractable.TRACK_VOLUMES.Add(1f);
+                GramophoneInteractable.TRACK_IDS.Add(track.name);
+
+                AlreadyAddedTracks.Add(track.name);
+            }
         }
     }
 
     [HarmonyPatch(typeof(AudioController), nameof(AudioController.GetLoop))]
     [HarmonyPrefix]
-    static void PatchGetLoop(List<AudioClip> ___Loops)
+    private static void PatchGetLoop(List<AudioClip> ___Loops)
     {
+        if (noNewTracks) return;
+
         foreach (AudioClip track in NewGramophoneTracks)
         {
             if (!___Loops.Contains(track))
@@ -69,8 +114,10 @@ internal class GramophoneManager
 
     [HarmonyPatch(typeof(AudioController), nameof(AudioController.GetLoopClip))]
     [HarmonyPrefix]
-    static void PatchGetLoopClip(List<AudioClip> ___Loops)
+    private static void PatchGetLoopClip(List<AudioClip> ___Loops)
     {
+        if (noNewTracks) return;
+
         foreach (AudioClip track in NewGramophoneTracks)
         {
             if (!___Loops.Contains(track))
@@ -88,22 +135,40 @@ internal class GramophoneManager
         if (index < 0 || index >= GramophoneInteractable.TRACK_IDS.Count)
         {
             AscensionSaveData.Data.gramophoneTrackIndex = 0;
+            TrackIndex = 0;
         }
+
+        // if (noNewTracks) return;
     }
 
     [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.SaveToFile))]
     [HarmonyPrefix]
-    static void PatchSaveToFile_Prefix(ref int __state)
+    private static void PatchSaveToFile_Prefix(ref int __state)
     {
+        if (noNewTracks || !isLeshyCabin) return;
         __state = AscensionSaveData.Data.gramophoneTrackIndex;
+        /*if(__state < 8)
+        {
+            TrackIndex = __state;
+        }*/
+        TrackIndex = __state;
         AscensionSaveData.Data.gramophoneTrackIndex = 0;
     }
 
     [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.SaveToFile))]
     [HarmonyPostfix]
-    static void PatchSaveToFile_Postfix(ref int __state)
+    private static void PatchSaveToFile_Postfix(ref int __state)
     {
+        if (noNewTracks || !isLeshyCabin) return;
         AscensionSaveData.Data.gramophoneTrackIndex = __state;
+    }
+
+    [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.LoadFromFile))]
+    [HarmonyPostfix]
+    private static void PatchLoadFromFile()
+    {
+        AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
+        InfoLog(TrackIndex.ToString());
     }
 
 
@@ -115,6 +180,7 @@ internal class GramophoneManager
 
             if (www.isNetworkError || www.isHttpError)
             {
+                ErrorLog($"Error loading file {Path.GetFileName(path)} as AudioClip!");
                 ErrorLog(www.error);
                 // TODO: Log a proper more descriptive error here.
             }

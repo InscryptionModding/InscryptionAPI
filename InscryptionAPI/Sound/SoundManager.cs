@@ -11,15 +11,15 @@ using UnityEngine.Networking;
 using UnityEngine;
 
 namespace InscryptionAPI.Sound;
-internal static class SoundManager
+public static class SoundManager
 {
     public static Dictionary<string, AudioType> AudioTypes = new Dictionary<string, AudioType>()
     {
-        { "mp3", AudioType.MPEG },
-        { "wav", AudioType.WAV },
-        { "ogg", AudioType.OGGVORBIS },
-        { "aiff", AudioType.AIFF }, // WHO USES AIFF.
-        { "aif", AudioType.AIFF } // I'M UNSURE IF I SHOULD EVEN INCLUDE AIFF. WHO USES AIFF.
+        { ".mp3", AudioType.MPEG },
+        { ".wav", AudioType.WAV },
+        { ".ogg", AudioType.OGGVORBIS },
+        { ".aiff", AudioType.AIFF }, // WHO USES AIFF.
+        { ".aif", AudioType.AIFF } // I'M UNSURE IF I SHOULD EVEN INCLUDE AIFF. WHO USES AIFF.
     };
 
     public static Dictionary<string, AudioClip> AudioClipsCache = new Dictionary<string, AudioClip>();
@@ -61,6 +61,11 @@ internal static class SoundManager
         InfoLog($"Loading file \"{filename}\" as AudioClip. AudioType: {audioType}");
 
         return LoadAudioClip_Sync(path, audioType, guid);
+    }
+
+    public static AudioClip LoadAudioClip(GramophoneManager.TrackInfo trackInfo)
+    {
+        return LoadAudioClip(trackInfo.FilePath, trackInfo.Guid);
     }
 
     private static AudioClip LoadAudioClip_Sync(string path, AudioType audioType, string guid = null)
