@@ -62,6 +62,7 @@ public static class SoundManager
     private static AudioClip LoadAudioClip_Sync(string path, AudioType audioType, string guid = null)
     {
         guid ??= string.Empty;
+        string filename = Path.GetFileName(path);
 
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, audioType))
         {
@@ -70,6 +71,8 @@ public static class SoundManager
 
             if(www.isNetworkError || www.isHttpError)
             {
+                ErrorLog($"Couldn't load file {filename} as AudioClip!");
+                ErrorLog(www.error);
                 return null;
             }
             else
@@ -77,9 +80,9 @@ public static class SoundManager
                 AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
                 if(audioClip != null)
                 {
-                    InfoLog($"Loaded file {Path.GetFileName(path)} as an AudioClip successfully!");
+                    InfoLog($"Loaded file {filename} as an AudioClip successfully!");
                 }
-                audioClip.name = guid + Path.GetFileName(path);
+                audioClip.name = guid + filename;
                 return audioClip;
             }
         }
