@@ -155,26 +155,4 @@ public static class GramophoneManager
     {
         AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
     }
-
-    /*
-    private static IEnumerator GramophoneAudioClip_Async(string guid, string path, AudioType audioType)
-    {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, audioType))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError || www.isHttpError)
-            {
-                ErrorLog($"Error loading file {Path.GetFileName(path)} as AudioClip!");
-                ErrorLog(www.error);
-                // TODO: Log a proper more descriptive error here.
-            }
-            else
-            {
-                AudioClip audioclip = DownloadHandlerAudioClip.GetContent(www);
-                audioclip.name = guid + Path.GetFileName(path);
-                NewGramophoneTracks.Add(audioclip);
-            }
-        }
-    }*/
 }
