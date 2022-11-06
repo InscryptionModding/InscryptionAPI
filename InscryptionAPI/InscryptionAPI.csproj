@@ -16,6 +16,14 @@
         <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
         <None Remove="customtotemtop" />
         <EmbeddedResource Include="customtotemtop" />
+        <None Remove="customitem" />
+        <EmbeddedResource Include="customitem" />
+        <None Remove="customhoveringitem" />
+        <EmbeddedResource Include="customhoveringitem" />
+        <None Remove="runeroundedbottom" />
+        <EmbeddedResource Include="runeroundedbottom" />
+        <None Remove="rulebookitemicon_cardinbottle.png" />
+        <EmbeddedResource Include="rulebookitemicon_cardinbottle.png" />
     </ItemGroup>
 
     <ItemGroup>

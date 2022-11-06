@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Guid;
 using InscryptionAPI.Nodes;
 using UnityEngine;
 
@@ -56,6 +57,7 @@ public static class NodeManager
         public Type sequencerType { get; set; }
         public Type nodeDataType { get; set; }
         public string guid { get; internal set; }
+        public string ModGUID { get; internal set; }
 
         public CustomNodeData BuildNode()
         {
@@ -98,6 +100,7 @@ public static class NodeManager
             nodeDataType = typeof(N),
             guid = typeof(S).FullName
         };
+        info.ModGUID = TypeManager.GetModIdFromCallstack(typeof(S).Assembly);
         AllNodes.Add(info);
         return info;
     }

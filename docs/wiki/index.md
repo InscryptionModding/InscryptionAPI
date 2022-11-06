@@ -679,3 +679,91 @@ Once you've written the custom screen class, you need to register it with Ascens
 ```c#
 AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
+
+
+### Adding a Custom Tribe Totem Top
+
+This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
+Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.
+
+If you want to add your own model for your tribe then you can use the example below.
+
+
+```csharp
+TotemManager.NewTopPiece("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
+```
+
+If you are using a model that you have created then here is an example of how to use asset bundles to include it.
+```csharp
+if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", out GameObject prefab))
+{
+    TotemManager.NewTopPiece("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
+}
+```
+
+### Adding a Custom Consumable Item
+
+This API supports adding a custom item into the game. 
+
+Specify the class for your item and what happens when its used.
+```csharp
+public class CustomConsumableItem : ConsumableItem
+{
+    public override IEnumerator ActivateSequence()
+    {
+        base.PlayExitAnimation();
+        yield return new WaitForSeconds(0.25f);
+        yield return base.StartCoroutine(Singleton<ResourcesManager>.Instance.AddBones(4, null));
+        yield break;
+    }
+
+    public override bool ExtraActivationPrerequisitesMet()
+    {
+        if (!base.ExtraActivationPrerequisitesMet())
+        {
+            return false;
+        }
+
+        // Optional: Stop player from using the item!
+        return true;
+    }
+}
+```
+
+Add the new item to the ConsumableItemManager.
+
+If you don't have a custom model you can specify one of the default types from ConsumableItemManager.ModelType.
+```csharp
+ConsumableItemManager.ModelType modelType = ConsumableItemManager.ModelType.Basic;
+ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", textureOrSprite, typeof(CustomConsumableItem), modelType)
+		        .SetDescription(learnText)
+		        .SetAct1();
+```
+
+To add a card that has a card ina bottle use this
+```csharp
+ConsumableItemManager.NewCardInABottle(PluginGuid, cardInfo.name)
+			        .SetAct1();
+```
+
+If you have a custom model for your item you can specify it in the different constructor
+```csharp
+GameObject prefab = ...
+ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", textureOrSprite, typeof(CustomConsumableItem), prefab)
+		        .SetDescription(learnText)
+		        .SetAct1();
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
