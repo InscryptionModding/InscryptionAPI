@@ -63,6 +63,8 @@ public static class GramophoneManager
     {
         if (TracksToAdd.Count == 0) return;
 
+        InfoLog(TrackIndex.ToString());
+
         List<TrackInfo> newTracks = TracksToAdd
             .Where(x => !AlreadyAddedTracks.Contains(x.AudioClipName))
             .ToList();
@@ -91,7 +93,7 @@ public static class GramophoneManager
     [HarmonyPrefix]
     private static void PatchGetLoop(List<AudioClip> ___Loops)
     {
-        if (noNewTracks) return;
+        if (noNewTracks || !isLeshyCabin) return;
 
         foreach (AudioClip track in NewGramophoneTracks)
         {
@@ -106,7 +108,7 @@ public static class GramophoneManager
     [HarmonyPrefix]
     private static void PatchGetLoopClip(List<AudioClip> ___Loops)
     {
-        if (noNewTracks) return;
+        if (noNewTracks || !isLeshyCabin) return;
 
         foreach (AudioClip track in NewGramophoneTracks)
         {
@@ -133,7 +135,7 @@ public static class GramophoneManager
     [HarmonyPrefix]
     private static void PatchSaveToFile_Prefix(ref int __state)
     {
-        if (noNewTracks || !isLeshyCabin) return;
+        if (noNewTracks) return;
         __state = AscensionSaveData.Data.gramophoneTrackIndex;
         TrackIndex = __state;
         AscensionSaveData.Data.gramophoneTrackIndex = 0;
@@ -143,7 +145,7 @@ public static class GramophoneManager
     [HarmonyPostfix]
     private static void PatchSaveToFile_Postfix(ref int __state)
     {
-        if (noNewTracks || !isLeshyCabin) return;
+        if (noNewTracks) return;
         AscensionSaveData.Data.gramophoneTrackIndex = __state;
     }
 
@@ -154,7 +156,7 @@ public static class GramophoneManager
         AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
     }
 
-
+    /*
     private static IEnumerator GramophoneAudioClip_Async(string guid, string path, AudioType audioType)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, audioType))
@@ -174,5 +176,5 @@ public static class GramophoneManager
                 NewGramophoneTracks.Add(audioclip);
             }
         }
-    }
+    }*/
 }

@@ -15,8 +15,6 @@ public static class SoundManager
         { ".aif", AudioType.AIFF } // I'M UNSURE IF I SHOULD EVEN INCLUDE AIFF. WHO USES AIFF.
     };
 
-    public static Dictionary<string, AudioClip> AudioClipsCache = new Dictionary<string, AudioClip>();
-
     internal static string GetAudioFile(string filename)
     {
         string[] files = Directory.GetFiles(Paths.PluginPath, filename, SearchOption.AllDirectories);
