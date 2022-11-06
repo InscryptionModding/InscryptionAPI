@@ -51,7 +51,7 @@ public static class GramophoneManager
         string path = SoundManager.GetAudioFile(filename);
         if (path.IsNullOrWhiteSpace())
         {
-            ErrorLog($"Couldn't load audio track: File {filename} not found!");
+            ErrorLog($"Couldn't load audio track: File \'{filename}\' not found!");
             return;
         }
         TrackInfo trackInfo = new TrackInfo(guid, path);

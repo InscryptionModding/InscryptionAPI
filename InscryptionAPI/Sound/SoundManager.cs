@@ -72,7 +72,7 @@ public static class SoundManager
 
             if(www.isNetworkError || www.isHttpError)
             {
-                ErrorLog($"Couldn't load file {filename} as AudioClip!");
+                ErrorLog($"Couldn't load file \'{filename}\' as AudioClip!");
                 ErrorLog(www.error);
                 return null;
             }
