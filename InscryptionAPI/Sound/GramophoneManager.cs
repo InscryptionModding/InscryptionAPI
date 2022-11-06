@@ -42,6 +42,7 @@ public static class GramophoneManager
 
     private static void InfoLog(string message) =>
         InscryptionAPIPlugin.Logger.LogInfo($"GramophoneManager: {message}");
+
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"GramophoneManager: {message}");
 
