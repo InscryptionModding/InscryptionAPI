@@ -1,16 +1,10 @@
-using System;
-using System.Linq;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
 using HarmonyLib;
 using DiskCardGame;
 using InscryptionAPI.Saves;
 using BepInEx;
-using BepInEx.Logging;
-using System.Xml.Serialization;
 using UnityEngine.SceneManagement;
 
 namespace InscryptionAPI.Sound;
@@ -68,10 +62,6 @@ public static class GramophoneManager
     private static void LoadGramophoneTracks()
     {
         if (TracksToAdd.Count == 0) return;
-
-        // Track index patch
-        // AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
-        InfoLog(TrackIndex.ToString());
 
         List<TrackInfo> newTracks = TracksToAdd
             .Where(x => !AlreadyAddedTracks.Contains(x.AudioClipName))
@@ -137,8 +127,6 @@ public static class GramophoneManager
             AscensionSaveData.Data.gramophoneTrackIndex = 0;
             TrackIndex = 0;
         }
-
-        // if (noNewTracks) return;
     }
 
     [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.SaveToFile))]
@@ -147,10 +135,6 @@ public static class GramophoneManager
     {
         if (noNewTracks || !isLeshyCabin) return;
         __state = AscensionSaveData.Data.gramophoneTrackIndex;
-        /*if(__state < 8)
-        {
-            TrackIndex = __state;
-        }*/
         TrackIndex = __state;
         AscensionSaveData.Data.gramophoneTrackIndex = 0;
     }
@@ -168,7 +152,6 @@ public static class GramophoneManager
     private static void PatchLoadFromFile()
     {
         AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
-        InfoLog(TrackIndex.ToString());
     }
 
 

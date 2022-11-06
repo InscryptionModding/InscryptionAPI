@@ -1,12 +1,5 @@
 using BepInEx;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Collections;
-using DiskCardGame;
-using HarmonyLib;
 using UnityEngine.Networking;
 using UnityEngine;
 
