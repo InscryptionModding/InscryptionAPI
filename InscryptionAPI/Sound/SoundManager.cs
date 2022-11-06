@@ -31,7 +31,7 @@ public static class SoundManager
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"SoundManager: {message}");
 
-    public static AudioClip LoadAudioClip(string path, string guid = null)
+    public static AudioClip LoadAudioClip(string guid, string path)
     {
         if (!Path.IsPathRooted(path))
         {
@@ -50,9 +50,14 @@ public static class SoundManager
         return LoadAudioClip_Sync(path, audioType, guid);
     }
 
-    public static AudioClip LoadAudioClip(GramophoneManager.TrackInfo trackInfo)
+    public static AudioClip LoadAudioClip(string path)
     {
-        return LoadAudioClip(trackInfo.FilePath, trackInfo.Guid);
+        return LoadAudioClip(string.Empty, path);
+    }
+
+    internal static AudioClip LoadAudioClip(GramophoneManager.TrackInfo trackInfo)
+    {
+        return LoadAudioClip(trackInfo.Guid, trackInfo.FilePath);
     }
 
     private static AudioClip LoadAudioClip_Sync(string path, AudioType audioType, string guid = null)
