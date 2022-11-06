@@ -1,7 +1,6 @@
 using BepInEx;
-using System.Text.RegularExpressions;
-using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace InscryptionAPI.Sound;
 public static class SoundManager
@@ -18,8 +17,7 @@ public static class SoundManager
     internal static string GetAudioFile(string filename)
     {
         string[] files = Directory.GetFiles(Paths.PluginPath, filename, SearchOption.AllDirectories);
-        Regex isValid = new Regex(@".*\.(mp3|wav|ogg)");
-        return files.Where(x => isValid.IsMatch(x)).FirstOrDefault();
+        return files.FirstOrDefault();
     }
 
     internal static AudioType GetAudioType(string filename)
