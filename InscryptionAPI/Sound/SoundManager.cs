@@ -47,8 +47,6 @@ public static class SoundManager
             return null;
         }
 
-        InfoLog($"Loading file \"{filename}\" as AudioClip. AudioType: {audioType}");
-
         return LoadAudioClip_Sync(path, audioType, guid);
     }
 
@@ -78,9 +76,9 @@ public static class SoundManager
                 AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
                 if(audioClip != null)
                 {
-                    InfoLog($"Loaded file {filename} as an AudioClip successfully!");
+                    InfoLog($"Loaded \'{filename}\' as AudioClip. AudioType: {audioType}");
+                    audioClip.name = guid + filename;
                 }
-                audioClip.name = guid + filename;
                 return audioClip;
             }
         }

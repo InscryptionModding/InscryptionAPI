@@ -64,7 +64,7 @@ public static class GramophoneManager
     {
         if (TracksToAdd.Count == 0) return;
 
-        InfoLog(TrackIndex.ToString());
+        //InfoLog(TrackIndex.ToString());
 
         List<TrackInfo> newTracks = TracksToAdd
             .Where(x => !AlreadyAddedTracks.Contains(x.AudioClipName))
