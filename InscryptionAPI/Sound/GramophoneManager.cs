@@ -154,6 +154,7 @@ public static class GramophoneManager
     [HarmonyPostfix]
     private static void PatchLoadFromFile()
     {
+        if (noNewTracks) return;
         AscensionSaveData.Data.gramophoneTrackIndex = TrackIndex;
     }
 }
