@@ -15,41 +15,29 @@ public static class EnergyDrone
         private bool _configEnergyOverride = false;
         public bool ConfigEnergy
         { 
-            get
-            {
-                return EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
-            }
-            set { _configEnergyOverride = value; }
+            get => EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
+            set => _configEnergyOverride = value;
         }
 
         private bool _configDroneOverride = false;
         public bool ConfigDrone
         {
-            get 
-            {
-                return EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
-            }
-            set { _configDroneOverride = value;}
+            get => EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
+            set => _configDroneOverride = value;
         }
 
         private bool _configMoxOverride = false;
         public bool ConfigMox
         { 
-            get
-            {
-                return EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
-            }
-            set { _configMoxOverride = value; }
+            get => EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
+            set => _configMoxOverride = value;
         }
 
         private bool _configDroneMoxOverride = false;
         public bool ConfigDroneMox
         { 
-            get
-            {
-                return EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
-            }
-            set { _configDroneMoxOverride = value; }
+            get => EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
+            set => _configDroneMoxOverride = value;
         }
     }
 
@@ -57,13 +45,9 @@ public static class EnergyDrone
     {
         string activeSceneName = sceneName.ToLowerInvariant();
 
-        if (activeSceneName.Contains("part1"))
-            return true;
-
-        if (activeSceneName.Contains("magnificus"))
-            return true;
-
-        if (activeSceneName.Contains("grimora"))
+        if (activeSceneName.Contains("part1") ||
+            activeSceneName.Contains("magnificus") ||
+            activeSceneName.Contains("grimora"))
             return true;
 
         return false;
@@ -117,9 +101,7 @@ public static class EnergyDrone
 
         // Now we check metacategories
         // If the card's metacategories are set such that it can't actually appear, don't count it
-        return (info.metaCategories.Contains(CardMetaCategory.ChoiceNode) || 
-                info.metaCategories.Contains(CardMetaCategory.TraderOffer) || 
-                info.metaCategories.Contains(CardMetaCategory.Rare));
+        return info.metaCategories.Exists(x => x == CardMetaCategory.ChoiceNode ||x == CardMetaCategory.TraderOffer || x == CardMetaCategory.Rare);
     }
 
     internal static void TryEnableEnergy(string sceneName)
@@ -137,7 +119,7 @@ public static class EnergyDrone
         PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
         PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
-        PatchPlugin.Logger.LogDebug($"Card pool has energy cards {PoolHasEnergy}. Card pool has Gem cards {PoolHasGems}");
+        PatchPlugin.Logger.LogDebug($"Card pool has energy cards ? {PoolHasEnergy}. Card pool has Gem cards ? {PoolHasGems}");
 
         UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
