@@ -11,6 +11,10 @@ using System.Runtime.CompilerServices;
 using BepInEx.Configuration;
 using InscryptionAPI.Items;
 using InscryptionAPI.Totems;
+using BepInEx.Bootstrap;
+using Mono.Cecil;
+using System.Reflection;
+using System.IO;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 [assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
@@ -39,8 +43,30 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
             {
                 if (!_hasShownOldApiWarning)
                 {
-                    Logger.LogWarning("Some plugins installed require an outdated version of the API.\n" +
-                        "An attempt has been made that these still work, but it isn't perfect, so please search for those to disable if you experience any problems.");
+                    // get directory info of plugins folder
+                    DirectoryInfo directoryInfo = new(Paths.PluginPath);
+                    string outdatedPlugins = "";
+
+                    // get all dll files in the directory then get the associated assemblies, minus the API
+                    var enumerateFiles = Directory.EnumerateFiles(Paths.PluginPath, "*.dll");
+                    var assemblyFiles = enumerateFiles.Select(Assembly.ReflectionOnlyLoadFrom).ToList();
+                    assemblyFiles.Remove(typeof(InscryptionAPIPlugin).Assembly);
+
+                    // loop through each assemblies' references and get the ones that reference the old API
+                    foreach (Assembly assembly in assemblyFiles)
+                    {
+                        foreach (var reference in assembly.GetReferencedAssemblies())
+                            if (reference.Name.Equals("API"))
+                            {
+                                outdatedPlugins += $" - {assembly.FullName.Split(',')[0]}\n";
+                            }
+                    }
+
+                    // display warning listing outdated plugins
+                    Logger.LogWarning("The following plugins have been flagged as requiring an outdated version of the API:\n"
+                        + outdatedPlugins
+                        + "\nAn attempt has been made to ensure they still work, but it isn't perfect so please update/disable them if problems arise.");
+
                     _hasShownOldApiWarning = true;
                 }
                 return typeof(InscryptionAPIPlugin).Assembly;
