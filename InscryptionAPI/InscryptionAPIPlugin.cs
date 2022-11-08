@@ -32,43 +32,12 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemTypes;
-    
-    
-    private static bool _hasShownOldApiWarning = false;
 
     static InscryptionAPIPlugin()
     {
         AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
             if (e.Name.StartsWith("API, Version=1"))
             {
-                if (!_hasShownOldApiWarning)
-                {
-                    // get directory info of plugins folder
-                    DirectoryInfo directoryInfo = new(Paths.PluginPath);
-                    string outdatedPlugins = "";
-
-                    // get all dll files in the directory then get the associated assemblies, minus the API
-                    var enumerateFiles = Directory.EnumerateFiles(Paths.PluginPath, "*.dll");
-                    var assemblyFiles = enumerateFiles.Select(Assembly.ReflectionOnlyLoadFrom).ToList();
-                    assemblyFiles.Remove(typeof(InscryptionAPIPlugin).Assembly);
-
-                    // loop through each assemblies' references and get the ones that reference the old API
-                    foreach (Assembly assembly in assemblyFiles)
-                    {
-                        foreach (var reference in assembly.GetReferencedAssemblies())
-                            if (reference.Name.Equals("API"))
-                            {
-                                outdatedPlugins += $" - {assembly.FullName.Split(',')[0]}\n";
-                            }
-                    }
-
-                    // display warning listing outdated plugins
-                    Logger.LogWarning("The following plugins have been flagged as requiring an outdated version of the API:\n"
-                        + outdatedPlugins
-                        + "\nAn attempt has been made to ensure they still work, but it isn't perfect so please update/disable them if problems arise.");
-
-                    _hasShownOldApiWarning = true;
-                }
                 return typeof(InscryptionAPIPlugin).Assembly;
             }
             return null;
@@ -105,6 +74,21 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         RegionManager.SyncRegionList();
     }
 
+    internal static void CheckForOutdatedPlugins()
+    {
+        string outdatedPlugins = "";
+        foreach (var pluginAsm in Chainloader.PluginInfos.Values.Select(p => p.Instance.GetType().Assembly).Distinct())
+        {
+            foreach (var refAsm in pluginAsm.GetReferencedAssemblies())
+                if (refAsm.Name.Equals("API"))
+                    outdatedPlugins += $" - {pluginAsm.GetName().Name}\n";
+        }
+        Logger.LogWarning("The following plugins have been flagged as requiring an outdated version of the API:\n"
+            + outdatedPlugins
+            + "\nAn attempt has been made to ensure they still work, but it isn't perfect so please update/disable them if problems arise.");
+
+    }
+
     private void Awake()
     {
         configCustomTotemTopTypes = Config.Bind("Totems","Top Types",TotemManager.TotemTopState.CustomTribes,"If Vanilla, Don't change totem tops, If CustomTribes, all custom tribes added will use custom totem tops. If AllTribes then all totem tops will use a custom top.");
@@ -113,6 +97,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 
     private void Start()
     {
+        CheckForOutdatedPlugins();
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
