@@ -14,7 +14,7 @@ public static class SoundManager
         { ".aif", AudioType.AIFF } // I'M UNSURE IF I SHOULD EVEN INCLUDE AIFF. WHO USES AIFF.
     };
 
-    internal static string GetAudioFile(string filename)
+    internal static string GetAudioPath(string filename)
     {
         string[] files = Directory.GetFiles(Paths.PluginPath, filename, SearchOption.AllDirectories);
         return files.FirstOrDefault();
@@ -32,11 +32,18 @@ public static class SoundManager
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"SoundManager: {message}");
 
+
+    /// <summary>
+    /// A helper for converting an audio file into an Unity AudioClip.
+    /// </summary>
+    /// <param name="guid">Your plugin's GUID.</param>
+    /// <param name="path">The path to your audio file.</param>
+    /// <returns>The audio file converted into an AudioClip object.</returns>
     public static AudioClip LoadAudioClip(string guid, string path)
     {
         if (!Path.IsPathRooted(path))
         {
-            path = GetAudioFile(path);
+            path = GetAudioPath(path);
         }
 
         string filename = Path.GetFileName(path);
@@ -44,13 +51,18 @@ public static class SoundManager
 
         if (audioType == AudioType.UNKNOWN)
         {
-            ErrorLog($"Couldn't load file {filename ?? "null"} as AudioClip. AudioType is unknown.");
+            ErrorLog($"Couldn't load file {filename ?? "(null)"} as AudioClip. AudioType is unknown.");
             return null;
         }
 
         return LoadAudioClip_Sync(path, audioType, guid);
     }
 
+    /// <summary>
+    /// A helper for converting an audio file into an Unity AudioClip.
+    /// </summary>
+    /// <param name="path">The path to your audio file.</param>
+    /// <returns>The audio file converted into an AudioClip object.</returns>
     public static AudioClip LoadAudioClip(string path)
     {
         return LoadAudioClip(string.Empty, path);
@@ -73,7 +85,7 @@ public static class SoundManager
 
             if(www.isNetworkError || www.isHttpError)
             {
-                ErrorLog($"Couldn't load file \'{filename ?? "null"}\' as AudioClip!");
+                ErrorLog($"Couldn't load file \'{filename ?? "(null)"}\' as AudioClip!");
                 ErrorLog(www.error);
                 return null;
             }

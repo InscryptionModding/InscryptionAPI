@@ -48,15 +48,22 @@ public static class GramophoneManager
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"GramophoneManager: {message}");
 
-    public static void AddTrack(string guid, string filename, float volume = 1f)
+    /// <summary>
+    /// A helper for adding a music track to the Gramophone in Leshy's cabin.
+    /// </summary>
+    /// <param name="guid">Your plugin's GUID.</param>
+    /// <param name="path">The name of the audio file.</param>
+    /// <param name="volume">The volume of your track, from 0 to 1.</param>
+    public static void AddTrack(string guid, string path, float volume = 1f)
     {
-        string path = SoundManager.GetAudioFile(filename);
-        if (path.IsNullOrWhiteSpace())
+        string filePath = Path.IsPathRooted(path) ? path : SoundManager.GetAudioPath(path);
+
+        if (filePath.IsNullOrWhiteSpace())
         {
-            ErrorLog($"Couldn't load audio track: File \'{filename ?? "null"}\' not found!");
+            ErrorLog($"Couldn't load audio track: File \'{filePath ?? "(null)"}\' not found!");
             return;
         }
-        TrackInfo trackInfo = new TrackInfo(guid, path, volume);
+        TrackInfo trackInfo = new TrackInfo(guid, filePath, volume);
         TracksToAdd.Add(trackInfo);
     }
 
