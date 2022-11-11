@@ -83,7 +83,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
                 if (refAsm.Name.Equals("API"))
                     outdatedPlugins += $" - {pluginAsm.GetName().Name}\n";
         }
-        Logger.LogWarning("The following plugins have been flagged as requiring an outdated version of the API:\n"
+        Logger.LogWarning("The following plugins have been flagged as using an outdated version of the API:\n"
             + outdatedPlugins
             + "\nAn attempt has been made to ensure they still work, but it isn't perfect so please update/disable them if problems arise.");
 
