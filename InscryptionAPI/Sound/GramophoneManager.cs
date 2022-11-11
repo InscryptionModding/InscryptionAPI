@@ -38,7 +38,7 @@ public static class GramophoneManager
         {
             Guid = guid ?? string.Empty;
             FilePath = filePath;
-            Volume = volume;
+            Volume = Mathf.Clamp(volume, 0, 1f);
         }
     }
 
