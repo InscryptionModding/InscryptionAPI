@@ -3,7 +3,6 @@ using DiskCardGame;
 using HarmonyLib;
 using System.Reflection;
 using UnityEngine;
-using GBC;
 
 namespace InscryptionCommunityPatch.Card;
 
