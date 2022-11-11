@@ -22,7 +22,6 @@ public static class GramophoneManager
     internal static List<AudioClip> NewGramophoneTracks = new List<AudioClip>();
 
     internal static List<TrackInfo> TracksToAdd = new List<TrackInfo>();
-    internal static Dictionary<string, float> TrackVolumes = new Dictionary<string, float>();
 
     internal static List<string> AlreadyAddedTracks = new List<string>();
     private static bool noNewTracks => NewGramophoneTracks.Count == 0;
@@ -31,14 +30,15 @@ public static class GramophoneManager
     public class TrackInfo
     {
         public string FilePath, Guid;
-        public bool CanSkip; // Unused at the time! 
+        public float Volume;
+        // public bool CanSkip; // Unused at the time! 
         public string AudioClipName => $"{Guid}_{TrackName}";
         public string TrackName => Path.GetFileName(FilePath);
-        public TrackInfo(string guid, string filePath, bool canSkip = false)
+        public TrackInfo(string guid, string filePath, float volume = 1f)
         {
             Guid = guid ?? string.Empty;
             FilePath = filePath;
-            CanSkip = canSkip;
+            Volume = volume;
         }
     }
 
@@ -56,9 +56,8 @@ public static class GramophoneManager
             ErrorLog($"Couldn't load audio track: File \'{filename ?? "null"}\' not found!");
             return;
         }
-        TrackInfo trackInfo = new TrackInfo(guid, path);
+        TrackInfo trackInfo = new TrackInfo(guid, path, volume);
         TracksToAdd.Add(trackInfo);
-        TrackVolumes.Add(trackInfo.AudioClipName, volume);
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
@@ -75,18 +74,15 @@ public static class GramophoneManager
 
         if (newTracks.Count == 0) return;
 
-        List<AudioClip> audioTracks = newTracks
-            .Select(x => SoundManager.LoadAudioClip(x))
-            .ToList();
-
-        foreach (AudioClip track in audioTracks)
+        foreach (TrackInfo info in newTracks)
         {
+            AudioClip track = SoundManager.LoadAudioClip(info);
             if (track == null) continue;
             if (!NewGramophoneTracks.Contains(track))
             {
                 NewGramophoneTracks.Add(track);
                 GramophoneInteractable.TRACK_IDS.Add(track.name);
-                GramophoneInteractable.TRACK_VOLUMES.Add(TrackVolumes[track.name]);
+                GramophoneInteractable.TRACK_VOLUMES.Add(info.Volume);
 
                 AlreadyAddedTracks.Add(track.name);
             }
