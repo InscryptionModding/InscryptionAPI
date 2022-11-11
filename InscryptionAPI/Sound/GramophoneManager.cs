@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine.Networking;
 using UnityEngine;
 using HarmonyLib;
 using DiskCardGame;
