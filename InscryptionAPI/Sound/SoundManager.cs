@@ -28,6 +28,7 @@ public static class SoundManager
 
     private static void InfoLog(string message) =>
         InscryptionAPIPlugin.Logger.LogInfo($"SoundManager: {message}");
+
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"SoundManager: {message}");
 
@@ -43,7 +44,7 @@ public static class SoundManager
 
         if (audioType == AudioType.UNKNOWN)
         {
-            ErrorLog($"Couldn't load file {filename} as AudioClip. AudioType is unknown.");
+            ErrorLog($"Couldn't load file {filename ?? "null"} as AudioClip. AudioType is unknown.");
             return null;
         }
 
@@ -72,7 +73,7 @@ public static class SoundManager
 
             if(www.isNetworkError || www.isHttpError)
             {
-                ErrorLog($"Couldn't load file \'{filename}\' as AudioClip!");
+                ErrorLog($"Couldn't load file \'{filename ?? "null"}\' as AudioClip!");
                 ErrorLog(www.error);
                 return null;
             }
@@ -82,7 +83,7 @@ public static class SoundManager
                 if(audioClip != null)
                 {
                     InfoLog($"Loaded \'{filename}\' as AudioClip. AudioType: {audioType}");
-                    audioClip.name = guid + filename;
+                    audioClip.name = $"{guid}_{filename}";
                 }
                 return audioClip;
             }

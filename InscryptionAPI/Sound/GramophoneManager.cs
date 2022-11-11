@@ -22,6 +22,8 @@ public static class GramophoneManager
     internal static List<AudioClip> NewGramophoneTracks = new List<AudioClip>();
 
     internal static List<TrackInfo> TracksToAdd = new List<TrackInfo>();
+    internal static Dictionary<string, float> TrackVolumes = new Dictionary<string, float>();
+
     internal static List<string> AlreadyAddedTracks = new List<string>();
     private static bool noNewTracks => NewGramophoneTracks.Count == 0;
     private static bool isLeshyCabin => SceneManager.GetActiveScene().name == "Part1_Cabin";
@@ -29,8 +31,8 @@ public static class GramophoneManager
     public class TrackInfo
     {
         public string FilePath, Guid;
-        public bool CanSkip;
-        public string AudioClipName => Guid + TrackName;
+        public bool CanSkip; // Unused at the time! 
+        public string AudioClipName => $"{Guid}_{TrackName}";
         public string TrackName => Path.GetFileName(FilePath);
         public TrackInfo(string guid, string filePath, bool canSkip = false)
         {
@@ -46,16 +48,17 @@ public static class GramophoneManager
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"GramophoneManager: {message}");
 
-    public static void AddTrack(string guid, string filename)
+    public static void AddTrack(string guid, string filename, float volume = 1f)
     {
         string path = SoundManager.GetAudioFile(filename);
         if (path.IsNullOrWhiteSpace())
         {
-            ErrorLog($"Couldn't load audio track: File \'{filename}\' not found!");
+            ErrorLog($"Couldn't load audio track: File \'{filename ?? "null"}\' not found!");
             return;
         }
         TrackInfo trackInfo = new TrackInfo(guid, path);
         TracksToAdd.Add(trackInfo);
+        TrackVolumes.Add(trackInfo.AudioClipName, volume);
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
@@ -82,8 +85,8 @@ public static class GramophoneManager
             if (!NewGramophoneTracks.Contains(track))
             {
                 NewGramophoneTracks.Add(track);
-                GramophoneInteractable.TRACK_VOLUMES.Add(1f);
                 GramophoneInteractable.TRACK_IDS.Add(track.name);
+                GramophoneInteractable.TRACK_VOLUMES.Add(TrackVolumes[track.name]);
 
                 AlreadyAddedTracks.Add(track.name);
             }
