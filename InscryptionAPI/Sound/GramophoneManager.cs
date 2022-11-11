@@ -4,9 +4,13 @@ using DiskCardGame;
 using InscryptionAPI.Saves;
 using BepInEx;
 using UnityEngine.SceneManagement;
+using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Sound;
 
+/// <summary>
+/// A helper class for adding tracks to the Gramophone in Leshy's cabin.
+/// </summary>
 [HarmonyPatch]
 public static class GramophoneManager
 {
@@ -25,7 +29,7 @@ public static class GramophoneManager
     private static bool noNewTracks => NewGramophoneTracks.Count == 0;
     private static bool isLeshyCabin => SceneManager.GetActiveScene().name == "Part1_Cabin";
 
-    public class TrackInfo
+    internal class TrackInfo
     {
         public string FilePath, Guid;
         public float Volume;
