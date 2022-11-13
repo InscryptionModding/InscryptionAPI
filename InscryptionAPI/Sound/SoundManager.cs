@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 namespace InscryptionAPI.Sound;
+
+/// <summary>
+/// A static class that contains helper methods for working with audio.
+/// </summary>
 public static class SoundManager
 {
     public static Dictionary<string, AudioType> AudioTypes = new Dictionary<string, AudioType>()

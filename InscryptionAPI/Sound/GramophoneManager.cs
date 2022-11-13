@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 namespace InscryptionAPI.Sound;
 
 /// <summary>
-/// A helper class for adding tracks to the Gramophone in Leshy's cabin.
+/// A static class that contains helper methods for adding tracks to the Gramophone in Leshy's cabin.
 /// </summary>
 [HarmonyPatch]
 public static class GramophoneManager
