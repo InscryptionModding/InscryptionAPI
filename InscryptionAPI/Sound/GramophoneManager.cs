@@ -4,7 +4,6 @@ using DiskCardGame;
 using InscryptionAPI.Saves;
 using BepInEx;
 using UnityEngine.SceneManagement;
-using InscryptionAPI.Card;
 
 namespace InscryptionAPI.Sound;
 

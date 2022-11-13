@@ -34,11 +34,11 @@ public static class SoundManager
 
 
     /// <summary>
-    /// A helper for converting an audio file into an Unity AudioClip.
+    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
     /// </summary>
     /// <param name="guid">Your plugin's GUID.</param>
     /// <param name="path">The path to your audio file.</param>
-    /// <returns>The audio file converted into an AudioClip object.</returns>
+    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
     public static AudioClip LoadAudioClip(string guid, string path)
     {
         if (!Path.IsPathRooted(path))
@@ -59,10 +59,10 @@ public static class SoundManager
     }
 
     /// <summary>
-    /// A helper for converting an audio file into an Unity AudioClip.
+    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
     /// </summary>
     /// <param name="path">The path to your audio file.</param>
-    /// <returns>The audio file converted into an AudioClip object.</returns>
+    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
     public static AudioClip LoadAudioClip(string path)
     {
         return LoadAudioClip(string.Empty, path);
