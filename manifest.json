@@ -1278,6 +1278,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Sound.GramophoneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Sound.GramophoneManager.html",
+          "hash": "+sspEyyKf+SyxSkpCFh7eN1MHRAs+HpRGd1qi8MGhsU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Sound.SoundManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Sound.SoundManager.html",
+          "hash": "94l2AFH7StqcQu6EHH9Bee6GfPrG+BYED9zIQgXUEz4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Sound.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Sound.html",
+          "hash": "JT4IQAKPNAeoYXrM5DEVVhNqEHFRkhYev6fnAAs85xc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.yml",
       "output": {
         ".html": {
@@ -1726,7 +1762,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "IUFtH1MVi6PZI071PQFxk6WfSGitKNgCb5Dz37LHLBs="
+          "hash": "KidYKGfysuPLH8vXdHv8/FcKklz5B8sPVLwbgVcm3ww="
         }
       },
       "is_incremental": false,
@@ -1762,7 +1798,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "zV407k7LtaJTnhniu87KpHdhaRiDn9rApuNwma8CT5k="
+          "hash": "mWY1Mi3//8c5GixDFtB+np+ep+9OJcaa2JVPq+ZTEx4="
         }
       },
       "is_incremental": false,
@@ -1789,7 +1825,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 149,
+          "total_file_count": 152,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

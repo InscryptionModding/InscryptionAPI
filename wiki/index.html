@@ -567,6 +567,20 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
 ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
                 .SetDescription(learnText)
                 .SetAct1();
+</code></pre><h2 id="sound">Sound</h2>
+<h3 id="adding-music-tracks-to-the-gramophone">Adding Music Tracks to the Gramophone</h3>
+<p>This API supports adding new tracks to the Gramophone in Leshy&#39;s Cabin.
+(A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)</p>
+<p>All you need for that is a regular audio file. The API will do all of the conversion. The file should be inside the &#39;plugins&#39; folder. and the supported audio formats are MP3, WAV, OGG and AIFF.</p>
+<p>You can register your track like this:</p>
+<pre><code class="lang-csharp">GramophoneManager.AddTrack(PluginGuid, &quot;MyFile.wav&quot;, 0.5f);
+</code></pre><p>The first parameter should be your plugin&#39;s GUID. The second parameter should be your file&#39;s name.
+The third parameter is optional, and determines the volume of your track, from 0 to 1f. </p>
+<h3 id="converting-audio-files-to-unity-audioclip-objects">Converting Audio Files to Unity AudioClip Objects</h3>
+<p>This API provides a helper method for converting audio files to Unity AudioClip objects so that they can be played in-game with the AudioSource component. You can use this to replace in-game music through patches, or to play your own sound effects.</p>
+<p>The audio file should be located inside of the &#39;plugins&#39; folder. The supported audio formats are MP3, WAV, OGG and AIFF.</p>
+<p>You can convert your audio file into an AudioClip object like this:</p>
+<pre><code class="lang-csharp">AudioClip audio = SoundManager.LoadAudioClip(&quot;Example.mp3&quot;);
 </code></pre></article>
           </div>
           

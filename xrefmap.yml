@@ -8965,6 +8965,62 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveData
   nameWithType: ModdedSaveManager.SaveData
+- uid: InscryptionAPI.Sound
+  name: InscryptionAPI.Sound
+  href: api/InscryptionAPI.Sound.html
+  commentId: N:InscryptionAPI.Sound
+  fullName: InscryptionAPI.Sound
+  nameWithType: InscryptionAPI.Sound
+- uid: InscryptionAPI.Sound.GramophoneManager
+  name: GramophoneManager
+  href: api/InscryptionAPI.Sound.GramophoneManager.html
+  commentId: T:InscryptionAPI.Sound.GramophoneManager
+  fullName: InscryptionAPI.Sound.GramophoneManager
+  nameWithType: GramophoneManager
+- uid: InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String,System.String,System.Single)
+  name: AddTrack(String, String, Single)
+  href: api/InscryptionAPI.Sound.GramophoneManager.html#InscryptionAPI_Sound_GramophoneManager_AddTrack_System_String_System_String_System_Single_
+  commentId: M:InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String,System.String,System.Single)
+  fullName: InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String, System.String, System.Single)
+  nameWithType: GramophoneManager.AddTrack(String, String, Single)
+- uid: InscryptionAPI.Sound.GramophoneManager.AddTrack*
+  name: AddTrack
+  href: api/InscryptionAPI.Sound.GramophoneManager.html#InscryptionAPI_Sound_GramophoneManager_AddTrack_
+  commentId: Overload:InscryptionAPI.Sound.GramophoneManager.AddTrack
+  isSpec: "True"
+  fullName: InscryptionAPI.Sound.GramophoneManager.AddTrack
+  nameWithType: GramophoneManager.AddTrack
+- uid: InscryptionAPI.Sound.SoundManager
+  name: SoundManager
+  href: api/InscryptionAPI.Sound.SoundManager.html
+  commentId: T:InscryptionAPI.Sound.SoundManager
+  fullName: InscryptionAPI.Sound.SoundManager
+  nameWithType: SoundManager
+- uid: InscryptionAPI.Sound.SoundManager.AudioTypes
+  name: AudioTypes
+  href: api/InscryptionAPI.Sound.SoundManager.html#InscryptionAPI_Sound_SoundManager_AudioTypes
+  commentId: F:InscryptionAPI.Sound.SoundManager.AudioTypes
+  fullName: InscryptionAPI.Sound.SoundManager.AudioTypes
+  nameWithType: SoundManager.AudioTypes
+- uid: InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String)
+  name: LoadAudioClip(String)
+  href: api/InscryptionAPI.Sound.SoundManager.html#InscryptionAPI_Sound_SoundManager_LoadAudioClip_System_String_
+  commentId: M:InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String)
+  fullName: InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String)
+  nameWithType: SoundManager.LoadAudioClip(String)
+- uid: InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String,System.String)
+  name: LoadAudioClip(String, String)
+  href: api/InscryptionAPI.Sound.SoundManager.html#InscryptionAPI_Sound_SoundManager_LoadAudioClip_System_String_System_String_
+  commentId: M:InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String,System.String)
+  fullName: InscryptionAPI.Sound.SoundManager.LoadAudioClip(System.String, System.String)
+  nameWithType: SoundManager.LoadAudioClip(String, String)
+- uid: InscryptionAPI.Sound.SoundManager.LoadAudioClip*
+  name: LoadAudioClip
+  href: api/InscryptionAPI.Sound.SoundManager.html#InscryptionAPI_Sound_SoundManager_LoadAudioClip_
+  commentId: Overload:InscryptionAPI.Sound.SoundManager.LoadAudioClip
+  isSpec: "True"
+  fullName: InscryptionAPI.Sound.SoundManager.LoadAudioClip
+  nameWithType: SoundManager.LoadAudioClip
 - uid: InscryptionAPI.Totems
   name: InscryptionAPI.Totems
   href: api/InscryptionAPI.Totems.html
