@@ -756,7 +756,7 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 
 ## Sound
 
-### Adding Custom Music Tracks to the Gramophone
+### Adding Music Tracks to the Gramophone
 
 This API supports adding new tracks to the Gramophone in Leshy's Cabin.
 (A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)
