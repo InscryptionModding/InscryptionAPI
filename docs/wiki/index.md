@@ -754,7 +754,7 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetAct1();
 ```
 
-### Adding custom music tracks to the Gramophone
+### Adding Custom Music Tracks to the Gramophone
 
 This API supports adding new tracks to the Gramophone in Leshy's Cabin.
 (A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)
@@ -770,7 +770,7 @@ The first parameter should be your plugin's GUID. The second parameter should be
 The third parameter is optional, and determines the volume of your track, from 0 to 1f. 
 
 
-## Converting audio files to Unity AudioClip objects
+## Converting Audio Files to Unity AudioClip Objects
 
 This API provides a helper method for converting audio files to Unity AudioClip objects so that they can be played in-game with the AudioSource component. You can use this to replace in-game music through patches, or to play your own sound effects.
 
