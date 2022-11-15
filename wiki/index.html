@@ -567,6 +567,25 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
 ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
                 .SetDescription(learnText)
                 .SetAct1();
+</code></pre><h3 id="adding-a-custom-pelt">Adding a Custom Pelt</h3>
+<p>This API supports adding a custom pelt to be sold by the trapper and traded by the trader.</p>
+<pre><code class="lang-csharp">CardInfo cardInfo = CardManager.New(PluginGuid, &quot;Super Pelt&quot;, &quot;Super Pelt&quot;, 0, 5);
+cardInfo.traits = new List&lt;Trait&gt;() { Trait.Pelt };
+
+PeltManager.New(new PeltManager.CustomPeltData()
+{
+    AbilityCount = 3,
+    CostCallback = ()=&gt;6,
+    AvailableAtTrader = true,
+    CardNameOfPelt = cardInfo.name,
+    MaxChoices = 8,
+    PluginGUID = PluginGuid,
+    GetChoicesCallback = () =&gt;
+    {
+        return CardManager.AllCardsCopy.FindAll((a) =&gt;
+            a.metaCategories.Contains(CardMetaCategory.Rare) &amp;&amp; a.temple == CardTemple.Nature);
+    },
+});
 </code></pre><h2 id="sound">Sound</h2>
 <h3 id="adding-music-tracks-to-the-gramophone">Adding Music Tracks to the Gramophone</h3>
 <p>This API supports adding new tracks to the Gramophone in Leshy&#39;s Cabin.

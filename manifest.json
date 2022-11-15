@@ -1194,6 +1194,54 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Pelts.ICustomPeltData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Pelts.ICustomPeltData.html",
+          "hash": "9uofgEy6JUDHQ3q2Vl8uHqgYPUATFiTNldNAdHQqMiM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html",
+          "hash": "BVyKciENFeR1yaepkj50CV/pmsiGpCAWc5cloaGPWzY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Pelts.PeltManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Pelts.PeltManager.html",
+          "hash": "tPQ7Wjg7Org9R5qDo2JXrdvxkzzY+njW+c5Pb9Hllec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Pelts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Pelts.html",
+          "hash": "azMJxJTJPKicvWq54+kEydFXZMGix/w66Wg6LCOjdVo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Regions.Part1RegionData.yml",
       "output": {
         ".html": {
@@ -1745,6 +1793,30 @@
       "version": ""
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.html",
+          "hash": "ahC+EfDMiL+nK6scGBqIE57nIkbk0qaU3NiJyk7S3Cc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TradePeltAPI.Scripts.Patches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TradePeltAPI.Scripts.Patches.html",
+          "hash": "E5kbBBHAXFlb+P2e4eUOxWs1z4H0xKInjZ4IcXVhNSs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
@@ -1762,7 +1834,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "KidYKGfysuPLH8vXdHv8/FcKklz5B8sPVLwbgVcm3ww="
+          "hash": "sMlJByuK8dEicfeQ4Ic9CzCph1YxC/x7COKNexsgtMM="
         }
       },
       "is_incremental": false,
@@ -1798,7 +1870,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "mWY1Mi3//8c5GixDFtB+np+ep+9OJcaa2JVPq+ZTEx4="
+          "hash": "ZgSwDjo7tZTJIQsHQgl1vxefHqEcwUXL5nIU4pu+kSI="
         }
       },
       "is_incremental": false,
@@ -1825,7 +1897,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 152,
+          "total_file_count": 158,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
