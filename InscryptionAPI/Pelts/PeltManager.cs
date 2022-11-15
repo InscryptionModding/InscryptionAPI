@@ -17,11 +17,11 @@ public static class PeltManager
 {
     public class CustomPeltData : ICustomPeltData
     {
-        public string PluginGUID { get; set; }
-        public string CardNameOfPelt { get; set; }
-        public int MaxChoices { get; set; }
-        public int AbilityCount { get; set; }
-        public bool AvailableAtTrader { get; set; }
+        public string PluginGUID { get; set; } = null;
+        public string CardNameOfPelt { get; set; } = null;
+        public int MaxChoices { get; set; } = 8;
+        public int AbilityCount { get; set; } = 0;
+        public bool AvailableAtTrader { get; set; } = true;
 
         public List<CardInfo> GetChoices()
         {
