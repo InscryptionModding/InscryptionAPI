@@ -98,6 +98,8 @@ Contributors and builders of API 2.0
 - IngoH
 - JamesVeug
 - julian-perge
+- KellyBetty
 - SpecialAPI
 - Void Slime
+- WhistleWind
 - Windows10CE
