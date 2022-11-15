@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.7.0
+- Added support for converting audio files to AudioClip objects
+- Added support for adding custom tracks to the Gramophone
+
 ## v2.6.0
 - Added support for custom consumable items using a choice of a few models
 - Added support for custom consumable card in a bottle items
