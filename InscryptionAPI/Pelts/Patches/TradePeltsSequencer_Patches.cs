@@ -121,7 +121,7 @@ public class TradePeltsSequencer_GetTradeCardInfos
             return;
         }
         
-        ICustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
         List<CardInfo> cardOptions = pelt.GetChoices();
         if (cardOptions.Count == 0)
         {
@@ -139,7 +139,7 @@ public class TradePeltsSequencer_GetTradeCardInfos
             return;
         }
 
-        ICustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
         numCards = pelt.MaxChoices;
     }
 
@@ -150,7 +150,7 @@ public class TradePeltsSequencer_GetTradeCardInfos
             return abilityCount;
         }
 
-        ICustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
         int peltAbilityCount = pelt.AbilityCount;
         return peltAbilityCount;
     }
