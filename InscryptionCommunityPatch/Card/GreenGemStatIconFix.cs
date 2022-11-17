@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 public static class GreenGemStatIconFix
 {
     /// <summary>
-    /// This fixes the Green Gem stat icon from appearing as a black square but instead as a gem
+    /// This fixes the Green Gem stat icon to appear in act 1 correctly
     /// </summary>
     [HarmonyPatch(typeof(StatIconInfo), nameof(StatIconInfo.LoadAbilityData))]
     [HarmonyPostfix]
@@ -19,6 +19,10 @@ public static class GreenGemStatIconFix
         
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("GreenGem.png", typeof(GreenGemStatIconFix).Assembly);
         greenGemStatIcon.iconGraphic = baseTexture;
-        greenGemStatIcon.rulebookDescription = greenGemStatIcon.gbcDescription;
+        greenGemStatIcon.rulebookDescription = "The power of this card is equal to the number of Green Gem that the owner has on their side of the table";
+        greenGemStatIcon.metaCategories = new List<AbilityMetaCategory>()
+        {
+            AbilityMetaCategory.Part1Rulebook
+        };
     }
 }
