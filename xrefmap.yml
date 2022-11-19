@@ -8158,103 +8158,6 @@ references:
   commentId: N:InscryptionAPI.Pelts
   fullName: InscryptionAPI.Pelts
   nameWithType: InscryptionAPI.Pelts
-- uid: InscryptionAPI.Pelts.ICustomPeltData
-  name: ICustomPeltData
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html
-  commentId: T:InscryptionAPI.Pelts.ICustomPeltData
-  fullName: InscryptionAPI.Pelts.ICustomPeltData
-  nameWithType: ICustomPeltData
-- uid: InscryptionAPI.Pelts.ICustomPeltData.AbilityCount
-  name: AbilityCount
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_AbilityCount
-  commentId: P:InscryptionAPI.Pelts.ICustomPeltData.AbilityCount
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.AbilityCount
-  nameWithType: ICustomPeltData.AbilityCount
-- uid: InscryptionAPI.Pelts.ICustomPeltData.AbilityCount*
-  name: AbilityCount
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_AbilityCount_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.AbilityCount
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.AbilityCount
-  nameWithType: ICustomPeltData.AbilityCount
-- uid: InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader
-  name: AvailableAtTrader
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_AvailableAtTrader
-  commentId: P:InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader
-  nameWithType: ICustomPeltData.AvailableAtTrader
-- uid: InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader*
-  name: AvailableAtTrader
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_AvailableAtTrader_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.AvailableAtTrader
-  nameWithType: ICustomPeltData.AvailableAtTrader
-- uid: InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt
-  name: CardNameOfPelt
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_CardNameOfPelt
-  commentId: P:InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt
-  nameWithType: ICustomPeltData.CardNameOfPelt
-- uid: InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt*
-  name: CardNameOfPelt
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_CardNameOfPelt_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.CardNameOfPelt
-  nameWithType: ICustomPeltData.CardNameOfPelt
-- uid: InscryptionAPI.Pelts.ICustomPeltData.Cost
-  name: Cost()
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_Cost
-  commentId: M:InscryptionAPI.Pelts.ICustomPeltData.Cost
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.Cost()
-  nameWithType: ICustomPeltData.Cost()
-- uid: InscryptionAPI.Pelts.ICustomPeltData.Cost*
-  name: Cost
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_Cost_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.Cost
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.Cost
-  nameWithType: ICustomPeltData.Cost
-- uid: InscryptionAPI.Pelts.ICustomPeltData.GetChoices
-  name: GetChoices()
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_GetChoices
-  commentId: M:InscryptionAPI.Pelts.ICustomPeltData.GetChoices
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.GetChoices()
-  nameWithType: ICustomPeltData.GetChoices()
-- uid: InscryptionAPI.Pelts.ICustomPeltData.GetChoices*
-  name: GetChoices
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_GetChoices_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.GetChoices
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.GetChoices
-  nameWithType: ICustomPeltData.GetChoices
-- uid: InscryptionAPI.Pelts.ICustomPeltData.MaxChoices
-  name: MaxChoices
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_MaxChoices
-  commentId: P:InscryptionAPI.Pelts.ICustomPeltData.MaxChoices
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.MaxChoices
-  nameWithType: ICustomPeltData.MaxChoices
-- uid: InscryptionAPI.Pelts.ICustomPeltData.MaxChoices*
-  name: MaxChoices
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_MaxChoices_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.MaxChoices
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.MaxChoices
-  nameWithType: ICustomPeltData.MaxChoices
-- uid: InscryptionAPI.Pelts.ICustomPeltData.PluginGUID
-  name: PluginGUID
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_PluginGUID
-  commentId: P:InscryptionAPI.Pelts.ICustomPeltData.PluginGUID
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.PluginGUID
-  nameWithType: ICustomPeltData.PluginGUID
-- uid: InscryptionAPI.Pelts.ICustomPeltData.PluginGUID*
-  name: PluginGUID
-  href: api/InscryptionAPI.Pelts.ICustomPeltData.html#InscryptionAPI_Pelts_ICustomPeltData_PluginGUID_
-  commentId: Overload:InscryptionAPI.Pelts.ICustomPeltData.PluginGUID
-  isSpec: "True"
-  fullName: InscryptionAPI.Pelts.ICustomPeltData.PluginGUID
-  nameWithType: ICustomPeltData.PluginGUID
 - uid: InscryptionAPI.Pelts.PeltManager
   name: PeltManager
   href: api/InscryptionAPI.Pelts.PeltManager.html
@@ -8403,12 +8306,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.PluginGUID
   nameWithType: PeltManager.CustomPeltData.PluginGUID
-- uid: InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.ICustomPeltData)
-  name: New(ICustomPeltData)
-  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_InscryptionAPI_Pelts_ICustomPeltData_
-  commentId: M:InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.ICustomPeltData)
-  fullName: InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.ICustomPeltData)
-  nameWithType: PeltManager.New(ICustomPeltData)
+- uid: InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
+  name: New(PeltManager.CustomPeltData)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_InscryptionAPI_Pelts_PeltManager_CustomPeltData_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
+  fullName: InscryptionAPI.Pelts.PeltManager.New(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
+  nameWithType: PeltManager.New(PeltManager.CustomPeltData)
 - uid: InscryptionAPI.Pelts.PeltManager.New*
   name: New
   href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_
