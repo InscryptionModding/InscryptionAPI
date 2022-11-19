@@ -569,21 +569,26 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
                 .SetAct1();
 </code></pre><h2 id="adding-a-custom-pelt">Adding a Custom Pelt</h2>
 <p>This API supports adding a custom pelt to be sold by the trapper and traded by the trader.</p>
-<pre><code class="lang-csharp">CardInfo cardInfo = CardManager.New(PluginGuid, &quot;Super Pelt&quot;, &quot;Super Pelt&quot;, 0, 5);
-cardInfo.traits = new List&lt;Trait&gt;() { Trait.Pelt };
+<pre><code class="lang-csharp">CardInfo bonePeltInfo = CardManager.New(PluginGuid, &quot;Bone Pelt&quot;, &quot;Bone Pelt&quot;, 0, 2);
+bonePeltInfo.portraitTex = TextureHelper.GetImageAsTexture(Path.Combine(PluginDirectory, &quot;Art/portrait_skin_bone.png&quot;)).ConvertTexture();
+bonePeltInfo.cardComplexity = CardComplexity.Simple;
+bonePeltInfo.AddTraits(Trait.Pelt);
+bonePeltInfo.temple = CardTemple.Nature;
+bonePeltInfo.AddSpecialAbilities(SpecialTriggeredAbility.SpawnLice);
+bonePeltInfo.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
 
 PeltManager.New(new PeltManager.CustomPeltData()
 {
-    AbilityCount = 3,
-    CostCallback = ()=&gt;6,
+    AbilityCount = 0,
+    CostCallback = ()=&gt;3,
     AvailableAtTrader = true,
-    CardNameOfPelt = cardInfo.name,
+    CardNameOfPelt = bonePeltInfo.name,
     MaxChoices = 8,
     PluginGUID = PluginGuid,
     GetChoicesCallback = () =&gt;
     {
         return CardManager.AllCardsCopy.FindAll((a) =&gt;
-            a.metaCategories.Contains(CardMetaCategory.Rare) &amp;&amp; a.temple == CardTemple.Nature);
+            a.BonesCost &gt; 0 &amp;&amp; a.temple == CardTemple.Nature);
     },
 });
 </code></pre><h2 id="sound">Sound</h2>
