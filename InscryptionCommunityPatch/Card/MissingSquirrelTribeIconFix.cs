@@ -1,10 +1,10 @@
+using System.Reflection;
+using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
+using InscryptionAPI.Pelts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -23,6 +23,64 @@ public class MissingSquirrelTribeIconFix
                 path = "Art/Cards/TribeIcons/tribeicon_squirrel",
                 asset = baseTexture.ConvertTexture()
             });
+        }
+    }
+    
+    [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
+    private class CardDisplayer3D_UpdateTribeIcon
+    {
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            // === We want to turn this
+            
+            /* for (int i = 0; i < 7; i++)
+			    {
+			        if (info.IsOfTribe((Tribe)i))
+                    {
+                        ...
+                    }                
+                }
+            */
+            
+            // === Into this
+            
+            /* for (int i = 0; i < 7; i++)
+			    {
+			        if (!ShowTribeOnCard(info, (Tribe)i)
+                    {
+                        ...
+                    }                
+                }
+            */
+            
+            MethodInfo ShowTribeOnCardInfo =  SymbolExtensions.GetMethodInfo(() => ShowTribeOnCard(null, Tribe.Squirrel));
+            MethodInfo IsOfTribeInfo = AccessTools.Method(typeof(CardInfo), "IsOfTribe", new Type[] { typeof(Tribe)});
+            
+            // ===
+            
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].opcode == OpCodes.Callvirt && (MethodInfo)codes[i].operand == IsOfTribeInfo)
+                {
+                    codes[i].operand = ShowTribeOnCardInfo;
+                    // Just change which method this call points to.
+                    // The first parameter is the instance already!
+                    break;
+                }
+            }
+
+            return codes;
+        }
+        
+        private static bool ShowTribeOnCard(CardInfo info, Tribe tribe)
+        {
+            if (!info.IsOfTribe(tribe))
+            {
+                return false;
+            }
+
+            return PatchPlugin.configShowSquirrelTribeOnCards.Value;
         }
     }
 }
