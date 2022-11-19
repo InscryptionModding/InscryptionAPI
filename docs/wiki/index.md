@@ -681,7 +681,7 @@ AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
 
 
-### Adding a Custom Tribe Totem Top
+## Adding a Custom Tribe Totem Top
 
 This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
 Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.
@@ -701,7 +701,7 @@ if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", o
 }
 ```
 
-### Adding a Custom Consumable Item
+## Adding a Custom Consumable Item
 
 This API supports adding a custom item into the game. 
 
@@ -754,26 +754,31 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetAct1();
 ```
 
-### Adding a Custom Pelt
+## Adding a Custom Pelt
 
 This API supports adding a custom pelt to be sold by the trapper and traded by the trader.
 
 ```csharp
-CardInfo cardInfo = CardManager.New(PluginGuid, "Super Pelt", "Super Pelt", 0, 5);
-cardInfo.traits = new List<Trait>() { Trait.Pelt };
+CardInfo bonePeltInfo = CardManager.New(PluginGuid, "Bone Pelt", "Bone Pelt", 0, 2);
+bonePeltInfo.portraitTex = TextureHelper.GetImageAsTexture(Path.Combine(PluginDirectory, "Art/portrait_skin_bone.png")).ConvertTexture();
+bonePeltInfo.cardComplexity = CardComplexity.Simple;
+bonePeltInfo.AddTraits(Trait.Pelt);
+bonePeltInfo.temple = CardTemple.Nature;
+bonePeltInfo.AddSpecialAbilities(SpecialTriggeredAbility.SpawnLice);
+bonePeltInfo.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
 
 PeltManager.New(new PeltManager.CustomPeltData()
 {
-    AbilityCount = 3,
-    CostCallback = ()=>6,
+    AbilityCount = 0,
+    CostCallback = ()=>3,
     AvailableAtTrader = true,
-    CardNameOfPelt = cardInfo.name,
+    CardNameOfPelt = bonePeltInfo.name,
     MaxChoices = 8,
     PluginGUID = PluginGuid,
     GetChoicesCallback = () =>
     {
         return CardManager.AllCardsCopy.FindAll((a) =>
-            a.metaCategories.Contains(CardMetaCategory.Rare) && a.temple == CardTemple.Nature);
+            a.BonesCost > 0 && a.temple == CardTemple.Nature);
     },
 });
 ```

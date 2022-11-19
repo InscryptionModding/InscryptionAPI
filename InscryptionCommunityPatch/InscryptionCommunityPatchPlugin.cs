@@ -28,6 +28,7 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configDrone;
     internal static ConfigEntry<bool> configMox;
     internal static ConfigEntry<bool> configDroneMox;
+    internal static ConfigEntry<bool> configShowSquirrelTribeOnCards;
 
     internal static ConfigEntry<bool> rightAct2Cost;
     internal static ConfigEntry<bool> act2CostRender;
@@ -69,6 +70,7 @@ public class PatchPlugin : BaseUnityPlugin
         configDrone = Config.Bind("Energy","Energy Drone",false,"Drone is visible to display energy (requires Energy Refresh)");
         configMox = Config.Bind("Mox","Mox Refresh",true,"Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox","Mox Drone",false,"Drone displays mox (requires Energy Drone and Mox Refresh)");
+        configShowSquirrelTribeOnCards = Config.Bind("Tribes","Show Squirrel Tribe",false,"Shows the Squirrel tribe icon on cards");
         act2CostRender = Config.Bind("Card Costs", "GBC Cost render", true, "GBC Cards are able to display custom costs and hybrid costs through the API.");
         rightAct2Cost = Config.Bind("Card Costs","GBC Cost On Right",true,"GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");
         configMergeOnBottom = Config.Bind("Sigil Display", "Merge_On_Botom", false, "Makes it so if enabled, merged sigils will display on the bottom of the card instead of on the artwork. In extreme cases, this can cause some visual bugs.");

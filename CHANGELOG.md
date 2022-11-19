@@ -1,14 +1,40 @@
 # Changelog
 
+## v2.7.1
+- Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
+- Added Squirrel tribe art (Thanks Drift!)
+- Fixed Green Gem stat icon showing as a black square in act 1
+- Fixed Green Gem stat icon not appearing in rulebook
+- Fixed Squirrel totem top causing NMA when using custom totem tops
+
 ## v2.7.0
 - Added support for custom pelts
 - Added support for converting audio files to AudioClip objects
 - Added support for adding custom tracks to the Gramophone
+- Added support for adding custom audio files
+- Warning message for outdated plugins now lists the outdated plugins
+- Energy Drone now tweens with the scales, kinda
+- Fixed visual bug where energy cells didn't start closed in successive battles
 
 ## v2.6.0
 - Added support for custom consumable items using a choice of a few models
 - Added support for custom consumable card in a bottle items
 - Added support for custom consumable items with a custom model
+- Added more helper extensions for checking abilities, traits, special abilities
+- Fixed null instances in Act 2 spamming the console with warnings
+
+## v2.5.3
+- Added support for custom card unlock requirements
+- Fixed non-giant cards with Omni Strike not directly attacking their opposing slot when there are no opposing cards
+- Fixed cards attacking their own side of the board during combat not adding damage to the correct side of the scale
+- Fixed an issue where a challenge would go missing if you had more than 14 installed
+
+## v2.5.2
+- Fixed the sentry fix overriding patches to SlotAttackSlot
+
+## v2.5.1
+- Reverted part of the sentry fix that was causing problems
+- Made it easier to override the default totem head
 
 ## v2.5.0
 - Added support for custom totem heads
