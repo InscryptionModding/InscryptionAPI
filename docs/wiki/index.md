@@ -681,7 +681,7 @@ AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
 
 
-### Adding a Custom Tribe Totem Top
+## Adding a Custom Tribe Totem Top
 
 This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
 Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.
@@ -701,7 +701,7 @@ if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", o
 }
 ```
 
-### Adding a Custom Consumable Item
+## Adding a Custom Consumable Item
 
 This API supports adding a custom item into the game. 
 
@@ -754,7 +754,7 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetAct1();
 ```
 
-### Adding a Custom Pelt
+## Adding a Custom Pelt
 
 This API supports adding a custom pelt to be sold by the trapper and traded by the trader.
 
