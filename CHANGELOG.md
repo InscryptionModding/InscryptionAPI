@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.7.1
+- Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
+- Added Squirrel tribe art (Thanks Drift!)
+- Fixed Green Gem stat icon showing as a black square in act 1
+- Fixed Green Gem stat icon not appearing in rulebook
+- Fixed Squirrel totem top causing NMA when using custom totem tops
+
 ## v2.7.0
 - Added support for custom pelts
 - Added support for converting audio files to AudioClip objects
