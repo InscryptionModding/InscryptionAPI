@@ -519,7 +519,7 @@ StarterDeckManager.Add(MyPlugin.Guid, myDeck);
 <p>In general, you are responsible for doing all the hard work of building your screen. However, all the boilerplate content is built for you. You will automatically be given the continue and back buttons, the header (which shows the current challenge level), the footer (which displays changes as the challenge level changes), and the title of your screen. You can also optionally be given a scrollable card selection panel and card information displayer panel if you need them (using the properties shown above).</p>
 <p>Once you&#39;ve written the custom screen class, you need to register it with AscensionScreenManager like so:</p>
 <pre><code class="lang-c#">AscensionScreenManager.RegisterScreen&lt;MyCustomScreen&gt;();
-</code></pre><h3 id="adding-a-custom-tribe-totem-top">Adding a Custom Tribe Totem Top</h3>
+</code></pre><h2 id="adding-a-custom-tribe-totem-top">Adding a Custom Tribe Totem Top</h2>
 <p>This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
 Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.</p>
 <p>If you want to add your own model for your tribe then you can use the example below.</p>
@@ -529,7 +529,7 @@ Natively there is already a default model that is used when a custom Tribe is ad
 {
     TotemManager.NewTopPiece(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
 }
-</code></pre><h3 id="adding-a-custom-consumable-item">Adding a Custom Consumable Item</h3>
+</code></pre><h2 id="adding-a-custom-consumable-item">Adding a Custom Consumable Item</h2>
 <p>This API supports adding a custom item into the game. </p>
 <p>Specify the class for your item and what happens when its used.</p>
 <pre><code class="lang-csharp">public class CustomConsumableItem : ConsumableItem
@@ -567,7 +567,7 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
 ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
                 .SetDescription(learnText)
                 .SetAct1();
-</code></pre><h3 id="adding-a-custom-pelt">Adding a Custom Pelt</h3>
+</code></pre><h2 id="adding-a-custom-pelt">Adding a Custom Pelt</h2>
 <p>This API supports adding a custom pelt to be sold by the trapper and traded by the trader.</p>
 <pre><code class="lang-csharp">CardInfo cardInfo = CardManager.New(PluginGuid, &quot;Super Pelt&quot;, &quot;Super Pelt&quot;, 0, 5);
 cardInfo.traits = new List&lt;Trait&gt;() { Trait.Pelt };
