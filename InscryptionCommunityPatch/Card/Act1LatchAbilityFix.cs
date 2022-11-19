@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 public class Act1LatchAbilityFix
 {
-    private static GameObject _clawPrefab;
+    public static GameObject _clawPrefab;
     private static GameObject ClawPrefab
     {
         get
