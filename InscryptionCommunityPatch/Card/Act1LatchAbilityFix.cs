@@ -162,16 +162,15 @@ public class Act1LatchAbilityFix
 
             if (selectedSlot != null && selectedSlot.Card != null)
             {
-                CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility);
+                CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility)
+                {
+                    fromCardMerge = SaveManager.SaveFile.IsPart1,
+                    fromLatch = SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3
+                };
 
                 PatchPlugin.Logger.LogInfo($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
 
                 // sigil patches don't render in Grimora's act, so only set these to true if we're not in Grimora's act
-                if (!SaveManager.SaveFile.IsGrimora)
-                {
-                    mod.fromCardMerge = true;
-                    mod.fromLatch = true;
-                }
                 selectedSlot.Card.AddTemporaryMod(mod);
                 selectedSlot.Card.RenderInfo.forceEmissivePortrait = true;
                 selectedSlot.Card.UpdateStatsText();
