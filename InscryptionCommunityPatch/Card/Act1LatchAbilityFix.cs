@@ -173,7 +173,7 @@ public class Act1LatchAbilityFix
                     mod.fromLatch = true;
                 }
                 selectedSlot.Card.AddTemporaryMod(mod);
-                selectedSlot.Card.RenderInfo.forceEmissivePortrait = !SaveManager.SaveFile.IsGrimora;
+                selectedSlot.Card.RenderInfo.forceEmissivePortrait = true;
                 selectedSlot.Card.UpdateStatsText();
             
                 selectedSlot.Card.Anim.PlayTransformAnimation();
