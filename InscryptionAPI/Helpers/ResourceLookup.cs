@@ -8,16 +8,17 @@ namespace InscryptionAPI.Items;
 /// </summary>
 public class ResourceLookup : ICloneable
 {
-    public string AssetBundlePath { get; private set; }
-    public string AssetBundlePrefabName { get; private set; }
     public string ResourcePath { get; private set; }
     public string ResourceBankID { get; private set; }
     public GameObject Prefab { get; private set; }
 
     public void FromAssetBundle(string assetBundlePath, string assetBundlePrefabName)
     {
-        this.AssetBundlePath = assetBundlePath;
-        this.AssetBundlePrefabName = assetBundlePrefabName;
+        byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
+        if (AssetBundleHelper.TryGet(resourceBytes, assetBundlePrefabName, out GameObject go))
+        {
+            Prefab = go;
+        }
     }
     
     public void FromResources(string resourcePath)
@@ -37,19 +38,6 @@ public class ResourceLookup : ICloneable
     
     public virtual T Get<T>() where T : UnityObject
     {
-        if (!string.IsNullOrEmpty(AssetBundlePath))
-        {
-            byte[] resourceBytes = TextureHelper.GetResourceBytes(AssetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
-            if (AssetBundleHelper.TryGet(resourceBytes, AssetBundlePrefabName, out T prefab))
-            {
-                return prefab;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         if (!string.IsNullOrEmpty(ResourcePath))
         {
             return Resources.Load<T>(ResourcePath);
@@ -81,7 +69,7 @@ public class ResourceLookup : ICloneable
 
     public override string ToString()
     {
-        return $"ResourceLookup(AssetBundlePath:{AssetBundlePath}, AssetBundlePrefabName:{AssetBundlePrefabName}, ResourcePath:{ResourcePath})";
+        return $"ResourceLookup(ResourcePath:{ResourcePath}, ResourceBankID:{ResourceBankID}, Prefab:{Prefab})";
     }
 
     public object Clone()
