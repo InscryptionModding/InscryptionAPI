@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Reflection;
+using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
@@ -122,7 +124,100 @@ public static class ConsumableItemManager
         }
     }
     
-#endregion
+    [HarmonyPatch(typeof(ConsumableItem), nameof(ConsumableItem.CanActivate), new Type[]{})]
+    private class ConsumableItem_CanActivate
+    {
+        public static bool Prefix(ConsumableItem __instance, ref bool __result)
+        {
+            if (__instance.Data is ConsumableItemData consumableItemData)
+            {
+                if (consumableItemData.CanActivateOutsideBattles())
+                {
+                    if (!GameFlowManager.IsCardBattle)
+                    {
+                        // We are not in a card battle. Unique behaviour!
+                        __result = __instance.ExtraActivationPrerequisitesMet();
+                        return false;
+                    }
+                }
+            }
+            
+            // Keep original activation behaviour
+            return true;
+        }
+    }
+    
+    [HarmonyPatch]
+    private class ConsumableItemSlot_ConsumeItemEnumerator
+    {
+        [HarmonyPatch(typeof(ConsumableItemSlot), "ConsumeItem")]
+        [HarmonyPostfix]
+        private static IEnumerator Postfix(IEnumerator result, ConsumableItemSlot __instance)
+        {
+            ConsumableItemSlot_ConsumeItem.currentItemData = __instance.Consumable.Data;
+            return result;
+        }
+    }
+
+    [HarmonyPatch]
+    internal class ConsumableItemSlot_ConsumeItem
+    {
+        static Type ConsumableItemSlot_ConsumeItem_Class = Type.GetType("DiskCardGame.ConsumableItemSlot+<ConsumeItem>d__15, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+        
+        static MethodInfo SwitchToViewMethod = AccessTools.Method(typeof(ViewManager), nameof(ViewManager.SwitchToView), new Type[] { typeof(View), typeof(bool), typeof(bool) });
+        static MethodInfo CustomSwitchToViewMethod = AccessTools.Method(typeof(ConsumableItemSlot_ConsumeItem), nameof(SwitchToView), new Type[] { typeof(ViewManager), typeof(View), typeof(bool), typeof(bool) });
+
+        internal static ItemData currentItemData = null;
+        
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(ConsumableItemSlot_ConsumeItem_Class, "MoveNext");
+        }
+
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            // === We want to turn this
+
+            // ConsumableItemSlot consumableItemSlot = <>4__this;
+            // ...
+            // Singleton<ViewManager>.Instance.SwitchToView(..., ..., ...);
+
+            // === Into this
+
+            // ConsumableItemSlot consumableItemSlot = <>4__this;
+            // ...
+            // GetNextTargetView(..., ..., ...);
+
+            // ===
+            
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++)
+            {
+                CodeInstruction codeInstruction = codes[i];
+                if (codeInstruction.operand == SwitchToViewMethod)
+                {
+                    // Call CustomSwitchToView instead of View
+                    codeInstruction.operand = CustomSwitchToViewMethod;
+                    i++;
+                }
+            }
+            
+            return codes;
+        }
+  
+        public static void SwitchToView(ViewManager instance, View view, bool immediate, bool lockAfter)
+        {
+            if(currentItemData != null && currentItemData is ConsumableItemData itemData && itemData.CanActivateOutsideBattles())
+            {
+                // Do nothing!
+                return;
+            }
+            
+            instance.SwitchToView(view, immediate, lockAfter);
+        }
+    }
+
+    #endregion
 
     private static Sprite cardinbottleSprite;
     private static ConsumableItemResource defaultItemModel = null;
