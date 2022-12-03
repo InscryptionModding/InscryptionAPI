@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using DiskCardGame;
 using UnityEngine;
 using HarmonyLib;
@@ -22,6 +23,8 @@ public class TribeManager
     public static readonly ReadOnlyCollection<TribeInfo> NewTribes = new(tribes);
     public static readonly ReadOnlyCollection<Tribe> NewTribesTypes = new(tribeTypes);
 
+    private static Texture2D TribeIconMissing = TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
+    
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
     [HarmonyPostfix]
     private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
@@ -141,6 +144,41 @@ public class TribeManager
     public static bool IsCustomTribe(Tribe tribe)
     {
         return tribeTypes.Contains(tribe);
+    }
+    
+    public static Texture2D GetTribeIcon(Tribe tribe, bool useMissingIconIfNull=true)
+    {
+        Texture2D texture2D = null;
+        if (IsCustomTribe(tribe))
+        {
+            foreach (TribeInfo tribeInfo in NewTribes)
+            {
+                if (tribeInfo.tribe == tribe)
+                {
+                    if (tribeInfo.icon != null && tribeInfo.icon.texture != null)
+                    {
+                        texture2D = tribeInfo.icon.texture;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+        {
+            // Vanilla tribe icon
+            string str = "Art/Cards/TribeIcons/tribeicon_" + tribe.ToString().ToLowerInvariant();
+            Sprite sprite = ResourceBank.Get<Sprite>(str);
+            if (sprite != null)
+            {
+                texture2D = sprite.texture;
+            }
+        }
+        
+        if(texture2D == null && useMissingIconIfNull)
+        {
+            texture2D = TribeIconMissing;
+        }
+        return texture2D;
     }
 
     public class TribeInfo

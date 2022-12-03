@@ -97,97 +97,6 @@ public static class TotemManager
             }
         }
     }
-    
-    [HarmonyPatch(typeof(CompositeTotemPiece), "Start", new Type[]{})]
-    private class CompositeTotemPiece_Start
-    {
-        public static bool Prefix(CompositeTotemPiece __instance)
-        {
-            if (__instance.emissiveRenderer == null)
-            {
-                GameObject icon = __instance.gameObject.FindChild("Icon");
-                if (icon != null)
-                {       
-                    __instance.emissiveRenderer = icon.GetComponent<Renderer>();
-                }
-                else
-                {
-                    InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign emissiveRenderer!");
-                }
-            }
-
-            return true;
-        }
-    }
-    
-    [HarmonyPatch(typeof(CompositeTotemPiece), "SetData", new Type[]{typeof(ItemData)})]
-    private class CompositeTotemPiece_SetData
-    {
-        private static Texture2D tribeIconMissing;
-        public static bool Prefix(CompositeTotemPiece __instance, ItemData data)
-        {
-            if (__instance.emissiveRenderer != null)
-            {
-                // Not a custom totem top 
-                return true;
-            }
-            
-            if (data is not TotemTopData topData)
-            {
-                return true;
-            }
-            
-            // Get texture to apply
-            Texture2D texture2D = null;
-            if (TribeManager.IsCustomTribe(topData.prerequisites.tribe))
-            {
-                foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes)
-                {
-                    if (tribeInfo.tribe == topData.prerequisites.tribe)
-                    {
-                        if (tribeInfo.icon != null && tribeInfo.icon.texture != null)
-                        {
-                            texture2D = tribeInfo.icon.texture;
-                        }
-                        else
-                        {
-                            tribeIconMissing ??= TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
-                            texture2D = tribeIconMissing;
-                        }
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                // Vanilla tribe icon
-                string str = "Art/Cards/TribeIcons/tribeicon_" + topData.prerequisites.tribe.ToString().ToLowerInvariant();
-                Sprite sprite = ResourceBank.Get<Sprite>(str);
-                texture2D = sprite.texture;
-            }
-            
-            // Populate icon
-            GameObject icon = __instance.gameObject.FindChild("Icon");
-            if (icon != null)
-            {
-                Renderer iconRenderer = icon.GetComponent<Renderer>();
-                if (iconRenderer != null)
-                {
-                    iconRenderer.material.mainTexture = texture2D;
-                }
-                else
-                {
-                    InscryptionAPIPlugin.Logger.LogError($"Could not find Renderer on Icon GameObject to assign tribe icon!");
-                }
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign tribe icon!");
-            }
-
-            return true;
-        }
-    }
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
     private class ResourceBank_Awake
@@ -267,6 +176,7 @@ public static class TotemManager
         }
     }
 
+    [Obsolete("Deprecated. Use NewTopPiece<T> instead.")]
     public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab=null)
     {
         if (prefab == null)
@@ -279,6 +189,24 @@ public static class TotemManager
         {
             Name = name,
             GUID = guid,
+            Prefab = prefab,
+            Tribe = tribe
+        });
+    }
+
+    public static CustomTotemTop NewTopPiece<T>(string name, string guid, Tribe tribe, GameObject prefab) where T : CompositeTotemPiece
+    {
+        if (prefab == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
+            return null;
+        }
+    
+        return Add(new CustomTotemTop()
+        {
+            Name = name,
+            GUID = guid,
+            Type = typeof(T),
             Prefab = prefab,
             Tribe = tribe
         });
@@ -363,7 +291,7 @@ public static class TotemManager
             // Add require components in case the prefab doesn't have them
             if (prefab.GetComponent<CompositeTotemPiece>() == null)
             {
-                prefab.AddComponent<CompositeTotemPiece>();
+                prefab.AddComponent(totem.Type);
             }
             if (prefab.GetComponent<Animator>() == null)
             {
@@ -389,6 +317,7 @@ public static class TotemManager
     {
         public string Name;
         public string GUID;
+        public Type Type = typeof(CustomIconTotemTopPiece);
         public GameObject Prefab;
         public Tribe Tribe;
     }
