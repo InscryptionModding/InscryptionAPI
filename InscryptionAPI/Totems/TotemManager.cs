@@ -234,6 +234,7 @@ public static class TotemManager
     /// </summary>
     public static CustomTotemTop DefaultTotemTop => defaultTotemTop;
 
+    [Obsolete("Obsolete. Use SetDefaultTotemTop<T> instead to ensure the totem top is set up correctly.")]
     public static void SetDefaultTotemTop(GameObject gameObject)
     {
         if (defaultTotemTop == null)
@@ -243,6 +244,19 @@ public static class TotemManager
         
         defaultTotemTop.Prefab = gameObject;
         GameObject.DontDestroyOnLoad(gameObject);
+    }
+    
+    public static void SetDefaultTotemTop<T>(GameObject gameObject) where T : CompositeTotemPiece
+    {
+        if (defaultTotemTop == null)
+        {
+            InitializeDefaultTotemTop();
+        }
+        
+        // Attach missing components
+        SetupTotemTopPrefab(gameObject, typeof(T));
+        
+        defaultTotemTop.Prefab = gameObject;
     }
 
     private static void InitializeDefaultTotemTop()
@@ -288,21 +302,9 @@ public static class TotemManager
                 continue;
             }
             
-            // Add require components in case the prefab doesn't have them
-            if (prefab.GetComponent<CompositeTotemPiece>() == null)
-            {
-                prefab.AddComponent(totem.Type);
-            }
-            if (prefab.GetComponent<Animator>() == null)
-            {
-                Animator addComponent = prefab.AddComponent<Animator>();
-                addComponent.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("animation/items/ItemAnim");
-                addComponent.Rebind();
-            }
+            // Attach missing components
+            SetupTotemTopPrefab(prefab, totem.Type);
 
-            // Mark as dont destroy on load so it doesn't get removed between levels
-            UnityObject.DontDestroyOnLoad(prefab);
-            
             // Add to resources so it can be part of the pool
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
@@ -311,6 +313,23 @@ public static class TotemManager
             });
         }
 
+    }
+    private static void SetupTotemTopPrefab(GameObject prefab, Type scriptType)
+    {
+        // Add require components in case the prefab doesn't have them
+        if (prefab.GetComponent<CompositeTotemPiece>() == null)
+        {
+            prefab.AddComponent(scriptType);
+        }
+        if (prefab.GetComponent<Animator>() == null)
+        {
+            Animator addComponent = prefab.AddComponent<Animator>();
+            addComponent.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("animation/items/ItemAnim");
+            addComponent.Rebind();
+        }
+
+        // Mark as dont destroy on load so it doesn't get removed between levels
+        UnityObject.DontDestroyOnLoad(prefab);
     }
 
     public class CustomTotemTop
