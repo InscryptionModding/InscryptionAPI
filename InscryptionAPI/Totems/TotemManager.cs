@@ -4,6 +4,7 @@ using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
@@ -65,7 +66,7 @@ public static class TotemManager
                     {
                         if (codes[j].opcode == OpCodes.Stloc_0)
                         {
-                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), "AddCustomTribesToList", new Type[] { typeof(List<Tribe>)});
+                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>)});
                             
                             // Stored the list
                             codes.Insert(j+1, new CodeInstruction(OpCodes.Ldloc_0));
@@ -122,6 +123,7 @@ public static class TotemManager
     [HarmonyPatch(typeof(CompositeTotemPiece), "SetData", new Type[]{typeof(ItemData)})]
     private class CompositeTotemPiece_SetData
     {
+        private static Texture2D tribeIconMissing;
         public static bool Prefix(CompositeTotemPiece __instance, ItemData data)
         {
             if (__instance.emissiveRenderer != null)
@@ -143,7 +145,15 @@ public static class TotemManager
                 {
                     if (tribeInfo.tribe == topData.prerequisites.tribe)
                     {
-                        texture2D = tribeInfo.icon.texture;
+                        if (tribeInfo.icon != null && tribeInfo.icon.texture != null)
+                        {
+                            texture2D = tribeInfo.icon.texture;
+                        }
+                        else
+                        {
+                            tribeIconMissing ??= TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
+                            texture2D = tribeIconMissing;
+                        }
                         break;
                     }
                 }
