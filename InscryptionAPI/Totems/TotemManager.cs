@@ -236,8 +236,6 @@ public static class TotemManager
     {
         public static bool Prefix(TotemTopData __instance, ref string __result)
         {
-            // TODO: Support vanilla totem top overrides
-            
             // Custom totem tops will always use the fallback UNLESS there is an override
             if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe))
             {
@@ -261,6 +259,12 @@ public static class TotemManager
 
     public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab=null)
     {
+        if (prefab == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
+            return null;
+        }
+    
         return Add(new CustomTotemTop()
         {
             Name = name,
@@ -340,6 +344,11 @@ public static class TotemManager
             }
             
             GameObject prefab = totem.Prefab;
+            if (prefab == null)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {totem.GUID}.{totem.Name}. Prefab is null!");
+                continue;
+            }
             
             // Add require components in case the prefab doesn't have them
             if (prefab.GetComponent<CompositeTotemPiece>() == null)
@@ -356,6 +365,7 @@ public static class TotemManager
             // Mark as dont destroy on load so it doesn't get removed between levels
             UnityObject.DontDestroyOnLoad(prefab);
             
+            // Add to resources so it can be part of the pool
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
                 path = path,
