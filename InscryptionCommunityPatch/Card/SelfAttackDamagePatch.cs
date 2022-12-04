@@ -1,6 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using Sirenix.Utilities;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -35,7 +34,6 @@ public class SelfAttackDamagePatch
         // we want to slowly narrow our search until we find exactly where we want to insert our code
         for (int i = 0; i < codes.Count; i++)
         {
-            //PatchPlugin.Logger.LogInfo($"{i} - {codes[i]}");
             if (SelfDamageSupport(codes, i))
                 break;
         }
