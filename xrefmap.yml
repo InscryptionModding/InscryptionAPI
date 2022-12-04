@@ -4496,6 +4496,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.TribeManager.Add
   nameWithType: TribeManager.Add
+- uid: InscryptionAPI.Card.TribeManager.GetTribeIcon(DiskCardGame.Tribe,System.Boolean)
+  name: GetTribeIcon(Tribe, Boolean)
+  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GetTribeIcon_DiskCardGame_Tribe_System_Boolean_
+  commentId: M:InscryptionAPI.Card.TribeManager.GetTribeIcon(DiskCardGame.Tribe,System.Boolean)
+  fullName: InscryptionAPI.Card.TribeManager.GetTribeIcon(DiskCardGame.Tribe, System.Boolean)
+  nameWithType: TribeManager.GetTribeIcon(Tribe, Boolean)
+- uid: InscryptionAPI.Card.TribeManager.GetTribeIcon*
+  name: GetTribeIcon
+  href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_GetTribeIcon_
+  commentId: Overload:InscryptionAPI.Card.TribeManager.GetTribeIcon
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.TribeManager.GetTribeIcon
+  nameWithType: TribeManager.GetTribeIcon
 - uid: InscryptionAPI.Card.TribeManager.IsCustomTribe(DiskCardGame.Tribe)
   name: IsCustomTribe(Tribe)
   href: api/InscryptionAPI.Card.TribeManager.html#InscryptionAPI_Card_TribeManager_IsCustomTribe_DiskCardGame_Tribe_
@@ -6449,6 +6462,19 @@ references:
   commentId: T:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
   fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
   nameWithType: ConsumableItemDataExtensions
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles(DiskCardGame.ConsumableItemData)
+  name: CanActivateOutsideBattles(ConsumableItemData)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_CanActivateOutsideBattles_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemDataExtensions.CanActivateOutsideBattles(ConsumableItemData)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles*
+  name: CanActivateOutsideBattles
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_CanActivateOutsideBattles_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles
+  nameWithType: ConsumableItemDataExtensions.CanActivateOutsideBattles
 - uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetCardWithinBottle(DiskCardGame.ConsumableItemData)
   name: GetCardWithinBottle(ConsumableItemData)
   href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetCardWithinBottle_DiskCardGame_ConsumableItemData_
@@ -6592,6 +6618,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetAscensionUnlocked
   nameWithType: ConsumableItemDataExtensions.SetAscensionUnlocked
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles(DiskCardGame.ConsumableItemData,System.Boolean)
+  name: SetCanActivateOutsideBattles(ConsumableItemData, Boolean)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetCanActivateOutsideBattles_DiskCardGame_ConsumableItemData_System_Boolean_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles(DiskCardGame.ConsumableItemData,System.Boolean)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles(DiskCardGame.ConsumableItemData, System.Boolean)
+  nameWithType: ConsumableItemDataExtensions.SetCanActivateOutsideBattles(ConsumableItemData, Boolean)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles*
+  name: SetCanActivateOutsideBattles
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetCanActivateOutsideBattles_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCanActivateOutsideBattles
+  nameWithType: ConsumableItemDataExtensions.SetCanActivateOutsideBattles
 - uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetCardWithinBottle(DiskCardGame.ConsumableItemData,System.String)
   name: SetCardWithinBottle(ConsumableItemData, String)
   href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetCardWithinBottle_DiskCardGame_ConsumableItemData_System_String_
@@ -6793,32 +6832,6 @@ references:
   commentId: T:InscryptionAPI.Items.ResourceLookup
   fullName: InscryptionAPI.Items.ResourceLookup
   nameWithType: ResourceLookup
-- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
-  name: AssetBundlePath
-  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePath
-  commentId: P:InscryptionAPI.Items.ResourceLookup.AssetBundlePath
-  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
-  nameWithType: ResourceLookup.AssetBundlePath
-- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePath*
-  name: AssetBundlePath
-  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePath_
-  commentId: Overload:InscryptionAPI.Items.ResourceLookup.AssetBundlePath
-  isSpec: "True"
-  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePath
-  nameWithType: ResourceLookup.AssetBundlePath
-- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
-  name: AssetBundlePrefabName
-  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePrefabName
-  commentId: P:InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
-  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
-  nameWithType: ResourceLookup.AssetBundlePrefabName
-- uid: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName*
-  name: AssetBundlePrefabName
-  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_AssetBundlePrefabName_
-  commentId: Overload:InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
-  isSpec: "True"
-  fullName: InscryptionAPI.Items.ResourceLookup.AssetBundlePrefabName
-  nameWithType: ResourceLookup.AssetBundlePrefabName
 - uid: InscryptionAPI.Items.ResourceLookup.Clone
   name: Clone()
   href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_Clone
@@ -9194,6 +9207,38 @@ references:
   commentId: N:InscryptionAPI.Totems
   fullName: InscryptionAPI.Totems
   nameWithType: InscryptionAPI.Totems
+- uid: InscryptionAPI.Totems.CustomIconTotemTopPiece
+  name: CustomIconTotemTopPiece
+  href: api/InscryptionAPI.Totems.CustomIconTotemTopPiece.html
+  commentId: T:InscryptionAPI.Totems.CustomIconTotemTopPiece
+  fullName: InscryptionAPI.Totems.CustomIconTotemTopPiece
+  nameWithType: CustomIconTotemTopPiece
+- uid: InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName
+  name: IconGameObjectName
+  href: api/InscryptionAPI.Totems.CustomIconTotemTopPiece.html#InscryptionAPI_Totems_CustomIconTotemTopPiece_IconGameObjectName
+  commentId: P:InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName
+  fullName: InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName
+  nameWithType: CustomIconTotemTopPiece.IconGameObjectName
+- uid: InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName*
+  name: IconGameObjectName
+  href: api/InscryptionAPI.Totems.CustomIconTotemTopPiece.html#InscryptionAPI_Totems_CustomIconTotemTopPiece_IconGameObjectName_
+  commentId: Overload:InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName
+  isSpec: "True"
+  fullName: InscryptionAPI.Totems.CustomIconTotemTopPiece.IconGameObjectName
+  nameWithType: CustomIconTotemTopPiece.IconGameObjectName
+- uid: InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData(DiskCardGame.ItemData)
+  name: SetData(ItemData)
+  href: api/InscryptionAPI.Totems.CustomIconTotemTopPiece.html#InscryptionAPI_Totems_CustomIconTotemTopPiece_SetData_DiskCardGame_ItemData_
+  commentId: M:InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData(DiskCardGame.ItemData)
+  fullName: InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData(DiskCardGame.ItemData)
+  nameWithType: CustomIconTotemTopPiece.SetData(ItemData)
+- uid: InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData*
+  name: SetData
+  href: api/InscryptionAPI.Totems.CustomIconTotemTopPiece.html#InscryptionAPI_Totems_CustomIconTotemTopPiece_SetData_
+  commentId: Overload:InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData
+  isSpec: "True"
+  fullName: InscryptionAPI.Totems.CustomIconTotemTopPiece.SetData
+  nameWithType: CustomIconTotemTopPiece.SetData
 - uid: InscryptionAPI.Totems.TotemManager
   name: TotemManager
   href: api/InscryptionAPI.Totems.TotemManager.html
@@ -9230,6 +9275,12 @@ references:
   commentId: F:InscryptionAPI.Totems.TotemManager.CustomTotemTop.Tribe
   fullName: InscryptionAPI.Totems.TotemManager.CustomTotemTop.Tribe
   nameWithType: TotemManager.CustomTotemTop.Tribe
+- uid: InscryptionAPI.Totems.TotemManager.CustomTotemTop.Type
+  name: Type
+  href: api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.html#InscryptionAPI_Totems_TotemManager_CustomTotemTop_Type
+  commentId: F:InscryptionAPI.Totems.TotemManager.CustomTotemTop.Type
+  fullName: InscryptionAPI.Totems.TotemManager.CustomTotemTop.Type
+  nameWithType: TotemManager.CustomTotemTop.Type
 - uid: InscryptionAPI.Totems.TotemManager.DefaultTotemTop
   name: DefaultTotemTop
   href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_DefaultTotemTop
@@ -9256,6 +9307,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Totems.TotemManager.NewTopPiece
   nameWithType: TotemManager.NewTopPiece
+- uid: InscryptionAPI.Totems.TotemManager.NewTopPiece``1(System.String,System.String,DiskCardGame.Tribe,UnityEngine.GameObject)
+  name: NewTopPiece<T>(String, String, Tribe, GameObject)
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTopPiece__1_System_String_System_String_DiskCardGame_Tribe_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Totems.TotemManager.NewTopPiece``1(System.String,System.String,DiskCardGame.Tribe,UnityEngine.GameObject)
+  name.vb: NewTopPiece(Of T)(String, String, Tribe, GameObject)
+  fullName: InscryptionAPI.Totems.TotemManager.NewTopPiece<T>(System.String, System.String, DiskCardGame.Tribe, UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Totems.TotemManager.NewTopPiece(Of T)(System.String, System.String, DiskCardGame.Tribe, UnityEngine.GameObject)
+  nameWithType: TotemManager.NewTopPiece<T>(String, String, Tribe, GameObject)
+  nameWithType.vb: TotemManager.NewTopPiece(Of T)(String, String, Tribe, GameObject)
 - uid: InscryptionAPI.Totems.TotemManager.NewTotemTops
   name: NewTotemTops
   href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_NewTotemTops
@@ -9275,6 +9335,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop
   nameWithType: TotemManager.SetDefaultTotemTop
+- uid: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop``1(UnityEngine.GameObject)
+  name: SetDefaultTotemTop<T>(GameObject)
+  href: api/InscryptionAPI.Totems.TotemManager.html#InscryptionAPI_Totems_TotemManager_SetDefaultTotemTop__1_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop``1(UnityEngine.GameObject)
+  name.vb: SetDefaultTotemTop(Of T)(GameObject)
+  fullName: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop<T>(UnityEngine.GameObject)
+  fullName.vb: InscryptionAPI.Totems.TotemManager.SetDefaultTotemTop(Of T)(UnityEngine.GameObject)
+  nameWithType: TotemManager.SetDefaultTotemTop<T>(GameObject)
+  nameWithType.vb: TotemManager.SetDefaultTotemTop(Of T)(GameObject)
 - uid: InscryptionAPI.Triggers
   name: InscryptionAPI.Triggers
   href: api/InscryptionAPI.Triggers.html
