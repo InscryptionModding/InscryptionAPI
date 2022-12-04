@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.7.2
+- Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.
+- Added Missing Tribe Icon fallback texture for totem tops when a tribe has no icon
+- Changed TotemManager to accept a `CompositeTotemPiece` type for custom behaviour other than always a custom icon
+- Fixed lag when entering gain consumable item map node
+- Fixed crash when using custom consumable items
+- Fixed hard lock when getting totem top that doesn't have an icon
+
 ## v2.7.1
 - Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
 - Added Squirrel tribe art (Thanks Drift!)
