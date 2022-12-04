@@ -164,21 +164,17 @@ public class Act1LatchAbilityFix
             {
                 CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility)
                 {
-                    fromCardMerge = true,
-                    fromLatch = true
+                    fromCardMerge = SaveManager.SaveFile.IsPart1,
+                    fromLatch = SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3
                 };
+
                 PatchPlugin.Logger.LogInfo($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
 
-                if (selectedSlot.Card.Info.name == "!DEATHCARD_BASE")
-                {
-                    selectedSlot.Card.AddTemporaryMod(mod);
-                }
-                else
-                {
-                    CardInfo info = selectedSlot.Card.Info.Clone() as CardInfo;
-                    info.Mods.Add(mod);
-                    selectedSlot.Card.SetInfo(info);
-                }
+                // sigil patches don't render in Grimora's act, so only set these to true if we're not in Grimora's act
+                selectedSlot.Card.AddTemporaryMod(mod);
+                selectedSlot.Card.RenderInfo.forceEmissivePortrait = true;
+                selectedSlot.Card.UpdateStatsText();
+            
                 selectedSlot.Card.Anim.PlayTransformAnimation();
                 __state.OnSuccessfullyLatched(selectedSlot.Card);
 
