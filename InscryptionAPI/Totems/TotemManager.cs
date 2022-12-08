@@ -4,6 +4,7 @@ using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
@@ -65,7 +66,7 @@ public static class TotemManager
                     {
                         if (codes[j].opcode == OpCodes.Stloc_0)
                         {
-                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), "AddCustomTribesToList", new Type[] { typeof(List<Tribe>)});
+                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>)});
                             
                             // Stored the list
                             codes.Insert(j+1, new CodeInstruction(OpCodes.Ldloc_0));
@@ -94,88 +95,6 @@ public static class TotemManager
                     }
                 }
             }
-        }
-    }
-    
-    [HarmonyPatch(typeof(CompositeTotemPiece), "Start", new Type[]{})]
-    private class CompositeTotemPiece_Start
-    {
-        public static bool Prefix(CompositeTotemPiece __instance)
-        {
-            if (__instance.emissiveRenderer == null)
-            {
-                GameObject icon = __instance.gameObject.FindChild("Icon");
-                if (icon != null)
-                {       
-                    __instance.emissiveRenderer = icon.GetComponent<Renderer>();
-                }
-                else
-                {
-                    InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign emissiveRenderer!");
-                }
-            }
-
-            return true;
-        }
-    }
-    
-    [HarmonyPatch(typeof(CompositeTotemPiece), "SetData", new Type[]{typeof(ItemData)})]
-    private class CompositeTotemPiece_SetData
-    {
-        public static bool Prefix(CompositeTotemPiece __instance, ItemData data)
-        {
-            if (__instance.emissiveRenderer != null)
-            {
-                // Not a custom totem top 
-                return true;
-            }
-            
-            if (data is not TotemTopData topData)
-            {
-                return true;
-            }
-            
-            // Get texture to apply
-            Texture2D texture2D = null;
-            if (TribeManager.IsCustomTribe(topData.prerequisites.tribe))
-            {
-                foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes)
-                {
-                    if (tribeInfo.tribe == topData.prerequisites.tribe)
-                    {
-                        texture2D = tribeInfo.icon.texture;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                // Vanilla tribe icon
-                string str = "Art/Cards/TribeIcons/tribeicon_" + topData.prerequisites.tribe.ToString().ToLowerInvariant();
-                Sprite sprite = ResourceBank.Get<Sprite>(str);
-                texture2D = sprite.texture;
-            }
-            
-            // Populate icon
-            GameObject icon = __instance.gameObject.FindChild("Icon");
-            if (icon != null)
-            {
-                Renderer iconRenderer = icon.GetComponent<Renderer>();
-                if (iconRenderer != null)
-                {
-                    iconRenderer.material.mainTexture = texture2D;
-                }
-                else
-                {
-                    InscryptionAPIPlugin.Logger.LogError($"Could not find Renderer on Icon GameObject to assign tribe icon!");
-                }
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign tribe icon!");
-            }
-
-            return true;
         }
     }
 
@@ -236,8 +155,6 @@ public static class TotemManager
     {
         public static bool Prefix(TotemTopData __instance, ref string __result)
         {
-            // TODO: Support vanilla totem top overrides
-            
             // Custom totem tops will always use the fallback UNLESS there is an override
             if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe))
             {
@@ -259,12 +176,37 @@ public static class TotemManager
         }
     }
 
+    [Obsolete("Deprecated. Use NewTopPiece<T> instead.")]
     public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab=null)
     {
+        if (prefab == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
+            return null;
+        }
+    
         return Add(new CustomTotemTop()
         {
             Name = name,
             GUID = guid,
+            Prefab = prefab,
+            Tribe = tribe
+        });
+    }
+
+    public static CustomTotemTop NewTopPiece<T>(string name, string guid, Tribe tribe, GameObject prefab) where T : CompositeTotemPiece
+    {
+        if (prefab == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
+            return null;
+        }
+    
+        return Add(new CustomTotemTop()
+        {
+            Name = name,
+            GUID = guid,
+            Type = typeof(T),
             Prefab = prefab,
             Tribe = tribe
         });
@@ -292,6 +234,7 @@ public static class TotemManager
     /// </summary>
     public static CustomTotemTop DefaultTotemTop => defaultTotemTop;
 
+    [Obsolete("Obsolete. Use SetDefaultTotemTop<T> instead to ensure the totem top is set up correctly.")]
     public static void SetDefaultTotemTop(GameObject gameObject)
     {
         if (defaultTotemTop == null)
@@ -301,6 +244,19 @@ public static class TotemManager
         
         defaultTotemTop.Prefab = gameObject;
         GameObject.DontDestroyOnLoad(gameObject);
+    }
+    
+    public static void SetDefaultTotemTop<T>(GameObject gameObject) where T : CompositeTotemPiece
+    {
+        if (defaultTotemTop == null)
+        {
+            InitializeDefaultTotemTop();
+        }
+        
+        // Attach missing components
+        SetupTotemTopPrefab(gameObject, typeof(T));
+        
+        defaultTotemTop.Prefab = gameObject;
     }
 
     private static void InitializeDefaultTotemTop()
@@ -340,22 +296,16 @@ public static class TotemManager
             }
             
             GameObject prefab = totem.Prefab;
+            if (prefab == null)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {totem.GUID}.{totem.Name}. Prefab is null!");
+                continue;
+            }
             
-            // Add require components in case the prefab doesn't have them
-            if (prefab.GetComponent<CompositeTotemPiece>() == null)
-            {
-                prefab.AddComponent<CompositeTotemPiece>();
-            }
-            if (prefab.GetComponent<Animator>() == null)
-            {
-                Animator addComponent = prefab.AddComponent<Animator>();
-                addComponent.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("animation/items/ItemAnim");
-                addComponent.Rebind();
-            }
+            // Attach missing components
+            SetupTotemTopPrefab(prefab, totem.Type);
 
-            // Mark as dont destroy on load so it doesn't get removed between levels
-            UnityObject.DontDestroyOnLoad(prefab);
-            
+            // Add to resources so it can be part of the pool
             ResourceBank.instance.resources.Add(new ResourceBank.Resource()
             {
                 path = path,
@@ -364,11 +314,29 @@ public static class TotemManager
         }
 
     }
+    private static void SetupTotemTopPrefab(GameObject prefab, Type scriptType)
+    {
+        // Add require components in case the prefab doesn't have them
+        if (prefab.GetComponent<CompositeTotemPiece>() == null)
+        {
+            prefab.AddComponent(scriptType);
+        }
+        if (prefab.GetComponent<Animator>() == null)
+        {
+            Animator addComponent = prefab.AddComponent<Animator>();
+            addComponent.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("animation/items/ItemAnim");
+            addComponent.Rebind();
+        }
+
+        // Mark as dont destroy on load so it doesn't get removed between levels
+        UnityObject.DontDestroyOnLoad(prefab);
+    }
 
     public class CustomTotemTop
     {
         public string Name;
         public string GUID;
+        public Type Type = typeof(CustomIconTotemTopPiece);
         public GameObject Prefab;
         public Tribe Tribe;
     }

@@ -78,6 +78,13 @@ public static class ConsumableItemDataExtensions
     }
 
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
+    public static ConsumableItemData SetCanActivateOutsideBattles(this ConsumableItemData data, bool alwaysActivatable)
+    {
+        data.SetExtendedProperty("CanActivateOutsideBattles", alwaysActivatable);
+        return data;
+    }
+
+    /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetPrefabID(this ConsumableItemData data, string prefabID)
     {
         data.prefabId = prefabID;
@@ -169,6 +176,13 @@ public static class ConsumableItemDataExtensions
     public static Type GetComponentType(this ConsumableItemData data)
     {
         return Type.GetType(data.GetExtendedProperty("ComponentType"));
+    }
+
+    /// <returns>Mod Prefix</returns>
+    public static bool CanActivateOutsideBattles(this ConsumableItemData data)
+    {
+        bool? extendedPropertyAsBool = data.GetExtendedPropertyAsBool("CanActivateOutsideBattles");
+        return extendedPropertyAsBool.HasValue && extendedPropertyAsBool.Value;
     }
     
 #region ModPrefixesAndTags
