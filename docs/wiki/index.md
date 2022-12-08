@@ -247,11 +247,21 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
-#### Additional functionality
+### Interfaces and Additional Functionality
 
-There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. However, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
+There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with some inheritable interfaces that will allow you to do the following:
 
-**Modify which card slots the card attacks**: To do this, you need to override RespondsToGetOpposingSlots to return true, and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
+#### Modifying Card Slots to Attack
+
+By default cards will attack the opposing card slot. Abilities such as Bifurcated Strike (attack opposing adjacent slots), Omni Strike (attack all occupied card slots), and Double Strike (attack the opposing card slot twice) change this behaviour, allowing a card to attack other slots.
+
+To make an ability that does this, you will need to inherit from IGetOpposingSlots and implement its three methods: RespondsToGetOpposingSlots, GetOpposingSlots, RemoveDefaultAttackSlot.
+
+RespondsToGetOpposingSlots functions identically to standard abilities' RespondsToXXX override bools, controlling if the ability will change the default card slots.
+
+GetOpposingSlots is the main method, and is where you will be doing the meat of your coding. This method needs you to return a list of card slots that your ability wants the card to attack.
+
+RemoveDefaultAttackSlot does as its name suggests; if true, it removes the default attack slot, that being the opposing card slot.
 
 #### Passive Attack and Health Buffs
 
@@ -290,8 +300,6 @@ public class CustomBuffNeighbors : AbilityBehaviour, IPassiveAttackBuff
             int count = 0;
             
             // look at each adjacent slot of the current target of the buff
-            // REMEMBER - 'target' does not refer to the base card, but to the card that is currently being checked, as that is who will be receiving the buff
-            // if we were to check the adjacent cards of the base card and then return an int, we would only be able to buff the base card
             foreach (CardSlot slot in Singleton<BoardManager>.Instance.GetAdjacentSlots(target.Slot))
             {
                 // make sure that the slot and the slot's card both exist
