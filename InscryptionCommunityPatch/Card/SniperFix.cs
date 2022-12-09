@@ -166,7 +166,7 @@ public class SniperFix
         Singleton<ViewManager>.Instance.SwitchToView(Singleton<BoardManager>.Instance.CombatView, false, false);
         Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Locked;
         int numAttacks = GetAttackCount(slot.Card);
-        //opposingSlots.Clear();
+
         Singleton<ViewManager>.Instance.Controller.SwitchToControlMode(Singleton<BoardManager>.Instance.ChoosingSlotViewMode, false);
         Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
         Part1SniperVisualizer visualizer = null;
