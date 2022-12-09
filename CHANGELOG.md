@@ -1,4 +1,5 @@
 # Changelog
+- Fixed sniper fix not accounting for cards with Repulsive ability
 
 ## v2.7.2
 - Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.

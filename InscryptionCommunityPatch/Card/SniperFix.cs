@@ -162,11 +162,11 @@ public class SniperFix
 
     public static IEnumerator SniperAttack(CombatPhaseManager instance, CardSlot slot)
     {
-        List<CardSlot> opposingSlots = slot.Card.GetOpposingSlots();
+        List<CardSlot> opposingSlots = new();
         Singleton<ViewManager>.Instance.SwitchToView(Singleton<BoardManager>.Instance.CombatView, false, false);
         Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Locked;
         int numAttacks = GetAttackCount(slot.Card);
-        opposingSlots.Clear();
+        //opposingSlots.Clear();
         Singleton<ViewManager>.Instance.Controller.SwitchToControlMode(Singleton<BoardManager>.Instance.ChoosingSlotViewMode, false);
         Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
         Part1SniperVisualizer visualizer = null;
@@ -181,7 +181,7 @@ public class SniperFix
             bool anyCards = cards.Count > 0;
             CardSlot GetFirstAvailableOpenSlot()
             {
-                return slots.Find(x => slot.Card.CanAttackDirectly(x) && !slots.Exists((x) => x.Card != null && x.Card.HasAbility(Ability.WhackAMole) && !CardIsAlreadyDead(x.Card) && !slot.Card.CanAttackDirectly(x)));
+                return slots.Find(x => slot.Card.CanAttackDirectly(x) && !slots.Exists((x) => x.Card != null && x.Card.HasAbility(Ability.WhackAMole) && !CardIsAlreadyDeadOrHasRepulsive(x.Card) && !slot.Card.CanAttackDirectly(x)));
             }
             bool CanWin()
             {
@@ -204,9 +204,9 @@ public class SniperFix
             {
                 return opposingSlots.FindAll((x) => x != null && x.Card != null && x.Card == pc).Count;
             }
-            bool CardIsAlreadyDead(PlayableCard pc)
+            bool CardIsAlreadyDeadOrHasRepulsive(PlayableCard pc)
             {
-                return pc == null || pc.Dead || CanKillCard(pc, NumCardTargets(pc));
+                return pc == null || pc.Dead || pc.HasAbility(Ability.PreventAttack) || CanKillCard(pc, NumCardTargets(pc));
             }
             bool DeathFromSpiky(PlayableCard pc)
             {
@@ -224,15 +224,15 @@ public class SniperFix
             }
             PlayableCard GetFirstStrongestAttackableCard()
             {
-                return anyCards ? GetSorted(cards.FindAll((x) => !slot.Card.CanAttackDirectly(x.Slot) && !DeathFromSpiky(x) && !CardIsAlreadyDead(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
+                return anyCards ? GetSorted(cards.FindAll((x) => !slot.Card.CanAttackDirectly(x.Slot) && !DeathFromSpiky(x) && !CardIsAlreadyDeadOrHasRepulsive(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
             }
             PlayableCard GetFirstStrongestAttackableCardNoPreferences()
             {
-                return anyCards ? GetSorted(cards.FindAll((x) => !slot.Card.CanAttackDirectly(x.Slot) && !CardIsAlreadyDead(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
+                return anyCards ? GetSorted(cards.FindAll((x) => !slot.Card.CanAttackDirectly(x.Slot) && !CardIsAlreadyDeadOrHasRepulsive(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
             }
             PlayableCard GetStrongestKillableCard()
             {
-                return anyCards ? GetSorted(cards.FindAll((x) => CanKillCard(x) && !DeathFromSpiky(x) && !CardIsAlreadyDead(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
+                return anyCards ? GetSorted(cards.FindAll((x) => CanKillCard(x) && !DeathFromSpiky(x) && !CardIsAlreadyDeadOrHasRepulsive(x)), (x, x2) => x.PowerLevel - x2.PowerLevel).FirstOrDefault() : null;
             }
             for (int i = 0; i < numAttacks; i++)
             {
