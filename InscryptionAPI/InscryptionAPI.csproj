@@ -26,6 +26,8 @@
         <EmbeddedResource Include="rulebookitemicon_cardinbottle.png" />
         <None Remove="tribeicon_none.png" />
         <EmbeddedResource Include="tribeicon_none.png" />
+        <None Remove="maskFlat" />
+        <EmbeddedResource Include="maskFlat" />
     </ItemGroup>
 
     <ItemGroup>
