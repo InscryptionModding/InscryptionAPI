@@ -247,80 +247,27 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
-### Interfaces and Additional Functionality
+### Additional Functionality
 
-There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with some inheritable interfaces that will allow you to do the following:
+There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
 
-#### Modifying Card Slots to Attack
+#### Modify Card Slots to Attack
 
-By default cards will attack the opposing card slot. Abilities such as Bifurcated Strike (attack opposing adjacent slots), Omni Strike (attack all occupied card slots), and Double Strike (attack the opposing card slot twice) change this behaviour, allowing a card to attack other slots.
-
-To make an ability that does this, you will need to inherit from IGetOpposingSlots and implement its three methods: RespondsToGetOpposingSlots, GetOpposingSlots, RemoveDefaultAttackSlot.
-
-RespondsToGetOpposingSlots functions identically to standard abilities' RespondsToXXX override bools, controlling if the ability will change the default card slots.
-
-GetOpposingSlots is the main method, and is where you will be doing the meat of your coding. This method needs you to return a list of card slots that your ability wants the card to attack.
-
-RemoveDefaultAttackSlot does as its name suggests; if true, it removes the default attack slot, that being the opposing card slot.
+To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
 
 #### Passive Attack and Health Buffs
 
-Passive attack and health buffs are - as their names suggests - passive stat buffs that are automatically given to qualifying cards, and automatically removed when the base card dies. Contrary to their name, these don't have to be buffs, but can also be debuffs!
+To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs. These return an int representing the buff to give to 'target'.
 
-In order to create an ability that provides a passive stat buff, you need to inherit one of the passive stat buff interfaces in your ability class: IPassiveAttackBuff and IPassiveHealthBuff. Each interface has its own method you must implement - GetPassiveAttackBuff and GetPassiveHealthBuff respectively. These methods return an int, which corresponds to the stat amount the buff will give.
-
-An important thing to keep in mind when coding is that the returned int doesn't apply just to the base card; it applies to **all** cards on the board. In the below example, a card with the custom ability will increase the power of all cards on the board by 1, _even if the base card isn't on the board_.
-```c#
-public class CustomBuffNeighbors : AbilityBehaviour, IPassiveAttackBuff
-{
-    public static Ability ability;
-    public override Ability Ability => ability;
-    
-    // 'target' refers to the card being given the buff, NOT just the base card
-    public int GetPassiveAttackBuff(PlayableCard target)
-    {
-        return 1;
-    }
-}
-```
-
-So unless we want the above effect, we'll want to add some conditions to the buff. For the purpose of this example, we'll be recreating the Leader sigil - buff adjacent cards by 1 Power while the base card is on the board. That would look something like this:
-```c#
-public class CustomBuffNeighbors : AbilityBehaviour, IPassiveAttackBuff
-{
-    public static Ability ability;
-    public override Ability Ability => ability;
-    
-    // 'target' refers to the card being given the buff, NOT just the base card
-    public int GetPassiveAttackBuff(PlayableCard target)
-    {
-        // check that the base card is on the board, otherwise return 0 (do nothing)
-        if (this.Card.OnBoard)
-        {
-            int count = 0;
-            
-            // look at each adjacent slot of the current target of the buff
-            foreach (CardSlot slot in Singleton<BoardManager>.Instance.GetAdjacentSlots(target.Slot))
-            {
-                // make sure that the slot and the slot's card both exist
-                if (slot != null && slot.Card != null)
-                {
-                    // check if the slot's card is the base card (aka if the target card is adjacent to the base card)
-                    if (slot.Card == this.Card)
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
-        return 0;
-    }
-}
-```
-
-This new code restricts the buff to only be given if the base card is on the board, and if the target card is adjacent to the base card. Much better!
+In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what 'target' refers to; the current card being checked. You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.
 
 Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These methods will be called *every frame* for *every instance of the ability!!* If you're not careful, you could bog the game down substantially!
+
+#### Other Functionality
+
+ExtendedAbilityBehaviour also allows you to control whether the ability's triggers will activate when the card is facedown. You will need to override TriggerWhenFaceDown to return true. There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.
+
+It should be noted that usage of ExtendedAbilityBehaviour is not required; all the functionalities mentioned can also be accessed by inheriting from the appropriate interface: IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, and IPassiveHealthBuff.
 
 ### Special Stat Icons
 
