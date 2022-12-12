@@ -154,7 +154,7 @@ public static class CardExtensions
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to remove</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo RemoveAllBaseAbilities(this CardInfo info, params Ability[] abilities)
+    public static CardInfo RemoveAbilities(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
         {
@@ -171,7 +171,7 @@ public static class CardExtensions
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to remove</param>
     /// <returns>The same card info so a chain can continue</returns>
-    public static CardInfo RemoveBaseAbilities(this CardInfo info, params Ability[] abilities)
+    public static CardInfo RemoveAbilitiesSingle(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
         {
