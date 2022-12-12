@@ -27,7 +27,7 @@ public static class CardExtensions
     #region Adders
 
     /// <summary>
-    /// Adds any number of abilities to the the card. Abilities can be added multiple times.
+    /// Adds any number of abilities to the card. Abilities can be added multiple times.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to add</param>
@@ -40,7 +40,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of appearance behaviors to the the card. Duplicate appearance behaviors are ignored.
+    /// Adds any number of appearance behaviors to the card. Duplicate appearance behaviors are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="appearances">The appearances to add</param>
@@ -55,7 +55,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of decals to the the card. Duplicate decals are ignored.
+    /// Adds any number of decals to the card. Duplicate decals are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="decals">The decals to add</param>
@@ -71,7 +71,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of decals to the the card. Duplicate decals are ignored.
+    /// Adds any number of decals to the card. Duplicate decals are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="decals">The paths to the .png files containing the decals (relative to the Plugins directory)</param>
@@ -85,7 +85,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of metacategories to the the card. Duplicate metacategories are ignored.
+    /// Adds any number of metacategories to the card. Duplicate metacategories are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="categories">The categories to add</param>
@@ -100,7 +100,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of special abilities to the the card. Duplicate special abilities are ignored.
+    /// Adds any number of special abilities to the card. Duplicate special abilities are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to add</param>
@@ -115,7 +115,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of traits to the the card. Duplicate traits are ignored.
+    /// Adds any number of traits to the card. Duplicate traits are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="traits">The traits to add</param>
@@ -130,7 +130,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Adds any number of tribes to the the card. Duplicate tribes are ignored.
+    /// Adds any number of tribes to the card. Duplicate tribes are ignored.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="tribes">The tribes to add</param>
@@ -141,6 +141,82 @@ public static class CardExtensions
         foreach (var app in tribes)
             if (!info.tribes.Contains(app))
                 info.tribes.Add(app);
+        return info;
+    }
+
+    #endregion
+
+    #region Removers
+
+    /// <summary>
+    /// Removes all stacks of any number of abilities from the card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="abilities">The abilities to remove</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo RemoveAllBaseAbilities(this CardInfo info, params Ability[] abilities)
+    {
+        if (info.abilities?.Count > 0)
+        {
+            foreach (Ability ab in abilities)
+            {
+                info.abilities.RemoveAll(a => a == ab);
+            }
+        }
+        return info;
+    }
+    /// <summary>
+    /// Removes any number of abilities from the card. Will remove one instance of each passed ability; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="abilities">The abilities to remove</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo RemoveBaseAbilities(this CardInfo info, params Ability[] abilities)
+    {
+        if (info.abilities?.Count > 0)
+        {
+            foreach (Ability ab in abilities)
+            {
+                info.abilities.Remove(ab);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of traits from the card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="traits">The traits to remove</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo RemoveTraits(this CardInfo info, params Trait[] traits)
+    {
+        if (info.traits?.Count > 0)
+        {
+            foreach (Trait tr in traits)
+            {
+                if (info.HasTrait(tr))
+                    info.traits.Remove(tr);
+            }
+        }
+        return info;
+    }
+    /// <summary>
+    /// Removes any number of traits from the card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="tribes">The tribes to remove</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    public static CardInfo RemoveTribes(this CardInfo info, params Tribe[] tribes)
+    {
+        if (info.traits?.Count > 0)
+        {
+            foreach (Tribe tr in tribes)
+            {
+                if (info.IsOfTribe(tr))
+                    info.tribes.Remove(tr);
+            }
+        }
         return info;
     }
 
@@ -249,7 +325,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets any number of special abilities to the the card.
+    /// Sets any number of special abilities to the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to add</param>
@@ -274,7 +350,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets any number of traits to the the card.
+    /// Sets any number of traits to the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="traits">The traits to add</param>
@@ -287,7 +363,7 @@ public static class CardExtensions
 
 
     /// <summary>
-    /// Set any number of tribes to the the card.
+    /// Set any number of tribes to the card.
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="tribes">The tribes to add</param>
@@ -714,6 +790,33 @@ public static class CardExtensions
     public static CardInfo SetGemsCost(this CardInfo info, List<GemType> gemsCost = null)
     {
         info.gemsCost = gemsCost ?? new();
+        return info;
+    }
+
+    #endregion
+
+    #region Bools
+
+    /// <summary>
+    /// Sets whether the card is onePerDeck or not.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="onePerDeck">Whether this is onePerDeck or not</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    internal static CardInfo SetOnePerDeck(this CardInfo info, bool onePerDeck = true)
+    {
+        info.onePerDeck = onePerDeck;
+        return info;
+    }
+    /// <summary>
+    /// Sets whether the card's Power and Health will be displayed or not.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <param name="hideStats">Whether the stats should be hidden or not</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    internal static CardInfo SetHideStats(this CardInfo info, bool hideStats = true)
+    {
+        info.hideAttackAndHealth = hideStats;
         return info;
     }
 
@@ -1831,6 +1934,7 @@ public static class CardExtensions
         return c;
     }
 
+    #region OldAPICard
     internal static CardInfo SetOldApiCard(this CardInfo info, bool isOldApiCard = true)
     {
         info.SetExtendedProperty("AddedByOldApi", isOldApiCard);
@@ -1842,4 +1946,5 @@ public static class CardExtensions
         bool? isOAPI = info.GetExtendedPropertyAsBool("AddedByOldApi");
         return isOAPI.HasValue && isOAPI.Value;
     }
+    #endregion
 }
