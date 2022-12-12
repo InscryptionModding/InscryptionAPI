@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.7.3
+- Fixed sniper fix not accounting for cards with Repulsive ability
+- Fixed latch abilities not working in Act 2
+- Added ExtendedProperties for abilities
+- Added new ability setter SetTriggersOncePerStack for controlling the behaviour of stackable abilities after a card evolves
+- Added new helper methods for creating cards: SetOnePerDeck, SetHideStats
+- Added new helper methods for abilities: SetCanStack, SetTriggersOncePerStack, SetActivated, SetPassive, SetConduit, SetConduitCell
+- Added new remover methods for cards: RemoveAbilities, RemoveAbilitiesSingle, RemoveTraits, RemoveTribes
+
 ## v2.7.2
 - Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.
 - Added Missing Tribe Icon fallback texture for totem tops when a tribe has no icon
