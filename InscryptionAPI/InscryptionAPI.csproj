@@ -24,6 +24,8 @@
         <EmbeddedResource Include="runeroundedbottom" />
         <None Remove="rulebookitemicon_cardinbottle.png" />
         <EmbeddedResource Include="rulebookitemicon_cardinbottle.png" />
+        <None Remove="tribeicon_none.png" />
+        <EmbeddedResource Include="tribeicon_none.png" />
     </ItemGroup>
 
     <ItemGroup>

@@ -15,6 +15,13 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class AbilityManager
 {
+    private class AbilityExt
+    {
+        public readonly Dictionary<Type, object> TypeMap = new();
+        public readonly Dictionary<string, string> StringMap = new();
+    }
+    private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
+
     /// <summary>
     /// A utility class that holds all of the required information about an ability in order to be able to use it in-game
     /// </summary>
@@ -96,6 +103,8 @@ public static class AbilityManager
             clonedInfo.rulebookDescription = Info.rulebookDescription;
             clonedInfo.rulebookName = Info.rulebookName;
             clonedInfo.triggerText = Info.triggerText;
+
+            AbilityExtensionProperties.Add(clonedInfo, AbilityExtensionProperties.GetOrCreateValue(Info));
 
             return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
         }
@@ -284,6 +293,12 @@ public static class AbilityManager
     /// <param name="ability">The instance of the ability to remove</param>
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
 
+    internal static Dictionary<string, string> GetAbilityExtensionTable(this AbilityInfo info)
+    {
+        return AbilityExtensionProperties.GetOrCreateValue(info).StringMap;
+    }
+
+
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -390,6 +405,15 @@ public static class AbilityManager
                 }
             }
         }
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.SetInfo))]
+    private static void DupeStacksOnEvolveFix(PlayableCard __instance)
+    {
+        // 
+        __instance.TriggerHandler.triggeredAbilities.RemoveAll(ta =>
+        AllAbilityInfos.AbilityByID(ta.Item1).canStack && ta.Item1.GetTriggersOncePerStack());
+        __instance.TriggerHandler.UpdateTriggeredAbilities(__instance.Info.Abilities, __instance.Info.SpecialAbilities);
     }
 
     [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]

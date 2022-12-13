@@ -1,21 +1,61 @@
 # Changelog
 
+## 2.7.3
+- Fixed sniper fix not accounting for cards with Repulsive ability
+- Fixed latch abilities not working in Act 2
+- Added ExtendedProperties for abilities
+- Added new ability setter SetTriggersOncePerStack for controlling the behaviour of stackable abilities after a card evolves
+- Added new helper methods for creating cards: SetOnePerDeck, SetHideStats
+- Added new helper methods for abilities: SetCanStack, SetTriggersOncePerStack, SetActivated, SetPassive, SetConduit, SetConduitCell
+- Added new remover methods for cards: RemoveAbilities, RemoveAbilitiesSingle, RemoveTraits, RemoveTribes
+
+## v2.7.2
+- Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.
+- Added Missing Tribe Icon fallback texture for totem tops when a tribe has no icon
+- Changed TotemManager to accept a `CompositeTotemPiece` type for custom behaviour other than always a custom icon
+- Fixed lag when entering gain consumable item map node
+- Fixed crash when using custom consumable items
+- Fixed hard lock when getting totem top that doesn't have an icon
+- Fixed Pack Rat card object not having the correct background during the item node sequence
+- Fixed Latch abilities removing stat boosts when latching a card
+- Fixed latched abilities not properly rendering in some acts
+
 ## v2.7.1
 - Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
 - Added Squirrel tribe art (Thanks Drift!)
 - Fixed Green Gem stat icon showing as a black square in act 1
 - Fixed Green Gem stat icon not appearing in rulebook
 - Fixed Squirrel totem top causing NMA when using custom totem tops
+- Fixed being unable to play cards with a Blood cost above 4 via sacrifices
 
 ## v2.7.0
 - Added support for custom pelts
 - Added support for converting audio files to AudioClip objects
 - Added support for adding custom tracks to the Gramophone
+- Added support for adding custom audio files
+- Warning message for outdated plugins now lists the outdated plugins
+- Energy Drone now tweens with the scales, kinda
+- Fixed visual bug where energy cells didn't start closed in successive battles
 
 ## v2.6.0
 - Added support for custom consumable items using a choice of a few models
 - Added support for custom consumable card in a bottle items
 - Added support for custom consumable items with a custom model
+- Added more helper extensions for checking abilities, traits, special abilities
+- Fixed null instances in Act 2 spamming the console with warnings
+
+## v2.5.3
+- Added support for custom card unlock requirements
+- Fixed non-giant cards with Omni Strike not directly attacking their opposing slot when there are no opposing cards
+- Fixed cards attacking their own side of the board during combat not adding damage to the correct side of the scale
+- Fixed an issue where a challenge would go missing if you had more than 14 installed
+
+## v2.5.2
+- Fixed the sentry fix overriding patches to SlotAttackSlot
+
+## v2.5.1
+- Reverted part of the sentry fix that was causing problems
+- Made it easier to override the default totem head
 
 ## v2.5.0
 - Added support for custom totem heads

@@ -19,7 +19,7 @@ public static class CardManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
-    private static readonly ConditionalWeakTable<CardInfo, CardExt> ExtensionProperties = new();
+    private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
 
     internal static readonly Dictionary<string, Func<bool, int, bool>> CustomCardUnlocks = new();
 
@@ -246,7 +246,7 @@ public static class CardManager
     /// <returns>The instance of T for this card</returns>
     public static T GetExtendedClass<T>(this CardInfo card) where T : class, new()
     {
-        var typeMap = ExtensionProperties.GetOrCreateValue(card).TypeMap;
+        var typeMap = CardExtensionProperties.GetOrCreateValue(card).TypeMap;
         if (typeMap.TryGetValue(typeof(T), out object tObj))
         {
             return (T)tObj;
@@ -261,7 +261,7 @@ public static class CardManager
 
     internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
     {
-        return ExtensionProperties.GetOrCreateValue(card).StringMap;
+        return CardExtensionProperties.GetOrCreateValue(card).StringMap;
     }
 
     private const string ERROR = "ERROR";
@@ -345,7 +345,7 @@ public static class CardManager
     private static void ClonePostfix(CardInfo __instance, object __result)
     {
         // just ensures that clones of a card have the same extension properties
-        ExtensionProperties.Add((CardInfo)__result, ExtensionProperties.GetOrCreateValue(__instance));
+        CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
     }
 
     [HarmonyILManipulator]
