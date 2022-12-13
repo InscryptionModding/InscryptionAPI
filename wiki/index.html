@@ -526,11 +526,39 @@ StarterDeckManager.Add(MyPlugin.Guid, myDeck);
 <p>This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
 Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.</p>
 <p>If you want to add your own model for your tribe then you can use the example below.</p>
-<pre><code class="lang-csharp">TotemManager.NewTopPiece(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+<pre><code class="lang-csharp">TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
 </code></pre><p>If you are using a model that you have created then here is an example of how to use asset bundles to include it.</p>
 <pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
 {
-    TotemManager.NewTopPiece(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+    TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+}
+</code></pre><h3 id="i-dont-have-an-icon-to-show-on-my-totem-top">I don&#39;t have an icon to show on my totem top</h3>
+<p>You will need a new class for your totem top so it doesn&#39;t look for an icon to populate from a tribe.   </p>
+<pre><code class="lang-csharp">public class MyCustomTotemTopPiece : CompositeTotemPiece
+{
+    protected virtual string EmissionGameObjectName =&gt; &quot;GameObjectName&quot;;
+
+    public override void SetData(ItemData data)
+    {
+        base.SetData(data);
+
+        // Set emissiveRenderer so the game knows what to highlight when hovering their mouse over the totem top
+        emissiveRenderer = this.gameObject.FindChild(EmissionGameObjectName);
+        if (emissiveRenderer != null)
+        {
+            emissiveRenderer = icon.GetComponent&lt;Renderer&gt;();
+        }
+
+        if (emissiveRenderer == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($&quot;emissiveRenderer not assigned to totem top!&quot;);
+        }
+    }
+}
+</code></pre><p>Then add your totem with your new class</p>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
+{
+    TotemManager.NewTopPiece&lt;MyCustomTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
 }
 </code></pre><h2 id="adding-a-custom-consumable-item">Adding a Custom Consumable Item</h2>
 <p>This API supports adding a custom item into the game. </p>
