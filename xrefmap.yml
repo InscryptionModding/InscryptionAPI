@@ -2175,6 +2175,153 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.AddMetaCategories
   nameWithType: AbilityExtensions.AddMetaCategories
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.Ability,System.String)
+  name: GetExtendedProperty(Ability, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_DiskCardGame_Ability_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.Ability,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.Ability, System.String)
+  nameWithType: AbilityExtensions.GetExtendedProperty(Ability, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.AbilityInfo,System.String)
+  name: GetExtendedProperty(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.GetExtendedProperty(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty*
+  name: GetExtendedProperty
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty
+  nameWithType: AbilityExtensions.GetExtendedProperty
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.Ability,System.String)
+  name: GetExtendedPropertyAsBool(Ability, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_DiskCardGame_Ability_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.Ability,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.Ability, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsBool(Ability, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.AbilityInfo,System.String)
+  name: GetExtendedPropertyAsBool(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsBool(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool*
+  name: GetExtendedPropertyAsBool
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsBool
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.Ability,System.String)
+  name: GetExtendedPropertyAsFloat(Ability, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_DiskCardGame_Ability_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.Ability,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.Ability, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsFloat(Ability, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.AbilityInfo,System.String)
+  name: GetExtendedPropertyAsFloat(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsFloat(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat*
+  name: GetExtendedPropertyAsFloat
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsFloat
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.Ability,System.String)
+  name: GetExtendedPropertyAsInt(Ability, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_DiskCardGame_Ability_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.Ability,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.Ability, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsInt(Ability, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.AbilityInfo,System.String)
+  name: GetExtendedPropertyAsInt(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsInt(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt*
+  name: GetExtendedPropertyAsInt
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt
+  nameWithType: AbilityExtensions.GetExtendedPropertyAsInt
+- uid: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.Ability)
+  name: GetTriggersOncePerStack(Ability)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.Ability)
+  nameWithType: AbilityExtensions.GetTriggersOncePerStack(Ability)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.AbilityInfo)
+  name: GetTriggersOncePerStack(AbilityInfo)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_DiskCardGame_AbilityInfo_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.AbilityInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.AbilityInfo)
+  nameWithType: AbilityExtensions.GetTriggersOncePerStack(AbilityInfo)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack*
+  name: GetTriggersOncePerStack
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack
+  nameWithType: AbilityExtensions.GetTriggersOncePerStack
+- uid: InscryptionAPI.Card.AbilityExtensions.SetActivated(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetActivated(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetActivated_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetActivated(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetActivated(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetActivated(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetActivated*
+  name: SetActivated
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetActivated_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetActivated
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetActivated
+  nameWithType: AbilityExtensions.SetActivated
+- uid: InscryptionAPI.Card.AbilityExtensions.SetCanStack(DiskCardGame.AbilityInfo,System.Boolean,System.Boolean)
+  name: SetCanStack(AbilityInfo, Boolean, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCanStack_DiskCardGame_AbilityInfo_System_Boolean_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetCanStack(DiskCardGame.AbilityInfo,System.Boolean,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetCanStack(DiskCardGame.AbilityInfo, System.Boolean, System.Boolean)
+  nameWithType: AbilityExtensions.SetCanStack(AbilityInfo, Boolean, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetCanStack*
+  name: SetCanStack
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCanStack_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetCanStack
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetCanStack
+  nameWithType: AbilityExtensions.SetCanStack
+- uid: InscryptionAPI.Card.AbilityExtensions.SetConduit(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetConduit(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetConduit_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetConduit(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetConduit(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetConduit(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetConduit*
+  name: SetConduit
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetConduit_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetConduit
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetConduit
+  nameWithType: AbilityExtensions.SetConduit
+- uid: InscryptionAPI.Card.AbilityExtensions.SetConduitCell(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetConduitCell(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetConduitCell_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetConduitCell(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetConduitCell(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetConduitCell(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetConduitCell*
+  name: SetConduitCell
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetConduitCell_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetConduitCell
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetConduitCell
+  nameWithType: AbilityExtensions.SetConduitCell
 - uid: InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
   name: SetCustomFlippedTexture(AbilityInfo, Texture2D)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_
@@ -2232,6 +2379,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability
   nameWithType: AbilityExtensions.SetDefaultPart3Ability
+- uid: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo,System.String,System.Object)
+  name: SetExtendedProperty(AbilityInfo, String, Object)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_DiskCardGame_AbilityInfo_System_String_System_Object_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo,System.String,System.Object)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo, System.String, System.Object)
+  nameWithType: AbilityExtensions.SetExtendedProperty(AbilityInfo, String, Object)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty*
+  name: SetExtendedProperty
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty
+  nameWithType: AbilityExtensions.SetExtendedProperty
 - uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
   name: SetIcon(AbilityInfo, Texture2D)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_
@@ -2269,6 +2429,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetIcon
   nameWithType: AbilityExtensions.SetIcon
+- uid: InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetOpponentUsable(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetOpponentUsable_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetOpponentUsable(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable*
+  name: SetOpponentUsable
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetOpponentUsable_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable
+  nameWithType: AbilityExtensions.SetOpponentUsable
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPassive(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetPassive(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetPassive_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetPassive(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPassive(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetPassive(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPassive*
+  name: SetPassive
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetPassive_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetPassive
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPassive
+  nameWithType: AbilityExtensions.SetPassive
 - uid: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
   name: SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable<FilterMode>)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetPixelAbilityIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
@@ -2301,6 +2487,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon
   nameWithType: AbilityExtensions.SetPixelIcon
+- uid: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetTriggersOncePerStack(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetTriggersOncePerStack(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack*
+  name: SetTriggersOncePerStack
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack
+  nameWithType: AbilityExtensions.SetTriggersOncePerStack
 - uid: InscryptionAPI.Card.AbilityManager
   name: AbilityManager
   href: api/InscryptionAPI.Card.AbilityManager.html
@@ -3296,6 +3495,70 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide
   nameWithType: CardExtensions.OtherCardIsOnSameSide
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAbilities(DiskCardGame.CardInfo,DiskCardGame.Ability[])
+  name: RemoveAbilities(CardInfo, Ability[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAbilities_DiskCardGame_CardInfo_DiskCardGame_Ability___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveAbilities(DiskCardGame.CardInfo,DiskCardGame.Ability[])
+  name.vb: RemoveAbilities(CardInfo, Ability())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAbilities(DiskCardGame.CardInfo, DiskCardGame.Ability[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveAbilities(DiskCardGame.CardInfo, DiskCardGame.Ability())
+  nameWithType: CardExtensions.RemoveAbilities(CardInfo, Ability[])
+  nameWithType.vb: CardExtensions.RemoveAbilities(CardInfo, Ability())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAbilities*
+  name: RemoveAbilities
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAbilities
+  nameWithType: CardExtensions.RemoveAbilities
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle(DiskCardGame.CardInfo,DiskCardGame.Ability[])
+  name: RemoveAbilitiesSingle(CardInfo, Ability[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAbilitiesSingle_DiskCardGame_CardInfo_DiskCardGame_Ability___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle(DiskCardGame.CardInfo,DiskCardGame.Ability[])
+  name.vb: RemoveAbilitiesSingle(CardInfo, Ability())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle(DiskCardGame.CardInfo, DiskCardGame.Ability[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle(DiskCardGame.CardInfo, DiskCardGame.Ability())
+  nameWithType: CardExtensions.RemoveAbilitiesSingle(CardInfo, Ability[])
+  nameWithType.vb: CardExtensions.RemoveAbilitiesSingle(CardInfo, Ability())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle*
+  name: RemoveAbilitiesSingle
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAbilitiesSingle_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle
+  nameWithType: CardExtensions.RemoveAbilitiesSingle
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTraits(DiskCardGame.CardInfo,DiskCardGame.Trait[])
+  name: RemoveTraits(CardInfo, Trait[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTraits_DiskCardGame_CardInfo_DiskCardGame_Trait___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveTraits(DiskCardGame.CardInfo,DiskCardGame.Trait[])
+  name.vb: RemoveTraits(CardInfo, Trait())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTraits(DiskCardGame.CardInfo, DiskCardGame.Trait[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveTraits(DiskCardGame.CardInfo, DiskCardGame.Trait())
+  nameWithType: CardExtensions.RemoveTraits(CardInfo, Trait[])
+  nameWithType.vb: CardExtensions.RemoveTraits(CardInfo, Trait())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTraits*
+  name: RemoveTraits
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTraits_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveTraits
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTraits
+  nameWithType: CardExtensions.RemoveTraits
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTribes(DiskCardGame.CardInfo,DiskCardGame.Tribe[])
+  name: RemoveTribes(CardInfo, Tribe[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTribes_DiskCardGame_CardInfo_DiskCardGame_Tribe___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveTribes(DiskCardGame.CardInfo,DiskCardGame.Tribe[])
+  name.vb: RemoveTribes(CardInfo, Tribe())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTribes(DiskCardGame.CardInfo, DiskCardGame.Tribe[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveTribes(DiskCardGame.CardInfo, DiskCardGame.Tribe())
+  nameWithType: CardExtensions.RemoveTribes(CardInfo, Tribe[])
+  nameWithType.vb: CardExtensions.RemoveTribes(CardInfo, Tribe())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTribes*
+  name: RemoveTribes
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTribes_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveTribes
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTribes
+  nameWithType: CardExtensions.RemoveTribes
 - uid: InscryptionAPI.Card.CardExtensions.SetAltPortrait(DiskCardGame.CardInfo,System.String)
   name: SetAltPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetAltPortrait_DiskCardGame_CardInfo_System_String_
