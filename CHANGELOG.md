@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.7.3
+- Fixed sniper fix not accounting for cards with Repulsive ability
+- Fixed latch abilities not working in Act 2
+- Added ExtendedProperties for abilities
+- Added new ability setter SetTriggersOncePerStack for controlling the behaviour of stackable abilities after a card evolves
+- Added new helper methods for creating cards: SetOnePerDeck, SetHideStats
+- Added new helper methods for abilities: SetCanStack, SetTriggersOncePerStack, SetActivated, SetPassive, SetConduit, SetConduitCell
+- Added new remover methods for cards: RemoveAbilities, RemoveAbilitiesSingle, RemoveTraits, RemoveTribes
+
 ## v2.7.2
 - Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.
 - Added Missing Tribe Icon fallback texture for totem tops when a tribe has no icon
@@ -7,6 +16,9 @@
 - Fixed lag when entering gain consumable item map node
 - Fixed crash when using custom consumable items
 - Fixed hard lock when getting totem top that doesn't have an icon
+- Fixed Pack Rat card object not having the correct background during the item node sequence
+- Fixed Latch abilities removing stat boosts when latching a card
+- Fixed latched abilities not properly rendering in some acts
 
 ## v2.7.1
 - Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
@@ -14,6 +26,7 @@
 - Fixed Green Gem stat icon showing as a black square in act 1
 - Fixed Green Gem stat icon not appearing in rulebook
 - Fixed Squirrel totem top causing NMA when using custom totem tops
+- Fixed being unable to play cards with a Blood cost above 4 via sacrifices
 
 ## v2.7.0
 - Added support for custom pelts
