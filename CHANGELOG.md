@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.4
+- Fixed latch fix modifying the base info
+- Fixed stackable abilities activating twice when they shouldn't
+
 ## 2.7.3
 - Fixed sniper fix not accounting for cards with Repulsive ability
 - Fixed latch abilities not working in Act 2
@@ -16,9 +20,6 @@
 - Fixed lag when entering gain consumable item map node
 - Fixed crash when using custom consumable items
 - Fixed hard lock when getting totem top that doesn't have an icon
-- Fixed Pack Rat card object not having the correct background during the item node sequence
-- Fixed Latch abilities removing stat boosts when latching a card
-- Fixed latched abilities not properly rendering in some acts
 
 ## v2.7.1
 - Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)

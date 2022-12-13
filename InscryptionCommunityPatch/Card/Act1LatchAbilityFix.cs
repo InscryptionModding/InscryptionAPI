@@ -182,8 +182,10 @@ public class Act1LatchAbilityFix
             else
             {
                 CardInfo info = selectedSlot.Card.Info.Clone() as CardInfo;
-                info.Mods = selectedSlot.Card.Info.Mods;
-                info.Mods.Add(mod);
+                info.Mods = new(selectedSlot.Card.Info.Mods)
+                {
+                    mod
+                };
                 selectedSlot.Card.SetInfo(info);
             }
 
