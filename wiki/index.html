@@ -225,14 +225,17 @@ AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
         yield break;
     }
 }
-</code></pre><h4 id="additional-functionality">Additional functionality</h4>
-<p>There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. However, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:</p>
-<p><strong>Modify which card slots the card attacks</strong>: To do this, you need to override RespondsToGetOpposingSlots to return true, and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.</p>
-<p><strong>Add a passive attack or health buff</strong>: To do this, you need to override ProvidesPassiveAttackBuff or ProvidesPassiveHealthBuff to return true, then override GetPassiveAttackBuffs or GetPassiveHealthBuffs to calculate the appropriate buffs. These return an array of integers, which corresponds to the card slots on the battlefield.</p>
-<p>For example: Let&#39;s assume the card slots look like this:</p>
-<pre><code>[A][B][C][D]
-</code></pre><p>If card C wants to provide a +1 attack buff to cards B and D, it needs to return the array [0, 1, 0, 1] from GetPassiveAttackBuffs.</p>
-<p>Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These will be called <em>every frame!!</em> If you&#39;re not careful, you could bog the game down substantially.</p>
+</code></pre><h3 id="additional-functionality">Additional Functionality</h3>
+<p>There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:</p>
+<h4 id="modify-card-slots-to-attack">Modify Card Slots to Attack</h4>
+<p>To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.</p>
+<h4 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h4>
+<p>To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs. These return an int representing the buff to give to &#39;target&#39;.</p>
+<p>In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what &#39;target&#39; refers to; the current card being checked. You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.</p>
+<p>Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These methods will be called <em>every frame</em> for <em>every instance of the ability!!</em> If you&#39;re not careful, you could bog the game down substantially!</p>
+<h4 id="other-functionality">Other Functionality</h4>
+<p>ExtendedAbilityBehaviour also allows you to control whether the ability&#39;s triggers will activate when the card is facedown. You will need to override TriggerWhenFaceDown to return true. There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.</p>
+<p>It should be noted that usage of ExtendedAbilityBehaviour is not required; all the functionalities mentioned can also be accessed by inheriting from the appropriate interface: IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, and IPassiveHealthBuff.</p>
 <h3 id="special-stat-icons">Special Stat Icons</h3>
 <p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
 <p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour</p>
