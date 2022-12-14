@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.4
+- Fixed latch fix modifying the base info
+- Fixed stackable abilities activating twice when they shouldn't
+
 ## 2.7.3
 - Fixed sniper fix not accounting for cards with Repulsive ability
 - Fixed latch abilities not working in Act 2

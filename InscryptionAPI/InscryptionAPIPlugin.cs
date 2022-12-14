@@ -28,7 +28,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.7.3";
+    public const string ModVer = "2.7.4";
 
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemTypes;

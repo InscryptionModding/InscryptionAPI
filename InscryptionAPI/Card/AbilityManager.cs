@@ -407,13 +407,32 @@ public static class AbilityManager
         }
     }
 
-    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.SetInfo))]
-    private static void DupeStacksOnEvolveFix(PlayableCard __instance)
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TransformIntoCard))]
+    private static IEnumerator TriggerStacksOnceAfterEvolve(IEnumerator enumerator, PlayableCard __instance)
     {
-        // 
-        __instance.TriggerHandler.triggeredAbilities.RemoveAll(ta =>
-        AllAbilityInfos.AbilityByID(ta.Item1).canStack && ta.Item1.GetTriggersOncePerStack());
-        __instance.TriggerHandler.UpdateTriggeredAbilities(__instance.Info.Abilities, __instance.Info.SpecialAbilities);
+        yield return enumerator;
+
+        List<Ability> abilities = new();
+
+        for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
+        {
+            // get info
+            AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+
+            // if can stack and triggers once
+            if (info.canStack && info.GetTriggersOncePerStack())
+            {
+                // add to list if not in it
+                if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
+                    abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+
+                // remove trigger
+                __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
+            }
+        }
+
+        foreach (Ability ab in abilities)
+            __instance.TriggerHandler.AddAbility(ab);
     }
 
     [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]
