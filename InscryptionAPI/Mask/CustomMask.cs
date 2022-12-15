@@ -8,7 +8,7 @@ public class CustomMask
     public LeshyAnimationController.Mask ID;
     public string Name;
     public string GUID;
-    public Texture2D TextureOverride;
+    public List<Texture2D> TextureOverrides;
     public MaskManager.ModelType ModelType;
     public Type BehaviourType;
     public bool Override = true;

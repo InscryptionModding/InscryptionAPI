@@ -23,7 +23,7 @@ public static class MaskManager
     
     public static LeshyAnimationController.Mask NoMask = (LeshyAnimationController.Mask)(-1);
     
-    private static Dictionary<LeshyAnimationController.Mask, List<CustomMask>> CustomMaskLookup = new();
+    private static Dictionary<LeshyAnimationController.Mask, List<CustomMask>> MaskLookup = new();
     public static Dictionary<ModelType, ResourceLookup> TypeToPrefabLookup = new();
     
     public static List<CustomMask> BaseMasks = GenerateBaseMasks();
@@ -41,47 +41,56 @@ public static class MaskManager
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
-        return AddCustomMask<T>(guid, name, maskType, modelType, true, textureOverride);
+        List<string> list = new List<string>() { textureOverride };
+        return AddCustomMask<T>(guid, name, maskType, modelType, true, list);
+    }
+    
+    public static CustomMask AddCustomMask<T>(string guid, string name, ModelType modelType, List<string> textureOverrideList=null) where T : MaskBehaviour
+    {
+        LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
+
+        return AddCustomMask<T>(guid, name, maskType, modelType, true, textureOverrideList);
     }
     
     public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, string textureOverride=null) where T : MaskBehaviour
     {
-        return AddCustomMask<T>(guid, name, maskType, modelType, false, textureOverride);
+        List<string> list = new List<string>() { textureOverride };
+        return AddCustomMask<T>(guid, name, maskType, modelType, false, list);
     }
     
-    private static CustomMask AddCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, bool newModel, string textureOverride=null) where T : MaskBehaviour
+    public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, List<string> textureOverrideList=null) where T : MaskBehaviour
+    {
+        return AddCustomMask<T>(guid, name, maskType, modelType, false, textureOverrideList);
+    }
+    
+    private static CustomMask AddCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, bool newModel, List<string> textureOverrideList=null) where T : MaskBehaviour
     {
         CustomMask mask = new CustomMask()
         {
             ID = maskType,
             Name = name,
             GUID = guid,
-            TextureOverride = textureOverride != null ? TextureHelper.GetImageAsTexture(textureOverride) : null,
+            TextureOverrides = textureOverrideList != null ? textureOverrideList.Select((a)=>TextureHelper.GetImageAsTexture(a)).ToList() : null,
             ModelType = modelType,
             BehaviourType = typeof(T),
             Override = !newModel,
         };
         
         CustomMasks.Add(mask);
-        if (!CustomMaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
+        if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
         {
             masks = new List<CustomMask>();
-            CustomMaskLookup[maskType] = masks;
+            MaskLookup[maskType] = masks;
         }
         masks.Add(mask);
         
-        InscryptionAPIPlugin.Logger.LogInfo("Added CustomMask " + mask.Name);
+        InscryptionAPIPlugin.Logger.LogInfo("Added CustomMask " + mask.Name + " with type " + maskType);
         return mask;
-    }
-    
-    internal static void OverridePrefabWithTexture(GameObject gameObject, LeshyAnimationController.Mask mask)
-    {
-        throw new NotImplementedException();
     }
 
     internal static CustomMask GetRandomMask(LeshyAnimationController.Mask maskType)
     {
-        if (!CustomMaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
+        if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
         {
             InscryptionAPIPlugin.Logger.LogWarning("No mask defined of type: " + maskType);
             return BaseMasks[0];
@@ -95,6 +104,7 @@ public static class MaskManager
         
         int index = UnityEngine.Random.RandomRangeInt(0, masks.Count);
         CustomMask customMask = masks[index];
+        InscryptionAPIPlugin.Logger.LogInfo("Got random mask " + customMask.Name + " from type " + maskType);
         return customMask;
     }
     
@@ -125,9 +135,17 @@ public static class MaskManager
                 Name = maskType.ToString(),
                 ModelType = modelType,
                 GUID = "",
-                TextureOverride = null
+                TextureOverrides = null,
+                BehaviourType = typeof(MaskBehaviour)
             };
             list.Add(customMask);
+            if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> defaultMasks))
+            {
+                defaultMasks = new List<CustomMask>();
+                MaskLookup[maskType] = defaultMasks;
+            }
+            defaultMasks.Add(customMask);
+            
             InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Done loading mask for " + maskType);
         }
 
