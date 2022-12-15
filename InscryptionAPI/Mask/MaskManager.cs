@@ -41,11 +41,15 @@ public static class MaskManager
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
-        List<string> list = new List<string>() { textureOverride };
+        List<string> list = new List<string>() { };
+        if (textureOverride != null)
+        {
+            list.Add(textureOverride);
+        }
         return AddCustomMask<T>(guid, name, maskType, modelType, true, list);
     }
     
-    public static CustomMask AddCustomMask<T>(string guid, string name, ModelType modelType, List<string> textureOverrideList=null) where T : MaskBehaviour
+    public static CustomMask AddCustomMask<T>(string guid, string name, ModelType modelType, List<string> textureOverrideList) where T : MaskBehaviour
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
@@ -54,11 +58,15 @@ public static class MaskManager
     
     public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, string textureOverride=null) where T : MaskBehaviour
     {
-        List<string> list = new List<string>() { textureOverride };
+        List<string> list = new List<string>() { };
+        if (textureOverride != null)
+        {
+            list.Add(textureOverride);
+        }
         return AddCustomMask<T>(guid, name, maskType, modelType, false, list);
     }
     
-    public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, List<string> textureOverrideList=null) where T : MaskBehaviour
+    public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, List<string> textureOverrideList) where T : MaskBehaviour
     {
         return AddCustomMask<T>(guid, name, maskType, modelType, false, textureOverrideList);
     }
