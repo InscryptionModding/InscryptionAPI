@@ -102,7 +102,6 @@ public static class MaskManager
     {
         InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Start");
         InitializeDefaultModel("maskFlat", "CustomMask", ModelType.FlatMask);
-        InitializeDefaultModel("maskSphere", "CustomMask", ModelType.Sphere);
         
         List<CustomMask> list = new List<CustomMask>();
         foreach (LeshyAnimationController.Mask maskType in Enum.GetValues(typeof(LeshyAnimationController.Mask)))
@@ -139,7 +138,7 @@ public static class MaskManager
     private static void InitializeDefaultModel(string assetBundlePath, string prefabName, ModelType modelType)
     {
         ResourceLookup resourceLookup = new ResourceLookup();
-        resourceLookup.FromAssetBundle(assetBundlePath, prefabName);
+        resourceLookup.FromAssetBundleInAssembly<InscryptionAPIPlugin>(assetBundlePath, prefabName);
 
         TypeToPrefabLookup[modelType] = resourceLookup;
         InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Added " + assetBundlePath + " " + prefabName);
@@ -166,5 +165,33 @@ public static class MaskManager
     {
         MaskBehaviour behaviour = (MaskBehaviour)clone.AddComponent(data.BehaviourType);
         behaviour.Initialize(data);
+        clone.SetActive(true);
+
+        PrintActive(clone, "[InitializeMaskClone] ");
+        
+        InscryptionAPIPlugin.Logger.LogInfo("[InitializeMaskClone] " + clone);
+        foreach (Renderer renderer in clone.GetComponentsInChildren<Renderer>())
+        {
+            InscryptionAPIPlugin.Logger.LogInfo("[InitializeMaskClone][renderer] " + renderer.gameObject.name);
+            InscryptionAPIPlugin.Logger.LogInfo("\t" + renderer.gameObject.activeSelf);
+            InscryptionAPIPlugin.Logger.LogInfo("\t" + renderer.materials[0]);
+            if(renderer.TryGetComponent(typeof(MeshFilter), out Component c))
+            {
+                InscryptionAPIPlugin.Logger.LogInfo("\tMesh Filter: " + ((MeshFilter)c).mesh);
+            }
+            
+        }
+        
+    }
+
+    internal static void PrintActive(GameObject o, string prefix)
+    {
+        InscryptionAPIPlugin.Logger.LogInfo(prefix + o.name + " " + o.activeSelf);
+        for (int i = 0; i < o.transform.childCount; i++)
+        {
+            Transform t = o.transform.GetChild(i);
+            PrintActive(t.gameObject, prefix + "\t");
+        }
+        
     }
 }

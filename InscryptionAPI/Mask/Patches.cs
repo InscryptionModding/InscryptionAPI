@@ -49,6 +49,7 @@ internal static class LeshyAnimationController_SpawnMask
         customMask = MaskManager.GetRandomMask(maskType);
         if (customMask == null)
         {
+            InscryptionAPIPlugin.Logger.LogError("[LeshyAnimationController_SpawnMask] Couldn't get mask for " + customMask.GUID + " " + customMask.Name);
             return null;
         }
 
@@ -58,6 +59,14 @@ internal static class LeshyAnimationController_SpawnMask
             return null;
         }
 
-        return lookup.Get<GameObject>();
+        GameObject gameObject = lookup.Get<GameObject>();
+        if (gameObject == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("[LeshyAnimationController_SpawnMask] Got custom mask but prefab is null for: " + customMask.GUID + " " + customMask.Name);
+            return MaskManager.TypeToPrefabLookup[MaskManager.ModelType.Prospector].Get<GameObject>();
+        }
+        
+        InscryptionAPIPlugin.Logger.LogError("[LeshyAnimationController_SpawnMask] Got custom mask! " + gameObject.activeSelf);
+        return gameObject;
     }
 }

@@ -240,7 +240,7 @@ public static class ConsumableItemManager
     private static void LoadDefaultModelFromBundle(string assetBundlePath, string prefabName, ModelType type)
     {
         ConsumableItemResource resource = new ConsumableItemResource();
-        resource.FromAssetBundle(assetBundlePath, prefabName);
+        resource.FromAssetBundleInAssembly<InscryptionAPIPlugin>(assetBundlePath, prefabName);
         typeToPrefabLookup[type] = resource;
         defaultModelTypes.Add(type);
     }
