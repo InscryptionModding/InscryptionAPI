@@ -812,3 +812,100 @@ You can convert your audio file into an AudioClip object like this:
 ```csharp
 AudioClip audio = SoundManager.LoadAudioClip("Example.mp3");
 ```
+
+## Masks
+
+### Putting on a mask
+
+```csharp
+LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+```
+
+This will tell leshy to push a mask on his face
+
+### Adding your own mask
+
+```csharp
+public class Plugin : BaseUnityPlugin
+{
+    private void Start()
+    {
+        MyCustomMask.Setup();
+    }
+}
+```
+
+
+```csharp
+public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+    
+    public static void Setup()
+    {
+        var mask = MaskManager.AddCustomMask<MyBossOpponentMask>("guid", "nameOfMask", MaskManager.ModelType.FlatMask, "pathToTexture");
+        ID = mask.ID;
+    }
+}
+```
+
+### Adding your own custom model
+
+```csharp
+public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+    
+    public static void Setup()
+    {
+        ResourceLookup resourceLookup = new ResourceLookup();
+        resourceLookup.FromAssetBundle("pathToBundle", "prefabInsideBundle");
+        MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
+
+        var mask = MaskManager.AddCustomMask<MyBossOpponentMask>("guid", "nameOfMask", modelType);
+        ID = mask.ID;
+    }
+}
+```
+
+
+## Asset Bundles
+
+Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.
+
+Think of them as fancy .zip's that's supported by Unity.
+
+### Make an asset bundle
+
+1. Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.
+2. Install the AssetBundleBrowser package. (Window->Package Manager)
+3. Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)
+4. At the bottom of the Inspector window you'll see a section labedled "Asset Bundle"
+5. Assign a new asset bundle name (example: testbundleexample)
+6. Build Asset bundles Window->AssetBundle Browser
+7. Go to the output path using file explorer
+8. There should be a file called 'testbundleexample' in that folder (It will not have an extension!)
+9. Copy this file into your mod folder
+
+### Load Asset bundle
+
+```csharp
+if (AssetBundleHelper.TryGet<GameObject>("pathToBundleFile", "nameOfPrefabInsideAssetBundle", out GameObject prefab))
+{
+    GameObject clone = GameObject.Instantiate(prefab);
+    // Do things with gameobject!
+}
+```
+First parameter is the path to the asset bundle that we copied to your mod folder in #9
+
+Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4
+
+Third parameter is the result of taking the object out of the asset bundle.
+
+NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! 
+
+### Bugs
+
+#### 1. The GameObject is being create but the model won't show up!
+
+Make sure you are using 2014.4.24f1 to build the asset bundle? If not the model won't show!
