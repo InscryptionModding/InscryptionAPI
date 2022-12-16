@@ -12,4 +12,9 @@ public class CustomMask
     public MaskManager.ModelType ModelType;
     public Type BehaviourType;
     public bool Override = true;
+
+    public override string ToString()
+    {
+        return GUID + "_" + Name;
+    }
 }
