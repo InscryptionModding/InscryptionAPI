@@ -92,7 +92,6 @@ public static class MaskManager
         }
         masks.Add(mask);
         
-        InscryptionAPIPlugin.Logger.LogInfo("Added CustomMask " + mask.Name + " with type " + maskType);
         return mask;
     }
 
@@ -112,19 +111,16 @@ public static class MaskManager
         
         int index = UnityEngine.Random.RandomRangeInt(0, masks.Count);
         CustomMask customMask = masks[index];
-        InscryptionAPIPlugin.Logger.LogInfo("Got random mask " + customMask.Name + " from type " + maskType);
         return customMask;
     }
     
     private static List<CustomMask> GenerateBaseMasks()
     {
-        InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Start");
         InitializeDefaultModel("maskFlat", "CustomMask", ModelType.FlatMask);
         
         List<CustomMask> list = new List<CustomMask>();
         foreach (LeshyAnimationController.Mask maskType in Enum.GetValues(typeof(LeshyAnimationController.Mask)))
         {
-            InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Loading mask for " + maskType);
             ResourceLookup resourceLookup = new ResourceLookup();
             resourceLookup.FromResourceBank("Prefabs/Opponents/Leshy/Masks/Mask" + maskType);
             
@@ -153,11 +149,8 @@ public static class MaskManager
                 MaskLookup[maskType] = defaultMasks;
             }
             defaultMasks.Add(customMask);
-            
-            InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Done loading mask for " + maskType);
         }
 
-        InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Done");
         return list;
     }
     
@@ -167,7 +160,6 @@ public static class MaskManager
         resourceLookup.FromAssetBundleInAssembly<InscryptionAPIPlugin>(assetBundlePath, prefabName);
 
         TypeToPrefabLookup[modelType] = resourceLookup;
-        InscryptionAPIPlugin.Logger.LogInfo("[GenerateBaseMasks] Added " + assetBundlePath + " " + prefabName);
     }
 
     internal static LeshyAnimationController.Mask BossToMask(Opponent.Type opponentType)
@@ -189,35 +181,11 @@ public static class MaskManager
     
     internal static void InitializeMaskClone(GameObject clone, CustomMask data)
     {
-        MaskBehaviour behaviour = (MaskBehaviour)clone.AddComponent(data.BehaviourType);
-        behaviour.Initialize(data);
+        if (!clone.TryGetComponent(out MaskBehaviour behaviour))
+        {
+            behaviour = (MaskBehaviour)clone.AddComponent(data.BehaviourType);
+        }
         clone.SetActive(true);
-
-        PrintActive(clone, "[InitializeMaskClone] ");
-        
-        InscryptionAPIPlugin.Logger.LogInfo("[InitializeMaskClone] " + clone);
-        foreach (Renderer renderer in clone.GetComponentsInChildren<Renderer>())
-        {
-            InscryptionAPIPlugin.Logger.LogInfo("[InitializeMaskClone][renderer] " + renderer.gameObject.name);
-            InscryptionAPIPlugin.Logger.LogInfo("\t" + renderer.gameObject.activeSelf);
-            InscryptionAPIPlugin.Logger.LogInfo("\t" + renderer.materials[0]);
-            if(renderer.TryGetComponent(typeof(MeshFilter), out Component c))
-            {
-                InscryptionAPIPlugin.Logger.LogInfo("\tMesh Filter: " + ((MeshFilter)c).mesh);
-            }
-            
-        }
-        
-    }
-
-    internal static void PrintActive(GameObject o, string prefix)
-    {
-        InscryptionAPIPlugin.Logger.LogInfo(prefix + o.name + " " + o.activeSelf);
-        for (int i = 0; i < o.transform.childCount; i++)
-        {
-            Transform t = o.transform.GetChild(i);
-            PrintActive(t.gameObject, prefix + "\t");
-        }
-        
+        behaviour.Initialize(data);
     }
 }
