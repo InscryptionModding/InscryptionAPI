@@ -247,23 +247,27 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
-#### Additional functionality
+### Additional Functionality
 
-There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. However, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
+There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
 
-**Modify which card slots the card attacks**: To do this, you need to override RespondsToGetOpposingSlots to return true, and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
+#### Modify Card Slots to Attack
 
-**Add a passive attack or health buff**: To do this, you need to override ProvidesPassiveAttackBuff or ProvidesPassiveHealthBuff to return true, then override GetPassiveAttackBuffs or GetPassiveHealthBuffs to calculate the appropriate buffs. These return an array of integers, which corresponds to the card slots on the battlefield.
+To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
 
-For example: Let's assume the card slots look like this:
+#### Passive Attack and Health Buffs
 
-```
-[A][B][C][D]
-```
+To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs. These return an int representing the buff to give to 'target'.
 
-If card C wants to provide a +1 attack buff to cards B and D, it needs to return the array \[0, 1, 0, 1\] from GetPassiveAttackBuffs.
+In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what 'target' refers to; the current card being checked. You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.
 
-Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These will be called *every frame!!* If you're not careful, you could bog the game down substantially.
+Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These methods will be called *every frame* for *every instance of the ability!!* If you're not careful, you could bog the game down substantially!
+
+#### Other Functionality
+
+ExtendedAbilityBehaviour also allows you to control whether the ability's triggers will activate when the card is facedown. You will need to override TriggerWhenFaceDown to return true. There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.
+
+It should be noted that usage of ExtendedAbilityBehaviour is not required; all the functionalities mentioned can also be accessed by inheriting from the appropriate interface: IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, and IPassiveHealthBuff.
 
 ### Special Stat Icons
 
@@ -690,14 +694,51 @@ If you want to add your own model for your tribe then you can use the example be
 
 
 ```csharp
-TotemManager.NewTopPiece("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
+TotemManager.NewTopPiece<CustomIconTotemTopPiece>("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
 ```
 
 If you are using a model that you have created then here is an example of how to use asset bundles to include it.
 ```csharp
 if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", out GameObject prefab))
 {
-    TotemManager.NewTopPiece("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
+    TotemManager.NewTopPiece<CustomIconTotemTopPiece>("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
+}
+```
+
+### I don't have an icon to show on my totem top
+
+You will need a new class for your totem top so it doesn't look for an icon to populate from a tribe.   
+
+
+```csharp
+public class MyCustomTotemTopPiece : CompositeTotemPiece
+{
+    protected virtual string EmissionGameObjectName => "GameObjectName";
+    
+    public override void SetData(ItemData data)
+    {
+        base.SetData(data);
+
+        // Set emissiveRenderer so the game knows what to highlight when hovering their mouse over the totem top
+        emissiveRenderer = this.gameObject.FindChild(EmissionGameObjectName);
+        if (emissiveRenderer != null)
+        {
+            emissiveRenderer = icon.GetComponent<Renderer>();
+        }
+        
+        if (emissiveRenderer == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"emissiveRenderer not assigned to totem top!");
+        }
+    }
+}
+```
+
+Then add your totem with your new class
+```csharp
+if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", out GameObject prefab))
+{
+    TotemManager.NewTopPiece<MyCustomTotemTopPiece>("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
 }
 ```
 

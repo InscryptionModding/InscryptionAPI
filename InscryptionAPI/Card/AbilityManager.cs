@@ -15,6 +15,13 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class AbilityManager
 {
+    private class AbilityExt
+    {
+        public readonly Dictionary<Type, object> TypeMap = new();
+        public readonly Dictionary<string, string> StringMap = new();
+    }
+    private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
+
     /// <summary>
     /// A utility class that holds all of the required information about an ability in order to be able to use it in-game
     /// </summary>
@@ -96,6 +103,8 @@ public static class AbilityManager
             clonedInfo.rulebookDescription = Info.rulebookDescription;
             clonedInfo.rulebookName = Info.rulebookName;
             clonedInfo.triggerText = Info.triggerText;
+
+            AbilityExtensionProperties.Add(clonedInfo, AbilityExtensionProperties.GetOrCreateValue(Info));
 
             return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
         }
@@ -284,6 +293,12 @@ public static class AbilityManager
     /// <param name="ability">The instance of the ability to remove</param>
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
 
+    internal static Dictionary<string, string> GetAbilityExtensionTable(this AbilityInfo info)
+    {
+        return AbilityExtensionProperties.GetOrCreateValue(info).StringMap;
+    }
+
+
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -390,6 +405,34 @@ public static class AbilityManager
                 }
             }
         }
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TransformIntoCard))]
+    private static IEnumerator TriggerStacksOnceAfterEvolve(IEnumerator enumerator, PlayableCard __instance)
+    {
+        yield return enumerator;
+
+        List<Ability> abilities = new();
+
+        for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
+        {
+            // get info
+            AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+
+            // if can stack and triggers once
+            if (info.canStack && info.GetTriggersOncePerStack())
+            {
+                // add to list if not in it
+                if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
+                    abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+
+                // remove trigger
+                __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
+            }
+        }
+
+        foreach (Ability ab in abilities)
+            __instance.TriggerHandler.AddAbility(ab);
     }
 
     [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]

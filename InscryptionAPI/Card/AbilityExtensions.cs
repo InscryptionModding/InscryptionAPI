@@ -1,6 +1,7 @@
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using UnityEngine;
+using static InscryptionAPI.Card.AbilityManager;
 
 namespace InscryptionAPI.Card;
 
@@ -229,9 +230,221 @@ public static class AbilityExtensions
     /// Helper method: automatically adds the Part3Rulebook metacategories to the stat icon
     /// </summary>
     /// <param name="info">The instance of StatIconInfo</param>
-    /// <returns>The same stati icon so a chain can continue</returns>
+    /// <returns>The same stat icon so a chain can continue</returns>
     public static StatIconInfo SetDefaultPart3Ability(this StatIconInfo info)
     {
         return info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
     }
+
+    /// <summary>
+    /// Sets whether or not the ability is an activated ability.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="activated">If the ability is activated.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetActivated(this AbilityInfo abilityInfo, bool activated = true)
+    {
+        abilityInfo.activated = activated;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability is passive (will not trigger).
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="passive">If the ability is passive.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetPassive(this AbilityInfo abilityInfo, bool passive = true)
+    {
+        abilityInfo.passive = passive;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability can be used by the opponent.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="opponentUsable">If the ability is usable by the opponent.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetOpponentUsable(this AbilityInfo abilityInfo, bool opponentUsable = true)
+    {
+        abilityInfo.opponentUsable = opponentUsable;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability is a conduit.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="conduit">If the ability is a conduit.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetConduit(this AbilityInfo abilityInfo, bool conduit = true)
+    {
+        abilityInfo.conduit = conduit;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability is a conduit cell.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="conduitCell">If the ability is a conduit cell.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetConduitCell(this AbilityInfo abilityInfo, bool conduitCell = true)
+    {
+        abilityInfo.conduitCell = conduitCell;
+        return abilityInfo;
+    }
+
+    /// <summary>
+    /// Sets whether or not the ability can stack on a card, triggering once for each stack.
+    /// Optional parameter for setting the ability to only trigger once per stack when a card evolves (only affects abilities that can stack).
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="triggersOncePerStack">Whether or not to prevent double triggering.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetCanStack(this AbilityInfo abilityInfo, bool canStack = true, bool triggersOncePerStack = false)
+    {
+        abilityInfo.canStack = canStack;
+        abilityInfo.SetTriggersOncePerStack(triggersOncePerStack);
+        return abilityInfo;
+    }
+
+    /// <summary>
+    /// Sets the ability to only ever trigger once per stack. This prevents abilities from triggering twice per stack after a card evolves.
+    /// This only affects cards that evolve into a card that possesses the same stackable ability (eg, default evolutions).
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="triggersOncePerStack">Whether or not to prevent double triggering.</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetTriggersOncePerStack(this AbilityInfo abilityInfo, bool triggersOncePerStack = true)
+    {
+        abilityInfo.SetExtendedProperty("TriggersOncePerStack", triggersOncePerStack);
+        return abilityInfo;
+    }
+
+    /// <summary>
+    /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">Ability to access</param>
+    /// <returns>Whether double triggering is disabled.</returns>
+    public static bool GetTriggersOncePerStack(this Ability ability)
+    {
+        AbilityInfo abilityInfo = AllAbilityInfos.AbilityByID(ability);
+        return abilityInfo.GetTriggersOncePerStack();
+    }
+    /// <summary>
+    /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <returns>Whether double triggering is disabled.</returns>
+    public static bool GetTriggersOncePerStack(this AbilityInfo abilityInfo)
+    {
+        return abilityInfo.GetExtendedPropertyAsBool("TriggersOncePerStack") ?? false;
+    }
+
+    #region ExtendedProperties
+
+    /// <summary>
+    /// Adds a custom property value to the ability.
+    /// </summary>
+    /// <param name="info">Ability to access</param>
+    /// <param name="propertyName">The name of the property to set</param>
+    /// <param name="value">The value of the property</param>
+    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    public static AbilityInfo SetExtendedProperty(this AbilityInfo info, string propertyName, object value)
+    {
+        info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
+        return info;
+    }
+
+    /// <summary>
+    /// Gets a custom property value from the card
+    /// </summary>
+    /// <param name="ability">Ability to access</param>
+    /// <param name="propertyName">The name of the property to get the value of</param>
+    /// <returns></returns>
+    public static string GetExtendedProperty(this Ability ability, string propertyName)
+    {
+        AbilityInfo info = AllAbilityInfos.AbilityByID(ability);
+        return info.GetExtendedProperty(propertyName);
+    }
+    /// <summary>
+    /// Gets a custom property value from the card
+    /// </summary>
+    /// <param name="info">Ability to access</param>
+    /// <param name="propertyName">The name of the property to get the value of</param>
+    /// <returns></returns>
+    public static string GetExtendedProperty(this AbilityInfo info, string propertyName)
+    {
+        info.GetAbilityExtensionTable().TryGetValue(propertyName, out var ret);
+        return ret;
+    }
+
+    /// <summary>
+    /// Gets a custom property as an int (can by null)
+    /// </summary>
+    /// <param name="ability">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int</returns>
+    public static int? GetExtendedPropertyAsInt(this Ability ability, string propertyName)
+    {
+        AbilityInfo info = AllAbilityInfos.AbilityByID(ability);
+        return info.GetExtendedPropertyAsInt(propertyName);
+    }
+    /// <summary>
+    /// Gets a custom property as an int (can by null)
+    /// </summary>
+    /// <param name="info">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int</returns>
+    public static int? GetExtendedPropertyAsInt(this AbilityInfo info, string propertyName)
+    {
+        info.GetAbilityExtensionTable().TryGetValue(propertyName, out var str);
+        return int.TryParse(str, out var ret) ? ret : null;
+    }
+
+    /// <summary>
+    /// Gets a custom property as a float (can by null)
+    /// </summary>
+    /// <param name="ability">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float</returns>
+    public static float? GetExtendedPropertyAsFloat(this Ability ability, string propertyName)
+    {
+        AbilityInfo info = AllAbilityInfos.AbilityByID(ability);
+        return info.GetExtendedPropertyAsFloat(propertyName);
+    }
+    /// <summary>
+    /// Gets a custom property as a float (can by null)
+    /// </summary>
+    /// <param name="info">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float</returns>
+    public static float? GetExtendedPropertyAsFloat(this AbilityInfo info, string propertyName)
+    {
+        info.GetAbilityExtensionTable().TryGetValue(propertyName, out var str);
+        return float.TryParse(str, out var ret) ? ret : null;
+    }
+
+    /// <summary>
+    /// Gets a custom property as a boolean (can be null)
+    /// </summary>
+    /// <param name="ability">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean</returns>
+    public static bool? GetExtendedPropertyAsBool(this Ability ability, string propertyName)
+    {
+        AbilityInfo info = AllAbilityInfos.AbilityByID(ability);
+        return info.GetExtendedPropertyAsBool(propertyName);
+    }
+    /// <summary>
+    /// Gets a custom property as a boolean (can be null)
+    /// </summary>
+    /// <param name="info">Ability to access</param>
+    /// <param name="propertyName">Property name to get value of</param>
+    /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean</returns>
+    public static bool? GetExtendedPropertyAsBool(this AbilityInfo info, string propertyName)
+    {
+        info.GetAbilityExtensionTable().TryGetValue(propertyName, out var str);
+        return bool.TryParse(str, out var ret) ? ret : null;
+    }
+    
+    #endregion
 }
