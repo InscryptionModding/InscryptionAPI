@@ -870,7 +870,7 @@ public class Plugin : BaseUnityPlugin
 {
     private void Awake()
     {
-	    MyCustomMask.Setup();        
+        MyCustomMask.Setup();        
     }
 }
 ```
