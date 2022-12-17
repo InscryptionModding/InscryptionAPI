@@ -36,53 +36,61 @@ public static class MaskManager
         
         return type;
     }
-    
-    public static CustomMask AddCustomMask<T>(string guid, string name, ModelType modelType, string textureOverride=null) where T : MaskBehaviour
+
+    public static CustomMask Add(string guid, string name, string texturePath=null)
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
-        List<string> list = new List<string>() { };
-        if (textureOverride != null)
+        CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, false);
+        if (!string.IsNullOrEmpty(texturePath))
         {
-            list.Add(textureOverride);
+            MaterialOverride materialOverride = new MaterialOverride();
+            materialOverride.ChangeMainTexture(TextureHelper.GetImageAsTexture(texturePath));
+            mask.AddMaterialOverride(materialOverride);
         }
-        return AddCustomMask<T>(guid, name, maskType, modelType, true, list);
-    }
-    
-    public static CustomMask AddCustomMask<T>(string guid, string name, ModelType modelType, List<string> textureOverrideList) where T : MaskBehaviour
-    {
-        LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
-        return AddCustomMask<T>(guid, name, maskType, modelType, true, textureOverrideList);
+        return mask;
     }
-    
-    public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, string textureOverride=null) where T : MaskBehaviour
+
+    public static CustomMask AddRandom(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath=null)
     {
-        List<string> list = new List<string>() { };
-        if (textureOverride != null)
+        CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, false);
+        if (!string.IsNullOrEmpty(texturePath))
         {
-            list.Add(textureOverride);
+            MaterialOverride materialOverride = new MaterialOverride();
+            materialOverride.ChangeMainTexture(TextureHelper.GetImageAsTexture(texturePath));
+            mask.AddMaterialOverride(materialOverride);
         }
-        return AddCustomMask<T>(guid, name, maskType, modelType, false, list);
+
+        return mask;
     }
-    
-    public static CustomMask OverrideCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, List<string> textureOverrideList) where T : MaskBehaviour
+
+    public static CustomMask Override(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath=null)
     {
-        return AddCustomMask<T>(guid, name, maskType, modelType, false, textureOverrideList);
-    }
-    
-    public static CustomMask AddCustomMask<T>(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, bool isOverride, List<string> textureOverrideList=null) where T : MaskBehaviour
-    {
-        CustomMask mask = new CustomMask()
+        CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, true);
+        if (!string.IsNullOrEmpty(texturePath))
         {
-            ID = maskType,
-            Name = name,
-            GUID = guid,
-            TextureOverrides = textureOverrideList != null ? textureOverrideList.Select((a)=>TextureHelper.GetImageAsTexture(a)).ToList() : null,
-            ModelType = modelType,
-            BehaviourType = typeof(T),
-            Override = isOverride,
-        };
+            MaterialOverride materialOverride = new MaterialOverride();
+            materialOverride.ChangeMainTexture(TextureHelper.GetImageAsTexture(texturePath));
+            mask.AddMaterialOverride(materialOverride);
+        }
+        
+        return mask;
+    }
+    
+    /// <summary>
+    /// Adds a custom mask to the game so you can tell leshy to put it on his face. Typically during a boss fight.
+    /// </summary>
+    /// <param name="guid">GUID of your mod</param>
+    /// <param name="name">Name of the mask</param>
+    /// <param name="maskType">The mask we want to add so we cna tell leshy to put on that specific mask.</param>
+    /// <param name="modelType">The model the mask will use</param>
+    /// <param name="isOverride"></param>
+    /// <returns></returns>
+    public static CustomMask AddCustomMask(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, bool isOverride)
+    {
+        CustomMask mask = new CustomMask(guid, name, maskType, isOverride);
+        mask.SetModelType(modelType);
         
         CustomMasks.Add(mask);
         if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
@@ -139,15 +147,9 @@ public static class MaskManager
                 TypeToPrefabLookup[modelType] = resourceLookup;
             }
 
-            CustomMask customMask = new CustomMask()
-            {
-                ID = maskType,
-                Name = maskType.ToString(),
-                ModelType = modelType,
-                GUID = "",
-                TextureOverrides = null,
-                BehaviourType = typeof(MaskBehaviour)
-            };
+            CustomMask customMask = new CustomMask("", maskType.ToString(), maskType, false);
+            customMask.SetModelType(modelType);
+            
             list.Add(customMask);
             if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> defaultMasks))
             {
