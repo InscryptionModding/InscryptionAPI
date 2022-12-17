@@ -827,11 +827,11 @@ NOTE: This also changes the model so we can use a texture without the fuss of UV
 If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
 
 ### Adding a random mask
-If you want to add a new mask that will be randomize chosen when Leshy goes to put on a mask use this.
+If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.
 ```csharp
 MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
 ```
-This example shows adding a new mask that when going to the Prospector boss fight, it will randomly choose between the default Prospector mask and this new one.
+This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.
 
 You can add as many random masks as you want. There is no limit.
 
