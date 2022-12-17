@@ -815,54 +815,75 @@ AudioClip audio = SoundManager.LoadAudioClip("Example.mp3");
 
 ## Masks
 
-### Putting on a mask
+### Changing an existing mask
+This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.
 
 ```csharp
-LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+MaskManager.Override("guid", "nameOfNewMask", LeshyAnimationController.Mask.Angler, "pathToTexture");
 ```
+This example shows changing the mask the Angler uses to have a custom texture we are using.
 
-This will tell leshy to push a mask on his face
+NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
+If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
+
+### Adding a random mask
+If you want to add a new mask that will be randomize chosen when Leshy goes to put on a mask use this.
+```csharp
+MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
+```
+This example shows adding a new mask that when going to the Prospector boss fight, it will randomly choose between the default Prospector mask and this new one.
+
+You can add as many random masks as you want. There is no limit.
+
 
 ### Adding your own mask
 
 ```csharp
-public class Plugin : BaseUnityPlugin
-{
-    private void Start()
-    {
-        MyCustomMask.Setup();
-    }
-}
-```
-
-
-```csharp
-public class MyCustomMask : MaskBehaviour
-{
-    public static LeshyAnimationController.Mask ID;
-    
-    public static void Setup()
-    {
-        var mask = MaskManager.AddCustomMask<MyBossOpponentMask>("guid", "nameOfMask", MaskManager.ModelType.FlatMask, "pathToTexture");
-        ID = mask.ID;
-    }
-}
+MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
 ```
 
 ### Adding your own custom model
 
 ```csharp
+ResourceLookup resourceLookup = new ResourceLookup();
+resourceLookup.FromAssetBundle("pathToAssetBundle", "prefabNameInsideBundle");
+MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
+
+var mask = MaskManager.Add("guid", "nameOfMask");
+mask.SetModelType(modelType);
+```
+
+### Putting on a mask
+This will tell Leshy to push a mask on his face.
+
+Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!
+
+```csharp
+LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+```
+
+### Adding your own behaviour
+
+
+```csharp
+public class Plugin : BaseUnityPlugin
+{
+    private void Awake()
+    {
+	    MyCustomMask.Setup();        
+    }
+}
+```
+
+```csharp
 public class MyCustomMask : MaskBehaviour
 {
     public static LeshyAnimationController.Mask ID;
     
     public static void Setup()
     {
-        ResourceLookup resourceLookup = new ResourceLookup();
-        resourceLookup.FromAssetBundle("pathToBundle", "prefabInsideBundle");
-        MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
-
-        var mask = MaskManager.AddCustomMask<MyBossOpponentMask>("guid", "nameOfMask", modelType);
+        var mask = MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
+        mask.SetMaskBehaviour(typeof(MyCustomMask));
         ID = mask.ID;
     }
 }
