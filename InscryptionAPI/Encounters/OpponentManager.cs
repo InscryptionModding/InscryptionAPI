@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Masks;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
@@ -13,6 +14,7 @@ public static class OpponentManager
     public class FullOpponent
     {
         public readonly Opponent.Type Id;
+        public LeshyAnimationController.Mask MaskType = MaskManager.NoMask;
         public Type Opponent;
         public string SpecialSequencerId;
         public List<Texture2D> NodeAnimation = new();
@@ -53,7 +55,9 @@ public static class OpponentManager
             string specialSequencerId = useReversePatch ? OriginalGetSequencerIdForBoss(opponent) : BossBattleSequencer.GetSequencerIdForBoss(opponent);
             Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent") ?? gameAsm.GetType($"GBC.{opponent.ToString()}Opponent");
 
-            baseGame.Add(new FullOpponent(opponent, opponentType, specialSequencerId));
+            FullOpponent fullOpponent = new FullOpponent(opponent, opponentType, specialSequencerId);
+            fullOpponent.MaskType = MaskManager.BossToMask(opponent);
+            baseGame.Add(fullOpponent);
         }
         return baseGame;
     }
@@ -81,6 +85,7 @@ public static class OpponentManager
         return opp;
     }
 
+    #region Patches
     [HarmonyPatch(typeof(Opponent), nameof(Opponent.SpawnOpponent))]
     [HarmonyPrefix]
     private static bool ReplaceSpawnOpponent(EncounterData encounterData, ref Opponent __result)
@@ -134,4 +139,5 @@ public static class OpponentManager
         }
         return false;
     }
+    #endregion
 }

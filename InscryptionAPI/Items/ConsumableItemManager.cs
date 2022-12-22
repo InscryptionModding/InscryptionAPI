@@ -61,31 +61,34 @@ public static class ConsumableItemManager
             }
             
             string prefabId = "Prefabs/Items/" + data.PrefabId;
-            GameObject original = null;
+            GameObject gameObject = null;
             if (prefabIDToResourceLookup.TryGetValue(prefabId.ToLowerInvariant(), out ConsumableItemResource resource) && data is ConsumableItemData consumableItemData)
             {
-                original = resource.Get<GameObject>();
-                if (original == null)
+                GameObject prefab = resource.Get<GameObject>();
+                if (prefab == null)
                 {
                     InscryptionAPIPlugin.Logger.LogError($"Failed to get {consumableItemData.rulebookName} model from ConsumableItemAssetGetter " + resource);
+                }
+                else
+                {
+                    gameObject = UnityObject.Instantiate<GameObject>(prefab, __instance.transform);
                 }
                 
                 if (resource.PreSetupCallback != null)
                 {
-                    resource.PreSetupCallback(original, consumableItemData);
+                    resource.PreSetupCallback(gameObject, consumableItemData);
                 }
-                SetupPrefab(consumableItemData, original, consumableItemData.GetComponentType(), consumableItemData.GetPrefabModelType());
+                SetupPrefab(consumableItemData, gameObject, consumableItemData.GetComponentType(), consumableItemData.GetPrefabModelType());
             }
             else
             {
-                original = ResourceBank.Get<GameObject>(prefabId);
-                if (original == null)
+                gameObject = UnityObject.Instantiate<GameObject>(ResourceBank.Get<GameObject>(prefabId), __instance.transform);
+                if (gameObject == null)
                 {
                     InscryptionAPIPlugin.Logger.LogError($"Failed to get {data.name} model from ResourceBank " + prefabId);
                 }
             }
             
-            GameObject gameObject = UnityObject.Instantiate<GameObject>(original, __instance.transform);
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
@@ -240,7 +243,7 @@ public static class ConsumableItemManager
     private static void LoadDefaultModelFromBundle(string assetBundlePath, string prefabName, ModelType type)
     {
         ConsumableItemResource resource = new ConsumableItemResource();
-        resource.FromAssetBundle(assetBundlePath, prefabName);
+        resource.FromAssetBundleInAssembly<InscryptionAPIPlugin>(assetBundlePath, prefabName);
         typeToPrefabLookup[type] = resource;
         defaultModelTypes.Add(type);
     }
@@ -355,7 +358,6 @@ public static class ConsumableItemManager
 
     private static ConsumableItem SetupPrefab(ConsumableItemData data, GameObject prefab, Type itemType, ModelType modelType)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"{data}, {prefab}, {itemType}, {modelType}");
         prefab.name = $"Custom Item ({data.rulebookName})";
         
         // Populate icon. Only for default fallback types - If anyone wants to use this then they can add to that fallback type list i guss??
