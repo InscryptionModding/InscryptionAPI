@@ -636,7 +636,79 @@ The third parameter is optional, and determines the volume of your track, from 0
 <p>The audio file should be located inside of the &#39;plugins&#39; folder. The supported audio formats are MP3, WAV, OGG and AIFF.</p>
 <p>You can convert your audio file into an AudioClip object like this:</p>
 <pre><code class="lang-csharp">AudioClip audio = SoundManager.LoadAudioClip(&quot;Example.mp3&quot;);
-</code></pre></article>
+</code></pre><h2 id="masks">Masks</h2>
+<h3 id="changing-an-existing-mask">Changing an existing mask</h3>
+<p>This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.</p>
+<pre><code class="lang-csharp">MaskManager.Override(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Angler, &quot;pathToTexture&quot;);
+</code></pre><p>This example shows changing the mask the Angler uses to have a custom texture we are using.</p>
+<p>NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
+If you still want to use the Anglers model then use <code>.SetModelType(MaskManager.ModelType.Angler)</code></p>
+<h3 id="adding-a-random-mask">Adding a random mask</h3>
+<p>If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.</p>
+<pre><code class="lang-csharp">MaskManager.AddRandom(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Prospector, &quot;pathToTexture&quot;);
+</code></pre><p>This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.</p>
+<p>You can add as many random masks as you want. There is no limit.</p>
+<h3 id="adding-your-own-mask">Adding your own mask</h3>
+<pre><code class="lang-csharp">MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
+</code></pre><h3 id="adding-your-own-custom-model">Adding your own custom model</h3>
+<pre><code class="lang-csharp">ResourceLookup resourceLookup = new ResourceLookup();
+resourceLookup.FromAssetBundle(&quot;pathToAssetBundle&quot;, &quot;prefabNameInsideBundle&quot;);
+MaskManager.ModelType modelType = MaskManager.RegisterPrefab(&quot;guid&quot;, &quot;nameOfModel&quot;, resourceLookup);
+
+var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfMask&quot;);
+mask.SetModelType(modelType);
+</code></pre><h3 id="putting-on-a-mask">Putting on a mask</h3>
+<p>This will tell Leshy to push a mask on his face.</p>
+<p>Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!</p>
+<pre><code class="lang-csharp">LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+</code></pre><h3 id="adding-your-own-behaviour">Adding your own behaviour</h3>
+<pre><code class="lang-csharp">public class Plugin : BaseUnityPlugin
+{
+    private void Awake()
+    {
+        MyCustomMask.Setup();        
+    }
+}
+</code></pre><pre><code class="lang-csharp">public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+
+    public static void Setup()
+    {
+        var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
+        mask.SetMaskBehaviour(typeof(MyCustomMask));
+        ID = mask.ID;
+    }
+}
+</code></pre><h2 id="asset-bundles">Asset Bundles</h2>
+<p>Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.</p>
+<p>Think of them as fancy .zip&#39;s that&#39;s supported by Unity.</p>
+<h3 id="make-an-asset-bundle">Make an asset bundle</h3>
+<ol>
+<li>Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.</li>
+<li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
+<li>Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)</li>
+<li>At the bottom of the Inspector window you&#39;ll see a section labedled &quot;Asset Bundle&quot;</li>
+<li>Assign a new asset bundle name (example: testbundleexample)</li>
+<li>Build Asset bundles Window-&gt;AssetBundle Browser</li>
+<li>Go to the output path using file explorer</li>
+<li>There should be a file called &#39;testbundleexample&#39; in that folder (It will not have an extension!)</li>
+<li>Copy this file into your mod folder</li>
+</ol>
+<h3 id="load-asset-bundle">Load Asset bundle</h3>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet&lt;GameObject&gt;(&quot;pathToBundleFile&quot;, &quot;nameOfPrefabInsideAssetBundle&quot;, out GameObject prefab))
+{
+    GameObject clone = GameObject.Instantiate(prefab);
+    // Do things with gameobject!
+}
+</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9</p>
+<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4</p>
+<p>Third parameter is the result of taking the object out of the asset bundle.</p>
+<p>NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! </p>
+<h3 id="bugs">Bugs</h3>
+<h4 id="1-the-gameobject-is-being-create-but-the-model-wont-show-up">1. The GameObject is being create but the model won&#39;t show up!</h4>
+<p>Make sure you are using 2014.4.24f1 to build the asset bundle? If not the model won&#39;t show!</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

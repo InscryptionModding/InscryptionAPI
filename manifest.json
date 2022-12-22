@@ -622,7 +622,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html",
-          "hash": "XBUH2ZAYH1uBDPYhbgkpsWLZJjpsdpls/rmmJvA6/dc="
+          "hash": "MfIBDDKbxrGCzix8aEbt5bDN8qgBCLlUnpNnNmCetzk="
         }
       },
       "is_incremental": false,
@@ -634,7 +634,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.html",
-          "hash": "xVF3imZUs2p32i3IzcuGaiydQoNET4Io2xNAY6tnfJI="
+          "hash": "nqdTepXp97kzGLzU8pf0kUDTTFJDNWJUYCuZSojtVnk="
         }
       },
       "is_incremental": false,
@@ -742,7 +742,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.AssetBundleHelper.html",
-          "hash": "34VmHuqlw3591f1KGfX1US1KZ235XUdNrjvHdcjKhO8="
+          "hash": "kWV7nfglGmesh6yfJpHilyneid67ZfzSzq1Zvqe7tWA="
         }
       },
       "is_incremental": false,
@@ -834,6 +834,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Helpers.MaterialOverride.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Helpers.MaterialOverride.html",
+          "hash": "9nLvo7YVEcXfVwj7Yq3Yg19j/x8T7k0pM3kE8mNo04o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Helpers.TextureHelper.SpriteType.yml",
       "output": {
         ".html": {
@@ -862,7 +874,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.html",
-          "hash": "oiOL4AlF/HDCeVcbYnej8DUa8XO+VPvzcxlbTFGt9DE="
+          "hash": "cQfDdXh5I4WRSWmsZ6JOIA+kfa0qtEV5D08Heo4w53w="
         }
       },
       "is_incremental": false,
@@ -898,7 +910,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Items.ConsumableItemManager.html",
-          "hash": "QiLZL4Tl71Ao4YwSpoqGhQH/kuOA15dXdNdn7PtSW+I="
+          "hash": "37+0sXveBCzYuTyQe1Q5u3MAw7stz/Dh9lmI17Y1hmY="
         }
       },
       "is_incremental": false,
@@ -946,7 +958,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Items.ResourceLookup.html",
-          "hash": "zEZ8Tj6ukj/1qblaBIjol0RFDEvdSgwFVP0/VwQdDic="
+          "hash": "9+oMIpxpd3F6Yyfz+TpC8lwN89Tqd66yJ4zmw0WLnDE="
         }
       },
       "is_incremental": false,
@@ -959,6 +971,66 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Items.html",
           "hash": "rgY6Bq1J5BTRAu9hBj4EBWIytA69UiUhsFMPdLoPtCk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Masks.CustomMask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Masks.CustomMask.html",
+          "hash": "KEXq4MpvkoPkJb6KtPzfMc5eopWIvHlqyegxlmvWhBY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Masks.MaskBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Masks.MaskBehaviour.html",
+          "hash": "2PvkuAiiiMKxSicMhHTWMU201pm1pA/lAIoBcDYARns="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Masks.MaskManager.ModelType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Masks.MaskManager.ModelType.html",
+          "hash": "NNVwzgWmg9wyDNzF/ge6h/M96VtAP1zou8ApWIogL7g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Masks.MaskManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Masks.MaskManager.html",
+          "hash": "4y69uIefW5+lm8Dw0gdtFZfWz9w5ArblufyDmoWqXTI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Masks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Masks.html",
+          "hash": "hBf17dsRNlg21Ur9+pv1ofwA2ol5Q1C/8ZhHv3Vw2b8="
         }
       },
       "is_incremental": false,
@@ -1834,7 +1906,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "IzktKYYQAFeULxWpDM679NZe9af8ZYHcr2UgRoJUCyw="
+          "hash": "RCu01oTWNpjWC5cZi3FVIo2phDbGAjG/oTsvKksHsuM="
         }
       },
       "is_incremental": false,
@@ -1870,7 +1942,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "IpNhV+x4R4wMsruHaKXqpYkszS8eBr2jOgykHlqPkPo="
+          "hash": "GjGHozRnLFo0MdOYKj898y79MeR8rc48yrs0euTeqHE="
         }
       },
       "is_incremental": false,
@@ -1897,7 +1969,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 158,
+          "total_file_count": 164,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

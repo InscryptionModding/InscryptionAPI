@@ -5625,6 +5625,12 @@ references:
   commentId: F:InscryptionAPI.Encounters.OpponentManager.FullOpponent.Id
   fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.Id
   nameWithType: OpponentManager.FullOpponent.Id
+- uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.MaskType
+  name: MaskType
+  href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent_MaskType
+  commentId: F:InscryptionAPI.Encounters.OpponentManager.FullOpponent.MaskType
+  fullName: InscryptionAPI.Encounters.OpponentManager.FullOpponent.MaskType
+  nameWithType: OpponentManager.FullOpponent.MaskType
 - uid: InscryptionAPI.Encounters.OpponentManager.FullOpponent.NodeAnimation
   name: NodeAnimation
   href: api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html#InscryptionAPI_Encounters_OpponentManager_FullOpponent_NodeAnimation
@@ -5964,6 +5970,15 @@ references:
   fullName.vb: InscryptionAPI.Helpers.AssetBundleHelper.TryGet(Of T)(System.String, System.String, ByRef T)
   nameWithType: AssetBundleHelper.TryGet<T>(String, String, out T)
   nameWithType.vb: AssetBundleHelper.TryGet(Of T)(String, String, ByRef T)
+- uid: InscryptionAPI.Helpers.AssetBundleHelper.TryGet``1(UnityEngine.AssetBundle,System.String,``0@)
+  name: TryGet<T>(AssetBundle, String, out T)
+  href: api/InscryptionAPI.Helpers.AssetBundleHelper.html#InscryptionAPI_Helpers_AssetBundleHelper_TryGet__1_UnityEngine_AssetBundle_System_String___0__
+  commentId: M:InscryptionAPI.Helpers.AssetBundleHelper.TryGet``1(UnityEngine.AssetBundle,System.String,``0@)
+  name.vb: TryGet(Of T)(AssetBundle, String, ByRef T)
+  fullName: InscryptionAPI.Helpers.AssetBundleHelper.TryGet<T>(UnityEngine.AssetBundle, System.String, out T)
+  fullName.vb: InscryptionAPI.Helpers.AssetBundleHelper.TryGet(Of T)(UnityEngine.AssetBundle, System.String, ByRef T)
+  nameWithType: AssetBundleHelper.TryGet<T>(AssetBundle, String, out T)
+  nameWithType.vb: AssetBundleHelper.TryGet(Of T)(AssetBundle, String, ByRef T)
 - uid: InscryptionAPI.Helpers.CustomLine
   name: CustomLine
   href: api/InscryptionAPI.Helpers.CustomLine.html
@@ -6347,6 +6362,205 @@ references:
   fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat(Of T)(T, System.Int32)
   nameWithType: ListExtensions.Repeat<T>(T, Int32)
   nameWithType.vb: ListExtensions.Repeat(Of T)(T, Int32)
+- uid: InscryptionAPI.Helpers.MaterialOverride
+  name: MaterialOverride
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html
+  commentId: T:InscryptionAPI.Helpers.MaterialOverride
+  fullName: InscryptionAPI.Helpers.MaterialOverride
+  nameWithType: MaterialOverride
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask(UnityEngine.Texture2D)
+  name: ChangeDetailMask(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeDetailMask_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeDetailMask(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask*
+  name: ChangeDetailMask
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeDetailMask_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeDetailMask
+  nameWithType: MaterialOverride.ChangeDetailMask
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeEmission(UnityEngine.Texture2D)
+  name: ChangeEmission(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeEmission_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeEmission(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeEmission(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeEmission(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeEmission*
+  name: ChangeEmission
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeEmission_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeEmission
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeEmission
+  nameWithType: MaterialOverride.ChangeEmission
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap(UnityEngine.Texture2D)
+  name: ChangeHeightMap(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeHeightMap_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeHeightMap(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap*
+  name: ChangeHeightMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeHeightMap_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeHeightMap
+  nameWithType: MaterialOverride.ChangeHeightMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture(UnityEngine.Texture2D)
+  name: ChangeMainTexture(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeMainTexture_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeMainTexture(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture*
+  name: ChangeMainTexture
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeMainTexture_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeMainTexture
+  nameWithType: MaterialOverride.ChangeMainTexture
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap(UnityEngine.Texture2D)
+  name: ChangeMetallicMap(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeMetallicMap_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeMetallicMap(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap*
+  name: ChangeMetallicMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeMetallicMap_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeMetallicMap
+  nameWithType: MaterialOverride.ChangeMetallicMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap(UnityEngine.Texture2D)
+  name: ChangeNormalMap(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeNormalMap_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeNormalMap(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap*
+  name: ChangeNormalMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeNormalMap_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeNormalMap
+  nameWithType: MaterialOverride.ChangeNormalMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap(UnityEngine.Texture2D)
+  name: ChangeOcclusionMap(Texture2D)
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeOcclusionMap_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap(UnityEngine.Texture2D)
+  nameWithType: MaterialOverride.ChangeOcclusionMap(Texture2D)
+- uid: InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap*
+  name: ChangeOcclusionMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_ChangeOcclusionMap_
+  commentId: Overload:InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.MaterialOverride.ChangeOcclusionMap
+  nameWithType: MaterialOverride.ChangeOcclusionMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.DetailMask
+  name: DetailMask
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_DetailMask
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.DetailMask
+  fullName: InscryptionAPI.Helpers.MaterialOverride.DetailMask
+  nameWithType: MaterialOverride.DetailMask
+- uid: InscryptionAPI.Helpers.MaterialOverride.Emission
+  name: Emission
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_Emission
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.Emission
+  fullName: InscryptionAPI.Helpers.MaterialOverride.Emission
+  nameWithType: MaterialOverride.Emission
+- uid: InscryptionAPI.Helpers.MaterialOverride.Height
+  name: Height
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_Height
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.Height
+  fullName: InscryptionAPI.Helpers.MaterialOverride.Height
+  nameWithType: MaterialOverride.Height
+- uid: InscryptionAPI.Helpers.MaterialOverride.HeightMap
+  name: HeightMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_HeightMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.HeightMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.HeightMap
+  nameWithType: MaterialOverride.HeightMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.MainTexture
+  name: MainTexture
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_MainTexture
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.MainTexture
+  fullName: InscryptionAPI.Helpers.MaterialOverride.MainTexture
+  nameWithType: MaterialOverride.MainTexture
+- uid: InscryptionAPI.Helpers.MaterialOverride.Metallic
+  name: Metallic
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_Metallic
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.Metallic
+  fullName: InscryptionAPI.Helpers.MaterialOverride.Metallic
+  nameWithType: MaterialOverride.Metallic
+- uid: InscryptionAPI.Helpers.MaterialOverride.MetallicMap
+  name: MetallicMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_MetallicMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.MetallicMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.MetallicMap
+  nameWithType: MaterialOverride.MetallicMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.NormalMap
+  name: NormalMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_NormalMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.NormalMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.NormalMap
+  nameWithType: MaterialOverride.NormalMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.OcclusionMap
+  name: OcclusionMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OcclusionMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OcclusionMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OcclusionMap
+  nameWithType: MaterialOverride.OcclusionMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideDetailMask
+  name: OverrideDetailMask
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideDetailMask
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideDetailMask
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideDetailMask
+  nameWithType: MaterialOverride.OverrideDetailMask
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideEmission
+  name: OverrideEmission
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideEmission
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideEmission
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideEmission
+  nameWithType: MaterialOverride.OverrideEmission
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideHeightMap
+  name: OverrideHeightMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideHeightMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideHeightMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideHeightMap
+  nameWithType: MaterialOverride.OverrideHeightMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideMainTexture
+  name: OverrideMainTexture
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideMainTexture
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideMainTexture
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideMainTexture
+  nameWithType: MaterialOverride.OverrideMainTexture
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideMetallicMap
+  name: OverrideMetallicMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideMetallicMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideMetallicMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideMetallicMap
+  nameWithType: MaterialOverride.OverrideMetallicMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideNormalMap
+  name: OverrideNormalMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideNormalMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideNormalMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideNormalMap
+  nameWithType: MaterialOverride.OverrideNormalMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.OverrideOcclusionMap
+  name: OverrideOcclusionMap
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_OverrideOcclusionMap
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.OverrideOcclusionMap
+  fullName: InscryptionAPI.Helpers.MaterialOverride.OverrideOcclusionMap
+  nameWithType: MaterialOverride.OverrideOcclusionMap
+- uid: InscryptionAPI.Helpers.MaterialOverride.Smoothness
+  name: Smoothness
+  href: api/InscryptionAPI.Helpers.MaterialOverride.html#InscryptionAPI_Helpers_MaterialOverride_Smoothness
+  commentId: F:InscryptionAPI.Helpers.MaterialOverride.Smoothness
+  fullName: InscryptionAPI.Helpers.MaterialOverride.Smoothness
+  nameWithType: MaterialOverride.Smoothness
 - uid: InscryptionAPI.Helpers.TextureHelper
   name: TextureHelper
   href: api/InscryptionAPI.Helpers.TextureHelper.html
@@ -7114,6 +7328,12 @@ references:
   commentId: M:InscryptionAPI.Items.ResourceLookup.FromAssetBundle(System.String,System.String)
   fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundle(System.String, System.String)
   nameWithType: ResourceLookup.FromAssetBundle(String, String)
+- uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundle(UnityEngine.AssetBundle,System.String)
+  name: FromAssetBundle(AssetBundle, String)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundle_UnityEngine_AssetBundle_System_String_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromAssetBundle(UnityEngine.AssetBundle,System.String)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundle(UnityEngine.AssetBundle, System.String)
+  nameWithType: ResourceLookup.FromAssetBundle(AssetBundle, String)
 - uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundle*
   name: FromAssetBundle
   href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundle_
@@ -7121,6 +7341,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundle
   nameWithType: ResourceLookup.FromAssetBundle
+- uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly*
+  name: FromAssetBundleInAssembly
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundleInAssembly_
+  commentId: Overload:InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly
+  nameWithType: ResourceLookup.FromAssetBundleInAssembly
+- uid: InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly``1(System.String,System.String)
+  name: FromAssetBundleInAssembly<T>(String, String)
+  href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromAssetBundleInAssembly__1_System_String_System_String_
+  commentId: M:InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly``1(System.String,System.String)
+  name.vb: FromAssetBundleInAssembly(Of T)(String, String)
+  fullName: InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly<T>(System.String, System.String)
+  fullName.vb: InscryptionAPI.Items.ResourceLookup.FromAssetBundleInAssembly(Of T)(System.String, System.String)
+  nameWithType: ResourceLookup.FromAssetBundleInAssembly<T>(String, String)
+  nameWithType.vb: ResourceLookup.FromAssetBundleInAssembly(Of T)(String, String)
 - uid: InscryptionAPI.Items.ResourceLookup.FromPrefab(UnityEngine.GameObject)
   name: FromPrefab(GameObject)
   href: api/InscryptionAPI.Items.ResourceLookup.html#InscryptionAPI_Items_ResourceLookup_FromPrefab_UnityEngine_GameObject_
@@ -7228,6 +7464,463 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.ResourceLookup.ToString
   nameWithType: ResourceLookup.ToString
+- uid: InscryptionAPI.Masks
+  name: InscryptionAPI.Masks
+  href: api/InscryptionAPI.Masks.html
+  commentId: N:InscryptionAPI.Masks
+  fullName: InscryptionAPI.Masks
+  nameWithType: InscryptionAPI.Masks
+- uid: InscryptionAPI.Masks.CustomMask
+  name: CustomMask
+  href: api/InscryptionAPI.Masks.CustomMask.html
+  commentId: T:InscryptionAPI.Masks.CustomMask
+  fullName: InscryptionAPI.Masks.CustomMask
+  nameWithType: CustomMask
+- uid: InscryptionAPI.Masks.CustomMask.#ctor(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.Boolean)
+  name: CustomMask(String, String, LeshyAnimationController.Mask, Boolean)
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask__ctor_System_String_System_String_DiskCardGame_LeshyAnimationController_Mask_System_Boolean_
+  commentId: M:InscryptionAPI.Masks.CustomMask.#ctor(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.Boolean)
+  fullName: InscryptionAPI.Masks.CustomMask.CustomMask(System.String, System.String, DiskCardGame.LeshyAnimationController.Mask, System.Boolean)
+  nameWithType: CustomMask.CustomMask(String, String, LeshyAnimationController.Mask, Boolean)
+- uid: InscryptionAPI.Masks.CustomMask.#ctor*
+  name: CustomMask
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask__ctor_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.CustomMask
+  nameWithType: CustomMask.CustomMask
+- uid: InscryptionAPI.Masks.CustomMask.AddMaterialOverride(InscryptionAPI.Helpers.MaterialOverride)
+  name: AddMaterialOverride(MaterialOverride)
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_AddMaterialOverride_InscryptionAPI_Helpers_MaterialOverride_
+  commentId: M:InscryptionAPI.Masks.CustomMask.AddMaterialOverride(InscryptionAPI.Helpers.MaterialOverride)
+  fullName: InscryptionAPI.Masks.CustomMask.AddMaterialOverride(InscryptionAPI.Helpers.MaterialOverride)
+  nameWithType: CustomMask.AddMaterialOverride(MaterialOverride)
+- uid: InscryptionAPI.Masks.CustomMask.AddMaterialOverride*
+  name: AddMaterialOverride
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_AddMaterialOverride_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.AddMaterialOverride
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.AddMaterialOverride
+  nameWithType: CustomMask.AddMaterialOverride
+- uid: InscryptionAPI.Masks.CustomMask.BehaviourType
+  name: BehaviourType
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_BehaviourType
+  commentId: P:InscryptionAPI.Masks.CustomMask.BehaviourType
+  fullName: InscryptionAPI.Masks.CustomMask.BehaviourType
+  nameWithType: CustomMask.BehaviourType
+- uid: InscryptionAPI.Masks.CustomMask.BehaviourType*
+  name: BehaviourType
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_BehaviourType_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.BehaviourType
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.BehaviourType
+  nameWithType: CustomMask.BehaviourType
+- uid: InscryptionAPI.Masks.CustomMask.GUID
+  name: GUID
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_GUID
+  commentId: F:InscryptionAPI.Masks.CustomMask.GUID
+  fullName: InscryptionAPI.Masks.CustomMask.GUID
+  nameWithType: CustomMask.GUID
+- uid: InscryptionAPI.Masks.CustomMask.ID
+  name: ID
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_ID
+  commentId: F:InscryptionAPI.Masks.CustomMask.ID
+  fullName: InscryptionAPI.Masks.CustomMask.ID
+  nameWithType: CustomMask.ID
+- uid: InscryptionAPI.Masks.CustomMask.MaterialOverrides
+  name: MaterialOverrides
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_MaterialOverrides
+  commentId: P:InscryptionAPI.Masks.CustomMask.MaterialOverrides
+  fullName: InscryptionAPI.Masks.CustomMask.MaterialOverrides
+  nameWithType: CustomMask.MaterialOverrides
+- uid: InscryptionAPI.Masks.CustomMask.MaterialOverrides*
+  name: MaterialOverrides
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_MaterialOverrides_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.MaterialOverrides
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.MaterialOverrides
+  nameWithType: CustomMask.MaterialOverrides
+- uid: InscryptionAPI.Masks.CustomMask.ModelType
+  name: ModelType
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_ModelType
+  commentId: P:InscryptionAPI.Masks.CustomMask.ModelType
+  fullName: InscryptionAPI.Masks.CustomMask.ModelType
+  nameWithType: CustomMask.ModelType
+- uid: InscryptionAPI.Masks.CustomMask.ModelType*
+  name: ModelType
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_ModelType_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.ModelType
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.ModelType
+  nameWithType: CustomMask.ModelType
+- uid: InscryptionAPI.Masks.CustomMask.Name
+  name: Name
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_Name
+  commentId: F:InscryptionAPI.Masks.CustomMask.Name
+  fullName: InscryptionAPI.Masks.CustomMask.Name
+  nameWithType: CustomMask.Name
+- uid: InscryptionAPI.Masks.CustomMask.Override
+  name: Override
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_Override
+  commentId: F:InscryptionAPI.Masks.CustomMask.Override
+  fullName: InscryptionAPI.Masks.CustomMask.Override
+  nameWithType: CustomMask.Override
+- uid: InscryptionAPI.Masks.CustomMask.SetMaskBehaviour(Type)
+  name: SetMaskBehaviour(Type)
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_SetMaskBehaviour_Type_
+  commentId: M:InscryptionAPI.Masks.CustomMask.SetMaskBehaviour(Type)
+  fullName: InscryptionAPI.Masks.CustomMask.SetMaskBehaviour(Type)
+  nameWithType: CustomMask.SetMaskBehaviour(Type)
+- uid: InscryptionAPI.Masks.CustomMask.SetMaskBehaviour*
+  name: SetMaskBehaviour
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_SetMaskBehaviour_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.SetMaskBehaviour
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.SetMaskBehaviour
+  nameWithType: CustomMask.SetMaskBehaviour
+- uid: InscryptionAPI.Masks.CustomMask.SetModelType(InscryptionAPI.Masks.MaskManager.ModelType)
+  name: SetModelType(MaskManager.ModelType)
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_SetModelType_InscryptionAPI_Masks_MaskManager_ModelType_
+  commentId: M:InscryptionAPI.Masks.CustomMask.SetModelType(InscryptionAPI.Masks.MaskManager.ModelType)
+  fullName: InscryptionAPI.Masks.CustomMask.SetModelType(InscryptionAPI.Masks.MaskManager.ModelType)
+  nameWithType: CustomMask.SetModelType(MaskManager.ModelType)
+- uid: InscryptionAPI.Masks.CustomMask.SetModelType*
+  name: SetModelType
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_SetModelType_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.SetModelType
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.SetModelType
+  nameWithType: CustomMask.SetModelType
+- uid: InscryptionAPI.Masks.CustomMask.ToString
+  name: ToString()
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_ToString
+  commentId: M:InscryptionAPI.Masks.CustomMask.ToString
+  fullName: InscryptionAPI.Masks.CustomMask.ToString()
+  nameWithType: CustomMask.ToString()
+- uid: InscryptionAPI.Masks.CustomMask.ToString*
+  name: ToString
+  href: api/InscryptionAPI.Masks.CustomMask.html#InscryptionAPI_Masks_CustomMask_ToString_
+  commentId: Overload:InscryptionAPI.Masks.CustomMask.ToString
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.CustomMask.ToString
+  nameWithType: CustomMask.ToString
+- uid: InscryptionAPI.Masks.MaskBehaviour
+  name: MaskBehaviour
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html
+  commentId: T:InscryptionAPI.Masks.MaskBehaviour
+  fullName: InscryptionAPI.Masks.MaskBehaviour
+  nameWithType: MaskBehaviour
+- uid: InscryptionAPI.Masks.MaskBehaviour.Initialize(InscryptionAPI.Masks.CustomMask)
+  name: Initialize(CustomMask)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_Initialize_InscryptionAPI_Masks_CustomMask_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.Initialize(InscryptionAPI.Masks.CustomMask)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.Initialize(InscryptionAPI.Masks.CustomMask)
+  nameWithType: MaskBehaviour.Initialize(CustomMask)
+- uid: InscryptionAPI.Masks.MaskBehaviour.Initialize*
+  name: Initialize
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_Initialize_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.Initialize
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.Initialize
+  nameWithType: MaskBehaviour.Initialize
+- uid: InscryptionAPI.Masks.MaskBehaviour.maskData
+  name: maskData
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_maskData
+  commentId: F:InscryptionAPI.Masks.MaskBehaviour.maskData
+  fullName: InscryptionAPI.Masks.MaskBehaviour.maskData
+  nameWithType: MaskBehaviour.maskData
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideDetailMask(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideDetailMask_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideDetailMask(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask*
+  name: OverrideDetailMask
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideDetailMask_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideDetailMask
+  nameWithType: MaskBehaviour.OverrideDetailMask
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideEmission(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideEmission(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideEmission_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideEmission(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideEmission(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideEmission(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideEmission*
+  name: OverrideEmission
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideEmission_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideEmission
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideEmission
+  nameWithType: MaskBehaviour.OverrideEmission
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideHeightMap(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideHeightMap_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideHeightMap(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap*
+  name: OverrideHeightMap
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideHeightMap_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightMap
+  nameWithType: MaskBehaviour.OverrideHeightMap
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideHeightValue(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideHeightValue_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideHeightValue(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue*
+  name: OverrideHeightValue
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideHeightValue_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideHeightValue
+  nameWithType: MaskBehaviour.OverrideHeightValue
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideMainTexture(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMainTexture_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideMainTexture(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture*
+  name: OverrideMainTexture
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMainTexture_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMainTexture
+  nameWithType: MaskBehaviour.OverrideMainTexture
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideMetallic(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMetallic_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideMetallic(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic*
+  name: OverrideMetallic
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMetallic_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallic
+  nameWithType: MaskBehaviour.OverrideMetallic
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideMetallicMap(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMetallicMap_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideMetallicMap(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap*
+  name: OverrideMetallicMap
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideMetallicMap_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideMetallicMap
+  nameWithType: MaskBehaviour.OverrideMetallicMap
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideNormalMap(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideNormalMap_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideNormalMap(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap*
+  name: OverrideNormalMap
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideNormalMap_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideNormalMap
+  nameWithType: MaskBehaviour.OverrideNormalMap
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideOcclusionMap(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideOcclusionMap_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideOcclusionMap(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap*
+  name: OverrideOcclusionMap
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideOcclusionMap_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideOcclusionMap
+  nameWithType: MaskBehaviour.OverrideOcclusionMap
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  name: OverrideSmoothnessValue(MaterialOverride, Material)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideSmoothnessValue_InscryptionAPI_Helpers_MaterialOverride_UnityEngine_Material_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue(InscryptionAPI.Helpers.MaterialOverride,UnityEngine.Material)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue(InscryptionAPI.Helpers.MaterialOverride, UnityEngine.Material)
+  nameWithType: MaskBehaviour.OverrideSmoothnessValue(MaterialOverride, Material)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue*
+  name: OverrideSmoothnessValue
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideSmoothnessValue_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideSmoothnessValue
+  nameWithType: MaskBehaviour.OverrideSmoothnessValue
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideTexture(InscryptionAPI.Masks.CustomMask)
+  name: OverrideTexture(CustomMask)
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideTexture_InscryptionAPI_Masks_CustomMask_
+  commentId: M:InscryptionAPI.Masks.MaskBehaviour.OverrideTexture(InscryptionAPI.Masks.CustomMask)
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideTexture(InscryptionAPI.Masks.CustomMask)
+  nameWithType: MaskBehaviour.OverrideTexture(CustomMask)
+- uid: InscryptionAPI.Masks.MaskBehaviour.OverrideTexture*
+  name: OverrideTexture
+  href: api/InscryptionAPI.Masks.MaskBehaviour.html#InscryptionAPI_Masks_MaskBehaviour_OverrideTexture_
+  commentId: Overload:InscryptionAPI.Masks.MaskBehaviour.OverrideTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskBehaviour.OverrideTexture
+  nameWithType: MaskBehaviour.OverrideTexture
+- uid: InscryptionAPI.Masks.MaskManager
+  name: MaskManager
+  href: api/InscryptionAPI.Masks.MaskManager.html
+  commentId: T:InscryptionAPI.Masks.MaskManager
+  fullName: InscryptionAPI.Masks.MaskManager
+  nameWithType: MaskManager
+- uid: InscryptionAPI.Masks.MaskManager.Add(System.String,System.String,System.String)
+  name: Add(String, String, String)
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_Add_System_String_System_String_System_String_
+  commentId: M:InscryptionAPI.Masks.MaskManager.Add(System.String,System.String,System.String)
+  fullName: InscryptionAPI.Masks.MaskManager.Add(System.String, System.String, System.String)
+  nameWithType: MaskManager.Add(String, String, String)
+- uid: InscryptionAPI.Masks.MaskManager.Add*
+  name: Add
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_Add_
+  commentId: Overload:InscryptionAPI.Masks.MaskManager.Add
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskManager.Add
+  nameWithType: MaskManager.Add
+- uid: InscryptionAPI.Masks.MaskManager.AddCustomMask(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,InscryptionAPI.Masks.MaskManager.ModelType,System.Boolean)
+  name: AddCustomMask(String, String, LeshyAnimationController.Mask, MaskManager.ModelType, Boolean)
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_AddCustomMask_System_String_System_String_DiskCardGame_LeshyAnimationController_Mask_InscryptionAPI_Masks_MaskManager_ModelType_System_Boolean_
+  commentId: M:InscryptionAPI.Masks.MaskManager.AddCustomMask(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,InscryptionAPI.Masks.MaskManager.ModelType,System.Boolean)
+  fullName: InscryptionAPI.Masks.MaskManager.AddCustomMask(System.String, System.String, DiskCardGame.LeshyAnimationController.Mask, InscryptionAPI.Masks.MaskManager.ModelType, System.Boolean)
+  nameWithType: MaskManager.AddCustomMask(String, String, LeshyAnimationController.Mask, MaskManager.ModelType, Boolean)
+- uid: InscryptionAPI.Masks.MaskManager.AddCustomMask*
+  name: AddCustomMask
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_AddCustomMask_
+  commentId: Overload:InscryptionAPI.Masks.MaskManager.AddCustomMask
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskManager.AddCustomMask
+  nameWithType: MaskManager.AddCustomMask
+- uid: InscryptionAPI.Masks.MaskManager.AddRandom(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.String)
+  name: AddRandom(String, String, LeshyAnimationController.Mask, String)
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_AddRandom_System_String_System_String_DiskCardGame_LeshyAnimationController_Mask_System_String_
+  commentId: M:InscryptionAPI.Masks.MaskManager.AddRandom(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.String)
+  fullName: InscryptionAPI.Masks.MaskManager.AddRandom(System.String, System.String, DiskCardGame.LeshyAnimationController.Mask, System.String)
+  nameWithType: MaskManager.AddRandom(String, String, LeshyAnimationController.Mask, String)
+- uid: InscryptionAPI.Masks.MaskManager.AddRandom*
+  name: AddRandom
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_AddRandom_
+  commentId: Overload:InscryptionAPI.Masks.MaskManager.AddRandom
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskManager.AddRandom
+  nameWithType: MaskManager.AddRandom
+- uid: InscryptionAPI.Masks.MaskManager.BaseMasks
+  name: BaseMasks
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_BaseMasks
+  commentId: F:InscryptionAPI.Masks.MaskManager.BaseMasks
+  fullName: InscryptionAPI.Masks.MaskManager.BaseMasks
+  nameWithType: MaskManager.BaseMasks
+- uid: InscryptionAPI.Masks.MaskManager.CustomMasks
+  name: CustomMasks
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_CustomMasks
+  commentId: F:InscryptionAPI.Masks.MaskManager.CustomMasks
+  fullName: InscryptionAPI.Masks.MaskManager.CustomMasks
+  nameWithType: MaskManager.CustomMasks
+- uid: InscryptionAPI.Masks.MaskManager.ModelType
+  name: MaskManager.ModelType
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html
+  commentId: T:InscryptionAPI.Masks.MaskManager.ModelType
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType
+  nameWithType: MaskManager.ModelType
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Angler
+  name: Angler
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Angler
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Angler
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Angler
+  nameWithType: MaskManager.ModelType.Angler
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Doctor
+  name: Doctor
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Doctor
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Doctor
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Doctor
+  nameWithType: MaskManager.ModelType.Doctor
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.FlatMask
+  name: FlatMask
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_FlatMask
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.FlatMask
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.FlatMask
+  nameWithType: MaskManager.ModelType.FlatMask
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Prospector
+  name: Prospector
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Prospector
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Prospector
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Prospector
+  nameWithType: MaskManager.ModelType.Prospector
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Sphere
+  name: Sphere
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Sphere
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Sphere
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Sphere
+  nameWithType: MaskManager.ModelType.Sphere
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Trader
+  name: Trader
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Trader
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Trader
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Trader
+  nameWithType: MaskManager.ModelType.Trader
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Trapper
+  name: Trapper
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Trapper
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Trapper
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Trapper
+  nameWithType: MaskManager.ModelType.Trapper
+- uid: InscryptionAPI.Masks.MaskManager.ModelType.Woodcarver
+  name: Woodcarver
+  href: api/InscryptionAPI.Masks.MaskManager.ModelType.html#InscryptionAPI_Masks_MaskManager_ModelType_Woodcarver
+  commentId: F:InscryptionAPI.Masks.MaskManager.ModelType.Woodcarver
+  fullName: InscryptionAPI.Masks.MaskManager.ModelType.Woodcarver
+  nameWithType: MaskManager.ModelType.Woodcarver
+- uid: InscryptionAPI.Masks.MaskManager.NoMask
+  name: NoMask
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_NoMask
+  commentId: F:InscryptionAPI.Masks.MaskManager.NoMask
+  fullName: InscryptionAPI.Masks.MaskManager.NoMask
+  nameWithType: MaskManager.NoMask
+- uid: InscryptionAPI.Masks.MaskManager.Override(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.String)
+  name: Override(String, String, LeshyAnimationController.Mask, String)
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_Override_System_String_System_String_DiskCardGame_LeshyAnimationController_Mask_System_String_
+  commentId: M:InscryptionAPI.Masks.MaskManager.Override(System.String,System.String,DiskCardGame.LeshyAnimationController.Mask,System.String)
+  fullName: InscryptionAPI.Masks.MaskManager.Override(System.String, System.String, DiskCardGame.LeshyAnimationController.Mask, System.String)
+  nameWithType: MaskManager.Override(String, String, LeshyAnimationController.Mask, String)
+- uid: InscryptionAPI.Masks.MaskManager.Override*
+  name: Override
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_Override_
+  commentId: Overload:InscryptionAPI.Masks.MaskManager.Override
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskManager.Override
+  nameWithType: MaskManager.Override
+- uid: InscryptionAPI.Masks.MaskManager.RegisterPrefab(System.String,System.String,InscryptionAPI.Items.ResourceLookup)
+  name: RegisterPrefab(String, String, ResourceLookup)
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_RegisterPrefab_System_String_System_String_InscryptionAPI_Items_ResourceLookup_
+  commentId: M:InscryptionAPI.Masks.MaskManager.RegisterPrefab(System.String,System.String,InscryptionAPI.Items.ResourceLookup)
+  fullName: InscryptionAPI.Masks.MaskManager.RegisterPrefab(System.String, System.String, InscryptionAPI.Items.ResourceLookup)
+  nameWithType: MaskManager.RegisterPrefab(String, String, ResourceLookup)
+- uid: InscryptionAPI.Masks.MaskManager.RegisterPrefab*
+  name: RegisterPrefab
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_RegisterPrefab_
+  commentId: Overload:InscryptionAPI.Masks.MaskManager.RegisterPrefab
+  isSpec: "True"
+  fullName: InscryptionAPI.Masks.MaskManager.RegisterPrefab
+  nameWithType: MaskManager.RegisterPrefab
+- uid: InscryptionAPI.Masks.MaskManager.TypeToPrefabLookup
+  name: TypeToPrefabLookup
+  href: api/InscryptionAPI.Masks.MaskManager.html#InscryptionAPI_Masks_MaskManager_TypeToPrefabLookup
+  commentId: F:InscryptionAPI.Masks.MaskManager.TypeToPrefabLookup
+  fullName: InscryptionAPI.Masks.MaskManager.TypeToPrefabLookup
+  nameWithType: MaskManager.TypeToPrefabLookup
 - uid: InscryptionAPI.Nodes
   name: InscryptionAPI.Nodes
   href: api/InscryptionAPI.Nodes.html
