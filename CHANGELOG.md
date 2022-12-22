@@ -2,6 +2,8 @@
 
 ## 2.8.0
 - Added support for custom masks
+- Fixed sometimes items use the wrong behaviour
+- Added more resource and asset bundle helpers
 
 ## 2.7.4
 - Fixed latch fix modifying the base info
