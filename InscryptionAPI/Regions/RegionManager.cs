@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
@@ -138,7 +140,8 @@ public static class RegionManager
     {
         return FromTierBasic(name, originalTier, originalTier, addToPool);
     }
-
+    
+    #region Patches
     [HarmonyPrefix]
     [HarmonyPatch(typeof(RunState), "CurrentMapRegion", MethodType.Getter)]
     private static bool CurrentMapPrefix(RunState __instance, ref RegionData __result)
@@ -273,4 +276,48 @@ public static class RegionManager
         }
         return true;
     }
+    
+    [HarmonyPatch(typeof(MapDataReader), "SpawnMapObjects", new Type[] { typeof(MapData), typeof(int), typeof(Vector2) })]
+    public class MapDataReader_SpawnMapObjects
+    {
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            // === We want to turn this
+
+            // gameObject.GetComponent<Renderer>();
+
+            // === Into this
+
+            // GetSpawnedMapObjectRenderer(gameObject);
+
+            // ===
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+
+            MethodInfo GetSpawnedMapObjectRendererInfo = SymbolExtensions.GetMethodInfo(() => GetSpawnedMapObjectRenderer(null));
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].opcode == OpCodes.Callvirt &&
+                    codes[i].operand.ToString() == "UnityEngine.Renderer GetComponent[Renderer]()")
+                {
+                    codes[i].operand = GetSpawnedMapObjectRendererInfo;
+                }
+            }
+
+            return codes;
+        }
+
+        private static Renderer GetSpawnedMapObjectRenderer(GameObject gameObject)
+        {
+            // Props normally have the renderer on the object itself. But custom props sometimes will ot have this.
+            if (gameObject.TryGetComponent(out Renderer renderer))
+            {
+                return renderer;
+            }
+
+            Renderer spawnedMapObjectRenderer = gameObject.GetComponentInChildren<Renderer>();
+            return spawnedMapObjectRenderer;
+        }
+    }
+    #endregion
 }
