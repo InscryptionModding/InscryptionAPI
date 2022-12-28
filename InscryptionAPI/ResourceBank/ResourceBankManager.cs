@@ -1,36 +1,50 @@
 ﻿using HarmonyLib;
-using Sirenix.Utilities;
+using InscryptionAPI;
 
-namespace DiskCardGame;
+namespace InscryptionAPI.Resource;
 
 public static class ResourceBankManager
 {
-    private class ResourceData
+    public class ResourceData
     {
+        public string PluginGUID;
         public ResourceBank.Resource Resource;
         public bool OverrideExistingResource;
     }
     
     private static List<ResourceData> customResources = new List<ResourceData>();
 
-    public static void AddResource(ResourceBank.Resource resource, bool overrideExistingAsset=false)
+    public static ResourceData Add(string pluginGUID, string path, UnityObject unityObject, bool overrideExistingAsset=false)
+    {
+        return Add(pluginGUID, new ResourceBank.Resource()
+        {
+            path = path,
+            asset = unityObject
+        }, overrideExistingAsset);
+    }
+
+    public static ResourceData Add(string pluginGUID, ResourceBank.Resource resource, bool overrideExistingAsset=false)
     {
         if (resource == null)
         {
-            InscryptionAPI.InscryptionAPIPlugin.Logger.LogError("Cannot add null resources!");
+            InscryptionAPIPlugin.Logger.LogError(pluginGUID + " cannot add null resources!");
+            return null;
         }
-        else if (string.IsNullOrEmpty(resource.path))
+        if (string.IsNullOrEmpty(resource.path))
         {
-            InscryptionAPI.InscryptionAPIPlugin.Logger.LogWarning($"Attempting to add resource with empty path! '{resource.path}' and asset {resource.asset}");
+            InscryptionAPIPlugin.Logger.LogError($"{pluginGUID} Attempting to add resource with empty path! '{resource.path}' and asset {resource.asset}");
+            return null;
         }
-        else
+        
+        ResourceData resourceData = new ResourceData
         {
-            customResources.Add(new ResourceData()
-            {
-                Resource = resource,
-                OverrideExistingResource = overrideExistingAsset
-            });
-        }
+            PluginGUID = pluginGUID,
+            Resource = resource,
+            OverrideExistingResource = overrideExistingAsset
+        };
+        
+        customResources.Add(resourceData);
+        return resourceData;
     }
     
     [HarmonyPatch(typeof (ResourceBank), "Awake", new System.Type[] {})]
@@ -38,11 +52,20 @@ public static class ResourceBankManager
     {
         public static void Postfix(ResourceBank __instance)
         {
-            Dictionary<string, ResourceBank.Resource> existingPaths = __instance.resources.ToDictionary((a)=>a.path, (a)=>a);
+            Dictionary<string, ResourceBank.Resource> existingPaths = new Dictionary<string, ResourceBank.Resource>();
+            foreach (ResourceBank.Resource resource in __instance.resources)
+            {
+                string resourcePath = resource.path;
+                if (!existingPaths.ContainsKey(resourcePath))
+                {
+                    existingPaths[resourcePath] = resource;
+                }
+            }
+            
             foreach (ResourceData resourceData in customResources)
             {
                 string resourcePath = resourceData.Resource.path;
-                if (existingPaths.TryGetValue(resourcePath, out ResourceBank.Resource resource) && !resourceData.OverrideExistingResource)
+                if (existingPaths.TryGetValue(resourcePath, out ResourceBank.Resource resource))
                 {
                     if (resourceData.OverrideExistingResource)
                     {
@@ -51,7 +74,7 @@ public static class ResourceBankManager
                     }
                     else
                     {
-                        InscryptionAPI.InscryptionAPIPlugin.Logger.LogWarning("Resource added with that already exists! " + resourcePath);
+                        InscryptionAPIPlugin.Logger.LogWarning($"Cannot add new resource at path {resourcePath} because it already exists with asset {resource.asset}!");
                     }
                 }
                 else
