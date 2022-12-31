@@ -1207,7 +1207,7 @@ public static class CardExtensions
     
 
     /// <summary>
-    /// Create a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
     /// </summary>
     /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
     /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
@@ -1231,7 +1231,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check if the CardInfo has all of the given abilities.
+    /// Checks if the CardInfo has all of the given Abilities.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
@@ -1263,7 +1263,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check if the CardInfo has any of the specified Abilities.
+    /// Checks if the CardInfo has any of the specified Abilities.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
@@ -1279,7 +1279,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo having a specific SpecialTriggeredAbility.
+    /// Checks if the CardInfo has a specific SpecialTriggeredAbility.
     ///
     /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
     /// </summary>
@@ -1292,7 +1292,7 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// Check the CardInfo not having a specific SpecialAbility.
+    /// Checks if the CardInfo does not have a specific SpecialTriggeredAbility.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
@@ -1351,7 +1351,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo not having a specific Trait.
+    /// Checks if the CardInfo does not have a specific Trait.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="trait">The Trait to check for.</param>
