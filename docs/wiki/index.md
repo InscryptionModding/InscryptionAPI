@@ -853,3 +853,121 @@ You can convert your audio file into an AudioClip object like this:
 ```csharp
 AudioClip audio = SoundManager.LoadAudioClip("Example.mp3");
 ```
+
+## Masks
+
+### Changing an existing mask
+This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.
+
+```csharp
+MaskManager.Override("guid", "nameOfNewMask", LeshyAnimationController.Mask.Angler, "pathToTexture");
+```
+This example shows changing the mask the Angler uses to have a custom texture we are using.
+
+NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
+If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
+
+### Adding a random mask
+If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.
+```csharp
+MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
+```
+This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.
+
+You can add as many random masks as you want. There is no limit.
+
+
+### Adding your own mask
+
+```csharp
+MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
+```
+
+### Adding your own custom model
+
+```csharp
+ResourceLookup resourceLookup = new ResourceLookup();
+resourceLookup.FromAssetBundle("pathToAssetBundle", "prefabNameInsideBundle");
+MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
+
+var mask = MaskManager.Add("guid", "nameOfMask");
+mask.SetModelType(modelType);
+```
+
+### Putting on a mask
+This will tell Leshy to push a mask on his face.
+
+Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!
+
+```csharp
+LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+```
+
+### Adding your own behaviour
+
+
+```csharp
+public class Plugin : BaseUnityPlugin
+{
+    private void Awake()
+    {
+        MyCustomMask.Setup();        
+    }
+}
+```
+
+```csharp
+public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+    
+    public static void Setup()
+    {
+        var mask = MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
+        mask.SetMaskBehaviour(typeof(MyCustomMask));
+        ID = mask.ID;
+    }
+}
+```
+
+
+## Asset Bundles
+
+Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.
+
+Think of them as fancy .zip's that's supported by Unity.
+
+### Make an asset bundle
+
+1. Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.
+2. Install the AssetBundleBrowser package. (Window->Package Manager)
+3. Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)
+4. At the bottom of the Inspector window you'll see a section labedled "Asset Bundle"
+5. Assign a new asset bundle name (example: testbundleexample)
+6. Build Asset bundles Window->AssetBundle Browser
+7. Go to the output path using file explorer
+8. There should be a file called 'testbundleexample' in that folder (It will not have an extension!)
+9. Copy this file into your mod folder
+
+### Load Asset bundle
+
+```csharp
+if (AssetBundleHelper.TryGet<GameObject>("pathToBundleFile", "nameOfPrefabInsideAssetBundle", out GameObject prefab))
+{
+    GameObject clone = GameObject.Instantiate(prefab);
+    // Do things with gameobject!
+}
+```
+First parameter is the path to the asset bundle that we copied to your mod folder in #9
+
+Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4
+
+Third parameter is the result of taking the object out of the asset bundle.
+
+NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! 
+
+### Bugs
+
+#### 1. The GameObject is being create but the model won't show up!
+
+Make sure you are using 2014.4.24f1 to build the asset bundle? If not the model won't show!

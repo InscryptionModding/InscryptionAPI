@@ -14,7 +14,23 @@ public class ResourceLookup : ICloneable
 
     public void FromAssetBundle(string assetBundlePath, string assetBundlePrefabName)
     {
-        byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(InscryptionAPIPlugin).Assembly);
+        if (AssetBundleHelper.TryGet(assetBundlePath, assetBundlePrefabName, out GameObject go))
+        {
+            Prefab = go;
+        }
+    }
+    
+    public void FromAssetBundle(AssetBundle assetBundle, string assetBundlePrefabName)
+    {
+        if (AssetBundleHelper.TryGet(assetBundle, assetBundlePrefabName, out GameObject go))
+        {
+            Prefab = go;
+        }
+    }
+    
+    public void FromAssetBundleInAssembly<T>(string assetBundlePath, string assetBundlePrefabName)
+    {
+        byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(T).Assembly);
         if (AssetBundleHelper.TryGet(resourceBytes, assetBundlePrefabName, out GameObject go))
         {
             Prefab = go;
