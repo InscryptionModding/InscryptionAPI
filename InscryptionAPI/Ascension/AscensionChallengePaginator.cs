@@ -1,6 +1,9 @@
 using DiskCardGame;
+using GBC;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -64,7 +67,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             if (go != null)
             {
                 GameObject go2 = Instantiate(go);
-                go2.transform.parent = go.transform.parent;
+                go2.transform.SetParent(go.transform.parent);
                 AscensionIconInteractable chall = go2.GetComponent<AscensionIconInteractable>();
                 go2.SetActive(false);
                 chall.SetEnabled(true);
@@ -232,6 +235,8 @@ public class AscensionChallengePaginator : MonoBehaviour
             }
             Vector3 topRight = new(float.MinValue, float.MinValue);
             Vector3 bottomLeft = new(float.MaxValue, float.MaxValue);
+
+            // get bounding box of challenge icons array
             foreach (AscensionIconInteractable icon in icons)
             {
                 if (icon != null && icon.iconRenderer != null && icon.gameObject.activeSelf)
@@ -254,14 +259,31 @@ public class AscensionChallengePaginator : MonoBehaviour
                     }
                 }
             }
+            Vector3 leftArrowPos = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 3f;
+            Vector3 rightArrowPos = rightArrowPos = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f; ;
+
+            bool offScreen = Math.Abs(Camera.current.WorldToScreenPoint(bottomLeft).x - Camera.current.WorldToScreenPoint(leftArrowPos).x) > 100f;
+            
+            // if the arrows would appear off-screen / sufficiently clipped by the edge of the screen, move them
+            if (offScreen)
+            {
+                leftArrowPos = new(
+                (float)(screen?.transform.position.x - screen?.continueButton.gameObject.transform.position.x) + Vector3.right.x / 2f,
+                (float)(screen?.continueButton.gameObject.transform.position.y),
+                (float)(screen?.continueButton.gameObject.transform.position.z));
+
+                rightArrowPos = (Vector3)screen?.continueButton.gameObject.transform.position + Vector3.left / 2f;
+            }
+
             leftArrow = UnityEngine.Object.Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
-            leftArrow.transform.parent = screen?.transform ?? transform.transform;
-            leftArrow.transform.position = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 3f;
+            leftArrow.transform.SetParent(screen?.transform ?? transform.transform, worldPositionStays: false);
+            leftArrow.transform.position = leftArrowPos;
             leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
             leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => PreviousPage();
+
             rightArrow = UnityEngine.Object.Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
-            rightArrow.transform.parent = screen?.transform ?? transform.transform;
-            rightArrow.transform.position = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f;
+            rightArrow.transform.SetParent(screen?.transform ?? transform.transform, worldPositionStays: false);
+            rightArrow.transform.position = rightArrowPos;
             rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
             rightArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => NextPage();
         }
@@ -275,7 +297,6 @@ public class AscensionChallengePaginator : MonoBehaviour
     public AscensionMenuScreenTransition transition;
     public GameObject rightArrow;
     public GameObject leftArrow;
-
     private class NoneChallengeDisplayer : MonoBehaviour
     {
         public void Start()
