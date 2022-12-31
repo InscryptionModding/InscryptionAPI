@@ -1,9 +1,6 @@
 using DiskCardGame;
-using GBC;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -297,6 +294,7 @@ public class AscensionChallengePaginator : MonoBehaviour
     public AscensionMenuScreenTransition transition;
     public GameObject rightArrow;
     public GameObject leftArrow;
+
     private class NoneChallengeDisplayer : MonoBehaviour
     {
         public void Start()
