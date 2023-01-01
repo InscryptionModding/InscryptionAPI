@@ -82,18 +82,15 @@ public static class TotemManager
 
         public static void AddCustomTribesToList(List<Tribe> list)
         {
-            List<CardInfo> cards = CardManager.AllCardsCopy;
-            foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes)
+            // get a list of all cards with a tribe
+            List<CardInfo> cards = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
+
+            // iterate across all custom tribes that are obtainable as tribe choices
+            foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes.Where(x => x.tribeChoice))
             {
                 // Only add if we have at least 1 card of it
-                foreach (CardInfo info in cards)
-                {
-                    if (info.IsOfTribe(tribeInfo.tribe))
-                    {
-                        list.Add(tribeInfo.tribe);
-                        break;
-                    }
-                }
+                if (cards.Exists(ci => ci.tribes.Contains(tribeInfo.tribe)))
+                    list.Add(tribeInfo.tribe);
             }
         }
     }
@@ -103,11 +100,9 @@ public static class TotemManager
     {
         public static void Postfix(ResourceBank __instance)
         {
+            // The resource bank has been cleared. refill it
             if (ResourceBank.Get<GameObject>(CustomTotemTopResourcePath) == null)
-            {
-                // The resource bank has been cleared. refill it
                 Initialize();
-            }
         }
     }
     
@@ -238,9 +233,7 @@ public static class TotemManager
     public static void SetDefaultTotemTop(GameObject gameObject)
     {
         if (defaultTotemTop == null)
-        {
             InitializeDefaultTotemTop();
-        }
         
         defaultTotemTop.Prefab = gameObject;
         GameObject.DontDestroyOnLoad(gameObject);
@@ -249,9 +242,7 @@ public static class TotemManager
     public static void SetDefaultTotemTop<T>(GameObject gameObject) where T : CompositeTotemPiece
     {
         if (defaultTotemTop == null)
-        {
             InitializeDefaultTotemTop();
-        }
         
         // Attach missing components
         SetupTotemTopPrefab(gameObject, typeof(T));
@@ -264,7 +255,7 @@ public static class TotemManager
         byte[] resourceBytes = TextureHelper.GetResourceBytes("customtotemtop", typeof(InscryptionAPIPlugin).Assembly);
         if (AssetBundleHelper.TryGet(resourceBytes, "CustomTotemTop", out GameObject go))
         {
-            defaultTotemTop = NewTopPiece("DefaultTotemTop",
+            defaultTotemTop = NewTopPiece<CustomIconTotemTopPiece>("DefaultTotemTop",
                 InscryptionAPIPlugin.ModGUID,
                 Tribe.None,
                 go
@@ -275,25 +266,19 @@ public static class TotemManager
     
     private static void Initialize()
     {
+        // Don't change any totems!
         if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.Vanilla)
-        {
-            // Don't change any totems!
             return;
-        }
         
         if (defaultTotemTop == null)
-        {
             InitializeDefaultTotemTop();
-        }
 
         // Add all totem tops to the game
         foreach (CustomTotemTop totem in totemTops)
         {
             string path = "Prefabs/Items/TotemPieces/TotemTop_" + totem.Tribe;
             if (totem == defaultTotemTop)
-            {
                 path = CustomTotemTopResourcePath;
-            }
             
             GameObject prefab = totem.Prefab;
             if (prefab == null)
@@ -318,9 +303,8 @@ public static class TotemManager
     {
         // Add require components in case the prefab doesn't have them
         if (prefab.GetComponent<CompositeTotemPiece>() == null)
-        {
             prefab.AddComponent(scriptType);
-        }
+
         if (prefab.GetComponent<Animator>() == null)
         {
             Animator addComponent = prefab.AddComponent<Animator>();
