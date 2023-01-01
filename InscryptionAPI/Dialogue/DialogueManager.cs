@@ -10,7 +10,7 @@ public static class DialogueManager
         public DialogueEvent DialogueEvent;
         public string PluginGUID;
     }
-    
+
     public class DialogueColor
     {
         public Color Color;
@@ -29,7 +29,9 @@ public static class DialogueManager
             PluginGUID = pluginGUID,
             DialogueEvent = dialogueEvent
         };
+        
         CustomDialogue.Add(dialogue);
+        DialogueDataUtil.Data?.events?.Add(dialogueEvent);
         return dialogue;
     }
     
@@ -45,8 +47,23 @@ public static class DialogueManager
         CustomDialogueColor.Add(data);
         return data;
     }
+    
+    public static DialogueEvent GenerateEvent(string pluginGUID, string name, List<Helpers.CustomLine> mainLines, List<List<Helpers.CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = 
+        DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)
+    {
+        DialogueEvent ev = new();
+        List<DialogueEvent.Speaker> speakers = new() { DialogueEvent.Speaker.Single };
+        ev.id = name;
+        ev.mainLines = new(mainLines != null ? mainLines.ConvertAll((x) => x.ToLine(speakers, defaultSpeaker)) : new());
+        ev.repeatLines = repeatLines != null ? repeatLines.ConvertAll((x) => new DialogueEvent.LineSet(x.ConvertAll((x2) => x2.ToLine(speakers, defaultSpeaker)))) : new();
+        ev.maxRepeatsBehaviour = afterMaxRepeats;
+        ev.speakers = new(speakers);
+        
+        Add(pluginGUID, ev);
+        return ev;
+    }
 
-    #region Pathces
+    #region Patches
     [HarmonyPatch(typeof(DialogueDataUtil), nameof(DialogueDataUtil.ReadDialogueData), new System.Type[] { })]
     public class DialogueDataUtil_ReadDialogueData
     {
