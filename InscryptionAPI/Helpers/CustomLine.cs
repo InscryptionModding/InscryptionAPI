@@ -2,6 +2,8 @@ using DiskCardGame;
 
 namespace InscryptionAPI.Helpers;
 
+
+[Obsolete("Use DialogueManager.GenerateEvent instead")]
 public struct CustomLine
 {
     public CustomLine() { }
