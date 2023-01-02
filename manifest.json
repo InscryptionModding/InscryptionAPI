@@ -474,6 +474,102 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.html",
+          "hash": "Z6mTv3PIIZGYrv2mtOMPXE4hvMUGFeMdaZ/SCODqTwc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html",
+          "hash": "TIuWBMgSpNvbyJacIgZrSDIKiR6SBCbRW4kWfTCiXlY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.html",
+          "hash": "dCHoXP86zSdJnpuyGgYyPYUZoYCstUZ4+0SpGqPffxI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html",
+          "hash": "Gz9MrvvnUWRMyb2tSmivSPUbvZJ+nKmzhRCiPT6Ihnc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.html",
+          "hash": "0PJucMaiWufoHrtnuWfCO83dzQmuyqxvOGFLWAiTrXU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.Helpers.CustomLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.Helpers.CustomLine.html",
+          "hash": "XSn7rbCCPFHfMYMTJfqXR8/hmOvfl6NKQ98jyVHkfbA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.Helpers.html",
+          "hash": "+lddxLto6EtnyY7l97znONqNHQK3+exXjRpAGHkxt7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.html",
+          "hash": "HvidMuj9ORU0+c/vk3Hs6Qwv2Y+YvGYEGsz6PY/YnLE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Encounters.AIManager.FullAI.yml",
       "output": {
         ".html": {
@@ -622,7 +718,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.FullOpponent.html",
-          "hash": "MfIBDDKbxrGCzix8aEbt5bDN8qgBCLlUnpNnNmCetzk="
+          "hash": "pEoAaBuMRRiqNk3Yx98EXInaci77vhq5hYtJJUFOAyY="
         }
       },
       "is_incremental": false,
@@ -634,7 +730,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.html",
-          "hash": "nqdTepXp97kzGLzU8pf0kUDTTFJDNWJUYCuZSojtVnk="
+          "hash": "XB9fs2IuHZn/kDyVmgHkGanuocC56UIjsA+uG2onEEU="
         }
       },
       "is_incremental": false,
@@ -754,7 +850,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.CustomLine.html",
-          "hash": "uvLXssUg5ze0+m/dU9OT0qSKz6LsAciqPAaYmoRkcL0="
+          "hash": "5GLtHnGaThZMJjNe1vs2B7/pq0y2cPqq9yvwpuo1y5o="
         }
       },
       "is_incremental": false,
@@ -766,7 +862,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.DialogueEventGenerator.html",
-          "hash": "ehWxx2ZqgoWVqmKqT6bCmcL5zoXZQyWJqxtPLjtTxu4="
+          "hash": "3MC8rnIK9ZdEwny8QwRBxSNCPjwZ0S28WjmntkZsvu0="
         }
       },
       "is_incremental": false,
@@ -1326,11 +1422,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.html",
+          "hash": "QXnzRPuRZQOVrOKeLXzkQCioE4E9mOVo6wRhhj3qb6E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Regions.RegionManager.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Regions.RegionManager.html",
-          "hash": "gaMqnOlLY6/k5e7tMqW1T5SSWNIJvA3232RO5SxA6VE="
+          "hash": "ApooOOcdHhnX7Bie8dw1CyTTJlUWvhUIcRqBt2Xk76U="
         }
       },
       "is_incremental": false,
@@ -1342,7 +1450,55 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Regions.html",
-          "hash": "8AqeVQrJXdZ+m6J2LY7x//t5xmt/nQqoeslnUVKNBkQ="
+          "hash": "FHPuI+XsEqdvFONSeP/EvonXV6GVOlhMmOhD3WGw9EQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html",
+          "hash": "Q+/e15IT5nkAYb72HmV9/Nty7Tqnrdyy/jE433ZLao8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html",
+          "hash": "v706xIcnJwBq22smLpvq90lMURN0i0Aw3WTNgeWo4l8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.html",
+          "hash": "VBx2c68HwiksChj+iIDCX72W2VhB3a0XkkjCCWuAcNw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Resource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Resource.html",
+          "hash": "LCXxseufeippS8gvf6f534SWRSZO5ndxTbnNpcrAWNI="
         }
       },
       "is_incremental": false,
@@ -1906,7 +2062,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "RCu01oTWNpjWC5cZi3FVIo2phDbGAjG/oTsvKksHsuM="
+          "hash": "ebZTC2kRYHGQgbH03J4+tgAWmEBCtzgwL1mV8f08ic8="
         }
       },
       "is_incremental": false,
@@ -1969,7 +2125,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 164,
+          "total_file_count": 177,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

@@ -4827,6 +4827,269 @@ references:
   commentId: F:InscryptionAPI.Card.TribeManager.TribeInfo.tribeChoice
   fullName: InscryptionAPI.Card.TribeManager.TribeInfo.tribeChoice
   nameWithType: TribeManager.TribeInfo.tribeChoice
+- uid: InscryptionAPI.Dialogue
+  name: InscryptionAPI.Dialogue
+  href: api/InscryptionAPI.Dialogue.html
+  commentId: N:InscryptionAPI.Dialogue
+  fullName: InscryptionAPI.Dialogue
+  nameWithType: InscryptionAPI.Dialogue
+- uid: InscryptionAPI.Dialogue.DialogueManager
+  name: DialogueManager
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html
+  commentId: T:InscryptionAPI.Dialogue.DialogueManager
+  fullName: InscryptionAPI.Dialogue.DialogueManager
+  nameWithType: DialogueManager
+- uid: InscryptionAPI.Dialogue.DialogueManager.Add(System.String,DialogueEvent)
+  name: Add(String, DialogueEvent)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_Add_System_String_DialogueEvent_
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.Add(System.String,DialogueEvent)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.Add(System.String, DialogueEvent)
+  nameWithType: DialogueManager.Add(String, DialogueEvent)
+- uid: InscryptionAPI.Dialogue.DialogueManager.Add*
+  name: Add
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_Add_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.Add
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.Add
+  nameWithType: DialogueManager.Add
+- uid: InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String,System.String,UnityEngine.Color)
+  name: AddColor(String, String, Color)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_AddColor_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String, System.String, UnityEngine.Color)
+  nameWithType: DialogueManager.AddColor(String, String, Color)
+- uid: InscryptionAPI.Dialogue.DialogueManager.AddColor*
+  name: AddColor
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_AddColor_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.AddColor
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.AddColor
+  nameWithType: DialogueManager.AddColor
+- uid: InscryptionAPI.Dialogue.DialogueManager.ColorLookup
+  name: ColorLookup
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_ColorLookup
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.ColorLookup
+  fullName: InscryptionAPI.Dialogue.DialogueManager.ColorLookup
+  nameWithType: DialogueManager.ColorLookup
+- uid: InscryptionAPI.Dialogue.DialogueManager.CustomDialogue
+  name: CustomDialogue
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_CustomDialogue
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.CustomDialogue
+  fullName: InscryptionAPI.Dialogue.DialogueManager.CustomDialogue
+  nameWithType: DialogueManager.CustomDialogue
+- uid: InscryptionAPI.Dialogue.DialogueManager.CustomDialogueColor
+  name: CustomDialogueColor
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_CustomDialogueColor
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.CustomDialogueColor
+  fullName: InscryptionAPI.Dialogue.DialogueManager.CustomDialogueColor
+  nameWithType: DialogueManager.CustomDialogueColor
+- uid: InscryptionAPI.Dialogue.DialogueManager.Dialogue
+  name: DialogueManager.Dialogue
+  href: api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.html
+  commentId: T:InscryptionAPI.Dialogue.DialogueManager.Dialogue
+  fullName: InscryptionAPI.Dialogue.DialogueManager.Dialogue
+  nameWithType: DialogueManager.Dialogue
+- uid: InscryptionAPI.Dialogue.DialogueManager.Dialogue.DialogueEvent
+  name: DialogueEvent
+  href: api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.html#InscryptionAPI_Dialogue_DialogueManager_Dialogue_DialogueEvent
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.Dialogue.DialogueEvent
+  fullName: InscryptionAPI.Dialogue.DialogueManager.Dialogue.DialogueEvent
+  nameWithType: DialogueManager.Dialogue.DialogueEvent
+- uid: InscryptionAPI.Dialogue.DialogueManager.Dialogue.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.html#InscryptionAPI_Dialogue_DialogueManager_Dialogue_PluginGUID
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.Dialogue.PluginGUID
+  fullName: InscryptionAPI.Dialogue.DialogueManager.Dialogue.PluginGUID
+  nameWithType: DialogueManager.Dialogue.PluginGUID
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueColor
+  name: DialogueManager.DialogueColor
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html
+  commentId: T:InscryptionAPI.Dialogue.DialogueManager.DialogueColor
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueColor
+  nameWithType: DialogueManager.DialogueColor
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.Color
+  name: Color
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html#InscryptionAPI_Dialogue_DialogueManager_DialogueColor_Color
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.DialogueColor.Color
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.Color
+  nameWithType: DialogueManager.DialogueColor.Color
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.ColorCode
+  name: ColorCode
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html#InscryptionAPI_Dialogue_DialogueManager_DialogueColor_ColorCode
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.DialogueColor.ColorCode
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.ColorCode
+  nameWithType: DialogueManager.DialogueColor.ColorCode
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html#InscryptionAPI_Dialogue_DialogueManager_DialogueColor_PluginGUID
+  commentId: F:InscryptionAPI.Dialogue.DialogueManager.DialogueColor.PluginGUID
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueColor.PluginGUID
+  nameWithType: DialogueManager.DialogueColor.PluginGUID
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData
+  name: DialogueManager.DialogueDataUtil_ReadDialogueData
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.html
+  commentId: T:InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData
+  nameWithType: DialogueManager.DialogueDataUtil_ReadDialogueData
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix
+  name: Postfix()
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.html#InscryptionAPI_Dialogue_DialogueManager_DialogueDataUtil_ReadDialogueData_Postfix
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix()
+  nameWithType: DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix()
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix*
+  name: Postfix
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.html#InscryptionAPI_Dialogue_DialogueManager_DialogueDataUtil_ReadDialogueData_Postfix_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix
+  nameWithType: DialogueManager.DialogueDataUtil_ReadDialogueData.Postfix
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode
+  name: DialogueManager.DialogueParser_GetColorFromCode
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html
+  commentId: T:InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode
+  nameWithType: DialogueManager.DialogueParser_GetColorFromCode
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser,System.String,UnityEngine.Color,UnityEngine.Color@)
+  name: Prefix(DialogueParser, String, Color, ref Color)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html#InscryptionAPI_Dialogue_DialogueManager_DialogueParser_GetColorFromCode_Prefix_DialogueParser_System_String_UnityEngine_Color_UnityEngine_Color__
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser,System.String,UnityEngine.Color,UnityEngine.Color@)
+  name.vb: Prefix(DialogueParser, String, Color, ByRef Color)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser, System.String, UnityEngine.Color, ref UnityEngine.Color)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser, System.String, UnityEngine.Color, ByRef UnityEngine.Color)
+  nameWithType: DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser, String, Color, ref Color)
+  nameWithType.vb: DialogueManager.DialogueParser_GetColorFromCode.Prefix(DialogueParser, String, Color, ByRef Color)
+- uid: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix*
+  name: Prefix
+  href: api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html#InscryptionAPI_Dialogue_DialogueManager_DialogueParser_GetColorFromCode_Prefix_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix
+  nameWithType: DialogueManager.DialogueParser_GetColorFromCode.Prefix
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.Helpers.CustomLine},List{List{InscryptionAPI.Dialogue.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name: GenerateEvent(String, String, List<Helpers.CustomLine>, List<List<Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_Helpers_CustomLine__List_List_InscryptionAPI_Dialogue_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.Helpers.CustomLine},List{List{InscryptionAPI.Dialogue.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name.vb: GenerateEvent(String, String, List(Of Helpers.CustomLine), List(Of List(Of Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List<InscryptionAPI.Dialogue.Helpers.CustomLine>, List<List<InscryptionAPI.Dialogue.Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List(Of InscryptionAPI.Dialogue.Helpers.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType: DialogueManager.GenerateEvent(String, String, List<Helpers.CustomLine>, List<List<Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType.vb: DialogueManager.GenerateEvent(String, String, List(Of Helpers.CustomLine), List(Of List(Of Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent*
+  name: GenerateEvent
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.GenerateEvent
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent
+  nameWithType: DialogueManager.GenerateEvent
+- uid: InscryptionAPI.Dialogue.Helpers
+  name: Helpers
+  href: api/InscryptionAPI.Dialogue.Helpers.html
+  commentId: T:InscryptionAPI.Dialogue.Helpers
+  fullName: InscryptionAPI.Dialogue.Helpers
+  nameWithType: Helpers
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine
+  name: Helpers.CustomLine
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html
+  commentId: T:InscryptionAPI.Dialogue.Helpers.CustomLine
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine
+  nameWithType: Helpers.CustomLine
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
+  name: CustomLine()
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine__ctor
+  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.CustomLine()
+  nameWithType: Helpers.CustomLine.CustomLine()
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor*
+  name: CustomLine
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine__ctor_
+  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.CustomLine
+  nameWithType: Helpers.CustomLine.CustomLine
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
+  name: emotion
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_emotion
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
+  nameWithType: Helpers.CustomLine.emotion
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
+  name: letterAnimation
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_letterAnimation
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
+  nameWithType: Helpers.CustomLine.letterAnimation
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.Helpers.CustomLine
+  name: Implicit(String to Helpers.CustomLine)
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_op_Implicit_System_String__InscryptionAPI_Dialogue_Helpers_CustomLine
+  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.Helpers.CustomLine
+  name.vb: Widening(String to Helpers.CustomLine)
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.Implicit(System.String to InscryptionAPI.Dialogue.Helpers.CustomLine)
+  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.Widening(System.String to InscryptionAPI.Dialogue.Helpers.CustomLine)
+  nameWithType: Helpers.CustomLine.Implicit(String to Helpers.CustomLine)
+  nameWithType.vb: Helpers.CustomLine.Widening(String to Helpers.CustomLine)
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_op_Implicit_
+  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.Implicit
+  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.Widening
+  nameWithType: Helpers.CustomLine.Implicit
+  nameWithType.vb: Helpers.CustomLine.Widening
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
+  name: p03Face
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_p03Face
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
+  nameWithType: Helpers.CustomLine.p03Face
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
+  name: speaker
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_speaker
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
+  nameWithType: Helpers.CustomLine.speaker
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
+  name: specialInstruction
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_specialInstruction
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
+  nameWithType: Helpers.CustomLine.specialInstruction
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
+  name: storyCondition
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_storyCondition
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
+  nameWithType: Helpers.CustomLine.storyCondition
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
+  name: storyConditionMustBeMet
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_storyConditionMustBeMet
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
+  nameWithType: Helpers.CustomLine.storyConditionMustBeMet
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.text
+  name: text
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_text
+  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.text
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.text
+  nameWithType: Helpers.CustomLine.text
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name: ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_ToLine_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name.vb: ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  nameWithType: Helpers.CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  nameWithType.vb: Helpers.CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine*
+  name: ToLine
+  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_ToLine_
+  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine
+  nameWithType: Helpers.CustomLine.ToLine
 - uid: InscryptionAPI.Encounters
   name: InscryptionAPI.Encounters
   href: api/InscryptionAPI.Encounters.html
@@ -9915,6 +10178,28 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier
   nameWithType: RegionManager.GetRandomRegionFromTier
+- uid: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects
+  name: RegionManager.MapDataReader_SpawnMapObjects
+  href: api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.html
+  commentId: T:InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects
+  fullName: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects
+  nameWithType: RegionManager.MapDataReader_SpawnMapObjects
+- uid: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
+  name: Transpiler(IEnumerable<CodeInstruction>)
+  href: api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.html#InscryptionAPI_Regions_RegionManager_MapDataReader_SpawnMapObjects_Transpiler_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: Transpiler(IEnumerable(Of CodeInstruction))
+  fullName: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable<CodeInstruction>)
+  nameWithType.vb: RegionManager.MapDataReader_SpawnMapObjects.Transpiler(IEnumerable(Of CodeInstruction))
+- uid: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler*
+  name: Transpiler
+  href: api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.html#InscryptionAPI_Regions_RegionManager_MapDataReader_SpawnMapObjects_Transpiler_
+  commentId: Overload:InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.Transpiler
+  nameWithType: RegionManager.MapDataReader_SpawnMapObjects.Transpiler
 - uid: InscryptionAPI.Regions.RegionManager.ModifyRegionsList
   name: ModifyRegionsList
   href: api/InscryptionAPI.Regions.RegionManager.html#InscryptionAPI_Regions_RegionManager_ModifyRegionsList
@@ -9960,6 +10245,80 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.RegionManager.SyncRegionList
   nameWithType: RegionManager.SyncRegionList
+- uid: InscryptionAPI.Resource
+  name: InscryptionAPI.Resource
+  href: api/InscryptionAPI.Resource.html
+  commentId: N:InscryptionAPI.Resource
+  fullName: InscryptionAPI.Resource
+  nameWithType: InscryptionAPI.Resource
+- uid: InscryptionAPI.Resource.ResourceBankManager
+  name: ResourceBankManager
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html
+  commentId: T:InscryptionAPI.Resource.ResourceBankManager
+  fullName: InscryptionAPI.Resource.ResourceBankManager
+  nameWithType: ResourceBankManager
+- uid: InscryptionAPI.Resource.ResourceBankManager.Add(System.String,ResourceBank.Resource,System.Boolean)
+  name: Add(String, ResourceBank.Resource, Boolean)
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html#InscryptionAPI_Resource_ResourceBankManager_Add_System_String_ResourceBank_Resource_System_Boolean_
+  commentId: M:InscryptionAPI.Resource.ResourceBankManager.Add(System.String,ResourceBank.Resource,System.Boolean)
+  fullName: InscryptionAPI.Resource.ResourceBankManager.Add(System.String, ResourceBank.Resource, System.Boolean)
+  nameWithType: ResourceBankManager.Add(String, ResourceBank.Resource, Boolean)
+- uid: InscryptionAPI.Resource.ResourceBankManager.Add(System.String,System.String,UnityObject,System.Boolean)
+  name: Add(String, String, UnityObject, Boolean)
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html#InscryptionAPI_Resource_ResourceBankManager_Add_System_String_System_String_UnityObject_System_Boolean_
+  commentId: M:InscryptionAPI.Resource.ResourceBankManager.Add(System.String,System.String,UnityObject,System.Boolean)
+  fullName: InscryptionAPI.Resource.ResourceBankManager.Add(System.String, System.String, UnityObject, System.Boolean)
+  nameWithType: ResourceBankManager.Add(String, String, UnityObject, Boolean)
+- uid: InscryptionAPI.Resource.ResourceBankManager.Add*
+  name: Add
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html#InscryptionAPI_Resource_ResourceBankManager_Add_
+  commentId: Overload:InscryptionAPI.Resource.ResourceBankManager.Add
+  isSpec: "True"
+  fullName: InscryptionAPI.Resource.ResourceBankManager.Add
+  nameWithType: ResourceBankManager.Add
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
+  name: ResourceBankManager.ResourceBank_Awake
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html
+  commentId: T:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
+  nameWithType: ResourceBankManager.ResourceBank_Awake
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
+  name: Postfix(ResourceBank)
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html#InscryptionAPI_Resource_ResourceBankManager_ResourceBank_Awake_Postfix_ResourceBank_
+  commentId: M:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
+  nameWithType: ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix*
+  name: Postfix
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html#InscryptionAPI_Resource_ResourceBankManager_ResourceBank_Awake_Postfix_
+  commentId: Overload:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix
+  isSpec: "True"
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix
+  nameWithType: ResourceBankManager.ResourceBank_Awake.Postfix
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceData
+  name: ResourceBankManager.ResourceData
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html
+  commentId: T:InscryptionAPI.Resource.ResourceBankManager.ResourceData
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceData
+  nameWithType: ResourceBankManager.ResourceData
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceData.OverrideExistingResource
+  name: OverrideExistingResource
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html#InscryptionAPI_Resource_ResourceBankManager_ResourceData_OverrideExistingResource
+  commentId: F:InscryptionAPI.Resource.ResourceBankManager.ResourceData.OverrideExistingResource
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceData.OverrideExistingResource
+  nameWithType: ResourceBankManager.ResourceData.OverrideExistingResource
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceData.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html#InscryptionAPI_Resource_ResourceBankManager_ResourceData_PluginGUID
+  commentId: F:InscryptionAPI.Resource.ResourceBankManager.ResourceData.PluginGUID
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceData.PluginGUID
+  nameWithType: ResourceBankManager.ResourceData.PluginGUID
+- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceData.Resource
+  name: Resource
+  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html#InscryptionAPI_Resource_ResourceBankManager_ResourceData_Resource
+  commentId: F:InscryptionAPI.Resource.ResourceBankManager.ResourceData.Resource
+  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceData.Resource
+  nameWithType: ResourceBankManager.ResourceData.Resource
 - uid: InscryptionAPI.Saves
   name: InscryptionAPI.Saves
   href: api/InscryptionAPI.Saves.html
