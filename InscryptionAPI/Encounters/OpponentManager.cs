@@ -1,9 +1,14 @@
 using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Items.Extensions;
 using InscryptionAPI.Masks;
+using InscryptionAPI.Saves;
+using Sirenix.Serialization.Utilities;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
@@ -138,6 +143,107 @@ public static class OpponentManager
             __result = "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
         }
         return false;
+    }
+    
+    [HarmonyPatch]
+    private class MapGenerator_CreateNode
+    {
+        static MethodInfo ProcessMethodInfo = AccessTools.Method(typeof(MapGenerator_CreateNode), nameof(ProcessBossType), new Type[] { typeof(NodeData)} );
+
+        internal static ItemData currentItemData = null;
+        
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(MapGenerator), "CreateNode");
+        }
+
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            // === We want to turn this
+
+            // nodeData = new BossBattleNodeData();
+            // (nodeData as BossBattleNodeData).bossType = RunState.CurrentMapRegion.bosses[Random.Range(0, RunState.CurrentMapRegion.bosses.Count)];
+            // (nodeData as BossBattleNodeData).specialBattleId = BossBattleSequencer.GetSequencerIdForBoss((nodeData as BossBattleNodeData).bossType);
+
+            // === Into this
+
+            // nodeData = new BossBattleNodeData();
+            // (nodeData as BossBattleNodeData).bossType = RunState.CurrentMapRegion.bosses[Random.Range(0, RunState.CurrentMapRegion.bosses.Count)];
+            // ProcessBossType(nodeData);
+            // (nodeData as BossBattleNodeData).specialBattleId = BossBattleSequencer.GetSequencerIdForBoss((nodeData as BossBattleNodeData).bossType);
+
+            // ===
+            FieldInfo cardPileField = AccessTools.Field(typeof(BossBattleNodeData), "bossType");
+            
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++)
+            {
+                CodeInstruction codeInstruction = codes[i];
+                if (codeInstruction.opcode == OpCodes.Stfld)
+                {
+                    if (codeInstruction.operand == cardPileField)
+                    {
+                        codes.Insert(++i, new CodeInstruction(OpCodes.Ldloc_0));
+                        codes.Insert(++i, new CodeInstruction(OpCodes.Call, ProcessMethodInfo));
+                        break;
+                    }
+                }
+            }
+            
+            return codes;
+        }
+  
+        public static void ProcessBossType(NodeData nodeData)
+        {
+            BossBattleNodeData bossBattleNodeData = (BossBattleNodeData)nodeData;
+
+            // Parse data
+            string value = ModdedSaveManager.RunState.GetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses");
+            List<int> previousBosses= new List<int>(); // 2,0,1
+            if (value == null)
+            {
+                // Do nothing
+            }
+            else if (!value.Contains(','))
+            {
+                // Single boss encounter
+                previousBosses.Add(int.Parse(value));
+            }
+            else
+            {
+                // Multiple boss encounters
+                IEnumerable<int> ids = value.Split(',').Select(int.Parse);
+                previousBosses.AddRange(ids);
+            }
+            
+            // We have already seen this boss. Choose another if we can!
+            if (previousBosses.Contains((int)bossBattleNodeData.bossType))
+            {
+                List<Opponent.Type> availableBosses = new List<Opponent.Type>(RunState.CurrentMapRegion.bosses);
+                availableBosses.RemoveAll((a)=>previousBosses.Contains((int)a));
+                if (availableBosses.Count > 0)
+                {
+                    // Replace boss if we have at least 1
+                    bossBattleNodeData.bossType = availableBosses[UnityEngine.Random.Range(0, availableBosses.Count)];
+                }
+            }
+            
+            // Add boss
+            previousBosses.Add((int)bossBattleNodeData.bossType);
+
+            // Save boss
+            string result = ""; // 2,0,1
+            for (int i = 0; i < previousBosses.Count; i++)
+            {
+                if (i > 0)
+                {
+                    result += ",";
+                }
+                result += (int)previousBosses[i];
+
+            }
+            ModdedSaveManager.RunState.SetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses", result);
+        }
     }
     #endregion
 }
