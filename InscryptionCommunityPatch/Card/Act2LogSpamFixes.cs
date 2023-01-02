@@ -15,10 +15,7 @@ internal class Act2LogSpamFixes
     [HarmonyPatch(typeof(GameFlowManager), nameof(GameFlowManager.UpdateForTransitionToFirstPerson))]
     [HarmonyPatch(typeof(ViewManager), nameof(ViewManager.UpdateViewControlsHintsForView))]
     [HarmonyPrefix]
-    private static bool DisableInAct2()
-    {
-        return !SaveManager.SaveFile.IsPart2;
-    }
+    private static bool DisableInAct2() => !SaveManager.SaveFile.IsPart2;
 
     // Since GameFlowManager is null in Act 2, there's no point in checking for that
     [HarmonyPatch(typeof(ConduitCircuitManager), nameof(ConduitCircuitManager.UpdateCircuits))]
@@ -36,10 +33,7 @@ internal class Act2LogSpamFixes
     // Prevents log spam when you open a card pack with an activated sigil in it
     [HarmonyPatch(typeof(PixelActivatedAbilityButton), nameof(PixelActivatedAbilityButton.ManagedUpdate))]
     [HarmonyPrefix]
-    private static bool RemovePixelActivatedSpam()
-    {
-        return SceneLoader.ActiveSceneName == "GBC_CardBattle";
-    }
+    private static bool RemovePixelActivatedSpam() => SceneLoader.ActiveSceneName == "GBC_CardBattle";
 
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.SetupPhase))]
     [HarmonyPostfix]
@@ -49,6 +43,7 @@ internal class Act2LogSpamFixes
         if (ConduitCircuitManager.Instance == null)
             BoardManager.Instance.gameObject.AddComponent<ConduitCircuitManager>();
 
+        // if this isn't Act 2, return the default logic
         if (!SaveManager.SaveFile.IsPart2)
         {
             yield return enumerator;
