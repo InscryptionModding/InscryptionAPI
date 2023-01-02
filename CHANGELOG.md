@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.8.1
+- Added Dialogue Manager
+- Deprecated DialogueEventGenerator (Moved to Dialogue Manager)
+- Fixed custom props causing a problem every time and being hard to track down
+- Fixed repeating bosses when playing the same region
+
 ## 2.8.0
 - Added support for custom masks
 - Fixed sometimes items use the wrong behaviour
