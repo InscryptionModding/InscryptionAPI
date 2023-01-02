@@ -1,10 +1,15 @@
 # Changelog
 
 ## 2.8.1
-- Added Dialogue Manager
+- Added CardInfo extensions for checking CardMetaCategories, cause why not
+- Added DialogueManager for custom dialogue for regions and Custom Color support
+- Added ResourceBankManager for custom resources. Avoids doing this for every mod
 - Deprecated DialogueEventGenerator (Moved to Dialogue Manager)
-- Fixed custom props causing a problem every time and being hard to track down
-- Fixed repeating bosses when playing the same region
+- Fixed repeating bosses on regions that have multiple boss possibilities
+- Fixed custom props not having a renderer on the top parent and breaking loading regions
+- Fixed arrows on the challenges select screen being offscreen at certain resolutions
+- Fixed tribe choice node being able to offer custom tribes with no cards
+- Fixed being able to get custom totem tops for tribes with no cards
 
 ## 2.8.0
 - Added support for custom masks
