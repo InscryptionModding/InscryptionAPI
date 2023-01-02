@@ -3158,6 +3158,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasAnyOfAbilities
   nameWithType: CardExtensions.HasAnyOfAbilities
+- uid: InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name: HasAnyOfCardMetaCategories(CardInfo, CardMetaCategory[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasAnyOfCardMetaCategories_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name.vb: HasAnyOfCardMetaCategories(CardInfo, CardMetaCategory())
+  fullName: InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory())
+  nameWithType: CardExtensions.HasAnyOfCardMetaCategories(CardInfo, CardMetaCategory[])
+  nameWithType.vb: CardExtensions.HasAnyOfCardMetaCategories(CardInfo, CardMetaCategory())
+- uid: InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories*
+  name: HasAnyOfCardMetaCategories
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasAnyOfCardMetaCategories_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasAnyOfCardMetaCategories
+  nameWithType: CardExtensions.HasAnyOfCardMetaCategories
 - uid: InscryptionAPI.Card.CardExtensions.HasAnyOfSpecialAbilities(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
   name: HasAnyOfSpecialAbilities(CardInfo, SpecialTriggeredAbility[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasAnyOfSpecialAbilities_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility___
@@ -3208,6 +3224,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasAnyOfTraits
   nameWithType: CardExtensions.HasAnyOfTraits
+- uid: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory)
+  name: HasCardMetaCategory(CardInfo, CardMetaCategory)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasCardMetaCategory_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasCardMetaCategory(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory)
+  fullName: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory)
+  nameWithType: CardExtensions.HasCardMetaCategory(CardInfo, CardMetaCategory)
+- uid: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory*
+  name: HasCardMetaCategory
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasCardMetaCategory_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasCardMetaCategory
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory
+  nameWithType: CardExtensions.HasCardMetaCategory
 - uid: InscryptionAPI.Card.CardExtensions.HasOpposingCard(DiskCardGame.PlayableCard)
   name: HasOpposingCard(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasOpposingCard_DiskCardGame_PlayableCard_
@@ -3355,6 +3384,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.LacksAllAbilities
   nameWithType: CardExtensions.LacksAllAbilities
+- uid: InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name: LacksAllCardMetaCategories(CardInfo, CardMetaCategory[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAllCardMetaCategories_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
+  commentId: M:InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name.vb: LacksAllCardMetaCategories(CardInfo, CardMetaCategory())
+  fullName: InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory())
+  nameWithType: CardExtensions.LacksAllCardMetaCategories(CardInfo, CardMetaCategory[])
+  nameWithType.vb: CardExtensions.LacksAllCardMetaCategories(CardInfo, CardMetaCategory())
+- uid: InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories*
+  name: LacksAllCardMetaCategories
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAllCardMetaCategories_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.LacksAllCardMetaCategories
+  nameWithType: CardExtensions.LacksAllCardMetaCategories
 - uid: InscryptionAPI.Card.CardExtensions.LacksAllSpecialAbilities(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
   name: LacksAllSpecialAbilities(CardInfo, SpecialTriggeredAbility[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAllSpecialAbilities_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility___
@@ -3405,6 +3450,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.LacksAllTraits
   nameWithType: CardExtensions.LacksAllTraits
+- uid: InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory)
+  name: LacksCardMetaCategory(CardInfo, CardMetaCategory)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksCardMetaCategory_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory_
+  commentId: M:InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory)
+  fullName: InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory)
+  nameWithType: CardExtensions.LacksCardMetaCategory(CardInfo, CardMetaCategory)
+- uid: InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory*
+  name: LacksCardMetaCategory
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksCardMetaCategory_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.LacksCardMetaCategory
+  nameWithType: CardExtensions.LacksCardMetaCategory
 - uid: InscryptionAPI.Card.CardExtensions.LacksSpecialAbility(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility)
   name: LacksSpecialAbility(CardInfo, SpecialTriggeredAbility)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksSpecialAbility_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility_
