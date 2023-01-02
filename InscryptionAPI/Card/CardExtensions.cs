@@ -1207,7 +1207,7 @@ public static class CardExtensions
     
 
     /// <summary>
-    /// Create a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
     /// </summary>
     /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
     /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
@@ -1231,7 +1231,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check if the CardInfo has all of the given abilities.
+    /// Checks if the CardInfo has all of the given Abilities.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
@@ -1263,7 +1263,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check if the CardInfo has any of the specified Abilities.
+    /// Checks if the CardInfo has any of the specified Abilities.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
@@ -1279,7 +1279,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo having a specific SpecialTriggeredAbility.
+    /// Checks if the CardInfo has a specific SpecialTriggeredAbility.
     ///
     /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
     /// </summary>
@@ -1292,7 +1292,7 @@ public static class CardExtensions
     }
     
     /// <summary>
-    /// Check the CardInfo not having a specific SpecialAbility.
+    /// Checks if the CardInfo does not have a specific SpecialTriggeredAbility.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
@@ -1351,7 +1351,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo not having a specific Trait.
+    /// Checks if the CardInfo does not have a specific Trait.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="trait">The Trait to check for.</param>
@@ -1410,7 +1410,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo not being of a specific Tribe.
+    /// Checks if the CardInfo does not belong to a specific Tribe.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="tribe">The tribe to check for.</param>
@@ -1421,7 +1421,61 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Spawn the CardInfo object to the player's hand.
+    /// Checks if the CardInfo has a specific CardMetaCategory.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="trait">The CardMetaCategory to check for.</param>
+    /// <returns>true if the card is does not have the specified CardMetaCategory.</returns>
+    public static bool HasCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory)
+    {
+        return !cardInfo.metaCategories.Contains(metaCategory);
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo does not have a specific CardMetaCategory.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="metaCategory">The CardMetaCategory to check for.</param>
+    /// <returns>true if the card is does not have the specified CardMetaCategory.</returns>
+    public static bool LacksCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory)
+    {
+        return !cardInfo.HasCardMetaCategory(metaCategory);
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has any of the specified CardMetaCategories.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="metaCategories">The CardMetaCategories to check for.</param>
+    /// <returns>true if the card has at least one of the specified CardMetaCategories.</returns>
+    public static bool HasAnyOfCardMetaCategories(this CardInfo cardInfo, params CardMetaCategory[] metaCategories)
+    {
+        foreach (CardMetaCategory meta in metaCategories)
+        {
+            if (cardInfo.HasCardMetaCategory(meta))
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo has none of the specified CardMetaCategories.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="metaCategories">The CardMetaCategories to check for.</param>
+    /// <returns>true if the card has none of the specified CardMetaCategories.</returns>
+    public static bool LacksAllCardMetaCategories(this CardInfo cardInfo, params CardMetaCategory[] metaCategories)
+    {
+        foreach (CardMetaCategory meta in metaCategories)
+        {
+            if (cardInfo.HasCardMetaCategory(meta))
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Spawns the CardInfo object to the player's hand.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="temporaryMods">The mods that will be added to the PlayableCard object.</param>

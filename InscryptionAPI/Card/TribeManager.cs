@@ -84,8 +84,12 @@ public class TribeManager
         };
         list.AddRange(TribeManager.tribes.FindAll((x) => x != null && x.tribeChoice).ConvertAll((x) => x.tribe));
         List<Tribe> tribes = new(RunState.CurrentMapRegion.dominantTribes);
-        tribes.RemoveAll(x => TribeManager.tribes.Exists(x2 => x2.tribe == x) && !TribeManager.tribes.Find(x2 => x2.tribe == x).tribeChoice);
-        list.RemoveAll((Tribe x) => tribes.Contains(x));
+        List<CardInfo> obtainableCards = CardManager.AllCardsCopy.FindAll(c => c.HasCardMetaCategory(CardMetaCategory.ChoiceNode));
+        // from the list of this region's dominant tribes, remove any custom tribes that aren't valid choices
+        // as well as any tribes with no obtainable cards
+        tribes.RemoveAll(x => (TribeManager.tribes.Exists(x2 => x2.tribe == x) && !TribeManager.tribes.Find(x2 => x2.tribe == x).tribeChoice) || !obtainableCards.Exists(c => c.IsOfTribe(x)));
+        list.RemoveAll((Tribe x) => tribes.Contains(x) || !obtainableCards.Exists(c => c.IsOfTribe(x)));
+        
         while (tribes.Count < 3)
         {
             Tribe item = list[SeededRandom.Range(0, list.Count, randomSeed++)];
