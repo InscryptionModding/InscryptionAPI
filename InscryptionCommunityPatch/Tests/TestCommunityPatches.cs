@@ -1,7 +1,7 @@
-using HarmonyLib;
 using DiskCardGame;
-using InscryptionAPI.Card;
+using HarmonyLib;
 using InscryptionAPI.Boons;
+using InscryptionAPI.Card;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Tests;
@@ -18,7 +18,7 @@ public static class ExecuteCommunityPatchTests
         AbilityManager.BaseGameAbilities.AbilityByID(Ability.RandomConsumable).Info.canStack = true;
 
         // Creates a boon
-        TestBoon = BoonManager.New(PatchPlugin.ModGUID, "Sacrificial Squirrels", typeof(SacrificeSquirrels), 
+        TestBoon = BoonManager.New(PatchPlugin.ModGUID, "Sacrificial Squirrels", typeof(SacrificeSquirrels),
         "Squirrels are super OP now", Resources.Load<Texture2D>("art/cards/abilityicons/ability_drawcopyondeath"),
         Resources.Load<Texture2D>("art/cards/boons/boonportraits/boon_startinggoat"), false, true, true);
     }

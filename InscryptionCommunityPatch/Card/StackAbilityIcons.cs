@@ -45,7 +45,7 @@ public static class StackAbilityIcons
             stackGBC = "stack_gbc_alt.png";
         }
         Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
-        return Sprite.Create(texture, new Rect(0f, 10f * (9f-number), 15f, 10f), new Vector2(0.5f, 0.5f));
+        return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
     }
 
     private static Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
@@ -142,8 +142,8 @@ public static class StackAbilityIcons
                                 failed = true;
                                 break;
                             }
-                        } 
-                        else 
+                        }
+                        else
                         {
                             if (searchPixels[i].a > 0)
                             {
@@ -248,7 +248,7 @@ public static class StackAbilityIcons
     {
         // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
         // Create a temporary RenderTexture of the same size as the texture
-        RenderTexture tmp = RenderTexture.GetTemporary( 
+        RenderTexture tmp = RenderTexture.GetTemporary(
                             texture.width,
                             texture.height,
                             0,
@@ -304,7 +304,7 @@ public static class StackAbilityIcons
             newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, TOP_BORDER.Length, 1, TOP_BORDER, 0);
             newTexture.SetPixels(patchLocation.x - 1, patchLocation.y + 1, 1, LEFT_BORDER.Length, LEFT_BORDER, 0);
         }
-        
+
         // Set the new number
         Texture2D newNumber = (textureType == NORMAL) ? NUMBER_TEXTURES[count - 1] : MEDIUM_NUMBER_TEXTURES[count - 1];
         newTexture.SetPixels(patchLocation.x, patchLocation.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
@@ -332,14 +332,14 @@ public static class StackAbilityIcons
         // Here's the goal
         // Find all abilities on the card
         // Replace all of the textures where it stacks with a texture showing that it stacks
-        
+
         // PatchPlugin.Logger.LogDebug("Adding new icon; testing for stacks");
 
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = info.Abilities;
         if (card != null)
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
-        
+
         int count = baseAbilities.Where(ab => ab == ability).Count();
 
         if (count > 1)
@@ -350,7 +350,7 @@ public static class StackAbilityIcons
         }
     }
 
-    [HarmonyPatch(typeof(PixelCardAbilityIcons), "DisplayAbilities", new Type[] { typeof(List<Ability>), typeof(PlayableCard)})]
+    [HarmonyPatch(typeof(PixelCardAbilityIcons), "DisplayAbilities", new Type[] { typeof(List<Ability>), typeof(PlayableCard) })]
     [HarmonyPrefix]
     private static bool PatchPixelCardStacks(ref PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
     {
@@ -363,7 +363,7 @@ public static class StackAbilityIcons
         {
             foreach (GameObject gameObject in abilityIconGroups)
                 gameObject.gameObject.SetActive(false);
-            
+
             if (grps.Count > 0 && grps.Count - 1 < abilityIconGroups.Count)
             {
                 GameObject iconGroup = abilityIconGroups[grps.Count - 1];
@@ -399,7 +399,7 @@ public static class StackAbilityIcons
                     if (countTransform == null && grps[i].Item2 <= 1)
                         continue;
 
-//InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform {countTransform}");
+                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform {countTransform}");
                     if (countTransform == null)
                     {
                         GameObject counter = new GameObject();
@@ -453,7 +453,7 @@ public static class StackAbilityIcons
         int duplicateCount = 0;
         for (int i = 1; i < lines.Length; i++)
         {
-            if (lines[i] == lines[i-1])
+            if (lines[i] == lines[i - 1])
             {
                 duplicateCount += 1;
             }
@@ -465,10 +465,10 @@ public static class StackAbilityIcons
                 duplicateCount = 0;
             }
         }
-        if (duplicateCount > 0 )
+        if (duplicateCount > 0)
         {
             retval = retval + $" (x{duplicateCount + 1})";
-        } 
+        }
         return retval;
     }
 
@@ -476,6 +476,6 @@ public static class StackAbilityIcons
     [HarmonyPostfix]
     private static void GetStackedGBCDescriptionLocalized(ref string __result)
     {
-        __result = StackDescription(__result);        
+        __result = StackDescription(__result);
     }
 }

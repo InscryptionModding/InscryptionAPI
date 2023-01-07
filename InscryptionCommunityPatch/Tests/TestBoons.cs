@@ -1,6 +1,6 @@
-using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Boons;
+using System.Collections;
 
 namespace InscryptionCommunityPatch.Tests;
 

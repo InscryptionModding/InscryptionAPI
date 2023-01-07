@@ -6,7 +6,7 @@ namespace InscryptionCommunityPatch.Card;
 public class ActivatedAbilityHandler3D : ManagedBehaviour
 {
     public List<AbilityIconInteractable> currentIconGroup;
-    
+
     public List<ActivatedAbilityIconInteractable> interactables = new();
 
     public void AddInteractable(ActivatedAbilityIconInteractable interactable)
@@ -44,7 +44,7 @@ public class ActivatedAbilityHandler3D : ManagedBehaviour
 
     public void OnDestroy()
     {
-        foreach(var interactable in interactables)
+        foreach (var interactable in interactables)
         {
             Destroy(interactable);
         }

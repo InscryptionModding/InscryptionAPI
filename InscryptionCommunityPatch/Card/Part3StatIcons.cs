@@ -118,7 +118,7 @@ internal static class Part3StatIcons
                             gem == GemType.Orange ? Ability.GainGemOrange :
                             Ability.GainGemBlue;
 
-        return BoardManager.Instance.OpponentSlotsCopy.Any(slot => 
+        return BoardManager.Instance.OpponentSlotsCopy.Any(slot =>
             slot.Card != null && (
                 slot.Card.HasAbility(singleton) ||
                 slot.Card.HasAbility(Ability.GainGemTriple)
@@ -140,7 +140,7 @@ internal static class Part3StatIcons
 
                 bool show = (__instance.PlayableCard.OpponentCard && OpponentHasGem(target)) ||
                             (!__instance.PlayableCard.OpponentCard && ResourcesManager.Instance.HasGem(target));
-                
+
                 __instance.gemsPropertyBlock.SetColor("_EmissionColor", show ? Color.white : Color.black);
                 __instance.gemRenderers[i].SetPropertyBlock(__instance.gemsPropertyBlock);
             }

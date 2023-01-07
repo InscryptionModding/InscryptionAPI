@@ -74,6 +74,7 @@ public class TribeManager
     [HarmonyPrefix]
     private static bool GenerateTribeChoices(ref List<CardChoice> __result, int randomSeed)
     {
+        // create list of chooseable vanilla tribes then add all chooseable custom tribes
         List<Tribe> list = new()
         {
             Tribe.Bird,
@@ -83,23 +84,27 @@ public class TribeManager
             Tribe.Reptile
         };
         list.AddRange(TribeManager.tribes.FindAll((x) => x != null && x.tribeChoice).ConvertAll((x) => x.tribe));
+        // create a list of this region's dominant tribes
         List<Tribe> tribes = new(RunState.CurrentMapRegion.dominantTribes);
+        // get a list of cards obtainable at choice nodes
         List<CardInfo> obtainableCards = CardManager.AllCardsCopy.FindAll(c => c.HasCardMetaCategory(CardMetaCategory.ChoiceNode));
-        // from the list of this region's dominant tribes, remove any custom tribes that aren't valid choices
-        // as well as any tribes with no obtainable cards
-        tribes.RemoveAll(x => (TribeManager.tribes.Exists(x2 => x2.tribe == x) && !TribeManager.tribes.Find(x2 => x2.tribe == x).tribeChoice) || !obtainableCards.Exists(c => c.IsOfTribe(x)));
-        list.RemoveAll((Tribe x) => tribes.Contains(x) || !obtainableCards.Exists(c => c.IsOfTribe(x)));
-        
+        // remove all non-chooseable tribes and all tribes with no cards
+        tribes.RemoveAll(t => (TribeManager.tribes.Exists(ct => ct.tribe == t && !ct.tribeChoice)) || !obtainableCards.Exists(c => c.IsOfTribe(t)));
+        list.RemoveAll(t => tribes.Contains(t) || !obtainableCards.Exists(c => c.IsOfTribe(t)));
+        // if list is empty, add Insect as a fallback
+        if (list.Count == 0)
+            list.Add(Tribe.Insect);
+
         while (tribes.Count < 3)
         {
             Tribe item = list[SeededRandom.Range(0, list.Count, randomSeed++)];
             tribes.Add(item);
-            list.Remove(item);
+            if (list.Count > 1) // prevents softlock
+                list.Remove(item);
         }
-        while (tribes.Count > 3)
-        {
+        while (tribes.Count > 3) // if there are more than 3 tribes, reduce it to 3
             tribes.RemoveAt(SeededRandom.Range(0, tribes.Count, randomSeed++));
-        }
+
         List<CardChoice> list2 = new List<CardChoice>();
         foreach (Tribe tribe in tribes.Randomize())
         {

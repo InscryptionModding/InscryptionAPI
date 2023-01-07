@@ -1,9 +1,8 @@
-using System.Collections;
 using DiskCardGame;
-using HarmonyLib;
-using System.Reflection;
-using UnityEngine;
 using GBC;
+using HarmonyLib;
+using System.Collections;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -55,7 +54,7 @@ internal class Act2LogSpamFixes
         Singleton<PlayerHand>.Instance.PlayingLocked = true;
         if (__instance.SpecialSequencer != null)
             yield return __instance.SpecialSequencer.PreBoardSetup();
-        
+
         yield return new WaitForSeconds(0.15f);
         yield return Singleton<LifeManager>.Instance.Initialize(__instance.SpecialSequencer == null || __instance.SpecialSequencer.ShowScalesOnStart);
         __instance.StartCoroutine(Singleton<BoardManager>.Instance.Initialize());
@@ -65,16 +64,16 @@ internal class Act2LogSpamFixes
         __instance.StartCoroutine(__instance.PlacePreSetCards(encounterData));
         if (__instance.SpecialSequencer != null)
             yield return __instance.SpecialSequencer.PreDeckSetup();
-        
+
         Singleton<PlayerHand>.Instance.Initialize();
         yield return Singleton<CardDrawPiles>.Instance.Initialize();
         if (__instance.SpecialSequencer != null)
             yield return __instance.SpecialSequencer.PreHandDraw();
-        
+
         yield return Singleton<CardDrawPiles>.Instance.DrawOpeningHand(__instance.GetFixedHand());
         if (__instance.opponent.QueueFirstCardBeforePlayer)
             yield return __instance.opponent.QueueNewCards(doTween: true, changeView: false);
-        
+
         __instance.IsSetupPhase = false;
         yield break;
     }
@@ -157,11 +156,11 @@ internal class Act2LogSpamFixes
         __instance.choosingSlotCard = card;
         if (card != null && card.Anim != null)
             card.Anim.SetSelectedToPlay(selected: true);
-        
+
         Singleton<BoardManager>.Instance.ShowCardNearBoard(card, showNearBoard: true);
         if (Singleton<TurnManager>.Instance.SpecialSequencer != null)
             yield return Singleton<TurnManager>.Instance.SpecialSequencer.CardSelectedFromHand(card);
-        
+
         bool cardWasPlayed = false;
         bool requiresSacrifices = card.Info.BloodCost > 0;
         if (requiresSacrifices)
@@ -181,18 +180,18 @@ internal class Act2LogSpamFixes
                 yield return __instance.PlayCardOnSlot(card, lastSelectedSlot);
                 if (card.Info.BonesCost > 0)
                     yield return Singleton<ResourcesManager>.Instance.SpendBones(card.Info.BonesCost);
-                
+
                 if (card.EnergyCost > 0)
                     yield return Singleton<ResourcesManager>.Instance.SpendEnergy(card.EnergyCost);
             }
         }
         if (!cardWasPlayed)
             Singleton<BoardManager>.Instance.ShowCardNearBoard(card, showNearBoard: false);
-        
+
         __instance.choosingSlotCard = null;
         if (card != null && card.Anim != null)
             card.Anim.SetSelectedToPlay(selected: false);
-        
+
         __instance.CardsInHand.ForEach(delegate (PlayableCard x)
         {
             x.SetEnabled(enabled: true);
@@ -226,7 +225,7 @@ internal class Act2LogSpamFixes
                 __instance.PlayerDamage += damage;
             else
                 __instance.OpponentDamage += damage;
-            
+
             yield return new WaitForSeconds(waitAfter);
         }
         yield break;
