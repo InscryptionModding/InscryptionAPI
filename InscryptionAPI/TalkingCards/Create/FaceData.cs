@@ -107,15 +107,12 @@ public class EmotionData
         emotion = Emotion,
         face = Face,
 
-        // Eyes
         eyesOpen = Eyes.Open,
         eyesClosed = Eyes.Closed,
 
-        // Mouth
         mouthOpen = Mouth.Open,
         mouthClosed = Mouth.Closed,
 
-        // Emission
         eyesOpenEmission = Emission,
     };
 
