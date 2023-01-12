@@ -38,16 +38,16 @@ internal static class GeneratePortrait
         LoadPrefab();
         Portrait();
         AddAbility();
-        HasInit = true;
+        hasInit = true;
     }
 
-    private static bool HasInit = false;
+    private static bool hasInit = false;
     #endregion
 
 #pragma warning disable CS8600
     public static GameObject New()
     {
-        if (!HasInit) InitTalkingCards();
+        if (!hasInit) InitTalkingCards();
         GameObject portrait = GameObject.Instantiate(FacePrefab);
         GameObject.DontDestroyOnLoad(portrait);
         portrait!.transform.SetParent(APIPortraits);
