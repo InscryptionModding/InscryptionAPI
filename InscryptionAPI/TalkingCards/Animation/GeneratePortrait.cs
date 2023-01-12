@@ -1,9 +1,11 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using InscryptionAPI.Card;
 using System.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.TalkingCards.Helpers;
+using InscryptionAPI.Helpers;
 
+#nullable enable
 #pragma warning disable Publicizer001
 
 namespace InscryptionAPI.TalkingCards.Animation;
@@ -50,13 +52,17 @@ internal static class GeneratePortrait
     #region InitGenericPortrait
     private static void LoadPrefab()
     {
-        PortraitBundle = AssetBundle.LoadFromMemory(Properties.Resources.TalkingCardGenericPrefab);
+        byte[] assetBundle = TextureHelper.GetResourceBytes(
+                "TalkingCards\talkingcardgenericprefab",
+                typeof(InscryptionAPIPlugin).Assembly
+            );
+        PortraitBundle = AssetBundle.LoadFromMemory(assetBundle);
     }
 
     private static void AddAbility()
     {
         DialogueDummy = SpecialTriggeredAbilityManager.Add(
-                Plugin.PluginGuid,
+                InscryptionAPIPlugin.ModGUID,
                 "TalkingCardAPI_",
                 typeof(DialogueDummy)
             ).Id;

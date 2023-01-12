@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using InscryptionAPI.Sound;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using InscryptionAPI.TalkingCards.Animation;
 using InscryptionAPI.TalkingCards.Helpers;
 using UnityEngine;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
 
 [HarmonyPatch]
@@ -30,13 +31,13 @@ internal static class VoiceManager
     {
         if(IsInvalidVoiceId(soundPath))
         {
-            Plugin.LogError($"Invalid sound path: {soundPath ?? "(null)"}");
+            LogHelpers.LogError($"Invalid sound path: {soundPath ?? "(null)"}");
             return false;
         }
 
         if(IsInvalidVoiceId(id))
         {
-            Plugin.LogError($"Error: Voice ID \"{id ?? "(null)"}\" isn't unique!");
+            LogHelpers.LogError($"Error: Voice ID \"{id ?? "(null)"}\" isn't unique!");
             return false;
         }
 

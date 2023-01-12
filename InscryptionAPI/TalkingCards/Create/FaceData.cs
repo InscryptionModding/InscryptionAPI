@@ -1,10 +1,11 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using InscryptionAPI.TalkingCards.Animation;
 using UnityEngine;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
 
 public class FaceData

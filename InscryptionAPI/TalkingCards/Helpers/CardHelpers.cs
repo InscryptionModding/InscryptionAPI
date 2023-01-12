@@ -1,8 +1,9 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
 
 internal class CardHelpers
@@ -16,7 +17,7 @@ internal class CardHelpers
         }
         catch (Exception)
         {
-            Plugin.LogError($"Couldn't find a card of name {name ?? "(null)"}!");
+            LogHelpers.LogError($"Couldn't find a card of name {name ?? "(null)"}!");
             return null;
         }
         return card;

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
 public static class StringExtensions
 {

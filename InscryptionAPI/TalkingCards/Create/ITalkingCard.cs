@@ -1,6 +1,7 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using System.Collections.Generic;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
 
 // A class that wants to create a talking card through this API *must* implement for this interface.

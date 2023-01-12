@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using InscryptionAPI.TalkingCards.Animation;
 using InscryptionAPI.TalkingCards.Helpers;
 using UnityEngine;
 
+#nullable enable
 #pragma warning disable Publicizer001
 
 namespace InscryptionAPI.TalkingCards.Create;
@@ -32,7 +33,7 @@ internal static class TalkingCardCreator
     {
         if (AnimatedPortraits.ContainsKey(faceData.CardName))
         {
-            Plugin.LogError($"An animated portrait has already been added for card \'{faceData.CardName}\'!");
+            LogHelpers.LogError($"An animated portrait has already been added for card \'{faceData.CardName}\'!");
             return;
         }
 

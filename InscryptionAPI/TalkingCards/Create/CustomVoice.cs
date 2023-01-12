@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 using InscryptionAPI.Sound;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
 
 [HarmonyPatch]

@@ -1,9 +1,10 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using InscryptionAPI.Helpers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Animation;
 
 internal class DialogueDummy : PaperTalkingCard

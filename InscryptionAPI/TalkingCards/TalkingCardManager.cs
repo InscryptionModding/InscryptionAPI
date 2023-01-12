@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using InscryptionAPI.TalkingCards.Create;
 using InscryptionAPI.TalkingCards.Helpers;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards;
 
 public static class TalkingCardManager

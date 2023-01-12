@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
 
 internal static class AssetHelpers
@@ -73,7 +74,7 @@ internal static class AssetHelpers
 
         if (chars.Count < 6)
         {
-            Plugin.LogError($"Invalid hexcode: {hex}");
+            LogHelpers.LogError($"Invalid hexcode: {hex}");
             return Color.white;
         }
 

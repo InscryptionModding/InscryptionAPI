@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using InscryptionAPI.Helpers;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
 
 [Serializable]

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InscryptionAPI.TalkingCards.Create;
 using UnityEngine;
 
+#nullable enable
 namespace InscryptionAPI.TalkingCards;
 
 /// <summary>
