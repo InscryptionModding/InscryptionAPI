@@ -85,7 +85,7 @@ public class EmotionData
 
     public EmotionData(string? emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, string? emission)
     {
-        Emotion = AssetHelpers.ParseAsEnumValue<Emotion>(emotion);
+        Emotion = AssetHelpers.ParseAsEnumValue<Emotion>(emotion?.SentenceCase());
 
         Face = AssetHelpers.MakeSprite(face)
             ?? GeneratePortrait.EmptyPortrait;
