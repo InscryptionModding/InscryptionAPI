@@ -67,11 +67,19 @@ internal static class AssetHelpers
         return Sprite.Create(tex, texRect, pivot);
     }
 
-    internal static (Sprite?, Sprite?) MakeSpriteTuple((string a, string b) tuple)
+    internal static (Sprite?, Sprite?) MakeSpriteTuple((string? a, string? b)? tuple)
     {
-        Sprite? a = MakeSprite(tuple.a);
-        Sprite? b = MakeSprite(tuple.b);
+        Sprite? a = MakeSprite(tuple?.a);
+        Sprite? b = MakeSprite(tuple?.b);
         return (a, b);
+    }
+
+    internal static T? ParseAsEnumValue<T>(string? str) where T : Enum
+    {
+        if (str == null) return default(T);
+        Type type = typeof(T);
+        object? x = Enum.Parse(type, str);
+        return x != null ? (T?)x : default(T);
     }
 
     internal static Color32 HexToColor(string hex)
