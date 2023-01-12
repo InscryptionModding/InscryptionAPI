@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using InscryptionAPI.TalkingCards.Animation;
 using UnityEngine;
+using InscryptionAPI.TalkingCards.Helpers;
 
 #nullable enable
 namespace InscryptionAPI.TalkingCards.Create;
@@ -72,13 +73,23 @@ public class EmotionData
     public FaceAnim Eyes { get; }
     public FaceAnim Mouth { get; }
     public Sprite Emission { get; }
+
     public EmotionData(Emotion emotion, Sprite face, FaceAnim eyes, FaceAnim mouth, Sprite emission)
     {
         Emotion = emotion;
-        Face = face;
+        Face = face.PivotBottom();
         Eyes = eyes;
         Mouth = mouth;
-        Emission = emission;
+        Emission = emission.PivotBottom();
+    }
+
+    public EmotionData(string emotion, string face, (string open, string closed) eyes, (string open, string closed) mouth, string emission)
+    {
+        Emotion = (Emotion)Enum.Parse(typeof(Emotion), emotion.SentenceCase());
+        Face = AssetHelpers.MakeSprite(face) ?? GeneratePortrait.EmptyPortrait;
+        Eyes = AssetHelpers.MakeSpriteTuple(eyes);
+        Mouth = AssetHelpers.MakeSpriteTuple(mouth);
+        Emission = AssetHelpers.MakeSprite(emission) ?? GeneratePortrait.EmptyPortrait;
     }
 
     public CharacterFace.EmotionSprites MakeEmotion() => new()
@@ -106,15 +117,13 @@ public class EmotionData
 
 public class FaceAnim
 {
-    // These sprites should *never* be null.
-    // They can, however, be just empty sprites.
     public Sprite Open { get; }
     public Sprite Closed { get; }
 
-    public FaceAnim(Sprite open, Sprite closed)
+    public FaceAnim(Sprite? open, Sprite? closed)
     {
-        Open = open;
-        Closed = closed;
+        Open = open?.PivotBottom() ?? GeneratePortrait.EmptyPortrait;
+        Closed = closed?.PivotBottom() ?? GeneratePortrait.EmptyPortrait;
     }
 
     public static implicit operator Sprite(FaceAnim x)
@@ -123,6 +132,6 @@ public class FaceAnim
     public static implicit operator FaceAnim(Sprite s)
         => new FaceAnim(s, s);
 
-    public static implicit operator FaceAnim((Sprite open, Sprite closed) x)
+    public static implicit operator FaceAnim((Sprite? open, Sprite? closed) x)
         => new FaceAnim(x.open, x.closed);
 }

@@ -32,16 +32,22 @@ internal static class GeneratePortrait
         = (EmptyPortrait, EmptyPortrait);
     #endregion
 
-    public static void InitTalkingCards()
+    #region Init
+    private static void InitTalkingCards()
     {
         LoadPrefab();
         Portrait();
         AddAbility();
+        HasInit = true;
     }
+
+    private static bool HasInit = false;
+    #endregion
 
 #pragma warning disable CS8600
     public static GameObject New()
     {
+        if (!HasInit) InitTalkingCards();
         GameObject portrait = GameObject.Instantiate(FacePrefab);
         GameObject.DontDestroyOnLoad(portrait);
         portrait!.transform.SetParent(APIPortraits);

@@ -1,5 +1,6 @@
 using BepInEx;
 using HarmonyLib;
+using InscryptionAPI.TalkingCards.Animation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,8 +19,8 @@ internal static class AssetHelpers
         { "_", EmptyAndTransparent() }
     };
 
-    private static readonly Vector2 PIVOT_BOTTOM = new Vector2(0.5f, 0f);
-    private static readonly Vector2 PIVOT_CENTER = new Vector2(0.5f, 0.5f);
+    internal static readonly Vector2 PIVOT_BOTTOM = new Vector2(0.5f, 0f);
+    internal static readonly Vector2 PIVOT_CENTER = new Vector2(0.5f, 0.5f);
 
     public static string? GetFile(string file) => Directory.GetFiles(Paths.PluginPath, file, SearchOption.AllDirectories).FirstOrDefault();
 
@@ -64,6 +65,13 @@ internal static class AssetHelpers
         Rect texRect = new Rect(0, 0, tex.width, tex.height);
         Vector2 pivot = PIVOT_BOTTOM;
         return Sprite.Create(tex, texRect, pivot);
+    }
+
+    internal static (Sprite?, Sprite?) MakeSpriteTuple((string a, string b) tuple)
+    {
+        Sprite? a = MakeSprite(tuple.a);
+        Sprite? b = MakeSprite(tuple.b);
+        return (a, b);
     }
 
     internal static Color32 HexToColor(string hex)
