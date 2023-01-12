@@ -33,6 +33,7 @@ internal static class GeneratePortrait
     #endregion
 
     #region Init
+    private static bool hasInit = false;
     private static void InitTalkingCards()
     {
         LoadPrefab();
@@ -40,8 +41,6 @@ internal static class GeneratePortrait
         AddAbility();
         hasInit = true;
     }
-
-    private static bool hasInit = false;
     #endregion
 
 #pragma warning disable CS8600
