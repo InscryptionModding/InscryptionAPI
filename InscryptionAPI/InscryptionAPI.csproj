@@ -29,6 +29,12 @@
         <None Remove="maskFlat" />
         <EmbeddedResource Include="maskFlat" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <!-- Talking Card Prefab -->
+        <None Remove="TalkingCards\talkingcardgenericprefab" />
+        <EmbeddedResource Include="TalkingCards\talkingcardgenericprefab" />
+    </ItemGroup>
 
     <ItemGroup>
       <None Remove="ascensionicon_none.png" />
