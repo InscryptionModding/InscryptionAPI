@@ -29,6 +29,8 @@ internal static class VoiceManager
 
     public static bool Add(string? soundPath, string? id)
     {
+        if (string.IsNullOrWhiteSpace(soundPath)) return false;
+
         if(IsInvalidVoiceId(soundPath))
         {
             LogHelpers.LogError($"Invalid sound path: {soundPath ?? "(null)"}");

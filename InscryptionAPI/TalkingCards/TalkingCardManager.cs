@@ -2,6 +2,8 @@ using DiskCardGame;
 using System.Collections.Generic;
 using InscryptionAPI.TalkingCards.Create;
 using InscryptionAPI.TalkingCards.Helpers;
+using UnityEngine;
+using InscryptionAPI.TalkingCards.Animation;
 
 #nullable enable
 namespace InscryptionAPI.TalkingCards;
@@ -10,6 +12,8 @@ public static class TalkingCardManager
 {
     // Add a talking card created through this API.
     // I'm using an interface so that it can all be kept in the same class. c:
+
+    public static Sprite EmptyPortrait => GeneratePortrait.EmptyPortrait;
 
     /// <summary>
     /// Creates a talking card through this API.
