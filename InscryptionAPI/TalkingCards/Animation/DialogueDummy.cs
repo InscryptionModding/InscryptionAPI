@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.Dialogue;
-using static InscryptionAPI.Dialogue.Helpers;
 
 #nullable enable
 

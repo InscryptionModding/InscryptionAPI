@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using InscryptionAPI.Dialogue;
-using static InscryptionAPI.Dialogue.Helpers;
 
 #nullable enable
 
