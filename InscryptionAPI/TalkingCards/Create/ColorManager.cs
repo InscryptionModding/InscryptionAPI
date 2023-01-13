@@ -13,7 +13,7 @@ internal static class ColorManager
 {
     private static readonly Dictionary<string, Color> ColorsCache = new();
 
-    private static readonly Regex ColorRegex = new(@"^#?([0-9a-fA-F]{6})$");
+    private static readonly Regex ColorRegex = new(@"^#([0-9a-fA-F]{6})$");
 
     [HarmonyPatch(typeof(DialogueParser), nameof(DialogueParser.GetColorFromCode))]
     [HarmonyPostfix]
