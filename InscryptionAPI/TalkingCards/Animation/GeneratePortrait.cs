@@ -3,7 +3,6 @@ using InscryptionAPI.Card;
 using System.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.TalkingCards.Helpers;
-using InscryptionAPI.Helpers;
 using System.Reflection;
 
 #nullable enable
