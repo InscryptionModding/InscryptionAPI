@@ -83,25 +83,49 @@ public class EmotionData
         Emission = emission;
     }
 
+
+    #region Constructors
+    public EmotionData(Emotion emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, (string? open, string? closed)? emission)
+    {
+        Emotion = emotion;
+
+        Face = AssetHelpers.MakeSprite(face)
+            ?? GeneratePortrait.EmptyPortrait;
+
+        Eyes = eyes != null
+            ? AssetHelpers.MakeSpriteTuple(eyes)
+            : GeneratePortrait.EmptyPortraitTuple;
+
+        Mouth = mouth != null
+            ? AssetHelpers.MakeSpriteTuple(mouth)
+            : GeneratePortrait.EmptyPortraitTuple;
+
+        Emission = emission != null
+            ? AssetHelpers.MakeSpriteTuple(emission)
+            : GeneratePortrait.EmptyPortraitTuple;
+    }
+
+
     public EmotionData(string? emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, (string? open, string? closed)? emission)
     {
         Emotion = AssetHelpers.ParseAsEnumValue<Emotion>(emotion?.SentenceCase());
 
         Face = AssetHelpers.MakeSprite(face)
             ?? GeneratePortrait.EmptyPortrait;
-        
+
         Eyes = eyes != null
             ? AssetHelpers.MakeSpriteTuple(eyes)
             : GeneratePortrait.EmptyPortraitTuple;
-        
+
         Mouth = mouth != null
             ? AssetHelpers.MakeSpriteTuple(mouth)
             : GeneratePortrait.EmptyPortraitTuple;
-        
+
         Emission = emission != null
             ? AssetHelpers.MakeSpriteTuple(emission)
             : GeneratePortrait.EmptyPortraitTuple;
     }
+    #endregion
 
     public CharacterFace.EmotionSprites MakeEmotion() => new()
     {
