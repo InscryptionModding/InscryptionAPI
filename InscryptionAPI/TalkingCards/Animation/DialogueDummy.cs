@@ -1,11 +1,11 @@
 using DiskCardGame;
-using InscryptionAPI.Helpers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InscryptionAPI.Dialogue;
+using static InscryptionAPI.Dialogue.Helpers;
 
 #nullable enable
-#pragma warning disable CS0618
 
 namespace InscryptionAPI.TalkingCards.Animation;
 internal class DialogueDummy : PaperTalkingCard
@@ -14,7 +14,8 @@ internal class DialogueDummy : PaperTalkingCard
 
     public const string DUMMY = "___dummy";
 
-    private static readonly DialogueEvent _dummyEvent = DialogueEventGenerator.GenerateEvent(
+    private static readonly DialogueEvent _dummyEvent = DialogueManager.GenerateEvent(
+            InscryptionAPIPlugin.ModGUID,
             DUMMY,
             new List<CustomLine>(),
             new List<List<CustomLine>>()

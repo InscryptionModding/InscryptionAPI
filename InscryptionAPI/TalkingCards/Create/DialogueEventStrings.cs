@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using InscryptionAPI.Helpers;
+using InscryptionAPI.Dialogue;
+using static InscryptionAPI.Dialogue.Helpers;
 
 #nullable enable
-#pragma warning disable CS0618
 
 namespace InscryptionAPI.TalkingCards.Create;
 
@@ -21,7 +21,8 @@ public class DialogueEventStrings
         this.repeatLines = repeatLines;
     }
 
-    public DialogueEvent CreateEvent(string cardName) => DialogueEventGenerator.GenerateEvent(
+    public DialogueEvent CreateEvent(string cardName) => DialogueManager.GenerateEvent(
+            InscryptionAPIPlugin.ModGUID,
             $"{cardName}_{eventName}",
             mainLines.Select(x => (CustomLine)x).ToList(),
             repeatLines.Select(x => x.Select(y => (CustomLine)y).ToList()).ToList()
