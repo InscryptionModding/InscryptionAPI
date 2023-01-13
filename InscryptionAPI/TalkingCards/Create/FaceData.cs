@@ -37,7 +37,7 @@ public class FaceInfo
     public float? voiceSoundPitch { get; set; }
     public string? customVoice { get; set; }
 
-    public FaceInfo(float blinkRate, string? voiceId, float voiceSoundPitch, string? customVoice = null)
+    public FaceInfo(float blinkRate = 1.5f, string? voiceId = null, float voiceSoundPitch = 1f, string? customVoice = null)
     {
         this.blinkRate = blinkRate;
         this.voiceId = voiceId;
