@@ -58,7 +58,7 @@ public static class GeneratePortrait
     private static void LoadPrefab()
     {
         byte[] assetBundle = LoadResource("TalkingCardGenericPrefab");
-        PortraitBundle ??= AssetBundle.LoadFromMemory(assetBundle);
+        PortraitBundle = AssetBundle.LoadFromMemory(assetBundle);
     }
 
     private static byte[] LoadResource(string resourceName)
