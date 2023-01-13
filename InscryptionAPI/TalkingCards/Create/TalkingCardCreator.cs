@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace InscryptionAPI.TalkingCards.Create;
 
-internal static class TalkingCardCreator
+public static class TalkingCardCreator
 {
     internal static List<string> AllDialogueAdded => DialogueDummy.AllDialogueAdded;
 
@@ -59,7 +59,7 @@ internal static class TalkingCardCreator
     #endregion
 
     #region Dialogue
-    internal static void AddToDialogueCache(string? id)
+    public static void AddToDialogueCache(string? id)
     {
         if (id == null) return;
         AllDialogueAdded.Add(id);
