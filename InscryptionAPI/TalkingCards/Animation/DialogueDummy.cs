@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 #nullable enable
-namespace InscryptionAPI.TalkingCards.Animation;
+#pragma warning disable CS0618
 
+namespace InscryptionAPI.TalkingCards.Animation;
 internal class DialogueDummy : PaperTalkingCard
 {
     public static List<string> AllDialogueAdded = new();

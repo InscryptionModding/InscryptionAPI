@@ -32,8 +32,10 @@
     
     <ItemGroup>
         <!-- Talking Card Prefab -->
-        <None Remove="TalkingCards\talkingcardgenericprefab" />
-        <EmbeddedResource Include="TalkingCards\talkingcardgenericprefab" />
+        <None Remove="$(ProjectDir)\TalkingCards\talkingcardgenericprefab" />
+        <EmbeddedResource Include="$(ProjectDir)\TalkingCards\talkingcardgenericprefab">
+            <LogicalName>TalkingCardGenericPrefab</LogicalName>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

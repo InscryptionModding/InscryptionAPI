@@ -38,4 +38,7 @@ public static class TalkingCardManager
         if (faceData?.CardName == null) return;
         TalkingCardCreator.New(faceData, ability);
     }
+
+    public static void AddToDialogueCache(string? id)
+        => TalkingCardCreator.AddToDialogueCache(id);
 }

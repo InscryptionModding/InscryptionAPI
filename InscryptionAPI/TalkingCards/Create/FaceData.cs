@@ -72,18 +72,18 @@ public class EmotionData
     public Sprite Face { get; }
     public FaceAnim Eyes { get; }
     public FaceAnim Mouth { get; }
-    public Sprite Emission { get; }
+    public FaceAnim Emission { get; }
 
-    public EmotionData(Emotion emotion, Sprite face, FaceAnim eyes, FaceAnim mouth, Sprite emission)
+    public EmotionData(Emotion emotion, Sprite face, FaceAnim eyes, FaceAnim mouth, FaceAnim emission)
     {
         Emotion = emotion;
         Face = face.PivotBottom();
         Eyes = eyes;
         Mouth = mouth;
-        Emission = emission.PivotBottom();
+        Emission = emission;
     }
 
-    public EmotionData(string? emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, string? emission)
+    public EmotionData(string? emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, (string? open, string? closed)? emission)
     {
         Emotion = AssetHelpers.ParseAsEnumValue<Emotion>(emotion?.SentenceCase());
 
@@ -98,8 +98,9 @@ public class EmotionData
             ? AssetHelpers.MakeSpriteTuple(mouth)
             : GeneratePortrait.EmptyPortraitTuple;
         
-        Emission = AssetHelpers.MakeSprite(emission)
-            ?? GeneratePortrait.EmptyPortrait;
+        Emission = emission != null
+            ? AssetHelpers.MakeSpriteTuple(emission)
+            : GeneratePortrait.EmptyPortraitTuple;
     }
 
     public CharacterFace.EmotionSprites MakeEmotion() => new()
@@ -113,7 +114,8 @@ public class EmotionData
         mouthOpen = Mouth.Open,
         mouthClosed = Mouth.Closed,
 
-        eyesOpenEmission = Emission,
+        eyesOpenEmission = Emission.Open,
+        eyesClosedEmission = Emission.Closed
     };
 
     public static Sprite EmptyPortrait => GeneratePortrait.EmptyPortrait;
@@ -131,6 +133,12 @@ public class FaceAnim
     {
         Open = open?.PivotBottom() ?? GeneratePortrait.EmptyPortrait;
         Closed = closed?.PivotBottom() ?? GeneratePortrait.EmptyPortrait;
+    }
+
+    public FaceAnim(string? open, string? closed)
+    {
+        Open = AssetHelpers.MakeSprite(open) ?? GeneratePortrait.EmptyPortrait;
+        Closed = AssetHelpers.MakeSprite(closed) ?? GeneratePortrait.EmptyPortrait;
     }
 
     public static implicit operator Sprite(FaceAnim x)

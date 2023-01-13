@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using InscryptionAPI.TalkingCards.Helpers;
 using InscryptionAPI.Helpers;
+using System.Reflection;
 
 #nullable enable
 #pragma warning disable Publicizer001
 
 namespace InscryptionAPI.TalkingCards.Animation;
 
-internal static class GeneratePortrait
+public static class GeneratePortrait
 {
-    public static AssetBundle? PortraitBundle;
+    internal static AssetBundle? PortraitBundle;
     private static GameObject? FacePrefab;
     private static Transform? APIPortraits;
 
@@ -22,13 +23,13 @@ internal static class GeneratePortrait
     public const float VoicePitch = 1f;
     #endregion
 
-    public static SpecialTriggeredAbility DialogueDummy;
+    public static SpecialTriggeredAbility DialogueDummy = CreateDummyAbility();
 
     #region Sprites
-    internal static readonly Sprite EmptyPortrait
+    public static readonly Sprite EmptyPortrait
         = AssetHelpers.MakeSprite(AssetHelpers.EmptyAndTransparent());
     
-    internal static readonly (Sprite, Sprite) EmptyPortraitTuple
+    public static readonly (Sprite, Sprite) EmptyPortraitTuple
         = (EmptyPortrait, EmptyPortrait);
     #endregion
 
@@ -38,13 +39,12 @@ internal static class GeneratePortrait
     {
         LoadPrefab();
         Portrait();
-        AddAbility();
         hasInit = true;
     }
     #endregion
 
 #pragma warning disable CS8600
-    public static GameObject New()
+    internal static GameObject New()
     {
         if (!hasInit) InitTalkingCards();
         GameObject portrait = GameObject.Instantiate(FacePrefab);
@@ -57,21 +57,29 @@ internal static class GeneratePortrait
     #region InitGenericPortrait
     private static void LoadPrefab()
     {
-        byte[] assetBundle = TextureHelper.GetResourceBytes(
-                "TalkingCards\talkingcardgenericprefab",
-                typeof(InscryptionAPIPlugin).Assembly
-            );
-        PortraitBundle = AssetBundle.LoadFromMemory(assetBundle);
+        byte[] assetBundle = LoadResource("TalkingCardGenericPrefab");
+        PortraitBundle ??= AssetBundle.LoadFromMemory(assetBundle);
     }
 
-    private static void AddAbility()
+    private static byte[] LoadResource(string resourceName)
     {
-        DialogueDummy = SpecialTriggeredAbilityManager.Add(
+        Assembly target = typeof(InscryptionAPIPlugin).Assembly;
+        using (Stream resourceStream = target.GetManifestResourceStream(resourceName))
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                resourceStream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+    }
+
+    private static SpecialTriggeredAbility CreateDummyAbility()
+        => SpecialTriggeredAbilityManager.Add(
                 InscryptionAPIPlugin.ModGUID,
                 "TalkingCardAPI_",
                 typeof(DialogueDummy)
             ).Id;
-    }
 
     private static void Portrait()
     {

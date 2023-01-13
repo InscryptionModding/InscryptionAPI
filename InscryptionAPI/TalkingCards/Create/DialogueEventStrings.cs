@@ -3,6 +3,8 @@ using System.Linq;
 using InscryptionAPI.Helpers;
 
 #nullable enable
+#pragma warning disable CS0618
+
 namespace InscryptionAPI.TalkingCards.Create;
 
 [Serializable]

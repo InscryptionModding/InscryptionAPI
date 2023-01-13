@@ -12,15 +12,15 @@ using UnityEngine;
 #nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
 
-internal static class AssetHelpers
+public static class AssetHelpers
 {
     private static readonly Dictionary<string, Texture2D> TextureCache = new()
     {
         { "_", EmptyAndTransparent() }
     };
 
-    internal static readonly Vector2 PIVOT_BOTTOM = new Vector2(0.5f, 0f);
-    internal static readonly Vector2 PIVOT_CENTER = new Vector2(0.5f, 0.5f);
+    public static readonly Vector2 PIVOT_BOTTOM = new Vector2(0.5f, 0f);
+    public static readonly Vector2 PIVOT_CENTER = new Vector2(0.5f, 0.5f);
 
     public static string? GetFile(string file) => Directory.GetFiles(Paths.PluginPath, file, SearchOption.AllDirectories).FirstOrDefault();
 
@@ -67,14 +67,14 @@ internal static class AssetHelpers
         return Sprite.Create(tex, texRect, pivot);
     }
 
-    internal static (Sprite?, Sprite?) MakeSpriteTuple((string? a, string? b)? tuple)
+    public static (Sprite?, Sprite?) MakeSpriteTuple((string? a, string? b)? tuple)
     {
         Sprite? a = MakeSprite(tuple?.a);
         Sprite? b = MakeSprite(tuple?.b);
         return (a, b);
     }
 
-    internal static T? ParseAsEnumValue<T>(string? str) where T : Enum
+    public static T? ParseAsEnumValue<T>(string? str) where T : Enum
     {
         if (str == null) return default(T);
         Type type = typeof(T);
@@ -82,7 +82,7 @@ internal static class AssetHelpers
         return x != null ? (T?)x : default(T);
     }
 
-    internal static Color32 HexToColor(string hex)
+    public static Color32 HexToColor(string hex)
     {
         Queue<char> chars = new Queue<char>(hex.Trim());
         if (chars.Count == 0) return default;
