@@ -971,3 +971,138 @@ NOTE: Getting a prefab from an asset bundle does not laod it into the world. You
 #### 1. The GameObject is being create but the model won't show up!
 
 Make sure you are using 2014.4.24f1 to build the asset bundle? If not the model won't show!
+
+## Talking Cards
+This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!
+
+All you have to do is create a class that implements the **ITalkingCard** interface, which contains the following fields:
+
+| Field           | Type                    | Description                                                     |
+|-----------------|-------------------------|-----------------------------------------------------------------|
+| CardName        | string                  | The name of an existing card.                                   |
+| Emotions        | List\<EmotionData>      | Your talking card's emotions.                                   |
+| FaceInfo        | FaceInfo                | A bit of info about your talking card: blink rate and voice.    |
+| DialogueAbility | SpecialTriggeredAbility | The special ability that controls your talking card's dialogue. |
+
+And after that, all you need to do is register your talking card with the `TalkingCardManager.New<T>()` method as such:
+```csharp
+TalkingCardManager.New<ExampleClass>();
+```
+
+Additionally, as you can see on the last item in the table above, you're gonna need to create a new SpecialTriggeredAbility that controls your talking card's dialogue.
+
+Don't worry, I'll explain exactly what you need to do! 
+
+Fortunately for you, this API already supports creating new special abilities. Additionally, you'll not have to do all of the work: the base game already defines abstract classes you should inherit from when creating a special ability for your talking card:
+
+| Act   | Class To Inherit From |
+|-------|-----------------------|
+| Act 1 | PaperTalkingCard      |
+| Act 3 | DiskTalkingCard       |
+
+**Additionally,** to make the task of creating Act 1 talking cards even easier for you, I've defined a class that inherits from both **PaperTalkingCard** and **ITalkingCard** and also adds a few small tweaks behind the scenes! It's called **CustomPaperTalkingCard**.
+
+All you have to do is create a class that inherits from **CustomPaperTalkingCard** and implement its abstract fields as such:
+
+```csharp
+public class ExampleTalkingCard : CustomPaperTalkingCard
+{
+    public override string CardName => "example_ExampleCard";
+    public override List<EmotionData> Emotions => new List<EmotionData>()
+    {
+        new EmotionData(emotion: Emotion.Neutral,
+            face: "Example_Face.png",
+            eyes: ("Example_EyesOpen.png", "Example_EyesClosed.png"),
+            mouth: ("Example_MouthOpen.png", "Example_MouthClosed.png"),
+            emission: ("Example_EyesOpenEmission.png", "_"))
+    };
+    public override FaceInfo FaceInfo => new FaceInfo(blinkRate: 1.5f, voiceSoundPitch: 1.1f);
+    
+    public override SpecialTriggeredAbility DialogueAbility => dialogueAbility;
+    
+    private SpecialTriggeredAbility dialogueAbility = SpecialTriggeredAbilityManager.Add(
+            guid: Plugin.PluginGuid,
+            abilityName: "ExampleDialogueAbility",
+            behavior: typeof(ExampleTalkingCard)).Id;
+
+    public override string OnDrawnDialogueId => "Example_OnDrawn";
+
+    public override string OnPlayFromHandDialogueId => "Example_OnPlayFromHand";
+
+    public override string OnAttackedDialogueId => "Example_OnAttacked";
+
+    public override string OnBecomeSelectablePositiveDialogueId => "Example_OnSelectedPositive";
+
+    public override string OnBecomeSelectableNegativeDialogueId => "Example_OnSelectedNegative";
+
+    public override Dictionary<Opponent.Type, string> OnDrawnSpecialOpponentDialogueIds => new Dictionary<Opponent.Type, string>();
+}
+```
+
+And, after that, all you need to do is register your new talking card with the `TalkingCardManager.New<T>()` method as such:
+
+```csharp
+TalkingCardManager.New<ExampleTalkingCard>();
+```
+
+**Note**: **CustomPaperTalkingCard** can only be used for Act 1 talking cards. If you want to make an Act 3 talking card, you're gonna have to inherit from DiskTalkingCard directly!
+
+### Dialogue Events
+After looking at the example above, you might be wondering *"What's all of that DialogueId stuff about? How do I make my own dialogue events?"*. 
+
+I'm gonna explain everything to your in detail now!
+
+#### Dialogue Triggers
+Talking cards can respond to a variety of game events. If you want your card to respond to a given event, you can override that property and return the ID of your new dialogue event.
+
+Some properties are abstract and *must* be implemented: namely, `OnDrawnDialogueId`, `OnPlayFromHandDialogueId`, `OnAttackedDialogueId`, `OnBecomeSelectablePositiveDialogueId` and  `OnBecomeSelectableNegativeDialogueId`.
+
+And here's a full list of triggers you can override, and a small explanation of each.
+
+**Note**: All of these names end in "DialogueId", so I've omitted that last part of the name to be concise.
+
+| Trigger                    | Description                                                    |
+|----------------------------|----------------------------------------------------------------|
+| OnDrawn                    | Plays when your card is drawn.                                 |
+| OnPlayFromHand             | Plays when your card is played.                                |
+| OnAttacked                 | Plays when your card is attacked.                              |
+| OnBecomeSelectablePositive | Plays when your card becomes selectable for a positive effect. |
+| OnBecomeSelectableNegative | Plays when your card becomes selectable for a negative effect. |
+| OnSacrificed               | Plays when your card is sacrificed.                            |
+| OnSelectedForDeckTrial     | Plays when your card is selected in the deck trial node.       |
+| OnSelectedForCardMerge     | Plays before your card receives the sigil in the sigil node.   |
+| OnSelectedForCardRemove    | Plays when your card is selected for removal.                  |
+
+Additionally, the `OnDrawnSpecialOpponentDialogueIds` dictionary lets you add special dialogue when your card is drawn in a specific boss battle, like this:
+
+```csharp
+public override Dictionary<Opponent.Type, string> OnDrawnSpecialOpponentDialogueIds => new Dictionary<Opponent.Type, string>()
+{
+    { Opponent.Type.ProspectorBoss, "Example_TalkAboutProspector" }
+};
+```
+
+#### Creating a Dialogue Event
+You can create your own dialogue events with this API's `DialogueManager.GenerateEvent()` method, like this:
+
+```csharp
+DialogueManager.GenerateEvent(
+    pluginGUID: Plugin.PluginGuid,
+    name: "Example_OnPlayFromHand",
+    mainLines: new List<CustomLine>() { "This is a main line." },
+    repeatLines: new List<List<CustomLine>>()
+    {
+         new List<CustomLine>() { "This is a repeat line!" },
+         new List<CustomLine>() { "This is another repeat line!" }
+    }
+);
+```
+
+A brief explanation of each parameter:
+
+| Field       | Description                                                                     |
+|-------------|---------------------------------------------------------------------------------|
+| pluginGUID  | Your mod's GUID.                                                                |
+| name        | The name for your dialogue event; this is what you'll use to refer to it!       |
+| mainLines   | A set of lines that plays in the very first time this event runs.               |
+| repeatLines | Multiple sets of lines that are played after the first time this event has run. |

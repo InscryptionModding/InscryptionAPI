@@ -16,6 +16,8 @@ It can currently create and modify:
 - Encounters
 - Totem Tops
 - Consumable Items
+- Gramophone Tracks
+- Talking Cards
 - And much more!
 
 Additionally, a number of quality-of-life patches from the community have been included in this release.

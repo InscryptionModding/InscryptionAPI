@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.9.0
+- Added talking card support!
+- Moved the "CustomLine" struct outside of the Dialogue.Helpers class.
+
 ## 2.8.1
 - Added CardInfo extensions for checking CardMetaCategories, cause why not
 - Added DialogueManager for custom dialogue for regions and Custom Color support
