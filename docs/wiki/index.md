@@ -1000,7 +1000,7 @@ Fortunately for you, this API already supports creating new special abilities. A
 | Act 1 | PaperTalkingCard      |
 | Act 3 | DiskTalkingCard       |
 
-**Additionally,** to make the task of creating Act 1 talking cards even easier for you, I've defined an abstract class that inherits from both **PaperTalkingCard**, includes the **ITalkingCard** interface and adds a few small tweaks behind the scenes! It's called **CustomPaperTalkingCard**.
+**Additionally,** to make the task of creating Act 1 talking cards even easier for you, I've defined an abstract class that inherits from **PaperTalkingCard**, includes the **ITalkingCard** interface and adds a few small tweaks behind the scenes! It's called **CustomPaperTalkingCard**.
 
 All you have to do is create a class that inherits from **CustomPaperTalkingCard** and implement its abstract fields as such:
 
