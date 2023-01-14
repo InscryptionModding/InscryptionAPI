@@ -1145,12 +1145,12 @@ A brief explanation of each parameter:
 | mainLines   | A set of lines that plays in the very first time this event runs.               |
 | repeatLines | Multiple sets of lines that are played after the first time this event has run. |
 
-# Dialogue Codes
-A really neat feature of Inscryption's dialogue events are dialogue codes, which have many uses in dialogue.
+### Dialogue Codes
+A really neat feature of Inscryption's dialogue events are dialogue codes. They add a lot of life to dialogue!
 
 The dialogue codes most relevant to talking cards will be explained below. All of these work with talking cards.
 
-### Wait (\[w:])
+#### Wait (\[w:])
 This is by far the dialogue code you'll wanna use the most. It's also the one the game itself uses the most in all of its dialogue.
 
 The "\[w:x]" dialogue code adds a pause of x seconds before the rest of a sentence plays.
@@ -1165,7 +1165,7 @@ The number of seconds does not have to be an integer. Using "\[w:0.2]" to wait o
 
 This being said, I'd advise you not to go below \[w:0.1], as I don't know how small the number can go before issues arise. (And there's no point in going below that, anyhow.)
 
-### Color (\[c:])
+#### Color (\[c:])
 The \[c:] dialogue code changes the color of a portion of your text.
 
 You can use it like this:
@@ -1197,7 +1197,7 @@ Fear not! Here's a comprehensive table of all available colors and their respect
 
 (For the record: These are the colors the game has available, built-in. I did not choose them. Yes, it's a very odd selection of colors.)
 
-#### Custom Colors
+##### Custom Colors
 I have added a way to use custom colors with dialogue codes. In place of one of the color codes in the table above, you can instead use a [hex color code](https://htmlcolorcodes.com/color-picker/), and this mod will parse the code into an usable Color for the text.
 
 Here's an example:
@@ -1208,7 +1208,7 @@ In this example, the word "confused" is colored in the color #7f35e6. Which, if 
 
 Please note that for compatibility reasons, your hex color code **should include the '#'**.
 
-### Leshy (\[leshy:x])
+#### Leshy (\[leshy:x])
 The \[leshy:x] dialogue code makes Leshy say x. This color code is very useful for making Leshy and your card talk a bit between each other!
 
 You can use it like this:
@@ -1224,7 +1224,7 @@ There are a few things to note from that example:
 1. You don't need to put quotation marks around the line Leshy is going to say.
 2. The "Wait" dialogue code is still usable with Leshy's lines.
 
-### Using Emotions
+#### Using Emotions
 You can change your character's emotion in their dialogue lines with the dialogue code `[e:x]`, where 'x' is the name of an emotion. You can look at the table above for the names of all the available emotions.
 
 This mod adds patches to make the emotion names not case-sensitive, which means the following lines are all equally valid:
