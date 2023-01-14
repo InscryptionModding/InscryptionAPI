@@ -1,4 +1,4 @@
-using DiskCardGame;
+/*using DiskCardGame;
 using HarmonyLib;
 using System.Collections;
 using System.Reflection;
@@ -171,4 +171,4 @@ internal class CardStatBoostSequencerPatch
                 Singleton<GameFlowManager>.Instance.TransitionToGameState(GameState.Map);
         }
     }
-}
+}*/
