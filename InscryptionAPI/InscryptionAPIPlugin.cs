@@ -89,7 +89,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         if (outdatedPlugins != "")
             Logger.LogWarning("The following mods have been flagged as using an outdated version of the API:\n"
                 + outdatedPlugins
-                + "\nOutdated mods may not work correctly, so please update or disable them if problems arise.");
+                + "\nOutdated mods may not work correctly, so please update or disable them if problems arise!");
     }
 
     private void Awake()
