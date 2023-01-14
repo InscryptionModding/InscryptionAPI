@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.9.0
+- Added talking card support!
+- Moved the "CustomLine" struct outside of the Dialogue.Helpers class.
+- Fixed tribe choice node being able to offer vanilla tribes with no cards
+- Fixed totem choice node being able to offer tops for vanilla tribes with no cards
+- Added fallbacks for tribal choice node if there are less than 3 chooseable tribes
+- Added fallback to campfire node if you don't have any cards that can be buffed 
+- Fixed 'outdated plugins' warning showing up when it shouldn't, tweaked message slightly
+
 ## 2.8.1
 - Added CardInfo extensions for checking CardMetaCategories, cause why not
 - Added DialogueManager for custom dialogue for regions and Custom Color support

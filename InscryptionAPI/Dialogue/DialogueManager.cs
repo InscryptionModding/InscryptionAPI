@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionAPI.Dialogue;
@@ -48,7 +48,7 @@ public static class DialogueManager
         return data;
     }
     
-    public static DialogueEvent GenerateEvent(string pluginGUID, string name, List<Helpers.CustomLine> mainLines, List<List<Helpers.CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = 
+    public static DialogueEvent GenerateEvent(string pluginGUID, string name, List<CustomLine> mainLines, List<List<CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = 
         DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)
     {
         DialogueEvent ev = new();

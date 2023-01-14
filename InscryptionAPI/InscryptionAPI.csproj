@@ -29,6 +29,14 @@
         <None Remove="maskFlat" />
         <EmbeddedResource Include="maskFlat" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <!-- Talking Card Prefab -->
+        <None Remove="$(ProjectDir)\TalkingCards\talkingcardgenericprefab" />
+        <EmbeddedResource Include="$(ProjectDir)\TalkingCards\talkingcardgenericprefab">
+            <LogicalName>TalkingCardGenericPrefab</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
 
     <ItemGroup>
       <None Remove="ascensionicon_none.png" />
