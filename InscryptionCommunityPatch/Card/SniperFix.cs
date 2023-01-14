@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using DiskCardGame;
 using HarmonyLib;
+using System.Collections;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
@@ -15,7 +12,7 @@ public class SniperFix
     [HarmonyPrefix]
     public static bool MaybeOverrideAttack(CombatPhaseManager __instance, ref IEnumerator __result, CardSlot slot)
     {
-        if(slot?.Card != null && slot.Card.HasAbility(Ability.Sniper))
+        if (slot?.Card != null && slot.Card.HasAbility(Ability.Sniper))
         {
             __result = SniperAttack(__instance, slot);
             return false;

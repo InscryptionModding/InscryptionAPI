@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using DiskCardGame;
@@ -83,15 +83,18 @@ public static class TotemManager
         public static void AddCustomTribesToList(List<Tribe> list)
         {
             // get a list of all cards with a tribe
-            List<CardInfo> cards = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
+            List<CardInfo> tribedCards = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
 
             // iterate across all custom tribes that are obtainable as tribe choices
             foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes.Where(x => x.tribeChoice))
             {
                 // Only add if we have at least 1 card of it
-                if (cards.Exists(ci => ci.tribes.Contains(tribeInfo.tribe)))
+                if (tribedCards.Exists(ci => ci.IsOfTribe(tribeInfo.tribe)))
                     list.Add(tribeInfo.tribe);
             }
+
+            // remove tribes without any cards
+            list.RemoveAll(x => !tribedCards.Exists(ci => ci.IsOfTribe(x)));
         }
     }
 

@@ -16,7 +16,6 @@ public class SelfAttackDamagePatch
     private const string name_PlayerAttacker = "System.Boolean playerIsAttacker";
     private const string name_SpecialSequencer = "DiskCardGame.SpecialBattleSequencer specialSequencer";
     private const string name_SquirrelAttacker = "System.Boolean <attackedWithSquirrel>5__4";
-    private const string name_CombatState = "System.Int32 <>1__state";
     private const string name_CombatCurrent = "System.Object <>2__current";
 
     // Get the method MoveNext, which is where the actual code for SlotAttackSlot is located
@@ -50,8 +49,6 @@ public class SelfAttackDamagePatch
             object op_PlayerAttacker = null;
             object op_SpecialSequencer = null;
             object op_SquirrelAttacker = null;
-            object op_CombatState = null;
-            object op_CombatCurrent = null;
 
             // get everything we need
             for (int j = i - 1; j < codes.Count; j++)

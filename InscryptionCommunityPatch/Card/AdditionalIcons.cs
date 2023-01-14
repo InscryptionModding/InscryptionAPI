@@ -1,5 +1,5 @@
-using HarmonyLib;
 using DiskCardGame;
+using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
@@ -18,14 +18,14 @@ internal class RenderAdditionalSigils
             }
 
             Transform result = Find(child, target);
-            if (result != null) 
+            if (result != null)
             {
                 return result;
-            }  
+            }
         }
         return null;
     }
-    
+
     private static void AddQuadrupleIconSlotToCard(Transform abilityIconParent)
     {
         //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
@@ -200,7 +200,7 @@ internal class RenderAdditionalSigils
             //PLugin.Log.LogInfo($"Making fourth icon");
             GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, sixAbilities.transform);
             fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0f, -.07f, 0f); 
+            fourthIcon.transform.localPosition = new Vector3(0f, -.07f, 0f);
             fourthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making fifth icon");
@@ -265,19 +265,19 @@ internal class RenderAdditionalSigils
             //PLugin.Log.LogInfo($"Making third icon");
             GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
             thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(-0.175f, .063f, 0f); 
+            thirdIcon.transform.localPosition = new Vector3(-0.175f, .063f, 0f);
             thirdIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making fourth icon");
             GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
             fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f); 
+            fourthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f);
             fourthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making fifth icon");
             GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
             fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f); 
+            fifthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f);
             fifthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making sixth icon");
@@ -348,25 +348,25 @@ internal class RenderAdditionalSigils
             //PLugin.Log.LogInfo($"Making fourth icon");
             GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
             fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0.200625f, .063f, 0f); 
+            fourthIcon.transform.localPosition = new Vector3(0.200625f, .063f, 0f);
             fourthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making fifth icon");
             GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
             fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f); 
+            fifthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f);
             fifthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making sixth icon");
             GameObject sixthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
             sixthIcon.name = "AbilityIcon";
-            sixthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f); 
+            sixthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f);
             sixthIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making seventh icon");
             GameObject seventhIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
             seventhIcon.name = "AbilityIcon";
-            seventhIcon.transform.localPosition = new Vector3(-0.200625f, -.067f, 0f); 
+            seventhIcon.transform.localPosition = new Vector3(-0.200625f, -.067f, 0f);
             seventhIcon.transform.localScale = icons[1].localScale;
 
             //PLugin.Log.LogInfo($"Making eighth icon");

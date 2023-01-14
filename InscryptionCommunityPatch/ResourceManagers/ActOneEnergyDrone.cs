@@ -1,8 +1,8 @@
-using System.Collections;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using Pixelplacement;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +15,7 @@ public static class EnergyDrone
     {
         private bool _configEnergyOverride = false;
         public bool ConfigEnergy
-        { 
+        {
             get => EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
             set => _configEnergyOverride = value;
         }
@@ -29,14 +29,14 @@ public static class EnergyDrone
 
         private bool _configMoxOverride = false;
         public bool ConfigMox
-        { 
+        {
             get => EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
             set => _configMoxOverride = value;
         }
 
         private bool _configDroneMoxOverride = false;
         public bool ConfigDroneMox
-        { 
+        {
             get => EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
             set => _configDroneMoxOverride = value;
         }
@@ -113,7 +113,7 @@ public static class EnergyDrone
             return;
 
         // Check the entire pool of cards for mox and energy
-        CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead : 
+        CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead :
                                   SaveManager.saveFile.IsMagnificus ? CardTemple.Wizard :
                                   CardTemple.Nature;
 
@@ -138,7 +138,7 @@ public static class EnergyDrone
             ResourceDrone.Instance.Awake();
 
         yield return new WaitForSeconds(1);
-        
+
         if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.AttachGemsModule();
     }
@@ -171,7 +171,7 @@ public static class EnergyDrone
                 __instance.gameObject.SetActive(value: true);
                 __instance.SetAllCellsOn(on: false);
             }
-            Tween.Position(__instance.gameObject.transform, vector,onBoard ? 0.157f : 0.27f, onBoard ? 0.0f : 0.255f,
+            Tween.Position(__instance.gameObject.transform, vector, onBoard ? 0.157f : 0.27f, onBoard ? 0.0f : 0.255f,
                 onBoard ? Tween.EaseInOut : Tween.EaseOut, Tween.LoopType.None, null, delegate
             {
                 if (onBoard)
@@ -320,17 +320,17 @@ public static class EnergyDrone
             if (showEnergyModule)
             {
                 ViewManager.Instance.SwitchToView(View.Default, false, true);
-			    yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f);
             }
 
             yield return ResourcesManager.Instance.AddMaxEnergy(1);
-		    yield return ResourcesManager.Instance.RefreshEnergy();
+            yield return ResourcesManager.Instance.RefreshEnergy();
 
             if (showEnergyModule)
             {
                 yield return new WaitForSeconds(0.25f);
-			    Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
+                Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
             }
         }
-	}
+    }
 }

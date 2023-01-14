@@ -1,8 +1,8 @@
-using System.Collections;
 using DiskCardGame;
-using UnityEngine;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
+using System.Collections;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
@@ -34,7 +34,7 @@ internal static class ChoiceNodePatch
 
         if (GetRandomChoosableMoxCard(randomSeed++) != null)
             __result.Add(new CardChoice() { resourceType = ResourceType.Gems });
-        
+
         while (list.Count > 3)
             list.RemoveAt(SeededRandom.Range(0, list.Count, randomSeed++));
 
@@ -51,18 +51,18 @@ internal static class ChoiceNodePatch
             CardInfo cardInfo = new CardInfo();
             if (card.ChoiceInfo.resourceType == ResourceType.Energy)
                 cardInfo = GetRandomChoosableEnergyCard(SaveManager.SaveFile.GetCurrentRandomSeed());
-            
+
             if (card.ChoiceInfo.resourceType == ResourceType.Gems)
                 cardInfo = GetRandomChoosableMoxCard(SaveManager.SaveFile.GetCurrentRandomSeed());
-            
+
             card.SetInfo(cardInfo);
             card.SetFaceDown(false, false);
             card.SetInteractionEnabled(false);
-            yield return __instance.TutorialTextSequence(card);		
+            yield return __instance.TutorialTextSequence(card);
             card.SetCardbackToDefault();
             yield return __instance.WaitForCardToBeTaken(card);
             yield break;
-        } 
+        }
         else
         {
             yield return enumerator;

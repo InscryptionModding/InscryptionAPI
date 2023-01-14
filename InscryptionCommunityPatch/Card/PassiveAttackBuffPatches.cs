@@ -1,4 +1,3 @@
-using System.Collections;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
@@ -55,7 +54,7 @@ public static class PassiveAttackBuffPatches
                 foreach (CardSlot slot in BoardManager.Instance.GetSlots(__instance.OpponentCard).Where(slot => slot.Card))
                 {
                     __result += slot.Card.AbilityCount(Ability.BuffEnemy);
-                    if(__instance.LacksAbility(Ability.MadeOfStone))
+                    if (__instance.LacksAbility(Ability.MadeOfStone))
                     {
                         __result -= slot.Card.AbilityCount(Ability.DebuffEnemy);
                     }
@@ -64,7 +63,7 @@ public static class PassiveAttackBuffPatches
             else if (__instance.HasOpposingCard())
             {
                 __result += __instance.OpposingCard().AbilityCount(Ability.BuffEnemy);
-                if(__instance.LacksAbility(Ability.MadeOfStone))
+                if (__instance.LacksAbility(Ability.MadeOfStone))
                 {
                     __result -= __instance.OpposingCard().AbilityCount(Ability.DebuffEnemy);
                 }
@@ -93,7 +92,7 @@ public static class PassiveAttackBuffPatches
 
             if (__instance.OpponentCard && BoardManager.Instance.OpponentSlotsCopy.Any(c => c.Card != null && (c.Card.HasAbility(Ability.GainGemOrange) || c.Card.HasAbility(Ability.GainGemTriple))))
                 __result += 1;
-        }   
+        }
 
         return false;
     }
