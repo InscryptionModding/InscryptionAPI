@@ -970,7 +970,7 @@ NOTE: Getting a prefab from an asset bundle does not laod it into the world. You
 
 #### 1. The GameObject is being create but the model won't show up!
 
-Make sure you are using 2014.4.24f1 to build the asset bundle? If not the model won't show!
+Make sure you are using 2019.4.24f1 to build the asset bundle? If not the model won't show!
 
 ## Talking Cards
 This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!
