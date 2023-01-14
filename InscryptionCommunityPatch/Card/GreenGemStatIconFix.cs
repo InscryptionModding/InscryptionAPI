@@ -1,7 +1,7 @@
 ﻿using DiskCardGame;
 using HarmonyLib;
-using UnityEngine;
 using InscryptionAPI.Helpers;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -16,7 +16,7 @@ public static class GreenGemStatIconFix
     private static void StatIconInfo_LoadAbilityData()
     {
         StatIconInfo greenGemStatIcon = StatIconInfo.allIconInfo.Find((a) => a.name == "GreenGemsStatIcon");
-        
+
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("GreenGem.png", typeof(GreenGemStatIconFix).Assembly);
         greenGemStatIcon.iconGraphic = baseTexture;
         greenGemStatIcon.rulebookDescription = "The power of this card is equal to the number of Green Gems that the owner has on their side of the table.";

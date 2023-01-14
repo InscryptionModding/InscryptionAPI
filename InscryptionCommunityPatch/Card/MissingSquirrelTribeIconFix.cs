@@ -1,9 +1,8 @@
-using System.Reflection;
-using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Pelts;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
@@ -25,14 +24,14 @@ public class MissingSquirrelTribeIconFix
             });
         }
     }
-    
+
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
     private class CardDisplayer3D_UpdateTribeIcon
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             // === We want to turn this
-            
+
             /* for (int i = 0; i < 7; i++)
 			    {
 			        if (info.IsOfTribe((Tribe)i))
@@ -41,9 +40,9 @@ public class MissingSquirrelTribeIconFix
                     }                
                 }
             */
-            
+
             // === Into this
-            
+
             /* for (int i = 0; i < 7; i++)
 			    {
 			        if (!ShowTribeOnCard(info, (Tribe)i)
@@ -52,12 +51,12 @@ public class MissingSquirrelTribeIconFix
                     }                
                 }
             */
-            
-            MethodInfo ShowTribeOnCardInfo =  SymbolExtensions.GetMethodInfo(() => ShowTribeOnCard(null, Tribe.Squirrel));
-            MethodInfo IsOfTribeInfo = AccessTools.Method(typeof(CardInfo), "IsOfTribe", new Type[] { typeof(Tribe)});
-            
+
+            MethodInfo ShowTribeOnCardInfo = SymbolExtensions.GetMethodInfo(() => ShowTribeOnCard(null, Tribe.Squirrel));
+            MethodInfo IsOfTribeInfo = AccessTools.Method(typeof(CardInfo), "IsOfTribe", new Type[] { typeof(Tribe) });
+
             // ===
-            
+
             List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {
@@ -72,7 +71,7 @@ public class MissingSquirrelTribeIconFix
 
             return codes;
         }
-        
+
         private static bool ShowTribeOnCard(CardInfo info, Tribe tribe)
         {
             if (!info.IsOfTribe(tribe))

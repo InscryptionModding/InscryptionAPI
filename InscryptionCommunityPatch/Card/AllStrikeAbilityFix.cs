@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using DiskCardGame;
 using HarmonyLib;
-using UnityEngine;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -27,9 +24,7 @@ public class AllStrikeAbilityFix
                 {
                     // start at the first ldc.i4.0
                     if (codes[j].opcode == OpCodes.Ldc_I4_0)
-                    {
                         startIndex = j;
-                    }
 
                     // end at the first break
                     if (codes[j].opcode == OpCodes.Br)

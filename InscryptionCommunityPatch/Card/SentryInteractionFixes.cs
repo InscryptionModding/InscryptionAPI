@@ -1,12 +1,11 @@
-using System.Collections;
 using DiskCardGame;
 using HarmonyLib;
+using System.Collections;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
-// Fixes a few issues relating to Sentry interacting with certain Act 1 abilities / mechanics
-[HarmonyPatch]
+[HarmonyPatch] // Fixes a few issues relating to Sentry interacting with certain Act 1 abilities / mechanics
 public class SentryInteractionFixes
 {
     // Fixes a soft crash that occurs when the enemy totem tries to perform its check OnAssignedToSlot

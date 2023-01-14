@@ -81,11 +81,15 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         {
             foreach (var refAsm in pluginAsm.GetReferencedAssemblies())
                 if (refAsm.Name.Equals("API"))
+                {
                     outdatedPlugins += $" - {pluginAsm.GetName().Name}\n";
+                    continue;
+                }
         }
-        Logger.LogWarning("The following plugins have been flagged as using an outdated version of the API:\n"
-            + outdatedPlugins
-            + "\nAn attempt has been made to ensure they still work, but it isn't perfect so please update or disable them if problems arise.");
+        if (outdatedPlugins != "")
+            Logger.LogWarning("The following mods have been flagged as using an outdated version of the API:\n"
+                + outdatedPlugins
+                + "\nOutdated mods may not work correctly, so please update or disable them if problems arise!");
     }
 
     private void Awake()

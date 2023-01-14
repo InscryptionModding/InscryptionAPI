@@ -22,6 +22,7 @@ public static class SacrificeTokensFix
                 for (int i = 0; i < amountOfNewTokens; i++)
                 {
                     SacrificeToken token = SacrificeToken.Instantiate(__instance.tokens.tokens[i]);
+                    token.transform.SetParent(__instance.tokens.tokens[0].transform.parent);
                     __instance.tokens.tokens.Add(token);
                 }
             }

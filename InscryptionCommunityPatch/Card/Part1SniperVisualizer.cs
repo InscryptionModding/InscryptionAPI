@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DiskCardGame;
-using UnityEngine;
 using Pixelplacement;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 internal class Part1SniperVisualizer : ManagedBehaviour
