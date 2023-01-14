@@ -7,6 +7,7 @@
 - Fixed totem choice node being able to offer tops for vanilla tribes with no cards
 - Added fallbacks for tribal choice node if there are less than 3 chooseable tribes
 - Added fallback to campfire node if you don't have any cards that can be buffed 
+- Fixed 'outdated plugins' warning showing up when it shouldn't, tweaked message slightly
 
 ## 2.8.1
 - Added CardInfo extensions for checking CardMetaCategories, cause why not
