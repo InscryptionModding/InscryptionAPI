@@ -1052,6 +1052,16 @@ Below I'm going to explain a few important things about talking cards in-depth!
 ### EmotionData
 The EmotionData class is a container for the sprites for one of your character's emotions. It has a constructor that takes Unity Sprites as parameters, and another constructor that takes the path to your image as a string for each image. 
 
+The constructors take the following parameters:
+
+| Parameter | Description                                                             |
+|-----------|-------------------------------------------------------------------------|
+| emotion   | The chosen emotion.                                                     |
+| face      | A sprite for your character's face.                                     |
+| eyes      | A pair of sprites for your character's eyes: open and closed.           |
+| mouth     | A pair of sprites for your character's mouth: open and closed.          |
+| emission  | A pair of sprites for your character's eyes' emission: open and closed. |
+
 If you ever need to use an empty portrait texture, you can use `TalkingCardManager.EmptyPortrait`!
 
 The string constructor also contains shorthand for an empty texture, if you need it: Just add an "\_" as your string for that given parameter. 
