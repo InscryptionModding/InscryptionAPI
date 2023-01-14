@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class InscryptionAPIPlugin
+    <title>Interface ITalkingCard
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class InscryptionAPIPlugin
+    <meta name="title" content="Interface ITalkingCard
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -77,48 +77,39 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.InscryptionAPIPlugin">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard">
   
   
-  <h1 id="InscryptionAPI_InscryptionAPIPlugin" data-uid="InscryptionAPI.InscryptionAPIPlugin" class="text-break">Class InscryptionAPIPlugin
+  <h1 id="InscryptionAPI_TalkingCards_Create_ITalkingCard" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard" class="text-break">Interface ITalkingCard
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>An interface for the creation of a talking card through this API.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
-    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
-    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
-    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">BepInEx.BaseUnityPlugin</span></div>
-    <div class="level6"><span class="xref">InscryptionAPIPlugin</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.html">InscryptionAPI</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.TalkingCards.Create.html">InscryptionAPI.TalkingCards.Create</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_InscryptionAPIPlugin_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_TalkingCards_Create_ITalkingCard_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[BepInPlugin(&quot;cyantist.inscryption.api&quot;, &quot;InscryptionAPI&quot;, &quot;2.9.0&quot;)]
-[HarmonyPatch]
-public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ITalkingCard</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_InscryptionAPIPlugin_ModGUID.md&amp;value=---%0Auid%3A%20InscryptionAPI.InscryptionAPIPlugin.ModGUID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_TalkingCards_Create_ITalkingCard_CardName.md&amp;value=---%0Auid%3A%20InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/InscryptionAPIPlugin.cs/#L29">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/TalkingCards/Create/ITalkingCard.cs/#L18">View Source</a>
   </span>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModGUID" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModGUID">ModGUID</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_TalkingCards_Create_ITalkingCard_CardName_" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_Create_ITalkingCard_CardName" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName">CardName</h4>
+  <div class="markdown level1 summary"><p>The name of an existing card.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModGUID = &quot;cyantist.inscryption.api&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">string CardName { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -135,19 +126,21 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_InscryptionAPIPlugin_ModName.md&amp;value=---%0Auid%3A%20InscryptionAPI.InscryptionAPIPlugin.ModName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_TalkingCards_Create_ITalkingCard_DialogueAbility.md&amp;value=---%0Auid%3A%20InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/InscryptionAPIPlugin.cs/#L30">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/TalkingCards/Create/ITalkingCard.cs/#L33">View Source</a>
   </span>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModName" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModName">ModName</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_TalkingCards_Create_ITalkingCard_DialogueAbility_" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_Create_ITalkingCard_DialogueAbility" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility">DialogueAbility</h4>
+  <div class="markdown level1 summary"><p>The special ability that controls your talking card&apos;s dialogue.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModName = &quot;InscryptionAPI&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">SpecialTriggeredAbility DialogueAbility { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -157,26 +150,28 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="xref">DiskCardGame.SpecialTriggeredAbility</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_InscryptionAPIPlugin_ModVer.md&amp;value=---%0Auid%3A%20InscryptionAPI.InscryptionAPIPlugin.ModVer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_TalkingCards_Create_ITalkingCard_Emotions.md&amp;value=---%0Auid%3A%20InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/InscryptionAPIPlugin.cs/#L31">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/TalkingCards/Create/ITalkingCard.cs/#L23">View Source</a>
   </span>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModVer" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModVer">ModVer</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_TalkingCards_Create_ITalkingCard_Emotions_" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_Create_ITalkingCard_Emotions" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions">Emotions</h4>
+  <div class="markdown level1 summary"><p>Your talking card&apos;s emotions.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModVer = &quot;2.9.0&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">List&lt;EmotionData&gt; Emotions { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -186,28 +181,28 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="InscryptionAPI.TalkingCards.Create.EmotionData.html">EmotionData</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="events">Events
-  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_InscryptionAPIPlugin_ScriptableObjectLoaderLoad.md&amp;value=---%0Auid%3A%20InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_TalkingCards_Create_ITalkingCard_FaceInfo.md&amp;value=---%0Auid%3A%20InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/InscryptionAPIPlugin.cs/#L51">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/TalkingCards/Create/ITalkingCard.cs/#L28">View Source</a>
   </span>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ScriptableObjectLoaderLoad" data-uid="InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad">ScriptableObjectLoaderLoad</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_TalkingCards_Create_ITalkingCard_FaceInfo_" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_Create_ITalkingCard_FaceInfo" data-uid="InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo">FaceInfo</h4>
+  <div class="markdown level1 summary"><p>A bit of info about your talking card: blink rate and voice.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static event Action&lt;Type&gt; ScriptableObjectLoaderLoad</code></pre>
+    <pre><code class="lang-csharp hljs">FaceInfo FaceInfo { get; }</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -217,7 +212,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">Type</span>&gt;</td>
+        <td><a class="xref" href="InscryptionAPI.TalkingCards.Create.FaceInfo.html">FaceInfo</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -234,10 +229,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_InscryptionAPIPlugin.md&amp;value=---%0Auid%3A%20InscryptionAPI.InscryptionAPIPlugin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_TalkingCards_Create_ITalkingCard.md&amp;value=---%0Auid%3A%20InscryptionAPI.TalkingCards.Create.ITalkingCard%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/InscryptionAPIPlugin.cs/#L25" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/TalkingCards/Create/ITalkingCard.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

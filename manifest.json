@@ -474,6 +474,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Dialogue.CustomLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Dialogue.CustomLine.html",
+          "hash": "aLWseWyoUj3HPfvN9AlBbfnlbXX6JRCJiIpWMrCLi+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.Dialogue.yml",
       "output": {
         ".html": {
@@ -526,31 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.html",
-          "hash": "0PJucMaiWufoHrtnuWfCO83dzQmuyqxvOGFLWAiTrXU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Dialogue.Helpers.CustomLine.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Dialogue.Helpers.CustomLine.html",
-          "hash": "XSn7rbCCPFHfMYMTJfqXR8/hmOvfl6NKQ98jyVHkfbA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Dialogue.Helpers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/InscryptionAPI.Dialogue.Helpers.html",
-          "hash": "+lddxLto6EtnyY7l97znONqNHQK3+exXjRpAGHkxt7w="
+          "hash": "YxdJlQVPbfJm40tk7Hw2aNHRMyrQaTVciOpY2Fh8IyU="
         }
       },
       "is_incremental": false,
@@ -562,7 +550,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.html",
-          "hash": "HvidMuj9ORU0+c/vk3Hs6Qwv2Y+YvGYEGsz6PY/YnLE="
+          "hash": "rVRYKzBwgBPFCXMCEsZNTLhPW8796eWOzFPkMQ4IaFA="
         }
       },
       "is_incremental": false,
@@ -982,7 +970,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "2Xn+/ki3dTHopf3O1jHsdHsXup7nCCauGn+wuIOiTcs="
+          "hash": "tSAE4y5F05nP4qAK3l14Vlo1Lm6n76Y0NJMZ7RXbmnM="
         }
       },
       "is_incremental": false,
@@ -1578,6 +1566,198 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html",
+          "hash": "KjDLDUBKI8y0BgLMGk3oj3BbM7eSPu5mV7vAMQOwp08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Animation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Animation.html",
+          "hash": "I5VMEjve+OvP3oPuq+e/j4G7cb17BIr0ZmkBOyLHzLs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html",
+          "hash": "p4w1F/YEMB02oBE1vcbnpaar27BLSSUjfUPN30k6ihA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.EmotionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.EmotionData.html",
+          "hash": "GQgzoUMdqRIC3ZYrqO38xlc1oU6GlBG0XabpTMJreQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceAnim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceAnim.html",
+          "hash": "Eyr4NMI1RYq15jDMkIHLrZUKi0zV2BRq3sNf5BzgYCQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceData.html",
+          "hash": "V2oKC2ZSXMMmd29qLkOW+50kg/NGL8TqtfqgUfyC+H8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.FaceInfo.html",
+          "hash": "6rNc+zivaoHuxxtmjMzzI2y4GAFI+vYT1kquvN4WV+w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.ITalkingCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html",
+          "hash": "fFxp8P9JjdbaoIkQuJAm0H2yAZjcY842QGbJ/r9CPGg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.TalkingCardCreator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.TalkingCardCreator.html",
+          "hash": "fUCQfKJ7jqgOAobPx9letDQ8KChE6tIwHdFeoAa742s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Create.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Create.html",
+          "hash": "5lYFjCXM+zHgtvjwAe6JZxqnPLq8DAJiyfIpppnUc4M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html",
+          "hash": "kniZ81zPIbUUb4mjMAsFH3Md9Ry4+zCFMle5crbaptE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html",
+          "hash": "Vv6DgNsFCL00EyQtOctAukyZWJeMc/rDn1u0ivy0Rqg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html",
+          "hash": "0JIjn7Wqo6dyN2UengPmpRqQ/24rS0Pnqf/Ar4WcK+s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.Helpers.html",
+          "hash": "TfHjl3Q9i3i+CcHzNAaodANyK/pkqiwAsDF+cz4TE9k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.TalkingCardManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.TalkingCardManager.html",
+          "hash": "4gNKJuQwGlcRZnMdTGAYA7WJI+jUoEWFCH4t8fZZCY8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.TalkingCards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.TalkingCards.html",
+          "hash": "WdX25dBr7OXIfOc+R2FAmrwEc3Fi99xWfQ4pJrEi3TA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Totems.CustomIconTotemTopPiece.yml",
       "output": {
         ".html": {
@@ -2062,7 +2242,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "ebZTC2kRYHGQgbH03J4+tgAWmEBCtzgwL1mV8f08ic8="
+          "hash": "uUxTZFsD4Na2je6aaqfLihZedk9n6VMXN7ccFtWaxg0="
         }
       },
       "is_incremental": false,
@@ -2098,7 +2278,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "GjGHozRnLFo0MdOYKj898y79MeR8rc48yrs0euTeqHE="
+          "hash": "hKYFpBMdGsNj+n78Q43ug8R2/si4ArD1LSPr1oMZ/J0="
         }
       },
       "is_incremental": false,
@@ -2125,7 +2305,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 177,
+          "total_file_count": 192,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

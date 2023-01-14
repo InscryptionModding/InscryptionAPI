@@ -297,18 +297,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_Helpers_CustomLine__List_List_InscryptionAPI_Dialogue_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String%2CSystem.String%2CList%7BInscryptionAPI.Dialogue.Helpers.CustomLine%7D%2CList%7BList%7BInscryptionAPI.Dialogue.Helpers.CustomLine%7D%7D%2CDialogueEvent.MaxRepeatsBehaviour%2CDialogueEvent.Speaker)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String%2CSystem.String%2CList%7BInscryptionAPI.Dialogue.CustomLine%7D%2CList%7BList%7BInscryptionAPI.Dialogue.CustomLine%7D%7D%2CDialogueEvent.MaxRepeatsBehaviour%2CDialogueEvent.Speaker)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Dialogue/DialogueManager.cs/#L51">View Source</a>
   </span>
   <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateEvent*"></a>
-  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_Helpers_CustomLine__List_List_InscryptionAPI_Dialogue_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.Helpers.CustomLine},List{List{InscryptionAPI.Dialogue.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)">GenerateEvent(String, String, List&lt;Helpers.CustomLine&gt;, List&lt;List&lt;Helpers.CustomLine&gt;&gt;, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)</h4>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)">GenerateEvent(String, String, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateEvent(string pluginGUID, string name, List&lt;Helpers.CustomLine&gt; mainLines, List&lt;List&lt;Helpers.CustomLine&gt;&gt; repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)</code></pre>
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateEvent(string pluginGUID, string name, List&lt;CustomLine&gt; mainLines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -331,12 +331,12 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.Helpers.CustomLine.html">Helpers.CustomLine</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
         <td><span class="parametername">mainLines</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.Helpers.CustomLine.html">Helpers.CustomLine</a>&gt;&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
         <td><span class="parametername">repeatLines</span></td>
         <td></td>
       </tr>

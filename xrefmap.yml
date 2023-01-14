@@ -4891,6 +4891,108 @@ references:
   commentId: N:InscryptionAPI.Dialogue
   fullName: InscryptionAPI.Dialogue
   nameWithType: InscryptionAPI.Dialogue
+- uid: InscryptionAPI.Dialogue.CustomLine
+  name: CustomLine
+  href: api/InscryptionAPI.Dialogue.CustomLine.html
+  commentId: T:InscryptionAPI.Dialogue.CustomLine
+  fullName: InscryptionAPI.Dialogue.CustomLine
+  nameWithType: CustomLine
+- uid: InscryptionAPI.Dialogue.CustomLine.#ctor
+  name: CustomLine()
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine__ctor
+  commentId: M:InscryptionAPI.Dialogue.CustomLine.#ctor
+  fullName: InscryptionAPI.Dialogue.CustomLine.CustomLine()
+  nameWithType: CustomLine.CustomLine()
+- uid: InscryptionAPI.Dialogue.CustomLine.#ctor*
+  name: CustomLine
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine__ctor_
+  commentId: Overload:InscryptionAPI.Dialogue.CustomLine.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.CustomLine.CustomLine
+  nameWithType: CustomLine.CustomLine
+- uid: InscryptionAPI.Dialogue.CustomLine.emotion
+  name: emotion
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_emotion
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.emotion
+  fullName: InscryptionAPI.Dialogue.CustomLine.emotion
+  nameWithType: CustomLine.emotion
+- uid: InscryptionAPI.Dialogue.CustomLine.letterAnimation
+  name: letterAnimation
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_letterAnimation
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.letterAnimation
+  fullName: InscryptionAPI.Dialogue.CustomLine.letterAnimation
+  nameWithType: CustomLine.letterAnimation
+- uid: InscryptionAPI.Dialogue.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.CustomLine
+  name: Implicit(String to CustomLine)
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_op_Implicit_System_String__InscryptionAPI_Dialogue_CustomLine
+  commentId: M:InscryptionAPI.Dialogue.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.CustomLine
+  name.vb: Widening(String to CustomLine)
+  fullName: InscryptionAPI.Dialogue.CustomLine.Implicit(System.String to InscryptionAPI.Dialogue.CustomLine)
+  fullName.vb: InscryptionAPI.Dialogue.CustomLine.Widening(System.String to InscryptionAPI.Dialogue.CustomLine)
+  nameWithType: CustomLine.Implicit(String to CustomLine)
+  nameWithType.vb: CustomLine.Widening(String to CustomLine)
+- uid: InscryptionAPI.Dialogue.CustomLine.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_op_Implicit_
+  commentId: Overload:InscryptionAPI.Dialogue.CustomLine.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.Dialogue.CustomLine.Implicit
+  fullName.vb: InscryptionAPI.Dialogue.CustomLine.Widening
+  nameWithType: CustomLine.Implicit
+  nameWithType.vb: CustomLine.Widening
+- uid: InscryptionAPI.Dialogue.CustomLine.p03Face
+  name: p03Face
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_p03Face
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.p03Face
+  fullName: InscryptionAPI.Dialogue.CustomLine.p03Face
+  nameWithType: CustomLine.p03Face
+- uid: InscryptionAPI.Dialogue.CustomLine.speaker
+  name: speaker
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_speaker
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.speaker
+  fullName: InscryptionAPI.Dialogue.CustomLine.speaker
+  nameWithType: CustomLine.speaker
+- uid: InscryptionAPI.Dialogue.CustomLine.specialInstruction
+  name: specialInstruction
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_specialInstruction
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.specialInstruction
+  fullName: InscryptionAPI.Dialogue.CustomLine.specialInstruction
+  nameWithType: CustomLine.specialInstruction
+- uid: InscryptionAPI.Dialogue.CustomLine.storyCondition
+  name: storyCondition
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_storyCondition
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.storyCondition
+  fullName: InscryptionAPI.Dialogue.CustomLine.storyCondition
+  nameWithType: CustomLine.storyCondition
+- uid: InscryptionAPI.Dialogue.CustomLine.storyConditionMustBeMet
+  name: storyConditionMustBeMet
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_storyConditionMustBeMet
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.storyConditionMustBeMet
+  fullName: InscryptionAPI.Dialogue.CustomLine.storyConditionMustBeMet
+  nameWithType: CustomLine.storyConditionMustBeMet
+- uid: InscryptionAPI.Dialogue.CustomLine.text
+  name: text
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_text
+  commentId: F:InscryptionAPI.Dialogue.CustomLine.text
+  fullName: InscryptionAPI.Dialogue.CustomLine.text
+  nameWithType: CustomLine.text
+- uid: InscryptionAPI.Dialogue.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name: ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_ToLine_System_Collections_Generic_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Dialogue.CustomLine.ToLine(System.Collections.Generic.List{DialogueEvent.Speaker},DialogueEvent.Speaker)
+  name.vb: ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Dialogue.CustomLine.ToLine(System.Collections.Generic.List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Dialogue.CustomLine.ToLine(System.Collections.Generic.List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+  nameWithType: CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
+  nameWithType.vb: CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
+- uid: InscryptionAPI.Dialogue.CustomLine.ToLine*
+  name: ToLine
+  href: api/InscryptionAPI.Dialogue.CustomLine.html#InscryptionAPI_Dialogue_CustomLine_ToLine_
+  commentId: Overload:InscryptionAPI.Dialogue.CustomLine.ToLine
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.CustomLine.ToLine
+  nameWithType: CustomLine.ToLine
 - uid: InscryptionAPI.Dialogue.DialogueManager
   name: DialogueManager
   href: api/InscryptionAPI.Dialogue.DialogueManager.html
@@ -5024,15 +5126,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.Prefix
   nameWithType: DialogueManager.DialogueParser_GetColorFromCode.Prefix
-- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.Helpers.CustomLine},List{List{InscryptionAPI.Dialogue.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
-  name: GenerateEvent(String, String, List<Helpers.CustomLine>, List<List<Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_Helpers_CustomLine__List_List_InscryptionAPI_Dialogue_Helpers_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
-  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.Helpers.CustomLine},List{List{InscryptionAPI.Dialogue.Helpers.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
-  name.vb: GenerateEvent(String, String, List(Of Helpers.CustomLine), List(Of List(Of Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List<InscryptionAPI.Dialogue.Helpers.CustomLine>, List<List<InscryptionAPI.Dialogue.Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List(Of InscryptionAPI.Dialogue.Helpers.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  nameWithType: DialogueManager.GenerateEvent(String, String, List<Helpers.CustomLine>, List<List<Helpers.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
-  nameWithType.vb: DialogueManager.GenerateEvent(String, String, List(Of Helpers.CustomLine), List(Of List(Of Helpers.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name: GenerateEvent(String, String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)
+  name.vb: GenerateEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List<InscryptionAPI.Dialogue.CustomLine>, List<List<InscryptionAPI.Dialogue.CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String, System.String, List(Of InscryptionAPI.Dialogue.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType: DialogueManager.GenerateEvent(String, String, List<CustomLine>, List<List<CustomLine>>, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
+  nameWithType.vb: DialogueManager.GenerateEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)), DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)
 - uid: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent*
   name: GenerateEvent
   href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_
@@ -5040,114 +5142,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent
   nameWithType: DialogueManager.GenerateEvent
-- uid: InscryptionAPI.Dialogue.Helpers
-  name: Helpers
-  href: api/InscryptionAPI.Dialogue.Helpers.html
-  commentId: T:InscryptionAPI.Dialogue.Helpers
-  fullName: InscryptionAPI.Dialogue.Helpers
-  nameWithType: Helpers
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine
-  name: Helpers.CustomLine
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html
-  commentId: T:InscryptionAPI.Dialogue.Helpers.CustomLine
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine
-  nameWithType: Helpers.CustomLine
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
-  name: CustomLine()
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine__ctor
-  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.CustomLine()
-  nameWithType: Helpers.CustomLine.CustomLine()
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor*
-  name: CustomLine
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine__ctor_
-  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.#ctor
-  isSpec: "True"
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.CustomLine
-  nameWithType: Helpers.CustomLine.CustomLine
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
-  name: emotion
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_emotion
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.emotion
-  nameWithType: Helpers.CustomLine.emotion
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
-  name: letterAnimation
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_letterAnimation
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.letterAnimation
-  nameWithType: Helpers.CustomLine.letterAnimation
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.Helpers.CustomLine
-  name: Implicit(String to Helpers.CustomLine)
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_op_Implicit_System_String__InscryptionAPI_Dialogue_Helpers_CustomLine
-  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit(System.String)~InscryptionAPI.Dialogue.Helpers.CustomLine
-  name.vb: Widening(String to Helpers.CustomLine)
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.Implicit(System.String to InscryptionAPI.Dialogue.Helpers.CustomLine)
-  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.Widening(System.String to InscryptionAPI.Dialogue.Helpers.CustomLine)
-  nameWithType: Helpers.CustomLine.Implicit(String to Helpers.CustomLine)
-  nameWithType.vb: Helpers.CustomLine.Widening(String to Helpers.CustomLine)
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit*
-  name: Implicit
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_op_Implicit_
-  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.op_Implicit
-  isSpec: "True"
-  name.vb: Widening
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.Implicit
-  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.Widening
-  nameWithType: Helpers.CustomLine.Implicit
-  nameWithType.vb: Helpers.CustomLine.Widening
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
-  name: p03Face
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_p03Face
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.p03Face
-  nameWithType: Helpers.CustomLine.p03Face
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
-  name: speaker
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_speaker
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.speaker
-  nameWithType: Helpers.CustomLine.speaker
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
-  name: specialInstruction
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_specialInstruction
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.specialInstruction
-  nameWithType: Helpers.CustomLine.specialInstruction
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
-  name: storyCondition
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_storyCondition
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.storyCondition
-  nameWithType: Helpers.CustomLine.storyCondition
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
-  name: storyConditionMustBeMet
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_storyConditionMustBeMet
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.storyConditionMustBeMet
-  nameWithType: Helpers.CustomLine.storyConditionMustBeMet
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.text
-  name: text
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_text
-  commentId: F:InscryptionAPI.Dialogue.Helpers.CustomLine.text
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.text
-  nameWithType: Helpers.CustomLine.text
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
-  name: ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_ToLine_List_DialogueEvent_Speaker__DialogueEvent_Speaker_
-  commentId: M:InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List{DialogueEvent.Speaker},DialogueEvent.Speaker)
-  name.vb: ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
-  fullName.vb: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
-  nameWithType: Helpers.CustomLine.ToLine(List<DialogueEvent.Speaker>, DialogueEvent.Speaker)
-  nameWithType.vb: Helpers.CustomLine.ToLine(List(Of DialogueEvent.Speaker), DialogueEvent.Speaker)
-- uid: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine*
-  name: ToLine
-  href: api/InscryptionAPI.Dialogue.Helpers.CustomLine.html#InscryptionAPI_Dialogue_Helpers_CustomLine_ToLine_
-  commentId: Overload:InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine
-  isSpec: "True"
-  fullName: InscryptionAPI.Dialogue.Helpers.CustomLine.ToLine
-  nameWithType: Helpers.CustomLine.ToLine
 - uid: InscryptionAPI.Encounters
   name: InscryptionAPI.Encounters
   href: api/InscryptionAPI.Encounters.html
@@ -10574,6 +10568,874 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Sound.SoundManager.LoadAudioClip
   nameWithType: SoundManager.LoadAudioClip
+- uid: InscryptionAPI.TalkingCards
+  name: InscryptionAPI.TalkingCards
+  href: api/InscryptionAPI.TalkingCards.html
+  commentId: N:InscryptionAPI.TalkingCards
+  fullName: InscryptionAPI.TalkingCards
+  nameWithType: InscryptionAPI.TalkingCards
+- uid: InscryptionAPI.TalkingCards.Animation
+  name: InscryptionAPI.TalkingCards.Animation
+  href: api/InscryptionAPI.TalkingCards.Animation.html
+  commentId: N:InscryptionAPI.TalkingCards.Animation
+  fullName: InscryptionAPI.TalkingCards.Animation
+  nameWithType: InscryptionAPI.TalkingCards.Animation
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait
+  name: GeneratePortrait
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html
+  commentId: T:InscryptionAPI.TalkingCards.Animation.GeneratePortrait
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait
+  nameWithType: GeneratePortrait
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.BlinkRate
+  name: BlinkRate
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_BlinkRate
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.BlinkRate
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.BlinkRate
+  nameWithType: GeneratePortrait.BlinkRate
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.DialogueDummy
+  name: DialogueDummy
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_DialogueDummy
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.DialogueDummy
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.DialogueDummy
+  nameWithType: GeneratePortrait.DialogueDummy
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortrait
+  name: EmptyPortrait
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_EmptyPortrait
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortrait
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortrait
+  nameWithType: GeneratePortrait.EmptyPortrait
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortraitTuple
+  name: EmptyPortraitTuple
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_EmptyPortraitTuple
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortraitTuple
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.EmptyPortraitTuple
+  nameWithType: GeneratePortrait.EmptyPortraitTuple
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoiceId
+  name: VoiceId
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_VoiceId
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoiceId
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoiceId
+  nameWithType: GeneratePortrait.VoiceId
+- uid: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoicePitch
+  name: VoicePitch
+  href: api/InscryptionAPI.TalkingCards.Animation.GeneratePortrait.html#InscryptionAPI_TalkingCards_Animation_GeneratePortrait_VoicePitch
+  commentId: F:InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoicePitch
+  fullName: InscryptionAPI.TalkingCards.Animation.GeneratePortrait.VoicePitch
+  nameWithType: GeneratePortrait.VoicePitch
+- uid: InscryptionAPI.TalkingCards.Create
+  name: InscryptionAPI.TalkingCards.Create
+  href: api/InscryptionAPI.TalkingCards.Create.html
+  commentId: N:InscryptionAPI.TalkingCards.Create
+  fullName: InscryptionAPI.TalkingCards.Create
+  nameWithType: InscryptionAPI.TalkingCards.Create
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings
+  name: DialogueEventStrings
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.DialogueEventStrings
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings
+  nameWithType: DialogueEventStrings
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.#ctor(System.String,System.String[],System.String[][])
+  name: DialogueEventStrings(String, String[], String[][])
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings__ctor_System_String_System_String___System_String_____
+  commentId: M:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.#ctor(System.String,System.String[],System.String[][])
+  name.vb: DialogueEventStrings(String, String(), String()())
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.DialogueEventStrings(System.String, System.String[], System.String[][])
+  fullName.vb: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.DialogueEventStrings(System.String, System.String(), System.String()())
+  nameWithType: DialogueEventStrings.DialogueEventStrings(String, String[], String[][])
+  nameWithType.vb: DialogueEventStrings.DialogueEventStrings(String, String(), String()())
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.#ctor*
+  name: DialogueEventStrings
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings__ctor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.DialogueEventStrings
+  nameWithType: DialogueEventStrings.DialogueEventStrings
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent(System.String)
+  name: CreateEvent(String)
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_CreateEvent_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent(System.String)
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent(System.String)
+  nameWithType: DialogueEventStrings.CreateEvent(String)
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent*
+  name: CreateEvent
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_CreateEvent_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.CreateEvent
+  nameWithType: DialogueEventStrings.CreateEvent
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName
+  name: eventName
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_eventName
+  commentId: P:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName
+  nameWithType: DialogueEventStrings.eventName
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName*
+  name: eventName
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_eventName_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.eventName
+  nameWithType: DialogueEventStrings.eventName
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines
+  name: mainLines
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_mainLines
+  commentId: P:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines
+  nameWithType: DialogueEventStrings.mainLines
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines*
+  name: mainLines
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_mainLines_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.mainLines
+  nameWithType: DialogueEventStrings.mainLines
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines
+  name: repeatLines
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_repeatLines
+  commentId: P:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines
+  nameWithType: DialogueEventStrings.repeatLines
+- uid: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines*
+  name: repeatLines
+  href: api/InscryptionAPI.TalkingCards.Create.DialogueEventStrings.html#InscryptionAPI_TalkingCards_Create_DialogueEventStrings_repeatLines_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.DialogueEventStrings.repeatLines
+  nameWithType: DialogueEventStrings.repeatLines
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData
+  name: EmotionData
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.EmotionData
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData
+  nameWithType: EmotionData
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})
+  name: EmotionData(Emotion, String, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>)
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData__ctor_DiskCardGame_Emotion_System_String_System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___
+  commentId: M:InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})
+  name.vb: EmotionData(Emotion, String, Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)))
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData(DiskCardGame.Emotion, System.String, System.Nullable<System.ValueTuple<System.String, System.String>>, System.Nullable<System.ValueTuple<System.String, System.String>>, System.Nullable<System.ValueTuple<System.String, System.String>>)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData(DiskCardGame.Emotion, System.String, System.Nullable(Of System.ValueTuple(Of System.String, System.String)), System.Nullable(Of System.ValueTuple(Of System.String, System.String)), System.Nullable(Of System.ValueTuple(Of System.String, System.String)))
+  nameWithType: EmotionData.EmotionData(Emotion, String, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>)
+  nameWithType.vb: EmotionData.EmotionData(Emotion, String, Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)))
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,UnityEngine.Sprite,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim)
+  name: EmotionData(Emotion, Sprite, FaceAnim, FaceAnim, FaceAnim)
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData__ctor_DiskCardGame_Emotion_UnityEngine_Sprite_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_
+  commentId: M:InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,UnityEngine.Sprite,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim)
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData(DiskCardGame.Emotion, UnityEngine.Sprite, InscryptionAPI.TalkingCards.Create.FaceAnim, InscryptionAPI.TalkingCards.Create.FaceAnim, InscryptionAPI.TalkingCards.Create.FaceAnim)
+  nameWithType: EmotionData.EmotionData(Emotion, Sprite, FaceAnim, FaceAnim, FaceAnim)
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(System.String,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})
+  name: EmotionData(String, String, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>)
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData__ctor_System_String_System_String_System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___
+  commentId: M:InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(System.String,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})
+  name.vb: EmotionData(String, String, Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)))
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData(System.String, System.String, System.Nullable<System.ValueTuple<System.String, System.String>>, System.Nullable<System.ValueTuple<System.String, System.String>>, System.Nullable<System.ValueTuple<System.String, System.String>>)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData(System.String, System.String, System.Nullable(Of System.ValueTuple(Of System.String, System.String)), System.Nullable(Of System.ValueTuple(Of System.String, System.String)), System.Nullable(Of System.ValueTuple(Of System.String, System.String)))
+  nameWithType: EmotionData.EmotionData(String, String, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>, Nullable<(String open, String closed)>)
+  nameWithType.vb: EmotionData.EmotionData(String, String, Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)), Nullable(Of (open As String, closed As String)(Of String, String)))
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.#ctor*
+  name: EmotionData
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData__ctor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.EmotionData
+  nameWithType: EmotionData.EmotionData
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Emission
+  name: Emission
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Emission
+  commentId: P:InscryptionAPI.TalkingCards.Create.EmotionData.Emission
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Emission
+  nameWithType: EmotionData.Emission
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Emission*
+  name: Emission
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Emission_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.Emission
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Emission
+  nameWithType: EmotionData.Emission
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Emotion
+  name: Emotion
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Emotion
+  commentId: P:InscryptionAPI.TalkingCards.Create.EmotionData.Emotion
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Emotion
+  nameWithType: EmotionData.Emotion
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Emotion*
+  name: Emotion
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Emotion_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.Emotion
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Emotion
+  nameWithType: EmotionData.Emotion
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Eyes
+  name: Eyes
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Eyes
+  commentId: P:InscryptionAPI.TalkingCards.Create.EmotionData.Eyes
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Eyes
+  nameWithType: EmotionData.Eyes
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Eyes*
+  name: Eyes
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Eyes_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.Eyes
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Eyes
+  nameWithType: EmotionData.Eyes
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Face
+  name: Face
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Face
+  commentId: P:InscryptionAPI.TalkingCards.Create.EmotionData.Face
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Face
+  nameWithType: EmotionData.Face
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Face*
+  name: Face
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Face_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.Face
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Face
+  nameWithType: EmotionData.Face
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Mouth
+  name: Mouth
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Mouth
+  commentId: P:InscryptionAPI.TalkingCards.Create.EmotionData.Mouth
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Mouth
+  nameWithType: EmotionData.Mouth
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.Mouth*
+  name: Mouth
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_Mouth_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.Mouth
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Mouth
+  nameWithType: EmotionData.Mouth
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit(System.ValueTuple{DiskCardGame.Emotion,UnityEngine.Sprite})~InscryptionAPI.TalkingCards.Create.EmotionData
+  name: Implicit((Emotion emotion, Sprite sprite) to EmotionData)
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_op_Implicit_System_ValueTuple_DiskCardGame_Emotion_UnityEngine_Sprite___InscryptionAPI_TalkingCards_Create_EmotionData
+  commentId: M:InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit(System.ValueTuple{DiskCardGame.Emotion,UnityEngine.Sprite})~InscryptionAPI.TalkingCards.Create.EmotionData
+  name.vb: Widening((emotion As Emotion, sprite As Sprite)(Of Emotion, Sprite) to EmotionData)
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Implicit(System.ValueTuple<DiskCardGame.Emotion, UnityEngine.Sprite> to InscryptionAPI.TalkingCards.Create.EmotionData)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.EmotionData.Widening(System.ValueTuple(Of DiskCardGame.Emotion, UnityEngine.Sprite) to InscryptionAPI.TalkingCards.Create.EmotionData)
+  nameWithType: EmotionData.Implicit((Emotion emotion, Sprite sprite) to EmotionData)
+  nameWithType.vb: EmotionData.Widening((emotion As Emotion, sprite As Sprite)(Of Emotion, Sprite) to EmotionData)
+- uid: InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.TalkingCards.Create.EmotionData.html#InscryptionAPI_TalkingCards_Create_EmotionData_op_Implicit_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.TalkingCards.Create.EmotionData.Implicit
+  fullName.vb: InscryptionAPI.TalkingCards.Create.EmotionData.Widening
+  nameWithType: EmotionData.Implicit
+  nameWithType.vb: EmotionData.Widening
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim
+  name: FaceAnim
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.FaceAnim
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim
+  nameWithType: FaceAnim
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor(System.String,System.String)
+  name: FaceAnim(String, String)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim__ctor_System_String_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor(System.String,System.String)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.FaceAnim(System.String, System.String)
+  nameWithType: FaceAnim.FaceAnim(String, String)
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor(UnityEngine.Sprite,UnityEngine.Sprite)
+  name: FaceAnim(Sprite, Sprite)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim__ctor_UnityEngine_Sprite_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor(UnityEngine.Sprite,UnityEngine.Sprite)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.FaceAnim(UnityEngine.Sprite, UnityEngine.Sprite)
+  nameWithType: FaceAnim.FaceAnim(Sprite, Sprite)
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor*
+  name: FaceAnim
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim__ctor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceAnim.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.FaceAnim
+  nameWithType: FaceAnim.FaceAnim
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.Closed
+  name: Closed
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_Closed
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceAnim.Closed
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Closed
+  nameWithType: FaceAnim.Closed
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.Closed*
+  name: Closed
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_Closed_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceAnim.Closed
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Closed
+  nameWithType: FaceAnim.Closed
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit(InscryptionAPI.TalkingCards.Create.FaceAnim)~UnityEngine.Sprite
+  name: Implicit(FaceAnim to Sprite)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_op_Implicit_InscryptionAPI_TalkingCards_Create_FaceAnim__UnityEngine_Sprite
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit(InscryptionAPI.TalkingCards.Create.FaceAnim)~UnityEngine.Sprite
+  name.vb: Widening(FaceAnim to Sprite)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Implicit(InscryptionAPI.TalkingCards.Create.FaceAnim to UnityEngine.Sprite)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.FaceAnim.Widening(InscryptionAPI.TalkingCards.Create.FaceAnim to UnityEngine.Sprite)
+  nameWithType: FaceAnim.Implicit(FaceAnim to Sprite)
+  nameWithType.vb: FaceAnim.Widening(FaceAnim to Sprite)
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit(System.ValueTuple{UnityEngine.Sprite,UnityEngine.Sprite})~InscryptionAPI.TalkingCards.Create.FaceAnim
+  name: Implicit((Sprite open, Sprite closed) to FaceAnim)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_op_Implicit_System_ValueTuple_UnityEngine_Sprite_UnityEngine_Sprite___InscryptionAPI_TalkingCards_Create_FaceAnim
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit(System.ValueTuple{UnityEngine.Sprite,UnityEngine.Sprite})~InscryptionAPI.TalkingCards.Create.FaceAnim
+  name.vb: Widening((open As Sprite, closed As Sprite)(Of Sprite, Sprite) to FaceAnim)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Implicit(System.ValueTuple<UnityEngine.Sprite, UnityEngine.Sprite> to InscryptionAPI.TalkingCards.Create.FaceAnim)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.FaceAnim.Widening(System.ValueTuple(Of UnityEngine.Sprite, UnityEngine.Sprite) to InscryptionAPI.TalkingCards.Create.FaceAnim)
+  nameWithType: FaceAnim.Implicit((Sprite open, Sprite closed) to FaceAnim)
+  nameWithType.vb: FaceAnim.Widening((open As Sprite, closed As Sprite)(Of Sprite, Sprite) to FaceAnim)
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit*
+  name: Implicit
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_op_Implicit_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceAnim.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Implicit
+  fullName.vb: InscryptionAPI.TalkingCards.Create.FaceAnim.Widening
+  nameWithType: FaceAnim.Implicit
+  nameWithType.vb: FaceAnim.Widening
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.Open
+  name: Open
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_Open
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceAnim.Open
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Open
+  nameWithType: FaceAnim.Open
+- uid: InscryptionAPI.TalkingCards.Create.FaceAnim.Open*
+  name: Open
+  href: api/InscryptionAPI.TalkingCards.Create.FaceAnim.html#InscryptionAPI_TalkingCards_Create_FaceAnim_Open_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceAnim.Open
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceAnim.Open
+  nameWithType: FaceAnim.Open
+- uid: InscryptionAPI.TalkingCards.Create.FaceData
+  name: FaceData
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.FaceData
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData
+  nameWithType: FaceData
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.#ctor(System.String,System.Collections.Generic.List{InscryptionAPI.TalkingCards.Create.EmotionData},InscryptionAPI.TalkingCards.Create.FaceInfo)
+  name: FaceData(String, List<EmotionData>, FaceInfo)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData__ctor_System_String_System_Collections_Generic_List_InscryptionAPI_TalkingCards_Create_EmotionData__InscryptionAPI_TalkingCards_Create_FaceInfo_
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceData.#ctor(System.String,System.Collections.Generic.List{InscryptionAPI.TalkingCards.Create.EmotionData},InscryptionAPI.TalkingCards.Create.FaceInfo)
+  name.vb: FaceData(String, List(Of EmotionData), FaceInfo)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.FaceData(System.String, System.Collections.Generic.List<InscryptionAPI.TalkingCards.Create.EmotionData>, InscryptionAPI.TalkingCards.Create.FaceInfo)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.FaceData.FaceData(System.String, System.Collections.Generic.List(Of InscryptionAPI.TalkingCards.Create.EmotionData), InscryptionAPI.TalkingCards.Create.FaceInfo)
+  nameWithType: FaceData.FaceData(String, List<EmotionData>, FaceInfo)
+  nameWithType.vb: FaceData.FaceData(String, List(Of EmotionData), FaceInfo)
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.#ctor*
+  name: FaceData
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData__ctor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceData.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.FaceData
+  nameWithType: FaceData.FaceData
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.CardName
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_CardName
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceData.CardName
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.CardName
+  nameWithType: FaceData.CardName
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.CardName*
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_CardName_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceData.CardName
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.CardName
+  nameWithType: FaceData.CardName
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.Emotions
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_Emotions
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceData.Emotions
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.Emotions
+  nameWithType: FaceData.Emotions
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.Emotions*
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_Emotions_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceData.Emotions
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.Emotions
+  nameWithType: FaceData.Emotions
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_FaceInfo
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo
+  nameWithType: FaceData.FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo*
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_FaceInfo_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.FaceInfo
+  nameWithType: FaceData.FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.Neutral
+  name: Neutral
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_Neutral
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceData.Neutral
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.Neutral
+  nameWithType: FaceData.Neutral
+- uid: InscryptionAPI.TalkingCards.Create.FaceData.Neutral*
+  name: Neutral
+  href: api/InscryptionAPI.TalkingCards.Create.FaceData.html#InscryptionAPI_TalkingCards_Create_FaceData_Neutral_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceData.Neutral
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceData.Neutral
+  nameWithType: FaceData.Neutral
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.FaceInfo
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo
+  nameWithType: FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor(System.Nullable{System.Single},System.String,System.Nullable{System.Single},System.String)
+  name: FaceInfo(Nullable<Single>, String, Nullable<Single>, String)
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo__ctor_System_Nullable_System_Single__System_String_System_Nullable_System_Single__System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor(System.Nullable{System.Single},System.String,System.Nullable{System.Single},System.String)
+  name.vb: FaceInfo(Nullable(Of Single), String, Nullable(Of Single), String)
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.FaceInfo(System.Nullable<System.Single>, System.String, System.Nullable<System.Single>, System.String)
+  fullName.vb: InscryptionAPI.TalkingCards.Create.FaceInfo.FaceInfo(System.Nullable(Of System.Single), System.String, System.Nullable(Of System.Single), System.String)
+  nameWithType: FaceInfo.FaceInfo(Nullable<Single>, String, Nullable<Single>, String)
+  nameWithType.vb: FaceInfo.FaceInfo(Nullable(Of Single), String, Nullable(Of Single), String)
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor*
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo__ctor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.FaceInfo
+  nameWithType: FaceInfo.FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate
+  name: blinkRate
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_blinkRate
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate
+  nameWithType: FaceInfo.blinkRate
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate*
+  name: blinkRate
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_blinkRate_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.blinkRate
+  nameWithType: FaceInfo.blinkRate
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice
+  name: customVoice
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_customVoice
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice
+  nameWithType: FaceInfo.customVoice
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice*
+  name: customVoice
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_customVoice_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.customVoice
+  nameWithType: FaceInfo.customVoice
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId
+  name: voiceId
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_voiceId
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId
+  nameWithType: FaceInfo.voiceId
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId*
+  name: voiceId
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_voiceId_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceId
+  nameWithType: FaceInfo.voiceId
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch
+  name: voiceSoundPitch
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_voiceSoundPitch
+  commentId: P:InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch
+  nameWithType: FaceInfo.voiceSoundPitch
+- uid: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch*
+  name: voiceSoundPitch
+  href: api/InscryptionAPI.TalkingCards.Create.FaceInfo.html#InscryptionAPI_TalkingCards_Create_FaceInfo_voiceSoundPitch_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.FaceInfo.voiceSoundPitch
+  nameWithType: FaceInfo.voiceSoundPitch
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard
+  name: ITalkingCard
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.ITalkingCard
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard
+  nameWithType: ITalkingCard
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_CardName
+  commentId: P:InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName
+  nameWithType: ITalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName*
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_CardName_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.CardName
+  nameWithType: ITalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_DialogueAbility
+  commentId: P:InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility
+  nameWithType: ITalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility*
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_DialogueAbility_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.DialogueAbility
+  nameWithType: ITalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_Emotions
+  commentId: P:InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions
+  nameWithType: ITalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions*
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_Emotions_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.Emotions
+  nameWithType: ITalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_FaceInfo
+  commentId: P:InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo
+  nameWithType: ITalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo*
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.Create.ITalkingCard.html#InscryptionAPI_TalkingCards_Create_ITalkingCard_FaceInfo_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.ITalkingCard.FaceInfo
+  nameWithType: ITalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.Create.TalkingCardCreator
+  name: TalkingCardCreator
+  href: api/InscryptionAPI.TalkingCards.Create.TalkingCardCreator.html
+  commentId: T:InscryptionAPI.TalkingCards.Create.TalkingCardCreator
+  fullName: InscryptionAPI.TalkingCards.Create.TalkingCardCreator
+  nameWithType: TalkingCardCreator
+- uid: InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache(System.String)
+  name: AddToDialogueCache(String)
+  href: api/InscryptionAPI.TalkingCards.Create.TalkingCardCreator.html#InscryptionAPI_TalkingCards_Create_TalkingCardCreator_AddToDialogueCache_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache(System.String)
+  fullName: InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache(System.String)
+  nameWithType: TalkingCardCreator.AddToDialogueCache(String)
+- uid: InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache*
+  name: AddToDialogueCache
+  href: api/InscryptionAPI.TalkingCards.Create.TalkingCardCreator.html#InscryptionAPI_TalkingCards_Create_TalkingCardCreator_AddToDialogueCache_
+  commentId: Overload:InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache
+  nameWithType: TalkingCardCreator.AddToDialogueCache
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard
+  name: CustomPaperTalkingCard
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html
+  commentId: T:InscryptionAPI.TalkingCards.CustomPaperTalkingCard
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard
+  nameWithType: CustomPaperTalkingCard
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_CardName
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName
+  nameWithType: CustomPaperTalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName*
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_CardName_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.CardName
+  nameWithType: CustomPaperTalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_DialogueAbility
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility
+  nameWithType: CustomPaperTalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility*
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_DialogueAbility_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.DialogueAbility
+  nameWithType: CustomPaperTalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_Emotions
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions
+  nameWithType: CustomPaperTalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions*
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_Emotions_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.Emotions
+  nameWithType: CustomPaperTalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_FaceInfo
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo
+  nameWithType: CustomPaperTalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo*
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_FaceInfo_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.FaceInfo
+  nameWithType: CustomPaperTalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+  name: OnDrawnFallbackDialogueId
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_OnDrawnFallbackDialogueId
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+  nameWithType: CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId*
+  name: OnDrawnFallbackDialogueId
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_OnDrawnFallbackDialogueId_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+  nameWithType: CustomPaperTalkingCard.OnDrawnFallbackDialogueId
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect(System.Boolean)
+  name: OnShownForCardSelect(Boolean)
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_OnShownForCardSelect_System_Boolean_
+  commentId: M:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect(System.Boolean)
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect(System.Boolean)
+  nameWithType: CustomPaperTalkingCard.OnShownForCardSelect(Boolean)
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect*
+  name: OnShownForCardSelect
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_OnShownForCardSelect_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.OnShownForCardSelect
+  nameWithType: CustomPaperTalkingCard.OnShownForCardSelect
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType
+  name: SpeakerType
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_SpeakerType
+  commentId: P:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType
+  nameWithType: CustomPaperTalkingCard.SpeakerType
+- uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType*
+  name: SpeakerType
+  href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html#InscryptionAPI_TalkingCards_CustomPaperTalkingCard_SpeakerType_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomPaperTalkingCard.SpeakerType
+  nameWithType: CustomPaperTalkingCard.SpeakerType
+- uid: InscryptionAPI.TalkingCards.Helpers
+  name: InscryptionAPI.TalkingCards.Helpers
+  href: api/InscryptionAPI.TalkingCards.Helpers.html
+  commentId: N:InscryptionAPI.TalkingCards.Helpers
+  fullName: InscryptionAPI.TalkingCards.Helpers
+  nameWithType: InscryptionAPI.TalkingCards.Helpers
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers
+  name: AssetHelpers
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html
+  commentId: T:InscryptionAPI.TalkingCards.Helpers.AssetHelpers
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers
+  nameWithType: AssetHelpers
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile(System.String)
+  name: GetFile(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_GetFile_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile(System.String)
+  nameWithType: AssetHelpers.GetFile(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile*
+  name: GetFile
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_GetFile_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.GetFile
+  nameWithType: AssetHelpers.GetFile
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor(System.String)
+  name: HexToColor(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_HexToColor_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor(System.String)
+  nameWithType: AssetHelpers.HexToColor(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor*
+  name: HexToColor
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_HexToColor_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.HexToColor
+  nameWithType: AssetHelpers.HexToColor
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.Byte[])
+  name: MakeSprite(Byte[])
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSprite_System_Byte___
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.Byte[])
+  name.vb: MakeSprite(Byte())
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.Byte[])
+  fullName.vb: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.Byte())
+  nameWithType: AssetHelpers.MakeSprite(Byte[])
+  nameWithType.vb: AssetHelpers.MakeSprite(Byte())
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.String)
+  name: MakeSprite(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSprite_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(System.String)
+  nameWithType: AssetHelpers.MakeSprite(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(UnityEngine.Texture2D)
+  name: MakeSprite(Texture2D)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSprite_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite(UnityEngine.Texture2D)
+  nameWithType: AssetHelpers.MakeSprite(Texture2D)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite*
+  name: MakeSprite
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSprite_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSprite
+  nameWithType: AssetHelpers.MakeSprite
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple(System.Nullable{System.ValueTuple{System.String,System.String}})
+  name: MakeSpriteTuple(Nullable<(String a, String b)>)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSpriteTuple_System_Nullable_System_ValueTuple_System_String_System_String___
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple(System.Nullable{System.ValueTuple{System.String,System.String}})
+  name.vb: MakeSpriteTuple(Nullable(Of (a As String, b As String)(Of String, String)))
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple(System.Nullable<System.ValueTuple<System.String, System.String>>)
+  fullName.vb: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple(System.Nullable(Of System.ValueTuple(Of System.String, System.String)))
+  nameWithType: AssetHelpers.MakeSpriteTuple(Nullable<(String a, String b)>)
+  nameWithType.vb: AssetHelpers.MakeSpriteTuple(Nullable(Of (a As String, b As String)(Of String, String)))
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple*
+  name: MakeSpriteTuple
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeSpriteTuple_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeSpriteTuple
+  nameWithType: AssetHelpers.MakeSpriteTuple
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.Byte[])
+  name: MakeTexture(Byte[])
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeTexture_System_Byte___
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.Byte[])
+  name.vb: MakeTexture(Byte())
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.Byte[])
+  fullName.vb: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.Byte())
+  nameWithType: AssetHelpers.MakeTexture(Byte[])
+  nameWithType.vb: AssetHelpers.MakeTexture(Byte())
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.String)
+  name: MakeTexture(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeTexture_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture(System.String)
+  nameWithType: AssetHelpers.MakeTexture(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture*
+  name: MakeTexture
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_MakeTexture_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.MakeTexture
+  nameWithType: AssetHelpers.MakeTexture
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue*
+  name: ParseAsEnumValue
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_ParseAsEnumValue_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue
+  nameWithType: AssetHelpers.ParseAsEnumValue
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue``1(System.String)
+  name: ParseAsEnumValue<T>(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_ParseAsEnumValue__1_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue``1(System.String)
+  name.vb: ParseAsEnumValue(Of T)(String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue<T>(System.String)
+  fullName.vb: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.ParseAsEnumValue(Of T)(System.String)
+  nameWithType: AssetHelpers.ParseAsEnumValue<T>(String)
+  nameWithType.vb: AssetHelpers.ParseAsEnumValue(Of T)(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_BOTTOM
+  name: PIVOT_BOTTOM
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_PIVOT_BOTTOM
+  commentId: F:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_BOTTOM
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_BOTTOM
+  nameWithType: AssetHelpers.PIVOT_BOTTOM
+- uid: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_CENTER
+  name: PIVOT_CENTER
+  href: api/InscryptionAPI.TalkingCards.Helpers.AssetHelpers.html#InscryptionAPI_TalkingCards_Helpers_AssetHelpers_PIVOT_CENTER
+  commentId: F:InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_CENTER
+  fullName: InscryptionAPI.TalkingCards.Helpers.AssetHelpers.PIVOT_CENTER
+  nameWithType: AssetHelpers.PIVOT_CENTER
+- uid: InscryptionAPI.TalkingCards.Helpers.StringExtensions
+  name: StringExtensions
+  href: api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html
+  commentId: T:InscryptionAPI.TalkingCards.Helpers.StringExtensions
+  fullName: InscryptionAPI.TalkingCards.Helpers.StringExtensions
+  nameWithType: StringExtensions
+- uid: InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace(System.String)
+  name: IsWhiteSpace(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html#InscryptionAPI_TalkingCards_Helpers_StringExtensions_IsWhiteSpace_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace(System.String)
+  nameWithType: StringExtensions.IsWhiteSpace(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace*
+  name: IsWhiteSpace
+  href: api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html#InscryptionAPI_TalkingCards_Helpers_StringExtensions_IsWhiteSpace_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.StringExtensions.IsWhiteSpace
+  nameWithType: StringExtensions.IsWhiteSpace
+- uid: InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase(System.String)
+  name: SentenceCase(String)
+  href: api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html#InscryptionAPI_TalkingCards_Helpers_StringExtensions_SentenceCase_System_String_
+  commentId: M:InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase(System.String)
+  fullName: InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase(System.String)
+  nameWithType: StringExtensions.SentenceCase(String)
+- uid: InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase*
+  name: SentenceCase
+  href: api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html#InscryptionAPI_TalkingCards_Helpers_StringExtensions_SentenceCase_
+  commentId: Overload:InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.Helpers.StringExtensions.SentenceCase
+  nameWithType: StringExtensions.SentenceCase
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager
+  name: TalkingCardManager
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html
+  commentId: T:InscryptionAPI.TalkingCards.TalkingCardManager
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager
+  nameWithType: TalkingCardManager
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.Create(InscryptionAPI.TalkingCards.Create.FaceData,DiskCardGame.SpecialTriggeredAbility)
+  name: Create(FaceData, SpecialTriggeredAbility)
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_Create_InscryptionAPI_TalkingCards_Create_FaceData_DiskCardGame_SpecialTriggeredAbility_
+  commentId: M:InscryptionAPI.TalkingCards.TalkingCardManager.Create(InscryptionAPI.TalkingCards.Create.FaceData,DiskCardGame.SpecialTriggeredAbility)
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.Create(InscryptionAPI.TalkingCards.Create.FaceData, DiskCardGame.SpecialTriggeredAbility)
+  nameWithType: TalkingCardManager.Create(FaceData, SpecialTriggeredAbility)
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.Create*
+  name: Create
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_Create_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.Create
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.Create
+  nameWithType: TalkingCardManager.Create
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
+  name: EmptyPortrait
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_EmptyPortrait
+  commentId: P:InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
+  nameWithType: TalkingCardManager.EmptyPortrait
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait*
+  name: EmptyPortrait
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_EmptyPortrait_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
+  nameWithType: TalkingCardManager.EmptyPortrait
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.New*
+  name: New
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_New_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.New
+  nameWithType: TalkingCardManager.New
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.New``1
+  name: New<T>()
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_New__1
+  commentId: M:InscryptionAPI.TalkingCards.TalkingCardManager.New``1
+  name.vb: New(Of T)()
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.New<T>()
+  fullName.vb: InscryptionAPI.TalkingCards.TalkingCardManager.New(Of T)()
+  nameWithType: TalkingCardManager.New<T>()
+  nameWithType.vb: TalkingCardManager.New(Of T)()
 - uid: InscryptionAPI.Totems
   name: InscryptionAPI.Totems
   href: api/InscryptionAPI.Totems.html
