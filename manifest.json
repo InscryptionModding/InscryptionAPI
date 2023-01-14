@@ -442,7 +442,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.TribeInfo.html",
-          "hash": "LADLKCvPItkXaUoX0tZKTsbu93q17YgkJs/rC6PBra4="
+          "hash": "2vBX41mlQ7LN2d3QEd5NnAlLxe+Ky7QiXxR7JjGiYtE="
         }
       },
       "is_incremental": false,
@@ -454,7 +454,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.html",
-          "hash": "MMWTUuGPH03SdVkPgDQdIQyIHj9bLarxIm4MJq9Li5w="
+          "hash": "Lx2thUtJP7kx/qZqQawuL6vw7RA6SzGa02pMiXhL+6g="
         }
       },
       "is_incremental": false,
@@ -1594,7 +1594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Totems.TotemManager.CustomTotemTop.html",
-          "hash": "o7hShlJvnYTjZPS45qY3rvzk3BvBWZ3P0d4U/I0mXNs="
+          "hash": "2XY3kgF3zM3BQtK5UGRkEaEffhIj5SY/6oJhtwjGs5U="
         }
       },
       "is_incremental": false,
@@ -1606,7 +1606,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Totems.TotemManager.html",
-          "hash": "rRFr81JZlUtw9qDVERiz8LZt8KzNR0uYvPpnRqMAxoA="
+          "hash": "7QcdMzggOVy47JQOp/Kq5kfSH/wvkvzKcfeLz4FDgAM="
         }
       },
       "is_incremental": false,
