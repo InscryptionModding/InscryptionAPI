@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using InscryptionAPI.TalkingCards.Animation;
-using InscryptionAPI.TalkingCards.Helpers;
 using UnityEngine;
 
 #nullable enable
