@@ -989,11 +989,11 @@ And after that, all you need to do is register your talking card with the `Talki
 TalkingCardManager.New<ExampleClass>();
 ```
 
-Additionally, as you can see on the last item in the table above, you're gonna need to create a new SpecialTriggeredAbility that controls your talking card's dialogue.
+Additionally, as you can see from the last item in the table above, you're gonna need to create a new SpecialTriggeredAbility that controls your talking card's dialogue.
 
 Don't worry, I'll explain exactly what you need to do! 
 
-Fortunately for you, this API already supports creating new special abilities. Additionally, you'll not have to do all of the work: the base game already defines abstract classes you should inherit from when creating a special ability for your talking card:
+Fortunately for you, this API already supports creating new special abilities. Additionally, you won't have to do all the work: the base game already defines abstract classes you should inherit from when creating a special ability for your talking card:
 
 | Act   | Class To Inherit From |
 |-------|-----------------------|
@@ -1098,7 +1098,7 @@ If you pass anything as "customVoice", then the contents of the "voiceId" parame
 ### Dialogue Events
 After looking at the example above, you might be wondering *"What's all of that DialogueId stuff about? How do I make my own dialogue events?"*. 
 
-I'm gonna explain everything to your in detail now!
+I'm gonna explain everything to you in detail now!
 
 #### Dialogue Triggers
 Talking cards can respond to a variety of game events. If you want your card to respond to a given event, you can override that property and return the ID of your new dialogue event.
