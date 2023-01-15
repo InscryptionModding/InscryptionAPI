@@ -91,6 +91,7 @@ public static class StatIconManager
 
         FullStatIcon full = new(GuidManager.GetEnumValue<SpecialStatIcon>(guid, info.rulebookName), abilityId, info, behavior);
         full.Info.iconType = full.Id;
+        info.name = $"{guid}_{info.rulebookName}";
         NewStatIcons.Add(full);
         return full;
     }
