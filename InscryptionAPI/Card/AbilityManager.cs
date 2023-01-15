@@ -239,6 +239,7 @@ public static class AbilityManager
     {
         FullAbility full = new(GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, behavior, tex);
         full.Info.ability = full.Id;
+        info.name = $"{guid}_{info.rulebookName}";
         NewAbilities.Add(full);
         return full;
     }
