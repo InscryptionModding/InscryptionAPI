@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.9.1
+- Fixed the campfire fix breaking the normal sequence
+
 ## 2.9.0
 - Added talking card support!
 - Moved the "CustomLine" struct outside of the Dialogue.Helpers class.
