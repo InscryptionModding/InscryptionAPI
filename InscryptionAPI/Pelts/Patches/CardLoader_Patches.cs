@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Pelts;
 
@@ -11,7 +11,7 @@ public class CardLoader_PeltNames
     public static void Postfix(CardLoader __instance, ref string[] __result)
     {
         List<string> list = new List<string>(__result);
-        list.AddRange(PeltManager.AllNewPelts.Select((a)=>a.CardNameOfPelt));
+        list.AddRange(PeltManager.AllNewPelts.Select((a) => a.CardNameOfPelt));
         __result = list.ToArray();
     }
 }

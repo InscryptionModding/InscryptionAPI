@@ -232,7 +232,7 @@ public static class CardManager
         
         Assembly callingAssembly = Assembly.GetCallingAssembly();
         retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
-
+        InscryptionAPIPlugin.Logger.LogInfo(retval.GetModTag());
         Add(modPrefix, retval);
 
         return retval;
