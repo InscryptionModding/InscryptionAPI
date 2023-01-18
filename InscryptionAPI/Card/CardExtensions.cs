@@ -143,6 +143,44 @@ public static class CardExtensions
                 info.tribes.Add(app);
         return info;
     }
+    
+    /// <summary>
+    /// Returns the blood cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards blood cost
+    /// </summary>
+    public static int BloodCost(this DiskCardGame.Card card)
+    {
+        if (card && card.Info) 
+            return card.Info.BloodCost;
+        
+        return 0;
+    }
+    
+    
+    /// <summary>
+    /// Returns the bone cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards bone cost
+    /// </summary>
+    public static int BoneCost(this DiskCardGame.Card card)
+    {
+        if (card && card.Info) 
+            return card.Info.bonesCost;
+        
+        return 0;
+    }
+    
+    
+    /// <summary>
+    /// Returns the gem cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards gem cost
+    /// </summary>
+    public static List<GemType> GemsCost(this DiskCardGame.Card card)
+    {
+        if (card && card.Info) 
+            return card.Info.GemsCost;
+        
+        return new List<GemType>(){};
+    }
 
     #endregion
 
