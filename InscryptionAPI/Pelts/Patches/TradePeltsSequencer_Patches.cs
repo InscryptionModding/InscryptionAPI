@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
@@ -117,15 +117,13 @@ public class TradePeltsSequencer_GetTradeCardInfos
     private static void GetCardOptions(int tier, ref List<CardInfo> cards)
     {
         if (tier <= 2)
-        {
             return;
-        }
         
         PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
-        List<CardInfo> cardOptions = pelt.GetChoices();
+        List<CardInfo> cardOptions = pelt.CardChoices;
         if (cardOptions.Count == 0)
         {
-            InscryptionAPIPlugin.Logger.LogWarning("No cards provided for pelt '" + pelt.CardNameOfPelt + "'");
+            InscryptionAPIPlugin.Logger.LogWarning("No cards specified for pelt '" + pelt.peltCardName + "', using fallback card.");
             cardOptions.Add(CardLoader.GetCardByName("Amalgam"));
         }
         
@@ -135,23 +133,19 @@ public class TradePeltsSequencer_GetTradeCardInfos
     private static void numCards(int tier, ref int numCards)
     {
         if (tier <= 2)
-        {
             return;
-        }
 
         PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
-        numCards = pelt.MaxChoices;
+        numCards = pelt.choicesOfferedByTrader;
     }
 
     private static int abilityCount(int abilityCount, int tier)
     {
         if (tier <= 2)
-        {
             return abilityCount;
-        }
 
         PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
-        int peltAbilityCount = pelt.AbilityCount;
+        int peltAbilityCount = pelt.extraAbilitiesToAdd;
         return peltAbilityCount;
     }
 }

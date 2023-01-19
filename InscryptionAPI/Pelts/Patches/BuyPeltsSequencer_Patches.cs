@@ -15,7 +15,7 @@ public class BuyPeltsSequencer_PeltPrices
     public static void Postfix(CardLoader __instance, ref int[] __result)
     {
         List<int> list = new List<int>(__result);
-        list.AddRange(PeltManager.AllNewPelts.Select((a) => a.Cost()));
+        list.AddRange(PeltManager.AllNewPelts.Select((a) => a.BuyPrice));
         __result = list.ToArray();
     }
 }
