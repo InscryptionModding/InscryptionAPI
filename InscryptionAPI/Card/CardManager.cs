@@ -211,19 +211,19 @@ public static class CardManager
     /// <summary>
     /// Removes a custom card from the card pool. Cannot be used to remove base game cards.
     /// </summary>
-    /// <param name="card">The card to remove</param>
+    /// <param name="card">The card to remove.</param>
     public static void Remove(CardInfo card) => NewCards.Remove(card);
 
     /// <summary>
-    /// Adds a new card to the card pool
+    /// Adds a new card to the card pool.
     /// </summary>
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
-    /// <param name="name">The name of your card in the card pool. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name]</param>
-    /// <param name="displayName">The displayed name of the card</param>
-    /// <param name="attack">The attack power of the card</param>
-    /// <param name="health">The health of the card</param>
+    /// <param name="name">The internal name of your card - used to find and reference your card. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name].</param>
+    /// <param name="displayName">The displayed name of the card - what will be seen in-game on the card.</param>
+    /// <param name="attack">The Power of the card.</param>
+    /// <param name="health">The Health of the card.</param>
     /// <param name="description">The spoken description when the card is first encountered.</param>
-    /// <returns></returns>
+    /// <returns>The newly created card's CardInfo.</returns>
     public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default(string))
     {
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
@@ -232,7 +232,7 @@ public static class CardManager
         
         Assembly callingAssembly = Assembly.GetCallingAssembly();
         retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
-        InscryptionAPIPlugin.Logger.LogInfo(retval.GetModTag());
+
         Add(modPrefix, retval);
 
         return retval;
