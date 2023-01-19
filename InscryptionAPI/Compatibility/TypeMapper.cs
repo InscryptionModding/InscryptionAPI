@@ -1,13 +1,13 @@
-using System.Reflection;
 using HarmonyLib;
 using Mono.Cecil.Cil;
 using MonoMod.Utils;
+using System.Reflection;
 
 namespace APIPlugin;
 
 [Obsolete("Unncessary", true)]
 [AttributeUsage(AttributeTargets.Field)]
-public class IgnoreMappingAttribute : Attribute {}
+public class IgnoreMappingAttribute : Attribute { }
 
 [Obsolete("Unnecessary", true)]
 public static class TypeMapper<S, D> where S : class where D : class
@@ -66,10 +66,10 @@ public static class TypeMapper<S, D> where S : class where D : class
     {
         foreach (var field in FieldAccessors)
         {
-            object val = field.Value.Invoke(null, new object[] {source});
+            object val = field.Value.Invoke(null, new object[] { source });
             if (val is not null && FieldSetters.ContainsKey(field.Key))
             {
-                FieldSetters[field.Key].Invoke(null, new object[] {destination, val});
+                FieldSetters[field.Key].Invoke(null, new object[] { destination, val });
             }
         }
 

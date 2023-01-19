@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using DiskCardGame;
+﻿using DiskCardGame;
+using System.Collections;
 
 namespace InscryptionAPI.Helpers.Extensions;
 
@@ -14,7 +14,7 @@ public static class CardSlotExtensions
     {
         return !cardSlot.IsPlayerSlot;
     }
-    
+
     /// <summary>
     /// Check if the card in the slot has a specific card name.
     /// This is primarily useful if you don't have a Trait, Tribe, or other distinct attribute to check the card against.
@@ -44,7 +44,7 @@ public static class CardSlotExtensions
     {
         yield return BoardManager.Instance.CreateCardInSlot(cardInfo, slotToSpawnIn, transitionLength, resolveTriggers);
     }
-    
+
     /// <summary>
     /// Assign a playable card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.AssignCardToSlot()`.
     /// </summary>
@@ -57,14 +57,14 @@ public static class CardSlotExtensions
     public static IEnumerator AssignCardToSlot(
         this CardSlot slotToSpawnIn,
         PlayableCard playableCard,
-        float transitionDuration = 0.1f, 
-        Action tweenCompleteCallback = null, 
+        float transitionDuration = 0.1f,
+        Action tweenCompleteCallback = null,
         bool resolveTriggers = true
     )
     {
         yield return BoardManager.Instance.AssignCardToSlot(playableCard, slotToSpawnIn, transitionDuration, tweenCompleteCallback, resolveTriggers);
     }
-    
+
     /// <summary>
     /// Resolve a playable card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.ResolveCardOnBoard()`.
     /// </summary>
@@ -77,14 +77,14 @@ public static class CardSlotExtensions
     public static IEnumerator ResolveCardOnBoard(
         this CardSlot slotToSpawnIn,
         PlayableCard playableCard,
-        float tweenLength = 0.1f, 
+        float tweenLength = 0.1f,
         Action landOnBoardCallback = null,
         bool resolveTriggers = true
     )
     {
         yield return BoardManager.Instance.ResolveCardOnBoard(playableCard, slotToSpawnIn, tweenLength, landOnBoardCallback, resolveTriggers);
     }
-    
+
     /// <summary>
     /// Get the adjacent slots of the slot that is being accessed.
     /// </summary>
@@ -98,7 +98,7 @@ public static class CardSlotExtensions
     {
         return BoardManager.Instance.GetAdjacentSlots(cardSlot).Where(slot => !removeNulls || slot).ToList();
     }
-    
+
     /// <summary>
     /// Get the adjacent cards of the slot that is being accessed.
     /// </summary>
@@ -108,7 +108,7 @@ public static class CardSlotExtensions
     {
         return BoardManager.Instance.GetAdjacentSlots(cardSlot).Where(slot => slot).SelectCards().ToList();
     }
-    
+
     /// <summary>
     /// Get the adjacent slots of the slot that is being accessed.
     /// </summary>
@@ -119,7 +119,7 @@ public static class CardSlotExtensions
     {
         return BoardManager.Instance.GetAdjacent(cardSlot, adjacentOnLeft);
     }
-    
+
     /// <summary>
     /// Retrieve all the PlayableCard objects from the collection of slots provided.
     /// </summary>
@@ -132,7 +132,7 @@ public static class CardSlotExtensions
             .Where(slot => slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot.Card)))
             .Select(slot => slot.Card);
     }
-    
+
     /// <summary>
     /// Retrieve all the CardSlot objects that are not occupied by a PlayableCard object.
     /// </summary>

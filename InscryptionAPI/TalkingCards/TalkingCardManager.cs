@@ -1,9 +1,7 @@
 using DiskCardGame;
-using System.Collections.Generic;
-using InscryptionAPI.TalkingCards.Create;
-using InscryptionAPI.TalkingCards.Helpers;
-using UnityEngine;
 using InscryptionAPI.TalkingCards.Animation;
+using InscryptionAPI.TalkingCards.Create;
+using UnityEngine;
 
 #nullable enable
 namespace InscryptionAPI.TalkingCards;

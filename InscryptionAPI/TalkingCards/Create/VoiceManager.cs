@@ -1,10 +1,5 @@
 using HarmonyLib;
 using InscryptionAPI.Sound;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 #nullable enable
@@ -29,13 +24,13 @@ internal static class VoiceManager
     {
         if (string.IsNullOrWhiteSpace(soundPath)) return false;
 
-        if(IsInvalidVoiceId(soundPath))
+        if (IsInvalidVoiceId(soundPath))
         {
             LogHelpers.LogError($"Invalid sound path: {soundPath ?? "(null)"}");
             return false;
         }
 
-        if(IsInvalidVoiceId(id))
+        if (IsInvalidVoiceId(id))
         {
             LogHelpers.LogError($"Error: Voice ID \"{id ?? "(null)"}\" isn't unique!");
             return false;
@@ -53,7 +48,7 @@ internal static class VoiceManager
     [HarmonyPrefix]
     private static void AddVoiceIds(ref List<AudioClip> ___SFX)
     {
-        foreach(AudioClip voice in Voices)
+        foreach (AudioClip voice in Voices)
         {
             if (!___SFX.Contains(voice))
             {

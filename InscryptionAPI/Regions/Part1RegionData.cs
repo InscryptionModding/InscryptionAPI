@@ -18,7 +18,7 @@ public class Part1RegionData
     public bool AllowLockedTerrainCards { get; set; }
     public bool AllowSacrificableTerrainCards { get; set; }
 
-    public Part1RegionData (RegionData region, int tier)
+    public Part1RegionData(RegionData region, int tier)
     {
         AllowSacrificableTerrainCards = false;
         AllowLockedTerrainCards = false;

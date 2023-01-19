@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 using DiskCardGame;
-using InscryptionAPI.Helpers.Extensions;
+using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 

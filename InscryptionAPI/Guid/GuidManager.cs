@@ -26,7 +26,7 @@ public static class GuidManager
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
     {
         List<T> itemList = new();
-        foreach(T item in Enum.GetValues(typeof(T)))
+        foreach (T item in Enum.GetValues(typeof(T)))
             itemList.Add(item);
 
         string startKey = typeof(T).Name + "_";
@@ -39,17 +39,17 @@ public static class GuidManager
                 itemList.Add(convertedEnumVal);
             }
         }
-        
+
         return itemList;
     }
 
     unsafe public static T GetEnumValue<T>(string guid, string value) where T : unmanaged, System.Enum
     {
         if (sizeof(T) != sizeof(int))
-            throw new NotSupportedException($"Cannot manage values of type {typeof(T).Name} in GuidManager.GetEnumValue");        
+            throw new NotSupportedException($"Cannot manage values of type {typeof(T).Name} in GuidManager.GetEnumValue");
 
         string saveKey = $"{typeof(T).Name}_{guid}_{value}";
-            
+
         int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, saveKey);
 
         if (enumValue == default)
@@ -59,8 +59,8 @@ public static class GuidManager
                 enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, MAX_DATA);
                 if (enumValue < START_INDEX)
                     enumValue = START_INDEX;
-                
-                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue+1);
+
+                ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, MAX_DATA, enumValue + 1);
                 ModdedSaveManager.SaveData.SetValue(InscryptionAPIPlugin.ModGUID, saveKey, enumValue);
 
                 ModdedSaveManager.isSystemDirty = true;

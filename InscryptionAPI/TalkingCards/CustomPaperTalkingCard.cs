@@ -1,7 +1,6 @@
 using DiskCardGame;
-using System.Collections;
-using System.Collections.Generic;
 using InscryptionAPI.TalkingCards.Create;
+using System.Collections;
 using UnityEngine;
 
 #nullable enable

@@ -1,6 +1,6 @@
-using System.Collections.ObjectModel;
 using DiskCardGame;
 using InscryptionAPI.Guid;
+using System.Collections.ObjectModel;
 
 namespace InscryptionAPI.Encounters;
 
@@ -22,7 +22,7 @@ public static class AIManager
 
     public readonly static ReadOnlyCollection<FullAI> BaseGameAIs = new(GenBaseGameAIsList());
     private readonly static ObservableCollection<FullAI> NewAIs = new();
-    
+
     public static List<FullAI> AllAIs { get; private set; } = BaseGameAIs.ToList();
 
     static AIManager()

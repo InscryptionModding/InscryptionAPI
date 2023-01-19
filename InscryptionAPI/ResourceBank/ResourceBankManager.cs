@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using InscryptionAPI;
 
 namespace InscryptionAPI.Resource;
 
@@ -11,10 +10,10 @@ public static class ResourceBankManager
         public ResourceBank.Resource Resource;
         public bool OverrideExistingResource;
     }
-    
+
     private static List<ResourceData> customResources = new List<ResourceData>();
 
-    public static ResourceData Add(string pluginGUID, string path, UnityObject unityObject, bool overrideExistingAsset=false)
+    public static ResourceData Add(string pluginGUID, string path, UnityObject unityObject, bool overrideExistingAsset = false)
     {
         return Add(pluginGUID, new ResourceBank.Resource()
         {
@@ -23,7 +22,7 @@ public static class ResourceBankManager
         }, overrideExistingAsset);
     }
 
-    public static ResourceData Add(string pluginGUID, ResourceBank.Resource resource, bool overrideExistingAsset=false)
+    public static ResourceData Add(string pluginGUID, ResourceBank.Resource resource, bool overrideExistingAsset = false)
     {
         if (resource == null)
         {
@@ -35,19 +34,19 @@ public static class ResourceBankManager
             InscryptionAPIPlugin.Logger.LogError($"{pluginGUID} Attempting to add resource with empty path! '{resource.path}' and asset {resource.asset}");
             return null;
         }
-        
+
         ResourceData resourceData = new ResourceData
         {
             PluginGUID = pluginGUID,
             Resource = resource,
             OverrideExistingResource = overrideExistingAsset
         };
-        
+
         customResources.Add(resourceData);
         return resourceData;
     }
-    
-    [HarmonyPatch(typeof (ResourceBank), "Awake", new System.Type[] {})]
+
+    [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
     public class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)
@@ -61,7 +60,7 @@ public static class ResourceBankManager
                     existingPaths[resourcePath] = resource;
                 }
             }
-            
+
             foreach (ResourceData resourceData in customResources)
             {
                 string resourcePath = resourceData.Resource.path;

@@ -1,7 +1,7 @@
-using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
+using System.Collections;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -512,7 +512,7 @@ public static class CardExtensions
 
         if (evolution == null) // Try delayed loading
         {
-            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            CardManager.ModifyCardList += delegate (List<CardInfo> cards)
             {
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo evolveIntoCard = cards.CardByName(evolveInto);
@@ -570,7 +570,7 @@ public static class CardExtensions
 
         if (creatureWithin == null) // Try delayed loading
         {
-            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            CardManager.ModifyCardList += delegate (List<CardInfo> cards)
             {
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo creatureWithinCard = cards.CardByName(iceCubeName);
@@ -696,7 +696,7 @@ public static class CardExtensions
             : tailLostPortrait?.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode.Value);
         return info.SetTail(tailName, tailLostSprite, mods);
     }
-    
+
     /// <summary>
     /// Sets the tail parameters of the card. These parameters are used to make the TailOnHit ability function correctly.
     /// This function uses delayed loading to attach the tail to the card, so if the tail card doesn't exist yet, this function will still work.
@@ -712,7 +712,7 @@ public static class CardExtensions
 
         if (tail == null) // Try delayed loading
         {
-            CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+            CardManager.ModifyCardList += delegate (List<CardInfo> cards)
             {
                 CardInfo target = cards.CardByName(info.name);
                 CardInfo tailCard = cards.CardByName(tailName);
@@ -1218,7 +1218,7 @@ public static class CardExtensions
     #endregion
 
     #region Helpers
-    
+
 
     /// <summary>
     /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
@@ -1304,7 +1304,7 @@ public static class CardExtensions
     {
         return cardInfo.SpecialAbilities.Contains(ability);
     }
-    
+
     /// <summary>
     /// Checks if the CardInfo does not have a specific SpecialTriggeredAbility.
     /// </summary>
@@ -1523,7 +1523,7 @@ public static class CardExtensions
     {
         return playableCard.OnBoard && otherCard.OnBoard && playableCard.OpponentCard == otherCard.OpponentCard;
     }
-    
+
     /// <summary>
     /// Retrieve a list of all abilities that exist on the PlayableCard.
     ///
@@ -1535,7 +1535,7 @@ public static class CardExtensions
     {
         return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
     }
-    
+
     /// <summary>
     /// Retrieve a list of all special triggered abilities that exist on the PlayableCard.
     ///
@@ -1549,7 +1549,7 @@ public static class CardExtensions
             playableCard.TemporaryMods.Concat(playableCard.Info.Mods).SelectMany(mod => mod.specialAbilities)
         );
     }
-    
+
     /// <summary>
     /// Retrieve a list of Ability that exist in TemporaryMods and the underlying CardInfo.Mods lists.
     /// </summary>
@@ -1570,7 +1570,7 @@ public static class CardExtensions
     {
         return playableCard.Info.HasTrait(trait);
     }
-    
+
     /// <summary>
     /// Checks if the card has a specific Trait.
     /// </summary>
@@ -1646,7 +1646,7 @@ public static class CardExtensions
     {
         return playableCard.Info.IsOfTribe(tribe);
     }
-    
+
     /// <summary>
     /// Checks if the PlayableCard is not of a specified Tribe.
     /// </summary>
@@ -1657,7 +1657,7 @@ public static class CardExtensions
     {
         return playableCard.Info.IsNotOfTribe(tribe);
     }
-    
+
     /// <summary>
     /// Checks if the card is not null and not Dead.
     /// </summary>
@@ -1667,7 +1667,7 @@ public static class CardExtensions
     {
         return playableCard && !playableCard.Dead;
     }
-    
+
     /// <summary>
     /// Checks if the card is not the opponent's card.
     /// </summary>
@@ -1676,7 +1676,7 @@ public static class CardExtensions
     public static bool IsPlayerCard(this PlayableCard playableCard)
     {
         return !playableCard.OpponentCard;
-    } 
+    }
 
     /// <summary>
     /// Check the PlayableCard not having a specific Ability.
@@ -1766,7 +1766,7 @@ public static class CardExtensions
     /// <returns>true if the specialTriggeredAbility does exist</returns>
     public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
-        return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability)) 
+        return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability))
             || playableCard.Info.HasSpecialAbility(ability);
     }
 
@@ -1835,7 +1835,7 @@ public static class CardExtensions
     {
         return playableCard.Slot && playableCard.Slot.opposingSlot.Card;
     }
-    
+
     /// <summary>
     /// Retrieve the CardSlot object that is opposing this PlayableCard.
     /// </summary>
@@ -1846,7 +1846,7 @@ public static class CardExtensions
     {
         return playableCard.Slot ? playableCard.Slot.opposingSlot : null;
     }
-    
+
     /// <summary>
     /// Retrieve the PlayableCard that is opposing this PlayableCard in the opposite slot.
     /// </summary>
@@ -1857,7 +1857,7 @@ public static class CardExtensions
     {
         return playableCard.OpposingSlot()?.Card;
     }
-    
+
 
     #endregion
 
@@ -1984,7 +1984,7 @@ public static class CardExtensions
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomUnlockCheck(this CardInfo c, Func<bool, int, bool> check)
     {
-        if(check == null && CardManager.CustomCardUnlocks.ContainsKey(c.name))
+        if (check == null && CardManager.CustomCardUnlocks.ContainsKey(c.name))
         {
             CardManager.CustomCardUnlocks.Remove(c.name);
         }

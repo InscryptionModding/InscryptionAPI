@@ -451,7 +451,7 @@ public interface IGetOpposingSlots
     /// </summary>
     bool RemoveDefaultAttackSlot();
 }
-    
+
 /// <summary>
 /// Data collection trigger that collects data related to attacked slots.
 /// </summary>

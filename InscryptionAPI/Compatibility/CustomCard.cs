@@ -9,11 +9,11 @@ public class CustomCard
 {
     public static List<CustomCard> cards = new();
 
-    public static Dictionary<int,List<AbilityIdentifier>> abilityIds = new();
+    public static Dictionary<int, List<AbilityIdentifier>> abilityIds = new();
     public static Dictionary<int, List<SpecialAbilityIdentifier>> specialAbilityIds = new();
-    public static Dictionary<int,EvolveIdentifier> evolveIds = new();
-    public static Dictionary<int,IceCubeIdentifier> iceCubeIds = new();
-    public static Dictionary<int,TailIdentifier> tailIds = new();
+    public static Dictionary<int, EvolveIdentifier> evolveIds = new();
+    public static Dictionary<int, IceCubeIdentifier> iceCubeIds = new();
+    public static Dictionary<int, TailIdentifier> tailIds = new();
     public static Dictionary<string, Sprite> emissions = new();
 
     public string name;
@@ -57,11 +57,11 @@ public class CustomCard
 
     public CustomCard(
         string name,
-        List<AbilityIdentifier> abilityIdParam=null,
-        List<SpecialAbilityIdentifier> specialAbilityIdParam=null,
-        EvolveIdentifier evolveId=null,
-        IceCubeIdentifier iceCubeId=null,
-        TailIdentifier tailId=null)
+        List<AbilityIdentifier> abilityIdParam = null,
+        List<SpecialAbilityIdentifier> specialAbilityIdParam = null,
+        EvolveIdentifier evolveId = null,
+        IceCubeIdentifier iceCubeId = null,
+        TailIdentifier tailId = null)
     {
         this.name = name;
         this.abilityIdParam = abilityIdParam;
@@ -70,7 +70,7 @@ public class CustomCard
         this.iceCubeId = iceCubeId;
         this.tailId = tailId;
 
-        CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+        CardManager.ModifyCardList += delegate (List<CardInfo> cards)
         {
             CardInfo targetCard = cards.CardByName(this.name);
 
@@ -84,7 +84,7 @@ public class CustomCard
     public CardInfo AdjustCard(CardInfo card, List<CardInfo> cardsToSearch)
     {
         TypeMapper<CustomCard, CardInfo>.Convert(this, card);
-			
+
         if (this.tex is not null)
             card.SetPortrait(this.tex);
 
@@ -116,7 +116,7 @@ public class CustomCard
             // We're already in the mapper. I don't want to add another event handler
             CardInfo tail = cardsToSearch.CardByName(this.tailId.name);
             if (tail != null)
-                card.SetTail(tail, this.tailId.tailLostTex, mods:new List<CardModificationInfo>() { this.tailId.mods });
+                card.SetTail(tail, this.tailId.tailLostTex, mods: new List<CardModificationInfo>() { this.tailId.mods });
         }
 
         if (this.iceCubeId != null)

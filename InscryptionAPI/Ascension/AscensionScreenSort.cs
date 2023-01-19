@@ -17,5 +17,5 @@ public class AscensionScreenSort : System.Attribute
     public AscensionScreenSort(Direction preferredDirection = Direction.NoPreference)
     {
         this.preferredDirection = preferredDirection;
-    }        
+    }
 }

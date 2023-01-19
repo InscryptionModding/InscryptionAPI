@@ -24,7 +24,7 @@ public static class NewCard
     {
         if (abilityIdsParam != null)
             card.AddAbilities(abilityIdsParam.Select(a => a.realID).ToArray());
-            
+
         if (specialAbilitiesIdsParam != null)
             card.AssignSpecialAbilities(specialAbilitiesIdsParam);
 
@@ -64,7 +64,7 @@ public static class NewCard
         info.baseAttack = baseAttack;
         info.baseHealth = baseHealth;
         info.description = description;
-            
+
         info.SetCost(bloodCost, bonesCost, energyCost, gemsCost);
 
         info.hideAttackAndHealth = hideAttackAndHealth;
@@ -84,7 +84,7 @@ public static class NewCard
 
         if (specialAbilitiesIdsParam != null)
             info.AssignSpecialAbilities(specialAbilitiesIdsParam);
-            
+
         if (abilities != null)
             info.AddAbilities(abilities.ToArray());
 
@@ -128,7 +128,7 @@ public static class NewCard
             info.SetIceCube(iceCubeId.name, new List<CardModificationInfo>() { iceCubeId.mods });
 
         if (tailId != null)
-            info.SetTail(tailId.name, tailId.tailLostTex, mods:new List<CardModificationInfo>() { tailId.mods });
+            info.SetTail(tailId.name, tailId.tailLostTex, mods: new List<CardModificationInfo>() { tailId.mods });
 
         CardManager.Add(info);
     }

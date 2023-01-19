@@ -247,7 +247,7 @@ public static class NewNodeManager
     /// <param name="sequencerPrefab">The sequencer prefab for the node.</param>
     /// <param name="nodePrefab">The node object prefab for the node.</param>
     /// <returns>The created node.</returns>
-    public static FullNode New<T>(string guid, string name, GenerationType generationType = GenerationType.None, List<Texture2D> nodeAnimation = null, List<NodeData.SelectionCondition> generationPrerequisites = null, 
+    public static FullNode New<T>(string guid, string name, GenerationType generationType = GenerationType.None, List<Texture2D> nodeAnimation = null, List<NodeData.SelectionCondition> generationPrerequisites = null,
         List<NodeData.SelectionCondition> forceGenerationConditions = null, Action<CustomSpecialNodeData> onPreGeneration = null, Action<CustomSpecialNodeData, MapNode2D>
             onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null) where T : ICustomNodeSequencer
     {
@@ -269,8 +269,8 @@ public static class NewNodeManager
     /// <param name="sequencerPrefab">The sequencer prefab for the node.</param>
     /// <param name="nodePrefab">The node object prefab for the node.</param>
     /// <returns>The created node.</returns>
-    public static FullNode New(string guid, string name, GenerationType generationType = GenerationType.None, Type nodeSequencerType = null, List<Texture2D> nodeAnimation = null, 
-        List<NodeData.SelectionCondition> generationPrerequisites = null, List<NodeData.SelectionCondition> forceGenerationConditions = null, Action<CustomSpecialNodeData> onPreGeneration = null, 
+    public static FullNode New(string guid, string name, GenerationType generationType = GenerationType.None, Type nodeSequencerType = null, List<Texture2D> nodeAnimation = null,
+        List<NodeData.SelectionCondition> generationPrerequisites = null, List<NodeData.SelectionCondition> forceGenerationConditions = null, Action<CustomSpecialNodeData> onPreGeneration = null,
         Action<CustomSpecialNodeData, MapNode2D> onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null)
     {
         FullNode fn = new();
@@ -278,7 +278,7 @@ public static class NewNodeManager
         fn.name = name;
         fn.nodeSequencerType = nodeSequencerType;
         fn.generationType = generationType;
-        if(nodeAnimation != null)
+        if (nodeAnimation != null)
         {
             fn.nodeAnimation = new(nodeAnimation);
         }
@@ -286,7 +286,7 @@ public static class NewNodeManager
         {
             fn.generationPrerequisites = new(generationPrerequisites);
         }
-        if(forceGenerationConditions != null)
+        if (forceGenerationConditions != null)
         {
             fn.forceGenerationConditions = new(forceGenerationConditions);
         }
@@ -301,11 +301,11 @@ public static class NewNodeManager
     internal static IEnumerator CustomNodeSequence(ICustomNodeSequencer sequencer, CustomSpecialNodeData node)
     {
         yield return sequencer.DoCustomSequence(node);
-        if(sequencer is IDestroyOnEnd destroy && destroy.ShouldDestroyOnEnd(node))
+        if (sequencer is IDestroyOnEnd destroy && destroy.ShouldDestroyOnEnd(node))
         {
             UnityObject.Destroy((destroy as Component).gameObject);
         }
-        if(sequencer is IDoNotReturnToMapOnEnd donotreturn && donotreturn.ShouldNotReturnToMapOnEnd(node))
+        if (sequencer is IDoNotReturnToMapOnEnd donotreturn && donotreturn.ShouldNotReturnToMapOnEnd(node))
         {
             yield break;
         }

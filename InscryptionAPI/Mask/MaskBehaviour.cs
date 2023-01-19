@@ -6,7 +6,7 @@ namespace InscryptionAPI.Masks;
 public class MaskBehaviour : MonoBehaviour
 {
     protected CustomMask maskData = null;
-    
+
     public virtual void Initialize(CustomMask mask)
     {
         maskData = mask;
@@ -19,7 +19,7 @@ public class MaskBehaviour : MonoBehaviour
         {
             return;
         }
-        
+
         MeshRenderer renderer = gameObject.GetComponentInChildren<MeshRenderer>();
         Material[] materials = renderer.materials;
         if (mask.MaterialOverrides.Count > materials.Length)
@@ -40,7 +40,7 @@ public class MaskBehaviour : MonoBehaviour
             {
                 OverrideMainTexture(materialOverride, material);
             }
-            
+
             if (materialOverride.OverrideEmission)
             {
                 OverrideEmission(materialOverride, material);
@@ -88,53 +88,53 @@ public class MaskBehaviour : MonoBehaviour
         }
         renderer.materials = materials;
     }
-    
+
     protected virtual void OverrideHeightValue(MaterialOverride materialOverride, Material material)
     {
         material.SetFloat("_Parallax", materialOverride.Height.Value);
     }
-    
+
     protected virtual void OverrideSmoothnessValue(MaterialOverride materialOverride, Material material)
     {
         material.SetFloat("_Glossiness", materialOverride.Smoothness.Value);
     }
-    
+
     protected virtual void OverrideMetallic(MaterialOverride materialOverride, Material material)
     {
-        
+
         material.SetFloat("_Metallic", materialOverride.Metallic.Value);
     }
-    
+
     protected virtual void OverrideNormalMap(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_BumpMap", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideOcclusionMap(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_OcclusionMap", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideDetailMask(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_DetailMask", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideHeightMap(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_ParallaxMap", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideMetallicMap(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_MetallicGlossMap", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideEmission(MaterialOverride materialOverride, Material material)
     {
         material.SetTexture("_EmissionMap", materialOverride.Emission);
     }
-    
+
     protected virtual void OverrideMainTexture(MaterialOverride materialOverride, Material material)
     {
         material.mainTexture = materialOverride.MainTexture;

@@ -1,10 +1,8 @@
 using BepInEx;
 using DiskCardGame;
-using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using System.Reflection;
 using UnityEngine;
-using static DiskCardGame.NodeData;
 
 namespace InscryptionAPI.Pelts;
 
@@ -14,7 +12,7 @@ public static class PeltManager
     {
         public string pluginGuid;
         public string peltCardName;
-        
+
         public bool isSoldByTrapper = true;
 
         public Func<List<CardInfo>> GetCardChoices;
@@ -22,7 +20,7 @@ public static class PeltManager
 
         public int baseBuyPrice;
         public int maxBuyPrice;
-        
+
         public int extraAbilitiesToAdd;
 
         public int choicesOfferedByTrader = 8;
@@ -83,7 +81,7 @@ public static class PeltManager
         }
 
         data.pluginGuid ??= TypeManager.GetModIdFromCallstack(Assembly.GetCallingAssembly());
-        
+
         if (!AllNewPelts.Contains(data))
             AllNewPelts.Add(data);
     }

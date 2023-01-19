@@ -1,7 +1,7 @@
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using UnityEngine;
-using GBC;
 
 namespace InscryptionAPI.Ascension;
 
@@ -59,7 +59,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         transition.onEnableRevealedObjects.Remove(obj);
 
         foreach (Transform child in obj.transform)
-            CleanupGameObject(child.gameObject, transition, destroy:false);
+            CleanupGameObject(child.gameObject, transition, destroy: false);
 
         if (destroy)
             GameObject.Destroy(obj);
@@ -114,8 +114,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             rightPos.viewportAnchor = new Vector2(0.75f, 0.8f);
         }
 
-        leftPos.offset = new (0f, 0f);
-        rightPos.offset = new (0f, 0f);
+        leftPos.offset = new(0f, 0f);
+        rightPos.offset = new(0f, 0f);
 
         return (leftIcon.GetComponent<AscensionMenuInteractable>(), rightIcon.GetComponent<AscensionMenuInteractable>());
     }
@@ -176,7 +176,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         if (controller.showCardPanel)
         {
             controller.cards = oldController.cards;
-        }    
+        }
 
         // Destroy the old game logic
         Component.Destroy(oldController);
@@ -208,7 +208,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         controller.challengeHeaderDisplay = challengeLevelController;
 
         List<Transform> footerLinePseudos = new List<Transform>();
-        GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject; 
+        GameObject challengeFooter = challengeScreen.transform.Find("Footer").gameObject;
         foreach (Transform child in challengeFooter.transform)
             if (child.name.ToLowerInvariant() == "pixeltextline")
                 footerLinePseudos.Add(child);
@@ -249,11 +249,11 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
             foreach (PixelSelectableCard card in controller.cards)
             {
-                card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
+                card.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(card.CursorSelectStarted, new Action<MainInputInteractable>(delegate (MainInputInteractable i)
                 {
                     controller.CardClicked(card);
                 }));
-                card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(card.CursorEntered, new Action<MainInputInteractable>(delegate(MainInputInteractable i)
+                card.CursorEntered = (Action<MainInputInteractable>)Delegate.Combine(card.CursorEntered, new Action<MainInputInteractable>(delegate (MainInputInteractable i)
                 {
                     controller.CardCursorEntered(card);
                 }));
@@ -292,11 +292,11 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
             clickAction = (MainInputInteractable i) => TransitionToGame();
         else
             clickAction = (MainInputInteractable i) => AscensionMenuScreens.Instance.SwitchToScreen(nextScreen);
-            
+
         controller.continueButton.CursorSelectStarted = (Action<MainInputInteractable>)Delegate.Combine(controller.continueButton.CursorSelectStarted, clickAction);
 
         // Let the base class do its magic
-        controller.InitializeScreen(screenObject);        
+        controller.InitializeScreen(screenObject);
 
         // And we're done
         return controller;
@@ -349,7 +349,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
 
     public virtual void RightButtonClicked(MainInputInteractable button)
     {
-            
+
     }
 
     public virtual void CardCursorEntered(PixelSelectableCard card)
@@ -391,7 +391,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
     public const string CENTER_DASHES = "-------------------------------------------------------------------------------------------------------------------------------";
     public const string FULL_DASHES = "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
 
-    public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate=false)
+    public void DisplayCardInfo(CardInfo info, string nameOverride = null, string descOverride = null, bool immediate = false)
     {
         if (!showCardDisplayer)
             return;
@@ -399,7 +399,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         string lineOne = $"{CENTER_DASHES} <color=#eef4c6>{nameOverride ?? info.DisplayedNameLocalized}</color> {CENTER_DASHES}";
         string lineTwo = descOverride ?? info.GetGBCDescriptionLocalized(info.Abilities);
         string lineThree = FULL_DASHES;
-	
+
         this.cardInfoLines.ShowText(0.1f, new string[]
         {
             lineThree,
@@ -408,7 +408,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }, immediate);
     }
 
-    public void ClearCardInfo(bool immediate=true)
+    public void ClearCardInfo(bool immediate = true)
     {
         if (!showCardDisplayer)
             return;
@@ -421,7 +421,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         }, immediate);
     }
 
-    public void DisplayChallengeInfo(string message, int points, bool immediate=false)
+    public void DisplayChallengeInfo(string message, int points, bool immediate = false)
     {
         string lineOne = Localization.Translate(message);
 
@@ -433,7 +433,8 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         else if (points < 0)
         {
             lineTwo = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), -points);
-        } else
+        }
+        else
         {
             lineTwo = string.Format(Localization.Translate("{0} Challenge Points Added"), points);
         }
@@ -476,7 +477,7 @@ public abstract class AscensionRunSetupScreenBase : ManagedBehaviour
         base.OnEnable();
     }
 
-    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate=false)
+    public void DisplayChallengeInfo(AscensionChallenge challenge, bool immediate = false)
     {
         AscensionChallengeInfo info = AscensionChallengesUtil.GetInfo(challenge);
         int points = info.pointValue * (AscensionSaveData.Data.ChallengeIsActive(challenge) ? 1 : -1);
