@@ -17,22 +17,33 @@ public static class LocalizationManager
 
     public static CustomTranslation New(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
-        CustomTranslation customTranslation = new CustomTranslation();
-        customTranslation.PluginGUID = pluginGUID;
-        
-        customTranslation.Translation = new Localization.Translation
-        {
-            id = id,
-            englishString = englishString,
-            englishStringFormatted = !string.IsNullOrEmpty(englishString) ? Localization.FormatString(englishString) : null,
-            values = new Dictionary<Language, string>()
-            {
-                {language, translatedString}
-            },
-            femaleGenderValues = new Dictionary<Language, string>()
-        };
+        CustomTranslation customTranslation = Get(englishString, id);
 
-        return Add(customTranslation);
+        bool newTranslation = customTranslation == null; 
+        if (newTranslation)
+        {
+            customTranslation = new CustomTranslation();
+            customTranslation.PluginGUID = pluginGUID;
+            customTranslation.Translation = new Localization.Translation();
+            customTranslation.Translation.id = id;
+            customTranslation.Translation.englishString = id;
+            customTranslation.Translation.englishStringFormatted = !string.IsNullOrEmpty(englishString) ? Localization.FormatString(englishString) : null;
+            customTranslation.Translation.values = new Dictionary<Language, string>();
+            customTranslation.Translation.femaleGenderValues = new Dictionary<Language, string>();
+        }
+
+        customTranslation.Translation.values[language] = translatedString;
+
+        if (newTranslation)
+        {
+            return Add(customTranslation);
+        }
+        
+        if (AlreadyLoadedLanguages.Count > 0)
+        {
+            InsertTranslation(customTranslation);
+        }
+        return customTranslation;
     }
 
     public static CustomTranslation Add(CustomTranslation translation)
@@ -42,6 +53,22 @@ public static class LocalizationManager
         {
             InsertTranslation(translation);
         }
+        return translation;
+    }
+
+    public static CustomTranslation Get(string englishText, string id)
+    {
+        CustomTranslation translation = null;
+        if (!string.IsNullOrEmpty(englishText))
+        {
+            translation = CustomTranslations.Find((a) => a.Translation.englishString == englishText);
+        }
+        
+        if(translation == null && !string.IsNullOrEmpty(id))
+        {
+            translation = CustomTranslations.Find((a) => a.Translation.id == id);
+        }
+
         return translation;
     }
 
