@@ -16,6 +16,7 @@ internal class BuyPeltsSequencer_PeltPrices
     /// </summary>
     public static void Postfix(CardLoader __instance, ref int[] __result)
     {
+        PeltManager.BasePeltPrices = __result;
         __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.BuyPrice).ToArray();
     }
 }

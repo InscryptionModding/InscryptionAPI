@@ -8,9 +8,16 @@ namespace InscryptionAPI.Pelts;
 
 public static class PeltManager
 {
+    private class VanillaPeltData : PeltData
     {
+        public override int BuyPrice
         {
+            get
+            {
+                return GetBasePeltData().Find((a)=>a.Item1 == this.peltCardName).Item2;
+            }
         }
+    }
     
     public class PeltData
     {
@@ -48,11 +55,31 @@ public static class PeltManager
 
     private static List<PeltData> AllNewPelts = new List<PeltData>();
     private static List<PeltData> BasePelts = null;
+    
+    internal static string[] BasePeltNames { get; set; }
+    internal static int[] BasePeltPrices { get; set; }
 
     internal static List<PeltData> AllPelts()
     {
         BasePelts ??= CreateBasePelts();
         return BasePelts.Concat(AllNewPelts).ToList();
+    }
+
+    internal static List<Tuple<string, int>> GetBasePeltData()
+    {
+        // Call these so the patch caches the base prices (Gross omg... but easiest solution atm)
+        var z = SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices;
+        var x = CardLoader.PeltNames;
+
+        List<Tuple<string, int>> data = new List<Tuple<string, int>>();
+        for (int i = 0; i < BasePeltNames.Length; i++)
+        {
+            string peltName = BasePeltNames[i];
+            data.Add(new Tuple<string, int>(peltName, BasePeltPrices[i]));
+        }
+
+        // Return cache
+        return data;
     }
     
     private static List<PeltData> CreateBasePelts()
@@ -62,14 +89,12 @@ public static class PeltManager
         string[] peltNames = CardLoader.PeltNames;
         for (int i = 0; i < peltNames.Length; i++)
         {
-            int peltIndex = i;
-            pelts.Add(new PeltData()
+            pelts.Add(new VanillaPeltData()
             {
                 peltCardName = peltNames[i],
                 choicesOfferedByTrader = 8,
                 extraAbilitiesToAdd = 0,
                 isSoldByTrapper = true,
-                BuyPriceAdjustment = (_)=> SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices[peltIndex]
             });
         }
 

@@ -11,6 +11,7 @@ internal class CardLoader_PeltNames
     /// </summary>
     public static void Postfix(ref string[] __result)
     {
+        PeltManager.BasePeltNames = __result;
         __result = PeltManager.AllPelts().Select((a)=>a.peltCardName).ToArray();
     }
 }
