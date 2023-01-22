@@ -191,11 +191,8 @@ internal class TradePeltsSequencer_CreatePeltCards
 
         int t = 0;
         MethodInfo NumPeltsMethod = SymbolExtensions.GetMethodInfo(() => numPelts(1, ref t));
-        
         FieldInfo NumPeltsField = AccessTools.Field(classType, "<numPelts>5__3");
-        InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] numPelts " + NumPeltsField + " ");
         FieldInfo TierField = AccessTools.Field(display19ClassType, "tier");
-        InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] tier " + TierField);
 
         // Find index of
         // list = CardLoader.GetDistinctCardsFromPool(SaveManager.SaveFile.GetCurrentRandomSeed()
@@ -205,7 +202,6 @@ internal class TradePeltsSequencer_CreatePeltCards
             CodeInstruction code = codes[i];
             if (code.opcode == OpCodes.Stfld && code.operand == NumPeltsField)
             {
-                InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] inserted call");
                 // void numCards(int tier, ref int numCards)
                 codes.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2)); // tier
                 codes.Insert(++i, new CodeInstruction(OpCodes.Ldfld, TierField)); // tier
