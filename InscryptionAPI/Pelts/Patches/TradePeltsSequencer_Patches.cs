@@ -131,7 +131,7 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
     private static void numCards(int tier, ref int numCards)
     {
         PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
-        numCards = pelt.choicesOfferedByTrader;
+        numCards = Mathf.Min(8, pelt.choicesOfferedByTrader);
     }
 
     private static int abilityCount(int abilityCount, int tier)
@@ -202,6 +202,6 @@ internal class TradePeltsSequencer_CreatePeltCards
     private static void numPelts(int tier, ref int numPelts)
     {
         PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
-        numPelts = Mathf.Min(numPelts, pelt.choicesOfferedByTrader);
+        numPelts = Mathf.Min(numPelts, Mathf.Min(8, pelt.choicesOfferedByTrader));
     }
 }
