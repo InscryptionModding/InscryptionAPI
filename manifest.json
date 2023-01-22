@@ -1062,6 +1062,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html",
+          "hash": "VGwj8p4l1x6Ls9M47inhsAoAXe9s/C/BDhvJchiCwd4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.html",
+          "hash": "+hcdaweyMovAXUdioPhoXmr97K4tDCWi/eaAtNHWdi4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Localizing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Localizing.html",
+          "hash": "ii3I8/a/OLl/Jeh5ef5gLc7ze2uzLVyqn62ydXSJ+gA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Masks.CustomMask.yml",
       "output": {
         ".html": {
@@ -2242,7 +2278,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "uUxTZFsD4Na2je6aaqfLihZedk9n6VMXN7ccFtWaxg0="
+          "hash": "GSLMgHB0faHWpo8JXRqPmYm+VY+ftXhUE98z+lk6aAA="
         }
       },
       "is_incremental": false,
@@ -2305,7 +2341,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 192,
+          "total_file_count": 195,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

@@ -7779,6 +7779,87 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.ResourceLookup.ToString
   nameWithType: ResourceLookup.ToString
+- uid: InscryptionAPI.Localizing
+  name: InscryptionAPI.Localizing
+  href: api/InscryptionAPI.Localizing.html
+  commentId: N:InscryptionAPI.Localizing
+  fullName: InscryptionAPI.Localizing
+  nameWithType: InscryptionAPI.Localizing
+- uid: InscryptionAPI.Localizing.LocalizationManager
+  name: LocalizationManager
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html
+  commentId: T:InscryptionAPI.Localizing.LocalizationManager
+  fullName: InscryptionAPI.Localizing.LocalizationManager
+  nameWithType: LocalizationManager
+- uid: InscryptionAPI.Localizing.LocalizationManager.Add(InscryptionAPI.Localizing.LocalizationManager.CustomTranslation)
+  name: Add(LocalizationManager.CustomTranslation)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Add_InscryptionAPI_Localizing_LocalizationManager_CustomTranslation_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.Add(InscryptionAPI.Localizing.LocalizationManager.CustomTranslation)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Add(InscryptionAPI.Localizing.LocalizationManager.CustomTranslation)
+  nameWithType: LocalizationManager.Add(LocalizationManager.CustomTranslation)
+- uid: InscryptionAPI.Localizing.LocalizationManager.Add*
+  name: Add
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Add_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.Add
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Add
+  nameWithType: LocalizationManager.Add
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation
+  name: LocalizationManager.CustomTranslation
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html
+  commentId: T:InscryptionAPI.Localizing.LocalizationManager.CustomTranslation
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation
+  nameWithType: LocalizationManager.CustomTranslation
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html#InscryptionAPI_Localizing_LocalizationManager_CustomTranslation_PluginGUID
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.PluginGUID
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.PluginGUID
+  nameWithType: LocalizationManager.CustomTranslation.PluginGUID
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.Translation
+  name: Translation
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html#InscryptionAPI_Localizing_LocalizationManager_CustomTranslation_Translation
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.Translation
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.Translation
+  nameWithType: LocalizationManager.CustomTranslation.Translation
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomTranslations
+  name: CustomTranslations
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_CustomTranslations
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomTranslations
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomTranslations
+  nameWithType: LocalizationManager.CustomTranslations
+- uid: InscryptionAPI.Localizing.LocalizationManager.Get(System.String,System.String)
+  name: Get(String, String)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Get_System_String_System_String_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.Get(System.String,System.String)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Get(System.String, System.String)
+  nameWithType: LocalizationManager.Get(String, String)
+- uid: InscryptionAPI.Localizing.LocalizationManager.Get*
+  name: Get
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Get_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.Get
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Get
+  nameWithType: LocalizationManager.Get
+- uid: InscryptionAPI.Localizing.LocalizationManager.New(System.String,System.String,System.String,System.String,Language)
+  name: New(String, String, String, String, Language)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_New_System_String_System_String_System_String_System_String_Language_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.New(System.String,System.String,System.String,System.String,Language)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.New(System.String, System.String, System.String, System.String, Language)
+  nameWithType: LocalizationManager.New(String, String, String, String, Language)
+- uid: InscryptionAPI.Localizing.LocalizationManager.New*
+  name: New
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_New_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.New
+  nameWithType: LocalizationManager.New
+- uid: InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
+  name: OnLanguageLoaded
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_OnLanguageLoaded
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
+  fullName: InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
+  nameWithType: LocalizationManager.OnLanguageLoaded
 - uid: InscryptionAPI.Masks
   name: InscryptionAPI.Masks
   href: api/InscryptionAPI.Masks.html
