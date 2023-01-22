@@ -2,8 +2,10 @@
 using HarmonyLib;
 using InscryptionAPI.Pelts;
 
+namespace TradePeltAPI.Scripts.Patches;
+
 [HarmonyPatch(typeof(CardLoader), "PeltNames", MethodType.Getter)]
-public class CardLoader_PeltNames
+internal class CardLoader_PeltNames
 {
     /// <summary>
     /// Adds new pelts to be used everywhere in the game

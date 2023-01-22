@@ -4,10 +4,12 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Pelts;
 using UnityEngine;
+
 #pragma warning disable CS0252, CS0253
+namespace TradePeltAPI.Scripts.Patches;
 
 [HarmonyPatch(typeof(BuyPeltsSequencer), "PeltPrices", MethodType.Getter)]
-public class BuyPeltsSequencer_PeltPrices
+internal class BuyPeltsSequencer_PeltPrices
 {
     /// <summary>
     /// Adds new pelt costs so their price can be listed for purchase 
@@ -138,7 +140,7 @@ internal class BuyPeltsSequencer_BuyPelts
 }
 
 [HarmonyPatch(typeof(BuyPeltsSequencer), "CreatePelt", new Type[]{typeof(int), typeof(int), typeof(float)})]
-public class BuyPeltsSequencer_CreatePelt
+internal class BuyPeltsSequencer_CreatePelt
 {
     /// <summary>
     /// Moves the new pelt cards to their correct position
