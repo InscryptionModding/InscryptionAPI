@@ -112,6 +112,14 @@ internal class BuyPeltsSequencer_BuyPelts
                 nonRares.Remove(selected);
                 selectedCards.Add(selected);
             }
+            
+            // Fill with rares
+            while (selectedCards.Count < 8 && rares.Count > 0)
+            {
+                PeltManager.PeltData selected = rares.GetSeededRandom(randomseed++);
+                rares.Remove(selected);
+                selectedCards.Add(selected);
+            }
 
             // TODO: Change GiveFreePeltSequence to not give at index 0
 
