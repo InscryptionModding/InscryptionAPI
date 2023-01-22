@@ -259,10 +259,12 @@ public class AscensionChallengePaginator : MonoBehaviour
             Vector3 leftArrowPos = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 3f;
             Vector3 rightArrowPos = rightArrowPos = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f; ;
 
-            bool offScreen = Math.Abs(Camera.current.WorldToScreenPoint(bottomLeft).x - Camera.current.WorldToScreenPoint(leftArrowPos).x) > 100f;
-            
+            bool offScreen = Math.Abs(Camera.current.WorldToScreenPoint(Camera.current.transform.position).x - Camera.current.WorldToScreenPoint(leftArrowPos).x) < 490f;
+
+            InscryptionAPIPlugin.Logger.LogInfo($"{Camera.current.WorldToScreenPoint(Camera.current.transform.position).x} || {Camera.current.WorldToScreenPoint(Camera.current.transform.position).x - Camera.current.WorldToScreenPoint(leftArrowPos).x}");
+
             // if the arrows would appear off-screen / sufficiently clipped by the edge of the screen, move them
-            if (offScreen)
+            if (offScreen || InscryptionAPIPlugin.configOverrideArrows.Value)
             {
                 leftArrowPos = new(
                 (float)(screen?.transform.position.x - screen?.continueButton.gameObject.transform.position.x) + Vector3.right.x / 2f,
