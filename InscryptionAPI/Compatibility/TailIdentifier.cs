@@ -18,7 +18,7 @@ public class TailIdentifier
         {
             if (this.tail == null)
                 SetParams(CardLoader.GetCardByName(this.name));
-				
+
             return this.tail;
         }
     }

@@ -1,11 +1,11 @@
-using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Saves;
 using MonoMod.Cil;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -29,7 +29,7 @@ public static class CardManager
     /// <returns></returns>
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
-    
+
     private static bool EventActive = false;
 
     /// <summary>
@@ -119,7 +119,7 @@ public static class CardManager
             // If there is EXACTLY ONE prefix in the group, we can apply it to the rest of the group
             if (setPrefixes.Count == 1)
             {
-                AddPrefixesToCards(group.Cards, setPrefixes[0]);                
+                AddPrefixesToCards(group.Cards, setPrefixes[0]);
                 continue;
             }
 
@@ -188,8 +188,8 @@ public static class CardManager
             newCard.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
         }
 
-        if (!NewCards.Contains(newCard)) 
-            NewCards.Add(newCard); 
+        if (!NewCards.Contains(newCard))
+            NewCards.Add(newCard);
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ public static class CardManager
     /// </summary>
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
     /// <param name="newCard">The card to add</param>
-    public static void Add(string modPrefix, CardInfo newCard) 
+    public static void Add(string modPrefix, CardInfo newCard)
     {
         if (!newCard.name.StartsWith(modPrefix))
         {
@@ -211,25 +211,25 @@ public static class CardManager
     /// <summary>
     /// Removes a custom card from the card pool. Cannot be used to remove base game cards.
     /// </summary>
-    /// <param name="card">The card to remove</param>
+    /// <param name="card">The card to remove.</param>
     public static void Remove(CardInfo card) => NewCards.Remove(card);
 
     /// <summary>
-    /// Adds a new card to the card pool
+    /// Adds a new card to the card pool.
     /// </summary>
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
-    /// <param name="name">The name of your card in the card pool. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name]</param>
-    /// <param name="displayName">The displayed name of the card</param>
-    /// <param name="attack">The attack power of the card</param>
-    /// <param name="health">The health of the card</param>
+    /// <param name="name">The internal name of your card - used to find and reference your card. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name].</param>
+    /// <param name="displayName">The displayed name of the card - what will be seen in-game on the card.</param>
+    /// <param name="attack">The Power of the card.</param>
+    /// <param name="health">The Health of the card.</param>
     /// <param name="description">The spoken description when the card is first encountered.</param>
-    /// <returns></returns>
+    /// <returns>The newly created card's CardInfo.</returns>
     public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default(string))
     {
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
-        retval.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" :  name;
+        retval.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
         retval.SetBasic(displayName, attack, health, description);
-        
+
         Assembly callingAssembly = Assembly.GetCallingAssembly();
         retval.SetModTag(TypeManager.GetModIdFromCallstack(callingAssembly));
 
@@ -237,7 +237,7 @@ public static class CardManager
 
         return retval;
     }
-    
+
     /// <summary>
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
@@ -271,7 +271,7 @@ public static class CardManager
         foreach (var pair in ModdedSaveManager.SaveData.SaveData[InscryptionAPIPlugin.ModGUID])
             if (pair.Value.Equals(key))
                 return pair.Key;
-        
+
         return ERROR;
     }
 
@@ -291,7 +291,7 @@ public static class CardManager
                     InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
                     continue;
                 }
-                
+
                 AbilityInfo info = AbilitiesUtil.GetInfo(ability);
 
                 if (info == null)

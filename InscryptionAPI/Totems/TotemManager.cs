@@ -1,12 +1,10 @@
-using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Helpers.Extensions;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 
 namespace InscryptionAPI.Totems;
@@ -19,8 +17,8 @@ public static class TotemManager
         CustomTribes,
         AllTribes
     }
-    
-    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new System.Type[] {typeof(BuildTotemNodeData), typeof(int)})]
+
+    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new System.Type[] { typeof(BuildTotemNodeData), typeof(int) })]
     private class ItemsUtil_AllConsumables
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -29,9 +27,9 @@ public static class TotemManager
             {
                 return instructions;
             }
-            
+
             // === We want to turn this
-            
+
             // List<Tribe> list = new()
             // {
             //     Tribe.Bird,
@@ -40,9 +38,9 @@ public static class TotemManager
             //     Tribe.Insect,
             //     Tribe.Reptile
             // };
-            
+
             // === Into this
-            
+
             // List<Tribe> list = new()
             // {
             //     Tribe.Bird,
@@ -52,25 +50,25 @@ public static class TotemManager
             //     Tribe.Reptile
             // };
             // ItemsUtil_AllConsumables.AddCustomTribesToList(list);
-            
+
             // ===
-            
-            
+
+
             List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {
                 if (codes[i].opcode == OpCodes.Newobj)
                 {
                     // Make a new list
-                    for (int j = i+1; i < codes.Count; j++)
+                    for (int j = i + 1; i < codes.Count; j++)
                     {
                         if (codes[j].opcode == OpCodes.Stloc_0)
                         {
-                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>)});
-                            
+                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>) });
+
                             // Stored the list
-                            codes.Insert(j+1, new CodeInstruction(OpCodes.Ldloc_0));
-                            codes.Insert(j+2, new CodeInstruction(OpCodes.Call, customMethod));
+                            codes.Insert(j + 1, new CodeInstruction(OpCodes.Ldloc_0));
+                            codes.Insert(j + 2, new CodeInstruction(OpCodes.Call, customMethod));
                             return codes;
                         }
                     }
@@ -108,8 +106,8 @@ public static class TotemManager
                 Initialize();
         }
     }
-    
-    [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[]{typeof(TotemTopData)})]
+
+    [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[] { typeof(TotemTopData) })]
     private class Totem_GetTopPiecePrefab
     {
         public static bool Prefix(Totem __instance, TotemTopData data, ref GameObject __result)
@@ -138,8 +136,8 @@ public static class TotemManager
             return true;
         }
     }
-    
-    [HarmonyPatch(typeof(Totem), "SetData", new Type[]{typeof(ItemData)})]
+
+    [HarmonyPatch(typeof(Totem), "SetData", new Type[] { typeof(ItemData) })]
     private class Totem_SetData
     {
         public static void Postfix(Totem __instance, ItemData data)
@@ -147,7 +145,7 @@ public static class TotemManager
             __instance.topPieceParent.GetComponentInChildren<CompositeTotemPiece>().SetData(__instance.TotemItemData.top);
         }
     }
-    
+
     [HarmonyPatch(typeof(TotemTopData), "PrefabId", MethodType.Getter)]
     private class TotemTopData_PrefabId
     {
@@ -175,14 +173,14 @@ public static class TotemManager
     }
 
     [Obsolete("Deprecated. Use NewTopPiece<T> instead.")]
-    public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab=null)
+    public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab = null)
     {
         if (prefab == null)
         {
             InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
             return null;
         }
-    
+
         return Add(new CustomTotemTop()
         {
             Name = name,
@@ -199,7 +197,7 @@ public static class TotemManager
             InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
             return null;
         }
-    
+
         return Add(new CustomTotemTop()
         {
             Name = name,
@@ -215,13 +213,13 @@ public static class TotemManager
         totemTops.Add(totem);
         return totem;
     }
-    
+
     private const string CustomTotemTopID = "TotemPieces/TotemTop_Custom";
     private const string CustomTotemTopResourcePath = "Prefabs/Items/" + CustomTotemTopID;
 
     private static CustomTotemTop defaultTotemTop = null;
     private readonly static List<CustomTotemTop> totemTops = new();
-    
+
     /// <summary>
     /// A collection of all new totem tops added using the API.
     /// </summary>
@@ -237,19 +235,19 @@ public static class TotemManager
     {
         if (defaultTotemTop == null)
             InitializeDefaultTotemTop();
-        
+
         defaultTotemTop.Prefab = gameObject;
         GameObject.DontDestroyOnLoad(gameObject);
     }
-    
+
     public static void SetDefaultTotemTop<T>(GameObject gameObject) where T : CompositeTotemPiece
     {
         if (defaultTotemTop == null)
             InitializeDefaultTotemTop();
-        
+
         // Attach missing components
         SetupTotemTopPrefab(gameObject, typeof(T));
-        
+
         defaultTotemTop.Prefab = gameObject;
     }
 
@@ -266,13 +264,13 @@ public static class TotemManager
             GameObject.DontDestroyOnLoad(go);
         }
     }
-    
+
     private static void Initialize()
     {
         // Don't change any totems!
         if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.Vanilla)
             return;
-        
+
         if (defaultTotemTop == null)
             InitializeDefaultTotemTop();
 
@@ -282,14 +280,14 @@ public static class TotemManager
             string path = "Prefabs/Items/TotemPieces/TotemTop_" + totem.Tribe;
             if (totem == defaultTotemTop)
                 path = CustomTotemTopResourcePath;
-            
+
             GameObject prefab = totem.Prefab;
             if (prefab == null)
             {
                 InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {totem.GUID}.{totem.Name}. Prefab is null!");
                 continue;
             }
-            
+
             // Attach missing components
             SetupTotemTopPrefab(prefab, totem.Type);
 

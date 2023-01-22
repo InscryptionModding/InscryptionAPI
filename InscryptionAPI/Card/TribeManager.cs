@@ -1,12 +1,10 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
 using DiskCardGame;
-using UnityEngine;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
@@ -24,7 +22,7 @@ public class TribeManager
     public static readonly ReadOnlyCollection<Tribe> NewTribesTypes = new(tribeTypes);
 
     private static Texture2D TribeIconMissing = TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
-    
+
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
     [HarmonyPostfix]
     private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
@@ -154,8 +152,8 @@ public class TribeManager
     {
         return tribeTypes.Contains(tribe);
     }
-    
-    public static Texture2D GetTribeIcon(Tribe tribe, bool useMissingIconIfNull=true)
+
+    public static Texture2D GetTribeIcon(Tribe tribe, bool useMissingIconIfNull = true)
     {
         Texture2D texture2D = null;
         if (IsCustomTribe(tribe))
@@ -182,8 +180,8 @@ public class TribeManager
                 texture2D = sprite.texture;
             }
         }
-        
-        if(texture2D == null && useMissingIconIfNull)
+
+        if (texture2D == null && useMissingIconIfNull)
         {
             texture2D = TribeIconMissing;
         }

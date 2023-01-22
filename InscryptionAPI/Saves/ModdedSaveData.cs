@@ -91,7 +91,7 @@ public class ModdedSaveData
     {
         if (SaveData == null)
             SaveData = new();
-            
+
         if (!SaveData.ContainsKey(guid))
             SaveData.Add(guid, new());
 

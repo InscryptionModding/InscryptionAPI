@@ -1,6 +1,5 @@
 ﻿using DiskCardGame;
 using InscryptionAPI.Helpers;
-using UnityEngine;
 
 namespace InscryptionAPI.Masks;
 
@@ -40,7 +39,7 @@ public class CustomMask
 
     public CustomMask SetMaskBehaviour(Type type)
     {
-        if(!type.IsSubclassOf(typeof(MaskBehaviour)))
+        if (!type.IsSubclassOf(typeof(MaskBehaviour)))
         {
             InscryptionAPIPlugin.Logger.LogError("Could not add type " + type + " to mask " + ToString() + ". It is not of type MaskBehaviour!");
             return this;

@@ -1,6 +1,6 @@
-using System.Collections.ObjectModel;
 using DiskCardGame;
 using InscryptionAPI.Guid;
+using System.Collections.ObjectModel;
 
 namespace InscryptionAPI.Encounters;
 
@@ -11,7 +11,7 @@ public static class SpecialSequenceManager
         public readonly string Id;
 
         private Type _specialSequencer;
-        public Type SpecialSequencer { get; private set; }        
+        public Type SpecialSequencer { get; private set; }
 
         public FullSpecialSequencer(string id, Type specialSequencer)
         {
@@ -24,7 +24,7 @@ public static class SpecialSequenceManager
 
     public readonly static ReadOnlyCollection<FullSpecialSequencer> BaseGameSpecialSequencers = new(GenBaseGameSpecialSequencersList());
     private readonly static ObservableCollection<FullSpecialSequencer> NewSpecialSequencers = new();
-    
+
     public static List<FullSpecialSequencer> AllSpecialSequencers { get; private set; } = BaseGameSpecialSequencers.ToList();
 
     static SpecialSequenceManager()

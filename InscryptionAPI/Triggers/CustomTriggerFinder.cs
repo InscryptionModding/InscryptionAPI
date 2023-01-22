@@ -397,7 +397,7 @@ public static class CustomTriggerFinder
     /// <returns>All trigger recievers of type T in the hand</returns>
     public static IEnumerable<T> FindTriggersInHand<T>()
     {
-        List<PlayableCard> handCache = new (PlayerHand.Instance.CardsInHand);
+        List<PlayableCard> handCache = new(PlayerHand.Instance.CardsInHand);
         return handCache.Where(c => c != null && c.InHand).SelectMany(FindTriggersOnCard<T>);
     }
 
@@ -433,7 +433,7 @@ public static class CustomTriggerFinder
     /// <returns>All trigger recievers of type T in the hand</returns>
     public static IEnumerable<T> FindTriggersInHandExcluding<T>(PlayableCard card)
     {
-        List<PlayableCard> handCache = new (PlayerHand.Instance.CardsInHand);
+        List<PlayableCard> handCache = new(PlayerHand.Instance.CardsInHand);
         return handCache.Where(x => x != null && x.InHand && x != card).SelectMany(FindTriggersOnCard<T>);
     }
 

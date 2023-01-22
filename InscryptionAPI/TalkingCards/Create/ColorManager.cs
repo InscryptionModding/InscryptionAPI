@@ -1,8 +1,6 @@
 using HarmonyLib;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using InscryptionAPI.TalkingCards.Helpers;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 #nullable enable
@@ -20,7 +18,7 @@ internal static class ColorManager
     private static void GetCustomColor(string code, ref Color __result)
     {
         string hex = DialogueParser.GetStringValue(code, "c");
-        
+
         if (!ColorRegex.IsMatch(hex)) return;
 
         if (ColorsCache.ContainsKey(hex))

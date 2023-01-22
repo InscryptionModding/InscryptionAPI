@@ -1,8 +1,8 @@
 using BepInEx;
-using HarmonyLib;
-using UnityEngine;
 using DiskCardGame;
+using HarmonyLib;
 using System.Reflection;
+using UnityEngine;
 
 namespace InscryptionAPI.Helpers;
 
@@ -72,7 +72,7 @@ public static class TextureHelper
 
     private static Dictionary<Sprite, Sprite> emissionMap = new();
 
-    private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new () 
+    private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
         { SpriteType.CardPortrait, new Rect(0.0f, 0.0f, 114.0f, 94.0f) },
         { SpriteType.PixelPortrait, new Rect(0.0f, 0.0f, 41.0f, 28.0f) },
@@ -86,7 +86,7 @@ public static class TextureHelper
         { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
     };
 
-    private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new () 
+    private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
         { SpriteType.CardPortrait, new Vector2(0.5f, 0.5f) },
         { SpriteType.PixelPortrait, new Vector2(0.5f, 0.5f) },
@@ -127,7 +127,7 @@ public static class TextureHelper
     /// <returns>The image file on disk as a Texture2D object</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
+        Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
@@ -143,7 +143,7 @@ public static class TextureHelper
     /// <returns>The image file from the assembly as a Texture2D object</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2,TextureFormat.RGBA32,false);
+        Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
         bool isLoaded = texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
@@ -292,16 +292,16 @@ public static class TextureHelper
     /// <param name="yOffset">Used to set the position for individual textures</param>
     /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref></returns>
     public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
-	{
-		if (pieces != null)
-		{
-			for (int j = 0; j < pieces.Count; j++)
+    {
+        if (pieces != null)
+        {
+            for (int j = 0; j < pieces.Count; j++)
                 if (pieces[j] != null)
-				    baseTexture.SetPixels(xOffset + xStep * j, yOffset + yStep * (pieces.Count - j - 1), pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
-			
-			baseTexture.Apply();
-		}
-		
-		return baseTexture;
-	}
+                    baseTexture.SetPixels(xOffset + xStep * j, yOffset + yStep * (pieces.Count - j - 1), pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
+
+            baseTexture.Apply();
+        }
+
+        return baseTexture;
+    }
 }

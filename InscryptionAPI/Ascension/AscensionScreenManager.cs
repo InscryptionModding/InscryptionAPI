@@ -1,7 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
@@ -16,7 +16,7 @@ public static class AscensionScreenManager
 
     internal const int CUSTOM_SCREEN_START = 100;
 
-    private static string challengeScreenHoverText = "START RUN";   
+    private static string challengeScreenHoverText = "START RUN";
 
     public static void RegisterScreen<T>() where T : AscensionRunSetupScreenBase
     {
@@ -60,7 +60,8 @@ public static class AscensionScreenManager
                 previousScreen = currentScreen;
                 currentScreen = nextScreen;
                 nextScreen = (AscensionMenuScreens.Screen)((int)nextScreen + 1);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 InscryptionAPIPlugin.Logger.LogError(ex);
             }
@@ -74,7 +75,7 @@ public static class AscensionScreenManager
         previousScreen = AscensionMenuScreens.Screen.SelectChallenges;
         currentScreen = (AscensionMenuScreens.Screen)CUSTOM_SCREEN_START;
         nextScreen = (AscensionMenuScreens.Screen)(CUSTOM_SCREEN_START + 1);
-            
+
         // Set the hover text of the challenge screen to be the title of the first custom screen
         challengeScreenHoverText = screens[currentScreen].headerText;
 
