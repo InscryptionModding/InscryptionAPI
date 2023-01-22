@@ -2,13 +2,10 @@
 using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI;
-using InscryptionAPI.Card;
-using InscryptionAPI.Pelts;
 using UnityEngine;
 
 
-namespace TradePeltAPI.Scripts.Patches;
+namespace InscryptionAPI.Pelts.Patches;
 
 [HarmonyPatch(typeof(TradePeltsSequencer), "GetTradeCardInfos", new Type[]{typeof(int), typeof(bool)})]
 internal static class TradePeltsSequencer_GetTradeCardInfos
@@ -117,12 +114,7 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
 
     private static void GetCardOptions(int tier, ref List<CardInfo> cards)
     {
-        if (tier <= 2)
-        {
-            return;
-        }
-        
-        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
         List<CardInfo> cardOptions = pelt.GetChoices();
         cardOptions.RemoveAll((a) => a.Health == 0);
         if (cardOptions.Count == 0)
@@ -136,23 +128,13 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
 
     private static void numCards(int tier, ref int numCards)
     {
-        if (tier <= 2)
-        {
-            return;
-        }
-
-        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
         numCards = pelt.MaxChoices;
     }
 
     private static int abilityCount(int abilityCount, int tier)
     {
-        if (tier <= 2)
-        {
-            return abilityCount;
-        }
-
-        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
         int peltAbilityCount = pelt.AbilityCount;
         return peltAbilityCount;
     }
@@ -217,12 +199,7 @@ internal class TradePeltsSequencer_CreatePeltCards
 
     private static void numPelts(int tier, ref int numPelts)
     {
-        if (tier <= 2)
-        {
-            return;
-        }
-
-        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
         numPelts = Mathf.Min(numPelts, pelt.MaxChoices);
     }
 }

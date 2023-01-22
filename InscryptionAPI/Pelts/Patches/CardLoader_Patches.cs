@@ -1,8 +1,7 @@
 ﻿using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Pelts;
 
-namespace TradePeltAPI.Scripts.Patches;
+namespace InscryptionAPI.Pelts.Patches;
 
 [HarmonyPatch(typeof(CardLoader), "PeltNames", MethodType.Getter)]
 internal class CardLoader_PeltNames
@@ -12,8 +11,6 @@ internal class CardLoader_PeltNames
     /// </summary>
     public static void Postfix(CardLoader __instance, ref string[] __result)
     {
-        List<string> list = new List<string>(__result);
-        list.AddRange(PeltManager.AllNewPelts.Select((a)=>a.CardNameOfPelt));
-        __result = list.ToArray();
+        __result = PeltManager.AllPelts().Select((a)=>a.CardNameOfPelt).ToArray();
     }
 }

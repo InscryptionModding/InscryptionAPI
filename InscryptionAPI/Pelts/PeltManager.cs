@@ -4,7 +4,7 @@ namespace InscryptionAPI.Pelts;
 
 public static class PeltManager
 {
-    public class CustomPeltData
+    public class PeltData
     {
         public virtual string PluginGUID { get; set; } = null;
         public virtual string CardNameOfPelt { get; set; } = null;
@@ -27,25 +27,72 @@ public static class PeltManager
         public virtual Func<int> CostCallback { get; set; }
     }
 
-    public static List<CustomPeltData> AllNewPelts = new List<CustomPeltData>();
+    private static List<PeltData> AllNewPelts = new List<PeltData>();
+    private static List<PeltData> BasePelts = null;
 
-    public static void New(CustomPeltData data)
+    internal static List<PeltData> AllPelts()
+    {
+        BasePelts ??= CreateBasePelts();
+        return BasePelts.Concat(AllNewPelts).ToList();
+    }
+    
+    private static List<PeltData> CreateBasePelts()
+    {
+        List<PeltData> pelts = new List<PeltData>();
+        
+        string[] peltNames = CardLoader.PeltNames;
+        for (int i = 0; i < peltNames.Length; i++)
+        {
+            int peltIndex = i;
+            pelts.Add(new PeltData()
+            {
+                CardNameOfPelt = peltNames[i],
+                MaxChoices = 8,
+                AbilityCount = 0,
+                AvailableAtTrader = true,
+                CostCallback = ()=> SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices[peltIndex]
+            });
+        }
+
+        // Golden Pelt
+        pelts[2].AbilityCount = 1;
+        pelts[2].MaxChoices = 4;
+
+        return pelts;
+    }
+
+    public static void New(PeltData data)
     {
         AllNewPelts.Add(data);
     }
 
-    public static string[] AllPeltsAvailableAtTrader()
+    public static List<PeltData> AllPeltsAvailableAtTrader()
     {
-        List<string> peltNames = new List<string>();
-        foreach (string peltName in CardLoader.PeltNames)
+        List<PeltData> peltNames = new List<PeltData>();
+        foreach (PeltData data in AllPelts())
         {
-            CustomPeltData data = AllNewPelts.Find((a) => a.CardNameOfPelt == peltName);
-            if (data == null || data.AvailableAtTrader)
+            if (data.AvailableAtTrader)
             {
-                peltNames.Add(peltName);
+                peltNames.Add(data);
             }
         }
 
-        return peltNames.ToArray();
+        return peltNames;
+    }
+    
+    public static int GetCostOfPelt(string peltName)
+    {
+        PeltData pelt = GetPelt(peltName);
+        if (pelt == null)
+        {
+            return 1;
+        }
+        
+        return pelt.Cost();
+    }
+    
+    public static PeltData GetPelt(string peltName)
+    {
+        return AllPelts().Find((a) => a.CardNameOfPelt == peltName);
     }
 }
