@@ -1442,7 +1442,7 @@ public static class CardExtensions
     /// <returns>true if the card is does not have the specified CardMetaCategory.</returns>
     public static bool HasCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory)
     {
-        return !cardInfo.metaCategories.Contains(metaCategory);
+        return cardInfo.metaCategories.Contains(metaCategory);
     }
 
     /// <summary>

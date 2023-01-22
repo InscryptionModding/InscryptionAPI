@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.10.0
+- Added LocalizationManager for more language support with mods
+
 ## 2.9.1
 - Fixed the campfire fix breaking the normal sequence
 
