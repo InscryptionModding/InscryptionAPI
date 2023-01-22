@@ -5,12 +5,13 @@ using HarmonyLib;
 using InscryptionAPI;
 using InscryptionAPI.Card;
 using InscryptionAPI.Pelts;
+using UnityEngine;
 
 
 namespace TradePeltAPI.Scripts.Patches;
 
 [HarmonyPatch(typeof(TradePeltsSequencer), "GetTradeCardInfos", new Type[]{typeof(int), typeof(bool)})]
-public class TradePeltsSequencer_GetTradeCardInfos
+internal static class TradePeltsSequencer_GetTradeCardInfos
 {
     /// <summary>
     /// Shows cards at the Trader to be traded for real cards
@@ -154,5 +155,78 @@ public class TradePeltsSequencer_GetTradeCardInfos
         PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
         int peltAbilityCount = pelt.AbilityCount;
         return peltAbilityCount;
+    }
+}
+
+[HarmonyPatch]
+internal class TradePeltsSequencer_CreatePeltCards
+{
+    private static Type classType = Type.GetType("DiskCardGame.TradePeltsSequencer+<CreatePeltCards>d__19, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+    private static Type display19ClassType = Type.GetType("DiskCardGame.TradePeltsSequencer+<>c__DisplayClass19_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+    
+    public static IEnumerable<MethodBase> TargetMethods()
+    {
+        yield return AccessTools.Method(classType, "MoveNext");
+    }
+    
+    /// <summary>
+    /// Ensures you only get as many cards as you have pelts
+    /// </summary>
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        // === We want to turn this
+        
+        // Cap the pelts i have
+        // int numPelts = Mathf.Min((tier == 2) ? 4 : 8, cardInfos.Count);
+        // int num;
+        
+        // === Into this
+        
+        // // Cap the pelts i have
+        // int numPelts = Mathf.Min((tier == 2) ? 4 : 8, cardInfos.Count);
+        // numCards(tier, ref numPelts)
+        // int num;
+        
+        // ===
+
+        int t = 0;
+        MethodInfo NumPeltsMethod = SymbolExtensions.GetMethodInfo(() => numPelts(1, ref t));
+        
+        FieldInfo NumPeltsField = AccessTools.Field(classType, "<numPelts>5__3");
+        InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] numPelts " + NumPeltsField + " ");
+        FieldInfo TierField = AccessTools.Field(display19ClassType, "tier");
+        InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] tier " + TierField);
+
+        // Find index of
+        // list = CardLoader.GetDistinctCardsFromPool(SaveManager.SaveFile.GetCurrentRandomSeed()
+        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        for (int i = 0; i < codes.Count; i++)
+        {
+            CodeInstruction code = codes[i];
+            if (code.opcode == OpCodes.Stfld && code.operand == NumPeltsField)
+            {
+                InscryptionAPIPlugin.Logger.LogWarning("[TradePeltsSequencer_CreatePeltCards] inserted call");
+                // void numCards(int tier, ref int numCards)
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldloc_2)); // tier
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldfld, TierField)); // tier
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldarg_0)); // numCards
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldflda, NumPeltsField)); // numCards
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, NumPeltsMethod));
+                break;
+            }
+        }
+
+        return codes;
+    }
+
+    private static void numPelts(int tier, ref int numPelts)
+    {
+        if (tier <= 2)
+        {
+            return;
+        }
+
+        PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
+        numPelts = Mathf.Min(numPelts, pelt.MaxChoices);
     }
 }
