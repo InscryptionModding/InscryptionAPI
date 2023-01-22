@@ -1,30 +1,49 @@
-﻿using DiskCardGame;
+using BepInEx;
+using DiskCardGame;
+using InscryptionAPI.Guid;
+using System.Reflection;
+using UnityEngine;
 
 namespace InscryptionAPI.Pelts;
 
 public static class PeltManager
 {
+    {
+        {
+        }
+    
     public class PeltData
     {
-        public virtual string PluginGUID { get; set; } = null;
-        public virtual string CardNameOfPelt { get; set; } = null;
-        public virtual int MaxChoices { get; set; } = 8;
-        public virtual int AbilityCount { get; set; } = 0;
-        public virtual bool AvailableAtTrader { get; set; } = true;
+        public string pluginGuid;
+        public string peltCardName;
 
-        public virtual List<CardInfo> GetChoices()
+        public bool isSoldByTrapper = true;
+
+        public Func<List<CardInfo>> GetCardChoices;
+        public Func<int, int> BuyPriceAdjustment = (int basePrice) => basePrice + RunState.CurrentRegionTier;
+
+        public int baseBuyPrice;
+        public int maxBuyPrice;
+
+        public int extraAbilitiesToAdd;
+
+        public int choicesOfferedByTrader = 8;
+        public int bossDefeatedPriceReduction = 2;
+        public int expensivePeltsPriceMultiplier = 2;
+
+        public virtual int BuyPrice
         {
-            return GetChoicesCallback();
+            get
+            {
+                int bossDefeatMult = !StoryEventsData.EventCompleted(StoryEvent.TrapperTraderDefeated) ? 1 : (bossDefeatedPriceReduction <= 0 ? 1 : bossDefeatedPriceReduction);
+                int challengeMult = !AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.ExpensivePelts) ? 1 : (expensivePeltsPriceMultiplier <= 0 ? 1 : expensivePeltsPriceMultiplier);
+                int finalPrice = BuyPriceAdjustment(baseBuyPrice) / bossDefeatMult * challengeMult;
+                if (maxBuyPrice > 0)
+                    finalPrice = Mathf.Min(maxBuyPrice, finalPrice);
+                return Mathf.Max(1, finalPrice);
+            }
         }
-        
-        public virtual int Cost()
-        {
-            return CostCallback();
-        }
-
-        public virtual Func<List<CardInfo>> GetChoicesCallback { get; set; }
-
-        public virtual Func<int> CostCallback { get; set; }
+        public List<CardInfo> CardChoices => GetCardChoices();
     }
 
     private static List<PeltData> AllNewPelts = new List<PeltData>();
@@ -46,24 +65,61 @@ public static class PeltManager
             int peltIndex = i;
             pelts.Add(new PeltData()
             {
-                CardNameOfPelt = peltNames[i],
-                MaxChoices = 8,
-                AbilityCount = 0,
-                AvailableAtTrader = true,
-                CostCallback = ()=> SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices[peltIndex]
+                peltCardName = peltNames[i],
+                choicesOfferedByTrader = 8,
+                extraAbilitiesToAdd = 0,
+                isSoldByTrapper = true,
+                BuyPriceAdjustment = (_)=> SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices[peltIndex]
             });
         }
 
         // Golden Pelt
-        pelts[2].AbilityCount = 1;
-        pelts[2].MaxChoices = 4;
+        pelts[2].extraAbilitiesToAdd = 1;
+        pelts[2].choicesOfferedByTrader = 4;
 
         return pelts;
     }
 
-    public static void New(PeltData data)
+    /// <summary>
+    /// Creates a new instance of CustomPeltData then adds it to the game.
+    /// </summary>
+    /// <param name="peltCardInfo">The CardInfo for the actual pelt card.</param>
+    /// <param name="getCardChoices">The list of possible cards the Trader will offer for this pelt.</param>
+    /// <param name="baseBuyPrice">The starting price of this pelt when buying from the Trapper.</param>
+    /// <param name="extraAbilitiesToAdd">The number of extra sigils card choices will have when trading this pelt to the Trader.</param>
+    /// <param name="isSoldByTrapper">Whether this type of pelt can be sold by the Trapper.</param>
+    /// <returns>The newly created CustomPeltData so a chain can continue.</returns>
+    public static PeltData New(CardInfo peltCardInfo, Func<List<CardInfo>> getCardChoices, int baseBuyPrice, int extraAbilitiesToAdd, bool isSoldByTrapper = true)
     {
-        AllNewPelts.Add(data);
+        PeltData peltData = new()
+        {
+            peltCardName = peltCardInfo.name,
+            GetCardChoices = getCardChoices,
+            baseBuyPrice = baseBuyPrice,
+            extraAbilitiesToAdd = extraAbilitiesToAdd,
+            isSoldByTrapper = isSoldByTrapper
+        };
+        Add(peltData);
+
+        return peltData;
+    }
+
+    /// <summary>
+    /// Adds a CustomPeltData to the game, enabling it to be usable with the Trapper and Trader.
+    /// </summary>
+    /// <param name="data">The CustomPeltData to add.</param>
+    public static void Add(PeltData data)
+    {
+        if (data.peltCardName.IsNullOrWhiteSpace())
+        {
+            InscryptionAPIPlugin.Logger.LogError("Couldn't create CustomPeltData - missing card name!");
+            return;
+        }
+
+        data.pluginGuid ??= TypeManager.GetModIdFromCallstack(Assembly.GetCallingAssembly());
+
+        if (!AllNewPelts.Contains(data))
+            AllNewPelts.Add(data);
     }
 
     public static List<PeltData> AllPeltsAvailableAtTrader()
@@ -71,7 +127,7 @@ public static class PeltManager
         List<PeltData> peltNames = new List<PeltData>();
         foreach (PeltData data in AllPelts())
         {
-            if (data.AvailableAtTrader)
+            if (data.isSoldByTrapper)
             {
                 peltNames.Add(data);
             }
@@ -88,11 +144,11 @@ public static class PeltManager
             return 1;
         }
         
-        return pelt.Cost();
+        return pelt.BuyPrice;
     }
     
     public static PeltData GetPelt(string peltName)
     {
-        return AllPelts().Find((a) => a.CardNameOfPelt == peltName);
+        return AllPelts().Find((a) => a.peltCardName == peltName);
     }
 }

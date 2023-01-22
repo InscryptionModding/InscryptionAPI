@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using HarmonyLib;
 
 namespace InscryptionAPI.Pelts.Patches;
@@ -9,8 +9,8 @@ internal class CardLoader_PeltNames
     /// <summary>
     /// Adds new pelts to be used everywhere in the game
     /// </summary>
-    public static void Postfix(CardLoader __instance, ref string[] __result)
+    public static void Postfix(ref string[] __result)
     {
-        __result = PeltManager.AllPelts().Select((a)=>a.CardNameOfPelt).ToArray();
+        __result = PeltManager.AllPelts().Select((a)=>a.peltCardName).ToArray();
     }
 }

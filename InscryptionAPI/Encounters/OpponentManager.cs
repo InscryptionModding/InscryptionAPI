@@ -1,14 +1,12 @@
+using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Guid;
+using InscryptionAPI.Masks;
+using InscryptionAPI.Saves;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
-using DiskCardGame;
-using HarmonyLib;
-using InscryptionAPI.Guid;
-using InscryptionAPI.Items.Extensions;
-using InscryptionAPI.Masks;
-using InscryptionAPI.Saves;
-using Sirenix.Serialization.Utilities;
 using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
@@ -31,7 +29,7 @@ public static class OpponentManager
             Id = id;
             SpecialSequencerId = specialSequencerId;
             Opponent = opponent;
-            if(nodeAnimation != null)
+            if (nodeAnimation != null)
             {
                 NodeAnimation = new(nodeAnimation);
             }
@@ -60,8 +58,10 @@ public static class OpponentManager
             string specialSequencerId = useReversePatch ? OriginalGetSequencerIdForBoss(opponent) : BossBattleSequencer.GetSequencerIdForBoss(opponent);
             Type opponentType = gameAsm.GetType($"DiskCardGame.{opponent.ToString()}Opponent") ?? gameAsm.GetType($"GBC.{opponent.ToString()}Opponent");
 
-            FullOpponent fullOpponent = new FullOpponent(opponent, opponentType, specialSequencerId);
-            fullOpponent.MaskType = MaskManager.BossToMask(opponent);
+            FullOpponent fullOpponent = new FullOpponent(opponent, opponentType, specialSequencerId)
+            {
+                MaskType = MaskManager.BossToMask(opponent)
+            };
             baseGame.Add(fullOpponent);
         }
         return baseGame;
@@ -138,7 +138,8 @@ public static class OpponentManager
         if (obj != null)
         {
             __result = "Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType;
-        } else
+        }
+        else
         {
             __result = "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
         }

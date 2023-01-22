@@ -1,10 +1,10 @@
-using HarmonyLib;
-using DiskCardGame;
-using InscryptionAPI.Card;
-using System.Runtime.CompilerServices;
-using System.Reflection;
-using System.Diagnostics;
 using BepInEx;
+using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Card;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace InscryptionAPI.Guid;
 
@@ -42,7 +42,7 @@ public static class TypeManager
             {
                 if (d.GUID == InscryptionAPIPlugin.ModGUID)
                     continue;
-                    
+
                 ModIds.Add(assembly.FullName, d.GUID);
                 return d.GUID;
             }
@@ -71,11 +71,11 @@ public static class TypeManager
 
 
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
-    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
+    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) })]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static Type OriginalGetType(string nameSpace, string typeName) { throw new NotImplementedException(); }
 
-    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) } )]
+    [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) })]
     [HarmonyPrefix]
     private static bool GetCustomType(string nameSpace, string typeName, ref Type __result)
     {
@@ -137,7 +137,7 @@ public static class TypeManager
                 }
             }
         }
-        
+
         __result = AccessTools.TypeByName($"{nameSpace}.{typeName}");
         TypeCache.Add(typeName, __result);
         return false;

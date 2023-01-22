@@ -8,13 +8,13 @@ namespace InscryptionAPI.Totems;
 public class CustomIconTotemTopPiece : CompositeTotemPiece
 {
     protected virtual string IconGameObjectName => "Icon";
-    
+
     public override void SetData(ItemData data)
     {
         base.SetData(data);
 
         TotemTopData topData = (TotemTopData)data;
-   
+
         // Get texture to apply
         Texture2D texture2D = TribeManager.GetTribeIcon(topData.prerequisites.tribe);
 

@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using DiskCardGame;
+﻿using DiskCardGame;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionAPI.Items.Extensions;
@@ -13,56 +13,56 @@ public static class ConsumableItemDataExtensions
         public readonly Dictionary<string, string> StringMap = new();
     }
     private static readonly ConditionalWeakTable<ConsumableItemData, ConsumableItemDataExt> ExtensionProperties = new();
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetPowerLevel(this ConsumableItemData data, int powerLevel)
     {
         data.powerLevel = powerLevel;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetLearnItemDescription(this ConsumableItemData data, string description)
     {
         data.description = description;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetRulebookCategory(this ConsumableItemData data, AbilityMetaCategory rulebookCategory)
     {
         data.rulebookCategory = rulebookCategory;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetRulebookName(this ConsumableItemData data, string rulebookName)
     {
         data.rulebookName = rulebookName;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetRulebookDescription(this ConsumableItemData data, string rulebookDescription)
     {
         data.rulebookDescription = rulebookDescription;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetRulebookSprite(this ConsumableItemData data, Sprite rulebookSprite)
     {
         data.rulebookSprite = rulebookSprite;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetRegionSpecific(this ConsumableItemData data, bool regionSpecific)
     {
         data.regionSpecific = regionSpecific;
         return data;
     }
-    
+
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     public static ConsumableItemData SetNotRandomlyGiven(this ConsumableItemData data, bool notRandomlyGiven)
     {
@@ -184,8 +184,8 @@ public static class ConsumableItemDataExtensions
         bool? extendedPropertyAsBool = data.GetExtendedPropertyAsBool("CanActivateOutsideBattles");
         return extendedPropertyAsBool.HasValue && extendedPropertyAsBool.Value;
     }
-    
-#region ModPrefixesAndTags
+
+    #region ModPrefixesAndTags
 
     /// <returns>The same ConsumableItemData so a chain can continue</returns>
     internal static ConsumableItemData SetModPrefix(this ConsumableItemData data, string modPrefix)
@@ -200,11 +200,11 @@ public static class ConsumableItemDataExtensions
         return data.GetExtendedProperty("ModPrefix");
     }
 
-#endregion
-    
-    
-    
-#region ExtendedProperties
+    #endregion
+
+
+
+    #region ExtendedProperties
     internal static Dictionary<string, string> GetConsumableItemDataExtensionTable(this ConsumableItemData data)
     {
         return ExtensionProperties.GetOrCreateValue(data).StringMap;
@@ -270,5 +270,5 @@ public static class ConsumableItemDataExtensions
         data.GetConsumableItemDataExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
     }
-#endregion
+    #endregion
 }

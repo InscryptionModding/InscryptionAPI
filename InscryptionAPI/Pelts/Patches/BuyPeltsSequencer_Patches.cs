@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
 using DiskCardGame;
 using HarmonyLib;
+using System.Reflection;
+using System.Reflection.Emit;
 using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ internal class BuyPeltsSequencer_PeltPrices
     /// </summary>
     public static void Postfix(CardLoader __instance, ref int[] __result)
     {
-        __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.Cost()).ToArray();
+        __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.BuyPrice).ToArray();
     }
 }
 
@@ -41,12 +41,12 @@ internal class BuyPeltsSequencer_BuyPelts
         }
     }
     private static BuyPeltsSequencer m_specialNodeHandler;
-    
+
     public static IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.Method(BuyPeltsMethodClass, "MoveNext");
     }
-    
+
     /// <summary>
     /// Setup how the board should be layed out
     /// If we have too many cards then we need to make space
@@ -57,7 +57,7 @@ internal class BuyPeltsSequencer_BuyPelts
         FieldInfo cardPileField = AccessTools.Field(BuyPeltsSequencerClass, "deckPile");
         CardPile cardPile = (CardPile)cardPileField.GetValue(s_BuyPeltsSequencer);
         Vector3 cardPilePosition = cardPile.transform.localPosition;
-        cardPile.transform.localPosition = new Vector3(5.5f, cardPilePosition.y, cardPilePosition.z); 
+        cardPile.transform.localPosition = new Vector3(5.5f, cardPilePosition.y, cardPilePosition.z);
 
         // Move purchase pile to the left of all the cards
         FieldInfo purchasedPileField = AccessTools.Field(BuyPeltsSequencerClass, "purchasedPile");
@@ -81,7 +81,7 @@ internal class BuyPeltsSequencer_BuyPelts
         int randomseed = SaveManager.SaveFile.GetCurrentRandomSeed();
 
         List<PeltManager.PeltData> availableAtTrader = PeltManager.AllPeltsAvailableAtTrader();
-        availableAtTrader.RemoveAll((a) => a.GetChoicesCallback().Count == 0);
+        availableAtTrader.RemoveAll((a) => a.CardChoices.Count == 0);
 
         if (availableAtTrader.Count > 8)
         {
@@ -94,7 +94,7 @@ internal class BuyPeltsSequencer_BuyPelts
             List<PeltManager.PeltData> allCards = new(availableAtTrader);
             allCards.Remove(selectedCards[0]);
 
-            List<PeltManager.PeltData> rares = allCards.FindAll((a) => CardLoader.GetCardByName(a.CardNameOfPelt).metaCategories.Contains(CardMetaCategory.Rare)).ToList();
+            List<PeltManager.PeltData> rares = allCards.FindAll((a) => CardLoader.GetCardByName(a.peltCardName).metaCategories.Contains(CardMetaCategory.Rare)).ToList();
             List<PeltManager.PeltData> nonRares = allCards.FindAll((a) => !rares.Contains(a));
 
             // 3 rares
@@ -133,8 +133,8 @@ internal class BuyPeltsSequencer_BuyPelts
         PeltsAvailableAtTrader.Sort(static (a, b) =>
         {
             // Sort by cost by lowest to highest
-            int aCost = a.Cost();
-            int bCost = b.Cost();
+            int aCost = a.BuyPrice;
+            int bCost = b.BuyPrice;
             return aCost - bCost;
         });
     }
@@ -148,9 +148,9 @@ internal class BuyPeltsSequencer_BuyPelts
         FieldInfo forLoopI = AccessTools.Field(BuyPeltsMethodClass, "<i>5__2");
 
         List<SelectableCard> x = null;
-        MethodInfo PopulatePeltsForSaleListInfo =  SymbolExtensions.GetMethodInfo(() => PopulatePeltsForSaleList(ref x));
-        MethodInfo GetTotalPeltsInfo =  SymbolExtensions.GetMethodInfo(() => GetTotalPelts());
-        
+        MethodInfo PopulatePeltsForSaleListInfo = SymbolExtensions.GetMethodInfo(() => PopulatePeltsForSaleList(ref x));
+        MethodInfo GetTotalPeltsInfo = SymbolExtensions.GetMethodInfo(() => GetTotalPelts());
+
         // ================================================
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
 
@@ -170,7 +170,7 @@ internal class BuyPeltsSequencer_BuyPelts
             }
             else if (code.opcode == OpCodes.Ldfld && code.operand == forLoopI)
             {
-                CodeInstruction nextCode = codes[i+1];
+                CodeInstruction nextCode = codes[i + 1];
                 if (nextCode.opcode == OpCodes.Ldc_I4_3)
                 {
                     // Instead of pushing 3, push the total amount of pelts
@@ -179,7 +179,7 @@ internal class BuyPeltsSequencer_BuyPelts
                 }
             }
         }
-        
+
         return codes;
     }
 
@@ -210,10 +210,10 @@ internal class BuyPeltsSequencer_CreatePelt
         // ================================================
 
         Vector3 r = default;
-        MethodInfo AdjustPositionInfo =  SymbolExtensions.GetMethodInfo(() => AdjustPosition(1, ref r));
+        MethodInfo AdjustPositionInfo = SymbolExtensions.GetMethodInfo(() => AdjustPosition(1, ref r));
         MethodInfo PeltNamesInfo = AccessTools.PropertyGetter(typeof(CardLoader), "PeltNames");
-        MethodInfo AllPeltsAvailableAtTraderInfo =  SymbolExtensions.GetMethodInfo(() => PeltManager.AllPeltsAvailableAtTrader());
-        
+        MethodInfo AllPeltsAvailableAtTraderInfo = SymbolExtensions.GetMethodInfo(() => PeltManager.AllPeltsAvailableAtTrader());
+
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
         for (int i = 0; i < codes.Count; i++)
         {
@@ -236,7 +236,7 @@ internal class BuyPeltsSequencer_CreatePelt
                 code.operand = AllPeltsAvailableAtTraderInfo;
             }
         }
-        
+
         return codes;
     }
 
@@ -247,15 +247,15 @@ internal class BuyPeltsSequencer_CreatePelt
         float peltsPerRow = 3;
         float xPadding = 1.6f;
         float zPadding = -2.0f;
-        
+
         // If we have 7 or more pelts to buy then make more space!
         if (totalCardsAtTrader > 6)
         {
             peltsPerRow += 1;
             xPadding -= 0.3f;
         }
-        
-        
+
+
         // Vector3 vector = this.PELT_CARDS_ANCHOR + this.PELT_SPACING * (float)index;
         vector = BuyPeltsSequencer_BuyPelts.s_BuyPeltsSequencer.PELT_CARDS_ANCHOR;
         vector.x += xPadding * (index % (peltsPerRow));

@@ -1,7 +1,7 @@
 using DiskCardGame;
+using HarmonyLib;
 using System.Collections;
 using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
@@ -284,14 +284,14 @@ internal static class CustomTriggerPatches
     private static bool OpposingSlotsPrefix(PlayableCard __instance, ref List<CardSlot> __result, ref int __state)
     {
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
-        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false) - 
+        all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false));
         bool didModify = false;
         bool discard = false;
         __state = 1;
-        foreach(var opposing in all)
+        foreach (var opposing in all)
         {
-            if(opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), __result ?? new(), __state, false))
+            if (opposing.RespondsToModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), __result ?? new(), __state, false))
             {
                 didModify = true;
                 __result = opposing.CollectModifyAttackSlots(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new List<CardSlot>(), __result ?? new(), ref __state, ref discard);
@@ -300,7 +300,7 @@ internal static class CustomTriggerPatches
         }
         if (!didModify && __instance.HasAbility(Ability.AllStrike))
         {
-            __state = Mathf.Max(1, (__instance.OpponentCard ? Singleton<BoardManager>.Instance.PlayerSlotsCopy : Singleton<BoardManager>.Instance.OpponentSlotsCopy).FindAll(x => x.Card != null && 
+            __state = Mathf.Max(1, (__instance.OpponentCard ? Singleton<BoardManager>.Instance.PlayerSlotsCopy : Singleton<BoardManager>.Instance.OpponentSlotsCopy).FindAll(x => x.Card != null &&
                 !__instance.CanAttackDirectly(x)).Count);
         }
         if (didModify)

@@ -1,7 +1,7 @@
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Triggers;
+using System.Runtime.CompilerServices;
 
 namespace InscryptionAPI.Card;
 

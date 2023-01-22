@@ -1,5 +1,4 @@
 using DiskCardGame;
-using InscryptionAPI.Ascension;
 using System.Collections;
 
 namespace InscryptionAPI.Ascension;

@@ -32,7 +32,7 @@ public class CustomSpecialNodeData : SpecialNodeData
 
     internal void OnPostGeneration(MapNode2D node)
     {
-        if(Node != null && Node.nodeAnimation != null && Node.nodeAnimation.Count > 0)
+        if (Node != null && Node.nodeAnimation != null && Node.nodeAnimation.Count > 0)
         {
             AnimatingSprite sprite = node.GetComponentInChildren<AnimatingSprite>();
             if (sprite != null)
@@ -41,7 +41,7 @@ public class CustomSpecialNodeData : SpecialNodeData
                 sprite.SetTexture(sprite.textureFrames[0]);
             }
         }
-        else if(Node == null)
+        else if (Node == null)
         {
             try
             {
@@ -82,7 +82,7 @@ public class CustomSpecialNodeData : SpecialNodeData
     /// <returns>If runtime data contains valuem, key. If it does not, returns the default.</returns>
     public object Get(string key)
     {
-        if(runtimeData.TryGetValue(key, out var val))
+        if (runtimeData.TryGetValue(key, out var val))
         {
             return val;
         }
@@ -98,7 +98,7 @@ public class CustomSpecialNodeData : SpecialNodeData
     {
         if (runtimeData.TryGetValue(key, out var val))
         {
-            if(val is T t)
+            if (val is T t)
             {
                 return t;
             }

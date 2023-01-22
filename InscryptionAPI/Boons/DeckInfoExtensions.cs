@@ -18,7 +18,7 @@ public static class DeckInfoExtensions
         bool removedItem = false;
         self.Boons.RemoveAll(delegate (BoonData d)
         {
-            if(d != null && d.type == type && !removedItem)
+            if (d != null && d.type == type && !removedItem)
             {
                 removedItem = true;
                 return true;
@@ -26,7 +26,7 @@ public static class DeckInfoExtensions
             return false;
         });
         List<BoonBehaviour> behaviors = BoonBehaviour.FindInstancesOfType(type).FindAll(x => x.GetComponent<DestroyingFlag>() == null);
-        if(behaviors.Count > 0)
+        if (behaviors.Count > 0)
         {
             behaviors[0].gameObject.DestroyWhenStackClear();
             BoonBehaviour.EnsureInstancesLoaded();

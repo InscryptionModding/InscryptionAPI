@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -54,7 +54,7 @@ public static class AbilityManager
         /// <value></value>
         public Texture CustomFlippedTexture { get; internal set; }
 
-        internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new ();
+        internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new();
 
         /// <summary>
         /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
@@ -115,7 +115,7 @@ public static class AbilityManager
     /// </summary>
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
     internal readonly static ObservableCollection<FullAbility> NewAbilities = new();
-    
+
     /// <summary>
     /// The current processed list of all abilities in the game, including vanilla and mod-added abilities.
     /// </summary>
@@ -192,7 +192,7 @@ public static class AbilityManager
     }
 
     private static List<FullAbility> GenBaseGameAbilityList()
-    {           
+    {
         bool useReversePatch = true;
         try
         {
@@ -355,7 +355,7 @@ public static class AbilityManager
                 __result.Add(ability.ability);
             }
         }
-        
+
         return false;
     }
 
@@ -393,7 +393,7 @@ public static class AbilityManager
                     int curPageNum = (int)Ability.NUM_ABILITIES;
                     List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
-                    foreach(FullAbility fab in abilitiesToAdd)
+                    foreach (FullAbility fab in abilitiesToAdd)
                     {
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;

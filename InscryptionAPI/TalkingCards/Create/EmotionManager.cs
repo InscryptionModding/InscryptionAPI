@@ -1,8 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using InscryptionAPI.TalkingCards.Helpers;
 
 #nullable enable

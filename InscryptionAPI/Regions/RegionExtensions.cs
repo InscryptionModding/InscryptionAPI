@@ -270,7 +270,8 @@ public static class RegionExtensions
     }
 
     public static RegionData Build(this RegionData region, bool ignoreTerrainWarning = false, bool ignoreTribesWarning = false,
-                                   bool ignoreEncountersWarning = false, bool ignoreBossesWarning = false) {
+                                   bool ignoreEncountersWarning = false, bool ignoreBossesWarning = false)
+    {
 
         if (!ignoreTerrainWarning && (region.terrainCards == null || region.terrainCards.Count == 0))
             InscryptionAPIPlugin.Logger.LogWarning($"Region {region.name} does not have any terrain cards!");

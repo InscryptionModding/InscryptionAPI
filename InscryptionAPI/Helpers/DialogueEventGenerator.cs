@@ -1,6 +1,6 @@
-using System.Reflection;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Guid;
+using System.Reflection;
 
 namespace InscryptionAPI.Helpers;
 
@@ -8,7 +8,7 @@ namespace InscryptionAPI.Helpers;
 public static class DialogueEventGenerator
 {
     [Obsolete("Use DialogueManager.GenerateEvent instead")]
-    public static DialogueEvent GenerateEvent(string name, List<CustomLine> mainLines, List<List<CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = 
+    public static DialogueEvent GenerateEvent(string name, List<CustomLine> mainLines, List<List<CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats =
         DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)
     {
         DialogueEvent ev = new();

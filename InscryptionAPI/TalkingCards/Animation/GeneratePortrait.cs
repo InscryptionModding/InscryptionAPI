@@ -1,9 +1,8 @@
 using DiskCardGame;
 using InscryptionAPI.Card;
-using System.Collections.Generic;
-using UnityEngine;
 using InscryptionAPI.TalkingCards.Helpers;
 using System.Reflection;
+using UnityEngine;
 
 #nullable enable
 #pragma warning disable Publicizer001
@@ -27,7 +26,7 @@ public static class GeneratePortrait
     #region Sprites
     public static readonly Sprite EmptyPortrait
         = AssetHelpers.MakeSprite(AssetHelpers.EmptyAndTransparent());
-    
+
     public static readonly (Sprite, Sprite) EmptyPortraitTuple
         = (EmptyPortrait, EmptyPortrait);
     #endregion
@@ -123,7 +122,7 @@ public static class GeneratePortrait
         }
 
         FacePrefab.layer = offscreen;
-        
+
         face.eyes.emissionRenderer = face.eyes.transform.Find("Emission").GetComponent<SpriteRenderer>();
         face.eyes.emissionRenderer.gameObject.layer = LayerMask.NameToLayer("CardOffscreenEmission");
         face.eyes.emissionRenderer.sprite = EmptyPortrait;

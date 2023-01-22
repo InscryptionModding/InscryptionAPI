@@ -1,7 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Helpers;
-using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
 
 namespace InscryptionAPI.Ascension;

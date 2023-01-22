@@ -83,7 +83,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
         List<BoonBehaviour> instance = Instances;
         foreach (BoonBehaviour ins in instance)
         {
-            if(ins != null && ins.gameObject != null)
+            if (ins != null && ins.gameObject != null)
             {
                 Destroy(ins.gameObject);
             }
@@ -94,7 +94,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
 
     internal static void EnsureInstancesLoaded()
     {
-        if(instances == null)
+        if (instances == null)
         {
             instances = new List<BoonBehaviour>();
         }
@@ -107,7 +107,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <returns>A sequence of Unity events that plays the boon card animation</returns>
     protected IEnumerator PlayBoonAnimation()
     {
-        if(BoonsHandler.Instance != null)
+        if (BoonsHandler.Instance != null)
         {
             yield return BoonsHandler.Instance.PlayBoonAnimation(boon.boon.type);
         }

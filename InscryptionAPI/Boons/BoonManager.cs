@@ -1,10 +1,10 @@
 using DiskCardGame;
-using UnityEngine;
 using HarmonyLib;
-using System.Collections;
-using System.Collections.ObjectModel;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using System.Collections;
+using System.Collections.ObjectModel;
+using UnityEngine;
 
 namespace InscryptionAPI.Boons;
 
@@ -261,7 +261,7 @@ public static class BoonManager
 
     internal static void DestroyWhenStackClear(this GameObject obj)
     {
-        if(obj.GetComponent<DestroyingFlag>() == null)
+        if (obj.GetComponent<DestroyingFlag>() == null)
         {
             var flag = obj.AddComponent<DestroyingFlag>();
             flag.StartCoroutine(flag.WaitForStackClearThenDestroy());

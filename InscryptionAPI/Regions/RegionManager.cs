@@ -1,8 +1,8 @@
+using DiskCardGame;
+using HarmonyLib;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using DiskCardGame;
-using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionAPI.Regions;
@@ -32,7 +32,7 @@ public static class RegionManager
 
     private static RegionData CloneRegion(this RegionData data)
     {
-        RegionData retval = (RegionData) UnityEngine.Object.Internal_CloneSingle(data);
+        RegionData retval = (RegionData)UnityEngine.Object.Internal_CloneSingle(data);
         retval.name = data.name;
         return retval;
     }
@@ -74,7 +74,8 @@ public static class RegionManager
 
     public static List<RegionData> AllRegionsCopy { get; private set; } = BaseGameRegions.ToList();
 
-    public static void Add(RegionData newRegion, int tier) {
+    public static void Add(RegionData newRegion, int tier)
+    {
         if (!NewRegions.Select(x => x.Region).Contains(newRegion))
         {
             NewRegions.Add(new Part1RegionData(newRegion, tier));
@@ -99,7 +100,7 @@ public static class RegionManager
     public static RegionData FromTierFull(string name, int originalTier, int newTier, bool addToPool = true)
     {
         RegionProgression copy = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
-        RegionData retval = (RegionData) RegionData.Internal_CloneSingle(copy.regions[originalTier]);
+        RegionData retval = (RegionData)RegionData.Internal_CloneSingle(copy.regions[originalTier]);
         retval.name = name;
 
         if (addToPool)
@@ -197,7 +198,7 @@ public static class RegionManager
     private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
     {
         var customregion = NewRegions.ToList().Find(x => x.Region == RunState.CurrentMapRegion);
-        if(customregion != null)
+        if (customregion != null)
         {
             reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
             __result = new EncounterData.StartCondition();

@@ -1,8 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using System.Collections.Generic;
-using System.Linq;
 using InscryptionAPI.TalkingCards.Animation;
 using InscryptionAPI.TalkingCards.Helpers;
 using UnityEngine;

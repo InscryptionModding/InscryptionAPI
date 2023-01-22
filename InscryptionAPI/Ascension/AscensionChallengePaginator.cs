@@ -113,7 +113,7 @@ public class AscensionChallengePaginator : MonoBehaviour
     {
         if (page >= 0 && page < challengeObjectsForPages.Count)
         {
-            for(int i = 0; i < challengeObjectsForPages.Count; i++)
+            for (int i = 0; i < challengeObjectsForPages.Count; i++)
             {
                 var value = challengeObjectsForPages[i];
                 if (i == page)
@@ -121,7 +121,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                     value.RemoveAll(x => x == null);
                     value.ForEach((x) =>
                     {
-                        if(x != null)
+                        if (x != null)
                         {
                             x?.SetActive(
                                 x?.GetComponentInChildren<AscensionIconInteractable>()?.Info == null ||
@@ -133,7 +133,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                 else
                 {
                     value.RemoveAll(x => x == null);
-                    value.ForEach((x) => { if (x != null) { x?.SetActive(false); }});
+                    value.ForEach((x) => { if (x != null) { x?.SetActive(false); } });
                 }
             }
         }
@@ -144,11 +144,11 @@ public class AscensionChallengePaginator : MonoBehaviour
     {
         Initialize(GetComponent<AscensionChallengeScreen>(), GetComponent<AscensionMenuScreenTransition>());
         ChallengeManager.SyncChallengeList();
-        if(rightArrow)
+        if (rightArrow)
             Destroy(rightArrow);
-        if(leftArrow)
+        if (leftArrow)
             Destroy(leftArrow);
-        for(int i = 1; i < challengeObjectsForPages.Count; i++)
+        for (int i = 1; i < challengeObjectsForPages.Count; i++)
         {
             challengeObjectsForPages[i].ForEach(x => DestroyImmediate(x));
         }
@@ -180,9 +180,9 @@ public class AscensionChallengePaginator : MonoBehaviour
         List<(ChallengeManager.FullChallenge, AscensionChallengeInfo)> challengesToAdd = new(fcs.ConvertAll(x => (x, x.Challenge).Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
         List<AscensionIconInteractable> sortedicons = new(screen.icons);
         sortedicons.Sort((x, x2) => Mathf.RoundToInt((Mathf.Abs(x.transform.position.x - x2.transform.position.x) < 0.1f ? x2.transform.position.y - x.transform.position.y : x.transform.position.x - x2.transform.position.x) * 100));
-        foreach(var icon in sortedicons)
+        foreach (var icon in sortedicons)
         {
-            if(challengesToAdd.Count > 0)
+            if (challengesToAdd.Count > 0)
             {
                 icon.AssignInfo(challengesToAdd[0].Item2);
                 challengesToAdd.RemoveAt(0);

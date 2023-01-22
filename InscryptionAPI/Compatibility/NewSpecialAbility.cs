@@ -25,7 +25,7 @@ public class NewSpecialAbility
             this.abilityBehaviour = abilityBehaviour;
             this.id = id;
         }
-            
+
         if (statIconInfo != null)
         {
             StatIconManager.Add(id.guid, statIconInfo, abilityBehaviour);
