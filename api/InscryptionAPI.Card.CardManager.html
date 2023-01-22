@@ -279,7 +279,7 @@ public static class CardManager</code></pre>
   </span>
   <a id="InscryptionAPI_Card_CardManager_New_" data-uid="InscryptionAPI.Card.CardManager.New*"></a>
   <h4 id="InscryptionAPI_Card_CardManager_New_System_String_System_String_System_String_System_Int32_System_Int32_System_String_" data-uid="InscryptionAPI.Card.CardManager.New(System.String,System.String,System.String,System.Int32,System.Int32,System.String)">New(String, String, String, Int32, Int32, String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new card to the card pool</p>
+  <div class="markdown level1 summary"><p>Adds a new card to the card pool.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -305,25 +305,25 @@ public static class CardManager</code></pre>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">name</span></td>
-        <td><p>The name of your card in the card pool. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name]</p>
+        <td><p>The internal name of your card - used to find and reference your card. If this name does not match the mod prefix, it will be changed to match [mod_prefix]_[name].</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">displayName</span></td>
-        <td><p>The displayed name of the card</p>
+        <td><p>The displayed name of the card - what will be seen in-game on the card.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">attack</span></td>
-        <td><p>The attack power of the card</p>
+        <td><p>The Power of the card.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">health</span></td>
-        <td><p>The health of the card</p>
+        <td><p>The Health of the card.</p>
 </td>
       </tr>
       <tr>
@@ -345,7 +345,8 @@ public static class CardManager</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">DiskCardGame.CardInfo</span></td>
-        <td></td>
+        <td><p>The newly created card&apos;s CardInfo.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -378,7 +379,7 @@ public static class CardManager</code></pre>
       <tr>
         <td><span class="xref">DiskCardGame.CardInfo</span></td>
         <td><span class="parametername">card</span></td>
-        <td><p>The card to remove</p>
+        <td><p>The card to remove.</p>
 </td>
       </tr>
     </tbody>
