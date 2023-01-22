@@ -123,6 +123,7 @@ public class TradePeltsSequencer_GetTradeCardInfos
         
         PeltManager.CustomPeltData pelt = PeltManager.AllNewPelts[tier - 3];
         List<CardInfo> cardOptions = pelt.GetChoices();
+        cardOptions.RemoveAll((a) => a.Health == 0);
         if (cardOptions.Count == 0)
         {
             InscryptionAPIPlugin.Logger.LogWarning("No cards provided for pelt '" + pelt.CardNameOfPelt + "'");
