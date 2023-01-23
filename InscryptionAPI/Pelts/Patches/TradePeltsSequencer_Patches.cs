@@ -114,10 +114,23 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
         return codes;
     }
 
+    public static void Postfix(ref List<CardInfo> __result, int tier, bool mergedPelt)
+    {
+        PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
+        if (pelt.ModifyCardChoiceAtTrader != null)
+        {
+            foreach (CardInfo cardInfo in __result)
+            {
+                pelt.ModifyCardChoiceAtTrader(cardInfo);
+            }
+        }
+        
+    }
+
     private static void GetCardOptions(int tier, ref List<CardInfo> cards)
     {
         PeltManager.PeltData pelt = PeltManager.AllPelts()[tier];
-        List<CardInfo> cardOptions = pelt.CardChoices;
+        List<CardInfo> cardOptions = pelt.CardChoices();
         cardOptions.RemoveAll((a) => a.Health == 0);
         if (cardOptions.Count == 0)
         {

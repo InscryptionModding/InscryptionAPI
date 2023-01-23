@@ -16,7 +16,6 @@ internal class BuyPeltsSequencer_PeltPrices
     /// </summary>
     public static void Postfix(CardLoader __instance, ref int[] __result)
     {
-        PeltManager.BasePeltPrices = __result;
         __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.BuyPrice).ToArray();
     }
 }
@@ -79,10 +78,11 @@ internal class BuyPeltsSequencer_BuyPelts
     }
     private static void GeneratePeltChoices()
     {
+        InscryptionAPIPlugin.Logger.LogInfo("[GeneratePeltChoices]");
         int randomseed = SaveManager.SaveFile.GetCurrentRandomSeed();
 
         List<PeltManager.PeltData> availableAtTrader = PeltManager.AllPeltsAvailableAtTrader();
-        availableAtTrader.RemoveAll((a) => a.CardChoices.Count == 0);
+        availableAtTrader.RemoveAll((a) => a.CardChoices().Count == 0);
 
         if (availableAtTrader.Count > 8)
         {
@@ -95,7 +95,7 @@ internal class BuyPeltsSequencer_BuyPelts
             List<PeltManager.PeltData> allCards = new(availableAtTrader);
             allCards.Remove(selectedCards[0]);
 
-            List<PeltManager.PeltData> rares = allCards.FindAll((a) => CardLoader.GetCardByName(a.peltCardName).metaCategories.Contains(CardMetaCategory.Rare)).ToList();
+            List<PeltManager.PeltData> rares = allCards.FindAll((a) => CardLoader.GetCardByName(a.peltCardName).appearanceBehaviour.Contains(CardAppearanceBehaviour.Appearance.GoldEmission)).ToList();
             List<PeltManager.PeltData> nonRares = allCards.FindAll((a) => !rares.Contains(a));
 
             // 3 rares
@@ -122,8 +122,6 @@ internal class BuyPeltsSequencer_BuyPelts
                 selectedCards.Add(selected);
             }
 
-            // TODO: Change GiveFreePeltSequence to not give at index 0
-
             PeltsAvailableAtTrader.AddRange(selectedCards);
         }
         else
@@ -133,11 +131,23 @@ internal class BuyPeltsSequencer_BuyPelts
 
         PeltsAvailableAtTrader.Sort(static (a, b) =>
         {
-            // Sort by cost by lowest to highest
+            // Sort by cost. Lowest to Highest
             int aCost = a.BuyPrice;
             int bCost = b.BuyPrice;
-            return aCost - bCost;
+            int costDiff = aCost - bCost;
+            if (costDiff != 0)
+            {
+                return costDiff;
+            }
+
+            // Sort by cost by which one has the most cards. Least to most
+            int aCards = a.CardChoices().Count;
+            int bCards = b.CardChoices().Count;
+            return aCards - bCards;
         });
+        
+        
+        InscryptionAPIPlugin.Logger.LogInfo("[GeneratePeltChoices] Done " + string.Join(",", PeltsAvailableAtTrader.Select((a)=>a.peltCardName)));
     }
 
     /// <summary>
@@ -213,7 +223,7 @@ internal class BuyPeltsSequencer_CreatePelt
         Vector3 r = default;
         MethodInfo AdjustPositionInfo = SymbolExtensions.GetMethodInfo(() => AdjustPosition(1, ref r));
         MethodInfo PeltNamesInfo = AccessTools.PropertyGetter(typeof(CardLoader), "PeltNames");
-        MethodInfo AllPeltsAvailableAtTraderInfo = SymbolExtensions.GetMethodInfo(() => PeltManager.AllPeltsAvailableAtTrader());
+        MethodInfo AllPeltsAvailableAtTraderInfo = SymbolExtensions.GetMethodInfo(() => GetCardByName());
 
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
         for (int i = 0; i < codes.Count; i++)
@@ -239,6 +249,11 @@ internal class BuyPeltsSequencer_CreatePelt
         }
 
         return codes;
+    }
+
+    private static string[] GetCardByName()
+    {
+        return BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.peltCardName).ToArray();
     }
 
     private static void AdjustPosition(int index, ref Vector3 vector)

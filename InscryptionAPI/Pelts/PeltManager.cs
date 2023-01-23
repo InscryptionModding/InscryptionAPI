@@ -26,8 +26,9 @@ public static class PeltManager
 
         public bool isSoldByTrapper = true;
 
-        public Func<List<CardInfo>> GetCardChoices;
+        public Func<List<CardInfo>> CardChoices;
         public Func<int, int> BuyPriceAdjustment = (int basePrice) => basePrice + RunState.CurrentRegionTier;
+        public Action<CardInfo> ModifyCardChoiceAtTrader = null;
 
         public int baseBuyPrice;
         public int maxBuyPrice;
@@ -50,14 +51,31 @@ public static class PeltManager
                 return Mathf.Max(1, finalPrice);
             }
         }
-        public List<CardInfo> CardChoices => GetCardChoices();
     }
 
     private static List<PeltData> AllNewPelts = new List<PeltData>();
     private static List<PeltData> BasePelts = null;
     
-    internal static string[] BasePeltNames { get; set; }
-    internal static int[] BasePeltPrices { get; set; }
+    internal static string[] BasePeltNames { get; } = new string[]
+    {
+        "PeltHare",
+        "PeltWolf",
+        "PeltGolden"
+    };
+    
+    internal static int[] BasePeltPrices 
+    {
+        get
+        {
+            BuyPeltsSequencer instance = SpecialNodeHandler.Instance.buyPeltsSequencer;
+            return new int[]
+            {
+                2 / (instance.TrapperBossDefeated ? 2 : 1) * (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.ExpensivePelts) ? 2 : 1),
+                (4 + RunState.CurrentRegionTier) / (instance.TrapperBossDefeated ? 2 : 1) * (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.ExpensivePelts) ? 2 : 1),
+                Mathf.Min(20, (7 + RunState.CurrentRegionTier * 2) / (instance.TrapperBossDefeated ? 2 : 1) * (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.ExpensivePelts) ? 2 : 1))
+            };
+        }
+    }
 
     internal static List<PeltData> AllPelts()
     {
@@ -67,10 +85,6 @@ public static class PeltManager
 
     internal static List<Tuple<string, int>> GetBasePeltData()
     {
-        // Call these so the patch caches the base prices (Gross omg... but easiest solution atm)
-        var z = SpecialNodeHandler.Instance.buyPeltsSequencer.PeltPrices;
-        var x = CardLoader.PeltNames;
-
         List<Tuple<string, int>> data = new List<Tuple<string, int>>();
         for (int i = 0; i < BasePeltNames.Length; i++)
         {
@@ -86,21 +100,25 @@ public static class PeltManager
     {
         List<PeltData> pelts = new List<PeltData>();
         
-        string[] peltNames = CardLoader.PeltNames;
-        for (int i = 0; i < peltNames.Length; i++)
+        for (int i = 0; i < BasePeltNames.Length; i++)
         {
-            pelts.Add(new VanillaPeltData()
+            var peltData = new VanillaPeltData()
             {
-                peltCardName = peltNames[i],
+                peltCardName = BasePeltNames[i],
                 choicesOfferedByTrader = 8,
                 extraAbilitiesToAdd = 0,
                 isSoldByTrapper = true,
-            });
+            };
+            peltData.CardChoices = static ()=>CardLoader.GetUnlockedCards(CardMetaCategory.TraderOffer, CardTemple.Nature);
+            pelts.Add(peltData);
         }
 
+        // Wolf Pelt
+        pelts[1].extraAbilitiesToAdd = 1;
+        
         // Golden Pelt
-        pelts[2].extraAbilitiesToAdd = 1;
         pelts[2].choicesOfferedByTrader = 4;
+        pelts[2].CardChoices = static ()=>CardLoader.GetUnlockedCards(CardMetaCategory.Rare, CardTemple.Nature);
 
         return pelts;
     }
@@ -121,7 +139,7 @@ public static class PeltManager
         {
             pluginGuid = pluginGuid,
             peltCardName = peltCardInfo.name,
-            GetCardChoices = getCardChoices,
+            CardChoices = getCardChoices,
             baseBuyPrice = baseBuyPrice,
             extraAbilitiesToAdd = extraAbilitiesToAdd,
             choicesOfferedByTrader = choicesOfferedByTrader

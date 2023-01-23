@@ -68,6 +68,18 @@ public static class PeltExtensions
         peltData.BuyPriceAdjustment = buyPriceAdjustment;
         return peltData;
     }
+    
+    /// <summary>
+    /// Sets the function used to change individual cards offered at the trader. Example: Add a decal to all cards
+    /// </summary>
+    /// <param name="peltData">The PeltData to access.</param>
+    /// <param name="modifyCardChoiceAtTrader">The Func used to change a card at the trader.</param>
+    /// <returns>The same PeltData so a chain can continue.</returns>
+    public static PeltData SetModifyCardChoiceAtTrader(this PeltData peltData, Action<CardInfo> modifyCardChoiceAtTrader)
+    {
+        peltData.ModifyCardChoiceAtTrader = modifyCardChoiceAtTrader;
+        return peltData;
+    }
     #endregion
 
     /// <summary>
@@ -100,7 +112,7 @@ public static class PeltExtensions
     /// <returns>The same PeltData so a chain can continue.</returns>
     public static PeltData SetCardChoices(this PeltData peltData, Func<List<CardInfo>> getCardChoices)
     {
-        peltData.GetCardChoices = getCardChoices;
+        peltData.CardChoices = getCardChoices;
         return peltData;
     }
 }
