@@ -53,7 +53,7 @@ public static class PeltManager
         }
     }
 
-    private static List<PeltData> AllNewPelts = new List<PeltData>();
+    internal static List<PeltData> AllNewPelts = new List<PeltData>();
     private static List<PeltData> BasePelts = null;
     
     internal static string[] BasePeltNames { get; } = new string[]

@@ -53,6 +53,14 @@ internal class BuyPeltsSequencer_BuyPelts
     /// </summary>
     public static bool Prefix()
     {
+        if (PeltManager.AllNewPelts.Count == 0)
+        {
+            // No custom pelts. Don't change anything!
+            PeltsAvailableAtTrader.Clear();
+            PeltsAvailableAtTrader.AddRange(PeltManager.AllPelts());
+            return true;
+        }
+        
         // Move card pile off screen
         FieldInfo cardPileField = AccessTools.Field(BuyPeltsSequencerClass, "deckPile");
         CardPile cardPile = (CardPile)cardPileField.GetValue(s_BuyPeltsSequencer);
