@@ -128,12 +128,12 @@ public static class PeltManager
     /// </summary>
     /// <param name="pluginGuid">GUID of the mod adding this pelt.</param>
     /// <param name="peltCardInfo">The CardInfo for the actual pelt card.</param>
-    /// <param name="getCardChoices">The list of possible cards the Trader will offer for this pelt.</param>
     /// <param name="baseBuyPrice">The starting price of this pelt when buying from the Trapper.</param>
     /// <param name="extraAbilitiesToAdd">The number of extra sigils card choices will have when trading this pelt to the Trader.</param>
     /// <param name="choicesOfferedByTrader">How many cards to offer the player when trading the pelt.</param>
+    /// <param name="getCardChoices">The list of possible cards the Trader will offer for this pelt.</param>
     /// <returns>The newly created CustomPeltData so a chain can continue.</returns>
-    public static PeltData New(string pluginGuid, CardInfo peltCardInfo, Func<List<CardInfo>> getCardChoices, int baseBuyPrice, int extraAbilitiesToAdd, int choicesOfferedByTrader)
+    public static PeltData New(string pluginGuid, CardInfo peltCardInfo, int baseBuyPrice, int extraAbilitiesToAdd, int choicesOfferedByTrader, Func<List<CardInfo>> getCardChoices)
     {
         PeltData peltData = new()
         {
