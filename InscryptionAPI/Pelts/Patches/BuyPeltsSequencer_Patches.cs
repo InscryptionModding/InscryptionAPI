@@ -86,7 +86,6 @@ internal class BuyPeltsSequencer_BuyPelts
     }
     private static void GeneratePeltChoices()
     {
-        InscryptionAPIPlugin.Logger.LogInfo("[GeneratePeltChoices]");
         int randomseed = SaveManager.SaveFile.GetCurrentRandomSeed();
 
         List<PeltManager.PeltData> availableAtTrader = PeltManager.AllPeltsAvailableAtTrader();
@@ -153,9 +152,6 @@ internal class BuyPeltsSequencer_BuyPelts
             int bCards = b.CardChoices().Count;
             return aCards - bCards;
         });
-        
-        
-        InscryptionAPIPlugin.Logger.LogInfo("[GeneratePeltChoices] Done " + string.Join(",", PeltsAvailableAtTrader.Select((a)=>a.peltCardName)));
     }
 
     /// <summary>
