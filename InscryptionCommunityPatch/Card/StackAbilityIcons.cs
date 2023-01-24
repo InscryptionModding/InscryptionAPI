@@ -337,7 +337,7 @@ public static class StackAbilityIcons
         if (tensDigitTex != null)
             try
             {
-                newTexture.SetPixels(patchLocation.x - 13, patchLocation.y, tensDigitTex.width, tensDigitTex.height, tensDigitTex.GetPixels(), 0);
+                newTexture.SetPixels(patchLocation.x - (onesDigitTex.width + 1), patchLocation.y, tensDigitTex.width, tensDigitTex.height, tensDigitTex.GetPixels(), 0);
             }
             catch { PatchPlugin.Logger.LogError("Couldn't properly set new texture."); }
 
