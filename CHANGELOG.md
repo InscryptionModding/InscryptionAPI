@@ -1,9 +1,12 @@
 # Changelog
 
-## 2.10.0
-- Added LocalizationManager for more language support with mods
-
 ## 2.9.1
+- Added LocalizationManager for more language support with mods
+- Completely revamped PeltManager to be more user friendly (Mod breaking)
+- Added helper method for custom pelts to change cards trader
+- Pelts offered by Trapper capped at 8.
+- Pelts offered by Trapper are now randomized if more than 8
+- Fixed soft lock at trader when having more pelts than cards to offer 
 - Fixed the campfire fix breaking the normal sequence
 
 ## 2.9.0
