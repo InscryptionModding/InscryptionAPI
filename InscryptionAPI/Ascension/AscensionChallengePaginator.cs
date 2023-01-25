@@ -239,46 +239,42 @@ public class AscensionChallengePaginator : MonoBehaviour
                 if (icon != null && icon.iconRenderer != null && icon.gameObject.activeSelf)
                 {
                     if (icon.iconRenderer.transform.position.x < bottomLeft.x)
-                    {
                         bottomLeft.x = icon.iconRenderer.transform.position.x;
-                    }
+
                     if (icon.iconRenderer.transform.position.x > topRight.x)
-                    {
                         topRight.x = icon.iconRenderer.transform.position.x;
-                    }
+
                     if (icon.iconRenderer.transform.position.y < bottomLeft.y)
-                    {
                         bottomLeft.y = icon.iconRenderer.transform.position.y;
-                    }
+
                     if (icon.iconRenderer.transform.position.y > topRight.y)
-                    {
                         topRight.y = icon.iconRenderer.transform.position.y;
-                    }
                 }
             }
+            Transform screenContinue = screen?.continueButton.gameObject.transform;
+
             Vector3 leftArrowPos = Vector3.Lerp(new Vector3(bottomLeft.x, topRight.y, topRight.z), new Vector3(bottomLeft.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.left / 3f;
-            Vector3 rightArrowPos = rightArrowPos = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f; ;
+            Vector3 rightArrowPos = Vector3.Lerp(new Vector3(topRight.x, topRight.y, topRight.z), new Vector3(topRight.x, bottomLeft.y, topRight.z), 0.5f) + Vector3.right / 3f;
 
-            bool offScreen = Math.Abs(Camera.current.WorldToScreenPoint(bottomLeft).x - Camera.current.WorldToScreenPoint(leftArrowPos).x) > 100f;
-            
-            // if the arrows would appear off-screen / sufficiently clipped by the edge of the screen, move them
-            if (offScreen)
+            // if the arrows would be offscreen/clipped by the screen edge,
+            // or if the arrows' positions have been overriden by the config
+            if (screenContinue.position.x < rightArrowPos.x || InscryptionAPIPlugin.configOverrideArrows.Value)
             {
-                leftArrowPos = new(
-                (float)(screen?.transform.position.x - screen?.continueButton.gameObject.transform.position.x) + Vector3.right.x / 2f,
-                (float)(screen?.continueButton.gameObject.transform.position.y),
-                (float)(screen?.continueButton.gameObject.transform.position.z));
+                rightArrowPos = screenContinue.position + Vector3.left / 2f;
 
-                rightArrowPos = (Vector3)screen?.continueButton.gameObject.transform.position + Vector3.left / 2f;
+                leftArrowPos = new(
+                (float)(screen?.transform.position.x - screenContinue.position.x) + Vector3.right.x / 2f,
+                screenContinue.position.y,
+                screenContinue.position.z);
             }
 
-            leftArrow = UnityEngine.Object.Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
+            leftArrow = Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageLeftButton.gameObject);
             leftArrow.transform.SetParent(screen?.transform ?? transform.transform, worldPositionStays: false);
             leftArrow.transform.position = leftArrowPos;
             leftArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
             leftArrow.GetComponent<AscensionMenuInteractable>().CursorSelectStarted += (x) => PreviousPage();
 
-            rightArrow = UnityEngine.Object.Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
+            rightArrow = Instantiate((screen?.gameObject ?? transform.gameObject).GetComponentInParent<AscensionMenuScreens>().cardUnlockSummaryScreen.GetComponent<AscensionCardsSummaryScreen>().pageRightButton.gameObject);
             rightArrow.transform.SetParent(screen?.transform ?? transform.transform, worldPositionStays: false);
             rightArrow.transform.position = rightArrowPos;
             rightArrow.GetComponent<AscensionMenuInteractable>().ClearDelegates();
