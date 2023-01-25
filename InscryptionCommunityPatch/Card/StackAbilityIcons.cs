@@ -11,8 +11,9 @@ public static class StackAbilityIcons
 {
     // This patch modifies ability sigils such that multiple instances of the same sigil
     // are displayed as a single sigil with a number to indicate how many copies there are
-    private static Texture2D[] NUMBER_TEXTURES = new Texture2D[]
+    private static readonly Texture2D[] NUMBER_TEXTURES = new Texture2D[]
     {
+        TextureHelper.GetImageAsTexture("Stack_0.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_1.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_2.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_3.png", typeof(StackAbilityIcons).Assembly),
@@ -24,8 +25,9 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_9.png", typeof(StackAbilityIcons).Assembly)
     };
 
-    private static Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
+    private static readonly Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
     {
+        TextureHelper.GetImageAsTexture("Stack_0_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_1_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_2_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_3_med.png", typeof(StackAbilityIcons).Assembly),
@@ -48,7 +50,7 @@ public static class StackAbilityIcons
         return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
     }
 
-    private static Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
+    private static readonly Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
     {
         GetGBCNumberSprite(1),
         GetGBCNumberSprite(2),
@@ -91,9 +93,9 @@ public static class StackAbilityIcons
         }
     }
 
-    private static int NORMAL = 1;
-    private static int MEDIUM = 2;
-    private static int FORCED = 3;
+    private static readonly int NORMAL = 1;
+    private static readonly int MEDIUM = 2;
+    private static readonly int FORCED = 3;
 
     private static Dictionary<string, Texture2D> patchedTexture = new Dictionary<string, Texture2D>();
     private static Dictionary<Ability, Tuple<Vector2Int, int>> patchLocations = new Dictionary<Ability, Tuple<Vector2Int, int>>();
@@ -237,8 +239,9 @@ public static class StackAbilityIcons
         }
 
         // Simplified the logic for next best to prevent issues - can be easily reverted if more issues arise
-        Vector2Int lowerRight = new Vector2Int(abilityTexture.width - NUMBER_TEXTURES[0].width, 0);
-        Tuple<Vector2Int, int> nextBest = new Tuple<Vector2Int, int>(lowerRight, NORMAL);
+
+        Vector2Int lowerRight = new(abilityTexture.width - NUMBER_TEXTURES[0].width, 0);
+        Tuple<Vector2Int, int> nextBest = new(lowerRight, NORMAL);
 
         patchLocations.Add(ability, nextBest);
         return patchLocations[ability];
@@ -248,6 +251,7 @@ public static class StackAbilityIcons
     {
         // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
         // Create a temporary RenderTexture of the same size as the texture
+
         RenderTexture tmp = RenderTexture.GetTemporary(
                             texture.width,
                             texture.height,
@@ -266,7 +270,8 @@ public static class StackAbilityIcons
         RenderTexture.active = tmp;
 
         // Create a new readable Texture2D to copy the pixels to it
-        Texture2D myTexture2D = new Texture2D(texture.width, texture.height);
+
+        Texture2D myTexture2D = new(texture.width, texture.height);
 
         // Copy the pixels from the RenderTexture to the new Texture
         myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
@@ -283,14 +288,18 @@ public static class StackAbilityIcons
 
     private static Texture2D PatchTexture(Ability ability, int count)
     {
-        if (count <= 1 || count >= 10) // We can't actually patch anything more than 9 stacks right now.
+        if (count <= 1 || count > 99) // only supports 2-digit-long numbers (why would you have 100 stacks anyways?)
             return null;
 
-        string textureName = $"{ability.ToString()}-icon-{count}-PATCHEDINF";
+        string textureName = $"{ability}-icon-{count}-PATCHEDINF";
+
         if (patchedTexture.ContainsKey(textureName))
             return patchedTexture[textureName];
 
+        PatchPlugin.Logger.LogDebug($"Ability [{AbilitiesUtil.GetInfo(ability).rulebookName}] stacks {count} times.");
+
         // Copy the old texture to the new texture
+        bool doubleDigit = count > 9;
         Texture2D newTexture = DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString(), false, false) as Texture2D);
         newTexture.name = textureName;
 
@@ -306,8 +315,33 @@ public static class StackAbilityIcons
         }
 
         // Set the new number
-        Texture2D newNumber = (textureType == NORMAL) ? NUMBER_TEXTURES[count - 1] : MEDIUM_NUMBER_TEXTURES[count - 1];
-        newTexture.SetPixels(patchLocation.x, patchLocation.y, newNumber.width, newNumber.height, newNumber.GetPixels(), 0);
+        Texture2D tensDigitTex = null;
+        Texture2D onesDigitTex;
+        if (doubleDigit)
+        {
+            int tensPlace = 1;
+            int onesPlace = count - 10;
+            while (onesPlace > 9)
+            {
+                tensPlace++;
+                onesPlace -= 10;
+            }
+            Texture2D tensTex = textureType == NORMAL ? NUMBER_TEXTURES[tensPlace] : MEDIUM_NUMBER_TEXTURES[tensPlace];
+            Texture2D onesTex = textureType == NORMAL ? NUMBER_TEXTURES[onesPlace] : MEDIUM_NUMBER_TEXTURES[onesPlace];
+            onesDigitTex = onesTex;
+            tensDigitTex = tensTex;
+        }
+        else
+            onesDigitTex = textureType == NORMAL ? NUMBER_TEXTURES[count] : MEDIUM_NUMBER_TEXTURES[count];
+
+        if (tensDigitTex != null)
+            try
+            {
+                newTexture.SetPixels(patchLocation.x - (onesDigitTex.width + 1), patchLocation.y, tensDigitTex.width, tensDigitTex.height, tensDigitTex.GetPixels(), 0);
+            }
+            catch { PatchPlugin.Logger.LogError("Couldn't properly set new texture."); }
+
+        newTexture.SetPixels(patchLocation.x, patchLocation.y, onesDigitTex.width, onesDigitTex.height, onesDigitTex.GetPixels(), 0);
 
         newTexture.filterMode = FilterMode.Point;
 
@@ -323,10 +357,7 @@ public static class StackAbilityIcons
     [HarmonyPostfix]
     private static void AddIconNumber(Ability ability, CardInfo info, PlayableCard card, ref AbilityIconInteractable __instance)
     {
-        if (info == null && card == null)
-            return;
-
-        if (!AbilitiesUtil.GetInfo(ability).canStack)
+        if ((info == null && card == null) || !AbilitiesUtil.GetInfo(ability).canStack)
             return;
 
         // Here's the goal
@@ -344,7 +375,6 @@ public static class StackAbilityIcons
 
         if (count > 1)
         {
-            PatchPlugin.Logger.LogDebug($"Ability {ability.ToString()} stacks {count} times");
             // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
         }
@@ -357,7 +387,7 @@ public static class StackAbilityIcons
         List<Tuple<Ability, int>> grps = abilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Where(ab => ab == a).Count())).ToList();
         List<GameObject> abilityIconGroups = __instance.abilityIconGroups;
 
-        //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"abilityIconGroups {abilityIconGroups}");
+        //PatchPlugin.Log.LogInfo($"abilityIconGroups {abilityIconGroups}");
 
         if (abilityIconGroups.Count > 0)
         {
@@ -399,7 +429,7 @@ public static class StackAbilityIcons
                     if (countTransform == null && grps[i].Item2 <= 1)
                         continue;
 
-                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform {countTransform}");
+                    //PatchPlugin.Log.LogInfo($"countTransform {countTransform}");
                     if (countTransform == null)
                     {
                         GameObject counter = new GameObject();
@@ -417,8 +447,8 @@ public static class StackAbilityIcons
                         counter.transform.localPosition = new Vector3(.03f, -.05f, 0f);
                         countTransform = counter.transform;
                     }
-                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform.gameObject {countTransform.gameObject}");
-                    //InfiniscryptionStackableSigilsPlugin.Log.LogInfo($"countTransform.gameObject.spriterenderer {countTransform.gameObject.GetComponent<SpriteRenderer>()}");
+                    //PatchPlugin.Log.LogInfo($"countTransform.gameObject {countTransform.gameObject}");
+                    //PatchPlugin.Log.LogInfo($"countTransform.gameObject.spriterenderer {countTransform.gameObject.GetComponent<SpriteRenderer>()}");
 
                     if (grps[i].Item2 <= 1)
                         countTransform.gameObject.SetActive(false);
@@ -454,21 +484,19 @@ public static class StackAbilityIcons
         for (int i = 1; i < lines.Length; i++)
         {
             if (lines[i] == lines[i - 1])
-            {
                 duplicateCount += 1;
-            }
             else
             {
                 if (duplicateCount > 0)
-                    retval = retval + $" (x{duplicateCount + 1})";
+                    retval += $" (x{duplicateCount + 1})";
+
                 retval = retval + "\n" + lines[i];
                 duplicateCount = 0;
             }
         }
         if (duplicateCount > 0)
-        {
-            retval = retval + $" (x{duplicateCount + 1})";
-        }
+            retval += $" (x{duplicateCount + 1})";
+
         return retval;
     }
 
