@@ -74,12 +74,14 @@ public class Act1LatchAbilityFix
             yield break;
         }
 
-        PatchPlugin.Logger.LogDebug($"[LatchFix] Started death, latch name: [{__state.name}]");
+        if (PatchPlugin.configFullDebug.Value)
+            PatchPlugin.Logger.LogDebug($"[LatchFix] Started death, latch name: [{__state.name}]");
 
         List<CardSlot> validTargets = BoardManager.Instance.AllSlotsCopy;
         validTargets.RemoveAll(slot => slot.Card == null || slot.Card.Dead || __state.CardHasLatchMod(slot.Card) || slot.Card == __state.Card);
 
-        PatchPlugin.Logger.LogDebug("[LatchFix] Count of Valid Targets : " + validTargets.Count);
+        if (PatchPlugin.configFullDebug.Value)
+            PatchPlugin.Logger.LogDebug("[LatchFix] Count of Valid Targets : " + validTargets.Count);
 
         // break if no valid targets
         if (validTargets.Count == 0)
@@ -171,7 +173,8 @@ public class Act1LatchAbilityFix
                 fromLatch = SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3
             };
 
-            PatchPlugin.Logger.LogDebug($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
+            if (PatchPlugin.configFullDebug.Value)
+                PatchPlugin.Logger.LogDebug($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
 
             if (selectedSlot.Card.Info.name == "!DEATHCARD_BASE")
             {
