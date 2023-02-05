@@ -23,7 +23,7 @@ public static class AbilityManager
     private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
 
     /// <summary>
-    /// A utility class that holds all of the required information about an ability in order to be able to use it in-game
+    /// A utility class that holds all of the required information about an ability in order to be able to use it in-game.
     /// </summary>
     public class FullAbility
     {
@@ -111,7 +111,7 @@ public static class AbilityManager
     }
 
     /// <summary>
-    /// All of the vanilla game's abilities
+    /// All of the vanilla game's abilities.
     /// </summary>
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
     internal readonly static ObservableCollection<FullAbility> NewAbilities = new();
@@ -127,12 +127,12 @@ public static class AbilityManager
     public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
 
     /// <summary>
-    /// A hook for modders to add custom code to modify the ability list dynamically
+    /// A hook for modders to add custom code to modify the ability list dynamically.
     /// </summary>
     /// <remarks>There are two primary use cases for this hook:
     /// 
     /// - Making changes to abilities that may be added after your plugin initializes
-    /// - Making context-aware changes to abilities.
+    /// - Making context-aware changes to abilities
     /// 
     /// The way this operates is as follows:
     /// 
@@ -162,7 +162,7 @@ public static class AbilityManager
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
     /// <summary>
-    /// Resynchronizes the ablity list
+    /// Resynchronizes the ablity list.
     /// </summary>
     /// <remarks>Most importantly, this re-executes all custom code that was added to the [ModifyAbilityList](xref:InscryptionAPI.AbilityManager.ModifyAbilityList)
     /// event. If you are doing any sort of context-aware processing of the ability list, you may need to manually
