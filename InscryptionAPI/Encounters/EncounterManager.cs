@@ -1,7 +1,11 @@
 using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Regions;
+using Steamworks;
 using System.Collections.ObjectModel;
 using UnityEngine;
+using static DiskCardGame.EncounterBlueprintData;
 
 namespace InscryptionAPI.Encounters;
 
@@ -101,6 +105,82 @@ public static class EncounterManager
 
         if (addToPool)
             Add(retval);
+
+        return retval;
+    }
+
+    /// <summary>
+    /// Creates a new CardBlueprint.
+    /// </summary>
+    /// <param name="cardName">The internal name of the card to use.</param>
+    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c>.</param>
+    /// <param name="difficultyReplace">Whether to replace this card when a certain difficulty threshold is met.</param>
+    /// <param name="difficultyReplaceReq">The difficulty threshold for the <c>replacement</c> card to be used instead.</param>
+    /// <param name="replacement">The name of the replacement card for the difficulty replacement.</param>
+    /// <param name="minDifficulty">The minimum difficulty for this card to appear.</param>
+    /// <param name="maxDifficulty">The maximum difficulty for this card to appear.</param>
+    /// <returns>The newly created CardBlueprint.</returns>
+    public static CardBlueprint NewCardBlueprint(string cardName, int randomReplaceChance = 0,
+        bool difficultyReplace = false, int difficultyReplaceReq = 0, string replacement = null,
+        int minDifficulty = 1, int maxDifficulty = 20)
+    {
+        return new()
+        {
+            card = CardManager.AllCardsCopy.CardByName(cardName),
+            randomReplaceChance = randomReplaceChance,
+            minDifficulty = minDifficulty,
+            maxDifficulty = maxDifficulty,
+            difficultyReplace = difficultyReplace,
+            difficultyReq = difficultyReplaceReq,
+            replacement = CardManager.AllCardsCopy.CardByName(replacement)
+        };
+    }
+
+    /// <summary>
+    /// Creates a new turn using the provided card name.
+    /// </summary>
+    /// <param name="cardName">The name of the card that will be played this turn.</param>
+    /// <returns>The newly created list so a chain can continue.</returns>
+    public static List<CardBlueprint> CreateTurn(string cardName) => CreateTurn(NewCardBlueprint(cardName));
+
+    /// <summary>
+    /// Creates a new turn using the provided card names.
+    /// </summary>
+    /// <param name="cardNames">The names of the cards that will be played this turn.</param>
+    /// <returns>The newly created list so a chain can continue.</returns>
+    public static List<CardBlueprint> CreateTurn(params string[] cardNames)
+    {
+        List<CardBlueprint> cards = new();
+        foreach (string cardName in cardNames)
+            cards.Add(NewCardBlueprint(cardName));
+
+        return CreateTurn(cards.ToArray());
+    }
+
+    /// <summary>
+    /// Creates a new turn using the provided CardBlueprint.
+    /// </summary>
+    /// <param name="card">The CardBlueprint that will be used this turn. If null, creates an empty turn.</param>
+    /// <returns>The newly created list so a chain can continue.</returns>
+    public static List<CardBlueprint> CreateTurn(CardBlueprint card = null)
+    {
+        List<CardBlueprint> list = new();
+        if (card != null)
+            list.Add(card);
+
+        return list;
+    }
+
+    /// <summary>
+    /// Creates a new turn using the provided CardBlueprints.
+    /// </summary>
+    /// <param name="cards">The CardBlueprints that will be used this turn.</param>
+    /// <returns>The newly created list so a chain can continue.</returns>
+    public static List<CardBlueprint> CreateTurn(params CardBlueprint[] cards)
+    {
+        List<CardBlueprint> retval = new();
+        foreach (CardBlueprint card in cards)
+            retval.Add(card);
 
         return retval;
     }
