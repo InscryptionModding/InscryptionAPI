@@ -120,22 +120,7 @@ public static class EnergyDrone
         PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
         PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
-        // 
-        if (PoolHasEnergy || PoolHasGems)
-        {
-            string cardPoolMsg = "Card pool has ";
-            if (PoolHasEnergy)
-            {
-                cardPoolMsg += "Energy cards";
-                if (PoolHasGems)
-                    cardPoolMsg += " and ";
-            }
-            if (PoolHasGems)
-                cardPoolMsg += "Gem cards";
-
-            cardPoolMsg += ".";
-            PatchPlugin.Logger.LogDebug(cardPoolMsg);
-        }
+        PatchPlugin.Logger.LogDebug($"Card pool has: Energy cards? {PoolHasEnergy}; Mox cards? {PoolHasGems}.");
 
         UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
