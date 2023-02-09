@@ -317,8 +317,55 @@ public static class RegionManager
             }
 
             Renderer spawnedMapObjectRenderer = gameObject.GetComponentInChildren<Renderer>();
+            if (spawnedMapObjectRenderer == null)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"[RegionManager] Map object {gameObject.name} does not have a renderer attached!");
+            }
             return spawnedMapObjectRenderer;
         }
+    }
+    
+    [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
+    [HarmonyPrefix]
+    private static bool MapDataReader_SpawnAndPlaceElement(ref MapDataReader __instance, ref GameObject __result, MapElementData data, Vector2 sampleRange, bool isScenery)
+    {
+        // NOTE: We just want logging so if anyone incorrect sets any props we know what went wrong  
+        
+        GameObject gameObject = null;
+        string prefabPath = __instance.GetPrefabPath(data);
+        GameObject original = ResourceBank.Get<GameObject>(prefabPath);
+        if (original == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"[RegionManager] Could not find object {prefabPath} to spawn in region!");
+            original = Resources.Load<GameObject>("prefabs/map/mapscenery/TreasureChest");
+        }
+        
+        if (!isScenery)
+        {
+            gameObject = UnityEngine.Object.Instantiate(original);
+        }
+        else
+        {
+            MapElement mapElement = original.GetComponent<MapElement>();
+            if (mapElement == null)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"[RegionManager] {original.name} at path {prefabPath} does not have a mapElement component!");
+                mapElement = original.AddComponent<MapElement>();
+            }
+            gameObject = mapElement.GetPooledInstance<MapElement>().gameObject;
+        }
+        
+        gameObject.transform.SetParent(isScenery ? __instance.sceneryParent : __instance.nodesParent);
+        gameObject.transform.localPosition = __instance.GetRealPosFromDataPos(data.position, sampleRange);
+        if (isScenery)
+        {
+            MapElement component = gameObject.GetComponent<MapElement>();
+            __instance.scenery.Add(component);
+            component.Data = data;
+        }
+
+        __result = gameObject;
+        return false;
     }
     #endregion
 }
