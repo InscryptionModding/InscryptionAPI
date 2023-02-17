@@ -10,13 +10,7 @@ public static class PeltManager
 {
     private class VanillaPeltData : PeltData
     {
-        public override int BuyPrice
-        {
-            get
-            {
-                return GetBasePeltData().Find((a)=>a.Item1 == this.peltCardName).Item2;
-            }
-        }
+        public override int BuyPrice => GetBasePeltData().Find((a)=>a.Item1 == this.peltCardName).Item2;
     }
     
     public class PeltData
@@ -53,7 +47,7 @@ public static class PeltManager
         }
     }
 
-    internal static List<PeltData> AllNewPelts = new List<PeltData>();
+    internal static List<PeltData> AllNewPelts = new();
     private static List<PeltData> BasePelts = null;
     
     internal static string[] BasePeltNames { get; } = new string[]
