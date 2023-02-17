@@ -4,6 +4,8 @@ using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using System.Collections;
 using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -476,4 +478,45 @@ public static class AbilityManager
         }
         yield break;
     }
+
+    [HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
+    [HarmonyTranspiler]
+    public static IEnumerable<CodeInstruction> AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction> instructions)
+    {
+        // === We want to turn this
+
+        // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
+
+        // === Into this
+
+        // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
+        // Log(info2);
+
+        // ===
+        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            
+        MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].opcode == OpCodes.Stloc_1)
+            {
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldarg_1)); // ability
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldloc_1)); // abilityInfo
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldarg_2)); // info
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, LogAbilityMethodInfo));
+                break;
+            }
+        }
+
+        return codes;
+    }
+
+    private static void LogAbilityInfo(Ability ability, AbilityInfo abilityInfo, CardInfo info)
+    {
+        if (abilityInfo == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
+        }
+    }
+
 }
