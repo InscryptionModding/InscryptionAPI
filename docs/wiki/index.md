@@ -1,25 +1,10 @@
+# Tweaks
 
-## Tweaks
+## Card Cost Displays
 
-### Custom card costs
+Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can display Energy and Mox costs.
 
-If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel cards), you can simply hook into one of the following events:
-
-```c#
-using InscryptionCommunityPatch.Card;
-using InscryptionAPI.Helpers;
-
-Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
-{
-    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
-    if (myCustomCost > 0)
-        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}.png"));
-}
-```
-
-Card costs for Act 1 cards must be exactly 64x28 pixels. Card costs for Pixel cards (GBC) must be exactly 30x8 pixels.
-
-### Energy Drone in Act One/Kaycee's Mod
+## Energy Drone in Act One/Kaycee's Mod
 
 With the API installed, the energy management drone can be made available in Act 1 and in Kaycee's Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.
 
@@ -31,20 +16,14 @@ using InscryptionCommunityPatch.ResourceManagers;
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
-EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the mox drone appear
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
 ```
 
 At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
 
-### Card cost display
+# Core Features
 
-Cards in Act 1 can now display multiple costs at the same time, and can display gem and energy cost in addition to blood and bones cost.
-
-Cards in Act 2 can now display multiple costs at the same time.
-
-## Core Features
-
-### Extending Enumerations
+## Extending Enumerations
 
 The base game uses a number of hard-coded lists, called 'Enumerations' or 'Enums,' to manage behaviors. For example, the ability "Brittle" is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.
 
@@ -64,7 +43,7 @@ public static readonly Ability OtherAbility = GuidManager.GetEnumValue<Ability>(
 
 All of these values are stored in the modded save file.
 
-### Custom Save Game Data
+## Custom Game Save Data
 If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: 'SaveData' (which persists across runs) and 'RunState' (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod's plugin GUID, and an arbitrary key, which you can select for each property to you want to save.
 
 The easiest way to use these helpers is to map them behind static properties, like so:
@@ -79,9 +58,9 @@ public static int NumberOfItems
 
 When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
 
-## Cards and Abilities
+# Cards
 
-### Card Management
+## Card Management
 
 Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:
 
@@ -116,30 +95,34 @@ CardInfo myCard = CardManager.New("example_card", "Sample Card", 2, 2, "This is 
 ```
 
 The following card extensions are available:
-- **SetPortrait:** Assigns the cards primary art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card's art.
-- **SetEmissivePortrait:** If a card already has a portrait and you just want to modify it's emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
-- **SetAltPortrait:** Assigns the card's alternate portrait
-- **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode)
-- **SetCost:** Sets the cost for the card
+- **SetPortrait:** Assigns the card's portrait art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card's art.
+- **SetEmissivePortrait:** If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
+- **SetAltPortrait:** Assigns the card's alternate portrait.
+- **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode).
+- **SetCost:** Sets the cost for the card.
 - **SetDefaultPart1Card:** Sets all of the metadata necessary to make this card playable in Part 1 (Leshy's cabin).
 - **SetGBCPlayable:** Sets all of the metadata necessary to make this card playable in Part 2.
 - **SetDefaultPart3Card:** Sets all of the metadata necessary to make this card playable in Part 3 (P03's cabin).
 - **SetRare:** Sets all of the metadata ncessary to make this card look and play as Rare.
-- **SetTerrain:** Sets all of the metadata necessary to make this card look and play as terrain
-- **SetTail:** Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything
-- **SetIceCube:** Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything
-- **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything
-- **AddAbilities:** Add any number of abilities to the card. This will add duplicates.
+- **SetTerrain:** Sets all of the metadata necessary to make this card look and play as terrain.
+- **SetTail:** Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything.
+- **SetIceCube:** Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything.
+- **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.
+- **SetOnePerDeck:** Sets whether or not the card is unique (only one copy in your deck per run).
+- **SetHideAttackAndHealth:** Sets whether or not the card's Power and Health stats will be displayed or not.
+- **AddAbilities:** Add any number of abilities to the card. This will add duplicates..
 - **AddAppearances:** Add any number of appearance behaviors to the card. No duplicates will be added.
 - **AddMetaCategories:** Add any number of metacategories to the card. No duplicates will be added.
 - **AddTraits:** Add any number of traits to the card. No duplicates will be added.
 - **AddTribes:** Add any number of tribes to the card. No duplicates will be added.
 - **AddSpecialAbilities:** Add any number of special abilities to the card. No duplicates will be added.
 
-### Evolve, Tail, Ice Cube, and delayed loading
-It's possible that at the time your card is built, the card that you want to evolve into has not been built yet. You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.
+## Evolve, Tail, Ice Cube, and delayed loading
+It's possible that at the time your card is built, the card that you want to evolve into has not been built yet.
+You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.
 
-However, note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null. You will not see the evolve parameters until you add the evolution to the card list **and** you get a fresh copy of the card from CardLoader (as would happen in game).
+Note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null.
+You will not see the evolve parameters until you add the evolution to the card list **and** you get a fresh copy of the card from CardLoader (as would happen in game).
 
 ```c#
 CardManager.New("Example", "Base", "Base Card", 2, 2).SetEvolve("Evolve Card", 1); // "Evolve Card" hasn't been built yet
@@ -150,7 +133,7 @@ CardInfo myEvolveCard = CardManager.New("Example", "Evolve", "Evolve Card", 2, 5
 Plugin.Log.LogInfo(CardLoader.GetCardByName("Example_Base").evolveParams == null); // FALSE!
 ```
 
-### Editing existing cards
+## Editing existing cards
 
 If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
 
@@ -175,7 +158,7 @@ CardManager.ModifyCardList += delegate(List<CardInfo> cards)
 
 By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.
 
-### Custom card properties
+## Custom card properties
 
 The API allows you to add custom properties to a card, and then retrieve them for use inside of abilities. In the same way that you can use Evolve parameters to make the evolve ability work, or the Ice Cube parameters to make the IceCube ability work, this can allow you to set custom parameters to make your custom abilities work.
 
@@ -187,9 +170,31 @@ sample.SetExtendedProperty("CustomPropertyName", "CustomPropertyValue");
 string propValue = sample.GetExtendedProperty("CustomPropertyName");
 ```
 
-### Ability Management
+## Custom Card Costs
 
-Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached 'AbilityBehaviour' type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).
+If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:
+
+```c#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
+    if (myCustomCost > 0)
+        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}.png"));
+}
+```
+
+The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.
+
+# Abilities
+
+## Ability Management
+
+Abilities are unfortunately a little more difficult to manage than cards.
+First of all, they have an attached 'AbilityBehaviour' type which you must implement.
+Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon *is* on the AbilityInfo object, but we won't get into all that).
 
 Regardless, the API will help you manage all of this with the helpful AbilityManager class. Simply create an AbilityInfo object, and then call AbilityManager.Add with that info object, the texture for the icon, and the type that implements the ability.
 
@@ -220,8 +225,15 @@ AbilityManager.New(MyPlugin.guid, "Ability Name", "Ability Description", typeof(
 - **AddMetaCategories:** Adds any number of metacategories to the ability. Will not duplicate.
 - **SetDefaultPart1Ability:** Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.
 - **SetDefaultPart3Ability:** Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)
+- **SetActivated:** Sets whether or not the ability is an activated ability. Activated abilities can be clicked to trigger an effect.
+- **SetPassive:** Sets whether or not the ability is a passive ability. Passive abilities don't do anything.
+- **SetOpponentUsable:** Sets whether or not the ability can be used by the opponent (such as in a Totem battle).
+- **SetConduit:** Sets whether or not the ability can be used to complete Circuits.
+- **SetConduitCell:** Sets whether or not the ability is a conduit cell. Unsure of what this does.
+- **SetCanStack:** Sets whether multiple copies of the ability will stack, activating once per copy. Optionally controls stack behaviour should a card with the ability evolve (see below).
+- **SetTriggersOncePerStack:** Sets whether the ability (if it stacks) will only ever trigger once per stack. There's a...'feature' where stackable abilities will trigger twice per stack after a card evolves.
 
-#### How abilities are programmed
+## How abilities are programmed
 Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.
 
 AbilityBehaviour contains a *lot* of virtual methods. For each event that can happen during a battle, there will be a 'RespondsToXXX' and an 'OnXXX' method that you need to override. The purpose of the 'RespondsToXXX' is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the 'OnXXX' method.
@@ -247,29 +259,43 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
-### Additional Functionality
+## Additional Functionality with Interfaces
 
-There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:
+The API adds a number of interfaces you can use to add additional functionality to your ability.
+It also adds a new class: `ExtendedAbilityBehaviour`, which has all the interfaces already implemented for immediate use, saving you time.
 
-#### Modify Card Slots to Attack
+### Modifying What Card Clots to Attack
 
-To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.
+To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
+If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.
 
-#### Passive Attack and Health Buffs
+### Passive Attack and Health Buffs
 
-To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs. These return an int representing the buff to give to 'target'.
+To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs.
+These return an int representing the buff to give to 'target'.
 
-In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what 'target' refers to; the current card being checked. You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.
+In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what 'target' refers to; the current card being checked.
+You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.
 
-Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These methods will be called *every frame* for *every instance of the ability!!* If you're not careful, you could bog the game down substantially!
+Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs.
+These methods will be called *every frame* for *every instance of the ability!!*
+If you're not careful, you could bog the game down substantially!
 
-#### Other Functionality
+### TriggerWhenFaceDown
 
-ExtendedAbilityBehaviour also allows you to control whether the ability's triggers will activate when the card is facedown. You will need to override TriggerWhenFaceDown to return true. There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.
+The API allows you to add custom properties to an ability, using the same methods as for adding custom properties to cards.
 
-It should be noted that usage of ExtendedAbilityBehaviour is not required; all the functionalities mentioned can also be accessed by inheriting from the appropriate interface: IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, and IPassiveHealthBuff.
+The API also allows you to control whether the ability's triggers will activate when the card is facedown.
+You will need to override TriggerWhenFaceDown to return true.
 
-### Special Stat Icons
+There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.
+
+## Additional Functionality for Activated Abilities
+
+The API adds a new class `ExtendedActivatedAbilityBehaviour` that adds additional functionality for use when making activated abilities.
+It can be a bit overwhelmning to look at
+
+## Special Stat Icons
 
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
 
@@ -316,7 +342,7 @@ public class BellProximity : VariableStatBehaviour
 
 Note: you need to be very careful about how complicated the logic is in GetStatValues. This will be called *every frame!!* If you're not careful, you could bog the game down substantially.
 
-### Special Triggered Abilities
+## Special Triggered Abilities
 
 Special triggered abilities are a lot like regular abilities; however, they are 'invisible' to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.
 
@@ -328,7 +354,7 @@ public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbi
 
 And now MyAbilityID can be added to CardInfo objects.
 
-#### How special triggered abilities are programmed
+### How special triggered abilities are programmed
 Special abilities are the same as regular abilities, except they do not have a metadata object associated with them (because they are not described or documented for the player) and the inherit from SpecialCardBehaviour instead of AbilityBehaviour.
 
 Here is an example from the base game:
@@ -348,7 +374,7 @@ public class TrapSpawner : SpecialCardBehaviour
 }
 ```
 
-### Card Appearance Behaviours
+## Card Appearance Behaviours
 
 These behave the same as special triggered abilities from the perspective of the API.
 
@@ -358,7 +384,7 @@ Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour
 public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, "Special Appearance", typeof(MyAppearanceBehaviour)).Id;
 ```
 
-#### How appearance behaviours are programmed
+### How appearance behaviours are programmed
 Appearance behaviours implement CardAppearanceBehaviour. There is an abstract method called ApplyAppearance that you must implement - here you override the default appearance of the card. There are also three other virtual methods: ResetAppearance, OnCardAddedToDeck, and OnPreRenderCard that give other hooks in which you can change the card's appearance.
 
 Here is an example from the base game:
@@ -380,13 +406,13 @@ public class RedEmission : CardAppearanceBehaviour
 }
 ```
 
-## Custom Maps and Encounters
+# Custom Maps and Encounters
 
 Unlike abilities, encounters are encoded into the game's data through a combination of enumerations and strings. For example, Opponents are enumerated by the enumeration Opponent.Type, but special sequencers and unique AI rules are represented as strings buried in each encounters data.
 
 To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.
 
-### Encounter turn plan
+## Encounter turn plan
 
 The card(s) that will be used in the encounter.
 ```c#
@@ -434,7 +460,7 @@ Now that you have your encounter blueprint setup, add it with the manager:
 EncounterManager.Add(BuildBlueprintTwo());
 ```
 
-### Special Sequencers
+## Special Sequencers
 
 Special sequencers are essentially 'global abilities;' they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). 
 
@@ -453,7 +479,7 @@ public class MyCustomBattleSequencer : Part1BossBattleSequencer
 }
 ```
 
-### Opponents
+## Opponents
 
 In the context of this API, think of opponents as basically just bosses. There is a enumeration of Opponents called Opponent.Type that refers to the opponent. This name can be confusing in some IDEs, as they may simply show the parameter type as Type, which should not be confused with the System.Type type.
 
@@ -491,7 +517,7 @@ public override IEnumerator IntroSequence(EncounterData encounter)
 }
 ```
 
-### AI
+## AI
 
 In most cases, you will probably not need to create a custom AI. By default, the game will look at the cards that the computer is preparing to play and then use brute force to test every possible slot that the computer could queue those slots for. It will then simulate a full turn of the game for each of those positions and determine which one has the best outcome. There are very few exceptions to this rule.
 
@@ -527,7 +553,7 @@ public class MyCustomBattleSequencer : Part1BossBattleSequencer
 }
 ```
 
-### Adding new nodes to the map
+## Adding new nodes to the map
 
 If you want to add a new node to the game map, you need to be prepared to implement potentially complex game logic inside of a "sequencer" class. Whenever the game moves to a map node, it hands control of the game over to a sequencer, which is responsible for creating game objects, animating objects, manipulating the deck, or whatever else it is that you want your custom node to do. Once done, the sequencer hands control of the game back over the main game loop. This sequencer is where you will be spending most of your time programming, testing, and debugging. It is highly recommended that you check out the example mod and/or decompile the base game's sequencers to get a feel for how to do this.
 
@@ -561,7 +587,7 @@ The values of NodePosition are:
 - **PreBoss:** This node will be forced to appear right before the boss of each map, unless the node fails a prerequisite condition
 - **PostBoss:** This node will be forced to appear right after the boss of each map, unless the node fails a prerequisite condition
 
-#### Conditional map nodes
+### Conditional map nodes
 
 Map nodes can implement logic to determine whether or not they should appear. To do this, you need to implement a custom 'node data' object which inherits from CustomNodeData. There is a virtual method called Initialize that you should override. Here, you can add prerequisite conditions and forced generation conditions; the former will prevent a node from generating if any condition returns false, and the latter will force the node to generate if any condition returns true.
 
@@ -599,9 +625,9 @@ NodeManager.Add<MyCustomSequencer, MySpecialNodeData>(
 );
 ```
 
-## Ascension (Kaycee's Mod)
+# Ascension (Kaycee's Mod)
 
-### Adding new Challenges
+## Adding new Challenges
 The API supports adding new Challenges as part of Kaycee's Mod using the ChallengeManager class. You can add a new Challenge using ChallengeManager.Add, either by passing in a new AscensionChallengeInfo object or by passing the individual properties of your challenge (which will construct the information object for you). This will make your challenge automatically appear in the challenge selection screen.
 
 If you use the overload of Add that takes an AscensionChallengeInfo object, note that the "challengeType" field of type AscensionChallenge is completely irrelevant. This is an enumerated value, and it will be set for you by the ChallengeManager to ensure there is no collision with other challenges created by other mods. As such, you need to save the ID that is returned by the Add method of ChallengeManager so that you can reference it later.
@@ -633,7 +659,7 @@ public static void DoSomething()
 }
 ```
 
-### Adding new Starter Decks
+## Adding new Starter Decks
 
 Starter decks are relatively simple. They simply need a title, an icon, and a set of three cards. You can also optionally add an "unlock level" which prevents your starter deck from being unlocked until the player reaches a certain challenge level. This defaults to 0, which means that the starter deck will always be unlocked.
 
@@ -654,7 +680,7 @@ StarterDeckManager.Add(MyPlugin.Guid, myDeck);
 StarterDeckManager.New(MyPlugin.Guid, "Pelts", "art/pelts_deck_icon.png", new string[] { "PeltWolf", "PeltHare", "PeltHare"});
 ```
 
-### Adding Custom Screens to Kaycee's Mod
+## Adding Custom Screens to Kaycee's Mod
 
 This API supports adding new screens to Kaycee's Mod that execute before a run starts. New screens can use the AscensionScreenSort attribute to influence their sort order. Custom screens will execute in the following order:
 
@@ -685,7 +711,7 @@ AscensionScreenManager.RegisterScreen<MyCustomScreen>();
 ```
 
 
-## Adding a Custom Tribe Totem Top
+# Adding a Custom Tribe Totem Top
 
 This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
 Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.
@@ -705,7 +731,7 @@ if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", o
 }
 ```
 
-### I don't have an icon to show on my totem top
+## I don't have an icon to show on my totem top
 
 You will need a new class for your totem top so it doesn't look for an icon to populate from a tribe.   
 
@@ -742,7 +768,7 @@ if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", o
 }
 ```
 
-## Adding a Custom Consumable Item
+# Adding a Custom Consumable Item
 
 This API supports adding a custom item into the game. 
 
@@ -795,7 +821,7 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetAct1();
 ```
 
-## Adding a Custom Pelt
+# Adding a Custom Pelt
 
 This API supports adding a custom pelt to be sold by the trapper and traded by the trader.
 
@@ -824,9 +850,9 @@ PeltManager.New(new PeltManager.CustomPeltData()
 });
 ```
 
-## Sound
+# Sound
 
-### Adding Music Tracks to the Gramophone
+## Adding Music Tracks to the Gramophone
 
 This API supports adding new tracks to the Gramophone in Leshy's Cabin.
 (A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)
@@ -842,7 +868,7 @@ The first parameter should be your plugin's GUID. The second parameter should be
 The third parameter is optional, and determines the volume of your track, from 0 to 1f. 
 
 
-### Converting Audio Files to Unity AudioClip Objects
+## Converting Audio Files to Unity AudioClip Objects
 
 This API provides a helper method for converting audio files to Unity AudioClip objects so that they can be played in-game with the AudioSource component. You can use this to replace in-game music through patches, or to play your own sound effects.
 
@@ -854,9 +880,9 @@ You can convert your audio file into an AudioClip object like this:
 AudioClip audio = SoundManager.LoadAudioClip("Example.mp3");
 ```
 
-## Masks
+# Masks
 
-### Changing an existing mask
+## Changing an existing mask
 This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.
 
 ```csharp
@@ -867,7 +893,7 @@ This example shows changing the mask the Angler uses to have a custom texture we
 NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
 If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
 
-### Adding a random mask
+## Adding a random mask
 If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.
 ```csharp
 MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
@@ -877,13 +903,13 @@ This example shows adding a new mask that when going to the Prospector boss figh
 You can add as many random masks as you want. There is no limit.
 
 
-### Adding your own mask
+## Adding your own mask
 
 ```csharp
 MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
 ```
 
-### Adding your own custom model
+## Adding your own custom model
 
 ```csharp
 ResourceLookup resourceLookup = new ResourceLookup();
@@ -894,7 +920,7 @@ var mask = MaskManager.Add("guid", "nameOfMask");
 mask.SetModelType(modelType);
 ```
 
-### Putting on a mask
+## Putting on a mask
 This will tell Leshy to push a mask on his face.
 
 Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!
@@ -903,7 +929,7 @@ Useful for when you have your own boss sequence and you want to tell Leshy to pu
 LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
 ```
 
-### Adding your own behaviour
+## Adding your own behaviour
 
 
 ```csharp
@@ -931,13 +957,13 @@ public class MyCustomMask : MaskBehaviour
 ```
 
 
-## Asset Bundles
+# Asset Bundles
 
 Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.
 
 Think of them as fancy .zip's that's supported by Unity.
 
-### Make an asset bundle
+## Make an asset bundle
 
 1. Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.
 2. Install the AssetBundleBrowser package. (Window->Package Manager)
@@ -949,7 +975,7 @@ Think of them as fancy .zip's that's supported by Unity.
 8. There should be a file called 'testbundleexample' in that folder (It will not have an extension!)
 9. Copy this file into your mod folder
 
-### Load Asset bundle
+## Load Asset bundle
 
 ```csharp
 if (AssetBundleHelper.TryGet<GameObject>("pathToBundleFile", "nameOfPrefabInsideAssetBundle", out GameObject prefab))
@@ -966,13 +992,13 @@ Third parameter is the result of taking the object out of the asset bundle.
 
 NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! 
 
-### Bugs
+## Bugs
 
-#### 1. The GameObject is being create but the model won't show up!
+### 1. The GameObject is being create but the model won't show up!
 
 Make sure you are using 2019.4.24f1 to build the asset bundle? If not the model won't show!
 
-## Talking Cards
+# Talking Cards
 This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!
 
 All you have to do is create a class that implements the **ITalkingCard** interface, which contains the following fields:
@@ -1049,7 +1075,7 @@ TalkingCardManager.New<ExampleTalkingCard>();
 
 Below I'm going to explain a few important things about talking cards in-depth!
 
-### EmotionData
+## EmotionData
 The EmotionData class is a container for the sprites for one of your character's emotions. It has a constructor that takes Unity Sprites as parameters, and another constructor that takes the path to your image as a string for each image. 
 
 The constructors take the following parameters:
@@ -1068,7 +1094,7 @@ The string constructor also contains shorthand for an empty texture, if you need
 
 A guide on how to **use emotions** in your card's dialogue can be found [in this section below](#using-emotions).
 
-### FaceInfo
+## FaceInfo
 The FaceInfo class contains a bit of info about your talking card: namely, blink rate, voice pitch, and the sound used for your character's voice in general.
 
 The constructor takes the following parameters:
@@ -1086,7 +1112,7 @@ The constructor takes the following parameters:
 
 Most talking cards in the game use the first and simply change the pitch.
 
-#### Custom Voices
+### Custom Voices
 You can add a custom voice to your character instead of using one of the default voices. For that, all you need to is pass the path to your audio file as the "customVoice" parameter.
 
 The supported audio formats are MP3, WAV, OGG and AIFF!
@@ -1095,12 +1121,12 @@ Please use a very short audio file for your voice. Typically, you want only a ve
 
 If you pass anything as "customVoice", then the contents of the "voiceId" parameter will not matter.
 
-### Dialogue Events
+## Dialogue Events
 After looking at the example above, you might be wondering *"What's all of that DialogueId stuff about? How do I make my own dialogue events?"*. 
 
 I'm gonna explain everything to you in detail now!
 
-#### Dialogue Triggers
+### Dialogue Triggers
 Talking cards can respond to a variety of game events. If you want your card to respond to a given event, you can override that property and return the ID of your new dialogue event.
 
 Some properties are abstract and *must* be implemented: namely, `OnDrawnDialogueId`, `OnPlayFromHandDialogueId`, `OnAttackedDialogueId`, `OnBecomeSelectablePositiveDialogueId` and  `OnBecomeSelectableNegativeDialogueId`.
@@ -1130,7 +1156,7 @@ public override Dictionary<Opponent.Type, string> OnDrawnSpecialOpponentDialogue
 };
 ```
 
-#### Creating a Dialogue Event
+### Creating a Dialogue Event
 You can create your own dialogue events with this API's `DialogueManager.GenerateEvent()` method, like this:
 
 ```csharp
@@ -1155,12 +1181,12 @@ A brief explanation of each parameter:
 | mainLines   | A set of lines that plays in the very first time this event runs.               |
 | repeatLines | Multiple sets of lines that are played after the first time this event has run. |
 
-### Dialogue Codes
+## Dialogue Codes
 A really neat feature of Inscryption's dialogue events are dialogue codes. They add a lot of life to dialogue!
 
 The dialogue codes most relevant to talking cards will be explained below. All of these work with talking cards.
 
-#### Wait (\[w:])
+### Wait (\[w:])
 This is by far the dialogue code you'll wanna use the most. It's also the one the game itself uses the most in all of its dialogue.
 
 The "\[w:x]" dialogue code adds a pause of x seconds before the rest of a sentence plays.
@@ -1175,7 +1201,7 @@ The number of seconds does not have to be an integer. Using "\[w:0.2]" to wait o
 
 This being said, I'd advise you not to go below \[w:0.1], as I don't know how small the number can go before issues arise. (And there's no point in going below that, anyhow.)
 
-#### Color (\[c:])
+### Color (\[c:])
 The \[c:] dialogue code changes the color of a portion of your text.
 
 You can use it like this:
@@ -1207,7 +1233,7 @@ Fear not! Here's a comprehensive table of all available colors and their respect
 
 (For the record: These are the colors the game has available, built-in. I did not choose them. Yes, it's a very odd selection of colors.)
 
-##### Custom Colors
+#### Custom Colors
 I have added a way to use custom colors with dialogue codes. In place of one of the color codes in the table above, you can instead use a [hex color code](https://htmlcolorcodes.com/color-picker/), and this mod will parse the code into an usable Color for the text.
 
 Here's an example:
@@ -1218,7 +1244,7 @@ In this example, the word "confused" is colored in the color #7f35e6. Which, if 
 
 Please note that for compatibility reasons, your hex color code **should include the '#'**.
 
-#### Leshy (\[leshy:x])
+### Leshy (\[leshy:x])
 The \[leshy:x] dialogue code makes Leshy say x. This color code is very useful for making Leshy and your card talk a bit between each other!
 
 You can use it like this:
@@ -1234,7 +1260,7 @@ There are a few things to note from that example:
 1. You don't need to put quotation marks around the line Leshy is going to say.
 2. The "Wait" dialogue code is still usable with Leshy's lines.
 
-#### Using Emotions
+### Using Emotions
 You can change your character's emotion in their dialogue lines with the dialogue code `[e:x]`, where 'x' is the name of an emotion. You can look at the table above for the names of all the available emotions.
 
 This mod adds patches to make the emotion names not case-sensitive, which means the following lines are all equally valid:
