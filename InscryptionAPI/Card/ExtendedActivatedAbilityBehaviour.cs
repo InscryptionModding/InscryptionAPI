@@ -80,6 +80,14 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             yield return Activate();
             ProgressionData.SetMechanicLearned(MechanicsConcept.GBCActivatedAbilities);
 
+            if (HealthCost > 0) // card still exists and has 0 Health
+            {
+                if (base.Card != null && base.Card.NotDead() && base.Card.Health == 0)
+                {
+                    yield return base.Card.Die(true);
+                    yield break;
+                }
+            }
             if (OnActivateEnergyCostMod > 0)
                 energyCostMod += OnActivateEnergyCostMod;
             if (OnActivateBonesCostMod > 0)
@@ -87,11 +95,7 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             if (OnActivateHealthCostMod > 0)
                 healthCostMod += OnActivateHealthCostMod;
 
-            if (HealthCost > 0) // card still exists and has 0 Health
-            {
-                if (base.Card != null && base.Card.NotDead() && base.Card.Health == 0)
-                    yield return base.Card.Die(false);
-            }
+            yield return PostActivate();
         }
         else
         {
@@ -100,7 +104,10 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             yield return new WaitForSeconds(0.25f);
         }
     }
-
+    public virtual IEnumerator PostActivate()
+    {
+        yield break;
+    }
     public virtual bool CanActivate() => true;
     public abstract IEnumerator Activate();
     private bool CanAfford()
