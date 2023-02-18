@@ -569,31 +569,78 @@ This new class changes how activated abilities are made a bit.
 As an example, if you were inheriting from the vanilla ActivatedAbilityBehaviour, you would override BonesCost to set the... Bones cost.
 ExtendedActivatedAbilityBehaviour moves that functionality to the virtual int StartingBonesCost, and BonesCost is now used to keep track of the total cost, modifiders included.
 
-Put simply, to set the starting cost(s), you override StartingBonesCost, StartingEnergyCost, and/or StartingHealthCost.
+Put simply, to set the starting cost(s), you override StartingBonesCost, StartingEnergyCost, or StartingHealthCost.
 
-Outside of this minor change, the two main features of the new class are dynamic activation costs, and Health cost.
+There is also a new override IEnumerator `PostActivate()`.
+
+The two main features of the new class are dynamic activation costs, and a new Health cost.
 
 ### Health Cost
 This is easy enough to understand, it's a way of making an activated ability cost Health to use.
 If the cost is equal to the card's current Health, then it will die.
-Note that losing Health this way will not trigger OnTakeDamage. OnDie will trigger though.
+
+You can set this by overriding StartingHealthCost.
 
 ### Dynamic Activation Costs
-Using ExtendedActivatedAbilityBehaviour (what a pain to type), you can change the cost of an activated ability during battle.
+Using ExtendedActivatedAbilityBehaviour, you can change the cost of an activated ability during battle.
 
-There are a couple ways of doing this, but the first way is overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, and/or OnActivateHealthCostMod.
-You can also change this value after the fact, if you want the cost to increase exponentially:
+By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, or OnActivateHealthCostMod, you can make the ability's activation cost increase after it has been activated.
 ```c#
-public override OnActivateBonesCostMod => 1
+public class ActivateRepulsive : ExtendedActivatedAbilityBehaviour
+{
+    public static Ability abiliy;
+    public override Ability Ability => ability;
+    
+    public override int StartingBonesCost => 2;
+    public override int OnActivateBonesCostMod => 1;
+    
+    public override IEnumerator Activate()
+    {
+        yield return this.Effect();
+    }
+}
+```
+You can keep changing these modifier fields as well, if you want the cost to increase exponentially.
 
-public override void PostActivateCostCallback()
+```c#
+public override IEnumerator PostActivate();
 {
     OnActivateBonesCostMod += 1;
 }
 ```
-This will make the cost of the ability increase by 1 Bone the first time it's used, then by 2 Bones the second time, 3 the third, etc.
+You have basically no limits on how or when you can change the activation cost.
 
+```c#
+public override IEnumerator OnUpkeep(bool playerUpkeep)
+{
+    bonesCostMod -= 1;
+}
+```
+This will reduce the Bones activation cost by 1 on upkeep.
 
+Note that `bonesCostMod` was used here instead of `OnActivateBonesCostMod`; The OnActivate... fields are used for changing the cost every activation, while the ...CostMod fields are used for everything else.
+Importantly, the ...CostMod fields keep track of the current cost modifier.
+
+```c#
+bonesCostMod = 0;
+```
+This resets the current Bones cost modifier.
+
+An additional note to make is that you're not limited to only modifying a single cost; you can increase any cost you want, even those that aren't initially required for activation.
+
+#### Keeping Track of It All
+With the ability to modify a card's activation cost, the question of how to keep track of the new costs comes up.
+While it's entirely possible you have an incredible memory and can just hoof it from there, the API provides a simpler way for you to keep track of it all by updating the Rulebook description of your ability.
+
+When right-clicking the ability icon of a card, the API will grab the current activation costs and display them.
+This is unique to each card, so don't worry about keeping track of multiple activation costs.
+
+To tell the API what part of the Rulebook description should be modified, you must use `[sigilcost:X]` where X is the initial activation cost.
+```c#
+string rulebookDescription = "Pay [sigilcost:1 Bone, 1 Energy] to do a thing, then increase its activation cost by 1 Energy."
+
+AbilityManager.New(pluginGuid, rulebookName, rulebookDescription, typeof(T), "artpath.png");
+```
 
 ## Special Stat Icons
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
@@ -841,6 +888,82 @@ public class MyCustomBattleSequencer : Part1BossBattleSequencer
         EncounterData data = base.BuildCustomEncounter(nodeData);
         data.aiId = MyCustomAI.ID;
         return data;
+    }
+}
+```
+
+## Boss Masks
+When creating a custom boss opponent, you may feel the urge to change what mask Leshy adorns during the fight.
+Fortunately, the API's got you covered.
+
+### Changing an Existing Mask
+This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.
+
+```csharp
+MaskManager.Override("guid", "nameOfNewMask", LeshyAnimationController.Mask.Angler, "pathToTexture");
+```
+This example shows changing the mask the Angler uses to have a custom texture we are using.
+
+NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
+If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
+
+### Adding a Random Mask
+If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.
+```csharp
+MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
+```
+This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.
+
+You can add as many random masks as you want. There is no limit.
+
+### Adding a Custom Mask
+
+```csharp
+MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
+```
+
+#### Adding a Custom Model
+
+```csharp
+ResourceLookup resourceLookup = new ResourceLookup();
+resourceLookup.FromAssetBundle("pathToAssetBundle", "prefabNameInsideBundle");
+MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
+
+var mask = MaskManager.Add("guid", "nameOfMask");
+mask.SetModelType(modelType);
+```
+
+#### Putting on a Mask
+This will tell Leshy to push a mask on his face.
+
+Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!
+
+```csharp
+LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+```
+
+#### Adding Custom Behaviour
+
+```csharp
+public class Plugin : BaseUnityPlugin
+{
+    private void Awake()
+    {
+        MyCustomMask.Setup();        
+    }
+}
+```
+
+```csharp
+public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+    
+    public static void Setup()
+    {
+        var mask = MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
+        mask.SetMaskBehaviour(typeof(MyCustomMask));
+        ID = mask.ID;
     }
 }
 ```
@@ -1179,81 +1302,6 @@ You can convert your audio file into an AudioClip object like this:
 ```csharp
 AudioClip audio = SoundManager.LoadAudioClip("Example.mp3");
 ```
-
-# Boss Masks
-
-## Changing an Existing Mask
-This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.
-
-```csharp
-MaskManager.Override("guid", "nameOfNewMask", LeshyAnimationController.Mask.Angler, "pathToTexture");
-```
-This example shows changing the mask the Angler uses to have a custom texture we are using.
-
-NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
-If you still want to use the Anglers model then use `.SetModelType(MaskManager.ModelType.Angler)`
-
-## Adding a Random Mask
-If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.
-```csharp
-MaskManager.AddRandom("guid", "nameOfNewMask", LeshyAnimationController.Mask.Prospector, "pathToTexture");
-```
-This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.
-
-You can add as many random masks as you want. There is no limit.
-
-## Adding a Custom Mask
-
-```csharp
-MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
-```
-
-### Adding a Custom Model
-
-```csharp
-ResourceLookup resourceLookup = new ResourceLookup();
-resourceLookup.FromAssetBundle("pathToAssetBundle", "prefabNameInsideBundle");
-MaskManager.ModelType modelType = MaskManager.RegisterPrefab("guid", "nameOfModel", resourceLookup);
-
-var mask = MaskManager.Add("guid", "nameOfMask");
-mask.SetModelType(modelType);
-```
-
-### Putting on a Mask
-This will tell Leshy to push a mask on his face.
-
-Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!
-
-```csharp
-LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
-```
-
-### Adding Custom Behaviour
-
-```csharp
-public class Plugin : BaseUnityPlugin
-{
-    private void Awake()
-    {
-        MyCustomMask.Setup();        
-    }
-}
-```
-
-```csharp
-public class MyCustomMask : MaskBehaviour
-{
-    public static LeshyAnimationController.Mask ID;
-    
-    public static void Setup()
-    {
-        var mask = MaskManager.Add("guid", "nameOfNewMask", "pathToTexture");
-        mask.SetMaskBehaviour(typeof(MyCustomMask));
-        ID = mask.ID;
-    }
-}
-```
-
 
 # Asset Bundles
 Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.
