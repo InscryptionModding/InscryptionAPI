@@ -10,13 +10,7 @@ public static class PeltManager
 {
     private class VanillaPeltData : PeltData
     {
-        public override int BuyPrice
-        {
-            get
-            {
-                return GetBasePeltData().Find((a)=>a.Item1 == this.peltCardName).Item2;
-            }
-        }
+        public override int BuyPrice => GetBasePeltData().Find((a) => a.Item1 == this.peltCardName).Item2;
     }
     
     public class PeltData
