@@ -1,4 +1,5 @@
 using DiskCardGame;
+using HarmonyLib;
 using InscryptionAPI.Card;
 using static DiskCardGame.EncounterBlueprintData;
 
@@ -6,6 +7,7 @@ namespace InscryptionAPI.Encounters;
 
 public static class EncounterExtensions
 {
+    #region Opponent Extensions
     public static OpponentManager.FullOpponent OpponentById(this IEnumerable<OpponentManager.FullOpponent> opponents, Opponent.Type id)
     {
         return opponents.FirstOrDefault(o => o.Id == id);
@@ -29,7 +31,11 @@ public static class EncounterExtensions
         opp.SpecialSequencerId = newSequencer.Id;
         return opp;
     }
+    #endregion
 
+    #region Encounter Extensions
+
+    #region Setters
     /// <summary>
     /// Sets the difficulty range of this encounter.<br/>
     /// Difficulty is determined by the formula (6 * <c>tier</c>) + <c>battle#</c> + <c>modifier</c>.
@@ -50,7 +56,7 @@ public static class EncounterExtensions
     /// <param name="tribes">The tribes to add.</param>
     public static T AddDominantTribes<T>(this T blueprint, params Tribe[] tribes) where T : EncounterBlueprintData
     {
-        blueprint.dominantTribes = blueprint.dominantTribes ?? new();
+        blueprint.dominantTribes ??= new();
         foreach (Tribe tribe in tribes)
         {
             blueprint.dominantTribes.Add(tribe);
@@ -72,7 +78,7 @@ public static class EncounterExtensions
     /// <param name="cards">The cards to add.</param>
     public static T AddRandomReplacementCards<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
-        blueprint.randomReplacementCards = blueprint.randomReplacementCards ?? new();
+        blueprint.randomReplacementCards ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);
@@ -97,14 +103,12 @@ public static class EncounterExtensions
 
     public static T SetUnlockedCardPrerequisites<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
-        blueprint.unlockedCardPrerequisites = blueprint.unlockedCardPrerequisites ?? new();
+        blueprint.unlockedCardPrerequisites ??= new();
         foreach (string card in cards)
         {
             CardInfo cardInfo = CardManager.AllCardsCopy.CardByName(card);
             if (!blueprint.unlockedCardPrerequisites.Contains(cardInfo))
-            {
                 blueprint.unlockedCardPrerequisites.Add(cardInfo);
-            }
         }
         return blueprint;
     }
@@ -114,13 +118,76 @@ public static class EncounterExtensions
         blueprint.turnMods = turnMods.ToList();
         return blueprint;
     }
+    #endregion
 
-    public static T AddTurn<T>(this T blueprint, params CardBlueprint[] turn) where T : EncounterBlueprintData
+    #region Turns
+
+    #region Setters
+
+    /// <summary>
+    /// Sets the minimum and maximum difficulty values for this CardBlueprint.
+    /// </summary>
+    /// <param name="card">The CardBlueprint to access.</param>
+    /// <param name="min">The minimum difficulty for this card to appear.</param>
+    /// <param name="max">The maximum difficulty for this card to appear at.</param>
+    /// <returns>The same CardBlueprint so a chain can continue.</returns>
+    public static CardBlueprint SetDifficulty(this CardBlueprint card, int min, int max)
     {
-        blueprint.turns.Add(turn.ToList());
+        card.minDifficulty = min;
+        card.maxDifficulty = max;
+        return card;
+    }
+
+    /// <summary>
+    /// Sets whether what card the CardBlueprint will be replaced with if difficultyReplace == true, and what difficulty threshold it will be replaced.
+    /// </summary>
+    /// <param name="blueprint">The CardBlueprint to access.</param>
+    /// <param name="replaceWithDifficulty">Whether this card will be replaced at certain difficulties.</param>
+    /// <param name="replacementName">The name of the card that will replace this card.</param>
+    /// <param name="requiredDifficulty">The minimum difficulty for the card to be replaced.</param>
+    /// <returns>The same CardBlueprint so a chain can continue.</returns>
+    public static CardBlueprint SetReplacement(this CardBlueprint blueprint, string replacementName, int requiredDifficulty = 0, bool replaceWithDifficulty = true)
+    {
+        blueprint.difficultyReplace = replaceWithDifficulty;
+        blueprint.difficultyReq = requiredDifficulty;
+        blueprint.replacement = CardManager.AllCardsCopy.CardByName(replacementName);
         return blueprint;
     }
 
+    /// <summary>
+    /// Sets the difficulties of each CardBlueprint in the list to the specified values.
+    /// </summary>
+    /// <param name="list">The list to access.</param>
+    /// <param name="min">The minimum difficulty.</param>
+    /// <param name="max">The maximum difficulty.</param>
+    /// <returns>The same list so a chain can continue.</returns>
+    public static List<CardBlueprint> SetTurnDifficulty(this List<CardBlueprint> list, int min, int max)
+    {
+        foreach (CardBlueprint blueprint in list)
+        {
+            blueprint.SetDifficulty(min, max);
+        }
+        return list;
+    }
+
+    /// <summary>
+    /// Duplicates a list representing a turn the specified number of times.
+    /// </summary>
+    /// <param name="list">The list to access.</param>
+    /// <param name="amount">How many times the list should be duplicated.</param>
+    /// <returns>An array containing the newly duplicated lists. Use with EncounterBlueprintData.AddTurns().</returns>
+    public static List<CardBlueprint>[] DuplicateTurn(this List<CardBlueprint> list, int amount)
+    {
+        List<CardBlueprint>[] array = new List<CardBlueprint>[1 + amount];
+        for (int i = 0; i < 1 + amount; i++)
+            array.AddToArray(list);
+
+        return array;
+    }
+
+    #endregion
+
+    #region Creators/Adders
     /// <summary>
     /// Creates a new turn for this encounter and returns the builder.
     /// </summary>
@@ -130,4 +197,82 @@ public static class EncounterExtensions
         turnBuilder.SetBlueprint(blueprint);
         return turnBuilder;
     }
+
+    /// <summary>
+    /// Adds a new turn to the EncounterBlueprintData using the specified CardBlueprints.
+    /// </summary>
+    /// <param name="cards">The CardBlurprints to add. If none are specified, creates an empty turn.</param>
+    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    public static T AddTurn<T>(this T blueprint, params CardBlueprint[] cards) where T : EncounterBlueprintData
+    {
+        blueprint.AddTurn(cards?.ToList() ?? new());
+        return blueprint;
+    }
+
+    /// <summary>
+    /// Adds a new turn to the EncounterBlueprintData.
+    /// </summary>
+    /// <param name="turn">The turn to add. If null, creates an empty turn.</param>
+    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    public static T AddTurn<T>(this T blueprint, List<CardBlueprint> turn = null) where T : EncounterBlueprintData
+    {
+        blueprint.turns ??= new();
+        blueprint.turns.Add(turn ?? new());
+        return blueprint;
+    }
+
+    /// <summary>
+    /// Adds new turns to the EncounterBlueprintData using the specified List<CardBlueprint>'s.
+    /// </summary>
+    /// <param name="turns">The List<CardBlueprint>'s to add to the EncounterBlueprintData.</param>
+    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    public static T AddTurns<T>(this T blueprint, params List<CardBlueprint>[] turns) where T : EncounterBlueprintData
+    {
+        foreach (List<CardBlueprint> turn in turns)
+            blueprint.AddTurn(turn);
+
+        return blueprint;
+    }
+
+    public static T AddTurns<T>(this T blueprint, List<List<CardBlueprint>> turns) where T : EncounterBlueprintData
+    {
+        blueprint.turns ??= new();
+        foreach (List<CardBlueprint> item in turns)
+            blueprint.AddTurn(item);
+
+        return blueprint;
+    }
+
+    /// <summary>
+    /// Duplicates the contents of the turn plan into itself the specified number of times.
+    /// </summary>
+    public static T DuplicateTurns<T>(this T blueprint, int amount) where T : EncounterBlueprintData
+    {
+        List<List<CardBlueprint>> plan = new();
+        for (int i = 0; i < 1 + amount; i++)
+        {
+            foreach (List<CardBlueprint> turn in blueprint.turns)
+                plan.Add(turn);
+        }
+        blueprint.turns = plan;
+
+        return blueprint;
+    }
+
+    /// <summary>
+    /// Sets the difficulty values of all CardBlueprints in the turn plan to the same values.
+    /// </summary>
+    public static T SyncTurnDifficulties<T>(this T blueprint, int minDifficulty, int maxDifficulty) where T : EncounterBlueprintData
+    {
+        foreach (List<CardBlueprint> turn in blueprint.turns)
+            turn.SetTurnDifficulty(minDifficulty, maxDifficulty);
+
+        return blueprint;
+    }
+
+    #endregion
+
+    #endregion
+
+    #endregion
 }
