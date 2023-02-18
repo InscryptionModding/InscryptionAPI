@@ -1081,8 +1081,8 @@ public class CustomConsumableItem : ConsumableItem
 ```
 
 ### Adding your New Item
-
 If you don't have a custom model you can use one of the default types from ConsumableItemManager.ModelType provided by the API.
+
 ```csharp
 ConsumableItemManager.ModelType modelType = ConsumableItemManager.ModelType.Basic;
 ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", textureOrSprite, typeof(CustomConsumableItem), modelType)
@@ -1230,7 +1230,6 @@ LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodca
 
 ### Adding Custom Behaviour
 
-
 ```csharp
 public class Plugin : BaseUnityPlugin
 {
@@ -1293,5 +1292,4 @@ NOTE: Getting a prefab from an asset bundle does not laod it into the world. You
 ## Common Problems
 
 ### 1. The GameObject is being created but the model won't show up!
-
 Make sure you are using Unity 2019.4.24f1 to build the asset bundle. The model will not show up otherwise!
