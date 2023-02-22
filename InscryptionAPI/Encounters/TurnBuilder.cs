@@ -17,7 +17,7 @@ public class TurnBuilder<T> where T : EncounterBlueprintData
     public void SetBlueprint(T blueprint)
     {
         this.blueprint = blueprint;
-        blueprint.turns = blueprint.turns ?? new();
+        blueprint.turns ??= new();
         blueprint.turns.Add(cards);
     }
 
@@ -48,7 +48,7 @@ public static class TurnExtensions
             maxDifficulty = maxDifficulty,
             difficultyReplace = difficultyReplace,
             difficultyReq = difficultyReplaceReq,
-            replacement = CardManager.AllCardsCopy.CardByName(card)
+            replacement = CardManager.AllCardsCopy.CardByName(replacement)
         });
         return turnBuilder;
     }

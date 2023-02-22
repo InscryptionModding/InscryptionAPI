@@ -274,7 +274,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="abilityInfo">The instance of AbilityInfo</param>
     /// <param name="conduit">If the ability is a conduit.</param>
-    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
     public static AbilityInfo SetConduit(this AbilityInfo abilityInfo, bool conduit = true)
     {
         abilityInfo.conduit = conduit;
@@ -285,7 +285,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="abilityInfo">The instance of AbilityInfo</param>
     /// <param name="conduitCell">If the ability is a conduit cell.</param>
-    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
     public static AbilityInfo SetConduitCell(this AbilityInfo abilityInfo, bool conduitCell = true)
     {
         abilityInfo.conduitCell = conduitCell;
@@ -332,7 +332,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo</param>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
     /// <returns>Whether double triggering is disabled.</returns>
     public static bool GetTriggersOncePerStack(this AbilityInfo abilityInfo)
     {
@@ -345,9 +345,9 @@ public static class AbilityExtensions
     /// Adds a custom property value to the ability.
     /// </summary>
     /// <param name="info">Ability to access</param>
-    /// <param name="propertyName">The name of the property to set</param>
-    /// <param name="value">The value of the property</param>
-    /// <returns>The same AbilityInfo so a chain can continue</returns>
+    /// <param name="propertyName">The name of the property to set.</param>
+    /// <param name="value">The value of the property.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
     public static AbilityInfo SetExtendedProperty(this AbilityInfo info, string propertyName, object value)
     {
         info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
@@ -355,22 +355,22 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Gets a custom property value from the card
+    /// Gets a custom property value from the card.
     /// </summary>
-    /// <param name="ability">Ability to access</param>
-    /// <param name="propertyName">The name of the property to get the value of</param>
-    /// <returns></returns>
+    /// <param name="ability">Ability to access.</param>
+    /// <param name="propertyName">The name of the property to get the value of.</param>
+    /// <returns>The retrieved property if it exists.</returns>
     public static string GetExtendedProperty(this Ability ability, string propertyName)
     {
         AbilityInfo info = AllAbilityInfos.AbilityByID(ability);
         return info.GetExtendedProperty(propertyName);
     }
     /// <summary>
-    /// Gets a custom property value from the card
+    /// Gets a custom property value from the card.
     /// </summary>
-    /// <param name="info">Ability to access</param>
-    /// <param name="propertyName">The name of the property to get the value of</param>
-    /// <returns></returns>
+    /// <param name="info">Ability to access.</param>
+    /// <param name="propertyName">The name of the property to get the value of.</param>
+    /// <returns>The retrieved property if it exists.</returns>
     public static string GetExtendedProperty(this AbilityInfo info, string propertyName)
     {
         info.GetAbilityExtensionTable().TryGetValue(propertyName, out var ret);

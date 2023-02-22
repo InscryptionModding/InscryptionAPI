@@ -5,6 +5,7 @@ using InscryptionAPI.Saves;
 using MonoMod.Cil;
 using System.Collections.ObjectModel;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -367,5 +368,44 @@ public static class CardManager
     private static void AddCustomCardUnlock(ref bool __result, CardInfo card)
     {
         __result &= !CustomCardUnlocks.ContainsKey(card.name) || CustomCardUnlocks[card.name](SaveFile.IsAscension, (AscensionSaveData.Data?.challengeLevel).GetValueOrDefault());
+    }
+
+    [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] { typeof(string) })]
+    [HarmonyTranspiler]
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        // === We want to turn this
+
+        // return CardLoader.Clone(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name));
+
+        // === Into this
+
+        // return CardLoader.Clone(LogCardInfo(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name)));
+
+        // ===
+        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+
+        MethodInfo CloneMethodInfo = SymbolExtensions.GetMethodInfo(() => CardLoader.Clone(null));
+        MethodInfo LogCardInfoMethodInfo = SymbolExtensions.GetMethodInfo(() => LogCardInfo(null, null));
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].opcode == OpCodes.Call && codes[i].operand == CloneMethodInfo)
+            {
+                codes.Insert(i++, new CodeInstruction(OpCodes.Ldarg_0)); // name
+                codes.Insert(i++, new CodeInstruction(OpCodes.Call, LogCardInfoMethodInfo)); // LogCardInfo
+                break;
+            }
+        }
+
+        return codes;
+    }
+
+    public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
+    {
+        if (info == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("[CardLoader] Could not find CardInfo with name '" + cardInfoName + "'");
+        }
+        return info;
     }
 }

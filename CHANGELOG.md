@@ -1,8 +1,20 @@
 # Changelog
 
+## 2.11.0
+- Refactored how regions are handled by the API to prevent duplicate bosses
+- Refactored how bosses are selected to prevent duplicates being encountered
+- Changed when modded Ascension data is cleared to allow for editing it post-clear
+- Added more descriptive error logs for some commonly encountered errors
+- Added config option to reduce the amount of debug info shown in the console
+- Added methods to aid in creating encounter turn plans
+- Added more methods for interacting with lists, new debug method to aid in making transpilers
+- Added ExtendedActivatedAbilityBehaviour class; allows for dynamic costs and Health costs
+- Fixed SetOnePerDeck() and SetHideStats() being inaccessible
+- Fixed AddCardBlueprint() not setting the replacement card correctly
+
 ## 2.10.0
-- Added LocalizationManager for more language support with mods
 - Completely revamped PeltManager to be more user friendly (Mod breaking)
+- Added LocalizationManager for more language support with mods
 - Added helper method for custom pelts to change cards trader
 - Pelts offered by Trapper capped at 8.
 - Pelts offered by Trapper are now randomized if more than 8
@@ -10,6 +22,9 @@
 - Fixed the campfire fix breaking the normal sequence
 - Fixed HasCardMetaCategory returning the inverse of its intended value
 - Fixed stackable sigils not showing numbers above 9
+
+## 2.9.1
+- Fixed the campfire fix breaking the normal sequence
 
 ## 2.9.0
 - Added talking card support!
