@@ -33,7 +33,8 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable
 
     public void AssignAbility(Ability ability)
     {
-        PatchPlugin.Logger.LogDebug($"Icon was previously {Ability} - asking to change to a {ability}");
+        if (PatchPlugin.configFullDebug.Value)
+            PatchPlugin.Logger.LogDebug($"Icon was previously {Ability} - asking to change to a {ability}");
         Ability = ability;
         _renderMaterial = GetComponent<Renderer>().material;
         _originalColor = _renderMaterial.color;

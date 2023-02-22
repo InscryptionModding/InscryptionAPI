@@ -127,7 +127,8 @@ internal class CardStatBoostSequencerPatch
         // if there aren't any valid cards, exit the sequence
         if (instance.GetValidCards(forAttackMod: attackMod).Count == 0)
         {
-            PatchPlugin.Logger.LogDebug("Player has no cards that can be boosted at the campfire.");
+            if (PatchPlugin.configFullDebug.Value)
+                PatchPlugin.Logger.LogDebug("Player has no cards that can be boosted at the campfire.");
             yield return new WaitForSeconds(0.5f);
             yield return Singleton<TextDisplayer>.Instance.ShowUntilInput("You have no creatures to warm.");
             yield return new WaitForSeconds(0.25f);
