@@ -120,9 +120,9 @@ public static class EnergyDrone
         PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
         PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
-        PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}");
+        PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}.");
 
-        UnityEngine.Object.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
+        UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
         if (EnergyConfig.ConfigDrone)
             PatchPlugin.Instance.StartCoroutine(AwakeDrone());
@@ -132,7 +132,8 @@ public static class EnergyDrone
     {
         yield return new WaitForSeconds(1);
 
-        PatchPlugin.Logger.LogDebug($"Awaking drone. Exists? {ResourceDrone.Instance != null}");
+        if (PatchPlugin.configFullDebug.Value)
+            PatchPlugin.Logger.LogDebug($"Awaking ResourceDrone, instance exists? {ResourceDrone.Instance != null}.");
 
         if (ResourceDrone.Instance != null)
             ResourceDrone.Instance.Awake();
@@ -208,14 +209,14 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void ResourcesManager_Setup(ResourcesManager __instance)
     {
-        PatchPlugin.Logger.LogDebug($"Set up extra resources? {EnergyConfig.ConfigDrone}. Drone? {ResourceDrone.Instance}.");
+        if (EnergyConfig.ConfigDrone)
+            PatchPlugin.Logger.LogDebug("Setting up extra resources for the drone.");
+
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             ResourceDrone.Instance.SetOnBoard(true, false);
             if (EnergyConfig.ConfigDroneMox)
-            {
                 ResourceDrone.Instance.Gems.SetAllGemsOn(false, true);
-            }
         }
     }
 
