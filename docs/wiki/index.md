@@ -756,51 +756,66 @@ Unlike abilities, encounters are encoded into the game's data through a combinat
 To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.
 
 ## Encounter Turn Plans
-The card(s) that will be used in the encounter.
-```c#
-public static readonly EncounterBlueprintData.CardBlueprint bp_Bonehound = new EncounterBlueprintData.CardBlueprint
-{
-	card = CardSpawner.GetCardByName("Bonehound")
-};
+When you're creating an encounter, you'll want to also create a turn plan that determines what cards are played during the encounter.
 
-public static readonly EncounterBlueprintData.CardBlueprint bp_Bonepile = new EncounterBlueprintData.CardBlueprint
-{
-	card = CardSpawner.GetCardByName("Bonepile")
-};
-```
+The API adds a number of methods to make this process easier for you.
 
-For setting up the EncounterBlueprintData.
-
-1. In this example, the card Bonehound will spawn twice on the first turn. The slot that they spawn in is randomized.
-2. Second and Third turns nothing spawns.
-3. Fourth and fifth turns a Bonepile spawns.
-4. No spawns on sixth turn.
-5. Seventh turn a another Bonepile spawn.
+In this example, we will create a turn plan that is 14 turns long with the following card sequence:
+Turn 1 - Play 2 Bonehounds; the slots they spawn in are chosen by the game; you have no control of it when making a turn plan
+Turn 2 - Play nothing
+Turn 3 - Play nothing
+Turn 4 - Play 1 Bonepile
+Turn 5 - Play 1 Bonepile that is replaced with a Bonehound at difficulties >= 10
+Turn 6 - Play nothing
+Turn 7 - Play 1 Bonepile
+Repeat this once.
 
 ```c#
-public static EncounterBlueprintData BuildBlueprintTwo()
+using static InscryptionAPI.Encounters.EncounterManager;
+
+private void AddEncounters()
 {
-	var blueprint = ScriptableObject.CreateInstance<EncounterBlueprintData>();
-	blueprint.name = "TurnPlan_2";
-	blueprint.turns = new List<List<EncounterBlueprintData.CardBlueprint>>
-	{
-		new List<EncounterBlueprintData.CardBlueprint> { bp_Bonehound, bp_Bonehound },
-		new List<EncounterBlueprintData.CardBlueprint> {  },
-		new List<EncounterBlueprintData.CardBlueprint>(),
-		new List<EncounterBlueprintData.CardBlueprint> { bp_Bonepile },
-		new List<EncounterBlueprintData.CardBlueprint> { bp_Bonepile },
-		new List<EncounterBlueprintData.CardBlueprint>(),
-		new List<EncounterBlueprintData.CardBlueprint> { bp_Bonepile }
-	};
-	return blueprint;
+    CardBlueprint bonePile_rp = NewCardBlueprint("Bonepile").SetReplacement("Bonehound", 10);
+    
+    List<List<CardBlueprint>> turnPlan = new()
+    {
+        CreateTurn("Bonehound", "Bonehound"),
+        CreateTurn(),
+        CreateTurn(),
+        CreateTurn("Bonepile"),
+        CreateTurn(bonePile_rp),
+        CreateTurn(),
+        CreateTurn("Bonepile")
+    };
+    
+    New("ExampleEncounter").AddTurns(turnPlan).DuplicateTurns(1);
 }
 ```
 
-Now that you have your encounter blueprint setup, add it with the manager:
+The following methods are provided for convenience:
+- **New:** Creates a new instance of EncounterBlueprintData and adds it to the API (does not add the EBD to any regions).
+- **NewCardBlueprint:** Creates a new CardBlueprint.
+- **CreateTurn:** Creates a new List\<CardBlueprint\> that represents a single turn in an encounter's turn plan. Can pass card names through or CardBlueprints, or nothing if you want an empty turn.
 
-```c#
-EncounterManager.Add(BuildBlueprintTwo());
-```
+The following extensions are available for making turn plans, sorted by what class they affect:
+- EncounterBlueprintData
+    - **SetDifficulty:** Sets the minimum and maximum difficulties at which the encounter can be used.
+    - **AddDominantTribes:** Used in Totem battles to determine the potential Totem top that will be used.
+    - **SetRegionSpecific:** Unused by the game, just here for posterity (unless you want to use it for something yourself).
+    - **AddRandomReplacementCards:** When making a card blueprint, you can set whether the card can be randomly replaced. This field determines the cards that can potentially replace that card.
+    - **SetRedundantAbilities:** Sets what abilities can't be chosen by Leshy to be used for his totem during Totem battles.
+    - **SetUnlockedCardPrerequisites:** Sets what cards have to be unlocked in order to be used in this encounter.
+    - **AddTurnMods:** Used in Part 3 to overclock played cards above the specified difficulty on the specified turn.
+    - **AddTurn:** Adds a turn to the turn plan.
+    - **AddTurns:** Adds turns to the turn plan.
+    - **DuplicateTurns:** Duplicates all turns currently in the turn plan by the specified amount.
+    - **SyncDifficulties:** Sets the minimum and maximum difficulties of all cards in the turn plan.
+-  CardBlueprint
+    - **SetDifficulty:** Sets the minimum and maximum difficulties at which this card can be played.
+    - **SetReplacement:** Sets the card that will replace the base card at and above the specified difficulty.
+- List\<CardBlueprint\>
+    - **SetTurnDifficulty:** Sets the minimum and maximum difficulties of each card in the list.
+    - **DuplicateTurn:** Duplicates the list the specified number of times. Designed to be used with EncounterBlueprintData.AddTurns().
 
 ## Special Sequencers
 Special sequencers are essentially 'global abilities;' they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). 
