@@ -53,7 +53,7 @@ public static class CardManager
     }
 
     /// <summary>
-    /// Re-executes events and rebuilds the card pool
+    /// Re-executes events and rebuilds the card pool.
     /// </summary>
     public static void SyncCardList()
     {
