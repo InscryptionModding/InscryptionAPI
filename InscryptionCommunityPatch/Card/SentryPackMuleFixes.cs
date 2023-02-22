@@ -28,7 +28,8 @@ internal class SentryPackMuleFixes
     {
         if (__instance.pack == null)
         {
-            PatchPlugin.Logger.LogDebug($"{__instance.PlayableCard.name} died before fully resolving on board, instantiating pack.");
+            if (PatchPlugin.configFullDebug.Value)
+                PatchPlugin.Logger.LogDebug($"{__instance.PlayableCard.name} died before fully resolving on board, instantiating pack.");
 
             // Instantiates the pack object if it's null
             // Code copied from PackMule's OnResolveOnBoard logic
@@ -43,7 +44,8 @@ internal class SentryPackMuleFixes
             yield return new WaitUntil(() => !Tween.activeTweens.Exists((TweenBase t) => t.targetInstanceID == __instance.PlayableCard.transform.GetInstanceID()));
             __instance.pack.SetParent(__instance.PlayableCard.transform);
 
-            PatchPlugin.Logger.LogDebug($"Pack has been instantiated. Reality has been saved.");
+            if (PatchPlugin.configFullDebug.Value)
+                PatchPlugin.Logger.LogDebug($"Pack has been instantiated. Reality has been saved.");
         }
         yield return enumerator;
     }
