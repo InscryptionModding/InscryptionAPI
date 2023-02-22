@@ -723,7 +723,6 @@ public static class CardExtensions
                 if (target != null && tailCard != null)
                     target.SetTail(tailCard, tailLostPortrait, mods);
 
-
                 return cards;
             };
         }
@@ -817,7 +816,7 @@ public static class CardExtensions
     /// <param name="info">Card to access</param>
     /// <param name="onePerDeck">Whether this is onePerDeck or not</param>
     /// <returns>The same card info so a chain can continue</returns>
-    internal static CardInfo SetOnePerDeck(this CardInfo info, bool onePerDeck = true)
+    public static CardInfo SetOnePerDeck(this CardInfo info, bool onePerDeck = true)
     {
         info.onePerDeck = onePerDeck;
         return info;
@@ -828,7 +827,7 @@ public static class CardExtensions
     /// <param name="info">Card to access</param>
     /// <param name="hideStats">Whether the stats should be hidden or not</param>
     /// <returns>The same card info so a chain can continue</returns>
-    internal static CardInfo SetHideStats(this CardInfo info, bool hideStats = true)
+    public static CardInfo SetHideStats(this CardInfo info, bool hideStats = true)
     {
         info.hideAttackAndHealth = hideStats;
         return info;
