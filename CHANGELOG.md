@@ -1,8 +1,13 @@
 # Changelog
 
 ## 2.11.0
+- Refactored how regions are handled by the API to prevent duplicate bosses
+- Refactored how bosses are selected to prevent duplicates being encountered
+- Changed when modded Ascension data is cleared to allow for editing it post-clear
+- Added more descriptive error logs for some commonly encountered errors
 - Added config option to reduce the amount of debug info shown in the console
-- Added methods to aid in creating encounters' turn plans
+- Added methods to aid in creating encounter turn plans
+- Added more methods for interacting with lists, new debug method to aid in making transpilers
 - Added ExtendedActivatedAbilityBehaviour class; allows for dynamic costs and Health costs
 - Fixed SetOnePerDeck() and SetHideStats() being inaccessible
 - Fixed AddCardBlueprint() not setting the replacement card correctly
