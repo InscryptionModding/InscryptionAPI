@@ -2506,6 +2506,22 @@ references:
   commentId: T:InscryptionAPI.Card.AbilityManager
   fullName: InscryptionAPI.Card.AbilityManager
   nameWithType: AbilityManager
+- uid: InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable{HarmonyLib.CodeInstruction})
+  name: AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction>)
+  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_System_Collections_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: AbilityIconInteractable_AssignAbility(IEnumerable(Of CodeInstruction))
+  fullName: InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: AbilityManager.AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction>)
+  nameWithType.vb: AbilityManager.AbilityIconInteractable_AssignAbility(IEnumerable(Of CodeInstruction))
+- uid: InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility*
+  name: AbilityIconInteractable_AssignAbility
+  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_
+  commentId: Overload:InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility
+  nameWithType: AbilityManager.AbilityIconInteractable_AssignAbility
 - uid: InscryptionAPI.Card.AbilityManager.Add(System.String,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)
   name: Add(String, AbilityInfo, Type, Texture)
   href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_Add_System_String_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_
@@ -4382,6 +4398,19 @@ references:
   fullName.vb: InscryptionAPI.Card.CardManager.GetExtendedClass(Of T)(DiskCardGame.CardInfo)
   nameWithType: CardManager.GetExtendedClass<T>(CardInfo)
   nameWithType.vb: CardManager.GetExtendedClass(Of T)(CardInfo)
+- uid: InscryptionAPI.Card.CardManager.LogCardInfo(DiskCardGame.CardInfo,System.String)
+  name: LogCardInfo(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_LogCardInfo_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardManager.LogCardInfo(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardManager.LogCardInfo(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardManager.LogCardInfo(CardInfo, String)
+- uid: InscryptionAPI.Card.CardManager.LogCardInfo*
+  name: LogCardInfo
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_LogCardInfo_
+  commentId: Overload:InscryptionAPI.Card.CardManager.LogCardInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.LogCardInfo
+  nameWithType: CardManager.LogCardInfo
 - uid: InscryptionAPI.Card.CardManager.ModifyCardList
   name: ModifyCardList
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_ModifyCardList
@@ -4427,6 +4456,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardManager.SyncCardList
   nameWithType: CardManager.SyncCardList
+- uid: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
+  name: Transpiler(IEnumerable<CodeInstruction>)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_Transpiler_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:InscryptionAPI.Card.CardManager.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: Transpiler(IEnumerable(Of CodeInstruction))
+  fullName: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: CardManager.Transpiler(IEnumerable<CodeInstruction>)
+  nameWithType.vb: CardManager.Transpiler(IEnumerable(Of CodeInstruction))
+- uid: InscryptionAPI.Card.CardManager.Transpiler*
+  name: Transpiler
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_Transpiler_
+  commentId: Overload:InscryptionAPI.Card.CardManager.Transpiler
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.Transpiler
+  nameWithType: CardManager.Transpiler
 - uid: InscryptionAPI.Card.ExtendedAbilityBehaviour
   name: ExtendedAbilityBehaviour
   href: api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html
@@ -6441,6 +6486,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss
   nameWithType: OpponentManager.OriginalGetSequencerIdForBoss
+- uid: InscryptionAPI.Encounters.OpponentManager.RunStateOpponents
+  name: RunStateOpponents
+  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_RunStateOpponents
+  commentId: P:InscryptionAPI.Encounters.OpponentManager.RunStateOpponents
+  fullName: InscryptionAPI.Encounters.OpponentManager.RunStateOpponents
+  nameWithType: OpponentManager.RunStateOpponents
+- uid: InscryptionAPI.Encounters.OpponentManager.RunStateOpponents*
+  name: RunStateOpponents
+  href: api/InscryptionAPI.Encounters.OpponentManager.html#InscryptionAPI_Encounters_OpponentManager_RunStateOpponents_
+  commentId: Overload:InscryptionAPI.Encounters.OpponentManager.RunStateOpponents
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.OpponentManager.RunStateOpponents
+  nameWithType: OpponentManager.RunStateOpponents
 - uid: InscryptionAPI.Encounters.SpecialSequenceManager
   name: SpecialSequenceManager
   href: api/InscryptionAPI.Encounters.SpecialSequenceManager.html
@@ -7125,6 +7183,22 @@ references:
   commentId: T:InscryptionAPI.Helpers.Extensions.ListExtensions
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions
   nameWithType: ListExtensions
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom*
+  name: GetRandom
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetRandom_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom
+  nameWithType: ListExtensions.GetRandom
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(System.Collections.Generic.List{``0})
+  name: GetRandom<T>(List<T>)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetRandom__1_System_Collections_Generic_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(System.Collections.Generic.List{``0})
+  name.vb: GetRandom(Of T)(List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom<T>(System.Collections.Generic.List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom(Of T)(System.Collections.Generic.List(Of T))
+  nameWithType: ListExtensions.GetRandom<T>(List<T>)
+  nameWithType.vb: ListExtensions.GetRandom(Of T)(List(Of T))
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom*
   name: GetSeededRandom
   href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetSeededRandom_
@@ -7141,6 +7215,38 @@ references:
   fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom(Of T)(System.Collections.Generic.List(Of T), System.Int32)
   nameWithType: ListExtensions.GetSeededRandom<T>(List<T>, Int32)
   nameWithType.vb: ListExtensions.GetSeededRandom(Of T)(List(Of T), Int32)
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst*
+  name: PopFirst
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopFirst_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst
+  nameWithType: ListExtensions.PopFirst
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(System.Collections.Generic.List{``0})
+  name: PopFirst<T>(List<T>)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopFirst__1_System_Collections_Generic_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(System.Collections.Generic.List{``0})
+  name.vb: PopFirst(Of T)(List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst<T>(System.Collections.Generic.List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst(Of T)(System.Collections.Generic.List(Of T))
+  nameWithType: ListExtensions.PopFirst<T>(List<T>)
+  nameWithType.vb: ListExtensions.PopFirst(Of T)(List(Of T))
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast*
+  name: PopLast
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopLast_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast
+  nameWithType: ListExtensions.PopLast
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(System.Collections.Generic.List{``0})
+  name: PopLast<T>(List<T>)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopLast__1_System_Collections_Generic_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(System.Collections.Generic.List{``0})
+  name.vb: PopLast(Of T)(List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast<T>(System.Collections.Generic.List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast(Of T)(System.Collections.Generic.List(Of T))
+  nameWithType: ListExtensions.PopLast<T>(List<T>)
+  nameWithType.vb: ListExtensions.PopLast(Of T)(List(Of T))
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat*
   name: Repeat
   href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat_
@@ -7562,6 +7668,28 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.TextureHelper.TryReuseEmission
   nameWithType: TextureHelper.TryReuseEmission
+- uid: InscryptionAPI.Helpers.TranspilerHelpers
+  name: TranspilerHelpers
+  href: api/InscryptionAPI.Helpers.TranspilerHelpers.html
+  commentId: T:InscryptionAPI.Helpers.TranspilerHelpers
+  fullName: InscryptionAPI.Helpers.TranspilerHelpers
+  nameWithType: TranspilerHelpers
+- uid: InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions(List{HarmonyLib.CodeInstruction},System.String)
+  name: LogCodeInscryptions(List<CodeInstruction>, String)
+  href: api/InscryptionAPI.Helpers.TranspilerHelpers.html#InscryptionAPI_Helpers_TranspilerHelpers_LogCodeInscryptions_List_HarmonyLib_CodeInstruction__System_String_
+  commentId: M:InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions(List{HarmonyLib.CodeInstruction},System.String)
+  name.vb: LogCodeInscryptions(List(Of CodeInstruction), String)
+  fullName: InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions(List<HarmonyLib.CodeInstruction>, System.String)
+  fullName.vb: InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions(List(Of HarmonyLib.CodeInstruction), System.String)
+  nameWithType: TranspilerHelpers.LogCodeInscryptions(List<CodeInstruction>, String)
+  nameWithType.vb: TranspilerHelpers.LogCodeInscryptions(List(Of CodeInstruction), String)
+- uid: InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions*
+  name: LogCodeInscryptions
+  href: api/InscryptionAPI.Helpers.TranspilerHelpers.html#InscryptionAPI_Helpers_TranspilerHelpers_LogCodeInscryptions_
+  commentId: Overload:InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.TranspilerHelpers.LogCodeInscryptions
+  nameWithType: TranspilerHelpers.LogCodeInscryptions
 - uid: InscryptionAPI.InscryptionAPIPlugin
   name: InscryptionAPIPlugin
   href: api/InscryptionAPI.InscryptionAPIPlugin.html
@@ -10920,19 +11048,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.RegionManager.FromTierFull
   nameWithType: RegionManager.FromTierFull
-- uid: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
-  name: GetRandomRegionFromTier(Int32)
-  href: api/InscryptionAPI.Regions.RegionManager.html#InscryptionAPI_Regions_RegionManager_GetRandomRegionFromTier_System_Int32_
-  commentId: M:InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
-  fullName: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier(System.Int32)
-  nameWithType: RegionManager.GetRandomRegionFromTier(Int32)
-- uid: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier*
-  name: GetRandomRegionFromTier
-  href: api/InscryptionAPI.Regions.RegionManager.html#InscryptionAPI_Regions_RegionManager_GetRandomRegionFromTier_
-  commentId: Overload:InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier
-  isSpec: "True"
-  fullName: InscryptionAPI.Regions.RegionManager.GetRandomRegionFromTier
-  nameWithType: RegionManager.GetRandomRegionFromTier
 - uid: InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects
   name: RegionManager.MapDataReader_SpawnMapObjects
   href: api/InscryptionAPI.Regions.RegionManager.MapDataReader_SpawnMapObjects.html
