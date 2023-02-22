@@ -2576,6 +2576,19 @@ references:
   commentId: F:InscryptionAPI.Card.AbilityManager.FullAbility.AbilityBehavior
   fullName: InscryptionAPI.Card.AbilityManager.FullAbility.AbilityBehavior
   nameWithType: AbilityManager.FullAbility.AbilityBehavior
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription
+  name: BaseRulebookDescription
+  href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_BaseRulebookDescription
+  commentId: P:InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription
+  nameWithType: AbilityManager.FullAbility.BaseRulebookDescription
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription*
+  name: BaseRulebookDescription
+  href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_BaseRulebookDescription_
+  commentId: Overload:InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility.BaseRulebookDescription
+  nameWithType: AbilityManager.FullAbility.BaseRulebookDescription
 - uid: InscryptionAPI.Card.AbilityManager.FullAbility.Clone
   name: Clone()
   href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_Clone
@@ -4556,6 +4569,251 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedAbilityBehaviour.TriggerWhenFacedown
   nameWithType: ExtendedAbilityBehaviour.TriggerWhenFacedown
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour
+  name: ExtendedActivatedAbilityBehaviour
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html
+  commentId: T:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour
+  nameWithType: ExtendedActivatedAbilityBehaviour
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate
+  name: Activate()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_Activate
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate()
+  nameWithType: ExtendedActivatedAbilityBehaviour.Activate()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate*
+  name: Activate
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_Activate_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate
+  nameWithType: ExtendedActivatedAbilityBehaviour.Activate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
+  name: BonesCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_BonesCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.BonesCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost*
+  name: BonesCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_BonesCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.BonesCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bonesCostMod
+  name: bonesCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_bonesCostMod
+  commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bonesCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bonesCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.bonesCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate
+  name: CanActivate()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_CanActivate
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate()
+  nameWithType: ExtendedActivatedAbilityBehaviour.CanActivate()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate*
+  name: CanActivate
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_CanActivate_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate
+  nameWithType: ExtendedActivatedAbilityBehaviour.CanActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
+  name: EnergyCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_EnergyCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.EnergyCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost*
+  name: EnergyCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_EnergyCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.EnergyCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.energyCostMod
+  name: energyCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_energyCostMod
+  commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.energyCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.energyCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.energyCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost
+  name: HealthCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_HealthCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.HealthCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost*
+  name: HealthCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_HealthCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.HealthCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.HealthCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.healthCostMod
+  name: healthCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_healthCostMod
+  commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.healthCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.healthCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.healthCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  name: ModifyCostsOnActivate
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_ModifyCostsOnActivate
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  nameWithType: ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate*
+  name: ModifyCostsOnActivate
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_ModifyCostsOnActivate_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  nameWithType: ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+  name: OnActivateBonesCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateBonesCostMod
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod*
+  name: OnActivateBonesCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateBonesCostMod_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility
+  name: OnActivatedAbility()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivatedAbility
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility()
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivatedAbility()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility*
+  name: OnActivatedAbility
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivatedAbility_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivatedAbility
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivatedAbility
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+  name: OnActivateEnergyCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateEnergyCostMod
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod*
+  name: OnActivateEnergyCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateEnergyCostMod_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateEnergyCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+  name: OnActivateHealthCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateHealthCostMod
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod*
+  name: OnActivateHealthCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateHealthCostMod_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
+  name: OnResolveOnBoard()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard()
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnResolveOnBoard()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard*
+  name: OnResolveOnBoard
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate
+  name: PostActivate()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_PostActivate
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate()
+  nameWithType: ExtendedActivatedAbilityBehaviour.PostActivate()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate*
+  name: PostActivate
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_PostActivate_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.PostActivate
+  nameWithType: ExtendedActivatedAbilityBehaviour.PostActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  name: RespondsToActivatedAbility(Ability)
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToActivatedAbility_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility(Ability)
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility*
+  name: RespondsToActivatedAbility
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToActivatedAbility_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+  name: RespondsToResolveOnBoard()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard()
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard*
+  name: RespondsToResolveOnBoard
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
+  name: StartingBonesCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingBonesCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingBonesCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost*
+  name: StartingBonesCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingBonesCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingBonesCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+  name: StartingEnergyCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingEnergyCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost*
+  name: StartingEnergyCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingEnergyCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingEnergyCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost
+  name: StartingHealthCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingHealthCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingHealthCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost*
+  name: StartingHealthCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingHealthCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingHealthCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingHealthCost
 - uid: InscryptionAPI.Card.IActivateWhenFacedown
   name: IActivateWhenFacedown
   href: api/InscryptionAPI.Card.IActivateWhenFacedown.html
@@ -6674,6 +6932,22 @@ references:
   commentId: T:InscryptionAPI.Helpers.Extensions.ListExtensions
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions
   nameWithType: ListExtensions
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom*
+  name: GetSeededRandom
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetSeededRandom_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom
+  nameWithType: ListExtensions.GetSeededRandom
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(System.Collections.Generic.List{``0},System.Int32)
+  name: GetSeededRandom<T>(List<T>, Int32)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetSeededRandom__1_System_Collections_Generic_List___0__System_Int32_
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(System.Collections.Generic.List{``0},System.Int32)
+  name.vb: GetSeededRandom(Of T)(List(Of T), Int32)
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom<T>(System.Collections.Generic.List<T>, System.Int32)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom(Of T)(System.Collections.Generic.List(Of T), System.Int32)
+  nameWithType: ListExtensions.GetSeededRandom<T>(List<T>, Int32)
+  nameWithType.vb: ListExtensions.GetSeededRandom(Of T)(List(Of T), Int32)
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat*
   name: Repeat
   href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat_
@@ -9548,12 +9822,12 @@ references:
   commentId: T:InscryptionAPI.Pelts.Extensions.PeltExtensions
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions
   nameWithType: PeltExtensions
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32,System.Int32)
-  name: SetBuyPrice(PeltManager.CustomPeltData, Int32, Int32)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPrice_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_Int32_System_Int32_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32,System.Int32)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.Int32, System.Int32)
-  nameWithType: PeltExtensions.SetBuyPrice(PeltManager.CustomPeltData, Int32, Int32)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32,System.Int32)
+  name: SetBuyPrice(PeltManager.PeltData, Int32, Int32)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPrice_InscryptionAPI_Pelts_PeltManager_PeltData_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData, System.Int32, System.Int32)
+  nameWithType: PeltExtensions.SetBuyPrice(PeltManager.PeltData, Int32, Int32)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice*
   name: SetBuyPrice
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPrice_
@@ -9561,15 +9835,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPrice
   nameWithType: PeltExtensions.SetBuyPrice
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.CustomPeltData,Func{System.Int32,System.Int32})
-  name: SetBuyPriceAdjustment(PeltManager.CustomPeltData, Func<Int32, Int32>)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceAdjustment_InscryptionAPI_Pelts_PeltManager_CustomPeltData_Func_System_Int32_System_Int32__
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.CustomPeltData,Func{System.Int32,System.Int32})
-  name.vb: SetBuyPriceAdjustment(PeltManager.CustomPeltData, Func(Of Int32, Int32))
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.CustomPeltData, Func<System.Int32, System.Int32>)
-  fullName.vb: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.CustomPeltData, Func(Of System.Int32, System.Int32))
-  nameWithType: PeltExtensions.SetBuyPriceAdjustment(PeltManager.CustomPeltData, Func<Int32, Int32>)
-  nameWithType.vb: PeltExtensions.SetBuyPriceAdjustment(PeltManager.CustomPeltData, Func(Of Int32, Int32))
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.PeltData,Func{System.Int32,System.Int32})
+  name: SetBuyPriceAdjustment(PeltManager.PeltData, Func<Int32, Int32>)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceAdjustment_InscryptionAPI_Pelts_PeltManager_PeltData_Func_System_Int32_System_Int32__
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.PeltData,Func{System.Int32,System.Int32})
+  name.vb: SetBuyPriceAdjustment(PeltManager.PeltData, Func(Of Int32, Int32))
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.PeltData, Func<System.Int32, System.Int32>)
+  fullName.vb: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment(InscryptionAPI.Pelts.PeltManager.PeltData, Func(Of System.Int32, System.Int32))
+  nameWithType: PeltExtensions.SetBuyPriceAdjustment(PeltManager.PeltData, Func<Int32, Int32>)
+  nameWithType.vb: PeltExtensions.SetBuyPriceAdjustment(PeltManager.PeltData, Func(Of Int32, Int32))
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment*
   name: SetBuyPriceAdjustment
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceAdjustment_
@@ -9577,12 +9851,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceAdjustment
   nameWithType: PeltExtensions.SetBuyPriceAdjustment
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32,System.Int32)
-  name: SetBuyPriceModifiers(PeltManager.CustomPeltData, Int32, Int32)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceModifiers_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_Int32_System_Int32_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32,System.Int32)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.Int32, System.Int32)
-  nameWithType: PeltExtensions.SetBuyPriceModifiers(PeltManager.CustomPeltData, Int32, Int32)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32,System.Int32)
+  name: SetBuyPriceModifiers(PeltManager.PeltData, Int32, Int32)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceModifiers_InscryptionAPI_Pelts_PeltManager_PeltData_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers(InscryptionAPI.Pelts.PeltManager.PeltData, System.Int32, System.Int32)
+  nameWithType: PeltExtensions.SetBuyPriceModifiers(PeltManager.PeltData, Int32, Int32)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers*
   name: SetBuyPriceModifiers
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetBuyPriceModifiers_
@@ -9590,15 +9864,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetBuyPriceModifiers
   nameWithType: PeltExtensions.SetBuyPriceModifiers
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData,Func{List{DiskCardGame.CardInfo}})
-  name: SetCardChoices(PeltManager.CustomPeltData, Func<List<CardInfo>>)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetCardChoices_InscryptionAPI_Pelts_PeltManager_CustomPeltData_Func_List_DiskCardGame_CardInfo___
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData,Func{List{DiskCardGame.CardInfo}})
-  name.vb: SetCardChoices(PeltManager.CustomPeltData, Func(Of List(Of CardInfo)))
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData, Func<List<DiskCardGame.CardInfo>>)
-  fullName.vb: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData, Func(Of List(Of DiskCardGame.CardInfo)))
-  nameWithType: PeltExtensions.SetCardChoices(PeltManager.CustomPeltData, Func<List<CardInfo>>)
-  nameWithType.vb: PeltExtensions.SetCardChoices(PeltManager.CustomPeltData, Func(Of List(Of CardInfo)))
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.PeltData,Func{List{DiskCardGame.CardInfo}})
+  name: SetCardChoices(PeltManager.PeltData, Func<List<CardInfo>>)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetCardChoices_InscryptionAPI_Pelts_PeltManager_PeltData_Func_List_DiskCardGame_CardInfo___
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.PeltData,Func{List{DiskCardGame.CardInfo}})
+  name.vb: SetCardChoices(PeltManager.PeltData, Func(Of List(Of CardInfo)))
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.PeltData, Func<List<DiskCardGame.CardInfo>>)
+  fullName.vb: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices(InscryptionAPI.Pelts.PeltManager.PeltData, Func(Of List(Of DiskCardGame.CardInfo)))
+  nameWithType: PeltExtensions.SetCardChoices(PeltManager.PeltData, Func<List<CardInfo>>)
+  nameWithType.vb: PeltExtensions.SetCardChoices(PeltManager.PeltData, Func(Of List(Of CardInfo)))
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices*
   name: SetCardChoices
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetCardChoices_
@@ -9606,12 +9880,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetCardChoices
   nameWithType: PeltExtensions.SetCardChoices
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Boolean)
-  name: SetIsSoldByTrapper(PeltManager.CustomPeltData, Boolean)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetIsSoldByTrapper_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_Boolean_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Boolean)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.Boolean)
-  nameWithType: PeltExtensions.SetIsSoldByTrapper(PeltManager.CustomPeltData, Boolean)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.PeltData,System.Boolean)
+  name: SetIsSoldByTrapper(PeltManager.PeltData, Boolean)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetIsSoldByTrapper_InscryptionAPI_Pelts_PeltManager_PeltData_System_Boolean_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.PeltData,System.Boolean)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper(InscryptionAPI.Pelts.PeltManager.PeltData, System.Boolean)
+  nameWithType: PeltExtensions.SetIsSoldByTrapper(PeltManager.PeltData, Boolean)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper*
   name: SetIsSoldByTrapper
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetIsSoldByTrapper_
@@ -9619,12 +9893,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetIsSoldByTrapper
   nameWithType: PeltExtensions.SetIsSoldByTrapper
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32)
-  name: SetMaxBuyPrice(PeltManager.CustomPeltData, Int32)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetMaxBuyPrice_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_Int32_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.Int32)
-  nameWithType: PeltExtensions.SetMaxBuyPrice(PeltManager.CustomPeltData, Int32)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32)
+  name: SetMaxBuyPrice(PeltManager.PeltData, Int32)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetMaxBuyPrice_InscryptionAPI_Pelts_PeltManager_PeltData_System_Int32_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice(InscryptionAPI.Pelts.PeltManager.PeltData, System.Int32)
+  nameWithType: PeltExtensions.SetMaxBuyPrice(PeltManager.PeltData, Int32)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice*
   name: SetMaxBuyPrice
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetMaxBuyPrice_
@@ -9632,12 +9906,28 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetMaxBuyPrice
   nameWithType: PeltExtensions.SetMaxBuyPrice
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32)
-  name: SetNumberOfTraderChoices(PeltManager.CustomPeltData, Int32)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetNumberOfTraderChoices_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_Int32_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.Int32)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.Int32)
-  nameWithType: PeltExtensions.SetNumberOfTraderChoices(PeltManager.CustomPeltData, Int32)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader(InscryptionAPI.Pelts.PeltManager.PeltData,Action{DiskCardGame.CardInfo})
+  name: SetModifyCardChoiceAtTrader(PeltManager.PeltData, Action<CardInfo>)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetModifyCardChoiceAtTrader_InscryptionAPI_Pelts_PeltManager_PeltData_Action_DiskCardGame_CardInfo__
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader(InscryptionAPI.Pelts.PeltManager.PeltData,Action{DiskCardGame.CardInfo})
+  name.vb: SetModifyCardChoiceAtTrader(PeltManager.PeltData, Action(Of CardInfo))
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader(InscryptionAPI.Pelts.PeltManager.PeltData, Action<DiskCardGame.CardInfo>)
+  fullName.vb: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader(InscryptionAPI.Pelts.PeltManager.PeltData, Action(Of DiskCardGame.CardInfo))
+  nameWithType: PeltExtensions.SetModifyCardChoiceAtTrader(PeltManager.PeltData, Action<CardInfo>)
+  nameWithType.vb: PeltExtensions.SetModifyCardChoiceAtTrader(PeltManager.PeltData, Action(Of CardInfo))
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader*
+  name: SetModifyCardChoiceAtTrader
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetModifyCardChoiceAtTrader_
+  commentId: Overload:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetModifyCardChoiceAtTrader
+  nameWithType: PeltExtensions.SetModifyCardChoiceAtTrader
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32)
+  name: SetNumberOfTraderChoices(PeltManager.PeltData, Int32)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetNumberOfTraderChoices_InscryptionAPI_Pelts_PeltManager_PeltData_System_Int32_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.PeltData,System.Int32)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices(InscryptionAPI.Pelts.PeltManager.PeltData, System.Int32)
+  nameWithType: PeltExtensions.SetNumberOfTraderChoices(PeltManager.PeltData, Int32)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices*
   name: SetNumberOfTraderChoices
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetNumberOfTraderChoices_
@@ -9645,12 +9935,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetNumberOfTraderChoices
   nameWithType: PeltExtensions.SetNumberOfTraderChoices
-- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.String)
-  name: SetPluginGuid(PeltManager.CustomPeltData, String)
-  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetPluginGuid_InscryptionAPI_Pelts_PeltManager_CustomPeltData_System_String_
-  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.CustomPeltData,System.String)
-  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.CustomPeltData, System.String)
-  nameWithType: PeltExtensions.SetPluginGuid(PeltManager.CustomPeltData, String)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.PeltData,System.String)
+  name: SetPluginGuid(PeltManager.PeltData, String)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetPluginGuid_InscryptionAPI_Pelts_PeltManager_PeltData_System_String_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.PeltData,System.String)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid(InscryptionAPI.Pelts.PeltManager.PeltData, System.String)
+  nameWithType: PeltExtensions.SetPluginGuid(PeltManager.PeltData, String)
 - uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid*
   name: SetPluginGuid
   href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetPluginGuid_
@@ -9664,12 +9954,12 @@ references:
   commentId: T:InscryptionAPI.Pelts.PeltManager
   fullName: InscryptionAPI.Pelts.PeltManager
   nameWithType: PeltManager
-- uid: InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
-  name: Add(PeltManager.CustomPeltData)
-  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_Add_InscryptionAPI_Pelts_PeltManager_CustomPeltData_
-  commentId: M:InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
-  fullName: InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.CustomPeltData)
-  nameWithType: PeltManager.Add(PeltManager.CustomPeltData)
+- uid: InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.PeltData)
+  name: Add(PeltManager.PeltData)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_Add_InscryptionAPI_Pelts_PeltManager_PeltData_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.PeltData)
+  fullName: InscryptionAPI.Pelts.PeltManager.Add(InscryptionAPI.Pelts.PeltManager.PeltData)
+  nameWithType: PeltManager.Add(PeltManager.PeltData)
 - uid: InscryptionAPI.Pelts.PeltManager.Add*
   name: Add
   href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_Add_
@@ -9677,12 +9967,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.PeltManager.Add
   nameWithType: PeltManager.Add
-- uid: InscryptionAPI.Pelts.PeltManager.AllNewPelts
-  name: AllNewPelts
-  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_AllNewPelts
-  commentId: F:InscryptionAPI.Pelts.PeltManager.AllNewPelts
-  fullName: InscryptionAPI.Pelts.PeltManager.AllNewPelts
-  nameWithType: PeltManager.AllNewPelts
 - uid: InscryptionAPI.Pelts.PeltManager.AllPeltsAvailableAtTrader
   name: AllPeltsAvailableAtTrader()
   href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_AllPeltsAvailableAtTrader
@@ -9696,113 +9980,41 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.PeltManager.AllPeltsAvailableAtTrader
   nameWithType: PeltManager.AllPeltsAvailableAtTrader
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData
-  name: PeltManager.CustomPeltData
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html
-  commentId: T:InscryptionAPI.Pelts.PeltManager.CustomPeltData
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData
-  nameWithType: PeltManager.CustomPeltData
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.baseBuyPrice
-  name: baseBuyPrice
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_baseBuyPrice
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.baseBuyPrice
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.baseBuyPrice
-  nameWithType: PeltManager.CustomPeltData.baseBuyPrice
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.bossDefeatedPriceReduction
-  name: bossDefeatedPriceReduction
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_bossDefeatedPriceReduction
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.bossDefeatedPriceReduction
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.bossDefeatedPriceReduction
-  nameWithType: PeltManager.CustomPeltData.bossDefeatedPriceReduction
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice
-  name: BuyPrice
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_BuyPrice
-  commentId: P:InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice
-  nameWithType: PeltManager.CustomPeltData.BuyPrice
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice*
-  name: BuyPrice
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_BuyPrice_
-  commentId: Overload:InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice
+- uid: InscryptionAPI.Pelts.PeltManager.GetCostOfPelt(System.String)
+  name: GetCostOfPelt(String)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetCostOfPelt_System_String_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.GetCostOfPelt(System.String)
+  fullName: InscryptionAPI.Pelts.PeltManager.GetCostOfPelt(System.String)
+  nameWithType: PeltManager.GetCostOfPelt(String)
+- uid: InscryptionAPI.Pelts.PeltManager.GetCostOfPelt*
+  name: GetCostOfPelt
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetCostOfPelt_
+  commentId: Overload:InscryptionAPI.Pelts.PeltManager.GetCostOfPelt
   isSpec: "True"
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPrice
-  nameWithType: PeltManager.CustomPeltData.BuyPrice
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPriceAdjustment
-  name: BuyPriceAdjustment
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_BuyPriceAdjustment
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPriceAdjustment
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.BuyPriceAdjustment
-  nameWithType: PeltManager.CustomPeltData.BuyPriceAdjustment
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices
-  name: CardChoices
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_CardChoices
-  commentId: P:InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices
-  nameWithType: PeltManager.CustomPeltData.CardChoices
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices*
-  name: CardChoices
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_CardChoices_
-  commentId: Overload:InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices
+  fullName: InscryptionAPI.Pelts.PeltManager.GetCostOfPelt
+  nameWithType: PeltManager.GetCostOfPelt
+- uid: InscryptionAPI.Pelts.PeltManager.GetPelt(System.String)
+  name: GetPelt(String)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetPelt_System_String_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.GetPelt(System.String)
+  fullName: InscryptionAPI.Pelts.PeltManager.GetPelt(System.String)
+  nameWithType: PeltManager.GetPelt(String)
+- uid: InscryptionAPI.Pelts.PeltManager.GetPelt*
+  name: GetPelt
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetPelt_
+  commentId: Overload:InscryptionAPI.Pelts.PeltManager.GetPelt
   isSpec: "True"
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.CardChoices
-  nameWithType: PeltManager.CustomPeltData.CardChoices
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.choicesOfferedByTrader
-  name: choicesOfferedByTrader
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_choicesOfferedByTrader
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.choicesOfferedByTrader
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.choicesOfferedByTrader
-  nameWithType: PeltManager.CustomPeltData.choicesOfferedByTrader
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.expensivePeltsPriceMultiplier
-  name: expensivePeltsPriceMultiplier
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_expensivePeltsPriceMultiplier
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.expensivePeltsPriceMultiplier
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.expensivePeltsPriceMultiplier
-  nameWithType: PeltManager.CustomPeltData.expensivePeltsPriceMultiplier
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.extraAbilitiesToAdd
-  name: extraAbilitiesToAdd
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_extraAbilitiesToAdd
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.extraAbilitiesToAdd
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.extraAbilitiesToAdd
-  nameWithType: PeltManager.CustomPeltData.extraAbilitiesToAdd
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.GetCardChoices
-  name: GetCardChoices
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_GetCardChoices
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.GetCardChoices
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.GetCardChoices
-  nameWithType: PeltManager.CustomPeltData.GetCardChoices
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.isSoldByTrapper
-  name: isSoldByTrapper
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_isSoldByTrapper
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.isSoldByTrapper
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.isSoldByTrapper
-  nameWithType: PeltManager.CustomPeltData.isSoldByTrapper
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.maxBuyPrice
-  name: maxBuyPrice
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_maxBuyPrice
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.maxBuyPrice
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.maxBuyPrice
-  nameWithType: PeltManager.CustomPeltData.maxBuyPrice
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.peltCardName
-  name: peltCardName
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_peltCardName
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.peltCardName
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.peltCardName
-  nameWithType: PeltManager.CustomPeltData.peltCardName
-- uid: InscryptionAPI.Pelts.PeltManager.CustomPeltData.pluginGuid
-  name: pluginGuid
-  href: api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html#InscryptionAPI_Pelts_PeltManager_CustomPeltData_pluginGuid
-  commentId: F:InscryptionAPI.Pelts.PeltManager.CustomPeltData.pluginGuid
-  fullName: InscryptionAPI.Pelts.PeltManager.CustomPeltData.pluginGuid
-  nameWithType: PeltManager.CustomPeltData.pluginGuid
-- uid: InscryptionAPI.Pelts.PeltManager.New(DiskCardGame.CardInfo,Func{List{DiskCardGame.CardInfo}},System.Int32,System.Int32,System.Boolean)
-  name: New(CardInfo, Func<List<CardInfo>>, Int32, Int32, Boolean)
-  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_DiskCardGame_CardInfo_Func_List_DiskCardGame_CardInfo___System_Int32_System_Int32_System_Boolean_
-  commentId: M:InscryptionAPI.Pelts.PeltManager.New(DiskCardGame.CardInfo,Func{List{DiskCardGame.CardInfo}},System.Int32,System.Int32,System.Boolean)
-  name.vb: New(CardInfo, Func(Of List(Of CardInfo)), Int32, Int32, Boolean)
-  fullName: InscryptionAPI.Pelts.PeltManager.New(DiskCardGame.CardInfo, Func<List<DiskCardGame.CardInfo>>, System.Int32, System.Int32, System.Boolean)
-  fullName.vb: InscryptionAPI.Pelts.PeltManager.New(DiskCardGame.CardInfo, Func(Of List(Of DiskCardGame.CardInfo)), System.Int32, System.Int32, System.Boolean)
-  nameWithType: PeltManager.New(CardInfo, Func<List<CardInfo>>, Int32, Int32, Boolean)
-  nameWithType.vb: PeltManager.New(CardInfo, Func(Of List(Of CardInfo)), Int32, Int32, Boolean)
+  fullName: InscryptionAPI.Pelts.PeltManager.GetPelt
+  nameWithType: PeltManager.GetPelt
+- uid: InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,System.Int32,System.Int32,System.Int32,Func{List{DiskCardGame.CardInfo}})
+  name: New(String, CardInfo, Int32, Int32, Int32, Func<List<CardInfo>>)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_System_String_DiskCardGame_CardInfo_System_Int32_System_Int32_System_Int32_Func_List_DiskCardGame_CardInfo___
+  commentId: M:InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,System.Int32,System.Int32,System.Int32,Func{List{DiskCardGame.CardInfo}})
+  name.vb: New(String, CardInfo, Int32, Int32, Int32, Func(Of List(Of CardInfo)))
+  fullName: InscryptionAPI.Pelts.PeltManager.New(System.String, DiskCardGame.CardInfo, System.Int32, System.Int32, System.Int32, Func<List<DiskCardGame.CardInfo>>)
+  fullName.vb: InscryptionAPI.Pelts.PeltManager.New(System.String, DiskCardGame.CardInfo, System.Int32, System.Int32, System.Int32, Func(Of List(Of DiskCardGame.CardInfo)))
+  nameWithType: PeltManager.New(String, CardInfo, Int32, Int32, Int32, Func<List<CardInfo>>)
+  nameWithType.vb: PeltManager.New(String, CardInfo, Int32, Int32, Int32, Func(Of List(Of CardInfo)))
 - uid: InscryptionAPI.Pelts.PeltManager.New*
   name: New
   href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_
@@ -9810,6 +10022,97 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.PeltManager.New
   nameWithType: PeltManager.New
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData
+  name: PeltManager.PeltData
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html
+  commentId: T:InscryptionAPI.Pelts.PeltManager.PeltData
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData
+  nameWithType: PeltManager.PeltData
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.baseBuyPrice
+  name: baseBuyPrice
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_baseBuyPrice
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.baseBuyPrice
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.baseBuyPrice
+  nameWithType: PeltManager.PeltData.baseBuyPrice
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.bossDefeatedPriceReduction
+  name: bossDefeatedPriceReduction
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_bossDefeatedPriceReduction
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.bossDefeatedPriceReduction
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.bossDefeatedPriceReduction
+  nameWithType: PeltManager.PeltData.bossDefeatedPriceReduction
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice
+  name: BuyPrice
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_BuyPrice
+  commentId: P:InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice
+  nameWithType: PeltManager.PeltData.BuyPrice
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice*
+  name: BuyPrice
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_BuyPrice_
+  commentId: Overload:InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPrice
+  nameWithType: PeltManager.PeltData.BuyPrice
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPriceAdjustment
+  name: BuyPriceAdjustment
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_BuyPriceAdjustment
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.BuyPriceAdjustment
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.BuyPriceAdjustment
+  nameWithType: PeltManager.PeltData.BuyPriceAdjustment
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.CardChoices
+  name: CardChoices
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_CardChoices
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.CardChoices
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.CardChoices
+  nameWithType: PeltManager.PeltData.CardChoices
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.choicesOfferedByTrader
+  name: choicesOfferedByTrader
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_choicesOfferedByTrader
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.choicesOfferedByTrader
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.choicesOfferedByTrader
+  nameWithType: PeltManager.PeltData.choicesOfferedByTrader
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.expensivePeltsPriceMultiplier
+  name: expensivePeltsPriceMultiplier
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_expensivePeltsPriceMultiplier
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.expensivePeltsPriceMultiplier
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.expensivePeltsPriceMultiplier
+  nameWithType: PeltManager.PeltData.expensivePeltsPriceMultiplier
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.extraAbilitiesToAdd
+  name: extraAbilitiesToAdd
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_extraAbilitiesToAdd
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.extraAbilitiesToAdd
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.extraAbilitiesToAdd
+  nameWithType: PeltManager.PeltData.extraAbilitiesToAdd
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.isSoldByTrapper
+  name: isSoldByTrapper
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_isSoldByTrapper
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.isSoldByTrapper
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.isSoldByTrapper
+  nameWithType: PeltManager.PeltData.isSoldByTrapper
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.maxBuyPrice
+  name: maxBuyPrice
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_maxBuyPrice
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.maxBuyPrice
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.maxBuyPrice
+  nameWithType: PeltManager.PeltData.maxBuyPrice
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.ModifyCardChoiceAtTrader
+  name: ModifyCardChoiceAtTrader
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_ModifyCardChoiceAtTrader
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.ModifyCardChoiceAtTrader
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.ModifyCardChoiceAtTrader
+  nameWithType: PeltManager.PeltData.ModifyCardChoiceAtTrader
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.peltCardName
+  name: peltCardName
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_peltCardName
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.peltCardName
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.peltCardName
+  nameWithType: PeltManager.PeltData.peltCardName
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
+  name: pluginGuid
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_pluginGuid
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
+  nameWithType: PeltManager.PeltData.pluginGuid
 - uid: InscryptionAPI.Regions
   name: InscryptionAPI.Regions
   href: api/InscryptionAPI.Regions.html
@@ -13110,31 +13413,3 @@ references:
   commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
   fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
   nameWithType: OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
-- uid: TradePeltAPI.Scripts.Patches
-  name: TradePeltAPI.Scripts.Patches
-  href: api/TradePeltAPI.Scripts.Patches.html
-  commentId: N:TradePeltAPI.Scripts.Patches
-  fullName: TradePeltAPI.Scripts.Patches
-  nameWithType: TradePeltAPI.Scripts.Patches
-- uid: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos
-  name: TradePeltsSequencer_GetTradeCardInfos
-  href: api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.html
-  commentId: T:TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos
-  fullName: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos
-  nameWithType: TradePeltsSequencer_GetTradeCardInfos
-- uid: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name: Transpiler(IEnumerable<CodeInstruction>)
-  href: api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.html#TradePeltAPI_Scripts_Patches_TradePeltsSequencer_GetTradeCardInfos_Transpiler_IEnumerable_HarmonyLib_CodeInstruction__
-  commentId: M:TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name.vb: Transpiler(IEnumerable(Of CodeInstruction))
-  fullName: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable<HarmonyLib.CodeInstruction>)
-  fullName.vb: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable(Of HarmonyLib.CodeInstruction))
-  nameWithType: TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable<CodeInstruction>)
-  nameWithType.vb: TradePeltsSequencer_GetTradeCardInfos.Transpiler(IEnumerable(Of CodeInstruction))
-- uid: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler*
-  name: Transpiler
-  href: api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.html#TradePeltAPI_Scripts_Patches_TradePeltsSequencer_GetTradeCardInfos_Transpiler_
-  commentId: Overload:TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler
-  isSpec: "True"
-  fullName: TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.Transpiler
-  nameWithType: TradePeltsSequencer_GetTradeCardInfos.Transpiler

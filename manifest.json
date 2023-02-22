@@ -280,7 +280,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "P1HPsZ0rN0KKbU2yAW0wB96vjoZVKGCm3LF7WlggAd4="
+          "hash": "G8aJQpDUYb2jDEzJ62UGxuOrqLtqh3Mb2lkYljapCpM="
         }
       },
       "is_incremental": false,
@@ -295,7 +295,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.html",
-          "hash": "nNn/92W/IZH8VFG4HZ34UvNUIznEZ4KZZ2c1BgMRDsE="
+          "hash": "Ph4Ki2Mida40Qzz1i0l0a6XmTZZC8c9PPANGp8j3sXs="
         }
       },
       "is_incremental": false,
@@ -310,7 +310,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "Y7zDLyYJHeb0tMROznXAoNpvo740ZZJcbf/z1sHU334="
+          "hash": "2AQsTregaEQaP9WKSqX3eDfXHZm1QiIdrOx+SUmr2Pk="
         }
       },
       "is_incremental": false,
@@ -371,6 +371,18 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html",
           "hash": "qYe/OaLcLDoxWXPTosEIgew2xmbu4o++8zlRA0dvyoE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html",
+          "hash": "mUePz6ZS+7chQ8TaDeuP71GCzy9uwMW5ccc9rgaZJIo="
         }
       },
       "is_incremental": false,
@@ -466,7 +478,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "R98UaFi28V7BRchiSAHQMfVJ1L4RAii++4zTmB0XBtk="
+          "hash": "HAxpNME8ga6q4n/EJ4pnlRVAHSWJlKto4Jdhe6NG23k="
         }
       },
       "is_incremental": false,
@@ -898,7 +910,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.Extensions.ListExtensions.html",
-          "hash": "qu3gSUTLwqUD0zIxcGlDut17T/k8eTwgfxoUx3XkPmk="
+          "hash": "xH31wHBDwLnQrkxpu4yOnWHp2roxGJe9lsDGYDbo88E="
         }
       },
       "is_incremental": false,
@@ -1390,7 +1402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html",
-          "hash": "zspI12Gy0xhA9lJYQk6F3mIEULGFuZXRi+136tGAlx0="
+          "hash": "iYt14BUvJ6xgOBf0IbOTWKVh59GwkUGlpacPG53cpbE="
         }
       },
       "is_incremental": false,
@@ -1410,11 +1422,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.yml",
+      "source_relative_path": "api/InscryptionAPI.Pelts.PeltManager.PeltData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/InscryptionAPI.Pelts.PeltManager.CustomPeltData.html",
-          "hash": "L4fPfCZOJJ8/sLhzcgYvMI91+MtggUmiXchtkfqZneQ="
+          "relative_path": "api/InscryptionAPI.Pelts.PeltManager.PeltData.html",
+          "hash": "2q0Hh8zRxeJWPgI7nDTFZiysvleCt1kGDhJGknexLcQ="
         }
       },
       "is_incremental": false,
@@ -1426,7 +1438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.PeltManager.html",
-          "hash": "+5zF6TfeoiGoFwgONuh7Qjh24fpxnJE4gNJcnlJ1BNs="
+          "hash": "0RBU0NV4vgxa7ui6R81IxotndwtovZ+ASYMlMxUq3xM="
         }
       },
       "is_incremental": false,
@@ -1438,7 +1450,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.html",
-          "hash": "p5+Wm8BcyrsUcGKWmHthTZZ+xoF1N9A6vwrTrbyvM40="
+          "hash": "0Ym0whgs2fktL4FkcC4gw3I7EjBbWM/Dzz2O98YTcCM="
         }
       },
       "is_incremental": false,
@@ -2261,30 +2273,6 @@
       "version": ""
     },
     {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TradePeltAPI.Scripts.Patches.TradePeltsSequencer_GetTradeCardInfos.html",
-          "hash": "wgEv285N7UsWnZmvmy4pm8hCzgzlKq/nYCbd8LUpgTo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TradePeltAPI.Scripts.Patches.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TradePeltAPI.Scripts.Patches.html",
-          "hash": "E5kbBBHAXFlb+P2e4eUOxWs1z4H0xKInjZ4IcXVhNSs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
@@ -2302,7 +2290,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "z1GvHtP1ChYkFCBg6Uy+AB8MBUMjwk5RLgs7GIMldtc="
+          "hash": "CMdsLABQl+7JUzC2AdOxJScRAxhQuTeoorPbjC36ZiE="
         }
       },
       "is_incremental": false,
@@ -2365,7 +2353,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 197,
+          "total_file_count": 196,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
