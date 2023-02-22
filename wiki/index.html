@@ -69,21 +69,12 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="tweaks">Tweaks</h2>
+<h1 id="tweaks">Tweaks</h1>
 
-<h3 id="custom-card-costs">Custom card costs</h3>
-<p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin) or Act 2 (pixel cards), you can simply hook into one of the following events:</p>
-<pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
-using InscryptionAPI.Helpers;
-
-Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
-{
-    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;);
-    if (myCustomCost &gt; 0)
-        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
-}
-</code></pre><p>Card costs for Act 1 cards must be exactly 64x28 pixels. Card costs for Pixel cards (GBC) must be exactly 30x8 pixels.</p>
-<h3 id="energy-drone-in-act-onekaycees-mod">Energy Drone in Act One/Kaycee&#39;s Mod</h3>
+<h2 id="card-cost-displays">Card Cost Displays</h2>
+<p>Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can display Energy and Mox costs.</p>
+<p>The API package also comes with a second DLL that includes a bunch of community bug fixes and quality-of-life improvements.</p>
+<h2 id="energy-drone-in-act-onekaycees-mod">Energy Drone in Act One/Kaycee&#39;s Mod</h2>
 <p>With the API installed, the energy management drone can be made available in Act 1 and in Kaycee&#39;s Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.</p>
 <p>You can also force these drones to appear in different areas of the game by overriding the following values.</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.ResourceManagers;
@@ -91,13 +82,10 @@ Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
-EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the mox drone appear
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
 </code></pre><p>At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy&#39;s cabin) and CardTemple.Undead (Grimora&#39;s cabin).</p>
-<h3 id="card-cost-display">Card cost display</h3>
-<p>Cards in Act 1 can now display multiple costs at the same time, and can display gem and energy cost in addition to blood and bones cost.</p>
-<p>Cards in Act 2 can now display multiple costs at the same time.</p>
-<h2 id="core-features">Core Features</h2>
-<h3 id="extending-enumerations">Extending Enumerations</h3>
+<h1 id="core-features">Core Features</h1>
+<h2 id="extending-enumerations">Extending Enumerations</h2>
 <p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums,&#39; to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
 <p>Lets say that you want to create a new story event. These are managed by the enumeration StoryEvent. To create a new story event, you should use this pattern to create a single static reference to that new value:</p>
 <pre><code class="lang-c#">public static readonly StoryEvent MyEvent = GuidManager.GetEnumValue&lt;StoryEvent&gt;(MyPlugin.guid, &quot;MyNewStoryEvent&quot;);
@@ -105,7 +93,7 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the m
 <p>If you want to get a value that was created by another mod (for example: you want to make a card that uses an ability created by another mod), you can follow this exact same pattern. You just need to know the plugin guid for the mod that it is contained in:</p>
 <pre><code class="lang-c#">public static readonly Ability OtherAbility = GuidManager.GetEnumValue&lt;Ability&gt;(&quot;other.mod.plugin.guid&quot;, &quot;Ability Name&quot;);
 </code></pre><p>All of these values are stored in the modded save file.</p>
-<h3 id="custom-save-game-data">Custom Save Game Data</h3>
+<h2 id="custom-game-save-data">Custom Game Save Data</h2>
 <p>If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: &#39;SaveData&#39; (which persists across runs) and &#39;RunState&#39; (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod&#39;s plugin GUID, and an arbitrary key, which you can select for each property to you want to save.</p>
 <p>The easiest way to use these helpers is to map them behind static properties, like so:</p>
 <pre><code class="lang-c#">public static int NumberOfItems
@@ -114,8 +102,8 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the m
     set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, &quot;NumberOfItems&quot;, value); }
 }
 </code></pre><p>When written like this, the static property &quot;NumberOfItems&quot; now automatically syncs to the save file.</p>
-<h2 id="cards-and-abilities">Cards and Abilities</h2>
-<h3 id="card-management">Card Management</h3>
+<h1 id="cards">Cards</h1>
+<h2 id="card-management">Card Management</h2>
 <p>Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:</p>
 <pre><code class="lang-c#">CardInfo myCard = ...;
 CardManager.Add(myCard); // Boom: done
@@ -135,36 +123,41 @@ myCard.cost = 2;
     .SetRare();
 </code></pre><p>The following card extensions are available:</p>
 <ul>
-<li><strong>SetPortrait:</strong> Assigns the cards primary art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card&#39;s art.</li>
-<li><strong>SetEmissivePortrait:</strong> If a card already has a portrait and you just want to modify it&#39;s emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.</li>
-<li><strong>SetAltPortrait:</strong> Assigns the card&#39;s alternate portrait</li>
-<li><strong>SetPixelPortrait:</strong> Assigns the card&#39;s pixel portrait (for GBC mode)</li>
-<li><strong>SetCost:</strong> Sets the cost for the card</li>
+<li><strong>SetPortrait:</strong> Assigns the card&#39;s portrait art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card&#39;s art.</li>
+<li><strong>SetEmissivePortrait:</strong> If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.</li>
+<li><strong>SetAltPortrait:</strong> Assigns the card&#39;s alternate portrait.</li>
+<li><strong>SetPixelPortrait:</strong> Assigns the card&#39;s pixel portrait (for GBC mode).</li>
+<li><strong>SetCost:</strong> Sets the cost for the card.</li>
 <li><strong>SetDefaultPart1Card:</strong> Sets all of the metadata necessary to make this card playable in Part 1 (Leshy&#39;s cabin).</li>
 <li><strong>SetGBCPlayable:</strong> Sets all of the metadata necessary to make this card playable in Part 2.</li>
 <li><strong>SetDefaultPart3Card:</strong> Sets all of the metadata necessary to make this card playable in Part 3 (P03&#39;s cabin).</li>
 <li><strong>SetRare:</strong> Sets all of the metadata ncessary to make this card look and play as Rare.</li>
-<li><strong>SetTerrain:</strong> Sets all of the metadata necessary to make this card look and play as terrain</li>
-<li><strong>SetTail:</strong> Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything</li>
-<li><strong>SetIceCube:</strong> Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything</li>
-<li><strong>SetEvolve:</strong> Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything</li>
-<li><strong>AddAbilities:</strong> Add any number of abilities to the card. This will add duplicates.</li>
+<li><strong>SetTerrain:</strong> Sets all of the metadata necessary to make this card look and play as terrain.</li>
+<li><strong>SetPelt:</strong> Sets all of the metadeta necessary to make this card look and play as a pelt card. Can optionally choose whether the card will trigger Pelt Lice&#39;s special ability.</li>
+<li><strong>SetTail:</strong> Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything.</li>
+<li><strong>SetIceCube:</strong> Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything.</li>
+<li><strong>SetEvolve:</strong> Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.</li>
+<li><strong>SetOnePerDeck:</strong> Sets whether or not the card is unique (only one copy in your deck per run).</li>
+<li><strong>SetHideAttackAndHealth:</strong> Sets whether or not the card&#39;s Power and Health stats will be displayed or not.</li>
+<li><strong>AddAbilities:</strong> Add any number of abilities to the card. This will add duplicates..</li>
 <li><strong>AddAppearances:</strong> Add any number of appearance behaviors to the card. No duplicates will be added.</li>
 <li><strong>AddMetaCategories:</strong> Add any number of metacategories to the card. No duplicates will be added.</li>
 <li><strong>AddTraits:</strong> Add any number of traits to the card. No duplicates will be added.</li>
 <li><strong>AddTribes:</strong> Add any number of tribes to the card. No duplicates will be added.</li>
 <li><strong>AddSpecialAbilities:</strong> Add any number of special abilities to the card. No duplicates will be added.</li>
 </ul>
-<h3 id="evolve-tail-ice-cube-and-delayed-loading">Evolve, Tail, Ice Cube, and delayed loading</h3>
-<p>It&#39;s possible that at the time your card is built, the card that you want to evolve into has not been built yet. You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.</p>
-<p>However, note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null. You will not see the evolve parameters until you add the evolution to the card list <strong>and</strong> you get a fresh copy of the card from CardLoader (as would happen in game).</p>
+<h2 id="evolve-tail-ice-cube-and-delayed-loading">Evolve, Tail, Ice Cube, and delayed loading</h2>
+<p>It&#39;s possible that at the time your card is built, the card that you want to evolve into has not been built yet.
+You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.</p>
+<p>Note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null.
+You will not see the evolve parameters until you add the evolution to the card list <strong>and</strong> you get a fresh copy of the card from CardLoader (as would happen in game).</p>
 <pre><code class="lang-c#">CardManager.New(&quot;Example&quot;, &quot;Base&quot;, &quot;Base Card&quot;, 2, 2).SetEvolve(&quot;Evolve Card&quot;, 1); // &quot;Evolve Card&quot; hasn&#39;t been built yet
 Plugin.Log.LogInfo(CardLoader.GetCardByName(&quot;Example_Base&quot;).evolveParams == null); // TRUE!
 
 CardInfo myEvolveCard = CardManager.New(&quot;Example&quot;, &quot;Evolve&quot;, &quot;Evolve Card&quot;, 2, 5);
 
 Plugin.Log.LogInfo(CardLoader.GetCardByName(&quot;Example_Base&quot;).evolveParams == null); // FALSE!
-</code></pre><h3 id="editing-existing-cards">Editing existing cards</h3>
+</code></pre><h2 id="editing-existing-cards">Editing existing cards</h2>
 <p>If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:</p>
 <pre><code class="lang-c#">CardInfo card = CardManager.BaseGameCards.CardByName(&quot;Porcupine&quot;);
 card.AddTraits(Trait.KillsSurvivors);
@@ -178,536 +171,25 @@ card.AddTraits(Trait.KillsSurvivors);
     return cards;
 };
 </code></pre><p>By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.</p>
-<h3 id="custom-card-properties">Custom card properties</h3>
+<h2 id="custom-card-properties">Custom Card Properties</h2>
 <p>The API allows you to add custom properties to a card, and then retrieve them for use inside of abilities. In the same way that you can use Evolve parameters to make the evolve ability work, or the Ice Cube parameters to make the IceCube ability work, this can allow you to set custom parameters to make your custom abilities work.</p>
 <pre><code class="lang-c#">
 CardInfo sample = CardLoader.CardByName(&quot;MyCustomCard&quot;);
 sample.SetExtendedProperty(&quot;CustomPropertyName&quot;, &quot;CustomPropertyValue&quot;);
 
 string propValue = sample.GetExtendedProperty(&quot;CustomPropertyName&quot;);
-</code></pre><h3 id="ability-management">Ability Management</h3>
-<p>Abilities are unfortunately a little more difficult to manage than cards. First of all, they have an attached &#39;AbilityBehaviour&#39; type which you must implement. Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon <em>is</em> on the AbilityInfo object, but we won&#39;t get into all that).</p>
-<p>Regardless, the API will help you manage all of this with the helpful AbilityManager class. Simply create an AbilityInfo object, and then call AbilityManager.Add with that info object, the texture for the icon, and the type that implements the ability.</p>
-<p>Abilities inherit from DiskCardGame.AbilityBehaviour</p>
-<pre><code class="lang-c#">AbilityInfo myinfo = ...;
-Texture2D myTexture = ...;
-AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
-</code></pre><p>You can also use the AbilityManager.New method to simplify some of this process:</p>
-<pre><code class="lang-c#">AbilityInfo myInfo = AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;);
-</code></pre><p>And there are also extension methods to help you here as well:</p>
-<pre><code class="lang-c#">AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;)
-    .SetDefaultPart1Ability()
-    .SetPixelIcon(&quot;/art/my_pixel_icon.png&quot;);
-</code></pre><ul>
-<li><strong>SetCustomFlippedTexture:</strong> Use this to give the ability a custom texture when it belongs to the opponent.</li>
-<li><strong>SetPixelIcon:</strong> Use this to set the texture used when rendered as a GBC card.</li>
-<li><strong>AddMetaCategories:</strong> Adds any number of metacategories to the ability. Will not duplicate.</li>
-<li><strong>SetDefaultPart1Ability:</strong> Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.</li>
-<li><strong>SetDefaultPart3Ability:</strong> Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)</li>
-</ul>
-<h4 id="how-abilities-are-programmed">How abilities are programmed</h4>
-<p>Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.</p>
-<p>AbilityBehaviour contains a <em>lot</em> of virtual methods. For each event that can happen during a battle, there will be a &#39;RespondsToXXX&#39; and an &#39;OnXXX&#39; method that you need to override. The purpose of the &#39;RespondsToXXX&#39; is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the &#39;OnXXX&#39; method.</p>
-<p>See this example from the base game:</p>
-<pre><code class="lang-c#">public class Sharp : AbilityBehaviour
-{
-    public override Ability Ability =&gt; Ability.Sharp;
+</code></pre><h2 id="custom-card-costs">Custom Card Costs</h2>
+<p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
 
-    public override bool RespondsToTakeDamage(PlayableCard source) =&gt; source != null &amp;&amp; source.Health &gt; 0;
-
-    public override IEnumerator OnTakeDamage(PlayableCard source)
-    {
-        yield return base.PreSuccessfulTriggerSequence();
-        base.Card.Anim.StrongNegationEffect();
-        yield return new WaitForSeconds(0.55f);
-        yield return source.TakeDamage(1, base.Card);
-        yield return base.LearnAbility(0.4f);
-        yield break;
-    }
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;);
+    if (myCustomCost &gt; 0)
+        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
 }
-</code></pre><h3 id="additional-functionality">Additional Functionality</h3>
-<p>There are two specific common use cases for abilities that are not given to you by the standard AbilityBehaviour class. Fortunately, this API comes with an ExtendedAbilityBehaviour class that will allow you to do the following:</p>
-<h4 id="modify-card-slots-to-attack">Modify Card Slots to Attack</h4>
-<p>To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack. If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you need to override RemoveDefaultAttackSlot to return true.</p>
-<h4 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h4>
-<p>To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs. These return an int representing the buff to give to &#39;target&#39;.</p>
-<p>In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what &#39;target&#39; refers to; the current card being checked. You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.</p>
-<p>Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs. These methods will be called <em>every frame</em> for <em>every instance of the ability!!</em> If you&#39;re not careful, you could bog the game down substantially!</p>
-<h4 id="other-functionality">Other Functionality</h4>
-<p>ExtendedAbilityBehaviour also allows you to control whether the ability&#39;s triggers will activate when the card is facedown. You will need to override TriggerWhenFaceDown to return true. There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.</p>
-<p>It should be noted that usage of ExtendedAbilityBehaviour is not required; all the functionalities mentioned can also be accessed by inheriting from the appropriate interface: IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, and IPassiveHealthBuff.</p>
-<h3 id="special-stat-icons">Special Stat Icons</h3>
-<p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
-<p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour</p>
-<pre><code class="lang-c#">StatIconInfo myinfo = ...;
-SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
-</code></pre><p><strong>or</strong></p>
-<pre><code class="lang-c#">SpecialStatIconManager.Add(MyPlugin.guid, &quot;Stat&quot;, &quot;My special stat&quot;, typeof(MyStatBehaviour))
-    .SetIcon(&quot;/art/special_stat_icon.png&quot;)
-    .SetPixelIcon(&quot;/art/special_pixel_stat_icon.png&quot;)
-    .SetDefaultPart1Ability()
-    .SetDefaultPart3Ability();
-</code></pre><p>Because StatIconInfo is so simple, there aren&#39;t very many helpers for it.</p>
-<h3 id="how-stat-icons-are-programmed">How Stat Icons are programmed</h3>
-<p>Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.</p>
-<p>When you implement a variable stat behavior, you need to implement the abstract method GetStateValues. This method returns an array of integers: the value at index 0 is the variable attack power, and the value at index 1 is the variable health.</p>
-<p>Here is an example from the base game:</p>
-<pre><code class="lang-c#">public class BellProximity : VariableStatBehaviour
-{
-    protected override SpecialStatIcon IconType =&gt; SpecialStatIcon.Bell;
-
-    protected override int[] GetStatValues()
-    {
-        int num = BoardManager.Instance.PlayerSlotsCopy.Count - base.PlayableCard.Slot.Index;
-        int[] array = new int[2];
-        array[0] = num;
-        return array;
-    }
-}
-</code></pre><p>Note: you need to be very careful about how complicated the logic is in GetStatValues. This will be called <em>every frame!!</em> If you&#39;re not careful, you could bog the game down substantially.</p>
-<h3 id="special-triggered-abilities">Special Triggered Abilities</h3>
-<p>Special triggered abilities are a lot like regular abilities; however, they are &#39;invisible&#39; to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.</p>
-<p>Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour</p>
-<pre><code class="lang-c#">public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, &quot;Special Ability&quot;, typeof(MySpecialTriggeredAbility)).Id;
-</code></pre><p>And now MyAbilityID can be added to CardInfo objects.</p>
-<h4 id="how-special-triggered-abilities-are-programmed">How special triggered abilities are programmed</h4>
-<p>Special abilities are the same as regular abilities, except they do not have a metadata object associated with them (because they are not described or documented for the player) and the inherit from SpecialCardBehaviour instead of AbilityBehaviour.</p>
-<p>Here is an example from the base game:</p>
-<pre><code class="lang-c#">public class TrapSpawner : SpecialCardBehaviour
-{
-    public override bool RespondsToDie(bool wasSacrifice, PlayableCard killer) =&gt; base.PlayableCard.OnBoard;
-
-    public override IEnumerator OnDie(bool wasSacrifice, PlayableCard killer)
-    {
-        yield return new WaitForSeconds(0.35f);
-        yield return BoardManager.Instance.CreateCardInSlot(CardLoader.GetCardByName(&quot;Trap&quot;), base.PlayableCard.Slot, 0.1f, true);
-        yield return new WaitForSeconds(0.35f);
-        yield break;
-    }
-}
-</code></pre><h3 id="card-appearance-behaviours">Card Appearance Behaviours</h3>
-<p>These behave the same as special triggered abilities from the perspective of the API.</p>
-<p>Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour</p>
-<pre><code class="lang-c#">public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, &quot;Special Appearance&quot;, typeof(MyAppearanceBehaviour)).Id;
-</code></pre><h4 id="how-appearance-behaviours-are-programmed">How appearance behaviours are programmed</h4>
-<p>Appearance behaviours implement CardAppearanceBehaviour. There is an abstract method called ApplyAppearance that you must implement - here you override the default appearance of the card. There are also three other virtual methods: ResetAppearance, OnCardAddedToDeck, and OnPreRenderCard that give other hooks in which you can change the card&#39;s appearance.</p>
-<p>Here is an example from the base game:</p>
-<pre><code class="lang-c#">public class RedEmission : CardAppearanceBehaviour
-{
-    public override void ApplyAppearance()
-    {
-        base.Card.RenderInfo.forceEmissivePortrait = true;
-        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowRed);
-    }
-
-    public override void ResetAppearance()
-    {
-        base.Card.RenderInfo.forceEmissivePortrait = false;
-        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowSeafoam);
-    }
-}
-</code></pre><h2 id="custom-maps-and-encounters">Custom Maps and Encounters</h2>
-<p>Unlike abilities, encounters are encoded into the game&#39;s data through a combination of enumerations and strings. For example, Opponents are enumerated by the enumeration Opponent.Type, but special sequencers and unique AI rules are represented as strings buried in each encounters data.</p>
-<p>To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.</p>
-<h3 id="encounter-turn-plan">Encounter turn plan</h3>
-<p>The card(s) that will be used in the encounter.</p>
-<pre><code class="lang-c#">public static readonly EncounterBlueprintData.CardBlueprint bp_Bonehound = new EncounterBlueprintData.CardBlueprint
-{
-    card = CardSpawner.GetCardByName(&quot;Bonehound&quot;)
-};
-
-public static readonly EncounterBlueprintData.CardBlueprint bp_Bonepile = new EncounterBlueprintData.CardBlueprint
-{
-    card = CardSpawner.GetCardByName(&quot;Bonepile&quot;)
-};
-</code></pre><p>For setting up the EncounterBlueprintData.</p>
-<ol>
-<li>In this example, the card Bonehound will spawn twice on the first turn. The slot that they spawn in is randomized.</li>
-<li>Second and Third turns nothing spawns.</li>
-<li>Fourth and fifth turns a Bonepile spawns.</li>
-<li>No spawns on sixth turn.</li>
-<li>Seventh turn a another Bonepile spawn.</li>
-</ol>
-<pre><code class="lang-c#">public static EncounterBlueprintData BuildBlueprintTwo()
-{
-    var blueprint = ScriptableObject.CreateInstance&lt;EncounterBlueprintData&gt;();
-    blueprint.name = &quot;TurnPlan_2&quot;;
-    blueprint.turns = new List&lt;List&lt;EncounterBlueprintData.CardBlueprint&gt;&gt;
-    {
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt; { bp_Bonehound, bp_Bonehound },
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt; {  },
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt;(),
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt; { bp_Bonepile },
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt; { bp_Bonepile },
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt;(),
-        new List&lt;EncounterBlueprintData.CardBlueprint&gt; { bp_Bonepile }
-    };
-    return blueprint;
-}
-</code></pre><p>Now that you have your encounter blueprint setup, add it with the manager:</p>
-<pre><code class="lang-c#">EncounterManager.Add(BuildBlueprintTwo());
-</code></pre><h3 id="special-sequencers">Special Sequencers</h3>
-<p>Special sequencers are essentially &#39;global abilities;&#39; they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). </p>
-<p>While you can inherit directly from SpecialBattleSequencer, there is a hierarchy of existing special sequencers that you may wish to inherit from depending upon your use case. You can use dnSpy to see all of them, but these are three you should be specifically aware of:</p>
-<ul>
-<li><strong>SpecialBattleSequencer</strong>: The base class for all special sequencers. Use this by default.</li>
-<li><strong>BossBattleSequencer</strong>: Used for boss battles</li>
-<li><strong>Part1BossBattleSequencer</strong>: Use for boss battles in Act 1 (Angler, Prospector, Trapper/Trader, and Leshy)</li>
-</ul>
-<p>Special sequencers are set directly on the NodeData instance corresponding to the map node that the player touches to start the battle. This is done using a string value corresponding to the sequencer. To set this yourself, use the SpecialSequenceManager class in the API:</p>
-<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
-{
-    public static readonly string ID = SpecialSequenceManager.Add(Plugin.PluginGuid, &quot;MySequencer&quot;, typeof(MyCustomBattleSequencer));
-}
-</code></pre><h3 id="opponents">Opponents</h3>
-<p>In the context of this API, think of opponents as basically just bosses. There is a enumeration of Opponents called Opponent.Type that refers to the opponent. This name can be confusing in some IDEs, as they may simply show the parameter type as Type, which should not be confused with the System.Type type.</p>
-<p>Like everything else, Opponents are classes that you have to write that are responsible for handling the weird things that happen during battle. Depending upon which type of opponent you are buiding, you will need to use one of the following base classes:</p>
-<ul>
-<li><strong>Opponent</strong>: The base class for all Opponents. You should probably never inherit from this one directly.</li>
-<li><strong>Part1Opponent</strong>: Used for battles in Leshy&#39;s cabin</li>
-<li><strong>Part1BossOpponent</strong>: Used for boss battles in Leshy&#39;s cabin</li>
-<li><strong>PixelOpponent</strong>: Used for battles in the GBC game</li>
-<li><strong>PixelBossOpponent</strong>: Used for boss battles in the GBC game</li>
-<li><strong>Part3Opponent</strong>: Used for battles in Botopia</li>
-<li><strong>Part3BossOpponent</strong>: Used for boss battles in Botopia</li>
-</ul>
-<p>Custom opponents will need a custom Special Sequencer as a companion (please, don&#39;t ask why we need Special Sequencers and Opponents and why they couldn&#39;t just be the same thing). So in this case, the following code snippet shows how to create an opponent that is linked to its special sequencer:</p>
-<pre><code class="lang-c#">public class MyBossOpponent : Part1BossOpponent
-{
-    public static readonly Opponent.Type ID = OpponentManager.Add(Plugin.PluginGuid, &quot;MyBossOpponent&quot;, MyCustomBattleSequencer.ID, typeof(MyBossOpponent)).Id;
-}
-</code></pre><p>Note that the third parameter in OpponentManager.Add is a string, and that string is the same ID that was set in the code snippet for the special sequencer in the previous example.</p>
-<p>If you have a specific blueprint that you want your opponent type to use, using the example for setting up the blueprint from before, then in in the <code>Awake</code>, <code>Start</code>, or <code>IntroSequence</code> override you can set it there if you didn&#39;t already set it in the EncounterData object:</p>
-<pre><code class="lang-c#">public override IEnumerator IntroSequence(EncounterData encounter)
-{
-    encounterData.Blueprint = EncounterManager.AllEncountersCopy.Find(enc =&gt; enc.name == &quot;TurnPlan_2&quot;);
-        List&lt;List&lt;CardInfo&gt;&gt; plan = EncounterBuilder.BuildOpponentTurnPlan(encounterData.Blueprint, difficulty, removeLockedCards);
-    base.ReplaceAndAppendTurnPlan(plan);
-    yield return QueueNewCards();
-        yield return base.IntroSequence(encounter);
-}
-</code></pre><h3 id="ai">AI</h3>
-<p>In most cases, you will probably not need to create a custom AI. By default, the game will look at the cards that the computer is preparing to play and then use brute force to test every possible slot that the computer could queue those slots for. It will then simulate a full turn of the game for each of those positions and determine which one has the best outcome. There are very few exceptions to this rule.</p>
-<p>As an example, one exception is the Prospector boss fight, where the computer will always play the Pack Mule in slot 0 and a coyote in slot 1. It&#39;s important that these cards always get played in this position, so the game has a custom AI that detects this part of the game and overrides the default AI.</p>
-<p>If you want to use a custom AI, you need to build a class that inherits from DiskCardGame.AI and overrides the virtual method SelectSlotsForCards. That one method is where you implement your custom AI logic.</p>
-<p>To register a new AI with the game, use the AIManager class in the API, and keep a reference to the string ID that you receive back:</p>
-<pre><code class="lang-c#">public class MyCustomAI : AI
-{
-    public static readonly string ID = AIManager.Add(Plugin.PluginGuid, &quot;MyAI&quot;, typeof(MyCustomAI)).Id;
-
-    public override List&lt;CardSlot&gt; SelectSlotsForCards(List&lt;CardInfo&gt; cards, CardSlot[] slots)
-    {
-        // Do stuff here
-    }
-}
-</code></pre><p>To actually <em>use</em> your new AI, you need to set it inside of a special sequencer; specifically in the BuildCustomEncounter method:</p>
-<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
-{
-    public override EncounterData BuildCustomEncounter(CardBattleNodeData nodeData)
-    {
-        EncounterData data = base.BuildCustomEncounter(nodeData);
-        data.aiId = MyCustomAI.ID;
-        return data;
-    }
-}
-</code></pre><h3 id="adding-new-nodes-to-the-map">Adding new nodes to the map</h3>
-<p>If you want to add a new node to the game map, you need to be prepared to implement potentially complex game logic inside of a &quot;sequencer&quot; class. Whenever the game moves to a map node, it hands control of the game over to a sequencer, which is responsible for creating game objects, animating objects, manipulating the deck, or whatever else it is that you want your custom node to do. Once done, the sequencer hands control of the game back over the main game loop. This sequencer is where you will be spending most of your time programming, testing, and debugging. It is highly recommended that you check out the example mod and/or decompile the base game&#39;s sequencers to get a feel for how to do this.</p>
-<p>Once you have created a sequencer for your event, you also need to create an animation for your node to appear on the map. This animation is an array of precisely four textures, each of which should be 49x49 pixels in size. You need to register the sequencer and the associated texture array with the API. This is done using the NodeManager.Add generic method:</p>
-<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer&gt;(
-    new Texture2D[] {
-        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
-    },
-    NodeManager.NodePosition.SpecialEventRandom
-);
-</code></pre><p>Note the final parameter to &quot;Add&quot; is a flag that tells the API where the node should appear. The NodeManager.NodePosition enumeration is a flag-style enumeration, which means that multiple values can be combined using the bitwise-or operator (|). So, for example, if you want the node to appear randomly throughout the map but also to be forced to appear directly before the boss, you can use this combination:</p>
-<pre><code class="lang-c#">NodeManager.NodePosition.SpecialEventRandom | NodeManager.NodePosition.PreBoss
-</code></pre><p>The values of NodePosition are:</p>
-<ul>
-<li><strong>NotGenerated:</strong> This node will not be autogenerated on the map, but can still be manually added (for example, if you are manually manipulating Act 3 maps).</li>
-<li><strong>Act1Available:</strong> This node can appear in Act 1 maps, not just in Kaycee&#39;s Mod maps. Without this set, the custom node will only ever appear in a Kaycee&#39;s Mod run of Act 1.</li>
-<li><strong>MapStart:</strong> This node will be forced to appear at the start of each map, unless the node fails a prerequisite condition.</li>
-<li><strong>CardChoiceRandom:</strong> This node will appear in the pool of random events that happen right after a battle.</li>
-<li><strong>SpecialEventRandom:</strong> This node will appear in the pool of random events that happen right before a battle.</li>
-<li><strong>PreBoss:</strong> This node will be forced to appear right before the boss of each map, unless the node fails a prerequisite condition</li>
-<li><strong>PostBoss:</strong> This node will be forced to appear right after the boss of each map, unless the node fails a prerequisite condition</li>
-</ul>
-<h4 id="conditional-map-nodes">Conditional map nodes</h4>
-<p>Map nodes can implement logic to determine whether or not they should appear. To do this, you need to implement a custom &#39;node data&#39; object which inherits from CustomNodeData. There is a virtual method called Initialize that you should override. Here, you can add prerequisite conditions and forced generation conditions; the former will prevent a node from generating if any condition returns false, and the latter will force the node to generate if any condition returns true.</p>
-<p>You can add two types of conditions: simple, or map-aware. A simple condition takes no parameters and returns true or false based on whatever parameters you like (for example, if a certain ascension challenge is active or not). A map-aware condition takes two parameters: the first is the y-value of the node&#39;s position, and the second is a list of all map nodes that have previously been generated on this instnace of the map.</p>
-<p>Here is a code sample:</p>
-<pre><code class="lang-c#">public class MySpecialNodeData : CustomNodeData
-{
-    public override void Initialize()
-    {
-        // This node can only generate if the BaseDifficulty challenge is active
-        this.AddGenerationPrerequisite(() =&gt; AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.BaseDifficulty));
-
-        // This node is forced to generate if more than one BaseDifficulty challenge is active
-        // and a deck trial node has been placed on the map already
-        this.AddForceGenerationCondition((y, nodes) =&gt; AscensionSaveData.Data.GetNumChallengesOfTypeActive(AscensionChallenge.BaseDifficulty) &gt; 1 
-                                                            &amp;&amp; nodes.Exists(n =&gt; n is DeckTrialNodeData));
-    }
-}
-</code></pre><p>If you are using your own node data, you have to register it at the same time as your custom sequencer:</p>
-<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer, MySpecialNodeData&gt;(
-    new Texture2D[] {
-        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
-        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
-    },
-    NodeManager.NodePosition.SpecialEventRandom
-);
-</code></pre><h2 id="ascension-kaycees-mod">Ascension (Kaycee&#39;s Mod)</h2>
-<h3 id="adding-new-challenges">Adding new Challenges</h3>
-<p>The API supports adding new Challenges as part of Kaycee&#39;s Mod using the ChallengeManager class. You can add a new Challenge using ChallengeManager.Add, either by passing in a new AscensionChallengeInfo object or by passing the individual properties of your challenge (which will construct the information object for you). This will make your challenge automatically appear in the challenge selection screen.</p>
-<p>If you use the overload of Add that takes an AscensionChallengeInfo object, note that the &quot;challengeType&quot; field of type AscensionChallenge is completely irrelevant. This is an enumerated value, and it will be set for you by the ChallengeManager to ensure there is no collision with other challenges created by other mods. As such, you need to save the ID that is returned by the Add method of ChallengeManager so that you can reference it later.</p>
-<p>If your challenge can stack, set the stackable flag to &#39;true&#39; when adding your challenge. This will cause it to appear twice in the challenge selection screen. Yes, this means stackable challenges are currently limited to a max of two.</p>
-<p>You will be responsible to write all of the necessary patches for your challenge to function. When writing those patches, you <em>must</em> make sure that the challenge is active before you do anything. This is entirely up to you - there is nothing in the API that can detect this for you.</p>
-<p>You should also make sure to alert the user whenever your challenge has triggered some change in the game. The ChallengeActivationUI class (from DiskCardGame) has a helper to alert the user.</p>
-<pre><code class="lang-c#">private static AscensionChallenge ID = ChallengeManager.Add
-    (
-        Plugin.PluginGuid,
-        &quot;Dummy Challenge&quot;,
-        &quot;This challenge doesn&#39;t do anything&quot;,
-        15,
-        Resources.Load&lt;Texture2D&gt;(&quot;Path/To/Texture&quot;)
-    );
-
-[HarmonyPatch(...)]
-public static void DoSomething()
-{
-    if (AscensionSaveData.Data.ChallengeIsActive(ID))
-    {
-        ChallengeActivationUI.Instance.ShowActivation(ID);
-        // Do some actual stuff
-    }
-}
-</code></pre><h3 id="adding-new-starter-decks">Adding new Starter Decks</h3>
-<p>Starter decks are relatively simple. They simply need a title, an icon, and a set of three cards. You can also optionally add an &quot;unlock level&quot; which prevents your starter deck from being unlocked until the player reaches a certain challenge level. This defaults to 0, which means that the starter deck will always be unlocked.</p>
-<p>What if you want to make a starter deck with cards from another mod? What if you aren&#39;t 100% sure that those cards are loaded at the time that your starter deck is loaded? You can solve this manually by creating a dependency, which forces BepInEx to load the other mod first. However, if that mod uses JSON Loader, you need to create a dependency on JSON Loader instead, which could (in some very bizarre situations) create a situation where you both need to load before and after JSON Loader. Rather than sort out all of these possible scenarios one-by-one, you can instead create a starter deck with a set of three card names (strings) instead of three CardInfo objects. This will create a &quot;delayed loading&quot; scenario where the actual starter deck info won&#39;t be built until right before the Starter Deck screen loads.</p>
-<p>Both patterns are shown here:</p>
-<pre><code class="lang-c#">StarterDeckInfo myDeck = ScriptableObject.CreateInstance&lt;StarterDeckInfo&gt;();
-myDeck.title = &quot;Pelts&quot;;
-myDeck.iconSprite = TextureHelper.GetImageAsSprite(&quot;art/pelts_deck_icon.png&quot;, TextureHelper.SpriteType.StarterDeckIcon);
-myDeck.cards = new () { CardLoader.GetCardByName(&quot;PeltWolf&quot;), CardLoader.GetCardByName(&quot;PeltHare&quot;), CardLoader.GetCardByName(&quot;PeltHare&quot;) };
-
-StarterDeckManager.Add(MyPlugin.Guid, myDeck);
-</code></pre><pre><code class="lang-c#">StarterDeckManager.New(MyPlugin.Guid, &quot;Pelts&quot;, &quot;art/pelts_deck_icon.png&quot;, new string[] { &quot;PeltWolf&quot;, &quot;PeltHare&quot;, &quot;PeltHare&quot;});
-</code></pre><h3 id="adding-custom-screens-to-kaycees-mod">Adding Custom Screens to Kaycee&#39;s Mod</h3>
-<p>This API supports adding new screens to Kaycee&#39;s Mod that execute before a run starts. New screens can use the AscensionScreenSort attribute to influence their sort order. Custom screens will execute in the following order:</p>
-<ol>
-<li>Starter Decks</li>
-<li>Select Challenges</li>
-<li>Custom Screens<ol>
-<li>Requires Start</li>
-<li>Prefers Start</li>
-<li>No Preference (default)</li>
-<li>Prefers End</li>
-<li>Requires End</li>
-</ol>
-</li>
-<li>Start Run</li>
-</ol>
-<p>To create a custom screen, you need to write a special screen behavior class that inherits from AscensionRunSetupScreenBase (which in turn inherits from MonoBehavior). You will be required to override the following:</p>
-<ul>
-<li>headerText: The displayed title on the screen</li>
-<li>showCardDisplayer: Set this to return true if you want the panel on your screen that shows card information</li>
-<li>showCardPanel: Set this to return true if you want the scrollable panel on your screen that shows selectable cards</li>
-</ul>
-<p>There is also a virtual method called InitializeScreen which you should use to build the content of your screen.</p>
-<p>In general, you are responsible for doing all the hard work of building your screen. However, all the boilerplate content is built for you. You will automatically be given the continue and back buttons, the header (which shows the current challenge level), the footer (which displays changes as the challenge level changes), and the title of your screen. You can also optionally be given a scrollable card selection panel and card information displayer panel if you need them (using the properties shown above).</p>
-<p>Once you&#39;ve written the custom screen class, you need to register it with AscensionScreenManager like so:</p>
-<pre><code class="lang-c#">AscensionScreenManager.RegisterScreen&lt;MyCustomScreen&gt;();
-</code></pre><h2 id="adding-a-custom-tribe-totem-top">Adding a Custom Tribe Totem Top</h2>
-<p>This API supports adding a custom model for specific Tribes that appear in the Wood Carver node.
-Natively there is already a default model that is used when a custom Tribe is added using TribeManager. However if your Tribe does not have any cards that use it then it will not appear in the WoodCarver.</p>
-<p>If you want to add your own model for your tribe then you can use the example below.</p>
-<pre><code class="lang-csharp">TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
-</code></pre><p>If you are using a model that you have created then here is an example of how to use asset bundles to include it.</p>
-<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
-{
-    TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
-}
-</code></pre><h3 id="i-dont-have-an-icon-to-show-on-my-totem-top">I don&#39;t have an icon to show on my totem top</h3>
-<p>You will need a new class for your totem top so it doesn&#39;t look for an icon to populate from a tribe.   </p>
-<pre><code class="lang-csharp">public class MyCustomTotemTopPiece : CompositeTotemPiece
-{
-    protected virtual string EmissionGameObjectName =&gt; &quot;GameObjectName&quot;;
-
-    public override void SetData(ItemData data)
-    {
-        base.SetData(data);
-
-        // Set emissiveRenderer so the game knows what to highlight when hovering their mouse over the totem top
-        emissiveRenderer = this.gameObject.FindChild(EmissionGameObjectName);
-        if (emissiveRenderer != null)
-        {
-            emissiveRenderer = icon.GetComponent&lt;Renderer&gt;();
-        }
-
-        if (emissiveRenderer == null)
-        {
-            InscryptionAPIPlugin.Logger.LogError($&quot;emissiveRenderer not assigned to totem top!&quot;);
-        }
-    }
-}
-</code></pre><p>Then add your totem with your new class</p>
-<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
-{
-    TotemManager.NewTopPiece&lt;MyCustomTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
-}
-</code></pre><h2 id="adding-a-custom-consumable-item">Adding a Custom Consumable Item</h2>
-<p>This API supports adding a custom item into the game. </p>
-<p>Specify the class for your item and what happens when its used.</p>
-<pre><code class="lang-csharp">public class CustomConsumableItem : ConsumableItem
-{
-    public override IEnumerator ActivateSequence()
-    {
-        base.PlayExitAnimation();
-        yield return new WaitForSeconds(0.25f);
-        yield return base.StartCoroutine(Singleton&lt;ResourcesManager&gt;.Instance.AddBones(4, null));
-        yield break;
-    }
-
-    public override bool ExtraActivationPrerequisitesMet()
-    {
-        if (!base.ExtraActivationPrerequisitesMet())
-        {
-            return false;
-        }
-
-        // Optional: Stop player from using the item!
-        return true;
-    }
-}
-</code></pre><p>Add the new item to the ConsumableItemManager.</p>
-<p>If you don&#39;t have a custom model you can specify one of the default types from ConsumableItemManager.ModelType.</p>
-<pre><code class="lang-csharp">ConsumableItemManager.ModelType modelType = ConsumableItemManager.ModelType.Basic;
-ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), modelType)
-                .SetDescription(learnText)
-                .SetAct1();
-</code></pre><p>To add a card that has a card ina bottle use this</p>
-<pre><code class="lang-csharp">ConsumableItemManager.NewCardInABottle(PluginGuid, cardInfo.name)
-                    .SetAct1();
-</code></pre><p>If you have a custom model for your item you can specify it in the different constructor</p>
-<pre><code class="lang-csharp">GameObject prefab = ...
-ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
-                .SetDescription(learnText)
-                .SetAct1();
-</code></pre><h2 id="adding-a-custom-pelt">Adding a Custom Pelt</h2>
-<p>This API supports adding a custom pelt to be sold by the trapper and traded by the trader.</p>
-<pre><code class="lang-csharp">CardInfo bonePeltInfo = CardManager.New(PluginGuid, &quot;Bone Pelt&quot;, &quot;Bone Pelt&quot;, 0, 2);
-bonePeltInfo.portraitTex = TextureHelper.GetImageAsTexture(Path.Combine(PluginDirectory, &quot;Art/portrait_skin_bone.png&quot;)).ConvertTexture();
-bonePeltInfo.cardComplexity = CardComplexity.Simple;
-bonePeltInfo.AddTraits(Trait.Pelt);
-bonePeltInfo.temple = CardTemple.Nature;
-bonePeltInfo.AddSpecialAbilities(SpecialTriggeredAbility.SpawnLice);
-bonePeltInfo.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
-
-PeltManager.New(new PeltManager.CustomPeltData()
-{
-    AbilityCount = 0,
-    CostCallback = ()=&gt;3,
-    AvailableAtTrader = true,
-    CardNameOfPelt = bonePeltInfo.name,
-    MaxChoices = 8,
-    PluginGUID = PluginGuid,
-    GetChoicesCallback = () =&gt;
-    {
-        return CardManager.AllCardsCopy.FindAll((a) =&gt;
-            a.BonesCost &gt; 0 &amp;&amp; a.temple == CardTemple.Nature);
-    },
-});
-</code></pre><h2 id="sound">Sound</h2>
-<h3 id="adding-music-tracks-to-the-gramophone">Adding Music Tracks to the Gramophone</h3>
-<p>This API supports adding new tracks to the Gramophone in Leshy&#39;s Cabin.
-(A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)</p>
-<p>All you need for that is a regular audio file. The API will do all of the conversion. The file should be inside the &#39;plugins&#39; folder. and the supported audio formats are MP3, WAV, OGG and AIFF.</p>
-<p>You can register your track like this:</p>
-<pre><code class="lang-csharp">GramophoneManager.AddTrack(PluginGuid, &quot;MyFile.wav&quot;, 0.5f);
-</code></pre><p>The first parameter should be your plugin&#39;s GUID. The second parameter should be your file&#39;s name.
-The third parameter is optional, and determines the volume of your track, from 0 to 1f. </p>
-<h3 id="converting-audio-files-to-unity-audioclip-objects">Converting Audio Files to Unity AudioClip Objects</h3>
-<p>This API provides a helper method for converting audio files to Unity AudioClip objects so that they can be played in-game with the AudioSource component. You can use this to replace in-game music through patches, or to play your own sound effects.</p>
-<p>The audio file should be located inside of the &#39;plugins&#39; folder. The supported audio formats are MP3, WAV, OGG and AIFF.</p>
-<p>You can convert your audio file into an AudioClip object like this:</p>
-<pre><code class="lang-csharp">AudioClip audio = SoundManager.LoadAudioClip(&quot;Example.mp3&quot;);
-</code></pre><h2 id="masks">Masks</h2>
-<h3 id="changing-an-existing-mask">Changing an existing mask</h3>
-<p>This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.</p>
-<pre><code class="lang-csharp">MaskManager.Override(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Angler, &quot;pathToTexture&quot;);
-</code></pre><p>This example shows changing the mask the Angler uses to have a custom texture we are using.</p>
-<p>NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
-If you still want to use the Anglers model then use <code>.SetModelType(MaskManager.ModelType.Angler)</code></p>
-<h3 id="adding-a-random-mask">Adding a random mask</h3>
-<p>If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.</p>
-<pre><code class="lang-csharp">MaskManager.AddRandom(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Prospector, &quot;pathToTexture&quot;);
-</code></pre><p>This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.</p>
-<p>You can add as many random masks as you want. There is no limit.</p>
-<h3 id="adding-your-own-mask">Adding your own mask</h3>
-<pre><code class="lang-csharp">MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
-</code></pre><h3 id="adding-your-own-custom-model">Adding your own custom model</h3>
-<pre><code class="lang-csharp">ResourceLookup resourceLookup = new ResourceLookup();
-resourceLookup.FromAssetBundle(&quot;pathToAssetBundle&quot;, &quot;prefabNameInsideBundle&quot;);
-MaskManager.ModelType modelType = MaskManager.RegisterPrefab(&quot;guid&quot;, &quot;nameOfModel&quot;, resourceLookup);
-
-var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfMask&quot;);
-mask.SetModelType(modelType);
-</code></pre><h3 id="putting-on-a-mask">Putting on a mask</h3>
-<p>This will tell Leshy to push a mask on his face.</p>
-<p>Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!</p>
-<pre><code class="lang-csharp">LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
-</code></pre><h3 id="adding-your-own-behaviour">Adding your own behaviour</h3>
-<pre><code class="lang-csharp">public class Plugin : BaseUnityPlugin
-{
-    private void Awake()
-    {
-        MyCustomMask.Setup();        
-    }
-}
-</code></pre><pre><code class="lang-csharp">public class MyCustomMask : MaskBehaviour
-{
-    public static LeshyAnimationController.Mask ID;
-
-    public static void Setup()
-    {
-        var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
-        mask.SetMaskBehaviour(typeof(MyCustomMask));
-        ID = mask.ID;
-    }
-}
-</code></pre><h2 id="asset-bundles">Asset Bundles</h2>
-<p>Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.</p>
-<p>Think of them as fancy .zip&#39;s that&#39;s supported by Unity.</p>
-<h3 id="make-an-asset-bundle">Make an asset bundle</h3>
-<ol>
-<li>Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.</li>
-<li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
-<li>Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)</li>
-<li>At the bottom of the Inspector window you&#39;ll see a section labedled &quot;Asset Bundle&quot;</li>
-<li>Assign a new asset bundle name (example: testbundleexample)</li>
-<li>Build Asset bundles Window-&gt;AssetBundle Browser</li>
-<li>Go to the output path using file explorer</li>
-<li>There should be a file called &#39;testbundleexample&#39; in that folder (It will not have an extension!)</li>
-<li>Copy this file into your mod folder</li>
-</ol>
-<h3 id="load-asset-bundle">Load Asset bundle</h3>
-<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet&lt;GameObject&gt;(&quot;pathToBundleFile&quot;, &quot;nameOfPrefabInsideAssetBundle&quot;, out GameObject prefab))
-{
-    GameObject clone = GameObject.Instantiate(prefab);
-    // Do things with gameobject!
-}
-</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9</p>
-<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4</p>
-<p>Third parameter is the result of taking the object out of the asset bundle.</p>
-<p>NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! </p>
-<h3 id="bugs">Bugs</h3>
-<h4 id="1-the-gameobject-is-being-create-but-the-model-wont-show-up">1. The GameObject is being create but the model won&#39;t show up!</h4>
-<p>Make sure you are using 2019.4.24f1 to build the asset bundle? If not the model won&#39;t show!</p>
+</code></pre><p>The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.</p>
 <h2 id="talking-cards">Talking Cards</h2>
 <p>This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!</p>
 <p>All you have to do is create a class that implements the <strong>ITalkingCard</strong> interface, which contains the following fields:</p>
@@ -765,7 +247,7 @@ mask.SetModelType(modelType);
 </tr>
 </tbody>
 </table>
-<p><strong>Additionally,</strong> to make the task of creating Act 1 talking cards even easier for you, I&#39;ve defined an abstract class that inherits from <strong>PaperTalkingCard</strong>, includes the <strong>ITalkingCard</strong> interface and adds a few small tweaks behind the scenes! It&#39;s called <strong>CustomPaperTalkingCard</strong>.</p>
+<p><strong>Additionally</strong>, to make the task of creating Act 1 talking cards even easier for you, I&#39;ve defined an abstract class that inherits from <strong>PaperTalkingCard</strong>, includes the <strong>ITalkingCard</strong> interface and adds a few small tweaks behind the scenes! It&#39;s called <strong>CustomPaperTalkingCard</strong>.</p>
 <p>All you have to do is create a class that inherits from <strong>CustomPaperTalkingCard</strong> and implement its abstract fields as such:</p>
 <pre><code class="lang-csharp">public class ExampleTalkingCard : CustomPaperTalkingCard
 {
@@ -944,7 +426,7 @@ mask.SetModelType(modelType);
 {
     { Opponent.Type.ProspectorBoss, &quot;Example_TalkAboutProspector&quot; }
 };
-</code></pre><h4 id="creating-a-dialogue-event">Creating a Dialogue Event</h4>
+</code></pre><h3 id="creating-a-dialogue-event">Creating a Dialogue Event</h3>
 <p>You can create your own dialogue events with this API&#39;s <code>DialogueManager.GenerateEvent()</code> method, like this:</p>
 <pre><code class="lang-csharp">DialogueManager.GenerateEvent(
     pluginGUID: Plugin.PluginGuid,
@@ -983,7 +465,7 @@ mask.SetModelType(modelType);
 </tr>
 </tbody>
 </table>
-<h3 id="dialogue-codes">Dialogue Codes</h3>
+<h4 id="dialogue-codes">Dialogue Codes</h4>
 <p>A really neat feature of Inscryption&#39;s dialogue events are dialogue codes. They add a lot of life to dialogue!</p>
 <p>The dialogue codes most relevant to talking cards will be explained below. All of these work with talking cards.</p>
 <h4 id="wait-w">Wait ([w:])</h4>
@@ -1078,7 +560,7 @@ Fear not! Here&#39;s a comprehensive table of all available colors and their res
 <pre><code>&quot;You must be... [w:0.4][c:#7f35e6]confused[c:][w:1].&quot;,
 </code></pre><p>In this example, the word &quot;confused&quot; is colored in the color #7f35e6. Which, if you don&#39;t wanna look it up, is <a href="https://g.co/kgs/JPHV5v">this color!</a></p>
 <p>Please note that for compatibility reasons, your hex color code <strong>should include the &#39;#&#39;</strong>.</p>
-<h4 id="leshy-leshyx">Leshy ([leshy:x])</h4>
+<h4 id="making-leshy-talk">Making Leshy Talk</h4>
 <p>The [leshy:x] dialogue code makes Leshy say x. This color code is very useful for making Leshy and your card talk a bit between each other!</p>
 <p>You can use it like this:</p>
 <pre><code>&quot;We&#39;re all doomed.[leshy:Quiet now.][w:2]&quot;,
@@ -1088,7 +570,7 @@ Fear not! Here&#39;s a comprehensive table of all available colors and their res
 <li>You don&#39;t need to put quotation marks around the line Leshy is going to say.</li>
 <li>The &quot;Wait&quot; dialogue code is still usable with Leshy&#39;s lines.</li>
 </ol>
-<h4 id="using-emotions">Using Emotions</h4>
+<h4 id="using-emotions-in-dialogue">Using Emotions in Dialogue</h4>
 <p>You can change your character&#39;s emotion in their dialogue lines with the dialogue code <code>[e:x]</code>, where &#39;x&#39; is the name of an emotion. You can look at the table above for the names of all the available emotions.</p>
 <p>This mod adds patches to make the emotion names not case-sensitive, which means the following lines are all equally valid:</p>
 <pre><code>&quot;[e:Anger]I&#39;m angry.&quot;
@@ -1096,7 +578,644 @@ Fear not! Here&#39;s a comprehensive table of all available colors and their res
 &quot;[e:AnGeR]I&#39;m angry and my keyboard is acting up.&quot;
 </code></pre><p>If you prefer, you can use the numeric value associated with an emotion instead of its name! This is perfectly valid, for example:</p>
 <pre><code>&quot;[e:2]I&#39;m angry.&quot;
-</code></pre></article>
+</code></pre><h1 id="abilities">Abilities</h1>
+<h2 id="ability-management">Ability Management</h2>
+<p>Abilities are unfortunately a little more difficult to manage than cards.
+First of all, they have an attached &#39;AbilityBehaviour&#39; type which you must implement.
+Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon <em>is</em> on the AbilityInfo object, but we won&#39;t get into all that).</p>
+<p>Regardless, the API will help you manage all of this with the helpful AbilityManager class. Simply create an AbilityInfo object, and then call AbilityManager.Add with that info object, the texture for the icon, and the type that implements the ability.</p>
+<p>Abilities inherit from DiskCardGame.AbilityBehaviour</p>
+<pre><code class="lang-c#">AbilityInfo myinfo = ...;
+Texture2D myTexture = ...;
+AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
+</code></pre><p>You can also use the AbilityManager.New method to simplify some of this process:</p>
+<pre><code class="lang-c#">AbilityInfo myInfo = AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;);
+</code></pre><p>And there are also extension methods to help you here as well:</p>
+<pre><code class="lang-c#">AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;)
+    .SetDefaultPart1Ability()
+    .SetPixelIcon(&quot;/art/my_pixel_icon.png&quot;);
+</code></pre><ul>
+<li><strong>SetCustomFlippedTexture:</strong> Use this to give the ability a custom texture when it belongs to the opponent.</li>
+<li><strong>SetPixelIcon:</strong> Use this to set the texture used when rendered as a GBC card.</li>
+<li><strong>AddMetaCategories:</strong> Adds any number of metacategories to the ability. Will not duplicate.</li>
+<li><strong>SetDefaultPart1Ability:</strong> Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.</li>
+<li><strong>SetDefaultPart3Ability:</strong> Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)</li>
+<li><strong>SetActivated:</strong> Sets whether or not the ability is an activated ability. Activated abilities can be clicked to trigger an effect.</li>
+<li><strong>SetPassive:</strong> Sets whether or not the ability is a passive ability. Passive abilities don&#39;t do anything.</li>
+<li><strong>SetOpponentUsable:</strong> Sets whether or not the ability can be used by the opponent (such as in a Totem battle).</li>
+<li><strong>SetConduit:</strong> Sets whether or not the ability can be used to complete Circuits.</li>
+<li><strong>SetConduitCell:</strong> Sets whether or not the ability is a conduit cell. Unsure of what this does.</li>
+<li><strong>SetCanStack:</strong> Sets whether multiple copies of the ability will stack, activating once per copy. Optionally controls stack behaviour should a card with the ability evolve (see below).</li>
+<li><strong>SetTriggersOncePerStack:</strong> Sets whether the ability (if it stacks) will only ever trigger once per stack. There&#39;s a...&#39;feature&#39; where stackable abilities will trigger twice per stack after a card evolves.</li>
+</ul>
+<h2 id="how-abilities-are-programmed">How abilities are programmed</h2>
+<p>Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.</p>
+<p>AbilityBehaviour contains a <em>lot</em> of virtual methods. For each event that can happen during a battle, there will be a &#39;RespondsToXXX&#39; and an &#39;OnXXX&#39; method that you need to override. The purpose of the &#39;RespondsToXXX&#39; is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the &#39;OnXXX&#39; method.</p>
+<p>See this example from the base game:</p>
+<pre><code class="lang-c#">public class Sharp : AbilityBehaviour
+{
+    public override Ability Ability =&gt; Ability.Sharp;
+
+    public override bool RespondsToTakeDamage(PlayableCard source) =&gt; source != null &amp;&amp; source.Health &gt; 0;
+
+    public override IEnumerator OnTakeDamage(PlayableCard source)
+    {
+        yield return base.PreSuccessfulTriggerSequence();
+        base.Card.Anim.StrongNegationEffect();
+        yield return new WaitForSeconds(0.55f);
+        yield return source.TakeDamage(1, base.Card);
+        yield return base.LearnAbility(0.4f);
+        yield break;
+    }
+}
+</code></pre><h2 id="additional-functionality-with-interfaces">Additional Functionality with Interfaces</h2>
+<p>The API adds a number of interfaces you can use to add additional functionality to your ability.
+It also adds a new class: <code>ExtendedAbilityBehaviour</code>, which has all the interfaces already implemented for immediate use, saving you time.</p>
+<h3 id="modifying-what-card-clots-to-attack">Modifying What Card Clots to Attack</h3>
+<p>To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
+If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.</p>
+<h3 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h3>
+<p>To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs.
+These return an int representing the buff to give to &#39;target&#39;.</p>
+<p>In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what &#39;target&#39; refers to; the current card being checked.
+You will need to write the logic for determining what cards should get the buff, as well as what buff they should receive.</p>
+<p>Note: you need to be very careful about how complicated the logic is in GetPassiveAttackBuffs and GetPassiveHealthBuffs.
+These methods will be called <em>every frame</em> for <em>every instance of the ability!!</em>
+If you&#39;re not careful, you could bog the game down substantially!</p>
+<h3 id="triggerwhenfacedown">TriggerWhenFaceDown</h3>
+<p>The API allows you to add custom properties to an ability, using the same methods as for adding custom properties to cards.</p>
+<p>The API also allows you to control whether the ability&#39;s triggers will activate when the card is facedown.
+You will need to override TriggerWhenFaceDown to return true.</p>
+<p>There are also 2 other bools you can override for more control over what triggers should activate: ShouldTriggerWhenFaceDown, which controls whether vanilla triggers will activate; and ShouldTriggerCustomWhenFaceDown, which control whether custom triggers will activate.</p>
+<h2 id="additional-functionality-for-activated-abilities">Additional Functionality for Activated Abilities</h2>
+<p>The API adds a new class <code>ExtendedActivatedAbilityBehaviour</code> that adds additional functionality for use when making activated abilities.</p>
+<p>This new class changes how activated abilities are made a bit.
+As an example, if you were inheriting from the vanilla ActivatedAbilityBehaviour, you would override BonesCost to set the... Bones cost.
+ExtendedActivatedAbilityBehaviour moves that functionality to the virtual int StartingBonesCost, and BonesCost is now used to keep track of the total cost, modifiders included.</p>
+<p>Put simply, to set the starting cost(s), you override StartingBonesCost, StartingEnergyCost, or StartingHealthCost.</p>
+<p>There is also a new override IEnumerator <code>PostActivate()</code>.</p>
+<p>The two main features of the new class are dynamic activation costs, and a new Health cost.</p>
+<h3 id="health-cost">Health Cost</h3>
+<p>This is easy enough to understand, it&#39;s a way of making an activated ability cost Health to use.
+If the cost is equal to the card&#39;s current Health, then it will die.</p>
+<p>You can set this by overriding StartingHealthCost.</p>
+<h3 id="dynamic-activation-costs">Dynamic Activation Costs</h3>
+<p>Using ExtendedActivatedAbilityBehaviour, you can change the cost of an activated ability during battle.</p>
+<p>By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, or OnActivateHealthCostMod, you can make the ability&#39;s activation cost increase after it has been activated.</p>
+<pre><code class="lang-c#">public class ActivateRepulsive : ExtendedActivatedAbilityBehaviour
+{
+    public static Ability abiliy;
+    public override Ability Ability =&gt; ability;
+
+    public override int StartingBonesCost =&gt; 2;
+    public override int OnActivateBonesCostMod =&gt; 1;
+
+    public override IEnumerator Activate()
+    {
+        yield return this.Effect();
+    }
+}
+</code></pre><p>You can keep changing these modifier fields as well, if you want the cost to increase exponentially.</p>
+<pre><code class="lang-c#">public override IEnumerator PostActivate();
+{
+    OnActivateBonesCostMod += 1;
+}
+</code></pre><p>You have basically no limits on how or when you can change the activation cost.</p>
+<pre><code class="lang-c#">public override IEnumerator OnUpkeep(bool playerUpkeep)
+{
+    bonesCostMod -= 1;
+}
+</code></pre><p>This will reduce the Bones activation cost by 1 on upkeep.</p>
+<p>Note that <code>bonesCostMod</code> was used here instead of <code>OnActivateBonesCostMod</code>; The OnActivate... fields are used for changing the cost every activation, while the ...CostMod fields are used for everything else.
+Importantly, the ...CostMod fields keep track of the current cost modifier.</p>
+<pre><code class="lang-c#">bonesCostMod = 0;
+</code></pre><p>This resets the current Bones cost modifier.</p>
+<p>An additional note to make is that you&#39;re not limited to only modifying a single cost; you can increase any cost you want, even those that aren&#39;t initially required for activation.</p>
+<h4 id="keeping-track-of-it-all">Keeping Track of It All</h4>
+<p>With the ability to modify a card&#39;s activation cost, the question of how to keep track of the new costs comes up.
+While it&#39;s entirely possible you have an incredible memory and can just hoof it from there, the API provides a simpler way for you to keep track of it all by updating the Rulebook description of your ability.</p>
+<p>When right-clicking the ability icon of a card, the API will grab the current activation costs and display them.
+This is unique to each card, so don&#39;t worry about keeping track of multiple activation costs.</p>
+<p>To tell the API what part of the Rulebook description should be modified, you must use <code>[sigilcost:X]</code> where X is the initial activation cost.</p>
+<pre><code class="lang-c#">string rulebookDescription = &quot;Pay [sigilcost:1 Bone, 1 Energy] to do a thing, then increase its activation cost by 1 Energy.&quot;
+
+AbilityManager.New(pluginGuid, rulebookName, rulebookDescription, typeof(T), &quot;artpath.png&quot;);
+</code></pre><h2 id="special-stat-icons">Special Stat Icons</h2>
+<p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
+<p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour</p>
+<pre><code class="lang-c#">StatIconInfo myinfo = ...;
+SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
+</code></pre><p><strong>or</strong></p>
+<pre><code class="lang-c#">SpecialStatIconManager.Add(MyPlugin.guid, &quot;Stat&quot;, &quot;My special stat&quot;, typeof(MyStatBehaviour))
+    .SetIcon(&quot;/art/special_stat_icon.png&quot;)
+    .SetPixelIcon(&quot;/art/special_pixel_stat_icon.png&quot;)
+    .SetDefaultPart1Ability()
+    .SetDefaultPart3Ability();
+</code></pre><p>Because StatIconInfo is so simple, there aren&#39;t very many helpers for it.</p>
+<h3 id="how-stat-icons-are-programmed">How Stat Icons are programmed</h3>
+<p>Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.</p>
+<p>When you implement a variable stat behavior, you need to implement the abstract method GetStateValues. This method returns an array of integers: the value at index 0 is the variable attack power, and the value at index 1 is the variable health.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class BellProximity : VariableStatBehaviour
+{
+    protected override SpecialStatIcon IconType =&gt; SpecialStatIcon.Bell;
+
+    protected override int[] GetStatValues()
+    {
+        int num = BoardManager.Instance.PlayerSlotsCopy.Count - base.PlayableCard.Slot.Index;
+        int[] array = new int[2];
+        array[0] = num;
+        return array;
+    }
+}
+</code></pre><p>Note: you need to be very careful about how complicated the logic is in GetStatValues. This will be called <em>every frame!!</em> If you&#39;re not careful, you could bog the game down substantially.</p>
+<h2 id="special-triggered-abilities">Special Triggered Abilities</h2>
+<p>Special triggered abilities are a lot like regular abilities; however, they are &#39;invisible&#39; to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.</p>
+<p>Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour</p>
+<pre><code class="lang-c#">public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, &quot;Special Ability&quot;, typeof(MySpecialTriggeredAbility)).Id;
+</code></pre><p>And now MyAbilityID can be added to CardInfo objects.</p>
+<h3 id="how-special-triggered-abilities-are-programmed">How special triggered abilities are programmed</h3>
+<p>Special abilities are the same as regular abilities, except they do not have a metadata object associated with them (because they are not described or documented for the player) and the inherit from SpecialCardBehaviour instead of AbilityBehaviour.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class TrapSpawner : SpecialCardBehaviour
+{
+    public override bool RespondsToDie(bool wasSacrifice, PlayableCard killer) =&gt; base.PlayableCard.OnBoard;
+
+    public override IEnumerator OnDie(bool wasSacrifice, PlayableCard killer)
+    {
+        yield return new WaitForSeconds(0.35f);
+        yield return BoardManager.Instance.CreateCardInSlot(CardLoader.GetCardByName(&quot;Trap&quot;), base.PlayableCard.Slot, 0.1f, true);
+        yield return new WaitForSeconds(0.35f);
+        yield break;
+    }
+}
+</code></pre><h2 id="card-appearance-behaviours">Card Appearance Behaviours</h2>
+<p>These behave the same as special triggered abilities from the perspective of the API.</p>
+<p>Special triggered abilities inherit from DiskCardGame.CardAppearanceBehaviour</p>
+<pre><code class="lang-c#">public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, &quot;Special Appearance&quot;, typeof(MyAppearanceBehaviour)).Id;
+</code></pre><h3 id="how-appearance-behaviours-are-programmed">How appearance behaviours are programmed</h3>
+<p>Appearance behaviours implement CardAppearanceBehaviour. There is an abstract method called ApplyAppearance that you must implement - here you override the default appearance of the card. There are also three other virtual methods: ResetAppearance, OnCardAddedToDeck, and OnPreRenderCard that give other hooks in which you can change the card&#39;s appearance.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class RedEmission : CardAppearanceBehaviour
+{
+    public override void ApplyAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = true;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowRed);
+    }
+
+    public override void ResetAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = false;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowSeafoam);
+    }
+}
+</code></pre><h1 id="custom-maps-and-encounters">Custom Maps and Encounters</h1>
+<p>Unlike abilities, encounters are encoded into the game&#39;s data through a combination of enumerations and strings. For example, Opponents are enumerated by the enumeration Opponent.Type, but special sequencers and unique AI rules are represented as strings buried in each encounters data.</p>
+<p>To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.</p>
+<h2 id="encounter-turn-plans">Encounter Turn Plans</h2>
+<p>When you&#39;re creating an encounter, you&#39;ll want to also create a turn plan that determines what cards are played during the encounter.</p>
+<p>The API adds a number of methods to make this process easier for you.</p>
+<p>In this example, we will create a turn plan that is 14 turns long with the following card sequence:
+Turn 1 - Play 2 Bonehounds; the slots they spawn in are chosen by the game; you have no control of it when making a turn plan
+Turn 2 - Play nothing
+Turn 3 - Play nothing
+Turn 4 - Play 1 Bonepile
+Turn 5 - Play 1 Bonepile that is replaced with a Bonehound at difficulties &gt;= 10
+Turn 6 - Play nothing
+Turn 7 - Play 1 Bonepile
+Repeat this once.</p>
+<pre><code class="lang-c#">using static InscryptionAPI.Encounters.EncounterManager;
+
+private void AddEncounters()
+{
+    CardBlueprint bonePile_rp = NewCardBlueprint(&quot;Bonepile&quot;).SetReplacement(&quot;Bonehound&quot;, 10);
+
+    List&lt;List&lt;CardBlueprint&gt;&gt; turnPlan = new()
+    {
+        CreateTurn(&quot;Bonehound&quot;, &quot;Bonehound&quot;),
+        CreateTurn(),
+        CreateTurn(),
+        CreateTurn(&quot;Bonepile&quot;),
+        CreateTurn(bonePile_rp),
+        CreateTurn(),
+        CreateTurn(&quot;Bonepile&quot;)
+    };
+
+    New(&quot;ExampleEncounter&quot;).AddTurns(turnPlan).DuplicateTurns(1);
+}
+</code></pre><p>The following methods are provided for convenience:</p>
+<ul>
+<li><strong>New:</strong> Creates a new instance of EncounterBlueprintData and adds it to the API (does not add the EBD to any regions).</li>
+<li><strong>NewCardBlueprint:</strong> Creates a new CardBlueprint.</li>
+<li><strong>CreateTurn:</strong> Creates a new List&lt;CardBlueprint> that represents a single turn in an encounter&#39;s turn plan. Can pass card names through or CardBlueprints, or nothing if you want an empty turn.</li>
+</ul>
+<p>The following extensions are available for making turn plans, sorted by what class they affect:</p>
+<ul>
+<li>EncounterBlueprintData<ul>
+<li><strong>SetDifficulty:</strong> Sets the minimum and maximum difficulties at which the encounter can be used.</li>
+<li><strong>AddDominantTribes:</strong> Used in Totem battles to determine the potential Totem top that will be used.</li>
+<li><strong>SetRegionSpecific:</strong> Unused by the game, just here for posterity (unless you want to use it for something yourself).</li>
+<li><strong>AddRandomReplacementCards:</strong> When making a card blueprint, you can set whether the card can be randomly replaced. This field determines the cards that can potentially replace that card.</li>
+<li><strong>SetRedundantAbilities:</strong> Sets what abilities can&#39;t be chosen by Leshy to be used for his totem during Totem battles.</li>
+<li><strong>SetUnlockedCardPrerequisites:</strong> Sets what cards have to be unlocked in order to be used in this encounter.</li>
+<li><strong>AddTurnMods:</strong> Used in Part 3 to overclock played cards above the specified difficulty on the specified turn.</li>
+<li><strong>AddTurn:</strong> Adds a turn to the turn plan.</li>
+<li><strong>AddTurns:</strong> Adds turns to the turn plan.</li>
+<li><strong>DuplicateTurns:</strong> Duplicates all turns currently in the turn plan by the specified amount.</li>
+<li><strong>SyncDifficulties:</strong> Sets the minimum and maximum difficulties of all cards in the turn plan.</li>
+</ul>
+</li>
+<li>CardBlueprint<ul>
+<li><strong>SetDifficulty:</strong> Sets the minimum and maximum difficulties at which this card can be played.</li>
+<li><strong>SetReplacement:</strong> Sets the card that will replace the base card at and above the specified difficulty.</li>
+</ul>
+</li>
+<li>List&lt;CardBlueprint><ul>
+<li><strong>SetTurnDifficulty:</strong> Sets the minimum and maximum difficulties of each card in the list.</li>
+<li><strong>DuplicateTurn:</strong> Duplicates the list the specified number of times. Designed to be used with EncounterBlueprintData.AddTurns().</li>
+</ul>
+</li>
+</ul>
+<h2 id="special-sequencers">Special Sequencers</h2>
+<p>Special sequencers are essentially &#39;global abilities;&#39; they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). </p>
+<p>While you can inherit directly from SpecialBattleSequencer, there is a hierarchy of existing special sequencers that you may wish to inherit from depending upon your use case. You can use dnSpy to see all of them, but these are three you should be specifically aware of:</p>
+<ul>
+<li><strong>SpecialBattleSequencer</strong>: The base class for all special sequencers. Use this by default.</li>
+<li><strong>BossBattleSequencer</strong>: Used for boss battles</li>
+<li><strong>Part1BossBattleSequencer</strong>: Use for boss battles in Act 1 (Angler, Prospector, Trapper/Trader, and Leshy)</li>
+</ul>
+<p>Special sequencers are set directly on the NodeData instance corresponding to the map node that the player touches to start the battle. This is done using a string value corresponding to the sequencer. To set this yourself, use the SpecialSequenceManager class in the API:</p>
+<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
+{
+    public static readonly string ID = SpecialSequenceManager.Add(Plugin.PluginGuid, &quot;MySequencer&quot;, typeof(MyCustomBattleSequencer));
+}
+</code></pre><h2 id="opponents">Opponents</h2>
+<p>In the context of this API, think of opponents as basically just bosses. There is a enumeration of Opponents called Opponent.Type that refers to the opponent. This name can be confusing in some IDEs, as they may simply show the parameter type as Type, which should not be confused with the System.Type type.</p>
+<p>Like everything else, Opponents are classes that you have to write that are responsible for handling the weird things that happen during battle. Depending upon which type of opponent you are buiding, you will need to use one of the following base classes:</p>
+<ul>
+<li><strong>Opponent</strong>: The base class for all Opponents. You should probably never inherit from this one directly.</li>
+<li><strong>Part1Opponent</strong>: Used for battles in Leshy&#39;s cabin</li>
+<li><strong>Part1BossOpponent</strong>: Used for boss battles in Leshy&#39;s cabin</li>
+<li><strong>PixelOpponent</strong>: Used for battles in the GBC game</li>
+<li><strong>PixelBossOpponent</strong>: Used for boss battles in the GBC game</li>
+<li><strong>Part3Opponent</strong>: Used for battles in Botopia</li>
+<li><strong>Part3BossOpponent</strong>: Used for boss battles in Botopia</li>
+</ul>
+<p>Custom opponents will need a custom Special Sequencer as a companion (please, don&#39;t ask why we need Special Sequencers and Opponents and why they couldn&#39;t just be the same thing). So in this case, the following code snippet shows how to create an opponent that is linked to its special sequencer:</p>
+<pre><code class="lang-c#">public class MyBossOpponent : Part1BossOpponent
+{
+    public static readonly Opponent.Type ID = OpponentManager.Add(Plugin.PluginGuid, &quot;MyBossOpponent&quot;, MyCustomBattleSequencer.ID, typeof(MyBossOpponent)).Id;
+}
+</code></pre><p>Note that the third parameter in OpponentManager.Add is a string, and that string is the same ID that was set in the code snippet for the special sequencer in the previous example.</p>
+<p>If you have a specific blueprint that you want your opponent type to use, using the example for setting up the blueprint from before, then in in the <code>Awake</code>, <code>Start</code>, or <code>IntroSequence</code> override you can set it there if you didn&#39;t already set it in the EncounterData object:</p>
+<pre><code class="lang-c#">public override IEnumerator IntroSequence(EncounterData encounter)
+{
+    encounterData.Blueprint = EncounterManager.AllEncountersCopy.Find(enc =&gt; enc.name == &quot;TurnPlan_2&quot;);
+        List&lt;List&lt;CardInfo&gt;&gt; plan = EncounterBuilder.BuildOpponentTurnPlan(encounterData.Blueprint, difficulty, removeLockedCards);
+    base.ReplaceAndAppendTurnPlan(plan);
+    yield return QueueNewCards();
+        yield return base.IntroSequence(encounter);
+}
+</code></pre><h2 id="ai">AI</h2>
+<p>In most cases, you will probably not need to create a custom AI. By default, the game will look at the cards that the computer is preparing to play and then use brute force to test every possible slot that the computer could queue those slots for. It will then simulate a full turn of the game for each of those positions and determine which one has the best outcome. There are very few exceptions to this rule.</p>
+<p>As an example, one exception is the Prospector boss fight, where the computer will always play the Pack Mule in slot 0 and a coyote in slot 1. It&#39;s important that these cards always get played in this position, so the game has a custom AI that detects this part of the game and overrides the default AI.</p>
+<p>If you want to use a custom AI, you need to build a class that inherits from DiskCardGame.AI and overrides the virtual method SelectSlotsForCards. That one method is where you implement your custom AI logic.</p>
+<p>To register a new AI with the game, use the AIManager class in the API, and keep a reference to the string ID that you receive back:</p>
+<pre><code class="lang-c#">public class MyCustomAI : AI
+{
+    public static readonly string ID = AIManager.Add(Plugin.PluginGuid, &quot;MyAI&quot;, typeof(MyCustomAI)).Id;
+
+    public override List&lt;CardSlot&gt; SelectSlotsForCards(List&lt;CardInfo&gt; cards, CardSlot[] slots)
+    {
+        // Do stuff here
+    }
+}
+</code></pre><p>To actually <em>use</em> your new AI, you need to set it inside of a special sequencer; specifically in the BuildCustomEncounter method:</p>
+<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
+{
+    public override EncounterData BuildCustomEncounter(CardBattleNodeData nodeData)
+    {
+        EncounterData data = base.BuildCustomEncounter(nodeData);
+        data.aiId = MyCustomAI.ID;
+        return data;
+    }
+}
+</code></pre><h2 id="boss-masks">Boss Masks</h2>
+<p>When creating a custom boss opponent, you may feel the urge to change what mask Leshy adorns during the fight.
+Fortunately, the API&#39;s got you covered.</p>
+<h3 id="changing-an-existing-mask">Changing an Existing Mask</h3>
+<p>This allows you to change a mask already added to Inscyrption. Can be any Vanilla masks or one someone else has added.</p>
+<pre><code class="lang-csharp">MaskManager.Override(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Angler, &quot;pathToTexture&quot;);
+</code></pre><p>This example shows changing the mask the Angler uses to have a custom texture we are using.</p>
+<p>NOTE: This also changes the model so we can use a texture without the fuss of UV mapping the Anglers actual mask.
+If you still want to use the Anglers model then use <code>.SetModelType(MaskManager.ModelType.Angler)</code></p>
+<h3 id="adding-a-random-mask">Adding a Random Mask</h3>
+<p>If you want to add a new mask that will be randomly chosen when Leshy goes to put on a mask use this.</p>
+<pre><code class="lang-csharp">MaskManager.AddRandom(&quot;guid&quot;, &quot;nameOfNewMask&quot;, LeshyAnimationController.Mask.Prospector, &quot;pathToTexture&quot;);
+</code></pre><p>This example shows adding a new mask that when going to the Prospector boss fight, Leshy will choose between the default Prospector mask and this new one.</p>
+<p>You can add as many random masks as you want. There is no limit.</p>
+<h3 id="adding-a-custom-mask">Adding a Custom Mask</h3>
+<pre><code class="lang-csharp">MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
+</code></pre><h4 id="adding-a-custom-model">Adding a Custom Model</h4>
+<pre><code class="lang-csharp">ResourceLookup resourceLookup = new ResourceLookup();
+resourceLookup.FromAssetBundle(&quot;pathToAssetBundle&quot;, &quot;prefabNameInsideBundle&quot;);
+MaskManager.ModelType modelType = MaskManager.RegisterPrefab(&quot;guid&quot;, &quot;nameOfModel&quot;, resourceLookup);
+
+var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfMask&quot;);
+mask.SetModelType(modelType);
+</code></pre><h4 id="putting-on-a-mask">Putting on a Mask</h4>
+<p>This will tell Leshy to push a mask on his face.</p>
+<p>Useful for when you have your own boss sequence and you want to tell Leshy to put on your new mask!</p>
+<pre><code class="lang-csharp">LeshyAnimationController.Instance.PutOnMask(LeshyAnimationController.Mask.Woodcarver, false);
+</code></pre><h4 id="adding-custom-behaviour">Adding Custom Behaviour</h4>
+<pre><code class="lang-csharp">public class Plugin : BaseUnityPlugin
+{
+    private void Awake()
+    {
+        MyCustomMask.Setup();        
+    }
+}
+</code></pre><pre><code class="lang-csharp">public class MyCustomMask : MaskBehaviour
+{
+    public static LeshyAnimationController.Mask ID;
+
+    public static void Setup()
+    {
+        var mask = MaskManager.Add(&quot;guid&quot;, &quot;nameOfNewMask&quot;, &quot;pathToTexture&quot;);
+        mask.SetMaskBehaviour(typeof(MyCustomMask));
+        ID = mask.ID;
+    }
+}
+</code></pre><h2 id="adding-new-nodes-to-the-map">Adding new nodes to the map</h2>
+<p>If you want to add a new node to the game map, you need to be prepared to implement potentially complex game logic inside of a &quot;sequencer&quot; class. Whenever the game moves to a map node, it hands control of the game over to a sequencer, which is responsible for creating game objects, animating objects, manipulating the deck, or whatever else it is that you want your custom node to do. Once done, the sequencer hands control of the game back over the main game loop. This sequencer is where you will be spending most of your time programming, testing, and debugging. It is highly recommended that you check out the example mod and/or decompile the base game&#39;s sequencers to get a feel for how to do this.</p>
+<p>Once you have created a sequencer for your event, you also need to create an animation for your node to appear on the map. This animation is an array of precisely four textures, each of which should be 49x49 pixels in size. You need to register the sequencer and the associated texture array with the API. This is done using the NodeManager.Add generic method:</p>
+<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer&gt;(
+    new Texture2D[] {
+        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
+    },
+    NodeManager.NodePosition.SpecialEventRandom
+);
+</code></pre><p>Note the final parameter to &quot;Add&quot; is a flag that tells the API where the node should appear. The NodeManager.NodePosition enumeration is a flag-style enumeration, which means that multiple values can be combined using the bitwise-or operator (|). So, for example, if you want the node to appear randomly throughout the map but also to be forced to appear directly before the boss, you can use this combination:</p>
+<pre><code class="lang-c#">NodeManager.NodePosition.SpecialEventRandom | NodeManager.NodePosition.PreBoss
+</code></pre><p>The values of NodePosition are:</p>
+<ul>
+<li><strong>NotGenerated:</strong> This node will not be autogenerated on the map, but can still be manually added (for example, if you are manually manipulating Act 3 maps).</li>
+<li><strong>Act1Available:</strong> This node can appear in Act 1 maps, not just in Kaycee&#39;s Mod maps. Without this set, the custom node will only ever appear in a Kaycee&#39;s Mod run of Act 1.</li>
+<li><strong>MapStart:</strong> This node will be forced to appear at the start of each map, unless the node fails a prerequisite condition.</li>
+<li><strong>CardChoiceRandom:</strong> This node will appear in the pool of random events that happen right after a battle.</li>
+<li><strong>SpecialEventRandom:</strong> This node will appear in the pool of random events that happen right before a battle.</li>
+<li><strong>PreBoss:</strong> This node will be forced to appear right before the boss of each map, unless the node fails a prerequisite condition</li>
+<li><strong>PostBoss:</strong> This node will be forced to appear right after the boss of each map, unless the node fails a prerequisite condition</li>
+</ul>
+<h3 id="conditional-map-nodes">Conditional map nodes</h3>
+<p>Map nodes can implement logic to determine whether or not they should appear. To do this, you need to implement a custom &#39;node data&#39; object which inherits from CustomNodeData. There is a virtual method called Initialize that you should override. Here, you can add prerequisite conditions and forced generation conditions; the former will prevent a node from generating if any condition returns false, and the latter will force the node to generate if any condition returns true.</p>
+<p>You can add two types of conditions: simple, or map-aware. A simple condition takes no parameters and returns true or false based on whatever parameters you like (for example, if a certain ascension challenge is active or not). A map-aware condition takes two parameters: the first is the y-value of the node&#39;s position, and the second is a list of all map nodes that have previously been generated on this instnace of the map.</p>
+<p>Here is a code sample:</p>
+<pre><code class="lang-c#">public class MySpecialNodeData : CustomNodeData
+{
+    public override void Initialize()
+    {
+        // This node can only generate if the BaseDifficulty challenge is active
+        this.AddGenerationPrerequisite(() =&gt; AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.BaseDifficulty));
+
+        // This node is forced to generate if more than one BaseDifficulty challenge is active
+        // and a deck trial node has been placed on the map already
+        this.AddForceGenerationCondition((y, nodes) =&gt; AscensionSaveData.Data.GetNumChallengesOfTypeActive(AscensionChallenge.BaseDifficulty) &gt; 1 
+                                                            &amp;&amp; nodes.Exists(n =&gt; n is DeckTrialNodeData));
+    }
+}
+</code></pre><p>If you are using your own node data, you have to register it at the same time as your custom sequencer:</p>
+<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer, MySpecialNodeData&gt;(
+    new Texture2D[] {
+        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
+    },
+    NodeManager.NodePosition.SpecialEventRandom
+);
+</code></pre><h1 id="ascension-kaycees-mod">Ascension (Kaycee&#39;s Mod)</h1>
+<h2 id="adding-new-challenges">Adding New Challenges</h2>
+<p>The API supports adding new Challenges as part of Kaycee&#39;s Mod using the ChallengeManager class. You can add a new Challenge using ChallengeManager.Add, either by passing in a new AscensionChallengeInfo object or by passing the individual properties of your challenge (which will construct the information object for you). This will make your challenge automatically appear in the challenge selection screen.</p>
+<p>If you use the overload of Add that takes an AscensionChallengeInfo object, note that the &quot;challengeType&quot; field of type AscensionChallenge is completely irrelevant. This is an enumerated value, and it will be set for you by the ChallengeManager to ensure there is no collision with other challenges created by other mods. As such, you need to save the ID that is returned by the Add method of ChallengeManager so that you can reference it later.</p>
+<p>If your challenge can stack, set the stackable flag to &#39;true&#39; when adding your challenge. This will cause it to appear twice in the challenge selection screen. Yes, this means stackable challenges are currently limited to a max of two.</p>
+<p>You will be responsible to write all of the necessary patches for your challenge to function. When writing those patches, you <em>must</em> make sure that the challenge is active before you do anything. This is entirely up to you - there is nothing in the API that can detect this for you.</p>
+<p>You should also make sure to alert the user whenever your challenge has triggered some change in the game. The ChallengeActivationUI class (from DiskCardGame) has a helper to alert the user.</p>
+<pre><code class="lang-c#">private static AscensionChallenge ID = ChallengeManager.Add
+    (
+        Plugin.PluginGuid,
+        &quot;Dummy Challenge&quot;,
+        &quot;This challenge doesn&#39;t do anything&quot;,
+        15,
+        Resources.Load&lt;Texture2D&gt;(&quot;Path/To/Texture&quot;)
+    );
+
+[HarmonyPatch(...)]
+public static void DoSomething()
+{
+    if (AscensionSaveData.Data.ChallengeIsActive(ID))
+    {
+        ChallengeActivationUI.Instance.ShowActivation(ID);
+        // Do some actual stuff
+    }
+}
+</code></pre><h2 id="adding-new-starter-decks">Adding New Starter Decks</h2>
+<p>Starter decks are relatively simple. They simply need a title, an icon, and a set of three cards. You can also optionally add an &quot;unlock level&quot; which prevents your starter deck from being unlocked until the player reaches a certain challenge level. This defaults to 0, which means that the starter deck will always be unlocked.</p>
+<p>What if you want to make a starter deck with cards from another mod? What if you aren&#39;t 100% sure that those cards are loaded at the time that your starter deck is loaded? You can solve this manually by creating a dependency, which forces BepInEx to load the other mod first. However, if that mod uses JSON Loader, you need to create a dependency on JSON Loader instead, which could (in some very bizarre situations) create a situation where you both need to load before and after JSON Loader. Rather than sort out all of these possible scenarios one-by-one, you can instead create a starter deck with a set of three card names (strings) instead of three CardInfo objects. This will create a &quot;delayed loading&quot; scenario where the actual starter deck info won&#39;t be built until right before the Starter Deck screen loads.</p>
+<p>Both patterns are shown here:</p>
+<pre><code class="lang-c#">StarterDeckInfo myDeck = ScriptableObject.CreateInstance&lt;StarterDeckInfo&gt;();
+myDeck.title = &quot;Pelts&quot;;
+myDeck.iconSprite = TextureHelper.GetImageAsSprite(&quot;art/pelts_deck_icon.png&quot;, TextureHelper.SpriteType.StarterDeckIcon);
+myDeck.cards = new () { CardLoader.GetCardByName(&quot;PeltWolf&quot;), CardLoader.GetCardByName(&quot;PeltHare&quot;), CardLoader.GetCardByName(&quot;PeltHare&quot;) };
+
+StarterDeckManager.Add(MyPlugin.Guid, myDeck);
+</code></pre><pre><code class="lang-c#">StarterDeckManager.New(MyPlugin.Guid, &quot;Pelts&quot;, &quot;art/pelts_deck_icon.png&quot;, new string[] { &quot;PeltWolf&quot;, &quot;PeltHare&quot;, &quot;PeltHare&quot;});
+</code></pre><h2 id="adding-custom-screens-to-kaycees-mod">Adding Custom Screens to Kaycee&#39;s Mod</h2>
+<p>This API supports adding new screens to Kaycee&#39;s Mod that execute before a run starts. New screens can use the AscensionScreenSort attribute to influence their sort order. Custom screens will execute in the following order:</p>
+<ol>
+<li>Starter Decks</li>
+<li>Select Challenges</li>
+<li>Custom Screens<ol>
+<li>Requires Start</li>
+<li>Prefers Start</li>
+<li>No Preference (default)</li>
+<li>Prefers End</li>
+<li>Requires End</li>
+</ol>
+</li>
+<li>Start Run</li>
+</ol>
+<p>To create a custom screen, you need to write a special screen behavior class that inherits from AscensionRunSetupScreenBase (which in turn inherits from MonoBehavior). You will be required to override the following:</p>
+<ul>
+<li>headerText: The displayed title on the screen</li>
+<li>showCardDisplayer: Set this to return true if you want the panel on your screen that shows card information</li>
+<li>showCardPanel: Set this to return true if you want the scrollable panel on your screen that shows selectable cards</li>
+</ul>
+<p>There is also a virtual method called InitializeScreen which you should use to build the content of your screen.</p>
+<p>In general, you are responsible for doing all the hard work of building your screen. However, all the boilerplate content is built for you. You will automatically be given the continue and back buttons, the header (which shows the current challenge level), the footer (which displays changes as the challenge level changes), and the title of your screen. You can also optionally be given a scrollable card selection panel and card information displayer panel if you need them (using the properties shown above).</p>
+<p>Once you&#39;ve written the custom screen class, you need to register it with AscensionScreenManager like so:</p>
+<pre><code class="lang-c#">AscensionScreenManager.RegisterScreen&lt;MyCustomScreen&gt;();
+</code></pre><h1 id="custom-totem-tops">Custom Totem Tops</h1>
+<p>When creating custom Tribes, mostly likely you&#39;ll want it to be usable with Totems as well.
+There is a default model for custom Totem Tops, but if you have a custom-made model you want to use, the API&#39;s got you covered.</p>
+<p>If you want to add your own model for your top then you can use the example below.</p>
+<pre><code class="lang-csharp">TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+</code></pre><p>If you are using a model that you have created then here is an example of how to use asset bundles to include it.</p>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
+{
+    TotemManager.NewTopPiece&lt;CustomIconTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+}
+</code></pre><h2 id="i-dont-have-an-icon-to-show-on-my-totem-top">&quot;I don&#39;t have an icon to show on my totem top!&quot;</h2>
+<p>You will need a new class for your totem top so it doesn&#39;t look for an icon to populate from a tribe.   </p>
+<pre><code class="lang-csharp">public class MyCustomTotemTopPiece : CompositeTotemPiece
+{
+    protected virtual string EmissionGameObjectName =&gt; &quot;GameObjectName&quot;;
+
+    public override void SetData(ItemData data)
+    {
+        base.SetData(data);
+
+        // Set emissiveRenderer so the game knows what to highlight when hovering their mouse over the totem top
+        emissiveRenderer = this.gameObject.FindChild(EmissionGameObjectName);
+        if (emissiveRenderer != null)
+        {
+            emissiveRenderer = icon.GetComponent&lt;Renderer&gt;();
+        }
+
+        if (emissiveRenderer == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($&quot;emissiveRenderer not assigned to totem top!&quot;);
+        }
+    }
+}
+</code></pre><p>Then add your totem with your new class:</p>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet(&quot;pathToAssetBundle&quot;, &quot;nameOfPrefabInAssetBundle&quot;, out GameObject prefab))
+{
+    TotemManager.NewTopPiece&lt;MyCustomTotemTopPiece&gt;(&quot;NameOfTotem&quot;, Plugin.PluginGuid, Tribe, prefab);
+}
+</code></pre><h1 id="custom-items">Custom Items</h1>
+<p>The API supports adding custom consumable items.
+To create an item, you will need to create a new class that inherits from ConsumableItem.</p>
+<p>Specify the class for your item and what happens when its used.</p>
+<pre><code class="lang-csharp">public class CustomConsumableItem : ConsumableItem
+{
+    public override IEnumerator ActivateSequence()
+    {
+        base.PlayExitAnimation();
+        yield return new WaitForSeconds(0.25f);
+        yield return base.StartCoroutine(Singleton&lt;ResourcesManager&gt;.Instance.AddBones(4, null));
+        yield break;
+    }
+
+    public override bool ExtraActivationPrerequisitesMet()
+    {
+        if (!base.ExtraActivationPrerequisitesMet())
+        {
+            return false;
+        }
+
+        // Optional: Stop player from using the item!
+        return true;
+    }
+}
+</code></pre><h3 id="adding-your-new-item">Adding your New Item</h3>
+<p>If you don&#39;t have a custom model you can use one of the default types from ConsumableItemManager.ModelType provided by the API.</p>
+<pre><code class="lang-csharp">ConsumableItemManager.ModelType modelType = ConsumableItemManager.ModelType.Basic;
+ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), modelType)
+                .SetDescription(learnText)
+                .SetAct1();
+</code></pre><p>If you want to create a simple &#39;card-in-a-bottle&#39; type item, you can use the provided method like so:</p>
+<pre><code class="lang-csharp">ConsumableItemManager.NewCardInABottle(PluginGuid, cardInfo.name)
+                    .SetAct1();
+</code></pre><p>If you have a custom model for your item you can specify it in the different constructor:</p>
+<pre><code class="lang-csharp">GameObject prefab = ...
+ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
+                .SetDescription(learnText)
+                .SetAct1();
+</code></pre><h1 id="custom-pelts">Custom Pelts</h1>
+<h2 id="pelt-management">Pelt Management</h2>
+<p>Pelts are comprised of two components: the actual pelt card, and the pelt data.
+Pelt cards are created the same way any of card is made.
+The pelt data on the other hand is created using the API&#39;s PeltManager.</p>
+<p>The pelt data is used to determine how the associated card is handled by the Trapper and Trader.
+This includes how much it costs to buy, how much the price increases over a run,and what and how many cards the Trader will offer for the pelt.</p>
+<h2 id="adding-a-custom-pelt">Adding a Custom Pelt</h2>
+<p>The first step is making the card.</p>
+<pre><code class="lang-csharp">CardInfo bonePeltInfo = CardManager.New(PluginGuid, &quot;Bone Pelt&quot;, &quot;Bone Pelt&quot;, 0, 2);
+bonePeltInfo.portraitTex = TextureHelper.GetImageAsTexture(Path.Combine(PluginDirectory, &quot;Art/portrait_skin_bone.png&quot;)).ConvertTexture();
+bonePeltInfo.cardComplexity = CardComplexity.Simple;
+bonePeltInfo.temple = CardTemple.Nature;
+bonePeltInfo.SetPelt();
+</code></pre><p>You MUST create the card before creating the pelt data.</p>
+<p>Once that&#39;s done, it&#39;s time to create the pelt data.
+The most important complicated part of this is creating the Function that will be used to determine the cards the Trader will offer.</p>
+<p>For this example, the Trader will only offer cards that cost Bones and are part of the Nature temple (meaning Act 1 cards only).</p>
+<pre><code class="lang-csharp">Func&lt;List&lt;CardInfo&gt;&gt; cardChoices = ()
+{
+    return CardManager.AllCardsCopy.FindAll((CardInfo x) =&gt; x.BonesCost &gt; 0 &amp;&amp; x.temple == CardTemple.Nature);
+};
+
+PeltManager.CustomPeltData bonePelt = PeltManager.New(yourPluginGuid, bonePeltInfo, baseBuyPrice: 3, extraAbilitiesToAdd: 0, choicesOfferedByTrader: 8, cardChoices);
+</code></pre><p>This pelt will now cost 3 Teeth to buy from the Trapper, and the Trader will offer you 8 cards to choose from for it; the offered cards will have 0 extra abilities added onto them as well.</p>
+<p>The following extensions are provided for further customisation:</p>
+<ul>
+<li><strong>SetPluginGuid:</strong> Sets the Guid of the plugin that&#39;s adding the pelt. Useful if you aren&#39;t using PeltManager.New() to create your pelt.</li>
+<li><strong>SetBuyPrice:</strong> Sets the base buy price of the pelt, meaning how much it costs initially before modifiers are added. Optionally sets the max buy price for the pelt as well (default price is 20).</li>
+<li><strong>SetMaxBuyPrice:</strong> A separate extension for only setting the max buy price of the pelt. Useful if you&#39;ve already set the buy price using PeltManager.New(), for instance.</li>
+<li><strong>SetBuyPriceModifiers:</strong> Sets the values used to determine how the price is affected by in-game events, such as the Trapper and Trader being defeated, or the Expensive Pelts challenge being active.</li>
+<li><strong>SetBuyPriceAdjustment:</strong> Sets the Function used to determine how the price changes across a run. You can get really fancy with it, but by default it increases by 1 Tooth.</li>
+<li><strong>SetModifyCardChoiceAtTrader:</strong> Lets you modify the cards offered by the Trader further, such as adding a decal or changing their cost.</li>
+<li><strong>SetIsSoldByTrapper:</strong> Determines whether the pelt will be sold by the Trapper.</li>
+<li><strong>SetNumberOfCardChoices:</strong> Sets how many cards you will able to choose from when trading the pelt.</li>
+<li><strong>SetCardChoices:</strong> Sets the Function used to determine what potential cards the Trader will offer for the pelt.</li>
+</ul>
+<h1 id="sound">Sound</h1>
+<h2 id="adding-music-tracks-to-the-gramophone">Adding Music Tracks to the Gramophone</h2>
+<p>This API supports adding new tracks to the Gramophone in Leshy&#39;s Cabin.
+(A user must have the Hex disc unlocked in order to be able to listen to the new tracks.)</p>
+<p>All you need for that is a regular audio file. The API will do all of the conversion. The file should be inside the &#39;plugins&#39; folder. and the supported audio formats are MP3, WAV, OGG and AIFF.</p>
+<p>You can register your track like this:</p>
+<pre><code class="lang-csharp">GramophoneManager.AddTrack(PluginGuid, &quot;MyFile.wav&quot;, 0.5f);
+</code></pre><p>The first parameter should be your plugin&#39;s GUID. The second parameter should be your file&#39;s name.
+The third parameter is optional, and determines the volume of your track, from 0 to 1f. </p>
+<h2 id="converting-audio-files-to-unity-audioclip-objects">Converting Audio Files to Unity AudioClip Objects</h2>
+<p>This API provides a helper method for converting audio files to Unity AudioClip objects so that they can be played in-game with the AudioSource component. You can use this to replace in-game music through patches, or to play your own sound effects.</p>
+<p>The audio file should be located inside of the &#39;plugins&#39; folder. The supported audio formats are MP3, WAV, OGG and AIFF.</p>
+<p>You can convert your audio file into an AudioClip object like this:</p>
+<pre><code class="lang-csharp">AudioClip audio = SoundManager.LoadAudioClip(&quot;Example.mp3&quot;);
+</code></pre><h1 id="asset-bundles">Asset Bundles</h1>
+<p>Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.</p>
+<p>Think of them as fancy .zip&#39;s that&#39;s supported by Unity.</p>
+<h2 id="how-to-make-an-asset-bundle">How to Make an Asset Bundle</h2>
+<ol>
+<li>Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.</li>
+<li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
+<li>Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)</li>
+<li>At the bottom of the Inspector window you&#39;ll see a section labedled &quot;Asset Bundle&quot;</li>
+<li>Assign a new asset bundle name (example: testbundleexample)</li>
+<li>Build Asset bundles Window-&gt;AssetBundle Browser</li>
+<li>Go to the output path using file explorer</li>
+<li>There should be a file called &#39;testbundleexample&#39; in that folder (It will not have an extension!)</li>
+<li>Copy this file into your mod folder</li>
+</ol>
+<h2 id="loading-asset-bundles">Loading Asset Bundles</h2>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet&lt;GameObject&gt;(&quot;pathToBundleFile&quot;, &quot;nameOfPrefabInsideAssetBundle&quot;, out GameObject prefab))
+{
+    GameObject clone = GameObject.Instantiate(prefab);
+    // Do things with gameobject!
+}
+</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9</p>
+<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4</p>
+<p>Third parameter is the result of taking the object out of the asset bundle.</p>
+<p>NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! </p>
+<h2 id="common-problems">Common Problems</h2>
+<h3 id="1-the-gameobject-is-being-created-but-the-model-wont-show-up">1. The GameObject is being created but the model won&#39;t show up!</h3>
+<p>Make sure you are using Unity 2019.4.24f1 to build the asset bundle. The model will not show up otherwise!</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
