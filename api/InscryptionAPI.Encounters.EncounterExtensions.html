@@ -102,7 +102,7 @@
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddDominantTribes__1___0_DiskCardGame_Tribe___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddDominantTribes%60%601(%60%600%2CDiskCardGame.Tribe%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L51">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L57">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_AddDominantTribes_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddDominantTribes*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddDominantTribes__1___0_DiskCardGame_Tribe___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddDominantTribes``1(``0,DiskCardGame.Tribe[])">AddDominantTribes&lt;T&gt;(T, Tribe[])</h4>
@@ -173,7 +173,7 @@ The dominant tribes list determines the totems for this battle.</p>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddRandomReplacementCards__1___0_System_String___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddRandomReplacementCards%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L73">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L79">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_AddRandomReplacementCards_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddRandomReplacementCards*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddRandomReplacementCards__1___0_System_String___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddRandomReplacementCards``1(``0,System.String[])">AddRandomReplacementCards&lt;T&gt;(T, String[])</h4>
@@ -244,15 +244,16 @@ A card from this list is selected whenever a card is randomly replaced by <code>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_DiskCardGame_EncounterBlueprintData_CardBlueprint___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddTurn%60%601(%60%600%2CDiskCardGame.EncounterBlueprintData.CardBlueprint%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L118">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L206">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_DiskCardGame_EncounterBlueprintData_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,DiskCardGame.EncounterBlueprintData.CardBlueprint[])">AddTurn&lt;T&gt;(T, EncounterBlueprintData.CardBlueprint[])</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds a new turn to the EncounterBlueprintData using the specified CardBlueprints.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T AddTurn&lt;T&gt;(this T blueprint, params EncounterBlueprintData.CardBlueprint[] turn)
+    <pre><code class="lang-csharp hljs">public static T AddTurn&lt;T&gt;(this T blueprint, params EncounterBlueprintData.CardBlueprint[] cards)
     where T : EncounterBlueprintData</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -272,8 +273,9 @@ A card from this list is selected whenever a card is randomly replaced by <code>
       </tr>
       <tr>
         <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>[]</td>
-        <td><span class="parametername">turn</span></td>
-        <td></td>
+        <td><span class="parametername">cards</span></td>
+        <td><p>The CardBlurprints to add. If none are specified, creates an empty turn.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -288,7 +290,79 @@ A card from this list is selected whenever a card is randomly replaced by <code>
     <tbody>
       <tr>
         <td><span class="xref">T</span></td>
+        <td><p>The same EncounterBlueprintData so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddTurn%60%601(%60%600%2CList%7BDiskCardGame.EncounterBlueprintData.CardBlueprint%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L217">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint})">AddTurn&lt;T&gt;(T, List&lt;EncounterBlueprintData.CardBlueprint&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a new turn to the EncounterBlueprintData.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurn&lt;T&gt;(this T blueprint, List&lt;EncounterBlueprintData.CardBlueprint&gt; turn = null)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">turn</span></td>
+        <td><p>The turn to add. If null, creates an empty turn.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The same EncounterBlueprintData so a chain can continue.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -312,7 +386,7 @@ A card from this list is selected whenever a card is randomly replaced by <code>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods__1___0_DiskCardGame_EncounterBlueprintData_TurnModBlueprint___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods%60%601(%60%600%2CDiskCardGame.EncounterBlueprintData.TurnModBlueprint%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L112">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L116">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods__1___0_DiskCardGame_EncounterBlueprintData_TurnModBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods``1(``0,DiskCardGame.EncounterBlueprintData.TurnModBlueprint[])">AddTurnMods&lt;T&gt;(T, EncounterBlueprintData.TurnModBlueprint[])</h4>
@@ -377,10 +451,146 @@ A card from this list is selected whenever a card is randomly replaced by <code>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint____.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddTurns%60%601(%60%600%2CList%7BDiskCardGame.EncounterBlueprintData.CardBlueprint%7D%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L229">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint____" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint}[])">AddTurns&lt;T&gt;(T, List&lt;EncounterBlueprintData.CardBlueprint&gt;[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurns&lt;T&gt;(this T blueprint, params List&lt;EncounterBlueprintData.CardBlueprint&gt;[] turns)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;[]</td>
+        <td><span class="parametername">turns</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_List_DiskCardGame_EncounterBlueprintData_CardBlueprint___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.AddTurns%60%601(%60%600%2CList%7BList%7BDiskCardGame.EncounterBlueprintData.CardBlueprint%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L237">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_List_DiskCardGame_EncounterBlueprintData_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}})">AddTurns&lt;T&gt;(T, List&lt;List&lt;EncounterBlueprintData.CardBlueprint&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurns&lt;T&gt;(this T blueprint, List&lt;List&lt;EncounterBlueprintData.CardBlueprint&gt;&gt; turns)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;&gt;</td>
+        <td><span class="parametername">turns</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_CreateTurn__1___0_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.CreateTurn%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L127">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L194">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_CreateTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.CreateTurn*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_CreateTurn__1___0_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.CreateTurn``1(``0)">CreateTurn&lt;T&gt;(T)</h4>
@@ -441,10 +651,135 @@ A card from this list is selected whenever a card is randomly replaced by <code>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List%7BDiskCardGame.EncounterBlueprintData.CardBlueprint%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L179">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32)">DuplicateTurn(List&lt;EncounterBlueprintData.CardBlueprint&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Duplicates a list representing a turn the specified number of times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt;[] DuplicateTurn(this List&lt;EncounterBlueprintData.CardBlueprint&gt; list, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The list to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How many times the list should be duplicated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;[]</td>
+        <td><p>An array containing the newly duplicated lists. Use with EncounterBlueprintData.AddTurns().</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns__1___0_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns%60%601(%60%600%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L249">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns__1___0_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns``1(``0,System.Int32)">DuplicateTurns&lt;T&gt;(T, Int32)</h4>
+  <div class="markdown level1 summary"><p>Duplicates the contents of the turn plan into itself the specified number of times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T DuplicateTurns&lt;T&gt;(this T blueprint, int amount)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_OpponentById_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable%7BInscryptionAPI.Encounters.OpponentManager.FullOpponent%7D%2CDiskCardGame.Opponent.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L9">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L11">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_OpponentById_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.OpponentById*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_OpponentById_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)">OpponentById(IEnumerable&lt;OpponentManager.FullOpponent&gt;, Opponent.Type)</h4>
@@ -493,10 +828,72 @@ A card from this list is selected whenever a card is randomly replaced by <code>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L134">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.Int32,System.Int32)">SetDifficulty(EncounterBlueprintData.CardBlueprint, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the minimum and maximum difficulty values for this CardBlueprint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EncounterBlueprintData.CardBlueprint SetDifficulty(this EncounterBlueprintData.CardBlueprint card, int min, int max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The CardBlueprint to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum difficulty for this card to appear.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum difficulty for this card to appear at.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><p>The same CardBlueprint so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty__1___0_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty%60%601(%60%600%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L39">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L45">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty__1___0_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty``1(``0,System.Int32,System.Int32)">SetDifficulty&lt;T&gt;(T, Int32, Int32)</h4>
@@ -573,7 +970,7 @@ Difficulty is determined by the formula (6 * <code>tier</code>) + <code>battle#<
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetNewSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_System_String_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetNewSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent%2CSystem.String%2CSystem.String%2CType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L26">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L28">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetNewSequencer_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetNewSequencer*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetNewSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_System_String_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetNewSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent,System.String,System.String,Type)">SetNewSequencer(OpponentManager.FullOpponent, String, String, Type)</h4>
@@ -635,7 +1032,7 @@ Difficulty is determined by the formula (6 * <code>tier</code>) + <code>battle#<
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetOpponent_InscryptionAPI_Encounters_OpponentManager_FullOpponent_Type_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetOpponent(InscryptionAPI.Encounters.OpponentManager.FullOpponent%2CType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L14">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L16">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetOpponent_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetOpponent*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetOpponent_InscryptionAPI_Encounters_OpponentManager_FullOpponent_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetOpponent(InscryptionAPI.Encounters.OpponentManager.FullOpponent,Type)">SetOpponent(OpponentManager.FullOpponent, Type)</h4>
@@ -687,7 +1084,7 @@ Difficulty is determined by the formula (6 * <code>tier</code>) + <code>battle#<
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetRedundantAbilities__1___0_DiskCardGame_Ability___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetRedundantAbilities%60%601(%60%600%2CDiskCardGame.Ability%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L92">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L98">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetRedundantAbilities_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRedundantAbilities*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetRedundantAbilities__1___0_DiskCardGame_Ability___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRedundantAbilities``1(``0,DiskCardGame.Ability[])">SetRedundantAbilities&lt;T&gt;(T, Ability[])</h4>
@@ -758,7 +1155,7 @@ Redundant abilities will not be used on totems for this encounter.</p>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetRegionSpecific__1___0_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific%60%601(%60%600%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L61">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L67">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetRegionSpecific_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetRegionSpecific__1___0_System_Boolean_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific``1(``0,System.Boolean)">SetRegionSpecific&lt;T&gt;(T, Boolean)</h4>
@@ -823,10 +1220,78 @@ Redundant abilities will not be used on totems for this encounter.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_String_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint%2CSystem.String%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L149">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetReplacement*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_String_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.String,System.Int32,System.Boolean)">SetReplacement(EncounterBlueprintData.CardBlueprint, String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets whether what card the CardBlueprint will be replaced with if difficultyReplace == true, and what difficulty threshold it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EncounterBlueprintData.CardBlueprint SetReplacement(this EncounterBlueprintData.CardBlueprint blueprint, string replacementName, int requiredDifficulty = 0, bool replaceWithDifficulty = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td><p>The CardBlueprint to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">replacementName</span></td>
+        <td><p>The name of the card that will replace this card.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">requiredDifficulty</span></td>
+        <td><p>The minimum difficulty for the card to be replaced.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">replaceWithDifficulty</span></td>
+        <td><p>Whether this card will be replaced at certain difficulties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><p>The same CardBlueprint so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L20">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L22">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetSequencer*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent,System.String)">SetSequencer(OpponentManager.FullOpponent, String)</h4>
@@ -875,10 +1340,72 @@ Redundant abilities will not be used on totems for this encounter.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List%7BDiskCardGame.EncounterBlueprintData.CardBlueprint%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L164">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32,System.Int32)">SetTurnDifficulty(List&lt;EncounterBlueprintData.CardBlueprint&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the difficulties of each CardBlueprint in the list to the specified values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; SetTurnDifficulty(this List&lt;EncounterBlueprintData.CardBlueprint&gt; list, int min, int max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The list to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum difficulty.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum difficulty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><p>The same list so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites__1___0_System_String___.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L98">View Source</a>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L104">View Source</a>
   </span>
   <a id="InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites*"></a>
   <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites__1___0_System_String___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites``1(``0,System.String[])">SetUnlockedCardPrerequisites&lt;T&gt;(T, String[])</h4>
@@ -941,6 +1468,80 @@ Redundant abilities will not be used on totems for this encounter.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties__1___0_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties%60%601(%60%600%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L265">View Source</a>
+  </span>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties__1___0_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties``1(``0,System.Int32,System.Int32)">SyncTurnDifficulties&lt;T&gt;(T, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the difficulty values of all CardBlueprints in the turn plan to the same values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SyncTurnDifficulties&lt;T&gt;(this T blueprint, int minDifficulty, int maxDifficulty)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">minDifficulty</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">maxDifficulty</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -952,7 +1553,7 @@ Redundant abilities will not be used on totems for this encounter.</p>
                     <a href="https://github.com/InscryptionModding/InscryptionAPI/new/main/docs/apiSpec/new?filename=InscryptionAPI_Encounters_EncounterExtensions.md&amp;value=---%0Auid%3A%20InscryptionAPI.Encounters.EncounterExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/InscryptionAPI/Encounters/EncounterExtensions.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

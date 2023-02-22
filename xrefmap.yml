@@ -5701,6 +5701,15 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.AddTurn(Of T)(T, DiskCardGame.EncounterBlueprintData.CardBlueprint())
   nameWithType: EncounterExtensions.AddTurn<T>(T, EncounterBlueprintData.CardBlueprint[])
   nameWithType.vb: EncounterExtensions.AddTurn(Of T)(T, EncounterBlueprintData.CardBlueprint())
+- uid: InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint})
+  name: AddTurn<T>(T, List<EncounterBlueprintData.CardBlueprint>)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint})
+  name.vb: AddTurn(Of T)(T, List(Of EncounterBlueprintData.CardBlueprint))
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.AddTurn<T>(T, List<DiskCardGame.EncounterBlueprintData.CardBlueprint>)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.AddTurn(Of T)(T, List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint))
+  nameWithType: EncounterExtensions.AddTurn<T>(T, List<EncounterBlueprintData.CardBlueprint>)
+  nameWithType.vb: EncounterExtensions.AddTurn(Of T)(T, List(Of EncounterBlueprintData.CardBlueprint))
 - uid: InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods*
   name: AddTurnMods
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods_
@@ -5717,6 +5726,31 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods(Of T)(T, DiskCardGame.EncounterBlueprintData.TurnModBlueprint())
   nameWithType: EncounterExtensions.AddTurnMods<T>(T, EncounterBlueprintData.TurnModBlueprint[])
   nameWithType.vb: EncounterExtensions.AddTurnMods(Of T)(T, EncounterBlueprintData.TurnModBlueprint())
+- uid: InscryptionAPI.Encounters.EncounterExtensions.AddTurns*
+  name: AddTurns
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_AddTurns_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.AddTurns
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.AddTurns
+  nameWithType: EncounterExtensions.AddTurns
+- uid: InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint}[])
+  name: AddTurns<T>(T, List<EncounterBlueprintData.CardBlueprint>[])
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint____
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint}[])
+  name.vb: AddTurns(Of T)(T, List(Of EncounterBlueprintData.CardBlueprint)())
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.AddTurns<T>(T, List<DiskCardGame.EncounterBlueprintData.CardBlueprint>[])
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.AddTurns(Of T)(T, List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint)())
+  nameWithType: EncounterExtensions.AddTurns<T>(T, List<EncounterBlueprintData.CardBlueprint>[])
+  nameWithType.vb: EncounterExtensions.AddTurns(Of T)(T, List(Of EncounterBlueprintData.CardBlueprint)())
+- uid: InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}})
+  name: AddTurns<T>(T, List<List<EncounterBlueprintData.CardBlueprint>>)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_List_DiskCardGame_EncounterBlueprintData_CardBlueprint___
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}})
+  name.vb: AddTurns(Of T)(T, List(Of List(Of EncounterBlueprintData.CardBlueprint)))
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.AddTurns<T>(T, List<List<DiskCardGame.EncounterBlueprintData.CardBlueprint>>)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.AddTurns(Of T)(T, List(Of List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint)))
+  nameWithType: EncounterExtensions.AddTurns<T>(T, List<List<EncounterBlueprintData.CardBlueprint>>)
+  nameWithType.vb: EncounterExtensions.AddTurns(Of T)(T, List(Of List(Of EncounterBlueprintData.CardBlueprint)))
 - uid: InscryptionAPI.Encounters.EncounterExtensions.CreateTurn*
   name: CreateTurn
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_CreateTurn_
@@ -5733,6 +5767,38 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.CreateTurn(Of T)(T)
   nameWithType: EncounterExtensions.CreateTurn<T>(T)
   nameWithType.vb: EncounterExtensions.CreateTurn(Of T)(T)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32)
+  name: DuplicateTurn(List<EncounterBlueprintData.CardBlueprint>, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32)
+  name.vb: DuplicateTurn(List(Of EncounterBlueprintData.CardBlueprint), Int32)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List<DiskCardGame.EncounterBlueprintData.CardBlueprint>, System.Int32)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint), System.Int32)
+  nameWithType: EncounterExtensions.DuplicateTurn(List<EncounterBlueprintData.CardBlueprint>, Int32)
+  nameWithType.vb: EncounterExtensions.DuplicateTurn(List(Of EncounterBlueprintData.CardBlueprint), Int32)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn*
+  name: DuplicateTurn
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn
+  nameWithType: EncounterExtensions.DuplicateTurn
+- uid: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns*
+  name: DuplicateTurns
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns
+  nameWithType: EncounterExtensions.DuplicateTurns
+- uid: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns``1(``0,System.Int32)
+  name: DuplicateTurns<T>(T, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns__1___0_System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns``1(``0,System.Int32)
+  name.vb: DuplicateTurns(Of T)(T, Int32)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns<T>(T, System.Int32)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns(Of T)(T, System.Int32)
+  nameWithType: EncounterExtensions.DuplicateTurns<T>(T, Int32)
+  nameWithType.vb: EncounterExtensions.DuplicateTurns(Of T)(T, Int32)
 - uid: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)
   name: OpponentById(IEnumerable<OpponentManager.FullOpponent>, Opponent.Type)
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_OpponentById_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_
@@ -5749,6 +5815,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.EncounterExtensions.OpponentById
   nameWithType: EncounterExtensions.OpponentById
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.Int32,System.Int32)
+  name: SetDifficulty(EncounterBlueprintData.CardBlueprint, Int32, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint, System.Int32, System.Int32)
+  nameWithType: EncounterExtensions.SetDifficulty(EncounterBlueprintData.CardBlueprint, Int32, Int32)
 - uid: InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty*
   name: SetDifficulty
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_
@@ -5823,6 +5895,19 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific(Of T)(T, System.Boolean)
   nameWithType: EncounterExtensions.SetRegionSpecific<T>(T, Boolean)
   nameWithType.vb: EncounterExtensions.SetRegionSpecific(Of T)(T, Boolean)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.String,System.Int32,System.Boolean)
+  name: SetReplacement(EncounterBlueprintData.CardBlueprint, String, Int32, Boolean)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_String_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.String,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint, System.String, System.Int32, System.Boolean)
+  nameWithType: EncounterExtensions.SetReplacement(EncounterBlueprintData.CardBlueprint, String, Int32, Boolean)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SetReplacement*
+  name: SetReplacement
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.SetReplacement
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SetReplacement
+  nameWithType: EncounterExtensions.SetReplacement
 - uid: InscryptionAPI.Encounters.EncounterExtensions.SetSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent,System.String)
   name: SetSequencer(OpponentManager.FullOpponent, String)
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_
@@ -5836,6 +5921,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.EncounterExtensions.SetSequencer
   nameWithType: EncounterExtensions.SetSequencer
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32,System.Int32)
+  name: SetTurnDifficulty(List<EncounterBlueprintData.CardBlueprint>, Int32, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32,System.Int32)
+  name.vb: SetTurnDifficulty(List(Of EncounterBlueprintData.CardBlueprint), Int32, Int32)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List<DiskCardGame.EncounterBlueprintData.CardBlueprint>, System.Int32, System.Int32)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List(Of DiskCardGame.EncounterBlueprintData.CardBlueprint), System.Int32, System.Int32)
+  nameWithType: EncounterExtensions.SetTurnDifficulty(List<EncounterBlueprintData.CardBlueprint>, Int32, Int32)
+  nameWithType.vb: EncounterExtensions.SetTurnDifficulty(List(Of EncounterBlueprintData.CardBlueprint), Int32, Int32)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty*
+  name: SetTurnDifficulty
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty
+  nameWithType: EncounterExtensions.SetTurnDifficulty
 - uid: InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites*
   name: SetUnlockedCardPrerequisites
   href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites_
@@ -5852,6 +5953,22 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites(Of T)(T, System.String())
   nameWithType: EncounterExtensions.SetUnlockedCardPrerequisites<T>(T, String[])
   nameWithType.vb: EncounterExtensions.SetUnlockedCardPrerequisites(Of T)(T, String())
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties*
+  name: SyncTurnDifficulties
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties
+  nameWithType: EncounterExtensions.SyncTurnDifficulties
+- uid: InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties``1(``0,System.Int32,System.Int32)
+  name: SyncTurnDifficulties<T>(T, Int32, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties__1___0_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties``1(``0,System.Int32,System.Int32)
+  name.vb: SyncTurnDifficulties(Of T)(T, Int32, Int32)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties<T>(T, System.Int32, System.Int32)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties(Of T)(T, System.Int32, System.Int32)
+  nameWithType: EncounterExtensions.SyncTurnDifficulties<T>(T, Int32, Int32)
+  nameWithType.vb: EncounterExtensions.SyncTurnDifficulties(Of T)(T, Int32, Int32)
 - uid: InscryptionAPI.Encounters.EncounterManager
   name: EncounterManager
   href: api/InscryptionAPI.Encounters.EncounterManager.html
@@ -5890,6 +6007,43 @@ references:
   commentId: F:InscryptionAPI.Encounters.EncounterManager.BaseGameEncounters
   fullName: InscryptionAPI.Encounters.EncounterManager.BaseGameEncounters
   nameWithType: EncounterManager.BaseGameEncounters
+- uid: InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint)
+  name: CreateTurn(EncounterBlueprintData.CardBlueprint)
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_CreateTurn_DiskCardGame_EncounterBlueprintData_CardBlueprint_
+  commentId: M:InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint)
+  fullName: InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint)
+  nameWithType: EncounterManager.CreateTurn(EncounterBlueprintData.CardBlueprint)
+- uid: InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint[])
+  name: CreateTurn(EncounterBlueprintData.CardBlueprint[])
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_CreateTurn_DiskCardGame_EncounterBlueprintData_CardBlueprint___
+  commentId: M:InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint[])
+  name.vb: CreateTurn(EncounterBlueprintData.CardBlueprint())
+  fullName: InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint[])
+  fullName.vb: InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint())
+  nameWithType: EncounterManager.CreateTurn(EncounterBlueprintData.CardBlueprint[])
+  nameWithType.vb: EncounterManager.CreateTurn(EncounterBlueprintData.CardBlueprint())
+- uid: InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String)
+  name: CreateTurn(String)
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_CreateTurn_System_String_
+  commentId: M:InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String)
+  fullName: InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String)
+  nameWithType: EncounterManager.CreateTurn(String)
+- uid: InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String[])
+  name: CreateTurn(String[])
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_CreateTurn_System_String___
+  commentId: M:InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String[])
+  name.vb: CreateTurn(String())
+  fullName: InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String[])
+  fullName.vb: InscryptionAPI.Encounters.EncounterManager.CreateTurn(System.String())
+  nameWithType: EncounterManager.CreateTurn(String[])
+  nameWithType.vb: EncounterManager.CreateTurn(String())
+- uid: InscryptionAPI.Encounters.EncounterManager.CreateTurn*
+  name: CreateTurn
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_CreateTurn_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterManager.CreateTurn
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterManager.CreateTurn
+  nameWithType: EncounterManager.CreateTurn
 - uid: InscryptionAPI.Encounters.EncounterManager.ModifyEncountersList
   name: ModifyEncountersList
   href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_ModifyEncountersList
@@ -5909,6 +6063,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.EncounterManager.New
   nameWithType: EncounterManager.New
+- uid: InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint(System.String,System.Int32,System.Boolean,System.Int32,System.String,System.Int32,System.Int32)
+  name: NewCardBlueprint(String, Int32, Boolean, Int32, String, Int32, Int32)
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_NewCardBlueprint_System_String_System_Int32_System_Boolean_System_Int32_System_String_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint(System.String,System.Int32,System.Boolean,System.Int32,System.String,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint(System.String, System.Int32, System.Boolean, System.Int32, System.String, System.Int32, System.Int32)
+  nameWithType: EncounterManager.NewCardBlueprint(String, Int32, Boolean, Int32, String, Int32, Int32)
+- uid: InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint*
+  name: NewCardBlueprint
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_NewCardBlueprint_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint
+  nameWithType: EncounterManager.NewCardBlueprint
 - uid: InscryptionAPI.Encounters.EncounterManager.Remove(DiskCardGame.EncounterBlueprintData)
   name: Remove(EncounterBlueprintData)
   href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_Remove_DiskCardGame_EncounterBlueprintData_
