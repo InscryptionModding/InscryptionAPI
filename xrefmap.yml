@@ -3929,6 +3929,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetGemsCost
   nameWithType: CardExtensions.SetGemsCost
+- uid: InscryptionAPI.Card.CardExtensions.SetHideStats(DiskCardGame.CardInfo,System.Boolean)
+  name: SetHideStats(CardInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetHideStats_DiskCardGame_CardInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetHideStats(DiskCardGame.CardInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.SetHideStats(DiskCardGame.CardInfo, System.Boolean)
+  nameWithType: CardExtensions.SetHideStats(CardInfo, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.SetHideStats*
+  name: SetHideStats
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetHideStats_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetHideStats
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetHideStats
+  nameWithType: CardExtensions.SetHideStats
 - uid: InscryptionAPI.Card.CardExtensions.SetIceCube(DiskCardGame.CardInfo,DiskCardGame.CardInfo,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
   name: SetIceCube(CardInfo, CardInfo, IEnumerable<CardModificationInfo>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetIceCube_DiskCardGame_CardInfo_DiskCardGame_CardInfo_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
@@ -4023,6 +4036,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetNames
   nameWithType: CardExtensions.SetNames
+- uid: InscryptionAPI.Card.CardExtensions.SetOnePerDeck(DiskCardGame.CardInfo,System.Boolean)
+  name: SetOnePerDeck(CardInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetOnePerDeck_DiskCardGame_CardInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetOnePerDeck(DiskCardGame.CardInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.SetOnePerDeck(DiskCardGame.CardInfo, System.Boolean)
+  nameWithType: CardExtensions.SetOnePerDeck(CardInfo, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.SetOnePerDeck*
+  name: SetOnePerDeck
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetOnePerDeck_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetOnePerDeck
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetOnePerDeck
+  nameWithType: CardExtensions.SetOnePerDeck
 - uid: InscryptionAPI.Card.CardExtensions.SetPelt(DiskCardGame.CardInfo,System.Boolean)
   name: SetPelt(CardInfo, Boolean)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPelt_DiskCardGame_CardInfo_System_Boolean_
