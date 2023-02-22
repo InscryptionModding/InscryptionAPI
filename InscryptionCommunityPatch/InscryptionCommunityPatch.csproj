@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <DebugType>full</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <Version>2.11.0</Version>
     </PropertyGroup>
     
     <ItemGroup>
