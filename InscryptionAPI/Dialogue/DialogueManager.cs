@@ -79,7 +79,7 @@ public static class DialogueManager
                 }
                 DialogueDataUtil.data.events.Add(dialogue.DialogueEvent);
             }
-            InscryptionAPIPlugin.Logger.LogWarning($"Inserted {CustomDialogue.Count} dialogue!");
+            // InscryptionAPIPlugin.Logger.LogInfo($"Inserted {CustomDialogue.Count} dialogue!");
         }
     }
 
