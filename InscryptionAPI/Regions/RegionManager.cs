@@ -174,11 +174,6 @@ public static class RegionManager
             return false;
         }
 
-        foreach (var i in RunState.Run.regionOrder)
-            InscryptionAPIPlugin.Logger.LogInfo("1: " + i);
-
-        InscryptionAPIPlugin.Logger.LogInfo("2: " + RunState.Run.regionTier);
-
         if (SaveFile.IsAscension)
         {
             // InscryptionAPIPlugin.Logger.LogInfo(RunState.Run.regionOrder[RunState.Run.regionTier]);
