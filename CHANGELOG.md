@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.1
+- Fixed regions in Act 1 being out of order
+- Fixed the console message concerning custom dialogue events not giving the right amount
+
 ## 2.11.0
 - Refactored how regions are handled by the API to prevent duplicate bosses
 - Refactored how bosses are selected to prevent duplicates being encountered
