@@ -24,7 +24,7 @@ public static class DialogueManager
 
     public static Dialogue Add(string pluginGUID, DialogueEvent dialogueEvent)
     {
-        Dialogue dialogue = new Dialogue()
+        Dialogue dialogue = new()
         {
             PluginGUID = pluginGUID,
             DialogueEvent = dialogueEvent
@@ -37,7 +37,7 @@ public static class DialogueManager
 
     public static DialogueColor AddColor(string pluginGUID, string code, Color color)
     {
-        DialogueColor data = new DialogueColor()
+        DialogueColor data = new()
         {
             PluginGUID = pluginGUID,
             ColorCode = code,
@@ -79,7 +79,6 @@ public static class DialogueManager
                 }
                 DialogueDataUtil.data.events.Add(dialogue.DialogueEvent);
             }
-            InscryptionAPIPlugin.Logger.LogWarning($"Inserted {CustomDialogue.Count} dialogue!");
         }
     }
 

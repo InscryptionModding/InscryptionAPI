@@ -285,11 +285,11 @@ public static class CardManager
             {
                 string printKey = (int)ability >= GuidManager.START_INDEX ?
                                   ReverseKey(ability.ToString()).Replace("Ability_", "") :
-                                  $"Inscryption_{ability.ToString()}";
+                                  $"Inscryption_{ability}";
 
                 if (printKey.Equals(ERROR))
                 {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an ability {ability} that is not a part of the base game and was not assigned by the API!");
                     continue;
                 }
 
@@ -300,40 +300,40 @@ public static class CardManager
             }
 
             // Audit the special abilities for issues
-            foreach (SpecialTriggeredAbility ability in card.SpecialAbilities)
+            foreach (SpecialTriggeredAbility specialAbility in card.SpecialAbilities)
             {
-                string printKey = (int)ability >= GuidManager.START_INDEX ?
-                                  ReverseKey(ability.ToString()).Replace("SpecialTriggeredAbility_", "") :
-                                  $"Inscryption_{ability.ToString()}";
+                string printKey = (int)specialAbility >= GuidManager.START_INDEX ?
+                                  ReverseKey(specialAbility.ToString()).Replace("SpecialTriggeredAbility_", "") :
+                                  $"Inscryption_{specialAbility}";
 
                 if (printKey.Equals(ERROR))
                 {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {specialAbility} that is not a part of the base game and was not assigned by the API!");
                     continue;
                 }
 
 
-                var fst = SpecialTriggeredAbilityManager.AllSpecialTriggers.FirstOrDefault(st => st.Id == ability);
+                var fst = SpecialTriggeredAbilityManager.AllSpecialTriggers.FirstOrDefault(st => st.Id == specialAbility);
 
                 if (fst == null)
                     InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has a special ability {printKey} that has not been properly registered!");
             }
 
             // Audit the appearance behaviors for issues
-            foreach (var ability in card.appearanceBehaviour)
+            foreach (CardAppearanceBehaviour.Appearance appearance in card.appearanceBehaviour)
             {
-                string printKey = (int)ability >= GuidManager.START_INDEX ?
-                                  ReverseKey(ability.ToString()).Replace("CardAppearanceBehaviour.Appearance_", "") :
-                                  $"Inscryption_{ability.ToString()}";
+                string printKey = (int)appearance >= GuidManager.START_INDEX ?
+                                  ReverseKey(appearance.ToString()).Replace("CardAppearanceBehaviour.Appearance_", "") :
+                                  $"Inscryption_{appearance}";
 
                 if (printKey.Equals(ERROR))
                 {
-                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {ability.ToString()} that is not a part of the base game and was not assigned by the API!");
+                    InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {appearance} that is not a part of the base game and was not assigned by the API!");
                     continue;
                 }
 
 
-                var fst = CardAppearanceBehaviourManager.AllAppearances.FirstOrDefault(f => f.Id == ability);
+                var fst = CardAppearanceBehaviourManager.AllAppearances.FirstOrDefault(f => f.Id == appearance);
 
                 if (fst == null)
                     InscryptionAPIPlugin.Logger.LogWarning($"Card {card.name} has an appearance behavior {printKey} that has not been properly registered!");
