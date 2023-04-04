@@ -295,7 +295,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.html",
-          "hash": "n4zrBkfgM9WIVe/VVKpFiceYgywgcBC7OSfcyFKSAhg="
+          "hash": "6j6s6SmWMpHr6nvLie8W1A2Wn0HpJfscyjA6RnDGhf0="
         }
       },
       "is_incremental": false,
@@ -310,7 +310,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "pHdMJe9OSuNZ9avtV7pGvwiXVgF5i5Wl85r7Gxx2EMc="
+          "hash": "aZ314WzlVj24sK1zaqRVr5RSmVu1vaAl/sAD1k1semk="
         }
       },
       "is_incremental": false,
@@ -358,7 +358,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardManager.html",
-          "hash": "+hVQP6LUZJY0VOtuHa5D2fuvRegncs+wm3o+L6Mukv8="
+          "hash": "5lJwFkgoc1+81LLhts0e5DEVztcKVdsDE7bLRNVJ+so="
         }
       },
       "is_incremental": false,
@@ -478,7 +478,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "HAxpNME8ga6q4n/EJ4pnlRVAHSWJlKto4Jdhe6NG23k="
+          "hash": "E9HUzc/AUKPYk8bNJ07lWYHZYiFOBUu7+bA+OIHP8fE="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html",
-          "hash": "Gz9MrvvnUWRMyb2tSmivSPUbvZJ+nKmzhRCiPT6Ihnc="
+          "hash": "zC1YUGDeA4jvAyBQtZLhR6HwJ/6dgEK5a2KwRbT8eTo="
         }
       },
       "is_incremental": false,
@@ -994,7 +994,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "id34/iIyiUCNLMrX65+oHk+cx+9ZHKUrFfTcT0YV50I="
+          "hash": "ryZnUF06zbJwm1POtipeYxgvuZB+aogxNajm+RsPQqQ="
         }
       },
       "is_incremental": false,
@@ -1438,7 +1438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.PeltManager.PeltData.html",
-          "hash": "2q0Hh8zRxeJWPgI7nDTFZiysvleCt1kGDhJGknexLcQ="
+          "hash": "g0S7UEwBpY2JOATnQYTWynvyAULKTQisf0L2t5cMRlY="
         }
       },
       "is_incremental": false,
@@ -1450,7 +1450,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.PeltManager.html",
-          "hash": "0RBU0NV4vgxa7ui6R81IxotndwtovZ+ASYMlMxUq3xM="
+          "hash": "fHNe2pN1yp7MWBGaQiWJcaJwquz5kNnTSppqfk6wK7c="
         }
       },
       "is_incremental": false,
