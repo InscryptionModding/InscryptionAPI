@@ -13,7 +13,7 @@ namespace InscryptionAPI.Regions;
 [HarmonyPatch]
 public static class RegionManager
 {
-    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(GetOrderedBaseRegions());
+    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(ReorderBaseRegions());
 
     /* Order of BaseGameRegions before reordering
      * !TEST_PART3
@@ -25,7 +25,7 @@ public static class RegionManager
      * Wetlands
      */
 
-    private static List<RegionData> GetOrderedBaseRegions()
+    private static List<RegionData> ReorderBaseRegions()
     {
         List<RegionData> baseRegions = Resources.LoadAll<RegionData>("Data").ToList();
         List<RegionData> orderedRegions = new()
