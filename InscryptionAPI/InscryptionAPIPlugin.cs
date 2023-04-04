@@ -107,7 +107,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
         CardManager.AuditCardList();
-        Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue events!");
+        Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
