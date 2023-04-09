@@ -70,7 +70,7 @@ internal static class StarterDeckSelectscreenPatches
                         var card = cards[i];
                         float distance = cards.Count > 8 ? 0.425f : 0.5f;
                         float position = distance * (i - (cards.Count - 1) / 2f);
-                        if (Math.Abs(position) <= 1.75f)
+                        if (Math.Abs(position) <= 2.5f)
                         {
                             var cloned = screenPlus.tempCards.Find(x => !x.activeSelf)?.GetComponentInChildren<PixelSelectableCard>() ?? UnityObject.Instantiate(firstOrDefault);
                             cloned.transform.parent = firstOrDefault.transform.parent;
