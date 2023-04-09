@@ -9,7 +9,7 @@ It can currently create and modify:
 - Cards
 - Abilities
 - Appearance behaviours
-- Stat icons
+- Stat Icons
 - Challenges
 - Starter Decks
 - Regions
@@ -20,7 +20,7 @@ It can currently create and modify:
 - Talking Cards
 - And much more!
 
-Additionally, a number of quality-of-life patches from the community have been included in this release.
+Additionally, a number of quality-of-life patches from the community are included with each release.
 
 ## Installation (automated)
 This is the recommended way to install the API on the game.
@@ -78,7 +78,7 @@ Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.
 The API does provide a number of helper methods to make this process simpler for you.
 
-For more information, please check out the wiki: https://github.com/ScottWilson0903/InscryptionAPI/wiki
+For more information, please check out the wiki: https://inscryptionmodding.github.io/InscryptionAPI/wiki/
 
 ## Contribution
 
