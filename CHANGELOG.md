@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.11.2
+- Fixed starter deck custom unlocks not working
+- Fixed card icons not being properly centred for starter decks with 4+ cards
+- Cards in Acts 2 and 3 can now display up to 8 sigils
+- Blood tokens in Act 3 now appear to the side of the board instead of on it
+- Blood tokens now stack on each other when there are more than 4
+
 ## 2.11.1
 - Fixed regions in Act 1 being out of order
 - Fixed the console message concerning custom dialogue events not giving the right amount
