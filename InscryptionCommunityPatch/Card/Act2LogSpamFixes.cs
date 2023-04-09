@@ -93,22 +93,18 @@ internal class Act2LogSpamFixes
         __instance.GameEnding = true;
 
         if (!__instance.PlayerWon && __instance.opponent != null && __instance.opponent.Blueprint != null)
-        {
             AnalyticsManager.SendFailedEncounterEvent(__instance.opponent.Blueprint, __instance.opponent.Difficulty, __instance.TurnNumber);
-        }
+
         if (__instance.SpecialSequencer != null)
-        {
             yield return __instance.SpecialSequencer.PreCleanUp();
-        }
+
         Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Locked;
         if (__instance.PlayerWon && __instance.PostBattleSpecialNode == null)
-        {
             Singleton<ViewManager>.Instance.SwitchToView(View.MapDefault);
-        }
+
         else
-        {
             Singleton<ViewManager>.Instance.SwitchToView(View.Default);
-        }
+
         yield return new WaitForSeconds(0.1f);
         __instance.StartCoroutine(Singleton<PlayerHand>.Instance.CleanUp());
         __instance.StartCoroutine(Singleton<CardDrawPiles>.Instance.CleanUp());
@@ -119,18 +115,12 @@ internal class Act2LogSpamFixes
 
         yield return Singleton<LifeManager>.Instance.CleanUp();
         if (__instance.SpecialSequencer != null)
-        {
             yield return __instance.SpecialSequencer.GameEnd(__instance.PlayerWon);
-        }
 
-        if (__instance.PlayerWon && SaveManager.SaveFile.IsPart3)
-        {
-            Part3SaveData.Data.IncreaseBounty(10);
-        }
-        UnityEngine.Object.Destroy(__instance.opponent.gameObject);
+        UnityObject.Destroy(__instance.opponent.gameObject);
 
         Singleton<PlayerHand>.Instance.SetShown(shown: false);
-        UnityEngine.Object.Destroy(__instance.SpecialSequencer);
+        UnityObject.Destroy(__instance.SpecialSequencer);
         yield break;
     }
 
