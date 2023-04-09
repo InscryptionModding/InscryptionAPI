@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using HarmonyLib;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -24,20 +24,23 @@ public class BoxColliderNegativeScalingLogSpamFix
     [HarmonyPrefix, HarmonyPatch(nameof(AbilityIconInteractable.SetFlippedY))]
     public static void ReplaceBoxColliderWithMeshColliderIfIconIsFlipped(AbilityIconInteractable __instance, bool flippedY)
     {
-        if (flippedY && __instance.gameObject.GetComponent<MeshCollider>().SafeIsUnityNull())
+        if (flippedY || SaveManager.SaveFile.IsPart3)
         {
-            MeshCollider collider = __instance.gameObject.AddComponent<MeshCollider>();
-            collider.convex = true;
-            collider.sharedMesh = null;
-            collider.sharedMesh = __instance.GetComponent<MeshFilter>().mesh;
+            if (__instance.gameObject.GetComponent<MeshCollider>().SafeIsUnityNull())
+            {
+                MeshCollider collider = __instance.gameObject.AddComponent<MeshCollider>();
+                collider.convex = true;
+                //collider.sharedMesh = null;
+                collider.sharedMesh = __instance.GetComponent<MeshFilter>().mesh;
 
-            UnityObject.Destroy(__instance.GetComponent<BoxCollider>());
-            __instance.coll = null;
-            __instance.coll = collider;
-            // This was the missing piece.
-            // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.
-            // Adjusting the y position here to be higher up allows the icon to be right-clickable again.
-            __instance.transform.position += new Vector3(0, 0.1f, 0);
+                UnityObject.Destroy(__instance.GetComponent<BoxCollider>());
+                //__instance.coll = null;
+                __instance.coll = collider;
+                // This was the missing piece.
+                // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.
+                // Adjusting the y position here to be higher up allows the icon to be right-clickable again.
+                __instance.transform.position += new Vector3(0, 0.1f, 0);
+            }
         }
     }
 }
