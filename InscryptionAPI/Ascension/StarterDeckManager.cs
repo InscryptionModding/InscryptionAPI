@@ -58,6 +58,7 @@ public static class StarterDeckManager
         deckInfo.title = info.Info.title;
         retval.Info = deckInfo;
         retval.CardNames = new(info.CardNames);
+        retval.CustomUnlockCheck = info.CustomUnlockCheck;
         retval.UnlockLevel = info.UnlockLevel;
         return retval;
     }
