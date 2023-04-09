@@ -1,3 +1,7 @@
+# Inscryption Modding Wiki
+The Inscryption Modding API provides a large number of features to make it both possible and easier to mod the game.
+This document provides explanations and examples to help you understand what everything does, as well as some other information pertaining to API features.
+
 # Tweaks
 
 ## Card Cost Displays
