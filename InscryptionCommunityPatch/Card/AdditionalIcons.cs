@@ -1,431 +1,328 @@
 using DiskCardGame;
+using EasyFeedback;
+using GBC;
 using HarmonyLib;
+using Pixelplacement.TweenSystem;
+using Steamworks;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
-internal class RenderAdditionalSigils
+internal class RenderAdditionalSigils // Modifies how cards are rendered so up to 8 sigils can be displayed on a card
 {
-    // This patch modifies the way cards are rendered so that more than two sigils can be displayed on a single card
-    internal static Transform Find(Transform start, string target = "CardBase")
-    {
-        foreach (Transform child in start)
-        {
-            if (child.name == target)
-            {
-                return child;
-            }
+    private static Vector3 LocalScaleBase3D => SaveManager.SaveFile.IsPart1 ? new(0.2175f, 0.145f, 1f) : new(0.3f, 0.3f, 0.75f) ;
 
-            Transform result = Find(child, target);
-            if (result != null)
-            {
-                return result;
-            }
-        }
-        return null;
+    private static GameObject NewIconGroup(CardAbilityIcons controller, Transform parent, int newSlotNum)
+    {
+        GameObject prevIconGroup = parent.Find($"DefaultIcons_{newSlotNum - 1}Abilities").gameObject;
+
+        GameObject newIconGroup = UnityObject.Instantiate(prevIconGroup, parent);
+        newIconGroup.name = $"DefaultIcons_{newSlotNum}Abilities";
+
+        controller.defaultIconGroups.Add(newIconGroup);
+
+        return newIconGroup;
+    }
+    private static List<Transform> NewIcons(GameObject newIconGroup, int slotNum, float act1ScaleMult = 1f)
+    {
+        List<Transform> icons = new();
+        foreach (Transform icon in newIconGroup.transform)
+            icons.Add(icon);
+
+        GameObject newIcon = UnityObject.Instantiate(icons[0].gameObject, newIconGroup.transform);
+        newIcon.name = SaveManager.SaveFile.IsPart1 ? "AbilityIcon" : $"Ability_{slotNum}";
+        icons.Add(newIcon.transform);
+
+        Vector3 newScale = LocalScaleBase3D * (SaveManager.SaveFile.IsPart1 ? act1ScaleMult : 0.65f);
+        foreach (Transform icon in icons)
+            icon.localScale = newScale;
+
+        return icons;
     }
 
-    private static void AddQuadrupleIconSlotToCard(Transform abilityIconParent)
+    private static void AddIconSlotsToCard(Transform abilityIconParent)
     {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
-
         if (abilityIconParent == null)
-        {
             return;
-        }
 
+        CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
+        if (controller == null)
+            return;
+
+        // create the ability icon groups if they don't exist
         if (abilityIconParent.Find("DefaultIcons_4Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-
-            if (controller == null)
-            {
-                return;
-            }
-
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
-
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject fourAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            fourAbilities.name = "DefaultIcons_4Abilities";
-
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in fourAbilities.transform)
-            {
-                icons.Add(icon);
-            }
-
-            //PLugin.Log.LogInfo($"Moving icons");
-            //PLugin.Log.LogInfo(icons.Count);
-            icons[0].localPosition = new Vector3(-0.115f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f);
-            icons[1].localPosition = new Vector3(0.115f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f);
-
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, fourAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(-0.115f, -.07f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fourth icon");
-            GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, fourAbilities.transform);
-            fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0.115f, -.07f, 0f);
-            fourthIcon.transform.localScale = icons[1].localScale;
-
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(fourAbilities);
-        }
-    }
-
-    private static void AddQuintupleIconSlotToCard(Transform abilityIconParent)
-    {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
-
-        if (abilityIconParent == null)
-        {
-            return;
-        }
+            AddQuadrupleIconSlotToCard(controller, abilityIconParent);
 
         if (abilityIconParent.Find("DefaultIcons_5Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-
-            if (controller == null)
-            {
-                return;
-            }
-
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
-
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject fiveAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            fiveAbilities.name = "DefaultIcons_5Abilities";
-
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in fiveAbilities.transform)
-            {
-                icons.Add(icon);
-            }
-
-            //PLugin.Log.LogInfo($"Moving icons");
-            //PLugin.Log.LogInfo(icons.Count);
-            icons[0].localPosition = new Vector3(-0.0875f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.75f;
-            icons[1].localPosition = new Vector3(0.0875f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.75f;
-
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, fiveAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(0f, -.07f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fourth icon");
-            GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, fiveAbilities.transform);
-            fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0.175f, -.07f, 0f);
-            fourthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fifth icon");
-            GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, fiveAbilities.transform);
-            fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(-0.175f, -.07f, 0f);
-            fifthIcon.transform.localScale = icons[1].localScale;
-
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(fiveAbilities);
-        }
-    }
-
-    private static void AddSextupleIconSlotToCard(Transform abilityIconParent)
-    {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
-
-        if (abilityIconParent == null)
-        {
-            return;
-        }
+            AddQuintupleIconSlotToCard(controller, abilityIconParent);
 
         if (abilityIconParent.Find("DefaultIcons_6Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-
-            if (controller == null)
-            {
-                return;
-            }
-
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
-
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject sixAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            sixAbilities.name = "DefaultIcons_6Abilities";
-
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in sixAbilities.transform)
-            {
-                icons.Add(icon);
-            }
-
-            //PLugin.Log.LogInfo($"Moving icons");
-            //PLugin.Log.LogInfo(icons.Count);
-            icons[0].localPosition = new Vector3(0f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.75f;
-            icons[1].localPosition = new Vector3(0.175f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.75f;
-
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, sixAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(-0.175f, .06f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fourth icon");
-            GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, sixAbilities.transform);
-            fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0f, -.07f, 0f);
-            fourthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fifth icon");
-            GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, sixAbilities.transform);
-            fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(0.175f, -.07f, 0f);
-            fifthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making sixth icon");
-            GameObject sixthIcon = GameObject.Instantiate(icons[0].gameObject, sixAbilities.transform);
-            sixthIcon.name = "AbilityIcon";
-            sixthIcon.transform.localPosition = new Vector3(-0.175f, -.07f, 0f);
-            sixthIcon.transform.localScale = icons[1].localScale;
-
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(sixAbilities);
-        }
-    }
-
-    private static void AddSeptupleIconSlotToCard(Transform abilityIconParent)
-    {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
-
-        if (abilityIconParent == null)
-        {
-            return;
-        }
+            AddSextupleIconSlotToCard(controller, abilityIconParent);
 
         if (abilityIconParent.Find("DefaultIcons_7Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-
-            if (controller == null)
-            {
-                return;
-            }
-
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
-
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject sevenAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            sevenAbilities.name = "DefaultIcons_7Abilities";
-
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in sevenAbilities.transform)
-            {
-                icons.Add(icon);
-            }
-
-            //PLugin.Log.LogInfo($"Moving icons");
-            //PLugin.Log.LogInfo(icons.Count);
-            icons[0].localPosition = new Vector3(0f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.5625f;
-            icons[1].localPosition = new Vector3(0.175f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.5625f;
-
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(-0.175f, .063f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fourth icon");
-            GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
-            fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f);
-            fourthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fifth icon");
-            GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
-            fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f);
-            fifthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making sixth icon");
-            GameObject sixthIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
-            sixthIcon.name = "AbilityIcon";
-            sixthIcon.transform.localPosition = new Vector3(-0.200625f, -.067f, 0f);
-            sixthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making seventh icon");
-            GameObject seventhIcon = GameObject.Instantiate(icons[0].gameObject, sevenAbilities.transform);
-            seventhIcon.name = "AbilityIcon";
-            seventhIcon.transform.localPosition = new Vector3(0.200625f, -.067f, 0f);
-            seventhIcon.transform.localScale = icons[1].localScale;
-
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(sevenAbilities);
-        }
-    }
-
-    private static void AddOctupleIconSlotToCard(Transform abilityIconParent)
-    {
-        //PLugin.Log.LogInfo($"Ability icon parent: {abilityIconParent}");
-
-        if (abilityIconParent == null)
-        {
-            return;
-        }
-
+            AddSeptupleIconSlotToCard(controller, abilityIconParent);
+        
         if (abilityIconParent.Find("DefaultIcons_8Abilities") == null)
-        {
-            CardAbilityIcons controller = abilityIconParent.gameObject.GetComponent<CardAbilityIcons>();
-
-            if (controller == null)
-            {
-                return;
-            }
-
-            //PLugin.Log.LogInfo($"Icons: {defaultIconGroups}");
-
-            // Create the three abilities slot
-            GameObject twoAbilities = abilityIconParent.Find("DefaultIcons_2Abilities").gameObject;
-            //PLugin.Log.LogInfo($"2Abilities: {twoAbilities}");
-            GameObject eightAbilities = GameObject.Instantiate(twoAbilities, abilityIconParent);
-            eightAbilities.name = "DefaultIcons_8Abilities";
-
-            // Move the existing icons
-            List<Transform> icons = new();
-            foreach (Transform icon in eightAbilities.transform)
-            {
-                icons.Add(icon);
-            }
-
-            //PLugin.Log.LogInfo($"Moving icons");
-            //PLugin.Log.LogInfo(icons.Count);
-            icons[0].localPosition = new Vector3(-0.066875f, .06f, 0f);
-            icons[0].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.5625f;
-            icons[1].localPosition = new Vector3(0.066875f, .06f, 0f);
-            icons[1].localScale = new Vector3(0.22f, 0.1467f, 1f) * 0.5625f;
-
-            // Make a new icon
-            //PLugin.Log.LogInfo($"Making third icon");
-            GameObject thirdIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            thirdIcon.name = "AbilityIcon";
-            thirdIcon.transform.localPosition = new Vector3(-0.200625f, .063f, 0f);
-            thirdIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fourth icon");
-            GameObject fourthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            fourthIcon.name = "AbilityIcon";
-            fourthIcon.transform.localPosition = new Vector3(0.200625f, .063f, 0f);
-            fourthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making fifth icon");
-            GameObject fifthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            fifthIcon.name = "AbilityIcon";
-            fifthIcon.transform.localPosition = new Vector3(-0.066875f, -.06f, 0f);
-            fifthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making sixth icon");
-            GameObject sixthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            sixthIcon.name = "AbilityIcon";
-            sixthIcon.transform.localPosition = new Vector3(0.066875f, -.06f, 0f);
-            sixthIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making seventh icon");
-            GameObject seventhIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            seventhIcon.name = "AbilityIcon";
-            seventhIcon.transform.localPosition = new Vector3(-0.200625f, -.067f, 0f);
-            seventhIcon.transform.localScale = icons[1].localScale;
-
-            //PLugin.Log.LogInfo($"Making eighth icon");
-            GameObject eighthIcon = GameObject.Instantiate(icons[0].gameObject, eightAbilities.transform);
-            eighthIcon.name = "AbilityIcon";
-            eighthIcon.transform.localPosition = new Vector3(0.200625f, -.067f, 0f);
-            eighthIcon.transform.localScale = icons[1].localScale;
-
-            // Update the abilityicon list
-            //PLugin.Log.LogInfo($"Updating list");
-            controller.defaultIconGroups.Add(eightAbilities);
-        }
+            AddOctupleIconSlotToCard(controller, abilityIconParent);
     }
 
-    [HarmonyPatch(typeof(DiskCardGame.Card), "RenderCard")]
-    [HarmonyPrefix]
-    private static void UpdateLiveRenderedCard(ref DiskCardGame.Card __instance)
+    private static void AddQuadrupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
     {
-        Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
+        GameObject iconGroup4 = NewIconGroup(controller, abilityIconParent, 4);
+
+        List<Transform> icons = NewIcons(iconGroup4, 4);
+
+        icons[0].localPosition = new Vector3(-0.12f, 0.06f, 0f);
+        icons[1].localPosition = new Vector3(0.12f, 0.06f, 0f);
+        icons[2].localPosition = new Vector3(-0.12f, -0.077f, 0f);
+        icons[3].localPosition = new Vector3(0.12f, -0.077f, 0f);
+    }
+    private static void AddQuintupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    {
+        GameObject iconGroup5 = NewIconGroup(controller, abilityIconParent, 5);
+
+        List<Transform> icons = NewIcons(iconGroup5, 5, 0.75f);
+
+        if (SaveManager.SaveFile.IsPart1)
         {
-            Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
-            AddQuadrupleIconSlotToCard(parent);
-            AddQuintupleIconSlotToCard(parent);
-            AddSextupleIconSlotToCard(parent);
-            AddSeptupleIconSlotToCard(parent);
-            AddOctupleIconSlotToCard(parent);
+            icons[0].localPosition = new Vector3(-0.17f, 0.06f, 0f);
+            icons[1].localPosition = new Vector3(0f, 0.06f, 0f);
+            icons[2].localPosition = new Vector3(0.17f, 0.06f, 0f);
+            icons[3].localPosition = new Vector3(-0.09f, -0.077f, 0f);
+            icons[4].localPosition = new Vector3(0.09f, -0.077f, 0f);
+        }
+        else
+        {
+            icons[0].localPosition = new Vector3(-0.42f, 0.085f, 0f);
+            icons[1].localPosition = new Vector3(-0.14f, 0.085f, 0f);
+            icons[2].localPosition = new Vector3(0.14f, 0.085f, 0f);
+            icons[3].localPosition = new Vector3(0.42f, 0.085f, 0f);
+            icons[4].localPosition = new Vector3(0f, -0.125f, 0f);
+        }
+    }
+    private static void AddSextupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    {
+        GameObject iconGroup6 = NewIconGroup(controller, abilityIconParent, 6);
+
+        List<Transform> icons = NewIcons(iconGroup6, 6, 0.75f);
+
+        if (SaveManager.SaveFile.IsPart1)
+        {
+            icons[3].localPosition = new Vector3(-0.17f, -.077f, 0f);
+            icons[4].localPosition = new Vector3(0f, -.077f, 0f);
+            icons[5].localPosition = new Vector3(0.17f, -.077f, 0f);
+        }
+        else
+        {
+            icons[4].localPosition = new Vector3(-0.14f, -0.125f, 0f);
+            icons[5].localPosition = new Vector3(0.14f, -0.125f, 0f);
+        }
+    }
+    private static void AddSeptupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    {
+        GameObject iconGroup7 = NewIconGroup(controller, abilityIconParent, 7);
+
+        List<Transform> icons = NewIcons(iconGroup7, 7, 0.5625f);
+
+        if (SaveManager.SaveFile.IsPart1)
+        {
+            icons[0].localPosition = new Vector3(-0.18f, 0.06f, 0f);
+            icons[1].localPosition = new Vector3(-0.06f, 0.06f, 0f);
+            icons[2].localPosition = new Vector3(0.06f, 0.06f, 0f);
+            icons[3].localPosition = new Vector3(0.18f, 0.06f, 0f);
+            icons[4].localPosition = new Vector3(-0.12f, -0.067f, 0f);
+            icons[5].localPosition = new Vector3(0f, -0.067f, 0f);
+            icons[6].localPosition = new Vector3(0.12f, -.067f, 0f);
+        }
+        else
+        {
+            icons[4].localPosition = new Vector3(-0.28f, -0.125f, 0f);
+            icons[5].localPosition = new Vector3(0f, -0.125f, 0f);
+            icons[6].localPosition = new Vector3(0.28f, -0.125f, 0f);
+        }
+    }
+    private static void AddOctupleIconSlotToCard(CardAbilityIcons controller, Transform abilityIconParent)
+    {
+        GameObject iconGroup8 = NewIconGroup(controller, abilityIconParent, 8);
+
+        List<Transform> icons = NewIcons(iconGroup8, 8, 0.5625f);
+
+        if (SaveManager.SaveFile.IsPart1)
+        {
+            icons[4].localPosition = new Vector3(-0.18f, -0.067f, 0f);
+            icons[5].localPosition = new Vector3(-0.06f, -0.067f, 0f);
+            icons[6].localPosition = new Vector3(0.06f, -0.067f, 0f);
+            icons[7].localPosition = new Vector3(0.18f, -0.067f, 0f);
+        }
+        else
+        {
+            icons[4].localPosition = new Vector3(-0.42f, -0.125f, 0f);
+            icons[5].localPosition = new Vector3(-0.14f, -0.125f, 0f);
+            icons[6].localPosition = new Vector3(0.14f, -0.125f, 0f);
+            icons[7].localPosition = new Vector3(0.42f, -0.125f, 0f);
         }
     }
 
-    [HarmonyPatch(typeof(CardDisplayer3D), "DisplayInfo")]
-    [HarmonyPrefix]
-    private static void UpdateCardDisplayer(ref CardDisplayer3D __instance)
+    private static void AddPixelIconSlotsToCard(Transform pixelAbilityIconParent)
     {
-        Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
-        {
-            Transform parent = cardBase.Find("CardAbilityIcons_Invisible");
-            AddQuadrupleIconSlotToCard(parent);
-            AddQuintupleIconSlotToCard(parent);
-            AddSextupleIconSlotToCard(parent);
-            AddSeptupleIconSlotToCard(parent);
-            AddOctupleIconSlotToCard(parent);
-        }
+        if (pixelAbilityIconParent == null)
+            return;
+
+        PixelCardAbilityIcons controller = pixelAbilityIconParent.gameObject.GetComponent<PixelCardAbilityIcons>();
+        if (controller == null)
+            return;
+
+        // create the ability icon groups if they don't exist
+        if (pixelAbilityIconParent.Find("AbilityIcons_3") == null)
+            AddTriplePixelicon(controller, pixelAbilityIconParent);
+
+        if (pixelAbilityIconParent.Find("AbilityIcons_4") == null)
+            AddQuadruplePixelIcon(controller, pixelAbilityIconParent);
+
+        if (pixelAbilityIconParent.Find("AbilityIcons_5") == null)
+            AddQuintuplePixelIcon(controller, pixelAbilityIconParent);
+
+        if (pixelAbilityIconParent.Find("AbilityIcons_6") == null)
+            AddSextuplePixelIcon(controller, pixelAbilityIconParent);
+
+        if (pixelAbilityIconParent.Find("AbilityIcons_7") == null)
+            AddSeptuplePixelIcon(controller, pixelAbilityIconParent);
+
+        if (pixelAbilityIconParent.Find("AbilityIcons_8") == null)
+            AddOctuplePixelIcon(controller, pixelAbilityIconParent);
     }
 
-    [HarmonyPatch(typeof(CardRenderCamera), "LiveRenderCard")]
-    [HarmonyPrefix]
-    private static void UpdateCamera(ref CardRenderCamera __instance)
+    private static GameObject NewPixelIconGroup(PixelCardAbilityIcons controller, Transform parent, int newSlotNum)
     {
-        Transform cardBase = Find(__instance.gameObject.transform);
-        if (cardBase != null)
-        {
-            Transform parent = Find(cardBase, "CardAbilityIcons");
-            AddQuadrupleIconSlotToCard(parent);
-            AddQuintupleIconSlotToCard(parent);
-            AddSextupleIconSlotToCard(parent);
-            AddSeptupleIconSlotToCard(parent);
-            AddOctupleIconSlotToCard(parent);
-        }
+        GameObject prevIconGroup = parent.Find($"AbilityIcons_{newSlotNum - 1}").gameObject;
+
+        GameObject newIconGroup = UnityObject.Instantiate(prevIconGroup, parent);
+        newIconGroup.name = $"AbilityIcons_{newSlotNum}";
+
+        controller.abilityIconGroups.Add(newIconGroup);
+
+        return newIconGroup;
     }
+    private static List<Transform> NewPixelIcons(GameObject newIconGroup, string newIconName, float scaleMult = 1f)
+    {
+        List<Transform> icons = new();
+        foreach (Transform icon in newIconGroup.transform)
+            icons.Add(icon);
+
+        GameObject newIcon = UnityObject.Instantiate(icons[0].gameObject, newIconGroup.transform);
+        newIcon.name = newIconName;
+        icons.Add(newIcon.transform);
+
+        Vector3 newScale = Vector3.one * scaleMult;
+        foreach (Transform icon in icons)
+        {
+            icon.localScale = newScale;
+
+            foreach (Transform subIcon in icon)
+                subIcon.localScale = Vector3.one * 0.5f;
+        }
+
+        return icons;
+    }
+
+    private static void AddTriplePixelicon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup3 = NewPixelIconGroup(controller, pixelParent, 3);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup3, "Right", 0.6471f); // ~11 pixels
+
+        icons[1].name = "Center";
+
+        icons[0].localPosition = new Vector3(-0.13f, 0f, 0f);
+        icons[1].localPosition = new Vector3(0f, 0f, 0f);
+        icons[2].localPosition = new Vector3(0.12f, 0f, 0f);
+    }
+    private static void AddQuadruplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup4 = NewPixelIconGroup(controller, pixelParent, 4);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup4, "Bottom Right", 0.5294f); // ~ 9 pixels
+
+        icons[1].name = "Right";
+        icons[2].name = "Bottom Left";
+
+        icons[0].localPosition = new Vector3(-0.08f, 0.04f, 0f);
+        icons[1].localPosition = new Vector3(0.07f, 0.04f, 0f);
+        icons[2].localPosition = new Vector3(-0.08f, -0.06f, 0f);
+        icons[3].localPosition = new Vector3(0.07f, -0.06f, 0f);
+    }
+    private static void AddQuintuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup5 = NewPixelIconGroup(controller, pixelParent, 5);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup5, "Bottom Right", 0.5294f); // ~9 pixels
+
+        icons[1].name = "Center";
+        icons[2].name = "Right";
+        icons[3].name = "Bottom Left";
+
+        icons[0].localPosition = new Vector3(-0.13f, 0.04f, 0f);
+        icons[1].localPosition = new Vector3(0f, 0.04f, 0f);
+        icons[2].localPosition = new Vector3(0.12f, 0.04f, 0f);
+        icons[3].localPosition = new Vector3(-0.08f, -0.06f, 0f);
+        icons[4].localPosition = new Vector3(0.07f, -0.06f, 0f);
+    }
+    private static void AddSextuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup6 = NewPixelIconGroup(controller, pixelParent, 6);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup6, "Bottom Right", 0.4706f); // ~8 pixels
+
+        icons[4].name = "Bottom Center";
+
+        icons[3].localPosition = new Vector3(-0.13f, -0.04f, 0f);
+        icons[4].localPosition = new Vector3(0f, -0.04f, 0f);
+        icons[5].localPosition = new Vector3(0.12f, -0.04f, 0f);
+    }
+    private static void AddSeptuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup7 = NewPixelIconGroup(controller, pixelParent, 7);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup7, "Bottom Right", 0.4706f); // ~8 pixels
+
+        icons[1].name = "Center Left";
+        icons[2].name = "Center Right";
+        icons[3].name = "Right";
+        icons[4].name = "Bottom Left";
+        icons[5].name = "Bottom Center";
+
+        icons[0].localPosition = new Vector3(-0.15f, 0.04f, 0f);
+        icons[1].localPosition = new Vector3(-0.06f, 0.04f, 0f);
+        icons[2].localPosition = new Vector3(0.05f, 0.04f, 0f);
+        icons[3].localPosition = new Vector3(0.14f, 0.04f, 0f);
+        icons[4].localPosition = new Vector3(-0.09f, -0.04f, 0f);
+        icons[5].localPosition = new Vector3(0f, -0.04f, 0f);
+        icons[6].localPosition = new Vector3(0.08f, -0.04f, 0f);
+    }
+    private static void AddOctuplePixelIcon(PixelCardAbilityIcons controller, Transform pixelParent)
+    {
+        GameObject pixelIconGroup8 = NewPixelIconGroup(controller, pixelParent, 8);
+
+        List<Transform> icons = NewPixelIcons(pixelIconGroup8, "Bottom Right", 0.4706f); // ~8 pixels
+
+        icons[5].name = "Bottom Center Left";
+        icons[6].name = "Bottom Center Right";
+
+        icons[4].localPosition = new Vector3(-0.15f, -0.04f, 0f);
+        icons[5].localPosition = new Vector3(-0.06f, -0.04f, 0f);
+        icons[6].localPosition = new Vector3(0.05f, -0.04f, 0f);
+        icons[7].localPosition = new Vector3(0.14f, -0.04f, 0f);
+    }
+
+
+    [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
+    private static void AddExtraAbilityIcons(CardAbilityIcons __instance)
+    {
+        if (!Singleton<TurnManager>.Instance.GameEnding && (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3))
+            AddIconSlotsToCard(__instance.transform);
+    }
+    [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), new Type[] { typeof(CardRenderInfo), typeof(PlayableCard)})]
+    private static void AddExtraPixelAbilityIcons(CardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
 }
