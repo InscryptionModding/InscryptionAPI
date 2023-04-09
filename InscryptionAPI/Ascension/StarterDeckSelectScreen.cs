@@ -68,9 +68,9 @@ internal static class StarterDeckSelectscreenPatches
                     for (int i = 0; i < cards.Count; i++)
                     {
                         var card = cards[i];
-                        float distance = 0.5f;
-                        float position = -((cards.Count - 1) / 2 * distance) + distance * i;
-                        if (Math.Abs(position) < 2.6f)
+                        float distance = cards.Count > 8 ? 0.425f : 0.5f;
+                        float position = distance * (i - (cards.Count - 1) / 2f);
+                        if (Math.Abs(position) <= 1.75f)
                         {
                             var cloned = screenPlus.tempCards.Find(x => !x.activeSelf)?.GetComponentInChildren<PixelSelectableCard>() ?? UnityObject.Instantiate(firstOrDefault);
                             cloned.transform.parent = firstOrDefault.transform.parent;
@@ -79,9 +79,7 @@ internal static class StarterDeckSelectscreenPatches
                             cloned.SetEnabled(false);
                             cloned.gameObject.SetActive(true);
                             if (!screenPlus.tempCards.Contains(cloned.gameObject))
-                            {
                                 screenPlus.tempCards.Add(cloned.gameObject);
-                            }
                         }
                     }
                     __instance.StopAllCoroutines();
