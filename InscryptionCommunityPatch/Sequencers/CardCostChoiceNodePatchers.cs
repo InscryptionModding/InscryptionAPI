@@ -33,9 +33,9 @@ internal static class ChoiceNodePatch
         if (GetRandomChoosableEnergyCard(randomSeed++) != null)
             __result.Add(new CardChoice() { resourceType = ResourceType.Energy });
 
-        int mox = GetRandomMoxTypeIndex(randomSeed++);
-        if (mox > 0)
-            __result.Add(new CardChoice() { resourceType = ResourceType.Gems, resourceAmount = mox });
+        int moxIndex = GetRandomMoxIndex(randomSeed++);
+        if (moxIndex > 0)
+            __result.Add(new CardChoice() { resourceType = ResourceType.Gems, resourceAmount = moxIndex });
 
         while (list.Count > 3)
             list.RemoveAt(SeededRandom.Range(0, list.Count, randomSeed++));
@@ -91,7 +91,7 @@ internal static class ChoiceNodePatch
         else
             return CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
     }
-    public static int GetRandomMoxTypeIndex(int randomSeed)
+    public static int GetRandomMoxIndex(int randomSeed)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature).FindAll((CardInfo x) => x.gemsCost.Count > 0);
 
@@ -108,8 +108,5 @@ internal static class ChoiceNodePatch
 
         return moxIndeces[SeededRandom.Range(0, moxIndeces.Count, randomSeed)];
     }
-    public static string MoxTextureName(int amount)
-    {
-        return "moxCost" + (amount switch { 1 => "Green", 2 => "Orange", 3 => "Blue", _ => "" }) + ".png";
-    }
+    public static string MoxTextureName(int index) => "moxCost" + (index switch { 1 => "Green", 2 => "Orange", 3 => "Blue", _ => "" }) + ".png";
 }
