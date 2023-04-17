@@ -24,7 +24,7 @@ public static class AbilityExtensions
     /// <param name="abilities">The list of abiliites to search</param>
     /// <param name="id">The unique ID of the ability</param>
     /// <returns>The first ability with the given ID, or null if it was not found</returns>
-    public static AbilityManager.FullAbility AbilityByID(this IEnumerable<AbilityManager.FullAbility> abilities, Ability id) => abilities.FirstOrDefault(x => x.Id == id);
+    public static FullAbility AbilityByID(this IEnumerable<FullAbility> abilities, Ability id) => abilities.FirstOrDefault(x => x.Id == id);
 
     /// <summary>
     /// For internal use only
@@ -33,13 +33,12 @@ public static class AbilityExtensions
     /// that corresponds to this *instance* of AbilityInfo. If either of these are clones that may get GCd, then
     /// it would potentially be a mistake to use this helper. It should only be used internally when the implications
     /// are understood.</remarks>
-    internal static AbilityManager.FullAbility GetFullAbility(this AbilityInfo info)
+    internal static FullAbility GetFullAbility(this AbilityInfo info)
     {
         if (info == null)
             return null;
 
-        AbilityManager.FullAbility retval = null;
-        AbilityManager.FullAbility.ReverseMapper.TryGetValue(info, out retval);
+        FullAbility.ReverseMapper.TryGetValue(info, out FullAbility retval);
         return retval;
     }
 
@@ -49,13 +48,13 @@ public static class AbilityExtensions
     /// <param name="info">The ability info to set the texture for</param>
     /// <param name="icon">A 49x49 texture containing the icon</param>
     /// <returns>The same ability info so a chain can continue</returns>
-    /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
     /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
     public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
     {
-        AbilityManager.FullAbility ability = info.GetFullAbility();
+        FullAbility ability = info.GetFullAbility();
         if (ability == null)
             throw new InvalidOperationException("Cannot set custom texture directly on AbilityInfo unless it has been added via AbilityManager.Add");
 
@@ -69,18 +68,18 @@ public static class AbilityExtensions
     /// <param name="info">The ability info to set the texture for</param>
     /// <param name="icon">A 49x49 texture containing the icon</param>
     /// <returns>The same ability info so a chain can continue</returns>
-    /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
+    /// <exception cref="InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
     /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
     public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
     {
-        AbilityManager.FullAbility ability = info.GetFullAbility();
+        FullAbility ability = info.GetFullAbility();
         if (ability == null)
             throw new InvalidOperationException("Cannot set custom texture directly on AbilityInfo unless it has been added via AbilityManager.Add");
 
         ability.SetCustomFlippedTexture(icon);
-        return info;        
+        return info;
     }
 
     /// <summary>
@@ -88,7 +87,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="info">The ability info to set the texture for</param>
     /// <param name="icon">A 49x49 texture containing the icon</param>
-    public static void SetIcon(this AbilityManager.FullAbility info, Texture2D icon)
+    public static void SetIcon(this FullAbility info, Texture2D icon)
     {
         info.Texture = icon;
     }
@@ -98,7 +97,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="info">The ability info to set the texture for</param>
     /// <param name="icon">A 49x49 texture containing the icon</param>
-    public static void SetCustomFlippedTexture(this AbilityManager.FullAbility info, Texture2D icon)
+    public static void SetCustomFlippedTexture(this FullAbility info, Texture2D icon)
     {
         info.CustomFlippedTexture = icon;
         info.Info.customFlippedIcon = true;
@@ -118,7 +117,7 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand
     /// </summary>
@@ -133,7 +132,7 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in GBC mode
     /// </summary>
@@ -445,6 +444,6 @@ public static class AbilityExtensions
         info.GetAbilityExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
     }
-    
+
     #endregion
 }

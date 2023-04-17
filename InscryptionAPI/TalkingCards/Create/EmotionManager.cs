@@ -16,9 +16,9 @@ internal static class EmotionManager
     private static void CorrectEmotionNames(ref string code)
     {
         if (!code.StartsWith("[e")) return;
-        
+
         if (code.StartsWith("[end")) return;
-        
+
         string x = DialogueParser.GetStringValue(code, "e");
 
         if (EmotionNames.Contains(x) || int.TryParse(x, out _)) return;

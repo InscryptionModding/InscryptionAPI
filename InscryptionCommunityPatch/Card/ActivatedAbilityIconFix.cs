@@ -32,7 +32,7 @@ public static class ActivatedAbilityIconFix
         {
             if (PatchPlugin.configFullDebug.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] Adding activated ability handler to card [{__instance.Info.displayedName}]");
-            
+
             abilityHandler3D = __instance.gameObject.AddComponent<ActivatedAbilityHandler3D>();
         }
 
@@ -40,7 +40,7 @@ public static class ActivatedAbilityIconFix
         {
             if (PatchPlugin.configFullDebug.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] -> Resetting icon list for [{__instance.Info.displayedName}]");
-            
+
             abilityHandler3D.UpdateInteractableList(__instance.AbilityIcons.abilityIcons);
         }
     }

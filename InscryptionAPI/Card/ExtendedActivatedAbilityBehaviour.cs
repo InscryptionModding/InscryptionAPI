@@ -2,7 +2,6 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using Sirenix.Serialization.Utilities;
 using System.Collections;
 using UnityEngine;
 using static InscryptionAPI.Card.AbilityManager;

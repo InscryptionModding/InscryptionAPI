@@ -65,7 +65,12 @@ public static class TextureHelper
         /// <summary>
         /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run
         /// </summary>
-        StarterDeckIcon = 9
+        StarterDeckIcon = 9,
+
+        /// <summary>
+        /// The size of a pixel card, used for decals
+        /// </summary>
+        PixelCardDecal = 10
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
@@ -74,8 +79,8 @@ public static class TextureHelper
 
     private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
-        { SpriteType.CardPortrait, new Rect(0.0f, 0.0f, 114.0f, 94.0f) },
-        { SpriteType.PixelPortrait, new Rect(0.0f, 0.0f, 41.0f, 28.0f) },
+        { SpriteType.CardPortrait, new Rect(0f, 0f, 114f, 94f) },
+        { SpriteType.PixelPortrait, new Rect(0f, 0f, 41f, 28f) },
         { SpriteType.PixelAbilityIcon, new Rect(0f, 0f, 17f, 17f) },
         { SpriteType.PixelStatIcon, new Rect(0f, 0f, 16f, 8f) },
         { SpriteType.ChallengeIcon, new Rect(0f, 0f, 49f, 49f) },
@@ -83,7 +88,8 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Rect(0f, 0f, 64f, 28f * 4f) },
         { SpriteType.Act2CostDecalLeft, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
-        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
+        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) },
+        { SpriteType.PixelCardDecal, new Rect(0f, 0f, 42f, 56f) }
     };
 
     private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
@@ -97,7 +103,8 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Vector2(0.5f, (28f * 4f - 14f) / (28f * 4f)) },
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
-        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) }
+        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) },
+        { SpriteType.PixelCardDecal, new Vector2(0.5f, 0.5f) }
     };
 
     /// <summary>
