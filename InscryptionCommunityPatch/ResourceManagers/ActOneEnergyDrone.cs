@@ -187,7 +187,7 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
-        ResourcesManager baseResourceManager = (ResourcesManager)__instance;
+        ResourcesManager baseResourceManager = __instance;
         if (EnergyConfig.ConfigEnergy)
         {
             baseResourceManager.PlayerEnergy = 0;

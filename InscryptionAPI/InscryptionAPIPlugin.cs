@@ -9,6 +9,7 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Items;
+using InscryptionAPI.PixelCard;
 using InscryptionAPI.Regions;
 using InscryptionAPI.Totems;
 using System.Runtime.CompilerServices;
@@ -56,14 +57,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     private void OnEnable()
     {
         Logger = base.Logger;
-
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
-    private void OnDisable()
-    {
-        HarmonyInstance.UnpatchSelf();
-    }
+    private void OnDisable() => HarmonyInstance.UnpatchSelf();
 
     internal static void ResyncAll()
     {
@@ -107,20 +104,15 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
         CardManager.AuditCardList();
+        PixelCardManager.Initialise();
         Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
     [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame()
-    {
-        ResyncAll();
-    }
+    private static void SyncCardsAndAbilitiesWhenTransitioningToAscensionGame() => ResyncAll();
 
     [HarmonyPatch(typeof(MenuController), nameof(MenuController.TransitionToGame))]
     [HarmonyPrefix]
-    private static void SyncCardsAndAbilitiesWhenTransitioningToGame()
-    {
-        ResyncAll();
-    }
+    private static void SyncCardsAndAbilitiesWhenTransitioningToGame() => ResyncAll();
 }

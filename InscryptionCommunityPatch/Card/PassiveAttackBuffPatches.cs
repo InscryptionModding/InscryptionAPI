@@ -30,8 +30,13 @@ public static class PassiveAttackBuffPatches
             if (!__instance.OpponentCard && ResourcesManager.Instance.HasGem(GemType.Green))
                 __result += 2;
 
-            if (__instance.OpponentCard && BoardManager.Instance.OpponentSlotsCopy.Any(c => c.Card != null && (c.Card.HasAbility(Ability.GainGemGreen) || c.Card.HasAbility(Ability.GainGemTriple))))
-                __result += 2;
+            if (__instance.OpponentCard)
+            {
+                if (Singleton<OpponentGemsManager>.Instance && Singleton<OpponentGemsManager>.Instance.HasGem(GemType.Green))
+                        __result += 2;
+                else if (BoardManager.Instance.OpponentSlotsCopy.Any(x => x.Card != null && x.Card.HasAnyOfAbilities(Ability.GainGemGreen, Ability.GainGemTriple)))
+                    __result += 2;
+            }
         }
         return false;
     }
@@ -55,18 +60,14 @@ public static class PassiveAttackBuffPatches
                 {
                     __result += slot.Card.AbilityCount(Ability.BuffEnemy);
                     if (__instance.LacksAbility(Ability.MadeOfStone))
-                    {
                         __result -= slot.Card.AbilityCount(Ability.DebuffEnemy);
-                    }
                 }
             }
             else if (__instance.HasOpposingCard())
             {
                 __result += __instance.OpposingCard().AbilityCount(Ability.BuffEnemy);
                 if (__instance.LacksAbility(Ability.MadeOfStone))
-                {
                     __result -= __instance.OpposingCard().AbilityCount(Ability.DebuffEnemy);
-                }
             }
 
             if (ConduitCircuitManager.Instance != null) // No need to check save file location - this lets conduits work in all acts
@@ -88,10 +89,15 @@ public static class PassiveAttackBuffPatches
         if (__instance.Info.Gemified)
         {
             if (!__instance.OpponentCard && ResourcesManager.Instance.HasGem(GemType.Orange))
-                __result += 1;
+                __result++;
 
-            if (__instance.OpponentCard && BoardManager.Instance.OpponentSlotsCopy.Any(c => c.Card != null && (c.Card.HasAbility(Ability.GainGemOrange) || c.Card.HasAbility(Ability.GainGemTriple))))
-                __result += 1;
+            if (__instance.OpponentCard)
+            {
+                if (Singleton<OpponentGemsManager>.Instance && Singleton<OpponentGemsManager>.Instance.HasGem(GemType.Orange))
+                    __result++;
+                else if (BoardManager.Instance.OpponentSlotsCopy.Any(x => x.Card != null && x.Card.HasAnyOfAbilities(Ability.GainGemOrange, Ability.GainGemTriple)))
+                    __result++;
+            }
         }
 
         return false;

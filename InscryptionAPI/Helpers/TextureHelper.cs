@@ -94,17 +94,17 @@ public static class TextureHelper
 
     private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
-        { SpriteType.CardPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelAbilityIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelStatIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.ChallengeIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.CostDecal, new Vector2(0.5f, 0.5f) },
+        { SpriteType.CardPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelAbilityIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelStatIcon, DEFAULT_PIVOT },
+        { SpriteType.ChallengeIcon, DEFAULT_PIVOT },
+        { SpriteType.CostDecal, DEFAULT_PIVOT },
         { SpriteType.OversizedCostDecal, new Vector2(0.5f, (28f * 4f - 14f) / (28f * 4f)) },
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
-        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelCardDecal, new Vector2(0.5f, 0.5f) }
+        { SpriteType.StarterDeckIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelCardDecal, DEFAULT_PIVOT }
     };
 
     /// <summary>
@@ -193,6 +193,17 @@ public static class TextureHelper
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);
+    }
+    /// <summary>
+    /// Converts an image stored as a resource in an assembly file to a Sprite that conforms to the expectations for the given sprite type
+    /// </summary>
+    /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
+    /// <param name="spriteType">The type of sprite to create</param>
+    /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
+    /// <returns>A sprite containing the image file on disk</returns>
+    public static Sprite GetImageAsSprite(string pathCardArt, Assembly target, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    {
+        return GetImageAsTexture(pathCardArt, target).ConvertTexture(spriteType, filterMode);
     }
 
     /// <summary>
@@ -303,8 +314,10 @@ public static class TextureHelper
         if (pieces != null)
         {
             for (int j = 0; j < pieces.Count; j++)
+            {
                 if (pieces[j] != null)
                     baseTexture.SetPixels(xOffset + xStep * j, yOffset + yStep * (pieces.Count - j - 1), pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
+            }
 
             baseTexture.Apply();
         }
