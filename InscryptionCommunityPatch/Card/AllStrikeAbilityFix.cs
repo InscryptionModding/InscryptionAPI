@@ -7,9 +7,9 @@ namespace InscryptionCommunityPatch.Card;
 
 // Fixes non-Giant cards with AllStrike always attacking slot 0 instead of the opposing slot
 [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GetOpposingSlots))]
-public class AllStrikeAbilityFix
+internal class AllStrikeAbilityFix
 {
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         int startIndex = -1, endIndex = -1;
 
@@ -50,7 +50,7 @@ public class AllStrikeAbilityFix
 
         return codes;
     }
-    public static void AllStrikeDirectAttackFix(List<CardSlot> list, List<CardSlot> list2, PlayableCard __instance)
+    private static void AllStrikeDirectAttackFix(List<CardSlot> list, List<CardSlot> list2, PlayableCard __instance)
     {
         // for whatever reason the transpiler breaks the if-else statement so we need to put this check here
         if (!list2.Exists((CardSlot x) => x.Card != null && !__instance.CanAttackDirectly(x)))

@@ -65,7 +65,7 @@ public static class CommunityArtPatches
     public static void PatchCommunityArt()
     {
         foreach (Ability ability in regularIconsToPatch)
-            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability}.png", typeof(CommunityArtPatches).Assembly));
+            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability.ToString()}.png", typeof(CommunityArtPatches).Assembly));
 
         foreach (Ability ability in gbcIconsToPatch)
             AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability}.png", typeof(CommunityArtPatches).Assembly));

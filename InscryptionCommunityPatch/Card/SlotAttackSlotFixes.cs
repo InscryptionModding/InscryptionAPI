@@ -41,7 +41,7 @@ internal class SlotAttackSlotPatches
         return codes;
     }
 
-    public static void OpposingCardNullCheck(List<CodeInstruction> codes, int i)
+    private static void OpposingCardNullCheck(List<CodeInstruction> codes, int i)
     {
         // Looking for where GlobalTriggerHandler is called for CardGettingAttacked (enum 7)
         if (codes[i].opcode == OpCodes.Call && codes[i].operand.ToString() == name_GlobalTrigger && codes[i + 1].opcode == OpCodes.Ldc_I4_7)
@@ -93,7 +93,7 @@ internal class SlotAttackSlotPatches
         }
     }
 
-    public static void DirectDamageSelfCheck(List<CodeInstruction> codes, int i)
+    private static void DirectDamageSelfCheck(List<CodeInstruction> codes, int i)
     {
         if (codes[i].opcode == OpCodes.Callvirt && codes[i].operand.ToString() == name_CanAttackDirectly)
         {
@@ -149,7 +149,7 @@ internal class SlotAttackSlotPatches
         }
     }
 
-    public static void NewDealDirectDamage(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot)
+    private static void NewDealDirectDamage(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot)
     {
         if (attackingSlot.IsPlayerSlot == opposingSlot.IsPlayerSlot)
         {
