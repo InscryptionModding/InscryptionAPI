@@ -11,9 +11,9 @@ namespace InscryptionCommunityPatch.Card;
 internal class Act2LogSpamFixes
 {
     // For parts of the game that aren't needed in Act 2
+    [HarmonyPrefix]
     [HarmonyPatch(typeof(GameFlowManager), nameof(GameFlowManager.UpdateForTransitionToFirstPerson))]
     [HarmonyPatch(typeof(ViewManager), nameof(ViewManager.UpdateViewControlsHintsForView))]
-    [HarmonyPrefix]
     private static bool DisableInAct2() => !SaveManager.SaveFile.IsPart2;
 
     // Since GameFlowManager is null in Act 2, there's no point in checking for that
