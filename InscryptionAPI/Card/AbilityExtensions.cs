@@ -80,7 +80,7 @@ public static class AbilityExtensions
             throw new InvalidOperationException("Cannot set custom texture directly on AbilityInfo unless it has been added via AbilityManager.Add");
 
         ability.SetCustomFlippedTexture(icon);
-        return info;        
+        return info;
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand
     /// </summary>
@@ -133,7 +133,7 @@ public static class AbilityExtensions
             info.iconGraphic.filterMode = filterMode.Value;
         return info;
     }
-    
+
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in GBC mode
     /// </summary>
@@ -445,6 +445,6 @@ public static class AbilityExtensions
         info.GetAbilityExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
     }
-    
+
     #endregion
 }

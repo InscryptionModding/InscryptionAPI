@@ -2,7 +2,6 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers.Extensions;
-using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 

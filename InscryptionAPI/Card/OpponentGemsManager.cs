@@ -1,14 +1,4 @@
 using DiskCardGame;
-using GBC;
-using HarmonyLib;
-using InscryptionAPI.Guid;
-using InscryptionAPI.Helpers;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Reflection;
-using System.Security.Cryptography;
-using UnityEngine;
 
 namespace InscryptionAPI.Card;
 public class OpponentGemsManager : Singleton<OpponentGemsManager>

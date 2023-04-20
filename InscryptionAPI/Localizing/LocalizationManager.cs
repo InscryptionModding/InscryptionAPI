@@ -9,17 +9,17 @@ public static class LocalizationManager
         public string PluginGUID;
         public Localization.Translation Translation;
     }
-    
+
     public static List<CustomTranslation> CustomTranslations = new List<CustomTranslation>();
     public static Action<Language> OnLanguageLoaded = null;
-    
+
     private static List<Language> AlreadyLoadedLanguages = new List<Language>();
 
     public static CustomTranslation New(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
         CustomTranslation customTranslation = Get(englishString, id);
 
-        bool newTranslation = customTranslation == null; 
+        bool newTranslation = customTranslation == null;
         if (newTranslation)
         {
             customTranslation = new CustomTranslation();
@@ -38,7 +38,7 @@ public static class LocalizationManager
         {
             return Add(customTranslation);
         }
-        
+
         if (AlreadyLoadedLanguages.Count > 0)
         {
             InsertTranslation(customTranslation);
@@ -63,8 +63,8 @@ public static class LocalizationManager
         {
             translation = CustomTranslations.Find((a) => a.Translation.englishString == englishText);
         }
-        
-        if(translation == null && !string.IsNullOrEmpty(id))
+
+        if (translation == null && !string.IsNullOrEmpty(id))
         {
             translation = CustomTranslations.Find((a) => a.Translation.id == id);
         }
@@ -87,14 +87,14 @@ public static class LocalizationManager
         if (translation == null)
         {
             translation = new Localization.Translation();
-            translation.id = customTranslation.Translation.id; 
-            translation.englishString = customTranslation.Translation.englishString; 
-            translation.englishStringFormatted = customTranslation.Translation.englishStringFormatted; 
-            translation.values = new Dictionary<Language, string>(); 
-            translation.femaleGenderValues = new Dictionary<Language, string>(); 
+            translation.id = customTranslation.Translation.id;
+            translation.englishString = customTranslation.Translation.englishString;
+            translation.englishStringFormatted = customTranslation.Translation.englishStringFormatted;
+            translation.values = new Dictionary<Language, string>();
+            translation.femaleGenderValues = new Dictionary<Language, string>();
             Localization.Translations.Add(translation);
         }
-        
+
         // Update translations
         foreach (Language language in AlreadyLoadedLanguages)
         {

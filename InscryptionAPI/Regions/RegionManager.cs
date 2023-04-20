@@ -1,10 +1,10 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Encounters;
+using InscryptionAPI.Helpers.Extensions;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using InscryptionAPI.Encounters;
-using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
 using EncounterBuilder = DiskCardGame.EncounterBuilder;
 
@@ -48,7 +48,7 @@ public static class RegionManager
                 for (int i = 0; i < region.encounters.Count; i++)
                     if (region.encounters[i].name.Equals(newData.name))
                         region.encounters[i] = newData;
-            
+
             if (region.bossPrepEncounter != null)
                 if (region.bossPrepEncounter.name.Equals(newData.name))
                     region.bossPrepEncounter = newData;
@@ -264,7 +264,7 @@ public static class RegionManager
         }
         return true;
     }
-    
+
     [HarmonyPatch(typeof(MapDataReader), "SpawnMapObjects", new Type[] { typeof(MapData), typeof(int), typeof(Vector2) })]
     public class MapDataReader_SpawnMapObjects
     {
@@ -308,13 +308,13 @@ public static class RegionManager
             return spawnedMapObjectRenderer;
         }
     }
-    
+
     [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
     [HarmonyPrefix]
     private static bool MapDataReader_SpawnAndPlaceElement(ref MapDataReader __instance, ref GameObject __result, MapElementData data, Vector2 sampleRange, bool isScenery)
     {
         // NOTE: We just want logging so if anyone incorrect sets any props we know what went wrong  
-        
+
         GameObject gameObject = null;
         string prefabPath = __instance.GetPrefabPath(data);
         GameObject original = ResourceBank.Get<GameObject>(prefabPath);
@@ -323,7 +323,7 @@ public static class RegionManager
             InscryptionAPIPlugin.Logger.LogError($"[RegionManager] Could not find object {prefabPath} to spawn in region!");
             original = Resources.Load<GameObject>("prefabs/map/mapscenery/TreasureChest");
         }
-        
+
         if (!isScenery)
             gameObject = UnityObject.Instantiate(original);
         else
@@ -336,7 +336,7 @@ public static class RegionManager
             }
             gameObject = mapElement.GetPooledInstance<MapElement>().gameObject;
         }
-        
+
         gameObject.transform.SetParent(isScenery ? __instance.sceneryParent : __instance.nodesParent);
         gameObject.transform.localPosition = __instance.GetRealPosFromDataPos(data.position, sampleRange);
         if (isScenery)
@@ -357,7 +357,7 @@ public static class RegionManager
         allRegions.AddRange(NewRegions.Select(a => a.Region)); // New Regions
         return allRegions;
     }
-    
+
     [HarmonyPrefix]
     [HarmonyPatch(typeof(AscensionSaveData), "RollCurrentRunRegionOrder")]
     private static bool RollCurrentRunRegionOrder(AscensionSaveData __instance)
@@ -365,7 +365,7 @@ public static class RegionManager
         // Get all regions to choose from
         List<RegionData> allRegions = GetAllRegionsForMapGeneration();
         allRegions = allRegions.Randomize().ToList();
-        
+
         List<RegionData> selectedRegions = new();
         List<Opponent.Type> selectedOpponents = new();
         for (int i = 0; i < allRegions.Count; i++)
@@ -392,7 +392,7 @@ public static class RegionManager
                 selectedRegion = allRegions[0];
             else
                 selectedRegion = unusedRegions[0];
-            
+
             selectedRegions.Add(selectedRegion);
             Opponent.Type opponentType = GetRandomAvailableOpponent(selectedRegion, selectedOpponents);
             if (opponentType == Opponent.Type.Default)
@@ -405,7 +405,7 @@ public static class RegionManager
         for (int i = 0; i < selectedRegions.Count; i++)
         {
             RegionData region = selectedRegions[i];
-            int indexOf = AllRegionsCopy.FindIndex((a)=>a.name == region.name);
+            int indexOf = AllRegionsCopy.FindIndex((a) => a.name == region.name);
             if (indexOf == -1)
             {
                 InscryptionAPIPlugin.Logger.LogError($"Could not get index of region {region.name} in all regions list!");
@@ -422,7 +422,7 @@ public static class RegionManager
         __instance.currentRun.regionOrder = regions;
         return false;
     }
-    
+
     private static Opponent.Type GetRandomAvailableOpponent(RegionData regionData, List<Opponent.Type> selectedOpponents)
     {
         List<Opponent.Type> enumerable = regionData.bosses.Where((a) => !selectedOpponents.Contains(a)).ToList();
