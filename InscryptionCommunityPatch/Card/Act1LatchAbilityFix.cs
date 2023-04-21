@@ -166,7 +166,7 @@ public class Act1LatchAbilityFix
 
         if (selectedSlot != null && selectedSlot.Card != null)
         {
-            CardModificationInfo mod = new CardModificationInfo(__state.LatchAbility)
+            CardModificationInfo mod = new(__state.LatchAbility)
             {
                 // these control rendering, so only set to true if said rendering won't butt everything
                 fromCardMerge = SaveManager.SaveFile.IsPart1,
@@ -183,10 +183,7 @@ public class Act1LatchAbilityFix
             else
             {
                 CardInfo info = selectedSlot.Card.Info.Clone() as CardInfo;
-                info.Mods = new(selectedSlot.Card.Info.Mods)
-                {
-                    mod
-                };
+                info.Mods = new(selectedSlot.Card.Info.Mods) { mod };
                 selectedSlot.Card.SetInfo(info);
             }
 

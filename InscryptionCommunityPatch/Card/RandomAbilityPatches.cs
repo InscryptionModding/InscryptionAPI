@@ -106,4 +106,17 @@ internal class RandomAbilityPatches
             __instance.AddTemporaryMod(cardModificationInfo);
         }
     }
+    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.AddTemporaryMod))]
+    private static void ActivateOnAddTempMod(PlayableCard __instance, ref CardModificationInfo mod)
+    {
+        if (mod.HasAbility(Ability.RandomAbility))
+        {
+            for (int i = 0; i < mod.abilities.Count;i++)
+            {
+                PatchPlugin.Logger.LogInfo($"{i} {mod.abilities[i]}");
+                if (mod.abilities[i] == Ability.RandomAbility)
+                    mod.abilities[i] = ChooseAbility(__instance);
+            }
+        }
+    }
 }
