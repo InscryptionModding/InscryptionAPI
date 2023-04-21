@@ -43,6 +43,8 @@ public class PatchPlugin : BaseUnityPlugin
 
     internal static ConfigEntry<bool> configFullDebug;
 
+    internal static ConfigEntry<bool> configDefaultDrone;
+
     new internal static ManualLogSource Logger;
 
     private readonly Harmony HarmonyInstance = new(ModGUID);
@@ -70,6 +72,7 @@ public class PatchPlugin : BaseUnityPlugin
         Instance = this;
         configEnergy = Config.Bind("Energy", "Energy Refresh", true, "Max energy increases and energy refreshes at end of turn");
         configDrone = Config.Bind("Energy", "Energy Drone", false, "Drone is visible to display energy (requires Energy Refresh)");
+        configDefaultDrone = Config.Bind("Energy", "Default Drone", false, "Drone uses the vanilla model instead of being attached to the scales (requires Energy Drone)");
         configMox = Config.Bind("Mox", "Mox Refresh", true, "Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox", "Mox Drone", false, "Drone displays mox (requires Energy Drone and Mox Refresh)");
         configShowSquirrelTribeOnCards = Config.Bind("Tribes", "Show Squirrel Tribe", false, "Shows the Squirrel tribe icon on cards");
