@@ -199,25 +199,21 @@ public static class RegionManager
     [HarmonyPrefix]
     private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain start");
         var customregion = NewRegions.ToList()?.Find(x => x.Region == RunState.CurrentMapRegion);
-        InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain start2");
         if (customregion != null)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain customRegion != null");
             reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain bog");
+
             __result = new EncounterData.StartCondition();
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain yik");
+
             int numTerrain = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain terin {customregion.MinTerrain} {customregion.MaxTerrain}");
+
             int playerTerrain = 0;
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain ina");
+
             int enemyTerrain = 0;
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain numTerrain: {numTerrain}");
+
             for (int i = 0; i < numTerrain; i++)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"loop {i}");
                 bool terrainIsForPlayer;
                 if (customregion.AllowTerrainOnEnemySide && customregion.AllowTerrainOnPlayerSide)
                 {
@@ -236,50 +232,41 @@ public static class RegionManager
                 CardInfo[] otherSideSlots = terrainIsForPlayer ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
                 int slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
                 bool availableSpace = false;
-                InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain sadeSideSlots {sameSideSlots.Length} | otherSideSlots {otherSideSlots.Length}");
                 for (int j = 0; j < (sameSideSlots.Length >= otherSideSlots.Length ? sameSideSlots.Length : otherSideSlots.Length); j++)
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain subloop {j}");
                     if (sameSideSlots[j] == null && otherSideSlots[j] == null)
                         availableSpace = true;
                 }
-                InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain check for available space");
                 if (!availableSpace)
                     break;
-                InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain available space");
+
                 while (sameSideSlots[slotForTerrain] != null || otherSideSlots[slotForTerrain] != null)
                     slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
-                InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain something happened idk");
+
                 if (terrainIsForPlayer && reachTerrainOnPlayerSide)
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain terrainisForPlayer && reachTerrainOnPlayerSide");
                     CardInfo cardInfo = RunState.CurrentMapRegion.terrainCards.Find((CardInfo x) => x.HasAbility(Ability.Reach));
                     if (cardInfo == null && !customregion.RemoveDefaultReachTerrain)
                         cardInfo = CardLoader.GetCardByName("Tree");
 
-                    InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain is cardInfo null?");
                     if (cardInfo != null)
                         sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(cardInfo.name);
                 }
                 else
                 {
-                    InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain else");
                     List<CardInfo> list = RunState.CurrentMapRegion.terrainCards.FindAll((CardInfo x) => (ConceptProgressionTree.Tree.CardUnlocked(x, true) || customregion.AllowLockedTerrainCards) &&
                         (x.traits.Contains(Trait.Terrain) || customregion.AllowSacrificableTerrainCards));
                     if (list.Count > 0)
                         sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
                 }
 
-                InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain increment");
                 if (terrainIsForPlayer)
                     playerTerrain++;
                 else
                     enemyTerrain++;
             }
-            InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain return modded");
             return false;
         }
-        InscryptionAPIPlugin.Logger.LogInfo($"BuildTerrain return vanilla");
         return true;
     }
     
