@@ -1,7 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI;
-using InscryptionAPI.Pelts;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
@@ -9,7 +7,7 @@ using UnityEngine;
 
 namespace InscryptionAPI.Pelts.Patches;
 
-[HarmonyPatch(typeof(TradePeltsSequencer), "GetTradeCardInfos", new Type[]{typeof(int), typeof(bool)})]
+[HarmonyPatch(typeof(TradePeltsSequencer), "GetTradeCardInfos", new Type[] { typeof(int), typeof(bool) })]
 internal static class TradePeltsSequencer_GetTradeCardInfos
 {
     /// <summary>
@@ -124,7 +122,7 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
                 pelt.ModifyCardChoiceAtTrader(cardInfo);
             }
         }
-        
+
     }
 
     private static void GetCardOptions(int tier, ref List<CardInfo> cards)
@@ -160,30 +158,30 @@ internal class TradePeltsSequencer_CreatePeltCards
 {
     private static Type classType = Type.GetType("DiskCardGame.TradePeltsSequencer+<CreatePeltCards>d__19, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
     private static Type display19ClassType = Type.GetType("DiskCardGame.TradePeltsSequencer+<>c__DisplayClass19_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-    
+
     public static IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.Method(classType, "MoveNext");
     }
-    
+
     /// <summary>
     /// Ensures you only get as many cards as you have pelts
     /// </summary>
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this
-        
+
         // Cap the pelts i have
         // int numPelts = Mathf.Min((tier == 2) ? 4 : 8, cardInfos.Count);
         // int num;
-        
+
         // === Into this
-        
+
         // // Cap the pelts i have
         // int numPelts = Mathf.Min((tier == 2) ? 4 : 8, cardInfos.Count);
         // numCards(tier, ref numPelts)
         // int num;
-        
+
         // ===
 
         int t = 0;

@@ -1,10 +1,6 @@
 using DiskCardGame;
-using EasyFeedback;
 using GBC;
 using HarmonyLib;
-using Pixelplacement.TweenSystem;
-using Steamworks;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
@@ -12,7 +8,7 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 internal class RenderAdditionalSigils // Modifies how cards are rendered so up to 8 sigils can be displayed on a card
 {
-    private static Vector3 LocalScaleBase3D => SaveManager.SaveFile.IsPart1 ? new(0.2175f, 0.145f, 1f) : new(0.3f, 0.3f, 0.75f) ;
+    private static Vector3 LocalScaleBase3D => SaveManager.SaveFile.IsPart1 ? new(0.2175f, 0.145f, 1f) : new(0.3f, 0.3f, 0.75f);
 
     private static GameObject NewIconGroup(CardAbilityIcons controller, Transform parent, int newSlotNum)
     {
@@ -63,7 +59,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
 
         if (abilityIconParent.Find("DefaultIcons_7Abilities") == null)
             AddSeptupleIconSlotToCard(controller, abilityIconParent);
-        
+
         if (abilityIconParent.Find("DefaultIcons_8Abilities") == null)
             AddOctupleIconSlotToCard(controller, abilityIconParent);
     }
@@ -320,9 +316,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
     [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
     private static void AddExtraAbilityIcons(CardAbilityIcons __instance)
     {
-        if (!Singleton<TurnManager>.Instance.GameEnding && (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3))
+        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3)
             AddIconSlotsToCard(__instance.transform);
     }
-    [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), new Type[] { typeof(CardRenderInfo), typeof(PlayableCard)})]
+    [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), new Type[] { typeof(CardRenderInfo), typeof(PlayableCard) })]
     private static void AddExtraPixelAbilityIcons(CardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
 }
