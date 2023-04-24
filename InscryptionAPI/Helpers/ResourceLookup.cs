@@ -19,7 +19,7 @@ public class ResourceLookup : ICloneable
             Prefab = go;
         }
     }
-    
+
     public void FromAssetBundle(AssetBundle assetBundle, string assetBundlePrefabName)
     {
         if (AssetBundleHelper.TryGet(assetBundle, assetBundlePrefabName, out GameObject go))
@@ -27,7 +27,7 @@ public class ResourceLookup : ICloneable
             Prefab = go;
         }
     }
-    
+
     public void FromAssetBundleInAssembly<T>(string assetBundlePath, string assetBundlePrefabName)
     {
         byte[] resourceBytes = TextureHelper.GetResourceBytes(assetBundlePath, typeof(T).Assembly);
@@ -36,22 +36,22 @@ public class ResourceLookup : ICloneable
             Prefab = go;
         }
     }
-    
+
     public void FromResources(string resourcePath)
     {
         this.ResourcePath = resourcePath;
     }
-    
+
     public void FromResourceBank(string resourceBankID)
     {
         this.ResourceBankID = resourceBankID;
     }
-    
+
     public void FromPrefab(GameObject prefab)
     {
         this.Prefab = prefab;
     }
-    
+
     public virtual T Get<T>() where T : UnityObject
     {
         if (!string.IsNullOrEmpty(ResourcePath))
@@ -74,7 +74,7 @@ public class ResourceLookup : ICloneable
             {
                 return Prefab.GetComponent<T>();
             }
-            
+
             InscryptionAPIPlugin.Logger.LogError("No way to get Type " + typeof(T) + " from prefab " + Prefab.name);
             return null;
         }

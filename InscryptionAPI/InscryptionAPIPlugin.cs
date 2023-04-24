@@ -9,6 +9,7 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Items;
+using InscryptionAPI.PixelCard;
 using InscryptionAPI.Regions;
 using InscryptionAPI.Totems;
 using System.Runtime.CompilerServices;
@@ -107,6 +108,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
         CardManager.AuditCardList();
+        PixelCardManager.Initialise();
         Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 

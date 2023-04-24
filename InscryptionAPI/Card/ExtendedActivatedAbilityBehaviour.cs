@@ -1,11 +1,8 @@
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
-using InscryptionAPI.Card;
-using Sirenix.Serialization.Utilities;
 using System.Collections;
 using UnityEngine;
-using static InscryptionAPI.Card.AbilityManager;
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
@@ -72,7 +69,7 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             if (HealthCost > 0)
             {
                 base.Card.Anim.LightNegationEffect();
-                base.Card.Status.damageTaken++;
+                base.Card.Status.damageTaken += HealthCost;
             }
 
             yield return new WaitForSeconds(0.1f);

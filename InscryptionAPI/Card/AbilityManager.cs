@@ -2,7 +2,6 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using Sirenix.Serialization.Utilities;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -369,7 +368,7 @@ public static class AbilityManager
             string textToCheck = __result.Substring(__result.IndexOf("[sigilcost:"));
             if (!textToCheck.Contains("]"))
                 break;
-            
+
             textToCheck = textToCheck.Substring(0, textToCheck.IndexOf("]") + 1);
 
             __result = __result.Replace(textToCheck, textToCheck.Replace("[sigilcost:", "").Replace("]", ""));
@@ -536,17 +535,13 @@ public static class AbilityManager
 
         for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
         {
-            // get info
             AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-            // if can stack and triggers once
-            if (info.canStack && info.GetTriggersOncePerStack())
+            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and triggers once
             {
-                // add to list if not in it
                 if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
                     abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-                // remove trigger
                 __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
             }
         }
@@ -608,7 +603,7 @@ public static class AbilityManager
 
         // ===
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-            
+
         MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
         for (int i = 0; i < codes.Count; i++)
         {
@@ -628,9 +623,7 @@ public static class AbilityManager
     private static void LogAbilityInfo(Ability ability, AbilityInfo abilityInfo, CardInfo info)
     {
         if (abilityInfo == null)
-        {
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
-        }
     }
 
 }

@@ -1233,7 +1233,18 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Check the CardInfo not having a specific Ability.
+    /// Checks if the CardModificationInfo does not have a specific Ability.
+    /// </summary>
+    /// <param name="mod">CardModificationInfo to access.</param>
+    /// <param name="ability">The ability to check for.</param>
+    /// <returns>true if the ability does not exist.</returns>
+    public static bool LacksAbility(this CardModificationInfo mod, Ability ability)
+    {
+        return !mod.HasAbility(ability);
+    }
+
+    /// <summary>
+    /// Checks if the CardInfo does not have a specific Ability.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
     /// <param name="ability">The ability to check for.</param>

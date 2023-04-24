@@ -13,33 +13,11 @@ public static class EnergyDrone
 {
     public class EnergyConfigInfo
     {
-        private bool _configEnergyOverride = false;
-        public bool ConfigEnergy
-        {
-            get => EnergyDrone.PoolHasEnergy || PatchPlugin.configEnergy.Value || _configEnergyOverride;
-            set => _configEnergyOverride = value;
-        }
-
-        private bool _configDroneOverride = false;
-        public bool ConfigDrone
-        {
-            get => EnergyDrone.PoolHasEnergy || this.ConfigDroneMox || PatchPlugin.configDrone.Value || _configDroneOverride;
-            set => _configDroneOverride = value;
-        }
-
-        private bool _configMoxOverride = false;
-        public bool ConfigMox
-        {
-            get => EnergyDrone.PoolHasGems || PatchPlugin.configMox.Value || _configMoxOverride;
-            set => _configMoxOverride = value;
-        }
-
-        private bool _configDroneMoxOverride = false;
-        public bool ConfigDroneMox
-        {
-            get => EnergyDrone.PoolHasGems || PatchPlugin.configDroneMox.Value || _configDroneMoxOverride;
-            set => _configDroneMoxOverride = value;
-        }
+        public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
+        public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
+        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
+        public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
     }
 
     public static bool SceneCanHaveEnergyDrone(string sceneName)
@@ -59,7 +37,7 @@ public static class EnergyDrone
         get
         {
             Scene activeScene = SceneManager.GetActiveScene();
-            if (activeScene == null || String.IsNullOrEmpty(activeScene.name))
+            if (activeScene == null || string.IsNullOrEmpty(activeScene.name))
                 return false;
 
             return SceneCanHaveEnergyDrone(activeScene.name);
@@ -113,12 +91,12 @@ public static class EnergyDrone
             return;
 
         // Check the entire pool of cards for mox and energy
-        CardTemple targetTemple = SaveManager.saveFile.IsGrimora ? CardTemple.Undead :
-                                  SaveManager.saveFile.IsMagnificus ? CardTemple.Wizard :
+        CardTemple targetTemple = SaveManager.SaveFile.IsGrimora ? CardTemple.Undead :
+                                  SaveManager.SaveFile.IsMagnificus ? CardTemple.Wizard :
                                   CardTemple.Nature;
 
-        PoolHasEnergy = CardManager.AllCardsCopy.Exists(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
-        PoolHasGems = CardManager.AllCardsCopy.Exists(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
+        PoolHasEnergy = CardManager.AllCardsCopy.Any(ci => ci.energyCost > 0 && ci.CardIsVisible(targetTemple));
+        PoolHasGems = CardManager.AllCardsCopy.Any(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
         PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}.");
 
@@ -151,35 +129,45 @@ public static class EnergyDrone
         // These settings came from playing around with the UnityExplorer plugin
         if (CurrentSceneCanHaveEnergyDrone)
         {
-            // disable the animation and propellers
-            __instance.gameObject.transform.Find("Anim").gameObject.GetComponent<Animator>().enabled = false;
-            __instance.gameObject.transform.Find("Anim/Module-Energy/Propellers").gameObject.SetActive(false);
+            __instance.Gems.gameObject.SetActive(EnergyConfig.ConfigDroneMox);
+            if (!EnergyConfig.ConfigDefaultDrone)
+            {
+                // disable the animation and propellers
+                __instance.gameObject.transform.Find("Anim").gameObject.GetComponent<Animator>().enabled = false;
+                __instance.gameObject.transform.Find("Anim/Module-Energy/Propellers").gameObject.SetActive(false);
 
-            // if we're placing it on the board, start from off-screen then go fwip
-            if (onBoard)
-                __instance.gameObject.transform.localPosition = new Vector3(-9f, 8f, 0f);
+                // scale it down and angle it with the scales
 
-            // scale it down and angle it with the scales
-            __instance.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-            __instance.gameObject.transform.localEulerAngles = new Vector3(270.3f, 309.3f, 180f);
-
-            // if we're placing it on the board, move in front of the scales, otherwise fwip away off-screen
-            Vector3 vector = onBoard ? new Vector3(-3.15f, 7.2f, -0.1f) : new Vector3(-7f, 7.8f, -0.2f);
+                __instance.gameObject.transform.localEulerAngles = new Vector3(270.3f, 309.3f, 180f);
+                __instance.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            }
 
             if (onBoard)
             {
-                // set active and turn off all cells
+                __instance.gameObject.transform.localPosition = EnergyConfig.ConfigDefaultDrone
+                    ? __instance.boardPosition + Vector3.up * 5f
+                    : new Vector3(-9f, 8f, 0f);
+
                 __instance.gameObject.SetActive(value: true);
                 __instance.SetAllCellsOn(on: false);
             }
-            Tween.Position(__instance.gameObject.transform, vector, onBoard ? 0.157f : 0.27f, onBoard ? 0.0f : 0.255f,
-                onBoard ? Tween.EaseInOut : Tween.EaseOut, Tween.LoopType.None, null, delegate
-            {
-                if (onBoard)
-                    Tween.Shake(__instance.gameObject.transform, __instance.gameObject.transform.localPosition, Vector3.one * 0.15f, 0.15f, 0f);
-                __instance.gameObject.SetActive(onBoard);
-                __instance.Gems.gameObject.SetActive(EnergyConfig.ConfigDroneMox);
-            });
+
+            Vector3 vector = EnergyConfig.ConfigDefaultDrone
+                ? __instance.boardPosition + (onBoard ? Vector3.zero : (Vector3.up * 5f))
+                : (onBoard ? new(-3.15f, 7.2f, -0.1f) : new(-7f, 7.8f, -0.2f));
+
+            float duration = EnergyConfig.ConfigDefaultDrone ? 1.5f : (onBoard ? 0.157f : 0.27f);
+            float delay = (EnergyConfig.ConfigDefaultDrone  || onBoard) ? 0f : 0.255f;
+            AnimationCurve easeCurve = (EnergyConfig.ConfigDefaultDrone || onBoard) ? Tween.EaseInOut : Tween.EaseOut;
+
+            Tween.Position(__instance.gameObject.transform, vector, duration, delay,
+                easeCurve, Tween.LoopType.None, null, delegate
+                {
+                    if (EnergyConfig.ConfigDefaultDrone && onBoard)
+                        Tween.Shake(__instance.gameObject.transform, __instance.gameObject.transform.localPosition, Vector3.one * 0.15f, 0.15f, 0f);
+                    __instance.gameObject.SetActive(onBoard);
+                });
+
         }
     }
 
@@ -187,7 +175,7 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
-        ResourcesManager baseResourceManager = (ResourcesManager)__instance;
+        ResourcesManager baseResourceManager = __instance;
         if (EnergyConfig.ConfigEnergy)
         {
             baseResourceManager.PlayerEnergy = 0;
