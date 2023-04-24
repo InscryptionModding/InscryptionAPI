@@ -3375,6 +3375,12 @@ references:
   commentId: M:InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardInfo,DiskCardGame.Ability)
   fullName: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardInfo, DiskCardGame.Ability)
   nameWithType: CardExtensions.LacksAbility(CardInfo, Ability)
+- uid: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardModificationInfo,DiskCardGame.Ability)
+  name: LacksAbility(CardModificationInfo, Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAbility_DiskCardGame_CardModificationInfo_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardModificationInfo,DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardModificationInfo, DiskCardGame.Ability)
+  nameWithType: CardExtensions.LacksAbility(CardModificationInfo, Ability)
 - uid: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.PlayableCard,DiskCardGame.Ability)
   name: LacksAbility(PlayableCard, Ability)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAbility_DiskCardGame_PlayableCard_DiskCardGame_Ability_
