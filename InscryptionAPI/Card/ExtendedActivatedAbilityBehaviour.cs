@@ -69,7 +69,7 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             if (HealthCost > 0)
             {
                 base.Card.Anim.LightNegationEffect();
-                base.Card.Status.damageTaken++;
+                base.Card.Status.damageTaken += HealthCost;
             }
 
             yield return new WaitForSeconds(0.1f);

@@ -316,7 +316,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
     [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
     private static void AddExtraAbilityIcons(CardAbilityIcons __instance)
     {
-        if (!Singleton<TurnManager>.Instance.GameEnding && (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3))
+        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3)
             AddIconSlotsToCard(__instance.transform);
     }
     [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), new Type[] { typeof(CardRenderInfo), typeof(PlayableCard) })]
