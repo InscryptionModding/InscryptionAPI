@@ -199,14 +199,19 @@ public static class RegionManager
     [HarmonyPrefix]
     private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
     {
-        var customregion = NewRegions.ToList().Find(x => x.Region == RunState.CurrentMapRegion);
+        var customregion = NewRegions.ToList()?.Find(x => x.Region == RunState.CurrentMapRegion);
         if (customregion != null)
         {
             reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
+
             __result = new EncounterData.StartCondition();
+
             int numTerrain = SeededRandom.Range(customregion.MinTerrain, customregion.MaxTerrain, randomSeed++);
+
             int playerTerrain = 0;
+
             int enemyTerrain = 0;
+
             for (int i = 0; i < numTerrain; i++)
             {
                 bool terrainIsForPlayer;
@@ -227,7 +232,7 @@ public static class RegionManager
                 CardInfo[] otherSideSlots = terrainIsForPlayer ? __result.cardsInOpponentSlots : __result.cardsInPlayerSlots;
                 int slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
                 bool availableSpace = false;
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < (sameSideSlots.Length >= otherSideSlots.Length ? sameSideSlots.Length : otherSideSlots.Length); j++)
                 {
                     if (sameSideSlots[j] == null && otherSideSlots[j] == null)
                         availableSpace = true;
