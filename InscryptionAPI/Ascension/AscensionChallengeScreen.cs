@@ -12,54 +12,56 @@ internal static class AscensionChallengeScreenPatches
     [HarmonyPostfix]
     private static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
     {
-        //if (info.activatedSprite == null)
-        //    __instance.activatedRenderer.sprite = DEFAULT_ACTIVATED_SPRITE;
+        if (!__instance || !info)
+            return;
+
         if (info.pointValue > 0 || info.challengeType == AscensionChallenge.None)
         {
-            var conquered = GameColors.Instance.darkFuschia;
+            Color challengeConquered = GameColors.Instance.darkFuschia;
             if (__instance.Conquered && __instance.showConquered)
             {
-                __instance.blinkEffect.blinkOffColor = conquered;
-                __instance.iconRenderer.color = conquered;
+                __instance.blinkEffect.blinkOffColor = challengeConquered;
+                __instance.iconRenderer.color = challengeConquered;
             }
             else
             {
                 __instance.blinkEffect.blinkOffColor = GameColors.Instance.red;
                 __instance.iconRenderer.color = GameColors.Instance.red;
             }
-            __instance.conqueredColor = conquered;
+            __instance.conqueredColor = challengeConquered;
+            return;
         }
-        else if (info.pointValue < 0)
+
+        if (info.pointValue < 0)
         {
-            Color32 conquered = new(0, 52, 33, 255);
+            Color32 cheatConquered = new(0, 52, 33, 255);
             if (__instance.Conquered && __instance.showConquered)
             {
-                __instance.blinkEffect.blinkOffColor = conquered;
-                __instance.iconRenderer.color = conquered;
+                __instance.blinkEffect.blinkOffColor = cheatConquered;
+                __instance.iconRenderer.color = cheatConquered;
             }
             else
             {
                 __instance.blinkEffect.blinkOffColor = GameColors.Instance.darkLimeGreen;
                 __instance.iconRenderer.color = GameColors.Instance.darkLimeGreen;
             }
-            __instance.conqueredColor = conquered;
+            __instance.conqueredColor = cheatConquered;
+            return;
+        }
+
+        Color darkGold = GameColors.Instance.darkGold / 2f;
+        Color neutralConquered = new(darkGold.r, darkGold.g, darkGold.b, 1f);
+        if (__instance.Conquered && __instance.showConquered)
+        {
+            __instance.blinkEffect.blinkOffColor = neutralConquered;
+            __instance.iconRenderer.color = neutralConquered;
         }
         else
         {
-            var darkGold = GameColors.Instance.darkGold / 2;
-            var conquered = new Color(darkGold.r, darkGold.g, darkGold.b, 1f);
-            if (__instance.Conquered && __instance.showConquered)
-            {
-                __instance.blinkEffect.blinkOffColor = conquered;
-                __instance.iconRenderer.color = conquered;
-            }
-            else
-            {
-                __instance.blinkEffect.blinkOffColor = GameColors.Instance.gold;
-                __instance.iconRenderer.color = GameColors.Instance.gold;
-            }
-            __instance.conqueredColor = conquered;
+            __instance.blinkEffect.blinkOffColor = GameColors.Instance.gold;
+            __instance.iconRenderer.color = GameColors.Instance.gold;
         }
+        __instance.conqueredColor = neutralConquered;
     }
 
     [HarmonyPatch(typeof(AscensionChallengeDisplayer), "DisplayChallenge")]
