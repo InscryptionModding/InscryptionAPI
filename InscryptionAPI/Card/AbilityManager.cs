@@ -2,7 +2,6 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using Sirenix.Serialization.Utilities;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -369,7 +368,7 @@ public static class AbilityManager
             string textToCheck = __result.Substring(__result.IndexOf("[sigilcost:"));
             if (!textToCheck.Contains("]"))
                 break;
-            
+
             textToCheck = textToCheck.Substring(0, textToCheck.IndexOf("]") + 1);
 
             __result = __result.Replace(textToCheck, textToCheck.Replace("[sigilcost:", "").Replace("]", ""));
@@ -604,7 +603,7 @@ public static class AbilityManager
 
         // ===
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-            
+
         MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
         for (int i = 0; i < codes.Count; i++)
         {

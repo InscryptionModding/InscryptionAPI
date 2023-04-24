@@ -343,10 +343,15 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.Clone))]
     [HarmonyPostfix]
-    private static void ClonePostfix(CardInfo __instance, object __result)
+    private static void ClonePostfix(CardInfo __instance, ref object __result)
     {
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
+        if (__instance.Mods.Any(x => x.gemify))
+        {
+            CardInfo result = (CardInfo)__result;
+            result.Mods.Add(new() { gemify = true });
+        }
     }
 
     [HarmonyILManipulator]

@@ -68,7 +68,7 @@ public static class PeltExtensions
         peltData.BuyPriceAdjustment = buyPriceAdjustment;
         return peltData;
     }
-    
+
     /// <summary>
     /// Sets the function used to change individual cards offered at the trader. Example: Add a decal to all cards
     /// </summary>
