@@ -85,7 +85,7 @@ public static class OpponentManager
     public static FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType, List<Texture2D> nodeAnimation)
     {
         Opponent.Type opponentId = GuidManager.GetEnumValue<Opponent.Type>(guid, opponentName);
-        FullOpponent opp = new (opponentId, opponentType, sequencerID, nodeAnimation);
+        FullOpponent opp = new(opponentId, opponentType, sequencerID, nodeAnimation);
         NewOpponents.Add(opp);
         return opp;
     }
@@ -103,7 +103,7 @@ public static class OpponentManager
 
         GameObject gameObject = new GameObject();
         gameObject.name = "Opponent";
-        
+
         __result = gameObject.AddComponent(AllOpponents.First(o => o.Id == encounterData.opponentType).Opponent) as Opponent;
 
         string typeName = string.IsNullOrWhiteSpace(encounterData.aiId) ? "AI" : encounterData.aiId;
@@ -145,14 +145,14 @@ public static class OpponentManager
         }
         return false;
     }
-    
+
     [HarmonyPatch]
     private class MapGenerator_CreateNode
     {
-        static MethodInfo ProcessMethodInfo = AccessTools.Method(typeof(MapGenerator_CreateNode), nameof(ProcessBossType), new Type[] { typeof(NodeData)} );
+        static MethodInfo ProcessMethodInfo = AccessTools.Method(typeof(MapGenerator_CreateNode), nameof(ProcessBossType), new Type[] { typeof(NodeData) });
 
         internal static ItemData currentItemData = null;
-        
+
         public static IEnumerable<MethodBase> TargetMethods()
         {
             yield return AccessTools.Method(typeof(MapGenerator), "CreateNode");
@@ -173,7 +173,7 @@ public static class OpponentManager
 
             // ===
             FieldInfo bossTypeField = AccessTools.Field(typeof(BossBattleNodeData), "bossType");
-            
+
             List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {
@@ -188,23 +188,23 @@ public static class OpponentManager
                     }
                 }
             }
-            
+
             return codes;
         }
-  
+
         public static void ProcessBossType(NodeData nodeData)
         {
             BossBattleNodeData bossBattleNodeData = (BossBattleNodeData)nodeData;
 
             // Parse data
             List<Opponent.Type> bosses = RunStateOpponents;
-            if(bosses.Count == 0)
+            if (bosses.Count == 0)
             {
                 bosses.Add(Opponent.Type.ProspectorBoss);
                 bosses.Add(Opponent.Type.AnglerBoss);
                 bosses.Add(Opponent.Type.TrapperTraderBoss);
             }
-            
+
             bossBattleNodeData.bossType = bosses[RunState.CurrentRegionTier];
         }
     }

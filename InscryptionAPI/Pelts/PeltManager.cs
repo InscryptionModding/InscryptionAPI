@@ -12,7 +12,7 @@ public static class PeltManager
     {
         public override int BuyPrice => GetBasePeltData().Find((a) => a.Item1 == this.peltCardName).Item2;
     }
-    
+
     public class PeltData
     {
         public string pluginGuid;
@@ -49,15 +49,15 @@ public static class PeltManager
 
     internal static List<PeltData> AllNewPelts = new List<PeltData>();
     private static List<PeltData> BasePelts = null;
-    
+
     internal static string[] BasePeltNames { get; } = new string[]
     {
         "PeltHare",
         "PeltWolf",
         "PeltGolden"
     };
-    
-    internal static int[] BasePeltPrices 
+
+    internal static int[] BasePeltPrices
     {
         get
         {
@@ -89,11 +89,11 @@ public static class PeltManager
         // Return cache
         return data;
     }
-    
+
     private static List<PeltData> CreateBasePelts()
     {
         List<PeltData> pelts = new List<PeltData>();
-        
+
         for (int i = 0; i < BasePeltNames.Length; i++)
         {
             var peltData = new VanillaPeltData()
@@ -103,16 +103,16 @@ public static class PeltManager
                 extraAbilitiesToAdd = 0,
                 isSoldByTrapper = true,
             };
-            peltData.CardChoices = static ()=>CardLoader.GetUnlockedCards(CardMetaCategory.TraderOffer, CardTemple.Nature);
+            peltData.CardChoices = static () => CardLoader.GetUnlockedCards(CardMetaCategory.TraderOffer, CardTemple.Nature);
             pelts.Add(peltData);
         }
 
         // Wolf Pelt
         pelts[1].extraAbilitiesToAdd = 1;
-        
+
         // Golden Pelt
         pelts[2].choicesOfferedByTrader = 4;
-        pelts[2].CardChoices = static ()=>CardLoader.GetUnlockedCards(CardMetaCategory.Rare, CardTemple.Nature);
+        pelts[2].CardChoices = static () => CardLoader.GetUnlockedCards(CardMetaCategory.Rare, CardTemple.Nature);
 
         return pelts;
     }
@@ -174,7 +174,7 @@ public static class PeltManager
 
         return peltNames;
     }
-    
+
     public static int GetCostOfPelt(string peltName)
     {
         PeltData pelt = GetPelt(peltName);
@@ -182,10 +182,10 @@ public static class PeltManager
         {
             return 1;
         }
-        
+
         return pelt.BuyPrice;
     }
-    
+
     public static PeltData GetPelt(string peltName)
     {
         return AllPelts().Find((a) => a.peltCardName == peltName);
