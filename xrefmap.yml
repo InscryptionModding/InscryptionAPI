@@ -4926,6 +4926,102 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.IActivateWhenFacedown.ShouldTriggerWhenFaceDown
   nameWithType: IActivateWhenFacedown.ShouldTriggerWhenFaceDown
+- uid: InscryptionAPI.Card.OpponentGemsManager
+  name: OpponentGemsManager
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html
+  commentId: T:InscryptionAPI.Card.OpponentGemsManager
+  fullName: InscryptionAPI.Card.OpponentGemsManager
+  nameWithType: OpponentGemsManager
+- uid: InscryptionAPI.Card.OpponentGemsManager.AddGem(DiskCardGame.GemType)
+  name: AddGem(GemType)
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_AddGem_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.AddGem(DiskCardGame.GemType)
+  fullName: InscryptionAPI.Card.OpponentGemsManager.AddGem(DiskCardGame.GemType)
+  nameWithType: OpponentGemsManager.AddGem(GemType)
+- uid: InscryptionAPI.Card.OpponentGemsManager.AddGem*
+  name: AddGem
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_AddGem_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.AddGem
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.AddGem
+  nameWithType: OpponentGemsManager.AddGem
+- uid: InscryptionAPI.Card.OpponentGemsManager.AddGems(DiskCardGame.GemType[])
+  name: AddGems(GemType[])
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_AddGems_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.AddGems(DiskCardGame.GemType[])
+  name.vb: AddGems(GemType())
+  fullName: InscryptionAPI.Card.OpponentGemsManager.AddGems(DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Card.OpponentGemsManager.AddGems(DiskCardGame.GemType())
+  nameWithType: OpponentGemsManager.AddGems(GemType[])
+  nameWithType.vb: OpponentGemsManager.AddGems(GemType())
+- uid: InscryptionAPI.Card.OpponentGemsManager.AddGems*
+  name: AddGems
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_AddGems_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.AddGems
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.AddGems
+  nameWithType: OpponentGemsManager.AddGems
+- uid: InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate
+  name: ForceGemsUpdate()
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_ForceGemsUpdate
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate
+  fullName: InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate()
+  nameWithType: OpponentGemsManager.ForceGemsUpdate()
+- uid: InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate*
+  name: ForceGemsUpdate
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_ForceGemsUpdate_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate
+  nameWithType: OpponentGemsManager.ForceGemsUpdate
+- uid: InscryptionAPI.Card.OpponentGemsManager.HasGem(DiskCardGame.GemType)
+  name: HasGem(GemType)
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_HasGem_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.HasGem(DiskCardGame.GemType)
+  fullName: InscryptionAPI.Card.OpponentGemsManager.HasGem(DiskCardGame.GemType)
+  nameWithType: OpponentGemsManager.HasGem(GemType)
+- uid: InscryptionAPI.Card.OpponentGemsManager.HasGem*
+  name: HasGem
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_HasGem_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.HasGem
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.HasGem
+  nameWithType: OpponentGemsManager.HasGem
+- uid: InscryptionAPI.Card.OpponentGemsManager.LoseGem(DiskCardGame.GemType)
+  name: LoseGem(GemType)
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_LoseGem_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.LoseGem(DiskCardGame.GemType)
+  fullName: InscryptionAPI.Card.OpponentGemsManager.LoseGem(DiskCardGame.GemType)
+  nameWithType: OpponentGemsManager.LoseGem(GemType)
+- uid: InscryptionAPI.Card.OpponentGemsManager.LoseGem*
+  name: LoseGem
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_LoseGem_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.LoseGem
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.LoseGem
+  nameWithType: OpponentGemsManager.LoseGem
+- uid: InscryptionAPI.Card.OpponentGemsManager.LoseGems(DiskCardGame.GemType[])
+  name: LoseGems(GemType[])
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_LoseGems_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.LoseGems(DiskCardGame.GemType[])
+  name.vb: LoseGems(GemType())
+  fullName: InscryptionAPI.Card.OpponentGemsManager.LoseGems(DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Card.OpponentGemsManager.LoseGems(DiskCardGame.GemType())
+  nameWithType: OpponentGemsManager.LoseGems(GemType[])
+  nameWithType.vb: OpponentGemsManager.LoseGems(GemType())
+- uid: InscryptionAPI.Card.OpponentGemsManager.LoseGems*
+  name: LoseGems
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_LoseGems_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.LoseGems
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.LoseGems
+  nameWithType: OpponentGemsManager.LoseGems
+- uid: InscryptionAPI.Card.OpponentGemsManager.opponentGems
+  name: opponentGems
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_opponentGems
+  commentId: F:InscryptionAPI.Card.OpponentGemsManager.opponentGems
+  fullName: InscryptionAPI.Card.OpponentGemsManager.opponentGems
+  nameWithType: OpponentGemsManager.opponentGems
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager
   name: SpecialTriggeredAbilityManager
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.html
@@ -7196,13 +7292,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom
   nameWithType: ListExtensions.GetRandom
-- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(System.Collections.Generic.List{``0})
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(List{``0})
   name: GetRandom<T>(List<T>)
-  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetRandom__1_System_Collections_Generic_List___0__
-  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(System.Collections.Generic.List{``0})
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetRandom__1_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom``1(List{``0})
   name.vb: GetRandom(Of T)(List(Of T))
-  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom<T>(System.Collections.Generic.List<T>)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom(Of T)(System.Collections.Generic.List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom<T>(List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetRandom(Of T)(List(Of T))
   nameWithType: ListExtensions.GetRandom<T>(List<T>)
   nameWithType.vb: ListExtensions.GetRandom(Of T)(List(Of T))
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom*
@@ -7212,13 +7308,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom
   nameWithType: ListExtensions.GetSeededRandom
-- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(System.Collections.Generic.List{``0},System.Int32)
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(List{``0},System.Int32)
   name: GetSeededRandom<T>(List<T>, Int32)
-  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetSeededRandom__1_System_Collections_Generic_List___0__System_Int32_
-  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(System.Collections.Generic.List{``0},System.Int32)
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_GetSeededRandom__1_List___0__System_Int32_
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom``1(List{``0},System.Int32)
   name.vb: GetSeededRandom(Of T)(List(Of T), Int32)
-  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom<T>(System.Collections.Generic.List<T>, System.Int32)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom(Of T)(System.Collections.Generic.List(Of T), System.Int32)
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom<T>(List<T>, System.Int32)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.GetSeededRandom(Of T)(List(Of T), System.Int32)
   nameWithType: ListExtensions.GetSeededRandom<T>(List<T>, Int32)
   nameWithType.vb: ListExtensions.GetSeededRandom(Of T)(List(Of T), Int32)
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst*
@@ -7228,13 +7324,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst
   nameWithType: ListExtensions.PopFirst
-- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(System.Collections.Generic.List{``0})
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(List{``0})
   name: PopFirst<T>(List<T>)
-  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopFirst__1_System_Collections_Generic_List___0__
-  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(System.Collections.Generic.List{``0})
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopFirst__1_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst``1(List{``0})
   name.vb: PopFirst(Of T)(List(Of T))
-  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst<T>(System.Collections.Generic.List<T>)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst(Of T)(System.Collections.Generic.List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst<T>(List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopFirst(Of T)(List(Of T))
   nameWithType: ListExtensions.PopFirst<T>(List<T>)
   nameWithType.vb: ListExtensions.PopFirst(Of T)(List(Of T))
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast*
@@ -7244,13 +7340,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast
   nameWithType: ListExtensions.PopLast
-- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(System.Collections.Generic.List{``0})
+- uid: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(List{``0})
   name: PopLast<T>(List<T>)
-  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopLast__1_System_Collections_Generic_List___0__
-  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(System.Collections.Generic.List{``0})
+  href: api/InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_PopLast__1_List___0__
+  commentId: M:InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast``1(List{``0})
   name.vb: PopLast(Of T)(List(Of T))
-  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast<T>(System.Collections.Generic.List<T>)
-  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast(Of T)(System.Collections.Generic.List(Of T))
+  fullName: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast<T>(List<T>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.PopLast(Of T)(List(Of T))
   nameWithType: ListExtensions.PopLast<T>(List<T>)
   nameWithType.vb: ListExtensions.PopLast(Of T)(List(Of T))
 - uid: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat*
@@ -7518,6 +7614,12 @@ references:
   commentId: M:InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
   fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
   nameWithType: TextureHelper.GetImageAsSprite(String, TextureHelper.SpriteType, FilterMode)
+- uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,System.Reflection.Assembly,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  name: GetImageAsSprite(String, Assembly, TextureHelper.SpriteType, FilterMode)
+  href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetImageAsSprite_System_String_System_Reflection_Assembly_InscryptionAPI_Helpers_TextureHelper_SpriteType_UnityEngine_FilterMode_
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,System.Reflection.Assembly,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String, System.Reflection.Assembly, InscryptionAPI.Helpers.TextureHelper.SpriteType, UnityEngine.FilterMode)
+  nameWithType: TextureHelper.GetImageAsSprite(String, Assembly, TextureHelper.SpriteType, FilterMode)
 - uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite*
   name: GetImageAsSprite
   href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetImageAsSprite_
@@ -7643,6 +7745,12 @@ references:
   commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
   fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
   nameWithType: TextureHelper.SpriteType.PixelAbilityIcon
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelDecal
+  name: PixelDecal
+  href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelDecal
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelDecal
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelDecal
+  nameWithType: TextureHelper.SpriteType.PixelDecal
 - uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
   name: PixelPortrait
   href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelPortrait
@@ -10440,6 +10548,130 @@ references:
   commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
   fullName: InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
   nameWithType: PeltManager.PeltData.pluginGuid
+- uid: InscryptionAPI.PixelCard
+  name: InscryptionAPI.PixelCard
+  href: api/InscryptionAPI.PixelCard.html
+  commentId: N:InscryptionAPI.PixelCard
+  fullName: InscryptionAPI.PixelCard
+  nameWithType: InscryptionAPI.PixelCard
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour
+  name: PixelAppearanceBehaviour
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html
+  commentId: T:InscryptionAPI.PixelCard.PixelAppearanceBehaviour
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour
+  nameWithType: PixelAppearanceBehaviour
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance
+  name: ApplyAppearance()
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_ApplyAppearance
+  commentId: M:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance()
+  nameWithType: PixelAppearanceBehaviour.ApplyAppearance()
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance*
+  name: ApplyAppearance
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_ApplyAppearance_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.ApplyAppearance
+  nameWithType: PixelAppearanceBehaviour.ApplyAppearance
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied
+  name: OnAppearanceApplied()
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OnAppearanceApplied
+  commentId: M:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied()
+  nameWithType: PixelAppearanceBehaviour.OnAppearanceApplied()
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied*
+  name: OnAppearanceApplied
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OnAppearanceApplied_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OnAppearanceApplied
+  nameWithType: PixelAppearanceBehaviour.OnAppearanceApplied
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground
+  name: OverrideBackground()
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OverrideBackground
+  commentId: M:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground()
+  nameWithType: PixelAppearanceBehaviour.OverrideBackground()
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground*
+  name: OverrideBackground
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OverrideBackground_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground
+  nameWithType: PixelAppearanceBehaviour.OverrideBackground
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance
+  name: PixelAppearance()
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_PixelAppearance
+  commentId: M:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance()
+  nameWithType: PixelAppearanceBehaviour.PixelAppearance()
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance*
+  name: PixelAppearance
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_PixelAppearance_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance
+  nameWithType: PixelAppearanceBehaviour.PixelAppearance
+- uid: InscryptionAPI.PixelCard.PixelCardManager
+  name: PixelCardManager
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html
+  commentId: T:InscryptionAPI.PixelCard.PixelCardManager
+  fullName: InscryptionAPI.PixelCard.PixelCardManager
+  nameWithType: PixelCardManager
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedBlueLit
+  name: PixelGemifiedBlueLit
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedBlueLit
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedBlueLit
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedBlueLit
+  nameWithType: PixelCardManager.PixelGemifiedBlueLit
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedDecal
+  name: PixelGemifiedDecal
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedDecal
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedDecal
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedDecal
+  nameWithType: PixelCardManager.PixelGemifiedDecal
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedGreenLit
+  name: PixelGemifiedGreenLit
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedGreenLit
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedGreenLit
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedGreenLit
+  nameWithType: PixelCardManager.PixelGemifiedGreenLit
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedOrangeLit
+  name: PixelGemifiedOrangeLit
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedOrangeLit
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedOrangeLit
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedOrangeLit
+  nameWithType: PixelCardManager.PixelGemifiedOrangeLit
+- uid: InscryptionAPI.PixelCard.PixelGemificationBorder
+  name: PixelGemificationBorder
+  href: api/InscryptionAPI.PixelCard.PixelGemificationBorder.html
+  commentId: T:InscryptionAPI.PixelCard.PixelGemificationBorder
+  fullName: InscryptionAPI.PixelCard.PixelGemificationBorder
+  nameWithType: PixelGemificationBorder
+- uid: InscryptionAPI.PixelCard.PixelGemificationBorder.BlueGemLit
+  name: BlueGemLit
+  href: api/InscryptionAPI.PixelCard.PixelGemificationBorder.html#InscryptionAPI_PixelCard_PixelGemificationBorder_BlueGemLit
+  commentId: F:InscryptionAPI.PixelCard.PixelGemificationBorder.BlueGemLit
+  fullName: InscryptionAPI.PixelCard.PixelGemificationBorder.BlueGemLit
+  nameWithType: PixelGemificationBorder.BlueGemLit
+- uid: InscryptionAPI.PixelCard.PixelGemificationBorder.card
+  name: card
+  href: api/InscryptionAPI.PixelCard.PixelGemificationBorder.html#InscryptionAPI_PixelCard_PixelGemificationBorder_card
+  commentId: F:InscryptionAPI.PixelCard.PixelGemificationBorder.card
+  fullName: InscryptionAPI.PixelCard.PixelGemificationBorder.card
+  nameWithType: PixelGemificationBorder.card
+- uid: InscryptionAPI.PixelCard.PixelGemificationBorder.GreenGemLit
+  name: GreenGemLit
+  href: api/InscryptionAPI.PixelCard.PixelGemificationBorder.html#InscryptionAPI_PixelCard_PixelGemificationBorder_GreenGemLit
+  commentId: F:InscryptionAPI.PixelCard.PixelGemificationBorder.GreenGemLit
+  fullName: InscryptionAPI.PixelCard.PixelGemificationBorder.GreenGemLit
+  nameWithType: PixelGemificationBorder.GreenGemLit
+- uid: InscryptionAPI.PixelCard.PixelGemificationBorder.OrangeGemLit
+  name: OrangeGemLit
+  href: api/InscryptionAPI.PixelCard.PixelGemificationBorder.html#InscryptionAPI_PixelCard_PixelGemificationBorder_OrangeGemLit
+  commentId: F:InscryptionAPI.PixelCard.PixelGemificationBorder.OrangeGemLit
+  fullName: InscryptionAPI.PixelCard.PixelGemificationBorder.OrangeGemLit
+  nameWithType: PixelGemificationBorder.OrangeGemLit
 - uid: InscryptionAPI.Regions
   name: InscryptionAPI.Regions
   href: api/InscryptionAPI.Regions.html

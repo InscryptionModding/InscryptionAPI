@@ -295,7 +295,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.html",
-          "hash": "6j6s6SmWMpHr6nvLie8W1A2Wn0HpJfscyjA6RnDGhf0="
+          "hash": "8/MjyUjHnc3S8EridbOJ+TTvJbzmZwlUaKP0bXQLs7s="
         }
       },
       "is_incremental": false,
@@ -310,7 +310,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "KwDh7KSFSArt4CC5mw+2aV8iIz0IOpHeEMcgaq4T7Sc="
+          "hash": "RtP+qTyPzKnbxztmJWNLdiFqv4tIwlb271pFZSPXExI="
         }
       },
       "is_incremental": false,
@@ -358,7 +358,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardManager.html",
-          "hash": "5lJwFkgoc1+81LLhts0e5DEVztcKVdsDE7bLRNVJ+so="
+          "hash": "F6YYn/FwfZpJZ4uA0OVETuoKEI/JmW4EaT+LFmSrpdg="
         }
       },
       "is_incremental": false,
@@ -382,7 +382,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html",
-          "hash": "mUePz6ZS+7chQ8TaDeuP71GCzy9uwMW5ccc9rgaZJIo="
+          "hash": "zwrjcpC4jfZBfBZ/Rqi5dTrBY94OoxOFXJlLjcs3gaw="
         }
       },
       "is_incremental": false,
@@ -395,6 +395,18 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.html",
           "hash": "xHzSN6bok/PofXumCwJ4uMKk4ShCon+4mNu3nCIZNSk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.OpponentGemsManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.OpponentGemsManager.html",
+          "hash": "jhM0lYNijOKuZxNikqixAlGB7X6qsATbL9vGzTrbLco="
         }
       },
       "is_incremental": false,
@@ -478,7 +490,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "E9HUzc/AUKPYk8bNJ07lWYHZYiFOBUu7+bA+OIHP8fE="
+          "hash": "QHP27idFOsLokI44xcpRZweYnWYXIeVpX5ransGCVNk="
         }
       },
       "is_incremental": false,
@@ -658,7 +670,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.EncounterManager.html",
-          "hash": "DA7n7+7oIo3nxrU8/2M5PK7sSzhQtfmaZOFmqZvO7tU="
+          "hash": "qvVwYPlGOiaMk3NOuxSfj2FGOvvFvw/viRki6D1LnUg="
         }
       },
       "is_incremental": false,
@@ -910,7 +922,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.Extensions.ListExtensions.html",
-          "hash": "XniQxTCt3GAzoPUAM+qYYnQrULFG1binEZBGasGupi4="
+          "hash": "RMiXKyR5laz4V1QyPQAYv8Ajl6oCURzCSbP6G9fggK4="
         }
       },
       "is_incremental": false,
@@ -946,7 +958,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html",
-          "hash": "MFcnlmMG7NrG5C0628P4QsOqAQlr63bIN7GytfdylF4="
+          "hash": "Avmbx5JjOlmoMfPIz4JV4uTBo5/ISL/65pUw7Fb546U="
         }
       },
       "is_incremental": false,
@@ -958,7 +970,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.TextureHelper.html",
-          "hash": "CgetLqU3N20nSUShrQqG0A7vIB7F3s3i5XQOzezsEQk="
+          "hash": "6i3KQHKkCrm0+QqXJIPjyiGyFWOpKxHAkR9TycQnumk="
         }
       },
       "is_incremental": false,
@@ -994,7 +1006,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "vPdb+wLjuytFJKyHLUBkEVfNaLDrmn0pI6GDa5MDLcM="
+          "hash": "5Abwe4u6s7phXSBOKGkIe9nTGhH4NFMqDSJwmYsDZbM="
         }
       },
       "is_incremental": false,
@@ -1463,6 +1475,54 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.html",
           "hash": "0Ym0whgs2fktL4FkcC4gw3I7EjBbWM/Dzz2O98YTcCM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html",
+          "hash": "JLlZVcO4aEcg2pA472ssBmTUFIXBJYlQy6k/SuMSsYY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.PixelCard.PixelCardManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.PixelCard.PixelCardManager.html",
+          "hash": "1VT+vWTv7jBqF+3wI6YpwvufnF0NXdMowxtgU+O3NJo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.PixelCard.PixelGemificationBorder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.PixelCard.PixelGemificationBorder.html",
+          "hash": "d9zeOQz2wGWskGa6XaoooM2WxRi+LU6zUjEuTf6lodw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.PixelCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.PixelCard.html",
+          "hash": "uadT2dlg9Hyg1GlJEulPmKznCkAZ/zBfJpXQdfqa9k4="
         }
       },
       "is_incremental": false,
@@ -2302,7 +2362,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "oqq6EllZfgVODNA+MaCHIkwN6uKUQgOeCSx73Fezzns="
+          "hash": "yWTj8abxasz+3vq9wG8BqWcRN3ShVnu6PYLiu81DMcs="
         }
       },
       "is_incremental": false,
@@ -2365,7 +2425,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 197,
+          "total_file_count": 202,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
