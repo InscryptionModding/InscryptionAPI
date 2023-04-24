@@ -4,6 +4,8 @@
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
 - Fixed softlock in Act 1 during death card creation
 - Fixed custom cards that start Gemified not working as intended when obtained in-game
+- Potentially fixed softlock when making terrain for a region
+- Added further checks to challenge icon-related patch to prevent softlocks
 - Added decal, appearance behaviour, and Gemified card support for Act 2 cards
 - Added Singleton<OpponentGemsManager> for keeping track of opponent gems
 - Added new helper method for creating Sprites from resource files in an assembly
