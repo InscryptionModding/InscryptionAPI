@@ -14,21 +14,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
-        <None Remove="customtotemtop" />
-        <EmbeddedResource Include="customtotemtop" />
-        <None Remove="customitem" />
-        <EmbeddedResource Include="customitem" />
-        <None Remove="customhoveringitem" />
-        <EmbeddedResource Include="customhoveringitem" />
-        <None Remove="runeroundedbottom" />
-        <EmbeddedResource Include="runeroundedbottom" />
-        <None Remove="rulebookitemicon_cardinbottle.png" />
-        <EmbeddedResource Include="rulebookitemicon_cardinbottle.png" />
-        <None Remove="tribeicon_none.png" />
-        <EmbeddedResource Include="tribeicon_none.png" />
-        <None Remove="maskFlat" />
-        <EmbeddedResource Include="maskFlat" />
+        <None Remove="$(ProjectDir)\Assets\*" />
+        <EmbeddedResource Include="$(ProjectDir)\Assets\*" />
     </ItemGroup>
     
     <ItemGroup>
@@ -37,20 +24,6 @@
         <EmbeddedResource Include="$(ProjectDir)\TalkingCards\talkingcardgenericprefab">
             <LogicalName>TalkingCardGenericPrefab</LogicalName>
         </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="ascensionicon_none.png" />
-      <None Remove="ascension_card_none_darker.png" />
-      <None Remove="mapevent_missing.png" />
-      <None Remove="starterdeck_icon_none.png" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Include="ascensionicon_none.png" />
-      <EmbeddedResource Include="ascension_card_none_darker.png" />
-      <EmbeddedResource Include="mapevent_missing.png" />
-      <EmbeddedResource Include="starterdeck_icon_none.png" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,8 +1,8 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers.Extensions;
 using System.Reflection;
 using System.Reflection.Emit;
-using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
 
 #pragma warning disable CS0252, CS0253
@@ -16,7 +16,7 @@ internal class BuyPeltsSequencer_PeltPrices
     /// </summary>
     public static void Postfix(CardLoader __instance, ref int[] __result)
     {
-        __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.BuyPrice).ToArray();
+        __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a) => a.BuyPrice).ToArray();
     }
 }
 
@@ -60,7 +60,7 @@ internal class BuyPeltsSequencer_BuyPelts
             PeltsAvailableAtTrader.AddRange(PeltManager.AllPelts());
             return true;
         }
-        
+
         // Move card pile off screen
         FieldInfo cardPileField = AccessTools.Field(BuyPeltsSequencerClass, "deckPile");
         CardPile cardPile = (CardPile)cardPileField.GetValue(s_BuyPeltsSequencer);
@@ -77,7 +77,7 @@ internal class BuyPeltsSequencer_BuyPelts
         Transform weightOrganizeAnchor = (Transform)weightOrganizeAnchorField.GetValue(s_BuyPeltsSequencer);
         Vector3 weightedOranizeAnchorPos = weightOrganizeAnchor.transform.localPosition;
         weightOrganizeAnchor.transform.localPosition = new Vector3(-1.5f, weightedOranizeAnchorPos.y, weightedOranizeAnchorPos.z);
-        
+
         // Create choices
         PeltsAvailableAtTrader.Clear();
         GeneratePeltChoices();
@@ -120,7 +120,7 @@ internal class BuyPeltsSequencer_BuyPelts
                 nonRares.Remove(selected);
                 selectedCards.Add(selected);
             }
-            
+
             // Fill with rares
             while (selectedCards.Count < 8 && rares.Count > 0)
             {
@@ -213,7 +213,7 @@ internal class BuyPeltsSequencer_BuyPelts
     }
 }
 
-[HarmonyPatch(typeof(BuyPeltsSequencer), "CreatePelt", new Type[]{typeof(int), typeof(int), typeof(float)})]
+[HarmonyPatch(typeof(BuyPeltsSequencer), "CreatePelt", new Type[] { typeof(int), typeof(int), typeof(float) })]
 internal class BuyPeltsSequencer_CreatePelt
 {
     /// <summary>
@@ -257,13 +257,13 @@ internal class BuyPeltsSequencer_CreatePelt
 
     private static string[] GetCardByName()
     {
-        return BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a)=>a.peltCardName).ToArray();
+        return BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a) => a.peltCardName).ToArray();
     }
 
     private static void AdjustPosition(int index, ref Vector3 vector)
     {
         int totalCardsAtTrader = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Count;
-        
+
         float peltsPerRow = 3;
         float xPadding = 1.6f;
         float zPadding = -2.0f;
@@ -292,12 +292,12 @@ internal class BuyPeltsSequencer_GiveFreePeltSequence
     {
         yield return AccessTools.Method(GiveFreePeltSequenceClass, "MoveNext");
     }
-    
+
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        MethodInfo GainPeltInfo =  SymbolExtensions.GetMethodInfo(()=>SpecialNodeHandler.Instance.buyPeltsSequencer.GainPelt(null));
-        MethodInfo ChangeFreeCardInfo =  SymbolExtensions.GetMethodInfo(()=>ChangeFreeCard(null));
-        
+        MethodInfo GainPeltInfo = SymbolExtensions.GetMethodInfo(() => SpecialNodeHandler.Instance.buyPeltsSequencer.GainPelt(null));
+        MethodInfo ChangeFreeCardInfo = SymbolExtensions.GetMethodInfo(() => ChangeFreeCard(null));
+
         // ================================================
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
 
@@ -313,7 +313,7 @@ internal class BuyPeltsSequencer_GiveFreePeltSequence
                 codes.Insert(i, new CodeInstruction(OpCodes.Call, ChangeFreeCardInfo));
             }
         }
-        
+
         return codes;
     }
 

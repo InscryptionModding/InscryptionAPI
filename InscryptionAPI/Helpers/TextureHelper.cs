@@ -65,7 +65,12 @@ public static class TextureHelper
         /// <summary>
         /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run
         /// </summary>
-        StarterDeckIcon = 9
+        StarterDeckIcon = 9,
+
+        /// <summary>
+        /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run
+        /// </summary>
+        PixelDecal = 10
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
@@ -83,28 +88,30 @@ public static class TextureHelper
         { SpriteType.OversizedCostDecal, new Rect(0f, 0f, 64f, 28f * 4f) },
         { SpriteType.Act2CostDecalLeft, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
-        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) }
+        { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) },
+        { SpriteType.PixelDecal, new Rect(0f, 0f, 42f, 56f) }
     };
 
     private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
-        { SpriteType.CardPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelPortrait, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelAbilityIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.PixelStatIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.ChallengeIcon, new Vector2(0.5f, 0.5f) },
-        { SpriteType.CostDecal, new Vector2(0.5f, 0.5f) },
+        { SpriteType.CardPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelPortrait, DEFAULT_PIVOT },
+        { SpriteType.PixelAbilityIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelStatIcon, DEFAULT_PIVOT },
+        { SpriteType.ChallengeIcon, DEFAULT_PIVOT },
+        { SpriteType.CostDecal, DEFAULT_PIVOT },
         { SpriteType.OversizedCostDecal, new Vector2(0.5f, (28f * 4f - 14f) / (28f * 4f)) },
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
-        { SpriteType.StarterDeckIcon, new Vector2(0.5f, 0.5f) }
+        { SpriteType.StarterDeckIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelDecal, DEFAULT_PIVOT }
     };
 
     /// <summary>
     /// Reads the contents of an image file on disk and returns it as a byte array.
     /// </summary>
     /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
-    /// <returns>The contents of the file in pathCardArt as a byte array</returns>
+    /// <returns>The contents of the file in pathCardArt as a byte array.</returns>
     public static byte[] ReadArtworkFileAsBytes(string pathCardArt)
     {
         if (!Path.IsPathRooted(pathCardArt))
@@ -120,11 +127,11 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Converts an artwork file on disk to a Unity Texture2D object
+    /// Converts an artwork file on disk to a Unity Texture2D object.
     /// </summary>
     /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
     /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
-    /// <returns>The image file on disk as a Texture2D object</returns>
+    /// <returns>The image file on disk as a Texture2D object.</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
     {
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
@@ -135,12 +142,12 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Converts an artwork file stored as a resource in an assembly file to a Unity Texture2D object
+    /// Converts an artwork file stored as a resource in an assembly file to a Unity Texture2D object.
     /// </summary>
-    /// <param name="pathCardArt">The name of the artwork file in the assembly</param>
-    /// <param name="target">The assembly to pull the artwork file from</param>
+    /// <param name="pathCardArt">The name of the artwork file in the assembly.</param>
+    /// <param name="target">The assembly to pull the artwork file from.</param>
     /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
-    /// <returns>The image file from the assembly as a Texture2D object</returns>
+    /// <returns>The image file from the assembly as a Texture2D object.</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
     {
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
@@ -151,12 +158,12 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Converts a Unity Texture2D object to a Sprite that conforms to the expectations for the given sprite type
+    /// Converts a Unity Texture2D object to a Sprite that conforms to the expectations for the given sprite type.
     /// </summary>
-    /// <param name="texture">The Texture2D object to convert</param>
-    /// <param name="spriteType">The type of sprite to create</param>
+    /// <param name="texture">The Texture2D object to convert.</param>
+    /// <param name="spriteType">The type of sprite to create.</param>
     /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
-    /// <returns>A sprite containing the given texture</returns>
+    /// <returns>A sprite containing the given texture.</returns>
     public static Sprite ConvertTexture(this Texture2D texture, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         texture.filterMode = filterMode;
@@ -165,11 +172,11 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Converts a Unity Texture2D object to a Sprite with the same dimensions as the texture
+    /// Converts a Unity Texture2D object to a Sprite with the same dimensions as the texture.
     /// </summary>
-    /// <param name="texture">The Texture2D object to convert</param>
+    /// <param name="texture">The Texture2D object to convert.</param>
     /// <param name="pivot">The pivot of the sprite. If null/default, the pivot will be the middle of the texture.</param>
-    /// <returns>A sprite containing the given texture</returns>
+    /// <returns>A sprite containing the given texture.</returns>
     public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
     {
         pivot ??= new Vector2(0.5f, 0.5f);
@@ -177,7 +184,7 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Converts an image on disk to a Sprite that conforms to the expectations for the given sprite type
+    /// Converts an image on disk to a Sprite that conforms to the expectations for the given sprite type.
     /// </summary>
     /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
     /// <param name="spriteType">The type of sprite to create</param>
@@ -186,6 +193,18 @@ public static class TextureHelper
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);
+    }
+    /// <summary>
+    /// Converts an artwork file stored as a resource in an assembly file to a Sprite that conforms to the expectations for the given sprite type.
+    /// </summary>
+    /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
+    /// <param name="target">The assembly to pull the artwork file from.</param>
+    /// <param name="spriteType">The type of sprite to create.</param>
+    /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
+    /// <returns>A sprite containing the image file from the assembly.</returns>
+    public static Sprite GetImageAsSprite(string pathCardArt, Assembly target, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
+    {
+        return GetImageAsTexture(pathCardArt, target).ConvertTexture(spriteType, filterMode);
     }
 
     /// <summary>
@@ -226,10 +245,10 @@ public static class TextureHelper
     }
 
     /// <summary>
-    /// Sets the emissive portrait for the card's alternate portrait using the same emission as the default portrait
+    /// Sets the emissive portrait for the card's alternate portrait using the same emission as the default portrait.
     /// </summary>
-    /// <param name="info">The card to set the emission for</param>
-    /// <param name="alternatePortrait">The alternate portrait for the card</param>
+    /// <param name="info">The card to set the emission for.</param>
+    /// <param name="alternatePortrait">The alternate portrait for the card.</param>
     public static void TryReuseEmission(CardInfo info, Sprite alternatePortrait)
     {
         if (info.portraitTex != null)
@@ -252,9 +271,9 @@ public static class TextureHelper
     /// <summary>
     /// Reads the contents of an image file in an assembly and returns it as a byte array.
     /// </summary>
-    /// <param name="pathCardArt">The name of the art file stored as a resource in the assembly</param>
-    /// <param name="target">The assembly to pull the art from</param>
-    /// <returns>The contents of the file in pathCardArt as a byte array</returns>
+    /// <param name="pathCardArt">The name of the art file stored as a resource in the assembly.</param>
+    /// <param name="target">The assembly to pull the art from.</param>
+    /// <returns>The contents of the file in pathCardArt as a byte array.</returns>
     public static byte[] GetResourceBytes(string filename, Assembly target)
     {
         string lowerKey = $".{filename.ToLowerInvariant()}";
@@ -284,13 +303,13 @@ public static class TextureHelper
     /// 
     /// **Note**: <paramref>baseTexture</paramref> will be modified in-place!
     /// </remarks>
-    /// <param name="pieces">The individual textures to combine into the base texture</param>
-    /// <param name="baseTexture">The background texture for the combined texture</param>
-    /// <param name="xStep">Used to set the position for individual textures</param>
-    /// <param name="yStep">Used to set the position for individual textures</param>
-    /// <param name="xOffset">Used to set the position for individual textures</param>
-    /// <param name="yOffset">Used to set the position for individual textures</param>
-    /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref></returns>
+    /// <param name="pieces">The individual textures to combine into the base texture.</param>
+    /// <param name="baseTexture">The background texture for the combined texture.</param>
+    /// <param name="xStep">Used to set the position for individual textures.</param>
+    /// <param name="yStep">Used to set the position for individual textures.</param>
+    /// <param name="xOffset">Used to set the position for individual textures.</param>
+    /// <param name="yOffset">Used to set the position for individual textures.</param>
+    /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref>)</returns>
     public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
     {
         if (pieces != null)
