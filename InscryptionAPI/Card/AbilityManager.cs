@@ -536,17 +536,13 @@ public static class AbilityManager
 
         for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
         {
-            // get info
             AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-            // if can stack and triggers once
-            if (info.canStack && info.GetTriggersOncePerStack())
+            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and triggers once
             {
-                // add to list if not in it
                 if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
                     abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-                // remove trigger
                 __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
             }
         }
@@ -628,9 +624,7 @@ public static class AbilityManager
     private static void LogAbilityInfo(Ability ability, AbilityInfo abilityInfo, CardInfo info)
     {
         if (abilityInfo == null)
-        {
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
-        }
     }
 
 }
