@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -49,28 +50,24 @@ public static class Part1CardCostRender
         return texture;
     }
 
-    internal static string GemCost(CardInfo info)
+    public static Sprite Part1SpriteFinal(CardInfo cardInfo)
     {
-        return (info.GemsCost.Contains(GemType.Orange) ? "o" : string.Empty) +
-               (info.GemsCost.Contains(GemType.Blue) ? "b" : string.Empty) +
-               (info.GemsCost.Contains(GemType.Green) ? "g" : string.Empty);
-    }
-
-    public static Sprite Part1SpriteFinal(CardInfo card)
-    {
+        PlayableCard playableCard = cardInfo.GetPlayableCard();
+        
         // A list to hold the textures (important later, to combine them all)
         List<Texture2D> list = new List<Texture2D>();
 
         //Setting mox first
-        if (card.gemsCost.Count > 0)
+        List<GemType> gemsCost = playableCard != null ? playableCard.GemsCost() : cardInfo.GemsCost;
+        if (gemsCost.Count > 0)
         {
             //make a new list for the mox textures
             List<Texture2D> gemCost = new List<Texture2D>();
 
             //load up the mox textures as "empty"
-            Texture2D orange = GetTextureByName(card.GemsCost.Contains(GemType.Orange) ? "mox_cost_o" : "mox_cost_e");
-            Texture2D blue = GetTextureByName(card.GemsCost.Contains(GemType.Blue) ? "mox_cost_b" : "mox_cost_e");
-            Texture2D green = GetTextureByName(card.GemsCost.Contains(GemType.Green) ? "mox_cost_g" : "mox_cost_e");
+            Texture2D orange = GetTextureByName(gemsCost.Contains(GemType.Orange) ? "mox_cost_o" : "mox_cost_e");
+            Texture2D blue = GetTextureByName(gemsCost.Contains(GemType.Blue) ? "mox_cost_b" : "mox_cost_e");
+            Texture2D green = GetTextureByName(gemsCost.Contains(GemType.Green) ? "mox_cost_g" : "mox_cost_e");
 
             //Add all moxes to the gemcost list
             gemCost.Add(orange);
@@ -81,17 +78,23 @@ public static class Part1CardCostRender
             list.Add(CombineMoxTextures(gemCost));
         }
 
-        if (card.EnergyCost > 0)
-            list.Add(GetTextureByName($"energy_cost_{card.EnergyCost}"));
+        int energyCost = playableCard != null ? playableCard.EnergyCost : cardInfo.EnergyCost;
+        PatchPlugin.Logger.LogInfo("[Part1SpriteFinal] Energy: " + energyCost + " " + cardInfo.displayedName);
+        if (energyCost > 0)
+        {
+            list.Add(GetTextureByName($"energy_cost_{energyCost}"));
+        }
 
-        if (card.BonesCost > 0)
-            list.Add(GetTextureByName($"bone_cost_{card.BonesCost}"));
+        int bonesCost = playableCard != null ? playableCard.BonesCost() : cardInfo.BonesCost;
+        if (bonesCost > 0)
+            list.Add(GetTextureByName($"bone_cost_{bonesCost}"));
 
-        if (card.BloodCost > 0)
-            list.Add(GetTextureByName($"blood_cost_{card.BloodCost}"));
+        int bloodCost = playableCard != null ? playableCard.BloodCost() : cardInfo.BloodCost;
+        if (bloodCost > 0)
+            list.Add(GetTextureByName($"blood_cost_{bloodCost}"));
 
         // Call the event and allow others to modify the list of textures
-        UpdateCardCost?.Invoke(card, list);
+        UpdateCardCost?.Invoke(cardInfo, list);
 
         // Combine all the textures from the list into one texture
         Texture2D finalTexture = CombineCostTextures(list);

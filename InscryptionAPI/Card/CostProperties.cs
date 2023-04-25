@@ -1,93 +1,205 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
+﻿using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
+using UnityEngine;
 
 namespace InscryptionAPI.Card.CostProperties;
 
 [HarmonyPatch]
-internal static class CostProperties
+public static class CostProperties
 {
-    internal static MethodInfo CardInfoMethodInfo = null;
-        
-    internal static MethodInfo NewBloodCostMethodInfo = null;
-    internal static MethodInfo NewBoneCostMethodInfo = null;
-    internal static MethodInfo NewGemCostMethodInfo = null;
+    public static ConditionalWeakTable<CardInfo, List<PlayableCard>> CardInfoToCard = new();
     
-    internal static MethodInfo OldBloodCost = null;
-    internal static FieldInfo OldBoneCost = null;
-    internal static MethodInfo OldBoneCost2 = null;
-    internal static FieldInfo OldGemCost = null;
-    internal static MethodInfo OldGemCost2 = null;
+    /// <summary>
+    /// ChangeCardCostGetter patches BloodCost so we can change the cost on the fly
+    /// This reverse patch gives us access to the original method without any changes.
+    /// This method has a copy of all the code that CardInfo.BloodCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// </summary>
+    [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BloodCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
+    public static int OriginalBloodCost(CardInfo __instance) { return 0; }
     
-    static CostProperties()
+    
+    /// <summary>
+    /// ChangeCardCostGetter patches BoneCost so we can change the cost on the fly
+    /// This reverse patch gives us access to the original method without any changes.
+    /// This method has a copy of all the code that CardInfo.BoneCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// </summary>
+    [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BonesCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
+    public static int OriginalBonesCost(CardInfo __instance) { return 0; }
+    
+    
+    /// <summary>
+    /// ChangeCardCostGetter patches BoneCost so we can change the cost on the fly
+    /// This reverse patch gives us access to the original method without any changes.
+    /// This method has a copy of all the code that CardInfo.BoneCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// </summary>
+    [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
+    public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
+    
+    public class RefreshCostMonoBehaviour : MonoBehaviour
     {
-        CardInfoMethodInfo = AccessTools.PropertyGetter(typeof(DiskCardGame.Card), nameof(DiskCardGame.Card.Info));
-        
-        DiskCardGame.Card c = null;
-        
-        NewBloodCostMethodInfo = SymbolExtensions.GetMethodInfo(() => c.BloodCost());
-        NewBoneCostMethodInfo = SymbolExtensions.GetMethodInfo(() => c.BoneCost());
-        NewGemCostMethodInfo = SymbolExtensions.GetMethodInfo(() => c.GemsCost());
+        private PlayableCard playableCard;
+        private int cachedBloodCost = -1;
+        private int cachedBoneCost = -1;
+        private List<GemType> cachedGemsCost = new List<GemType>();
+        private int cachedEnergyCost = -1;
+
+        private void Awake()
+        {
+            playableCard = GetComponent<PlayableCard>();
+        }
+    
+        private void LateUpdate()
+        {
+            bool refreshCost = DidCostsChangeThisFrame();
+            if (refreshCost)
+            {
+                InscryptionAPIPlugin.Logger.LogError("[RefreshCostMonoBehaviour] Costs changed. Refreshing...");
+                playableCard.RenderCard();
+            }
+        }
+    
+        private bool DidCostsChangeThisFrame()
+        {
+            bool refreshCost = false;
+
+            int bloodCost = playableCard.BloodCost();
+            if (bloodCost != cachedBloodCost)
+            {
+                cachedBloodCost = bloodCost;
+                refreshCost = true;
+            }
+
+            int boneCost = playableCard.BonesCost();
+            if (boneCost != cachedBoneCost)
+            {
+                cachedBoneCost = boneCost;
+                refreshCost = true;
+            }
+
+            List<GemType> gemsCost = playableCard.GemsCost();
+            if (!CompareLists(cachedGemsCost, gemsCost))
+            {
+                cachedGemsCost.Clear();
+                cachedGemsCost.AddRange(gemsCost);
+                refreshCost = true;
+            }
             
-        OldBloodCost = AccessTools.PropertyGetter(typeof(CardInfo), nameof(CardInfo.BloodCost));
-        OldBoneCost = AccessTools.Field(typeof(CardInfo), nameof(CardInfo.bonesCost));
-        OldBoneCost2 = AccessTools.PropertyGetter(typeof(CardInfo), nameof(CardInfo.BonesCost));
-        OldGemCost = AccessTools.Field(typeof(CardInfo), nameof(CardInfo.gemsCost));
-        OldGemCost2 = AccessTools.PropertyGetter(typeof(CardInfo), nameof(CardInfo.GemsCost));
+            return refreshCost;
+        }
+
+        public bool CompareLists<T>(List<T> a, List<T> b)
+        {
+            if (a.Count != b.Count)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (!a[i].Equals(b[i]))
+                {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
     }
 }
 
 [HarmonyPatch]
-internal static class BoardManager_ChooseSacrificesForCard
+internal static class ChangeCardCostGetter
 {
-    public static IEnumerable<MethodBase> TargetMethods()
+    [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BloodCost), MethodType.Getter), HarmonyPrefix]
+    public static bool BloodCost(CardInfo __instance, ref int __result)
     {
-        // BoardManager.ChooseSacrificesForCard
-        var type = Type.GetType("DiskCardGame.BoardManager+<ChooseSacrificesForCard>d__80, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-        yield return AccessTools.Method(type, "MoveNext");
-        
-        // BoardManager.SacrificesCreateRoomForCard
-        yield return AccessTools.Method(typeof(BoardManager), "SacrificesCreateRoomForCard", new Type[]{typeof(PlayableCard), typeof(List<CardSlot>)});
-    }
-    
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
-        // === We want to turn this
-        
-        // card.Info.BloodCost
-        
-        // === Into this
-        
-        // card.BloodCost()
-        
-        // ===
-        
-        InscryptionAPIPlugin.Logger.LogInfo("[BoardManager_ChooseSacrificesForCard]");
-
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-        for (int i = 0; i < codes.Count - 2; i++)
+        PlayableCard card = __instance.GetPlayableCard();
+        if (card == null)
         {
-            OpCode currentOpCode = codes[i].opcode;
-            object currentOperand = codes[i].operand;
-
-            CodeInstruction next = codes[i+1];
-            OpCode nextOpCode = next.opcode;
-            object nextOperand = next.operand;
-            
-            if (currentOpCode == OpCodes.Callvirt && currentOperand == CostProperties.CardInfoMethodInfo && 
-                nextOpCode == OpCodes.Callvirt && nextOperand == CostProperties.OldBloodCost)
-            {
-                InscryptionAPIPlugin.Logger.LogInfo("[BoardManager_ChooseSacrificesForCard] Replaced " + i);
-                codes.RemoveAt(i);
-                next.operand = CostProperties.NewBloodCostMethodInfo;
-                
-                i++;
-            }
+            return true;
         }
         
-        InscryptionAPIPlugin.Logger.LogInfo("[BoardManager_ChooseSacrificesForCard] Done");
+        __result = card.BloodCost();
+        return false;
+    }
+    
+    [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BonesCost), MethodType.Getter), HarmonyPrefix]
+    public static bool BoneCost(CardInfo __instance, ref int __result)
+    {
+        PlayableCard card = __instance.GetPlayableCard();
+        if (card == null)
+        {
+            return true;
+        }
+        
+        __result = card.BonesCost();
+        return false;
+    }
+    
+    [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), HarmonyPrefix]
+    public static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
+    {
+        PlayableCard card = __instance.GetPlayableCard();
+        if (card == null)
+        {
+            return true;
+        }
+        
+        __result = card.GemsCost();
+        return false;
+    }
+}
 
-        return codes;
+[HarmonyPatch(typeof(DiskCardGame.Card), nameof(DiskCardGame.Card.Info), MethodType.Setter)]
+internal static class Card_SetInfo
+{
+    public static void Postfix(DiskCardGame.Card __instance)
+    {
+        if (__instance is not PlayableCard playableCard)
+        {
+            return;
+        }
+        
+        CardInfo info = playableCard.Info;
+        
+        if (CostProperties.CardInfoToCard.TryGetValue(info, out List<PlayableCard> cardList))
+        {
+            PlayableCard card = null;
+            for (int i = 0; i < cardList.Count; i++)
+            {
+                if (cardList[i] == null)
+                {
+                    // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
+                    cardList.RemoveAt(i--);
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removing Card from CardInfo at index {(i + 1)} {cardList.Count} left");
+                }
+                else if (cardList[i] == playableCard)
+                {
+                    card = playableCard;
+                }
+            }
+            
+            if (card == null)
+            {
+                cardList.Add(card);
+            }
+        }
+        else
+        {
+            CostProperties.CardInfoToCard.Add(info, new List<PlayableCard>()
+            {
+                playableCard
+            });
+        }
+    }
+}
+
+[HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Awake))]
+internal static class PlayableCard_Awake
+{
+    public static void Postfix(PlayableCard __instance)
+    {
+        __instance.gameObject.AddComponent<CostProperties.RefreshCostMonoBehaviour>();
     }
 }

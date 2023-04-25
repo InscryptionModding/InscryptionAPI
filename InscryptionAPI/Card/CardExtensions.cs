@@ -2,6 +2,8 @@ using DiskCardGame;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
+using System.Reflection;
+using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -148,11 +150,14 @@ public static class CardExtensions
     /// Returns the blood cost of a card.
     /// This function can be overriden if someone wants to inject new cost into a cards blood cost
     /// </summary>
-    public static int BloodCost(this DiskCardGame.Card card)
+    public static int BloodCost(this PlayableCard card)
     {
-        if (card && card.Info) 
-            return card.Info.BloodCost;
+        if (card && card.Info)
+        {
+            return CostProperties.CostProperties.OriginalBloodCost(card.Info);
+        } 
         
+        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for blood cost??? How is this possible?");
         return 0;
     }
     
@@ -161,11 +166,14 @@ public static class CardExtensions
     /// Returns the bone cost of a card.
     /// This function can be overriden if someone wants to inject new cost into a cards bone cost
     /// </summary>
-    public static int BoneCost(this DiskCardGame.Card card)
+    public static int BonesCost(this PlayableCard card)
     {
-        if (card && card.Info) 
-            return card.Info.bonesCost;
+        if (card && card.Info)
+        {
+            return CostProperties.CostProperties.OriginalBonesCost(card.Info);
+        } 
         
+        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for bone cost??? How is this possible?");
         return 0;
     }
     
@@ -176,10 +184,13 @@ public static class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this DiskCardGame.Card card)
     {
-        if (card && card.Info) 
-            return card.Info.GemsCost;
+        if (card && card.Info)
+        {
+            return CostProperties.CostProperties.OriginalGemsCost(card.Info);
+        } 
         
-        return new List<GemType>(){};
+        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for gems cost??? How is this possible?");
+        return new List<GemType>();
     }
 
     #endregion
@@ -1546,6 +1557,29 @@ public static class CardExtensions
             spawnOffset = CardSpawner.Instance.spawnedPositionOffset;
         }
         yield return CardSpawner.Instance.SpawnCardToHand(cardInfo, temporaryMods, spawnOffset, onDrawnTriggerDelay, cardSpawnedCallback);
+    }
+
+    /// <summary>
+    /// Gets all Cards or PlayableCards using this specific CardInfo.
+    /// Sometimes inscryption clones CardInfo's and sometimes its reused so there may be more than 1 card using the same CardInfo
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <returns>Playable Cards on the board, in your hand or on display somewhere</returns>
+    public static PlayableCard GetPlayableCard(this CardInfo cardInfo)
+    {
+        if (CostProperties.CostProperties.CardInfoToCard.TryGetValue(cardInfo, out List<PlayableCard> cardList))
+        {
+            if (cardList.Count == 0)
+            {
+                return null;
+            }
+            if (cardList.Count > 1)
+            {
+                InscryptionAPIPlugin.Logger.LogError("[ChangeCardCostGetter] More than 1 card uses the same card info so dynamic costs may not work correctly! " + cardInfo.displayedName);
+            }
+            return cardList[0];
+        }
+        return null;
     }
 
     #region PlayableCard
