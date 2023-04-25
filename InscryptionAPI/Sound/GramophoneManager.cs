@@ -1,8 +1,8 @@
-using UnityEngine;
-using HarmonyLib;
-using DiskCardGame;
-using InscryptionAPI.Saves;
 using BepInEx;
+using DiskCardGame;
+using HarmonyLib;
+using InscryptionAPI.Saves;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace InscryptionAPI.Sound;
@@ -16,8 +16,8 @@ public static class GramophoneManager
     private static string APIGuid = InscryptionAPIPlugin.ModGUID;
     internal static int TrackIndex
     {
-        get { return ModdedSaveManager.SaveData.GetValueAsInt(APIGuid, "GramophoneIndex");  }
-        set { ModdedSaveManager.SaveData.SetValue(APIGuid, "GramophoneIndex", value);       }
+        get { return ModdedSaveManager.SaveData.GetValueAsInt(APIGuid, "GramophoneIndex"); }
+        set { ModdedSaveManager.SaveData.SetValue(APIGuid, "GramophoneIndex", value); }
     }
 
     internal static List<AudioClip> NewGramophoneTracks = new List<AudioClip>();

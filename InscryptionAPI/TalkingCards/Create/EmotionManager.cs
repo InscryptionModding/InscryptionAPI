@@ -1,8 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using InscryptionAPI.TalkingCards.Helpers;
 
 #nullable enable
@@ -19,9 +16,13 @@ internal static class EmotionManager
     private static void CorrectEmotionNames(ref string code)
     {
         if (!code.StartsWith("[e")) return;
+        
+        if (code.StartsWith("[end")) return;
+        
         string x = DialogueParser.GetStringValue(code, "e");
 
         if (EmotionNames.Contains(x) || int.TryParse(x, out _)) return;
+
         code = $@"[e:{x.SentenceCase()}]";
     }
 }

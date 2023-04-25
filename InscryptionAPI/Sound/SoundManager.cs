@@ -87,7 +87,7 @@ public static class SoundManager
             www.SendWebRequest();
             while (!www.isDone) continue;
 
-            if(www.isNetworkError || www.isHttpError)
+            if (www.isNetworkError || www.isHttpError)
             {
                 ErrorLog($"Couldn't load file \'{filename ?? "(null)"}\' as AudioClip!");
                 ErrorLog(www.error);
@@ -96,7 +96,7 @@ public static class SoundManager
             else
             {
                 AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
-                if(audioClip != null)
+                if (audioClip != null)
                 {
                     InfoLog($"Loaded \'{filename}\' as AudioClip. AudioType: {audioType}");
                     audioClip.name = $"{guid}_{filename}";

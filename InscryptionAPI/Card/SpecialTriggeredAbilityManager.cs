@@ -1,6 +1,6 @@
-using System.Collections.ObjectModel;
 using DiskCardGame;
 using InscryptionAPI.Guid;
+using System.Collections.ObjectModel;
 
 namespace InscryptionAPI.Card;
 
@@ -22,7 +22,7 @@ public static class SpecialTriggeredAbilityManager
 
     public readonly static ReadOnlyCollection<FullSpecialTriggeredAbility> BaseGameSpecialTriggers = new(GenBaseGameSpecialTriggersList());
     private readonly static ObservableCollection<FullSpecialTriggeredAbility> NewSpecialTriggers = new();
-    
+
     public static List<FullSpecialTriggeredAbility> AllSpecialTriggers { get; private set; } = BaseGameSpecialTriggers.ToList();
 
     static SpecialTriggeredAbilityManager()

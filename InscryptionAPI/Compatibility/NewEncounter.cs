@@ -30,7 +30,7 @@ public class NewEncounter
                         InscryptionAPIPlugin.Logger.LogDebug($"Attaching encounter named {this.encounterBlueprintData.name} to region {target.name}");
                         target.encounters.Add(curClone);
                     }
-                        
+
                     if (bossPrep)
                         target.bossPrepEncounter = curClone;
                 }
@@ -46,7 +46,7 @@ public class NewEncounter
                     target.encounters.Add(curClone);
                 }
             }
-        }            
+        }
 
         return region;
     }

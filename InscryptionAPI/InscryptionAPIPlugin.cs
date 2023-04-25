@@ -1,20 +1,17 @@
 global using UnityObject = UnityEngine.Object;
-
 using BepInEx;
+using BepInEx.Bootstrap;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.Dialogue;
 using InscryptionAPI.Encounters;
-using InscryptionAPI.Regions;
-using System.Runtime.CompilerServices;
-using BepInEx.Configuration;
 using InscryptionAPI.Items;
+using InscryptionAPI.Regions;
 using InscryptionAPI.Totems;
-using BepInEx.Bootstrap;
-using Mono.Cecil;
-using System.Reflection;
-using System.IO;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 [assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
@@ -28,14 +25,16 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.9.1";
+    public const string ModVer = "2.11.2";
 
+    internal static ConfigEntry<bool> configOverrideArrows;
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemTypes;
 
     static InscryptionAPIPlugin()
     {
-        AppDomain.CurrentDomain.AssemblyResolve += static (_, e) => {
+        AppDomain.CurrentDomain.AssemblyResolve += static (_, e) =>
+        {
             if (e.Name.StartsWith("API, Version=1"))
             {
                 return typeof(InscryptionAPIPlugin).Assembly;
@@ -80,22 +79,25 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         foreach (var pluginAsm in Chainloader.PluginInfos.Values.Select(p => p.Instance.GetType().Assembly).Distinct())
         {
             foreach (var refAsm in pluginAsm.GetReferencedAssemblies())
+            {
                 if (refAsm.Name.Equals("API"))
                 {
                     outdatedPlugins += $" - {pluginAsm.GetName().Name}\n";
                     continue;
                 }
+            }
         }
         if (outdatedPlugins != "")
             Logger.LogWarning("The following mods have been flagged as using an outdated version of the API:\n"
-                + outdatedPlugins
+            + outdatedPlugins
                 + "\nOutdated mods may not work correctly, so please update or disable them if problems arise!");
     }
 
     private void Awake()
     {
-        configCustomTotemTopTypes = Config.Bind("Totems","Top Types",TotemManager.TotemTopState.CustomTribes,"If Vanilla, Don't change totem tops, If CustomTribes, all custom tribes added will use custom totem tops. If AllTribes then all totem tops will use a custom top.");
-        configCustomItemTypes = Config.Bind("Items","Types",ConsumableItemManager.ConsumableState.Custom,"If Vanilla, only vanilla items used, If Custom, all custom items added will use custom models. If All then all tops will use a custom model.");
+        configCustomTotemTopTypes = Config.Bind("Totems", "Top Types", TotemManager.TotemTopState.CustomTribes, "If Vanilla, Don't change totem tops, If CustomTribes, all custom tribes added will use custom totem tops. If AllTribes then all totem tops will use a custom top.");
+        configCustomItemTypes = Config.Bind("Items", "Types", ConsumableItemManager.ConsumableState.Custom, "If Vanilla, only vanilla items used, If Custom, all custom items added will use custom models. If All then all tops will use a custom model.");
+        configOverrideArrows = Config.Bind("Menus", "Override Arrows", false, "When true, forces the challenge screen arrows to appear at the top of the screen instead of the sides.");
     }
 
     private void Start()
@@ -105,6 +107,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();
         CardManager.AuditCardList();
+        Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

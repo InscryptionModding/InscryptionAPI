@@ -1,7 +1,7 @@
-using System.Collections.ObjectModel;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -9,7 +9,7 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class StatIconManager
 {
-    private static readonly Dictionary<SpecialStatIcon, SpecialTriggeredAbility> BASE_GAME_ABILITIES = new ()
+    private static readonly Dictionary<SpecialStatIcon, SpecialTriggeredAbility> BASE_GAME_ABILITIES = new()
     {
         { SpecialStatIcon.Ants, SpecialTriggeredAbility.Ant },
         { SpecialStatIcon.Bell, SpecialTriggeredAbility.BellProximity },
@@ -40,7 +40,7 @@ public static class StatIconManager
 
     public readonly static ReadOnlyCollection<FullStatIcon> BaseGameStatIcons = new(GenBaseGameStatIconList());
     private readonly static ObservableCollection<FullStatIcon> NewStatIcons = new();
-    
+
     public static List<FullStatIcon> AllStatIcons { get; private set; } = BaseGameStatIcons.ToList();
     public static List<StatIconInfo> AllStatIconInfos { get; private set; } = BaseGameStatIcons.Select(x => x.Info).ToList();
 
@@ -53,7 +53,7 @@ public static class StatIconManager
         };
 
         // Let's help people fix the most common mistake with special stat icons
-        CardManager.ModifyCardList += delegate(List<CardInfo> cards)
+        CardManager.ModifyCardList += delegate (List<CardInfo> cards)
         {
             foreach (CardInfo card in cards)
             {
@@ -107,7 +107,7 @@ public static class StatIconManager
 
     public static void Remove(SpecialStatIcon id) => NewStatIcons.Remove(NewStatIcons.FirstOrDefault(x => x.Id == id));
     public static void Remove(FullStatIcon ability) => NewStatIcons.Remove(ability);
-    
+
     [HarmonyPrefix]
     [HarmonyPatch(typeof(StatIconInfo), nameof(StatIconInfo.LoadAbilityData))]
     private static void AbilityLoadPrefix()
@@ -128,7 +128,7 @@ public static class StatIconManager
                 {
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
                     int curPageNum = (int)SpecialStatIcon.NUM_ICONS;
-                    foreach(FullStatIcon fab in NewStatIcons.Where(x => __instance.StatIconShouldBeAdded((int)x.Id, metaCategory)))
+                    foreach (FullStatIcon fab in NewStatIcons.Where(x => __instance.StatIconShouldBeAdded((int)x.Id, metaCategory)))
                     {
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;

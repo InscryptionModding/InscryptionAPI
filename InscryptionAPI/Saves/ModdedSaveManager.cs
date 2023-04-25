@@ -77,7 +77,7 @@ public static class ModdedSaveManager
     }
 
     [HarmonyPatch(typeof(AscensionSaveData), "NewRun")]
-    [HarmonyPostfix]
+    [HarmonyPrefix]
     private static void ResetRunStateOnNewAscensionRun()
     {
         RunState = new();

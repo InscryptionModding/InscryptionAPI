@@ -7,7 +7,7 @@ public class IceCubeIdentifier
 {
     internal string name;
     internal CardModificationInfo mods;
-		
+
     private IceCubeParams iceCube;
     public IceCubeParams IceCube
     {

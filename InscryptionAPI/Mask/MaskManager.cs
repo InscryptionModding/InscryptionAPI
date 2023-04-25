@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Items;
@@ -16,16 +16,16 @@ public static class MaskManager
         Trapper = 4,
         Trader = 5,
         Doctor = 6,
-        
+
         FlatMask = 101,
         Sphere = 102,
     }
-    
+
     public static LeshyAnimationController.Mask NoMask = (LeshyAnimationController.Mask)(-1);
-    
+
     private static Dictionary<LeshyAnimationController.Mask, List<CustomMask>> MaskLookup = new();
     public static Dictionary<ModelType, ResourceLookup> TypeToPrefabLookup = new();
-    
+
     public static List<CustomMask> BaseMasks = GenerateBaseMasks();
     public static List<CustomMask> CustomMasks = new List<CustomMask>();
 
@@ -33,11 +33,11 @@ public static class MaskManager
     {
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, prefabName);
         TypeToPrefabLookup[type] = resource;
-        
+
         return type;
     }
 
-    public static CustomMask Add(string guid, string name, string texturePath=null)
+    public static CustomMask Add(string guid, string name, string texturePath = null)
     {
         LeshyAnimationController.Mask maskType = GuidManager.GetEnumValue<LeshyAnimationController.Mask>(guid, name);
 
@@ -52,7 +52,7 @@ public static class MaskManager
         return mask;
     }
 
-    public static CustomMask AddRandom(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath=null)
+    public static CustomMask AddRandom(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath = null)
     {
         CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, false);
         if (!string.IsNullOrEmpty(texturePath))
@@ -65,7 +65,7 @@ public static class MaskManager
         return mask;
     }
 
-    public static CustomMask Override(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath=null)
+    public static CustomMask Override(string guid, string name, LeshyAnimationController.Mask maskType, string texturePath = null)
     {
         CustomMask mask = AddCustomMask(guid, name, maskType, ModelType.FlatMask, true);
         if (!string.IsNullOrEmpty(texturePath))
@@ -74,10 +74,10 @@ public static class MaskManager
             materialOverride.ChangeMainTexture(TextureHelper.GetImageAsTexture(texturePath));
             mask.AddMaterialOverride(materialOverride);
         }
-        
+
         return mask;
     }
-    
+
     /// <summary>
     /// Adds a custom mask to the game so you can tell leshy to put it on his face. Typically during a boss fight.
     /// </summary>
@@ -91,7 +91,7 @@ public static class MaskManager
     {
         CustomMask mask = new CustomMask(guid, name, maskType, isOverride);
         mask.SetModelType(modelType);
-        
+
         CustomMasks.Add(mask);
         if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> masks))
         {
@@ -99,7 +99,7 @@ public static class MaskManager
             MaskLookup[maskType] = masks;
         }
         masks.Add(mask);
-        
+
         return mask;
     }
 
@@ -110,13 +110,13 @@ public static class MaskManager
             InscryptionAPIPlugin.Logger.LogWarning("No mask defined of type: " + maskType);
             return BaseMasks[0];
         }
-        
+
         if (masks.Count == 0)
         {
             InscryptionAPIPlugin.Logger.LogWarning("No masks found for type " + maskType);
             return BaseMasks[0];
         }
- 
+
         CustomMask overrideMask = masks.FindLast((a) => a.Override);
         if (overrideMask == null)
         {
@@ -124,21 +124,21 @@ public static class MaskManager
             int index = UnityEngine.Random.RandomRangeInt(0, masks.Count);
             overrideMask = masks[index];
         }
-        
+
         return overrideMask;
     }
-    
+
     private static List<CustomMask> GenerateBaseMasks()
     {
         InitializeDefaultModel("maskFlat", "CustomMask", ModelType.FlatMask);
-        
+
         List<CustomMask> list = new List<CustomMask>();
         foreach (LeshyAnimationController.Mask maskType in Enum.GetValues(typeof(LeshyAnimationController.Mask)))
         {
             ResourceLookup resourceLookup = new ResourceLookup();
             resourceLookup.FromResourceBank("Prefabs/Opponents/Leshy/Masks/Mask" + maskType);
-            
-            if(!Enum.TryParse(maskType.ToString(), out ModelType modelType))
+
+            if (!Enum.TryParse(maskType.ToString(), out ModelType modelType))
             {
                 InscryptionAPIPlugin.Logger.LogWarning("Could not get default mask for type " + maskType);
             }
@@ -149,7 +149,7 @@ public static class MaskManager
 
             CustomMask customMask = new CustomMask("", maskType.ToString(), maskType, false);
             customMask.SetModelType(modelType);
-            
+
             list.Add(customMask);
             if (!MaskLookup.TryGetValue(maskType, out List<CustomMask> defaultMasks))
             {
@@ -161,7 +161,7 @@ public static class MaskManager
 
         return list;
     }
-    
+
     private static void InitializeDefaultModel(string assetBundlePath, string prefabName, ModelType modelType)
     {
         ResourceLookup resourceLookup = new ResourceLookup();
@@ -186,7 +186,7 @@ public static class MaskManager
                 return LeshyAnimationController.Mask.Woodcarver;
         }
     }
-    
+
     internal static void InitializeMaskClone(GameObject clone, CustomMask data)
     {
         if (!clone.TryGetComponent(out MaskBehaviour behaviour))

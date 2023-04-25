@@ -146,7 +146,7 @@ public class Func : NodeData.SelectionCondition
 
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
-        if(func == null)
+        if (func == null)
         {
             return true;
         }

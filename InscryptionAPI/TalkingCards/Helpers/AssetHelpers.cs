@@ -1,12 +1,5 @@
 using BepInEx;
-using HarmonyLib;
-using InscryptionAPI.TalkingCards.Animation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 #nullable enable
@@ -27,8 +20,8 @@ public static class AssetHelpers
     public static Texture2D? MakeTexture(string? path)
     {
         if (path == null || path.IsWhiteSpace()) return null;
-        
-        if(TextureCache.ContainsKey(path))
+
+        if (TextureCache.ContainsKey(path))
         {
             //FileLog.Log($"Loading from cache: {path}");
             return TextureCache[path];

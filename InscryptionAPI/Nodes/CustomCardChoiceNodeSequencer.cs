@@ -54,7 +54,7 @@ public abstract class CustomCardChoiceNodeSequencer : CardChoicesSequencer, ICus
         {
             transform.position = target.transform.position + PositionOffset;
             transform.rotation = Quaternion.Euler(target.transform.rotation.eulerAngles + RotationOffset.eulerAngles);
-            if(target.deckPile != null)
+            if (target.deckPile != null)
             {
                 deckPile = Instantiate(target.deckPile, target.deckPile.transform.position, target.deckPile.transform.rotation);
                 Vector3 position = deckPile.transform.position;
@@ -64,7 +64,7 @@ public abstract class CustomCardChoiceNodeSequencer : CardChoicesSequencer, ICus
                 deckPile.transform.rotation = Quaternion.Euler(rotation.eulerAngles + DeckPileRotationOffset.eulerAngles + (DeckPileInheritsOffsets ? RotationOffset.eulerAngles : Vector3.zero));
             }
             selectableCardPrefab = target.selectableCardPrefab;
-            if(target.gamepadGrid != null)
+            if (target.gamepadGrid != null)
             {
                 gamepadGrid = Instantiate(target.gamepadGrid, target.gamepadGrid.transform.position, target.gamepadGrid.transform.rotation);
                 Vector3 position = gamepadGrid.transform.localPosition;

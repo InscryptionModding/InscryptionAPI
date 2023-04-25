@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
-[HarmonyPatch] // Fixes a few issues relating to Sentry interacting with certain Act 1 abilities / mechanics
+// Fixes a few issues relating to Sentry interacting with certain Act 1 abilities / mechanics
+[HarmonyPatch]
 public class SentryInteractionFixes
 {
     // Fixes a soft crash that occurs when the enemy totem tries to perform its check OnAssignedToSlot
@@ -59,9 +60,10 @@ public class SentryInteractionFixes
                 // Check if the animation is paused then unpause it
                 if (instance.Card.Anim.Anim.speed == 0f)
                 {
-                    PatchPlugin.Logger.LogDebug($"{instance.Card} is frozen, unpausing animation.");
-                    // indicates that we need to restart the attack animation at the end of the sequence
-                    midCombat = true;
+                    if (PatchPlugin.configFullDebug.Value)
+                        PatchPlugin.Logger.LogDebug($"{instance.Card} is frozen, unpausing animation.");
+                    
+                    midCombat = true; // indicates that we need to restart the attack animation at the end of the sequence
 
                     ShowPart3Turret(instance.Card, opposingCard);
 

@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using Sirenix.Serialization.Utilities;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -23,7 +26,7 @@ public static class AbilityManager
     private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
 
     /// <summary>
-    /// A utility class that holds all of the required information about an ability in order to be able to use it in-game
+    /// A utility class that holds all of the required information about an ability in order to be able to use it in-game.
     /// </summary>
     public class FullAbility
     {
@@ -54,7 +57,9 @@ public static class AbilityManager
         /// <value></value>
         public Texture CustomFlippedTexture { get; internal set; }
 
-        internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new ();
+        public string BaseRulebookDescription { get; internal set; }
+
+        internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new();
 
         /// <summary>
         /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
@@ -69,6 +74,7 @@ public static class AbilityManager
             Info = info;
             AbilityBehavior = behaviour;
             Texture = texture;
+            BaseRulebookDescription = info.rulebookDescription;
 
             ReverseMapper.Add(info, this);
 
@@ -111,11 +117,11 @@ public static class AbilityManager
     }
 
     /// <summary>
-    /// All of the vanilla game's abilities
+    /// All of the vanilla game's abilities.
     /// </summary>
     public readonly static ReadOnlyCollection<FullAbility> BaseGameAbilities = new(GenBaseGameAbilityList());
     internal readonly static ObservableCollection<FullAbility> NewAbilities = new();
-    
+
     /// <summary>
     /// The current processed list of all abilities in the game, including vanilla and mod-added abilities.
     /// </summary>
@@ -127,12 +133,12 @@ public static class AbilityManager
     public static List<AbilityInfo> AllAbilityInfos { get; private set; } = BaseGameAbilities.Select(x => x.Info).ToList();
 
     /// <summary>
-    /// A hook for modders to add custom code to modify the ability list dynamically
+    /// A hook for modders to add custom code to modify the ability list dynamically.
     /// </summary>
     /// <remarks>There are two primary use cases for this hook:
     /// 
     /// - Making changes to abilities that may be added after your plugin initializes
-    /// - Making context-aware changes to abilities.
+    /// - Making context-aware changes to abilities
     /// 
     /// The way this operates is as follows:
     /// 
@@ -162,7 +168,7 @@ public static class AbilityManager
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
     /// <summary>
-    /// Resynchronizes the ablity list
+    /// Resynchronizes the ablity list.
     /// </summary>
     /// <remarks>Most importantly, this re-executes all custom code that was added to the [ModifyAbilityList](xref:InscryptionAPI.AbilityManager.ModifyAbilityList)
     /// event. If you are doing any sort of context-aware processing of the ability list, you may need to manually
@@ -181,9 +187,7 @@ public static class AbilityManager
         InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
         {
             if (type == typeof(AbilityInfo))
-            {
                 ScriptableObjectLoader<AbilityInfo>.allData = AllAbilityInfos;
-            }
         };
         NewAbilities.CollectionChanged += static (_, _) =>
         {
@@ -192,7 +196,7 @@ public static class AbilityManager
     }
 
     private static List<FullAbility> GenBaseGameAbilityList()
-    {           
+    {
         bool useReversePatch = true;
         try
         {
@@ -326,7 +330,7 @@ public static class AbilityManager
             return false;
         }
 
-        if (Enum.TryParse<Ability>(abilityName, out Ability abilityEnum))
+        if (Enum.TryParse(abilityName, out Ability abilityEnum))
         {
             FullAbility ability = AllAbilities.FirstOrDefault(x => x.Id == abilityEnum);
             __result = (normalTexture || ability.CustomFlippedTexture == null) ? ability.Texture : ability.CustomFlippedTexture;
@@ -351,31 +355,146 @@ public static class AbilityManager
             canUse &= ProgressionData.LearnedAbility(ability.ability);
 
             if (canUse)
-            {
                 __result.Add(ability.ability);
-            }
         }
-        
+
         return false;
     }
 
-    // [HarmonyPrefix]
-    // [HarmonyPatch(typeof(CardTriggerHandler), nameof(CardTriggerHandler.AddAbility), new[] { typeof(Ability) })]
-    // private static bool AddAbilityReplacement(CardTriggerHandler __instance, Ability ability)
-    // {
-    //     var full = AllAbilities.FirstOrDefault(x => x.Id == ability);
-    //     if (!__instance.triggeredAbilities.Exists(x => x.Item1 == ability) || full.Info.canStack && !full.Info.passive)
-    //     {
-    //         var reciever = (AbilityBehaviour)__instance.gameObject.GetComponent(full.AbilityBehavior);
-    //         if (!reciever)
-    //         {
-    //             reciever = (AbilityBehaviour)__instance.gameObject.AddComponent(full.AbilityBehavior);
-    //         }
-    //         __instance.triggeredAbilities.Add(new Tuple<Ability, AbilityBehaviour>(ability, reciever));
-    //     }
+    [HarmonyPostfix, HarmonyPatch(typeof(AbilityInfo), nameof(AbilityInfo.ParseAndTranslateDescription))]
+    private static void CleanUpParsedDescription(ref string __result)
+    {
+        while (__result.Contains("[sigilcost:"))
+        {
+            string textToCheck = __result.Substring(__result.IndexOf("[sigilcost:"));
+            if (!textToCheck.Contains("]"))
+                break;
+            
+            textToCheck = textToCheck.Substring(0, textToCheck.IndexOf("]") + 1);
 
-    //     return false;
-    // }
+            __result = __result.Replace(textToCheck, textToCheck.Replace("[sigilcost:", "").Replace("]", ""));
+        }
+    }
+
+    [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.OpenToAbilityPage))]
+    private static bool UpdateRulebookDescription(PlayableCard card)
+    {
+        if (card != null)
+        {
+            ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
+            if (component != null)
+            {
+                foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
+                {
+                    if (ab.AbilityBehavior.IsAssignableFrom(component.GetType()))
+                        ab.Info.rulebookDescription = ParseAndUpdateDescription(ab.Info.rulebookDescription, component);
+                }
+            }
+        }
+        return true;
+    }
+    [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.SetShown))]
+    private static bool ResetAlteredDescriptions(bool shown)
+    {
+        if (!shown)
+        {
+            foreach (FullAbility ab in AllAbilities.Where(a => !BaseGameAbilities.Contains(a) && a.Info.activated))
+            {
+                AbilityInfo info = AbilitiesUtil.GetInfo(ab.Id);
+                if (info.rulebookDescription != ab.BaseRulebookDescription)
+                    info.rulebookDescription = ab.BaseRulebookDescription;
+            }
+        }
+        return true;
+    }
+    internal static string ParseAndUpdateDescription(string description, ExtendedActivatedAbilityBehaviour ability)
+    {
+        while (description.Contains("[sigilcost:"))
+        {
+            int startIndex = description.IndexOf("[sigilcost:");
+            string textToChange = description.Substring(startIndex);
+            if (!textToChange.Contains("]"))
+                break;
+
+            int endIndex = textToChange.IndexOf("]");
+            textToChange = textToChange.Substring(0, endIndex + 1);
+
+            string allCosts = "";
+            if (ability.BonesCost > 0)
+            {
+                allCosts += ability.BonesCost.ToString() + " bone";
+                if (ability.BonesCost != 1)
+                    allCosts += "s";
+            }
+            if (ability.EnergyCost > 0)
+            {
+                if (allCosts != "")
+                    allCosts += ", ";
+                allCosts += ability.EnergyCost.ToString() + " energy";
+            }
+            if (ability.HealthCost > 0)
+            {
+                if (allCosts != "")
+                    allCosts += ", ";
+                allCosts += ability.HealthCost.ToString() + " health";
+            }
+
+            return description.Replace(textToChange, allCosts == "" ? "nothing" : allCosts);
+        }
+
+        string[] blocks = description.Split(' ');
+        bool energy = ability.energyCostMod == 0;
+        bool bones = ability.bonesCostMod == 0;
+        bool health = ability.healthCostMod == 0;
+        for (int i = 0; i < blocks.Length; i++)
+        {
+            if (energy && bones && health)
+                break;
+
+            if (blocks[i].Any(c => char.IsDigit(c)))
+            {
+                string nextBlock = blocks[i + 1].ToLowerInvariant();
+                if (nextBlock.Contains("energy") || nextBlock.Contains("bone") || nextBlock.Contains("health"))
+                {
+                    string num = "";
+                    foreach (char c in blocks[i])
+                    {
+                        if (char.IsDigit(c))
+                            num += c;
+                    }
+
+                    if (!energy && nextBlock.Contains("energy"))
+                    {
+                        energy = true;
+                        blocks[i] = blocks[i].Replace(num, ability.EnergyCost.ToString());
+                    }
+                    else if (!bones && nextBlock.Contains("bone"))
+                    {
+                        bones = true;
+                        blocks[i] = blocks[i].Replace(num, ability.BonesCost.ToString());
+
+                        if (nextBlock.Contains("bones"))
+                        {
+                            if (ability.BonesCost == 1)
+                                blocks[i + 1] = nextBlock.Replace("bones", "bone");
+                        }
+                        else
+                        {
+                            if (ability.BonesCost != 1)
+                                blocks[i + 1] = nextBlock.Replace("bone", "bones");
+                        }
+                    }
+                    else if (!health && nextBlock.Contains("health") && blocks[i - 1].ToLowerInvariant() != "power")
+                    {
+                        health = true;
+                        blocks[i] = blocks[i].Replace(num, ability.HealthCost.ToString());
+                    }
+                }
+            }
+        }
+
+        return blocks.Join(delimiter: " ");
+    }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
     [HarmonyPostfix]
@@ -393,7 +512,7 @@ public static class AbilityManager
                     int curPageNum = (int)Ability.NUM_ABILITIES;
                     List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
-                    foreach(FullAbility fab in abilitiesToAdd)
+                    foreach (FullAbility fab in abilitiesToAdd)
                     {
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;
@@ -448,9 +567,8 @@ public static class AbilityManager
                 foreach (TriggerReceiver receiver in r.GetAllReceivers())
                 {
                     if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
-                    {
                         return true;
-                    }
+
                 }
                 return false;
             }
@@ -459,9 +577,8 @@ public static class AbilityManager
                 foreach (TriggerReceiver receiver in r.GetAllReceivers())
                 {
                     if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
-                    {
                         yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
-                    }
+
                 }
                 yield break;
             }
@@ -469,11 +586,51 @@ public static class AbilityManager
             foreach (PlayableCard playableCard in list)
             {
                 if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, trigger, otherArgs))
-                {
                     yield return OnTrigger(playableCard.TriggerHandler, trigger, otherArgs);
-                }
+
             }
         }
         yield break;
     }
+
+    [HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
+    [HarmonyTranspiler]
+    public static IEnumerable<CodeInstruction> AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction> instructions)
+    {
+        // === We want to turn this
+
+        // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
+
+        // === Into this
+
+        // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
+        // Log(info2);
+
+        // ===
+        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            
+        MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].opcode == OpCodes.Stloc_1)
+            {
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldarg_1)); // ability
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldloc_1)); // abilityInfo
+                codes.Insert(++i, new CodeInstruction(OpCodes.Ldarg_2)); // info
+                codes.Insert(++i, new CodeInstruction(OpCodes.Call, LogAbilityMethodInfo));
+                break;
+            }
+        }
+
+        return codes;
+    }
+
+    private static void LogAbilityInfo(Ability ability, AbilityInfo abilityInfo, CardInfo info)
+    {
+        if (abilityInfo == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
+        }
+    }
+
 }

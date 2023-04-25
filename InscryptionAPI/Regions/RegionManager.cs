@@ -1,16 +1,41 @@
+using DiskCardGame;
+using HarmonyLib;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using DiskCardGame;
-using HarmonyLib;
+using InscryptionAPI.Encounters;
+using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
+using EncounterBuilder = DiskCardGame.EncounterBuilder;
 
 namespace InscryptionAPI.Regions;
 
 [HarmonyPatch]
 public static class RegionManager
 {
-    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(Resources.LoadAll<RegionData>("Data"));
+    public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(ReorderBaseRegions());
+
+    /* Order of BaseGameRegions before reordering
+     * !TEST_PART3
+     * Alpine
+     * Forest
+     * Midnight
+     * Midnight_Ascension
+     * Pirateville
+     * Wetlands
+     */
+
+    private static List<RegionData> ReorderBaseRegions()
+    {
+        List<RegionData> baseRegions = Resources.LoadAll<RegionData>("Data").ToList();
+        List<RegionData> orderedRegions = new()
+        {
+            baseRegions[2], baseRegions[6], baseRegions[1],
+            baseRegions[3], baseRegions[4], baseRegions[5], baseRegions[0]
+        };
+
+        return orderedRegions;
+    }
     private static readonly ObservableCollection<Part1RegionData> NewRegions = new();
 
     public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList;
@@ -32,7 +57,7 @@ public static class RegionManager
 
     private static RegionData CloneRegion(this RegionData data)
     {
-        RegionData retval = (RegionData) UnityEngine.Object.Internal_CloneSingle(data);
+        RegionData retval = (RegionData)UnityObject.Internal_CloneSingle(data);
         retval.name = data.name;
         return retval;
     }
@@ -62,9 +87,7 @@ public static class RegionManager
         InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
         {
             if (type == typeof(RegionData))
-            {
                 ScriptableObjectLoader<RegionData>.allData = AllRegionsCopy;
-            }
         };
         NewRegions.CollectionChanged += static (_, _) =>
         {
@@ -74,11 +97,10 @@ public static class RegionManager
 
     public static List<RegionData> AllRegionsCopy { get; private set; } = BaseGameRegions.ToList();
 
-    public static void Add(RegionData newRegion, int tier) {
+    public static void Add(RegionData newRegion, int tier)
+    {
         if (!NewRegions.Select(x => x.Region).Contains(newRegion))
-        {
             NewRegions.Add(new Part1RegionData(newRegion, tier));
-        }
     }
     public static void Remove(RegionData region) => NewRegions.Remove(NewRegions.Where(x => x.Region == region).First());
 
@@ -99,7 +121,7 @@ public static class RegionManager
     public static RegionData FromTierFull(string name, int originalTier, int newTier, bool addToPool = true)
     {
         RegionProgression copy = ResourceBank.Get<RegionProgression>("Data/Map/RegionProgression");
-        RegionData retval = (RegionData) RegionData.Internal_CloneSingle(copy.regions[originalTier]);
+        RegionData retval = (RegionData)UnityObject.Internal_CloneSingle(copy.regions[originalTier]);
         retval.name = name;
 
         if (addToPool)
@@ -140,7 +162,7 @@ public static class RegionManager
     {
         return FromTierBasic(name, originalTier, originalTier, addToPool);
     }
-    
+
     #region Patches
     [HarmonyPrefix]
     [HarmonyPatch(typeof(RunState), "CurrentMapRegion", MethodType.Getter)]
@@ -151,45 +173,26 @@ public static class RegionManager
             __result = ResourceBank.Get<RegionData>("Data/Map/Regions/!TEST_PART3");
             return false;
         }
+
         if (SaveFile.IsAscension)
         {
+            // InscryptionAPIPlugin.Logger.LogInfo(RunState.Run.regionOrder[RunState.Run.regionTier]);
             if (RunState.Run.regionTier == RegionProgression.Instance.regions.Count - 1)
             {
                 if (AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.FinalBoss))
                     __result = RegionProgression.Instance.ascensionFinalBossRegion;
                 else
                     __result = RegionProgression.Instance.ascensionFinalRegion;
+
                 return false;
             }
-            __result = GetRandomRegionFromTier(RunState.Run.regionOrder[RunState.Run.regionTier]);
+            __result = AllRegionsCopy[RunState.Run.regionOrder[RunState.Run.regionTier]];
             return false;
         }
-        __result = GetRandomRegionFromTier(RunState.Run.regionTier);
-        return false;
-    }
 
-    public static RegionData GetRandomRegionFromTier(int tier)
-    {
-        List<RegionData> valid = new();
-        if (RegionProgression.Instance.regions.Count > tier)
-        {
-            valid.Add(RegionProgression.Instance.regions[tier]);
-        }
-        valid.AddRange(NewRegions.Where(x => x.Tier == tier).Select(x => x.Region));
-        if (valid.Count <= 0)
-        {
-            return null;
-        }
-        if (valid.Count == 1)
-        {
-            return valid[0];
-        }
-        int randomseed = 0;
-        if (SaveManager.SaveFile != null && RunState.Run != null && (!SaveFile.IsAscension || AscensionSaveData.Data != null))
-        {
-            randomseed = SaveManager.SaveFile.randomSeed + (SaveFile.IsAscension ? AscensionSaveData.Data.currentRunSeed : (SaveManager.SaveFile.pastRuns.Count * 1000)) + (RunState.Run.regionTier + 1) * 100;
-        }
-        return valid[SeededRandom.Range(0, valid.Count, randomseed)];
+        __result = AllRegionsCopy[RunState.Run.regionTier];
+
+        return false;
     }
 
     [HarmonyPatch(typeof(EncounterBuilder), nameof(EncounterBuilder.BuildTerrainCondition))]
@@ -197,7 +200,7 @@ public static class RegionManager
     private static bool ApplyTerrainCustomization(ref EncounterData.StartCondition __result, ref bool reachTerrainOnPlayerSide, int randomSeed)
     {
         var customregion = NewRegions.ToList().Find(x => x.Region == RunState.CurrentMapRegion);
-        if(customregion != null)
+        if (customregion != null)
         {
             reachTerrainOnPlayerSide &= !customregion.DoNotForceReachTerrain;
             __result = new EncounterData.StartCondition();
@@ -211,13 +214,10 @@ public static class RegionManager
                 {
                     terrainIsForPlayer = SeededRandom.Bool(randomSeed++);
                     if (terrainIsForPlayer && playerTerrain == 1)
-                    {
                         terrainIsForPlayer = false;
-                    }
+
                     else if (!terrainIsForPlayer && enemyTerrain == 1)
-                    {
                         terrainIsForPlayer = true;
-                    }
                 }
                 else
                 {
@@ -230,47 +230,35 @@ public static class RegionManager
                 for (int j = 0; j < 4; j++)
                 {
                     if (sameSideSlots[j] == null && otherSideSlots[j] == null)
-                    {
                         availableSpace = true;
-                    }
                 }
                 if (!availableSpace)
-                {
                     break;
-                }
+
                 while (sameSideSlots[slotForTerrain] != null || otherSideSlots[slotForTerrain] != null)
-                {
                     slotForTerrain = SeededRandom.Range(0, sameSideSlots.Length, randomSeed++);
-                }
+
                 if (terrainIsForPlayer && reachTerrainOnPlayerSide)
                 {
                     CardInfo cardInfo = RunState.CurrentMapRegion.terrainCards.Find((CardInfo x) => x.HasAbility(Ability.Reach));
                     if (cardInfo == null && !customregion.RemoveDefaultReachTerrain)
-                    {
                         cardInfo = CardLoader.GetCardByName("Tree");
-                    }
+
                     if (cardInfo != null)
-                    {
                         sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(cardInfo.name);
-                    }
                 }
                 else
                 {
                     List<CardInfo> list = RunState.CurrentMapRegion.terrainCards.FindAll((CardInfo x) => (ConceptProgressionTree.Tree.CardUnlocked(x, true) || customregion.AllowLockedTerrainCards) &&
                         (x.traits.Contains(Trait.Terrain) || customregion.AllowSacrificableTerrainCards));
                     if (list.Count > 0)
-                    {
                         sameSideSlots[slotForTerrain] = CardLoader.GetCardByName(list[SeededRandom.Range(0, list.Count, randomSeed++)].name);
-                    }
                 }
+
                 if (terrainIsForPlayer)
-                {
                     playerTerrain++;
-                }
                 else
-                {
                     enemyTerrain++;
-                }
             }
             return false;
         }
@@ -311,13 +299,138 @@ public static class RegionManager
         {
             // Props normally have the renderer on the object itself. But custom props sometimes will ot have this.
             if (gameObject.TryGetComponent(out Renderer renderer))
-            {
                 return renderer;
-            }
 
             Renderer spawnedMapObjectRenderer = gameObject.GetComponentInChildren<Renderer>();
+            if (spawnedMapObjectRenderer == null)
+                InscryptionAPIPlugin.Logger.LogError($"[RegionManager] Map object {gameObject.name} does not have a renderer attached!");
+
             return spawnedMapObjectRenderer;
         }
     }
+    
+    [HarmonyPatch(typeof(MapDataReader), nameof(MapDataReader.SpawnAndPlaceElement))]
+    [HarmonyPrefix]
+    private static bool MapDataReader_SpawnAndPlaceElement(ref MapDataReader __instance, ref GameObject __result, MapElementData data, Vector2 sampleRange, bool isScenery)
+    {
+        // NOTE: We just want logging so if anyone incorrect sets any props we know what went wrong  
+        
+        GameObject gameObject = null;
+        string prefabPath = __instance.GetPrefabPath(data);
+        GameObject original = ResourceBank.Get<GameObject>(prefabPath);
+        if (original == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"[RegionManager] Could not find object {prefabPath} to spawn in region!");
+            original = Resources.Load<GameObject>("prefabs/map/mapscenery/TreasureChest");
+        }
+        
+        if (!isScenery)
+            gameObject = UnityObject.Instantiate(original);
+        else
+        {
+            MapElement mapElement = original.GetComponent<MapElement>();
+            if (mapElement == null)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"[RegionManager] {original.name} at path {prefabPath} does not have a mapElement component!");
+                mapElement = original.AddComponent<MapElement>();
+            }
+            gameObject = mapElement.GetPooledInstance<MapElement>().gameObject;
+        }
+        
+        gameObject.transform.SetParent(isScenery ? __instance.sceneryParent : __instance.nodesParent);
+        gameObject.transform.localPosition = __instance.GetRealPosFromDataPos(data.position, sampleRange);
+        if (isScenery)
+        {
+            MapElement component = gameObject.GetComponent<MapElement>();
+            __instance.scenery.Add(component);
+            component.Data = data;
+        }
+
+        __result = gameObject;
+        return false;
+    }
+
+    private static List<RegionData> GetAllRegionsForMapGeneration()
+    {
+        List<RegionData> allRegions = new(RegionProgression.Instance.regions);
+        allRegions.RemoveAt(allRegions.Count - 1); // Remove midnight region
+        allRegions.AddRange(NewRegions.Select(a => a.Region)); // New Regions
+        return allRegions;
+    }
+    
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(AscensionSaveData), "RollCurrentRunRegionOrder")]
+    private static bool RollCurrentRunRegionOrder(AscensionSaveData __instance)
+    {
+        // Get all regions to choose from
+        List<RegionData> allRegions = GetAllRegionsForMapGeneration();
+        allRegions = allRegions.Randomize().ToList();
+        
+        List<RegionData> selectedRegions = new();
+        List<Opponent.Type> selectedOpponents = new();
+        for (int i = 0; i < allRegions.Count; i++)
+        {
+            RegionData regionData = allRegions[i];
+            Opponent.Type opponentType = GetRandomAvailableOpponent(regionData, selectedOpponents);
+            if (opponentType != Opponent.Type.Default)
+            {
+                // Add a region that doesn't conflict with the already selected ones
+                selectedRegions.Add(regionData);
+                selectedOpponents.Add(opponentType);
+            }
+
+            if (selectedRegions.Count == 3)
+                break;
+        }
+
+        // Safety check: Make sure we have 3 regions!
+        while (selectedRegions.Count < 3)
+        {
+            List<RegionData> unusedRegions = allRegions.Where((a) => !selectedRegions.Contains(a)).ToList();
+            RegionData selectedRegion = null;
+            if (unusedRegions.Count == 0)
+                selectedRegion = allRegions[0];
+            else
+                selectedRegion = unusedRegions[0];
+            
+            selectedRegions.Add(selectedRegion);
+            Opponent.Type opponentType = GetRandomAvailableOpponent(selectedRegion, selectedOpponents);
+            if (opponentType == Opponent.Type.Default)
+                opponentType = selectedRegion.bosses.GetRandom();
+
+            selectedOpponents.Add(opponentType);
+        }
+
+        int[] regions = new int[3];
+        for (int i = 0; i < selectedRegions.Count; i++)
+        {
+            RegionData region = selectedRegions[i];
+            int indexOf = AllRegionsCopy.FindIndex((a)=>a.name == region.name);
+            if (indexOf == -1)
+            {
+                InscryptionAPIPlugin.Logger.LogError($"Could not get index of region {region.name} in all regions list!");
+                foreach (RegionData data in AllRegionsCopy)
+                {
+                    InscryptionAPIPlugin.Logger.LogError(" " + data.name);
+                }
+                indexOf = 0;
+            }
+            regions[i] = indexOf;
+        }
+
+        OpponentManager.RunStateOpponents = selectedOpponents;
+        __instance.currentRun.regionOrder = regions;
+        return false;
+    }
+    
+    private static Opponent.Type GetRandomAvailableOpponent(RegionData regionData, List<Opponent.Type> selectedOpponents)
+    {
+        List<Opponent.Type> enumerable = regionData.bosses.Where((a) => !selectedOpponents.Contains(a)).ToList();
+        if (enumerable.Count == 0)
+            return Opponent.Type.Default;
+
+        return enumerable.GetRandom();
+    }
+
     #endregion
 }

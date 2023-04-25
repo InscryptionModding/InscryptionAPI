@@ -1,13 +1,11 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
-using DiskCardGame;
+﻿using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Items;
 using UnityEngine;
 
 namespace InscryptionAPI.Masks;
 
-[HarmonyPatch(typeof (LeshyAnimationController), nameof(LeshyAnimationController.SpawnMask), new System.Type[] {typeof (LeshyAnimationController.Mask), (typeof(bool))})]
+[HarmonyPatch(typeof(LeshyAnimationController), nameof(LeshyAnimationController.SpawnMask), new System.Type[] { typeof(LeshyAnimationController.Mask), (typeof(bool)) })]
 internal static class LeshyAnimationController_SpawnMask
 {
     [HarmonyPrefix]
@@ -27,13 +25,13 @@ internal static class LeshyAnimationController_SpawnMask
         {
             prefab = MaskManager.TypeToPrefabLookup[MaskManager.ModelType.Prospector].Get<GameObject>();
         }
-        
+
         __instance.CurrentMask = UnityObject.Instantiate<GameObject>(prefab, __instance.maskParent);
         if (__instance.CurrentMask != null)
         {
             MaskManager.InitializeMaskClone(__instance.CurrentMask, customMask);
         }
-        
+
         if (!justHead)
         {
             __instance.currentHeldMask = UnityObject.Instantiate<GameObject>(prefab, __instance.heldMaskParent);
@@ -46,7 +44,7 @@ internal static class LeshyAnimationController_SpawnMask
 
         return false;
     }
-    
+
     private static GameObject GetPrefab(LeshyAnimationController.Mask maskType, out CustomMask customMask)
     {
         customMask = MaskManager.GetRandomMask(maskType);
@@ -73,7 +71,7 @@ internal static class LeshyAnimationController_SpawnMask
             InscryptionAPIPlugin.Logger.LogError("[LeshyAnimationController_SpawnMask] Got custom mask but prefab is null for: " + customMask.GUID + " " + customMask.Name);
             return null;
         }
-        
+
         return gameObject;
     }
 }

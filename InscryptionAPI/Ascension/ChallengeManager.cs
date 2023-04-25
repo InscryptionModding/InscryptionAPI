@@ -1,11 +1,10 @@
 using DiskCardGame;
 using HarmonyLib;
-using UnityEngine;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using System.Collections.ObjectModel;
-using InscryptionAPI.Boons;
 using System.Collections;
+using System.Collections.ObjectModel;
+using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
@@ -52,7 +51,7 @@ public static class ChallengeManager
             }
             set
             {
-                if(Stackable != value)
+                if (Stackable != value)
                 {
                     AppearancesInChallengeScreen = value ? 2 : 1;
                 }
@@ -69,7 +68,7 @@ public static class ChallengeManager
             }
             set
             {
-                if(AppearsInChallengeScreen != value)
+                if (AppearsInChallengeScreen != value)
                 {
                     AppearancesInChallengeScreen = value ? 1 : 0;
                 }
@@ -290,7 +289,7 @@ public static class ChallengeManager
         foreach (AscensionIconInteractable icon in sortedicons)
         {
             FullChallenge existing = retval.Find(x => x != null && x.Challenge == icon.Info);
-            if(existing != null)
+            if (existing != null)
             {
                 existing.AppearancesInChallengeScreen++;
             }
@@ -312,7 +311,7 @@ public static class ChallengeManager
     internal static FullChallenge[] GetChallengeIcons()
     {
         AscensionChallengeScreen screen = Singleton<AscensionChallengeScreen>.Instance;
-        if(screen == null)
+        if (screen == null)
         {
             return new FullChallenge[0];
         }
@@ -339,7 +338,7 @@ public static class ChallengeManager
     {
         List<FullChallenge> asci = new(NewInfos);
         var challenges = BaseGameChallenges.Concat(asci).ToList();
-        AllChallenges = ModifyChallenges?.Invoke(challenges) ?? challenges;        
+        AllChallenges = ModifyChallenges?.Invoke(challenges) ?? challenges;
     }
 
     static ChallengeManager()
@@ -384,7 +383,7 @@ public static class ChallengeManager
     /// <returns>The full challenge that was found.</returns>
     public static FullChallenge GetFullChallenge(this AscensionChallengeInfo info)
     {
-        if(info == null)
+        if (info == null)
         {
             return null;
         }
@@ -542,7 +541,7 @@ public static class ChallengeManager
     /// <param name="incompatibleChallengeGetter">A func that will return the list of the challenges incompatible with this challenge, that will get disabled when this challenge is activated. Defaults to null, or no incompatibilities.</param>
     /// <param name="numAppearancesInChallengeScreen">The number of times this challenge should appear in the challenge screen. Defaults to 1.</param>
     /// <returns>The built ChallengeManager.FullChallenge, with the challenge info and other additional info.</returns>
-    public static FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, Type handlerType = null, int unlockLevel = 0, List<object> flags = null, 
+    public static FullChallenge AddSpecific(string pluginGuid, AscensionChallengeInfo info, Type handlerType = null, int unlockLevel = 0, List<object> flags = null,
         Func<FullChallenge[], IEnumerable<AscensionChallenge>> dependantChallengeGetter = null, Func<FullChallenge[], IEnumerable<AscensionChallenge>> incompatibleChallengeGetter = null, int numAppearancesInChallengeScreen = 1)
     {
         info.challengeType = GuidManager.GetEnumValue<AscensionChallenge>(pluginGuid, info.title);
@@ -616,7 +615,7 @@ public static class ChallengeManager
         int pointValue,
         Texture2D iconTexture,
         Texture2D activatedTexture,
-        int unlockLevel = 0, 
+        int unlockLevel = 0,
         bool stackable = false
     )
     {
@@ -693,11 +692,11 @@ public static class ChallengeManager
     {
         Color iconColor = GameColors.Instance.gold;
         var info = AscensionChallengesUtil.GetInfo(challenge);
-        if(info == null || info.pointValue > 0 || challenge == AscensionChallenge.None)
+        if (info == null || info.pointValue > 0 || challenge == AscensionChallenge.None)
         {
             iconColor = GameColors.Instance.red;
         }
-        else if(info.pointValue < 0)
+        else if (info.pointValue < 0)
         {
             iconColor = GameColors.Instance.darkLimeGreen;
         }
@@ -737,7 +736,7 @@ public static class ChallengeManager
         if (__instance.Unlocked && __instance.clickable)
         {
             bool setCurrentIcon = false;
-            if(currentIcon == null)
+            if (currentIcon == null)
             {
                 currentIcon = __instance;
                 setCurrentIcon = true;
@@ -758,7 +757,7 @@ public static class ChallengeManager
                 {
                     dependencies.RemoveAll(x => x == challengeInfo.challengeType);
                     List<AscensionChallenge> dependenciesClone = new(dependencies);
-                    foreach (var icon in screen.icons.Where(x => x != null && x.Unlocked && x.clickable && x.activatedRenderer != null && x.activatedRenderer.enabled && x.Info != null && 
+                    foreach (var icon in screen.icons.Where(x => x != null && x.Unlocked && x.clickable && x.activatedRenderer != null && x.activatedRenderer.enabled && x.Info != null &&
                         dependencies.Contains(x.Info.challengeType)))
                     {
                         if (dependenciesClone.Contains(icon.Info.challengeType))
@@ -769,7 +768,7 @@ public static class ChallengeManager
                     if (dependenciesClone.Count > 0)
                     {
                         List<AscensionIconInteractable> challengeIcons = new();
-                        foreach (var icon in screen.icons.Where(x => x != null && x.Unlocked && x.clickable && x.activatedRenderer != null && !x.activatedRenderer.enabled && x.Info != null && 
+                        foreach (var icon in screen.icons.Where(x => x != null && x.Unlocked && x.clickable && x.activatedRenderer != null && !x.activatedRenderer.enabled && x.Info != null &&
                             dependencies.Contains(x.Info.challengeType)))
                         {
                             if (dependenciesClone.Contains(icon.Info.challengeType))
@@ -812,7 +811,7 @@ public static class ChallengeManager
                             if (incompatibilities2 != null)
                             {
                                 incompatibilities2.RemoveAll(x => x == icon.challengeInfo.challengeType);
-                                if(screen.icons.Exists(x => x.Unlocked && x.clickable && x.Info != null && x.activatedRenderer != null && x.activatedRenderer.enabled && incompatibilities2.Contains(x.Info.challengeType)))
+                                if (screen.icons.Exists(x => x.Unlocked && x.clickable && x.Info != null && x.activatedRenderer != null && x.activatedRenderer.enabled && incompatibilities2.Contains(x.Info.challengeType)))
                                 {
                                     icon?.OnCursorSelectStart();
                                 }
@@ -832,7 +831,7 @@ public static class ChallengeManager
             }
             else
             {
-                foreach(var icon in screen.icons)
+                foreach (var icon in screen.icons)
                 {
                     if (icon.activatedRenderer.enabled && icon != currentIcon)
                     {
@@ -853,7 +852,7 @@ public static class ChallengeManager
                                     dependenciesClone.Remove(icon2.Info.challengeType);
                                 }
                             }
-                            if(dependenciesClone.Count > 0)
+                            if (dependenciesClone.Count > 0)
                             {
                                 icon?.OnCursorSelectStart();
                             }
