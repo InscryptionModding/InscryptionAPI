@@ -54,7 +54,6 @@ public static class CostProperties
             bool refreshCost = DidCostsChangeThisFrame();
             if (refreshCost)
             {
-                InscryptionAPIPlugin.Logger.LogError("[RefreshCostMonoBehaviour] Costs changed. Refreshing...");
                 playableCard.RenderCard();
             }
         }
