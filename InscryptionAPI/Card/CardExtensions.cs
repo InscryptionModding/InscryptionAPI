@@ -1573,10 +1573,6 @@ public static class CardExtensions
             {
                 return null;
             }
-            if (cardList.Count > 1)
-            {
-                InscryptionAPIPlugin.Logger.LogError("[ChangeCardCostGetter] More than 1 card uses the same card info so dynamic costs may not work correctly! " + cardInfo.displayedName);
-            }
             return cardList[0];
         }
         return null;

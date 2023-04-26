@@ -183,6 +183,10 @@ internal static class Card_SetInfo
             if (card == null)
             {
                 cardList.Add(card);
+                if (cardList.Count > 1)
+                {
+                    InscryptionAPIPlugin.Logger.LogWarning($"More than 1 card are using the same card info. This can cause unexpected problems with dynamic costs! {info.displayedName}");
+                }
             }
         }
         else

@@ -79,11 +79,8 @@ public static class Part1CardCostRender
         }
 
         int energyCost = playableCard != null ? playableCard.EnergyCost : cardInfo.EnergyCost;
-        PatchPlugin.Logger.LogInfo("[Part1SpriteFinal] Energy: " + energyCost + " " + cardInfo.displayedName);
         if (energyCost > 0)
-        {
             list.Add(GetTextureByName($"energy_cost_{energyCost}"));
-        }
 
         int bonesCost = playableCard != null ? playableCard.BonesCost() : cardInfo.BonesCost;
         if (bonesCost > 0)
