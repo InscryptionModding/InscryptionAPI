@@ -171,7 +171,7 @@ internal static class Card_SetInfo
                 {
                     // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                     cardList.RemoveAt(i--);
-                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removing Card from CardInfo at index {(i + 1)} {cardList.Count} left");
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removed null Card from list at index {(i + 1)}. {cardList.Count} left");
                 }
                 else if (cardList[i] == playableCard)
                 {
@@ -181,6 +181,7 @@ internal static class Card_SetInfo
             
             if (card == null)
             {
+                InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added CardInfo to existing list {info.displayedName} at {cardList.Count}");
                 cardList.Add(card);
                 if (cardList.Count > 1)
                 {
@@ -194,6 +195,7 @@ internal static class Card_SetInfo
             {
                 playableCard
             });
+            InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added CardInfo to new list{info.displayedName}");
         }
     }
 }
