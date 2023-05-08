@@ -366,7 +366,7 @@ public static class CardExtensions
     /// Set any number of tribes to the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="tribes">The tribes to add</param>
+    /// <param name="tribes">The tribes to add.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTribes(this CardInfo info, params Tribe[] tribes)
     {
@@ -374,6 +374,22 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets whether the card should be Gemified by default. If false, changes all pre-existing Mods that Gemify the card so that they don't anymore.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="gemify">Whether the card should be gemified.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetGemify(this CardInfo info, bool gemify = true)
+    {
+        if (gemify && !info.Mods.Exists(x => x.gemify))
+            info.Mods.Add(new() { gemify = true });
+        else if (!gemify)
+            info.Mods.FindAll(x => x.gemify).ForEach(y => y.gemify = false);
+
+        return info;
+    }
+    
     #region MetaCategories
 
     /// <summary>
