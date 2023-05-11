@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.12.1
+- Fixed weird spacing for Mox cost textures in Act 1
+- Added SetGemify card extension for making cards Gemified by default
+- Added new SetGemsCost card extension that uses params
+- Added 'plus' textures for costs above supported values
+- Removed empty cost textures for Blood, Bones, Energy, Mox from the community patches
+- Rearranged order of Mox cost textures to align with order of Mox on the Gem Module
+- Minor visual fixes to Blood cost textures above 5
+
 ## 2.12.0
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
 - Fixed softlock in Act 1 during death card creation
