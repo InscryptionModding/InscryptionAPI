@@ -1571,20 +1571,24 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets all Cards or PlayableCards using this specific CardInfo.
+    /// Gets a PlayableCards using this specific CardInfo.
     /// Sometimes inscryption clones CardInfo's and sometimes its reused so there may be more than 1 card using the same CardInfo
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
-    /// <returns>Playable Cards on the board, in your hand or on display somewhere</returns>
+    /// <returns>Playable Card on the board, in your hand or on display somewhere</returns>
     public static PlayableCard GetPlayableCard(this CardInfo cardInfo)
     {
-        if (CostProperties.CostProperties.CardInfoToCard.TryGetValue(cardInfo, out List<PlayableCard> cardList))
+        if (CostProperties.CostProperties.CardInfoToCard.TryGetValue(cardInfo, out List<WeakReference<PlayableCard>> cardList))
         {
-            if (cardList.Count == 0)
+            for (int i = cardList.Count - 1; i >= 0; i--)
             {
-                return null;
+                if (cardList[i].TryGetTarget(out PlayableCard card) && card != null)
+                {
+                    return card;
+                }
+                
+                cardList.RemoveAt(i);
             }
-            return cardList[0];
         }
         return null;
     }

@@ -8,7 +8,7 @@ namespace InscryptionAPI.Card.CostProperties;
 [HarmonyPatch]
 public static class CostProperties
 {
-    public static ConditionalWeakTable<CardInfo, List<PlayableCard>> CardInfoToCard = new();
+    public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToCard = new();
     
     /// <summary>
     /// ChangeCardCostGetter patches BloodCost so we can change the cost on the fly
@@ -41,8 +41,8 @@ public static class CostProperties
         private PlayableCard playableCard;
         private int cachedBloodCost = -1;
         private int cachedBoneCost = -1;
-        private List<GemType> cachedGemsCost = new List<GemType>();
         private int cachedEnergyCost = -1;
+        private List<GemType> cachedGemsCost = new List<GemType>();
 
         private void Awake()
         {
@@ -119,7 +119,13 @@ internal static class ChangeCardCostGetter
             return true;
         }
         
-        __result = card.BloodCost();
+        int num = card.BloodCost();
+        if (IsUsingBlueGem(card))
+        {
+            num--;
+        }
+        
+        __result = Mathf.Max(0, num);
         return false;
     }
     
@@ -132,7 +138,13 @@ internal static class ChangeCardCostGetter
             return true;
         }
         
-        __result = card.BonesCost();
+        int num = card.BonesCost();
+        if (IsUsingBlueGem(card))
+        {
+            num--;
+        }
+        
+        __result = Mathf.Max(0, num);
         return false;
     }
     
@@ -145,8 +157,50 @@ internal static class ChangeCardCostGetter
             return true;
         }
         
-        __result = card.GemsCost();
+        List<GemType> gems = new  List<GemType>(card.GemsCost());
+        if (gems.Count > 0 && IsUsingBlueGem(card))
+        {
+            gems.RemoveAt(0);
+        }
+
+        __result = gems;
         return false;
+    }
+    
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.EnergyCost), MethodType.Getter), HarmonyPostfix]
+    public static void EnergyCost(PlayableCard __instance, ref int __result)
+    {
+        if (!Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue))
+        {
+            return;
+        }
+
+        if (__instance.Info.Gemified)
+        {
+            // --1 already applied by CardInfo logic
+            return;
+        }
+
+        if (__instance.TemporaryMods.Exists((CardModificationInfo x) => x.gemify))
+        {
+            // --1 because we added it as a temporary mod
+            __result = Mathf.Max(0, __result - 1);
+        };
+    }
+
+    private static bool IsUsingBlueGem(PlayableCard card)
+    {
+        if (!Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue))
+        {
+            return false;
+        }
+
+        if (card.Info.Gemified)
+        {
+            return true;
+        }
+        
+        return card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);
     }
 }
 
@@ -162,27 +216,25 @@ internal static class Card_SetInfo
         
         CardInfo info = playableCard.Info;
         
-        if (CostProperties.CardInfoToCard.TryGetValue(info, out List<PlayableCard> cardList))
+        if (CostProperties.CardInfoToCard.TryGetValue(info, out List<WeakReference<PlayableCard>> cardList))
         {
             PlayableCard card = null;
-            for (int i = 0; i < cardList.Count; i++)
+            for (int i = cardList.Count - 1; i >= 0; i--)
             {
-                if (cardList[i] == null)
+                if (!cardList[i].TryGetTarget(out PlayableCard innerCard) || innerCard == null)
                 {
                     // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
-                    cardList.RemoveAt(i--);
-                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removed null Card from list at index {(i + 1)}. {cardList.Count} left");
+                    cardList.RemoveAt(i);
                 }
-                else if (cardList[i] == playableCard)
+                else
                 {
-                    card = playableCard;
+                    card = innerCard;
                 }
             }
             
             if (card == null)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added CardInfo to existing list {info.displayedName} at {cardList.Count}");
-                cardList.Add(card);
+                cardList.Add(new WeakReference<PlayableCard>(card));
                 if (cardList.Count > 1)
                 {
                     InscryptionAPIPlugin.Logger.LogWarning($"More than 1 card are using the same card info. This can cause unexpected problems with dynamic costs! {info.displayedName}");
@@ -191,11 +243,10 @@ internal static class Card_SetInfo
         }
         else
         {
-            CostProperties.CardInfoToCard.Add(info, new List<PlayableCard>()
+            CostProperties.CardInfoToCard.Add(info, new List<WeakReference<PlayableCard>>()
             {
-                playableCard
+                new WeakReference<PlayableCard>(playableCard)
             });
-            InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added CardInfo to new list{info.displayedName}");
         }
     }
 }
@@ -206,5 +257,18 @@ internal static class PlayableCard_Awake
     public static void Postfix(PlayableCard __instance)
     {
         __instance.gameObject.AddComponent<CostProperties.RefreshCostMonoBehaviour>();
+    }
+}
+
+[HarmonyPatch(typeof(GameFlowManager), nameof(GameFlowManager.TransitionFrom))]
+internal static class GameFlowManager_TransitionFrom
+{
+    public static void Postfix(GameState gameState)
+    {
+        if (gameState != GameState.CardBattle)
+            return;
+        
+        // NOTE: This is a hack to clear the table
+        CostProperties.CardInfoToCard = new ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>>(); 
     }
 }
