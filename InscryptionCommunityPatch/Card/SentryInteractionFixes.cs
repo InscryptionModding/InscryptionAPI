@@ -62,7 +62,7 @@ public class SentryInteractionFixes
                 {
                     if (PatchPlugin.configFullDebug.Value)
                         PatchPlugin.Logger.LogDebug($"{instance.Card} is frozen, unpausing animation.");
-                    
+
                     midCombat = true; // indicates that we need to restart the attack animation at the end of the sequence
 
                     ShowPart3Turret(instance.Card, opposingCard);

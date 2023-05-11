@@ -10,7 +10,7 @@ public class EncounterBuilderBlueprintData : EncounterBlueprintData
     {
         this.region = region;
         this.name = name;
-        region.encounters = region.encounters ?? new();
+        region.encounters ??= new();
         region.encounters.Add(this);
     }
 }

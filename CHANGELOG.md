@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.12.0
+- Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
+- Fixed softlock in Act 1 during death card creation
+- Fixed custom cards that start Gemified not working as intended when obtained in-game
+- Potentially fixed softlock when making terrain for a region
+- Added further checks to challenge icon-related patch to prevent softlocks
+- Added decal, appearance behaviour, and Gemified card support for Act 2 cards
+- Added Singleton<OpponentGemsManager> for keeping track of opponent gems
+- Added new helper method for creating Sprites from resource files in an assembly
+- Added new SpriteType for creating pixel card decals
+- Gemified visuals now work correctly for Act 3 opponents
+- Cost choice node now offers each Mox colour individually
+- Added new config "Default Drone" to change the model and position of the Energy Drone
+- Amorphous sigil now activates when used by opponents or obtained via evolution/temp mod
+- Owned Mox in Act 1 now updates when a card is hooked by the Angler or via the Hook item
+
 ## 2.11.2
 - Fixed starter deck custom unlocks not working
 - Fixed card icons not being properly centred for starter decks with 4+ cards
