@@ -14,15 +14,11 @@ internal class Part1HintColourFixes
         if (card.EnergyCost > Singleton<ResourcesManager>.Instance.PlayerEnergy)
         {
             DialogueEvent dialogueEvent = DialogueDataUtil.Data.GetEvent(HintsHandler.notEnoughEnergyHint.dialogueId);
-            dialogueEvent.mainLines.lines.ForEach(x => PatchPlugin.Logger.LogInfo($"main {x.text}"));
-            dialogueEvent.repeatLines.ForEach(x => x.lines.ForEach(y => PatchPlugin.Logger.LogInfo($"repeat {y.text}")));
             if (SaveManager.SaveFile.IsPart1)
                 ModifyDialogueEventLines(dialogueEvent, x => x.text = RemoveColourCodes(x.text, "[c:bB]"));
             else
                 ModifyDialogueEventLines(dialogueEvent, x => x.text = ReAddColourCodes(x.text, "[c:bB]"));
 
-            dialogueEvent.mainLines.lines.ForEach(x => PatchPlugin.Logger.LogInfo($"main2 {x.text}"));
-            dialogueEvent.repeatLines.ForEach(x => x.lines.ForEach(y => PatchPlugin.Logger.LogInfo($"repeat2 {y.text}")));
             return;
         }
     }
