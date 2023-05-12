@@ -1,5 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using UnityEngine;
 
@@ -260,14 +263,17 @@ internal static class PlayableCard_Awake
     }
 }
 
-[HarmonyPatch(typeof(GameFlowManager), nameof(GameFlowManager.TransitionFrom))]
-internal static class GameFlowManager_TransitionFrom
+[HarmonyPatch]
+internal static class TurnManager_CleanupPhase
 {
-    public static void Postfix(GameState gameState)
+    public static IEnumerable<MethodBase> TargetMethods()
     {
-        if (gameState != GameState.CardBattle)
-            return;
-        
+        yield return AccessTools.Method(typeof(TurnManager), nameof(TurnManager.CleanupPhase));
+        yield return AccessTools.Method(typeof(GBCEncounterManager), nameof(GBCEncounterManager.LoadOverworldScene));
+    }
+    
+    public static void Postfix()
+    {
         // NOTE: This is a hack to clear the table
         CostProperties.CardInfoToCard = new ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>>(); 
     }
