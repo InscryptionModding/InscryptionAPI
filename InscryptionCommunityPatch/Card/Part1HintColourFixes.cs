@@ -3,7 +3,7 @@ using HarmonyLib;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace InscryptionCommunityPatch.Sequencers;
+namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
 internal class Part1HintColourFixes
@@ -40,10 +40,10 @@ internal class Part1HintColourFixes
         string newText = text;
         if (!text.StartsWith(startingCode))
             newText = startingCode + text;
-        
+
         if (!text.EndsWith("[c:]"))
             newText += "[c:]";
-        
+
         return newText;
     }
 }
