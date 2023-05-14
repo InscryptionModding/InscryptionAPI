@@ -404,10 +404,16 @@ internal static class ChangeDeathCardExamineDialogue
         if (info.NumAbilities == 1)
             return string.Format(Localization.Translate("A [c:bR]Sigil of {0}[c:] from the [c:bR]{1}[c:]."), arg, info.DisplayedNameLocalized);
 
-        if (info.NumAbilities == 2)
+        if (info.NumAbilities > 1)
         {
             string arg2 = Localization.Translate(AbilitiesUtil.GetInfo(info.Abilities[1]).rulebookName);
-            return string.Format(Localization.Translate("A [c:bR]Sigil of {0}[c:] and a [c:bR]Sigil of {1}[c:] from the [c:bR]{2}[c:]."), arg, arg2, info.DisplayedNameLocalized);
+            if (info.NumAbilities == 2)
+                return string.Format(Localization.Translate("A [c:bR]Sigil of {0}[c:] and a [c:bR]Sigil of {1}[c:] from the [c:bR]{2}[c:]."), arg, arg2, info.DisplayedNameLocalized);
+
+            string arg3 = Localization.Translate(AbilitiesUtil.GetInfo(info.Abilities[2]).rulebookName);
+            if (info.NumAbilities == 3)
+                return string.Format(Localization.Translate("A [c:bR]Sigil of {0}[c:], a [c:bR]Sigil of {1}[c:], and a [c:bR]Sigil of {2}[c:] from the [c:bR]{3}[c:]."), arg, arg2, arg3, info.DisplayedNameLocalized);
+          
         }
 
         return string.Format(Localization.Translate("A [c:bR]multitude of sigils[c:] from the [c:bR]{0}[c:]."), info.DisplayedNameLocalized);
