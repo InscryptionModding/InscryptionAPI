@@ -366,7 +366,7 @@ public static class CardExtensions
     /// Set any number of tribes to the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="tribes">The tribes to add</param>
+    /// <param name="tribes">The tribes to add.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTribes(this CardInfo info, params Tribe[] tribes)
     {

@@ -55,7 +55,7 @@ public static class CardModificationInfoManager
         // Re-add persistent properties
         foreach (CardInfo card in CardManager.AllCardsCopy)
         {
-            foreach (CardModificationInfo mod in card.Mods.Where(x => x.HasCustomProperties()))
+            foreach (CardModificationInfo mod in card.Mods.Where(x => x.HasCustomPropertiesId()))
             {
                 foreach (string property in GetCustomPropertiesFromId(mod.singletonId))
                 {
@@ -63,7 +63,7 @@ public static class CardModificationInfoManager
                     mod.SetExtendedProperty(split[0], split[1]);
                 }
             }
-            foreach (CardModificationInfo mod in card.Mods.Where(x => x.HasCustomCosts()))
+            foreach (CardModificationInfo mod in card.Mods.Where(x => x.HasCustomCostsId()))
             {
                 foreach (string pair in GetCustomCostsFromId(mod.singletonId))
                 {
@@ -85,7 +85,7 @@ public static class CardModificationInfoManager
                 int endIndex = customCosts.IndexOf("]");
                 customCosts = customCosts.Substring(0, endIndex).Replace("]", "");
 
-                customCosts.Split('_').ForEach(x => costList.Add(x));
+                customCosts.Split(';').ForEach(x => costList.Add(x));
             }
         }
         return costList;
@@ -102,7 +102,7 @@ public static class CardModificationInfoManager
                 int endIndex = customCosts.IndexOf("]");
                 customCosts = customCosts.Substring(0, endIndex).Replace("]", "");
 
-                customCosts.Split('_').ForEach(x => costList.Add(x));
+                customCosts.Split(';').ForEach(x => costList.Add(x));
             }
         }
         return costList;
@@ -119,7 +119,7 @@ public static class CardModificationInfoManager
     [HarmonyPrefix]
     private static void AddCustomCostsFromMods(CardInfo info)
     {
-        foreach (CardModificationInfo mod in info.Mods.Where(x => x.HasCustomCosts()))
+        foreach (CardModificationInfo mod in info.Mods.Where(x => x.HasCustomCostsId()))
         {
             foreach (string pair in GetCustomCostsFromId(mod.singletonId))
             {

@@ -9,34 +9,197 @@ namespace InscryptionAPI.Card;
 public static class CardModificationInfoExtensions
 {
     public static bool HasDeathCardInfo(this CardModificationInfo mod) => mod.deathCardInfo != null;
-    public static bool HasCustomCosts(this string singletonId) => singletonId != null && singletonId.Contains("[CustomCosts:");
-    public static bool HasCustomProperties(this string singletonId) => singletonId != null && singletonId.Contains("[Properties:");
 
-    public static bool HasCustomCosts(this CardModificationInfo mod) => mod.singletonId.HasCustomCosts();
-    public static bool HasCustomProperties(this CardModificationInfo mod) => mod.singletonId.HasCustomProperties();
-
-    public static CardModificationInfo AddCustomCost(this CardModificationInfo mod, string costName, object value)
+    #region Setters
+    public static CardModificationInfo SetNameReplacement(this CardModificationInfo mod, string name = null)
     {
-        mod.singletonId ??= "";
-        if (mod.HasCustomCosts())
-        {
-            int start = mod.singletonId.IndexOf("[CustomCosts:");
-            string currentCosts = mod.singletonId.Substring(start).Replace("[CustomCosts:", "");
-            int end = currentCosts.IndexOf("]");
-            currentCosts = currentCosts.Substring(0, end + 1).Replace("]", "");
-            string newCosts = $"{currentCosts}_{costName},{value}";
-            mod.singletonId.Replace(currentCosts, newCosts);
-        }
-        else
-            mod.singletonId += $"[CustomCosts:{costName},{value}]";
+        if (name != null)
+            mod.nameReplacement = name;
         return mod;
     }
-    public static string CleanSingletonId(this CardModificationInfo mod) => mod.SingletonIdWithoutCosts().SingletonIdWithoutProperties();
-    public static string SingletonIdWithoutCosts(this CardModificationInfo mod) => mod.singletonId.SingletonIdWithoutCosts();
-    public static string SingletonIdWithoutProperties(this CardModificationInfo mod) => mod.singletonId.SingletonIdWithoutProperties();
-    public static string SingletonIdWithoutCosts(this string singletonId)
+    public static CardModificationInfo SetSingletonId(this CardModificationInfo mod, string id = null)
     {
-        if (singletonId.IsNullOrWhitespace() || !singletonId.HasCustomCosts())
+        if (id != null)
+            mod.singletonId = id;
+        return mod;
+    }
+    public static CardModificationInfo SetAttackAndHealth(this CardModificationInfo mod, int attack = 0, int health = 0)
+    {
+        mod.attackAdjustment = attack;
+        mod.healthAdjustment = health;
+        return mod;
+    }
+    public static CardModificationInfo SetCosts(this CardModificationInfo mod, int blood = 0, int bones = 0, int energy = 0, List<GemType> gems = null)
+    {
+        return mod.SetBloodCost(blood).SetBonesCost(bones).SetEnergyCost(energy).SetGemsCost(gems);
+    }
+    public static CardModificationInfo SetBloodCost(this CardModificationInfo mod, int cost = 0)
+    {
+        mod.bloodCostAdjustment = cost;
+        return mod;
+    }
+    public static CardModificationInfo SetBonesCost(this CardModificationInfo mod, int cost = 0)
+    {
+        mod.bonesCostAdjustment = cost;
+        return mod;
+    }
+    public static CardModificationInfo SetEnergyCost(this CardModificationInfo mod, int cost = 0)
+    {
+        mod.energyCostAdjustment = cost;
+        return mod;
+    }
+    public static CardModificationInfo SetGemsCost(this CardModificationInfo mod, List<GemType> cost = null)
+    {
+        if (cost != null)
+            mod.addGemCost = cost;
+        return mod;
+    }
+    public static CardModificationInfo SetGemsCost(this CardModificationInfo mod, params GemType[] cost)
+    {
+        if (cost.Length > 0)
+            mod.addGemCost = cost.ToList();
+        return mod;
+    }
+    public static CardModificationInfo AddAbilities(this CardModificationInfo mod, params Ability[] abilities)
+    {
+        mod.abilities.AddRange(abilities);
+        return mod;
+    }
+    public static CardModificationInfo SetDeathCardPortrait(this CardModificationInfo mod,
+        CompositeFigurine.FigurineType headType = CompositeFigurine.FigurineType.SettlerMan,
+        int mouthIndex = 0, int eyesIndex = 0, bool lostEye = false)
+    {
+        mod.deathCardInfo = new(headType, mouthIndex, eyesIndex) { lostEye = lostEye };
+        return mod;
+    }
+
+    #endregion
+
+    #region Singleton ID
+    public static bool HasCustomCostId(this CardModificationInfo mod, string costName) => mod.singletonId.HasCustomCostId(costName);
+    public static bool HasCustomPropertyId(this CardModificationInfo mod, string propertyName) => mod.singletonId.HasCustomPropertyId(propertyName);
+
+    public static bool HasCustomCostId(this string singletonId, string costName) => singletonId.HasCustomCostsId() && singletonId.Contains(costName);
+    public static bool HasCustomPropertyId(this string singletonId, string propertyName) => singletonId.HasCustomPropertiesId() && singletonId.Contains(propertyName);
+
+    public static bool HasCustomCostsId(this CardModificationInfo mod) => mod.singletonId.HasCustomCostsId();
+    public static bool HasCustomPropertiesId(this CardModificationInfo mod) => mod.singletonId.HasCustomPropertiesId();
+
+    public static bool HasCustomCostsId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains("[CustomCosts:");
+    public static bool HasCustomPropertiesId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains("[Properties:");
+
+    public static CardModificationInfo SetCustomCostId(this CardModificationInfo mod, string costName, object value)
+    {
+        string valuePair = costName + "," + value;
+        if (mod.singletonId.IsNullOrWhitespace())
+        {
+            mod.singletonId = $"[CustomCosts:{valuePair}]";
+            return mod;
+        }
+        if (!mod.HasCustomCostsId())
+        {
+            mod.singletonId += $"[CustomCosts:{valuePair}]";
+            return mod;
+        }
+        int startOf = mod.singletonId.IndexOf("[CustomCosts:");
+        string currentCosts = mod.singletonId.Substring(startOf);
+        int endOf = currentCosts.IndexOf("]");
+        currentCosts = currentCosts.Substring(0, endOf + 1);
+        if (mod.HasCustomCostId(costName)) // update cost value
+        {
+            int costIdx = currentCosts.IndexOf(costName + ",");
+            int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
+            if (valueIdx == -1)
+                valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
+
+            string valueToReplace = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
+            mod.singletonId.Replace(currentCosts, currentCosts.Replace(valueToReplace, value.ToString()));
+            return mod;
+        }
+        currentCosts = currentCosts.Replace("]", "");
+        string newCosts = $"{currentCosts};{valuePair}]";
+        mod.singletonId.Replace(currentCosts, newCosts);
+
+        return mod;
+    }
+    public static string GetCustomCostId(this CardModificationInfo mod, string costName)
+    {
+        if (!mod.HasCustomCostId(costName))
+            return null;
+
+        int startOf = mod.singletonId.IndexOf("[CustomCosts:");
+        string currentCosts = mod.singletonId.Substring(startOf);
+        int endOf = currentCosts.IndexOf("]");
+        currentCosts = currentCosts.Substring(0, endOf + 1);
+
+        int costIdx = currentCosts.IndexOf(costName + ",");
+        int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
+        if (valueIdx == -1)
+            valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
+
+        string value = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
+        return value;
+    }
+    public static CardModificationInfo SetPropertiesId(this CardModificationInfo mod, string propertyName, object value)
+    {
+        string valuePair = propertyName + "," + value;
+        if (mod.singletonId.IsNullOrWhitespace())
+        {
+            mod.singletonId = $"[Properties:{valuePair}]";
+            return mod;
+        }
+        if (!mod.HasCustomPropertiesId())
+        {
+            mod.singletonId += $"[Properties:{valuePair}]";
+            return mod;
+        }
+        int startOf = mod.singletonId.IndexOf("[Properties:");
+        string currentCosts = mod.singletonId.Substring(startOf);
+        int endOf = currentCosts.IndexOf("]");
+        currentCosts = currentCosts.Substring(0, endOf + 1);
+        if (mod.HasCustomPropertyId(propertyName)) // update property value
+        {
+            int costIdx = currentCosts.IndexOf(propertyName + ",");
+            int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
+            if (valueIdx == -1)
+                valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
+
+            string valueToReplace = currentCosts.Substring(costIdx, valueIdx).Replace(propertyName + ",", "");
+            mod.singletonId.Replace(currentCosts, currentCosts.Replace(valueToReplace, value.ToString()));
+            return mod;
+        }
+        currentCosts = currentCosts.Replace("]", "");
+        string newCosts = $"{currentCosts};{valuePair}]";
+        mod.singletonId.Replace(currentCosts, newCosts);
+
+        return mod;
+    }
+    public static string GetCustomPropertyId(this CardModificationInfo mod, string costName)
+    {
+        if (!mod.HasCustomPropertyId(costName))
+            return null;
+
+        int startOf = mod.singletonId.IndexOf("[Properties:");
+        string currentCosts = mod.singletonId.Substring(startOf);
+        int endOf = currentCosts.IndexOf("]");
+        currentCosts = currentCosts.Substring(0, endOf + 1);
+
+        int costIdx = currentCosts.IndexOf(costName + ",");
+        int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
+        if (valueIdx == -1)
+            valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
+
+        string value = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
+        return value;
+    }
+
+    #region ID Getters
+    public static string CleanId(this CardModificationInfo mod) => mod.IdWithoutCosts().IdWithoutProperties();
+    public static string IdWithoutCosts(this CardModificationInfo mod) => mod.singletonId.IdWithoutCosts();
+    public static string IdWithoutProperties(this CardModificationInfo mod) => mod.singletonId.IdWithoutProperties();
+    public static string IdWithoutCosts(this string singletonId)
+    {
+        if (!singletonId.HasCustomCostsId())
             return singletonId;
 
         int start = singletonId.IndexOf("[CustomCosts:");
@@ -46,9 +209,9 @@ public static class CardModificationInfoExtensions
 
         return singleton;
     }
-    public static string SingletonIdWithoutProperties(this string singletonId)
+    public static string IdWithoutProperties(this string singletonId)
     {
-        if (singletonId.IsNullOrWhitespace() || !singletonId.HasCustomProperties())
+        if (!singletonId.HasCustomPropertiesId())
             return singletonId;
 
         int start = singletonId.IndexOf("[Properties:");
@@ -58,6 +221,12 @@ public static class CardModificationInfoExtensions
 
         return singleton;
     }
+
+    #endregion
+
+    #endregion
+
+    #region Extended Properties
 
     /// <summary>
     /// Adds a custom property value to the CardModificationInfo.
@@ -71,20 +240,8 @@ public static class CardModificationInfoExtensions
     {
         mod.GetCardModExtensionTable()[propertyName] = value?.ToString();
         if (addToSingletonId)
-        {
-            mod.singletonId ??= "";
-            if (mod.HasCustomProperties())
-            {
-                int start = mod.singletonId.IndexOf("[Properties:");
-                string currentCosts = mod.singletonId.Substring(start).Replace("[Properties:", "");
-                int end = currentCosts.IndexOf("]");
-                currentCosts = currentCosts.Substring(0, end + 1).Replace("]", "");
-                string newCosts = $"{currentCosts}_{propertyName},{value}";
-                mod.singletonId.Replace(currentCosts, newCosts);
-            }
-            else
-                mod.singletonId += $"[Properties:{propertyName},{value}]";
-        }
+            mod.SetPropertiesId(propertyName, value);
+
         return mod;
     }
 
@@ -135,4 +292,5 @@ public static class CardModificationInfoExtensions
         mod.GetCardModExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
     }
+#endregion
 }
