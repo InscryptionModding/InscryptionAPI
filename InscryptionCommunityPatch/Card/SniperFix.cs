@@ -51,21 +51,17 @@ public class SniperFix
                     !card.CanAttackDirectly(x)).Count);
             }
             if (card.HasAbility(Ability.SplitStrike))
-            {
                 attacks += 1;
-            }
+
             if (card.HasTriStrike())
             {
                 attacks += 2;
                 if (card.HasAbility(Ability.SplitStrike))
-                {
                     attacks += 1;
-                }
             }
             if (card.HasAbility(Ability.DoubleStrike))
-            {
                 attacks += 1;
-            }
+
             if (card.HasAbility(Ability.SplitStrike))
             {
                 ProgressionData.SetAbilityLearned(Ability.SplitStrike);
@@ -77,9 +73,7 @@ public class SniperFix
                 ProgressionData.SetAbilityLearned(Ability.TriStrike);
                 __result.AddRange(Singleton<BoardManager>.Instance.GetAdjacentSlots(card.Slot.opposingSlot));
                 if (!__result.Contains(card.Slot.opposingSlot))
-                {
                     __result.Add(card.Slot.opposingSlot);
-                }
             }
             if (card.HasAbility(Ability.DoubleStrike))
             {
@@ -94,13 +88,14 @@ public class SniperFix
                 bool isAttackingDefaultSlot = !card.HasTriStrike() && !card.HasAbility(Ability.SplitStrike);
                 CardSlot defaultslot = card.Slot.opposingSlot;
 
-                List<CardSlot> alteredOpposings = new List<CardSlot>();
+                List<CardSlot> alteredOpposings = new();
                 bool removeDefaultAttackSlot = false;
 
                 foreach (InscryptionAPI.Triggers.IGetOpposingSlots component in InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard<InscryptionAPI.Triggers.IGetOpposingSlots>(card))
                 {
                     if (component.RespondsToGetOpposingSlots())
                     {
+                        List<CardSlot> slots = component.GetOpposingSlots(__result, new(alteredOpposings));
                         alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
                         removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();
                     }
@@ -119,9 +114,7 @@ public class SniperFix
                 foreach (var opposing in all)
                 {
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal, original, __result ?? new(), attacks, didRemoveOriginalSlot))
-                    {
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
-                    }
                 }
                 dummyresult = __result;
                 all.Sort((x, x2) => x.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, attacks, didRemoveOriginalSlot) -
@@ -129,9 +122,7 @@ public class SniperFix
                 foreach (var opposing in all)
                 {
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), attacks, didRemoveOriginalSlot))
-                    {
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
-                    }
                 }
                 dummyresult = __result;
                 all.Sort((x, x2) => x.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, attacks, didRemoveOriginalSlot) -
@@ -139,14 +130,12 @@ public class SniperFix
                 foreach (var opposing in all)
                 {
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), attacks, didRemoveOriginalSlot))
-                    {
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
-                    }
                 }
                 if (didRemoveOriginalSlot && card.HasTriStrike())
-                {
                     __result.Add(card.Slot.opposingSlot);
-                }
+
+                attacks += __result.Count;
             }
             catch { }
             return attacks;
