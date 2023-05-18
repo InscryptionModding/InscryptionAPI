@@ -3536,6 +3536,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.LacksTrait
   nameWithType: CardExtensions.LacksTrait
+- uid: InscryptionAPI.Card.CardExtensions.ModPrefixIs(DiskCardGame.CardInfo,System.String)
+  name: ModPrefixIs(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_ModPrefixIs_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.ModPrefixIs(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.ModPrefixIs(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.ModPrefixIs(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.ModPrefixIs*
+  name: ModPrefixIs
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_ModPrefixIs_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.ModPrefixIs
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.ModPrefixIs
+  nameWithType: CardExtensions.ModPrefixIs
 - uid: InscryptionAPI.Card.CardExtensions.NotDead(DiskCardGame.PlayableCard)
   name: NotDead(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_NotDead_DiskCardGame_PlayableCard_
@@ -4500,6 +4513,529 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardManager.Transpiler
   nameWithType: CardManager.Transpiler
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions
+  name: CardModificationInfoExtensions
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html
+  commentId: T:InscryptionAPI.Card.CardModificationInfoExtensions
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions
+  nameWithType: CardModificationInfoExtensions
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities(DiskCardGame.CardModificationInfo,DiskCardGame.Ability[])
+  name: AddAbilities(CardModificationInfo, Ability[])
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddAbilities_DiskCardGame_CardModificationInfo_DiskCardGame_Ability___
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities(DiskCardGame.CardModificationInfo,DiskCardGame.Ability[])
+  name.vb: AddAbilities(CardModificationInfo, Ability())
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities(DiskCardGame.CardModificationInfo, DiskCardGame.Ability[])
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities(DiskCardGame.CardModificationInfo, DiskCardGame.Ability())
+  nameWithType: CardModificationInfoExtensions.AddAbilities(CardModificationInfo, Ability[])
+  nameWithType.vb: CardModificationInfoExtensions.AddAbilities(CardModificationInfo, Ability())
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities*
+  name: AddAbilities
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities
+  nameWithType: CardModificationInfoExtensions.AddAbilities
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId(DiskCardGame.CardModificationInfo)
+  name: CleanId(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_CleanId_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.CleanId(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.CleanId(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId*
+  name: CleanId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_CleanId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.CleanId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId
+  nameWithType: CardModificationInfoExtensions.CleanId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId(DiskCardGame.CardModificationInfo,System.String)
+  name: GetCustomCostId(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetCustomCostId_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetCustomCostId(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId*
+  name: GetCustomCostId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetCustomCostId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomCostId
+  nameWithType: CardModificationInfoExtensions.GetCustomCostId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId(DiskCardGame.CardModificationInfo,System.String)
+  name: GetCustomPropertyId(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetCustomPropertyId_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetCustomPropertyId(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId*
+  name: GetCustomPropertyId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetCustomPropertyId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetCustomPropertyId
+  nameWithType: CardModificationInfoExtensions.GetCustomPropertyId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty(DiskCardGame.CardModificationInfo,System.String)
+  name: GetExtendedProperty(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedProperty_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetExtendedProperty(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty*
+  name: GetExtendedProperty
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedProperty
+  nameWithType: CardModificationInfoExtensions.GetExtendedProperty
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool(DiskCardGame.CardModificationInfo,System.String)
+  name: GetExtendedPropertyAsBool(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsBool_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsBool(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool*
+  name: GetExtendedPropertyAsBool
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsBool_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsBool
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsBool
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat(DiskCardGame.CardModificationInfo,System.String)
+  name: GetExtendedPropertyAsFloat(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsFloat_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsFloat(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat*
+  name: GetExtendedPropertyAsFloat
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsFloat_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsFloat
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsFloat
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt(DiskCardGame.CardModificationInfo,System.String)
+  name: GetExtendedPropertyAsInt(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsInt_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsInt(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt*
+  name: GetExtendedPropertyAsInt
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_GetExtendedPropertyAsInt_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.GetExtendedPropertyAsInt
+  nameWithType: CardModificationInfoExtensions.GetExtendedPropertyAsInt
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(DiskCardGame.CardModificationInfo,System.String)
+  name: HasCustomCostId(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostId_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomCostId(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(System.String,System.String)
+  name: HasCustomCostId(String, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostId_System_String_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(System.String,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId(System.String, System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomCostId(String, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId*
+  name: HasCustomCostId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostId
+  nameWithType: CardModificationInfoExtensions.HasCustomCostId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(DiskCardGame.CardModificationInfo)
+  name: HasCustomCostsId(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostsId_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.HasCustomCostsId(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(System.String)
+  name: HasCustomCostsId(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostsId_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId(System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomCostsId(String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId*
+  name: HasCustomCostsId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomCostsId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomCostsId
+  nameWithType: CardModificationInfoExtensions.HasCustomCostsId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(DiskCardGame.CardModificationInfo)
+  name: HasCustomPropertiesId(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertiesId_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertiesId(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(System.String)
+  name: HasCustomPropertiesId(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertiesId_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId(System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertiesId(String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId*
+  name: HasCustomPropertiesId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertiesId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertiesId
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertiesId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(DiskCardGame.CardModificationInfo,System.String)
+  name: HasCustomPropertyId(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertyId_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertyId(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(System.String,System.String)
+  name: HasCustomPropertyId(String, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertyId_System_String_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(System.String,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId(System.String, System.String)
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertyId(String, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId*
+  name: HasCustomPropertyId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasCustomPropertyId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasCustomPropertyId
+  nameWithType: CardModificationInfoExtensions.HasCustomPropertyId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo(DiskCardGame.CardModificationInfo)
+  name: HasDeathCardInfo(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasDeathCardInfo_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.HasDeathCardInfo(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo*
+  name: HasDeathCardInfo
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_HasDeathCardInfo_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.HasDeathCardInfo
+  nameWithType: CardModificationInfoExtensions.HasDeathCardInfo
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(DiskCardGame.CardModificationInfo)
+  name: IdWithoutCosts(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutCosts_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.IdWithoutCosts(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(System.String)
+  name: IdWithoutCosts(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutCosts_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts(System.String)
+  nameWithType: CardModificationInfoExtensions.IdWithoutCosts(String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts*
+  name: IdWithoutCosts
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutCosts_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutCosts
+  nameWithType: CardModificationInfoExtensions.IdWithoutCosts
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(DiskCardGame.CardModificationInfo)
+  name: IdWithoutProperties(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutProperties_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.IdWithoutProperties(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(System.String)
+  name: IdWithoutProperties(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutProperties_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties(System.String)
+  nameWithType: CardModificationInfoExtensions.IdWithoutProperties(String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties*
+  name: IdWithoutProperties
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IdWithoutProperties_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties
+  nameWithType: CardModificationInfoExtensions.IdWithoutProperties
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth(DiskCardGame.CardModificationInfo,System.Int32,System.Int32)
+  name: SetAttackAndHealth(CardModificationInfo, Int32, Int32)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetAttackAndHealth_DiskCardGame_CardModificationInfo_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth(DiskCardGame.CardModificationInfo,System.Int32,System.Int32)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth(DiskCardGame.CardModificationInfo, System.Int32, System.Int32)
+  nameWithType: CardModificationInfoExtensions.SetAttackAndHealth(CardModificationInfo, Int32, Int32)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth*
+  name: SetAttackAndHealth
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetAttackAndHealth_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth
+  nameWithType: CardModificationInfoExtensions.SetAttackAndHealth
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost(DiskCardGame.CardModificationInfo,System.Int32)
+  name: SetBloodCost(CardModificationInfo, Int32)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetBloodCost_DiskCardGame_CardModificationInfo_System_Int32_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost(DiskCardGame.CardModificationInfo,System.Int32)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost(DiskCardGame.CardModificationInfo, System.Int32)
+  nameWithType: CardModificationInfoExtensions.SetBloodCost(CardModificationInfo, Int32)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost*
+  name: SetBloodCost
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetBloodCost_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetBloodCost
+  nameWithType: CardModificationInfoExtensions.SetBloodCost
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost(DiskCardGame.CardModificationInfo,System.Int32)
+  name: SetBonesCost(CardModificationInfo, Int32)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetBonesCost_DiskCardGame_CardModificationInfo_System_Int32_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost(DiskCardGame.CardModificationInfo,System.Int32)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost(DiskCardGame.CardModificationInfo, System.Int32)
+  nameWithType: CardModificationInfoExtensions.SetBonesCost(CardModificationInfo, Int32)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost*
+  name: SetBonesCost
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetBonesCost_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetBonesCost
+  nameWithType: CardModificationInfoExtensions.SetBonesCost
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts(DiskCardGame.CardModificationInfo,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType})
+  name: SetCosts(CardModificationInfo, Int32, Int32, Int32, List<GemType>)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetCosts_DiskCardGame_CardModificationInfo_System_Int32_System_Int32_System_Int32_List_DiskCardGame_GemType__
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts(DiskCardGame.CardModificationInfo,System.Int32,System.Int32,System.Int32,List{DiskCardGame.GemType})
+  name.vb: SetCosts(CardModificationInfo, Int32, Int32, Int32, List(Of GemType))
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts(DiskCardGame.CardModificationInfo, System.Int32, System.Int32, System.Int32, List<DiskCardGame.GemType>)
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts(DiskCardGame.CardModificationInfo, System.Int32, System.Int32, System.Int32, List(Of DiskCardGame.GemType))
+  nameWithType: CardModificationInfoExtensions.SetCosts(CardModificationInfo, Int32, Int32, Int32, List<GemType>)
+  nameWithType.vb: CardModificationInfoExtensions.SetCosts(CardModificationInfo, Int32, Int32, Int32, List(Of GemType))
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts*
+  name: SetCosts
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetCosts_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetCosts
+  nameWithType: CardModificationInfoExtensions.SetCosts
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId(DiskCardGame.CardModificationInfo,System.String,System.Object)
+  name: SetCustomCostId(CardModificationInfo, String, Object)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetCustomCostId_DiskCardGame_CardModificationInfo_System_String_System_Object_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId(DiskCardGame.CardModificationInfo,System.String,System.Object)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId(DiskCardGame.CardModificationInfo, System.String, System.Object)
+  nameWithType: CardModificationInfoExtensions.SetCustomCostId(CardModificationInfo, String, Object)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId*
+  name: SetCustomCostId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetCustomCostId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetCustomCostId
+  nameWithType: CardModificationInfoExtensions.SetCustomCostId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait(DiskCardGame.CardModificationInfo,DiskCardGame.CompositeFigurine.FigurineType,System.Int32,System.Int32,System.Boolean)
+  name: SetDeathCardPortrait(CardModificationInfo, CompositeFigurine.FigurineType, Int32, Int32, Boolean)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetDeathCardPortrait_DiskCardGame_CardModificationInfo_DiskCardGame_CompositeFigurine_FigurineType_System_Int32_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait(DiskCardGame.CardModificationInfo,DiskCardGame.CompositeFigurine.FigurineType,System.Int32,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait(DiskCardGame.CardModificationInfo, DiskCardGame.CompositeFigurine.FigurineType, System.Int32, System.Int32, System.Boolean)
+  nameWithType: CardModificationInfoExtensions.SetDeathCardPortrait(CardModificationInfo, CompositeFigurine.FigurineType, Int32, Int32, Boolean)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait*
+  name: SetDeathCardPortrait
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetDeathCardPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetDeathCardPortrait
+  nameWithType: CardModificationInfoExtensions.SetDeathCardPortrait
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost(DiskCardGame.CardModificationInfo,System.Int32)
+  name: SetEnergyCost(CardModificationInfo, Int32)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetEnergyCost_DiskCardGame_CardModificationInfo_System_Int32_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost(DiskCardGame.CardModificationInfo,System.Int32)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost(DiskCardGame.CardModificationInfo, System.Int32)
+  nameWithType: CardModificationInfoExtensions.SetEnergyCost(CardModificationInfo, Int32)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost*
+  name: SetEnergyCost
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetEnergyCost_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetEnergyCost
+  nameWithType: CardModificationInfoExtensions.SetEnergyCost
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty(DiskCardGame.CardModificationInfo,System.String,System.Object,System.Boolean)
+  name: SetExtendedProperty(CardModificationInfo, String, Object, Boolean)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetExtendedProperty_DiskCardGame_CardModificationInfo_System_String_System_Object_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty(DiskCardGame.CardModificationInfo,System.String,System.Object,System.Boolean)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty(DiskCardGame.CardModificationInfo, System.String, System.Object, System.Boolean)
+  nameWithType: CardModificationInfoExtensions.SetExtendedProperty(CardModificationInfo, String, Object, Boolean)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty*
+  name: SetExtendedProperty
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetExtendedProperty_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetExtendedProperty
+  nameWithType: CardModificationInfoExtensions.SetExtendedProperty
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo,DiskCardGame.GemType[])
+  name: SetGemsCost(CardModificationInfo, GemType[])
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetGemsCost_DiskCardGame_CardModificationInfo_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo,DiskCardGame.GemType[])
+  name.vb: SetGemsCost(CardModificationInfo, GemType())
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo, DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo, DiskCardGame.GemType())
+  nameWithType: CardModificationInfoExtensions.SetGemsCost(CardModificationInfo, GemType[])
+  nameWithType.vb: CardModificationInfoExtensions.SetGemsCost(CardModificationInfo, GemType())
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo,List{DiskCardGame.GemType})
+  name: SetGemsCost(CardModificationInfo, List<GemType>)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetGemsCost_DiskCardGame_CardModificationInfo_List_DiskCardGame_GemType__
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo,List{DiskCardGame.GemType})
+  name.vb: SetGemsCost(CardModificationInfo, List(Of GemType))
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo, List<DiskCardGame.GemType>)
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost(DiskCardGame.CardModificationInfo, List(Of DiskCardGame.GemType))
+  nameWithType: CardModificationInfoExtensions.SetGemsCost(CardModificationInfo, List<GemType>)
+  nameWithType.vb: CardModificationInfoExtensions.SetGemsCost(CardModificationInfo, List(Of GemType))
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost*
+  name: SetGemsCost
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetGemsCost_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetGemsCost
+  nameWithType: CardModificationInfoExtensions.SetGemsCost
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement(DiskCardGame.CardModificationInfo,System.String)
+  name: SetNameReplacement(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetNameReplacement_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.SetNameReplacement(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement*
+  name: SetNameReplacement
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetNameReplacement_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetNameReplacement
+  nameWithType: CardModificationInfoExtensions.SetNameReplacement
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId(DiskCardGame.CardModificationInfo,System.String,System.Object)
+  name: SetPropertiesId(CardModificationInfo, String, Object)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetPropertiesId_DiskCardGame_CardModificationInfo_System_String_System_Object_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId(DiskCardGame.CardModificationInfo,System.String,System.Object)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId(DiskCardGame.CardModificationInfo, System.String, System.Object)
+  nameWithType: CardModificationInfoExtensions.SetPropertiesId(CardModificationInfo, String, Object)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId*
+  name: SetPropertiesId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetPropertiesId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetPropertiesId
+  nameWithType: CardModificationInfoExtensions.SetPropertiesId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId(DiskCardGame.CardModificationInfo,System.String)
+  name: SetSingletonId(CardModificationInfo, String)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetSingletonId_DiskCardGame_CardModificationInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId(DiskCardGame.CardModificationInfo,System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId(DiskCardGame.CardModificationInfo, System.String)
+  nameWithType: CardModificationInfoExtensions.SetSingletonId(CardModificationInfo, String)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId*
+  name: SetSingletonId
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetSingletonId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId
+  nameWithType: CardModificationInfoExtensions.SetSingletonId
+- uid: InscryptionAPI.Card.CardModificationInfoManager
+  name: CardModificationInfoManager
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html
+  commentId: T:InscryptionAPI.Card.CardModificationInfoManager
+  fullName: InscryptionAPI.Card.CardModificationInfoManager
+  nameWithType: CardModificationInfoManager
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId(System.String)
+  name: GetCustomCostsFromId(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetCustomCostsFromId_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId(System.String)
+  nameWithType: CardModificationInfoManager.GetCustomCostsFromId(String)
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId*
+  name: GetCustomCostsFromId
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetCustomCostsFromId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetCustomCostsFromId
+  nameWithType: CardModificationInfoManager.GetCustomCostsFromId
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId(System.String)
+  name: GetCustomPropertiesFromId(String)
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetCustomPropertiesFromId_System_String_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId(System.String)
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId(System.String)
+  nameWithType: CardModificationInfoManager.GetCustomPropertiesFromId(String)
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId*
+  name: GetCustomPropertiesFromId
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetCustomPropertiesFromId_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetCustomPropertiesFromId
+  nameWithType: CardModificationInfoManager.GetCustomPropertiesFromId
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass*
+  name: GetExtendedClass
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetExtendedClass_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass
+  nameWithType: CardModificationInfoManager.GetExtendedClass
+- uid: InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass``1(DiskCardGame.CardModificationInfo)
+  name: GetExtendedClass<T>(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_GetExtendedClass__1_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass``1(DiskCardGame.CardModificationInfo)
+  name.vb: GetExtendedClass(Of T)(CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass<T>(DiskCardGame.CardModificationInfo)
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoManager.GetExtendedClass(Of T)(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoManager.GetExtendedClass<T>(CardModificationInfo)
+  nameWithType.vb: CardModificationInfoManager.GetExtendedClass(Of T)(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods
+  name: SyncCardMods()
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_SyncCardMods
+  commentId: M:InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods()
+  nameWithType: CardModificationInfoManager.SyncCardMods()
+- uid: InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods*
+  name: SyncCardMods
+  href: api/InscryptionAPI.Card.CardModificationInfoManager.html#InscryptionAPI_Card_CardModificationInfoManager_SyncCardMods_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods
+  nameWithType: CardModificationInfoManager.SyncCardMods
+- uid: InscryptionAPI.Card.DeathCardManager
+  name: DeathCardManager
+  href: api/InscryptionAPI.Card.DeathCardManager.html
+  commentId: T:InscryptionAPI.Card.DeathCardManager
+  fullName: InscryptionAPI.Card.DeathCardManager
+  nameWithType: DeathCardManager
+- uid: InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard(DiskCardGame.CardModificationInfo,System.Boolean)
+  name: AddDefaultDeathCard(CardModificationInfo, Boolean)
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_AddDefaultDeathCard_DiskCardGame_CardModificationInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard(DiskCardGame.CardModificationInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard(DiskCardGame.CardModificationInfo, System.Boolean)
+  nameWithType: DeathCardManager.AddDefaultDeathCard(CardModificationInfo, Boolean)
+- uid: InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard*
+  name: AddDefaultDeathCard
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_AddDefaultDeathCard_
+  commentId: Overload:InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard
+  nameWithType: DeathCardManager.AddDefaultDeathCard
+- uid: InscryptionAPI.Card.DeathCardManager.APIDeathCards
+  name: APIDeathCards
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_APIDeathCards
+  commentId: P:InscryptionAPI.Card.DeathCardManager.APIDeathCards
+  fullName: InscryptionAPI.Card.DeathCardManager.APIDeathCards
+  nameWithType: DeathCardManager.APIDeathCards
+- uid: InscryptionAPI.Card.DeathCardManager.APIDeathCards*
+  name: APIDeathCards
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_APIDeathCards_
+  commentId: Overload:InscryptionAPI.Card.DeathCardManager.APIDeathCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DeathCardManager.APIDeathCards
+  nameWithType: DeathCardManager.APIDeathCards
+- uid: InscryptionAPI.Card.DeathCardManager.CardPrefix
+  name: CardPrefix
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_CardPrefix
+  commentId: F:InscryptionAPI.Card.DeathCardManager.CardPrefix
+  fullName: InscryptionAPI.Card.DeathCardManager.CardPrefix
+  nameWithType: DeathCardManager.CardPrefix
+- uid: InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName(DiskCardGame.CardModificationInfo,System.Boolean)
+  name: GetAPIDeathCardName(CardModificationInfo, Boolean)
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_GetAPIDeathCardName_DiskCardGame_CardModificationInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName(DiskCardGame.CardModificationInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName(DiskCardGame.CardModificationInfo, System.Boolean)
+  nameWithType: DeathCardManager.GetAPIDeathCardName(CardModificationInfo, Boolean)
+- uid: InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName*
+  name: GetAPIDeathCardName
+  href: api/InscryptionAPI.Card.DeathCardManager.html#InscryptionAPI_Card_DeathCardManager_GetAPIDeathCardName_
+  commentId: Overload:InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName
+  nameWithType: DeathCardManager.GetAPIDeathCardName
 - uid: InscryptionAPI.Card.ExtendedAbilityBehaviour
   name: ExtendedAbilityBehaviour
   href: api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html
