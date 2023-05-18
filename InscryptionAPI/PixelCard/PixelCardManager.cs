@@ -27,6 +27,33 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
             AddDecalToCard(in __instance);
     }
 
+    [HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.UpdateBackground))]
+    public class PixelCardUpdateBackgroundPatch
+    {
+        [HarmonyPostfix]
+        public static void PixelUpdateBackground(PixelCardDisplayer __instance, CardInfo info)
+        {
+            foreach (CardAppearanceBehaviour.Appearance appearance in info.appearanceBehaviour)
+            {
+                CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((CardAppearanceBehaviourManager.FullCardAppearanceBehaviour x) => x.Id == appearance);
+                if (fullApp != null && fullApp.AppearanceBehaviour != null)
+                {
+                    Component behav = __instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
+                    if (behav == null) behav = __instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
+
+                    if (behav is PixelAppearanceBehaviour && (behav as PixelAppearanceBehaviour).OverrideBackground() != null)
+                    {
+                        Sprite back = (behav as PixelAppearanceBehaviour).OverrideBackground();
+                        SpriteRenderer component = __instance.GetComponent<SpriteRenderer>();
+                        if (component != null)
+                            component.sprite = back;
+                    }
+                    UnityObject.Destroy(behav);
+                }
+            }
+        }
+    }
+
     private static void AddDecalToCard(in PixelCardDisplayer instance)
     {
         if (instance && instance.gameObject && instance.gameObject.transform && instance.gameObject.transform.Find("CardElements"))

@@ -18,9 +18,7 @@ public static class CardExtensions
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode = null)
     {
-        return !filterMode.HasValue
-            ? portrait.ConvertTexture(spriteType)
-            : portrait.ConvertTexture(spriteType, filterMode.Value);
+        return portrait.ConvertTexture(spriteType, filterMode ?? FilterMode.Point);
     }
 
 
@@ -374,6 +372,22 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Sets whether the card should be Gemified or not. Can and will un-Gemify cards.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="gemify">Whether the card should be gemified.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetGemify(this CardInfo info, bool gemify = true)
+    {
+        if (gemify && !info.Mods.Exists(x => x.gemify))
+            info.Mods.Add(new() { gemify = true });
+        else if (!gemify)
+            info.Mods.FindAll(x => x.gemify).ForEach(y => y.gemify = false);
+
+        return info;
+    }
+    
     #region MetaCategories
 
     /// <summary>
@@ -798,11 +812,22 @@ public static class CardExtensions
     /// Sets the gems cost of the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="gemsCost">The cost in gems</param>
+    /// <param name="gemsCost">The cost in Mox.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetGemsCost(this CardInfo info, List<GemType> gemsCost = null)
     {
         info.gemsCost = gemsCost ?? new();
+        return info;
+    }
+    /// <summary>
+    /// Sets the gems cost of the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="gemsCost">The cost in Mox.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetGemsCost(this CardInfo info, params GemType[] gemsCost)
+    {
+        info.gemsCost = gemsCost.ToList();
         return info;
     }
 

@@ -1,47 +1,65 @@
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
+using InscryptionAPI.Helpers.Extensions;
+using Sirenix.Utilities;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 namespace InscryptionAPI.Card;
 
-[HarmonyPatch]
 public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
 {
+    public int bloodCostMod;
+    public int bonesCostMod;
+    public int energyCostMod;
+    public int healthCostMod;
+
+    public virtual int StartingBloodCost { get; }
     public virtual int StartingBonesCost { get; }
     public virtual int StartingEnergyCost { get; }
     public virtual int StartingHealthCost { get; }
+    public virtual int OnActivateBloodCostMod { get; set; }
     public virtual int OnActivateBonesCostMod { get; set; }
     public virtual int OnActivateEnergyCostMod { get; set; }
     public virtual int OnActivateHealthCostMod { get; set; }
 
-    public virtual Tuple<int, int, int> ModifyCostsOnActivate { get; set; }
-
-    public int energyCostMod;
-    public int bonesCostMod;
-    public int healthCostMod;
-
-    public int EnergyCost => Mathf.Max(0, StartingEnergyCost + energyCostMod);
+    public int BloodCost => Mathf.Max(0, StartingBloodCost + bloodCostMod);
     public int BonesCost => Mathf.Max(0, StartingBonesCost + bonesCostMod);
+    public int EnergyCost => Mathf.Max(0, StartingEnergyCost + energyCostMod);
     public int HealthCost => Mathf.Max(0, StartingHealthCost + healthCostMod);
 
-    public sealed override bool RespondsToResolveOnBoard() => SaveManager.SaveFile.IsPart2 && !ProgressionData.LearnedMechanic(MechanicsConcept.GBCActivatedAbilities);
+    public Dictionary<CardInfo, CardSlot> currentSacrificedCardInfos = new();
+
+    public virtual bool RespondsToPostResolveOnBoard()
+    {
+        return false;
+    }
+    public virtual IEnumerator OnPostResolveOnBoard()
+    {
+        yield break;
+    }
+    public sealed override bool RespondsToResolveOnBoard() => RespondsToPostResolveOnBoard() || LearnMechanic();
     public sealed override IEnumerator OnResolveOnBoard()
     {
-        // only for Part 2 tutorial dialogue
-        yield return new WaitForSeconds(0.15f);
-        if (StoryEventsData.EventCompleted(StoryEvent.GBCUndeadAmbition))
-            yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Undead, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Grimora), null, TextBox.ScreenPosition.ForceTop);
+        if (LearnMechanic()) // Act 2 tutorial dialogue
+        {
+            yield return new WaitForSeconds(0.15f);
+            if (StoryEventsData.EventCompleted(StoryEvent.GBCUndeadAmbition))
+                yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Undead, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Grimora), null, TextBox.ScreenPosition.ForceTop);
 
-        else if (StoryEventsData.EventCompleted(StoryEvent.GBCNatureAmbition))
-            yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Nature, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Leshy), null, TextBox.ScreenPosition.ForceTop);
+            else if (StoryEventsData.EventCompleted(StoryEvent.GBCNatureAmbition))
+                yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Nature, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Leshy), null, TextBox.ScreenPosition.ForceTop);
 
-        else if (StoryEventsData.EventCompleted(StoryEvent.GBCTechAmbition))
-            yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Tech, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.P03), null, TextBox.ScreenPosition.ForceTop);
+            else if (StoryEventsData.EventCompleted(StoryEvent.GBCTechAmbition))
+                yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Tech, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.P03), null, TextBox.ScreenPosition.ForceTop);
 
-        else
-            yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Magic, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Magnificus), null, TextBox.ScreenPosition.ForceTop);
+            else
+                yield return Singleton<DialogueHandler>.Instance.PlayDialogueEvent("ActivatedAbilityTutorial", TextBox.Style.Magic, Singleton<InBattleDialogueSpeakers>.Instance.GetSpeaker(DialogueSpeaker.Character.Magnificus), null, TextBox.ScreenPosition.ForceTop);
+        }
 
+        if (RespondsToPostResolveOnBoard())
+            yield return OnPostResolveOnBoard();
     }
 
     public sealed override bool RespondsToActivatedAbility(Ability ability) => this.Ability == ability;
@@ -49,6 +67,20 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
     {
         if (CanAfford() && CanActivate())
         {
+            if (BloodCost > 0)
+            {
+                yield return ChooseSacrifices();
+
+                if (Singleton<BoardManager>.Instance.CancelledSacrifice)
+                    yield break;
+            }
+
+            if (HealthCost > 0)
+            {
+                base.Card.Anim.LightNegationEffect();
+                base.Card.Status.damageTaken += HealthCost;
+            }
+
             if (EnergyCost > 0)
             {
                 yield return Singleton<ResourcesManager>.Instance.SpendEnergy(EnergyCost);
@@ -66,12 +98,6 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             if (BonesCost > 0)
                 yield return Singleton<ResourcesManager>.Instance.SpendBones(BonesCost);
 
-            if (HealthCost > 0)
-            {
-                base.Card.Anim.LightNegationEffect();
-                base.Card.Status.damageTaken += HealthCost;
-            }
-
             yield return new WaitForSeconds(0.1f);
             yield return base.PreSuccessfulTriggerSequence();
             yield return Activate();
@@ -79,20 +105,23 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
 
             if (HealthCost > 0) // card still exists and has 0 Health
             {
-                if (base.Card != null && base.Card.NotDead() && base.Card.Health == 0)
+                if (base.Card && base.Card.Health <= 0 && !base.Card.Dead)
                 {
                     yield return base.Card.Die(true);
+                    yield return PostActivate();
+                    currentSacrificedCardInfos.Clear();
                     yield break;
                 }
             }
-            if (OnActivateEnergyCostMod > 0)
+            if (OnActivateEnergyCostMod != 0)
                 energyCostMod += OnActivateEnergyCostMod;
-            if (OnActivateBonesCostMod > 0)
+            if (OnActivateBonesCostMod != 0)
                 bonesCostMod += OnActivateBonesCostMod;
-            if (OnActivateHealthCostMod > 0)
+            if (OnActivateHealthCostMod != 0)
                 healthCostMod += OnActivateHealthCostMod;
 
             yield return PostActivate();
+            currentSacrificedCardInfos.Clear();
         }
         else
         {
@@ -107,13 +136,122 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
     }
     public virtual bool CanActivate() => true;
     public abstract IEnumerator Activate();
+
+    private IEnumerator ChooseSacrifices()
+    {
+        BoardManager manager = Singleton<BoardManager>.Instance;
+        List<CardSlot> validSlots = manager.GetCardSlots(
+            !base.Card.OpponentCard, x => x.Card != null & x.Card != base.Card);
+
+        Singleton<ViewManager>.Instance.Controller.LockState = ViewLockState.Unlocked;
+        Singleton<ViewManager>.Instance.SwitchToView(manager.BoardView);
+        Singleton<InteractionCursor>.Instance.ForceCursorType(CursorType.Sacrifice);
+        manager.cancelledPlacementWithInput = false;
+        manager.currentValidSlots = validSlots;
+        manager.currentSacrificeDemandingCard = base.Card;
+        manager.CancelledSacrifice = false;
+        manager.LastSacrificesInfo.Clear();
+        manager.SetQueueSlotsEnabled(false);
+        foreach (CardSlot allSlot in manager.AllSlots.Where(x => x.Card != base.Card))
+        {
+            if (!allSlot.IsPlayerSlot || allSlot.Card == null)
+            {
+                allSlot.SetEnabled(enabled: false);
+                allSlot.ShowState(HighlightedInteractable.State.NonInteractable);
+            }
+            if (allSlot.IsPlayerSlot && allSlot.Card != null && allSlot.Card.CanBeSacrificed)
+                allSlot.Card.Anim.SetShaking(true);
+        }
+        yield return manager.SetSacrificeMarkersShown(BloodCost);
+        while (manager.GetValueOfSacrifices(manager.currentSacrifices) < BloodCost && !manager.cancelledPlacementWithInput)
+        {
+            manager.SetSacrificeMarkersValue(manager.currentSacrifices.Count);
+            yield return new WaitForEndOfFrame();
+        }
+
+        foreach (CardSlot allSlot2 in manager.AllSlots)
+        {
+            allSlot2.SetEnabled(false);
+            if (allSlot2.IsPlayerSlot && allSlot2.Card != null)
+                allSlot2.Card.Anim.SetShaking(shaking: false);
+        }
+
+        foreach (CardSlot currentSacrifice in manager.currentSacrifices)
+            manager.LastSacrificesInfo.Add(currentSacrifice.Card.Info);
+
+        if (manager.cancelledPlacementWithInput)
+        {
+            manager.HideSacrificeMarkers();
+
+            foreach (CardSlot slot in manager.GetSlots(getPlayerSlots: true))
+            {
+                if (slot.Card != null)
+                {
+                    slot.Card.Anim.SetSacrificeHoverMarkerShown(false);
+                    if (manager.currentSacrifices.Contains(slot))
+                        slot.Card.Anim.SetMarkedForSacrifice(false);
+                }
+            }
+            Singleton<ViewManager>.Instance.SwitchToView(manager.defaultView);
+            Singleton<InteractionCursor>.Instance.ClearForcedCursorType();
+            manager.CancelledSacrifice = true;
+        }
+        else
+        {
+            manager.SetSacrificeMarkersValue(manager.GetValueOfSacrifices(manager.currentSacrifices));
+            yield return new WaitForSeconds(0.2f);
+            manager.HideSacrificeMarkers();
+            foreach (CardSlot currentSacrifice2 in manager.currentSacrifices)
+            {
+                if (currentSacrifice2.Card != null && !currentSacrifice2.Card.Dead)
+                {
+                    manager.SacrificesMadeThisTurn++;
+                    currentSacrificedCardInfos.Add(currentSacrifice2.Card.Info, currentSacrifice2);
+                    yield return currentSacrifice2.Card.Sacrifice();
+                    Singleton<ViewManager>.Instance.SwitchToView(manager.BoardView);
+                }
+            }
+        }
+        manager.SetQueueSlotsEnabled(slotsEnabled: true);
+        foreach (CardSlot allSlot3 in manager.AllSlots)
+        {
+            allSlot3.SetEnabled(enabled: true);
+            allSlot3.ShowState(HighlightedInteractable.State.Interactable);
+        }
+        manager.currentSacrificeDemandingCard = null;
+        manager.currentSacrifices.Clear();
+    }
+
     private bool CanAfford()
     {
-        if (base.Card.Health >= HealthCost)
+        if (BloodCost <= 0 || SacrificeValue() >= BloodCost)
         {
-            if (Singleton<ResourcesManager>.Instance.PlayerEnergy >= EnergyCost)
-                return Singleton<ResourcesManager>.Instance.PlayerBones >= BonesCost;
+            if (base.Card.Health >= HealthCost)
+            {
+                if (Singleton<ResourcesManager>.Instance.PlayerEnergy >= EnergyCost)
+                    return Singleton<ResourcesManager>.Instance.PlayerBones >= BonesCost;
+            }
         }
         return false;
+    }
+    private bool LearnMechanic() => SaveManager.SaveFile.IsPart2 && !ProgressionData.LearnedMechanic(MechanicsConcept.GBCActivatedAbilities);
+    private int SacrificeValue()
+    {
+        return Singleton<BoardManager>.Instance.GetValueOfSacrifices(
+            Singleton<BoardManager>.Instance.GetCardSlots(!base.Card.OpponentCard, x => x.Card != null && x.Card != base.Card));
+    }
+}
+
+[HarmonyPatch(typeof(CardSlot))]
+internal class CardSlotPatch
+{
+    [HarmonyPostfix, HarmonyPatch(nameof(CardSlot.OnCursorEnter))]
+    private static void DisableSacrificeMarker(CardSlot __instance)
+    {
+        if (__instance.Card != null && Singleton<BoardManager>.Instance.ChoosingSacrifices)
+        {
+            if (__instance.Card == Singleton<BoardManager>.Instance.CurrentSacrificeDemandingCard)
+                __instance.Card.Anim.SetSacrificeHoverMarkerShown(false);
+        }
     }
 }
