@@ -3935,6 +3935,28 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetGBCPlayable
   nameWithType: CardExtensions.SetGBCPlayable
+- uid: InscryptionAPI.Card.CardExtensions.SetGemify(DiskCardGame.CardInfo,System.Boolean)
+  name: SetGemify(CardInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetGemify_DiskCardGame_CardInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetGemify(DiskCardGame.CardInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.SetGemify(DiskCardGame.CardInfo, System.Boolean)
+  nameWithType: CardExtensions.SetGemify(CardInfo, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.SetGemify*
+  name: SetGemify
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetGemify_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetGemify
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetGemify
+  nameWithType: CardExtensions.SetGemify
+- uid: InscryptionAPI.Card.CardExtensions.SetGemsCost(DiskCardGame.CardInfo,DiskCardGame.GemType[])
+  name: SetGemsCost(CardInfo, GemType[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetGemsCost_DiskCardGame_CardInfo_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetGemsCost(DiskCardGame.CardInfo,DiskCardGame.GemType[])
+  name.vb: SetGemsCost(CardInfo, GemType())
+  fullName: InscryptionAPI.Card.CardExtensions.SetGemsCost(DiskCardGame.CardInfo, DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetGemsCost(DiskCardGame.CardInfo, DiskCardGame.GemType())
+  nameWithType: CardExtensions.SetGemsCost(CardInfo, GemType[])
+  nameWithType.vb: CardExtensions.SetGemsCost(CardInfo, GemType())
 - uid: InscryptionAPI.Card.CardExtensions.SetGemsCost(DiskCardGame.CardInfo,List{DiskCardGame.GemType})
   name: SetGemsCost(CardInfo, List<GemType>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetGemsCost_DiskCardGame_CardInfo_List_DiskCardGame_GemType__
