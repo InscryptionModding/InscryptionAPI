@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.13.0
+- Fixed DontDestroyOnLoad warnings when using custom items
+- Fixed weird spacing for Mox cost textures in Act 1
+- Fixed player death cards not inheriting Energy, Mox, or custom costs
+- Fixed the hint dialogue for insufficient Energy in Act 1 being the wrong colour
+- Fixed ExtendedActivatedAbilityBehaviour discarding negative activation cost modifiers
+- Fixed Sniper not accounting for custom sigils that modify attack slots
+- Fixed Tutor not working in Act 2
+- Added more extensions to BoardManager
+- Added new card extensions SetGemify and SetGemsCost(params GemType[])
+- Added catch-all cost textures for when Blood or Bones go above 13
+- Added CardModificationInfoManager and DeathCardManager
+- Added extended property support and extensions for CardModificationInfo
+- Added Blood activation cost support to ExtendedActivatedAbilityBehaviour
+- ExtendedActivatedAbilityBehaviour now calls PostActivate() if a card dies from paying the Health cost
+- Leshy now recognises death cards with multiple costs in his dialogue
+- Leshy will now let you create death cards with up to 8 sigils
+- Minor adjustments to some cost textures
+- Rearranged order of Mox cost textures to align with order of Mox on the Gem Module
+- Removed empty cost textures for Blood, Bones, Energy, Mox from the community patches
+- Sniper patch's methods are now public
+
 ## 2.12.0
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
 - Fixed softlock in Act 1 during death card creation
