@@ -4687,6 +4687,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.Activate
   nameWithType: ExtendedActivatedAbilityBehaviour.Activate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost
+  name: BloodCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_BloodCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.BloodCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost*
+  name: BloodCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_BloodCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BloodCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.BloodCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bloodCostMod
+  name: bloodCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_bloodCostMod
+  commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bloodCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.bloodCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.bloodCostMod
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.BonesCost
   name: BonesCost
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_BonesCost
@@ -4719,6 +4738,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.CanActivate
   nameWithType: ExtendedActivatedAbilityBehaviour.CanActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.currentSacrificedCardInfos
+  name: currentSacrificedCardInfos
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_currentSacrificedCardInfos
+  commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.currentSacrificedCardInfos
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.currentSacrificedCardInfos
+  nameWithType: ExtendedActivatedAbilityBehaviour.currentSacrificedCardInfos
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.EnergyCost
   name: EnergyCost
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_EnergyCost
@@ -4757,19 +4782,19 @@ references:
   commentId: F:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.healthCostMod
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.healthCostMod
   nameWithType: ExtendedActivatedAbilityBehaviour.healthCostMod
-- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
-  name: ModifyCostsOnActivate
-  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_ModifyCostsOnActivate
-  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
-  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
-  nameWithType: ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
-- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate*
-  name: ModifyCostsOnActivate
-  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_ModifyCostsOnActivate_
-  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
+  name: OnActivateBloodCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateBloodCostMod
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod*
+  name: OnActivateBloodCostMod
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateBloodCostMod_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
   isSpec: "True"
-  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
-  nameWithType: ExtendedActivatedAbilityBehaviour.ModifyCostsOnActivate
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateBloodCostMod
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateBonesCostMod
   name: OnActivateBonesCostMod
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnActivateBonesCostMod
@@ -4822,6 +4847,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
   nameWithType: ExtendedActivatedAbilityBehaviour.OnActivateHealthCostMod
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard
+  name: OnPostResolveOnBoard()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnPostResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard()
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard*
+  name: OnPostResolveOnBoard
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnPostResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard
+  nameWithType: ExtendedActivatedAbilityBehaviour.OnPostResolveOnBoard
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.OnResolveOnBoard
   name: OnResolveOnBoard()
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_OnResolveOnBoard
@@ -4861,6 +4899,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility
   nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToActivatedAbility
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard
+  name: RespondsToPostResolveOnBoard()
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToPostResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard()
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard()
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard*
+  name: RespondsToPostResolveOnBoard
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToPostResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard
+  nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToPostResolveOnBoard
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
   name: RespondsToResolveOnBoard()
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_RespondsToResolveOnBoard
@@ -4874,6 +4925,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
   nameWithType: ExtendedActivatedAbilityBehaviour.RespondsToResolveOnBoard
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost
+  name: StartingBloodCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingBloodCost
+  commentId: P:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingBloodCost
+- uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost*
+  name: StartingBloodCost
+  href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingBloodCost_
+  commentId: Overload:InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBloodCost
+  nameWithType: ExtendedActivatedAbilityBehaviour.StartingBloodCost
 - uid: InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.StartingBonesCost
   name: StartingBonesCost
   href: api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html#InscryptionAPI_Card_ExtendedActivatedAbilityBehaviour_StartingBonesCost
@@ -7076,6 +7140,54 @@ references:
   commentId: T:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions
   fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions
   nameWithType: BoardManagerExtensions
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.PlayableCard})
+  name: GetCards(BoardManager, Boolean, Predicate<PlayableCard>)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCards_DiskCardGame_BoardManager_System_Boolean_Predicate_DiskCardGame_PlayableCard__
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.PlayableCard})
+  name.vb: GetCards(BoardManager, Boolean, Predicate(Of PlayableCard))
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager, System.Boolean, Predicate<DiskCardGame.PlayableCard>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager, System.Boolean, Predicate(Of DiskCardGame.PlayableCard))
+  nameWithType: BoardManagerExtensions.GetCards(BoardManager, Boolean, Predicate<PlayableCard>)
+  nameWithType.vb: BoardManagerExtensions.GetCards(BoardManager, Boolean, Predicate(Of PlayableCard))
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards*
+  name: GetCards
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCards_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards
+  nameWithType: BoardManagerExtensions.GetCards
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.CardSlot})
+  name: GetCardSlots(BoardManager, Boolean, Predicate<CardSlot>)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCardSlots_DiskCardGame_BoardManager_System_Boolean_Predicate_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.CardSlot})
+  name.vb: GetCardSlots(BoardManager, Boolean, Predicate(Of CardSlot))
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots(DiskCardGame.BoardManager, System.Boolean, Predicate<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots(DiskCardGame.BoardManager, System.Boolean, Predicate(Of DiskCardGame.CardSlot))
+  nameWithType: BoardManagerExtensions.GetCardSlots(BoardManager, Boolean, Predicate<CardSlot>)
+  nameWithType.vb: BoardManagerExtensions.GetCardSlots(BoardManager, Boolean, Predicate(Of CardSlot))
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots*
+  name: GetCardSlots
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCardSlots_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots
+  nameWithType: BoardManagerExtensions.GetCardSlots
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.CardSlot})
+  name: GetOpenSlots(BoardManager, Boolean, Predicate<CardSlot>)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetOpenSlots_DiskCardGame_BoardManager_System_Boolean_Predicate_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.CardSlot})
+  name.vb: GetOpenSlots(BoardManager, Boolean, Predicate(Of CardSlot))
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager, System.Boolean, Predicate<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager, System.Boolean, Predicate(Of DiskCardGame.CardSlot))
+  nameWithType: BoardManagerExtensions.GetOpenSlots(BoardManager, Boolean, Predicate<CardSlot>)
+  nameWithType.vb: BoardManagerExtensions.GetOpenSlots(BoardManager, Boolean, Predicate(Of CardSlot))
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots*
+  name: GetOpenSlots
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetOpenSlots_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots
+  nameWithType: BoardManagerExtensions.GetOpenSlots
 - uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpponentCards(DiskCardGame.BoardManager,Predicate{DiskCardGame.PlayableCard})
   name: GetOpponentCards(BoardManager, Predicate<PlayableCard>)
   href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetOpponentCards_DiskCardGame_BoardManager_Predicate_DiskCardGame_PlayableCard__
@@ -7140,6 +7252,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetPlayerOpenSlots
   nameWithType: BoardManagerExtensions.GetPlayerOpenSlots
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy(DiskCardGame.BoardManager,System.Boolean)
+  name: GetSlotsCopy(BoardManager, Boolean)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetSlotsCopy_DiskCardGame_BoardManager_System_Boolean_
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy(DiskCardGame.BoardManager,System.Boolean)
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy(DiskCardGame.BoardManager, System.Boolean)
+  nameWithType: BoardManagerExtensions.GetSlotsCopy(BoardManager, Boolean)
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy*
+  name: GetSlotsCopy
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetSlotsCopy_
+  commentId: Overload:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetSlotsCopy
+  nameWithType: BoardManagerExtensions.GetSlotsCopy
 - uid: InscryptionAPI.Helpers.Extensions.CardSlotExtensions
   name: CardSlotExtensions
   href: api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html
