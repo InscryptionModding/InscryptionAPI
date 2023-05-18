@@ -19,11 +19,11 @@ using InscryptionCommunityPatch.ResourceManagers;
 
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
-EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables Mox management
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
 ```
 
-At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
+Currently, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
 
 # Core Features
 
@@ -101,7 +101,7 @@ The following card extensions are available:
 - **SetEmissivePortrait:** If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.
 - **SetAltPortrait:** Assigns the card's alternate portrait.
 - **SetPixelPortrait:** Assigns the card's pixel portrait (for GBC mode).
-- **SetCost:** Sets the cost for the card.
+- **SetCost:** Sets the cost for the card. There are also extensions for setting Blood, Bones, Energy, and Mox individually.
 - **SetDefaultPart1Card:** Sets all of the metadata necessary to make this card playable in Part 1 (Leshy's cabin).
 - **SetGBCPlayable:** Sets all of the metadata necessary to make this card playable in Part 2.
 - **SetDefaultPart3Card:** Sets all of the metadata necessary to make this card playable in Part 3 (P03's cabin).
@@ -113,7 +113,8 @@ The following card extensions are available:
 - **SetEvolve:** Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.
 - **SetOnePerDeck:** Sets whether or not the card is unique (only one copy in your deck per run).
 - **SetHideAttackAndHealth:** Sets whether or not the card's Power and Health stats will be displayed or not.
-- **AddAbilities:** Add any number of abilities to the card. This will add duplicates..
+- **SetGemify:** Sets whether or not the card should be Gemified by default.
+- **AddAbilities:** Add any number of abilities to the card. This will add duplicates.
 - **AddAppearances:** Add any number of appearance behaviors to the card. No duplicates will be added.
 - **AddMetaCategories:** Add any number of metacategories to the card. No duplicates will be added.
 - **AddTraits:** Add any number of traits to the card. No duplicates will be added.
@@ -169,6 +170,8 @@ CardInfo sample = CardLoader.CardByName("MyCustomCard");
 sample.SetExtendedProperty("CustomPropertyName", "CustomPropertyValue");
 
 string propValue = sample.GetExtendedProperty("CustomPropertyName");
+
+You can also add custom properties to a card mod.
 ```
 
 ## Custom Card Costs
@@ -187,6 +190,28 @@ Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> co
 ```
 
 The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.
+
+## Custom Costs for Death Cards
+Death cards aren't technically cards; they're card mods that are added to a template card.
+
+Because of this, simply adding an extended property to them won't work, since properties apply to ALL copies of the card.
+If you want to create a death card that uses a custom play cost, you'll need to create a new card and then add properties to that new CardInfo.
+
+Fortunately, the API's DeathCardManager is here to handle all this.
+CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card's name, stats, etc..
+```c#
+private void AddCustomDeathCard()
+{
+    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
+        .SetNameReplacement("Mabel").SetSingletonId("wstl_mabel")
+        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
+        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
+        .AddCustomCostId("CustomCost", 1);
+
+    // you can then add your newly created death card to the list of default death card mods like so
+    DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+```
 
 ## Talking Cards
 This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!
@@ -537,25 +562,14 @@ public class Sharp : AbilityBehaviour
 }
 ```
 
-## Additional Functionality with Interfaces and Custom Triggers
-The API adds a number of inheritable interfaces you can use to add additional functionality to your ability.
-It also adds a new class: `ExtendedAbilityBehaviour`, which has all the interfaces already implemented for immediate use, saving you some time.
+## Additional Functionality with Interfaces
+The API adds a number of interfaces you can use to add additional functionality to your ability.
+It also adds a new class: `ExtendedAbilityBehaviour`, which has all the interfaces already implemented for immediate use, saving you time.
 
-### Modifying What Card Slots to Attack
-Sometimes you want to create an ability that changes a card's attack behaviour, similar to the vanilla Bifurcated and Trifurcated Strike sigils.
-For this, the API provides two different interfaces to use, with slightly different functionalities.
-
-#### IGetOpposingSlots
-The go-to for basic modifications, this interface lets you interact with the slots a card will attack, adding or otherwise modifying them.
+### Modifying What Card Clots to Attack
 
 To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
-If you want to override the default attacked slot (the one directly across from the card), you will need to override RemoveDefaultAttackSlot to return true.
-
-#### ISetupAttackSequence
-A bit different than IGetOpposingSlots, ISetupAttackSequence will modify the slots chosen to be attacked _after_ IGetOpposingSlots runs, letting you have fuller control over what slots to attack.
-An example use is in overriding any slot modifications made by other sigils, vanilla and modded.
-
-The inherited int GetTriggerPriority() lets you change the order in which cards are attacked, using the returned int to sort the card slots.
+If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.
 
 ### Passive Attack and Health Buffs
 
@@ -586,9 +600,26 @@ ExtendedActivatedAbilityBehaviour moves that functionality to the virtual int St
 
 Put simply, to set the starting cost(s), you override StartingBonesCost, StartingEnergyCost, or StartingHealthCost.
 
-There is also a new override IEnumerator `PostActivate()`.
+There is also a new override IEnumerator `PostActivate()` that triggers after the main body of code.
 
-The two main features of the new class are dynamic activation costs, and a new Health cost.
+### Blood Cost
+This behaves exactly like the Blood cost for playing cards, where you have to sacrifice other cards on your side of the board in order to trigger an effect.
+
+The card info and card slot of sacrificed cards will be stored in the dictionary `currentSacrificedCardInfos`, with the CardInfo as the Key and the CardSlot as the Value.
+Use this if you want to manipulate sacrificed cards once they're gone, but do note that the dictionary is cleared once the ability's effect has finished.
+
+```c#
+public Dictionary<CardSlot, CardInfo> currentSacrificedCardInfos = new();
+
+public override IEnumerator Activate()
+{
+    // Create new copies of the sacrificed cards in their original board slots
+    foreach (KeyValuePair<CardSlot, CardInfo> valuePair in currentSacrificedCardInfos)
+    {
+        yield return Singleton<BoardManager>.Instance.CreateCardInSlot(valuePair.Value, valuePair.Key);
+    }
+}
+```
 
 ### Health Cost
 This is easy enough to understand, it's a way of making an activated ability cost Health to use.
@@ -599,7 +630,7 @@ You can set this by overriding StartingHealthCost.
 ### Dynamic Activation Costs
 Using ExtendedActivatedAbilityBehaviour, you can change the cost of an activated ability during battle.
 
-By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, or OnActivateHealthCostMod, you can make the ability's activation cost increase after it has been activated.
+By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, OnActivateBloodCostMod, or OnActivateHealthCostMod, you can make the ability's activation cost increase after it has been activated.
 ```c#
 public class ActivateRepulsive : ExtendedActivatedAbilityBehaviour
 {
@@ -655,6 +686,24 @@ To tell the API what part of the Rulebook description should be modified, you mu
 string rulebookDescription = "Pay [sigilcost:1 Bone, 1 Energy] to do a thing, then increase its activation cost by 1 Energy."
 
 AbilityManager.New(pluginGuid, rulebookName, rulebookDescription, typeof(T), "artpath.png");
+```
+
+#### Triggering OnResolveOnBoard
+In Act 2, upon playing a card with an activated ability you will trigger a tutorial explaining how they work.
+In order to ensure this code runs, you are prevented from overriding OnResolveOnBoard, both in the vanilla behaviour and in this extended version.
+
+Worry not however, for there is a workaround: the new virtual methods RespondsToPostResolveOnBoard() and OnPostResolveOnBoard() can be overridden instead to the same effect.
+
+```c#
+public override IEnumerator RespondsToPostResolveOnBoard()
+{
+    return true;
+}
+
+public override IEnumerator OnPostResolveOnBoard()
+{
+    // put your code here
+}
 ```
 
 ## Special Stat Icons
