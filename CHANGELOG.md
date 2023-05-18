@@ -8,7 +8,6 @@
 - Fixed ExtendedActivatedAbilityBehaviour discarding negative activation cost modifiers
 - Fixed Sniper not accounting for custom sigils that modify attack slots
 - Fixed Tutor not working in Act 2
-- Fixed Sniper letting you target cards with Repulsive
 - Added more extensions to BoardManager
 - Added new card extensions SetGemify and SetGemsCost(params GemType[])
 - Added catch-all cost textures for when Blood or Bones go above 13
@@ -21,7 +20,7 @@
 - Minor adjustments to some cost textures
 - Rearranged order of Mox cost textures to align with order of Mox on the Gem Module
 - Removed empty cost textures for Blood, Bones, Energy, Mox from the community patches
-- Tweaked the Sniper patch so its various methods can now be patched/used
+- Sniper patch's methods are now public
 
 ## 2.12.0
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
