@@ -69,6 +69,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     internal static void ResyncAll()
     {
         CardManager.SyncCardList();
+        CardModificationInfoManager.SyncCardMods();
         AbilityManager.SyncAbilityList();
         EncounterManager.SyncEncounterList();
         RegionManager.SyncRegionList();
@@ -89,9 +90,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
             }
         }
         if (outdatedPlugins != "")
-            Logger.LogWarning("The following mods have been flagged as using an outdated version of the API:\n"
-            + outdatedPlugins
-                + "\nOutdated mods may not work correctly, so please update or disable them if problems arise!");
+            Logger.LogWarning("The following mods use an outdated version of the API:\n"
+                + outdatedPlugins + "\nThese mods may not work correctly. If problems arise, please update or disable them!");
     }
 
     private void Awake()
@@ -104,6 +104,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     private void Start()
     {
         CheckForOutdatedPlugins();
+        DeathCardManager.AddCustomDeathCards();
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();

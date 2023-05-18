@@ -49,46 +49,42 @@ public static class Part1CardCostRender
         return texture;
     }
 
-    internal static string GemCost(CardInfo info)
-    {
-        return (info.GemsCost.Contains(GemType.Orange) ? "o" : string.Empty) +
-               (info.GemsCost.Contains(GemType.Blue) ? "b" : string.Empty) +
-               (info.GemsCost.Contains(GemType.Green) ? "g" : string.Empty);
-    }
-
     public static Sprite Part1SpriteFinal(CardInfo card)
     {
         // A list to hold the textures (important later, to combine them all)
-        List<Texture2D> list = new List<Texture2D>();
+        List<Texture2D> list = new();
 
-        //Setting mox first
-        if (card.gemsCost.Count > 0)
+        // Setting mox first
+        if (card.GemsCost.Count > 0)
         {
-            //make a new list for the mox textures
-            List<Texture2D> gemCost = new List<Texture2D>();
+            // Make a new list for the mox textures
+            List<Texture2D> gemCost = new();
 
-            //load up the mox textures as "empty"
-            Texture2D orange = GetTextureByName(card.GemsCost.Contains(GemType.Orange) ? "mox_cost_o" : "mox_cost_e");
-            Texture2D blue = GetTextureByName(card.GemsCost.Contains(GemType.Blue) ? "mox_cost_b" : "mox_cost_e");
-            Texture2D green = GetTextureByName(card.GemsCost.Contains(GemType.Green) ? "mox_cost_g" : "mox_cost_e");
+            // Add all moxes to the gemcost list
+            if (card.GemsCost.Contains(GemType.Green))
+                gemCost.Add(GetTextureByName("mox_cost_g"));
 
-            //Add all moxes to the gemcost list
-            gemCost.Add(orange);
-            gemCost.Add(green);
-            gemCost.Add(blue);
+            if (card.GemsCost.Contains(GemType.Blue))
+                gemCost.Add(GetTextureByName("mox_cost_b"));
+            
+            if (card.GemsCost.Contains(GemType.Orange))
+                gemCost.Add(GetTextureByName("mox_cost_o"));
 
-            //Combine the textures into one
+            while (gemCost.Count < 3)
+                gemCost.Insert(0, null);
+
+            // Combine the textures into one
             list.Add(CombineMoxTextures(gemCost));
         }
 
-        if (card.EnergyCost > 0)
-            list.Add(GetTextureByName($"energy_cost_{card.EnergyCost}"));
+        if (card.EnergyCost > 0) // there's 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
+            list.Add(GetTextureByName($"energy_cost_{Mathf.Min(6, card.EnergyCost)}"));
 
         if (card.BonesCost > 0)
-            list.Add(GetTextureByName($"bone_cost_{card.BonesCost}"));
+            list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, card.BonesCost)}"));
 
         if (card.BloodCost > 0)
-            list.Add(GetTextureByName($"blood_cost_{card.BloodCost}"));
+            list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, card.BloodCost)}"));
 
         // Call the event and allow others to modify the list of textures
         UpdateCardCost?.Invoke(card, list);
