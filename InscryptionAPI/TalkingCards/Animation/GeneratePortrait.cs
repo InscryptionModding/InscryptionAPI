@@ -45,8 +45,8 @@ public static class GeneratePortrait
     internal static GameObject New()
     {
         if (!hasInit) InitTalkingCards();
-        GameObject portrait = GameObject.Instantiate(FacePrefab);
-        GameObject.DontDestroyOnLoad(portrait);
+        GameObject portrait = UnityObject.Instantiate(FacePrefab);
+        UnityObject.DontDestroyOnLoad(portrait);
         portrait!.transform.SetParent(APIPortraits);
         return portrait;
     }
