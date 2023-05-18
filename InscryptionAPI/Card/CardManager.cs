@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Saves;
+using InscryptionAPI.TalkingCards.Helpers;
 using MonoMod.Cil;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -14,8 +15,7 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class CardManager
 {
-    // Needs to be defined first so the implicit static constructor works correctly
-    private class CardExt
+    private class CardExt // Needs to be defined first so the implicit static constructor works correctly
     {
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
@@ -161,9 +161,7 @@ public static class CardManager
         InscryptionAPIPlugin.ScriptableObjectLoaderLoad += static type =>
         {
             if (type == typeof(CardInfo))
-            {
                 ScriptableObjectLoader<CardInfo>.allData = AllCardsCopy;
-            }
         };
         NewCards.CollectionChanged += static (_, _) =>
         {
@@ -225,7 +223,7 @@ public static class CardManager
     /// <param name="health">The Health of the card.</param>
     /// <param name="description">The spoken description when the card is first encountered.</param>
     /// <returns>The newly created card's CardInfo.</returns>
-    public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default(string))
+    public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default)
     {
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
         retval.name = !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
@@ -249,9 +247,8 @@ public static class CardManager
     {
         var typeMap = CardExtensionProperties.GetOrCreateValue(card).TypeMap;
         if (typeMap.TryGetValue(typeof(T), out object tObj))
-        {
             return (T)tObj;
-        }
+
         else
         {
             T tInst = new();
@@ -347,10 +344,16 @@ public static class CardManager
     {
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
-        if (__instance.Mods.Any(x => x.gemify))
-        {
-            CardInfo result = (CardInfo)__result;
+
+        CardInfo result = (CardInfo)__result;
+        if (__instance.Mods.Exists(x => x.gemify) && !result.Mods.Exists(x => x.gemify))
             result.Mods.Add(new() { gemify = true });
+        if (__instance.ModPrefixIs(DeathCardManager.CardPrefix))
+        {
+
+            CardModificationInfo death = __instance.Mods.Find(x => x.HasDeathCardInfo());
+            if (death != null)
+                result.Mods.Add(new() { singletonId = death.singletonId, deathCardInfo = death.deathCardInfo });
         }
     }
 
@@ -408,9 +411,8 @@ public static class CardManager
     public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
     {
         if (info == null)
-        {
             InscryptionAPIPlugin.Logger.LogError("[CardLoader] Could not find CardInfo with name '" + cardInfoName + "'");
-        }
+
         return info;
     }
 }

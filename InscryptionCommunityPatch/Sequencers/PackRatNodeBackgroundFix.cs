@@ -89,9 +89,9 @@ internal class PackRatNodeBackgroundFix
 
     public static void InstantiateSelectableCard(SelectableCard card, CardInfo info)
     {
-        SelectableCard component = SelectableCard.Instantiate(card);
+        SelectableCard component = UnityObject.Instantiate(card);
         component.SetInfo(info);
         component.SetInteractionEnabled(false);
-        SelectableCard.Destroy(component);
+        UnityObject.Destroy(component);
     }
 }

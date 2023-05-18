@@ -67,7 +67,7 @@ internal static class StarterDeckSelectscreenPatches
                     var cards = icon.starterDeckInfo.cards;
                     for (int i = 0; i < cards.Count; i++)
                     {
-                        var card = cards[i];
+                        CardInfo card = cards[i];
                         float distance = cards.Count > 8 ? 0.425f : 0.5f;
                         float position = distance * (i - (cards.Count - 1) / 2f);
                         if (Math.Abs(position) <= 2.5f)
