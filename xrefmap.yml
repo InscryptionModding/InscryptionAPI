@@ -10765,6 +10765,25 @@ references:
   commentId: T:InscryptionAPI.PixelCard.PixelCardManager
   fullName: InscryptionAPI.PixelCard.PixelCardManager
   nameWithType: PixelCardManager
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
+  name: PixelCardManager.PixelCardUpdateBackgroundPatch
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html
+  commentId: T:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
+  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer,DiskCardGame.CardInfo)
+  name: PixelUpdateBackground(PixelCardDisplayer, CardInfo)
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html#InscryptionAPI_PixelCard_PixelCardManager_PixelCardUpdateBackgroundPatch_PixelUpdateBackground_GBC_PixelCardDisplayer_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer,DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer, DiskCardGame.CardInfo)
+  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(PixelCardDisplayer, CardInfo)
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground*
+  name: PixelUpdateBackground
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html#InscryptionAPI_PixelCard_PixelCardManager_PixelCardUpdateBackgroundPatch_PixelUpdateBackground_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
+  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
 - uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedBlueLit
   name: PixelGemifiedBlueLit
   href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedBlueLit
