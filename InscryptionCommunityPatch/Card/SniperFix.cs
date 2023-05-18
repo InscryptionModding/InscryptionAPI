@@ -104,6 +104,8 @@ public class SniperFix
                 if (alteredOpposings.Count > 0)
                     __result.AddRange(alteredOpposings);
 
+                attacks += __result.Count;
+
                 if (isAttackingDefaultSlot && removeDefaultAttackSlot)
                     __result.Remove(defaultslot);
                 bool didRemoveOriginalSlot = card.HasAbility(Ability.SplitStrike) && (!card.HasTriStrike() || removeDefaultAttackSlot);
@@ -116,6 +118,8 @@ public class SniperFix
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal, original, __result ?? new(), attacks, didRemoveOriginalSlot))
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.Normal, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
                 }
+                if (__result.Count != dummyresult.Count)
+                    attacks = __result.Count;
                 dummyresult = __result;
                 all.Sort((x, x2) => x.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, attacks, didRemoveOriginalSlot) -
                     x2.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, dummyresult, attacks, didRemoveOriginalSlot));
@@ -124,6 +128,8 @@ public class SniperFix
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), attacks, didRemoveOriginalSlot))
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.BringsBackOpposingSlot, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
                 }
+                if (__result.Count != dummyresult.Count)
+                    attacks = __result.Count;
                 dummyresult = __result;
                 all.Sort((x, x2) => x.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, attacks, didRemoveOriginalSlot) -
                     x2.GetTriggerPriority(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, dummyresult, attacks, didRemoveOriginalSlot));
@@ -132,10 +138,11 @@ public class SniperFix
                     if (opposing.RespondsToModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), attacks, didRemoveOriginalSlot))
                         __result = opposing.CollectModifyAttackSlots(card, InscryptionAPI.Triggers.OpposingSlotTriggerPriority.PostAdditionModification, original, __result ?? new(), ref attacks, ref didRemoveOriginalSlot);
                 }
+                if (__result.Count != dummyresult.Count)
+                    attacks = __result.Count;
+
                 if (didRemoveOriginalSlot && card.HasTriStrike())
                     __result.Add(card.Slot.opposingSlot);
-
-                attacks += __result.Count;
             }
             catch { }
             return attacks;
@@ -198,13 +205,11 @@ public class SniperFix
             {
                 int attacksFromSpiky = pc.Info.Abilities.FindAll((Ability x) => x == Ability.Sharp).Count;
                 if (pc.HasAbility(Ability.Sharp) && attacksFromSpiky < 1)
-                {
                     attacksFromSpiky = 1;
-                }
+
                 if (slot.Card.HasShield())
-                {
                     attacksFromSpiky--;
-                }
+
                 attacksFromSpiky = Mathf.Max(attacksFromSpiky, 0);
                 return pc.HasAbility(Ability.Deathtouch) ? attacksFromSpiky > 0 : attacksFromSpiky >= slot.Card.Health;
             }
@@ -229,21 +234,17 @@ public class SniperFix
                     PlayableCard strongestAttackable = GetFirstStrongestAttackableCard();
                     PlayableCard strongestAttackableNoPreferences = GetFirstStrongestAttackableCardNoPreferences();
                     if (CanWin())
-                    {
                         attackSlot = GetFirstAvailableOpenSlot();
-                    }
+
                     else if (strongestKillable != null)
-                    {
                         attackSlot = strongestKillable.Slot;
-                    }
+
                     else if (strongestAttackable != null)
-                    {
                         attackSlot = strongestAttackable.Slot;
-                    }
+
                     else if (strongestAttackableNoPreferences != null)
-                    {
                         attackSlot = strongestAttackableNoPreferences.Slot;
-                    }
+
                 }
                 opposingSlots.Add(attackSlot);
                 instance.VisualizeConfirmSniperAbility(attackSlot);
