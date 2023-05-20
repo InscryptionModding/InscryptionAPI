@@ -73,6 +73,9 @@ Displays targets for attacks made with the sniper sigil in Act 1.
 ## Act 1 Sentry Fixes by WhistleWind
 Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 
+## Multi-Act Sigil Compatability Fixes by WhistleWind
+Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder.
+
 # Using the API
 
 Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.

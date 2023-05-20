@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.13.1
+- Fixed custom items falling through reality
+- Added card extension IsAffectedByTidalLock
+- Mental Gemnastics sigil now works in Act 1
+- Tidal Lock sigil now works for non-Moon cards
+
 ## 2.13.0
 - Fixed DontDestroyOnLoad warnings when using custom items
 - Fixed weird spacing for Mox cost textures in Act 1

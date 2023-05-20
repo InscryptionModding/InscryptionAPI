@@ -1560,10 +1560,20 @@ public static class CardExtensions
     public static IEnumerator SpawnInHand(this CardInfo cardInfo, List<CardModificationInfo> temporaryMods = null, Vector3 spawnOffset = default, float onDrawnTriggerDelay = 0f, Action<PlayableCard> cardSpawnedCallback = null)
     {
         if (spawnOffset == default)
-        {
             spawnOffset = CardSpawner.Instance.spawnedPositionOffset;
-        }
+
         yield return CardSpawner.Instance.SpawnCardToHand(cardInfo, temporaryMods, spawnOffset, onDrawnTriggerDelay, cardSpawnedCallback);
+    }
+
+    /// <summary>
+    /// Checks if this card will be killed by the effect of Tidal Lock.
+    /// Primarily exists for modders that want to more easily modify what cards are affected without having to patch the entire sigil.
+    /// </summary>
+    /// <param name="item">PlayableCard to access.</param>
+    /// <returns>True if the card is affected by Tidal Lock.</returns>
+    public static bool IsAffectedByTidalLock(this PlayableCard item)
+    {
+        return item.Info.name == "Squirrel" || item.Info.name == "AquaSquirrel" || item.Info.name == "Rabbit";
     }
 
     #region PlayableCard
