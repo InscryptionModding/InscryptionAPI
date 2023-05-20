@@ -3311,6 +3311,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasTrait
   nameWithType: CardExtensions.HasTrait
+- uid: InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock(DiskCardGame.PlayableCard)
+  name: IsAffectedByTidalLock(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsAffectedByTidalLock_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.IsAffectedByTidalLock(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock*
+  name: IsAffectedByTidalLock
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsAffectedByTidalLock_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsAffectedByTidalLock
+  nameWithType: CardExtensions.IsAffectedByTidalLock
 - uid: InscryptionAPI.Card.CardExtensions.IsBaseGameCard(DiskCardGame.CardInfo)
   name: IsBaseGameCard(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsBaseGameCard_DiskCardGame_CardInfo_
