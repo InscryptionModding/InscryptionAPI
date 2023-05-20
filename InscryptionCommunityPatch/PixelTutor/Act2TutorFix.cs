@@ -58,7 +58,7 @@ public static class Act2TutorFix
         if (SaveManager.SaveFile.IsPart2)
         {
             yield return new WaitForSeconds(0.15f);
-            if (PixelCardDrawPiles.Instance.Deck.Cards.Count == 0)
+            if (__instance.Card.OpponentCard || PixelCardDrawPiles.Instance.Deck.Cards.Count == 0)
             {
                 (__instance.Card as PixelPlayableCard).Anim.NegationEffect(false);
                 yield return new WaitForSeconds(0.25f);

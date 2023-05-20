@@ -1565,16 +1565,36 @@ public static class CardExtensions
         yield return CardSpawner.Instance.SpawnCardToHand(cardInfo, temporaryMods, spawnOffset, onDrawnTriggerDelay, cardSpawnedCallback);
     }
 
+    #region Tidal Lock
     /// <summary>
     /// Checks if this card will be killed by the effect of Tidal Lock.
-    /// Primarily exists for modders that want to more easily modify what cards are affected without having to patch the entire sigil.
     /// </summary>
     /// <param name="item">PlayableCard to access.</param>
     /// <returns>True if the card is affected by Tidal Lock.</returns>
-    public static bool IsAffectedByTidalLock(this PlayableCard item)
+    public static bool IsAffectedByTidalLock(this PlayableCard item) => item.Info.IsAffectedByTidalLock();
+
+    /// <summary>
+    /// Checks if this card info will be killed by the effect of Tidal Lock.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>True if the card info is affected by Tidal Lock.</returns>
+    public static bool IsAffectedByTidalLock(this CardInfo info)
     {
-        return item.Info.name == "Squirrel" || item.Info.name == "AquaSquirrel" || item.Info.name == "Rabbit";
+        bool isAffected = info.GetExtendedPropertyAsBool("AffectedByTidalLock") ?? false;
+        return isAffected || info.name == "Squirrel" || info.name == "AquaSquirrel" || info.name == "Rabbit";
     }
+
+    /// <summary>
+    /// Sets whether the card should be killed by Tidal Lock's effect.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>True if the card info should be affected by Tidal Lock.</returns>
+    public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
+    {
+        info.SetExtendedProperty("AffectedByTidalLock", affectedByTidalLock);
+        return info;
+    }
+    #endregion
 
     #region PlayableCard
 

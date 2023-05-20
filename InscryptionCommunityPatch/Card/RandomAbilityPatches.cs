@@ -10,30 +10,24 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 internal class RandomAbilityPatches
 {
-
-    private static IEnumerator AddRandomSigil(PlayableCard card)
-    {
-        Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle++;
-        yield return new WaitForSeconds(0.15f);
-        card.Anim.PlayTransformAnimation();
-        yield return new WaitForSeconds(0.15f);
-        card.GetComponent<RandomAbility>().AddMod();
-    }
-    private static Ability GetRandomAbility(PlayableCard card)
-    {
-        List<Ability> learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: true, 0, 5, SaveManager.SaveFile.IsPart1 ? AbilityMetaCategory.Part1Modular : AbilityMetaCategory.Part3Modular);
-        learnedAbilities.RemoveAll((Ability x) => x == Ability.RandomAbility || card.HasAbility(x));
-        if (learnedAbilities.Count > 0)
-            return learnedAbilities[SeededRandom.Range(0, learnedAbilities.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle)];
-
-        return Ability.Sharp;
-    }
-
     [HarmonyPostfix, HarmonyPatch(typeof(RandomAbility), nameof(RandomAbility.ChooseAbility))]
-    private static void OpponentChooseAbility(RandomAbility __instance, ref Ability __result)
+    private static void OpponentChooseAbility(RandomAbility __instance, ref Ability __result) => __result = GetRandomAbility(__instance.Card);
+
+    [HarmonyPostfix, HarmonyPatch(typeof(RandomAbility), nameof(RandomAbility.OnDrawn))]
+    private static IEnumerator Act2Random(IEnumerator enumerator, RandomAbility __instance)
     {
-        if (__instance.Card.OpponentCard)
-            __result = GetRandomAbility(__instance.Card);
+        if (!SaveManager.SaveFile.IsPart2)
+        {
+            yield return enumerator;
+            yield break;
+        }
+
+        CardModificationInfo cardModificationInfo = new(__instance.ChooseAbility()) { negateAbilities = new() { __instance.Ability } };
+
+        CardInfo info = __instance.Card.Info.Clone() as CardInfo;
+        info.Mods = new(__instance.Card.Info.Mods) { cardModificationInfo };
+        __instance.Card.SetInfo(info);
+        yield return __instance.LearnAbility(0.5f);
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(Opponent), nameof(Opponent.QueueCard))]
@@ -48,6 +42,7 @@ internal class RandomAbilityPatches
         if (card.HasAbility(Ability.RandomAbility) && !card.Status.hiddenAbilities.Contains(Ability.RandomAbility))
             yield return AddRandomSigil(card);
     }
+
     [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.ResolveCardOnBoard))]
     [HarmonyPostfix]
     private static IEnumerator ActivateRandomOnResolve(IEnumerator enumerator, PlayableCard card)
@@ -63,8 +58,9 @@ internal class RandomAbilityPatches
             yield return new WaitForSeconds(0.5f);
         }
     }
+
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TransformIntoCard))]
-    private static IEnumerator ActivateRandomOnEvolve(IEnumerator enumerator, PlayableCard __instance, CardInfo evolvedInfo)
+    private static IEnumerator ActivateOnEvolve(IEnumerator enumerator, PlayableCard __instance, CardInfo evolvedInfo)
     {
         yield return enumerator;
         if (!__instance)
@@ -73,6 +69,7 @@ internal class RandomAbilityPatches
         if (evolvedInfo.HasAbility(Ability.RandomAbility) && !__instance.Status.hiddenAbilities.Contains(Ability.RandomAbility))
             yield return AddRandomSigil(__instance);
     }
+
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.AddTemporaryMod))]
     private static void ActivateOnAddTempMod(PlayableCard __instance, ref CardModificationInfo mod)
     {
@@ -87,5 +84,49 @@ internal class RandomAbilityPatches
                 }
             }
         }
+    }
+
+    private static IEnumerator AddRandomSigil(PlayableCard card)
+    {
+        var component = card.GetComponent<RandomAbility>();
+        if (component == null)
+            yield break;
+
+        Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle++;
+
+        if (SaveManager.SaveFile.IsPart2)
+        {
+            CardModificationInfo cardModificationInfo = new(component.ChooseAbility()) { negateAbilities = new() { component.Ability } };
+
+            CardInfo info = card.Info.Clone() as CardInfo;
+            info.Mods = new(card.Info.Mods) { cardModificationInfo };
+            card.SetInfo(info);
+            yield break;
+        }
+
+        yield return new WaitForSeconds(0.15f);
+        card.Anim.PlayTransformAnimation();
+        yield return new WaitForSeconds(0.15f);
+        component.AddMod();
+    }
+    private static Ability GetRandomAbility(PlayableCard card)
+    {
+        List<Ability> learnedAbilities = new();
+        if (!SaveManager.SaveFile.IsPart2)
+            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: card.OpponentCard, 0, 5, SaveManager.SaveFile.IsPart1 ? AbilityMetaCategory.Part1Modular : AbilityMetaCategory.Part3Modular);
+        else
+        {
+            learnedAbilities = AbilityManager.AllAbilityInfos
+                .FindAll(x => x.pixelIcon != null && x.opponentUsable == card.OpponentCard && x.powerLevel > 0 && x.powerLevel <= 5)
+                .ConvertAll(x => x.ability);
+
+            learnedAbilities.Remove(Ability.RandomConsumable); // doesn't work in Act 2
+        }
+
+        learnedAbilities.RemoveAll((Ability x) => x == Ability.RandomAbility || card.HasAbility(x));
+        if (learnedAbilities.Count > 0)
+            return learnedAbilities[SeededRandom.Range(0, learnedAbilities.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle)];
+
+        return Ability.Sharp;
     }
 }
