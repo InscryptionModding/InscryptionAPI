@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using Sirenix.Serialization.Utilities;
+using Sirenix.Utilities;
 using System.Collections;
 using UnityEngine;
 
@@ -112,15 +113,13 @@ internal class RandomAbilityPatches
     private static Ability GetRandomAbility(PlayableCard card)
     {
         List<Ability> learnedAbilities = new();
+        bool isOpponent = card.OpponentCard;
         if (!SaveManager.SaveFile.IsPart2)
-            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: card.OpponentCard, 0, 5, SaveManager.SaveFile.IsPart1 ? AbilityMetaCategory.Part1Modular : AbilityMetaCategory.Part3Modular);
+            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: isOpponent, 0, 5, SaveManager.SaveFile.IsPart1 ? AbilityMetaCategory.Part1Modular : AbilityMetaCategory.Part3Modular);
         else
         {
-            learnedAbilities = AbilityManager.AllAbilityInfos
-                .FindAll(x => x.pixelIcon != null && x.opponentUsable == card.OpponentCard && x.powerLevel > 0 && x.powerLevel <= 5)
-                .ConvertAll(x => x.ability);
-
-            learnedAbilities.Remove(Ability.RandomConsumable); // doesn't work in Act 2
+            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: isOpponent, 0, 5, AbilityManager.Part2Modular);
+            learnedAbilities.RemoveAll( x => x == Ability.RandomConsumable);
         }
 
         learnedAbilities.RemoveAll((Ability x) => x == Ability.RandomAbility || card.HasAbility(x));

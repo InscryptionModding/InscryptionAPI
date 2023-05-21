@@ -166,6 +166,7 @@ public static class AbilityManager
     /// </remarks>
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
+    public static AbilityMetaCategory Part2Modular => GuidManager.GetEnumValue<AbilityMetaCategory>(InscryptionAPIPlugin.ModGUID, "Part2Modular");
     /// <summary>
     /// Resynchronizes the ablity list.
     /// </summary>
@@ -211,6 +212,9 @@ public static class AbilityManager
         foreach (var ability in Resources.LoadAll<AbilityInfo>("Data/Abilities"))
         {
             var name = ability.ability.ToString();
+            if (ability.activated || ability.metaCategories.Exists(x => x == AbilityMetaCategory.Part1Modular || x == AbilityMetaCategory.Part3Modular))
+                ability.SetDefaultPart2Ability();
+
             baseGame.Add(new FullAbility
             (
                 ability.ability,
@@ -219,6 +223,7 @@ public static class AbilityManager
                 useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
             ));
         }
+
         return baseGame;
     }
 
@@ -513,9 +518,11 @@ public static class AbilityManager
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
                     foreach (FullAbility fab in abilitiesToAdd)
                     {
-                        RuleBookPageInfo info = new();
-                        info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum);
+                        RuleBookPageInfo info = new()
+                        {
+                            pagePrefab = pageRangeInfo.rangePrefab,
+                            headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
+                        };
                         __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;

@@ -199,9 +199,8 @@ public static class CardManager
     public static void Add(string modPrefix, CardInfo newCard)
     {
         if (!newCard.name.StartsWith(modPrefix))
-        {
             newCard.name = $"{modPrefix}_{newCard.name}";
-        }
+
         newCard.SetModPrefix(modPrefix);
 
         Add(newCard);

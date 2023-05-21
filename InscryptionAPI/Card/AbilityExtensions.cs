@@ -63,7 +63,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the flipped texture for the ability (used when the ability belongs to the opponent)
+    /// Sets the flipped texture for the ability (used when the ability belongs to the opponent).
     /// </summary>
     /// <param name="info">The ability info to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
@@ -83,7 +83,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the icon texture for the ability
+    /// Sets the icon texture for the ability.
     /// </summary>
     /// <param name="info">The ability info to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
@@ -93,7 +93,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the flipped texture for the ability (used when the ability belongs to the opponent)
+    /// Sets the flipped texture for the ability (used when the ability belongs to the opponent).
     /// </summary>
     /// <param name="info">The ability info to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
@@ -104,7 +104,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand
+    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
@@ -119,7 +119,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand
+    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="pathToArt">The path to a 49x49 texture containing the icon on disk.</param>
@@ -134,7 +134,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in GBC mode
+    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in Act 2.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="icon">A 16x8 texture containing the icon .</param>
@@ -150,7 +150,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the icon that will be displayed for this ability icon in GBC mode
+    /// Sets the icon that will be displayed for this ability icon in Act 2.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <param name="icon">A 17x17 texture containing the icon .</param>
@@ -166,14 +166,14 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the ability. Duplicate abilities will not be added
+    /// Adds one or more metacategories to the ability. Duplicate abilities will not be added.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
     /// <returns>The same ability so a chain can continue.</returns>
     public static AbilityInfo AddMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
     {
-        info.metaCategories = info.metaCategories ?? new();
+        info.metaCategories ??= new();
         foreach (var app in categories)
             if (!info.metaCategories.Contains(app))
                 info.metaCategories.Add(app);
@@ -181,14 +181,14 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the stati icon. Duplicate abilities will not be added
+    /// Adds one or more metacategories to the stati icon. Duplicate abilities will not be added.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
     /// <returns>The same stat icon so a chain can continue.</returns>
     public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories)
     {
-        info.metaCategories = info.metaCategories ?? new();
+        info.metaCategories ??= new();
         foreach (var app in categories)
             if (!info.metaCategories.Contains(app))
                 info.metaCategories.Add(app);
@@ -196,7 +196,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part1Modular and Part1Rulebook metacategories to the ability
+    /// Helper method: automatically adds the Part1Modular and Part1Rulebook metacategories to the ability.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <returns>The same ability so a chain can continue.</returns>
@@ -206,7 +206,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part1Rulebook metacategories to the stat icon
+    /// Helper method: automatically adds the Part1Rulebook metacategories to the stat icon.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <returns>The same stati icon so a chain can continue.</returns>
@@ -216,7 +216,17 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part3Modular, Part3BuildACard, and Part3Rulebook metacategories to the ability
+    /// Helper method: automatically adds the custom metacategory Part2Modular to the ability.
+    /// </summary>
+    /// <param name="info">The instance of AbilityInfo.</param>
+    /// <returns>The same ability so a chain can continue.</returns>
+    public static AbilityInfo SetDefaultPart2Ability(this AbilityInfo info)
+    {
+        return info.AddMetaCategories(Part2Modular);
+    }
+
+    /// <summary>
+    /// Helper method: automatically adds the Part3Modular, Part3BuildACard, and Part3Rulebook metacategories to the ability.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <returns>The same ability so a chain can continue.</returns>
@@ -226,7 +236,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part3Rulebook metacategories to the stat icon
+    /// Helper method: automatically adds the Part3Rulebook metacategories to the stat icon.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <returns>The same stat icon so a chain can continue.</returns>
