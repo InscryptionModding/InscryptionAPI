@@ -387,7 +387,7 @@ public static class CardExtensions
 
         return info;
     }
-    
+
     #region MetaCategories
 
     /// <summary>
@@ -1263,31 +1263,15 @@ public static class CardExtensions
 
     #region Helpers
 
-
-    /// <summary>
-    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
-    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
-    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
-    {
-        return new EncounterBlueprintData.CardBlueprint
-        {
-            card = cardInfo
-        };
-    }
-
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.
     /// </summary>
     /// <param name="mod">CardModificationInfo to access.</param>
     /// <param name="ability">The ability to check for.</param>
     /// <returns>true if the ability does not exist.</returns>
-    public static bool LacksAbility(this CardModificationInfo mod, Ability ability)
-    {
-        return !mod.HasAbility(ability);
-    }
+    public static bool LacksAbility(this CardModificationInfo mod, Ability ability) => !mod.HasAbility(ability);
 
+    #region Ability
     /// <summary>
     /// Checks if the CardInfo does not have a specific Ability.
     /// </summary>
@@ -1346,7 +1330,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
+    #region SpecialAbility
     /// <summary>
     /// Checks if the CardInfo has a specific SpecialTriggeredAbility.
     ///
@@ -1418,7 +1404,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
+    #region Trait
     /// <summary>
     /// Checks if the CardInfo does not have a specific Trait.
     /// </summary>
@@ -1477,18 +1465,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
-    /// <summary>
-    /// Checks if the CardInfo does not belong to a specific Tribe.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="tribe">The tribe to check for.</param>
-    /// <returns>true if the card is not of the specified tribe.</returns>
-    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe)
-    {
-        return !cardInfo.IsOfTribe(tribe);
-    }
-
+    #region CardMetaCategory
     /// <summary>
     /// Checks if the CardInfo has a specific CardMetaCategory.
     /// </summary>
@@ -1542,6 +1521,28 @@ public static class CardExtensions
         }
         return true;
     }
+    #endregion
+
+    /// <summary>
+    /// Checks if the CardInfo does not belong to a specific Tribe.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe) => !cardInfo.IsOfTribe(tribe);
+
+    /// <summary>
+    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
+    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
+    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
+    {
+        return new EncounterBlueprintData.CardBlueprint
+        {
+            card = cardInfo
+        };
+    }
 
     /// <summary>
     /// Spawns the CardInfo object to the player's hand.
@@ -1578,11 +1579,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <returns>True if the card info is affected by Tidal Lock.</returns>
-    public static bool IsAffectedByTidalLock(this CardInfo info)
-    {
-        bool isAffected = info.GetExtendedPropertyAsBool("AffectedByTidalLock") ?? false;
-        return isAffected || info.name == "Squirrel" || info.name == "AquaSquirrel" || info.name == "Rabbit";
-    }
+    public static bool IsAffectedByTidalLock(this CardInfo info) => info.GetExtendedPropertyAsBool("AffectedByTidalLock") ?? false;
 
     /// <summary>
     /// Sets whether the card should be killed by Tidal Lock's effect.

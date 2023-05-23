@@ -1,8 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using Sirenix.Serialization.Utilities;
-using Sirenix.Utilities;
 using System.Collections;
 using UnityEngine;
 
@@ -76,7 +74,7 @@ internal class RandomAbilityPatches
     {
         if (mod.HasAbility(Ability.RandomAbility))
         {
-            for (int i = 0; i < mod.abilities.Count;i++)
+            for (int i = 0; i < mod.abilities.Count; i++)
             {
                 if (mod.abilities[i] == Ability.RandomAbility)
                 {
@@ -119,7 +117,7 @@ internal class RandomAbilityPatches
         else
         {
             learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: isOpponent, 0, 5, AbilityManager.Part2Modular);
-            learnedAbilities.RemoveAll( x => x == Ability.RandomConsumable);
+            learnedAbilities.RemoveAll(x => x == Ability.RandomConsumable);
         }
 
         learnedAbilities.RemoveAll((Ability x) => x == Ability.RandomAbility || card.HasAbility(x));

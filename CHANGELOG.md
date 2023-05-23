@@ -1,8 +1,23 @@
 # Changelog
 
+## 2.13.2
+- Fixed Hoarder sigil breaking when used by opponents in Act 2
+- Fixed Hodag special ability not working in Act 2
+- Fixed cards marked as AffectedByTidalLock not being killed by Tidal Lock when it's on a giant card
+- Added CardInfo extension method SetAffectedByTidalLock
+- Added AbilityCardMetaCategory AbilityManager.Part2Modular
+- Added pixel portraits for Empty Vessel and its Gemified variants, Ant, Bee, Dam, Chime, and the Tail cards
+- Amorphous sigil now works in Act 2
+- Vessel Printer sigil now works in Act 2
+- Trinket Bearer sigil is now disabled in Act 2
+- Hidden abilities are now properly hidden in Act 2
+- Fledgling sigil now properly shows the required (up to the number 3) in Act 2
+- Fledgling sigil's rulebook description now updates to show the selected card's actual number of required turns (English only)
+- Squirrel, Aqua Squirrel, and Rabbit are now marked as AffectedByTidalLock
+
 ## 2.13.1
 - Fixed custom items falling through reality
-- Added card extension IsAffectedByTidalLock
+- Added card extension method IsAffectedByTidalLock
 - Mental Gemnastics sigil now works in Act 1
 - Tidal Lock sigil now works for non-Moon cards
 
@@ -14,7 +29,7 @@
 - Fixed ExtendedActivatedAbilityBehaviour discarding negative activation cost modifiers
 - Fixed Sniper not accounting for custom sigils that modify attack slots
 - Fixed Tutor not working in Act 2
-- Added more extensions to BoardManager
+- Added more extension methods to BoardManager
 - Added new card extensions SetGemify and SetGemsCost(params GemType[])
 - Added catch-all cost textures for when Blood or Bones go above 13
 - Added CardModificationInfoManager and DeathCardManager
@@ -229,7 +244,7 @@
 - Bugfix for SaveData
 
 ## v2.0
-- Rewrite (Specifics to be added)
+- Rewritten to use base game objects
 
 ## v1.13.0
 - Added support for custom card backgrounds, dialogs, encounters and talking cards

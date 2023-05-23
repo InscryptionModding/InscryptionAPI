@@ -2,9 +2,7 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
-using Sirenix.Utilities;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 namespace InscryptionAPI.Card;
 

@@ -42,6 +42,14 @@ public static class AbilityExtensions
         return retval;
     }
 
+    public static string GetBaseRulebookDescription(this AbilityInfo info)
+    {
+        FullAbility fullAbility = AllAbilities.Find(x => x.Info == info);
+        if (fullAbility == default(FullAbility))
+            return null;
+
+        return fullAbility.BaseRulebookDescription;
+    }
     /// <summary>
     /// Sets the icon texture for the ability.
     /// </summary>
@@ -316,6 +324,19 @@ public static class AbilityExtensions
     }
 
     /// <summary>
+    /// Resets the AbilityInfo's rulebook description to its vanilla version.
+    /// Useful for anyone messing with altering descriptions.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo ResetDescription(this AbilityInfo abilityInfo)
+    {
+        abilityInfo.rulebookDescription = AllAbilities.Find(x => x.Info == abilityInfo).BaseRulebookDescription;
+        return abilityInfo;
+    }
+
+    #region TriggersOncePerStack
+    /// <summary>
     /// Sets the ability to only ever trigger once per stack. This prevents abilities from triggering twice per stack after a card evolves.
     /// This only affects cards that evolve into a card that possesses the same stackable ability (eg, default evolutions).
     /// </summary>
@@ -347,6 +368,7 @@ public static class AbilityExtensions
     {
         return abilityInfo.GetExtendedPropertyAsBool("TriggersOncePerStack") ?? false;
     }
+    #endregion
 
     #region ExtendedProperties
 

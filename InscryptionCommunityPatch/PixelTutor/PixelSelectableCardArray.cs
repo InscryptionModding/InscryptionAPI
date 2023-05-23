@@ -1,14 +1,10 @@
 using DiskCardGame;
 using GBC;
-using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
 using Pixelplacement;
-using Sirenix.Serialization.Utilities;
 using Sirenix.Utilities;
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace InscryptionCommunityPatch.PixelTutor;
 
@@ -239,7 +235,7 @@ public class PixelPlayableCardArray : ManagedBehaviour
             swap = !swap;
         }
     }
-    
+
     private void SetCardsEnabled(bool enabled)
     {
         foreach (PixelPlayableCard displayedCard in displayedCards)
@@ -254,16 +250,16 @@ public class PixelPlayableCardArray : ManagedBehaviour
             .Concat(TurnManager.Instance.Opponent.queuedCards)
             .Concat(PixelPlayerHand.Instance.CardsInHand)
             .Cast<PixelPlayableCard>();
-        
+
         IEnumerable<HighlightedInteractable> slots = PixelBoardManager.Instance.AllSlots
             .Concat(PixelBoardManager.Instance.OpponentQueueSlots)
             .Cast<HighlightedInteractable>();
 
-        HammerButton button = (HammerButton)Resources.FindObjectsOfTypeAll(typeof(HammerButton))[0];
-        PixelCombatBell bell = (PixelCombatBell)Resources.FindObjectsOfTypeAll(typeof(PixelCombatBell))[0];
+        HammerButton button = (HammerButton)Resources.FindObjectsOfTypeAll(typeof(HammerButton)).FirstOrDefault();
+        PixelCombatBell bell = (PixelCombatBell)Resources.FindObjectsOfTypeAll(typeof(PixelCombatBell)).FirstOrDefault();
 
-        bell.SetEnabled(enabled);
-        button.gameObject.SetActive(enabled);
+        bell?.SetEnabled(enabled);
+        button?.gameObject.SetActive(enabled);
 
         foreach (HighlightedInteractable slot in slots)
         {

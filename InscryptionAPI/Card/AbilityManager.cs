@@ -383,20 +383,22 @@ public static class AbilityManager
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.OpenToAbilityPage))]
     private static bool UpdateRulebookDescription(PlayableCard card)
     {
-        if (card != null)
+        if (!card)
+            return true;
+
+        ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
+        if (component != null)
         {
-            ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
-            if (component != null)
+            foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
             {
-                foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
-                {
-                    if (ab.AbilityBehavior.IsAssignableFrom(component.GetType()))
-                        ab.Info.rulebookDescription = ParseAndUpdateDescription(ab.Info.rulebookDescription, component);
-                }
+                if (ab.AbilityBehavior.IsAssignableFrom(component.GetType()))
+                    ab.Info.rulebookDescription = ParseAndUpdateDescription(ab.Info.rulebookDescription, component);
             }
         }
+
         return true;
     }
+
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.SetShown))]
     private static bool ResetAlteredDescriptions(bool shown)
     {
@@ -406,11 +408,12 @@ public static class AbilityManager
             {
                 AbilityInfo info = AbilitiesUtil.GetInfo(ab.Id);
                 if (info.rulebookDescription != ab.BaseRulebookDescription)
-                    info.rulebookDescription = ab.BaseRulebookDescription;
+                    info.ResetDescription();
             }
         }
         return true;
     }
+
     internal static string ParseAndUpdateDescription(string description, ExtendedActivatedAbilityBehaviour ability)
     {
         while (description.Contains("[sigilcost:"))

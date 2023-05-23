@@ -131,7 +131,8 @@ internal class SlotAttackSlotPatches
 
             if (endIndex > -1)
             {
-                MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.NewDealDirectDamage), new Type[] { typeof(CombatPhaseManager), typeof(CardSlot), typeof(CardSlot) });
+                MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.NewDealDirectDamage),
+                    new Type[] { typeof(CombatPhaseManager), typeof(CardSlot), typeof(CardSlot) });
 
                 // remove the previous code then insert our own
                 codes.RemoveRange(startIndex, endIndex - startIndex);

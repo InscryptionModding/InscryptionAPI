@@ -66,7 +66,7 @@ public static class Part1CardCostRender
 
             if (card.GemsCost.Contains(GemType.Blue))
                 gemCost.Add(GetTextureByName("mox_cost_b"));
-            
+
             if (card.GemsCost.Contains(GemType.Orange))
                 gemCost.Add(GetTextureByName("mox_cost_o"));
 

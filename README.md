@@ -74,7 +74,10 @@ Displays targets for attacks made with the sniper sigil in Act 1.
 Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 
 ## Multi-Act Sigil Compatability Fixes by WhistleWind
-Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder.
+Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder, Vessel Printer, Amorphous.
+
+## Fledgling Sigil Fixes by WhistleWind
+Fixes Fledgling in Act 2 to show the correct number of turns until a card evolves, up to 3. Also changes its description to show the correct number of turns.
 
 # Using the API
 
@@ -104,6 +107,7 @@ Contributors and builders of API 2.0
 - JamesVeug
 - julian-perge
 - KellyBetty
+- Nevernamed
 - SpecialAPI
 - Void Slime
 - WhistleWind
