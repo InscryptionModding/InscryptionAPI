@@ -4,7 +4,8 @@
 - Fixed Hoarder sigil breaking when used by opponents in Act 2
 - Fixed Hodag special ability not working in Act 2
 - Fixed cards marked as AffectedByTidalLock not being killed by Tidal Lock when it's on a giant card
-- Added CardInfo extension method SetAffectedByTidalLock and HasAlternatePortrait
+- Added card extension methods SetAffectedByTidalLock and HasAlternatePortrait
+- Added ability extension method SetPart2Ability
 - Added AbilityCardMetaCategory AbilityManager.Part2Modular
 - Added pixel portraits for Empty Vessel and its Gemified variants, Ant, Bee, Dam, Chime, and the Tail cards
 - Amorphous sigil now works in Act 2
