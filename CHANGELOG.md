@@ -13,7 +13,7 @@
 - Trinket Bearer sigil is now disabled in Act 2
 - Hidden abilities are now properly hidden in Act 2
 - Fledgling sigil now properly shows the required (up to the number 3) in Act 2
-- Fledgling sigil's rulebook description now updates to show the selected card's actual number of required turns (English only)
+- Fledgling sigil's rulebook description now updates to show the selected card's actual number of required turns
 - Squirrel, Aqua Squirrel, and Rabbit are now marked as AffectedByTidalLock
 - SteelTrap sigil no longer changes a card's portrait to the closed trap; will now switch to an alternate portrait if it exists
 
