@@ -15,9 +15,13 @@ public static class TypeManager
 
     internal static void Add(string key, Type value)
     {
-        if (TypeCache.ContainsKey(key) && TypeCache[key] == value)
-            return;
+        if (TypeCache.ContainsKey(key)) {
+            if (TypeCache[key] == value) return;
+            TypeManager.Replace(key, value);
 
+            return;
+        }
+            
         TypeCache.Add(key, value);
     }
 
