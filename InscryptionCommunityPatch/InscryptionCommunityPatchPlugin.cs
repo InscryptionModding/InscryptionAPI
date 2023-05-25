@@ -44,7 +44,7 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configFullDebug;
 
     internal static ConfigEntry<bool> configDefaultDrone;
-    
+
     internal static ConfigEntry<bool> act2TutorCenterRows;
 
     new internal static ManualLogSource Logger;

@@ -15,17 +15,20 @@ internal class SquirrelOrbitFix
     [HarmonyPrefix]
     private static bool FixSquirrelOrbit(SquirrelOrbit __instance, ref IEnumerator __result)
     {
-        if (__instance.Card && __instance.Card.LacksSpecialAbility(SpecialTriggeredAbility.GiantMoon))
-        {
-            __result = MoonlessSquirrelOrbit(__instance);
-            return false;
-        }
-        return true;
+        __result = BetterSquirrelOrbit(__instance);
+        return false;
     }
 
-    private static IEnumerator MoonlessSquirrelOrbit(SquirrelOrbit instance)
+    private static IEnumerator BetterSquirrelOrbit(SquirrelOrbit instance)
     {
-        List<CardSlot> affectedSlots = Singleton<BoardManager>.Instance.AllSlotsCopy.FindAll(x => x.Card != null && x.Card.IsAffectedByTidalLock());
+        List<CardSlot> affectedSlots = new();
+
+        if (instance.Card.HasTrait(Trait.Giant))
+            affectedSlots = Singleton<BoardManager>.Instance.GetSlotsCopy(instance.Card.OpponentCard);
+        else
+            affectedSlots = Singleton<BoardManager>.Instance.AllSlotsCopy;
+
+        affectedSlots.RemoveAll(x => !x.Card || !x.Card.IsAffectedByTidalLock());
         if (affectedSlots.Count == 0)
             yield break;
 
@@ -44,6 +47,12 @@ internal class SquirrelOrbitFix
                 Singleton<ViewManager>.Instance.SwitchToView(View.OpponentQueue);
 
             yield return new WaitForSeconds(0.1f);
+
+            if (instance.Card.HasSpecialAbility(SpecialTriggeredAbility.GiantMoon))
+            {
+                instance.FindMoonPortrait();
+                instance.moonPortrait.InstantiateOrbitingObject(item.Info);
+            }
 
             if (instance.HasLearned)
                 yield return new WaitForSeconds(0.5f);

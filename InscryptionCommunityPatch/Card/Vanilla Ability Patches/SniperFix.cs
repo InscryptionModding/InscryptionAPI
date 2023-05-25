@@ -1,6 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Card;
 using System.Collections;
 using UnityEngine;
 
@@ -92,7 +91,7 @@ public class SniperFix
                 PlayableCard strongestKillable = GetStrongestKillableCard(anyCards, playerCards, opposingSlots, slot, numAttacks);
                 PlayableCard strongestAttackable = GetFirstStrongestAttackableCard(anyCards, playerCards, opposingSlots, slot, numAttacks);
                 PlayableCard strongestAttackableNoPreferences = GetFirstStrongestAttackableCardNoPreferences(anyCards, playerCards, opposingSlots, slot, numAttacks);
-                
+
                 if (CanWin(opposingSlots, playerSlots, slot, numAttacks))
                     attackSlot = GetFirstAvailableOpenSlot(opposingSlots, playerSlots, slot, numAttacks);
 

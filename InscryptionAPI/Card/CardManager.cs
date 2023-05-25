@@ -2,7 +2,6 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Saves;
-using InscryptionAPI.TalkingCards.Helpers;
 using MonoMod.Cil;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -43,14 +42,14 @@ public static class CardManager
         foreach (CardInfo card in Resources.LoadAll<CardInfo>("Data/Cards"))
         {
             card.SetBaseGameCard(true);
+            if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit")
+                card.SetAffectedByTidalLock();
+
             yield return card;
         }
     }
 
-    internal static void ActivateEvents()
-    {
-        EventActive = true;
-    }
+    internal static void ActivateEvents() => EventActive = true;
 
     /// <summary>
     /// Re-executes events and rebuilds the card pool.
@@ -199,9 +198,8 @@ public static class CardManager
     public static void Add(string modPrefix, CardInfo newCard)
     {
         if (!newCard.name.StartsWith(modPrefix))
-        {
             newCard.name = $"{modPrefix}_{newCard.name}";
-        }
+
         newCard.SetModPrefix(modPrefix);
 
         Add(newCard);
@@ -346,11 +344,11 @@ public static class CardManager
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
 
         CardInfo result = (CardInfo)__result;
-        if (__instance.Mods.Exists(x => x.gemify) && !result.Mods.Exists(x => x.gemify))
+        if (__instance.Mods.Any(x => x.gemify))
             result.Mods.Add(new() { gemify = true });
+
         if (__instance.ModPrefixIs(DeathCardManager.CardPrefix))
         {
-
             CardModificationInfo death = __instance.Mods.Find(x => x.HasDeathCardInfo());
             if (death != null)
                 result.Mods.Add(new() { singletonId = death.singletonId, deathCardInfo = death.deathCardInfo });

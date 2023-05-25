@@ -166,6 +166,7 @@ public static class AbilityManager
     /// </remarks>
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
+    public static AbilityMetaCategory Part2Modular => GuidManager.GetEnumValue<AbilityMetaCategory>(InscryptionAPIPlugin.ModGUID, "Part2Modular");
     /// <summary>
     /// Resynchronizes the ablity list.
     /// </summary>
@@ -211,6 +212,9 @@ public static class AbilityManager
         foreach (var ability in Resources.LoadAll<AbilityInfo>("Data/Abilities"))
         {
             var name = ability.ability.ToString();
+            if (ability.activated || ability.metaCategories.Exists(x => x == AbilityMetaCategory.Part1Modular || x == AbilityMetaCategory.Part3Modular))
+                ability.SetDefaultPart2Ability();
+
             baseGame.Add(new FullAbility
             (
                 ability.ability,
@@ -219,6 +223,7 @@ public static class AbilityManager
                 useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
             ));
         }
+
         return baseGame;
     }
 
@@ -378,20 +383,22 @@ public static class AbilityManager
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.OpenToAbilityPage))]
     private static bool UpdateRulebookDescription(PlayableCard card)
     {
-        if (card != null)
+        if (!card)
+            return true;
+
+        ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
+        if (component != null)
         {
-            ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
-            if (component != null)
+            foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
             {
-                foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
-                {
-                    if (ab.AbilityBehavior.IsAssignableFrom(component.GetType()))
-                        ab.Info.rulebookDescription = ParseAndUpdateDescription(ab.Info.rulebookDescription, component);
-                }
+                if (ab.AbilityBehavior.IsAssignableFrom(component.GetType()))
+                    ab.Info.rulebookDescription = ParseAndUpdateDescription(ab.Info.rulebookDescription, component);
             }
         }
+
         return true;
     }
+
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.SetShown))]
     private static bool ResetAlteredDescriptions(bool shown)
     {
@@ -401,11 +408,12 @@ public static class AbilityManager
             {
                 AbilityInfo info = AbilitiesUtil.GetInfo(ab.Id);
                 if (info.rulebookDescription != ab.BaseRulebookDescription)
-                    info.rulebookDescription = ab.BaseRulebookDescription;
+                    info.ResetDescription();
             }
         }
         return true;
     }
+
     internal static string ParseAndUpdateDescription(string description, ExtendedActivatedAbilityBehaviour ability)
     {
         while (description.Contains("[sigilcost:"))
@@ -513,9 +521,11 @@ public static class AbilityManager
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
                     foreach (FullAbility fab in abilitiesToAdd)
                     {
-                        RuleBookPageInfo info = new();
-                        info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum);
+                        RuleBookPageInfo info = new()
+                        {
+                            pagePrefab = pageRangeInfo.rangePrefab,
+                            headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
+                        };
                         __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;

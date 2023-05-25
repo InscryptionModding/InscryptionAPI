@@ -43,9 +43,8 @@ public static class StackAbilityIcons
     {
         var stackGBC = "stack_gbc.png";
         if (!PatchPlugin.act2StackIconType.Value)
-        {
             stackGBC = "stack_gbc_alt.png";
-        }
+
         Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
         return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
     }
@@ -97,8 +96,8 @@ public static class StackAbilityIcons
     private static readonly int MEDIUM = 2;
     private static readonly int FORCED = 3;
 
-    private static Dictionary<string, Texture2D> patchedTexture = new Dictionary<string, Texture2D>();
-    private static Dictionary<Ability, Tuple<Vector2Int, int>> patchLocations = new Dictionary<Ability, Tuple<Vector2Int, int>>();
+    private static readonly Dictionary<string, Texture2D> patchedTexture = new();
+    private static readonly Dictionary<Ability, Tuple<Vector2Int, int>> patchLocations = new();
 
     [HarmonyPatch(typeof(CardAbilityIcons), "GetDistinctShownAbilities")]
     [HarmonyPostfix]
@@ -106,7 +105,7 @@ public static class StackAbilityIcons
     {
         // We'll start by completely removing the stackable icons from the list
         // We will be patching the AbilityIconInteractable class to display the icon
-        __result = __result.Distinct().ToList<Ability>();
+        __result = __result.Distinct().ToList();
     }
 
     private static Vector2Int FindMatchingOnesDigit(Texture2D searchTex, bool normalSize = true)
@@ -432,7 +431,7 @@ public static class StackAbilityIcons
                     //PatchPlugin.Log.LogInfo($"countTransform {countTransform}");
                     if (countTransform == null)
                     {
-                        GameObject counter = new GameObject();
+                        GameObject counter = new();
                         counter.transform.SetParent(abilityRenderer.transform);
                         counter.layer = LayerMask.NameToLayer("GBCPauseMenu");
                         SpriteRenderer renderer = counter.AddComponent<SpriteRenderer>();
@@ -502,8 +501,5 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(CardInfo), "GetGBCDescriptionLocalized")]
     [HarmonyPostfix]
-    private static void GetStackedGBCDescriptionLocalized(ref string __result)
-    {
-        __result = StackDescription(__result);
-    }
+    private static void GetStackedGBCDescriptionLocalized(ref string __result) => __result = StackDescription(__result);
 }

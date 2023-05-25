@@ -1,19 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Guid;
-using InscryptionAPI.Helpers;
-using InscryptionAPI.Helpers.Extensions;
-using InscryptionAPI.Saves;
-using MonoMod.Cil;
-using Sirenix.Serialization.Utilities;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace InscryptionAPI.Card;
 

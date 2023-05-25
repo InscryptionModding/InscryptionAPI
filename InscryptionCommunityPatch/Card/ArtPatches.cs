@@ -61,13 +61,32 @@ public static class CommunityArtPatches
         Ability.SquirrelOrbit,
         Ability.DrawVesselOnHit
     };
+    internal static readonly List<string> regularCardsToPatch = new()
+    {
+        "Ant",
+        "Bee",
+        "Dam",
+        "DausBell",
+        "DefaultTail",
+        "EmptyVessel",
+        "EmptyVessel_GreenGem",
+        "EmptyVessel_OrangeGem",
+        "EmptyVessel_BlueGem",
+        "SkinkTail",
+        "Tail_Bird",
+        "Tail_Furry",
+        "Tail_Insect",
+    };
 
     public static void PatchCommunityArt()
     {
         foreach (Ability ability in regularIconsToPatch)
-            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability.ToString()}.png", typeof(CommunityArtPatches).Assembly));
+            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability}.png", typeof(CommunityArtPatches).Assembly));
 
         foreach (Ability ability in gbcIconsToPatch)
-            AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability.ToString()}.png", typeof(CommunityArtPatches).Assembly));
+            AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability}.png", typeof(CommunityArtPatches).Assembly));
+
+        foreach (string name in regularCardsToPatch)
+            CardManager.BaseGameCards.CardByName(name).SetPixelPortrait(TextureHelper.GetImageAsTexture($"{name}_pixel.png", typeof(CommunityArtPatches).Assembly));
     }
 }

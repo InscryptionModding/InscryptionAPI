@@ -1,19 +1,11 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Guid;
-using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
-using InscryptionAPI.Saves;
-using MonoMod.Cil;
 using Sirenix.Serialization.Utilities;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace InscryptionAPI.Card;
 
@@ -220,7 +212,7 @@ internal static class ChangeDeathCardExamineDialogue
                 start = ii - 6;
                 continue;
             }
-                
+
             if (codes[ii].opcode == OpCodes.Ldstr && codes[ii].operand.ToString() == "A [c:bR]Sigil of {0}[c:] and a [c:bR]Sigil of {1}[c:] from the [c:bR]{2}[c:].")
             {
                 MethodInfo customMethod = AccessTools.Method(
@@ -306,7 +298,7 @@ internal static class ChangeDeathCardExamineDialogue
             string arg3 = Localization.Translate(AbilitiesUtil.GetInfo(info.Abilities[2]).rulebookName);
             if (info.NumAbilities == 3)
                 return string.Format(Localization.Translate("A [c:bR]Sigil of {0}[c:], a [c:bR]Sigil of {1}[c:], and a [c:bR]Sigil of {2}[c:] from the [c:bR]{3}[c:]."), arg, arg2, arg3, info.DisplayedNameLocalized);
-          
+
         }
 
         return string.Format(Localization.Translate("A [c:bR]multitude of sigils[c:] from the [c:bR]{0}[c:]."), info.DisplayedNameLocalized);

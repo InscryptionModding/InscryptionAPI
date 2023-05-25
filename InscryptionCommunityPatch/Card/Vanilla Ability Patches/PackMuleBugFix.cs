@@ -9,8 +9,5 @@ internal class PackMuleBugFix
 {
     [HarmonyPatch(typeof(PackMule), nameof(PackMule.RespondsToResolveOnBoard))]
     [HarmonyPostfix]
-    private static void AlwaysResolveOnBoard(ref bool __result)
-    {
-        __result = true;
-    }
+    private static void AlwaysResolveOnBoard(ref bool __result) => __result = true;
 }

@@ -1,8 +1,5 @@
 using DiskCardGame;
-using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
-using System.Collections;
-using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
@@ -292,5 +289,5 @@ public static class CardModificationInfoExtensions
         mod.GetCardModExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
     }
-#endregion
+    #endregion
 }

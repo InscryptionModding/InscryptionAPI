@@ -61,6 +61,31 @@ public static int NumberOfItems
 
 When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
 
+## API Extended Properties
+The API implements a system of custom properties that you can apply to cards, abilities, and card modification infos.
+For more information on properties go [to this section](#custom-card-properties).
+
+Some extended properties are used by the API for certain functions.
+The following are some extension properties you can use for your cards.
+
+If you're using C# you can use the provided extension method to easily set these fields, and there are also methods for easily checking them.
+
+NOTE THAT THE NAMES ARE CASE-SENSITIVE.
+
+|Property Name          |Affected Type  |Value Type |Description                                                |Extension Method       |
+|-----------------------|---------------|-----------|-----------------------------------------------------------|-----------------------|
+|TriggersOncePerStack   |AbilityInfo    |Boolean    |If the ability should trigger twice when the card evolves. |SetTriggersOncePerStack|
+|AffectedByTidalLock    |CardInfo       |Boolean    |If the card should be killed by the effect of Tidal Lock.  |SetAffectedByTidalLock |
+
+## Part2Modular
+The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
+
+Feel free to use this as you please. Or don't. I'm not your mom.
+
+### Note
+All vanilla sigils marked Part1Modular or Part3Modular, plus all vanilla activated sigils, have been given with metacategory by default.
+Currently it's only used within the API for the Act 2 Amorphous patch.
+
 # Cards
 
 ## Card Management
@@ -114,6 +139,7 @@ The following card extensions are available:
 - **SetOnePerDeck:** Sets whether or not the card is unique (only one copy in your deck per run).
 - **SetHideAttackAndHealth:** Sets whether or not the card's Power and Health stats will be displayed or not.
 - **SetGemify:** Sets whether or not the card should be Gemified by default.
+- **SetAffectedByTidalLock:** Sets whether or not the card will be killed by the effect of the Tidal Lock sigil.
 - **AddAbilities:** Add any number of abilities to the card. This will add duplicates.
 - **AddAppearances:** Add any number of appearance behaviors to the card. No duplicates will be added.
 - **AddMetaCategories:** Add any number of metacategories to the card. No duplicates will be added.
