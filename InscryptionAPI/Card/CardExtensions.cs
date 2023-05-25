@@ -1263,14 +1263,6 @@ public static class CardExtensions
 
     #region Helpers
 
-    /// <summary>
-    /// Checks if the CardModificationInfo does not have a specific Ability.
-    /// </summary>
-    /// <param name="mod">CardModificationInfo to access.</param>
-    /// <param name="ability">The ability to check for.</param>
-    /// <returns>true if the ability does not exist.</returns>
-    public static bool LacksAbility(this CardModificationInfo mod, Ability ability) => !mod.HasAbility(ability);
-
     #region Ability
     /// <summary>
     /// Checks if the CardInfo does not have a specific Ability.
@@ -1530,6 +1522,17 @@ public static class CardExtensions
     /// <param name="tribe">The tribe to check for.</param>
     /// <returns>true if the card is not of the specified tribe.</returns>
     public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe) => !cardInfo.IsOfTribe(tribe);
+
+    public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
+    public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
+
+    /// <summary>
+    /// Checks if the CardModificationInfo does not have a specific Ability.
+    /// </summary>
+    /// <param name="mod">CardModificationInfo to access.</param>
+    /// <param name="ability">The ability to check for.</param>
+    /// <returns>true if the ability does not exist.</returns>
+    public static bool LacksAbility(this CardModificationInfo mod, Ability ability) => !mod.HasAbility(ability);
 
     /// <summary>
     /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.

@@ -4,7 +4,7 @@
 - Fixed Hoarder sigil breaking when used by opponents in Act 2
 - Fixed Hodag special ability not working in Act 2
 - Fixed cards marked as AffectedByTidalLock not being killed by Tidal Lock when it's on a giant card
-- Added CardInfo extension method SetAffectedByTidalLock
+- Added CardInfo extension method SetAffectedByTidalLock and HasAlternatePortrait
 - Added AbilityCardMetaCategory AbilityManager.Part2Modular
 - Added pixel portraits for Empty Vessel and its Gemified variants, Ant, Bee, Dam, Chime, and the Tail cards
 - Amorphous sigil now works in Act 2
@@ -14,6 +14,7 @@
 - Fledgling sigil now properly shows the required (up to the number 3) in Act 2
 - Fledgling sigil's rulebook description now updates to show the selected card's actual number of required turns (English only)
 - Squirrel, Aqua Squirrel, and Rabbit are now marked as AffectedByTidalLock
+- SteelTrap sigil no longer changes a card's portrait to the closed trap; will now switch to an alternate portrait if it exists
 
 ## 2.13.1
 - Fixed custom items falling through reality
