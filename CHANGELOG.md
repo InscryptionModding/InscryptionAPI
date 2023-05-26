@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.13.3
+- Fixed null error when opening card packs in Act 2
+- Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
+- Added new helper class GemsManagerHelpers with helper methods: OpponentHasGems, PlayerHasGems
+- Changed how Act 2 descriptions are altered to prevent conflicts
+- True Scholar now correctly requires a Blue Gem to be owned prior to use
+
 ## 2.13.2
 - Fixed Hoarder sigil breaking when used by opponents in Act 2
 - Fixed Hodag special ability not working in Act 2
