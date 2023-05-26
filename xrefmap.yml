@@ -8350,6 +8350,60 @@ references:
   commentId: F:InscryptionAPI.Helpers.MaterialOverride.Smoothness
   fullName: InscryptionAPI.Helpers.MaterialOverride.Smoothness
   nameWithType: MaterialOverride.Smoothness
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers
+  name: ResourcesManagerHelpers
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html
+  commentId: T:InscryptionAPI.Helpers.ResourcesManagerHelpers
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers
+  nameWithType: ResourcesManagerHelpers
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems(DiskCardGame.GemType[])
+  name: OpponentHasGems(GemType[])
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_OpponentHasGems_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems(DiskCardGame.GemType[])
+  name.vb: OpponentHasGems(GemType())
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems(DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems(DiskCardGame.GemType())
+  nameWithType: ResourcesManagerHelpers.OpponentHasGems(GemType[])
+  nameWithType.vb: ResourcesManagerHelpers.OpponentHasGems(GemType())
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems*
+  name: OpponentHasGems
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_OpponentHasGems_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems
+  nameWithType: ResourcesManagerHelpers.OpponentHasGems
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems(System.Boolean,DiskCardGame.GemType[])
+  name: OwnerHasGems(Boolean, GemType[])
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_OwnerHasGems_System_Boolean_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems(System.Boolean,DiskCardGame.GemType[])
+  name.vb: OwnerHasGems(Boolean, GemType())
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems(System.Boolean, DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems(System.Boolean, DiskCardGame.GemType())
+  nameWithType: ResourcesManagerHelpers.OwnerHasGems(Boolean, GemType[])
+  nameWithType.vb: ResourcesManagerHelpers.OwnerHasGems(Boolean, GemType())
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems*
+  name: OwnerHasGems
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_OwnerHasGems_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.OwnerHasGems
+  nameWithType: ResourcesManagerHelpers.OwnerHasGems
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems(DiskCardGame.GemType[])
+  name: PlayerHasGems(GemType[])
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_PlayerHasGems_DiskCardGame_GemType___
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems(DiskCardGame.GemType[])
+  name.vb: PlayerHasGems(GemType())
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems(DiskCardGame.GemType[])
+  fullName.vb: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems(DiskCardGame.GemType())
+  nameWithType: ResourcesManagerHelpers.PlayerHasGems(GemType[])
+  nameWithType.vb: ResourcesManagerHelpers.PlayerHasGems(GemType())
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems*
+  name: PlayerHasGems
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_PlayerHasGems_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems
+  nameWithType: ResourcesManagerHelpers.PlayerHasGems
 - uid: InscryptionAPI.Helpers.TextureHelper
   name: TextureHelper
   href: api/InscryptionAPI.Helpers.TextureHelper.html

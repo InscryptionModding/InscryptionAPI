@@ -280,7 +280,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "4QDNYK9sIcSdYUVUKulsJ0/hF2al8h9E1FkXgLsj+7o="
+          "hash": "ZdmPzGW/66H7g53wltFe5LpRIkA/RF2WlJ9syIuDKfM="
         }
       },
       "is_incremental": false,
@@ -990,6 +990,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Helpers.ResourcesManagerHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html",
+          "hash": "PYLZN/uQzIHdI5ADSxD1m72XhYbKLSBqHnXv6XEwOa0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Helpers.TextureHelper.SpriteType.yml",
       "output": {
         ".html": {
@@ -1030,7 +1042,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.html",
-          "hash": "1MlxyLEC6NIyQfnQVCugZvGiTSha/Re+ZPU97i76dxs="
+          "hash": "RNBW/94yvkbyvIU7IczmRgsbK/XbdJ28Ra4VFZv49lo="
         }
       },
       "is_incremental": false,
@@ -1042,7 +1054,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "ySZrPZVRhqZDMJl8ELXgMkpM/01eElKB+7rD1jrI9To="
+          "hash": "qfIbPcwKHRD3oUtJ+wUV1D5x/fuB2u494KWSk1/ewMs="
         }
       },
       "is_incremental": false,
@@ -1522,7 +1534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html",
-          "hash": "JLlZVcO4aEcg2pA472ssBmTUFIXBJYlQy6k/SuMSsYY="
+          "hash": "7TpHF9sXGwBz6gStyJ0yN2wRs2Cj6qsVnqq1NZu6QVE="
         }
       },
       "is_incremental": false,
@@ -1558,7 +1570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.PixelCard.PixelGemificationBorder.html",
-          "hash": "d9zeOQz2wGWskGa6XaoooM2WxRi+LU6zUjEuTf6lodw="
+          "hash": "/Hb+Db7SPjiujD+DKvblpNTrwLP/YvfCSDKahe4A4+8="
         }
       },
       "is_incremental": false,
@@ -2410,7 +2422,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "jWylRryPKI/jqZbzTV4pzfR13628EIRwfm4h8qEGjJE="
+          "hash": "7G9YEziWQotxTTbcLgxCHkpWOBFggzxsRfShvI67mY8="
         }
       },
       "is_incremental": false,
@@ -2473,7 +2485,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 206,
+          "total_file_count": 207,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
