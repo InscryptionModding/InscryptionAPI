@@ -228,10 +228,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <returns>The same ability so a chain can continue.</returns>
-    public static AbilityInfo SetDefaultPart2Ability(this AbilityInfo info)
-    {
-        return info.AddMetaCategories(Part2Modular);
-    }
+    public static AbilityInfo SetDefaultPart2Ability(this AbilityInfo info) => info.AddMetaCategories(Part2Modular);
 
     /// <summary>
     /// Helper method: automatically adds the Part3Modular, Part3BuildACard, and Part3Rulebook metacategories to the ability.
