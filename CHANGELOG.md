@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.13.4
+- Fixed Sniper duplicating attacks from sigils like Double Strike
+- Fixed interaction between Waterborne and Fledgling in Act 2
+
 ## 2.13.3
 - Fixed null error when opening card packs in Act 2
 - Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)

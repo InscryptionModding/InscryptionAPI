@@ -11,7 +11,7 @@ internal class SteelTrapFix
 {
     [HarmonyPatch(typeof(SteelTrap), nameof(SteelTrap.OnTakeDamage))]
     [HarmonyPostfix]
-    private static IEnumerator AlwaysResolveOnBoard(IEnumerator enumerator, SteelTrap __instance)
+    private static IEnumerator UseAlternatePortrait(IEnumerator enumerator, SteelTrap __instance)
     {
         if (__instance.Card.Info.IsBaseGameCard() && __instance.Card.name.Contains("Trap"))
         {
