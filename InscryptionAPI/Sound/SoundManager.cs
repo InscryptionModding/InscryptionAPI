@@ -74,6 +74,7 @@ public static class SoundManager
 
     internal static AudioClip LoadAudioClip(GramophoneManager.TrackInfo trackInfo)
     {
+        if (trackInfo.Clip != null) return trackInfo.Clip;
         return LoadAudioClip(trackInfo.Guid, trackInfo.FilePath);
     }
 
