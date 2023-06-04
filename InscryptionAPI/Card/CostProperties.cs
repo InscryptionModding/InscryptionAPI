@@ -119,6 +119,7 @@ internal static class ChangeCardCostGetter
         PlayableCard card = __instance.GetPlayableCard();
         if (card == null)
         {
+            InscryptionAPIPlugin.Logger.LogInfo($"[BloodCost] {__instance.name} has no playable card.");
             return true;
         }
         
@@ -129,6 +130,7 @@ internal static class ChangeCardCostGetter
         }
         
         __result = Mathf.Max(0, num);
+        InscryptionAPIPlugin.Logger.LogInfo($"[BloodCost] {__instance.name} has a blood cost of {__result}");
         return false;
     }
     
@@ -228,19 +230,25 @@ internal static class Card_SetInfo
                 {
                     // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                     cardList.RemoveAt(i);
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removing playable card from list. {info.displayedName}");
                 }
-                else
+                else if(innerCard == playableCard)
                 {
                     card = innerCard;
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Card already exists in list! {info.displayedName} to existing list.");
                 }
             }
             
             if (card == null)
             {
-                cardList.Add(new WeakReference<PlayableCard>(card));
+                cardList.Add(new WeakReference<PlayableCard>(playableCard));
                 if (cardList.Count > 1)
                 {
                     InscryptionAPIPlugin.Logger.LogWarning($"More than 1 card are using the same card info. This can cause unexpected problems with dynamic costs! {info.displayedName}");
+                }
+                else
+                {
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to existing list.");
                 }
             }
         }
@@ -250,6 +258,7 @@ internal static class Card_SetInfo
             {
                 new WeakReference<PlayableCard>(playableCard)
             });
+            InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to list.");
         }
     }
 }

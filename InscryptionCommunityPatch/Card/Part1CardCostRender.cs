@@ -53,12 +53,13 @@ public static class Part1CardCostRender
     public static Sprite Part1SpriteFinal(CardInfo cardInfo)
     {
         PlayableCard playableCard = cardInfo.GetPlayableCard();
+        bool hasPlayableCard = playableCard != null; // Micro-optimisation since this method is caleld frequently
         
         // A list to hold the textures (important later, to combine them all)
         List<Texture2D> list = new();
 
         // Setting mox first
-        List<GemType> gemsCost = playableCard != null ? playableCard.GemsCost() : cardInfo.GemsCost;
+        List<GemType> gemsCost = hasPlayableCard ? playableCard.GemsCost() : cardInfo.GemsCost;
         if (gemsCost.Count > 0)
         {
             // Make a new list for the mox textures
@@ -81,15 +82,15 @@ public static class Part1CardCostRender
             list.Add(CombineMoxTextures(gemCost));
         }
 
-        int energyCost = playableCard != null ? playableCard.EnergyCost : cardInfo.EnergyCost;
+        int energyCost = hasPlayableCard ? playableCard.EnergyCost : cardInfo.EnergyCost;
         if (energyCost > 0) // there's 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
             list.Add(GetTextureByName($"energy_cost_{Mathf.Min(6, energyCost)}"));
 
-        int bonesCost = playableCard != null ? playableCard.BonesCost() : cardInfo.BonesCost;
+        int bonesCost = hasPlayableCard ? playableCard.BonesCost() : cardInfo.BonesCost;
         if (bonesCost > 0)
             list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, bonesCost)}"));
 
-        int bloodCost = playableCard != null ? playableCard.BloodCost() : cardInfo.BloodCost;
+        int bloodCost = hasPlayableCard ? playableCard.BloodCost() : cardInfo.BloodCost;
         if (bloodCost > 0)
             list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, bloodCost)}"));
 

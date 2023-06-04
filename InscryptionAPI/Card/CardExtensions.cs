@@ -1662,6 +1662,7 @@ public static class CardExtensions
                     return card;
                 }
                 
+                InscryptionAPIPlugin.Logger.LogInfo($"[GetPlayableCard] Removing record of playable card {cardInfo.name} because it was null");
                 cardList.RemoveAt(i);
             }
         }
