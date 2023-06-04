@@ -84,7 +84,7 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
             foreach (CardAppearanceBehaviour.Appearance appearance in instance.info.appearanceBehaviour)
             {
                 CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((x) => x.Id == appearance);
-                if (fullApp != null && fullApp.AppearanceBehaviour != null)
+                if (fullApp?.AppearanceBehaviour != null)
                 {
                     Component behav = instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
                     if (behav == null) behav = instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);

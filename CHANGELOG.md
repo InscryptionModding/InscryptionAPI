@@ -3,6 +3,14 @@
 ## 2.13.4
 - Fixed Sniper duplicating attacks from sigils like Double Strike
 - Fixed interaction between Waterborne and Fledgling in Act 2
+- Fixed Cuckoo sigil softlocking in Act 2 when making a Raven Egg
+- Fixed sigils added via temporary mods not displaying in Act 2
+- Fixed hiddenAbilities not affecting sigil display in Act 2
+- Added pixel sprites for Raven Egg and Cuckoo/Broken Egg
+- Added ResourceBankManager.AddDecal(), PlayableCard.AddTemporaryMods(), CardModificationInfo.AddDecalIds
+- Added AbilityExtensions.SetPixelIcon(string pathToArt)
+- Temporary mods can now be used to add decals to a card
+- Updated the wiki
 
 ## 2.13.3
 - Fixed null error when opening card packs in Act 2

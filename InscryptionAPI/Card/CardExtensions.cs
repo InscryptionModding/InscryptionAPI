@@ -1943,6 +1943,16 @@ public static class CardExtensions
         return playableCard.OpposingSlot()?.Card;
     }
 
+    public static void AddTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
+    {
+        foreach (CardModificationInfo mod in mods)
+            card.AddTemporaryMod(mod);
+    }
+    public static void RemoveTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
+    {
+        foreach (CardModificationInfo mod in mods)
+            card.RemoveTemporaryMod(mod);
+    }
 
     #endregion
 

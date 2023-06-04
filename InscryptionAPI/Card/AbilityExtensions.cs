@@ -150,10 +150,13 @@ public static class AbilityExtensions
     /// <returns>The same stat icon so a chain can continue.</returns>
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon);
-        else
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode.Value);
+        info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode ?? FilterMode.Point);
+        return info;
+    }
+    public static StatIconInfo SetPixelIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
+    {
+        Texture2D tex = TextureHelper.GetImageAsTexture(pathToArt, filterMode ?? FilterMode.Point);
+        info.pixelIconGraphic = TextureHelper.ConvertTexture(tex, TextureHelper.SpriteType.PixelStatIcon);
         return info;
     }
 

@@ -13,6 +13,7 @@ internal class SteelTrapFix
     [HarmonyPostfix]
     private static IEnumerator UseAlternatePortrait(IEnumerator enumerator, SteelTrap __instance)
     {
+        // vanilla code for base Trap cards
         if (__instance.Card.Info.IsBaseGameCard() && __instance.Card.name.Contains("Trap"))
         {
             yield return enumerator;

@@ -65,6 +65,7 @@ public static class CommunityArtPatches
     {
         "Ant",
         "Bee",
+        "BrokenEgg",
         "Dam",
         "DausBell",
         "DefaultTail",
@@ -72,6 +73,7 @@ public static class CommunityArtPatches
         "EmptyVessel_GreenGem",
         "EmptyVessel_OrangeGem",
         "EmptyVessel_BlueGem",
+        "RavenEgg",
         "SkinkTail",
         "Tail_Bird",
         "Tail_Furry",
