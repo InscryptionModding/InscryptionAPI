@@ -24,7 +24,7 @@ internal class SteelTrapFix
         AudioController.Instance.PlaySound3D("sacrifice_default", MixerGroup.TableObjectsSFX, __instance.Card.transform.position);
         yield return new WaitForSeconds(0.1f);
         __instance.Card.Anim.LightNegationEffect();
-        
+
         if (__instance.Card.HasAlternatePortrait())
             __instance.Card.SwitchToAlternatePortrait();
 

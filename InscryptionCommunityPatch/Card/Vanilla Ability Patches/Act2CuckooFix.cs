@@ -1,13 +1,9 @@
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
-using I2.TextAnimation;
-using InscryptionAPI.Card;
-using InscryptionAPI.Helpers;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
-using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
