@@ -26,7 +26,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.12.0";
+    public const string ModVer = "2.13.3";
 
     internal static ConfigEntry<bool> configOverrideArrows;
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
@@ -69,6 +69,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     internal static void ResyncAll()
     {
         CardManager.SyncCardList();
+        CardModificationInfoManager.SyncCardMods();
         AbilityManager.SyncAbilityList();
         EncounterManager.SyncEncounterList();
         RegionManager.SyncRegionList();
@@ -89,21 +90,21 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
             }
         }
         if (outdatedPlugins != "")
-            Logger.LogWarning("The following mods have been flagged as using an outdated version of the API:\n"
-            + outdatedPlugins
-                + "\nOutdated mods may not work correctly, so please update or disable them if problems arise!");
+            Logger.LogWarning("The following mods use an outdated version of the API:\n"
+                + outdatedPlugins + "\nThese mods may not work correctly. If problems arise, please update or disable them!");
     }
 
     private void Awake()
     {
-        configCustomTotemTopTypes = Config.Bind("Totems", "Top Types", TotemManager.TotemTopState.CustomTribes, "If Vanilla, Don't change totem tops, If CustomTribes, all custom tribes added will use custom totem tops. If AllTribes then all totem tops will use a custom top.");
-        configCustomItemTypes = Config.Bind("Items", "Types", ConsumableItemManager.ConsumableState.Custom, "If Vanilla, only vanilla items used, If Custom, all custom items added will use custom models. If All then all tops will use a custom model.");
+        configCustomTotemTopTypes = Config.Bind("Totems", "Top Types", TotemManager.TotemTopState.CustomTribes, "If Vanilla, don't change totem tops; if CustomTribes, added custom tribes will use custom totem tops; if AllTribes then all totem tops will use a custom top.");
+        configCustomItemTypes = Config.Bind("Items", "Types", ConsumableItemManager.ConsumableState.Custom, "If Vanilla, only vanilla items will be used; if Custom, added custom items will use custom models; if All then all items will use a custom model.");
         configOverrideArrows = Config.Bind("Menus", "Override Arrows", false, "When true, forces the challenge screen arrows to appear at the top of the screen instead of the sides.");
     }
 
     private void Start()
     {
         CheckForOutdatedPlugins();
+        DeathCardManager.AddCustomDeathCards();
         CardManager.ActivateEvents();
         CardManager.ResolveMissingModPrefixes();
         ResyncAll();

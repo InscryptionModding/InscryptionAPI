@@ -1,6 +1,5 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using System.Collections;
 using UnityEngine;
@@ -97,7 +96,7 @@ internal static class ChoiceNodePatch
 
         if (list.Count == 0)
             return 0;
-        
+
         List<int> moxIndeces = new();
         if (list.Exists(x => x.gemsCost.Contains(GemType.Green)))
             moxIndeces.Add(1);

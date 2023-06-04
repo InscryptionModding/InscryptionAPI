@@ -369,23 +369,17 @@ public static class ConsumableItemManager
                 {
                     Renderer iconRenderer = icon.GetComponent<Renderer>();
                     if (iconRenderer != null)
-                    {
                         iconRenderer.material.mainTexture = data.rulebookSprite.texture;
-                    }
                     else
-                    {
                         InscryptionAPIPlugin.Logger.LogError($"Could not find Renderer on Icon GameObject to assign tribe icon!");
-                    }
                 }
                 else
-                {
                     InscryptionAPIPlugin.Logger.LogError($"Could not find Icon GameObject to assign tribe icon!");
-                }
+
             }
             else
-            {
                 InscryptionAPIPlugin.Logger.LogError($"Could not change icon for {data.rulebookName}. No sprite defined!");
-            }
+
         }
 
         // Add default animation if it doesn't have one
@@ -394,13 +388,11 @@ public static class ConsumableItemManager
         {
             Transform child = prefab.transform.GetChild(0);
             if (child != null)
-            {
                 animator = child.gameObject.AddComponent<Animator>();
-            }
+
             else
-            {
                 InscryptionAPIPlugin.Logger.LogError($"Could not add Animator. Missing a child game object!. Make sure you have a GameObject called Anim!");
-            }
+
         }
         if (animator != null && animator.runtimeAnimatorController == null)
         {
@@ -414,13 +406,15 @@ public static class ConsumableItemManager
         {
             consumableItem = prefab.AddComponent(itemType) as ConsumableItem;
             if (consumableItem == null)
-            {
                 InscryptionAPIPlugin.Logger.LogError($"Type given is not a ConsumableItem! You may encounter unexpected bugs");
-            }
         }
 
-        // Mark as dont destroy on load so it doesn't get removed between levels
+        // Mark as DontDestroyOnLoad so it doesn't get removed between levels
+        // SetParent shenanigans are to avoid console warnings
+        var parent = prefab.transform.parent;
+        prefab.transform.SetParent(null);
         UnityObject.DontDestroyOnLoad(prefab);
+        prefab.transform.SetParent(parent);
 
         return consumableItem;
     }
@@ -445,7 +439,7 @@ public static class ConsumableItemManager
 
         ModelType modelType = RegisterPrefab(pluginGUID, rulebookName, resource);
 
-        GameObject.DontDestroyOnLoad(prefab);
+        UnityObject.DontDestroyOnLoad(prefab);
         prefab.SetActive(false);
 
         return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, modelType);

@@ -1,5 +1,57 @@
 # Changelog
 
+## 2.13.3
+- Fixed null error when opening card packs in Act 2
+- Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
+- Added new helper class GemsManagerHelpers with helper methods: OpponentHasGems, PlayerHasGems
+- Changed how Act 2 descriptions are altered to prevent conflicts
+- True Scholar now correctly requires a Blue Gem to be owned prior to use
+
+## 2.13.2
+- Fixed Hoarder sigil breaking when used by opponents in Act 2
+- Fixed Hodag special ability not working in Act 2
+- Fixed cards marked as AffectedByTidalLock not being killed by Tidal Lock when it's on a giant card
+- Added card extension methods SetAffectedByTidalLock and HasAlternatePortrait
+- Added ability extension method SetPart2Ability
+- Added AbilityCardMetaCategory AbilityManager.Part2Modular
+- Added pixel portraits for Empty Vessel and its Gemified variants, Ant, Bee, Dam, Chime, and the Tail cards
+- Amorphous sigil now works in Act 2
+- Vessel Printer sigil now works in Act 2
+- Trinket Bearer sigil is now disabled in Act 2
+- Hidden abilities are now properly hidden in Act 2
+- Fledgling sigil now properly shows the required (up to the number 3) in Act 2
+- Fledgling sigil's rulebook description now updates to show the selected card's actual number of required turns
+- Squirrel, Aqua Squirrel, and Rabbit are now marked as AffectedByTidalLock
+- SteelTrap sigil no longer changes a card's portrait to the closed trap; will now switch to an alternate portrait if it exists
+
+## 2.13.1
+- Fixed custom items falling through reality
+- Added card extension method IsAffectedByTidalLock
+- Mental Gemnastics sigil now works in Act 1
+- Tidal Lock sigil now works for non-Moon cards
+
+## 2.13.0
+- Fixed DontDestroyOnLoad warnings when using custom items
+- Fixed weird spacing for Mox cost textures in Act 1
+- Fixed player death cards not inheriting Energy, Mox, or custom costs
+- Fixed the hint dialogue for insufficient Energy in Act 1 being the wrong colour
+- Fixed ExtendedActivatedAbilityBehaviour discarding negative activation cost modifiers
+- Fixed Sniper not accounting for custom sigils that modify attack slots
+- Fixed Tutor not working in Act 2
+- Added more extension methods to BoardManager
+- Added new card extensions SetGemify and SetGemsCost(params GemType[])
+- Added catch-all cost textures for when Blood or Bones go above 13
+- Added CardModificationInfoManager and DeathCardManager
+- Added extended property support and extensions for CardModificationInfo
+- Added Blood activation cost support to ExtendedActivatedAbilityBehaviour
+- ExtendedActivatedAbilityBehaviour now calls PostActivate() if a card dies from paying the Health cost
+- Leshy now recognises death cards with multiple costs in his dialogue
+- Leshy will now let you create death cards with up to 8 sigils
+- Minor adjustments to some cost textures
+- Rearranged order of Mox cost textures to align with order of Mox on the Gem Module
+- Removed empty cost textures for Blood, Bones, Energy, Mox from the community patches
+- Sniper patch's methods are now public
+
 ## 2.12.0
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
 - Fixed softlock in Act 1 during death card creation
@@ -201,7 +253,7 @@
 - Bugfix for SaveData
 
 ## v2.0
-- Rewrite (Specifics to be added)
+- Rewritten to use base game objects
 
 ## v1.13.0
 - Added support for custom card backgrounds, dialogs, encounters and talking cards

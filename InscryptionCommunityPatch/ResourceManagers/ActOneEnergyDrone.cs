@@ -157,7 +157,7 @@ public static class EnergyDrone
                 : (onBoard ? new(-3.15f, 7.2f, -0.1f) : new(-7f, 7.8f, -0.2f));
 
             float duration = EnergyConfig.ConfigDefaultDrone ? 1.5f : (onBoard ? 0.157f : 0.27f);
-            float delay = (EnergyConfig.ConfigDefaultDrone  || onBoard) ? 0f : 0.255f;
+            float delay = (EnergyConfig.ConfigDefaultDrone || onBoard) ? 0f : 0.255f;
             AnimationCurve easeCurve = (EnergyConfig.ConfigDefaultDrone || onBoard) ? Tween.EaseInOut : Tween.EaseOut;
 
             Tween.Position(__instance.gameObject.transform, vector, duration, delay,

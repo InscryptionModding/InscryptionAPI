@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 
 namespace InscryptionAPI.Helpers;
 
@@ -6,7 +6,7 @@ public static class TranspilerHelpers
 {
     public static void LogCodeInscryptions(List<CodeInstruction> codes, string prefix = null)
     {
-        string p = prefix == null ? "" : prefix;
+        string p = prefix ?? "";
         for (int i = 0; i < codes.Count; i++)
         {
             CodeInstruction code = codes[i];

@@ -15,14 +15,12 @@ public static class CardExtensions
     /// </summary>
     /// <param name="cards">An enumeration of Inscryption cards</param>
     /// <param name="name">The name to search for (case sensitive).</param>
-    /// <returns>The first matching card, or null if no match</returns>
+    /// <returns>The first matching card, or null if no match.</returns>
     public static CardInfo CardByName(this IEnumerable<CardInfo> cards, string name) => cards.FirstOrDefault(c => c.name.Equals(name));
 
     private static Sprite GetPortrait(Texture2D portrait, TextureHelper.SpriteType spriteType, FilterMode? filterMode = null)
     {
-        return !filterMode.HasValue
-            ? portrait.ConvertTexture(spriteType)
-            : portrait.ConvertTexture(spriteType, filterMode.Value);
+        return portrait.ConvertTexture(spriteType, filterMode ?? FilterMode.Point);
     }
 
 
@@ -202,7 +200,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to remove</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo RemoveAbilities(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
@@ -219,7 +217,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="abilities">The abilities to remove</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo RemoveAbilitiesSingle(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
@@ -237,7 +235,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="traits">The traits to remove</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo RemoveTraits(this CardInfo info, params Trait[] traits)
     {
         if (info.traits?.Count > 0)
@@ -255,7 +253,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="tribes">The tribes to remove</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo RemoveTribes(this CardInfo info, params Tribe[] tribes)
     {
         if (info.traits?.Count > 0)
@@ -282,7 +280,7 @@ public static class CardExtensions
     /// <param name="health">Health of the card</param>
     /// <param name="description">The description that plays when the card is seen for the first time.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetBasic(this CardInfo info, string displayedName, int attack, int health, string description = default(string))
+    public static CardInfo SetBasic(this CardInfo info, string displayedName, int attack, int health, string description = default)
     {
         info.displayedName = displayedName;
         info.baseAttack = attack;
@@ -307,7 +305,7 @@ public static class CardExtensions
     /// Indicates if this is a base game card or not
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <returns>True of this card came from the base game; false otherwise</returns>
+    /// <returns>True of this card came from the base game; false otherwise.</returns>
     public static bool IsBaseGameCard(this CardInfo info)
     {
         bool? isBGC = info.GetExtendedPropertyAsBool("BaseGameCard");
@@ -353,7 +351,7 @@ public static class CardExtensions
     /// <param name="name">The name for the card</param>
     /// <param name="modPrefix">The string that will be prefixed to the card name if it doesn't already exist.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetName(this CardInfo info, string name, string modPrefix = default(string))
+    public static CardInfo SetName(this CardInfo info, string name, string modPrefix = default)
     {
         info.name = !string.IsNullOrEmpty(modPrefix) && !name.StartsWith(modPrefix) ? $"{modPrefix}_{name}" : name;
         return info;
@@ -415,11 +413,27 @@ public static class CardExtensions
     /// Set any number of tribes to the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="tribes">The tribes to add</param>
+    /// <param name="tribes">The tribes to add.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTribes(this CardInfo info, params Tribe[] tribes)
     {
         info.tribes = tribes?.ToList();
+        return info;
+    }
+
+    /// <summary>
+    /// Sets whether the card should be Gemified or not. Can and will un-Gemify cards.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="gemify">Whether the card should be gemified.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetGemify(this CardInfo info, bool gemify = true)
+    {
+        if (gemify && !info.Mods.Exists(x => x.gemify))
+            info.Mods.Add(new() { gemify = true });
+        else if (!gemify)
+            info.Mods.FindAll(x => x.gemify).ForEach(y => y.gemify = false);
+
         return info;
     }
 
@@ -847,11 +861,22 @@ public static class CardExtensions
     /// Sets the gems cost of the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="gemsCost">The cost in gems</param>
+    /// <param name="gemsCost">The cost in Mox.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetGemsCost(this CardInfo info, List<GemType> gemsCost = null)
     {
         info.gemsCost = gemsCost ?? new();
+        return info;
+    }
+    /// <summary>
+    /// Sets the gems cost of the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="gemsCost">The cost in Mox.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetGemsCost(this CardInfo info, params GemType[] gemsCost)
+    {
+        info.gemsCost = gemsCost.ToList();
         return info;
     }
 
@@ -864,7 +889,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="onePerDeck">Whether this is onePerDeck or not</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo SetOnePerDeck(this CardInfo info, bool onePerDeck = true)
     {
         info.onePerDeck = onePerDeck;
@@ -875,7 +900,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">Card to access</param>
     /// <param name="hideStats">Whether the stats should be hidden or not</param>
-    /// <returns>The same card info so a chain can continue</returns>
+    /// <returns>The same card info so a chain can continue.</returns>
     public static CardInfo SetHideStats(this CardInfo info, bool hideStats = true)
     {
         info.hideAttackAndHealth = hideStats;
@@ -926,7 +951,7 @@ public static class CardExtensions
     /// <param name="portrait">The texture containing the card portrait</param>
     /// <param name="emission">The texture containing the emission</param>
     /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static CardInfo SetPortrait(this CardInfo info, Texture2D portrait, Texture2D emission, FilterMode? filterMode = null)
     {
         info.SetPortrait(portrait, filterMode);
@@ -1216,7 +1241,7 @@ public static class CardExtensions
     /// <param name="info">Tail to access</param>
     /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
     /// <param name="owner">The card that the tail parameters belongs to.</param>
-    /// <returns>The same TailParams so a chain can continue</returns>
+    /// <returns>The same TailParams so a chain can continue.</returns>
     public static TailParams SetLostTailPortrait(this TailParams info, string pathToArt, CardInfo owner)
     {
         owner.tailParams = info;
@@ -1230,7 +1255,7 @@ public static class CardExtensions
     /// <param name="portrait">The texture containing the card portrait</param>
     /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
     /// <param name="owner">The card that the tail parameters belongs to.</param>
-    /// <returns>The same TailParams so a chain can continue</returns>
+    /// <returns>The same TailParams so a chain can continue.</returns>
     public static TailParams SetLostTailPortrait(this TailParams info, Texture2D portrait, CardInfo owner, FilterMode? filterMode = null)
     {
         var tailSprite = !filterMode.HasValue
@@ -1246,7 +1271,7 @@ public static class CardExtensions
     /// <param name="info">Tail to access</param>
     /// <param name="portrait">The sprite containing the card portrait</param>
     /// <param name="owner">The card that the tail parameters belongs to.</param>
-    /// <returns>The same TailParams so a chain can continue</returns>
+    /// <returns>The same TailParams so a chain can continue.</returns>
     public static TailParams SetLostTailPortrait(this TailParams info, Sprite portrait, CardInfo owner)
     {
         info.tailLostPortrait = portrait;
@@ -1263,35 +1288,31 @@ public static class CardExtensions
 
     #endregion
 
+    /// <summary>
+    /// Sets the custom unlock check for the card.
+    /// </summary>
+    /// <param name="c">The card</param>
+    /// <param name="check">The custom unlock check, a func that needs to return true for the card to be unlocked. The bool argument is true when the game is in Kaycee's Mod mode and the int argument is the current Kaycee's Mod challenge level.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetCustomUnlockCheck(this CardInfo c, Func<bool, int, bool> check)
+    {
+        if (check == null && CardManager.CustomCardUnlocks.ContainsKey(c.name))
+            CardManager.CustomCardUnlocks.Remove(c.name);
+        else
+        {
+            if (!CardManager.CustomCardUnlocks.ContainsKey(c.name))
+                CardManager.CustomCardUnlocks.Add(c.name, check);
+            else
+                CardManager.CustomCardUnlocks[c.name] = check;
+        }
+        return c;
+    }
+
     #endregion
 
     #region Helpers
 
-
-    /// <summary>
-    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
-    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
-    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
-    {
-        return new EncounterBlueprintData.CardBlueprint
-        {
-            card = cardInfo
-        };
-    }
-
-    /// <summary>
-    /// Checks if the CardModificationInfo does not have a specific Ability.
-    /// </summary>
-    /// <param name="mod">CardModificationInfo to access.</param>
-    /// <param name="ability">The ability to check for.</param>
-    /// <returns>true if the ability does not exist.</returns>
-    public static bool LacksAbility(this CardModificationInfo mod, Ability ability)
-    {
-        return !mod.HasAbility(ability);
-    }
-
+    #region Ability
     /// <summary>
     /// Checks if the CardInfo does not have a specific Ability.
     /// </summary>
@@ -1350,7 +1371,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
+    #region SpecialAbility
     /// <summary>
     /// Checks if the CardInfo has a specific SpecialTriggeredAbility.
     ///
@@ -1422,7 +1445,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
+    #region Trait
     /// <summary>
     /// Checks if the CardInfo does not have a specific Trait.
     /// </summary>
@@ -1481,18 +1506,9 @@ public static class CardExtensions
         }
         return false;
     }
+    #endregion
 
-    /// <summary>
-    /// Checks if the CardInfo does not belong to a specific Tribe.
-    /// </summary>
-    /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="tribe">The tribe to check for.</param>
-    /// <returns>true if the card is not of the specified tribe.</returns>
-    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe)
-    {
-        return !cardInfo.IsOfTribe(tribe);
-    }
-
+    #region CardMetaCategory
     /// <summary>
     /// Checks if the CardInfo has a specific CardMetaCategory.
     /// </summary>
@@ -1546,6 +1562,39 @@ public static class CardExtensions
         }
         return true;
     }
+    #endregion
+
+    /// <summary>
+    /// Checks if the CardInfo does not belong to a specific Tribe.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <param name="tribe">The tribe to check for.</param>
+    /// <returns>true if the card is not of the specified tribe.</returns>
+    public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe) => !cardInfo.IsOfTribe(tribe);
+
+    public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
+    public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
+
+    /// <summary>
+    /// Checks if the CardModificationInfo does not have a specific Ability.
+    /// </summary>
+    /// <param name="mod">CardModificationInfo to access.</param>
+    /// <param name="ability">The ability to check for.</param>
+    /// <returns>true if the ability does not exist.</returns>
+    public static bool LacksAbility(this CardModificationInfo mod, Ability ability) => !mod.HasAbility(ability);
+
+    /// <summary>
+    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the CardInfo object.
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
+    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
+    public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
+    {
+        return new EncounterBlueprintData.CardBlueprint
+        {
+            card = cardInfo
+        };
+    }
 
     /// <summary>
     /// Spawns the CardInfo object to the player's hand.
@@ -1564,12 +1613,38 @@ public static class CardExtensions
     public static IEnumerator SpawnInHand(this CardInfo cardInfo, List<CardModificationInfo> temporaryMods = null, Vector3 spawnOffset = default, float onDrawnTriggerDelay = 0f, Action<PlayableCard> cardSpawnedCallback = null)
     {
         if (spawnOffset == default)
-        {
             spawnOffset = CardSpawner.Instance.spawnedPositionOffset;
-        }
+
         yield return CardSpawner.Instance.SpawnCardToHand(cardInfo, temporaryMods, spawnOffset, onDrawnTriggerDelay, cardSpawnedCallback);
     }
 
+    #region Tidal Lock
+    /// <summary>
+    /// Checks if this card will be killed by the effect of Tidal Lock.
+    /// </summary>
+    /// <param name="item">PlayableCard to access.</param>
+    /// <returns>True if the card is affected by Tidal Lock.</returns>
+    public static bool IsAffectedByTidalLock(this PlayableCard item) => item.Info.IsAffectedByTidalLock();
+
+    /// <summary>
+    /// Checks if this card info will be killed by the effect of Tidal Lock.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>True if the card info is affected by Tidal Lock.</returns>
+    public static bool IsAffectedByTidalLock(this CardInfo info) => info.GetExtendedPropertyAsBool("AffectedByTidalLock") ?? false;
+
+    /// <summary>
+    /// Sets whether the card should be killed by Tidal Lock's effect.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>True if the card info should be affected by Tidal Lock.</returns>
+    public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
+    {
+        info.SetExtendedProperty("AffectedByTidalLock", affectedByTidalLock);
+        return info;
+    }
+    #endregion
+    
     /// <summary>
     /// Gets a PlayableCards using this specific CardInfo.
     /// Sometimes inscryption clones CardInfo's and sometimes its reused so there may be more than 1 card using the same CardInfo
@@ -1765,7 +1840,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The ability to check for</param>
-    /// <returns>true if the ability does not exist</returns>
+    /// <returns>true if the ability does not exist.</returns>
     public static bool LacksAbility(this PlayableCard playableCard, Ability ability)
     {
         return !playableCard.HasAbility(ability);
@@ -1832,7 +1907,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The specialTriggeredAbility to check for</param>
-    /// <returns>true if the specialTriggeredAbility does not exist</returns>
+    /// <returns>true if the specialTriggeredAbility does not exist.</returns>
     public static bool LacksSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
         return !playableCard.HasSpecialAbility(ability);
@@ -1845,7 +1920,7 @@ public static class CardExtensions
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>
     /// <param name="ability">The specialTriggeredAbility to check for</param>
-    /// <returns>true if the specialTriggeredAbility does exist</returns>
+    /// <returns>true if the specialTriggeredAbility does exist.</returns>
     public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
     {
         return playableCard.TemporaryMods.Exists(mod => mod.specialAbilities.Contains(ability))
@@ -1912,7 +1987,7 @@ public static class CardExtensions
     /// Also acts as a null check if this PlayableCard is in a slot.
     /// </summary>
     /// <param name="playableCard">PlayableCard to access</param>
-    /// <returns>true if a card exists in the opposing slot</returns>
+    /// <returns>true if a card exists in the opposing slot.</returns>
     public static bool HasOpposingCard(this PlayableCard playableCard)
     {
         return playableCard.Slot && playableCard.Slot.opposingSlot.Card;
@@ -1951,8 +2026,8 @@ public static class CardExtensions
     /// Adds a custom property value to the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="propertyName">The name of the property to set</param>
-    /// <param name="value">The value of the property</param>
+    /// <param name="propertyName">The name of the property to set.</param>
+    /// <param name="value">The value of the property.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetExtendedProperty(this CardInfo info, string propertyName, object value)
     {
@@ -1961,11 +2036,11 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets a custom property value from the card
+    /// Gets a custom property value from the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="propertyName">The name of the property to get the value of</param>
-    /// <returns></returns>
+    /// <param name="propertyName">The name of the property to get the value of.</param>
+    /// <returns>The custom property value as a string. If it doesn't exist, returns null.</returns>
     public static string GetExtendedProperty(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var ret);
@@ -1973,11 +2048,11 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets a custom property as an int (can by null)
+    /// Gets a custom property as an int (can be null).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="propertyName">Property name to get value of</param>
-    /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int</returns>
+    /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int.</returns>
     public static int? GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
@@ -1985,11 +2060,11 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets a custom property as a float (can by null)
+    /// Gets a custom property as a float (can be null).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="propertyName">Property name to get value of</param>
-    /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float</returns>
+    /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float.</returns>
     public static float? GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
@@ -1997,11 +2072,11 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets a custom property as a boolean (can be null)
+    /// Gets a custom property as a boolean (can be null).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="propertyName">Property name to get value of</param>
-    /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean</returns>
+    /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean.</returns>
     public static bool? GetExtendedPropertyAsBool(this CardInfo info, string propertyName)
     {
         info.GetCardExtensionTable().TryGetValue(propertyName, out var str);
@@ -2028,17 +2103,17 @@ public static class CardExtensions
     /// Gets the GUID of the mod that created this card
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <returns>The ID of the mod that created this card, or null if it wasn't found</returns>
+    /// <returns>The ID of the mod that created this card, or null if it wasn't found.</returns>
     public static string GetModTag(this CardInfo info)
     {
         return info.GetExtendedProperty("CallStackModGUID");
     }
 
     /// <summary>
-    /// Sets the mod prefix for the card
+    /// Sets the mod prefix for the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="modPrefix">Mod prefix</param>
+    /// <param name="modPrefix">Mod prefix.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     internal static CardInfo SetModPrefix(this CardInfo info, string modPrefix)
     {
@@ -2047,42 +2122,26 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Gets the card name prefix for this card
+    /// Gets the card name prefix for this card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <returns>The mod prefix for this card, or null if it wasn't found</returns>
+    /// <returns>The mod prefix for this card, or null if it wasn't found.</returns>
     public static string GetModPrefix(this CardInfo info)
     {
         return info.GetExtendedProperty("ModPrefix");
     }
+    /// <summary>
+    /// Checks whether the card's mod prefix is equal to the given string.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="prefixToMatch">The prefix to check for.</param>
+    /// <returns>True if the CardInfo's mod prefix equals prefixToMatch.</returns>
+    public static bool ModPrefixIs(this CardInfo info, string prefixToMatch)
+    {
+        return info.GetExtendedProperty("ModPrefix") == prefixToMatch;
+    }
 
     #endregion
-
-    /// <summary>
-    /// Sets the custom unlock check for the card.
-    /// </summary>
-    /// <param name="c">The card</param>
-    /// <param name="check">The custom unlock check, a func that needs to return true for the card to be unlocked. The bool argument is true when the game is in Kaycee's Mod mode and the int argument is the current Kaycee's Mod challenge level.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetCustomUnlockCheck(this CardInfo c, Func<bool, int, bool> check)
-    {
-        if (check == null && CardManager.CustomCardUnlocks.ContainsKey(c.name))
-        {
-            CardManager.CustomCardUnlocks.Remove(c.name);
-        }
-        else
-        {
-            if (!CardManager.CustomCardUnlocks.ContainsKey(c.name))
-            {
-                CardManager.CustomCardUnlocks.Add(c.name, check);
-            }
-            else
-            {
-                CardManager.CustomCardUnlocks[c.name] = check;
-            }
-        }
-        return c;
-    }
 
     #region OldAPICard
     internal static CardInfo SetOldApiCard(this CardInfo info, bool isOldApiCard = true)

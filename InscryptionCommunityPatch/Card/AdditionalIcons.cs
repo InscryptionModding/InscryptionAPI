@@ -312,6 +312,9 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         icons[7].localPosition = new Vector3(0.14f, -0.04f, 0f);
     }
 
+    [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities),
+        new Type[] { typeof(CardRenderInfo), typeof(PlayableCard) })]
+    private static void AddExtraPixelAbilityIcons(CardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
 
     [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
     private static void AddExtraAbilityIcons(CardAbilityIcons __instance)
@@ -319,6 +322,4 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
         if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3)
             AddIconSlotsToCard(__instance.transform);
     }
-    [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities), new Type[] { typeof(CardRenderInfo), typeof(PlayableCard) })]
-    private static void AddExtraPixelAbilityIcons(CardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
 }

@@ -52,7 +52,7 @@ public class MergedSigilOnBottom
     // Token: 0x060000D0 RID: 208 RVA: 0x00004C0C File Offset: 0x00002E0C
     [HarmonyPatch(typeof(AbilityIconInteractable), "LoadIcon")]
     [HarmonyPostfix]
-    private static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref Texture __result, ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
+    private static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
     {
         if (!PatchPlugin.configMergeOnBottom.Value)
             return;
@@ -73,9 +73,8 @@ public class MergedSigilOnBottom
                             {
                                 __instance.SetMaterial(Singleton<CardAbilityIcons>.Instance.totemIconMat);
                                 if (__instance.GetComponentInParent<MeshRenderer>() != null)
-                                {
                                     __instance.GetComponentInParent<MeshRenderer>().enabled = true;
-                                }
+
                                 __instance.SetColor(Color.white);
                                 return;
                             }
@@ -87,9 +86,7 @@ public class MergedSigilOnBottom
                                 Transform[] allChildren = __instance.transform.parent.transform.parent.GetComponentsInChildren<Transform>();
                                 //Plugin.Log.LogInfo(__instance.name);
                                 if (__instance.name == "DefaultIcons_1Ability")
-                                {
                                     allChildren = __instance.transform.parent.GetComponentsInChildren<Transform>();
-                                }
 
                                 foreach (Transform child in allChildren)
                                 {

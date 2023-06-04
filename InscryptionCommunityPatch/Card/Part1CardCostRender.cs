@@ -55,40 +55,43 @@ public static class Part1CardCostRender
         PlayableCard playableCard = cardInfo.GetPlayableCard();
         
         // A list to hold the textures (important later, to combine them all)
-        List<Texture2D> list = new List<Texture2D>();
+        List<Texture2D> list = new();
 
-        //Setting mox first
+        // Setting mox first
         List<GemType> gemsCost = playableCard != null ? playableCard.GemsCost() : cardInfo.GemsCost;
         if (gemsCost.Count > 0)
         {
-            //make a new list for the mox textures
-            List<Texture2D> gemCost = new List<Texture2D>();
+            // Make a new list for the mox textures
+            List<Texture2D> gemCost = new();
 
-            //load up the mox textures as "empty"
-            Texture2D orange = GetTextureByName(gemsCost.Contains(GemType.Orange) ? "mox_cost_o" : "mox_cost_e");
-            Texture2D blue = GetTextureByName(gemsCost.Contains(GemType.Blue) ? "mox_cost_b" : "mox_cost_e");
-            Texture2D green = GetTextureByName(gemsCost.Contains(GemType.Green) ? "mox_cost_g" : "mox_cost_e");
+            // Add all moxes to the gemcost list
+            if (gemsCost.Contains(GemType.Green))
+                gemCost.Add(GetTextureByName("mox_cost_g"));
 
-            //Add all moxes to the gemcost list
-            gemCost.Add(orange);
-            gemCost.Add(green);
-            gemCost.Add(blue);
+            if (gemsCost.Contains(GemType.Blue))
+                gemCost.Add(GetTextureByName("mox_cost_b"));
 
-            //Combine the textures into one
+            if (gemsCost.Contains(GemType.Orange))
+                gemCost.Add(GetTextureByName("mox_cost_o"));
+
+            while (gemCost.Count < 3)
+                gemCost.Insert(0, null);
+
+            // Combine the textures into one
             list.Add(CombineMoxTextures(gemCost));
         }
 
         int energyCost = playableCard != null ? playableCard.EnergyCost : cardInfo.EnergyCost;
-        if (energyCost > 0)
-            list.Add(GetTextureByName($"energy_cost_{energyCost}"));
+        if (energyCost > 0) // there's 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
+            list.Add(GetTextureByName($"energy_cost_{Mathf.Min(6, energyCost)}"));
 
         int bonesCost = playableCard != null ? playableCard.BonesCost() : cardInfo.BonesCost;
         if (bonesCost > 0)
-            list.Add(GetTextureByName($"bone_cost_{bonesCost}"));
+            list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, bonesCost)}"));
 
         int bloodCost = playableCard != null ? playableCard.BloodCost() : cardInfo.BloodCost;
         if (bloodCost > 0)
-            list.Add(GetTextureByName($"blood_cost_{bloodCost}"));
+            list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, bloodCost)}"));
 
         // Call the event and allow others to modify the list of textures
         UpdateCardCost?.Invoke(cardInfo, list);
