@@ -180,17 +180,44 @@ public static class CardExtensions
     /// Returns the gem cost of a card.
     /// This function can be overriden if someone wants to inject new cost into a cards gem cost
     /// </summary>
-    public static List<GemType> GemsCost(this DiskCardGame.Card card)
+    public static List<GemType> GemsCost(this PlayableCard card)
     {
-        if (card && card.Info)
+        InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Getting gems cost");
+        List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
+        if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
         {
-            Func<CardInfo,List<GemType>> originalGemsCost = CostProperties.CostProperties.OriginalGemsCost;
-            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Getting gems cost {originalGemsCost}");
-            return originalGemsCost(card.Info);
-        } 
+            return new List<GemType>();
+        }
         
-        InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Couldn't find Card or CardInfo for gems cost??? How is this possible?");
-        return new List<GemType>();
+        List<GemType> gemsCost = new(card.Info.gemsCost);
+        foreach (CardModificationInfo mod in mods)
+        {
+            if (mod.addGemCost == null)
+            {
+                continue;
+            }
+            foreach (GemType item in mod.addGemCost)
+            {
+                if (!gemsCost.Contains(item))
+                {
+                    gemsCost.Add(item);
+                }
+            }
+        }
+        
+        if (gemsCost.Count > 0 && Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue) && IsGemified(card))
+        {
+            gemsCost.RemoveAt(0);
+            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} is gemified");
+        }
+
+        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} done {string.Join(",", gemsCost)}");
+        return gemsCost;
+    }
+    
+    public static bool IsGemified(this PlayableCard card)
+    {
+        return card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify) || card.Info.Gemified;
     }
 
     #endregion

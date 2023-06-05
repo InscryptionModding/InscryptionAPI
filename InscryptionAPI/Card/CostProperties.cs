@@ -38,6 +38,26 @@ public static class CostProperties
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
+
+    public static List<GemType> GemsCost_Internal(PlayableCard card, CardInfo cardInfo)
+    {
+        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} Getting gems cost");
+
+        List<GemType> gemsCost = OriginalGemsCost(cardInfo);
+        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} OG Cost " + string.Join(",", gemsCost));
+
+        if (card != null)
+        {
+            if (gemsCost.Count > 0 && ChangeCardCostGetter.IsUsingBlueGem(card))
+            {
+                gemsCost.RemoveAt(0);
+                InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} is gemified");
+            }
+        }
+
+        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} final cost {string.Join(",", gemsCost)}");
+        return gemsCost;
+    }
     
     public class RefreshCostMonoBehaviour : MonoBehaviour
     {
@@ -172,18 +192,11 @@ internal static class ChangeCardCostGetter
         if (card == null)
         {
             InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost] {__instance.displayedName} has no playable card.");
-            return true;
+            __result = CostProperties.OriginalGemsCost(__instance);
+            return false;
         }
         
-        List<GemType> gems = new  List<GemType>(card.GemsCost());
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost] {card.Info.displayedName} gemscost {string.Join(",", gems)}");
-        if (gems.Count > 0 && IsUsingBlueGem(card))
-        {
-            gems.RemoveAt(0);
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost] {card.Info.displayedName} is gemified and reduced cost to {string.Join(",", gems)}");
-        }
-
-        __result = gems;
+        __result = card.GemsCost();
         return false;
     }
     
@@ -208,7 +221,7 @@ internal static class ChangeCardCostGetter
         };
     }
 
-    private static bool IsUsingBlueGem(PlayableCard card)
+    public static bool IsUsingBlueGem(PlayableCard card)
     {
         if (!Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue))
         {
