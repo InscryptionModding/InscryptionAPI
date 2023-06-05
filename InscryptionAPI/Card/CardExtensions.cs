@@ -182,7 +182,6 @@ public static class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this PlayableCard card)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Getting gems cost");
         List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
         if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
         {
@@ -208,10 +207,8 @@ public static class CardExtensions
         if (gemsCost.Count > 0 && Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue) && IsGemified(card))
         {
             gemsCost.RemoveAt(0);
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} is gemified");
         }
 
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} done {string.Join(",", gemsCost)}");
         return gemsCost;
     }
     

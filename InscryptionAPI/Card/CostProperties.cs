@@ -39,26 +39,6 @@ public static class CostProperties
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
 
-    public static List<GemType> GemsCost_Internal(PlayableCard card, CardInfo cardInfo)
-    {
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} Getting gems cost");
-
-        List<GemType> gemsCost = OriginalGemsCost(cardInfo);
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} OG Cost " + string.Join(",", gemsCost));
-
-        if (card != null)
-        {
-            if (gemsCost.Count > 0 && ChangeCardCostGetter.IsUsingBlueGem(card))
-            {
-                gemsCost.RemoveAt(0);
-                InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} is gemified");
-            }
-        }
-
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {cardInfo.displayedName} final cost {string.Join(",", gemsCost)}");
-        return gemsCost;
-    }
-    
     public class RefreshCostMonoBehaviour : MonoBehaviour
     {
         private PlayableCard playableCard;
@@ -76,7 +56,6 @@ public static class CostProperties
             bool refreshCost = DidCostsChangeThisFrame();
             if (refreshCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"Refreshing cost for {playableCard.Info.displayedName}");
                 playableCard.RenderCard();
             }
         }
@@ -88,7 +67,6 @@ public static class CostProperties
             int bloodCost = playableCard.BloodCost();
             if (bloodCost != cachedBloodCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"{playableCard.Info.displayedName} blood cost chanced!");
                 cachedBloodCost = bloodCost;
                 refreshCost = true;
             }
@@ -96,24 +74,16 @@ public static class CostProperties
             int boneCost = playableCard.BonesCost();
             if (boneCost != cachedBoneCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"{playableCard.Info.displayedName} bone cost chanced!");
                 cachedBoneCost = boneCost;
                 refreshCost = true;
             }
 
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.DidCostsChangeThisFrame] {playableCard.Info.displayedName} Getting gems");
             List<GemType> gemsCost = playableCard.GemsCost();
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.DidCostsChangeThisFrame] {playableCard.Info.displayedName} Comparing gems {string.Join(",", cachedGemsCost)} with {string.Join(",", gemsCost)}");
             if (!CompareLists(cachedGemsCost, gemsCost))
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.DidCostsChangeThisFrame] ++++{playableCard.Info.displayedName} gem cost changed from {string.Join(",", cachedGemsCost)} to {string.Join(",", gemsCost)}");
                 cachedGemsCost.Clear();
                 cachedGemsCost.AddRange(gemsCost);
                 refreshCost = true;
-            }
-            else
-            {
-                InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.DidCostsChangeThisFrame] {playableCard.Info.displayedName} gems {string.Join(",", gemsCost)}");
             }
             
             return refreshCost;
@@ -148,7 +118,6 @@ internal static class ChangeCardCostGetter
         PlayableCard card = __instance.GetPlayableCard();
         if (card == null)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[BloodCost] {__instance.name} has no playable card.");
             return true;
         }
         
@@ -159,7 +128,6 @@ internal static class ChangeCardCostGetter
         }
         
         __result = Mathf.Max(0, num);
-        InscryptionAPIPlugin.Logger.LogInfo($"[BloodCost] {__instance.name} has a blood cost of {__result}");
         return false;
     }
     
@@ -186,12 +154,9 @@ internal static class ChangeCardCostGetter
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), HarmonyPrefix]
     public static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost] {__instance.displayedName}");
-        
         PlayableCard card = __instance.GetPlayableCard();
         if (card == null)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost] {__instance.displayedName} has no playable card.");
             __result = CostProperties.OriginalGemsCost(__instance);
             return false;
         }
@@ -225,17 +190,14 @@ internal static class ChangeCardCostGetter
     {
         if (!Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue))
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} no gem on the board");
             return false;
         }
 
         if (card.Info.Gemified)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} is gemified cost chanced!");
             return true;
         }
         
-        InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} has no blue gem!");
         return card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);
     }
 }
