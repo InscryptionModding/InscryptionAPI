@@ -184,10 +184,12 @@ public static class CardExtensions
     {
         if (card && card.Info)
         {
-            return CostProperties.CostProperties.OriginalGemsCost(card.Info);
+            Func<CardInfo,List<GemType>> originalGemsCost = CostProperties.CostProperties.OriginalGemsCost;
+            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Getting gems cost {originalGemsCost}");
+            return originalGemsCost(card.Info);
         } 
         
-        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for gems cost??? How is this possible?");
+        InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Couldn't find Card or CardInfo for gems cost??? How is this possible?");
         return new List<GemType>();
     }
 
