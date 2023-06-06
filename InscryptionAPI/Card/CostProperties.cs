@@ -223,10 +223,12 @@ internal static class Card_SetInfo
                 {
                     // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                     cardList.RemoveAt(i);
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removing playable card from list. {info.displayedName}");
                 }
                 else if(innerCard == playableCard)
                 {
                     card = innerCard;
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Card already exists in list! {info.displayedName} to existing list.");
                 }
             }
             
@@ -237,6 +239,10 @@ internal static class Card_SetInfo
                 {
                     InscryptionAPIPlugin.Logger.LogWarning($"More than 1 card are using the same card info. This can cause unexpected problems with dynamic costs! {info.displayedName}");
                 }
+                else
+                {
+                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to existing list.");
+                }
             }
         }
         else
@@ -245,6 +251,7 @@ internal static class Card_SetInfo
             {
                 new WeakReference<PlayableCard>(playableCard)
             });
+            InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to list.");
         }
     }
 }
