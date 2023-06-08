@@ -652,21 +652,16 @@ Think of these like abilities for your stats (like the Ant power or Bell power f
 Special stat icons inherit from DiskCardGame.VariableStatBehaviour
 
 ```c#
-StatIconInfo myinfo = ...;
-SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
+StatIconInfo info = ScriptableObject.CreateInstance<StatIconInfo>();
+info.metaCategories = new List<AbilityMetaCategory>() { AbilityMetaCategory.Part1Rulebook };
+info.appliesToAttack = true;
+info.appliesToHealth = false;
+info.rulebookName = "Stat";
+info.rulebookDescription = "My special stat";
+info.iconGraphic = "/art/special_stat_icon.png");
+info.pixelIconGraphic = "/art/special_pixel_stat_icon.png");
+StatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
 ```
-
-**or**
-
-```c#
-SpecialStatIconManager.Add(MyPlugin.guid, "Stat", "My special stat", typeof(MyStatBehaviour))
-    .SetIcon("/art/special_stat_icon.png")
-    .SetPixelIcon("/art/special_pixel_stat_icon.png")
-    .SetDefaultPart1Ability()
-    .SetDefaultPart3Ability();
-```
-
-Because StatIconInfo is so simple, there aren't very many helpers for it.
 
 ### How Stat Icons are programmed
 Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.
@@ -1328,7 +1323,7 @@ Asset bundles are how you can import your own models, texture, gameobjects and m
 Think of them as fancy .zip's that's supported by Unity.
 
 ## How to Make an Asset Bundle
-1. Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.
+1. Make a Unity project. Make sure you are using 2019.4.24f1 or your models will not show in-game.
 2. Install the AssetBundleBrowser package. (Window->Package Manager)
 3. Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)
 4. At the bottom of the Inspector window you'll see a section labedled "Asset Bundle"
