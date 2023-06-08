@@ -152,10 +152,19 @@ public static class CardExtensions
     {
         if (card && card.Info)
         {
-            return CostProperties.CostProperties.OriginalBloodCost(card.Info);
+            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.BloodCost] {card.Info.displayedName} getting bloodCost");
+            int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
+
+            if (IsGemified(card))
+            {
+                originalBloodCost--;
+            }
+            
+            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.BloodCost] {card.Info.displayedName} got bloodCost {originalBloodCost}");
+            return originalBloodCost;
         } 
         
-        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for blood cost??? How is this possible?");
+        InscryptionAPIPlugin.Logger.LogError("[BloodCost] Couldn't find Card or CardInfo for blood cost??? How is this possible?");
         return 0;
     }
     
@@ -182,7 +191,6 @@ public static class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this PlayableCard card)
     {
-        InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.GemsCost] {card.Info.displayedName} Getting gems cost");
         List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
         if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
         {
@@ -208,10 +216,8 @@ public static class CardExtensions
         if (gemsCost.Count > 0 && Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue) && IsGemified(card))
         {
             gemsCost.RemoveAt(0);
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} is gemified");
         }
 
-        InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.GemsCost_Internal] {card.Info.displayedName} done {string.Join(",", gemsCost)}");
         return gemsCost;
     }
     
