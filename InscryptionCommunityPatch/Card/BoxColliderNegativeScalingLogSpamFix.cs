@@ -6,7 +6,7 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch(typeof(AbilityIconInteractable))]
-public class BoxColliderNegativeScalingLogSpamFix
+internal class BoxColliderNegativeScalingLogSpamFix
 {
     /// <summary>
     /// This patch fixes the incredibly annoying warning log spam of this message anytime an ability is flipped for the opponent's side.
@@ -22,7 +22,7 @@ public class BoxColliderNegativeScalingLogSpamFix
     /// Will be true if the `AbilityInfo.flipYIfOpponent` field is true and if the card this icon is on is the opponent card.
     /// </param>
     [HarmonyPrefix, HarmonyPatch(nameof(AbilityIconInteractable.SetFlippedY))]
-    public static void ReplaceBoxColliderWithMeshColliderIfIconIsFlipped(AbilityIconInteractable __instance, bool flippedY)
+    private static void ReplaceBoxColliderWithMeshColliderIfIconIsFlipped(AbilityIconInteractable __instance, bool flippedY)
     {
         if (flippedY || SaveManager.SaveFile.IsPart3)
         {

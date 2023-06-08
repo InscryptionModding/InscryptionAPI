@@ -22,7 +22,7 @@ public static class AbilityManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
-    private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
+    private static readonly ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
 
     /// <summary>
     /// A utility class that holds all of the required information about an ability in order to be able to use it in-game.

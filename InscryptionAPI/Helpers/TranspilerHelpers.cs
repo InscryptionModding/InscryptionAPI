@@ -4,7 +4,7 @@ namespace InscryptionAPI.Helpers;
 
 public static class TranspilerHelpers
 {
-    public static void LogCodeInscryptions(List<CodeInstruction> codes, string prefix = null)
+    public static void LogCodeInscryptions(this List<CodeInstruction> codes, string prefix = null)
     {
         string p = prefix ?? "";
         for (int i = 0; i < codes.Count; i++)

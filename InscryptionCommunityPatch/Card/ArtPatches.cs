@@ -4,7 +4,7 @@ using InscryptionAPI.Helpers;
 
 namespace InscryptionCommunityPatch.Card;
 
-public static class CommunityArtPatches
+internal static class CommunityArtPatches
 {
     internal static readonly List<Ability> regularIconsToPatch = new()
     {
@@ -73,6 +73,7 @@ public static class CommunityArtPatches
         "EmptyVessel_GreenGem",
         "EmptyVessel_OrangeGem",
         "EmptyVessel_BlueGem",
+        "Ijiraq",
         "RavenEgg",
         "SkinkTail",
         "Tail_Bird",
@@ -80,7 +81,7 @@ public static class CommunityArtPatches
         "Tail_Insect",
     };
 
-    public static void PatchCommunityArt()
+    internal static void PatchCommunityArt()
     {
         foreach (Ability ability in regularIconsToPatch)
             AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability}.png", typeof(CommunityArtPatches).Assembly));

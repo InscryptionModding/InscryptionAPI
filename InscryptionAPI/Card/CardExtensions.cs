@@ -1,4 +1,5 @@
 using DiskCardGame;
+using GBC;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
@@ -20,7 +21,6 @@ public static class CardExtensions
     {
         return portrait.ConvertTexture(spriteType, filterMode ?? FilterMode.Point);
     }
-
 
     #region Adders
 
@@ -213,6 +213,25 @@ public static class CardExtensions
             {
                 if (info.IsOfTribe(tr))
                     info.tribes.Remove(tr);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of CardMetaCategories from the card.
+    /// </summary>
+    /// <param name="info">Card to access.</param>
+    /// <param name="cardMetaCategories">The CardMetaCategories to remove.</param>
+    /// <returns>The same card info so a chain can continue.</returns>
+    public static CardInfo RemoveCardMetaCategories(this CardInfo info, params CardMetaCategory[] cardMetaCategories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (CardMetaCategory cm in cardMetaCategories)
+            {
+                if (info.HasCardMetaCategory(cm))
+                    info.metaCategories.Remove(cm);
             }
         }
         return info;

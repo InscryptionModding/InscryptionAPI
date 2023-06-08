@@ -15,7 +15,6 @@ public class PixelAppearanceBehaviour : CardAppearanceBehaviour
 
 public class PixelGemificationBorder : MonoBehaviour
 {
-
     private void Start()
     {
         card = GetComponentInParent<DiskCardGame.Card>();

@@ -14,7 +14,6 @@ public static class ResourceBankManager
 
     private static readonly List<ResourceData> CustomResources = new();
 
-
     public static ResourceData AddDecal(string pluginGUID, string resourceName, Texture decalTexture, bool overrideExistingAsset = false)
     {
         return Add(pluginGUID, new ResourceBank.Resource()

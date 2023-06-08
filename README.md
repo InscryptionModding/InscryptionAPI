@@ -40,7 +40,6 @@ An example Mod utilising this plugin can be found [here](https://github.com/Scot
 With this API installed, an additional 'modded save file' will be created by the game. This file will be found in the 'BepInEx' subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.
 
 # Community Patches
-
 The following patches from the Inscryption modding community have been included in this package to improve the overall quality-of-life for modding and compatibility.
 
 ## SigilArtPatch by MADH95Mods
@@ -56,7 +55,7 @@ Allows activated sigils to work correctly in Act 1 and Act 3 by clicking the sig
 Fixes latch sigils to work in Act 1
 
 ## Sigil Art Fix by Memez4Life
-Allows up to 8 sigils to be displayed on Act 1 cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).
+Allows up to 8 sigils to be displayed on cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).
 
 ## Visually Stackable Sigils by divisionbyz0rro
 Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.
@@ -74,10 +73,13 @@ Displays targets for attacks made with the sniper sigil in Act 1.
 Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 
 ## Multi-Act Sigil Compatability Fixes by WhistleWind
-Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder, Vessel Printer, Amorphous.
+Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder, Vessel Printer, Amorphous, Handy.
 
 ## Fledgling Sigil Fixes by WhistleWind
 Fixes Fledgling in Act 2 to show the correct number of turns until a card evolves, up to 3. Also changes its description to show the correct number of turns.
+
+## OverridePixelAbilityIcons by WhistleWind
+Fixes the OverrideAbilityIcon method to work in Act 2.
 
 # Using the API
 
@@ -101,6 +103,7 @@ Donations are totally not needed, this is a passion project before anything else
 Original version by cyantist
 
 Contributors and builders of API 2.0
+- BobbyShmurner
 - divisionbyz0rro
 - Eri
 - IngoH
