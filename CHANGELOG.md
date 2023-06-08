@@ -1,15 +1,24 @@
 # Changelog
 
-## 2.13.4
+## 2.14.0
 - Fixed Sniper duplicating attacks from sigils like Double Strike
 - Fixed interaction between Waterborne and Fledgling in Act 2
 - Fixed Cuckoo sigil softlocking in Act 2 when making a Raven Egg
 - Fixed sigils added via temporary mods not displaying in Act 2
 - Fixed hiddenAbilities not affecting sigil display in Act 2
+- Fixed Handy sigil visual bug outside of Act 2
+- Fixed Shapeshifter special ability in Act 2
 - Added pixel sprites for Raven Egg and Cuckoo/Broken Egg
 - Added ResourceBankManager.AddDecal(), PlayableCard.AddTemporaryMods(), CardModificationInfo.AddDecalIds
 - Added AbilityExtensions.SetPixelIcon(string pathToArt)
+- Added DialogueManager.PlayDialogueEventSafe - combines TextDisplayer.PlayDialogueEvent and DialogueHandler.PlayDialogueHandler for multi-act support
+- Added support for directly loading AudioClips via the GramophoneManager
+- Added support for adding decals to pixel cards via DecalIds
+- Added pixel portrait for Ijiraq
+- Changed TranspilerHelpers.LogCodeInscryptions to also function as an extension method for List<CodeInstruction>
 - Temporary mods can now be used to add decals to a card
+- CardRenderInfo.OverrideAbilityIcon now works for Act 2 sigils
+- Made method used to add stacks to pixel sigils public
 - Updated the wiki
 
 ## 2.13.3

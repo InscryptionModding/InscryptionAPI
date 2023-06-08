@@ -77,7 +77,7 @@ NOTE THAT THE NAMES ARE CASE-SENSITIVE.
 |TriggersOncePerStack   |AbilityInfo    |Boolean    |If the ability should trigger twice when the card evolves. |SetTriggersOncePerStack|
 |AffectedByTidalLock    |CardInfo       |Boolean    |If the card should be killed by the effect of Tidal Lock.  |SetAffectedByTidalLock |
 
-## Part2Modular
+### Part2Modular
 The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
 
 Feel free to use this as you please. Or don't. I'm not your mom.
@@ -163,7 +163,7 @@ CardInfo myEvolveCard = CardManager.New("Example", "Evolve", "Evolve Card", 2, 5
 Plugin.Log.LogInfo(CardLoader.GetCardByName("Example_Base").evolveParams == null); // FALSE!
 ```
 
-## Editing existing cards
+## Editing Existing Cards
 If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
 
 ```c#
@@ -305,7 +305,7 @@ private void Awake()
 
     // note that the resource name doesn't need to include the file extension
     // technically, you can put anything as long as you reference it correctly
-    ResourceBankManager.AddDecal(MyPluginGUID, "custom_decal", decal);
+    ResourceBankManager.AddDecal(MyPluginGUID, "custom_decal_name", decal);
 }
 ```
 
@@ -318,9 +318,56 @@ public override IEnumerator OnDealDamage(int amount, PlayableCard target)
 {
     CardModificationInfo decalMod = new()
     {
-        DecalIds = { "custom_decal" }
+        DecalIds = { "custom_decal_name" }
     };
-    target.Card.
+    target.AddTemporaryMod(decalMod);
+}
+```
+
+### Decals in Act 2
+Adding decals in Act 2 differs slightly from the ways stated above.
+
+Firstly, regular card appearance behaviours will not work; you must use the API's custom PixelAppearanceBehaviour.
+It behaves identically to regular appearance behaviours, but now in order to change the card's appearance you must override either PixelAppearance or OverrideBackground.
+
+OverrideBackground will change the - wait for it - card background. Shocking, I know.
+
+PixelAppearance will apply the sprite to the card and is what you will need to use to add a decal.
+
+```c#
+public class CustomPixelAppearance : PixelAppearanceBehaviour
+{
+    public static Appearance appearance;
+    public override Sprite PixelAppearance()
+    {
+        return TextureHelper.GetImageAsSprite("pixel_decal.png", TextureHelper.SpriteType.PixelDecal);
+    }
+}
+```
+
+<br>
+
+Using CardModificationInfos is the same as before, but now you must also add your decal texture to the PixelCardManager using AddGBCDecal.
+
+```c#
+private void CreateCustomAppearances
+{
+    CustomPixelAppearance.appearance = CardHelper.CreateAppearance<CustomPixelAppearance>(pluginGuid, "CustomPixelAppearanceName").Id;
+
+    Texture2D texture = TextureHelper.GetImageAsTexture("pixel_decal.png");
+    PixelCardManager.AddGBCDecal(pluginGuid, "pixel_decal_name", texture);
+}
+
+// same example code as above
+public class MyAbility : AbilityBehaviour
+
+public override IEnumerator OnDealDamage(int amount, PlayableCard target)
+{
+    CardModificationInfo decalMod = new()
+    {
+        DecalIds = { "pixel_decal_name" }
+    };
+    target.AddTemporaryMod(decalMod);
 }
 ```
 
