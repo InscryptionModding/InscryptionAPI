@@ -182,6 +182,78 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Removes any number of special abilities from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="abilities">The special abilities to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
+    {
+        if (info.specialAbilities?.Count > 0)
+        {
+            foreach (var ab in abilities)
+            {
+                info.specialAbilities.RemoveAll(a => a == ab);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of special abilities from the card. Will remove one instance of each passed ability; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="abilities">The special abilities to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveSpecialAbilitiesSingle(this CardInfo info, params SpecialTriggeredAbility[] abilities)
+    {
+        if (info.specialAbilities?.Count > 0)
+        {
+            foreach (var ab in abilities)
+            {
+                info.specialAbilities.Remove(ab);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of appearance behaviors from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="appearances">The appearances to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
+    {
+        if (info.appearanceBehaviour?.Count > 0)
+        {
+            foreach (var app in appearances)
+            {
+                info.appearanceBehaviour.RemoveAll(a => a == app);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of appearance behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="appearances">The appearances to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveAppearancesSingle(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
+    {
+        if (info.appearanceBehaviour?.Count > 0)
+        {
+            foreach (var app in appearances)
+            {
+                info.appearanceBehaviour.Remove(app);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
     /// <param name="info">Card to access</param>
