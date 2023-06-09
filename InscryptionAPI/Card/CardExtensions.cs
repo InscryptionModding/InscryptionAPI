@@ -152,7 +152,6 @@ public static class CardExtensions
     {
         if (card && card.Info)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.BloodCost] {card.Info.displayedName} getting bloodCost");
             int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
 
             if (IsGemified(card))
@@ -160,7 +159,6 @@ public static class CardExtensions
                 originalBloodCost--;
             }
             
-            InscryptionAPIPlugin.Logger.LogInfo($"[CardExtensions.BloodCost] {card.Info.displayedName} got bloodCost {originalBloodCost}");
             return originalBloodCost;
         } 
         
@@ -1697,7 +1695,6 @@ public static class CardExtensions
                     return card;
                 }
                 
-                InscryptionAPIPlugin.Logger.LogInfo($"[GetPlayableCard] Removing record of playable card {cardInfo.name} because it was null");
                 cardList.RemoveAt(i);
             }
         }

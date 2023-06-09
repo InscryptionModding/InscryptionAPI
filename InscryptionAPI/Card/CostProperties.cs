@@ -56,7 +56,6 @@ public static class CostProperties
             bool refreshCost = DidCostsChangeThisFrame();
             if (refreshCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"Refreshing cost for {playableCard.Info.displayedName}");
                 playableCard.RenderCard();
             }
         }
@@ -66,10 +65,8 @@ public static class CostProperties
             bool refreshCost = false;
 
             int bloodCost = playableCard.BloodCost();
-            InscryptionAPIPlugin.Logger.LogInfo($"[CostProperties.DidCostsChangeThisFrame] {playableCard.Info.displayedName} bloodCost {bloodCost}");
             if (bloodCost != cachedBloodCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"{playableCard.Info.displayedName} blood cost chanced!");
                 cachedBloodCost = bloodCost;
                 refreshCost = true;
             }
@@ -77,7 +74,6 @@ public static class CostProperties
             int boneCost = playableCard.BonesCost();
             if (boneCost != cachedBoneCost)
             {
-                InscryptionAPIPlugin.Logger.LogInfo($"{playableCard.Info.displayedName} bone cost chanced!");
                 cachedBoneCost = boneCost;
                 refreshCost = true;
             }
@@ -123,12 +119,10 @@ internal static class ChangeCardCostGetter
         if (card == null)
         {
             __result = CostProperties.OriginalBloodCost(__instance);
-            InscryptionAPIPlugin.Logger.LogInfo($"[CardInfo.BloodCost] {__instance.displayedName} got vanilla cost of {__result}");
             return false;
         }
         
         __result = Mathf.Max(0, card.BloodCost());
-        InscryptionAPIPlugin.Logger.LogInfo($"[CardInfo.BloodCost] {__instance.displayedName} got extended cost of {__result}");
         return false;
     }
     
@@ -191,17 +185,14 @@ internal static class ChangeCardCostGetter
     {
         if (!Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue))
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} no gem on the board");
             return false;
         }
 
         if (card.Info.Gemified)
         {
-            InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} is gemified cost chanced!");
             return true;
         }
         
-        InscryptionAPIPlugin.Logger.LogInfo($"{card.Info.displayedName} has no blue gem!");
         return card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);
     }
 }
@@ -227,12 +218,10 @@ internal static class Card_SetInfo
                 {
                     // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                     cardList.RemoveAt(i);
-                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Removing playable card from list. {info.displayedName}");
                 }
                 else if(innerCard == playableCard)
                 {
                     card = innerCard;
-                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Card already exists in list! {info.displayedName} to existing list.");
                 }
             }
             
@@ -243,10 +232,6 @@ internal static class Card_SetInfo
                 {
                     InscryptionAPIPlugin.Logger.LogWarning($"More than 1 card are using the same card info. This can cause unexpected problems with dynamic costs! {info.displayedName}");
                 }
-                else
-                {
-                    InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to existing list.");
-                }
             }
         }
         else
@@ -255,7 +240,6 @@ internal static class Card_SetInfo
             {
                 new WeakReference<PlayableCard>(playableCard)
             });
-            InscryptionAPIPlugin.Logger.LogInfo($"[Card_SetInfo] Added {info.displayedName} to list.");
         }
     }
 }

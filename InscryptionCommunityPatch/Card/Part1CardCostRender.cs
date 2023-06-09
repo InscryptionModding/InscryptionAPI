@@ -90,9 +90,7 @@ public static class Part1CardCostRender
         if (bonesCost > 0)
             list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, bonesCost)}"));
 
-        PatchPlugin.Logger.LogInfo($"[Part1SpriteFinal] {cardInfo.displayedName} getting blood cost");
         int bloodCost = hasPlayableCard ? playableCard.BloodCost() : cardInfo.BloodCost;
-        PatchPlugin.Logger.LogInfo($"[Part1SpriteFinal] {cardInfo.displayedName} blood cost {bloodCost}");
         if (bloodCost > 0)
             list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, bloodCost)}"));
 
