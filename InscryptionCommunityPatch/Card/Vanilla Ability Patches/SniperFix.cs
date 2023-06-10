@@ -270,11 +270,7 @@ public class SniperFix
                     }
                 }
 
-                if (alteredOpposings.Count > 0)
-                {
-                    __result.AddRange(alteredOpposings);
-                    attacks += alteredOpposings.Count;
-                }
+                attacks += alteredOpposings.Count;
 
                 if (isAttackingDefaultSlot && removeDefaultAttackSlot)
                     __result.Remove(defaultslot);
