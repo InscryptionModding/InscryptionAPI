@@ -43,8 +43,7 @@ internal static class CustomTriggerPatches
     private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
     {
         yield return result;
-        yield return CustomTriggerFinder.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x =>
-            x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
+        yield return CustomTriggerFinder.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x => x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
         yield break;
     }
 

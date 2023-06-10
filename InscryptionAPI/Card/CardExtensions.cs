@@ -237,6 +237,25 @@ public static class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Removes any number of Appearances from the card.
+    /// </summary>
+    /// <param name="info">Card to access.</param>
+    /// <param name="appearances">The Appearances to remove.</param>
+    /// <returns>The same card info so a chain can continue.</returns>
+    public static CardInfo RemoveAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
+    {
+        if (info.appearanceBehaviour?.Count > 0)
+        {
+            foreach (CardAppearanceBehaviour.Appearance ap in appearances)
+            {
+                if (info.appearanceBehaviour.Contains(ap))
+                    info.appearanceBehaviour.Remove(ap);
+            }
+        }
+        return info;
+    }
+
     #endregion
 
     #region Setters
@@ -479,10 +498,12 @@ public static class CardExtensions
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetTerrain(this CardInfo info)
+    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout = true)
     {
         info.AddTraits(Trait.Terrain);
-        info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground);
+        if (useTerrainLayout)
+            info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainLayout);
         return info;
     }
 
@@ -563,6 +584,18 @@ public static class CardExtensions
         {
             info.SetEvolve(evolution, numberOfTurns, mods);
         }
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the default evolution name for the card. This is the name used when the card doesn't evolve into another card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="defaultName">The default evolution name to use. Pass in 'null' to use the vanilla default.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetDefaultEvolutionName(this CardInfo info, string defaultName)
+    {
+        info.defaultEvolutionName = defaultName;
         return info;
     }
 
@@ -1476,6 +1509,9 @@ public static class CardExtensions
         }
         return false;
     }
+
+    public static bool IsPelt(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Pelt);
+    public static bool IsTerrain(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Terrain);
     #endregion
 
     #region CardMetaCategory

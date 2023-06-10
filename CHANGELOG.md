@@ -10,14 +10,16 @@
 - Fixed Shapeshifter special ability in Act 2
 - Added pixel sprites for Raven Egg and Cuckoo/Broken Egg
 - Added ResourceBankManager.AddDecal(), PlayableCard.AddTemporaryMods(), CardModificationInfo.AddDecalIds
-- Added AbilityExtensions.SetPixelIcon(string pathToArt)
+- Added AbilityInfo.SetPixelIcon(string pathToArt), CardInfo.RemoveAppearances(), CardInfo.SetDefaultEvolutionName()
 - Added DialogueManager.PlayDialogueEventSafe - combines TextDisplayer.PlayDialogueEvent and DialogueHandler.PlayDialogueHandler for multi-act support
 - Added support for directly loading AudioClips via the GramophoneManager
 - Added support for adding decals to pixel cards via DecalIds
 - Added pixel portrait for Ijiraq
+- Added support for changing costs midbattle using CardModificationInfos or a HarmonyPatch
 - Changed TranspilerHelpers.LogCodeInscryptions to also function as an extension method for List<CodeInstruction>
 - Temporary mods can now be used to add decals to a card
 - CardRenderInfo.OverrideAbilityIcon now works for Act 2 sigils
+- CardInfo.SetTerrain() now has optional parameter 'useTerrainLayout', defaulting to true
 - Made method used to add stacks to pixel sigils public
 - Updated the wiki
 
