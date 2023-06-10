@@ -17,6 +17,7 @@
 - Added pixel portrait for Ijiraq
 - Added support for changing costs midbattle using CardModificationInfos or a HarmonyPatch
 - Changed TranspilerHelpers.LogCodeInscryptions to also function as an extension method for List<CodeInstruction>
+- FullSpecialTriggeredAbility now stores the ability name and mod GUID
 - Temporary mods can now be used to add decals to a card
 - CardRenderInfo.OverrideAbilityIcon now works for Act 2 sigils
 - CardInfo.SetTerrain() now has optional parameter 'useTerrainLayout', defaulting to true

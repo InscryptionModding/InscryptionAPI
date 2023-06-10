@@ -409,5 +409,5 @@ internal static class CustomTriggerPatches
         __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
     }
 
-    static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
+    private static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }
