@@ -295,7 +295,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.FullAbility.html",
-          "hash": "8/MjyUjHnc3S8EridbOJ+TTvJbzmZwlUaKP0bXQLs7s="
+          "hash": "VYk4zD0ruteYaEP269KtwO8ylg3pF+FWfK1tvMFI+Ec="
         }
       },
       "is_incremental": false,
@@ -310,7 +310,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "CTmBTMnF7hI2sOLmwiVIetZE4UedLaG9PXa0wishy0I="
+          "hash": "uHDW6NEIuHfrVczJb6JJqjYSVQDfhZZqULSUbZv//0g="
         }
       },
       "is_incremental": false,
@@ -454,7 +454,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html",
-          "hash": "txuygeayfKm4JZa/EIs0WSBq6Ma+tzUvU0IZn0br+mw="
+          "hash": "Zv1p/lKhvO6YjcouVuiRPXhzCrH6/kLELGrdUZRXEIw="
         }
       },
       "is_incremental": false,
@@ -466,7 +466,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.html",
-          "hash": "xfpH2p6nqGazqQW8phfpvNDomMtvvK7QlStVtOm4ytc="
+          "hash": "KAbXTaeSU2lbxRls+AwDZPs0JZHIkf04409Y1dfqOQU="
         }
       },
       "is_incremental": false,
@@ -2458,7 +2458,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "4qYZVNh78KZNr/9nS3atk2fHeeeXLq5+h0g6xnxGapo="
+          "hash": "haP51Co5V4CVC3WVQhXL0h61setm1HAkUeJpbgGNRhA="
         }
       },
       "is_incremental": false,

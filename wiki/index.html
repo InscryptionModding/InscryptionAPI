@@ -793,16 +793,16 @@ public override IEnumerator OnPostResolveOnBoard()
 </code></pre><h2 id="special-stat-icons">Special Stat Icons</h2>
 <p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
 <p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour.</p>
-<pre><code class="lang-c#">StatIconInfo myinfo = ...;
-SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
-</code></pre><p><strong>or</strong></p>
-<pre><code class="lang-c#">SpecialStatIconManager.Add(MyPlugin.guid, &quot;Stat&quot;, &quot;My special stat&quot;, typeof(MyStatBehaviour))
-    .SetIcon(&quot;/art/special_stat_icon.png&quot;)
-    .SetPixelIcon(&quot;/art/special_pixel_stat_icon.png&quot;)
-    .SetDefaultPart1Ability()
-    .SetDefaultPart3Ability();
-</code></pre><p>Because StatIconInfo is so simple, there aren&#39;t very many helpers for it.</p>
-<h3 id="how-stat-icons-are-programmed">How Stat Icons are programmed</h3>
+<pre><code class="lang-c#">StatIconInfo info = ScriptableObject.CreateInstance&lt;StatIconInfo&gt;();
+info.metaCategories = new List&lt;AbilityMetaCategory&gt;() { AbilityMetaCategory.Part1Rulebook };
+info.appliesToAttack = true;
+info.appliesToHealth = false;
+info.rulebookName = &quot;Stat&quot;;
+info.rulebookDescription = &quot;My special stat&quot;;
+info.iconGraphic = &quot;/art/special_stat_icon.png&quot;);
+info.pixelIconGraphic = &quot;/art/special_pixel_stat_icon.png&quot;);
+StatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
+</code></pre><h3 id="how-stat-icons-are-programmed">How Stat Icons are programmed</h3>
 <p>Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.</p>
 <p>When you implement a variable stat behavior, you need to implement the abstract method GetStateValues. This method returns an array of integers: the value at index 0 is the variable attack power, and the value at index 1 is the variable health.</p>
 <p>Here is an example from the base game:</p>
@@ -1282,7 +1282,7 @@ The third parameter is optional, and determines the volume of your track, from 0
 <p>Think of them as fancy .zip&#39;s that&#39;s supported by Unity.</p>
 <h2 id="how-to-make-an-asset-bundle">How to Make an Asset Bundle</h2>
 <ol>
-<li>Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.</li>
+<li>Make a Unity project. Make sure you are using 2019.4.24f1 or your models will not show in-game.</li>
 <li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
 <li>Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)</li>
 <li>At the bottom of the Inspector window you&#39;ll see a section labedled &quot;Asset Bundle&quot;</li>

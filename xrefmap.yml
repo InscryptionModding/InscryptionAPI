@@ -2627,6 +2627,12 @@ references:
   commentId: M:InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(DiskCardGame.Ability,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)
   fullName: InscryptionAPI.Card.AbilityManager.FullAbility.FullAbility(DiskCardGame.Ability, DiskCardGame.AbilityInfo, Type, UnityEngine.Texture)
   nameWithType: AbilityManager.FullAbility.FullAbility(Ability, AbilityInfo, Type, Texture)
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(System.String,DiskCardGame.Ability,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)
+  name: FullAbility(String, Ability, AbilityInfo, Type, Texture)
+  href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility__ctor_System_String_DiskCardGame_Ability_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_
+  commentId: M:InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(System.String,DiskCardGame.Ability,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility.FullAbility(System.String, DiskCardGame.Ability, DiskCardGame.AbilityInfo, Type, UnityEngine.Texture)
+  nameWithType: AbilityManager.FullAbility.FullAbility(String, Ability, AbilityInfo, Type, Texture)
 - uid: InscryptionAPI.Card.AbilityManager.FullAbility.#ctor*
   name: FullAbility
   href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility__ctor_
@@ -2691,6 +2697,12 @@ references:
   commentId: F:InscryptionAPI.Card.AbilityManager.FullAbility.Info
   fullName: InscryptionAPI.Card.AbilityManager.FullAbility.Info
   nameWithType: AbilityManager.FullAbility.Info
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility.ModGUID
+  name: ModGUID
+  href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_ModGUID
+  commentId: F:InscryptionAPI.Card.AbilityManager.FullAbility.ModGUID
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility.ModGUID
+  nameWithType: AbilityManager.FullAbility.ModGUID
 - uid: InscryptionAPI.Card.AbilityManager.FullAbility.Texture
   name: Texture
   href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_Texture
@@ -5925,6 +5937,12 @@ references:
   commentId: M:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.#ctor(DiskCardGame.SpecialTriggeredAbility,Type)
   fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.FullSpecialTriggeredAbility(DiskCardGame.SpecialTriggeredAbility, Type)
   nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.FullSpecialTriggeredAbility(SpecialTriggeredAbility, Type)
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.#ctor(System.String,System.String,DiskCardGame.SpecialTriggeredAbility,Type)
+  name: FullSpecialTriggeredAbility(String, String, SpecialTriggeredAbility, Type)
+  href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_FullSpecialTriggeredAbility__ctor_System_String_System_String_DiskCardGame_SpecialTriggeredAbility_Type_
+  commentId: M:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.#ctor(System.String,System.String,DiskCardGame.SpecialTriggeredAbility,Type)
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.FullSpecialTriggeredAbility(System.String, System.String, DiskCardGame.SpecialTriggeredAbility, Type)
+  nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.FullSpecialTriggeredAbility(String, String, SpecialTriggeredAbility, Type)
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.#ctor*
   name: FullSpecialTriggeredAbility
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_FullSpecialTriggeredAbility__ctor_
@@ -5938,12 +5956,24 @@ references:
   commentId: F:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityBehaviour
   fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityBehaviour
   nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityBehaviour
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityName
+  name: AbilityName
+  href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_FullSpecialTriggeredAbility_AbilityName
+  commentId: F:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityName
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityName
+  nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.AbilityName
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.Id
   name: Id
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_FullSpecialTriggeredAbility_Id
   commentId: F:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.Id
   fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.Id
   nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.Id
+- uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.ModGUID
+  name: ModGUID
+  href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_FullSpecialTriggeredAbility_ModGUID
+  commentId: F:InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.ModGUID
+  fullName: InscryptionAPI.Card.SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.ModGUID
+  nameWithType: SpecialTriggeredAbilityManager.FullSpecialTriggeredAbility.ModGUID
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager.Remove(DiskCardGame.SpecialTriggeredAbility)
   name: Remove(SpecialTriggeredAbility)
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.html#InscryptionAPI_Card_SpecialTriggeredAbilityManager_Remove_DiskCardGame_SpecialTriggeredAbility_
