@@ -3,6 +3,8 @@ using GBC;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
+using System.Reflection;
+using HarmonyLib;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -140,6 +142,86 @@ public static class CardExtensions
             if (!info.tribes.Contains(app))
                 info.tribes.Add(app);
         return info;
+    }
+    
+    /// <summary>
+    /// Returns the blood cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards blood cost
+    /// </summary>
+    public static int BloodCost(this PlayableCard card)
+    {
+        if (card && card.Info)
+        {
+            int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
+
+            if (IsGemified(card))
+            {
+                originalBloodCost--;
+            }
+            
+            return originalBloodCost;
+        } 
+        
+        InscryptionAPIPlugin.Logger.LogError("[BloodCost] Couldn't find Card or CardInfo for blood cost??? How is this possible?");
+        return 0;
+    }
+    
+    
+    /// <summary>
+    /// Returns the bone cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards bone cost
+    /// </summary>
+    public static int BonesCost(this PlayableCard card)
+    {
+        if (card && card.Info)
+        {
+            return CostProperties.CostProperties.OriginalBonesCost(card.Info);
+        } 
+        
+        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for bone cost??? How is this possible?");
+        return 0;
+    }
+    
+    
+    /// <summary>
+    /// Returns the gem cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards gem cost
+    /// </summary>
+    public static List<GemType> GemsCost(this PlayableCard card)
+    {
+        List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
+        if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
+        {
+            return new List<GemType>();
+        }
+        
+        List<GemType> gemsCost = new(card.Info.gemsCost);
+        foreach (CardModificationInfo mod in mods)
+        {
+            if (mod.addGemCost == null)
+            {
+                continue;
+            }
+            foreach (GemType item in mod.addGemCost)
+            {
+                if (!gemsCost.Contains(item))
+                {
+                    gemsCost.Add(item);
+                }
+            }
+        }
+        
+        if (gemsCost.Count > 0 && Singleton<ResourcesManager>.Instance.HasGem(GemType.Blue) && IsGemified(card))
+        {
+            gemsCost.RemoveAt(0);
+        }
+
+        return gemsCost;
+    }
+    
+    public static bool IsGemified(this PlayableCard card)
+    {
+        return card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify) || card.Info.Gemified;
     }
 
     #endregion
@@ -1650,6 +1732,29 @@ public static class CardExtensions
         return info;
     }
     #endregion
+    
+    /// <summary>
+    /// Gets a PlayableCards using this specific CardInfo.
+    /// Sometimes inscryption clones CardInfo's and sometimes its reused so there may be more than 1 card using the same CardInfo
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <returns>Playable Card on the board, in your hand or on display somewhere</returns>
+    public static PlayableCard GetPlayableCard(this CardInfo cardInfo)
+    {
+        if (CostProperties.CostProperties.CardInfoToCard.TryGetValue(cardInfo, out List<WeakReference<PlayableCard>> cardList))
+        {
+            for (int i = cardList.Count - 1; i >= 0; i--)
+            {
+                if (cardList[i].TryGetTarget(out PlayableCard card) && card != null)
+                {
+                    return card;
+                }
+                
+                cardList.RemoveAt(i);
+            }
+        }
+        return null;
+    }
 
     #region PlayableCard
 

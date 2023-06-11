@@ -145,7 +145,16 @@ public static class OpponentManager
         }
         return false;
     }
-
+    
+    [HarmonyPatch(typeof(Opponent), nameof(Opponent.CreateCard))]
+    [HarmonyPrefix]
+    private static bool CloneCardInfo(ref CardInfo cardInfo)
+    {
+        // Dynamic costs require a unique CardInfo to get the playable card
+        cardInfo = (CardInfo)cardInfo.Clone();
+        return true;
+    }
+    
     [HarmonyPatch]
     private class MapGenerator_CreateNode
     {
