@@ -346,7 +346,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardExtensions.html",
-          "hash": "HnUtto76VfgVApITN3jVNDlXRq3uNaHqXC6YazujSkg="
+          "hash": "zkXRI9J9OCvlIT08WLKRg1azfTUkofw+vENyhE06dTI="
         }
       },
       "is_incremental": false,
@@ -383,6 +383,42 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardModificationInfoManager.html",
           "hash": "tpT4bM9QH544aMKsgimw0Rl+8dn5FPby+kD3dpDJnW0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html",
+          "hash": "vVCn3yHLI2p81piksgi1zWCyv6+A/g97UDRjerE9U/c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.CostProperties.CostProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.CostProperties.CostProperties.html",
+          "hash": "jrUMMBT3x722s/9PbM2JLg+xDGym8FXK/wbSy3vcQa8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.CostProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.CostProperties.html",
+          "hash": "NZ9D91eul+DQ83kPRD6+xkfBS2lC5jTh2XN8icr4LgU="
         }
       },
       "is_incremental": false,
@@ -778,7 +814,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.OpponentManager.html",
-          "hash": "Y0e6hQ4o3T4fyDEIeE3svo3j1qbCj5H1QxUYpPQ9rD8="
+          "hash": "UYcmRXRjNw61mYt/pNjnfnhDhiOi+2nkkxlIaQJdS/E="
         }
       },
       "is_incremental": false,
@@ -2422,7 +2458,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "JAG+/VcoCoVRb6RThkQYPjO3fhtitkMsNUWwv++0nck="
+          "hash": "WfWQWu+crkZknwslCrZRWSR3jjB+s4q8P6lqkutkElo="
         }
       },
       "is_incremental": false,
@@ -2485,7 +2521,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 207,
+          "total_file_count": 210,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

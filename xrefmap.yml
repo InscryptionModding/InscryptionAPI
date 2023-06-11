@@ -3056,6 +3056,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities
   nameWithType: CardExtensions.AllSpecialAbilities
+- uid: InscryptionAPI.Card.CardExtensions.BloodCost(DiskCardGame.PlayableCard)
+  name: BloodCost(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_BloodCost_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.BloodCost(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.BloodCost(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.BloodCost(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.BloodCost*
+  name: BloodCost
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_BloodCost_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.BloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.BloodCost
+  nameWithType: CardExtensions.BloodCost
+- uid: InscryptionAPI.Card.CardExtensions.BonesCost(DiskCardGame.PlayableCard)
+  name: BonesCost(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_BonesCost_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.BonesCost(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.BonesCost(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.BonesCost(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.BonesCost*
+  name: BonesCost
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_BonesCost_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.BonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.BonesCost
+  nameWithType: CardExtensions.BonesCost
 - uid: InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable{DiskCardGame.CardInfo},System.String)
   name: CardByName(IEnumerable<CardInfo>, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_CardByName_System_Collections_IEnumerable_DiskCardGame_CardInfo__System_String_
@@ -3085,6 +3111,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.CreateBlueprint
   nameWithType: CardExtensions.CreateBlueprint
+- uid: InscryptionAPI.Card.CardExtensions.GemsCost(DiskCardGame.PlayableCard)
+  name: GemsCost(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GemsCost_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GemsCost(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GemsCost(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GemsCost(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.GemsCost*
+  name: GemsCost
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GemsCost_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GemsCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GemsCost
+  nameWithType: CardExtensions.GemsCost
 - uid: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods(DiskCardGame.PlayableCard)
   name: GetAbilitiesFromAllMods(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilitiesFromAllMods_DiskCardGame_PlayableCard_
@@ -3176,6 +3215,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetModTag
   nameWithType: CardExtensions.GetModTag
+- uid: InscryptionAPI.Card.CardExtensions.GetPlayableCard(DiskCardGame.CardInfo)
+  name: GetPlayableCard(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetPlayableCard_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetPlayableCard(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetPlayableCard(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetPlayableCard*
+  name: GetPlayableCard
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetPlayableCard_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetPlayableCard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
+  nameWithType: CardExtensions.GetPlayableCard
 - uid: InscryptionAPI.Card.CardExtensions.HasAllAbilities(DiskCardGame.CardInfo,DiskCardGame.Ability[])
   name: HasAllAbilities(CardInfo, Ability[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasAllAbilities_DiskCardGame_CardInfo_DiskCardGame_Ability___
@@ -3451,6 +3503,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.IsBaseGameCard
   nameWithType: CardExtensions.IsBaseGameCard
+- uid: InscryptionAPI.Card.CardExtensions.IsGemified(DiskCardGame.PlayableCard)
+  name: IsGemified(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsGemified_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsGemified(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.IsGemified(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.IsGemified(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.IsGemified*
+  name: IsGemified
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsGemified_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsGemified
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsGemified
+  nameWithType: CardExtensions.IsGemified
 - uid: InscryptionAPI.Card.CardExtensions.IsNotOfTribe(DiskCardGame.CardInfo,DiskCardGame.Tribe)
   name: IsNotOfTribe(CardInfo, Tribe)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsNotOfTribe_DiskCardGame_CardInfo_DiskCardGame_Tribe_
@@ -5228,6 +5293,85 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardModificationInfoManager.SyncCardMods
   nameWithType: CardModificationInfoManager.SyncCardMods
+- uid: InscryptionAPI.Card.CostProperties
+  name: InscryptionAPI.Card.CostProperties
+  href: api/InscryptionAPI.Card.CostProperties.html
+  commentId: N:InscryptionAPI.Card.CostProperties
+  fullName: InscryptionAPI.Card.CostProperties
+  nameWithType: InscryptionAPI.Card.CostProperties
+- uid: InscryptionAPI.Card.CostProperties.CostProperties
+  name: CostProperties
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html
+  commentId: T:InscryptionAPI.Card.CostProperties.CostProperties
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties
+  nameWithType: CostProperties
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.CardInfoToCard
+  name: CardInfoToCard
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_CardInfoToCard
+  commentId: F:InscryptionAPI.Card.CostProperties.CostProperties.CardInfoToCard
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.CardInfoToCard
+  nameWithType: CostProperties.CardInfoToCard
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost(DiskCardGame.CardInfo)
+  name: OriginalBloodCost(CardInfo)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalBloodCost_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost(DiskCardGame.CardInfo)
+  nameWithType: CostProperties.OriginalBloodCost(CardInfo)
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost*
+  name: OriginalBloodCost
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalBloodCost_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost
+  nameWithType: CostProperties.OriginalBloodCost
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost(DiskCardGame.CardInfo)
+  name: OriginalBonesCost(CardInfo)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalBonesCost_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost(DiskCardGame.CardInfo)
+  nameWithType: CostProperties.OriginalBonesCost(CardInfo)
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost*
+  name: OriginalBonesCost
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalBonesCost_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost
+  nameWithType: CostProperties.OriginalBonesCost
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost(DiskCardGame.CardInfo)
+  name: OriginalGemsCost(CardInfo)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalGemsCost_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost(DiskCardGame.CardInfo)
+  nameWithType: CostProperties.OriginalGemsCost(CardInfo)
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost*
+  name: OriginalGemsCost
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalGemsCost_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost
+  nameWithType: CostProperties.OriginalGemsCost
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
+  name: CostProperties.RefreshCostMonoBehaviour
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html
+  commentId: T:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
+  nameWithType: CostProperties.RefreshCostMonoBehaviour
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists*
+  name: CompareLists
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_CompareLists_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.CompareLists
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists``1(List{``0},List{``0})
+  name: CompareLists<T>(List<T>, List<T>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_CompareLists__1_List___0__List___0__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists``1(List{``0},List{``0})
+  name.vb: CompareLists(Of T)(List(Of T), List(Of T))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists<T>(List<T>, List<T>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.CompareLists<T>(List<T>, List<T>)
+  nameWithType.vb: CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
 - uid: InscryptionAPI.Card.DeathCardManager
   name: DeathCardManager
   href: api/InscryptionAPI.Card.DeathCardManager.html
