@@ -22,7 +22,7 @@ public static class AbilityManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
-    private static ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
+    private static readonly ConditionalWeakTable<AbilityInfo, AbilityExt> AbilityExtensionProperties = new();
 
     /// <summary>
     /// A utility class that holds all of the required information about an ability in order to be able to use it in-game.
@@ -528,30 +528,30 @@ public static class AbilityManager
     private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {NewAbilities.Count}");
-        if (NewAbilities.Count > 0)
+        if (NewAbilities.Count <= 0)
+            return;
+
+        foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
         {
-            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
+            // regular abilities
+            if (pageRangeInfo.type != PageRangeType.Abilities)
+                continue;
+
+            int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
+            int curPageNum = (int)Ability.NUM_ABILITIES;
+            List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
+            //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
+            foreach (FullAbility fab in abilitiesToAdd)
             {
-                // regular abilities
-                if (pageRangeInfo.type == PageRangeType.Abilities)
+                RuleBookPageInfo info = new()
                 {
-                    int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
-                    int curPageNum = (int)Ability.NUM_ABILITIES;
-                    List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
-                    //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
-                    foreach (FullAbility fab in abilitiesToAdd)
-                    {
-                        RuleBookPageInfo info = new()
-                        {
-                            pagePrefab = pageRangeInfo.rangePrefab,
-                            headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
-                        };
-                        __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
-                        __result.Insert(insertPosition, info);
-                        curPageNum += 1;
-                        insertPosition += 1;
-                    }
-                }
+                    pagePrefab = pageRangeInfo.rangePrefab,
+                    headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
+                };
+                __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
+                __result.Insert(insertPosition, info);
+                curPageNum += 1;
+                insertPosition += 1;
             }
         }
     }

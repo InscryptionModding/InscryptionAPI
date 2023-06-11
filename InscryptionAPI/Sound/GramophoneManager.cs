@@ -31,14 +31,23 @@ public static class GramophoneManager
     internal class TrackInfo
     {
         public string FilePath, Guid;
+        public AudioClip Clip;
         public float Volume;
         // public bool CanSkip; // Unused at the time! 
         public string AudioClipName => $"{Guid}_{TrackName}";
-        public string TrackName => Path.GetFileName(FilePath);
+        public string TrackName => Clip != null ? Clip.name : Path.GetFileName(FilePath);
+
         public TrackInfo(string guid, string filePath, float volume = 1f)
         {
             Guid = guid ?? string.Empty;
             FilePath = filePath;
+            Volume = Mathf.Clamp(volume, 0, 1f);
+        }
+
+        public TrackInfo(string guid, AudioClip clip, float volume = 1f)
+        {
+            Guid = guid ?? string.Empty;
+            Clip = clip;
             Volume = Mathf.Clamp(volume, 0, 1f);
         }
     }
@@ -65,6 +74,18 @@ public static class GramophoneManager
             return;
         }
         TrackInfo trackInfo = new TrackInfo(guid, filePath, volume);
+        TracksToAdd.Add(trackInfo);
+    }
+
+    /// <summary>
+    /// A helper for adding a music track to the Gramophone in Leshy's cabin.
+    /// </summary>
+    /// <param name="guid">Your plugin's GUID.</param>
+    /// <param name="clip">The AudioClip of your track.</param>
+    /// <param name="volume">The volume of your track, from 0 to 1.</param>
+    public static void AddTrack(string guid, AudioClip clip, float volume = 1f)
+    {
+        TrackInfo trackInfo = new TrackInfo(guid, clip, volume);
         TracksToAdd.Add(trackInfo);
     }
 

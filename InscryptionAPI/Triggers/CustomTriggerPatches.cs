@@ -43,8 +43,7 @@ internal static class CustomTriggerPatches
     private static IEnumerator TriggerOnPostSingularSlotAttackSlot(IEnumerator result, CardSlot attackingSlot, CardSlot opposingSlot)
     {
         yield return result;
-        yield return CustomTriggerFinder.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x =>
-            x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
+        yield return CustomTriggerFinder.TriggerAll<IOnPostSingularSlotAttackSlot>(false, x => x.RespondsToPostSingularSlotAttackSlot(attackingSlot, opposingSlot), x => x.OnPostSingularSlotAttackSlot(attackingSlot, opposingSlot));
         yield break;
     }
 
@@ -410,5 +409,5 @@ internal static class CustomTriggerPatches
         __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
     }
 
-    static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
+    private static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }
