@@ -2510,6 +2510,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon
   nameWithType: AbilityExtensions.SetPixelAbilityIcon
+- uid: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  name: SetPixelIcon(StatIconInfo, String, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_DiskCardGame_StatIconInfo_System_String_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetPixelIcon(StatIconInfo, String, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo, System.String, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo, System.String, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: AbilityExtensions.SetPixelIcon(StatIconInfo, String, Nullable<FilterMode>)
+  nameWithType.vb: AbilityExtensions.SetPixelIcon(StatIconInfo, String, Nullable(Of FilterMode))
 - uid: InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
   name: SetPixelIcon(StatIconInfo, Texture2D, Nullable<FilterMode>)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_DiskCardGame_StatIconInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
@@ -2961,6 +2970,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.AddSpecialAbilities
   nameWithType: CardExtensions.AddSpecialAbilities
+- uid: InscryptionAPI.Card.CardExtensions.AddTemporaryMods(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo[])
+  name: AddTemporaryMods(PlayableCard, CardModificationInfo[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AddTemporaryMods_DiskCardGame_PlayableCard_DiskCardGame_CardModificationInfo___
+  commentId: M:InscryptionAPI.Card.CardExtensions.AddTemporaryMods(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo[])
+  name.vb: AddTemporaryMods(PlayableCard, CardModificationInfo())
+  fullName: InscryptionAPI.Card.CardExtensions.AddTemporaryMods(DiskCardGame.PlayableCard, DiskCardGame.CardModificationInfo[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.AddTemporaryMods(DiskCardGame.PlayableCard, DiskCardGame.CardModificationInfo())
+  nameWithType: CardExtensions.AddTemporaryMods(PlayableCard, CardModificationInfo[])
+  nameWithType.vb: CardExtensions.AddTemporaryMods(PlayableCard, CardModificationInfo())
+- uid: InscryptionAPI.Card.CardExtensions.AddTemporaryMods*
+  name: AddTemporaryMods
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AddTemporaryMods_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.AddTemporaryMods
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.AddTemporaryMods
+  nameWithType: CardExtensions.AddTemporaryMods
 - uid: InscryptionAPI.Card.CardExtensions.AddTraits(DiskCardGame.CardInfo,DiskCardGame.Trait[])
   name: AddTraits(CardInfo, Trait[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AddTraits_DiskCardGame_CardInfo_DiskCardGame_Trait___
@@ -3446,6 +3471,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.IsOfTribe
   nameWithType: CardExtensions.IsOfTribe
+- uid: InscryptionAPI.Card.CardExtensions.IsPelt(DiskCardGame.CardInfo)
+  name: IsPelt(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsPelt_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsPelt(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.IsPelt(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.IsPelt(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.IsPelt*
+  name: IsPelt
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsPelt_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsPelt
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsPelt
+  nameWithType: CardExtensions.IsPelt
 - uid: InscryptionAPI.Card.CardExtensions.IsPlayerCard(DiskCardGame.PlayableCard)
   name: IsPlayerCard(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsPlayerCard_DiskCardGame_PlayableCard_
@@ -3459,6 +3497,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.IsPlayerCard
   nameWithType: CardExtensions.IsPlayerCard
+- uid: InscryptionAPI.Card.CardExtensions.IsTerrain(DiskCardGame.CardInfo)
+  name: IsTerrain(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsTerrain_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsTerrain(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.IsTerrain(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.IsTerrain(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.IsTerrain*
+  name: IsTerrain
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsTerrain_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsTerrain
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsTerrain
+  nameWithType: CardExtensions.IsTerrain
 - uid: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardInfo,DiskCardGame.Ability)
   name: LacksAbility(CardInfo, Ability)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAbility_DiskCardGame_CardInfo_DiskCardGame_Ability_
@@ -3723,6 +3774,54 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.RemoveAbilitiesSingle
   nameWithType: CardExtensions.RemoveAbilitiesSingle
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAppearances(DiskCardGame.CardInfo,DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  name: RemoveAppearances(CardInfo, CardAppearanceBehaviour.Appearance[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAppearances_DiskCardGame_CardInfo_DiskCardGame_CardAppearanceBehaviour_Appearance___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveAppearances(DiskCardGame.CardInfo,DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  name.vb: RemoveAppearances(CardInfo, CardAppearanceBehaviour.Appearance())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAppearances(DiskCardGame.CardInfo, DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveAppearances(DiskCardGame.CardInfo, DiskCardGame.CardAppearanceBehaviour.Appearance())
+  nameWithType: CardExtensions.RemoveAppearances(CardInfo, CardAppearanceBehaviour.Appearance[])
+  nameWithType.vb: CardExtensions.RemoveAppearances(CardInfo, CardAppearanceBehaviour.Appearance())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAppearances*
+  name: RemoveAppearances
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAppearances_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveAppearances
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAppearances
+  nameWithType: CardExtensions.RemoveAppearances
+- uid: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name: RemoveCardMetaCategories(CardInfo, CardMetaCategory[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveCardMetaCategories_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name.vb: RemoveCardMetaCategories(CardInfo, CardMetaCategory())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory())
+  nameWithType: CardExtensions.RemoveCardMetaCategories(CardInfo, CardMetaCategory[])
+  nameWithType.vb: CardExtensions.RemoveCardMetaCategories(CardInfo, CardMetaCategory())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories*
+  name: RemoveCardMetaCategories
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveCardMetaCategories_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories
+  nameWithType: CardExtensions.RemoveCardMetaCategories
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo[])
+  name: RemoveTemporaryMods(PlayableCard, CardModificationInfo[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTemporaryMods_DiskCardGame_PlayableCard_DiskCardGame_CardModificationInfo___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo[])
+  name.vb: RemoveTemporaryMods(PlayableCard, CardModificationInfo())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods(DiskCardGame.PlayableCard, DiskCardGame.CardModificationInfo[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods(DiskCardGame.PlayableCard, DiskCardGame.CardModificationInfo())
+  nameWithType: CardExtensions.RemoveTemporaryMods(PlayableCard, CardModificationInfo[])
+  nameWithType.vb: CardExtensions.RemoveTemporaryMods(PlayableCard, CardModificationInfo())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods*
+  name: RemoveTemporaryMods
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTemporaryMods_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods
+  nameWithType: CardExtensions.RemoveTemporaryMods
 - uid: InscryptionAPI.Card.CardExtensions.RemoveTraits(DiskCardGame.CardInfo,DiskCardGame.Trait[])
   name: RemoveTraits(CardInfo, Trait[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTraits_DiskCardGame_CardInfo_DiskCardGame_Trait___
@@ -3889,6 +3988,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck
   nameWithType: CardExtensions.SetCustomUnlockCheck
+- uid: InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName(DiskCardGame.CardInfo,System.String)
+  name: SetDefaultEvolutionName(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetDefaultEvolutionName_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetDefaultEvolutionName(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName*
+  name: SetDefaultEvolutionName
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetDefaultEvolutionName_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetDefaultEvolutionName
+  nameWithType: CardExtensions.SetDefaultEvolutionName
 - uid: InscryptionAPI.Card.CardExtensions.SetDefaultPart1Card(DiskCardGame.CardInfo)
   name: SetDefaultPart1Card(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetDefaultPart1Card_DiskCardGame_CardInfo_
@@ -4427,12 +4539,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetTail
   nameWithType: CardExtensions.SetTail
-- uid: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
-  name: SetTerrain(CardInfo)
-  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTerrain_DiskCardGame_CardInfo_
-  commentId: M:InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
-  fullName: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
-  nameWithType: CardExtensions.SetTerrain(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo,System.Boolean)
+  name: SetTerrain(CardInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTerrain_DiskCardGame_CardInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo, System.Boolean)
+  nameWithType: CardExtensions.SetTerrain(CardInfo, Boolean)
 - uid: InscryptionAPI.Card.CardExtensions.SetTerrain*
   name: SetTerrain
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTerrain_
@@ -4638,6 +4750,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddAbilities
   nameWithType: CardModificationInfoExtensions.AddAbilities
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds(DiskCardGame.CardModificationInfo,System.String[])
+  name: AddDecalIds(CardModificationInfo, String[])
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddDecalIds_DiskCardGame_CardModificationInfo_System_String___
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds(DiskCardGame.CardModificationInfo,System.String[])
+  name.vb: AddDecalIds(CardModificationInfo, String())
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds(DiskCardGame.CardModificationInfo, System.String[])
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds(DiskCardGame.CardModificationInfo, System.String())
+  nameWithType: CardModificationInfoExtensions.AddDecalIds(CardModificationInfo, String[])
+  nameWithType.vb: CardModificationInfoExtensions.AddDecalIds(CardModificationInfo, String())
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds*
+  name: AddDecalIds
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddDecalIds_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds
+  nameWithType: CardModificationInfoExtensions.AddDecalIds
 - uid: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId(DiskCardGame.CardModificationInfo)
   name: CleanId(CardModificationInfo)
   href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_CleanId_DiskCardGame_CardModificationInfo_
@@ -6311,6 +6439,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent
   nameWithType: DialogueManager.GenerateEvent
+- uid: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)
+  name: PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action<DialogueEvent.Line>, Boolean)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_DiskCardGame_TextDisplayer_MessageAdvanceMode_DiskCardGame_TextDisplayer_EventIntersectMode_GBC_DialogueSpeaker_GBC_TextBox_Style_GBC_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)
+  name.vb: PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String(), Action(Of DialogueEvent.Line), Boolean)
+  fullName: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String, DiskCardGame.TextDisplayer.MessageAdvanceMode, DiskCardGame.TextDisplayer.EventIntersectMode, GBC.DialogueSpeaker, GBC.TextBox.Style, GBC.TextBox.ScreenPosition, System.String[], Action<DialogueEvent.Line>, System.Boolean)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String, DiskCardGame.TextDisplayer.MessageAdvanceMode, DiskCardGame.TextDisplayer.EventIntersectMode, GBC.DialogueSpeaker, GBC.TextBox.Style, GBC.TextBox.ScreenPosition, System.String(), Action(Of DialogueEvent.Line), System.Boolean)
+  nameWithType: DialogueManager.PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action<DialogueEvent.Line>, Boolean)
+  nameWithType.vb: DialogueManager.PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String(), Action(Of DialogueEvent.Line), Boolean)
+- uid: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe*
+  name: PlayDialogueEventSafe
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe
+  nameWithType: DialogueManager.PlayDialogueEventSafe
 - uid: InscryptionAPI.Encounters
   name: InscryptionAPI.Encounters
   href: api/InscryptionAPI.Encounters.html
@@ -11458,25 +11602,49 @@ references:
   commentId: T:InscryptionAPI.PixelCard.PixelCardManager
   fullName: InscryptionAPI.PixelCard.PixelCardManager
   nameWithType: PixelCardManager
-- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
-  name: PixelCardManager.PixelCardUpdateBackgroundPatch
-  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html
-  commentId: T:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
-  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch
-  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch
-- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer,DiskCardGame.CardInfo)
-  name: PixelUpdateBackground(PixelCardDisplayer, CardInfo)
-  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html#InscryptionAPI_PixelCard_PixelCardManager_PixelCardUpdateBackgroundPatch_PixelUpdateBackground_GBC_PixelCardDisplayer_DiskCardGame_CardInfo_
-  commentId: M:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer,DiskCardGame.CardInfo)
-  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(GBC.PixelCardDisplayer, DiskCardGame.CardInfo)
-  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground(PixelCardDisplayer, CardInfo)
-- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground*
-  name: PixelUpdateBackground
-  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.html#InscryptionAPI_PixelCard_PixelCardManager_PixelCardUpdateBackgroundPatch_PixelUpdateBackground_
-  commentId: Overload:InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
+- uid: InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal(System.String,System.String,UnityEngine.Texture2D)
+  name: AddGBCDecal(String, String, Texture2D)
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_AddGBCDecal_System_String_System_String_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal(System.String,System.String,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal(System.String, System.String, UnityEngine.Texture2D)
+  nameWithType: PixelCardManager.AddGBCDecal(String, String, Texture2D)
+- uid: InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal*
+  name: AddGBCDecal
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_AddGBCDecal_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal
   isSpec: "True"
-  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
-  nameWithType: PixelCardManager.PixelCardUpdateBackgroundPatch.PixelUpdateBackground
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.AddGBCDecal
+  nameWithType: PixelCardManager.AddGBCDecal
+- uid: InscryptionAPI.PixelCard.PixelCardManager.CustomPixelDecals
+  name: CustomPixelDecals
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_CustomPixelDecals
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.CustomPixelDecals
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.CustomPixelDecals
+  nameWithType: PixelCardManager.CustomPixelDecals
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData
+  name: PixelCardManager.PixelDecalData
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.html
+  commentId: T:InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData
+  nameWithType: PixelCardManager.PixelDecalData
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.DecalTexture
+  name: DecalTexture
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.html#InscryptionAPI_PixelCard_PixelCardManager_PixelDecalData_DecalTexture
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.DecalTexture
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.DecalTexture
+  nameWithType: PixelCardManager.PixelDecalData.DecalTexture
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.html#InscryptionAPI_PixelCard_PixelCardManager_PixelDecalData_PluginGUID
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.PluginGUID
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.PluginGUID
+  nameWithType: PixelCardManager.PixelDecalData.PluginGUID
+- uid: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.TextureName
+  name: TextureName
+  href: api/InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.html#InscryptionAPI_PixelCard_PixelCardManager_PixelDecalData_TextureName
+  commentId: F:InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.TextureName
+  fullName: InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.TextureName
+  nameWithType: PixelCardManager.PixelDecalData.TextureName
 - uid: InscryptionAPI.PixelCard.PixelCardManager.PixelGemifiedBlueLit
   name: PixelGemifiedBlueLit
   href: api/InscryptionAPI.PixelCard.PixelCardManager.html#InscryptionAPI_PixelCard_PixelCardManager_PixelGemifiedBlueLit
@@ -12243,6 +12411,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Resource.ResourceBankManager.Add
   nameWithType: ResourceBankManager.Add
+- uid: InscryptionAPI.Resource.ResourceBankManager.AddDecal(System.String,System.String,UnityEngine.Texture,System.Boolean)
+  name: AddDecal(String, String, Texture, Boolean)
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html#InscryptionAPI_Resource_ResourceBankManager_AddDecal_System_String_System_String_UnityEngine_Texture_System_Boolean_
+  commentId: M:InscryptionAPI.Resource.ResourceBankManager.AddDecal(System.String,System.String,UnityEngine.Texture,System.Boolean)
+  fullName: InscryptionAPI.Resource.ResourceBankManager.AddDecal(System.String, System.String, UnityEngine.Texture, System.Boolean)
+  nameWithType: ResourceBankManager.AddDecal(String, String, Texture, Boolean)
+- uid: InscryptionAPI.Resource.ResourceBankManager.AddDecal*
+  name: AddDecal
+  href: api/InscryptionAPI.Resource.ResourceBankManager.html#InscryptionAPI_Resource_ResourceBankManager_AddDecal_
+  commentId: Overload:InscryptionAPI.Resource.ResourceBankManager.AddDecal
+  isSpec: "True"
+  fullName: InscryptionAPI.Resource.ResourceBankManager.AddDecal
+  nameWithType: ResourceBankManager.AddDecal
 - uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
   name: ResourceBankManager.ResourceBank_Awake
   href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html

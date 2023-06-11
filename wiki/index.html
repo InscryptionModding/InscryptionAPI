@@ -84,9 +84,9 @@ This document provides explanations and examples to help you understand what eve
 
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
-EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables moxen management
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables Mox management
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
-</code></pre><p>At the time this README was written, the only zones where these settings will have any effect are CardTemple.Nature (Leshy&#39;s cabin) and CardTemple.Undead (Grimora&#39;s cabin).</p>
+</code></pre><p>Currently, the only zones where these settings will have any effect are CardTemple.Nature (Leshy&#39;s cabin) and CardTemple.Undead (Grimora&#39;s cabin).</p>
 <h1 id="core-features">Core Features</h1>
 <h2 id="extending-enumerations">Extending Enumerations</h2>
 <p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums,&#39; to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
@@ -105,6 +105,46 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the M
     set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, &quot;NumberOfItems&quot;, value); }
 }
 </code></pre><p>When written like this, the static property &quot;NumberOfItems&quot; now automatically syncs to the save file.</p>
+<h2 id="api-extended-properties">API Extended Properties</h2>
+<p>The API implements a system of custom properties that you can apply to cards, abilities, and card modification infos.
+For more information on properties go <a href="#custom-card-properties">to this section</a>.</p>
+<p>Some extended properties are used by the API for certain functions.
+The following are some extension properties you can use for your cards.</p>
+<p>If you&#39;re using C# you can use the provided extension method to easily set these fields, and there are also methods for easily checking them.</p>
+<p>NOTE THAT THE NAMES ARE CASE-SENSITIVE.</p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Affected Type</th>
+<th>Value Type</th>
+<th>Description</th>
+<th>Extension Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TriggersOncePerStack</td>
+<td>AbilityInfo</td>
+<td>Boolean</td>
+<td>If the ability should trigger twice when the card evolves.</td>
+<td>SetTriggersOncePerStack</td>
+</tr>
+<tr>
+<td>AffectedByTidalLock</td>
+<td>CardInfo</td>
+<td>Boolean</td>
+<td>If the card should be killed by the effect of Tidal Lock.</td>
+<td>SetAffectedByTidalLock</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part2modular">Part2Modular</h2>
+<p>The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.</p>
+<p>Feel free to use this as you please. Or don&#39;t. I&#39;m not your mom.</p>
+<h3 id="note">Note</h3>
+<p>All vanilla sigils marked Part1Modular or Part3Modular, plus all vanilla activated sigils, have been given with metacategory by default.
+Currently it&#39;s only used within the API for the Act 2 Amorphous patch.</p>
 <h1 id="cards">Cards</h1>
 <h2 id="card-management">Card Management</h2>
 <p>Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:</p>
@@ -130,7 +170,7 @@ myCard.cost = 2;
 <li><strong>SetEmissivePortrait:</strong> If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.</li>
 <li><strong>SetAltPortrait:</strong> Assigns the card&#39;s alternate portrait.</li>
 <li><strong>SetPixelPortrait:</strong> Assigns the card&#39;s pixel portrait (for GBC mode).</li>
-<li><strong>SetCost:</strong> Sets the cost for the card.</li>
+<li><strong>SetCost:</strong> Sets the cost for the card. There are also extensions for setting Blood, Bones, Energy, and Mox individually.</li>
 <li><strong>SetDefaultPart1Card:</strong> Sets all of the metadata necessary to make this card playable in Part 1 (Leshy&#39;s cabin).</li>
 <li><strong>SetGBCPlayable:</strong> Sets all of the metadata necessary to make this card playable in Part 2.</li>
 <li><strong>SetDefaultPart3Card:</strong> Sets all of the metadata necessary to make this card playable in Part 3 (P03&#39;s cabin).</li>
@@ -142,7 +182,9 @@ myCard.cost = 2;
 <li><strong>SetEvolve:</strong> Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.</li>
 <li><strong>SetOnePerDeck:</strong> Sets whether or not the card is unique (only one copy in your deck per run).</li>
 <li><strong>SetHideAttackAndHealth:</strong> Sets whether or not the card&#39;s Power and Health stats will be displayed or not.</li>
-<li><strong>AddAbilities:</strong> Add any number of abilities to the card. This will add duplicates..</li>
+<li><strong>SetGemify:</strong> Sets whether or not the card should be Gemified by default.</li>
+<li><strong>SetAffectedByTidalLock:</strong> Sets whether or not the card will be killed by the effect of the Tidal Lock sigil.</li>
+<li><strong>AddAbilities:</strong> Add any number of abilities to the card. This will add duplicates.</li>
 <li><strong>AddAppearances:</strong> Add any number of appearance behaviors to the card. No duplicates will be added.</li>
 <li><strong>AddMetaCategories:</strong> Add any number of metacategories to the card. No duplicates will be added.</li>
 <li><strong>AddTraits:</strong> Add any number of traits to the card. No duplicates will be added.</li>
@@ -181,6 +223,8 @@ CardInfo sample = CardLoader.CardByName(&quot;MyCustomCard&quot;);
 sample.SetExtendedProperty(&quot;CustomPropertyName&quot;, &quot;CustomPropertyValue&quot;);
 
 string propValue = sample.GetExtendedProperty(&quot;CustomPropertyName&quot;);
+
+You can also add custom properties to a card mod.
 </code></pre><h2 id="custom-card-costs">Custom Card Costs</h2>
 <p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
@@ -193,7 +237,24 @@ Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&
         costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
 }
 </code></pre><p>The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.</p>
-<h2 id="talking-cards">Talking Cards</h2>
+<h2 id="custom-costs-for-death-cards">Custom Costs for Death Cards</h2>
+<p>Death cards aren&#39;t technically cards; they&#39;re card mods that are added to a template card.</p>
+<p>Because of this, simply adding an extended property to them won&#39;t work, since properties apply to ALL copies of the card.
+If you want to create a death card that uses a custom play cost, you&#39;ll need to create a new card and then add properties to that new CardInfo.</p>
+<p>Fortunately, the API&#39;s DeathCardManager is here to handle all this.
+CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card&#39;s name, stats, etc..</p>
+<pre><code class="lang-c#">private void AddCustomDeathCard()
+{
+    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
+        .SetNameReplacement(&quot;Mabel&quot;).SetSingletonId(&quot;wstl_mabel&quot;)
+        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
+        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
+        .AddCustomCostId(&quot;CustomCost&quot;, 1);
+
+    // you can then add your newly created death card to the list of default death card mods like so
+    DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+</code></pre><h2 id="talking-cards">Talking Cards</h2>
 <p>This API supports creating new talking cards from scratch, without the need to load up your own Unity prefabs or anything of the sort!</p>
 <p>All you have to do is create a class that implements the <strong>ITalkingCard</strong> interface, which contains the following fields:</p>
 <table>
@@ -634,7 +695,7 @@ AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
 </code></pre><h2 id="additional-functionality-with-interfaces">Additional Functionality with Interfaces</h2>
 <p>The API adds a number of interfaces you can use to add additional functionality to your ability.
 It also adds a new class: <code>ExtendedAbilityBehaviour</code>, which has all the interfaces already implemented for immediate use, saving you time.</p>
-<h3 id="modifying-what-card-clots-to-attack">Modifying What Card Clots to Attack</h3>
+<h3 id="modifying-what-card-slots-to-attack">Modifying What Card Slots to Attack</h3>
 <p>To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
 If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.</p>
 <h3 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h3>
@@ -656,15 +717,28 @@ You will need to override TriggerWhenFaceDown to return true.</p>
 As an example, if you were inheriting from the vanilla ActivatedAbilityBehaviour, you would override BonesCost to set the... Bones cost.
 ExtendedActivatedAbilityBehaviour moves that functionality to the virtual int StartingBonesCost, and BonesCost is now used to keep track of the total cost, modifiders included.</p>
 <p>Put simply, to set the starting cost(s), you override StartingBonesCost, StartingEnergyCost, or StartingHealthCost.</p>
-<p>There is also a new override IEnumerator <code>PostActivate()</code>.</p>
-<p>The two main features of the new class are dynamic activation costs, and a new Health cost.</p>
-<h3 id="health-cost">Health Cost</h3>
+<p>There is also a new override IEnumerator <code>PostActivate()</code> that triggers after the main body of code.</p>
+<h3 id="blood-cost">Blood Cost</h3>
+<p>This behaves exactly like the Blood cost for playing cards, where you have to sacrifice other cards on your side of the board in order to trigger an effect.</p>
+<p>The card info and card slot of sacrificed cards will be stored in the dictionary <code>currentSacrificedCardInfos</code>, with the CardInfo as the Key and the CardSlot as the Value.
+Use this if you want to manipulate sacrificed cards once they&#39;re gone, but do note that the dictionary is cleared once the ability&#39;s effect has finished.</p>
+<pre><code class="lang-c#">public Dictionary&lt;CardSlot, CardInfo&gt; currentSacrificedCardInfos = new();
+
+public override IEnumerator Activate()
+{
+    // Create new copies of the sacrificed cards in their original board slots
+    foreach (KeyValuePair&lt;CardSlot, CardInfo&gt; valuePair in currentSacrificedCardInfos)
+    {
+        yield return Singleton&lt;BoardManager&gt;.Instance.CreateCardInSlot(valuePair.Value, valuePair.Key);
+    }
+}
+</code></pre><h3 id="health-cost">Health Cost</h3>
 <p>This is easy enough to understand, it&#39;s a way of making an activated ability cost Health to use.
 If the cost is equal to the card&#39;s current Health, then it will die.</p>
 <p>You can set this by overriding StartingHealthCost.</p>
 <h3 id="dynamic-activation-costs">Dynamic Activation Costs</h3>
 <p>Using ExtendedActivatedAbilityBehaviour, you can change the cost of an activated ability during battle.</p>
-<p>By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, or OnActivateHealthCostMod, you can make the ability&#39;s activation cost increase after it has been activated.</p>
+<p>By overriding OnActivateBonesCostMod, OnActivateEnergyCostMod, OnActivateBloodCostMod, or OnActivateHealthCostMod, you can make the ability&#39;s activation cost increase after it has been activated.</p>
 <pre><code class="lang-c#">public class ActivateRepulsive : ExtendedActivatedAbilityBehaviour
 {
     public static Ability abiliy;
@@ -703,9 +777,22 @@ This is unique to each card, so don&#39;t worry about keeping track of multiple 
 <pre><code class="lang-c#">string rulebookDescription = &quot;Pay [sigilcost:1 Bone, 1 Energy] to do a thing, then increase its activation cost by 1 Energy.&quot;
 
 AbilityManager.New(pluginGuid, rulebookName, rulebookDescription, typeof(T), &quot;artpath.png&quot;);
+</code></pre><h4 id="triggering-onresolveonboard">Triggering OnResolveOnBoard</h4>
+<p>In Act 2, upon playing a card with an activated ability you will trigger a tutorial explaining how they work.
+In order to ensure this code runs, you are prevented from overriding OnResolveOnBoard, both in the vanilla behaviour and in this extended version.</p>
+<p>Worry not however, for there is a workaround: the new virtual methods RespondsToPostResolveOnBoard() and OnPostResolveOnBoard() can be overridden instead to the same effect.</p>
+<pre><code class="lang-c#">public override IEnumerator RespondsToPostResolveOnBoard()
+{
+    return true;
+}
+
+public override IEnumerator OnPostResolveOnBoard()
+{
+    // put your code here
+}
 </code></pre><h2 id="special-stat-icons">Special Stat Icons</h2>
 <p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
-<p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour</p>
+<p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour.</p>
 <pre><code class="lang-c#">StatIconInfo myinfo = ...;
 SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
 </code></pre><p><strong>or</strong></p>
@@ -734,7 +821,7 @@ SpecialStatIconManager.Add(MyPlugin.guid, myInfo, typeof(MyStatBehaviour));
 </code></pre><p>Note: you need to be very careful about how complicated the logic is in GetStatValues. This will be called <em>every frame!!</em> If you&#39;re not careful, you could bog the game down substantially.</p>
 <h2 id="special-triggered-abilities">Special Triggered Abilities</h2>
 <p>Special triggered abilities are a lot like regular abilities; however, they are &#39;invisible&#39; to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.</p>
-<p>Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour</p>
+<p>Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour.</p>
 <pre><code class="lang-c#">public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, &quot;Special Ability&quot;, typeof(MySpecialTriggeredAbility)).Id;
 </code></pre><p>And now MyAbilityID can be added to CardInfo objects.</p>
 <h3 id="how-special-triggered-abilities-are-programmed">How special triggered abilities are programmed</h3>
