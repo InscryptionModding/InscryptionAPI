@@ -314,7 +314,7 @@ internal class RenderAdditionalSigils // Modifies how cards are rendered so up t
 
     [HarmonyPrefix, HarmonyPatch(typeof(PixelCardAbilityIcons), nameof(PixelCardAbilityIcons.DisplayAbilities),
         new Type[] { typeof(CardRenderInfo), typeof(PlayableCard) })]
-    private static void AddExtraPixelAbilityIcons(CardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
+    private static void AddExtraPixelAbilityIcons(PixelCardAbilityIcons __instance) => AddPixelIconSlotsToCard(__instance.transform);
 
     [HarmonyPrefix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.UpdateAbilityIcons))]
     private static void AddExtraAbilityIcons(CardAbilityIcons __instance)

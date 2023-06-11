@@ -11,8 +11,9 @@ internal class SteelTrapFix
 {
     [HarmonyPatch(typeof(SteelTrap), nameof(SteelTrap.OnTakeDamage))]
     [HarmonyPostfix]
-    private static IEnumerator AlwaysResolveOnBoard(IEnumerator enumerator, SteelTrap __instance)
+    private static IEnumerator UseAlternatePortrait(IEnumerator enumerator, SteelTrap __instance)
     {
+        // vanilla code for base Trap cards
         if (__instance.Card.Info.IsBaseGameCard() && __instance.Card.name.Contains("Trap"))
         {
             yield return enumerator;
@@ -23,7 +24,7 @@ internal class SteelTrapFix
         AudioController.Instance.PlaySound3D("sacrifice_default", MixerGroup.TableObjectsSFX, __instance.Card.transform.position);
         yield return new WaitForSeconds(0.1f);
         __instance.Card.Anim.LightNegationEffect();
-        
+
         if (__instance.Card.HasAlternatePortrait())
             __instance.Card.SwitchToAlternatePortrait();
 

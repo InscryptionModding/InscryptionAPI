@@ -1,5 +1,6 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -20,9 +21,6 @@ public static class GreenGemStatIconFix
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("GreenGem.png", typeof(GreenGemStatIconFix).Assembly);
         greenGemStatIcon.iconGraphic = baseTexture;
         greenGemStatIcon.rulebookDescription = "The power of this card is equal to the number of Green Gems that the owner has on their side of the table.";
-        greenGemStatIcon.metaCategories = new List<AbilityMetaCategory>()
-        {
-            AbilityMetaCategory.Part1Rulebook
-        };
+        greenGemStatIcon.AddMetaCategories(AbilityMetaCategory.Part1Rulebook);
     }
 }
