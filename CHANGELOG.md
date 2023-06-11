@@ -1,8 +1,5 @@
 # Changelog
 
-## 2.x.x
-- FullSpecialTriggeredAbility now holds its name and guid
-
 ## 2.13.3
 - Fixed null error when opening card packs in Act 2
 - Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
