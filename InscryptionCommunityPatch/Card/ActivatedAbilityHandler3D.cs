@@ -44,7 +44,7 @@ public class ActivatedAbilityHandler3D : ManagedBehaviour
             PatchPlugin.Logger.LogDebug($"[Handler3D] Updated interactable list: [{interactables.Join(interactable => $"GO [{interactable.gameObject}] Ability [{interactable.Ability}]")}]");
     }
 
-    public void OnDestroy()
+    private void OnDestroy()
     {
         foreach (var interactable in interactables)
         {

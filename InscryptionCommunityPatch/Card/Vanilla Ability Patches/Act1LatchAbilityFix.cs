@@ -25,7 +25,7 @@ public class Act1LatchAbilityFix
     [HarmonyPostfix]
     private static IEnumerator ReEnableSlots(IEnumerator result, BoardManager __instance, List<CardSlot> allTargets)
     {
-        List<CardSlot> validSlots = __instance.currentValidSlots;
+        List<CardSlot> validSlots = new(__instance.currentValidSlots);
         __instance.currentValidSlots = null;
         (__instance.GetComponent<SelectTargetHolder>() ?? __instance.gameObject.AddComponent<SelectTargetHolder>()).isSelectingTarget = true;
         List<CardSlot> toDisable = new();

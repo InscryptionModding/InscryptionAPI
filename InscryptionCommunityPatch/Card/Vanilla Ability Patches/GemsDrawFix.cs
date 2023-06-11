@@ -6,10 +6,9 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Card;
 
 // Fixes the PackMule special ability so it works when used by the player
-[HarmonyPatch]
+[HarmonyPatch(typeof(GemsDraw), nameof(GemsDraw.OnOtherCardResolve))]
 internal class GemsDrawFix
 {
-    [HarmonyPatch(typeof(GemsDraw), nameof(GemsDraw.OnOtherCardResolve))]
     [HarmonyPrefix]
     private static bool FixGemsDraw(GemsDraw __instance, ref IEnumerator __result)
     {

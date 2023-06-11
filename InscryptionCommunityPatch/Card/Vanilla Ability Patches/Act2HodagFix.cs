@@ -18,6 +18,7 @@ internal class Act2HodagFix
             yield break;
         }
 
+        // just copy-pasting vanilla code cause i'm lazy, whoops
         yield return __instance.PreSuccessfulTriggerSequence();
         yield return new WaitForSeconds(0.3f);
 

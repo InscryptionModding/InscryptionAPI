@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+using HarmonyLib;
+using UnityEngine;
 
 namespace InscryptionAPI.Resource;
 
@@ -11,7 +12,16 @@ public static class ResourceBankManager
         public bool OverrideExistingResource;
     }
 
-    private static List<ResourceData> customResources = new List<ResourceData>();
+    private static readonly List<ResourceData> CustomResources = new();
+
+    public static ResourceData AddDecal(string pluginGUID, string resourceName, Texture decalTexture, bool overrideExistingAsset = false)
+    {
+        return Add(pluginGUID, new ResourceBank.Resource()
+        {
+            path = $"Art/Cards/Decals/{resourceName}",
+            asset = decalTexture
+        }, overrideExistingAsset);
+    }
 
     public static ResourceData Add(string pluginGUID, string path, UnityObject unityObject, bool overrideExistingAsset = false)
     {
@@ -35,18 +45,18 @@ public static class ResourceBankManager
             return null;
         }
 
-        ResourceData resourceData = new ResourceData
+        ResourceData resourceData = new()
         {
             PluginGUID = pluginGUID,
             Resource = resource,
             OverrideExistingResource = overrideExistingAsset
         };
 
-        customResources.Add(resourceData);
+        CustomResources.Add(resourceData);
         return resourceData;
     }
 
-    [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
+    [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
     public class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)
@@ -56,12 +66,10 @@ public static class ResourceBankManager
             {
                 string resourcePath = resource.path;
                 if (!existingPaths.ContainsKey(resourcePath))
-                {
                     existingPaths[resourcePath] = resource;
-                }
             }
 
-            foreach (ResourceData resourceData in customResources)
+            foreach (ResourceData resourceData in CustomResources)
             {
                 string resourcePath = resourceData.Resource.path;
                 if (existingPaths.TryGetValue(resourcePath, out ResourceBank.Resource resource))
