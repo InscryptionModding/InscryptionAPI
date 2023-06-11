@@ -1,8 +1,5 @@
 # Changelog
 
-## 2.x.x
-- Support for costs to change during battles using CardModifications or a patch
-
 ## 2.13.3
 - Fixed null error when opening card packs in Act 2
 - Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
