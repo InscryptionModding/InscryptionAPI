@@ -12626,6 +12626,12 @@ references:
   commentId: M:InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String,System.String,System.Single)
   fullName: InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String, System.String, System.Single)
   nameWithType: GramophoneManager.AddTrack(String, String, Single)
+- uid: InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String,UnityEngine.AudioClip,System.Single)
+  name: AddTrack(String, AudioClip, Single)
+  href: api/InscryptionAPI.Sound.GramophoneManager.html#InscryptionAPI_Sound_GramophoneManager_AddTrack_System_String_UnityEngine_AudioClip_System_Single_
+  commentId: M:InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String,UnityEngine.AudioClip,System.Single)
+  fullName: InscryptionAPI.Sound.GramophoneManager.AddTrack(System.String, UnityEngine.AudioClip, System.Single)
+  nameWithType: GramophoneManager.AddTrack(String, AudioClip, Single)
 - uid: InscryptionAPI.Sound.GramophoneManager.AddTrack*
   name: AddTrack
   href: api/InscryptionAPI.Sound.GramophoneManager.html#InscryptionAPI_Sound_GramophoneManager_AddTrack_
