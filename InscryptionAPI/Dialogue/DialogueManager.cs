@@ -1,5 +1,9 @@
+using DiskCardGame;
+using GBC;
 using HarmonyLib;
+using System.Collections;
 using UnityEngine;
+using static DiskCardGame.TextDisplayer;
 
 namespace InscryptionAPI.Dialogue;
 
@@ -61,6 +65,25 @@ public static class DialogueManager
 
         Add(pluginGUID, ev);
         return ev;
+    }
+
+    public static IEnumerator PlayDialogueEventSafe(string eventId,
+        MessageAdvanceMode advanceMode = MessageAdvanceMode.Auto,
+        EventIntersectMode intersectMode = EventIntersectMode.Wait,
+        DialogueSpeaker speaker = null, TextBox.Style style = TextBox.Style.Neutral,
+        TextBox.ScreenPosition screenPosition = TextBox.ScreenPosition.OppositeOfPlayer,
+        string[] variableStrings = null,
+        Action<DialogueEvent.Line> newLineCallback = null,
+        bool adjustAudioVolume = true)
+    {
+        if (SaveManager.SaveFile.IsPart2)
+        {
+            yield return DialogueHandler.Instance.PlayDialogueEvent(eventId, style, speaker, variableStrings, screenPosition, adjustAudioVolume);
+        }
+        else
+        {
+            yield return TextDisplayer.Instance.PlayDialogueEvent(eventId, advanceMode, intersectMode, variableStrings, newLineCallback);
+        }
     }
 
     #region Patches

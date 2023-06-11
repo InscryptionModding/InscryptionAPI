@@ -3,6 +3,8 @@ using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Resource;
+using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +13,28 @@ namespace InscryptionAPI.PixelCard;
 [HarmonyPatch]
 public static class PixelCardManager // code courtesy of Nevernamed and James/kelly
 {
+    public class PixelDecalData
+    {
+        public string PluginGUID;
+        public string TextureName;
+        public Texture2D DecalTexture;
+    }
+
+    public static readonly List<PixelDecalData> CustomPixelDecals = new();
+
+    public static PixelDecalData AddGBCDecal(string pluginGUID, string textureName, Texture2D texture)
+    {
+        PixelDecalData result =  new()
+        {
+            PluginGUID = pluginGUID,
+            TextureName = textureName,
+            DecalTexture = texture
+        };
+        if (!CustomPixelDecals.Contains(result))
+            CustomPixelDecals.Add(result);
+        
+        return result;
+    }
     internal static void Initialise()
     {
         PixelGemifiedDecal = TextureHelper.GetImageAsSprite("PixelGemifiedDecal.png", typeof(PixelCardManager).Assembly, TextureHelper.SpriteType.PixelDecal);
@@ -19,84 +43,107 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         PixelGemifiedBlueLit = TextureHelper.GetImageAsSprite("PixelGemifiedBlue.png", typeof(PixelCardManager).Assembly, TextureHelper.SpriteType.PixelDecal);
     }
 
-    [HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.DisplayInfo))]
-    [HarmonyPostfix]
-    private static void DecalPatches(PixelCardDisplayer __instance)
-    {
-        if (__instance.gameObject.name == "PixelSnap" || SceneManager.GetActiveScene().name == "GBC_CardBattle" && __instance.gameObject.name != "CardPreviewPanel")
-            AddDecalToCard(in __instance);
-    }
-
     [HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.UpdateBackground))]
-    public class PixelCardUpdateBackgroundPatch
+    [HarmonyPostfix]
+    private static void PixelUpdateBackground(PixelCardDisplayer __instance, CardInfo info)
     {
-        [HarmonyPostfix]
-        public static void PixelUpdateBackground(PixelCardDisplayer __instance, CardInfo info)
+        foreach (CardAppearanceBehaviour.Appearance appearance in info.appearanceBehaviour)
         {
-            foreach (CardAppearanceBehaviour.Appearance appearance in info.appearanceBehaviour)
-            {
-                CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((CardAppearanceBehaviourManager.FullCardAppearanceBehaviour x) => x.Id == appearance);
-                if (fullApp != null && fullApp.AppearanceBehaviour != null)
-                {
-                    Component behav = __instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
-                    if (behav == null) behav = __instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
+            CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((CardAppearanceBehaviourManager.FullCardAppearanceBehaviour x) => x.Id == appearance);
+            if (fullApp?.AppearanceBehaviour == null)
+                continue;
 
-                    if (behav is PixelAppearanceBehaviour && (behav as PixelAppearanceBehaviour).OverrideBackground() != null)
-                    {
-                        Sprite back = (behav as PixelAppearanceBehaviour).OverrideBackground();
-                        SpriteRenderer component = __instance.GetComponent<SpriteRenderer>();
-                        if (component != null)
-                            component.sprite = back;
-                    }
-                    UnityObject.Destroy(behav);
-                }
+            Component behav = __instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
+            behav ??= __instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
+
+            Sprite back = (behav as PixelAppearanceBehaviour)?.OverrideBackground();
+            if (back != null)
+            {
+                SpriteRenderer component = __instance.GetComponent<SpriteRenderer>();
+                if (component != null)
+                    component.sprite = back;
             }
+            UnityObject.Destroy(behav);
         }
     }
 
-    private static void AddDecalToCard(in PixelCardDisplayer instance)
+    [HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.DisplayInfo))]
+    [HarmonyPostfix]
+    private static void DecalPatches(PixelCardDisplayer __instance, PlayableCard playableCard)
     {
-        if (instance && instance.gameObject && instance.gameObject.transform && instance.gameObject.transform.Find("CardElements"))
+        if (__instance.gameObject.name == "PixelSnap" || SceneManager.GetActiveScene().name == "GBC_CardBattle" && __instance.gameObject.name != "CardPreviewPanel")
+            AddDecalToCard(in __instance, playableCard);
+    }
+
+    private static void AddDecalToCard(in PixelCardDisplayer instance, PlayableCard playableCard)
+    {
+        Transform cardElements = instance?.gameObject?.transform?.Find("CardElements");
+
+        if (cardElements == null)
+            return;
+
+        List<Transform> existingDecals = new();
+
+        // clear current decals and appearances
+        foreach (Transform child in cardElements.transform)
         {
-            Transform cardElements = instance.gameObject.transform.Find("CardElements");
+            if (child?.gameObject?.GetComponent<DecalIdentifier>())
+                existingDecals.Add(child);
+        }
+        for (int i = existingDecals.Count - 1; i >= 0; i--)
+        {
+            existingDecals[i].parent = null;
+            UnityObject.Destroy(existingDecals[i].gameObject);
+        }
 
-            List<Transform> existingDecals = new();
-            foreach (Transform child in cardElements.transform)
-            {
-                if (child && child.gameObject && child.gameObject.GetComponent<DecalIdentifier>())
-                    existingDecals.Add(child);
-            }
-            for (int i = existingDecals.Count - 1; i >= 0; i--)
-            {
-                existingDecals[i].parent = null;
-                UnityObject.Destroy(existingDecals[i].gameObject);
-            }
+        if (instance.info.Gemified && cardElements.Find("PixelGemifiedBorder") == null)
+        {
+            GameObject border = CreateDecal(in cardElements, PixelGemifiedDecal, "PixelGemifiedBorder");
+            PixelGemificationBorder gemBorder = border.AddComponent<PixelGemificationBorder>();
+            gemBorder.BlueGemLit = CreateDecal(in cardElements, PixelGemifiedBlueLit, "PixelGemifiedBlue");
+            gemBorder.GreenGemLit = CreateDecal(in cardElements, PixelGemifiedGreenLit, "PixelGemifiedGreen");
+            gemBorder.OrangeGemLit = CreateDecal(in cardElements, PixelGemifiedOrangeLit, "PixelGemifiedOrange");
+        }
 
-            if (instance.info.Gemified && cardElements.Find("PixelGemifiedBorder") == null)
-            {
-                GameObject border = CreateDecal(in cardElements, PixelGemifiedDecal, "PixelGemifiedBorder");
-                PixelGemificationBorder gemBorder = border.AddComponent<PixelGemificationBorder>();
-                gemBorder.BlueGemLit = CreateDecal(in cardElements, PixelGemifiedBlueLit, "PixelGemifiedBlue");
-                gemBorder.GreenGemLit = CreateDecal(in cardElements, PixelGemifiedGreenLit, "PixelGemifiedGreen");
-                gemBorder.OrangeGemLit = CreateDecal(in cardElements, PixelGemifiedOrangeLit, "PixelGemifiedOrange");
-            }
+        foreach (CardAppearanceBehaviour.Appearance appearance in instance.info.appearanceBehaviour)
+        {
+            CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((x) => x.Id == appearance);
+            if (fullApp?.AppearanceBehaviour == null)
+                continue;
 
-            foreach (CardAppearanceBehaviour.Appearance appearance in instance.info.appearanceBehaviour)
+            Component behav = instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
+            behav ??= instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
+
+            if (behav is PixelAppearanceBehaviour)
             {
-                CardAppearanceBehaviourManager.FullCardAppearanceBehaviour fullApp = CardAppearanceBehaviourManager.AllAppearances.Find((x) => x.Id == appearance);
-                if (fullApp != null && fullApp.AppearanceBehaviour != null)
-                {
-                    Component behav = instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
-                    if (behav == null) behav = instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
-                    if (behav is PixelAppearanceBehaviour)
-                    {
-                        (behav as PixelAppearanceBehaviour).OnAppearanceApplied();
-                        if ((behav as PixelAppearanceBehaviour).PixelAppearance() != null && cardElements.Find(appearance.ToString() + "_Displayer") == null)
-                            CreateDecal(in cardElements, (behav as PixelAppearanceBehaviour).PixelAppearance(), appearance.ToString() + "_Displayer");
-                    }
-                    UnityObject.Destroy(behav);
-                }
+                (behav as PixelAppearanceBehaviour).OnAppearanceApplied();
+                Sprite behavAppearance = (behav as PixelAppearanceBehaviour).PixelAppearance();
+                Transform behavTransform = cardElements.Find(appearance.ToString() + "_Displayer");
+
+                if (behavAppearance != null && behavTransform == null)
+                    CreateDecal(in cardElements, behavAppearance, appearance.ToString() + "_Displayer");
             }
+            UnityObject.Destroy(behav);
+        }
+
+        if (playableCard == null)
+            return;
+
+        List<Texture2D> decalTextures = new();
+        foreach (CardModificationInfo mod in playableCard.Info.Mods)
+        {
+            foreach (string decalId in mod.DecalIds)
+            {
+                PixelDecalData data = CustomPixelDecals.Find(x => x.TextureName == decalId);
+
+                if (data != null)
+                    decalTextures.Add(data.DecalTexture);
+            }
+        }
+        foreach (Texture2D decalTex in decalTextures)
+        {
+            Sprite decalSprite = TextureHelper.ConvertTexture(decalTex, TextureHelper.SpriteType.PixelDecal);
+            CreateDecal(in cardElements, decalSprite, decalTex.name);
         }
     }
     private static GameObject CreateDecal(in Transform cardElements, Sprite sprite, string name)
@@ -111,11 +158,11 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         sr.sprite = sprite;
 
         // Find sorting group values
-        if (cardElements.Find("Portrait") != null && cardElements.Find("Portrait").gameObject && cardElements.Find("Portrait").gameObject.GetComponent<SpriteRenderer>())
+        SpriteRenderer sortingReference = cardElements?.Find("Portrait")?.gameObject?.GetComponent<SpriteRenderer>();
+        if (sortingReference != null)
         {
-            SpriteRenderer sortingReference = cardElements.Find("Portrait").gameObject.GetComponent<SpriteRenderer>();
-            sr.sortingLayerID = sortingReference?.sortingLayerID ?? 0;
-            sr.sortingOrder = sortingReference?.sortingOrder + 100 ?? 0;
+            sr.sortingLayerID = sortingReference.sortingLayerID;
+            sr.sortingOrder = sortingReference.sortingOrder;
         }
 
         return decal;
