@@ -37,7 +37,13 @@ public class TempModPixelSigilsFix
             return info.Abilities;
 
         List<Ability> abilities = new(info.Abilities);
-        List<Ability> tempAbilities = AbilitiesUtil.GetAbilitiesFromMods(card.RenderInfo.temporaryMods);
+        List<Ability> tempAbilities = new();
+        
+        foreach (CardModificationInfo mod in card.RenderInfo.temporaryMods)
+        {
+            if (mod.singletonId != "paint") // ignore abilities added by Magnificus
+                tempAbilities.AddRange(mod.abilities);
+        }
         abilities.AddRange(tempAbilities);
         abilities = AbilitiesUtil.RemoveNonDistinctNonStacking(abilities);
         abilities.RemoveAll((Ability x) => card.RenderInfo.temporaryMods.Exists((CardModificationInfo m) => m.negateAbilities.Contains(x)));

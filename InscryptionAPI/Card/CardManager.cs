@@ -343,16 +343,18 @@ public static class CardManager
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
 
+        // clone the mods too
         CardInfo result = (CardInfo)__result;
-        if (__instance.Mods.Any(x => x.gemify))
-            result.Mods.Add(new() { gemify = true });
+        result.Mods = new(__instance.Mods);
+    }
 
-        if (__instance.ModPrefixIs(DeathCardManager.CardPrefix))
-        {
-            CardModificationInfo death = __instance.Mods.Find(x => x.HasDeathCardInfo());
-            if (death != null)
-                result.Mods.Add(new() { singletonId = death.singletonId, deathCardInfo = death.deathCardInfo });
-        }
+    [HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ModifyCard))]
+    [HarmonyPrefix]
+    private static bool ModifyCardDontAddDupes(CardInfo card, CardModificationInfo mod)
+    {
+        // prevent duplicate mods from being added as a result of ClonePostfix
+        // hopefully won't cause any problems, cause otherwise we'll probably need a transpiler or something like that oh joy
+        return !card.Mods.Contains(mod);
     }
 
     [HarmonyILManipulator]
