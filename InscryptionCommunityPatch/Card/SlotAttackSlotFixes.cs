@@ -28,7 +28,7 @@ internal class SlotAttackSlotPatches
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         // we want to slowly narrow our search until we find exactly where we want to insert our code
         for (int i = 0; i < codes.Count; i++)
