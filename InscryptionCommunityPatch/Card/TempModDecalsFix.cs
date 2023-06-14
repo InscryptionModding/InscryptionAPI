@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -67,7 +68,7 @@ internal class TempModDecalsFix
             decalIds = tempMod.DecalIds,
             singletonId = tempMod.singletonId
         };
-
+        newMod.SetTemporaryDecal();
         card.Info.Mods.Add(newMod);
     }
 }

@@ -18,6 +18,7 @@ public static class CardModificationInfoExtensions
         return mod;
     }
     #endregion
+
     #region Setters
     public static CardModificationInfo SetNameReplacement(this CardModificationInfo mod, string name = null)
     {
@@ -82,6 +83,12 @@ public static class CardModificationInfoExtensions
     }
 
     #endregion
+
+    /// <summary>
+    /// Used by the PixelCardManager to remove temporary decal mods, since it's not done automatically.
+    /// </summary>
+    public static void SetTemporaryDecal(this CardModificationInfo mod) => mod.SetExtendedProperty("API:TemporaryDecal", true);
+    public static bool IsTemporaryDecal(this CardModificationInfo mod) => mod.GetExtendedPropertyAsBool("API:TemporaryDecal") ?? false;
 
     #region Singleton ID
     public static bool HasCustomCostId(this CardModificationInfo mod, string costName) => mod.singletonId.HasCustomCostId(costName);

@@ -230,8 +230,8 @@ public static class AbilityManager
         var gameAsm = typeof(AbilityInfo).Assembly;
         foreach (var ability in Resources.LoadAll<AbilityInfo>("Data/Abilities"))
         {
-            var name = ability.ability.ToString();
-            if (ability.activated || ability.metaCategories.Exists(x => x == AbilityMetaCategory.Part1Modular || x == AbilityMetaCategory.Part3Modular))
+            string name = ability.ability.ToString();
+            if (Part2ModularAbilities.BasePart2Modular.Contains(ability.ability))
                 ability.SetDefaultPart2Ability();
 
             baseGame.Add(new FullAbility
@@ -246,7 +246,7 @@ public static class AbilityManager
 
         return baseGame;
     }
-
+    
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>

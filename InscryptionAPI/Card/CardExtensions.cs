@@ -389,8 +389,8 @@ public static class CardExtensions
     /// Sets the base attack and health of the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="baseAttack">The base attack for the card</param>
-    /// <param name="baseHealth">The base health for the card</param>
+    /// <param name="baseAttack">The base attack for the card.</param>
+    /// <param name="baseHealth">The base health for the card.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetBaseAttackAndHealth(this CardInfo info, int? baseAttack = 0, int? baseHealth = 0)
     {
@@ -400,6 +400,18 @@ public static class CardExtensions
         if (baseHealth.HasValue)
             info.baseHealth = baseHealth.Value;
 
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the Card Temple for the card. Used in Act 2 and in Act 1 for certain card choice nodes.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="temple">The Card Temple to use.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetCardTemple(this CardInfo info, CardTemple temple)
+    {
+        info.temple = temple;
         return info;
     }
 

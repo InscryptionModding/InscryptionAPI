@@ -50,6 +50,7 @@ public static class AbilityExtensions
 
         return fullAbility.BaseRulebookDescription;
     }
+
     /// <summary>
     /// Sets the icon texture for the ability.
     /// </summary>
@@ -264,6 +265,7 @@ public static class AbilityExtensions
         abilityInfo.activated = activated;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is passive (will not trigger).
     /// </summary>
@@ -275,6 +277,7 @@ public static class AbilityExtensions
         abilityInfo.passive = passive;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability can be used by the opponent.
     /// </summary>
@@ -286,6 +289,7 @@ public static class AbilityExtensions
         abilityInfo.opponentUsable = opponentUsable;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is a conduit.
     /// </summary>
@@ -297,6 +301,7 @@ public static class AbilityExtensions
         abilityInfo.conduit = conduit;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is a conduit cell.
     /// </summary>

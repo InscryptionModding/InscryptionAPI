@@ -270,5 +270,6 @@ public class PixelPlayableCardArray : ManagedBehaviour
         {
             card.gameObject.SetActive(enabled);
         }
+        TurnManager.Instance.PlayerCanInitiateCombat = enabled;
     }
 }

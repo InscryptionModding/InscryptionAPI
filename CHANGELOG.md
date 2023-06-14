@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.14.1
+- Custom tribes are now given a placeholder reward cardback if one isn't provided
+- Fixed visual error when flipping a custom tribe choice for a tribe without a custom cardback
+- Fixed pixel stat icons not hiding the underlying stat number
+- Fixed ChooseTarget null exception
+- Fixed opponent cards with mods not being created properly (eg Bounty Hunters)
+- Fixed being able to ring the bell in Part 2 during the Tutor sequence
+- Fixed GBC packs not checking for onePerDeck when selecting possible cards
+- Fixed decals added via temporary mods not clearing from cards in Act 2
+- Changed what vanilla abilities are marked as Act2Modular (see the Part2ModularAbilities file for the full list)
+- Removed leftover debug info during start-up
+- Added CardInfo.SetCardTemple()
+- Added CardModInfo extension methods SetTemporaryDecal and IsTemporaryDecal (primarily for internal use, maybe you'll find a use for it)
+- Added GBCPackManager.ModifyGBCPacks function for altering what cards can be found in GBC card packs
+
 ## 2.14.0
 - Fixed Sniper duplicating attacks from sigils like Double Strike
 - Fixed interaction between Waterborne and Fledgling in Act 2

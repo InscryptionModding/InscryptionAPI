@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using DiskCardGame;
@@ -145,7 +145,6 @@ internal static class ChangeCardCostGetter
         return false;
     }
     
-    [HarmonyDebug]
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), HarmonyPrefix]
     public static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
     {
