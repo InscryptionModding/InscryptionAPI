@@ -280,7 +280,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "cMk3YzVjIzK5se5pwirIHGEljpgGy8YrYGKW2ZTfKUM="
+          "hash": "nE1vH5ZNeIp6UNtSL3JwcOAR8HEB4jGf85PXIOefd/A="
         }
       },
       "is_incremental": false,
@@ -346,7 +346,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardExtensions.html",
-          "hash": "zkXRI9J9OCvlIT08WLKRg1azfTUkofw+vENyhE06dTI="
+          "hash": "gG+MbK6XJBAt44BQRpEd6J8DvXlBWoK50f6hQE03mp0="
         }
       },
       "is_incremental": false,
@@ -358,7 +358,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardManager.html",
-          "hash": "aLEGNxaEbkkdbGWy39VnTHmdEjh5oSgD/kuKPSB/hqU="
+          "hash": "El0LbGRPpfRGEr/SIjUFNgxImRMHIM7jLAzpUwj75V4="
         }
       },
       "is_incremental": false,
@@ -370,7 +370,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardModificationInfoExtensions.html",
-          "hash": "JGRLrwq/IrYG7bEUneN1nhcJKJly/jQrmC/QA+qt2ZM="
+          "hash": "bWDXEofGTzPn1XTdz6jwRwPmqjkuE4evY5pN+YZIkoM="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.TribeInfo.html",
-          "hash": "uK0jp0PuEx3TE3iea2GsPT3xA7rrA4iZ1FRrGrb+UWU="
+          "hash": "GXjSkVa+rWQfGUI0JrPsmgNGemvhx/RvLf3ZpqC8W9Y="
         }
       },
       "is_incremental": false,
@@ -550,7 +550,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.html",
-          "hash": "B5ma7k1M7P9Vu3luiJ7jDCljJD/WZMfFKEebZcDSjfs="
+          "hash": "0Pj34DQo/XiUaXVca8Jb3w3xye518DYbPmcJ7r8sGoQ="
         }
       },
       "is_incremental": false,
@@ -1090,7 +1090,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "QVVAgL1zkjvMAAq1CSj0oIgbjgpPIF8+oArIZwhwL1I="
+          "hash": "tuteUOwXeYRulFnop9IMIAIEmfZpa5RTz1oDMkxJuiY="
         }
       },
       "is_incremental": false,
@@ -1566,6 +1566,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.PixelCard.GBCPackManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.PixelCard.GBCPackManager.html",
+          "hash": "YIlpOzZD2W0CUc9HSvUJxRTxa+TLWm10X6my6+FtyuI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.yml",
       "output": {
         ".html": {
@@ -1582,7 +1594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.PixelCard.PixelCardManager.PixelDecalData.html",
-          "hash": "Pb+3HA6x5aG2KrnK/eES2Ntd+cwqlgwureSFEbtnZ1k="
+          "hash": "7WRutoBPp+GiZRotApk8k58ncIMh9rQJntRTfCa5rg4="
         }
       },
       "is_incremental": false,
@@ -1594,7 +1606,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.PixelCard.PixelCardManager.html",
-          "hash": "pJWQmaFRTpzP5RAa8mvXmRqPuaQf/FiVVEXRJ/hdY6c="
+          "hash": "E+hfVj1SZOZWFaBqC+jdVRpAAH/kPP/PQgooT8Q5Od4="
         }
       },
       "is_incremental": false,
@@ -1618,7 +1630,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.PixelCard.html",
-          "hash": "nMqgLrEUNgglsaIPfZT3zFBPAQ26MP2CznY+wK2lR0g="
+          "hash": "UTvVt7gnBeaJpNB2JlaD/2cLZTK5DIL45mNlKxv95Eg="
         }
       },
       "is_incremental": false,
@@ -2458,7 +2470,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "WfWQWu+crkZknwslCrZRWSR3jjB+s4q8P6lqkutkElo="
+          "hash": "lt3HJryPQRFfwAbqc8az4vmy+qMN2Gu2lNHIIAszqWQ="
         }
       },
       "is_incremental": false,
@@ -2521,7 +2533,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 210,
+          "total_file_count": 211,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

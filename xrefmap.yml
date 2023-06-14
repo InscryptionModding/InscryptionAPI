@@ -4033,6 +4033,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetBonesCost
   nameWithType: CardExtensions.SetBonesCost
+- uid: InscryptionAPI.Card.CardExtensions.SetCardTemple(DiskCardGame.CardInfo,CardTemple)
+  name: SetCardTemple(CardInfo, CardTemple)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCardTemple_DiskCardGame_CardInfo_CardTemple_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetCardTemple(DiskCardGame.CardInfo,CardTemple)
+  fullName: InscryptionAPI.Card.CardExtensions.SetCardTemple(DiskCardGame.CardInfo, CardTemple)
+  nameWithType: CardExtensions.SetCardTemple(CardInfo, CardTemple)
+- uid: InscryptionAPI.Card.CardExtensions.SetCardTemple*
+  name: SetCardTemple
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCardTemple_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetCardTemple
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetCardTemple
+  nameWithType: CardExtensions.SetCardTemple
 - uid: InscryptionAPI.Card.CardExtensions.SetCost(DiskCardGame.CardInfo,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},List{DiskCardGame.GemType})
   name: SetCost(CardInfo, Nullable<Int32>, Nullable<Int32>, Nullable<Int32>, List<GemType>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCost_DiskCardGame_CardInfo_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__List_DiskCardGame_GemType__
@@ -5061,6 +5074,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IdWithoutProperties
   nameWithType: CardModificationInfoExtensions.IdWithoutProperties
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal(DiskCardGame.CardModificationInfo)
+  name: IsTemporaryDecal(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IsTemporaryDecal_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.IsTemporaryDecal(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal*
+  name: IsTemporaryDecal
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_IsTemporaryDecal_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.IsTemporaryDecal
+  nameWithType: CardModificationInfoExtensions.IsTemporaryDecal
 - uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetAttackAndHealth(DiskCardGame.CardModificationInfo,System.Int32,System.Int32)
   name: SetAttackAndHealth(CardModificationInfo, Int32, Int32)
   href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetAttackAndHealth_DiskCardGame_CardModificationInfo_System_Int32_System_Int32_
@@ -5232,6 +5258,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetSingletonId
   nameWithType: CardModificationInfoExtensions.SetSingletonId
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal(DiskCardGame.CardModificationInfo)
+  name: SetTemporaryDecal(CardModificationInfo)
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetTemporaryDecal_DiskCardGame_CardModificationInfo_
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal(DiskCardGame.CardModificationInfo)
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal(DiskCardGame.CardModificationInfo)
+  nameWithType: CardModificationInfoExtensions.SetTemporaryDecal(CardModificationInfo)
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal*
+  name: SetTemporaryDecal
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_SetTemporaryDecal_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.SetTemporaryDecal
+  nameWithType: CardModificationInfoExtensions.SetTemporaryDecal
 - uid: InscryptionAPI.Card.CardModificationInfoManager
   name: CardModificationInfoManager
   href: api/InscryptionAPI.Card.CardModificationInfoManager.html
@@ -11712,6 +11751,18 @@ references:
   commentId: N:InscryptionAPI.PixelCard
   fullName: InscryptionAPI.PixelCard
   nameWithType: InscryptionAPI.PixelCard
+- uid: InscryptionAPI.PixelCard.GBCPackManager
+  name: GBCPackManager
+  href: api/InscryptionAPI.PixelCard.GBCPackManager.html
+  commentId: T:InscryptionAPI.PixelCard.GBCPackManager
+  fullName: InscryptionAPI.PixelCard.GBCPackManager
+  nameWithType: GBCPackManager
+- uid: InscryptionAPI.PixelCard.GBCPackManager.ModifyGBCPacks
+  name: ModifyGBCPacks
+  href: api/InscryptionAPI.PixelCard.GBCPackManager.html#InscryptionAPI_PixelCard_GBCPackManager_ModifyGBCPacks
+  commentId: E:InscryptionAPI.PixelCard.GBCPackManager.ModifyGBCPacks
+  fullName: InscryptionAPI.PixelCard.GBCPackManager.ModifyGBCPacks
+  nameWithType: GBCPackManager.ModifyGBCPacks
 - uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour
   name: PixelAppearanceBehaviour
   href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html
