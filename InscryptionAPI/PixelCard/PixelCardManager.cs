@@ -6,6 +6,7 @@ using InscryptionAPI.Helpers;
 using InscryptionAPI.Resource;
 using Mono.Cecil;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,6 +45,12 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         PixelGemifiedBlueLit = TextureHelper.GetImageAsSprite("PixelGemifiedBlue.png", typeof(PixelCardManager).Assembly, TextureHelper.SpriteType.PixelDecal);
     }
 
+    [HarmonyPostfix, HarmonyPatch(typeof(CardAppearanceBehaviour), nameof(CardAppearanceBehaviour.Card), MethodType.Getter)]
+    private static void GetCorrectCard(CardAppearanceBehaviour __instance, ref DiskCardGame.Card __result)
+    {
+        if (SaveManager.SaveFile.IsPart2)
+            __result = __instance.GetComponentInParent<DiskCardGame.Card>();
+    }
     [HarmonyPatch(typeof(PixelBoardManager), nameof(PixelBoardManager.CleanUp))]
     [HarmonyPostfix]
     private static IEnumerator ClearTempDecals(IEnumerator enumerator)
@@ -92,7 +99,6 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
     private static void AddDecalToCard(in PixelCardDisplayer instance, PlayableCard playableCard)
     {
         Transform cardElements = instance?.gameObject?.transform?.Find("CardElements");
-
         if (cardElements == null)
             return;
 
@@ -136,6 +142,10 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
 
                 if (behavAppearance != null && behavTransform == null)
                     CreateDecal(in cardElements, behavAppearance, appearance.ToString() + "_Displayer");
+                // override portrait
+                Sprite overridePortrait = (behav as PixelAppearanceBehaviour).OverridePixelPortrait();
+                if (overridePortrait != null)
+                    instance.SetPortrait(overridePortrait);
             }
             UnityObject.Destroy(behav);
         }

@@ -44,19 +44,19 @@ public static class CostProperties
         private PlayableCard playableCard;
         private int cachedBloodCost = -1;
         private int cachedBoneCost = -1;
-        private List<GemType> cachedGemsCost = new List<GemType>();
+        private readonly List<GemType> cachedGemsCost = new();
 
         private void Awake()
         {
             playableCard = GetComponent<PlayableCard>();
         }
     
-        private void LateUpdate()
+        public void LateUpdate()
         {
             bool refreshCost = DidCostsChangeThisFrame();
             if (refreshCost)
             {
-                playableCard.RenderCard();
+                playableCard?.RenderCard();
             }
         }
     
@@ -64,21 +64,21 @@ public static class CostProperties
         {
             bool refreshCost = false;
 
-            int bloodCost = playableCard.BloodCost();
+            int bloodCost = playableCard?.BloodCost() ?? 0;
             if (bloodCost != cachedBloodCost)
             {
                 cachedBloodCost = bloodCost;
                 refreshCost = true;
             }
 
-            int boneCost = playableCard.BonesCost();
+            int boneCost = playableCard?.BonesCost() ?? 0;
             if (boneCost != cachedBoneCost)
             {
                 cachedBoneCost = boneCost;
                 refreshCost = true;
             }
 
-            List<GemType> gemsCost = playableCard.GemsCost();
+            List<GemType> gemsCost = playableCard?.GemsCost() ?? new();
             if (!CompareLists(cachedGemsCost, gemsCost))
             {
                 cachedGemsCost.Clear();
@@ -248,7 +248,8 @@ internal static class PlayableCard_Awake
 {
     public static void Postfix(PlayableCard __instance)
     {
-        __instance.gameObject.AddComponent<CostProperties.RefreshCostMonoBehaviour>();
+        if (__instance.GetComponent<CostProperties.RefreshCostMonoBehaviour>() == null)
+            __instance.gameObject.AddComponent<CostProperties.RefreshCostMonoBehaviour>();
     }
 }
 
