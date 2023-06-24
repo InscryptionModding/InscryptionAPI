@@ -1416,7 +1416,6 @@ public static class CardExtensions
             portrait.name = info.name + "_pixelalternateportrait";
 
         info.GetAltPortraits().PixelAlternatePortrait = portrait;
-        InscryptionAPIPlugin.Logger.LogInfo($"altPixel = {info.GetAltPortraits().PixelAlternatePortrait}");
         return info;
     }
     #endregion
