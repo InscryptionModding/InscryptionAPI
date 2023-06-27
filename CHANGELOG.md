@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.14.2
+- Fixed Overclock patch not checking for the correct Acts
+- Fixed appearance behaviour's Card field always returning null in Act 2
+- Added OverridePixelPortrait virtual method to PixelAppearanceBehaviour to allow for changing card portraits in Act 2
+- Added CardInfo.SetPixelAlternatePortrait() and Cardinfo.GetPixelAlternatePortrait() for storing alternate pixel portraits
+- Re-added SetTerrain method without optional bool parameter
+- SwitchToAlternatePortrait and SwitchToDefaultPortrait now work in Act 2 using the above system
+- Removed cost-related error spam in Act 2
+
 ## 2.14.1
 - Custom tribes are now given a placeholder reward cardback if one isn't provided
 - Fixed visual error when flipping a custom tribe choice for a tribe without a custom cardback
