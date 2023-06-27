@@ -3439,6 +3439,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasOpposingCard
   nameWithType: CardExtensions.HasOpposingCard
+- uid: InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait(DiskCardGame.CardInfo)
+  name: HasPixelAlternatePortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasPixelAlternatePortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.HasPixelAlternatePortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait*
+  name: HasPixelAlternatePortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasPixelAlternatePortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasPixelAlternatePortrait
+  nameWithType: CardExtensions.HasPixelAlternatePortrait
 - uid: InscryptionAPI.Card.CardExtensions.HasSpecialAbility(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility)
   name: HasSpecialAbility(CardInfo, SpecialTriggeredAbility)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasSpecialAbility_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility_
@@ -4424,6 +4437,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetPelt
   nameWithType: CardExtensions.SetPelt
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,System.String)
+  name: SetPixelAlternatePortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelAlternatePortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetPixelAlternatePortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetPixelAlternatePortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelAlternatePortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetPixelAlternatePortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetPixelAlternatePortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelAlternatePortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetPixelAlternatePortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetPixelAlternatePortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetPixelAlternatePortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait*
+  name: SetPixelAlternatePortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelAlternatePortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait
+  nameWithType: CardExtensions.SetPixelAlternatePortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetPixelPortrait(DiskCardGame.CardInfo,System.String)
   name: SetPixelPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelPortrait_DiskCardGame_CardInfo_System_String_
@@ -4629,6 +4670,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetTail
   nameWithType: CardExtensions.SetTail
+- uid: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
+  name: SetTerrain(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTerrain_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.SetTerrain(CardInfo)
 - uid: InscryptionAPI.Card.CardExtensions.SetTerrain(DiskCardGame.CardInfo,System.Boolean)
   name: SetTerrain(CardInfo, Boolean)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTerrain_DiskCardGame_CardInfo_System_Boolean_
@@ -4728,6 +4775,18 @@ references:
   commentId: F:InscryptionAPI.Card.CardManager.BaseGameCards
   fullName: InscryptionAPI.Card.CardManager.BaseGameCards
   nameWithType: CardManager.BaseGameCards
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits
+  name: CardManager.CardAltPortraits
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html
+  commentId: T:InscryptionAPI.Card.CardManager.CardAltPortraits
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits
+  nameWithType: CardManager.CardAltPortraits
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
+  name: PixelAlternatePortrait
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_PixelAlternatePortrait
+  commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
+  nameWithType: CardManager.CardAltPortraits.PixelAlternatePortrait
 - uid: InscryptionAPI.Card.CardManager.GetExtendedClass*
   name: GetExtendedClass
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_GetExtendedClass_
@@ -4776,6 +4835,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardManager.New
   nameWithType: CardManager.New
+- uid: InscryptionAPI.Card.CardManager.PixelAlternatePortrait(DiskCardGame.CardInfo)
+  name: PixelAlternatePortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_PixelAlternatePortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardManager.PixelAlternatePortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.PixelAlternatePortrait(DiskCardGame.CardInfo)
+  nameWithType: CardManager.PixelAlternatePortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardManager.PixelAlternatePortrait*
+  name: PixelAlternatePortrait
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_PixelAlternatePortrait_
+  commentId: Overload:InscryptionAPI.Card.CardManager.PixelAlternatePortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.PixelAlternatePortrait
+  nameWithType: CardManager.PixelAlternatePortrait
 - uid: InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)
   name: Remove(CardInfo)
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_Remove_DiskCardGame_CardInfo_
@@ -5411,6 +5483,19 @@ references:
   fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
   nameWithType: CostProperties.RefreshCostMonoBehaviour.CompareLists<T>(List<T>, List<T>)
   nameWithType.vb: CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
+  name: LateUpdate()
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_LateUpdate
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate()
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.LateUpdate()
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate*
+  name: LateUpdate
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_LateUpdate_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.LateUpdate
 - uid: InscryptionAPI.Card.DeathCardManager
   name: DeathCardManager
   href: api/InscryptionAPI.Card.DeathCardManager.html
@@ -11808,6 +11893,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverrideBackground
   nameWithType: PixelAppearanceBehaviour.OverrideBackground
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait
+  name: OverridePixelPortrait()
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OverridePixelPortrait
+  commentId: M:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait()
+  nameWithType: PixelAppearanceBehaviour.OverridePixelPortrait()
+- uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait*
+  name: OverridePixelPortrait
+  href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_OverridePixelPortrait_
+  commentId: Overload:InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.OverridePixelPortrait
+  nameWithType: PixelAppearanceBehaviour.OverridePixelPortrait
 - uid: InscryptionAPI.PixelCard.PixelAppearanceBehaviour.PixelAppearance
   name: PixelAppearance()
   href: api/InscryptionAPI.PixelCard.PixelAppearanceBehaviour.html#InscryptionAPI_PixelCard_PixelAppearanceBehaviour_PixelAppearance
