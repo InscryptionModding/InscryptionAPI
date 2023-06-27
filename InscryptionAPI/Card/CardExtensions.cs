@@ -155,14 +155,12 @@ public static class CardExtensions
             int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
 
             if (IsGemified(card))
-            {
                 originalBloodCost--;
-            }
             
             return originalBloodCost;
         } 
         
-        InscryptionAPIPlugin.Logger.LogError("[BloodCost] Couldn't find Card or CardInfo for blood cost??? How is this possible?");
+        //InscryptionAPIPlugin.Logger.LogError("[BloodCost] Couldn't find Card or CardInfo for blood cost??? How is this possible?");
         return 0;
     }
     
@@ -178,7 +176,7 @@ public static class CardExtensions
             return CostProperties.CostProperties.OriginalBonesCost(card.Info);
         } 
         
-        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for bone cost??? How is this possible?");
+        //InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for bone cost??? How is this possible?");
         return 0;
     }
     
@@ -189,6 +187,9 @@ public static class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this PlayableCard card)
     {
+        if (!card || !card.Info)
+            return new();
+
         List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
         if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
         {
@@ -587,12 +588,26 @@ public static class CardExtensions
         return info;
     }
 
+
     /// <summary>
-    /// Adds the Terrain trait and background to this card.
+    /// Adds the terrain trait and background to this card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetTerrain(this CardInfo info)
+    {
+        info.AddTraits(Trait.Terrain);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
+        return info;
+    }
+    /// <summary>
+    /// Adds the Terrain trait and background to this card, with the option to not use TerrainLayout.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout = true)
+    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout)
     {
         info.AddTraits(Trait.Terrain);
         info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground);
@@ -1272,11 +1287,7 @@ public static class CardExtensions
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
-        return info.SetPixelPortrait(
-            !filterMode.HasValue
-                ? portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait)
-                : portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode.Value)
-        );
+        return info.SetPixelPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
     }
 
     /// <summary>
@@ -1381,6 +1392,46 @@ public static class CardExtensions
         return info;
     }
 
+    #endregion
+
+    #region Extra Alts
+        /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelAlternatePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelAlternatePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+
+    /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the card portrait</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelalternateportrait";
+
+        info.GetAltPortraits().PixelAlternatePortrait = portrait;
+        return info;
+    }
     #endregion
 
     #endregion
@@ -1674,6 +1725,7 @@ public static class CardExtensions
 
     public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
+    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.GetAltPortraits().PixelAlternatePortrait != null;
 
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.
