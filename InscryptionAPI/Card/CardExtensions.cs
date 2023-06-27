@@ -588,12 +588,26 @@ public static class CardExtensions
         return info;
     }
 
+
     /// <summary>
-    /// Adds the Terrain trait and background to this card.
+    /// Adds the terrain trait and background to this card.
+    /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>The same card info so a chain can continue</returns>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetTerrain(this CardInfo info)
+    {
+        info.AddTraits(Trait.Terrain);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
+        return info;
+    }
+    /// <summary>
+    /// Adds the Terrain trait and background to this card, with the option to not use TerrainLayout.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout = true)
+    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout)
     {
         info.AddTraits(Trait.Terrain);
         info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground);
