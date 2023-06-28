@@ -88,7 +88,8 @@ internal static class EvolveDescriptionFixes
     private static void DisplayDescription(CardPreviewPanel instance, CardInfo cardInfo, List<Ability> abilities, PlayableCard card)
     {
         // don't display hidden abilities' descriptions
-        abilities.RemoveAll(x => card.Status.hiddenAbilities.Contains(x));
+        if (card != null)
+            abilities.RemoveAll(x => card.Status.hiddenAbilities.Contains(x));
 
         instance.DisplayDescription(cardInfo, abilities);
         string gbcDescriptionLocalized = GetUpdatedDescription(instance.descriptionText.hiddenText.Text, card, cardInfo, abilities);
