@@ -46,7 +46,7 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(CardAppearanceBehaviour), nameof(CardAppearanceBehaviour.Card), MethodType.Getter)]
-    private static void GetCorrectCard(CardAppearanceBehaviour __instance, ref DiskCardGame.Card __result)
+    private static void GetCorrectCardComponentInAct2(CardAppearanceBehaviour __instance, ref DiskCardGame.Card __result)
     {
         if (SaveManager.SaveFile.IsPart2)
             __result = __instance.GetComponentInParent<DiskCardGame.Card>();
@@ -134,16 +134,16 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
             Component behav = instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
             behav ??= instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
 
-            if (behav is PixelAppearanceBehaviour)
+            if (behav is PixelAppearanceBehaviour pixelBehav)
             {
-                (behav as PixelAppearanceBehaviour).OnAppearanceApplied();
-                Sprite behavAppearance = (behav as PixelAppearanceBehaviour).PixelAppearance();
+                pixelBehav.OnAppearanceApplied();
+                Sprite behavAppearance = pixelBehav.PixelAppearance();
                 Transform behavTransform = cardElements.Find(appearance.ToString() + "_Displayer");
 
                 if (behavAppearance != null && behavTransform == null)
                     CreateDecal(in cardElements, behavAppearance, appearance.ToString() + "_Displayer");
                 // override portrait
-                Sprite overridePortrait = (behav as PixelAppearanceBehaviour).OverridePixelPortrait();
+                Sprite overridePortrait = pixelBehav.OverridePixelPortrait();
                 if (overridePortrait != null)
                     instance.SetPortrait(overridePortrait);
             }
