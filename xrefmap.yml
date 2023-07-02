@@ -3600,6 +3600,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.IsTerrain
   nameWithType: CardExtensions.IsTerrain
+- uid: InscryptionAPI.Card.CardExtensions.IsUsingBlueGem(DiskCardGame.PlayableCard)
+  name: IsUsingBlueGem(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsUsingBlueGem_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsUsingBlueGem(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.IsUsingBlueGem(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.IsUsingBlueGem(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.IsUsingBlueGem*
+  name: IsUsingBlueGem
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsUsingBlueGem_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsUsingBlueGem
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsUsingBlueGem
+  nameWithType: CardExtensions.IsUsingBlueGem
 - uid: InscryptionAPI.Card.CardExtensions.LacksAbility(DiskCardGame.CardInfo,DiskCardGame.Ability)
   name: LacksAbility(CardInfo, Ability)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_LacksAbility_DiskCardGame_CardInfo_DiskCardGame_Ability_
@@ -3832,6 +3845,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.OtherCardIsOnSameSide
   nameWithType: CardExtensions.OtherCardIsOnSameSide
+- uid: InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem(DiskCardGame.PlayableCard)
+  name: OwnerHasBlueGem(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_OwnerHasBlueGem_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.OwnerHasBlueGem(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem*
+  name: OwnerHasBlueGem
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_OwnerHasBlueGem_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.OwnerHasBlueGem
+  nameWithType: CardExtensions.OwnerHasBlueGem
 - uid: InscryptionAPI.Card.CardExtensions.RemoveAbilities(DiskCardGame.CardInfo,DiskCardGame.Ability[])
   name: RemoveAbilities(CardInfo, Ability[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAbilities_DiskCardGame_CardInfo_DiskCardGame_Ability___
@@ -5448,6 +5474,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalBonesCost
   nameWithType: CostProperties.OriginalBonesCost
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost(DiskCardGame.CardInfo)
+  name: OriginalEnergyCost(CardInfo)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalEnergyCost_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost(DiskCardGame.CardInfo)
+  nameWithType: CostProperties.OriginalEnergyCost(CardInfo)
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost*
+  name: OriginalEnergyCost
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalEnergyCost_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalEnergyCost
+  nameWithType: CostProperties.OriginalEnergyCost
 - uid: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost(DiskCardGame.CardInfo)
   name: OriginalGemsCost(CardInfo)
   href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_OriginalGemsCost_DiskCardGame_CardInfo_
@@ -5467,35 +5506,28 @@ references:
   commentId: T:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
   fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
   nameWithType: CostProperties.RefreshCostMonoBehaviour
-- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists*
-  name: CompareLists
-  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_CompareLists_
-  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged*
+  name: GemsChanged
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_GemsChanged_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged
   isSpec: "True"
-  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists
-  nameWithType: CostProperties.RefreshCostMonoBehaviour.CompareLists
-- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists``1(List{``0},List{``0})
-  name: CompareLists<T>(List<T>, List<T>)
-  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_CompareLists__1_List___0__List___0__
-  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists``1(List{``0},List{``0})
-  name.vb: CompareLists(Of T)(List(Of T), List(Of T))
-  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists<T>(List<T>, List<T>)
-  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
-  nameWithType: CostProperties.RefreshCostMonoBehaviour.CompareLists<T>(List<T>, List<T>)
-  nameWithType.vb: CostProperties.RefreshCostMonoBehaviour.CompareLists(Of T)(List(Of T), List(Of T))
-- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
-  name: LateUpdate()
-  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_LateUpdate
-  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
-  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate()
-  nameWithType: CostProperties.RefreshCostMonoBehaviour.LateUpdate()
-- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate*
-  name: LateUpdate
-  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_LateUpdate_
-  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.LateUpdate
-  nameWithType: CostProperties.RefreshCostMonoBehaviour.LateUpdate
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.GemsChanged
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged``1(List{``0},List{``0})
+  name: GemsChanged<T>(List<T>, List<T>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_GemsChanged__1_List___0__List___0__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged``1(List{``0},List{``0})
+  name.vb: GemsChanged(Of T)(List(Of T), List(Of T))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged<T>(List<T>, List<T>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.GemsChanged(Of T)(List(Of T), List(Of T))
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.GemsChanged<T>(List<T>, List<T>)
+  nameWithType.vb: CostProperties.RefreshCostMonoBehaviour.GemsChanged(Of T)(List(Of T), List(Of T))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.playableCard
+  name: playableCard
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html#InscryptionAPI_Card_CostProperties_CostProperties_RefreshCostMonoBehaviour_playableCard
+  commentId: F:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.playableCard
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.playableCard
+  nameWithType: CostProperties.RefreshCostMonoBehaviour.playableCard
 - uid: InscryptionAPI.Card.DeathCardManager
   name: DeathCardManager
   href: api/InscryptionAPI.Card.DeathCardManager.html
@@ -6107,6 +6139,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.OpponentGemsManager.ForceGemsUpdate
   nameWithType: OpponentGemsManager.ForceGemsUpdate
+- uid: InscryptionAPI.Card.OpponentGemsManager.GemsOfType(DiskCardGame.GemType)
+  name: GemsOfType(GemType)
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_GemsOfType_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Card.OpponentGemsManager.GemsOfType(DiskCardGame.GemType)
+  fullName: InscryptionAPI.Card.OpponentGemsManager.GemsOfType(DiskCardGame.GemType)
+  nameWithType: OpponentGemsManager.GemsOfType(GemType)
+- uid: InscryptionAPI.Card.OpponentGemsManager.GemsOfType*
+  name: GemsOfType
+  href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_GemsOfType_
+  commentId: Overload:InscryptionAPI.Card.OpponentGemsManager.GemsOfType
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.OpponentGemsManager.GemsOfType
+  nameWithType: OpponentGemsManager.GemsOfType
 - uid: InscryptionAPI.Card.OpponentGemsManager.HasGem(DiskCardGame.GemType)
   name: HasGem(GemType)
   href: api/InscryptionAPI.Card.OpponentGemsManager.html#InscryptionAPI_Card_OpponentGemsManager_HasGem_DiskCardGame_GemType_
@@ -8798,6 +8843,32 @@ references:
   commentId: T:InscryptionAPI.Helpers.ResourcesManagerHelpers
   fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers
   nameWithType: ResourcesManagerHelpers
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount(System.Boolean,DiskCardGame.GemType)
+  name: GemCount(Boolean, GemType)
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_GemCount_System_Boolean_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount(System.Boolean,DiskCardGame.GemType)
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount(System.Boolean, DiskCardGame.GemType)
+  nameWithType: ResourcesManagerHelpers.GemCount(Boolean, GemType)
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount*
+  name: GemCount
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_GemCount_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemCount
+  nameWithType: ResourcesManagerHelpers.GemCount
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType(DiskCardGame.ResourcesManager,DiskCardGame.GemType)
+  name: GemsOfType(ResourcesManager, GemType)
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_GemsOfType_DiskCardGame_ResourcesManager_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType(DiskCardGame.ResourcesManager,DiskCardGame.GemType)
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType(DiskCardGame.ResourcesManager, DiskCardGame.GemType)
+  nameWithType: ResourcesManagerHelpers.GemsOfType(ResourcesManager, GemType)
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType*
+  name: GemsOfType
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_GemsOfType_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.GemsOfType
+  nameWithType: ResourcesManagerHelpers.GemsOfType
 - uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.OpponentHasGems(DiskCardGame.GemType[])
   name: OpponentHasGems(GemType[])
   href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_OpponentHasGems_DiskCardGame_GemType___
