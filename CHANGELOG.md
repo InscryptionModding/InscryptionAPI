@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2.14.3
+- Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
 - Fixed dynamic costs still not working in Act 2
 - Fixed dynamic gem costs checking ResourcesManager instead of OpponentGemsManager for opponent cards
 - Fixed dynamic costs not checking for owned blue gems
