@@ -254,6 +254,78 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Removes any number of decals from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="decals">The decals to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveDecals(this CardInfo info, params Texture[] decals)
+    {
+        if (info.decals?.Count > 0)
+        {
+            foreach (var dec in decals)
+            {
+                info.decals.RemoveAll(d => d == dec);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of decals behaviors from the card. Will remove one instance of each passed decals; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="decals">The decals to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveDecalsSingle(this CardInfo info, params Texture[] decals)
+    {
+        if (info.decals?.Count > 0)
+        {
+            foreach (var dec in decals)
+            {
+                info.decals.Remove(dec);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of metacategories from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="categories">The categories to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveMetaCategories(this CardInfo info, params CardMetaCategory[] categories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (var cat in categories)
+            {
+                info.metaCategories.RemoveAll(c => c == cat);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of metacategories behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="categories">The categories to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveMetaCategoriesSingle(this CardInfo info, params CardMetaCategory[] categories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (var cat in categories)
+            {
+                info.metaCategories.Remove(cat);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
     /// <param name="info">Card to access</param>
