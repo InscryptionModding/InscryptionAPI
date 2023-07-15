@@ -385,25 +385,6 @@ public static class CardExtensions
         return info;
     }
 
-    /// <summary>
-    /// Removes any number of Appearances from the card.
-    /// </summary>
-    /// <param name="info">Card to access.</param>
-    /// <param name="appearances">The Appearances to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
-    public static CardInfo RemoveAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
-    {
-        if (info.appearanceBehaviour?.Count > 0)
-        {
-            foreach (CardAppearanceBehaviour.Appearance ap in appearances)
-            {
-                if (info.appearanceBehaviour.Contains(ap))
-                    info.appearanceBehaviour.Remove(ap);
-            }
-        }
-        return info;
-    }
-
     #endregion
 
     #region Setters
