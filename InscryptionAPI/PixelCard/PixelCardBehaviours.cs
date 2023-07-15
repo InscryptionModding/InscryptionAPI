@@ -9,6 +9,7 @@ public class PixelAppearanceBehaviour : CardAppearanceBehaviour
 {
     public override void ApplyAppearance() { }
     public virtual Sprite PixelAppearance() { return null; }
+    public virtual Sprite OverridePixelPortrait() { return null; }
     public virtual Sprite OverrideBackground() { return null; }
     public virtual void OnAppearanceApplied() { }
 }

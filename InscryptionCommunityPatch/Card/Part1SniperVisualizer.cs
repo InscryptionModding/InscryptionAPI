@@ -67,7 +67,7 @@ public class Part1SniperVisualizer : ManagedBehaviour
     }
 
 
-    private readonly List<GameObject> sniperIcons = new();
+    public readonly List<GameObject> sniperIcons = new();
     private GameObject sniperIconPrefab;
     private GameObject tempSniperIcon;
 }

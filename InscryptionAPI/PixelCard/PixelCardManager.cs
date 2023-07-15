@@ -5,6 +5,8 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Resource;
 using Mono.Cecil;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,6 +45,25 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         PixelGemifiedBlueLit = TextureHelper.GetImageAsSprite("PixelGemifiedBlue.png", typeof(PixelCardManager).Assembly, TextureHelper.SpriteType.PixelDecal);
     }
 
+    [HarmonyPostfix, HarmonyPatch(typeof(CardAppearanceBehaviour), nameof(CardAppearanceBehaviour.Card), MethodType.Getter)]
+    private static void GetCorrectCardComponentInAct2(CardAppearanceBehaviour __instance, ref DiskCardGame.Card __result)
+    {
+        if (SaveManager.SaveFile.IsPart2)
+            __result = __instance.GetComponentInParent<DiskCardGame.Card>();
+    }
+    [HarmonyPatch(typeof(PixelBoardManager), nameof(PixelBoardManager.CleanUp))]
+    [HarmonyPostfix]
+    private static IEnumerator ClearTempDecals(IEnumerator enumerator)
+    {
+        foreach (CardInfo info in SaveManager.SaveFile.gbcData.deck.Cards)
+        {
+            foreach (CardModificationInfo mod in info.Mods.Where(x => x.IsTemporaryDecal()))
+            {
+                mod.DecalIds.Clear();
+            }
+        }
+        yield return enumerator;
+    }
     [HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.UpdateBackground))]
     [HarmonyPostfix]
     private static void PixelUpdateBackground(PixelCardDisplayer __instance, CardInfo info)
@@ -78,7 +99,6 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
     private static void AddDecalToCard(in PixelCardDisplayer instance, PlayableCard playableCard)
     {
         Transform cardElements = instance?.gameObject?.transform?.Find("CardElements");
-
         if (cardElements == null)
             return;
 
@@ -114,14 +134,18 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
             Component behav = instance.gameObject.GetComponent(fullApp.AppearanceBehaviour);
             behav ??= instance.gameObject.AddComponent(fullApp.AppearanceBehaviour);
 
-            if (behav is PixelAppearanceBehaviour)
+            if (behav is PixelAppearanceBehaviour pixelBehav)
             {
-                (behav as PixelAppearanceBehaviour).OnAppearanceApplied();
-                Sprite behavAppearance = (behav as PixelAppearanceBehaviour).PixelAppearance();
+                pixelBehav.OnAppearanceApplied();
+                Sprite behavAppearance = pixelBehav.PixelAppearance();
                 Transform behavTransform = cardElements.Find(appearance.ToString() + "_Displayer");
 
                 if (behavAppearance != null && behavTransform == null)
                     CreateDecal(in cardElements, behavAppearance, appearance.ToString() + "_Displayer");
+                // override portrait
+                Sprite overridePortrait = pixelBehav.OverridePixelPortrait();
+                if (overridePortrait != null)
+                    instance.SetPortrait(overridePortrait);
             }
             UnityObject.Destroy(behav);
         }
@@ -129,7 +153,7 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         if (playableCard == null)
             return;
 
-        List<Texture2D> decalTextures = new();
+        List<Tuple<Texture2D, string>> decalTextures = new();
         foreach (CardModificationInfo mod in playableCard.Info.Mods)
         {
             foreach (string decalId in mod.DecalIds)
@@ -137,13 +161,14 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
                 PixelDecalData data = CustomPixelDecals.Find(x => x.TextureName == decalId);
 
                 if (data != null)
-                    decalTextures.Add(data.DecalTexture);
+                    decalTextures.Add(new(data.DecalTexture, data.TextureName));
             }
         }
-        foreach (Texture2D decalTex in decalTextures)
+
+        foreach (Tuple<Texture2D, string> decalTex in decalTextures)
         {
-            Sprite decalSprite = TextureHelper.ConvertTexture(decalTex, TextureHelper.SpriteType.PixelDecal);
-            CreateDecal(in cardElements, decalSprite, decalTex.name);
+            Sprite decalSprite = TextureHelper.ConvertTexture(decalTex.Item1, TextureHelper.SpriteType.PixelDecal);
+            CreateDecal(in cardElements, decalSprite, decalTex.Item2);
         }
     }
     private static GameObject CreateDecal(in Transform cardElements, Sprite sprite, string name)
@@ -151,7 +176,6 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         GameObject decal = new(name);
         decal.transform.SetParent(cardElements, false);
         decal.layer = LayerMask.NameToLayer("GBCUI");
-
         decal.AddComponent<DecalIdentifier>();
 
         SpriteRenderer sr = decal.AddComponent<SpriteRenderer>();

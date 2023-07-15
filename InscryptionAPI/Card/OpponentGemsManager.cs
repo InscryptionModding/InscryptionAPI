@@ -5,6 +5,7 @@ public class OpponentGemsManager : Singleton<OpponentGemsManager>
 {
     public List<GemType> opponentGems = new();
 
+    public int GemsOfType(GemType gem) => opponentGems.Count(x => x == gem);
     public bool HasGem(GemType gem) => opponentGems.Contains(gem);
     public void AddGem(GemType gem) => opponentGems.Add(gem);
     public void LoseGem(GemType gem) => opponentGems.Remove(gem);

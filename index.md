@@ -83,8 +83,7 @@ The API adds a custom AbilityMetaCategory called Part2Modular, accessible from t
 Feel free to use this as you please. Or don't. I'm not your mom.
 
 ### Note
-All vanilla sigils marked Part1Modular or Part3Modular, plus all vanilla activated sigils, have been given with metacategory by default.
-Currently it's only used within the API for the Act 2 Amorphous patch.
+Most vanilla sigils have been automatically given Part2Modular. For a full list, see the Part2ModularAbilities file on the GitHub.
 
 # Cards
 
@@ -649,6 +648,11 @@ If you prefer, you can use the numeric value associated with an emotion instead 
 ```
 "[e:2]I'm angry."
 ```
+
+## Altering GBC Card Packs
+You can use the event handler GBCPackManager.ModifyGBCPacks to alter the possible contents of a card pack before it's opened.
+
+This event is called *after* the game removes cards without CardMetaCategory.GBCPack and already owned singleton cards.
 
 # Abilities
 
