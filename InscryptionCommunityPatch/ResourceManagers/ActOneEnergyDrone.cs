@@ -214,8 +214,12 @@ public static class EnergyDrone
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
-            ResourceDrone.Instance.OpenCell(__instance.PlayerMaxEnergy - 1);
-            yield return new WaitForSeconds(0.4f);
+            int cellsToOpen = __instance.PlayerMaxEnergy - 1;
+            if (cellsToOpen > 0)
+            {
+                ResourceDrone.Instance.OpenCell(cellsToOpen);
+                yield return new WaitForSeconds(0.4f);
+            }
         }
 
         yield return result;

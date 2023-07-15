@@ -33,6 +33,11 @@ public static class AbilityManager
         /// The unique ID for this ability
         /// </summary>
         public readonly Ability Id;
+        
+        /// <summary>
+        /// The guid of the mod that added this ability
+        /// </summary>
+        public readonly string ModGUID;
 
         /// <summary>
         /// The description object for this ability
@@ -67,8 +72,22 @@ public static class AbilityManager
         /// <param name="info">The description object for this ability</param>
         /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability</param>
         /// <param name="texture">A 49x49 texture  for the ability icon</param>
-        public FullAbility(Ability id, AbilityInfo info, Type behaviour, Texture texture)
+        [Obsolete("Use the constructor that takes a modGUID parameter instead")]
+        public FullAbility(Ability id, AbilityInfo info, Type behaviour, Texture texture) : this("", id, info, behaviour, texture)
         {
+        }
+
+        /// <summary>
+        /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// </summary>
+        /// <param name="modGUID">The GUID of the mod that added this</param>
+        /// <param name="id">The unique ID for this ability</param>
+        /// <param name="info">The description object for this ability</param>
+        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability</param>
+        /// <param name="texture">A 49x49 texture  for the ability icon</param>
+        public FullAbility(string modGUID, Ability id, AbilityInfo info, Type behaviour, Texture texture)
+        {
+            ModGUID = modGUID;
             Id = id;
             Info = info;
             AbilityBehavior = behaviour;
@@ -111,7 +130,7 @@ public static class AbilityManager
 
             AbilityExtensionProperties.Add(clonedInfo, AbilityExtensionProperties.GetOrCreateValue(Info));
 
-            return new FullAbility(this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
+            return new FullAbility(this.ModGUID, this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
         }
     }
 
@@ -211,12 +230,13 @@ public static class AbilityManager
         var gameAsm = typeof(AbilityInfo).Assembly;
         foreach (var ability in Resources.LoadAll<AbilityInfo>("Data/Abilities"))
         {
-            var name = ability.ability.ToString();
-            if (ability.activated || ability.metaCategories.Exists(x => x == AbilityMetaCategory.Part1Modular || x == AbilityMetaCategory.Part3Modular))
+            string name = ability.ability.ToString();
+            if (Part2ModularAbilities.BasePart2Modular.Contains(ability.ability))
                 ability.SetDefaultPart2Ability();
 
             baseGame.Add(new FullAbility
             (
+                null,
                 ability.ability,
                 ability,
                 gameAsm.GetType($"DiskCardGame.{name}"),
@@ -226,7 +246,7 @@ public static class AbilityManager
 
         return baseGame;
     }
-
+    
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
@@ -245,7 +265,7 @@ public static class AbilityManager
     /// ablity ID yourself and leave it as its default value.</remarks>
     public static FullAbility Add(string guid, AbilityInfo info, Type behavior, Texture tex)
     {
-        FullAbility full = new(GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, behavior, tex);
+        FullAbility full = new(guid, GuidManager.GetEnumValue<Ability>(guid, info.rulebookName), info, behavior, tex);
         full.Info.ability = full.Id;
         info.name = $"{guid}_{info.rulebookName}";
         NewAbilities.Add(full);

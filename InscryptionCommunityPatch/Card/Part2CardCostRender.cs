@@ -16,14 +16,12 @@ public static class Part2CardCostRender
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
-    //private static Dictionary<string, Texture2D> AssembledTextures = new();
-
     public static Texture2D CombineIconAndCount(int cardCost, Texture2D artCost)
     {
         bool left = !PatchPlugin.rightAct2Cost.Value;
         Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
 
-        List<Texture2D> list = new List<Texture2D>();
+        List<Texture2D> list = new();
         if (cardCost <= 4)
         {
             for (int i = 0; i < cardCost; i++)
@@ -44,7 +42,7 @@ public static class Part2CardCostRender
         bool left = !PatchPlugin.rightAct2Cost.Value;
 
         // A list to hold the textures (important later, to combine them all)
-        List<Texture2D> masterList = new List<Texture2D>();
+        List<Texture2D> masterList = new();
 
         if (card.BloodCost > 0)
             masterList.Add(CombineIconAndCount(card.BloodCost, TextureHelper.GetImageAsTexture("pixel_blood.png", typeof(Part2CardCostRender).Assembly)));
@@ -55,9 +53,9 @@ public static class Part2CardCostRender
         if (card.EnergyCost > 0)
             masterList.Add(CombineIconAndCount(card.EnergyCost, TextureHelper.GetImageAsTexture("pixel_energy.png", typeof(Part2CardCostRender).Assembly)));
 
-        if (card.gemsCost.Count > 0)
+        if (card.GemsCost.Count > 0)
         {
-            List<Texture2D> gemCost = new List<Texture2D>();
+            List<Texture2D> gemCost = new();
 
             //If a card has a green mox, set the green mox
             if (card.GemsCost.Contains(GemType.Green))
@@ -96,10 +94,10 @@ public static class Part2CardCostRender
     [HarmonyPrefix]
     private static bool Part2CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
     {
-        //Make sure we are only modifying pixel cards
+        // Make sure we are only modifying pixel cards
         if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value)
         {
-            /// Set the results as the new sprite
+            // Set the results as the new sprite
             __result = Part2SpriteFinal(card);
             return false;
         }
