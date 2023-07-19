@@ -1,5 +1,16 @@
 # Changelog
 
+<details>
+<summary>View Changelog</summary>
+
+## 2.14.4
+- Fixed the first energy cell remaining closed in Act 1 when battle starts
+- Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
+- Added extension method PeltData.SetTierName
+- The Trader will now speak the correct name of custom pelts when trading with them
+- Added DialogueManager.GenerateTraderPeltsEvent for creating custom dialogue events spoken by the Trader when trading a custom pelt
+- Added DialogueManager.GenerateRegionIntroEvent for creating the dialogue event played upon entering a custom region
+
 ## 2.14.3
 - Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
 - Fixed dynamic costs still not working in Act 2
@@ -392,3 +403,5 @@
 
 ## v1.1
 - Hooked into a much more sensible method to load the cards into the card pool.
+
+</details>

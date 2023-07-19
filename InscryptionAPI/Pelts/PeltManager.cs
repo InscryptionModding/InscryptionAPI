@@ -1,6 +1,9 @@
 using BepInEx;
 using DiskCardGame;
+using InscryptionAPI.Dialogue;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Helpers;
+using Sirenix.Utilities;
 using System.Reflection;
 using UnityEngine;
 
@@ -10,14 +13,14 @@ public static class PeltManager
 {
     private class VanillaPeltData : PeltData
     {
-        public override int BuyPrice => GetBasePeltData().Find((a) => a.Item1 == this.peltCardName).Item2;
+        public override int BuyPrice => GetBasePeltData().Find((a) => a.Item1 == peltCardName).Item2;
     }
 
     public class PeltData
     {
         public string pluginGuid;
         public string peltCardName;
-
+        public string peltTierName = null;
         public bool isSoldByTrapper = true;
 
         public Func<List<CardInfo>> CardChoices;
@@ -47,7 +50,7 @@ public static class PeltManager
         }
     }
 
-    internal static List<PeltData> AllNewPelts = new List<PeltData>();
+    internal static List<PeltData> AllNewPelts = new();
     private static List<PeltData> BasePelts = null;
 
     internal static string[] BasePeltNames { get; } = new string[]
@@ -79,7 +82,7 @@ public static class PeltManager
 
     internal static List<Tuple<string, int>> GetBasePeltData()
     {
-        List<Tuple<string, int>> data = new List<Tuple<string, int>>();
+        List<Tuple<string, int>> data = new();
         for (int i = 0; i < BasePeltNames.Length; i++)
         {
             string peltName = BasePeltNames[i];
@@ -92,18 +95,18 @@ public static class PeltManager
 
     private static List<PeltData> CreateBasePelts()
     {
-        List<PeltData> pelts = new List<PeltData>();
+        List<PeltData> pelts = new();
 
         for (int i = 0; i < BasePeltNames.Length; i++)
         {
-            var peltData = new VanillaPeltData()
+            var peltData = new VanillaPeltData
             {
                 peltCardName = BasePeltNames[i],
                 choicesOfferedByTrader = 8,
                 extraAbilitiesToAdd = 0,
                 isSoldByTrapper = true,
+                CardChoices = static () => CardLoader.GetUnlockedCards(CardMetaCategory.TraderOffer, CardTemple.Nature)
             };
-            peltData.CardChoices = static () => CardLoader.GetUnlockedCards(CardMetaCategory.TraderOffer, CardTemple.Nature);
             pelts.Add(peltData);
         }
 
@@ -133,6 +136,7 @@ public static class PeltManager
         {
             pluginGuid = pluginGuid,
             peltCardName = peltCardInfo.name,
+            peltTierName = GetTierNameFromPelt(peltCardInfo.displayedName),
             CardChoices = getCardChoices,
             baseBuyPrice = baseBuyPrice,
             extraAbilitiesToAdd = extraAbilitiesToAdd,
@@ -163,13 +167,11 @@ public static class PeltManager
 
     public static List<PeltData> AllPeltsAvailableAtTrader()
     {
-        List<PeltData> peltNames = new List<PeltData>();
+        List<PeltData> peltNames = new();
         foreach (PeltData data in AllPelts())
         {
             if (data.isSoldByTrapper)
-            {
                 peltNames.Add(data);
-            }
         }
 
         return peltNames;
@@ -189,5 +191,34 @@ public static class PeltManager
     public static PeltData GetPelt(string peltName)
     {
         return AllPelts().Find((a) => a.peltCardName == peltName);
+    }
+
+    internal static void CreateDialogueEvents()
+    {
+        foreach (PeltData peltData in AllPeltsAvailableAtTrader())
+        {
+            string name = peltData.peltTierName ?? GetTierNameFromData(peltData);
+            string dialogueId = "TraderPelts" + name;
+            if (!DialogueManager.CustomDialogue.Exists(x => x.DialogueEvent.id == dialogueId))
+            {
+                DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
+                    new()
+                    {
+                    name + " pelts..."
+                    });
+            }
+        }
+    }
+
+    public static string GetTierNameFromPelt(string cardName)
+    {
+        string result = cardName.ToLowerInvariant().Replace("pelt", "").Replace(" ", "");
+        result = result.Split('_').Last().ToTitleCase();
+
+        return result;
+    }
+    public static string GetTierNameFromData(PeltData peltData)
+    {
+        return peltData.peltTierName ?? GetTierNameFromPelt(peltData.peltCardName);
     }
 }
