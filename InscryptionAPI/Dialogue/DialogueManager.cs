@@ -35,8 +35,12 @@ public static class DialogueManager
             DialogueEvent = dialogueEvent
         };
 
+        CustomDialogue.RemoveAll(d => d.DialogueEvent.id == dialogueEvent.id);
         CustomDialogue.Add(dialogue);
+
+        DialogueDataUtil.Data?.events?.RemoveAll(d => d.id == dialogueEvent.id);
         DialogueDataUtil.Data?.events?.Add(dialogueEvent);
+        
         return dialogue;
     }
 
