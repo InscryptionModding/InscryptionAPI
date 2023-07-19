@@ -30,9 +30,12 @@ This is the recommended way to install the API on the game.
 - Run the game via the mod manager
 
 ## Installation (manual)
-To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.
+To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.  
+You also need to install [MonoMod Loader Inscryption](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/).
 
-To install Inscryption API you simply need to copy **InscryptionAPI.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to **Inscryption/BepInEx/plugins**.
+- Copy the 'plugins' folder into 'BepInEx/plugins'.
+- Copy the 'monomod' folder into 'BepInEx/monomod'.  
+(If any of these folders do not exist, just create them.)
 
 An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
 
