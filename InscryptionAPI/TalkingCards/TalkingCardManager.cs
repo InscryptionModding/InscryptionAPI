@@ -40,4 +40,14 @@ public static class TalkingCardManager
         if (faceData?.CardName == null) return;
         TalkingCardCreator.New(faceData, ability);
     }
+    
+    /// <summary>
+    /// Remove a talking card from a FaceData instance through this API.
+    /// </summary>
+    /// <param name="faceData">Your character's face data.</param>
+    public static void Remove(FaceData faceData)
+    {
+        if (faceData.CardName == null) return;
+        TalkingCardCreator.Remove(faceData.CardName);
+    }
 }

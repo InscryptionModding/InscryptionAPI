@@ -5,6 +5,17 @@ namespace InscryptionAPI.Helpers;
 
 public static class ResourcesManagerHelpers
 {
+    public static int GemsOfType(this ResourcesManager instance, GemType gem)
+    {
+        return instance.gems.Count(x => x == gem);
+    }
+    public static int GemCount(bool playerGems, GemType gemToCheck)
+    {
+        if (playerGems)
+            return ResourcesManager.Instance.GemsOfType(gemToCheck);
+        else
+            return OpponentGemsManager.Instance.GemsOfType(gemToCheck);
+    }
     public static bool OwnerHasGems(bool playerGems, params GemType[] gems)
     {
         if (playerGems)
@@ -14,13 +25,12 @@ public static class ResourcesManagerHelpers
     }
     public static bool OpponentHasGems(params GemType[] gems)
     {
-        var component = ResourcesManager.Instance.GetComponent<OpponentGemsManager>();
-        if (component == null)
+        if (OpponentGemsManager.Instance == null)
             return false;
 
         foreach (GemType gem in gems)
         {
-            if (!component.opponentGems.Contains(gem))
+            if (!OpponentGemsManager.Instance.HasGem(gem))
                 return false;
         }
         return true;
@@ -29,7 +39,7 @@ public static class ResourcesManagerHelpers
     {
         foreach (GemType gem in gems)
         {
-            if (!ResourcesManager.Instance.gems.Contains(gem))
+            if (!ResourcesManager.Instance.HasGem(gem))
                 return false;
         }
         return true;

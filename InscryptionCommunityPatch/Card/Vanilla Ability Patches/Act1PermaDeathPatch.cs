@@ -11,7 +11,7 @@ internal class Act1PermaDeathPatch
     [HarmonyPostfix]
     private static void PlayPermaDeathAnimation(CardAnimationController __instance, bool playSound)
     {
-        if (!SaveManager.SaveFile.IsPart2)
+        if (SaveManager.SaveFile.IsPart1)
         {
             var component = __instance.PlayableCard.GetComponentInChildren<SkinnedMeshRenderer>();
 
@@ -30,7 +30,7 @@ internal class Act1PermaDeathPatch
             component.enabled = false;
             __instance.StopAllCoroutines();
         }
-        else
+        else if (SaveManager.SaveFile.IsPart2)
         {
             __instance.PlayDeathAnimation(playSound);
         }

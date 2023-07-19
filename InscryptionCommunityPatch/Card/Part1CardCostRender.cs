@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public static class Part1CardCostRender
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
-    private static Dictionary<string, Texture2D> AssembledTextures = new();
+    private static readonly Dictionary<string, Texture2D> AssembledTextures = new();
 
     public const int COST_OFFSET = 28;
 
@@ -49,25 +50,28 @@ public static class Part1CardCostRender
         return texture;
     }
 
-    public static Sprite Part1SpriteFinal(CardInfo card)
+    public static Sprite Part1SpriteFinal(CardInfo cardInfo)
     {
+        PlayableCard playableCard = cardInfo.GetPlayableCard();
+
         // A list to hold the textures (important later, to combine them all)
         List<Texture2D> list = new();
 
         // Setting mox first
-        if (card.GemsCost.Count > 0)
+        List<GemType> gemsCost = playableCard?.GemsCost() ?? cardInfo.GemsCost;
+        if (gemsCost.Count > 0)
         {
             // Make a new list for the mox textures
             List<Texture2D> gemCost = new();
 
             // Add all moxes to the gemcost list
-            if (card.GemsCost.Contains(GemType.Green))
+            if (gemsCost.Contains(GemType.Green))
                 gemCost.Add(GetTextureByName("mox_cost_g"));
 
-            if (card.GemsCost.Contains(GemType.Blue))
+            if (gemsCost.Contains(GemType.Blue))
                 gemCost.Add(GetTextureByName("mox_cost_b"));
 
-            if (card.GemsCost.Contains(GemType.Orange))
+            if (gemsCost.Contains(GemType.Orange))
                 gemCost.Add(GetTextureByName("mox_cost_o"));
 
             while (gemCost.Count < 3)
@@ -77,17 +81,20 @@ public static class Part1CardCostRender
             list.Add(CombineMoxTextures(gemCost));
         }
 
-        if (card.EnergyCost > 0) // there's 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
-            list.Add(GetTextureByName($"energy_cost_{Mathf.Min(6, card.EnergyCost)}"));
+        int energyCost = playableCard?.EnergyCost ?? cardInfo.EnergyCost;
+        if (energyCost > 0) // there's 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
+            list.Add(GetTextureByName($"energy_cost_{Mathf.Min(6, energyCost)}"));
 
-        if (card.BonesCost > 0)
-            list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, card.BonesCost)}"));
+        int bonesCost = playableCard?.BonesCost() ?? cardInfo.BonesCost;
+        if (bonesCost > 0)
+            list.Add(GetTextureByName($"bone_cost_{Mathf.Min(14, bonesCost)}"));
 
-        if (card.BloodCost > 0)
-            list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, card.BloodCost)}"));
+        int bloodCost = playableCard?.BloodCost() ?? cardInfo.BloodCost;
+        if (bloodCost > 0)
+            list.Add(GetTextureByName($"blood_cost_{Mathf.Min(14, bloodCost)}"));
 
         // Call the event and allow others to modify the list of textures
-        UpdateCardCost?.Invoke(card, list);
+        UpdateCardCost?.Invoke(cardInfo, list);
 
         // Combine all the textures from the list into one texture
         Texture2D finalTexture = CombineCostTextures(list);
@@ -98,16 +105,16 @@ public static class Part1CardCostRender
 
     [HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.GetCostSpriteForCard))]
     [HarmonyPrefix]
-    private static bool Part1CardCostDisplayerPatch(ref Sprite __result, ref CardInfo card, ref CardDisplayer __instance)
+    private static bool Part1CardCostDisplayerPatch(ref Sprite __result, CardDisplayer __instance, CardInfo card)
     {
         //Make sure we are in Leshy's Cabin
         if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1"))
         {
-            /// Set the results as the new sprite
+            // Set the results as the new sprite
             __result = Part1SpriteFinal(card);
             return false;
         }
-
+        
         return true;
     }
 }

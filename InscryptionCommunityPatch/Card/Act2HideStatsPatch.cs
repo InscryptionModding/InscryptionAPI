@@ -8,9 +8,12 @@ namespace InscryptionCommunityPatch.Card;
 internal class Act2HideStatsPatch
 {
     [HarmonyPostfix, HarmonyPatch(typeof(PixelCardDisplayer), nameof(PixelCardDisplayer.DisplayInfo))]
-    private static void HideAttackAndHealth(PixelCardDisplayer __instance, CardRenderInfo renderInfo)
+    private static void HideAttackAndHealth(PixelCardDisplayer __instance)
     {
-        __instance.SetAttackHidden(__instance.info.hideAttackAndHealth || renderInfo.hiddenAttack);
-        __instance.SetHealthHidden(__instance.info.hideAttackAndHealth || renderInfo.hiddenHealth);
+        if (__instance?.info?.hideAttackAndHealth ?? false)
+        {
+            __instance.SetAttackHidden(true);
+            __instance.SetHealthHidden(true);
+        }
     }
 }
