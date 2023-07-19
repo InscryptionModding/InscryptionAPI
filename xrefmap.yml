@@ -3906,6 +3906,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.RemoveAppearances
   nameWithType: CardExtensions.RemoveAppearances
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle(DiskCardGame.CardInfo,DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  name: RemoveAppearancesSingle(CardInfo, CardAppearanceBehaviour.Appearance[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAppearancesSingle_DiskCardGame_CardInfo_DiskCardGame_CardAppearanceBehaviour_Appearance___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle(DiskCardGame.CardInfo,DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  name.vb: RemoveAppearancesSingle(CardInfo, CardAppearanceBehaviour.Appearance())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle(DiskCardGame.CardInfo, DiskCardGame.CardAppearanceBehaviour.Appearance[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle(DiskCardGame.CardInfo, DiskCardGame.CardAppearanceBehaviour.Appearance())
+  nameWithType: CardExtensions.RemoveAppearancesSingle(CardInfo, CardAppearanceBehaviour.Appearance[])
+  nameWithType.vb: CardExtensions.RemoveAppearancesSingle(CardInfo, CardAppearanceBehaviour.Appearance())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle*
+  name: RemoveAppearancesSingle
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveAppearancesSingle_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveAppearancesSingle
+  nameWithType: CardExtensions.RemoveAppearancesSingle
 - uid: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
   name: RemoveCardMetaCategories(CardInfo, CardMetaCategory[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveCardMetaCategories_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
@@ -3922,6 +3938,102 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories
   nameWithType: CardExtensions.RemoveCardMetaCategories
+- uid: InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo,UnityEngine.Texture[])
+  name: RemoveDecals(CardInfo, Texture[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveDecals_DiskCardGame_CardInfo_UnityEngine_Texture___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo,UnityEngine.Texture[])
+  name.vb: RemoveDecals(CardInfo, Texture())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo, UnityEngine.Texture[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo, UnityEngine.Texture())
+  nameWithType: CardExtensions.RemoveDecals(CardInfo, Texture[])
+  nameWithType.vb: CardExtensions.RemoveDecals(CardInfo, Texture())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveDecals*
+  name: RemoveDecals
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveDecals_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveDecals
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveDecals
+  nameWithType: CardExtensions.RemoveDecals
+- uid: InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle(DiskCardGame.CardInfo,UnityEngine.Texture[])
+  name: RemoveDecalsSingle(CardInfo, Texture[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveDecalsSingle_DiskCardGame_CardInfo_UnityEngine_Texture___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle(DiskCardGame.CardInfo,UnityEngine.Texture[])
+  name.vb: RemoveDecalsSingle(CardInfo, Texture())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle(DiskCardGame.CardInfo, UnityEngine.Texture[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle(DiskCardGame.CardInfo, UnityEngine.Texture())
+  nameWithType: CardExtensions.RemoveDecalsSingle(CardInfo, Texture[])
+  nameWithType.vb: CardExtensions.RemoveDecalsSingle(CardInfo, Texture())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle*
+  name: RemoveDecalsSingle
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveDecalsSingle_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveDecalsSingle
+  nameWithType: CardExtensions.RemoveDecalsSingle
+- uid: InscryptionAPI.Card.CardExtensions.RemoveMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name: RemoveMetaCategories(CardInfo, CardMetaCategory[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveMetaCategories_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveMetaCategories(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name.vb: RemoveMetaCategories(CardInfo, CardMetaCategory())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveMetaCategories(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory())
+  nameWithType: CardExtensions.RemoveMetaCategories(CardInfo, CardMetaCategory[])
+  nameWithType.vb: CardExtensions.RemoveMetaCategories(CardInfo, CardMetaCategory())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveMetaCategories*
+  name: RemoveMetaCategories
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveMetaCategories_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveMetaCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveMetaCategories
+  nameWithType: CardExtensions.RemoveMetaCategories
+- uid: InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name: RemoveMetaCategoriesSingle(CardInfo, CardMetaCategory[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveMetaCategoriesSingle_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory[])
+  name.vb: RemoveMetaCategoriesSingle(CardInfo, CardMetaCategory())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle(DiskCardGame.CardInfo, DiskCardGame.CardMetaCategory())
+  nameWithType: CardExtensions.RemoveMetaCategoriesSingle(CardInfo, CardMetaCategory[])
+  nameWithType.vb: CardExtensions.RemoveMetaCategoriesSingle(CardInfo, CardMetaCategory())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle*
+  name: RemoveMetaCategoriesSingle
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveMetaCategoriesSingle_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveMetaCategoriesSingle
+  nameWithType: CardExtensions.RemoveMetaCategoriesSingle
+- uid: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
+  name: RemoveSpecialAbilities(CardInfo, SpecialTriggeredAbility[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveSpecialAbilities_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
+  name.vb: RemoveSpecialAbilities(CardInfo, SpecialTriggeredAbility())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities(DiskCardGame.CardInfo, DiskCardGame.SpecialTriggeredAbility[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities(DiskCardGame.CardInfo, DiskCardGame.SpecialTriggeredAbility())
+  nameWithType: CardExtensions.RemoveSpecialAbilities(CardInfo, SpecialTriggeredAbility[])
+  nameWithType.vb: CardExtensions.RemoveSpecialAbilities(CardInfo, SpecialTriggeredAbility())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities*
+  name: RemoveSpecialAbilities
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveSpecialAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilities
+  nameWithType: CardExtensions.RemoveSpecialAbilities
+- uid: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
+  name: RemoveSpecialAbilitiesSingle(CardInfo, SpecialTriggeredAbility[])
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveSpecialAbilitiesSingle_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility___
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility[])
+  name.vb: RemoveSpecialAbilitiesSingle(CardInfo, SpecialTriggeredAbility())
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle(DiskCardGame.CardInfo, DiskCardGame.SpecialTriggeredAbility[])
+  fullName.vb: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle(DiskCardGame.CardInfo, DiskCardGame.SpecialTriggeredAbility())
+  nameWithType: CardExtensions.RemoveSpecialAbilitiesSingle(CardInfo, SpecialTriggeredAbility[])
+  nameWithType.vb: CardExtensions.RemoveSpecialAbilitiesSingle(CardInfo, SpecialTriggeredAbility())
+- uid: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle*
+  name: RemoveSpecialAbilitiesSingle
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveSpecialAbilitiesSingle_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveSpecialAbilitiesSingle
+  nameWithType: CardExtensions.RemoveSpecialAbilitiesSingle
 - uid: InscryptionAPI.Card.CardExtensions.RemoveTemporaryMods(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo[])
   name: RemoveTemporaryMods(PlayableCard, CardModificationInfo[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveTemporaryMods_DiskCardGame_PlayableCard_DiskCardGame_CardModificationInfo___
@@ -13932,6 +14044,19 @@ references:
   fullName.vb: InscryptionAPI.TalkingCards.TalkingCardManager.New(Of T)()
   nameWithType: TalkingCardManager.New<T>()
   nameWithType.vb: TalkingCardManager.New(Of T)()
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.Remove(InscryptionAPI.TalkingCards.Create.FaceData)
+  name: Remove(FaceData)
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_Remove_InscryptionAPI_TalkingCards_Create_FaceData_
+  commentId: M:InscryptionAPI.TalkingCards.TalkingCardManager.Remove(InscryptionAPI.TalkingCards.Create.FaceData)
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.Remove(InscryptionAPI.TalkingCards.Create.FaceData)
+  nameWithType: TalkingCardManager.Remove(FaceData)
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.Remove*
+  name: Remove
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_Remove_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.Remove
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.Remove
+  nameWithType: TalkingCardManager.Remove
 - uid: InscryptionAPI.Totems
   name: InscryptionAPI.Totems
   href: api/InscryptionAPI.Totems.html
