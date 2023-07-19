@@ -6894,6 +6894,56 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateEvent
   nameWithType: DialogueManager.GenerateEvent
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,DiskCardGame.RegionData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name: GenerateRegionIntroductionEvent(String, RegionData, List<CustomLine>, List<List<CustomLine>>)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_DiskCardGame_RegionData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,DiskCardGame.RegionData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name.vb: GenerateRegionIntroductionEvent(String, RegionData, List(Of CustomLine), List(Of List(Of CustomLine)))
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String, DiskCardGame.RegionData, List<InscryptionAPI.Dialogue.CustomLine>, List<List<InscryptionAPI.Dialogue.CustomLine>>)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String, DiskCardGame.RegionData, List(Of InscryptionAPI.Dialogue.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.CustomLine)))
+  nameWithType: DialogueManager.GenerateRegionIntroductionEvent(String, RegionData, List<CustomLine>, List<List<CustomLine>>)
+  nameWithType.vb: DialogueManager.GenerateRegionIntroductionEvent(String, RegionData, List(Of CustomLine), List(Of List(Of CustomLine)))
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name: GenerateRegionIntroductionEvent(String, String, List<CustomLine>, List<List<CustomLine>>)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name.vb: GenerateRegionIntroductionEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)))
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String, System.String, List<InscryptionAPI.Dialogue.CustomLine>, List<List<InscryptionAPI.Dialogue.CustomLine>>)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String, System.String, List(Of InscryptionAPI.Dialogue.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.CustomLine)))
+  nameWithType: DialogueManager.GenerateRegionIntroductionEvent(String, String, List<CustomLine>, List<List<CustomLine>>)
+  nameWithType.vb: DialogueManager.GenerateRegionIntroductionEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)))
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent*
+  name: GenerateRegionIntroductionEvent
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent
+  nameWithType: DialogueManager.GenerateRegionIntroductionEvent
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,InscryptionAPI.Pelts.PeltManager.PeltData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name: GenerateTraderPeltsEvent(String, PeltManager.PeltData, List<CustomLine>, List<List<CustomLine>>)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_System_String_InscryptionAPI_Pelts_PeltManager_PeltData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,InscryptionAPI.Pelts.PeltManager.PeltData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name.vb: GenerateTraderPeltsEvent(String, PeltManager.PeltData, List(Of CustomLine), List(Of List(Of CustomLine)))
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String, InscryptionAPI.Pelts.PeltManager.PeltData, List<InscryptionAPI.Dialogue.CustomLine>, List<List<InscryptionAPI.Dialogue.CustomLine>>)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String, InscryptionAPI.Pelts.PeltManager.PeltData, List(Of InscryptionAPI.Dialogue.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.CustomLine)))
+  nameWithType: DialogueManager.GenerateTraderPeltsEvent(String, PeltManager.PeltData, List<CustomLine>, List<List<CustomLine>>)
+  nameWithType.vb: DialogueManager.GenerateTraderPeltsEvent(String, PeltManager.PeltData, List(Of CustomLine), List(Of List(Of CustomLine)))
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name: GenerateTraderPeltsEvent(String, String, List<CustomLine>, List<List<CustomLine>>)
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___
+  commentId: M:InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})
+  name.vb: GenerateTraderPeltsEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)))
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String, System.String, List<InscryptionAPI.Dialogue.CustomLine>, List<List<InscryptionAPI.Dialogue.CustomLine>>)
+  fullName.vb: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String, System.String, List(Of InscryptionAPI.Dialogue.CustomLine), List(Of List(Of InscryptionAPI.Dialogue.CustomLine)))
+  nameWithType: DialogueManager.GenerateTraderPeltsEvent(String, String, List<CustomLine>, List<List<CustomLine>>)
+  nameWithType.vb: DialogueManager.GenerateTraderPeltsEvent(String, String, List(Of CustomLine), List(Of List(Of CustomLine)))
+- uid: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent*
+  name: GenerateTraderPeltsEvent
+  href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_
+  commentId: Overload:InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent
+  isSpec: "True"
+  fullName: InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent
+  nameWithType: DialogueManager.GenerateTraderPeltsEvent
 - uid: InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)
   name: PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action<DialogueEvent.Line>, Boolean)
   href: api/InscryptionAPI.Dialogue.DialogueManager.html#InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_DiskCardGame_TextDisplayer_MessageAdvanceMode_DiskCardGame_TextDisplayer_EventIntersectMode_GBC_DialogueSpeaker_GBC_TextBox_Style_GBC_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_
@@ -11848,6 +11898,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetPluginGuid
   nameWithType: PeltExtensions.SetPluginGuid
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName(InscryptionAPI.Pelts.PeltManager.PeltData,System.String)
+  name: SetTierName(PeltManager.PeltData, String)
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetTierName_InscryptionAPI_Pelts_PeltManager_PeltData_System_String_
+  commentId: M:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName(InscryptionAPI.Pelts.PeltManager.PeltData,System.String)
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName(InscryptionAPI.Pelts.PeltManager.PeltData, System.String)
+  nameWithType: PeltExtensions.SetTierName(PeltManager.PeltData, String)
+- uid: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName*
+  name: SetTierName
+  href: api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html#InscryptionAPI_Pelts_Extensions_PeltExtensions_SetTierName_
+  commentId: Overload:InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.Extensions.PeltExtensions.SetTierName
+  nameWithType: PeltExtensions.SetTierName
 - uid: InscryptionAPI.Pelts.PeltManager
   name: PeltManager
   href: api/InscryptionAPI.Pelts.PeltManager.html
@@ -11906,6 +11969,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.PeltManager.GetPelt
   nameWithType: PeltManager.GetPelt
+- uid: InscryptionAPI.Pelts.PeltManager.GetTierNameFromData(InscryptionAPI.Pelts.PeltManager.PeltData)
+  name: GetTierNameFromData(PeltManager.PeltData)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetTierNameFromData_InscryptionAPI_Pelts_PeltManager_PeltData_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.GetTierNameFromData(InscryptionAPI.Pelts.PeltManager.PeltData)
+  fullName: InscryptionAPI.Pelts.PeltManager.GetTierNameFromData(InscryptionAPI.Pelts.PeltManager.PeltData)
+  nameWithType: PeltManager.GetTierNameFromData(PeltManager.PeltData)
+- uid: InscryptionAPI.Pelts.PeltManager.GetTierNameFromData*
+  name: GetTierNameFromData
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetTierNameFromData_
+  commentId: Overload:InscryptionAPI.Pelts.PeltManager.GetTierNameFromData
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.PeltManager.GetTierNameFromData
+  nameWithType: PeltManager.GetTierNameFromData
+- uid: InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt(System.String)
+  name: GetTierNameFromPelt(String)
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetTierNameFromPelt_System_String_
+  commentId: M:InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt(System.String)
+  fullName: InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt(System.String)
+  nameWithType: PeltManager.GetTierNameFromPelt(String)
+- uid: InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt*
+  name: GetTierNameFromPelt
+  href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_GetTierNameFromPelt_
+  commentId: Overload:InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.PeltManager.GetTierNameFromPelt
+  nameWithType: PeltManager.GetTierNameFromPelt
 - uid: InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,System.Int32,System.Int32,System.Int32,Func{List{DiskCardGame.CardInfo}})
   name: New(String, CardInfo, Int32, Int32, Int32, Func<List<CardInfo>>)
   href: api/InscryptionAPI.Pelts.PeltManager.html#InscryptionAPI_Pelts_PeltManager_New_System_String_DiskCardGame_CardInfo_System_Int32_System_Int32_System_Int32_Func_List_DiskCardGame_CardInfo___
@@ -12007,6 +12096,12 @@ references:
   commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.peltCardName
   fullName: InscryptionAPI.Pelts.PeltManager.PeltData.peltCardName
   nameWithType: PeltManager.PeltData.peltCardName
+- uid: InscryptionAPI.Pelts.PeltManager.PeltData.peltTierName
+  name: peltTierName
+  href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_peltTierName
+  commentId: F:InscryptionAPI.Pelts.PeltManager.PeltData.peltTierName
+  fullName: InscryptionAPI.Pelts.PeltManager.PeltData.peltTierName
+  nameWithType: PeltManager.PeltData.peltTierName
 - uid: InscryptionAPI.Pelts.PeltManager.PeltData.pluginGuid
   name: pluginGuid
   href: api/InscryptionAPI.Pelts.PeltManager.PeltData.html#InscryptionAPI_Pelts_PeltManager_PeltData_pluginGuid
