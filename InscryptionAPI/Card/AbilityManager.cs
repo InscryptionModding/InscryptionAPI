@@ -561,18 +561,22 @@ public static class AbilityManager
     {
         yield return enumerator;
 
+        // re-add these abilities to correct stacking effects
         List<Ability> abilities = new();
 
         for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
         {
             AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
-
-            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and triggers once
+            if (info.canStack) // if can stack and triggers once
             {
-                if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
-                    abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+                if (info.GetTriggersOncePerStack())
+                {
+                    if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
+                        abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-                __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
+                    // remove the first trigger
+                    __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
+                }
             }
         }
 
