@@ -355,7 +355,23 @@ public static class CardManager
         CardAlternatePortraits.Add((CardInfo)__result, CardAlternatePortraits.GetOrCreateValue(__instance));
         // clone the mods too
         CardInfo result = (CardInfo)__result;
-        result.Mods = new(__instance.Mods);
+        //result.Mods = new(__instance.Mods);
+        foreach (CardModificationInfo mod in __instance.Mods)
+        {
+            if (mod.buildACardPortraitInfo != null ||
+                mod.bountyHunterInfo != null ||
+                mod.deathCardInfo != null)
+            {
+                result.Mods.Add(mod);
+                continue;
+            }
+            CardModificationInfo neededInfo = new()
+            {
+                gemify = mod.gemify,
+                singletonId = mod.singletonId
+            };
+            result.Mods.Add(neededInfo);
+        }
     }
 
 

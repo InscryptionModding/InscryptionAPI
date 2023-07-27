@@ -219,15 +219,12 @@ internal static class AddRefreshBehaviourToCard
                 PlayableCard card = null;
                 for (int i = cardList.Count - 1; i >= 0; i--)
                 {
+                    // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                     if (!cardList[i].TryGetTarget(out PlayableCard innerCard) || innerCard == null)
-                    {
-                        // NOTE: We store a list of cards so if we don't clear this list then it will fill up forever
                         cardList.RemoveAt(i);
-                    }
+
                     else if (innerCard == __instance)
-                    {
                         card = innerCard;
-                    }
                 }
 
                 if (card == null)
