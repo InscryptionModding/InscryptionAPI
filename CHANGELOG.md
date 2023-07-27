@@ -3,6 +3,11 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.14.5
+- Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
+- Fixed certain card mods duplicating when the card evolve
+- Added ResourcesManager.RemoveMaxEnergy, ResourcesManager.ShowRemoveMaxEnergy extension methods
+
 ## 2.14.4
 - Fixed the first energy cell remaining closed in Act 1 when battle starts
 - Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
