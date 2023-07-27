@@ -8800,6 +8800,18 @@ references:
   fullName.vb: InscryptionAPI.Helpers.Extensions.ListExtensions.Repeat(Of T)(T, System.Int32)
   nameWithType: ListExtensions.Repeat<T>(T, Int32)
   nameWithType.vb: ListExtensions.Repeat(Of T)(T, Int32)
+- uid: InscryptionAPI.Helpers.GetEmptyBatterySprite
+  name: GetEmptyBatterySprite
+  href: api/InscryptionAPI.Helpers.GetEmptyBatterySprite.html
+  commentId: T:InscryptionAPI.Helpers.GetEmptyBatterySprite
+  fullName: InscryptionAPI.Helpers.GetEmptyBatterySprite
+  nameWithType: GetEmptyBatterySprite
+- uid: InscryptionAPI.Helpers.GetEmptyBatterySprite.emptyBatterySprite
+  name: emptyBatterySprite
+  href: api/InscryptionAPI.Helpers.GetEmptyBatterySprite.html#InscryptionAPI_Helpers_GetEmptyBatterySprite_emptyBatterySprite
+  commentId: F:InscryptionAPI.Helpers.GetEmptyBatterySprite.emptyBatterySprite
+  fullName: InscryptionAPI.Helpers.GetEmptyBatterySprite.emptyBatterySprite
+  nameWithType: GetEmptyBatterySprite.emptyBatterySprite
 - uid: InscryptionAPI.Helpers.MaterialOverride
   name: MaterialOverride
   href: api/InscryptionAPI.Helpers.MaterialOverride.html
@@ -9079,6 +9091,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.PlayerHasGems
   nameWithType: ResourcesManagerHelpers.PlayerHasGems
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32)
+  name: RemoveMaxEnergy(ResourcesManager, Int32)
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_RemoveMaxEnergy_DiskCardGame_ResourcesManager_System_Int32_
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32)
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager, System.Int32)
+  nameWithType: ResourcesManagerHelpers.RemoveMaxEnergy(ResourcesManager, Int32)
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy*
+  name: RemoveMaxEnergy
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_RemoveMaxEnergy_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy
+  nameWithType: ResourcesManagerHelpers.RemoveMaxEnergy
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32)
+  name: ShowRemoveMaxEnergy(ResourcesManager, Int32)
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_ShowRemoveMaxEnergy_DiskCardGame_ResourcesManager_System_Int32_
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32)
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy(DiskCardGame.ResourcesManager, System.Int32)
+  nameWithType: ResourcesManagerHelpers.ShowRemoveMaxEnergy(ResourcesManager, Int32)
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy*
+  name: ShowRemoveMaxEnergy
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_ShowRemoveMaxEnergy_
+  commentId: Overload:InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.ShowRemoveMaxEnergy
+  nameWithType: ResourcesManagerHelpers.ShowRemoveMaxEnergy
 - uid: InscryptionAPI.Helpers.TextureHelper
   name: TextureHelper
   href: api/InscryptionAPI.Helpers.TextureHelper.html
