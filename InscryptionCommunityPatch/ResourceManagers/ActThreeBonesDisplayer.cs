@@ -146,7 +146,7 @@ public static class Act3BonesDisplayer
 
                 if (slot == null)
                     AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, BonesTVScreen.transform.position, 1f, 0f, new AudioParams.Pitch(0.95f + (float)i * 0.01f), null, null, null, false).spatialBlend = 0.25f;   
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
             DisplayBones(ResourcesManager.Instance.PlayerBones);
         }
@@ -165,14 +165,13 @@ public static class Act3BonesDisplayer
         if (BonesTVScreen != null && amount > 0)
         {
             int visualizedDrop = Mathf.Min(20, amount);
-            float coinSpeed = 1f - (float)visualizedDrop * 0.033f;
             int oldBones = ResourcesManager.Instance.PlayerBones + amount;
 
             for (int i = oldBones; i > oldBones - visualizedDrop; i--)
             {
                 DisplayBones(i);
-                AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, BonesTVScreen.transform.position, 1f, 0f, new AudioParams.Pitch(0.95f + (float)i * 0.01f), null, null, null, false).spatialBlend = 0.25f;
-                yield return new WaitForSeconds(0.5f * coinSpeed);
+                AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, BonesTVScreen.transform.position, 0.6f, 0f, new AudioParams.Pitch(0.95f + (float)i * 0.01f), null, null, null, false).spatialBlend = 0.25f;
+                yield return new WaitForSeconds(0.05f);
             }
             DisplayBones(ResourcesManager.Instance.PlayerBones);
         }
