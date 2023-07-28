@@ -1,5 +1,79 @@
 # Changelog
 
+<details>
+<summary>View Changelog</summary>
+
+## 2.14.5
+- Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
+- Fixed certain card mods duplicating when the card evolve
+- Added ResourcesManager.RemoveMaxEnergy, ResourcesManager.ShowRemoveMaxEnergy extension methods
+
+## 2.14.4
+- Fixed the first energy cell remaining closed in Act 1 when battle starts
+- Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
+- Added extension method PeltData.SetTierName
+- The Trader will now speak the correct name of custom pelts when trading with them
+- Added DialogueManager.GenerateTraderPeltsEvent for creating custom dialogue events spoken by the Trader when trading a custom pelt
+- Added DialogueManager.GenerateRegionIntroEvent for creating the dialogue event played upon entering a custom region
+
+## 2.14.3
+- Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
+- Fixed dynamic costs still not working in Act 2
+- Fixed dynamic gem costs checking ResourcesManager instead of OpponentGemsManager for opponent cards
+- Fixed dynamic costs not checking for owned blue gems
+- Fixed dynamic costs not updating energy display correctly
+- Changed dynamic costs to patch SetInfo instead of Awake
+- Re-added dynamic cost error messages for when the card or card info is null
+- Added ResourcesManager.Instance.GemsOfType(GemType) to check for owned gems of the specified type
+
+## 2.14.2
+- Fixed Overclock patch not checking for the correct Acts
+- Fixed appearance behaviour's Card field always returning null in Act 2
+- Added OverridePixelPortrait virtual method to PixelAppearanceBehaviour to allow for changing card portraits in Act 2
+- Added CardInfo.SetPixelAlternatePortrait() and Cardinfo.GetPixelAlternatePortrait() for storing alternate pixel portraits
+- Re-added SetTerrain method without optional bool parameter
+- SwitchToAlternatePortrait and SwitchToDefaultPortrait now work in Act 2 using the above system
+- Removed cost-related error spam in Act 2
+
+## 2.14.1
+- Custom tribes are now given a placeholder reward cardback if one isn't provided
+- Fixed visual error when flipping a custom tribe choice for a tribe without a custom cardback
+- Fixed pixel stat icons not hiding the underlying stat number
+- Fixed ChooseTarget null exception
+- Fixed opponent cards with mods not being created properly (eg Bounty Hunters)
+- Fixed being able to ring the bell in Part 2 during the Tutor sequence
+- Fixed GBC packs not checking for onePerDeck when selecting possible cards
+- Fixed decals added via temporary mods not clearing from cards in Act 2
+- Changed what vanilla abilities are marked as Act2Modular (see the Part2ModularAbilities file for the full list)
+- Removed leftover debug info during start-up
+- Added CardInfo.SetCardTemple()
+- Added CardModInfo extension methods SetTemporaryDecal and IsTemporaryDecal (primarily for internal use, maybe you'll find a use for it)
+- Added GBCPackManager.ModifyGBCPacks function for altering what cards can be found in GBC card packs
+
+## 2.14.0
+- Fixed Sniper duplicating attacks from sigils like Double Strike
+- Fixed interaction between Waterborne and Fledgling in Act 2
+- Fixed Cuckoo sigil softlocking in Act 2 when making a Raven Egg
+- Fixed sigils added via temporary mods not displaying in Act 2
+- Fixed hiddenAbilities not affecting sigil display in Act 2
+- Fixed Handy sigil visual bug outside of Act 2
+- Fixed Shapeshifter special ability in Act 2
+- Added pixel sprites for Raven Egg and Cuckoo/Broken Egg
+- Added ResourceBankManager.AddDecal(), PlayableCard.AddTemporaryMods(), CardModificationInfo.AddDecalIds
+- Added AbilityInfo.SetPixelIcon(string pathToArt), CardInfo.RemoveAppearances(), CardInfo.SetDefaultEvolutionName()
+- Added DialogueManager.PlayDialogueEventSafe - combines TextDisplayer.PlayDialogueEvent and DialogueHandler.PlayDialogueHandler for multi-act support
+- Added support for directly loading AudioClips via the GramophoneManager
+- Added support for adding decals to pixel cards via DecalIds
+- Added pixel portrait for Ijiraq
+- Added support for changing costs midbattle using CardModificationInfos or a HarmonyPatch
+- Changed TranspilerHelpers.LogCodeInscryptions to also function as an extension method for List<CodeInstruction>
+- FullSpecialTriggeredAbility now stores the ability name and mod GUID
+- Temporary mods can now be used to add decals to a card
+- CardRenderInfo.OverrideAbilityIcon now works for Act 2 sigils
+- CardInfo.SetTerrain() now has optional parameter 'useTerrainLayout', defaulting to true
+- Made method used to add stacks to pixel sigils public
+- Updated the wiki
+
 ## 2.13.3
 - Fixed null error when opening card packs in Act 2
 - Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
@@ -334,3 +408,5 @@
 
 ## v1.1
 - Hooked into a much more sensible method to load the cards into the card pool.
+
+</details>

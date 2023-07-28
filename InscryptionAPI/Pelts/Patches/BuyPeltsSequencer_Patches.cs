@@ -32,12 +32,7 @@ internal class BuyPeltsSequencer_BuyPelts
     {
         get
         {
-            if (m_specialNodeHandler == null)
-            {
-                m_specialNodeHandler = SpecialNodeHandler.Instance.buyPeltsSequencer;
-            }
-
-            return m_specialNodeHandler;
+            return m_specialNodeHandler ??= SpecialNodeHandler.Instance.buyPeltsSequencer;
         }
     }
     private static BuyPeltsSequencer m_specialNodeHandler;
@@ -96,8 +91,10 @@ internal class BuyPeltsSequencer_BuyPelts
             // Ensure we have a PeltHare
             // We have at least 1 rare
             // Sort by cost
-            List<PeltManager.PeltData> selectedCards = new List<PeltManager.PeltData>(8);
-            selectedCards.Add(PeltManager.GetPelt("PeltHare"));
+            List<PeltManager.PeltData> selectedCards = new(8)
+            {
+                PeltManager.GetPelt("PeltHare")
+            };
 
             List<PeltManager.PeltData> allCards = new(availableAtTrader);
             allCards.Remove(selectedCards[0]);
@@ -229,7 +226,7 @@ internal class BuyPeltsSequencer_CreatePelt
         MethodInfo PeltNamesInfo = AccessTools.PropertyGetter(typeof(CardLoader), "PeltNames");
         MethodInfo AllPeltsAvailableAtTraderInfo = SymbolExtensions.GetMethodInfo(() => GetCardByName());
 
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
         for (int i = 0; i < codes.Count; i++)
         {
             CodeInstruction code = codes[i];

@@ -50,6 +50,7 @@ public static class AbilityExtensions
 
         return fullAbility.BaseRulebookDescription;
     }
+
     /// <summary>
     /// Sets the icon texture for the ability.
     /// </summary>
@@ -150,10 +151,13 @@ public static class AbilityExtensions
     /// <returns>The same stat icon so a chain can continue.</returns>
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon);
-        else
-            info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode.Value);
+        info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode ?? FilterMode.Point);
+        return info;
+    }
+    public static StatIconInfo SetPixelIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
+    {
+        Texture2D tex = TextureHelper.GetImageAsTexture(pathToArt, filterMode ?? FilterMode.Point);
+        info.pixelIconGraphic = TextureHelper.ConvertTexture(tex, TextureHelper.SpriteType.PixelStatIcon);
         return info;
     }
 
@@ -261,6 +265,7 @@ public static class AbilityExtensions
         abilityInfo.activated = activated;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is passive (will not trigger).
     /// </summary>
@@ -272,6 +277,7 @@ public static class AbilityExtensions
         abilityInfo.passive = passive;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability can be used by the opponent.
     /// </summary>
@@ -283,6 +289,7 @@ public static class AbilityExtensions
         abilityInfo.opponentUsable = opponentUsable;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is a conduit.
     /// </summary>
@@ -294,6 +301,7 @@ public static class AbilityExtensions
         abilityInfo.conduit = conduit;
         return abilityInfo;
     }
+
     /// <summary>
     /// Sets whether or not the ability is a conduit cell.
     /// </summary>

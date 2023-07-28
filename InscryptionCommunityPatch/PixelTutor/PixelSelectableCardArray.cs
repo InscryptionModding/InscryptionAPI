@@ -1,5 +1,6 @@
 using DiskCardGame;
 using GBC;
+using InscryptionAPI;
 using InscryptionAPI.Helpers.Extensions;
 using Pixelplacement;
 using Sirenix.Utilities;
@@ -270,5 +271,6 @@ public class PixelPlayableCardArray : ManagedBehaviour
         {
             card.gameObject.SetActive(enabled);
         }
+        TurnManager.Instance.PlayerCanInitiateCombat = enabled;
     }
 }

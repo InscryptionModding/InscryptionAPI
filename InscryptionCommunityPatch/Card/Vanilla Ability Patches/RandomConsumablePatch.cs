@@ -5,7 +5,7 @@ namespace InscryptionCommunityPatch.Card;
 
 // Fixes the PackMule special ability so it works when used by the player
 [HarmonyPatch]
-internal class RandomConsumabledPatch
+internal class RandomConsumablePatch
 {
     [HarmonyPatch(typeof(RandomConsumable), nameof(RandomConsumable.RespondsToResolveOnBoard))]
     [HarmonyPostfix]

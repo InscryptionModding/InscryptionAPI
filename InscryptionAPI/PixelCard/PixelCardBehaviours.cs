@@ -1,6 +1,5 @@
 using DiskCardGame;
 using InscryptionAPI.Card;
-using InscryptionAPI.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,13 +9,13 @@ public class PixelAppearanceBehaviour : CardAppearanceBehaviour
 {
     public override void ApplyAppearance() { }
     public virtual Sprite PixelAppearance() { return null; }
+    public virtual Sprite OverridePixelPortrait() { return null; }
     public virtual Sprite OverrideBackground() { return null; }
     public virtual void OnAppearanceApplied() { }
 }
 
 public class PixelGemificationBorder : MonoBehaviour
 {
-
     private void Start()
     {
         card = GetComponentInParent<DiskCardGame.Card>();

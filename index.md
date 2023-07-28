@@ -77,14 +77,13 @@ NOTE THAT THE NAMES ARE CASE-SENSITIVE.
 |TriggersOncePerStack   |AbilityInfo    |Boolean    |If the ability should trigger twice when the card evolves. |SetTriggersOncePerStack|
 |AffectedByTidalLock    |CardInfo       |Boolean    |If the card should be killed by the effect of Tidal Lock.  |SetAffectedByTidalLock |
 
-## Part2Modular
+### Part2Modular
 The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
 
 Feel free to use this as you please. Or don't. I'm not your mom.
 
 ### Note
-All vanilla sigils marked Part1Modular or Part3Modular, plus all vanilla activated sigils, have been given with metacategory by default.
-Currently it's only used within the API for the Act 2 Amorphous patch.
+Most vanilla sigils have been automatically given Part2Modular. For a full list, see the Part2ModularAbilities file on the GitHub.
 
 # Cards
 
@@ -163,7 +162,7 @@ CardInfo myEvolveCard = CardManager.New("Example", "Evolve", "Evolve Card", 2, 5
 Plugin.Log.LogInfo(CardLoader.GetCardByName("Example_Base").evolveParams == null); // FALSE!
 ```
 
-## Editing existing cards
+## Editing Existing Cards
 If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:
 
 ```c#
@@ -236,6 +235,138 @@ private void AddCustomDeathCard()
 
     // you can then add your newly created death card to the list of default death card mods like so
     DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+```
+
+## Adding Decals
+Decals are textures overlaid on top of cards.
+Unlike card portraits, these can have colour in them and can be used to add some extra detail.
+Vanilla examples include the bloodstains on the Great White and the stitches on card merged by the Mycologists.
+
+Decals in Act 1 are 125x190 pixels, while in Act 2 they are 42x56 pixels.
+The decal texture covers the entire card, so keep that in mind when making yours.
+
+There are a couple ways to give a card a decal, and we'll go over both, starting with:
+
+### Adding Decals with Card Appearance Behaviours
+Decals can be added to cards using appearance behaviours by adding the decal texture to the base card's info's TempDecals, as seen in this vanilla example:
+
+```c#
+// AlternatingBloodDecal behaviour
+public override void ApplyAppearance()
+{
+	if (base.Card is PlayableCard)
+	{
+		base.Card.Info.TempDecals.Clear();
+		base.Card.Info.TempDecals.Add(ResourceBank.Get<Texture>("Art/Cards/Decals/" + GetBloodDecalId()));
+	}
+}
+```
+
+This is fairly simple pattern we can easily replicate with a couple tweaks.
+Notice that the example grabs its texture from the ResourceBank;
+while you can do this yourself (we'll show how you can add to the ResourceBank later), it's far easier to simply grab your decal texture using the API:
+
+```c#
+// MyCustomDecal behaviour
+public override void ApplyAppearance()
+{
+	if (base.Card is PlayableCard)
+	{
+		base.Card.Info.TempDecals.Clear();
+        Texture decal = TextureHelper.GetImageAsTexture("my_decal_texture.png");
+		base.Card.Info.TempDecals.Add(decal);
+	}
+}
+```
+
+And boom!
+Now any card with this appearance behaviour will also have this decal added to it. Simply as pie.
+
+Now onto the other method.
+
+### Adding Decals with CardModificationInfos
+While using appearance behaviours is the simplest way to add decals, there are some limitations to it.
+The big one here is that they apply the decal to *all* copies of the card, so if you want to add decals to just one card you'll need to use a card mod.
+
+DecalIds is a field you can set when creating a card mod for the first time.
+It's a list of strings, each representing the name of a decal texture stored in the game's ResourceBank at a specific path.
+Meaning, if we want to use this system ourselves, we'll need to add our decal texture to the ResourceBank using said path.
+
+Fortunately, the API's got you covered with its ResourceBankManager.
+The ResourceBank contains more than just textures, but that's a bit more advanced and outside of this section's jurisdiction.
+For our purposes, we simply need to call the ResourceBankManager's AddDecal method like so:
+
+```c#
+private void Awake()
+{
+    Texture decal = TextureHelper.GetImageAsTexture("my_decal_texture.png");
+
+    // note that the resource name doesn't need to include the file extension
+    // technically, you can put anything as long as you reference it correctly
+    ResourceBankManager.AddDecal(MyPluginGUID, "custom_decal_name", decal);
+}
+```
+
+Once this is done, we can add our texture's name to DecalIds in order to add it to the card.
+
+```c#
+public class MyAbility : AbilityBehaviour
+
+public override IEnumerator OnDealDamage(int amount, PlayableCard target)
+{
+    CardModificationInfo decalMod = new()
+    {
+        DecalIds = { "custom_decal_name" }
+    };
+    target.AddTemporaryMod(decalMod);
+}
+```
+
+### Decals in Act 2
+Adding decals in Act 2 differs slightly from the ways stated above.
+
+Firstly, regular card appearance behaviours will not work; you must use the API's custom PixelAppearanceBehaviour.
+It behaves identically to regular appearance behaviours, but now in order to change the card's appearance you must override either PixelAppearance or OverrideBackground.
+
+OverrideBackground will change the - wait for it - card background. Shocking, I know.
+
+PixelAppearance will apply the sprite to the card and is what you will need to use to add a decal.
+
+```c#
+public class CustomPixelAppearance : PixelAppearanceBehaviour
+{
+    public static Appearance appearance;
+    public override Sprite PixelAppearance()
+    {
+        return TextureHelper.GetImageAsSprite("pixel_decal.png", TextureHelper.SpriteType.PixelDecal);
+    }
+}
+```
+
+<br>
+
+Using CardModificationInfos is the same as before, but now you must also add your decal texture to the PixelCardManager using AddGBCDecal.
+
+```c#
+private void CreateCustomAppearances
+{
+    CustomPixelAppearance.appearance = CardHelper.CreateAppearance<CustomPixelAppearance>(pluginGuid, "CustomPixelAppearanceName").Id;
+
+    Texture2D texture = TextureHelper.GetImageAsTexture("pixel_decal.png");
+    PixelCardManager.AddGBCDecal(pluginGuid, "pixel_decal_name", texture);
+}
+
+// same example code as above
+public class MyAbility : AbilityBehaviour
+
+public override IEnumerator OnDealDamage(int amount, PlayableCard target)
+{
+    CardModificationInfo decalMod = new()
+    {
+        DecalIds = { "pixel_decal_name" }
+    };
+    target.AddTemporaryMod(decalMod);
 }
 ```
 
@@ -518,6 +649,11 @@ If you prefer, you can use the numeric value associated with an emotion instead 
 "[e:2]I'm angry."
 ```
 
+## Altering GBC Card Packs
+You can use the event handler GBCPackManager.ModifyGBCPacks to alter the possible contents of a card pack before it's opened.
+
+This event is called *after* the game removes cards without CardMetaCategory.GBCPack and already owned singleton cards.
+
 # Abilities
 
 ## Ability Management
@@ -592,7 +728,7 @@ public class Sharp : AbilityBehaviour
 The API adds a number of interfaces you can use to add additional functionality to your ability.
 It also adds a new class: `ExtendedAbilityBehaviour`, which has all the interfaces already implemented for immediate use, saving you time.
 
-### Modifying What Card Clots to Attack
+### Modifying What Card Slots to Attack
 
 To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
 If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.
@@ -735,7 +871,7 @@ public override IEnumerator OnPostResolveOnBoard()
 ## Special Stat Icons
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.
 
-Special stat icons inherit from DiskCardGame.VariableStatBehaviour
+Special stat icons inherit from DiskCardGame.VariableStatBehaviour.
 
 ```c#
 StatIconInfo myinfo = ...;
@@ -781,7 +917,7 @@ Note: you need to be very careful about how complicated the logic is in GetStatV
 ## Special Triggered Abilities
 Special triggered abilities are a lot like regular abilities; however, they are 'invisible' to the player (that is, they do not have icons or rulebook entries). As such, the API for these is very simple. You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.
 
-Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour
+Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour.
 
 ```c#
 public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, "Special Ability", typeof(MySpecialTriggeredAbility)).Id;
@@ -1414,13 +1550,13 @@ Asset bundles are how you can import your own models, texture, gameobjects and m
 Think of them as fancy .zip's that's supported by Unity.
 
 ## How to Make an Asset Bundle
-1. Make a Unity project. Make sure you are using 2014.4.24f1 or your models will not show in-game.
-2. Install the AssetBundleBrowser package. (Window->Package Manager)
+1. Make a Unity project. Make sure you are using 2019.4.24f1 or your models will not show in-game
+2. Install the AssetBundleBrowser package at Window -> Package Manager
 3. Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)
 4. At the bottom of the Inspector window you'll see a section labedled "Asset Bundle"
 5. Assign a new asset bundle name (example: testbundleexample)
 6. Build Asset bundles Window->AssetBundle Browser
-7. Go to the output path using file explorer
+7. Go to the output path using File Explorer
 8. There should be a file called 'testbundleexample' in that folder (It will not have an extension!)
 9. Copy this file into your mod folder
 

@@ -137,7 +137,10 @@ public static class TextureHelper
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
+
         texture.filterMode = filterMode;
+        texture.name = Path.GetFileNameWithoutExtension(pathCardArt);
+
         return texture;
     }
 
@@ -153,7 +156,10 @@ public static class TextureHelper
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
         bool isLoaded = texture.LoadImage(imgBytes);
+
         texture.filterMode = filterMode;
+        texture.name = Path.GetFileNameWithoutExtension(pathCardArt);
+
         return texture;
     }
 
@@ -168,6 +174,7 @@ public static class TextureHelper
     {
         texture.filterMode = filterMode;
         Sprite retval = Sprite.Create(texture, SPRITE_RECTS[spriteType], SPRITE_PIVOTS[spriteType]);
+        retval.name = texture.name;
         return retval;
     }
 
@@ -180,7 +187,9 @@ public static class TextureHelper
     public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
     {
         pivot ??= new Vector2(0.5f, 0.5f);
-        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+        Sprite retval = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+        retval.name = texture.name;
+        return retval;
     }
 
     /// <summary>

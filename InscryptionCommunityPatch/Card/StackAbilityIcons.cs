@@ -3,7 +3,9 @@ using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -25,7 +27,6 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9.png", typeof(StackAbilityIcons).Assembly)
     };
-
     private static readonly Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_0_med.png", typeof(StackAbilityIcons).Assembly),
@@ -39,17 +40,6 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9_med.png", typeof(StackAbilityIcons).Assembly)
     };
-
-    private static Sprite GetGBCNumberSprite(int number)
-    {
-        var stackGBC = "stack_gbc.png";
-        if (!PatchPlugin.act2StackIconType.Value)
-            stackGBC = "stack_gbc_alt.png";
-
-        Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
-        return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
-    }
-
     private static readonly Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
     {
         GetGBCNumberSprite(1),
@@ -62,6 +52,16 @@ public static class StackAbilityIcons
         GetGBCNumberSprite(8),
         GetGBCNumberSprite(9),
     };
+
+    private static Sprite GetGBCNumberSprite(int number)
+    {
+        var stackGBC = "stack_gbc.png";
+        if (!PatchPlugin.act2StackIconType.Value)
+            stackGBC = "stack_gbc_alt.png";
+
+        Texture2D texture = TextureHelper.GetImageAsTexture(stackGBC, typeof(StackAbilityIcons).Assembly);
+        return Sprite.Create(texture, new Rect(0f, 10f * (9f - number), 15f, 10f), new Vector2(0.5f, 0.5f));
+    }
 
     private static Color[] _topBorder = null;
     private static Color[] TOP_BORDER
@@ -129,29 +129,16 @@ public static class StackAbilityIcons
             for (int sY = 0; sY < searchTex.height - height; sY++)
             {
                 failed = false;
-
                 for (int nX = 0; nX < width; nX++)
                 {
                     for (int nY = 0; nY < height; nY++)
                     {
                         int j = nX + (nY * width);
                         int i = sX + nX + (sY + nY) * searchTex.width;
-
-                        if (matchPixels != null)
+                        if ((matchPixels != null && searchPixels[i] != matchPixels[j]) || searchPixels[i].a > 0)
                         {
-                            if (searchPixels[i] != matchPixels[j])
-                            {
-                                failed = true;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (searchPixels[i].a > 0)
-                            {
-                                failed = true;
-                                break;
-                            }
+                            failed = true;
+                            break;
                         }
 
                     }
@@ -253,7 +240,6 @@ public static class StackAbilityIcons
             return null;
 
         string textureName = $"{ability}-icon-{count}-PATCHEDINF";
-
         if (patchedTexture.ContainsKey(textureName))
             return patchedTexture[textureName];
 
@@ -296,18 +282,17 @@ public static class StackAbilityIcons
             onesDigitTex = textureType == NORMAL ? NUMBER_TEXTURES[count] : MEDIUM_NUMBER_TEXTURES[count];
 
         if (tensDigitTex != null)
+        {
             try
             {
                 newTexture.SetPixels(patchLocation.x - (onesDigitTex.width + 1), patchLocation.y, tensDigitTex.width, tensDigitTex.height, tensDigitTex.GetPixels(), 0);
             }
             catch { PatchPlugin.Logger.LogError("Couldn't properly set new texture."); }
+        }
 
         newTexture.SetPixels(patchLocation.x, patchLocation.y, onesDigitTex.width, onesDigitTex.height, onesDigitTex.GetPixels(), 0);
-
         newTexture.filterMode = FilterMode.Point;
-
-        // Apply all of the set pixels
-        newTexture.Apply();
+        newTexture.Apply(); // Apply all of the set pixels
 
         // Upload to the dictionary
         patchedTexture.Add(textureName, newTexture);
@@ -318,22 +303,18 @@ public static class StackAbilityIcons
     [HarmonyPostfix]
     private static void AddIconNumber(Ability ability, CardInfo info, PlayableCard card, ref AbilityIconInteractable __instance)
     {
-        if ((info == null && card == null) || !AbilitiesUtil.GetInfo(ability).canStack)
+        if (info == null || !AbilitiesUtil.GetInfo(ability).canStack)
             return;
 
         // Here's the goal
         // Find all abilities on the card
         // Replace all of the textures where it stacks with a texture showing that it stacks
-
-        // PatchPlugin.Logger.LogDebug("Adding new icon; testing for stacks");
-
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = info.Abilities;
         if (card != null)
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
 
         int count = baseAbilities.Where(ab => ab == ability).Count();
-
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
     }
@@ -342,11 +323,14 @@ public static class StackAbilityIcons
     [HarmonyPrefix]
     private static bool PatchPixelCardStacks(PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
     {
+        return RenderPixelAbilityStacks(__instance, abilities, card);
+    }
+
+    public static bool RenderPixelAbilityStacks(PixelCardAbilityIcons __instance, List<Ability> abilities, PlayableCard card)
+    {
         List<Tuple<Ability, int>> grps = abilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Where(ab => ab == a).Count())).ToList();
-
         List<GameObject> abilityIconGroups = __instance.abilityIconGroups;
-
-        if (abilityIconGroups.Count <= 0)
+        if (abilityIconGroups.Count == 0)
             return false;
 
         foreach (GameObject gameObject in abilityIconGroups)
@@ -367,14 +351,8 @@ public static class StackAbilityIcons
             {
                 SpriteRenderer abilityRenderer = componentsInChildren[i];
                 AbilityInfo abilityInfo = AbilitiesUtil.GetInfo(grps[i].Item1);
-                if (abilityInfo.activated)
-                {
-                    abilityRenderer.sprite = new();
-                    continue;
-                }
-
                 CardInfo cardInfo = card?.Info ?? __instance.GetComponentInParent<DiskCardGame.Card>()?.Info;
-                abilityRenderer.sprite = GetPixelEvolveSprite(abilityInfo, cardInfo, card);
+                abilityRenderer.sprite = abilityInfo.activated ? new() : OverridePixelSprite(abilityInfo, cardInfo, card);
                 if (abilityInfo.flipYIfOpponent && card != null && card.OpponentCard)
                 {
                     if (abilityInfo.customFlippedPixelIcon)
@@ -390,9 +368,9 @@ public static class StackAbilityIcons
         }
         __instance.conduitIcon.SetActive(abilities.Exists((Ability x) => AbilitiesUtil.GetInfo(x).conduit));
         Ability ability = abilities.Find((Ability x) => AbilitiesUtil.GetInfo(x).activated);
-
         PixelActivatedAbilityButton button = __instance.activatedAbilityButton;
-        if (ability > Ability.None)
+
+        if (ability != Ability.None)
         {
             button.gameObject.SetActive(true);
             button.SetAbility(ability);
@@ -409,11 +387,11 @@ public static class StackAbilityIcons
         // And now my custom code to add the ability counter if we need to
         Transform countTransform = abilityRenderer.transform.Find("Count");
 
-        if (countTransform == null && grpsI.Item2 <= 1)
-            return;
-
         if (countTransform == null)
         {
+            if (grpsI.Item2 <= 1)
+                return;
+
             GameObject counter = new();
             counter.transform.SetParent(abilityRenderer.transform);
             counter.layer = LayerMask.NameToLayer("GBCPauseMenu");
@@ -435,21 +413,28 @@ public static class StackAbilityIcons
         else
         {
             countTransform.gameObject.SetActive(true);
+            Debug.Log($"countTransform {grpsI.Item2 - 1}");
             countTransform.gameObject.GetComponent<SpriteRenderer>().sprite = GBC_NUMBER_SPRITES[grpsI.Item2 - 1];
         }
     }
-    private static Sprite GetPixelEvolveSprite(AbilityInfo abilityInfo, CardInfo cardInfo, PlayableCard card)
+    private static Sprite OverridePixelSprite(AbilityInfo abilityInfo, CardInfo cardInfo, PlayableCard card)
     {
         if (abilityInfo.ability == Ability.Evolve && cardInfo)
         {
             int turnsInPlay = card?.GetComponentInChildren<Evolve>()?.numTurnsInPlay ?? 0;
             int turnsToEvolve = Mathf.Max(1, (cardInfo.evolveParams == null ? 1 : cardInfo.evolveParams.turnsToEvolve) - turnsInPlay);
-
             int pngIndex = turnsToEvolve > 3 ? 0 : turnsToEvolve;
 
-            abilityInfo.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"pixel_evolve_{pngIndex}.png", typeof(StackAbilityIcons).Assembly));
+            Texture2D texture = TextureHelper.GetImageAsTexture($"pixel_evolve_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
+            return TextureHelper.ConvertTexture(texture, TextureHelper.SpriteType.PixelAbilityIcon);
         }
+        if (card && card.RenderInfo.overriddenAbilityIcons.ContainsKey(abilityInfo.ability))
+        {
+            card.RenderInfo.overriddenAbilityIcons.TryGetValue(abilityInfo.ability, out Texture texture);
 
+            if (texture != null)
+                return TextureHelper.ConvertTexture((Texture2D)texture, TextureHelper.SpriteType.PixelAbilityIcon);
+        }
         return abilityInfo.pixelIcon;
     }
 

@@ -1,8 +1,12 @@
 using DiskCardGame;
+using GBC;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
+using System.Reflection;
+using HarmonyLib;
 using UnityEngine;
+using Microsoft.Win32.SafeHandles;
 
 namespace InscryptionAPI.Card;
 
@@ -20,7 +24,6 @@ public static class CardExtensions
     {
         return portrait.ConvertTexture(spriteType, filterMode ?? FilterMode.Point);
     }
-
 
     #region Adders
 
@@ -182,6 +185,150 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Removes any number of special abilities from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="abilities">The special abilities to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
+    {
+        if (info.specialAbilities?.Count > 0)
+        {
+            foreach (var ab in abilities)
+            {
+                info.specialAbilities.RemoveAll(a => a == ab);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of special abilities from the card. Will remove one instance of each passed ability; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="abilities">The special abilities to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveSpecialAbilitiesSingle(this CardInfo info, params SpecialTriggeredAbility[] abilities)
+    {
+        if (info.specialAbilities?.Count > 0)
+        {
+            foreach (var ab in abilities)
+            {
+                info.specialAbilities.Remove(ab);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of appearance behaviors from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="appearances">The appearances to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
+    {
+        if (info.appearanceBehaviour?.Count > 0)
+        {
+            foreach (var app in appearances)
+            {
+                info.appearanceBehaviour.RemoveAll(a => a == app);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of appearance behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="appearances">The appearances to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveAppearancesSingle(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
+    {
+        if (info.appearanceBehaviour?.Count > 0)
+        {
+            foreach (var app in appearances)
+            {
+                info.appearanceBehaviour.Remove(app);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of decals from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="decals">The decals to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveDecals(this CardInfo info, params Texture[] decals)
+    {
+        if (info.decals?.Count > 0)
+        {
+            foreach (var dec in decals)
+            {
+                info.decals.RemoveAll(d => d == dec);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of decals behaviors from the card. Will remove one instance of each passed decals; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="decals">The decals to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveDecalsSingle(this CardInfo info, params Texture[] decals)
+    {
+        if (info.decals?.Count > 0)
+        {
+            foreach (var dec in decals)
+            {
+                info.decals.Remove(dec);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of metacategories from the card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="categories">The categories to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveMetaCategories(this CardInfo info, params CardMetaCategory[] categories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (var cat in categories)
+            {
+                info.metaCategories.RemoveAll(c => c == cat);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of metacategories behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="categories">The categories to remove</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo RemoveMetaCategoriesSingle(this CardInfo info, params CardMetaCategory[] categories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (var cat in categories)
+            {
+                info.metaCategories.Remove(cat);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
     /// <param name="info">Card to access</param>
@@ -199,6 +346,7 @@ public static class CardExtensions
         }
         return info;
     }
+    
     /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
@@ -213,6 +361,25 @@ public static class CardExtensions
             {
                 if (info.IsOfTribe(tr))
                     info.tribes.Remove(tr);
+            }
+        }
+        return info;
+    }
+
+    /// <summary>
+    /// Removes any number of CardMetaCategories from the card.
+    /// </summary>
+    /// <param name="info">Card to access.</param>
+    /// <param name="cardMetaCategories">The CardMetaCategories to remove.</param>
+    /// <returns>The same card info so a chain can continue.</returns>
+    public static CardInfo RemoveCardMetaCategories(this CardInfo info, params CardMetaCategory[] cardMetaCategories)
+    {
+        if (info.metaCategories?.Count > 0)
+        {
+            foreach (CardMetaCategory cm in cardMetaCategories)
+            {
+                if (info.HasCardMetaCategory(cm))
+                    info.metaCategories.Remove(cm);
             }
         }
         return info;
@@ -269,8 +436,8 @@ public static class CardExtensions
     /// Sets the base attack and health of the card.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="baseAttack">The base attack for the card</param>
-    /// <param name="baseHealth">The base health for the card</param>
+    /// <param name="baseAttack">The base attack for the card.</param>
+    /// <param name="baseHealth">The base health for the card.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetBaseAttackAndHealth(this CardInfo info, int? baseAttack = 0, int? baseHealth = 0)
     {
@@ -280,6 +447,18 @@ public static class CardExtensions
         if (baseHealth.HasValue)
             info.baseHealth = baseHealth.Value;
 
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the Card Temple for the card. Used in Act 2 and in Act 1 for certain card choice nodes.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="temple">The Card Temple to use.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetCardTemple(this CardInfo info, CardTemple temple)
+    {
+        info.temple = temple;
         return info;
     }
 
@@ -455,15 +634,31 @@ public static class CardExtensions
         return info;
     }
 
+
     /// <summary>
-    /// Adds the Terrain trait and background to this card.
+    /// Adds the terrain trait and background to this card.
     /// </summary>
+    /// <param name="info">Card to access</param>
+    /// <returns>The same card info so a chain can continue</returns>
     /// <param name="info">CardInfo to access.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTerrain(this CardInfo info)
     {
         info.AddTraits(Trait.Terrain);
         info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground, CardAppearanceBehaviour.Appearance.TerrainLayout);
+        return info;
+    }
+    /// <summary>
+    /// Adds the Terrain trait and background to this card, with the option to not use TerrainLayout.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout)
+    {
+        info.AddTraits(Trait.Terrain);
+        info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainBackground);
+        if (useTerrainLayout)
+            info.AddAppearances(CardAppearanceBehaviour.Appearance.TerrainLayout);
         return info;
     }
 
@@ -544,6 +739,18 @@ public static class CardExtensions
         {
             info.SetEvolve(evolution, numberOfTurns, mods);
         }
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the default evolution name for the card. This is the name used when the card doesn't evolve into another card.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="defaultName">The default evolution name to use. Pass in 'null' to use the vanilla default.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetDefaultEvolutionName(this CardInfo info, string defaultName)
+    {
+        info.defaultEvolutionName = defaultName;
         return info;
     }
 
@@ -1126,11 +1333,7 @@ public static class CardExtensions
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
-        return info.SetPixelPortrait(
-            !filterMode.HasValue
-                ? portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait)
-                : portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode.Value)
-        );
+        return info.SetPixelPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
     }
 
     /// <summary>
@@ -1235,6 +1438,46 @@ public static class CardExtensions
         return info;
     }
 
+    #endregion
+
+    #region Extra Alts
+        /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory)</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelAlternatePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the card portrait</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelAlternatePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+
+    /// <summary>
+    /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the card portrait</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetPixelAlternatePortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelalternateportrait";
+
+        info.GetAltPortraits().PixelAlternatePortrait = portrait;
+        return info;
+    }
     #endregion
 
     #endregion
@@ -1457,6 +1700,9 @@ public static class CardExtensions
         }
         return false;
     }
+
+    public static bool IsPelt(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Pelt);
+    public static bool IsTerrain(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Terrain);
     #endregion
 
     #region CardMetaCategory
@@ -1525,6 +1771,7 @@ public static class CardExtensions
 
     public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
+    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.GetAltPortraits().PixelAlternatePortrait != null;
 
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.
@@ -1943,6 +2190,16 @@ public static class CardExtensions
         return playableCard.OpposingSlot()?.Card;
     }
 
+    public static void AddTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
+    {
+        foreach (CardModificationInfo mod in mods)
+            card.AddTemporaryMod(mod);
+    }
+    public static void RemoveTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
+    {
+        foreach (CardModificationInfo mod in mods)
+            card.RemoveTemporaryMod(mod);
+    }
 
     #endregion
 
@@ -2082,6 +2339,125 @@ public static class CardExtensions
     {
         bool? isOAPI = info.GetExtendedPropertyAsBool("AddedByOldApi");
         return isOAPI.HasValue && isOAPI.Value;
+    }
+    #endregion
+
+    #region Costs
+    /// <summary>
+    /// Gets a PlayableCards using this specific CardInfo.
+    /// Sometimes inscryption clones CardInfo's and sometimes its reused so there may be more than 1 card using the same CardInfo
+    /// </summary>
+    /// <param name="cardInfo">CardInfo to access.</param>
+    /// <returns>Playable Card on the board, in your hand or on display somewhere</returns>
+    public static PlayableCard GetPlayableCard(this CardInfo cardInfo)
+    {
+        if (CostProperties.CostProperties.CardInfoToCard.TryGetValue(cardInfo, out List<WeakReference<PlayableCard>> cardList))
+        {
+            for (int i = cardList.Count - 1; i >= 0; i--)
+            {
+                if (cardList[i].TryGetTarget(out PlayableCard card) && card != null)
+                    return card;
+
+                cardList.RemoveAt(i);
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Returns the blood cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards blood cost
+    /// </summary>
+    public static int BloodCost(this PlayableCard card)
+    {
+        //Debug.Log($"{card != null} {card?.Info != null} [{card?.GetType()}] {(card as DiskCardGame.Card)?.Info != null}");
+        if (card && card.Info)
+        {
+            int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
+
+            if (card.IsUsingBlueGem())
+                originalBloodCost--;
+
+            // add adjustments from temp mods
+            foreach (CardModificationInfo mod in card.TemporaryMods)
+                originalBloodCost += mod.bloodCostAdjustment;
+
+            return originalBloodCost;
+        }
+
+        InscryptionAPIPlugin.Logger.LogError("[BloodCost] Couldn't find Card or CardInfo for blood cost??? How is this possible?");
+        return 0;
+    }
+
+
+    /// <summary>
+    /// Returns the bone cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards bone cost
+    /// </summary>
+    public static int BonesCost(this PlayableCard card)
+    {
+        if (card && card.Info)
+        {
+            int originalBonesCost = CostProperties.CostProperties.OriginalBonesCost(card.Info);
+            if (card.IsUsingBlueGem())
+                originalBonesCost--;
+
+            // add adjustments from temp mods
+            foreach (CardModificationInfo mod in card.TemporaryMods)
+                originalBonesCost += mod.bonesCostAdjustment;
+
+            return originalBonesCost;
+        }
+
+        InscryptionAPIPlugin.Logger.LogError("Couldn't find Card or CardInfo for bone cost??? How is this possible?");
+        return 0;
+    }
+
+
+    /// <summary>
+    /// Returns the gem cost of a card.
+    /// This function can be overriden if someone wants to inject new cost into a cards gem cost
+    /// </summary>
+    public static List<GemType> GemsCost(this PlayableCard card)
+    {
+        if (!card || !card.Info)
+            return new();
+
+        List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
+        // if gems are nullified, return a new list
+        if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
+            return new List<GemType>();
+
+        List<GemType> gemsCost = new(card.Info.gemsCost);
+        foreach (CardModificationInfo mod in mods)
+        {
+            if (mod.addGemCost == null)
+                continue;
+
+            foreach (GemType item in mod.addGemCost)
+            {
+                if (!gemsCost.Contains(item))
+                    gemsCost.Add(item);
+            }
+        }
+
+        if (gemsCost.Count > 0 && card.IsUsingBlueGem())
+            gemsCost.RemoveAt(0);
+
+        return gemsCost;
+    }
+
+    public static bool IsGemified(this PlayableCard card)
+    {
+        return card.Info.Gemified || card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);
+    }
+    public static bool OwnerHasBlueGem(this PlayableCard card)
+    {
+        return card.OpponentCard ? OpponentGemsManager.Instance.HasGem(GemType.Blue) : ResourcesManager.Instance.HasGem(GemType.Blue);
+    }
+    public static bool IsUsingBlueGem(this PlayableCard card)
+    {
+        return card.IsGemified() && card.OwnerHasBlueGem();
     }
     #endregion
 }

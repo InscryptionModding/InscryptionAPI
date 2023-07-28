@@ -1,5 +1,10 @@
+using DiskCardGame;
+using GBC;
 using HarmonyLib;
+using InscryptionAPI.Pelts;
+using System.Collections;
 using UnityEngine;
+using static DiskCardGame.TextDisplayer;
 
 namespace InscryptionAPI.Dialogue;
 
@@ -30,8 +35,12 @@ public static class DialogueManager
             DialogueEvent = dialogueEvent
         };
 
+        CustomDialogue.RemoveAll(d => d.DialogueEvent.id == dialogueEvent.id);
         CustomDialogue.Add(dialogue);
+
+        DialogueDataUtil.Data?.events?.RemoveAll(d => d.id == dialogueEvent.id);
         DialogueDataUtil.Data?.events?.Add(dialogueEvent);
+        
         return dialogue;
     }
 
@@ -61,6 +70,43 @@ public static class DialogueManager
 
         Add(pluginGUID, ev);
         return ev;
+    }
+
+    public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, PeltManager.PeltData peltData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateTraderPeltsEvent(pluginGUID, peltData.peltTierName ?? PeltManager.GetTierNameFromData(peltData), lines, repeatLines);
+    }
+    public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, string peltTierName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateEvent(pluginGUID, "TraderPelts" + peltTierName, lines, repeatLines);
+    }
+
+    public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, RegionData regionData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateRegionIntroductionEvent(pluginGUID, regionData.name, lines, repeatLines);
+    }
+    public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, string regionName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateEvent(pluginGUID, "Region" + regionName, lines, repeatLines);
+    }
+
+    public static IEnumerator PlayDialogueEventSafe(string eventId,
+        MessageAdvanceMode advanceMode = MessageAdvanceMode.Auto,
+        EventIntersectMode intersectMode = EventIntersectMode.Wait,
+        DialogueSpeaker speaker = null, TextBox.Style style = TextBox.Style.Neutral,
+        TextBox.ScreenPosition screenPosition = TextBox.ScreenPosition.OppositeOfPlayer,
+        string[] variableStrings = null,
+        Action<DialogueEvent.Line> newLineCallback = null,
+        bool adjustAudioVolume = true)
+    {
+        if (SaveManager.SaveFile.IsPart2)
+        {
+            yield return DialogueHandler.Instance.PlayDialogueEvent(eventId, style, speaker, variableStrings, screenPosition, adjustAudioVolume);
+        }
+        else
+        {
+            yield return TextDisplayer.Instance.PlayDialogueEvent(eventId, advanceMode, intersectMode, variableStrings, newLineCallback);
+        }
     }
 
     #region Patches
