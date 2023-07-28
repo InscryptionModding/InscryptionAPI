@@ -532,23 +532,23 @@ public static class Part3CardCostRender
             // Make each gem
             GameObject blueCost = GameObject.Instantiate(card.GetPiece(BLUE_GEM_ORIGINAL), gemContainer.transform);
             blueCost.name = BLUE_GEM_COST;
-            blueCost.transform.localScale = new (650f, 200f, 200f);
-            blueCost.transform.localPosition = new (-0.3f, 0.477f, 0f);
+            blueCost.transform.localScale = new (650f, 200f, 450f);
+            blueCost.transform.localPosition = new (-0.3f, 0.36f, 0f);
             blueCost.transform.localEulerAngles = new (270f, 90f, 0f);
             retval[GemType.Blue] = blueCost.GetComponent<Renderer>();
 
             GameObject greenCost = GameObject.Instantiate(card.GetPiece(GREEN_GEM_ORIGINAL), gemContainer.transform);
             greenCost.name = GREEN_GEM_COST;
-            greenCost.transform.localScale = new (650f, 200f, 200f);
+            greenCost.transform.localScale = new (650f, 200f, 450f);
             greenCost.transform.localEulerAngles = new (270f, 90f, 0f);
-            greenCost.transform.localPosition = new (0f, 0.477f, 0f);
+            greenCost.transform.localPosition = new (0f, 0.39f, 0f);
             retval[GemType.Green] = greenCost.GetComponent<Renderer>();
 
             GameObject orangeCost = GameObject.Instantiate(card.GetPiece(ORANGE_GEM_ORIGINAL), gemContainer.transform);
             orangeCost.name = ORANGE_GEM_COST;
-            orangeCost.transform.localScale = new (650f, 200f, 200f);
+            orangeCost.transform.localScale = new (650f, 200f, 450f);
             orangeCost.transform.localEulerAngles = new (270f, 90f, 0f);
-            orangeCost.transform.localPosition = new (0.3f, 0.477f, 0f);
+            orangeCost.transform.localPosition = new (0.3f, 0.41f, 0f);
             retval[GemType.Orange] = orangeCost.GetComponent<Renderer>();
         }
         else
