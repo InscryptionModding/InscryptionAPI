@@ -3,7 +3,7 @@
 <details>
 <summary>View Changelog</summary>
 
-## 2.14.6
+## 2.15.0
 - Fixed friend cards created by G0LLY not having any mods
 - Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
 - Added cost display support for Act 3
