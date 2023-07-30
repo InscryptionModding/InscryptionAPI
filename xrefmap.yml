@@ -9161,6 +9161,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.TextureHelper.ConvertTexture
   nameWithType: TextureHelper.ConvertTexture
+- uid: InscryptionAPI.Helpers.TextureHelper.DuplicateTexture(UnityEngine.Texture2D)
+  name: DuplicateTexture(Texture2D)
+  href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_DuplicateTexture_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.DuplicateTexture(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Helpers.TextureHelper.DuplicateTexture(UnityEngine.Texture2D)
+  nameWithType: TextureHelper.DuplicateTexture(Texture2D)
+- uid: InscryptionAPI.Helpers.TextureHelper.DuplicateTexture*
+  name: DuplicateTexture
+  href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_DuplicateTexture_
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.DuplicateTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.TextureHelper.DuplicateTexture
+  nameWithType: TextureHelper.DuplicateTexture
 - uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
   name: GetImageAsSprite(String, TextureHelper.SpriteType, FilterMode)
   href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetImageAsSprite_System_String_InscryptionAPI_Helpers_TextureHelper_SpriteType_UnityEngine_FilterMode_
