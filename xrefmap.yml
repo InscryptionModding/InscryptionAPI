@@ -5012,22 +5012,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardManager.SyncCardList
   nameWithType: CardManager.SyncCardList
-- uid: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name: Transpiler(IEnumerable<CodeInstruction>)
-  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_Transpiler_IEnumerable_HarmonyLib_CodeInstruction__
-  commentId: M:InscryptionAPI.Card.CardManager.Transpiler(IEnumerable{HarmonyLib.CodeInstruction})
-  name.vb: Transpiler(IEnumerable(Of CodeInstruction))
-  fullName: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable<HarmonyLib.CodeInstruction>)
-  fullName.vb: InscryptionAPI.Card.CardManager.Transpiler(IEnumerable(Of HarmonyLib.CodeInstruction))
-  nameWithType: CardManager.Transpiler(IEnumerable<CodeInstruction>)
-  nameWithType.vb: CardManager.Transpiler(IEnumerable(Of CodeInstruction))
-- uid: InscryptionAPI.Card.CardManager.Transpiler*
-  name: Transpiler
-  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_Transpiler_
-  commentId: Overload:InscryptionAPI.Card.CardManager.Transpiler
-  isSpec: "True"
-  fullName: InscryptionAPI.Card.CardManager.Transpiler
-  nameWithType: CardManager.Transpiler
 - uid: InscryptionAPI.Card.CardModificationInfoExtensions
   name: CardModificationInfoExtensions
   href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html
