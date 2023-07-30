@@ -14,7 +14,7 @@ namespace InscryptionAPI.Card;
 /// <remarks>This manager can currently handle watermarking cards with tribes and having 
 /// them appear at tribal choice nodes. Totems are not currently supported.</remarks>
 [HarmonyPatch]
-public class TribeManager
+public static class TribeManager
 {
     private static readonly List<TribeInfo> tribes = new();
     private static readonly List<Tribe> tribeTypes = new();

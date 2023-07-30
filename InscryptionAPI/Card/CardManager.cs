@@ -353,30 +353,16 @@ public static class CardManager
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
         CardAlternatePortraits.Add((CardInfo)__result, CardAlternatePortraits.GetOrCreateValue(__instance));
-        // clone the mods too
+        // clone all the mods too
+        // DO NOT CHANGE THIS
+        // if there are errors due to this, address them where they occur, NOT HERE
+        // I've spent way too much time trying to make this work and it's easier to just clone everything
         CardInfo result = (CardInfo)__result;
-
-        foreach (CardModificationInfo mod in __instance.Mods)
-        {
-            if (mod.buildACardPortraitInfo != null ||
-                mod.bountyHunterInfo != null ||
-                mod.deathCardInfo != null)
-            {
-                result.Mods.Add(mod);
-                continue;
-            }
-            CardModificationInfo neededInfo = new()
-            {
-                gemify = mod.gemify,
-                singletonId = mod.singletonId
-            };
-            result.Mods.Add(neededInfo);
-        }
+        result.Mods = new(__instance.Mods);
     }
 
 
     // prevent duplicate mods from being added as a result of ClonePostfix
-    // hopefully won't cause any problems, cause otherwise we'll probably need a transpiler or something like that oh joy
     [HarmonyPrefix, HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ModifyCard))]
     private static bool ModifyCardDontAddDupes(CardInfo card, CardModificationInfo mod) => !card.Mods.Contains(mod);
 
@@ -403,7 +389,7 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] { typeof(string) })]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this
 
@@ -414,7 +400,7 @@ public static class CardManager
         // return CardLoader.Clone(LogCardInfo(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name)));
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         MethodInfo CloneMethodInfo = SymbolExtensions.GetMethodInfo(() => CardLoader.Clone(null));
         MethodInfo LogCardInfoMethodInfo = SymbolExtensions.GetMethodInfo(() => LogCardInfo(null, null));

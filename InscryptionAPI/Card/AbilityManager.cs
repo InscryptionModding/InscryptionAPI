@@ -567,16 +567,13 @@ public static class AbilityManager
         for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
         {
             AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
-            if (info.canStack) // if can stack and triggers once
+            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and is marked to only trigger once
             {
-                if (info.GetTriggersOncePerStack())
-                {
-                    if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
-                        abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+                if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
+                    abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
-                    // remove the first trigger
-                    __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
-                }
+                // remove the first trigger
+                __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
             }
         }
 
@@ -660,4 +657,82 @@ public static class AbilityManager
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
     }
 
+    [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> EvolveDoesntCopyMods(IEnumerable<CodeInstruction> instructions)
+    {
+        // turn this
+
+        // foreach (CardModificationInfo item in base.Card.Info.Mods.FindAll((CardModificationInfo x) => !x.nonCopyable))
+        // {
+        //     CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
+        //     if (cardModificationInfo.HasAbility(Ability.Evolve))
+        //     {
+        //         cardModificationInfo.abilities.Remove(Ability.Evolve);
+        //     }
+        //     evolution.Mods.Add(cardModificationInfo);
+        // }
+
+        // into this
+
+        // List<CardModificationInfo> evolveModCopies = new();
+        // foreach (CardModificationInfo item in evolution.Mods.Where(x => !x.nonCopyable))
+        // {
+        //     CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
+        //     if (cardModificationInfo.HasAbility(Ability.Evolve))
+        //     {
+        //         cardModificationInfo.abilities.Remove(Ability.Evolve);
+        //     }
+        //     evolveModCopies.Add(cardModificationInfo);
+        // }
+        // evolution.Mods = evolveModCopies;
+
+        List<CodeInstruction> codes = new(instructions);
+
+        int start = -1;
+        object transformInfo_operand = null;
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (transformInfo_operand == null && codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
+            {
+                transformInfo_operand = codes[i].operand;
+            }
+            else if (codes[i].opcode == OpCodes.Callvirt && codes[i].operand.ToString() == "Boolean get_EvolveInheritsInfoMods()")
+            {
+                start = i - 1;
+            }
+            else if (codes[i].opcode == OpCodes.Endfinally)
+            {
+                // Ldloc.1
+                // Ldfld <evolutionInfo>
+                // RemoveEvolveMods(Ldloc.1, Ldfld)
+
+                MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveEvolveMods),
+                    new Type[] { typeof(Evolve), typeof(CardInfo) });
+
+                codes.RemoveRange(start, i - start + 1);
+                codes.Insert(start, new(OpCodes.Ldloc_1));
+                codes.Insert(start + 1, new(OpCodes.Ldarg_0));
+                codes.Insert(start + 2, new(OpCodes.Ldfld, transformInfo_operand));
+                codes.Insert(start + 3, new(OpCodes.Call, customMethod));
+            }
+        }
+
+        return codes;
+    }
+    private static void RemoveEvolveMods(Evolve instance, CardInfo evolution)
+    {
+        if (instance.EvolveInheritsInfoMods)
+        {
+            List<CardModificationInfo> evolveModCopies = new();
+            foreach (CardModificationInfo item in evolution.Mods.Where(x => !x.nonCopyable))
+            {
+                CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
+                if (cardModificationInfo.HasAbility(Ability.Evolve))
+                    cardModificationInfo.abilities.Remove(Ability.Evolve);
+                evolveModCopies.Add(cardModificationInfo);
+            }
+            evolution.Mods = evolveModCopies;
+        }
+    }
 }

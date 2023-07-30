@@ -110,17 +110,19 @@ internal class RandomAbilityPatches
     }
     private static Ability GetRandomAbility(PlayableCard card)
     {
-        List<Ability> learnedAbilities = new();
-        bool isOpponent = card.OpponentCard;
-        if (!SaveManager.SaveFile.IsPart2)
-            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: isOpponent, 0, 5, SaveManager.SaveFile.IsPart1 ? AbilityMetaCategory.Part1Modular : AbilityMetaCategory.Part3Modular);
-        else
-        {
-            learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: isOpponent, 0, 5, AbilityManager.Part2Modular);
-            learnedAbilities.RemoveAll(x => x == Ability.RandomConsumable);
-        }
+        AbilityMetaCategory category = AbilityMetaCategory.Part1Modular;
 
-        learnedAbilities.RemoveAll((Ability x) => x == Ability.RandomAbility || card.HasAbility(x));
+        if (SaveManager.SaveFile.IsPart2)
+            category = AbilityManager.Part2Modular;
+        else if (SaveManager.SaveFile.IsPart3)
+            category = AbilityMetaCategory.Part3Modular;
+
+        List<Ability> learnedAbilities = AbilitiesUtil.GetLearnedAbilities(opponentUsable: card.OpponentCard, 0, 5, category);
+        if (SaveManager.SaveFile.IsPart2)
+            learnedAbilities.Remove(Ability.RandomConsumable);
+
+        learnedAbilities.RemoveAll(x => x == Ability.RandomAbility || card.HasAbility(x));
+
         if (learnedAbilities.Count > 0)
             return learnedAbilities[SeededRandom.Range(0, learnedAbilities.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle)];
 

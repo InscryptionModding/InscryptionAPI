@@ -3,6 +3,12 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.15.0
+- Fixed friend cards created by G0LLY not having any mods
+- Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
+- Added cost display support for Act 3
+- Added bone counter for Act 3
+
 ## 2.14.5
 - Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
 - Fixed certain card mods duplicating when the card evolve
