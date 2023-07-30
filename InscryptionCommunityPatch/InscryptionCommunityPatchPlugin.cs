@@ -29,6 +29,7 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configMox;
     internal static ConfigEntry<bool> configDroneMox;
     internal static ConfigEntry<bool> configShowSquirrelTribeOnCards;
+    internal static ConfigEntry<bool> configAct3Bones;
 
     internal static ConfigEntry<bool> rightAct2Cost;
     internal static ConfigEntry<bool> act2CostRender;
@@ -77,6 +78,7 @@ public class PatchPlugin : BaseUnityPlugin
         configDefaultDrone = Config.Bind("Energy", "Default Drone", false, "Drone uses the vanilla model instead of being attached to the scales (requires Energy Drone)");
         configMox = Config.Bind("Mox", "Mox Refresh", true, "Mox refreshes at end of battle");
         configDroneMox = Config.Bind("Mox", "Mox Drone", false, "Drone displays mox (requires Energy Drone and Mox Refresh)");
+        configAct3Bones = Config.Bind("Bones", "Act 3 Bones", false, "Force bones displayer to be active in Act 3");
         configShowSquirrelTribeOnCards = Config.Bind("Tribes", "Show Squirrel Tribe", false, "Shows the Squirrel tribe icon on cards");
         act2CostRender = Config.Bind("Card Costs", "GBC Cost render", true, "GBC Cards are able to display custom costs and hybrid costs through the API.");
         rightAct2Cost = Config.Bind("Card Costs", "GBC Cost On Right", true, "GBC Cards display their costs on the top-right corner. If false, display on the top-left corner");

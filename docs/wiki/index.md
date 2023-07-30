@@ -25,6 +25,19 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the M
 
 Currently, the only zones where these settings will have any effect are CardTemple.Nature (Leshy's cabin) and CardTemple.Undead (Grimora's cabin).
 
+## Bones Display in Act Three / P03 in Kaycee's Mod
+With the API installed, a separate bones displayer can be made available in Act 3, which also affects the "P03 in Kaycee's Mod" mod. It will appear automatically if any cards with a bones cost are in the Act 3 card pool, and can be forced to appear by modifying the configuration for the API. This displayer appears as a TV screen hanging on the resource drone below the gems module.
+
+You can also force this to be active using code:
+
+```c#
+using InscryptionCommunityPatch.ResourceManagers;
+
+Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen to be visible in act 3.
+```
+
+If the bones TV screen is active, a bolt will also be dropped on top of each card that dies in-game (the same way that bone tokens are dropped on top of cards that die in Leshy's cabin).
+
 # Core Features
 
 ## Extending Enumerations
@@ -201,6 +214,9 @@ You can also add custom properties to a card mod.
 ```
 
 ## Custom Card Costs
+The Inscryption Community Patch allows for custom card costs to be displayed in all three main acts of the game:
+
+### Act 1/Act 2
 If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:
 
 ```c#
@@ -236,6 +252,56 @@ private void AddCustomDeathCard()
 
     // you can then add your newly created death card to the list of default death card mods like so
     DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+```
+
+### Act 3
+Custom card costs in Act 3 are a little more complex due to the fact that the Disk Card model displays card costs as 3D objects instead of texture rendered on the card art. As such, you actually have a little more control over how your custom costs are displayed if you want it.
+
+There are two custom cost events to hook into. `Part3CardCostRender.UpdateCardCostSimple` allows you to simply provide textures for your custom cost that will be rendered onto the card for you (and as you will see, there are helpers to build those textures for you as well). `Part3CardCostRender.UpdateCardCostComplex` gives you an opportunity to modify the `GameObject` for your card cost directly, allowing you to attach any arbitrary game objects to the card you wish.
+
+#### Basic Card Cost
+If you just want to display a basic card cost, all you need to do is prepare an icon that represents a single unit of your custom cost. For example, if you are building a custom cost for currency, you need an icon that represents spending one currency (for example, a `$` symbol). The width and height of the icon are up to you, but keep in mind that they will be placed onto a region that is 300x73 pixels, so the height should not exceed 73 pixels, and the wider the icon is, the fewer will fit on the space.
+
+The `Part3CardCostRender.GetIconifiedCostTexture` helper method accepts one of these icons as well as a cost value and generates a pair of textures displaying that total cost. The first texture is the default texture (albedo) and the second is an emissive texture. If there is enough space in the 300x73 region to repeat the icon enough times to display the cost, it will do so. Otherwise, it will render a 7-segement display.
+
+In the "currency cost" example, where the icon is the `$` symbol:
+- A cost of 3 would be rendered as `$$$`
+- A cost of 10 would be rendered as `$ x10`
+
+From here, you just need to hook into the event. Each custom cost is represented by a `CustomCostRenderInfo` object, which holds the textures and game objects that will become the cost rendering on the card. Each of these objects needs a unique identifier so the can be found later. In this simple example, that identifier isn't particularly useful because we won't use the second part of the event, but it's still required.
+
+```C#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+MyIconTexture = TextureHelper.GetImageAsTexture("cost_icon.png");
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List<Part3CardCostRender.CustomCostRenderInfo> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
+    costs.add(new ("MyCustomCost", Part3CardCostRender.GetIconifiedCostTexture(MyIconTexture, myCustomCost)));
+}
+```
+
+### Advanced Card Costs
+You can also directly modify the card costs by adding new game objects to them, using the `UpdateCardCostComplex` event. This gives you complete creative freedom, but does require you to truly understand the Unity engine to be able to make it work.
+
+To do this, don't add any textures to the render info during the first event. You can then access the `GameObject` during the second event and do whatever you want:
+
+```C#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+using UnityEngine;
+
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List<Part3CardCostRender.CustomCostRenderInfo> costs)
+{
+    costs.add(new ("MyCustomCost"));
+}
+
+Part3CardCostRender.UpdateCardCostComplex += delegate(CardInfo card, List<Part3CardCostRender.CustomCostRenderInfo> costs)
+{
+    GameObject costObject = costs.Find(c => c.name.Equals("MyCustomCost")).CostContainer;
+    // Now I can add things to the cost object directly.
 }
 ```
 
