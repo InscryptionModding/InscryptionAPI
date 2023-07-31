@@ -28,7 +28,7 @@ public static class Act3BonesDisplayer
         x == CardMetaCategory.ChoiceNode || x == CardMetaCategory.Part3Random || x == CardMetaCategory.Rare);
     }
 
-    public static bool PoolHasBones => CardManager.AllCardsCopy.Any(ci => ci.energyCost > 0 && ci.CardIsVisible());
+    public static bool PoolHasBones => CardManager.AllCardsCopy.Any(ci => ci.BonesCost > 0 && ci.CardIsVisible());
 
     public static bool SceneCanHaveBonesDisplayer
     {
