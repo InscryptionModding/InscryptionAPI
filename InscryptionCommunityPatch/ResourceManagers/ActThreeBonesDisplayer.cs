@@ -47,13 +47,25 @@ public static class Act3BonesDisplayer
 
     private static GameObject BonesTVScreen
     {
-        get { return _boneTvScreen.GetOrCreateValue(ResourceDrone.Instance); }
+        get 
+        { 
+            GameObject tvScreen;
+            if (_boneTvScreen.TryGetValue(ResourceDrone.Instance, out tvScreen))
+                return tvScreen;
+            return null;
+        }
         set { _boneTvScreen.Add(ResourceDrone.Instance, value); }
     }
 
     private static SpriteRenderer BonesCountRenderer
     {
-        get { return _boneCountRenderer.GetOrCreateValue(ResourceDrone.Instance); }
+        get 
+        { 
+            SpriteRenderer tvScreen;
+            if (_boneCountRenderer.TryGetValue(ResourceDrone.Instance, out tvScreen))
+                return tvScreen;
+            return null;
+        }
         set { _boneCountRenderer.Add(ResourceDrone.Instance, value); }
     }
 
