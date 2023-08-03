@@ -2,6 +2,39 @@
 The Inscryption Modding API provides a large number of features to make it both possible and easier to mod the game.
 This document provides explanations and examples to help you understand what everything does, as well as some other information pertaining to API features.
 
+# How to start modding.
+
+## Installation: 
+
+### Installation (game, automated):
+
+This is the recommended way to install BepInEx on the game.
+
+1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/)
+2. Click **Install with Mod Manager** button on top of the page
+3. Run the game via the mod manager
+
+### Installation (manual):
+
+If you are installing this manually, do the following
+
+0. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/)
+1. Extract the archive into a folder. **Do not extract into the game folder.**
+2. Move the contents of `BepInExPack_Inscryption` folder into the game folder (where the game executable is located).
+3. Run the game. If everything runs correctly, you will see BepInEx console pop up on your desktop.
+4. Follow the game running instructions below:
+
+#### Installation Manual Sub Info:
+
+1. Make 2 Folders in the BepInEx Folder called `patchers` and `monomod`
+2. Install and place: [API-Patcher](https://cdn.discordapp.com/attachments/904819911010947092/1041376866164015144/Assembly-CSharp.APIPatcher.mm.dll) into `patchers`
+3. Install and Place: [BepInExMonoModLoader](https://cdn.discordapp.com/attachments/904819911010947092/1041377048188440626/BepInEx.MonoMod.Loader.dll) [MonoMod](https://cdn.discordapp.com/attachments/904819911010947092/1041377048448471110/MonoMod.dll) into `monomod`
+4. Place the Plugins folder in the Zip into `plugins`
+
+## Installation Steamdeck:
+
+You have to download r2modman on the steam deck’s desktop mode and open it from its download using its “AppImage” file. Then go to the setting of the profile you have for the mods and click Browse Profile Folder. Then copy the BepInEx folder and go to steam and browse Inscryptions local files and paste that in there. Then enter Gaming Mode again and open Inscryption and if you did it right you’ll see the mod panel thing open up on the steam deck and after a bit of loading and a black screen you’ll have a modded Inscryption for your Steam Deck.
+
 # Tweaks
 
 ## Card Cost Displays
