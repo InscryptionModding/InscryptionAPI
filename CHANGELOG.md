@@ -3,6 +3,11 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.15.1
+- Fixed Transformer sigil disappearing upon transformation in certain scenarios
+- Fixed Act 3 Bone Display checking the wrong card cost, resulting in the display always appearing
+- Fixed Act 3 Bone Display null error in certain Acts
+
 ## 2.15.0
 - Fixed friend cards created by G0LLY not having any mods
 - Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
