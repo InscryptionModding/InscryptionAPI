@@ -725,7 +725,7 @@ public static class AbilityManager
         if (instance.EvolveInheritsInfoMods)
         {
             List<CardModificationInfo> evolveModCopies = new();
-            foreach (CardModificationInfo item in evolution.Mods.Where(x => !x.nonCopyable))
+            foreach (CardModificationInfo item in instance.Card.Info.Mods.Where(x => !x.nonCopyable))
             {
                 CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
                 if (cardModificationInfo.HasAbility(Ability.Evolve))
