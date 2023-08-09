@@ -27,8 +27,8 @@ If you are installing this manually, do the following
 #### Installation Manual Sub Info:
 
 1. Make 2 Folders in the BepInEx Folder called `patchers` and `monomod`
-2. Install and place: [API-Patcher](https://cdn.discordapp.com/attachments/904819911010947092/1041376866164015144/Assembly-CSharp.APIPatcher.mm.dll) into `patchers`
-3. Install and Place: [BepInExMonoModLoader](https://cdn.discordapp.com/attachments/904819911010947092/1041377048188440626/BepInEx.MonoMod.Loader.dll) [MonoMod](https://cdn.discordapp.com/attachments/904819911010947092/1041377048448471110/MonoMod.dll) into `monomod`
+2. Install and place: [API-Patcher](https://cdn.discordapp.com/attachments/904819911010947092/1041376866164015144/Assembly-CSharp.APIPatcher.mm.dll) into `monomod`
+3. Install and Place: [BepInExMonoModLoader](https://cdn.discordapp.com/attachments/904819911010947092/1041377048188440626/BepInEx.MonoMod.Loader.dll) [MonoMod](https://cdn.discordapp.com/attachments/904819911010947092/1041377048448471110/MonoMod.dll) into `patchers`
 4. Place the Plugins folder in the Zip into `plugins`
 
 ## Installation Steamdeck:
