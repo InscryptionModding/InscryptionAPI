@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -657,82 +658,139 @@ public static class AbilityManager
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
     }
 
+    #region Remove Duplicate Evolve Mods
     [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> EvolveDoesntCopyMods(IEnumerable<CodeInstruction> instructions)
     {
-        // turn this
-
-        // foreach (CardModificationInfo item in base.Card.Info.Mods.FindAll((CardModificationInfo x) => !x.nonCopyable))
-        // {
-        //     CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
-        //     if (cardModificationInfo.HasAbility(Ability.Evolve))
-        //     {
-        //         cardModificationInfo.abilities.Remove(Ability.Evolve);
-        //     }
-        //     evolution.Mods.Add(cardModificationInfo);
-        // }
-
-        // into this
-
-        // List<CardModificationInfo> evolveModCopies = new();
-        // foreach (CardModificationInfo item in evolution.Mods.Where(x => !x.nonCopyable))
-        // {
-        //     CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
-        //     if (cardModificationInfo.HasAbility(Ability.Evolve))
-        //     {
-        //         cardModificationInfo.abilities.Remove(Ability.Evolve);
-        //     }
-        //     evolveModCopies.Add(cardModificationInfo);
-        // }
-        // evolution.Mods = evolveModCopies;
-
         List<CodeInstruction> codes = new(instructions);
 
-        int start = -1;
-        object transformInfo_operand = null;
         for (int i = 0; i < codes.Count; i++)
         {
-            if (transformInfo_operand == null && codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
+            if (codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
             {
-                transformInfo_operand = codes[i].operand;
-            }
-            else if (codes[i].opcode == OpCodes.Callvirt && codes[i].operand.ToString() == "Boolean get_EvolveInheritsInfoMods()")
-            {
-                start = i - 1;
-            }
-            else if (codes[i].opcode == OpCodes.Endfinally)
-            {
-                // Ldloc.1
-                // Ldfld <evolutionInfo>
-                // RemoveEvolveMods(Ldloc.1, Ldfld)
-
-                MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveEvolveMods),
+                object operand = codes[i].operand;
+                MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveDuplicateMods),
                     new Type[] { typeof(Evolve), typeof(CardInfo) });
 
-                codes.RemoveRange(start, i - start + 1);
-                codes.Insert(start, new(OpCodes.Ldloc_1));
-                codes.Insert(start + 1, new(OpCodes.Ldarg_0));
-                codes.Insert(start + 2, new(OpCodes.Ldfld, transformInfo_operand));
-                codes.Insert(start + 3, new(OpCodes.Call, customMethod));
+                i += 2;
+
+                codes.Insert(i, new(OpCodes.Ldloc_1));
+                codes.Insert(i++, new(OpCodes.Ldarg_0));
+                codes.Insert(i++, new(OpCodes.Ldfld, operand));
+                codes.Insert(i++, new(OpCodes.Call, customMethod));
+                break;
             }
         }
 
         return codes;
     }
-    private static void RemoveEvolveMods(Evolve instance, CardInfo evolution)
+    private static void RemoveDuplicateMods(Evolve instance, CardInfo evolution)
     {
-        if (instance.EvolveInheritsInfoMods)
+        evolution.Mods.RemoveAll(x => instance.Card.Info.Mods.Contains(x));
+    }
+    #endregion
+
+    #region Better Transformer
+    [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetBeastModeStatsMod))]
+    private static void ModifyOtherTransformerCosts(ref CardModificationInfo __result, CardInfo beastModeCard, CardInfo botModeCard)
+    {
+        __result.SetBloodCost(botModeCard.BloodCost - beastModeCard.BloodCost)
+            .SetBonesCost(botModeCard.BonesCost - beastModeCard.BonesCost);
+
+        // no way of nullifying specific gem costs so we leave this out for now
+        // __result.SetGemsCost(new List<GemType>(beastModeCard.GemsCost.FindAll(x => !botModeCard.GemsCost.Contains(x))));
+    }
+    [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetTransformCardInfo))]
+    private static void ChangeTransformerInfoMethod(Transformer __instance, ref CardInfo __result)
+    {
+        __result = NewGetTransformCardInfo(__instance.Card);
+    }
+    private static CardInfo NewGetTransformCardInfo(PlayableCard card)
+    {
+        // mods carry over when transforming, so we need to make sure that the name isn't the current card name
+        // so we don't end up just transforming into the same card over and over again
+        string transformCardId = card.Info.Mods.Find(x => !string.IsNullOrEmpty(x.transformerBeastCardId) && x.transformerBeastCardId != card.Info.name)?.transformerBeastCardId;
+
+        transformCardId ??= card.Info.GetTransformerCardId(); // use the API-defined TransformerCardId
+        transformCardId ??= card.Info.evolveParams?.evolution?.name; // use the evolution params
+        transformCardId ??= "CXformerAdder"; // use Robo-Adder as a fallback
+
+        CardInfo cardByName = CardLoader.GetCardByName(transformCardId);
+        CardModificationInfo beastModeStatsMod = Transformer.GetBeastModeStatsMod(cardByName, card.Info);
+        beastModeStatsMod.nameReplacement = card.Info.DisplayedNameEnglish;
+        beastModeStatsMod.nonCopyable = true;
+        cardByName.Mods.Add(beastModeStatsMod);
+        CardModificationInfo item = new(Ability.Transformer)
         {
-            List<CardModificationInfo> evolveModCopies = new();
-            foreach (CardModificationInfo item in instance.Card.Info.Mods.Where(x => !x.nonCopyable))
+            nonCopyable = true
+        };
+        cardByName.Mods.Add(item);
+        cardByName.SetEvolve(card.Info, 1);
+
+        if (card.Info.HasSpecialAbility(SpecialTriggeredAbility.TalkingCardChooser))
+        {
+            card.RenderInfo.prefabPortrait = null;
+            card.RenderInfo.hidePortrait = false;
+            card.ClearAppearanceBehaviours();
+            Singleton<CardRenderCamera>.Instance.StopLiveRenderCard(card.StatsLayer);
+        }
+        return cardByName;
+    }
+    #endregion
+
+    #region Better Squirrel Orbit
+    [HarmonyPatch(typeof(SquirrelOrbit), nameof(SquirrelOrbit.OnUpkeep))]
+    [HarmonyPrefix]
+    private static bool FixSquirrelOrbit(SquirrelOrbit __instance, ref IEnumerator __result)
+    {
+        __result = BetterSquirrelOrbit(__instance);
+        return false;
+    }
+
+    private static IEnumerator BetterSquirrelOrbit(SquirrelOrbit instance)
+    {
+        List<CardSlot> affectedSlots = new();
+
+        if (instance.Card.HasTrait(Trait.Giant))
+            affectedSlots = Singleton<BoardManager>.Instance.GetSlotsCopy(instance.Card.OpponentCard);
+        else
+            affectedSlots = Singleton<BoardManager>.Instance.AllSlotsCopy;
+
+        affectedSlots.RemoveAll(x => !x.Card || !x.Card.IsAffectedByTidalLock());
+        if (affectedSlots.Count == 0)
+            yield break;
+
+        instance.Card.Anim.LightNegationEffect();
+        yield return new WaitForSeconds(0.2f);
+
+        foreach (CardSlot slot in affectedSlots)
+        {
+            PlayableCard item = slot.Card;
+            Singleton<ViewManager>.Instance.SwitchToView(View.Board);
+            yield return new WaitForSeconds(0.25f);
+            yield return item.Die(false);
+            yield return new WaitForSeconds(0.1f);
+
+            if (instance.Card.HasTrait(Trait.Giant))
+                Singleton<ViewManager>.Instance.SwitchToView(View.OpponentQueue);
+
+            yield return new WaitForSeconds(0.1f);
+
+            if (instance.Card.HasSpecialAbility(SpecialTriggeredAbility.GiantMoon))
             {
-                CardModificationInfo cardModificationInfo = (CardModificationInfo)item.Clone();
-                if (cardModificationInfo.HasAbility(Ability.Evolve))
-                    cardModificationInfo.abilities.Remove(Ability.Evolve);
-                evolveModCopies.Add(cardModificationInfo);
+                instance.FindMoonPortrait();
+                instance.moonPortrait.InstantiateOrbitingObject(item.Info);
             }
-            evolution.Mods = evolveModCopies;
+
+            if (instance.HasLearned)
+                yield return new WaitForSeconds(0.5f);
+            else
+            {
+                yield return new WaitForSeconds(1f);
+                yield return instance.LearnAbility();
+            }
         }
     }
+    #endregion
 }
