@@ -8,52 +8,69 @@ We will go over its numerous features, providing information and examples on wha
 To begin, we'll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.
 
 ## Installing with a Mod Manager
-This is the recommended way to install BepInEx on the game.
+This is the recommended way to install BepInEx to the game.
 
 1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/).
-2. Click **Install with Mod Manager** button on top of the page.
+2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) page.
 3. Run the game via the mod manager.
 
 ## Installing Manually
-If you are installing this manually, do the following
-
-1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) and extract the archive into a folder. **Do not extract into the game folder!**
+1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) by pressing 'Manual Download' and extracting the archive into a folder. **Do not extract into the game folder!**
 2. Move the contents of the `BepInExPack_Inscryption` folder into the game folder (where the game executable is).
 3. Run the game. If everything runs correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.
-4. Download [MonoModLoader](https://github.com/BepInEx/BepInEx.MonoMod.Loader/releases/tag/v1.0.0.0l) and place the extracted contents into the game folder.
-5. Download the [API](https://inscryption.thunderstore.io/package/API_dev/API/) and place the extracted `monomod` and `plugin` folders into the `BepInEx` folder.
-6. Run the game again. You should see a message in the console telling you that the API was loaded.
-7. You're done!  Download some other mods and enjoy playing modded Inscryption!
+4. Install [MonoModLoader](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/) and extract the archive into a folder.
+5. Move the 'plugins' and 'monomod' folders into the 'BepInEx' folder. (If any of the BepInEx folders do not exist, just create them).
+6. Install [Inscryption API](https://inscryption.thunderstore.io/package/API_dev/API/) by following steps 4 and 5 and extract the archive into a folder.
+7. Move the 'plugins' and 'monomod' folders into the 'BepInEx' folder.
+8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
 
 ## Installing on the Steam Deck:
-1. Download r2modman on the Steam Deck’s desktop mode and open it from its download using its `AppImage` file
+1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file
 2. Go to the setting of the profile you have for the mods and click `Browse Profile Folder`.
-3. Copy the BepInEx folder, then go to Steam, browse Inscryption's local files and paste the folder there
+3. Copy the BepInEx folder then go to Steam, and browse Inscryption's local files; paste the folder there
 4. Enter Gaming Mode and open Inscryption.  If everything was done correctly, you should see a console appear on your screen.
 
 ## Getting Started: Modding
 Modding Inscryption requires a knowledge of coding in C#, and in many cases an understanding of how to patch the game using HarmonyPatch.
+
 If you're unfamiliar with any of this, or just want to create cards and sigils, you can use [JSONLoader](https://inscryption.thunderstore.io/package/MADH95Mods/JSONCardLoader/). 
 
 ### Modding with JSONLoader
  JSONLoader is a versatile mode that provides a more beginner-friendly way of creating new cards and abilities for Inscryption using JSON syntax, which is much simpler than C#.
 
-The JSONLoader documentation can be found [here](https://github.com/json-editor/json-editor/wiki).
+JSONLoader's documentation can be found [here](https://github.com/MADH95/JSONLoader).
 
-A video tutorial covering how to use JSONLoader (plus the In-Game Card Creator) can be found [here](https://www.youtube.com/watch?v=BcM1vSvXG68).
+A video tutorial covering how to use JSONLoader can be found [here](https://www.youtube.com/watch?v=grTSkpI4U7g).
 
 ### Modding with C#
 To begin modding with C#, you will need to create a new C# project using a code editor. We recommend using Microsoft's Visual Studio.
 
 Your C# coding project needs to be in `netstandard2.0`.  Once you have the project created, you need to reference all of the game files found in the `Inscryption/Inscryption_Data/Managed` folder. To find this folder, you can right click on the game in steam, and go to `Manage > Browse local files`. We suggest you copy the file path to be used later. You'll also need two references from the `Inscryption/BepInEx/core` folder as well.
 
-To add a reference to Visual Studio, navigate to `Project > Add Project Reference` and click 'Browse' to find the files you need (this is where the copied file path comes in handy). You can hold Ctrl to highlight multiple options in the folder to add multiple references at once.
-**Note:** You do not need the the `cscorlib.dll`, `netstandard.dll` or any of the dlls that start with "System"; those are included in every project already. The 2 files you need from the BepInEx/core folder are `0Harmony.dll` and `BepInEx.dll`.  You will also need to reference `InscryptionAPI.dll`, which should be in your BepInEx plugins folder.  Once you have all the references set you can start making mods!
+To add a reference to Visual Studio, navigate to `Project > Add Project Reference` and click 'Browse' to find the files you need (this is where the copied file path comes in handy).
+You can hold Ctrl to highlight multiple options in the folder to add multiple references at once.
+
+**Note:** You do not need the the `cscorlib.dll`, `netstandard.dll` or any of the dlls that start with "System"; those are included in every project already.
+The 2 files you need from the BepInEx/core folder are `0Harmony.dll` and `BepInEx.dll`.
+
+You will also need to reference `InscryptionAPI.dll`, which should be in your BepInEx plugins folder.
+Once you have all the references set you can start making mods!
+
+### Modding Resources
+[Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
+
+[Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)
+
+[BepInEx documentation](https://docs.bepinex.dev/)
+
+[Harmony patching article](https://harmony.pardeike.net/articles/patching.html)
+
+[Example Mod using C#](https://github.com/debugman18/InscryptionExampleMod)
 
 # Game Tweaks
-Included with the API are a number of game changes to aid in multi-Act support.
+Included with the API are a number of game changes for aiding with multi-Act support and further modding customisation.
 
-The API package also comes with a second DLL consisting of multiple community patches, either fixing bugs or providing some QoL changes for the game.
+The API package also comes with a second DLL consisting of multiple community patches, either fixing bugs or providing QoL changes for the game.
 
 ## Card Cost Displays
 Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can now display Energy and Mox costs.
