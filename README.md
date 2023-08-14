@@ -97,7 +97,7 @@ For more information, please check out the wiki: https://inscryptionmodding.gith
 Use the plugin and report bugs you find! Ping us on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) server in the api channel with what you find.
 
 ### But really, I want to help develop this mod
-Great! We're more than happy to accept help. Either make a pull request to the API's [GitHub page]() or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
+Great! We're more than happy to accept help. Either make a pull request to the API's [GitHub page](https://github.com/InscryptionModding/InscryptionAPI) or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
 
 ### Can I donate?
 Donations are totally not needed, this is a passion project before anything else.
