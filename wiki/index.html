@@ -71,42 +71,86 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="inscryption-modding-wiki">Inscryption Modding Wiki</h1>
 
-<p>The Inscryption Modding API provides a large number of features to make it both possible and easier to mod the game.
-This document provides explanations and examples to help you understand what everything does, as well as some other information pertaining to API features.</p>
-<h1 id="how-to-start-modding">How to start modding.</h1>
-<h2 id="installation">Installation:</h2>
-<h3 id="installation-game-automated">Installation (game, automated):</h3>
-<p>This is the recommended way to install BepInEx on the game.</p>
+<p>Welcome to the modding wiki!  This document will help familiarise you with modding Inscryption using the Inscryption API.
+We will go over its numerous features, providing information and examples on what they do and how to use them for your own mods.</p>
+<h1 id="getting-started-installation">Getting Started: Installation</h1>
+<p>To begin, we&#39;ll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.</p>
+<h2 id="installing-with-a-mod-manager">Installing with a Mod Manager</h2>
+<p>This is the recommended way to install BepInEx to the game.</p>
 <ol>
-<li>Download and install <a href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager">Thunderstore Mod Manager</a> or <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a></li>
-<li>Click <strong>Install with Mod Manager</strong> button on top of the page</li>
-<li>Run the game via the mod manager</li>
+<li>Download and install <a href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager">Thunderstore Mod Manager</a> or <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a>.</li>
+<li>Click the <strong>Install with Mod Manager</strong> button on the top of <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx&#39;s</a> page.</li>
+<li>Run the game via the mod manager.</li>
 </ol>
-<h3 id="installation-manual">Installation (manual):</h3>
-<p>If you are installing this manually, do the following</p>
+<h2 id="installing-manually">Installing Manually</h2>
 <ol>
-<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx</a></li>
-<li>Extract the archive into a folder. <strong>Do not extract into the game folder.</strong></li>
-<li>Move the contents of <code>BepInExPack_Inscryption</code> folder into the game folder (where the game executable is located).</li>
-<li>Run the game. If everything runs correctly, you will see BepInEx console pop up on your desktop.</li>
-<li>Follow the game running instructions below:</li>
+<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx</a> by pressing &#39;Manual Download&#39; and extract the contents into a folder. <strong>Do not extract into the game folder!</strong></li>
+<li>Move the contents of the &#39;BepInExPack_Inscryption&#39; folder into the game folder (where the game executable is).</li>
+<li>Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.</li>
+<li>Install <a href="https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/">MonoModLoader</a> and extract the contents into a folder.</li>
+<li>Move the contents of the &#39;patchers&#39; folder into &#39;BepInEx/patchers&#39; (If any of the mentioned BepInEx folders don&#39;t exist, just create them).</li>
+<li>Install <a href="https://inscryption.thunderstore.io/package/API_dev/API/">Inscryption API</a> and extract the contents into a folder.</li>
+<li>Move the contents of the &#39;plugins&#39; folder into &#39;BepInEx/plugins&#39; and the contents of the &#39;monomod&#39; folder into the &#39;BepInEx/monomod&#39; folder.</li>
+<li>Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.</li>
 </ol>
-<h4 id="installation-manual-sub-info">Installation Manual Sub Info:</h4>
+<h2 id="installing-on-the-steam-deck">Installing on the Steam Deck:</h2>
 <ol>
-<li>Make 2 Folders in the BepInEx Folder called <code>patchers</code> and <code>monomod</code></li>
-<li>Install and place: <a href="https://cdn.discordapp.com/attachments/904819911010947092/1041376866164015144/Assembly-CSharp.APIPatcher.mm.dll">API-Patcher</a> into <code>patchers</code></li>
-<li>Install and Place: <a href="https://cdn.discordapp.com/attachments/904819911010947092/1041377048188440626/BepInEx.MonoMod.Loader.dll">BepInExMonoModLoader</a> <a href="https://cdn.discordapp.com/attachments/904819911010947092/1041377048448471110/MonoMod.dll">MonoMod</a> into <code>monomod</code></li>
-<li>Place the Plugins folder in the Zip into <code>plugins</code></li>
+<li>Download <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a> on the Steam Deck’s Desktop Mode and open it from its download using its <code>AppImage</code> file</li>
+<li>Go to the setting of the profile you have for the mods and click <code>Browse Profile Folder</code>.</li>
+<li>Copy the BepInEx folder then go to Steam, and browse Inscryption&#39;s local files; paste the folder there</li>
+<li>Enter Gaming Mode and open Inscryption.  If everything was done correctly, you should see a console appear on your screen.</li>
 </ol>
-<h2 id="installation-steamdeck">Installation Steamdeck:</h2>
-<p>You have to download r2modman on the steam deck’s desktop mode and open it from its download using its “AppImage” file. Then go to the setting of the profile you have for the mods and click Browse Profile Folder. Then copy the BepInEx folder and go to steam and browse Inscryptions local files and paste that in there. Then enter Gaming Mode again and open Inscryption and if you did it right you’ll see the mod panel thing open up on the steam deck and after a bit of loading and a black screen you’ll have a modded Inscryption for your Steam Deck.</p>
-<h1 id="tweaks">Tweaks</h1>
+<h2 id="getting-started-modding">Getting Started: Modding</h2>
+<p>Modding Inscryption requires a knowledge of coding in C#, and in many cases an understanding of how to patch the game using HarmonyPatch.</p>
+<p>If you&#39;re unfamiliar with any of this, or just want to create cards and sigils, you can use <a href="https://inscryption.thunderstore.io/package/MADH95Mods/JSONCardLoader/">JSONLoader</a>. </p>
+<h3 id="modding-with-jsonloader">Modding with JSONLoader</h3>
+<p> JSONLoader is a versatile mode that provides a more beginner-friendly way of creating new cards and abilities for Inscryption using JSON syntax, which is much simpler than C#.</p>
+<p>JSONLoader&#39;s documentation can be found <a href="https://github.com/MADH95/JSONLoader">here</a>.</p>
+<p>A video tutorial covering how to use JSONLoader can be found <a href="https://www.youtube.com/watch?v=grTSkpI4U7g">here</a>.</p>
+<h3 id="modding-with-c">Modding with C#</h3>
+<p>To begin modding with C#, you will need to create a new C# project using a code editor.
+We recommend and assume you&#39;re using Microsoft&#39;s Visual Studio.</p>
+<p>Your project&#39;s target framework needs to be <code>netstandard2.0</code>.</p>
+<p>Once your project&#39;s created, go to <code>Project &gt; Manage NuGet Packages</code>.
+Click the dropdown menu for &#39;Package source&#39; and check that &#39;BepInEx&#39; and &#39;nuget&#39; is there.</p>
+<p>If BepInEx or nuget aren&#39;t an available source, we need to add them.
+To add a new package source, click on the gear icon next to the package source selector, then click the large green plus-sign.</p>
+<p>To add BepInEx, change the name to &#39;BepInEx&#39; and the source link to &#39;<a href="https://nuget.bepinex.dev/v3/index.json">https://nuget.bepinex.dev/v3/index.json</a>&#39;.
+To add nuget, change the name to &#39;nuget&#39; and the source link to &#39;<a href="https://nuget.windows10ce.com/nuget/v3/index.json">https://nuget.windows10ce.com/nuget/v3/index.json</a>&#39;.</p>
+<p>Change the package source to &#39;All&#39; then click &#39;Browse&#39;.
+We want to install the following packages (<strong>Make sure the version numbers match!</strong>):</p>
+<ul>
+<li>BepInEx.Analyzers v1.0.8</li>
+<li>BepInEx.Core v5.4.19</li>
+<li>HarmonyX v2.9.0</li>
+<li>Inscryption.GameLibs v1.9.0-r.0</li>
+<li>UnityEngine.Modules v2019.4.24</li>
+</ul>
+<p>You will also need to add the API as a reference.
+There are a couple ways to do this, detailed below; whichever way you choose to do this, you&#39;ll also need to need to reference <code>InscryptionAPI.dll</code>, which should be in your BepInEx plugins folder; copy this path for future use.</p>
+<p>To do so, go to your &#39;BepInEx/plugins&#39; folder and copy the folder path.
+Then, navigate to <code>Project &gt; Add Project Reference</code> and click &#39;Browse&#39;.
+Copy the folder path and add &#39;InscryptionAPI.dll&#39; as a reference.
+You can do this for other mods&#39; .dll files if you want to reference them as a mod dependency (a separate mod that your mod relies on to work).</p>
+<p>An alternative method to adding the API (and other mods) as a reference is to use NuGet packages by adding &#39;<a href="https://nuget.bepinex.dev/v3/index.json">https://nuget.bepinex.dev/v3/index.json</a>&#39; as a package source, and then adding &#39;API_dev-API&#39; as a reference.</p>
+<p>With all this, you are now ready to begin creating your mod!
+Some resources are provided below for you to use, including an example mod to look at for examples.
+Otherwise, continue reading this wiki.</p>
+<h3 id="modding-resources">Modding Resources</h3>
+<p><a href="https://discord.gg/QrJEF5Denm">Inscryption Modding Discord</a></p>
+<p><a href="https://github.com/SaxbyMod/SabyModEnums">Vanilla and Modded Enumerations</a></p>
+<p><a href="https://docs.bepinex.dev/">BepInEx documentation</a></p>
+<p><a href="https://harmony.pardeike.net/articles/patching.html">Harmony patching article</a></p>
+<p><a href="https://github.com/debugman18/InscryptionExampleMod">Example Mod using C#</a></p>
+<h1 id="game-tweaks">Game Tweaks</h1>
+<p>Included with the API are a number of game changes for aiding with multi-Act support and further modding customisation.</p>
+<p>The API package also comes with a second DLL consisting of multiple community patches, either fixing bugs or providing QoL changes for the game.</p>
 <h2 id="card-cost-displays">Card Cost Displays</h2>
-<p>Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can display Energy and Mox costs.</p>
-<p>The API package also comes with a second DLL that includes a bunch of community bug fixes and quality-of-life improvements.</p>
+<p>Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can now display Energy and Mox costs.</p>
 <h2 id="energy-drone-in-act-onekaycees-mod">Energy Drone in Act One/Kaycee&#39;s Mod</h2>
-<p>With the API installed, the energy management drone can be made available in Act 1 and in Kaycee&#39;s Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.</p>
-<p>You can also force these drones to appear in different areas of the game by overriding the following values.</p>
+<p>With the API installed, Act 3&#39;s energy management drone can be made available in Act 1 and in Kaycee&#39;s Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.</p>
+<p>The energy and mox displays will appear on the battle scales by default; this can be changed in the configuration file.</p>
+<p>You can also force these drones to appear in different sections of the game by overriding the following values:</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.ResourceManagers;
 
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
@@ -115,7 +159,7 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables Mox mana
 EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
 </code></pre><p>Currently, the only zones where these settings will have any effect are CardTemple.Nature (Leshy&#39;s cabin) and CardTemple.Undead (Grimora&#39;s cabin).</p>
 <h2 id="bones-display-in-act-three--p03-in-kaycees-mod">Bones Display in Act Three / P03 in Kaycee&#39;s Mod</h2>
-<p>With the API installed, a separate bones displayer can be made available in Act 3, which also affects the &quot;P03 in Kaycee&#39;s Mod&quot; mod. It will appear automatically if any cards with a bones cost are in the Act 3 card pool, and can be forced to appear by modifying the configuration for the API. This displayer appears as a TV screen hanging on the resource drone below the gems module.</p>
+<p>With the API installed, a separate bones displayer can be made available in Act 3. It will appear automatically if any cards with a bones cost are in the Act 3 card pool, and can be forced to appear by modifying the configuration for the API. This displayer appears as a TV screen hanging on the resource drone below the Gems module.</p>
 <p>You can also force this to be active using code:</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.ResourceManagers;
 
@@ -123,11 +167,11 @@ Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen
 </code></pre><p>If the bones TV screen is active, a bolt will also be dropped on top of each card that dies in-game (the same way that bone tokens are dropped on top of cards that die in Leshy&#39;s cabin).</p>
 <h1 id="core-features">Core Features</h1>
 <h2 id="extending-enumerations">Extending Enumerations</h2>
-<p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums,&#39; to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
+<p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums&#39;, to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
 <p>Lets say that you want to create a new story event. These are managed by the enumeration StoryEvent. To create a new story event, you should use this pattern to create a single static reference to that new value:</p>
 <pre><code class="lang-c#">public static readonly StoryEvent MyEvent = GuidManager.GetEnumValue&lt;StoryEvent&gt;(MyPlugin.guid, &quot;MyNewStoryEvent&quot;);
-</code></pre><p>GuidManager requires you to give it the guid of your plugin as well as a friendly name for the value you want to create (the plugin guid is required to avoid any issues if multiple mods try to create a new value with the same name).</p>
-<p>If you want to get a value that was created by another mod (for example: you want to make a card that uses an ability created by another mod), you can follow this exact same pattern. You just need to know the plugin guid for the mod that it is contained in:</p>
+</code></pre><p>GuidManager requires you to give it the GUID of your plugin as well as a friendly name for the value you want to create (the plugin GUID is required to avoid issues if multiple mods try to create a new value with the same name).</p>
+<p>If you want to get a value that was created by another mod (for example: you want to make a card that uses an ability created by another mod), you can follow this exact same pattern. You just need to know the plugin GUID for the mod that it is contained in:</p>
 <pre><code class="lang-c#">public static readonly Ability OtherAbility = GuidManager.GetEnumValue&lt;Ability&gt;(&quot;other.mod.plugin.guid&quot;, &quot;Ability Name&quot;);
 </code></pre><p>All of these values are stored in the modded save file.</p>
 <h2 id="custom-game-save-data">Custom Game Save Data</h2>
@@ -140,12 +184,12 @@ Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen
 }
 </code></pre><p>When written like this, the static property &quot;NumberOfItems&quot; now automatically syncs to the save file.</p>
 <h2 id="api-extended-properties">API Extended Properties</h2>
-<p>The API implements a system of custom properties that you can apply to cards, abilities, and card modification infos.
+<p>The API implements a system of custom properties that you can apply to cards, abilities, and card modification info&#39;s.
 For more information on properties go <a href="#custom-card-properties">to this section</a>.</p>
 <p>Some extended properties are used by the API for certain functions.
 The following are some extension properties you can use for your cards.</p>
 <p>If you&#39;re using C# you can use the provided extension method to easily set these fields, and there are also methods for easily checking them.</p>
-<p>NOTE THAT THE NAMES ARE CASE-SENSITIVE.</p>
+<p><strong>NOTE THAT THE NAMES ARE CASE-SENSITIVE.</strong></p>
 <table>
 <thead>
 <tr>
@@ -171,14 +215,19 @@ The following are some extension properties you can use for your cards.</p>
 <td>If the card should be killed by the effect of Tidal Lock.</td>
 <td>SetAffectedByTidalLock</td>
 </tr>
+<tr>
+<td>TransformerCardId</td>
+<td>CardInfo</td>
+<td>String</td>
+<td>The internal name of the CardInfo this card will transform into when it has the Transformer sigil</td>
+<td>SetTransformerCardId</td>
+</tr>
 </tbody>
 </table>
 <h2 id="part2modular">Part2Modular</h2>
 <p>The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.</p>
-<p>Feel free to use this as you please. Or don&#39;t. I&#39;m not your mom.</p>
-<h3 id="note">Note</h3>
-<p>All vanilla sigils marked Part1Modular or Part3Modular, plus all vanilla activated sigils, have been given with metacategory by default.
-Currently it&#39;s only used within the API for the Act 2 Amorphous patch.</p>
+<p>This metacategory is used in the community patches to change how the Amorphous sigil works in Act 2, but is otherwise free for you to use.</p>
+<p>A number of vanilla sigils have been marked with this metacategory already.</p>
 <h1 id="cards">Cards</h1>
 <h2 id="card-management">Card Management</h2>
 <p>Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:</p>
@@ -198,7 +247,8 @@ myCard.cost = 2;
     .AddAbilities(Ability.BuffEnemies, Ability.TailOnHit)
     .SetTail(&quot;Geck&quot;, &quot;/art/sample_lost_tail.png&quot;)
     .SetRare();
-</code></pre><p>The following card extensions are available:</p>
+</code></pre><h3 id="card-extensions">Card Extensions</h3>
+<p>The following card extensions are available:</p>
 <ul>
 <li><strong>SetPortrait:</strong> Assigns the card&#39;s portrait art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card&#39;s art.</li>
 <li><strong>SetEmissivePortrait:</strong> If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.</li>
@@ -258,8 +308,9 @@ sample.SetExtendedProperty(&quot;CustomPropertyName&quot;, &quot;CustomPropertyV
 
 string propValue = sample.GetExtendedProperty(&quot;CustomPropertyName&quot;);
 
-You can also add custom properties to a card mod.
-</code></pre><h2 id="custom-card-costs">Custom Card Costs</h2>
+You can also add custom properties to CardModificationInfo&#39;s.
+</code></pre><p>The API provides a few card extensions of its own (see API Extended Properties).</p>
+<h2 id="custom-card-costs">Custom Card Costs</h2>
 <p>The Inscryption Community Patch allows for custom card costs to be displayed in all three main acts of the game:</p>
 <h3 id="act-1act-2">Act 1/Act 2</h3>
 <p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:</p>
@@ -1301,12 +1352,9 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
                 .SetDescription(learnText)
                 .SetAct1();
 </code></pre><h1 id="custom-pelts">Custom Pelts</h1>
-<h2 id="pelt-management">Pelt Management</h2>
-<p>Pelts are comprised of two components: the actual pelt card, and the pelt data.
-Pelt cards are created the same way any of card is made.
-The pelt data on the other hand is created using the API&#39;s PeltManager.</p>
-<p>The pelt data is used to determine how the associated card is handled by the Trapper and Trader.
-This includes how much it costs to buy, how much the price increases over a run,and what and how many cards the Trader will offer for the pelt.</p>
+<p>The pelts bought and sold by the Trapper and Tradder are comprised of two components: the CardInfo and the PeltData.</p>
+<p>The CardInfo represents the actual card that you can obtain and sell, and is created using the CardManager the same way as any regular card.  The PeltData on the other hand is created using the API&#39;s PeltManager.</p>
+<p>The PeltData determines how the CardInfo is handled by the Trapper and Trader.  This includes how much it costs to buy, how much the price increases over a run,and what and how many cards the Trader will offer for the pelt.</p>
 <h2 id="adding-a-custom-pelt">Adding a Custom Pelt</h2>
 <p>The first step is making the card.</p>
 <pre><code class="lang-csharp">CardInfo bonePeltInfo = CardManager.New(PluginGuid, &quot;Bone Pelt&quot;, &quot;Bone Pelt&quot;, 0, 2);
@@ -1325,6 +1373,7 @@ The most important complicated part of this is creating the Function that will b
 
 PeltManager.CustomPeltData bonePelt = PeltManager.New(yourPluginGuid, bonePeltInfo, baseBuyPrice: 3, extraAbilitiesToAdd: 0, choicesOfferedByTrader: 8, cardChoices);
 </code></pre><p>This pelt will now cost 3 Teeth to buy from the Trapper, and the Trader will offer you 8 cards to choose from for it; the offered cards will have 0 extra abilities added onto them as well.</p>
+<h3 id="pelt-extensions">Pelt Extensions</h3>
 <p>The following extensions are provided for further customisation:</p>
 <ul>
 <li><strong>SetPluginGuid:</strong> Sets the Guid of the plugin that&#39;s adding the pelt. Useful if you aren&#39;t using PeltManager.New() to create your pelt.</li>
@@ -1354,7 +1403,7 @@ The third parameter is optional, and determines the volume of your track, from 0
 </code></pre><h1 id="asset-bundles">Asset Bundles</h1>
 <p>Asset bundles are how you can import your own models, texture, gameobjects and more into Inscryption.</p>
 <p>Think of them as fancy .zip&#39;s that&#39;s supported by Unity.</p>
-<h2 id="how-to-make-an-asset-bundle">How to Make an Asset Bundle</h2>
+<h2 id="making-asset-bundles">Making Asset Bundles</h2>
 <ol>
 <li>Make a Unity project. Make sure you are using 2019.4.24f1 or your models will not show in-game.</li>
 <li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
@@ -1372,13 +1421,11 @@ The third parameter is optional, and determines the volume of your track, from 0
     GameObject clone = GameObject.Instantiate(prefab);
     // Do things with gameobject!
 }
-</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9</p>
-<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4</p>
+</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9.</p>
+<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4.</p>
 <p>Third parameter is the result of taking the object out of the asset bundle.</p>
-<p>NOTE: Getting a prefab from an asset bundle does not laod it into the world. You need to clone it with Instantiate! </p>
-<h2 id="common-problems">Common Problems</h2>
-<h3 id="1-the-gameobject-is-being-created-but-the-model-wont-show-up">1. The GameObject is being created but the model won&#39;t show up!</h3>
-<p>Make sure you are using Unity 2019.4.24f1 to build the asset bundle. The model will not show up otherwise!</p>
+<p><strong>NOTE</strong>: Getting a prefab from an asset bundle does not load it into the world. You need to clone it with Instantiate! </p>
+<p><strong>NOTE 2</strong>: If the GameObject is being created but the model isn&#39;t showing up in-game, make sure you are using Unity 2019.4.24f1 to build the asset bundle; the model will not show up otherwise!</p>
 </article>
           </div>
           

@@ -3228,6 +3228,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
   nameWithType: CardExtensions.GetPlayableCard
+- uid: InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.CardInfo)
+  name: GetTransformerCardId(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTransformerCardId_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetTransformerCardId(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.PlayableCard)
+  name: GetTransformerCardId(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTransformerCardId_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetTransformerCardId(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.GetTransformerCardId*
+  name: GetTransformerCardId
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTransformerCardId_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetTransformerCardId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetTransformerCardId
+  nameWithType: CardExtensions.GetTransformerCardId
 - uid: InscryptionAPI.Card.CardExtensions.HasAllAbilities(DiskCardGame.CardInfo,DiskCardGame.Ability[])
   name: HasAllAbilities(CardInfo, Ability[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasAllAbilities_DiskCardGame_CardInfo_DiskCardGame_Ability___
@@ -4843,6 +4862,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetTraits
   nameWithType: CardExtensions.SetTraits
+- uid: InscryptionAPI.Card.CardExtensions.SetTransformerCardId(DiskCardGame.CardInfo,System.String)
+  name: SetTransformerCardId(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTransformerCardId_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetTransformerCardId(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetTransformerCardId(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetTransformerCardId(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetTransformerCardId*
+  name: SetTransformerCardId
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTransformerCardId_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetTransformerCardId
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetTransformerCardId
+  nameWithType: CardExtensions.SetTransformerCardId
 - uid: InscryptionAPI.Card.CardExtensions.SetTribes(DiskCardGame.CardInfo,DiskCardGame.Tribe[])
   name: SetTribes(CardInfo, Tribe[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTribes_DiskCardGame_CardInfo_DiskCardGame_Tribe___
