@@ -3,6 +3,14 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.15.2
+- Fixed cards not evolving correctly if the Fledgling sigil was obtained via card mods (card merge, totem, etc.)
+- Moved the Squirrel Orbit community patch into the main API
+- Added SetTransformCardId(), GetTransformerCardId() for controlling the Transformer evolution separate of the standard evolution
+- Transformer sigil will now also check for a card's API-set TransformerCardId if no card mod is found
+- Transformer sigil now also adjusts Blood and Bone costs when transforming
+- Transformer sigil now correctly works for cards without a defined evolution/transformation
+
 ## 2.15.1
 - Fixed Transformer sigil disappearing upon transformation in certain scenarios
 - Fixed Act 3 Bone Display checking the wrong card cost, resulting in the display always appearing
@@ -10,6 +18,7 @@
 
 ## 2.15.0
 - Fixed friend cards created by G0LLY not having any mods
+- Reverted previous change to cloned CardInfos
 - Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
 - Added cost display support for Act 3
 - Added bone counter for Act 3

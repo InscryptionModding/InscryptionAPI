@@ -1835,12 +1835,41 @@ public static class CardExtensions
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <returns>True if the card info should be affected by Tidal Lock.</returns>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
     {
         info.SetExtendedProperty("AffectedByTidalLock", affectedByTidalLock);
         return info;
     }
+    #endregion
+
+    #region TransformerBeastCardId
+
+    /// <summary>
+    /// Gets the string value of the extended property TransformerCardId. Can be null.
+    /// </summary>
+    /// <param name="item">PlayableCard to access.</param>
+    /// <returns>The string value of the extended property TransformerCardId.</returns>
+    public static string GetTransformerCardId(this PlayableCard item) => item.Info.GetTransformerCardId();
+
+    /// <summary>
+    /// Gets the string value of the extended property TransformerCardId. Can be null.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The string value of the extended property TransformerCardId.</returns>
+    public static string GetTransformerCardId(this CardInfo info) => info.GetExtendedProperty("TransformerCardId");
+
+    /// <summary>
+    /// Sets whether the card should be killed by Tidal Lock's effect.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetTransformerCardId(this CardInfo info, string transformerCardId)
+    {
+        info.SetExtendedProperty("TransformerCardId", transformerCardId);
+        return info;
+    }
+
     #endregion
 
     #region PlayableCard

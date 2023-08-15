@@ -25,9 +25,9 @@ Additionally, a number of quality-of-life patches from the community are include
 ## Installation (automated)
 This is the recommended way to install the API on the game.
 
-- Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://timberborn.thunderstore.io/package/ebkr/r2modman/)
-- Click Install with Mod Manager button on top of the [page](https://inscryption.thunderstore.io/package/API_dev/API/)
-- Run the game via the mod manager
+- Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://timberborn.thunderstore.io/package/ebkr/r2modman/).
+- Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) page.
+- Run the game via the mod manager.
 
 ## Installation (manual)
 To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.  
@@ -37,7 +37,7 @@ You also need to install [MonoMod Loader Inscryption](https://inscryption.thunde
 - Copy the 'monomod' folder into 'BepInEx/monomod'.  
 (If any of these folders do not exist, just create them.)
 
-An example Mod utilising this plugin can be found [here](https://github.com/ScottWilson0903/InscryptionExampleMod).
+An example Mod utilising this plugin can be found [here](https://github.com/debugman18/InscryptionExampleMod).
 
 ## Modded Save File
 With this API installed, an additional 'modded save file' will be created by the game. This file will be found in the 'BepInEx' subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.
@@ -97,7 +97,7 @@ For more information, please check out the wiki: https://inscryptionmodding.gith
 Use the plugin and report bugs you find! Ping us on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) server in the api channel with what you find.
 
 ### But really, I want to help develop this mod
-Great! I'm more than happy to accept help. Either make a pull request or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
+Great! We're more than happy to accept help. Either make a pull request to the API's [GitHub page](https://github.com/InscryptionModding/InscryptionAPI) or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
 
 ### Can I donate?
 Donations are totally not needed, this is a passion project before anything else.
