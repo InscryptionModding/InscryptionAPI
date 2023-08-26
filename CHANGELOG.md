@@ -3,6 +3,13 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.16.0
+- Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
+- Added out-of-turn (cards attacking outside of their owner's turn) damage support
+- Added PlayableCard extension method GetAbilityStacks()
+- Moved SlotAttackSlotFixes and SelfAttackDamagePatch from community patches to the API, renamed to SlotAttackSlotPatches and DoCombatPhasePatches respectively
+- Made community patch method RandomAbilityPatches.GetRandomAbility public
+
 ## 2.15.2
 - Fixed cards not evolving correctly if the Fledgling sigil was obtained via card mods (card merge, totem, etc.)
 - Moved the Squirrel Orbit community patch into the main API

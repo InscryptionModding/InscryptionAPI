@@ -643,3 +643,36 @@ public interface ICardTakenDamageModifier
     /// <returns>The new amount of damage that will be taken by a card.</returns>
     public int CollectCardTakenDamageModifier(PlayableCard card, int currentValue);
 }
+
+/// <summary>
+/// Used when changing what CardSlots are queued for attacking.
+/// Triggers before the RemoveAll(x => x.Card == null || x.Card.Attack <= 0) code, so no making empty slots attack and no making Attack-less cards attack.
+/// </summary>
+public interface IGetAttackingSlots
+{
+    /// <summary>
+    /// Returns true if this should modify the list of attacking CardSlots.
+    /// </summary>
+    /// <param name="playerIsAttacker">Whether the player is current attacking.</param>
+    /// <param name="originalSlots">The vanilla list of attacking CardSlots; a copy of the current attacker's side of the board.</param>
+    /// <param name="currentSlots">The current list of attacking CardSlots, after modifications and the like.</param>
+    /// <returns>True if this should modify the amount of damage taken by a card.</returns>
+    public bool RespondsToGetAttackingSlots(bool playerIsAttacker, List<CardSlot> originalSlots, List<CardSlot> currentSlots);
+
+    /// <summary>
+    /// Returns the new list of attacking CardSlots.
+    /// </summary>
+    /// <param name="playerIsAttacker">Whether the player is current attacking.</param>
+    /// <param name="originalSlots">The vanilla list of attacking CardSlots.</param>
+    /// <param name="currentSlots">The current list of attacking CardSlots.</param>
+    /// <returns>The new list of attacking CardSlots.</returns>
+    public List<CardSlot> GetAttackingSlots(bool playerIsAttacker, List<CardSlot> originalSlots, List<CardSlot> currentSlots);
+
+    /// <summary>
+    /// Trigger priority. Higher numbers trigger first.
+    /// </summary>
+    /// <param name="playerIsAttacker">Whether the player is current attacking.</param>
+    /// <param name="originalSlots">The vanilla list of attacking CardSlots.</param>
+    /// <returns>The trigger priority int.</returns>
+    public int TriggerPriority(bool playerIsAttacker, List<CardSlot> originalSlots);
+}

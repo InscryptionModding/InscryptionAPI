@@ -1875,6 +1875,25 @@ public static class CardExtensions
     #region PlayableCard
 
     /// <summary>
+    /// Gets the number of Ability stacks a card has.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="ability">The Ability to check for.</param>
+    /// <returns>The number of Ability stacks the card has.</returns>
+    public static int GetAbilityStacks(this PlayableCard card, Ability ability)
+    {
+        int count = 0;
+        count += card.Info.Abilities.Count(a => a == ability);
+        count += AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods).Count(a => a == ability);
+        count -= card.TemporaryMods.SelectMany(m => m.negateAbilities).Count(a => a == ability);
+
+        if (AbilitiesUtil.GetInfo(ability).canStack)
+            return count;
+        else
+            return count > 0 ? 1 : 0; // If it's not stackable, you get at most one
+    }
+
+    /// <summary>
     /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>

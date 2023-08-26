@@ -14,7 +14,7 @@ internal class BuyPeltsSequencer_PeltPrices
     /// <summary>
     /// Adds new pelt costs so their price can be listed for purchase 
     /// </summary>
-    public static void Postfix(CardLoader __instance, ref int[] __result)
+    private static void Postfix(ref int[] __result)
     {
         __result = BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a) => a.BuyPrice).ToArray();
     }

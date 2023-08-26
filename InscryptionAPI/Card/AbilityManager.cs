@@ -634,7 +634,7 @@ public static class AbilityManager
         // Log(info2);
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
         for (int i = 0; i < codes.Count; i++)

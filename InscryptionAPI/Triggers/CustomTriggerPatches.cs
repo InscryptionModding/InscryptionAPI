@@ -1,7 +1,9 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
 using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
@@ -190,9 +192,9 @@ internal static class CustomTriggerPatches
         if (damage != 0)
         {
             (takeDamageDamage ??= (takeDamageCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
-            bool hasshield = __instance.HasShield();
+            bool hasShield = __instance.HasShield();
             yield return result;
-            if (!hasshield && attacker != null)
+            if (!hasShield && attacker != null)
             {
                 yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
                     x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
@@ -408,6 +410,8 @@ internal static class CustomTriggerPatches
         }
         __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
     }
+
+    // IModifyAttackingSlots code can be found in DoCombatPhasePatches
 
     private static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }
