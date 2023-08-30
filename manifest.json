@@ -346,7 +346,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardExtensions.html",
-          "hash": "v8YEatcfEAkZv6AaOiaM65eKhf2AWTnLud+nq/P3KPc="
+          "hash": "dkavB4AM7FRBTaJq+sgN756nW9zlo0+8YExXSsubhdI="
         }
       },
       "is_incremental": false,
@@ -1114,7 +1114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "csbsM592Dd2pNOGofc0WjcnyF42nWuFQ5pVsl19H3Us="
+          "hash": "ojcEw9DEUWL8UQIpBDymBQkZjRm7DYrfZdv/3x8R1Rg="
         }
       },
       "is_incremental": false,
@@ -2094,11 +2094,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.DoCombatPhasePatches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.DoCombatPhasePatches.html",
+          "hash": "OEFKp2ljBoouhGOtVYj5RqmRg4ICkxZFz38dF/gY3zc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.ICardTakenDamageModifier.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html",
           "hash": "LqYqjj38uX9Ng7Yyk2oy+ZWlGTuzu27T5x724iYa4rk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IGetAttackingSlots.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IGetAttackingSlots.html",
+          "hash": "4kK1nQg6U1l39/RD6BW1A50ezNM/oe/IDSssn6sch3E="
         }
       },
       "is_incremental": false,
@@ -2454,11 +2478,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.SlotAttackSlotPatches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html",
+          "hash": "Qv4UGxYNEA3kO1dsITXJezvUBkjXZsgzRiEelQu2dzg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "LEuxMD2TjG5F0b1qyd1Rbx3pruWkDQ65/AJ0idWlE+Y="
+          "hash": "i5bt8HRVur4K4HTzwYqi+FU8MbHVIcZlC6HGJIyw24s="
         }
       },
       "is_incremental": false,
@@ -2494,7 +2530,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "TVMlSTIcPAvt4gpLgh1Nq2QKSdxmfzO/pnTCEwCeAcM="
+          "hash": "ki4diT3SA2sVMtoJSefVAdfnaaRMK7yT6DHi8CsCGiA="
         }
       },
       "is_incremental": false,
@@ -2530,7 +2566,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "SNkuUN02nWqhEMzvv+9MImrx9oTZX0SYV64GUvpMw0Q="
+          "hash": "J5fzxJnYfsZTvkNPVSaqy7DvcWCMsyj7z2ND+tu3rGA="
         }
       },
       "is_incremental": false,
@@ -2557,7 +2593,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 213,
+          "total_file_count": 216,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

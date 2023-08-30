@@ -3137,6 +3137,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods
   nameWithType: CardExtensions.GetAbilitiesFromAllMods
+- uid: InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  name: GetAbilityStacks(PlayableCard, Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilityStacks_DiskCardGame_PlayableCard_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.PlayableCard, DiskCardGame.Ability)
+  nameWithType: CardExtensions.GetAbilityStacks(PlayableCard, Ability)
+- uid: InscryptionAPI.Card.CardExtensions.GetAbilityStacks*
+  name: GetAbilityStacks
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilityStacks_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetAbilityStacks
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetAbilityStacks
+  nameWithType: CardExtensions.GetAbilityStacks
 - uid: InscryptionAPI.Card.CardExtensions.GetExtendedProperty(DiskCardGame.CardInfo,System.String)
   name: GetExtendedProperty(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetExtendedProperty_DiskCardGame_CardInfo_System_String_
@@ -4907,6 +4920,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SpawnInHand
   nameWithType: CardExtensions.SpawnInHand
+- uid: InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand(DiskCardGame.PlayableCard,DiskCardGame.CardInfo,Action,Action)
+  name: TransformIntoCardInHand(PlayableCard, CardInfo, Action, Action)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_TransformIntoCardInHand_DiskCardGame_PlayableCard_DiskCardGame_CardInfo_Action_Action_
+  commentId: M:InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand(DiskCardGame.PlayableCard,DiskCardGame.CardInfo,Action,Action)
+  fullName: InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand(DiskCardGame.PlayableCard, DiskCardGame.CardInfo, Action, Action)
+  nameWithType: CardExtensions.TransformIntoCardInHand(PlayableCard, CardInfo, Action, Action)
+- uid: InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand*
+  name: TransformIntoCardInHand
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_TransformIntoCardInHand_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand
+  nameWithType: CardExtensions.TransformIntoCardInHand
 - uid: InscryptionAPI.Card.CardManager
   name: CardManager
   href: api/InscryptionAPI.Card.CardManager.html
@@ -14713,6 +14739,38 @@ references:
   fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard(Of T)(System.Boolean, Func(Of T, System.Boolean), Func(Of T, System.Collections.IEnumerator))
   nameWithType: CustomTriggerFinder.TriggerOnBoard<T>(Boolean, Func<T, Boolean>, Func<T, IEnumerator>)
   nameWithType.vb: CustomTriggerFinder.TriggerOnBoard(Of T)(Boolean, Func(Of T, Boolean), Func(Of T, IEnumerator))
+- uid: InscryptionAPI.Triggers.DoCombatPhasePatches
+  name: DoCombatPhasePatches
+  href: api/InscryptionAPI.Triggers.DoCombatPhasePatches.html
+  commentId: T:InscryptionAPI.Triggers.DoCombatPhasePatches
+  fullName: InscryptionAPI.Triggers.DoCombatPhasePatches
+  nameWithType: DoCombatPhasePatches
+- uid: InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots(System.Boolean)
+  name: ModifyAttackingSlots(Boolean)
+  href: api/InscryptionAPI.Triggers.DoCombatPhasePatches.html#InscryptionAPI_Triggers_DoCombatPhasePatches_ModifyAttackingSlots_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots(System.Boolean)
+  fullName: InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots(System.Boolean)
+  nameWithType: DoCombatPhasePatches.ModifyAttackingSlots(Boolean)
+- uid: InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots*
+  name: ModifyAttackingSlots
+  href: api/InscryptionAPI.Triggers.DoCombatPhasePatches.html#InscryptionAPI_Triggers_DoCombatPhasePatches_ModifyAttackingSlots_
+  commentId: Overload:InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.DoCombatPhasePatches.ModifyAttackingSlots
+  nameWithType: DoCombatPhasePatches.ModifyAttackingSlots
+- uid: InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport(DiskCardGame.CombatPhaseManager,System.Boolean,DiskCardGame.SpecialBattleSequencer,System.Boolean)
+  name: NegativeDamageSupport(CombatPhaseManager, Boolean, SpecialBattleSequencer, Boolean)
+  href: api/InscryptionAPI.Triggers.DoCombatPhasePatches.html#InscryptionAPI_Triggers_DoCombatPhasePatches_NegativeDamageSupport_DiskCardGame_CombatPhaseManager_System_Boolean_DiskCardGame_SpecialBattleSequencer_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport(DiskCardGame.CombatPhaseManager,System.Boolean,DiskCardGame.SpecialBattleSequencer,System.Boolean)
+  fullName: InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport(DiskCardGame.CombatPhaseManager, System.Boolean, DiskCardGame.SpecialBattleSequencer, System.Boolean)
+  nameWithType: DoCombatPhasePatches.NegativeDamageSupport(CombatPhaseManager, Boolean, SpecialBattleSequencer, Boolean)
+- uid: InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport*
+  name: NegativeDamageSupport
+  href: api/InscryptionAPI.Triggers.DoCombatPhasePatches.html#InscryptionAPI_Triggers_DoCombatPhasePatches_NegativeDamageSupport_
+  commentId: Overload:InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.DoCombatPhasePatches.NegativeDamageSupport
+  nameWithType: DoCombatPhasePatches.NegativeDamageSupport
 - uid: InscryptionAPI.Triggers.ICardTakenDamageModifier
   name: ICardTakenDamageModifier
   href: api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html
@@ -14745,6 +14803,60 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.ICardTakenDamageModifier.RespondsToCardTakenDamageModifier
   nameWithType: ICardTakenDamageModifier.RespondsToCardTakenDamageModifier
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots
+  name: IGetAttackingSlots
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html
+  commentId: T:InscryptionAPI.Triggers.IGetAttackingSlots
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots
+  nameWithType: IGetAttackingSlots
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+  name: GetAttackingSlots(Boolean, List<CardSlot>, List<CardSlot>)
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_GetAttackingSlots_System_Boolean_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+  name.vb: GetAttackingSlots(Boolean, List(Of CardSlot), List(Of CardSlot))
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean, List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean, List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot))
+  nameWithType: IGetAttackingSlots.GetAttackingSlots(Boolean, List<CardSlot>, List<CardSlot>)
+  nameWithType.vb: IGetAttackingSlots.GetAttackingSlots(Boolean, List(Of CardSlot), List(Of CardSlot))
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots*
+  name: GetAttackingSlots
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_GetAttackingSlots_
+  commentId: Overload:InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots
+  nameWithType: IGetAttackingSlots.GetAttackingSlots
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+  name: RespondsToGetAttackingSlots(Boolean, List<CardSlot>, List<CardSlot>)
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_RespondsToGetAttackingSlots_System_Boolean_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})
+  name.vb: RespondsToGetAttackingSlots(Boolean, List(Of CardSlot), List(Of CardSlot))
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean, List<DiskCardGame.CardSlot>, List<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean, List(Of DiskCardGame.CardSlot), List(Of DiskCardGame.CardSlot))
+  nameWithType: IGetAttackingSlots.RespondsToGetAttackingSlots(Boolean, List<CardSlot>, List<CardSlot>)
+  nameWithType.vb: IGetAttackingSlots.RespondsToGetAttackingSlots(Boolean, List(Of CardSlot), List(Of CardSlot))
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots*
+  name: RespondsToGetAttackingSlots
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_RespondsToGetAttackingSlots_
+  commentId: Overload:InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots
+  nameWithType: IGetAttackingSlots.RespondsToGetAttackingSlots
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean,List{DiskCardGame.CardSlot})
+  name: TriggerPriority(Boolean, List<CardSlot>)
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_TriggerPriority_System_Boolean_List_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean,List{DiskCardGame.CardSlot})
+  name.vb: TriggerPriority(Boolean, List(Of CardSlot))
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean, List<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean, List(Of DiskCardGame.CardSlot))
+  nameWithType: IGetAttackingSlots.TriggerPriority(Boolean, List<CardSlot>)
+  nameWithType.vb: IGetAttackingSlots.TriggerPriority(Boolean, List(Of CardSlot))
+- uid: InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority*
+  name: TriggerPriority
+  href: api/InscryptionAPI.Triggers.IGetAttackingSlots.html#InscryptionAPI_Triggers_IGetAttackingSlots_TriggerPriority_
+  commentId: Overload:InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority
+  nameWithType: IGetAttackingSlots.TriggerPriority
 - uid: InscryptionAPI.Triggers.IGetOpposingSlots
   name: IGetOpposingSlots
   href: api/InscryptionAPI.Triggers.IGetOpposingSlots.html
@@ -15686,3 +15798,22 @@ references:
   commentId: F:InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
   fullName: InscryptionAPI.Triggers.OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
   nameWithType: OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches
+  name: SlotAttackSlotPatches
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html
+  commentId: T:InscryptionAPI.Triggers.SlotAttackSlotPatches
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches
+  nameWithType: SlotAttackSlotPatches
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  name: DamageToDealThisPhase(CardSlot, CardSlot)
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_DamageToDealThisPhase_DiskCardGame_CardSlot_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase(DiskCardGame.CardSlot,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase(DiskCardGame.CardSlot, DiskCardGame.CardSlot)
+  nameWithType: SlotAttackSlotPatches.DamageToDealThisPhase(CardSlot, CardSlot)
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase*
+  name: DamageToDealThisPhase
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_DamageToDealThisPhase_
+  commentId: Overload:InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase
+  nameWithType: SlotAttackSlotPatches.DamageToDealThisPhase

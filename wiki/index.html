@@ -797,7 +797,7 @@ AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
 <li><strong>SetCanStack:</strong> Sets whether multiple copies of the ability will stack, activating once per copy. Optionally controls stack behaviour should a card with the ability evolve (see below).</li>
 <li><strong>SetTriggersOncePerStack:</strong> Sets whether the ability (if it stacks) will only ever trigger once per stack. There&#39;s a...&#39;feature&#39; where stackable abilities will trigger twice per stack after a card evolves.</li>
 </ul>
-<h2 id="how-abilities-are-programmed">How abilities are programmed</h2>
+<h2 id="programming-abilities">Programming Abilities</h2>
 <p>Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.</p>
 <p>AbilityBehaviour contains a <em>lot</em> of virtual methods. For each event that can happen during a battle, there will be a &#39;RespondsToXXX&#39; and an &#39;OnXXX&#39; method that you need to override. The purpose of the &#39;RespondsToXXX&#39; is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the &#39;OnXXX&#39; method.</p>
 <p>See this example from the base game:</p>
@@ -823,7 +823,50 @@ It also adds a new class: <code>ExtendedAbilityBehaviour</code>, which has all t
 <h3 id="modifying-what-card-slots-to-attack">Modifying What Card Slots to Attack</h3>
 <p>To do this, you need to override RespondsToGetOpposingSlots to return true (like all RespondsToXXX overrides, you can make this conditional), and then override GetOpposingSlots to return the list of card slots that your ability wants the card to attack.
 If you want to override the default slot (the one directly across from the card) instead of adding an additional card slot, you will need to override RemoveDefaultAttackSlot to return true.</p>
-<h3 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h3>
+<h3 id="modify-what-card-slots-attack">Modify What Card Slots Attack</h3>
+<p>Don&#39;t let the similar names confuse you, this is in fact a different section from the above one.
+Using the IGetAttackingSlots interface, you can modify what card slots will attack each turn.</p>
+<p>For example, if you wanted to make a sigil that prevents a card from attacking at all:</p>
+<pre><code class="lang-csharp">public class DontAttack : AbilityBehaviour, IGetAttackingSlots
+{
+    public bool RespondsToGetAttackingSlots(bool playerIsAttacker, List&lt;CardSlot&gt; originalSlots, List&lt;CardSlot&gt; currentSlots)
+    {
+        return true;
+    }
+    // returns a list of card slots TO BE ADDED to the list of attacking slots
+    public List&lt;CardSlot&gt; GetAttackingSlots(bool playerIsAttacker, List&lt;CardSlot&gt; originalSlots, List&lt;CardSlot&gt; currentSlots)
+    {
+        // you can modify the currentSlots directly like this
+        currentSlots.Remove(base.Card.Slot);
+
+        // if you don&#39;t want to add new slots, return new() or null
+        return new();
+    }
+
+    // used to determine when to trigger this sigil, for when multiple sigils are modifying the attacking slots (e.g., other mods)
+    // triggers are sorted from highest to lowest priority
+    public int TriggerPriority(bool playerIsAttacker, List&lt;CardSlot&gt; originalSlots)
+    {
+        // in this example, we don&#39;t particularly care if other sigils re-add this slot
+        // if we did, we&#39;d return a lower number like -1000 or something
+        return 0;
+    }
+}
+</code></pre><p>Importantly, the list of card slots is UNFILTERED, meaning that some card slots may not actually end up in the final list of slots.</p>
+<p>The game will automatically remove card slots that are unoccupied, as well as card slots occupied by cards with 0 Power;
+if you add any such slots they will be removed.</p>
+<p>What this also means is that when checking card slots, you cannot assume that it has a card.</p>
+<pre><code class="lang-csharp">public List&lt;CardSlot&gt; GetAttackingSlots(bool playerIsAttacker, List&lt;CardSlot&gt; originalSlots, List&lt;CardSlot&gt; currentSlots)
+{
+    // this will cause an error
+    currentSlots.RemoveAll(slot =&gt; slot.Card.HasAbility(Ability.Sharp));
+
+    // this will not
+    currentSlots.RemoveAll(slot =&gt; slot.Card != null &amp;&amp; slot.Card.HasAbility(Ability.Sharp));
+
+    return new();
+}
+</code></pre><h3 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h3>
 <p>To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs.
 These return an int representing the buff to give to &#39;target&#39;.</p>
 <p>In battle, the game will iterate across all cards on the board and check whether they should receive the buffs; this is what &#39;target&#39; refers to; the current card being checked.
