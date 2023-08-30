@@ -7,7 +7,7 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Card;
 
 [HarmonyPatch]
-internal class RandomAbilityPatches
+public static class RandomAbilityPatches
 {
     [HarmonyPostfix, HarmonyPatch(typeof(RandomAbility), nameof(RandomAbility.ChooseAbility))]
     private static void OpponentChooseAbility(RandomAbility __instance, ref Ability __result) => __result = GetRandomAbility(__instance.Card);
@@ -108,7 +108,7 @@ internal class RandomAbilityPatches
         yield return new WaitForSeconds(0.15f);
         component.AddMod();
     }
-    private static Ability GetRandomAbility(PlayableCard card)
+    public static Ability GetRandomAbility(PlayableCard card)
     {
         AbilityMetaCategory category = AbilityMetaCategory.Part1Modular;
 
