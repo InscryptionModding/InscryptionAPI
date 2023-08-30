@@ -2249,6 +2249,16 @@ public static class CardExtensions
             card.RemoveTemporaryMod(mod);
     }
 
+    public static IEnumerator TransformIntoCardInHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
+    {
+        Singleton<ViewManager>.Instance.SwitchToView(View.Hand);
+        yield return new WaitForSeconds(0.15f);
+        yield return card.Anim.FlipInAir();
+        yield return new WaitForSeconds(0.15f);
+        preTransformCallback?.Invoke();
+        card.SetInfo(evolvedInfo);
+        onTransformedCallback?.Invoke();
+    }
     #endregion
 
     #endregion

@@ -7,6 +7,7 @@
 - Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
 - Added out-of-turn (cards attacking outside of their owner's turn) damage support
 - Added PlayableCard extension method GetAbilityStacks()
+- Added PlayableCard extension method TransformIntoCardInHand()
 - Moved SlotAttackSlotFixes and SelfAttackDamagePatch from community patches to the API, renamed to SlotAttackSlotPatches and DoCombatPhasePatches respectively
 - Made community patch method RandomAbilityPatches.GetRandomAbility public
 
