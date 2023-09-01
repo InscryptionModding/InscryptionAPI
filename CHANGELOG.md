@@ -3,6 +3,9 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.16.1
+- Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
+
 ## 2.16.0
 - Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
 - Added out-of-turn (cards attacking outside of their owner's turn) damage support
