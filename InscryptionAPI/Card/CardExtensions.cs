@@ -2249,6 +2249,13 @@ public static class CardExtensions
             card.RemoveTemporaryMod(mod);
     }
 
+    /// <summary>
+    /// A version of TransformIntoCard tailored to visually work on cards in the hand.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="evolvedInfo">The CardInfo to change the card into.</param>
+    /// <param name="preTransformCallback">An Action to invoke before the evolvedInfo is set.</param>
+    /// <param name="onTransformedCallback">An Action to invoke after the evolvedInfo is set</param>
     public static IEnumerator TransformIntoCardInHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
     {
         Singleton<ViewManager>.Instance.SwitchToView(View.Hand);

@@ -33,6 +33,12 @@ internal class Act2ShieldGemsPatch
     [HarmonyPatch(typeof(ShieldGeneratorItem), nameof(ShieldGeneratorItem.AddShieldsToCards))]
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
+        // change this:
+        // if (!addShield.HasAbility(DeathShield)
+
+        // to this:
+        // if (!ShowSigilIcon(addShield))
+
         List<CodeInstruction> codes = new(instructions);
 
         for (int i = 0; i < codes.Count; i++)
@@ -51,9 +57,10 @@ internal class Act2ShieldGemsPatch
 
         return codes;
     }
+
     private static bool ShowSigilIcon(PlayableCard card)
     {
-        if (SaveManager.SaveFile.IsPart2)
+        if (SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart2)
             return true;
 
         return card.HasAbility(Ability.DeathShield);
