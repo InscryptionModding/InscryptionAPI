@@ -158,7 +158,7 @@ public static class OpponentManager
     [HarmonyPatch]
     private class MapGenerator_CreateNode
     {
-        static MethodInfo ProcessMethodInfo = AccessTools.Method(typeof(MapGenerator_CreateNode), nameof(ProcessBossType), new Type[] { typeof(NodeData) });
+        private static readonly MethodInfo ProcessMethodInfo = AccessTools.Method(typeof(MapGenerator_CreateNode), nameof(ProcessBossType), new Type[] { typeof(NodeData) });
 
         internal static ItemData currentItemData = null;
 

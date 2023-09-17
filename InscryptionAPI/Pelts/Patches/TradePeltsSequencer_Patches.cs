@@ -7,13 +7,26 @@ using UnityEngine;
 
 namespace InscryptionAPI.Pelts.Patches;
 
+[HarmonyPatch]
+internal class TradePeltsDialogue
+{
+    [HarmonyPostfix, HarmonyPatch(typeof(TradePeltsSequencer), nameof(TradePeltsSequencer.GetTierName))]
+    private static void AddCustomTierNames(int tier, ref string __result)
+    {
+        if (tier < 3)
+            return;
+
+        __result = PeltManager.GetTierNameFromData(PeltManager.AllPelts()[tier]);
+    }
+}
+
 [HarmonyPatch(typeof(TradePeltsSequencer), "GetTradeCardInfos", new Type[] { typeof(int), typeof(bool) })]
 internal static class TradePeltsSequencer_GetTradeCardInfos
 {
     /// <summary>
     /// Shows cards at the Trader to be traded for real cards
     /// </summary>
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this
 
@@ -52,7 +65,7 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
         // list = CardLoader.GetDistinctCardsFromPool(SaveManager.SaveFile.GetCurrentRandomSeed() + tier * 1000, numCards, unlockedCards, abilityCount((tier == 1) ? 1 : 0, tier), false);
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         List<CardInfo> y = null;
         MethodInfo GetCardOptionsInfo = SymbolExtensions.GetMethodInfo(() => GetCardOptions(1, ref y));

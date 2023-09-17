@@ -1,5 +1,86 @@
 # Changelog
 
+<details>
+<summary>View Changelog</summary>
+
+## 2.16.1
+- Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
+
+## 2.16.0
+- Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
+- Added out-of-turn (cards attacking outside of their owner's turn) damage support
+- Added PlayableCard extension method GetAbilityStacks()
+- Added PlayableCard extension method TransformIntoCardInHand()
+- Moved SlotAttackSlotFixes and SelfAttackDamagePatch from community patches to the API, renamed to SlotAttackSlotPatches and DoCombatPhasePatches respectively
+- Made community patch method RandomAbilityPatches.GetRandomAbility public
+
+## 2.15.2
+- Fixed cards not evolving correctly if the Fledgling sigil was obtained via card mods (card merge, totem, etc.)
+- Moved the Squirrel Orbit community patch into the main API
+- Added SetTransformCardId(), GetTransformerCardId() for controlling the Transformer evolution separate of the standard evolution
+- Transformer sigil will now also check for a card's API-set TransformerCardId if no card mod is found
+- Transformer sigil now also adjusts Blood and Bone costs when transforming
+- Transformer sigil now correctly works for cards without a defined evolution/transformation
+
+## 2.15.1
+- Fixed Transformer sigil disappearing upon transformation in certain scenarios
+- Fixed Act 3 Bone Display checking the wrong card cost, resulting in the display always appearing
+- Fixed Act 3 Bone Display null error in certain Acts
+
+## 2.15.0
+- Fixed friend cards created by G0LLY not having any mods
+- Reverted previous change to cloned CardInfos
+- Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
+- Added cost display support for Act 3
+- Added bone counter for Act 3
+
+## 2.14.5
+- Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
+- Fixed certain card mods duplicating when the card evolve
+- Added ResourcesManager.RemoveMaxEnergy, ResourcesManager.ShowRemoveMaxEnergy extension methods
+
+## 2.14.4
+- Fixed the first energy cell remaining closed in Act 1 when battle starts
+- Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
+- Added extension method PeltData.SetTierName
+- The Trader will now speak the correct name of custom pelts when trading with them
+- Added DialogueManager.GenerateTraderPeltsEvent for creating custom dialogue events spoken by the Trader when trading a custom pelt
+- Added DialogueManager.GenerateRegionIntroEvent for creating the dialogue event played upon entering a custom region
+
+## 2.14.3
+- Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
+- Fixed dynamic costs still not working in Act 2
+- Fixed dynamic gem costs checking ResourcesManager instead of OpponentGemsManager for opponent cards
+- Fixed dynamic costs not checking for owned blue gems
+- Fixed dynamic costs not updating energy display correctly
+- Changed dynamic costs to patch SetInfo instead of Awake
+- Re-added dynamic cost error messages for when the card or card info is null
+- Added ResourcesManager.Instance.GemsOfType(GemType) to check for owned gems of the specified type
+
+## 2.14.2
+- Fixed Overclock patch not checking for the correct Acts
+- Fixed appearance behaviour's Card field always returning null in Act 2
+- Added OverridePixelPortrait virtual method to PixelAppearanceBehaviour to allow for changing card portraits in Act 2
+- Added CardInfo.SetPixelAlternatePortrait() and Cardinfo.GetPixelAlternatePortrait() for storing alternate pixel portraits
+- Re-added SetTerrain method without optional bool parameter
+- SwitchToAlternatePortrait and SwitchToDefaultPortrait now work in Act 2 using the above system
+- Removed cost-related error spam in Act 2
+
+## 2.14.1
+- Custom tribes are now given a placeholder reward cardback if one isn't provided
+- Fixed visual error when flipping a custom tribe choice for a tribe without a custom cardback
+- Fixed pixel stat icons not hiding the underlying stat number
+- Fixed ChooseTarget null exception
+- Fixed opponent cards with mods not being created properly (eg Bounty Hunters)
+- Fixed being able to ring the bell in Part 2 during the Tutor sequence
+- Fixed GBC packs not checking for onePerDeck when selecting possible cards
+- Fixed decals added via temporary mods not clearing from cards in Act 2
+- Changed what vanilla abilities are marked as Act2Modular (see the Part2ModularAbilities file for the full list)
+- Removed leftover debug info during start-up
+- Added CardInfo.SetCardTemple()
+- Added CardModInfo extension methods SetTemporaryDecal and IsTemporaryDecal (primarily for internal use, maybe you'll find a use for it)
+- Added GBCPackManager.ModifyGBCPacks function for altering what cards can be found in GBC card packs
+
 ## 2.14.0
 - Fixed Sniper duplicating attacks from sigils like Double Strike
 - Fixed interaction between Waterborne and Fledgling in Act 2
@@ -358,3 +439,5 @@
 
 ## v1.1
 - Hooked into a much more sensible method to load the cards into the card pool.
+
+</details>

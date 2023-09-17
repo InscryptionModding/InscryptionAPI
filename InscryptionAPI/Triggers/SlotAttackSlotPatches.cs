@@ -1,14 +1,16 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers;
+using InscryptionAPI.Helpers.Extensions;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace InscryptionCommunityPatch.Card;
+namespace InscryptionAPI.Triggers;
 
 // Inserts a null check for opposingSlot.Card after CardGettingAttacked is triggered
 // Tweaks the direct damage logic to subtract from DamageDealtThisPhase if the opposing and attacking are on the same side
 [HarmonyPatch]
-internal class SlotAttackSlotPatches
+public static class SlotAttackSlotPatches
 {
     private const string name_GlobalTrigger = "DiskCardGame.GlobalTriggerHandler get_Instance()";
     private const string name_GetCard = "DiskCardGame.PlayableCard get_Card()";
@@ -16,32 +18,55 @@ internal class SlotAttackSlotPatches
     private const string name_CombatPhase = "DiskCardGame.CombatPhaseManager+<>c__DisplayClass5_0 <>8__1";
     private const string name_AttackingSlot = "DiskCardGame.CardSlot attackingSlot";
     private const string name_CanAttackDirectly = "Boolean CanAttackDirectly(DiskCardGame.CardSlot)";
-    private const string name_SetDamageDealt = "Void set_DamageDealtThisPhase(Int32)";
 
-    // Get the method MoveNext, which is where the actual code for SlotAttackSlot is located
-    private static MethodBase TargetMethod()
+    // make this public so people can alter it themselves
+    public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
     {
-        MethodBase baseMethod = AccessTools.Method(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot));
-        return AccessTools.EnumeratorMoveNext(baseMethod);
+        // first thing we check for is self-damage; if the attacking slot is on the same side as the opposing slot, deal self-damage
+        if (attackingSlot.IsPlayerSlot == opposingSlot.IsPlayerSlot)
+            return -attackingSlot.Card.Attack;
+
+        // this is some new stuff to account for out-of-turn damage
+        else if (TurnManager.Instance.IsPlayerTurn)
+        {
+            // if an opponent is attacking during the player's turn, deal positive/negative damage depending on what slot is being attacked
+            if (attackingSlot.IsOpponentSlot())
+                return opposingSlot.IsPlayerSlot ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+        }
+        else if (attackingSlot.IsPlayerSlot)
+        {
+            // if a player is attacking during the opponent's turn, deal positive/negative damage depending on what slot is being attacked
+            return opposingSlot.IsOpponentSlot() ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+        }
+
+        return attackingSlot.Card.Attack;
     }
 
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
+    [HarmonyTranspiler, HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot), MethodType.Enumerator)]
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         // we want to slowly narrow our search until we find exactly where we want to insert our code
-        for (int i = 0; i < codes.Count; i++)
+        for (int a = 0; a < codes.Count; a++)
         {
             // separated into their own methods so I can save on eye strain and brain fog
-            DirectDamageSelfCheck(codes, i);
-            OpposingCardNullCheck(codes, i);
+            if (DirectSelfDamageCheck(codes, a))
+            {
+                for (int b = a + 1; b < codes.Count; b++)
+                {
+                    if (OpposingCardNullCheck(codes, b))
+                        break;
+                }
+                break;
+            }
         }
 
         return codes;
     }
 
-    public static void OpposingCardNullCheck(List<CodeInstruction> codes, int i)
+    private static bool OpposingCardNullCheck(List<CodeInstruction> codes, int i)
     {
         // Looking for where GlobalTriggerHandler is called for CardGettingAttacked (enum 7)
         if (codes[i].opcode == OpCodes.Call && codes[i].operand.ToString() == name_GlobalTrigger && codes[i + 1].opcode == OpCodes.Ldc_I4_7)
@@ -84,81 +109,72 @@ internal class SlotAttackSlotPatches
                             codes.Insert(k + 4, new CodeInstruction(OpCodes.Ldnull));
                             codes.Insert(k + 5, new CodeInstruction(OpCodes.Call, op_Inequality));
                             codes.Insert(k + 6, new CodeInstruction(OpCodes.Brfalse, op_BreakLabel));
-                            break;
+                            return true;
                         }
                     }
                     break;
                 }
             }
         }
+        return false;
     }
 
-    public static void DirectDamageSelfCheck(List<CodeInstruction> codes, int i)
+    private static bool DirectSelfDamageCheck(List<CodeInstruction> codes, int index)
     {
-        if (codes[i].opcode == OpCodes.Callvirt && codes[i].operand.ToString() == name_CanAttackDirectly)
+        if (codes[index].opcode == OpCodes.Callvirt && codes[index].operand.ToString() == name_CanAttackDirectly)
         {
-            int startIndex = i + 2, endIndex = -1;
+            int startIndex = index + 2;
 
-            object op_AttackingSlot = null;
+            // we want to turn this:
+            // ldloc.1
+            // ldloc.1
+            // call getDamage
+            // ldarg.0
+            // ldfld displayClass
+            // ldfld attackingSlot
+            // callvirt getCard
+            // callvirt getAttack
+            // call setDamage
+
+            // into this:
+            // ldloc.1
+            // ldloc.1
+            // call getDamage
+            // ldarg.0
+            // ldfld displayClass
+            // ldfld attackingSlot
+            // ~ldarg.0
+            // ~ldfld opposingSlot
+            // +callvirt newDamage
+            // call setDamage
+
             object op_OpposingSlot = null;
-            object op_CombatPhase = null;
 
-            // look backwards and retrieve attackingSlot and opposingSlot
-            for (int j = i - 1; j > 0; j--)
+            // look backwards and retrieve opposingSlot
+            for (int i = index - 1; i > 0; i--)
             {
-                if (codes[j].opcode == OpCodes.Ldfld && codes[j].operand.ToString() == name_OpposingSlot && op_OpposingSlot == null)
-                    op_OpposingSlot = codes[j].operand;
-
-                if (codes[j].opcode == OpCodes.Ldfld && codes[j].operand.ToString() == name_AttackingSlot && op_AttackingSlot == null)
-                    op_AttackingSlot = codes[j].operand;
-
-                if (codes[j].opcode == OpCodes.Ldfld && codes[j].operand.ToString() == name_CombatPhase && op_CombatPhase == null)
-                    op_CombatPhase = codes[j].operand;
-
-                if (op_CombatPhase != null && op_AttackingSlot != null && op_OpposingSlot != null)
-                    break;
-            }
-
-            // get the endIndex
-            for (int k = startIndex; k < codes.Count; k++)
-            {
-                if (codes[k].opcode == OpCodes.Callvirt && codes[k].operand.ToString() == name_SetDamageDealt)
+                if (op_OpposingSlot == null && codes[i].operand?.ToString() == name_OpposingSlot)
                 {
-                    endIndex = k + 1;
+                    op_OpposingSlot = codes[i].operand;
                     break;
                 }
             }
 
-            if (endIndex > -1)
+            // get the endIndex
+            for (int j = startIndex; j < codes.Count; j++)
             {
-                MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.NewDealDirectDamage),
-                    new Type[] { typeof(CombatPhaseManager), typeof(CardSlot), typeof(CardSlot) });
+                if (codes[j].opcode == OpCodes.Callvirt && codes[j].operand.ToString() == name_GetCard)
+                {
+                    MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
+                        new Type[] { typeof(CardSlot), typeof(CardSlot) });
 
-                // remove the previous code then insert our own
-                codes.RemoveRange(startIndex, endIndex - startIndex);
-                // combatPhaseManager
-                codes.Insert(startIndex, new CodeInstruction(OpCodes.Ldloc_1));
-                // this.<>.attackingSlot
-                codes.Insert(startIndex + 1, new CodeInstruction(OpCodes.Ldarg_0));
-                codes.Insert(startIndex + 2, new CodeInstruction(OpCodes.Ldfld, op_CombatPhase));
-                codes.Insert(startIndex + 3, new CodeInstruction(OpCodes.Ldfld, op_AttackingSlot));
-                // this.opposingSlot
-                codes.Insert(startIndex + 4, new CodeInstruction(OpCodes.Ldarg_0));
-                codes.Insert(startIndex + 5, new CodeInstruction(OpCodes.Ldfld, op_OpposingSlot));
-                codes.Insert(startIndex + 6, new CodeInstruction(OpCodes.Call, customMethod));
+                    codes[j++] = new(OpCodes.Ldarg_0);
+                    codes[j++] = new(OpCodes.Ldfld, op_OpposingSlot);
+                    codes.Insert(j++, new(OpCodes.Callvirt, customMethod));
+                    return true;
+                }
             }
         }
-    }
-
-    public static void NewDealDirectDamage(CombatPhaseManager __instance, CardSlot attackingSlot, CardSlot opposingSlot)
-    {
-        if (attackingSlot.IsPlayerSlot == opposingSlot.IsPlayerSlot)
-        {
-            __instance.DamageDealtThisPhase -= attackingSlot.Card.Attack;
-        }
-        else
-        {
-            __instance.DamageDealtThisPhase += attackingSlot.Card.Attack;
-        }
+        return false;
     }
 }

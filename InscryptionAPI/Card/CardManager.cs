@@ -1,6 +1,8 @@
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.PixelCard;
 using InscryptionAPI.Saves;
 using MonoMod.Cil;
 using System.Collections.ObjectModel;
@@ -19,7 +21,12 @@ public static class CardManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
+   public class CardAltPortraits
+    {
+        public Sprite PixelAlternatePortrait = null;
+    }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
+    private static readonly ConditionalWeakTable<CardInfo, CardAltPortraits> CardAlternatePortraits = new();
 
     internal static readonly Dictionary<string, Func<bool, int, bool>> CustomCardUnlocks = new();
 
@@ -255,9 +262,12 @@ public static class CardManager
         }
     }
 
-    internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card)
+    internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
+    internal static CardAltPortraits GetAltPortraits(this CardInfo card) => CardAlternatePortraits.GetOrCreateValue(card);
+    
+    public static Sprite PixelAlternatePortrait(this CardInfo card)
     {
-        return CardExtensionProperties.GetOrCreateValue(card).StringMap;
+        return card.GetAltPortraits().PixelAlternatePortrait;
     }
 
     private const string ERROR = "ERROR";
@@ -342,18 +352,19 @@ public static class CardManager
     {
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
-
+        CardAlternatePortraits.Add((CardInfo)__result, CardAlternatePortraits.GetOrCreateValue(__instance));
+        // clone all the mods too
+        // DO NOT CHANGE THIS
+        // if there are errors due to this, address them where they occur, NOT HERE
+        // I've spent way too much time trying to make this work and it's easier to just clone everything
         CardInfo result = (CardInfo)__result;
-        if (__instance.Mods.Any(x => x.gemify))
-            result.Mods.Add(new() { gemify = true });
-
-        if (__instance.ModPrefixIs(DeathCardManager.CardPrefix))
-        {
-            CardModificationInfo death = __instance.Mods.Find(x => x.HasDeathCardInfo());
-            if (death != null)
-                result.Mods.Add(new() { singletonId = death.singletonId, deathCardInfo = death.deathCardInfo });
-        }
+        result.Mods = new(__instance.Mods);
     }
+
+
+    // prevent duplicate mods from being added as a result of ClonePostfix
+    [HarmonyPrefix, HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ModifyCard))]
+    private static bool ModifyCardDontAddDupes(CardInfo card, CardModificationInfo mod) => !card.Mods.Contains(mod);
 
     [HarmonyILManipulator]
     [HarmonyPatch(typeof(ConceptProgressionTree), nameof(ConceptProgressionTree.CardUnlocked))]
@@ -378,7 +389,7 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] { typeof(string) })]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this
 
@@ -389,7 +400,7 @@ public static class CardManager
         // return CardLoader.Clone(LogCardInfo(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name)));
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         MethodInfo CloneMethodInfo = SymbolExtensions.GetMethodInfo(() => CardLoader.Clone(null));
         MethodInfo LogCardInfoMethodInfo = SymbolExtensions.GetMethodInfo(() => LogCardInfo(null, null));
@@ -412,5 +423,24 @@ public static class CardManager
             InscryptionAPIPlugin.Logger.LogError("[CardLoader] Could not find CardInfo with name '" + cardInfoName + "'");
 
         return info;
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.SwitchToAlternatePortrait))]
+    private static void SwitchToAlternatePortraitPixel(PlayableCard __instance)
+    {
+        if (SaveManager.SaveFile.IsPart2 && __instance.Info.PixelAlternatePortrait() != null)
+        {
+            __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.sprite = __instance.Info.PixelAlternatePortrait();
+            __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.enabled = true;
+        }
+    }
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.SwitchToDefaultPortrait))]
+    private static void SwitchToDefaultPortraitPixel(PlayableCard __instance)
+    {
+        if (SaveManager.SaveFile.IsPart2)
+        {
+            __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.sprite = __instance.Info.pixelPortrait;
+            __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.enabled = __instance.Info.pixelPortrait != null;
+        }
     }
 }

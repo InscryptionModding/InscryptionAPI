@@ -15,6 +15,7 @@ public static class TalkingCardCreator
     internal static List<string> AllDialogueAdded => DialogueDummy.AllDialogueAdded;
 
     internal static Dictionary<string, GameObject> AnimatedPortraits = new();
+    internal static Dictionary<string, SpecialTriggeredAbility> TalkingAbilities = new();
 
     #region AnimatedPortrait
     internal static FaceInfo BasicInfo()
@@ -25,6 +26,25 @@ public static class TalkingCardCreator
                 GeneratePortrait.VoicePitch
             );
         return faceInfo;
+    }
+
+    internal static void Remove(FaceData faceData) {
+        if (faceData.CardName == null) return;
+        Remove(faceData.CardName);
+    }
+
+    internal static void Remove(string cardName) {
+        if (!AnimatedPortraits.ContainsKey(cardName)) return;
+
+        CardInfo? card = CardHelpers.Get(cardName);
+        if (card == null) return;
+
+        card.RemoveAppearances(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
+        card.RemoveSpecialAbilities(TalkingAbilities[cardName]);
+
+        GameObject.Destroy(AnimatedPortraits[cardName]);
+        AnimatedPortraits.Remove(cardName);
+        TalkingAbilities.Remove(cardName);
     }
 
     internal static void New(FaceData faceData, SpecialTriggeredAbility talkAbility)
@@ -51,6 +71,7 @@ public static class TalkingCardCreator
         if (card == null) return;
 
         AnimatedPortraits.Add(faceData.CardName, portrait);
+        TalkingAbilities.Add(faceData.CardName, talkAbility);
         card.AddAppearances(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
         card.AddSpecialAbilities(talkAbility);
     }

@@ -14,14 +14,14 @@ namespace InscryptionAPI.Card;
 /// <remarks>This manager can currently handle watermarking cards with tribes and having 
 /// them appear at tribal choice nodes. Totems are not currently supported.</remarks>
 [HarmonyPatch]
-public class TribeManager
+public static class TribeManager
 {
     private static readonly List<TribeInfo> tribes = new();
     private static readonly List<Tribe> tribeTypes = new();
     public static readonly ReadOnlyCollection<TribeInfo> NewTribes = new(tribes);
     public static readonly ReadOnlyCollection<Tribe> NewTribesTypes = new(tribeTypes);
 
-    private static Texture2D TribeIconMissing = TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
+    private static readonly Texture2D TribeIconMissing = TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
 
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.UpdateTribeIcon))]
     [HarmonyPostfix]
@@ -48,7 +48,7 @@ public class TribeManager
                         if (!foundSpriteRenderer)
                         {
                             SpriteRenderer last = __instance.tribeIconRenderers.Last();
-                            SpriteRenderer spriteRenderer = UnityEngine.Object.Instantiate(last);
+                            SpriteRenderer spriteRenderer = UnityObject.Instantiate(last);
                             spriteRenderer.transform.parent = last.transform.parent;
                             spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
                         }
@@ -64,7 +64,7 @@ public class TribeManager
     {
         if (choice != null && choice.tribe != Tribe.None && __result == null)
         {
-            __result = tribes?.Find((x) => x != null && x.tribe == choice.tribe)?.cardback;
+            __result = tribes.Find(x => x?.tribe == choice.tribe)?.cardback;
         }
     }
 
@@ -103,7 +103,7 @@ public class TribeManager
         while (tribes.Count > 3) // if there are more than 3 tribes, reduce it to 3
             tribes.RemoveAt(SeededRandom.Range(0, tribes.Count, randomSeed++));
 
-        List<CardChoice> list2 = new List<CardChoice>();
+        List<CardChoice> list2 = new();
         foreach (Tribe tribe in tribes.Randomize())
         {
             list2.Add(new CardChoice
@@ -127,12 +127,44 @@ public class TribeManager
     public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
     {
         Tribe tribe = GuidManager.GetEnumValue<Tribe>(guid, name);
-        TribeInfo info = new() { tribe = tribe, icon = tribeIcon?.ConvertTexture(), cardback = choiceCardbackTexture, tribeChoice = appearInTribeChoices };
+        Texture2D cardbackTexture = choiceCardbackTexture ?? MakePlaceholderCardback(tribeIcon);
+        TribeInfo info = new()
+        {
+            tribe = tribe,
+            icon = tribeIcon?.ConvertTexture(),
+            cardback = cardbackTexture,
+            tribeChoice = appearInTribeChoices
+        };
         tribes.Add(info);
         tribeTypes.Add(tribe);
         return tribe;
     }
+    private static Texture2D MakePlaceholderCardback(Texture2D tribeIcon)
+    {
+        Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", Assembly.GetExecutingAssembly());
+        if (tribeIcon == null)
+            return emptyCardback;
 
+        int startX = (emptyCardback.width - tribeIcon.height) / 2;
+        int startY = emptyCardback.height - tribeIcon.height + 20;
+
+        for (int x = startX; x < emptyCardback.width; x++)
+        {
+            for (int y = startY; y < emptyCardback.height; y++)
+            {
+                Color bgColor = emptyCardback.GetPixel(x, y);
+                Color wmColor = tribeIcon.GetPixel(x - startX, y - startY);
+                wmColor.a *= 0.91f;
+
+                Color final_color = Color.Lerp(bgColor, wmColor, wmColor.a / 1.0f);
+
+                emptyCardback.SetPixel(x, y, final_color);
+            }
+        }
+
+        emptyCardback.Apply();
+        return emptyCardback;
+    }
     /// <summary>
     /// Adds a new tribe to the game
     /// </summary>

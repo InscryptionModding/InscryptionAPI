@@ -313,7 +313,7 @@ public static class TotemManager
             addComponent.Rebind();
         }
 
-        // Mark as dont destroy on load so it doesn't get removed between levels
+        // Mark as don't destroy on load so it doesn't get removed between levels
         UnityObject.DontDestroyOnLoad(prefab);
     }
 

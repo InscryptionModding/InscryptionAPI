@@ -137,7 +137,10 @@ public static class TextureHelper
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
+
         texture.filterMode = filterMode;
+        texture.name = Path.GetFileNameWithoutExtension(pathCardArt);
+
         return texture;
     }
 
@@ -153,7 +156,10 @@ public static class TextureHelper
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
         bool isLoaded = texture.LoadImage(imgBytes);
+
         texture.filterMode = filterMode;
+        texture.name = Path.GetFileNameWithoutExtension(pathCardArt);
+
         return texture;
     }
 
@@ -168,6 +174,7 @@ public static class TextureHelper
     {
         texture.filterMode = filterMode;
         Sprite retval = Sprite.Create(texture, SPRITE_RECTS[spriteType], SPRITE_PIVOTS[spriteType]);
+        retval.name = texture.name;
         return retval;
     }
 
@@ -180,7 +187,9 @@ public static class TextureHelper
     public static Sprite ConvertTexture(this Texture2D texture, Vector2? pivot = null)
     {
         pivot ??= new Vector2(0.5f, 0.5f);
-        return Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+        Sprite retval = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), pivot.Value);
+        retval.name = texture.name;
+        return retval;
     }
 
     /// <summary>
@@ -322,5 +331,48 @@ public static class TextureHelper
         }
 
         return baseTexture;
+    }
+
+    /// <summary>
+    /// Creates an identical copy of a given texture
+    /// </summary>
+    /// <param name="texture">The texture to copy</param>
+    public static Texture2D DuplicateTexture(Texture2D texture)
+    {
+        // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
+        // Create a temporary RenderTexture of the same size as the texture
+
+        RenderTexture tmp = RenderTexture.GetTemporary(
+                            texture.width,
+                            texture.height,
+                            0,
+                            RenderTextureFormat.Default,
+                            RenderTextureReadWrite.Linear);
+
+
+        // Blit the pixels on texture to the RenderTexture
+        Graphics.Blit(texture, tmp);
+
+        // Backup the currently set RenderTexture
+        RenderTexture previous = RenderTexture.active;
+
+        // Set the current RenderTexture to the temporary one we created
+        RenderTexture.active = tmp;
+
+        // Create a new readable Texture2D to copy the pixels to it
+
+        Texture2D myTexture2D = new(texture.width, texture.height);
+
+        // Copy the pixels from the RenderTexture to the new Texture
+        myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+        myTexture2D.Apply();
+
+        // Reset the active RenderTexture
+        RenderTexture.active = previous;
+
+        // Release the temporary RenderTexture
+        RenderTexture.ReleaseTemporary(tmp);
+
+        return myTexture2D;
     }
 }
