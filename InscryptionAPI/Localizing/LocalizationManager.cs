@@ -108,6 +108,72 @@ public static class LocalizationManager
             }
         }
     }
+    
+    public static string LanguageToCode(Language language)
+    {
+        switch (language)
+        {
+            case Language.English:
+                return "en";
+            case Language.French:
+                return "fr";
+            case Language.Italian:
+                return "it";
+            case Language.German:
+                return "de";
+            case Language.Spanish:
+                return "es";
+            case Language.BrazilianPortuguese:
+                return "pt";
+            case Language.Turkish:
+                return "tr";
+            case Language.Russian:
+                return "ru";
+            case Language.Japanese:
+                return "ja";
+            case Language.Korean:
+                return "ko";
+            case Language.ChineseSimplified:
+                return "zhcn";
+            case Language.ChineseTraditional:
+                return "zhtw";
+            default:
+                return "UNKNOWN";
+        }
+    }
+    
+    public static Language CodeToLanguage(string language)
+    {
+        switch (language)
+        {
+            case "en":
+                return Language.English;
+            case "fr":
+                return Language.French;
+            case "it":
+                return Language.Italian;
+            case "de":
+                return Language.German;
+            case "es":
+                return Language.Spanish;
+            case "pt":
+                return Language.BrazilianPortuguese;
+            case "tr":
+                return Language.Turkish;
+            case "ru":
+                return Language.Russian;
+            case "ja":
+                return Language.Japanese;
+            case "ko":
+                return Language.Korean;
+            case "zhcn":
+                return Language.ChineseSimplified;
+            case "zhtw":
+                return Language.ChineseTraditional;
+            default:
+                return Language.NUM_LANGUAGES;
+        }
+    }
 
     [HarmonyPatch]
     internal static class Patches
