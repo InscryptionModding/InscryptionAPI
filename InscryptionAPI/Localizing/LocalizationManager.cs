@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Text;
+using HarmonyLib;
 
 namespace InscryptionAPI.Localizing;
 
@@ -141,7 +142,7 @@ public static class LocalizationManager
                 return "UNKNOWN";
         }
     }
-    
+
     public static Language CodeToLanguage(string language)
     {
         switch (language)
@@ -174,6 +175,54 @@ public static class LocalizationManager
                 return Language.NUM_LANGUAGES;
         }
     }
+
+    public static void ExportAllToCSV()
+    {
+        // Exports all localisation to a spreadsheet in the APIs directory
+        List<Language> languages = new List<Language>();
+        foreach (Language value in Enum.GetValues(typeof(Language)))
+        {
+            if (value < Language.NUM_LANGUAGES)
+            {
+                languages.Add(value);
+                Localization.TryLoadLanguage(value);
+            }
+        }
+
+        StringBuilder stringBuilder = new StringBuilder("id");
+        for (int i = 0; i < languages.Count; i++)
+        {
+            var language = languages[i];
+            stringBuilder.Append("," + language);
+        }
+
+        int keys = Localization.Translations.Count;
+        for (var i = 0; i < keys; i++)
+        {
+            Localization.Translation translation = Localization.Translations[i];
+            stringBuilder.Append($"\n{translation.id}");
+
+            for (var j = 0; j < languages.Count; j++)
+            {
+                Language language = languages[j];
+                stringBuilder.Append(",");
+
+                if (language == Language.English)
+                {
+                    stringBuilder.Append(translation.englishString);
+                }
+                else if (translation.values.TryGetValue(language, out string word))
+                {
+                    stringBuilder.Append(word);
+                }
+            }
+        }
+
+        string path = Path.Combine(InscryptionAPIPlugin.Directory, "localisation_table.csv");
+        File.WriteAllText(path, stringBuilder.ToString());
+        InscryptionAPIPlugin.Logger.LogInfo($"Exported .csv file to {path}");
+    }
+
 
     [HarmonyPatch]
     internal static class Patches
