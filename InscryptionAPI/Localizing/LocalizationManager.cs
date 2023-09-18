@@ -1,22 +1,180 @@
 ﻿using System.Text;
 using HarmonyLib;
+using InscryptionAPI.Guid;
+using UnityEngine;
 
 namespace InscryptionAPI.Localizing;
 
-public static class LocalizationManager
+public static partial class LocalizationManager
 {
+    public class CustomLanguage
+    {
+        public string PluginGUID;
+        public string LanguageName;
+        public string LanguageCode; // For translating
+        public string PathToStringTable;
+        public Language Language;
+    }
+    
     public class CustomTranslation
     {
         public string PluginGUID;
         public Localization.Translation Translation;
     }
 
+    public static List<string> AllLanguageNames = new List<string>();
+    public static List<string> AllLanguageButtonText = new List<string>();
+    
+    public static List<CustomLanguage> AllLanguages = new List<CustomLanguage>();
+    public static List<CustomLanguage> NewLanguages = new List<CustomLanguage>();
     public static List<CustomTranslation> CustomTranslations = new List<CustomTranslation>();
     public static Action<Language> OnLanguageLoaded = null;
 
     private static List<Language> AlreadyLoadedLanguages = new List<Language>();
 
-    public static CustomTranslation New(string pluginGUID, string id, string englishString, string translatedString, Language language)
+    static LocalizationManager()
+    {
+        AllLanguageNames = LocalizedLanguageNames.NAMES.ToList();
+        AllLanguageButtonText = LocalizedLanguageNames.SET_LANGUAGE_BUTTON_TEXT.ToList();
+        foreach (Language language in Enum.GetValues(typeof(Language)).Cast<Language>().Where((a)=>a < Language.NUM_LANGUAGES))
+        {
+            CustomLanguage customLanguage = new CustomLanguage()
+            {
+                PluginGUID = InscryptionAPIPlugin.ModGUID,
+                LanguageName = language.ToString(),
+                Language = language,
+            };
+            
+            switch (language)
+            {
+                case Language.English:
+                    customLanguage.LanguageCode = "en";
+                    break;
+                case Language.French:
+                    customLanguage.LanguageCode = "fr";
+                    break;
+                case Language.Italian:
+                    customLanguage.LanguageCode = "it";
+                    break;
+                case Language.German:
+                    customLanguage.LanguageCode = "de";
+                    break;
+                case Language.Spanish:
+                    customLanguage.LanguageCode = "es";
+                    break;
+                case Language.BrazilianPortuguese:
+                    customLanguage.LanguageCode = "pt";
+                    break;
+                case Language.Turkish:
+                    customLanguage.LanguageCode = "tr";
+                    break;
+                case Language.Russian:
+                    customLanguage.LanguageCode = "ru";
+                    break;
+                case Language.Japanese:
+                    customLanguage.LanguageCode = "ja";
+                    break;
+                case Language.Korean:
+                    customLanguage.LanguageCode = "ko";
+                    break;
+                case Language.ChineseSimplified:
+                    customLanguage.LanguageCode = "zhcn";
+                    break;
+                case Language.ChineseTraditional:
+                    customLanguage.LanguageCode = "zhtw";
+                    break;
+                default:
+                    customLanguage.LanguageCode = "UNKNOWN";
+                    break;
+            }
+            AllLanguages.Add(customLanguage);
+        }
+    }
+
+    public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath=null)
+    {
+        Language language = GuidManager.GetEnumValue<Language>(pluginGUID, languageName);
+        CustomLanguage customLanguage = new CustomLanguage()
+        {
+            PluginGUID = pluginGUID,
+            LanguageName = languageName,
+            Language = language,
+            LanguageCode = code,
+            PathToStringTable = stringTablePath,
+        };
+        AllLanguages.Add(customLanguage);
+        NewLanguages.Add(customLanguage);
+        AllLanguageNames.Add(languageName);
+        AllLanguageButtonText.Add(resetButtonText);
+
+        /*if (!string.IsNullOrEmpty(stringTablePath))
+        {
+            ImportStringTable(stringTablePath, language);
+        }*/
+        
+        return language;
+    }
+    
+    private static void ImportStringTable(string stringTablePath, Language language)
+    {
+        string lines = File.ReadAllText(stringTablePath);
+        try
+        {
+            using StringReader aReader = new StringReader(lines);
+            CSVParser cSVParser = new CSVParser(aReader, ',');
+            List<string> list = new List<string>();
+            int num = 0;
+            while (cSVParser.NextLine(list))
+            {
+                if (list.Count < 3)
+                {
+                    continue;
+                }
+                string text = list[0];
+                bool num2 = text.EndsWith("_F");
+                Localization.Translation translation;
+                if (num2)
+                {
+                    translation = Localization.translations[num - 1];
+                }
+                else if (num < Localization.translations.Count)
+                {
+                    translation = Localization.translations[num];
+                }
+                else
+                {
+                    translation = new Localization.Translation();
+                    Localization.translations.Add(translation);
+                }
+                if (string.IsNullOrEmpty(translation.id))
+                {
+                    translation.id = text;
+                    translation.englishString = list[1];
+                    translation.englishStringFormatted = Localization.FormatString(list[1]);
+                }
+                if (num2)
+                {
+                    if (!string.IsNullOrEmpty(list[2]) && translation.values[language] != list[2])
+                    {
+                        translation.femaleGenderValues.Add(language, list[2]);
+                    }
+                    continue;
+                }
+                if (text != translation.id)
+                {
+                    InscryptionAPIPlugin.Logger.LogInfo("Mismatched Translation! Starting at: " + translation.id);
+                }
+                translation.values.Add(language, list[2]);
+                num++;
+            }
+        }
+        catch
+        {
+            InscryptionAPIPlugin.Logger.LogInfo("No Translation File for " + language);
+        }
+    }
+
+    public static CustomTranslation Translate(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
         CustomTranslation customTranslation = Get(englishString, id);
 
@@ -112,87 +270,21 @@ public static class LocalizationManager
     
     public static string LanguageToCode(Language language)
     {
-        switch (language)
-        {
-            case Language.English:
-                return "en";
-            case Language.French:
-                return "fr";
-            case Language.Italian:
-                return "it";
-            case Language.German:
-                return "de";
-            case Language.Spanish:
-                return "es";
-            case Language.BrazilianPortuguese:
-                return "pt";
-            case Language.Turkish:
-                return "tr";
-            case Language.Russian:
-                return "ru";
-            case Language.Japanese:
-                return "ja";
-            case Language.Korean:
-                return "ko";
-            case Language.ChineseSimplified:
-                return "zhcn";
-            case Language.ChineseTraditional:
-                return "zhtw";
-            default:
-                return "UNKNOWN";
-        }
+        return AllLanguages.Find((a) => a.Language == language).LanguageCode;
     }
 
-    public static Language CodeToLanguage(string language)
+    public static Language CodeToLanguage(string code)
     {
-        switch (language)
-        {
-            case "en":
-                return Language.English;
-            case "fr":
-                return Language.French;
-            case "it":
-                return Language.Italian;
-            case "de":
-                return Language.German;
-            case "es":
-                return Language.Spanish;
-            case "pt":
-                return Language.BrazilianPortuguese;
-            case "tr":
-                return Language.Turkish;
-            case "ru":
-                return Language.Russian;
-            case "ja":
-                return Language.Japanese;
-            case "ko":
-                return Language.Korean;
-            case "zhcn":
-                return Language.ChineseSimplified;
-            case "zhtw":
-                return Language.ChineseTraditional;
-            default:
-                return Language.NUM_LANGUAGES;
-        }
+        return AllLanguages.Find((a) => a.LanguageCode == code).Language;
     }
 
     public static void ExportAllToCSV()
     {
         // Exports all localisation to a spreadsheet in the APIs directory
-        List<Language> languages = new List<Language>();
-        foreach (Language value in Enum.GetValues(typeof(Language)))
-        {
-            if (value < Language.NUM_LANGUAGES)
-            {
-                languages.Add(value);
-                Localization.TryLoadLanguage(value);
-            }
-        }
-
         StringBuilder stringBuilder = new StringBuilder("id");
-        for (int i = 0; i < languages.Count; i++)
+        for (int i = 0; i < AllLanguages.Count; i++)
         {
-            var language = languages[i];
+            var language = AllLanguages[i];
             stringBuilder.Append("," + language);
         }
 
@@ -202,9 +294,9 @@ public static class LocalizationManager
             Localization.Translation translation = Localization.Translations[i];
             stringBuilder.Append($"\n{translation.id}");
 
-            for (var j = 0; j < languages.Count; j++)
+            for (var j = 0; j < AllLanguages.Count; j++)
             {
-                Language language = languages[j];
+                Language language = AllLanguages[j].Language;
                 stringBuilder.Append(",");
 
                 if (language == Language.English)
@@ -222,28 +314,10 @@ public static class LocalizationManager
         File.WriteAllText(path, stringBuilder.ToString());
         InscryptionAPIPlugin.Logger.LogInfo($"Exported .csv file to {path}");
     }
-
-
-    [HarmonyPatch]
-    internal static class Patches
+    
+    [Obsolete("Use Translate() instead")]
+    public static CustomTranslation New(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
-        [HarmonyPatch(typeof(Localization), nameof(Localization.ReadCSVFileIntoTranslationData))]
-        [HarmonyPostfix]
-        private static void ReadCSVFileIntoTranslationData(Language language)
-        {
-            if (!AlreadyLoadedLanguages.Contains(language))
-            {
-                AlreadyLoadedLanguages.Add(language);
-            }
-            foreach (CustomTranslation translation in CustomTranslations)
-            {
-                InsertTranslation(translation);
-            }
-
-            if (OnLanguageLoaded != null)
-            {
-                OnLanguageLoaded(language);
-            }
-        }
+        return Translate(pluginGUID, id, englishString, translatedString, language);
     }
 }

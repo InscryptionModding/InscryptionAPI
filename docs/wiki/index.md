@@ -1642,13 +1642,27 @@ Third parameter is the result of taking the object out of the asset bundle.
 
 ## Localisation
 
+### Adding new Translations
 If you want to add your own translations to Inscryption you can use the API's localisation system.
 ```csharp
-LocalizationManager.New("MyModGUID", null, "Hello", "안녕하세요", Language.Korean);
+LocalizationManager.Translate("MyModGUID", null, "Hello", "안녕하세요", Language.Korean);
 ```
 
+### Adding new Languages
+If you want to add your own translations to Inscryption you can use the API's localisation system.
+```csharp
+LocalizationManager.NewLanguage("MyModGUID", "Polish", "PL", "Reset With Polish", pathToCSV);
+```
 
-The supported languages are listed in the table below.
+The csv for your language should be in the following format so it can be imported when needed:
+```
+Column1,Column10,PL
+TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
+_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
+```
+
+### Default languages
+The default supported languages are listed in the table below.
 
 | Suffix | Language          |
 |------|-------------------|
