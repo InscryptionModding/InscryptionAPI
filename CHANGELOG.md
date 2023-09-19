@@ -5,7 +5,7 @@
 
 ## 2.17.0
 - Fixed card extension GetAbilityStacks being able to return a negative value for stackable abilities
-- Added ability interface IModifyDamageTaken
+- Added ability interfaces IModifyDamageTaken, IPreTakeDamage
 - Added support for adding alternate portraits specific to the Steel Trap ability effect and broken shield effect
 - Added CardInfo extension methods SetSteelTrapPortrait(), SetBrokenShieldPortrait()
 - Added public method TakeDamagePatches.BreakShield() for controlling DeathShield logic
