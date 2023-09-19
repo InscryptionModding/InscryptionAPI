@@ -374,7 +374,7 @@ internal static class CustomTriggerPatches
             __result.Remove(defaultslot);
         bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
-        var dummyresult = __result;
+        var dummyresult = __result; // used for sorting by trigger priority
         all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
         foreach (var opposing in all)

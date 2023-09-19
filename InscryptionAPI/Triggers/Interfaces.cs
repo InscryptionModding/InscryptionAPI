@@ -683,5 +683,12 @@ public interface IModifyDamageTaken
 
     public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
 
-    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker);
+}
+
+public interface IPreTakeDamage
+{
+    public bool RespondsToPreTakeDamage(PlayableCard source);
+
+    public IEnumerator OnPreTakeDamage(PlayableCard source);
 }

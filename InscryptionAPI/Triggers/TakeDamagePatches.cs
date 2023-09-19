@@ -23,14 +23,13 @@ public static class TakeDamagePatches
     private static bool ModifyDamageTrigger(PlayableCard __instance, ref int damage, PlayableCard attacker)
     {
         int originalDamage = damage;
-        int dummy = damage;
 
         var modifyTakeDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDamageTaken>(true).ToList();
-        modifyTakeDamage.Sort((a, b) => a.TriggerPriority(__instance, dummy, attacker, originalDamage) - b.TriggerPriority(__instance, dummy, attacker, originalDamage));
+        modifyTakeDamage.Sort((a, b) => a.TriggerPriority(__instance, originalDamage, attacker) - b.TriggerPriority(__instance, originalDamage, attacker));
         foreach (var modify in modifyTakeDamage)
         {
-            if (modify.RespondsToModifyDamageTaken(__instance, damage, attacker, damage))
-              damage = modify.OnModifyDamageTaken(__instance, dummy, attacker, damage);  
+            if (modify.RespondsToModifyDamageTaken(__instance, damage, attacker, originalDamage))
+              damage = modify.OnModifyDamageTaken(__instance, damage, attacker, originalDamage);  
         }
 
         return true;
@@ -146,7 +145,8 @@ public static class TakeDamagePatches
             // negate 1 stack of death shield
             target.Info.Mods.Add(new()
             {
-                negateAbilities = new() { Ability.DeathShield }
+                negateAbilities = new() { Ability.DeathShield },
+                nonCopyable = true
             });
         }
         else
