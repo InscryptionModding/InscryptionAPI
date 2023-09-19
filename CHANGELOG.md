@@ -3,6 +3,14 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.17.0
+- Fixed card extension GetAbilityStacks being able to return a negative value for stackable abilities
+- Added ability interface IModifyDamageTaken
+- Added support for adding alternate portraits specific to the Steel Trap ability effect and broken shield effect
+- Added CardInfo extension methods SetSteelTrapPortrait(), SetBrokenShieldPortrait()
+- Added public method TakeDamagePatches.BreakShield() for controlling DeathShield logic
+- DeathShield logic now accounts for multiple stacks (DeathShield is not stackable by default)
+
 ## 2.16.1
 - Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
 

@@ -676,3 +676,12 @@ public interface IGetAttackingSlots
     /// <returns>The trigger priority int.</returns>
     public int TriggerPriority(bool playerIsAttacker, List<CardSlot> originalSlots);
 }
+
+public interface IModifyDamageTaken
+{
+    public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+}

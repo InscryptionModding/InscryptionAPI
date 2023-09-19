@@ -1441,7 +1441,8 @@ public static class CardExtensions
     #endregion
 
     #region Extra Alts
-        /// <summary>
+    #region Pixel Alt
+    /// <summary>
     /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
@@ -1478,6 +1479,45 @@ public static class CardExtensions
         info.GetAltPortraits().PixelAlternatePortrait = portrait;
         return info;
     }
+    #endregion
+
+    #region Trap Alt
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_steeltrapportrait";
+
+        info.GetAltPortraits().SteelTrapPortrait = portrait;
+        return info;
+    }
+    #endregion
+
+    #region Shield Alt
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_brokenshieldportrait";
+
+        info.GetAltPortraits().BrokenShieldPortrait = portrait;
+        return info;
+    }
+    #endregion
     #endregion
 
     #endregion
@@ -1771,7 +1811,9 @@ public static class CardExtensions
 
     public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
-    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.GetAltPortraits().PixelAlternatePortrait != null;
+    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.PixelAlternatePortrait() != null;
+    public static bool HasSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait() != null;
+    public static bool HasBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait() != null;
 
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.
@@ -1887,10 +1929,11 @@ public static class CardExtensions
         count += AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods).Count(a => a == ability);
         count -= card.TemporaryMods.SelectMany(m => m.negateAbilities).Count(a => a == ability);
 
-        if (AbilitiesUtil.GetInfo(ability).canStack)
-            return count;
-        else
-            return count > 0 ? 1 : 0; // If it's not stackable, you get at most one
+        if (count <= 0)
+            return 0;
+
+        // If it's not stackable, you get at most one
+        return AbilitiesUtil.GetInfo(ability).canStack ? count : 1;
     }
 
     /// <summary>

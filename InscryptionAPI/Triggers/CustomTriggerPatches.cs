@@ -184,7 +184,7 @@ internal static class CustomTriggerPatches
     private static Type takeDamageCoroutine;
     private static FieldInfo takeDamageDamage;
 
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
+/*    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
     [HarmonyPostfix]
     private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
     {
@@ -201,7 +201,7 @@ internal static class CustomTriggerPatches
             }
         }
         yield break;
-    }
+    }*/
 
     [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
     [HarmonyPostfix]
