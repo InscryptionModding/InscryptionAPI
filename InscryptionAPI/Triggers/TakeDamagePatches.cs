@@ -3,6 +3,7 @@ using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using Sirenix.Serialization.Utilities;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -10,17 +11,12 @@ using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
 
-// Patches to DoCombatPhase that add negative damage support and modifying attack slots support
+// Patches to TakeDamage that add some more triggers and multi-shield support
 [HarmonyPatch]
 public static class TakeDamagePatches
 {
-    private const string name_State = "System.Int32 <>1__state";
-    private const string name_Damage = "System.Int32 damage";
-    private const string name_CardAttacker = "DiskCardGame.PlayableCard attacker";
-    private const string name_CombatCurrent = "System.Object <>2__current";
-
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
-    private static bool ModifyDamageTrigger(PlayableCard __instance, ref int damage, PlayableCard attacker)
+    private static bool AddModifyDamageTrigger(PlayableCard __instance, ref int damage, PlayableCard attacker)
     {
         int originalDamage = damage;
 
@@ -32,132 +28,155 @@ public static class TakeDamagePatches
               damage = modify.OnModifyDamageTaken(__instance, damage, attacker, originalDamage);  
         }
 
+        // no negative damage
+        if (damage < 0)
+            damage = 0;
+
         return true;
     }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
+    private static IEnumerator AddTakeDamageTriggers(IEnumerator enumerator, PlayableCard __instance, int damage, PlayableCard attacker)
+    {
+        var preTake = CustomTriggerFinder.FindTriggersOnCard<IPreTakeDamage>(__instance);
+        foreach (var pre in preTake)
+        {
+            if (pre.RespondsToPreTakeDamage(attacker, damage))
+                yield return pre.OnPreTakeDamage(attacker, damage);
+        }
+
+        yield return enumerator;
+        if (__instance?.HasShield() == false && attacker != null)
+        {
+            yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(
+            x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
+                x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
+        }
+    }
+
+    private const string name_Damage = "System.Int32 damage";
+    private const string name_TriggerHandler = "DiskCardGame.CardTriggerHandler get_TriggerHandler()";
+
     [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage), MethodType.Enumerator)]
-    private static IEnumerable<CodeInstruction> TakeDamageTriggers(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> TakeDamageTranspiler(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new(instructions);
 
-        object current = null;
-        object state = null;
-        // Ldloc.1
-        object attacker = null;
+        object hasShieldLabel = null;
         object damage = null;
+        object damageLabel = null;
 
-        int startIndex = -1, endIndex = -1;
+        int shieldStart = -1, shieldEnd = -1;
         for (int i = 0; i < codes.Count; i++)
         {
             // grab the required operands, in order of appearance in the code
-            if (state == null && codes[i].operand?.ToString() == name_State)
+            if (shieldStart == -1 && codes[i].operand?.ToString() == "Boolean HasShield()")
             {
-                state = codes[i].operand;
+                shieldStart = i + 2;
+                hasShieldLabel = codes[i + 1].operand;
                 continue;
             }
-            if (startIndex == -1 && codes[i].operand?.ToString() == "Boolean HasShield()")
+            if (shieldEnd == -1 && codes[i].opcode == OpCodes.Br)
             {
-                startIndex = i + 2;
-                continue;
-            }
-            if (endIndex == -1 && codes[i].opcode == OpCodes.Br)
-            {
-                endIndex = i;
+                shieldEnd = i;
                 continue;
             }
             if (damage == null && codes[i].operand?.ToString() == name_Damage)
             {
                 damage = codes[i].operand;
-                continue;
-            }
-            if (attacker == null && codes[i].operand?.ToString() == name_CardAttacker)
-            {
-                attacker = codes[i].operand;
-                continue;
-            }
-            if (current == null && codes[i].operand?.ToString() == name_CombatCurrent)
-            {
-                current = codes[i].operand;
-                if (startIndex != -1)
+                if (shieldEnd != -1)
                 {
-                    MethodBase customMethod = AccessTools.Method(typeof(TakeDamagePatches), nameof(TakeDamagePatches.BreakShield),
-                        new Type[] { typeof(PlayableCard) });
-                    // if (HasShield)
+                    // if (HasShield && damage > 0)
                     //   BreakShield();
-                    codes.RemoveRange(startIndex, endIndex - startIndex);
-                    codes.Insert(startIndex, new(OpCodes.Ldloc_1));
-                    codes.Insert(startIndex + 1, new(OpCodes.Callvirt, customMethod));
+
+                    MethodBase breakShield = AccessTools.Method(typeof(TakeDamagePatches), nameof(TakeDamagePatches.BreakShield),
+                        new Type[] { typeof(PlayableCard) });
+
+                    codes.RemoveRange(shieldStart, shieldEnd - shieldStart);
+
+                    // && damage > 0
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Cgt));
+                    codes.Insert(shieldStart++, new(OpCodes.Brfalse, hasShieldLabel));
+                    // BreakShield();
+                    codes.Insert(shieldStart++, new(OpCodes.Ldloc_1));
+                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
+                    
                 }
-                break;
             }
-        }
-
-        for (int j = codes.Count - 1; j >= 0; j--)
-        {
-            if (codes[j].opcode == OpCodes.Ldc_I4_0)
+            if (codes[i].operand?.ToString() == name_TriggerHandler && codes[i + 1].opcode == OpCodes.Ldc_I4_8)
             {
-                // this.current = TriggerOtherDamageInHand
-                // this.state = 5
-                // return true
-                // this.state = -1
+                // if (RespondsToTrigger(8) && damage > 0)
+                //  ....
 
-                MethodBase customMethod = AccessTools.Method(typeof(TakeDamagePatches), nameof(TakeDamagePatches.TriggerOtherDamageInHand),
-                    new Type[] { typeof(PlayableCard), typeof(PlayableCard) });
+                i += 10;
+                damageLabel = codes[i++].operand;
+                codes.Insert(i++, new(OpCodes.Ldarg_0));
+                codes.Insert(i++, new(OpCodes.Ldfld, damage));
+                codes.Insert(i++, new(OpCodes.Ldc_I4_0));
+                codes.Insert(i++, new(OpCodes.Cgt));
+                codes.Insert(i++, new(OpCodes.Brfalse, damageLabel));
 
-                codes.Insert(j, new(OpCodes.Ldarg_0));
-                codes.Insert(j + 1, new(OpCodes.Ldarg_0));
-                codes.Insert(j + 2, new(OpCodes.Ldloc_1));
-                codes.Insert(j + 3, new(OpCodes.Ldfld, attacker));
-                codes.Insert(j + 4, new(OpCodes.Callvirt, customMethod));
-                codes.Insert(j + 5, new(OpCodes.Stfld, current));
-
-                // this.state = 5
-                codes.Insert(j + 6, new(OpCodes.Ldarg_0));
-                codes.Insert(j + 7, new(OpCodes.Ldc_I4_5));
-                codes.Insert(j + 8, new(OpCodes.Stfld, state));
-                // return true
-                codes.Insert(j + 9, new(OpCodes.Ldc_I4_1));
-                codes.Insert(j + 10, new(OpCodes.Ret));
-                // this.state = -1
-                codes.Insert(j + 11, new(OpCodes.Ldarg_0));
-                codes.Insert(j + 12, new(OpCodes.Ldc_I4_M1));
-                codes.Insert(j + 13, new(OpCodes.Stfld, state));
                 break;
             }
         }
 
-        codes.LogCodeInscryptions();
         return codes;
     }
-    private static IEnumerator TriggerOtherDamageInHand(PlayableCard target, PlayableCard attacker)
-    {
-        yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(
-            x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, target),
-            x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, target));
-    }
+
     public static void BreakShield(PlayableCard target)
     {
-        // is DeathShield even stackable? well whatever
-        int shieldStacks = target.GetAbilityStacks(Ability.DeathShield) - 1;
+        // this void assumes that damage > 0
 
-        target.Anim.StrongNegationEffect();
-        if (shieldStacks > 0)
+        var components = target.GetComponents<DamageShieldBehaviour>();
+        foreach (var component in components)
         {
-            // negate 1 stack of death shield
-            target.Info.Mods.Add(new()
+            // only reduce numShields for components with positive count
+            if (component.HasShields())
             {
-                negateAbilities = new() { Ability.DeathShield },
-                nonCopyable = true
-            });
-        }
-        else
-        {
-            target.Status.lostShield = true;
+                component.numShields--;
 
-            if (target.Info.name == "MudTurtle")
-                target.SwitchToAlternatePortrait();
-            else if (target.Info.HasBrokenShieldPortrait())
-                target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
+                target.Anim.StrongNegationEffect();
+
+                // if we've exhausted this shield component's count, negate it
+                // so it updates the display
+                if (component.NumShields == 0)
+                {
+                    target.AddTemporaryMod(new()
+                    {
+                        negateAbilities = new() { component.Ability },
+                        nonCopyable = true
+                    });
+                }
+
+                // if we removed the last shield
+                if (target.GetTotalShields() == 0)
+                {
+                    target.Status.lostShield = true;
+
+                    if (target.Info.name == "MudTurtle")
+                        target.SwitchToAlternatePortrait();
+                    else if (target.Info.HasBrokenShieldPortrait())
+                        target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
+                }
+                target.UpdateFaceUpOnBoardEffects();
+                break;
+            }
         }
-        target.UpdateFaceUpOnBoardEffects();
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
+    private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result)
+    {
+        __result = NewHasShield(__instance);
+    }
+    public static bool NewHasShield(PlayableCard instance)
+    {
+        if (instance.GetTotalShields() > 0)
+            return !instance.Status.lostShield;
+
+        return false;
     }
 }

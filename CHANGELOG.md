@@ -8,8 +8,16 @@
 - Added ability interfaces IModifyDamageTaken, IPreTakeDamage
 - Added support for adding alternate portraits specific to the Steel Trap ability effect and broken shield effect
 - Added CardInfo extension methods SetSteelTrapPortrait(), SetBrokenShieldPortrait()
-- Added public method TakeDamagePatches.BreakShield() for controlling DeathShield logic
-- DeathShield logic now accounts for multiple stacks (DeathShield is not stackable by default)
+- Added public method TakeDamagePatches.BreakShield() for controlling how shields are lost
+- Added public method TakeDamage.NewHasShield()
+- Added DamageShieldBehaviour for creating shield-giving abilities
+- Added support for giving cards multiple shields
+- Changed DeathShield to use a custom ability behaviour for its logic (APIDeathShield)
+- Changed DeathShield to no longer be marked as passive
+- Changed how PlayableCard.HasShield() determines whether a card has a shield or not (still uses .Status.lostShield)
+- Changed TakeDamage trigger activation to require damage > 0
+- Cards now only lose shields if damage > 0
+- Damage dealt to cards can no longer go below 0
 
 ## 2.16.1
 - Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1

@@ -626,6 +626,7 @@ public interface IPassiveAttackBuff
 /// <summary>
 /// Data collection trigger that modifies the damage taken by any card.
 /// </summary>
+[Obsolete("Use IModifyDamageTaken instead.")]
 public interface ICardTakenDamageModifier
 {
     /// <summary>
@@ -688,7 +689,7 @@ public interface IModifyDamageTaken
 
 public interface IPreTakeDamage
 {
-    public bool RespondsToPreTakeDamage(PlayableCard source);
+    public bool RespondsToPreTakeDamage(PlayableCard source, int damage);
 
-    public IEnumerator OnPreTakeDamage(PlayableCard source);
+    public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }

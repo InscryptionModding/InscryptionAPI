@@ -1937,6 +1937,34 @@ public static class CardExtensions
     }
 
     /// <summary>
+    /// Gets the number of shields the target card has. Each shield negates one damaging hit.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <returns>The number of shields the card has.</returns>
+    public static int GetTotalShields(this PlayableCard card)
+    {
+        var components = card.GetComponents<DamageShieldBehaviour>();
+
+        int totalShields = 0;
+        List<Ability> distinct = new(); // keep track of non-stacking shield abilities
+
+        foreach (var component in components)
+        {
+            // stackable shields all get tallied up
+            if (AbilitiesUtil.GetInfo(component.Ability).canStack)
+                totalShields += component.NumShields;
+
+            else if (!distinct.Contains(component.Ability))
+            {
+                distinct.Add(component.Ability);
+                totalShields += component.NumShields;
+            }
+        }
+
+        return totalShields;
+    }
+
+    /// <summary>
     /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>
