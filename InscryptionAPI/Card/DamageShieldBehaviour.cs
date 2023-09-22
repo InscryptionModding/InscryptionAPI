@@ -29,4 +29,10 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
 
         numShields = StartingNumShields;
     }
+
+    public void ResetShields()
+    {
+        numShields = StartingNumShields;
+        base.Card.Status.lostShield = false;
+    }
 }

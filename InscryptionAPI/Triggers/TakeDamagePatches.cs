@@ -56,6 +56,7 @@ public static class TakeDamagePatches
 
     private const string name_Damage = "System.Int32 damage";
     private const string name_TriggerHandler = "DiskCardGame.CardTriggerHandler get_TriggerHandler()";
+    private const string name_CardAttacker = "DiskCardGame.PlayableCard attacker";
 
     [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage), MethodType.Enumerator)]
     private static IEnumerable<CodeInstruction> TakeDamageTranspiler(IEnumerable<CodeInstruction> instructions)
@@ -65,6 +66,7 @@ public static class TakeDamagePatches
         object hasShieldLabel = null;
         object damage = null;
         object damageLabel = null;
+        object attacker = null;
 
         int shieldStart = -1, shieldEnd = -1;
         for (int i = 0; i < codes.Count; i++)
@@ -84,29 +86,9 @@ public static class TakeDamagePatches
             if (damage == null && codes[i].operand?.ToString() == name_Damage)
             {
                 damage = codes[i].operand;
-                if (shieldEnd != -1)
-                {
-                    // if (HasShield && damage > 0)
-                    //   BreakShield();
-
-                    MethodBase breakShield = AccessTools.Method(typeof(TakeDamagePatches), nameof(TakeDamagePatches.BreakShield),
-                        new Type[] { typeof(PlayableCard) });
-
-                    codes.RemoveRange(shieldStart, shieldEnd - shieldStart);
-
-                    // && damage > 0
-                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
-                    codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
-                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_0));
-                    codes.Insert(shieldStart++, new(OpCodes.Cgt));
-                    codes.Insert(shieldStart++, new(OpCodes.Brfalse, hasShieldLabel));
-                    // BreakShield();
-                    codes.Insert(shieldStart++, new(OpCodes.Ldloc_1));
-                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
-                    
-                }
+                continue;
             }
-            if (codes[i].operand?.ToString() == name_TriggerHandler && codes[i + 1].opcode == OpCodes.Ldc_I4_8)
+            if (damageLabel == null && codes[i].operand?.ToString() == name_TriggerHandler && codes[i + 1].opcode == OpCodes.Ldc_I4_8)
             {
                 // if (RespondsToTrigger(8) && damage > 0)
                 //  ....
@@ -118,15 +100,44 @@ public static class TakeDamagePatches
                 codes.Insert(i++, new(OpCodes.Ldc_I4_0));
                 codes.Insert(i++, new(OpCodes.Cgt));
                 codes.Insert(i++, new(OpCodes.Brfalse, damageLabel));
+                continue;
+            }
+            if (codes[i].operand?.ToString() == name_CardAttacker)
+            {
+                attacker = codes[i].operand;
+                if (shieldEnd != -1)
+                {
+                    // if (HasShield && damage > 0)
+                    //   BreakShield();
 
+                    MethodBase breakShield = AccessTools.Method(typeof(TakeDamagePatches), nameof(TakeDamagePatches.BreakShield),
+                        new Type[] { typeof(PlayableCard), typeof(int), typeof(PlayableCard) });
+
+                    codes.RemoveRange(shieldStart, shieldEnd - shieldStart);
+
+                    // && damage > 0
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Cgt));
+                    codes.Insert(shieldStart++, new(OpCodes.Brfalse, hasShieldLabel));
+                    // BreakShield();
+                    //break;
+                    codes.Insert(shieldStart++, new(OpCodes.Ldloc_1));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldfld, attacker));
+                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
+                }
                 break;
             }
         }
-
+        //codes.LogCodeInscryptions();
         return codes;
     }
 
-    public static void BreakShield(PlayableCard target)
+    public static void BreakShield(PlayableCard target, int damage, PlayableCard attacker)
     {
         // this void assumes that damage > 0
 
@@ -178,5 +189,16 @@ public static class TakeDamagePatches
             return !instance.Status.lostShield;
 
         return false;
+    }
+
+    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield))]
+    private static void ReplaceHasShieldBool(PlayableCard __instance)
+    {
+        foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
+        {
+            com.ResetShields();
+            CardModificationInfo mod = __instance.TemporaryMods.Find(x => x.negateAbilities != null && x.negateAbilities.Contains(com.Ability));
+            __instance.TemporaryMods.Remove(mod);
+        }
     }
 }
