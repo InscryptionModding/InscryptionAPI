@@ -192,7 +192,7 @@ public static class TakeDamagePatches
     }
 
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield))]
-    private static void ReplaceHasShieldBool(PlayableCard __instance)
+    private static void ResetModShields(PlayableCard __instance)
     {
         foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
         {
