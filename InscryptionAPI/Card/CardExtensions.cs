@@ -1936,6 +1936,7 @@ public static class CardExtensions
         return AbilitiesUtil.GetInfo(ability).canStack ? count : 1;
     }
 
+    #region Shields
     /// <summary>
     /// Gets the number of shields the target card has. Each shield negates one damaging hit.
     /// </summary>
@@ -1943,11 +1944,11 @@ public static class CardExtensions
     /// <returns>The number of shields the card has.</returns>
     public static int GetTotalShields(this PlayableCard card)
     {
-        var components = card.GetComponents<DamageShieldBehaviour>();
 
         int totalShields = 0;
         List<Ability> distinct = new(); // keep track of non-stacking shield abilities
 
+        var components = card.GetComponents<DamageShieldBehaviour>();
         foreach (var component in components)
         {
             // stackable shields all get tallied up
@@ -1977,6 +1978,40 @@ public static class CardExtensions
 
         return totalShields;
     }
+
+    /// <summary>
+    /// A variant of ResetShield that only resets shields belonging is a certain ability.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="negatedAbility">The shield ability to look for.</param>
+    public static void ResetShield(this PlayableCard card, Ability ability)
+    {
+        foreach (var com in card.GetComponents<DamageShieldBehaviour>())
+        {
+            if (com.Ability == ability)
+                com.ResetShields();
+        }
+        foreach (var com in card.GetComponents<ActivatedDamageShieldBehaviour>())
+        {
+            if (com.Ability == ability)
+                com.ResetShields();
+        }
+
+        List<CardModificationInfo> mods = card.TemporaryMods.FindAll(x => x.GetExtendedPropertyAsBool("APINegateShield") ?? false);
+        mods.RemoveAll(x => !x.negateAbilities.Contains(ability));
+
+        List<CardModificationInfo> resetMods = new();
+        foreach (CardModificationInfo mod in mods)
+        {
+            resetMods.Add(ShieldManager.ResetShieldMod(ability));
+        }
+
+        // remove negating mods before adding new activating mods
+        card.RemoveTemporaryMods(mods.ToArray());
+        card.AddTemporaryMods(resetMods.ToArray());
+    }
+
+    #endregion
 
     /// <summary>
     /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.

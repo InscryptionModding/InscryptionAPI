@@ -8,7 +8,8 @@
 - Added ability interfaces IModifyDamageTaken, IPreTakeDamage; both trigger at the start of the TakeDamage method
 - Added support for adding alternate portraits specific to the Steel Trap ability effect and broken shield effect
 - Added CardInfo extension methods SetSteelTrapPortrait(), SetBrokenShieldPortrait()
-- Added public methods TakeDamagePatches.BreakShield() and TakeDamage.NewHasShield() - both used in the new shield logic
+- Added PlayableCard extension method ResetShield(Ability) for resetting shields belonging to a certain ability
+- Added ShieldManager for managing new shield logic, patches, and methods
 - Added abstract classes DamageShieldBehaviour and ActivatedDamageShieldBehaviour
 - Changed how shields are detected and tracked to allow for multiple shields on a card
 - DeathShield ability now has a custom AbilityBehaviour attached to it, no longer marked as passive
