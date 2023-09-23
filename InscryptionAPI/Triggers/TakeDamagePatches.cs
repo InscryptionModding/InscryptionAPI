@@ -176,6 +176,41 @@ public static class TakeDamagePatches
                 break;
             }
         }
+        var components2 = target.GetComponents<ActivatedDamageShieldBehaviour>();
+        foreach (var component2 in components2)
+        {
+            // only reduce numShields for components with positive count
+            if (component2.HasShields())
+            {
+                component2.numShields--;
+
+                target.Anim.StrongNegationEffect();
+
+                // if we've exhausted this shield component's count, negate it
+                // so it updates the display
+                if (component2.NumShields == 0)
+                {
+                    target.AddTemporaryMod(new()
+                    {
+                        negateAbilities = new() { component2.Ability },
+                        nonCopyable = true
+                    });
+                }
+
+                // if we removed the last shield
+                if (target.GetTotalShields() == 0)
+                {
+                    target.Status.lostShield = true;
+
+                    if (target.Info.name == "MudTurtle")
+                        target.SwitchToAlternatePortrait();
+                    else if (target.Info.HasBrokenShieldPortrait())
+                        target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
+                }
+                target.UpdateFaceUpOnBoardEffects();
+                break;
+            }
+        }
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
@@ -195,6 +230,12 @@ public static class TakeDamagePatches
     private static void ResetModShields(PlayableCard __instance)
     {
         foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
+        {
+            com.ResetShields();
+            CardModificationInfo mod = __instance.TemporaryMods.Find(x => x.negateAbilities != null && x.negateAbilities.Contains(com.Ability));
+            __instance.TemporaryMods.Remove(mod);
+        }
+        foreach (var com in __instance.GetComponents<ActivatedDamageShieldBehaviour>())
         {
             com.ResetShields();
             CardModificationInfo mod = __instance.TemporaryMods.Find(x => x.negateAbilities != null && x.negateAbilities.Contains(com.Ability));

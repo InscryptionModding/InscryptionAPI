@@ -1961,6 +1961,20 @@ public static class CardExtensions
             }
         }
 
+        var components2 = card.GetComponents<ActivatedDamageShieldBehaviour>();
+        foreach (var component in components2)
+        {
+            // stackable shields all get tallied up
+            if (AbilitiesUtil.GetInfo(component.Ability).canStack)
+                totalShields += component.NumShields;
+
+            else if (!distinct.Contains(component.Ability))
+            {
+                distinct.Add(component.Ability);
+                totalShields += component.NumShields;
+            }
+        }
+
         return totalShields;
     }
 
