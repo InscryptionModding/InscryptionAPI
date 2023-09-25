@@ -55,6 +55,8 @@ public static class CardManager
             card.SetBaseGameCard(true);
             if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit")
                 card.SetAffectedByTidalLock();
+            else if (card.name == "SkeletonParrot")
+                card.AddTribes(Tribe.Bird);
 
             yield return card;
         }

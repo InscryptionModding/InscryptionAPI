@@ -18,6 +18,7 @@
 - Cards can no longer lose shields from attacks that deal 0 damage
 - Damage dealt to cards can no longer go below 0
 - Updated the wiki with sections on the additions
+- Zombie Parrot is now part of the Avian tribe
 
 ## 2.16.1
 - Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
