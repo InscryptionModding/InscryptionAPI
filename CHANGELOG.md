@@ -4,18 +4,20 @@
 <summary>View Changelog</summary>
 
 ## 2.17.0
-- Fixed card extension GetAbilityStacks being able to return a negative value for stackable abilities
-- Added ability interfaces IModifyDamageTaken, IPreTakeDamage; both trigger at the start of the TakeDamage method
-- Added support for adding alternate portraits specific to the Steel Trap ability effect and broken shield effect
-- Added CardInfo extension methods SetSteelTrapPortrait(), SetBrokenShieldPortrait()
-- Added PlayableCard extension method ResetShield(Ability) for resetting shields belonging to a certain ability
-- Added ShieldManager for managing new shield logic, patches, and methods
+- Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
+- Added ability interfaces IModifyDamageTaken, IPreTakeDamage, which trigger at the start of PlayableCard.TakeDamage
+- Added PlayableCard extension method ResetShield(Ability) for only resetting shields belonging to a certain ability
+- Added ShieldManager class and changed how shields are managed in the game's logic
 - Added abstract classes DamageShieldBehaviour and ActivatedDamageShieldBehaviour
-- Changed how shields are detected and tracked to allow for multiple shields on a card
-- DeathShield ability now has a custom AbilityBehaviour attached to it, no longer marked as passive
+- Added support for adding alternate portraits for SteelTrap activation and broken shields
+- Added portrait setters SetSteelTrapPortrait(), SetBrokenShieldPortrait(), SetPixelSteelTrapPortrait(), SetPixelBrokenShieldPortrait()
+- Added AbilityInfo extension method SetHideSingleStacks(), affecting how stacking sigils are affected by being hidden
+- DeathShield ability now has a custom AbilityBehaviour attached to it
+- DeathShield ability is no longer passive, and can stack
 - TakeDamage trigger now requires damage to be above 0 to activate
 - Cards can no longer lose shields from attacks that deal 0 damage
 - Damage dealt to cards can no longer go below 0
+- Updated the wiki with sections on the additions
 
 ## 2.16.1
 - Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1

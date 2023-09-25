@@ -25,7 +25,9 @@ public static class CardManager
     {
         public Sprite PixelAlternatePortrait = null;
         public Sprite SteelTrapPortrait = null;
+        public Sprite PixelSteelTrapPortrait = null;
         public Sprite BrokenShieldPortrait = null;
+        public Sprite PixelBrokenShieldPortrait = null;
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
     private static readonly ConditionalWeakTable<CardInfo, CardAltPortraits> CardAlternatePortraits = new();

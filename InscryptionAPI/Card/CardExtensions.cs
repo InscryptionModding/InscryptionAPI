@@ -1488,7 +1488,7 @@ public static class CardExtensions
     }
     public static CardInfo SetSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
-        return info.SetSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+        return info.SetSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
     }
     public static CardInfo SetSteelTrapPortrait(this CardInfo info, Sprite portrait)
     {
@@ -1496,6 +1496,23 @@ public static class CardExtensions
             portrait.name = info.name + "_steeltrapportrait";
 
         info.GetAltPortraits().SteelTrapPortrait = portrait;
+        return info;
+    }
+
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelsteeltrapportrait";
+
+        info.GetAltPortraits().PixelSteelTrapPortrait = portrait;
         return info;
     }
     #endregion
@@ -1507,12 +1524,29 @@ public static class CardExtensions
     }
     public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
-        return info.SetBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+        return info.SetBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
     }
     public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
             portrait.name = info.name + "_brokenshieldportrait";
+
+        info.GetAltPortraits().BrokenShieldPortrait = portrait;
+        return info;
+    }
+
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelbrokenshieldportrait";
 
         info.GetAltPortraits().BrokenShieldPortrait = portrait;
         return info;
@@ -1989,26 +2023,15 @@ public static class CardExtensions
         foreach (var com in card.GetComponents<DamageShieldBehaviour>())
         {
             if (com.Ability == ability)
-                com.ResetShields();
+                com.ResetShields(false);
         }
         foreach (var com in card.GetComponents<ActivatedDamageShieldBehaviour>())
         {
             if (com.Ability == ability)
-                com.ResetShields();
+                com.ResetShields(false);
         }
 
-        List<CardModificationInfo> mods = card.TemporaryMods.FindAll(x => x.GetExtendedPropertyAsBool("APINegateShield") ?? false);
-        mods.RemoveAll(x => !x.negateAbilities.Contains(ability));
-
-        List<CardModificationInfo> resetMods = new();
-        foreach (CardModificationInfo mod in mods)
-        {
-            resetMods.Add(ShieldManager.ResetShieldMod(ability));
-        }
-
-        // remove negating mods before adding new activating mods
-        card.RemoveTemporaryMods(mods.ToArray());
-        card.AddTemporaryMods(resetMods.ToArray());
+        card.ResetShield();
     }
 
     #endregion

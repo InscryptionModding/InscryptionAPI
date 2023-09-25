@@ -375,6 +375,41 @@ public static class AbilityExtensions
     }
     #endregion
 
+    #region HideSingleStacks
+    /// <summary>
+    /// Sets an ability to only have one stack of it be hidden whenever the ability is added to a card status's hiddenAbilities field.
+    /// Adding the same ability to hiddenAbilities will hide more stacks. Only affects cards that can stack.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="hideSingleStacks">Whether all stacks of this ability will be hidden when added to hiddenAbilities.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetHideSingleStacks(this AbilityInfo abilityInfo, bool hideSingleStacks = true)
+    {
+        abilityInfo.SetExtendedProperty("HideSingleStacks", hideSingleStacks);
+        return abilityInfo;
+    }
+
+    /// <summary>
+    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">Ability to access.</param>
+    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    public static bool GetHideSingleStacks(this Ability ability)
+    {
+        AbilityInfo abilityInfo = AllAbilityInfos.AbilityByID(ability);
+        return abilityInfo.GetHideSingleStacks();
+    }
+    /// <summary>
+    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    public static bool GetHideSingleStacks(this AbilityInfo abilityInfo)
+    {
+        return abilityInfo.GetExtendedPropertyAsBool("HideSingleStacks") ?? false;
+    }
+    #endregion
+
     #region ExtendedProperties
 
     /// <summary>

@@ -1,30 +1,20 @@
+using BepInEx.Logging;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers;
+using System.Reflection;
+using System.Reflection.Emit;
 
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
 public static class ShieldManager
 {
-    public static CardModificationInfo NegateShieldMod(Ability ab)
-    {
-        CardModificationInfo mod = new()
-        {
-            negateAbilities = new() { ab },
-            nonCopyable = true
-        };
-        mod.SetExtendedProperty("APINegateShield", true);
-        return mod;
-    }
-    public static CardModificationInfo ResetShieldMod(Ability ab)
-    {
-        CardModificationInfo mod = new(ab)
-        {
-            nonCopyable = true
-        };
-        mod.SetExtendedProperty("APIResetShield", true);
-        return mod;
-    }
+    /// <summary>
+    /// Used to determine whether or not to update the card display.
+    /// Only used for shield rendering due to its unique logic, but this the general pattern whenever adding a hidden ability.
+    /// </summary>
+    private static bool RenderCard = false;
 
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
@@ -41,12 +31,11 @@ public static class ShieldManager
             if (component.HasShields())
             {
                 component.numShields--;
-
-                // if we've exhausted this shield component's count, negate it
-                // so it updates the display
-                if (component.NumShields == 0)
-                    target.AddTemporaryMod(NegateShieldMod(component.Ability));
-
+                if (component.Ability.GetHideSingleStacks())
+                {
+                    RenderCard = true;
+                    target.Status.hiddenAbilities.Add(component.Ability);
+                }
                 break;
             }
         }
@@ -57,11 +46,11 @@ public static class ShieldManager
             if (component2.HasShields())
             {
                 component2.numShields--;
-
-                // if we've exhausted this shield component's count, negate it
-                // so it updates the display
-                if (component2.NumShields == 0)
-                    target.AddTemporaryMod(NegateShieldMod(component2.Ability));
+                if (component2.Ability.GetHideSingleStacks())
+                {
+                    RenderCard = true;
+                    target.Status.hiddenAbilities.Add(component2.Ability);
+                }
 
                 break;
             }
@@ -97,23 +86,122 @@ public static class ShieldManager
     private static void ResetModShields(PlayableCard __instance)
     {
         foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
-            com.ResetShields();
+            com.ResetShields(false);
 
         foreach (var com in __instance.GetComponents<ActivatedDamageShieldBehaviour>())
-            com.ResetShields();
+            com.ResetShields(false);
 
-        // when you negate an ability the component is removed,
-        // so we need to re-add the components when resetting the shields
-        CardModificationInfo[] mods = __instance.TemporaryMods.FindAll(x => x.GetExtendedPropertyAsBool("APINegateShield") ?? false).ToArray();
-        List<CardModificationInfo> resetMods = new();
-        foreach (CardModificationInfo mod in mods)
+        __instance.SwitchToDefaultPortrait();
+
+        // base ResetShield runs after this
+    }
+
+    [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.UpdateFaceUpOnBoardEffects))]
+    private static IEnumerable<CodeInstruction> BetterHideShieldLogic(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+
+        int start = codes.IndexOf(codes.Find(x => x.operand?.ToString() == "DiskCardGame.PlayableCardStatus get_Status()"));
+        int end = codes.IndexOf(codes.Find(x => x.operand?.ToString() == "Void RenderCard()")) + 1;
+
+        MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.RenderHidden),
+            new Type[] { typeof(PlayableCard) });
+
+        codes.RemoveRange(start, end - start);
+        codes.Insert(start, new(OpCodes.Call, method));
+        
+        return codes;
+    }
+    [HarmonyTranspiler, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.GetDistinctShownAbilities))]
+    private static IEnumerable<CodeInstruction> RemoveSingleHiddenStacks(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+
+        int start = -1, end = -1;
+
+        MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.HiddensOnlyRemoveStacks),
+            new Type[] { typeof(List<Ability>), typeof(List<Ability>) });
+
+        object hidden = null;
+        for (int i = codes.Count - 1; i >= 0; i--)
         {
-            Ability ab = mod.negateAbilities[0];
-            resetMods.Add(ResetShieldMod(ab));
+            if (end == -1 && codes[i].opcode == OpCodes.Pop)
+            {
+                end = i + 1;
+                continue;
+            }
+            if (start == -1 && codes[i].opcode == OpCodes.Ldftn)
+            {
+                start = i;
+                continue;
+            }
+            if (hidden == null && codes[i].opcode == OpCodes.Ldfld)
+            {
+                hidden = codes[i].operand;
+                break;
+            }
+        }
+        codes.RemoveRange(start, end - start);
+        codes.Insert(start++, new(OpCodes.Ldfld, hidden));
+        codes.Insert(start++, new(OpCodes.Callvirt, method));
+        codes.Insert(start++, new(OpCodes.Stloc_1));
+
+        return codes;
+    }
+
+    private static List<Ability> HiddensOnlyRemoveStacks(List<Ability> abilities, List<Ability> hiddenAbilities)
+    {
+        // remove all abilities that hide the entire stack
+        abilities.RemoveAll(x => !x.GetHideSingleStacks() && hiddenAbilities.Contains(x));
+        foreach (var ab in hiddenAbilities.Where(x => x.GetHideSingleStacks()))
+            abilities.Remove(ab);
+
+        return abilities;
+    }
+    private static void RenderHidden(PlayableCard card)
+    {
+        foreach (var com in card.GetComponents<DamageShieldBehaviour>())
+        {
+            if (com.Ability.GetHideSingleStacks())
+                continue;
+
+            if (com.HasShields() && card.Status.hiddenAbilities.Contains(com.Ability))
+            {
+                RenderCard = true;
+                card.Status.hiddenAbilities.Remove(com.Ability);
+                break;
+            }
+            if (!com.HasShields() && !card.Status.hiddenAbilities.Contains(com.Ability))
+            {
+                RenderCard = true;
+                card.Status.hiddenAbilities.Add(com.Ability);
+                break;
+            }
         }
 
-        // remove negating mods before adding new activating mods
-        __instance.RemoveTemporaryMods(mods);
-        __instance.AddTemporaryMods(resetMods.ToArray());
+        foreach (var com in card.GetComponents<ActivatedDamageShieldBehaviour>())
+        {
+            if (com.Ability.GetHideSingleStacks())
+                continue;
+
+            if (com.HasShields() && card.Status.hiddenAbilities.Contains(com.Ability))
+            {
+                RenderCard = true;
+                card.Status.hiddenAbilities.Remove(com.Ability);
+                break;
+            }
+            if (!com.HasShields() && !card.Status.hiddenAbilities.Contains(com.Ability))
+            {
+                RenderCard = true;
+                card.Status.hiddenAbilities.Add(com.Ability);
+                break;
+            }
+        }
+
+        if (RenderCard)
+        {
+            card.RenderCard();
+            RenderCard = false;
+        }
     }
 }

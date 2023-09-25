@@ -238,6 +238,8 @@ public static class AbilityManager
             if (name == "DeathShield")
             {
                 ability.SetPassive(false);
+                ability.SetCanStack(true);
+                ability.SetHideSingleStacks(true);
                 baseGame.Add(new FullAbility
                 (
                     null,
