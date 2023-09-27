@@ -76,6 +76,36 @@ public static partial class LocalizationManager
             return true;
         }
 
+        [HarmonyPatch(typeof(FontReplacementData), nameof(FontReplacementData.Initialize))]
+        [HarmonyPostfix]
+        private static void FontReplacementData_Initialize()
+        {
+            foreach (CachedReplacement replacement in TemporaryFontReplacements)
+            {
+                AddFontReplacement(replacement.language, replacement.replacement);
+            }
+            TemporaryFontReplacements.Clear();
+        }
+
+        [HarmonyPatch(typeof(OptionsUI), nameof(OptionsUI.OnLanguageChanged))]
+        [HarmonyPostfix]
+        private static void OptionsUI_OnLanguageChanged(OptionsUI __instance, int newValue)
+        {
+            int indexOf = AllLanguages.FindIndex((a)=>a.Language == Localization.CurrentLanguage);
+            __instance.setLanguageButton.gameObject.SetActive(newValue != indexOf);
+        }
+
+        [HarmonyPatch(typeof(OptionsUI), nameof(OptionsUI.InitializeLanguageField))]
+        [HarmonyPrefix]
+        private static bool OptionsUI_InitializeLanguageField(OptionsUI __instance)
+        {
+            __instance.languageField.AssignTextItems(new List<string>(AllLanguageNames));
+
+            int indexOf = AllLanguages.FindIndex((a)=>a.Language == Localization.CurrentLanguage);
+            __instance.languageField.ShowValue(indexOf, immediate: true);
+            return false;
+        }
+        
         [HarmonyPatch(typeof(OptionsUI), nameof(OptionsUI.InitializeLanguageField))]
         [HarmonyPatch(typeof(OptionsUI), nameof(OptionsUI.OnLanguageChanged))]
         private static List<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

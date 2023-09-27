@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using TMPro;
 using UnityEngine;
 
 namespace InscryptionAPI.Localizing;
@@ -22,8 +23,23 @@ public static partial class LocalizationManager
         public Localization.Translation Translation;
     }
 
-    public static List<string> AllLanguageNames = new List<string>();
-    public static List<string> AllLanguageButtonText = new List<string>();
+    private class CachedReplacement
+    {
+        public Language language;
+        public FontReplacement replacement;
+    }
+
+    public enum FontReplacementType
+    {
+        Liberation,
+        Marksman,
+        Misc3D,
+        DaggerSquare,
+        HeavyWeight
+    }
+
+    public static string[] AllLanguageNames = new string[] { };
+    public static string[] AllLanguageButtonText = new string[] { };
     
     public static List<CustomLanguage> AllLanguages = new List<CustomLanguage>();
     public static List<CustomLanguage> NewLanguages = new List<CustomLanguage>();
@@ -31,11 +47,13 @@ public static partial class LocalizationManager
     public static Action<Language> OnLanguageLoaded = null;
 
     private static List<Language> AlreadyLoadedLanguages = new List<Language>();
+    private static bool FontReplacementDataInitialized = false;
+    private static List<CachedReplacement> TemporaryFontReplacements = new List<CachedReplacement>();
 
     static LocalizationManager()
     {
-        AllLanguageNames = LocalizedLanguageNames.NAMES.ToList();
-        AllLanguageButtonText = LocalizedLanguageNames.SET_LANGUAGE_BUTTON_TEXT.ToList();
+        AllLanguageNames = LocalizedLanguageNames.NAMES.ToArray();
+        AllLanguageButtonText = LocalizedLanguageNames.SET_LANGUAGE_BUTTON_TEXT.ToArray();
         foreach (Language language in Enum.GetValues(typeof(Language)).Cast<Language>().Where((a)=>a < Language.NUM_LANGUAGES))
         {
             CustomLanguage customLanguage = new CustomLanguage()
@@ -91,7 +109,7 @@ public static partial class LocalizationManager
         }
     }
 
-    public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath=null)
+    public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath=null, List<FontReplacement> fontReplacements=null)
     {
         Language language = GuidManager.GetEnumValue<Language>(pluginGUID, languageName);
         CustomLanguage customLanguage = new CustomLanguage()
@@ -104,15 +122,86 @@ public static partial class LocalizationManager
         };
         AllLanguages.Add(customLanguage);
         NewLanguages.Add(customLanguage);
-        AllLanguageNames.Add(languageName);
-        AllLanguageButtonText.Add(resetButtonText);
+        AllLanguageNames = AllLanguageNames.AddToArray(languageName);
+        AllLanguageButtonText = AllLanguageButtonText.AddToArray(resetButtonText);
 
-        /*if (!string.IsNullOrEmpty(stringTablePath))
+        if (fontReplacements != null)
         {
-            ImportStringTable(stringTablePath, language);
-        }*/
+            foreach (FontReplacement replacement in fontReplacements)
+            {
+                AddFontReplacement(language, replacement);
+            }
+        }
         
         return language;
+    }
+
+    public static void AddFontReplacement(Language language, FontReplacement replacement)
+    {
+        if (FontReplacementData.instance == null)
+        {
+            TemporaryFontReplacements.Add(new CachedReplacement()
+            {
+                language = language,
+                replacement = replacement
+            });
+            return;
+        }
+        
+        FontReplacementData.LanguageFontReplacements replacements = FontReplacementData.instance.languageFontReplacements.Find((a) => a.languages.Contains(language));
+        if (replacements == null)
+        {
+            replacements = new FontReplacementData.LanguageFontReplacements();
+            replacements.name = language.ToString();
+            replacements.fontReplacements = new List<FontReplacement>();
+            replacements.languages = new List<Language>()
+            {
+                language
+            };
+            FontReplacementData.instance.languageFontReplacements.Add(replacements);
+        }
+        replacements.fontReplacements.Add(replacement);
+    }
+
+    public static FontReplacement GetFontReplacementForFont(FontReplacementType type, Font font=null, TMP_FontAsset tmpFont=null)
+    {
+        FontReplacement replacement = null;
+        switch (type)
+        {
+            case FontReplacementType.Liberation:
+                replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/LIBERATION_to_DAGGERSQUARE");
+                break;
+            case FontReplacementType.Marksman:
+                replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/MARKSMAN_to_CHINESE-PIXEL");
+                break;
+            case FontReplacementType.Misc3D:
+                replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/MISC3D_to_JP-SCRIPT");
+                break;
+            case FontReplacementType.DaggerSquare:
+                replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/DAGGERSQUARE_to_JP-SANS");
+                break;
+            case FontReplacementType.HeavyWeight:
+                replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/HEAVYWEIGHT_to_VICIOUSHUNGER");
+                break;
+            default:
+                InscryptionAPIPlugin.Logger.LogError("Unknown font replacement type " + type.ToString().ToUpper());
+                return null;
+        }
+        
+        if (replacement == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError("Could not find font replacement for " + type.ToString().ToUpper());
+            return null;
+        }
+        
+        replacement = UnityObject.Instantiate(replacement); 
+        if (font != null || tmpFont != null)
+        {
+            replacement.replacementFont = font;
+            replacement.replacementTMPFont = tmpFont;
+        }
+        
+        return replacement;
     }
     
     private static void ImportStringTable(string stringTablePath, Language language)
