@@ -359,12 +359,24 @@ public static partial class LocalizationManager
     
     public static string LanguageToCode(Language language)
     {
-        return AllLanguages.Find((a) => a.Language == language).LanguageCode;
+        CustomLanguage customLanguage = AllLanguages.Find((a) => a.Language == language);
+        if (customLanguage != null)
+        {
+            return customLanguage.LanguageCode;
+        }
+        
+        return null;
     }
 
     public static Language CodeToLanguage(string code)
     {
-        return AllLanguages.Find((a) => a.LanguageCode == code).Language;
+        CustomLanguage customLanguage = AllLanguages.Find((a) => a.LanguageCode == code);
+        if (customLanguage != null)
+        {
+            return customLanguage.Language;
+        }
+        
+        return Language.NUM_LANGUAGES;
     }
 
     public static void ExportAllToCSV()
