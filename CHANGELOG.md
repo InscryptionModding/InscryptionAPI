@@ -11,7 +11,8 @@
 - Added abstract classes DamageShieldBehaviour and ActivatedDamageShieldBehaviour
 - Added support for adding alternate portraits for SteelTrap activation and broken shields
 - Added portrait setters SetSteelTrapPortrait(), SetBrokenShieldPortrait(), SetPixelSteelTrapPortrait(), SetPixelBrokenShieldPortrait()
-- Added AbilityInfo extension method SetHideSingleStacks(), affecting how stacking sigils are affected by being hidden
+- Added support for adding new language translations
+- Added AbilityInfo extension method SetHideSingleStacks(), affecting how stacking sigils are affected by being hidden (see wiki)
 - DeathShield ability now has a custom AbilityBehaviour attached to it
 - DeathShield ability is no longer passive, and can stack
 - TakeDamage trigger now requires damage to be above 0 to activate
