@@ -29,6 +29,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     public const string ModName = "InscryptionAPI";
     public const string ModVer = "2.17.0";
 
+    public static string Directory = "";
+
     internal static ConfigEntry<bool> configOverrideArrows;
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemTypes;
@@ -58,7 +60,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     private void OnEnable()
     {
         Logger = base.Logger;
-
+        Directory = Path.GetDirectoryName(Info.Location);
+        
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
