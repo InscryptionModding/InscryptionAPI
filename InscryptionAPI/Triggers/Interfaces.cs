@@ -626,6 +626,7 @@ public interface IPassiveAttackBuff
 /// <summary>
 /// Data collection trigger that modifies the damage taken by any card.
 /// </summary>
+[Obsolete("Use IModifyDamageTaken instead.")]
 public interface ICardTakenDamageModifier
 {
     /// <summary>
@@ -675,4 +676,20 @@ public interface IGetAttackingSlots
     /// <param name="originalSlots">The vanilla list of attacking CardSlots.</param>
     /// <returns>The trigger priority int.</returns>
     public int TriggerPriority(bool playerIsAttacker, List<CardSlot> originalSlots);
+}
+
+public interface IModifyDamageTaken
+{
+    public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker);
+}
+
+public interface IPreTakeDamage
+{
+    public bool RespondsToPreTakeDamage(PlayableCard source, int damage);
+
+    public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }

@@ -1,5 +1,6 @@
 using DiskCardGame;
 using GBC;
+using GracesGames.Common.Scripts;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
@@ -102,10 +103,8 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(CardAbilityIcons), "GetDistinctShownAbilities")]
     [HarmonyPostfix]
-    private static void ClearStackableIcons(ref List<Ability> __result)
+    private static void ClearStackableIcons(ref List<Ability> __result, CardInfo info, List<CardModificationInfo> mods, List<Ability> hiddenAbilities)
     {
-        // We'll start by completely removing the stackable icons from the list
-        // We will be patching the AbilityIconInteractable class to display the icon
         __result = __result.Distinct().ToList();
     }
 
@@ -312,9 +311,16 @@ public static class StackAbilityIcons
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = info.Abilities;
         if (card != null)
+        {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
 
+            baseAbilities.RemoveAll(x => !x.GetHideSingleStacks() && card.Status.hiddenAbilities.Contains(x));
+            foreach (Ability ab in card.Status.hiddenAbilities.Where(x => x.GetHideSingleStacks()))
+                baseAbilities.Remove(ab);
+        }
+
         int count = baseAbilities.Where(ab => ab == ability).Count();
+        
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
     }
