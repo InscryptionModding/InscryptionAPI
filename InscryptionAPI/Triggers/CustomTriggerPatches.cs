@@ -181,28 +181,6 @@ internal static class CustomTriggerPatches
         yield break;
     }
 
-    private static Type takeDamageCoroutine;
-    private static FieldInfo takeDamageDamage;
-
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
-    [HarmonyPostfix]
-    private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
-    {
-        CustomTriggerFinder.CollectDataAll<ICardTakenDamageModifier, int>(true, x => x.RespondsToCardTakenDamageModifier(__instance, damage), x => damage = x.CollectCardTakenDamageModifier(__instance, damage));
-        if (damage != 0)
-        {
-            (takeDamageDamage ??= (takeDamageCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
-            bool hasShield = __instance.HasShield();
-            yield return result;
-            if (!hasShield && attacker != null)
-            {
-                yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
-                    x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
-            }
-        }
-        yield break;
-    }
-
     [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
     [HarmonyPostfix]
     private static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
@@ -355,7 +333,7 @@ internal static class CustomTriggerPatches
         bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
         CardSlot defaultslot = __instance.Slot.opposingSlot;
 
-        List<CardSlot> alteredOpposings = new List<CardSlot>();
+        List<CardSlot> alteredOpposings = new();
         bool removeDefaultAttackSlot = false;
 
         foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
@@ -374,7 +352,7 @@ internal static class CustomTriggerPatches
             __result.Remove(defaultslot);
         bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
-        var dummyresult = __result;
+        var dummyresult = __result; // used for sorting by trigger priority
         all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
         foreach (var opposing in all)
@@ -412,6 +390,8 @@ internal static class CustomTriggerPatches
     }
 
     // IModifyAttackingSlots code can be found in DoCombatPhasePatches
+
+    // IModifyDamageTaken and IPreTakeDamage logic can be found in TakeDamagePatches
 
     private static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }

@@ -67,7 +67,7 @@ public static class StarterDeckManager
 
     public static void SyncDeckList()
     {
-        var decks = BaseGameDecks.Concat(NewDecks).Select(x => CloneStarterDeck(x)).ToList();
+        var decks = BaseGameDecks.Concat(NewDecks).Select(CloneStarterDeck).ToList();
 
         foreach (var deck in decks)
         {

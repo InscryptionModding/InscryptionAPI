@@ -61,7 +61,7 @@ public static class ResourceBankManager
     {
         public static void Postfix(ResourceBank __instance)
         {
-            Dictionary<string, ResourceBank.Resource> existingPaths = new Dictionary<string, ResourceBank.Resource>();
+            Dictionary<string, ResourceBank.Resource> existingPaths = new();
             foreach (ResourceBank.Resource resource in __instance.resources)
             {
                 string resourcePath = resource.path;

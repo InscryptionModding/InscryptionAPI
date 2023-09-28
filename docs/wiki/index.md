@@ -128,6 +128,9 @@ Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen
 
 If the bones TV screen is active, a bolt will also be dropped on top of each card that dies in-game (the same way that bone tokens are dropped on top of cards that die in Leshy's cabin).
 
+## DeathShield Ability Behaviour
+The API changes how DeathShield (aka Nano Armour/Armoured) functions, with the ability now being attached to a custom ability behaviour  'APIDeathShield' that inherits from DamageShieldBehaviour (more info further below).
+
 # Core Features
 
 ## Extending Enumerations
@@ -164,6 +167,17 @@ public static int NumberOfItems
 
 When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
 
+## Extra Alternate Portraits
+In Inscryption, there are some situations where a card's portrait is changed.
+SteelTrap, for example, changes the base card's portrait to the 'closed trap' portrait, and Mud Turtle switches its portrait upon losing its shield.
+However, these cases are very limited; SteelTrap changes *all* cards to the closed trap portrait, even if it's not on the vanilla trap card;
+and only Mud Turtle can change its portrait upon losing its shield.
+
+So, the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
+These are stored separately from a card's base portrait and alternate portrait, giving you greater freedom in what cards you can make.
+
+The API also adds support for alternate portraits in Act 2 with SetPixelAlternatePortrait(), SetPixelSteelTrapPortrait() and SetPixelBrokenShieldPortrait().
+
 ## API Extended Properties
 The API implements a system of custom properties that you can apply to cards, abilities, and card modification info's.
 For more information on properties go [to this section](#custom-card-properties).
@@ -178,8 +192,9 @@ If you're using C# you can use the provided extension method to easily set these
 |Property Name          |Affected Type  |Value Type |Description                                                |Extension Method       |
 |-----------------------|---------------|-----------|-----------------------------------------------------------|-----------------------|
 |TriggersOncePerStack   |AbilityInfo    |Boolean    |If the ability should trigger twice when the card evolves. |SetTriggersOncePerStack|
+|HideSingleStacks       |AbilityInfo    |Boolean    |If a stacking ability should hide one stack at a time when added to a card status's hiddenAbilities instead of the whole ability. |SetHideSingleStacks    |
 |AffectedByTidalLock    |CardInfo       |Boolean    |If the card should be killed by the effect of Tidal Lock.  |SetAffectedByTidalLock |
-|TransformerCardId		|CardInfo				|String			|The internal name of the CardInfo this card will transform into when it has the Transformer sigil|SetTransformerCardId|
+|TransformerCardId		|CardInfo		|String		|The internal name of the CardInfo this card will transform into when it has the Transformer sigil|SetTransformerCardId|
 
 ## Part2Modular
 The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
@@ -802,6 +817,35 @@ public List<CardSlot> GetAttackingSlots(bool playerIsAttacker, List<CardSlot> or
 
 ```
 
+### Modify Damage Taken
+Using IModifyDamageTaken, you can increase or reduce the damage cards take when they're attacked.
+Damage cannot go below 0; if it is, the API sets it to 0 after all calculations are done.
+
+```csharp
+public class ReduceDamageByOne : AbilityBehaviour, IModifyDamageTaken
+{
+    public static Ability ability;
+    public override Ability Ability => ability;
+
+    public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage)
+    {
+        // reduce damage this card takes by 1
+        if (base.Card == target && damage > 0)
+            return attacker == null;
+
+        return false;
+    }
+
+    public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage)
+    {
+        damage--;
+        return damage; // could also return damage - 1 if you want it all on one line
+    }
+
+    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker) => 0;
+}
+```
+
 ### Passive Attack and Health Buffs
 To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs.
 These return an int representing the buff to give to 'target'.
@@ -935,6 +979,58 @@ public override IEnumerator OnPostResolveOnBoard()
     // put your code here
 }
 ```
+
+## DamageShieldBehaviour
+Ever wanted to create your own version of the Armoured sigil, but were frustrated by the game's simplistic boolean logic for shields?
+Worry not! Using the API, you can now easily create your own!
+Simply create a class that inherits from DamageShieldBehaviour (or ActivatedDamageShieldBehaviour) and you're good to go.
+
+Abilities using either of these classes must specify a starting number of shields the sigil will provide to a card.
+
+A basic example can be found here:
+```csharp
+public class APIDeathShield : DamageShieldBehaviour
+{
+    public override Ability Ability => Ability.DeathShield;
+    
+    // for stackable sigils, you'll want to set StartingNumShields to something like this if you want the stacks to be counted
+    public override int StartingNumShields => base.Card.GetAbilityStacks(Ability);
+
+    // For non-stackable sigils (or perhaps special cases) just setting it to a number will suffice.
+    // public override int StartingNumShields => 1;
+}
+```
+
+You can continue to modify the shield count during battle:
+```csharp
+public void RegainShields
+{
+    // NumShield tracks the current shield amount for the ability instance; it cannot be negative
+    if (NumShield == 0)
+    {
+        ResetShields(true); // Resets NumShield to the starting amount and updates the card display
+    }
+}
+public void ChangeShieldCount()
+{
+    // to modify shield count you need to use numShield NOT NumShield
+    // NumShield cannot be modified directly
+    if (addShield == true)
+    {
+        numShield++;
+    }
+    else
+    {
+        numShield--;
+    }
+    base.Card.RenderCard(); // update the card display if we need to
+}
+```
+
+You can check how many shields a card has using card.GetTotalShields().
+
+For stacking shields sigils, one stack is hidden whenever the card is damaged IF the ability has been set to behave that way using SetHideSingleStacks().
+Otherwise, the sigil is hidden only when that specific ability's internal shield count hits 0.
 
 ## Special Stat Icons
 Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.

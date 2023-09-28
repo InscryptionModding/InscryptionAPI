@@ -11,7 +11,7 @@ namespace InscryptionAPI.Guid;
 [HarmonyPatch]
 public static class TypeManager
 {
-    private static Dictionary<string, Type> TypeCache = new();
+    private static readonly Dictionary<string, Type> TypeCache = new();
 
     internal static void Add(string key, Type value)
     {
@@ -34,7 +34,7 @@ public static class TypeManager
         Add(key, value);
     }
 
-    private static Dictionary<string, string> ModIds = new();
+    private static readonly Dictionary<string, string> ModIds = new();
 
     private static string GetModIdFromAssembly(Assembly assembly)
     {
@@ -53,8 +53,8 @@ public static class TypeManager
             }
         }
 
-        ModIds.Add(assembly.FullName, default(string));
-        return default(string);
+        ModIds.Add(assembly.FullName, default);
+        return default;
     }
 
     public static string GetModIdFromCallstack(Assembly callingAssembly)
@@ -63,7 +63,7 @@ public static class TypeManager
         if (!string.IsNullOrEmpty(cacheVal))
             return cacheVal;
 
-        StackTrace trace = new StackTrace();
+        StackTrace trace = new();
         foreach (var frame in trace.GetFrames())
         {
             string newVal = GetModIdFromAssembly(frame.GetMethod().DeclaringType.Assembly);
@@ -71,9 +71,8 @@ public static class TypeManager
                 return newVal;
         }
 
-        return default(string);
+        return default;
     }
-
 
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(CustomType), nameof(CustomType.GetType), new Type[] { typeof(string), typeof(string) })]
@@ -92,8 +91,7 @@ public static class TypeManager
             return false;
         }
 
-        int enumValue;
-        if (int.TryParse(typeName, out enumValue))
+        if (int.TryParse(typeName, out int enumValue))
         {
             //InscryptionAPIPlugin.Logger.LogInfo($"This appears to be a custom type");
             Type enumType = GuidManager.GetEnumType(enumValue);
