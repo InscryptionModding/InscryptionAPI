@@ -2264,6 +2264,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt
   nameWithType: AbilityExtensions.GetExtendedPropertyAsInt
+- uid: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.Ability)
+  name: GetHideSingleStacks(Ability)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.Ability)
+  nameWithType: AbilityExtensions.GetHideSingleStacks(Ability)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.AbilityInfo)
+  name: GetHideSingleStacks(AbilityInfo)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_DiskCardGame_AbilityInfo_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.AbilityInfo)
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.AbilityInfo)
+  nameWithType: AbilityExtensions.GetHideSingleStacks(AbilityInfo)
+- uid: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks*
+  name: GetHideSingleStacks
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks
+  nameWithType: AbilityExtensions.GetHideSingleStacks
 - uid: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.Ability)
   name: GetTriggersOncePerStack(Ability)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_DiskCardGame_Ability_
@@ -2431,6 +2450,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty
   nameWithType: AbilityExtensions.SetExtendedProperty
+- uid: InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks(DiskCardGame.AbilityInfo,System.Boolean)
+  name: SetHideSingleStacks(AbilityInfo, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetHideSingleStacks_DiskCardGame_AbilityInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks(DiskCardGame.AbilityInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks(DiskCardGame.AbilityInfo, System.Boolean)
+  nameWithType: AbilityExtensions.SetHideSingleStacks(AbilityInfo, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks*
+  name: SetHideSingleStacks
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetHideSingleStacks_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks
+  nameWithType: AbilityExtensions.SetHideSingleStacks
 - uid: InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)
   name: SetIcon(AbilityInfo, Texture2D)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_
@@ -2799,6 +2831,102 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityManager.SyncAbilityList
   nameWithType: AbilityManager.SyncAbilityList
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour
+  name: ActivatedDamageShieldBehaviour
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html
+  commentId: T:InscryptionAPI.Card.ActivatedDamageShieldBehaviour
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour
+  nameWithType: ActivatedDamageShieldBehaviour
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
+  name: HasShields()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields()
+  nameWithType: ActivatedDamageShieldBehaviour.HasShields()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields*
+  name: HasShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
+  nameWithType: ActivatedDamageShieldBehaviour.HasShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
+  name: numShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_numShields
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
+  nameWithType: ActivatedDamageShieldBehaviour.numShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  name: NumShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  nameWithType: ActivatedDamageShieldBehaviour.NumShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields*
+  name: NumShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  nameWithType: ActivatedDamageShieldBehaviour.NumShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
+  name: ResetShields(Boolean)
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_System_Boolean_
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
+  nameWithType: ActivatedDamageShieldBehaviour.ResetShields(Boolean)
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields*
+  name: ResetShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields
+  nameWithType: ActivatedDamageShieldBehaviour.ResetShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  nameWithType: ActivatedDamageShieldBehaviour.StartingNumShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields*
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  nameWithType: ActivatedDamageShieldBehaviour.StartingNumShields
+- uid: InscryptionAPI.Card.APIDeathShield
+  name: APIDeathShield
+  href: api/InscryptionAPI.Card.APIDeathShield.html
+  commentId: T:InscryptionAPI.Card.APIDeathShield
+  fullName: InscryptionAPI.Card.APIDeathShield
+  nameWithType: APIDeathShield
+- uid: InscryptionAPI.Card.APIDeathShield.Ability
+  name: Ability
+  href: api/InscryptionAPI.Card.APIDeathShield.html#InscryptionAPI_Card_APIDeathShield_Ability
+  commentId: P:InscryptionAPI.Card.APIDeathShield.Ability
+  fullName: InscryptionAPI.Card.APIDeathShield.Ability
+  nameWithType: APIDeathShield.Ability
+- uid: InscryptionAPI.Card.APIDeathShield.Ability*
+  name: Ability
+  href: api/InscryptionAPI.Card.APIDeathShield.html#InscryptionAPI_Card_APIDeathShield_Ability_
+  commentId: Overload:InscryptionAPI.Card.APIDeathShield.Ability
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.APIDeathShield.Ability
+  nameWithType: APIDeathShield.Ability
+- uid: InscryptionAPI.Card.APIDeathShield.StartingNumShields
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.APIDeathShield.html#InscryptionAPI_Card_APIDeathShield_StartingNumShields
+  commentId: P:InscryptionAPI.Card.APIDeathShield.StartingNumShields
+  fullName: InscryptionAPI.Card.APIDeathShield.StartingNumShields
+  nameWithType: APIDeathShield.StartingNumShields
+- uid: InscryptionAPI.Card.APIDeathShield.StartingNumShields*
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.APIDeathShield.html#InscryptionAPI_Card_APIDeathShield_StartingNumShields_
+  commentId: Overload:InscryptionAPI.Card.APIDeathShield.StartingNumShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.APIDeathShield.StartingNumShields
+  nameWithType: APIDeathShield.StartingNumShields
 - uid: InscryptionAPI.Card.CardAppearanceBehaviourManager
   name: CardAppearanceBehaviourManager
   href: api/InscryptionAPI.Card.CardAppearanceBehaviourManager.html
@@ -3241,6 +3369,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
   nameWithType: CardExtensions.GetPlayableCard
+- uid: InscryptionAPI.Card.CardExtensions.GetTotalShields(DiskCardGame.PlayableCard)
+  name: GetTotalShields(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTotalShields_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetTotalShields(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetTotalShields(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetTotalShields(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.GetTotalShields*
+  name: GetTotalShields
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTotalShields_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetTotalShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetTotalShields
+  nameWithType: CardExtensions.GetTotalShields
 - uid: InscryptionAPI.Card.CardExtensions.GetTransformerCardId(DiskCardGame.CardInfo)
   name: GetTransformerCardId(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTransformerCardId_DiskCardGame_CardInfo_
@@ -3445,6 +3586,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasAnyOfTraits
   nameWithType: CardExtensions.HasAnyOfTraits
+- uid: InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait(DiskCardGame.CardInfo)
+  name: HasBrokenShieldPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasBrokenShieldPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.HasBrokenShieldPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait*
+  name: HasBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasBrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasBrokenShieldPortrait
+  nameWithType: CardExtensions.HasBrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory(DiskCardGame.CardInfo,DiskCardGame.CardMetaCategory)
   name: HasCardMetaCategory(CardInfo, CardMetaCategory)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasCardMetaCategory_DiskCardGame_CardInfo_DiskCardGame_CardMetaCategory_
@@ -3503,6 +3657,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasSpecialAbility
   nameWithType: CardExtensions.HasSpecialAbility
+- uid: InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait(DiskCardGame.CardInfo)
+  name: HasSteelTrapPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasSteelTrapPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.HasSteelTrapPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait*
+  name: HasSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasSteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasSteelTrapPortrait
+  nameWithType: CardExtensions.HasSteelTrapPortrait
 - uid: InscryptionAPI.Card.CardExtensions.HasTrait(DiskCardGame.PlayableCard,DiskCardGame.Trait)
   name: HasTrait(PlayableCard, Trait)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasTrait_DiskCardGame_PlayableCard_DiskCardGame_Trait_
@@ -4114,6 +4281,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.RemoveTribes
   nameWithType: CardExtensions.RemoveTribes
+- uid: InscryptionAPI.Card.CardExtensions.ResetShield(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  name: ResetShield(PlayableCard, Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_ResetShield_DiskCardGame_PlayableCard_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.ResetShield(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.ResetShield(DiskCardGame.PlayableCard, DiskCardGame.Ability)
+  nameWithType: CardExtensions.ResetShield(PlayableCard, Ability)
+- uid: InscryptionAPI.Card.CardExtensions.ResetShield*
+  name: ResetShield
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_ResetShield_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.ResetShield
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.ResetShield
+  nameWithType: CardExtensions.ResetShield
 - uid: InscryptionAPI.Card.CardExtensions.SetAffectedByTidalLock(DiskCardGame.CardInfo,System.Boolean)
   name: SetAffectedByTidalLock(CardInfo, Boolean)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetAffectedByTidalLock_DiskCardGame_CardInfo_System_Boolean_
@@ -4216,6 +4396,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetBonesCost
   nameWithType: CardExtensions.SetBonesCost
+- uid: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetBrokenShieldPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetBrokenShieldPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetBrokenShieldPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetBrokenShieldPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetBrokenShieldPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait*
+  name: SetBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetBrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetBrokenShieldPortrait
+  nameWithType: CardExtensions.SetBrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetCardTemple(DiskCardGame.CardInfo,CardTemple)
   name: SetCardTemple(CardInfo, CardTemple)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCardTemple_DiskCardGame_CardInfo_CardTemple_
@@ -4635,6 +4843,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetPixelAlternatePortrait
   nameWithType: CardExtensions.SetPixelAlternatePortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetPixelBrokenShieldPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelBrokenShieldPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetPixelBrokenShieldPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetPixelBrokenShieldPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetPixelBrokenShieldPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetPixelBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetPixelBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetPixelBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetPixelBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait*
+  name: SetPixelBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelBrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelBrokenShieldPortrait
+  nameWithType: CardExtensions.SetPixelBrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetPixelPortrait(DiskCardGame.CardInfo,System.String)
   name: SetPixelPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelPortrait_DiskCardGame_CardInfo_System_String_
@@ -4663,6 +4899,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetPixelPortrait
   nameWithType: CardExtensions.SetPixelPortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetPixelSteelTrapPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelSteelTrapPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetPixelSteelTrapPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetPixelSteelTrapPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetPixelSteelTrapPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetPixelSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetPixelSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetPixelSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetPixelSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait*
+  name: SetPixelSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPixelSteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetPixelSteelTrapPortrait
+  nameWithType: CardExtensions.SetPixelSteelTrapPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetPortrait(DiskCardGame.CardInfo,System.String)
   name: SetPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetPortrait_DiskCardGame_CardInfo_System_String_
@@ -4770,6 +5034,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetStatIcon
   nameWithType: CardExtensions.SetStatIcon
+- uid: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetSteelTrapPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetSteelTrapPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetSteelTrapPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetSteelTrapPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetSteelTrapPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait*
+  name: SetSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetSteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetSteelTrapPortrait
+  nameWithType: CardExtensions.SetSteelTrapPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetTail(DiskCardGame.CardInfo,DiskCardGame.CardInfo,System.Collections.IEnumerable{DiskCardGame.CardModificationInfo})
   name: SetTail(CardInfo, CardInfo, IEnumerable<CardModificationInfo>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetTail_DiskCardGame_CardInfo_DiskCardGame_CardInfo_System_Collections_IEnumerable_DiskCardGame_CardModificationInfo__
@@ -4971,18 +5263,55 @@ references:
   commentId: F:InscryptionAPI.Card.CardManager.BaseGameCards
   fullName: InscryptionAPI.Card.CardManager.BaseGameCards
   nameWithType: CardManager.BaseGameCards
+- uid: InscryptionAPI.Card.CardManager.BrokenShieldPortrait(DiskCardGame.CardInfo)
+  name: BrokenShieldPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_BrokenShieldPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardManager.BrokenShieldPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.BrokenShieldPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardManager.BrokenShieldPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardManager.BrokenShieldPortrait*
+  name: BrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_BrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardManager.BrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.BrokenShieldPortrait
+  nameWithType: CardManager.BrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardManager.CardAltPortraits
   name: CardManager.CardAltPortraits
   href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html
   commentId: T:InscryptionAPI.Card.CardManager.CardAltPortraits
   fullName: InscryptionAPI.Card.CardManager.CardAltPortraits
   nameWithType: CardManager.CardAltPortraits
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits.BrokenShieldPortrait
+  name: BrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_BrokenShieldPortrait
+  commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.BrokenShieldPortrait
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.BrokenShieldPortrait
+  nameWithType: CardManager.CardAltPortraits.BrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
   name: PixelAlternatePortrait
   href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_PixelAlternatePortrait
   commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
   fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelAlternatePortrait
   nameWithType: CardManager.CardAltPortraits.PixelAlternatePortrait
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelBrokenShieldPortrait
+  name: PixelBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_PixelBrokenShieldPortrait
+  commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.PixelBrokenShieldPortrait
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelBrokenShieldPortrait
+  nameWithType: CardManager.CardAltPortraits.PixelBrokenShieldPortrait
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelSteelTrapPortrait
+  name: PixelSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_PixelSteelTrapPortrait
+  commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.PixelSteelTrapPortrait
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.PixelSteelTrapPortrait
+  nameWithType: CardManager.CardAltPortraits.PixelSteelTrapPortrait
+- uid: InscryptionAPI.Card.CardManager.CardAltPortraits.SteelTrapPortrait
+  name: SteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardManager.CardAltPortraits.html#InscryptionAPI_Card_CardManager_CardAltPortraits_SteelTrapPortrait
+  commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.SteelTrapPortrait
+  fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.SteelTrapPortrait
+  nameWithType: CardManager.CardAltPortraits.SteelTrapPortrait
 - uid: InscryptionAPI.Card.CardManager.GetExtendedClass*
   name: GetExtendedClass
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_GetExtendedClass_
@@ -5057,6 +5386,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardManager.Remove
   nameWithType: CardManager.Remove
+- uid: InscryptionAPI.Card.CardManager.SteelTrapPortrait(DiskCardGame.CardInfo)
+  name: SteelTrapPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_SteelTrapPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardManager.SteelTrapPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.SteelTrapPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardManager.SteelTrapPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardManager.SteelTrapPortrait*
+  name: SteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_SteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardManager.SteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.SteelTrapPortrait
+  nameWithType: CardManager.SteelTrapPortrait
 - uid: InscryptionAPI.Card.CardManager.SyncCardList
   name: SyncCardList()
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_SyncCardList
@@ -5682,6 +6024,70 @@ references:
   commentId: F:InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.playableCard
   fullName: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.playableCard
   nameWithType: CostProperties.RefreshCostMonoBehaviour.playableCard
+- uid: InscryptionAPI.Card.DamageShieldBehaviour
+  name: DamageShieldBehaviour
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html
+  commentId: T:InscryptionAPI.Card.DamageShieldBehaviour
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour
+  nameWithType: DamageShieldBehaviour
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.HasShields
+  name: HasShields()
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_HasShields
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.HasShields
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.HasShields()
+  nameWithType: DamageShieldBehaviour.HasShields()
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.HasShields*
+  name: HasShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_HasShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.HasShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.HasShields
+  nameWithType: DamageShieldBehaviour.HasShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.numShields
+  name: numShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_numShields
+  commentId: F:InscryptionAPI.Card.DamageShieldBehaviour.numShields
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.numShields
+  nameWithType: DamageShieldBehaviour.numShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.NumShields
+  name: NumShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_NumShields
+  commentId: P:InscryptionAPI.Card.DamageShieldBehaviour.NumShields
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.NumShields
+  nameWithType: DamageShieldBehaviour.NumShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.NumShields*
+  name: NumShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_NumShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.NumShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.NumShields
+  nameWithType: DamageShieldBehaviour.NumShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields(System.Boolean)
+  name: ResetShields(Boolean)
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_ResetShields_System_Boolean_
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.ResetShields(System.Boolean)
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields(System.Boolean)
+  nameWithType: DamageShieldBehaviour.ResetShields(Boolean)
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields*
+  name: ResetShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_ResetShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.ResetShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields
+  nameWithType: DamageShieldBehaviour.ResetShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_StartingNumShields
+  commentId: P:InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
+  nameWithType: DamageShieldBehaviour.StartingNumShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields*
+  name: StartingNumShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_StartingNumShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
+  nameWithType: DamageShieldBehaviour.StartingNumShields
 - uid: InscryptionAPI.Card.DeathCardManager
   name: DeathCardManager
   href: api/InscryptionAPI.Card.DeathCardManager.html
@@ -6354,6 +6760,38 @@ references:
   commentId: F:InscryptionAPI.Card.OpponentGemsManager.opponentGems
   fullName: InscryptionAPI.Card.OpponentGemsManager.opponentGems
   nameWithType: OpponentGemsManager.opponentGems
+- uid: InscryptionAPI.Card.ShieldManager
+  name: ShieldManager
+  href: api/InscryptionAPI.Card.ShieldManager.html
+  commentId: T:InscryptionAPI.Card.ShieldManager
+  fullName: InscryptionAPI.Card.ShieldManager
+  nameWithType: ShieldManager
+- uid: InscryptionAPI.Card.ShieldManager.BreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: BreakShield(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_BreakShield_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.ShieldManager.BreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.ShieldManager.BreakShield(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: ShieldManager.BreakShield(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Card.ShieldManager.BreakShield*
+  name: BreakShield
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_BreakShield_
+  commentId: Overload:InscryptionAPI.Card.ShieldManager.BreakShield
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ShieldManager.BreakShield
+  nameWithType: ShieldManager.BreakShield
+- uid: InscryptionAPI.Card.ShieldManager.NewHasShield(DiskCardGame.PlayableCard)
+  name: NewHasShield(PlayableCard)
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_NewHasShield_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.ShieldManager.NewHasShield(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.ShieldManager.NewHasShield(DiskCardGame.PlayableCard)
+  nameWithType: ShieldManager.NewHasShield(PlayableCard)
+- uid: InscryptionAPI.Card.ShieldManager.NewHasShield*
+  name: NewHasShield
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_NewHasShield_
+  commentId: Overload:InscryptionAPI.Card.ShieldManager.NewHasShield
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ShieldManager.NewHasShield
+  nameWithType: ShieldManager.NewHasShield
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager
   name: SpecialTriggeredAbilityManager
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.html
@@ -14937,6 +15375,51 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IItemCanBeUsed.RespondsToItemCanBeUsed
   nameWithType: IItemCanBeUsed.RespondsToItemCanBeUsed
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken
+  name: IModifyDamageTaken
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html
+  commentId: T:InscryptionAPI.Triggers.IModifyDamageTaken
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken
+  nameWithType: IModifyDamageTaken
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  name: OnModifyDamageTaken(PlayableCard, Int32, PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_OnModifyDamageTaken_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IModifyDamageTaken.OnModifyDamageTaken(PlayableCard, Int32, PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken*
+  name: OnModifyDamageTaken
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_OnModifyDamageTaken_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.OnModifyDamageTaken
+  nameWithType: IModifyDamageTaken.OnModifyDamageTaken
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToModifyDamageTaken(PlayableCard, Int32, PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_RespondsToModifyDamageTaken_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IModifyDamageTaken.RespondsToModifyDamageTaken(PlayableCard, Int32, PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken*
+  name: RespondsToModifyDamageTaken
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_RespondsToModifyDamageTaken_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.RespondsToModifyDamageTaken
+  nameWithType: IModifyDamageTaken.RespondsToModifyDamageTaken
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: TriggerPriority(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_TriggerPriority_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IModifyDamageTaken.TriggerPriority(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority*
+  name: TriggerPriority
+  href: api/InscryptionAPI.Triggers.IModifyDamageTaken.html#InscryptionAPI_Triggers_IModifyDamageTaken_TriggerPriority_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority
+  nameWithType: IModifyDamageTaken.TriggerPriority
 - uid: InscryptionAPI.Triggers.IOnAddedToHand
   name: IOnAddedToHand
   href: api/InscryptionAPI.Triggers.IOnAddedToHand.html
@@ -15714,6 +16197,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IPassiveHealthBuff.GetPassiveHealthBuff
   nameWithType: IPassiveHealthBuff.GetPassiveHealthBuff
+- uid: InscryptionAPI.Triggers.IPreTakeDamage
+  name: IPreTakeDamage
+  href: api/InscryptionAPI.Triggers.IPreTakeDamage.html
+  commentId: T:InscryptionAPI.Triggers.IPreTakeDamage
+  fullName: InscryptionAPI.Triggers.IPreTakeDamage
+  nameWithType: IPreTakeDamage
+- uid: InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage(DiskCardGame.PlayableCard,System.Int32)
+  name: OnPreTakeDamage(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IPreTakeDamage.html#InscryptionAPI_Triggers_IPreTakeDamage_OnPreTakeDamage_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IPreTakeDamage.OnPreTakeDamage(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage*
+  name: OnPreTakeDamage
+  href: api/InscryptionAPI.Triggers.IPreTakeDamage.html#InscryptionAPI_Triggers_IPreTakeDamage_OnPreTakeDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IPreTakeDamage.OnPreTakeDamage
+  nameWithType: IPreTakeDamage.OnPreTakeDamage
+- uid: InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage(DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToPreTakeDamage(PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IPreTakeDamage.html#InscryptionAPI_Triggers_IPreTakeDamage_RespondsToPreTakeDamage_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage(DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage(DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IPreTakeDamage.RespondsToPreTakeDamage(PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage*
+  name: RespondsToPreTakeDamage
+  href: api/InscryptionAPI.Triggers.IPreTakeDamage.html#InscryptionAPI_Triggers_IPreTakeDamage_RespondsToPreTakeDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IPreTakeDamage.RespondsToPreTakeDamage
+  nameWithType: IPreTakeDamage.RespondsToPreTakeDamage
 - uid: InscryptionAPI.Triggers.ISetupAttackSequence
   name: ISetupAttackSequence
   href: api/InscryptionAPI.Triggers.ISetupAttackSequence.html
@@ -15817,3 +16332,9 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase
   nameWithType: SlotAttackSlotPatches.DamageToDealThisPhase
+- uid: InscryptionAPI.Triggers.TakeDamagePatches
+  name: TakeDamagePatches
+  href: api/InscryptionAPI.Triggers.TakeDamagePatches.html
+  commentId: T:InscryptionAPI.Triggers.TakeDamagePatches
+  fullName: InscryptionAPI.Triggers.TakeDamagePatches
+  nameWithType: TakeDamagePatches

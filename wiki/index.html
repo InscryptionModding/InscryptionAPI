@@ -165,6 +165,8 @@ EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the M
 
 Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen to be visible in act 3.
 </code></pre><p>If the bones TV screen is active, a bolt will also be dropped on top of each card that dies in-game (the same way that bone tokens are dropped on top of cards that die in Leshy&#39;s cabin).</p>
+<h2 id="deathshield-ability-behaviour">DeathShield Ability Behaviour</h2>
+<p>The API changes how DeathShield (aka Nano Armour/Armoured) functions, with the ability now being attached to a custom ability behaviour  &#39;APIDeathShield&#39; that inherits from DamageShieldBehaviour (more info further below).</p>
 <h1 id="core-features">Core Features</h1>
 <h2 id="extending-enumerations">Extending Enumerations</h2>
 <p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums&#39;, to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
@@ -183,6 +185,14 @@ Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen
     set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, &quot;NumberOfItems&quot;, value); }
 }
 </code></pre><p>When written like this, the static property &quot;NumberOfItems&quot; now automatically syncs to the save file.</p>
+<h2 id="extra-alternate-portraits">Extra Alternate Portraits</h2>
+<p>In Inscryption, there are some situations where a card&#39;s portrait is changed.
+SteelTrap, for example, changes the base card&#39;s portrait to the &#39;closed trap&#39; portrait, and Mud Turtle switches its portrait upon losing its shield.
+However, these cases are very limited; SteelTrap changes <em>all</em> cards to the closed trap portrait, even if it&#39;s not on the vanilla trap card;
+and only Mud Turtle can change its portrait upon losing its shield.</p>
+<p>So, the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
+These are stored separately from a card&#39;s base portrait and alternate portrait, giving you greater freedom in what cards you can make.</p>
+<p>The API also adds support for alternate portraits in Act 2 with SetPixelAlternatePortrait(), SetPixelSteelTrapPortrait() and SetPixelBrokenShieldPortrait().</p>
 <h2 id="api-extended-properties">API Extended Properties</h2>
 <p>The API implements a system of custom properties that you can apply to cards, abilities, and card modification info&#39;s.
 For more information on properties go <a href="#custom-card-properties">to this section</a>.</p>
@@ -207,6 +217,13 @@ The following are some extension properties you can use for your cards.</p>
 <td>Boolean</td>
 <td>If the ability should trigger twice when the card evolves.</td>
 <td>SetTriggersOncePerStack</td>
+</tr>
+<tr>
+<td>HideSingleStacks</td>
+<td>AbilityInfo</td>
+<td>Boolean</td>
+<td>If a stacking ability should hide one stack at a time when added to a card status&#39;s hiddenAbilities instead of the whole ability.</td>
+<td>SetHideSingleStacks</td>
 </tr>
 <tr>
 <td>AffectedByTidalLock</td>
@@ -866,6 +883,31 @@ if you add any such slots they will be removed.</p>
 
     return new();
 }
+</code></pre><h3 id="modify-damage-taken">Modify Damage Taken</h3>
+<p>Using IModifyDamageTaken, you can increase or reduce the damage cards take when they&#39;re attacked.
+Damage cannot go below 0; if it is, the API sets it to 0 after all calculations are done.</p>
+<pre><code class="lang-csharp">public class ReduceDamageByOne : AbilityBehaviour, IModifyDamageTaken
+{
+    public static Ability ability;
+    public override Ability Ability =&gt; ability;
+
+    public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage)
+    {
+        // reduce damage this card takes by 1
+        if (base.Card == target &amp;&amp; damage &gt; 0)
+            return attacker == null;
+
+        return false;
+    }
+
+    public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage)
+    {
+        damage--;
+        return damage; // could also return damage - 1 if you want it all on one line
+    }
+
+    public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker) =&gt; 0;
+}
 </code></pre><h3 id="passive-attack-and-health-buffs">Passive Attack and Health Buffs</h3>
 <p>To do this, you need to override GetPassiveAttackBuff(PlayableCard target) or GetPassiveAttackBuff(PlayableCard target) to calculate the appropriate buffs.
 These return an int representing the buff to give to &#39;target&#39;.</p>
@@ -958,7 +1000,49 @@ public override IEnumerator OnPostResolveOnBoard()
 {
     // put your code here
 }
-</code></pre><h2 id="special-stat-icons">Special Stat Icons</h2>
+</code></pre><h2 id="damageshieldbehaviour">DamageShieldBehaviour</h2>
+<p>Ever wanted to create your own version of the Armoured sigil, but were frustrated by the game&#39;s simplistic boolean logic for shields?
+Worry not! Using the API, you can now easily create your own!
+Simply create a class that inherits from DamageShieldBehaviour (or ActivatedDamageShieldBehaviour) and you&#39;re good to go.</p>
+<p>Abilities using either of these classes must specify a starting number of shields the sigil will provide to a card.</p>
+<p>A basic example can be found here:</p>
+<pre><code class="lang-csharp">public class APIDeathShield : DamageShieldBehaviour
+{
+    public override Ability Ability =&gt; Ability.DeathShield;
+
+    // for stackable sigils, you&#39;ll want to set StartingNumShields to something like this if you want the stacks to be counted
+    public override int StartingNumShields =&gt; base.Card.GetAbilityStacks(Ability);
+
+    // For non-stackable sigils (or perhaps special cases) just setting it to a number will suffice.
+    // public override int StartingNumShields =&gt; 1;
+}
+</code></pre><p>You can continue to modify the shield count during battle:</p>
+<pre><code class="lang-csharp">public void RegainShields
+{
+    // NumShield tracks the current shield amount for the ability instance; it cannot be negative
+    if (NumShield == 0)
+    {
+        ResetShields(true); // Resets NumShield to the starting amount and updates the card display
+    }
+}
+public void ChangeShieldCount()
+{
+    // to modify shield count you need to use numShield NOT NumShield
+    // NumShield cannot be modified directly
+    if (addShield == true)
+    {
+        numShield++;
+    }
+    else
+    {
+        numShield--;
+    }
+    base.Card.RenderCard(); // update the card display if we need to
+}
+</code></pre><p>You can check how many shields a card has using card.GetTotalShields().</p>
+<p>For stacking shields sigils, one stack is hidden whenever the card is damaged IF the ability has been set to behave that way using SetHideSingleStacks().
+Otherwise, the sigil is hidden only when that specific ability&#39;s internal shield count hits 0.</p>
+<h2 id="special-stat-icons">Special Stat Icons</h2>
 <p>Think of these like abilities for your stats (like the Ant power or Bell power from the vanilla game). You need to create a StatIconInfo object and build a type that inherits from VariableStatBehaviour in order to implement a special stat. By now, the pattern used by this API should be apparent.</p>
 <p>Special stat icons inherit from DiskCardGame.VariableStatBehaviour.</p>
 <pre><code class="lang-c#">StatIconInfo info = ScriptableObject.CreateInstance&lt;StatIconInfo&gt;();

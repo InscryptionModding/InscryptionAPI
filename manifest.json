@@ -276,11 +276,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.APIDeathShield.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.APIDeathShield.html",
+          "hash": "NPsS6lp24AWhQYlqZOerKMkBVzcngkk53RaNa1VaQB0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.AbilityExtensions.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "nE1vH5ZNeIp6UNtSL3JwcOAR8HEB4jGf85PXIOefd/A="
+          "hash": "dEFrdj5hhnGe8dPPpFA+ODrD39nQs827pHJiPnn/Rqo="
         }
       },
       "is_incremental": false,
@@ -310,7 +322,19 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "CPs5X+82+DCxmcy6xDtEaIQcAJCc+H4YO9Ph/xdwlYk="
+          "hash": "nEBMuCFhh+Dgejll3v94maFGBwhoZwARYmLAtw7U1TA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html",
+          "hash": "gq6b1br+tZGrquXkDKXPh9rb+6MgN+fa3lAe9vf0ErI="
         }
       },
       "is_incremental": false,
@@ -346,7 +370,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardExtensions.html",
-          "hash": "0ElBV2bpu4vVfYQzTy/BWTVfokRlhOxY257nRcgkk/g="
+          "hash": "AD/esDjur56KCsDRSs7nM3reKVSSOAQhgpN1zhidEXY="
         }
       },
       "is_incremental": false,
@@ -358,7 +382,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardManager.CardAltPortraits.html",
-          "hash": "V14X1tMUZFT4BzAYS8oiYZi4vdkt9PX74Zan4w/AXt0="
+          "hash": "QNJeW/sGunA7KQWWHwT7MFMlDqolJkFmjmvUHb4m8F0="
         }
       },
       "is_incremental": false,
@@ -370,7 +394,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardManager.html",
-          "hash": "zJ5EF/STKfd44XthgQsd17J0SS/GwZBpTBCRApsjI1c="
+          "hash": "M3+SZ+i6D2Hmji36i6m6Bnb0fAZUsa++YZn9bFUaHwE="
         }
       },
       "is_incremental": false,
@@ -438,6 +462,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.DamageShieldBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.DamageShieldBehaviour.html",
+          "hash": "3hzHMVGos2+YX0HqUh4nmXAOcf0cuup97GDw2XvuM7E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Card.DeathCardManager.yml",
       "output": {
         ".html": {
@@ -491,6 +527,18 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.OpponentGemsManager.html",
           "hash": "7vXjbqx8rDdnyDbnkLcpTB7SdW6+faLDGy4NAEwzGbQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Card.ShieldManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Card.ShieldManager.html",
+          "hash": "zIfeSfjBFCoqb8p/ZCRqMl0MSF8UqMAbpyaU6uVCX6g="
         }
       },
       "is_incremental": false,
@@ -574,7 +622,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.html",
-          "hash": "PcEmfJx+29nLblSZMtupm/F/RUq84R5Q1DkYHSyMAyo="
+          "hash": "S2VInktbGIu4pYk0iBZXdfiCe/6v2F+F2aMccF7f0qo="
         }
       },
       "is_incremental": false,
@@ -910,7 +958,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Guid.TypeManager.html",
-          "hash": "4lH5GChHPbXQobg6D2l82B+mC7RpkBFNKnU/cmRn8ZE="
+          "hash": "ZembxUvFIa77A9zXO44bD5f8hWX6C8CzEWsCl8aIMSo="
         }
       },
       "is_incremental": false,
@@ -1114,7 +1162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "X73qiY3eeYDgHwyul1d6Sv/OSnHsb0Vspy9aocBY7go="
+          "hash": "iKg25oUztwqpEQQh/D0beDukOBWG9mCmADWJQkhI6zU="
         }
       },
       "is_incremental": false,
@@ -2110,7 +2158,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html",
-          "hash": "LqYqjj38uX9Ng7Yyk2oy+ZWlGTuzu27T5x724iYa4rk="
+          "hash": "/lbLp4S2vhdkcVT27D6ySK3guPWBV5RBajzWsuGI5oM="
         }
       },
       "is_incremental": false,
@@ -2122,7 +2170,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IGetAttackingSlots.html",
-          "hash": "4kK1nQg6U1l39/RD6BW1A50ezNM/oe/IDSssn6sch3E="
+          "hash": "BKooNfwN4QOaJfjMgOVLOSe0skAo2j9vpG9wKA6+jUo="
         }
       },
       "is_incremental": false,
@@ -2147,6 +2195,18 @@
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IItemCanBeUsed.html",
           "hash": "GXEPg9+a4DqjY2eqsIKoYMksa5oZM6LV3AqMSma8eQw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IModifyDamageTaken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IModifyDamageTaken.html",
+          "hash": "sfiThf3bxjpxTO+iqy28PXDcHyaWg6OZR4bHUWUGFZQ="
         }
       },
       "is_incremental": false,
@@ -2454,6 +2514,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.IPreTakeDamage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.IPreTakeDamage.html",
+          "hash": "at04Aj+ZBtzUoPrIEWqkxLZQ7v9cFSplavO9OqoZoYw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.ISetupAttackSequence.yml",
       "output": {
         ".html": {
@@ -2490,11 +2562,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Triggers.TakeDamagePatches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Triggers.TakeDamagePatches.html",
+          "hash": "XXVO1d4SmF6kZajBnc7DeP5DVIiSfamLUOP18nRBWKg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Triggers.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.html",
-          "hash": "i5bt8HRVur4K4HTzwYqi+FU8MbHVIcZlC6HGJIyw24s="
+          "hash": "m/leWV0me5oR/G6zV0cLjON+Gb+v+9WigmuinqA4Ctg="
         }
       },
       "is_incremental": false,
@@ -2530,7 +2614,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "ki4diT3SA2sVMtoJSefVAdfnaaRMK7yT6DHi8CsCGiA="
+          "hash": "N3jUbvFRugDlVfYpynS0Q9yTKxXgwfgK9NXSVNeL36A="
         }
       },
       "is_incremental": false,
@@ -2566,7 +2650,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "J5fzxJnYfsZTvkNPVSaqy7DvcWCMsyj7z2ND+tu3rGA="
+          "hash": "uDWVuUgi287gCOk0m2b9qZhAGVMmKDSONt8v+N0gvyg="
         }
       },
       "is_incremental": false,
@@ -2593,7 +2677,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 216,
+          "total_file_count": 223,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
