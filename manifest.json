@@ -1162,7 +1162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "iKg25oUztwqpEQQh/D0beDukOBWG9mCmADWJQkhI6zU="
+          "hash": "MlpPePQBplnvjDwJIUHsOjQKNfHwNUWaaBZ0q7ua1+w="
         }
       },
       "is_incremental": false,
@@ -1254,11 +1254,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html",
+          "hash": "KVdLxC5tlaHKulDbXUq7vsME6ZyplCltGj0hXVqAPKA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html",
-          "hash": "VGwj8p4l1x6Ls9M47inhsAoAXe9s/C/BDhvJchiCwd4="
+          "hash": "lf0wvVwXcTdgU4W+1BkNK45ZXnVD8Tw4JHaOgFBId5A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html",
+          "hash": "OwTazkgOFFLdIrVFHZCCN7hcgQob+bUnT7QTubjfZdA="
         }
       },
       "is_incremental": false,
@@ -1270,7 +1294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Localizing.LocalizationManager.html",
-          "hash": "+hcdaweyMovAXUdioPhoXmr97K4tDCWi/eaAtNHWdi4="
+          "hash": "AJFpPn7+NZwLzo/FiTAaYAm5pGgHcOhqfFgSd7My7j8="
         }
       },
       "is_incremental": false,
@@ -1282,7 +1306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Localizing.html",
-          "hash": "ii3I8/a/OLl/Jeh5ef5gLc7ze2uzLVyqn62ydXSJ+gA="
+          "hash": "l0OfPvJ18JyfjJ6x1C/oWqACb1rfNaQGdqcuspLRULE="
         }
       },
       "is_incremental": false,
@@ -2614,7 +2638,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "N3jUbvFRugDlVfYpynS0Q9yTKxXgwfgK9NXSVNeL36A="
+          "hash": "8EgW8AM8OQY8tKYC5FqdJIZlmiYpNlV8nI+VUZgY9Vk="
         }
       },
       "is_incremental": false,
@@ -2650,7 +2674,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/index.html",
-          "hash": "uDWVuUgi287gCOk0m2b9qZhAGVMmKDSONt8v+N0gvyg="
+          "hash": "T2zR/ob02amdXumV3Z6zMHA8a9p7dpgVHuFrZDU6chI="
         }
       },
       "is_incremental": false,
@@ -2677,7 +2701,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 223,
+          "total_file_count": 225,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

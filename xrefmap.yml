@@ -9856,6 +9856,12 @@ references:
   commentId: T:InscryptionAPI.InscryptionAPIPlugin
   fullName: InscryptionAPI.InscryptionAPIPlugin
   nameWithType: InscryptionAPIPlugin
+- uid: InscryptionAPI.InscryptionAPIPlugin.Directory
+  name: Directory
+  href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_Directory
+  commentId: F:InscryptionAPI.InscryptionAPIPlugin.Directory
+  fullName: InscryptionAPI.InscryptionAPIPlugin.Directory
+  nameWithType: InscryptionAPIPlugin.Directory
 - uid: InscryptionAPI.InscryptionAPIPlugin.ModGUID
   name: ModGUID
   href: api/InscryptionAPI.InscryptionAPIPlugin.html#InscryptionAPI_InscryptionAPIPlugin_ModGUID
@@ -10572,6 +10578,86 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Localizing.LocalizationManager.Add
   nameWithType: LocalizationManager.Add
+- uid: InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement(Language,FontReplacement)
+  name: AddFontReplacement(Language, FontReplacement)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_AddFontReplacement_Language_FontReplacement_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement(Language,FontReplacement)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement(Language, FontReplacement)
+  nameWithType: LocalizationManager.AddFontReplacement(Language, FontReplacement)
+- uid: InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement*
+  name: AddFontReplacement
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_AddFontReplacement_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.AddFontReplacement
+  nameWithType: LocalizationManager.AddFontReplacement
+- uid: InscryptionAPI.Localizing.LocalizationManager.AllLanguageButtonText
+  name: AllLanguageButtonText
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_AllLanguageButtonText
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.AllLanguageButtonText
+  fullName: InscryptionAPI.Localizing.LocalizationManager.AllLanguageButtonText
+  nameWithType: LocalizationManager.AllLanguageButtonText
+- uid: InscryptionAPI.Localizing.LocalizationManager.AllLanguageNames
+  name: AllLanguageNames
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_AllLanguageNames
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.AllLanguageNames
+  fullName: InscryptionAPI.Localizing.LocalizationManager.AllLanguageNames
+  nameWithType: LocalizationManager.AllLanguageNames
+- uid: InscryptionAPI.Localizing.LocalizationManager.AllLanguages
+  name: AllLanguages
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_AllLanguages
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.AllLanguages
+  fullName: InscryptionAPI.Localizing.LocalizationManager.AllLanguages
+  nameWithType: LocalizationManager.AllLanguages
+- uid: InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage(System.String)
+  name: CodeToLanguage(String)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_CodeToLanguage_System_String_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage(System.String)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage(System.String)
+  nameWithType: LocalizationManager.CodeToLanguage(String)
+- uid: InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage*
+  name: CodeToLanguage
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_CodeToLanguage_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CodeToLanguage
+  nameWithType: LocalizationManager.CodeToLanguage
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage
+  name: LocalizationManager.CustomLanguage
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html
+  commentId: T:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage
+  nameWithType: LocalizationManager.CustomLanguage
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.Language
+  name: Language
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html#InscryptionAPI_Localizing_LocalizationManager_CustomLanguage_Language
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.Language
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.Language
+  nameWithType: LocalizationManager.CustomLanguage.Language
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageCode
+  name: LanguageCode
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html#InscryptionAPI_Localizing_LocalizationManager_CustomLanguage_LanguageCode
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageCode
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageCode
+  nameWithType: LocalizationManager.CustomLanguage.LanguageCode
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageName
+  name: LanguageName
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html#InscryptionAPI_Localizing_LocalizationManager_CustomLanguage_LanguageName
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageName
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.LanguageName
+  nameWithType: LocalizationManager.CustomLanguage.LanguageName
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PathToStringTable
+  name: PathToStringTable
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html#InscryptionAPI_Localizing_LocalizationManager_CustomLanguage_PathToStringTable
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PathToStringTable
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PathToStringTable
+  nameWithType: LocalizationManager.CustomLanguage.PathToStringTable
+- uid: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PluginGUID
+  name: PluginGUID
+  href: api/InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.html#InscryptionAPI_Localizing_LocalizationManager_CustomLanguage_PluginGUID
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PluginGUID
+  fullName: InscryptionAPI.Localizing.LocalizationManager.CustomLanguage.PluginGUID
+  nameWithType: LocalizationManager.CustomLanguage.PluginGUID
 - uid: InscryptionAPI.Localizing.LocalizationManager.CustomTranslation
   name: LocalizationManager.CustomTranslation
   href: api/InscryptionAPI.Localizing.LocalizationManager.CustomTranslation.html
@@ -10596,6 +10682,55 @@ references:
   commentId: F:InscryptionAPI.Localizing.LocalizationManager.CustomTranslations
   fullName: InscryptionAPI.Localizing.LocalizationManager.CustomTranslations
   nameWithType: LocalizationManager.CustomTranslations
+- uid: InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV
+  name: ExportAllToCSV()
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_ExportAllToCSV
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV
+  fullName: InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV()
+  nameWithType: LocalizationManager.ExportAllToCSV()
+- uid: InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV*
+  name: ExportAllToCSV
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_ExportAllToCSV_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.ExportAllToCSV
+  nameWithType: LocalizationManager.ExportAllToCSV
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType
+  name: LocalizationManager.FontReplacementType
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html
+  commentId: T:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType
+  nameWithType: LocalizationManager.FontReplacementType
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.DaggerSquare
+  name: DaggerSquare
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html#InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_DaggerSquare
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.DaggerSquare
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.DaggerSquare
+  nameWithType: LocalizationManager.FontReplacementType.DaggerSquare
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.HeavyWeight
+  name: HeavyWeight
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html#InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_HeavyWeight
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.HeavyWeight
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.HeavyWeight
+  nameWithType: LocalizationManager.FontReplacementType.HeavyWeight
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Liberation
+  name: Liberation
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html#InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_Liberation
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Liberation
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Liberation
+  nameWithType: LocalizationManager.FontReplacementType.Liberation
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Marksman
+  name: Marksman
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html#InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_Marksman
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Marksman
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Marksman
+  nameWithType: LocalizationManager.FontReplacementType.Marksman
+- uid: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Misc3D
+  name: Misc3D
+  href: api/InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.html#InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_Misc3D
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Misc3D
+  fullName: InscryptionAPI.Localizing.LocalizationManager.FontReplacementType.Misc3D
+  nameWithType: LocalizationManager.FontReplacementType.Misc3D
 - uid: InscryptionAPI.Localizing.LocalizationManager.Get(System.String,System.String)
   name: Get(String, String)
   href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Get_System_String_System_String_
@@ -10609,6 +10744,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Localizing.LocalizationManager.Get
   nameWithType: LocalizationManager.Get
+- uid: InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont(InscryptionAPI.Localizing.LocalizationManager.FontReplacementType,UnityEngine.Font,TMPro.TMP_FontAsset)
+  name: GetFontReplacementForFont(LocalizationManager.FontReplacementType, Font, TMP_FontAsset)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_GetFontReplacementForFont_InscryptionAPI_Localizing_LocalizationManager_FontReplacementType_UnityEngine_Font_TMPro_TMP_FontAsset_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont(InscryptionAPI.Localizing.LocalizationManager.FontReplacementType,UnityEngine.Font,TMPro.TMP_FontAsset)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont(InscryptionAPI.Localizing.LocalizationManager.FontReplacementType, UnityEngine.Font, TMPro.TMP_FontAsset)
+  nameWithType: LocalizationManager.GetFontReplacementForFont(LocalizationManager.FontReplacementType, Font, TMP_FontAsset)
+- uid: InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont*
+  name: GetFontReplacementForFont
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_GetFontReplacementForFont_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.GetFontReplacementForFont
+  nameWithType: LocalizationManager.GetFontReplacementForFont
+- uid: InscryptionAPI.Localizing.LocalizationManager.LanguageToCode(Language)
+  name: LanguageToCode(Language)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_LanguageToCode_Language_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.LanguageToCode(Language)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.LanguageToCode(Language)
+  nameWithType: LocalizationManager.LanguageToCode(Language)
+- uid: InscryptionAPI.Localizing.LocalizationManager.LanguageToCode*
+  name: LanguageToCode
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_LanguageToCode_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.LanguageToCode
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.LanguageToCode
+  nameWithType: LocalizationManager.LanguageToCode
 - uid: InscryptionAPI.Localizing.LocalizationManager.New(System.String,System.String,System.String,System.String,Language)
   name: New(String, String, String, String, Language)
   href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_New_System_String_System_String_System_String_System_String_Language_
@@ -10622,12 +10783,47 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Localizing.LocalizationManager.New
   nameWithType: LocalizationManager.New
+- uid: InscryptionAPI.Localizing.LocalizationManager.NewLanguage(System.String,System.String,System.String,System.String,System.String,List{FontReplacement})
+  name: NewLanguage(String, String, String, String, String, List<FontReplacement>)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_NewLanguage_System_String_System_String_System_String_System_String_System_String_List_FontReplacement__
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.NewLanguage(System.String,System.String,System.String,System.String,System.String,List{FontReplacement})
+  name.vb: NewLanguage(String, String, String, String, String, List(Of FontReplacement))
+  fullName: InscryptionAPI.Localizing.LocalizationManager.NewLanguage(System.String, System.String, System.String, System.String, System.String, List<FontReplacement>)
+  fullName.vb: InscryptionAPI.Localizing.LocalizationManager.NewLanguage(System.String, System.String, System.String, System.String, System.String, List(Of FontReplacement))
+  nameWithType: LocalizationManager.NewLanguage(String, String, String, String, String, List<FontReplacement>)
+  nameWithType.vb: LocalizationManager.NewLanguage(String, String, String, String, String, List(Of FontReplacement))
+- uid: InscryptionAPI.Localizing.LocalizationManager.NewLanguage*
+  name: NewLanguage
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_NewLanguage_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.NewLanguage
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.NewLanguage
+  nameWithType: LocalizationManager.NewLanguage
+- uid: InscryptionAPI.Localizing.LocalizationManager.NewLanguages
+  name: NewLanguages
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_NewLanguages
+  commentId: F:InscryptionAPI.Localizing.LocalizationManager.NewLanguages
+  fullName: InscryptionAPI.Localizing.LocalizationManager.NewLanguages
+  nameWithType: LocalizationManager.NewLanguages
 - uid: InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
   name: OnLanguageLoaded
   href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_OnLanguageLoaded
   commentId: F:InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
   fullName: InscryptionAPI.Localizing.LocalizationManager.OnLanguageLoaded
   nameWithType: LocalizationManager.OnLanguageLoaded
+- uid: InscryptionAPI.Localizing.LocalizationManager.Translate(System.String,System.String,System.String,System.String,Language)
+  name: Translate(String, String, String, String, Language)
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Translate_System_String_System_String_System_String_System_String_Language_
+  commentId: M:InscryptionAPI.Localizing.LocalizationManager.Translate(System.String,System.String,System.String,System.String,Language)
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Translate(System.String, System.String, System.String, System.String, Language)
+  nameWithType: LocalizationManager.Translate(String, String, String, String, Language)
+- uid: InscryptionAPI.Localizing.LocalizationManager.Translate*
+  name: Translate
+  href: api/InscryptionAPI.Localizing.LocalizationManager.html#InscryptionAPI_Localizing_LocalizationManager_Translate_
+  commentId: Overload:InscryptionAPI.Localizing.LocalizationManager.Translate
+  isSpec: "True"
+  fullName: InscryptionAPI.Localizing.LocalizationManager.Translate
+  nameWithType: LocalizationManager.Translate
 - uid: InscryptionAPI.Masks
   name: InscryptionAPI.Masks
   href: api/InscryptionAPI.Masks.html

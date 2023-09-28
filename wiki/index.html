@@ -1553,6 +1553,73 @@ The third parameter is optional, and determines the volume of your track, from 0
 <p>Third parameter is the result of taking the object out of the asset bundle.</p>
 <p><strong>NOTE</strong>: Getting a prefab from an asset bundle does not load it into the world. You need to clone it with Instantiate! </p>
 <p><strong>NOTE 2</strong>: If the GameObject is being created but the model isn&#39;t showing up in-game, make sure you are using Unity 2019.4.24f1 to build the asset bundle; the model will not show up otherwise!</p>
+<h2 id="localisation">Localisation</h2>
+<h3 id="adding-new-translations">Adding new Translations</h3>
+<p>If you want to add your own translations to Inscryption you can use the API&#39;s localisation system.</p>
+<pre><code class="lang-csharp">LocalizationManager.Translate(&quot;MyModGUID&quot;, null, &quot;Hello&quot;, &quot;안녕하세요&quot;, Language.Korean);
+</code></pre><h3 id="adding-new-languages">Adding new Languages</h3>
+<p>If you want to add your own translations to Inscryption you can use the API&#39;s localisation system.</p>
+<pre><code class="lang-csharp">LocalizationManager.NewLanguage(&quot;MyModGUID&quot;, &quot;Polish&quot;, &quot;PL&quot;, &quot;Reset With Polish&quot;, pathToCSV);
+</code></pre><p>The csv for your language should be in the following format so it can be imported when needed:</p>
+<pre><code>Column1,Column10,PL
+TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
+_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
+</code></pre><h3 id="default-languages">Default languages</h3>
+<p>The default supported languages are listed in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fr</td>
+<td>French</td>
+</tr>
+<tr>
+<td>it</td>
+<td>Italian</td>
+</tr>
+<tr>
+<td>de</td>
+<td>German</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Spanish</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>Portuguese</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>Turkish</td>
+</tr>
+<tr>
+<td>ru</td>
+<td>Russian</td>
+</tr>
+<tr>
+<td>ja</td>
+<td>Japanese</td>
+</tr>
+<tr>
+<td>ko</td>
+<td>Korean</td>
+</tr>
+<tr>
+<td>zhcn</td>
+<td>Chinese (Simplified)</td>
+</tr>
+<tr>
+<td>zhtw</td>
+<td>Chinese (Traditional)</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
