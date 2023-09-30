@@ -3,6 +3,9 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.17.1
+- Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
+
 ## 2.17.0
 - Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
 - Added ability interfaces IModifyDamageTaken, IPreTakeDamage, which trigger at the start of PlayableCard.TakeDamage
