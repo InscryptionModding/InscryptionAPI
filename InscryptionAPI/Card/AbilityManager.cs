@@ -235,6 +235,21 @@ public static class AbilityManager
             if (Part2ModularAbilities.BasePart2Modular.Contains(ability.ability))
                 ability.SetDefaultPart2Ability();
 
+            if (name == "DeathShield")
+            {
+                ability.SetPassive(false);
+                ability.SetCanStack(true);
+                ability.SetHideSingleStacks(true);
+                baseGame.Add(new FullAbility
+                (
+                    null,
+                    ability.ability,
+                    ability,
+                    typeof(APIDeathShield),
+                    useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
+                ));
+                continue;
+            }
             baseGame.Add(new FullAbility
             (
                 null,

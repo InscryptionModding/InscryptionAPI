@@ -25,8 +25,8 @@ internal class SteelTrapFix
         yield return new WaitForSeconds(0.1f);
         __instance.Card.Anim.LightNegationEffect();
 
-        if (__instance.Card.HasAlternatePortrait())
-            __instance.Card.SwitchToAlternatePortrait();
+        if (__instance.Card.Info.HasSteelTrapPortrait())
+            __instance.Card.SwitchToPortrait(__instance.Card.Info.SteelTrapPortrait());
 
         AudioController.Instance.PlaySound3D("dial_metal", MixerGroup.TableObjectsSFX, __instance.Card.transform.position);
         yield return new WaitForSeconds(0.75f);

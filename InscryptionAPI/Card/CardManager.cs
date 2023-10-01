@@ -24,6 +24,10 @@ public static class CardManager
    public class CardAltPortraits
     {
         public Sprite PixelAlternatePortrait = null;
+        public Sprite SteelTrapPortrait = null;
+        public Sprite PixelSteelTrapPortrait = null;
+        public Sprite BrokenShieldPortrait = null;
+        public Sprite PixelBrokenShieldPortrait = null;
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
     private static readonly ConditionalWeakTable<CardInfo, CardAltPortraits> CardAlternatePortraits = new();
@@ -51,6 +55,8 @@ public static class CardManager
             card.SetBaseGameCard(true);
             if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit")
                 card.SetAffectedByTidalLock();
+            else if (card.name == "SkeletonParrot")
+                card.AddTribes(Tribe.Bird);
 
             yield return card;
         }
@@ -268,6 +274,14 @@ public static class CardManager
     public static Sprite PixelAlternatePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelAlternatePortrait;
+    }
+    public static Sprite SteelTrapPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().SteelTrapPortrait;
+    }
+    public static Sprite BrokenShieldPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().BrokenShieldPortrait;
     }
 
     private const string ERROR = "ERROR";
