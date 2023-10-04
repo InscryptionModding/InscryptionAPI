@@ -714,9 +714,24 @@ public interface IModifyDamageTaken
     public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 
+/// <summary>
+/// Trigger that is triggered right before a card takes damage.
+/// </summary>
 public interface IPreTakeDamage
 {
+    /// <summary>
+    /// Returns true if this should trigger before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns>True if this should trigger before a card takes damage.</returns>
     public bool RespondsToPreTakeDamage(PlayableCard source, int damage);
 
+    /// <summary>
+    /// Trigger whatever events you want to run before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns></returns>
     public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }
