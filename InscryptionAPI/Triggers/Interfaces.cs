@@ -693,3 +693,23 @@ public interface IPreTakeDamage
 
     public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }
+
+/// <summary>
+/// Data collection trigger that modifies the damage taken when directly attacked.
+/// </summary>
+public interface IModifyDirectDamage
+{
+    /// <summary>
+    /// Returns true if this should modify the amount of damage taken when directly attacked.
+    /// </summary>
+    /// <param name="target">The card slot targeted for the attack.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>True if this should modify the amount of damage taken when directly attacked.</returns>
+    public bool RespondsToModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int OnModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int TriggerPriority(CardSlot target, int damage, PlayableCard attacker);
+}

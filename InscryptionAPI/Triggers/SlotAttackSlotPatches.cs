@@ -22,24 +22,40 @@ public static class SlotAttackSlotPatches
     // make this public so people can alter it themselves
     public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
     {
+        int originalDamage = attackingSlot.Card.Attack;
+        int damage = originalDamage;
+
+        // Trigger IModifyDirectDamage first and treat the new damage as the attacking card's attack
+        var modifyDirectDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDirectDamage>(true).ToList();
+        modifyDirectDamage.Sort((a, b) => 
+            b.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
+            - a.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
+        );
+
+        foreach (var modify in modifyDirectDamage)
+        {
+            if (modify.RespondsToModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage))
+                damage = modify.OnModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage);  
+        }
+
         // first thing we check for is self-damage; if the attacking slot is on the same side as the opposing slot, deal self-damage
         if (attackingSlot.IsPlayerSlot == opposingSlot.IsPlayerSlot)
-            return -attackingSlot.Card.Attack;
+            return -damage;
 
         // this is some new stuff to account for out-of-turn damage
         else if (TurnManager.Instance.IsPlayerTurn)
         {
             // if an opponent is attacking during the player's turn, deal positive/negative damage depending on what slot is being attacked
             if (attackingSlot.IsOpponentSlot())
-                return opposingSlot.IsPlayerSlot ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+                return opposingSlot.IsPlayerSlot ? -damage : damage;
         }
         else if (attackingSlot.IsPlayerSlot)
         {
             // if a player is attacking during the opponent's turn, deal positive/negative damage depending on what slot is being attacked
-            return opposingSlot.IsOpponentSlot() ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+            return opposingSlot.IsOpponentSlot() ? -damage : damage;
         }
 
-        return attackingSlot.Card.Attack;
+        return damage;
     }
 
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
