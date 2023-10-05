@@ -7,6 +7,7 @@
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
 - Fixed IModifyDamageTaken priority sorting so higher priorities trigger first
 - Added extension methods for getting emission portraits
+- Added CustomFields helper for associating data with objects or classes
 - Custom Tribes store their name and GUID now
 
 ## 2.17.0
