@@ -20,7 +20,7 @@ public static class CustomFields {
 		if (!HasField(obj, field)) Set(obj, field, default(T));
 
 		objectFields.TryGetValue(obj, out Dictionary<string, object> fields);
-		return (T)fields[field.Trim().ToLower()];
+		return (T)fields[field];
 	}
 
 	/// <summary>
@@ -54,7 +54,7 @@ public static class CustomFields {
 		if (!objectFields.TryGetValue(obj, out Dictionary<string, object> fields))
 			objectFields.Add(obj, new Dictionary<string, object>());
 
-		fields[field.Trim().ToLower()] = value;
+		fields[field] = value;
 	}
 
 	/// <summary>
@@ -84,7 +84,7 @@ public static class CustomFields {
 	public static bool HasField(object obj, string field)
 	{
 		if (!objectFields.TryGetValue(obj, out Dictionary<string, object> fields)) return false;
-		return fields.ContainsKey(field.Trim().ToLower());
+		return fields.ContainsKey(field);
 	}
 
 	/// <summary>
