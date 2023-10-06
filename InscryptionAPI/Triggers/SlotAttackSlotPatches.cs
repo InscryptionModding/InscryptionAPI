@@ -14,10 +14,23 @@ public static class SlotAttackSlotPatches
 {
     private const string name_GlobalTrigger = "DiskCardGame.GlobalTriggerHandler get_Instance()";
     private const string name_GetCard = "DiskCardGame.PlayableCard get_Card()";
+    private const string name_GetAttack = "Int32 get_Attack()";
     private const string name_OpposingSlot = "DiskCardGame.CardSlot opposingSlot";
     private const string name_CombatPhase = "DiskCardGame.CombatPhaseManager+<>c__DisplayClass5_0 <>8__1";
     private const string name_AttackingSlot = "DiskCardGame.CardSlot attackingSlot";
     private const string name_CanAttackDirectly = "Boolean CanAttackDirectly(DiskCardGame.CardSlot)";
+
+    private const string modifiedAttackCustomField = "modifiedAttack";
+
+    private static readonly MethodInfo method_GetCard = AccessTools.PropertyGetter(typeof(CardSlot), nameof(CardSlot.Card));
+
+    private static readonly MethodInfo method_NewDamage = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
+        new Type[] { typeof(CardSlot), typeof(CardSlot) });
+
+    private static readonly MethodInfo method_SetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
+
+    private static readonly MethodInfo method_GetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get),
+        new Type[] { typeof(object), typeof(string) }, new Type[] { typeof(int) });
 
     // make this public so people can alter it themselves
     public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
@@ -68,14 +81,16 @@ public static class SlotAttackSlotPatches
         for (int a = 0; a < codes.Count; a++)
         {
             // separated into their own methods so I can save on eye strain and brain fog
-            if (DirectSelfDamageCheck(codes, a))
+            if (DirectSelfDamageCheck(codes, a, out int indexOffset))
             {
-                for (int b = a + 1; b < codes.Count; b++)
+                for (int b = a + indexOffset; b < codes.Count; b++)
                 {
+                    // replace all calls to "get_Attack()" with getCustomField
+                    TryReplaceAttackAmount(codes, ref b);
+
                     if (OpposingCardNullCheck(codes, b))
                         break;
                 }
-                break;
             }
         }
 
@@ -135,36 +150,33 @@ public static class SlotAttackSlotPatches
         return false;
     }
 
-    private static bool DirectSelfDamageCheck(List<CodeInstruction> codes, int index)
+    // Modifies direct attack damage and stores the new damage in a custom field
+    private static bool DirectSelfDamageCheck(List<CodeInstruction> codes, int index, out int endDifference)
     {
+        endDifference = 0;
+        
         if (codes[index].opcode == OpCodes.Callvirt && codes[index].operand.ToString() == name_CanAttackDirectly)
         {
             int startIndex = index + 2;
 
-            // we want to turn this:
-            // ldloc.1
-            // ldloc.1
-            // call getDamage
+            // we want to add this before the first getAttack call:
+            // 
             // ldarg.0
             // ldfld displayClass
             // ldfld attackingSlot
-            // callvirt getCard
-            // callvirt getAttack
-            // call setDamage
-
-            // into this:
-            // ldloc.1
-            // ldloc.1
-            // call getDamage
+            // calvirt get_Card
+            // ldstr "modifiedAttack"
             // ldarg.0
             // ldfld displayClass
             // ldfld attackingSlot
-            // ~ldarg.0
-            // ~ldfld opposingSlot
-            // +callvirt newDamage
-            // call setDamage
+            // ldarg.0
+            // ldfld opposingSlot
+            // callvirt newDamage
+            // callvirt setCustomField
 
             object op_OpposingSlot = null;
+            object op_DisplayClass = null;
+            object op_AttackingSlot = null;
 
             // look backwards and retrieve opposingSlot
             for (int i = index - 1; i > 0; i--)
@@ -176,21 +188,46 @@ public static class SlotAttackSlotPatches
                 }
             }
 
-            // get the endIndex
-            for (int j = startIndex; j < codes.Count; j++)
+            // look forward and retrieve displayClass and attackingSlot
+            for (int i = startIndex; i < codes.Count; i++)
             {
-                if (codes[j].opcode == OpCodes.Callvirt && codes[j].operand.ToString() == name_GetCard)
+                if (op_DisplayClass == null && codes[i].operand?.ToString() == name_CombatPhase)
                 {
-                    MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
-                        new Type[] { typeof(CardSlot), typeof(CardSlot) });
-
-                    codes[j++] = new(OpCodes.Ldarg_0);
-                    codes[j++] = new(OpCodes.Ldfld, op_OpposingSlot);
-                    codes.Insert(j++, new(OpCodes.Callvirt, customMethod));
-                    return true;
+                    op_DisplayClass = codes[i].operand;
+                    op_AttackingSlot = codes[i+1].operand;
+                    break;
                 }
             }
+
+            int j = startIndex;
+            
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
+            codes.Insert(j++, new(OpCodes.Callvirt, method_GetCard));
+            codes.Insert(j++, new(OpCodes.Ldstr, modifiedAttackCustomField));
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_OpposingSlot));
+            codes.Insert(j++, new(OpCodes.Callvirt, method_NewDamage));
+            codes.Insert(j++, new(OpCodes.Box, typeof(System.Int32)));
+            codes.Insert(j++, new(OpCodes.Call, method_SetCustomField));
+
+            endDifference = index - j;
+            return true;
         }
         return false;
+    }
+
+    // Look for the "get_Attack()" call and replace with getCustomField
+    private static bool TryReplaceAttackAmount(List<CodeInstruction> codes, ref int index) {
+        if (codes[index].opcode != OpCodes.Callvirt || codes[index].operand.ToString() != name_GetAttack) return false;
+
+        codes[index++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
+        codes.Insert(index++, new(OpCodes.Callvirt, method_GetCustomField));
+
+        return true;
     }
 }
