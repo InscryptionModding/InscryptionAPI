@@ -51,8 +51,10 @@ public static class CustomFields {
 	/// <param name="value">The value of the custom field.</param>
 	public static void Set(object obj, string field, object value)
 	{
-		if (!objectFields.TryGetValue(obj, out Dictionary<string, object> fields))
-			objectFields.Add(obj, new Dictionary<string, object>());
+		if (!objectFields.TryGetValue(obj, out Dictionary<string, object> fields)) {
+			fields = new Dictionary<string, object>() ;
+			objectFields.Add(obj, fields);
+		}
 
 		fields[field] = value;
 	}
