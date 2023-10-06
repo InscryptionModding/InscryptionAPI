@@ -159,21 +159,6 @@ public static class SlotAttackSlotPatches
         {
             int startIndex = index + 2;
 
-            // we want to add this before the first getAttack call:
-            // 
-            // ldarg.0
-            // ldfld displayClass
-            // ldfld attackingSlot
-            // calvirt get_Card
-            // ldstr "modifiedAttack"
-            // ldarg.0
-            // ldfld displayClass
-            // ldfld attackingSlot
-            // ldarg.0
-            // ldfld opposingSlot
-            // callvirt newDamage
-            // callvirt setCustomField
-
             object op_OpposingSlot = null;
             object op_DisplayClass = null;
             object op_AttackingSlot = null;
@@ -212,7 +197,7 @@ public static class SlotAttackSlotPatches
             codes.Insert(j++, new(OpCodes.Ldarg_0));
             codes.Insert(j++, new(OpCodes.Ldfld, op_OpposingSlot));
             codes.Insert(j++, new(OpCodes.Callvirt, method_NewDamage));
-            codes.Insert(j++, new(OpCodes.Box, typeof(System.Int32)));
+            codes.Insert(j++, new(OpCodes.Box, typeof(int)));
             codes.Insert(j++, new(OpCodes.Call, method_SetCustomField));
 
             endDifference = index - j;
