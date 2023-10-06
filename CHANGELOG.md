@@ -3,12 +3,12 @@
 <details>
 <summary>View Changelog</summary>
 
-## 2.17.1
+## 2.18.0
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
-- Fixed IModifyDamageTaken priority sorting so higher priorities trigger first
-- Added extension methods for getting emission portraits
+- Fixed IModifyDamageTaken priority sorting being reversed
+- Added extension methods for getting emission portraits, setting animated portrait
 - Added CustomFields helper for associating data with objects or classes
-- Custom Tribes store their name and GUID now
+- Custom Tribes now store their name and GUID
 
 ## 2.17.0
 - Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
