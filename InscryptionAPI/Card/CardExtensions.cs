@@ -1986,6 +1986,11 @@ public static class CardExtensions
     /// <returns>The number of shields the card has.</returns>
     public static int GetTotalShields(this PlayableCard card)
     {
+        // covers for a situation I discovered where you use a SpecialBattleSequencer's triggers to advance a boss fight
+        // somehow you can end up with a null playablecard which breaks this bit here
+        if (card == null)
+            return 0;
+
         int totalShields = 0;
         List<Ability> distinct = new(); // keep track of non-stacking shield abilities
 
