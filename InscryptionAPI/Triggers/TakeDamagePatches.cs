@@ -46,6 +46,8 @@ public static class TakeDamagePatches
         }
 
         yield return enumerator;
+        if (__instance == null) yield break;
+        
         if (__instance?.HasShield() == false && attacker != null)
         {
             yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(
