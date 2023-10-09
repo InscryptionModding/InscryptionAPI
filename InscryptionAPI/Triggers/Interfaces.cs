@@ -713,3 +713,22 @@ public interface IModifyDirectDamage
 
     public int TriggerPriority(CardSlot target, int damage, PlayableCard attacker);
 }
+
+/// <summary>
+/// Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works on cards in the opponent's queue.
+/// </summary>
+public interface IOnTurnEndInQueue {
+    /// <summary>
+    /// Returns true if this should trigger when the turn ends, but only if this card is in the opponent's queue.
+    /// </summary>
+    /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+    /// <returns>True if this should trigger when the turn ends, but only if this card is in the opponent's queue.</returns>
+    public bool RespondsToTurnEndInQueue(bool playerTurn);
+
+    /// <summary>
+    /// Trigger whatever events you want to run when the turn ends, but only if this card is in the opponent's queue.
+    /// </summary>
+    /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+    /// <returns></returns>
+    public IEnumerator OnTurnEndInQueue(bool playerTurn);
+}

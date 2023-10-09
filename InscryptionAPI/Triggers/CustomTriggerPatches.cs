@@ -389,6 +389,39 @@ internal static class CustomTriggerPatches
         __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
     }
 
+    [HarmonyTranspiler]
+    [HarmonyPatch(typeof(TurnManager), "PlayerTurn", MethodType.Enumerator)]
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueuePlayer(IEnumerable<CodeInstruction> instructions) =>
+        TriggerOnTurnEndInQueue(instructions, true);
+
+    [HarmonyTranspiler]
+    [HarmonyPatch(typeof(TurnManager), "OpponentTurn", MethodType.Enumerator)]
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueueOpponent(IEnumerable<CodeInstruction> instructions) =>
+        TriggerOnTurnEndInQueue(instructions, false);
+    
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueue(IEnumerable<CodeInstruction> instructions, bool playerTurn)
+    {
+        List<CodeInstruction> codes = instructions.ToList();
+
+        int pointer = codes.IndexOf(codes.First(code => code.opcode == OpCodes.Callvirt && code.OperandIs(AccessTools.Method(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard)))));
+        pointer++;
+
+        codes.Insert(pointer++, new(playerTurn ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0));
+        codes.Insert(pointer++, new(OpCodes.Call, AccessTools.Method(typeof(CustomTriggerPatches), nameof(CustomTriggerPatches.TriggerOnTurnEndInQueueCoro))));
+
+        return codes;
+    }
+
+    static IEnumerator TriggerOnTurnEndInQueueCoro(IEnumerator originalTrigger, bool playerTurn)
+    {
+        yield return originalTrigger;
+
+        foreach (IOnTurnEndInQueue trigger in CustomTriggerFinder.FindTriggersInQueue<IOnTurnEndInQueue>()) {
+            if (trigger.RespondsToTurnEndInQueue(playerTurn))
+                yield return trigger.OnTurnEndInQueue(playerTurn);
+        }
+    }
+
     // IModifyAttackingSlots code can be found in DoCombatPhasePatches
 
     // IModifyDamageTaken and IPreTakeDamage logic can be found in TakeDamagePatches

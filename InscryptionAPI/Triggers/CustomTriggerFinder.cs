@@ -464,4 +464,12 @@ public static class CustomTriggerFinder
             yield return recv;
         }
     }
+
+    /// <summary>
+    /// Finds all trigger recievers on a cards in the opponent's queue
+    /// </summary>
+    /// <typeparam name="T">The type of reciever to search for</typeparam>
+    /// <returns>All trigger recievers of type T in the opponent's queue</returns>
+    public static IEnumerable<T> FindTriggersInQueue<T>() =>
+		TurnManager.Instance?.Opponent?.Queue.Where(card => card.TryGetComponent(out T _)).Select(card => card.GetComponent<T>()) ?? new T[]{};
 }
