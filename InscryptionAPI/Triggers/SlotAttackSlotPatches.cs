@@ -186,6 +186,7 @@ public static class SlotAttackSlotPatches
 
             int j = startIndex;
             
+            // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot.Card, this.OpposingSlot));
             codes.Insert(j++, new(OpCodes.Ldarg_0));
             codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
             codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
