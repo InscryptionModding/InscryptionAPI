@@ -733,3 +733,28 @@ public interface IOnTurnEndInQueue
     /// <returns></returns>
     public IEnumerator OnTurnEndInQueue(bool playerTurn);
 }
+
+/// <summary>
+/// Trigger that is triggered when a card deals direct damage.
+/// This is a replacement for the vanilla DealDamageDirectly trigger, which unlike the base-game trigger, triggers for all cards on the board and supplies more information.
+/// </summary>
+public interface IOnCardDealtDamageDirectly
+{
+    /// <summary>
+    /// Returns true if this should trigger when a card deals direct damage.
+    /// </summary>
+    /// <param name="attacker">The card that dealt the direct damage.</param>
+    /// <param name="opposingSlot">The card slot that was targeted for the direct attack.</param>
+    /// <param name="damage">The amount of direct damage delt.</param>
+    /// <returns>True if this should trigger when a card deals direct damage.</returns>
+    public bool RespondsToCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
+
+    /// <summary>
+    /// Trigger whatever events you want to run when a card deals direct damage.
+    /// </summary>
+    /// <param name="attacker">The card that dealt the direct damage.</param>
+    /// <param name="opposingSlot">The card slot that was targeted for the direct attack.</param>
+    /// <param name="damage">The amount of direct damage delt.</param>
+    /// <returns></returns>
+    public IEnumerator OnCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
+}

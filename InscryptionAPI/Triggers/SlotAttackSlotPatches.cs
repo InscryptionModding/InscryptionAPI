@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -19,6 +20,7 @@ public static class SlotAttackSlotPatches
     private const string name_CombatPhase = "DiskCardGame.CombatPhaseManager+<>c__DisplayClass5_0 <>8__1";
     private const string name_AttackingSlot = "DiskCardGame.CardSlot attackingSlot";
     private const string name_CanAttackDirectly = "Boolean CanAttackDirectly(DiskCardGame.CardSlot)";
+    private const string name_VisualizeCardAttackingDirectly = "System.Collections.IEnumerator VisualizeCardAttackingDirectly(DiskCardGame.CardSlot, DiskCardGame.CardSlot, Int32)";
 
     private const string modifiedAttackCustomField = "modifiedAttack";
 
@@ -26,6 +28,9 @@ public static class SlotAttackSlotPatches
 
     private static readonly MethodInfo method_NewDamage = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
         new Type[] { typeof(CardSlot), typeof(CardSlot) });
+
+    private static readonly MethodInfo method_NewTriggers = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.TriggerOnDirectDamageTriggers),
+        new Type[] { typeof(PlayableCard), typeof(CardSlot) });
 
     private static readonly MethodInfo method_SetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
 
@@ -81,16 +86,21 @@ public static class SlotAttackSlotPatches
         for (int a = 0; a < codes.Count; a++)
         {
             // separated into their own methods so I can save on eye strain and brain fog
-            if (DirectSelfDamageCheck(codes, a, out int indexOffset))
+            if (ModifyDirectDamageCheck(codes, ref a))
             {
-                for (int b = a + indexOffset; b < codes.Count; b++)
+                for (int b = a; b < codes.Count; b++)
                 {
-                    // replace all calls to "get_Attack()" with getCustomField
-                    TryReplaceAttackAmount(codes, ref b);
-
-                    if (OpposingCardNullCheck(codes, b))
+                    if (CallTriggerOnDirectDamage(codes, ref b))
+                    {
+                        for (int c = b; c < codes.Count; c++)
+                        {
+                            if (OpposingCardNullCheck(codes, c))
+                                break;
+                        }
                         break;
+                    }
                 }
+                break;
             }
         }
 
@@ -147,14 +157,13 @@ public static class SlotAttackSlotPatches
                 }
             }
         }
+        
         return false;
     }
 
     // Modifies direct attack damage and stores the new damage in a custom field
-    private static bool DirectSelfDamageCheck(List<CodeInstruction> codes, int index, out int endDifference)
+    private static bool ModifyDirectDamageCheck(List<CodeInstruction> codes, ref int index)
     {
-        endDifference = 0;
-        
         if (codes[index].opcode == OpCodes.Callvirt && codes[index].operand.ToString() == name_CanAttackDirectly)
         {
             int startIndex = index + 2;
@@ -186,7 +195,7 @@ public static class SlotAttackSlotPatches
 
             int j = startIndex;
             
-            // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot.Card, this.OpposingSlot));
+            // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot, this.OpposingSlot));
             codes.Insert(j++, new(OpCodes.Ldarg_0));
             codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
             codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
@@ -201,19 +210,90 @@ public static class SlotAttackSlotPatches
             codes.Insert(j++, new(OpCodes.Box, typeof(int)));
             codes.Insert(j++, new(OpCodes.Call, method_SetCustomField));
 
-            endDifference = index - j;
+            index = j;
+
+            // replace the next 2 occurances of get_Attack() with the custom field call
+            for (int c = 0; c < 2; c++) 
+            {
+                for (; j < codes.Count; j++) 
+                {
+                    if (codes[j].opcode != OpCodes.Callvirt || codes[j].operand.ToString() != name_GetAttack) continue;
+
+                    codes[j++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
+                    codes.Insert(j++, new(OpCodes.Callvirt, method_GetCustomField));
+
+                    index = j;
+                    break;
+                }
+            }
+
             return true;
         }
         return false;
     }
 
-    // Look for the "get_Attack()" call and replace with getCustomField
-    private static bool TryReplaceAttackAmount(List<CodeInstruction> codes, ref int index) {
-        if (codes[index].opcode != OpCodes.Callvirt || codes[index].operand.ToString() != name_GetAttack) return false;
+    // Repalces the DealDamageDirectly trigger call with a call to TriggerOnDirectDamageTriggers
+    private static bool CallTriggerOnDirectDamage(List<CodeInstruction> codes, ref int index)
+    {
+        if (codes[index].opcode != OpCodes.Callvirt || codes[index].operand.ToString() != name_GetCard) return false;
+        int startIndex = ++index;
 
-        codes[index++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
-        codes.Insert(index++, new(OpCodes.Callvirt, method_GetCustomField));
+        object op_OpposingSlot = null;
+
+        // look backwards and retrieve opposingSlot
+        for (int i = startIndex - 1; i > 0; i--)
+        {
+            if (op_OpposingSlot == null && codes[i].operand?.ToString() == name_OpposingSlot)
+            {
+                op_OpposingSlot = codes[i].operand;
+                break;
+            }
+        }
+
+        // look backwards for ldarg0 and duplicate it
+        for (int i = startIndex - 1; i > 0; i--)
+        {
+            if (codes[i].opcode == OpCodes.Ldarg_0)
+            {
+                codes.Insert(i, new(OpCodes.Ldarg_0));
+
+                index++;
+                startIndex++;
+
+                break;
+            }
+        }
+
+        for (int i = startIndex; i < codes.Count; i++)
+        {
+            if (codes[i].opcode != OpCodes.Ldc_I4_7) continue;
+
+            // remove the existing trigger call
+            codes.RemoveRange(startIndex, i - startIndex - 2);
+
+            // insert the call to our new trigger
+            codes.Insert(index++, new(OpCodes.Ldarg_0));
+            codes.Insert(index++, new(OpCodes.Ldfld, op_OpposingSlot));
+            codes.Insert(index++, new(OpCodes.Callvirt, method_NewTriggers));
+
+            break;
+        }
 
         return true;
+    }
+
+    // Trigger both the vanilla trigger and the new trigger
+    private static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)
+    {
+        int damage = CustomFields.Get<int>(attacker, modifiedAttackCustomField);
+
+        // trigger the vanilla trigger
+        if (attacker.TriggerHandler.RespondsToTrigger(Trigger.DealDamageDirectly, new object[] { damage }))
+        {
+            yield return attacker.TriggerHandler.OnTrigger(Trigger.DealDamageDirectly, new object[] { damage });
+        }
+
+        // trigger the new modded trigger
+        yield return CustomTriggerFinder.TriggerAll<IOnCardDealtDamageDirectly>(false, x => x.RespondsToCardDealtDamageDirectly(attacker, opposingSlot, damage), x => x.OnCardDealtDamageDirectly(attacker, opposingSlot, damage));
     }
 }
