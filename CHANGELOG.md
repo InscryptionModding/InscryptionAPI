@@ -6,8 +6,10 @@
 ## 2.18.0
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
 - Fixed IModifyDamageTaken priority sorting being reversed
+- Fixed null errors in TakeDamage and custom trigger calls
 - Added extension methods for getting emission portraits, setting animated portrait
 - Added CustomFields helper for associating data with objects or classes
+- Added IModifyDirectDamage, IOnTurnEndInQueue custom triggers
 - Custom Tribes now store their name and GUID
 
 ## 2.17.0
