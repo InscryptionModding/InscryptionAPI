@@ -416,7 +416,8 @@ internal static class CustomTriggerPatches
     {
         yield return originalTrigger;
 
-        foreach (IOnTurnEndInQueue trigger in CustomTriggerFinder.FindTriggersInQueue<IOnTurnEndInQueue>()) {
+        foreach (IOnTurnEndInQueue trigger in CustomTriggerFinder.FindTriggersInQueue<IOnTurnEndInQueue>())
+        {
             if (trigger.RespondsToTurnEndInQueue(playerTurn))
                 yield return trigger.OnTurnEndInQueue(playerTurn);
         }

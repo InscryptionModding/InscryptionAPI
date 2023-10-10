@@ -717,7 +717,8 @@ public interface IModifyDirectDamage
 /// <summary>
 /// Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works on cards in the opponent's queue.
 /// </summary>
-public interface IOnTurnEndInQueue {
+public interface IOnTurnEndInQueue
+{
     /// <summary>
     /// Returns true if this should trigger when the turn ends, but only if this card is in the opponent's queue.
     /// </summary>
