@@ -165,20 +165,19 @@ public static class AbilityExtensions
     /// Sets the icon that will be displayed for this ability icon in Act 2.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
-    /// <param name="icon">A 17x17 texture containing the icon .</param>
+    /// <param name="icon">A 17x17 or 22x10 texture containing the icon; for regular and activated sigil icons respectively.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
     /// <returns>The same ability so a chain can continue.</returns>
     public static AbilityInfo SetPixelAbilityIcon(this AbilityInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon);
-        else
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon, filterMode.Value);
+        TextureHelper.SpriteType spriteType = icon.width == 22 ? TextureHelper.SpriteType.PixelActivatedAbilityIcon : TextureHelper.SpriteType.PixelAbilityIcon;
+
+        info.pixelIcon = TextureHelper.ConvertTexture(icon, spriteType, filterMode ?? FilterMode.Point);
         return info;
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the ability. Duplicate abilities will not be added.
+    /// Adds one or more metacategories to the ability. Duplicate categories will not be added.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
@@ -193,7 +192,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the stati icon. Duplicate abilities will not be added.
+    /// Adds one or more metacategories to the stati icon. Duplicate categories will not be added.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="categories">The metacategories to add.</param>

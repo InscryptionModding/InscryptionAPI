@@ -18,66 +18,71 @@ public static class TextureHelper
     public enum SpriteType : int
     {
         /// <summary>
-        /// A card's portrait art in Act 1 or Act 3
+        /// A card's portrait art in Act 1 or Act 3.
         /// </summary>
         CardPortrait = 0,
 
         /// <summary>
-        /// A card's portrait art in Act 2
+        /// A card's portrait art in Act 2.
         /// </summary>
         PixelPortrait = 1,
 
         /// <summary>
-        /// An ability icon (sigil) in Act 2 
+        /// An ability icon (sigil) in Act 2.
         /// </summary>
         PixelAbilityIcon = 2,
 
         /// <summary>
-        /// A special stat icon in Act 2
+        /// A special stat icon in Act 2.
         /// </summary>
         PixelStatIcon = 3,
 
         /// <summary>
-        /// A challenge skull displayed on the challenge UI during the setup of a Kaycee's Mod run
+        /// A challenge skull displayed on the challenge UI during the setup of a Kaycee's Mod run.
         /// </summary>
         ChallengeIcon = 4,
 
         /// <summary>
-        /// The texture that displays the card's cost in Act 1
+        /// The texture that displays the card's cost in Act 1.
         /// </summary>
         CostDecal = 5,
 
         /// <summary>
-        /// The large decal used to display multiple/hybrid card costs in Act 1
+        /// The large decal used to display multiple/hybrid card costs in Act 1.
         /// </summary>
         OversizedCostDecal = 6,
 
         /// <summary>
-        /// The decal used to display card costs in Act 2, on the top-left of the card
+        /// The decal used to display card costs in Act 2, on the top-left of the card.
         /// </summary>
         Act2CostDecalLeft = 7,
 
         /// <summary>
-        /// The decal used to display card costs in Act 2, on the top-right of the card
+        /// The decal used to display card costs in Act 2, on the top-right of the card.
         /// </summary>
         Act2CostDecalRight = 8,
 
         /// <summary>
-        /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run
+        /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run.
         /// </summary>
         StarterDeckIcon = 9,
 
         /// <summary>
-        /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run
+        /// The decal used by the API in Act 2, comprising the entire card's dimensions.
         /// </summary>
-        PixelDecal = 10
+        PixelDecal = 10,
+
+        /// <summary>
+        /// An activated ability icon (sigil) in Act 2.
+        /// </summary>
+        PixelActivatedAbilityIcon = 11
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
 
     private static Dictionary<Sprite, Sprite> emissionMap = new();
 
-    private static Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
+    private static readonly Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
         { SpriteType.CardPortrait, new Rect(0.0f, 0.0f, 114.0f, 94.0f) },
         { SpriteType.PixelPortrait, new Rect(0.0f, 0.0f, 41.0f, 28.0f) },
@@ -89,10 +94,11 @@ public static class TextureHelper
         { SpriteType.Act2CostDecalLeft, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) },
-        { SpriteType.PixelDecal, new Rect(0f, 0f, 42f, 56f) }
+        { SpriteType.PixelDecal, new Rect(0f, 0f, 42f, 56f) },
+        { SpriteType.PixelActivatedAbilityIcon, new Rect(0f, 0f, 22f, 10f) }
     };
 
-    private static Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
+    private static readonly Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
         { SpriteType.CardPortrait, DEFAULT_PIVOT },
         { SpriteType.PixelPortrait, DEFAULT_PIVOT },
@@ -104,7 +110,8 @@ public static class TextureHelper
         { SpriteType.Act2CostDecalLeft, new Vector2(0.88f, 0.8f) },
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
         { SpriteType.StarterDeckIcon, DEFAULT_PIVOT },
-        { SpriteType.PixelDecal, DEFAULT_PIVOT }
+        { SpriteType.PixelDecal, DEFAULT_PIVOT },
+        { SpriteType.PixelActivatedAbilityIcon, DEFAULT_PIVOT }
     };
 
     /// <summary>
@@ -117,11 +124,14 @@ public static class TextureHelper
         if (!Path.IsPathRooted(pathCardArt))
         {
             var files = Directory.GetFiles(Paths.PluginPath, pathCardArt, SearchOption.AllDirectories);
-            if (files.Length < 1) throw new FileNotFoundException($"Could not find relative artwork file!\nFile name: {pathCardArt}", pathCardArt);
+            if (files.Length < 1)
+                throw new FileNotFoundException($"Could not find relative artwork file!\nFile name: {pathCardArt}", pathCardArt);
+
             pathCardArt = files[0];
         }
 
-        if (!File.Exists(pathCardArt)) throw new FileNotFoundException($"Absolute path to artwork file does not exist!\nFile name: {pathCardArt}", pathCardArt);
+        if (!File.Exists(pathCardArt))
+            throw new FileNotFoundException($"Absolute path to artwork file does not exist!\nFile name: {pathCardArt}", pathCardArt);
 
         return File.ReadAllBytes(pathCardArt);
     }
@@ -134,7 +144,7 @@ public static class TextureHelper
     /// <returns>The image file on disk as a Texture2D object.</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        Texture2D texture = new(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = ReadArtworkFileAsBytes(pathCardArt);
         bool isLoaded = texture.LoadImage(imgBytes);
 
@@ -153,10 +163,9 @@ public static class TextureHelper
     /// <returns>The image file from the assembly as a Texture2D object.</returns>
     public static Texture2D GetImageAsTexture(string pathCardArt, Assembly target, FilterMode filterMode = FilterMode.Point)
     {
-        Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        Texture2D texture = new(2, 2, TextureFormat.RGBA32, false);
         byte[] imgBytes = GetResourceBytes(pathCardArt, target);
-        bool isLoaded = texture.LoadImage(imgBytes);
-
+        texture.LoadImage(imgBytes);
         texture.filterMode = filterMode;
         texture.name = Path.GetFileNameWithoutExtension(pathCardArt);
 
@@ -318,7 +327,7 @@ public static class TextureHelper
 
         using (Stream resourceStream = target.GetManifestResourceStream(resourceName))
         {
-            using (MemoryStream memStream = new MemoryStream())
+            using (MemoryStream memStream = new())
             {
                 resourceStream.CopyTo(memStream);
                 return memStream.ToArray();
