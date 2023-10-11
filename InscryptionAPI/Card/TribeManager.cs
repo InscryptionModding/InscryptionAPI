@@ -130,6 +130,8 @@ public static class TribeManager
         Texture2D cardbackTexture = choiceCardbackTexture ?? MakePlaceholderCardback(tribeIcon);
         TribeInfo info = new()
         {
+            guid = guid,
+            name = name,
             tribe = tribe,
             icon = tribeIcon?.ConvertTexture(),
             cardback = cardbackTexture,
@@ -222,6 +224,8 @@ public static class TribeManager
 
     public class TribeInfo
     {
+        public string guid;
+        public string name;
         public Tribe tribe;
         public Sprite icon;
         public bool tribeChoice;

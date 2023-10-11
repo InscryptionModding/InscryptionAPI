@@ -1277,6 +1277,11 @@ public static class CardExtensions
 
         return info;
     }
+    
+    public static Sprite GetEmissivePortrait(this CardInfo info)
+    {
+        return info.portraitTex.GetEmissionSprite();
+    }
 
     /// <summary>
     /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
@@ -1315,6 +1320,11 @@ public static class CardExtensions
         info.alternatePortrait.RegisterEmissionForSprite(portrait);
 
         return info;
+    }
+    
+    public static Sprite GetEmissiveAltPortrait(this CardInfo info)
+    {
+        return info.alternatePortrait.GetEmissionSprite();
     }
 
     #endregion
@@ -1358,6 +1368,11 @@ public static class CardExtensions
             info.pixelPortrait.name = info.name + "_pixelportrait";
 
         return info;
+    }
+    
+    public static Sprite GetPixelPortrait(this CardInfo info)
+    {
+        return info.pixelPortrait;
     }
 
     #endregion

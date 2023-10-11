@@ -236,6 +236,31 @@ public static class TextureHelper
         emissionMap[regularSprite] = emissionSprite;
     }
 
+    public static Sprite GetEmissionSprite(this Sprite sprite)
+    {
+        if (sprite == null)
+            return null;
+        
+        if (emissionMap.TryGetValue(sprite, out Sprite emission))
+            return emission;
+        
+        
+        string text = sprite.name + "_emission";
+        emission = ResourceBank.Get<Sprite>("Art/Cards/Portraits/" + text);
+        if (emission != null)
+        {
+            return emission;
+        }
+        
+        emission = ResourceBank.Get<Sprite>("Art/Cards/GrimoraPortraits/" + text);
+        if (emission != null)
+        {
+            return emission;
+        }
+
+        return null;
+    }
+
     /// <summary>
     /// Sets the emissive sprite for a given sprite. This is used when an Act 1 card receives an ability from a card merge.
     /// </summary>
