@@ -3278,6 +3278,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetAbilityStacks
   nameWithType: CardExtensions.GetAbilityStacks
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait(DiskCardGame.CardInfo)
+  name: GetEmissiveAltPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveAltPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetEmissiveAltPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait*
+  name: GetEmissiveAltPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveAltPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait
+  nameWithType: CardExtensions.GetEmissiveAltPortrait
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait(DiskCardGame.CardInfo)
+  name: GetEmissivePortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissivePortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetEmissivePortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetEmissivePortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait*
+  name: GetEmissivePortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissivePortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetEmissivePortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait
+  nameWithType: CardExtensions.GetEmissivePortrait
 - uid: InscryptionAPI.Card.CardExtensions.GetExtendedProperty(DiskCardGame.CardInfo,System.String)
   name: GetExtendedProperty(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetExtendedProperty_DiskCardGame_CardInfo_System_String_
@@ -3356,6 +3382,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetModTag
   nameWithType: CardExtensions.GetModTag
+- uid: InscryptionAPI.Card.CardExtensions.GetPixelPortrait(DiskCardGame.CardInfo)
+  name: GetPixelPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetPixelPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetPixelPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetPixelPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetPixelPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetPixelPortrait*
+  name: GetPixelPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetPixelPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetPixelPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetPixelPortrait
+  nameWithType: CardExtensions.GetPixelPortrait
 - uid: InscryptionAPI.Card.CardExtensions.GetPlayableCard(DiskCardGame.CardInfo)
   name: GetPlayableCard(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetPlayableCard_DiskCardGame_CardInfo_
@@ -5325,6 +5364,19 @@ references:
   commentId: F:InscryptionAPI.Card.CardManager.CardAltPortraits.SteelTrapPortrait
   fullName: InscryptionAPI.Card.CardManager.CardAltPortraits.SteelTrapPortrait
   nameWithType: CardManager.CardAltPortraits.SteelTrapPortrait
+- uid: InscryptionAPI.Card.CardManager.GetCardExtensionTable(DiskCardGame.CardInfo)
+  name: GetCardExtensionTable(CardInfo)
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_GetCardExtensionTable_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardManager.GetCardExtensionTable(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardManager.GetCardExtensionTable(DiskCardGame.CardInfo)
+  nameWithType: CardManager.GetCardExtensionTable(CardInfo)
+- uid: InscryptionAPI.Card.CardManager.GetCardExtensionTable*
+  name: GetCardExtensionTable
+  href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_GetCardExtensionTable_
+  commentId: Overload:InscryptionAPI.Card.CardManager.GetCardExtensionTable
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardManager.GetCardExtensionTable
+  nameWithType: CardManager.GetCardExtensionTable
 - uid: InscryptionAPI.Card.CardManager.GetExtendedClass*
   name: GetExtendedClass
   href: api/InscryptionAPI.Card.CardManager.html#InscryptionAPI_Card_CardManager_GetExtendedClass_
@@ -7112,12 +7164,24 @@ references:
   commentId: F:InscryptionAPI.Card.TribeManager.TribeInfo.cardback
   fullName: InscryptionAPI.Card.TribeManager.TribeInfo.cardback
   nameWithType: TribeManager.TribeInfo.cardback
+- uid: InscryptionAPI.Card.TribeManager.TribeInfo.guid
+  name: guid
+  href: api/InscryptionAPI.Card.TribeManager.TribeInfo.html#InscryptionAPI_Card_TribeManager_TribeInfo_guid
+  commentId: F:InscryptionAPI.Card.TribeManager.TribeInfo.guid
+  fullName: InscryptionAPI.Card.TribeManager.TribeInfo.guid
+  nameWithType: TribeManager.TribeInfo.guid
 - uid: InscryptionAPI.Card.TribeManager.TribeInfo.icon
   name: icon
   href: api/InscryptionAPI.Card.TribeManager.TribeInfo.html#InscryptionAPI_Card_TribeManager_TribeInfo_icon
   commentId: F:InscryptionAPI.Card.TribeManager.TribeInfo.icon
   fullName: InscryptionAPI.Card.TribeManager.TribeInfo.icon
   nameWithType: TribeManager.TribeInfo.icon
+- uid: InscryptionAPI.Card.TribeManager.TribeInfo.name
+  name: name
+  href: api/InscryptionAPI.Card.TribeManager.TribeInfo.html#InscryptionAPI_Card_TribeManager_TribeInfo_name
+  commentId: F:InscryptionAPI.Card.TribeManager.TribeInfo.name
+  fullName: InscryptionAPI.Card.TribeManager.TribeInfo.name
+  nameWithType: TribeManager.TribeInfo.name
 - uid: InscryptionAPI.Card.TribeManager.TribeInfo.tribe
   name: tribe
   href: api/InscryptionAPI.Card.TribeManager.TribeInfo.html#InscryptionAPI_Card_TribeManager_TribeInfo_tribe
@@ -9667,6 +9731,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.TextureHelper.DuplicateTexture
   nameWithType: TextureHelper.DuplicateTexture
+- uid: InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite(UnityEngine.Sprite)
+  name: GetEmissionSprite(Sprite)
+  href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetEmissionSprite_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite(UnityEngine.Sprite)
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite(UnityEngine.Sprite)
+  nameWithType: TextureHelper.GetEmissionSprite(Sprite)
+- uid: InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite*
+  name: GetEmissionSprite
+  href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetEmissionSprite_
+  commentId: Overload:InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.TextureHelper.GetEmissionSprite
+  nameWithType: TextureHelper.GetEmissionSprite
 - uid: InscryptionAPI.Helpers.TextureHelper.GetImageAsSprite(System.String,InscryptionAPI.Helpers.TextureHelper.SpriteType,UnityEngine.FilterMode)
   name: GetImageAsSprite(String, TextureHelper.SpriteType, FilterMode)
   href: api/InscryptionAPI.Helpers.TextureHelper.html#InscryptionAPI_Helpers_TextureHelper_GetImageAsSprite_System_String_InscryptionAPI_Helpers_TextureHelper_SpriteType_UnityEngine_FilterMode_

@@ -111,7 +111,9 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
       <section><p>Data collection trigger that collects data about the usability of an item.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IModifyDamageTaken.html">IModifyDamageTaken</a></h4>
-      <section></section>
+      <section><p>Data collection trigger that modifies the damage taken by any card.
+Should be used instead of ICardTakenDamageModifier.</p>
+</section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnAddedToHand.html">IOnAddedToHand</a></h4>
       <section><p>Trigger that is triggered when the card is drawn, but after it has been added to the list of cards in hand.</p>
 </section>
@@ -188,7 +190,8 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
       <section><p>Used when a card wants to provide a passive buff to other cards on the board</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IPreTakeDamage.html">IPreTakeDamage</a></h4>
-      <section></section>
+      <section><p>Trigger that is triggered right before a card takes damage.</p>
+</section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.ISetupAttackSequence.html">ISetupAttackSequence</a></h4>
       <section><p>Data collection trigger that collects data related to attacked slots.</p>
 </section>
