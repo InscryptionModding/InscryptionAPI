@@ -678,19 +678,61 @@ public interface IGetAttackingSlots
     public int TriggerPriority(bool playerIsAttacker, List<CardSlot> originalSlots);
 }
 
+/// <summary>
+/// Data collection trigger that modifies the damage taken by any card.
+/// Should be used instead of ICardTakenDamageModifier.
+/// </summary>
 public interface IModifyDamageTaken
 {
+    /// <summary>
+    /// Returns true if this should modify the amount of damage taken by a card.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>True if this should modify the amount of damage taken by a card.</returns>
     public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Returns the new amount of damage taken by a card.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>The new amount of damage taken by a card.</returns>
     public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Trigger priority. Higher numbers trigger first.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The amount of damage to be delt. NOTE: THIS VALUE IS *NOT* UP TO DATE, GETTING PRIORITIES HAPPENS *BEFORE* THE MODIFICATION ITSELF.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <returns>The trigger priority int.</returns>
     public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 
+/// <summary>
+/// Trigger that is triggered right before a card takes damage.
+/// </summary>
 public interface IPreTakeDamage
 {
+    /// <summary>
+    /// Returns true if this should trigger before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns>True if this should trigger before a card takes damage.</returns>
     public bool RespondsToPreTakeDamage(PlayableCard source, int damage);
 
+    /// <summary>
+    /// Trigger whatever events you want to run before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns></returns>
     public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }
 

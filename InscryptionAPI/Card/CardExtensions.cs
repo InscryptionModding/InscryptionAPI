@@ -1,12 +1,8 @@
 using DiskCardGame;
-using GBC;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
-using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
-using Microsoft.Win32.SafeHandles;
 
 namespace InscryptionAPI.Card;
 
@@ -1222,6 +1218,18 @@ public static class CardExtensions
 
     #endregion
 
+    /// <summary>
+    /// Sets the animated portrait for the given CardInfo.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The to check for.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetAnimatedPortrait(this CardInfo info, GameObject portrait)
+    {
+        info.animatedPortrait = portrait;
+        return info;
+    }
+
     #region Emissive
 
     /// <summary>
@@ -1269,6 +1277,11 @@ public static class CardExtensions
 
         return info;
     }
+    
+    public static Sprite GetEmissivePortrait(this CardInfo info)
+    {
+        return info.portraitTex.GetEmissionSprite();
+    }
 
     /// <summary>
     /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
@@ -1307,6 +1320,11 @@ public static class CardExtensions
         info.alternatePortrait.RegisterEmissionForSprite(portrait);
 
         return info;
+    }
+    
+    public static Sprite GetEmissiveAltPortrait(this CardInfo info)
+    {
+        return info.alternatePortrait.GetEmissionSprite();
     }
 
     #endregion
@@ -1350,6 +1368,11 @@ public static class CardExtensions
             info.pixelPortrait.name = info.name + "_pixelportrait";
 
         return info;
+    }
+    
+    public static Sprite GetPixelPortrait(this CardInfo info)
+    {
+        return info.pixelPortrait;
     }
 
     #endregion
@@ -1978,11 +2001,15 @@ public static class CardExtensions
     /// <returns>The number of shields the card has.</returns>
     public static int GetTotalShields(this PlayableCard card)
     {
+        // covers for a situation I discovered where you use a SpecialBattleSequencer's triggers to advance a boss fight
+        // somehow you can end up with a null playablecard which breaks this bit here
+        if (card == null)
+            return 0;
 
         int totalShields = 0;
         List<Ability> distinct = new(); // keep track of non-stacking shield abilities
 
-        var components = card.GetComponents<DamageShieldBehaviour>();
+        DamageShieldBehaviour[] components = card.GetComponents<DamageShieldBehaviour>();
         foreach (var component in components)
         {
             // stackable shields all get tallied up
@@ -1996,7 +2023,7 @@ public static class CardExtensions
             }
         }
 
-        var components2 = card.GetComponents<ActivatedDamageShieldBehaviour>();
+        ActivatedDamageShieldBehaviour[] components2 = card.GetComponents<ActivatedDamageShieldBehaviour>();
         foreach (var component in components2)
         {
             // stackable shields all get tallied up

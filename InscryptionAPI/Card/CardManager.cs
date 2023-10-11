@@ -268,7 +268,7 @@ public static class CardManager
         }
     }
 
-    internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
+    public static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
     internal static CardAltPortraits GetAltPortraits(this CardInfo card) => CardAlternatePortraits.GetOrCreateValue(card);
     
     public static Sprite PixelAlternatePortrait(this CardInfo card)

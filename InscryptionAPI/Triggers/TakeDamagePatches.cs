@@ -21,7 +21,7 @@ public static class TakeDamagePatches
         int originalDamage = damage;
 
         var modifyTakeDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDamageTaken>(true).ToList();
-        modifyTakeDamage.Sort((a, b) => a.TriggerPriority(__instance, originalDamage, attacker) - b.TriggerPriority(__instance, originalDamage, attacker));
+        modifyTakeDamage.Sort((a, b) => b.TriggerPriority(__instance, originalDamage, attacker) - a.TriggerPriority(__instance, originalDamage, attacker));
         foreach (var modify in modifyTakeDamage)
         {
             if (modify.RespondsToModifyDamageTaken(__instance, damage, attacker, originalDamage))

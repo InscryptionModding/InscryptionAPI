@@ -68,19 +68,19 @@ public static class DoCombatPhasePatches
     {
         List<CardSlot> originalSlots = BoardManager.Instance.GetSlotsCopy(playerIsAttacker);
         List<CardSlot> currentSlots = new(originalSlots);
+        
         var triggers = CustomTriggerFinder.FindTriggersOnBoard<IGetAttackingSlots>(false).ToList();
         triggers.Sort((IGetAttackingSlots a, IGetAttackingSlots b) => b.TriggerPriority(playerIsAttacker, originalSlots) - a.TriggerPriority(playerIsAttacker, originalSlots));
-        foreach (var t in triggers)
+        
+        foreach (IGetAttackingSlots t in triggers)
         {
-            if (t.RespondsToGetAttackingSlots(playerIsAttacker, originalSlots, currentSlots))
+            if ((t as TriggerReceiver) != null && t.RespondsToGetAttackingSlots(playerIsAttacker, originalSlots, currentSlots))
             {
                 List<CardSlot> addedSlots = t.GetAttackingSlots(playerIsAttacker, originalSlots, currentSlots);
-
                 if (addedSlots != null && addedSlots.Count > 0)
                     currentSlots.AddRange(addedSlots);
             }
         }
-
         return currentSlots;
     }
 
