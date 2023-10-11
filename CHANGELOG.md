@@ -3,6 +3,15 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.0
+- Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
+- Fixed IModifyDamageTaken priority sorting being reversed
+- Fixed null errors in TakeDamage and custom trigger calls
+- Added extension methods for getting emission portraits, setting animated portrait
+- Added CustomFields helper for associating data with objects or classes
+- Added IModifyDirectDamage, IOnTurnEndInQueue custom triggers
+- Custom Tribes now store their name and GUID
+
 ## 2.17.0
 - Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
 - Added ability interfaces IModifyDamageTaken, IPreTakeDamage, which trigger at the start of PlayableCard.TakeDamage
