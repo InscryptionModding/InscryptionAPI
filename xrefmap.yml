@@ -4335,6 +4335,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetAltPortrait
   nameWithType: CardExtensions.SetAltPortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait(DiskCardGame.CardInfo,UnityEngine.GameObject)
+  name: SetAnimatedPortrait(CardInfo, GameObject)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetAnimatedPortrait_DiskCardGame_CardInfo_UnityEngine_GameObject_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait(DiskCardGame.CardInfo,UnityEngine.GameObject)
+  fullName: InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait(DiskCardGame.CardInfo, UnityEngine.GameObject)
+  nameWithType: CardExtensions.SetAnimatedPortrait(CardInfo, GameObject)
+- uid: InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait*
+  name: SetAnimatedPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetAnimatedPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetAnimatedPortrait
+  nameWithType: CardExtensions.SetAnimatedPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetBaseAttackAndHealth(DiskCardGame.CardInfo,System.Nullable{System.Int32},System.Nullable{System.Int32})
   name: SetBaseAttackAndHealth(CardInfo, Nullable<Int32>, Nullable<Int32>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetBaseAttackAndHealth_DiskCardGame_CardInfo_System_Nullable_System_Int32__System_Nullable_System_Int32__
@@ -9791,6 +9804,12 @@ references:
   commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
   fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelAbilityIcon
   nameWithType: TextureHelper.SpriteType.PixelAbilityIcon
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelActivatedAbilityIcon
+  name: PixelActivatedAbilityIcon
+  href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelActivatedAbilityIcon
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelActivatedAbilityIcon
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelActivatedAbilityIcon
+  nameWithType: TextureHelper.SpriteType.PixelActivatedAbilityIcon
 - uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelDecal
   name: PixelDecal
   href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelDecal
