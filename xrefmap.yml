@@ -8849,6 +8849,123 @@ references:
   fullName.vb: InscryptionAPI.Helpers.AssetBundleHelper.TryGet(Of T)(UnityEngine.AssetBundle, System.String, ByRef T)
   nameWithType: AssetBundleHelper.TryGet<T>(AssetBundle, String, out T)
   nameWithType.vb: AssetBundleHelper.TryGet(Of T)(AssetBundle, String, ByRef T)
+- uid: InscryptionAPI.Helpers.CustomFields
+  name: CustomFields
+  href: api/InscryptionAPI.Helpers.CustomFields.html
+  commentId: T:InscryptionAPI.Helpers.CustomFields
+  fullName: InscryptionAPI.Helpers.CustomFields
+  nameWithType: CustomFields
+- uid: InscryptionAPI.Helpers.CustomFields.Get*
+  name: Get
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_Get_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.Get
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.Get
+  nameWithType: CustomFields.Get
+- uid: InscryptionAPI.Helpers.CustomFields.Get``1(System.Object,System.String)
+  name: Get<T>(Object, String)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_Get__1_System_Object_System_String_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.Get``1(System.Object,System.String)
+  name.vb: Get(Of T)(Object, String)
+  fullName: InscryptionAPI.Helpers.CustomFields.Get<T>(System.Object, System.String)
+  fullName.vb: InscryptionAPI.Helpers.CustomFields.Get(Of T)(System.Object, System.String)
+  nameWithType: CustomFields.Get<T>(Object, String)
+  nameWithType.vb: CustomFields.Get(Of T)(Object, String)
+- uid: InscryptionAPI.Helpers.CustomFields.GetStatic*
+  name: GetStatic
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_GetStatic_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.GetStatic
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.GetStatic
+  nameWithType: CustomFields.GetStatic
+- uid: InscryptionAPI.Helpers.CustomFields.GetStatic``1(System.String,Type)
+  name: GetStatic<T>(String, Type)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_GetStatic__1_System_String_Type_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.GetStatic``1(System.String,Type)
+  name.vb: GetStatic(Of T)(String, Type)
+  fullName: InscryptionAPI.Helpers.CustomFields.GetStatic<T>(System.String, Type)
+  fullName.vb: InscryptionAPI.Helpers.CustomFields.GetStatic(Of T)(System.String, Type)
+  nameWithType: CustomFields.GetStatic<T>(String, Type)
+  nameWithType.vb: CustomFields.GetStatic(Of T)(String, Type)
+- uid: InscryptionAPI.Helpers.CustomFields.GetStatic``2(System.String)
+  name: GetStatic<T, C>(String)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_GetStatic__2_System_String_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.GetStatic``2(System.String)
+  name.vb: GetStatic(Of T, C)(String)
+  fullName: InscryptionAPI.Helpers.CustomFields.GetStatic<T, C>(System.String)
+  fullName.vb: InscryptionAPI.Helpers.CustomFields.GetStatic(Of T, C)(System.String)
+  nameWithType: CustomFields.GetStatic<T, C>(String)
+  nameWithType.vb: CustomFields.GetStatic(Of T, C)(String)
+- uid: InscryptionAPI.Helpers.CustomFields.HasField(System.Object,System.String)
+  name: HasField(Object, String)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_HasField_System_Object_System_String_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.HasField(System.Object,System.String)
+  fullName: InscryptionAPI.Helpers.CustomFields.HasField(System.Object, System.String)
+  nameWithType: CustomFields.HasField(Object, String)
+- uid: InscryptionAPI.Helpers.CustomFields.HasField*
+  name: HasField
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_HasField_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.HasField
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.HasField
+  nameWithType: CustomFields.HasField
+- uid: InscryptionAPI.Helpers.CustomFields.HasStaticField(System.String,Type)
+  name: HasStaticField(String, Type)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_HasStaticField_System_String_Type_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.HasStaticField(System.String,Type)
+  fullName: InscryptionAPI.Helpers.CustomFields.HasStaticField(System.String, Type)
+  nameWithType: CustomFields.HasStaticField(String, Type)
+- uid: InscryptionAPI.Helpers.CustomFields.HasStaticField*
+  name: HasStaticField
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_HasStaticField_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.HasStaticField
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.HasStaticField
+  nameWithType: CustomFields.HasStaticField
+- uid: InscryptionAPI.Helpers.CustomFields.HasStaticField``1(System.String)
+  name: HasStaticField<C>(String)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_HasStaticField__1_System_String_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.HasStaticField``1(System.String)
+  name.vb: HasStaticField(Of C)(String)
+  fullName: InscryptionAPI.Helpers.CustomFields.HasStaticField<C>(System.String)
+  fullName.vb: InscryptionAPI.Helpers.CustomFields.HasStaticField(Of C)(System.String)
+  nameWithType: CustomFields.HasStaticField<C>(String)
+  nameWithType.vb: CustomFields.HasStaticField(Of C)(String)
+- uid: InscryptionAPI.Helpers.CustomFields.Set(System.Object,System.String,System.Object)
+  name: Set(Object, String, Object)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_Set_System_Object_System_String_System_Object_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.Set(System.Object,System.String,System.Object)
+  fullName: InscryptionAPI.Helpers.CustomFields.Set(System.Object, System.String, System.Object)
+  nameWithType: CustomFields.Set(Object, String, Object)
+- uid: InscryptionAPI.Helpers.CustomFields.Set*
+  name: Set
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_Set_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.Set
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.Set
+  nameWithType: CustomFields.Set
+- uid: InscryptionAPI.Helpers.CustomFields.SetStatic(System.String,System.Object,Type)
+  name: SetStatic(String, Object, Type)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_SetStatic_System_String_System_Object_Type_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.SetStatic(System.String,System.Object,Type)
+  fullName: InscryptionAPI.Helpers.CustomFields.SetStatic(System.String, System.Object, Type)
+  nameWithType: CustomFields.SetStatic(String, Object, Type)
+- uid: InscryptionAPI.Helpers.CustomFields.SetStatic*
+  name: SetStatic
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_SetStatic_
+  commentId: Overload:InscryptionAPI.Helpers.CustomFields.SetStatic
+  isSpec: "True"
+  fullName: InscryptionAPI.Helpers.CustomFields.SetStatic
+  nameWithType: CustomFields.SetStatic
+- uid: InscryptionAPI.Helpers.CustomFields.SetStatic``1(System.String,System.Object)
+  name: SetStatic<C>(String, Object)
+  href: api/InscryptionAPI.Helpers.CustomFields.html#InscryptionAPI_Helpers_CustomFields_SetStatic__1_System_String_System_Object_
+  commentId: M:InscryptionAPI.Helpers.CustomFields.SetStatic``1(System.String,System.Object)
+  name.vb: SetStatic(Of C)(String, Object)
+  fullName: InscryptionAPI.Helpers.CustomFields.SetStatic<C>(System.String, System.Object)
+  fullName.vb: InscryptionAPI.Helpers.CustomFields.SetStatic(Of C)(System.String, System.Object)
+  nameWithType: CustomFields.SetStatic<C>(String, Object)
+  nameWithType.vb: CustomFields.SetStatic(Of C)(String, Object)
 - uid: InscryptionAPI.Helpers.CustomLine
   name: CustomLine
   href: api/InscryptionAPI.Helpers.CustomLine.html
@@ -15346,6 +15463,22 @@ references:
   fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHandExcluding(Of T)(DiskCardGame.PlayableCard)
   nameWithType: CustomTriggerFinder.FindTriggersInHandExcluding<T>(PlayableCard)
   nameWithType.vb: CustomTriggerFinder.FindTriggersInHandExcluding(Of T)(PlayableCard)
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue*
+  name: FindTriggersInQueue
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInQueue_
+  commentId: Overload:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue
+  nameWithType: CustomTriggerFinder.FindTriggersInQueue
+- uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue``1
+  name: FindTriggersInQueue<T>()
+  href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInQueue__1
+  commentId: M:InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue``1
+  name.vb: FindTriggersInQueue(Of T)()
+  fullName: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue<T>()
+  fullName.vb: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue(Of T)()
+  nameWithType: CustomTriggerFinder.FindTriggersInQueue<T>()
+  nameWithType.vb: CustomTriggerFinder.FindTriggersInQueue(Of T)()
 - uid: InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard*
   name: FindTriggersOnBoard
   href: api/InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard_
@@ -15712,6 +15845,51 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IModifyDamageTaken.TriggerPriority
   nameWithType: IModifyDamageTaken.TriggerPriority
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage
+  name: IModifyDirectDamage
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html
+  commentId: T:InscryptionAPI.Triggers.IModifyDirectDamage
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage
+  nameWithType: IModifyDirectDamage
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  name: OnModifyDirectDamage(CardSlot, Int32, PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_OnModifyDirectDamage_DiskCardGame_CardSlot_System_Int32_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage(DiskCardGame.CardSlot, System.Int32, DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IModifyDirectDamage.OnModifyDirectDamage(CardSlot, Int32, PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage*
+  name: OnModifyDirectDamage
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_OnModifyDirectDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.OnModifyDirectDamage
+  nameWithType: IModifyDirectDamage.OnModifyDirectDamage
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  name: RespondsToModifyDirectDamage(CardSlot, Int32, PlayableCard, Int32)
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_RespondsToModifyDirectDamage_DiskCardGame_CardSlot_System_Int32_DiskCardGame_PlayableCard_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard,System.Int32)
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage(DiskCardGame.CardSlot, System.Int32, DiskCardGame.PlayableCard, System.Int32)
+  nameWithType: IModifyDirectDamage.RespondsToModifyDirectDamage(CardSlot, Int32, PlayableCard, Int32)
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage*
+  name: RespondsToModifyDirectDamage
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_RespondsToModifyDirectDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.RespondsToModifyDirectDamage
+  nameWithType: IModifyDirectDamage.RespondsToModifyDirectDamage
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard)
+  name: TriggerPriority(CardSlot, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_TriggerPriority_DiskCardGame_CardSlot_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority(DiskCardGame.CardSlot,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority(DiskCardGame.CardSlot, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IModifyDirectDamage.TriggerPriority(CardSlot, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority*
+  name: TriggerPriority
+  href: api/InscryptionAPI.Triggers.IModifyDirectDamage.html#InscryptionAPI_Triggers_IModifyDirectDamage_TriggerPriority_
+  commentId: Overload:InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IModifyDirectDamage.TriggerPriority
+  nameWithType: IModifyDirectDamage.TriggerPriority
 - uid: InscryptionAPI.Triggers.IOnAddedToHand
   name: IOnAddedToHand
   href: api/InscryptionAPI.Triggers.IOnAddedToHand.html
@@ -15840,6 +16018,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve
   nameWithType: IOnCardAssignedToSlotNoResolve.RespondsToCardAssignedToSlotNoResolve
+- uid: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly
+  name: IOnCardDealtDamageDirectly
+  href: api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html
+  commentId: T:InscryptionAPI.Triggers.IOnCardDealtDamageDirectly
+  fullName: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly
+  nameWithType: IOnCardDealtDamageDirectly
+- uid: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Int32)
+  name: OnCardDealtDamageDirectly(PlayableCard, CardSlot, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html#InscryptionAPI_Triggers_IOnCardDealtDamageDirectly_OnCardDealtDamageDirectly_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Int32)
+  nameWithType: IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly(PlayableCard, CardSlot, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly*
+  name: OnCardDealtDamageDirectly
+  href: api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html#InscryptionAPI_Triggers_IOnCardDealtDamageDirectly_OnCardDealtDamageDirectly_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly
+  nameWithType: IOnCardDealtDamageDirectly.OnCardDealtDamageDirectly
+- uid: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Int32)
+  name: RespondsToCardDealtDamageDirectly(PlayableCard, CardSlot, Int32)
+  href: api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html#InscryptionAPI_Triggers_IOnCardDealtDamageDirectly_RespondsToCardDealtDamageDirectly_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_System_Int32_
+  commentId: M:InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly(DiskCardGame.PlayableCard,DiskCardGame.CardSlot,System.Int32)
+  fullName: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly(DiskCardGame.PlayableCard, DiskCardGame.CardSlot, System.Int32)
+  nameWithType: IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly(PlayableCard, CardSlot, Int32)
+- uid: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly*
+  name: RespondsToCardDealtDamageDirectly
+  href: api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html#InscryptionAPI_Triggers_IOnCardDealtDamageDirectly_RespondsToCardDealtDamageDirectly_
+  commentId: Overload:InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly
+  nameWithType: IOnCardDealtDamageDirectly.RespondsToCardDealtDamageDirectly
 - uid: InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs
   name: IOnCardPassiveAttackBuffs
   href: api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html
@@ -16419,6 +16629,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IOnTurnEndInHand.RespondsToTurnEndInHand
   nameWithType: IOnTurnEndInHand.RespondsToTurnEndInHand
+- uid: InscryptionAPI.Triggers.IOnTurnEndInQueue
+  name: IOnTurnEndInQueue
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html
+  commentId: T:InscryptionAPI.Triggers.IOnTurnEndInQueue
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInQueue
+  nameWithType: IOnTurnEndInQueue
+- uid: InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue(System.Boolean)
+  name: OnTurnEndInQueue(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html#InscryptionAPI_Triggers_IOnTurnEndInQueue_OnTurnEndInQueue_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue(System.Boolean)
+  nameWithType: IOnTurnEndInQueue.OnTurnEndInQueue(Boolean)
+- uid: InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue*
+  name: OnTurnEndInQueue
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html#InscryptionAPI_Triggers_IOnTurnEndInQueue_OnTurnEndInQueue_
+  commentId: Overload:InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInQueue.OnTurnEndInQueue
+  nameWithType: IOnTurnEndInQueue.OnTurnEndInQueue
+- uid: InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue(System.Boolean)
+  name: RespondsToTurnEndInQueue(Boolean)
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html#InscryptionAPI_Triggers_IOnTurnEndInQueue_RespondsToTurnEndInQueue_System_Boolean_
+  commentId: M:InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue(System.Boolean)
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue(System.Boolean)
+  nameWithType: IOnTurnEndInQueue.RespondsToTurnEndInQueue(Boolean)
+- uid: InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue*
+  name: RespondsToTurnEndInQueue
+  href: api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html#InscryptionAPI_Triggers_IOnTurnEndInQueue_RespondsToTurnEndInQueue_
+  commentId: Overload:InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IOnTurnEndInQueue.RespondsToTurnEndInQueue
+  nameWithType: IOnTurnEndInQueue.RespondsToTurnEndInQueue
 - uid: InscryptionAPI.Triggers.IOnUpkeepInHand
   name: IOnUpkeepInHand
   href: api/InscryptionAPI.Triggers.IOnUpkeepInHand.html

@@ -114,6 +114,9 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
       <section><p>Data collection trigger that modifies the damage taken by any card.
 Should be used instead of ICardTakenDamageModifier.</p>
 </section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IModifyDirectDamage.html">IModifyDirectDamage</a></h4>
+      <section><p>Data collection trigger that modifies the damage taken when directly attacked.</p>
+</section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnAddedToHand.html">IOnAddedToHand</a></h4>
       <section><p>Trigger that is triggered when the card is drawn, but after it has been added to the list of cards in hand.</p>
 </section>
@@ -125,6 +128,10 @@ Should be used instead of ICardTakenDamageModifier.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html">IOnCardAssignedToSlotNoResolve</a></h4>
       <section><p>Trigger that is triggered after any card is assigned to a slot, but only if it was assigned to a slot before.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html">IOnCardDealtDamageDirectly</a></h4>
+      <section><p>Trigger that is triggered when a card deals direct damage.
+This is a replacement for the vanilla DealDamageDirectly trigger, which unlike the base-game trigger, triggers for all cards on the board and supplies more information.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html">IOnCardPassiveAttackBuffs</a></h4>
       <section><p>Data collection trigger that modifies the passive attack buffs of any card.</p>
@@ -179,6 +186,9 @@ Should be used instead of ICardTakenDamageModifier.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnTurnEndInHand.html">IOnTurnEndInHand</a></h4>
       <section><p>Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnTurnEndInQueue.html">IOnTurnEndInQueue</a></h4>
+      <section><p>Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works on cards in the opponent&apos;s queue.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IOnUpkeepInHand.html">IOnUpkeepInHand</a></h4>
       <section><p>Trigger that is triggered each turn, but unlike normal OnUpkeep this one only works in hand.</p>
