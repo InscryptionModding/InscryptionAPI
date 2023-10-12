@@ -1,10 +1,10 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionCommunityPatch.Card;
 using Pixelplacement;
-using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,8 +47,8 @@ public static class Act3BonesDisplayer
 
     private static GameObject BonesTVScreen
     {
-        get 
-        { 
+        get
+        {
             GameObject tvScreen;
             if (_boneTvScreen.TryGetValue(ResourceDrone.Instance, out tvScreen))
                 return tvScreen;
@@ -59,8 +59,8 @@ public static class Act3BonesDisplayer
 
     private static SpriteRenderer BonesCountRenderer
     {
-        get 
-        { 
+        get
+        {
             SpriteRenderer tvScreen;
             if (_boneCountRenderer.TryGetValue(ResourceDrone.Instance, out tvScreen))
                 return tvScreen;
@@ -111,7 +111,7 @@ public static class Act3BonesDisplayer
         }
 
         return retval;
-        
+
     }
 
     private static void DisplayBones(int bones)
@@ -122,7 +122,7 @@ public static class Act3BonesDisplayer
 
     private static void GlitchOutBolt(GameObject bolt)
     {
-        AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, bolt.transform.position, 1f, 0f, new (AudioParams.Pitch.Variation.Medium), null, null, null, false).spatialBlend = 0.25f;   
+        AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, bolt.transform.position, 1f, 0f, new(AudioParams.Pitch.Variation.Medium), null, null, null, false).spatialBlend = 0.25f;
 
         GlitchOutAssetEffect.TryLoad3DMaterial();
         foreach (Renderer renderer in bolt.GetComponentsInChildren<Renderer>())
@@ -132,7 +132,7 @@ public static class Act3BonesDisplayer
         }
 
         Tween.Shake(bolt.transform, bolt.transform.localPosition, Vector3.one * 0.2f, 0.1f, 0f, Tween.LoopType.Loop, null, null, false);
-        CustomCoroutine.WaitThenExecute(0.2f, () => { if (bolt != null) GameObject.Destroy(bolt.gameObject); } );
+        CustomCoroutine.WaitThenExecute(0.2f, () => { if (bolt != null) GameObject.Destroy(bolt.gameObject); });
     }
 
     [HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ShowAddBones))]
@@ -157,7 +157,7 @@ public static class Act3BonesDisplayer
                 DisplayBones(i);
 
                 if (slot == null)
-                    AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, BonesTVScreen.transform.position, 1f, 0f, new AudioParams.Pitch(0.95f + (float)i * 0.01f), null, null, null, false).spatialBlend = 0.25f;   
+                    AudioController.Instance.PlaySound3D("factory_chest_open", MixerGroup.TableObjectsSFX, BonesTVScreen.transform.position, 1f, 0f, new AudioParams.Pitch(0.95f + (float)i * 0.01f), null, null, null, false).spatialBlend = 0.25f;
                 yield return new WaitForSeconds(0.05f);
             }
             DisplayBones(ResourcesManager.Instance.PlayerBones);
@@ -208,22 +208,22 @@ public static class Act3BonesDisplayer
             BonesTVScreen.transform.Find("Anim/CableStart_2").gameObject.SetActive(false);
             BonesTVScreen.transform.Find("Anim/CableStart_3").gameObject.SetActive(false);
 
-            BonesTVScreen.transform.localScale = new (0.3f, 0.2f, 0.2f);
-            
-            BonesTVScreen.transform.localPosition = new (0.6f, 0.2f, -1.8f); // below gems module
+            BonesTVScreen.transform.localScale = new(0.3f, 0.2f, 0.2f);
+
+            BonesTVScreen.transform.localPosition = new(0.6f, 0.2f, -1.8f); // below gems module
             //BonesTVScreen.transform.localPosition = new (-1.1717f, 0.22f, -0.85f); // Right side of thingo
-            BonesTVScreen.transform.localEulerAngles = new (270f, 180f, 0f);
+            BonesTVScreen.transform.localEulerAngles = new(270f, 180f, 0f);
 
             // Make the TV frame and arm glow juuuuust a little bit to be more visible
             GameObject frame = BonesTVScreen.transform.Find("Anim/BasicScreen/Frame").gameObject;
             Renderer frameRenderer = frame.GetComponent<Renderer>();
             frameRenderer.material.EnableKeyword("_EMISSION");
-            frameRenderer.material.SetColor("_EmissionColor", new (0f, 0.085f, 0.085f, 1.0f));
+            frameRenderer.material.SetColor("_EmissionColor", new(0f, 0.085f, 0.085f, 1.0f));
 
             GameObject pole = BonesTVScreen.transform.Find("Anim/Pole").gameObject;
             Renderer poleRenderer = pole.GetComponent<Renderer>();
             poleRenderer.material.EnableKeyword("_EMISSION");
-            poleRenderer.material.SetColor("_EmissionColor", new (0f, 0.1f, 0.1f, 1.0f));
+            poleRenderer.material.SetColor("_EmissionColor", new(0f, 0.1f, 0.1f, 1.0f));
             poleRenderer.material.SetTexture("_EmissionMap", Texture2D.whiteTexture);
 
             BonesTVScreen.SetActive(true);
@@ -256,6 +256,9 @@ public static class Act3BonesDisplayer
             OLDTVTube tvTube = BonesTVScreen.GetComponentInChildren<OLDTVTube>();
             tvTube.radialDistortion = 0.6f;
             tvTube.reflexMagnetude = 0.2f;
+
+            // Move the behind-the-scenes render camera out of the way of P03's Face:
+            BonesTVScreen.transform.Find("RenderCamera").transform.position = new(0f, -30f, -30f);
 
             DisplayBones(0);
 
