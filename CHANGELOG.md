@@ -3,6 +3,12 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.1
+- Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
+- Custom regions now store their mod GUID
+- Fixed BoxCollider null reference during Act 3 Build-A-Card-Sequencer
+- Fixed Act 3 bone displayer screen changing to static whenever P03 changes their face
+
 ## 2.18.0
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
 - Fixed IModifyDamageTaken priority sorting being reversed
