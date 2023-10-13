@@ -40,7 +40,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.AscensionChallengePaginator.html",
-          "hash": "z5HeMpVvPGPp6EEuCYqBRMm4BIJgR429mOv3vU/R7BQ="
+          "hash": "F9YQM60nn3BWVAYZR26EvIgfF+Ms78jByWjwhbIs3DE="
         }
       },
       "is_incremental": false,
@@ -64,7 +64,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.AscensionRunSetupScreenBase.html",
-          "hash": "jQgTm5aH/t0bBiUhrXeJBh8gBnlAtuVNqGgrubT55hU="
+          "hash": "emkhqeSRCZUHJd6Lr09QvatoIjLw+3Cl+UsIarbSQQg="
         }
       },
       "is_incremental": false,
@@ -112,7 +112,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.ChallengeBehaviour.html",
-          "hash": "zaBRmJQizY8fuN12mwKSdJPvO+HGCRlvvpjaqgvWrXY="
+          "hash": "pPeVFs8Nt3hPXTYBz1yj9fmKP1BWeoajeuYPgXh/9nk="
         }
       },
       "is_incremental": false,
@@ -136,7 +136,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.ChallengeDisplayerPlus.html",
-          "hash": "Qly94Jay5+FtfAC6urqqccO+5ulAWkVOflW9lZGUWGE="
+          "hash": "BIk/iUhRD+v1zU21aGn7NzlEw7NxUsq9X2NztmjUqWA="
         }
       },
       "is_incremental": false,
@@ -148,7 +148,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html",
-          "hash": "wth5QRe3e72Smd/6jMwJxlbo+0Vqil+y0lkdNnCbyBk="
+          "hash": "oaED9vKOa4BD7Lrfc6Dmw65W2LtxwOoZjmixR6ssKyE="
         }
       },
       "is_incremental": false,
@@ -160,7 +160,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.ChallengeManager.html",
-          "hash": "m4RUOCqncbMuRBvbBpykxKtTo7P0MSDQUs0cwx+T36Y="
+          "hash": "mN+HavGAAPwO+ZXHpmGinlBlB5BY6gq/o/mqS5vXgDk="
         }
       },
       "is_incremental": false,
@@ -172,7 +172,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html",
-          "hash": "gCmqg6vXtx6noog1SfJQ2qiqF0bvCSgh8H57/F2dAx0="
+          "hash": "tYOoAt5/pDFtcGCo04atG3YwEJqq/VIyEBZEn7yYKPY="
         }
       },
       "is_incremental": false,
@@ -220,7 +220,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Boons.BoonBehaviour.html",
-          "hash": "5UgYxl+2D+fNX3Fzs7YMnDlUxuXSsq0im2fIYYSXUZM="
+          "hash": "Y7hQ41iMaVYnXXpdp7VHhGSLqIczfvzVk5sHH8v99Us="
         }
       },
       "is_incremental": false,
@@ -232,7 +232,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Boons.BoonManager.FullBoon.html",
-          "hash": "qZ9wN6GHMe0isRb3wO2KOCjW0i4Og/KaEvjk15FIDXk="
+          "hash": "++DBbeavvrMazd7JWQUhJ0r8G0fZOJ9+hyMRx5qJBFk="
         }
       },
       "is_incremental": false,
@@ -244,7 +244,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Boons.BoonManager.html",
-          "hash": "mHgLbdIzYjwgxSOyzVpGPJGpkJXXtkZRAsz+MQr1VBs="
+          "hash": "dcIOunni4XHyXRs7WwbjauABwpUYOXvyzfF5J4fawJ8="
         }
       },
       "is_incremental": false,
@@ -292,7 +292,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "36bIo805nDA8fh3r4MDah5Jk54VwyK4epozianxTgNg="
+          "hash": "FqnyKz+JmSI5AZ1fIMrXJ+ecBhVfZYjMDe8c/wsmcJk="
         }
       },
       "is_incremental": false,
@@ -322,7 +322,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "pOOTjgArtOHvLLOa+8Bb+jwfqPpFhmzxF/MdMjzGJyA="
+          "hash": "nEBMuCFhh+Dgejll3v94maFGBwhoZwARYmLAtw7U1TA="
         }
       },
       "is_incremental": false,
@@ -334,7 +334,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html",
-          "hash": "H7Lj3bSBXAbz+ptw6sLiD8JiXPZwBy0JydmHB1kw854="
+          "hash": "gq6b1br+tZGrquXkDKXPh9rb+6MgN+fa3lAe9vf0ErI="
         }
       },
       "is_incremental": false,
@@ -370,7 +370,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardExtensions.html",
-          "hash": "kNZGfPOHx4xnTTwTRJZ6zNV0jNcmeVr1EAsJveXN75c="
+          "hash": "KTDVabwyyCjSd+C21E0gWJdyjO66+BlyJIQ8CCW4LQU="
         }
       },
       "is_incremental": false,
@@ -406,7 +406,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CardModificationInfoExtensions.html",
-          "hash": "bJoD1J3wjDgNV2idJIBDhxKvTA7U+4atuGgTiR75vXk="
+          "hash": "bWDXEofGTzPn1XTdz6jwRwPmqjkuE4evY5pN+YZIkoM="
         }
       },
       "is_incremental": false,
@@ -430,7 +430,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html",
-          "hash": "P+WwfjgThlZJJZur0xj/nqMEqO7lWwSlehAyKEqxZH0="
+          "hash": "pWkH6lbChYP6GxLS2rD+05ruGVBCf4+zodg/hfuQR5I="
         }
       },
       "is_incremental": false,
@@ -466,7 +466,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.DamageShieldBehaviour.html",
-          "hash": "6IiVAsBtFCzfAm+lJO/3GW3qY1EoM8mJYRUYfz4WEWE="
+          "hash": "3hzHMVGos2+YX0HqUh4nmXAOcf0cuup97GDw2XvuM7E="
         }
       },
       "is_incremental": false,
@@ -478,7 +478,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.DeathCardManager.html",
-          "hash": "f9XEX4Y282GuwzmHei0lodML86gGurgy9aRSpQ488CE="
+          "hash": "DIqK4MnSPlWqkv/OHlyqUaSOvgNJTTVSQaD/IKBftcE="
         }
       },
       "is_incremental": false,
@@ -490,7 +490,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ExtendedAbilityBehaviour.html",
-          "hash": "UznVQhbXduzoRvG9vWGvM0D4WdQOsjliT7TNRBwvIy0="
+          "hash": "qYe/OaLcLDoxWXPTosEIgew2xmbu4o++8zlRA0dvyoE="
         }
       },
       "is_incremental": false,
@@ -502,7 +502,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ExtendedActivatedAbilityBehaviour.html",
-          "hash": "h/YxaxqvEadbeP52PQM1y2AHHklyATpDnLGDNGGe/9Q="
+          "hash": "i7Llh1cOhXSCtWG0cwZlTK4DHNiSQu98ALHzAGJ2mpY="
         }
       },
       "is_incremental": false,
@@ -514,7 +514,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.IActivateWhenFacedown.html",
-          "hash": "hCBPWHRLL6hFnmqRdnt4ojbtYN+18CSOEGQs+c/7a4I="
+          "hash": "xHzSN6bok/PofXumCwJ4uMKk4ShCon+4mNu3nCIZNSk="
         }
       },
       "is_incremental": false,
@@ -526,7 +526,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.OpponentGemsManager.html",
-          "hash": "R6QMbm5RovUU1mLoltQcsNSW5rJOVr3/V8dSc81l2IY="
+          "hash": "7vXjbqx8rDdnyDbnkLcpTB7SdW6+faLDGy4NAEwzGbQ="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.ShieldManager.html",
-          "hash": "xet9NU94ms+IAfMGgNpi1qfqoQjYjiIjFXBXssvkf5I="
+          "hash": "zIfeSfjBFCoqb8p/ZCRqMl0MSF8UqMAbpyaU6uVCX6g="
         }
       },
       "is_incremental": false,
@@ -598,7 +598,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.TribeInfo.html",
-          "hash": "2X3c3wffpv6dp8hsuWbMRLFtzTUe8BFe9Rj7P/99tA4="
+          "hash": "dU0+1p5BCUQf8zLJaYkDE03fkz6JABr1v+K4D/ru2NQ="
         }
       },
       "is_incremental": false,
@@ -610,7 +610,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.TribeManager.html",
-          "hash": "lJHQwo0RxnYNEU4Q2OilhX54MqSeaULwAtIjD/h/MOY="
+          "hash": "6C5JPCiGwYzSFyZ/hYAN+rw461M9VHvSNbdVYPK8780="
         }
       },
       "is_incremental": false,
@@ -634,7 +634,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.CustomLine.html",
-          "hash": "+WjBmiB+W9SDk4zcPVE2I0/Ksp5CgGGrcfoWtT5kBho="
+          "hash": "ugVDl8p+DGv4ByCDetrJFLgJfVj8WJ2cXsJ3HEXx6AY="
         }
       },
       "is_incremental": false,
@@ -682,7 +682,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.DialogueParser_GetColorFromCode.html",
-          "hash": "RW3XZpwTYT102BYgThpmkQhOsx7BHfvIq7EhgakxoKU="
+          "hash": "OfnNYe8Qg83GgUrNDSZvzc7FbtrQv3PXZm2r6H8LKYA="
         }
       },
       "is_incremental": false,
@@ -694,7 +694,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Dialogue.DialogueManager.html",
-          "hash": "G+iiRD+5vNsDJ3jPkuwOu/ZVC63yDVBhsZ836L26JIA="
+          "hash": "1HnUnrrrkL4XRf3G8uWTF7jyoovpHaCBk+HlUQTJ1L4="
         }
       },
       "is_incremental": false,
@@ -742,7 +742,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition.html",
-          "hash": "MaJ/JqCXns5VmgzuOAQgj+rfb8UAlRUR1oqUxW25tiU="
+          "hash": "13f0pizEXkRNOLEFLIuGAzOxQ7IJ9/GyoIKDs4+fY/s="
         }
       },
       "is_incremental": false,
@@ -754,7 +754,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.CustomNodeData.html",
-          "hash": "hvPgaWO7b8lqsCK4ErE+5jsLaNbGsmCaX1ZjB6V15xA="
+          "hash": "075JhCXkiDFX475XoLTu9jUXJwYUCfQbM1ixvndmNVM="
         }
       },
       "is_incremental": false,
@@ -790,7 +790,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.EncounterExtensions.html",
-          "hash": "enuGOwdWYY+/FEAPeujUyY+YDtEQHPPUOBJ8WnhrD18="
+          "hash": "0f5IK8VZJov+VtX3QGBdI+ksA5Ss3C0fgNCjZlLLcPg="
         }
       },
       "is_incremental": false,
@@ -802,7 +802,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.EncounterManager.html",
-          "hash": "zBjzqdkO6Q5Ws6VJpUfjeHfHhLWldzx8nbCEBSZ7Ee8="
+          "hash": "qvVwYPlGOiaMk3NOuxSfj2FGOvvFvw/viRki6D1LnUg="
         }
       },
       "is_incremental": false,
@@ -922,7 +922,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.TurnExtensions.html",
-          "hash": "URPuBHnQ/ZDg7D3pcUGUaZWKWH4RHOeTICtfknDvA8U="
+          "hash": "DgbBX3VvVgHxO2TPdoO8Batf6oPah0pXyxXfBn2jLgs="
         }
       },
       "is_incremental": false,
@@ -946,7 +946,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Guid.GuidManager.html",
-          "hash": "FzCPA0xNggRnIsUdBGtlKGMCg7bVwcIm6fvo7xIbt4Y="
+          "hash": "zNPjpScjLDQkXzyeHWEBtAShmovhs/TE4LyMg+u+dUU="
         }
       },
       "is_incremental": false,
@@ -958,7 +958,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Guid.TypeManager.html",
-          "hash": "YkOAlz8zYaiU2OkGBF2utOkLRonuMItaVuZdYELGWxw="
+          "hash": "ZembxUvFIa77A9zXO44bD5f8hWX6C8CzEWsCl8aIMSo="
         }
       },
       "is_incremental": false,
@@ -982,7 +982,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.AssetBundleHelper.html",
-          "hash": "oebobHoHPFJod3bqCJJrjf1lQzXJYwVFWpcEAM732ok="
+          "hash": "vRq1lDZXbPCDqUVKieHPXgAPt/JK0gaR9MoX5BhYJ4c="
         }
       },
       "is_incremental": false,
@@ -994,7 +994,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.CustomFields.html",
-          "hash": "3WAmTcUxSEpU17X7WpnVp40Wj6BJnSDZLCV8/9fPdKQ="
+          "hash": "flulrAp5b2oEKSjX9hGquAHrFGGX2SZOHFkJKEzJn5o="
         }
       },
       "is_incremental": false,
@@ -1006,7 +1006,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.CustomLine.html",
-          "hash": "TdXhxhhD9yD7hvKaz/0gURHSSvENqg4hPTUYW2Jm7CI="
+          "hash": "4274cWeXcd3952aydEgCQrWBI3gXM8NPq3n0dj8qEDs="
         }
       },
       "is_incremental": false,
@@ -1030,7 +1030,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html",
-          "hash": "1WcDxjQLPLIs8Ykatk3EB66vB7E/nUuauFOmJ6vfqzw="
+          "hash": "R4KJeEorYdanBcxezLWPzzKLqWWpy3QR9TaVHYSRuA8="
         }
       },
       "is_incremental": false,
@@ -1042,7 +1042,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.Extensions.CardSlotExtensions.html",
-          "hash": "Emue/aaJFAFieP4HkNqWgpRnOZbqtALQF3alu7BWWsA="
+          "hash": "URqX57hvSR7QB7Csl87w91amgZ0h59TbLZsEq/Ow1CQ="
         }
       },
       "is_incremental": false,
@@ -1102,7 +1102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.MaterialOverride.html",
-          "hash": "NkcYL/uhAColZgd77dcfbuIX+iRPUwqD5mG/gIxVQ3Q="
+          "hash": "ERGxYRtbkhYVlv1wYhnu0EuDwbZsZxE2T78sII8Sh54="
         }
       },
       "is_incremental": false,
@@ -1114,7 +1114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html",
-          "hash": "BxVCVUf8LUz/T3bkp75kzbniFoe1zGrJ4sPIiEl4g4g="
+          "hash": "7uiOctRZneIfuxgWvOzADFTXgq/uR01RczKYHYN6jA8="
         }
       },
       "is_incremental": false,
@@ -1138,7 +1138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Helpers.TextureHelper.html",
-          "hash": "Mu6QIsR4v30RK6m/yDUu4sxQK7e66tnfB1TJ4rwapVY="
+          "hash": "JfVwue7iAoyKBp4uz9HCgvqD6JPX+S88LnGnNygAYe0="
         }
       },
       "is_incremental": false,
@@ -1174,7 +1174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "bbW7JJyDBJhPctN00so6KbERFMt4gOIVEHVnHZJl1VI="
+          "hash": "9p9TRN63BObfebKJCXTQHPqBDrEKyP/A5AzSyq+obgw="
         }
       },
       "is_incremental": false,
@@ -1222,7 +1222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html",
-          "hash": "iDBJduirNu6B7F7i+kglEiVFMXgFNIOJ9Q8Jh/3iHZc="
+          "hash": "Bi1o9vL5MqJMEBcrm6QrBLDPInc7Cpg+rTB4hpdHs7s="
         }
       },
       "is_incremental": false,
@@ -1330,7 +1330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Masks.CustomMask.html",
-          "hash": "tUoKC0gnnG8A2961BjcnXdnJM67w9OntAyGD5XlGx5A="
+          "hash": "J/vybyhk9QjBm7l54CJf4RU6LMgLTTrIrRjVldy/MX0="
         }
       },
       "is_incremental": false,
@@ -1366,7 +1366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Masks.MaskManager.html",
-          "hash": "9kMvGZLvzgqcsFf5x6hv0mT9RVgSFZF1MuDulf6cn4k="
+          "hash": "4y69uIefW5+lm8Dw0gdtFZfWz9w5ArblufyDmoWqXTI="
         }
       },
       "is_incremental": false,
@@ -1390,7 +1390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.And.html",
-          "hash": "Pyxmf+HoqaxriNKU4r0LqW8mWNuQq//Gs4pulX7oOms="
+          "hash": "0FcyGscMF5/9GZfrvneQwbZOXjIivkSOAQ40QM2P9JE="
         }
       },
       "is_incremental": false,
@@ -1402,7 +1402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html",
-          "hash": "Q73t8j48X+dysq8u953K+IksBnzaRYGsxDTUMz0iUNE="
+          "hash": "IX4yvoVKS49cuRk82Q+4zg3G0fuoohOnihWv6P8T0OU="
         }
       },
       "is_incremental": false,
@@ -1414,7 +1414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.CustomNodeSequencer.html",
-          "hash": "iBKhAW/iliKYQazXaviZdEh/Z5RaIkjeCvBkxxJwKfg="
+          "hash": "vbomS1ZTJTB5oczOaI6+6SIn/eV3MxvsWUW9TStQ4bs="
         }
       },
       "is_incremental": false,
@@ -1426,7 +1426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.CustomPreviousNodesContent.html",
-          "hash": "BqBPDQxnicY8MD8rw0yjuCpJNF/gW2egqidpal97Ib4="
+          "hash": "rHMPRFpWZ918RexEdZWTLElk77w42jpMUT8KZ0SiRds="
         }
       },
       "is_incremental": false,
@@ -1438,7 +1438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.CustomPreviousRowContent.html",
-          "hash": "9yHz90E47zkLjNirajeg+Fjng26M3JJFJyWlBKDPt2A="
+          "hash": "QjHQUiBF/Ily3/kPOHW0Ek1mQij8BgcLene4a6qWrYU="
         }
       },
       "is_incremental": false,
@@ -1474,7 +1474,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.False.html",
-          "hash": "H5LSxhHkjbQPkHV6rkhrsKBh03HKHfra5fYx8C6c+is="
+          "hash": "A7MlaPPGk7HrCN0+ioiFDIj+FKz1IvUNom83ag4wjk8="
         }
       },
       "is_incremental": false,
@@ -1486,7 +1486,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.Func.html",
-          "hash": "eDK6GP+ZwGFTqoBevj1IhTfJvhbD8QFW1aXxGIzBuss="
+          "hash": "GG47cgdarQ5i+wnTGYKvVyFGft2pXYE4cNJhviQSjEk="
         }
       },
       "is_incremental": false,
@@ -1522,7 +1522,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.IDestroyOnEnd.html",
-          "hash": "S4jbb1ArdKMeZpa+n0cYkb3sjRCRD47liQE6LMepf+A="
+          "hash": "JmQc7jfT3oxjIh6uaLMVT3/gHHzlK1CGsCk8R7iOItQ="
         }
       },
       "is_incremental": false,
@@ -1534,7 +1534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.IDoNotReturnToMapOnEnd.html",
-          "hash": "u7jEWS+s4oY3hegGsLUmS5dl9XmvRJV2OtXP11u6H0M="
+          "hash": "FpxafADBFqP8MdA1OtTvCd6pMVK65kdnCSb5/QauEGo="
         }
       },
       "is_incremental": false,
@@ -1558,7 +1558,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.NewNodeManager.FullNode.html",
-          "hash": "PQPCWM+DifUkOMbk1qXLo3QYHJtuuzVbH8b+F3QVwEk="
+          "hash": "WRx0Y6HfeY3I0UZfMLeWUl/VaUY459I9wYMK+ly3gD4="
         }
       },
       "is_incremental": false,
@@ -1582,7 +1582,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.Not.html",
-          "hash": "okYrKmbJIRO+eZ6Viynx6KLec90AWuz1E8q3GQPcCjA="
+          "hash": "AB0w4gkngya8gyOnM3JVN16o0fIuQfP8dBPkzQInC6g="
         }
       },
       "is_incremental": false,
@@ -1594,7 +1594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Nodes.True.html",
-          "hash": "NmI+l30SxLZsw5TXBr2Zhqnptllpx1IvBnuQejuALRA="
+          "hash": "y1y4XPVQ8Eq/jjOhS0aPMTAnbw48TeFlTOm5pC0QLl0="
         }
       },
       "is_incremental": false,
@@ -1618,7 +1618,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.Extensions.PeltExtensions.html",
-          "hash": "SNX+Lw7a6NiRBP6uN3C5QNuWgqvRreF2xaSiJkBlH4s="
+          "hash": "KI5q77Lsc3c3kUPxWgRuVfFn9dbsraVnGN22lRIUakQ="
         }
       },
       "is_incremental": false,
@@ -1642,7 +1642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Pelts.PeltManager.PeltData.html",
-          "hash": "1P7InXSiHREsyjgh2WX7uAXy1whyQ7tZKGDTi8JpOjg="
+          "hash": "+g8leyboGAWuP20ARQoijfuJniVB8BC8aLEx3AmdtMo="
         }
       },
       "is_incremental": false,
@@ -1750,7 +1750,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Regions.Part1RegionData.html",
-          "hash": "SQELrbmT0+5lVkdkjDkv0jrVr7bGsvLasS1+j19z7xY="
+          "hash": "Bp0OQNfUlN1g0FU3qxc0twEQeA9DbYL0c+XLLvf5vZA="
         }
       },
       "is_incremental": false,
@@ -1762,7 +1762,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Regions.RegionExtensions.html",
-          "hash": "UenD5ouHSIzNhAmQqAL5ywKhcrj7AVocdy5Bp3NyU8M="
+          "hash": "2wttHzoWJL6yBn9py21VcM66cUF5k/Wf55wetxohBlU="
         }
       },
       "is_incremental": false,
@@ -1786,7 +1786,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Regions.RegionManager.html",
-          "hash": "FfNUulNUpDaCRBOI2w7/naMkpJrHIMQSJPFBXUKlq/4="
+          "hash": "XZKjnq4E7G2FeO8h6DmgbmH2vXx1TacP02Gr5YFEy3k="
         }
       },
       "is_incremental": false,
@@ -1822,7 +1822,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html",
-          "hash": "uk/UW938qLX5lP5qukBYKhmsTBPw4IopfeIZPw/BJt0="
+          "hash": "v706xIcnJwBq22smLpvq90lMURN0i0Aw3WTNgeWo4l8="
         }
       },
       "is_incremental": false,
@@ -1834,7 +1834,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Resource.ResourceBankManager.html",
-          "hash": "SfYsop/0TfUqjHODvU6Ui0PCXQupEiY9+d9D5Z/+aBk="
+          "hash": "iCGpgsRkQC2rYR7QBpJvlE46kWNObbM/dncjGglgbJY="
         }
       },
       "is_incremental": false,
@@ -1858,7 +1858,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Saves.ModdedSaveData.html",
-          "hash": "5wxc/9hn4I1Gi9dSmMfO50raL0Xjj65wTxgW/+JII8g="
+          "hash": "MPiXNieCBimBs74HVYxdaLQN1YbtlN9d2386txjPkt8="
         }
       },
       "is_incremental": false,
@@ -2050,7 +2050,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html",
-          "hash": "A5AApz7gZHaUf+j1zGQlQ6u/t0grn78Ixe1iK7YZrkg="
+          "hash": "PKftllfw0kC772MW/DEVLlwb31s9Pjb2qvbx5U41+Ps="
         }
       },
       "is_incremental": false,
@@ -2074,7 +2074,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.TalkingCards.Helpers.StringExtensions.html",
-          "hash": "Ibt3zJ94iSlm4rhDb9B+4nPCFEn59vq1Ru1ADw5ZTEI="
+          "hash": "ja/uADuuBTgl0kmgC+q+Nd6J9hQRTNBYrx3HCT6aiNU="
         }
       },
       "is_incremental": false,
@@ -2170,7 +2170,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.CustomTriggerFinder.html",
-          "hash": "ekxc8UCgXguV2txSiuXmDY3E9XjCRaRLamKs5WMuWzo="
+          "hash": "VBi+asIovof/vBTSxpTPWz6eNUDhRV4bDGfNgUrl8dg="
         }
       },
       "is_incremental": false,
@@ -2182,7 +2182,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.DoCombatPhasePatches.html",
-          "hash": "jCyMy2y0gXFzH8DdTtOcV5v9yS3GpXmeNnoMVROGzr0="
+          "hash": "OEFKp2ljBoouhGOtVYj5RqmRg4ICkxZFz38dF/gY3zc="
         }
       },
       "is_incremental": false,
@@ -2194,7 +2194,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.ICardTakenDamageModifier.html",
-          "hash": "TVMb8K0yuPJcyk5Dyk41BBMj+WX/sg5BF7Q1fhNwoVE="
+          "hash": "/lbLp4S2vhdkcVT27D6ySK3guPWBV5RBajzWsuGI5oM="
         }
       },
       "is_incremental": false,
@@ -2206,7 +2206,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IGetAttackingSlots.html",
-          "hash": "pyw1YhGNAqdsRzN+9qkq/qnvOSiOp2PsPy+IU97//eM="
+          "hash": "BKooNfwN4QOaJfjMgOVLOSe0skAo2j9vpG9wKA6+jUo="
         }
       },
       "is_incremental": false,
@@ -2218,7 +2218,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IGetOpposingSlots.html",
-          "hash": "SY0oN4GaKgbNo8lLX0R5K3+8DbU+FdG09tQ1oukfeAI="
+          "hash": "3RdiB3h16ykataHrpl8zNHglh4PC6QWxWSon51qJNts="
         }
       },
       "is_incremental": false,
@@ -2230,7 +2230,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IItemCanBeUsed.html",
-          "hash": "3kBrY/WQh+H3Yu74mIltB3qALppyd4oedNJ/wVk/1D0="
+          "hash": "GXEPg9+a4DqjY2eqsIKoYMksa5oZM6LV3AqMSma8eQw="
         }
       },
       "is_incremental": false,
@@ -2242,7 +2242,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IModifyDamageTaken.html",
-          "hash": "h0J7HK4ax0/CEr6uRk7cKVPvlQlj7whCHdvPfMVRYLw="
+          "hash": "AdA+kXtMqe4At3fsbJqxNHW+XdblHNK7rxv2lSaChF8="
         }
       },
       "is_incremental": false,
@@ -2254,7 +2254,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IModifyDirectDamage.html",
-          "hash": "5PA602us4jRHhwjzylnpWAHZ9y9RgcQlxZOeGSw4o34="
+          "hash": "kdigK2uG5tYdNar2kPdxh7RD7Yu6jSrorBh18o6avDI="
         }
       },
       "is_incremental": false,
@@ -2266,7 +2266,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnAddedToHand.html",
-          "hash": "nnYE6Atq/2FujMXzuCSduLT6bbfHDv+0Dr6YvLKHCVI="
+          "hash": "joRjnm041CLb/8RIbhmJgtemzBu1szzEVRw51rlld+g="
         }
       },
       "is_incremental": false,
@@ -2278,7 +2278,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnBellRung.html",
-          "hash": "punSU/U8Z0WWIaHfQsygQb7b+VygKhfGwjJjzjnNC0Q="
+          "hash": "HM2FQV9FnJtviMJMxyjctAST4YYqsU+xslT4nGblQQo="
         }
       },
       "is_incremental": false,
@@ -2290,7 +2290,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html",
-          "hash": "BkNn1QOfeZZklpcS08dogX8CrA3TpH/LC59vsgDMtCs="
+          "hash": "TbEPMdkZcdTqjrrlrOlXXDwcitpQ1OxmUI/8wIZPbrQ="
         }
       },
       "is_incremental": false,
@@ -2302,7 +2302,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html",
-          "hash": "jaJJW4UHRUicBsORd/N4mVHjbCupSI78IiuKJPtBlcs="
+          "hash": "ZRozrLrhzO5DkH6dFQxs2plQcLzJQkMH7jJpEj1eAR8="
         }
       },
       "is_incremental": false,
@@ -2314,7 +2314,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html",
-          "hash": "VrPu2w95x0LHaV+08iHz18UFw1wDocNJACG4HASTlnI="
+          "hash": "BsGGUH0bw+N8VPHcmKjblRXqRnWduzX+HLyBtd973Zc="
         }
       },
       "is_incremental": false,
@@ -2326,7 +2326,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html",
-          "hash": "4T5kFSVbDbfSYEBzJBjbpBoCmDDecdC4O/1YTOyBEx0="
+          "hash": "pQNWdnDP7RXFW5FbhhtbtP0omZoa08gtfqwp9oV7u0Y="
         }
       },
       "is_incremental": false,
@@ -2338,7 +2338,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html",
-          "hash": "mblhR4wuc+g3yfED3c0xvhjZkjjZs+D9aWUcuMXx/gQ="
+          "hash": "GW9nmYpG8eONyd+i80oT7k2+Ec2OGcbkM8TLnhHce64="
         }
       },
       "is_incremental": false,
@@ -2350,7 +2350,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnItemPreventedFromUse.html",
-          "hash": "qYknck3AQ4rRJ/8wil57TgKpPFbCj4+saA5dy3iCEIY="
+          "hash": "Yb7RVnQM8RjxmT49IRdsSXOvgpeSWe5mPaG9E6IUYhs="
         }
       },
       "is_incremental": false,
@@ -2362,7 +2362,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html",
-          "hash": "oXmsjz84QYuWJ2divU57CcsN/MiV+xv+emrigkwgqIs="
+          "hash": "Po2QR2b2ZixsqkBF0S3BQ2ijtk77W9kPwNOY0OKTTI4="
         }
       },
       "is_incremental": false,
@@ -2374,7 +2374,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html",
-          "hash": "NoZEueZwfYqy3TyLojYuVqtEYPdcwZ62sUZ7Bs6sVFg="
+          "hash": "XOQTiXZkI6R3Xn2qhpEx9H9GJpGOB5q8qEpbqSbDMfc="
         }
       },
       "is_incremental": false,
@@ -2386,7 +2386,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html",
-          "hash": "+qbWWVsfkVEIpY6ZpBJ0sR/vYp05bVfs0R/6odarL74="
+          "hash": "bkSanEp1ZzjJ4k4IyY6jmmxZE8rYoNeOoVo6EVlNo3s="
         }
       },
       "is_incremental": false,
@@ -2398,7 +2398,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardDieInHand.html",
-          "hash": "MrYbXTUPa1DjYpqEbXr3L5SjRnfTscgj8V/dOGbriiI="
+          "hash": "H9+Q+6m5f6irTCGJMkPqKlCWZkImQqBgpbo7vO1AibU="
         }
       },
       "is_incremental": false,
@@ -2410,7 +2410,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html",
-          "hash": "Vco+SRRpe4Ot82gHmEg0FYky7UlUZK1SCU2p98nF4Ok="
+          "hash": "LEZimX96hhq0dXAzy18zfr5sylLHipMgSpv9bl6ZNV0="
         }
       },
       "is_incremental": false,
@@ -2422,7 +2422,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html",
-          "hash": "NLPlZDoAvL8PFxKvyiaEGZMxlE2niAXg/Vv1MutAqZE="
+          "hash": "6e+Lb5pbemfTOTquj7aSIW41JOT9HQs6AS4W2vQO2ss="
         }
       },
       "is_incremental": false,
@@ -2434,7 +2434,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPostItemUsed.html",
-          "hash": "b2K1eDpLl589Am6jsHuokCCvNg5Qqml1aZ+s5whBLIs="
+          "hash": "AmjdcRKNGZMSC53oj2JYRSgKOanYpMO+MWtk3F9CIaw="
         }
       },
       "is_incremental": false,
@@ -2446,7 +2446,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPostScalesChanged.html",
-          "hash": "c4v0gBpIh4I0AGNnsC69jfB8Vy6QKilSWrqcb4yPt3Q="
+          "hash": "xWzmQw4Rwc4MMFqw/K6xFmBiVx68iyt5xRsQzNoxFSU="
         }
       },
       "is_incremental": false,
@@ -2458,7 +2458,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html",
-          "hash": "PFDn0Fio+iUEvcR+gT0nveZKA4Za5SBnDzLFxRov2qQ="
+          "hash": "R+qaMO5v4myLRoLzUDQcpj4hqYkxLvQc1QK164Iy+2k="
         }
       },
       "is_incremental": false,
@@ -2470,7 +2470,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html",
-          "hash": "bB62XQWRjwqdi9iaWcZ5UpUAfitU1Lctx7XuXtHHya4="
+          "hash": "I6JRJOErTK7PL6VpR50PfWkSGK9zeACgA9L/Joap0xE="
         }
       },
       "is_incremental": false,
@@ -2482,7 +2482,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPreItemUsed.html",
-          "hash": "/SccbKhE3Zvh6Ha1cbI/5kxbgjdXCZNv6izxqDPKc1Y="
+          "hash": "BsUuPzgB0BS4F/iFCh2V/4etUq+PS3S855XcZ55FqSk="
         }
       },
       "is_incremental": false,
@@ -2494,7 +2494,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPreScalesChanged.html",
-          "hash": "+K1sF7L68i8wNn/t1RKv5DHSAdhrd0usVBG9VoQCeFg="
+          "hash": "909h1WuxMyrwav7uSCmdsC18l4/DqowRL0ocQwp+sPo="
         }
       },
       "is_incremental": false,
@@ -2506,7 +2506,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPreScalesChangedRef.html",
-          "hash": "VrNT2wYJZthcmuWgOpL62eU8rIGtfsgDe8cqMfSOK2o="
+          "hash": "FvCXuAGn6aR1AXOrzuMYP7fiSMb5Yy9y072TozRPv7I="
         }
       },
       "is_incremental": false,
@@ -2518,7 +2518,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html",
-          "hash": "BcA0ESCPeQUoRabygeOI+yee1houG2Oa/Js1DiilZME="
+          "hash": "gIlaoWkiPI1mizHvgk4gAWbPnb7tZMRKTcufRnDugXM="
         }
       },
       "is_incremental": false,
@@ -2530,7 +2530,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnTurnEndInHand.html",
-          "hash": "ldz3ozBJlvVFcg2raF18HUGlctX9vhnhcCoYCD7B5gM="
+          "hash": "vA7ZluZRfV5zX5hh7bov4o8kjhVf75B6xTthb+45FXs="
         }
       },
       "is_incremental": false,
@@ -2542,7 +2542,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnTurnEndInQueue.html",
-          "hash": "A6yj1e+M6JDJlP0A4yAW/4mRtjhXEq7cTvhnnd97zGs="
+          "hash": "KJxdKGTl3QUe9QPmjs7qDDaupWAluAAKCTzf+sRASNE="
         }
       },
       "is_incremental": false,
@@ -2554,7 +2554,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IOnUpkeepInHand.html",
-          "hash": "6tcB6rt9jrIhbu5/44QehXF4UJYoHDc4nttjEuwwmOU="
+          "hash": "d18smdIEUNidfEZ2ZJf7em0RYZyMJat7RoVpX2174hc="
         }
       },
       "is_incremental": false,
@@ -2590,7 +2590,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.IPreTakeDamage.html",
-          "hash": "KyIsEArp/XvDS7cCRmMNBU3LXyjl9Kh0K06lUlDutww="
+          "hash": "9j0KkXXqQhSI7a8wC2GYHisBAmqMPQnpqKbWOByMBnE="
         }
       },
       "is_incremental": false,
@@ -2602,7 +2602,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Triggers.ISetupAttackSequence.html",
-          "hash": "8N6iAaJRxr0AjEuokyF/4BuRk9/yQivaidEgJABPZus="
+          "hash": "VdnNCRZxBDAaIDImCuWGKbpZZ6hwysiPP1NRpUHCRKo="
         }
       },
       "is_incremental": false,
