@@ -36,7 +36,7 @@ public static class RegionManager
 
         return orderedRegions;
     }
-    private static readonly ObservableCollection<Part1RegionData> NewRegions = new();
+    public static readonly ObservableCollection<Part1RegionData> NewRegions = new();
 
     public static event Func<List<RegionData>, List<RegionData>> ModifyRegionsList;
 

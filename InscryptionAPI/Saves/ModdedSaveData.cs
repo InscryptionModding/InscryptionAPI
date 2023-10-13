@@ -25,6 +25,35 @@ public class ModdedSaveData
         return (T)SaveData[guid][key];
     }
 
+    public bool TryGetGuidAndKey(string prefix, string enumValue, out string guid, out string key)
+    {
+        foreach (KeyValuePair<string,Dictionary<string,object>> pair in SaveData)
+        {
+            foreach (KeyValuePair<string,object> valuePair in pair.Value)
+            {
+                if (valuePair.Key.StartsWith(prefix, StringComparison.Ordinal))
+                {
+                    if (valuePair.Value.Equals(enumValue))
+                    {
+                        // Ability_jamesgames.inscryption.starcraftcore_Abduct
+                        // to
+                        // guid: jamesgames.inscryption.starcraftcore
+                        // key: Abduct
+                        string name = valuePair.Key.Substring(prefix.Length+1);
+                        int underscoreIndex = name.IndexOf('_');
+                        guid = name.Substring(0, underscoreIndex);
+                        key = name.Substring(underscoreIndex+1);
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        guid = null;
+        key = null;
+        return false;
+    }
+
     /// <summary>
     /// Get the value of a key as a string in the save data.
     /// </summary>

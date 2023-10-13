@@ -26,7 +26,7 @@ internal class BoxColliderNegativeScalingLogSpamFix
     {
         if (flippedY || SaveManager.SaveFile.IsPart3)
         {
-            if (__instance.gameObject.GetComponent<MeshCollider>().SafeIsUnityNull())
+            if (__instance.gameObject.GetComponent<MeshCollider>().SafeIsUnityNull() && !__instance.gameObject.GetComponent<MeshFilter>().SafeIsUnityNull())
             {
                 MeshCollider collider = __instance.gameObject.AddComponent<MeshCollider>();
                 collider.convex = true;
