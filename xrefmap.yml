@@ -8771,6 +8771,22 @@ references:
   commentId: F:InscryptionAPI.Guid.GuidManager.START_INDEX
   fullName: InscryptionAPI.Guid.GuidManager.START_INDEX
   nameWithType: GuidManager.START_INDEX
+- uid: InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue*
+  name: TryGetGuidAndKeyEnumValue
+  href: api/InscryptionAPI.Guid.GuidManager.html#InscryptionAPI_Guid_GuidManager_TryGetGuidAndKeyEnumValue_
+  commentId: Overload:InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue
+  isSpec: "True"
+  fullName: InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue
+  nameWithType: GuidManager.TryGetGuidAndKeyEnumValue
+- uid: InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue``1(``0,System.String@,System.String@)
+  name: TryGetGuidAndKeyEnumValue<T>(T, out String, out String)
+  href: api/InscryptionAPI.Guid.GuidManager.html#InscryptionAPI_Guid_GuidManager_TryGetGuidAndKeyEnumValue__1___0_System_String__System_String__
+  commentId: M:InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue``1(``0,System.String@,System.String@)
+  name.vb: TryGetGuidAndKeyEnumValue(Of T)(T, ByRef String, ByRef String)
+  fullName: InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue<T>(T, out System.String, out System.String)
+  fullName.vb: InscryptionAPI.Guid.GuidManager.TryGetGuidAndKeyEnumValue(Of T)(T, ByRef System.String, ByRef System.String)
+  nameWithType: GuidManager.TryGetGuidAndKeyEnumValue<T>(T, out String, out String)
+  nameWithType.vb: GuidManager.TryGetGuidAndKeyEnumValue(Of T)(T, ByRef String, ByRef String)
 - uid: InscryptionAPI.Guid.TypeManager
   name: TypeManager
   href: api/InscryptionAPI.Guid.TypeManager.html
@@ -13330,6 +13346,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.Part1RegionData.DoNotForceReachTerrain
   nameWithType: Part1RegionData.DoNotForceReachTerrain
+- uid: InscryptionAPI.Regions.Part1RegionData.GUID
+  name: GUID
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_GUID
+  commentId: P:InscryptionAPI.Regions.Part1RegionData.GUID
+  fullName: InscryptionAPI.Regions.Part1RegionData.GUID
+  nameWithType: Part1RegionData.GUID
+- uid: InscryptionAPI.Regions.Part1RegionData.GUID*
+  name: GUID
+  href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_GUID_
+  commentId: Overload:InscryptionAPI.Regions.Part1RegionData.GUID
+  isSpec: "True"
+  fullName: InscryptionAPI.Regions.Part1RegionData.GUID
+  nameWithType: Part1RegionData.GUID
 - uid: InscryptionAPI.Regions.Part1RegionData.MaxTerrain
   name: MaxTerrain
   href: api/InscryptionAPI.Regions.Part1RegionData.html#InscryptionAPI_Regions_Part1RegionData_MaxTerrain
@@ -13895,6 +13924,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Regions.RegionManager.New
   nameWithType: RegionManager.New
+- uid: InscryptionAPI.Regions.RegionManager.NewRegions
+  name: NewRegions
+  href: api/InscryptionAPI.Regions.RegionManager.html#InscryptionAPI_Regions_RegionManager_NewRegions
+  commentId: F:InscryptionAPI.Regions.RegionManager.NewRegions
+  fullName: InscryptionAPI.Regions.RegionManager.NewRegions
+  nameWithType: RegionManager.NewRegions
 - uid: InscryptionAPI.Regions.RegionManager.Remove(DiskCardGame.RegionData)
   name: Remove(RegionData)
   href: api/InscryptionAPI.Regions.RegionManager.html#InscryptionAPI_Regions_RegionManager_Remove_DiskCardGame_RegionData_
@@ -14117,6 +14152,22 @@ references:
   fullName.vb: InscryptionAPI.Saves.ModdedSaveData.SetValueAsObject(Of T)(System.String, System.String, T)
   nameWithType: ModdedSaveData.SetValueAsObject<T>(String, String, T)
   nameWithType.vb: ModdedSaveData.SetValueAsObject(Of T)(String, String, T)
+- uid: InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey(System.String,System.String,System.String@,System.String@)
+  name: TryGetGuidAndKey(String, String, out String, out String)
+  href: api/InscryptionAPI.Saves.ModdedSaveData.html#InscryptionAPI_Saves_ModdedSaveData_TryGetGuidAndKey_System_String_System_String_System_String__System_String__
+  commentId: M:InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey(System.String,System.String,System.String@,System.String@)
+  name.vb: TryGetGuidAndKey(String, String, ByRef String, ByRef String)
+  fullName: InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey(System.String, System.String, out System.String, out System.String)
+  fullName.vb: InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey(System.String, System.String, ByRef System.String, ByRef System.String)
+  nameWithType: ModdedSaveData.TryGetGuidAndKey(String, String, out String, out String)
+  nameWithType.vb: ModdedSaveData.TryGetGuidAndKey(String, String, ByRef String, ByRef String)
+- uid: InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey*
+  name: TryGetGuidAndKey
+  href: api/InscryptionAPI.Saves.ModdedSaveData.html#InscryptionAPI_Saves_ModdedSaveData_TryGetGuidAndKey_
+  commentId: Overload:InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey
+  isSpec: "True"
+  fullName: InscryptionAPI.Saves.ModdedSaveData.TryGetGuidAndKey
+  nameWithType: ModdedSaveData.TryGetGuidAndKey
 - uid: InscryptionAPI.Saves.ModdedSaveManager
   name: ModdedSaveManager
   href: api/InscryptionAPI.Saves.ModdedSaveManager.html
