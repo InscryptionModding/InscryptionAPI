@@ -577,24 +577,26 @@ public static class AbilityManager
     {
         yield return enumerator;
 
-        // re-add these abilities to correct stacking effects
-        List<Ability> abilities = new();
+        // get all triggered abilities
+        List<Ability> abilities = __instance.TriggerHandler.triggeredAbilities.ConvertAll(x => x.Item1);
 
-        for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
+        // loop through the distinct abilities and fix the dumb doubling bug
+        foreach (var ab in abilities.Distinct())
         {
-            AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
-            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and is marked to only trigger once
-            {
-                if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
-                    abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
+            AbilityInfo info = AllAbilityInfos.AbilityByID(ab);
+            if (info.passive)
+                continue;
 
-                // remove the first trigger
-                __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
+            if (info.canStack && info.GetTriggersOncePerStack())
+            {
+                // since evolving doubles the triggers, remove half of them
+                for (int i = 0; i < abilities.Count(x => x == ab) / 2; i++)
+                {
+                    var tuple = __instance.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ab);
+                    __instance.TriggerHandler.triggeredAbilities.Remove(tuple);
+                }
             }
         }
-
-        foreach (Ability ab in abilities)
-            __instance.TriggerHandler.AddAbility(ab);
     }
 
     [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard))]

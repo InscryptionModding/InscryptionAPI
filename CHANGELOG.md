@@ -3,6 +3,9 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.2
+- Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
+
 ## 2.18.1
 - Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
 - Custom regions now store their mod GUID
