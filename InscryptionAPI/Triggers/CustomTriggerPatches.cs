@@ -1,7 +1,9 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
 using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
@@ -179,28 +181,6 @@ internal static class CustomTriggerPatches
         yield break;
     }
 
-    private static Type takeDamageCoroutine;
-    private static FieldInfo takeDamageDamage;
-
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
-    [HarmonyPostfix]
-    private static IEnumerator TriggerOnTurnEndInHandPlayer(IEnumerator result, PlayableCard __instance, int damage, PlayableCard attacker)
-    {
-        CustomTriggerFinder.CollectDataAll<ICardTakenDamageModifier, int>(true, x => x.RespondsToCardTakenDamageModifier(__instance, damage), x => damage = x.CollectCardTakenDamageModifier(__instance, damage));
-        if (damage != 0)
-        {
-            (takeDamageDamage ??= (takeDamageCoroutine ??= result?.GetType())?.GetField("damage"))?.SetValue(result, damage);
-            bool hasshield = __instance.HasShield();
-            yield return result;
-            if (!hasshield && attacker != null)
-            {
-                yield return CustomTriggerFinder.TriggerInHand<IOnOtherCardDealtDamageInHand>(x => x.RespondsToOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance),
-                    x => x.OnOtherCardDealtDamageInHand(attacker, attacker.Attack, __instance));
-            }
-        }
-        yield break;
-    }
-
     [HarmonyPatch(typeof(ConsumableItemSlot), nameof(ConsumableItemSlot.ConsumeItem))]
     [HarmonyPostfix]
     private static IEnumerator TriggerItemUse(IEnumerator result, ConsumableItemSlot __instance)
@@ -353,7 +333,7 @@ internal static class CustomTriggerPatches
         bool isAttackingDefaultSlot = !__instance.HasTriStrike() && !__instance.HasAbility(Ability.SplitStrike);
         CardSlot defaultslot = __instance.Slot.opposingSlot;
 
-        List<CardSlot> alteredOpposings = new List<CardSlot>();
+        List<CardSlot> alteredOpposings = new();
         bool removeDefaultAttackSlot = false;
 
         foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
@@ -372,7 +352,7 @@ internal static class CustomTriggerPatches
             __result.Remove(defaultslot);
         bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
-        var dummyresult = __result;
+        var dummyresult = __result; // used for sorting by trigger priority
         all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
         foreach (var opposing in all)
@@ -408,6 +388,44 @@ internal static class CustomTriggerPatches
         }
         __result.Sort((CardSlot a, CardSlot b) => a.Index - b.Index);
     }
+
+    [HarmonyTranspiler]
+    [HarmonyPatch(typeof(TurnManager), "PlayerTurn", MethodType.Enumerator)]
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueuePlayer(IEnumerable<CodeInstruction> instructions) =>
+        TriggerOnTurnEndInQueue(instructions, true);
+
+    [HarmonyTranspiler]
+    [HarmonyPatch(typeof(TurnManager), "OpponentTurn", MethodType.Enumerator)]
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueueOpponent(IEnumerable<CodeInstruction> instructions) =>
+        TriggerOnTurnEndInQueue(instructions, false);
+    
+    static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueue(IEnumerable<CodeInstruction> instructions, bool playerTurn)
+    {
+        List<CodeInstruction> codes = instructions.ToList();
+
+        int pointer = codes.IndexOf(codes.First(code => code.opcode == OpCodes.Callvirt && code.OperandIs(AccessTools.Method(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerCardsOnBoard)))));
+        pointer++;
+
+        codes.Insert(pointer++, new(playerTurn ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0));
+        codes.Insert(pointer++, new(OpCodes.Call, AccessTools.Method(typeof(CustomTriggerPatches), nameof(CustomTriggerPatches.TriggerOnTurnEndInQueueCoro))));
+
+        return codes;
+    }
+
+    static IEnumerator TriggerOnTurnEndInQueueCoro(IEnumerator originalTrigger, bool playerTurn)
+    {
+        yield return originalTrigger;
+
+        foreach (IOnTurnEndInQueue trigger in CustomTriggerFinder.FindTriggersInQueue<IOnTurnEndInQueue>())
+        {
+            if (trigger.RespondsToTurnEndInQueue(playerTurn))
+                yield return trigger.OnTurnEndInQueue(playerTurn);
+        }
+    }
+
+    // IModifyAttackingSlots code can be found in DoCombatPhasePatches
+
+    // IModifyDamageTaken and IPreTakeDamage logic can be found in TakeDamagePatches
 
     private static readonly Type triggerType = AccessTools.TypeByName("DiskCardGame.GlobalTriggerHandler+<TriggerCardsOnBoard>d__16");
 }

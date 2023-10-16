@@ -115,4 +115,17 @@ public static class PeltExtensions
         peltData.CardChoices = getCardChoices;
         return peltData;
     }
+
+    /// <summary>
+    /// Sets the name used by the Trader when trading this pelt to them.
+    /// Also used to determine the eventId of the corresponding DialogueEvent.
+    /// </summary>
+    /// <param name="peltData">The PeltData to access.</param>
+    /// <param name="tierName">The name that will be spoken by the Trader and used to reference the custom dialogue event.</param>
+    /// <returns>The same PeltData so a chain can continue.</returns>
+    public static PeltData SetTierName(this PeltData peltData, string tierName)
+    {
+        peltData.peltTierName = tierName;
+        return peltData;
+    }
 }

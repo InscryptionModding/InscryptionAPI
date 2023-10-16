@@ -1,12 +1,8 @@
 using DiskCardGame;
-using GBC;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
-using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
-using Microsoft.Win32.SafeHandles;
 
 namespace InscryptionAPI.Card;
 
@@ -1222,6 +1218,18 @@ public static class CardExtensions
 
     #endregion
 
+    /// <summary>
+    /// Sets the animated portrait for the given CardInfo.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The to check for.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetAnimatedPortrait(this CardInfo info, GameObject portrait)
+    {
+        info.animatedPortrait = portrait;
+        return info;
+    }
+
     #region Emissive
 
     /// <summary>
@@ -1269,6 +1277,11 @@ public static class CardExtensions
 
         return info;
     }
+    
+    public static Sprite GetEmissivePortrait(this CardInfo info)
+    {
+        return info.portraitTex.GetEmissionSprite();
+    }
 
     /// <summary>
     /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
@@ -1307,6 +1320,11 @@ public static class CardExtensions
         info.alternatePortrait.RegisterEmissionForSprite(portrait);
 
         return info;
+    }
+    
+    public static Sprite GetEmissiveAltPortrait(this CardInfo info)
+    {
+        return info.alternatePortrait.GetEmissionSprite();
     }
 
     #endregion
@@ -1350,6 +1368,11 @@ public static class CardExtensions
             info.pixelPortrait.name = info.name + "_pixelportrait";
 
         return info;
+    }
+    
+    public static Sprite GetPixelPortrait(this CardInfo info)
+    {
+        return info.pixelPortrait;
     }
 
     #endregion
@@ -1441,7 +1464,8 @@ public static class CardExtensions
     #endregion
 
     #region Extra Alts
-        /// <summary>
+    #region Pixel Alt
+    /// <summary>
     /// Sets the card's pixel alternate portrait. This portrait is used when the card is displayed in GBC mode (Act 2).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
@@ -1478,6 +1502,79 @@ public static class CardExtensions
         info.GetAltPortraits().PixelAlternatePortrait = portrait;
         return info;
     }
+    #endregion
+
+    #region Trap Alt
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetSteelTrapPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_steeltrapportrait";
+
+        info.GetAltPortraits().SteelTrapPortrait = portrait;
+        return info;
+    }
+
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelsteeltrapportrait";
+
+        info.GetAltPortraits().PixelSteelTrapPortrait = portrait;
+        return info;
+    }
+    #endregion
+
+    #region Shield Alt
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_brokenshieldportrait";
+
+        info.GetAltPortraits().BrokenShieldPortrait = portrait;
+        return info;
+    }
+
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelbrokenshieldportrait";
+
+        info.GetAltPortraits().BrokenShieldPortrait = portrait;
+        return info;
+    }
+    #endregion
     #endregion
 
     #endregion
@@ -1771,7 +1868,9 @@ public static class CardExtensions
 
     public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
-    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.GetAltPortraits().PixelAlternatePortrait != null;
+    public static bool HasPixelAlternatePortrait(this CardInfo info) => info.PixelAlternatePortrait() != null;
+    public static bool HasSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait() != null;
+    public static bool HasBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait() != null;
 
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.
@@ -1835,7 +1934,7 @@ public static class CardExtensions
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <returns>True if the card info should be affected by Tidal Lock.</returns>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
     {
         info.SetExtendedProperty("AffectedByTidalLock", affectedByTidalLock);
@@ -1843,7 +1942,126 @@ public static class CardExtensions
     }
     #endregion
 
+    #region TransformerBeastCardId
+
+    /// <summary>
+    /// Gets the string value of the extended property TransformerCardId. Can be null.
+    /// </summary>
+    /// <param name="item">PlayableCard to access.</param>
+    /// <returns>The string value of the extended property TransformerCardId.</returns>
+    public static string GetTransformerCardId(this PlayableCard item) => item.Info.GetTransformerCardId();
+
+    /// <summary>
+    /// Gets the string value of the extended property TransformerCardId. Can be null.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The string value of the extended property TransformerCardId.</returns>
+    public static string GetTransformerCardId(this CardInfo info) => info.GetExtendedProperty("TransformerCardId");
+
+    /// <summary>
+    /// Sets whether the card should be killed by Tidal Lock's effect.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetTransformerCardId(this CardInfo info, string transformerCardId)
+    {
+        info.SetExtendedProperty("TransformerCardId", transformerCardId);
+        return info;
+    }
+
+    #endregion
+
     #region PlayableCard
+
+    /// <summary>
+    /// Gets the number of Ability stacks a card has.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="ability">The Ability to check for.</param>
+    /// <returns>The number of Ability stacks the card has.</returns>
+    public static int GetAbilityStacks(this PlayableCard card, Ability ability)
+    {
+        int count = 0;
+        count += card.Info.Abilities.Count(a => a == ability);
+        count += AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods).Count(a => a == ability);
+        count -= card.TemporaryMods.SelectMany(m => m.negateAbilities).Count(a => a == ability);
+
+        if (count <= 0)
+            return 0;
+
+        // If it's not stackable, you get at most one
+        return AbilitiesUtil.GetInfo(ability).canStack ? count : 1;
+    }
+
+    #region Shields
+    /// <summary>
+    /// Gets the number of shields the target card has. Each shield negates one damaging hit.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <returns>The number of shields the card has.</returns>
+    public static int GetTotalShields(this PlayableCard card)
+    {
+        // covers for a situation I discovered where you use a SpecialBattleSequencer's triggers to advance a boss fight
+        // somehow you can end up with a null playablecard which breaks this bit here
+        if (card == null)
+            return 0;
+
+        int totalShields = 0;
+        List<Ability> distinct = new(); // keep track of non-stacking shield abilities
+
+        DamageShieldBehaviour[] components = card.GetComponents<DamageShieldBehaviour>();
+        foreach (var component in components)
+        {
+            // stackable shields all get tallied up
+            if (AbilitiesUtil.GetInfo(component.Ability).canStack)
+                totalShields += component.NumShields;
+
+            else if (!distinct.Contains(component.Ability))
+            {
+                distinct.Add(component.Ability);
+                totalShields += component.NumShields;
+            }
+        }
+
+        ActivatedDamageShieldBehaviour[] components2 = card.GetComponents<ActivatedDamageShieldBehaviour>();
+        foreach (var component in components2)
+        {
+            // stackable shields all get tallied up
+            if (AbilitiesUtil.GetInfo(component.Ability).canStack)
+                totalShields += component.NumShields;
+
+            else if (!distinct.Contains(component.Ability))
+            {
+                distinct.Add(component.Ability);
+                totalShields += component.NumShields;
+            }
+        }
+
+        return totalShields;
+    }
+
+    /// <summary>
+    /// A variant of ResetShield that only resets shields belonging is a certain ability.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="negatedAbility">The shield ability to look for.</param>
+    public static void ResetShield(this PlayableCard card, Ability ability)
+    {
+        foreach (var com in card.GetComponents<DamageShieldBehaviour>())
+        {
+            if (com.Ability == ability)
+                com.ResetShields(false);
+        }
+        foreach (var com in card.GetComponents<ActivatedDamageShieldBehaviour>())
+        {
+            if (com.Ability == ability)
+                com.ResetShields(false);
+        }
+
+        card.ResetShield();
+    }
+
+    #endregion
 
     /// <summary>
     /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
@@ -2201,6 +2419,23 @@ public static class CardExtensions
             card.RemoveTemporaryMod(mod);
     }
 
+    /// <summary>
+    /// A version of TransformIntoCard tailored to visually work on cards in the hand.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="evolvedInfo">The CardInfo to change the card into.</param>
+    /// <param name="preTransformCallback">An Action to invoke before the evolvedInfo is set.</param>
+    /// <param name="onTransformedCallback">An Action to invoke after the evolvedInfo is set</param>
+    public static IEnumerator TransformIntoCardInHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
+    {
+        Singleton<ViewManager>.Instance.SwitchToView(View.Hand);
+        yield return new WaitForSeconds(0.15f);
+        yield return card.Anim.FlipInAir();
+        yield return new WaitForSeconds(0.15f);
+        preTransformCallback?.Invoke();
+        card.SetInfo(evolvedInfo);
+        onTransformedCallback?.Invoke();
+    }
     #endregion
 
     #endregion

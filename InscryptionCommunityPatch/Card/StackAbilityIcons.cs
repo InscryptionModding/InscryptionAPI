@@ -1,5 +1,6 @@
 using DiskCardGame;
 using GBC;
+using GracesGames.Common.Scripts;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
@@ -102,10 +103,8 @@ public static class StackAbilityIcons
 
     [HarmonyPatch(typeof(CardAbilityIcons), "GetDistinctShownAbilities")]
     [HarmonyPostfix]
-    private static void ClearStackableIcons(ref List<Ability> __result)
+    private static void ClearStackableIcons(ref List<Ability> __result, CardInfo info, List<CardModificationInfo> mods, List<Ability> hiddenAbilities)
     {
-        // We'll start by completely removing the stackable icons from the list
-        // We will be patching the AbilityIconInteractable class to display the icon
         __result = __result.Distinct().ToList();
     }
 
@@ -234,41 +233,6 @@ public static class StackAbilityIcons
         return patchLocations[ability];
     }
 
-    private static Texture2D DuplicateTexture(Texture2D texture)
-    {
-        // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
-        // Create a temporary RenderTexture of the same size as the texture
-
-        RenderTexture tmp = RenderTexture.GetTemporary(
-                            texture.width,
-                            texture.height,
-                            0,
-                            RenderTextureFormat.Default,
-                            RenderTextureReadWrite.Linear);
-
-
-        // Blit the pixels on texture to the RenderTexture
-        Graphics.Blit(texture, tmp);
-
-        // Backup the currently set RenderTexture
-        RenderTexture previous = RenderTexture.active;
-
-        // Set the current RenderTexture to the temporary one we created
-        RenderTexture.active = tmp;
-
-        // Create a new readable Texture2D then
-        // Copy the pixels from the RenderTexture to the new Texture
-        Texture2D myTexture2D = new(texture.width, texture.height);
-        myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
-        myTexture2D.Apply();
-
-        // Reset the active RenderTexture
-        RenderTexture.active = previous;
-        RenderTexture.ReleaseTemporary(tmp); // Release the temporary RenderTexture
-
-        return myTexture2D;
-    }
-
     private static Texture2D PatchTexture(Ability ability, int count)
     {
         if (count <= 1 || count > 99) // only supports 2-digit-long numbers (why would you have 100 stacks anyways?)
@@ -282,7 +246,7 @@ public static class StackAbilityIcons
 
         // Copy the old texture to the new texture
         bool doubleDigit = count > 9;
-        Texture2D newTexture = DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString(), false, false) as Texture2D);
+        Texture2D newTexture = TextureHelper.DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString(), false, false) as Texture2D);
         newTexture.name = textureName;
 
         Tuple<Vector2Int, int> patchTuple = GetPatchLocationForAbility(ability, newTexture);
@@ -347,9 +311,16 @@ public static class StackAbilityIcons
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = info.Abilities;
         if (card != null)
+        {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
 
+            baseAbilities.RemoveAll(x => !x.GetHideSingleStacks() && card.Status.hiddenAbilities.Contains(x));
+            foreach (Ability ab in card.Status.hiddenAbilities.Where(x => x.GetHideSingleStacks()))
+                baseAbilities.Remove(ab);
+        }
+
         int count = baseAbilities.Where(ab => ab == ability).Count();
+        
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
     }

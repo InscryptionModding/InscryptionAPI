@@ -1,6 +1,7 @@
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
+using InscryptionAPI.Pelts;
 using System.Collections;
 using UnityEngine;
 using static DiskCardGame.TextDisplayer;
@@ -69,6 +70,24 @@ public static class DialogueManager
 
         Add(pluginGUID, ev);
         return ev;
+    }
+
+    public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, PeltManager.PeltData peltData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateTraderPeltsEvent(pluginGUID, peltData.peltTierName ?? PeltManager.GetTierNameFromData(peltData), lines, repeatLines);
+    }
+    public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, string peltTierName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateEvent(pluginGUID, "TraderPelts" + peltTierName, lines, repeatLines);
+    }
+
+    public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, RegionData regionData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateRegionIntroductionEvent(pluginGUID, regionData.name, lines, repeatLines);
+    }
+    public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, string regionName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
+    {
+        return GenerateEvent(pluginGUID, "Region" + regionName, lines, repeatLines);
     }
 
     public static IEnumerator PlayDialogueEventSafe(string eventId,

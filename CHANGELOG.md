@@ -1,5 +1,85 @@
 # Changelog
 
+<details>
+<summary>View Changelog</summary>
+
+## 2.18.1
+- Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
+- Custom regions now store their mod GUID
+- Fixed BoxCollider null reference during Act 3 Build-A-Card-Sequencer
+- Fixed Act 3 bone displayer screen changing to static whenever P03 changes their face
+
+## 2.18.0
+- Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
+- Fixed IModifyDamageTaken priority sorting being reversed
+- Fixed null errors in TakeDamage and custom trigger calls
+- Added extension methods for getting emission portraits, setting animated portrait
+- Added CustomFields helper for associating data with objects or classes
+- Added IModifyDirectDamage, IOnTurnEndInQueue custom triggers
+- Custom Tribes now store their name and GUID
+
+## 2.17.0
+- Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
+- Added ability interfaces IModifyDamageTaken, IPreTakeDamage, which trigger at the start of PlayableCard.TakeDamage
+- Added PlayableCard extension method ResetShield(Ability) for only resetting shields belonging to a certain ability
+- Added ShieldManager class and changed how shields are managed in the game's logic
+- Added abstract classes DamageShieldBehaviour and ActivatedDamageShieldBehaviour
+- Added support for adding alternate portraits for SteelTrap activation and broken shields
+- Added portrait setters SetSteelTrapPortrait(), SetBrokenShieldPortrait(), SetPixelSteelTrapPortrait(), SetPixelBrokenShieldPortrait()
+- Added support for adding new language translations
+- Added AbilityInfo extension method SetHideSingleStacks(), affecting how stacking sigils are affected by being hidden (see wiki)
+- DeathShield ability now has a custom AbilityBehaviour attached to it
+- DeathShield ability is no longer passive, and can stack
+- TakeDamage trigger now requires damage to be above 0 to activate
+- Cards can no longer lose shields from attacks that deal 0 damage
+- Damage dealt to cards can no longer go below 0
+- Updated the wiki with sections on the additions
+- Zombie Parrot is now part of the Avian tribe
+
+## 2.16.1
+- Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
+
+## 2.16.0
+- Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
+- Added out-of-turn (cards attacking outside of their owner's turn) damage support
+- Added PlayableCard extension method GetAbilityStacks()
+- Added PlayableCard extension method TransformIntoCardInHand()
+- Moved SlotAttackSlotFixes and SelfAttackDamagePatch from community patches to the API, renamed to SlotAttackSlotPatches and DoCombatPhasePatches respectively
+- Made community patch method RandomAbilityPatches.GetRandomAbility public
+
+## 2.15.2
+- Fixed cards not evolving correctly if the Fledgling sigil was obtained via card mods (card merge, totem, etc.)
+- Moved the Squirrel Orbit community patch into the main API
+- Added SetTransformCardId(), GetTransformerCardId() for controlling the Transformer evolution separate of the standard evolution
+- Transformer sigil will now also check for a card's API-set TransformerCardId if no card mod is found
+- Transformer sigil now also adjusts Blood and Bone costs when transforming
+- Transformer sigil now correctly works for cards without a defined evolution/transformation
+
+## 2.15.1
+- Fixed Transformer sigil disappearing upon transformation in certain scenarios
+- Fixed Act 3 Bone Display checking the wrong card cost, resulting in the display always appearing
+- Fixed Act 3 Bone Display null error in certain Acts
+
+## 2.15.0
+- Fixed friend cards created by G0LLY not having any mods
+- Reverted previous change to cloned CardInfos
+- Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
+- Added cost display support for Act 3
+- Added bone counter for Act 3
+
+## 2.14.5
+- Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
+- Fixed certain card mods duplicating when the card evolve
+- Added ResourcesManager.RemoveMaxEnergy, ResourcesManager.ShowRemoveMaxEnergy extension methods
+
+## 2.14.4
+- Fixed the first energy cell remaining closed in Act 1 when battle starts
+- Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
+- Added extension method PeltData.SetTierName
+- The Trader will now speak the correct name of custom pelts when trading with them
+- Added DialogueManager.GenerateTraderPeltsEvent for creating custom dialogue events spoken by the Trader when trading a custom pelt
+- Added DialogueManager.GenerateRegionIntroEvent for creating the dialogue event played upon entering a custom region
+
 ## 2.14.3
 - Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
 - Fixed dynamic costs still not working in Act 2
@@ -392,3 +472,5 @@
 
 ## v1.1
 - Hooked into a much more sensible method to load the cards into the card pool.
+
+</details>

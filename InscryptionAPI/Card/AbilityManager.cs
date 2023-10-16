@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
+using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -234,6 +235,21 @@ public static class AbilityManager
             if (Part2ModularAbilities.BasePart2Modular.Contains(ability.ability))
                 ability.SetDefaultPart2Ability();
 
+            if (name == "DeathShield")
+            {
+                ability.SetPassive(false);
+                ability.SetCanStack(true);
+                ability.SetHideSingleStacks(true);
+                baseGame.Add(new FullAbility
+                (
+                    null,
+                    ability.ability,
+                    ability,
+                    typeof(APIDeathShield),
+                    useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
+                ));
+                continue;
+            }
             baseGame.Add(new FullAbility
             (
                 null,
@@ -561,17 +577,18 @@ public static class AbilityManager
     {
         yield return enumerator;
 
+        // re-add these abilities to correct stacking effects
         List<Ability> abilities = new();
 
         for (int i = 0; i < __instance.TriggerHandler.triggeredAbilities.Count; i++)
         {
             AbilityInfo info = AllAbilityInfos.AbilityByID(__instance.TriggerHandler.triggeredAbilities[i].Item1);
-
-            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and triggers once
+            if (info.canStack && info.GetTriggersOncePerStack()) // if can stack and is marked to only trigger once
             {
                 if (!abilities.Contains(__instance.TriggerHandler.triggeredAbilities[i].Item1))
                     abilities.Add(__instance.TriggerHandler.triggeredAbilities[i].Item1);
 
+                // remove the first trigger
                 __instance.TriggerHandler.triggeredAbilities.Remove(__instance.TriggerHandler.triggeredAbilities[i]);
             }
         }
@@ -632,7 +649,7 @@ public static class AbilityManager
         // Log(info2);
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
         for (int i = 0; i < codes.Count; i++)
@@ -656,4 +673,198 @@ public static class AbilityManager
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
     }
 
+    #region Remove Duplicate Evolve Mods
+    [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> EvolveDoesntCopyMods(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+
+        for (int i = 0; i < codes.Count; i++)
+        {
+            if (codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
+            {
+                object operand = codes[i].operand;
+                MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveDuplicateMods),
+                    new Type[] { typeof(Evolve), typeof(CardInfo) });
+
+                i += 2;
+
+                codes.Insert(i, new(OpCodes.Ldloc_1));
+                codes.Insert(i++, new(OpCodes.Ldarg_0));
+                codes.Insert(i++, new(OpCodes.Ldfld, operand));
+                codes.Insert(i++, new(OpCodes.Call, customMethod));
+                break;
+            }
+        }
+
+        return codes;
+    }
+    private static void RemoveDuplicateMods(Evolve instance, CardInfo evolution)
+    {
+        evolution.Mods.RemoveAll(x => instance.Card.Info.Mods.Contains(x));
+    }
+    #endregion
+
+    #region Retain Evolve Mods Order
+    [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> RetainEvolveModsOrder(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+
+        for (int i = 0; i < codes.Count; i++)
+        {
+            // Find the start of the foreach loop
+            if (codes[i].opcode != OpCodes.Stloc_S || codes[i-1].operand.ToString() != "Enumerator GetEnumerator()") continue;
+            
+            MethodInfo getCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get)).MakeGenericMethod(new Type[]{typeof(int)});
+            MethodInfo setCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
+            i++;
+
+            // Create a variable 'i' at the start of the loop and set = 0
+            codes.Insert(i++, new(OpCodes.Ldloc_1));
+            codes.Insert(i++, new(OpCodes.Ldstr, "i"));
+            codes.Insert(i++, new(OpCodes.Ldc_I4_0));
+            codes.Insert(i++, new(OpCodes.Box, typeof(int)));
+            codes.Insert(i++, new(OpCodes.Call, setCustomField));
+
+            for (int j = i + 1; j < codes.Count; j++)
+            {
+                // Find where the mods are added to the evolved card
+                if (codes[j].opcode != OpCodes.Callvirt || codes[j].operand.ToString() != "Void Add(DiskCardGame.CardModificationInfo)") continue;
+                j--;
+
+                // Load variable 'i'
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Call, getCustomField));
+
+                // Replace call to "Add" with a call to "Insert" 
+                j++;
+                codes[j++].operand = AccessTools.Method(typeof(List<CardModificationInfo>), nameof(List<CardModificationInfo>.Insert));
+
+                // Increment i by 1
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Call, getCustomField));
+                codes.Insert(j++, new(OpCodes.Ldc_I4_1));
+                codes.Insert(j++, new(OpCodes.Add));
+                codes.Insert(j++, new(OpCodes.Box, typeof(int)));
+                codes.Insert(j++, new(OpCodes.Call, setCustomField));
+
+                break;    
+            }
+
+            break;
+        }
+
+        return codes;
+    }
+    #endregion
+
+    #region Better Transformer
+    [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetBeastModeStatsMod))]
+    private static void ModifyOtherTransformerCosts(ref CardModificationInfo __result, CardInfo beastModeCard, CardInfo botModeCard)
+    {
+        __result.SetBloodCost(botModeCard.BloodCost - beastModeCard.BloodCost)
+            .SetBonesCost(botModeCard.BonesCost - beastModeCard.BonesCost);
+
+        // no way of nullifying specific gem costs so we leave this out for now
+        // __result.SetGemsCost(new List<GemType>(beastModeCard.GemsCost.FindAll(x => !botModeCard.GemsCost.Contains(x))));
+    }
+    [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetTransformCardInfo))]
+    private static void ChangeTransformerInfoMethod(Transformer __instance, ref CardInfo __result)
+    {
+        __result = NewGetTransformCardInfo(__instance.Card);
+    }
+    private static CardInfo NewGetTransformCardInfo(PlayableCard card)
+    {
+        // mods carry over when transforming, so we need to make sure that the name isn't the current card name
+        // so we don't end up just transforming into the same card over and over again
+        string transformCardId = card.Info.Mods.Find(x => !string.IsNullOrEmpty(x.transformerBeastCardId) && x.transformerBeastCardId != card.Info.name)?.transformerBeastCardId;
+
+        transformCardId ??= card.Info.GetTransformerCardId(); // use the API-defined TransformerCardId
+        transformCardId ??= card.Info.evolveParams?.evolution?.name; // use the evolution params
+        transformCardId ??= "CXformerAdder"; // use Robo-Adder as a fallback
+
+        CardInfo cardByName = CardLoader.GetCardByName(transformCardId);
+        CardModificationInfo beastModeStatsMod = Transformer.GetBeastModeStatsMod(cardByName, card.Info);
+        beastModeStatsMod.nameReplacement = card.Info.DisplayedNameEnglish;
+        beastModeStatsMod.nonCopyable = true;
+        cardByName.Mods.Add(beastModeStatsMod);
+        CardModificationInfo item = new(Ability.Transformer)
+        {
+            nonCopyable = true
+        };
+        cardByName.Mods.Add(item);
+        cardByName.SetEvolve(card.Info, 1);
+
+        if (card.Info.HasSpecialAbility(SpecialTriggeredAbility.TalkingCardChooser))
+        {
+            card.RenderInfo.prefabPortrait = null;
+            card.RenderInfo.hidePortrait = false;
+            card.ClearAppearanceBehaviours();
+            Singleton<CardRenderCamera>.Instance.StopLiveRenderCard(card.StatsLayer);
+        }
+        return cardByName;
+    }
+    #endregion
+
+    #region Better Squirrel Orbit
+    [HarmonyPatch(typeof(SquirrelOrbit), nameof(SquirrelOrbit.OnUpkeep))]
+    [HarmonyPrefix]
+    private static bool FixSquirrelOrbit(SquirrelOrbit __instance, ref IEnumerator __result)
+    {
+        __result = BetterSquirrelOrbit(__instance);
+        return false;
+    }
+
+    private static IEnumerator BetterSquirrelOrbit(SquirrelOrbit instance)
+    {
+        List<CardSlot> affectedSlots = new();
+
+        if (instance.Card.HasTrait(Trait.Giant))
+            affectedSlots = Singleton<BoardManager>.Instance.GetSlotsCopy(instance.Card.OpponentCard);
+        else
+            affectedSlots = Singleton<BoardManager>.Instance.AllSlotsCopy;
+
+        affectedSlots.RemoveAll(x => !x.Card || !x.Card.IsAffectedByTidalLock());
+        if (affectedSlots.Count == 0)
+            yield break;
+
+        instance.Card.Anim.LightNegationEffect();
+        yield return new WaitForSeconds(0.2f);
+
+        foreach (CardSlot slot in affectedSlots)
+        {
+            PlayableCard item = slot.Card;
+            Singleton<ViewManager>.Instance.SwitchToView(View.Board);
+            yield return new WaitForSeconds(0.25f);
+            yield return item.Die(false);
+            yield return new WaitForSeconds(0.1f);
+
+            if (instance.Card.HasTrait(Trait.Giant))
+                Singleton<ViewManager>.Instance.SwitchToView(View.OpponentQueue);
+
+            yield return new WaitForSeconds(0.1f);
+
+            if (instance.Card.HasSpecialAbility(SpecialTriggeredAbility.GiantMoon))
+            {
+                instance.FindMoonPortrait();
+                instance.moonPortrait.InstantiateOrbitingObject(item.Info);
+            }
+
+            if (instance.HasLearned)
+                yield return new WaitForSeconds(0.5f);
+            else
+            {
+                yield return new WaitForSeconds(1f);
+                yield return instance.LearnAbility();
+            }
+        }
+    }
+    #endregion
 }

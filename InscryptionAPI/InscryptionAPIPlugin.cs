@@ -9,6 +9,7 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Items;
+using InscryptionAPI.Pelts;
 using InscryptionAPI.PixelCard;
 using InscryptionAPI.Regions;
 using InscryptionAPI.Totems;
@@ -26,7 +27,9 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.14.3";
+    public const string ModVer = "2.18.1";
+
+    public static string Directory = "";
 
     internal static ConfigEntry<bool> configOverrideArrows;
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
@@ -57,7 +60,8 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     private void OnEnable()
     {
         Logger = base.Logger;
-
+        Directory = Path.GetDirectoryName(Info.Location);
+        
         HarmonyInstance.PatchAll(typeof(InscryptionAPIPlugin).Assembly);
     }
 
@@ -110,6 +114,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         ResyncAll();
         CardManager.AuditCardList();
         PixelCardManager.Initialise();
+        PeltManager.CreateDialogueEvents();
         Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 

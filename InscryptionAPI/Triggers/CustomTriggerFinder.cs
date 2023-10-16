@@ -49,7 +49,7 @@ public static class CustomTriggerFinder
         var all = FindGlobalTriggers<T>(triggerFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
             }
@@ -73,7 +73,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnCard<T>(handler);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
             }
@@ -108,7 +108,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnBoard<T>(triggerFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
             }
@@ -128,7 +128,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersInHand<T>();
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 yield return CustomTriggerSequence(trigg as TriggerReceiver, trigger(trigg));
             }
@@ -153,7 +153,7 @@ public static class CustomTriggerFinder
         var all = FindGlobalTriggers<T>(collectFromFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 ret.Add((trigg as TriggerReceiver, collect(trigg)));
             }
@@ -176,7 +176,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnBoard<T>(collectFromFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 ret.Add((trigg as TriggerReceiver, collect(trigg)));
             }
@@ -198,7 +198,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersInHand<T>();
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 ret.Add((trigg as TriggerReceiver, collect(trigg)));
             }
@@ -235,7 +235,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnCard<T>(self);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 ret.Add((trigg as TriggerReceiver, collect(trigg)));
             }
@@ -259,7 +259,7 @@ public static class CustomTriggerFinder
         var all = FindGlobalTriggers<T>(triggerFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 called.Add(trigg as TriggerReceiver);
                 call(trigg);
@@ -285,7 +285,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnBoard<T>(triggerFacedown);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 called.Add(trigg as TriggerReceiver);
                 call(trigg);
@@ -310,7 +310,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersInHand<T>();
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 called.Add(trigg as TriggerReceiver);
                 call(trigg);
@@ -346,7 +346,7 @@ public static class CustomTriggerFinder
         var all = FindTriggersOnCard<T>(self);
         foreach (T trigg in all)
         {
-            if (respond(trigg) && (trigg as TriggerReceiver) != null)
+            if ((trigg as TriggerReceiver) != null && respond(trigg))
             {
                 called.Add(trigg as TriggerReceiver);
                 call(trigg);
@@ -464,4 +464,12 @@ public static class CustomTriggerFinder
             yield return recv;
         }
     }
+
+    /// <summary>
+    /// Finds all trigger recievers on a cards in the opponent's queue
+    /// </summary>
+    /// <typeparam name="T">The type of reciever to search for</typeparam>
+    /// <returns>All trigger recievers of type T in the opponent's queue</returns>
+    public static IEnumerable<T> FindTriggersInQueue<T>() =>
+		TurnManager.Instance?.Opponent?.Queue.Where(card => card.TryGetComponent(out T _)).Select(card => card.GetComponent<T>()) ?? new T[]{};
 }

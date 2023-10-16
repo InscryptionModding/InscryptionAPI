@@ -165,20 +165,19 @@ public static class AbilityExtensions
     /// Sets the icon that will be displayed for this ability icon in Act 2.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
-    /// <param name="icon">A 17x17 texture containing the icon .</param>
+    /// <param name="icon">A 17x17 or 22x10 texture containing the icon; for regular and activated sigil icons respectively.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
     /// <returns>The same ability so a chain can continue.</returns>
     public static AbilityInfo SetPixelAbilityIcon(this AbilityInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
-        if (!filterMode.HasValue)
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon);
-        else
-            info.pixelIcon = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelAbilityIcon, filterMode.Value);
+        TextureHelper.SpriteType spriteType = icon.width == 22 ? TextureHelper.SpriteType.PixelActivatedAbilityIcon : TextureHelper.SpriteType.PixelAbilityIcon;
+
+        info.pixelIcon = TextureHelper.ConvertTexture(icon, spriteType, filterMode ?? FilterMode.Point);
         return info;
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the ability. Duplicate abilities will not be added.
+    /// Adds one or more metacategories to the ability. Duplicate categories will not be added.
     /// </summary>
     /// <param name="info">The instance of AbilityInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
@@ -193,7 +192,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Adds one or more metacategories to the stati icon. Duplicate abilities will not be added.
+    /// Adds one or more metacategories to the stati icon. Duplicate categories will not be added.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
@@ -372,6 +371,41 @@ public static class AbilityExtensions
     public static bool GetTriggersOncePerStack(this AbilityInfo abilityInfo)
     {
         return abilityInfo.GetExtendedPropertyAsBool("TriggersOncePerStack") ?? false;
+    }
+    #endregion
+
+    #region HideSingleStacks
+    /// <summary>
+    /// Sets an ability to only have one stack of it be hidden whenever the ability is added to a card status's hiddenAbilities field.
+    /// Adding the same ability to hiddenAbilities will hide more stacks. Only affects cards that can stack.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="hideSingleStacks">Whether all stacks of this ability will be hidden when added to hiddenAbilities.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetHideSingleStacks(this AbilityInfo abilityInfo, bool hideSingleStacks = true)
+    {
+        abilityInfo.SetExtendedProperty("HideSingleStacks", hideSingleStacks);
+        return abilityInfo;
+    }
+
+    /// <summary>
+    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">Ability to access.</param>
+    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    public static bool GetHideSingleStacks(this Ability ability)
+    {
+        AbilityInfo abilityInfo = AllAbilityInfos.AbilityByID(ability);
+        return abilityInfo.GetHideSingleStacks();
+    }
+    /// <summary>
+    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    public static bool GetHideSingleStacks(this AbilityInfo abilityInfo)
+    {
+        return abilityInfo.GetExtendedPropertyAsBool("HideSingleStacks") ?? false;
     }
     #endregion
 

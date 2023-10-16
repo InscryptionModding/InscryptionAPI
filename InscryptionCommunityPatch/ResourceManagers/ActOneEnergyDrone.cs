@@ -197,14 +197,14 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void ResourcesManager_Setup(ResourcesManager __instance)
     {
-        if (EnergyConfig.ConfigDrone)
-            PatchPlugin.Logger.LogDebug("Setting up extra resources for the drone.");
-
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             ResourceDrone.Instance.SetOnBoard(true, false);
             if (EnergyConfig.ConfigDroneMox)
+            {
+                PatchPlugin.Logger.LogDebug("Setting up extra resources for the drone.");
                 ResourceDrone.Instance.Gems.SetAllGemsOn(false, true);
+            }
         }
     }
 
@@ -215,11 +215,8 @@ public static class EnergyDrone
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int cellsToOpen = __instance.PlayerMaxEnergy - 1;
-            if (cellsToOpen > 0)
-            {
-                ResourceDrone.Instance.OpenCell(cellsToOpen);
-                yield return new WaitForSeconds(0.4f);
-            }
+            ResourceDrone.Instance.OpenCell(cellsToOpen);
+            yield return new WaitForSeconds(0.4f);
         }
 
         yield return result;

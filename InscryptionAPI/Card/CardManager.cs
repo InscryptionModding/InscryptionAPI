@@ -24,6 +24,10 @@ public static class CardManager
    public class CardAltPortraits
     {
         public Sprite PixelAlternatePortrait = null;
+        public Sprite SteelTrapPortrait = null;
+        public Sprite PixelSteelTrapPortrait = null;
+        public Sprite BrokenShieldPortrait = null;
+        public Sprite PixelBrokenShieldPortrait = null;
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
     private static readonly ConditionalWeakTable<CardInfo, CardAltPortraits> CardAlternatePortraits = new();
@@ -51,6 +55,8 @@ public static class CardManager
             card.SetBaseGameCard(true);
             if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit")
                 card.SetAffectedByTidalLock();
+            else if (card.name == "SkeletonParrot")
+                card.AddTribes(Tribe.Bird);
 
             yield return card;
         }
@@ -69,13 +75,25 @@ public static class CardManager
         foreach (CardInfo card in cards)
         {
             if (card.evolveParams != null && card.evolveParams.evolution != null)
-                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name);
+            {
+                List<CardModificationInfo> mods = card.evolveParams.evolution.Mods;
+                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name).Clone() as CardInfo;
+                card.evolveParams.evolution.Mods = mods;
+            }
 
-            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null)
-                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name);
+            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null) 
+            {
+                List<CardModificationInfo> mods = card.iceCubeParams.creatureWithin.Mods;
+                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name).Clone() as CardInfo;
+                card.iceCubeParams.creatureWithin.Mods = mods;
+            }
 
             if (card.tailParams != null && card.tailParams.tail != null)
-                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name);
+            {
+                List<CardModificationInfo> mods = card.tailParams.tail.Mods;
+                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name).Clone() as CardInfo;
+                card.tailParams.tail.Mods = mods;
+            }
         }
 
         AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
@@ -262,12 +280,20 @@ public static class CardManager
         }
     }
 
-    internal static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
+    public static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
     internal static CardAltPortraits GetAltPortraits(this CardInfo card) => CardAlternatePortraits.GetOrCreateValue(card);
     
     public static Sprite PixelAlternatePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelAlternatePortrait;
+    }
+    public static Sprite SteelTrapPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().SteelTrapPortrait;
+    }
+    public static Sprite BrokenShieldPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().BrokenShieldPortrait;
     }
 
     private const string ERROR = "ERROR";
@@ -353,14 +379,16 @@ public static class CardManager
         // just ensures that clones of a card have the same extension properties
         CardExtensionProperties.Add((CardInfo)__result, CardExtensionProperties.GetOrCreateValue(__instance));
         CardAlternatePortraits.Add((CardInfo)__result, CardAlternatePortraits.GetOrCreateValue(__instance));
-        // clone the mods too
+        // clone all the mods too
+        // DO NOT CHANGE THIS
+        // if there are errors due to this, address them where they occur, NOT HERE
+        // I've spent way too much time trying to make this work and it's easier to just clone everything
         CardInfo result = (CardInfo)__result;
         result.Mods = new(__instance.Mods);
     }
 
 
     // prevent duplicate mods from being added as a result of ClonePostfix
-    // hopefully won't cause any problems, cause otherwise we'll probably need a transpiler or something like that oh joy
     [HarmonyPrefix, HarmonyPatch(typeof(DeckInfo), nameof(DeckInfo.ModifyCard))]
     private static bool ModifyCardDontAddDupes(CardInfo card, CardModificationInfo mod) => !card.Mods.Contains(mod);
 
@@ -387,7 +415,7 @@ public static class CardManager
 
     [HarmonyPatch(typeof(CardLoader), "GetCardByName", new Type[] { typeof(string) })]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this
 
@@ -398,7 +426,7 @@ public static class CardManager
         // return CardLoader.Clone(LogCardInfo(ScriptableObjectLoader<CardInfo>.AllData.Find((CardInfo x) => x.name == name)));
 
         // ===
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         MethodInfo CloneMethodInfo = SymbolExtensions.GetMethodInfo(() => CardLoader.Clone(null));
         MethodInfo LogCardInfoMethodInfo = SymbolExtensions.GetMethodInfo(() => LogCardInfo(null, null));
