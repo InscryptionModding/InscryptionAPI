@@ -706,6 +706,65 @@ public static class AbilityManager
     }
     #endregion
 
+    #region Retain Evolve Mods Order
+    [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
+    [HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> RetainEvolveModsOrder(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+
+        for (int i = 0; i < codes.Count; i++)
+        {
+            // Find the start of the foreach loop
+            if (codes[i].opcode != OpCodes.Stloc_S || codes[i-1].operand.ToString() != "Enumerator GetEnumerator()") continue;
+            
+            MethodInfo getCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get)).MakeGenericMethod(new Type[]{typeof(int)});
+            MethodInfo setCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
+            i++;
+
+            // Create a variable 'i' at the start of the loop and set = 0
+            codes.Insert(i++, new(OpCodes.Ldloc_1));
+            codes.Insert(i++, new(OpCodes.Ldstr, "i"));
+            codes.Insert(i++, new(OpCodes.Ldc_I4_0));
+            codes.Insert(i++, new(OpCodes.Box, typeof(int)));
+            codes.Insert(i++, new(OpCodes.Call, setCustomField));
+
+            for (int j = i + 1; j < codes.Count; j++)
+            {
+                // Find where the mods are added to the evolved card
+                if (codes[j].opcode != OpCodes.Callvirt || codes[j].operand.ToString() != "Void Add(DiskCardGame.CardModificationInfo)") continue;
+                j--;
+
+                // Load variable 'i'
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Call, getCustomField));
+
+                // Replace call to "Add" with a call to "Insert" 
+                j++;
+                codes[j++].operand = AccessTools.Method(typeof(List<CardModificationInfo>), nameof(List<CardModificationInfo>.Insert));
+
+                // Increment i by 1
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Ldloc_1));
+                codes.Insert(j++, new(OpCodes.Ldstr, "i"));
+                codes.Insert(j++, new(OpCodes.Call, getCustomField));
+                codes.Insert(j++, new(OpCodes.Ldc_I4_1));
+                codes.Insert(j++, new(OpCodes.Add));
+                codes.Insert(j++, new(OpCodes.Box, typeof(int)));
+                codes.Insert(j++, new(OpCodes.Call, setCustomField));
+
+                break;    
+            }
+
+            break;
+        }
+
+        return codes;
+    }
+    #endregion
+
     #region Better Transformer
     [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetBeastModeStatsMod))]
     private static void ModifyOtherTransformerCosts(ref CardModificationInfo __result, CardInfo beastModeCard, CardInfo botModeCard)
