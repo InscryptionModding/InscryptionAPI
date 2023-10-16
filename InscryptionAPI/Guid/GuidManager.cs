@@ -71,4 +71,10 @@ public static class GuidManager
 
         return *(T*)&enumValue;
     }
+    
+    public static bool TryGetGuidAndKeyEnumValue<T>(T value, out string guid, out string key) where T : System.Enum
+    {
+        string prefix = $"{typeof(T).Name}";
+        return ModdedSaveManager.SaveData.TryGetGuidAndKey(prefix, value.ToString(), out guid, out key);
+    }
 }
