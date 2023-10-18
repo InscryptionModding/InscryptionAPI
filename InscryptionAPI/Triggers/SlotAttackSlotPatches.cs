@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -14,32 +15,65 @@ public static class SlotAttackSlotPatches
 {
     private const string name_GlobalTrigger = "DiskCardGame.GlobalTriggerHandler get_Instance()";
     private const string name_GetCard = "DiskCardGame.PlayableCard get_Card()";
+    private const string name_GetAttack = "Int32 get_Attack()";
     private const string name_OpposingSlot = "DiskCardGame.CardSlot opposingSlot";
     private const string name_CombatPhase = "DiskCardGame.CombatPhaseManager+<>c__DisplayClass5_0 <>8__1";
     private const string name_AttackingSlot = "DiskCardGame.CardSlot attackingSlot";
     private const string name_CanAttackDirectly = "Boolean CanAttackDirectly(DiskCardGame.CardSlot)";
+    private const string name_VisualizeCardAttackingDirectly = "System.Collections.IEnumerator VisualizeCardAttackingDirectly(DiskCardGame.CardSlot, DiskCardGame.CardSlot, Int32)";
+
+    private const string modifiedAttackCustomField = "modifiedAttack";
+
+    private static readonly MethodInfo method_GetCard = AccessTools.PropertyGetter(typeof(CardSlot), nameof(CardSlot.Card));
+
+    private static readonly MethodInfo method_NewDamage = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
+        new Type[] { typeof(CardSlot), typeof(CardSlot) });
+
+    private static readonly MethodInfo method_NewTriggers = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.TriggerOnDirectDamageTriggers),
+        new Type[] { typeof(PlayableCard), typeof(CardSlot) });
+
+    private static readonly MethodInfo method_SetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
+
+    private static readonly MethodInfo method_GetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get),
+        new Type[] { typeof(object), typeof(string) }, new Type[] { typeof(int) });
 
     // make this public so people can alter it themselves
     public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
     {
+        int originalDamage = attackingSlot.Card.Attack;
+        int damage = originalDamage;
+
+        // Trigger IModifyDirectDamage first and treat the new damage as the attacking card's attack
+        var modifyDirectDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDirectDamage>(true).ToList();
+        modifyDirectDamage.Sort((a, b) => 
+            b.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
+            - a.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
+        );
+
+        foreach (var modify in modifyDirectDamage)
+        {
+            if (modify.RespondsToModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage))
+                damage = modify.OnModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage);  
+        }
+
         // first thing we check for is self-damage; if the attacking slot is on the same side as the opposing slot, deal self-damage
         if (attackingSlot.IsPlayerSlot == opposingSlot.IsPlayerSlot)
-            return -attackingSlot.Card.Attack;
+            return -damage;
 
         // this is some new stuff to account for out-of-turn damage
         else if (TurnManager.Instance.IsPlayerTurn)
         {
             // if an opponent is attacking during the player's turn, deal positive/negative damage depending on what slot is being attacked
             if (attackingSlot.IsOpponentSlot())
-                return opposingSlot.IsPlayerSlot ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+                return opposingSlot.IsPlayerSlot ? -damage : damage;
         }
         else if (attackingSlot.IsPlayerSlot)
         {
             // if a player is attacking during the opponent's turn, deal positive/negative damage depending on what slot is being attacked
-            return opposingSlot.IsOpponentSlot() ? -attackingSlot.Card.Attack : attackingSlot.Card.Attack;
+            return opposingSlot.IsOpponentSlot() ? -damage : damage;
         }
 
-        return attackingSlot.Card.Attack;
+        return damage;
     }
 
     // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
@@ -52,12 +86,19 @@ public static class SlotAttackSlotPatches
         for (int a = 0; a < codes.Count; a++)
         {
             // separated into their own methods so I can save on eye strain and brain fog
-            if (DirectSelfDamageCheck(codes, a))
+            if (ModifyDirectDamageCheck(codes, ref a))
             {
-                for (int b = a + 1; b < codes.Count; b++)
+                for (int b = a; b < codes.Count; b++)
                 {
-                    if (OpposingCardNullCheck(codes, b))
+                    if (CallTriggerOnDirectDamage(codes, ref b))
+                    {
+                        for (int c = b; c < codes.Count; c++)
+                        {
+                            if (OpposingCardNullCheck(codes, c))
+                                break;
+                        }
                         break;
+                    }
                 }
                 break;
             }
@@ -116,39 +157,20 @@ public static class SlotAttackSlotPatches
                 }
             }
         }
+        
         return false;
     }
 
-    private static bool DirectSelfDamageCheck(List<CodeInstruction> codes, int index)
+    // Modifies direct attack damage and stores the new damage in a custom field
+    private static bool ModifyDirectDamageCheck(List<CodeInstruction> codes, ref int index)
     {
         if (codes[index].opcode == OpCodes.Callvirt && codes[index].operand.ToString() == name_CanAttackDirectly)
         {
             int startIndex = index + 2;
 
-            // we want to turn this:
-            // ldloc.1
-            // ldloc.1
-            // call getDamage
-            // ldarg.0
-            // ldfld displayClass
-            // ldfld attackingSlot
-            // callvirt getCard
-            // callvirt getAttack
-            // call setDamage
-
-            // into this:
-            // ldloc.1
-            // ldloc.1
-            // call getDamage
-            // ldarg.0
-            // ldfld displayClass
-            // ldfld attackingSlot
-            // ~ldarg.0
-            // ~ldfld opposingSlot
-            // +callvirt newDamage
-            // call setDamage
-
             object op_OpposingSlot = null;
+            object op_DisplayClass = null;
+            object op_AttackingSlot = null;
 
             // look backwards and retrieve opposingSlot
             for (int i = index - 1; i > 0; i--)
@@ -160,21 +182,118 @@ public static class SlotAttackSlotPatches
                 }
             }
 
-            // get the endIndex
-            for (int j = startIndex; j < codes.Count; j++)
+            // look forward and retrieve displayClass and attackingSlot
+            for (int i = startIndex; i < codes.Count; i++)
             {
-                if (codes[j].opcode == OpCodes.Callvirt && codes[j].operand.ToString() == name_GetCard)
+                if (op_DisplayClass == null && codes[i].operand?.ToString() == name_CombatPhase)
                 {
-                    MethodInfo customMethod = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
-                        new Type[] { typeof(CardSlot), typeof(CardSlot) });
-
-                    codes[j++] = new(OpCodes.Ldarg_0);
-                    codes[j++] = new(OpCodes.Ldfld, op_OpposingSlot);
-                    codes.Insert(j++, new(OpCodes.Callvirt, customMethod));
-                    return true;
+                    op_DisplayClass = codes[i].operand;
+                    op_AttackingSlot = codes[i+1].operand;
+                    break;
                 }
             }
+
+            int j = startIndex;
+            
+            // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot, this.OpposingSlot));
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
+            codes.Insert(j++, new(OpCodes.Callvirt, method_GetCard));
+            codes.Insert(j++, new(OpCodes.Ldstr, modifiedAttackCustomField));
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
+            codes.Insert(j++, new(OpCodes.Ldarg_0));
+            codes.Insert(j++, new(OpCodes.Ldfld, op_OpposingSlot));
+            codes.Insert(j++, new(OpCodes.Callvirt, method_NewDamage));
+            codes.Insert(j++, new(OpCodes.Box, typeof(int)));
+            codes.Insert(j++, new(OpCodes.Call, method_SetCustomField));
+
+            index = j;
+
+            // replace the next 2 occurances of get_Attack() with the custom field call
+            for (int c = 0; c < 2; c++) 
+            {
+                for (; j < codes.Count; j++) 
+                {
+                    if (codes[j].opcode != OpCodes.Callvirt || codes[j].operand.ToString() != name_GetAttack) continue;
+
+                    codes[j++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
+                    codes.Insert(j++, new(OpCodes.Callvirt, method_GetCustomField));
+
+                    index = j;
+                    break;
+                }
+            }
+
+            return true;
         }
         return false;
+    }
+
+    // Repalces the DealDamageDirectly trigger call with a call to TriggerOnDirectDamageTriggers
+    private static bool CallTriggerOnDirectDamage(List<CodeInstruction> codes, ref int index)
+    {
+        if (codes[index].opcode != OpCodes.Callvirt || codes[index].operand.ToString() != name_GetCard) return false;
+        int startIndex = ++index;
+
+        object op_OpposingSlot = null;
+
+        // look backwards and retrieve opposingSlot
+        for (int i = startIndex - 1; i > 0; i--)
+        {
+            if (op_OpposingSlot == null && codes[i].operand?.ToString() == name_OpposingSlot)
+            {
+                op_OpposingSlot = codes[i].operand;
+                break;
+            }
+        }
+
+        // look backwards for ldarg0 and duplicate it
+        for (int i = startIndex - 1; i > 0; i--)
+        {
+            if (codes[i].opcode == OpCodes.Ldarg_0)
+            {
+                codes.Insert(i, new(OpCodes.Ldarg_0));
+
+                index++;
+                startIndex++;
+
+                break;
+            }
+        }
+
+        for (int i = startIndex; i < codes.Count; i++)
+        {
+            if (codes[i].opcode != OpCodes.Ldc_I4_7) continue;
+
+            // remove the existing trigger call
+            codes.RemoveRange(startIndex, i - startIndex - 2);
+
+            // insert the call to our new trigger
+            codes.Insert(index++, new(OpCodes.Ldarg_0));
+            codes.Insert(index++, new(OpCodes.Ldfld, op_OpposingSlot));
+            codes.Insert(index++, new(OpCodes.Callvirt, method_NewTriggers));
+
+            break;
+        }
+
+        return true;
+    }
+
+    // Trigger both the vanilla trigger and the new trigger
+    private static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)
+    {
+        int damage = CustomFields.Get<int>(attacker, modifiedAttackCustomField);
+
+        // trigger the vanilla trigger
+        if (attacker.TriggerHandler.RespondsToTrigger(Trigger.DealDamageDirectly, new object[] { damage }))
+        {
+            yield return attacker.TriggerHandler.OnTrigger(Trigger.DealDamageDirectly, new object[] { damage });
+        }
+
+        // trigger the new modded trigger
+        yield return CustomTriggerFinder.TriggerAll<IOnCardDealtDamageDirectly>(false, x => x.RespondsToCardDealtDamageDirectly(attacker, opposingSlot, damage), x => x.OnCardDealtDamageDirectly(attacker, opposingSlot, damage));
     }
 }

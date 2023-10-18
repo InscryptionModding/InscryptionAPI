@@ -678,18 +678,125 @@ public interface IGetAttackingSlots
     public int TriggerPriority(bool playerIsAttacker, List<CardSlot> originalSlots);
 }
 
+/// <summary>
+/// Data collection trigger that modifies the damage taken by any card.
+/// Should be used instead of ICardTakenDamageModifier.
+/// </summary>
 public interface IModifyDamageTaken
 {
+    /// <summary>
+    /// Returns true if this should modify the amount of damage taken by a card.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>True if this should modify the amount of damage taken by a card.</returns>
     public bool RespondsToModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Returns the new amount of damage taken by a card.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>The new amount of damage taken by a card.</returns>
     public int OnModifyDamageTaken(PlayableCard target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Trigger priority. Higher numbers trigger first.
+    /// </summary>
+    /// <param name="target">The card that took damage.</param>
+    /// <param name="damage">The amount of damage to be delt. NOTE: THIS VALUE IS *NOT* UP TO DATE, GETTING PRIORITIES HAPPENS *BEFORE* THE MODIFICATION ITSELF.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <returns>The trigger priority int.</returns>
     public int TriggerPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 
+/// <summary>
+/// Trigger that is triggered right before a card takes damage.
+/// </summary>
 public interface IPreTakeDamage
 {
+    /// <summary>
+    /// Returns true if this should trigger before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns>True if this should trigger before a card takes damage.</returns>
     public bool RespondsToPreTakeDamage(PlayableCard source, int damage);
 
+    /// <summary>
+    /// Trigger whatever events you want to run before a card takes damage.
+    /// </summary>
+    /// <param name="source">The attacking card; The source of the damage.</param>
+    /// <param name="damage">The amount of damage to be delt.</param>
+    /// <returns></returns>
     public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
+}
+
+/// <summary>
+/// Data collection trigger that modifies the damage taken when directly attacked.
+/// </summary>
+public interface IModifyDirectDamage
+{
+    /// <summary>
+    /// Returns true if this should modify the amount of damage taken when directly attacked.
+    /// </summary>
+    /// <param name="target">The card slot targeted for the attack.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="originalDamage">The original amount of damage to be delt.</param>
+    /// <returns>True if this should modify the amount of damage taken when directly attacked.</returns>
+    public bool RespondsToModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int OnModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
+
+    public int TriggerPriority(CardSlot target, int damage, PlayableCard attacker);
+}
+
+/// <summary>
+/// Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works on cards in the opponent's queue.
+/// </summary>
+public interface IOnTurnEndInQueue
+{
+    /// <summary>
+    /// Returns true if this should trigger when the turn ends, but only if this card is in the opponent's queue.
+    /// </summary>
+    /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+    /// <returns>True if this should trigger when the turn ends, but only if this card is in the opponent's queue.</returns>
+    public bool RespondsToTurnEndInQueue(bool playerTurn);
+
+    /// <summary>
+    /// Trigger whatever events you want to run when the turn ends, but only if this card is in the opponent's queue.
+    /// </summary>
+    /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
+    /// <returns></returns>
+    public IEnumerator OnTurnEndInQueue(bool playerTurn);
+}
+
+/// <summary>
+/// Trigger that is triggered when a card deals direct damage.
+/// This is a replacement for the vanilla DealDamageDirectly trigger, which unlike the base-game trigger, triggers for all cards on the board and supplies more information.
+/// </summary>
+public interface IOnCardDealtDamageDirectly
+{
+    /// <summary>
+    /// Returns true if this should trigger when a card deals direct damage.
+    /// </summary>
+    /// <param name="attacker">The card that dealt the direct damage.</param>
+    /// <param name="opposingSlot">The card slot that was targeted for the direct attack.</param>
+    /// <param name="damage">The amount of direct damage delt.</param>
+    /// <returns>True if this should trigger when a card deals direct damage.</returns>
+    public bool RespondsToCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
+
+    /// <summary>
+    /// Trigger whatever events you want to run when a card deals direct damage.
+    /// </summary>
+    /// <param name="attacker">The card that dealt the direct damage.</param>
+    /// <param name="opposingSlot">The card slot that was targeted for the direct attack.</param>
+    /// <param name="damage">The amount of direct damage delt.</param>
+    /// <returns></returns>
+    public IEnumerator OnCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
 }
