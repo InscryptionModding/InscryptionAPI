@@ -274,7 +274,7 @@ public static class OpponentManager
         public static bool Prefix(Part1BossOpponent __instance)
         {
             // Show run method if scenery is disabled
-            if (InscryptionAPIPlugin.configHideBossScenery.Value)
+            if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
             {
                 __instance.sceneryObject = new GameObject("TemporaryScenary");
                 __instance.sceneryObject.AddComponent<Animation>();
@@ -326,7 +326,7 @@ public static class OpponentManager
 
         private static bool PlayAnimation(Animation animation, string key)
         {
-            if (InscryptionAPIPlugin.configHideBossScenery.Value)
+            if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
             {
                 InscryptionAPIPlugin.Logger.LogInfo("PlayAnimation false");
                 return false;

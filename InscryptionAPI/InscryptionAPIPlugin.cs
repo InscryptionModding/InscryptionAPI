@@ -27,12 +27,12 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.18.1";
+    public const string ModVer = "2.18.2";
 
     public static string Directory = "";
 
     internal static ConfigEntry<bool> configOverrideArrows;
-    internal static ConfigEntry<bool> configHideBossScenery;
+    internal static ConfigEntry<bool> configHideAct1BossScenery;
     internal static ConfigEntry<TotemManager.TotemTopState> configCustomTotemTopTypes;
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemTypes;
 
@@ -104,7 +104,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configCustomTotemTopTypes = Config.Bind("Totems", "Top Types", TotemManager.TotemTopState.CustomTribes, "If Vanilla, don't change totem tops; if CustomTribes, added custom tribes will use custom totem tops; if AllTribes then all totem tops will use a custom top.");
         configCustomItemTypes = Config.Bind("Items", "Types", ConsumableItemManager.ConsumableState.Custom, "If Vanilla, only vanilla items will be used; if Custom, added custom items will use custom models; if All then all items will use a custom model.");
         configOverrideArrows = Config.Bind("Menus", "Override Arrows", false, "When true, forces the challenge screen arrows to appear at the top of the screen instead of the sides.");
-        configHideBossScenery = Config.Bind("Optimization", "Hide Boss Scenery", false, "When true bosses will not spawn their scenery. (eg: Prospector trees) This can improve performance on low-end machines.");
+        configHideAct1BossScenery = Config.Bind("Optimization", "Hide Act 1 Scenery", false, "When true bosses will not spawn their scenery. (eg: Prospector's trees) This can improve performance on low-end machines.");
     }
 
     private void Start()
