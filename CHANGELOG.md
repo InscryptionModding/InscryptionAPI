@@ -3,6 +3,10 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.2
+- Added Config to disable boss scenery for optimization purposes
+- Exposed EncounterManager.NewEncounters for JSONLoader to replace existing Encounters
+
 ## 2.18.1
 - Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
 - Custom regions now store their mod GUID
