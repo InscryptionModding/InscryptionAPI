@@ -234,7 +234,14 @@ public static class CardManager
     /// Removes a custom card from the card pool. Cannot be used to remove base game cards.
     /// </summary>
     /// <param name="card">The card to remove.</param>
-    public static void Remove(CardInfo card) => NewCards.Remove(card);
+    public static void Remove(CardInfo card)
+    {
+        if (card == null) return;
+
+        CardInfo c;
+        while ((c = NewCards.SingleOrDefault(c => c.name == card.name)) != null)
+            NewCards.Remove(c);
+    }
 
     /// <summary>
     /// Adds a new card to the card pool.
