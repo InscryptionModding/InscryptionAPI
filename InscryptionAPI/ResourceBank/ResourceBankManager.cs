@@ -57,7 +57,7 @@ public static class ResourceBankManager
     }
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
-    public class ResourceBank_Awake
+    internal class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)
         {
