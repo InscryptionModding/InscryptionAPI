@@ -8,15 +8,16 @@
 - Fixed CardManager.Remove not actually removing cards
 - Exposed EncounterManager.NewEncounters
 - Fixed mods on card clones being lost during card sync
-- Act 1 energy drone is now correctly synced with the scale when Default Drone config is false
+- Added extension methods for setting the emissions for SteelTrap and BrokenShield alt portraits
 - Refactored Act 1 energy drone movement logic, added support for 'immediate' bool (Default Drone must be true)
 - Act 1 energy drone game object is now named 'Part1ResourceDrone'
+- Act 1 energy drone is now correctly synced with the scale when Default Drone config is false
 
 ## 2.18.1
-- Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
-- Custom regions now store their mod GUID
 - Fixed BoxCollider null reference during Act 3 Build-A-Card-Sequencer
 - Fixed Act 3 bone displayer screen changing to static whenever P03 changes their face
+- Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
+- Custom regions now store their mod GUID
 
 ## 2.18.0
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
