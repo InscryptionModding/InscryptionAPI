@@ -8262,6 +8262,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.EncounterManager.NewCardBlueprint
   nameWithType: EncounterManager.NewCardBlueprint
+- uid: InscryptionAPI.Encounters.EncounterManager.NewEncounters
+  name: NewEncounters
+  href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_NewEncounters
+  commentId: F:InscryptionAPI.Encounters.EncounterManager.NewEncounters
+  fullName: InscryptionAPI.Encounters.EncounterManager.NewEncounters
+  nameWithType: EncounterManager.NewEncounters
 - uid: InscryptionAPI.Encounters.EncounterManager.Remove(DiskCardGame.EncounterBlueprintData)
   name: Remove(EncounterBlueprintData)
   href: api/InscryptionAPI.Encounters.EncounterManager.html#InscryptionAPI_Encounters_EncounterManager_Remove_DiskCardGame_EncounterBlueprintData_
@@ -14082,25 +14088,6 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Resource.ResourceBankManager.AddDecal
   nameWithType: ResourceBankManager.AddDecal
-- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
-  name: ResourceBankManager.ResourceBank_Awake
-  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html
-  commentId: T:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
-  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake
-  nameWithType: ResourceBankManager.ResourceBank_Awake
-- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
-  name: Postfix(ResourceBank)
-  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html#InscryptionAPI_Resource_ResourceBankManager_ResourceBank_Awake_Postfix_ResourceBank_
-  commentId: M:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
-  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
-  nameWithType: ResourceBankManager.ResourceBank_Awake.Postfix(ResourceBank)
-- uid: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix*
-  name: Postfix
-  href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.html#InscryptionAPI_Resource_ResourceBankManager_ResourceBank_Awake_Postfix_
-  commentId: Overload:InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix
-  isSpec: "True"
-  fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceBank_Awake.Postfix
-  nameWithType: ResourceBankManager.ResourceBank_Awake.Postfix
 - uid: InscryptionAPI.Resource.ResourceBankManager.ResourceData
   name: ResourceBankManager.ResourceData
   href: api/InscryptionAPI.Resource.ResourceBankManager.ResourceData.html
