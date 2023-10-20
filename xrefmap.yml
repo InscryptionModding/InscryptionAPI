@@ -3291,6 +3291,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait
   nameWithType: CardExtensions.GetEmissiveAltPortrait
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo)
+  name: GetEmissiveBrokenShieldPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveBrokenShieldPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetEmissiveBrokenShieldPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait*
+  name: GetEmissiveBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveBrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveBrokenShieldPortrait
+  nameWithType: CardExtensions.GetEmissiveBrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait(DiskCardGame.CardInfo)
   name: GetEmissivePortrait(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissivePortrait_DiskCardGame_CardInfo_
@@ -3304,6 +3317,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetEmissivePortrait
   nameWithType: CardExtensions.GetEmissivePortrait
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo)
+  name: GetEmissiveSteelTrapPortrait(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveSteelTrapPortrait_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetEmissiveSteelTrapPortrait(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait*
+  name: GetEmissiveSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveSteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait
+  nameWithType: CardExtensions.GetEmissiveSteelTrapPortrait
 - uid: InscryptionAPI.Card.CardExtensions.GetExtendedProperty(DiskCardGame.CardInfo,System.String)
   name: GetExtendedProperty(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetExtendedProperty_DiskCardGame_CardInfo_System_String_
@@ -4601,6 +4627,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveAltPortrait
   nameWithType: CardExtensions.SetEmissiveAltPortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetEmissiveBrokenShieldPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveBrokenShieldPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetEmissiveBrokenShieldPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetEmissiveBrokenShieldPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetEmissiveBrokenShieldPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetEmissiveBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveBrokenShieldPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetEmissiveBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetEmissiveBrokenShieldPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetEmissiveBrokenShieldPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait*
+  name: SetEmissiveBrokenShieldPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveBrokenShieldPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait
+  nameWithType: CardExtensions.SetEmissiveBrokenShieldPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetEmissivePortrait(DiskCardGame.CardInfo,System.String)
   name: SetEmissivePortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissivePortrait_DiskCardGame_CardInfo_System_String_
@@ -4629,6 +4683,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetEmissivePortrait
   nameWithType: CardExtensions.SetEmissivePortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  name: SetEmissiveSteelTrapPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveSteelTrapPortrait_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.SetEmissiveSteelTrapPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  name: SetEmissiveSteelTrapPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Sprite)
+  nameWithType: CardExtensions.SetEmissiveSteelTrapPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name: SetEmissiveSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveSteelTrapPortrait_DiskCardGame_CardInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})
+  name.vb: SetEmissiveSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable<UnityEngine.FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait(DiskCardGame.CardInfo, UnityEngine.Texture2D, System.Nullable(Of UnityEngine.FilterMode))
+  nameWithType: CardExtensions.SetEmissiveSteelTrapPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetEmissiveSteelTrapPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait*
+  name: SetEmissiveSteelTrapPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveSteelTrapPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveSteelTrapPortrait
+  nameWithType: CardExtensions.SetEmissiveSteelTrapPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetEnergyCost(DiskCardGame.CardInfo,System.Nullable{System.Int32})
   name: SetEnergyCost(CardInfo, Nullable<Int32>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEnergyCost_DiskCardGame_CardInfo_System_Nullable_System_Int32__
