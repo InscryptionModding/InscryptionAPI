@@ -75,13 +75,25 @@ public static class CardManager
         foreach (CardInfo card in cards)
         {
             if (card.evolveParams != null && card.evolveParams.evolution != null)
-                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name);
+            {
+                List<CardModificationInfo> mods = card.evolveParams.evolution.Mods;
+                card.evolveParams.evolution = cards.CardByName(card.evolveParams.evolution.name).Clone() as CardInfo;
+                card.evolveParams.evolution.Mods = mods;
+            }
 
-            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null)
-                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name);
+            if (card.iceCubeParams != null && card.iceCubeParams.creatureWithin != null) 
+            {
+                List<CardModificationInfo> mods = card.iceCubeParams.creatureWithin.Mods;
+                card.iceCubeParams.creatureWithin = cards.CardByName(card.iceCubeParams.creatureWithin.name).Clone() as CardInfo;
+                card.iceCubeParams.creatureWithin.Mods = mods;
+            }
 
             if (card.tailParams != null && card.tailParams.tail != null)
-                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name);
+            {
+                List<CardModificationInfo> mods = card.tailParams.tail.Mods;
+                card.tailParams.tail = cards.CardByName(card.tailParams.tail.name).Clone() as CardInfo;
+                card.tailParams.tail.Mods = mods;
+            }
         }
 
         AllCardsCopy = EventActive ? ModifyCardList?.Invoke(cards) ?? cards : cards;
