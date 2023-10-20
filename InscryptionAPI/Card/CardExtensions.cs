@@ -1233,10 +1233,10 @@ public static class CardExtensions
     #region Emissive
 
     /// <summary>
-    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, string pathToArt)
     {
@@ -1251,11 +1251,11 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="portrait">The texture containing the emission</param>
-    /// <param name="filterMode">The filter mode for the texture, or null if no change</param>
+    /// <param name="portrait">The texture containing the emission.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
@@ -1263,31 +1263,28 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="sprite">The sprite containing the emission</param>
+    /// <param name="sprite">The sprite containing the emission.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissivePortrait(this CardInfo info, Sprite sprite)
     {
         if (info.portraitTex == null)
-            throw new InvalidOperationException($"Cannot set emissive portrait before setting normal portrait");
+            throw new InvalidOperationException($"Cannot set emissive portrait before setting normal portrait!");
 
         info.portraitTex.RegisterEmissionForSprite(sprite);
 
         return info;
     }
     
-    public static Sprite GetEmissivePortrait(this CardInfo info)
-    {
-        return info.portraitTex.GetEmissionSprite();
-    }
+    public static Sprite GetEmissivePortrait(this CardInfo info) => info.portraitTex.GetEmissionSprite();
 
     /// <summary>
-    /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive alternate portrait for the card. This can only be done after the alternate portrait has been set (SetAltPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory)</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveAltPortrait(this CardInfo info, string pathToArt)
     {
@@ -1295,7 +1292,7 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive alternate portrait for the card. This can only be done after the alternate portrait has been set (SetAltPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="portrait">The texture containing the emission</param>
@@ -1307,25 +1304,22 @@ public static class CardExtensions
     }
 
     /// <summary>
-    /// Sets the emissive alternate portrait for the card. This can only be done after the default portrait has been set (SetPortrait)
+    /// Sets the emissive alternate portrait for the card. This can only be done after the alternate portrait has been set (SetAltPortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="portrait">The sprite containing the emission</param>
+    /// <param name="portrait">The sprite containing the emission.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveAltPortrait(this CardInfo info, Sprite portrait)
     {
         if (info.alternatePortrait == null)
-            throw new InvalidOperationException($"Cannot set emissive portrait before setting normal portrait");
+            throw new InvalidOperationException($"Cannot set emissive portrait before setting the alternate portrait!");
 
         info.alternatePortrait.RegisterEmissionForSprite(portrait);
 
         return info;
     }
     
-    public static Sprite GetEmissiveAltPortrait(this CardInfo info)
-    {
-        return info.alternatePortrait.GetEmissionSprite();
-    }
+    public static Sprite GetEmissiveAltPortrait(this CardInfo info) => info.alternatePortrait.GetEmissionSprite();
 
     #endregion
 
@@ -1522,6 +1516,48 @@ public static class CardExtensions
         return info;
     }
 
+    #region Emission
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSteelTrapPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetEmissiveSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the emission.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetEmissiveSteelTrapPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+    }
+
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the emission.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSteelTrapPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (info.SteelTrapPortrait() == null)
+            throw new InvalidOperationException($"Cannot set emissive portrait before setting the default steel trap portrait!");
+
+        info.SteelTrapPortrait().RegisterEmissionForSprite(portrait);
+        return info;
+    }
+
+    public static Sprite GetEmissiveSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait().GetEmissionSprite();
+    #endregion
+
     public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, string pathToArt)
     {
         return info.SetPixelSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
@@ -1557,6 +1593,48 @@ public static class CardExtensions
         info.GetAltPortraits().BrokenShieldPortrait = portrait;
         return info;
     }
+
+    #region Emission
+    /// <summary>
+    /// Sets the emissive broken shield portrait for the card. This can only be done after the default broken shield portrait has been set (SetBrokenShieldPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveBrokenShieldPortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetEmissiveBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the emissive broken shield portrait for the card. This can only be done after the default broken shield portrait has been set (SetBrokenShieldPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the emission.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetEmissiveBrokenShieldPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+    }
+
+    /// <summary>
+    /// Sets the emissive broken shield portrait for the card. This can only be done after the default broken shield portrait has been set (SetBrokenShieldPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the emission.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveBrokenShieldPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (info.BrokenShieldPortrait() == null)
+            throw new InvalidOperationException($"Cannot set the emissive portrait before setting the default broken shield portrait!");
+
+        info.BrokenShieldPortrait().RegisterEmissionForSprite(portrait);
+        return info;
+    }
+
+    public static Sprite GetEmissiveBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait().GetEmissionSprite();
+    #endregion
 
     public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, string pathToArt)
     {
