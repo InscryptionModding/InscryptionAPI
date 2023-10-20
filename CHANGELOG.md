@@ -5,6 +5,10 @@
 
 ## 2.18.2
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
+- Fixed CardManager.Remove not actually removing cards
+- Exposed EncounterManager.NewEncounters
+- Fixed mods on card clones being lost during card sync
+- 
 
 ## 2.18.1
 - Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
