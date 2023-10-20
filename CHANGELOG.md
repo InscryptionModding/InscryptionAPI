@@ -4,6 +4,8 @@
 <summary>View Changelog</summary>
 
 ## 2.18.2
+- Added Config to disable boss scenery for optimization purposes
+- Exposed EncounterManager.NewEncounters for JSONLoader to replace existing Encounters
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
 - Fixed CardManager.Remove not actually removing cards
 - Exposed EncounterManager.NewEncounters

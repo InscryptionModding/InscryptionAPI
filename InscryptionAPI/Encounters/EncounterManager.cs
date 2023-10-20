@@ -13,7 +13,7 @@ public static class EncounterManager
     /// All of the vanilla game's encounters.
     /// </summary>
     public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data"));
-    private static readonly ObservableCollection<EncounterBlueprintData> NewEncounters = new();
+    public static readonly ObservableCollection<EncounterBlueprintData> NewEncounters = new();
 
     /// <summary>
     /// This event runs every time the encounters list is resynced. By adding listeners to this event, you can modify encounters that have been added to the list after your mod was loaded.

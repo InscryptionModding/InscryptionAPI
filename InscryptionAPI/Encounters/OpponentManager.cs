@@ -260,4 +260,81 @@ public static class OpponentManager
     }
 
     #endregion
+    
+    #region Optimization Patches
+
+    [HarmonyPatch]
+    internal class SpawnScenery_Patches
+    {
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(Part1BossOpponent), nameof(Part1BossOpponent.SpawnScenery));
+        }
+
+        public static bool Prefix(Part1BossOpponent __instance)
+        {
+            // Show run method if scenery is disabled
+            if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
+            {
+                __instance.sceneryObject = new GameObject("TemporaryScenary");
+                __instance.sceneryObject.AddComponent<Animation>();
+                return false;
+            }
+            
+            return true;
+        }
+    }
+    
+    [HarmonyPatch]
+    internal class PreventCallsOnScenary_Patches
+    {
+        static Type StartNewPhaseSequence = Type.GetType("DiskCardGame.TrapperTraderBossOpponent+<StartNewPhaseSequence>d__6, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+        static MethodInfo PlayAnimationInfo = AccessTools.Method(typeof(PreventCallsOnScenary_Patches), nameof(PlayAnimation), new[] { typeof(Animation), typeof(string) });
+        
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            
+            yield return AccessTools.Method(StartNewPhaseSequence, "MoveNext");
+        }
+
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            // We want to change
+            //
+            // sceneryObject.GetComponent<Animation>().Play("knives_table_exit");
+            //
+            // To
+            //
+            // PlayAnimation(sceneryObject.GetComponent<Animation>(), "knives_table_exit");
+            
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].opcode == OpCodes.Ldstr && codes[i].operand == "knives_table_exit")
+                {
+                    
+                    // ldstr "knives_table_exit" 
+                    codes[i+1] = new CodeInstruction(OpCodes.Call, PlayAnimationInfo); // callvirt instance bool [UnityEngine.AnimationModule]UnityEngine.Animation::Play(string)
+                    // pop
+                    break;
+                }
+            }
+            
+            return codes;
+        }
+
+        private static bool PlayAnimation(Animation animation, string key)
+        {
+            if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
+            {
+                InscryptionAPIPlugin.Logger.LogInfo("PlayAnimation false");
+                return false;
+            }
+
+            InscryptionAPIPlugin.Logger.LogInfo("PlayAnimation true");
+            return animation.Play(key);
+        }
+    }
+    #endregion
 }
