@@ -8,7 +8,9 @@
 - Fixed CardManager.Remove not actually removing cards
 - Exposed EncounterManager.NewEncounters
 - Fixed mods on card clones being lost during card sync
-- 
+- Act 1 energy drone is now correctly synced with the scale when Default Drone config is false
+- Refactored Act 1 energy drone movement logic, added support for 'immediate' bool (Default Drone must be true)
+- Act 1 energy drone game object is now named 'Part1ResourceDrone'
 
 ## 2.18.1
 - Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
