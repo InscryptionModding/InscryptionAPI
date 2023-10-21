@@ -5,6 +5,8 @@
 
 ## 2.18.3
 - Added null checks to various custom triggers
+- Added PlayableCard extension methods: AddShieldCount(Ability), AddShieldCount\<T>() and AddShieldCount(Ability), RemoveShieldCount\<T>()
+    - These affected the internal numShields field, and do NOT add or remove ability stacks
 
 ## 2.18.2
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution

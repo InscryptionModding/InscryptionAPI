@@ -2072,6 +2072,120 @@ public static class CardExtensions
     }
 
     #region Shields
+    public static void AddShieldCount(this PlayableCard card, int amount, bool updateDisplay = true)
+    {
+        card.AddShieldCount<DamageShieldBehaviour>(amount, updateDisplay);
+    }
+    public static void AddShieldCount(this PlayableCard card, int amount, Ability ability, bool updateDisplay = true)
+    {
+        Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
+        DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
+        if (component == null)
+            return;
+
+        component.numShields += amount;
+        if (component.Ability.GetHideSingleStacks()) // remove hidden abilities
+            card.Status.hiddenAbilities.RemoveAll(x => x == component.Ability);
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                card.Status.hiddenAbilities.Remove(component.Ability);
+            }
+        }
+
+        card.Status.lostShield = !card.HasShield();
+        if (!updateDisplay)
+            return;
+
+        card.UpdateFaceUpOnBoardEffects();
+        card.RenderCard();
+    }
+    public static void AddShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
+    {
+        T component = card.GetComponent<T>();
+        if (component == null)
+            return;
+
+        component.numShields += amount;
+        if (component.Ability.GetHideSingleStacks()) // remove hidden abilities
+            card.Status.hiddenAbilities.RemoveAll(x => x == component.Ability);
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                card.Status.hiddenAbilities.Remove(component.Ability);
+            }
+        }
+
+        card.Status.lostShield = !card.HasShield();
+        if (!updateDisplay)
+            return;
+
+        card.UpdateFaceUpOnBoardEffects();
+        card.RenderCard();
+    }
+
+    public static void RemoveShieldCount(this PlayableCard card, int amount, bool updateDisplay = true)
+    {
+        card.RemoveShieldCount<DamageShieldBehaviour>(amount, updateDisplay);
+    }
+    public static void RemoveShieldCount(this PlayableCard card, int amount, Ability ability, bool updateDisplay = true)
+    {
+        Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
+        DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
+        if (component == null)
+            return;
+
+        component.numShields -= amount;
+        if (!component.HasShields()) // add hidden abilities
+        {
+            if (component.Ability.GetHideSingleStacks() && !card.Status.hiddenAbilities.Contains(component.Ability))
+                card.Status.hiddenAbilities.Add(component.Ability);
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    card.Status.hiddenAbilities.Add(component.Ability);
+                }
+            }
+        }
+
+        card.Status.lostShield = !card.HasShield();
+        if (!updateDisplay)
+            return;
+
+        card.UpdateFaceUpOnBoardEffects();
+        card.RenderCard();
+    }
+    public static void RemoveShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
+    {
+        T component = card.GetComponent<T>();
+        if (component == null)
+            return;
+
+        component.numShields -= amount;
+        if (!component.HasShields()) // add hidden abilities
+        {
+            if (component.Ability.GetHideSingleStacks() && !card.Status.hiddenAbilities.Contains(component.Ability))
+                card.Status.hiddenAbilities.Add(component.Ability);
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    card.Status.hiddenAbilities.Add(component.Ability);
+                }
+            }
+        }
+
+        card.Status.lostShield = !card.HasShield();
+        if (!updateDisplay)
+            return;
+
+        card.UpdateFaceUpOnBoardEffects();
+        card.RenderCard();
+    }
+
     /// <summary>
     /// Gets the number of shields the target card has. Each shield negates one damaging hit.
     /// </summary>
@@ -2122,7 +2236,7 @@ public static class CardExtensions
     /// A variant of ResetShield that only resets shields belonging is a certain ability.
     /// </summary>
     /// <param name="card">The PlayableCard to access.</param>
-    /// <param name="negatedAbility">The shield ability to look for.</param>
+    /// <param name="ability">The shield ability to look for.</param>
     public static void ResetShield(this PlayableCard card, Ability ability)
     {
         foreach (var com in card.GetComponents<DamageShieldBehaviour>())
