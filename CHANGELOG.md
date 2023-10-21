@@ -3,14 +3,16 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.3
+- Added null checks to various custom triggers
+
 ## 2.18.2
-- Added Config to disable boss scenery for optimization purposes
-- Exposed EncounterManager.NewEncounters for JSONLoader to replace existing Encounters
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
 - Fixed CardManager.Remove not actually removing cards
-- Exposed EncounterManager.NewEncounters
+- Exposed EncounterManager.NewEncounters so JSONLoader may replace existing Encounters
 - Fixed mods on card clones being lost during card sync
 - Added extension methods for setting the emissions for SteelTrap and BrokenShield alt portraits
+- Added Config to disable boss scenery for optimization purposes
 - Refactored Act 1 energy drone movement logic, added support for 'immediate' bool (Default Drone must be true)
 - Act 1 energy drone game object is now named 'Part1ResourceDrone'
 - Act 1 energy drone is now correctly synced with the scale when Default Drone config is false
