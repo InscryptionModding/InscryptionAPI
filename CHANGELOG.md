@@ -7,6 +7,13 @@
 - Added null checks to various custom triggers
 - Added PlayableCard extension methods: AddShieldCount(Ability), AddShieldCount\<T>() and AddShieldCount(Ability), RemoveShieldCount\<T>()
     - These affected the internal numShields field, and do NOT add or remove ability stacks
+- Expanded SniperFix sniper logic with additional methods for easier patching and modification:
+    - DoSniperLogic() - controls whether to use player or opponent sniper logic
+    - DoAttackTargetSlotsLogic() - controls attack logic for each target slot
+    - GetValidTargets() - returns a list of card slots the player can target
+    - PlayerTargetSelectedCallback() - called when the player selects a valid target
+    - PlayerSlotCursorEnterCallback() - called when the player's cursor enters a slot
+    - OpponentSelectTarget() - returns a card slot for the opponent to target and attack
 
 ## 2.18.2
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
