@@ -135,17 +135,18 @@ public class SniperFix
                 return GetFirstAvailableOpenSlot(opposingSlots, playerSlots, attackingSlot, numAttacks);
             else
             {
-                List<CardSlot> possibleTargets = new()
-                    {
-                        GetStrongestKillableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks)?.Slot,
-                        GetFirstStrongestAttackableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks)?.Slot,
-                        GetFirstStrongestAttackableCardNoPreferences(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks)?.Slot
+                PlayableCard killable = GetStrongestKillableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
+                PlayableCard attackable = GetFirstStrongestAttackableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
+                PlayableCard noPref = GetFirstStrongestAttackableCardNoPreferences(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
 
-                    };
-                possibleTargets.RemoveAll(x => x == null);
+                if (killable != null)
+                    return killable.Slot;
 
-                if (possibleTargets.Count > 0)
-                    return possibleTargets[0];
+                if (attackable != null)
+                    return attackable.Slot;
+
+                if (noPref != null)
+                    return noPref.Slot;
             }
         }
         return attackingSlot.opposingSlot;
