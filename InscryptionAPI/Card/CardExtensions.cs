@@ -1653,6 +1653,84 @@ public static class CardExtensions
         return info;
     }
     #endregion
+
+    #region Sacrifice Alt
+    public static CardInfo SetSacrificablePortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetSacrificablePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetSacrificablePortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_sacrificableportrait";
+
+        info.GetAltPortraits().SacrificablePortrait = portrait;
+        return info;
+    }
+
+    #region Emission
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetEmissiveSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the emission.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetEmissiveSacrificablePortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+    }
+
+    /// <summary>
+    /// Sets the emissive steel trap portrait for the card. This can only be done after the default steel trap portrait has been set (SetSteelTrapPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the emission.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Sprite portrait)
+    {
+        if (info.SteelTrapPortrait() == null)
+            throw new InvalidOperationException($"Cannot set emissive portrait before setting the default sacrifice portrait!");
+
+        info.SteelTrapPortrait().RegisterEmissionForSprite(portrait);
+        return info;
+    }
+
+    public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SteelTrapPortrait().GetEmissionSprite();
+    #endregion
+
+    public static CardInfo SetPixelSacrificablePortrait(this CardInfo info, string pathToArt)
+    {
+        return info.SetPixelSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+    public static CardInfo SetPixelSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetPixelSacrificablePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
+    }
+    public static CardInfo SetPixelSacrificablePortrait(this CardInfo info, Sprite portrait)
+    {
+        if (!string.IsNullOrEmpty(info.name))
+            portrait.name = info.name + "_pixelsacrificableportrait";
+
+        info.GetAltPortraits().PixelSacrificablePortrait = portrait;
+        return info;
+    }
+    #endregion
     #endregion
 
     #endregion
@@ -1944,11 +2022,15 @@ public static class CardExtensions
     /// <returns>true if the card is not of the specified tribe.</returns>
     public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe) => !cardInfo.IsOfTribe(tribe);
 
-    public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.alternatePortrait != null;
+    public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.HasAlternatePortrait();
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
     public static bool HasPixelAlternatePortrait(this CardInfo info) => info.PixelAlternatePortrait() != null;
     public static bool HasSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait() != null;
+    public static bool HasPixelSteelTrapPortrait(this CardInfo info) => info.PixelSteelTrapPortrait() != null;
     public static bool HasBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait() != null;
+    public static bool HasPixelBrokenShieldPortrait(this CardInfo info) => info.PixelBrokenShieldPortrait() != null;
+    public static bool HasSacrificablePortrait(this CardInfo info) => info.SacrificablePortrait() != null;
+    public static bool HasPixelSacrificablePortrait(this CardInfo info) => info.PixelSacrificablePortrait() != null;
 
     /// <summary>
     /// Checks if the CardModificationInfo does not have a specific Ability.

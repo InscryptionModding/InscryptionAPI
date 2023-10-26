@@ -2,6 +2,7 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Helpers;
 using InscryptionAPI.PixelCard;
 using InscryptionAPI.Saves;
 using MonoMod.Cil;
@@ -28,6 +29,8 @@ public static class CardManager
         public Sprite PixelSteelTrapPortrait = null;
         public Sprite BrokenShieldPortrait = null;
         public Sprite PixelBrokenShieldPortrait = null;
+        public Sprite SacrificablePortrait = null;
+        public Sprite PixelSacrificablePortrait = null;
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
     private static readonly ConditionalWeakTable<CardInfo, CardAltPortraits> CardAlternatePortraits = new();
@@ -298,9 +301,39 @@ public static class CardManager
     {
         return card.GetAltPortraits().SteelTrapPortrait;
     }
+    public static Sprite EmissiveSteelTrapPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().SteelTrapPortrait.GetEmissionSprite();
+    }
+    public static Sprite PixelSteelTrapPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().PixelSteelTrapPortrait;
+    }
+
     public static Sprite BrokenShieldPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().BrokenShieldPortrait;
+    }
+    public static Sprite EmissiveBrokenShieldPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().BrokenShieldPortrait.GetEmissionSprite();
+    }
+    public static Sprite PixelBrokenShieldPortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().PixelBrokenShieldPortrait;
+    }
+
+    public static Sprite SacrificablePortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().SacrificablePortrait;
+    }
+    public static Sprite EmissiveSacrificablePortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().SacrificablePortrait.GetEmissionSprite();
+    }
+    public static Sprite PixelSacrificablePortrait(this CardInfo card)
+    {
+        return card.GetAltPortraits().PixelSacrificablePortrait;
     }
 
     private const string ERROR = "ERROR";
@@ -461,7 +494,7 @@ public static class CardManager
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.SwitchToAlternatePortrait))]
     private static void SwitchToAlternatePortraitPixel(PlayableCard __instance)
     {
-        if (SaveManager.SaveFile.IsPart2 && __instance.Info.PixelAlternatePortrait() != null)
+        if (SaveManager.SaveFile.IsPart2 && __instance.Info.HasPixelAlternatePortrait())
         {
             __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.sprite = __instance.Info.PixelAlternatePortrait();
             __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.enabled = true;
@@ -474,6 +507,27 @@ public static class CardManager
         {
             __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.sprite = __instance.Info.pixelPortrait;
             __instance.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.enabled = __instance.Info.pixelPortrait != null;
+        }
+    }
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(PaperCardAnimationController), nameof(PaperCardAnimationController.SetShaking))]
+    [HarmonyPatch(typeof(CardAnimationController), nameof(CardAnimationController.SetShaking))]
+    private static void SwitchToSacrificablePortrait(CardAnimationController __instance)
+    {
+        if (__instance.PlayableCard == null)
+            return;
+
+        if (SaveManager.SaveFile.IsPart2)
+        {
+            if (__instance.PlayableCard.Info.HasPixelSacrificablePortrait())
+            {
+                __instance.PlayableCard.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.sprite = __instance.PlayableCard.Info.PixelSacrificablePortrait();
+                __instance.PlayableCard.GetComponentInChildren<PixelCardDisplayer>().portraitRenderer.enabled = true;
+            }
+        }
+        else if (__instance.PlayableCard.Info.HasSacrificablePortrait())
+        {
+            __instance.PlayableCard.SwitchToPortrait(__instance.PlayableCard.Info.SacrificablePortrait());
         }
     }
 }

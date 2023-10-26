@@ -173,10 +173,14 @@ SteelTrap, for example, changes the base card's portrait to the 'closed trap' po
 However, these cases are very limited; SteelTrap changes *all* cards to the closed trap portrait, even if it's not on the vanilla trap card;
 and only Mud Turtle can change its portrait upon losing its shield.
 
-So, the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
+So the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
 These are stored separately from a card's base portrait and alternate portrait, giving you greater freedom in what cards you can make.
 
-The API also adds support for alternate portraits in Act 2 with SetPixelAlternatePortrait(), SetPixelSteelTrapPortrait() and SetPixelBrokenShieldPortrait().
+The API also adds support for alternate portraits in Act 2 with SetPixelAlternatePortrait(), SetPixelSteelTrapPortrait(), SetPixelBrokenShieldPortrait(), and SetPixelSacrificablePortrait().
+
+You can also use SetSacrifablePortrait() and SetPixelSacrificablePortrait() for setting the alternate portrait that's used when choosing a sacrifice (a la Squirrel).
+
+All of these portraits can also have emissions assigned to them.
 
 ## API Extended Properties
 The API implements a system of custom properties that you can apply to cards, abilities, and card modification info's.

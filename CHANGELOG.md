@@ -14,6 +14,8 @@
     - PlayerTargetSelectedCallback() - called when the player selects a valid target
     - PlayerSlotCursorEnterCallback() - called when the player's cursor enters a slot
     - OpponentSelectTarget() - returns a card slot for the opponent to target and attack
+- Added alternate portrait 'SacrificablePortrait' for when a card can be sacrificed in Act 1 or Act 2 (part of the SetShaking method)
+- Added methods for getting the emissive portraits for extra alt portraits (EmissiveSteelTrapPortrait(), EmissiveBrokenShieldPortrait(), etc.)
 
 ## 2.18.2
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
