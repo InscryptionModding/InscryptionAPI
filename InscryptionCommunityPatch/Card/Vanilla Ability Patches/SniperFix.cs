@@ -49,53 +49,54 @@ public class SniperFix
     }
     public static IEnumerator DoSniperLogic(
         CombatPhaseManager instance, Part1SniperVisualizer visualizer,
-        List<CardSlot> opposingSlots, CardSlot slot, int numAttacks
+        List<CardSlot> opposingSlots, CardSlot attackingSlot, int numAttacks
         )
     {
-        if (slot.Card.OpponentCard)
-            yield return OpponentSniperLogic(instance, visualizer, opposingSlots, slot, numAttacks);
+        if (!attackingSlot.IsPlayerSlot)
+            yield return OpponentSniperLogic(instance, visualizer, opposingSlots, attackingSlot, numAttacks);
         else
-            yield return PlayerSniperLogic(instance, visualizer, opposingSlots, slot, numAttacks);
+            yield return PlayerSniperLogic(instance, visualizer, opposingSlots, attackingSlot, numAttacks);
     }
     public static IEnumerator DoAttackTargetSlotsLogic(
         CombatPhaseManager instance, Part1SniperVisualizer visualizer,
-        List<CardSlot> opposingSlots, CardSlot slot, CardSlot opposingSlot
+        List<CardSlot> opposingSlots, CardSlot attackingSlot, CardSlot opposingSlot
         )
     {
         Singleton<ViewManager>.Instance.SwitchToView(Singleton<BoardManager>.Instance.CombatView, false, false);
-        yield return instance.SlotAttackSlot(slot, opposingSlot, (opposingSlots.Count > 1) ? 0.1f : 0f);
+        yield return instance.SlotAttackSlot(attackingSlot, opposingSlot, (opposingSlots.Count > 1) ? 0.1f : 0f);
     }
 
     public static IEnumerator PlayerSniperLogic(
         CombatPhaseManager instance, Part1SniperVisualizer visualizer,
-        List<CardSlot> opposingSlots, CardSlot slot, int numAttacks)
+        List<CardSlot> opposingSlots, CardSlot attackingSlot, int numAttacks)
     {
         for (int i = 0; i < numAttacks; i++)
         {
-            instance.VisualizeStartSniperAbility(slot);
-            visualizer?.VisualizeStartSniperAbility(slot);
+            instance.VisualizeStartSniperAbility(attackingSlot);
+            visualizer?.VisualizeStartSniperAbility(attackingSlot);
             CardSlot cardSlot = Singleton<InteractionCursor>.Instance.CurrentInteractable as CardSlot;
             if (cardSlot != null && opposingSlots.Contains(cardSlot))
             {
-                instance.VisualizeAimSniperAbility(slot, cardSlot);
-                visualizer?.VisualizeAimSniperAbility(slot, cardSlot);
+                instance.VisualizeAimSniperAbility(attackingSlot, cardSlot);
+                visualizer?.VisualizeAimSniperAbility(attackingSlot, cardSlot);
             }
-            yield return Singleton<BoardManager>.Instance.ChooseTarget(GetValidTargets(), GetValidTargets(),
+            List<CardSlot> targets = GetValidTargets(attackingSlot.IsPlayerSlot, attackingSlot);
+            yield return Singleton<BoardManager>.Instance.ChooseTarget(targets, targets,
                 delegate (CardSlot s)
                 {
-                    PlayerTargetSelectedCallback(opposingSlots, s, slot);
+                    PlayerTargetSelectedCallback(opposingSlots, s, attackingSlot);
                     instance.VisualizeConfirmSniperAbility(s);
                     visualizer?.VisualizeConfirmSniperAbility(s);
                 }, null, delegate (CardSlot s)
                 {
-                    PlayerSlotCursorEnterCallback(opposingSlots, s, slot);
-                    instance.VisualizeAimSniperAbility(slot, s);
-                    visualizer?.VisualizeAimSniperAbility(slot, s);
+                    PlayerSlotCursorEnterCallback(opposingSlots, s, attackingSlot);
+                    instance.VisualizeAimSniperAbility(attackingSlot, s);
+                    visualizer?.VisualizeAimSniperAbility(attackingSlot, s);
                 }, () => false, CursorType.Target);
         }
     }
 
-    public static List<CardSlot> GetValidTargets() => BoardManager.Instance.OpponentSlotsCopy;
+    public static List<CardSlot> GetValidTargets(bool playerIsAttacker, CardSlot attackingSlot) => BoardManager.Instance.GetSlotsCopy(playerIsAttacker);
     public static void PlayerTargetSelectedCallback(List<CardSlot> opposingSlots, CardSlot targetSlot, CardSlot attackingSlot)
     {
         opposingSlots.Add(targetSlot);
@@ -107,20 +108,20 @@ public class SniperFix
 
     public static IEnumerator OpponentSniperLogic(
         CombatPhaseManager instance, Part1SniperVisualizer visualizer,
-        List<CardSlot> opposingSlots, CardSlot slot, int numAttacks)
+        List<CardSlot> opposingSlots, CardSlot attackingSlot, int numAttacks)
     {
-        List<CardSlot> playerSlots = Singleton<BoardManager>.Instance.PlayerSlotsCopy;
-        List<PlayableCard> playerCards = BoardManager.Instance.GetPlayerCards();
+        List<CardSlot> playerSlots = GetValidTargets(attackingSlot.IsPlayerSlot, attackingSlot);
+        List<PlayableCard> playerCards = playerSlots.FindAll(x => x.Card != null).ConvertAll(x => x.Card);
 
         for (int i = 0; i < numAttacks; i++)
         {
-            CardSlot attackSlot = OpponentSelectTargetSlot(opposingSlots, playerSlots, playerCards, slot, numAttacks);
-            if (attackSlot == null)
+            CardSlot targetSlot = OpponentSelectTargetSlot(opposingSlots, playerSlots, playerCards, attackingSlot, numAttacks);
+            if (targetSlot == null)
                 continue;
 
-            opposingSlots.Add(attackSlot);
-            instance.VisualizeConfirmSniperAbility(attackSlot);
-            visualizer?.VisualizeConfirmSniperAbility(attackSlot);
+            opposingSlots.Add(targetSlot);
+            instance.VisualizeConfirmSniperAbility(targetSlot);
+            visualizer?.VisualizeConfirmSniperAbility(targetSlot);
             yield return new WaitForSeconds(0.25f);
         }
     }
