@@ -2,4 +2,4 @@
 uid: InscryptionAPI.Triggers
 summary: *content
 ---
-This is an example to override namespace.
+Maintains the various custom interface and ability triggers added by the API.

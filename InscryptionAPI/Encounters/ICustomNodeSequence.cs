@@ -10,7 +10,7 @@ public interface ICustomNodeSequence
     /// <summary>
     /// Executes the sequence that plays when the player enters this particular map node.
     /// </summary>
-    /// <param name="nodeData">The node data object</param>
-    /// <returns>An enumeration of Unity events</returns>
+    /// <param name="nodeData">The node data object.</param>
+    /// <returns>An enumeration of Unity events.</returns>
     public IEnumerator ExecuteCustomSequence(CustomNodeData nodeData);
 }

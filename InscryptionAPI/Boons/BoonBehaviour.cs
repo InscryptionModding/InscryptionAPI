@@ -42,8 +42,8 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Gets all active boon behaviours for the given boon type
     /// </summary>
-    /// <param name="type">The boon type to search for</param>
-    /// <returns>A list of all boon behaviours that are active in battle</returns>
+    /// <param name="type">The boon type to search for.</param>
+    /// <returns>A list of all boon behaviours that are active in battle.</returns>
     public static List<BoonBehaviour> FindInstancesOfType(BoonData.Type type)
     {
         return Instances.FindAll((x) => x.boon.boon.type == type);
@@ -52,8 +52,8 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Gets the count of active boon behaviours for the given boon type
     /// </summary>
-    /// <param name="type">The boon type to search for</param>
-    /// <returns>The count of all boon behaviours that are active in battle</returns>
+    /// <param name="type">The boon type to search for.</param>
+    /// <returns>The count of all boon behaviours that are active in battle.</returns>
     public static int CountInstancesOfType(BoonData.Type type)
     {
         return FindInstancesOfType(type).Count;
@@ -62,7 +62,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Indicates if there are any active boon behaviours of the given type
     /// </summary>
-    /// <param name="type">The boon type to search for</param>
+    /// <param name="type">The boon type to search for.</param>
     /// <returns>True if there is at least one boon of the given type; false otherwise.</returns>
     public static bool AnyInstancesOfType(BoonData.Type type)
     {
@@ -104,7 +104,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Displays the boon card in battle to indicate to the player that the boon is responsible for the effect that is happening
     /// </summary>
-    /// <returns>A sequence of Unity events that plays the boon card animation</returns>
+    /// <returns>A sequence of Unity events that plays the boon card animation.</returns>
     protected IEnumerator PlayBoonAnimation()
     {
         if (BoonsHandler.Instance != null)
@@ -117,7 +117,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this boon needs to take an action at the beginning of battle **before** vanilla boons activate
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPreBoonActivation()
     {
         return false;
@@ -126,7 +126,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your boon take an action at the beginning of battle **before** vanilla boons activate
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPreBoonActivation()
     {
         yield break;
@@ -135,7 +135,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this boon needs to take an action at the beginning of battle **after** vanilla boons activate
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPostBoonActivation()
     {
         return false;
@@ -144,7 +144,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your boon take an action at the beginning of battle **after** vanilla boons activate
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPostBoonActivation()
     {
         yield break;
@@ -153,7 +153,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this boon needs to take an action at the end of battle **before** vanilla boons activate
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPreBattleCleanup()
     {
         return false;
@@ -162,7 +162,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your boon take an action at the end of battle **before** vanilla boons activate
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPreBattleCleanup()
     {
         yield break;
@@ -171,7 +171,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this boon needs to take an action at the end of battle **after** vanilla boons activate
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPostBattleCleanup()
     {
         return false;
@@ -180,7 +180,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your boon take an action at the end of battle **after** vanilla boons activate
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPostBattleCleanup()
     {
         yield break;

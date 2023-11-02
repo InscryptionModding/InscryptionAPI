@@ -93,7 +93,7 @@ public static class CardSlotExtensions
     /// <returns>
     /// The list of card slots that is to the left and to the right.
     /// Results can be null unless removeNulls parameter is set to true.
-    /// </returns>
+    /// .</returns>
     public static List<CardSlot> GetAdjacentSlots(this CardSlot cardSlot, bool removeNulls = false)
     {
         return BoardManager.Instance.GetAdjacentSlots(cardSlot).Where(slot => !removeNulls || slot).ToList();

@@ -9,13 +9,13 @@ using UnityEngine;
 namespace InscryptionAPI.Boons;
 
 /// <summary>
-/// This manager handles the creation of new Boons and ensures they are properly attached to battles
+/// This manager handles the creation of new Boons and ensures they are properly attached to battles.
 /// </summary>
 [HarmonyPatch]
 public static class BoonManager
 {
     /// <summary>
-    /// Maps custom BoonData objects to the trigger handler that manages them
+    /// Maps custom BoonData objects to the trigger handler that manages them.
     /// </summary>
     public class FullBoon
     {
@@ -25,46 +25,46 @@ public static class BoonManager
         public BoonData boon;
 
         /// <summary>
-        /// A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour
+        /// A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour.
         /// </summary>
         public Type boonHandlerType;
 
         /// <summary>
-        /// Indicates if the boon should appear in the rulebook under the Boons section
+        /// Indicates if the boon should appear in the rulebook under the Boons section.
         /// </summary>
         public bool appearInRulebook;
 
         /// <summary>
-        /// Indicates if the player can have multiple instances of this boon in their deck
+        /// Indicates if the player can have multiple instances of this boon in their deck.
         /// </summary>
         public bool stacks;
     }
 
     /// <summary>
-    /// All boons that come as part of the vanilla game
+    /// All boons that come as part of the vanilla game.
     /// </summary>
     public static readonly ReadOnlyCollection<BoonData> BaseGameBoons = new(Resources.LoadAll<BoonData>("Data/Boons"));
 
     internal static readonly ObservableCollection<FullBoon> NewBoons = new();
 
     /// <summary>
-    /// All boons, including vanilla and mod-added boons
+    /// All boons, including vanilla and mod-added boons.
     /// </summary>
     public static List<BoonData> AllBoonsCopy { get; private set; } = BaseGameBoons.ToList();
 
     /// <summary>
-    /// Creates a new boon and adds it to the list of boons the player can receive
+    /// Creates a new boon and adds it to the list of boons the player can receive.
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the boon</param>
-    /// <param name="name">The name of the boom as it should appear in the rulebook</param>
-    /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</param>
-    /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
-    /// <param name="icon">The icon that appears in the center of the card art and in the rulebook</param>
-    /// <param name="cardArt">The art that surrounds the boon</param>
-    /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
-    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
-    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
-    /// <returns>The unique identifier for this boon</returns>
+    /// <param name="guid">The guid of the mod adding the boon.</param>
+    /// <param name="name">The name of the boom as it should appear in the rulebook.</param>
+    /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour.</param>
+    /// <param name="rulebookDescription">The description of this boon in the rulebook.</param>
+    /// <param name="icon">The icon that appears in the center of the card art and in the rulebook.</param>
+    /// <param name="cardArt">The art that surrounds the boon.</param>
+    /// <param name="stackable">Indicates if the player can have multiple instances of this boon.</param>
+    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run.</param>
+    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook.</param>
+    /// <returns>The unique identifier for this boon.</returns>
     public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
         appearInRulebook = true)
     {
@@ -86,18 +86,18 @@ public static class BoonManager
     }
 
     /// <summary>
-    /// Creates a new boon and adds it to the list of boons the player can receive
+    /// Creates a new boon and adds it to the list of boons the player can receive.
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the boon</param>
-    /// <param name="name">The name of the boom as it should appear in the rulebook</param>
-    /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
-    /// <param name="icon">The icon that appears in the center of the card art and in the rulebook</param>
-    /// <param name="cardArt">The art that surrounds the boon</param>
-    /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
-    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
-    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+    /// <param name="guid">The guid of the mod adding the boon.</param>
+    /// <param name="name">The name of the boom as it should appear in the rulebook.</param>
+    /// <param name="rulebookDescription">The description of this boon in the rulebook.</param>
+    /// <param name="icon">The icon that appears in the center of the card art and in the rulebook.</param>
+    /// <param name="cardArt">The art that surrounds the boon.</param>
+    /// <param name="stackable">Indicates if the player can have multiple instances of this boon.</param>
+    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run.</param>
+    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook.</param>
     /// <typeparam name="T">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</typeparam>
-    /// <returns>The unique identifier for this boon</returns>
+    /// <returns>The unique identifier for this boon.</returns>
     public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, Texture icon, Texture cardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
         appearInRulebook = true) where T : BoonBehaviour
     {
@@ -105,18 +105,18 @@ public static class BoonManager
     }
 
     /// <summary>
-    /// Creates a new boon and adds it to the list of boons the player can receive
+    /// Creates a new boon and adds it to the list of boons the player can receive.
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the boon</param>
-    /// <param name="name">The name of the boom as it should appear in the rulebook</param>
-    /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</param>
-    /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
-    /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook</param>
-    /// <param name="pathToCardArt">Path to the art that surrounds the boon</param>
-    /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
-    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
-    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
-    /// <returns>The unique identifier for this boon</returns>
+    /// <param name="guid">The guid of the mod adding the boon.</param>
+    /// <param name="name">The name of the boom as it should appear in the rulebook.</param>
+    /// <param name="boonHandlerType">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour.</param>
+    /// <param name="rulebookDescription">The description of this boon in the rulebook.</param>
+    /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook.</param>
+    /// <param name="pathToCardArt">Path to the art that surrounds the boon.</param>
+    /// <param name="stackable">Indicates if the player can have multiple instances of this boon.</param>
+    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run.</param>
+    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook.</param>
+    /// <returns>The unique identifier for this boon.</returns>
     public static BoonData.Type New(string guid, string name, Type boonHandlerType, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
         appearInRulebook = true)
     {
@@ -124,18 +124,18 @@ public static class BoonManager
     }
 
     /// <summary>
-    /// Creates a new boon and adds it to the list of boons the player can receive
+    /// Creates a new boon and adds it to the list of boons the player can receive.
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the boon</param>
-    /// <param name="name">The name of the boom as it should appear in the rulebook</param>
-    /// <param name="rulebookDescription">The description of this boon in the rulebook</param>
-    /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook</param>
-    /// <param name="pathToCardArt">Path to the art that surrounds the boon</param>
-    /// <param name="stackable">Indicates if the player can have multiple instances of this boon</param>
-    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run</param>
-    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook</param>
+    /// <param name="guid">The guid of the mod adding the boon.</param>
+    /// <param name="name">The name of the boom as it should appear in the rulebook.</param>
+    /// <param name="rulebookDescription">The description of this boon in the rulebook.</param>
+    /// <param name="pathToIcon">Path to the icon that appears in the center of the card art and in the rulebook.</param>
+    /// <param name="pathToCardArt">Path to the art that surrounds the boon.</param>
+    /// <param name="stackable">Indicates if the player can have multiple instances of this boon.</param>
+    /// <param name="appearInLeshyTrials">Indicates if the boon should appear in Leshy trials (the boon trials that happen right before battling Leshy in a non-Kaycee's mod run.</param>
+    /// <param name="appearInRulebook">Indicates if the boon should appear in the rulebook.</param>
     /// <typeparam name="T">A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour</typeparam>
-    /// <returns>The unique identifier for this boon</returns>
+    /// <returns>The unique identifier for this boon.</returns>
     public static BoonData.Type New<T>(string guid, string name, string rulebookDescription, string pathToIcon, string pathToCardArt, bool stackable = true, bool appearInLeshyTrials = true, bool
         appearInRulebook = true) where T : BoonBehaviour
     {

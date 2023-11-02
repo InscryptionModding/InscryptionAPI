@@ -72,10 +72,10 @@ public static class NodeManager
     /// <summary>
     /// Registers a new custom node and conditionally adds it to the map pool based on the nodeType
     /// </summary>
-    /// <param name="animatedMapNode">An array of exactly four textures containing the node's animation</param>
-    /// <param name="nodeType">Flags to indicate where the node should appear on the map</param>
+    /// <param name="animatedMapNode">An array of exactly four textures containing the node's animation.</param>
+    /// <param name="nodeType">Flags to indicate where the node should appear on the map.</param>
     /// <typeparam name="S">Implements the sequence logic for the special node</typeparam>
-    /// <returns>The internal representation of this node</returns>
+    /// <returns>The internal representation of this node.</returns>
     public static NodeInfo Add<S>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : MonoBehaviour, ICustomNodeSequence
     {
         return NodeManager.Add<S, CustomNodeData>(animatedMapNode, nodeType);
@@ -84,11 +84,11 @@ public static class NodeManager
     /// <summary>
     /// Registers a new custom node and conditionally adds it to the map pool based on the nodeType
     /// </summary>
-    /// <param name="animatedMapNode">An array of exactly four textures containing the node's animation</param>
-    /// <param name="nodeType">Flags to indicate where the node should appear on the map</param>
+    /// <param name="animatedMapNode">An array of exactly four textures containing the node's animation.</param>
+    /// <param name="nodeType">Flags to indicate where the node should appear on the map.</param>
     /// <typeparam name="S">Implements the sequence logic for the special node</typeparam>
     /// <typeparam name="N">Implements the custom data and map generation logic for the special node</typeparam>
-    /// <returns>The internal representation of this node</returns>
+    /// <returns>The internal representation of this node.</returns>
     public static NodeInfo Add<S, N>(Texture2D[] animatedMapNode, NodePosition nodeType) where S : MonoBehaviour, ICustomNodeSequence where N : CustomNodeData
     {
         if (animatedMapNode.Length != 4)

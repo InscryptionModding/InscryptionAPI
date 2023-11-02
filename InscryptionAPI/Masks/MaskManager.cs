@@ -81,12 +81,12 @@ public static class MaskManager
     /// <summary>
     /// Adds a custom mask to the game so you can tell leshy to put it on his face. Typically during a boss fight.
     /// </summary>
-    /// <param name="guid">GUID of your mod</param>
-    /// <param name="name">Name of the mask</param>
+    /// <param name="guid">GUID of your mod.</param>
+    /// <param name="name">Name of the mask.</param>
     /// <param name="maskType">The mask we want to add so we cna tell leshy to put on that specific mask.</param>
-    /// <param name="modelType">The model the mask will use</param>
-    /// <param name="isOverride"></param>
-    /// <returns></returns>
+    /// <param name="modelType">The model the mask will use.</param>
+    /// <param name="isOverride">.</param>
+    /// <returns>.</returns>
     public static CustomMask AddCustomMask(string guid, string name, LeshyAnimationController.Mask maskType, ModelType modelType, bool isOverride)
     {
         CustomMask mask = new CustomMask(guid, name, maskType, isOverride);

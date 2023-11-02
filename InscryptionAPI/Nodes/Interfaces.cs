@@ -11,7 +11,7 @@ public interface ICustomNodeSequencer
     /// Trigger the custom node sequence.
     /// </summary>
     /// <param name="nodeData">Node that triggered this sequence.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator DoCustomSequence(CustomSpecialNodeData nodeData);
 }
 
@@ -24,7 +24,7 @@ public interface IDestroyOnEnd
     /// If this returns true, the node sequencer will be destroyed at the end.
     /// </summary>
     /// <param name="nodeData">Node that triggered this sequence.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public bool ShouldDestroyOnEnd(CustomSpecialNodeData nodeData);
 }
 
@@ -37,7 +37,7 @@ public interface IDoNotReturnToMapOnEnd
     /// If this returns true, the player will not be returned to the map after the node sequencer ends
     /// </summary>
     /// <param name="nodeData">Node that triggered this sequence.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public bool ShouldNotReturnToMapOnEnd(CustomSpecialNodeData nodeData);
 }
 

@@ -19,9 +19,9 @@ public static class CardModificationInfoManager
     /// <summary>
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
-    /// <param name="card">Card to access</param>
+    /// <param name="card">Card to access.</param>
     /// <typeparam name="T">The custom class</typeparam>
-    /// <returns>The instance of T for this card</returns>
+    /// <returns>The instance of T for this card.</returns>
     public static T GetExtendedClass<T>(this CardModificationInfo card) where T : class, new()
     {
         var typeMap = CardModExtensionProperties.GetOrCreateValue(card).TypeMap;

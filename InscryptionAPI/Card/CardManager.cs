@@ -40,7 +40,7 @@ public static class CardManager
     /// <summary>
     /// The set of cards that are in the base game
     /// </summary>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
     private static readonly ObservableCollection<CardInfo> NewCards = new();
 
@@ -199,13 +199,13 @@ public static class CardManager
     /// <summary>
     /// A copy of all cards in the card pool.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static List<CardInfo> AllCardsCopy { get; private set; } = BaseGameCards.ToList();
 
     /// <summary>
     /// INTERNAL USE ONLY. Adds a new card to the card pool
     /// </summary>
-    /// <param name="newCard">The card to add</param>
+    /// <param name="newCard">The card to add.</param>
     internal static void Add(CardInfo newCard)
     {
         if (string.IsNullOrEmpty(newCard.GetModTag()))
@@ -222,7 +222,7 @@ public static class CardManager
     /// Adds a new card to the card pool. If your card's name does not match your mod prefix, it will be updated to match.
     /// </summary>
     /// <param name="modPrefix">The unique prefix that identifies your card mod in the card pool.</param>
-    /// <param name="newCard">The card to add</param>
+    /// <param name="newCard">The card to add.</param>
     public static void Add(string modPrefix, CardInfo newCard)
     {
         if (!newCard.name.StartsWith(modPrefix))
@@ -273,9 +273,9 @@ public static class CardManager
     /// <summary>
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
-    /// <param name="card">Card to access</param>
+    /// <param name="card">Card to access.</param>
     /// <typeparam name="T">The custom class</typeparam>
-    /// <returns>The instance of T for this card</returns>
+    /// <returns>The instance of T for this card.</returns>
     public static T GetExtendedClass<T>(this CardInfo card) where T : class, new()
     {
         var typeMap = CardExtensionProperties.GetOrCreateValue(card).TypeMap;

@@ -15,7 +15,7 @@ public static class CustomTriggerFinder
     /// </summary>
     /// <param name="receiver">The receiver that is triggering.</param>
     /// <param name="triggerCoroutine">The trigger coroutine called by that receiver.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator CustomTriggerSequence(this TriggerReceiver receiver, IEnumerator triggerCoroutine)
     {
         GlobalTriggerHandler self = GlobalTriggerHandler.Instance;
@@ -43,7 +43,7 @@ public static class CustomTriggerFinder
     /// <param name="triggerFacedown">True if this should also trigger cards that are facedown, false otherwise.</param>
     /// <param name="respond">Check function that needs to return true for a trigger to get triggered.</param>
     /// <param name="trigger">Trigger function that triggers the coroutine for the trigger.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator TriggerAll<T>(bool triggerFacedown, Func<T, bool> respond, Func<T, IEnumerator> trigger)
     {
         var all = FindGlobalTriggers<T>(triggerFacedown);
@@ -67,7 +67,7 @@ public static class CustomTriggerFinder
     /// <param name="handler">The card trigger handler to search for triggers.</param>
     /// <param name="respond">Check function that needs to return true for a trigger to get triggered.</param>
     /// <param name="trigger">Trigger function that triggers the coroutine for the trigger.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator Trigger<T>(this CardTriggerHandler handler, Func<T, bool> respond, Func<T, IEnumerator> trigger)
     {
         var all = FindTriggersOnCard<T>(handler);
@@ -88,7 +88,7 @@ public static class CustomTriggerFinder
     /// <param name="card">The card trigger handler to search for triggers.</param>
     /// <param name="respond">Check function that needs to return true for a trigger to get triggered.</param>
     /// <param name="trigger">Trigger function that triggers the coroutine for the trigger.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator Trigger<T>(this PlayableCard card, Func<T, bool> respond, Func<T, IEnumerator> trigger)
     {
         yield return card.TriggerHandler.Trigger<T>(respond, trigger);
@@ -102,7 +102,7 @@ public static class CustomTriggerFinder
     /// <param name="triggerFacedown">True if this should also trigger cards that are facedown, false otherwise.</param>
     /// <param name="respond">Check function that needs to return true for a trigger to get triggered.</param>
     /// <param name="trigger">Trigger function that triggers the coroutine for the trigger.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator TriggerOnBoard<T>(bool triggerFacedown, Func<T, bool> respond, Func<T, IEnumerator> trigger)
     {
         var all = FindTriggersOnBoard<T>(triggerFacedown);
@@ -122,7 +122,7 @@ public static class CustomTriggerFinder
     /// <typeparam name="T">The trigger type to search for.</typeparam>
     /// <param name="respond">Check function that needs to return true for a trigger to get triggered.</param>
     /// <param name="trigger">Trigger function that triggers the coroutine for the trigger.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static IEnumerator TriggerInHand<T>(Func<T, bool> respond, Func<T, IEnumerator> trigger)
     {
         var all = FindTriggersInHand<T>();
@@ -359,9 +359,9 @@ public static class CustomTriggerFinder
     /// <summary>
     /// Finds all trigger recievers, on the board and in the hand
     /// </summary>
-    /// <param name="excluding">Card to exclude from the hand search</param>
+    /// <param name="excluding">Card to exclude from the hand search.</param>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T</returns>
+    /// <returns>All trigger recievers of type T.</returns>
     public static IEnumerable<T> FindGlobalTriggers<T>(bool findFacedown, PlayableCard excluding = null)
     {
         var result = Enumerable.Empty<T>();
@@ -382,9 +382,9 @@ public static class CustomTriggerFinder
     /// <summary>
     /// Finds all trigger recievers, on the board and in the hand
     /// </summary>
-    /// <param name="excluding">Card to exclude from the hand search</param>
+    /// <param name="excluding">Card to exclude from the hand search.</param>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T</returns>
+    /// <returns>All trigger recievers of type T.</returns>
     public static IEnumerable<T> FindGlobalTriggers<T>(PlayableCard excluding = null)
     {
         return FindGlobalTriggers<T>(true, excluding);
@@ -394,7 +394,7 @@ public static class CustomTriggerFinder
     /// Find all trigger recievers in the hand
     /// </summary>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T in the hand</returns>
+    /// <returns>All trigger recievers of type T in the hand.</returns>
     public static IEnumerable<T> FindTriggersInHand<T>()
     {
         List<PlayableCard> handCache = new(PlayerHand.Instance.CardsInHand);
@@ -405,7 +405,7 @@ public static class CustomTriggerFinder
     /// Find all trigger recievers in the hand
     /// </summary>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T in the hand</returns>
+    /// <returns>All trigger recievers of type T in the hand.</returns>
     public static IEnumerable<T> FindTriggersOnBoard<T>()
     {
         return FindTriggersOnBoard<T>(true);
@@ -415,7 +415,7 @@ public static class CustomTriggerFinder
     /// Find all trigger recievers in the hand
     /// </summary>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T in the hand</returns>
+    /// <returns>All trigger recievers of type T in the hand.</returns>
     public static IEnumerable<T> FindTriggersOnBoard<T>(bool findFacedown)
     {
         List<PlayableCard> cardsOnBoardCache = new(BoardManager.Instance.CardsOnBoard);
@@ -428,9 +428,9 @@ public static class CustomTriggerFinder
     /// <summary>
     /// Find all trigger recievers in the hand
     /// </summary>
-    /// <param name="card">Card to exclude from the search</param>
+    /// <param name="card">Card to exclude from the search.</param>
     /// <typeparam name="T">The trigger type to search for</typeparam>
-    /// <returns>All trigger recievers of type T in the hand</returns>
+    /// <returns>All trigger recievers of type T in the hand.</returns>
     public static IEnumerable<T> FindTriggersInHandExcluding<T>(PlayableCard card)
     {
         List<PlayableCard> handCache = new(PlayerHand.Instance.CardsInHand);
@@ -440,9 +440,9 @@ public static class CustomTriggerFinder
     /// <summary>
     /// Finds all trigger recievers on a card
     /// </summary>
-    /// <param name="card">The card to search</param>
+    /// <param name="card">The card to search.</param>
     /// <typeparam name="T">The type of reciever to search for</typeparam>
-    /// <returns>All trigger recievers of type T on the card</returns>
+    /// <returns>All trigger recievers of type T on the card.</returns>
     public static IEnumerable<T> FindTriggersOnCard<T>(this PlayableCard card)
     {
         foreach (var recv in card.TriggerHandler.GetAllReceivers().OfType<T>())
@@ -454,9 +454,9 @@ public static class CustomTriggerFinder
     /// <summary>
     /// Finds all trigger recievers on a card
     /// </summary>
-    /// <param name="card">The card to search</param>
+    /// <param name="card">The card to search.</param>
     /// <typeparam name="T">The type of reciever to search for</typeparam>
-    /// <returns>All trigger recievers of type T on the card</returns>
+    /// <returns>All trigger recievers of type T on the card.</returns>
     public static IEnumerable<T> FindTriggersOnCard<T>(this CardTriggerHandler card)
     {
         foreach (var recv in card.GetAllReceivers().OfType<T>())
@@ -469,7 +469,7 @@ public static class CustomTriggerFinder
     /// Finds all trigger recievers on a cards in the opponent's queue
     /// </summary>
     /// <typeparam name="T">The type of reciever to search for</typeparam>
-    /// <returns>All trigger recievers of type T in the opponent's queue</returns>
+    /// <returns>All trigger recievers of type T in the opponent's queue.</returns>
     public static IEnumerable<T> FindTriggersInQueue<T>() =>
 		TurnManager.Instance?.Opponent?.Queue.Where(card => card.TryGetComponent(out T _)).Select(card => card.GetComponent<T>()) ?? new T[]{};
 }

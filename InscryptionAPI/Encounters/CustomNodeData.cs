@@ -44,7 +44,7 @@ public class CustomNodeData : SpecialNodeData
     /// <summary>
     /// Adds a simple prerequisite condition that does not depend on the current state of the map.
     /// </summary>
-    /// <param name="condition">Returns TRUE if the map node can be generated</param>
+    /// <param name="condition">Returns TRUE if the map node can be generated.</param>
     protected void AddGenerationPrerequisite(Func<bool> condition)
     {
         this.GenerationPrerequisiteConditions.Add(new DelegateCondition((y, nodes) => condition()));
@@ -53,7 +53,7 @@ public class CustomNodeData : SpecialNodeData
     /// <summary>
     /// Adds a prerequisite condition that depends on the current state of the map.
     /// </summary>
-    /// <param name="condition">Returns TRUE if the map node can be generated</param>
+    /// <param name="condition">Returns TRUE if the map node can be generated.</param>
     protected void AddGenerationPrerequisite(NodeGenerationCondition condition)
     {
         this.GenerationPrerequisiteConditions.Add(new DelegateCondition(condition));
@@ -62,7 +62,7 @@ public class CustomNodeData : SpecialNodeData
     /// <summary>
     /// Adds a simple forced generation condition that does not depend on the current state of the map.
     /// </summary>
-    /// <param name="condition">Returns TRUE if the map node must be generated</param>
+    /// <param name="condition">Returns TRUE if the map node must be generated.</param>
     protected void AddForceGenerationCondition(Func<bool> condition)
     {
         this.ForceGenerationConditions.Add(new DelegateCondition((y, nodes) => condition()));
@@ -71,7 +71,7 @@ public class CustomNodeData : SpecialNodeData
     /// <summary>
     /// Adds a forced generation condition that depends on the current state of the map.
     /// </summary>
-    /// <param name="condition">Returns TRUE if the map node must be generated</param>
+    /// <param name="condition">Returns TRUE if the map node must be generated.</param>
     protected void AddForceGenerationCondition(NodeGenerationCondition condition)
     {
         this.ForceGenerationConditions.Add(new DelegateCondition(condition));

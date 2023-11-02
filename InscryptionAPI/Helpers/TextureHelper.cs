@@ -205,9 +205,9 @@ public static class TextureHelper
     /// Converts an image on disk to a Sprite that conforms to the expectations for the given sprite type.
     /// </summary>
     /// <param name="pathCardArt">The path to the card on disk. This can be relative to the BepInEx plugin path, or can be an absolute (rooted) path.</param>
-    /// <param name="spriteType">The type of sprite to create</param>
+    /// <param name="spriteType">The type of sprite to create.</param>
     /// <param name="filterMode">Sets the filter mode of the art. Leave this alone unless you know why you're changing it.</param>
-    /// <returns>A sprite containing the image file on disk</returns>
+    /// <returns>A sprite containing the image file on disk.</returns>
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);
@@ -352,7 +352,7 @@ public static class TextureHelper
     /// <param name="yStep">Used to set the position for individual textures.</param>
     /// <param name="xOffset">Used to set the position for individual textures.</param>
     /// <param name="yOffset">Used to set the position for individual textures.</param>
-    /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref>)</returns>
+    /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref>).</returns>
     public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
     {
         if (pieces != null)
@@ -370,7 +370,7 @@ public static class TextureHelper
     /// <summary>
     /// Creates an identical copy of a given texture
     /// </summary>
-    /// <param name="texture">The texture to copy</param>
+    /// <param name="texture">The texture to copy.</param>
     public static Texture2D DuplicateTexture(Texture2D texture)
     {
         // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-

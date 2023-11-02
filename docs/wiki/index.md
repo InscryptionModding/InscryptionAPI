@@ -4,6 +4,8 @@
 Welcome to the modding wiki!  This document will help familiarise you with modding Inscryption using the Inscryption API.
 We will go over its numerous features, providing information and examples on what they do and how to use them for your own mods.
 
+You can also see more information about API classes, members, and added fields by clicking [here](https://inscryptionmodding.github.io/InscryptionAPI/api/).
+
 # Getting Started: Installation
 To begin, we'll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.
 
@@ -166,46 +168,6 @@ public static int NumberOfItems
 ```
 
 When written like this, the static property "NumberOfItems" now automatically syncs to the save file.
-
-## Extra Alternate Portraits
-In Inscryption, there are some situations where a card's portrait is changed.
-SteelTrap, for example, changes the base card's portrait to the 'closed trap' portrait, and Mud Turtle switches its portrait upon losing its shield.
-However, these cases are very limited; SteelTrap changes *all* cards to the closed trap portrait, even if it's not on the vanilla trap card;
-and only Mud Turtle can change its portrait upon losing its shield.
-
-So the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
-These are stored separately from a card's base portrait and alternate portrait, giving you greater freedom in what cards you can make.
-
-The API also adds support for alternate portraits in Act 2 with SetPixelAlternatePortrait(), SetPixelSteelTrapPortrait(), SetPixelBrokenShieldPortrait(), and SetPixelSacrificablePortrait().
-
-You can also use SetSacrifablePortrait() and SetPixelSacrificablePortrait() for setting the alternate portrait that's used when choosing a sacrifice (a la Squirrel).
-
-All of these portraits can also have emissions assigned to them.
-
-## API Extended Properties
-The API implements a system of custom properties that you can apply to cards, abilities, and card modification info's.
-For more information on properties go [to this section](#custom-card-properties).
-
-Some extended properties are used by the API for certain functions.
-The following are some extension properties you can use for your cards.
-
-If you're using C# you can use the provided extension method to easily set these fields, and there are also methods for easily checking them.
-
-**NOTE THAT THE NAMES ARE CASE-SENSITIVE.**
-
-|Property Name          |Affected Type  |Value Type |Description                                                |Extension Method       |
-|-----------------------|---------------|-----------|-----------------------------------------------------------|-----------------------|
-|TriggersOncePerStack   |AbilityInfo    |Boolean    |If the ability should trigger twice when the card evolves. |SetTriggersOncePerStack|
-|HideSingleStacks       |AbilityInfo    |Boolean    |If a stacking ability should hide one stack at a time when added to a card status's hiddenAbilities instead of the whole ability. |SetHideSingleStacks    |
-|AffectedByTidalLock    |CardInfo       |Boolean    |If the card should be killed by the effect of Tidal Lock.  |SetAffectedByTidalLock |
-|TransformerCardId		|CardInfo		|String		|The internal name of the CardInfo this card will transform into when it has the Transformer sigil|SetTransformerCardId|
-
-## Part2Modular
-The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.
-
-This metacategory is used in the community patches to change how the Amorphous sigil works in Act 2, but is otherwise free for you to use.
-
-A number of vanilla sigils have been marked with this metacategory already.
 
 # Cards
 

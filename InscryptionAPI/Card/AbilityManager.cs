@@ -69,10 +69,10 @@ public static class AbilityManager
         /// <summary>
         /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
         /// </summary>
-        /// <param name="id">The unique ID for this ability</param>
-        /// <param name="info">The description object for this ability</param>
-        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability</param>
-        /// <param name="texture">A 49x49 texture  for the ability icon</param>
+        /// <param name="id">The unique ID for this ability.</param>
+        /// <param name="info">The description object for this ability.</param>
+        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability.</param>
+        /// <param name="texture">A 49x49 texture  for the ability icon.</param>
         [Obsolete("Use the constructor that takes a modGUID parameter instead")]
         public FullAbility(Ability id, AbilityInfo info, Type behaviour, Texture texture) : this("", id, info, behaviour, texture)
         {
@@ -81,11 +81,11 @@ public static class AbilityManager
         /// <summary>
         /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
         /// </summary>
-        /// <param name="modGUID">The GUID of the mod that added this</param>
-        /// <param name="id">The unique ID for this ability</param>
-        /// <param name="info">The description object for this ability</param>
-        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability</param>
-        /// <param name="texture">A 49x49 texture  for the ability icon</param>
+        /// <param name="modGUID">The GUID of the mod that added this.</param>
+        /// <param name="id">The unique ID for this ability.</param>
+        /// <param name="info">The description object for this ability.</param>
+        /// <param name="behaviour">A subclass of AbilityBehaviour that implements the logic for the ability.</param>
+        /// <param name="texture">A 49x49 texture  for the ability icon.</param>
         public FullAbility(string modGUID, Ability id, AbilityInfo info, Type behaviour, Texture texture)
         {
             ModGUID = modGUID;
@@ -266,11 +266,11 @@ public static class AbilityManager
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability</param>
-    /// <param name="info">An instance of AbilityInfo describing the ability</param>
-    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
-    /// <param name="tex">The ability icon as a 49x49 texture</param>
-    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="info">An instance of AbilityInfo describing the ability.</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability.</param>
+    /// <param name="tex">The ability icon as a 49x49 texture.</param>
+    /// <returns>An instance of AbilityInfo describing the new ability.</returns>
     /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
     /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
     /// always be assigned by the API.
@@ -291,12 +291,12 @@ public static class AbilityManager
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability</param>
-    /// <param name="rulebookName">The name of the ability</param>
-    /// <param name="rulebookDescription">The description as it appears in the game's rulebook</param>
-    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
-    /// <param name="pathToArt">Path to the ability texture on disk</param>
-    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="rulebookName">The name of the ability.</param>
+    /// <param name="rulebookDescription">The description as it appears in the game's rulebook.</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability.</param>
+    /// <param name="pathToArt">Path to the ability texture on disk.</param>
+    /// <returns>An instance of AbilityInfo describing the new ability.</returns>
     /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
     /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
     /// always be assigned by the API.</remarks>
@@ -308,12 +308,12 @@ public static class AbilityManager
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability</param>
-    /// <param name="rulebookName">The name of the ability</param>
-    /// <param name="rulebookDescription">The description as it appears in the game's rulebook</param>
-    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability</param>
-    /// <param name="tex">The ability icon as a 49x49 texture</param>
-    /// <returns>An instance of AbilityInfo describing the new ability</returns>
+    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="rulebookName">The name of the ability.</param>
+    /// <param name="rulebookDescription">The description as it appears in the game's rulebook.</param>
+    /// <param name="behavior">A subclass of AbilityBehaviour that implements the logic for the ability.</param>
+    /// <param name="tex">The ability icon as a 49x49 texture.</param>
+    /// <returns>An instance of AbilityInfo describing the new ability.</returns>
     /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
     /// the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
     /// always be assigned by the API.</remarks>
@@ -329,13 +329,13 @@ public static class AbilityManager
     /// <summary>
     /// Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.
     /// </summary>
-    /// <param name="id">The unique ID of the ability to remove</param>
+    /// <param name="id">The unique ID of the ability to remove.</param>
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
 
     /// <summary>
     /// Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.
     /// </summary>
-    /// <param name="ability">The instance of the ability to remove</param>
+    /// <param name="ability">The instance of the ability to remove.</param>
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
 
     internal static Dictionary<string, string> GetAbilityExtensionTable(this AbilityInfo info)

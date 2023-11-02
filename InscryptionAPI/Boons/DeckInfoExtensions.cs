@@ -10,8 +10,8 @@ public static class DeckInfoExtensions
     /// <summary>
     /// Removes a single boon of a given type from the deck
     /// </summary>
-    /// <param name="self">The deck to remove the boon from</param>
-    /// <param name="type">The type of the boon to remove</param>
+    /// <param name="self">The deck to remove the boon from.</param>
+    /// <param name="type">The type of the boon to remove.</param>
     public static void RemoveBoon(this DeckInfo self, BoonData.Type type)
     {
         self.boonIds.Remove(type);
@@ -36,8 +36,8 @@ public static class DeckInfoExtensions
     /// <summary>
     /// Removes all boons of a give type from the deck
     /// </summary>
-    /// <param name="self">The deck to remove the boons from</param>
-    /// <param name="type">The type of the boons to remove</param>
+    /// <param name="self">The deck to remove the boons from.</param>
+    /// <param name="type">The type of the boons to remove.</param>
     public static void RemoveAllBoonsOfType(this DeckInfo self, BoonData.Type type)
     {
         self.boonIds.RemoveAll((x) => x == type);

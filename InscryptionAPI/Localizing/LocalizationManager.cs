@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using HarmonyLib;
 using InscryptionAPI.Guid;
 using TMPro;
@@ -41,14 +41,14 @@ public static partial class LocalizationManager
     public static string[] AllLanguageNames = new string[] { };
     public static string[] AllLanguageButtonText = new string[] { };
     
-    public static List<CustomLanguage> AllLanguages = new List<CustomLanguage>();
-    public static List<CustomLanguage> NewLanguages = new List<CustomLanguage>();
-    public static List<CustomTranslation> CustomTranslations = new List<CustomTranslation>();
+    public static List<CustomLanguage> AllLanguages = new();
+    public static List<CustomLanguage> NewLanguages = new();
+    public static List<CustomTranslation> CustomTranslations = new();
     public static Action<Language> OnLanguageLoaded = null;
 
-    private static List<Language> AlreadyLoadedLanguages = new List<Language>();
+    private static List<Language> AlreadyLoadedLanguages = new();
     private static bool FontReplacementDataInitialized = false;
-    private static List<CachedReplacement> TemporaryFontReplacements = new List<CachedReplacement>();
+    private static List<CachedReplacement> TemporaryFontReplacements = new();
 
     static LocalizationManager()
     {
@@ -56,55 +56,29 @@ public static partial class LocalizationManager
         AllLanguageButtonText = LocalizedLanguageNames.SET_LANGUAGE_BUTTON_TEXT.ToArray();
         foreach (Language language in Enum.GetValues(typeof(Language)).Cast<Language>().Where((a)=>a < Language.NUM_LANGUAGES))
         {
-            CustomLanguage customLanguage = new CustomLanguage()
+            CustomLanguage customLanguage = new()
             {
                 PluginGUID = InscryptionAPIPlugin.ModGUID,
                 LanguageName = language.ToString(),
                 Language = language,
             };
-            
-            switch (language)
+
+            customLanguage.LanguageCode = language switch
             {
-                case Language.English:
-                    customLanguage.LanguageCode = "en";
-                    break;
-                case Language.French:
-                    customLanguage.LanguageCode = "fr";
-                    break;
-                case Language.Italian:
-                    customLanguage.LanguageCode = "it";
-                    break;
-                case Language.German:
-                    customLanguage.LanguageCode = "de";
-                    break;
-                case Language.Spanish:
-                    customLanguage.LanguageCode = "es";
-                    break;
-                case Language.BrazilianPortuguese:
-                    customLanguage.LanguageCode = "pt";
-                    break;
-                case Language.Turkish:
-                    customLanguage.LanguageCode = "tr";
-                    break;
-                case Language.Russian:
-                    customLanguage.LanguageCode = "ru";
-                    break;
-                case Language.Japanese:
-                    customLanguage.LanguageCode = "ja";
-                    break;
-                case Language.Korean:
-                    customLanguage.LanguageCode = "ko";
-                    break;
-                case Language.ChineseSimplified:
-                    customLanguage.LanguageCode = "zhcn";
-                    break;
-                case Language.ChineseTraditional:
-                    customLanguage.LanguageCode = "zhtw";
-                    break;
-                default:
-                    customLanguage.LanguageCode = "UNKNOWN";
-                    break;
-            }
+                Language.English => "en",
+                Language.French => "fr",
+                Language.Italian => "it",
+                Language.German => "de",
+                Language.Spanish => "es",
+                Language.BrazilianPortuguese => "pt",
+                Language.Turkish => "tr",
+                Language.Russian => "ru",
+                Language.Japanese => "ja",
+                Language.Korean => "ko",
+                Language.ChineseSimplified => "zhcn",
+                Language.ChineseTraditional => "zhtw",
+                _ => "UNKNOWN",
+            };
             AllLanguages.Add(customLanguage);
         }
     }
@@ -112,7 +86,7 @@ public static partial class LocalizationManager
     public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath=null, List<FontReplacement> fontReplacements=null)
     {
         Language language = GuidManager.GetEnumValue<Language>(pluginGUID, languageName);
-        CustomLanguage customLanguage = new CustomLanguage()
+        CustomLanguage customLanguage = new()
         {
             PluginGUID = pluginGUID,
             LanguageName = languageName,
@@ -209,9 +183,9 @@ public static partial class LocalizationManager
         string lines = File.ReadAllText(stringTablePath);
         try
         {
-            using StringReader aReader = new StringReader(lines);
-            CSVParser cSVParser = new CSVParser(aReader, ',');
-            List<string> list = new List<string>();
+            using StringReader aReader = new(lines);
+            CSVParser cSVParser = new(aReader, ',');
+            List<string> list = new();
             int num = 0;
             while (cSVParser.NextLine(list))
             {
@@ -382,7 +356,7 @@ public static partial class LocalizationManager
     public static void ExportAllToCSV()
     {
         // Exports all localisation to a spreadsheet in the APIs directory
-        StringBuilder stringBuilder = new StringBuilder("id");
+        StringBuilder stringBuilder = new("id");
         for (int i = 0; i < AllLanguages.Count; i++)
         {
             var language = AllLanguages[i];

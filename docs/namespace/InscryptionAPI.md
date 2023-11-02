@@ -2,4 +2,4 @@
 uid: InscryptionAPI
 summary: *content
 ---
-This is an example to override namespace.
+The parent namespace for everything contained in the API.
