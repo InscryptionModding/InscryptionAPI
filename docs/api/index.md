@@ -53,4 +53,6 @@ A number of vanilla sigils have been marked with this metacategory by default.
 ## Secrets
 Shhh, work-in-progress.
 [test](https://inscryptionmodding.github.io/InscryptionAPI/api/test.html)
+[test.2](test.md)
 [test2](https://inscryptionmodding.github.io/InscryptionAPI/api/test2.html)
+[test2.2](test2.html)
