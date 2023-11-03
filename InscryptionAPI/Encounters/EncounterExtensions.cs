@@ -222,9 +222,9 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Adds new turns to the EncounterBlueprintData using the specified List<CardBlueprint>'s.
+    /// Adds new turns to the EncounterBlueprintData using the specified CardBlueprint Lists.
     /// </summary>
-    /// <param name="turns">The List<CardBlueprint>'s to add to the EncounterBlueprintData.</param>
+    /// <param name="turns">The Lists of CardBlueprints to add to the EncounterBlueprintData.</param>
     /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
     public static T AddTurns<T>(this T blueprint, params List<CardBlueprint>[] turns) where T : EncounterBlueprintData
     {

@@ -45,14 +45,30 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Sets the Card Temple for the card. Used in Act 2 and in Act 1 for certain card choice nodes.
+    /// Sets the CardTemple for the card. Used to determine what cards are obtainable in each Act.
+    /// Act 1 uses Nature cards, Act 2 uses all Temples for each region, Act 3 uses Tech cards.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
-    /// <param name="temple">The Card Temple to use.</param>
+    /// <param name="temple">The CardTemple to use.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCardTemple(this CardInfo info, CardTemple temple)
     {
         info.temple = temple;
+        return info;
+    }
+    /// <summary>
+    /// Sets the CardComplexity for the card. Used mainly in Act 1 to determine whether a certain is obtainable.
+    /// Vanilla: unlocked and learned by default
+    /// Simple: unlocked by default
+    /// Intermediate: unlocked after the second tutorial
+    /// Advanced: unlocked after the third tutorial if all its abilities have been learned
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="complexity">The CardComplexity to use.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetCardComplexity(this CardInfo info, CardComplexity complexity)
+    {
+        info.cardComplexity = complexity;
         return info;
     }
 
@@ -235,8 +251,6 @@ public static partial class CardExtensions
     /// </summary>
     /// <param name="info">Card to access.</param>
     /// <returns>The same card info so a chain can continue.</returns>
-    /// <param name="info">CardInfo to access.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTerrain(this CardInfo info)
     {
         info.AddTraits(Trait.Terrain);

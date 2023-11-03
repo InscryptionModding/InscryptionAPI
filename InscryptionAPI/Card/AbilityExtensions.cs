@@ -60,7 +60,7 @@ public static class AbilityExtensions
     /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
+    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
     public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();
@@ -80,7 +80,7 @@ public static class AbilityExtensions
     /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
+    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
     public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();

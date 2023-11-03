@@ -94,7 +94,6 @@ public static class EnergyDrone
         PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}.");
 
         ResourceDrone drone = UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
-        drone.name = "Part1ResourceDrone";
 
         if (EnergyConfig.ConfigDrone)
             PatchPlugin.Instance.StartCoroutine(AwakeDrone());
@@ -135,7 +134,7 @@ public static class EnergyDrone
         {
             if (EnergyConfig.ConfigDefaultDrone)
                 ResourceDrone.Instance.gameObject.transform.localPosition = ResourceDrone.Instance.boardPosition + Vector3.up * 5f;
-            else
+            else if (SaveManager.SaveFile.IsPart1)
                 AttachDroneToScale();
         }
     }

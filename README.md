@@ -105,7 +105,7 @@ Donations are totally not needed, this is a passion project before anything else
 ## Contributors
 Original version by cyantist
 
-Contributors and builders of API 2.0
+Contributors and builders of API 2.0:
 - BobbyShmurner
 - divisionbyz0rro
 - Eri

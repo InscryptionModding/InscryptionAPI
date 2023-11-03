@@ -647,7 +647,7 @@ public interface ICardTakenDamageModifier
 
 /// <summary>
 /// Used when changing what CardSlots are queued for attacking.
-/// Triggers before the RemoveAll(x => x.Card == null || x.Card.Attack <= 0) code, so no making empty slots attack and no making Attack-less cards attack.
+/// Triggers before null and Powerless cards are removed, so no making empty slots attack and no making Attack-less cards attack.
 /// </summary>
 public interface IGetAttackingSlots
 {

@@ -175,7 +175,7 @@ public static class AbilityManager
     /// that same list back.
     /// 
     /// ```c#
-    /// AbilityManager.ModifyAbilityList += delegate(List<FullAbility> abilities)
+    /// AbilityManager.ModifyAbilityList += delegate(List&lt;FullAbility&gt; abilities)
     /// {
     ///     // Add the rulebook metacategories to every single ability
     ///     foreach (var ability in abilities)
