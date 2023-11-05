@@ -6,7 +6,7 @@
 ## 2.18.3
 - Fixed resource drone behaving incorrectly outside of Act 1
 - Added null checks to various custom triggers
-- Added SetCardComplexity extension method
+- Added more extension methods for CardInfo and AbilityInfo
 - Added PlayableCard extension methods: AddShieldCount(Ability), AddShieldCount\<T>() and AddShieldCount(Ability), RemoveShieldCount\<T>()
     - These affect the internal numShields field, and do NOT add or remove ability stacks
 - Added alternate portrait 'SacrificablePortrait' for when a card can be sacrificed in Act 1 or Act 2 (part of the SetShaking method)
