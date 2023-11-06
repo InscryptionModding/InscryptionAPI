@@ -1,0 +1,41 @@
+items:
+- name: Home
+  href: index.md
+- name: Getting Started
+  href: getting_started.md
+- name: Cards
+  href: card_management.md
+  items:
+  - name: Custom Costs
+    href: custom_costs.md
+  - name: Talking Cards
+    href: talking_cards.md
+  - name: Custom Pelts
+    href: pelts.md
+- name: Abilities
+  href: ability_management.md
+  items:
+  - name: Triggers and Interfaces
+    href: triggers.md
+  - name: DamageShieldBehaviour
+    href: shield.md
+  - name: Custom Sniper Logic
+    href: sniper.md
+- name: Custom Properties
+  href: custom_properties.md
+- name: Ascension (Kaycee's Mod)
+  href: ascension.md
+- name: Maps and Encounters
+  href: map.md
+- name: Opponents
+  href: opponent.md
+- name: Totems
+  href: totems.md
+- name: Items
+  href: items.md
+- name: Asset Bundles
+  href: asset_bundle.md
+- name: Sound
+  href: sound.md
+- name: Localisation
+  href: localisation.md

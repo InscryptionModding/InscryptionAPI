@@ -3,14 +3,30 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.3
+- Fixed resource drone behaving incorrectly outside of Act 1
+- Added null checks to various custom triggers
+- Added more extension methods for CardInfo and AbilityInfo
+- Added PlayableCard extension methods: AddShieldCount(Ability), AddShieldCount\<T>() and AddShieldCount(Ability), RemoveShieldCount\<T>()
+    - These affect the internal numShields field, and do NOT add or remove ability stacks
+- Added alternate portrait 'SacrificablePortrait' for when a card can be sacrificed in Act 1 or Act 2 (part of the SetShaking method)
+- Added methods for getting the emissive portraits for extra alt portraits (EmissiveSteelTrapPortrait(), EmissiveBrokenShieldPortrait(), etc.)
+- Expanded SniperFix sniper logic with additional methods for easier patching and modification:
+    - DoSniperLogic() - controls whether to use player or opponent sniper logic
+    - DoAttackTargetSlotsLogic() - controls attack logic for each target slot
+    - GetValidTargets() - returns the list of card slot the player and opponent can target
+    - PlayerTargetSelectedCallback() - called when the player selects a valid target
+    - PlayerSlotCursorEnterCallback() - called when the player's cursor enters a slot
+    - OpponentSelectTarget() - returns a card slot for the opponent to target and attack
+- Revamped the wiki to (hopefully) make it easier to navigate and read through
+
 ## 2.18.2
-- Added Config to disable boss scenery for optimization purposes
-- Exposed EncounterManager.NewEncounters for JSONLoader to replace existing Encounters
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
 - Fixed CardManager.Remove not actually removing cards
-- Exposed EncounterManager.NewEncounters
 - Fixed mods on card clones being lost during card sync
 - Added extension methods for setting the emissions for SteelTrap and BrokenShield alt portraits
+- Added Config to disable boss scenery for optimization purposes
+- Exposed EncounterManager.NewEncounters so JSONLoader may replace existing Encounters
 - Refactored Act 1 energy drone movement logic, added support for 'immediate' bool (Default Drone must be true)
 - Act 1 energy drone game object is now named 'Part1ResourceDrone'
 - Act 1 energy drone is now correctly synced with the scale when Default Drone config is false

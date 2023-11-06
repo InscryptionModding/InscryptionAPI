@@ -16,7 +16,7 @@ public interface IOnAddedToHand
     /// <summary>
     /// Trigger whatever events you want to run when the card is drawn, *after* being added to the list of cards in hand.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnAddedToHand();
 }
 
@@ -35,7 +35,7 @@ public interface IOnOtherCardAddedToHand
     /// Trigger whatever events you want to run when any card is drawn, *after* being added to the list of cards in hand.
     /// </summary>
     /// <param name="card">The card that was drawn.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardAddedToHand(PlayableCard card);
 }
 
@@ -54,7 +54,7 @@ public interface IOnCardAssignedToSlotNoResolve
     /// Trigger whatever events you want to run when any card gets assigned to a new slot, with an exception of being placed on board for the first time.
     /// </summary>
     /// <param name="card">The card that was assigned to a new slot.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnCardAssignedToSlotNoResolve(PlayableCard card);
 }
 
@@ -77,7 +77,7 @@ public interface IOnCardAssignedToSlotContext
     /// <param name="card">The card that got assigned to a new slot.</param>
     /// <param name="oldSlot">The slot for the card before it moved.</param>
     /// <param name="newSlot">The slot for the card after it moved.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnCardAssignedToSlotContext(PlayableCard card, CardSlot oldSlot, CardSlot newSlot);
 }
 
@@ -96,7 +96,7 @@ public interface IOnBellRung
     /// Trigger whatever events you want to run after the combat phase starts.
     /// </summary>
     /// <param name="playerCombatPhase">True if the player is the attacker in the attack phase.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnBellRung(bool playerCombatPhase);
 }
 
@@ -115,7 +115,7 @@ public interface IOnPreSlotAttackSequence
     /// Trigger whatever events you want to run before a slot does its attacks.
     /// </summary>
     /// <param name="attackingSlot">The slot that is about to do its attacks.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPreSlotAttackSequence(CardSlot attackingSlot);
 }
 
@@ -134,7 +134,7 @@ public interface IOnPostSlotAttackSequence
     /// Trigger whatever events you want to run after a slot does its attacks.
     /// </summary>
     /// <param name="attackingSlot">The slot that just did its attacks.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPostSlotAttackSequence(CardSlot attackingSlot);
 }
 
@@ -155,7 +155,7 @@ public interface IOnPostSingularSlotAttackSlot
     /// </summary>
     /// <param name="attackingSlot">The slot that has just did the attack.</param>
     /// <param name="targetSlot">The slot that the attacking slot attacked.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPostSingularSlotAttackSlot(CardSlot attackingSlot, CardSlot targetSlot);
 }
 
@@ -170,7 +170,7 @@ public interface IOnPreScalesChangedRef
     /// <param name="damage">Number of damage currently dealt.</param>
     /// <param name="numWeights">Number of weights currently added to the scales.</param>
     /// <param name="toPlayer">True if the damage is dealt to the player.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public bool RespondsToPreScalesChangedRef(int damage, int numWeights, bool toPlayer);
     /// <summary>
     /// Returns the new amount of damage that will be added to the scales.
@@ -203,7 +203,7 @@ public interface IOnPreScalesChanged
     /// <param name="toPlayer">True if the damage is getting added to the player's side of the scales.</param>
     /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
     /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPreScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
 }
 
@@ -228,7 +228,7 @@ public interface IOnPostScalesChanged
     /// <param name="toPlayer">True if the damage got added to the player's side of the scales.</param>
     /// <param name="originalDamage">Original damage that would get added, before getting changed by IOnPreScalesChangedRef.</param>
     /// <param name="originalToPlayer">True if the damage was originally going to get added to the player's side, before getting changed by IOnPreScalesChangedRef.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPostScalesChanged(int damage, bool toPlayer, int originalDamage, bool originalToPlayer);
 }
 
@@ -247,7 +247,7 @@ public interface IOnUpkeepInHand
     /// Trigger whatever events you want to run at the start of the turn, but only if this card is in hand.
     /// </summary>
     /// <param name="playerUpkeep">True if it's the start of the player's turn, false otherwise.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnUpkeepInHand(bool playerUpkeep);
 }
 
@@ -260,13 +260,13 @@ public interface IOnOtherCardResolveInHand
     /// Returns true if this should trigger when any card gets played, but only if this card is in hand. 
     /// </summary>
     /// <param name="resolvingCard">The card that got played.</param>
-    /// <returns>True if this should trigger when any card gets played, but only if this card is in hand. </returns>
+    /// <returns>True if this should trigger when any card gets played, but only if this card is in hand. .</returns>
     public bool RespondsToOtherCardResolveInHand(PlayableCard resolvingCard);
     /// <summary>
     /// Trigger whatever events you want to run when any card gets played, but only if this card is in hand.
     /// </summary>
     /// <param name="resolvingCard">The card that got played.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardResolveInHand(PlayableCard resolvingCard);
 }
 
@@ -285,7 +285,7 @@ public interface IOnTurnEndInHand
     /// Trigger whatever events you want to run when the turn ends, but only if this card is in hand.
     /// </summary>
     /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnTurnEndInHand(bool playerTurn);
 }
 
@@ -304,7 +304,7 @@ public interface IOnOtherCardAssignedToSlotInHand
     /// Trigger whatever events you want to run when any card is assigned to a new slot, but only if this card is in hand.
     /// </summary>
     /// <param name="card">The card that got assigned to a new slot.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardAssignedToSlotInHand(PlayableCard card);
 }
 
@@ -327,7 +327,7 @@ public interface IOnOtherCardPreDeathInHand
     /// <param name="deathSlot">The slot that the dying card died in.</param>
     /// <param name="fromCombat">False if it was killed by a sacrifice, true otherwise.</param>
     /// <param name="killer">The card that killed the dying card. Can be null.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardPreDeathInHand(CardSlot deathSlot, bool fromCombat, PlayableCard killer);
 }
 
@@ -350,7 +350,7 @@ public interface IOnOtherCardDealtDamageInHand
     /// <param name="attacker">The card that attacked another card.</param>
     /// <param name="amount">The damage that was dealt to the target.</param>
     /// <param name="target">The card that got attacked by the attacker.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardDealtDamageInHand(PlayableCard attacker, int amount, PlayableCard target);
 }
 
@@ -375,7 +375,7 @@ public interface IOnOtherCardDieInHand
     /// <param name="deathSlot">The slot that the card died in.</param>
     /// <param name="fromCombat">False if the card was killed by a sacrifice, true otherwise.</param>
     /// <param name="killer">The card that killed the dying card. Can be null.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnOtherCardDieInHand(PlayableCard card, CardSlot deathSlot, bool fromCombat, PlayableCard killer);
 }
 
@@ -396,7 +396,7 @@ public interface IOnPreItemUsed
     /// </summary>
     /// <param name="itemName">Internal name of the item.</param>
     /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPreItemUsed(string itemName, bool isHammer);
 }
 
@@ -419,7 +419,7 @@ public interface IOnPostItemUsed
     /// <param name="itemName">Internal name of the item.</param>
     /// <param name="success">Normally true, but false if a targeted use item (e.g. scissors) got the use cancelled.</param>
     /// <param name="isHammer">True if the item is the act 3 hammer, false otherwise.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPostItemUsed(string itemName, bool success, bool isHammer);
 }
 
@@ -431,15 +431,15 @@ public interface IGetOpposingSlots
     /// <summary>
     /// Indicates if this card wants to respond to getting the opposing slots
     /// </summary>
-    /// <returns>True to provide opposing slots, False to leave the slots as default</returns>
+    /// <returns>True to provide opposing slots, False to leave the slots as default.</returns>
     bool RespondsToGetOpposingSlots();
 
     /// <summary>
     /// Gets the card slots that the card wants to attack
     /// </summary>
-    /// <param name="originalSlots">The set of original card slots that the card would attack (as set by abilities in the base game)</param>
-    /// <param name="otherAddedSlots">Slots that have been added by other custom abilities</param>
-    /// <returns>The list of card slots you want to attack</returns>
+    /// <param name="originalSlots">The set of original card slots that the card would attack (as set by abilities in the base game).</param>
+    /// <param name="otherAddedSlots">Slots that have been added by other custom abilities.</param>
+    /// <returns>The list of card slots you want to attack.</returns>
     /// <remarks>If your card is replacing the default attack slot (the opposing slot) see 'RemoveDefaultAttackSlot'
     /// If you are **not** replacing the default attack slot, do **not** include that here. Simple ensure 'RemoveDefaultAttackSlot' returns false.
     /// Only return the default attack slot if you want to attack it an additional time.</remarks>
@@ -551,7 +551,7 @@ public interface IOnItemPreventedFromUse
     /// Trigger whatever events you want to run when an item is prevented from use using IItemCanBeUsed.
     /// </summary>
     /// <param name="itemName">Internal name of the item.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnItemPreventedFromUse(string itemName);
 }
 
@@ -605,7 +605,7 @@ public interface IPassiveHealthBuff
     /// <summary>
     /// Used to provide a passive health buff to a target
     /// </summary>
-    /// <returns>The amount of health you want to buff the target by</returns>
+    /// <returns>The amount of health you want to buff the target by.</returns>
     /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
     int GetPassiveHealthBuff(PlayableCard target);
 }
@@ -618,7 +618,7 @@ public interface IPassiveAttackBuff
     /// <summary>
     /// Used to provide a passive attack buff to a target
     /// </summary>
-    /// <returns>The amount of attack you want to buff the target by</returns>
+    /// <returns>The amount of attack you want to buff the target by.</returns>
     /// <remarks>Do not assume that the target is on your side of the board! There may be negative sigils that buff opposing cards.</remarks>
     int GetPassiveAttackBuff(PlayableCard target);
 }
@@ -647,7 +647,7 @@ public interface ICardTakenDamageModifier
 
 /// <summary>
 /// Used when changing what CardSlots are queued for attacking.
-/// Triggers before the RemoveAll(x => x.Card == null || x.Card.Attack <= 0) code, so no making empty slots attack and no making Attack-less cards attack.
+/// Triggers before null and Powerless cards are removed, so no making empty slots attack and no making Attack-less cards attack.
 /// </summary>
 public interface IGetAttackingSlots
 {
@@ -732,7 +732,7 @@ public interface IPreTakeDamage
     /// </summary>
     /// <param name="source">The attacking card; The source of the damage.</param>
     /// <param name="damage">The amount of damage to be delt.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnPreTakeDamage(PlayableCard source, int damage);
 }
 
@@ -772,7 +772,7 @@ public interface IOnTurnEndInQueue
     /// Trigger whatever events you want to run when the turn ends, but only if this card is in the opponent's queue.
     /// </summary>
     /// <param name="playerTurn">True if it's the end of the player's turn, false otherwise.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnTurnEndInQueue(bool playerTurn);
 }
 
@@ -797,6 +797,6 @@ public interface IOnCardDealtDamageDirectly
     /// <param name="attacker">The card that dealt the direct damage.</param>
     /// <param name="opposingSlot">The card slot that was targeted for the direct attack.</param>
     /// <param name="damage">The amount of direct damage delt.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public IEnumerator OnCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
 }

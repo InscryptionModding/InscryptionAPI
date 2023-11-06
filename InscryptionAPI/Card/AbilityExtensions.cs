@@ -60,7 +60,7 @@ public static class AbilityExtensions
     /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
+    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
     public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();
@@ -80,7 +80,7 @@ public static class AbilityExtensions
     /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remark>
+    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
     public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();
@@ -252,7 +252,61 @@ public static class AbilityExtensions
     {
         return info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
     }
+    /// <summary>
+    /// Sets the text displayed when this ability is marked as learned.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="lines">The text to display, represented by strings.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetAbilityLearnedDialogue(this AbilityInfo abilityInfo, params string[] lines)
+    {
+        if (lines.Length > 0)
+        {
+            List<DialogueEvent.Line> list = new();
+            foreach (var line in lines)
+                list.Add(new() { text = line });
 
+            abilityInfo.abilityLearnedDialogue = new() { lines = list };
+        }
+
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets the text displayed when this ability is marked as learned.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="lines">The text to display, represented by DialogueEvent.Line's.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetAbilityLearnedDialogue(this AbilityInfo abilityInfo, params DialogueEvent.Line[] lines)
+    {
+        if (lines.Length > 0)
+            abilityInfo.abilityLearnedDialogue = new() { lines = lines.ToList() };
+
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets the text displayed whenever OnAbilityTriggered is called by this ability in Act 2.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="triggerText">The text to display when OnAbilityTriggered is called.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetGBCTriggerText(this AbilityInfo abilityInfo, string triggerText)
+    {
+        abilityInfo.triggerText = triggerText;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets the power level of the ability, used in some game logic like determining the opponent totem's ability.
+    /// Vanilla power levels range from -3 to 5, and values above or below are ignored in most cases.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="powerLevel">The ability's power level. Should be equal to or between -3 and 5.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetPowerlevel(this AbilityInfo abilityInfo, int powerLevel)
+    {
+        abilityInfo.powerLevel = powerLevel;
+        return abilityInfo;
+    }
     /// <summary>
     /// Sets whether or not the ability is an activated ability.
     /// </summary>
@@ -264,7 +318,6 @@ public static class AbilityExtensions
         abilityInfo.activated = activated;
         return abilityInfo;
     }
-
     /// <summary>
     /// Sets whether or not the ability is passive (will not trigger).
     /// </summary>
@@ -276,7 +329,6 @@ public static class AbilityExtensions
         abilityInfo.passive = passive;
         return abilityInfo;
     }
-
     /// <summary>
     /// Sets whether or not the ability can be used by the opponent.
     /// </summary>
@@ -288,7 +340,6 @@ public static class AbilityExtensions
         abilityInfo.opponentUsable = opponentUsable;
         return abilityInfo;
     }
-
     /// <summary>
     /// Sets whether or not the ability is a conduit.
     /// </summary>
@@ -300,7 +351,6 @@ public static class AbilityExtensions
         abilityInfo.conduit = conduit;
         return abilityInfo;
     }
-
     /// <summary>
     /// Sets whether or not the ability is a conduit cell.
     /// </summary>
@@ -312,7 +362,6 @@ public static class AbilityExtensions
         abilityInfo.conduitCell = conduitCell;
         return abilityInfo;
     }
-
     /// <summary>
     /// Sets whether or not the ability can stack on a card, triggering once for each stack.
     /// Optional parameter for setting the ability to only trigger once per stack when a card evolves (only affects abilities that can stack).
@@ -324,6 +373,45 @@ public static class AbilityExtensions
     {
         abilityInfo.canStack = canStack;
         abilityInfo.SetTriggersOncePerStack(triggersOncePerStack);
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability's icon should be flipped upside-down when it's on an opponent card.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="flipY">If the icon should be flipped.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetFlipYIfOpponent(this AbilityInfo abilityInfo, bool flipY = true)
+    {
+        abilityInfo.flipYIfOpponent = flipY;
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability's icon's colour should be overridden, and what the override colour should be.
+    /// The colour override only applies to the default ability icons; totem and merge icons are unaffected.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="hasOverride">If the ability icon's colour should be overridden.</param>
+    /// <param name="colorOverride">The colour that will override the icon. Only applies if hasOverride is true.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetHasColorOverride(this AbilityInfo abilityInfo, bool hasOverride, Color colorOverride = default)
+    {
+        abilityInfo.hasColorOverride = hasOverride;
+        if (hasOverride)
+            abilityInfo.colorOverride = colorOverride;
+
+        return abilityInfo;
+    }
+    /// <summary>
+    /// Sets whether or not the ability's name should precede its description in Act 2.
+    /// If false, only the ability's description will be shown.
+    /// </summary>
+    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="keyword">If the ability's name should precede its Act 2 description.</param>
+    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    public static AbilityInfo SetKeywordAbility(this AbilityInfo abilityInfo, bool keyword = true)
+    {
+        abilityInfo.keywordAbility = keyword;
         return abilityInfo;
     }
 

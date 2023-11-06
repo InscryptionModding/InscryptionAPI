@@ -112,7 +112,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this challenge needs to take an action at the beginning of battle **before** all setup.
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPreBattleSetup()
     {
         return false;
@@ -121,7 +121,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your challenge take an action at the beginning of battle **before** all setup.
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPreBattleSetup()
     {
         yield break;
@@ -130,7 +130,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this challenge needs to take an action at the beginning of battle **after** all setup.
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPostBattleSetup()
     {
         return false;
@@ -139,7 +139,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your challenge take an action at the beginning of battle **after** all setup
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPostBattleSetup()
     {
         yield break;
@@ -148,7 +148,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this challenge needs to take an action at the end of battle **before** battle cleanup
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPreBattleCleanup()
     {
         return false;
@@ -157,7 +157,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your challenge take an action at the end of battle **before** battle cleanup
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPreBattleCleanup()
     {
         yield break;
@@ -166,7 +166,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to indicate if this challenge needs to take an action at the end of battle **after** battle cleanup
     /// </summary>
-    /// <returns>True if the boon wants to respond, false otherwise</returns>
+    /// <returns>True if the boon wants to respond, false otherwise.</returns>
     public virtual bool RespondsToPostBattleCleanup()
     {
         return false;
@@ -175,7 +175,7 @@ public class ChallengeBehaviour : NonCardTriggerReceiver
     /// <summary>
     /// Override this to have your challenge take an action at the end of battle **after** battle cleanup
     /// </summary>
-    /// <returns>A sequence of Unity events containing those actions</returns>
+    /// <returns>A sequence of Unity events containing those actions.</returns>
     public virtual IEnumerator OnPostBattleCleanup()
     {
         yield break;

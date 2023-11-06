@@ -15,7 +15,7 @@ public static class EnergyDrone
     {
         public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
         public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value || !SaveManager.SaveFile.IsPart1; // only parent drone to scale if it's Act 1
         public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
     }
@@ -94,7 +94,6 @@ public static class EnergyDrone
         PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}.");
 
         ResourceDrone drone = UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
-        drone.name = "Part1ResourceDrone";
 
         if (EnergyConfig.ConfigDrone)
             PatchPlugin.Instance.StartCoroutine(AwakeDrone());
@@ -174,6 +173,7 @@ public static class EnergyDrone
                 });
             }
         }
+
         return false;
     }
 

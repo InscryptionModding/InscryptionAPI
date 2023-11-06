@@ -118,7 +118,7 @@ public static class ChallengeManager
         /// <summary>
         /// Converts this full challenge to an AscensionChallengeInfo, returning this.Challenge.
         /// </summary>
-        /// <param name="fc">this.Challenge</param>
+        /// <param name="fc">this.Challenge.</param>
         public static implicit operator AscensionChallengeInfo(FullChallenge fc)
         {
             return fc.Challenge;
@@ -403,7 +403,7 @@ public static class ChallengeManager
     /// Returns true if the challenge with the challengeType of id is stackable, false otherwise.
     /// </summary>
     /// <param name="id">The challenge type to search for.</param>
-    /// <returns>True if the challenge with the challengeType of id is stackable, false otherwise</returns>
+    /// <returns>True if the challenge with the challengeType of id is stackable, false otherwise.</returns>
     public static bool IsStackable(AscensionChallenge id)
     {
         return (AllChallenges.Find(x => x != null && x.Challenge != null && x.Challenge.challengeType == id)?.Stackable).GetValueOrDefault();

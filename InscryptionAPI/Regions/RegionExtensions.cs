@@ -60,7 +60,7 @@ public static class RegionExtensions
     /// Adds consumables to this region.<br/>
     /// This only applies to consumables that are <c>regionSpecific</c>. Adding non-region-specific consumables will increase the probability of the consumable appearing.
     /// </summary>
-    /// <param name="consumables"></param>
+    /// <param name="consumables">.</param>
     public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)
     {
         region.consumableItems = region.consumableItems ?? new();
@@ -151,7 +151,7 @@ public static class RegionExtensions
     /// <summary>
     /// Sets the boss prep encounter condition for this region. If this condition is not met, the 'boss prep encounter' will not appear.
     /// </summary>
-    /// <param name="condition">The condition that needs to be fulfilled</param>
+    /// <param name="condition">The condition that needs to be fulfilled.</param>
     public static RegionData SetBossPrepCondition(this RegionData region, StoryEventCondition condition)
     {
         region.bossPrepCondition = condition;

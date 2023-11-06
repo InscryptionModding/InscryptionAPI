@@ -118,12 +118,12 @@ public static class TribeManager
     /// <summary>
     /// Adds a new tribe to the game
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the tribe</param>
-    /// <param name="name">The name of the tribe</param>
-    /// <param name="tribeIcon">The tribal icon that will appear as a watermark on all cards belonging to this tribe</param>
-    /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes</param>
-    /// <param name="choiceCardbackTexture">The card back texture to display if the card should appear in tribal choice nodes</param>
-    /// <returns>The unique identifier for the new tribe</returns>
+    /// <param name="guid">The guid of the mod adding the tribe.</param>
+    /// <param name="name">The name of the tribe.</param>
+    /// <param name="tribeIcon">The tribal icon that will appear as a watermark on all cards belonging to this tribe.</param>
+    /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes.</param>
+    /// <param name="choiceCardbackTexture">The card back texture to display if the card should appear in tribal choice nodes.</param>
+    /// <returns>The unique identifier for the new tribe.</returns>
     public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
     {
         Tribe tribe = GuidManager.GetEnumValue<Tribe>(guid, name);
@@ -170,12 +170,12 @@ public static class TribeManager
     /// <summary>
     /// Adds a new tribe to the game
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the tribe</param>
-    /// <param name="name">The name of the tribe</param>
-    /// <param name="pathToTribeIcon">Path to the tribal icon that will appear as a watermark on all cards belonging to this tribe</param>
-    /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes</param>
-    /// <param name="pathToChoiceCardbackTexture">Path to the card back texture to display if the card should appear in tribal choice nodes</param>
-    /// <returns>The unique identifier for the new tribe</returns>
+    /// <param name="guid">The guid of the mod adding the tribe.</param>
+    /// <param name="name">The name of the tribe.</param>
+    /// <param name="pathToTribeIcon">Path to the tribal icon that will appear as a watermark on all cards belonging to this tribe.</param>
+    /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes.</param>
+    /// <param name="pathToChoiceCardbackTexture">Path to the card back texture to display if the card should appear in tribal choice nodes.</param>
+    /// <returns>The unique identifier for the new tribe.</returns>
     public static Tribe Add(string guid, string name, string pathToTribeIcon = null, bool appearInTribeChoices = false, string pathToChoiceCardBackTexture = null)
     {
         // Reason for 'is not null' is because if we pass 'null' to GetImageAsTexture, It will thorw an exception.

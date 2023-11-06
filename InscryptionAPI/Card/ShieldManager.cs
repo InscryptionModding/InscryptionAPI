@@ -23,7 +23,6 @@ public static class ShieldManager
     public static void BreakShield(PlayableCard target, int damage, PlayableCard attacker)
     {
         target.Anim.StrongNegationEffect();
-
         var components = target.GetComponents<DamageShieldBehaviour>();
         foreach (var component in components)
         {
@@ -82,7 +81,7 @@ public static class ShieldManager
         return false;
     }
 
-    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield))]
+    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield), new Type[] { } )]
     private static void ResetModShields(PlayableCard __instance)
     {
         foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
@@ -92,7 +91,6 @@ public static class ShieldManager
             com.ResetShields(false);
 
         __instance.SwitchToDefaultPortrait();
-
         // base ResetShield runs after this
     }
 

@@ -29,7 +29,7 @@ public static class TurnExtensions
     /// Adds a card blueprint to this turn.
     /// </summary>
     /// <param name="card">The default card. Can be null for no card.</param>
-    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c></param>
+    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c>.</param>
     /// <param name="minDifficulty">The minimum difficulty for this card to appear.</param>
     /// <param name="maxDifficulty">The maximum difficulty for this card to appear.</param>
     /// <param name="difficultyReplace">Whether to replace this card when a certain difficulty threshold is met.</param>

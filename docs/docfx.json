@@ -20,6 +20,9 @@
             {
                 "files": ["LICENSE"],
                 "src": "../"
+            },
+            {
+                "files": ["images/**", "logo.svg", "favicon.ico"]
             }
         ],
         "content": [
@@ -27,7 +30,7 @@
                 "files": ["api/**.yml", "api/index.md"]
             },
             {
-                "files": ["wiki/**.yml", "wiki/index.md"]
+                "files": ["wiki/toc.yml", "wiki/**.md"]
             },
             {
                 "files": ["toc.yml", "index.md"]
@@ -40,9 +43,14 @@
         ],
         "globalMetadata": {
             "_appTitle": "InscryptionAPI",
+            "_appName": "Inscryption Modding API",
+            "_appLogoPath": "images/logo.svg",
+            "_appFaviconPath": "images/favicon.ico",
+	        "_disableBreadcrumb": true, 
+            "_disableContribution": true,
             "_enableNewTab": true,
             "_enableSearch": true,
-            "_noindex": true,
+            "_noindex": false,
             "_gitContribute": {
                 "repo": "https://github.com/InscryptionModding/InscryptionAPI",
                 "branch": "main",
@@ -56,6 +64,7 @@
         "dest": "_site",
         "template": [
             "default",
+            "modern",
             "template/darkfx",
             "template/no_inherited_members"
         ]

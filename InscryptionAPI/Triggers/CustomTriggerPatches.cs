@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
+using System.ComponentModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
@@ -263,6 +264,7 @@ internal static class CustomTriggerPatches
     private static bool OpposingSlotsPrefix(PlayableCard __instance, ref List<CardSlot> __result, ref int __state)
     {
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+        all.RemoveAll(x => (x as TriggerReceiver) == null);
         all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.ReplacesDefaultOpposingSlot, new(), new(), 0, false));
         bool didModify = false;
@@ -338,7 +340,7 @@ internal static class CustomTriggerPatches
 
         foreach (IGetOpposingSlots component in CustomTriggerFinder.FindTriggersOnCard<IGetOpposingSlots>(__instance))
         {
-            if (component.RespondsToGetOpposingSlots())
+            if ((component as TriggerReceiver) != null && component.RespondsToGetOpposingSlots())
             {
                 alteredOpposings.AddRange(component.GetOpposingSlots(__result, new(alteredOpposings)));
                 removeDefaultAttackSlot = removeDefaultAttackSlot || component.RemoveDefaultAttackSlot();
@@ -352,6 +354,7 @@ internal static class CustomTriggerPatches
             __result.Remove(defaultslot);
         bool didRemoveOriginalSlot = __instance.HasAbility(Ability.SplitStrike) && (!__instance.HasTriStrike() || removeDefaultAttackSlot);
         var all = CustomTriggerFinder.FindGlobalTriggers<ISetupAttackSequence>(true).ToList();
+        all.RemoveAll(x => (x as TriggerReceiver) == null);
         var dummyresult = __result; // used for sorting by trigger priority
         all.Sort((x, x2) => x.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot) -
             x2.GetTriggerPriority(__instance, OpposingSlotTriggerPriority.Normal, original, dummyresult, __state, didRemoveOriginalSlot));
@@ -412,13 +415,13 @@ internal static class CustomTriggerPatches
         return codes;
     }
 
-    static IEnumerator TriggerOnTurnEndInQueueCoro(IEnumerator originalTrigger, bool playerTurn)
+    private static IEnumerator TriggerOnTurnEndInQueueCoro(IEnumerator originalTrigger, bool playerTurn)
     {
         yield return originalTrigger;
 
         foreach (IOnTurnEndInQueue trigger in CustomTriggerFinder.FindTriggersInQueue<IOnTurnEndInQueue>())
         {
-            if (trigger.RespondsToTurnEndInQueue(playerTurn))
+            if ((trigger as TriggerReceiver) != null && trigger.RespondsToTurnEndInQueue(playerTurn))
                 yield return trigger.OnTurnEndInQueue(playerTurn);
         }
     }

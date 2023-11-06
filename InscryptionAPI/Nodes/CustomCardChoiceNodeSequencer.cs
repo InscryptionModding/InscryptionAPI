@@ -13,7 +13,7 @@ public abstract class CustomCardChoiceNodeSequencer : CardChoicesSequencer, ICus
     /// Trigger the custom node sequence.
     /// </summary>
     /// <param name="node">Node that triggered this sequence.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public abstract IEnumerator DoCustomSequence(CustomSpecialNodeData node);
     /// <summary>
     /// CardChoicesSequencer this should inherit. Defaults to the normal card choice.

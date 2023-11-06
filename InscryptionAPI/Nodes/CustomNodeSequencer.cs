@@ -11,7 +11,7 @@ public abstract class CustomNodeSequencer : ManagedBehaviour, ICustomNodeSequenc
     /// Trigger the custom node sequence.
     /// </summary>
     /// <param name="node">Node that triggered this sequence.</param>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public abstract IEnumerator DoCustomSequence(CustomSpecialNodeData node);
     /// <summary>
     /// Used to inherit from another node sequencer and setup everything needed for the sequence to work.

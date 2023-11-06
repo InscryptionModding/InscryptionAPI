@@ -71,7 +71,7 @@ public static class EncounterManager
     /// <summary>
     /// A copy of all encounters in the encounter pool.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>.</returns>
     public static List<EncounterBlueprintData> AllEncountersCopy { get; private set; } = BaseGameEncounters.ToList();
 
     /// <summary>

@@ -2,4 +2,4 @@
 uid: InscryptionAPI.Guid
 summary: *content
 ---
-This is an example to override namespace.
+This namespace is dedicated to managing mod GUIDs, including enumeration extensions.
