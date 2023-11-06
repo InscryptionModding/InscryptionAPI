@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Maps and Encounters | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Maps and Encounters | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="custom-maps-and-encounters">Custom Maps and Encounters</h2>
+
+<hr>
+<p>Unlike abilities, encounters are encoded into the game&#39;s data through a combination of enumerations and strings. For example, Opponents are enumerated by the enumeration Opponent.Type, but special sequencers and unique AI rules are represented as strings buried in each encounters data.</p>
+<p>To create a custom encounter (for example, a custom boss fight), you will need some combination of opponents, special sequencers, and AI.</p>
+<h3 id="encounter-turn-plans">Encounter Turn Plans</h3>
+<p>When you&#39;re creating an encounter, you&#39;ll want to also create a turn plan that determines what cards are played during the encounter.</p>
+<p>The API adds a number of methods to make this process easier for you.</p>
+<p>In this example, we will create a turn plan that is 14 turns long with the following card sequence:
+Turn 1 - Play 2 Bonehounds; the slots they spawn in are chosen by the game; you have no control of it when making a turn plan
+Turn 2 - Play nothing
+Turn 3 - Play nothing
+Turn 4 - Play 1 Bonepile
+Turn 5 - Play 1 Bonepile that is replaced with a Bonehound at difficulties &gt;= 10
+Turn 6 - Play nothing
+Turn 7 - Play 1 Bonepile
+Repeat this once.</p>
+<pre><code class="lang-c#">using static InscryptionAPI.Encounters.EncounterManager;
+
+private void AddEncounters()
+{
+    CardBlueprint bonePile_rp = NewCardBlueprint(&quot;Bonepile&quot;).SetReplacement(&quot;Bonehound&quot;, 10);
+
+    List&lt;List&lt;CardBlueprint&gt;&gt; turnPlan = new()
+    {
+        CreateTurn(&quot;Bonehound&quot;, &quot;Bonehound&quot;),
+        CreateTurn(),
+        CreateTurn(),
+        CreateTurn(&quot;Bonepile&quot;),
+        CreateTurn(bonePile_rp),
+        CreateTurn(),
+        CreateTurn(&quot;Bonepile&quot;)
+    };
+
+    New(&quot;ExampleEncounter&quot;).AddTurns(turnPlan).DuplicateTurns(1);
+}
+</code></pre><p>The following methods are provided for convenience:</p>
+<ul>
+<li><strong>New:</strong> Creates a new instance of EncounterBlueprintData and adds it to the API (does not add the EBD to any regions).</li>
+<li><strong>NewCardBlueprint:</strong> Creates a new CardBlueprint.</li>
+<li><strong>CreateTurn:</strong> Creates a new List&lt;CardBlueprint> that represents a single turn in an encounter&#39;s turn plan. Can pass card names through or CardBlueprints, or nothing if you want an empty turn.</li>
+</ul>
+<p>The following extensions are available for making turn plans, sorted by what class they affect:</p>
+<ul>
+<li>EncounterBlueprintData<ul>
+<li><strong>SetDifficulty:</strong> Sets the minimum and maximum difficulties at which the encounter can be used.</li>
+<li><strong>AddDominantTribes:</strong> Used in Totem battles to determine the potential Totem top that will be used.</li>
+<li><strong>SetRegionSpecific:</strong> Unused by the game, just here for posterity (unless you want to use it for something yourself).</li>
+<li><strong>AddRandomReplacementCards:</strong> When making a card blueprint, you can set whether the card can be randomly replaced. This field determines the cards that can potentially replace that card.</li>
+<li><strong>SetRedundantAbilities:</strong> Sets what abilities can&#39;t be chosen by Leshy to be used for his totem during Totem battles.</li>
+<li><strong>SetUnlockedCardPrerequisites:</strong> Sets what cards have to be unlocked in order to be used in this encounter.</li>
+<li><strong>AddTurnMods:</strong> Used in Part 3 to overclock played cards above the specified difficulty on the specified turn.</li>
+<li><strong>AddTurn:</strong> Adds a turn to the turn plan.</li>
+<li><strong>AddTurns:</strong> Adds turns to the turn plan.</li>
+<li><strong>DuplicateTurns:</strong> Duplicates all turns currently in the turn plan by the specified amount.</li>
+<li><strong>SyncDifficulties:</strong> Sets the minimum and maximum difficulties of all cards in the turn plan.</li>
+</ul>
+</li>
+<li>CardBlueprint<ul>
+<li><strong>SetDifficulty:</strong> Sets the minimum and maximum difficulties at which this card can be played.</li>
+<li><strong>SetReplacement:</strong> Sets the card that will replace the base card at and above the specified difficulty.</li>
+</ul>
+</li>
+<li>List&lt;CardBlueprint><ul>
+<li><strong>SetTurnDifficulty:</strong> Sets the minimum and maximum difficulties of each card in the list.</li>
+<li><strong>DuplicateTurn:</strong> Duplicates the list the specified number of times. Designed to be used with EncounterBlueprintData.AddTurns().</li>
+</ul>
+</li>
+</ul>
+<h2 id="adding-map-nodes">Adding Map Nodes</h2>
+<hr>
+<p>If you want to add a new node to the game map, you need to be prepared to implement potentially complex game logic inside of a &quot;sequencer&quot; class. Whenever the game moves to a map node, it hands control of the game over to a sequencer, which is responsible for creating game objects, animating objects, manipulating the deck, or whatever else it is that you want your custom node to do. Once done, the sequencer hands control of the game back over the main game loop. This sequencer is where you will be spending most of your time programming, testing, and debugging. It is highly recommended that you check out the example mod and/or decompile the base game&#39;s sequencers to get a feel for how to do this.</p>
+<p>Once you have created a sequencer for your event, you also need to create an animation for your node to appear on the map. This animation is an array of precisely four textures, each of which should be 49x49 pixels in size. You need to register the sequencer and the associated texture array with the API. This is done using the NodeManager.Add generic method:</p>
+<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer&gt;(
+    new Texture2D[] {
+        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
+    },
+    NodeManager.NodePosition.SpecialEventRandom
+);
+</code></pre><p>Note the final parameter to &quot;Add&quot; is a flag that tells the API where the node should appear. The NodeManager.NodePosition enumeration is a flag-style enumeration, which means that multiple values can be combined using the bitwise-or operator (|). So, for example, if you want the node to appear randomly throughout the map but also to be forced to appear directly before the boss, you can use this combination:</p>
+<pre><code class="lang-c#">NodeManager.NodePosition.SpecialEventRandom | NodeManager.NodePosition.PreBoss
+</code></pre><p>The values of NodePosition are:</p>
+<ul>
+<li><strong>NotGenerated:</strong> This node will not be autogenerated on the map, but can still be manually added (for example, if you are manually manipulating Act 3 maps).</li>
+<li><strong>Act1Available:</strong> This node can appear in Act 1 maps, not just in Kaycee&#39;s Mod maps. Without this set, the custom node will only ever appear in a Kaycee&#39;s Mod run of Act 1.</li>
+<li><strong>MapStart:</strong> This node will be forced to appear at the start of each map, unless the node fails a prerequisite condition.</li>
+<li><strong>CardChoiceRandom:</strong> This node will appear in the pool of random events that happen right after a battle.</li>
+<li><strong>SpecialEventRandom:</strong> This node will appear in the pool of random events that happen right before a battle.</li>
+<li><strong>PreBoss:</strong> This node will be forced to appear right before the boss of each map, unless the node fails a prerequisite condition</li>
+<li><strong>PostBoss:</strong> This node will be forced to appear right after the boss of each map, unless the node fails a prerequisite condition</li>
+</ul>
+<h3 id="conditional-nodes">Conditional Nodes</h3>
+<p>Map nodes can implement logic to determine whether or not they should appear. To do this, you need to implement a custom &#39;node data&#39; object which inherits from CustomNodeData. There is a virtual method called Initialize that you should override. Here, you can add prerequisite conditions and forced generation conditions; the former will prevent a node from generating if any condition returns false, and the latter will force the node to generate if any condition returns true.</p>
+<p>You can add two types of conditions: simple, or map-aware. A simple condition takes no parameters and returns true or false based on whatever parameters you like (for example, if a certain ascension challenge is active or not). A map-aware condition takes two parameters: the first is the y-value of the node&#39;s position, and the second is a list of all map nodes that have previously been generated on this instnace of the map.</p>
+<p>Here is a code sample:</p>
+<pre><code class="lang-c#">public class MySpecialNodeData : CustomNodeData
+{
+    public override void Initialize()
+    {
+        // This node can only generate if the BaseDifficulty challenge is active
+        this.AddGenerationPrerequisite(() =&gt; AscensionSaveData.Data.ChallengeIsActive(AscensionChallenge.BaseDifficulty));
+
+        // This node is forced to generate if more than one BaseDifficulty challenge is active
+        // and a deck trial node has been placed on the map already
+        this.AddForceGenerationCondition((y, nodes) =&gt; AscensionSaveData.Data.GetNumChallengesOfTypeActive(AscensionChallenge.BaseDifficulty) &gt; 1 
+                                                            &amp;&amp; nodes.Exists(n =&gt; n is DeckTrialNodeData));
+    }
+}
+</code></pre><p>If you are using your own node data, you have to register it at the same time as your custom sequencer:</p>
+<pre><code class="lang-c#">NodeManager.Add&lt;MyCustomSequencer, MySpecialNodeData&gt;(
+    new Texture2D[] {
+        TextureHelper.GetImageAsTexture(&quot;animated_node_1.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_2.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_3.png&quot;, typeof(MyCustomSequencer).Assembly),
+        TextureHelper.GetImageAsTexture(&quot;animated_node_4.png&quot;, typeof(MyCustomSequencer).Assembly)
+    },
+    NodeManager.NodePosition.SpecialEventRandom
+);
+</code></pre><h2 id="special-sequencers">Special Sequencers</h2>
+<hr>
+<p>Special sequencers are essentially &#39;global abilities;&#39; they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). </p>
+<p>While you can inherit directly from SpecialBattleSequencer, there is a hierarchy of existing special sequencers that you may wish to inherit from depending upon your use case. You can use dnSpy to see all of them, but these are three you should be specifically aware of:</p>
+<ul>
+<li><strong>SpecialBattleSequencer</strong>: The base class for all special sequencers. Use this by default.</li>
+<li><strong>BossBattleSequencer</strong>: Used for boss battles</li>
+<li><strong>Part1BossBattleSequencer</strong>: Use for boss battles in Act 1 (Angler, Prospector, Trapper/Trader, and Leshy)</li>
+</ul>
+<p>Special sequencers are set directly on the NodeData instance corresponding to the map node that the player touches to start the battle. This is done using a string value corresponding to the sequencer. To set this yourself, use the SpecialSequenceManager class in the API:</p>
+<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
+{
+    public static readonly string ID = SpecialSequenceManager.Add(Plugin.PluginGuid, &quot;MySequencer&quot;, typeof(MyCustomBattleSequencer));
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

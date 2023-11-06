@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Card Management | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Card Management | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="card-management">Card Management</h2>
+
+<hr>
+<p>Card management is handled through InscryptionAPI.Card.CardManager. You can simply call CardManager.Add with a CardInfo object and that card will immediately be added to the card pool:</p>
+<pre><code class="lang-c#">CardInfo myCard = ...;
+CardManager.Add(myCard); // Boom: done
+</code></pre><p>You can create CardInfo objects however you want. However, there are some helper methods available to simplify this process for you.
+The most import of these is CardManager.New(name, displayName, attack, health, optional description) which creates a new card and adds it for you automatically:</p>
+<pre><code class="lang-c#">CardInfo myCard = CardManager.New(&quot;example_card&quot;, &quot;Sample Card&quot;, 2, 2, &quot;This is just a sample card&quot;);
+</code></pre><p>From here, you can modify the card as you wish, and the changes will stay synced with the game:</p>
+<pre><code class="lang-c#">CardInfo myCard = CardManager.New(&quot;example_card&quot;, &quot;Sample Card&quot;, 2, 2, &quot;This is just a sample card&quot;);
+myCard.cost = 2;
+</code></pre><p>However, there are also a number of extension methods you can chain together to perform a number of common tasks when creating a new card. Here is an example of them in action, followed by a full list:</p>
+<pre><code class="lang-c#">CardInfo myCard = CardManager.New(&quot;example_card&quot;, &quot;Sample Card&quot;, 2, 2, &quot;This is just a sample card&quot;)
+    .SetDefaultPart1Card()
+    .SetCost(bloodCost: 1, bonesCost: 2)
+    .SetPortrait(&quot;/art/sample_portrait.png&quot;, &quot;/art/sample_emissive_portrait.png&quot;)
+    .AddAbilities(Ability.BuffEnemies, Ability.TailOnHit)
+    .SetTail(&quot;Geck&quot;, &quot;/art/sample_lost_tail.png&quot;)
+    .SetRare();
+</code></pre><h3 id="card-extensions">Card Extensions</h3>
+<hr>
+<p>The following card extensions are available (may not be up-to-date):</p>
+<ul>
+<li><strong>SetPortrait:</strong> Assigns the card&#39;s portrait art, and optionally its emissive portrait as well. You can supply Texture2D directly, or supply a path to the card&#39;s art.</li>
+<li><strong>SetEmissivePortrait:</strong> If a card already has a portrait and you just want to modify its emissive portrait, you can use this. Note that this will throw an exception if the card does not have a portrait already.</li>
+<li><strong>SetAltPortrait:</strong> Assigns the card&#39;s alternate portrait.</li>
+<li><strong>SetPixelPortrait:</strong> Assigns the card&#39;s pixel portrait (for GBC mode).</li>
+<li><strong>SetCost:</strong> Sets the cost for the card. There are also extensions for setting Blood, Bones, Energy, and Mox individually.</li>
+<li><strong>SetDefaultPart1Card:</strong> Sets all of the metadata necessary to make this card playable in Part 1 (Leshy&#39;s cabin).</li>
+<li><strong>SetGBCPlayable:</strong> Sets all of the metadata necessary to make this card playable in Part 2.</li>
+<li><strong>SetDefaultPart3Card:</strong> Sets all of the metadata necessary to make this card playable in Part 3 (P03&#39;s cabin).</li>
+<li><strong>SetRare:</strong> Sets all of the metadata ncessary to make this card look and play as Rare.</li>
+<li><strong>SetTerrain:</strong> Sets all of the metadata necessary to make this card look and play as terrain.</li>
+<li><strong>SetPelt:</strong> Sets all of the metadeta necessary to make this card look and play as a pelt card. Can optionally choose whether the card will trigger Pelt Lice&#39;s special ability.</li>
+<li><strong>SetTail:</strong> Creates tail parameters. Note that you must also add the TailOnHit ability for this to do anything.</li>
+<li><strong>SetIceCube:</strong> Creates ice cube parameters. Note that you must also add the IceCube ability for this to do anything.</li>
+<li><strong>SetEvolve:</strong> Creates evolve parameters. Note that you must also add the Evolve ability for this to do anything.</li>
+<li><strong>SetOnePerDeck:</strong> Sets whether or not the card is unique (only one copy in your deck per run).</li>
+<li><strong>SetHideAttackAndHealth:</strong> Sets whether or not the card&#39;s Power and Health stats will be displayed or not.</li>
+<li><strong>SetGemify:</strong> Sets whether or not the card should be Gemified by default.</li>
+<li><strong>SetAffectedByTidalLock:</strong> Sets whether or not the card will be killed by the effect of the Tidal Lock sigil.</li>
+<li><strong>AddAbilities:</strong> Add any number of abilities to the card. This will add duplicates.</li>
+<li><strong>AddAppearances:</strong> Add any number of appearance behaviors to the card. No duplicates will be added.</li>
+<li><strong>AddMetaCategories:</strong> Add any number of metacategories to the card. No duplicates will be added.</li>
+<li><strong>AddTraits:</strong> Add any number of traits to the card. No duplicates will be added.</li>
+<li><strong>AddTribes:</strong> Add any number of tribes to the card. No duplicates will be added.</li>
+<li><strong>AddSpecialAbilities:</strong> Add any number of special abilities to the card. No duplicates will be added.</li>
+</ul>
+<h2 id="evolve-tail-ice-cube-and-delayed-loading">Evolve, Tail, Ice Cube, and Delayed Loading</h2>
+<p>It&#39;s possible that at the time your card is built, the card that you want to evolve into has not been built yet.
+You can use the event handler to delay building the evolve/icecube/tail parameters of your card, or you can use the extension methods above which will handle that for you.</p>
+<p>Note that if you use these extension methods to build these parameters, and the card does not exist yet, the parameters will come back null.
+You will not see the evolve parameters until you add the evolution to the card list <strong>and</strong> you get a fresh copy of the card from CardLoader (as would happen in game).</p>
+<pre><code class="lang-c#">CardManager.New(&quot;Example&quot;, &quot;Base&quot;, &quot;Base Card&quot;, 2, 2).SetEvolve(&quot;Evolve Card&quot;, 1); // &quot;Evolve Card&quot; hasn&#39;t been built yet
+Plugin.Log.LogInfo(CardLoader.GetCardByName(&quot;Example_Base&quot;).evolveParams == null); // TRUE!
+
+CardInfo myEvolveCard = CardManager.New(&quot;Example&quot;, &quot;Evolve&quot;, &quot;Evolve Card&quot;, 2, 5);
+
+Plugin.Log.LogInfo(CardLoader.GetCardByName(&quot;Example_Base&quot;).evolveParams == null); // FALSE!
+</code></pre><p>NOTE: for card blueprints (see <a href="">Encounters</a>), Evolve, Tail, and Ice Cube will NOT work properly if you use delayed loading.
+To solve this, simply create the evolution/tail/ice cube card before the base card like so:</p>
+<pre><code class="lang-c#">CardInfo myEvolveCard = CardManager.New(&quot;Example&quot;, &quot;Evolve&quot;, &quot;Evolve Card&quot;, 2, 5); // build &quot;Evolve Card&quot; first
+
+CardManager.New(&quot;Example&quot;, &quot;Base&quot;, &quot;Base Card&quot;, 2, 2).SetEvolve(myEvolveCard, 1); // then create the base card
+</code></pre><h2 id="editing-existing-cards">Editing Existing Cards</h2>
+<p>If you want to edit a card that comes with the base game, you can simply find that card in the BaseGameCards list in CardManager, then edit it directly:</p>
+<pre><code class="lang-c#">CardInfo card = CardManager.BaseGameCards.CardByName(&quot;Porcupine&quot;);
+card.AddTraits(Trait.KillsSurvivors);
+</code></pre><p>There is also an advanced editing pattern that you can use to not only edit base game cards, but also potentially edit cards that might be added by other mods. To do this, you will add an event handler to the CardManager.ModifyCardList event. This handler must accept a list of CardInfo objects and return a list of CardInfo objects. In that handlers, look for the cards you want to modify and modify them there.</p>
+<p>In this example, we want to make all cards that have either the Touch of Death or Sharp Quills ability to also gain the trait &quot;Kills Survivors&quot;:</p>
+<pre><code class="lang-c#">CardManager.ModifyCardList += delegate(List&lt;CardInfo&gt; cards)
+{
+    foreach (CardInfo card in cards.Where(c =&gt; c.HasAbility(Ability.Sharp) || c.HasAbility(Ability.Deathtouch)))
+        card.AddTraits(Trait.KillsSurvivors);
+
+    return cards;
+};
+</code></pre><p>By doing this, you can ensure that not on all of the base game cards get modified, but also all other cards added by other mods.</p>
+<h2 id="card-appearance-behaviours">Card Appearance Behaviours</h2>
+<p>Card Appearance Behaviours are special classes that modify a card&#39;s appearance in-game.
+They can be built into a CardInfo, or added to a card mid-game.</p>
+<p>Appearance behaviours are implemented similarly to special abilities (for more information on those, see <a href="ability_management.html#special-triggered-abilities">here</a>).</p>
+<pre><code class="lang-c#">public readonly static CardAppearanceBehaviour.Appearance MyAppearanceID = CardAppearanceBehaviourManager.Add(MyPlugin.guid, &quot;Special Appearance&quot;, typeof(MyAppearanceBehaviour)).Id;
+</code></pre><p>Appearance behaviours implement the CardAppearanceBehaviour class.
+There is an abstract method called ApplyAppearance that you must implement - this where you&#39;ll override the default appearance of the card.
+There are also three other virtual methods: ResetAppearance, OnCardAddedToDeck, and OnPreRenderCard that give other hooks for changing the card&#39;s appearance.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class RedEmission : CardAppearanceBehaviour
+{
+    public override void ApplyAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = true;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowRed);
+    }
+
+    public override void ResetAppearance()
+    {
+        base.Card.RenderInfo.forceEmissivePortrait = false;
+        base.Card.StatsLayer.SetEmissionColor(GameColors.Instance.glowSeafoam);
+    }
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

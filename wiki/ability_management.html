@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ability Management | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Ability Management | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="ability-management">Ability Management</h2>
+
+<hr>
+<p>Abilities are unfortunately a little more difficult to manage than cards.
+First of all, they have an attached &#39;AbilityBehaviour&#39; type which you must implement.
+Second, the texture for the ability is not actually stored on the AbilityInfo object itself; it is managed separately (bizarrely, the pixel ability icon <em>is</em> on the AbilityInfo object, but we won&#39;t get into all that).</p>
+<p>Regardless, the API will help you manage all of this with the helpful AbilityManager class. Simply create an AbilityInfo object, and then call AbilityManager.Add with that info object, the texture for the icon, and the type that implements the ability.</p>
+<p>Abilities inherit from DiskCardGame.AbilityBehaviour</p>
+<pre><code class="lang-c#">AbilityInfo myinfo = ...;
+Texture2D myTexture = ...;
+AbilityManager.Add(MyPlugin.guid, myInfo, typeof(MyAbilityType), myTexture);
+</code></pre><p>You can also use the AbilityManager.New method to simplify some of this process:</p>
+<pre><code class="lang-c#">AbilityInfo myInfo = AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;);
+</code></pre><p>And there are also extension methods to help you here as well:</p>
+<pre><code class="lang-c#">AbilityManager.New(MyPlugin.guid, &quot;Ability Name&quot;, &quot;Ability Description&quot;, typeof(MyAbilityType), &quot;/art/my_icon.png&quot;)
+    .SetDefaultPart1Ability()
+    .SetPixelIcon(&quot;/art/my_pixel_icon.png&quot;);
+</code></pre><h3 id="ability-extensions">Ability Extensions</h3>
+<hr>
+<ul>
+<li><strong>SetCustomFlippedTexture:</strong> Use this to give the ability a custom texture when it belongs to the opponent.</li>
+<li><strong>SetPixelIcon:</strong> Use this to set the texture used when rendered as a GBC card.</li>
+<li><strong>AddMetaCategories:</strong> Adds any number of metacategories to the ability. Will not duplicate.</li>
+<li><strong>SetDefaultPart1Ability:</strong> Makes this appear in the part 1 rulebook and randomly appear on mid-tier trader cards and totems.</li>
+<li><strong>SetDefaultPart3Ability:</strong> Makes this appear in the part 3 rulebook and be valid for create-a-card (make sure your power level is accurate here!)</li>
+<li><strong>SetActivated:</strong> Sets whether or not the ability is an activated ability. Activated abilities can be clicked to trigger an effect.</li>
+<li><strong>SetPassive:</strong> Sets whether or not the ability is a passive ability. Passive abilities don&#39;t do anything.</li>
+<li><strong>SetOpponentUsable:</strong> Sets whether or not the ability can be used by the opponent (such as in a Totem battle).</li>
+<li><strong>SetConduit:</strong> Sets whether or not the ability can be used to complete Circuits.</li>
+<li><strong>SetConduitCell:</strong> Sets whether or not the ability is a conduit cell. Unsure of what this does.</li>
+<li><strong>SetCanStack:</strong> Sets whether multiple copies of the ability will stack, activating once per copy. Optionally controls stack behaviour should a card with the ability evolve (see below).</li>
+<li><strong>SetTriggersOncePerStack:</strong> Sets whether the ability (if it stacks) will only ever trigger once per stack. There&#39;s a...&#39;feature&#39; where stackable abilities will trigger twice per stack after a card evolves.</li>
+</ul>
+<h2 id="programming-abilities">Programming Abilities</h2>
+<hr>
+<p>Abilities require an instance of AbilityInfo that contains the information about the ability, but they also require you to write your own class that inherits from AbilityBehaviour and describes how the ability functions.</p>
+<p>AbilityBehaviour contains a <em>lot</em> of virtual methods. For each event that can happen during a battle, there will be a &#39;RespondsToXXX&#39; and an &#39;OnXXX&#39; method that you need to override. The purpose of the &#39;RespondsToXXX&#39; is to indicate if your ability cares about that event - you must return True in that method for the ability to fire. Then, to actually make the ability function, you need to implement your custom behavior in the &#39;OnXXX&#39; method.</p>
+<p>See this example from the base game:</p>
+<pre><code class="lang-c#">public class Sharp : AbilityBehaviour
+{
+    public override Ability Ability =&gt; Ability.Sharp;
+
+    public override bool RespondsToTakeDamage(PlayableCard source) =&gt; source != null &amp;&amp; source.Health &gt; 0;
+
+    public override IEnumerator OnTakeDamage(PlayableCard source)
+    {
+        yield return base.PreSuccessfulTriggerSequence();
+        base.Card.Anim.StrongNegationEffect();
+        yield return new WaitForSeconds(0.55f);
+        yield return source.TakeDamage(1, base.Card);
+        yield return base.LearnAbility(0.4f);
+        yield break;
+    }
+}
+</code></pre><h3 id="stat-icons">Stat Icons</h3>
+<p>Stat icons are unique abilities that apply specifically to a card&#39;s Health and/or Attack stats.</p>
+<p>Stat icons require an instance of StatIconInfo that contains the information about the ability, but they also require you to write your own class that inherits from VariableStatBehaviour and describes how the ability functions.</p>
+<p>When you implement a variable stat behavior, you need to implement the abstract method GetStateValues. This method returns an array of integers: the value at index 0 is the variable attack power, and the value at index 1 is the variable health.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class BellProximity : VariableStatBehaviour
+{
+    protected override SpecialStatIcon IconType =&gt; SpecialStatIcon.Bell;
+
+    protected override int[] GetStatValues()
+    {
+        int num = BoardManager.Instance.PlayerSlotsCopy.Count - base.PlayableCard.Slot.Index;
+        int[] array = new int[2];
+        array[0] = num;
+        return array;
+    }
+}
+</code></pre><p>NOTE: you need to be very careful about how complicated the logic is in GetStatValues. This will be called <em>every frame!!</em> If you&#39;re not careful, you could bog the game down substantially.</p>
+<h3 id="special-triggered-abilities">Special Triggered Abilities</h3>
+<p>Special triggered abilities are a lot like regular abilities; however, they are &#39;invisible&#39; to the player (that is, they do not have icons or rulebook entries).
+As such, the API for these is very simple.
+You simply need to provide your plugin guid, the name of the ability, and the type implementing the ability, and you will be given back a wrapper containing the ID of your newly created special triggered ability.</p>
+<p>Special triggered abilities inherit from DiskCardGame.SpecialCardBehaviour.</p>
+<pre><code class="lang-c#">public readonly static SpecialTriggeredAbility MyAbilityID = SpecialTriggeredAbilityManager.Add(MyPlugin.guid, &quot;Special Ability&quot;, typeof(MySpecialTriggeredAbility)).Id;
+</code></pre><p>And now MyAbilityID can be added to CardInfo objects.</p>
+<p>Special abilities are programmed the same as regular abilities, except they do not have a metadata object associated with them (because they are not described or documented for the player) and they inherit from SpecialCardBehaviour instead of AbilityBehaviour.</p>
+<p>Here is an example from the base game:</p>
+<pre><code class="lang-c#">public class TrapSpawner : SpecialCardBehaviour
+{
+    public override bool RespondsToDie(bool wasSacrifice, PlayableCard killer) =&gt; base.PlayableCard.OnBoard;
+
+    public override IEnumerator OnDie(bool wasSacrifice, PlayableCard killer)
+    {
+        yield return new WaitForSeconds(0.35f);
+        yield return BoardManager.Instance.CreateCardInSlot(CardLoader.GetCardByName(&quot;Trap&quot;), base.PlayableCard.Slot, 0.1f, true);
+        yield return new WaitForSeconds(0.35f);
+        yield break;
+    }
+}
+</code></pre><p>Note how the code uses &#39;base.PlayableCard&#39; instead of &#39;base.Card&#39;.
+Keep this in mind when making special abilities.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

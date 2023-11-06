@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Card Costs | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Card Costs | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="custom-card-costs">Custom Card Costs</h2>
+
+<hr>
+<p>The Inscryption Community Patch allows for custom card costs to be displayed in all three main acts of the game:</p>
+<h3 id="acts-1-and-act-2">Acts 1 and Act 2</h3>
+<p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;);
+    if (myCustomCost &gt; 0)
+        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
+}
+Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost_pixel&quot;);
+    if (myCustomCost &gt; 0)
+        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}_pixel.png&quot;));
+}
+</code></pre><h3 id="act-3">Act 3</h3>
+<p>Custom card costs in Act 3 are a little more complex due to the fact that the Disk Card model displays card costs as 3D objects instead of texture rendered on the card art. As such, you actually have a little more control over how your custom costs are displayed if you want it.</p>
+<p>There are two custom cost events to hook into.
+<code>Part3CardCostRender.UpdateCardCostSimple</code> allows you to simply provide textures for your custom cost that will be rendered onto the card for you (and as you will see, there are helpers to build those textures for you as well).
+<code>Part3CardCostRender.UpdateCardCostComplex</code> gives you an opportunity to modify the <code>GameObject</code> for your card cost directly, allowing you to attach any arbitrary game objects to the card you wish.</p>
+<p>The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.</p>
+<h4 id="basic-card-cost">Basic Card Cost</h4>
+<p>If you just want to display a basic card cost, all you need to do is prepare an icon that represents a single unit of your custom cost. For example, if you are building a custom cost for currency, you need an icon that represents spending one currency (for example, a <code>$</code> symbol). The width and height of the icon are up to you, but keep in mind that they will be placed onto a region that is 300x73 pixels, so the height should not exceed 73 pixels, and the wider the icon is, the fewer will fit on the space.</p>
+<p>The <code>Part3CardCostRender.GetIconifiedCostTexture</code> helper method accepts one of these icons as well as a cost value and generates a pair of textures displaying that total cost. The first texture is the default texture (albedo) and the second is an emissive texture. If there is enough space in the 300x73 region to repeat the icon enough times to display the cost, it will do so. Otherwise, it will render a 7-segement display.</p>
+<p>In the &quot;currency cost&quot; example, where the icon is the <code>$</code> symbol:</p>
+<ul>
+<li>A cost of 3 would be rendered as <code>$$$</code></li>
+<li>A cost of 10 would be rendered as <code>$ x10</code></li>
+</ul>
+<p>From here, you just need to hook into the event. Each custom cost is represented by a <code>CustomCostRenderInfo</code> object, which holds the textures and game objects that will become the cost rendering on the card. Each of these objects needs a unique identifier so the can be found later. In this simple example, that identifier isn&#39;t particularly useful because we won&#39;t use the second part of the event, but it&#39;s still required.</p>
+<pre><code class="lang-C#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+MyIconTexture = TextureHelper.GetImageAsTexture(&quot;cost_icon.png&quot;);
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;);
+    costs.add(new (&quot;MyCustomCost&quot;, Part3CardCostRender.GetIconifiedCostTexture(MyIconTexture, myCustomCost)));
+}
+</code></pre><h3 id="advanced-card-costs">Advanced Card Costs</h3>
+<p>You can also directly modify the card costs by adding new game objects to them, using the <code>UpdateCardCostComplex</code> event. This gives you complete creative freedom, but does require you to truly understand the Unity engine to be able to make it work.</p>
+<p>To do this, don&#39;t add any textures to the render info during the first event. You can then access the <code>GameObject</code> during the second event and do whatever you want:</p>
+<pre><code class="lang-C#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+using UnityEngine;
+
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    costs.add(new (&quot;MyCustomCost&quot;));
+}
+
+Part3CardCostRender.UpdateCardCostComplex += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    GameObject costObject = costs.Find(c =&gt; c.name.Equals(&quot;MyCustomCost&quot;)).CostContainer;
+    // Now I can add things to the cost object directly.
+}
+</code></pre><h3 id="custom-costs-for-death-cards">Custom Costs for Death Cards</h3>
+<p>Death cards aren&#39;t technically cards; they&#39;re card mods that are added to a template card.</p>
+<p>Because of this, simply adding an extended property to them won&#39;t work, since properties apply to ALL copies of the card.
+If you want to create a death card that uses a custom play cost, you&#39;ll need to create a new card and then add properties to that new CardInfo.</p>
+<p>Fortunately, the API&#39;s DeathCardManager is here to handle all this.
+CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card&#39;s name, stats, etc..</p>
+<pre><code class="lang-c#">private void AddCustomDeathCard()
+{
+    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
+        .SetNameReplacement(&quot;Mabel&quot;).SetSingletonId(&quot;wstl_mabel&quot;)
+        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
+        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
+        .AddCustomCostId(&quot;CustomCost&quot;, 1);
+
+    // you can then add your newly created death card to the list of default death card mods like so
+    DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

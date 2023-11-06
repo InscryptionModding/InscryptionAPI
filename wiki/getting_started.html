@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting Started: Installation | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting Started: Installation | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="getting-started-installation">Getting Started: Installation</h2>
+
+<hr>
+<p>To begin, we&#39;ll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.</p>
+<h3 id="installing-with-a-mod-manager">Installing with a Mod Manager</h3>
+<p>This is the recommended way to install BepInEx to the game.</p>
+<ol>
+<li>Download and install <a href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager">Thunderstore Mod Manager</a> or <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a>.</li>
+<li>Click the <strong>Install with Mod Manager</strong> button on the top of <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx&#39;s</a> page.</li>
+<li>Run the game via the mod manager.</li>
+</ol>
+<h3 id="installing-manually">Installing Manually</h3>
+<ol>
+<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx</a> by pressing &#39;Manual Download&#39; and extract the contents into a folder. <strong>Do not extract into the game folder!</strong></li>
+<li>Move the contents of the &#39;BepInExPack_Inscryption&#39; folder into the game folder (where the game executable is).</li>
+<li>Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.</li>
+<li>Install <a href="https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/">MonoModLoader</a> and extract the contents into a folder.</li>
+<li>Move the contents of the &#39;patchers&#39; folder into &#39;BepInEx/patchers&#39; (If any of the mentioned BepInEx folders don&#39;t exist, just create them).</li>
+<li>Install <a href="https://inscryption.thunderstore.io/package/API_dev/API/">Inscryption API</a> and extract the contents into a folder.</li>
+<li>Move the contents of the &#39;plugins&#39; folder into &#39;BepInEx/plugins&#39; and the contents of the &#39;monomod&#39; folder into the &#39;BepInEx/monomod&#39; folder.</li>
+<li>Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.</li>
+</ol>
+<h3 id="installing-on-the-steam-deck">Installing on the Steam Deck:</h3>
+<ol>
+<li>Download <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a> on the Steam Deck’s Desktop Mode and open it from its download using its <code>AppImage</code> file</li>
+<li>Go to the setting of the profile you have for the mods and click <code>Browse Profile Folder</code>.</li>
+<li>Copy the BepInEx folder then go to Steam, and browse Inscryption&#39;s local files; paste the folder there</li>
+<li>Enter Gaming Mode and open Inscryption.  If everything was done correctly, you should see a console appear on your screen.</li>
+</ol>
+<h2 id="getting-started-modding">Getting Started: Modding</h2>
+<hr>
+<p>Modding Inscryption requires a knowledge of coding in C#, and in many cases an understanding of how to patch the game using HarmonyPatch.</p>
+<p>If you&#39;re unfamiliar with any of this, or just want to create cards and sigils, you can use <a href="https://inscryption.thunderstore.io/package/MADH95Mods/JSONCardLoader/">JSONLoader</a>. </p>
+<h3 id="modding-with-jsonloader">Modding with JSONLoader</h3>
+<p> JSONLoader is a versatile mode that provides a more beginner-friendly way of creating new cards and abilities for Inscryption using JSON syntax, which is much simpler than C#.</p>
+<p>JSONLoader&#39;s documentation can be found <a href="https://github.com/MADH95/JSONLoader">here</a>.</p>
+<p>A video tutorial covering how to use JSONLoader can be found <a href="https://www.youtube.com/watch?v=grTSkpI4U7g">here</a>.</p>
+<h3 id="modding-with-c">Modding with C#</h3>
+<p>To begin modding with C#, you will need to create a new C# project using a code editor.
+We recommend and assume you&#39;re using Microsoft&#39;s Visual Studio.</p>
+<p>Your project&#39;s target framework needs to be <code>netstandard2.0</code>.</p>
+<p>Once your project&#39;s created, go to <code>Project &gt; Manage NuGet Packages</code>.
+Click the dropdown menu for &#39;Package source&#39; and check that &#39;BepInEx&#39; and &#39;nuget&#39; is there.</p>
+<p>If BepInEx or nuget aren&#39;t an available source, we need to add them.
+To add a new package source, click on the gear icon next to the package source selector, then click the large green plus-sign.</p>
+<p>To add BepInEx, change the name to &#39;BepInEx&#39; and the source link to &#39;<a href="https://nuget.bepinex.dev/v3/index.json">https://nuget.bepinex.dev/v3/index.json</a>&#39;.
+To add nuget, change the name to &#39;nuget&#39; and the source link to &#39;<a href="https://nuget.windows10ce.com/nuget/v3/index.json">https://nuget.windows10ce.com/nuget/v3/index.json</a>&#39;.</p>
+<p>Change the package source to &#39;All&#39; then click &#39;Browse&#39;.
+We want to install the following packages (<strong>Make sure the version numbers match!</strong>):</p>
+<ul>
+<li>BepInEx.Analyzers v1.0.8</li>
+<li>BepInEx.Core v5.4.19</li>
+<li>HarmonyX v2.9.0</li>
+<li>Inscryption.GameLibs v1.9.0-r.0</li>
+<li>UnityEngine.Modules v2019.4.24</li>
+</ul>
+<p>You will also need to add the API as a reference.
+There are a couple ways to do this, detailed below; whichever way you choose to do this, you&#39;ll also need to need to reference <code>InscryptionAPI.dll</code>, which should be in your BepInEx plugins folder; copy this path for future use.</p>
+<p>To do so, go to your &#39;BepInEx/plugins&#39; folder and copy the folder path.
+Then, navigate to <code>Project &gt; Add Project Reference</code> and click &#39;Browse&#39;.
+Copy the folder path and add &#39;InscryptionAPI.dll&#39; as a reference.
+You can do this for other mods&#39; .dll files if you want to reference them as a mod dependency (a separate mod that your mod relies on to work).</p>
+<p>An alternative method to adding the API (and other mods) as a reference is to use NuGet packages by adding &#39;<a href="https://nuget.bepinex.dev/v3/index.json">https://nuget.bepinex.dev/v3/index.json</a>&#39; as a package source, and then adding &#39;API_dev-API&#39; as a reference.</p>
+<p>With all this, you are now ready to begin creating your mod!
+Some resources are provided below for you to use, including an example mod to look at for examples.
+Otherwise, continue reading this wiki.</p>
+<h3 id="modding-resources">Modding Resources</h3>
+<p><a href="https://discord.gg/QrJEF5Denm">Inscryption Modding Discord</a></p>
+<p><a href="https://github.com/SaxbyMod/SabyModEnums">Vanilla and Modded Enumerations</a></p>
+<p><a href="https://docs.bepinex.dev/">BepInEx documentation</a></p>
+<p><a href="https://harmony.pardeike.net/articles/patching.html">Harmony patching article</a></p>
+<p><a href="https://github.com/debugman18/InscryptionExampleMod">Example Mod using C#</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

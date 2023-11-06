@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DamageShieldBehaviour | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DamageShieldBehaviour | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="damageshieldbehaviour">DamageShieldBehaviour</h2>
+
+<hr>
+<p>Ever wanted to create your own version of the Armoured sigil, but were frustrated by the game&#39;s simplistic boolean logic for shields?
+Worry not! Using the API, you can now easily create your own!
+Simply create a class that inherits from DamageShieldBehaviour (or ActivatedDamageShieldBehaviour) and you&#39;re good to go.</p>
+<p>Abilities using either of these classes must specify a starting number of shields the sigil will provide to a card.</p>
+<p>A basic example can be found here:</p>
+<pre><code class="lang-csharp">public class APIDeathShield : DamageShieldBehaviour
+{
+    public override Ability Ability =&gt; Ability.DeathShield;
+
+    // for stackable sigils, you&#39;ll want to set StartingNumShields to something like this if you want the stacks to be counted
+    public override int StartingNumShields =&gt; base.Card.GetAbilityStacks(Ability);
+
+    // For non-stackable sigils (or perhaps special cases) just setting it to a number will suffice.
+    // public override int StartingNumShields =&gt; 1;
+}
+</code></pre><p>You can continue to modify the shield count during battle:</p>
+<pre><code class="lang-csharp">public void RegainShields
+{
+    // NumShield tracks the current shield amount for the ability instance; it cannot be negative
+    if (NumShield == 0)
+    {
+        ResetShields(true); // Resets NumShield to the starting amount and updates the card display
+    }
+}
+public void ChangeShieldCount()
+{
+    // to modify shield count you need to use numShield NOT NumShield
+    // NumShield cannot be modified directly
+    if (addShield == true)
+    {
+        numShield++;
+    }
+    else
+    {
+        numShield--;
+    }
+    base.Card.RenderCard(); // update the card display if we need to
+}
+</code></pre><p>You can check how many shields a card has using card.GetTotalShields().</p>
+<p>For stacking shields sigils, one stack is hidden whenever the card is damaged IF the ability has been set to behave that way using SetHideSingleStacks().
+Otherwise, the sigil is hidden only when that specific ability&#39;s internal shield count hits 0.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

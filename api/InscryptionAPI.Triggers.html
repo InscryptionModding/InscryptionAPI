@@ -12,13 +12,13 @@
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    <meta name="searchOption" content="noindex">
+    
     <meta property="docfx:rel" content="../">
     <meta property="docfx:newtab" content="true">
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -36,7 +36,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -48,14 +48,6 @@
             </div>
           </div>
         </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
-        </div>
       </header>
       <div class="container body-content">
         
@@ -81,7 +73,7 @@
   
   <h1 id="InscryptionAPI_Triggers" data-uid="InscryptionAPI.Triggers" class="text-break">Namespace InscryptionAPI.Triggers
   </h1>
-  <div class="markdown level0 summary"><p>This is an example to override namespace.</p>
+  <div class="markdown level0 summary"><p>Maintains the various custom interface and ability triggers added by the API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -103,7 +95,9 @@ Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.C
       <section><p>Data collection trigger that modifies the damage taken by any card.</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IGetAttackingSlots.html">IGetAttackingSlots</a></h4>
-      <section></section>
+      <section><p>Used when changing what CardSlots are queued for attacking.
+Triggers before null and Powerless cards are removed, so no making empty slots attack and no making Attack-less cards attack.</p>
+</section>
       <h4><a class="xref" href="InscryptionAPI.Triggers.IGetOpposingSlots.html">IGetOpposingSlots</a></h4>
       <section><p>Run whenever a card is asked what its opposing slots are as part of the attack sequence</p>
 </section>
@@ -215,13 +209,6 @@ This is a replacement for the vanilla DealDamageDirectly trigger, which unlike t
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/InscryptionModding/InscryptionAPI/blob/main/docs/namespace/InscryptionAPI.Triggers.md/#L2" class="contribution-link">Improve this Doc</a>
-                  </li>
-                </ul>
-              </div>
               <div class="toggle-mode">
                 <div class="icon">
                   <i aria-hidden="true">☀</i>
