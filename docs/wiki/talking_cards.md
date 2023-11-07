@@ -242,7 +242,7 @@ Here's an example:
 ```
 "You must be... [w:0.4][c:#7f35e6]confused[c:][w:1].",
 ```
-In this example, the word "confused" is colored in the color #7f35e6. Which, if you don't wanna look it up, is [this color!](https://g.co/kgs/JPHV5v)
+In this example, the word "confused" is colored in the color #7f35e6. Which, if you don't wanna look it up, it's [this color!](https://g.co/kgs/JPHV5v)
 
 Please note that for compatibility reasons, your hex color code **should include the '#'**.
 
