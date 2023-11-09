@@ -7,7 +7,7 @@ using UnityEngine;
 namespace InscryptionAPI.TalkingCards;
 
 /// <summary>
-/// An abstract class for the creation of talking cards through this API.
+/// An abstract class for the creation of talking cards through the API.
 /// It inherits from PaperTalkingCard and implements ITalkingCard.
 /// </summary>
 public abstract class CustomPaperTalkingCard : PaperTalkingCard, ITalkingCard

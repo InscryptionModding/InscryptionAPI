@@ -116,18 +116,18 @@ public static class TribeManager
     }
 
     /// <summary>
-    /// Adds a new tribe to the game
+    /// Adds a new tribe to the game.
     /// </summary>
     /// <param name="guid">The guid of the mod adding the tribe.</param>
     /// <param name="name">The name of the tribe.</param>
     /// <param name="tribeIcon">The tribal icon that will appear as a watermark on all cards belonging to this tribe.</param>
     /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes.</param>
-    /// <param name="choiceCardbackTexture">The card back texture to display if the card should appear in tribal choice nodes.</param>
+    /// <param name="choiceCardbackTexture">The card back texture to display if the card appears in tribal choice nodes. If no texture is provided, a placeholder will be generated from the tribal icon.</param>
     /// <returns>The unique identifier for the new tribe.</returns>
     public static Tribe Add(string guid, string name, Texture2D tribeIcon = null, bool appearInTribeChoices = false, Texture2D choiceCardbackTexture = null)
     {
         Tribe tribe = GuidManager.GetEnumValue<Tribe>(guid, name);
-        Texture2D cardbackTexture = choiceCardbackTexture ?? MakePlaceholderCardback(tribeIcon);
+        Texture2D cardbackTexture = choiceCardbackTexture ?? (appearInTribeChoices ? MakePlaceholderCardback(tribeIcon) : null);
         TribeInfo info = new()
         {
             guid = guid,
@@ -144,22 +144,30 @@ public static class TribeManager
     private static Texture2D MakePlaceholderCardback(Texture2D tribeIcon)
     {
         Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", Assembly.GetExecutingAssembly());
-        if (tribeIcon == null)
+        if (tribeIcon == null) // if no tribe icon, return the empty card texture
             return emptyCardback;
 
-        int startX = (emptyCardback.width - tribeIcon.height) / 2;
-        int startY = emptyCardback.height - tribeIcon.height + 20;
+        // we want the tribe icon to be in the centre of the card texture
+        int startX = (emptyCardback.width - tribeIcon.width) / 2;
+        int startY = (emptyCardback.height - tribeIcon.height) / 2;
 
         for (int x = startX; x < emptyCardback.width; x++)
         {
+            int tribeX = x - startX;
+            if (tribeX > tribeIcon.width) // prevents the icon texture from wrapping around
+                break;
+
             for (int y = startY; y < emptyCardback.height; y++)
             {
+                int tribeY = y - startY;
+                if (tribeY > tribeIcon.height)
+                    break;
+
                 Color bgColor = emptyCardback.GetPixel(x, y);
                 Color wmColor = tribeIcon.GetPixel(x - startX, y - startY);
-                wmColor.a *= 0.91f;
+                wmColor.a *= 0.9f;
 
-                Color final_color = Color.Lerp(bgColor, wmColor, wmColor.a / 1.0f);
-
+                Color final_color = Color.Lerp(bgColor, wmColor, wmColor.a);
                 emptyCardback.SetPixel(x, y, final_color);
             }
         }

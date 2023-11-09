@@ -3,6 +3,11 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.4
+- Fixed Sniper sigil targeting the wrong side of the board
+- Fixed placeholder tribe choice icons being placed incorrectly
+- Auto-gen tribe choice texture is now only created if the tribe can be found in tribe choices
+
 ## 2.18.3
 - Fixed resource drone behaving incorrectly outside of Act 1
 - Added null checks to various custom triggers

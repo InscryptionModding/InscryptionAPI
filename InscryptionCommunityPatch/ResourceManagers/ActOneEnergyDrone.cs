@@ -23,7 +23,7 @@ public static class EnergyDrone
     public static bool SceneCanHaveEnergyDrone(string sceneName)
     {
         string activeSceneName = sceneName.ToLowerInvariant();
-        return activeSceneName.Contains("part1") || activeSceneName.Contains("magnificus") || activeSceneName.Contains("grimora");
+        return (activeSceneName.Contains("part1") && !activeSceneName.Contains("sanctum")) || activeSceneName.Contains("magnificus") || activeSceneName.Contains("grimora");
     }
 
     public static bool CurrentSceneCanHaveEnergyDrone
