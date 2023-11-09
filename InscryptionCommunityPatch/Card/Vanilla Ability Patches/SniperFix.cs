@@ -96,7 +96,7 @@ public class SniperFix
         }
     }
 
-    public static List<CardSlot> GetValidTargets(bool playerIsAttacker, CardSlot attackingSlot) => BoardManager.Instance.GetSlotsCopy(playerIsAttacker);
+    public static List<CardSlot> GetValidTargets(bool playerIsAttacker, CardSlot attackingSlot) => BoardManager.Instance.GetSlotsCopy(!playerIsAttacker);
     public static void PlayerTargetSelectedCallback(List<CardSlot> opposingSlots, CardSlot targetSlot, CardSlot attackingSlot)
     {
         opposingSlots.Add(targetSlot);
