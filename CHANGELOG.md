@@ -3,6 +3,12 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.5
+- Added some null checks
+- Added PlayableCard.GetStatIconHealthBuffs()
+- Added PlayableCard.TransformIntoCardAboveHand() - variant of TransformIntoCardInHand that incorporates MoveCardAboveHand
+- Fixed DrawCopyOnDeath creating warnings in the console
+
 ## 2.18.4
 - Fixed Sniper sigil targeting the wrong side of the board
 - Fixed placeholder tribe choice icons being placed incorrectly
