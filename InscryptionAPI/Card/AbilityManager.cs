@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
+using System.Text;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
@@ -411,7 +412,6 @@ public static class AbilityManager
                 break;
 
             textToCheck = textToCheck.Substring(0, textToCheck.IndexOf("]") + 1);
-
             __result = __result.Replace(textToCheck, textToCheck.Replace("[sigilcost:", "").Replace("]", ""));
         }
     }
@@ -462,27 +462,27 @@ public static class AbilityManager
             int endIndex = textToChange.IndexOf("]");
             textToChange = textToChange.Substring(0, endIndex + 1);
 
-            string allCosts = "";
+            StringBuilder allCosts = new();
             if (ability.BonesCost > 0)
             {
-                allCosts += ability.BonesCost.ToString() + " bone";
+                allCosts.Append(ability.BonesCost.ToString() + " bone");
                 if (ability.BonesCost != 1)
-                    allCosts += "s";
+                    allCosts.Append("s");
             }
             if (ability.EnergyCost > 0)
             {
-                if (allCosts != "")
-                    allCosts += ", ";
-                allCosts += ability.EnergyCost.ToString() + " energy";
+                if (allCosts.ToString() != "")
+                    allCosts.Append(", ");
+                allCosts.Append(ability.EnergyCost.ToString() + " energy");
             }
             if (ability.HealthCost > 0)
             {
-                if (allCosts != "")
-                    allCosts += ", ";
-                allCosts += ability.HealthCost.ToString() + " health";
+                if (allCosts.ToString() != "")
+                    allCosts.Append(", ");
+                allCosts.Append(ability.HealthCost.ToString() + " health");
             }
 
-            return description.Replace(textToChange, allCosts == "" ? "nothing" : allCosts);
+            return description.Replace(textToChange, allCosts.ToString() == "" ? "nothing" : allCosts.ToString());
         }
 
         string[] blocks = description.Split(' ');

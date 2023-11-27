@@ -500,7 +500,7 @@ public static class AbilityExtensions
     #region ExtendedProperties
 
     /// <summary>
-    /// Adds a custom property value to the ability.
+    /// Adds a custom property value to the AbilityInfo.
     /// </summary>
     /// <param name="info">Ability to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
@@ -510,6 +510,18 @@ public static class AbilityExtensions
     {
         info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
         return info;
+    }
+    /// <summary>
+    /// Adds a custom property value to the FullAbility's AbilityInfo - intended as a shorthand for when modders are first adding abilities to the game.
+    /// </summary>
+    /// <param name="fullAbility">FullAbility object to access.</param>
+    /// <param name="propertyName">The name of the property to set.</param>
+    /// <param name="value">The value of the property.</param>
+    /// <returns>The same FullAbility so a chain can continue.</returns>
+    public static FullAbility SetExtendedProperty(this FullAbility fullAbility, string propertyName, object value)
+    {
+        fullAbility.Info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
+        return fullAbility;
     }
 
     /// <summary>

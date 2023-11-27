@@ -7,7 +7,11 @@
 - Added some null checks
 - Added PlayableCard.GetStatIconHealthBuffs()
 - Added PlayableCard.TransformIntoCardAboveHand() - variant of TransformIntoCardInHand that incorporates MoveCardAboveHand
+- Added FullAbility.SetExtendedProperty for setting an AbilityInfo's custom property during ability creation
+- Fixed the camera view locking during the Trapper boss final phase after choosing a talking card
 - Fixed DrawCopyOnDeath creating warnings in the console
+- Fixed ResourceDrone softlocking during Leshy's goodbye sequence if ConfigDefaultDrone is false
+- Improved fix for the full pack Pack Rat sequence
 
 ## 2.18.4
 - Fixed Sniper sigil targeting the wrong side of the board
