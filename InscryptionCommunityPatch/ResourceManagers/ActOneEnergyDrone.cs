@@ -15,7 +15,7 @@ public static class EnergyDrone
     {
         public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
         public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value || !SaveManager.SaveFile.IsPart1; // only parent drone to scale if it's Act 1
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
         public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
     }
@@ -68,13 +68,12 @@ public static class EnergyDrone
 
     private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
     {
-        if (info.temple != targetTemple) // Non-nature cards can't be selected in Act 1
+        // if the CardInfo can't appear in this part of the game - Act 1 = Nature, Grimora = Undead, Magnificus = Wizard
+        if (info.temple != targetTemple)
             return false;
 
-        // Now we check metacategories
         // If the card's metacategories are set such that it can't actually appear, don't count it
-        return info.metaCategories.Exists((CardMetaCategory x) =>
-        x == CardMetaCategory.ChoiceNode || x == CardMetaCategory.TraderOffer || x == CardMetaCategory.Rare);
+        return info.HasAnyOfCardMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer, CardMetaCategory.Rare);
     }
 
     internal static void TryEnableEnergy(string sceneName)
