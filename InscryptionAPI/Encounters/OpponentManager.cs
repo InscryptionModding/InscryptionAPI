@@ -260,40 +260,51 @@ public static class OpponentManager
     }
 
     #endregion
-    
+
     #region Optimization Patches
 
     [HarmonyPatch]
     internal class SpawnScenery_Patches
     {
-        public static IEnumerable<MethodBase> TargetMethods()
-        {
-            yield return AccessTools.Method(typeof(Part1BossOpponent), nameof(Part1BossOpponent.SpawnScenery));
-        }
-
-        public static bool Prefix(Part1BossOpponent __instance)
+        [HarmonyPrefix, HarmonyPatch(typeof(Part1BossOpponent), nameof(Part1BossOpponent.SpawnScenery))]
+        private static bool DisableTableScenery(Part1BossOpponent __instance)
         {
             // Show run method if scenery is disabled
             if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
             {
                 __instance.sceneryObject = new GameObject("TemporaryScenary");
                 __instance.sceneryObject.AddComponent<Animation>();
+                if (__instance is PirateSkullBossOpponent)
+                    __instance.sceneryObject.AddComponent<PirateSkullBossCannons>();
                 return false;
             }
-            
+
+            return true;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(PirateSkullBossCannons), nameof(PirateSkullBossCannons.AimCannons))]
+        [HarmonyPatch(typeof(PirateSkullBossCannons), nameof(PirateSkullBossCannons.FireLeftSide))]
+        [HarmonyPatch(typeof(PirateSkullBossCannons), nameof(PirateSkullBossCannons.FireRightSide))]
+        [HarmonyPatch(typeof(PirateSkullBossCannons), nameof(PirateSkullBossCannons.ResetLeftSide))]
+        [HarmonyPatch(typeof(PirateSkullBossCannons), nameof(PirateSkullBossCannons.ResetRightSide))]
+        private static bool DisableCannonAnims()
+        {
+            if (InscryptionAPIPlugin.configHideAct1BossScenery.Value)
+                return false;
+
             return true;
         }
     }
-    
+
     [HarmonyPatch]
     internal class PreventCallsOnScenary_Patches
     {
-        static Type StartNewPhaseSequence = Type.GetType("DiskCardGame.TrapperTraderBossOpponent+<StartNewPhaseSequence>d__6, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-        static MethodInfo PlayAnimationInfo = AccessTools.Method(typeof(PreventCallsOnScenary_Patches), nameof(PlayAnimation), new[] { typeof(Animation), typeof(string) });
+        private static readonly Type StartNewPhaseSequence = Type.GetType("DiskCardGame.TrapperTraderBossOpponent+<StartNewPhaseSequence>d__6, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+        private static readonly MethodInfo PlayAnimationInfo = AccessTools.Method(typeof(PreventCallsOnScenary_Patches), nameof(PlayAnimation), new[] { typeof(Animation), typeof(string) });
         
-        public static IEnumerable<MethodBase> TargetMethods()
+        private static IEnumerable<MethodBase> TargetMethods()
         {
-            
             yield return AccessTools.Method(StartNewPhaseSequence, "MoveNext");
         }
 
