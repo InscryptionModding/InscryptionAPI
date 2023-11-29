@@ -2468,6 +2468,12 @@ references:
   commentId: M:InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo,System.String,System.Object)
   fullName: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo, System.String, System.Object)
   nameWithType: AbilityExtensions.SetExtendedProperty(AbilityInfo, String, Object)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.Object)
+  name: SetExtendedProperty(AbilityManager.FullAbility, String, Object)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_Object_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.Object)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, System.Object)
+  nameWithType: AbilityExtensions.SetExtendedProperty(AbilityManager.FullAbility, String, Object)
 - uid: InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty*
   name: SetExtendedProperty
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_
@@ -3578,6 +3584,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
   nameWithType: CardExtensions.GetPlayableCard
+- uid: InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs(DiskCardGame.PlayableCard)
+  name: GetStatIconHealthBuffs(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetStatIconHealthBuffs_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetStatIconHealthBuffs(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs*
+  name: GetStatIconHealthBuffs
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetStatIconHealthBuffs_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs
+  nameWithType: CardExtensions.GetStatIconHealthBuffs
 - uid: InscryptionAPI.Card.CardExtensions.GetTotalShields(DiskCardGame.PlayableCard)
   name: GetTotalShields(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetTotalShields_DiskCardGame_PlayableCard_
@@ -5680,6 +5699,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SpawnInHand
   nameWithType: CardExtensions.SpawnInHand
+- uid: InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand(DiskCardGame.PlayableCard,DiskCardGame.CardInfo,Action,Action)
+  name: TransformIntoCardAboveHand(PlayableCard, CardInfo, Action, Action)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_TransformIntoCardAboveHand_DiskCardGame_PlayableCard_DiskCardGame_CardInfo_Action_Action_
+  commentId: M:InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand(DiskCardGame.PlayableCard,DiskCardGame.CardInfo,Action,Action)
+  fullName: InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand(DiskCardGame.PlayableCard, DiskCardGame.CardInfo, Action, Action)
+  nameWithType: CardExtensions.TransformIntoCardAboveHand(PlayableCard, CardInfo, Action, Action)
+- uid: InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand*
+  name: TransformIntoCardAboveHand
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_TransformIntoCardAboveHand_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.TransformIntoCardAboveHand
+  nameWithType: CardExtensions.TransformIntoCardAboveHand
 - uid: InscryptionAPI.Card.CardExtensions.TransformIntoCardInHand(DiskCardGame.PlayableCard,DiskCardGame.CardInfo,Action,Action)
   name: TransformIntoCardInHand(PlayableCard, CardInfo, Action, Action)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_TransformIntoCardInHand_DiskCardGame_PlayableCard_DiskCardGame_CardInfo_Action_Action_
