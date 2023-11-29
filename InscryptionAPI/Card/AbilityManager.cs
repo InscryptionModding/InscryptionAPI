@@ -684,7 +684,19 @@ public static class AbilityManager
 
         for (int i = 0; i < codes.Count; i++)
         {
-            if (codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
+            if (codes[i].opcode == OpCodes.Ldc_I4_5)
+            {
+                // this probably belongs in the community patches but this transpiler was already here, so eh
+                MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.OverrideEvolveDerivedIcon),
+                    new Type[] { typeof(Evolve), typeof(int) });
+
+                i -= 2;
+                int end = codes.FindIndex(i, x => x.opcode == OpCodes.Ldloc_1);
+                codes.RemoveRange(i, end - i);
+                codes.Insert(i++, new(OpCodes.Ldloc_3));
+                codes.Insert(i++, new(OpCodes.Call, customMethod));
+            }
+            else if (codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
             {
                 object operand = codes[i].operand;
                 MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveDuplicateMods),
@@ -702,9 +714,31 @@ public static class AbilityManager
 
         return codes;
     }
-    private static void RemoveDuplicateMods(Evolve instance, CardInfo evolution)
+    private static void OverrideEvolveDerivedIcon(Evolve evolve, int turnsLeftToEvolve)
     {
-        evolution.Mods.RemoveAll(x => instance.Card.Info.Mods.Contains(x));
+        Debug.Log($"{evolve.Ability}");
+        if (evolve.Ability == Ability.Evolve)
+        {
+            evolve.Card.RenderInfo.OverrideAbilityIcon(Ability.Evolve, ResourceBank.Get<Texture>("Art/Cards/AbilityIcons/ability_evolve_" + turnsLeftToEvolve));
+        }
+        else if (evolve.Ability == Ability.Transformer)
+        {
+            evolve.Card.RenderInfo.OverrideAbilityIcon(Ability.Transformer, TextureHelper.GetImageAsTexture($"ability_transformer_{turnsLeftToEvolve}.png", typeof(AbilityManager).Assembly));
+        }
+    }
+    private static void RemoveDuplicateMods(Evolve instance, CardInfo evolution) => evolution.Mods.RemoveAll(instance.Card.Info.Mods.Contains);
+
+    [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.LoadIcon))]
+    private static void LoadTransformerIcon(ref Texture __result, CardInfo info, AbilityInfo ability)
+    {
+        if (ability.ability == Ability.Transformer)
+        {
+            int turnsToEvolve = info?.evolveParams?.turnsToEvolve ?? 1;
+            if (turnsToEvolve <= 1)
+                return;
+
+            __result = TextureHelper.GetImageAsTexture($"ability_transformer_{turnsToEvolve}.png", typeof(AbilityManager).Assembly);
+        }
     }
     #endregion
 

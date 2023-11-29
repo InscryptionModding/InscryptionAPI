@@ -13,7 +13,6 @@ public class DefaultEvolveFix
     private static void FixDefaultEvolveParamsIL(ILContext il)
     {
         ILCursor c = new(il);
-
         int modLoc = -1;
 
         c.GotoNext(MoveType.Before, x => x.MatchNewobj(AccessTools.DeclaredConstructor(typeof(CardModificationInfo), new[] { typeof(int), typeof(int) })));
