@@ -18,15 +18,13 @@ public static class TotemManager
         AllTribes
     }
 
-    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new System.Type[] { typeof(BuildTotemNodeData), typeof(int) })]
+    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new Type[] { typeof(BuildTotemNodeData), typeof(int) })]
     private class ItemsUtil_AllConsumables
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.Vanilla)
-            {
                 return instructions;
-            }
 
             // === We want to turn this
 
@@ -96,7 +94,7 @@ public static class TotemManager
         }
     }
 
-    [HarmonyPatch(typeof(ResourceBank), "Awake", new System.Type[] { })]
+    [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
     private class ResourceBank_Awake
     {
         public static void Postfix(ResourceBank __instance)

@@ -29,30 +29,27 @@ public static class TribeManager
     {
         if (info != null)
         {
-            foreach (TribeInfo tribe in tribes)
+            foreach (TribeInfo tribeInfo in tribes)
             {
-                if (tribe?.icon != null)
+                if (tribeInfo?.icon == null || info.IsNotOfTribe(tribeInfo.tribe))
+                    continue;
+
+                bool foundSpriteRenderer = false;
+                foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
                 {
-                    if (info.IsOfTribe(tribe.tribe))
+                    if (spriteRenderer.sprite == null)
                     {
-                        bool foundSpriteRenderer = false;
-                        foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
-                        {
-                            if (spriteRenderer.sprite == null)
-                            {
-                                foundSpriteRenderer = true;
-                                spriteRenderer.sprite = tribe.icon;
-                                break;
-                            }
-                        }
-                        if (!foundSpriteRenderer)
-                        {
-                            SpriteRenderer last = __instance.tribeIconRenderers.Last();
-                            SpriteRenderer spriteRenderer = UnityObject.Instantiate(last);
-                            spriteRenderer.transform.parent = last.transform.parent;
-                            spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
-                        }
+                        spriteRenderer.sprite = tribeInfo.icon;
+                        foundSpriteRenderer = true;
+                        break;
                     }
+                }
+                if (!foundSpriteRenderer)
+                {
+                    SpriteRenderer last = __instance.tribeIconRenderers.Last();
+                    SpriteRenderer spriteRenderer = UnityObject.Instantiate(last);
+                    spriteRenderer.transform.parent = last.transform.parent;
+                    spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
                 }
             }
         }
@@ -190,10 +187,7 @@ public static class TribeManager
         return Add(guid, name, pathToTribeIcon is not null ? TextureHelper.GetImageAsTexture(pathToTribeIcon) : null, appearInTribeChoices, pathToChoiceCardBackTexture is not null ? TextureHelper.GetImageAsTexture(pathToChoiceCardBackTexture) : null);
     }
 
-    public static bool IsCustomTribe(Tribe tribe)
-    {
-        return tribeTypes.Contains(tribe);
-    }
+    public static bool IsCustomTribe(Tribe tribe) => tribeTypes.Contains(tribe);
 
     public static Texture2D GetTribeIcon(Tribe tribe, bool useMissingIconIfNull = true)
     {
@@ -202,14 +196,13 @@ public static class TribeManager
         {
             foreach (TribeInfo tribeInfo in NewTribes)
             {
-                if (tribeInfo.tribe == tribe)
-                {
-                    if (tribeInfo.icon != null && tribeInfo.icon.texture != null)
-                    {
-                        texture2D = tribeInfo.icon.texture;
-                    }
-                    break;
-                }
+                if (tribeInfo.tribe != tribe)
+                    continue;
+
+                if (tribeInfo.icon != null && tribeInfo.icon.texture != null)
+                    texture2D = tribeInfo.icon.texture;
+
+                break;
             }
         }
         else
@@ -218,15 +211,12 @@ public static class TribeManager
             string str = "Art/Cards/TribeIcons/tribeicon_" + tribe.ToString().ToLowerInvariant();
             Sprite sprite = ResourceBank.Get<Sprite>(str);
             if (sprite != null)
-            {
                 texture2D = sprite.texture;
-            }
         }
 
         if (texture2D == null && useMissingIconIfNull)
-        {
             texture2D = TribeIconMissing;
-        }
+
         return texture2D;
     }
 

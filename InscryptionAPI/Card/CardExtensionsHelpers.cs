@@ -270,6 +270,21 @@ public static partial class CardExtensions
 
     #region PlayableCard
     /// <summary>
+    /// Gets the health adjustment given by a PlayableCard's Stat Icon.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <returns>How much Health the Stat Icon gives.</returns>
+    public static int GetStatIconHealthBuffs(this PlayableCard card)
+    {
+        int num = 0;
+        foreach (CardModificationInfo temporaryMod in card.TemporaryMods)
+        {
+            if (temporaryMod.singletonId == "VARIABLE_STAT")
+                num += temporaryMod.healthAdjustment;
+        }
+        return num;
+    }
+    /// <summary>
     /// Gets the number of Ability stacks a card has.
     /// </summary>
     /// <param name="card">The PlayableCard to access.</param>
@@ -592,7 +607,22 @@ public static partial class CardExtensions
         Singleton<ViewManager>.Instance.SwitchToView(View.Hand);
         yield return new WaitForSeconds(0.15f);
         yield return card.Anim.FlipInAir();
+        yield return new WaitForSeconds(0.1f);
+        preTransformCallback?.Invoke();
+        card.SetInfo(evolvedInfo);
+        onTransformedCallback?.Invoke();
+    }
+    /// <summary>
+    /// A version of TransformIntoCardInHand that incorporates MoveCardAboveHand.
+    /// </summary>
+    public static IEnumerator TransformIntoCardAboveHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
+    {
+        Singleton<ViewManager>.Instance.SwitchToView(View.Default);
+        (Singleton<PlayerHand>.Instance as PlayerHand3D)?.MoveCardAboveHand(card);
+
         yield return new WaitForSeconds(0.15f);
+        yield return card.Anim.FlipInAir();
+        yield return new WaitForSeconds(0.1f);
         preTransformCallback?.Invoke();
         card.SetInfo(evolvedInfo);
         onTransformedCallback?.Invoke();

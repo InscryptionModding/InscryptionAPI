@@ -3,6 +3,17 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.5
+- Added missing null checks
+- Added PlayableCard.GetStatIconHealthBuffs()
+- Added PlayableCard.TransformIntoCardAboveHand() - variant of TransformIntoCardInHand that incorporates MoveCardAboveHand
+- Added FullAbility.SetExtendedProperty for setting an AbilityInfo's custom property during ability creation
+- Fixed DrawCopyOnDeath creating warnings in the console
+- Fixed talking cards locking the camera view when obtained during the Trapper boss's final phase
+- Fixed ResourceDrone softlocking during Leshy's goodbye sequence if ConfigDefaultDrone is false
+- Reverted change to resource drone preventing it from being parented to the scale outside of Act 1
+- Improved visual fix for the full pack Pack Rat sequence
+
 ## 2.18.4
 - Fixed Sniper sigil targeting the wrong side of the board
 - Fixed placeholder tribe choice icons being placed incorrectly

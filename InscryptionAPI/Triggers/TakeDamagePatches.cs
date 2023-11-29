@@ -24,7 +24,7 @@ public static class TakeDamagePatches
         modifyTakeDamage.Sort((a, b) => b.TriggerPriority(__instance, originalDamage, attacker) - a.TriggerPriority(__instance, originalDamage, attacker));
         foreach (var modify in modifyTakeDamage)
         {
-            if (modify.RespondsToModifyDamageTaken(__instance, damage, attacker, originalDamage))
+            if (modify != null && modify.RespondsToModifyDamageTaken(__instance, damage, attacker, originalDamage))
               damage = modify.OnModifyDamageTaken(__instance, damage, attacker, originalDamage);  
         }
 

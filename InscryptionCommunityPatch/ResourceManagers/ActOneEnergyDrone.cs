@@ -15,7 +15,7 @@ public static class EnergyDrone
     {
         public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
         public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value || !SaveManager.SaveFile.IsPart1; // only parent drone to scale if it's Act 1
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
         public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
     }
@@ -68,13 +68,12 @@ public static class EnergyDrone
 
     private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
     {
-        if (info.temple != targetTemple) // Non-nature cards can't be selected in Act 1
+        // if the CardInfo can't appear in this part of the game - Act 1 = Nature, Grimora = Undead, Magnificus = Wizard
+        if (info.temple != targetTemple)
             return false;
 
-        // Now we check metacategories
         // If the card's metacategories are set such that it can't actually appear, don't count it
-        return info.metaCategories.Exists((CardMetaCategory x) =>
-        x == CardMetaCategory.ChoiceNode || x == CardMetaCategory.TraderOffer || x == CardMetaCategory.Rare);
+        return info.HasAnyOfCardMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer, CardMetaCategory.Rare);
     }
 
     internal static void TryEnableEnergy(string sceneName)
@@ -188,7 +187,7 @@ public static class EnergyDrone
             baseResourceManager.PlayerMaxEnergy = 0;
         }
 
-        if (EnergyConfig.ConfigDrone)
+        if (EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
         {
             ResourceDrone.Instance.CloseAllCells(false);
             ResourceDrone.Instance.SetOnBoard(false, false);
@@ -205,11 +204,11 @@ public static class EnergyDrone
     {
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
-            ResourceDrone.Instance.SetOnBoard(true, false);
+            ResourceDrone.Instance?.SetOnBoard(true, false);
             if (EnergyConfig.ConfigDroneMox)
             {
                 PatchPlugin.Logger.LogDebug("Setting up extra resources for the drone.");
-                ResourceDrone.Instance.Gems.SetAllGemsOn(false, true);
+                ResourceDrone.Instance?.Gems.SetAllGemsOn(false, true);
             }
         }
     }
@@ -221,7 +220,7 @@ public static class EnergyDrone
         if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
         {
             int cellsToOpen = __instance.PlayerMaxEnergy - 1;
-            ResourceDrone.Instance.OpenCell(cellsToOpen);
+            ResourceDrone.Instance?.OpenCell(cellsToOpen);
             yield return new WaitForSeconds(0.4f);
         }
 
@@ -237,7 +236,7 @@ public static class EnergyDrone
             int num;
             for (int i = __instance.PlayerEnergy - amount; i < __instance.PlayerEnergy; i = num + 1)
             {
-                ResourceDrone.Instance.SetCellOn(i, true, false);
+                ResourceDrone.Instance?.SetCellOn(i, true, false);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -259,7 +258,7 @@ public static class EnergyDrone
                     __instance.transform.position, 0.4f, 0f,
                     new AudioParams.Pitch(0.9f + (float)(__instance.PlayerEnergy + i) * 0.05f), null, null, null,
                     false);
-                ResourceDrone.Instance.SetCellOn(i, false, false);
+                ResourceDrone.Instance?.SetCellOn(i, false, false);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -299,7 +298,7 @@ public static class EnergyDrone
     private static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
     {
         if (__instance is Part1ResourcesManager)
-            ResourceDrone.Instance.Gems.SetGemOn(gem, on, false);
+            ResourceDrone.Instance.Gems?.SetGemOn(gem, on, false);
     }
 
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.DoUpkeepPhase))]

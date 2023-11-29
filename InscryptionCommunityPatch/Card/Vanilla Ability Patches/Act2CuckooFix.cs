@@ -10,13 +10,7 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 internal class Act2CuckooFix
 {
-    private static MethodBase TargetMethod()
-    {
-        MethodBase baseMethod = AccessTools.Method(typeof(CreateEgg), nameof(CreateEgg.OnResolveOnBoard));
-        return AccessTools.EnumeratorMoveNext(baseMethod);
-    }
-
-    [HarmonyTranspiler]
+    [HarmonyTranspiler, HarmonyPatch(typeof(CreateEgg), nameof(CreateEgg.OnResolveOnBoard), MethodType.Enumerator)]
     private static IEnumerable<CodeInstruction> FixDialogueSoftlock(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new(instructions);
