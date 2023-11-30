@@ -1,5 +1,6 @@
 using BepInEx.Logging;
 using DiskCardGame;
+using DiskCardGame.CompositeRules;
 using HarmonyLib;
 using InscryptionAPI.Helpers;
 using System.Reflection;
@@ -81,6 +82,44 @@ public static class ShieldManager
         return false;
     }
 
+    [HarmonyPrefix, HarmonyPatch(typeof(LatchDeathShield), nameof(LatchDeathShield.OnSuccessfullyLatched))]
+    private static bool PreventShieldReset() => false;
+
+    //[HarmonyPrefix, HarmonyPatch(typeof(ShieldGeneratorItem), nameof(ShieldGeneratorItem.AddShieldsToCards))]
+    private static void DontResetShields(ref List<CardSlot> resetShieldsSlots) => resetShieldsSlots.Clear();
+
+    [HarmonyTranspiler, HarmonyPatch(typeof(ShieldGeneratorItem), nameof(ShieldGeneratorItem.ActivateSequence), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> DontResetOnActivate(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+        int index = codes.FindIndex(x => x.operand?.ToString() == "DiskCardGame.BoardManager get_Instance()");
+        MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
+        codes.RemoveRange(index, 2);
+        codes.Insert(index, new(OpCodes.Callvirt, method));
+        return codes;
+    }
+    [HarmonyTranspiler, HarmonyPatch(typeof(ShieldGems), nameof(ShieldGems.OnResolveOnBoard), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> DontResetOnResolve(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+        int index = codes.FindLastIndex(x => x.operand?.ToString() == "0.25") - 4;
+        MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
+        codes.RemoveRange(index, 2);
+        codes.Insert(index, new(OpCodes.Callvirt, method));
+        return codes;
+    }
+    [HarmonyTranspiler, HarmonyPatch(typeof(RandomCardGainsShieldEffect), nameof(RandomCardGainsShieldEffect.Execute), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> DontResetOnExecute(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+        int index = codes.FindLastIndex(x => x.opcode == OpCodes.Newobj);
+        MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
+        codes.RemoveRange(index, 4);
+        codes.Insert(index, new(OpCodes.Callvirt, method));
+        return codes;
+    }
+
+
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield), new Type[] { } )]
     private static void ResetModShields(PlayableCard __instance)
     {
@@ -93,6 +132,7 @@ public static class ShieldManager
         __instance.SwitchToDefaultPortrait();
         // base ResetShield runs after this
     }
+    private static List<CardSlot> EmptyList() => new();
 
     [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.UpdateFaceUpOnBoardEffects))]
     private static IEnumerable<CodeInstruction> BetterHideShieldLogic(IEnumerable<CodeInstruction> instructions)
