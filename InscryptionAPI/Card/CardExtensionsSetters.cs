@@ -300,16 +300,15 @@ public static partial class CardExtensions
     {
         info.evolveParams = new()
         {
-            evolution = evolveCard
+            evolution = evolveCard,
+            turnsToEvolve = numberOfTurns
         };
 
         if (mods != null && mods.Any())
         {
-            info.evolveParams.evolution = CardLoader.Clone(info.evolveParams.evolution);
+            info.evolveParams.evolution = CardLoader.Clone(info.evolveParams.evolution); // set the evolution to a clone of the evolveCard info
             (info.evolveParams.evolution.mods ??= new()).AddRange(mods);
         }
-
-        info.evolveParams.turnsToEvolve = numberOfTurns;
 
         return info;
     }

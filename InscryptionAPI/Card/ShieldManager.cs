@@ -121,7 +121,7 @@ public static class ShieldManager
 
 
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield), new Type[] { } )]
-    private static void ResetModShields(PlayableCard __instance)
+    private static void ResetModShields(PlayableCard __instance) // runs before the base ResetShield logic
     {
         foreach (var com in __instance.GetComponents<DamageShieldBehaviour>())
             com.ResetShields(false);
@@ -130,9 +130,8 @@ public static class ShieldManager
             com.ResetShields(false);
 
         __instance.SwitchToDefaultPortrait();
-        // base ResetShield runs after this
     }
-    private static List<CardSlot> EmptyList() => new();
+    private static List<CardSlot> EmptyList() => new(); // for transpiler logic (why can't i just pass an empty list?)
 
     [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.UpdateFaceUpOnBoardEffects))]
     private static IEnumerable<CodeInstruction> BetterHideShieldLogic(IEnumerable<CodeInstruction> instructions)
