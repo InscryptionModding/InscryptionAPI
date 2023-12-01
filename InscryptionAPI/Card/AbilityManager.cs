@@ -236,13 +236,10 @@ public static class AbilityManager
             if (Part2ModularAbilities.BasePart2Modular.Contains(ability.ability))
                 ability.SetDefaultPart2Ability();
 
-            if (name == "DeathShield")
+            if (name == "DeathShield") // add the API ability behaviour to DeathShield
             {
-                ability.SetPassive(false);
-                ability.SetCanStack(true);
-                ability.SetHideSingleStacks(true);
-                baseGame.Add(new FullAbility
-                (
+                ability.SetPassive(false).SetCanStack(true).SetHideSingleStacks(true);
+                baseGame.Add(new FullAbility (
                     null,
                     ability.ability,
                     ability,
@@ -251,8 +248,7 @@ public static class AbilityManager
                 ));
                 continue;
             }
-            baseGame.Add(new FullAbility
-            (
+            baseGame.Add(new FullAbility (
                 null,
                 ability.ability,
                 ability,
@@ -344,7 +340,7 @@ public static class AbilityManager
         return AbilityExtensionProperties.GetOrCreateValue(info).StringMap;
     }
 
-
+    #region LoadAbilityIcon
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -380,13 +376,13 @@ public static class AbilityManager
 
         return true;
     }
+    #endregion
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.GetLearnedAbilities))]
     private static bool GetLearnedAbilitesReplacement(bool opponentUsable, int minPower, int maxPower, AbilityMetaCategory categoryCriteria, ref List<Ability> __result)
     {
         __result = new();
-
         foreach (var ability in AllAbilityInfos)
         {
             bool canUse = true;
@@ -402,6 +398,7 @@ public static class AbilityManager
         return false;
     }
 
+    #region Rulebook Description
     [HarmonyPostfix, HarmonyPatch(typeof(AbilityInfo), nameof(AbilityInfo.ParseAndTranslateDescription))]
     private static void CleanUpParsedDescription(ref string __result)
     {
@@ -419,10 +416,7 @@ public static class AbilityManager
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.OpenToAbilityPage))]
     private static bool UpdateRulebookDescription(PlayableCard card)
     {
-        if (!card)
-            return true;
-
-        ExtendedActivatedAbilityBehaviour component = card.GetComponent<ExtendedActivatedAbilityBehaviour>();
+        ExtendedActivatedAbilityBehaviour component = card?.GetComponent<ExtendedActivatedAbilityBehaviour>();
         if (component != null)
         {
             foreach (FullAbility ab in AllAbilities.Where(ai => ai.Info.activated && card.HasAbility(ai.Id)))
@@ -438,14 +432,14 @@ public static class AbilityManager
     [HarmonyPrefix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.SetShown))]
     private static bool ResetAlteredDescriptions(bool shown)
     {
-        if (!shown)
+        if (shown)
+            return true;
+
+        foreach (FullAbility ab in AllAbilities.Where(a => !BaseGameAbilities.Contains(a) && a.Info.activated))
         {
-            foreach (FullAbility ab in AllAbilities.Where(a => !BaseGameAbilities.Contains(a) && a.Info.activated))
-            {
-                AbilityInfo info = AbilitiesUtil.GetInfo(ab.Id);
-                if (info.rulebookDescription != ab.BaseRulebookDescription)
-                    info.ResetDescription();
-            }
+            AbilityInfo info = AbilitiesUtil.GetInfo(ab.Id);
+            if (info.rulebookDescription != ab.BaseRulebookDescription)
+                info.ResetDescription();
         }
         return true;
     }
@@ -572,11 +566,16 @@ public static class AbilityManager
         }
     }
 
+    #endregion
+
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TransformIntoCard))]
     private static IEnumerator TriggerStacksOnceAfterEvolve(IEnumerator enumerator, PlayableCard __instance)
     {
         yield return enumerator;
-
+        FixStackTriggers(__instance);
+    }
+    internal static void FixStackTriggers(PlayableCard __instance)
+    {
         // get all triggered abilities
         List<Ability> abilities = __instance.TriggerHandler.triggeredAbilities.ConvertAll(x => x.Item1);
 
@@ -584,17 +583,14 @@ public static class AbilityManager
         foreach (var ab in abilities.Distinct())
         {
             AbilityInfo info = AllAbilityInfos.AbilityByID(ab);
-            if (info.passive)
+            if (info.passive || !info.canStack || !info.GetTriggersOncePerStack())
                 continue;
 
-            if (info.canStack && info.GetTriggersOncePerStack())
+            // since evolving doubles the triggers, remove half of them
+            for (int i = 0; i < abilities.Count(x => x == ab) / 2; i++)
             {
-                // since evolving doubles the triggers, remove half of them
-                for (int i = 0; i < abilities.Count(x => x == ab) / 2; i++)
-                {
-                    var tuple = __instance.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ab);
-                    __instance.TriggerHandler.triggeredAbilities.Remove(tuple);
-                }
+                var tuple = __instance.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ab);
+                __instance.TriggerHandler.triggeredAbilities.Remove(tuple);
             }
         }
     }
@@ -604,53 +600,48 @@ public static class AbilityManager
     private static IEnumerator WaterborneFix(IEnumerator result, Trigger trigger, bool triggerFacedown, params object[] otherArgs)
     {
         yield return result;
-        if (!triggerFacedown)
+        if (triggerFacedown)
+            yield break;
+
+        bool RespondsToTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
         {
-            bool RespondsToTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+            foreach (TriggerReceiver receiver in r.GetAllReceivers())
             {
-                foreach (TriggerReceiver receiver in r.GetAllReceivers())
-                {
-                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
-                        return true;
-
-                }
-                return false;
-            }
-            IEnumerator OnTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
-            {
-                foreach (TriggerReceiver receiver in r.GetAllReceivers())
-                {
-                    if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
-                        yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
-
-                }
-                yield break;
-            }
-            List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
-            foreach (PlayableCard playableCard in list)
-            {
-                if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, trigger, otherArgs))
-                    yield return OnTrigger(playableCard.TriggerHandler, trigger, otherArgs);
+                if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
+                    return true;
 
             }
+            return false;
+        }
+        IEnumerator OnTrigger(CardTriggerHandler r, Trigger trigger, params object[] otherArgs)
+        {
+            foreach (TriggerReceiver receiver in r.GetAllReceivers())
+            {
+                if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
+                    yield return Singleton<GlobalTriggerHandler>.Instance.TriggerSequence(trigger, receiver, otherArgs);
+
+            }
+            yield break;
+        }
+        List<PlayableCard> list = new(Singleton<BoardManager>.Instance.CardsOnBoard);
+        foreach (PlayableCard playableCard in list)
+        {
+            if (playableCard != null && playableCard.FaceDown && RespondsToTrigger(playableCard.TriggerHandler, trigger, otherArgs))
+                yield return OnTrigger(playableCard.TriggerHandler, trigger, otherArgs);
+
         }
         yield break;
     }
 
-    [HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
-    [HarmonyTranspiler]
+    [HarmonyTranspiler, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
     public static IEnumerable<CodeInstruction> AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction> instructions)
     {
-        // === We want to turn this
-
+        // === We want to turn this:
         // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
 
-        // === Into this
-
+        // === Into this:
         // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
         // Log(info2);
-
-        // ===
         List<CodeInstruction> codes = new(instructions);
 
         MethodInfo LogAbilityMethodInfo = SymbolExtensions.GetMethodInfo(() => LogAbilityInfo(Ability.Apparition, null, null));
@@ -675,18 +666,18 @@ public static class AbilityManager
             InscryptionAPIPlugin.Logger.LogError("Cannot find ability " + ability + " for " + info.displayedName);
     }
 
-    #region Remove Duplicate Evolve Mods
+    #region Evolve Changes
     [HarmonyPatch(typeof(Evolve), nameof(Evolve.OnUpkeep), MethodType.Enumerator)]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> EvolveDoesntCopyMods(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> EvolveOnUpkeepPatches(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new(instructions);
-
         for (int i = 0; i < codes.Count; i++)
         {
             if (codes[i].opcode == OpCodes.Ldc_I4_5)
             {
                 // this probably belongs in the community patches but this transpiler was already here, so eh
+                // overrides the transformer icon so it can display numbers
                 MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.OverrideEvolveDerivedIcon),
                     new Type[] { typeof(Evolve), typeof(int) });
 
@@ -698,13 +689,13 @@ public static class AbilityManager
             }
             else if (codes[i].opcode == OpCodes.Stfld && codes[i].operand.ToString() == "DiskCardGame.CardInfo <evolution>5__2")
             {
+                // evolve doesn't copy mods
                 object operand = codes[i].operand;
                 MethodInfo customMethod = AccessTools.Method(typeof(AbilityManager), nameof(AbilityManager.RemoveDuplicateMods),
                     new Type[] { typeof(Evolve), typeof(CardInfo) });
 
                 i += 2;
-
-                codes.Insert(i, new(OpCodes.Ldloc_1));
+                codes.Insert(i++, new(OpCodes.Ldloc_1));
                 codes.Insert(i++, new(OpCodes.Ldarg_0));
                 codes.Insert(i++, new(OpCodes.Ldfld, operand));
                 codes.Insert(i++, new(OpCodes.Call, customMethod));
@@ -716,28 +707,30 @@ public static class AbilityManager
     }
     private static void OverrideEvolveDerivedIcon(Evolve evolve, int turnsLeftToEvolve)
     {
-        Debug.Log($"{evolve.Ability}");
         if (evolve.Ability == Ability.Evolve)
         {
-            evolve.Card.RenderInfo.OverrideAbilityIcon(Ability.Evolve, ResourceBank.Get<Texture>("Art/Cards/AbilityIcons/ability_evolve_" + turnsLeftToEvolve));
+            evolve.Card.RenderInfo.OverrideAbilityIcon(
+                Ability.Evolve, ResourceBank.Get<Texture>("Art/Cards/AbilityIcons/ability_evolve_" + turnsLeftToEvolve)
+                );
         }
-        else if (evolve.Ability == Ability.Transformer)
+        else if (evolve.Ability == Ability.Transformer && (evolve.Card.Info.evolveParams?.turnsToEvolve ?? 1) != 1)
         {
-            evolve.Card.RenderInfo.OverrideAbilityIcon(Ability.Transformer, TextureHelper.GetImageAsTexture($"ability_transformer_{turnsLeftToEvolve}.png", typeof(AbilityManager).Assembly));
+            evolve.Card.RenderInfo.OverrideAbilityIcon(
+                Ability.Transformer, TextureHelper.GetImageAsTexture($"ability_transformer_{turnsLeftToEvolve}.png", typeof(AbilityManager).Assembly)
+                );
         }
     }
     private static void RemoveDuplicateMods(Evolve instance, CardInfo evolution) => evolution.Mods.RemoveAll(instance.Card.Info.Mods.Contains);
 
-    [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.LoadIcon))]
-    private static void LoadTransformerIcon(ref Texture __result, CardInfo info, AbilityInfo ability)
+    [HarmonyPostfix, HarmonyPatch(typeof(Evolve), nameof(Evolve.RemoveTemporaryModsWithEvolve))]
+    private static void ResetOverrideAndTurnsInPlay(Evolve __instance)
     {
-        if (ability.ability == Ability.Transformer)
+        // this stuff is needed to fix problems relating to (intentional) chain evolutions that have different evolution delays
+        __instance.numTurnsInPlay = 0;
+        if (__instance.Card.RenderInfo.overriddenAbilityIcons.ContainsKey(__instance.Ability))
         {
-            int turnsToEvolve = info?.evolveParams?.turnsToEvolve ?? 1;
-            if (turnsToEvolve <= 1)
-                return;
-
-            __result = TextureHelper.GetImageAsTexture($"ability_transformer_{turnsToEvolve}.png", typeof(AbilityManager).Assembly);
+            __instance.Card.RenderInfo.overriddenAbilityIcons.Remove(__instance.Ability);
+            __instance.Card.StatsLayer.RenderCard(__instance.Card.RenderInfo);
         }
     }
     #endregion
@@ -748,9 +741,7 @@ public static class AbilityManager
     {
         __result.SetBloodCost(botModeCard.BloodCost - beastModeCard.BloodCost)
             .SetBonesCost(botModeCard.BonesCost - beastModeCard.BonesCost);
-
-        // no way of nullifying specific gem costs so we leave this out for now
-        // __result.SetGemsCost(new List<GemType>(beastModeCard.GemsCost.FindAll(x => !botModeCard.GemsCost.Contains(x))));
+        // currently no way of nullifying specific gem costs
     }
     [HarmonyPostfix, HarmonyPatch(typeof(Transformer), nameof(Transformer.GetTransformCardInfo))]
     private static void ChangeTransformerInfoMethod(Transformer __instance, ref CardInfo __result)
@@ -759,25 +750,28 @@ public static class AbilityManager
     }
     private static CardInfo NewGetTransformCardInfo(PlayableCard card)
     {
-        // mods carry over when transforming, so we need to make sure that the name isn't the current card name
-        // so we don't end up just transforming into the same card over and over again
+        // mods carry over when transforming now, so make sure that we aren't transforming into ourselves endlessly
+        // if a modder wants that logic for whatever reason, they can use the evolveParams
         string transformCardId = card.Info.Mods.Find(x => !string.IsNullOrEmpty(x.transformerBeastCardId) && x.transformerBeastCardId != card.Info.name)?.transformerBeastCardId;
 
-        transformCardId ??= card.Info.GetTransformerCardId(); // use the API-defined TransformerCardId
-        transformCardId ??= card.Info.evolveParams?.evolution?.name; // use the evolution params
-        transformCardId ??= "CXformerAdder"; // use Robo-Adder as a fallback
+        // use the API-defined TransformerCardId, evolveParams evolution name, or CSformerAdder as a fallback
+        transformCardId ??= ((card.Info.GetTransformerCardId() ?? card.Info.evolveParams?.evolution?.name) ?? "CXformerAdder");
 
         CardInfo cardByName = CardLoader.GetCardByName(transformCardId);
         CardModificationInfo beastModeStatsMod = Transformer.GetBeastModeStatsMod(cardByName, card.Info);
         beastModeStatsMod.nameReplacement = card.Info.DisplayedNameEnglish;
         beastModeStatsMod.nonCopyable = true;
         cardByName.Mods.Add(beastModeStatsMod);
-        CardModificationInfo item = new(Ability.Transformer)
+
+        // if the evolution already has transformer, assume the modder's set up their own logic we don't want to override
+        if (cardByName.LacksAbility(Ability.Transformer))
         {
-            nonCopyable = true
-        };
-        cardByName.Mods.Add(item);
-        cardByName.SetEvolve(card.Info, 1);
+            cardByName.Mods.Add(new(Ability.Transformer)
+            {
+                nonCopyable = true
+            });
+            cardByName.SetEvolve(card.Info, 1);
+        }
 
         if (card.Info.HasSpecialAbility(SpecialTriggeredAbility.TalkingCardChooser))
         {
@@ -787,6 +781,20 @@ public static class AbilityManager
             Singleton<CardRenderCamera>.Instance.StopLiveRenderCard(card.StatsLayer);
         }
         return cardByName;
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.LoadIcon))]
+    private static void LoadTransformerIcon(ref Texture __result, CardInfo info, AbilityInfo ability)
+    {
+        if (ability.ability != Ability.Transformer)
+            return;
+
+        // if the num of turns to evolve is 1, use the default, numberless icon so we don't mess with too much of the vanilla visuals
+        int turnsToEvolve = info?.evolveParams?.turnsToEvolve ?? 1;
+        if (turnsToEvolve <= 1)
+            return;
+
+        __result = TextureHelper.GetImageAsTexture($"ability_transformer_{turnsToEvolve}.png", typeof(AbilityManager).Assembly);
     }
     #endregion
 
@@ -798,7 +806,6 @@ public static class AbilityManager
         __result = BetterSquirrelOrbit(__instance);
         return false;
     }
-
     private static IEnumerator BetterSquirrelOrbit(SquirrelOrbit instance)
     {
         List<CardSlot> affectedSlots = new();
