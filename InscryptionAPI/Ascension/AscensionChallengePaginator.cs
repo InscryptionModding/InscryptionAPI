@@ -15,32 +15,26 @@ public class AscensionChallengePaginator : MonoBehaviour
     {
         if (challengeObjectsForPages == null)
         {
+            List<GameObject> toSort = new();
             if (screen != null)
             {
                 pageLength = screen.icons.Count;
-                List<GameObject> toSort = screen.icons.ConvertAll((x) => x.gameObject);
-                challengeObjectsForPages = new List<List<GameObject>>
-                    {
-                        toSort
-                    };
+                toSort = screen.icons.ConvertAll((x) => x.gameObject);
             }
             else
             {
-                List<AscensionIconInteractable> icons = new(transition.screenInteractables.FindAll((x) => x.GetComponent<AscensionIconInteractable>() != null).ConvertAll((x) =>
-                    x.GetComponent<AscensionIconInteractable>()));
+                List<AscensionIconInteractable> icons = new(
+                    transition.screenInteractables.FindAll((x) => x.GetComponent<AscensionIconInteractable>() != null)
+                    .ConvertAll((x) => x.GetComponent<AscensionIconInteractable>())
+                    );
                 pageLength = icons.Count;
-                List<GameObject> toSort = icons.ConvertAll((x) => x.gameObject);
-                challengeObjectsForPages = new List<List<GameObject>>
-                    {
-                        toSort
-                    };
+                toSort = icons.ConvertAll((x) => x.gameObject);
             }
+            challengeObjectsForPages = new List<List<GameObject>> { toSort };
         }
         this.screen = screen;
         if (screen == null)
-        {
             this.transition = transition;
-        }
     }
 
     public void AddPage(List<AscensionChallengeInfo> page)
@@ -92,10 +86,9 @@ public class AscensionChallengePaginator : MonoBehaviour
     public void NextPage()
     {
         pageIndex++;
-        if (pageIndex >= challengeObjectsForPages.Count)
-        {
+        if (pageIndex >= challengeObjectsForPages.Count) // wrap-around
             pageIndex = 0;
-        }
+
         LoadPage(pageIndex);
     }
 
@@ -103,37 +96,35 @@ public class AscensionChallengePaginator : MonoBehaviour
     {
         pageIndex--;
         if (pageIndex < 0)
-        {
-            pageIndex = challengeObjectsForPages.Count - 1;
-        }
+            pageIndex = challengeObjectsForPages.Count - 1;  // wrap-around
+
         LoadPage(pageIndex);
     }
 
     public void LoadPage(int page)
     {
+        // if page index corresponds to an index in challengeObjects
         if (page >= 0 && page < challengeObjectsForPages.Count)
         {
+            // for every list of objects
             for (int i = 0; i < challengeObjectsForPages.Count; i++)
             {
-                var value = challengeObjectsForPages[i];
+                List<GameObject> value = challengeObjectsForPages[i];
+                value.RemoveAll(x => x == null); // remove null game objects
                 if (i == page)
                 {
-                    value.RemoveAll(x => x == null);
-                    value.ForEach((x) =>
+                    value.ForEach(x =>
                     {
-                        if (x != null)
-                        {
-                            x?.SetActive(
-                                x?.GetComponentInChildren<AscensionIconInteractable>()?.Info == null ||
-                                x?.GetComponentInChildren<AscensionIconInteractable>().Info.challengeType != AscensionChallenge.FinalBoss ||
-                                AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel));
-                        }
+                        AscensionChallenge currentChallenge = x.GetComponentInChildren<AscensionIconInteractable>()?.Info?.challengeType ?? AscensionChallenge.FinalBoss;
+                        x.SetActive(
+                            currentChallenge != AscensionChallenge.FinalBoss ||
+                            AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel));
+                        x.GetComponent<AscensionIconInteractable>()?.ShowActivated(AscensionSaveData.Data.activeChallenges.Contains(currentChallenge));
                     });
                 }
                 else
                 {
-                    value.RemoveAll(x => x == null);
-                    value.ForEach((x) => { if (x != null) { x?.SetActive(false); } });
+                    value.ForEach(x => x.SetActive(false));
                 }
             }
         }
@@ -150,7 +141,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             Destroy(leftArrow);
         for (int i = 1; i < challengeObjectsForPages.Count; i++)
         {
-            challengeObjectsForPages[i].ForEach(x => DestroyImmediate(x));
+            challengeObjectsForPages[i].ForEach(DestroyImmediate);
         }
         challengeObjectsForPages.Clear();
         screen?.icons?.RemoveAll(x => x == null);
@@ -159,23 +150,16 @@ public class AscensionChallengePaginator : MonoBehaviour
         {
             icons = screen.icons;
             pageLength = screen.icons.Count;
-            List<GameObject> toSort = screen.icons.ConvertAll((x) => x.gameObject);
-            challengeObjectsForPages = new List<List<GameObject>>
-                    {
-                        toSort
-                    };
         }
         else
         {
             icons = new(transition.screenInteractables.FindAll((x) => x.GetComponent<AscensionIconInteractable>() != null).ConvertAll((x) =>
                 x.GetComponent<AscensionIconInteractable>()));
             pageLength = icons.Count;
-            List<GameObject> toSort = icons.ConvertAll((x) => x.gameObject);
-            challengeObjectsForPages = new List<List<GameObject>>
-                    {
-                        toSort
-                    };
         }
+        List<GameObject> toSort = icons.ConvertAll((x) => x.gameObject);
+        challengeObjectsForPages = new List<List<GameObject>> { toSort };
+
         List<ChallengeManager.FullChallenge> fcs = ChallengeManager.AllChallenges.ToList();
         List<(ChallengeManager.FullChallenge, AscensionChallengeInfo)> challengesToAdd = new(fcs.ConvertAll(x => (x, x.Challenge).Repeat(x.AppearancesInChallengeScreen)).SelectMany(x => x));
         List<AscensionIconInteractable> sortedicons = new(screen.icons);
@@ -258,7 +242,7 @@ public class AscensionChallengePaginator : MonoBehaviour
 
             // if the arrows would be offscreen/clipped by the screen edge,
             // or if the arrows' positions have been overriden by the config
-            if (screenContinue.position.x < rightArrowPos.x || InscryptionAPIPlugin.configOverrideArrows.Value)
+            if (InscryptionAPIPlugin.configOverrideArrows.Value || screenContinue.position.x < rightArrowPos.x)
             {
                 rightArrowPos = screenContinue.position + Vector3.left / 2f;
 

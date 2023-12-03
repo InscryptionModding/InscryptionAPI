@@ -51,7 +51,6 @@ public static class GuidManager
         string saveKey = $"{typeof(T).Name}_{guid}_{value}";
 
         int enumValue = ModdedSaveManager.SaveData.GetValueAsInt(InscryptionAPIPlugin.ModGUID, saveKey);
-
         if (enumValue == default)
         {
             lock (lockObject)
@@ -68,7 +67,6 @@ public static class GuidManager
         }
 
         reverseMapper[enumValue] = typeof(T);
-
         return *(T*)&enumValue;
     }
     
