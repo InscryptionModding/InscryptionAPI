@@ -16,11 +16,11 @@ public static class Part2CardCostRender
 
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
 
+    public static bool RightAct2Cost => PatchPlugin.rightAct2Cost.Value;
+    public static Texture2D BlankPixelCost() => TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
+
     public static Texture2D CombineIconAndCount(int cardCost, Texture2D artCost)
     {
-        bool left = !PatchPlugin.rightAct2Cost.Value;
-        Texture2D baseTexture = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
-
         List<Texture2D> list = new();
         if (cardCost <= 4)
         {
@@ -33,14 +33,12 @@ public static class Part2CardCostRender
             list.Add(TextureHelper.GetImageAsTexture($"pixel_L_{cardCost}.png", typeof(Part2CardCostRender).Assembly));
         }
 
-        int xOffset = left ? 0 : cardCost >= 10 ? 30 - 20 - artCost.width : cardCost <= 4 ? 30 - artCost.width * cardCost : 30 - 14 - artCost.width;
-        return TextureHelper.CombineTextures(list, baseTexture, xOffset: xOffset, xStep: artCost.width);
+        int xOffset = !RightAct2Cost ? 0 : cardCost >= 10 ? 30 - 20 - artCost.width : cardCost <= 4 ? 30 - artCost.width * cardCost : 30 - 14 - artCost.width;
+        return TextureHelper.CombineTextures(list, BlankPixelCost(), xOffset: xOffset, xStep: artCost.width);
     }
 
     public static Sprite Part2SpriteFinal(CardInfo card)
     {
-        bool left = !PatchPlugin.rightAct2Cost.Value;
-
         // A list to hold the textures (important later, to combine them all)
         List<Texture2D> masterList = new();
 
@@ -57,7 +55,7 @@ public static class Part2CardCostRender
         {
             List<Texture2D> gemCost = new();
 
-            //If a card has a green mox, set the green mox
+            // Order of: green, orange, blue
             if (card.GemsCost.Contains(GemType.Green))
                 gemCost.Add(TextureHelper.GetImageAsTexture("pixel_mox_green.png", typeof(Part2CardCostRender).Assembly));
 
@@ -67,12 +65,11 @@ public static class Part2CardCostRender
             if (card.GemsCost.Contains(GemType.Blue))
                 gemCost.Add(TextureHelper.GetImageAsTexture("pixel_mox_blue.png", typeof(Part2CardCostRender).Assembly));
 
-            Texture2D gemBaseTexture = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
-
-            if (!left)
+            if (RightAct2Cost)
                 gemCost.Reverse();
 
-            masterList.Add(TextureHelper.CombineTextures(gemCost, gemBaseTexture, xOffset: left ? 0 : 30 - 7 * gemCost.Count, xStep: 7));
+            masterList.Add(TextureHelper.CombineTextures(gemCost, BlankPixelCost(),
+                xOffset: !RightAct2Cost ? 0 : (30 - 7 * gemCost.Count), xStep: 7));
         }
 
         // Call the event and allow others to modify the list of textures
@@ -86,7 +83,7 @@ public static class Part2CardCostRender
         Texture2D finalTexture = TextureHelper.CombineTextures(masterList, baseTexture, yStep: 8);
 
         //Convert the final texture to a sprite
-        Sprite finalSprite = TextureHelper.ConvertTexture(finalTexture, left ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
+        Sprite finalSprite = TextureHelper.ConvertTexture(finalTexture, !RightAct2Cost ? TextureHelper.SpriteType.Act2CostDecalLeft : TextureHelper.SpriteType.Act2CostDecalRight);
         return finalSprite;
     }
 
