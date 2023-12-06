@@ -17,7 +17,8 @@ public static class TotemManager
         CustomTribes,
         AllTribes
     }
-
+    
+    #region Patches
     [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new Type[] { typeof(BuildTotemNodeData), typeof(int) })]
     private class ItemsUtil_AllConsumables
     {
@@ -75,6 +76,7 @@ public static class TotemManager
 
             return codes;
         }
+        
 
         public static void AddCustomTribesToList(List<Tribe> list)
         {
@@ -169,6 +171,58 @@ public static class TotemManager
             return true;
         }
     }
+    
+    /// <summary>
+    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
+    /// This breaks the new totem sequence because it's not checking if the ability info exists.
+    /// So check that the ability info exists
+    /// </summary>
+    [HarmonyPatch]
+    private class FixMissingAbilityInfo
+    {
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__26_0");
+        }
+
+        public static bool Prefix(Ability x, ref bool __result)
+        {
+            if (!RunState.Run.totemBottoms.Contains(x))
+            {
+                AbilityInfo abilityInfo = AbilitiesUtil.GetInfo(x);
+                __result = abilityInfo != null && !abilityInfo.metaCategories.Contains(AbilityMetaCategory.Part1Modular);
+
+            }
+            else
+            {
+                __result = true;
+            }
+
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
+    /// This breaks the new totem sequence because it's not checking if the ability info exists.
+    /// So check that the ability info exists
+    /// </summary>
+    [HarmonyPatch]
+    private class FixMissingAbilityInfo2
+    {
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c__DisplayClass26_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__1");
+        }
+
+        public static bool Prefix(Ability x)
+        {
+            return AbilitiesUtil.GetInfo(x) != null;
+        }
+    }
+    #endregion
 
     [Obsolete("Deprecated. Use NewTopPiece<T> instead.")]
     public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab = null)
