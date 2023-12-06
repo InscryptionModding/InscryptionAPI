@@ -95,12 +95,9 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
             {
                 List<AscensionChallenge> dependencies = challengeInfo?.GetFullChallenge()?.DependantChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
                 List<AscensionChallenge> incompatibilities = challengeInfo?.GetFullChallenge()?.IncompatibleChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
-                if (dependencies != null && incompatibilities != null)
-                {
-                    incompatibilities.RemoveAll(x => dependencies.Contains(x));
-                }
                 if (dependencies != null)
                 {
+                    incompatibilities?.RemoveAll(dependencies.Contains);
                     dependencies.RemoveAll(x => x == challengeInfo.challengeType);
                     if (dependencies.Count > 0)
                     {
@@ -117,10 +114,12 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
                                 }
                                 else
                                 {
-                                    PrefixedString pstr = new();
-                                    pstr.prefix = Localization.Translate(info.title);
-                                    pstr.challenge = d;
-                                    pstr.number = 1;
+                                    PrefixedString pstr = new()
+                                    {
+                                        prefix = Localization.Translate(info.title),
+                                        challenge = d,
+                                        number = 1
+                                    };
                                     dependencyStrings.Add(pstr);
                                 }
                             }
@@ -155,9 +154,7 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
                             }
                         }
                         if (incompatibilityStrings.Count > 0)
-                        {
                             incompatibility = "Incompatible with: " + string.Join(", ", incompatibilityStrings);
-                        }
                     }
                 }
             }

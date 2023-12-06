@@ -20,6 +20,14 @@ public static class EnergyDrone
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
     }
 
+    public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
+    {
+        { CardTemple.Nature, new() },
+        { CardTemple.Undead, new() },
+        { CardTemple.Tech, new() },
+        { CardTemple.Wizard, new() }
+    };
+
     public static bool SceneCanHaveEnergyDrone(string sceneName)
     {
         string activeSceneName = sceneName.ToLowerInvariant();
@@ -37,14 +45,6 @@ public static class EnergyDrone
             return SceneCanHaveEnergyDrone(activeScene.name);
         }
     }
-
-    public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
-    {
-        { CardTemple.Nature, new() },
-        { CardTemple.Undead, new() },
-        { CardTemple.Tech, new() },
-        { CardTemple.Wizard, new() }
-    };
 
     private static EnergyConfigInfo EnergyConfig
     {
@@ -91,13 +91,31 @@ public static class EnergyDrone
         PoolHasGems = CardManager.AllCardsCopy.Any(ci => ci.gemsCost.Count > 0 && ci.CardIsVisible(targetTemple));
 
         PatchPlugin.Logger.LogDebug($"Card pool has Energy cards? {PoolHasEnergy}. Card pool has Gem cards? {PoolHasGems}.");
-
-        ResourceDrone drone = UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
+        UnityObject.Instantiate(Resources.Load<ResourceDrone>("prefabs/cardbattle/ResourceModules"));
 
         if (EnergyConfig.ConfigDrone)
             PatchPlugin.Instance.StartCoroutine(AwakeDrone());
     }
 
+    private static IEnumerator AwakeDrone()
+    {
+        // pretty sure the drone can't be null in this method, but we'll check just in case
+        if (ResourceDrone.m_Instance == null)
+            yield break;
+
+        if (PatchPlugin.configFullDebug.Value)
+            PatchPlugin.Logger.LogDebug($"Awaking ResourceDrone, instance exists? {ResourceDrone.Instance != null}.");
+
+        yield return new WaitForSeconds(1f);
+        ResourceDrone.Instance.Awake();
+        yield return new WaitForSeconds(1f);
+        ResourceDrone.Instance.AttachGemsModule();
+
+        if (EnergyConfig.ConfigDefaultDrone)
+            ResourceDrone.Instance.gameObject.transform.localPosition = ResourceDrone.Instance.boardPosition + Vector3.up * 5f;
+        else
+            AttachDroneToScale();
+    }
     private static void AttachDroneToScale()
     {
         try
@@ -116,26 +134,6 @@ public static class EnergyDrone
             ResourceDrone.Instance.boardPosition = scale.position; // update this just in case
         }
         catch { PatchPlugin.Logger.LogError("Couldn't attach ResourceDrone to LifeManager.Scale3D!"); }
-    }
-    private static IEnumerator AwakeDrone()
-    {
-        yield return new WaitForSeconds(1f);
-
-        if (PatchPlugin.configFullDebug.Value)
-            PatchPlugin.Logger.LogDebug($"Awaking ResourceDrone, instance exists? {ResourceDrone.Instance != null}.");
-
-        ResourceDrone.Instance?.Awake();
-        yield return new WaitForSeconds(1f);
-        ResourceDrone.Instance?.AttachGemsModule();
-
-        // not sure if the drone can be null in this method, but we'll check just in case
-        if (ResourceDrone.m_Instance != null)
-        {
-            if (EnergyConfig.ConfigDefaultDrone)
-                ResourceDrone.Instance.gameObject.transform.localPosition = ResourceDrone.Instance.boardPosition + Vector3.up * 5f;
-            else
-                AttachDroneToScale();
-        }
     }
 
     [HarmonyPatch(typeof(ResourceDrone), nameof(ResourceDrone.SetOnBoard))]
@@ -180,11 +178,10 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
     {
-        ResourcesManager baseResourceManager = __instance;
         if (EnergyConfig.ConfigEnergy)
         {
-            baseResourceManager.PlayerEnergy = 0;
-            baseResourceManager.PlayerMaxEnergy = 0;
+            __instance.PlayerEnergy = 0;
+            __instance.PlayerMaxEnergy = 0;
         }
 
         if (EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
@@ -192,7 +189,7 @@ public static class EnergyDrone
             ResourceDrone.Instance.CloseAllCells(false);
             ResourceDrone.Instance.SetOnBoard(false, false);
             if (EnergyConfig.ConfigDroneMox)
-                ResourceDrone.Instance.Gems.SetAllGemsOn(false, false);
+                ResourceDrone.Instance.Gems?.SetAllGemsOn(false, false);
         }
         if (EnergyConfig.ConfigMox)
             __instance.gems.Clear();
@@ -202,13 +199,13 @@ public static class EnergyDrone
     [HarmonyPrefix]
     private static void ResourcesManager_Setup(ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
         {
-            ResourceDrone.Instance?.SetOnBoard(true, false);
+            ResourceDrone.Instance.SetOnBoard(true, false);
             if (EnergyConfig.ConfigDroneMox)
             {
-                PatchPlugin.Logger.LogDebug("Setting up extra resources for the drone.");
-                ResourceDrone.Instance?.Gems.SetAllGemsOn(false, true);
+                PatchPlugin.Logger.LogDebug("Setting up extra drone resources.");
+                ResourceDrone.Instance.Gems.SetAllGemsOn(false, true);
             }
         }
     }
@@ -217,10 +214,10 @@ public static class EnergyDrone
     [HarmonyPostfix]
     private static IEnumerator ResourcesManager_ShowAddMaxEnergy(IEnumerator result, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
         {
             int cellsToOpen = __instance.PlayerMaxEnergy - 1;
-            ResourceDrone.Instance?.OpenCell(cellsToOpen);
+            ResourceDrone.Instance.OpenCell(cellsToOpen);
             yield return new WaitForSeconds(0.4f);
         }
 
@@ -231,12 +228,12 @@ public static class EnergyDrone
     [HarmonyPostfix]
     private static IEnumerator ResourcesManager_ShowAddEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
         {
             int num;
             for (int i = __instance.PlayerEnergy - amount; i < __instance.PlayerEnergy; i = num + 1)
             {
-                ResourceDrone.Instance?.SetCellOn(i, true, false);
+                ResourceDrone.Instance.SetCellOn(i, true, false);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -249,7 +246,7 @@ public static class EnergyDrone
     [HarmonyPostfix]
     private static IEnumerator ResourcesManager_ShowSpendEnergy(IEnumerator result, int amount, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone)
+        if (__instance is Part1ResourcesManager && EnergyConfig.ConfigDrone && ResourceDrone.m_Instance != null)
         {
             int num;
             for (int i = __instance.PlayerEnergy + amount - 1; i >= __instance.PlayerEnergy; i = num - 1)
@@ -258,7 +255,7 @@ public static class EnergyDrone
                     __instance.transform.position, 0.4f, 0f,
                     new AudioParams.Pitch(0.9f + (float)(__instance.PlayerEnergy + i) * 0.05f), null, null, null,
                     false);
-                ResourceDrone.Instance?.SetCellOn(i, false, false);
+                ResourceDrone.Instance.SetCellOn(i, false, false);
                 yield return new WaitForSeconds(0.05f);
                 num = i;
             }
@@ -289,7 +286,6 @@ public static class EnergyDrone
             __instance.SetGemOnImmediate(gem, false);
             yield return new WaitForSeconds(0.05f);
         }
-
         yield return result;
     }
 
@@ -297,7 +293,7 @@ public static class EnergyDrone
     [HarmonyPostfix]
     private static void ResourcesManager_SetGemOnImmediate(GemType gem, bool on, ResourcesManager __instance)
     {
-        if (__instance is Part1ResourcesManager)
+        if (__instance is Part1ResourcesManager && ResourceDrone.m_Instance != null)
             ResourceDrone.Instance.Gems?.SetGemOn(gem, on, false);
     }
 
@@ -309,7 +305,7 @@ public static class EnergyDrone
         // If the game is not going to automatically update the energy, I'll do it
         yield return sequence;
 
-        if (CurrentSceneCanHaveEnergyDrone && EnergyConfig.ConfigEnergy && playerUpkeep)
+        if (playerUpkeep && CurrentSceneCanHaveEnergyDrone && EnergyConfig.ConfigEnergy)
         {
             bool showEnergyModule = !ResourcesManager.Instance.EnergyAtMax || ResourcesManager.Instance.PlayerEnergy < ResourcesManager.Instance.PlayerMaxEnergy;
             if (showEnergyModule)

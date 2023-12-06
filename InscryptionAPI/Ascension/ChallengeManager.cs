@@ -323,14 +323,16 @@ public static class ChallengeManager
 
     private static AscensionChallengeInfo CloneChallengeInfo(AscensionChallengeInfo info)
     {
-        AscensionChallengeInfo retval = new();
-        retval.activatedSprite = info.activatedSprite;
-        retval.challengeType = info.challengeType;
-        retval.description = info.description;
-        retval.iconSprite = info.iconSprite;
-        retval.name = info.name;
-        retval.pointValue = info.pointValue;
-        retval.title = info.title;
+        AscensionChallengeInfo retval = new()
+        {
+            activatedSprite = info.activatedSprite,
+            challengeType = info.challengeType,
+            description = info.description,
+            iconSprite = info.iconSprite,
+            name = info.name,
+            pointValue = info.pointValue,
+            title = info.title
+        };
         return retval;
     }
 
@@ -679,9 +681,7 @@ public static class ChallengeManager
         foreach (ChallengeBehaviour bb in cbs)
         {
             if (bb != null && bb.RespondsToPostBattleSetup())
-            {
                 yield return bb.OnPostBattleSetup();
-            }
         }
         yield break;
     }
@@ -712,18 +712,14 @@ public static class ChallengeManager
         foreach (ChallengeBehaviour bb in cbs)
         {
             if (bb != null && bb.RespondsToPreBattleCleanup())
-            {
                 yield return bb.OnPreBattleCleanup();
-            }
         }
         yield return result;
         cbs = ChallengeBehaviour.Instances.ToArray();
         foreach (ChallengeBehaviour bb in cbs)
         {
             if (bb != null && bb.RespondsToPostBattleCleanup())
-            {
                 yield return bb.OnPostBattleCleanup();
-            }
         }
         ChallengeBehaviour.DestroyAllInstances();
         yield break;
@@ -804,17 +800,14 @@ public static class ChallengeManager
                         {
                             List<AscensionChallenge> dependencies2 = icon?.challengeInfo?.GetFullChallenge()?.DependantChallengeGetter?.Invoke(GetChallengeIcons())?.ToList();
                             List<AscensionChallenge> incompatibilities2 = icon?.challengeInfo?.GetFullChallenge()?.IncompatibleChallengeGetter?.Invoke(GetChallengeIcons())?.ToList();
-                            if (dependencies2 != null && incompatibilities2 != null)
-                            {
-                                incompatibilities.RemoveAll(x => dependencies2.Contains(x));
-                            }
                             if (incompatibilities2 != null)
                             {
+                                if (dependencies2 != null)
+                                    incompatibilities.RemoveAll(dependencies2.Contains);
+
                                 incompatibilities2.RemoveAll(x => x == icon.challengeInfo.challengeType);
                                 if (screen.icons.Exists(x => x.Unlocked && x.clickable && x.Info != null && x.activatedRenderer != null && x.activatedRenderer.enabled && incompatibilities2.Contains(x.Info.challengeType)))
-                                {
                                     icon?.OnCursorSelectStart();
-                                }
                             }
                         }
                     }
@@ -837,33 +830,25 @@ public static class ChallengeManager
                     {
                         List<AscensionChallenge> dependencies = icon?.challengeInfo?.GetFullChallenge()?.DependantChallengeGetter?.Invoke(GetChallengeIcons())?.ToList();
                         List<AscensionChallenge> incompatibilities = icon?.challengeInfo?.GetFullChallenge()?.IncompatibleChallengeGetter?.Invoke(GetChallengeIcons())?.ToList();
-                        if (dependencies != null && incompatibilities != null)
-                        {
-                            incompatibilities.RemoveAll(x => dependencies.Contains(x));
-                        }
                         if (dependencies != null)
                         {
+                            incompatibilities?.RemoveAll(dependencies.Contains);
+
                             dependencies.RemoveAll(x => x == icon.challengeInfo.challengeType);
                             List<AscensionChallenge> dependenciesClone = new(dependencies);
                             foreach (var icon2 in screen.icons.Where(x => x.Unlocked && x.clickable && x.Info != null && x.activatedRenderer != null && x.activatedRenderer.enabled && dependencies.Contains(x.Info.challengeType)))
                             {
                                 if (dependenciesClone.Contains(icon2.Info.challengeType))
-                                {
                                     dependenciesClone.Remove(icon2.Info.challengeType);
-                                }
                             }
                             if (dependenciesClone.Count > 0)
-                            {
                                 icon?.OnCursorSelectStart();
-                            }
                         }
                     }
                 }
             }
             if (setCurrentIcon)
-            {
                 currentIcon = null;
-            }
         }
     }
 
