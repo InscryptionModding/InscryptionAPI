@@ -101,39 +101,24 @@ internal static class AscensionChallengeScreenPatches
         if (challengeInfo.pointValue < 0)
         {
             string arg = Localization.ToUpper(Localization.Translate(challengeInfo.title));
-            string text;
-            if (activated)
-            {
-                text = string.Format(Localization.Translate("{0} ENABLED"), arg);
-            }
-            else
-            {
-                text = string.Format(Localization.Translate("{0} DISABLED"), arg);
-            }
+            string text = string.Format(Localization.Translate(activated ? "{0} ENABLED" : "{0} DISABLED"), arg);
+            
             string text2;
             if (activated)
-            {
                 text2 = string.Format(Localization.Translate("{0} Challenge Points Subtracted"), (-challengeInfo.pointValue).ToString());
-            }
             else
-            {
                 text2 = string.Format(Localization.Translate("{0} Challenge Points Added"), (-challengeInfo.pointValue).ToString());
-            }
+
             int challengeLevel = AscensionSaveData.Data.challengeLevel;
             int activeChallengePoints = AscensionSaveData.Data.GetActiveChallengePoints();
             string text3;
             if (activeChallengePoints > AscensionSaveData.GetChallengePointsForLevel(challengeLevel))
-            {
                 text3 = string.Format(Localization.Translate("WARNING(!) Lvl Reqs EXCEEDED"), Array.Empty<object>());
-            }
             else if (activeChallengePoints == AscensionSaveData.GetChallengePointsForLevel(challengeLevel))
-            {
                 text3 = string.Format(Localization.Translate("Lvl Reqs Met"), Array.Empty<object>());
-            }
             else
-            {
                 text3 = string.Format(Localization.Translate("Lvl Reqs NOT MET"), Array.Empty<object>());
-            }
+
             __instance.footerLines.ShowText(0.1f, new string[]
             {
                 text,
@@ -161,6 +146,7 @@ internal static class AscensionChallengeScreenPatches
     [HarmonyPostfix]
     public static void Postfix(AscensionChallengeScreen __instance)
     {
+        Debug.Log($"{AscensionSaveData.Data.activeChallenges.Count}");
         if (__instance.GetComponent<AscensionChallengePaginator>() == null)
         {
             ChallengeManager.SyncChallengeList();

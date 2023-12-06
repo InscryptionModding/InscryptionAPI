@@ -2,8 +2,8 @@
 ---
 The Inscryption Community Patch allows for custom card costs to be displayed in all three main acts of the game:
 
-### Acts 1 and Act 2
-If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin) or Act 2 (pixel/GBC cards), you can simply hook into one of the following events:
+### Acts 1
+If you want to have your card display a custom card cost in either Act 1 (Leshy's Cabin), you can simply hook into one of the following events:
 
 ```c#
 using InscryptionCommunityPatch.Card;
@@ -11,18 +11,39 @@ using InscryptionAPI.Helpers;
 
 Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
 {
-    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost");
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost") ?? 0; // GetExtensionPropertyAsInt can return null, so remember to check for that
     if (myCustomCost > 0)
         costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}.png"));
 }
-Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
-{
-    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost_pixel");
-    if (myCustomCost > 0)
-        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}_pixel.png"));
-}
 ```
 
+### Act 2
+For adding custom costs to Act 2, you have two main ways of going about it:
+```c#
+using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+// if you want the API to handle adding stack numbers, provide a - 7x8 - texture representing your cost's icon.
+Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost_pixel") ?? 0;
+    if (myCustomCost > 0)
+    {
+        Texture2D customCostTexture = TextureHelper.GetImageAsTexture($"custom_cost_pixel.png");
+        costs.Add(Part2CardCostRender.CombineIconAndCount(myCustomCost, customCostTexture));
+    }
+}
+
+// if you want more control over your cost's textures, or don't want to use stack numbers, provide a - 30x8 - texture for your custom cost.
+Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List<Texture2D> costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt("myCustomCardCost_pixel") ?? 0;
+    if (myCustomCost > 0)
+    {
+        costs.Add(TextureHelper.GetImageAsTexture($"custom_cost_{myCustomCost}_pixel.png"));
+    }
+}
+```
 ### Act 3
 Custom card costs in Act 3 are a little more complex due to the fact that the Disk Card model displays card costs as 3D objects instead of texture rendered on the card art. As such, you actually have a little more control over how your custom costs are displayed if you want it.
 

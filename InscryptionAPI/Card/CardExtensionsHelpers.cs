@@ -611,6 +611,7 @@ public static partial class CardExtensions
         preTransformCallback?.Invoke();
         card.SetInfo(evolvedInfo);
         onTransformedCallback?.Invoke();
+        AbilityManager.FixStackTriggers(card);
     }
     /// <summary>
     /// A version of TransformIntoCardInHand that incorporates MoveCardAboveHand.
@@ -626,6 +627,7 @@ public static partial class CardExtensions
         preTransformCallback?.Invoke();
         card.SetInfo(evolvedInfo);
         onTransformedCallback?.Invoke();
+        AbilityManager.FixStackTriggers(card);
     }
     #endregion
 

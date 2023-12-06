@@ -425,15 +425,24 @@ public static class StackAbilityIcons
     }
     private static Sprite OverridePixelSprite(AbilityInfo abilityInfo, CardInfo cardInfo, PlayableCard card)
     {
-        if (abilityInfo.ability == Ability.Evolve && cardInfo)
+        if (cardInfo != null && (abilityInfo.ability == Ability.Evolve || abilityInfo.ability == Ability.Transformer))
         {
             int turnsInPlay = card?.GetComponentInChildren<Evolve>()?.numTurnsInPlay ?? 0;
             int turnsToEvolve = Mathf.Max(1, (cardInfo.evolveParams == null ? 1 : cardInfo.evolveParams.turnsToEvolve) - turnsInPlay);
             int pngIndex = turnsToEvolve > 3 ? 0 : turnsToEvolve;
+            
+            if (pngIndex == 0)
+                return abilityInfo.pixelIcon;
 
-            Texture2D texture = TextureHelper.GetImageAsTexture($"pixel_evolve_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
+            Texture2D texture;
+            if (abilityInfo.ability == Ability.Evolve)
+                texture = TextureHelper.GetImageAsTexture($"pixel_evolve_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
+            else
+                texture = TextureHelper.GetImageAsTexture($"pixel_transformer_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
+            
             return TextureHelper.ConvertTexture(texture, TextureHelper.SpriteType.PixelAbilityIcon);
         }
+
         if (card && card.RenderInfo.overriddenAbilityIcons.ContainsKey(abilityInfo.ability))
         {
             card.RenderInfo.overriddenAbilityIcons.TryGetValue(abilityInfo.ability, out Texture texture);

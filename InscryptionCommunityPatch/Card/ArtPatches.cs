@@ -58,6 +58,7 @@ internal static class CommunityArtPatches
         Ability.ShieldGems,
         Ability.Sniper,
         Ability.TailOnHit,
+        Ability.Transformer,
         Ability.SquirrelOrbit,
         Ability.DrawVesselOnHit
     };
