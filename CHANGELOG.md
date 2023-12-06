@@ -3,6 +3,17 @@
 <details>
 <summary>View Changelog</summary>
 
+## 2.18.6
+- Added missing null checks to ResourceDrone patches
+- Added pixel icon to Transformer
+- Fixed Royal fight softlocking if config option 'Hide Act 1 Scenery' is set to true
+- Fixed activated custom challenges not remaining activated when returning to the challenge screen
+- Fixed TransformIntoCardInHand and TransformIntoCardAboveHand not checking for TriggersOncePerStack
+- Transformer sigil icon will now display the number of turns till evolution if it's greater than 1
+- Transformer and Fledgling sigils now correctly update their display when evolving into another card with the Fledgling/Transformer sigil
+- Certain shield-giving effects no longer reset shields to prevent incorrect shield totals
+- Improved the 'Custom Card Costs' section of the wiki
+
 ## 2.18.5
 - Added missing null checks
 - Added PlayableCard.GetStatIconHealthBuffs()
