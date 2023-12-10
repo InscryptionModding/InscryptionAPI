@@ -60,6 +60,8 @@ public static class CardManager
                 card.SetAffectedByTidalLock();
             else if (card.name == "SkeletonParrot")
                 card.AddTribes(Tribe.Bird);
+            else if (card.name == "MudTurtle")
+                card.SetBrokenShieldPortrait(card.alternatePortrait);
 
             yield return card;
         }
@@ -72,7 +74,7 @@ public static class CardManager
     /// </summary>
     public static void SyncCardList()
     {
-        var cards = BaseGameCards.Concat(NewCards).Select(x => CardLoader.Clone(x)).ToList();
+        var cards = BaseGameCards.Concat(NewCards).Select(CardLoader.Clone).ToList();
 
         // Fix card copies on params
         foreach (CardInfo card in cards)
@@ -239,11 +241,12 @@ public static class CardManager
     /// <param name="card">The card to remove.</param>
     public static void Remove(CardInfo card)
     {
-        if (card == null) return;
-
-        CardInfo c;
-        while ((c = NewCards.SingleOrDefault(c => c.name == card.name)) != null)
-            NewCards.Remove(c);
+        if (card != null)
+        {
+            CardInfo c;
+            while ((c = NewCards.SingleOrDefault(c => c.name == card.name)) != null)
+                NewCards.Remove(c);
+        }
     }
 
     /// <summary>

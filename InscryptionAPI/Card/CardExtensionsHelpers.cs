@@ -318,15 +318,60 @@ public static partial class CardExtensions
     /// <summary>
     /// Retrieve a list of all abilities that exist on the PlayableCard.
     ///
-    /// This will retrieve all Ability from both TemporaryMods and from the underlying CardInfo object.
+    /// This will retrieve all Abilities from both TemporaryMods and from the underlying CardInfo object.
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <returns>A list of Ability from the PlayableCard and underlying CardInfo object.</returns>
+    /// <returns>A list of Abilities from the PlayableCard and underlying CardInfo object.</returns>
     public static List<Ability> AllAbilities(this PlayableCard playableCard)
     {
         return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
     }
 
+    /// <summary>
+    /// Retrieve a list of all CardModificationInfos that exist on the PlayableCard.
+    ///
+    /// This will retrieve all mods from TemporaryMods and the underlying CardInfo.Mods.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <returns>A list of CardModificationInfos from the PlayableCard and underlying CardInfo object.</returns>
+    public static List<CardModificationInfo> AllCardModificationInfos(this PlayableCard playableCard)
+    {
+        return playableCard.TemporaryMods.Concat(playableCard.Info.Mods).ToList();
+    }
+
+    /// <summary>
+    /// Removes the provided CardModificationInfo from the PlayableCard.
+    ///
+    /// Searches both its TemporaryMods list and its CardInfo.Mods list.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <param name="modToRemove">The CardModificationInfo object to remove.</param>
+    /// <param name="updateDisplay">Whether or not to call OnStatsChanged after removing the card mod.</param>
+    /// <returns>True if the mod was successfully removed or false if the mod was not removed or was null.</returns>
+    public static bool RemoveCardModificationInfo(this PlayableCard playableCard, CardModificationInfo modToRemove, bool updateDisplay = true)
+    {
+        if (modToRemove == null)
+            return false;
+
+        if (playableCard.TemporaryMods.Contains(modToRemove))
+        {
+            playableCard.RemoveTemporaryMod(modToRemove, updateDisplay);
+            return true;
+        }
+        if (playableCard.Info.Mods.Contains(modToRemove))
+        {
+            playableCard.Info.Mods.Remove(modToRemove);
+            foreach (Ability ability in modToRemove.abilities)
+            {
+                playableCard.TriggerHandler.RemoveAbility(ability);
+            }
+            if (updateDisplay)
+                playableCard.OnStatsChanged();
+
+            return true;
+        }
+        return false;
+    }
     /// <summary>
     /// Retrieve a list of all special triggered abilities that exist on the PlayableCard.
     ///
@@ -656,17 +701,7 @@ public static partial class CardExtensions
         if (component == null)
             return;
 
-        component.numShields += amount;
-        if (component.Ability.GetHideSingleStacks()) // remove hidden abilities
-            card.Status.hiddenAbilities.RemoveAll(x => x == component.Ability);
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                card.Status.hiddenAbilities.Remove(component.Ability);
-            }
-        }
-
+        component.AddShields(amount, false);
         card.Status.lostShield = !card.HasShield();
         if (!updateDisplay)
             return;
@@ -789,33 +824,16 @@ public static partial class CardExtensions
             return 0;
 
         int totalShields = 0;
-        List<Ability> distinct = new(); // keep track of non-stacking shield abilities
-
-        DamageShieldBehaviour[] components = card.GetComponents<DamageShieldBehaviour>();
-        foreach (var component in components)
+        List<Ability> distinct = new(); // keep track of non-stacking shield abilities so we don't add them again
+        foreach (DamageShieldBehaviour component in card.GetComponents<DamageShieldBehaviour>())
         {
-            // stackable shields all get tallied up
             if (AbilitiesUtil.GetInfo(component.Ability).canStack)
                 totalShields += component.NumShields;
 
             else if (!distinct.Contains(component.Ability))
             {
+                totalShields += component.NumShields;
                 distinct.Add(component.Ability);
-                totalShields += component.NumShields;
-            }
-        }
-
-        ActivatedDamageShieldBehaviour[] components2 = card.GetComponents<ActivatedDamageShieldBehaviour>();
-        foreach (var component in components2)
-        {
-            // stackable shields all get tallied up
-            if (AbilitiesUtil.GetInfo(component.Ability).canStack)
-                totalShields += component.NumShields;
-
-            else if (!distinct.Contains(component.Ability))
-            {
-                distinct.Add(component.Ability);
-                totalShields += component.NumShields;
             }
         }
 
@@ -829,12 +847,7 @@ public static partial class CardExtensions
     /// <param name="ability">The shield ability to look for.</param>
     public static void ResetShield(this PlayableCard card, Ability ability)
     {
-        foreach (var com in card.GetComponents<DamageShieldBehaviour>())
-        {
-            if (com.Ability == ability)
-                com.ResetShields(false);
-        }
-        foreach (var com in card.GetComponents<ActivatedDamageShieldBehaviour>())
+        foreach (DamageShieldBehaviour com in card.GetComponents<DamageShieldBehaviour>())
         {
             if (com.Ability == ability)
                 com.ResetShields(false);

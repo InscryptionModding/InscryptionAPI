@@ -107,10 +107,11 @@ public static class TakeDamagePatches
             if (codes[i].operand?.ToString() == name_CardAttacker)
             {
                 attacker = codes[i].operand;
-                if (shieldEnd != -1)
+                if (shieldEnd > 0)
                 {
                     // if (HasShield && damage > 0)
                     //   BreakShield();
+                    //   break;
 
                     MethodBase breakShield = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.BreakShield),
                         new Type[] { typeof(PlayableCard), typeof(int), typeof(PlayableCard) });

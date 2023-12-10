@@ -2,6 +2,7 @@ using DiskCardGame;
 using HarmonyLib;
 using Sirenix.Serialization.Utilities;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
@@ -117,5 +118,18 @@ public static class CardModificationInfoManager
                 info.SetExtendedProperty(splitCost[0], splitCost[1]);
             }
         }
+    }
+    [HarmonyPatch(typeof(CardTriggerHandler), nameof(CardTriggerHandler.RemoveAbility))]
+    [HarmonyPrefix]
+    private static bool FixedRemoveTemporaryMod(CardTriggerHandler __instance, Ability ability)
+    {
+        Tuple<Ability, AbilityBehaviour> tuple = __instance.triggeredAbilities.Find(x => x.Item1 == ability);
+        if (tuple != null)
+        {
+            __instance.triggeredAbilities.Remove(tuple);
+            if (!__instance.triggeredAbilities.Exists(x => x.Item1 == ability)) // if there are no remaining triggeredAbilities, destroy the component
+                UnityObject.Destroy(tuple.Item2);
+        }
+        return false;
     }
 }

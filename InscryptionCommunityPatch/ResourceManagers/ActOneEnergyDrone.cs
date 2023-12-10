@@ -31,7 +31,10 @@ public static class EnergyDrone
     public static bool SceneCanHaveEnergyDrone(string sceneName)
     {
         string activeSceneName = sceneName.ToLowerInvariant();
-        return (activeSceneName.Contains("part1") && !activeSceneName.Contains("sanctum")) || activeSceneName.Contains("magnificus") || activeSceneName.Contains("grimora");
+        if (activeSceneName.Contains("part1"))
+            return !activeSceneName.Contains("sanctum") && !activeSceneName.Contains("finale");
+        
+        return activeSceneName.Contains("magnificus") || activeSceneName.Contains("grimora");
     }
 
     public static bool CurrentSceneCanHaveEnergyDrone
@@ -100,9 +103,6 @@ public static class EnergyDrone
     private static IEnumerator AwakeDrone()
     {
         // pretty sure the drone can't be null in this method, but we'll check just in case
-        if (ResourceDrone.m_Instance == null)
-            yield break;
-
         if (PatchPlugin.configFullDebug.Value)
             PatchPlugin.Logger.LogDebug($"Awaking ResourceDrone, instance exists? {ResourceDrone.Instance != null}.");
 
@@ -173,7 +173,7 @@ public static class EnergyDrone
 
         return false;
     }
-
+    
     [HarmonyPatch(typeof(Part1ResourcesManager), nameof(Part1ResourcesManager.CleanUp))]
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
