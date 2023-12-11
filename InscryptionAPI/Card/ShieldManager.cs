@@ -23,10 +23,8 @@ public static class ShieldManager
         DamageShieldBehaviour shield = Array.Find(target.GetComponents<DamageShieldBehaviour>(), x => x.HasShields());
         if (shield != null)
         {
-            Debug.Log($"HasShield");
             if (target.TemporaryMods.Exists(x => x.abilities != null && x.abilities.Contains(shield.Ability))) // if the sigil is from a temp mod
             {
-                Debug.Log($"TempMod");
                 Ability ability = shield.Ability;
                 CardModificationInfo info = target.TemporaryMods.Find(x => x.abilities != null && x.abilities.Contains(shield.Ability));
                 target.RemoveTemporaryMod(info, false); // RemoveShields is called here in a patch
@@ -34,7 +32,6 @@ public static class ShieldManager
                 int shieldsToAdd = shield.NumShields - info.abilities.Count(x => x == shield.Ability);
                 if (shieldsToAdd > 0)
                 {
-                    Debug.Log($"Re-add: {shieldsToAdd}");
                     CardModificationInfo updatedinfo = new() { fromCardMerge = info.fromCardMerge, fromLatch = info.fromLatch, fromTotem = info.fromTotem };
                     for (int i = 0; i < shieldsToAdd; i++)
                         updatedinfo.abilities.Add(ability);
@@ -47,8 +44,6 @@ public static class ShieldManager
                 shield.RemoveShields(1, false);
             }
         }
-        Debug.Log($"Shields: {target.Info.name} {target.GetTotalShields()}");
-        //target.Anim.StrongNegationEffect();
         if (target.GetTotalShields() == 0) // if we removed the last shield
         {
             target.Status.lostShield = true;
@@ -180,45 +175,55 @@ public static class ShieldManager
     private static List<Ability> HiddensOnlyRemoveStacks(List<Ability> abilities, List<Ability> hiddenAbilities)
     {
         // remove all abilities that hide the entire stack
-        Debug.Log($"RemoveStacks: {abilities.Count}");
         abilities.RemoveAll(x => hiddenAbilities.Contains(x) && !x.GetHideSingleStacks());
         foreach (var ab in hiddenAbilities.Where(x => x.GetHideSingleStacks()))
             abilities.Remove(ab);
-        Debug.Log($"RemoveStacks2: {abilities.Count}");
         return abilities;
     }
     private static void CorrectHiddenAbilityRender(PlayableCard card)
     {
         foreach (var com in card.GetComponents<DamageShieldBehaviour>())
         {
-            if (com.HasShields()) // if a component has shields, unhide it
+            //Debug.Log($"Hidden start: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
+            if (com.HasShields())
             {
                 if (com.Ability.GetHideSingleStacks())
                 {
-                    for (int i = 0; i < com.NumShields; i++)
+                    // if there are more hidden shields than there should be
+                    if (com.NumShields <= card.Status.hiddenAbilities.Count(x => x == com.Ability))
                     {
-                        card.Status.hiddenAbilities.Remove(com.Ability);
+                        for (int i = 0; i < com.NumShields; i++)
+                        {
+                            card.Status.hiddenAbilities.Remove(com.Ability);
+                        }
                     }
                 }   
                 else
                 {
                     card.Status.hiddenAbilities.Remove(com.Ability);
                 }
+                //Debug.Log($"Hidden Removed: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
                 break;
             }
-            else // if a component has no shields, hide it
+            else
             {
                 if (com.Ability.GetHideSingleStacks())
                 {
-                    for (int i = 0; i < com.NumShields; i++)
+                    int shieldsLost = com.StartingNumShields - com.NumShields;
+                    if (card.Status.hiddenAbilities.Count(x => x == com.Ability) < shieldsLost)
                     {
-                        card.Status.hiddenAbilities.Add(com.Ability);
+                        // if there are less hidden shields than there should be
+                        for (int i = 0; i < shieldsLost; i++)
+                        {
+                            card.Status.hiddenAbilities.Add(com.Ability);
+                        }
                     }
                 }
                 else if (!card.Status.hiddenAbilities.Contains(com.Ability))
                 {
                     card.Status.hiddenAbilities.Add(com.Ability);
                 }
+                //Debug.Log($"Hidden Added: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
                 break;
             }
         }
@@ -238,7 +243,7 @@ public static class ShieldManager
                 {
                     DamageShieldBehaviour behaviour = __instance.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability).Item2 as DamageShieldBehaviour;
                     behaviour.AddShields(1);
-                    InscryptionAPIPlugin.Logger.LogInfo($"Add: {__instance.Info.name} {behaviour.NumShields} {behaviour.NumShields - 1}");
+                    //InscryptionAPIPlugin.Logger.LogInfo($"Add: {__instance.Info.name} {behaviour.NumShields} <-- {behaviour.NumShields - 1}");
                 }
             }
         }
@@ -256,7 +261,7 @@ public static class ShieldManager
                 {
                     DamageShieldBehaviour behaviour = __instance.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability).Item2 as DamageShieldBehaviour;
                     behaviour.RemoveShields(1);
-                    Debug.Log($"Remove: {__instance.Info.name} {behaviour.NumShields} {behaviour.NumShields + 1}");
+                    //Debug.Log($"Remove: {__instance.Info.name} {behaviour.NumShields} <-- {behaviour.NumShields + 1}");
                 }
             }
         }
@@ -264,7 +269,7 @@ public static class ShieldManager
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.RemoveTemporaryMod))]
     private static void ClearTemporaryLatchSigils(PlayableCard __instance, CardModificationInfo mod)
     {
-        // play the ClearLatchAbility animation for Act 3
+        // play the ClearLatchAbility animation for Act 3 if this is the last latch sigil
         if (mod.fromLatch && !__instance.AllCardModificationInfos().Exists(x => x.fromLatch))
             __instance.StartCoroutine(__instance.Anim.ClearLatchAbility());
     }
@@ -275,7 +280,7 @@ public static class ShieldManager
         yield return result;
         if (__instance.latchModule != null)
         {
-            __instance.latchModule.gameObject.SetActive(false); // disable the module object so it doesn't replay the animation
+            __instance.latchModule.gameObject.SetActive(false); // disable the module object so it doesn't replay the animation on death
             GameObject baseObj = __instance.latchModule.gameObject.FindChild("Base");
             if (baseObj != null)
             {
