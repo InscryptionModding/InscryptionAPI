@@ -6,9 +6,11 @@
 - Fixed startup errors relating to ShieldManager transpilers
 - Fixed resource drone not showing up outside of Act 3
 - Fixed latched sigils not visually disappearing when using RemoveTemporaryMod to remove a latch CardModInfo
+- Fixed stack sigil icons not correctly replacing the '1' in stackable sigil icons with the appropriate stack number
 - Fixed Act 2 Tutor sequence displaying the wrong number of cards above the max of 42
 - Added extension methods PlayableCard.AllCardModificationInfos(), PlayableCard.RemoveCardModificationInfo()
 - Added SpriteType 'PixelStandardButton'
+- CustomTriggerFinder now caches the list of non-card triggers before iteration
 - ActivatedDamageShieldBehaviour now inherits from DamageShieldBehaviour instead of ActivateAbilityBehaviour
 - ActivatedDamageShieldBehaviour now implements the logic from ExtendedActivatedAbilityBehaviour
 - Mud Turtle now has a broken shield portrait (identical to its alternate portrait, which is unchanged)
