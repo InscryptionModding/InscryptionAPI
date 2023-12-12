@@ -26,28 +26,19 @@ public static class Act2TutorFix
             HasComponent = true;
         }
     }
-    [HarmonyPatch(typeof(PixelPlayableCard), nameof(PixelPlayableCard.ManagedUpdate))]
-    [HarmonyPrefix]
-    private static bool DisableManagedUpdateForSelection(PixelPlayableCard __instance)
-    {
-        if (!HasComponent || __instance.OnBoard || __instance.InHand)
-            return true;
+    [HarmonyPrefix, HarmonyPatch(typeof(PixelPlayableCard), nameof(PixelPlayableCard.ManagedUpdate))]
+    private static bool DisableManagedUpdateForSelection(PixelPlayableCard __instance) => !HasComponent || __instance.OnBoard || __instance.InHand;
 
-        return false;
-    }
-    [HarmonyPatch(typeof(PlayerHand), nameof(PlayerHand.OnCardSelected))]
+    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.OnCursorSelectStart))]
     [HarmonyPrefix]
-    private static bool AddSelectedCardToHand(PlayableCard card)
+    private static bool AddSelectedCardToHand(PlayableCard __instance)
     {
-        if (card.OnBoard || card.InHand)
-            return true;
-
-        if (!HasComponent)
+        if (__instance is not PixelPlayableCard card || __instance.OnBoard || __instance.InHand || !HasComponent)
             return true;
 
         var component = PixelBoardManager.Instance.GetComponent<PixelPlayableCardArray>();
-        if (component.displayedCards.Contains(card as PixelPlayableCard))
-            component.selectedCard = (PixelPlayableCard)card;
+        if (component.displayedCards.Contains(card))
+            component.selectedCard = card;
 
         return false;
     }

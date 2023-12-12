@@ -6,11 +6,14 @@
 - Fixed startup errors relating to ShieldManager transpilers
 - Fixed resource drone not showing up outside of Act 3
 - Fixed latched sigils not visually disappearing when using RemoveTemporaryMod to remove a latch CardModInfo
+- Fixed Act 2 Tutor sequence displaying the wrong number of cards above the max of 42
 - Added extension methods PlayableCard.AllCardModificationInfos(), PlayableCard.RemoveCardModificationInfo()
+- Added SpriteType 'PixelStandardButton'
 - ActivatedDamageShieldBehaviour now inherits from DamageShieldBehaviour instead of ActivateAbilityBehaviour
 - ActivatedDamageShieldBehaviour now implements the logic from ExtendedActivatedAbilityBehaviour
 - Mud Turtle now has a broken shield portrait (identical to its alternate portrait, which is unchanged)
 - CardTriggerHandler.RemoveAbility now only destroys the AbilityBehaviour if triggeredAbilities no longer contains the corresponding Ability
+- Act 2 Tutor now supports multiple pages of cards
 
 # 2.18.6
 - Fixed Royal fight softlocking if config option 'Hide Act 1 Scenery' is set to true

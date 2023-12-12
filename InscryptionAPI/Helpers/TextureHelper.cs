@@ -75,12 +75,17 @@ public static class TextureHelper
         /// <summary>
         /// An activated ability icon (sigil) in Act 2.
         /// </summary>
-        PixelActivatedAbilityIcon = 11
+        PixelActivatedAbilityIcon = 11,
+
+        /// <summary>
+        /// The texture for a button in Act 2 (same kind of button used for the hammer and activated sigils).
+        /// </summary>
+        PixelStandardButton = 12
     };
 
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
 
-    private static Dictionary<Sprite, Sprite> emissionMap = new();
+    private static readonly Dictionary<Sprite, Sprite> emissionMap = new();
 
     private static readonly Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
@@ -95,7 +100,8 @@ public static class TextureHelper
         { SpriteType.Act2CostDecalRight, new Rect(0f, 0f, 32f, 32f) },
         { SpriteType.StarterDeckIcon, new Rect(0f, 0f, 35f, 44f) },
         { SpriteType.PixelDecal, new Rect(0f, 0f, 42f, 56f) },
-        { SpriteType.PixelActivatedAbilityIcon, new Rect(0f, 0f, 22f, 10f) }
+        { SpriteType.PixelActivatedAbilityIcon, new Rect(0f, 0f, 22f, 10f) },
+        { SpriteType.PixelStandardButton, new Rect(0f, 0f, 26f, 17f) }
     };
 
     private static readonly Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
@@ -111,7 +117,8 @@ public static class TextureHelper
         { SpriteType.Act2CostDecalRight, new Vector2(0.55f, 0.8f) },
         { SpriteType.StarterDeckIcon, DEFAULT_PIVOT },
         { SpriteType.PixelDecal, DEFAULT_PIVOT },
-        { SpriteType.PixelActivatedAbilityIcon, DEFAULT_PIVOT }
+        { SpriteType.PixelActivatedAbilityIcon, DEFAULT_PIVOT },
+        { SpriteType.PixelStandardButton, new Vector2(0.5f, 0f) }
     };
 
     /// <summary>
