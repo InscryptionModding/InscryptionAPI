@@ -313,13 +313,8 @@ public static class StackAbilityIcons
         if (card != null)
         {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
-            Debug.Log($"Start: {baseAbilities.Count(x => x == Ability.DeathShield)}");
-            baseAbilities.RemoveAll(x => card.Status.hiddenAbilities.Contains(x) && !x.GetHideSingleStacks());
-
-            foreach (Ability ab in card.Status.hiddenAbilities.Where(x => x.GetHideSingleStacks()))
+            foreach (Ability ab in card.Status.hiddenAbilities)
                 baseAbilities.Remove(ab);
-
-            Debug.Log($"Start2: {baseAbilities.Count(x => x == Ability.DeathShield)}");
         }
         int count = baseAbilities.Count(ab => ab == ability);
 
