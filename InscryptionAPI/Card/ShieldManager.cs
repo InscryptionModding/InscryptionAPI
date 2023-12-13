@@ -233,6 +233,9 @@ public static class ShieldManager
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.AddTemporaryMod))]
     private static void AddTemporaryShieldCount(PlayableCard __instance, CardModificationInfo mod)
     {
+        if (__instance == null || mod == null)
+            return;
+
         foreach (Ability ability in mod.abilities)
         {
             // check that this ability is associated with a shield-giving sigil
@@ -251,6 +254,9 @@ public static class ShieldManager
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.RemoveTemporaryMod))]
     private static void RemoveTemporaryShieldCount(PlayableCard __instance, CardModificationInfo mod)
     {
+        if (__instance == null || mod == null)
+            return;
+
         foreach (Ability ability in mod.abilities)
         {
             // check that this ability is associated with a shield-giving sigil
@@ -269,6 +275,9 @@ public static class ShieldManager
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.RemoveTemporaryMod))]
     private static void ClearTemporaryLatchSigils(PlayableCard __instance, CardModificationInfo mod)
     {
+        if (__instance == null || mod == null)
+            return;
+
         // play the ClearLatchAbility animation for Act 3 if this is the last latch sigil
         if (mod.fromLatch && !__instance.AllCardModificationInfos().Exists(x => x.fromLatch))
             __instance.StartCoroutine(__instance.Anim.ClearLatchAbility());

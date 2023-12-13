@@ -8,6 +8,7 @@
 - Fixed latched sigils not visually disappearing when using RemoveTemporaryMod to remove a latch CardModInfo
 - Fixed stack sigil icons not correctly replacing the '1' in stackable sigil icons with the appropriate stack number
 - Fixed Act 2 Tutor sequence displaying the wrong number of cards above the max of 42
+- Fixed temporary mods not correctly updating a card's shield count above 1
 - Added extension methods PlayableCard.AllCardModificationInfos(), PlayableCard.RemoveCardModificationInfo()
 - Added SpriteType 'PixelStandardButton'
 - CustomTriggerFinder now caches the list of non-card triggers before iteration
