@@ -2933,64 +2933,309 @@ references:
   commentId: T:InscryptionAPI.Card.ActivatedDamageShieldBehaviour
   fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour
   nameWithType: ActivatedDamageShieldBehaviour
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
-  name: HasShields()
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields
-  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields()
-  nameWithType: ActivatedDamageShieldBehaviour.HasShields()
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields*
-  name: HasShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields_
-  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate
+  name: Activate()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_Activate
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate()
+  nameWithType: ActivatedDamageShieldBehaviour.Activate()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate*
+  name: Activate
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_Activate_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate
   isSpec: "True"
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields
-  nameWithType: ActivatedDamageShieldBehaviour.HasShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
-  name: numShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_numShields
-  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields
-  nameWithType: ActivatedDamageShieldBehaviour.numShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
-  name: NumShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields
-  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
-  nameWithType: ActivatedDamageShieldBehaviour.NumShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields*
-  name: NumShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields_
-  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate
+  nameWithType: ActivatedDamageShieldBehaviour.Activate
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost
+  name: BloodCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BloodCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost
+  nameWithType: ActivatedDamageShieldBehaviour.BloodCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost*
+  name: BloodCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BloodCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost
   isSpec: "True"
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields
-  nameWithType: ActivatedDamageShieldBehaviour.NumShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
-  name: ResetShields(Boolean)
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_System_Boolean_
-  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)
-  nameWithType: ActivatedDamageShieldBehaviour.ResetShields(Boolean)
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields*
-  name: ResetShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_
-  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost
+  nameWithType: ActivatedDamageShieldBehaviour.BloodCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bloodCostMod
+  name: bloodCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_bloodCostMod
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bloodCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bloodCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.bloodCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost
+  name: BonesCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BonesCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost
+  nameWithType: ActivatedDamageShieldBehaviour.BonesCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost*
+  name: BonesCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BonesCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost
   isSpec: "True"
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields
-  nameWithType: ActivatedDamageShieldBehaviour.ResetShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
-  name: StartingNumShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields
-  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
-  nameWithType: ActivatedDamageShieldBehaviour.StartingNumShields
-- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields*
-  name: StartingNumShields
-  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields_
-  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost
+  nameWithType: ActivatedDamageShieldBehaviour.BonesCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bonesCostMod
+  name: bonesCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_bonesCostMod
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bonesCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bonesCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.bonesCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate
+  name: CanActivate()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_CanActivate
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate()
+  nameWithType: ActivatedDamageShieldBehaviour.CanActivate()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate*
+  name: CanActivate
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_CanActivate_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate
   isSpec: "True"
-  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields
-  nameWithType: ActivatedDamageShieldBehaviour.StartingNumShields
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate
+  nameWithType: ActivatedDamageShieldBehaviour.CanActivate
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.currentSacrificedCardInfos
+  name: currentSacrificedCardInfos
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_currentSacrificedCardInfos
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.currentSacrificedCardInfos
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.currentSacrificedCardInfos
+  nameWithType: ActivatedDamageShieldBehaviour.currentSacrificedCardInfos
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost
+  name: EnergyCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_EnergyCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost
+  nameWithType: ActivatedDamageShieldBehaviour.EnergyCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost*
+  name: EnergyCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_EnergyCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost
+  nameWithType: ActivatedDamageShieldBehaviour.EnergyCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.energyCostMod
+  name: energyCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_energyCostMod
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.energyCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.energyCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.energyCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost
+  name: HealthCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HealthCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost
+  nameWithType: ActivatedDamageShieldBehaviour.HealthCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost*
+  name: HealthCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HealthCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost
+  nameWithType: ActivatedDamageShieldBehaviour.HealthCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.healthCostMod
+  name: healthCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_healthCostMod
+  commentId: F:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.healthCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.healthCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.healthCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+  name: OnActivateBloodCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBloodCostMod
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod*
+  name: OnActivateBloodCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBloodCostMod_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateBloodCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+  name: OnActivateBonesCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBonesCostMod
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod*
+  name: OnActivateBonesCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBonesCostMod_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateBonesCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility
+  name: OnActivatedAbility()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivatedAbility
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility()
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivatedAbility()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility*
+  name: OnActivatedAbility
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivatedAbility_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivatedAbility
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+  name: OnActivateEnergyCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateEnergyCostMod
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod*
+  name: OnActivateEnergyCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateEnergyCostMod_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+  name: OnActivateHealthCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateHealthCostMod
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod*
+  name: OnActivateHealthCostMod
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateHealthCostMod_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+  nameWithType: ActivatedDamageShieldBehaviour.OnActivateHealthCostMod
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard
+  name: OnPostResolveOnBoard()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnPostResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard()
+  nameWithType: ActivatedDamageShieldBehaviour.OnPostResolveOnBoard()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard*
+  name: OnPostResolveOnBoard
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnPostResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard
+  nameWithType: ActivatedDamageShieldBehaviour.OnPostResolveOnBoard
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard
+  name: OnResolveOnBoard()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard()
+  nameWithType: ActivatedDamageShieldBehaviour.OnResolveOnBoard()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard*
+  name: OnResolveOnBoard
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard
+  nameWithType: ActivatedDamageShieldBehaviour.OnResolveOnBoard
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate
+  name: PostActivate()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_PostActivate
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate()
+  nameWithType: ActivatedDamageShieldBehaviour.PostActivate()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate*
+  name: PostActivate
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_PostActivate_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate
+  nameWithType: ActivatedDamageShieldBehaviour.PostActivate
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  name: RespondsToActivatedAbility(Ability)
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToActivatedAbility_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToActivatedAbility(Ability)
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility*
+  name: RespondsToActivatedAbility
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToActivatedAbility_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToActivatedAbility
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard
+  name: RespondsToPostResolveOnBoard()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToPostResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard()
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard*
+  name: RespondsToPostResolveOnBoard
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToPostResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard
+  name: RespondsToResolveOnBoard()
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToResolveOnBoard
+  commentId: M:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard()
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard()
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard*
+  name: RespondsToResolveOnBoard
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToResolveOnBoard_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard
+  nameWithType: ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost
+  name: StartingBloodCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBloodCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingBloodCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost*
+  name: StartingBloodCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBloodCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingBloodCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost
+  name: StartingBonesCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBonesCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingBonesCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost*
+  name: StartingBonesCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBonesCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingBonesCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost
+  name: StartingEnergyCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingEnergyCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingEnergyCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost*
+  name: StartingEnergyCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingEnergyCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingEnergyCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost
+  name: StartingHealthCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingHealthCost
+  commentId: P:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingHealthCost
+- uid: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost*
+  name: StartingHealthCost
+  href: api/InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html#InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingHealthCost_
+  commentId: Overload:InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost
+  nameWithType: ActivatedDamageShieldBehaviour.StartingHealthCost
 - uid: InscryptionAPI.Card.APIDeathShield
   name: APIDeathShield
   href: api/InscryptionAPI.Card.APIDeathShield.html
@@ -3295,6 +3540,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.AllAbilities
   nameWithType: CardExtensions.AllAbilities
+- uid: InscryptionAPI.Card.CardExtensions.AllCardModificationInfos(DiskCardGame.PlayableCard)
+  name: AllCardModificationInfos(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllCardModificationInfos_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.AllCardModificationInfos(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.AllCardModificationInfos(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.AllCardModificationInfos(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.AllCardModificationInfos*
+  name: AllCardModificationInfos
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllCardModificationInfos_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.AllCardModificationInfos
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.AllCardModificationInfos
+  nameWithType: CardExtensions.AllCardModificationInfos
 - uid: InscryptionAPI.Card.CardExtensions.AllSpecialAbilities(DiskCardGame.PlayableCard)
   name: AllSpecialAbilities(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_AllSpecialAbilities_DiskCardGame_PlayableCard_
@@ -4417,6 +4675,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.RemoveCardMetaCategories
   nameWithType: CardExtensions.RemoveCardMetaCategories
+- uid: InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo,System.Boolean)
+  name: RemoveCardModificationInfo(PlayableCard, CardModificationInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveCardModificationInfo_DiskCardGame_PlayableCard_DiskCardGame_CardModificationInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo,System.Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo(DiskCardGame.PlayableCard, DiskCardGame.CardModificationInfo, System.Boolean)
+  nameWithType: CardExtensions.RemoveCardModificationInfo(PlayableCard, CardModificationInfo, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo*
+  name: RemoveCardModificationInfo
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveCardModificationInfo_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo
+  nameWithType: CardExtensions.RemoveCardModificationInfo
 - uid: InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo,UnityEngine.Texture[])
   name: RemoveDecals(CardInfo, Texture[])
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_RemoveDecals_DiskCardGame_CardInfo_UnityEngine_Texture___
@@ -6646,6 +6917,19 @@ references:
   commentId: T:InscryptionAPI.Card.DamageShieldBehaviour
   fullName: InscryptionAPI.Card.DamageShieldBehaviour
   nameWithType: DamageShieldBehaviour
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.AddShields(System.Int32,System.Boolean)
+  name: AddShields(Int32, Boolean)
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_AddShields_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.AddShields(System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.AddShields(System.Int32, System.Boolean)
+  nameWithType: DamageShieldBehaviour.AddShields(Int32, Boolean)
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.AddShields*
+  name: AddShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_AddShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.AddShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.AddShields
+  nameWithType: DamageShieldBehaviour.AddShields
 - uid: InscryptionAPI.Card.DamageShieldBehaviour.HasShields
   name: HasShields()
   href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_HasShields
@@ -6678,6 +6962,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.DamageShieldBehaviour.NumShields
   nameWithType: DamageShieldBehaviour.NumShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields(System.Int32,System.Boolean)
+  name: RemoveShields(Int32, Boolean)
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_RemoveShields_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields(System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields(System.Int32, System.Boolean)
+  nameWithType: DamageShieldBehaviour.RemoveShields(Int32, Boolean)
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields*
+  name: RemoveShields
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_RemoveShields_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields
+  nameWithType: DamageShieldBehaviour.RemoveShields
 - uid: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields(System.Boolean)
   name: ResetShields(Boolean)
   href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_ResetShields_System_Boolean_
@@ -6691,6 +6988,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.DamageShieldBehaviour.ResetShields
   nameWithType: DamageShieldBehaviour.ResetShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.Start
+  name: Start()
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_Start
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.Start
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.Start()
+  nameWithType: DamageShieldBehaviour.Start()
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.Start*
+  name: Start
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_Start_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.Start
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.Start
+  nameWithType: DamageShieldBehaviour.Start
 - uid: InscryptionAPI.Card.DamageShieldBehaviour.StartingNumShields
   name: StartingNumShields
   href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_StartingNumShields
@@ -10589,6 +10899,12 @@ references:
   commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
   fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelPortrait
   nameWithType: TextureHelper.SpriteType.PixelPortrait
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStandardButton
+  name: PixelStandardButton
+  href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelStandardButton
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStandardButton
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStandardButton
+  nameWithType: TextureHelper.SpriteType.PixelStandardButton
 - uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.PixelStatIcon
   name: PixelStatIcon
   href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_PixelStatIcon

@@ -74,11 +74,13 @@
   
   <h1 id="InscryptionAPI_Card_DamageShieldBehaviour" data-uid="InscryptionAPI.Card.DamageShieldBehaviour" class="text-break">Class DamageShieldBehaviour
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A custom class implementing shield-giving behaviour.
+With the most recent API versions, shield-giving sigils like DeathShield/Nano Armour/ Armoured can now stack and instead use a counter rather than a simple boolean.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
     <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
     <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
@@ -88,6 +90,7 @@
     <div class="level7"><span class="xref">DiskCardGame.TriggerReceiver</span></div>
     <div class="level8"><span class="xref">DiskCardGame.AbilityBehaviour</span></div>
     <div class="level9"><span class="xref">DamageShieldBehaviour</span></div>
+      <div class="level10"><a class="xref" href="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.html">ActivatedDamageShieldBehaviour</a></div>
       <div class="level10"><a class="xref" href="InscryptionAPI.Card.APIDeathShield.html">APIDeathShield</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Card.html">InscryptionAPI.Card</a></h6>
@@ -170,6 +173,36 @@
   </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="InscryptionAPI_Card_DamageShieldBehaviour_AddShields_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.AddShields*"></a>
+  <h4 id="InscryptionAPI_Card_DamageShieldBehaviour_AddShields_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.AddShields(System.Int32,System.Boolean)">AddShields(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void AddShields(int amount, bool updateDisplay = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">updateDisplay</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_DamageShieldBehaviour_HasShields_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.HasShields*"></a>
   <h4 id="InscryptionAPI_Card_DamageShieldBehaviour_HasShields" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.HasShields">HasShields()</h4>
   <div class="markdown level1 summary"></div>
@@ -193,13 +226,43 @@
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_DamageShieldBehaviour_RemoveShields_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields*"></a>
+  <h4 id="InscryptionAPI_Card_DamageShieldBehaviour_RemoveShields_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.RemoveShields(System.Int32,System.Boolean)">RemoveShields(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RemoveShields(int amount, bool updateDisplay = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">updateDisplay</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_DamageShieldBehaviour_ResetShields_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.ResetShields*"></a>
   <h4 id="InscryptionAPI_Card_DamageShieldBehaviour_ResetShields_System_Boolean_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.ResetShields(System.Boolean)">ResetShields(Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetShields(bool updateDisplay)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void ResetShields(bool updateDisplay)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,6 +281,14 @@
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_DamageShieldBehaviour_Start_" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.Start*"></a>
+  <h4 id="InscryptionAPI_Card_DamageShieldBehaviour_Start" data-uid="InscryptionAPI.Card.DamageShieldBehaviour.Start">Start()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Start()</code></pre>
+  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_DiskCardGame_TriggerReceiver_System_Collections_IEnumerator_">CustomTriggerFinder.CustomTriggerSequence(TriggerReceiver, IEnumerator)</a>

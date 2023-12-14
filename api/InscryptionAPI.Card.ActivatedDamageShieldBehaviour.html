@@ -74,11 +74,12 @@
   
   <h1 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour" class="text-break">Class ActivatedDamageShieldBehaviour
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A custom class combining <a href="InscryptionAPI.Card.DamageShieldBehaviour">DamageShieldBehaviour</a> and <a href="InscryptionAPI.Card.ExtendedActivatedBehaviour">ExtendedActivatedBehaviour</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
     <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
     <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
@@ -87,23 +88,111 @@
     <div class="level6"><span class="xref">ManagedBehaviour</span></div>
     <div class="level7"><span class="xref">DiskCardGame.TriggerReceiver</span></div>
     <div class="level8"><span class="xref">DiskCardGame.AbilityBehaviour</span></div>
-    <div class="level9"><span class="xref">DiskCardGame.ActivatedAbilityBehaviour</span></div>
+    <div class="level9"><a class="xref" href="InscryptionAPI.Card.DamageShieldBehaviour.html">DamageShieldBehaviour</a></div>
     <div class="level10"><span class="xref">ActivatedDamageShieldBehaviour</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Card.html">InscryptionAPI.Card</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ActivatedDamageShieldBehaviour : ActivatedAbilityBehaviour</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_numShields" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.numShields">numShields</h4>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_bloodCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bloodCostMod">bloodCostMod</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int numShields</code></pre>
+    <pre><code class="lang-csharp hljs">public int bloodCostMod</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_bonesCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.bonesCostMod">bonesCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int bonesCostMod</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_currentSacrificedCardInfos" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.currentSacrificedCardInfos">currentSacrificedCardInfos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;CardInfo, CardSlot&gt; currentSacrificedCardInfos</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>, <span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_energyCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.energyCostMod">energyCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int energyCostMod</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_healthCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.healthCostMod">healthCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int healthCostMod</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -122,13 +211,13 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields*"></a>
-  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_NumShields" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.NumShields">NumShields</h4>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BloodCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BloodCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BloodCost">BloodCost</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int NumShields { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int BloodCost { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -145,13 +234,243 @@
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields*"></a>
-  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingNumShields" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingNumShields">StartingNumShields</h4>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BonesCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_BonesCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.BonesCost">BonesCost</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract int StartingNumShields { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int BonesCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_EnergyCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_EnergyCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.EnergyCost">EnergyCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int EnergyCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HealthCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HealthCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HealthCost">HealthCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HealthCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBloodCostMod_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBloodCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBloodCostMod">OnActivateBloodCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int OnActivateBloodCostMod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBonesCostMod_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateBonesCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateBonesCostMod">OnActivateBonesCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int OnActivateBonesCostMod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateEnergyCostMod_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateEnergyCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateEnergyCostMod">OnActivateEnergyCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int OnActivateEnergyCostMod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateHealthCostMod_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivateHealthCostMod" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivateHealthCostMod">OnActivateHealthCostMod</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int OnActivateHealthCostMod { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBloodCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBloodCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBloodCost">StartingBloodCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int StartingBloodCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBonesCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingBonesCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingBonesCost">StartingBonesCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int StartingBonesCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingEnergyCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingEnergyCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingEnergyCost">StartingEnergyCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int StartingEnergyCost { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingHealthCost_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_StartingHealthCost" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.StartingHealthCost">StartingHealthCost</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int StartingHealthCost { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,13 +489,36 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields*"></a>
-  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_HasShields" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.HasShields">HasShields()</h4>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_Activate_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_Activate" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.Activate">Activate()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasShields()</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract IEnumerator Activate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_CanActivate_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_CanActivate" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.CanActivate">CanActivate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanActivate()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,13 +535,109 @@
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields*"></a>
-  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_ResetShields_System_Boolean_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.ResetShields(System.Boolean)">ResetShields(Boolean)</h4>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivatedAbility_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnActivatedAbility" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnActivatedAbility">OnActivatedAbility()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetShields(bool updateDisplay)</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed override IEnumerator OnActivatedAbility()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.TriggerReceiver.OnActivatedAbility()</span></div>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnPostResolveOnBoard_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnPostResolveOnBoard" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnPostResolveOnBoard">OnPostResolveOnBoard()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerator OnPostResolveOnBoard()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnResolveOnBoard_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_OnResolveOnBoard" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.OnResolveOnBoard">OnResolveOnBoard()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed override IEnumerator OnResolveOnBoard()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.TriggerReceiver.OnResolveOnBoard()</span></div>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_PostActivate_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_PostActivate" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.PostActivate">PostActivate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerator PostActivate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToActivatedAbility_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToActivatedAbility_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToActivatedAbility(DiskCardGame.Ability)">RespondsToActivatedAbility(Ability)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToActivatedAbility(Ability ability)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -212,12 +650,77 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">updateDisplay</span></td>
+        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="parametername">ability</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToActivatedAbility(DiskCardGame.Ability)</span></div>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToPostResolveOnBoard_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToPostResolveOnBoard" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToPostResolveOnBoard">RespondsToPostResolveOnBoard()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool RespondsToPostResolveOnBoard()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToResolveOnBoard_" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard*"></a>
+  <h4 id="InscryptionAPI_Card_ActivatedDamageShieldBehaviour_RespondsToResolveOnBoard" data-uid="InscryptionAPI.Card.ActivatedDamageShieldBehaviour.RespondsToResolveOnBoard">RespondsToResolveOnBoard()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed override bool RespondsToResolveOnBoard()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.TriggerReceiver.RespondsToResolveOnBoard()</span></div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_DiskCardGame_TriggerReceiver_System_Collections_IEnumerator_">CustomTriggerFinder.CustomTriggerSequence(TriggerReceiver, IEnumerator)</a>

@@ -78,7 +78,7 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">CardExtensions</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Card.html">InscryptionAPI.Card</a></h6>
@@ -650,7 +650,7 @@
   <a id="InscryptionAPI_Card_CardExtensions_AllAbilities_" data-uid="InscryptionAPI.Card.CardExtensions.AllAbilities*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_AllAbilities_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.CardExtensions.AllAbilities(DiskCardGame.PlayableCard)">AllAbilities(PlayableCard)</h4>
   <div class="markdown level1 summary"><p>Retrieve a list of all abilities that exist on the PlayableCard.</p>
-<p>This will retrieve all Ability from both TemporaryMods and from the underlying CardInfo object.</p>
+<p>This will retrieve all Abilities from both TemporaryMods and from the underlying CardInfo object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -686,7 +686,51 @@
     <tbody>
       <tr>
         <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.Ability</span>&gt;</td>
-        <td><p>A list of Ability from the PlayableCard and underlying CardInfo object.</p>
+        <td><p>A list of Abilities from the PlayableCard and underlying CardInfo object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_AllCardModificationInfos_" data-uid="InscryptionAPI.Card.CardExtensions.AllCardModificationInfos*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_AllCardModificationInfos_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.CardExtensions.AllCardModificationInfos(DiskCardGame.PlayableCard)">AllCardModificationInfos(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a list of all CardModificationInfos that exist on the PlayableCard.</p>
+<p>This will retrieve all mods from TemporaryMods and the underlying CardInfo.Mods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;CardModificationInfo&gt; AllCardModificationInfos(this PlayableCard playableCard)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard to access.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardModificationInfo</span>&gt;</td>
+        <td><p>A list of CardModificationInfos from the PlayableCard and underlying CardInfo object.</p>
 </td>
       </tr>
     </tbody>
@@ -4800,6 +4844,62 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_RemoveCardModificationInfo_" data-uid="InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_RemoveCardModificationInfo_DiskCardGame_PlayableCard_DiskCardGame_CardModificationInfo_System_Boolean_" data-uid="InscryptionAPI.Card.CardExtensions.RemoveCardModificationInfo(DiskCardGame.PlayableCard,DiskCardGame.CardModificationInfo,System.Boolean)">RemoveCardModificationInfo(PlayableCard, CardModificationInfo, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Removes the provided CardModificationInfo from the PlayableCard.</p>
+<p>Searches both its TemporaryMods list and its CardInfo.Mods list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool RemoveCardModificationInfo(this PlayableCard playableCard, CardModificationInfo modToRemove, bool updateDisplay = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardModificationInfo</span></td>
+        <td><span class="parametername">modToRemove</span></td>
+        <td><p>The CardModificationInfo object to remove.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">updateDisplay</span></td>
+        <td><p>Whether or not to call OnStatsChanged after removing the card mod.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the mod was successfully removed or false if the mod was not removed or was null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_RemoveDecals_" data-uid="InscryptionAPI.Card.CardExtensions.RemoveDecals*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_RemoveDecals_DiskCardGame_CardInfo_UnityEngine_Texture___" data-uid="InscryptionAPI.Card.CardExtensions.RemoveDecals(DiskCardGame.CardInfo,UnityEngine.Texture[])">RemoveDecals(CardInfo, Texture[])</h4>
   <div class="markdown level1 summary"><p>Removes any number of decals from the card.</p>
@@ -7349,7 +7449,7 @@ This function uses delayed loading to attach the evolution to the card, so if th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Object</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></td>
         <td><span class="parametername">value</span></td>
         <td><p>The value of the property.</p>
 </td>
