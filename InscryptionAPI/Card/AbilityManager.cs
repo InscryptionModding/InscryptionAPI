@@ -607,7 +607,7 @@ public static class AbilityManager
         {
             foreach (TriggerReceiver receiver in r.GetAllReceivers())
             {
-                if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && ((receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs))))
+                if (GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, receiver, otherArgs) && (receiver is IActivateWhenFacedown && (receiver as IActivateWhenFacedown).ShouldTriggerWhenFaceDown(trigger, otherArgs)))
                     return true;
 
             }

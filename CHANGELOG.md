@@ -1,36 +1,51 @@
-# Changelog
-
 <details>
 <summary>View Changelog</summary>
 
-## 2.18.6
-- Added missing null checks to ResourceDrone patches
-- Added pixel icon to Transformer
+# 2.18.7
+- Fixed softlock during Act 1's final boss cabin/boons sequence 
+- Fixed startup errors relating to ShieldManager transpilers
+- Fixed resource drone not showing up outside of Act 3
+- Fixed latched sigils not visually disappearing when using RemoveTemporaryMod to remove a latch CardModInfo
+- Fixed stack sigil icons not correctly replacing the '1' in stackable sigil icons with the appropriate stack number
+- Fixed Act 2 Tutor sequence displaying the wrong number of cards above the max of 42
+- Fixed temporary mods not correctly updating a card's shield count above 1
+- Added extension methods PlayableCard.AllCardModificationInfos(), PlayableCard.RemoveCardModificationInfo()
+- Added SpriteType 'PixelStandardButton'
+- CustomTriggerFinder now caches the list of non-card triggers before iteration
+- ActivatedDamageShieldBehaviour now inherits from DamageShieldBehaviour instead of ActivateAbilityBehaviour
+- ActivatedDamageShieldBehaviour now implements the logic from ExtendedActivatedAbilityBehaviour
+- Mud Turtle now has a broken shield portrait (identical to its alternate portrait, which is unchanged)
+- CardTriggerHandler.RemoveAbility now only destroys the AbilityBehaviour if triggeredAbilities no longer contains the corresponding Ability
+- Act 2 Tutor now supports multiple pages of cards
+
+# 2.18.6
 - Fixed Royal fight softlocking if config option 'Hide Act 1 Scenery' is set to true
 - Fixed activated custom challenges not remaining activated when returning to the challenge screen
 - Fixed TransformIntoCardInHand and TransformIntoCardAboveHand not checking for TriggersOncePerStack
+- Added missing null checks to ResourceDrone patches
+- Added pixel icon to Transformer
 - Transformer sigil icon will now display the number of turns till evolution if it's greater than 1
 - Transformer and Fledgling sigils now correctly update their display when evolving into another card with the Fledgling/Transformer sigil
 - Certain shield-giving effects no longer reset shields to prevent incorrect shield totals
 - Improved the 'Custom Card Costs' section of the wiki
 
-## 2.18.5
+# 2.18.5
+- Fixed DrawCopyOnDeath creating warnings in the console
+- Fixed talking cards locking the camera view when obtained during the Trapper boss's final phase
+- Fixed ResourceDrone softlocking during Leshy's goodbye sequence if ConfigDefaultDrone is false
 - Added missing null checks
 - Added PlayableCard.GetStatIconHealthBuffs()
 - Added PlayableCard.TransformIntoCardAboveHand() - variant of TransformIntoCardInHand that incorporates MoveCardAboveHand
 - Added FullAbility.SetExtendedProperty for setting an AbilityInfo's custom property during ability creation
-- Fixed DrawCopyOnDeath creating warnings in the console
-- Fixed talking cards locking the camera view when obtained during the Trapper boss's final phase
-- Fixed ResourceDrone softlocking during Leshy's goodbye sequence if ConfigDefaultDrone is false
 - Reverted change to resource drone preventing it from being parented to the scale outside of Act 1
 - Improved visual fix for the full pack Pack Rat sequence
 
-## 2.18.4
+# 2.18.4
 - Fixed Sniper sigil targeting the wrong side of the board
 - Fixed placeholder tribe choice icons being placed incorrectly
 - Auto-gen tribe choice texture is now only created if the tribe can be found in tribe choices
 
-## 2.18.3
+# 2.18.3
 - Fixed resource drone behaving incorrectly outside of Act 1
 - Added null checks to various custom triggers
 - Added more extension methods for CardInfo and AbilityInfo
@@ -47,7 +62,7 @@
     - OpponentSelectTarget() - returns a card slot for the opponent to target and attack
 - Revamped the wiki to (hopefully) make it easier to navigate and read through
 
-## 2.18.2
+# 2.18.2
 - Fixed abilities marked TriggersOncePerStack not actually triggering once per stack on evolution
 - Fixed CardManager.Remove not actually removing cards
 - Fixed mods on card clones being lost during card sync
@@ -58,13 +73,13 @@
 - Act 1 energy drone game object is now named 'Part1ResourceDrone'
 - Act 1 energy drone is now correctly synced with the scale when Default Drone config is false
 
-## 2.18.1
+# 2.18.1
 - Fixed BoxCollider null reference during Act 3 Build-A-Card-Sequencer
 - Fixed Act 3 bone displayer screen changing to static whenever P03 changes their face
 - Added TryGetGuidAndKeyEnumValue for getting the mod GUID and key from enum value
 - Custom regions now store their mod GUID
 
-## 2.18.0
+# 2.18.0
 - Fixed SetPixelAbilityIcon() not accepting 22x10 textures for activated abilities
 - Fixed IModifyDamageTaken priority sorting being reversed
 - Fixed null errors in TakeDamage and custom trigger calls
@@ -73,7 +88,7 @@
 - Added IModifyDirectDamage, IOnTurnEndInQueue custom triggers
 - Custom Tribes now store their name and GUID
 
-## 2.17.0
+# 2.17.0
 - Fixed card extension GetAbilityStacks() being able to return a negative value; minimum value is now capped at 0
 - Added ability interfaces IModifyDamageTaken, IPreTakeDamage, which trigger at the start of PlayableCard.TakeDamage
 - Added PlayableCard extension method ResetShield(Ability) for only resetting shields belonging to a certain ability
@@ -91,10 +106,10 @@
 - Updated the wiki with sections on the additions
 - Zombie Parrot is now part of the Avian tribe
 
-## 2.16.1
+# 2.16.1
 - Gem Shield sigil now visually applies the Armoured sigil to cards in Act 1
 
-## 2.16.0
+# 2.16.0
 - Added interface IGetAttackingSlots for altering the order cards attack in, see the wiki for more information
 - Added out-of-turn (cards attacking outside of their owner's turn) damage support
 - Added PlayableCard extension method GetAbilityStacks()
@@ -102,7 +117,7 @@
 - Moved SlotAttackSlotFixes and SelfAttackDamagePatch from community patches to the API, renamed to SlotAttackSlotPatches and DoCombatPhasePatches respectively
 - Made community patch method RandomAbilityPatches.GetRandomAbility public
 
-## 2.15.2
+# 2.15.2
 - Fixed cards not evolving correctly if the Fledgling sigil was obtained via card mods (card merge, totem, etc.)
 - Moved the Squirrel Orbit community patch into the main API
 - Added SetTransformCardId(), GetTransformerCardId() for controlling the Transformer evolution separate of the standard evolution
@@ -110,24 +125,24 @@
 - Transformer sigil now also adjusts Blood and Bone costs when transforming
 - Transformer sigil now correctly works for cards without a defined evolution/transformation
 
-## 2.15.1
+# 2.15.1
 - Fixed Transformer sigil disappearing upon transformation in certain scenarios
 - Fixed Act 3 Bone Display checking the wrong card cost, resulting in the display always appearing
 - Fixed Act 3 Bone Display null error in certain Acts
 
-## 2.15.0
+# 2.15.0
 - Fixed friend cards created by G0LLY not having any mods
 - Reverted previous change to cloned CardInfos
 - Tweaked RandomAbilityPatches to hopefully prevent obtaining sigils already possessed by the card
 - Added cost display support for Act 3
 - Added bone counter for Act 3
 
-## 2.14.5
+# 2.14.5
 - Cloned CardInfos now only copy over Gemify mods, unless they possess BountyHunterInfo/DeathCardInfo/BuildACardInfo
 - Fixed certain card mods duplicating when the card evolve
 - Added ResourcesManager.RemoveMaxEnergy, ResourcesManager.ShowRemoveMaxEnergy extension methods
 
-## 2.14.4
+# 2.14.4
 - Fixed the first energy cell remaining closed in Act 1 when battle starts
 - Added new field to PeltManager.PeltData 'peltTierName' used when trading pelts
 - Added extension method PeltData.SetTierName
@@ -135,7 +150,7 @@
 - Added DialogueManager.GenerateTraderPeltsEvent for creating custom dialogue events spoken by the Trader when trading a custom pelt
 - Added DialogueManager.GenerateRegionIntroEvent for creating the dialogue event played upon entering a custom region
 
-## 2.14.3
+# 2.14.3
 - Fixed Act 2 bug relating to stackable sigils and activated sigils in the deck display menu
 - Fixed dynamic costs still not working in Act 2
 - Fixed dynamic gem costs checking ResourcesManager instead of OpponentGemsManager for opponent cards
@@ -145,7 +160,7 @@
 - Re-added dynamic cost error messages for when the card or card info is null
 - Added ResourcesManager.Instance.GemsOfType(GemType) to check for owned gems of the specified type
 
-## 2.14.2
+# 2.14.2
 - Fixed Overclock patch not checking for the correct Acts
 - Fixed appearance behaviour's Card field always returning null in Act 2
 - Added OverridePixelPortrait virtual method to PixelAppearanceBehaviour to allow for changing card portraits in Act 2
@@ -154,7 +169,7 @@
 - SwitchToAlternatePortrait and SwitchToDefaultPortrait now work in Act 2 using the above system
 - Removed cost-related error spam in Act 2
 
-## 2.14.1
+# 2.14.1
 - Custom tribes are now given a placeholder reward cardback if one isn't provided
 - Fixed visual error when flipping a custom tribe choice for a tribe without a custom cardback
 - Fixed pixel stat icons not hiding the underlying stat number
@@ -169,7 +184,7 @@
 - Added CardModInfo extension methods SetTemporaryDecal and IsTemporaryDecal (primarily for internal use, maybe you'll find a use for it)
 - Added GBCPackManager.ModifyGBCPacks function for altering what cards can be found in GBC card packs
 
-## 2.14.0
+# 2.14.0
 - Fixed Sniper duplicating attacks from sigils like Double Strike
 - Fixed interaction between Waterborne and Fledgling in Act 2
 - Fixed Cuckoo sigil softlocking in Act 2 when making a Raven Egg
@@ -193,14 +208,14 @@
 - Made method used to add stacks to pixel sigils public
 - Updated the wiki
 
-## 2.13.3
+# 2.13.3
 - Fixed null error when opening card packs in Act 2
 - Fixed pixel cards with activated sigils showing the activated sigil icon twice (does not fix the button obscuring sigils)
 - Added new helper class GemsManagerHelpers with helper methods: OpponentHasGems, PlayerHasGems
 - Changed how Act 2 descriptions are altered to prevent conflicts
 - True Scholar now correctly requires a Blue Gem to be owned prior to use
 
-## 2.13.2
+# 2.13.2
 - Fixed Hoarder sigil breaking when used by opponents in Act 2
 - Fixed Hodag special ability not working in Act 2
 - Fixed cards marked as AffectedByTidalLock not being killed by Tidal Lock when it's on a giant card
@@ -217,13 +232,13 @@
 - Squirrel, Aqua Squirrel, and Rabbit are now marked as AffectedByTidalLock
 - SteelTrap sigil no longer changes a card's portrait to the closed trap; will now switch to an alternate portrait if it exists
 
-## 2.13.1
+# 2.13.1
 - Fixed custom items falling through reality
 - Added card extension method IsAffectedByTidalLock
 - Mental Gemnastics sigil now works in Act 1
 - Tidal Lock sigil now works for non-Moon cards
 
-## 2.13.0
+# 2.13.0
 - Fixed DontDestroyOnLoad warnings when using custom items
 - Fixed weird spacing for Mox cost textures in Act 1
 - Fixed player death cards not inheriting Energy, Mox, or custom costs
@@ -245,7 +260,7 @@
 - Removed empty cost textures for Blood, Bones, Energy, Mox from the community patches
 - Sniper patch's methods are now public
 
-## 2.12.0
+# 2.12.0
 - Fixed ExtendedActivatedAbilityBehaviour's Health cost not subtracting Health correctly
 - Fixed softlock in Act 1 during death card creation
 - Fixed custom cards that start Gemified not working as intended when obtained in-game
@@ -261,18 +276,18 @@
 - Amorphous sigil now activates when used by opponents or obtained via evolution/temp mod
 - Owned Mox in Act 1 now updates when a card is hooked by the Angler or via the Hook item
 
-## 2.11.2
+# 2.11.2
 - Fixed starter deck custom unlocks not working
 - Fixed card icons not being properly centred for starter decks with 4+ cards
 - Cards in Acts 2 and 3 can now display up to 8 sigils
 - Blood tokens in Act 3 now appear to the side of the board instead of on it
 - Blood tokens now stack on each other when there are more than 4
 
-## 2.11.1
+# 2.11.1
 - Fixed regions in Act 1 being out of order
 - Fixed the console message concerning custom dialogue events not giving the right amount
 
-## 2.11.0
+# 2.11.0
 - Refactored how regions are handled by the API to prevent duplicate bosses
 - Refactored how bosses are selected to prevent duplicates being encountered
 - Changed when modded Ascension data is cleared to allow for editing it post-clear
@@ -284,7 +299,7 @@
 - Fixed SetOnePerDeck() and SetHideStats() being inaccessible
 - Fixed AddCardBlueprint() not setting the replacement card correctly
 
-## 2.10.0
+# 2.10.0
 - Completely revamped PeltManager to be more user friendly (Mod breaking)
 - Added LocalizationManager for more language support with mods
 - Added helper method for custom pelts to change cards trader
@@ -295,10 +310,10 @@
 - Fixed HasCardMetaCategory returning the inverse of its intended value
 - Fixed stackable sigils not showing numbers above 9
 
-## 2.9.1
+# 2.9.1
 - Fixed the campfire fix breaking the normal sequence
 
-## 2.9.0
+# 2.9.0
 - Added talking card support!
 - Moved the "CustomLine" struct outside of the Dialogue.Helpers class.
 - Fixed tribe choice node being able to offer vanilla tribes with no cards
@@ -307,7 +322,7 @@
 - Added fallback to campfire node if you don't have any cards that can be buffed 
 - Fixed 'outdated plugins' warning showing up when it shouldn't, tweaked message slightly
 
-## 2.8.1
+# 2.8.1
 - Added CardInfo extensions for checking CardMetaCategories, cause why not
 - Added DialogueManager for custom dialogue for regions and Custom Color support
 - Added ResourceBankManager for custom resources. Avoids doing this for every mod
@@ -318,16 +333,16 @@
 - Fixed tribe choice node being able to offer custom tribes with no cards
 - Fixed being able to get custom totem tops for tribes with no cards
 
-## 2.8.0
+# 2.8.0
 - Added support for custom masks
 - Fixed sometimes items use the wrong behaviour
 - Added more resource and asset bundle helpers
 
-## 2.7.4
+# 2.7.4
 - Fixed latch fix modifying the base info
 - Fixed stackable abilities activating twice when they shouldn't
 
-## 2.7.3
+# 2.7.3
 - Fixed sniper fix not accounting for cards with Repulsive ability
 - Fixed latch abilities not working in Act 2
 - Added ExtendedProperties for abilities
@@ -336,7 +351,7 @@
 - Added new helper methods for abilities: SetCanStack, SetTriggersOncePerStack, SetActivated, SetPassive, SetConduit, SetConduitCell
 - Added new remover methods for cards: RemoveAbilities, RemoveAbilitiesSingle, RemoveTraits, RemoveTribes
 
-## v2.7.2
+# v2.7.2
 - Added `CanActivateOutsideBattles` extension method to ConsumableItemData so they can be used outside of battles.
 - Added Missing Tribe Icon fallback texture for totem tops when a tribe has no icon
 - Changed TotemManager to accept a `CompositeTotemPiece` type for custom behaviour other than always a custom icon
@@ -347,7 +362,7 @@
 - Fixed Latch abilities removing stat boosts when latching a card
 - Fixed latched abilities not properly rendering in some acts
 
-## v2.7.1
+# v2.7.1
 - Changed Pelt Manager to no longer have an interface for future safety! (NOTE This will break all mods with custom pelts!)
 - Added Squirrel tribe art (Thanks Drift!)
 - Fixed Green Gem stat icon showing as a black square in act 1
@@ -355,7 +370,7 @@
 - Fixed Squirrel totem top causing NMA when using custom totem tops
 - Fixed being unable to play cards with a Blood cost above 4 via sacrifices
 
-## v2.7.0
+# v2.7.0
 - Added support for custom pelts
 - Added support for converting audio files to AudioClip objects
 - Added support for adding custom tracks to the Gramophone
@@ -364,45 +379,45 @@
 - Energy Drone now tweens with the scales, kinda
 - Fixed visual bug where energy cells didn't start closed in successive battles
 
-## v2.6.0
+# v2.6.0
 - Added support for custom consumable items using a choice of a few models
 - Added support for custom consumable card in a bottle items
 - Added support for custom consumable items with a custom model
 - Added more helper extensions for checking abilities, traits, special abilities
 - Fixed null instances in Act 2 spamming the console with warnings
 
-## v2.5.3
+# v2.5.3
 - Added support for custom card unlock requirements
 - Fixed non-giant cards with Omni Strike not directly attacking their opposing slot when there are no opposing cards
 - Fixed cards attacking their own side of the board during combat not adding damage to the correct side of the scale
 - Fixed an issue where a challenge would go missing if you had more than 14 installed
 
-## v2.5.2
+# v2.5.2
 - Fixed the sentry fix overriding patches to SlotAttackSlot
 
-## v2.5.1
+# v2.5.1
 - Reverted part of the sentry fix that was causing problems
 - Made it easier to override the default totem head
 
-## v2.5.0
+# v2.5.0
 - Added support for custom totem heads
 - Custom Tribes now appear as a totem in the Wood Carver nodes
 - Fixes for Sentry ability in Act 1 relating to PackMule, Loose Tail, and enemy totems
 - Fixed stacked ability icons causing issues when trying to render numbers on some sigil icons
 - Fixed Latches not working in Act 1
 
-## v2.4.2
+# v2.4.2
 - Switched to debug version
 
-## v2.4.1
+# v2.4.1
 - Fixed Sentry ability not working properly in Act for players or opponents
 
-## v2.4.0
+# v2.4.0
 - Reworked challenges
 - Fixed gemified opponent cards not working properly
 - Fixed stat icons in Act 3
 
-## v2.3.0
+# v2.3.0
 - Fixed orange gem not counting towards passive attack
 - Fixed PackMule special ability not working on the player's side
 - Fixed Mox cost choice node not working
@@ -416,7 +431,7 @@
 - Added more extensions
 - Fixed stat icon rendering for Act 3
 
-## v2.2.0
+# v2.2.0
 - Added an interface that triggers when cards are facedown
 - Updated custom artwork for GBC numbers
 - Fixed flipped icons spamming the log with warnings
@@ -430,102 +445,102 @@
 - Added node manager for custom nodes
 - Fixed cards getting buffs after the game ends
 
-## v2.1.0
+# v2.1.0
 - Fixed blurry portraits when playing on low graphics settings
 
-## v2.0.3
+# v2.0.3
 - Added support for custom tribes and boons
 - Added config option to opt of custom cost renders for Act 2 cards
 - Refactored and added documentation for CardExtensions
 
-## v2.0.2
+# v2.0.2
 - Improved the process of creating stat icons to automatically register and add the corresponding special ability
 - Added log warnings for improperly registered cards
 
-## v2.0.1
+# v2.0.1
 - Bugfix for SaveData
 
-## v2.0
+# v2.0
 - Rewritten to use base game objects
 
-## v1.13.0
+# v1.13.0
 - Added support for custom card backgrounds, dialogs, encounters and talking cards
 - Fixes to abilities loading and stackable custom abilities
 
-## v1.12.1
+# v1.12.1
 - Bugfix so CustomCard doesn't wipe ability information.
 
-## v1.12
+# v1.12
 - Fixes params.
 - Adds feature for special abilities and special stat icons.
 - Added support for emissions.
 
-## v1.11
+# v1.11
 - Added support for more identifiers
 
-## v1.10.1
+# v1.10.1
 - Fix for abilities which do not have identifier.
 
-## v1.10
+# v1.10
 - Added ability identifiers.
 
-## v1.9.1
+# v1.9.1
 - Added support for mox.
 - Forced ability texture to point filter.
 
-## v1.9
+# v1.9
 - Added config options for energy.
 
-## v1.8.2
+# v1.8.2
 - Fixed appearanceBehaviour (again).
 
-## v1.8.1
+# v1.8.1
 - Fix pixelTex dimensions.
 
-## v1.8
-### Not compatible with v1.7.2
+# v1.8
+## Not compatible with v1.7.2
 - Changes to using TypeMapper.
 
-## v1.7.2
+# v1.7.2
 - Fixed error when not adding any abilities.
 
-## v1.7.1
+# v1.7.1
 - Fixed appearance behaviours not loading properly.
 
-## v1.7
+# v1.7
 - Added support for custom abilities!
 
-## v1.6
+# v1.6
 - Changed textures to point filter to reduce blur.
 
-## v1.5.2
+# v1.5.2
 - Enabled fix for evolveParams and some other disabled options.
 
-## v1.5.1
+# v1.5.1
 - Fix to accessing private instance for regions.
 
-## v1.5
-### Not compatible with v1.4
+# v1.5
+## Not compatible with v1.4
 - Changed all references to API including guid.
 
-## v1.4
+# v1.4
 - Set up support for customising and adding regions.
 
-## v1.3
+# v1.3
 - Set up project to work as a library for other plugins to use.
 
-## v1.2.1.1
+# v1.2.1.1
 - Fixed previous patch.
 
-## v1.2.1
+# v1.2.1
 - Fixed cards not being inserted into the card pool on chapter select.
 
-## v1.2
-### Not compatible with v1.1
+# v1.2
+## Not compatible with v1.1
 - Added customising default cards through CustomCard.
 - Custom cards are added via the **CustomCard** constructor rather than through the **AddCard** method.
 
-## v1.1
+# v1.1
 - Hooked into a much more sensible method to load the cards into the card pool.
 
 </details>

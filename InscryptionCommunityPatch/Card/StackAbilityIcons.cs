@@ -316,14 +316,10 @@ public static class StackAbilityIcons
         if (card != null)
         {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
-
-            baseAbilities.RemoveAll(x => !x.GetHideSingleStacks() && card.Status.hiddenAbilities.Contains(x));
-            foreach (Ability ab in card.Status.hiddenAbilities.Where(x => x.GetHideSingleStacks()))
+            foreach (Ability ab in card.Status.hiddenAbilities)
                 baseAbilities.Remove(ab);
         }
-
-        int count = baseAbilities.Where(ab => ab == ability).Count();
-
+        int count = baseAbilities.Count(ab => ab == ability);
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
     }
