@@ -110,7 +110,7 @@ public static class StackAbilityIcons
 
     private static Vector2Int FindMatchingOnesDigit(Texture2D searchTex, bool normalSize = true)
     {
-        Texture2D onesTexture = normalSize ? NUMBER_TEXTURES[0] : MEDIUM_NUMBER_TEXTURES[0];
+        Texture2D onesTexture = normalSize ? NUMBER_TEXTURES[1] : MEDIUM_NUMBER_TEXTURES[1];
         Color[] onesColor = onesTexture.GetPixels();
         return FindMatchingTexture(searchTex, onesTexture.width, onesTexture.height, onesColor);
     }
@@ -134,7 +134,7 @@ public static class StackAbilityIcons
                     {
                         int j = nX + (nY * width);
                         int i = sX + nX + (sY + nY) * searchTex.width;
-                        if ((matchPixels != null && searchPixels[i] != matchPixels[j]) || searchPixels[i].a > 0)
+                        if (matchPixels != null && (searchPixels[i].a > 0) != (matchPixels[j].a > 0))
                         {
                             failed = true;
                             break;
@@ -201,7 +201,7 @@ public static class StackAbilityIcons
         return new Tuple<Vector2Int, int>(lowerRight, FORCED);
     }
 
-    private static Tuple<Vector2Int, int> GetPatchLocationForAbility(Ability ability, Texture2D abilityTexture)
+    private static Tuple<Vector2Int, int> GetPatchLocationForAbility(Ability ability, Texture2D abilityTexture, int stackAmount)
     {
         if (patchLocations.ContainsKey(ability))
             return patchLocations[ability];
@@ -209,19 +209,22 @@ public static class StackAbilityIcons
         // We have to calculate the location
 
         // First, see if the texture has the 'one' icon on it. If so, we will replace at that location
-        Vector2Int oneLoc = FindMatchingOnesDigit(abilityTexture, true);
-        if (oneLoc.x != -1)
+        if (stackAmount < 10)
         {
-            patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, NORMAL));
-            return patchLocations[ability];
-        }
+            Vector2Int oneLoc = FindMatchingOnesDigit(abilityTexture, true);
+            if (oneLoc.x != -1)
+            {
+                patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, NORMAL));
+                return patchLocations[ability];
+            }
 
-        // Let's try the medium-sized digit
-        oneLoc = FindMatchingOnesDigit(abilityTexture, false);
-        if (oneLoc.x != -1)
-        {
-            patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, MEDIUM));
-            return patchLocations[ability];
+            // Let's try the medium-sized digit
+            oneLoc = FindMatchingOnesDigit(abilityTexture, false);
+            if (oneLoc.x != -1)
+            {
+                patchLocations.Add(ability, new Tuple<Vector2Int, int>(oneLoc, MEDIUM));
+                return patchLocations[ability];
+            }
         }
 
         // Simplified the logic for next best to prevent issues - can be easily reverted if more issues arise
@@ -249,7 +252,7 @@ public static class StackAbilityIcons
         Texture2D newTexture = TextureHelper.DuplicateTexture(AbilitiesUtil.LoadAbilityIcon(ability.ToString(), false, false) as Texture2D);
         newTexture.name = textureName;
 
-        Tuple<Vector2Int, int> patchTuple = GetPatchLocationForAbility(ability, newTexture);
+        Tuple<Vector2Int, int> patchTuple = GetPatchLocationForAbility(ability, newTexture, count);
         Vector2Int patchLocation = patchTuple.Item1;
         int textureType = patchTuple.Item2; // This means that it's on the lower-right and needs a one-pixel border
 
@@ -320,7 +323,7 @@ public static class StackAbilityIcons
         }
 
         int count = baseAbilities.Where(ab => ab == ability).Count();
-        
+
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));
     }
@@ -430,7 +433,7 @@ public static class StackAbilityIcons
             int turnsInPlay = card?.GetComponentInChildren<Evolve>()?.numTurnsInPlay ?? 0;
             int turnsToEvolve = Mathf.Max(1, (cardInfo.evolveParams == null ? 1 : cardInfo.evolveParams.turnsToEvolve) - turnsInPlay);
             int pngIndex = turnsToEvolve > 3 ? 0 : turnsToEvolve;
-            
+
             if (pngIndex == 0)
                 return abilityInfo.pixelIcon;
 
@@ -439,7 +442,7 @@ public static class StackAbilityIcons
                 texture = TextureHelper.GetImageAsTexture($"pixel_evolve_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
             else
                 texture = TextureHelper.GetImageAsTexture($"pixel_transformer_{pngIndex}.png", typeof(StackAbilityIcons).Assembly);
-            
+
             return TextureHelper.ConvertTexture(texture, TextureHelper.SpriteType.PixelAbilityIcon);
         }
 

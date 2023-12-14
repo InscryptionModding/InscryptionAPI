@@ -1,6 +1,7 @@
+using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Card;
-using System.Collections;
+using Sirenix.Serialization.Utilities;
 
 namespace InscryptionAPI.Triggers;
 
@@ -419,8 +420,9 @@ public static class CustomTriggerFinder
     public static IEnumerable<T> FindTriggersOnBoard<T>(bool findFacedown)
     {
         List<PlayableCard> cardsOnBoardCache = new(BoardManager.Instance.CardsOnBoard);
-        return GlobalTriggerHandler.Instance.nonCardReceivers.Where(x => x.TriggerBeforeCards).OfType<T>().Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && (!x.FaceDown || findFacedown)).SelectMany(FindTriggersOnCard<T>))
-            .Concat(GlobalTriggerHandler.Instance.nonCardReceivers.Where(x => !x.TriggerBeforeCards).OfType<T>())
+        List<NonCardTriggerReceiver> triggerReceiverCache = new(GlobalTriggerHandler.Instance.nonCardReceivers);
+        return triggerReceiverCache.Where(x => !x.SafeIsUnityNull()).Where(x => x.TriggerBeforeCards).OfType<T>().Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && (!x.FaceDown || findFacedown)).SelectMany(FindTriggersOnCard<T>))
+            .Concat(triggerReceiverCache.Where(x => !x.SafeIsUnityNull()).Where(x => !x.TriggerBeforeCards).OfType<T>())
             .Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && x.FaceDown && !findFacedown).SelectMany(FindTriggersOnCard<T>)
             .Where(x => x is IActivateWhenFacedown && (x as IActivateWhenFacedown).ShouldTriggerCustomWhenFaceDown(typeof(T))));
     }
@@ -471,5 +473,5 @@ public static class CustomTriggerFinder
     /// <typeparam name="T">The type of reciever to search for</typeparam>
     /// <returns>All trigger recievers of type T in the opponent's queue.</returns>
     public static IEnumerable<T> FindTriggersInQueue<T>() =>
-		TurnManager.Instance?.Opponent?.Queue.Where(card => card.TryGetComponent(out T _)).Select(card => card.GetComponent<T>()) ?? new T[]{};
+        TurnManager.Instance?.Opponent?.Queue.Where(card => card.TryGetComponent(out T _)).Select(card => card.GetComponent<T>()) ?? new T[] { };
 }
