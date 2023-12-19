@@ -15,9 +15,9 @@ public static class EnergyDrone
     {
         public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
         public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
-        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
+        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
     }
 
     public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()

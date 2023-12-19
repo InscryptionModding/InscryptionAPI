@@ -23,30 +23,14 @@ internal class BuyPeltsSequencer_PeltPrices
 [HarmonyPatch]
 internal class BuyPeltsSequencer_BuyPelts
 {
-    static Type BuyPeltsSequencerClass = Type.GetType("DiskCardGame.BuyPeltsSequencer, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-    static Type BuyPeltsMethodClass = Type.GetType("DiskCardGame.BuyPeltsSequencer+<BuyPelts>d__22, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-
-    public static List<PeltManager.PeltData> PeltsAvailableAtTrader = new List<PeltManager.PeltData>();
-
-    public static BuyPeltsSequencer s_BuyPeltsSequencer
-    {
-        get
-        {
-            return m_specialNodeHandler ??= SpecialNodeHandler.Instance.buyPeltsSequencer;
-        }
-    }
-    private static BuyPeltsSequencer m_specialNodeHandler;
-
-    public static IEnumerable<MethodBase> TargetMethods()
-    {
-        yield return AccessTools.Method(BuyPeltsMethodClass, "MoveNext");
-    }
+    internal static List<PeltManager.PeltData> PeltsAvailableAtTrader = new();
 
     /// <summary>
     /// Setup how the board should be layed out
     /// If we have too many cards then we need to make space
     /// </summary>
-    public static bool Prefix()
+    [HarmonyPrefix, HarmonyPatch(typeof(BuyPeltsSequencer), nameof(BuyPeltsSequencer.BuyPelts))]
+    private static bool SetUpForCustomPelts(BuyPeltsSequencer __instance)
     {
         if (PeltManager.AllNewPelts.Count == 0)
         {
@@ -57,26 +41,19 @@ internal class BuyPeltsSequencer_BuyPelts
         }
 
         // Move card pile off screen
-        FieldInfo cardPileField = AccessTools.Field(BuyPeltsSequencerClass, "deckPile");
-        CardPile cardPile = (CardPile)cardPileField.GetValue(s_BuyPeltsSequencer);
-        Vector3 cardPilePosition = cardPile.transform.localPosition;
-        cardPile.transform.localPosition = new Vector3(5.5f, cardPilePosition.y, cardPilePosition.z);
+        Vector3 cardPilePosition = __instance.deckPile.transform.localPosition;
+        __instance.deckPile.transform.localPosition = new Vector3(5.5f, cardPilePosition.y, cardPilePosition.z);
 
         // Move purchase pile to the left of all the cards
-        FieldInfo purchasedPileField = AccessTools.Field(BuyPeltsSequencerClass, "purchasedPile");
-        CardPile purchasedPile = (CardPile)purchasedPileField.GetValue(s_BuyPeltsSequencer);
-        purchasedPile.transform.position = s_BuyPeltsSequencer.PELT_CARDS_ANCHOR - s_BuyPeltsSequencer.PELT_SPACING;
+        __instance.purchasedPile.transform.position = __instance.PELT_CARDS_ANCHOR - __instance.PELT_SPACING;
 
         // Move teeth anchor to the left
-        FieldInfo weightOrganizeAnchorField = AccessTools.Field(BuyPeltsSequencerClass, "weightOrganizeAnchor");
-        Transform weightOrganizeAnchor = (Transform)weightOrganizeAnchorField.GetValue(s_BuyPeltsSequencer);
-        Vector3 weightedOranizeAnchorPos = weightOrganizeAnchor.transform.localPosition;
-        weightOrganizeAnchor.transform.localPosition = new Vector3(-1.5f, weightedOranizeAnchorPos.y, weightedOranizeAnchorPos.z);
+        Vector3 weightedOranizeAnchorPos = __instance.weightOrganizeAnchor.transform.localPosition;
+        __instance.weightOrganizeAnchor.transform.localPosition = new Vector3(-1.5f, weightedOranizeAnchorPos.y, weightedOranizeAnchorPos.z);
 
         // Create choices
         PeltsAvailableAtTrader.Clear();
         GeneratePeltChoices();
-
         return true;
     }
     private static void GeneratePeltChoices()
@@ -154,8 +131,12 @@ internal class BuyPeltsSequencer_BuyPelts
     /// <summary>
     /// Fixes the sequence to support more than 3 pelts
     /// </summary>
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    [HarmonyTranspiler, HarmonyPatch(typeof(BuyPeltsSequencer), nameof(BuyPeltsSequencer.BuyPelts), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
+        Type BuyPeltsSequencerClass = Type.GetType("DiskCardGame.BuyPeltsSequencer, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+        Type BuyPeltsMethodClass = Type.GetType("DiskCardGame.BuyPeltsSequencer+<BuyPelts>d__22, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+
         FieldInfo peltsForSale = AccessTools.Field(BuyPeltsSequencerClass, "peltsForSale");
         FieldInfo forLoopI = AccessTools.Field(BuyPeltsMethodClass, "<i>5__2");
 
@@ -164,7 +145,7 @@ internal class BuyPeltsSequencer_BuyPelts
         MethodInfo GetTotalPeltsInfo = SymbolExtensions.GetMethodInfo(() => GetTotalPelts());
 
         // ================================================
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         for (int i = 0; i < codes.Count; i++)
         {
@@ -204,10 +185,7 @@ internal class BuyPeltsSequencer_BuyPelts
         }
     }
 
-    private static int GetTotalPelts()
-    {
-        return PeltsAvailableAtTrader.Count;
-    }
+    private static int GetTotalPelts() => PeltsAvailableAtTrader.Count;
 }
 
 [HarmonyPatch(typeof(BuyPeltsSequencer), "CreatePelt", new Type[] { typeof(int), typeof(int), typeof(float) })]
@@ -217,7 +195,7 @@ internal class BuyPeltsSequencer_CreatePelt
     /// Moves the new pelt cards to their correct position
     /// and Adds the new pelts to be bought
     /// </summary>
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         // ================================================
 
@@ -252,10 +230,7 @@ internal class BuyPeltsSequencer_CreatePelt
         return codes;
     }
 
-    private static string[] GetCardByName()
-    {
-        return BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a) => a.peltCardName).ToArray();
-    }
+    private static string[] GetCardByName() => BuyPeltsSequencer_BuyPelts.PeltsAvailableAtTrader.Select((a) => a.peltCardName).ToArray();
 
     private static void AdjustPosition(int index, ref Vector3 vector)
     {
@@ -274,29 +249,23 @@ internal class BuyPeltsSequencer_CreatePelt
 
 
         // Vector3 vector = this.PELT_CARDS_ANCHOR + this.PELT_SPACING * (float)index;
-        vector = BuyPeltsSequencer_BuyPelts.s_BuyPeltsSequencer.PELT_CARDS_ANCHOR;
+        vector = SpecialNodeHandler.Instance.buyPeltsSequencer.PELT_CARDS_ANCHOR;
         vector.x += xPadding * (index % (peltsPerRow));
         vector.z += zPadding * Mathf.FloorToInt(index / peltsPerRow);
     }
 }
 
 [HarmonyPatch]
-internal class BuyPeltsSequencer_GiveFreePeltSequence
+public class BuyPeltsSequencer_GiveFreePeltSequence
 {
-    static Type GiveFreePeltSequenceClass = Type.GetType("DiskCardGame.BuyPeltsSequencer+<GiveFreePeltSequence>d__24, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-
-    public static IEnumerable<MethodBase> TargetMethods()
-    {
-        yield return AccessTools.Method(GiveFreePeltSequenceClass, "MoveNext");
-    }
-
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    [HarmonyTranspiler, HarmonyPatch(typeof(BuyPeltsSequencer), nameof(BuyPeltsSequencer.GiveFreePeltSequence), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         MethodInfo GainPeltInfo = SymbolExtensions.GetMethodInfo(() => SpecialNodeHandler.Instance.buyPeltsSequencer.GainPelt(null));
         MethodInfo ChangeFreeCardInfo = SymbolExtensions.GetMethodInfo(() => ChangeFreeCard(null));
 
         // ================================================
-        List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+        List<CodeInstruction> codes = new(instructions);
 
         for (int i = 0; i < codes.Count; i++)
         {
@@ -314,8 +283,5 @@ internal class BuyPeltsSequencer_GiveFreePeltSequence
         return codes;
     }
 
-    private static CardInfo ChangeFreeCard(CardInfo currentFreeCard)
-    {
-        return CardLoader.GetCardByName("PeltHare");
-    }
+    public static CardInfo ChangeFreeCard(CardInfo currentFreeCard) => CardLoader.GetCardByName("PeltHare");
 }

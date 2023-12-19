@@ -1,6 +1,10 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.18.8
+- Added variant of PeltManager.New
+- PeltManager.New (both versions) now throws an error when getCardChoices is null
+
 # 2.18.7
 - Fixed softlock during Act 1's final boss cabin/boons sequence 
 - Fixed startup errors relating to ShieldManager transpilers
