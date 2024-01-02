@@ -51,16 +51,12 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         if (SaveManager.SaveFile.IsPart2)
             __result = __instance.GetComponentInParent<DiskCardGame.Card>();
     }
-    [HarmonyPatch(typeof(PixelBoardManager), nameof(PixelBoardManager.CleanUp))]
-    [HarmonyPostfix]
+    [HarmonyPostfix, HarmonyPatch(typeof(PixelBoardManager), nameof(PixelBoardManager.CleanUp))]
     private static IEnumerator ClearTempDecals(IEnumerator enumerator)
     {
         foreach (CardInfo info in SaveManager.SaveFile.gbcData.deck.Cards)
         {
-            foreach (CardModificationInfo mod in info.Mods.Where(x => x.IsTemporaryDecal()))
-            {
-                mod.DecalIds.Clear();
-            }
+            info.Mods.RemoveAll(x => x.IsTemporaryDecal());
         }
         yield return enumerator;
     }
