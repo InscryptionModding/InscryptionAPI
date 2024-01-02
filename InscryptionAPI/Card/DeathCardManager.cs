@@ -69,8 +69,9 @@ public static class DeathCardManager
             .SetOnePerDeck();
 
         newInfo.animatedPortrait = CardLoader.GetCardByName("!DEATHCARD_BASE").animatedPortrait;
-        newInfo.Mods.Add(new() { singletonId = mod.singletonId, deathCardInfo = mod.deathCardInfo });
+        newInfo.Mods.Add(new() { singletonId = mod.CleanId(), deathCardInfo = mod.deathCardInfo });
 
+        // set the custom costs to the card info
         foreach (string customCost in CardModificationInfoManager.GetCustomCostsFromId(mod.singletonId))
         {
             string[] splitCost = customCost.Split(',');
