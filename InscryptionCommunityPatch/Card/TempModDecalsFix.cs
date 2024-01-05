@@ -1,6 +1,8 @@
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -10,11 +12,11 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 internal class TempModDecalsFix
 {
-    [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.RemoveTemporaryMod))]
-    [HarmonyPrefix]
-    private static void RemoveTemporaryDecalsWithDecals(PlayableCard __instance, CardModificationInfo mod)
+    // need to do it like
+    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.RemoveTemporaryMod))]
+    private static void RemoveTemporaryModsWithDecals(PlayableCard __instance, CardModificationInfo mod)
     {
-        if (mod == null || mod.DecalIds.Count <= 0)
+        if (mod == null || !__instance.TemporaryMods.Contains(mod) || mod.DecalIds.Count == 0)
             return;
 
         CardModificationInfo cardModificationInfo = __instance.Info.Mods.Find(x => x.singletonId == mod.singletonId || x.DecalIds == mod.DecalIds);
@@ -55,7 +57,7 @@ internal class TempModDecalsFix
         if (tempMod.DecalIds.Count == 0)
             return;
 
-        // remove singleton if it exists
+        // remove any existing mods with this id
         if (!string.IsNullOrEmpty(tempMod.singletonId))
         {
             CardModificationInfo cardModificationInfo = card.Info.Mods.Find((CardModificationInfo x) => x.singletonId == tempMod.singletonId);
@@ -63,12 +65,23 @@ internal class TempModDecalsFix
                 card.Info.Mods.Remove(cardModificationInfo);
         }
 
-        CardModificationInfo newMod = new()
+        CardModificationInfo decalMod = new()
         {
             decalIds = tempMod.DecalIds,
             singletonId = tempMod.singletonId
         };
-        newMod.SetTemporaryDecal();
-        card.Info.Mods.Add(newMod);
+        decalMod.SetTemporaryDecal();
+        card.Info.Mods.Add(decalMod);
+    }
+
+    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.CleanUp))]
+    [HarmonyPostfix]
+    private static IEnumerator ClearTempDecals(IEnumerator enumerator)
+    {
+        foreach (CardInfo info in SaveManager.SaveFile.CurrentDeck.Cards)
+        {
+            info.Mods.RemoveAll(x => x.IsTemporaryDecal());
+        }
+        yield return enumerator;
     }
 }
