@@ -326,6 +326,27 @@ public static partial class CardExtensions
     {
         return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
     }
+    /// <summary>
+    /// A variant of PlayableCard.AllAbilities that can account for negated abilities in the PlayableCard's TemporaryMods.
+    /// </summary>
+    /// <param name="playableCard">The PlayableCard to access.</param>
+    /// <param name="accountForNegation">Whether or not to check TemporaryMods for negated abilities.</param>
+    /// <returns>A list of Abilities from the PlayableCard and underlying CardInfo object</returns>
+    public static List<Ability> AllAbilities(this PlayableCard playableCard, bool accountForNegation)
+    {
+        List<Ability> retval = playableCard.AllAbilities();
+        if (!accountForNegation)
+            return retval;
+
+        playableCard.TemporaryMods.ForEach(delegate (CardModificationInfo m)
+        {
+            m.negateAbilities?.ForEach(delegate (Ability a)
+            {
+                retval.Remove(a);
+            });
+        });
+        return retval;
+    }
 
     /// <summary>
     /// Retrieve a list of all CardModificationInfos that exist on the PlayableCard.
