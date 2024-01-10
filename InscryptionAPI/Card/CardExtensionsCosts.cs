@@ -79,7 +79,7 @@ public static partial class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this PlayableCard card)
     {
-        if (!card || !card.Info)
+        if (card?.Info == null)
             return new();
 
         List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
@@ -90,13 +90,18 @@ public static partial class CardExtensions
         List<GemType> gemsCost = new(card.Info.gemsCost);
         foreach (CardModificationInfo mod in mods)
         {
-            if (mod.addGemCost == null)
-                continue;
-
-            foreach (GemType item in mod.addGemCost)
+            if (mod.addGemCost != null)
             {
-                if (!gemsCost.Contains(item))
-                    gemsCost.Add(item);
+                foreach (GemType item in mod.addGemCost)
+                {
+                    if (!gemsCost.Contains(item))
+                        gemsCost.Add(item);
+                }
+            }
+            foreach (GemType gem in mod.RemovedGemsCosts())
+            {
+                if (gemsCost.Contains(gem))
+                    gemsCost.Remove(gem);
             }
         }
 

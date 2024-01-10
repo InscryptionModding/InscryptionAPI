@@ -130,9 +130,8 @@ internal static class AscensionChallengeScreenPatches
         return true;
     }
 
-    [HarmonyPatch(typeof(AscensionMenuScreens), "Start")]
-    [HarmonyPostfix]
-    public static void Postfix(AscensionMenuScreens __instance)
+    [HarmonyPostfix, HarmonyPatch(typeof(AscensionMenuScreens), "Start")]
+    private static void AddPaginatorSetupifierToMenuScreens(AscensionMenuScreens __instance)
     {
         if (__instance.challengeUnlockSummaryScreen != null && __instance.challengeUnlockSummaryScreen.GetComponent<AscensionMenuScreenTransition>() != null &&
             __instance.challengeUnlockSummaryScreen.GetComponent<AscensionChallengePaginatorSetupifier>() == null)
@@ -142,11 +141,9 @@ internal static class AscensionChallengeScreenPatches
         }
     }
 
-    [HarmonyPatch(typeof(AscensionChallengeScreen), "Start")]
-    [HarmonyPostfix]
-    public static void Postfix(AscensionChallengeScreen __instance)
+    [HarmonyPostfix, HarmonyPatch(typeof(AscensionChallengeScreen), "Start")]
+    private static void AddPaginatorToChallengeScreen(AscensionChallengeScreen __instance)
     {
-        Debug.Log($"{AscensionSaveData.Data.activeChallenges.Count}");
         if (__instance.GetComponent<AscensionChallengePaginator>() == null)
         {
             ChallengeManager.SyncChallengeList();

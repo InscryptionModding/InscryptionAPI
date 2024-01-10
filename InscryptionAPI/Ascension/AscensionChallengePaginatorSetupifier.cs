@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
+// adding this comment to say that setupifier is a ridiculous word, very fun
 public class AscensionChallengePaginatorSetupifier : ManagedBehaviour
 {
     public void Start()

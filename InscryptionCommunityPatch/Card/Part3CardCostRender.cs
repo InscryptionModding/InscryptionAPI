@@ -1,6 +1,8 @@
 using System.Runtime.CompilerServices;
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
+using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using UnityEngine;
 
@@ -113,7 +115,7 @@ public static class Part3CardCostRender
     public static GameObject GetPiece(this DiskCardGame.Card card, string key)
     {
         Transform t = card.gameObject.transform.Find(key);
-        return t == null ? null : t.gameObject;
+        return t?.gameObject;
     }
 
     private static ConditionalWeakTable<RenderStatsLayer, DiskCardGame.Card> CardRenderReverseLookup = new ();
@@ -123,8 +125,7 @@ public static class Part3CardCostRender
     /// </summary>
     public static DiskCardGame.Card GetCard(this RenderStatsLayer layer)
     {
-        DiskCardGame.Card retval;
-        if (CardRenderReverseLookup.TryGetValue(layer, out retval))
+        if (CardRenderReverseLookup.TryGetValue(layer, out DiskCardGame.Card retval))
             return retval;
 
         retval = layer.gameObject.GetComponentInParent<DiskCardGame.Card>();
@@ -137,10 +138,9 @@ public static class Part3CardCostRender
     {
         get
         {
-            if (_bgTexture != null)
-                return _bgTexture;
+            if (_bgTexture == null)
+                _bgTexture = TextureHelper.GetImageAsTexture($"CostTextureBackground.png", typeof(Part3CardCostRender).Assembly);
 
-            _bgTexture = TextureHelper.GetImageAsTexture($"CostTextureBackground.png", typeof(Part3CardCostRender).Assembly);
             return _bgTexture;
         }
     }
@@ -150,22 +150,20 @@ public static class Part3CardCostRender
     {
         get
         {
-            if (_sevenSegments != null)
-                return _sevenSegments;
-
-            _sevenSegments = new ();
-
-            for (int i = 0; i <= 9; i++)
+            if (_sevenSegments == null)
             {
-                Texture2D tex = TextureHelper.GetImageAsTexture($"Display_{i}_small.png", typeof(Part3CardCostRender).Assembly);
-                tex.name = $"Display_{i}";
-                _sevenSegments.Add(tex);
+                _sevenSegments = new();
+                for (int i = 0; i <= 9; i++)
+                {
+                    Texture2D tex = TextureHelper.GetImageAsTexture($"Display_{i}_small.png", typeof(Part3CardCostRender).Assembly);
+                    tex.name = $"Display_{i}";
+                    _sevenSegments.Add(tex);
+                }
+
+                Texture2D texx = TextureHelper.GetImageAsTexture($"Display_x_small.png", typeof(Part3CardCostRender).Assembly);
+                texx.name = $"Display_x";
+                _sevenSegments.Add(texx);
             }
-
-            Texture2D texx = TextureHelper.GetImageAsTexture($"Display_x_small.png", typeof(Part3CardCostRender).Assembly);
-            texx.name = $"Display_x";
-            _sevenSegments.Add(texx);
-
             return _sevenSegments;
         }
     }
@@ -175,11 +173,11 @@ public static class Part3CardCostRender
     {
         get
         {
-            if (_costCubeBackground != null)
-                return _costCubeBackground;
-
-            _costCubeBackground = TextureHelper.GetImageAsTexture("Act3CostCubeBackground.png", typeof(Part3CardCostRender).Assembly);
-            _costCubeBackground.name = "CostCubeBackground";
+            if (_costCubeBackground == null)
+            {
+                _costCubeBackground = TextureHelper.GetImageAsTexture("Act3CostCubeBackground.png", typeof(Part3CardCostRender).Assembly);
+                _costCubeBackground.name = "CostCubeBackground";
+            }
             return _costCubeBackground;                
         }
     }
@@ -189,11 +187,11 @@ public static class Part3CardCostRender
     {
         get
         {
-            if (_boneIcon != null)
-                return _boneIcon;
-
-            _boneIcon = TextureHelper.GetImageAsTexture("BoneCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
-            _boneIcon.name = "BoneCostIcon";
+            if (_boneIcon == null)
+            {
+                _boneIcon = TextureHelper.GetImageAsTexture("BoneCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
+                _boneIcon.name = "BoneCostIcon";
+            }
             return _boneIcon;                
         }
     }
@@ -203,14 +201,15 @@ public static class Part3CardCostRender
     {
         get
         {
-            if (_bloodIcon != null)
-                return _bloodIcon;
-
-            _bloodIcon = TextureHelper.GetImageAsTexture("BloodCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
-            _bloodIcon.name = "BloodCostIcon";
+            if (_bloodIcon == null)
+            {
+                _bloodIcon = TextureHelper.GetImageAsTexture("BloodCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
+                _bloodIcon.name = "BloodCostIcon";
+            }
             return _bloodIcon;                
         }
     }
+    private static readonly Dictionary<string, Texture2D> AssembledTextures = new();
 
     private static GameObject CreateTextureDisplayer(GameObject container)
     {
@@ -236,7 +235,7 @@ public static class Part3CardCostRender
 
     private static GameObject GenerateSingleAdditionalCostContainer(DiskCardGame.Card card, int index)
     {
-        if (!(card.StatsLayer is DiskRenderStatsLayer))
+        if (card.StatsLayer is not DiskRenderStatsLayer)
             throw new InvalidOperationException("You cannot generate an additional Part 3 cost container on anything other than a Disk Card!!");
         
         // Start with a cube
@@ -306,7 +305,7 @@ public static class Part3CardCostRender
         return container;
     }
 
-    private static ConditionalWeakTable<RenderStatsLayer, List<GameObject>> ExtraCostContainers = new ();
+    private static readonly ConditionalWeakTable<RenderStatsLayer, List<GameObject>> ExtraCostContainers = new();
 
     /// <summary>
     /// Gets the cached set of additional cost containers that have been built to accomodate costs beyond 1 type
@@ -319,13 +318,9 @@ public static class Part3CardCostRender
     public static List<GameObject> GetCostContainers(this DiskCardGame.Card card, int numberOfContainers)
     {
         List<GameObject> retval = card.StatsLayer.GetCostContainers();
-
-        if (!(card.StatsLayer is DiskRenderStatsLayer))
+        if (card.StatsLayer is not DiskRenderStatsLayer || retval.Count >= numberOfContainers)
             return retval;
         
-        if (retval.Count >= numberOfContainers)
-            return retval;
-
         // Cool - we need to make more cost containers
         while (retval.Count < numberOfContainers)
             retval.Add(GenerateSingleAdditionalCostContainer(card, retval.Count));
@@ -353,8 +348,8 @@ public static class Part3CardCostRender
         return container;
     }
 
-    private static Dictionary<string, Dictionary<int, Texture2D>> TextureCache = new();
-    private static Dictionary<string, Dictionary<int, Texture2D>> EmissionTextureCache = new();
+    private static readonly Dictionary<string, Dictionary<int, Texture2D>> TextureCache = new();
+    private static readonly Dictionary<string, Dictionary<int, Texture2D>> EmissionTextureCache = new();
 
     /// <summary>
     /// Generates a texture that displays the cost of a specific resource, either by duplicating the icon or using a seven-segment display if there isn't enough space
@@ -368,7 +363,7 @@ public static class Part3CardCostRender
     /// In order to take advantage of texture caching, your icon texture must have a unique name.</remarks>
     public static Tuple<Texture2D, Texture2D> GetIconifiedCostTexture(Texture2D iconTexture, int cost, bool forceDigitDisplay = false)
     {
-        if (!String.IsNullOrEmpty(iconTexture.name) && !iconTexture.name.Equals("untitled", StringComparison.InvariantCultureIgnoreCase))
+        if (!string.IsNullOrEmpty(iconTexture.name) && !iconTexture.name.Equals("untitled", StringComparison.InvariantCultureIgnoreCase))
         {
             if (!TextureCache.Keys.Contains(iconTexture.name))
             {
@@ -501,7 +496,7 @@ public static class Part3CardCostRender
         gameObject.DisplayCostOnContainer(costTextures.Item1, costTextures.Item2);
     }
 
-    private static ConditionalWeakTable<RenderStatsLayer, Dictionary<GemType, Renderer>> GemContainerLookup = new ();
+    private static readonly ConditionalWeakTable<RenderStatsLayer, Dictionary<GemType, Renderer>> GemContainerLookup = new ();
 
     /// <summary>
     /// Gets a reference to the renderers for the three possible gem costs for the card.
@@ -551,20 +546,17 @@ public static class Part3CardCostRender
             orangeCost.transform.localPosition = new (0.3f, 0.41f, 0f);
             retval[GemType.Orange] = orangeCost.GetComponent<Renderer>();
         }
+        else if (blueCostTransform == null)
+        {
+            retval[GemType.Blue] = null;
+            retval[GemType.Green] = null;
+            retval[GemType.Orange] = null;
+        }
         else
         {
-            if (blueCostTransform == null)
-            {
-                retval[GemType.Blue] = null;
-                retval[GemType.Green] = null;
-                retval[GemType.Orange] = null;
-            }
-            else
-            {
-                retval[GemType.Blue] = gemContainer.transform.Find(BLUE_GEM_COST).gameObject.GetComponent<Renderer>();
-                retval[GemType.Green] = gemContainer.transform.Find(GREEN_GEM_COST).gameObject.GetComponent<Renderer>();
-                retval[GemType.Orange] = gemContainer.transform.Find(ORANGE_GEM_COST).gameObject.GetComponent<Renderer>();
-            }
+            retval[GemType.Blue] = gemContainer.transform.Find(BLUE_GEM_COST).gameObject.GetComponent<Renderer>();
+            retval[GemType.Green] = gemContainer.transform.Find(GREEN_GEM_COST).gameObject.GetComponent<Renderer>();
+            retval[GemType.Orange] = gemContainer.transform.Find(ORANGE_GEM_COST).gameObject.GetComponent<Renderer>();
         }
 
         return retval;
@@ -596,21 +588,71 @@ public static class Part3CardCostRender
     {
         // This will render alternate costs to the cost window.
         // Note that right now this only support single alternate costs, not combined costs
-        if (!(__instance.StatsLayer is DiskRenderStatsLayer drsl))
+        if (__instance.StatsLayer is not DiskRenderStatsLayer drsl)
             return;
 
         // Okay, first we need to figure out how many costs we actually have
-        List<CustomCostRenderInfo> costDisplays = new ();
-        if (__instance.Info.EnergyCost > 0) costDisplays.Add(new ("Energy"));
-        if (__instance.Info.GemsCost.Count > 0) costDisplays.Add(new ("Gems"));
-        if (__instance.Info.BonesCost > 0) costDisplays.Add(new ("Bones", GetIconifiedCostTexture(BoneCostIcon, __instance.Info.BonesCost, forceDigitDisplay: true)));
-        if (__instance.Info.BloodCost > 0) costDisplays.Add(new ("Blood", GetIconifiedCostTexture(BloodCostIcon, __instance.Info.BloodCost)));
+        List<CustomCostRenderInfo> costDisplays = new();
+        PlayableCard playableCard = __instance as PlayableCard;
+
+        int energyCost = playableCard?.EnergyCost ?? __instance.Info.EnergyCost;
+        if (energyCost > 0)
+            costDisplays.Add(new("Energy"));
+
+        List<GemType> gemsCost = playableCard?.GemsCost() ?? __instance.Info.GemsCost;
+        if (gemsCost.Count > 0)
+            costDisplays.Add(new("Gems"));
+
+        int bonesCost = playableCard?.BonesCost() ?? __instance.Info.BonesCost;
+        if (bonesCost > 0)
+            costDisplays.Add(new("Bones", GetIconifiedCostTexture(BoneCostIcon, bonesCost, forceDigitDisplay: true)));
         
+        int bloodCost = playableCard?.BloodCost() ?? __instance.Info.BloodCost;
+        if (bloodCost > 0)
+            costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, bloodCost)));
+
+        // get a list of the custom costs we need textures for
+        // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
+        List<CardCostManager.FullCardCost> customCosts;
+        if (playableCard != null)
+            customCosts = playableCard.GetCustomCardCosts().Select(x => CardCostManager.AllCustomCosts.Find(c => c.CostName == x.CostName)).ToList();
+        else
+            customCosts = __instance.Info.GetCustomCosts();
+
+        foreach (CardCostManager.FullCardCost fullCost in customCosts)
+        {
+            Texture2D costTex = null;
+            string key = fullCost.CostName + 1;
+            if (CardCostRender.AssembledTextures.ContainsKey(key))
+            {
+                if (CardCostRender.AssembledTextures[key] != null)
+                    costTex = CardCostRender.AssembledTextures[key];
+                else
+                    CardCostRender.AssembledTextures.Remove(key);
+            }
+            else
+            {
+                Texture2D oneTex = fullCost.GetCostTexture?.Invoke(1, __instance.Info, playableCard);
+                if (oneTex != null)
+                {
+                    costTex = oneTex;
+                    CardCostRender.AssembledTextures.Add(key, costTex);
+                }
+            }
+            if (costTex != null)
+            {
+                costDisplays.Add(new(
+                    fullCost.CostName,
+                    GetIconifiedCostTexture(AssembledTextures[fullCost.CostName], __instance.Info.GetCustomCost(fullCost.CostName))
+                    ));
+            }
+        }
+
         // Get the other mod costs
         UpdateCardCostSimple?.Invoke(__instance.Info, costDisplays);
 
         // Quick bailout if possible (for cards that only have energy cost)
-        if (costDisplays.Count == 0 || (costDisplays.Count == 1 && __instance.Info.EnergyCost > 0))
+        if (costDisplays.Count == 0 || (costDisplays.Count == 1 && energyCost > 0))
         {
             __instance.GetPiece(ENERGY_LIGHTS).SetActive(true);
             ResetBlueGemifyGem(__instance, true, __instance.Info.Gemified);
@@ -619,7 +661,6 @@ public static class Part3CardCostRender
 
         // Get all the cost containers
         List<GameObject> costContainers = __instance.GetCostContainers(costDisplays.Count);
-
         for (int i = 0; i < costContainers.Count; i++)
         {
             if (i < costDisplays.Count)
@@ -647,7 +688,7 @@ public static class Part3CardCostRender
         UpdateCardCostComplex?.Invoke(__instance.Info, costDisplays);
 
         // Handle our special case (the gems)
-        if (__instance.Info.GemsCost.Count > 0)
+        if (gemsCost.Count > 0)
         {
             CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems", StringComparison.InvariantCultureIgnoreCase));
             var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
@@ -656,7 +697,7 @@ public static class Part3CardCostRender
         }
 
         // Handle the energy bars
-        bool energyLightsActive = __instance.Info.EnergyCost > 0 || costDisplays.Count == 0;
+        bool energyLightsActive = energyCost > 0 || costDisplays.Count == 0;
         __instance.GetPiece(ENERGY_LIGHTS).SetActive(energyLightsActive);
         ResetBlueGemifyGem(__instance, true, __instance.Info.Gemified && energyLightsActive);
     }

@@ -150,7 +150,7 @@ public class SniperFix
                     return noPref.Slot;
             }
         }
-        return attackingSlot.opposingSlot;
+        return opposingSlots[SeededRandom.Range(0, opposingSlots.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + Singleton<GlobalTriggerHandler>.Instance.NumTriggersThisBattle)];
     }
     public static List<T> GetSorted<T>(List<T> unsorted, Comparison<T> sort)
     {

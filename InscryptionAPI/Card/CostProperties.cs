@@ -96,6 +96,31 @@ public static class CostProperties
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
 
+    public static List<GemType> ImprovedGemsCost(CardInfo instance)
+    {
+        if (instance.Mods.Exists(x => x.nullifyGemsCost))
+            return new();
+
+        List<GemType> gems = new(instance.gemsCost);
+        foreach (CardModificationInfo mod in instance.Mods)
+        {
+            if (mod.addGemCost != null)
+            {
+                foreach (GemType item in mod.addGemCost)
+                {
+                    if (!gems.Contains(item))
+                        gems.Add(item);
+                }
+            }
+            foreach (GemType gem in mod.RemovedGemsCosts())
+            {
+                if (gems.Contains(gem))
+                    gems.Remove(gem);
+            }
+        }
+        return gems;
+    }
+
     /// <summary>
     /// ChangeCardCostGetter patches EnergyCost so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
@@ -131,7 +156,7 @@ internal static class ChangeCardCostGetter
     public static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
     {
         PlayableCard card = __instance.GetPlayableCard();
-        __result = card?.GemsCost() ?? CostProperties.OriginalGemsCost(__instance);
+        __result = card?.GemsCost() ?? CostProperties.ImprovedGemsCost(__instance);
         return false;
     }
     

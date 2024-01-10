@@ -36,6 +36,9 @@ public class SentryInteractionFixes
     // Fixes Sentry not triggering OnCardGettingAttacked and freezing
     public static IEnumerator NewFireAtOpposingSlot(Sentry instance, PlayableCard otherCard)
     {
+        if (instance.Card == null)
+            yield break;
+
         // Copy otherCard so we can change it later
         PlayableCard opposingCard = otherCard;
 

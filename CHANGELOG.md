@@ -1,9 +1,29 @@
 <details>
 <summary>View Changelog</summary>
 
-# 2.18.8
+# 2.19.0
+- Fixed decals added via temporary mods not being cleared from the base card
+- Fixed merged and totem sigils being uninteractable if the icon has been flipped vertically
+- Fixed pixel Shapeshifter patch not correctly patching DisguiseOutOfBattle
+- Fixed temporary decal mods not being removed in Act 1
+- Fixed softlock in Part 1 during the boon-gaining sequence
+- Fixed all copies of a custom challenge becoming activated/deactivated when the page is reloaded
+- Fixed Sentry ability softlocking when the base card dies before all Sentry stacks are triggered
+- Fixed softlock when talking card dialogue cannot be parsed in certain conditions
+- Added public method GetIjiraqDisguises to pixel Shapeshifter patch for easier modification of Shapeshifter for modders
 - Added variant of PeltManager.New
-- PeltManager.New (both versions) now throws an error when getCardChoices is null
+- Added variant of PlayableCard.AllAbilities that accounts for negated abilities in TemporaryMods
+- Added support for creating custom card costs using new class CustomCardCost; see wiki for more information
+- Added ability to remove gems costs from a card using CardModificationInfos
+- Added a number of extension methods for CardModificationInfos (RemoveGemsCost, SetCustomCostId, etc)
+- Added helpers for getting TextBox.Style from CardInfo.temple or the chosen ambition
+- Rewrote CardModificationInfoManager's id system for setting persistent extended properties in a CardModificationInfo's singletonId
+- Rewrote pixel Shapeshifter patch to RevealInBattle to hopefully prevent errors in Act 1
+- PeltManager.New now throws an error when getCardChoices is null
+- Changed LogLevel of dialogue event insertion message from Info to Debug
+- API death cards now use the clean singleton id when creating the death card info mod
+- Temporary decal mods are now removed from Act 2 cards instead of being cleared
+- Opponent snipers will now target a random slot if there are no opposing cards (previously only targeted the opposing slot)
 
 # 2.18.7
 - Fixed softlock during Act 1's final boss cabin/boons sequence 

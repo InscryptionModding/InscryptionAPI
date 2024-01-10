@@ -1,6 +1,7 @@
 using DiskCardGame;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -106,25 +107,42 @@ public class AscensionChallengePaginator : MonoBehaviour
         // if page index corresponds to an index in challengeObjects
         if (page >= 0 && page < challengeObjectsForPages.Count)
         {
-            // for every list of objects
+            List<AscensionChallenge> activeChallenges = new(AscensionSaveData.Data.activeChallenges);
             for (int i = 0; i < challengeObjectsForPages.Count; i++)
             {
-                List<GameObject> value = challengeObjectsForPages[i];
-                value.RemoveAll(x => x == null); // remove null game objects
+                List<GameObject> iconsForPage = challengeObjectsForPages[i];
+                iconsForPage.RemoveAll(x => x == null);
+
+                // if these are the icons for the current page
                 if (i == page)
                 {
-                    value.ForEach(x =>
+                    List<AscensionIconInteractable> interactables = iconsForPage.ConvertAll(x => x.GetComponent<AscensionIconInteractable>());
+                    bool hasActivated = interactables.Exists(x => x != null && x.activatedRenderer.enabled);
+                    for (int j = 0; j < iconsForPage.Count; j++)
                     {
-                        AscensionChallenge currentChallenge = x.GetComponentInChildren<AscensionIconInteractable>()?.Info?.challengeType ?? AscensionChallenge.FinalBoss;
-                        x.SetActive(
-                            currentChallenge != AscensionChallenge.FinalBoss ||
-                            AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(AscensionChallenge.FinalBoss, AscensionSaveData.Data.challengeLevel));
-                        x.GetComponent<AscensionIconInteractable>()?.ShowActivated(AscensionSaveData.Data.activeChallenges.Contains(currentChallenge));
-                    });
+                        AscensionIconInteractable interactable = interactables[j];
+                        if (interactable != null)
+                        {
+                            AscensionChallenge currentChallenge = interactable.Info?.challengeType ?? AscensionChallenge.FinalBoss;
+                            iconsForPage[j].SetActive(currentChallenge != AscensionChallenge.FinalBoss ||
+                                AscensionUnlockSchedule.ChallengeIsUnlockedForLevel(currentChallenge, AscensionSaveData.Data.challengeLevel));
+
+                            // if there are activated icons, don't do anything
+                            if (!hasActivated && activeChallenges.Contains(currentChallenge))
+                            {
+                                interactable.ShowActivated(true);
+                                activeChallenges.Remove(currentChallenge);
+                            }
+                        }
+                        else
+                        {
+                            iconsForPage[j].SetActive(false);
+                        }
+                    }
                 }
                 else
                 {
-                    value.ForEach(x => x.SetActive(false));
+                    iconsForPage.ForEach(x => x.SetActive(false));
                 }
             }
         }
@@ -135,10 +153,12 @@ public class AscensionChallengePaginator : MonoBehaviour
     {
         Initialize(GetComponent<AscensionChallengeScreen>(), GetComponent<AscensionMenuScreenTransition>());
         ChallengeManager.SyncChallengeList();
+
         if (rightArrow)
             Destroy(rightArrow);
         if (leftArrow)
             Destroy(leftArrow);
+
         for (int i = 1; i < challengeObjectsForPages.Count; i++)
         {
             challengeObjectsForPages[i].ForEach(DestroyImmediate);

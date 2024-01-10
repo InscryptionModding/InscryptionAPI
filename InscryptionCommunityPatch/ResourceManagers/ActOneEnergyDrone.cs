@@ -173,7 +173,13 @@ public static class EnergyDrone
 
         return false;
     }
-    
+    [HarmonyPrefix, HarmonyPatch(typeof(ResourceDrone), nameof(ResourceDrone.UpdateCellAndGemColors))]
+    private static bool DisableUpdateWhenNull()
+    {
+        if (ResourcesManager.m_Instance == null)
+            return false;
+        return true;
+    }
     [HarmonyPatch(typeof(Part1ResourcesManager), nameof(Part1ResourcesManager.CleanUp))]
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
