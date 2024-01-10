@@ -28,7 +28,7 @@ internal class BoxColliderNegativeScalingLogSpamFix
 
         MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();
         MeshFilter filter = __instance.gameObject.GetComponent<MeshFilter>();
-        if (collider.SafeIsUnityNull() && !filter.SafeIsUnityNull())
+        if (collider == null && filter != null)
         {
             UnityObject.Destroy(__instance.GetComponent<BoxCollider>());
 
@@ -52,11 +52,11 @@ internal class BoxColliderNegativeScalingLogSpamFix
         // This was the missing piece.
         // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.
         // Adjusting the y-position here to be higher up allows the icon to be right-clickable again.
-        collider.transform.position += new Vector3(0, 0.1f, 0);
+        collider.transform.localPosition = new Vector3(collider.transform.localPosition.x, collider.transform.localPosition.y, -0.1f);
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.PositionModIcons))]
-    private static void ReadjustFlippedMergePosition(
+    private static void ReadjustFlippedMergePosition(CardAbilityIcons __instance,
     List<Ability> defaultAbilities,
     List<Ability> mergeAbilities, List<AbilityIconInteractable> mergeIcons,
     List<Ability> totemAbilities, List<AbilityIconInteractable> totemIcons
@@ -68,14 +68,18 @@ internal class BoxColliderNegativeScalingLogSpamFix
         // fixes flipped merged/totem sigils being uninteractable if they're placed in the centre of the card
         if (mergeAbilities.Count == 1 && mergeIcons.Count > 0)
         {
-            if (!mergeIcons[0].transform.GetComponent<MeshCollider>().SafeIsUnityNull())
-                mergeIcons[0].transform.position += new Vector3(0f, 0.1f, 0f);
+            if (mergeIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(mergeAbilities[0]).flipYIfOpponent)
+            {
+                mergeIcons[0].transform.localPosition = new Vector3(__instance.DefaultIconPosition.x, __instance.DefaultIconPosition.y, -0.1f);
+            }
         }
 
         else if (totemAbilities.Count == 1 && totemIcons.Count > 0)
         {
-            if (!totemIcons[0].transform.GetComponent<MeshCollider>().SafeIsUnityNull())
-                totemIcons[0].transform.position += new Vector3(0f, 0.1f, 0f);
+            if (totemIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(mergeAbilities[0]).flipYIfOpponent)
+            {
+                totemIcons[0].transform.localPosition = new Vector3(__instance.DefaultIconPosition.x, __instance.DefaultIconPosition.y, -0.1f);
+            }
         }
     }
 }
