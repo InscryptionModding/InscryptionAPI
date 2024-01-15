@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.1
+- Fixed API not retrieving pixel card costs above 5
+
 # 2.19.0
 - Fixed decals added via temporary mods not being cleared from the base card
 - Fixed merged and totem sigils being uninteractable if the icon has been flipped vertically

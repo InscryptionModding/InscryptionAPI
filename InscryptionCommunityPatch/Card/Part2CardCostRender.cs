@@ -99,7 +99,7 @@ public static class Part2CardCostRender
         else
         {
             list.Add(artCost);
-            list.Add(CardCostRender.GetTextureByName("pixel_L_{cardCost}"));
+            list.Add(CardCostRender.GetTextureByName($"pixel_L_{cardCost}"));
         }
 
         int xOffset = !RightAct2Cost ? 0 : cardCost >= 10 ? 30 - 20 - artCost.width : cardCost <= 4 ? 30 - artCost.width * cardCost : 30 - 14 - artCost.width;
