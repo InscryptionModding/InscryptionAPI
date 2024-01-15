@@ -97,7 +97,6 @@ public static class AbilityManager
             BaseRulebookDescription = info.rulebookDescription;
 
             ReverseMapper.Add(info, this);
-
             TypeManager.Add(id.ToString(), behaviour);
         }
 

@@ -1,6 +1,8 @@
 using DiskCardGame;
+using InscryptionAPI.CardCosts;
 using Sirenix.Utilities;
-
+using UnityEngine;
+using static InscryptionAPI.Card.CardModificationInfoManager;
 namespace InscryptionAPI.Card;
 
 public static class CardModificationInfoExtensions
@@ -85,156 +87,206 @@ public static class CardModificationInfoExtensions
     #endregion
 
     /// <summary>
-    /// Used by the PixelCardManager to remove temporary decal mods, since it's not done automatically.
+    /// Used by the API to remove temporary decal mods, since it's not done automatically.
     /// </summary>
     public static void SetTemporaryDecal(this CardModificationInfo mod) => mod.SetExtendedProperty("API:TemporaryDecal", true);
     public static bool IsTemporaryDecal(this CardModificationInfo mod) => mod.GetExtendedPropertyAsBool("API:TemporaryDecal") ?? false;
 
     #region Singleton ID
-    public static bool HasCustomCostId(this CardModificationInfo mod, string costName) => mod.singletonId.HasCustomCostId(costName);
-    public static bool HasCustomPropertyId(this CardModificationInfo mod, string propertyName) => mod.singletonId.HasCustomPropertyId(propertyName);
 
-    public static bool HasCustomCostId(this string singletonId, string costName) => singletonId.HasCustomCostsId() && singletonId.Contains(costName);
-    public static bool HasCustomPropertyId(this string singletonId, string propertyName) => singletonId.HasCustomPropertiesId() && singletonId.Contains(propertyName);
+    /// <summary>
+    /// Removes the custom properties field from a CardModificationInfo's singletonId.
+    /// </summary>
+    /// <param name="mod">The CardModificationInfo object whose properties we want to clear.</param>
+    /// <returns>The same CardModificationInfo so a chain can continue.</returns>
+    public static CardModificationInfo ClearCustomPropertiesId(this CardModificationInfo mod)
+    {
+        string properties = GetCustomPropertiesIdString(mod);
+        if (properties != null)
+            mod.singletonId = mod.singletonId.Replace(properties, "");
+        
+        return mod;
+    }
+    public static CardModificationInfo ClearCustomCostsId(this CardModificationInfo mod)
+    {
+        string costs = GetCustomCostsIdString(mod);
+        if (costs != null)
+            mod.singletonId = mod.singletonId.Replace(costs, "");
 
-    public static bool HasCustomCostsId(this CardModificationInfo mod) => mod.singletonId.HasCustomCostsId();
-    public static bool HasCustomPropertiesId(this CardModificationInfo mod) => mod.singletonId.HasCustomPropertiesId();
+        return mod;
+    }
 
-    public static bool HasCustomCostsId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains("[CustomCosts:");
-    public static bool HasCustomPropertiesId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains("[Properties:");
+    #region Properties
+    public static bool HasCustomPropertyId(this CardModificationInfo mod, string propertyName) => HasCustomPropertiesId(mod.singletonId) && mod.singletonId.Contains(propertyName);
+    public static bool HasCustomPropertyId(this string singletonId, string propertyName) => HasCustomPropertiesId(singletonId) && singletonId.Contains(propertyName);
+    public static bool HasCustomPropertiesId(this CardModificationInfo mod) => !mod.singletonId.IsNullOrWhitespace() && mod.singletonId.Contains(PROPERTIES);
+    public static bool HasCustomPropertiesId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains(PROPERTIES);
+    public static CardModificationInfo SetPropertiesId(this CardModificationInfo mod, string propertyName, object value)
+    {
+        string valuePair = $"{propertyName},{value}";
+        if (mod.HasCustomPropertiesId())
+        {
+            string newProperties;
+            string oldProperties = GetCustomPropertiesIdString(mod); // get the current string of properties
+            
+            // if the property is already set
+            if (oldProperties.Contains(propertyName))
+            {
+                string oldValue = mod.GetCustomPropertyId(propertyName);
+                string currentPair = GetIdKeyPair(oldProperties, propertyName);
+
+                newProperties = oldProperties.Replace(currentPair, currentPair.Replace(oldValue, value.ToString()));
+            }
+            else
+            {
+                newProperties = oldProperties.Remove(oldProperties.Length - 1) + ";" + valuePair + "]"; // add the new value pair to the end
+            }
+
+            mod.singletonId = mod.singletonId.Replace(oldProperties, newProperties);
+        }
+        else if (mod.singletonId.IsNullOrWhitespace())
+        {
+            mod.singletonId = PROPERTIES + valuePair + "]";
+        }
+        else
+        {
+            mod.singletonId += PROPERTIES + valuePair + "]";
+        }
+        return mod;
+    }
+
+    public static bool HasCustomProperty(this CardModificationInfo mod, string propertyName) => mod.GetCustomProperty(propertyName) != null;
+    public static string GetCustomProperty(this CardModificationInfo mod, string propertyName)
+    {
+        return mod.GetExtendedProperty(propertyName) ?? mod.GetCustomPropertyId(propertyName);
+    }
+    public static string GetCustomPropertyId(this CardModificationInfo mod, string propertyName)
+    {
+        if (!mod.HasCustomPropertyId(propertyName))
+            return null;
+
+        string currentProperties = GetCustomPropertiesIdString(mod);
+        int costIdx = currentProperties.IndexOf(propertyName + ",");
+        if (costIdx == -1)
+            return null;
+
+        string pairString = currentProperties.Substring(costIdx);
+        int valueIdx = pairString.IndexOf(';');
+        if (valueIdx == -1) // if this is the last valuePair in the string
+            valueIdx = pairString.IndexOf(']');
+
+        return pairString.Substring(valueIdx).Replace(propertyName + ",", "");
+    }
+
+    #endregion
+
+    #region CustomCosts
+    public static bool HasCustomCostId(this CardModificationInfo mod, string costName) => HasCustomCostsId(mod.singletonId) && mod.singletonId.Contains(costName);
+    public static bool HasCustomCostId(this string singletonId, string costName) => HasCustomCostsId(singletonId) && singletonId.Contains(costName);
+    public static bool HasCustomCostsId(this CardModificationInfo mod) => !mod.singletonId.IsNullOrWhitespace() && mod.singletonId.Contains(CUSTOM_COSTS);
+    public static bool HasCustomCostsId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains(CUSTOM_COSTS);
 
     public static CardModificationInfo SetCustomCostId(this CardModificationInfo mod, string costName, object value)
     {
-        string valuePair = costName + "," + value;
-        if (mod.singletonId.IsNullOrWhitespace())
+        string valuePair = $"{costName},{value}";
+        if (mod.HasCustomCostsId())
         {
-            mod.singletonId = $"[CustomCosts:{valuePair}]";
-            return mod;
-        }
-        if (!mod.HasCustomCostsId())
-        {
-            mod.singletonId += $"[CustomCosts:{valuePair}]";
-            return mod;
-        }
-        int startOf = mod.singletonId.IndexOf("[CustomCosts:");
-        string currentCosts = mod.singletonId.Substring(startOf);
-        int endOf = currentCosts.IndexOf("]");
-        currentCosts = currentCosts.Substring(0, endOf + 1);
-        if (mod.HasCustomCostId(costName)) // update cost value
-        {
-            int costIdx = currentCosts.IndexOf(costName + ",");
-            int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
-            if (valueIdx == -1)
-                valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
+            string newCosts;
+            string oldCosts = GetCustomCostsIdString(mod); // get the current string of properties
+            if (oldCosts.Contains(costName))
+            {
+                string oldValue = mod.GetCustomCostId(costName);
+                string currentPair = GetIdKeyPair(oldCosts, costName);
 
-            string valueToReplace = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
-            mod.singletonId.Replace(currentCosts, currentCosts.Replace(valueToReplace, value.ToString()));
-            return mod;
-        }
-        currentCosts = currentCosts.Replace("]", "");
-        string newCosts = $"{currentCosts};{valuePair}]";
-        mod.singletonId.Replace(currentCosts, newCosts);
+                newCosts = oldCosts.Replace(currentPair, currentPair.Replace(oldValue, value.ToString()));
+            }
+            else
+            {
+                newCosts = oldCosts.Remove(oldCosts.Length - 1) + ";" + valuePair + "]"; // add the new value pair to the end
+            }
 
+            mod.singletonId = mod.singletonId.Replace(oldCosts, newCosts);
+        }
+        else if (mod.singletonId.IsNullOrWhitespace())
+        {
+            mod.singletonId = CUSTOM_COSTS + valuePair + "]";
+        }
+        else
+        {
+            mod.singletonId += CUSTOM_COSTS + valuePair + "]";
+        }
         return mod;
+    }
+
+    public static bool HasCustomCost(this CardModificationInfo mod, string costName) => (mod.GetExtendedProperty(costName) ?? mod.GetCustomCostId(costName)) != null;
+    public static int GetCustomCost(this CardModificationInfo mod, string costName)
+    {
+        return mod.GetExtendedPropertyAsInt(costName) ?? mod.GetCustomCostIdValue(costName);
     }
     public static string GetCustomCostId(this CardModificationInfo mod, string costName)
     {
         if (!mod.HasCustomCostId(costName))
             return null;
 
-        int startOf = mod.singletonId.IndexOf("[CustomCosts:");
-        string currentCosts = mod.singletonId.Substring(startOf);
-        int endOf = currentCosts.IndexOf("]");
-        currentCosts = currentCosts.Substring(0, endOf + 1);
-
+        string currentCosts = GetCustomCostsIdString(mod);
         int costIdx = currentCosts.IndexOf(costName + ",");
-        int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
-        if (valueIdx == -1)
-            valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
-
-        string value = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
-        return value;
-    }
-    public static CardModificationInfo SetPropertiesId(this CardModificationInfo mod, string propertyName, object value)
-    {
-        string valuePair = propertyName + "," + value;
-        if (mod.singletonId.IsNullOrWhitespace())
-        {
-            mod.singletonId = $"[Properties:{valuePair}]";
-            return mod;
-        }
-        if (!mod.HasCustomPropertiesId())
-        {
-            mod.singletonId += $"[Properties:{valuePair}]";
-            return mod;
-        }
-        int startOf = mod.singletonId.IndexOf("[Properties:");
-        string currentCosts = mod.singletonId.Substring(startOf);
-        int endOf = currentCosts.IndexOf("]");
-        currentCosts = currentCosts.Substring(0, endOf + 1);
-        if (mod.HasCustomPropertyId(propertyName)) // update property value
-        {
-            int costIdx = currentCosts.IndexOf(propertyName + ",");
-            int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
-            if (valueIdx == -1)
-                valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
-
-            string valueToReplace = currentCosts.Substring(costIdx, valueIdx).Replace(propertyName + ",", "");
-            mod.singletonId.Replace(currentCosts, currentCosts.Replace(valueToReplace, value.ToString()));
-            return mod;
-        }
-        currentCosts = currentCosts.Replace("]", "");
-        string newCosts = $"{currentCosts};{valuePair}]";
-        mod.singletonId.Replace(currentCosts, newCosts);
-
-        return mod;
-    }
-    public static string GetCustomPropertyId(this CardModificationInfo mod, string costName)
-    {
-        if (!mod.HasCustomPropertyId(costName))
+        if (costIdx == -1)
             return null;
 
-        int startOf = mod.singletonId.IndexOf("[Properties:");
-        string currentCosts = mod.singletonId.Substring(startOf);
-        int endOf = currentCosts.IndexOf("]");
-        currentCosts = currentCosts.Substring(0, endOf + 1);
+        string pairString = currentCosts.Substring(costIdx);
+        
+        int valueIdx = pairString.IndexOf(';');
+        if (valueIdx == -1) // if this is the last valuePair in the string
+            valueIdx = pairString.IndexOf(']');
 
-        int costIdx = currentCosts.IndexOf(costName + ",");
-        int valueIdx = currentCosts.Substring(costIdx).IndexOf(';'); // assume there are other costs
-        if (valueIdx == -1)
-            valueIdx = currentCosts.Substring(costIdx).IndexOf(']'); // this is the only cost
-
-        string value = currentCosts.Substring(costIdx, valueIdx).Replace(costName + ",", "");
-        return value;
+        return pairString.Substring(0, valueIdx).Replace(costName + ",", "");
     }
+    public static int GetCustomCostIdValue(this CardModificationInfo mod, string costName)
+    {
+        string valueStr = mod.GetCustomCostId(costName);
+        if (valueStr == null)
+            return 0;
+
+        return int.TryParse(valueStr, out int result) ? result : 0;
+    }
+    public static List<CardCostManager.FullCardCost> GetCustomCostsFromMod(this CardModificationInfo mod)
+    {
+        List<CardCostManager.FullCardCost> costs = new();
+        foreach (string key in mod.GetCardModExtensionTable().Keys)
+        {
+            if (CardCostManager.AllCustomCosts.Exists(x => x.CostName == key))
+                costs.Add(CardCostManager.AllCustomCosts.Find(x => x.CostName == key));
+        }
+        if (mod.HasCustomPropertiesId())
+        {
+            List<string> modCosts = new();
+            CardModificationInfoManager.GetCustomCostsFromId(mod.singletonId).ForEach(x => modCosts.Add(x.Split(',')[0]));
+            costs.AddRange(CardCostManager.AllCustomCosts.Where(x => !costs.Contains(x) && modCosts.Contains(x.CostName)));
+        }
+        return costs;
+    }
+
+    #endregion
 
     #region ID Getters
     public static string CleanId(this CardModificationInfo mod) => mod.IdWithoutCosts().IdWithoutProperties();
-    public static string IdWithoutCosts(this CardModificationInfo mod) => mod.singletonId.IdWithoutCosts();
     public static string IdWithoutProperties(this CardModificationInfo mod) => mod.singletonId.IdWithoutProperties();
-    public static string IdWithoutCosts(this string singletonId)
-    {
-        if (!singletonId.HasCustomCostsId())
-            return singletonId;
-
-        int start = singletonId.IndexOf("[CustomCosts:");
-        string singleton = singletonId.Substring(start);
-        int end = singleton.IndexOf("]");
-        singleton = singleton.Substring(0, end + 1).Replace(singleton, "");
-
-        return singleton;
-    }
     public static string IdWithoutProperties(this string singletonId)
     {
         if (!singletonId.HasCustomPropertiesId())
             return singletonId;
 
-        int start = singletonId.IndexOf("[Properties:");
-        string singleton = singletonId.Substring(start);
-        int end = singleton.IndexOf("]");
-        singleton = singleton.Substring(0, end + 1).Replace(singleton, "");
+        string properties = GetCustomPropertiesIdString(singletonId);
+        return singletonId.Replace(properties, "");
+    }
+    public static string IdWithoutCosts(this CardModificationInfo mod) => mod.singletonId.IdWithoutCosts();
+    public static string IdWithoutCosts(this string singletonId)
+    {
+        if (!singletonId.HasCustomCostsId())
+            return singletonId;
 
-        return singleton;
+        string costs = GetCustomCostsIdString(singletonId);
+        return singletonId.Replace(costs, "");
     }
 
     #endregion
@@ -306,6 +358,78 @@ public static class CardModificationInfoExtensions
     {
         mod.GetCardModExtensionTable().TryGetValue(propertyName, out var str);
         return bool.TryParse(str, out var ret) ? ret : null;
+    }
+    #endregion
+
+    #region RemoveGems
+    public static void ClearAllRemovedGemsCosts(this CardModificationInfo mod)
+    {
+        if (mod.HasRemovedGreenGemCost())
+            mod.RemoveGreenGemCost(false);
+
+        if (mod.HasRemovedOrangeGemCost())
+            mod.RemoveOrangeGemCost(false);
+
+        if (mod.HasRemoveBlueGemCost())
+            mod.RemoveBlueGemCost(false);
+    }
+    public static List<GemType> RemovedGemsCosts(this CardModificationInfo mod)
+    {
+        List<GemType> gems = new();
+        if (mod.HasRemovedGreenGemCost())
+            gems.Add(GemType.Green);
+
+        if (mod.HasRemovedOrangeGemCost())
+            gems.Add(GemType.Orange);
+
+        if (mod.HasRemoveBlueGemCost())
+            gems.Add(GemType.Blue);
+
+        return gems;
+    }
+    public static CardModificationInfo RemoveGemsCost(this CardModificationInfo mod, params GemType[] gemTypes)
+    {
+        if (gemTypes.Contains(GemType.Green))
+            mod.RemoveGreenGemCost(true);
+
+        if (gemTypes.Contains(GemType.Orange))
+            mod.RemoveOrangeGemCost(true);
+
+        if (gemTypes.Contains(GemType.Blue))
+            mod.RemoveBlueGemCost(true);
+
+        return mod;
+    }
+    public static CardModificationInfo ClearRemovedGemsCost(this CardModificationInfo mod, params GemType[] gemTypes)
+    {
+        if (gemTypes.Contains(GemType.Green))
+            mod.RemoveGreenGemCost(false);
+
+        if (gemTypes.Contains(GemType.Orange))
+            mod.RemoveOrangeGemCost(false);
+
+        if (gemTypes.Contains(GemType.Blue))
+            mod.RemoveBlueGemCost(false);
+
+        return mod;
+    }
+    public static CardModificationInfo RemoveGreenGemCost(this CardModificationInfo mod, bool remove) => mod.SetExtendedProperty("RemoveGreenGem", remove, true);
+    public static CardModificationInfo RemoveOrangeGemCost(this CardModificationInfo mod, bool remove) => mod.SetExtendedProperty("RemoveOrangeGem", remove, true);
+    public static CardModificationInfo RemoveBlueGemCost(this CardModificationInfo mod, bool remove) => mod.SetExtendedProperty("RemoveBlueGem", remove, true);
+    public static bool HasRemovedGreenGemCost(this CardModificationInfo mod) => mod.GetExtendedPropertyAsBool("RemoveGreenGem") ?? false;
+    public static bool HasRemovedOrangeGemCost(this CardModificationInfo mod) => mod.GetExtendedPropertyAsBool("RemoveOrangeGem") ?? false;
+    public static bool HasRemoveBlueGemCost(this CardModificationInfo mod) => mod.GetExtendedPropertyAsBool("RemoveBlueGem") ?? false;
+
+    public static bool HasRemovedAnyGemCost(this CardModificationInfo mod) => mod.HasRemovedGreenGemCost() || mod.HasRemovedOrangeGemCost() || mod.HasRemoveBlueGemCost();
+    public static bool HasRemovedGemCost(this CardModificationInfo mod, GemType gemType)
+    {
+        return gemType switch
+        {
+            GemType.Green => mod.HasRemovedGreenGemCost(),
+            GemType.Orange => mod.HasRemovedOrangeGemCost(),
+            GemType.Blue => mod.HasRemoveBlueGemCost(),
+            _ => false,
+        };
     }
     #endregion
 }

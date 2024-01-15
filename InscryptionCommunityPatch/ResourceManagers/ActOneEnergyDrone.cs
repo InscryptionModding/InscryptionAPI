@@ -15,9 +15,9 @@ public static class EnergyDrone
     {
         public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
         public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
-        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
         public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
+        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
+        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
     }
 
     public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
@@ -173,7 +173,13 @@ public static class EnergyDrone
 
         return false;
     }
-    
+    [HarmonyPrefix, HarmonyPatch(typeof(ResourceDrone), nameof(ResourceDrone.UpdateCellAndGemColors))]
+    private static bool DisableUpdateWhenNull()
+    {
+        if (ResourcesManager.m_Instance == null)
+            return false;
+        return true;
+    }
     [HarmonyPatch(typeof(Part1ResourcesManager), nameof(Part1ResourcesManager.CleanUp))]
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)

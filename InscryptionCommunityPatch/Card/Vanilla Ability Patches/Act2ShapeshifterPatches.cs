@@ -7,6 +7,7 @@ using InscryptionAPI.Helpers;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
+using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -15,63 +16,50 @@ namespace InscryptionCommunityPatch.Card;
 internal static class Act2ShapeshifterPatches
 {
 
-    [HarmonyPatch(typeof(Shapeshifter), nameof(Shapeshifter.RevealInBattle), MethodType.Enumerator)]
-    [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> PixelDialogueFix(IEnumerable<CodeInstruction> instructions)
+    [HarmonyPostfix, HarmonyPatch(typeof(Shapeshifter), nameof(Shapeshifter.RevealInBattle))]
+    private static IEnumerator Act2RevealInBattle(IEnumerator result, Shapeshifter __instance)
     {
-        List<CodeInstruction> codes = new(instructions);
-
-        // we want to slowly narrow our search until we find exactly where we want to insert our code
-        for (int i = 0; i < codes.Count; i++)
+        if (SaveManager.SaveFile.IsPart2)
         {
-            if (codes[i].opcode == OpCodes.Ldstr && codes[i].operand.ToString() == "IjiraqRevealed" && codes[i - 1].opcode == OpCodes.Call)
+            yield return new WaitForSeconds(0.25f);
+            AudioController.Instance.PlaySound2D("trial_cave_outro#1", MixerGroup.TableObjectsSFX);
+            yield return __instance.PlayableCard.TransformIntoCard(CardLoader.GetCardByName("Ijiraq"), null, __instance.PlayableCard.ClearAppearanceBehaviours);
+            if (!DialogueEventsData.EventIsPlayed("IjiraqRevealed"))
             {
-                i--;
-                codes.RemoveRange(i, 6);
-
-                MethodBase customMethod = AccessTools.Method(typeof(Act2ShapeshifterPatches), nameof(Act2ShapeshifterPatches.Act2Dialogue));
-                codes[i].operand = customMethod;
-                break;
+                yield return new WaitForSeconds(0.5f);
+                yield return DialogueManager.PlayDialogueEventSafe("IjiraqRevealed", TextDisplayer.MessageAdvanceMode.Input);
             }
         }
-
-        return codes;
+        else
+        {
+            //PatchPlugin.Logger.LogInfo($"RevealInBattle1: Shapeshifter:{__instance != null} Card:{__instance.PlayableCard != null} Audio:{AudioController.Instance != null} Text:{TextDisplayer.Instance != null}");
+            yield return result;
+            //PatchPlugin.Logger.LogInfo($"RevealInBattle2: Shapeshifter:{__instance != null} Card:{__instance.PlayableCard != null} Audio:{AudioController.Instance != null} Text:{TextDisplayer.Instance != null}");
+        }
     }
-
-    private static IEnumerator Act2Dialogue() => DialogueManager.PlayDialogueEventSafe("IjiraqRevealed", TextDisplayer.MessageAdvanceMode.Input);
 
     [HarmonyPatch(typeof(Shapeshifter), nameof(Shapeshifter.DisguiseOutOfBattle))]
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> PixelOutsideFix(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new(instructions);
+        MethodBase customMethod = AccessTools.Method(typeof(Act2ShapeshifterPatches), nameof(Act2ShapeshifterPatches.GetIjiraqDisguises));
 
-        // we want to slowly narrow our search until we find exactly where we want to insert our code
-        for (int i = 0; i < codes.Count; i++)
-        {
-            if (codes[i].opcode == OpCodes.Ldstr && codes[i].operand.ToString() == "IjiraqRevealed" && codes[i - 1].opcode == OpCodes.Call)
-            {
-                i--;
-                codes.RemoveRange(i, 6);
-
-                MethodBase customMethod = AccessTools.Method(typeof(Act2ShapeshifterPatches), nameof(Act2ShapeshifterPatches.GetPixelCards));
-                codes[i].operand = customMethod;
-                break;
-            }
-        }
-
+        int endIndex = codes.FindIndex(x => x.opcode == OpCodes.Stloc_1);
+        codes.RemoveRange(0, endIndex);
+        codes.Insert(0, new(OpCodes.Callvirt, customMethod));
+        //PatchPlugin.Logger.LogInfo($"Inserted GetIjiraqDisguises");
         return codes;
     }
 
-    private static List<CardInfo> GetPixelCards()
+    public static List<CardInfo> GetIjiraqDisguises()
     {
         if (SaveManager.SaveFile.IsPart2)
         {
+            PatchPlugin.Logger.LogInfo($"GetIjiraqDisguises: Act2:{SaveData.Data.collection.CardInfos.Count}");
             return new(SaveData.Data.collection.CardInfos);
         }
-        else
-        {
-            return new(RunState.Run.playerDeck.Cards);
-        }
+        PatchPlugin.Logger.LogInfo($"GetIjiraqDisguises: DeckCount:{RunState.Run.playerDeck.Cards.Count}");
+        return new(RunState.Run.playerDeck.Cards);
     }
 }

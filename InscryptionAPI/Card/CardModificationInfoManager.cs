@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.CardCosts;
 using Sirenix.Serialization.Utilities;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -9,8 +10,10 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public static class CardModificationInfoManager
 {
-    // Needs to be defined first so the implicit static constructor works correctly
-    private class CardModExt
+    internal const string PROPERTIES = "[Properties:";
+    internal const string CUSTOM_COSTS = "[CustomCosts:";
+
+    private class CardModExt // Needs to be defined first so the implicit static constructor works correctly
     {
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
@@ -59,45 +62,86 @@ public static class CardModificationInfoManager
                 foreach (string pair in GetCustomCostsFromId(mod.singletonId))
                 {
                     string[] splitCost = pair.Split(',');
-                    card.SetExtendedProperty(splitCost[0], splitCost[1]);
+                    mod.SetExtendedProperty(splitCost[0], splitCost[1]);
                 }
             }
         }
     }
+    public static List<string> GetCustomPropertiesFromId(string singletonId)
+    {
+        List<string> propertiesList = new();
+        string customProperties = GetCustomPropertiesIdString(singletonId);
+        if (customProperties != null)
+        {
+            customProperties = customProperties.Replace(PROPERTIES, "");
+            if (customProperties.EndsWith("]"))
+            {
+                customProperties = customProperties.Remove(customProperties.Length - 1);
+                customProperties.Split(';').ForEach(propertiesList.Add);
+            }
+        }
+        return propertiesList;
+    }
     public static List<string> GetCustomCostsFromId(string singletonId)
     {
         List<string> costList = new();
-        if (singletonId.Contains("[CustomCosts:"))
-        {
-            int startIndex = singletonId.IndexOf("[CustomCosts:");
-            string customCosts = singletonId.Substring(startIndex).Replace("[CustomCosts:", "");
-            if (customCosts.Contains("]"))
-            {
-                int endIndex = customCosts.IndexOf("]");
-                customCosts = customCosts.Substring(0, endIndex).Replace("]", "");
+        string customCosts = GetCustomCostsIdString(singletonId);
 
-                customCosts.Split(';').ForEach(x => costList.Add(x));
+        if (customCosts != null)
+        {
+            customCosts = customCosts.Replace(CUSTOM_COSTS, "");
+            if (customCosts.EndsWith("]"))
+            {
+                customCosts = customCosts.Remove(customCosts.Length - 1);
+                customCosts.Split(';').ForEach(costList.Add);
             }
         }
         return costList;
     }
-    public static List<string> GetCustomPropertiesFromId(string singletonId)
+
+    public static string GetCustomPropertiesIdString(CardModificationInfo mod) => mod.HasCustomPropertiesId() ? GetCustomPropertiesIdString(mod.singletonId) : null;
+    public static string GetCustomPropertiesIdString(string singletonId)
     {
-        List<string> costList = new();
-        if (singletonId.Contains("[Properties:"))
-        {
-            int startIndex = singletonId.IndexOf("[Properties:");
-            string customCosts = singletonId.Substring(startIndex).Replace("[Properties:", "");
-            if (customCosts.Contains("]"))
-            {
-                int endIndex = customCosts.IndexOf("]");
-                customCosts = customCosts.Substring(0, endIndex).Replace("]", "");
+        if (!singletonId.HasCustomPropertiesId())
+            return null;
 
-                customCosts.Split(';').ForEach(x => costList.Add(x));
-            }
-        }
-        return costList;
+        int startOf = singletonId.IndexOf(PROPERTIES);
+        string propertiesString = singletonId.Substring(startOf);
+        int endOf = propertiesString.IndexOf("]");
+
+        return propertiesString.Substring(0, endOf + 1);
     }
+
+    public static string GetCustomCostsIdString(CardModificationInfo mod) => mod.HasCustomCostsId() ? GetCustomCostsIdString(mod.singletonId) : null;
+    public static string GetCustomCostsIdString(string singletonId)
+    {
+        if (!singletonId.HasCustomCostsId())
+            return null;
+
+        int startOf = singletonId.IndexOf(CUSTOM_COSTS);
+        string costsString = singletonId.Substring(startOf);
+        int endOf = costsString.IndexOf("]");
+
+        return costsString.Substring(0, endOf + 1);
+    }
+
+    /// <summary>
+    /// Retrieves the property name and associated value from the provided 'properties' string.
+    /// </summary>
+    /// <param name="properties">A string representing all properties.</param>
+    /// <param name="key">The property name to search for.</param>
+    /// <returns>A string containing the key and the value separated by a comma like so: 'key,value'</returns>
+    public static string GetIdKeyPair(string properties, string key)
+    {
+        string retval = properties.Substring(properties.IndexOf(key + ","));
+        int endIndex = retval.IndexOf(";");
+        if (endIndex == -1)
+            endIndex = retval.IndexOf(']');
+
+        return retval.Substring(0, endIndex);
+    }
+
+    #region Patches
     [HarmonyPatch(typeof(CardModificationInfo), nameof(CardModificationInfo.Clone))]
     [HarmonyPostfix]
     private static void ClonePostfix(CardModificationInfo __instance, ref object __result)
@@ -110,12 +154,18 @@ public static class CardModificationInfoManager
     [HarmonyPrefix]
     private static void AddCustomCostsFromMods(CardInfo info)
     {
-        foreach (CardModificationInfo mod in info.Mods.Where(x => x.HasCustomCostsId()))
+        List<string> customCostNames = CardCostManager.AllCustomCosts.Select(x => x.CostName).ToList();
+        foreach (CardModificationInfo mod in info.Mods)
         {
+            foreach (string pair in GetCustomPropertiesFromId(mod.singletonId))
+            {
+                string[] splitCost = pair.Split(',');
+                //InscryptionAPIPlugin.Logger.LogInfo($"Property: [{splitCost[0]}] [{splitCost[1]}]");
+            }
             foreach (string pair in GetCustomCostsFromId(mod.singletonId))
             {
                 string[] splitCost = pair.Split(',');
-                info.SetExtendedProperty(splitCost[0], splitCost[1]);
+                //InscryptionAPIPlugin.Logger.LogInfo($"CustomCost: [{splitCost[0]}] [{splitCost[1]}]");
             }
         }
     }
@@ -132,4 +182,5 @@ public static class CardModificationInfoManager
         }
         return false;
     }
+    #endregion
 }

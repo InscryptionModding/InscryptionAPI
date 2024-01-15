@@ -12,7 +12,7 @@ public class AllStrikeAbilityFix
 {
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        int startIndex = -1, endIndex = -1;
+        int startIndex = -1;
         List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
 
         for (int i = 0; i < codes.Count; i++)

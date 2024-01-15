@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
-[HarmonyPatch(typeof(AbilityIconInteractable))]
+[HarmonyPatch]
 internal class BoxColliderNegativeScalingLogSpamFix
 {
     /// <summary>
@@ -19,27 +19,66 @@ internal class BoxColliderNegativeScalingLogSpamFix
     /// <param name="__instance">The ability icon</param>
     /// <param name="flippedY">
     /// If the icon needs to be flipped.
-    /// Will be true if the `AbilityInfo.flipYIfOpponent` field is true and if the card this icon is on is the opponent card.
     /// </param>
-    [HarmonyPrefix, HarmonyPatch(nameof(AbilityIconInteractable.SetFlippedY))]
-    private static void ReplaceBoxColliderWithMeshColliderIfIconIsFlipped(AbilityIconInteractable __instance, bool flippedY)
+    [HarmonyPrefix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.SetFlippedY))]
+    private static void ReplaceBoxColliderWithMeshColliderIfIconIsFlippedY(AbilityIconInteractable __instance, bool flippedY)
     {
-        if (flippedY || SaveManager.SaveFile.IsPart3)
-        {
-            if (__instance.gameObject.GetComponent<MeshCollider>().SafeIsUnityNull() && !__instance.gameObject.GetComponent<MeshFilter>().SafeIsUnityNull())
-            {
-                MeshCollider collider = __instance.gameObject.AddComponent<MeshCollider>();
-                collider.convex = true;
-                //collider.sharedMesh = null;
-                collider.sharedMesh = __instance.GetComponent<MeshFilter>().mesh;
+        if (!flippedY && !SaveManager.SaveFile.IsPart3)
+            return;
 
-                UnityObject.Destroy(__instance.GetComponent<BoxCollider>());
-                //__instance.coll = null;
-                __instance.coll = collider;
-                // This was the missing piece.
-                // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.
-                // Adjusting the y position here to be higher up allows the icon to be right-clickable again.
-                __instance.transform.position += new Vector3(0, 0.1f, 0);
+        MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();
+        MeshFilter filter = __instance.gameObject.GetComponent<MeshFilter>();
+        if (collider == null && filter != null)
+        {
+            UnityObject.Destroy(__instance.GetComponent<BoxCollider>());
+
+            collider = __instance.gameObject.AddComponent<MeshCollider>();
+            collider.sharedMesh = filter.mesh;
+            collider.convex = true;
+
+            __instance.coll = collider;
+        }
+    }
+    [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.SetFlippedY))]
+    private static void OffsetFlippedColliderPositionY(AbilityIconInteractable __instance, bool flippedY)
+    {
+        if (!flippedY || SaveManager.SaveFile.IsPart3)
+            return;
+
+        MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();
+        if (collider.SafeIsUnityNull())
+            return;
+
+        // This was the missing piece.
+        // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.
+        // Adjusting the y-position here to be higher up allows the icon to be right-clickable again.
+        collider.transform.localPosition = new Vector3(collider.transform.localPosition.x, collider.transform.localPosition.y, -0.1f);
+    }
+
+    [HarmonyPostfix, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.PositionModIcons))]
+    private static void ReadjustFlippedMergePosition(CardAbilityIcons __instance,
+    List<Ability> defaultAbilities,
+    List<Ability> mergeAbilities, List<AbilityIconInteractable> mergeIcons,
+    List<Ability> totemAbilities, List<AbilityIconInteractable> totemIcons
+    )
+    {
+        if (defaultAbilities.Count > 0)
+            return;
+
+        // fixes flipped merged/totem sigils being uninteractable if they're placed in the centre of the card
+        if (mergeAbilities.Count == 1 && mergeIcons.Count > 0)
+        {
+            if (mergeIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(mergeAbilities[0]).flipYIfOpponent)
+            {
+                mergeIcons[0].transform.localPosition = new Vector3(__instance.DefaultIconPosition.x, __instance.DefaultIconPosition.y, -0.1f);
+            }
+        }
+
+        else if (totemAbilities.Count == 1 && totemIcons.Count > 0)
+        {
+            if (totemIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(mergeAbilities[0]).flipYIfOpponent)
+            {
+                totemIcons[0].transform.localPosition = new Vector3(__instance.DefaultIconPosition.x, __instance.DefaultIconPosition.y, -0.1f);
             }
         }
     }

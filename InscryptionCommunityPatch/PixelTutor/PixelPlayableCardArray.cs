@@ -18,7 +18,6 @@ public class PixelPlayableCardArray : ManagedBehaviour
     public readonly List<PixelPlayableCard> displayedCards = new();
 
     private PixelPlayableCard gameObjectReference = null;
-    private GenericUIButton buttonReference = null;
     private GameObject overlay;
     private GenericUIButton forwardButton = null;
     private GenericUIButton backButton = null;
@@ -40,6 +39,8 @@ public class PixelPlayableCardArray : ManagedBehaviour
     public IEnumerator DisplayUntilCancelled(List<CardInfo> cards,
         Func<bool> cancelCondition, Action cardsPlacedCallback = null)
     {
+        //Debug.Log($"{cards.Exists(x => x == null)}");
+        cards.RemoveAll(x => x == null);
         currentPageIndex = 0;
         numPages = 1 + (cards.Count - 1) / (maxCardsPerRow * maxRows);
         InitializeGamepadGrid();
@@ -63,6 +64,9 @@ public class PixelPlayableCardArray : ManagedBehaviour
         List<CardInfo> cards, Action<PixelPlayableCard> cardSelectedCallback,
         Func<bool> cancelCondition = null, bool forPositiveEffect = true)
     {
+        //Debug.Log($"{cards.Exists(x => x == null)}");
+        cards.RemoveAll(x => x == null);
+
         currentPageIndex = 0;
         numPages = 1 + (cards.Count - 1) / (maxCardsPerRow * maxRows);
         if (cards.Count == 0)
@@ -242,6 +246,11 @@ public class PixelPlayableCardArray : ManagedBehaviour
         });
         displayedCards.Clear();
 
+        if (numRows <= 0)
+        {
+            PatchPlugin.Logger.LogDebug($"NumRows for PixelPlayableCardArray is 0, displaying no cards");
+            yield break;
+        }
         // can only show 42 cards per page
         int maxPerPage = maxRows * maxCardsPerRow;
         int startingIndex = maxPerPage * pageIndex;

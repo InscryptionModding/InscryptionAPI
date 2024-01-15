@@ -20,10 +20,14 @@ This is the recommended way to install BepInEx to the game.
 8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
 
 ### Installing on the Steam Deck:
-1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file
-2. Go to the setting of the profile you have for the mods and click `Browse Profile Folder`.
-3. Copy the BepInEx folder then go to Steam, and browse Inscryption's local files; paste the folder there
-4. Enter Gaming Mode and open Inscryption.  If everything was done correctly, you should see a console appear on your screen.
+1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file.
+2. Download the mods you plan on using and their dependencies..
+3. Go to the setting of the profile you are using for the mods and click `Browse Profile Folder`.
+4. Copy the BepInEx folder, then go to Steam and open Inscryption's Properties menu
+5. Go to `Installed Files` click `Browse` to open the folder containing Inscryption's local files; paste the BepInEx folder there.
+6. Enter Gaming Mode and check 'Force the use of a specific Steam Play compatibility tool' in the Properties menu under `Compatibility`.
+7. Go to the launch parameters and enter `WINEDLLOVERRIDES=“winhttp.dll=n,b” %command%`.
+8. Open Inscryption. If everything was done correctly, you should see a console appear on your screen.
 
 ## Getting Started: Modding
 ---
@@ -78,10 +82,10 @@ Otherwise, continue reading this wiki.
 ### Modding Resources
 [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
 
-[Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)
-
 [BepInEx documentation](https://docs.bepinex.dev/)
 
 [Harmony patching article](https://harmony.pardeike.net/articles/patching.html)
 
 [Example Mod using C#](https://github.com/debugman18/InscryptionExampleMod)
+
+[Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)

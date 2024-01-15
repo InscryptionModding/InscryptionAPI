@@ -6,6 +6,7 @@ using BepInEx.Logging;
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.CardCosts;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Encounters;
 using InscryptionAPI.Items;
@@ -27,7 +28,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.18.7";
+    public const string ModVer = "2.19.0";
 
     public static string Directory = "";
 
@@ -74,6 +75,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     internal static void ResyncAll()
     {
         CardManager.SyncCardList();
+        CardCostManager.SyncCustomCostList();
         CardModificationInfoManager.SyncCardMods();
         AbilityManager.SyncAbilityList();
         EncounterManager.SyncEncounterList();
@@ -117,7 +119,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.AuditCardList();
         PixelCardManager.Initialise();
         PeltManager.CreateDialogueEvents();
-        Logger.LogInfo($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
+        Logger.LogDebug($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 
     [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]

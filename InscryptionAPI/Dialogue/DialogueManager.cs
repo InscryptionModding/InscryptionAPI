@@ -23,9 +23,9 @@ public static class DialogueManager
         public string PluginGUID;
     }
 
-    public static List<Dialogue> CustomDialogue = new List<Dialogue>();
-    public static List<DialogueColor> CustomDialogueColor = new List<DialogueColor>();
-    public static Dictionary<string, Color> ColorLookup = new Dictionary<string, Color>();
+    public static List<Dialogue> CustomDialogue = new();
+    public static List<DialogueColor> CustomDialogueColor = new();
+    public static Dictionary<string, Color> ColorLookup = new();
 
     public static Dialogue Add(string pluginGUID, DialogueEvent dialogueEvent)
     {
@@ -90,6 +90,10 @@ public static class DialogueManager
         return GenerateEvent(pluginGUID, "Region" + regionName, lines, repeatLines);
     }
 
+    /// <summary>
+    /// A version of PlayDialogueEvent that can be used in the 3D Acts as well as Act 2.
+    /// Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEvent method.
+    /// </summary>
     public static IEnumerator PlayDialogueEventSafe(string eventId,
         MessageAdvanceMode advanceMode = MessageAdvanceMode.Auto,
         EventIntersectMode intersectMode = EventIntersectMode.Wait,
@@ -106,6 +110,37 @@ public static class DialogueManager
         else
         {
             yield return TextDisplayer.Instance.PlayDialogueEvent(eventId, advanceMode, intersectMode, variableStrings, newLineCallback);
+        }
+    }
+
+    /// <summary>
+    /// A quick method to convert a card's CardTemple into the respective TextBox.Style.
+    /// </summary>
+    /// <param name="temple">The CardTemple we want to use.</param>
+    /// <returns>The corresponding TextBox.Style.</returns>
+    public static TextBox.Style GetStyleFromTemple(CardTemple temple) => (TextBox.Style)(int)temple;
+
+    /// <summary>
+    /// A method to grab the correct TextBox.Style based off the player's chosen ambition.
+    /// </summary>
+    /// <returns>The corresponding TextBox.Style.</returns>
+    public static TextBox.Style GetStyleFromAmbition()
+    {
+        if (StoryEventsData.EventCompleted(StoryEvent.GBCUndeadAmbition))
+        {
+            return TextBox.Style.Undead;
+        }
+        else if (StoryEventsData.EventCompleted(StoryEvent.GBCNatureAmbition))
+        {
+            return TextBox.Style.Nature;
+        }
+        else if (StoryEventsData.EventCompleted(StoryEvent.GBCTechAmbition))
+        {
+            return TextBox.Style.Tech;
+        }
+        else
+        {
+            return TextBox.Style.Magic;
         }
     }
 
