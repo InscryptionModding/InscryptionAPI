@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OpponentManager
+    <title>Class CustomCardCost
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OpponentManager
+    <meta name="title" content="Class CustomCardCost
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,33 +69,39 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Encounters.OpponentManager">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.CardCosts.CustomCardCost">
   
   
-  <h1 id="InscryptionAPI_Encounters_OpponentManager" data-uid="InscryptionAPI.Encounters.OpponentManager" class="text-break">Class OpponentManager
+  <h1 id="InscryptionAPI_CardCosts_CustomCardCost" data-uid="InscryptionAPI.CardCosts.CustomCardCost" class="text-break">Class CustomCardCost
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>An inheritable class for implementing custom card costs.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">OpponentManager</span></div>
+    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
+    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
+    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
+    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
+    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
+    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
+    <div class="level7"><span class="xref">CustomCardCost</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Encounters.html">InscryptionAPI.Encounters</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.CardCosts.html">InscryptionAPI.CardCosts</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Encounters_OpponentManager_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_CardCosts_CustomCardCost_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class OpponentManager</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class CustomCardCost : ManagedBehaviour</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_BaseGameOpponents" data-uid="InscryptionAPI.Encounters.OpponentManager.BaseGameOpponents">BaseGameOpponents</h4>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_playHintAttempts" data-uid="InscryptionAPI.CardCosts.CustomCardCost.playHintAttempts">playHintAttempts</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyCollection&lt;OpponentManager.FullOpponent&gt; BaseGameOpponents</code></pre>
+    <pre><code class="lang-csharp hljs">public int playHintAttempts</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -107,20 +113,21 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="InscryptionAPI_Encounters_OpponentManager_AllOpponents_" data-uid="InscryptionAPI.Encounters.OpponentManager.AllOpponents*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_AllOpponents" data-uid="InscryptionAPI.Encounters.OpponentManager.AllOpponents">AllOpponents</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_CostName_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostName*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostName" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostName">CostName</h4>
+  <div class="markdown level1 summary"><p>The internal name of the cost. Used to check for the cost&apos;s extended property by the API.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;OpponentManager.FullOpponent&gt; AllOpponents { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract string CostName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -132,18 +139,18 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Encounters_OpponentManager_RunStateOpponents_" data-uid="InscryptionAPI.Encounters.OpponentManager.RunStateOpponents*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_RunStateOpponents" data-uid="InscryptionAPI.Encounters.OpponentManager.RunStateOpponents">RunStateOpponents</h4>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_PlayHintFrequency_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.PlayHintFrequency*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_PlayHintFrequency" data-uid="InscryptionAPI.CardCosts.CustomCardCost.PlayHintFrequency">PlayHintFrequency</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;Opponent.Type&gt; RunStateOpponents { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual int PlayHintFrequency { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -155,20 +162,21 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.Opponent.Type</span>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="InscryptionAPI_Encounters_OpponentManager_Add_" data-uid="InscryptionAPI.Encounters.OpponentManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_Add_System_String_System_String_System_String_Type_" data-uid="InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type)">Add(String, String, String, Type)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_CostSatisfied_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostSatisfied*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostSatisfied_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostSatisfied(System.Int32,DiskCardGame.PlayableCard)">CostSatisfied(Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Whether the current PlayableCard can be played.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool CostSatisfied(int cardCost, PlayableCard playableCard)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -181,24 +189,16 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">guid</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">cardCost</span></td>
+        <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
+</td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">opponentName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">sequencerID</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">opponentType</span></td>
-        <td></td>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard currently being checked.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -212,18 +212,19 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Encounters_OpponentManager_Add_" data-uid="InscryptionAPI.Encounters.OpponentManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_Add_System_String_System_String_System_String_Type_List_UnityEngine_Texture2D__" data-uid="InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type,List{UnityEngine.Texture2D})">Add(String, String, String, Type, List&lt;Texture2D&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue(System.Int32,DiskCardGame.PlayableCard)">CostStatPointValue(Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>The (stat point) SP value of the custom cost. Used in a few places by the game to determine how powerful a card can be, (eg Build-A-Card).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent Add(string guid, string opponentName, string sequencerID, Type opponentType, List&lt;Texture2D&gt; nodeAnimation)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual int CostStatPointValue(int cardCost, PlayableCard playableCard)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,29 +237,16 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">guid</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">cardCost</span></td>
+        <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
+</td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">opponentName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">sequencerID</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span></td>
-        <td><span class="parametername">opponentType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
-        <td><span class="parametername">nodeAnimation</span></td>
-        <td></td>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard currently being checked.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -272,20 +260,19 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Encounters_OpponentManager_OriginalGetSequencerIdForBoss_" data-uid="InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_OriginalGetSequencerIdForBoss_DiskCardGame_Opponent_Type_" data-uid="InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss(DiskCardGame.Opponent.Type)">OriginalGetSequencerIdForBoss(Opponent.Type)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_CostUnsatisfiedHint_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostUnsatisfiedHint*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostUnsatisfiedHint_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostUnsatisfiedHint(System.Int32,DiskCardGame.PlayableCard)">CostUnsatisfiedHint(Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>The dialogue string that will be played when you cannot play a card with this custom cost.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyReversePatch(HarmonyReversePatchType.Original)]
-[HarmonyPatch(typeof(BossBattleSequencer), &quot;GetSequencerIdForBoss&quot;)]
-public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual string CostUnsatisfiedHint(int cardCost, PlayableCard playableCard)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,9 +285,16 @@ public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Opponent.Type</span></td>
-        <td><span class="parametername">bossType</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">cardCost</span></td>
+        <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard currently being checked.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -319,6 +313,59 @@ public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_CardCosts_CustomCardCost_OnPlayed_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.OnPlayed*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_OnPlayed_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.OnPlayed(System.Int32,DiskCardGame.PlayableCard)">OnPlayed(Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>What the game should do when a card with this cost is played.
+Most common use case is implementing the logic for paying for this cost.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerator OnPlayed(int cardCost, PlayableCard playableCard)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">cardCost</span></td>
+        <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard currently being checked.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
+  </div>
 </article>
           </div>
           

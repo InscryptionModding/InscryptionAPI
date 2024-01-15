@@ -71,9 +71,99 @@
 <h2 id="custom-card-costs">Custom Card Costs</h2>
 
 <hr>
-<p>The Inscryption Community Patch allows for custom card costs to be displayed in all three main acts of the game:</p>
-<h3 id="acts-1">Acts 1</h3>
-<p>If you want to have your card display a custom card cost in either Act 1 (Leshy&#39;s Cabin), you can simply hook into one of the following events:</p>
+<p>In Inscryption, the player will encounter four different resources as they play: Blood, Bones, Energy, and Mox/Gems.
+These resources are needed in order to play cards with the corresponding card cost, with most cards costing at least one of these four costs.
+With the API, it&#39;s possible to create cards that cost multiple types of resources, giving modders greater creativity when creating cards.</p>
+<p>There may come a time where the base costs don&#39;t meet your needs. Or maybe you just want to make a new cost.
+Regardless of reason, the API provides a few ways of creating a basic card cost using the CardCostManager.</p>
+<h3 id="creating-a-new-cost">Creating a New Cost</h3>
+<p>To create a new card cost, you need to create a new class that inherits from the API&#39;s <a href="InscryptionAPI.CardCosts.CustomCardCost">CustomCardCost</a> class.</p>
+<p>The CustomCardCost class provides you with the basic functionality to ensure your cost works.
+Note that the API does not provide support for custom cost resources, so you will need to create the logic for it yourself through patching.</p>
+<p>Once you have created your cost&#39;s class, you need to register it with the API.
+An example for all this can be found below:</p>
+<pre><code class="lang-c#">// for simplicity, this cost replicates the logic by the energy cost
+public class MyCardCost : CustomCardCost
+{
+    // this is a required field, and should be equal to the name you pass into the API when registering your cost
+    public override string CostName =&gt; &quot;TestCost&quot;;
+
+    // whether or not this cost&#39;s price has been satisfied by the card
+    public override bool CostSatisfied(int cardCost, PlayableCard card)
+    {
+        // if the player has enough energy to pay the cost
+    // takes the vanilla energy cost into account
+        return cardCost &lt;= (ResourcesManager.Instance.PlayerEnergy - card.EnergyCost);
+    }
+
+    // the dialogue that&#39;s played when you try to play a card with this cost, and CostSatisfied is false
+    public override string CostUnsatisfiedHint(int cardCost, PlayableCard card)
+    {
+        return $&quot;Eat your greens aby. {card.Info.DisplayedNameLocalized}&quot;;
+    }
+
+    // this is called after a card with this cost resolves on the board
+    // if your cost spends a resource, this is where you&#39;d put that logic
+    public override IEnumerator OnPlayed(int cardCost, PlayableCard card)
+    {
+        // reduce the player&#39;s current energy by the card&#39;s cost
+        yield return ResourcesManager.Instance.SpendEnergy(cardCost);
+    }
+}
+
+public void AddCost()
+{
+    // when registering your card, you need to provide 2 Func&#39;s: one for grabbing the cost texture in the 3D Acts, and one for grabbing the pixel texture in Act 2
+    // if your cost is exclusive to one part of the game, you can pass in null for the appropriate Func.
+    CardCostManager.Register(&quot;api&quot;, &quot;TestCost&quot;, typeof(TestCost), TextureMethod, PixelTextureMethod);
+}
+</code></pre><p>When registering your cost, you can pass a static method for the Func&#39;s instead of creating a delegate.
+These methods MUST have 3 parameters types: int, CardInfo, PlayableCard; and return a Texture2D.</p>
+<p>The int parameter represents the card&#39;s cost, and the CardInfo and PlayableCard parameters represent the current CardInfo and PlayableCard being checked. Note that the PlayableCard parameter can be null</p>
+<pre><code class="lang-c#">public static Texture2D TextureMethod(int cardCost, CardInfo info, PlayableCard card)
+{
+    return TextureHelper.GetImageAsTexture($&quot;myCost_{cardCost}&quot;);
+}
+
+public static Texture2D PixelTextureMethod(int cardCost, CardInfo info, PlayableCard card)
+{
+    return TextureHelper.GetImageAsTexture($&quot;myCost_pixel_{cardCost}&quot;);
+
+    // if you want the API to handle adding stack numbers, you can instead provide a 7x8 texture like so:
+    // return Part2CardCostRender.CombineIconAndCount(cardCost, TextureHelper.GetImageAsTexture(&quot;myCost_pixel_7x8&quot;));
+}
+</code></pre><p>Card cost textures vary based on what part of the game the cost will be displayed in.
+For Act 1, textures must be 64x28; for Act 2 they can be 30x8 or 7x8 (see above); for Act 3 there is no set size but they should be no larger than 300x78.</p>
+<h3 id="adding-costs-to-cards">Adding Costs to Cards</h3>
+<p>Custom costs are added to cards using the API&#39;s extended properties system and can be accessed the same way.
+For clarity of purpose, the API provides some extension methods for setting a CardInfo&#39;s custom cost:</p>
+<pre><code class="lang-c#">public void AddCard()
+{
+    CardInfo info = CardManager.New(&quot;myMod&quot;, &quot;custom_card&quot;, &quot;Card&quot;, 1, 1);
+    info.SetCustomCost(&quot;TestCost&quot;, 1);
+
+    int cost = info.GetCustomCost(&quot;Test&quot;) // equal to 1
+}
+</code></pre><h3 id="custom-costs-for-death-cards">Custom Costs for Death Cards</h3>
+<p>Death cards aren&#39;t technically cards; they&#39;re card mods that are added to a template card.</p>
+<p>Because of this, simply adding an extended property to them won&#39;t work, since properties apply to ALL copies of the card.
+If you want to create a death card that uses a custom play cost, you&#39;ll need to create a new card and then add properties to that new CardInfo.</p>
+<p>Fortunately, the API&#39;s DeathCardManager is here to handle all this.
+CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card&#39;s name, stats, etc..</p>
+<pre><code class="lang-c#">private void AddCustomDeathCard()
+{
+    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
+        .SetNameReplacement(&quot;Mabel&quot;).SetSingletonId(&quot;wstl_mabel&quot;)
+        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
+        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
+        .AddCustomCostId(&quot;CustomCost&quot;, 1);
+
+    // you can then add your newly created death card to the list of default death card mods like so
+    DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+</code></pre><h2 id="further-functionality">Further Functionality</h2>
+<p>In older versions of the API, adding custom costs (or their textures at least) was handled by the community patches.</p>
+<p>These methods still exist for use, and this section will go over how to use them to add cost textures the old way.</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
 using InscryptionAPI.Helpers;
 
@@ -83,8 +173,7 @@ Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&
     if (myCustomCost &gt; 0)
         costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
 }
-</code></pre><h3 id="act-2">Act 2</h3>
-<p>For adding custom costs to Act 2, you have two main ways of going about it:</p>
+</code></pre><p>For adding custom costs to Act 2, you have two main ways of going about it:</p>
 <pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
 using InscryptionAPI.Helpers;
 
@@ -109,11 +198,11 @@ Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&
     }
 }
 </code></pre><h3 id="act-3">Act 3</h3>
-<p>Custom card costs in Act 3 are a little more complex due to the fact that the Disk Card model displays card costs as 3D objects instead of texture rendered on the card art. As such, you actually have a little more control over how your custom costs are displayed if you want it.</p>
-<p>There are two custom cost events to hook into.
-<code>Part3CardCostRender.UpdateCardCostSimple</code> allows you to simply provide textures for your custom cost that will be rendered onto the card for you (and as you will see, there are helpers to build those textures for you as well).
-<code>Part3CardCostRender.UpdateCardCostComplex</code> gives you an opportunity to modify the <code>GameObject</code> for your card cost directly, allowing you to attach any arbitrary game objects to the card you wish.</p>
-<p>The cost texture image must be 64x28 pixels for Act 1, or 30x8 pixels for Act 2.</p>
+<p>Card costs in Act 3 are a tad more complex since Act 3 cards display costs as 3D objects rather than simply flat textures.</p>
+<p>In practice, this means that you have more control over a cost&#39;s appearance than in other acts.</p>
+<p>There are two custom cost events to hook into:
+<code>Part3CardCostRender.UpdateCardCostSimple</code> provides a quick way to provide/modify the cost textures that will be rendered on the card.
+<code>Part3CardCostRender.UpdateCardCostComplex</code> provides more advanced functionality, letting you modify a custom cost&#39;s <code>GameObject</code> directly, allowing you to attach any arbitrary amount of further objects/components as you wish.</p>
 <h4 id="basic-card-cost">Basic Card Cost</h4>
 <p>If you just want to display a basic card cost, all you need to do is prepare an icon that represents a single unit of your custom cost. For example, if you are building a custom cost for currency, you need an icon that represents spending one currency (for example, a <code>$</code> symbol). The width and height of the icon are up to you, but keep in mind that they will be placed onto a region that is 300x73 pixels, so the height should not exceed 73 pixels, and the wider the icon is, the fewer will fit on the space.</p>
 <p>The <code>Part3CardCostRender.GetIconifiedCostTexture</code> helper method accepts one of these icons as well as a cost value and generates a pair of textures displaying that total cost. The first texture is the default texture (albedo) and the second is an emissive texture. If there is enough space in the 300x73 region to repeat the icon enough times to display the cost, it will do so. Otherwise, it will render a 7-segement display.</p>
@@ -148,23 +237,6 @@ Part3CardCostRender.UpdateCardCostComplex += delegate(CardInfo card, List&lt;Par
 {
     GameObject costObject = costs.Find(c =&gt; c.name.Equals(&quot;MyCustomCost&quot;)).CostContainer;
     // Now I can add things to the cost object directly.
-}
-</code></pre><h3 id="custom-costs-for-death-cards">Custom Costs for Death Cards</h3>
-<p>Death cards aren&#39;t technically cards; they&#39;re card mods that are added to a template card.</p>
-<p>Because of this, simply adding an extended property to them won&#39;t work, since properties apply to ALL copies of the card.
-If you want to create a death card that uses a custom play cost, you&#39;ll need to create a new card and then add properties to that new CardInfo.</p>
-<p>Fortunately, the API&#39;s DeathCardManager is here to handle all this.
-CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card&#39;s name, stats, etc..</p>
-<pre><code class="lang-c#">private void AddCustomDeathCard()
-{
-    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
-        .SetNameReplacement(&quot;Mabel&quot;).SetSingletonId(&quot;wstl_mabel&quot;)
-        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
-        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
-        .AddCustomCostId(&quot;CustomCost&quot;, 1);
-
-    // you can then add your newly created death card to the list of default death card mods like so
-    DeathCardManager.AddDefaultDeathCard(deathCardMod);
 }
 </code></pre></article>
           </div>

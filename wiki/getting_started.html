@@ -92,10 +92,14 @@
 </ol>
 <h3 id="installing-on-the-steam-deck">Installing on the Steam Deck:</h3>
 <ol>
-<li>Download <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a> on the Steam Deck’s Desktop Mode and open it from its download using its <code>AppImage</code> file</li>
-<li>Go to the setting of the profile you have for the mods and click <code>Browse Profile Folder</code>.</li>
-<li>Copy the BepInEx folder then go to Steam, and browse Inscryption&#39;s local files; paste the folder there</li>
-<li>Enter Gaming Mode and open Inscryption.  If everything was done correctly, you should see a console appear on your screen.</li>
+<li>Download <a href="https://Timberborn.thunderstore.io/package/ebkr/r2modman/">r2modman</a> on the Steam Deck’s Desktop Mode and open it from its download using its <code>AppImage</code> file.</li>
+<li>Download the mods you plan on using and their dependencies..</li>
+<li>Go to the setting of the profile you are using for the mods and click <code>Browse Profile Folder</code>.</li>
+<li>Copy the BepInEx folder, then go to Steam and open Inscryption&#39;s Properties menu</li>
+<li>Go to <code>Installed Files</code> click <code>Browse</code> to open the folder containing Inscryption&#39;s local files; paste the BepInEx folder there.</li>
+<li>Enter Gaming Mode and check &#39;Force the use of a specific Steam Play compatibility tool&#39; in the Properties menu under <code>Compatibility</code>.</li>
+<li>Go to the launch parameters and enter <code>WINEDLLOVERRIDES=“winhttp.dll=n,b” %command%</code>.</li>
+<li>Open Inscryption. If everything was done correctly, you should see a console appear on your screen.</li>
 </ol>
 <h2 id="getting-started-modding">Getting Started: Modding</h2>
 <hr>
@@ -136,10 +140,10 @@ Some resources are provided below for you to use, including an example mod to lo
 Otherwise, continue reading this wiki.</p>
 <h3 id="modding-resources">Modding Resources</h3>
 <p><a href="https://discord.gg/QrJEF5Denm">Inscryption Modding Discord</a></p>
-<p><a href="https://github.com/SaxbyMod/SabyModEnums">Vanilla and Modded Enumerations</a></p>
 <p><a href="https://docs.bepinex.dev/">BepInEx documentation</a></p>
 <p><a href="https://harmony.pardeike.net/articles/patching.html">Harmony patching article</a></p>
 <p><a href="https://github.com/debugman18/InscryptionExampleMod">Example Mod using C#</a></p>
+<p><a href="https://github.com/SaxbyMod/SabyModEnums">Vanilla and Modded Enumerations</a></p>
 </article>
           </div>
           

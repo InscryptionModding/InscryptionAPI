@@ -300,13 +300,13 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Pelts_PeltManager_New_" data-uid="InscryptionAPI.Pelts.PeltManager.New*"></a>
-  <h4 id="InscryptionAPI_Pelts_PeltManager_New_System_String_DiskCardGame_CardInfo_System_Int32_System_Int32_System_Int32_Func_List_DiskCardGame_CardInfo___" data-uid="InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,System.Int32,System.Int32,System.Int32,Func{List{DiskCardGame.CardInfo}})">New(String, CardInfo, Int32, Int32, Int32, Func&lt;List&lt;CardInfo&gt;&gt;)</h4>
+  <h4 id="InscryptionAPI_Pelts_PeltManager_New_System_String_DiskCardGame_CardInfo_Func_List_DiskCardGame_CardInfo___System_Int32_System_Int32_System_Int32_" data-uid="InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,Func{List{DiskCardGame.CardInfo}},System.Int32,System.Int32,System.Int32)">New(String, CardInfo, Func&lt;List&lt;CardInfo&gt;&gt;, Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of CustomPeltData then adds it to the game.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static PeltManager.PeltData New(string pluginGuid, CardInfo peltCardInfo, int baseBuyPrice, int extraAbilitiesToAdd, int choicesOfferedByTrader, Func&lt;List&lt;CardInfo&gt;&gt; getCardChoices)</code></pre>
+    <pre><code class="lang-csharp hljs">public static PeltManager.PeltData New(string pluginGuid, CardInfo peltCardInfo, Func&lt;List&lt;CardInfo&gt;&gt; getCardChoices, int baseBuyPrice, int extraAbilitiesToAdd = 0, int choicesOfferedByTrader = 8)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -331,6 +331,12 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;&gt;</td>
+        <td><span class="parametername">getCardChoices</span></td>
+        <td><p>The list of possible cards the Trader will offer for this pelt.</p>
+</td>
+      </tr>
+      <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">baseBuyPrice</span></td>
         <td><p>The starting price of this pelt when buying from the Trapper.</p>
@@ -348,12 +354,6 @@
         <td><p>How many cards to offer the player when trading the pelt.</p>
 </td>
       </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;&gt;</td>
-        <td><span class="parametername">getCardChoices</span></td>
-        <td><p>The list of possible cards the Trader will offer for this pelt.</p>
-</td>
-      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -369,6 +369,71 @@
         <td><a class="xref" href="InscryptionAPI.Pelts.PeltManager.PeltData.html">PeltManager.PeltData</a></td>
         <td><p>The newly created CustomPeltData so a chain can continue.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Pelts_PeltManager_New_" data-uid="InscryptionAPI.Pelts.PeltManager.New*"></a>
+  <h4 id="InscryptionAPI_Pelts_PeltManager_New_System_String_DiskCardGame_CardInfo_System_Int32_System_Int32_System_Int32_Func_List_DiskCardGame_CardInfo___" data-uid="InscryptionAPI.Pelts.PeltManager.New(System.String,DiskCardGame.CardInfo,System.Int32,System.Int32,System.Int32,Func{List{DiskCardGame.CardInfo}})">New(String, CardInfo, Int32, Int32, Int32, Func&lt;List&lt;CardInfo&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PeltManager.PeltData New(string pluginGuid, CardInfo peltCardInfo, int baseBuyPrice, int extraAbilitiesToAdd, int choicesOfferedByTrader, Func&lt;List&lt;CardInfo&gt;&gt; getCardChoices)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">peltCardInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">baseBuyPrice</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">extraAbilitiesToAdd</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">choicesOfferedByTrader</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;&gt;</td>
+        <td><span class="parametername">getCardChoices</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Pelts.PeltManager.PeltData.html">PeltManager.PeltData</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

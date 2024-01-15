@@ -537,9 +537,79 @@
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromAmbition_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromAmbition*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromAmbition" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromAmbition">GetStyleFromAmbition()</h4>
+  <div class="markdown level1 summary"><p>A method to grab the correct TextBox.Style based off the player&apos;s chosen ambition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TextBox.Style GetStyleFromAmbition()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><p>The corresponding TextBox.Style.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromTemple_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromTemple*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromTemple_CardTemple_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromTemple(CardTemple)">GetStyleFromTemple(CardTemple)</h4>
+  <div class="markdown level1 summary"><p>A quick method to convert a card&apos;s CardTemple into the respective TextBox.Style.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TextBox.Style GetStyleFromTemple(CardTemple temple)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardTemple</span></td>
+        <td><span class="parametername">temple</span></td>
+        <td><p>The CardTemple we want to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><p>The corresponding TextBox.Style.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe*"></a>
   <h4 id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_DiskCardGame_TextDisplayer_MessageAdvanceMode_DiskCardGame_TextDisplayer_EventIntersectMode_GBC_DialogueSpeaker_GBC_TextBox_Style_GBC_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)">PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action&lt;DialogueEvent.Line&gt;, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A version of PlayDialogueEvent that can be used in the 3D Acts as well as Act 2.
+Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEvent method.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -596,7 +666,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">adjustAudioVolume</span></td>
         <td></td>
       </tr>

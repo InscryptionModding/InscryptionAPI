@@ -372,7 +372,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td><p>Whether to update the card&apos;s display, meaning sigil stack numbers and any shield effects.</p>
 </td>
@@ -411,7 +411,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td><p>Whether to update the card&apos;s display, meaning sigil stack numbers and any shield effects.</p>
 </td>
@@ -449,7 +449,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td></td>
       </tr>
@@ -687,6 +687,55 @@
       <tr>
         <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.Ability</span>&gt;</td>
         <td><p>A list of Abilities from the PlayableCard and underlying CardInfo object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_AllAbilities_" data-uid="InscryptionAPI.Card.CardExtensions.AllAbilities*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_AllAbilities_DiskCardGame_PlayableCard_System_Boolean_" data-uid="InscryptionAPI.Card.CardExtensions.AllAbilities(DiskCardGame.PlayableCard,System.Boolean)">AllAbilities(PlayableCard, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A variant of PlayableCard.AllAbilities that can account for negated abilities in the PlayableCard&apos;s TemporaryMods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Ability&gt; AllAbilities(this PlayableCard playableCard, bool accountForNegation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">accountForNegation</span></td>
+        <td><p>Whether or not to check TemporaryMods for negated abilities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.Ability</span>&gt;</td>
+        <td><p>A list of Abilities from the PlayableCard and underlying CardInfo object</p>
 </td>
       </tr>
     </tbody>
@@ -1089,6 +1138,186 @@ This function can be overridden if someone wants to inject new cost logic into a
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetCustomCardCosts_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCardCosts*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetCustomCardCosts_DiskCardGame_Card_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCardCosts(DiskCardGame.Card)">GetCustomCardCosts(Card)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;CustomCardCost&gt; GetCustomCardCosts(this Card card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.Card</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.CardCosts.CustomCardCost.html">CustomCardCost</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetCustomCost_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCost*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_CardInfo_System_String_System_Boolean_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo,System.String,System.Boolean)">GetCustomCost(CardInfo, String, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetCustomCost(this CardInfo cardInfo, string costName, bool canBeNegative = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">cardInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">costName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">canBeNegative</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetCustomCost_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCost*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_PlayableCard_System_String_System_Boolean_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.PlayableCard,System.String,System.Boolean)">GetCustomCost(PlayableCard, String, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">costName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">canBeNegative</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetCustomCosts_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCosts*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetCustomCosts_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardExtensions.GetCustomCosts(DiskCardGame.CardInfo)">GetCustomCosts(CardInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;CardCostManager.FullCardCost&gt; GetCustomCosts(this CardInfo info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html">CardCostManager.FullCardCost</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_GetEmissiveAltPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_GetEmissiveAltPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardExtensions.GetEmissiveAltPortrait(DiskCardGame.CardInfo)">GetEmissiveAltPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
@@ -1381,7 +1610,7 @@ This function can be overridden if someone wants to inject new cost logic into a
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
         <td><p>Returns the value of the property as a boolean or null if it didn&apos;t exist or couldn&apos;t be parsed as boolean.</p>
 </td>
       </tr>
@@ -1910,7 +2139,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has all of the given Abilities.</p>
 </td>
       </tr>
@@ -1960,7 +2189,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has all of the given Abilities.</p>
 </td>
       </tr>
@@ -2009,7 +2238,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has all of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -2059,7 +2288,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has all of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -2108,7 +2337,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has all of the specified Traits.</p>
 </td>
       </tr>
@@ -2157,7 +2386,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has all of the specified Traits.</p>
 </td>
       </tr>
@@ -2198,7 +2427,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2238,7 +2467,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2286,7 +2515,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has at least one of the given Abilities.</p>
 </td>
       </tr>
@@ -2336,7 +2565,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has at least one of the given Abilities.</p>
 </td>
       </tr>
@@ -2385,7 +2614,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card has at least one of the specified CardMetaCategories.</p>
 </td>
       </tr>
@@ -2434,7 +2663,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has at least one of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -2484,7 +2713,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has at least one of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -2533,7 +2762,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has at least one of the specified Traits.</p>
 </td>
       </tr>
@@ -2582,7 +2811,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has at least one of the specified Traits.</p>
 </td>
       </tr>
@@ -2623,7 +2852,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2670,7 +2899,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is does not have the specified CardMetaCategory.</p>
 </td>
       </tr>
@@ -2714,7 +2943,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if a card exists in the opposing slot.</p>
 </td>
       </tr>
@@ -2755,7 +2984,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2795,7 +3024,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2835,7 +3064,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2875,7 +3104,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2915,7 +3144,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -2964,7 +3193,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the specialTriggeredAbility does exist.</p>
 </td>
       </tr>
@@ -3014,7 +3243,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the specialTriggeredAbility does exist.</p>
 </td>
       </tr>
@@ -3055,7 +3284,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -3103,7 +3332,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card has the specified trait.</p>
 </td>
       </tr>
@@ -3146,7 +3375,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>True if the card info is affected by Tidal Lock.</p>
 </td>
       </tr>
@@ -3189,7 +3418,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>True if the card is affected by Tidal Lock.</p>
 </td>
       </tr>
@@ -3232,7 +3461,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>True of this card came from the base game; false otherwise.</p>
 </td>
       </tr>
@@ -3273,7 +3502,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -3321,7 +3550,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is not of the specified tribe.</p>
 </td>
       </tr>
@@ -3370,7 +3599,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is not of the specified tribe.</p>
 </td>
       </tr>
@@ -3419,7 +3648,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is of the specified tribe.</p>
 </td>
       </tr>
@@ -3460,7 +3689,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -3502,7 +3731,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if card is not the opponent&apos;s card.</p>
 </td>
       </tr>
@@ -3543,7 +3772,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -3583,7 +3812,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -3631,7 +3860,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the ability does not exist.</p>
 </td>
       </tr>
@@ -3680,7 +3909,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the ability does not exist.</p>
 </td>
       </tr>
@@ -3729,7 +3958,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the ability does not exist.</p>
 </td>
       </tr>
@@ -3778,7 +4007,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has none of the given Abilities.</p>
 </td>
       </tr>
@@ -3828,7 +4057,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has none of the given Abilities.</p>
 </td>
       </tr>
@@ -3877,7 +4106,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card has none of the specified CardMetaCategories.</p>
 </td>
       </tr>
@@ -3926,7 +4155,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has none of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -3976,7 +4205,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has none of the specified SpecialTriggeredAbilities.</p>
 </td>
       </tr>
@@ -4025,7 +4254,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if cardInfo has none of the specified Traits.</p>
 </td>
       </tr>
@@ -4074,7 +4303,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if playableCard has none of the specified Traits.</p>
 </td>
       </tr>
@@ -4123,7 +4352,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is does not have the specified CardMetaCategory.</p>
 </td>
       </tr>
@@ -4172,7 +4401,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the specialTriggeredAbility does not exist.</p>
 </td>
       </tr>
@@ -4222,7 +4451,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the specialTriggeredAbility does not exist.</p>
 </td>
       </tr>
@@ -4271,7 +4500,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is does not have the specified Trait.</p>
 </td>
       </tr>
@@ -4320,7 +4549,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card does not have the specified trait.</p>
 </td>
       </tr>
@@ -4369,7 +4598,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>True if the CardInfo&apos;s mod prefix equals prefixToMatch.</p>
 </td>
       </tr>
@@ -4412,7 +4641,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if the card is not null or not Dead.</p>
 </td>
       </tr>
@@ -4553,7 +4782,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>Returns true if both cards are on the board and both are on the opponent cards or both are player cards.</p>
 </td>
       </tr>
@@ -4594,7 +4823,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -4877,7 +5106,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td><p>Whether or not to call OnStatsChanged after removing the card mod.</p>
 </td>
@@ -4894,7 +5123,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><p>True if the mod was successfully removed or false if the mod was not removed or was null.</p>
 </td>
       </tr>
@@ -5134,7 +5363,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td><p>Whether to update the card&apos;s display, meaning sigil stack numbers and any shield effects.</p>
 </td>
@@ -5173,7 +5402,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td><p>Whether to update the card&apos;s display, meaning sigil stack numbers and any shield effects.</p>
 </td>
@@ -5210,7 +5439,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">updateDisplay</span></td>
         <td></td>
       </tr>
@@ -5516,7 +5745,7 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">affectedByTidalLock</span></td>
         <td></td>
       </tr>
@@ -6274,6 +6503,116 @@ Act 1 uses Nature cards, Act 2 uses all Temples for each region, Act 3 uses Tech
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetCustomCost_" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomCost*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetCustomCost_DiskCardGame_CardInfo_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Int32_" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomCost(DiskCardGame.CardInfo,InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Int32)">SetCustomCost(CardInfo, CardCostManager.FullCardCost, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets a card&apos;s custom cost property using the provided FullCardCost object as reference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetCustomCost(this CardInfo info, CardCostManager.FullCardCost customCost, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The CardInfo to modify.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html">CardCostManager.FullCardCost</a></td>
+        <td><span class="parametername">customCost</span></td>
+        <td><p>The FullCardCost representing the cost we want to set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How much of the custom cost the CardInfo should need to be played.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetCustomCost_" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomCost*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetCustomCost_DiskCardGame_CardInfo_System_String_System_Int32_" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomCost(DiskCardGame.CardInfo,System.String,System.Int32)">SetCustomCost(CardInfo, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>A variant of SetExtendedProperty intended to be used to set properties representing custom costs. Primarily provided for clarity of purpose.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetCustomCost(this CardInfo info, string costName, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The CardInfo to modify.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">costName</span></td>
+        <td><p>The name of the cost we want to set.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How much of the custom cost the CardInfo should need to be played.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_SetCustomUnlockCheck_" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_SetCustomUnlockCheck_DiskCardGame_CardInfo_Func_System_Boolean_System_Int32_System_Boolean__" data-uid="InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo,Func{System.Boolean,System.Int32,System.Boolean})">SetCustomUnlockCheck(CardInfo, Func&lt;Boolean, Int32, Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the custom unlock check for the card. Some parts require a card is unlocked before it can be obtained or used.</p>
@@ -6300,7 +6639,7 @@ Act 1 uses Nature cards, Act 2 uses all Temples for each region, Act 3 uses Tech
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Boolean</span>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
         <td><span class="parametername">check</span></td>
         <td><p>The custom unlock check, a func that needs to return true for the card to be unlocked. The bool argument is true when the game is in Kaycee&apos;s Mod mode and the int argument is the current Kaycee&apos;s Mod challenge level.</p>
 </td>
@@ -7547,7 +7886,7 @@ This function uses delayed loading to attach the evolution to the card, so if th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">gemify</span></td>
         <td><p>Whether the card should be gemified.</p>
 </td>
@@ -7693,7 +8032,7 @@ This function uses delayed loading to attach the evolution to the card, so if th
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">hideStats</span></td>
         <td></td>
       </tr>
@@ -8242,7 +8581,7 @@ This function uses delayed loading to attach the ice cube to the card, so if the
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">onePerDeck</span></td>
         <td></td>
       </tr>
@@ -8290,7 +8629,7 @@ This function uses delayed loading to attach the ice cube to the card, so if the
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">spawnLice</span></td>
         <td></td>
       </tr>
@@ -9893,7 +10232,7 @@ This function uses delayed loading to attach the ice cube to the card, so if the
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">flipPortrait</span></td>
         <td></td>
       </tr>
@@ -10415,7 +10754,7 @@ This function uses delayed loading to attach the tail to the card, so if the tai
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
         <td><span class="parametername">useTerrainLayout</span></td>
         <td></td>
       </tr>
