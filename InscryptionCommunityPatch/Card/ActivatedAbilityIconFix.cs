@@ -17,7 +17,7 @@ public static class ActivatedAbilityIconFix
     [HarmonyPostfix, HarmonyPatch(typeof(ActivatedAbilityBehaviour), nameof(ActivatedAbilityBehaviour.RespondsToResolveOnBoard))]
     private static void RespondsToResolveOnBoard_PostFix(ref bool __result)
     {
-        __result &= SaveManager.saveFile.IsPart2;
+        __result &= SaveManager.SaveFile.IsPart2;
     }
 
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.OnStatsChanged))]

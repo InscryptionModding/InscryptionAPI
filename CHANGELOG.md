@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.2
+- Fixed activated abilities not being interactable in Act 3
+
 # 2.19.1
 - Fixed API not retrieving pixel card costs above 5
 
