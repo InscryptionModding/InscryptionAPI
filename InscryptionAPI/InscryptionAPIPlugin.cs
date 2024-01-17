@@ -28,7 +28,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.19.0";
+    public const string ModVer = "2.19.1";
 
     public static string Directory = "";
 
