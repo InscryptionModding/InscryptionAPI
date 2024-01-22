@@ -134,7 +134,14 @@ With the most recent API versions, shield-giving sigils like DeathShield/Nano Ar
       <section><p>This class handles the addition of new tribes into the game</p>
 </section>
       <h4><a class="xref" href="InscryptionAPI.Card.TribeManager.TribeInfo.html">TribeManager.TribeInfo</a></h4>
-      <section></section>
+      <section><p>The internal object used to store all relevant info about a Tribe.
+guid - The mod GUID that added the Tribe.
+name - The internal name of the Tribe.
+tribe - The enum value corresponding to this Tribe.
+icon - The sprite displayed on cards with this Tribe.
+tribeChoice - Whether or not this Tribe can appear at card tribe choice nodes.
+cardBack - The texture displayed at card tribe choice nodes. If null, the API will create one using the icon Sprite.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="InscryptionAPI.Card.IActivateWhenFacedown.html">IActivateWhenFacedown</a></h4>
