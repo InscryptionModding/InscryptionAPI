@@ -23,7 +23,7 @@ internal class BoxColliderNegativeScalingLogSpamFix
     [HarmonyPrefix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.SetFlippedY))]
     private static void ReplaceBoxColliderWithMeshColliderIfIconIsFlippedY(AbilityIconInteractable __instance, bool flippedY)
     {
-        if (!flippedY && !SaveManager.SaveFile.IsPart3)
+        if (!flippedY && !SaveManager.SaveFile.IsPart3) // change to mesh only if we're flipped or in Act 3
             return;
 
         MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();
@@ -42,7 +42,7 @@ internal class BoxColliderNegativeScalingLogSpamFix
     [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.SetFlippedY))]
     private static void OffsetFlippedColliderPositionY(AbilityIconInteractable __instance, bool flippedY)
     {
-        if (!flippedY || SaveManager.SaveFile.IsPart3)
+        if (!flippedY && !SaveManager.SaveFile.IsPart3)
             return;
 
         MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();

@@ -84,4 +84,16 @@ public static class CardCostRender
                 PatchPlugin.rightAct2Cost.Value ? TextureHelper.SpriteType.Act2CostDecalRight : TextureHelper.SpriteType.Act2CostDecalLeft, 8);
         }
     }
+
+    [HarmonyPrefix, HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.GetCostSpriteForCard))]
+    private static bool Part1CardCostDisplayerPatch(CardDisplayer __instance)
+    {
+        //Make sure we are in Leshy's Cabin
+        // prevents indexing error when a card has a cost greater than the vanilla limits
+        if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1"))
+            return false;
+
+
+        return true;
+    }
 }

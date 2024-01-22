@@ -220,6 +220,15 @@ public static class TribeManager
         return texture2D;
     }
 
+    /// <summary>
+    /// The internal object used to store all relevant info about a Tribe.
+    /// guid - The mod GUID that added the Tribe.
+    /// name - The internal name of the Tribe.
+    /// tribe - The enum value corresponding to this Tribe.
+    /// icon - The sprite displayed on cards with this Tribe.
+    /// tribeChoice - Whether or not this Tribe can appear at card tribe choice nodes.
+    /// cardBack - The texture displayed at card tribe choice nodes. If null, the API will create one using the icon Sprite.
+    /// </summary>
     public class TribeInfo
     {
         public string guid;

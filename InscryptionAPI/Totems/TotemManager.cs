@@ -80,26 +80,20 @@ public static class TotemManager
 
         public static void AddCustomTribesToList(List<Tribe> list)
         {
-            // get a list of all cards with a tribe
-            List<CardInfo> tribedCards = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
+            list.AddRange(TribeManager.NewTribes.Where(x => x.tribeChoice).Select(x => x.tribe));
+            InscryptionAPIPlugin.Logger.LogDebug($"Total Tribes: {list.Count}");
+            
+            List<CardInfo> cardsWithTribes = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
+            list.RemoveAll(x => !cardsWithTribes.Exists(ci => ci.IsOfTribe(x)));
 
-            // iterate across all custom tribes that are obtainable as tribe choices
-            foreach (TribeManager.TribeInfo tribeInfo in TribeManager.NewTribes.Where(x => x.tribeChoice))
-            {
-                // Only add if we have at least 1 card of it
-                if (tribedCards.Exists(ci => ci.IsOfTribe(tribeInfo.tribe)))
-                    list.Add(tribeInfo.tribe);
-            }
-
-            // remove tribes without any cards
-            list.RemoveAll(x => !tribedCards.Exists(ci => ci.IsOfTribe(x)));
+            InscryptionAPIPlugin.Logger.LogDebug($"Tribes with 1 Card: {list.Count}");
         }
     }
 
     [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
     private class ResourceBank_Awake
     {
-        public static void Postfix(ResourceBank __instance)
+        private static void Postfix(ResourceBank __instance)
         {
             // The resource bank has been cleared. refill it
             if (ResourceBank.Get<GameObject>(CustomTotemTopResourcePath) == null)
@@ -110,21 +104,14 @@ public static class TotemManager
     [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[] { typeof(TotemTopData) })]
     private class Totem_GetTopPiecePrefab
     {
-        public static bool Prefix(Totem __instance, TotemTopData data, ref GameObject __result)
+        private static bool Prefix(TotemTopData data, ref GameObject __result)
         {
             if (TribeManager.IsCustomTribe(data.prerequisites.tribe))
             {
                 CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == data.prerequisites.tribe);
-                if (customTribeTotem != null)
-                {
-                    // Get custom totem model
-                    __result = customTribeTotem.Prefab;
-                }
-                else
-                {
-                    // No custom totem model - use default model
-                    __result = defaultTotemTop.Prefab;
-                }
+
+                // use the custom Totem top if it exists; otherwise use the default
+                __result = customTribeTotem?.Prefab ?? defaultTotemTop.Prefab;
                 return false;
             }
             else if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.AllTribes)
@@ -140,7 +127,7 @@ public static class TotemManager
     [HarmonyPatch(typeof(Totem), "SetData", new Type[] { typeof(ItemData) })]
     private class Totem_SetData
     {
-        public static void Postfix(Totem __instance, ItemData data)
+        private static void Postfix(Totem __instance, ItemData data)
         {
             __instance.topPieceParent.GetComponentInChildren<CompositeTotemPiece>().SetData(__instance.TotemItemData.top);
         }
@@ -149,7 +136,7 @@ public static class TotemManager
     [HarmonyPatch(typeof(TotemTopData), "PrefabId", MethodType.Getter)]
     private class TotemTopData_PrefabId
     {
-        public static bool Prefix(TotemTopData __instance, ref string __result)
+        private static bool Prefix(TotemTopData __instance, ref string __result)
         {
             // Custom totem tops will always use the fallback UNLESS there is an override
             if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe))
@@ -211,13 +198,14 @@ public static class TotemManager
     [HarmonyPatch]
     private class FixMissingAbilityInfo2
     {
+        // think this could be simplified but I ain't touching it
         public static IEnumerable<MethodBase> TargetMethods()
         {
             var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c__DisplayClass26_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
             yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__1");
         }
 
-        public static bool Prefix(Ability x)
+        private static bool Prefix(Ability x)
         {
             return AbilitiesUtil.GetInfo(x) != null;
         }
@@ -246,7 +234,7 @@ public static class TotemManager
     {
         if (prefab == null)
         {
-            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}. Prefab is null!");
+            InscryptionAPIPlugin.Logger.LogError($"Cannot load NewTopPiece for {guid}.{name}; prefab is null!");
             return null;
         }
 
