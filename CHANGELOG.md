@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.3
+- Fixed index error related to Totem sigils
+
 # 2.19.2
 - Fixed activated abilities not being interactable in Act 3
 - Fixed cards with costs above vanilla defaults not displaying
