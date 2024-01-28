@@ -4,6 +4,7 @@
 # 2.19.3
 - Fixed index error related to Totem sigils
 - Fixed index error related to opponent sniper targeting
+- Fixed Shield Latch sigil not displaying the first latched sigil
 
 # 2.19.2
 - Fixed activated abilities not being interactable in Act 3

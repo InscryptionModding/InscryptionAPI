@@ -54,7 +54,11 @@ public static class ShieldManager
     }
 
     [HarmonyPrefix, HarmonyPatch(typeof(LatchDeathShield), nameof(LatchDeathShield.OnSuccessfullyLatched))]
-    private static bool PreventShieldReset() => false; // latch death shield doesn't reset shields
+    private static bool PreventShieldReset(PlayableCard target)
+    {
+        target.UpdateFaceUpOnBoardEffects();
+        return false; // latch death shield doesn't reset shields
+    }
 
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
     private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result) => __result = NewHasShield(__instance);
