@@ -31,6 +31,8 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configShowSquirrelTribeOnCards;
     internal static ConfigEntry<bool> configAct3Bones;
 
+    internal static ConfigEntry<bool> configResetEyes;
+
     internal static ConfigEntry<bool> rightAct2Cost;
     internal static ConfigEntry<bool> act2CostRender;
 
@@ -88,6 +90,7 @@ public class PatchPlugin : BaseUnityPlugin
         act2TutorCenterRows = Config.Bind("Act 2", "Centred Hoarder UI", true, "If true, centres displayed cards in each row during the Hoarder selection sequence.");
         configFullDebug = Config.Bind("General", "Full Debug", true, "If true, displays all debug logs in the console.");
         configTestState = Config.Bind("General", "Test Mode", false, "Puts the game into test mode. This will cause (among potentially other things) a new run to spawn a number of cards into your opening deck that will demonstrate card behaviors.");
+        configResetEyes = Config.Bind("Act 1", "Reset Red Eyes", false, "Resets Leshy's eyes to normal if they were turned red due to a boss fight's grizzly bear sequence.");
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

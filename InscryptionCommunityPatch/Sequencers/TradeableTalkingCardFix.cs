@@ -10,7 +10,7 @@ using UnityEngine;
 namespace InscryptionCommunityPatch.Sequencers;
 
 [HarmonyPatch]
-internal class TradeableTalkingCardFix
+public class TradeableTalkingCardFix
 {
     [HarmonyPrefix, HarmonyPatch(typeof(TradeCardsForPelts), nameof(TradeCardsForPelts.OnTradableSelected))]
     private static bool OnTalkingCardSelected(TradeCardsForPelts __instance, HighlightedInteractable slot, PlayableCard card)
