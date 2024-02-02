@@ -76,7 +76,7 @@ internal class BoxColliderNegativeScalingLogSpamFix
 
         else if (totemAbilities.Count == 1 && totemIcons.Count > 0)
         {
-            if (totemIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(mergeAbilities[0]).flipYIfOpponent)
+            if (totemIcons[0].transform.GetComponent<MeshCollider>() != null && AbilitiesUtil.GetInfo(totemAbilities[0]).flipYIfOpponent)
             {
                 totemIcons[0].transform.localPosition = new Vector3(__instance.DefaultIconPosition.x, __instance.DefaultIconPosition.y, -0.1f);
             }

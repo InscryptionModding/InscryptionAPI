@@ -1,6 +1,12 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.3
+- Fixed index error related to Totem sigils
+- Fixed index error related to opponent sniper targeting
+- Fixed Shield Latch sigil not displaying the first latched sigil
+- Added config to community patches to reset Leshy's eye colour after triggering the grizzly bear sequence during boss fights
+
 # 2.19.2
 - Fixed activated abilities not being interactable in Act 3
 - Fixed cards with costs above vanilla defaults not displaying
