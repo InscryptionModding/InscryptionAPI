@@ -138,7 +138,7 @@ public static partial class CardExtensions
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, string costName, int amount) => info.SetExtendedProperty(costName, amount);
 
-    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>().ToList();
+    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>()?.ToList() ?? new();
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();

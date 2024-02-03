@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.4
+- Fixed error when retrieving custom card costs from a card with no custom card costs
+
 # 2.19.3
 - Fixed index error related to Totem sigils
 - Fixed index error related to opponent sniper targeting
