@@ -140,7 +140,7 @@ public static class TribeManager
     }
     private static Texture2D MakePlaceholderCardback(Texture2D tribeIcon)
     {
-        Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", Assembly.GetExecutingAssembly());
+        Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", typeof(TribeManager).Assembly);
         if (tribeIcon == null) // if no tribe icon, return the empty card texture
             return emptyCardback;
 

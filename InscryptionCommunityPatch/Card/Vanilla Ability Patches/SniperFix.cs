@@ -108,37 +108,37 @@ public class SniperFix
 
     public static IEnumerator OpponentSniperLogic(
         CombatPhaseManager instance, Part1SniperVisualizer visualizer,
-        List<CardSlot> targetedSlots, CardSlot attackingSlot, int numAttacks)
+        List<CardSlot> opposingSlots, CardSlot attackingSlot, int numAttacks)
     {
         List<CardSlot> playerSlots = GetValidTargets(false, attackingSlot);
         List<PlayableCard> playerCards = playerSlots.FindAll(x => x.Card != null).ConvertAll(x => x.Card);
 
         for (int i = 0; i < numAttacks; i++)
         {
-            CardSlot targetSlot = OpponentSelectTargetSlot(targetedSlots, playerSlots, playerCards, attackingSlot, numAttacks);
+            CardSlot targetSlot = OpponentSelectTargetSlot(opposingSlots, playerSlots, playerCards, attackingSlot, numAttacks);
             if (targetSlot == null)
                 continue;
 
-            targetedSlots.Add(targetSlot);
+            opposingSlots.Add(targetSlot);
             instance.VisualizeConfirmSniperAbility(targetSlot);
             visualizer?.VisualizeConfirmSniperAbility(targetSlot);
             yield return new WaitForSeconds(0.25f);
         }
     }
-    public static CardSlot OpponentSelectTargetSlot(List<CardSlot> targetedSlots, List<CardSlot> targetableSlots,
+    public static CardSlot OpponentSelectTargetSlot(List<CardSlot> opposingSlots, List<CardSlot> playerSlots,
         List<PlayableCard> playerCards, CardSlot attackingSlot, int numAttacks
         )
     {
         bool anyCards = playerCards.Count > 0;
         if (anyCards)
         {
-            if (CanWin(targetedSlots, targetableSlots, attackingSlot, numAttacks))
-                return GetFirstAvailableOpenSlot(targetedSlots, targetableSlots, attackingSlot, numAttacks);
+            if (CanWin(opposingSlots, playerSlots, attackingSlot, numAttacks))
+                return GetFirstAvailableOpenSlot(opposingSlots, playerSlots, attackingSlot, numAttacks);
             else
             {
-                PlayableCard killable = GetStrongestKillableCard(anyCards, playerCards, targetedSlots, attackingSlot, numAttacks);
-                PlayableCard attackable = GetFirstStrongestAttackableCard(anyCards, playerCards, targetedSlots, attackingSlot, numAttacks);
-                PlayableCard noPref = GetFirstStrongestAttackableCardNoPreferences(anyCards, playerCards, targetedSlots, attackingSlot, numAttacks);
+                PlayableCard killable = GetStrongestKillableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
+                PlayableCard attackable = GetFirstStrongestAttackableCard(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
+                PlayableCard noPref = GetFirstStrongestAttackableCardNoPreferences(anyCards, playerCards, opposingSlots, attackingSlot, numAttacks);
 
                 if (killable != null)
                     return killable.Slot;
@@ -150,7 +150,7 @@ public class SniperFix
                     return noPref.Slot;
             }
         }
-        return targetableSlots[SeededRandom.Range(0, targetableSlots.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + GlobalTriggerHandler.Instance.NumTriggersThisBattle)];
+        return playerSlots[SeededRandom.Range(0, playerSlots.Count, SaveManager.SaveFile.GetCurrentRandomSeed() + GlobalTriggerHandler.Instance.NumTriggersThisBattle)];
     }
     public static List<T> GetSorted<T>(List<T> unsorted, Comparison<T> sort)
     {

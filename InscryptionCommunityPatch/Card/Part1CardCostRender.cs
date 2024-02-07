@@ -43,7 +43,7 @@ public static class Part1CardCostRender
 
         // there's a 6+ texture but since Energy can't go above 6 normally I have excluded it from consideration
         if (energyCost > 0)
-            costTextures.Add(CardCostRender.GetTextureByName($"energy_cost_{Mathf.Min(6, energyCost)}"));
+            costTextures.Add(CardCostRender.GetTextureByName($"energy_cost_{Mathf.Min(7, energyCost)}"));
 
         if (bonesCost > 0)
             costTextures.Add(CardCostRender.GetTextureByName($"bone_cost_{Mathf.Min(14, bonesCost)}"));
@@ -61,7 +61,8 @@ public static class Part1CardCostRender
 
         foreach (CardCostManager.FullCardCost fullCost in customCosts)
         {
-            string key = fullCost.CostName + cardInfo.GetCustomCost(fullCost.CostName);
+            int amount = playableCard?.GetCustomCost(fullCost) ?? cardInfo.GetCustomCost(fullCost);
+            string key = $"{fullCost.ModGUID}_{fullCost.CostName}_{amount}_part1";
             if (CardCostRender.AssembledTextures.ContainsKey(key))
             {
                 if (CardCostRender.AssembledTextures[key] != null)
@@ -71,7 +72,7 @@ public static class Part1CardCostRender
             }
             else
             {
-                Texture2D costTex = fullCost.GetCostTexture?.Invoke(cardInfo.GetCustomCost(fullCost.CostName), cardInfo, playableCard);
+                Texture2D costTex = fullCost.CostTexture(amount, cardInfo, playableCard);
                 if (costTex != null)
                 {
                     costTextures.Add(costTex);
@@ -84,33 +85,4 @@ public static class Part1CardCostRender
         UpdateCardCost?.Invoke(cardInfo, costTextures);
         return costTextures;
     }
-
-    /*#region old
-    public const int MOX_OFFSET = 21;
-
-    public static Texture2D CombineMoxTextures(List<Texture2D> costs) => null;
-
-    public static Texture2D CombineCostTextures(List<Texture2D> costs)
-    {
-        return null;
-        while (costs.Count < 4)
-            costs.Add(null);
-
-        Texture2D baseTexture = TextureHelper.GetImageAsTexture("empty_cost.png", typeof(Part1CardCostRender).Assembly);
-        return TextureHelper.CombineTextures(costs, baseTexture, yStep: COST_OFFSET);
-    }
-
-    [HarmonyPrefix, HarmonyPatch(typeof(CardDisplayer), nameof(CardDisplayer.SetCostSprite))]
-    private static bool Part1And2CardCostDisplayerPatch(CardDisplayer __instance)
-    {
-        // Make sure we are in Leshy's Cabin
-        if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1"))
-            return false;
-        
-        else if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value)
-            return false;
-
-        return true;
-    }
-    #endregion*/
 }
