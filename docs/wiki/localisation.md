@@ -10,19 +10,6 @@ If you want to add your own translations to Inscryption you can use the API's lo
 LocalizationManager.Translate("MyModGUID", null, "Hello", "안녕하세요", Language.Korean);
 ```
 
-### Adding new Languages
-If you want to add your own translations to Inscryption you can use the API's localisation system.
-```csharp
-LocalizationManager.NewLanguage("MyModGUID", "Polish", "PL", "Reset With Polish", pathToCSV);
-```
-
-The csv for your language should be in the following format so it can be imported when needed:
-```
-Column1,Column10,PL
-TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
-_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
-```
-
 ## Default languages
 ---
 The default supported languages are listed in the table below.
@@ -40,3 +27,16 @@ The default supported languages are listed in the table below.
 | ko     | Korean      |
 | zhcn   | Chinese (Simplified) |
 | zhtw   | Chinese (Traditional)|
+
+### Adding new Languages
+If you want to translate into an unsupported language, you can add a new langauge and translation like so:
+```csharp
+LocalizationManager.NewLanguage("MyModGUID", "Polish", "PL", "Reset With Polish", pathToCSV);
+```
+
+Your language file must be a .csv, and formatted in the following way so the API can read it properly:
+```
+Column1,Column10,PL
+TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
+_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
+```

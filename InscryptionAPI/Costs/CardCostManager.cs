@@ -226,7 +226,7 @@ public static class CardCostManager
     /// For example, the cost tier for Bones is equal to (Bones / 3 ), rounded down to the nearest integer.
     /// </summary>
     /// <param name="fullCardCost">The FullCardCost object to modify.</param>
-    /// <param name="getCostTier">int - cost amount.</param>
+    /// <param name="getCostTier">Parameters: int - cost amount. Returns int representing tier value.</param>
     /// <returns>The same FullCardCost so a chain can continue.</returns>
     public static FullCardCost SetCostTier(this FullCardCost fullCardCost, Func<int, int> getCostTier)
     {
@@ -234,6 +234,20 @@ public static class CardCostManager
         return fullCardCost;
     }
 
+    /// <summary>
+    /// Defines what cost amounts for this cost will be offered at the cost choice node.
+    /// For example, the choice node offers 1 Blood, 2 Blood, and 3 Blood.
+    /// 
+    /// If this cost is part of a group (ie shares its ResourceType with another custom cost), ChoiceAmounts is ignored.
+    /// </summary>
+    /// <param name="fullCardCost">The FullCardCost object to modify.</param>
+    /// <param name="choiceAmounts">An array of integers representing cost amounts to offer at the cost choice node.</param>
+    /// <returns>The same FullCardCost so a chain can continue.</returns>
+    public static FullCardCost SetChoiceAmounts(this FullCardCost fullCardCost, params int[] choiceAmounts)
+    {
+        fullCardCost.ChoiceAmounts = choiceAmounts;
+        return fullCardCost;
+    }
     /// <summary>
     /// Sets the function used to determine if a card with this cost can be played by the second turn
     /// </summary>
@@ -269,26 +283,18 @@ public static class CardCostManager
     /// <returns>The same FullCardCost so a chain can continue.</returns>
     public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Texture2D rewardBack)
     {
-        if (!isChoice)
-            fullCardCost.ResourceType = ResourceType.None;
-        else
-            fullCardCost.ResourceType = GuidManager.GetEnumValue<ResourceType>(fullCardCost.ModGUID, fullCardCost.CostName);
-
-        fullCardCost.GetRewardBackTexture = (int i) => rewardBack;
-        fullCardCost.ChoiceAmounts = null;
-
-        return fullCardCost;
+        return fullCardCost.SetFoundAtChoiceNodes(isChoice, (int i) => rewardBack, null);
     }
 
-    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Func<int, Texture2D> rewardBackFunc, params int[] chooseableAmounts)
+    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Func<int, Texture2D> rewardBackFunc, params int[] choiceAmounts)
     {
-        if (!isChoice)
-            fullCardCost.ResourceType = ResourceType.None;
-        else
+        if (isChoice)
             fullCardCost.ResourceType = GuidManager.GetEnumValue<ResourceType>(fullCardCost.ModGUID, fullCardCost.CostName);
+        else
+            fullCardCost.ResourceType = ResourceType.None;
 
         fullCardCost.GetRewardBackTexture = rewardBackFunc;
-        fullCardCost.ChoiceAmounts = chooseableAmounts;
+        fullCardCost.SetChoiceAmounts(choiceAmounts);
 
         return fullCardCost;
     }
@@ -573,6 +579,7 @@ public static class CardCostManager
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature)
             .FindAll(x => x.GetCustomCosts().Exists(y => customCosts.Contains(y)));
 
+        InscryptionAPIPlugin.Logger.LogDebug($"Custom costs to search for: {customCosts.Count}. Found {list.Count} card(s).");
         return list.Count == 0 ? null : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
     }
 
@@ -582,6 +589,7 @@ public static class CardCostManager
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature)
             .FindAll(x => costAmounts.Contains(x.GetCustomCost(customCost)));
 
+        InscryptionAPIPlugin.Logger.LogDebug($"Choice amounts for {customCost.CostName}: {costAmounts.Length}. Found {list.Count} card(s).");
         return list.Count == 0 ? null : CardLoader.Clone(list[SeededRandom.Range(0, list.Count, randomSeed)]);
     }
     public static int GetRandomMoxIndex(int randomSeed)

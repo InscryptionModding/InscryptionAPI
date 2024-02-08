@@ -161,10 +161,20 @@ public static void Init()
 }
 ```
 
+Alternatively, you can set the FullCardCost object's 'ChoiceAmounts' field to an integer array containing the amounts.
+
 #### Grouping Different Costs
 In the event you're adding multiple custom costs to the game, you may want to group them all into a single choice.
 Maybe they're all related to each other, or you don't want to push out other choices at the node.
 Either way, the API offers this functionality.
+
+```c#
+private void Example()
+{
+    FullCardCost cost = CardCostManager.Register(...);
+    cost.ChoiceAmounts = new int[] { 1, 4, 7 };
+}
+```
 
 In order to group custom costs together, they must share the same ResourceType value.
 ```c#

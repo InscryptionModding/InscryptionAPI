@@ -15,6 +15,7 @@ public class TestCost : CustomCardCost
     public override string CostName => "TestCost";
     public static void Init()
     {
+        PatchPlugin.Logger.LogDebug("Adding TestCost");
         CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel)
             .SetCostTier(CostTier)
             .SetCanBePlayedByTurn2WithHand(CanBePlayed)
