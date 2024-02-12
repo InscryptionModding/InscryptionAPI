@@ -34,7 +34,7 @@ public static class CardCostManager
         /// <summary>
         /// Whether or not the cost value can be negative. If false, negative values will be set to 0 when retrieved using API methods.
         /// </summary>
-        public bool CanBeNegative;
+        public bool CanBeNegative = false;
         /// <summary>
         /// The ResourceType of this cost. Determines whether or not this cost can appear as a choice at card cost choice nodes.
         /// If multiple custom costs share the same ResourceType, they will all be part of the same choice pool.
@@ -75,7 +75,7 @@ public static class CardCostManager
         /// Returns:
         ///     An integer representing the cost tier of this cost.
         /// </summary>
-        public Func<int, int> GetCostTier;
+        public Func<int, int> GetCostTier = null;
         /// <summary>
         /// The function used to determine if a card with this cost can be played by turn 2, accounting for other cards in the hand.
         /// Used when creating the starting hand.
@@ -86,13 +86,13 @@ public static class CardCostManager
         /// Returns:
         ///     A bool representing if this card can be played by the second turn.
         /// </summary>
-        public Func<int, CardInfo, List<CardInfo>, bool> GetCanBePlayedByTurn2WithHand;
+        public Func<int, CardInfo, List<CardInfo>, bool> GetCanBePlayedByTurn2WithHand = null;
         /// <summary>
         /// The texture to use for this cost if it appears in a card cost choice node.
         /// </summary>
-        public Func<int, Texture2D> GetRewardBackTexture;
+        public Func<int, Texture> GetRewardBackTexture = null;
 
-        public Texture2D RewardBackTexture(int amount)
+        public Texture RewardBackTexture(int amount)
         {
             if (GetRewardBackTexture == null)
                 return null;
@@ -147,6 +147,7 @@ public static class CardCostManager
             Func<int, CardInfo, PlayableCard, Texture2D> getPixelCostTexture,
             Func<int, int> getCostTier,
             Func<int, CardInfo, List<CardInfo>, bool> getCanBePlayedByTurn2WithHand,
+            Func<int, Texture> getRewardBackTexture,
             bool canBeNegative, ResourceType resourceType, int[] choiceAmounts)
         {
             ModGUID = modGUID;
@@ -157,6 +158,7 @@ public static class CardCostManager
             CanBeNegative = canBeNegative;
             GetCostTier = getCostTier;
             GetCanBePlayedByTurn2WithHand = getCanBePlayedByTurn2WithHand;
+            GetRewardBackTexture = getRewardBackTexture;
             ResourceType = resourceType;
             ChoiceAmounts = choiceAmounts;
 
@@ -172,6 +174,12 @@ public static class CardCostManager
             CostBehaviour = costBehaviour;
             GetCostTexture = getCostTexture;
             GetPixelCostTexture = getPixelCostTexture;
+            CanBeNegative = false;
+            GetCostTier = null;
+            GetCanBePlayedByTurn2WithHand = null;
+            GetRewardBackTexture = null;
+            ResourceType = ResourceType.None;
+            ChoiceAmounts = null;
 
             TypeManager.Add(costName, costBehaviour);
         }
@@ -182,6 +190,7 @@ public static class CardCostManager
                 this.ModGUID, this.CostName, this.CostBehaviour,
                 this.GetCostTexture, this.GetPixelCostTexture,
                 this.GetCostTier, this.GetCanBePlayedByTurn2WithHand,
+                this.GetRewardBackTexture,
                 this.CanBeNegative, this.ResourceType, this.ChoiceAmounts);
             return retval;
         }
@@ -213,8 +222,7 @@ public static class CardCostManager
     public static FullCardCost Register(string modGUID, string costName, Type costBehaviour,
         Func<int, CardInfo, PlayableCard, Texture2D> getCostTexture, Func<int, CardInfo, PlayableCard, Texture2D> getPixelCostTexture)
     {
-        FullCardCost newCost = new(modGUID, costName, costBehaviour, getCostTexture, getPixelCostTexture,
-            null, null, false, ResourceType.None, null);
+        FullCardCost newCost = new(modGUID, costName, costBehaviour, getCostTexture, getPixelCostTexture);
 
         NewCosts.Add(newCost);
         return newCost;
@@ -281,12 +289,12 @@ public static class CardCostManager
     /// <param name="isChoice">Whether this card cost should appear at cost choice nodes. Sets the ResourceType to a unique value if true. Sets the ResourceType to None if false.</param>
     /// <param name="rewardBack">The texture to use at the cost choice node.</param>
     /// <returns>The same FullCardCost so a chain can continue.</returns>
-    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Texture2D rewardBack)
+    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Texture rewardBack)
     {
         return fullCardCost.SetFoundAtChoiceNodes(isChoice, (int i) => rewardBack, null);
     }
 
-    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Func<int, Texture2D> rewardBackFunc, params int[] choiceAmounts)
+    public static FullCardCost SetFoundAtChoiceNodes(this FullCardCost fullCardCost, bool isChoice, Func<int, Texture> rewardBackFunc, params int[] choiceAmounts)
     {
         if (isChoice)
             fullCardCost.ResourceType = GuidManager.GetEnumValue<ResourceType>(fullCardCost.ModGUID, fullCardCost.CostName);
@@ -466,6 +474,7 @@ public static class CardCostManager
     [HarmonyPostfix, HarmonyPatch(typeof(CardSingleChoicesSequencer), nameof(CardSingleChoicesSequencer.GetCardbackTexture))]
     private static void GetCustomCostCardbackTexture(ref Texture __result, CardChoice choice)
     {
+        // custom costs only
         if (choice.resourceType <= ResourceType.Gems)
             return;
 

@@ -70,11 +70,12 @@ public static class CardCostRender
     private static void CreateFullCostSprite(CardDisplayer __instance, CardRenderInfo renderInfo, PlayableCard playableCard)
     {
         // DisplayNull will have already been called, so we just return
+        // Magnificus and Grimora use their own systems so add exceptions for them
         if (renderInfo?.baseInfo == null || __instance.costRenderer == null)
             return;
 
         // don't just check for IsPart1/Part2 since pixel cards can appear in Act 1 (starter deck screen)
-        if (__instance is CardDisplayer3D)
+        if (__instance is CardDisplayer3D && SaveManager.SaveFile.IsPart1)
         {
             __instance.costRenderer.sprite = FinalCostSprite(renderInfo.baseInfo, playableCard, TextureHelper.SpriteType.OversizedCostDecal, 28);
         }
