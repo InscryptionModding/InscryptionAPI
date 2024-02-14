@@ -4,12 +4,16 @@
 # 2.19.4
 - Fixed error when retrieving custom card costs from a card with no custom card costs
 - Fixed cards with custom card costs using the pixel cost icons in some circumstances
-- Added TestCost class to community patches - can be added to the game by enabling "Test Mode"
+- Fixed modifications to base Pelt choice amounts not being reflected in-game
+- Added additional functionality to FullCardCost - see wiki and documentation for more info
+- Added TestCost class to community patches - can be added to the game by enabling "Test Mode" in the configs
 - Added extension methods for setting and getting a custom card cost using the CustomCardCost class instance
-- Added additional functionality to FullCardCost, see wiki and documentation for more info
 - Custom costs now support cost tiers and checking CanBePlayedByTurn2WithHand
 - Custom costs' textures now differentiate whether they're from Acts 1, 2, or 3 when storing them post-assemblage
-- Reverted undocumented change to some SniperFix parameter names in previous version
+- Card choices when trading Pelts are now positioned correctly for amounts non-divisible by 4
+- Publicised a number of TradePeltSequence patch methods
+- Refactored some TradePeltSequence patches
+- Reverted undocumented changes to some SniperFix parameter names in previous version
 
 # 2.19.3
 - Fixed index error related to Totem sigils
