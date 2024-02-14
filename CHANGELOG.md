@@ -5,6 +5,7 @@
 - Fixed error when retrieving custom card costs from a card with no custom card costs
 - Fixed cards with custom card costs using the pixel cost icons in some circumstances
 - Fixed modifications to base Pelt choice amounts not being reflected in-game
+- Added config to randomise cost choice order
 - Added additional functionality to FullCardCost - see wiki and documentation for more info
 - Added TestCost class to community patches - can be added to the game by enabling "Test Mode" in the configs
 - Added extension methods for setting and getting a custom card cost using the CustomCardCost class instance

@@ -100,6 +100,7 @@ public static class TribeManager
         while (tribes.Count > 3) // if there are more than 3 tribes, reduce it to 3
             tribes.RemoveAt(SeededRandom.Range(0, tribes.Count, randomSeed++));
 
+        // randomise the order the Tribes will be displayed
         List<CardChoice> list2 = new();
         foreach (Tribe tribe in tribes.Randomize())
         {
@@ -108,6 +109,7 @@ public static class TribeManager
                 tribe = tribe
             });
         }
+
         __result = list2;
         return false;
     }
