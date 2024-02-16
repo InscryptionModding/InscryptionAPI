@@ -16,10 +16,11 @@ public class TestCost : CustomCardCost
     public static void Init()
     {
         PatchPlugin.Logger.LogDebug("Adding TestCost");
+        
         CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel)
             .SetCostTier(CostTier)
             .SetCanBePlayedByTurn2WithHand(CanBePlayed)
-            .SetFoundAtChoiceNodes(true, ReverseColours((Texture2D)ResourceBank.Get<Texture>("Art/Cards/RewardBacks/card_rewardback_bird")));
+            .SetFoundAtChoiceNodes(true, TextureHelper.GetImageAsTexture("testCost.png", typeof(TestCost).Assembly));
     }
 
     public static int CostTier(int amount)
