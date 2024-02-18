@@ -79,7 +79,7 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
     <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
     <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
@@ -113,7 +113,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -162,7 +162,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -189,7 +189,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">cardCost</span></td>
         <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
 </td>
@@ -219,7 +219,9 @@
   </table>
   <a id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue*"></a>
   <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue(System.Int32,DiskCardGame.PlayableCard)">CostStatPointValue(Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"><p>The (stat point) SP value of the custom cost. Used in a few places by the game to determine how powerful a card can be, (eg Build-A-Card).</p>
+  <div class="markdown level1 summary"><p>Represents how many stat points (SP) each cost value will give.
+For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 stat points.</p>
+<p>DOES NOT ACTUALLY AFFECT ANYTHING ON ITS OWN. You must provide the logic that reads and uses this value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -237,15 +239,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">cardCost</span></td>
-        <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
+        <td><p>How high the cost the PlayableCard has.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">DiskCardGame.PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
-        <td><p>The PlayableCard currently being checked.</p>
+        <td><p>The PlayableCard being checked.</p>
 </td>
       </tr>
     </tbody>
@@ -260,8 +262,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td></td>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>How much SP the PlayableCard&apos;s cost value gives.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -285,7 +288,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">cardCost</span></td>
         <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
 </td>
@@ -334,7 +337,7 @@ Most common use case is implementing the logic for paying for this cost.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">cardCost</span></td>
         <td><p>How many of this cost the PlayableCard needs in order to be played.</p>
 </td>
@@ -357,7 +360,7 @@ Most common use case is implementing the logic for paying for this cost.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>

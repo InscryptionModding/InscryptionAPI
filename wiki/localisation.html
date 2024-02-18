@@ -76,13 +76,6 @@
 <h3 id="adding-new-translations">Adding new Translations</h3>
 <p>If you want to add your own translations to Inscryption you can use the API&#39;s localisation system.</p>
 <pre><code class="lang-csharp">LocalizationManager.Translate(&quot;MyModGUID&quot;, null, &quot;Hello&quot;, &quot;안녕하세요&quot;, Language.Korean);
-</code></pre><h3 id="adding-new-languages">Adding new Languages</h3>
-<p>If you want to add your own translations to Inscryption you can use the API&#39;s localisation system.</p>
-<pre><code class="lang-csharp">LocalizationManager.NewLanguage(&quot;MyModGUID&quot;, &quot;Polish&quot;, &quot;PL&quot;, &quot;Reset With Polish&quot;, pathToCSV);
-</code></pre><p>The csv for your language should be in the following format so it can be imported when needed:</p>
-<pre><code>Column1,Column10,PL
-TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
-_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
 </code></pre><h2 id="default-languages">Default languages</h2>
 <hr>
 <p>The default supported languages are listed in the table below.</p>
@@ -140,7 +133,14 @@ _OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
 </tr>
 </tbody>
 </table>
-</article>
+<h3 id="adding-new-languages">Adding new Languages</h3>
+<p>If you want to translate into an unsupported language, you can add a new langauge and translation like so:</p>
+<pre><code class="lang-csharp">LocalizationManager.NewLanguage(&quot;MyModGUID&quot;, &quot;Polish&quot;, &quot;PL&quot;, &quot;Reset With Polish&quot;, pathToCSV);
+</code></pre><p>Your language file must be a .csv, and formatted in the following way so the API can read it properly:</p>
+<pre><code>Column1,Column10,PL
+TALKING_STOAT_DIALOGUE_STOATSACRIFICE_REPEAT_#2_852_M,Again...,Ponownie...
+_OPPONENTSKIPTURN_REPEAT_#1_558_M,Pass.,Przechodzić.
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

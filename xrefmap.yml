@@ -3679,12 +3679,24 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetCustomCardCosts
   nameWithType: CardExtensions.GetCustomCardCosts
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  name: GetCustomCost(CardInfo, CardCostManager.FullCardCost)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_CardInfo_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo, InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  nameWithType: CardExtensions.GetCustomCost(CardInfo, CardCostManager.FullCardCost)
 - uid: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo,System.String,System.Boolean)
   name: GetCustomCost(CardInfo, String, Boolean)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_CardInfo_System_String_System_Boolean_
   commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo,System.String,System.Boolean)
   fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.CardInfo, System.String, System.Boolean)
   nameWithType: CardExtensions.GetCustomCost(CardInfo, String, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.PlayableCard,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  name: GetCustomCost(PlayableCard, CardCostManager.FullCardCost)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_PlayableCard_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.PlayableCard,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.PlayableCard, InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  nameWithType: CardExtensions.GetCustomCost(PlayableCard, CardCostManager.FullCardCost)
 - uid: InscryptionAPI.Card.CardExtensions.GetCustomCost(DiskCardGame.PlayableCard,System.String,System.Boolean)
   name: GetCustomCost(PlayableCard, String, Boolean)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost_DiskCardGame_PlayableCard_System_String_System_Boolean_
@@ -3698,6 +3710,24 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost
   nameWithType: CardExtensions.GetCustomCost
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCost``1(DiskCardGame.CardInfo,System.Boolean)
+  name: GetCustomCost<T>(CardInfo, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost__1_DiskCardGame_CardInfo_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCost``1(DiskCardGame.CardInfo,System.Boolean)
+  name.vb: GetCustomCost(Of T)(CardInfo, Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost<T>(DiskCardGame.CardInfo, System.Boolean)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.GetCustomCost(Of T)(DiskCardGame.CardInfo, System.Boolean)
+  nameWithType: CardExtensions.GetCustomCost<T>(CardInfo, Boolean)
+  nameWithType.vb: CardExtensions.GetCustomCost(Of T)(CardInfo, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCost``1(DiskCardGame.PlayableCard,System.Boolean)
+  name: GetCustomCost<T>(PlayableCard, Boolean)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCost__1_DiskCardGame_PlayableCard_System_Boolean_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCost``1(DiskCardGame.PlayableCard,System.Boolean)
+  name.vb: GetCustomCost(Of T)(PlayableCard, Boolean)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCost<T>(DiskCardGame.PlayableCard, System.Boolean)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.GetCustomCost(Of T)(DiskCardGame.PlayableCard, System.Boolean)
+  nameWithType: CardExtensions.GetCustomCost<T>(PlayableCard, Boolean)
+  nameWithType.vb: CardExtensions.GetCustomCost(Of T)(PlayableCard, Boolean)
 - uid: InscryptionAPI.Card.CardExtensions.GetCustomCosts(DiskCardGame.CardInfo)
   name: GetCustomCosts(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCosts_DiskCardGame_CardInfo_
@@ -4149,6 +4179,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasCardMetaCategory
   nameWithType: CardExtensions.HasCardMetaCategory
+- uid: InscryptionAPI.Card.CardExtensions.HasCustomCost(DiskCardGame.CardInfo,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  name: HasCustomCost(CardInfo, CardCostManager.FullCardCost)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasCustomCost_DiskCardGame_CardInfo_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasCustomCost(DiskCardGame.CardInfo,InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  fullName: InscryptionAPI.Card.CardExtensions.HasCustomCost(DiskCardGame.CardInfo, InscryptionAPI.CardCosts.CardCostManager.FullCardCost)
+  nameWithType: CardExtensions.HasCustomCost(CardInfo, CardCostManager.FullCardCost)
+- uid: InscryptionAPI.Card.CardExtensions.HasCustomCost*
+  name: HasCustomCost
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasCustomCost_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasCustomCost
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasCustomCost
+  nameWithType: CardExtensions.HasCustomCost
 - uid: InscryptionAPI.Card.CardExtensions.HasOpposingCard(DiskCardGame.PlayableCard)
   name: HasOpposingCard(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasOpposingCard_DiskCardGame_PlayableCard_
@@ -5128,6 +5171,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetCustomCost
   nameWithType: CardExtensions.SetCustomCost
+- uid: InscryptionAPI.Card.CardExtensions.SetCustomCost``1(DiskCardGame.CardInfo,System.Int32)
+  name: SetCustomCost<T>(CardInfo, Int32)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCustomCost__1_DiskCardGame_CardInfo_System_Int32_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetCustomCost``1(DiskCardGame.CardInfo,System.Int32)
+  name.vb: SetCustomCost(Of T)(CardInfo, Int32)
+  fullName: InscryptionAPI.Card.CardExtensions.SetCustomCost<T>(DiskCardGame.CardInfo, System.Int32)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetCustomCost(Of T)(DiskCardGame.CardInfo, System.Int32)
+  nameWithType: CardExtensions.SetCustomCost<T>(CardInfo, Int32)
+  nameWithType.vb: CardExtensions.SetCustomCost(Of T)(CardInfo, Int32)
 - uid: InscryptionAPI.Card.CardExtensions.SetCustomUnlockCheck(DiskCardGame.CardInfo,Func{System.Boolean,System.Int32,System.Boolean})
   name: SetCustomUnlockCheck(CardInfo, Func<Boolean, Int32, Boolean>)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetCustomUnlockCheck_DiskCardGame_CardInfo_Func_System_Boolean_System_Int32_System_Boolean__
@@ -8480,21 +8532,46 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.CardCosts.CardCostManager.AllCustomCosts
   nameWithType: CardCostManager.AllCustomCosts
+- uid: InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(System.Collections.IEnumerable{InscryptionAPI.CardCosts.CardCostManager.FullCardCost},Type)
+  name: CostByBehaviour(IEnumerable<CardCostManager.FullCardCost>, Type)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_CostByBehaviour_System_Collections_IEnumerable_InscryptionAPI_CardCosts_CardCostManager_FullCardCost__Type_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(System.Collections.IEnumerable{InscryptionAPI.CardCosts.CardCostManager.FullCardCost},Type)
+  name.vb: CostByBehaviour(IEnumerable(Of CardCostManager.FullCardCost), Type)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(System.Collections.IEnumerable<InscryptionAPI.CardCosts.CardCostManager.FullCardCost>, Type)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(System.Collections.IEnumerable(Of InscryptionAPI.CardCosts.CardCostManager.FullCardCost), Type)
+  nameWithType: CardCostManager.CostByBehaviour(IEnumerable<CardCostManager.FullCardCost>, Type)
+  nameWithType.vb: CardCostManager.CostByBehaviour(IEnumerable(Of CardCostManager.FullCardCost), Type)
+- uid: InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour*
+  name: CostByBehaviour
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_CostByBehaviour_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour
+  nameWithType: CardCostManager.CostByBehaviour
 - uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost
   name: CardCostManager.FullCardCost
   href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html
   commentId: T:InscryptionAPI.CardCosts.CardCostManager.FullCardCost
   fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost
   nameWithType: CardCostManager.FullCardCost
-- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,System.Type,System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
   name: FullCardCost(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>)
-  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost__ctor_System_String_System_String_System_Type_System_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__System_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__
-  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,System.Type,System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost__ctor_System_String_System_String_Type_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
   name.vb: FullCardCost(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D))
-  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, System.Type, System.Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, System.Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>)
-  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, System.Type, System.Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), System.Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, Type, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, Type, Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D))
   nameWithType: CardCostManager.FullCardCost.FullCardCost(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>)
   nameWithType.vb: CardCostManager.FullCardCost.FullCardCost(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D))
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,System.Int32},Func{System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo},System.Boolean},Func{System.Int32,UnityEngine.Texture},System.Boolean,DiskCardGame.ResourceType,System.Int32[])
+  name: FullCardCost(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, Int32>, Func<Int32, CardInfo, List<CardInfo>, Boolean>, Func<Int32, Texture>, Boolean, ResourceType, Int32[])
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost__ctor_System_String_System_String_Type_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__Func_System_Int32_System_Int32__Func_System_Int32_DiskCardGame_CardInfo_List_DiskCardGame_CardInfo__System_Boolean__Func_System_Int32_UnityEngine_Texture__System_Boolean_DiskCardGame_ResourceType_System_Int32___
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,System.Int32},Func{System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo},System.Boolean},Func{System.Int32,UnityEngine.Texture},System.Boolean,DiskCardGame.ResourceType,System.Int32[])
+  name.vb: FullCardCost(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, Int32), Func(Of Int32, CardInfo, List(Of CardInfo), Boolean), Func(Of Int32, Texture), Boolean, ResourceType, Int32())
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, Type, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, Func<System.Int32, System.Int32>, Func<System.Int32, DiskCardGame.CardInfo, List<DiskCardGame.CardInfo>, System.Boolean>, Func<System.Int32, UnityEngine.Texture>, System.Boolean, DiskCardGame.ResourceType, System.Int32[])
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost(System.String, System.String, Type, Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), Func(Of System.Int32, System.Int32), Func(Of System.Int32, DiskCardGame.CardInfo, List(Of DiskCardGame.CardInfo), System.Boolean), Func(Of System.Int32, UnityEngine.Texture), System.Boolean, DiskCardGame.ResourceType, System.Int32())
+  nameWithType: CardCostManager.FullCardCost.FullCardCost(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, Int32>, Func<Int32, CardInfo, List<CardInfo>, Boolean>, Func<Int32, Texture>, Boolean, ResourceType, Int32[])
+  nameWithType.vb: CardCostManager.FullCardCost.FullCardCost(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, Int32), Func(Of Int32, CardInfo, List(Of CardInfo), Boolean), Func(Of Int32, Texture), Boolean, ResourceType, Int32())
 - uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.#ctor*
   name: FullCardCost
   href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost__ctor_
@@ -8502,6 +8579,34 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.FullCardCost
   nameWithType: CardCostManager.FullCardCost.FullCardCost
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBeNegative
+  name: CanBeNegative
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CanBeNegative
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBeNegative
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBeNegative
+  nameWithType: CardCostManager.FullCardCost.CanBeNegative
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo})
+  name: CanBePlayedByTurn2WithHand(Int32, CardInfo, List<CardInfo>)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CanBePlayedByTurn2WithHand_System_Int32_DiskCardGame_CardInfo_List_DiskCardGame_CardInfo__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo})
+  name.vb: CanBePlayedByTurn2WithHand(Int32, CardInfo, List(Of CardInfo))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(System.Int32, DiskCardGame.CardInfo, List<DiskCardGame.CardInfo>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(System.Int32, DiskCardGame.CardInfo, List(Of DiskCardGame.CardInfo))
+  nameWithType: CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(Int32, CardInfo, List<CardInfo>)
+  nameWithType.vb: CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand(Int32, CardInfo, List(Of CardInfo))
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand*
+  name: CanBePlayedByTurn2WithHand
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CanBePlayedByTurn2WithHand_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand
+  nameWithType: CardCostManager.FullCardCost.CanBePlayedByTurn2WithHand
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ChoiceAmounts
+  name: ChoiceAmounts
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_ChoiceAmounts
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ChoiceAmounts
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ChoiceAmounts
+  nameWithType: CardCostManager.FullCardCost.ChoiceAmounts
 - uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.Clone
   name: Clone()
   href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_Clone
@@ -8527,6 +8632,38 @@ references:
   commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostName
   fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostName
   nameWithType: CardCostManager.FullCardCost.CostName
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture(System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard)
+  name: CostTexture(Int32, CardInfo, PlayableCard)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CostTexture_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture(System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture(System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard)
+  nameWithType: CardCostManager.FullCardCost.CostTexture(Int32, CardInfo, PlayableCard)
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture*
+  name: CostTexture
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CostTexture_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTexture
+  nameWithType: CardCostManager.FullCardCost.CostTexture
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier(System.Int32)
+  name: CostTier(Int32)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CostTier_System_Int32_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier(System.Int32)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier(System.Int32)
+  nameWithType: CardCostManager.FullCardCost.CostTier(Int32)
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier*
+  name: CostTier
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_CostTier_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.CostTier
+  nameWithType: CardCostManager.FullCardCost.CostTier
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetCanBePlayedByTurn2WithHand
+  name: GetCanBePlayedByTurn2WithHand
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_GetCanBePlayedByTurn2WithHand
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetCanBePlayedByTurn2WithHand
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetCanBePlayedByTurn2WithHand
+  nameWithType: CardCostManager.FullCardCost.GetCanBePlayedByTurn2WithHand
 - uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetCostTexture
   name: GetCostTexture
   href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_GetCostTexture
@@ -8545,12 +8682,121 @@ references:
   commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetPixelCostTexture
   fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetPixelCostTexture
   nameWithType: CardCostManager.FullCardCost.GetPixelCostTexture
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetRewardBackTexture
+  name: GetRewardBackTexture
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_GetRewardBackTexture
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetRewardBackTexture
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.GetRewardBackTexture
+  nameWithType: CardCostManager.FullCardCost.GetRewardBackTexture
 - uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ModGUID
   name: ModGUID
   href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_ModGUID
   commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ModGUID
   fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ModGUID
   nameWithType: CardCostManager.FullCardCost.ModGUID
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture(System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard)
+  name: PixelCostTexture(Int32, CardInfo, PlayableCard)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_PixelCostTexture_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture(System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture(System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard)
+  nameWithType: CardCostManager.FullCardCost.PixelCostTexture(Int32, CardInfo, PlayableCard)
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture*
+  name: PixelCostTexture
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_PixelCostTexture_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.PixelCostTexture
+  nameWithType: CardCostManager.FullCardCost.PixelCostTexture
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ResourceType
+  name: ResourceType
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_ResourceType
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ResourceType
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.ResourceType
+  nameWithType: CardCostManager.FullCardCost.ResourceType
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture(System.Int32)
+  name: RewardBackTexture(Int32)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_RewardBackTexture_System_Int32_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture(System.Int32)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture(System.Int32)
+  nameWithType: CardCostManager.FullCardCost.RewardBackTexture(Int32)
+- uid: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture*
+  name: RewardBackTexture
+  href: api/InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html#InscryptionAPI_CardCosts_CardCostManager_FullCardCost_RewardBackTexture_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.FullCardCost.RewardBackTexture
+  nameWithType: CardCostManager.FullCardCost.RewardBackTexture
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard(System.Int32,List{InscryptionAPI.CardCosts.CardCostManager.FullCardCost})
+  name: GetRandomChoosableCustomCostCard(Int32, List<CardCostManager.FullCardCost>)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableCustomCostCard_System_Int32_List_InscryptionAPI_CardCosts_CardCostManager_FullCardCost__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard(System.Int32,List{InscryptionAPI.CardCosts.CardCostManager.FullCardCost})
+  name.vb: GetRandomChoosableCustomCostCard(Int32, List(Of CardCostManager.FullCardCost))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard(System.Int32, List<InscryptionAPI.CardCosts.CardCostManager.FullCardCost>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard(System.Int32, List(Of InscryptionAPI.CardCosts.CardCostManager.FullCardCost))
+  nameWithType: CardCostManager.GetRandomChoosableCustomCostCard(Int32, List<CardCostManager.FullCardCost>)
+  nameWithType.vb: CardCostManager.GetRandomChoosableCustomCostCard(Int32, List(Of CardCostManager.FullCardCost))
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard*
+  name: GetRandomChoosableCustomCostCard
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableCustomCostCard_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCard
+  nameWithType: CardCostManager.GetRandomChoosableCustomCostCard
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(System.Int32,InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Int32[])
+  name: GetRandomChoosableCustomCostCardWithAmounts(Int32, CardCostManager.FullCardCost, Int32[])
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableCustomCostCardWithAmounts_System_Int32_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Int32___
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(System.Int32,InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Int32[])
+  name.vb: GetRandomChoosableCustomCostCardWithAmounts(Int32, CardCostManager.FullCardCost, Int32())
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(System.Int32, InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Int32[])
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(System.Int32, InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Int32())
+  nameWithType: CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(Int32, CardCostManager.FullCardCost, Int32[])
+  nameWithType.vb: CardCostManager.GetRandomChoosableCustomCostCardWithAmounts(Int32, CardCostManager.FullCardCost, Int32())
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts*
+  name: GetRandomChoosableCustomCostCardWithAmounts
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableCustomCostCardWithAmounts_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableCustomCostCardWithAmounts
+  nameWithType: CardCostManager.GetRandomChoosableCustomCostCardWithAmounts
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard(System.Int32)
+  name: GetRandomChoosableEnergyCard(Int32)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableEnergyCard_System_Int32_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard(System.Int32)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard(System.Int32)
+  nameWithType: CardCostManager.GetRandomChoosableEnergyCard(Int32)
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard*
+  name: GetRandomChoosableEnergyCard
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableEnergyCard_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableEnergyCard
+  nameWithType: CardCostManager.GetRandomChoosableEnergyCard
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard(System.Int32,DiskCardGame.GemType)
+  name: GetRandomChoosableMoxCard(Int32, GemType)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableMoxCard_System_Int32_DiskCardGame_GemType_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard(System.Int32,DiskCardGame.GemType)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard(System.Int32, DiskCardGame.GemType)
+  nameWithType: CardCostManager.GetRandomChoosableMoxCard(Int32, GemType)
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard*
+  name: GetRandomChoosableMoxCard
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableMoxCard_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard
+  nameWithType: CardCostManager.GetRandomChoosableMoxCard
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex(System.Int32)
+  name: GetRandomMoxIndex(Int32)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomMoxIndex_System_Int32_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex(System.Int32)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex(System.Int32)
+  nameWithType: CardCostManager.GetRandomMoxIndex(Int32)
+- uid: InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex*
+  name: GetRandomMoxIndex
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_GetRandomMoxIndex_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.GetRandomMoxIndex
+  nameWithType: CardCostManager.GetRandomMoxIndex
 - uid: InscryptionAPI.CardCosts.CardCostManager.ModifyCustomCostList
   name: ModifyCustomCostList
   href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_ModifyCustomCostList
@@ -8570,13 +8816,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.CardCosts.CardCostManager.PlaySelectedCardToSlot
   nameWithType: CardCostManager.PlaySelectedCardToSlot
-- uid: InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,System.Type,System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
+- uid: InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
   name: Register(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>)
-  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_Register_System_String_System_String_System_Type_System_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__System_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__
-  commentId: M:InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,System.Type,System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},System.Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_Register_System_String_System_String_Type_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})
   name.vb: Register(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D))
-  fullName: InscryptionAPI.CardCosts.CardCostManager.Register(System.String, System.String, System.Type, System.Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, System.Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>)
-  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.Register(System.String, System.String, System.Type, System.Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), System.Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.Register(System.String, System.String, Type, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>, Func<System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.Register(System.String, System.String, Type, Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D), Func(Of System.Int32, DiskCardGame.CardInfo, DiskCardGame.PlayableCard, UnityEngine.Texture2D))
   nameWithType: CardCostManager.Register(String, String, Type, Func<Int32, CardInfo, PlayableCard, Texture2D>, Func<Int32, CardInfo, PlayableCard, Texture2D>)
   nameWithType.vb: CardCostManager.Register(String, String, Type, Func(Of Int32, CardInfo, PlayableCard, Texture2D), Func(Of Int32, CardInfo, PlayableCard, Texture2D))
 - uid: InscryptionAPI.CardCosts.CardCostManager.Register*
@@ -8586,6 +8832,89 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.CardCosts.CardCostManager.Register
   nameWithType: CardCostManager.Register
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean)
+  name: SetCanBeNegative(CardCostManager.FullCardCost, Boolean)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCanBeNegative_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Boolean)
+  nameWithType: CardCostManager.SetCanBeNegative(CardCostManager.FullCardCost, Boolean)
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative*
+  name: SetCanBeNegative
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCanBeNegative_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCanBeNegative
+  nameWithType: CardCostManager.SetCanBeNegative
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo},System.Boolean})
+  name: SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func<Int32, CardInfo, List<CardInfo>, Boolean>)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCanBePlayedByTurn2WithHand_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_Func_System_Int32_DiskCardGame_CardInfo_List_DiskCardGame_CardInfo__System_Boolean__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo},System.Boolean})
+  name.vb: SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func(Of Int32, CardInfo, List(Of CardInfo), Boolean))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, Func<System.Int32, DiskCardGame.CardInfo, List<DiskCardGame.CardInfo>, System.Boolean>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, Func(Of System.Int32, DiskCardGame.CardInfo, List(Of DiskCardGame.CardInfo), System.Boolean))
+  nameWithType: CardCostManager.SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func<Int32, CardInfo, List<CardInfo>, Boolean>)
+  nameWithType.vb: CardCostManager.SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func(Of Int32, CardInfo, List(Of CardInfo), Boolean))
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand*
+  name: SetCanBePlayedByTurn2WithHand
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCanBePlayedByTurn2WithHand_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand
+  nameWithType: CardCostManager.SetCanBePlayedByTurn2WithHand
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Int32[])
+  name: SetChoiceAmounts(CardCostManager.FullCardCost, Int32[])
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetChoiceAmounts_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Int32___
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Int32[])
+  name.vb: SetChoiceAmounts(CardCostManager.FullCardCost, Int32())
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Int32[])
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Int32())
+  nameWithType: CardCostManager.SetChoiceAmounts(CardCostManager.FullCardCost, Int32[])
+  nameWithType.vb: CardCostManager.SetChoiceAmounts(CardCostManager.FullCardCost, Int32())
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts*
+  name: SetChoiceAmounts
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetChoiceAmounts_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetChoiceAmounts
+  nameWithType: CardCostManager.SetChoiceAmounts
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCostTier(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,System.Int32})
+  name: SetCostTier(CardCostManager.FullCardCost, Func<Int32, Int32>)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCostTier_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_Func_System_Int32_System_Int32__
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetCostTier(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,System.Int32})
+  name.vb: SetCostTier(CardCostManager.FullCardCost, Func(Of Int32, Int32))
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCostTier(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, Func<System.Int32, System.Int32>)
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.SetCostTier(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, Func(Of System.Int32, System.Int32))
+  nameWithType: CardCostManager.SetCostTier(CardCostManager.FullCardCost, Func<Int32, Int32>)
+  nameWithType.vb: CardCostManager.SetCostTier(CardCostManager.FullCardCost, Func(Of Int32, Int32))
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetCostTier*
+  name: SetCostTier
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetCostTier_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.SetCostTier
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetCostTier
+  nameWithType: CardCostManager.SetCostTier
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,Func{System.Int32,UnityEngine.Texture},System.Int32[])
+  name: SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func<Int32, Texture>, Int32[])
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_Func_System_Int32_UnityEngine_Texture__System_Int32___
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,Func{System.Int32,UnityEngine.Texture},System.Int32[])
+  name.vb: SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func(Of Int32, Texture), Int32())
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Boolean, Func<System.Int32, UnityEngine.Texture>, System.Int32[])
+  fullName.vb: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Boolean, Func(Of System.Int32, UnityEngine.Texture), System.Int32())
+  nameWithType: CardCostManager.SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func<Int32, Texture>, Int32[])
+  nameWithType.vb: CardCostManager.SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func(Of Int32, Texture), Int32())
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,UnityEngine.Texture)
+  name: SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Texture)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_UnityEngine_Texture_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,UnityEngine.Texture)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost, System.Boolean, UnityEngine.Texture)
+  nameWithType: CardCostManager.SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Texture)
+- uid: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes*
+  name: SetFoundAtChoiceNodes
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes
+  nameWithType: CardCostManager.SetFoundAtChoiceNodes
 - uid: InscryptionAPI.CardCosts.CardCostManager.SyncCustomCostList
   name: SyncCustomCostList()
   href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_SyncCustomCostList
@@ -14425,6 +14754,47 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Pelts.Patches.BuyPeltsSequencer_GiveFreePeltSequence.ChangeFreeCard
   nameWithType: BuyPeltsSequencer_GiveFreePeltSequence.ChangeFreeCard
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards
+  name: TradePeltsSequencer_CreatePeltCards
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.html
+  commentId: T:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards
+  nameWithType: TradePeltsSequencer_CreatePeltCards
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts(System.Int32,System.Int32)
+  name: NumPelts(Int32, Int32)
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.html#InscryptionAPI_Pelts_Patches_TradePeltsSequencer_CreatePeltCards_NumPelts_System_Int32_System_Int32_
+  commentId: M:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts(System.Int32,System.Int32)
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts(System.Int32, System.Int32)
+  nameWithType: TradePeltsSequencer_CreatePeltCards.NumPelts(Int32, Int32)
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts*
+  name: NumPelts
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.html#InscryptionAPI_Pelts_Patches_TradePeltsSequencer_CreatePeltCards_NumPelts_
+  commentId: Overload:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_CreatePeltCards.NumPelts
+  nameWithType: TradePeltsSequencer_CreatePeltCards.NumPelts
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts
+  name: TradePeltsSequencer_TradePelts
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.html
+  commentId: T:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts
+  nameWithType: TradePeltsSequencer_TradePelts
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(DiskCardGame.TradePeltsSequencer,List{DiskCardGame.CardInfo},System.Int32,System.Boolean)
+  name: CentreCreateTradeCards(TradePeltsSequencer, List<CardInfo>, Int32, Boolean)
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.html#InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_CentreCreateTradeCards_DiskCardGame_TradePeltsSequencer_List_DiskCardGame_CardInfo__System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(DiskCardGame.TradePeltsSequencer,List{DiskCardGame.CardInfo},System.Int32,System.Boolean)
+  name.vb: CentreCreateTradeCards(TradePeltsSequencer, List(Of CardInfo), Int32, Boolean)
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(DiskCardGame.TradePeltsSequencer, List<DiskCardGame.CardInfo>, System.Int32, System.Boolean)
+  fullName.vb: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(DiskCardGame.TradePeltsSequencer, List(Of DiskCardGame.CardInfo), System.Int32, System.Boolean)
+  nameWithType: TradePeltsSequencer_TradePelts.CentreCreateTradeCards(TradePeltsSequencer, List<CardInfo>, Int32, Boolean)
+  nameWithType.vb: TradePeltsSequencer_TradePelts.CentreCreateTradeCards(TradePeltsSequencer, List(Of CardInfo), Int32, Boolean)
+- uid: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards*
+  name: CentreCreateTradeCards
+  href: api/InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.html#InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_CentreCreateTradeCards_
+  commentId: Overload:InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards
+  isSpec: "True"
+  fullName: InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards
+  nameWithType: TradePeltsSequencer_TradePelts.CentreCreateTradeCards
 - uid: InscryptionAPI.Pelts.PeltManager
   name: PeltManager
   href: api/InscryptionAPI.Pelts.PeltManager.html
