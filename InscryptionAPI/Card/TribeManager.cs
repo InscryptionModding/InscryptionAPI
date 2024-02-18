@@ -100,6 +100,7 @@ public static class TribeManager
         while (tribes.Count > 3) // if there are more than 3 tribes, reduce it to 3
             tribes.RemoveAt(SeededRandom.Range(0, tribes.Count, randomSeed++));
 
+        // randomise the order the Tribes will be displayed
         List<CardChoice> list2 = new();
         foreach (Tribe tribe in tribes.Randomize())
         {
@@ -108,6 +109,7 @@ public static class TribeManager
                 tribe = tribe
             });
         }
+
         __result = list2;
         return false;
     }
@@ -140,7 +142,7 @@ public static class TribeManager
     }
     private static Texture2D MakePlaceholderCardback(Texture2D tribeIcon)
     {
-        Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", Assembly.GetExecutingAssembly());
+        Texture2D emptyCardback = TextureHelper.GetImageAsTexture("empty_rewardCardBack.png", typeof(TribeManager).Assembly);
         if (tribeIcon == null) // if no tribe icon, return the empty card texture
             return emptyCardback;
 

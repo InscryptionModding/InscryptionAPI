@@ -24,10 +24,7 @@ public static partial class LocalizationManager
                 InsertTranslation(translation);
             }
 
-            if (OnLanguageLoaded != null)
-            {
-                OnLanguageLoaded(language);
-            }
+            OnLanguageLoaded?.Invoke(language);
         }
         
         [HarmonyPatch(typeof(Localization), nameof(Localization.TrySetToSystemLanguage))]

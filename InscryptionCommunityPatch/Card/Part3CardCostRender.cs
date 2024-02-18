@@ -619,10 +619,11 @@ public static class Part3CardCostRender
         else
             customCosts = __instance.Info.GetCustomCosts();
 
+        // take the 'one' texture and use it as a base for creating the rest of the textures
         foreach (CardCostManager.FullCardCost fullCost in customCosts)
         {
             Texture2D costTex = null;
-            string key = fullCost.CostName + 1;
+            string key = $"{fullCost.ModGUID}_{fullCost.CostName}_1_part3";
             if (CardCostRender.AssembledTextures.ContainsKey(key))
             {
                 if (CardCostRender.AssembledTextures[key] != null)
@@ -632,7 +633,7 @@ public static class Part3CardCostRender
             }
             else
             {
-                Texture2D oneTex = fullCost.GetCostTexture?.Invoke(1, __instance.Info, playableCard);
+                Texture2D oneTex = fullCost.CostTexture(1, __instance.Info, playableCard);
                 if (oneTex != null)
                 {
                     costTex = oneTex;
@@ -641,9 +642,10 @@ public static class Part3CardCostRender
             }
             if (costTex != null)
             {
+                int amount = playableCard?.GetCustomCost(fullCost) ?? __instance.Info.GetCustomCost(fullCost);
                 costDisplays.Add(new(
                     fullCost.CostName,
-                    GetIconifiedCostTexture(AssembledTextures[fullCost.CostName], __instance.Info.GetCustomCost(fullCost.CostName))
+                    GetIconifiedCostTexture(AssembledTextures[key], amount)
                     ));
             }
         }

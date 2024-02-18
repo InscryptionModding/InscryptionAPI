@@ -7,6 +7,8 @@ With the API, it's possible to create cards that cost multiple types of resource
 There may come a time where the base costs don't meet your needs. Or maybe you just want to make a new cost.
 Regardless of reason, the API provides a few ways of creating a basic card cost using the CardCostManager.
 
+The community patches contain a TestCost class that implements many of the features this page will cover.
+
 ### Creating a New Cost
 To create a new card cost, you need to create a new class that inherits from the API's [CustomCardCost](InscryptionAPI.CardCosts.CustomCardCost) class.
 
@@ -74,6 +76,121 @@ public static Texture2D PixelTextureMethod(int cardCost, CardInfo info, Playable
 
 Card cost textures vary based on what part of the game the cost will be displayed in.
 For Act 1, textures must be 64x28; for Act 2 they can be 30x8 or 7x8 (see above); for Act 3 there is no set size but they should be no larger than 300x78.
+
+### Negative Costs, Cost Tier, and Turn 2 Play
+The API allows you to define whether or not negative cost values should be considered in the game.
+This is false by default, meaning negative costs on cards will be read as 0 by the API (the actual assigned value is not changed).
+
+You can use SetCanBeNegative to change this value, or directly modify the CanBeNegative field.
+
+Cost tier is an integer denoting how expensive a card is, with each cost having its own formula that adds to the tier.
+From example, the formula for Bones' tier is (amount / 3), rounded down.
+
+By default, custom costs are not accounted when determining a card's cost tier;
+this can be fixed using SetCostTier to define the function to use.
+
+```c#
+public static void Init()
+{
+    FullCardCost cost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel);
+    
+    cost.SetCostTier(CostTier);
+}
+
+public static int CostTier(int amount)
+{
+    return Mathf.FloorToInt(amount / 2f);
+}
+```
+
+A vital part of Inscryption's gameplay is the fair hand mechanic;
+when a battle starts, the game will give you at least one card that can be played immediately, as well as a card that can be played by the second turn.
+
+By default, when the game checks if a card with custom costs can be played by turn 2, it will return 2 - even if it can't be.
+
+To fix this, you'll need to set your cost's CanBePlayedByTurn2WithHand function (long name, I know):
+```c#
+public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel);
+    fullCardCost.SetCanBePlayedByTurn2WithHand(CanBePlayed);
+}
+
+// amount is the card's cost amount, and hand is the list of cards in the player's hand
+public static bool CanBePlayed(int amount, CardInfo card, List<CardInfo> hand)
+{
+    // TestCost is just a copy of Energy, so any card that costs 2 or less will be playable by turn 2
+    return amount <= 2;
+}
+```
+
+### Cost Choice Nodes
+If you want your cost to be chooseable in Act 1 at cost choice nodes, the API provides a method to do so:
+```c#
+public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel);
+
+    // if true, assigns a custom ResourceType to the cost, letting it be found at cost choice nodes.
+    // rewardBack is the texture that will be displayed at the choice node, and is 125 x 190 in size
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBack: (Texture2D)ResourceBank.Get<Texture>("Art/Cards/RewardBacks/card_rewardback_bird"));
+}
+```
+
+Looking at the code above, you may be wondering what a ResourceType is.
+To put it simply, the ResourceType is used by the game to determine what costs will be offered to the player, and then is used to determine what cards the player can receive.
+
+#### Different Resource Amounts
+Alongside a ResourceType, the game can further distinguish between different amounts of that resource when offering choices.
+By default, a custom cost at the choice node will give you any valid card with that cost, regardless of how many resources it needs.
+
+This is similar to how Bones and Energy are handled, but what if you want your cost to be handled like Blood?
+Being able to choose being a card that costs 1, 2, or 3 of your cost?
+Well, all you need to do is use a variant of SetFoundAtChoiceNodes like so:
+
+```c#
+public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel);
+
+    // in this version of the method, you must provide a Func instead of a Texture2D.
+    // this Func will be used to determine the correct rewardback texture to use for each different valid amount.
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBackFunc: GetRewardBack, 1, 2, 4);
+
+    // next time we go to a cost choice node, we may be able to choose between cards that cost 1, 2, or 4 TestCost.
+}
+```
+
+Alternatively, you can set the FullCardCost object's 'ChoiceAmounts' field to an integer array containing the amounts.
+
+#### Grouping Different Costs
+In the event you're adding multiple custom costs to the game, you may want to group them all into a single choice.
+Maybe they're all related to each other, or you don't want to push out other choices at the node.
+Either way, the API offers this functionality.
+
+```c#
+private void Example()
+{
+    FullCardCost cost = CardCostManager.Register(...);
+    cost.ChoiceAmounts = new int[] { 1, 4, 7 };
+}
+```
+
+In order to group custom costs together, they must share the same ResourceType value.
+```c#
+public static void Init()
+{
+    // firstly, we'll want to mark one of our costs as chooseable
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost", typeof(TestCost), Texture3D, TexturePixel);
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBack: (Texture2D)ResourceBank.Get<Texture>("Art/Cards/RewardBacks/card_rewardback_bird"));
+
+    // then when creating subsequent costs, we want to set their ResourceType to the same one being used by our first cost
+    CardCostManager.FullCardCost fullCardCost2 = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, "TestCost2", typeof(TestCost2), Texture3D2, TexturePixel2);
+    fullCardCost2.ResourceType = fullCardCost.ResourceType;
+}
+```
+
+Note that grouped costs are incompatible with multiple-amount costs, meaning if one of the grouped costs has different possible choice amounts defined, they will be ignored.
 
 ### Adding Costs to Cards
 Custom costs are added to cards using the API's extended properties system and can be accessed the same way.

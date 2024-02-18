@@ -29,6 +29,9 @@ public static partial class LocalizationManager
         public FontReplacement replacement;
     }
 
+    /// <summary>
+    /// The list of Fonts used in Inscryption.
+    /// </summary>
     public enum FontReplacementType
     {
         Liberation,
@@ -54,36 +57,37 @@ public static partial class LocalizationManager
     {
         AllLanguageNames = LocalizedLanguageNames.NAMES.ToArray();
         AllLanguageButtonText = LocalizedLanguageNames.SET_LANGUAGE_BUTTON_TEXT.ToArray();
-        foreach (Language language in Enum.GetValues(typeof(Language)).Cast<Language>().Where((a)=>a < Language.NUM_LANGUAGES))
+
+        // add the default supported languages to the LocalisationManager
+        foreach (Language language in Enum.GetValues(typeof(Language)).Cast<Language>().Where(l => l < Language.NUM_LANGUAGES))
         {
             CustomLanguage customLanguage = new()
             {
                 PluginGUID = InscryptionAPIPlugin.ModGUID,
                 LanguageName = language.ToString(),
                 Language = language,
-            };
-
-            customLanguage.LanguageCode = language switch
-            {
-                Language.English => "en",
-                Language.French => "fr",
-                Language.Italian => "it",
-                Language.German => "de",
-                Language.Spanish => "es",
-                Language.BrazilianPortuguese => "pt",
-                Language.Turkish => "tr",
-                Language.Russian => "ru",
-                Language.Japanese => "ja",
-                Language.Korean => "ko",
-                Language.ChineseSimplified => "zhcn",
-                Language.ChineseTraditional => "zhtw",
-                _ => "UNKNOWN",
+                LanguageCode = language switch
+                {
+                    Language.English => "en",
+                    Language.French => "fr",
+                    Language.Italian => "it",
+                    Language.German => "de",
+                    Language.Spanish => "es",
+                    Language.BrazilianPortuguese => "pt",
+                    Language.Turkish => "tr",
+                    Language.Russian => "ru",
+                    Language.Japanese => "ja",
+                    Language.Korean => "ko",
+                    Language.ChineseSimplified => "zhcn",
+                    Language.ChineseTraditional => "zhtw",
+                    _ => "UNKNOWN",
+                }
             };
             AllLanguages.Add(customLanguage);
         }
     }
 
-    public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath=null, List<FontReplacement> fontReplacements=null)
+    public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath = null, List<FontReplacement> fontReplacements=null)
     {
         Language language = GuidManager.GetEnumValue<Language>(pluginGUID, languageName);
         CustomLanguage customLanguage = new()
@@ -137,9 +141,9 @@ public static partial class LocalizationManager
         replacements.fontReplacements.Add(replacement);
     }
 
-    public static FontReplacement GetFontReplacementForFont(FontReplacementType type, Font font=null, TMP_FontAsset tmpFont=null)
+    public static FontReplacement GetFontReplacementForFont(FontReplacementType type, Font font = null, TMP_FontAsset tmpFont = null)
     {
-        FontReplacement replacement = null;
+        FontReplacement replacement;
         switch (type)
         {
             case FontReplacementType.Liberation:
@@ -158,7 +162,7 @@ public static partial class LocalizationManager
                 replacement = Resources.Load<FontReplacement>("data/localization/fontreplacement/HEAVYWEIGHT_to_VICIOUSHUNGER");
                 break;
             default:
-                InscryptionAPIPlugin.Logger.LogError("Unknown font replacement type " + type.ToString().ToUpper());
+                InscryptionAPIPlugin.Logger.LogError("Unknown font replacement type: " + type.ToString().ToUpper());
                 return null;
         }
         
@@ -237,6 +241,15 @@ public static partial class LocalizationManager
         }
     }
 
+    /// <summary>
+    /// Adds a translation for a string into the provided Language.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding the translation.</param>
+    /// <param name="id">A unique identifier for this translation.</param>
+    /// <param name="englishString">The original string.</param>
+    /// <param name="translatedString">The original string translated into the target language.</param>
+    /// <param name="language">The language this translation is for.</param>
+    /// <returns>A CustomTranslation object corresponding to the created translation.</returns>
     public static CustomTranslation Translate(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
         CustomTranslation customTranslation = Get(englishString, id);
@@ -244,9 +257,11 @@ public static partial class LocalizationManager
         bool newTranslation = customTranslation == null;
         if (newTranslation)
         {
-            customTranslation = new CustomTranslation();
-            customTranslation.PluginGUID = pluginGUID;
-            customTranslation.Translation = new Localization.Translation();
+            customTranslation = new CustomTranslation
+            {
+                PluginGUID = pluginGUID,
+                Translation = new Localization.Translation()
+            };
             customTranslation.Translation.id = id;
             customTranslation.Translation.englishString = id;
             customTranslation.Translation.englishStringFormatted = !string.IsNullOrEmpty(englishString) ? Localization.FormatString(englishString) : null;
@@ -308,12 +323,14 @@ public static partial class LocalizationManager
 
         if (translation == null)
         {
-            translation = new Localization.Translation();
-            translation.id = customTranslation.Translation.id;
-            translation.englishString = customTranslation.Translation.englishString;
-            translation.englishStringFormatted = customTranslation.Translation.englishStringFormatted;
-            translation.values = new Dictionary<Language, string>();
-            translation.femaleGenderValues = new Dictionary<Language, string>();
+            translation = new Localization.Translation
+            {
+                id = customTranslation.Translation.id,
+                englishString = customTranslation.Translation.englishString,
+                englishStringFormatted = customTranslation.Translation.englishStringFormatted,
+                values = new Dictionary<Language, string>(),
+                femaleGenderValues = new Dictionary<Language, string>()
+            };
             Localization.Translations.Add(translation);
         }
 
@@ -331,6 +348,9 @@ public static partial class LocalizationManager
         }
     }
     
+    /// <summary>
+    /// Retrieves the LanguageCode for the given Language.
+    /// </summary>
     public static string LanguageToCode(Language language)
     {
         CustomLanguage customLanguage = AllLanguages.Find((a) => a.Language == language);
@@ -342,6 +362,9 @@ public static partial class LocalizationManager
         return null;
     }
 
+    /// <summary>
+    /// Retrieves the LanguageCode with the given LanguageCode.
+    /// </summary>
     public static Language CodeToLanguage(string code)
     {
         CustomLanguage customLanguage = AllLanguages.Find((a) => a.LanguageCode == code);

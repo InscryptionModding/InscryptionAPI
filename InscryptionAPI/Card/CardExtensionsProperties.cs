@@ -121,14 +121,18 @@ public static partial class CardExtensions
     #endregion
 
     #region Custom Costs
+
+    public static bool HasCustomCost(this CardInfo info, FullCardCost customCost) => info.GetCustomCost(customCost.CostName, customCost.CanBeNegative) != 0;
+
     /// <summary>
-    /// Sets a card's custom cost property using the provided FullCardCost object as reference.
+    /// Sets a card's custom cost property using the provided FullCardCost object as a reference.
     /// </summary>
     /// <param name="info">The CardInfo to modify.</param>
     /// <param name="customCost">The FullCardCost representing the cost we want to set.</param>
     /// <param name="amount">How much of the custom cost the CardInfo should need to be played.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, FullCardCost customCost, int amount) => info.SetCustomCost(customCost.CostName, amount);
+
     /// <summary>
     /// A variant of SetExtendedProperty intended to be used to set properties representing custom costs. Primarily provided for clarity of purpose.
     /// </summary>
@@ -137,8 +141,46 @@ public static partial class CardExtensions
     /// <param name="amount">How much of the custom cost the CardInfo should need to be played.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, string costName, int amount) => info.SetExtendedProperty(costName, amount);
+    public static CardInfo SetCustomCost<T>(this CardInfo info, int amount) where T : CustomCardCost
+    {
+        FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
+        return info.SetCustomCost(cost.CostName, amount);
+    }
 
-    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>().ToList();
+    public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false) => card.Info.GetCustomCost(costName, canBeNegative);
+    public static int GetCustomCost(this CardInfo cardInfo, string costName, bool canBeNegative = false)
+    {
+        int retval = cardInfo.GetExtendedPropertyAsInt(costName) ?? 0;
+        foreach (CardModificationInfo mod in cardInfo.Mods)
+        {
+            retval += (mod.GetExtendedPropertyAsInt(costName) ?? 0) + mod.GetCustomCostIdValue(costName);
+        }
+        if (!canBeNegative && retval < 0)
+            retval = 0;
+
+        return retval;
+    }
+    public static int GetCustomCost<T>(this PlayableCard card, bool canBeNegative = false) where T : CustomCardCost
+    {
+        FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
+        return card.GetCustomCost(cost.CostName, canBeNegative);
+    }
+    public static int GetCustomCost<T>(this CardInfo cardInfo, bool canBeNegative = false) where T : CustomCardCost
+    {
+        FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
+        return cardInfo.GetCustomCost(cost.CostName, canBeNegative);
+    }
+
+    public static int GetCustomCost(this PlayableCard card, FullCardCost fullCardCost)
+    {
+        return card.GetCustomCost(fullCardCost.CostName, fullCardCost.CanBeNegative);
+    }
+    public static int GetCustomCost(this CardInfo cardInfo, FullCardCost fullCardCost)
+    {
+        return cardInfo.GetCustomCost(fullCardCost.CostName, fullCardCost.CanBeNegative);
+    }
+
+    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>()?.ToList() ?? new();
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();
@@ -154,17 +196,5 @@ public static partial class CardExtensions
         return costs;
     }
 
-    public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false) => card.Info.GetCustomCost(costName, canBeNegative);
-    public static int GetCustomCost(this CardInfo cardInfo, string costName, bool canBeNegative = false)
-    {
-        int retval = cardInfo.GetExtendedPropertyAsInt(costName) ?? 0;
-        foreach (CardModificationInfo mod in cardInfo.Mods)
-        {
-            retval += (mod.GetExtendedPropertyAsInt(costName) ?? 0) + mod.GetCustomCostIdValue(costName);
-        }
-        if (!canBeNegative && retval < 0)
-            retval = 0;
-        return retval;
-    }
     #endregion
 }

@@ -42,12 +42,17 @@ internal class BoxColliderNegativeScalingLogSpamFix
     [HarmonyPostfix, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.SetFlippedY))]
     private static void OffsetFlippedColliderPositionY(AbilityIconInteractable __instance, bool flippedY)
     {
+        // if the icon isn't flipped
         if (!flippedY && !SaveManager.SaveFile.IsPart3)
             return;
 
         MeshCollider collider = __instance.gameObject.GetComponent<MeshCollider>();
         if (collider.SafeIsUnityNull())
             return;
+
+        // don't modify the positioning of Act 3's latch module's sigil
+        if (SaveManager.SaveFile.IsPart3 && __instance.transform.parent.parent.name == "LatchModule")
+            return; // latch module z == 0.037
 
         // This was the missing piece.
         // The collider box when the MeshCollider is added ends up being right under the card, therefore unable to click.

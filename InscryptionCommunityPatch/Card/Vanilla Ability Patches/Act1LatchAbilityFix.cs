@@ -1,5 +1,6 @@
 using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using Pixelplacement;
 using System.Collections;
 using UnityEngine;
@@ -169,25 +170,15 @@ public class Act1LatchAbilityFix
             CardModificationInfo mod = new(__state.LatchAbility)
             {
                 // these control rendering, so only set to true if said rendering won't butt everything
-                fromCardMerge = SaveManager.SaveFile.IsPart1,
-                fromLatch = SaveManager.SaveFile.IsPart1 || SaveManager.SaveFile.IsPart3
+                fromCardMerge = SaveManager.SaveFile.IsPart1
             };
+            mod.SetExtendedProperty("LatchMod", true);
 
             if (PatchPlugin.configFullDebug.Value)
                 PatchPlugin.Logger.LogDebug($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
 
-            if (selectedSlot.Card.Info.name == "!DEATHCARD_BASE")
-            {
-                selectedSlot.Card.AddTemporaryMod(mod);
-            }
-            else
-            {
-                CardInfo info = selectedSlot.Card.Info.Clone() as CardInfo;
-                info.Mods = new(selectedSlot.Card.Info.Mods) { mod };
-                selectedSlot.Card.SetInfo(info);
-            }
-
-            selectedSlot.Card.Anim.PlayTransformAnimation();
+            selectedSlot.Card.AddTemporaryMod(mod);
+            selectedSlot.Card.Anim.LightNegationEffect();
             __state.OnSuccessfullyLatched(selectedSlot.Card);
 
             yield return new WaitForSeconds(0.75f);

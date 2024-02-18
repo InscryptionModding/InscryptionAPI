@@ -100,7 +100,7 @@ public static class PeltManager
 
         for (int i = 0; i < BasePeltNames.Length; i++)
         {
-            var peltData = new VanillaPeltData
+            VanillaPeltData peltData = new()
             {
                 peltCardName = BasePeltNames[i],
                 choicesOfferedByTrader = 8,

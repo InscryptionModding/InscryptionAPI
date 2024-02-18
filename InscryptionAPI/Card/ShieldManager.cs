@@ -293,7 +293,8 @@ public static class ShieldManager
         yield return result;
         if (__instance.latchModule != null)
         {
-            __instance.latchModule.gameObject.SetActive(false); // disable the module object so it doesn't replay the animation on death
+            // disable the module object so it doesn't replay the animation on death
+            __instance.latchModule.gameObject.SetActive(false);
             GameObject baseObj = __instance.latchModule.gameObject.FindChild("Base");
             if (baseObj != null)
             {

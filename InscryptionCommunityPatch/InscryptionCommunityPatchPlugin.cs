@@ -62,7 +62,10 @@ public class PatchPlugin : BaseUnityPlugin
         SceneManager.sceneLoaded += this.OnSceneLoaded;
 
         if (configTestState.Value)
+        {
             ExecuteCommunityPatchTests.PrepareForTests();
+            TestCost.Init();
+        }
 
         CommunityArtPatches.PatchCommunityArt();
     }

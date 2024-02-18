@@ -23,6 +23,11 @@ public static class GuidManager
         return res;
     }
 
+    /// <summary>
+    /// Gets a list of created Enum values of the provided Enum type.
+    /// </summary>
+    /// <typeparam name="T">The Enum type to search for.</typeparam>
+    /// <returns>The list of Enum values created by the API.</returns>
     unsafe public static List<T> GetValues<T>() where T : unmanaged, System.Enum
     {
         List<T> itemList = new();
