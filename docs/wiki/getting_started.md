@@ -19,7 +19,7 @@ This is the recommended way to install BepInEx to the game.
 7. Move the contents of the 'plugins' folder into 'BepInEx/plugins' and the contents of the 'monomod' folder into the 'BepInEx/monomod' folder.
 8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
 
-### Installing on the Steam Deck:
+### Installing on the Steam Deck
 1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file.
 2. Download the mods you plan on using and their dependencies..
 3. Go to the setting of the profile you are using for the mods and click `Browse Profile Folder`.
@@ -28,6 +28,11 @@ This is the recommended way to install BepInEx to the game.
 6. Enter Gaming Mode and check 'Force the use of a specific Steam Play compatibility tool' in the Properties menu under `Compatibility`.
 7. Go to the launch parameters and enter `WINEDLLOVERRIDES=“winhttp.dll=n,b” %command%`.
 8. Open Inscryption. If everything was done correctly, you should see a console appear on your screen.
+
+### Mac & Linux
+1. Follow the steps here first: <https://docs.bepinex.dev/articles/user_guide/installation/index.html>
+2. Next do steps 4-8 of the Manual Installation
+3. Your game should be setup for inscryption modding now
 
 ## Getting Started: Modding
 ---
