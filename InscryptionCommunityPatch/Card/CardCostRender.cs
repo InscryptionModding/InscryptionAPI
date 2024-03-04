@@ -92,7 +92,13 @@ public static class CardCostRender
         //Make sure we are in Leshy's Cabin
         // prevents indexing error when a card has a cost greater than the vanilla limits
         if (__instance is CardDisplayer3D && SceneLoader.ActiveSceneName.StartsWith("Part1"))
+        {
             return false;
+        }
+        if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value)
+        {
+            return false;
+        }
 
 
         return true;
