@@ -436,7 +436,7 @@ public static class CardCostManager
     }
     /// <summary>
     /// Does two things:
-    ///     1: Caches play costs before playing the card onto the board to prevent incorrect values being used should the card's info change.
+    ///     1: Caches play costs before playing the card onto the board to prevent incorrect values being used should the card's CardInfo change.
     ///     2: Implements support for custom cards' OnPlay logic.
     /// </summary>
     /// <param name="instance">The PlayerHand object.</param>
@@ -446,14 +446,30 @@ public static class CardCostManager
     public static IEnumerator PlaySelectedCardToSlot(PlayerHand instance, PlayableCard card, CardSlot lastSelectedSlot)
     {
         // keep track of the costs before the card is resolved on the board
-        // this is to avoid situations where the card's info changes before we can actually spend resources
+        // this is to avoid situations where the card's CardInfo changes before we can actually spend resources
         // which would cause us to spend the incorrect amount or type
+        // example would be a card that costs 1 Blood to play but evolves on resolve into a card that costs 4 Bones
         int bonesCost = card.BonesCost(), energyCost = card.EnergyCost;
         Dictionary<string, int> customCosts = new();
         foreach (CustomCardCost cost1 in card.GetCustomCardCosts())
-            customCosts.Add(cost1.CostName, card.GetCustomCost(cost1.CostName));
+        {
+            bool canBeNegative = AllCustomCosts.Find(x => x.CostName == cost1.CostName).CanBeNegative;
+            customCosts.Add(cost1.CostName, card.GetCustomCost(cost1.CostName, canBeNegative));
+        }
 
+        bool updateBlueGems = card.IsGemified() && !card.OwnerHasBlueGem();
         yield return instance.PlayCardOnSlot(card, lastSelectedSlot);
+
+        // if a card is Gemified and gives a Blue Gem after being played, update the resource amounts to spend
+        // in case modders don't use the vanilla sigils to gain a Blue Gem, we don't check for those vanilla sigils here
+        if (updateBlueGems && card.OwnerHasBlueGem())
+        {
+            energyCost = Mathf.Max(0, energyCost - 1);
+            bonesCost = Mathf.Max(0, bonesCost - 1);
+            // custom costs can be negative here, modders will need to add their own check if they don't want that behaviour
+            foreach(string s in customCosts.Keys)
+                customCosts[s]--;
+        }
 
         if (bonesCost > 0)
             yield return Singleton<ResourcesManager>.Instance.SpendBones(bonesCost);
@@ -463,7 +479,7 @@ public static class CardCostManager
 
         foreach (var cost2 in card.GetCustomCardCosts())
         {
-            if (customCosts.ContainsKey(cost2.CostName))
+            if (customCosts.ContainsKey(cost2.CostName) && customCosts[cost2.CostName] != 0)
                 yield return cost2.OnPlayed(customCosts[cost2.CostName], card);
         }
     }
@@ -641,7 +657,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// <summary>
     /// Whether the current PlayableCard can be played.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual bool CostSatisfied(int cardCost, PlayableCard playableCard)
     {
@@ -650,7 +666,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// <summary>
     /// The dialogue string that will be played when you cannot play a card with this custom cost.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual string CostUnsatisfiedHint(int cardCost, PlayableCard playableCard)
     {
@@ -663,7 +679,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// 
     /// DOES NOT ACTUALLY AFFECT ANYTHING ON ITS OWN. You must provide the logic that reads and uses this value.
     /// </summary>
-    /// <param name="cardCost">How high the cost the PlayableCard has.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard being checked.</param>
     /// <returns>How much SP the PlayableCard's cost value gives.</returns>
     public virtual int CostStatPointValue(int cardCost, PlayableCard playableCard)
@@ -675,7 +691,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// What the game should do when a card with this cost is played.
     /// Most common use case is implementing the logic for paying for this cost.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual IEnumerator OnPlayed(int cardCost, PlayableCard playableCard)
     {
