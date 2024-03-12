@@ -180,7 +180,13 @@ public static partial class CardExtensions
         return cardInfo.GetCustomCost(fullCardCost.CostName, fullCardCost.CanBeNegative);
     }
 
-    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>()?.ToList() ?? new();
+    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card)
+    {
+        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {card != null}");
+        CustomCardCost[] components = card?.GetComponents<CustomCardCost>();
+        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {components != null} {components?.Length}");
+        return components?.ToList() ?? new();
+    }
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();
