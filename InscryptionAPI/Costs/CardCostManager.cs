@@ -447,40 +447,50 @@ public static class CardCostManager
     {
         // keep track of the costs before the card is resolved on the board
         // this is to avoid situations where the card's CardInfo changes before we can actually spend resources
-        // which would cause us to spend the incorrect amount or type
+        // which can cause us to spend the incorrect amount
         // example would be a card that costs 1 Blood to play but evolves on resolve into a card that costs 4 Bones
         int bonesCost = card.BonesCost(), energyCost = card.EnergyCost;
         Dictionary<string, int> customCosts = new();
         foreach (CustomCardCost cost1 in card.GetCustomCardCosts())
         {
-            bool canBeNegative = AllCustomCosts.Find(x => x.CostName == cost1.CostName).CanBeNegative;
-            customCosts.Add(cost1.CostName, card.GetCustomCost(cost1.CostName, canBeNegative));
+            customCosts.Add(cost1.CostName, card.GetCustomCostAmount(cost1.CostName));
         }
 
-        bool updateBlueGems = card.IsGemified() && !card.OwnerHasBlueGem();
         yield return instance.PlayCardOnSlot(card, lastSelectedSlot);
 
-        // if a card is Gemified and gives a Blue Gem after being played, update the resource amounts to spend
-        // in case modders don't use the vanilla sigils to gain a Blue Gem, we don't check for those vanilla sigils here
-        if (updateBlueGems && card.OwnerHasBlueGem())
-        {
-            energyCost = Mathf.Max(0, energyCost - 1);
-            bonesCost = Mathf.Max(0, bonesCost - 1);
-            // custom costs can be negative here, modders will need to add their own check if they don't want that behaviour
-            foreach(string s in customCosts.Keys)
-                customCosts[s]--;
-        }
+        // Update the card cost ONLY IF it is now LOWER
+        // This allows cards to dynamically impact price in between when played and
+        // when you pay for it.
+        // This behavior is somewhat counter-intuitive HOWEVER it is true to how
+        // the game was originally coded
+
+        // The game originally just had you pay whatever the card cost when it was
+        // on the table; here, you pay the minimum of what it cost on the table
+        // and what it cost in your hand. Why? Because someone could conceivably
+        // create a card ability that causes cards to cost *more* than normal, and the
+        // vanilla way of paying for costs could cause a conflict here.
+
+        // This method stays true to the original game while allowing maximum flexibility
 
         if (bonesCost > 0)
-            yield return Singleton<ResourcesManager>.Instance.SpendBones(bonesCost);
+        {
+            int correctValue = Mathf.Min(bonesCost, card.BonesCost());
+            yield return Singleton<ResourcesManager>.Instance.SpendBones(correctValue);
+        }
 
         if (energyCost > 0)
-            yield return Singleton<ResourcesManager>.Instance.SpendEnergy(energyCost);
+        {
+            int correctValue = Mathf.Min(energyCost, card.EnergyCost);
+            yield return Singleton<ResourcesManager>.Instance.SpendEnergy(correctValue);
+        }
 
         foreach (var cost2 in card.GetCustomCardCosts())
         {
-            if (customCosts.ContainsKey(cost2.CostName) && customCosts[cost2.CostName] != 0)
-                yield return cost2.OnPlayed(customCosts[cost2.CostName], card);
+            if (customCosts.ContainsKey(cost2.CostName))
+            {
+                int correctValue = Mathf.Min(customCosts[cost2.CostName], card.GetCustomCostAmount(cost2.CostName));
+                yield return cost2.OnPlayed(correctValue, card);
+            }
         }
     }
     #endregion
