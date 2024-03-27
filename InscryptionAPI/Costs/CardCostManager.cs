@@ -436,7 +436,7 @@ public static class CardCostManager
     }
     /// <summary>
     /// Does two things:
-    ///     1: Caches play costs before playing the card onto the board to prevent incorrect values being used should the card's info change.
+    ///     1: Caches play costs before playing the card onto the board to prevent incorrect values being used should the card's CardInfo change.
     ///     2: Implements support for custom cards' OnPlay logic.
     /// </summary>
     /// <param name="instance">The PlayerHand object.</param>
@@ -446,25 +446,51 @@ public static class CardCostManager
     public static IEnumerator PlaySelectedCardToSlot(PlayerHand instance, PlayableCard card, CardSlot lastSelectedSlot)
     {
         // keep track of the costs before the card is resolved on the board
-        // this is to avoid situations where the card's info changes before we can actually spend resources
-        // which would cause us to spend the incorrect amount or type
+        // this is to avoid situations where the card's CardInfo changes before we can actually spend resources
+        // which can cause us to spend the incorrect amount
+        // example would be a card that costs 1 Blood to play but evolves on resolve into a card that costs 4 Bones
         int bonesCost = card.BonesCost(), energyCost = card.EnergyCost;
         Dictionary<string, int> customCosts = new();
         foreach (CustomCardCost cost1 in card.GetCustomCardCosts())
-            customCosts.Add(cost1.CostName, card.GetCustomCost(cost1.CostName));
+        {
+            customCosts.Add(cost1.CostName, card.GetCustomCostAmount(cost1.CostName));
+        }
 
         yield return instance.PlayCardOnSlot(card, lastSelectedSlot);
 
+        // Update the card cost ONLY IF it is now LOWER
+        // This allows cards to dynamically impact price in between when played and
+        // when you pay for it.
+        // This behavior is somewhat counter-intuitive HOWEVER it is true to how
+        // the game was originally coded
+
+        // The game originally just had you pay whatever the card cost when it was
+        // on the table; here, you pay the minimum of what it cost on the table
+        // and what it cost in your hand. Why? Because someone could conceivably
+        // create a card ability that causes cards to cost *more* than normal, and the
+        // vanilla way of paying for costs could cause a conflict here.
+
+        // This method stays true to the original game while allowing maximum flexibility
+
         if (bonesCost > 0)
-            yield return Singleton<ResourcesManager>.Instance.SpendBones(bonesCost);
+        {
+            int correctValue = Mathf.Min(bonesCost, card.BonesCost());
+            yield return Singleton<ResourcesManager>.Instance.SpendBones(correctValue);
+        }
 
         if (energyCost > 0)
-            yield return Singleton<ResourcesManager>.Instance.SpendEnergy(energyCost);
+        {
+            int correctValue = Mathf.Min(energyCost, card.EnergyCost);
+            yield return Singleton<ResourcesManager>.Instance.SpendEnergy(correctValue);
+        }
 
         foreach (var cost2 in card.GetCustomCardCosts())
         {
             if (customCosts.ContainsKey(cost2.CostName))
-                yield return cost2.OnPlayed(customCosts[cost2.CostName], card);
+            {
+                int correctValue = Mathf.Min(customCosts[cost2.CostName], card.GetCustomCostAmount(cost2.CostName));
+                yield return cost2.OnPlayed(correctValue, card);
+            }
         }
     }
     #endregion
@@ -641,7 +667,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// <summary>
     /// Whether the current PlayableCard can be played.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual bool CostSatisfied(int cardCost, PlayableCard playableCard)
     {
@@ -650,7 +676,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// <summary>
     /// The dialogue string that will be played when you cannot play a card with this custom cost.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual string CostUnsatisfiedHint(int cardCost, PlayableCard playableCard)
     {
@@ -663,7 +689,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// 
     /// DOES NOT ACTUALLY AFFECT ANYTHING ON ITS OWN. You must provide the logic that reads and uses this value.
     /// </summary>
-    /// <param name="cardCost">How high the cost the PlayableCard has.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard being checked.</param>
     /// <returns>How much SP the PlayableCard's cost value gives.</returns>
     public virtual int CostStatPointValue(int cardCost, PlayableCard playableCard)
@@ -675,7 +701,7 @@ public abstract class CustomCardCost : ManagedBehaviour
     /// What the game should do when a card with this cost is played.
     /// Most common use case is implementing the logic for paying for this cost.
     /// </summary>
-    /// <param name="cardCost">How many of this cost the PlayableCard needs in order to be played.</param>
+    /// <param name="cardCost">The resource amount needed to play a card with this cost.</param>
     /// <param name="playableCard">The PlayableCard currently being checked.</param>
     public virtual IEnumerator OnPlayed(int cardCost, PlayableCard playableCard)
     {

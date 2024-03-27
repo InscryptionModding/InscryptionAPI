@@ -71,6 +71,7 @@ public class TestCost : CustomCardCost
 
     public override IEnumerator OnPlayed(int cardCost, PlayableCard card)
     {
-        yield return Singleton<ResourcesManager>.Instance.SpendEnergy(cardCost);
+        if (cardCost > 0)
+            yield return Singleton<ResourcesManager>.Instance.SpendEnergy(cardCost);
     }
 }

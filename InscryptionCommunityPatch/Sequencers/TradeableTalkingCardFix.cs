@@ -17,6 +17,7 @@ public class TradeableTalkingCardFix
     {
         if (card != null && card.GetComponent<TalkingCard>() == null)
             return true;
+
         // the card we selected is a talking card
         // talking cards change the view when drawn - this changes it back
         // transpiler would probably be better but feh
