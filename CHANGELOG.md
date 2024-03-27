@@ -7,10 +7,13 @@
 - Fixed active challenges desyncing from the icons when returning to the select challenges screen from a custom screen
 - Added pixel icon to Aquasquirrel (courtesy of Zepht)
 - Added GetCustomCostAmount extension methods for automatically accounting for whether a custom cost can be negative
+- Added support for making custom challenges that use the Final Boss challenge's icon format (occupying the whole column)
 - AscensionChallengePaginator's leftArrow and rightArrow fields are now AscensionMenuInteractables
+- Changed method name of GenBaseGameChallengs to GenBaseGameChallenges
 - Changed Act 1 energy cost choice cardback to match the cost's icon colour
 - Changed TestCost.OnPlayed to no longer trigger on negative values
 - CustomCardCost.OnPlayed no longer triggers for custom costs with a value of 0 (negative values can still occur)
+- Challenges no longer show dependencies/incompatibilies when viewed in the pause menu and end screen
 
 # 2.19.4
 - Fixed error when retrieving custom card costs from a card with no custom card costs

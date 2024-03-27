@@ -7,9 +7,7 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 internal static class AscensionChallengeScreenPatches
 {
-
-    [HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
-    [HarmonyPostfix]
+    [HarmonyPostfix, HarmonyPatch(typeof(AscensionIconInteractable), "AssignInfo")]
     private static void ReassignableIconFixes(ref AscensionIconInteractable __instance, AscensionChallengeInfo info)
     {
         if (!__instance || !info)
