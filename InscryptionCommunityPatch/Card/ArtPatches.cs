@@ -65,6 +65,7 @@ internal static class CommunityArtPatches
     internal static readonly List<string> regularCardsToPatch = new()
     {
         "Ant",
+        "AquaSquirrel",
         "Bee",
         "BrokenEgg",
         "Dam",
@@ -84,13 +85,14 @@ internal static class CommunityArtPatches
 
     internal static void PatchCommunityArt()
     {
+        System.Reflection.Assembly ass = typeof(CommunityArtPatches).Assembly;
         foreach (Ability ability in regularIconsToPatch)
-            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability}.png", typeof(CommunityArtPatches).Assembly));
+            AbilityManager.BaseGameAbilities.AbilityByID(ability).SetIcon(TextureHelper.GetImageAsTexture($"{ability}.png", ass));
 
         foreach (Ability ability in gbcIconsToPatch)
-            AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability}.png", typeof(CommunityArtPatches).Assembly));
+            AbilityManager.BaseGameAbilities.AbilityByID(ability).Info.SetPixelAbilityIcon(TextureHelper.GetImageAsTexture($"Pixel{ability}.png", ass));
 
         foreach (string name in regularCardsToPatch)
-            CardManager.BaseGameCards.CardByName(name).SetPixelPortrait(TextureHelper.GetImageAsTexture($"{name}_pixel.png", typeof(CommunityArtPatches).Assembly));
+            CardManager.BaseGameCards.CardByName(name).SetPixelPortrait(TextureHelper.GetImageAsTexture($"{name}_pixel.png", ass));
     }
 }

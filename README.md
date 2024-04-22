@@ -18,6 +18,7 @@ It can currently create and modify:
 - Consumable Items
 - Gramophone Tracks
 - Talking Cards
+- Custom Costs
 - And much more!
 
 Additionally, a number of quality-of-life patches from the community are included with each release.

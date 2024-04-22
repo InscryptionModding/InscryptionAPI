@@ -847,7 +847,7 @@ public static class ChallengeManager
                         incompatibilities.RemoveAll(x => x == challengeInfo.challengeType);
                         screen.icons.FindAll(x => x.Unlocked && x.clickable && x.activatedRenderer.enabled && incompatibilities.Contains(x.Info.challengeType)).ForEach(x => x.OnCursorSelectStart());
                         screen.icons.FindAll(x => x.Unlocked && x.clickable && x.activatedRenderer.enabled && incompatibilities.Contains(x.Info.challengeType)).ForEach(x => x.OnCursorSelectStart());
-                        AscensionSaveData.Data.activeChallenges?.RemoveAll(x => incompatibilities.Contains(x));
+                        AscensionSaveData.Data.activeChallenges?.RemoveAll(incompatibilities.Contains);
                         screen.challengeLevelText?.UpdateText();
                         Singleton<AscensionChallengeDisplayer>.Instance?.DisplayChallenge(challengeInfo, false);
                     }

@@ -122,7 +122,7 @@ public static partial class CardExtensions
 
     #region Custom Costs
 
-    public static bool HasCustomCost(this CardInfo info, FullCardCost customCost) => info.GetCustomCost(customCost.CostName, customCost.CanBeNegative) != 0;
+    public static bool HasCustomCost(this CardInfo info, FullCardCost customCost) => info.GetCustomCost(customCost) != 0;
 
     /// <summary>
     /// Sets a card's custom cost property using the provided FullCardCost object as a reference.
@@ -147,6 +147,15 @@ public static partial class CardExtensions
         return info.SetCustomCost(cost.CostName, amount);
     }
 
+    /// <summary>
+    /// Variant of GetCustomCost that automatically retrieves the given cost's canBeNegative value.
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="costName"></param>
+    /// <returns></returns>
+    public static int GetCustomCostAmount(this PlayableCard card, string costName) => card.Info.GetCustomCostAmount(costName);
+    public static int GetCustomCostAmount(this CardInfo cardInfo, string costName) => cardInfo.GetCustomCost(costName, AllCustomCosts.Find(x => x.CostName == costName).CanBeNegative);
+
     public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false) => card.Info.GetCustomCost(costName, canBeNegative);
     public static int GetCustomCost(this CardInfo cardInfo, string costName, bool canBeNegative = false)
     {
@@ -160,27 +169,47 @@ public static partial class CardExtensions
 
         return retval;
     }
+
     public static int GetCustomCost<T>(this PlayableCard card, bool canBeNegative = false) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
-        return card.GetCustomCost(cost.CostName, canBeNegative);
+        return card.Info.GetCustomCost(cost.CostName, canBeNegative);
     }
+
     public static int GetCustomCost<T>(this CardInfo cardInfo, bool canBeNegative = false) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
         return cardInfo.GetCustomCost(cost.CostName, canBeNegative);
     }
 
+    public static int GetCustomCostAmount<T>(this PlayableCard card) where T : CustomCardCost
+    {
+        FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
+        return card.GetCustomCost(cost);
+    }
+
+    public static int GetCustomCostAmount<T>(this CardInfo cardInfo) where T : CustomCardCost
+    {
+        FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
+        return cardInfo.GetCustomCost(cost);
+    }
+
     public static int GetCustomCost(this PlayableCard card, FullCardCost fullCardCost)
     {
-        return card.GetCustomCost(fullCardCost.CostName, fullCardCost.CanBeNegative);
+        return card.GetCustomCostAmount(fullCardCost.CostName);
     }
     public static int GetCustomCost(this CardInfo cardInfo, FullCardCost fullCardCost)
     {
-        return cardInfo.GetCustomCost(fullCardCost.CostName, fullCardCost.CanBeNegative);
+        return cardInfo.GetCustomCostAmount(fullCardCost.CostName);
     }
 
-    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card) => card.GetComponents<CustomCardCost>()?.ToList() ?? new();
+    public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card)
+    {
+        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {card != null}");
+        CustomCardCost[] components = card?.GetComponents<CustomCardCost>();
+        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {components != null} {components?.Length}");
+        return components?.ToList() ?? new();
+    }
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();
