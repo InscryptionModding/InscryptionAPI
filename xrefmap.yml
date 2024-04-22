@@ -41,6 +41,19 @@ references:
   commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages
   nameWithType: AscensionChallengePaginator.challengeObjectsForPages
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo
+  name: InitialiseMissingChallengeInfo()
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_InitialiseMissingChallengeInfo
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo()
+  nameWithType: AscensionChallengePaginator.InitialiseMissingChallengeInfo()
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo*
+  name: InitialiseMissingChallengeInfo
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_InitialiseMissingChallengeInfo_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo
+  nameWithType: AscensionChallengePaginator.InitialiseMissingChallengeInfo
 - uid: InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize(DiskCardGame.AscensionChallengeScreen,DiskCardGame.AscensionMenuScreenTransition)
   name: Initialize(AscensionChallengeScreen, AscensionMenuScreenTransition)
   href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_Initialize_DiskCardGame_AscensionChallengeScreen_DiskCardGame_AscensionMenuScreenTransition_
@@ -60,6 +73,22 @@ references:
   commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.initialized
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.initialized
   nameWithType: AscensionChallengePaginator.initialized
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects(List{DiskCardGame.AscensionIconInteractable})
+  name: InstantiateArrowObjects(List<AscensionIconInteractable>)
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_InstantiateArrowObjects_List_DiskCardGame_AscensionIconInteractable__
+  commentId: M:InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects(List{DiskCardGame.AscensionIconInteractable})
+  name.vb: InstantiateArrowObjects(List(Of AscensionIconInteractable))
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects(List<DiskCardGame.AscensionIconInteractable>)
+  fullName.vb: InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects(List(Of DiskCardGame.AscensionIconInteractable))
+  nameWithType: AscensionChallengePaginator.InstantiateArrowObjects(List<AscensionIconInteractable>)
+  nameWithType.vb: AscensionChallengePaginator.InstantiateArrowObjects(List(Of AscensionIconInteractable))
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects*
+  name: InstantiateArrowObjects
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_InstantiateArrowObjects_
+  commentId: Overload:InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects
+  nameWithType: AscensionChallengePaginator.InstantiateArrowObjects
 - uid: InscryptionAPI.Ascension.AscensionChallengePaginator.leftArrow
   name: leftArrow
   href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_leftArrow
@@ -79,6 +108,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.LoadPage
   nameWithType: AscensionChallengePaginator.LoadPage
+- uid: InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeInfo
+  name: missingChallengeInfo
+  href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_missingChallengeInfo
+  commentId: F:InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeInfo
+  fullName: InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeInfo
+  nameWithType: AscensionChallengePaginator.missingChallengeInfo
 - uid: InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeSprite
   name: missingChallengeSprite
   href: api/InscryptionAPI.Ascension.AscensionChallengePaginator.html#InscryptionAPI_Ascension_AscensionChallengePaginator_missingChallengeSprite
@@ -1067,6 +1102,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.AppearsInChallengeScreen
   nameWithType: ChallengeManager.FullChallenge.AppearsInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss
+  name: Boss
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Boss
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss
+  nameWithType: ChallengeManager.FullChallenge.Boss
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss*
+  name: Boss
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Boss_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss
+  nameWithType: ChallengeManager.FullChallenge.Boss
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue
+  name: BossSortValue
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_BossSortValue
+  commentId: P:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue
+  nameWithType: ChallengeManager.FullChallenge.BossSortValue
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue*
+  name: BossSortValue
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_BossSortValue_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue
+  nameWithType: ChallengeManager.FullChallenge.BossSortValue
 - uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Challenge
   name: Challenge
   href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Challenge
@@ -1190,6 +1251,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen
   nameWithType: ChallengeManager.FullChallenge.SetAppearancesInChallengeScreen
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss(System.Boolean)
+  name: SetBoss(Boolean)
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetBoss_System_Boolean_
+  commentId: M:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss(System.Boolean)
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss(System.Boolean)
+  nameWithType: ChallengeManager.FullChallenge.SetBoss(Boolean)
+- uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss*
+  name: SetBoss
+  href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetBoss_
+  commentId: Overload:InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss
+  nameWithType: ChallengeManager.FullChallenge.SetBoss
 - uid: InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetChallenge(DiskCardGame.AscensionChallengeInfo)
   name: SetChallenge(AscensionChallengeInfo)
   href: api/InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html#InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetChallenge_DiskCardGame_AscensionChallengeInfo_

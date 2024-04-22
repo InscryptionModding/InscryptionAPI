@@ -74,11 +74,12 @@
   
   <h1 id="InscryptionAPI_Ascension_AscensionChallengePaginator" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator" class="text-break">Class AscensionChallengePaginator
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The purpose of this class is to help sync challenge icons as they appear in the selection menu.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
     <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
     <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
@@ -94,7 +95,8 @@
   <h3 id="fields">Fields
   </h3>
   <h4 id="InscryptionAPI_Ascension_AscensionChallengePaginator_challengeObjectsForPages" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.challengeObjectsForPages">challengeObjectsForPages</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A List representing the entire collection of challenge pages.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -142,7 +144,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameObject leftArrow</code></pre>
+    <pre><code class="lang-csharp hljs">public AscensionMenuInteractable leftArrow</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,7 +156,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/GameObject.html">GameObject</a></td>
+        <td><span class="xref">DiskCardGame.AscensionMenuInteractable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Ascension_AscensionChallengePaginator_missingChallengeInfo" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.missingChallengeInfo">missingChallengeInfo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AscensionChallengeInfo missingChallengeInfo</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AscensionChallengeInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -230,7 +254,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GameObject rightArrow</code></pre>
+    <pre><code class="lang-csharp hljs">public AscensionMenuInteractable rightArrow</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -242,7 +266,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/GameObject.html">GameObject</a></td>
+        <td><span class="xref">DiskCardGame.AscensionMenuInteractable</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -299,7 +323,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddPage(List&lt;AscensionChallengeInfo&gt; page)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddPage(List&lt;AscensionChallengeInfo&gt; challengeInfos)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -313,11 +337,19 @@
     <tbody>
       <tr>
         <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AscensionChallengeInfo</span>&gt;</td>
-        <td><span class="parametername">page</span></td>
+        <td><span class="parametername">challengeInfos</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Ascension_AscensionChallengePaginator_InitialiseMissingChallengeInfo_" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo*"></a>
+  <h4 id="InscryptionAPI_Ascension_AscensionChallengePaginator_InitialiseMissingChallengeInfo" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.InitialiseMissingChallengeInfo">InitialiseMissingChallengeInfo()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitialiseMissingChallengeInfo()</code></pre>
+  </div>
   <a id="InscryptionAPI_Ascension_AscensionChallengePaginator_Initialize_" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize*"></a>
   <h4 id="InscryptionAPI_Ascension_AscensionChallengePaginator_Initialize_DiskCardGame_AscensionChallengeScreen_DiskCardGame_AscensionMenuScreenTransition_" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.Initialize(DiskCardGame.AscensionChallengeScreen,DiskCardGame.AscensionMenuScreenTransition)">Initialize(AscensionChallengeScreen, AscensionMenuScreenTransition)</h4>
   <div class="markdown level1 summary"></div>
@@ -344,6 +376,31 @@
       <tr>
         <td><span class="xref">DiskCardGame.AscensionMenuScreenTransition</span></td>
         <td><span class="parametername">transition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Ascension_AscensionChallengePaginator_InstantiateArrowObjects_" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects*"></a>
+  <h4 id="InscryptionAPI_Ascension_AscensionChallengePaginator_InstantiateArrowObjects_List_DiskCardGame_AscensionIconInteractable__" data-uid="InscryptionAPI.Ascension.AscensionChallengePaginator.InstantiateArrowObjects(List{DiskCardGame.AscensionIconInteractable})">InstantiateArrowObjects(List&lt;AscensionIconInteractable&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InstantiateArrowObjects(List&lt;AscensionIconInteractable&gt; icons)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AscensionIconInteractable</span>&gt;</td>
+        <td><span class="parametername">icons</span></td>
         <td></td>
       </tr>
     </tbody>

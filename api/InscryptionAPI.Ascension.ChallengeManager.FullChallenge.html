@@ -79,7 +79,7 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ChallengeManager.FullChallenge</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Ascension.html">InscryptionAPI.Ascension</a></h6>
@@ -134,6 +134,57 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Boss_" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_Boss" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.Boss">Boss</h4>
+  <div class="markdown level1 summary"><p>If true, this challenge&apos;s icon(s) will occupy the entire column like the Final Boss challenge icon, and be ordered to the right of regular challenges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Boss { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_BossSortValue_" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_BossSortValue" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.BossSortValue">BossSortValue</h4>
+  <div class="markdown level1 summary"><p>This challenge&apos;s SortValue, accounting for if Boss is true.
+-2 - Positive Boss
+-3 - Zero Boss
+-4 - Negative Boss</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BossSortValue { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -253,7 +304,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.Object</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -284,7 +335,10 @@
   </table>
   <a id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SortValue_" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue*"></a>
   <h4 id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SortValue" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SortValue">SortValue</h4>
-  <div class="markdown level1 summary"><p>If the challenge&apos;s point value is over 0, returns 1, if under 0, returns -1, if equal to 0, returns 0. Used for sorting challenges.</p>
+  <div class="markdown level1 summary"><p>The sorting value of this challenge based on its pointValue.
+1 - Positive
+0 - Zero
+-1 - Negative</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -421,6 +475,46 @@
         <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
         <td><p>This full challenge, for chaining purposes.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetBoss_" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss*"></a>
+  <h4 id="InscryptionAPI_Ascension_ChallengeManager_FullChallenge_SetBoss_System_Boolean_" data-uid="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.SetBoss(System.Boolean)">SetBoss(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChallengeManager.FullChallenge SetBoss(bool boss)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">boss</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Ascension.ChallengeManager.FullChallenge.html">ChallengeManager.FullChallenge</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -745,7 +839,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>[]</td>
+        <td><span class="xref">System.Object</span>[]</td>
         <td><span class="parametername">flags</span></td>
         <td><p>The new flags for this challenge.</p>
 </td>
