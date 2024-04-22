@@ -3728,6 +3728,43 @@ references:
   fullName.vb: InscryptionAPI.Card.CardExtensions.GetCustomCost(Of T)(DiskCardGame.PlayableCard, System.Boolean)
   nameWithType: CardExtensions.GetCustomCost<T>(PlayableCard, Boolean)
   nameWithType.vb: CardExtensions.GetCustomCost(Of T)(PlayableCard, Boolean)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.CardInfo,System.String)
+  name: GetCustomCostAmount(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCostAmount_DiskCardGame_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.CardInfo, System.String)
+  nameWithType: CardExtensions.GetCustomCostAmount(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.PlayableCard,System.String)
+  name: GetCustomCostAmount(PlayableCard, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCostAmount_DiskCardGame_PlayableCard_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.PlayableCard,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(DiskCardGame.PlayableCard, System.String)
+  nameWithType: CardExtensions.GetCustomCostAmount(PlayableCard, String)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount*
+  name: GetCustomCostAmount
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCostAmount_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetCustomCostAmount
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount
+  nameWithType: CardExtensions.GetCustomCostAmount
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount``1(DiskCardGame.CardInfo)
+  name: GetCustomCostAmount<T>(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCostAmount__1_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCostAmount``1(DiskCardGame.CardInfo)
+  name.vb: GetCustomCostAmount(Of T)(CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount<T>(DiskCardGame.CardInfo)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(Of T)(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.GetCustomCostAmount<T>(CardInfo)
+  nameWithType.vb: CardExtensions.GetCustomCostAmount(Of T)(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount``1(DiskCardGame.PlayableCard)
+  name: GetCustomCostAmount<T>(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCostAmount__1_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetCustomCostAmount``1(DiskCardGame.PlayableCard)
+  name.vb: GetCustomCostAmount(Of T)(PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount<T>(DiskCardGame.PlayableCard)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.GetCustomCostAmount(Of T)(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetCustomCostAmount<T>(PlayableCard)
+  nameWithType.vb: CardExtensions.GetCustomCostAmount(Of T)(PlayableCard)
 - uid: InscryptionAPI.Card.CardExtensions.GetCustomCosts(DiskCardGame.CardInfo)
   name: GetCustomCosts(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetCustomCosts_DiskCardGame_CardInfo_
