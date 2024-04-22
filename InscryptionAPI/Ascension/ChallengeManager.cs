@@ -40,6 +40,12 @@ public static class ChallengeManager
         /// A function that needs to return true for the challenge to be unlocked. Optional. If this isn't set, this check will be bypassed. The int argument is the current Kaycee's Mod challenge level.
         /// </summary>
         public Func<int, bool> CustomUnlockCheck { get; set; }
+        
+        /// <summary>
+        /// If true, this challenge's icon(s) will occupy the entire column like the Final Boss challenge icon, and be ordered to the right of regular challenges.
+        /// </summary>
+        public bool Boss { get; set; }
+
         /// <summary>
         /// True if this challenge appears more than 1 time in the challenge screen, false otherwise.
         /// </summary>
@@ -104,9 +110,28 @@ public static class ChallengeManager
             return t != null && !t.IsAbstract && t.IsSubclassOf(typeof(ChallengeBehaviour));
         }
         /// <summary>
-        /// If the challenge's point value is over 0, returns 1, if under 0, returns -1, if equal to 0, returns 0. Used for sorting challenges.
+        /// The sorting value of this challenge based on its pointValue.
+        ///  1 - Positive
+        ///  0 - Zero
+        /// -1 - Negative
         /// </summary>
-        public int SortValue => Challenge.pointValue == 0 ? 0 : Math.Sign(Challenge.pointValue);
+        public int SortValue => Math.Sign(Challenge.pointValue);
+        /// <summary>
+        /// This challenge's SortValue, accounting for if Boss is true.
+        ///  -2 - Positive Boss
+        ///  -3 - Zero Boss
+        ///  -4 - Negative Boss
+        /// </summary>
+        public int BossSortValue
+        {
+            get
+            {
+                if (!Boss)
+                    return SortValue;
+
+                return SortValue - 3;
+            }
+        }
         /// <summary>
         /// Returns true if this challenge has a valid handler type (inherits ChallengeBehaviour, not abstract and not null), false otherwise.
         /// </summary>
@@ -263,18 +288,23 @@ public static class ChallengeManager
             CustomUnlockCheck = check;
             return this;
         }
+        public FullChallenge SetBoss(bool boss)
+        {
+            Boss = boss;
+            return this;
+        }
     }
     /// <summary>
     /// The list of all base game challenges in the form of ChallengeManager.FullChallenge.
     /// </summary>
-    public static readonly ReadOnlyCollection<FullChallenge> BaseGameChallenges = new(GenBaseGameChallengs());
+    public static readonly ReadOnlyCollection<FullChallenge> BaseGameChallenges = new(GenBaseGameChallenges());
     internal static readonly ObservableCollection<FullChallenge> NewInfos = new();
     /// <summary>
     /// The list of all new challenges added with the API in the form of ChallengeManager.FullChallenge.
     /// </summary>
     public static readonly ReadOnlyCollection<FullChallenge> NewChallenges = new(NewInfos);
 
-    private static List<FullChallenge> GenBaseGameChallengs()
+    private static List<FullChallenge> GenBaseGameChallenges()
     {
         List<AscensionChallengeInfo> infos = new(Resources.LoadAll<AscensionChallengeInfo>("Data/Ascension/Challenges"));
 
@@ -300,7 +330,8 @@ public static class ChallengeManager
                     Challenge = icon.Info,
                     AppearancesInChallengeScreen = 1,
                     UnlockLevel = schedule.unlockTiers.FindIndex(x => x.challengesUnlocked.Contains(icon.Info.challengeType)),
-                    ChallengeHandler = null
+                    ChallengeHandler = null,
+                    Boss = icon.Info.challengeType == AscensionChallenge.FinalBoss
                 });
             }
         }

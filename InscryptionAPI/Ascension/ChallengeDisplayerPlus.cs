@@ -86,77 +86,66 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
 
     public void DisplayChallenge(AscensionChallengeInfo challengeInfo, bool immediate = false)
     {
-        string dependency = "";
-        string incompatibility = "";
-        if (challengeInfo != null)
+        string dependency = "", incompatibility = "";
+        ChallengeManager.FullChallenge fc = challengeInfo?.GetFullChallenge();
+        if (fc != null && AscensionMenuScreens.Instance?.CurrentScreen == AscensionMenuScreens.Screen.SelectChallenges)
         {
-            ChallengeManager.FullChallenge fc = challengeInfo.GetFullChallenge();
-            if (fc != null)
+            List<AscensionChallenge> dependencies = fc.DependantChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
+            List<AscensionChallenge> incompatibilities = fc.IncompatibleChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
+            dependencies?.RemoveAll(x => x == challengeInfo.challengeType);
+            incompatibilities?.RemoveAll(x => x == challengeInfo.challengeType);
+            if (dependencies != null && dependencies.Count > 0)
             {
-                List<AscensionChallenge> dependencies = challengeInfo?.GetFullChallenge()?.DependantChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
-                List<AscensionChallenge> incompatibilities = challengeInfo?.GetFullChallenge()?.IncompatibleChallengeGetter?.Invoke(ChallengeManager.GetChallengeIcons())?.ToList();
-                if (dependencies != null)
+                incompatibilities?.RemoveAll(dependencies.Contains);
+                List<PrefixedString> dependencyStrings = new();
+                foreach (AscensionChallenge d in dependencies)
                 {
-                    incompatibilities?.RemoveAll(dependencies.Contains);
-                    dependencies.RemoveAll(x => x == challengeInfo.challengeType);
-                    if (dependencies.Count > 0)
+                    AscensionChallengeInfo info = d.GetInfo();
+                    if (info != null)
                     {
-                        List<PrefixedString> dependencyStrings = new();
-                        foreach (var d in dependencies)
+                        PrefixedString existing = dependencyStrings.Find(x => x.challenge == d);
+                        if (existing != null)
                         {
-                            var info = d.GetInfo();
-                            if (info != null)
-                            {
-                                var existing = dependencyStrings.Find(x => x.challenge == d);
-                                if (existing != null)
-                                {
-                                    existing.number++;
-                                }
-                                else
-                                {
-                                    PrefixedString pstr = new()
-                                    {
-                                        prefix = Localization.Translate(info.title),
-                                        challenge = d,
-                                        number = 1
-                                    };
-                                    dependencyStrings.Add(pstr);
-                                }
-                            }
+                            existing.number++;
                         }
-                        if (dependencyStrings.Count > 0)
+                        else
                         {
-                            List<string> actualStrings = dependencyStrings.ConvertAll(x =>
-                                (Singleton<AscensionMenuScreens>.Instance == null || Singleton<AscensionMenuScreens>.Instance.CurrentScreen != AscensionMenuScreens.Screen.SelectChallenges) ? x.FullText :
-                                !AscensionSaveData.Data.activeChallenges.Contains(x.challenge) ? "[c:R]" + x.FullText + "[c]" :
-                                AscensionSaveData.Data.activeChallenges.FindAll(x2 => x2 == x.challenge).Count < x.number ? x.RedPrefixText :
-                                x.FullText);
-                            dependency = "Depends on: " + string.Join(", ", actualStrings);
+                            PrefixedString pstr = new()
+                            {
+                                prefix = Localization.Translate(info.title),
+                                challenge = d,
+                                number = 1
+                            };
+                            dependencyStrings.Add(pstr);
                         }
                     }
                 }
-                if (incompatibilities != null)
+                if (dependencyStrings.Count > 0)
                 {
-                    incompatibilities.RemoveAll(x => x == challengeInfo.challengeType);
-                    if (incompatibilities.Count > 0)
+                    List<string> actualStrings;
+                    actualStrings = dependencyStrings.ConvertAll(x =>
+                        !AscensionSaveData.Data.activeChallenges.Contains(x.challenge) ? $"[c:R]{x.FullText}[c:]" :
+                        AscensionSaveData.Data.activeChallenges.Count(x2 => x2 == x.challenge) < x.number ? x.RedPrefixText : x.FullText);
+                    
+                    dependency = "Depends on: " + string.Join(", ", actualStrings);
+                }
+            }
+            if (incompatibilities != null && incompatibilities.Count > 0)
+            {
+                List<string> incompatibilityStrings = new();
+                List<AscensionChallenge> challenges = new();
+                foreach (AscensionChallenge d in incompatibilities)
+                {
+                    AscensionChallengeInfo info = d.GetInfo();
+                    if (info != null && !challenges.Contains(d))
                     {
-                        List<string> incompatibilityStrings = new();
-                        List<AscensionChallenge> challenges = new();
-                        foreach (var d in incompatibilities)
-                        {
-                            var info = d.GetInfo();
-                            if (info != null && !challenges.Contains(d))
-                            {
-                                incompatibilityStrings.Add(AscensionSaveData.Data.activeChallenges.Contains(d) &&
-                                    Singleton<AscensionMenuScreens>.Instance != null && Singleton<AscensionMenuScreens>.Instance.CurrentScreen == AscensionMenuScreens.Screen.SelectChallenges ?
-                                    "[c:R]" + Localization.Translate(info.title) + "[c]" : Localization.Translate(info.title));
-                                challenges.Add(d);
-                            }
-                        }
-                        if (incompatibilityStrings.Count > 0)
-                            incompatibility = "Incompatible with: " + string.Join(", ", incompatibilityStrings);
+                        string prefix = AscensionSaveData.Data.activeChallenges.Contains(d) ? $"[c:R]{Localization.Translate(info.title)}[c:]" : Localization.Translate(info.title);                        
+                        incompatibilityStrings.Add(prefix);
+                        challenges.Add(d);
                     }
                 }
+                if (incompatibilityStrings.Count > 0)
+                    incompatibility = "Incompatible with: " + string.Join(", ", incompatibilityStrings);
             }
         }
         DisplayText(dependency, incompatibility, immediate);
@@ -194,14 +183,8 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
 
     private IEnumerator DisplayTextSequence(string dependency, string incompatibility)
     {
-        if (dependencyText != null)
-        {
-            dependencyText.SetText("", false);
-        }
-        if (incompatibilityText != null)
-        {
-            incompatibilityText.SetText("", false);
-        }
+        dependencyText?.SetText("", false);
+        incompatibilityText?.SetText("", false);
         yield return new WaitForSecondsRealtime(0.125f);
         if (displayer.descriptionText != null)
         {
