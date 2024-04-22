@@ -1,6 +1,20 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.5
+- Fixed pixel Bones cost icons not appearing when the cost is greater than vanilla amounts
+- Fixed interaction where a Gemified card that gives a blue gem doesn't spend the correct resource amount when played
+- Fixed active challenges desyncing from the icons when returning to the select challenges screen from a custom screen
+- Added pixel icon to Aquasquirrel (courtesy of Zepht)
+- Added GetCustomCostAmount extension methods for automatically accounting for whether a custom cost can be negative
+- Added support for making custom challenges that use the Final Boss challenge's icon format (occupying the whole column)
+- AscensionChallengePaginator's leftArrow and rightArrow fields are now AscensionMenuInteractables
+- Changed method name of GenBaseGameChallengs to GenBaseGameChallenges
+- Changed Act 1 energy cost choice cardback to match the cost's icon colour
+- Changed TestCost.OnPlayed to no longer trigger on negative values
+- CustomCardCost.OnPlayed no longer triggers for custom costs with a value of 0 (negative values can still occur)
+- Challenges no longer show dependencies/incompatibilies when viewed in the pause menu and end screen
+
 # 2.19.4
 - Fixed error when retrieving custom card costs from a card with no custom card costs
 - Fixed cards with custom card costs using the pixel cost icons in some circumstances
