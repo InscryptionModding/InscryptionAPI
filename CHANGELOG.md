@@ -1,6 +1,10 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.19.6
+- Fixed issues related to challlenge icon sorting when a boss icon is present on the page
+- Removed leftover debugging related to boss challenge icons
+
 # 2.19.5
 - Fixed pixel Bones cost icons not appearing when the cost is greater than vanilla amounts
 - Fixed interaction where a Gemified card that gives a blue gem doesn't spend the correct resource amount when played
