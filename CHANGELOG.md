@@ -3,6 +3,7 @@
 
 # 2.19.6
 - Fixed issues related to challlenge icon sorting when a boss icon is present on the page
+- Added StatIconInfo.SetRulebookInfo and StatIconInfo.SetAppliesToStats
 - Removed leftover debugging related to boss challenge icons
 
 # 2.19.5
