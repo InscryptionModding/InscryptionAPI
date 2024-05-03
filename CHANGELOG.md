@@ -4,7 +4,7 @@
 # 2.19.6
 - Fixed issues related to challlenge icon sorting when a boss icon is present on the page
 - Added StatIconInfo.SetRulebookInfo and StatIconInfo.SetAppliesToStats
-- Removed leftover debugging related to boss challenge icons
+- Removed leftover debugging related to boss challenge icons and custom costs
 
 # 2.19.5
 - Fixed pixel Bones cost icons not appearing when the cost is greater than vanilla amounts
