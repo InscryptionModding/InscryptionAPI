@@ -13,6 +13,10 @@
         <Version>2.19.4</Version>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <NoWarn>Publicizer001</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <None Remove="$(ProjectDir)\Assets\*" />
         <EmbeddedResource Include="$(ProjectDir)\Assets\*" />
