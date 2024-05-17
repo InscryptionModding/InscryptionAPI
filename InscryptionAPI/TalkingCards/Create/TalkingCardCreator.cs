@@ -28,12 +28,14 @@ public static class TalkingCardCreator
         return faceInfo;
     }
 
-    internal static void Remove(FaceData faceData) {
+    internal static void Remove(FaceData faceData)
+    {
         if (faceData.CardName == null) return;
         Remove(faceData.CardName);
     }
 
-    internal static void Remove(string cardName) {
+    internal static void Remove(string cardName)
+    {
         if (!AnimatedPortraits.ContainsKey(cardName)) return;
 
         CardInfo? card = CardHelpers.Get(cardName);
@@ -72,9 +74,40 @@ public static class TalkingCardCreator
 
         AnimatedPortraits.Add(faceData.CardName, portrait);
         TalkingAbilities.Add(faceData.CardName, talkAbility);
-        card.AddAppearances(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
         card.AddSpecialAbilities(talkAbility);
+
+        // Special behaviour for the talking cards
+        if (card.temple == CardTemple.Tech)
+        {
+            card.AddAppearances(CardAppearanceBehaviour.Appearance.DynamicPortrait);
+            foreach (var rend in card.AnimatedPortrait.GetComponentsInChildren<SpriteRenderer>())
+                rend.color = new(0f, 0.755f, 1f);
+
+            RecursiveSetLayer(card.AnimatedPortrait, "CardOffscreenEmission");
+
+            // Rescale the portrait for tech cards
+            card.AnimatedPortrait.transform.localScale = new(1f, 1f, 1f);
+            card.AnimatedPortrait.transform.Find("Anim/Body").localPosition = new(0f, 0.2f, 0f);
+
+            // Add the dialogue text displayer
+            GameObject.Instantiate(CardLoader.GetCardByName("Angler_Talking").AnimatedPortrait.transform.Find("DialogueText").gameObject, card.AnimatedPortrait.transform);
+        }
+        else
+        {
+            card.AddAppearances(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
+        }
     }
+
+    private static void RecursiveSetLayer(GameObject obj, string layerName)
+    {
+        if (obj == null)
+            return;
+
+        obj.layer = LayerMask.NameToLayer(layerName);
+        for (int i = 0; i < obj.transform.childCount; i++)
+            RecursiveSetLayer(obj.transform.GetChild(i)?.gameObject, layerName);
+    }
+
     #endregion
 
     #region Dialogue
