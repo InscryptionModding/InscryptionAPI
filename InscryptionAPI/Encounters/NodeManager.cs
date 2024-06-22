@@ -241,14 +241,11 @@ public static class NodeManager
             else if (data.PrefabPath.Contains('@'))
             {
                 string guid = data.PrefabPath.Substring(data.PrefabPath.IndexOf('@') + 1);
-
                 NodeInfo info = AllNodes.FirstOrDefault(ni => ni.guid == guid);
-
                 if (info == null)
                     return;
 
                 Texture2D[] nodeTextures = info.animatedMapNode;
-
                 if (nodeTextures == null)
                     return;
 
