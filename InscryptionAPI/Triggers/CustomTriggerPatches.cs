@@ -1,6 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.Slots;
 using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
@@ -401,7 +402,7 @@ internal static class CustomTriggerPatches
     [HarmonyPatch(typeof(TurnManager), "OpponentTurn", MethodType.Enumerator)]
     static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueueOpponent(IEnumerable<CodeInstruction> instructions) =>
         TriggerOnTurnEndInQueue(instructions, false);
-    
+
     static IEnumerable<CodeInstruction> TriggerOnTurnEndInQueue(IEnumerable<CodeInstruction> instructions, bool playerTurn)
     {
         List<CodeInstruction> codes = instructions.ToList();
@@ -423,6 +424,23 @@ internal static class CustomTriggerPatches
         {
             if ((trigger as TriggerReceiver) != null && trigger.RespondsToTurnEndInQueue(playerTurn))
                 yield return trigger.OnTurnEndInQueue(playerTurn);
+        }
+    }
+
+    [HarmonyPatch(typeof(GlobalTriggerHandler), nameof(GlobalTriggerHandler.TriggerNonCardReceivers)), HarmonyPostfix]
+    private static IEnumerator TriggerSlotModificationHandlers(IEnumerator sequence, bool beforeCards, Trigger trigger, params object[] otherArgs)
+    {
+        yield return sequence;
+
+        if (beforeCards)
+        {
+            // Trigger slot modifications
+            List<SlotModificationBehaviour> slotModificationCache = new(SlotModificationManager.Instance?.SlotReceivers?.Select(kvp => kvp.Value.Item2) ?? Enumerable.Empty<SlotModificationBehaviour>());
+            foreach (var slotMod in slotModificationCache)
+            {
+                if (slotMod != null && GlobalTriggerHandler.ReceiverRespondsToTrigger(trigger, slotMod, otherArgs))
+                    yield return GlobalTriggerHandler.Instance.TriggerSequence(trigger, slotMod, otherArgs);
+            }
         }
     }
 

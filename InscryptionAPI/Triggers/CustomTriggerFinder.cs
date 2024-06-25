@@ -1,6 +1,7 @@
 using System.Collections;
 using DiskCardGame;
 using InscryptionAPI.Card;
+using InscryptionAPI.Slots;
 using Sirenix.Serialization.Utilities;
 
 namespace InscryptionAPI.Triggers;
@@ -421,7 +422,10 @@ public static class CustomTriggerFinder
     {
         List<PlayableCard> cardsOnBoardCache = new(BoardManager.Instance.CardsOnBoard);
         List<NonCardTriggerReceiver> triggerReceiverCache = new(GlobalTriggerHandler.Instance.nonCardReceivers);
-        return triggerReceiverCache.Where(x => !x.SafeIsUnityNull()).Where(x => x.TriggerBeforeCards).OfType<T>().Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && (!x.FaceDown || findFacedown)).SelectMany(FindTriggersOnCard<T>))
+        List<SlotModificationBehaviour> slotModificationCache = new(SlotModificationManager.Instance?.SlotReceivers?.Select(kvp => kvp.Value.Item2) ?? Enumerable.Empty<SlotModificationBehaviour>());
+        return triggerReceiverCache.Where(x => !x.SafeIsUnityNull()).Where(x => x.TriggerBeforeCards).OfType<T>()
+            .Concat(slotModificationCache.Where(x => !x.SafeIsUnityNull()).OfType<T>())
+            .Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && (!x.FaceDown || findFacedown)).SelectMany(FindTriggersOnCard<T>))
             .Concat(triggerReceiverCache.Where(x => !x.SafeIsUnityNull()).Where(x => !x.TriggerBeforeCards).OfType<T>())
             .Concat(cardsOnBoardCache.Where(x => x != null && x.OnBoard && x.FaceDown && !findFacedown).SelectMany(FindTriggersOnCard<T>)
             .Where(x => x is IActivateWhenFacedown && (x as IActivateWhenFacedown).ShouldTriggerCustomWhenFaceDown(typeof(T))));
