@@ -1,14 +1,11 @@
-using BepInEx.Logging;
 using DiskCardGame;
 using DiskCardGame.CompositeRules;
 using HarmonyLib;
-using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
-
 namespace InscryptionAPI.Card;
 
 [HarmonyPatch]
@@ -23,36 +20,35 @@ public static class ShieldManager
         DamageShieldBehaviour shield = Array.Find(target.GetComponents<DamageShieldBehaviour>(), x => x.HasShields());
         if (shield != null)
         {
-            if (target.TemporaryMods.Exists(x => x.abilities != null && x.abilities.Contains(shield.Ability))) // if the sigil is from a temp mod
+            CardModificationInfo info = target.TemporaryMods.Find(x => x.abilities != null && x.abilities.Contains(shield.Ability));
+            if (info != null)
             {
-                Ability ability = shield.Ability;
-                CardModificationInfo info = target.TemporaryMods.Find(x => x.abilities != null && x.abilities.Contains(shield.Ability));
                 target.RemoveTemporaryMod(info, false); // RemoveShields is called here in a patch
-                
-                int shieldsToAdd = shield.NumShields - info.abilities.Count(x => x == shield.Ability);
-                if (shieldsToAdd > 0)
-                {
-                    CardModificationInfo updatedinfo = new() { fromCardMerge = info.fromCardMerge, fromLatch = info.fromLatch, fromTotem = info.fromTotem };
-                    for (int i = 0; i < shieldsToAdd; i++)
-                        updatedinfo.abilities.Add(ability);
-
-                    target.AddTemporaryMod(updatedinfo);
-                }
+                info.abilities.Remove(shield.Ability);
+                target.AddTemporaryMod(info);
             }
             else
             {
                 shield.RemoveShields(1, false);
             }
         }
+        target.Anim.StrongNegationEffect();
         if (target.GetTotalShields() == 0) // if we removed the last shield
         {
             target.Status.lostShield = true;
             if (target.Info.HasBrokenShieldPortrait())
                 target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
         }
+
         target.OnStatsChanged();
     }
 
+    [HarmonyPostfix, HarmonyPatch(typeof(Latch), nameof(Latch.CardHasLatchMod))]
+    private static void PreventShieldReset(Latch __instance, ref bool __result, PlayableCard card)
+    {
+        if (__instance is LatchDeathShield && card.HasShield())
+            __result = true;
+    }
     [HarmonyPrefix, HarmonyPatch(typeof(LatchDeathShield), nameof(LatchDeathShield.OnSuccessfullyLatched))]
     private static bool PreventShieldReset(PlayableCard target)
     {
@@ -60,12 +56,13 @@ public static class ShieldManager
         return false; // latch death shield doesn't reset shields
     }
 
-    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
-    private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result) => __result = NewHasShield(__instance);
     /// <summary>
     /// The new version of PlayableCard.HasShield implementing the new shield logic.
     /// </summary>
     public static bool NewHasShield(PlayableCard instance) => instance.GetTotalShields() > 0 && !instance.Status.lostShield;
+
+    [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
+    private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result) => __result = NewHasShield(__instance);
 
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield), new Type[] { })]
     private static void ResetModShields(PlayableCard __instance) // runs before the base ResetShield logic
@@ -188,25 +185,21 @@ public static class ShieldManager
     {
         foreach (var com in card.GetComponents<DamageShieldBehaviour>())
         {
-            //Debug.Log($"Hidden start: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
             if (com.HasShields())
             {
                 if (com.Ability.GetHideSingleStacks())
                 {
                     // if there are more hidden shields than there should be
-                    if (com.NumShields <= card.Status.hiddenAbilities.Count(x => x == com.Ability))
+                    int removeStacks = card.Status.hiddenAbilities.Count(x => x == com.Ability) - com.NumShields;
+                    for (int i = 0; i < removeStacks; i++)
                     {
-                        for (int i = 0; i < com.NumShields; i++)
-                        {
-                            card.Status.hiddenAbilities.Remove(com.Ability);
-                        }
+                        card.Status.hiddenAbilities.Remove(com.Ability);
                     }
-                }   
+                }
                 else
                 {
                     card.Status.hiddenAbilities.Remove(com.Ability);
                 }
-                //Debug.Log($"Hidden Removed: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
                 break;
             }
             else
@@ -216,7 +209,6 @@ public static class ShieldManager
                     int shieldsLost = com.StartingNumShields - com.NumShields;
                     if (card.Status.hiddenAbilities.Count(x => x == com.Ability) < shieldsLost)
                     {
-                        // if there are less hidden shields than there should be
                         for (int i = 0; i < shieldsLost; i++)
                         {
                             card.Status.hiddenAbilities.Add(com.Ability);
@@ -227,10 +219,16 @@ public static class ShieldManager
                 {
                     card.Status.hiddenAbilities.Add(com.Ability);
                 }
-                //Debug.Log($"Hidden Added: {card.Status.hiddenAbilities.Count(x => x == com.Ability)}");
                 break;
             }
         }
+
+        if (card.Info.HasBrokenShieldPortrait() && card.RenderInfo.portraitOverride == card.Info.BrokenShieldPortrait() && card.HasShield())
+        {
+            card.Anim.StrongNegationEffect();
+            card.SwitchToDefaultPortrait();
+        }
+
         card.RenderCard();
     }
 
@@ -287,18 +285,17 @@ public static class ShieldManager
             __instance.StartCoroutine(__instance.Anim.ClearLatchAbility());
     }
 
+    // disable the module object so it doesn't replay the animation on death
     [HarmonyPostfix, HarmonyPatch(typeof(DiskCardAnimationController), nameof(DiskCardAnimationController.ClearLatchAbility))]
     private static IEnumerator DisableLatchModule(IEnumerator result, DiskCardAnimationController __instance)
     {
         yield return result;
         if (__instance.latchModule != null)
         {
-            // disable the module object so it doesn't replay the animation on death
             __instance.latchModule.gameObject.SetActive(false);
             GameObject baseObj = __instance.latchModule.gameObject.FindChild("Base");
-            if (baseObj != null)
+            if (baseObj != null) // fixes the latch module animation when re-applying latch sigil to a card
             {
-                // fixes the latch module animation when re-applying latch sigil to a card
                 baseObj.SetActive(true);
                 baseObj.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
             }
