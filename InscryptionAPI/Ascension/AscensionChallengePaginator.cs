@@ -11,31 +11,6 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
-/// <summary>
-/// The purpose of this class is to help sync challenge icons as they appear in the selection menu.
-/// 
-/// </summary>
-/*public class GameObject
-{
-    public AscensionIconInteractable IconInteractable;
-    public GameObject IconObject;
-
-    public int Index;
-    public int PageNum;
-    public bool Activated;
-    public bool BossIcon;
-
-    public GameObject(int pageNum, AscensionIconInteractable iconInteractable, int index = -1)
-    {
-        this.Activated = false;
-        this.Index = index;
-        this.PageNum = pageNum;
-        this.IconInteractable = iconInteractable;
-        this.IconObject = iconInteractable.gameObject;
-        this.BossIcon = iconInteractable.challengeInfo.GetFullChallenge()?.Boss ?? false;
-    }
-}*/
-
 public class AscensionChallengePaginator : MonoBehaviour
 {
     public bool initialized;
@@ -99,36 +74,18 @@ public class AscensionChallengePaginator : MonoBehaviour
         int numBosses = challengeInfos.Count(x => x.challengeType.GetFullChallenge().Boss);
         int numIcons = Mathf.Min(14, challengeObjectsForPages[0].Count) - numBosses;
 
-        //int occupiedRows = (1 + regularChallengeInfos.Count) / 2 + bossChallengeInfos.Count;
+        // the list index when we begin adding boss icons
+        int bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
         int numBossesAdded = 0;
-        int bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;//numRows - bossChallengeInfos.Count;
 
-        Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {bossChallengeInfos.Count}");
+        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {bossChallengeInfos.Count}");
 
-        /*// Prototyping for a more complicated system of sorting boss icons according to their challenge type (reds w/ reds, greens w/ greens, etc.)
-        // Current system just sticks them at the end of the page, regardless of their colour or the colour of preceding challenges
-        // | | |2| |4| |6|        // | | |2| |4| | |
-        // |+|+|B|B|-|x| |        // |=|=|-|B|x|x| |
-        // |+|+|=|=|B| | |        // |=|B|-|x|x|x| |
-
-        // | | | |3| | | |        // | | |2| | |5| |
-        // |=|=|-|x|x|x|x|        // |+|=|-|-|B|x| |
-        // |=|-|B|x|x|x| |        // |=|B|-|-|x|x| |
-
-        int positiveChalls = regularChallengeInfos.FindAll(x => x.pointValue > 0).Count;
-        int neutralChalls = regularChallengeInfos.FindAll(x => x.pointValue == 0).Count;
-        int negativeChalls = regularChallengeInfos.FindAll(x => x.pointValue < 0).Count;*/
-
-        for (int i = 0; i < Mathf.Min(14, numIcons); i++)
+        for (int i = 0; i < 14; i++)
         {
-            GameObject objectRef;
+            GameObject objectRef = null;
 
-            // if there are boss icons we still need to add to the page
-            if (i % 7 >= bossStartingIndex && i % 7 < bossStartingIndex + numBosses)
+            if (i % 7 < bossStartingIndex + numBosses && i % 7 >= bossStartingIndex)
             {
-
-                // if this is the correct index for adding a boss
-                // but one has already been added, skip to the next non-boss index
                 if (numBossesAdded < numBosses)
                 {
                     numBossesAdded++;
@@ -137,13 +94,10 @@ public class AscensionChallengePaginator : MonoBehaviour
                 else
                 {
                     i += numBosses;
-                    objectRef = challengeObjectsForPages[0][i];
                 }
             }
-            else
-            {
-                objectRef = challengeObjectsForPages[0][i];
-            }
+
+            objectRef ??= challengeObjectsForPages[0][i];
 
             if (objectRef != null)
             {
@@ -155,16 +109,31 @@ public class AscensionChallengePaginator : MonoBehaviour
         newPage.Sort((x, x2) => Mathf.RoundToInt(
                     (Mathf.Abs(x.transform.position.x - x2.transform.position.x) < 0.1f ? x2.transform.position.y - x.transform.position.y : x.transform.position.x - x2.transform.position.x) * 100
                     ));
-        DebugChallengePageArray(challengeObjectsForPages.Count, newPage);
+
+        //DebugChallengePageArray(challengeObjectsForPages.Count, newPage);
 
         // set the challenge info for each icon in the page
+        int infoIdx = 0;
+        int infoCount = challengeInfos.Count;
         for (int i = 0; i < newPage.Count; i++)
         {
-            //Debug.Log($"Assign info at: {i}");
+            //Debug.Log($"Checking icon [{i}] info {infoIdx}");
             AscensionIconInteractable interactable = newPage[i].GetComponent<AscensionIconInteractable>();
-            if (i < challengeInfos.Count)
+
+            if (i < infoCount)
             {
-                interactable.challengeInfo = challengeInfos[i];
+                // if we're assigning boss info to an icon that isn't a boss icon
+                if (challengeInfos[infoIdx].GetFullChallenge().Boss && (interactable.coll2D as BoxCollider2D).size.y < 1f)
+                {
+                    interactable.challengeInfo = missingChallengeInfo;
+                    newPage[i].AddComponent<NoneChallengeDisplayer>();
+                    infoCount++;
+                }
+                else
+                {
+                    interactable.challengeInfo = challengeInfos[infoIdx];
+                    infoIdx++;
+                }
             }
             else
             {
@@ -261,7 +230,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             icon.conqueredRenderer.gameObject.SetActive(icon.Conquered && icon.showConquered);
         }
 
-        // sort challenges in order of: positive pts, 0 pts, negatve pts, positive pts boss, 0 pts boss, negative pts boss
+        // sort challenges in order of: positive pts, 0 pts, negative pts, positive pts boss, 0 pts boss, negative pts boss
         challengesToAdd.Sort((x, x2) =>
         {
             if (x.Item1.SortValue != x2.Item1.SortValue)
@@ -293,7 +262,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             // re-sort the page so boss challenges have the correct info
             page.Sort((x, x2) =>
             {
-                if (x.Item1.SortValue != x2.Item1.SortValue)
+                if (x.Item1.BossSortValue != x2.Item1.BossSortValue)
                 {
                     return x2.Item1.BossSortValue - x.Item1.BossSortValue;
                 }
@@ -303,7 +272,7 @@ public class AscensionChallengePaginator : MonoBehaviour
                 }
             });
             pagesToAdd.Add(page.ConvertAll(x => x.Item2));
-            DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
+            //DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
         }
 
         challengeObjectsForPages.ForEach(x => x.RemoveAll(x => x == null));
@@ -426,24 +395,6 @@ public class AscensionChallengePaginator : MonoBehaviour
         CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
 
-    /// <summary>
-    /// A List representing the entire collection of challenge pages.
-    /// </summary>
-    public List<List<GameObject>> challengeObjectsForPages;
-
-    public int pageIndex;
-    public int pageLength;
-
-    public AscensionChallengeScreen screen;
-    
-    public AscensionMenuScreenTransition transition;
-
-    public AscensionMenuInteractable leftArrow;
-    public AscensionMenuInteractable rightArrow;
-
-    public static Sprite missingChallengeSprite;
-    public static AscensionChallengeInfo missingChallengeInfo;
-
     private void DebugChallengePageArray(int page, List<GameObject> iconsForPage, List<AscensionChallengeInfo> infos = null)
     {
         InscryptionAPIPlugin.Logger.LogDebug($"Current Page: {page} | {iconsForPage?.Count ?? infos.Count}");
@@ -500,6 +451,24 @@ public class AscensionChallengePaginator : MonoBehaviour
 
         return interactable.activatedRenderer.enabled ? 'X' : 'O';
     }
+
+    /// <summary>
+    /// A List representing the entire collection of challenge pages.
+    /// </summary>
+    public List<List<GameObject>> challengeObjectsForPages;
+
+    public int pageIndex;
+    public int pageLength;
+
+    public AscensionChallengeScreen screen;
+
+    public AscensionMenuScreenTransition transition;
+
+    public AscensionMenuInteractable leftArrow;
+    public AscensionMenuInteractable rightArrow;
+
+    public static Sprite missingChallengeSprite;
+    public static AscensionChallengeInfo missingChallengeInfo;
 
     private class NoneChallengeDisplayer : MonoBehaviour
     {

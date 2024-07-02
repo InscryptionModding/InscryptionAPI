@@ -1,5 +1,6 @@
 using DiskCardGame;
 using InscryptionAPI.CardCosts;
+using Sirenix.Serialization.Utilities;
 using static InscryptionAPI.CardCosts.CardCostManager;
 
 namespace InscryptionAPI.Card;
@@ -205,11 +206,27 @@ public static partial class CardExtensions
 
     public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {card != null}");
-        CustomCardCost[] components = card?.GetComponents<CustomCardCost>();
-        InscryptionAPIPlugin.Logger.LogDebug($"[GetCustomCardCosts] {components != null} {components?.Length}");
-        return components?.ToList() ?? new();
+        try
+        {
+            // hoping this will intercept whatever the null reference was
+            if (!card.SafeIsUnityNull())
+            {
+                CustomCardCost[] components = card?.GetComponents<CustomCardCost>();
+                if (components != null)
+                    return components.ToList();
+            }
+            InscryptionAPIPlugin.Logger.LogWarning("[GetCustomCardCosts] Card is null, returning empty List.");
+        }
+        catch
+        {
+            // if this happens, then I'm lost on what's happpening,
+            // other than the Card object and its components not being fully initialised when this method's called?
+            // someone who actually knows how to code should probably do something about that
+            InscryptionAPIPlugin.Logger.LogError("[GetCustomCardCosts] Failed to get CustomCardCosts from Card object, returning empty List.");
+        }
+        return new();
     }
+
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();

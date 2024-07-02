@@ -372,6 +372,52 @@ public static class NewNodeManager
     }
 }
 
+#region SelectionConditions
+public class NumChallengesOfTypeActive : NodeData.SelectionCondition
+{
+    public AscensionChallenge challenge;
+    public int numChallenges;
+    public bool greaterThanNumActive;
+
+    public NumChallengesOfTypeActive(AscensionChallenge challenge, int numChallenges, bool greaterThanNumActive)
+    {
+        this.challenge = challenge;
+        this.numChallenges = numChallenges;
+        this.greaterThanNumActive = greaterThanNumActive;
+    }
+    public override bool Satisfied(int gridY, List<NodeData> previousNodes)
+    {
+        if (greaterThanNumActive)
+            return this.numChallenges >= AscensionSaveData.Data.GetNumChallengesOfTypeActive(challenge);
+
+        return this.numChallenges <= AscensionSaveData.Data.GetNumChallengesOfTypeActive(challenge);
+    }
+}
+public class ChallengeIsActive : NodeData.SelectionCondition
+{
+    public AscensionChallenge challenge;
+    public bool exclude;
+
+    public ChallengeIsActive(AscensionChallenge challenge, bool exclude)
+    {
+        this.challenge = challenge;
+        this.exclude = exclude;
+    }
+    public override bool Satisfied(int gridY, List<NodeData> previousNodes)
+    {
+        bool flag = AscensionSaveData.Data.ChallengeIsActive(challenge);
+        if (!(flag && exclude))
+        {
+            if (!exclude)
+                return !flag;
+
+            return false;
+        }
+        return true;
+    }
+}
+#endregion
+
 /// <summary>
 /// Flags for different types of generation.
 /// </summary>

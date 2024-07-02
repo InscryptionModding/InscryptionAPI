@@ -101,8 +101,10 @@ public static class OpponentManager
         // This mostly just follows the logic of the base game, other than the fact that the
         // opponent gets instantiated by looking up the type from the list
 
-        GameObject gameObject = new GameObject();
-        gameObject.name = "Opponent";
+        GameObject gameObject = new()
+        {
+            name = "Opponent"
+        };
 
         __result = gameObject.AddComponent(AllOpponents.First(o => o.Id == encounterData.opponentType).Opponent) as Opponent;
 

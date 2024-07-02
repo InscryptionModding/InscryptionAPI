@@ -17,6 +17,8 @@ items:
   items:
   - name: Triggers and Interfaces
     href: triggers.md
+  - name: Slot Modification
+    href: slots.md
   - name: DamageShieldBehaviour
     href: shield.md
   - name: Custom Sniper Logic

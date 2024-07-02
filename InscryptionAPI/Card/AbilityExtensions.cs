@@ -118,7 +118,7 @@ public static class AbilityExtensions
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same stat icon so a chain can continue.</returns>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
     public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
         info.iconGraphic = icon;
@@ -133,7 +133,7 @@ public static class AbilityExtensions
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="pathToArt">The path to a 49x49 texture containing the icon on disk.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same stat icon so a chain can continue.</returns>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
     public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)
     {
         info.iconGraphic = TextureHelper.GetImageAsTexture(pathToArt);
@@ -143,12 +143,39 @@ public static class AbilityExtensions
     }
 
     /// <summary>
+    /// Set the StatIconInfo's rulebookName and rulebookDescription. Does not make the stat icon appear in the Rulebook.
+    /// </summary>
+    /// <param name="info"></param>
+    /// <param name="rulebookName"></param>
+    /// <param name="rulebookDescription"></param>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    public static StatIconInfo SetRulebookInfo(this StatIconInfo info, string rulebookName, string rulebookDescription = null)
+    {
+        info.rulebookName = rulebookName;
+        info.rulebookDescription = rulebookDescription;
+        return info;
+    }
+    /// <summary>
+    /// Sets the StatIconInfo's appliesToAttack and appliesToHealth fields. Note these fields don't make the stat icon affect the stat; you still need to implement that logic.
+    /// </summary>
+    /// <param name="info"></param>
+    /// <param name="appliesToAttack">If the stat icon should cover a card's Power.</param>
+    /// <param name="appliesToHealth">If the stat icon should cover a card's Health.</param>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    public static StatIconInfo SetAppliesToStats(this StatIconInfo info, bool appliesToAttack, bool appliesToHealth)
+    {
+        info.appliesToAttack = appliesToAttack;
+        info.appliesToHealth = appliesToHealth;
+        return info;
+    }
+
+    /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in Act 2.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="icon">A 16x8 texture containing the icon .</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same stat icon so a chain can continue.</returns>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
         info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode ?? FilterMode.Point);
@@ -196,7 +223,7 @@ public static class AbilityExtensions
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
     /// <param name="categories">The metacategories to add.</param>
-    /// <returns>The same stat icon so a chain can continue.</returns>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
     public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories)
     {
         info.metaCategories ??= new();
@@ -247,7 +274,7 @@ public static class AbilityExtensions
     /// Helper method: automatically adds the Part3Rulebook metacategories to the stat icon.
     /// </summary>
     /// <param name="info">The instance of StatIconInfo.</param>
-    /// <returns>The same stat icon so a chain can continue.</returns>
+    /// <returns>The same StatIconInfo so a chain can continue.</returns>
     public static StatIconInfo SetDefaultPart3Ability(this StatIconInfo info)
     {
         return info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
