@@ -329,7 +329,7 @@ public static class StackAbilityIcons
         
         DamageShieldBehaviour behav = card.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability)?.Item2 as DamageShieldBehaviour;
         int count = behav != null ? behav.NumShields : baseAbilities.Count(ab => ab == ability);
-        Debug.Log($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count}");
+        //Debug.Log($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count}");
 
         if (count > 1) // We need to add an override
             __instance.SetIcon(PatchTexture(ability, count));

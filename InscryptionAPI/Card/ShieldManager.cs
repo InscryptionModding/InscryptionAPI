@@ -183,19 +183,17 @@ public static class ShieldManager
     }
     private static void CorrectHiddenAbilityRender(PlayableCard card)
     {
-        /*foreach (var com in card.GetComponents<DamageShieldBehaviour>())
+        foreach (var com in card.GetComponents<DamageShieldBehaviour>())
         {
             if (com.HasShields())
             {
                 if (com.Ability.GetHideSingleStacks())
                 {
                     // if there are more hidden shields than there should be
-                    if (com.NumShields <= card.Status.hiddenAbilities.Count(x => x == com.Ability))
+                    int removeStacks = card.Status.hiddenAbilities.Count(x => x == com.Ability) - com.NumShields;
+                    for (int i = 0; i < removeStacks; i++)
                     {
-                        for (int i = 0; i < com.NumShields; i++)
-                        {
-                            card.Status.hiddenAbilities.Remove(com.Ability);
-                        }
+                        card.Status.hiddenAbilities.Remove(com.Ability);
                     }
                 }
                 else
@@ -223,7 +221,7 @@ public static class ShieldManager
                 }
                 break;
             }
-        }*/
+        }
 
         if (card.Info.HasBrokenShieldPortrait() && card.RenderInfo.portraitOverride == card.Info.BrokenShieldPortrait() && card.HasShield())
         {
