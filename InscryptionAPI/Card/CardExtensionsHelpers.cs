@@ -719,43 +719,14 @@ public static partial class CardExtensions
     {
         Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
         DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
-        if (component == null)
-            return;
-
-        component.AddShields(amount, false);
-        card.Status.lostShield = !card.HasShield();
-        if (!updateDisplay)
-            return;
-
-        card.UpdateFaceUpOnBoardEffects();
-        card.RenderCard();
+        component?.AddShields(amount, updateDisplay);
     }
     /// <summary>
     /// Increases the amount of shields a specific ability's AbilityBehaviour is currently giving.
     /// </summary>
     public static void AddShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
     {
-        T component = card.GetComponent<T>();
-        if (component == null)
-            return;
-
-        component.numShields += amount;
-        if (component.Ability.GetHideSingleStacks()) // remove hidden abilities
-            card.Status.hiddenAbilities.RemoveAll(x => x == component.Ability);
-        else
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                card.Status.hiddenAbilities.Remove(component.Ability);
-            }
-        }
-
-        card.Status.lostShield = !card.HasShield();
-        if (!updateDisplay)
-            return;
-
-        card.UpdateFaceUpOnBoardEffects();
-        card.RenderCard();
+        card.GetComponent<T>()?.AddShields(amount, updateDisplay);
     }
 
     /// <summary>
@@ -780,56 +751,11 @@ public static partial class CardExtensions
     {
         Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
         DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
-        if (component == null)
-            return;
-
-        component.numShields -= amount;
-        if (!component.HasShields()) // add hidden abilities
-        {
-            if (component.Ability.GetHideSingleStacks() && !card.Status.hiddenAbilities.Contains(component.Ability))
-                card.Status.hiddenAbilities.Add(component.Ability);
-            else
-            {
-                for (int i = 0; i < amount; i++)
-                {
-                    card.Status.hiddenAbilities.Add(component.Ability);
-                }
-            }
-        }
-
-        card.Status.lostShield = !card.HasShield();
-        if (!updateDisplay)
-            return;
-
-        card.UpdateFaceUpOnBoardEffects();
-        card.RenderCard();
+        component?.RemoveShields(amount, updateDisplay);
     }
     public static void RemoveShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
     {
-        T component = card.GetComponent<T>();
-        if (component == null)
-            return;
-
-        component.numShields -= amount;
-        if (!component.HasShields()) // add hidden abilities
-        {
-            if (component.Ability.GetHideSingleStacks() && !card.Status.hiddenAbilities.Contains(component.Ability))
-                card.Status.hiddenAbilities.Add(component.Ability);
-            else
-            {
-                for (int i = 0; i < amount; i++)
-                {
-                    card.Status.hiddenAbilities.Add(component.Ability);
-                }
-            }
-        }
-
-        card.Status.lostShield = !card.HasShield();
-        if (!updateDisplay)
-            return;
-
-        card.UpdateFaceUpOnBoardEffects();
-        card.RenderCard();
+        card.GetComponent<T>()?.RemoveShields(amount, updateDisplay);
     }
 
     /// <summary>
@@ -860,7 +786,14 @@ public static partial class CardExtensions
 
         return totalShields;
     }
+    public static int GetShieldCount<T>(this PlayableCard card) where T : DamageShieldBehaviour
+    {
+        T comp = card.GetComponent<T>();
+        if (comp != null)
+            return comp.NumShields;
 
+        return 0;
+    }
     /// <summary>
     /// A variant of ResetShield that only resets shields belonging is a certain ability.
     /// </summary>

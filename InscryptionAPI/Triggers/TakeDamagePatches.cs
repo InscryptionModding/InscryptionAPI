@@ -131,7 +131,7 @@ public static class TakeDamagePatches
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
                     codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, attacker));
-                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
+                    codes.Insert(shieldStart++, new(OpCodes.Call, breakShield));
                 }
                 break;
             }
