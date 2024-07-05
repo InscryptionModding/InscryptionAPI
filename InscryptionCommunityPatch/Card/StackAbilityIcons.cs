@@ -313,6 +313,7 @@ public static class StackAbilityIcons
         // Replace all of the textures where it stacks with a texture showing that it stacks
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = new(info.Abilities);
+        int count = -1;
         if (card != null)
         {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
@@ -325,10 +326,14 @@ public static class StackAbilityIcons
             }
             else if (card.Status.hiddenAbilities.Contains(ability))
                 baseAbilities.RemoveAll(x => x == ability);
+
+            DamageShieldBehaviour behav = card.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability)?.Item2 as DamageShieldBehaviour;
+            if (behav != null)
+                count = behav.NumShields;
         }
         
-        DamageShieldBehaviour behav = card.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability)?.Item2 as DamageShieldBehaviour;
-        int count = behav != null ? behav.NumShields : baseAbilities.Count(ab => ab == ability);
+        if (count != -1)
+            count = baseAbilities.Count(ab => ab == ability);
         //Debug.Log($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count}");
 
         if (count > 1) // We need to add an override
