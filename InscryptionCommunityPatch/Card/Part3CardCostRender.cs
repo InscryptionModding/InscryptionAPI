@@ -232,6 +232,20 @@ public static class Part3CardCostRender
         }
     }
 
+    private static Texture2D _bloodIconUnlit = null;
+    internal static Texture2D BloodCostIconUnlit
+    {
+        get
+        {
+            if (_bloodIconUnlit == null)
+            {
+                _bloodIconUnlit = TextureHelper.GetImageAsTexture("BloodCostIcon_small_unlit.png", typeof(Part3CardCostRender).Assembly);
+                _bloodIconUnlit.name = "BloodCostIconUnlit";
+            }
+            return _bloodIconUnlit;
+        }
+    }
+
     private static Texture2D _bloodIcon = null;
     internal static Texture2D BloodCostIcon
     {
@@ -414,6 +428,22 @@ public static class Part3CardCostRender
     /// In order to take advantage of texture caching, your icon texture must have a unique name.</remarks>
     public static Tuple<Texture2D, Texture2D> GetIconifiedCostTexture(Texture2D iconTexture, int cost, bool forceDigitDisplay = false)
     {
+        return GetIconifiedCostTexture(iconTexture, null, cost, forceDigitDisplay);
+    }
+
+    /// <summary>
+    /// Generates a texture that displays the cost of a specific resource, either by duplicating the icon or using a seven-segment display if there isn't enough space
+    /// </summary>
+    /// <param name="iconTexture">The icon for your resource</param>
+    /// <param name="unlitIconTexture">The "unlit" (off) icon for your resource</param>
+    /// <param name="cost">The amount of that resource to display</param>
+    /// <param name="forceDigitDisplay">Force the texture to render using the 7-segment display</param>
+    /// <returns>A tuple of two textures. The first has the default background, the second does not. The first is best used as a default texture and the second as an emission texture.</returns>
+    /// <remarks>If there is enough space in the texture to render multiple instances of the icon, this will do that.
+    /// Otherwise, it will render a texture that shows [ICON] x Cost.
+    /// In order to take advantage of texture caching, your icon texture must have a unique name.</remarks>
+    public static Tuple<Texture2D, Texture2D> GetIconifiedCostTexture(Texture2D iconTexture, Texture2D unlitIconTexture, int cost, bool forceDigitDisplay = false)
+    {
         if (!string.IsNullOrEmpty(iconTexture.name) && !iconTexture.name.Equals("untitled", StringComparison.InvariantCultureIgnoreCase))
         {
             if (!TextureCache.Keys.Contains(iconTexture.name))
@@ -475,8 +505,8 @@ public static class Part3CardCostRender
             float multiplier = 1.0f;
             if (texturesRightToLeft[d] == null)
             {
-                texturesRightToLeft[d] = iconTexture;
-                multiplier = 0.4f;
+                texturesRightToLeft[d] = unlitIconTexture ?? iconTexture;
+                multiplier = unlitIconTexture == null ? 0.4f : 1.0f;
             }
 
             int ty = Mathf.FloorToInt((newTexture.height - texturesRightToLeft[d].height) / 2f);
@@ -698,7 +728,7 @@ public static class Part3CardCostRender
 
         int bloodCost = playableCard?.BloodCost() ?? __instance.Info.BloodCost;
         if (bloodCost > 0)
-            costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, bloodCost)));
+            costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, BloodCostIconUnlit, bloodCost)));
 
         // get a list of the custom costs we need textures for
         // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
