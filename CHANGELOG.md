@@ -9,11 +9,13 @@
 - Fixed cards not shaking when losing a shield
 - Fixed ShieldManager.BreakShield not being called when a shielded card takes damage
 - Added SlotModificationManager for adding behaviour to card slots; see wiki for more info
-- Added SaveFileExtensions
+- Added SaveFileExtensions class
+- Added support for cards costing multiple of the same colour Mox
 - Added debugging to GetCustomCardCosts method; please let the API folks know if you receive any warnings/errors marked by '[GetCustomCardCosts]'
 - Added StatIconInfo.SetRulebookInfo and StatIconInfo.SetAppliesToStats
 - Added NodeData.SelectionCondition's ChallengeIsActive and NumChallengesOfTypeActive
 - Added PlayableCard.GetShieldCount<\T>() for getting a specific shield ability's NumShield value
+- Added new config to the community patches to reduce the size of the price tags during the Buy Pelts sequence
 - Removed leftover debugging related to boss challenge icons and custom costs
 - P03 Face Card Displayer can now show card costs other than energy
 - Publiciser warnings from the API and Community Patches no longer appear in the console
