@@ -34,23 +34,11 @@ public static class Part2CardCostRender
 
         if (gemsCost.Count > 0)
         {
-            List<Texture2D> gemCost = new();
-
-            // Order of: green, orange, blue
-            if (gemsCost.Contains(GemType.Green))
-                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_green"));
-
-            if (gemsCost.Contains(GemType.Orange))
-                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_orange"));
-
-            if (gemsCost.Contains(GemType.Blue))
-                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_blue"));
-
-            if (RightAct2Cost)
-                gemCost.Reverse();
-
+            // account for weird gap on the right
+            // try to make single gem sprites fit with number gem sprites
+            List<Texture2D> gemCost = GetMoxTextures(gemsCost);
             Texture2D blankPixel = TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly);
-            costTextures.Add(TextureHelper.CombineTextures(gemCost, blankPixel, xOffset: !RightAct2Cost ? 0 : (30 - 7 * gemCost.Count), xStep: 7));
+            costTextures.Add(CombineMoxTextures(gemCost, blankPixel/*, xOffset: !RightAct2Cost ? 0 : (30 - 9 * (Mathf.Min(3, gemCost.Count))), xStep: 9*/));
         }
 
         // get a list of the custom costs we need textures for
@@ -105,5 +93,99 @@ public static class Part2CardCostRender
 
         int xOffset = !RightAct2Cost ? 0 : cardCost >= 10 ? 30 - 20 - artCost.width : cardCost <= 4 ? 30 - artCost.width * cardCost : 30 - 14 - artCost.width;
         return TextureHelper.CombineTextures(list, TextureHelper.GetImageAsTexture("pixel_blank.png", typeof(Part2CardCostRender).Assembly), xOffset: xOffset, xStep: artCost.width);
+    }
+
+    private static Texture2D CombineMoxTextures(List<Texture2D> pieces, Texture2D baseTexture)
+    {
+        int xOffset = RightAct2Cost ? 30 - pieces.ConvertAll(x => x.width).Sum() : 0;
+        int xStep = 0;
+        for (int j = 0; j < pieces.Count; j++)
+        {
+            if (pieces[j] != null)
+            {
+                baseTexture.SetPixels(xOffset + xStep, 0, pieces[j].width, pieces[j].height, pieces[j].GetPixels(), 0);
+                xStep += pieces[j].width;
+            }
+        }
+        baseTexture.Apply();
+
+        return baseTexture;
+    }
+
+    public static List<Texture2D> GetMoxTextures(List<GemType> gemsCost) // vanilla order is OGB
+    {
+        List<Texture2D> gemCost = new();
+        if (gemsCost.Count <= 3)
+        {
+            foreach (GemType type in gemsCost.Where(x => x == GemType.Orange))
+                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_orange"));
+
+            foreach (GemType type in gemsCost.Where(x => x == GemType.Green))
+                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_green"));
+
+            foreach (GemType type in gemsCost.Where(x => x == GemType.Blue))
+                gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_blue"));
+        }
+        else
+        {
+            int orangeCount = Mathf.Min(4, gemsCost.Count(x => x == GemType.Orange));
+            int greenCount = Mathf.Min(4, gemsCost.Count(x => x == GemType.Green));
+            int blueCount = Mathf.Min(4, gemsCost.Count(y => y == GemType.Blue));
+            if (orangeCount > 0)
+            {
+                if (orangeCount == 1)
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_orange"));
+                }
+                else if (orangeCount > 2 || (greenCount + blueCount > 1))
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName($"pixel_mox_orange_{orangeCount}"));
+                    orangeCount = 1;
+                }
+                else
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_orange"));
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_orange"));
+                }
+            }
+
+            if (greenCount > 0)
+            {
+                if (greenCount == 1)
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_green"));
+                }
+                else if (greenCount > 2 || (blueCount + orangeCount > 1))
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName($"pixel_mox_green_{greenCount}"));
+                    greenCount = 1; // green is only using 1 sprite 'slot'
+                }
+                else
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_green"));
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_green"));
+                }
+            }
+
+            if (blueCount > 0)
+            {
+                if (blueCount == 1)
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_blue"));
+                }
+                else if (blueCount > 2 || (greenCount + orangeCount > 1))
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName($"pixel_mox_blue_{blueCount}"));
+                    //blueCount = 1;
+                }
+                else
+                {
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_blue"));
+                    gemCost.Add(CardCostRender.GetTextureByName("pixel_mox_blue"));
+                }
+            }
+        }
+
+        return gemCost;
     }
 }

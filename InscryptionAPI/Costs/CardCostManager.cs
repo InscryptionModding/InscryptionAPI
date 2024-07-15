@@ -209,6 +209,21 @@ public static class CardCostManager
     internal readonly static ObservableCollection<FullCardCost> NewCosts = new();
     
     public static event Func<List<FullCardCost>, List<FullCardCost>> ModifyCustomCostList;
+
+    // you don't have the [colour] gem for that.
+    // no [colour] gem on the table? then you can't play it.
+    // you need at least one [colour] gem on the board in order to play that [card]
+    // play the required [colour] gem... then you can play that.
+    public static HintsHandler.Hint notEnoughSameColourGemsHint = new("Hint_NotEnoughSameColourGemsHint", 2);
+    public static DialogueEvent notEnoghSameColourGemsEvent = DialogueManager.GenerateEvent(
+        InscryptionAPIPlugin.ModGUID, "Hint_NotEnoughSameColourGemsHint",
+                new() { "You don't have enough [v:1] gems for that." },
+                new()
+                {
+                    new() { "Not enough [v:1] gems on the table? Then you can't play it." },
+                    new() { "You need more [v:1] gems on the board in order to play that [v:0]."},
+                    new() { "Play the required [v:1] gems... then you can play that." }
+                });
     public static void SyncCustomCostList()
     {
         AllCustomCosts = NewCosts.Select(a => a.Clone()).ToList();
@@ -326,9 +341,63 @@ public static class CardCostManager
         }
     }
 
+    [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.GemsCostRequirementMet))]
+    private static bool ReplaceCostRequirementMet(PlayableCard __instance, ref bool __result)
+    {
+        __result = NewGemsCostRequirementMet(__instance);
+        return false;
+    }
+
+    /// <summary>
+    /// A new method that overrides the result of PlayableCard.GemsCostRequirement. Override this if you want to modify GemsCostRequirementMet.
+    /// </summary>
+    /// <param name="card">The PlayableCard currently being checked.</param>
+    /// <returns>Boolean representing if the card's gem cost has been met or not.</returns>
+    public static bool NewGemsCostRequirementMet(PlayableCard card)
+    {
+        List<GemType> gemsOwned = new(ResourcesManager.Instance.gems);
+        foreach (GemType item in card.GemsCost())
+        {
+            if (gemsOwned.Contains(item))
+                gemsOwned.Remove(item);
+            else
+                return false;
+        }
+        return true;
+    }
+
     [HarmonyPrefix, HarmonyPatch(typeof(HintsHandler), nameof(HintsHandler.OnNonplayableCardClicked))]
     private static bool CannotAffordCustomCostHints(ref PlayableCard card)
     {
+        // if a card costs multiple of the same colour
+        if (card.GemsCost().Count > 0 && !card.GemsCost().Exists(x => !ResourcesManager.Instance.HasGem(x)))
+        {
+            List<GemType> neededGems = card.GemsCost();
+            foreach (GemType gem in ResourcesManager.Instance.gems)
+            {
+                neededGems.Remove(gem);
+            }
+            if (neededGems.Count > 0)
+            {
+                GemType gem = neededGems[0];
+                if (SaveManager.SaveFile.IsPart2)
+                {
+                    string arg = HintsHandler.GetDialogueColorCodeForGem(gem) + Localization.Translate(gem.ToString()) + "[c:]";
+                    string message = string.Format(Localization.Translate("You do not have the {0} Gem to play that. Gain Gems by playing Mox cards."), arg);
+                    CustomCoroutine.Instance.StartCoroutine(Singleton<TextBox>.Instance.ShowUntilInput(message, TextBox.Style.Neutral, null, TextBox.ScreenPosition.ForceTop, 0f, hideAfter: true, shake: false, null, adjustAudioVolume: false));
+                }
+                else if (TextDisplayer.m_Instance != null)
+                {
+                    notEnoughSameColourGemsHint.TryPlayDialogue(new string[2]
+                    {
+                        card.Info.DisplayedNameLocalized,
+                        HintsHandler.GetColorCodeForGem(gem) + Localization.Translate(gem.ToString()) + "</color>"
+                    });
+                }
+                return false;
+            }
+        }
+
         foreach (CustomCardCost customCost in card.GetCustomCardCosts())
         {
             FullCardCost fullCost = AllCustomCosts.CostByBehaviour(customCost.GetType());
@@ -398,6 +467,52 @@ public static class CardCostManager
                 return;
             }
         }
+    }
+
+    [HarmonyPrefix, HarmonyPatch(typeof(HintsHandler), nameof(HintsHandler.OnGBCNonPlayableCardPressed))]
+    private static bool MultiMonoColourMoxSupport(PlayableCard card)
+    {
+        if (card.GemsCost().Count > 0)
+        {
+            List<GemType> ownedGems = card.GemsCost();
+            foreach (GemType gem in ResourcesManager.Instance.gems)
+                ownedGems.Remove(gem);
+
+            if (ownedGems.Count > 0)
+            {
+                GemType gem = ownedGems[0];
+                string arg = HintsHandler.GetDialogueColorCodeForGem(gem) + Localization.Translate(gem.ToString()) + "[c:]";
+                string message = string.Format(Localization.Translate("You do not have the {0} Gem to play that. Gain Gems by playing Mox cards."), arg);
+                CustomCoroutine.Instance.StartCoroutine(Singleton<TextBox>.Instance.ShowUntilInput(message, TextBox.Style.Neutral, null, TextBox.ScreenPosition.ForceTop, 0f, true, false, null, false));
+                return false;
+            }
+        }
+        return true;
+    }
+
+    [HarmonyPrefix, HarmonyPatch(typeof(HintsHandler), nameof(HintsHandler.OnNonplayableCardClicked))]
+    private static bool MultipleSameColourMoxSupport(PlayableCard card)
+    {
+        if (card.GemsCost().Count > 0)
+        {
+            List<GemType> neededGems = card.GemsCost();
+            foreach (GemType gem in ResourcesManager.Instance.gems)
+            {
+                neededGems.Remove(gem);
+            }
+            if (neededGems.Count > 0)
+            {
+                GemType gem = neededGems[0];
+                HintsHandler.notEnoughGemsHint.TryPlayDialogue(new string[2]
+                {
+                    card.Info.DisplayedNameLocalized,
+                    HintsHandler.GetColorCodeForGem(gem) + Localization.Translate(gem.ToString()) + "</color>"
+                });
+                return false;
+            }
+        }
+
+        return true;
     }
 
     #region SelectedCardToSlot transiler

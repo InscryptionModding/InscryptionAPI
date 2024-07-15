@@ -106,16 +106,11 @@ public static class CostProperties
         {
             if (mod.addGemCost != null)
             {
-                foreach (GemType item in mod.addGemCost)
-                {
-                    if (!gems.Contains(item))
-                        gems.Add(item);
-                }
+                gems.AddRange(mod.addGemCost);
             }
             foreach (GemType gem in mod.RemovedGemsCosts())
             {
-                if (gems.Contains(gem))
-                    gems.Remove(gem);
+                gems.Remove(gem);
             }
         }
         return gems;
