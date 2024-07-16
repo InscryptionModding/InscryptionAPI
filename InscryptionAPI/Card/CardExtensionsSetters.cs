@@ -105,7 +105,7 @@ public static partial class CardExtensions
     /// <param name="displayedName">The displayed name for the card.</param>
     /// <param name="modPrefix">The string that will be prefixed to the card name if it doesn't already exist.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
-    public static CardInfo SetNames(this CardInfo info, string name, string displayedName, string modPrefix = default(string))
+    public static CardInfo SetNames(this CardInfo info, string name, string displayedName, string modPrefix = default)
     {
         info.SetDisplayedName(displayedName);
         return info.SetName(name, modPrefix);

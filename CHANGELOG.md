@@ -16,13 +16,15 @@
 - Added NodeData.SelectionCondition's ChallengeIsActive and NumChallengesOfTypeActive
 - Added PlayableCard.GetShieldCount<\T>() for getting a specific shield ability's NumShield value
 - Added new config to the community patches to reduce the size of the price tags during the Buy Pelts sequence
+- Added CardModificationInfo.AddNegateAbilities extension method
 - Removed leftover debugging related to boss challenge icons and custom costs
 - P03 Face Card Displayer can now show card costs other than energy
 - Publiciser warnings from the API and Community Patches no longer appear in the console
 - SaveFile.CurrentDeck now returns gbcData.deck in Act 2
 - DeathShieldLatch can longer target cards with an active shield
 - Cards with a broken shield return to their default portrait when regaining their shield
-- Shield abilities now use NumShields to determine sigil stacking (visual only)
+- Shield abilities now use NumShields to determine visual sigil stacking
+- CardModificationInfo.SetNameReplacement now accepts null value for the name replacement
 
 # 2.19.5
 - Fixed pixel Bones cost icons not appearing when the cost is greater than vanilla amounts
