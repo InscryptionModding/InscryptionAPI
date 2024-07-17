@@ -41,6 +41,8 @@ public static class Part3CardCostRender
         /// </summary>
         public GameObject CostContainer { get; internal set; }
 
+        internal float StretchFactor { get; set; } = 1f;
+
         internal void UpdateDisplayedTextures()
         {
             if (CostContainer != null)
@@ -79,7 +81,40 @@ public static class Part3CardCostRender
         public CustomCostRenderInfo(string costId, Tuple<Texture2D, Texture2D> textures) : this(costId, textures.Item1, textures.Item2)
         {
         }
+
+        internal void Stretch(float factor)
+        {
+            // Reparent everything to my parent, world position stays
+            List<Transform> allChildren = new();
+            while (CostContainer.transform.childCount > 0)
+            {
+                Transform t = CostContainer.transform.GetChild(0);
+                t.SetParent(CostContainer.transform.parent, true);
+                allChildren.Add(t);
+            }
+
+            // Stretch me
+            CostContainer.transform.localScale = new(0.475f * factor, 0.1f, 0.145f);
+            CostContainer.transform.localPosition = new(.225f + (factor - 1f) * 3f * .08f,
+                .01f,
+                CostContainer.transform.localPosition.z
+            );
+
+            // Reparent everything back, world position stays
+            foreach (Transform t in allChildren)
+                t.SetParent(CostContainer.transform, true);
+
+            this.StretchFactor = factor;
+        }
     }
+
+    private static List<GemType> BlueGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Orange).ToList();
+
+    private static List<GemType> BlueGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Orange).ToList();
 
     /// <summary>
     /// Hook into this event to be able to add a new custom cost to a card. In your delegate, create a new CustomCostRenderInfo object with the appropriate textures (or no textures if you will use the UpdateCardCostComplex event as well).
@@ -601,13 +636,15 @@ public static class Part3CardCostRender
         return true;
     }
 
+    private static bool MatchesGem(this Tuple<GemType, int, Renderer> item, GemType? gemType) => (gemType ?? item.Item1) == item.Item1;
+
     /// <summary>
     /// Gets a reference to the renderers for the three possible gem costs for the card.
     /// </summary>
     /// <param name="force">If true, this will create a gem cost container if it doesn't already exist</param>
     /// <param name="verify">If true, this will validate that the existing container matches the card's current cost. This is off by default for performance reasons</param> 
     /// <returns>A dictionary mapping GemType to Renderer. The renderers will be null if the container was never created.</returns>
-    public static List<Tuple<GemType, int, Renderer>> GetGemCostContainer(this DiskCardGame.Card card, bool force = false, GameObject container = null, bool verify = false)
+    public static List<Tuple<GemType, int, Renderer>> GetGemCostContainer(this DiskCardGame.Card card, bool force = false, GameObject container = null, bool verify = false, GemType? gemType = null, float stretchFactor = 1f)
     {
         var retval = card.StatsLayer.GetGemCostContainer();
 
@@ -617,16 +654,16 @@ public static class Part3CardCostRender
             {
                 foreach (var item in retval)
                 {
-                    if (!item.Item3.SafeIsUnityNull())
+                    if (item.MatchesGem(gemType) && !item.Item3.SafeIsUnityNull())
                         GameObject.Destroy(item.Item3);
                 }
-                retval.Clear();
+                retval.RemoveAll(item => item.MatchesGem(gemType));
             }
             else
             {
                 if (verify && ValidateContainer(retval, card))
                     return retval;
-                else if (retval.Count > 0)
+                else if (retval.Any(item => item.MatchesGem(gemType)))
                     return retval;
             }
         }
@@ -650,7 +687,7 @@ public static class Part3CardCostRender
 
         // Get the card full cost and sort it in order
         var gemsCost = (card as PlayableCard)?.GemsCost() ?? card.Info.GemsCost;
-        gemsCost = gemsCost.OrderBy(g => -(int)g).ToList();
+        gemsCost = gemsCost.Where(g => (gemType ?? g) == g).OrderBy(g => -(int)g).ToList();
 
         int idx = 0;
         Dictionary<GemType, int> counts = new()
@@ -659,14 +696,16 @@ public static class Part3CardCostRender
             { GemType.Green, 0 },
             { GemType.Orange, 0 }
         };
+        float anchor = gemsCost.Count <= 3 ? 0.3f : 0.1f * stretchFactor + .2f;
+        float gap = gemsCost.Count <= 3 ? 0.3f : (2f * anchor) / (gemsCost.Count - 1);
         foreach (var gem in gemsCost)
         {
             GameObject costGem = GameObject.Instantiate(card.GetPiece(COST_LOOKUP[gem]), gemContainer.transform);
             costGem.name = $"Gem_Cost_{idx + 1}";
-            costGem.transform.localScale = new(650f, 200f, 450f);
+            costGem.transform.localScale = new(650f, 200f / stretchFactor, 450f);
             costGem.transform.localEulerAngles = new(270f, 90f, 0f);
             costGem.transform.localPosition = new(
-                -0.3f + (0.3f * idx),
+                -anchor + (gap * idx),
                 gem == GemType.Blue ? 0.36f
                 : gem == GemType.Green ? 0.39f
                 : 0.41f,
@@ -720,7 +759,21 @@ public static class Part3CardCostRender
 
         List<GemType> gemsCost = playableCard?.GemsCost() ?? __instance.Info.GemsCost;
         if (gemsCost.Count > 0)
-            costDisplays.Add(new("Gems"));
+        {
+            if (gemsCost.Count <= 3)
+            {
+                costDisplays.Add(new("Gems_All"));
+            }
+            else
+            {
+                if ((playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Orange"));
+                if ((playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Blue"));
+                if ((playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Green"));
+            }
+        }
 
         int bonesCost = playableCard?.BonesCost() ?? __instance.Info.BonesCost;
         if (bonesCost > 0)
@@ -811,10 +864,49 @@ public static class Part3CardCostRender
         // Handle our special case (the gems)
         if (gemsCost.Count > 0)
         {
-            CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems", StringComparison.InvariantCultureIgnoreCase));
-            var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
-            foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
-                renderer.gameObject.SetActive(true);
+            if (gemsCost.Count <= 3)
+            {
+                CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_All", StringComparison.InvariantCultureIgnoreCase));
+                var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
+                foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                    renderer.gameObject.SetActive(true);
+            }
+            else
+            {
+                int orangeGemsCost = (playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count;
+                int blueGemsCost = (playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count;
+                int greenGemsCost = (playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count;
+                if (orangeGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Orange", StringComparison.InvariantCultureIgnoreCase));
+                    if (orangeGemsCost > 3)
+                        gemRenderInfo.Stretch((float)orangeGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Orange, stretchFactor: (float)orangeGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+                if (blueGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Blue", StringComparison.InvariantCultureIgnoreCase));
+                    if (blueGemsCost > 3)
+                        gemRenderInfo.Stretch((float)blueGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Blue, stretchFactor: (float)blueGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+                if (greenGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Green", StringComparison.InvariantCultureIgnoreCase));
+                    if (greenGemsCost > 3)
+                        gemRenderInfo.Stretch((float)greenGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Green, stretchFactor: (float)greenGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+            }
         }
         else
         {
