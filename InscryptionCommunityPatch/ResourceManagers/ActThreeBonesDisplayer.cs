@@ -116,8 +116,11 @@ public static class Act3BonesDisplayer
 
     private static void DisplayBones(int bones)
     {
-        Texture2D bonesCount = Part3CardCostRender.GetIconifiedCostTexture(Part3CardCostRender.BoneCostIcon, bones, true).Item2;
-        BonesCountRenderer.sprite = Sprite.Create(bonesCount, new Rect(0f, 0f, bonesCount.width, bonesCount.height), new Vector2(0.5f, 0.5f));
+        if (BonesCountRenderer != null)
+        {
+            Texture2D bonesCount = Part3CardCostRender.GetIconifiedCostTexture(Part3CardCostRender.BoneCostIcon, bones, true).Item2;
+            BonesCountRenderer.sprite = Sprite.Create(bonesCount, new Rect(0f, 0f, bonesCount.width, bonesCount.height), new Vector2(0.5f, 0.5f));
+        }
     }
 
     private static void GlitchOutBolt(GameObject bolt)
@@ -264,5 +267,13 @@ public static class Act3BonesDisplayer
 
             boneCountTexture.SetActive(true);
         }
+    }
+
+    [HarmonyPatch(typeof(Part3ResourcesManager), nameof(Part3ResourcesManager.CleanUp))]
+    [HarmonyPrefix]
+    private static void CleanUpPart3Bones(Part3ResourcesManager __instance)
+    {
+        __instance.PlayerBones = 0;
+        DisplayBones(0);
     }
 }

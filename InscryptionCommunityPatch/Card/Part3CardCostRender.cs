@@ -4,6 +4,7 @@ using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
+using Sirenix.Serialization.Utilities;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
@@ -39,6 +40,8 @@ public static class Part3CardCostRender
         /// The game object that holds the custom cost
         /// </summary>
         public GameObject CostContainer { get; internal set; }
+
+        internal float StretchFactor { get; set; } = 1f;
 
         internal void UpdateDisplayedTextures()
         {
@@ -78,7 +81,40 @@ public static class Part3CardCostRender
         public CustomCostRenderInfo(string costId, Tuple<Texture2D, Texture2D> textures) : this(costId, textures.Item1, textures.Item2)
         {
         }
+
+        internal void Stretch(float factor)
+        {
+            // Reparent everything to my parent, world position stays
+            List<Transform> allChildren = new();
+            while (CostContainer.transform.childCount > 0)
+            {
+                Transform t = CostContainer.transform.GetChild(0);
+                t.SetParent(CostContainer.transform.parent, true);
+                allChildren.Add(t);
+            }
+
+            // Stretch me
+            CostContainer.transform.localScale = new(0.475f * factor, 0.1f, 0.145f);
+            CostContainer.transform.localPosition = new(.225f + (factor - 1f) * 3f * .08f,
+                .01f,
+                CostContainer.transform.localPosition.z
+            );
+
+            // Reparent everything back, world position stays
+            foreach (Transform t in allChildren)
+                t.SetParent(CostContainer.transform, true);
+
+            this.StretchFactor = factor;
+        }
     }
+
+    private static List<GemType> BlueGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this CardInfo card) => card.GemsCost.Where(g => g == GemType.Orange).ToList();
+
+    private static List<GemType> BlueGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Blue).ToList();
+    private static List<GemType> GreenGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Green).ToList();
+    private static List<GemType> OrangeGemsCost(this PlayableCard card) => card.GemsCost().Where(g => g == GemType.Orange).ToList();
 
     /// <summary>
     /// Hook into this event to be able to add a new custom cost to a card. In your delegate, create a new CustomCostRenderInfo object with the appropriate textures (or no textures if you will use the UpdateCardCostComplex event as well).
@@ -104,9 +140,16 @@ public static class Part3CardCostRender
     public const string GREEN_GEM_COST = "Gem_Cost_Green";
     public const string INITIAL_ALTERNATE_COST = "Anim/CardBase/Top/Gems/TextureDisplayer";
 
+    private static readonly Dictionary<GemType, string> COST_LOOKUP = new()
+    {
+        { GemType.Blue, BLUE_GEM_ORIGINAL },
+        { GemType.Orange, ORANGE_GEM_ORIGINAL},
+        { GemType.Green, GREEN_GEM_ORIGINAL }
+    };
+
     private static Color BoneColor => Color.white;
     private static Color BloodColor => GameColors.Instance.glowRed;
-    
+
     /// <summary>
     /// Gets a specific child GameObject instance of a particular card
     /// </summary>
@@ -118,7 +161,7 @@ public static class Part3CardCostRender
         return t?.gameObject;
     }
 
-    private static ConditionalWeakTable<RenderStatsLayer, DiskCardGame.Card> CardRenderReverseLookup = new ();
+    private static ConditionalWeakTable<RenderStatsLayer, DiskCardGame.Card> CardRenderReverseLookup = new();
 
     /// <summary>
     /// Gets a reverse reference from an instance of RenderStatsLayer back to the Card it belongs to.
@@ -168,6 +211,34 @@ public static class Part3CardCostRender
         }
     }
 
+    private static Sprite _faceBoneSprite = null;
+    private static Sprite FaceBoneSprite
+    {
+        get
+        {
+            if (_faceBoneSprite == null)
+            {
+                var text = TextureHelper.GetImageAsTexture("p03_face_bones_resource.png", typeof(Part3CardCostRender).Assembly);
+                _faceBoneSprite = Sprite.Create(text, new Rect(0f, 0f, text.width, text.height), new Vector2(0.5f, 0.5f));
+            }
+            return _faceBoneSprite;
+        }
+    }
+
+    private static Sprite _faceBloodSprite = null;
+    private static Sprite FaceBloodSprite
+    {
+        get
+        {
+            if (_faceBloodSprite == null)
+            {
+                var text = TextureHelper.GetImageAsTexture("p03_face_blood_resource.png", typeof(Part3CardCostRender).Assembly);
+                _faceBloodSprite = Sprite.Create(text, new Rect(0f, 0f, text.width, text.height), new Vector2(0.5f, 0.5f));
+            }
+            return _faceBloodSprite;
+        }
+    }
+
     private static Texture2D _costCubeBackground = null;
     private static Texture2D CostCubeBackground
     {
@@ -178,7 +249,7 @@ public static class Part3CardCostRender
                 _costCubeBackground = TextureHelper.GetImageAsTexture("Act3CostCubeBackground.png", typeof(Part3CardCostRender).Assembly);
                 _costCubeBackground.name = "CostCubeBackground";
             }
-            return _costCubeBackground;                
+            return _costCubeBackground;
         }
     }
 
@@ -192,7 +263,21 @@ public static class Part3CardCostRender
                 _boneIcon = TextureHelper.GetImageAsTexture("BoneCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
                 _boneIcon.name = "BoneCostIcon";
             }
-            return _boneIcon;                
+            return _boneIcon;
+        }
+    }
+
+    private static Texture2D _bloodIconUnlit = null;
+    internal static Texture2D BloodCostIconUnlit
+    {
+        get
+        {
+            if (_bloodIconUnlit == null)
+            {
+                _bloodIconUnlit = TextureHelper.GetImageAsTexture("BloodCostIcon_small_unlit.png", typeof(Part3CardCostRender).Assembly);
+                _bloodIconUnlit.name = "BloodCostIconUnlit";
+            }
+            return _bloodIconUnlit;
         }
     }
 
@@ -206,7 +291,7 @@ public static class Part3CardCostRender
                 _bloodIcon = TextureHelper.GetImageAsTexture("BloodCostIcon_small.png", typeof(Part3CardCostRender).Assembly);
                 _bloodIcon.name = "BloodCostIcon";
             }
-            return _bloodIcon;                
+            return _bloodIcon;
         }
     }
     private static readonly Dictionary<string, Texture2D> AssembledTextures = new();
@@ -227,8 +312,8 @@ public static class Part3CardCostRender
         textureRenderer.material.SetColor("_EmissionColor", Color.white);
 
         textureContainer.transform.localPosition = new(0f, .501f, 0f);
-        textureContainer.transform.localScale = new (0.95f, 0.95f, 0.95f);
-        textureContainer.transform.localEulerAngles = new (90f, 180f, 0f);
+        textureContainer.transform.localScale = new(0.95f, 0.95f, 0.95f);
+        textureContainer.transform.localEulerAngles = new(90f, 180f, 0f);
 
         return textureContainer;
     }
@@ -237,14 +322,14 @@ public static class Part3CardCostRender
     {
         if (card.StatsLayer is not DiskRenderStatsLayer)
             throw new InvalidOperationException("You cannot generate an additional Part 3 cost container on anything other than a Disk Card!!");
-        
+
         // Start with a cube
         GameObject container = GameObject.CreatePrimitive(PrimitiveType.Cube);
         container.name = $"Card_Cost_{index}";
         container.transform.SetParent(card.GetPiece(UPPER_GEM_CONTAINER).transform);
         container.transform.localPosition = new(.24f, .01f, 0f);
-        container.transform.localScale = new (0.475f, 0.1f, 0.145f);
-        container.transform.localEulerAngles = new (0f, 0f, 0f);
+        container.transform.localScale = new(0.475f, 0.1f, 0.145f);
+        container.transform.localEulerAngles = new(0f, 0f, 0f);
 
         GameObject.Destroy(container.GetComponent<BoxCollider>());
 
@@ -318,12 +403,27 @@ public static class Part3CardCostRender
     public static List<GameObject> GetCostContainers(this DiskCardGame.Card card, int numberOfContainers)
     {
         List<GameObject> retval = card.StatsLayer.GetCostContainers();
-        if (card.StatsLayer is not DiskRenderStatsLayer || retval.Count >= numberOfContainers)
+        if (card.StatsLayer is not DiskRenderStatsLayer)
             return retval;
-        
+
         // Cool - we need to make more cost containers
         while (retval.Count < numberOfContainers)
             retval.Add(GenerateSingleAdditionalCostContainer(card, retval.Count));
+
+        // Delete every child object that's not the texture displayer
+        List<Transform> children = new();
+        foreach (var container in retval)
+        {
+            children.Clear();
+            for (int i = 0; i < container.transform.childCount; i++)
+            {
+                Transform child = container.transform.GetChild(i);
+                if (!child.gameObject.name.Equals("TextureDisplayer"))
+                    children.Add(child);
+            }
+            for (int i = 0; i < children.Count; i++)
+                GameObject.Destroy(children[i].gameObject);
+        }
 
         return retval;
     }
@@ -342,8 +442,8 @@ public static class Part3CardCostRender
         renderer.material.SetTexture("_EmissionMap", BackgroundTexture);
 
         container.transform.localPosition = new(.25f, .0565f, 0f);
-        container.transform.localScale = new (0.43f, 0.12f, 0.08f);
-        container.transform.localEulerAngles = new (90f, 245f, 65f);
+        container.transform.localScale = new(0.43f, 0.12f, 0.08f);
+        container.transform.localEulerAngles = new(90f, 245f, 65f);
 
         return container;
     }
@@ -362,6 +462,22 @@ public static class Part3CardCostRender
     /// Otherwise, it will render a texture that shows [ICON] x Cost.
     /// In order to take advantage of texture caching, your icon texture must have a unique name.</remarks>
     public static Tuple<Texture2D, Texture2D> GetIconifiedCostTexture(Texture2D iconTexture, int cost, bool forceDigitDisplay = false)
+    {
+        return GetIconifiedCostTexture(iconTexture, null, cost, forceDigitDisplay);
+    }
+
+    /// <summary>
+    /// Generates a texture that displays the cost of a specific resource, either by duplicating the icon or using a seven-segment display if there isn't enough space
+    /// </summary>
+    /// <param name="iconTexture">The icon for your resource</param>
+    /// <param name="unlitIconTexture">The "unlit" (off) icon for your resource</param>
+    /// <param name="cost">The amount of that resource to display</param>
+    /// <param name="forceDigitDisplay">Force the texture to render using the 7-segment display</param>
+    /// <returns>A tuple of two textures. The first has the default background, the second does not. The first is best used as a default texture and the second as an emission texture.</returns>
+    /// <remarks>If there is enough space in the texture to render multiple instances of the icon, this will do that.
+    /// Otherwise, it will render a texture that shows [ICON] x Cost.
+    /// In order to take advantage of texture caching, your icon texture must have a unique name.</remarks>
+    public static Tuple<Texture2D, Texture2D> GetIconifiedCostTexture(Texture2D iconTexture, Texture2D unlitIconTexture, int cost, bool forceDigitDisplay = false)
     {
         if (!string.IsNullOrEmpty(iconTexture.name) && !iconTexture.name.Equals("untitled", StringComparison.InvariantCultureIgnoreCase))
         {
@@ -424,8 +540,8 @@ public static class Part3CardCostRender
             float multiplier = 1.0f;
             if (texturesRightToLeft[d] == null)
             {
-                texturesRightToLeft[d] = iconTexture;
-                multiplier = 0.5f;
+                texturesRightToLeft[d] = unlitIconTexture ?? iconTexture;
+                multiplier = unlitIconTexture == null ? 0.4f : 1.0f;
             }
 
             int ty = Mathf.FloorToInt((newTexture.height - texturesRightToLeft[d].height) / 2f);
@@ -437,7 +553,7 @@ public static class Part3CardCostRender
                 {
                     Color bc = texturesRightToLeft[d].GetPixel(x, y);
                     if (bc.a > 0f)
-                    {                         
+                    {
                         newTexture.SetPixel(tx + x, ty + y, bc * multiplier);
                         newEmission.SetPixel(tx + x, ty + y, bc * multiplier);
                     }
@@ -458,7 +574,7 @@ public static class Part3CardCostRender
             EmissionTextureCache[iconTexture.name].Add(cost, newEmission);
         }
 
-        return new (newTexture, newEmission);
+        return new(newTexture, newEmission);
     }
 
     /// <summary>
@@ -496,67 +612,109 @@ public static class Part3CardCostRender
         gameObject.DisplayCostOnContainer(costTextures.Item1, costTextures.Item2);
     }
 
-    private static readonly ConditionalWeakTable<RenderStatsLayer, Dictionary<GemType, Renderer>> GemContainerLookup = new ();
+    private static readonly ConditionalWeakTable<RenderStatsLayer, List<Tuple<GemType, int, Renderer>>> GemContainerLookup = new();
 
     /// <summary>
     /// Gets a reference to the renderers for the three possible gem costs for the card.
     /// </summary>
     /// <returns>A dictionary mapping GemType to Renderer. The renderers will be null if the container was never created.</returns>
-    public static Dictionary<GemType, Renderer> GetGemCostContainer(this RenderStatsLayer layer) => GemContainerLookup.GetOrCreateValue(layer);
+    public static List<Tuple<GemType, int, Renderer>> GetGemCostContainer(this RenderStatsLayer layer) => GemContainerLookup.GetOrCreateValue(layer);
+
+    private static bool ValidateContainer(List<Tuple<GemType, int, Renderer>> container, DiskCardGame.Card card)
+    {
+        var gemsCost = (card as PlayableCard)?.GemsCost() ?? card.Info.GemsCost;
+        // Quick validation
+        if (gemsCost.Count != container.Count)
+            return false;
+
+        var contCt = container.GroupBy(g => g.Item1).ToDictionary(g => g.Key, g => g.Count());
+        var costCt = gemsCost.GroupBy(g => g).ToDictionary(g => g.Key, g => g.Count());
+        foreach (var gem in contCt.Keys.Concat(costCt.Keys))
+            if (!costCt.ContainsKey(gem) || !contCt.ContainsKey(gem) || costCt[gem] != contCt[gem])
+                return false;
+
+        return true;
+    }
+
+    private static bool MatchesGem(this Tuple<GemType, int, Renderer> item, GemType? gemType) => (gemType ?? item.Item1) == item.Item1;
 
     /// <summary>
     /// Gets a reference to the renderers for the three possible gem costs for the card.
     /// </summary>
     /// <param name="force">If true, this will create a gem cost container if it doesn't already exist</param>
+    /// <param name="verify">If true, this will validate that the existing container matches the card's current cost. This is off by default for performance reasons</param> 
     /// <returns>A dictionary mapping GemType to Renderer. The renderers will be null if the container was never created.</returns>
-    public static Dictionary<GemType, Renderer> GetGemCostContainer(this DiskCardGame.Card card, bool force = false, GameObject container = null)
+    public static List<Tuple<GemType, int, Renderer>> GetGemCostContainer(this DiskCardGame.Card card, bool force = false, GameObject container = null, bool verify = false, GemType? gemType = null, float stretchFactor = 1f)
     {
-        Dictionary<GemType, Renderer> retval = card.StatsLayer.GetGemCostContainer();
+        var retval = card.StatsLayer.GetGemCostContainer();
 
-        if (retval.ContainsKey(GemType.Blue))
-            return retval;
+        if (retval != null)
+        {
+            if (force)
+            {
+                foreach (var item in retval)
+                {
+                    if (item.MatchesGem(gemType) && !item.Item3.SafeIsUnityNull())
+                        GameObject.Destroy(item.Item3);
+                }
+                retval.RemoveAll(item => item.MatchesGem(gemType));
+            }
+            else
+            {
+                if (verify && ValidateContainer(retval, card))
+                    return retval;
+                else if (retval.Any(item => item.MatchesGem(gemType)))
+                    return retval;
+            }
+        }
 
         // First, see if it needs to be created
         GameObject gemContainer = container ?? card.GetPiece(UPPER_GEM_CONTAINER);
-        Transform blueCostTransform = container.transform.Find(BLUE_GEM_COST);
-        if (blueCostTransform == null && force)
+
+        // Remove any existing gems
+        List<Transform> toDelete = new();
+        for (int i = 0; i < gemContainer.transform.childCount; i++)
         {
-            // Start by making the backup lookup
+            Transform child = gemContainer.transform.GetChild(i);
+            if (!child.gameObject.name.Equals("TextureDisplayer"))
+                toDelete.Add(gemContainer.transform.GetChild(i));
+        }
+        foreach (var c in toDelete)
+            GameObject.Destroy(c.gameObject);
+
+        if (!CardRenderReverseLookup.TryGetValue(card.StatsLayer, out var test))
             CardRenderReverseLookup.Add(card.StatsLayer, card);
 
-            // Make each gem
-            GameObject blueCost = GameObject.Instantiate(card.GetPiece(BLUE_GEM_ORIGINAL), gemContainer.transform);
-            blueCost.name = BLUE_GEM_COST;
-            blueCost.transform.localScale = new (650f, 200f, 450f);
-            blueCost.transform.localPosition = new (-0.3f, 0.36f, 0f);
-            blueCost.transform.localEulerAngles = new (270f, 90f, 0f);
-            retval[GemType.Blue] = blueCost.GetComponent<Renderer>();
+        // Get the card full cost and sort it in order
+        var gemsCost = (card as PlayableCard)?.GemsCost() ?? card.Info.GemsCost;
+        gemsCost = gemsCost.Where(g => (gemType ?? g) == g).OrderBy(g => -(int)g).ToList();
 
-            GameObject greenCost = GameObject.Instantiate(card.GetPiece(GREEN_GEM_ORIGINAL), gemContainer.transform);
-            greenCost.name = GREEN_GEM_COST;
-            greenCost.transform.localScale = new (650f, 200f, 450f);
-            greenCost.transform.localEulerAngles = new (270f, 90f, 0f);
-            greenCost.transform.localPosition = new (0f, 0.39f, 0f);
-            retval[GemType.Green] = greenCost.GetComponent<Renderer>();
+        int idx = 0;
+        Dictionary<GemType, int> counts = new()
+        {
+            { GemType.Blue, 0 },
+            { GemType.Green, 0 },
+            { GemType.Orange, 0 }
+        };
+        float anchor = gemsCost.Count <= 3 ? 0.3f : 0.1f * stretchFactor + .2f;
+        float gap = gemsCost.Count <= 3 ? 0.3f : (2f * anchor) / (gemsCost.Count - 1);
+        foreach (var gem in gemsCost)
+        {
+            GameObject costGem = GameObject.Instantiate(card.GetPiece(COST_LOOKUP[gem]), gemContainer.transform);
+            costGem.name = $"Gem_Cost_{idx + 1}";
+            costGem.transform.localScale = new(650f, 200f / stretchFactor, 450f);
+            costGem.transform.localEulerAngles = new(270f, 90f, 0f);
+            costGem.transform.localPosition = new(
+                -anchor + (gap * idx),
+                gem == GemType.Blue ? 0.36f
+                : gem == GemType.Green ? 0.39f
+                : 0.41f,
+                0f
+            );
+            counts[gem] += 1;
+            retval.Add(new(gem, counts[gem], costGem.GetComponent<Renderer>()));
 
-            GameObject orangeCost = GameObject.Instantiate(card.GetPiece(ORANGE_GEM_ORIGINAL), gemContainer.transform);
-            orangeCost.name = ORANGE_GEM_COST;
-            orangeCost.transform.localScale = new (650f, 200f, 450f);
-            orangeCost.transform.localEulerAngles = new (270f, 90f, 0f);
-            orangeCost.transform.localPosition = new (0.3f, 0.41f, 0f);
-            retval[GemType.Orange] = orangeCost.GetComponent<Renderer>();
-        }
-        else if (blueCostTransform == null)
-        {
-            retval[GemType.Blue] = null;
-            retval[GemType.Green] = null;
-            retval[GemType.Orange] = null;
-        }
-        else
-        {
-            retval[GemType.Blue] = gemContainer.transform.Find(BLUE_GEM_COST).gameObject.GetComponent<Renderer>();
-            retval[GemType.Green] = gemContainer.transform.Find(GREEN_GEM_COST).gameObject.GetComponent<Renderer>();
-            retval[GemType.Orange] = gemContainer.transform.Find(ORANGE_GEM_COST).gameObject.GetComponent<Renderer>();
+            idx++;
         }
 
         return retval;
@@ -572,13 +730,13 @@ public static class Part3CardCostRender
 
         if (originalPosition)
         {
-            gem.transform.localPosition = new (0.0935f, 0f, 0.162f);
-            gem.transform.localScale = new (122.6777f, 122.6777f, 100f);
+            gem.transform.localPosition = new(0.0935f, 0f, 0.162f);
+            gem.transform.localScale = new(122.6777f, 122.6777f, 100f);
         }
         else
         {
             gem.transform.localPosition = new(0.54f, 0f, 0f);
-            gem.transform.localScale = new (80f, 80f, 100f);
+            gem.transform.localScale = new(80f, 80f, 100f);
         }
     }
 
@@ -601,15 +759,29 @@ public static class Part3CardCostRender
 
         List<GemType> gemsCost = playableCard?.GemsCost() ?? __instance.Info.GemsCost;
         if (gemsCost.Count > 0)
-            costDisplays.Add(new("Gems"));
+        {
+            if (gemsCost.Count <= 3)
+            {
+                costDisplays.Add(new("Gems_All"));
+            }
+            else
+            {
+                if ((playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Orange"));
+                if ((playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Blue"));
+                if ((playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count > 0)
+                    costDisplays.Add(new("Gems_Green"));
+            }
+        }
 
         int bonesCost = playableCard?.BonesCost() ?? __instance.Info.BonesCost;
         if (bonesCost > 0)
             costDisplays.Add(new("Bones", GetIconifiedCostTexture(BoneCostIcon, bonesCost, forceDigitDisplay: true)));
-        
+
         int bloodCost = playableCard?.BloodCost() ?? __instance.Info.BloodCost;
         if (bloodCost > 0)
-            costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, bloodCost)));
+            costDisplays.Add(new("Blood", GetIconifiedCostTexture(BloodCostIcon, BloodCostIconUnlit, bloodCost)));
 
         // get a list of the custom costs we need textures for
         // check for PlayableCard to account for possible dynamic costs (no API support but who knows what modders do)
@@ -671,7 +843,7 @@ public static class Part3CardCostRender
 
                 if (i > 0)
                 {
-                    costContainers[i].transform.localPosition = new (
+                    costContainers[i].transform.localPosition = new(
                         costContainers[i].transform.localPosition.x,
                         costContainers[i].transform.localPosition.y,
                         INITIAL_CONTAINER_Z_SPACING + CONTAINER_Z_SPACING * (i - 1)
@@ -696,6 +868,55 @@ public static class Part3CardCostRender
             var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
             foreach (Renderer renderer in gemContainer.Values.Where(v => v != null))
                 renderer.gameObject.SetActive(true);
+            if (gemsCost.Count <= 3)
+            {
+                CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_All", StringComparison.InvariantCultureIgnoreCase));
+                var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
+                foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                    renderer.gameObject.SetActive(true);
+            }
+            else
+            {
+                int orangeGemsCost = (playableCard?.OrangeGemsCost() ?? __instance.Info.OrangeGemsCost()).Count;
+                int blueGemsCost = (playableCard?.BlueGemsCost() ?? __instance.Info.BlueGemsCost()).Count;
+                int greenGemsCost = (playableCard?.GreenGemsCost() ?? __instance.Info.GreenGemsCost()).Count;
+                if (orangeGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Orange", StringComparison.InvariantCultureIgnoreCase));
+                    if (orangeGemsCost > 3)
+                        gemRenderInfo.Stretch((float)orangeGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Orange, stretchFactor: (float)orangeGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+                if (blueGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Blue", StringComparison.InvariantCultureIgnoreCase));
+                    if (blueGemsCost > 3)
+                        gemRenderInfo.Stretch((float)blueGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Blue, stretchFactor: (float)blueGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+                if (greenGemsCost > 0)
+                {
+                    CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_Green", StringComparison.InvariantCultureIgnoreCase));
+                    if (greenGemsCost > 3)
+                        gemRenderInfo.Stretch((float)greenGemsCost / 3f);
+
+                    var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer, gemType: GemType.Green, stretchFactor: (float)greenGemsCost / 3f);
+                    foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                        renderer.gameObject.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            // Just in case, destroy the gem renderer set
+            if (GemContainerLookup.TryGetValue(__instance.StatsLayer, out var item))
+                item.Clear();
         }
 
         // Handle the energy bars
@@ -709,18 +930,208 @@ public static class Part3CardCostRender
     private static void UpdateGemsCost(DiskRenderStatsLayer __instance)
     {
         var gemContainer = __instance.GetGemCostContainer();
-        foreach (var gem in gemContainer.Keys)
+        DiskCardGame.Card card = __instance.GetCard();
+
+        // Here, all we can do is check each item in the gemContainer and see
+        // if we have the gem or not
+        foreach (var obj in gemContainer)
         {
-            if (gemContainer[gem] == null || !gemContainer[gem].gameObject.activeInHierarchy)
+            Color emissionColor = !GameFlowManager.IsCardBattle || ResourcesManager.Instance.gems.Where(g => g == obj.Item1).Count() >= obj.Item2 ? Color.white : Color.gray;
+            obj.Item3.GetPropertyBlock(__instance.gemsPropertyBlock);
+            __instance.gemsPropertyBlock.SetColor("_EmissionColor", emissionColor);
+            obj.Item3.SetPropertyBlock(__instance.gemsPropertyBlock);
+        }
+    }
+
+    [HarmonyPatch(typeof(P03FaceCardDisplayer), nameof(P03FaceCardDisplayer.DisplayCard))]
+    [HarmonyPostfix]
+    private static void SetCostsOnP03Face(P03FaceCardDisplayer __instance, CardInfo info, CardModificationInfo mod)
+    {
+        // The starting point for each additional cost is based on which energy bars are enabled
+        var rend = __instance.energyBars.FirstOrDefault(r => !r.enabled);
+        float curPos = rend == null ? __instance.energyBars[5].transform.localPosition.x : rend.transform.localPosition.x;
+        curPos += 0.02f;
+
+        // Blink indicators
+        bool blinkGems = false;
+        bool blinkBones = false;
+        bool blinkBlood = false;
+
+        // Handle gems cost. They already exist, which is fantastic. We just need to update them.
+        int blue = 0;
+        int orange = 0;
+        int green = 0;
+        foreach (var g in info.GemsCost)
+        {
+            if (g == GemType.Green)
+                green += 1;
+            if (g == GemType.Orange)
+                orange += 1;
+            if (g == GemType.Blue)
+                blue += 1;
+        }
+        if (mod != null)
+        {
+            if (mod.addGemCost != null)
+            {
+                foreach (var g in mod.addGemCost)
+                {
+                    if (g == GemType.Green)
+                        green += 1;
+                    if (g == GemType.Orange)
+                        orange += 1;
+                    if (g == GemType.Blue)
+                        blue += 1;
+                }
+                blinkGems = true;
+            }
+            if (mod.HasRemovedAnyGemCost())
+                blinkGems = true;
+            if (mod.HasRemoveBlueGemCost() && blue > 0)
+                blue -= 1;
+            if (mod.HasRemovedGreenGemCost() && green > 0)
+                green -= 1;
+            if (mod.HasRemovedOrangeGemCost() && orange > 0)
+                orange -= 1;
+            if (mod.nullifyGemsCost)
+            {
+                green = orange = blue = 0;
+                blinkGems = true;
+            }
+        }
+
+        // Turn off all gems
+        var gems = __instance.transform.Find("Resources/Gems");
+        gems.transform.localPosition = Vector3.zero;
+        for (int i = 0; i < gems.childCount; i++)
+        {
+            var obj = gems.GetChild(i)?.gameObject;
+            if (obj == null)
                 continue;
 
-            DiskCardGame.Card card = __instance.GetCard();
-            Color emissionColor = Color.black;
-            if (card.Info.gemsCost.Contains(gem))
-                emissionColor = !GameFlowManager.IsCardBattle || ResourcesManager.Instance.HasGem(gem) ? Color.white : Color.gray;
-            gemContainer[gem].GetPropertyBlock(__instance.gemsPropertyBlock);
-            __instance.gemsPropertyBlock.SetColor("_EmissionColor", emissionColor);
-            gemContainer[gem].SetPropertyBlock(__instance.gemsPropertyBlock);
+            obj.SetActive(false);
+            if (obj.GetComponent<BlinkColor>() == null)
+            {
+                var blink = obj.AddComponent<BlinkColor>();
+                blink.color1 = obj.GetComponent<SpriteRenderer>().color;
+                blink.color2 = new(0.0078f, 0.0392f, 0.0667f);
+                blink.renderers = new() { obj.GetComponent<SpriteRenderer>() };
+                blink.colorId = "_Color";
+                blink.frequency = 0.2f;
+                blink.originalFrequency = 0.2f;
+                blink.timer = 0.0681f;
+            }
+        }
+
+        // Order goes blue, orange, green (from right to left); -0.15 for each
+        for (int i = 0; i < blue; i++)
+        {
+            string name = "Gem_Blue";
+            if (i > 0)
+                name += $"_{i}";
+            var obj = __instance.transform.Find($"Resources/Gems/{name}") ?? GameObject.Instantiate(__instance.transform.Find("Resources/Gems/Gem_Blue").gameObject, gems).transform;
+            obj.name = name;
+            curPos -= 0.1f;
+            obj.localPosition = new(curPos, 0f, 0f);
+            obj.gameObject.SetActive(true);
+
+            Color blueGemColor = new Color(0f, 0.8507f, 1f) * 0.8f;
+            obj.GetComponent<SpriteRenderer>().enabled = true;
+            obj.GetComponent<SpriteRenderer>().color = blueGemColor;
+            obj.GetComponent<BlinkColor>().enabled = blinkGems;
+            obj.GetComponent<BlinkColor>().color1 = blueGemColor;
+            curPos -= 0.1f;
+        }
+        for (int i = 0; i < orange; i++)
+        {
+            string name = "Gem_Orange";
+            if (i > 0)
+                name += $"_{i}";
+            var obj = __instance.transform.Find($"Resources/Gems/{name}") ?? GameObject.Instantiate(__instance.transform.Find("Resources/Gems/Gem_Orange").gameObject, gems).transform;
+            obj.name = name;
+            curPos -= 0.1f;
+            obj.localPosition = new(curPos, 0f, 0f);
+            obj.gameObject.SetActive(true);
+            obj.GetComponent<SpriteRenderer>().enabled = true;
+            obj.GetComponent<BlinkColor>().enabled = blinkGems;
+            curPos -= 0.1f;
+        }
+        for (int i = 0; i < green; i++)
+        {
+            string name = "Gem_Green";
+            if (i > 0)
+                name += $"_{i}";
+            var obj = __instance.transform.Find($"Resources/Gems/{name}") ?? GameObject.Instantiate(__instance.transform.Find("Resources/Gems/Gem_Green").gameObject, gems).transform;
+            obj.name = name;
+            curPos -= 0.095f;
+            obj.localPosition = new(curPos, 0f, 0f);
+            obj.gameObject.SetActive(true);
+            obj.GetComponent<SpriteRenderer>().enabled = true;
+            obj.GetComponent<BlinkColor>().enabled = blinkGems;
+            curPos -= 0.095f;
+        }
+
+        // Turn off all of the blood and bones items
+        var resources = __instance.transform.Find("Resources");
+        for (int i = 0; i < resources.childCount; i++)
+        {
+            var t = resources.GetChild(i);
+            if (t.gameObject.name.Contains("Bone") || t.gameObject.name.Contains("Blood"))
+                t.gameObject.SetActive(false);
+        }
+
+        // Gems are super complicated. Bones are also kinda complicated.
+        // For now I ignore it and we'll just let the bones overflow
+        int bones = info.BonesCost + (mod?.bonesCostAdjustment).GetValueOrDefault(0);
+        blinkBones = (mod?.bonesCostAdjustment).GetValueOrDefault(0) != 0;
+        for (int i = 0; i < bones; i++)
+        {
+            string k = $"Resources/Bones_{i}";
+            var obj = __instance.transform.Find(k);
+            if (obj == null)
+            {
+                obj = GameObject.Instantiate(__instance.transform.Find("Resources/Gems/Gem_Green").gameObject, resources).transform;
+                obj.name = $"Bones_{i}";
+                var renderer = obj.GetComponent<SpriteRenderer>();
+                renderer.sprite = FaceBoneSprite;
+                renderer.color = BoneColor * 0.9f;
+                obj.GetComponent<BlinkColor>().color1 = BoneColor * 0.9f;
+            }
+            curPos -= 0.069f;
+            obj.localPosition = new(curPos, 0f, 0f);
+            obj.gameObject.SetActive(true);
+            obj.GetComponent<SpriteRenderer>().enabled = true;
+            obj.GetComponent<BlinkColor>().enabled = blinkBones;
+            curPos -= 0.069f;
+        }
+
+        int blood = info.BloodCost + (mod?.bloodCostAdjustment).GetValueOrDefault(0);
+        blinkBlood = (mod?.bloodCostAdjustment).GetValueOrDefault(0) != 0;
+        for (int i = 0; i < blood; i++)
+        {
+            string k = $"Resources/Blood_{i}";
+            var obj = __instance.transform.Find(k);
+            if (obj == null)
+            {
+                obj = GameObject.Instantiate(__instance.transform.Find("Resources/Gems/Gem_Green").gameObject, resources).transform;
+                obj.name = $"Blood_{i}";
+                var renderer = obj.GetComponent<SpriteRenderer>();
+                renderer.sprite = FaceBloodSprite;
+                renderer.color = BloodColor * 0.9f;
+                obj.GetComponent<BlinkColor>().color1 = BloodColor * 0.9f;
+            }
+            curPos -= 0.057f;
+            obj.localPosition = new(curPos, 0f, 0f);
+            obj.gameObject.SetActive(true);
+            obj.GetComponent<SpriteRenderer>().enabled = true;
+            obj.GetComponent<BlinkColor>().enabled = blinkBlood;
+            curPos -= 0.057f;
+        }
+
+        foreach (var gb in __instance.GetComponentsInChildren<BlinkColor>())
+        {
+            gb.blinkOn = false;
+            gb.Reset();
         }
     }
 }

@@ -40,9 +40,35 @@ public static class CardModificationInfoManager
         }
     }
 
-    internal static Dictionary<string, string> GetCardModExtensionTable(this CardModificationInfo card)
+    internal static Dictionary<string, string> GetCardModExtensionTable(this CardModificationInfo mod)
     {
-        return CardModExtensionProperties.GetOrCreateValue(card).StringMap;
+        if (CardModExtensionProperties.TryGetValue(mod, out var ext))
+            return ext.StringMap;
+
+        var exp = new CardModExt();
+        CardModExtensionProperties.Add(mod, exp);
+
+        // Since this is the first time building the extension properties table,
+        // let's initialize it with anything that might be in this mod already.
+        // Most likely this is coming from the save file.
+        if (mod.HasCustomPropertiesId())
+        {
+            foreach (string property in GetCustomPropertiesFromId(mod.singletonId))
+            {
+                string[] split = property.Split(',');
+                exp.StringMap[split[0]] = split[1];
+            }
+        }
+        if (mod.HasCustomCostsId())
+        {
+            foreach (string pair in GetCustomCostsFromId(mod.singletonId))
+            {
+                string[] splitCost = pair.Split(',');
+                exp.StringMap[splitCost[0]] = splitCost[1];
+            }
+        }
+
+        return exp.StringMap;
     }
     public static void SyncCardMods()
     {

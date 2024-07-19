@@ -1,6 +1,31 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.20.0
+- Updated wiki sections for Adding Map Nodes, and Conditional Map Nodes; moved Special Sequencers section to Opponents
+- Fixed issues related to challlenge icon sorting when a boss icon is present
+- Fixed TalkingCardManager not properly configuring talking cards in Part 3on the page
+- Fixed extension properties for CardModificationInfos saved to the save file not consistently loading
+- Fixed cards not shaking when losing a shield
+- Fixed ShieldManager.BreakShield not being called when a shielded card takes damage
+- Added SlotModificationManager for adding behaviour to card slots; see wiki for more info
+- Added SaveFileExtensions class
+- Added support for cards costing multiple of the same colour Mox
+- Added debugging to GetCustomCardCosts method; please let the API folks know if you receive any warnings/errors marked by '[GetCustomCardCosts]'
+- Added StatIconInfo.SetRulebookInfo and StatIconInfo.SetAppliesToStats
+- Added NodeData.SelectionCondition's ChallengeIsActive and NumChallengesOfTypeActive
+- Added PlayableCard.GetShieldCount<\T>() for getting a specific shield ability's NumShield value
+- Added new config to the community patches to reduce the size of the price tags during the Buy Pelts sequence
+- Added CardModificationInfo.AddNegateAbilities extension method
+- Removed leftover debugging related to boss challenge icons and custom costs
+- P03 Face Card Displayer can now show card costs other than energy
+- Publiciser warnings from the API and Community Patches no longer appear in the console
+- SaveFile.CurrentDeck now returns gbcData.deck in Act 2
+- DeathShieldLatch can longer target cards with an active shield
+- Cards with a broken shield return to their default portrait when regaining their shield
+- Shield abilities now use NumShields to determine visual sigil stacking
+- CardModificationInfo.SetNameReplacement now accepts null value for the name replacement
+
 # 2.19.5
 - Fixed pixel Bones cost icons not appearing when the cost is greater than vanilla amounts
 - Fixed interaction where a Gemified card that gives a blue gem doesn't spend the correct resource amount when played

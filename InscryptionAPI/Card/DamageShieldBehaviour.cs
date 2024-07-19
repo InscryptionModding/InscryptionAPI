@@ -32,18 +32,6 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
         if (HasShields())
             base.Card.Status.lostShield = false;
 
-        if (Ability.GetHideSingleStacks())
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                base.Card.Status.hiddenAbilities.Remove(this.Ability);
-            }
-        }
-        else if (HasShields() && base.Card.Status.hiddenAbilities.Contains(this.Ability))
-        {
-            base.Card.Status.hiddenAbilities.RemoveAll(x => x == this.Ability);
-        }
-
         if (updateDisplay)
         {
             base.Card.OnStatsChanged();
@@ -52,21 +40,15 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     public virtual void RemoveShields(int amount, bool updateDisplay = true)
     {
         numShields -= amount;
-        if (base.Card.GetTotalShields() == 0)
+        if (base.Card.GetTotalShields() <= 0)
             base.Card.Status.lostShield = true;
 
-        if (Ability.GetHideSingleStacks())
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                base.Card.Status.hiddenAbilities.Add(this.Ability);
-            }
-        }
-        else if (!HasShields() && !base.Card.Status.hiddenAbilities.Contains(this.Ability))
+        if (!Ability.GetHideSingleStacks() && !HasShields() && !base.Card.Status.hiddenAbilities.Contains(this.Ability))
         {
             base.Card.Status.hiddenAbilities.Add(this.Ability);
+            //Debug.Log("Add hidden single");
         }
-        
+
         if (updateDisplay)
         {
             base.Card.OnStatsChanged();

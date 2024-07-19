@@ -15,14 +15,36 @@ namespace InscryptionAPI.Triggers;
 [HarmonyPatch]
 public static class TakeDamagePatches
 {
+    /*[HarmonyPostfix, HarmonyPatch(typeof(HammerItem), nameof(HammerItem.OnValidTargetSelected))]
+    public static IEnumerator AddTakeDamageHammerTrigger(IEnumerator enumerator, HammerItem __instance, CardSlot targetSlot, GameObject firstPersonItem)
+    {
+        var preHammer = CustomTriggerFinder.FindGlobalTriggers<IOnPreTakeDamageFromHammer>(true).ToList();
+        preHammer.Sort((a, b) => b.TriggerPriority(__instance, targetSlot, firstPersonItem) - a.TriggerPriority(__instance, targetSlot, firstPersonItem));
+        foreach (var pre in preHammer)
+        {
+            if (pre != null && pre.RespondsToPreTakeDamageFromHammer(__instance, targetSlot, firstPersonItem))
+                yield return pre.OnPreTakeDamageFromHammer(__instance, targetSlot, firstPersonItem);
+        }
+
+        bool struckTarget = targetSlot.Card != null;
+        yield return enumerator;
+
+        var postHammer = CustomTriggerFinder.FindGlobalTriggers<IOnPostTakeDamageFromHammer>(true).ToList();
+        postHammer.Sort((a, b) => b.TriggerPriority(__instance, targetSlot, firstPersonItem, struckTarget) - a.TriggerPriority(__instance, targetSlot, firstPersonItem, struckTarget));
+        foreach (var post in postHammer)
+        {
+            if (post != null && post.RespondsToPostTakeDamageFromHammer(__instance, targetSlot, firstPersonItem, struckTarget))
+                yield return post.OnPostTakeDamageFromHammer(__instance, targetSlot, firstPersonItem, struckTarget);
+        }
+    }*/
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
     private static bool AddModifyDamageTrigger(PlayableCard __instance, ref int damage, PlayableCard attacker)
     {
         int originalDamage = damage;
 
-        var modifyTakeDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDamageTaken>(true).ToList();
+        List<IModifyDamageTaken> modifyTakeDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDamageTaken>(true).ToList();
         modifyTakeDamage.Sort((a, b) => b.TriggerPriority(__instance, originalDamage, attacker) - a.TriggerPriority(__instance, originalDamage, attacker));
-        foreach (var modify in modifyTakeDamage)
+        foreach (IModifyDamageTaken modify in modifyTakeDamage)
         {
             if (modify != null && modify.RespondsToModifyDamageTaken(__instance, damage, attacker, originalDamage))
               damage = modify.OnModifyDamageTaken(__instance, damage, attacker, originalDamage);  
@@ -38,8 +60,7 @@ public static class TakeDamagePatches
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.TakeDamage))]
     private static IEnumerator AddTakeDamageTriggers(IEnumerator enumerator, PlayableCard __instance, int damage, PlayableCard attacker)
     {
-        var preTake = CustomTriggerFinder.FindTriggersOnCard<IPreTakeDamage>(__instance);
-        foreach (var pre in preTake)
+        foreach (IPreTakeDamage pre in CustomTriggerFinder.FindTriggersOnCard<IPreTakeDamage>(__instance))
         {
             if (pre.RespondsToPreTakeDamage(attacker, damage))
                 yield return pre.OnPreTakeDamage(attacker, damage);
@@ -131,7 +152,7 @@ public static class TakeDamagePatches
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
                     codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, attacker));
-                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
+                    codes.Insert(shieldStart++, new(OpCodes.Call, breakShield));
                 }
                 break;
             }
