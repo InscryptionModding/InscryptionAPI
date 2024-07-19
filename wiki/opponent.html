@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Opponents | InscryptionAPI </title>
+    <title>Special Sequencers | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Opponents | InscryptionAPI ">
+    <meta name="title" content="Special Sequencers | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../images/favicon.ico">
@@ -68,8 +68,21 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="opponents">Opponents</h2>
+<h2 id="special-sequencers">Special Sequencers</h2>
 
+<p>Special sequencers are essentially &#39;global abilities;&#39; they listen to the same triggers that cards do and can execute code based on these triggers (such as whenever cards are played or die, at the start of each turn, etc). </p>
+<p>While you can inherit directly from SpecialBattleSequencer, there is a hierarchy of existing special sequencers that you may wish to inherit from depending upon your use case. You can use dnSpy to see all of them, but these are three you should be specifically aware of:</p>
+<ul>
+<li><strong>SpecialBattleSequencer</strong>: The base class for all special sequencers. Use this by default.</li>
+<li><strong>BossBattleSequencer</strong>: Used for boss battles</li>
+<li><strong>Part1BossBattleSequencer</strong>: Use for boss battles in Act 1 (Angler, Prospector, Trapper/Trader, and Leshy)</li>
+</ul>
+<p>Special sequencers are set directly on the NodeData instance corresponding to the map node that the player touches to start the battle. This is done using a string value corresponding to the sequencer. To set this yourself, use the SpecialSequenceManager class in the API:</p>
+<pre><code class="lang-c#">public class MyCustomBattleSequencer : Part1BossBattleSequencer
+{
+    public static readonly string ID = SpecialSequenceManager.Add(Plugin.PluginGuid, &quot;MySequencer&quot;, typeof(MyCustomBattleSequencer));
+}
+</code></pre><h2 id="opponents">Opponents</h2>
 <hr>
 <p>In the context of this API, think of opponents as basically just bosses. There is a enumeration of Opponents called Opponent.Type that refers to the opponent. This name can be confusing in some IDEs, as they may simply show the parameter type as Type, which should not be confused with the System.Type type.</p>
 <p>Like everything else, Opponents are classes that you have to write that are responsible for handling the weird things that happen during battle. Depending upon which type of opponent you are buiding, you will need to use one of the following base classes:</p>

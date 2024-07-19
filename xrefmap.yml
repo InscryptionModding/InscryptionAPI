@@ -2427,6 +2427,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetActivated
   nameWithType: AbilityExtensions.SetActivated
+- uid: InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats(DiskCardGame.StatIconInfo,System.Boolean,System.Boolean)
+  name: SetAppliesToStats(StatIconInfo, Boolean, Boolean)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetAppliesToStats_DiskCardGame_StatIconInfo_System_Boolean_System_Boolean_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats(DiskCardGame.StatIconInfo,System.Boolean,System.Boolean)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats(DiskCardGame.StatIconInfo, System.Boolean, System.Boolean)
+  nameWithType: AbilityExtensions.SetAppliesToStats(StatIconInfo, Boolean, Boolean)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats*
+  name: SetAppliesToStats
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetAppliesToStats_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats
+  nameWithType: AbilityExtensions.SetAppliesToStats
 - uid: InscryptionAPI.Card.AbilityExtensions.SetCanStack(DiskCardGame.AbilityInfo,System.Boolean,System.Boolean)
   name: SetCanStack(AbilityInfo, Boolean, Boolean)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCanStack_DiskCardGame_AbilityInfo_System_Boolean_System_Boolean_
@@ -2737,6 +2750,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetPowerlevel
   nameWithType: AbilityExtensions.SetPowerlevel
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo,System.String,System.String)
+  name: SetRulebookInfo(StatIconInfo, String, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_DiskCardGame_StatIconInfo_System_String_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo,System.String,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo, System.String, System.String)
+  nameWithType: AbilityExtensions.SetRulebookInfo(StatIconInfo, String, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo*
+  name: SetRulebookInfo
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo
+  nameWithType: AbilityExtensions.SetRulebookInfo
 - uid: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo,System.Boolean)
   name: SetTriggersOncePerStack(AbilityInfo, Boolean)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_DiskCardGame_AbilityInfo_System_Boolean_
@@ -6570,6 +6596,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddDecalIds
   nameWithType: CardModificationInfoExtensions.AddDecalIds
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities(DiskCardGame.CardModificationInfo,DiskCardGame.Ability[])
+  name: AddNegateAbilities(CardModificationInfo, Ability[])
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddNegateAbilities_DiskCardGame_CardModificationInfo_DiskCardGame_Ability___
+  commentId: M:InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities(DiskCardGame.CardModificationInfo,DiskCardGame.Ability[])
+  name.vb: AddNegateAbilities(CardModificationInfo, Ability())
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities(DiskCardGame.CardModificationInfo, DiskCardGame.Ability[])
+  fullName.vb: InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities(DiskCardGame.CardModificationInfo, DiskCardGame.Ability())
+  nameWithType: CardModificationInfoExtensions.AddNegateAbilities(CardModificationInfo, Ability[])
+  nameWithType.vb: CardModificationInfoExtensions.AddNegateAbilities(CardModificationInfo, Ability())
+- uid: InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities*
+  name: AddNegateAbilities
+  href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_AddNegateAbilities_
+  commentId: Overload:InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardModificationInfoExtensions.AddNegateAbilities
+  nameWithType: CardModificationInfoExtensions.AddNegateAbilities
 - uid: InscryptionAPI.Card.CardModificationInfoExtensions.CleanId(DiskCardGame.CardModificationInfo)
   name: CleanId(CardModificationInfo)
   href: api/InscryptionAPI.Card.CardModificationInfoExtensions.html#InscryptionAPI_Card_CardModificationInfoExtensions_CleanId_DiskCardGame_CardModificationInfo_
@@ -13524,6 +13566,53 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.And.Satisfied
   nameWithType: And.Satisfied
+- uid: InscryptionAPI.Nodes.ChallengeIsActive
+  name: ChallengeIsActive
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html
+  commentId: T:InscryptionAPI.Nodes.ChallengeIsActive
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive
+  nameWithType: ChallengeIsActive
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.#ctor(DiskCardGame.AscensionChallenge,System.Boolean)
+  name: ChallengeIsActive(AscensionChallenge, Boolean)
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive__ctor_DiskCardGame_AscensionChallenge_System_Boolean_
+  commentId: M:InscryptionAPI.Nodes.ChallengeIsActive.#ctor(DiskCardGame.AscensionChallenge,System.Boolean)
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.ChallengeIsActive(DiskCardGame.AscensionChallenge, System.Boolean)
+  nameWithType: ChallengeIsActive.ChallengeIsActive(AscensionChallenge, Boolean)
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.#ctor*
+  name: ChallengeIsActive
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.ChallengeIsActive.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.ChallengeIsActive
+  nameWithType: ChallengeIsActive.ChallengeIsActive
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.challenge
+  name: challenge
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive_challenge
+  commentId: F:InscryptionAPI.Nodes.ChallengeIsActive.challenge
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.challenge
+  nameWithType: ChallengeIsActive.challenge
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.exclude
+  name: exclude
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive_exclude
+  commentId: F:InscryptionAPI.Nodes.ChallengeIsActive.exclude
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.exclude
+  nameWithType: ChallengeIsActive.exclude
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.Satisfied(System.Int32,List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.ChallengeIsActive.Satisfied(System.Int32,List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.ChallengeIsActive.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
+  nameWithType: ChallengeIsActive.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: ChallengeIsActive.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.ChallengeIsActive.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.ChallengeIsActive.html#InscryptionAPI_Nodes_ChallengeIsActive_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.ChallengeIsActive.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.ChallengeIsActive.Satisfied
+  nameWithType: ChallengeIsActive.Satisfied
 - uid: InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer
   name: CustomCardChoiceNodeSequencer
   href: api/InscryptionAPI.Nodes.CustomCardChoiceNodeSequencer.html
@@ -14661,6 +14750,59 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Nodes.Not.Satisfied
   nameWithType: Not.Satisfied
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive
+  name: NumChallengesOfTypeActive
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html
+  commentId: T:InscryptionAPI.Nodes.NumChallengesOfTypeActive
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive
+  nameWithType: NumChallengesOfTypeActive
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.#ctor(DiskCardGame.AscensionChallenge,System.Int32,System.Boolean)
+  name: NumChallengesOfTypeActive(AscensionChallenge, Int32, Boolean)
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive__ctor_DiskCardGame_AscensionChallenge_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Nodes.NumChallengesOfTypeActive.#ctor(DiskCardGame.AscensionChallenge,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.NumChallengesOfTypeActive(DiskCardGame.AscensionChallenge, System.Int32, System.Boolean)
+  nameWithType: NumChallengesOfTypeActive.NumChallengesOfTypeActive(AscensionChallenge, Int32, Boolean)
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.#ctor*
+  name: NumChallengesOfTypeActive
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive__ctor_
+  commentId: Overload:InscryptionAPI.Nodes.NumChallengesOfTypeActive.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.NumChallengesOfTypeActive
+  nameWithType: NumChallengesOfTypeActive.NumChallengesOfTypeActive
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.challenge
+  name: challenge
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive_challenge
+  commentId: F:InscryptionAPI.Nodes.NumChallengesOfTypeActive.challenge
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.challenge
+  nameWithType: NumChallengesOfTypeActive.challenge
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.greaterThanNumActive
+  name: greaterThanNumActive
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive_greaterThanNumActive
+  commentId: F:InscryptionAPI.Nodes.NumChallengesOfTypeActive.greaterThanNumActive
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.greaterThanNumActive
+  nameWithType: NumChallengesOfTypeActive.greaterThanNumActive
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.numChallenges
+  name: numChallenges
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive_numChallenges
+  commentId: F:InscryptionAPI.Nodes.NumChallengesOfTypeActive.numChallenges
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.numChallenges
+  nameWithType: NumChallengesOfTypeActive.numChallenges
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied(System.Int32,List{DiskCardGame.NodeData})
+  name: Satisfied(Int32, List<NodeData>)
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive_Satisfied_System_Int32_List_DiskCardGame_NodeData__
+  commentId: M:InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied(System.Int32,List{DiskCardGame.NodeData})
+  name.vb: Satisfied(Int32, List(Of NodeData))
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied(System.Int32, List<DiskCardGame.NodeData>)
+  fullName.vb: InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied(System.Int32, List(Of DiskCardGame.NodeData))
+  nameWithType: NumChallengesOfTypeActive.Satisfied(Int32, List<NodeData>)
+  nameWithType.vb: NumChallengesOfTypeActive.Satisfied(Int32, List(Of NodeData))
+- uid: InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied*
+  name: Satisfied
+  href: api/InscryptionAPI.Nodes.NumChallengesOfTypeActive.html#InscryptionAPI_Nodes_NumChallengesOfTypeActive_Satisfied_
+  commentId: Overload:InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied
+  isSpec: "True"
+  fullName: InscryptionAPI.Nodes.NumChallengesOfTypeActive.Satisfied
+  nameWithType: NumChallengesOfTypeActive.Satisfied
 - uid: InscryptionAPI.Nodes.True
   name: "True"
   href: api/InscryptionAPI.Nodes.True.html
