@@ -11,6 +11,10 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <Version>2.20.0</Version>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <NoWarn>Publicizer001</NoWarn>
+    </PropertyGroup>
     
     <ItemGroup>
       <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
