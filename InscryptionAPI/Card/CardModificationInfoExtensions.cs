@@ -19,13 +19,18 @@ public static class CardModificationInfoExtensions
         }
         return mod;
     }
+    public static CardModificationInfo AddNegateAbilities(this CardModificationInfo mod, params Ability[] negateAbilities)
+    {
+        mod.negateAbilities ??= new();
+        mod.negateAbilities.AddRange(negateAbilities);
+        return mod;
+    }
     #endregion
 
     #region Setters
     public static CardModificationInfo SetNameReplacement(this CardModificationInfo mod, string name = null)
     {
-        if (name != null)
-            mod.nameReplacement = name;
+        mod.nameReplacement = name;
         return mod;
     }
     public static CardModificationInfo SetSingletonId(this CardModificationInfo mod, string id = null)
