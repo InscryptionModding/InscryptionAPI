@@ -75,7 +75,7 @@ public static Texture2D PixelTextureMethod(int cardCost, CardInfo info, Playable
 ```
 
 Card cost textures vary based on what part of the game the cost will be displayed in.
-For Act 1, textures must be 64x28; for Act 2 they can be 30x8 or 7x8 (see above); for Act 3 there is no set size but they should be no larger than 300x78.
+For Act 1, textures must be 64x28. In Act 2 they can be 30x8 at maximum or 7x8 (see above). Act 3 has no set size but they should be no larger than 300x78.
 
 ### Negative Costs, Cost Tier, and Turn 2 Play
 The API allows you to define whether or not negative cost values should be considered in the game.

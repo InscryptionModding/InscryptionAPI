@@ -868,7 +868,7 @@ public static class Part3CardCostRender
             {
                 CustomCostRenderInfo gemRenderInfo = costDisplays.First(c => c.CostId.Equals("Gems_All", StringComparison.InvariantCultureIgnoreCase));
                 var gemContainer = __instance.GetGemCostContainer(force: true, container: gemRenderInfo.CostContainer);
-                foreach (var renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
+                foreach (Renderer renderer in gemContainer.Where(v => v != null && v.Item3 != null).Select(v => v.Item3))
                     renderer.gameObject.SetActive(true);
             }
             else

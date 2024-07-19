@@ -83,25 +83,18 @@ public static partial class CardExtensions
             return new();
 
         List<CardModificationInfo> mods = card.TemporaryMods.Concat(card.Info.Mods).ToList();
-        // if gems are nullified, return a new list
-        if (mods.Exists((CardModificationInfo x) => x.nullifyGemsCost))
+        if (mods.Exists(x => x.nullifyGemsCost))
             return new List<GemType>();
 
         List<GemType> gemsCost = new(card.Info.gemsCost);
         foreach (CardModificationInfo mod in mods)
         {
             if (mod.addGemCost != null)
-            {
-                foreach (GemType item in mod.addGemCost)
-                {
-                    if (!gemsCost.Contains(item))
-                        gemsCost.Add(item);
-                }
-            }
+                gemsCost.AddRange(mod.addGemCost);
+
             foreach (GemType gem in mod.RemovedGemsCosts())
             {
-                if (gemsCost.Contains(gem))
-                    gemsCost.Remove(gem);
+                gemsCost.Remove(gem);
             }
         }
 

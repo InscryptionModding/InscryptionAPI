@@ -121,6 +121,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardManager.AuditCardList();
         PixelCardManager.Initialise();
         PeltManager.CreateDialogueEvents();
+        if (!DialogueManager.CustomDialogue.Exists(x => x.DialogueEvent.id == "Hint_NotEnoughSameColourGemsHint"))
+        {
+            
+        }
         Logger.LogDebug($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
     }
 
