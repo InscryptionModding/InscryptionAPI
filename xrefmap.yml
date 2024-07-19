@@ -9595,6 +9595,90 @@ references:
   commentId: F:InscryptionAPI.Encounters.AIManager.FullAI.Id
   fullName: InscryptionAPI.Encounters.AIManager.FullAI.Id
   nameWithType: AIManager.FullAI.Id
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor
+  name: CachedGCBNPCDescriptor
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html
+  commentId: T:InscryptionAPI.Encounters.CachedGCBNPCDescriptor
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor
+  nameWithType: CachedGCBNPCDescriptor
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.#ctor(GBC.CardBattleNPC)
+  name: CachedGCBNPCDescriptor(CardBattleNPC)
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor__ctor_GBC_CardBattleNPC_
+  commentId: M:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.#ctor(GBC.CardBattleNPC)
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.CachedGCBNPCDescriptor(GBC.CardBattleNPC)
+  nameWithType: CachedGCBNPCDescriptor.CachedGCBNPCDescriptor(CardBattleNPC)
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.#ctor*
+  name: CachedGCBNPCDescriptor
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor__ctor_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.CachedGCBNPCDescriptor
+  nameWithType: CachedGCBNPCDescriptor.CachedGCBNPCDescriptor
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme
+  name: BattleBackgroundTheme
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_BattleBackgroundTheme
+  commentId: P:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme
+  nameWithType: CachedGCBNPCDescriptor.BattleBackgroundTheme
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme*
+  name: BattleBackgroundTheme
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_BattleBackgroundTheme_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BattleBackgroundTheme
+  nameWithType: CachedGCBNPCDescriptor.BattleBackgroundTheme
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple
+  name: BossTemple
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_BossTemple
+  commentId: P:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple
+  nameWithType: CachedGCBNPCDescriptor.BossTemple
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple*
+  name: BossTemple
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_BossTemple_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.BossTemple
+  nameWithType: CachedGCBNPCDescriptor.BossTemple
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker
+  name: DialogueSpeaker
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_DialogueSpeaker
+  commentId: P:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker
+  nameWithType: CachedGCBNPCDescriptor.DialogueSpeaker
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker*
+  name: DialogueSpeaker
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_DialogueSpeaker_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.DialogueSpeaker
+  nameWithType: CachedGCBNPCDescriptor.DialogueSpeaker
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID
+  name: ID
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_ID
+  commentId: P:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID
+  nameWithType: CachedGCBNPCDescriptor.ID
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID*
+  name: ID
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_ID_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.ID
+  nameWithType: CachedGCBNPCDescriptor.ID
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss
+  name: IsBoss
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_IsBoss
+  commentId: P:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss
+  nameWithType: CachedGCBNPCDescriptor.IsBoss
+- uid: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss*
+  name: IsBoss
+  href: api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html#InscryptionAPI_Encounters_CachedGCBNPCDescriptor_IsBoss_
+  commentId: Overload:InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.CachedGCBNPCDescriptor.IsBoss
+  nameWithType: CachedGCBNPCDescriptor.IsBoss
 - uid: InscryptionAPI.Encounters.CustomNodeData
   name: CustomNodeData
   href: api/InscryptionAPI.Encounters.CustomNodeData.html
@@ -9906,13 +9990,26 @@ references:
   fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns(Of T)(T, System.Int32)
   nameWithType: EncounterExtensions.DuplicateTurns<T>(T, Int32)
   nameWithType.vb: EncounterExtensions.DuplicateTurns(Of T)(T, Int32)
-- uid: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC(GBC.GBCEncounterManager)
+  name: GetTriggeringNPC(GBCEncounterManager)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_GetTriggeringNPC_GBC_GBCEncounterManager_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC(GBC.GBCEncounterManager)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC(GBC.GBCEncounterManager)
+  nameWithType: EncounterExtensions.GetTriggeringNPC(GBCEncounterManager)
+- uid: InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC*
+  name: GetTriggeringNPC
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_GetTriggeringNPC_
+  commentId: Overload:InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC
+  nameWithType: EncounterExtensions.GetTriggeringNPC
+- uid: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(System.Collections.IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)
   name: OpponentById(IEnumerable<OpponentManager.FullOpponent>, Opponent.Type)
-  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_OpponentById_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_
-  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)
+  href: api/InscryptionAPI.Encounters.EncounterExtensions.html#InscryptionAPI_Encounters_EncounterExtensions_OpponentById_System_Collections_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_
+  commentId: M:InscryptionAPI.Encounters.EncounterExtensions.OpponentById(System.Collections.IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)
   name.vb: OpponentById(IEnumerable(Of OpponentManager.FullOpponent), Opponent.Type)
-  fullName: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable<InscryptionAPI.Encounters.OpponentManager.FullOpponent>, DiskCardGame.Opponent.Type)
-  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(IEnumerable(Of InscryptionAPI.Encounters.OpponentManager.FullOpponent), DiskCardGame.Opponent.Type)
+  fullName: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(System.Collections.IEnumerable<InscryptionAPI.Encounters.OpponentManager.FullOpponent>, DiskCardGame.Opponent.Type)
+  fullName.vb: InscryptionAPI.Encounters.EncounterExtensions.OpponentById(System.Collections.IEnumerable(Of InscryptionAPI.Encounters.OpponentManager.FullOpponent), DiskCardGame.Opponent.Type)
   nameWithType: EncounterExtensions.OpponentById(IEnumerable<OpponentManager.FullOpponent>, Opponent.Type)
   nameWithType.vb: EncounterExtensions.OpponentById(IEnumerable(Of OpponentManager.FullOpponent), Opponent.Type)
 - uid: InscryptionAPI.Encounters.EncounterExtensions.OpponentById*
@@ -16371,6 +16468,385 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Saves.ModdedSaveManager.SaveData
   nameWithType: ModdedSaveManager.SaveData
+- uid: InscryptionAPI.Saves.SaveFileExtensions
+  name: SaveFileExtensions
+  href: api/InscryptionAPI.Saves.SaveFileExtensions.html
+  commentId: T:InscryptionAPI.Saves.SaveFileExtensions
+  fullName: InscryptionAPI.Saves.SaveFileExtensions
+  nameWithType: SaveFileExtensions
+- uid: InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple(SaveFile)
+  name: GetSceneAsCardTemple(SaveFile)
+  href: api/InscryptionAPI.Saves.SaveFileExtensions.html#InscryptionAPI_Saves_SaveFileExtensions_GetSceneAsCardTemple_SaveFile_
+  commentId: M:InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple(SaveFile)
+  fullName: InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple(SaveFile)
+  nameWithType: SaveFileExtensions.GetSceneAsCardTemple(SaveFile)
+- uid: InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple*
+  name: GetSceneAsCardTemple
+  href: api/InscryptionAPI.Saves.SaveFileExtensions.html#InscryptionAPI_Saves_SaveFileExtensions_GetSceneAsCardTemple_
+  commentId: Overload:InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple
+  isSpec: "True"
+  fullName: InscryptionAPI.Saves.SaveFileExtensions.GetSceneAsCardTemple
+  nameWithType: SaveFileExtensions.GetSceneAsCardTemple
+- uid: InscryptionAPI.Slots
+  name: InscryptionAPI.Slots
+  href: api/InscryptionAPI.Slots.html
+  commentId: N:InscryptionAPI.Slots
+  fullName: InscryptionAPI.Slots
+  nameWithType: InscryptionAPI.Slots
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour
+  name: SlotModificationBehaviour
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationBehaviour
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour
+  nameWithType: SlotModificationBehaviour
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name: Cleanup(SlotModificationManager.ModificationType)
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Cleanup_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
+  commentId: M:InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  nameWithType: SlotModificationBehaviour.Cleanup(SlotModificationManager.ModificationType)
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup*
+  name: Cleanup
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Cleanup_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Cleanup
+  nameWithType: SlotModificationBehaviour.Cleanup
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Setup
+  name: Setup()
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Setup
+  commentId: M:InscryptionAPI.Slots.SlotModificationBehaviour.Setup
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Setup()
+  nameWithType: SlotModificationBehaviour.Setup()
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Setup*
+  name: Setup
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Setup_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationBehaviour.Setup
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Setup
+  nameWithType: SlotModificationBehaviour.Setup
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Slot
+  name: Slot
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Slot
+  commentId: P:InscryptionAPI.Slots.SlotModificationBehaviour.Slot
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Slot
+  nameWithType: SlotModificationBehaviour.Slot
+- uid: InscryptionAPI.Slots.SlotModificationBehaviour.Slot*
+  name: Slot
+  href: api/InscryptionAPI.Slots.SlotModificationBehaviour.html#InscryptionAPI_Slots_SlotModificationBehaviour_Slot_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationBehaviour.Slot
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationBehaviour.Slot
+  nameWithType: SlotModificationBehaviour.Slot
+- uid: InscryptionAPI.Slots.SlotModificationExtensions
+  name: SlotModificationExtensions
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationExtensions
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions
+  nameWithType: SlotModificationExtensions
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification(DiskCardGame.CardSlot)
+  name: GetSlotModification(CardSlot)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_GetSlotModification_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification(DiskCardGame.CardSlot)
+  nameWithType: SlotModificationExtensions.GetSlotModification(CardSlot)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification*
+  name: GetSlotModification
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_GetSlotModification_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification
+  nameWithType: SlotModificationExtensions.GetSlotModification
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)
+  name: ResetSlotTexture(CardSlot)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)
+  nameWithType: SlotModificationExtensions.ResetSlotTexture(CardSlot)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture*
+  name: ResetSlotTexture
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture
+  nameWithType: SlotModificationExtensions.ResetSlotTexture
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name: SetSlotModification(CardSlot, SlotModificationManager.ModificationType)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_DiskCardGame_CardSlot_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot, InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  nameWithType: SlotModificationExtensions.SetSlotModification(CardSlot, SlotModificationManager.ModificationType)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification*
+  name: SetSlotModification
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification
+  nameWithType: SlotModificationExtensions.SetSlotModification
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour
+  name: SlotModificationGainAbilityBehaviour
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour
+  nameWithType: SlotModificationGainAbilityBehaviour
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain
+  name: AbilityToGain
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_AbilityToGain
+  commentId: P:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain
+  nameWithType: SlotModificationGainAbilityBehaviour.AbilityToGain
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain*
+  name: AbilityToGain
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_AbilityToGain_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.AbilityToGain
+  nameWithType: SlotModificationGainAbilityBehaviour.AbilityToGain
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name: Cleanup(SlotModificationManager.ModificationType)
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_Cleanup_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
+  commentId: M:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup(InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  nameWithType: SlotModificationGainAbilityBehaviour.Cleanup(SlotModificationManager.ModificationType)
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup*
+  name: Cleanup
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_Cleanup_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Cleanup
+  nameWithType: SlotModificationGainAbilityBehaviour.Cleanup
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  name: OnOtherCardAssignedToSlot(PlayableCard)
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_OnOtherCardAssignedToSlot_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  nameWithType: SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot(PlayableCard)
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot*
+  name: OnOtherCardAssignedToSlot
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_OnOtherCardAssignedToSlot_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot
+  nameWithType: SlotModificationGainAbilityBehaviour.OnOtherCardAssignedToSlot
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  name: RespondsToOtherCardAssignedToSlot(PlayableCard)
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_RespondsToOtherCardAssignedToSlot_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot(DiskCardGame.PlayableCard)
+  nameWithType: SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot(PlayableCard)
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot*
+  name: RespondsToOtherCardAssignedToSlot
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_RespondsToOtherCardAssignedToSlot_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot
+  nameWithType: SlotModificationGainAbilityBehaviour.RespondsToOtherCardAssignedToSlot
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup
+  name: Setup()
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_Setup
+  commentId: M:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup()
+  nameWithType: SlotModificationGainAbilityBehaviour.Setup()
+- uid: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup*
+  name: Setup
+  href: api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html#InscryptionAPI_Slots_SlotModificationGainAbilityBehaviour_Setup_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup
+  nameWithType: SlotModificationGainAbilityBehaviour.Setup
+- uid: InscryptionAPI.Slots.SlotModificationManager
+  name: SlotModificationManager
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationManager
+  fullName: InscryptionAPI.Slots.SlotModificationManager
+  nameWithType: SlotModificationManager
+- uid: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(UnityEngine.Texture2D)
+  name: BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(UnityEngine.Texture2D)
+  nameWithType: SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture*
+  name: BuildAct2SpriteSetFromSpriteSheetTexture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture
+  nameWithType: SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture
+- uid: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture(UnityEngine.Texture2D)
+  name: BuildAct2SpriteSetFromTexture(Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromTexture_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture(UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture(UnityEngine.Texture2D)
+  nameWithType: SlotModificationManager.BuildAct2SpriteSetFromTexture(Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture*
+  name: BuildAct2SpriteSetFromTexture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromTexture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture
+  nameWithType: SlotModificationManager.BuildAct2SpriteSetFromTexture
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info
+  name: SlotModificationManager.Info
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationManager.Info
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info
+  nameWithType: SlotModificationManager.Info
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
+  name: ModificationType
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_ModificationType
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
+  nameWithType: SlotModificationManager.Info.ModificationType
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType*
+  name: ModificationType
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_ModificationType_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
+  nameWithType: SlotModificationManager.Info.ModificationType
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
+  name: PixelBoardSlotSprites
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_PixelBoardSlotSprites
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
+  nameWithType: SlotModificationManager.Info.PixelBoardSlotSprites
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites*
+  name: PixelBoardSlotSprites
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_PixelBoardSlotSprites_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
+  nameWithType: SlotModificationManager.Info.PixelBoardSlotSprites
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
+  name: SlotBehaviour
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SlotBehaviour
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
+  nameWithType: SlotModificationManager.Info.SlotBehaviour
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour*
+  name: SlotBehaviour
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SlotBehaviour_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
+  nameWithType: SlotModificationManager.Info.SlotBehaviour
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Texture
+  name: Texture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Texture
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.Texture
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Texture
+  nameWithType: SlotModificationManager.Info.Texture
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Texture*
+  name: Texture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Texture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.Texture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Texture
+  nameWithType: SlotModificationManager.Info.Texture
+- uid: InscryptionAPI.Slots.SlotModificationManager.Instance
+  name: Instance
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_Instance
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Instance
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Instance
+  nameWithType: SlotModificationManager.Instance
+- uid: InscryptionAPI.Slots.SlotModificationManager.Instance*
+  name: Instance
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_Instance_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Instance
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Instance
+  nameWithType: SlotModificationManager.Instance
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationType
+  name: SlotModificationManager.ModificationType
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationManager.ModificationType
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationType
+  nameWithType: SlotModificationManager.ModificationType
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationType.NoModification
+  name: NoModification
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.html#InscryptionAPI_Slots_SlotModificationManager_ModificationType_NoModification
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationType.NoModification
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationType.NoModification
+  nameWithType: SlotModificationManager.ModificationType.NoModification
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type)
+  name: New(String, String, Type)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type)
+  nameWithType: SlotModificationManager.New(String, String, Type)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  name: New(String, String, Type, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_System_Collections_Generic_Dictionary_CardTemple_UnityEngine_Texture2D__System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  name.vb: New(String, String, Type, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, System.Collections.Generic.Dictionary<CardTemple, UnityEngine.Texture2D>, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, System.Collections.Generic.Dictionary(Of CardTemple, UnityEngine.Texture2D), System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  nameWithType: SlotModificationManager.New(String, String, Type, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  nameWithType.vb: SlotModificationManager.New(String, String, Type, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D)
+  name: New(String, String, Type, Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D)
+  nameWithType: SlotModificationManager.New(String, String, Type, Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  name: New(String, String, Type, Texture2D, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  name.vb: New(String, String, Type, Texture2D, Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  nameWithType: SlotModificationManager.New(String, String, Type, Texture2D, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  nameWithType.vb: SlotModificationManager.New(String, String, Type, Texture2D, Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
+  name: New(String, String, Type, Texture2D, Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, UnityEngine.Texture2D)
+  nameWithType: SlotModificationManager.New(String, String, Type, Texture2D, Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New*
+  name: New
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New
+  nameWithType: SlotModificationManager.New
+- uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,System.Collections.Generic.List{UnityEngine.Texture},System.Collections.Generic.List{UnityEngine.Texture})
+  name: OverrideDefaultSlotTexture(CardTemple, List<Texture>, List<Texture>)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_System_Collections_Generic_List_UnityEngine_Texture__System_Collections_Generic_List_UnityEngine_Texture__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,System.Collections.Generic.List{UnityEngine.Texture},System.Collections.Generic.List{UnityEngine.Texture})
+  name.vb: OverrideDefaultSlotTexture(CardTemple, List(Of Texture), List(Of Texture))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, System.Collections.Generic.List<UnityEngine.Texture>, System.Collections.Generic.List<UnityEngine.Texture>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, System.Collections.Generic.List(Of UnityEngine.Texture), System.Collections.Generic.List(Of UnityEngine.Texture))
+  nameWithType: SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List<Texture>, List<Texture>)
+  nameWithType.vb: SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List(Of Texture), List(Of Texture))
+- uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,UnityEngine.Texture,UnityEngine.Texture)
+  name: OverrideDefaultSlotTexture(CardTemple, Texture, Texture)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_UnityEngine_Texture_UnityEngine_Texture_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,UnityEngine.Texture,UnityEngine.Texture)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, UnityEngine.Texture, UnityEngine.Texture)
+  nameWithType: SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, Texture, Texture)
+- uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture*
+  name: OverrideDefaultSlotTexture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture
+  nameWithType: SlotModificationManager.OverrideDefaultSlotTexture
+- uid: InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture(CardTemple)
+  name: ResetDefaultSlotTexture(CardTemple)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_ResetDefaultSlotTexture_CardTemple_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture(CardTemple)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture(CardTemple)
+  nameWithType: SlotModificationManager.ResetDefaultSlotTexture(CardTemple)
+- uid: InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture*
+  name: ResetDefaultSlotTexture
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_ResetDefaultSlotTexture_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture
+  nameWithType: SlotModificationManager.ResetDefaultSlotTexture
 - uid: InscryptionAPI.Sound
   name: InscryptionAPI.Sound
   href: api/InscryptionAPI.Sound.html

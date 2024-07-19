@@ -789,6 +789,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html",
+          "hash": "/VlVJ9k0XC2hAQy7EZJO84JA4x2Hkp1To7GDZY83bQ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition.yml",
       "output": {
         ".html": {
@@ -841,7 +853,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.EncounterExtensions.html",
-          "hash": "EHTAtcbg12oayOzqW4drHEUNS8KoD7x8kxxwWx+FxIE="
+          "hash": "IaKuHfTFZySlnDKQq2dkngmMady1Vp9VMC402G0rTyQ="
         }
       },
       "is_incremental": false,
@@ -985,7 +997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Encounters.html",
-          "hash": "0e2uG2Pva0O1trvWX0cNLqTdHhieahFGzJ9SmtPQbdU="
+          "hash": "mSSxbaw8sAkPLkouzJ5VEWTHvPi5d345WslmrQwYzWY="
         }
       },
       "is_incremental": false,
@@ -1989,11 +2001,107 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Saves.SaveFileExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Saves.SaveFileExtensions.html",
+          "hash": "EvSNWUjouW3XKKdzPfhRDZt1UDxnFqIZhAl4Xi12PVQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Saves.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Saves.html",
-          "hash": "oNKqd44ZhRRRJQ+zqbvEYbJdxBcT5dcJQ+9o4JZfSSY="
+          "hash": "phCmntwT9RXXeM83G75oENbpQOpizbrLR2M77a5XLzU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationBehaviour.html",
+          "hash": "voHNy7R0872zunAREgP79/c9RN1aX4D9UL5mq0Kh9+w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationExtensions.html",
+          "hash": "9AUFMwMo6/Fw2KlpRd5A9ZWGrHzVso+h/w7zZ3HaxE4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.html",
+          "hash": "Bvm+w3qDhrdl6f+Xy2b8TqF+4CcREEw+EboddrZeQZk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.Info.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.Info.html",
+          "hash": "FIm2hq71sJu+PuABZQQeghZMX2bjKGxUa6vEdQlx62k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.html",
+          "hash": "TPN8HZo5apOHbjgEd6ceRbouUpdp5fBXI4opYGL719I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.html",
+          "hash": "a9P45+J9BHlY3uF+wUNKNCbIAYDR6WV4T7qVqi1/xW8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.html",
+          "hash": "cbmtt89YLdWX0+7N8IoPhQ2gbR4ajEWrFSHfhvTdTqY="
         }
       },
       "is_incremental": false,
@@ -2029,7 +2137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Sound.html",
-          "hash": "eyRuDhWWIsP3as5W6tCZ0CZVE1PrrciH0O/3uI8akaE="
+          "hash": "Uf1wB1xJNFjF3X33dF2/FRvSvx0l6C0xUcqWeQ5FydU="
         }
       },
       "is_incremental": false,
@@ -2797,7 +2905,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "By6wxFKVA9rxEQ60WK915RIXCbE5F8dI0GBrMI9/ezw="
+          "hash": "+bwmXAD0ZtMDwnYKuuzWg3o2xYPK66gWTz9VvqT/5H0="
         }
       },
       "is_incremental": false,
@@ -3071,6 +3179,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "wiki/slots.md",
+      "output": {
+        ".html": {
+          "relative_path": "wiki/slots.html",
+          "hash": "CA/kBMe/hKlLAoNNjU9mdFyqXNQNT5VnUvBJT3aZ5Cg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "wiki/sniper.md",
       "output": {
         ".html": {
@@ -3109,15 +3229,12 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "wiki/toc.yml",
       "output": {
         ".html": {
           "relative_path": "wiki/toc.html",
-          "hash": "kA29RiCw3wKOB6uxdOw5+yLLhqjowPSDWSHBWMyOhyA="
+          "hash": "EA1KnuULhefKy3PgVu0f5vFit05OW4+XSLpSJBw15ZA="
         }
       },
       "is_incremental": false,
@@ -3165,13 +3282,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 21,
+          "total_file_count": 22,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 249,
+          "total_file_count": 258,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
