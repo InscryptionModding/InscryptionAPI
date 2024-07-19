@@ -4060,6 +4060,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
   nameWithType: CardExtensions.GetPlayableCard
+- uid: InscryptionAPI.Card.CardExtensions.GetShieldCount*
+  name: GetShieldCount
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetShieldCount_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetShieldCount
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetShieldCount
+  nameWithType: CardExtensions.GetShieldCount
+- uid: InscryptionAPI.Card.CardExtensions.GetShieldCount``1(DiskCardGame.PlayableCard)
+  name: GetShieldCount<T>(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetShieldCount__1_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetShieldCount``1(DiskCardGame.PlayableCard)
+  name.vb: GetShieldCount(Of T)(PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.GetShieldCount<T>(DiskCardGame.PlayableCard)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.GetShieldCount(Of T)(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.GetShieldCount<T>(PlayableCard)
+  nameWithType.vb: CardExtensions.GetShieldCount(Of T)(PlayableCard)
 - uid: InscryptionAPI.Card.CardExtensions.GetStatIconHealthBuffs(DiskCardGame.PlayableCard)
   name: GetStatIconHealthBuffs(PlayableCard)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetStatIconHealthBuffs_DiskCardGame_PlayableCard_
