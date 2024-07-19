@@ -134,7 +134,7 @@ public static Texture2D PixelTextureMethod(int cardCost, CardInfo info, Playable
     // return Part2CardCostRender.CombineIconAndCount(cardCost, TextureHelper.GetImageAsTexture(&quot;myCost_pixel_7x8&quot;));
 }
 </code></pre><p>Card cost textures vary based on what part of the game the cost will be displayed in.
-For Act 1, textures must be 64x28; for Act 2 they can be 30x8 or 7x8 (see above); for Act 3 there is no set size but they should be no larger than 300x78.</p>
+For Act 1, textures must be 64x28. In Act 2 they can be 30x8 at maximum or 7x8 (see above). Act 3 has no set size but they should be no larger than 300x78.</p>
 <h3 id="negative-costs-cost-tier-and-turn-2-play">Negative Costs, Cost Tier, and Turn 2 Play</h3>
 <p>The API allows you to define whether or not negative cost values should be considered in the game.
 This is false by default, meaning negative costs on cards will be read as 0 by the API (the actual assigned value is not changed).</p>

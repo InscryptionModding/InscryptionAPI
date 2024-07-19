@@ -88,6 +88,52 @@
     <pre><code class="lang-csharp hljs">[HarmonyPatch]
 public static class CardCostManager</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_notEnoghSameColourGemsEvent" data-uid="InscryptionAPI.CardCosts.CardCostManager.notEnoghSameColourGemsEvent">notEnoghSameColourGemsEvent</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent notEnoghSameColourGemsEvent</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_notEnoughSameColourGemsHint" data-uid="InscryptionAPI.CardCosts.CardCostManager.notEnoughSameColourGemsHint">notEnoughSameColourGemsHint</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static HintsHandler.Hint notEnoughSameColourGemsHint</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.HintsHandler.Hint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <a id="InscryptionAPI_CardCosts_CardCostManager_AllCustomCosts_" data-uid="InscryptionAPI.CardCosts.CardCostManager.AllCustomCosts*"></a>
@@ -377,6 +423,49 @@ public static class CardCostManager</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_" data-uid="InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet*"></a>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(DiskCardGame.PlayableCard)">NewGemsCostRequirementMet(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>A new method that overrides the result of PlayableCard.GemsCostRequirement. Override this if you want to modify GemsCostRequirementMet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool NewGemsCostRequirementMet(PlayableCard card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The PlayableCard currently being checked.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Boolean representing if the card&apos;s gem cost has been met or not.</p>
+</td>
       </tr>
     </tbody>
   </table>

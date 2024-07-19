@@ -8972,6 +8972,31 @@ references:
   commentId: E:InscryptionAPI.CardCosts.CardCostManager.ModifyCustomCostList
   fullName: InscryptionAPI.CardCosts.CardCostManager.ModifyCustomCostList
   nameWithType: CardCostManager.ModifyCustomCostList
+- uid: InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(DiskCardGame.PlayableCard)
+  name: NewGemsCostRequirementMet(PlayableCard)
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(DiskCardGame.PlayableCard)
+  nameWithType: CardCostManager.NewGemsCostRequirementMet(PlayableCard)
+- uid: InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet*
+  name: NewGemsCostRequirementMet
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_
+  commentId: Overload:InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet
+  isSpec: "True"
+  fullName: InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet
+  nameWithType: CardCostManager.NewGemsCostRequirementMet
+- uid: InscryptionAPI.CardCosts.CardCostManager.notEnoghSameColourGemsEvent
+  name: notEnoghSameColourGemsEvent
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_notEnoghSameColourGemsEvent
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.notEnoghSameColourGemsEvent
+  fullName: InscryptionAPI.CardCosts.CardCostManager.notEnoghSameColourGemsEvent
+  nameWithType: CardCostManager.notEnoghSameColourGemsEvent
+- uid: InscryptionAPI.CardCosts.CardCostManager.notEnoughSameColourGemsHint
+  name: notEnoughSameColourGemsHint
+  href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_notEnoughSameColourGemsHint
+  commentId: F:InscryptionAPI.CardCosts.CardCostManager.notEnoughSameColourGemsHint
+  fullName: InscryptionAPI.CardCosts.CardCostManager.notEnoughSameColourGemsHint
+  nameWithType: CardCostManager.notEnoughSameColourGemsHint
 - uid: InscryptionAPI.CardCosts.CardCostManager.PlaySelectedCardToSlot(DiskCardGame.PlayerHand,DiskCardGame.PlayableCard,DiskCardGame.CardSlot)
   name: PlaySelectedCardToSlot(PlayerHand, PlayableCard, CardSlot)
   href: api/InscryptionAPI.CardCosts.CardCostManager.html#InscryptionAPI_CardCosts_CardCostManager_PlaySelectedCardToSlot_DiskCardGame_PlayerHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_
