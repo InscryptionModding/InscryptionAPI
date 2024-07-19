@@ -1,5 +1,6 @@
 using DiskCardGame;
 using System.Collections;
+using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
 
@@ -800,3 +801,21 @@ public interface IOnCardDealtDamageDirectly
     /// <returns>.</returns>
     public IEnumerator OnCardDealtDamageDirectly(PlayableCard attacker, CardSlot opposingSlot, int damage);
 }
+
+/*public interface IOnPreTakeDamageFromHammer
+{
+    public bool RespondsToPreTakeDamageFromHammer(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem);
+
+    public IEnumerator OnPreTakeDamageFromHammer(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem);
+
+    public int TriggerPriority(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem);
+}
+
+public interface IOnPostTakeDamageFromHammer
+{
+    public bool RespondsToPostTakeDamageFromHammer(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem, bool struckTarget);
+
+    public IEnumerator OnPostTakeDamageFromHammer(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem, bool struckTarget);
+
+    public int TriggerPriority(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem, bool struckTarget);
+}*/
