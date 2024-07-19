@@ -1,10 +1,14 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using DiskCardGame;
+using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using static DiskCardGame.EncounterBlueprintData;
 
 namespace InscryptionAPI.Encounters;
 
+[HarmonyPatch]
 public static class EncounterExtensions
 {
     #region Opponent Extensions
@@ -273,6 +277,33 @@ public static class EncounterExtensions
     #endregion
 
     #endregion
+
+    #endregion
+
+    #region GBC NPC Information
+
+    private static ConditionalWeakTable<GBCEncounterManager, CachedGCBNPCDescriptor> LAST_KNOWN_NPC = new();
+
+    [HarmonyPatch(typeof(GBCEncounterManager), nameof(GBCEncounterManager.EncounterSequence)), HarmonyPostfix]
+    private static IEnumerator CaptureLastKnownTriggeringNPC(IEnumerator sequence, CardBattleNPC triggeringNPC)
+    {
+        LAST_KNOWN_NPC.Remove(GBCEncounterManager.Instance);
+        LAST_KNOWN_NPC.Add(GBCEncounterManager.Instance, new CachedGCBNPCDescriptor(triggeringNPC));
+
+        yield return sequence;
+
+        LAST_KNOWN_NPC.Remove(GBCEncounterManager.Instance);
+    }
+
+    /// <summary>
+    /// Gets information about the NPC that triggered the current battle
+    /// </summary>
+    public static CachedGCBNPCDescriptor GetTriggeringNPC(this GBCEncounterManager mgr)
+    {
+        if (LAST_KNOWN_NPC.TryGetValue(mgr, out CachedGCBNPCDescriptor value))
+            return value;
+        return null;
+    }
 
     #endregion
 }
