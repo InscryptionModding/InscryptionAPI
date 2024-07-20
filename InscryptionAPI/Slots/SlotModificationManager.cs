@@ -14,10 +14,10 @@ using UnityEngine;
 
 namespace InscryptionAPI.Slots;
 
-[HarmonyPatch]
 /// <summary>
 /// Manager for card slot modifications
 /// </summary>
+[HarmonyPatch]
 public class SlotModificationManager : MonoBehaviour
 {
     private static SlotModificationManager m_instance;
@@ -60,6 +60,9 @@ public class SlotModificationManager : MonoBehaviour
     /// </summary>
     public class Info
     {
+        public string Name { get; internal set; }
+        public string ModGUID { get; internal set; }
+
         /// <summary>
         /// The slot's modified texture in 3D scenes (Leshy, P03, etc) (154x226)
         /// </summary>
@@ -80,15 +83,40 @@ public class SlotModificationManager : MonoBehaviour
         /// Class that contains the behavior for the slot. This must be a subclass of SlotModificationBehaviour
         /// </summary>
         public Type SlotBehaviour { get; internal set; }
+
+        public Info(string name, string modGuid,
+            Dictionary<CardTemple, Texture2D> texture,
+            Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelSprites,
+            ModificationType modType, Type behaviour)
+        {
+            this.Name = name;
+            this.ModGUID = modGuid;
+            this.Texture = texture;
+            this.PixelBoardSlotSprites = pixelSprites;
+            this.ModificationType = modType;
+            this.SlotBehaviour = behaviour;
+        }
+        public Info Clone()
+        {
+            return new(this.Name, this.ModGUID,
+                this.Texture != null ? new(this.Texture) : null,
+                this.PixelBoardSlotSprites != null ? new(this.PixelBoardSlotSprites) : null,
+                this.ModificationType, this.SlotBehaviour);
+        }
     }
 
     internal static List<Info> AllSlotModifications = new() {
-        new () {
-            Texture = null,
-            ModificationType = ModificationType.NoModification,
-            SlotBehaviour = null
-        }
+        new ("NoModification", InscryptionAPIPlugin.ModGUID, null, null, ModificationType.NoModification, null)
     };
+
+    public static List<Info> AllModificationInfos { get; private set; } = new();
+    public static List<ModificationType> AllModificationTypes { get; private set; } = new();
+
+    public static void SyncSlotModificationList()
+    {
+        AllModificationInfos = AllSlotModifications.ConvertAll(x => x.Clone()).ToList();
+        AllModificationTypes = AllSlotModifications.ConvertAll(x => x.ModificationType).ToList();
+    }
 
     private static Color ParseHtml(string html)
     {
@@ -233,13 +261,7 @@ public class SlotModificationManager : MonoBehaviour
 
         ModificationType mType = GuidManager.GetEnumValue<ModificationType>(modGuid, modificationName);
 
-        AllSlotModifications.Add(new()
-        {
-            Texture = slotTexture,
-            PixelBoardSlotSprites = pixelBoardSlotSprites ?? new(),
-            SlotBehaviour = behaviour,
-            ModificationType = mType
-        });
+        AllSlotModifications.Add(new(modificationName, modGuid, slotTexture, pixelBoardSlotSprites, mType, behaviour));
         return mType;
     }
 
@@ -329,7 +351,7 @@ public class SlotModificationManager : MonoBehaviour
     [HarmonyPostfix]
     private static IEnumerator CleanUpModifiedSlots(IEnumerator sequence)
     {
-        foreach (Info defn in AllSlotModifications.Where(m => m.SlotBehaviour != null))
+        foreach (Info defn in AllModificationInfos.Where(m => m.SlotBehaviour != null))
         {
             Component comp = BoardManager.Instance.gameObject.GetComponent(defn.SlotBehaviour);
             if (!comp.SafeIsUnityNull())
@@ -352,7 +374,7 @@ public class SlotModificationManager : MonoBehaviour
 
     private static void ConditionallyResetAllSlotTextures()
     {
-        if (BoardManager.Instance != null)
+        if (BoardManager.m_Instance != null)
         {
             foreach (var slot in BoardManager.Instance.AllSlotsCopy)
             {

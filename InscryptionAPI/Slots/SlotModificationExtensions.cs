@@ -26,7 +26,7 @@ public static class SlotModificationExtensions
         if (slot == null)
             yield break;
 
-        SlotModificationManager.Info defn = SlotModificationManager.AllSlotModifications.FirstOrDefault(m => m.ModificationType == modType);
+        SlotModificationManager.Info defn = SlotModificationManager.AllModificationInfos.FirstOrDefault(m => m.ModificationType == modType);
 
         // Set the ability behaviour
         var oldSlotModification = slot.GetComponent<SlotModificationBehaviour>();

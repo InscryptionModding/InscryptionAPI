@@ -334,6 +334,16 @@ public static class AbilityExtensions
         abilityInfo.powerLevel = powerLevel;
         return abilityInfo;
     }
+    public static AbilityInfo SetRulebookDescription(this AbilityInfo abilityInfo, string description)
+    {
+        abilityInfo.rulebookDescription = description;
+        return abilityInfo;
+    }
+    public static AbilityInfo SetRulebookName(this AbilityInfo abilityInfo, string name)
+    {
+        abilityInfo.rulebookName = name;
+        return abilityInfo;
+    }
     /// <summary>
     /// Sets whether or not the ability is an activated ability.
     /// </summary>
