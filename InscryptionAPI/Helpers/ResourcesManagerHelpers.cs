@@ -11,10 +11,10 @@ public static class ResourcesManagerHelpers
 {
     public static IEnumerator RemoveMaxEnergy(this ResourcesManager instance, int amount)
     {
-        int num = Mathf.Max(instance.PlayerMaxEnergy - amount, 0);
-        int numToClose = instance.PlayerMaxEnergy - num;
+        int newMaxEnergy = Mathf.Max(0, instance.PlayerMaxEnergy - amount);
+        int numToClose = Mathf.Min(instance.PlayerMaxEnergy, amount);
 
-        instance.PlayerMaxEnergy = num;
+        instance.PlayerMaxEnergy = newMaxEnergy;
         if (instance.PlayerEnergy > instance.PlayerMaxEnergy)
             instance.PlayerEnergy = instance.PlayerMaxEnergy;
 
