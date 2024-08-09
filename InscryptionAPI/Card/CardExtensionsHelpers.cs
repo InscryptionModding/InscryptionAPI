@@ -717,9 +717,13 @@ public static partial class CardExtensions
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
     public static void AddShieldCount(this PlayableCard card, int amount, Ability ability, bool updateDisplay = true)
     {
-        Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
-        DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
-        component?.AddShields(amount, updateDisplay);
+        DamageShieldBehaviour component = card.GetShieldBehaviour(ability);
+        if (component == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"[AddShieldCount] DamageShieldBehaviour of Ability [{ability}] not found!");
+            return;
+        }
+        component.AddShields(amount, updateDisplay);
     }
     /// <summary>
     /// Increases the amount of shields a specific ability's AbilityBehaviour is currently giving.
@@ -749,9 +753,13 @@ public static partial class CardExtensions
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
     public static void RemoveShieldCount(this PlayableCard card, int amount, Ability ability, bool updateDisplay = true)
     {
-        Type behav = AbilityManager.AllAbilities.Find(x => x.Id == ability).AbilityBehavior;
-        DamageShieldBehaviour component = card.GetComponent(behav) as DamageShieldBehaviour;
-        component?.RemoveShields(amount, updateDisplay);
+        DamageShieldBehaviour component = card.GetShieldBehaviour(ability);
+        if (component == null)
+        {
+            InscryptionAPIPlugin.Logger.LogError($"[RemoveShieldCount] DamageShieldBehaviour of Ability [{ability}] not found!");
+            return;
+        }
+        component.RemoveShields(amount, updateDisplay);
     }
     public static void RemoveShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
     {
@@ -786,13 +794,32 @@ public static partial class CardExtensions
 
         return totalShields;
     }
+
+    /// <summary>
+    /// Retrieves the current value of a DamageShieldBehaviour's NumShield.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="card"></param>
+    /// <returns>The current value of the DamageShieldBehaviour's NumShield.</returns>
     public static int GetShieldCount<T>(this PlayableCard card) where T : DamageShieldBehaviour
     {
         T comp = card.GetComponent<T>();
-        if (comp != null)
-            return comp.NumShields;
+        return comp?.NumShields ?? 0;
+    }
 
-        return 0;
+    /// <summary>
+    /// Retrieves the DamageShieldBehaviour component corresponding to the given Ability, or null if it does not exist.
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="ability"></param>
+    /// <returns>The DamageShieldBehaviour component of the given Ability, or null if it does not exist.</returns>
+    public static DamageShieldBehaviour GetShieldBehaviour(this PlayableCard card, Ability ability)
+    {
+        Type type = ShieldManager.AllShieldAbilities.AbilityByID(ability)?.AbilityBehavior;
+        if (type == null)
+            return null;
+        
+        return card.GetComponent(type) as DamageShieldBehaviour;
     }
     /// <summary>
     /// A variant of ResetShield that only resets shields belonging is a certain ability.
@@ -806,8 +833,32 @@ public static partial class CardExtensions
             if (com.Ability == ability)
                 com.ResetShields(false);
         }
+        card.Status.lostShield = false;
+    }
 
-        card.ResetShield();
+    public static bool IsShieldAbility(this Ability ability)
+    {
+        return ShieldManager.AllShieldInfos.AbilityByID(ability) != null;
+    }
+    public static bool IsShieldAbility(this AbilityInfo abilityInfo)
+    {
+        return ShieldManager.AllShieldInfos.Contains(abilityInfo);
+    }
+    /// <summary>
+    /// Returns whether or not the PlayableCard has an Ability that overrides DamageShieldBehaviour.
+    /// </summary>
+    /// <param name="card">The PlayableCard object to check.</param>
+    public static bool HasShieldAbility(this PlayableCard card)
+    {
+        return card.AllAbilities().Exists(x => x.IsShieldAbility());
+    }
+    /// <summary>
+    /// Returns whether or not the CardInfo has an Ability that overrides DamageShieldBehaviour.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo object to check.</param>
+    public static bool HasShieldAbility(this CardInfo cardInfo)
+    {
+        return cardInfo.Abilities.Exists(x => x.IsShieldAbility());
     }
 
     #endregion

@@ -3,14 +3,27 @@ using DiskCardGame.CompositeRules;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
+using static InscryptionAPI.Card.AbilityManager;
+
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// This manager class handles the logic for shields.
+/// </summary>
 [HarmonyPatch]
 public static class ShieldManager
 {
+    /// <summary>
+    /// A list of FullAbilities whose AbilityBehaviour overrides DamageShieldBehaviour.
+    /// </summary>
+    public static List<FullAbility> AllShieldAbilities { get; internal set; } = new(AllAbilities);
+    public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
+
+
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
     /// This method is only called when damage > 0 and the target has a shield.
@@ -71,8 +84,10 @@ public static class ShieldManager
             com.ResetShields(false);
 
         // if we're using the broken shield portrait, reset to the default portrait - if we're MudTurtle
-        if ((__instance.Info.BrokenShieldPortrait() != null && __instance.RenderInfo.portraitOverride == __instance.Info.BrokenShieldPortrait()) || __instance.Info.name == "MudTurtle")
+        if (__instance.Info.name == "MudTurtle" || (__instance.Info.BrokenShieldPortrait() != null && __instance.RenderInfo.portraitOverride == __instance.Info.BrokenShieldPortrait()))
             __instance.SwitchToDefaultPortrait();
+
+        __instance.Status.lostShield = false;
     }
 
     [HarmonyTranspiler, HarmonyPatch(typeof(ShieldGeneratorItem), nameof(ShieldGeneratorItem.ActivateSequence), MethodType.Enumerator)]

@@ -313,11 +313,12 @@ public static class StackAbilityIcons
         // Replace all of the textures where it stacks with a texture showing that it stacks
         // Okay, go through each ability on the card and see how many instances it has.
         List<Ability> baseAbilities = new(info.Abilities);
-        int count = -1;
+        int? count = null;
         if (card != null)
         {
             baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
-            if (ability.GetHideSingleStacks())
+            AbilityInfo ai = AbilityManager.AllAbilityInfos.AbilityByID(ability);
+            if (ai.GetHideSingleStacks())
             {
                 for (int i = 0; i < card.Status.hiddenAbilities.Count(x => x == ability); i++)
                 {
@@ -327,17 +328,15 @@ public static class StackAbilityIcons
             else if (card.Status.hiddenAbilities.Contains(ability))
                 baseAbilities.RemoveAll(x => x == ability);
 
-            DamageShieldBehaviour behav = card.TriggerHandler.triggeredAbilities.Find(x => x.Item1 == ability)?.Item2 as DamageShieldBehaviour;
-            if (behav != null)
-                count = behav.NumShields;
+            if (ai.IsShieldAbility())
+                count = card.GetShieldBehaviour(ability)?.NumShields;
         }
         
-        if (count != -1)
-            count = baseAbilities.Count(ab => ab == ability);
+        count ??= baseAbilities.Count(ab => ab == ability);
         //Debug.Log($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count}");
 
         if (count > 1) // We need to add an override
-            __instance.SetIcon(PatchTexture(ability, count));
+            __instance.SetIcon(PatchTexture(ability, (int)count));
     }
 
     [HarmonyPatch(typeof(PixelCardAbilityIcons), "DisplayAbilities", new Type[] { typeof(List<Ability>), typeof(PlayableCard) })]
