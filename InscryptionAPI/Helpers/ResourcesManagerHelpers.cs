@@ -9,38 +9,59 @@ namespace InscryptionAPI.Helpers;
 
 public static class ResourcesManagerHelpers
 {
+    /// <summary>
+    /// Removes a given amount of energy cells, which determines how much energy a player has available at the start of a turn.
+    /// Affected by 'ResourcesManager.preventNextEnergyLoss'.
+    /// </summary>
+    /// <param name="instance">The ResourcesManager Instance.</param>
+    /// <param name="amount">How many energy cells to close. Gets capped to the current number of open energy cells.</param>
     public static IEnumerator RemoveMaxEnergy(this ResourcesManager instance, int amount)
     {
-        int num = Mathf.Max(instance.PlayerMaxEnergy - amount, 0);
-        int numToClose = instance.PlayerMaxEnergy - num;
+        yield return instance.RemoveMaxEnergy(amount, true);
+    }
 
-        instance.PlayerMaxEnergy = num;
+    /// <summary>
+    /// A variant of RemoveMaxEnergy that can bypass ResourcesManager.PreventNextEnergyLoss.
+    /// Affected by 'ResourcesManager.preventNextEnergyLoss'.
+    /// </summary>
+    /// <param name="instance">The ResourcesManager Instance.</param>
+    /// <param name="amount">How many energy cells to close. Gets capped to the current number of open energy cells.</param>
+    public static IEnumerator RemoveMaxEnergy(this ResourcesManager instance, int amount, bool preventable)
+    {
+        if (preventable && instance.preventNextEnergyLoss)
+        {
+            instance.preventNextEnergyLoss = false;
+            yield break;
+        }
+        int numToClose = Mathf.Min(instance.PlayerMaxEnergy, amount);
+
+        instance.PlayerMaxEnergy -= numToClose;
         if (instance.PlayerEnergy > instance.PlayerMaxEnergy)
-            instance.PlayerEnergy = instance.PlayerMaxEnergy;
+        {
+            instance.PlayerEnergy -= numToClose;
+            yield return instance.ShowSpendEnergy(numToClose);
+        }
 
         yield return instance.ShowRemoveMaxEnergy(numToClose);
     }
     public static IEnumerator ShowRemoveMaxEnergy(this ResourcesManager instance, int amount)
     {
-        if (instance is PixelResourcesManager)
+        PixelResourcesManager pixelManager = instance as PixelResourcesManager;
+        for (int i = instance.PlayerMaxEnergy + amount - 1; i >= instance.PlayerMaxEnergy; i--)
         {
-            for (int i = instance.PlayerMaxEnergy + amount - 1; i >= instance.PlayerMaxEnergy; i--)
+            if (pixelManager != null)
             {
                 AudioController.Instance.PlaySound2D("crushBlip3", MixerGroup.None, 0.4f, 0f, new AudioParams.Pitch(0.9f + (instance.PlayerMaxEnergy + i) * 0.05f));
-                (instance as PixelResourcesManager).energyRenderers[i].sprite = GetEmptyBatterySprite.emptyBatterySprite;
-                (instance as PixelResourcesManager).BounceRenderer((instance as PixelResourcesManager).energyRenderers[i].transform);
-                yield return new WaitForSeconds(0.05f);
+                pixelManager.energyRenderers[i].sprite = GetEmptyBatterySprite.emptyBatterySprite;
+                pixelManager.BounceRenderer((instance as PixelResourcesManager).energyRenderers[i].transform);
             }
-        }
-        else if (ResourceDrone.m_Instance != null)
-        {
-            for (int i = instance.PlayerMaxEnergy + amount - 1; i >= instance.PlayerMaxEnergy; i--)
+            else if (ResourceDrone.m_Instance != null)
             {
                 AudioController.Instance.PlaySound3D("crushBlip3", MixerGroup.TableObjectsSFX, instance.transform.position, 0.4f, 0f, new AudioParams.Pitch(0.9f + (instance.PlayerMaxEnergy + i) * 0.05f));
                 ResourceDrone.Instance.cellRenderers[i].material.DisableKeyword("_EMISSION");
                 ResourceDrone.Instance.CloseCell(i, false);
-                yield return new WaitForSeconds(0.05f);
             }
+            yield return new WaitForSeconds(0.05f);
         }
     }
     public static int GemsOfType(this ResourcesManager instance, GemType gem)
