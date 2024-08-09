@@ -1,4 +1,5 @@
 using BepInEx;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -21,6 +22,7 @@ public static class SoundManager
     internal static string GetAudioPath(string filename)
     {
         string[] files = Directory.GetFiles(Paths.PluginPath, filename, SearchOption.AllDirectories);
+        //InscryptionAPIPlugin.Logger.LogDebug($"[GetAudioPath] filename: {filename} path: {files.FirstOrDefault()}");
         return files.FirstOrDefault();
     }
 
@@ -35,32 +37,6 @@ public static class SoundManager
 
     private static void ErrorLog(string message) =>
         InscryptionAPIPlugin.Logger.LogError($"SoundManager: {message}");
-
-
-    /// <summary>
-    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
-    /// </summary>
-    /// <param name="guid">Your plugin's GUID.</param>
-    /// <param name="path">The path to your audio file.</param>
-    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
-    public static AudioClip LoadAudioClip(string guid, string path)
-    {
-        if (!Path.IsPathRooted(path))
-        {
-            path = GetAudioPath(path);
-        }
-
-        string filename = Path.GetFileName(path);
-        AudioType audioType = GetAudioType(path);
-
-        if (audioType == AudioType.UNKNOWN)
-        {
-            ErrorLog($"Couldn't load file {filename ?? "(null)"} as AudioClip. AudioType is unknown.");
-            return null;
-        }
-
-        return LoadAudioClip_Sync(path, audioType, guid);
-    }
 
     /// <summary>
     /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
@@ -78,32 +54,59 @@ public static class SoundManager
         return LoadAudioClip(trackInfo.Guid, trackInfo.FilePath);
     }
 
-    private static AudioClip LoadAudioClip_Sync(string path, AudioType audioType, string guid = null)
+    /// <summary>
+    /// A helper method for converting an audio file into an Unity <c>AudioClip</c>.
+    /// </summary>
+    /// <param name="guid">Your plugin's GUID.</param>
+    /// <param name="path">The path to your audio file.</param>
+    /// <returns>The audio file converted into an <c>AudioClip</c> object.</returns>
+    public static AudioClip LoadAudioClip(string guid, string path)
+    {
+        if (!Path.IsPathRooted(path))
+        {
+            path = GetAudioPath(path);
+        }
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            path = "file://" + path;
+        }
+
+        string filename = Path.GetFileName(path) ?? "(null)";
+        AudioType audioType = GetAudioType(path);
+
+        if (audioType == AudioType.UNKNOWN)
+        {
+            ErrorLog($"Couldn't load file \'{filename}\' as AudioClip; AudioType is unknown.");
+            return null;
+        }
+
+        return LoadAudioClip_Sync(filename, path, audioType, guid);
+    }
+
+    private static AudioClip LoadAudioClip_Sync(string filename, string path, AudioType audioType, string guid = null)
     {
         guid ??= string.Empty;
-        string filename = Path.GetFileName(path);
 
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, audioType))
+        using UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, audioType);
+        www.SendWebRequest();
+        while (!www.isDone) continue;
+
+        if (www.isNetworkError || www.isHttpError)
         {
-            www.SendWebRequest();
-            while (!www.isDone) continue;
-
-            if (www.isNetworkError || www.isHttpError)
+            ErrorLog($"Couldn't load file \'{filename}\' as AudioClip!");
+            ErrorLog(www.error);
+            return null;
+        }
+        else
+        {
+            AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
+            if (audioClip != null)
             {
-                ErrorLog($"Couldn't load file \'{filename ?? "(null)"}\' as AudioClip!");
-                ErrorLog(www.error);
-                return null;
+                audioClip.name = $"{guid}_{filename}";
+                InfoLog($"Loaded \'{filename}\' as AudioClip. AudioType: {audioType}");
             }
-            else
-            {
-                AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
-                if (audioClip != null)
-                {
-                    InfoLog($"Loaded \'{filename}\' as AudioClip. AudioType: {audioType}");
-                    audioClip.name = $"{guid}_{filename}";
-                }
-                return audioClip;
-            }
+            return audioClip;
         }
     }
 }
