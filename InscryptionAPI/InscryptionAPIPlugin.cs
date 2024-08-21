@@ -13,6 +13,7 @@ using InscryptionAPI.Items;
 using InscryptionAPI.Pelts;
 using InscryptionAPI.PixelCard;
 using InscryptionAPI.Regions;
+using InscryptionAPI.Slots;
 using InscryptionAPI.Totems;
 using System.Runtime.CompilerServices;
 
@@ -28,7 +29,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "cyantist.inscryption.api";
     public const string ModName = "InscryptionAPI";
-    public const string ModVer = "2.20.1";
+    public const string ModVer = "2.21.0";
 
     public static string Directory = "";
 
@@ -79,6 +80,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         CardCostManager.SyncCustomCostList();
         CardModificationInfoManager.SyncCardMods();
         AbilityManager.SyncAbilityList();
+        SlotModificationManager.SyncSlotModificationList();
         EncounterManager.SyncEncounterList();
         RegionManager.SyncRegionList();
     }

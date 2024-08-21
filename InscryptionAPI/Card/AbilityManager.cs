@@ -398,17 +398,18 @@ public static class AbilityManager
     }
 
     #region Rulebook Description
+    public const string SIGILCOST = "[sigilcost:";
     [HarmonyPostfix, HarmonyPatch(typeof(AbilityInfo), nameof(AbilityInfo.ParseAndTranslateDescription))]
     private static void CleanUpParsedDescription(ref string __result)
     {
-        while (__result.Contains("[sigilcost:"))
+        while (__result.Contains(SIGILCOST))
         {
-            string textToCheck = __result.Substring(__result.IndexOf("[sigilcost:"));
+            string textToCheck = __result.Substring(__result.IndexOf(SIGILCOST));
             if (!textToCheck.Contains("]"))
                 break;
 
             textToCheck = textToCheck.Substring(0, textToCheck.IndexOf("]") + 1);
-            __result = __result.Replace(textToCheck, textToCheck.Replace("[sigilcost:", "").Replace("]", ""));
+            __result = __result.Replace(textToCheck, textToCheck.Replace(SIGILCOST, "").Replace("]", ""));
         }
     }
 
@@ -445,9 +446,9 @@ public static class AbilityManager
 
     internal static string ParseAndUpdateDescription(string description, ExtendedActivatedAbilityBehaviour ability)
     {
-        while (description.Contains("[sigilcost:"))
+        while (description.Contains(SIGILCOST))
         {
-            int startIndex = description.IndexOf("[sigilcost:");
+            int startIndex = description.IndexOf(SIGILCOST);
             string textToChange = description.Substring(startIndex);
             if (!textToChange.Contains("]"))
                 break;
@@ -537,30 +538,26 @@ public static class AbilityManager
     private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {NewAbilities.Count}");
-        if (NewAbilities.Count <= 0)
-            return;
-
-        foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
+        if (NewAbilities.Count > 0)
         {
-            // regular abilities
-            if (pageRangeInfo.type != PageRangeType.Abilities)
-                continue;
-
-            int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
-            int curPageNum = (int)Ability.NUM_ABILITIES;
-            List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
-            //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
-            foreach (FullAbility fab in abilitiesToAdd)
+            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
             {
-                RuleBookPageInfo info = new()
+                if (pageRangeInfo.type == PageRangeType.Abilities) // regular abilities
                 {
-                    pagePrefab = pageRangeInfo.rangePrefab,
-                    headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum)
-                };
-                __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
-                __result.Insert(insertPosition, info);
-                curPageNum += 1;
-                insertPosition += 1;
+                    int curPageNum = (int)Ability.NUM_ABILITIES;
+                    int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
+                    List<FullAbility> abilitiesToAdd = NewAbilities.Where(x => __instance.AbilityShouldBeAdded((int)x.Id, metaCategory)).ToList();
+                    foreach (FullAbility fab in abilitiesToAdd)
+                    {
+                        RuleBookPageInfo info = new();
+                        info.pagePrefab = pageRangeInfo.rangePrefab;
+                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - MOD ABILITIES {0}"), curPageNum);
+                        __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
+                        __result.Insert(insertPosition, info);
+                        curPageNum++;
+                        insertPosition++;
+                    }
+                }
             }
         }
     }

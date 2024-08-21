@@ -123,7 +123,6 @@ public static class StatIconManager
         {
             foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
             {
-                // regular abilities
                 if (pageRangeInfo.type == PageRangeType.StatIcons)
                 {
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
@@ -133,7 +132,7 @@ public static class StatIconManager
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;
                         info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION VII - VARIABLE STATS {0}"), curPageNum);
-                        __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
+                        __instance.FillStatIconPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;
                         insertPosition += 1;
