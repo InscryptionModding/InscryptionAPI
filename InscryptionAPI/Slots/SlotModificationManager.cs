@@ -508,7 +508,7 @@ public class SlotModificationManager : MonoBehaviour
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
-    [HarmonyPostfix, HarmonyPriority(-10)] // make sure custom item pages have been added first
+    [HarmonyPostfix, HarmonyPriority(95)] // make sure custom item pages have been added first
     private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {AllModificationInfos.Count}");

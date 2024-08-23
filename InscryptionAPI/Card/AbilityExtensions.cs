@@ -464,6 +464,20 @@ public static class AbilityExtensions
         return abilityInfo;
     }
 
+    public static bool HasMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
+    {
+        foreach (AbilityMetaCategory app in categories)
+            if (!info.HasMetaCategory(app))
+                return false;
+
+        return true;
+    }
+
+    public static bool HasMetaCategory(this AbilityInfo info, AbilityMetaCategory category)
+    {
+        return info.metaCategories.Contains(category);
+    }
+
     #region TriggersOncePerStack
     /// <summary>
     /// Sets the ability to only ever trigger once per stack. This prevents abilities from triggering twice per stack after a card evolves.

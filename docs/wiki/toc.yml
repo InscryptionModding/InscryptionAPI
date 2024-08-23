@@ -35,6 +35,8 @@ items:
   href: totems.md
 - name: Items
   href: items.md
+- name: Custom Rulebook Section
+  href: rulebook.md
 - name: Asset Bundles
   href: asset_bundle.md
 - name: Sound

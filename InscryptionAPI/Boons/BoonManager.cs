@@ -291,19 +291,18 @@ public static class BoonManager
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), nameof(RuleBookInfo.ConstructPageData))]
-    [HarmonyPostfix]
+    [HarmonyPostfix, HarmonyPriority(100)]
     private static void ConstructPageData(ref List<RuleBookPageInfo> __result, RuleBookInfo __instance, AbilityMetaCategory metaCategory)
     {
         if (NewBoons.Count > 0 && metaCategory == AbilityMetaCategory.Part1Rulebook)
         {
             foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
             {
-                // regular abilities
                 if (pageRangeInfo.type == PageRangeType.Boons)
                 {
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
                     int curPageNum = (int)Ability.NUM_ABILITIES;
-                    List<FullBoon> abilitiesToAdd = NewBoons.Where(x => x != null && x.boon != null && BoonsUtil.GetData(x.boon.type)?.icon != null).ToList();
+                    List<FullBoon> abilitiesToAdd = NewBoons.Where(x => x?.boon != null && BoonsUtil.GetData(x.boon.type)?.icon != null).ToList();
                     //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
                     foreach (FullBoon fboo in abilitiesToAdd)
                     {

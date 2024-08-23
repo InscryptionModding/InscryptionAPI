@@ -49,56 +49,56 @@ public static class RuleBookManager
         /// </summary>
         public string FullHeaderText => HeaderPrefix + " - " + SubSectionName + " {0}";
         /// <summary>
-        /// In the event two modded rulebook ranges are inheriting from the same PageRangeInfo, this is used to determine which run is created first from highest to lowest priority.
-        /// If the values are the same, they are created in order the mods were loaded.
-        /// </summary>
-        public int SortingPriority;
-        /// <summary>
         /// The function used to determine what the starting page number is; this number is added to the header.
         /// </summary>
-        public readonly Func<List<RuleBookPageInfo>, int> GetStartingNumberFunc;
+        public Func<List<RuleBookPageInfo>, int> GetStartingNumberFunc;
         /// <summary>
         /// The function used to determine what index in the rulebook to begin inserting this rulebook range.
         /// </summary>
-        public readonly Func<RuleBookInfo, List<RuleBookPageInfo>, int> GetInsertPositionFunc;
+        public Func<PageRangeInfo, List<RuleBookPageInfo>, int> GetInsertPositionFunc;
         /// <summary>
         /// The function for filling out each RuleBookPageInfo.
         /// </summary>
-        public readonly Func<AbilityMetaCategory, List<RuleBookPageInfo>> FillPagesFunc;
+        public Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> CreatePagesFunc;
+
+        public Action<RuleBookPage, string, object[]> FillPageAction;
+
 
         public int GetStartingNumber(List<RuleBookPageInfo> pages) => GetStartingNumberFunc(pages);
-        public int GetInsertPosition(RuleBookInfo infoInstance, List<RuleBookPageInfo> pages) => GetInsertPositionFunc(infoInstance, pages);
-        public List<RuleBookPageInfo> FillPages(AbilityMetaCategory metaCategory) => FillPagesFunc(metaCategory);
-
+        public int GetInsertPosition(PageRangeInfo currentPageRange, List<RuleBookPageInfo> pages) => GetInsertPositionFunc(currentPageRange, pages);
+        public List<RuleBookPageInfo> CreatePages(RuleBookInfo instance, PageRangeInfo currentPageRange, AbilityMetaCategory metaCategory) => CreatePagesFunc(instance, currentPageRange,metaCategory);
+        public void FillRuleBookPage(RuleBookPage instance, string pageId, params object[] otherArgs) => FillPageAction(instance, pageId, otherArgs);
 
         public FullRuleBookRangeInfo(
-            string modGuid, PageRangeType type, string headerPrefix, string subsectionName, int sortingPriority,
+            string modGuid, PageRangeType type, string headerPrefix, string subsectionName,
             Func<List<RuleBookPageInfo>, int> getStartingNumberFunc,
-            Func<RuleBookInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
-            Func<AbilityMetaCategory, List<RuleBookPageInfo>> fillPagesFunc)
+            Func<PageRangeInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
+            Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> createPagesFunc,
+            Action<RuleBookPage, string, object[]> fillPageAct)
         {
             this.ModGUID = modGuid;
             this.PageTypeTemplate = type;
-            this.HeaderPrefix = headerPrefix;
+            this.HeaderPrefix = headerPrefix ?? HeaderPrefixSimple("I");
             this.SubSectionName = subsectionName;
-            this.SortingPriority = sortingPriority;
-            this.GetStartingNumberFunc = getStartingNumberFunc;
+            this.GetStartingNumberFunc = getStartingNumberFunc ?? ((List<RuleBookPageInfo> x) => 1);
             this.GetInsertPositionFunc = getInsertPositionFunc;
-            this.FillPagesFunc = fillPagesFunc;
+            this.CreatePagesFunc = createPagesFunc;
+            this.FillPageAction = fillPageAct;
         }
 
         public FullRuleBookRangeInfo Clone()
         {
             return new(
                 this.ModGUID, this.PageTypeTemplate,
-                this.HeaderPrefix, this.SubSectionName, this.SortingPriority,
+                this.HeaderPrefix, this.SubSectionName,
                 this.GetStartingNumberFunc, this.GetInsertPositionFunc,
-                this.FillPagesFunc
+                this.CreatePagesFunc,
+                this.FillPageAction
                 );
         }
     }
 
-    internal readonly static ObservableCollection<FullRuleBookRangeInfo> NewRuleBookInfos;
+    internal readonly static ObservableCollection<FullRuleBookRangeInfo> NewRuleBookInfos = new();
 
     public static List<FullRuleBookRangeInfo> AllRuleBookInfos { get; private set; }
     public static event Func<List<FullRuleBookRangeInfo>, List<FullRuleBookRangeInfo>> ModifyRuleBookInfos;
@@ -115,71 +115,109 @@ public static class RuleBookManager
     {
         AllRuleBookInfos = NewRuleBookInfos.Select(x => x.Clone()).ToList();
         AllRuleBookInfos = ModifyRuleBookInfos?.Invoke(AllRuleBookInfos) ?? AllRuleBookInfos;
-        AllRuleBookInfos.Sort((FullRuleBookRangeInfo a, FullRuleBookRangeInfo b) => b.SortingPriority - a.SortingPriority);
     }
 
     /// <summary>
-    /// Simplified form of New with only the necessary parameters.
+    /// Creates a custom rulebook range. Simplified version of the full New() method that only requires the minimumrequired parameters.
     /// </summary>
     /// <param name="modGuid">The GUID of the mod adding this FullRuleBookRangeInfo</param>
-    /// <param name="pageType"></param>
-    /// <param name="subsectionName"></param>
-    /// <param name="getInsertPositionFunc"></param>
-    /// <param name="fillPagesFunc"></param>
-    /// <returns>A FullRuleBookRangeInfo with a sorting priority of 0 and a starting page number of 1.</returns>
+    /// <param name="pageType">The PageRangeType we want to inherit from. This will determine the style of pages.</param>
+    /// <param name="subsectionName">The name of the rulebook subsection, eg. "Abilities" or "Boons".</param>
+    /// <param name="getInsertPositionFunc">The Func to determine what index in the rulebook to insert a new section.</param>
+    /// <param name="createPagesFunc">The Func that is called to create the RuleBookPage objects that will be used to fill the rulebook.</param>
+    /// <param name="headerPrefix">The first half of the header that will appear on rulebook pages. Leave null to use the default prefix.</param>
+    /// <param name="getStartingNumberFunc">The Func to determine the first page number in this range. Leave null to use the default starting number (1).</param>
+    /// <param name="fillPageAction">The Action to call when filling in the data for each rulebook page.</param>
+    /// <returns>A new FullRuleBookRangeInfo containing the information to create a custom rulebook range.</returns>
     public static FullRuleBookRangeInfo New(
-    string modGuid, PageRangeType pageType, string subsectionName,
-    Func<RuleBookInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
-    Func<AbilityMetaCategory, List<RuleBookPageInfo>> fillPagesFunc)
+    string modGuid,
+    PageRangeType pageType,
+    string subsectionName,
+    Func<PageRangeInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
+    Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> createPagesFunc,
+    string headerPrefix = null,
+    Func<List<RuleBookPageInfo>, int> getStartingNumberFunc = null,
+    Action<RuleBookPage, string, object[]> fillPageAction = null)
     {
-        return New(modGuid, pageType, HeaderPrefixSimple("N"), subsectionName, 0, (x) => 1, getInsertPositionFunc, fillPagesFunc);
+        FullRuleBookRangeInfo info = new(
+            modGuid, pageType,
+            headerPrefix, subsectionName,
+            getStartingNumberFunc,
+            getInsertPositionFunc, createPagesFunc,
+            fillPageAction);
+        NewRuleBookInfos.Add(info);
+        return info;
     }
 
     /// <summary>
     /// Creates a FullRuleBookRangeInfo representing a custom subsection of the rulebook.
     /// </summary>
     /// <param name="modGuid">The GUID of the mod calling this method.</param>
-    /// <param name="pageType"></param>
-    /// <param name="headerPrefix"></param>
-    /// <param name="subsectionName"></param>
-    /// <param name="sortingPriority"></param>
-    /// <param name="getStartingNumberFunc"></param>
+    /// <param name="pageType">The PageRangeType we want to inherit from. This will determine what page style you'll have access to.</param>
+    /// <param name="headerPrefix">The first half of the header that will appear on rulebook pages.</param>
+    /// <param name="subsectionName">The name of the rulebook subsection, eg. "Abilities" or "Boons".</param>
+    /// <param name="getStartingNumberFunc">The </param>
     /// <param name="getInsertPositionFunc"></param>
-    /// <param name="fillPagesFunc"></param>
+    /// <param name="createPagesFunc"></param>
     /// <returns></returns>
     public static FullRuleBookRangeInfo New(
         string modGuid, PageRangeType pageType, string headerPrefix, string subsectionName,
-        int sortingPriority,
         Func<List<RuleBookPageInfo>, int> getStartingNumberFunc,
-        Func<RuleBookInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
-        Func<AbilityMetaCategory, List<RuleBookPageInfo>> fillPagesFunc)
+        Func<PageRangeInfo, List<RuleBookPageInfo>, int> getInsertPositionFunc,
+        Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> createPagesFunc)
     {
         
         FullRuleBookRangeInfo info = new(
             modGuid, pageType,
             headerPrefix, subsectionName,
-            sortingPriority,
             getStartingNumberFunc,
-            getInsertPositionFunc, fillPagesFunc);
+            getInsertPositionFunc, createPagesFunc,
+            null);
         NewRuleBookInfos.Add(info);
         return info;
     }
-
-    public static string HeaderPrefixSimple(string romanNumeral) => string.Format(DEFAULT_HEADER_PREFIX, romanNumeral);
+    /// <summary>
+    /// Sets the FillPage Action for the given FullRuleBookRangeInfo.
+    /// </summary>
+    /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
+    /// <param name="action"></param>
+    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
+    public static FullRuleBookRangeInfo SetFillPage(this FullRuleBookRangeInfo info, Action<RuleBookPage, string, object[]> action)
+    {
+        info.FillPageAction = action;
+        return info;
+    }
+    /// <summary>
+    /// Sets the HeaderPrefix for the provided FullRuleBookRangeInfo.
+    /// </summary>
+    /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
+    /// <param name="headerPrefix">The string we want our header prefix to become.</param>
+    /// <remarks>
+    /// If you only want to modify the subsection numeral, use SetPrefixSimple instead.
+    /// </remarks>
+    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
+    public static FullRuleBookRangeInfo SetHeaderPrefix(this FullRuleBookRangeInfo info, string headerPrefix)
+    {
+        info.HeaderPrefix = headerPrefix;
+        return info;
+    }
+    /// <summary>
+    /// Sets the FullRuleBookRangeInfo's HeaderPrefix using the HeaderPrefixSimple method (see there more for information).
+    /// </summary>
+    /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
+    /// <param name="romanNumeral">A string ideally representing a roman numeral, used for the subsection number.</param>
+    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
     public static FullRuleBookRangeInfo SetHeaderPrefixSimple(this FullRuleBookRangeInfo info, string romanNumeral)
     {
         info.HeaderPrefix = HeaderPrefixSimple(romanNumeral);
         return info;
     }
-    public static FullRuleBookRangeInfo SetSortingPriority(this FullRuleBookRangeInfo info, int priority)
-    {
-        info.SortingPriority = priority;
-        return info;
-    }
+    /// <summary>
+    /// Creates a header prefix with the provided string using DEFAULT_HEADER_PREFIX as a template.
+    /// </summary>
+    /// <param name="romanNumeral">A ideally representing a roman numeral for the subsection number.</param>
+    /// <returns>A fully formatted header in the format of "APPENDIX XII, SUBSECTION {0}", where {0} is romanNumeral.</returns>
+    public static string HeaderPrefixSimple(string romanNumeral) => string.Format(DEFAULT_HEADER_PREFIX, romanNumeral);
 
-    public static string ParseCustomRuleBookId(string id)
-    {
-        return id.Replace("API_", "");
-    }
-    public const string DEFAULT_HEADER_PREFIX = "APPENDIX XII, SUBSECTION {0}";
+    private const string DEFAULT_HEADER_PREFIX = "APPENDIX XII, SUBSECTION {0}";
 }
