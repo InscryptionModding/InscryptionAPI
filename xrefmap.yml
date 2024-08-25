@@ -11934,6 +11934,12 @@ references:
   commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32)
   fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager, System.Int32)
   nameWithType: ResourcesManagerHelpers.RemoveMaxEnergy(ResourcesManager, Int32)
+- uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32,System.Boolean)
+  name: RemoveMaxEnergy(ResourcesManager, Int32, Boolean)
+  href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_RemoveMaxEnergy_DiskCardGame_ResourcesManager_System_Int32_System_Boolean_
+  commentId: M:InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager,System.Int32,System.Boolean)
+  fullName: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy(DiskCardGame.ResourcesManager, System.Int32, System.Boolean)
+  nameWithType: ResourcesManagerHelpers.RemoveMaxEnergy(ResourcesManager, Int32, Boolean)
 - uid: InscryptionAPI.Helpers.ResourcesManagerHelpers.RemoveMaxEnergy*
   name: RemoveMaxEnergy
   href: api/InscryptionAPI.Helpers.ResourcesManagerHelpers.html#InscryptionAPI_Helpers_ResourcesManagerHelpers_RemoveMaxEnergy_
