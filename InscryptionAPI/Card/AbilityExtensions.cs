@@ -510,8 +510,7 @@ public static class AbilityExtensions
     /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
     public static bool GetHideSingleStacks(this Ability ability)
     {
-        AbilityInfo abilityInfo = AllAbilityInfos.AbilityByID(ability);
-        return abilityInfo.GetHideSingleStacks();
+        return AllAbilityInfos.AbilityByID(ability).GetHideSingleStacks();
     }
     /// <summary>
     /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.

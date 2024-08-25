@@ -27,30 +27,30 @@ public static class TribeManager
     [HarmonyPostfix]
     private static void UpdateTribeIcon(CardDisplayer3D __instance, CardInfo info)
     {
-        if (info != null)
-        {
-            foreach (TribeInfo tribeInfo in tribes)
-            {
-                if (tribeInfo?.icon == null || info.IsNotOfTribe(tribeInfo.tribe))
-                    continue;
+        if (info == null || __instance.tribeIconRenderers.Count == 0)
+            return;
 
-                bool foundSpriteRenderer = false;
-                foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
+        foreach (TribeInfo tribeInfo in tribes)
+        {
+            if (tribeInfo?.icon == null || info.IsNotOfTribe(tribeInfo.tribe))
+                continue;
+
+            bool foundSpriteRenderer = false;
+            foreach (SpriteRenderer spriteRenderer in __instance.tribeIconRenderers)
+            {
+                if (spriteRenderer.sprite == null)
                 {
-                    if (spriteRenderer.sprite == null)
-                    {
-                        spriteRenderer.sprite = tribeInfo.icon;
-                        foundSpriteRenderer = true;
-                        break;
-                    }
+                    spriteRenderer.sprite = tribeInfo.icon;
+                    foundSpriteRenderer = true;
+                    break;
                 }
-                if (!foundSpriteRenderer)
-                {
-                    SpriteRenderer last = __instance.tribeIconRenderers.Last();
-                    SpriteRenderer spriteRenderer = UnityObject.Instantiate(last);
-                    spriteRenderer.transform.parent = last.transform.parent;
-                    spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
-                }
+            }
+            if (!foundSpriteRenderer)
+            {
+                SpriteRenderer last = __instance.tribeIconRenderers.Last();
+                SpriteRenderer spriteRenderer = UnityObject.Instantiate(last);
+                spriteRenderer.transform.parent = last.transform.parent;
+                spriteRenderer.transform.localPosition = last.transform.localPosition + (__instance.tribeIconRenderers[1].transform.localPosition - __instance.tribeIconRenderers[0].transform.localPosition);
             }
         }
     }
