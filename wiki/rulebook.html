@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Rulebook | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Rulebook | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="the-rulebook">The Rulebook</h2>
+
+<p>The Rulebook is a powerful tool for the player during the 3D Acts.
+Every ability, stat icon, boon and item that they can encounter during a certain Act will have an entry in it, providing a name and description of what it does.</p>
+<p>These entries are act-specific, and custom abilities and the like can be marked to only appear in a certain Act or Acts* using their specific AbilityMetaCategory field.</p>
+<p>In most cases, this is the end of a modder&#39;s consideration Rulebook. If you&#39;re making a mod for Act 3, custom sigils should appear in the Act 3 Rulebook and nowhere else.
+If you don&#39;t want a stat icon to appear in any Rulebook for one reason or another, you simply leave its AbilityMetaCategories field empty.
+Custom content that appears in the Rulebook will appear in the order they were loaded into the game by the API, content that doesn&#39;t won&#39;t.</p>
+<p>However, there may arise cases where this is insufficient for your needs.
+Maybe you want an ability to always appear at the beginning of the Rulebook for some reason, or you want to add a whole new section to the Rulebook.
+The former case can be easily handled with a simple patch to RuleBookInfo.ConstructPageData, but the latter can get fairly complicated.
+In either case, you can use the API&#39;s RuleBookManager to make this process simpler.</p>
+<p>* <em>Items and Boons can only be marked to appear in a single Act.</em></p>
+<h2 id="adding-custom-sections">Adding Custom Sections</h2>
+<p>Creating a custom rulebook section/range is a bit different than creating other things like abilities.
+Custom sections don&#39;t require a Type reference to a custom class, though it&#39;s still good practice to create a class to keep things organised.</p>
+<p>Simple call RuleBookManager.New() with the needed arguments and you&#39;re good to go.</p>
+<pre><code class="lang-c#">RuleBookManager.New(
+    MyPluginGuid, // a unique identifier for your mod
+    PageRangeType.Boons, // the PageRangeType we want to inherit our page style from
+    &quot;Mod Tribes&quot;, // the subsection name that appears at the end of the header
+    GetInsertPosition, // a function that determines where in the Rulebook to insert our custom section
+    CreatePages, // the function to create the pages that will be in our custom section
+    headerPrefix, // optional argument, if left null one will be created for you
+    getStartingNumberFunc: GetStartingNumber, // optional argument, if left null the starting number will be 1
+    fillPageAction: FillPage // also optional, but if you want to display custom names, descriptions, etc you will need to set this
+    );
+</code></pre><p>This will return a FullRuleBookRangeInfo object representing your custom section.</p>
+<p>Note how you can pass in STATIC methods as arguments when creating your custom rulebook range.</p>
+<pre><code class="lang-c#">// note that the return value and parameters MUST match the parameters and return value of the Func
+private static int GetInsertPosition(PageRangeInfo pageRangeInfo, List&lt;RuleBookPageInfo&gt; pages)
+{
+    return pages.FindLastIndex(rbi =&gt; rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
+}
+
+private static List&lt;RuleBookPageInfo&gt; CreatePages(RuleBookInfo instance, PageRangeInfo currentRange, AbilityMetaCategory metaCategory)
+{
+    // in this example, we&#39;re adding a rulebook section for custom Tribes
+    // foreach custom tribe that exists, we create a rulebook page then set the pageId to the tribe enum so we can use it later
+    List&lt;TribeManager.TribeInfo&gt; allTribes = TribeManager.NewTribes.ToList();
+    List&lt;RuleBookPageInfo&gt; retval = new();
+    foreach (var tribe in allTribes)
+    {
+        RuleBookPageInfo page = new();
+        page.pageId = tribe.tribe.ToString();
+        retval.Add(page);
+    }
+    return retval;
+}
+
+private static int GetStartingNumber(List&lt;RuleBookPageInfo&gt; addedPages)
+{
+    return (int)Tribe.NUM_TRIBES; // since we&#39;re doing mod Tribes only, we start after custom Tribes (pretend we have a separate section for those)
+}
+
+private static void FillPage(RuleBookPage page, string pageId, object[] otherArgs)
+{
+    if (page is BoonPage boonPage &amp;&amp; int.TryParse(pageId, out int id))
+    {
+        TribeManager.TribeInfo tribe = TribeManager.NewTribes.FirstOrDefault(x =&gt; x.tribe == (Tribe)id);
+        if (tribe != null)
+        {
+            boonPage.nameTextMesh.text = Localization.Translate(tribe.name.ToLowerInvariant().Replace(&quot;tribe&quot;, &quot;&quot;));
+            boonPage.descriptionTextMesh.text = &quot;&quot;;
+            boonPage.iconRenderer.material.mainTexture = boonPage.iconRenderer2.material.mainTexture = tribe.icon.texture;
+        }
+    }
+}
+</code></pre><h2 id="useful-information-on-rulebookpages">Useful Information on RuleBookPages</h2>
+<p>When filling the content of your custom pages, it&#39;s important to understand the page style and what fields you&#39;ll have access to.</p>
+<p>When your custom section&#39;s FillPage() method is called, only certain parts of the current RuleBookPageInfo will be provided to you.
+If you plan on using information beyond the pageId when filling your pages, you need to know the order of objects in the array.</p>
+<h3 id="abilitypage">AbilityPage</h3>
+<p>Ability icon texture is placed on the left of the page</p>
+<p>otherArgs: headerText, ability, fillerAbilityIds</p>
+<p>Class Fields:</p>
+<ul>
+<li>AbilityPageContent <em>mainAbilityGroup</em></li>
+</ul>
+<h3 id="staticonpage">StatIconPage</h3>
+<p>Stat Icon texture is placed on the left of the icon&#39;s name</p>
+<p>otherArgs: headerText</p>
+<p>Class Fields:</p>
+<ul>
+<li>Renderer <em>iconRenderer</em></li>
+<li>TextMeshPro <em>nameTextMesh</em></li>
+<li>TextMeshPro <em>descriptionTextMesh</em></li>
+</ul>
+<h3 id="boonpage">BoonPage</h3>
+<p>Boon texture is placed on the left and right of the page</p>
+<p>otherArgs: headerText, boon</p>
+<p>Class Fields:</p>
+<ul>
+<li>Renderer <em>iconRenderer</em></li>
+<li>Renderer <em>iconRenderer2</em></li>
+<li>TextMeshPro <em>nameTextMesh</em></li>
+<li>TextMeshPro <em>descriptionTextMesh</em></li>
+</ul>
+<h3 id="itempage">ItemPage</h3>
+<p>Item&#39;s rulebookSprite is placed on the left of the page</p>
+<p>otherArgs: headerText</p>
+<p>Class Fields:</p>
+<ul>
+<li>Renderer <em>iconRenderer</em></li>
+<li>TextMeshPro <em>nameTextMesh</em></li>
+<li>TextMeshPro <em>descriptionTextMesh</em></li>
+<li>Transform <em>itemModelParent</em></li>
+<li>GameObject <em>itemModel</em></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

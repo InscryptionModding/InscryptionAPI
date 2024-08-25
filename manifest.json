@@ -292,7 +292,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityExtensions.html",
-          "hash": "aGLI/spSxjao55FVAoCYbynG4zNTG6+9uTdvGlS0+X0="
+          "hash": "/RGHeDsOVnLKMmlrwbaNROx3MHQQSXCLVOuk8+ucvhU="
         }
       },
       "is_incremental": false,
@@ -322,7 +322,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Card.AbilityManager.html",
-          "hash": "wZQjQEOZsb31FQtN+VN6Km3jrcMnU6HfZpF7rBubGLI="
+          "hash": "kbq8b0Jjk64/MfXHYn++O2seDSK1VL8xMJvqZNIPa/w="
         }
       },
       "is_incremental": false,
@@ -1237,7 +1237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.InscryptionAPIPlugin.html",
-          "hash": "qLtUcARJD8S6M+9RQvdDzHl3+TCh0wQlFeqcsNrwA1Q="
+          "hash": "yl6ExC8GZhbkGLLcv32t37qxPfAOZUjBvmrVG+e6Olk="
         }
       },
       "is_incremental": false,
@@ -1977,6 +1977,54 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html",
+          "hash": "OSEb0YswwpzZsWr2ampeOCLs28SM9C7M8Qpm/PQbF2c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.RuleBook.RuleBookManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.RuleBook.RuleBookManager.html",
+          "hash": "J72EmH/Haw9UPs/Oi8AsluZjp20gzNPjtuN4ITyhntQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.RuleBook.RuleBookManagerPatches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html",
+          "hash": "5TMAvScvhWmk657AxY56J98oKKmIP79p7JjM2yBPcCw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.RuleBook.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.RuleBook.html",
+          "hash": "ybO7zIs/XmJ22odXeXsJmppyUo5IdkrtU6Zpjqtrr90="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Saves.ModdedSaveData.yml",
       "output": {
         ".html": {
@@ -2041,7 +2089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Slots.SlotModificationExtensions.html",
-          "hash": "9AUFMwMo6/Fw2KlpRd5A9ZWGrHzVso+h/w7zZ3HaxE4="
+          "hash": "y7RJ87J7huQkICpEkeqfIXfTAAoNGXU2j0c41D9OBLI="
         }
       },
       "is_incremental": false,
@@ -2061,11 +2109,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationInteractable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationInteractable.html",
+          "hash": "8PvJ75kOe7CwNUTUkk7aLWZitVz/pN8h+DG+RB9lCMU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.Info.yml",
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.Info.html",
-          "hash": "FIm2hq71sJu+PuABZQQeghZMX2bjKGxUa6vEdQlx62k="
+          "hash": "CX0HF8DW8moTWbvM2Huu9HagCklwp3WQmV67Gn6mBh4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html",
+          "hash": "JBo6cYqtcFQLbzqZtyFtz/JNS8s1UD/82aEIgH3a/Hc="
         }
       },
       "is_incremental": false,
@@ -2077,7 +2149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.html",
-          "hash": "TPN8HZo5apOHbjgEd6ceRbouUpdp5fBXI4opYGL719I="
+          "hash": "9+tB1Lhh4x1Ek5nFoS44NikxHtcGnM6VEEczK1EFJ5I="
         }
       },
       "is_incremental": false,
@@ -2089,7 +2161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Slots.SlotModificationManager.html",
-          "hash": "a9P45+J9BHlY3uF+wUNKNCbIAYDR6WV4T7qVqi1/xW8="
+          "hash": "K+FocEANJZjcBasmXjifkc+e00OHsX1A7gSlr/IfcCM="
         }
       },
       "is_incremental": false,
@@ -2101,7 +2173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Slots.html",
-          "hash": "cbmtt89YLdWX0+7N8IoPhQ2gbR4ajEWrFSHfhvTdTqY="
+          "hash": "lFOH/cCSOswU/UKpz95XTxAVndrblAJCJICRR8shtPY="
         }
       },
       "is_incremental": false,
@@ -2905,7 +2977,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "+bwmXAD0ZtMDwnYKuuzWg3o2xYPK66gWTz9VvqT/5H0="
+          "hash": "MTZaWcizvG+2nzwlkpDPMx+ZvwhVHHQ5aU5tXTz4aPk="
         }
       },
       "is_incremental": false,
@@ -3167,6 +3239,18 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "wiki/rulebook.md",
+      "output": {
+        ".html": {
+          "relative_path": "wiki/rulebook.html",
+          "hash": "lhzBSPzF+LZd0GtV7K1cHW7eVqInZXINR+OXV8qzMUs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "wiki/shield.md",
       "output": {
         ".html": {
@@ -3234,7 +3318,7 @@
       "output": {
         ".html": {
           "relative_path": "wiki/toc.html",
-          "hash": "EA1KnuULhefKy3PgVu0f5vFit05OW4+XSLpSJBw15ZA="
+          "hash": "tEd888117UMJgfXS2lJ6nqVXQxTDQHLLnHxoXYy+O8g="
         }
       },
       "is_incremental": false,
@@ -3282,13 +3366,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 22,
+          "total_file_count": 23,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 258,
+          "total_file_count": 264,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

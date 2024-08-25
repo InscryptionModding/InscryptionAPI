@@ -888,6 +888,96 @@
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategories*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])">HasMetaCategories(AbilityInfo, AbilityMetaCategory[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="parametername">categories</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategory*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory)">HasMetaCategory(AbilityInfo, AbilityMetaCategory)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasMetaCategory(this AbilityInfo info, AbilityMetaCategory category)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span></td>
+        <td><span class="parametername">category</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_ResetDescription_" data-uid="InscryptionAPI.Card.AbilityExtensions.ResetDescription*"></a>
   <h4 id="InscryptionAPI_Card_AbilityExtensions_ResetDescription_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.ResetDescription(DiskCardGame.AbilityInfo)">ResetDescription(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Resets the AbilityInfo&apos;s rulebook description to its vanilla version.
@@ -2489,6 +2579,51 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(DiskCardGame.AbilityInfo,System.String)">SetRulebookDescription(AbilityInfo, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityInfo SetRulebookDescription(this AbilityInfo abilityInfo, string description)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">abilityInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo*"></a>
   <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_DiskCardGame_StatIconInfo_System_String_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo,System.String,System.String)">SetRulebookInfo(StatIconInfo, String, String)</h4>
   <div class="markdown level1 summary"><p>Set the StatIconInfo&apos;s rulebookName and rulebookDescription. Does not make the stat icon appear in the Rulebook.</p>
@@ -2538,6 +2673,51 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
         <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookName_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookName*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookName_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookName(DiskCardGame.AbilityInfo,System.String)">SetRulebookName(AbilityInfo, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityInfo SetRulebookName(this AbilityInfo abilityInfo, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">abilityInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

@@ -2376,6 +2376,35 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack
   nameWithType: AbilityExtensions.GetTriggersOncePerStack
+- uid: InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  name: HasMetaCategories(AbilityInfo, AbilityMetaCategory[])
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory___
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])
+  name.vb: HasMetaCategories(AbilityInfo, AbilityMetaCategory())
+  fullName: InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo, DiskCardGame.AbilityMetaCategory[])
+  fullName.vb: InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo, DiskCardGame.AbilityMetaCategory())
+  nameWithType: AbilityExtensions.HasMetaCategories(AbilityInfo, AbilityMetaCategory[])
+  nameWithType.vb: AbilityExtensions.HasMetaCategories(AbilityInfo, AbilityMetaCategory())
+- uid: InscryptionAPI.Card.AbilityExtensions.HasMetaCategories*
+  name: HasMetaCategories
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.HasMetaCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.HasMetaCategories
+  nameWithType: AbilityExtensions.HasMetaCategories
+- uid: InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory)
+  name: HasMetaCategory(AbilityInfo, AbilityMetaCategory)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(DiskCardGame.AbilityInfo, DiskCardGame.AbilityMetaCategory)
+  nameWithType: AbilityExtensions.HasMetaCategory(AbilityInfo, AbilityMetaCategory)
+- uid: InscryptionAPI.Card.AbilityExtensions.HasMetaCategory*
+  name: HasMetaCategory
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.HasMetaCategory
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.HasMetaCategory
+  nameWithType: AbilityExtensions.HasMetaCategory
 - uid: InscryptionAPI.Card.AbilityExtensions.ResetDescription(DiskCardGame.AbilityInfo)
   name: ResetDescription(AbilityInfo)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_ResetDescription_DiskCardGame_AbilityInfo_
@@ -2750,6 +2779,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetPowerlevel
   nameWithType: AbilityExtensions.SetPowerlevel
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(DiskCardGame.AbilityInfo,System.String)
+  name: SetRulebookDescription(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.SetRulebookDescription(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription*
+  name: SetRulebookDescription
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription
+  nameWithType: AbilityExtensions.SetRulebookDescription
 - uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo,System.String,System.String)
   name: SetRulebookInfo(StatIconInfo, String, String)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_DiskCardGame_StatIconInfo_System_String_System_String_
@@ -2763,6 +2805,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo
   nameWithType: AbilityExtensions.SetRulebookInfo
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookName(DiskCardGame.AbilityInfo,System.String)
+  name: SetRulebookName(AbilityInfo, String)
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookName_DiskCardGame_AbilityInfo_System_String_
+  commentId: M:InscryptionAPI.Card.AbilityExtensions.SetRulebookName(DiskCardGame.AbilityInfo,System.String)
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookName(DiskCardGame.AbilityInfo, System.String)
+  nameWithType: AbilityExtensions.SetRulebookName(AbilityInfo, String)
+- uid: InscryptionAPI.Card.AbilityExtensions.SetRulebookName*
+  name: SetRulebookName
+  href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetRulebookName_
+  commentId: Overload:InscryptionAPI.Card.AbilityExtensions.SetRulebookName
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.AbilityExtensions.SetRulebookName
+  nameWithType: AbilityExtensions.SetRulebookName
 - uid: InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo,System.Boolean)
   name: SetTriggersOncePerStack(AbilityInfo, Boolean)
   href: api/InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_DiskCardGame_AbilityInfo_System_Boolean_
@@ -3014,6 +3069,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.AbilityManager.Remove
   nameWithType: AbilityManager.Remove
+- uid: InscryptionAPI.Card.AbilityManager.SIGILCOST
+  name: SIGILCOST
+  href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_SIGILCOST
+  commentId: F:InscryptionAPI.Card.AbilityManager.SIGILCOST
+  fullName: InscryptionAPI.Card.AbilityManager.SIGILCOST
+  nameWithType: AbilityManager.SIGILCOST
 - uid: InscryptionAPI.Card.AbilityManager.SyncAbilityList
   name: SyncAbilityList()
   href: api/InscryptionAPI.Card.AbilityManager.html#InscryptionAPI_Card_AbilityManager_SyncAbilityList
@@ -16435,6 +16496,306 @@ references:
   commentId: F:InscryptionAPI.Resource.ResourceBankManager.ResourceData.Resource
   fullName: InscryptionAPI.Resource.ResourceBankManager.ResourceData.Resource
   nameWithType: ResourceBankManager.ResourceData.Resource
+- uid: InscryptionAPI.RuleBook
+  name: InscryptionAPI.RuleBook
+  href: api/InscryptionAPI.RuleBook.html
+  commentId: N:InscryptionAPI.RuleBook
+  fullName: InscryptionAPI.RuleBook
+  nameWithType: InscryptionAPI.RuleBook
+- uid: InscryptionAPI.RuleBook.RuleBookManager
+  name: RuleBookManager
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookManager
+  fullName: InscryptionAPI.RuleBook.RuleBookManager
+  nameWithType: RuleBookManager
+- uid: InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
+  name: AllRuleBookInfos
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_AllRuleBookInfos
+  commentId: P:InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
+  nameWithType: RuleBookManager.AllRuleBookInfos
+- uid: InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos*
+  name: AllRuleBookInfos
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_AllRuleBookInfos_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
+  nameWithType: RuleBookManager.AllRuleBookInfos
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo
+  name: RuleBookManager.FullRuleBookRangeInfo
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.#ctor(System.String,DiskCardGame.PageRangeType,System.String,System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}},Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name: FullRuleBookRangeInfo(String, PageRangeType, String, String, Func<List<RuleBookPageInfo>, Int32>, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>, Action<RuleBookPage, String, Object[]>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo__ctor_System_String_DiskCardGame_PageRangeType_System_String_System_String_Func_List_DiskCardGame_RuleBookPageInfo__System_Int32__Func_DiskCardGame_PageRangeInfo_List_DiskCardGame_RuleBookPageInfo__System_Int32__Func_DiskCardGame_RuleBookInfo_DiskCardGame_PageRangeInfo_DiskCardGame_AbilityMetaCategory_List_DiskCardGame_RuleBookPageInfo___Action_DiskCardGame_RuleBookPage_System_String_System_Object____
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.#ctor(System.String,DiskCardGame.PageRangeType,System.String,System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}},Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name.vb: FullRuleBookRangeInfo(String, PageRangeType, String, String, Func(Of List(Of RuleBookPageInfo), Int32), Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)), Action(Of RuleBookPage, String, Object()))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo(System.String, DiskCardGame.PageRangeType, System.String, System.String, Func<List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Func<DiskCardGame.PageRangeInfo, List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Func<DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List<DiskCardGame.RuleBookPageInfo>>, Action<DiskCardGame.RuleBookPage, System.String, System.Object[]>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo(System.String, DiskCardGame.PageRangeType, System.String, System.String, Func(Of List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Func(Of DiskCardGame.PageRangeInfo, List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Func(Of DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List(Of DiskCardGame.RuleBookPageInfo)), Action(Of DiskCardGame.RuleBookPage, System.String, System.Object()))
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo(String, PageRangeType, String, String, Func<List<RuleBookPageInfo>, Int32>, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>, Action<RuleBookPage, String, Object[]>)
+  nameWithType.vb: RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo(String, PageRangeType, String, String, Func(Of List(Of RuleBookPageInfo), Int32), Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)), Action(Of RuleBookPage, String, Object()))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.#ctor*
+  name: FullRuleBookRangeInfo
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo__ctor_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FullRuleBookRangeInfo
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone
+  name: Clone()
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_Clone
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone()
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.Clone()
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone*
+  name: Clone
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_Clone_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.Clone
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.Clone
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages(DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory)
+  name: CreatePages(RuleBookInfo, PageRangeInfo, AbilityMetaCategory)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_CreatePages_DiskCardGame_RuleBookInfo_DiskCardGame_PageRangeInfo_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages(DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages(DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory)
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.CreatePages(RuleBookInfo, PageRangeInfo, AbilityMetaCategory)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages*
+  name: CreatePages
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_CreatePages_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePages
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.CreatePages
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePagesFunc
+  name: CreatePagesFunc
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_CreatePagesFunc
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePagesFunc
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.CreatePagesFunc
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.CreatePagesFunc
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillPageAction
+  name: FillPageAction
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_FillPageAction
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillPageAction
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillPageAction
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FillPageAction
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(DiskCardGame.RuleBookPage,System.String,System.Object[])
+  name: FillRuleBookPage(RuleBookPage, String, Object[])
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_FillRuleBookPage_DiskCardGame_RuleBookPage_System_String_System_Object___
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(DiskCardGame.RuleBookPage,System.String,System.Object[])
+  name.vb: FillRuleBookPage(RuleBookPage, String, Object())
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(DiskCardGame.RuleBookPage, System.String, System.Object[])
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(DiskCardGame.RuleBookPage, System.String, System.Object())
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(RuleBookPage, String, Object[])
+  nameWithType.vb: RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage(RuleBookPage, String, Object())
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage*
+  name: FillRuleBookPage
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_FillRuleBookPage_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FillRuleBookPage
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+  name: FullHeaderText
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_FullHeaderText
+  commentId: P:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText*
+  name: FullHeaderText
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_FullHeaderText_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.FullHeaderText
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo})
+  name: GetInsertPosition(PageRangeInfo, List<RuleBookPageInfo>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetInsertPosition_DiskCardGame_PageRangeInfo_List_DiskCardGame_RuleBookPageInfo__
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo})
+  name.vb: GetInsertPosition(PageRangeInfo, List(Of RuleBookPageInfo))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(DiskCardGame.PageRangeInfo, List<DiskCardGame.RuleBookPageInfo>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(DiskCardGame.PageRangeInfo, List(Of DiskCardGame.RuleBookPageInfo))
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(PageRangeInfo, List<RuleBookPageInfo>)
+  nameWithType.vb: RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition(PageRangeInfo, List(Of RuleBookPageInfo))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition*
+  name: GetInsertPosition
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetInsertPosition_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetInsertPosition
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPositionFunc
+  name: GetInsertPositionFunc
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetInsertPositionFunc
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPositionFunc
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetInsertPositionFunc
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetInsertPositionFunc
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List{DiskCardGame.RuleBookPageInfo})
+  name: GetStartingNumber(List<RuleBookPageInfo>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetStartingNumber_List_DiskCardGame_RuleBookPageInfo__
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List{DiskCardGame.RuleBookPageInfo})
+  name.vb: GetStartingNumber(List(Of RuleBookPageInfo))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List<DiskCardGame.RuleBookPageInfo>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List(Of DiskCardGame.RuleBookPageInfo))
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List<RuleBookPageInfo>)
+  nameWithType.vb: RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber(List(Of RuleBookPageInfo))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber*
+  name: GetStartingNumber
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetStartingNumber_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetStartingNumber
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumberFunc
+  name: GetStartingNumberFunc
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_GetStartingNumberFunc
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumberFunc
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.GetStartingNumberFunc
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.GetStartingNumberFunc
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.HeaderPrefix
+  name: HeaderPrefix
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_HeaderPrefix
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.HeaderPrefix
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.HeaderPrefix
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.HeaderPrefix
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.ModGUID
+  name: ModGUID
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_ModGUID
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.ModGUID
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.ModGUID
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.ModGUID
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.PageTypeTemplate
+  name: PageTypeTemplate
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_PageTypeTemplate
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.PageTypeTemplate
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.PageTypeTemplate
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.PageTypeTemplate
+- uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.SubSectionName
+  name: SubSectionName
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html#InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_SubSectionName
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.SubSectionName
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.SubSectionName
+  nameWithType: RuleBookManager.FullRuleBookRangeInfo.SubSectionName
+- uid: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple(System.String)
+  name: HeaderPrefixSimple(String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_HeaderPrefixSimple_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple(System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple(System.String)
+  nameWithType: RuleBookManager.HeaderPrefixSimple(String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple*
+  name: HeaderPrefixSimple
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_HeaderPrefixSimple_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple
+  nameWithType: RuleBookManager.HeaderPrefixSimple
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ModifyRuleBookInfos
+  name: ModifyRuleBookInfos
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ModifyRuleBookInfos
+  commentId: E:InscryptionAPI.RuleBook.RuleBookManager.ModifyRuleBookInfos
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ModifyRuleBookInfos
+  nameWithType: RuleBookManager.ModifyRuleBookInfos
+- uid: InscryptionAPI.RuleBook.RuleBookManager.New(System.String,DiskCardGame.PageRangeType,System.String,Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}},System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name: New(String, PageRangeType, String, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>, String, Func<List<RuleBookPageInfo>, Int32>, Action<RuleBookPage, String, Object[]>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_New_System_String_DiskCardGame_PageRangeType_System_String_Func_DiskCardGame_PageRangeInfo_List_DiskCardGame_RuleBookPageInfo__System_Int32__Func_DiskCardGame_RuleBookInfo_DiskCardGame_PageRangeInfo_DiskCardGame_AbilityMetaCategory_List_DiskCardGame_RuleBookPageInfo___System_String_Func_List_DiskCardGame_RuleBookPageInfo__System_Int32__Action_DiskCardGame_RuleBookPage_System_String_System_Object____
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.New(System.String,DiskCardGame.PageRangeType,System.String,Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}},System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name.vb: New(String, PageRangeType, String, Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)), String, Func(Of List(Of RuleBookPageInfo), Int32), Action(Of RuleBookPage, String, Object()))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.New(System.String, DiskCardGame.PageRangeType, System.String, Func<DiskCardGame.PageRangeInfo, List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Func<DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List<DiskCardGame.RuleBookPageInfo>>, System.String, Func<List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Action<DiskCardGame.RuleBookPage, System.String, System.Object[]>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.New(System.String, DiskCardGame.PageRangeType, System.String, Func(Of DiskCardGame.PageRangeInfo, List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Func(Of DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List(Of DiskCardGame.RuleBookPageInfo)), System.String, Func(Of List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Action(Of DiskCardGame.RuleBookPage, System.String, System.Object()))
+  nameWithType: RuleBookManager.New(String, PageRangeType, String, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>, String, Func<List<RuleBookPageInfo>, Int32>, Action<RuleBookPage, String, Object[]>)
+  nameWithType.vb: RuleBookManager.New(String, PageRangeType, String, Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)), String, Func(Of List(Of RuleBookPageInfo), Int32), Action(Of RuleBookPage, String, Object()))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.New(System.String,DiskCardGame.PageRangeType,System.String,System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}})
+  name: New(String, PageRangeType, String, String, Func<List<RuleBookPageInfo>, Int32>, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_New_System_String_DiskCardGame_PageRangeType_System_String_System_String_Func_List_DiskCardGame_RuleBookPageInfo__System_Int32__Func_DiskCardGame_PageRangeInfo_List_DiskCardGame_RuleBookPageInfo__System_Int32__Func_DiskCardGame_RuleBookInfo_DiskCardGame_PageRangeInfo_DiskCardGame_AbilityMetaCategory_List_DiskCardGame_RuleBookPageInfo___
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.New(System.String,DiskCardGame.PageRangeType,System.String,System.String,Func{List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.PageRangeInfo,List{DiskCardGame.RuleBookPageInfo},System.Int32},Func{DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory,List{DiskCardGame.RuleBookPageInfo}})
+  name.vb: New(String, PageRangeType, String, String, Func(Of List(Of RuleBookPageInfo), Int32), Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.New(System.String, DiskCardGame.PageRangeType, System.String, System.String, Func<List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Func<DiskCardGame.PageRangeInfo, List<DiskCardGame.RuleBookPageInfo>, System.Int32>, Func<DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List<DiskCardGame.RuleBookPageInfo>>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.New(System.String, DiskCardGame.PageRangeType, System.String, System.String, Func(Of List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Func(Of DiskCardGame.PageRangeInfo, List(Of DiskCardGame.RuleBookPageInfo), System.Int32), Func(Of DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory, List(Of DiskCardGame.RuleBookPageInfo)))
+  nameWithType: RuleBookManager.New(String, PageRangeType, String, String, Func<List<RuleBookPageInfo>, Int32>, Func<PageRangeInfo, List<RuleBookPageInfo>, Int32>, Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>>)
+  nameWithType.vb: RuleBookManager.New(String, PageRangeType, String, String, Func(Of List(Of RuleBookPageInfo), Int32), Func(Of PageRangeInfo, List(Of RuleBookPageInfo), Int32), Func(Of RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List(Of RuleBookPageInfo)))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.New*
+  name: New
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_New_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.New
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.New
+  nameWithType: RuleBookManager.New
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name: SetFillPage(RuleBookManager.FullRuleBookRangeInfo, Action<RuleBookPage, String, Object[]>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetFillPage_InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_Action_DiskCardGame_RuleBookPage_System_String_System_Object____
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.SetFillPage(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
+  name.vb: SetFillPage(RuleBookManager.FullRuleBookRangeInfo, Action(Of RuleBookPage, String, Object()))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo, Action<DiskCardGame.RuleBookPage, System.String, System.Object[]>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo, Action(Of DiskCardGame.RuleBookPage, System.String, System.Object()))
+  nameWithType: RuleBookManager.SetFillPage(RuleBookManager.FullRuleBookRangeInfo, Action<RuleBookPage, String, Object[]>)
+  nameWithType.vb: RuleBookManager.SetFillPage(RuleBookManager.FullRuleBookRangeInfo, Action(Of RuleBookPage, String, Object()))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage*
+  name: SetFillPage
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetFillPage_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.SetFillPage
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage
+  nameWithType: RuleBookManager.SetFillPage
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,System.String)
+  name: SetHeaderPrefix(RuleBookManager.FullRuleBookRangeInfo, String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetHeaderPrefix_InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo, System.String)
+  nameWithType: RuleBookManager.SetHeaderPrefix(RuleBookManager.FullRuleBookRangeInfo, String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix*
+  name: SetHeaderPrefix
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetHeaderPrefix_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefix
+  nameWithType: RuleBookManager.SetHeaderPrefix
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,System.String)
+  name: SetHeaderPrefixSimple(RuleBookManager.FullRuleBookRangeInfo, String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetHeaderPrefixSimple_InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo, System.String)
+  nameWithType: RuleBookManager.SetHeaderPrefixSimple(RuleBookManager.FullRuleBookRangeInfo, String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple*
+  name: SetHeaderPrefixSimple
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetHeaderPrefixSimple_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple
+  nameWithType: RuleBookManager.SetHeaderPrefixSimple
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList
+  name: SyncRuleBookList()
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SyncRuleBookList
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList()
+  nameWithType: RuleBookManager.SyncRuleBookList()
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList*
+  name: SyncRuleBookList
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SyncRuleBookList_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList
+  nameWithType: RuleBookManager.SyncRuleBookList
+- uid: InscryptionAPI.RuleBook.RuleBookManagerPatches
+  name: RuleBookManagerPatches
+  href: api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookManagerPatches
+  fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches
+  nameWithType: RuleBookManagerPatches
+- uid: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage,DiskCardGame.RuleBookPageInfo)
+  name: FillPage(RuleBookPage, RuleBookPageInfo)
+  href: api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html#InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_DiskCardGame_RuleBookPage_DiskCardGame_RuleBookPageInfo_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage,DiskCardGame.RuleBookPageInfo)
+  fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage, DiskCardGame.RuleBookPageInfo)
+  nameWithType: RuleBookManagerPatches.FillPage(RuleBookPage, RuleBookPageInfo)
+- uid: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage*
+  name: FillPage
+  href: api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html#InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage
+  nameWithType: RuleBookManagerPatches.FillPage
 - uid: InscryptionAPI.Saves
   name: InscryptionAPI.Saves
   href: api/InscryptionAPI.Saves.html
@@ -16681,6 +17042,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification
   nameWithType: SlotModificationExtensions.GetSlotModification
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable{InscryptionAPI.Slots.SlotModificationManager.Info},InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name: InfoByID(IEnumerable<SlotModificationManager.Info>, SlotModificationManager.ModificationType)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_System_Collections_IEnumerable_InscryptionAPI_Slots_SlotModificationManager_Info__InscryptionAPI_Slots_SlotModificationManager_ModificationType_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable{InscryptionAPI.Slots.SlotModificationManager.Info},InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name.vb: InfoByID(IEnumerable(Of SlotModificationManager.Info), SlotModificationManager.ModificationType)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable<InscryptionAPI.Slots.SlotModificationManager.Info>, InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable(Of InscryptionAPI.Slots.SlotModificationManager.Info), InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  nameWithType: SlotModificationExtensions.InfoByID(IEnumerable<SlotModificationManager.Info>, SlotModificationManager.ModificationType)
+  nameWithType.vb: SlotModificationExtensions.InfoByID(IEnumerable(Of SlotModificationManager.Info), SlotModificationManager.ModificationType)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.InfoByID*
+  name: InfoByID
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.InfoByID
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.InfoByID
+  nameWithType: SlotModificationExtensions.InfoByID
 - uid: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)
   name: ResetSlotTexture(CardSlot)
   href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_DiskCardGame_CardSlot_
@@ -16694,6 +17071,22 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture
   nameWithType: SlotModificationExtensions.ResetSlotTexture
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Texture2D,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])
+  name: SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory[])
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_UnityEngine_Texture2D_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory___
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Texture2D,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])
+  name.vb: SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory())
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, System.String, UnityEngine.Texture2D, InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])
+  fullName.vb: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, System.String, UnityEngine.Texture2D, InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory())
+  nameWithType: SlotModificationExtensions.SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory[])
+  nameWithType.vb: SlotModificationExtensions.SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory())
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook*
+  name: SetRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook
+  nameWithType: SlotModificationExtensions.SetRulebook
 - uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
   name: SetSlotModification(CardSlot, SlotModificationManager.ModificationType)
   href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_DiskCardGame_CardSlot_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
@@ -16778,12 +17171,96 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationGainAbilityBehaviour.Setup
   nameWithType: SlotModificationGainAbilityBehaviour.Setup
+- uid: InscryptionAPI.Slots.SlotModificationInteractable
+  name: SlotModificationInteractable
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationInteractable
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable
+  nameWithType: SlotModificationInteractable
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification(InscryptionAPI.Slots.SlotModificationManager.ModificationType,DiskCardGame.CardSlot)
+  name: AssignSlotModification(SlotModificationManager.ModificationType, CardSlot)
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_AssignSlotModification_InscryptionAPI_Slots_SlotModificationManager_ModificationType_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification(InscryptionAPI.Slots.SlotModificationManager.ModificationType,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification(InscryptionAPI.Slots.SlotModificationManager.ModificationType, DiskCardGame.CardSlot)
+  nameWithType: SlotModificationInteractable.AssignSlotModification(SlotModificationManager.ModificationType, CardSlot)
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification*
+  name: AssignSlotModification
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_AssignSlotModification_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification
+  nameWithType: SlotModificationInteractable.AssignSlotModification
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.CursorType
+  name: CursorType
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_CursorType
+  commentId: P:InscryptionAPI.Slots.SlotModificationInteractable.CursorType
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.CursorType
+  nameWithType: SlotModificationInteractable.CursorType
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.CursorType*
+  name: CursorType
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_CursorType_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationInteractable.CursorType
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.CursorType
+  nameWithType: SlotModificationInteractable.CursorType
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.ModType
+  name: ModType
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_ModType
+  commentId: P:InscryptionAPI.Slots.SlotModificationInteractable.ModType
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.ModType
+  nameWithType: SlotModificationInteractable.ModType
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.ModType*
+  name: ModType
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_ModType_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationInteractable.ModType
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.ModType
+  nameWithType: SlotModificationInteractable.ModType
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted
+  name: OnAlternateSelectStarted()
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_OnAlternateSelectStarted
+  commentId: M:InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted()
+  nameWithType: SlotModificationInteractable.OnAlternateSelectStarted()
+- uid: InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted*
+  name: OnAlternateSelectStarted
+  href: api/InscryptionAPI.Slots.SlotModificationInteractable.html#InscryptionAPI_Slots_SlotModificationInteractable_OnAlternateSelectStarted_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted
+  nameWithType: SlotModificationInteractable.OnAlternateSelectStarted
 - uid: InscryptionAPI.Slots.SlotModificationManager
   name: SlotModificationManager
   href: api/InscryptionAPI.Slots.SlotModificationManager.html
   commentId: T:InscryptionAPI.Slots.SlotModificationManager
   fullName: InscryptionAPI.Slots.SlotModificationManager
   nameWithType: SlotModificationManager
+- uid: InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos
+  name: AllModificationInfos
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_AllModificationInfos
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos
+  fullName: InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos
+  nameWithType: SlotModificationManager.AllModificationInfos
+- uid: InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos*
+  name: AllModificationInfos
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_AllModificationInfos_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos
+  nameWithType: SlotModificationManager.AllModificationInfos
+- uid: InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes
+  name: AllModificationTypes
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_AllModificationTypes
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes
+  fullName: InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes
+  nameWithType: SlotModificationManager.AllModificationTypes
+- uid: InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes*
+  name: AllModificationTypes
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_AllModificationTypes_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes
+  nameWithType: SlotModificationManager.AllModificationTypes
 - uid: InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(UnityEngine.Texture2D)
   name: BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)
   href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_UnityEngine_Texture2D_
@@ -16816,6 +17293,54 @@ references:
   commentId: T:InscryptionAPI.Slots.SlotModificationManager.Info
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info
   nameWithType: SlotModificationManager.Info
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.Type,System.String,System.String,UnityEngine.Sprite,System.Collections.Generic.List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
+  name: Info(String, String, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>, SlotModificationManager.ModificationType, Type, String, String, Sprite, List<SlotModificationManager.ModificationMetaCategory>)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info__ctor_System_String_System_String_System_Collections_Generic_Dictionary_CardTemple_UnityEngine_Texture2D__System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_Type_System_String_System_String_UnityEngine_Sprite_System_Collections_Generic_List_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.Type,System.String,System.String,UnityEngine.Sprite,System.Collections.Generic.List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
+  name.vb: Info(String, String, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet), SlotModificationManager.ModificationType, Type, String, String, Sprite, List(Of SlotModificationManager.ModificationMetaCategory))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, System.Collections.Generic.Dictionary<CardTemple, UnityEngine.Texture2D>, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>, InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.Type, System.String, System.String, UnityEngine.Sprite, System.Collections.Generic.List<InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, System.Collections.Generic.Dictionary(Of CardTemple, UnityEngine.Texture2D), System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet), InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.Type, System.String, System.String, UnityEngine.Sprite, System.Collections.Generic.List(Of InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory))
+  nameWithType: SlotModificationManager.Info.Info(String, String, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>, SlotModificationManager.ModificationType, Type, String, String, Sprite, List<SlotModificationManager.ModificationMetaCategory>)
+  nameWithType.vb: SlotModificationManager.Info.Info(String, String, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet), SlotModificationManager.ModificationType, Type, String, String, Sprite, List(Of SlotModificationManager.ModificationMetaCategory))
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.#ctor*
+  name: Info
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info__ctor_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Info
+  nameWithType: SlotModificationManager.Info.Info
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Clone
+  name: Clone()
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Clone
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.Info.Clone
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Clone()
+  nameWithType: SlotModificationManager.Info.Clone()
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Clone*
+  name: Clone
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Clone_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.Clone
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Clone
+  nameWithType: SlotModificationManager.Info.Clone
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.MetaCategories
+  name: MetaCategories
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_MetaCategories
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.Info.MetaCategories
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.MetaCategories
+  nameWithType: SlotModificationManager.Info.MetaCategories
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID
+  name: ModGUID
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_ModGUID
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID
+  nameWithType: SlotModificationManager.Info.ModGUID
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID*
+  name: ModGUID
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_ModGUID_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID
+  nameWithType: SlotModificationManager.Info.ModGUID
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
   name: ModificationType
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_ModificationType
@@ -16829,6 +17354,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.ModificationType
   nameWithType: SlotModificationManager.Info.ModificationType
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Name
+  name: Name
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Name
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.Name
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Name
+  nameWithType: SlotModificationManager.Info.Name
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.Name*
+  name: Name
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_Name_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.Name
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Name
+  nameWithType: SlotModificationManager.Info.Name
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
   name: PixelBoardSlotSprites
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_PixelBoardSlotSprites
@@ -16842,6 +17380,45 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
   nameWithType: SlotModificationManager.Info.PixelBoardSlotSprites
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
+  name: RulebookDescription
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookDescription
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
+  nameWithType: SlotModificationManager.Info.RulebookDescription
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription*
+  name: RulebookDescription
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookDescription_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
+  nameWithType: SlotModificationManager.Info.RulebookDescription
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
+  name: RulebookName
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookName
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
+  nameWithType: SlotModificationManager.Info.RulebookName
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName*
+  name: RulebookName
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookName_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
+  nameWithType: SlotModificationManager.Info.RulebookName
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
+  name: RulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookSprite
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
+  nameWithType: SlotModificationManager.Info.RulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite*
+  name: RulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
+  nameWithType: SlotModificationManager.Info.RulebookSprite
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
   name: SlotBehaviour
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SlotBehaviour
@@ -16881,6 +17458,36 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Instance
   nameWithType: SlotModificationManager.Instance
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory
+  name: SlotModificationManager.ModificationMetaCategory
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html
+  commentId: T:InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory
+  nameWithType: SlotModificationManager.ModificationMetaCategory
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.GrimoraRulebook
+  name: GrimoraRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html#InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_GrimoraRulebook
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.GrimoraRulebook
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.GrimoraRulebook
+  nameWithType: SlotModificationManager.ModificationMetaCategory.GrimoraRulebook
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.MagnificusRulebook
+  name: MagnificusRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html#InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_MagnificusRulebook
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.MagnificusRulebook
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.MagnificusRulebook
+  nameWithType: SlotModificationManager.ModificationMetaCategory.MagnificusRulebook
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part1Rulebook
+  name: Part1Rulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html#InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_Part1Rulebook
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part1Rulebook
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part1Rulebook
+  nameWithType: SlotModificationManager.ModificationMetaCategory.Part1Rulebook
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part3Rulebook
+  name: Part3Rulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html#InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_Part3Rulebook
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part3Rulebook
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.Part3Rulebook
+  nameWithType: SlotModificationManager.ModificationMetaCategory.Part3Rulebook
 - uid: InscryptionAPI.Slots.SlotModificationManager.ModificationType
   name: SlotModificationManager.ModificationType
   href: api/InscryptionAPI.Slots.SlotModificationManager.ModificationType.html
@@ -16893,6 +17500,12 @@ references:
   commentId: F:InscryptionAPI.Slots.SlotModificationManager.ModificationType.NoModification
   fullName: InscryptionAPI.Slots.SlotModificationManager.ModificationType.NoModification
   nameWithType: SlotModificationManager.ModificationType.NoModification
+- uid: InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList
+  name: ModifySlotModificationList
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_ModifySlotModificationList
+  commentId: E:InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList
+  fullName: InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList
+  nameWithType: SlotModificationManager.ModifySlotModificationList
 - uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type)
   name: New(String, String, Type)
   href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_
@@ -16971,6 +17584,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.ResetDefaultSlotTexture
   nameWithType: SlotModificationManager.ResetDefaultSlotTexture
+- uid: InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID
+  name: SLOT_PAGEID
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SLOT_PAGEID
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID
+  fullName: InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID
+  nameWithType: SlotModificationManager.SLOT_PAGEID
+- uid: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  name: SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_InscryptionAPI_Slots_SlotModificationManager_Info_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info, InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  nameWithType: SlotModificationManager.SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
+- uid: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded*
+  name: SlotModShouldBeAdded
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded
+  nameWithType: SlotModificationManager.SlotModShouldBeAdded
+- uid: InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList
+  name: SyncSlotModificationList()
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SyncSlotModificationList
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList
+  fullName: InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList()
+  nameWithType: SlotModificationManager.SyncSlotModificationList()
+- uid: InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList*
+  name: SyncSlotModificationList
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SyncSlotModificationList_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList
+  nameWithType: SlotModificationManager.SyncSlotModificationList
 - uid: InscryptionAPI.Sound
   name: InscryptionAPI.Sound
   href: api/InscryptionAPI.Sound.html

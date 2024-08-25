@@ -74,7 +74,8 @@
   
   <h1 id="InscryptionAPI_Slots_SlotModificationManager" data-uid="InscryptionAPI.Slots.SlotModificationManager" class="text-break">Class SlotModificationManager
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Manager for card slot modifications</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -92,11 +93,81 @@
     <pre><code class="lang-csharp hljs">[HarmonyPatch]
 public class SlotModificationManager : MonoBehaviour</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_SLOT_PAGEID" data-uid="InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID">SLOT_PAGEID</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string SLOT_PAGEID = &quot;SlotModification_&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_AllModificationInfos_" data-uid="InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_AllModificationInfos" data-uid="InscryptionAPI.Slots.SlotModificationManager.AllModificationInfos">AllModificationInfos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;SlotModificationManager.Info&gt; AllModificationInfos { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_AllModificationTypes_" data-uid="InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_AllModificationTypes" data-uid="InscryptionAPI.Slots.SlotModificationManager.AllModificationTypes">AllModificationTypes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;SlotModificationManager.ModificationType&gt; AllModificationTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_Instance_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Instance*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_Instance" data-uid="InscryptionAPI.Slots.SlotModificationManager.Instance">Instance</h4>
-  <div class="markdown level1 summary"><p>Singleton instance of the slot modification manager</p>
+  <div class="markdown level1 summary"><p>Singleton instance for the SlotModificationManager.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -258,7 +329,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_System_Collections_Generic_Dictionary_CardTemple_UnityEngine_Texture2D__System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Dictionary&lt;CardTemple, Texture2D&gt;, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a new card slot modification</p>
+  <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -385,7 +456,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Texture2D, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a new card slot modification</p>
+  <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -451,7 +522,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,UnityEngine.Texture2D)">New(String, String, Type, Texture2D, Texture2D)</h4>
-  <div class="markdown level1 summary"><p>Creates a new card slot modification</p>
+  <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -489,7 +560,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
         <td><span class="parametername">slotTexture</span></td>
-        <td><p>The 3D scene slot texture (154x226)</p>
+        <td><p>The 3D scene slot texture (154x226).</p>
 </td>
       </tr>
       <tr>
@@ -628,6 +699,83 @@ NPCs, so this will deliberately not touch Act 2</p>
         <td><span class="parametername">temple</span></td>
         <td><p>The scene/scrybe to reset</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_" data-uid="InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_InscryptionAPI_Slots_SlotModificationManager_Info_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_" data-uid="InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)">SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SlotModShouldBeAdded(SlotModificationManager.Info info, SlotModificationManager.ModificationMetaCategory category)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a></td>
+        <td><span class="parametername">info</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html">SlotModificationManager.ModificationMetaCategory</a></td>
+        <td><span class="parametername">category</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_SyncSlotModificationList_" data-uid="InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_SyncSlotModificationList" data-uid="InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList">SyncSlotModificationList()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SyncSlotModificationList()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_ModifySlotModificationList" data-uid="InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList">ModifySlotModificationList</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Func&lt;List&lt;SlotModificationManager.Info&gt;, List&lt;SlotModificationManager.Info&gt;&gt; ModifySlotModificationList</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

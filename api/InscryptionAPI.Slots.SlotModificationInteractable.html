@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class InscryptionAPIPlugin
+    <title>Class SlotModificationInteractable
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class InscryptionAPIPlugin
+    <meta name="title" content="Class SlotModificationInteractable
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,12 +69,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.InscryptionAPIPlugin">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Slots.SlotModificationInteractable">
   
   
-  <h1 id="InscryptionAPI_InscryptionAPIPlugin" data-uid="InscryptionAPI.InscryptionAPIPlugin" class="text-break">Class InscryptionAPIPlugin
+  <h1 id="InscryptionAPI_Slots_SlotModificationInteractable" data-uid="InscryptionAPI.Slots.SlotModificationInteractable" class="text-break">Class SlotModificationInteractable
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Base class for all slot modification behaviors</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -83,27 +84,29 @@
     <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
     <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
     <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">BepInEx.BaseUnityPlugin</span></div>
-    <div class="level6"><span class="xref">InscryptionAPIPlugin</span></div>
+    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
+    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
+    <div class="level7"><span class="xref">DiskCardGame.InteractableBase</span></div>
+    <div class="level8"><span class="xref">DiskCardGame.AlternateInputInteractable</span></div>
+    <div class="level9"><span class="xref">SlotModificationInteractable</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.html">InscryptionAPI</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Slots.html">InscryptionAPI.Slots</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_InscryptionAPIPlugin_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Slots_SlotModificationInteractable_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[BepInPlugin(&quot;cyantist.inscryption.api&quot;, &quot;InscryptionAPI&quot;, &quot;2.21.0&quot;)]
-[HarmonyPatch]
-public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
+    <pre><code class="lang-csharp hljs">public class SlotModificationInteractable : AlternateInputInteractable</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_Directory" data-uid="InscryptionAPI.InscryptionAPIPlugin.Directory">Directory</h4>
+  <a id="InscryptionAPI_Slots_SlotModificationInteractable_CursorType_" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.CursorType*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationInteractable_CursorType" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.CursorType">CursorType</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string Directory</code></pre>
+    <pre><code class="lang-csharp hljs">public override CursorType CursorType { get; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -113,19 +116,22 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">DiskCardGame.CursorType</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModGUID" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModGUID">ModGUID</h4>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.InteractableBase.CursorType</span></div>
+  <a id="InscryptionAPI_Slots_SlotModificationInteractable_ModType_" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.ModType*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationInteractable_ModType" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.ModType">ModType</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModGUID = &quot;cyantist.inscryption.api&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public SlotModificationManager.ModificationType ModType { get; set; }</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -135,79 +141,53 @@ public class InscryptionAPIPlugin : BaseUnityPlugin</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModName" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModName">ModName</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModName = &quot;InscryptionAPI&quot;</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ModVer" data-uid="InscryptionAPI.InscryptionAPIPlugin.ModVer">ModVer</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string ModVer = &quot;2.21.0&quot;</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
+  <h3 id="methods">Methods
   </h3>
-  <h4 id="InscryptionAPI_InscryptionAPIPlugin_ScriptableObjectLoaderLoad" data-uid="InscryptionAPI.InscryptionAPIPlugin.ScriptableObjectLoaderLoad">ScriptableObjectLoaderLoad</h4>
+  <a id="InscryptionAPI_Slots_SlotModificationInteractable_AssignSlotModification_" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationInteractable_AssignSlotModification_InscryptionAPI_Slots_SlotModificationManager_ModificationType_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.AssignSlotModification(InscryptionAPI.Slots.SlotModificationManager.ModificationType,DiskCardGame.CardSlot)">AssignSlotModification(SlotModificationManager.ModificationType, CardSlot)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static event Action&lt;Type&gt; ScriptableObjectLoaderLoad</code></pre>
+    <pre><code class="lang-csharp hljs">public void AssignSlotModification(SlotModificationManager.ModificationType modType, CardSlot cardSlot)</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Action</span>&lt;<span class="xref">Type</span>&gt;</td>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
+        <td><span class="parametername">modType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Slots_SlotModificationInteractable_OnAlternateSelectStarted_" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationInteractable_OnAlternateSelectStarted" data-uid="InscryptionAPI.Slots.SlotModificationInteractable.OnAlternateSelectStarted">OnAlternateSelectStarted()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnAlternateSelectStarted()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.AlternateInputInteractable.OnAlternateSelectStarted()</span></div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>

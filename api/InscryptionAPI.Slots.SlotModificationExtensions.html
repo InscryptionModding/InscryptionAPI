@@ -131,6 +131,51 @@ public static class SlotModificationExtensions</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.InfoByID*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_System_Collections_IEnumerable_InscryptionAPI_Slots_SlotModificationManager_Info__InscryptionAPI_Slots_SlotModificationManager_ModificationType_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable{InscryptionAPI.Slots.SlotModificationManager.Info},InscryptionAPI.Slots.SlotModificationManager.ModificationType)">InfoByID(IEnumerable&lt;SlotModificationManager.Info&gt;, SlotModificationManager.ModificationType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SlotModificationManager.Info InfoByID(this IEnumerable&lt;SlotModificationManager.Info&gt; modInfos, SlotModificationManager.ModificationType mod)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;</td>
+        <td><span class="parametername">modInfos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
+        <td><span class="parametername">mod</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)">ResetSlotTexture(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Resets a slot&apos;s texture back to the default texture for that slot based on the current act.</p>
@@ -154,6 +199,71 @@ public static class SlotModificationExtensions</code></pre>
         <td><span class="xref">DiskCardGame.CardSlot</span></td>
         <td><span class="parametername">slot</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_UnityEngine_Texture2D_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory___" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Texture2D,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])">SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory[])</h4>
+  <div class="markdown level1 summary"><p>Sets the rulebook description for a slot modification.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SlotModificationManager.ModificationType SetRulebook(this SlotModificationManager.ModificationType mod, string rulebookName, string rulebookDescription, Texture2D rulebookSprite, params SlotModificationManager.ModificationMetaCategory[] categories)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
+        <td><span class="parametername">mod</span></td>
+        <td><p>The ModificationType to add a rulebook description for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookDescription</span></td>
+        <td><p>The rulebook description for the ModificationType.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">rulebookSprite</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory.html">SlotModificationManager.ModificationMetaCategory</a>[]</td>
+        <td><span class="parametername">categories</span></td>
+        <td><p>What Acts the rulebook entry should appear in.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
+        <td><p>The same ModificationType.</p>
+</td>
       </tr>
     </tbody>
   </table>
