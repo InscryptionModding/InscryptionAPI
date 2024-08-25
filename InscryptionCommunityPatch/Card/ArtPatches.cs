@@ -94,5 +94,12 @@ internal static class CommunityArtPatches
 
         foreach (string name in regularCardsToPatch)
             CardManager.BaseGameCards.CardByName(name).SetPixelPortrait(TextureHelper.GetImageAsTexture($"{name}_pixel.png", ass));
+
+        if (PatchPlugin.undeadCatEmission.Value)
+        {
+            CardManager.BaseGameCards.CardByName("CatUndead")
+            .SetEmissivePortrait(TextureHelper.GetImageAsTexture("CatUndead_emission.png", ass))
+            .AddAppearances(CardAppearanceBehaviour.Appearance.RedEmission);
+        }
     }
 }

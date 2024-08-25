@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
+using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
@@ -14,16 +16,16 @@ using UnityEngine;
 
 namespace InscryptionAPI.Slots;
 
-[HarmonyPatch]
 /// <summary>
 /// Manager for card slot modifications
 /// </summary>
+[HarmonyPatch]
 public class SlotModificationManager : MonoBehaviour
 {
     private static SlotModificationManager m_instance;
 
     /// <summary>
-    /// Singleton instance of the slot modification manager
+    /// Singleton instance for the SlotModificationManager.
     /// </summary>
     public static SlotModificationManager Instance
     {
@@ -31,6 +33,7 @@ public class SlotModificationManager : MonoBehaviour
         {
             if (m_instance != null)
                 return m_instance;
+
             Instantiate();
             return m_instance;
         }
@@ -56,10 +59,48 @@ public class SlotModificationManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Used to determine what Acts a modification's rulebook entry should appear in.
+    /// Values correspond to specific AbilityMetaCategory values.
+    /// </summary>
+    public enum ModificationMetaCategory
+    {
+        Part1Rulebook = 0,
+        Part3Rulebook = 2,
+        GrimoraRulebook = 5,
+        MagnificusRulebook = 6
+    }
+
+    /// <summary>
     /// Contains information about a slot modification.
     /// </summary>
     public class Info
     {
+        /// <summary>
+        /// The internal name for the slot modification.
+        /// </summary>
+        public string Name { get; internal set; }
+        /// <summary>
+        /// The GUID of the mod that added this slot modification.
+        /// </summary>
+        public string ModGUID { get; internal set; }
+
+        /// <summary>
+        /// If this slot modification can appear in the rulebook, this will be the name displayed. Leave null if you don't want your slot modification to appear in the rulebook.
+        /// </summary>
+        public string RulebookName { get; set; }
+        /// <summary>
+        /// The slot's description as it will appear in the rulebook.
+        /// </summary>
+        public string RulebookDescription { get; set; }
+
+        /// <summary>
+        /// If this slot modification can appear in the rulebook, this will be the sprite displayed.
+        /// Texture should have the dimensions 154 x 226; if the sprite is null then the rulebook entry will use the first entry in Texture as a sprite.
+        /// </summary>
+        public Sprite RulebookSprite { get; set; }
+
+        public List<ModificationMetaCategory> MetaCategories = new();
+        
         /// <summary>
         /// The slot's modified texture in 3D scenes (Leshy, P03, etc) (154x226)
         /// </summary>
@@ -80,24 +121,78 @@ public class SlotModificationManager : MonoBehaviour
         /// Class that contains the behavior for the slot. This must be a subclass of SlotModificationBehaviour
         /// </summary>
         public Type SlotBehaviour { get; internal set; }
+
+        public Info(string name, string modGuid,
+            Dictionary<CardTemple, Texture2D> texture,
+            Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelSprites,
+            ModificationType modType, Type behaviour,
+            string rulebookName, string rulebookDescription, Sprite rulebookSprite,
+            List<ModificationMetaCategory> categories)
+        {
+            this.Name = name;
+            this.ModGUID = modGuid;
+            this.Texture = texture;
+            this.PixelBoardSlotSprites = pixelSprites;
+            this.ModificationType = modType;
+            this.SlotBehaviour = behaviour;
+            this.RulebookName = rulebookName;
+            this.RulebookDescription = rulebookDescription;
+            this.RulebookSprite = rulebookSprite;
+            this.MetaCategories = categories;
+        }
+        public Info Clone()
+        {
+            return new(
+                this.Name, this.ModGUID,
+                this.Texture != null ? new(this.Texture) : null,
+                this.PixelBoardSlotSprites != null ? new(this.PixelBoardSlotSprites) : null,
+                this.ModificationType, this.SlotBehaviour,
+                this.RulebookName, this.RulebookDescription, this.RulebookSprite,
+                this.MetaCategories
+                );
+        }
     }
 
-    internal static List<Info> AllSlotModifications = new() {
-        new () {
-            Texture = null,
-            ModificationType = ModificationType.NoModification,
-            SlotBehaviour = null
-        }
+    internal readonly Dictionary<CardSlot, Tuple<ModificationType, SlotModificationBehaviour>> SlotReceivers = new();
+
+    internal readonly static ObservableCollection<Info> AllSlotModifications = new() {
+        new("NoModification", InscryptionAPIPlugin.ModGUID, null, null, ModificationType.NoModification, null, null, null, null, new())
     };
+
+    // old AllSlotModifications, keep in case changing it to an ObservableCollection breaks garbage
+    /*internal static List<Info> AllSlotModifications = new() {
+        new("NoModification", InscryptionAPIPlugin.ModGUID, null, null, ModificationType.NoModification, null, null, new())
+    };*/
+
+    public static List<Info> AllModificationInfos { get; private set; } = new();
+    public static List<ModificationType> AllModificationTypes { get; private set; } = new();
+
+    public static event Func<List<Info>, List<Info>> ModifySlotModificationList;
+
+    static SlotModificationManager()
+    {
+        AllSlotModifications.CollectionChanged += static (_, _) =>
+        {
+            SyncSlotModificationList();
+        };
+    }
+
+    public static void SyncSlotModificationList()
+    {
+        AllModificationInfos = AllSlotModifications.Select(x => x.Clone()).ToList();
+        AllModificationInfos = ModifySlotModificationList?.Invoke(AllModificationInfos) ?? AllModificationInfos;
+        AllModificationTypes = AllSlotModifications.Select(x => x.ModificationType).ToList();
+    }
 
     private static Color ParseHtml(string html)
     {
         if (ColorUtility.TryParseHtmlString(html, out Color c))
             return c;
+
         return Color.white;
     }
 
-    private static readonly Color TRANSPARENT = new Color(0f, 0f, 0f, 0f);
+    private static readonly Color TRANSPARENT = new(0f, 0f, 0f, 0f);
 
     private static readonly Dictionary<PixelBoardSpriteSetter.BoardTheme, Tuple<Color, Color>> DEFAULT_COLORS = new()
     {
@@ -108,6 +203,112 @@ public class SlotModificationManager : MonoBehaviour
         { PixelBoardSpriteSetter.BoardTheme.Undead, new(ParseHtml("#C1D080"), ParseHtml("#EEF4C6")) },
         { PixelBoardSpriteSetter.BoardTheme.Finale, new(ParseHtml("#E14C89"), ParseHtml("#F779AD")) },
     };
+
+    /// <summary>
+    /// Creates a new card slot modification.
+    /// </summary>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
+    /// <param name="modificationName">Reference name for the slot modification</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
+    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
+    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
+    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Dictionary<CardTemple, Texture2D> slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
+    {
+        if (!behaviour.IsSubclassOf(typeof(SlotModificationBehaviour)))
+            throw new InvalidOperationException($"Could not create new ModificationType {modificationName}; behaviour must be a subclass of SlotModificationBehaviour");
+
+        ModificationType mType = GuidManager.GetEnumValue<ModificationType>(modGuid, modificationName);
+        AllSlotModifications.Add(new(modificationName, modGuid, slotTexture, pixelBoardSlotSprites, mType, behaviour, null, null, null, new()));
+        return mType;
+    }
+
+    /// <summary>
+    /// Creates a new card slot modification.
+    /// </summary>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
+    /// <param name="modificationName">Reference name for the slot modification</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
+    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
+    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
+    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
+    {
+        Dictionary<CardTemple, Texture2D> templeMap = new()
+        {
+            [CardTemple.Nature] = slotTexture,
+            [CardTemple.Tech] = slotTexture,
+            [CardTemple.Undead] = slotTexture,
+            [CardTemple.Wizard] = slotTexture
+        };
+        return New(modGuid, modificationName, behaviour, templeMap, pixelBoardSlotSprites);
+    }
+
+    /// <summary>
+    /// Creates a new card slot modification.
+    /// </summary>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
+    /// <param name="modificationName">Reference name for the slot modification</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226).</param>
+    /// <param name="pixelSlotTexture">The 2D scene slot texture. If it is the size of a single slot (44x58) it will be color converted to match each theme. If it is the size of a slot sprite sheet (220x116) it will be sliced into individual sprites.</param>
+    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
+    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture, Texture2D pixelSlotTexture)
+    {
+        Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> spriteSet = null;
+        if (pixelSlotTexture != null)
+        {
+            if (pixelSlotTexture.width == 44 && pixelSlotTexture.height == 58)
+                spriteSet = BuildAct2SpriteSetFromTexture(pixelSlotTexture);
+            else if (pixelSlotTexture.width == 220 && (pixelSlotTexture.height == 116 || pixelSlotTexture.height == 232))
+                spriteSet = BuildAct2SpriteSetFromSpriteSheetTexture(pixelSlotTexture);
+            else
+                throw new InvalidOperationException($"Cannot create slot mod {modGuid}/{modificationName}. The pixel slot texture must either be a single slot (44x58) or a 5x2 sprite sheet (220x116) or a 5x4 sprite sheet (220x232)");
+        }
+        return New(modGuid, modificationName, behaviour, slotTexture, spriteSet);
+    }
+
+    /// <summary>
+    /// Creates a new card slot modification
+    /// </summary>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
+    /// <param name="modificationName">Reference name for the slot modification</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
+    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
+    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture) => New(modGuid, modificationName, behaviour, slotTexture, (Texture2D)null);
+
+    /// <summary>
+    /// Creates a new card slot modification
+    /// </summary>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
+    /// <param name="modificationName">Reference name for the slot modification</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
+    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
+    public static ModificationType New(string modGuid, string modificationName, Type behaviour) => New(modGuid, modificationName, behaviour, null, (Texture2D)null);
+
+    internal static readonly Dictionary<CardTemple, Texture> DefaultSlotTextures = new()
+    {
+        { CardTemple.Nature, ResourceBank.Get<Texture>("Art/Cards/card_slot") },
+        { CardTemple.Tech, ResourceBank.Get<Texture>("Art/Cards/card_slot_tech") },
+        { CardTemple.Wizard, ResourceBank.Get<Texture>("Art/Cards/card_slot_undead") },
+        { CardTemple.Undead, ResourceBank.Get<Texture>("Art/Cards/card_slot_wizard") }
+    };
+
+    internal static readonly Dictionary<CardTemple, List<Texture>> PlayerOverrideSlots = new();
+    internal static readonly Dictionary<CardTemple, List<Texture>> OpponentOverrideSlots = new();
+
+    private static void ConditionallyResetAllSlotTextures()
+    {
+        if (BoardManager.m_Instance != null)
+        {
+            foreach (var slot in BoardManager.Instance.AllSlotsCopy)
+            {
+                if (slot.GetSlotModification() == ModificationType.NoModification)
+                    slot.ResetSlotTexture();
+            }
+        }
+    }
 
     private static Texture2D ConvertAct2TextureColor(Texture2D tex, Color targetColor)
     {
@@ -215,153 +416,6 @@ public class SlotModificationManager : MonoBehaviour
         return retval;
     }
 
-    internal readonly Dictionary<CardSlot, Tuple<ModificationType, SlotModificationBehaviour>> SlotReceivers = new();
-
-    /// <summary>
-    /// Creates a new card slot modification
-    /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
-    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
-    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Dictionary<CardTemple, Texture2D> slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
-    {
-        if (!behaviour.IsSubclassOf(typeof(SlotModificationBehaviour)))
-            throw new InvalidOperationException("The slot behavior must be a subclass of SlotModificationBehaviour");
-
-        ModificationType mType = GuidManager.GetEnumValue<ModificationType>(modGuid, modificationName);
-
-        AllSlotModifications.Add(new()
-        {
-            Texture = slotTexture,
-            PixelBoardSlotSprites = pixelBoardSlotSprites ?? new(),
-            SlotBehaviour = behaviour,
-            ModificationType = mType
-        });
-        return mType;
-    }
-
-    /// <summary>
-    /// Creates a new card slot modification
-    /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
-    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
-    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
-    {
-        Dictionary<CardTemple, Texture2D> templeMap = new();
-        templeMap[CardTemple.Nature] = slotTexture;
-        templeMap[CardTemple.Tech] = slotTexture;
-        templeMap[CardTemple.Undead] = slotTexture;
-        templeMap[CardTemple.Wizard] = slotTexture;
-        return New(modGuid, modificationName, behaviour, templeMap, pixelBoardSlotSprites);
-    }
-
-    /// <summary>
-    /// Creates a new card slot modification
-    /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <param name="pixelSlotTexture">The 2D scene slot texture. If it is the size of a single slot (44x58) it will be color converted to match each theme. If it is the size of a slot sprite sheet (220x116) it will be sliced into individual sprites.</param>
-    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
-    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture, Texture2D pixelSlotTexture)
-    {
-        Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> spriteSet = null;
-        if (pixelSlotTexture != null)
-        {
-            if (pixelSlotTexture.width == 44 && pixelSlotTexture.height == 58)
-                spriteSet = BuildAct2SpriteSetFromTexture(pixelSlotTexture);
-            else if (pixelSlotTexture.width == 220 && (pixelSlotTexture.height == 116 || pixelSlotTexture.height == 232))
-                spriteSet = BuildAct2SpriteSetFromSpriteSheetTexture(pixelSlotTexture);
-            else
-                throw new InvalidOperationException($"Cannot create slot mod {modGuid}/{modificationName}. The pixel slot texture must either be a single slot (44x58) or a 5x2 sprite sheet (220x116) or a 5x4 sprite sheet (220x232)");
-        }
-        return New(modGuid, modificationName, behaviour, slotTexture, spriteSet);
-    }
-
-    /// <summary>
-    /// Creates a new card slot modification
-    /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
-    public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture) => New(modGuid, modificationName, behaviour, slotTexture, (Texture2D)null);
-
-    /// <summary>
-    /// Creates a new card slot modification
-    /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
-    public static ModificationType New(string modGuid, string modificationName, Type behaviour) => New(modGuid, modificationName, behaviour, null, (Texture2D)null);
-
-    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
-    [HarmonyPostfix]
-    private static IEnumerator CleanupSlots(IEnumerator sequence)
-    {
-        foreach (CardSlot slot in BoardManager.Instance.AllSlots)
-        {
-            if (slot.GetSlotModification() != ModificationType.NoModification)
-                yield return slot.SetSlotModification(ModificationType.NoModification);
-        }
-
-        // At this point, all of the receivers should be clear, but regardless, we double check
-        if (GlobalTriggerHandler.Instance.StackSize > 0)
-            yield return new WaitUntil(() => GlobalTriggerHandler.Instance.StackSize == 0);
-        foreach (var kvp in Instance.SlotReceivers)
-            GameObject.Destroy(kvp.Value.Item2);
-        Instance.SlotReceivers.Clear();
-
-        yield return sequence;
-    }
-
-    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.CleanUp))]
-    [HarmonyPostfix]
-    private static IEnumerator CleanUpModifiedSlots(IEnumerator sequence)
-    {
-        foreach (Info defn in AllSlotModifications.Where(m => m.SlotBehaviour != null))
-        {
-            Component comp = BoardManager.Instance.gameObject.GetComponent(defn.SlotBehaviour);
-            if (!comp.SafeIsUnityNull())
-                UnityEngine.Object.Destroy(comp);
-        }
-
-        yield return sequence;
-    }
-
-    internal static readonly Dictionary<CardTemple, Texture> DefaultSlotTextures = new()
-    {
-        { CardTemple.Nature, ResourceBank.Get<Texture>("Art/Cards/card_slot") },
-        { CardTemple.Tech, ResourceBank.Get<Texture>("Art/Cards/card_slot_tech") },
-        { CardTemple.Wizard, ResourceBank.Get<Texture>("Art/Cards/card_slot_undead") },
-        { CardTemple.Undead, ResourceBank.Get<Texture>("Art/Cards/card_slot_wizard") }
-    };
-
-    internal static readonly Dictionary<CardTemple, List<Texture>> PlayerOverrideSlots = new();
-    internal static readonly Dictionary<CardTemple, List<Texture>> OpponentOverrideSlots = new();
-
-    private static void ConditionallyResetAllSlotTextures()
-    {
-        if (BoardManager.Instance != null)
-        {
-            foreach (var slot in BoardManager.Instance.AllSlotsCopy)
-            {
-                if (slot.GetSlotModification() == ModificationType.NoModification)
-                    slot.ResetSlotTexture();
-            }
-        }
-    }
-
     /// <summary>
     /// Allows you to change the default slot texture for a given 3D scene
     /// </summary>
@@ -412,4 +466,102 @@ public class SlotModificationManager : MonoBehaviour
             OpponentOverrideSlots.Remove(temple);
         ConditionallyResetAllSlotTextures();
     }
+
+    #region Patches
+    [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
+    [HarmonyPostfix]
+    private static IEnumerator CleanupSlots(IEnumerator sequence)
+    {
+        foreach (CardSlot slot in BoardManager.Instance.AllSlots)
+        {
+            if (slot.GetSlotModification() != ModificationType.NoModification)
+                yield return slot.SetSlotModification(ModificationType.NoModification);
+
+            SlotModificationInteractable interactable = slot.GetComponent<SlotModificationInteractable>();
+            if (!interactable.SafeIsUnityNull())
+                UnityObject.Destroy(interactable);
+        }
+
+        // At this point, all of the receivers should be clear, but regardless, we double check
+        if (GlobalTriggerHandler.Instance.StackSize > 0)
+            yield return new WaitUntil(() => GlobalTriggerHandler.Instance.StackSize == 0);
+        foreach (var kvp in Instance.SlotReceivers)
+            GameObject.Destroy(kvp.Value.Item2);
+
+        Instance.SlotReceivers.Clear();
+
+        yield return sequence;
+    }
+
+    [HarmonyPatch(typeof(BoardManager), nameof(BoardManager.CleanUp))]
+    [HarmonyPostfix]
+    private static IEnumerator CleanUpModifiedSlots(IEnumerator sequence)
+    {
+        foreach (Info defn in AllModificationInfos.Where(m => m.SlotBehaviour != null))
+        {
+            Component comp = BoardManager.Instance.gameObject.GetComponent(defn.SlotBehaviour);
+            if (!comp.SafeIsUnityNull())
+                UnityEngine.Object.Destroy(comp);
+        }
+
+        yield return sequence;
+    }
+
+    [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
+    [HarmonyPostfix, HarmonyPriority(95)] // make sure custom item pages have been added first
+    private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+    {
+        //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {AllModificationInfos.Count}");
+        if (AllModificationInfos.Count > 0)
+        {
+            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
+            {
+                if (pageRangeInfo.type == PageRangeType.Items)
+                {
+                    int curPageNum = 1;
+                    int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
+                    List<Info> infos = AllModificationInfos.Where(x => SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
+                    foreach (Info slot in infos)
+                    {
+                        RuleBookPageInfo info = new();
+                        info.pagePrefab = pageRangeInfo.rangePrefab;
+                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION M - SLOT MODS {0}"), curPageNum);
+                        info.pageId = SLOT_PAGEID + (int)slot.ModificationType;
+                        __result.Insert(insertPosition, info);
+                        curPageNum++;
+                        insertPosition++;
+                    }
+                }
+            }
+        }
+    }
+
+    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) =>
+        info.RulebookName != null && info.MetaCategories.Contains(category);
+
+    public const string SLOT_PAGEID = "SlotModification_";
+    [HarmonyPrefix, HarmonyPatch(typeof(ItemPage), nameof(ItemPage.FillPage))]
+    private static bool OverrideWithSlotInfo(ItemPage __instance, string headerText, params object[] otherArgs)
+    {
+        if (otherArgs[0] is string pageId && pageId.StartsWith(SLOT_PAGEID))
+        {
+            string modString = pageId.Replace(SLOT_PAGEID, "");
+            if (int.TryParse(modString, out int modType))
+            {
+                if (__instance.headerTextMesh != null)
+                {
+                    __instance.headerTextMesh.text = headerText;
+                }
+                Info info = AllModificationInfos.InfoByID((ModificationType)modType);
+                __instance.nameTextMesh.text = Localization.Translate(info.RulebookName);
+                __instance.descriptionTextMesh.text = Localization.Translate(info.RulebookDescription);
+                __instance.iconRenderer.sprite = info.RulebookSprite ?? info.Texture.Values.First().ConvertTexture();
+                __instance.iconRenderer.transform.localScale = new(0.8f, 0.8f, 0.8f);
+                //InscryptionAPIPlugin.Logger.LogDebug($"Create rulebook page for slot modification [{info.ModificationType}] ({info.RulebookName}).");
+                return false;
+            }
+        }
+        return true;
+    }
+    #endregion
 }

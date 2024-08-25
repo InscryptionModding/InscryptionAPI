@@ -1,6 +1,22 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.21.0
+- Fixed ability stacks not rendering
+- Fixed rendering error when displaying a card with tribes outside of Act 1
+- Fixed ResetShields not re-setting lostShield to false under certain conditions
+- Fixed RemoveMaxEnergy not working as intended
+- Fixed custom AudioClips not loading correctly on Mac OSX
+- Added RuleBookManager for adding custom rulebook sections (see wiki for more info)
+- Added AllModificationInfos, AllModificationTypes, and modification syncing to SlotModificationManager
+- Added additional functionality to SlotModificationManager - Infos now store name and GUID
+- Added rulebook entry support for slot modifications - use extension method .SetRulebook() when adding your slot modification
+- Added more shield-related extensions
+- Added some AbilityInfo-related extensions
+- Added ShieldManager.AllShieldAbilities and ShieldManager.AllShieldInfos for easier tracking of custom shield abilities
+- Added config to the community patches to add a forced red emission to Undead Cat
+- Modified Obsolete warning for Helpers.CustomLine to point to Dialogue.CustomLine
+
 # 2.20.0
 - Updated wiki sections for Adding Map Nodes, and Conditional Map Nodes; moved Special Sequencers section to Opponents
 - Fixed issues related to challlenge icon sorting when a boss icon is present

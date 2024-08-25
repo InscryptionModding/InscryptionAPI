@@ -3,10 +3,12 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Encounters;
+using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using InscryptionAPI.Saves;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static InscryptionAPI.Slots.SlotModificationManager;
 
 namespace InscryptionAPI.Slots;
 
@@ -16,17 +18,57 @@ namespace InscryptionAPI.Slots;
 /// </summary>
 public static class SlotModificationExtensions
 {
+
+    public static Info InfoByID(this IEnumerable<Info> modInfos, ModificationType mod)
+    {
+        return modInfos.FirstOrDefault(x => x.ModificationType == mod);
+    }
+
+    /// <summary>
+    /// Sets the rulebook description for a slot modification.
+    /// </summary>
+    /// <param name="mod">The ModificationType to add a rulebook description for.</param>
+    /// <param name="rulebookDescription">The rulebook description for the ModificationType.</param>
+    /// <param name="categories">What Acts the rulebook entry should appear in.</param>
+    /// <returns>The same ModificationType.</returns>
+    public static ModificationType SetRulebook(this ModificationType mod, string rulebookName, string rulebookDescription, Texture2D rulebookSprite, params ModificationMetaCategory[] categories)
+    {
+        Info info = AllSlotModifications.InfoByID(mod);
+        if (info != null)
+        {
+            info.RulebookName = rulebookName;
+            info.RulebookDescription = rulebookDescription;
+            info.RulebookSprite = rulebookSprite.ConvertTexture();
+            foreach (ModificationMetaCategory category in categories)
+            {
+                if (!info.MetaCategories.Contains(category))
+                    info.MetaCategories.Add(category);
+            }
+        }
+        return mod;
+    }
+
     /// <summary>
     /// Assigns a new slot modification to a slot.
     /// </summary>
     /// <param name="slot">The slot to assign the modification to</param>
     /// <param name="modType">The modification type to assign</param>
-    public static IEnumerator SetSlotModification(this CardSlot slot, SlotModificationManager.ModificationType modType)
+    public static IEnumerator SetSlotModification(this CardSlot slot, ModificationType modType)
     {
         if (slot == null)
             yield break;
 
-        SlotModificationManager.Info defn = SlotModificationManager.AllSlotModifications.FirstOrDefault(m => m.ModificationType == modType);
+        Info defn = AllModificationInfos.InfoByID(modType);
+        SlotModificationInteractable interactable = slot.GetComponent<SlotModificationInteractable>();
+        if (defn.RulebookName != null)
+        {
+            interactable ??= slot.gameObject.AddComponent<SlotModificationInteractable>();
+            interactable.AssignSlotModification(modType, slot);
+        }
+        else
+        {
+            interactable?.SetEnabled(false);
+        }
 
         // Set the ability behaviour
         var oldSlotModification = slot.GetComponent<SlotModificationBehaviour>();
@@ -34,14 +76,13 @@ public static class SlotModificationExtensions
         {
             yield return oldSlotModification.Cleanup(modType);
             CustomCoroutine.WaitOnConditionThenExecute(() => GlobalTriggerHandler.Instance.StackSize == 0, () => GameObject.Destroy(oldSlotModification));
-            SlotModificationManager.Instance.SlotReceivers.Remove(slot);
+            Instance.SlotReceivers.Remove(slot);
         }
 
         if (defn != null && defn.SlotBehaviour != null)
         {
             SlotModificationBehaviour newBehaviour = slot.gameObject.AddComponent(defn.SlotBehaviour) as SlotModificationBehaviour;
-
-            SlotModificationManager.Instance.SlotReceivers[slot] = new(modType, newBehaviour);
+            Instance.SlotReceivers[slot] = new(modType, newBehaviour);
             yield return newBehaviour.Setup();
         }
 
@@ -68,16 +109,16 @@ public static class SlotModificationExtensions
     /// <summary>
     /// Gets the current modification of a slot
     /// </summary>
-    public static SlotModificationManager.ModificationType GetSlotModification(this CardSlot slot)
+    public static ModificationType GetSlotModification(this CardSlot slot)
     {
         return slot == null
-            ? SlotModificationManager.ModificationType.NoModification
-            : SlotModificationManager.Instance.SlotReceivers.ContainsKey(slot)
-            ? SlotModificationManager.Instance.SlotReceivers[slot].Item1
-            : SlotModificationManager.ModificationType.NoModification;
+            ? ModificationType.NoModification
+            : Instance.SlotReceivers.ContainsKey(slot)
+            ? Instance.SlotReceivers[slot].Item1
+            : ModificationType.NoModification;
     }
 
-    private static void SetSlotSprite(this PixelCardSlot slot, SlotModificationManager.Info defn)
+    private static void SetSlotSprite(this PixelCardSlot slot, Info defn)
     {
         if (defn == null)
         {
@@ -154,8 +195,8 @@ public static class SlotModificationExtensions
 
         CardTemple temple = SaveManager.SaveFile.GetSceneAsCardTemple() ?? CardTemple.Nature;
 
-        Dictionary<CardTemple, List<Texture>> lookup = slot.IsOpponentSlot() ? SlotModificationManager.OpponentOverrideSlots : SlotModificationManager.PlayerOverrideSlots;
-        var newTexture = SlotModificationManager.DefaultSlotTextures[temple];
+        Dictionary<CardTemple, List<Texture>> lookup = slot.IsOpponentSlot() ? OpponentOverrideSlots : PlayerOverrideSlots;
+        var newTexture = DefaultSlotTextures[temple];
         if (lookup.ContainsKey(temple))
         {
             // Get the texture overrides

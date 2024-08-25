@@ -116,14 +116,13 @@ public static class StatIconManager
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
-    [HarmonyPostfix]
+    [HarmonyPostfix, HarmonyPriority(100)]
     private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         if (NewStatIcons.Count > 0)
         {
             foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
             {
-                // regular abilities
                 if (pageRangeInfo.type == PageRangeType.StatIcons)
                 {
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
@@ -133,7 +132,7 @@ public static class StatIconManager
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;
                         info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION VII - VARIABLE STATS {0}"), curPageNum);
-                        __instance.FillAbilityPage(info, pageRangeInfo, (int)fab.Id);
+                        __instance.FillStatIconPage(info, pageRangeInfo, (int)fab.Id);
                         __result.Insert(insertPosition, info);
                         curPageNum += 1;
                         insertPosition += 1;

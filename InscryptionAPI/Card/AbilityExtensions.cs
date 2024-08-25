@@ -334,6 +334,16 @@ public static class AbilityExtensions
         abilityInfo.powerLevel = powerLevel;
         return abilityInfo;
     }
+    public static AbilityInfo SetRulebookDescription(this AbilityInfo abilityInfo, string description)
+    {
+        abilityInfo.rulebookDescription = description;
+        return abilityInfo;
+    }
+    public static AbilityInfo SetRulebookName(this AbilityInfo abilityInfo, string name)
+    {
+        abilityInfo.rulebookName = name;
+        return abilityInfo;
+    }
     /// <summary>
     /// Sets whether or not the ability is an activated ability.
     /// </summary>
@@ -452,6 +462,20 @@ public static class AbilityExtensions
     {
         abilityInfo.rulebookDescription = AllAbilities.Find(x => x.Info == abilityInfo).BaseRulebookDescription;
         return abilityInfo;
+    }
+
+    public static bool HasMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
+    {
+        foreach (AbilityMetaCategory app in categories)
+            if (!info.HasMetaCategory(app))
+                return false;
+
+        return true;
+    }
+
+    public static bool HasMetaCategory(this AbilityInfo info, AbilityMetaCategory category)
+    {
+        return info.metaCategories.Contains(category);
     }
 
     #region TriggersOncePerStack
