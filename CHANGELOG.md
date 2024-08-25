@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.21.1
+- Fixed RuleBookManager not syncing when playing with no custom rulebook sections
+
 # 2.21.0
 - Fixed ability stacks not rendering
 - Fixed rendering error when displaying a card with tribes outside of Act 1

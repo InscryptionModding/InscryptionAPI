@@ -28,7 +28,7 @@ RuleBookManager.New(
     "Mod Tribes", // the subsection name that appears at the end of the header
     GetInsertPosition, // a function that determines where in the Rulebook to insert our custom section
     CreatePages, // the function to create the pages that will be in our custom section
-    headerPrefix, // optional argument, if left null one will be created for you
+    headerPrefix: null, // optional argument, if left null one will be created for you
     getStartingNumberFunc: GetStartingNumber, // optional argument, if left null the starting number will be 1
     fillPageAction: FillPage // also optional, but if you want to display custom names, descriptions, etc you will need to set this
     );
