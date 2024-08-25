@@ -200,6 +200,9 @@ public static class AbilityManager
         AllAbilities = BaseGameAbilities.Concat(NewAbilities).Select(a => a.Clone()).ToList();
         AllAbilities = ModifyAbilityList?.Invoke(AllAbilities) ?? AllAbilities;
         AllAbilityInfos = AllAbilities.Select(x => x.Info).ToList();
+
+        ShieldManager.AllShieldAbilities = AllAbilities.Where(x => x.AbilityBehavior != null && x.AbilityBehavior.IsSubclassOf(typeof(DamageShieldBehaviour))).ToList();
+        ShieldManager.AllShieldInfos = ShieldManager.AllShieldAbilities.Select(x => x.Info).ToList();
     }
 
     static AbilityManager()
@@ -238,13 +241,14 @@ public static class AbilityManager
             if (name == "DeathShield") // add the API ability behaviour to DeathShield
             {
                 ability.SetPassive(false).SetCanStack(true).SetHideSingleStacks(true);
-                baseGame.Add(new FullAbility (
+                FullAbility ab = new(
                     null,
                     ability.ability,
                     ability,
                     typeof(APIDeathShield),
                     useReversePatch ? OriginalLoadAbilityIcon(name) : AbilitiesUtil.LoadAbilityIcon(name)
-                ));
+                );
+                baseGame.Add(ab);
                 continue;
             }
             baseGame.Add(new FullAbility (
