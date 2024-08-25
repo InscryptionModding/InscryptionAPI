@@ -4060,6 +4060,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetPlayableCard
   nameWithType: CardExtensions.GetPlayableCard
+- uid: InscryptionAPI.Card.CardExtensions.GetShieldBehaviour(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  name: GetShieldBehaviour(PlayableCard, Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetShieldBehaviour_DiskCardGame_PlayableCard_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetShieldBehaviour(DiskCardGame.PlayableCard,DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.GetShieldBehaviour(DiskCardGame.PlayableCard, DiskCardGame.Ability)
+  nameWithType: CardExtensions.GetShieldBehaviour(PlayableCard, Ability)
+- uid: InscryptionAPI.Card.CardExtensions.GetShieldBehaviour*
+  name: GetShieldBehaviour
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetShieldBehaviour_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetShieldBehaviour
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetShieldBehaviour
+  nameWithType: CardExtensions.GetShieldBehaviour
 - uid: InscryptionAPI.Card.CardExtensions.GetShieldCount*
   name: GetShieldCount
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetShieldCount_
@@ -4423,6 +4436,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.HasSacrificablePortrait
   nameWithType: CardExtensions.HasSacrificablePortrait
+- uid: InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.CardInfo)
+  name: HasShieldAbility(CardInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasShieldAbility_DiskCardGame_CardInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.CardInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.CardInfo)
+  nameWithType: CardExtensions.HasShieldAbility(CardInfo)
+- uid: InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.PlayableCard)
+  name: HasShieldAbility(PlayableCard)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasShieldAbility_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.PlayableCard)
+  nameWithType: CardExtensions.HasShieldAbility(PlayableCard)
+- uid: InscryptionAPI.Card.CardExtensions.HasShieldAbility*
+  name: HasShieldAbility
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasShieldAbility_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.HasShieldAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.HasShieldAbility
+  nameWithType: CardExtensions.HasShieldAbility
 - uid: InscryptionAPI.Card.CardExtensions.HasSpecialAbility(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility)
   name: HasSpecialAbility(CardInfo, SpecialTriggeredAbility)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_HasSpecialAbility_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility_
@@ -4571,6 +4603,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.IsPlayerCard
   nameWithType: CardExtensions.IsPlayerCard
+- uid: InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.Ability)
+  name: IsShieldAbility(Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsShieldAbility_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.Ability)
+  nameWithType: CardExtensions.IsShieldAbility(Ability)
+- uid: InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.AbilityInfo)
+  name: IsShieldAbility(AbilityInfo)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsShieldAbility_DiskCardGame_AbilityInfo_
+  commentId: M:InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.AbilityInfo)
+  fullName: InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.AbilityInfo)
+  nameWithType: CardExtensions.IsShieldAbility(AbilityInfo)
+- uid: InscryptionAPI.Card.CardExtensions.IsShieldAbility*
+  name: IsShieldAbility
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsShieldAbility_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.IsShieldAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.IsShieldAbility
+  nameWithType: CardExtensions.IsShieldAbility
 - uid: InscryptionAPI.Card.CardExtensions.IsTerrain(DiskCardGame.CardInfo)
   name: IsTerrain(CardInfo)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_IsTerrain_DiskCardGame_CardInfo_
@@ -8313,6 +8364,32 @@ references:
   commentId: T:InscryptionAPI.Card.ShieldManager
   fullName: InscryptionAPI.Card.ShieldManager
   nameWithType: ShieldManager
+- uid: InscryptionAPI.Card.ShieldManager.AllShieldAbilities
+  name: AllShieldAbilities
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_AllShieldAbilities
+  commentId: P:InscryptionAPI.Card.ShieldManager.AllShieldAbilities
+  fullName: InscryptionAPI.Card.ShieldManager.AllShieldAbilities
+  nameWithType: ShieldManager.AllShieldAbilities
+- uid: InscryptionAPI.Card.ShieldManager.AllShieldAbilities*
+  name: AllShieldAbilities
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_AllShieldAbilities_
+  commentId: Overload:InscryptionAPI.Card.ShieldManager.AllShieldAbilities
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ShieldManager.AllShieldAbilities
+  nameWithType: ShieldManager.AllShieldAbilities
+- uid: InscryptionAPI.Card.ShieldManager.AllShieldInfos
+  name: AllShieldInfos
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_AllShieldInfos
+  commentId: P:InscryptionAPI.Card.ShieldManager.AllShieldInfos
+  fullName: InscryptionAPI.Card.ShieldManager.AllShieldInfos
+  nameWithType: ShieldManager.AllShieldInfos
+- uid: InscryptionAPI.Card.ShieldManager.AllShieldInfos*
+  name: AllShieldInfos
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_AllShieldInfos_
+  commentId: Overload:InscryptionAPI.Card.ShieldManager.AllShieldInfos
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ShieldManager.AllShieldInfos
+  nameWithType: ShieldManager.AllShieldInfos
 - uid: InscryptionAPI.Card.ShieldManager.BreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
   name: BreakShield(PlayableCard, Int32, PlayableCard)
   href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_BreakShield_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_

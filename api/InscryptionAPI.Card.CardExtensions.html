@@ -2339,9 +2339,57 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetShieldBehaviour_" data-uid="InscryptionAPI.Card.CardExtensions.GetShieldBehaviour*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetShieldBehaviour_DiskCardGame_PlayableCard_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.CardExtensions.GetShieldBehaviour(DiskCardGame.PlayableCard,DiskCardGame.Ability)">GetShieldBehaviour(PlayableCard, Ability)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the DamageShieldBehaviour component corresponding to the given Ability, or null if it does not exist.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DamageShieldBehaviour GetShieldBehaviour(this PlayableCard card, Ability ability)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="parametername">ability</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Card.DamageShieldBehaviour.html">DamageShieldBehaviour</a></td>
+        <td><p>The DamageShieldBehaviour component of the given Ability, or null if it does not exist.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_GetShieldCount_" data-uid="InscryptionAPI.Card.CardExtensions.GetShieldCount*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_GetShieldCount__1_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.CardExtensions.GetShieldCount``1(DiskCardGame.PlayableCard)">GetShieldCount&lt;T&gt;(PlayableCard)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Retrieves the current value of a DamageShieldBehaviour&apos;s NumShield.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -2376,7 +2424,8 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The current value of the DamageShieldBehaviour&apos;s NumShield.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -3665,6 +3714,90 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_HasShieldAbility_" data-uid="InscryptionAPI.Card.CardExtensions.HasShieldAbility*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_HasShieldAbility_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.CardInfo)">HasShieldAbility(CardInfo)</h4>
+  <div class="markdown level1 summary"><p>Returns whether or not the CardInfo has an Ability that overrides DamageShieldBehaviour.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasShieldAbility(this CardInfo cardInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">cardInfo</span></td>
+        <td><p>The CardInfo object to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_HasShieldAbility_" data-uid="InscryptionAPI.Card.CardExtensions.HasShieldAbility*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_HasShieldAbility_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.CardExtensions.HasShieldAbility(DiskCardGame.PlayableCard)">HasShieldAbility(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Returns whether or not the PlayableCard has an Ability that overrides DamageShieldBehaviour.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasShieldAbility(this PlayableCard card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The PlayableCard object to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_HasSpecialAbility_" data-uid="InscryptionAPI.Card.CardExtensions.HasSpecialAbility*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_HasSpecialAbility_DiskCardGame_CardInfo_DiskCardGame_SpecialTriggeredAbility_" data-uid="InscryptionAPI.Card.CardExtensions.HasSpecialAbility(DiskCardGame.CardInfo,DiskCardGame.SpecialTriggeredAbility)">HasSpecialAbility(CardInfo, SpecialTriggeredAbility)</h4>
   <div class="markdown level1 summary"><p>Checks if the CardInfo has a specific SpecialTriggeredAbility.</p>
@@ -4250,6 +4383,86 @@ Inscryption often clones CardInfos and sometimes they&apos;re reused, meaning th
         <td><span class="xref">System.Boolean</span></td>
         <td><p>Returns true if card is not the opponent&apos;s card.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_IsShieldAbility_" data-uid="InscryptionAPI.Card.CardExtensions.IsShieldAbility*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_IsShieldAbility_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.Ability)">IsShieldAbility(Ability)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsShieldAbility(this Ability ability)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="parametername">ability</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_IsShieldAbility_" data-uid="InscryptionAPI.Card.CardExtensions.IsShieldAbility*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_IsShieldAbility_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.CardExtensions.IsShieldAbility(DiskCardGame.AbilityInfo)">IsShieldAbility(AbilityInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsShieldAbility(this AbilityInfo abilityInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">abilityInfo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
