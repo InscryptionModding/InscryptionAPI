@@ -51,3 +51,5 @@ ConsumableItemManager.New(Plugin.PluginGuid, "Custom Item", "Does a thing!", tex
 		        .SetDescription(learnText)
 		        .SetAct1();
 ```
+
+If you want your item to appear in the rulebook in multiple Acts, use the extension `AddExtraRulebookCategories` on the returned ConsumableItemData.

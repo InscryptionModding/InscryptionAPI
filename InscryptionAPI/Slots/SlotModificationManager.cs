@@ -10,6 +10,7 @@ using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.RuleBook;
 using InscryptionAPI.Triggers;
 using Sirenix.Serialization.Utilities;
 using UnityEngine;
@@ -122,6 +123,15 @@ public class SlotModificationManager : MonoBehaviour
         /// </summary>
         public Type SlotBehaviour { get; internal set; }
 
+        /// <summary>
+        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
+        /// Key (string): the text that will be recoloured to indicate that it's clickable.
+        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// </summary>
+        public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
+
         public Info(string name, string modGuid,
             Dictionary<CardTemple, Texture2D> texture,
             Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelSprites,
@@ -149,7 +159,10 @@ public class SlotModificationManager : MonoBehaviour
                 this.ModificationType, this.SlotBehaviour,
                 this.RulebookName, this.RulebookDescription, this.RulebookSprite,
                 this.MetaCategories
-                );
+                )
+            {
+                RulebookDescriptionRedirects = new(this.RulebookDescriptionRedirects)
+            };
         }
     }
 
@@ -508,24 +521,27 @@ public class SlotModificationManager : MonoBehaviour
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
-    [HarmonyPostfix, HarmonyPriority(95)] // make sure custom item pages have been added first
-    private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+    [HarmonyPostfix, HarmonyPriority(Priority.LowerThanNormal)] // make sure custom item pages have been added first
+    private static void AddSlotModificationsToRuleBook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {AllModificationInfos.Count}");
         if (AllModificationInfos.Count > 0)
         {
+            List<Info> infos = AllModificationInfos.Where(x => SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
+            if (infos.Count == 0)
+                return;
+
             foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
             {
                 if (pageRangeInfo.type == PageRangeType.Items)
                 {
                     int curPageNum = 1;
                     int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
-                    List<Info> infos = AllModificationInfos.Where(x => SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
                     foreach (Info slot in infos)
                     {
                         RuleBookPageInfo info = new();
                         info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION M - SLOT MODS {0}"), curPageNum);
+                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - SLOT EFFECTS {0}"), curPageNum);
                         info.pageId = SLOT_PAGEID + (int)slot.ModificationType;
                         __result.Insert(insertPosition, info);
                         curPageNum++;
@@ -536,10 +552,10 @@ public class SlotModificationManager : MonoBehaviour
         }
     }
 
-    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) =>
-        info.RulebookName != null && info.MetaCategories.Contains(category);
+    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) => info.RulebookName != null && info.MetaCategories.Contains(category);
 
     public const string SLOT_PAGEID = "SlotModification_";
+
     [HarmonyPrefix, HarmonyPatch(typeof(ItemPage), nameof(ItemPage.FillPage))]
     private static bool OverrideWithSlotInfo(ItemPage __instance, string headerText, params object[] otherArgs)
     {
