@@ -22,7 +22,7 @@ info.SetAbilityRedirect("Stinky", Ability.DebuffEnemy, GameColors.Instance.orang
 
 Now when you open the page for Made of Stone, the word 'Stinky' will be orange and redirect you to Stinky's page, and the words 'Touch of Death' will be red and redirect you to Touch of Death's page.
 
-Redirects can be also be set for stat icons, items, and boons:
+Redirects can be also be set for stat icons, items, boons, and slot modifications:
 
 ```c#
 AbilityInfo info = AbilitiesUtil.GetInfo(Ability.MadeOfStone);
