@@ -9,6 +9,9 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using UnityEngine;
+using static InscryptionAPI.Boons.BoonManager;
+using static InscryptionAPI.Slots.SlotModificationManager;
+
 namespace InscryptionAPI.RuleBook;
 
 
@@ -295,4 +298,14 @@ public static class RuleBookManager
 
         return pageId;
     }
+
+    public static bool ItemShouldBeAdded(ConsumableItemData item, AbilityMetaCategory metaCategory)
+    {
+        return item.rulebookCategory == metaCategory || item.GetFullConsumableItemData()?.rulebookMetaCategories.Contains(metaCategory) == true;
+    }
+    public static bool BoonShouldBeAdded(FullBoon fullBoon, AbilityMetaCategory metaCategory)
+    {
+        return fullBoon?.boon?.icon != null && fullBoon.appearInRulebook && fullBoon.metaCategories.Contains(metaCategory);
+    }
+    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) => info.RulebookName != null && info.MetaCategories.Contains(category);
 }

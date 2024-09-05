@@ -3,6 +3,7 @@ using HarmonyLib;
 using InscryptionAPI.Boons;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Items.Extensions;
+using InscryptionAPI.RuleBook;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -201,14 +202,9 @@ public static class ConsumableItemPatches
     {
         List<ConsumableItemData> allConsumables = ItemsUtil.AllConsumables;
         return instance.ConstructPages(pageRange, allConsumables.Count, 0,
-            (int index) => ItemShouldBeAdded(allConsumables[index], metaCategory),
+            (int index) => RuleBookManager.ItemShouldBeAdded(allConsumables[index], metaCategory),
             instance.FillItemPage,
             Localization.Translate("APPENDIX XII, SUBSECTION IX - ITEMS {0}")
         );
-    }
-
-    public static bool ItemShouldBeAdded(ConsumableItemData item, AbilityMetaCategory metaCategory)
-    {
-        return item.rulebookCategory == metaCategory || item.GetFullConsumableItemData()?.rulebookMetaCategories.Contains(metaCategory) == true;
     }
 }

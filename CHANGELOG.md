@@ -2,22 +2,20 @@
 <summary>View Changelog</summary>
 
 # 2.22.0
-- Added AllFullBoons list to BoonManager
-- Added FullConsumableItemData to ConsumableItemManager
 - Added FullBoon objects for each vanilla Boon
-- Added RuleBookManager.GetUnformattedPageId for retrieving a pageId without the API identifier
-- Added support for rulebook text redirects
-- Added GetFullBoon and GetFullConsumableItemData extension methods
+- Added 'AllFullBoons' list to BoonManager
 - Added support for boons and items appearing in multiple acts' rulebooks
-- Added metaCategories field to FullBoon
-- Added BoonShouldBeAdded method to BoonManager
-- Added ItemShouldBeAdded method to ConsumableItemPatches
+- Added RuleBookRedirectManager and support for rulebook text redirects/page links
+- Added additional methods to RuleBookManager: ItemShouldBeAdded, BoonShouldBeAdded, SlotModShouldBeAdded, GetUnformattedPageId
+- Added GetFullBoon and GetFullConsumableItemData extension methods
+- Added extension methods for adding text redirects to abilities, stat icons, items, boons, slot modifications, and rulebook pages
 - Fixed RuleBook construction patches having lower patch priority than intended
-- Moved ConsumableItemManager patches to ConsumableItemPatches class
-- Changed patch to LoadPage from a prefix to a transpiler to avoid mod conflicts
-    - modders can modify this transpiler by overriding 
+- Moved ConsumableItemManager patches to a separate ConsumableItemPatches class
+- Modified implementation of rulebook fill page logic to let modders patch the API logic
+    - Patch 'RuleBookManagerPatches.FillPage' to do this
 - Tweaked how custom rulebook pages are added and detected
-- Tweaked wiki page for adding custom rulebook sections, added additional section on text redirects
+- Tweaked wiki page for adding custom rulebook sections
+- Added wiki section on adding text redirects
 
 # 2.21.1
 - Fixed RuleBookManager not syncing when playing with no custom rulebook sections

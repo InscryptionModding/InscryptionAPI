@@ -342,7 +342,7 @@ public static class BoonManager
             {
                 int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
                 int curPageNum = (int)BoonData.Type.NUM_TYPES;
-                List<FullBoon> abilitiesToAdd = NewBoons.Where(x => BoonShouldBeAdded(x, metaCategory)).ToList();
+                List<FullBoon> abilitiesToAdd = NewBoons.Where(x => RuleBookManager.BoonShouldBeAdded(x, metaCategory)).ToList();
                 //InscryptionAPIPlugin.Logger.LogInfo($"Adding {abilitiesToAdd.Count} out of {NewAbilities.Count} abilities to rulebook");
                 foreach (FullBoon fboo in abilitiesToAdd)
                 {
@@ -356,10 +356,5 @@ public static class BoonManager
                 }
             }
         }
-    }
-
-    public static bool BoonShouldBeAdded(FullBoon fullBoon, AbilityMetaCategory metaCategory)
-    {
-        return fullBoon?.boon?.icon != null && fullBoon.appearInRulebook && fullBoon.metaCategories.Contains(metaCategory);
     }
 }

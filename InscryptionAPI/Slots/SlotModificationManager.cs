@@ -527,7 +527,7 @@ public class SlotModificationManager : MonoBehaviour
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {AllModificationInfos.Count}");
         if (AllModificationInfos.Count > 0)
         {
-            List<Info> infos = AllModificationInfos.Where(x => SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
+            List<Info> infos = AllModificationInfos.Where(x => RuleBookManager.SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
             if (infos.Count == 0)
                 return;
 
@@ -551,8 +551,6 @@ public class SlotModificationManager : MonoBehaviour
             }
         }
     }
-
-    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) => info.RulebookName != null && info.MetaCategories.Contains(category);
 
     public const string SLOT_PAGEID = "SlotModification_";
 
