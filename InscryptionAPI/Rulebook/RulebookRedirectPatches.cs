@@ -53,16 +53,8 @@ public static class RulebookRedirectPatches
         yield return enumerator;
         rulebookShowFlipIndex = -1;
     }
-    public static int rulebookShowFlipIndex = -1;
 
-    /*[HarmonyPostfix, HarmonyPatch(typeof(RulebookPageFlipper), nameof(RulebookPageFlipper.RandomRotationAdjustment))]
-    private static void RetrieveRandomRotation(Transform page)
-    {
-        if (page == RuleBookRedirectManager.Instance.currentTopPage.parent)
-        {
-            RuleBookRedirectManager.Instance.currentPageRotation = page.localEulerAngles.y;
-        }
-    }*/
+    public static int rulebookShowFlipIndex = -1;
 
     [HarmonyPrefix, HarmonyPatch(typeof(RulebookPageFlipper), nameof(RulebookPageFlipper.RenderPages))]
     private static bool RetrieveRuleBookTopPage(Transform topPage)
@@ -105,12 +97,12 @@ public static class RulebookRedirectPatches
         else if (component is ItemPage item)
             descriptionMesh = item.descriptionTextMesh;
         else
-            descriptionMesh = loader.currentPageObj.GetComponentInChildren<TextMeshPro>();
+            descriptionMesh = loader.currentPageObj.transform.Find("Description").GetComponent<TextMeshPro>();
 
         if (descriptionMesh != null)
         {
             descriptionMesh.ForceMeshUpdate();
-            RuleBookRedirectManager.Instance.UpdateActiveInteractables(descriptionMesh, fullInfo.RulebookDescriptionRedirects);
+            RuleBookRedirectManager.Instance.UpdateActiveInteractables(descriptionMesh, loader.currentPageObj, fullInfo.RulebookDescriptionRedirects);
         }
         RuleBookRedirectManager.Instance.currentActivePageIndex = __instance.currentPageIndex;
     }

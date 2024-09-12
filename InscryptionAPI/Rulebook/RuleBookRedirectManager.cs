@@ -50,14 +50,14 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
         createdInteractableObjects.RemoveAll(x => x == null);
         createdInteractableObjects.ForEach(x => x.SetActive(false));
     }
-    public void UpdateActiveInteractables(TextMeshPro description, Dictionary<string, RuleBookManager.RedirectInfo> redirects)
+    public void UpdateActiveInteractables(TextMeshPro description, GameObject currentPageObj, Dictionary<string, RuleBookManager.RedirectInfo> redirects)
     {
-        InscryptionAPIPlugin.Logger.LogDebug("[UpdateActiveInteractables]");
+        InscryptionAPIPlugin.Logger.LogDebug($"[UpdateActiveInteractables]");
         Bounds pageBounds;
-        Bounds borderBounds = description.transform.parent.parent.Find("Border").GetComponent<SpriteRenderer>().bounds; // in world space
+        Bounds borderBounds = currentPageObj.transform.Find("Border").GetComponent<SpriteRenderer>().bounds; // in world space
         Vector3 pageBottomLeft;
         float zLength;
-        
+
         if (SaveManager.SaveFile.IsPart3)
         {
             pageBounds = currentTopPage.GetComponent<MeshRenderer>().bounds; // in world space
