@@ -6,7 +6,7 @@ using InscryptionAPI.Slots;
 using UnityEngine;
 using static InscryptionAPI.RuleBook.RuleBookManager;
 
-namespace InscryptionAPI.Rulebook;
+namespace InscryptionAPI.RuleBook;
 
 public static class RuleBookRedirectExtensions
 {
@@ -44,7 +44,7 @@ public static class RuleBookRedirectExtensions
 
     public static AbilityInfo SetAbilityRedirect(this AbilityInfo info, string clickableText, Ability abilityRedirect, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetAbilityRedirect(clickableText, abilityRedirect, redirectColour);
@@ -56,7 +56,7 @@ public static class RuleBookRedirectExtensions
     }
     public static AbilityInfo SetStatIconRedirect(this AbilityInfo info, string clickableText, SpecialStatIcon statIconRedirect, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetStatIconRedirect(clickableText, statIconRedirect, redirectColour);
@@ -68,7 +68,7 @@ public static class RuleBookRedirectExtensions
     }
     public static AbilityInfo SetBoonRedirect(this AbilityInfo info, string clickableText, BoonData.Type boonRedirect, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetBoonRedirect(clickableText, boonRedirect, redirectColour);
@@ -80,7 +80,7 @@ public static class RuleBookRedirectExtensions
     }
     public static AbilityInfo SetItemRedirect(this AbilityInfo info, string clickableText, string itemNameRedirect, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetItemRedirect(clickableText, itemNameRedirect, redirectColour);
@@ -92,7 +92,7 @@ public static class RuleBookRedirectExtensions
     }
     public static AbilityInfo SetUniqueRedirect(this AbilityInfo info, string clickableText, string uniqueRedirect, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetUniqueRedirect(clickableText, uniqueRedirect, redirectColour);
@@ -104,7 +104,7 @@ public static class RuleBookRedirectExtensions
     }
     public static AbilityInfo SetSlotRedirect(this AbilityInfo info, string clickableText, SlotModificationManager.ModificationType slotMod, Color redirectColour)
     {
-        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).First(x => x.Info.ability == info.ability);
+        AbilityManager.FullAbility full = AbilityManager.BaseGameAbilities.Concat(AbilityManager.NewAbilities).FirstOrDefault(x => x.Info.ability == info.ability);
         if (full != null)
         {
             full.SetSlotRedirect(clickableText, slotMod, redirectColour);
