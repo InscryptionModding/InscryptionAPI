@@ -8,7 +8,7 @@ using InscryptionAPI.Slots;
 using System.Reflection;
 using System.Reflection.Emit;
 using TMPro;
-using UnityEngine;
+
 using static InscryptionAPI.RuleBook.RuleBookManager;
 
 namespace InscryptionAPI.RuleBook;
@@ -112,7 +112,7 @@ public class RuleBookManagerPatches
     [HarmonyPatch(typeof(ItemPage), "FillPage")]
     private static bool FixFillPage(RuleBookPage __instance, string headerText, params object[] otherArgs)
     {
-        if (otherArgs?.Length > 0 && otherArgs.Last() is string pageId && pageId.StartsWith(API_ID))
+        if (otherArgs?.Length > 0 && otherArgs.LastOrDefault() is string pageId && pageId.StartsWith(API_ID))
         {
             string sectionId = pageId.Replace(API_ID, "");
             FullRuleBookRangeInfo fullInfo = AllRuleBookInfos.Find(x => sectionId.StartsWith(x.SubSectionName));

@@ -299,6 +299,25 @@ public static class RuleBookManager
         return pageId;
     }
 
+    /// <summary>
+    /// Opens the rulebook to the page with the given pageId.
+    /// </summary>
+    /// <param name="instance">RuleBookController.Instance.</param>
+    /// <param name="pageId">The value to compare each rulebook pages' id against. If this starts with "[API_" then it will check against a page's unformatted id.</param>
+    /// <param name="offsetView">Whether to offset the camera view down when opening the rulebook.</param>
+    public static void OpenToCustomPage(this RuleBookController instance, string pageId, bool offsetView = false)
+    {
+        instance.SetShown(shown: true, offsetView);
+        int pageIndex = -1;
+        if (pageId.StartsWith(RuleBookManagerPatches.API_ID))
+            pageIndex = instance.PageData.IndexOf(instance.PageData.Find(x => !string.IsNullOrEmpty(x.pageId) && x.pageId == pageId));
+        else
+            pageIndex = instance.PageData.IndexOf(instance.PageData.Find(x => !string.IsNullOrEmpty(x.pageId) && GetUnformattedPageId(x.pageId) == pageId));
+
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.flipper.FlipToPage(pageIndex, 0.2f));
+    }
+
     public static bool ItemShouldBeAdded(ConsumableItemData item, AbilityMetaCategory metaCategory)
     {
         return item.rulebookCategory == metaCategory || item.GetFullConsumableItemData()?.rulebookMetaCategories.Contains(metaCategory) == true;

@@ -9,13 +9,19 @@
 - Added additional methods to RuleBookManager: ItemShouldBeAdded, BoonShouldBeAdded, SlotModShouldBeAdded, GetUnformattedPageId
 - Added GetFullBoon and GetFullConsumableItemData extension methods
 - Added extension methods for adding text redirects to abilities, stat icons, items, boons, slot modifications, and rulebook pages
+- Added ModificationType.SetSharedRulebook - used for slot modifications that should share their rulebook entry with other slot modifications
+- Added support for multiple rulebook sprites for slot modifications (SetRulebookP03Sprite, SetRulebookGrimoraSprite, SetRulebookMagnificusSprite)
+- Added RuleBookController.Instance.OpenToCustomPage
 - Fixed RuleBook construction patches having lower patch priority than intended
+- Fixed slot modification interactable being enabled when no rulebook entry exists
+- Fixed slot modification rulebook pages not working in Act 3
+- Fixed rulebook sprites being smaller than normal after flipping to a slot modification rulebook page
 - Moved ConsumableItemManager patches to a separate ConsumableItemPatches class
 - Modified implementation of rulebook fill page logic to let modders patch the API logic
     - Patch 'RuleBookManagerPatches.FillPage' to do this
 - Tweaked how custom rulebook pages are added and detected
-- Tweaked wiki page for adding custom rulebook sections
-- Added wiki section on adding text redirects
+- Wiki: Tweaked page for adding custom rulebook sections
+- Wiki: Added section on adding text redirects
 
 # 2.21.1
 - Fixed RuleBookManager not syncing when playing with no custom rulebook sections
