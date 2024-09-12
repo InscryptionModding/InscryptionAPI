@@ -22,6 +22,6 @@ public class SlotModificationInteractable : AlternateInputInteractable
     public override void OnAlternateSelectStarted()
     {
         //InscryptionAPIPlugin.Logger.LogDebug($"Open to slot mod page: [{ModType}] on slot [{slot}]");
-        RuleBookController.Instance.OpenToItemPage(SlotModificationManager.SLOT_PAGEID + (int)ModType, true);
+        RuleBookController.Instance.OpenToItemPage(SlotModificationManager.SLOT_PAGEID + (int)ModType, false);
     }
 }

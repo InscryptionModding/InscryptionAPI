@@ -23,52 +23,12 @@ namespace InscryptionAPI.Slots;
 [HarmonyPatch]
 public class SlotModificationManager : MonoBehaviour
 {
-    private static SlotModificationManager m_instance;
-
-    /// <summary>
-    /// Singleton instance for the SlotModificationManager.
-    /// </summary>
-    public static SlotModificationManager Instance
-    {
-        get
-        {
-            if (m_instance != null)
-                return m_instance;
-
-            Instantiate();
-            return m_instance;
-        }
-        set => m_instance = value;
-    }
-
-    private static void Instantiate()
-    {
-        if (m_instance != null)
-            return;
-
-        GameObject slotModManager = new("SlotModificationManager");
-        slotModManager.transform.SetParent(BoardManager.Instance.gameObject.transform);
-        m_instance = slotModManager.AddComponent<SlotModificationManager>();
-    }
-
     /// <summary>
     /// Unique identifiers for slot modifications.
     /// </summary>
     public enum ModificationType
     {
         NoModification = 0
-    }
-
-    /// <summary>
-    /// Used to determine what Acts a modification's rulebook entry should appear in.
-    /// Values correspond to specific AbilityMetaCategory values.
-    /// </summary>
-    public enum ModificationMetaCategory
-    {
-        Part1Rulebook = 0,
-        Part3Rulebook = 2,
-        GrimoraRulebook = 5,
-        MagnificusRulebook = 6
     }
 
     /// <summary>
@@ -95,11 +55,26 @@ public class SlotModificationManager : MonoBehaviour
         public string RulebookDescription { get; set; }
 
         /// <summary>
-        /// If this slot modification can appear in the rulebook, this will be the sprite displayed.
-        /// Texture should have the dimensions 154 x 226; if the sprite is null then the rulebook entry will use the first entry in Texture as a sprite.
+        /// The sprite to use for the rulebook entry. If this is null, the API will use the first slot value in the Texture dictionary.
         /// </summary>
         public Sprite RulebookSprite { get; set; }
+        /// <summary>
+        /// Set using SetRulebookP03Sprite if you want your slot to have a different rulebook sprite in Act 3 than in other acts.
+        /// </summary>
+        public Sprite P03RulebookSprite { get; set; } = null;
+        /// <summary>
+        /// Set using SetRulebookGrimoraSprite if you want your slot to have a different rulebook sprite in Grimora's Act than in other acts.
+        /// </summary>
+        public Sprite GrimoraRulebookSprite { get; set; } = null;
+        /// <summary>
+        /// Set using SetRulebookMagnificusSprite if you want your slot to have a different rulebook sprite in Magnificus's Act than in other acts.
+        /// </summary>
+        public Sprite MagnificusRulebookSprite { get; set; } = null;
 
+        /// <summary>
+        /// The slot modification whose rulebook entry is also used by this slot modification.
+        /// </summary>
+        public ModificationType SharedRulebook { get; set; } = ModificationType.NoModification;
         public List<ModificationMetaCategory> MetaCategories = new();
         
         /// <summary>
@@ -161,7 +136,11 @@ public class SlotModificationManager : MonoBehaviour
                 this.MetaCategories
                 )
             {
-                RulebookDescriptionRedirects = new(this.RulebookDescriptionRedirects)
+                RulebookDescriptionRedirects = new(this.RulebookDescriptionRedirects),
+                SharedRulebook = this.SharedRulebook,
+                P03RulebookSprite = this.P03RulebookSprite,
+                GrimoraRulebookSprite = this.GrimoraRulebookSprite,
+                MagnificusRulebookSprite = this.MagnificusRulebookSprite
             };
         }
     }
@@ -386,9 +365,9 @@ public class SlotModificationManager : MonoBehaviour
     /// </summary>
     /// <param name="texture"></param>
     /// <remarks>This expects a texture with 8 slot textures in it, arranged in either 2 or 4 rows of 5. Each slot texture is 44x58.
-    /// The first row contains all of the the normal slot sprites and the second row contains all of the hover sprites.
+    /// The first/bottom-most row contains all of the the normal slot sprites and the second row contains all of the hover sprites.
     /// If you want the opponent sprites to be different, you have to provide 4 rows; the third row contains normal opponent slot sprites and the fourth row contains hovered opponent slot sprites.
-    /// Each row must go in this order: nature, undead, tech, wizard, finale.
+    /// Each row must go in this order from left to right: Nature, Undead, Tech, Wizard, Finale.
     public static Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D texture)
     {
         Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> retval = new();
@@ -480,6 +459,45 @@ public class SlotModificationManager : MonoBehaviour
         ConditionallyResetAllSlotTextures();
     }
 
+    /// <summary>
+    /// Used to determine what Acts a modification's rulebook entry should appear in.
+    /// Values correspond to specific AbilityMetaCategory values.
+    /// </summary>
+    public enum ModificationMetaCategory
+    {
+        Part1Rulebook = 0,
+        Part3Rulebook = 2,
+        GrimoraRulebook = 5,
+        MagnificusRulebook = 6
+    }
+
+    private static SlotModificationManager m_instance;
+
+    /// <summary>
+    /// Singleton instance for the SlotModificationManager.
+    /// </summary>
+    public static SlotModificationManager Instance
+    {
+        get
+        {
+            if (m_instance != null)
+                return m_instance;
+
+            Instantiate();
+            return m_instance;
+        }
+        set => m_instance = value;
+    }
+
+    private static void Instantiate()
+    {
+        if (m_instance != null)
+            return;
+
+        GameObject slotModManager = new("SlotModificationManager");
+        slotModManager.transform.SetParent(BoardManager.Instance.gameObject.transform);
+        m_instance = slotModManager.AddComponent<SlotModificationManager>();
+    }
     #region Patches
     [HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
     [HarmonyPostfix]
@@ -514,7 +532,7 @@ public class SlotModificationManager : MonoBehaviour
         {
             Component comp = BoardManager.Instance.gameObject.GetComponent(defn.SlotBehaviour);
             if (!comp.SafeIsUnityNull())
-                UnityEngine.Object.Destroy(comp);
+                UnityObject.Destroy(comp);
         }
 
         yield return sequence;
@@ -524,31 +542,26 @@ public class SlotModificationManager : MonoBehaviour
     [HarmonyPostfix, HarmonyPriority(Priority.LowerThanNormal)] // make sure custom item pages have been added first
     private static void AddSlotModificationsToRuleBook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
-        //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {AllModificationInfos.Count}");
-        if (AllModificationInfos.Count > 0)
-        {
-            List<Info> infos = AllModificationInfos.Where(x => RuleBookManager.SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
-            if (infos.Count == 0)
-                return;
+        if (AllModificationInfos.Count == 0)
+            return;
 
-            foreach (PageRangeInfo pageRangeInfo in __instance.pageRanges)
-            {
-                if (pageRangeInfo.type == PageRangeType.Items)
-                {
-                    int curPageNum = 1;
-                    int insertPosition = __result.FindLastIndex(rbi => rbi.pagePrefab == pageRangeInfo.rangePrefab) + 1;
-                    foreach (Info slot in infos)
-                    {
-                        RuleBookPageInfo info = new();
-                        info.pagePrefab = pageRangeInfo.rangePrefab;
-                        info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - SLOT EFFECTS {0}"), curPageNum);
-                        info.pageId = SLOT_PAGEID + (int)slot.ModificationType;
-                        __result.Insert(insertPosition, info);
-                        curPageNum++;
-                        insertPosition++;
-                    }
-                }
-            }
+        List<Info> infos = AllModificationInfos.Where(x => RuleBookManager.SlotModShouldBeAdded(x, (ModificationMetaCategory)metaCategory)).ToList();
+        infos.RemoveAll(x => x.SharedRulebook != ModificationType.NoModification);
+        if (infos.Count == 0)
+            return;
+
+        int curPageNum = 1;
+        GameObject itemPrefab = __instance.pageRanges.Find(x => x.type == PageRangeType.Items).rangePrefab;
+        int insertPosition = __result.FindLastIndex(rbi => itemPrefab) + 1;
+        foreach (Info slot in infos)
+        {
+            RuleBookPageInfo info = new();
+            info.pagePrefab = SaveManager.SaveFile.IsPart1 ? itemPrefab : __instance.pageRanges.Find(x => x.type == PageRangeType.Abilities).rangePrefab;
+            info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - SLOT EFFECTS {0}"), curPageNum);
+            info.pageId = SLOT_PAGEID + (int)slot.ModificationType;
+            __result.Insert(insertPosition, info);
+            curPageNum++;
+            insertPosition++;
         }
     }
 
@@ -557,6 +570,11 @@ public class SlotModificationManager : MonoBehaviour
     [HarmonyPrefix, HarmonyPatch(typeof(ItemPage), nameof(ItemPage.FillPage))]
     private static bool OverrideWithSlotInfo(ItemPage __instance, string headerText, params object[] otherArgs)
     {
+        if (!SaveManager.SaveFile.IsPart1)
+            return true;
+
+        // Slot modification pages use ItemPage format in Act 1
+        __instance.iconRenderer.transform.localScale = Vector3.one;
         if (otherArgs[0] is string pageId && pageId.StartsWith(SLOT_PAGEID))
         {
             string modString = pageId.Replace(SLOT_PAGEID, "");
@@ -569,8 +587,58 @@ public class SlotModificationManager : MonoBehaviour
                 Info info = AllModificationInfos.InfoByID((ModificationType)modType);
                 __instance.nameTextMesh.text = Localization.Translate(info.RulebookName);
                 __instance.descriptionTextMesh.text = Localization.Translate(info.RulebookDescription);
-                __instance.iconRenderer.sprite = info.RulebookSprite ?? info.Texture.Values.First().ConvertTexture();
+                __instance.iconRenderer.sprite = info.RulebookSprite;
                 __instance.iconRenderer.transform.localScale = new(0.8f, 0.8f, 0.8f);
+                InscryptionAPIPlugin.Logger.LogDebug($"Create rulebook page for slot modification [{info.ModificationType}] ({info.RulebookName}).");
+                return false;
+            }
+        }
+        return true;
+    }
+    [HarmonyPrefix, HarmonyPatch(typeof(AbilityPage), nameof(AbilityPage.FillPage))]
+    private static bool OverrideWithSlotInfo(AbilityPage __instance, string headerText, params object[] otherArgs)
+    {
+        if (SaveManager.SaveFile.IsPart1)
+            return true;
+
+        __instance.mainAbilityGroup.iconRenderer.transform.localScale = Vector3.one;
+        Transform slotRendererObj = __instance.mainAbilityGroup.transform.Find("SlotRenderer");
+        slotRendererObj?.gameObject.SetActive(false);
+        __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(true);
+
+        if (otherArgs.Length > 0 && otherArgs.Last() is string pageId && pageId.StartsWith(SLOT_PAGEID))
+        {
+            string modString = pageId.Replace(SLOT_PAGEID, "");
+            if (int.TryParse(modString, out int modType))
+            {
+                if (__instance.headerTextMesh != null)
+                {
+                    __instance.headerTextMesh.text = headerText;
+                }
+                Info info = AllModificationInfos.InfoByID((ModificationType)modType);
+                __instance.mainAbilityGroup.nameTextMesh.text = Localization.Translate(info.RulebookName);
+                __instance.mainAbilityGroup.descriptionTextMesh.text = Localization.Translate(info.RulebookDescription);
+                __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(false);
+                if (SaveManager.SaveFile.IsPart3)
+                {
+                    if (slotRendererObj == null)
+                    {
+                        slotRendererObj = Instantiate(__instance.mainAbilityGroup.iconRenderer.transform.parent, __instance.mainAbilityGroup.transform);
+                        slotRendererObj.name = "SlotRenderer";
+                        slotRendererObj.localPosition += new Vector3(0.1f, -0.1f, 0f);
+                        slotRendererObj.localScale = new(0.6f, 0.6f, 0.6f);
+                        Destroy(slotRendererObj.Find("Icon").gameObject);
+                    }
+                    slotRendererObj.gameObject.SetActive(true);
+                    __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(false);
+                    slotRendererObj.GetComponent<SpriteRenderer>().sprite = info.P03RulebookSprite ?? info.RulebookSprite;
+                }
+                else
+                {
+                    Debug.Log("Help");
+                }
+                
+                __instance.mainAbilityGroup.iconRenderer.transform.localScale = new(0.8f, 0.8f, 0.8f);
                 //InscryptionAPIPlugin.Logger.LogDebug($"Create rulebook page for slot modification [{info.ModificationType}] ({info.RulebookName}).");
                 return false;
             }

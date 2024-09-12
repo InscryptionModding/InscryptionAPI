@@ -47,6 +47,42 @@ public static class SlotModificationExtensions
         }
         return mod;
     }
+    public static ModificationType SetRulebookP03Sprite(this ModificationType mod, Texture2D spriteTexture)
+    {
+        Info info = AllSlotModifications.InfoByID(mod);
+        if (info != null)
+        {
+            info.P03RulebookSprite = spriteTexture.ConvertTexture();
+        }
+        return mod;
+    }
+    public static ModificationType SetRulebookGrimoraSprite(this ModificationType mod, Texture2D spriteTexture)
+    {
+        Info info = AllSlotModifications.InfoByID(mod);
+        if (info != null)
+        {
+            info.GrimoraRulebookSprite = spriteTexture.ConvertTexture();
+        }
+        return mod;
+    }
+    public static ModificationType SetRulebookMagnificusSprite(this ModificationType mod, Texture2D spriteTexture)
+    {
+        Info info = AllSlotModifications.InfoByID(mod);
+        if (info != null)
+        {
+            info.MagnificusRulebookSprite = spriteTexture.ConvertTexture();
+        }
+        return mod;
+    }
+    public static ModificationType SetSharedRulebook(this ModificationType mod, ModificationType sharedRulebookType)
+    {
+        Info info = AllSlotModifications.InfoByID(mod);
+        if (info != null)
+        {
+            info.SharedRulebook = sharedRulebookType;
+        }
+        return mod;
+    }
 
     /// <summary>
     /// Assigns a new slot modification to a slot.
@@ -60,18 +96,18 @@ public static class SlotModificationExtensions
 
         Info defn = AllModificationInfos.InfoByID(modType);
         SlotModificationInteractable interactable = slot.GetComponent<SlotModificationInteractable>();
-        if (defn.RulebookName != null)
-        {
-            interactable ??= slot.gameObject.AddComponent<SlotModificationInteractable>();
-            interactable.AssignSlotModification(modType, slot);
-        }
-        else
+        if (defn == null || modType == ModificationType.NoModification || (defn.SharedRulebook == ModificationType.NoModification && string.IsNullOrEmpty(defn.RulebookName)))
         {
             interactable?.SetEnabled(false);
         }
+        else
+        {
+            interactable ??= slot.gameObject.AddComponent<SlotModificationInteractable>();
+            interactable.AssignSlotModification(defn.SharedRulebook != ModificationType.NoModification ? defn.SharedRulebook : modType, slot);
+        }
 
         // Set the ability behaviour
-        var oldSlotModification = slot.GetComponent<SlotModificationBehaviour>();
+        SlotModificationBehaviour oldSlotModification = slot.GetComponent<SlotModificationBehaviour>();
         if (oldSlotModification != null)
         {
             yield return oldSlotModification.Cleanup(modType);
