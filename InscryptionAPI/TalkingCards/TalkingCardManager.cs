@@ -31,6 +31,22 @@ public static class TalkingCardManager
     }
 
     /// <summary>
+    /// Create a talking card for Act 3.
+    /// </summary>
+    public static void NewDisk<T>() where T : ITalkingCard, new()
+    {
+        ITalkingCard x = new T();
+
+        FaceData faceData = new(
+                x.CardName,
+                x.Emotions,
+                x.FaceInfo
+            );
+
+        TalkingCardCreator.New(faceData, x.DialogueAbility, true);
+    }
+
+    /// <summary>
     /// Create a talking card from a FaceData instance through this API.
     /// </summary>
     /// <param name="faceData">Your character's face data.</param>
@@ -40,7 +56,16 @@ public static class TalkingCardManager
         if (faceData?.CardName == null) return;
         TalkingCardCreator.New(faceData, ability);
     }
-    
+
+    /// <summary>
+    /// Create a talking card for Act 3 from a FaceData instance.
+    /// </summary>
+    public static void CreateDisk(FaceData faceData, SpecialTriggeredAbility ability, bool diskTalkingCard)
+    {
+        if (faceData?.CardName == null) return;
+        TalkingCardCreator.New(faceData, ability, diskTalkingCard);
+    }
+
     /// <summary>
     /// Remove a talking card from a FaceData instance through this API.
     /// </summary>

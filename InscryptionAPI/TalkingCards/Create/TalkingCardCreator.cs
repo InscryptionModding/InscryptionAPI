@@ -49,7 +49,7 @@ public static class TalkingCardCreator
         TalkingAbilities.Remove(cardName);
     }
 
-    internal static void New(FaceData faceData, SpecialTriggeredAbility talkAbility)
+    internal static void New(FaceData faceData, SpecialTriggeredAbility talkAbility, bool diskTalkingCard)
     {
         if (AnimatedPortraits.ContainsKey(faceData.CardName))
         {
@@ -77,7 +77,7 @@ public static class TalkingCardCreator
         card.AddSpecialAbilities(talkAbility);
 
         // Special behaviour for the talking cards
-        if (card.temple == CardTemple.Tech)
+        if (diskTalkingCard)
         {
             card.AddAppearances(CardAppearanceBehaviour.Appearance.DynamicPortrait);
             foreach (var rend in card.AnimatedPortrait.GetComponentsInChildren<SpriteRenderer>())
@@ -96,6 +96,10 @@ public static class TalkingCardCreator
         {
             card.AddAppearances(CardAppearanceBehaviour.Appearance.AnimatedPortrait);
         }
+    }
+    internal static void New(FaceData faceData, SpecialTriggeredAbility talkAbility)
+    {
+        New(faceData, talkAbility, CardHelpers.Get(faceData.CardName)?.temple == CardTemple.Tech);
     }
 
     private static void RecursiveSetLayer(GameObject obj, string layerName)

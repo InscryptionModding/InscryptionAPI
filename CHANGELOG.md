@@ -12,10 +12,13 @@
 - Added ModificationType.SetSharedRulebook - used for slot modifications that should share their rulebook entry with other slot modifications
 - Added support for multiple rulebook sprites for slot modifications (SetRulebookP03Sprite, SetRulebookGrimoraSprite, SetRulebookMagnificusSprite)
 - Added RuleBookController.Instance.OpenToCustomPage
+- Added CustomDiskTalkingCard abstract class
+- Added TalkingCardManager.NewDisk and TalkingCardManager.CreateDisk
 - Fixed RuleBook construction patches having lower patch priority than intended
 - Fixed slot modification interactable being enabled when no rulebook entry exists
 - Fixed slot modification rulebook pages not working in Act 3
 - Fixed rulebook sprites being smaller than normal after flipping to a slot modification rulebook page
+- Fixed DiskTalkingCards created through the API not correctly working under certain conditions
 - Moved ConsumableItemManager patches to a separate ConsumableItemPatches class
 - Modified implementation of rulebook fill page logic to let modders patch the API logic
     - Patch 'RuleBookManagerPatches.FillPage' to do this
