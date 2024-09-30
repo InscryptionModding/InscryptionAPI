@@ -89,6 +89,51 @@
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_AddExtraRulebookCategories_" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories*"></a>
+  <h4 id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_AddExtraRulebookCategories_DiskCardGame_ConsumableItemData_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory[])">AddExtraRulebookCategories(ConsumableItemData, AbilityMetaCategory[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConsumableItemData AddExtraRulebookCategories(this ConsumableItemData data, params AbilityMetaCategory[] rulebookCategories)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.ConsumableItemData</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="parametername">rulebookCategories</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.ConsumableItemData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_CanActivateOutsideBattles_" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles*"></a>
   <h4 id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_CanActivateOutsideBattles_DiskCardGame_ConsumableItemData_" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles(DiskCardGame.ConsumableItemData)">CanActivateOutsideBattles(ConsumableItemData)</h4>
   <div class="markdown level1 summary"></div>
@@ -404,6 +449,55 @@
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
         <td><p>Returns the value of the property as an int or null if it didn&apos;t exist or couldn&apos;t be parsed as int.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetFullConsumableItemData_" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData*"></a>
+  <h4 id="InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetFullConsumableItemData_DiskCardGame_ConsumableItemData_System_Boolean_" data-uid="InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData(DiskCardGame.ConsumableItemData,System.Boolean)">GetFullConsumableItemData(ConsumableItemData, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the FullConsumableItemData associated with the given ConsumableItemData.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConsumableItemManager.FullConsumableItemData GetFullConsumableItemData(this ConsumableItemData data, bool fallBackToName = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.ConsumableItemData</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The ConsumableItemData we want to find the FullConsumableItemData of.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fallBackToName</span></td>
+        <td><p>If the initial retrieval returns null and this is true, search again for the FullConsumableItemData using the data&apos;s mod prefix and rulebookName.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html">ConsumableItemManager.FullConsumableItemData</a></td>
+        <td><p>The FullConsumableItemData associated with the given COnsumableItemData, or null if it does not exist.</p>
 </td>
       </tr>
     </tbody>

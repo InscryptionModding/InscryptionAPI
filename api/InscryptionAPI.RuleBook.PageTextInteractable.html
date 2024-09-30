@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class RuleBookManagerPatches
+    <title>Class PageTextInteractable
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class RuleBookManagerPatches
+    <meta name="title" content="Class PageTextInteractable
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,33 +69,40 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.RuleBook.PageTextInteractable">
   
   
-  <h1 id="InscryptionAPI_RuleBook_RuleBookManagerPatches" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches" class="text-break">Class RuleBookManagerPatches
+  <h1 id="InscryptionAPI_RuleBook_PageTextInteractable" data-uid="InscryptionAPI.RuleBook.PageTextInteractable" class="text-break">Class PageTextInteractable
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">RuleBookManagerPatches</span></div>
+    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
+    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
+    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
+    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
+    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
+    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
+    <div class="level7"><span class="xref">DiskCardGame.InteractableBase</span></div>
+    <div class="level8"><span class="xref">DiskCardGame.AlternateInputInteractable</span></div>
+    <div class="level9"><span class="xref">PageTextInteractable</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.RuleBook.html">InscryptionAPI.RuleBook</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_RuleBook_PageTextInteractable_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public class RuleBookManagerPatches</code></pre>
+    <pre><code class="lang-csharp hljs">public class PageTextInteractable : AlternateInputInteractable</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_API_ID" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.API_ID">API_ID</h4>
+  <h4 id="InscryptionAPI_RuleBook_PageTextInteractable_redirectId" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.redirectId">redirectId</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string API_ID = &quot;[API_&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public string redirectId</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -112,16 +119,74 @@ public class RuleBookManagerPatches</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage*"></a>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_DiskCardGame_RuleBookPage_DiskCardGame_RuleBookPageInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage,DiskCardGame.RuleBookPageInfo)">FillPage(RuleBookPage, RuleBookPageInfo)</h4>
-  <div class="markdown level1 summary"><p>Expanded version of FillPage that accounts for custom rulebook sections.</p>
-</div>
+  <h4 id="InscryptionAPI_RuleBook_PageTextInteractable_redirectType" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.redirectType">redirectType</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void FillPage(RuleBookPage page, RuleBookPageInfo pageInfo)</code></pre>
+    <pre><code class="lang-csharp hljs">public PageRangeType redirectType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PageRangeType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="InscryptionAPI_RuleBook_PageTextInteractable_CursorType_" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.CursorType*"></a>
+  <h4 id="InscryptionAPI_RuleBook_PageTextInteractable_CursorType" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.CursorType">CursorType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override CursorType CursorType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CursorType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.InteractableBase.CursorType</span></div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_RuleBook_PageTextInteractable_OnAlternateSelectStarted_" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted*"></a>
+  <h4 id="InscryptionAPI_RuleBook_PageTextInteractable_OnAlternateSelectStarted" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted">OnAlternateSelectStarted()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnAlternateSelectStarted()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">DiskCardGame.AlternateInputInteractable.OnAlternateSelectStarted()</span></div>
+  <a id="InscryptionAPI_RuleBook_PageTextInteractable_SetRedirect_" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect*"></a>
+  <h4 id="InscryptionAPI_RuleBook_PageTextInteractable_SetRedirect_DiskCardGame_PageRangeType_System_String_" data-uid="InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect(DiskCardGame.PageRangeType,System.String)">SetRedirect(PageRangeType, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRedirect(PageRangeType rangeType, string pageId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -134,13 +199,13 @@ public class RuleBookManagerPatches</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RuleBookPage</span></td>
-        <td><span class="parametername">page</span></td>
+        <td><span class="xref">DiskCardGame.PageRangeType</span></td>
+        <td><span class="parametername">rangeType</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.RuleBookPageInfo</span></td>
-        <td><span class="parametername">pageInfo</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pageId</span></td>
         <td></td>
       </tr>
     </tbody>

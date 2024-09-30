@@ -147,6 +147,42 @@
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_TalkingCards_TalkingCardManager_CreateDisk_" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_TalkingCardManager_CreateDisk_InscryptionAPI_TalkingCards_Create_FaceData_DiskCardGame_SpecialTriggeredAbility_System_Boolean_" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk(InscryptionAPI.TalkingCards.Create.FaceData,DiskCardGame.SpecialTriggeredAbility,System.Boolean)">CreateDisk(FaceData, SpecialTriggeredAbility, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create a talking card for Act 3 from a FaceData instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CreateDisk(FaceData faceData, SpecialTriggeredAbility ability, bool diskTalkingCard)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.TalkingCards.Create.FaceData.html">FaceData</a></td>
+        <td><span class="parametername">faceData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.SpecialTriggeredAbility</span></td>
+        <td><span class="parametername">ability</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">diskTalkingCard</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_TalkingCards_TalkingCardManager_New_" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.New*"></a>
   <h4 id="InscryptionAPI_TalkingCards_TalkingCardManager_New__1" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.New``1">New&lt;T&gt;()</h4>
   <div class="markdown level1 summary"><p>Creates a talking card through this API.</p>
@@ -170,6 +206,31 @@
         <td><span class="parametername">T</span></td>
         <td><p>A type that implements the ITalkingCard interface.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_TalkingCards_TalkingCardManager_NewDisk_" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_TalkingCardManager_NewDisk__1" data-uid="InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk``1">NewDisk&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Create a talking card for Act 3.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void NewDisk&lt;T&gt;()
+    where T : ITalkingCard, new()</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

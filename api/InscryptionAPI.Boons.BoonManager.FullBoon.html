@@ -159,6 +159,55 @@
       </tr>
     </tbody>
   </table>
+  <h4 id="InscryptionAPI_Boons_BoonManager_FullBoon_metaCategories" data-uid="InscryptionAPI.Boons.BoonManager.FullBoon.metaCategories">metaCategories</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;AbilityMetaCategory&gt; metaCategories</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AbilityMetaCategory</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Boons_BoonManager_FullBoon_RulebookDescriptionRedirects" data-uid="InscryptionAPI.Boons.BoonManager.FullBoon.RulebookDescriptionRedirects">RulebookDescriptionRedirects</h4>
+  <div class="markdown level1 summary"><p>Tracks all rulebook redirects that this ability&apos;s description will have. Explanation of the variables is as follows:
+Key (string): the text that will be recoloured to indicate that it&apos;s clickable.
+Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, RuleBookManager.RedirectInfo&gt; RulebookDescriptionRedirects</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html">RuleBookManager.RedirectInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h4 id="InscryptionAPI_Boons_BoonManager_FullBoon_stacks" data-uid="InscryptionAPI.Boons.BoonManager.FullBoon.stacks">stacks</h4>
   <div class="markdown level1 summary"><p>Indicates if the player can have multiple instances of this boon in their deck.</p>
 </div>
@@ -183,6 +232,24 @@
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_Ability_UnityEngine_Color_">RuleBookRedirectExtensions.SetAbilityRedirect(BoonManager.FullBoon, String, Ability, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_">RuleBookRedirectExtensions.SetStatIconRedirect(BoonManager.FullBoon, String, SpecialStatIcon, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_">RuleBookRedirectExtensions.SetBoonRedirect(BoonManager.FullBoon, String, BoonData.Type, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetItemRedirect(BoonManager.FullBoon, String, String, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetUniqueRedirect(BoonManager.FullBoon, String, String, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_">RuleBookRedirectExtensions.SetSlotRedirect(BoonManager.FullBoon, String, SlotModificationManager.ModificationType, Color)</a>
+  </div>
   <div>
       <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
   </div>

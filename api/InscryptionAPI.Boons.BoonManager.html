@@ -114,6 +114,28 @@ public static class BoonManager</code></pre>
       </tr>
     </tbody>
   </table>
+  <h4 id="InscryptionAPI_Boons_BoonManager_FullBaseGameBoons" data-uid="InscryptionAPI.Boons.BoonManager.FullBaseGameBoons">FullBaseGameBoons</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly List&lt;BoonManager.FullBoon&gt; FullBaseGameBoons</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Boons.BoonManager.FullBoon.html">BoonManager.FullBoon</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <a id="InscryptionAPI_Boons_BoonManager_AllBoonsCopy_" data-uid="InscryptionAPI.Boons.BoonManager.AllBoonsCopy*"></a>
@@ -140,8 +162,116 @@ public static class BoonManager</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Boons_BoonManager_AllFullBoons_" data-uid="InscryptionAPI.Boons.BoonManager.AllFullBoons*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonManager_AllFullBoons" data-uid="InscryptionAPI.Boons.BoonManager.AllFullBoons">AllFullBoons</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;BoonManager.FullBoon&gt; AllFullBoons { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Boons.BoonManager.FullBoon.html">BoonManager.FullBoon</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
+  <a id="InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_" data-uid="InscryptionAPI.Boons.BoonManager.AddRuleBookCategories*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_DiskCardGame_BoonData_Type_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type,DiskCardGame.AbilityMetaCategory[])">AddRuleBookCategories(BoonData.Type, AbilityMetaCategory[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BoonData.Type AddRuleBookCategories(this BoonData.Type boonType, params AbilityMetaCategory[] categories)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="parametername">boonType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="parametername">categories</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Boons_BoonManager_GetFullBoon_" data-uid="InscryptionAPI.Boons.BoonManager.GetFullBoon*"></a>
+  <h4 id="InscryptionAPI_Boons_BoonManager_GetFullBoon_DiskCardGame_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonManager.GetFullBoon(DiskCardGame.BoonData.Type)">GetFullBoon(BoonData.Type)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BoonManager.FullBoon GetFullBoon(this BoonData.Type boonType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="parametername">boonType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Boons.BoonManager.FullBoon.html">BoonManager.FullBoon</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Boons_BoonManager_New_" data-uid="InscryptionAPI.Boons.BoonManager.New*"></a>
   <h4 id="InscryptionAPI_Boons_BoonManager_New_System_String_System_String_Type_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonManager.New(System.String,System.String,Type,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)">New(String, String, Type, String, String, String, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new boon and adds it to the list of boons the player can receive.</p>

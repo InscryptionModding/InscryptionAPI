@@ -184,8 +184,83 @@
       </tr>
     </tbody>
   </table>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_RulebookDescriptionRedirects" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescriptionRedirects">RulebookDescriptionRedirects</h4>
+  <div class="markdown level1 summary"><p>Tracks all rulebook redirects that this ability&apos;s description will have. Explanation of the variables is as follows:
+Key (string): the text that will be recoloured to indicate that it&apos;s clickable.
+Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, RuleBookManager.RedirectInfo&gt; RulebookDescriptionRedirects</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html">RuleBookManager.RedirectInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_Info_GrimoraRulebookSprite_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_GrimoraRulebookSprite" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite">GrimoraRulebookSprite</h4>
+  <div class="markdown level1 summary"><p>Set using SetRulebookGrimoraSprite if you want your slot to have a different rulebook sprite in Grimora&apos;s Act than in other acts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sprite GrimoraRulebookSprite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_Info_MagnificusRulebookSprite_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_MagnificusRulebookSprite" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite">MagnificusRulebookSprite</h4>
+  <div class="markdown level1 summary"><p>Set using SetRulebookMagnificusSprite if you want your slot to have a different rulebook sprite in Magnificus&apos;s Act than in other acts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sprite MagnificusRulebookSprite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_Info_ModGUID_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_ModGUID" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.ModGUID">ModGUID</h4>
   <div class="markdown level1 summary"><p>The GUID of the mod that added this slot modification.</p>
@@ -254,6 +329,30 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_Info_P03RulebookSprite_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_P03RulebookSprite" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite">P03RulebookSprite</h4>
+  <div class="markdown level1 summary"><p>Set using SetRulebookP03Sprite if you want your slot to have a different rulebook sprite in Act 3 than in other acts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sprite P03RulebookSprite { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -335,8 +434,7 @@
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_Info_RulebookSprite_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite*"></a>
   <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_RulebookSprite" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite">RulebookSprite</h4>
-  <div class="markdown level1 summary"><p>If this slot modification can appear in the rulebook, this will be the sprite displayed.
-Texture should have the dimensions 154 x 226; if the sprite is null then the rulebook entry will use the first entry in Texture as a sprite.</p>
+  <div class="markdown level1 summary"><p>The sprite to use for the rulebook entry. If this is null, the API will use the first slot value in the Texture dictionary.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -354,6 +452,30 @@ Texture should have the dimensions 154 x 226; if the sprite is null then the rul
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Slots_SlotModificationManager_Info_SharedRulebook_" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook*"></a>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_Info_SharedRulebook" data-uid="InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook">SharedRulebook</h4>
+  <div class="markdown level1 summary"><p>The slot modification whose rulebook entry is also used by this slot modification.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SlotModificationManager.ModificationType SharedRulebook { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.ModificationType.html">SlotModificationManager.ModificationType</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -432,6 +554,24 @@ Texture should have the dimensions 154 x 226; if the sprite is null then the rul
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_Ability_UnityEngine_Color_">RuleBookRedirectExtensions.SetAbilityRedirect(SlotModificationManager.Info, String, Ability, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_">RuleBookRedirectExtensions.SetStatIconRedirect(SlotModificationManager.Info, String, SpecialStatIcon, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_">RuleBookRedirectExtensions.SetBoonRedirect(SlotModificationManager.Info, String, BoonData.Type, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetItemRedirect(SlotModificationManager.Info, String, String, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetUniqueRedirect(SlotModificationManager.Info, String, String, Color)</a>
+  </div>
+  <div>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_">RuleBookRedirectExtensions.SetSlotRedirect(SlotModificationManager.Info, String, SlotModificationManager.ModificationType, Color)</a>
+  </div>
   <div>
       <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
   </div>

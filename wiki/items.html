@@ -109,7 +109,8 @@ ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does
 ConsumableItemManager.New(Plugin.PluginGuid, &quot;Custom Item&quot;, &quot;Does a thing!&quot;, textureOrSprite, typeof(CustomConsumableItem), prefab)
                 .SetDescription(learnText)
                 .SetAct1();
-</code></pre></article>
+</code></pre><p>If you want your item to appear in the rulebook in multiple Acts, use the extension <code>AddExtraRulebookCategories</code> on the returned ConsumableItemData.</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

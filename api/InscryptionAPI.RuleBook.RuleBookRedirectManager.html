@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RuleBookRedirectManager
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RuleBookRedirectManager
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager">
+  
+  
+  <h1 id="InscryptionAPI_RuleBook_RuleBookRedirectManager" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager" class="text-break">Class RuleBookRedirectManager
+  </h1>
+  <div class="markdown level0 summary"><p>Controls everything regarding the creation and positioning of page text redirects.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
+    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
+    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
+    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
+    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
+    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
+    <div class="level7"><span class="xref">Singleton</span>&lt;<a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectManager.html">RuleBookRedirectManager</a>&gt;</div>
+    <div class="level8"><span class="xref">RuleBookRedirectManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.RuleBook.html">InscryptionAPI.RuleBook</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RuleBookRedirectManager : Singleton&lt;RuleBookRedirectManager&gt;</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_createdInteractableObjects" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.createdInteractableObjects">createdInteractableObjects</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly List&lt;GameObject&gt; createdInteractableObjects</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/GameObject.html">GameObject</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_currentActiveInteractables" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActiveInteractables">currentActiveInteractables</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly List&lt;GameObject&gt; currentActiveInteractables</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/GameObject.html">GameObject</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_currentActivePageIndex" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActivePageIndex">currentActivePageIndex</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int currentActivePageIndex</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_currentPageLengths" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageLengths">currentPageLengths</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float[] currentPageLengths</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_currentPageTopLeft" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageTopLeft">currentPageTopLeft</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 currentPageTopLeft</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_currentTopPage" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.currentTopPage">currentTopPage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transform currentTopPage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Transform.html">Transform</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_descriptionLengths" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionLengths">descriptionLengths</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float[] descriptionLengths</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_descriptionTopLeft" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionTopLeft">descriptionTopLeft</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 descriptionTopLeft</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Vector3.html">Vector3</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_PixelCamera" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.PixelCamera">PixelCamera</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera PixelCamera</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Camera.html">Camera</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_RuleBookCamera" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera">RuleBookCamera</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Camera RuleBookCamera</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Camera.html">Camera</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_ClearActiveInteractables_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables*"></a>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_ClearActiveInteractables" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables">ClearActiveInteractables()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearActiveInteractables()</code></pre>
+  </div>
+  <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject*"></a>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_UnityEngine_Vector3_UnityEngine_Vector3_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(UnityEngine.Vector3,UnityEngine.Vector3,System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)">CreateInteractableObject(Vector3, Vector3, String, RuleBookManager.RedirectInfo)</h4>
+  <div class="markdown level1 summary"><p>Creates and positions the actual interactable object using the provided position and collider vectors.
+The position is the world position relative to the rulebook.
+Translates worldPosition to a screenpoint relative to the rulebook then back to world space relative to the pixel (player) camera.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateInteractableObject(Vector3 worldPosition, Vector3 colliderSize, string keyText, RuleBookManager.RedirectInfo redirectInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Vector3.html">Vector3</a></td>
+        <td><span class="parametername">worldPosition</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Vector3.html">Vector3</a></td>
+        <td><span class="parametername">colliderSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keyText</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html">RuleBookManager.RedirectInfo</a></td>
+        <td><span class="parametername">redirectInfo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces*"></a>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_TMPro_TMP_TextInfo_System_String_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMPro.TMP_TextInfo,System.String)">GetWordIndeces(TMP_TextInfo, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the indeces of every instance of every word in the key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;List&lt;int&gt;&gt; GetWordIndeces(TMP_TextInfo textInfo, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TMPro.TMP_TextInfo</span></td>
+        <td><span class="parametername">textInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Int32</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables*"></a>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TMPro_TextMeshPro_UnityEngine_GameObject_System_Collections_Generic_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})">UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary&lt;String, RuleBookManager.RedirectInfo&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateActiveInteractables(TextMeshPro description, GameObject currentPageObj, Dictionary&lt;string, RuleBookManager.RedirectInfo&gt; redirects)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TMPro.TextMeshPro</span></td>
+        <td><span class="parametername">description</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/GameObject.html">GameObject</a></td>
+        <td><span class="parametername">currentPageObj</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html">RuleBookManager.RedirectInfo</a>&gt;</td>
+        <td><span class="parametername">redirects</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -2069,6 +2069,22 @@ references:
   commentId: T:InscryptionAPI.Boons.BoonManager
   fullName: InscryptionAPI.Boons.BoonManager
   nameWithType: BoonManager
+- uid: InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type,DiskCardGame.AbilityMetaCategory[])
+  name: AddRuleBookCategories(BoonData.Type, AbilityMetaCategory[])
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_DiskCardGame_BoonData_Type_DiskCardGame_AbilityMetaCategory___
+  commentId: M:InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type,DiskCardGame.AbilityMetaCategory[])
+  name.vb: AddRuleBookCategories(BoonData.Type, AbilityMetaCategory())
+  fullName: InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type, DiskCardGame.AbilityMetaCategory[])
+  fullName.vb: InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type, DiskCardGame.AbilityMetaCategory())
+  nameWithType: BoonManager.AddRuleBookCategories(BoonData.Type, AbilityMetaCategory[])
+  nameWithType.vb: BoonManager.AddRuleBookCategories(BoonData.Type, AbilityMetaCategory())
+- uid: InscryptionAPI.Boons.BoonManager.AddRuleBookCategories*
+  name: AddRuleBookCategories
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_
+  commentId: Overload:InscryptionAPI.Boons.BoonManager.AddRuleBookCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Boons.BoonManager.AddRuleBookCategories
+  nameWithType: BoonManager.AddRuleBookCategories
 - uid: InscryptionAPI.Boons.BoonManager.AllBoonsCopy
   name: AllBoonsCopy
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AllBoonsCopy
@@ -2082,12 +2098,31 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Boons.BoonManager.AllBoonsCopy
   nameWithType: BoonManager.AllBoonsCopy
+- uid: InscryptionAPI.Boons.BoonManager.AllFullBoons
+  name: AllFullBoons
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AllFullBoons
+  commentId: P:InscryptionAPI.Boons.BoonManager.AllFullBoons
+  fullName: InscryptionAPI.Boons.BoonManager.AllFullBoons
+  nameWithType: BoonManager.AllFullBoons
+- uid: InscryptionAPI.Boons.BoonManager.AllFullBoons*
+  name: AllFullBoons
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_AllFullBoons_
+  commentId: Overload:InscryptionAPI.Boons.BoonManager.AllFullBoons
+  isSpec: "True"
+  fullName: InscryptionAPI.Boons.BoonManager.AllFullBoons
+  nameWithType: BoonManager.AllFullBoons
 - uid: InscryptionAPI.Boons.BoonManager.BaseGameBoons
   name: BaseGameBoons
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_BaseGameBoons
   commentId: F:InscryptionAPI.Boons.BoonManager.BaseGameBoons
   fullName: InscryptionAPI.Boons.BoonManager.BaseGameBoons
   nameWithType: BoonManager.BaseGameBoons
+- uid: InscryptionAPI.Boons.BoonManager.FullBaseGameBoons
+  name: FullBaseGameBoons
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_FullBaseGameBoons
+  commentId: F:InscryptionAPI.Boons.BoonManager.FullBaseGameBoons
+  fullName: InscryptionAPI.Boons.BoonManager.FullBaseGameBoons
+  nameWithType: BoonManager.FullBaseGameBoons
 - uid: InscryptionAPI.Boons.BoonManager.FullBoon
   name: BoonManager.FullBoon
   href: api/InscryptionAPI.Boons.BoonManager.FullBoon.html
@@ -2112,12 +2147,37 @@ references:
   commentId: F:InscryptionAPI.Boons.BoonManager.FullBoon.boonHandlerType
   fullName: InscryptionAPI.Boons.BoonManager.FullBoon.boonHandlerType
   nameWithType: BoonManager.FullBoon.boonHandlerType
+- uid: InscryptionAPI.Boons.BoonManager.FullBoon.metaCategories
+  name: metaCategories
+  href: api/InscryptionAPI.Boons.BoonManager.FullBoon.html#InscryptionAPI_Boons_BoonManager_FullBoon_metaCategories
+  commentId: F:InscryptionAPI.Boons.BoonManager.FullBoon.metaCategories
+  fullName: InscryptionAPI.Boons.BoonManager.FullBoon.metaCategories
+  nameWithType: BoonManager.FullBoon.metaCategories
+- uid: InscryptionAPI.Boons.BoonManager.FullBoon.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.Boons.BoonManager.FullBoon.html#InscryptionAPI_Boons_BoonManager_FullBoon_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.Boons.BoonManager.FullBoon.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.Boons.BoonManager.FullBoon.RulebookDescriptionRedirects
+  nameWithType: BoonManager.FullBoon.RulebookDescriptionRedirects
 - uid: InscryptionAPI.Boons.BoonManager.FullBoon.stacks
   name: stacks
   href: api/InscryptionAPI.Boons.BoonManager.FullBoon.html#InscryptionAPI_Boons_BoonManager_FullBoon_stacks
   commentId: F:InscryptionAPI.Boons.BoonManager.FullBoon.stacks
   fullName: InscryptionAPI.Boons.BoonManager.FullBoon.stacks
   nameWithType: BoonManager.FullBoon.stacks
+- uid: InscryptionAPI.Boons.BoonManager.GetFullBoon(DiskCardGame.BoonData.Type)
+  name: GetFullBoon(BoonData.Type)
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_GetFullBoon_DiskCardGame_BoonData_Type_
+  commentId: M:InscryptionAPI.Boons.BoonManager.GetFullBoon(DiskCardGame.BoonData.Type)
+  fullName: InscryptionAPI.Boons.BoonManager.GetFullBoon(DiskCardGame.BoonData.Type)
+  nameWithType: BoonManager.GetFullBoon(BoonData.Type)
+- uid: InscryptionAPI.Boons.BoonManager.GetFullBoon*
+  name: GetFullBoon
+  href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_GetFullBoon_
+  commentId: Overload:InscryptionAPI.Boons.BoonManager.GetFullBoon
+  isSpec: "True"
+  fullName: InscryptionAPI.Boons.BoonManager.GetFullBoon
+  nameWithType: BoonManager.GetFullBoon
 - uid: InscryptionAPI.Boons.BoonManager.New(System.String,System.String,Type,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean)
   name: New(String, String, Type, String, String, String, Boolean, Boolean, Boolean)
   href: api/InscryptionAPI.Boons.BoonManager.html#InscryptionAPI_Boons_BoonManager_New_System_String_System_String_Type_System_String_System_String_System_String_System_Boolean_System_Boolean_System_Boolean_
@@ -2986,6 +3046,12 @@ references:
   commentId: F:InscryptionAPI.Card.AbilityManager.FullAbility.ModGUID
   fullName: InscryptionAPI.Card.AbilityManager.FullAbility.ModGUID
   nameWithType: AbilityManager.FullAbility.ModGUID
+- uid: InscryptionAPI.Card.AbilityManager.FullAbility.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.Card.AbilityManager.FullAbility.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.Card.AbilityManager.FullAbility.RulebookDescriptionRedirects
+  nameWithType: AbilityManager.FullAbility.RulebookDescriptionRedirects
 - uid: InscryptionAPI.Card.AbilityManager.FullAbility.Texture
   name: Texture
   href: api/InscryptionAPI.Card.AbilityManager.FullAbility.html#InscryptionAPI_Card_AbilityManager_FullAbility_Texture
@@ -8671,6 +8737,12 @@ references:
   commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
   fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.Info
   nameWithType: StatIconManager.FullStatIcon.Info
+- uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.Card.StatIconManager.FullStatIcon.html#InscryptionAPI_Card_StatIconManager_FullStatIcon_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.Card.StatIconManager.FullStatIcon.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.Card.StatIconManager.FullStatIcon.RulebookDescriptionRedirects
+  nameWithType: StatIconManager.FullStatIcon.RulebookDescriptionRedirects
 - uid: InscryptionAPI.Card.StatIconManager.FullStatIcon.VariableStatBehavior
   name: VariableStatBehavior
   href: api/InscryptionAPI.Card.StatIconManager.FullStatIcon.html#InscryptionAPI_Card_StatIconManager_FullStatIcon_VariableStatBehavior
@@ -12437,6 +12509,43 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.ConsumableItemManager.Add
   nameWithType: ConsumableItemManager.Add
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData
+  name: ConsumableItemManager.FullConsumableItemData
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html
+  commentId: T:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData
+  nameWithType: ConsumableItemManager.FullConsumableItemData
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.#ctor(DiskCardGame.ConsumableItemData)
+  name: FullConsumableItemData(ConsumableItemData)
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html#InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData__ctor_DiskCardGame_ConsumableItemData_
+  commentId: M:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.#ctor(DiskCardGame.ConsumableItemData)
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.FullConsumableItemData(DiskCardGame.ConsumableItemData)
+  nameWithType: ConsumableItemManager.FullConsumableItemData.FullConsumableItemData(ConsumableItemData)
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.#ctor*
+  name: FullConsumableItemData
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html#InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData__ctor_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.FullConsumableItemData
+  nameWithType: ConsumableItemManager.FullConsumableItemData.FullConsumableItemData
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.itemData
+  name: itemData
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html#InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_itemData
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.itemData
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.itemData
+  nameWithType: ConsumableItemManager.FullConsumableItemData.itemData
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html#InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.RulebookDescriptionRedirects
+  nameWithType: ConsumableItemManager.FullConsumableItemData.RulebookDescriptionRedirects
+- uid: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.rulebookMetaCategories
+  name: rulebookMetaCategories
+  href: api/InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.html#InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_rulebookMetaCategories
+  commentId: F:InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.rulebookMetaCategories
+  fullName: InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData.rulebookMetaCategories
+  nameWithType: ConsumableItemManager.FullConsumableItemData.rulebookMetaCategories
 - uid: InscryptionAPI.Items.ConsumableItemManager.ModelType
   name: ConsumableItemManager.ModelType
   href: api/InscryptionAPI.Items.ConsumableItemManager.ModelType.html
@@ -12530,6 +12639,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.ConsumableItemManager.RegisterPrefab
   nameWithType: ConsumableItemManager.RegisterPrefab
+- uid: InscryptionAPI.Items.ConsumableItemPatches
+  name: ConsumableItemPatches
+  href: api/InscryptionAPI.Items.ConsumableItemPatches.html
+  commentId: T:InscryptionAPI.Items.ConsumableItemPatches
+  fullName: InscryptionAPI.Items.ConsumableItemPatches
+  nameWithType: ConsumableItemPatches
+- uid: InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages(DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory)
+  name: ConstructItemPages(RuleBookInfo, PageRangeInfo, AbilityMetaCategory)
+  href: api/InscryptionAPI.Items.ConsumableItemPatches.html#InscryptionAPI_Items_ConsumableItemPatches_ConstructItemPages_DiskCardGame_RuleBookInfo_DiskCardGame_PageRangeInfo_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages(DiskCardGame.RuleBookInfo,DiskCardGame.PageRangeInfo,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages(DiskCardGame.RuleBookInfo, DiskCardGame.PageRangeInfo, DiskCardGame.AbilityMetaCategory)
+  nameWithType: ConsumableItemPatches.ConstructItemPages(RuleBookInfo, PageRangeInfo, AbilityMetaCategory)
+- uid: InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages*
+  name: ConstructItemPages
+  href: api/InscryptionAPI.Items.ConsumableItemPatches.html#InscryptionAPI_Items_ConsumableItemPatches_ConstructItemPages_
+  commentId: Overload:InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.ConsumableItemPatches.ConstructItemPages
+  nameWithType: ConsumableItemPatches.ConstructItemPages
 - uid: InscryptionAPI.Items.ConsumableItemResource
   name: ConsumableItemResource
   href: api/InscryptionAPI.Items.ConsumableItemResource.html
@@ -12554,6 +12682,22 @@ references:
   commentId: T:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
   fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions
   nameWithType: ConsumableItemDataExtensions
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory[])
+  name: AddExtraRulebookCategories(ConsumableItemData, AbilityMetaCategory[])
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_AddExtraRulebookCategories_DiskCardGame_ConsumableItemData_DiskCardGame_AbilityMetaCategory___
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory[])
+  name.vb: AddExtraRulebookCategories(ConsumableItemData, AbilityMetaCategory())
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories(DiskCardGame.ConsumableItemData, DiskCardGame.AbilityMetaCategory[])
+  fullName.vb: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories(DiskCardGame.ConsumableItemData, DiskCardGame.AbilityMetaCategory())
+  nameWithType: ConsumableItemDataExtensions.AddExtraRulebookCategories(ConsumableItemData, AbilityMetaCategory[])
+  nameWithType.vb: ConsumableItemDataExtensions.AddExtraRulebookCategories(ConsumableItemData, AbilityMetaCategory())
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories*
+  name: AddExtraRulebookCategories
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_AddExtraRulebookCategories_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.AddExtraRulebookCategories
+  nameWithType: ConsumableItemDataExtensions.AddExtraRulebookCategories
 - uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.CanActivateOutsideBattles(DiskCardGame.ConsumableItemData)
   name: CanActivateOutsideBattles(ConsumableItemData)
   href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_CanActivateOutsideBattles_DiskCardGame_ConsumableItemData_
@@ -12645,6 +12789,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetExtendedPropertyAsInt
   nameWithType: ConsumableItemDataExtensions.GetExtendedPropertyAsInt
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData(DiskCardGame.ConsumableItemData,System.Boolean)
+  name: GetFullConsumableItemData(ConsumableItemData, Boolean)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetFullConsumableItemData_DiskCardGame_ConsumableItemData_System_Boolean_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData(DiskCardGame.ConsumableItemData,System.Boolean)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData(DiskCardGame.ConsumableItemData, System.Boolean)
+  nameWithType: ConsumableItemDataExtensions.GetFullConsumableItemData(ConsumableItemData, Boolean)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData*
+  name: GetFullConsumableItemData
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetFullConsumableItemData_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetFullConsumableItemData
+  nameWithType: ConsumableItemDataExtensions.GetFullConsumableItemData
 - uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.GetModPrefix(DiskCardGame.ConsumableItemData)
   name: GetModPrefix(ConsumableItemData)
   href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_GetModPrefix_DiskCardGame_ConsumableItemData_
@@ -16502,6 +16659,63 @@ references:
   commentId: N:InscryptionAPI.RuleBook
   fullName: InscryptionAPI.RuleBook
   nameWithType: InscryptionAPI.RuleBook
+- uid: InscryptionAPI.RuleBook.PageTextInteractable
+  name: PageTextInteractable
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html
+  commentId: T:InscryptionAPI.RuleBook.PageTextInteractable
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable
+  nameWithType: PageTextInteractable
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.CursorType
+  name: CursorType
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_CursorType
+  commentId: P:InscryptionAPI.RuleBook.PageTextInteractable.CursorType
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.CursorType
+  nameWithType: PageTextInteractable.CursorType
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.CursorType*
+  name: CursorType
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_CursorType_
+  commentId: Overload:InscryptionAPI.RuleBook.PageTextInteractable.CursorType
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.CursorType
+  nameWithType: PageTextInteractable.CursorType
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted
+  name: OnAlternateSelectStarted()
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_OnAlternateSelectStarted
+  commentId: M:InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted()
+  nameWithType: PageTextInteractable.OnAlternateSelectStarted()
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted*
+  name: OnAlternateSelectStarted
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_OnAlternateSelectStarted_
+  commentId: Overload:InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.OnAlternateSelectStarted
+  nameWithType: PageTextInteractable.OnAlternateSelectStarted
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.redirectId
+  name: redirectId
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_redirectId
+  commentId: F:InscryptionAPI.RuleBook.PageTextInteractable.redirectId
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.redirectId
+  nameWithType: PageTextInteractable.redirectId
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.redirectType
+  name: redirectType
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_redirectType
+  commentId: F:InscryptionAPI.RuleBook.PageTextInteractable.redirectType
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.redirectType
+  nameWithType: PageTextInteractable.redirectType
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect(DiskCardGame.PageRangeType,System.String)
+  name: SetRedirect(PageRangeType, String)
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_SetRedirect_DiskCardGame_PageRangeType_System_String_
+  commentId: M:InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect(DiskCardGame.PageRangeType,System.String)
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect(DiskCardGame.PageRangeType, System.String)
+  nameWithType: PageTextInteractable.SetRedirect(PageRangeType, String)
+- uid: InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect*
+  name: SetRedirect
+  href: api/InscryptionAPI.RuleBook.PageTextInteractable.html#InscryptionAPI_RuleBook_PageTextInteractable_SetRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.PageTextInteractable.SetRedirect
+  nameWithType: PageTextInteractable.SetRedirect
 - uid: InscryptionAPI.RuleBook.RuleBookManager
   name: RuleBookManager
   href: api/InscryptionAPI.RuleBook.RuleBookManager.html
@@ -16521,6 +16735,31 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.RuleBook.RuleBookManager.AllRuleBookInfos
   nameWithType: RuleBookManager.AllRuleBookInfos
+- uid: InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded(InscryptionAPI.Boons.BoonManager.FullBoon,DiskCardGame.AbilityMetaCategory)
+  name: BoonShouldBeAdded(BoonManager.FullBoon, AbilityMetaCategory)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_BoonShouldBeAdded_InscryptionAPI_Boons_BoonManager_FullBoon_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded(InscryptionAPI.Boons.BoonManager.FullBoon,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded(InscryptionAPI.Boons.BoonManager.FullBoon, DiskCardGame.AbilityMetaCategory)
+  nameWithType: RuleBookManager.BoonShouldBeAdded(BoonManager.FullBoon, AbilityMetaCategory)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded*
+  name: BoonShouldBeAdded
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_BoonShouldBeAdded_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.BoonShouldBeAdded
+  nameWithType: RuleBookManager.BoonShouldBeAdded
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ConstructedPagesWithRedirects
+  name: ConstructedPagesWithRedirects
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ConstructedPagesWithRedirects
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.ConstructedPagesWithRedirects
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ConstructedPagesWithRedirects
+  nameWithType: RuleBookManager.ConstructedPagesWithRedirects
+- uid: InscryptionAPI.RuleBook.RuleBookManager.CustomRedirectPages
+  name: CustomRedirectPages
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_CustomRedirectPages
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.CustomRedirectPages
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.CustomRedirectPages
+  nameWithType: RuleBookManager.CustomRedirectPages
 - uid: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo
   name: RuleBookManager.FullRuleBookRangeInfo
   href: api/InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.html
@@ -16678,6 +16917,19 @@ references:
   commentId: F:InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.SubSectionName
   fullName: InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo.SubSectionName
   nameWithType: RuleBookManager.FullRuleBookRangeInfo.SubSectionName
+- uid: InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId(System.String)
+  name: GetUnformattedPageId(String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_GetUnformattedPageId_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId(System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId(System.String)
+  nameWithType: RuleBookManager.GetUnformattedPageId(String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId*
+  name: GetUnformattedPageId
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_GetUnformattedPageId_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.GetUnformattedPageId
+  nameWithType: RuleBookManager.GetUnformattedPageId
 - uid: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple(System.String)
   name: HeaderPrefixSimple(String)
   href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_HeaderPrefixSimple_System_String_
@@ -16691,6 +16943,25 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.RuleBook.RuleBookManager.HeaderPrefixSimple
   nameWithType: RuleBookManager.HeaderPrefixSimple
+- uid: InscryptionAPI.RuleBook.RuleBookManager.HTML_REPLACE_STRING
+  name: HTML_REPLACE_STRING
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_HTML_REPLACE_STRING
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.HTML_REPLACE_STRING
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.HTML_REPLACE_STRING
+  nameWithType: RuleBookManager.HTML_REPLACE_STRING
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory)
+  name: ItemShouldBeAdded(ConsumableItemData, AbilityMetaCategory)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ItemShouldBeAdded_DiskCardGame_ConsumableItemData_DiskCardGame_AbilityMetaCategory_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded(DiskCardGame.ConsumableItemData,DiskCardGame.AbilityMetaCategory)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded(DiskCardGame.ConsumableItemData, DiskCardGame.AbilityMetaCategory)
+  nameWithType: RuleBookManager.ItemShouldBeAdded(ConsumableItemData, AbilityMetaCategory)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded*
+  name: ItemShouldBeAdded
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ItemShouldBeAdded_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ItemShouldBeAdded
+  nameWithType: RuleBookManager.ItemShouldBeAdded
 - uid: InscryptionAPI.RuleBook.RuleBookManager.ModifyRuleBookInfos
   name: ModifyRuleBookInfos
   href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ModifyRuleBookInfos
@@ -16722,6 +16993,106 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.RuleBook.RuleBookManager.New
   nameWithType: RuleBookManager.New
+- uid: InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage(DiskCardGame.RuleBookController,System.String,System.Boolean)
+  name: OpenToCustomPage(RuleBookController, String, Boolean)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_OpenToCustomPage_DiskCardGame_RuleBookController_System_String_System_Boolean_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage(DiskCardGame.RuleBookController,System.String,System.Boolean)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage(DiskCardGame.RuleBookController, System.String, System.Boolean)
+  nameWithType: RuleBookManager.OpenToCustomPage(RuleBookController, String, Boolean)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage*
+  name: OpenToCustomPage
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_OpenToCustomPage_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.OpenToCustomPage
+  nameWithType: RuleBookManager.OpenToCustomPage
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours(Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo},System.String)
+  name: ParseRedirectTextColours(Dictionary<String, RuleBookManager.RedirectInfo>, String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ParseRedirectTextColours_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours(Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo},System.String)
+  name.vb: ParseRedirectTextColours(Dictionary(Of String, RuleBookManager.RedirectInfo), String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours(Dictionary<System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo>, System.String)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours(Dictionary(Of System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo), System.String)
+  nameWithType: RuleBookManager.ParseRedirectTextColours(Dictionary<String, RuleBookManager.RedirectInfo>, String)
+  nameWithType.vb: RuleBookManager.ParseRedirectTextColours(Dictionary(Of String, RuleBookManager.RedirectInfo), String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours*
+  name: ParseRedirectTextColours
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_ParseRedirectTextColours_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.ParseRedirectTextColours
+  nameWithType: RuleBookManager.ParseRedirectTextColours
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo
+  name: RuleBookManager.RedirectInfo
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo
+  nameWithType: RuleBookManager.RedirectInfo
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.#ctor(DiskCardGame.PageRangeType,UnityEngine.Color,System.String)
+  name: RedirectInfo(PageRangeType, Color, String)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html#InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__ctor_DiskCardGame_PageRangeType_UnityEngine_Color_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.#ctor(DiskCardGame.PageRangeType,UnityEngine.Color,System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.RedirectInfo(DiskCardGame.PageRangeType, UnityEngine.Color, System.String)
+  nameWithType: RuleBookManager.RedirectInfo.RedirectInfo(PageRangeType, Color, String)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.#ctor*
+  name: RedirectInfo
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html#InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__ctor_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.RedirectInfo
+  nameWithType: RuleBookManager.RedirectInfo.RedirectInfo
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectPageId
+  name: redirectPageId
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html#InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_redirectPageId
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectPageId
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectPageId
+  nameWithType: RuleBookManager.RedirectInfo.redirectPageId
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectTextColour
+  name: redirectTextColour
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html#InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_redirectTextColour
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectTextColour
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectTextColour
+  nameWithType: RuleBookManager.RedirectInfo.redirectTextColour
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectType
+  name: redirectType
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.html#InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_redirectType
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectType
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo.redirectType
+  nameWithType: RuleBookManager.RedirectInfo.redirectType
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt
+  name: RuleBookManager.RuleBookPageInfoExt
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt
+  nameWithType: RuleBookManager.RuleBookPageInfoExt
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.#ctor(DiskCardGame.RuleBookPageInfo,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+  name: RuleBookPageInfoExt(RuleBookPageInfo, Dictionary<String, RuleBookManager.RedirectInfo>)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.html#InscryptionAPI_RuleBook_RuleBookManager_RuleBookPageInfoExt__ctor_DiskCardGame_RuleBookPageInfo_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.#ctor(DiskCardGame.RuleBookPageInfo,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+  name.vb: RuleBookPageInfoExt(RuleBookPageInfo, Dictionary(Of String, RuleBookManager.RedirectInfo))
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt(DiskCardGame.RuleBookPageInfo, Dictionary<System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt(DiskCardGame.RuleBookPageInfo, Dictionary(Of System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo))
+  nameWithType: RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt(RuleBookPageInfo, Dictionary<String, RuleBookManager.RedirectInfo>)
+  nameWithType.vb: RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt(RuleBookPageInfo, Dictionary(Of String, RuleBookManager.RedirectInfo))
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.#ctor*
+  name: RuleBookPageInfoExt
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.html#InscryptionAPI_RuleBook_RuleBookManager_RuleBookPageInfoExt__ctor_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.#ctor
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt
+  nameWithType: RuleBookManager.RuleBookPageInfoExt.RuleBookPageInfoExt
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.parentPageInfo
+  name: parentPageInfo
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.html#InscryptionAPI_RuleBook_RuleBookManager_RuleBookPageInfoExt_parentPageInfo
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.parentPageInfo
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.parentPageInfo
+  nameWithType: RuleBookManager.RuleBookPageInfoExt.parentPageInfo
+- uid: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.html#InscryptionAPI_RuleBook_RuleBookManager_RuleBookPageInfoExt_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.RuleBookPageInfoExt.RulebookDescriptionRedirects
+  nameWithType: RuleBookManager.RuleBookPageInfoExt.RulebookDescriptionRedirects
 - uid: InscryptionAPI.RuleBook.RuleBookManager.SetFillPage(InscryptionAPI.RuleBook.RuleBookManager.FullRuleBookRangeInfo,Action{DiskCardGame.RuleBookPage,System.String,System.Object[]})
   name: SetFillPage(RuleBookManager.FullRuleBookRangeInfo, Action<RuleBookPage, String, Object[]>)
   href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SetFillPage_InscryptionAPI_RuleBook_RuleBookManager_FullRuleBookRangeInfo_Action_DiskCardGame_RuleBookPage_System_String_System_Object____
@@ -16764,6 +17135,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.RuleBook.RuleBookManager.SetHeaderPrefixSimple
   nameWithType: RuleBookManager.SetHeaderPrefixSimple
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  name: SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SlotModShouldBeAdded_InscryptionAPI_Slots_SlotModificationManager_Info_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info, InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
+  nameWithType: RuleBookManager.SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
+- uid: InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded*
+  name: SlotModShouldBeAdded
+  href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SlotModShouldBeAdded_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookManager.SlotModShouldBeAdded
+  nameWithType: RuleBookManager.SlotModShouldBeAdded
 - uid: InscryptionAPI.RuleBook.RuleBookManager.SyncRuleBookList
   name: SyncRuleBookList()
   href: api/InscryptionAPI.RuleBook.RuleBookManager.html#InscryptionAPI_RuleBook_RuleBookManager_SyncRuleBookList
@@ -16783,6 +17167,12 @@ references:
   commentId: T:InscryptionAPI.RuleBook.RuleBookManagerPatches
   fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches
   nameWithType: RuleBookManagerPatches
+- uid: InscryptionAPI.RuleBook.RuleBookManagerPatches.API_ID
+  name: API_ID
+  href: api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html#InscryptionAPI_RuleBook_RuleBookManagerPatches_API_ID
+  commentId: F:InscryptionAPI.RuleBook.RuleBookManagerPatches.API_ID
+  fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches.API_ID
+  nameWithType: RuleBookManagerPatches.API_ID
 - uid: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage,DiskCardGame.RuleBookPageInfo)
   name: FillPage(RuleBookPage, RuleBookPageInfo)
   href: api/InscryptionAPI.RuleBook.RuleBookManagerPatches.html#InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_DiskCardGame_RuleBookPage_DiskCardGame_RuleBookPageInfo_
@@ -16796,6 +17186,583 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage
   nameWithType: RuleBookManagerPatches.FillPage
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions
+  name: RuleBookRedirectExtensions
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookRedirectExtensions
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions
+  nameWithType: RuleBookRedirectExtensions
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(AbilityInfo, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_DiskCardGame_AbilityInfo_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.AbilityInfo, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(AbilityInfo, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(BoonData, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_DiskCardGame_BoonData_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.BoonData, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(BoonData, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(ConsumableItemData, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_DiskCardGame_ConsumableItemData_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.ConsumableItemData, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(ConsumableItemData, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(RuleBookPageInfo, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_DiskCardGame_RuleBookPageInfo_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.RuleBookPageInfo, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(RuleBookPageInfo, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(StatIconInfo, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_DiskCardGame_StatIconInfo_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(DiskCardGame.StatIconInfo, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(StatIconInfo, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(BoonManager.FullBoon, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(BoonManager.FullBoon, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(AbilityManager.FullAbility, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(AbilityManager.FullAbility, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(StatIconManager.FullStatIcon, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(StatIconManager.FullStatIcon, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(ConsumableItemManager.FullConsumableItemData, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(ConsumableItemManager.FullConsumableItemData, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(SlotModificationManager.Info, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(SlotModificationManager.Info, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  name: SetAbilityRedirect(SlotModificationManager.ModificationType, String, Ability, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_DiskCardGame_Ability_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.Ability,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, DiskCardGame.Ability, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect(SlotModificationManager.ModificationType, String, Ability, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect*
+  name: SetAbilityRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetAbilityRedirect
+  nameWithType: RuleBookRedirectExtensions.SetAbilityRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(AbilityInfo, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_DiskCardGame_AbilityInfo_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.AbilityInfo, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(AbilityInfo, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(BoonData, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_DiskCardGame_BoonData_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.BoonData, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(BoonData, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(ConsumableItemData, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_DiskCardGame_ConsumableItemData_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.ConsumableItemData, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(ConsumableItemData, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(RuleBookPageInfo, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_DiskCardGame_RuleBookPageInfo_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.RuleBookPageInfo, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(RuleBookPageInfo, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(StatIconInfo, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_DiskCardGame_StatIconInfo_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(DiskCardGame.StatIconInfo, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(StatIconInfo, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(BoonManager.FullBoon, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(BoonManager.FullBoon, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(AbilityManager.FullAbility, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(AbilityManager.FullAbility, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(StatIconManager.FullStatIcon, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(StatIconManager.FullStatIcon, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(ConsumableItemManager.FullConsumableItemData, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(ConsumableItemManager.FullConsumableItemData, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(SlotModificationManager.Info, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(SlotModificationManager.Info, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  name: SetBoonRedirect(SlotModificationManager.ModificationType, String, BoonData.Type, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.BoonData.Type,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, DiskCardGame.BoonData.Type, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect(SlotModificationManager.ModificationType, String, BoonData.Type, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect*
+  name: SetBoonRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetBoonRedirect
+  nameWithType: RuleBookRedirectExtensions.SetBoonRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.AbilityInfo,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(AbilityInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_DiskCardGame_AbilityInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.AbilityInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.AbilityInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(AbilityInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.BoonData,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(BoonData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_DiskCardGame_BoonData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.BoonData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.BoonData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(BoonData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.ConsumableItemData,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(ConsumableItemData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_DiskCardGame_ConsumableItemData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.ConsumableItemData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.ConsumableItemData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(ConsumableItemData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.RuleBookPageInfo,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(RuleBookPageInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_DiskCardGame_RuleBookPageInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.RuleBookPageInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.RuleBookPageInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(RuleBookPageInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.StatIconInfo,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(StatIconInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_DiskCardGame_StatIconInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.StatIconInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(DiskCardGame.StatIconInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(StatIconInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(BoonManager.FullBoon, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(BoonManager.FullBoon, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(AbilityManager.FullAbility, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(AbilityManager.FullAbility, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(StatIconManager.FullStatIcon, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(StatIconManager.FullStatIcon, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(ConsumableItemManager.FullConsumableItemData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(ConsumableItemManager.FullConsumableItemData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(SlotModificationManager.Info, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(SlotModificationManager.Info, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Color)
+  name: SetItemRedirect(SlotModificationManager.ModificationType, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect(SlotModificationManager.ModificationType, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect*
+  name: SetItemRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetItemRedirect
+  nameWithType: RuleBookRedirectExtensions.SetItemRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.AbilityInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(AbilityInfo, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_DiskCardGame_AbilityInfo_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.AbilityInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.AbilityInfo, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(AbilityInfo, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.BoonData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(BoonData, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_DiskCardGame_BoonData_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.BoonData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.BoonData, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(BoonData, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.ConsumableItemData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(ConsumableItemData, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_DiskCardGame_ConsumableItemData_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.ConsumableItemData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.ConsumableItemData, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(ConsumableItemData, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.RuleBookPageInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(RuleBookPageInfo, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_DiskCardGame_RuleBookPageInfo_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.RuleBookPageInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.RuleBookPageInfo, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(RuleBookPageInfo, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.StatIconInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(StatIconInfo, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_DiskCardGame_StatIconInfo_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.StatIconInfo,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(DiskCardGame.StatIconInfo, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(StatIconInfo, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(BoonManager.FullBoon, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(BoonManager.FullBoon, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(AbilityManager.FullAbility, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(AbilityManager.FullAbility, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(StatIconManager.FullStatIcon, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(StatIconManager.FullStatIcon, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(ConsumableItemManager.FullConsumableItemData, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(ConsumableItemManager.FullConsumableItemData, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(SlotModificationManager.Info, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(SlotModificationManager.Info, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  name: SetSlotRedirect(SlotModificationManager.ModificationType, String, SlotModificationManager.ModificationType, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect(SlotModificationManager.ModificationType, String, SlotModificationManager.ModificationType, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect*
+  name: SetSlotRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetSlotRedirect
+  nameWithType: RuleBookRedirectExtensions.SetSlotRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(AbilityInfo, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_DiskCardGame_AbilityInfo_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.AbilityInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.AbilityInfo, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(AbilityInfo, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(BoonData, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_DiskCardGame_BoonData_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.BoonData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.BoonData, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(BoonData, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(ConsumableItemData, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_DiskCardGame_ConsumableItemData_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.ConsumableItemData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.ConsumableItemData, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(ConsumableItemData, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(RuleBookPageInfo, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_DiskCardGame_RuleBookPageInfo_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.RuleBookPageInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.RuleBookPageInfo, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(RuleBookPageInfo, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(StatIconInfo, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_DiskCardGame_StatIconInfo_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.StatIconInfo,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(DiskCardGame.StatIconInfo, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(StatIconInfo, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(BoonManager.FullBoon, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(BoonManager.FullBoon, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(AbilityManager.FullAbility, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(AbilityManager.FullAbility, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(StatIconManager.FullStatIcon, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(StatIconManager.FullStatIcon, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(ConsumableItemManager.FullConsumableItemData, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(ConsumableItemManager.FullConsumableItemData, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(SlotModificationManager.Info, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(SlotModificationManager.Info, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  name: SetStatIconRedirect(SlotModificationManager.ModificationType, String, SpecialStatIcon, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,DiskCardGame.SpecialStatIcon,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, DiskCardGame.SpecialStatIcon, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect(SlotModificationManager.ModificationType, String, SpecialStatIcon, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect*
+  name: SetStatIconRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetStatIconRedirect
+  nameWithType: RuleBookRedirectExtensions.SetStatIconRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.AbilityInfo,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(AbilityInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_DiskCardGame_AbilityInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.AbilityInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.AbilityInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(AbilityInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.BoonData,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(BoonData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_DiskCardGame_BoonData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.BoonData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.BoonData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(BoonData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.ConsumableItemData,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(ConsumableItemData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_DiskCardGame_ConsumableItemData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.ConsumableItemData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.ConsumableItemData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(ConsumableItemData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.RuleBookPageInfo,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(RuleBookPageInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_DiskCardGame_RuleBookPageInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.RuleBookPageInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.RuleBookPageInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(RuleBookPageInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.StatIconInfo,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(StatIconInfo, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_DiskCardGame_StatIconInfo_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.StatIconInfo,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(DiskCardGame.StatIconInfo, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(StatIconInfo, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(BoonManager.FullBoon, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Boons_BoonManager_FullBoon_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Boons.BoonManager.FullBoon,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Boons.BoonManager.FullBoon, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(BoonManager.FullBoon, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(AbilityManager.FullAbility, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.AbilityManager.FullAbility,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.AbilityManager.FullAbility, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(AbilityManager.FullAbility, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(StatIconManager.FullStatIcon, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Card_StatIconManager_FullStatIcon_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Card.StatIconManager.FullStatIcon, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(StatIconManager.FullStatIcon, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(ConsumableItemManager.FullConsumableItemData, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Items_ConsumableItemManager_FullConsumableItemData_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Items.ConsumableItemManager.FullConsumableItemData, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(ConsumableItemManager.FullConsumableItemData, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(SlotModificationManager.Info, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Slots_SlotModificationManager_Info_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.Info,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.Info, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(SlotModificationManager.Info, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Color)
+  name: SetUniqueRedirect(SlotModificationManager.ModificationType, String, String, Color)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_UnityEngine_Color_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Color)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect(InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.String, System.String, UnityEngine.Color)
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect(SlotModificationManager.ModificationType, String, String, Color)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect*
+  name: SetUniqueRedirect
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectExtensions.SetUniqueRedirect
+  nameWithType: RuleBookRedirectExtensions.SetUniqueRedirect
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager
+  name: RuleBookRedirectManager
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html
+  commentId: T:InscryptionAPI.RuleBook.RuleBookRedirectManager
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager
+  nameWithType: RuleBookRedirectManager
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables
+  name: ClearActiveInteractables()
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_ClearActiveInteractables
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables()
+  nameWithType: RuleBookRedirectManager.ClearActiveInteractables()
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables*
+  name: ClearActiveInteractables
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_ClearActiveInteractables_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.ClearActiveInteractables
+  nameWithType: RuleBookRedirectManager.ClearActiveInteractables
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.createdInteractableObjects
+  name: createdInteractableObjects
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_createdInteractableObjects
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.createdInteractableObjects
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.createdInteractableObjects
+  nameWithType: RuleBookRedirectManager.createdInteractableObjects
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(UnityEngine.Vector3,UnityEngine.Vector3,System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)
+  name: CreateInteractableObject(Vector3, Vector3, String, RuleBookManager.RedirectInfo)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_UnityEngine_Vector3_UnityEngine_Vector3_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(UnityEngine.Vector3,UnityEngine.Vector3,System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(UnityEngine.Vector3, UnityEngine.Vector3, System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)
+  nameWithType: RuleBookRedirectManager.CreateInteractableObject(Vector3, Vector3, String, RuleBookManager.RedirectInfo)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject*
+  name: CreateInteractableObject
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject
+  nameWithType: RuleBookRedirectManager.CreateInteractableObject
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActiveInteractables
+  name: currentActiveInteractables
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_currentActiveInteractables
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActiveInteractables
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActiveInteractables
+  nameWithType: RuleBookRedirectManager.currentActiveInteractables
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActivePageIndex
+  name: currentActivePageIndex
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_currentActivePageIndex
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActivePageIndex
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentActivePageIndex
+  nameWithType: RuleBookRedirectManager.currentActivePageIndex
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageLengths
+  name: currentPageLengths
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_currentPageLengths
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageLengths
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageLengths
+  nameWithType: RuleBookRedirectManager.currentPageLengths
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageTopLeft
+  name: currentPageTopLeft
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_currentPageTopLeft
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageTopLeft
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentPageTopLeft
+  nameWithType: RuleBookRedirectManager.currentPageTopLeft
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentTopPage
+  name: currentTopPage
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_currentTopPage
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.currentTopPage
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.currentTopPage
+  nameWithType: RuleBookRedirectManager.currentTopPage
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionLengths
+  name: descriptionLengths
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_descriptionLengths
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionLengths
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionLengths
+  nameWithType: RuleBookRedirectManager.descriptionLengths
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionTopLeft
+  name: descriptionTopLeft
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_descriptionTopLeft
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionTopLeft
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.descriptionTopLeft
+  nameWithType: RuleBookRedirectManager.descriptionTopLeft
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMPro.TMP_TextInfo,System.String)
+  name: GetWordIndeces(TMP_TextInfo, String)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_TMPro_TMP_TextInfo_System_String_
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMPro.TMP_TextInfo,System.String)
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMPro.TMP_TextInfo, System.String)
+  nameWithType: RuleBookRedirectManager.GetWordIndeces(TMP_TextInfo, String)
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces*
+  name: GetWordIndeces
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces
+  nameWithType: RuleBookRedirectManager.GetWordIndeces
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.PixelCamera
+  name: PixelCamera
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_PixelCamera
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.PixelCamera
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.PixelCamera
+  nameWithType: RuleBookRedirectManager.PixelCamera
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera
+  name: RuleBookCamera
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_RuleBookCamera
+  commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera
+  nameWithType: RuleBookRedirectManager.RuleBookCamera
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+  name: UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary<String, RuleBookManager.RedirectInfo>)
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TMPro_TextMeshPro_UnityEngine_GameObject_System_Collections_Generic_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+  name.vb: UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary(Of String, RuleBookManager.RedirectInfo))
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, System.Collections.Generic.Dictionary<System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, System.Collections.Generic.Dictionary(Of System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo))
+  nameWithType: RuleBookRedirectManager.UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary<String, RuleBookManager.RedirectInfo>)
+  nameWithType.vb: RuleBookRedirectManager.UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary(Of String, RuleBookManager.RedirectInfo))
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables*
+  name: UpdateActiveInteractables
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_
+  commentId: Overload:InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables
+  isSpec: "True"
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables
+  nameWithType: RuleBookRedirectManager.UpdateActiveInteractables
+- uid: InscryptionAPI.RuleBook.RulebookRedirectPatches
+  name: RulebookRedirectPatches
+  href: api/InscryptionAPI.RuleBook.RulebookRedirectPatches.html
+  commentId: T:InscryptionAPI.RuleBook.RulebookRedirectPatches
+  fullName: InscryptionAPI.RuleBook.RulebookRedirectPatches
+  nameWithType: RulebookRedirectPatches
+- uid: InscryptionAPI.RuleBook.RulebookRedirectPatches.rulebookShowFlipIndex
+  name: rulebookShowFlipIndex
+  href: api/InscryptionAPI.RuleBook.RulebookRedirectPatches.html#InscryptionAPI_RuleBook_RulebookRedirectPatches_rulebookShowFlipIndex
+  commentId: F:InscryptionAPI.RuleBook.RulebookRedirectPatches.rulebookShowFlipIndex
+  fullName: InscryptionAPI.RuleBook.RulebookRedirectPatches.rulebookShowFlipIndex
+  nameWithType: RulebookRedirectPatches.rulebookShowFlipIndex
 - uid: InscryptionAPI.Saves
   name: InscryptionAPI.Saves
   href: api/InscryptionAPI.Saves.html
@@ -17087,6 +18054,58 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook
   nameWithType: SlotModificationExtensions.SetRulebook
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  name: SetRulebookGrimoraSprite(SlotModificationManager.ModificationType, Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookGrimoraSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Texture2D)
+  nameWithType: SlotModificationExtensions.SetRulebookGrimoraSprite(SlotModificationManager.ModificationType, Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite*
+  name: SetRulebookGrimoraSprite
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookGrimoraSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite
+  nameWithType: SlotModificationExtensions.SetRulebookGrimoraSprite
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  name: SetRulebookMagnificusSprite(SlotModificationManager.ModificationType, Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookMagnificusSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Texture2D)
+  nameWithType: SlotModificationExtensions.SetRulebookMagnificusSprite(SlotModificationManager.ModificationType, Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite*
+  name: SetRulebookMagnificusSprite
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookMagnificusSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite
+  nameWithType: SlotModificationExtensions.SetRulebookMagnificusSprite
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  name: SetRulebookP03Sprite(SlotModificationManager.ModificationType, Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookP03Sprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType, UnityEngine.Texture2D)
+  nameWithType: SlotModificationExtensions.SetRulebookP03Sprite(SlotModificationManager.ModificationType, Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite*
+  name: SetRulebookP03Sprite
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookP03Sprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite
+  nameWithType: SlotModificationExtensions.SetRulebookP03Sprite
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  name: SetSharedRulebook(SlotModificationManager.ModificationType, SlotModificationManager.ModificationType)
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSharedRulebook_InscryptionAPI_Slots_SlotModificationManager_ModificationType_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
+  commentId: M:InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType, InscryptionAPI.Slots.SlotModificationManager.ModificationType)
+  nameWithType: SlotModificationExtensions.SetSharedRulebook(SlotModificationManager.ModificationType, SlotModificationManager.ModificationType)
+- uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook*
+  name: SetSharedRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSharedRulebook_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationExtensions.SetSharedRulebook
+  nameWithType: SlotModificationExtensions.SetSharedRulebook
 - uid: InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)
   name: SetSlotModification(CardSlot, SlotModificationManager.ModificationType)
   href: api/InscryptionAPI.Slots.SlotModificationExtensions.html#InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_DiskCardGame_CardSlot_InscryptionAPI_Slots_SlotModificationManager_ModificationType_
@@ -17322,6 +18341,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Clone
   nameWithType: SlotModificationManager.Info.Clone
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite
+  name: GrimoraRulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_GrimoraRulebookSprite
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite
+  nameWithType: SlotModificationManager.Info.GrimoraRulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite*
+  name: GrimoraRulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_GrimoraRulebookSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.GrimoraRulebookSprite
+  nameWithType: SlotModificationManager.Info.GrimoraRulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite
+  name: MagnificusRulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_MagnificusRulebookSprite
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite
+  nameWithType: SlotModificationManager.Info.MagnificusRulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite*
+  name: MagnificusRulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_MagnificusRulebookSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.MagnificusRulebookSprite
+  nameWithType: SlotModificationManager.Info.MagnificusRulebookSprite
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.MetaCategories
   name: MetaCategories
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_MetaCategories
@@ -17367,6 +18412,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Name
   nameWithType: SlotModificationManager.Info.Name
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite
+  name: P03RulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_P03RulebookSprite
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite
+  nameWithType: SlotModificationManager.Info.P03RulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite*
+  name: P03RulebookSprite
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_P03RulebookSprite_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.P03RulebookSprite
+  nameWithType: SlotModificationManager.Info.P03RulebookSprite
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.PixelBoardSlotSprites
   name: PixelBoardSlotSprites
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_PixelBoardSlotSprites
@@ -17393,6 +18451,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescription
   nameWithType: SlotModificationManager.Info.RulebookDescription
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescriptionRedirects
+  name: RulebookDescriptionRedirects
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookDescriptionRedirects
+  commentId: F:InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescriptionRedirects
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookDescriptionRedirects
+  nameWithType: SlotModificationManager.Info.RulebookDescriptionRedirects
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookName
   name: RulebookName
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_RulebookName
@@ -17419,6 +18483,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info.RulebookSprite
   nameWithType: SlotModificationManager.Info.RulebookSprite
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook
+  name: SharedRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SharedRulebook
+  commentId: P:InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook
+  nameWithType: SlotModificationManager.Info.SharedRulebook
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook*
+  name: SharedRulebook
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SharedRulebook_
+  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook
+  isSpec: "True"
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.SharedRulebook
+  nameWithType: SlotModificationManager.Info.SharedRulebook
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.SlotBehaviour
   name: SlotBehaviour
   href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info_SlotBehaviour
@@ -17590,19 +18667,6 @@ references:
   commentId: F:InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID
   fullName: InscryptionAPI.Slots.SlotModificationManager.SLOT_PAGEID
   nameWithType: SlotModificationManager.SLOT_PAGEID
-- uid: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
-  name: SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_InscryptionAPI_Slots_SlotModificationManager_Info_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory_
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
-  fullName: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded(InscryptionAPI.Slots.SlotModificationManager.Info, InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory)
-  nameWithType: SlotModificationManager.SlotModShouldBeAdded(SlotModificationManager.Info, SlotModificationManager.ModificationMetaCategory)
-- uid: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded*
-  name: SlotModShouldBeAdded
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SlotModShouldBeAdded_
-  commentId: Overload:InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded
-  isSpec: "True"
-  fullName: InscryptionAPI.Slots.SlotModificationManager.SlotModShouldBeAdded
-  nameWithType: SlotModificationManager.SlotModShouldBeAdded
 - uid: InscryptionAPI.Slots.SlotModificationManager.SyncSlotModificationList
   name: SyncSlotModificationList()
   href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_SyncSlotModificationList
@@ -18237,6 +19301,103 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.TalkingCards.Create.TalkingCardCreator.AddToDialogueCache
   nameWithType: TalkingCardCreator.AddToDialogueCache
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard
+  name: CustomDiskTalkingCard
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html
+  commentId: T:InscryptionAPI.TalkingCards.CustomDiskTalkingCard
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard
+  nameWithType: CustomDiskTalkingCard
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_CardName
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName
+  nameWithType: CustomDiskTalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName*
+  name: CardName
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_CardName_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.CardName
+  nameWithType: CustomDiskTalkingCard.CardName
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_DialogueAbility
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility
+  nameWithType: CustomDiskTalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility*
+  name: DialogueAbility
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_DialogueAbility_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.DialogueAbility
+  nameWithType: CustomDiskTalkingCard.DialogueAbility
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_Emotions
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions
+  nameWithType: CustomDiskTalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions*
+  name: Emotions
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_Emotions_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.Emotions
+  nameWithType: CustomDiskTalkingCard.Emotions
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_FaceInfo
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo
+  nameWithType: CustomDiskTalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo*
+  name: FaceInfo
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_FaceInfo_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.FaceInfo
+  nameWithType: CustomDiskTalkingCard.FaceInfo
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+  name: OnDrawnFallbackDialogueId
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_OnDrawnFallbackDialogueId
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+  nameWithType: CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId*
+  name: OnDrawnFallbackDialogueId
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_OnDrawnFallbackDialogueId_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+  nameWithType: CustomDiskTalkingCard.OnDrawnFallbackDialogueId
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect(System.Boolean)
+  name: OnShownForCardSelect(Boolean)
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_OnShownForCardSelect_System_Boolean_
+  commentId: M:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect(System.Boolean)
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect(System.Boolean)
+  nameWithType: CustomDiskTalkingCard.OnShownForCardSelect(Boolean)
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect*
+  name: OnShownForCardSelect
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_OnShownForCardSelect_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.OnShownForCardSelect
+  nameWithType: CustomDiskTalkingCard.OnShownForCardSelect
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType
+  name: SpeakerType
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_SpeakerType
+  commentId: P:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType
+  nameWithType: CustomDiskTalkingCard.SpeakerType
+- uid: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType*
+  name: SpeakerType
+  href: api/InscryptionAPI.TalkingCards.CustomDiskTalkingCard.html#InscryptionAPI_TalkingCards_CustomDiskTalkingCard_SpeakerType_
+  commentId: Overload:InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.CustomDiskTalkingCard.SpeakerType
+  nameWithType: CustomDiskTalkingCard.SpeakerType
 - uid: InscryptionAPI.TalkingCards.CustomPaperTalkingCard
   name: CustomPaperTalkingCard
   href: api/InscryptionAPI.TalkingCards.CustomPaperTalkingCard.html
@@ -18517,6 +19678,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.TalkingCards.TalkingCardManager.Create
   nameWithType: TalkingCardManager.Create
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk(InscryptionAPI.TalkingCards.Create.FaceData,DiskCardGame.SpecialTriggeredAbility,System.Boolean)
+  name: CreateDisk(FaceData, SpecialTriggeredAbility, Boolean)
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_CreateDisk_InscryptionAPI_TalkingCards_Create_FaceData_DiskCardGame_SpecialTriggeredAbility_System_Boolean_
+  commentId: M:InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk(InscryptionAPI.TalkingCards.Create.FaceData,DiskCardGame.SpecialTriggeredAbility,System.Boolean)
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk(InscryptionAPI.TalkingCards.Create.FaceData, DiskCardGame.SpecialTriggeredAbility, System.Boolean)
+  nameWithType: TalkingCardManager.CreateDisk(FaceData, SpecialTriggeredAbility, Boolean)
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk*
+  name: CreateDisk
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_CreateDisk_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.CreateDisk
+  nameWithType: TalkingCardManager.CreateDisk
 - uid: InscryptionAPI.TalkingCards.TalkingCardManager.EmptyPortrait
   name: EmptyPortrait
   href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_EmptyPortrait
@@ -18546,6 +19720,22 @@ references:
   fullName.vb: InscryptionAPI.TalkingCards.TalkingCardManager.New(Of T)()
   nameWithType: TalkingCardManager.New<T>()
   nameWithType.vb: TalkingCardManager.New(Of T)()
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk*
+  name: NewDisk
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_NewDisk_
+  commentId: Overload:InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk
+  isSpec: "True"
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk
+  nameWithType: TalkingCardManager.NewDisk
+- uid: InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk``1
+  name: NewDisk<T>()
+  href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_NewDisk__1
+  commentId: M:InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk``1
+  name.vb: NewDisk(Of T)()
+  fullName: InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk<T>()
+  fullName.vb: InscryptionAPI.TalkingCards.TalkingCardManager.NewDisk(Of T)()
+  nameWithType: TalkingCardManager.NewDisk<T>()
+  nameWithType.vb: TalkingCardManager.NewDisk(Of T)()
 - uid: InscryptionAPI.TalkingCards.TalkingCardManager.Remove(InscryptionAPI.TalkingCards.Create.FaceData)
   name: Remove(FaceData)
   href: api/InscryptionAPI.TalkingCards.TalkingCardManager.html#InscryptionAPI_TalkingCards_TalkingCardManager_Remove_InscryptionAPI_TalkingCards_Create_FaceData_
