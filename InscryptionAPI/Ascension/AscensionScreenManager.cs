@@ -8,7 +8,7 @@ namespace InscryptionAPI.Ascension;
 [HarmonyPatch]
 public static class AscensionScreenManager
 {
-    internal static List<Type> registeredScreens = new List<Type>();
+    internal static List<Type> registeredScreens = new();
 
     internal static Dictionary<AscensionMenuScreens.Screen, AscensionRunSetupScreenBase> screens;
 

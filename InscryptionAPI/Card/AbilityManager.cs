@@ -3,6 +3,7 @@ using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.RuleBook;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -65,6 +66,15 @@ public static class AbilityManager
 
         public string BaseRulebookDescription { get; internal set; }
 
+        /// <summary>
+        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
+        /// Key (string): the text that will be recoloured to indicate that it's clickable.
+        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// </summary>
+        public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
+        
         internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new();
 
         /// <summary>
@@ -131,7 +141,11 @@ public static class AbilityManager
 
             AbilityExtensionProperties.Add(clonedInfo, AbilityExtensionProperties.GetOrCreateValue(Info));
 
-            return new FullAbility(this.ModGUID, this.Id, clonedInfo, this.AbilityBehavior, this.Texture) { CustomFlippedTexture = this.CustomFlippedTexture };
+            return new FullAbility(this.ModGUID, this.Id, clonedInfo, this.AbilityBehavior, this.Texture)
+            {
+                CustomFlippedTexture = this.CustomFlippedTexture,
+                RulebookDescriptionRedirects = new(this.RulebookDescriptionRedirects)
+            };
         }
     }
 
@@ -538,7 +552,7 @@ public static class AbilityManager
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
-    [HarmonyPostfix, HarmonyPriority(100)]
+    [HarmonyPostfix]
     private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         //InscryptionAPIPlugin.Logger.LogInfo($"In rulebook patch: I see {NewAbilities.Count}");

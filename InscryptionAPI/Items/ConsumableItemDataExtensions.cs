@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -34,7 +34,35 @@ public static class ConsumableItemDataExtensions
         data.rulebookCategory = rulebookCategory;
         return data;
     }
+    public static ConsumableItemData AddExtraRulebookCategories(this ConsumableItemData data, params AbilityMetaCategory[] rulebookCategories)
+    {
+        ConsumableItemManager.FullConsumableItemData fullItem = data.GetFullConsumableItemData();
+        if (fullItem != null)
+        {
+            foreach (AbilityMetaCategory abilityMetaCategory in rulebookCategories)
+            {
+                if (!fullItem.rulebookMetaCategories.Contains(abilityMetaCategory))
+                    fullItem.rulebookMetaCategories.Add(abilityMetaCategory);
+            }
+        }
+        return data;
+    }
 
+    /// <summary>
+    /// Retrieves the FullConsumableItemData associated with the given ConsumableItemData.
+    /// </summary>
+    /// <param name="data">The ConsumableItemData we want to find the FullConsumableItemData of.</param>
+    /// <param name="fallBackToName">If the initial retrieval returns null and this is true, search again for the FullConsumableItemData using the data's mod prefix and rulebookName.</param>
+    /// <returns>The FullConsumableItemData associated with the given COnsumableItemData, or null if it does not exist.</returns>
+    public static ConsumableItemManager.FullConsumableItemData GetFullConsumableItemData(this ConsumableItemData data, bool fallBackToName = true)
+    {
+        ConsumableItemManager.FullConsumableItemData fullItem = ConsumableItemManager.allFullItemDatas.Find(x => x.itemData == data);
+
+        if (fullItem == null && fallBackToName)
+            fullItem = ConsumableItemManager.allFullItemDatas.Find(x => x.itemData.GetModPrefix() == data.GetModPrefix() && x.itemData.rulebookName == data.rulebookName);
+
+        return fullItem;
+    }
     /// <returns>The same ConsumableItemData so a chain can continue.</returns>
     public static ConsumableItemData SetRulebookName(this ConsumableItemData data, string rulebookName)
     {

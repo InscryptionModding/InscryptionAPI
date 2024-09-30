@@ -1,6 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
 using InscryptionAPI.Guid;
+using InscryptionAPI.RuleBook;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
@@ -26,6 +27,15 @@ public static class StatIconManager
         public readonly SpecialTriggeredAbility AbilityId;
         public readonly StatIconInfo Info;
         public readonly Type VariableStatBehavior;
+
+        /// <summary>
+        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
+        /// Key (string): the text that will be recoloured to indicate that it's clickable.
+        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// </summary>
+        public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
         public FullStatIcon(SpecialStatIcon id, SpecialTriggeredAbility abilityId, StatIconInfo info, Type variableStatBehavior)
         {
@@ -116,8 +126,8 @@ public static class StatIconManager
     }
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
-    [HarmonyPostfix, HarmonyPriority(100)]
-    private static void FixRulebook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
+    [HarmonyPostfix]
+    private static void AddNewStatIconsToRuleBook(AbilityMetaCategory metaCategory, RuleBookInfo __instance, ref List<RuleBookPageInfo> __result)
     {
         if (NewStatIcons.Count > 0)
         {

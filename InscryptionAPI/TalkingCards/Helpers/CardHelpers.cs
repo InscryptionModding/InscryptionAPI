@@ -1,4 +1,5 @@
 using DiskCardGame;
+using InscryptionAPI.Card;
 
 #nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
@@ -7,6 +8,7 @@ internal class CardHelpers
 {
     public static CardInfo? Get(string name)
     {
+        CardManager.SyncCardList();
         CardInfo? card;
         try
         {

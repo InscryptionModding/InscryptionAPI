@@ -1,6 +1,31 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.22.0
+- Added FullBoon objects for each vanilla Boon
+- Added 'AllFullBoons' list to BoonManager
+- Added support for boons and items appearing in multiple acts' rulebooks
+- Added RuleBookRedirectManager and support for rulebook text redirects/page links
+- Added additional methods to RuleBookManager: ItemShouldBeAdded, BoonShouldBeAdded, SlotModShouldBeAdded, GetUnformattedPageId
+- Added GetFullBoon and GetFullConsumableItemData extension methods
+- Added extension methods for adding text redirects to abilities, stat icons, items, boons, slot modifications, and rulebook pages
+- Added ModificationType.SetSharedRulebook - used for slot modifications that should share their rulebook entry with other slot modifications
+- Added support for multiple rulebook sprites for slot modifications (SetRulebookP03Sprite, SetRulebookGrimoraSprite, SetRulebookMagnificusSprite)
+- Added RuleBookController.Instance.OpenToCustomPage
+- Added CustomDiskTalkingCard abstract class
+- Added TalkingCardManager.NewDisk and TalkingCardManager.CreateDisk
+- Fixed RuleBook construction patches having lower patch priority than intended
+- Fixed slot modification interactable being enabled when no rulebook entry exists
+- Fixed slot modification rulebook pages not working in Act 3
+- Fixed rulebook sprites being smaller than normal after flipping to a slot modification rulebook page
+- Fixed DiskTalkingCards created through the API not correctly working under certain conditions
+- Moved ConsumableItemManager patches to a separate ConsumableItemPatches class
+- Modified implementation of rulebook fill page logic to let modders patch the API logic
+    - Patch 'RuleBookManagerPatches.FillPage' to do this
+- Tweaked how custom rulebook pages are added and detected
+- Wiki: Tweaked page for adding custom rulebook sections
+- Wiki: Added section on adding text redirects
+
 # 2.21.1
 - Fixed RuleBookManager not syncing when playing with no custom rulebook sections
 

@@ -9,11 +9,58 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using UnityEngine;
+using static InscryptionAPI.Boons.BoonManager;
+using static InscryptionAPI.Slots.SlotModificationManager;
+
 namespace InscryptionAPI.RuleBook;
 
 
 public static class RuleBookManager
 {
+    public class RedirectInfo
+    {
+        public PageRangeType redirectType;
+        public Color redirectTextColour;
+        public string redirectPageId;
+
+        public RedirectInfo (PageRangeType redirectType, Color redirectTextColour, string redirectPageId)
+        {
+            this.redirectType = redirectType;
+            this.redirectTextColour = redirectTextColour;
+            this.redirectPageId = redirectPageId;
+        }
+    }
+    /// <summary>
+    /// A custom class that associates a RuleBookPageInfo object with a Dictionary of RuleBookDescriptionRedirects. Use if 
+    /// </summary>
+    public class RuleBookPageInfoExt
+    {
+        public RuleBookPageInfo parentPageInfo;
+
+        /// <summary>
+        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
+        /// Key (string): the text that will be recoloured to indicate that it's clickable.
+        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
+        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// </summary>
+        public Dictionary<string, RedirectInfo> RulebookDescriptionRedirects = new();
+
+        public RuleBookPageInfoExt(RuleBookPageInfo parentPageInfo, Dictionary<string, RedirectInfo> redirects)
+        {
+            this.parentPageInfo = parentPageInfo;
+            this.RulebookDescriptionRedirects = redirects;
+        }
+    }
+
+    public static readonly List<RuleBookPageInfoExt> ConstructedPagesWithRedirects = new();
+    public static readonly List<RuleBookPageInfoExt> CustomRedirectPages = new();
+
+    internal static void AddRedirectPage(RuleBookPageInfo pageInfo, Dictionary<string, RedirectInfo> redirects)
+    {
+        ConstructedPagesWithRedirects.Add(new(pageInfo, redirects));
+    }
+
     public class FullRuleBookRangeInfo
     {
         /// <summary>
@@ -62,7 +109,6 @@ public static class RuleBookManager
         public Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> CreatePagesFunc;
 
         public Action<RuleBookPage, string, object[]> FillPageAction;
-
 
         public int GetStartingNumber(List<RuleBookPageInfo> pages) => GetStartingNumberFunc(pages);
         public int GetInsertPosition(PageRangeInfo currentPageRange, List<RuleBookPageInfo> pages) => GetInsertPositionFunc(currentPageRange, pages);
@@ -220,4 +266,65 @@ public static class RuleBookManager
     public static string HeaderPrefixSimple(string romanNumeral) => string.Format(DEFAULT_HEADER_PREFIX, romanNumeral);
 
     private const string DEFAULT_HEADER_PREFIX = "APPENDIX XII, SUBSECTION {0}";
+    public const string HTML_REPLACE_STRING = "<color=#{0}><u>{1}</u></color>";
+
+    public static string ParseRedirectTextColours(Dictionary<string, RedirectInfo> dictionary, string description)
+    {
+        string desc = description;
+        if (dictionary.Count > 0)
+        {
+            foreach (string key in dictionary.Keys)
+            {
+                RedirectInfo triple = dictionary[key];
+                string hexCode = ColorUtility.ToHtmlStringRGB(triple.redirectTextColour);
+
+                desc = desc.Replace(key, string.Format(HTML_REPLACE_STRING, hexCode, key));
+            }
+        }
+        return desc;
+    }
+
+    /// <summary>
+    /// Returns a RuleBookPageInfo's pageId without the API identifier.
+    /// </summary>
+    public static string GetUnformattedPageId(string pageId)
+    {
+        int start = pageId.IndexOf(RuleBookManagerPatches.API_ID);
+        if (start != -1)
+        {
+            int end = pageId.IndexOf(']');
+            if (end != -1) return pageId.Remove(start, end - start + 1);
+        }
+
+        return pageId;
+    }
+
+    /// <summary>
+    /// Opens the rulebook to the page with the given pageId.
+    /// </summary>
+    /// <param name="instance">RuleBookController.Instance.</param>
+    /// <param name="pageId">The value to compare each rulebook pages' id against. If this starts with "[API_" then it will check against a page's unformatted id.</param>
+    /// <param name="offsetView">Whether to offset the camera view down when opening the rulebook.</param>
+    public static void OpenToCustomPage(this RuleBookController instance, string pageId, bool offsetView = false)
+    {
+        instance.SetShown(shown: true, offsetView);
+        int pageIndex = -1;
+        if (pageId.StartsWith(RuleBookManagerPatches.API_ID))
+            pageIndex = instance.PageData.IndexOf(instance.PageData.Find(x => !string.IsNullOrEmpty(x.pageId) && x.pageId == pageId));
+        else
+            pageIndex = instance.PageData.IndexOf(instance.PageData.Find(x => !string.IsNullOrEmpty(x.pageId) && GetUnformattedPageId(x.pageId) == pageId));
+
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.flipper.FlipToPage(pageIndex, 0.2f));
+    }
+
+    public static bool ItemShouldBeAdded(ConsumableItemData item, AbilityMetaCategory metaCategory)
+    {
+        return item.rulebookCategory == metaCategory || item.GetFullConsumableItemData()?.rulebookMetaCategories.Contains(metaCategory) == true;
+    }
+    public static bool BoonShouldBeAdded(FullBoon fullBoon, AbilityMetaCategory metaCategory)
+    {
+        return fullBoon?.boon?.icon != null && fullBoon.appearInRulebook && fullBoon.metaCategories.Contains(metaCategory);
+    }
+    public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) => info.RulebookName != null && info.MetaCategories.Contains(category);
 }
