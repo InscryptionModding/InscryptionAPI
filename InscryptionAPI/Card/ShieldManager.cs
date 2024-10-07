@@ -29,22 +29,22 @@ public static class ShieldManager
     {
         BreakShield(target, damage, attacker);
 
-        List<IShieldPreventDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventDamage>(false).ToList();
-        shieldTriggers.Sort((IShieldPreventDamage a, IShieldPreventDamage b) => b.ShieldPreventDamagePriority(target, damage, attacker) - a.ShieldPreventDamagePriority(target, damage, attacker));
-        foreach (IShieldPreventDamage damageTrigger in shieldTriggers)
+        List<IShieldPreventedDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventedDamage>(false).ToList();
+        shieldTriggers.Sort((IShieldPreventedDamage a, IShieldPreventedDamage b) => b.ShieldPreventedDamagePriority(target, damage, attacker) - a.ShieldPreventedDamagePriority(target, damage, attacker));
+        foreach (IShieldPreventedDamage damageTrigger in shieldTriggers)
         {
-            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventDamage(target, damage, attacker))
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventedDamage(target, damage, attacker))
             {
-                yield return damageTrigger.OnShieldPreventDamage(target, damage, attacker);
+                yield return damageTrigger.OnShieldPreventedDamage(target, damage, attacker);
             }
         }
-        List<IShieldPreventDamageInHand> shieldInHandTriggers = CustomTriggerFinder.FindTriggersInHand<IShieldPreventDamageInHand>().ToList();
-        shieldInHandTriggers.Sort((IShieldPreventDamageInHand a, IShieldPreventDamageInHand b) => b.ShieldPreventDamageInHandPriority(target, damage, attacker) - a.ShieldPreventDamageInHandPriority(target, damage, attacker));
-        foreach (IShieldPreventDamageInHand damageTrigger in shieldInHandTriggers)
+        List<IShieldPreventedDamageInHand> shieldInHandTriggers = CustomTriggerFinder.FindTriggersInHand<IShieldPreventedDamageInHand>().ToList();
+        shieldInHandTriggers.Sort((IShieldPreventedDamageInHand a, IShieldPreventedDamageInHand b) => b.ShieldPreventedDamageInHandPriority(target, damage, attacker) - a.ShieldPreventedDamageInHandPriority(target, damage, attacker));
+        foreach (IShieldPreventedDamageInHand damageTrigger in shieldInHandTriggers)
         {
-            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventDamageInHand(target, damage, attacker))
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventedDamageInHand(target, damage, attacker))
             {
-                yield return damageTrigger.OnShieldPreventDamageInHand(target, damage, attacker);
+                yield return damageTrigger.OnShieldPreventedDamageInHand(target, damage, attacker);
             }
         }
     }

@@ -805,20 +805,20 @@ public interface IOnCardDealtDamageDirectly
 /// <summary>
 /// Trigger that is called after a shielded card was attacked and lost a shield.
 /// </summary>
-public interface IShieldPreventDamage
+public interface IShieldPreventedDamage
 {
-    public bool RespondsToShieldPreventDamage(PlayableCard target, int damage, PlayableCard attacker);
-    public IEnumerator OnShieldPreventDamage(PlayableCard target, int damage, PlayableCard attacker);
-    public int ShieldPreventDamagePriority(PlayableCard target, int damage, PlayableCard attacker);
+    public bool RespondsToShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker);
+    public IEnumerator OnShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker);
+    public int ShieldPreventedDamagePriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 /// <summary>
 /// Variant of IShieldPreventDamage that triggers for cards in the hand.
 /// </summary>
-public interface IShieldPreventDamageInHand
+public interface IShieldPreventedDamageInHand
 {
-    public bool RespondsToShieldPreventDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
-    public IEnumerator OnShieldPreventDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
-    public int ShieldPreventDamageInHandPriority(PlayableCard target, int damage, PlayableCard attacker);
+    public bool RespondsToShieldPreventedDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
+    public IEnumerator OnShieldPreventedDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
+    public int ShieldPreventedDamageInHandPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 /*public interface IOnPreTakeDamageFromHammer
 {
