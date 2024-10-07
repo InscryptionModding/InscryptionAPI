@@ -52,7 +52,7 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
     }
     public void UpdateActiveInteractables(TextMeshPro description, GameObject currentPageObj, Dictionary<string, RuleBookManager.RedirectInfo> redirects)
     {
-        InscryptionAPIPlugin.Logger.LogDebug($"[UpdateActiveInteractables]");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[UpdateActiveInteractables]");
         Bounds pageBounds;
         Bounds borderBounds = currentPageObj.transform.Find("Border").GetComponent<SpriteRenderer>().bounds; // in world space
         Vector3 pageBottomLeft;
@@ -82,9 +82,9 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
             descriptionLengths ??= new float[2] { borderBounds.size.x, (currentPageLengths[1] / currentPageLengths[0]) * borderBounds.size.x };
         }
         zLength = pageBottomLeft.z - currentPageTopLeft.z;
-        InscryptionAPIPlugin.Logger.LogDebug($"[DescTopLeft] {descriptionTopLeft.x} {descriptionTopLeft.y} {descriptionTopLeft.z}");
-        InscryptionAPIPlugin.Logger.LogDebug($"[PageTopLeft] {currentPageTopLeft.x} {currentPageTopLeft.y} {currentPageTopLeft.z}");
-        InscryptionAPIPlugin.Logger.LogDebug($"[PageBottomLeft] {pageBottomLeft.x} {pageBottomLeft.y} {pageBottomLeft.z} | {zLength}");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[DescTopLeft] {descriptionTopLeft.x} {descriptionTopLeft.y} {descriptionTopLeft.z}");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[PageTopLeft] {currentPageTopLeft.x} {currentPageTopLeft.y} {currentPageTopLeft.z}");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[PageBottomLeft] {pageBottomLeft.x} {pageBottomLeft.y} {pageBottomLeft.z} | {zLength}");
 
         ClearActiveInteractables();
         CreateInteractables(redirects, description, zLength);
@@ -113,8 +113,8 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
 
         Vector3 newWorldPosition = PixelCamera.ScreenToWorldPoint(RuleBookCamera.WorldToScreenPoint(worldPosition));
 
-        InscryptionAPIPlugin.Logger.LogDebug($"[CreateInteractable] ({colliderSize.x} {colliderSize.y})");
-        InscryptionAPIPlugin.Logger.LogDebug($"[CreateInteractable] ({worldPosition.x} {worldPosition.y} {worldPosition.z}) ({newWorldPosition.x} {newWorldPosition.y} {newWorldPosition.z})");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[CreateInteractable] ({colliderSize.x} {colliderSize.y})");
+        //InscryptionAPIPlugin.Logger.LogDebug($"[CreateInteractable] ({worldPosition.x} {worldPosition.y} {worldPosition.z}) ({newWorldPosition.x} {newWorldPosition.y} {newWorldPosition.z})");
 
         obj.name = $"RuleBookPageInteractable ({keyText})";
         obj.transform.SetParent(PixelCamera.transform);
@@ -270,7 +270,7 @@ public class RuleBookRedirectManager : Singleton<RuleBookRedirectManager>
             
         }
         correctedPos = new(correctedX, correctedY, currentPageTopLeft.z + (zCorrection + zCorrection * correctedYProportion));
-        Debug.Log($"[Corrected] ({correctedPos.x} {correctedPos.y} {correctedPos.z}) | {correctedXProportion} {correctedYProportion}");
+        //Debug.Log($"[Corrected] ({correctedPos.x} {correctedPos.y} {correctedPos.z}) | {correctedXProportion} {correctedYProportion}");
         colliderPositions.Add(correctedPos);
         colliderSizes.Add(new((topRight.x - bottomLeft.x) + sizeY / 2f, sizeY * 3f / 2f, 0.001f)); // add padding to compensate for inaccurate positioning
     }
