@@ -3,6 +3,7 @@ using HarmonyLib;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Masks;
 using InscryptionAPI.Saves;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -89,10 +90,49 @@ public static class OpponentManager
         NewOpponents.Add(opp);
         return opp;
     }
+    public static List<Opponent.Type> RunStateOpponents
+    {
+        get
+        {
+            List<Opponent.Type> previousBosses = new List<Opponent.Type>();
+
+            string value = ModdedSaveManager.RunState.GetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses"); // 2,0,1
+            if (value == null)
+            {
+                // Do nothing
+            }
+            else if (!value.Contains(','))
+            {
+                // Single boss encounter
+                previousBosses.Add((Opponent.Type)int.Parse(value));
+            }
+            else
+            {
+                // Multiple boss encounters
+                IEnumerable<Opponent.Type> ids = value.Split(',').Select(static (a) => (Opponent.Type)int.Parse(a));
+                previousBosses.AddRange(ids);
+            }
+
+            return previousBosses;
+        }
+        set
+        {
+            string result = ""; // 2,0,1
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (i > 0)
+                {
+                    result += ",";
+                }
+                result += (int)value[i];
+
+            }
+            ModdedSaveManager.RunState.SetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses", result);
+        }
+    }
 
     #region Patches
-    [HarmonyPatch(typeof(Opponent), nameof(Opponent.SpawnOpponent))]
-    [HarmonyPrefix]
+    [HarmonyPrefix, HarmonyPatch(typeof(Opponent), nameof(Opponent.SpawnOpponent))]
     private static bool ReplaceSpawnOpponent(EncounterData encounterData, ref Opponent __result)
     {
         if (encounterData.opponentType == Opponent.Type.Default || !ProgressionData.LearnedMechanic(MechanicsConcept.OpponentQueue))
@@ -124,27 +164,19 @@ public static class OpponentManager
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType) { throw new NotImplementedException(); }
 
-    [HarmonyPatch(typeof(BossBattleSequencer), nameof(BossBattleSequencer.GetSequencerIdForBoss))]
-    [HarmonyPrefix]
+    [HarmonyPrefix, HarmonyPatch(typeof(BossBattleSequencer), nameof(BossBattleSequencer.GetSequencerIdForBoss))]
     private static bool ReplaceGetSequencerId(Opponent.Type bossType, ref string __result)
     {
         __result = AllOpponents.First(o => o.Id == bossType).SpecialSequencerId;
         return false;
     }
 
-    [HarmonyPatch(typeof(BossBattleNodeData), nameof(BossBattleNodeData.PrefabPath), MethodType.Getter)]
-    [HarmonyPrefix]
+    [HarmonyPrefix, HarmonyPatch(typeof(BossBattleNodeData), nameof(BossBattleNodeData.PrefabPath), MethodType.Getter)]
     private static bool ReplacePrefabPath(ref string __result, Opponent.Type ___bossType)
     {
-        GameObject obj = ResourceBank.Get<GameObject>("Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType);
-        if (obj != null)
-        {
-            __result = "Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType;
-        }
-        else
-        {
-            __result = "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
-        }
+        string fullPath = "Prefabs/Map/MapNodesPart1/MapNode_" + ___bossType;
+        GameObject obj = ResourceBank.Get<GameObject>(fullPath);
+        __result = obj != null ? fullPath : "Prefabs/Map/MapNodesPart1/MapNode_ProspectorBoss";
         return false;
     }
     
@@ -220,47 +252,20 @@ public static class OpponentManager
         }
     }
 
-    public static List<Opponent.Type> RunStateOpponents
+    [HarmonyPostfix, HarmonyPatch(typeof(CardDrawPiles), nameof(CardDrawPiles.ExhaustedSequence))]
+    private static IEnumerator CustomBossExhaustionSequence(IEnumerator enumerator, CardDrawPiles __instance)
     {
-        get
+        if (TurnManager.Instance.Opponent is ICustomExhaustSequence exhaustSeq && exhaustSeq != null && exhaustSeq.RespondsToCustomExhaustSequence(__instance))
         {
-            List<Opponent.Type> previousBosses = new List<Opponent.Type>();
-
-            string value = ModdedSaveManager.RunState.GetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses"); // 2,0,1
-            if (value == null)
-            {
-                // Do nothing
-            }
-            else if (!value.Contains(','))
-            {
-                // Single boss encounter
-                previousBosses.Add((Opponent.Type)int.Parse(value));
-            }
-            else
-            {
-                // Multiple boss encounters
-                IEnumerable<Opponent.Type> ids = value.Split(',').Select(static (a) => (Opponent.Type)int.Parse(a));
-                previousBosses.AddRange(ids);
-            }
-
-            return previousBosses;
+            Singleton<ViewManager>.Instance.SwitchToView(View.CardPiles, immediate: false, lockAfter: true);
+            yield return new WaitForSeconds(1f);
+            yield return exhaustSeq.DoCustomExhaustSequence(__instance);
         }
-        set
+        else
         {
-            string result = ""; // 2,0,1
-            for (int i = 0; i < value.Count; i++)
-            {
-                if (i > 0)
-                {
-                    result += ",";
-                }
-                result += (int)value[i];
-
-            }
-            ModdedSaveManager.RunState.SetValue(InscryptionAPIPlugin.ModGUID, "PreviousBosses", result);
+            yield return enumerator;
         }
     }
-
     #endregion
 
     #region Optimization Patches
