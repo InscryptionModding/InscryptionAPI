@@ -4,8 +4,11 @@ using System.Collections;
 namespace InscryptionAPI.Encounters;
 
 /// <summary>
-/// An Opponent interface that implements custom logic when the player has exhausted both of their draw piles.
+/// An interface that implements custom logic when the player has exhausted both of their draw piles.
 /// </summary>
+/// <remarks>
+/// Only for Opponents and SpecialSequences.
+/// </remarks>
 public interface ICustomExhaustSequence
 {
     public bool RespondsToCustomExhaustSequence(CardDrawPiles drawPiles);
