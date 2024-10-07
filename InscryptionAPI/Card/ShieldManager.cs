@@ -2,6 +2,7 @@ using DiskCardGame;
 using DiskCardGame.CompositeRules;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.Triggers;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -24,6 +25,29 @@ public static class ShieldManager
     public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
 
 
+    public static IEnumerator TriggerBreakShield(PlayableCard target, int damage, PlayableCard attacker)
+    {
+        BreakShield(target, damage, attacker);
+
+        List<IShieldPreventDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventDamage>(false).ToList();
+        shieldTriggers.Sort((IShieldPreventDamage a, IShieldPreventDamage b) => b.ShieldPreventDamagePriority(target, damage, attacker) - a.ShieldPreventDamagePriority(target, damage, attacker));
+        foreach (IShieldPreventDamage damageTrigger in shieldTriggers)
+        {
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventDamage(target, damage, attacker))
+            {
+                yield return damageTrigger.OnShieldPreventDamage(target, damage, attacker);
+            }
+        }
+        List<IShieldPreventDamageInHand> shieldInHandTriggers = CustomTriggerFinder.FindTriggersInHand<IShieldPreventDamageInHand>().ToList();
+        shieldInHandTriggers.Sort((IShieldPreventDamageInHand a, IShieldPreventDamageInHand b) => b.ShieldPreventDamageInHandPriority(target, damage, attacker) - a.ShieldPreventDamageInHandPriority(target, damage, attacker));
+        foreach (IShieldPreventDamageInHand damageTrigger in shieldInHandTriggers)
+        {
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventDamageInHand(target, damage, attacker))
+            {
+                yield return damageTrigger.OnShieldPreventDamageInHand(target, damage, attacker);
+            }
+        }
+    }
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
     /// This method is only called when damage > 0 and the target has a shield.
