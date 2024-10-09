@@ -98,7 +98,7 @@ public static class SlotModificationExtensions
         SlotModificationInteractable interactable = slot.GetComponent<SlotModificationInteractable>();
         if (defn == null || modType == ModificationType.NoModification || (defn.SharedRulebook == ModificationType.NoModification && string.IsNullOrEmpty(defn.RulebookName)))
         {
-            interactable?.SetEnabled(false);
+            UnityObject.Destroy(interactable);
         }
         else
         {

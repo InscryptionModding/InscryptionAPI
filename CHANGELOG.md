@@ -5,6 +5,7 @@
 - Added IShieldPreventedDamage and IShieldPreventedDamageInHand ability triggers and interfaces
 - Added TriggerBreakShield, wraps BreakShield in an IEnumerator for additional customisation by modders
 - Added ICustomExhaustSequence trigger interface for modifying the draw pile exhaustion effect -  use with Opponents
+- Fixed board slots being uninteractable if a slot effect with a rulebook interactable was reset
 - Removed debug logging related to rulebook redirect coordinates
 
 # 2.22.0
