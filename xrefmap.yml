@@ -8543,6 +8543,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.ShieldManager.NewHasShield
   nameWithType: ShieldManager.NewHasShield
+- uid: InscryptionAPI.Card.ShieldManager.TriggerBreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: TriggerBreakShield(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_TriggerBreakShield_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Card.ShieldManager.TriggerBreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Card.ShieldManager.TriggerBreakShield(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: ShieldManager.TriggerBreakShield(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Card.ShieldManager.TriggerBreakShield*
+  name: TriggerBreakShield
+  href: api/InscryptionAPI.Card.ShieldManager.html#InscryptionAPI_Card_ShieldManager_TriggerBreakShield_
+  commentId: Overload:InscryptionAPI.Card.ShieldManager.TriggerBreakShield
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.ShieldManager.TriggerBreakShield
+  nameWithType: ShieldManager.TriggerBreakShield
 - uid: InscryptionAPI.Card.SpecialTriggeredAbilityManager
   name: SpecialTriggeredAbilityManager
   href: api/InscryptionAPI.Card.SpecialTriggeredAbilityManager.html
@@ -10563,6 +10576,38 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Encounters.EncounterManager.SyncEncounterList
   nameWithType: EncounterManager.SyncEncounterList
+- uid: InscryptionAPI.Encounters.ICustomExhaustSequence
+  name: ICustomExhaustSequence
+  href: api/InscryptionAPI.Encounters.ICustomExhaustSequence.html
+  commentId: T:InscryptionAPI.Encounters.ICustomExhaustSequence
+  fullName: InscryptionAPI.Encounters.ICustomExhaustSequence
+  nameWithType: ICustomExhaustSequence
+- uid: InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  name: DoCustomExhaustSequence(CardDrawPiles)
+  href: api/InscryptionAPI.Encounters.ICustomExhaustSequence.html#InscryptionAPI_Encounters_ICustomExhaustSequence_DoCustomExhaustSequence_DiskCardGame_CardDrawPiles_
+  commentId: M:InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  fullName: InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  nameWithType: ICustomExhaustSequence.DoCustomExhaustSequence(CardDrawPiles)
+- uid: InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence*
+  name: DoCustomExhaustSequence
+  href: api/InscryptionAPI.Encounters.ICustomExhaustSequence.html#InscryptionAPI_Encounters_ICustomExhaustSequence_DoCustomExhaustSequence_
+  commentId: Overload:InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence
+  nameWithType: ICustomExhaustSequence.DoCustomExhaustSequence
+- uid: InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  name: RespondsToCustomExhaustSequence(CardDrawPiles)
+  href: api/InscryptionAPI.Encounters.ICustomExhaustSequence.html#InscryptionAPI_Encounters_ICustomExhaustSequence_RespondsToCustomExhaustSequence_DiskCardGame_CardDrawPiles_
+  commentId: M:InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  fullName: InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence(DiskCardGame.CardDrawPiles)
+  nameWithType: ICustomExhaustSequence.RespondsToCustomExhaustSequence(CardDrawPiles)
+- uid: InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence*
+  name: RespondsToCustomExhaustSequence
+  href: api/InscryptionAPI.Encounters.ICustomExhaustSequence.html#InscryptionAPI_Encounters_ICustomExhaustSequence_RespondsToCustomExhaustSequence_
+  commentId: Overload:InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence
+  isSpec: "True"
+  fullName: InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence
+  nameWithType: ICustomExhaustSequence.RespondsToCustomExhaustSequence
 - uid: InscryptionAPI.Encounters.ICustomNodeSequence
   name: ICustomNodeSequence
   href: api/InscryptionAPI.Encounters.ICustomNodeSequence.html
@@ -21474,6 +21519,96 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.ISetupAttackSequence.RespondsToModifyAttackSlots
   nameWithType: ISetupAttackSequence.RespondsToModifyAttackSlots
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage
+  name: IShieldPreventedDamage
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html
+  commentId: T:InscryptionAPI.Triggers.IShieldPreventedDamage
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage
+  nameWithType: IShieldPreventedDamage
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: OnShieldPreventedDamage(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_OnShieldPreventedDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamage.OnShieldPreventedDamage(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage*
+  name: OnShieldPreventedDamage
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_OnShieldPreventedDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage
+  nameWithType: IShieldPreventedDamage.OnShieldPreventedDamage
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: RespondsToShieldPreventedDamage(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_RespondsToShieldPreventedDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamage.RespondsToShieldPreventedDamage(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage*
+  name: RespondsToShieldPreventedDamage
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_RespondsToShieldPreventedDamage_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage
+  nameWithType: IShieldPreventedDamage.RespondsToShieldPreventedDamage
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: ShieldPreventedDamagePriority(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_ShieldPreventedDamagePriority_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamage.ShieldPreventedDamagePriority(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority*
+  name: ShieldPreventedDamagePriority
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamage.html#InscryptionAPI_Triggers_IShieldPreventedDamage_ShieldPreventedDamagePriority_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority
+  nameWithType: IShieldPreventedDamage.ShieldPreventedDamagePriority
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand
+  name: IShieldPreventedDamageInHand
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html
+  commentId: T:InscryptionAPI.Triggers.IShieldPreventedDamageInHand
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand
+  nameWithType: IShieldPreventedDamageInHand
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: OnShieldPreventedDamageInHand(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_OnShieldPreventedDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand*
+  name: OnShieldPreventedDamageInHand
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_OnShieldPreventedDamageInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand
+  nameWithType: IShieldPreventedDamageInHand.OnShieldPreventedDamageInHand
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: RespondsToShieldPreventedDamageInHand(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_RespondsToShieldPreventedDamageInHand_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand*
+  name: RespondsToShieldPreventedDamageInHand
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_RespondsToShieldPreventedDamageInHand_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand
+  nameWithType: IShieldPreventedDamageInHand.RespondsToShieldPreventedDamageInHand
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  name: ShieldPreventedDamageInHandPriority(PlayableCard, Int32, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_ShieldPreventedDamageInHandPriority_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority(DiskCardGame.PlayableCard, System.Int32, DiskCardGame.PlayableCard)
+  nameWithType: IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority(PlayableCard, Int32, PlayableCard)
+- uid: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority*
+  name: ShieldPreventedDamageInHandPriority
+  href: api/InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html#InscryptionAPI_Triggers_IShieldPreventedDamageInHand_ShieldPreventedDamageInHandPriority_
+  commentId: Overload:InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority
+  nameWithType: IShieldPreventedDamageInHand.ShieldPreventedDamageInHandPriority
 - uid: InscryptionAPI.Triggers.OpposingSlotTriggerPriority
   name: OpposingSlotTriggerPriority
   href: api/InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html

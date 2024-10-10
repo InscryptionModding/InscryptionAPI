@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace InscryptionAPI.Encounters
+    <title>Interface ICustomExhaustSequence
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace InscryptionAPI.Encounters
+    <meta name="title" content="Interface ICustomExhaustSequence
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,67 +69,112 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Encounters">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence">
   
-  <h1 id="InscryptionAPI_Encounters" data-uid="InscryptionAPI.Encounters" class="text-break">Namespace InscryptionAPI.Encounters
+  
+  <h1 id="InscryptionAPI_Encounters_ICustomExhaustSequence" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence" class="text-break">Interface ICustomExhaustSequence
   </h1>
-  <div class="markdown level0 summary"><p>This namespace is dedicated to managing custom battle encounters and their blueprints.</p>
+  <div class="markdown level0 summary"><p>An interface that implements custom logic when the player has exhausted both of their draw piles.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Encounters.html">InscryptionAPI.Encounters</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Encounters_ICustomExhaustSequence_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICustomExhaustSequence</code></pre>
+  </div>
+  <h5 id="InscryptionAPI_Encounters_ICustomExhaustSequence_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Only for Opponents and SpecialSequences.</p>
+</div>
+  <h3 id="methods">Methods
   </h3>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.AIManager.html">AIManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.AIManager.FullAI.html">AIManager.FullAI</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html">CachedGCBNPCDescriptor</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.CustomNodeData.html">CustomNodeData</a></h4>
-      <section><p>Represents a node on the map that has been placed by the Inscryption API</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.EncounterBuilder.html">EncounterBuilder</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.EncounterBuilderBlueprintData.html">EncounterBuilderBlueprintData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.EncounterExtensions.html">EncounterExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.EncounterManager.html">EncounterManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.NodeManager.html">NodeManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.NodeManager.NodeInfo.html">NodeManager.NodeInfo</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.html">OpponentManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.SpecialSequenceManager.html">SpecialSequenceManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.SpecialSequenceManager.FullSpecialSequencer.html">SpecialSequenceManager.FullSpecialSequencer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.TurnBuilder-1.html">TurnBuilder&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.TurnExtensions.html">TurnExtensions</a></h4>
-      <section></section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.ICustomExhaustSequence.html">ICustomExhaustSequence</a></h4>
-      <section><p>An interface that implements custom logic when the player has exhausted both of their draw piles.</p>
-</section>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.ICustomNodeSequence.html">ICustomNodeSequence</a></h4>
-      <section><p>A sequencer interface for all custom sequencers compatible with the Inscryption API</p>
-</section>
-    <h3 id="enums">Enums
-  </h3>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.NodeManager.NodePosition.html">NodeManager.NodePosition</a></h4>
-      <section></section>
-    <h3 id="delegates">Delegates
-  </h3>
-      <h4><a class="xref" href="InscryptionAPI.Encounters.CustomNodeData.NodeGenerationCondition.html">CustomNodeData.NodeGenerationCondition</a></h4>
-      <section><p>This tells us whether or not the node can actually be generated on the map.
-Simply creating the node is not good enough: the node has to confirm that it can be generated</p>
-</section>
+  <a id="InscryptionAPI_Encounters_ICustomExhaustSequence_DoCustomExhaustSequence_" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence*"></a>
+  <h4 id="InscryptionAPI_Encounters_ICustomExhaustSequence_DoCustomExhaustSequence_DiskCardGame_CardDrawPiles_" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence.DoCustomExhaustSequence(DiskCardGame.CardDrawPiles)">DoCustomExhaustSequence(CardDrawPiles)</h4>
+  <div class="markdown level1 summary"><p>Executes the sequence that plays when the player exhausts their draw piles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator DoCustomExhaustSequence(CardDrawPiles drawPiles)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardDrawPiles</span></td>
+        <td><span class="parametername">drawPiles</span></td>
+        <td><p>The CardDrawPiles instance for this scene.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>An enumeration of Unity events.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_ICustomExhaustSequence_RespondsToCustomExhaustSequence_" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence*"></a>
+  <h4 id="InscryptionAPI_Encounters_ICustomExhaustSequence_RespondsToCustomExhaustSequence_DiskCardGame_CardDrawPiles_" data-uid="InscryptionAPI.Encounters.ICustomExhaustSequence.RespondsToCustomExhaustSequence(DiskCardGame.CardDrawPiles)">RespondsToCustomExhaustSequence(CardDrawPiles)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RespondsToCustomExhaustSequence(CardDrawPiles drawPiles)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardDrawPiles</span></td>
+        <td><span class="parametername">drawPiles</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
+  </div>
 </article>
           </div>
           

@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShieldManager
+    <title>Interface IShieldPreventedDamage
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShieldManager
+    <meta name="title" content="Interface IShieldPreventedDamage
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,162 +69,29 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Card.ShieldManager">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage">
   
   
-  <h1 id="InscryptionAPI_Card_ShieldManager" data-uid="InscryptionAPI.Card.ShieldManager" class="text-break">Class ShieldManager
+  <h1 id="InscryptionAPI_Triggers_IShieldPreventedDamage" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage" class="text-break">Interface IShieldPreventedDamage
   </h1>
-  <div class="markdown level0 summary"><p>This manager class handles the logic for shields.</p>
+  <div class="markdown level0 summary"><p>Trigger that is called after a shielded card was attacked and lost a shield.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ShieldManager</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Card.html">InscryptionAPI.Card</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Card_ShieldManager_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Triggers_IShieldPreventedDamage_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class ShieldManager</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IShieldPreventedDamage</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <a id="InscryptionAPI_Card_ShieldManager_AllShieldAbilities_" data-uid="InscryptionAPI.Card.ShieldManager.AllShieldAbilities*"></a>
-  <h4 id="InscryptionAPI_Card_ShieldManager_AllShieldAbilities" data-uid="InscryptionAPI.Card.ShieldManager.AllShieldAbilities">AllShieldAbilities</h4>
-  <div class="markdown level1 summary"><p>A list of FullAbilities whose AbilityBehaviour overrides DamageShieldBehaviour.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;AbilityManager.FullAbility&gt; AllShieldAbilities { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_ShieldManager_AllShieldInfos_" data-uid="InscryptionAPI.Card.ShieldManager.AllShieldInfos*"></a>
-  <h4 id="InscryptionAPI_Card_ShieldManager_AllShieldInfos" data-uid="InscryptionAPI.Card.ShieldManager.AllShieldInfos">AllShieldInfos</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;AbilityInfo&gt; AllShieldInfos { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AbilityInfo</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="InscryptionAPI_Card_ShieldManager_BreakShield_" data-uid="InscryptionAPI.Card.ShieldManager.BreakShield*"></a>
-  <h4 id="InscryptionAPI_Card_ShieldManager_BreakShield_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.ShieldManager.BreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">BreakShield(PlayableCard, Int32, PlayableCard)</h4>
-  <div class="markdown level1 summary"><p>The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
-This method is only called when damage &gt; 0 and the target has a shield.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void BreakShield(PlayableCard target, int damage, PlayableCard attacker)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">damage</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_ShieldManager_NewHasShield_" data-uid="InscryptionAPI.Card.ShieldManager.NewHasShield*"></a>
-  <h4 id="InscryptionAPI_Card_ShieldManager_NewHasShield_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.ShieldManager.NewHasShield(DiskCardGame.PlayableCard)">NewHasShield(PlayableCard)</h4>
-  <div class="markdown level1 summary"><p>The new version of PlayableCard.HasShield implementing the new shield logic.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool NewHasShield(PlayableCard instance)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">instance</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_ShieldManager_TriggerBreakShield_" data-uid="InscryptionAPI.Card.ShieldManager.TriggerBreakShield*"></a>
-  <h4 id="InscryptionAPI_Card_ShieldManager_TriggerBreakShield_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.ShieldManager.TriggerBreakShield(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">TriggerBreakShield(PlayableCard, Int32, PlayableCard)</h4>
+  <a id="InscryptionAPI_Triggers_IShieldPreventedDamage_OnShieldPreventedDamage_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage*"></a>
+  <h4 id="InscryptionAPI_Triggers_IShieldPreventedDamage_OnShieldPreventedDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.OnShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">OnShieldPreventedDamage(PlayableCard, Int32, PlayableCard)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerBreakShield(PlayableCard target, int damage, PlayableCard attacker)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerator OnShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -268,6 +135,110 @@ This method is only called when damage &gt; 0 and the target has a shield.</p>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Triggers_IShieldPreventedDamage_RespondsToShieldPreventedDamage_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage*"></a>
+  <h4 id="InscryptionAPI_Triggers_IShieldPreventedDamage_RespondsToShieldPreventedDamage_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.RespondsToShieldPreventedDamage(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">RespondsToShieldPreventedDamage(PlayableCard, Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RespondsToShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">damage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">attacker</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_IShieldPreventedDamage_ShieldPreventedDamagePriority_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority*"></a>
+  <h4 id="InscryptionAPI_Triggers_IShieldPreventedDamage_ShieldPreventedDamagePriority_DiskCardGame_PlayableCard_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IShieldPreventedDamage.ShieldPreventedDamagePriority(DiskCardGame.PlayableCard,System.Int32,DiskCardGame.PlayableCard)">ShieldPreventedDamagePriority(PlayableCard, Int32, PlayableCard)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ShieldPreventedDamagePriority(PlayableCard target, int damage, PlayableCard attacker)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">damage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">attacker</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
+  </div>
 </article>
           </div>
           
