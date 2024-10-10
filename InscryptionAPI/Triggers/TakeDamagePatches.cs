@@ -94,6 +94,7 @@ public static class TakeDamagePatches
         int shieldStart = -1, shieldEnd = -1;
         for (int i = 0; i < codes.Count; i++)
         {
+            
             // grab the required operands, in order of appearance in the code
             if (shieldStart == -1 && codes[i].operand?.ToString() == "Boolean HasShield()")
             {
@@ -130,11 +131,22 @@ public static class TakeDamagePatches
                 attacker = codes[i].operand;
                 if (shieldEnd > 0)
                 {
+                    CodeInstruction switch_ = codes.Find(x => x.opcode == OpCodes.Switch);
+                    //switch_.WithLabels(breakShieldLabel);
+                    object state = codes.Find(x => x.opcode == OpCodes.Stfld && x.operand.ToString() == "System.Int32 <>1__state").operand;
+                    object current = codes.Find(x => x.opcode == OpCodes.Stfld && x.operand.ToString() == "System.Object <>2__current").operand;
                     // if (HasShield && damage > 0)
-                    //   BreakShield();
+                    //   yield return TriggerBreakShield();
                     //   break;
 
-                    MethodBase breakShield = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.BreakShield),
+                    // TriggerBreakShield
+                    // this.current = TriggerBreakShield
+                    // this.state = 7
+                    // return true
+                    // this.state = -1
+                    // yield break (new label)
+
+                    MethodBase breakShield = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.TriggerBreakShield),
                         new Type[] { typeof(PlayableCard), typeof(int), typeof(PlayableCard) });
 
                     codes.RemoveRange(shieldStart, shieldEnd - shieldStart);
@@ -145,14 +157,33 @@ public static class TakeDamagePatches
                     codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_0));
                     codes.Insert(shieldStart++, new(OpCodes.Cgt));
                     codes.Insert(shieldStart++, new(OpCodes.Brfalse, hasShieldLabel));
-                    // BreakShield();
-                    //break;
+
+                    // TriggerBreakShield();
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
                     codes.Insert(shieldStart++, new(OpCodes.Ldloc_1));
                     codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, damage));
                     codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
                     codes.Insert(shieldStart++, new(OpCodes.Ldfld, attacker));
-                    codes.Insert(shieldStart++, new(OpCodes.Call, breakShield));
+                    codes.Insert(shieldStart++, new(OpCodes.Callvirt, breakShield));
+
+                    // this.current = TriggerBreakShield
+                    codes.Insert(shieldStart++, new(OpCodes.Stfld, current));
+                    // this.state = 5
+                    codes.Insert(shieldStart++, new(OpCodes.Ldarg_0));
+                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_4));
+                    codes.Insert(shieldStart++, new(OpCodes.Stfld, state));
+                    // return true
+                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_1));
+                    codes.Insert(shieldStart++, new(OpCodes.Ret));
+                    // this.state = -1
+                    //generator.MarkLabel(breakShieldLabel);
+                    /*CodeInstruction it = new(OpCodes.Ldarg_0);
+                    it.labels.Add(breakShieldLabel);
+                    codes.Insert(shieldStart++, it);
+                    codes.Insert(shieldStart++, new(OpCodes.Ldc_I4_M1));
+                    codes.Insert(shieldStart++, new(OpCodes.Stfld, state));*/
+                    // yield break
                 }
                 break;
             }

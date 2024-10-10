@@ -2,6 +2,7 @@ using DiskCardGame;
 using DiskCardGame.CompositeRules;
 using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
+using InscryptionAPI.Triggers;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -24,6 +25,29 @@ public static class ShieldManager
     public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
 
 
+    public static IEnumerator TriggerBreakShield(PlayableCard target, int damage, PlayableCard attacker)
+    {
+        BreakShield(target, damage, attacker);
+
+        List<IShieldPreventedDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventedDamage>(false).ToList();
+        shieldTriggers.Sort((IShieldPreventedDamage a, IShieldPreventedDamage b) => b.ShieldPreventedDamagePriority(target, damage, attacker) - a.ShieldPreventedDamagePriority(target, damage, attacker));
+        foreach (IShieldPreventedDamage damageTrigger in shieldTriggers)
+        {
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventedDamage(target, damage, attacker))
+            {
+                yield return damageTrigger.OnShieldPreventedDamage(target, damage, attacker);
+            }
+        }
+        List<IShieldPreventedDamageInHand> shieldInHandTriggers = CustomTriggerFinder.FindTriggersInHand<IShieldPreventedDamageInHand>().ToList();
+        shieldInHandTriggers.Sort((IShieldPreventedDamageInHand a, IShieldPreventedDamageInHand b) => b.ShieldPreventedDamageInHandPriority(target, damage, attacker) - a.ShieldPreventedDamageInHandPriority(target, damage, attacker));
+        foreach (IShieldPreventedDamageInHand damageTrigger in shieldInHandTriggers)
+        {
+            if ((damageTrigger as TriggerReceiver) != null && damageTrigger.RespondsToShieldPreventedDamageInHand(target, damage, attacker))
+            {
+                yield return damageTrigger.OnShieldPreventedDamageInHand(target, damage, attacker);
+            }
+        }
+    }
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
     /// This method is only called when damage > 0 and the target has a shield.
