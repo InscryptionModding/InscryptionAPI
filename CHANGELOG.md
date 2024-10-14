@@ -1,6 +1,9 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.22.2
+- Fixed positioning errors caused by having multiple custom boss challenge icons
+
 # 2.22.1
 - Added IShieldPreventedDamage and IShieldPreventedDamageInHand ability triggers and interfaces
 - Added TriggerBreakShield, wraps BreakShield in an IEnumerator for additional customisation by modders
