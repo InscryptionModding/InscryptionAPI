@@ -2,7 +2,10 @@
 <summary>View Changelog</summary>
 
 # 2.22.2
+- Added GetEnergyConfig method to community patch's EnergyDrone class - retrieves the current Act's EnergyConfigInfo
 - Fixed positioning errors caused by having multiple custom boss challenge icons
+- EnergyConfigInfo's fields can now be modified when initialising a new instance
+- Updated installation guide on the ReadMe to match the wiki, added link to wiki.
 
 # 2.22.1
 - Added IShieldPreventedDamage and IShieldPreventedDamageInHand ability triggers and interfaces
