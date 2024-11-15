@@ -116,7 +116,8 @@ public static class CostProperties</code></pre>
   </h3>
   <a id="InscryptionAPI_Card_CostProperties_CostProperties_ImprovedGemsCost_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ImprovedGemsCost*"></a>
   <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_ImprovedGemsCost_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ImprovedGemsCost(DiskCardGame.CardInfo)">ImprovedGemsCost(CardInfo)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Improved version of CardInfo.GemsCost that accounts for addGemCost and RemovedGemsCost().</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -154,6 +155,9 @@ public static class CostProperties</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 id="InscryptionAPI_Card_CostProperties_CostProperties_ImprovedGemsCost_DiskCardGame_CardInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>For consistency&apos;s sake, it&apos;s recommended you use this method over OriginalGemsCost in most cases.</p>
+</div>
   <a id="InscryptionAPI_Card_CostProperties_CostProperties_OriginalBloodCost_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost*"></a>
   <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_OriginalBloodCost_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.OriginalBloodCost(DiskCardGame.CardInfo)">OriginalBloodCost(CardInfo)</h4>
   <div class="markdown level1 summary"><p>ChangeCardCostGetter patches BloodCost so we can change the cost on the fly
@@ -330,6 +334,186 @@ public static List&lt;GemType&gt; OriginalGemsCost(CardInfo __instance)</code></
     <tbody>
       <tr>
         <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.GemType</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBlood_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood*"></a>
+  <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBlood_DiskCardGame_PlayableCard_System_Nullable_System_Int32__" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood(DiskCardGame.PlayableCard,System.Nullable{System.Int32})">ReduceGemifiedBlood(PlayableCard, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ReduceGemifiedBlood(PlayableCard card, int? bloodCost = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">bloodCost</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBones_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones*"></a>
+  <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBones_DiskCardGame_PlayableCard_System_Nullable_System_Int32__" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones(DiskCardGame.PlayableCard,System.Nullable{System.Int32})">ReduceGemifiedBones(PlayableCard, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ReduceGemifiedBones(PlayableCard card, int? bonesCost = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">bonesCost</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedEnergy_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy*"></a>
+  <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedEnergy_DiskCardGame_PlayableCard_System_Nullable_System_Int32__" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy(DiskCardGame.PlayableCard,System.Nullable{System.Int32})">ReduceGemifiedEnergy(PlayableCard, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ReduceGemifiedEnergy(PlayableCard card, int? energyCost = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">energyCost</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedMox_" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox*"></a>
+  <h4 id="InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedMox_DiskCardGame_PlayableCard_List_DiskCardGame_GemType__" data-uid="InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox(DiskCardGame.PlayableCard,List{DiskCardGame.GemType})">ReduceGemifiedMox(PlayableCard, List&lt;GemType&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ReduceGemifiedMox(PlayableCard card, List&lt;GemType&gt; gemsCost = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.GemType</span>&gt;</td>
+        <td><span class="parametername">gemsCost</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>

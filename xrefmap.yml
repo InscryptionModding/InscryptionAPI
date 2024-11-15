@@ -7682,6 +7682,70 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CostProperties.CostProperties.OriginalGemsCost
   nameWithType: CostProperties.OriginalGemsCost
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name: ReduceGemifiedBlood(PlayableCard, Nullable<Int32>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBlood_DiskCardGame_PlayableCard_System_Nullable_System_Int32__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name.vb: ReduceGemifiedBlood(PlayableCard, Nullable(Of Int32))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood(DiskCardGame.PlayableCard, System.Nullable<System.Int32>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood(DiskCardGame.PlayableCard, System.Nullable(Of System.Int32))
+  nameWithType: CostProperties.ReduceGemifiedBlood(PlayableCard, Nullable<Int32>)
+  nameWithType.vb: CostProperties.ReduceGemifiedBlood(PlayableCard, Nullable(Of Int32))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood*
+  name: ReduceGemifiedBlood
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBlood_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBlood
+  nameWithType: CostProperties.ReduceGemifiedBlood
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name: ReduceGemifiedBones(PlayableCard, Nullable<Int32>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBones_DiskCardGame_PlayableCard_System_Nullable_System_Int32__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name.vb: ReduceGemifiedBones(PlayableCard, Nullable(Of Int32))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones(DiskCardGame.PlayableCard, System.Nullable<System.Int32>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones(DiskCardGame.PlayableCard, System.Nullable(Of System.Int32))
+  nameWithType: CostProperties.ReduceGemifiedBones(PlayableCard, Nullable<Int32>)
+  nameWithType.vb: CostProperties.ReduceGemifiedBones(PlayableCard, Nullable(Of Int32))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones*
+  name: ReduceGemifiedBones
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedBones_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedBones
+  nameWithType: CostProperties.ReduceGemifiedBones
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name: ReduceGemifiedEnergy(PlayableCard, Nullable<Int32>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedEnergy_DiskCardGame_PlayableCard_System_Nullable_System_Int32__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy(DiskCardGame.PlayableCard,System.Nullable{System.Int32})
+  name.vb: ReduceGemifiedEnergy(PlayableCard, Nullable(Of Int32))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy(DiskCardGame.PlayableCard, System.Nullable<System.Int32>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy(DiskCardGame.PlayableCard, System.Nullable(Of System.Int32))
+  nameWithType: CostProperties.ReduceGemifiedEnergy(PlayableCard, Nullable<Int32>)
+  nameWithType.vb: CostProperties.ReduceGemifiedEnergy(PlayableCard, Nullable(Of Int32))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy*
+  name: ReduceGemifiedEnergy
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedEnergy_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedEnergy
+  nameWithType: CostProperties.ReduceGemifiedEnergy
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox(DiskCardGame.PlayableCard,List{DiskCardGame.GemType})
+  name: ReduceGemifiedMox(PlayableCard, List<GemType>)
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedMox_DiskCardGame_PlayableCard_List_DiskCardGame_GemType__
+  commentId: M:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox(DiskCardGame.PlayableCard,List{DiskCardGame.GemType})
+  name.vb: ReduceGemifiedMox(PlayableCard, List(Of GemType))
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox(DiskCardGame.PlayableCard, List<DiskCardGame.GemType>)
+  fullName.vb: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox(DiskCardGame.PlayableCard, List(Of DiskCardGame.GemType))
+  nameWithType: CostProperties.ReduceGemifiedMox(PlayableCard, List<GemType>)
+  nameWithType.vb: CostProperties.ReduceGemifiedMox(PlayableCard, List(Of GemType))
+- uid: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox*
+  name: ReduceGemifiedMox
+  href: api/InscryptionAPI.Card.CostProperties.CostProperties.html#InscryptionAPI_Card_CostProperties_CostProperties_ReduceGemifiedMox_
+  commentId: Overload:InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CostProperties.CostProperties.ReduceGemifiedMox
+  nameWithType: CostProperties.ReduceGemifiedMox
 - uid: InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour
   name: CostProperties.RefreshCostMonoBehaviour
   href: api/InscryptionAPI.Card.CostProperties.CostProperties.RefreshCostMonoBehaviour.html
