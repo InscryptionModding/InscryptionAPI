@@ -35,8 +35,7 @@ public static partial class CardExtensions
         if (card && card.Info)
         {
             int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
-
-            if (card.IsUsingBlueGem())
+            if (card.IsUsingBlueGem() && CostProperties.CostProperties.ReduceGemifiedBlood(card, originalBloodCost))
                 originalBloodCost--;
 
             // add adjustments from temp mods
@@ -59,7 +58,7 @@ public static partial class CardExtensions
         if (card && card.Info)
         {
             int originalBonesCost = CostProperties.CostProperties.OriginalBonesCost(card.Info);
-            if (card.IsUsingBlueGem())
+            if (card.IsUsingBlueGem() && CostProperties.CostProperties.ReduceGemifiedBones(card, originalBonesCost))
                 originalBonesCost--;
 
             // add adjustments from temp mods
@@ -98,7 +97,7 @@ public static partial class CardExtensions
             }
         }
 
-        if (gemsCost.Count > 0 && card.IsUsingBlueGem())
+        if (card.IsUsingBlueGem() && CostProperties.CostProperties.ReduceGemifiedMox(card, gemsCost))
             gemsCost.RemoveAt(0);
 
         return gemsCost;

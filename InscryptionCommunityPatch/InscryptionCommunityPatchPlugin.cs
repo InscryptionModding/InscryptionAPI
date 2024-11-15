@@ -44,6 +44,7 @@ public class PatchPlugin : BaseUnityPlugin
     internal static ConfigEntry<bool> configRemovePatches;
 
     internal static ConfigEntry<bool> configSmallPricetags;
+    internal static ConfigEntry<bool> configMovePricetags;
 
     internal static ConfigEntry<bool> configTestState;
 
@@ -93,6 +94,7 @@ public class PatchPlugin : BaseUnityPlugin
         configMergeOnBottom = Config.Bind("Sigil Display", "Merge_On_Botom", false, "Makes it so if enabled, merged sigils will display on the bottom of the card instead of on the artwork. In extreme cases, this can cause some visual bugs.");
         configRemovePatches = Config.Bind("Sigil Display", "Remove_Patches", false, "Makes it so if enabled, merged sigils will not have a patch behind them anymore and will instead be glowing yellow (only works with Merge_On_Bottom).");
         configSmallPricetags = Config.Bind("Act 1", "Smaller Pricetags", false, "If enabled, the price tags placed on cards while buying from the Trapper will be scaled down.");
+        configMovePricetags = Config.Bind("Act 1", "Move Pricetags", false, "If enabled, the price tags placed on cards while buying from the Trapper will be moved to the right.");
         act2StackIconType = Config.Bind("Sigil Display", "Act 2 Sigil icon type", true, "If true, stacking icons are a cream outline with a black center. If false, stacking icons are a black outline with a cream center. Act 2");
         act2TutorCenterRows = Config.Bind("Act 2", "Centred Hoarder UI", true, "If true, centres displayed cards in each row during the Hoarder selection sequence.");
         configFullDebug = Config.Bind("General", "Full Debug", true, "If true, displays all debug logs in the console.");

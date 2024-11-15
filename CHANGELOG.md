@@ -3,6 +3,8 @@
 
 # 2.22.2
 - Added GetEnergyConfig method to community patch's EnergyDrone class - retrieves the current Act's EnergyConfigInfo
+- CommunityPatches: Added community config to move pelt price tags to the right of the card
+- Experimental: Changed gemified to only reduce a single cost on a card, with priority of Energy > Bones > Gems > Blood
 - Fixed positioning errors caused by having multiple custom boss challenge icons
 - EnergyConfigInfo's fields can now be modified when initialising a new instance
 - Updated installation guide on the ReadMe to match the wiki, added link to wiki.
