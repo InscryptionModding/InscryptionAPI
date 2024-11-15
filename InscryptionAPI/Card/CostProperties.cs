@@ -78,7 +78,6 @@ public static class CostProperties
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BloodCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalBloodCost(CardInfo __instance) { return 0; }
     
-    
     /// <summary>
     /// ChangeCardCostGetter patches BoneCost so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
@@ -86,7 +85,6 @@ public static class CostProperties
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BonesCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalBonesCost(CardInfo __instance) { return 0; }
-    
     
     /// <summary>
     /// ChangeCardCostGetter patches GemsCost so we can change the cost on the fly
@@ -96,6 +94,11 @@ public static class CostProperties
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
 
+    /// <summary>
+    /// Improved version of CardInfo.GemsCost that accounts for addGemCost and RemovedGemsCost().
+    /// </summary>
+    /// <remarks>For consistency's sake, it's recommended you use this method over OriginalGemsCost in most cases.</remarks>
+    /// <param name="instance"></param>
     public static List<GemType> ImprovedGemsCost(CardInfo instance)
     {
         if (instance.Mods.Exists(x => x.nullifyGemsCost))
@@ -123,6 +126,23 @@ public static class CostProperties
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.EnergyCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalEnergyCost(CardInfo __instance) { return 0; }
+
+    public static bool ReduceGemifiedBlood(PlayableCard card, int? bloodCost = null)
+    {
+        return (bloodCost ?? OriginalBloodCost(card.Info)) > 0 && !ReduceGemifiedMox(card) && !ReduceGemifiedBones(card) && !ReduceGemifiedMox(card);
+    }
+    public static bool ReduceGemifiedMox(PlayableCard card, List<GemType> gemsCost = null)
+    {
+        return (gemsCost?.Count ?? ImprovedGemsCost(card.Info).Count) > 0 && !ReduceGemifiedBones(card) && !ReduceGemifiedEnergy(card);
+    }
+    public static bool ReduceGemifiedBones(PlayableCard card, int? bonesCost = null)
+    {
+        return (bonesCost ?? OriginalBonesCost(card.Info)) > 0 && !ReduceGemifiedEnergy(card);
+    }
+    public static bool ReduceGemifiedEnergy(PlayableCard card, int? energyCost = null)
+    {
+        return (energyCost ?? OriginalEnergyCost(card.Info)) > 0;
+    }
 }
 
 [HarmonyPatch]
@@ -162,12 +182,13 @@ internal static class ChangeCardCostGetter
         __result = card?.EnergyCost ?? CostProperties.OriginalEnergyCost(__instance);
         return false;
     }
+
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.EnergyCost), MethodType.Getter), HarmonyPrefix]
     public static bool DisableVanillaEnergyCost(PlayableCard __instance, ref int __result)
     {
         // patch this to follow the same pattern as the other cost methods
         int energyCost = CostProperties.OriginalEnergyCost(__instance.Info);
-        if (__instance.IsUsingBlueGem())
+        if (__instance.IsUsingBlueGem() && CostProperties.ReduceGemifiedEnergy(__instance, energyCost))
             energyCost--;
 
         foreach (CardModificationInfo mod in __instance.TemporaryMods)

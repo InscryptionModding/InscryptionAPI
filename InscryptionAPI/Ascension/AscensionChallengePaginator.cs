@@ -71,29 +71,37 @@ public class AscensionChallengePaginator : MonoBehaviour
         List<AscensionChallengeInfo> bossChallengeInfos = challengeInfos.FindAll(x => x.challengeType.GetFullChallenge().Boss);
 
         // keep track of the number of bosses that are on this page, and account for them when determining how many icons to create        
-        int numBosses = challengeInfos.Count(x => x.challengeType.GetFullChallenge().Boss);
+        int numBosses = bossChallengeInfos.Count;
         int numIcons = Mathf.Min(14, challengeObjectsForPages[0].Count) - numBosses;
 
         // the list index when we begin adding boss icons
         int bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
         int numBossesAdded = 0;
 
-        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {bossChallengeInfos.Count}");
+        // 14 = regular + boss * 2
+        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {bossChallengeInfos.Count} | {bossStartingIndex}");
 
         for (int i = 0; i < 14; i++)
         {
             GameObject objectRef = null;
 
-            if (i % 7 < bossStartingIndex + numBosses && i % 7 >= bossStartingIndex)
+            int columnIndex = i % 7;
+            //Debug.Log($"{i} ({columnIndex}) | {bossStartingIndex + numBosses} / {bossStartingIndex}");
+
+            if (columnIndex >= bossStartingIndex && columnIndex < bossStartingIndex + numBosses)
             {
+                //Debug.Log($"In boss column {i}");
                 if (numBossesAdded < numBosses)
                 {
+                    //Debug.Log($"Use boss icon");
                     numBossesAdded++;
                     objectRef = challengeObjectsForPages[0][14];
                 }
                 else
                 {
-                    i += numBosses;
+                    //Debug.Log($"Skip to end");
+                    i += numBosses - 1; // account for loop iteration
+                    continue;
                 }
             }
 
@@ -117,21 +125,22 @@ public class AscensionChallengePaginator : MonoBehaviour
         int infoCount = challengeInfos.Count;
         for (int i = 0; i < newPage.Count; i++)
         {
-            //Debug.Log($"Checking icon [{i}] info {infoIdx}");
+            AscensionChallengeInfo info = challengeInfos[infoIdx];
             AscensionIconInteractable interactable = newPage[i].GetComponent<AscensionIconInteractable>();
-
+            //Debug.Log($"Checking icon [{i}] info at {infoIdx} : {info.title}");
             if (i < infoCount)
             {
                 // if we're assigning boss info to an icon that isn't a boss icon
-                if (challengeInfos[infoIdx].GetFullChallenge().Boss && (interactable.coll2D as BoxCollider2D).size.y < 1f)
+                if (info.GetFullChallenge().Boss && (interactable.coll2D as BoxCollider2D).size.y < 1f)
                 {
+                    //Debug.Log("Boss error: y < 1");
                     interactable.challengeInfo = missingChallengeInfo;
                     newPage[i].AddComponent<NoneChallengeDisplayer>();
                     infoCount++;
                 }
                 else
                 {
-                    interactable.challengeInfo = challengeInfos[infoIdx];
+                    interactable.challengeInfo = info;
                     infoIdx++;
                 }
             }

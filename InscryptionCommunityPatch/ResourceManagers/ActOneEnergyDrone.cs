@@ -11,15 +11,26 @@ namespace InscryptionCommunityPatch.ResourceManagers;
 [HarmonyPatch]
 public static class EnergyDrone
 {
+    /// <summary>
+    /// Class containing information on the resource energy drone. Controls whether the Energy Drone will appear in non-Act 3 acts.
+    /// </summary>
     public class EnergyConfigInfo
     {
-        public bool ConfigEnergy => PoolHasEnergy || PatchPlugin.configEnergy.Value;
-        public bool ConfigDrone => PoolHasEnergy || ConfigDroneMox || PatchPlugin.configDrone.Value;
-        public bool ConfigDroneMox => PoolHasGems || PatchPlugin.configDroneMox.Value;
-        public bool ConfigMox => PoolHasGems || PatchPlugin.configMox.Value;
-        public bool ConfigDefaultDrone => PatchPlugin.configDefaultDrone.Value;
+        public bool ConfigEnergy { get; set; } = PoolHasEnergy || PatchPlugin.configEnergy.Value;
+        public bool ConfigShowDrone { get; set; } = PoolHasEnergy || PatchPlugin.configDrone.Value;
+        public bool ConfigDroneMox { get; set; } = PoolHasGems || PatchPlugin.configDroneMox.Value;
+        public bool ConfigMox { get; set; } = PoolHasGems || PatchPlugin.configMox.Value;
+        public bool ConfigDefaultDrone { get; set; } = PatchPlugin.configDefaultDrone.Value;
+
+        /// <summary>
+        /// Controls whether or not the Drone will appear. By default, will appear if there are obtainable Energy or Mox cards in the card pool (or the corresponding config value has been set).
+        /// </summary>
+        public bool ConfigDrone => ConfigShowDrone || ConfigDroneMox;
     }
 
+    /// <summary>
+    /// Contains the EnergyConfigInfos for each Act with default settings. If you want to directly alter an Act's drone behaviour, please modify GetEnergyConfig instead.
+    /// </summary>
     public static Dictionary<CardTemple, EnergyConfigInfo> ZoneConfigs = new()
     {
         { CardTemple.Nature, new() },
@@ -49,22 +60,27 @@ public static class EnergyDrone
         }
     }
 
-    private static EnergyConfigInfo EnergyConfig
+    /// <summary>
+    /// Returns the EnergyConfigInfo object corresponding to the current Act.
+    /// </summary>
+    public static EnergyConfigInfo GetEnergyConfig()
     {
-        get
-        {
-            if (SaveManager.SaveFile.IsPart3)
-                return ZoneConfigs[CardTemple.Tech];
+        if (SaveManager.SaveFile.IsPart3)
+            return ZoneConfigs[CardTemple.Tech];
 
-            if (SaveManager.SaveFile.IsGrimora)
-                return ZoneConfigs[CardTemple.Undead];
+        if (SaveManager.SaveFile.IsGrimora)
+            return ZoneConfigs[CardTemple.Undead];
 
-            if (SaveManager.SaveFile.IsMagnificus)
-                return ZoneConfigs[CardTemple.Wizard];
+        if (SaveManager.SaveFile.IsMagnificus)
+            return ZoneConfigs[CardTemple.Wizard];
 
-            return ZoneConfigs[CardTemple.Nature];
-        }
+        return ZoneConfigs[CardTemple.Nature];
     }
+
+    /// <summary>
+    /// The EnergyConfigInfo for the current Act.
+    /// </summary>
+    private static EnergyConfigInfo EnergyConfig => GetEnergyConfig();
 
     public static bool PoolHasEnergy { get; private set; }
     public static bool PoolHasGems { get; private set; }

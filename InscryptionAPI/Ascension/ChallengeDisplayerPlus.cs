@@ -26,6 +26,7 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
         if (plus.incompatibilityText == null)
         {
             GameObject cloned = Instantiate(displayer.titleText.gameObject);
+            cloned.name = "PixelTextLine_INCOMPATIBLE";
             cloned.transform.parent = displayer.titleText.transform.parent;
             float y = plus.originalTitlePos;
             if (displayer.descriptionText != null)
@@ -47,6 +48,7 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
         if (plus.dependencyText == null)
         {
             GameObject cloned = Instantiate(displayer.titleText.gameObject);
+            cloned.name = "PixelTextLine_DEPENDENCY";
             cloned.transform.parent = displayer.titleText.transform.parent;
             float y = plus.originalTitlePos;
             if (displayer.descriptionText != null)

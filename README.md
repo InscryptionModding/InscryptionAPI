@@ -17,28 +17,47 @@ It can currently create and modify:
 - Totem Tops
 - Consumable Items
 - Gramophone Tracks
+- Slot Modifications
 - Talking Cards
 - Custom Costs
+- Custom Rulebook Pages
+- Rulebook Redirects/Hyperlinks
 - And much more!
 
 Additionally, a number of quality-of-life patches from the community are included with each release.
 
-## Installation (automated)
-This is the recommended way to install the API on the game.
+### Installing with a Mod Manager (recommended)
+1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/).
+2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) page.
+3. Run the game via the mod manager.
 
-- Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://timberborn.thunderstore.io/package/ebkr/r2modman/).
-- Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) page.
-- Run the game via the mod manager.
+### Installing Manually
+1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) by pressing 'Manual Download' and extract the contents into a folder. **Do not extract into the game folder!**
+2. Move the contents of the 'BepInExPack_Inscryption' folder into the game folder (where the game executable is).
+3. Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.
+4. Install [MonoModLoader](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/) and extract the contents into a folder.
+5. Move the contents of the 'patchers' folder into 'BepInEx/patchers' (If any of the mentioned BepInEx folders don't exist, just create them).
+6. Install [Inscryption API](https://inscryption.thunderstore.io/package/API_dev/API/) and extract the contents into a folder.
+7. Move the contents of the 'plugins' folder into 'BepInEx/plugins' and the contents of the 'monomod' folder into the 'BepInEx/monomod' folder.
+8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
 
-## Installation (manual)
-To install this plugin first you need to install BepInEx as a mod loader for Inscryption. A guide to do this can be found [here](https://docs.bepinex.dev/articles/user_guide/installation/index.html#where-to-download-bepinex). Inscryption needs the 86x (32 bit) mono version.  
-You also need to install [MonoMod Loader Inscryption](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/).
+### Installing on the Steam Deck
+1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file.
+2. Download the mods you plan on using and their dependencies..
+3. Go to the setting of the profile you are using for the mods and click `Browse Profile Folder`.
+4. Copy the BepInEx folder, then go to Steam and open Inscryption's Properties menu
+5. Go to `Installed Files` click `Browse` to open the folder containing Inscryption's local files; paste the BepInEx folder there.
+6. Enter Gaming Mode and check 'Force the use of a specific Steam Play compatibility tool' in the Properties menu under `Compatibility`.
+7. Go to the launch parameters and enter `WINEDLLOVERRIDES=“winhttp.dll=n,b” %command%`.
+8. Open Inscryption. If everything was done correctly, you should see a console appear on your screen.
 
-- Copy the 'plugins' folder into 'BepInEx/plugins'.
-- Copy the 'monomod' folder into 'BepInEx/monomod'.  
-(If any of these folders do not exist, just create them.)
+### Mac & Linux
+1. Follow the steps here first: [Installing BepInEx](https://docs.bepinex.dev/articles/user_guide/installation/index.html?tabs=tabid-nix)
+2. Next do steps 4-8 of the Manual Installation
+3. Your game should be setup for inscryption modding now
 
-An example Mod utilising this plugin can be found [here](https://github.com/debugman18/InscryptionExampleMod).
+An example mod utilising this plugin can be found [here](https://github.com/debugman18/InscryptionExampleMod),
+and the modding wiki and documentation can be found [here](https://inscryptionmodding.github.io/InscryptionAPI/wiki/index.html).
 
 ## Modded Save File
 With this API installed, an additional 'modded save file' will be created by the game. This file will be found in the 'BepInEx' subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.
@@ -76,7 +95,7 @@ Displays targets for attacks made with the sniper sigil in Act 1.
 ## Act 1 Sentry Fixes by WhistleWind
 Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 
-## Multi-Act Sigil Compatability Fixes by WhistleWind
+## Multi-Act Sigil Compatibility Fixes by WhistleWind
 Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder, Vessel Printer, Amorphous, Handy.
 
 ## Fledgling Sigil Fixes by WhistleWind
@@ -84,6 +103,9 @@ Fixes Fledgling in Act 2 to show the correct number of turns until a card evolve
 
 ## OverridePixelAbilityIcons by WhistleWind
 Fixes the OverrideAbilityIcon method to work in Act 2.
+
+## Temporary Mod Fixes by WhistleWind
+- Fixes issues related to using temporary mods in Act 2 or to add custom decals
 
 # Using the API
 
@@ -97,7 +119,7 @@ For more information, please check out the wiki: https://inscryptionmodding.gith
 ### How can you help?
 Use the plugin and report bugs you find! Ping us on the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm) server in the api channel with what you find.
 
-### But really, I want to help develop this mod
+### But really, I want to help develop this mod!
 Great! We're more than happy to accept help. Either make a pull request to the API's [GitHub page](https://github.com/InscryptionModding/InscryptionAPI) or come join us over in the [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
 
 ### Can I donate?
