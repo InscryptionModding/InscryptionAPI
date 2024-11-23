@@ -207,15 +207,21 @@ public static class PeltManager
             string dialogueId = "TraderPelts" + name;
             if (!DialogueManager.CustomDialogue.Exists(x => x.DialogueEvent.id == dialogueId))
             {
-                DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
-                    new()
-                    {
-                        if (cardName.Contains("pelt") || cardName.Contains("pelt") {
-                            
+                if (cardName.Contains("pelt") || cardName.Contains("pelt") {
+                    DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
+                        new()
+                        {
                             name + "pelts..."
-                            } else {
+                        }
+                    );
+                 } else {
+                    DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
+                        new()
+                        {
                             name + "..."
-                    });
+                        }
+                    );
+                }
             }
         }
     }
