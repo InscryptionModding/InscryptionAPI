@@ -210,7 +210,11 @@ public static class PeltManager
                 DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
                     new()
                     {
-                    name + " pelts..."
+                        if (cardName.Contains("pelt") || cardName.Contains("pelt") {
+                            
+                            name + "pelts..."
+                            } else {
+                            name + "..."
                     });
             }
         }
@@ -218,8 +222,13 @@ public static class PeltManager
 
     public static string GetTierNameFromPelt(string cardName)
     {
-        string result = cardName.ToLowerInvariant().Replace("pelt", "").Replace(" ", "");
-        result = result.Split('_').Last().ToTitleCase();
+        if (cardName.Contains("pelt") || cardName.Contains("pelt") {
+            string result = cardName.ToLowerInvariant().Replace("pelt", "").Replace("pelts", "");
+            result = result.Split('_').Last().ToTitleCase();
+        } else {
+            string result = cardName.ToLowerInvarient();
+            result = result.Split('_').Last().ToTitleCase();
+        }
 
         return result;
     }
