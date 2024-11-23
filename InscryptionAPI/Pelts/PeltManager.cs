@@ -228,7 +228,7 @@ public static class PeltManager
 
     public static string GetTierNameFromPelt(string cardName)
     {
-        strring result = "";
+        string result = "";
         if (cardName.Contains("pelt") || cardName.Contains("pelt")) {
             result = cardName.ToLowerInvariant().Replace("pelt", "").Replace("pelts", "");
             result = result.Split('_').Last().ToTitleCase();
