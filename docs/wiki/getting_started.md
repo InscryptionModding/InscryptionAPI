@@ -3,11 +3,14 @@
 To begin, we'll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.
 
 ### Installing with a Mod Manager
-This is the recommended way to install BepInEx to the game.
-
-1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager) or [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/).
+1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [Gale](https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/) or [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/).
 2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) page.
 3. Run the game via the mod manager.
+
+If you have issues with ModmManagers head to one of these discords;
+
+* **Thunderstore/R2ModMan Support Discord:** [Here](https://discord.gg/Fbz54kQAxg)
+* **Gale Mod Manager Support Discord:** [Here](https://discord.gg/sfuWXRfeTt)
 
 ### Installing Manually
 1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/) by pressing 'Manual Download' and extract the contents into a folder. **Do not extract into the game folder!**
@@ -20,7 +23,7 @@ This is the recommended way to install BepInEx to the game.
 8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
 
 ### Installing on the Steam Deck
-1. Download [r2modman](https://Timberborn.thunderstore.io/package/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file.
+1. Download [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/) on the Steam Deck’s Desktop Mode and open it from its download using its `AppImage` file.
 2. Download the mods you plan on using and their dependencies..
 3. Go to the setting of the profile you are using for the mods and click `Browse Profile Folder`.
 4. Copy the BepInEx folder, then go to Steam and open Inscryption's Properties menu
@@ -34,6 +37,10 @@ This is the recommended way to install BepInEx to the game.
 2. Next do steps 4-8 of the Manual Installation
 3. Your game should be setup for inscryption modding now
 
+If you have any issues with Mac/Linux, Steam Deck, or Manual head over to the discord for this game:
+
+* **Inscryption Modding Discord:** [Here](https://discord.gg/ZQPvfKEpwM)
+
 ## Getting Started: Modding
 ---
 Modding Inscryption requires a knowledge of coding in C#, and in many cases an understanding of how to patch the game using HarmonyPatch.
@@ -45,7 +52,7 @@ If you're unfamiliar with any of this, or just want to create cards and sigils, 
 
 JSONLoader's documentation can be found [here](https://github.com/MADH95/JSONLoader).
 
-A video tutorial covering how to use JSONLoader can be found [here](https://www.youtube.com/watch?v=grTSkpI4U7g).
+A video tutorial covering how to use JSONLoader in a basic form can be found [here](https://www.youtube.com/watch?v=grTSkpI4U7g).
 
 ### Modding with C#
 To begin modding with C#, you will need to create a new C# project using a code editor.
