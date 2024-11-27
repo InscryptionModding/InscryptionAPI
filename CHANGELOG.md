@@ -1,6 +1,13 @@
 <details>
 <summary>View Changelog</summary>
 
+# 2.22.3
+- Fixed pelt names when a user goes to the trader with modded cards, Examples shown below.
+<img src="https://github.com/user-attachments/assets/49b9da13-e602-4020-a560-40344e9ef6af" width="750">
+<img src="https://github.com/user-attachments/assets/4b432cc9-a0f7-4d75-99b4-8951ba46705b" width="750">
+- Fixed index error when loading custom challenges
+- Publicised ConsumableItemData.SetPrefabModelType
+
 # 2.22.2
 - Added GetEnergyConfig method to community patch's EnergyDrone class - retrieves the current Act's EnergyConfigInfo
 - CommunityPatches: Added community config to move pelt price tags to the right of the card
