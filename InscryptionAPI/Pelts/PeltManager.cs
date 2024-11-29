@@ -207,19 +207,35 @@ public static class PeltManager
             string dialogueId = "TraderPelts" + name;
             if (!DialogueManager.CustomDialogue.Exists(x => x.DialogueEvent.id == dialogueId))
             {
-                DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
-                    new()
-                    {
-                    name + " pelts..."
-                    });
+                if (name.Contains("pelt") || name.Contains("pelt")) {
+                    DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
+                        new()
+                        {
+                            name + "pelts..."
+                        }
+                    );
+                 } else {
+                    DialogueManager.GenerateEvent(InscryptionAPIPlugin.ModGUID, dialogueId,
+                        new()
+                        {
+                            name + "..."
+                        }
+                    );
+                }
             }
         }
     }
 
     public static string GetTierNameFromPelt(string cardName)
     {
-        string result = cardName.ToLowerInvariant().Replace("pelt", "").Replace(" ", "");
-        result = result.Split('_').Last().ToTitleCase();
+        string result = "";
+        if (cardName.Contains("pelt") || cardName.Contains("pelt")) {
+            result = cardName.ToLowerInvariant().Replace("pelt", "").Replace("pelts", "");
+            result = result.Split('_').Last().ToTitleCase();
+        } else {
+            result = cardName.ToLowerInvariant();
+            result = result.Split('_').Last().ToTitleCase();
+        }
 
         return result;
     }
