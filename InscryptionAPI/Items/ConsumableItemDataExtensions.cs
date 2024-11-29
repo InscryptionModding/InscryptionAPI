@@ -187,7 +187,7 @@ public static class ConsumableItemDataExtensions
     }
 
     /// <returns>The same ConsumableItemData so a chain can continue.</returns>
-    internal static ConsumableItemData SetPrefabModelType(this ConsumableItemData data, ConsumableItemManager.ModelType modelType)
+    public static ConsumableItemData SetPrefabModelType(this ConsumableItemData data, ConsumableItemManager.ModelType modelType)
     {
         data.SetExtendedProperty("PrefabModelType", (int)modelType);
         return data;

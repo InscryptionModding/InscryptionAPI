@@ -79,7 +79,7 @@ public class AscensionChallengePaginator : MonoBehaviour
         int numBossesAdded = 0;
 
         // 14 = regular + boss * 2
-        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {bossChallengeInfos.Count} | {bossStartingIndex}");
+        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {numBosses} | {bossStartingIndex}");
 
         for (int i = 0; i < 14; i++)
         {
@@ -88,7 +88,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             int columnIndex = i % 7;
             //Debug.Log($"{i} ({columnIndex}) | {bossStartingIndex + numBosses} / {bossStartingIndex}");
 
-            if (columnIndex >= bossStartingIndex && columnIndex < bossStartingIndex + numBosses)
+            if (numBosses > 0 && columnIndex >= bossStartingIndex && columnIndex < bossStartingIndex + numBosses)
             {
                 //Debug.Log($"In boss column {i}");
                 if (numBossesAdded < numBosses)
@@ -125,11 +125,11 @@ public class AscensionChallengePaginator : MonoBehaviour
         int infoCount = challengeInfos.Count;
         for (int i = 0; i < newPage.Count; i++)
         {
-            AscensionChallengeInfo info = challengeInfos[infoIdx];
             AscensionIconInteractable interactable = newPage[i].GetComponent<AscensionIconInteractable>();
-            //Debug.Log($"Checking icon [{i}] info at {infoIdx} : {info.title}");
+            //Debug.Log($"Checking icon [{i}] info at {infoIdx} : ({infoCount}) ({newPage.Count})");
             if (i < infoCount)
             {
+                AscensionChallengeInfo info = challengeInfos[infoIdx];
                 // if we're assigning boss info to an icon that isn't a boss icon
                 if (info.GetFullChallenge().Boss && (interactable.coll2D as BoxCollider2D).size.y < 1f)
                 {
@@ -146,6 +146,7 @@ public class AscensionChallengePaginator : MonoBehaviour
             }
             else
             {
+                //Debug.Log("Missing challenge");
                 interactable.challengeInfo = missingChallengeInfo;
                 newPage[i].AddComponent<NoneChallengeDisplayer>();
             }
