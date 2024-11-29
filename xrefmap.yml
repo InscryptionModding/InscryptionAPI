@@ -13119,6 +13119,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabID
   nameWithType: ConsumableItemDataExtensions.SetPrefabID
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType(DiskCardGame.ConsumableItemData,InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  name: SetPrefabModelType(ConsumableItemData, ConsumableItemManager.ModelType)
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPrefabModelType_DiskCardGame_ConsumableItemData_InscryptionAPI_Items_ConsumableItemManager_ModelType_
+  commentId: M:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType(DiskCardGame.ConsumableItemData,InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType(DiskCardGame.ConsumableItemData, InscryptionAPI.Items.ConsumableItemManager.ModelType)
+  nameWithType: ConsumableItemDataExtensions.SetPrefabModelType(ConsumableItemData, ConsumableItemManager.ModelType)
+- uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType*
+  name: SetPrefabModelType
+  href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetPrefabModelType_
+  commentId: Overload:InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType
+  isSpec: "True"
+  fullName: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetPrefabModelType
+  nameWithType: ConsumableItemDataExtensions.SetPrefabModelType
 - uid: InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.SetRegionSpecific(DiskCardGame.ConsumableItemData,System.Boolean)
   name: SetRegionSpecific(ConsumableItemData, Boolean)
   href: api/InscryptionAPI.Items.Extensions.ConsumableItemDataExtensions.html#InscryptionAPI_Items_Extensions_ConsumableItemDataExtensions_SetRegionSpecific_DiskCardGame_ConsumableItemData_System_Boolean_
