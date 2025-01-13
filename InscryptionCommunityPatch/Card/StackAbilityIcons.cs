@@ -238,7 +238,7 @@ public static class StackAbilityIcons
         if (patchedTexture.ContainsKey(textureName))
             return patchedTexture[textureName];
 
-        PatchPlugin.Logger.LogDebug($"Ability [{AbilitiesUtil.GetInfo(ability).rulebookName}] stacks {count} times.");
+        PatchPlugin.Logger.LogDebug($"Ability [{AbilitiesUtil.GetInfo(ability).rulebookName}] stacks [{count}] time(s).");
 
         // Copy the old texture to the new texture
         bool doubleDigit = count > 9;
@@ -338,7 +338,7 @@ public static class StackAbilityIcons
         }
         
         count ??= baseAbilities.Count(ab => ab == ability);
-        Debug.Log($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count} {baseAbilities.Count}");
+        //PatchPlugin.Logger.LogDebug($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count} {baseAbilities.Count}");
 
         if (count > 1) // we have a stack and need to add an override
         {
@@ -371,14 +371,14 @@ public static class StackAbilityIcons
             allDisplayableAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods));
         }
 
-        List<Tuple<Ability, int>> grps = allDisplayableAbilities.Distinct().Select(a => new Tuple<Ability, int>(a, abilities.Where(ab => ab == a).Count())).ToList();
+        List<Tuple<Ability, int>> grps = allDisplayableAbilities.Distinct().Select(a => new Tuple<Ability, int>(a, AbilitiesUtil.GetInfo(a).canStack ? abilities.Count(ab => ab == a) : 1)).ToList();
 
         if (grps.Count > 0 && grps.Count - 1 < abilityIconGroups.Count) // if there are displayable sigils and there are enough icon groups
         {
             // if there is only 1 ability and there are two stacks of it, render it twice
-            if (PatchPlugin.doubleStackSplit.Value && grps.Count == 1 && grps[0].Item2 == 2)
+            if (PatchPlugin.doubleStackSplit.Value && grps.Count == 1 && grps[0].Item2 == 2/* && AbilitiesUtil.GetInfo(grps[0].Item1).canStack*/)
             {
-                PatchPlugin.Logger.LogDebug($"Displaying {grps[0].Item1} twice");
+                //PatchPlugin.Logger.LogDebug($"Displaying {grps[0].Item1} twice");
                 grps[0] = new Tuple<Ability, int>(grps[0].Item1, 1);
                 grps.Add(grps[0]);
             }
@@ -425,7 +425,7 @@ public static class StackAbilityIcons
                 else
                     abilityRenderer.flipY = false;
 
-                PatchPlugin.Logger.LogDebug($"Pixel Stacks: [{grps[i].Item1}] Count: {stackCount}");
+                PatchPlugin.Logger.LogDebug($"Ability [{grps[i].Item1}] stacks [{stackCount}] time(s)");
                 AddStackCount(abilityRenderer, grps[i].Item1, stackCount);
             }
         }
@@ -476,7 +476,7 @@ public static class StackAbilityIcons
         else
         {
             countTransform.gameObject.SetActive(true);
-            Debug.Log($"countTransform [{count - 1}]");
+            PatchPlugin.Logger.LogDebug($"countTransform [{count - 1}]");
             countTransform.gameObject.GetComponent<SpriteRenderer>().sprite = GBC_NUMBER_SPRITES[count - 1];
         }
     }
