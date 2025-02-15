@@ -1,18 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using DiskCardGame;
 using GBC;
 using HarmonyLib;
-using InscryptionAPI.Card;
 using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Helpers.Extensions;
 using InscryptionAPI.RuleBook;
-using InscryptionAPI.Triggers;
 using Sirenix.Serialization.Utilities;
+using System.Collections;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace InscryptionAPI.Slots;
@@ -76,7 +70,7 @@ public class SlotModificationManager : MonoBehaviour
         /// </summary>
         public ModificationType SharedRulebook { get; set; } = ModificationType.NoModification;
         public List<ModificationMetaCategory> MetaCategories = new();
-        
+
         /// <summary>
         /// The slot's modified texture in 3D scenes (Leshy, P03, etc) (154x226)
         /// </summary>
@@ -552,7 +546,7 @@ public class SlotModificationManager : MonoBehaviour
 
         int curPageNum = 1;
         PageRangeInfo itemPageRange = __instance.pageRanges.Find(x => x.type == PageRangeType.Items);
-        PageRangeInfo abilityRange =  __instance.pageRanges.Find(x => x.type == PageRangeType.Abilities);
+        PageRangeInfo abilityRange = __instance.pageRanges.Find(x => x.type == PageRangeType.Abilities);
         GameObject pagePrefab = (itemPageRange ?? abilityRange).rangePrefab;
         int insertPosition = __result.FindLastIndex(rbi => pagePrefab) + 1;
         foreach (Info slot in infos)
@@ -654,7 +648,7 @@ public class SlotModificationManager : MonoBehaviour
                 {
                     InscryptionAPIPlugin.Logger.LogDebug("Slot modification page: WIP");
                 }
-                
+
                 __instance.mainAbilityGroup.iconRenderer.transform.localScale = new(0.8f, 0.8f, 1f);
                 //InscryptionAPIPlugin.Logger.LogDebug($"Create rulebook page for slot modification [{info.ModificationType}] ({info.RulebookName}).");
                 return false;

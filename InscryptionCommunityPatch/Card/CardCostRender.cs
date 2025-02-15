@@ -2,7 +2,6 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
-using InscryptionAPI.CardCosts;
 //using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
 using UnityEngine;
@@ -41,7 +40,7 @@ public static class CardCostRender
     {
         Texture2D baseTexture;
         List<Texture2D> masterTextures;
-        
+
         int bloodCost = playableCard?.BloodCost() ?? cardInfo.BloodCost;
         int bonesCost = playableCard?.BonesCost() ?? cardInfo.BonesCost;
         int energyCost = playableCard?.EnergyCost ?? cardInfo.EnergyCost;

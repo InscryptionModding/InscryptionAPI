@@ -4,7 +4,6 @@ using HarmonyLib;
 using InscryptionAPI.Helpers.Extensions;
 using InscryptionAPI.Triggers;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;

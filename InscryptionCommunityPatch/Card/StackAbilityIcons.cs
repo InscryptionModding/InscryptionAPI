@@ -1,12 +1,9 @@
 using DiskCardGame;
 using GBC;
-using GracesGames.Common.Scripts;
 using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.Helpers;
-using InscryptionAPI.Helpers.Extensions;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace InscryptionCommunityPatch.Card;
 
@@ -336,7 +333,7 @@ public static class StackAbilityIcons
             if (ai.IsShieldAbility())
                 count = card.GetShieldBehaviour(ability)?.NumShields;
         }
-        
+
         count ??= baseAbilities.Count(ab => ab == ability);
         //PatchPlugin.Logger.LogDebug($"[{AbilitiesUtil.GetInfo(ability).rulebookName}] {count} {baseAbilities.Count}");
 

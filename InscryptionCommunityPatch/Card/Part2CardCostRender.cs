@@ -1,7 +1,5 @@
 using DiskCardGame;
 using GBC;
-using HarmonyLib;
-using InscryptionAPI;
 using InscryptionAPI.Card;
 using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
@@ -18,7 +16,7 @@ public static class Part2CardCostRender
 {
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
     public static event Action<CardInfo, List<Texture2D>> UpdateVanillaCardCost; // 24 x 13
-    
+
     public static bool RightAct2Cost => PatchPlugin.rightAct2Cost.Value;
 
     public static Sprite FinalVanillaCostSprite(

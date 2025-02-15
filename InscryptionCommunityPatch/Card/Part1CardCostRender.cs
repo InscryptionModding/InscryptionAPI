@@ -1,11 +1,8 @@
 using DiskCardGame;
-using GBC;
-using HarmonyLib;
 using InscryptionAPI.Card;
 using InscryptionAPI.CardCosts;
 //using InscryptionAPI.CardCosts;
 using InscryptionAPI.Helpers;
-using System.Linq;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;

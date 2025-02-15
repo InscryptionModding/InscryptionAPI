@@ -255,18 +255,18 @@ public static class TextureHelper
     {
         if (sprite == null)
             return null;
-        
+
         if (emissionMap.TryGetValue(sprite, out Sprite emission))
             return emission;
-        
-        
+
+
         string text = sprite.name + "_emission";
         emission = ResourceBank.Get<Sprite>("Art/Cards/Portraits/" + text);
         if (emission != null)
         {
             return emission;
         }
-        
+
         emission = ResourceBank.Get<Sprite>("Art/Cards/GrimoraPortraits/" + text);
         if (emission != null)
         {
