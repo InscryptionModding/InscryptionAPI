@@ -31,9 +31,9 @@ public static class RulebookRedirectPatches
     [HarmonyPostfix, HarmonyPatch(typeof(RuleBookController), nameof(RuleBookController.Start))]
     private static void CreateRedirectManager(RuleBookController __instance)
     {
-        if (RuleBookRedirectManager.m_Instance == null)
+        if (__instance.gameObject.GetComponent<RuleBookRedirectManager>() == null)
         {
-            __instance.gameObject.AddComponent<RuleBookRedirectManager>();
+            RuleBookRedirectManager.m_Instance = __instance.gameObject.AddComponent<RuleBookRedirectManager>();
         }
     }
 

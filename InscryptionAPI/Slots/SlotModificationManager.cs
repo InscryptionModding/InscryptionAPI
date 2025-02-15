@@ -551,12 +551,14 @@ public class SlotModificationManager : MonoBehaviour
             return;
 
         int curPageNum = 1;
-        GameObject itemPrefab = __instance.pageRanges.Find(x => x.type == PageRangeType.Items).rangePrefab;
-        int insertPosition = __result.FindLastIndex(rbi => itemPrefab) + 1;
+        PageRangeInfo itemPageRange = __instance.pageRanges.Find(x => x.type == PageRangeType.Items);
+        PageRangeInfo abilityRange =  __instance.pageRanges.Find(x => x.type == PageRangeType.Abilities);
+        GameObject pagePrefab = (itemPageRange ?? abilityRange).rangePrefab;
+        int insertPosition = __result.FindLastIndex(rbi => pagePrefab) + 1;
         foreach (Info slot in infos)
         {
             RuleBookPageInfo info = new();
-            info.pagePrefab = SaveManager.SaveFile.IsPart1 ? itemPrefab : __instance.pageRanges.Find(x => x.type == PageRangeType.Abilities).rangePrefab;
+            info.pagePrefab = (SaveManager.SaveFile.IsPart1 ? itemPageRange : abilityRange).rangePrefab;
             info.headerText = string.Format(Localization.Translate("APPENDIX XII, SUBSECTION I - SLOT EFFECTS {0}"), curPageNum);
             info.pageId = SLOT_PAGEID + (int)slot.ModificationType;
             __result.Insert(insertPosition, info);
@@ -608,6 +610,7 @@ public class SlotModificationManager : MonoBehaviour
         slotRendererObj?.gameObject.SetActive(false);
         __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(true);
 
+        // if this page should be filled with info from a slot modification
         if (otherArgs.Length > 0 && otherArgs.Last() is string pageId && pageId.StartsWith(SLOT_PAGEID))
         {
             string modString = pageId.Replace(SLOT_PAGEID, "");
@@ -635,9 +638,21 @@ public class SlotModificationManager : MonoBehaviour
                     __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(false);
                     slotRendererObj.GetComponent<SpriteRenderer>().sprite = info.P03RulebookSprite ?? info.RulebookSprite;
                 }
+                else if (SaveManager.SaveFile.IsMagnificus)
+                {
+                    if (slotRendererObj == null)
+                    {
+                        slotRendererObj = Instantiate(__instance.mainAbilityGroup.iconRenderer.transform.parent, __instance.mainAbilityGroup.transform);
+                        slotRendererObj.name = "SlotRenderer";
+                        slotRendererObj.localPosition += new Vector3(0.1f, -0.1f, 0f);
+                    }
+                    slotRendererObj.gameObject.SetActive(true);
+                    __instance.mainAbilityGroup.iconRenderer.transform.parent.gameObject.SetActive(false);
+                    slotRendererObj.GetChild(0).GetComponent<MeshRenderer>().material.mainTexture = (info.MagnificusRulebookSprite ?? info.RulebookSprite).texture;
+                }
                 else
                 {
-                    Debug.Log("Help");
+                    InscryptionAPIPlugin.Logger.LogDebug("Slot modification page: WIP");
                 }
                 
                 __instance.mainAbilityGroup.iconRenderer.transform.localScale = new(0.8f, 0.8f, 1f);

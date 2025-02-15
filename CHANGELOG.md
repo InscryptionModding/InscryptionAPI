@@ -2,6 +2,8 @@
 - Added 'GBC Vanilla Render' config to community patches (false by default) - makes GBC cards render with vanilla cost sprites
 - Added 'Vanilla Stacking' config to community patches (false by default) - renders cards with only two (stacking) sigils as they appear in vanilla, eg Spore Mice and Sporedigger
 - Fixed incorrect rulebook icon scaling in Act 3
+- Fixed rulebook-related null errors when playing during Magnificus' Act
+- Fixed slot modification rulebook pages not appearing correctly during Magnificus' Act
 - Fixed cards shield sigils not rendering correctly
 - DamageShieldBehaviour class now has 'initialised' boolean field
 - Highest displayable bone cost value in Act 1 raised from 13+ to 15+
