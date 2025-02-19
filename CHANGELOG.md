@@ -1,6 +1,8 @@
-# 2.22.4
+# 2.23.0
 - Added 'GBC Vanilla Render' config to community patches (false by default) - makes GBC cards render with vanilla cost sprites
 - Added 'Vanilla Stacking' config to community patches (false by default) - renders cards with only two (stacking) sigils as they appear in vanilla, eg Spore Mice and Sporedigger
+- Added PostCardGettingAttacked custom trigger
+- Added BoardManager.GetCards and BoardManager.GetOpenSlots overloads that retrieve from the entire board
 - Fixed incorrect rulebook icon scaling in Act 3
 - Fixed rulebook-related null errors when playing during Magnificus' Act
 - Fixed slot modification rulebook pages not appearing correctly during Magnificus' Act
@@ -8,6 +10,7 @@
 - DamageShieldBehaviour class now has 'initialised' boolean field
 - Highest displayable bone cost value in Act 1 raised from 13+ to 15+
 - Minor tweaks to blood and bone cost icons
+- Rewrote SlotAttackSlotPatches transpilers to be cleaner
 
 # 2.22.3
 - Fixed pelt names when a user goes to the trader with modded cards, Examples shown below.

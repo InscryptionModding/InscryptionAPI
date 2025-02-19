@@ -21,36 +21,23 @@ public static class SlotAttackSlotPatches
     private const string name_AttackingSlot = "DiskCardGame.CardSlot attackingSlot";
     private const string name_CanAttackDirectly = "Boolean CanAttackDirectly(DiskCardGame.CardSlot)";
     private const string name_VisualizeCardAttackingDirectly = "System.Collections.IEnumerator VisualizeCardAttackingDirectly(DiskCardGame.CardSlot, DiskCardGame.CardSlot, Int32)";
-
     private const string modifiedAttackCustomField = "modifiedAttack";
 
     private static readonly MethodInfo method_GetCard = AccessTools.PropertyGetter(typeof(CardSlot), nameof(CardSlot.Card));
 
-    private static readonly MethodInfo method_NewDamage = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
-        new Type[] { typeof(CardSlot), typeof(CardSlot) });
-
-    private static readonly MethodInfo method_NewTriggers = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.TriggerOnDirectDamageTriggers),
-        new Type[] { typeof(PlayableCard), typeof(CardSlot) });
-
-    private static readonly MethodInfo method_SetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
-
-    private static readonly MethodInfo method_GetCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get),
-        new Type[] { typeof(object), typeof(string) }, new Type[] { typeof(int) });
-
-    // make this public so people can alter it themselves
     public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
     {
         int originalDamage = attackingSlot.Card.Attack;
         int damage = originalDamage;
 
         // Trigger IModifyDirectDamage first and treat the new damage as the attacking card's attack
-        var modifyDirectDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDirectDamage>(true).ToList();
+        List<IModifyDirectDamage> modifyDirectDamage = CustomTriggerFinder.FindGlobalTriggers<IModifyDirectDamage>(true).ToList();
         modifyDirectDamage.Sort((a, b) =>
             b.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
             - a.TriggerPriority(opposingSlot, damage, attackingSlot.Card)
         );
 
-        foreach (var modify in modifyDirectDamage)
+        foreach (IModifyDirectDamage modify in modifyDirectDamage)
         {
             if (modify.RespondsToModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage))
                 damage = modify.OnModifyDirectDamage(opposingSlot, damage, attackingSlot.Card, originalDamage);
@@ -76,214 +63,8 @@ public static class SlotAttackSlotPatches
         return damage;
     }
 
-    // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
-    [HarmonyTranspiler, HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot), MethodType.Enumerator)]
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
-        List<CodeInstruction> codes = new(instructions);
-
-        // we want to slowly narrow our search until we find exactly where we want to insert our code
-        for (int a = 0; a < codes.Count; a++)
-        {
-            // separated into their own methods so I can save on eye strain and brain fog
-            if (ModifyDirectDamageCheck(codes, ref a))
-            {
-                for (int b = a; b < codes.Count; b++)
-                {
-                    if (CallTriggerOnDirectDamage(codes, ref b))
-                    {
-                        for (int c = b; c < codes.Count; c++)
-                        {
-                            if (OpposingCardNullCheck(codes, c))
-                                break;
-                        }
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-
-        return codes;
-    }
-
-    private static bool OpposingCardNullCheck(List<CodeInstruction> codes, int i)
-    {
-        // Looking for where GlobalTriggerHandler is called for CardGettingAttacked (enum 7)
-        if (codes[i].opcode == OpCodes.Call && codes[i].operand.ToString() == name_GlobalTrigger && codes[i + 1].opcode == OpCodes.Ldc_I4_7)
-        {
-            MethodInfo op_Inequality = null;
-            object op_OpposingSlot = null;
-            object op_GetCard = null;
-            object op_BreakLabel = null;
-
-            for (int j = i + 1; j < codes.Count; j++)
-            {
-                // we need to get the operand for opposingSlot so we can insert it later
-                if (codes[j].opcode == OpCodes.Ldfld && codes[j].operand.ToString() == name_OpposingSlot && op_OpposingSlot == null)
-                    op_OpposingSlot = codes[j].operand;
-
-                // also get the operand for get_card
-                if (codes[j].opcode == OpCodes.Callvirt && codes[j].operand.ToString() == name_GetCard && op_GetCard == null)
-                    op_GetCard = codes[j].operand;
-
-                // if true, we've found the start of the if statement we'll be nesting in
-                if (codes[j].opcode == OpCodes.Stfld && codes[j - 1].opcode == OpCodes.Ldc_I4_M1)
-                {
-                    for (int k = j + 1; k < codes.Count; k++)
-                    {
-                        // we want to grab the operand for !=
-                        if (codes[k].opcode == OpCodes.Call && op_Inequality == null)
-                            op_Inequality = (MethodInfo)codes[k].operand;
-
-                        // we also want to grab the break label so we know where to jump
-                        if (op_BreakLabel == null && codes[k].opcode == OpCodes.Brfalse)
-                            op_BreakLabel = codes[k].operand;
-
-                        // if true, we've found where we want to insert our junk
-                        if (codes[k].opcode == OpCodes.Stfld)
-                        {
-                            // if (this.opposingSlot.Card != null)
-                            codes.Insert(k + 1, new CodeInstruction(OpCodes.Ldarg_0));
-                            codes.Insert(k + 2, new CodeInstruction(OpCodes.Ldfld, op_OpposingSlot));
-                            codes.Insert(k + 3, new CodeInstruction(OpCodes.Callvirt, op_GetCard));
-                            codes.Insert(k + 4, new CodeInstruction(OpCodes.Ldnull));
-                            codes.Insert(k + 5, new CodeInstruction(OpCodes.Call, op_Inequality));
-                            codes.Insert(k + 6, new CodeInstruction(OpCodes.Brfalse, op_BreakLabel));
-                            return true;
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    // Modifies direct attack damage and stores the new damage in a custom field
-    private static bool ModifyDirectDamageCheck(List<CodeInstruction> codes, ref int index)
-    {
-        if (codes[index].opcode == OpCodes.Callvirt && codes[index].operand.ToString() == name_CanAttackDirectly)
-        {
-            int startIndex = index + 2;
-
-            object op_OpposingSlot = null;
-            object op_DisplayClass = null;
-            object op_AttackingSlot = null;
-
-            // look backwards and retrieve opposingSlot
-            for (int i = index - 1; i > 0; i--)
-            {
-                if (op_OpposingSlot == null && codes[i].operand?.ToString() == name_OpposingSlot)
-                {
-                    op_OpposingSlot = codes[i].operand;
-                    break;
-                }
-            }
-
-            // look forward and retrieve displayClass and attackingSlot
-            for (int i = startIndex; i < codes.Count; i++)
-            {
-                if (op_DisplayClass == null && codes[i].operand?.ToString() == name_CombatPhase)
-                {
-                    op_DisplayClass = codes[i].operand;
-                    op_AttackingSlot = codes[i + 1].operand;
-                    break;
-                }
-            }
-
-            int j = startIndex;
-
-            // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot, this.OpposingSlot));
-            codes.Insert(j++, new(OpCodes.Ldarg_0));
-            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
-            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
-            codes.Insert(j++, new(OpCodes.Callvirt, method_GetCard));
-            codes.Insert(j++, new(OpCodes.Ldstr, modifiedAttackCustomField));
-            codes.Insert(j++, new(OpCodes.Ldarg_0));
-            codes.Insert(j++, new(OpCodes.Ldfld, op_DisplayClass));
-            codes.Insert(j++, new(OpCodes.Ldfld, op_AttackingSlot));
-            codes.Insert(j++, new(OpCodes.Ldarg_0));
-            codes.Insert(j++, new(OpCodes.Ldfld, op_OpposingSlot));
-            codes.Insert(j++, new(OpCodes.Callvirt, method_NewDamage));
-            codes.Insert(j++, new(OpCodes.Box, typeof(int)));
-            codes.Insert(j++, new(OpCodes.Call, method_SetCustomField));
-
-            index = j;
-
-            // replace the next 2 occurances of get_Attack() with the custom field call
-            for (int c = 0; c < 2; c++)
-            {
-                for (; j < codes.Count; j++)
-                {
-                    if (codes[j].opcode != OpCodes.Callvirt || codes[j].operand.ToString() != name_GetAttack) continue;
-
-                    codes[j++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
-                    codes.Insert(j++, new(OpCodes.Callvirt, method_GetCustomField));
-
-                    index = j;
-                    break;
-                }
-            }
-
-            return true;
-        }
-        return false;
-    }
-
-    // Repalces the DealDamageDirectly trigger call with a call to TriggerOnDirectDamageTriggers
-    private static bool CallTriggerOnDirectDamage(List<CodeInstruction> codes, ref int index)
-    {
-        if (codes[index].opcode != OpCodes.Callvirt || codes[index].operand.ToString() != name_GetCard) return false;
-        int startIndex = ++index;
-
-        object op_OpposingSlot = null;
-
-        // look backwards and retrieve opposingSlot
-        for (int i = startIndex - 1; i > 0; i--)
-        {
-            if (op_OpposingSlot == null && codes[i].operand?.ToString() == name_OpposingSlot)
-            {
-                op_OpposingSlot = codes[i].operand;
-                break;
-            }
-        }
-
-        // look backwards for ldarg0 and duplicate it
-        for (int i = startIndex - 1; i > 0; i--)
-        {
-            if (codes[i].opcode == OpCodes.Ldarg_0)
-            {
-                codes.Insert(i, new(OpCodes.Ldarg_0));
-
-                index++;
-                startIndex++;
-
-                break;
-            }
-        }
-
-        for (int i = startIndex; i < codes.Count; i++)
-        {
-            if (codes[i].opcode != OpCodes.Ldc_I4_7) continue;
-
-            // remove the existing trigger call
-            codes.RemoveRange(startIndex, i - startIndex - 2);
-
-            // insert the call to our new trigger
-            codes.Insert(index++, new(OpCodes.Ldarg_0));
-            codes.Insert(index++, new(OpCodes.Ldfld, op_OpposingSlot));
-            codes.Insert(index++, new(OpCodes.Callvirt, method_NewTriggers));
-
-            break;
-        }
-
-        return true;
-    }
-
     // Trigger both the vanilla trigger and the new trigger
-    private static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)
+    public static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)
     {
         int damage = CustomFields.Get<int>(attacker, modifiedAttackCustomField);
 
@@ -295,5 +76,161 @@ public static class SlotAttackSlotPatches
 
         // trigger the new modded trigger
         yield return CustomTriggerFinder.TriggerAll<IOnCardDealtDamageDirectly>(false, x => x.RespondsToCardDealtDamageDirectly(attacker, opposingSlot, damage), x => x.OnCardDealtDamageDirectly(attacker, opposingSlot, damage));
+    }
+
+    public static IEnumerator TriggerCardGettingAttackedTriggers(PlayableCard attacker, PlayableCard opposingCard)
+    {
+        yield return Singleton<GlobalTriggerHandler>.Instance.TriggerCardsOnBoard(Trigger.CardGettingAttacked, false, opposingCard);
+
+        List<IPostCardGettingAttacked> postAttacked = CustomTriggerFinder.FindGlobalTriggers<IPostCardGettingAttacked>(true).ToList();
+        postAttacked.Sort((a, b) => b.PostCardGettingAttackedPriority(opposingCard, attacker) - a.PostCardGettingAttackedPriority(opposingCard, attacker));
+        foreach (IPostCardGettingAttacked modify in postAttacked)
+        {
+            if (modify != null && modify.RespondsToPostCardGettingAttacked(opposingCard, attacker))
+                yield return modify.OnPostCardGettingAttacked(opposingCard, attacker);
+        }
+    }
+
+    // We want to add a null check after CardGettingAttacked is triggered, so we'll look for triggers
+    [HarmonyTranspiler, HarmonyPatch(typeof(CombatPhaseManager), nameof(CombatPhaseManager.SlotAttackSlot), MethodType.Enumerator)]
+    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> codes = new(instructions);
+        object displayClassOperand = codes.First(x => x.opcode == OpCodes.Ldfld && x.operand.ToString() == name_CombatPhase).operand;
+        object attackingSlotOperand = codes.First(x => x.opcode == OpCodes.Stfld && x.operand.ToString() == name_AttackingSlot).operand;
+        object opposingSlotOperand = codes.First(x => x.opcode == OpCodes.Ldfld && x.operand.ToString() == name_OpposingSlot).operand;
+        
+        // we want to slowly narrow our search until we find exactly where we want to insert our code
+        /*for (int a = 0; a < codes.Count; a++)
+        {
+            // separated into their own methods so I can save on eye strain and brain fog
+            if (ModifyDirectDamageCheck(codes, combatPhaseOperand, attackingSlotOperand, opposingSlotOperand, ref a))
+            {
+                for (int b = a; b < codes.Count; b++)
+                {
+                    if (CallTriggerOnDirectDamage(codes, opposingSlotOperand, ref b))
+                    {
+                        for (int c = b; c < codes.Count; c++)
+                        {
+                            if (OpposingCardNullCheck(codes, opposingSlotOperand, combatPhaseOperand, attackingSlotOperand, c))
+                                break;
+                        }
+                        break;
+                    }
+                }
+                break;
+            }
+        }*/
+
+        int a = ModifyDirectDamageCheck(codes, displayClassOperand, attackingSlotOperand, opposingSlotOperand);
+        a = CallTriggerOnDirectDamage(codes, a, displayClassOperand, attackingSlotOperand, opposingSlotOperand);
+        OpposingCardNullCheck(codes, a, opposingSlotOperand, displayClassOperand, attackingSlotOperand);
+
+        return codes;
+    }
+
+    private static void OpposingCardNullCheck(List<CodeInstruction> codes, int start, object opposingSlotOp, object displayClassOp, object attackingSlotOp)
+    {
+        // Looking for where GlobalTriggerHandler is called for CardGettingAttacked (enum 7)
+        int index = 8 + codes.FindIndex(start, x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == "Void SetAnimationPaused(Boolean)");
+        object op_BreakLabel = null;
+        MethodInfo op_Inequality = null;
+        MethodInfo cardGettingAttacked = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers),
+            new Type[] { typeof(PlayableCard), typeof(PlayableCard) });
+
+        codes.RemoveRange(index, codes.FindIndex(index, x => x.opcode == OpCodes.Stfld) - index);
+
+        // yield return TriggerCardGetting...(PlayableCard card, CardSlot slot)
+        // this.attackingSlot.Card
+        // this.opposingSlot
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, displayClassOp));
+        codes.Insert(index++, new(OpCodes.Ldfld, attackingSlotOp));
+        codes.Insert(index++, new(OpCodes.Callvirt, method_GetCard));
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, opposingSlotOp));
+        codes.Insert(index++, new(OpCodes.Callvirt, method_GetCard));
+        codes.Insert(index++, new(OpCodes.Callvirt, cardGettingAttacked));
+
+        op_Inequality = (MethodInfo)codes[codes.FindIndex(index, x => x.opcode == OpCodes.Call && x.operand.ToString() == "Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)")].operand;
+        op_BreakLabel = codes[codes.FindIndex(index, x => x.opcode == OpCodes.Brfalse)].operand;
+
+        index = 1 + codes.FindIndex(2 + codes.FindIndex(index, x => x.opcode == OpCodes.Ldc_I4_M1), x => x.opcode == OpCodes.Stfld);
+
+        codes.Insert(index++, new CodeInstruction(OpCodes.Ldarg_0));
+        codes.Insert(index++, new CodeInstruction(OpCodes.Ldfld, opposingSlotOp));
+        codes.Insert(index++, new CodeInstruction(OpCodes.Callvirt, method_GetCard));
+        codes.Insert(index++, new CodeInstruction(OpCodes.Ldnull));
+        codes.Insert(index++, new CodeInstruction(OpCodes.Call, op_Inequality));
+        codes.Insert(index++, new CodeInstruction(OpCodes.Brfalse, op_BreakLabel));
+    }
+
+    /// <summary>
+    /// Replaces the DealDamageDirectly trigger call with a call to TriggerOnDirectDamageTriggers
+    /// </summary>
+    private static int CallTriggerOnDirectDamage(List<CodeInstruction> codes, int startIndex, object displayClassOperand, object attackingSlotOperand, object opposingSlotOp)
+    {
+        int index = codes.FindIndex(startIndex, x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == name_GetCard) - 2;
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        index += 3;
+        
+        MethodInfo info = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.TriggerOnDirectDamageTriggers),
+            new Type[] { typeof(PlayableCard), typeof(CardSlot) });
+
+        // remove the existing trigger call
+        codes.RemoveRange(index, codes.FindIndex(index, x => x.opcode == OpCodes.Ldc_I4_7) - 2 - index);
+        //index = startIndex + 1;
+        //return index;
+        // insert the call to our new trigger
+        // this.displayClass.attackingSlot.Card
+        // this.opposingSlot
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, opposingSlotOp));
+        codes.Insert(index++, new(OpCodes.Callvirt, info));
+
+        return index;
+    }
+
+    /// <summary>
+    /// Modifies the damage value added to DamageDealtThisPhase to support IModifyDirectDamage and negative damage values (self-damage)
+    /// </summary>
+    private static int ModifyDirectDamageCheck(List<CodeInstruction> codes, object displayClassOperand, object attackingSlotOperand, object opposingSlotOperand)
+    {
+        int index = codes.FindIndex(x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == name_CanAttackDirectly) + 2;
+
+        MethodInfo setCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Set));
+        MethodInfo damageToDeal = AccessTools.Method(typeof(SlotAttackSlotPatches), nameof(SlotAttackSlotPatches.DamageToDealThisPhase),
+            new Type[] { typeof(CardSlot), typeof(CardSlot) });
+
+        MethodInfo getCustomField = AccessTools.Method(typeof(CustomFields), nameof(CustomFields.Get),
+            new Type[] { typeof(object), typeof(string) }, new Type[] { typeof(int) });
+
+        // CustomFields.Set(this.CombatPhase.AttackingSlot.Card, "modifiedAttack", DamageToDealThisPhase(this.CombatPhase.AttackingSlot, this.OpposingSlot));
+        // change DamageDealtThisPhase += attackingCard.Attack
+        // to DamageDealtThisPhase += (int)modifiedAttack
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, displayClassOperand));
+        codes.Insert(index++, new(OpCodes.Ldfld, attackingSlotOperand));
+        codes.Insert(index++, new(OpCodes.Callvirt, method_GetCard));
+        codes.Insert(index++, new(OpCodes.Ldstr, modifiedAttackCustomField));
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, displayClassOperand));
+        codes.Insert(index++, new(OpCodes.Ldfld, attackingSlotOperand));
+        codes.Insert(index++, new(OpCodes.Ldarg_0));
+        codes.Insert(index++, new(OpCodes.Ldfld, opposingSlotOperand));
+        codes.Insert(index++, new(OpCodes.Callvirt, damageToDeal));
+        codes.Insert(index++, new(OpCodes.Box, typeof(int)));
+        codes.Insert(index++, new(OpCodes.Call, setCustomField));
+
+        // replace the next 2 occurences of get_Attack() with the custom field call
+        index = codes.FindIndex(index, x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == name_GetAttack);
+        codes[index++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
+        codes.Insert(index++, new(OpCodes.Callvirt, getCustomField));
+
+        index = codes.FindIndex(index, x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == name_GetAttack);
+        codes[index++] = new(OpCodes.Ldstr, modifiedAttackCustomField);
+        codes.Insert(index++, new(OpCodes.Callvirt, getCustomField));
+
+        return index;
     }
 }
