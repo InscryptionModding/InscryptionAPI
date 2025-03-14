@@ -1,6 +1,5 @@
 using DiskCardGame;
 using System.Collections;
-using UnityEngine;
 
 namespace InscryptionAPI.Triggers;
 
@@ -820,6 +819,16 @@ public interface IShieldPreventedDamageInHand
     public IEnumerator OnShieldPreventedDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
     public int ShieldPreventedDamageInHandPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
+/// <summary>
+/// Expanded version of CardGettingAttacked trigger, executed before it, that includes the attacker as an argument
+/// </summary>
+public interface IPostCardGettingAttacked
+{
+    public bool RespondsToPostCardGettingAttacked(PlayableCard target, PlayableCard attacker);
+    public IEnumerator OnPostCardGettingAttacked(PlayableCard target, PlayableCard attacker);
+    public int PostCardGettingAttackedPriority(PlayableCard target, PlayableCard attacker);
+}
+
 /*public interface IOnPreTakeDamageFromHammer
 {
     public bool RespondsToPreTakeDamageFromHammer(HammerItem hammer, CardSlot targetSlot, GameObject firstPersonItem);

@@ -40,6 +40,16 @@ public static class BoardManagerExtensions
     ) => manager.GetSlotsCopy(getPlayerCards).SelectCards(filterOnPredicate).ToList();
 
     /// <summary>
+    /// Retrieve all cards on the board that match the predicate, if given.
+    /// </summary>
+    /// <param name="manager">Manager instance to access.</param>
+    /// <param name="filterOnPredicate">The predicate to filter on each card.</param>
+    /// <returns>The list of relevant cards on the board.</returns>
+    public static List<PlayableCard> GetCards(this BoardManager manager, Predicate<PlayableCard> filterOnPredicate = null)
+        => manager.AllSlotsCopy.SelectCards(filterOnPredicate).ToList();
+
+
+    /// <summary>
     /// Retrieve all player slots that are not occupied by a card.
     /// </summary>
     /// <param name="manager">Manager instance to access.</param>
@@ -75,6 +85,17 @@ public static class BoardManagerExtensions
     ) => manager.GetSlotsCopy(getPlayerSlots).SelectOpenSlots(filterOnPredicate).ToList();
 
     /// <summary>
+    /// Retrieve all slots on the board that are not occupied by a card.
+    /// </summary>
+    /// <param name="manager">Manager instance to access.</param>
+    /// <param name="filterOnPredicate">The predicate to filter on each slot.</param>
+    /// <returns>The list of relevant card slots with no cards.</returns>
+    public static List<CardSlot> GetOpenSlots(
+        this BoardManager manager,
+        Predicate<CardSlot> filterOnPredicate = null
+    ) => manager.AllSlotsCopy.SelectOpenSlots(filterOnPredicate).ToList();
+
+    /// <summary>
     /// Retrieve a copy of the board slots for the player or opponent's side of the board.
     /// </summary>
     /// <param name="manager">Manager instance to access.</param>
@@ -83,7 +104,6 @@ public static class BoardManagerExtensions
     /// <returns>The list corresponding to the player or opponent's side of the board.</returns>
     public static List<CardSlot> GetSlotsCopy(this BoardManager manager, bool getPlayerSlotsCopy)
         => getPlayerSlotsCopy ? manager.PlayerSlotsCopy : manager.OpponentSlotsCopy;
-
 
     /// <summary>
     /// Retrieve all player or opponent card slots on the board.
