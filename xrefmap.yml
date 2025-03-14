@@ -3825,13 +3825,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.BonesCost
   nameWithType: CardExtensions.BonesCost
-- uid: InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable{DiskCardGame.CardInfo},System.String)
+- uid: InscryptionAPI.Card.CardExtensions.CardByName(IEnumerable{DiskCardGame.CardInfo},System.String)
   name: CardByName(IEnumerable<CardInfo>, String)
-  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_CardByName_System_Collections_IEnumerable_DiskCardGame_CardInfo__System_String_
-  commentId: M:InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable{DiskCardGame.CardInfo},System.String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_CardByName_IEnumerable_DiskCardGame_CardInfo__System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.CardByName(IEnumerable{DiskCardGame.CardInfo},System.String)
   name.vb: CardByName(IEnumerable(Of CardInfo), String)
-  fullName: InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable<DiskCardGame.CardInfo>, System.String)
-  fullName.vb: InscryptionAPI.Card.CardExtensions.CardByName(System.Collections.IEnumerable(Of DiskCardGame.CardInfo), System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.CardByName(IEnumerable<DiskCardGame.CardInfo>, System.String)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.CardByName(IEnumerable(Of DiskCardGame.CardInfo), System.String)
   nameWithType: CardExtensions.CardByName(IEnumerable<CardInfo>, String)
   nameWithType.vb: CardExtensions.CardByName(IEnumerable(Of CardInfo), String)
 - uid: InscryptionAPI.Card.CardExtensions.CardByName*
@@ -7806,6 +7806,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.DamageShieldBehaviour.HasShields
   nameWithType: DamageShieldBehaviour.HasShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.initialised
+  name: initialised
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_initialised
+  commentId: F:InscryptionAPI.Card.DamageShieldBehaviour.initialised
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.initialised
+  nameWithType: DamageShieldBehaviour.initialised
 - uid: InscryptionAPI.Card.DamageShieldBehaviour.numShields
   name: numShields
   href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_numShields
@@ -11584,6 +11590,15 @@ references:
   commentId: T:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions
   fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions
   nameWithType: BoardManagerExtensions
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager,Predicate{DiskCardGame.PlayableCard})
+  name: GetCards(BoardManager, Predicate<PlayableCard>)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCards_DiskCardGame_BoardManager_Predicate_DiskCardGame_PlayableCard__
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager,Predicate{DiskCardGame.PlayableCard})
+  name.vb: GetCards(BoardManager, Predicate(Of PlayableCard))
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager, Predicate<DiskCardGame.PlayableCard>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager, Predicate(Of DiskCardGame.PlayableCard))
+  nameWithType: BoardManagerExtensions.GetCards(BoardManager, Predicate<PlayableCard>)
+  nameWithType.vb: BoardManagerExtensions.GetCards(BoardManager, Predicate(Of PlayableCard))
 - uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCards(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.PlayableCard})
   name: GetCards(BoardManager, Boolean, Predicate<PlayableCard>)
   href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetCards_DiskCardGame_BoardManager_System_Boolean_Predicate_DiskCardGame_PlayableCard__
@@ -11616,6 +11631,15 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetCardSlots
   nameWithType: BoardManagerExtensions.GetCardSlots
+- uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager,Predicate{DiskCardGame.CardSlot})
+  name: GetOpenSlots(BoardManager, Predicate<CardSlot>)
+  href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetOpenSlots_DiskCardGame_BoardManager_Predicate_DiskCardGame_CardSlot__
+  commentId: M:InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager,Predicate{DiskCardGame.CardSlot})
+  name.vb: GetOpenSlots(BoardManager, Predicate(Of CardSlot))
+  fullName: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager, Predicate<DiskCardGame.CardSlot>)
+  fullName.vb: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager, Predicate(Of DiskCardGame.CardSlot))
+  nameWithType: BoardManagerExtensions.GetOpenSlots(BoardManager, Predicate<CardSlot>)
+  nameWithType.vb: BoardManagerExtensions.GetOpenSlots(BoardManager, Predicate(Of CardSlot))
 - uid: InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.GetOpenSlots(DiskCardGame.BoardManager,System.Boolean,Predicate{DiskCardGame.CardSlot})
   name: GetOpenSlots(BoardManager, Boolean, Predicate<CardSlot>)
   href: api/InscryptionAPI.Helpers.Extensions.BoardManagerExtensions.html#InscryptionAPI_Helpers_Extensions_BoardManagerExtensions_GetOpenSlots_DiskCardGame_BoardManager_System_Boolean_Predicate_DiskCardGame_CardSlot__
@@ -12456,6 +12480,18 @@ references:
   commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
   fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostDecalRight
   nameWithType: TextureHelper.SpriteType.Act2CostDecalRight
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaLeft
+  name: Act2CostVanillaLeft
+  href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_Act2CostVanillaLeft
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaLeft
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaLeft
+  nameWithType: TextureHelper.SpriteType.Act2CostVanillaLeft
+- uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaRight
+  name: Act2CostVanillaRight
+  href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_Act2CostVanillaRight
+  commentId: F:InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaRight
+  fullName: InscryptionAPI.Helpers.TextureHelper.SpriteType.Act2CostVanillaRight
+  nameWithType: TextureHelper.SpriteType.Act2CostVanillaRight
 - uid: InscryptionAPI.Helpers.TextureHelper.SpriteType.CardPortrait
   name: CardPortrait
   href: api/InscryptionAPI.Helpers.TextureHelper.SpriteType.html#InscryptionAPI_Helpers_TextureHelper_SpriteType_CardPortrait
@@ -17857,13 +17893,13 @@ references:
   commentId: F:InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera
   fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.RuleBookCamera
   nameWithType: RuleBookRedirectManager.RuleBookCamera
-- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+- uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
   name: UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary<String, RuleBookManager.RedirectInfo>)
-  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TMPro_TextMeshPro_UnityEngine_GameObject_System_Collections_Generic_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__
-  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,System.Collections.Generic.Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
+  href: api/InscryptionAPI.RuleBook.RuleBookRedirectManager.html#InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TMPro_TextMeshPro_UnityEngine_GameObject_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__
+  commentId: M:InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})
   name.vb: UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary(Of String, RuleBookManager.RedirectInfo))
-  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, System.Collections.Generic.Dictionary<System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo>)
-  fullName.vb: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, System.Collections.Generic.Dictionary(Of System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo))
+  fullName: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, Dictionary<System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo>)
+  fullName.vb: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro, UnityEngine.GameObject, Dictionary(Of System.String, InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo))
   nameWithType: RuleBookRedirectManager.UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary<String, RuleBookManager.RedirectInfo>)
   nameWithType.vb: RuleBookRedirectManager.UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary(Of String, RuleBookManager.RedirectInfo))
 - uid: InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables*
@@ -18434,13 +18470,13 @@ references:
   commentId: T:InscryptionAPI.Slots.SlotModificationManager.Info
   fullName: InscryptionAPI.Slots.SlotModificationManager.Info
   nameWithType: SlotModificationManager.Info
-- uid: InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.Type,System.String,System.String,UnityEngine.Sprite,System.Collections.Generic.List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
+- uid: InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,Dictionary{CardTemple,UnityEngine.Texture2D},Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,Type,System.String,System.String,UnityEngine.Sprite,List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
   name: Info(String, String, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>, SlotModificationManager.ModificationType, Type, String, String, Sprite, List<SlotModificationManager.ModificationMetaCategory>)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info__ctor_System_String_System_String_System_Collections_Generic_Dictionary_CardTemple_UnityEngine_Texture2D__System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_Type_System_String_System_String_UnityEngine_Sprite_System_Collections_Generic_List_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory__
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.Type,System.String,System.String,UnityEngine.Sprite,System.Collections.Generic.List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
+  href: api/InscryptionAPI.Slots.SlotModificationManager.Info.html#InscryptionAPI_Slots_SlotModificationManager_Info__ctor_System_String_System_String_Dictionary_CardTemple_UnityEngine_Texture2D__Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__InscryptionAPI_Slots_SlotModificationManager_ModificationType_Type_System_String_System_String_UnityEngine_Sprite_List_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.Info.#ctor(System.String,System.String,Dictionary{CardTemple,UnityEngine.Texture2D},Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet},InscryptionAPI.Slots.SlotModificationManager.ModificationType,Type,System.String,System.String,UnityEngine.Sprite,List{InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory})
   name.vb: Info(String, String, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet), SlotModificationManager.ModificationType, Type, String, String, Sprite, List(Of SlotModificationManager.ModificationMetaCategory))
-  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, System.Collections.Generic.Dictionary<CardTemple, UnityEngine.Texture2D>, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>, InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.Type, System.String, System.String, UnityEngine.Sprite, System.Collections.Generic.List<InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory>)
-  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, System.Collections.Generic.Dictionary(Of CardTemple, UnityEngine.Texture2D), System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet), InscryptionAPI.Slots.SlotModificationManager.ModificationType, System.Type, System.String, System.String, UnityEngine.Sprite, System.Collections.Generic.List(Of InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, Dictionary<CardTemple, UnityEngine.Texture2D>, Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>, InscryptionAPI.Slots.SlotModificationManager.ModificationType, Type, System.String, System.String, UnityEngine.Sprite, List<InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.Info.Info(System.String, System.String, Dictionary(Of CardTemple, UnityEngine.Texture2D), Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet), InscryptionAPI.Slots.SlotModificationManager.ModificationType, Type, System.String, System.String, UnityEngine.Sprite, List(Of InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory))
   nameWithType: SlotModificationManager.Info.Info(String, String, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>, SlotModificationManager.ModificationType, Type, String, String, Sprite, List<SlotModificationManager.ModificationMetaCategory>)
   nameWithType.vb: SlotModificationManager.Info.Info(String, String, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet), SlotModificationManager.ModificationType, Type, String, String, Sprite, List(Of SlotModificationManager.ModificationMetaCategory))
 - uid: InscryptionAPI.Slots.SlotModificationManager.Info.#ctor*
@@ -18705,41 +18741,41 @@ references:
   commentId: E:InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList
   fullName: InscryptionAPI.Slots.SlotModificationManager.ModifySlotModificationList
   nameWithType: SlotModificationManager.ModifySlotModificationList
-- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type)
   name: New(String, String, Type)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type)
-  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type)
   nameWithType: SlotModificationManager.New(String, String, Type)
-- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Dictionary{CardTemple,UnityEngine.Texture2D},Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
   name: New(String, String, Type, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_System_Collections_Generic_Dictionary_CardTemple_UnityEngine_Texture2D__System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,System.Collections.Generic.Dictionary{CardTemple,UnityEngine.Texture2D},System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Dictionary_CardTemple_UnityEngine_Texture2D__Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Dictionary{CardTemple,UnityEngine.Texture2D},Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
   name.vb: New(String, String, Type, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
-  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, System.Collections.Generic.Dictionary<CardTemple, UnityEngine.Texture2D>, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
-  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, System.Collections.Generic.Dictionary(Of CardTemple, UnityEngine.Texture2D), System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, Dictionary<CardTemple, UnityEngine.Texture2D>, Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, Dictionary(Of CardTemple, UnityEngine.Texture2D), Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
   nameWithType: SlotModificationManager.New(String, String, Type, Dictionary<CardTemple, Texture2D>, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
   nameWithType.vb: SlotModificationManager.New(String, String, Type, Dictionary(Of CardTemple, Texture2D), Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
-- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D)
   name: New(String, String, Type, Texture2D)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D)
-  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, UnityEngine.Texture2D)
   nameWithType: SlotModificationManager.New(String, String, Type, Texture2D)
-- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
   name: New(String, String, Type, Texture2D, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_System_Collections_Generic_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,System.Collections.Generic.Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})
   name.vb: New(String, String, Type, Texture2D, Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
-  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, System.Collections.Generic.Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
-  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, System.Collections.Generic.Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, UnityEngine.Texture2D, Dictionary<GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, UnityEngine.Texture2D, Dictionary(Of GBC.PixelBoardSpriteSetter.BoardTheme, GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet))
   nameWithType: SlotModificationManager.New(String, String, Type, Texture2D, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet>)
   nameWithType.vb: SlotModificationManager.New(String, String, Type, Texture2D, Dictionary(Of PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet))
-- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
+- uid: InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
   name: New(String, String, Type, Texture2D, Texture2D)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_System_Type_UnityEngine_Texture2D_UnityEngine_Texture2D_
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,System.Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
-  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, System.Type, UnityEngine.Texture2D, UnityEngine.Texture2D)
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_UnityEngine_Texture2D_
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,UnityEngine.Texture2D)
+  fullName: InscryptionAPI.Slots.SlotModificationManager.New(System.String, System.String, Type, UnityEngine.Texture2D, UnityEngine.Texture2D)
   nameWithType: SlotModificationManager.New(String, String, Type, Texture2D, Texture2D)
 - uid: InscryptionAPI.Slots.SlotModificationManager.New*
   name: New
@@ -18748,13 +18784,13 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Slots.SlotModificationManager.New
   nameWithType: SlotModificationManager.New
-- uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,System.Collections.Generic.List{UnityEngine.Texture},System.Collections.Generic.List{UnityEngine.Texture})
+- uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,List{UnityEngine.Texture},List{UnityEngine.Texture})
   name: OverrideDefaultSlotTexture(CardTemple, List<Texture>, List<Texture>)
-  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_System_Collections_Generic_List_UnityEngine_Texture__System_Collections_Generic_List_UnityEngine_Texture__
-  commentId: M:InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,System.Collections.Generic.List{UnityEngine.Texture},System.Collections.Generic.List{UnityEngine.Texture})
+  href: api/InscryptionAPI.Slots.SlotModificationManager.html#InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_List_UnityEngine_Texture__List_UnityEngine_Texture__
+  commentId: M:InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,List{UnityEngine.Texture},List{UnityEngine.Texture})
   name.vb: OverrideDefaultSlotTexture(CardTemple, List(Of Texture), List(Of Texture))
-  fullName: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, System.Collections.Generic.List<UnityEngine.Texture>, System.Collections.Generic.List<UnityEngine.Texture>)
-  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, System.Collections.Generic.List(Of UnityEngine.Texture), System.Collections.Generic.List(Of UnityEngine.Texture))
+  fullName: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List<UnityEngine.Texture>, List<UnityEngine.Texture>)
+  fullName.vb: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List(Of UnityEngine.Texture), List(Of UnityEngine.Texture))
   nameWithType: SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List<Texture>, List<Texture>)
   nameWithType.vb: SlotModificationManager.OverrideDefaultSlotTexture(CardTemple, List(Of Texture), List(Of Texture))
 - uid: InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,UnityEngine.Texture,UnityEngine.Texture)
@@ -21510,6 +21546,51 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.IPassiveHealthBuff.GetPassiveHealthBuff
   nameWithType: IPassiveHealthBuff.GetPassiveHealthBuff
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked
+  name: IPostCardGettingAttacked
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html
+  commentId: T:InscryptionAPI.Triggers.IPostCardGettingAttacked
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked
+  nameWithType: IPostCardGettingAttacked
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  name: OnPostCardGettingAttacked(PlayableCard, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_OnPostCardGettingAttacked_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked(DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
+  nameWithType: IPostCardGettingAttacked.OnPostCardGettingAttacked(PlayableCard, PlayableCard)
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked*
+  name: OnPostCardGettingAttacked
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_OnPostCardGettingAttacked_
+  commentId: Overload:InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked
+  nameWithType: IPostCardGettingAttacked.OnPostCardGettingAttacked
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  name: PostCardGettingAttackedPriority(PlayableCard, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_PostCardGettingAttackedPriority_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority(DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
+  nameWithType: IPostCardGettingAttacked.PostCardGettingAttackedPriority(PlayableCard, PlayableCard)
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority*
+  name: PostCardGettingAttackedPriority
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_PostCardGettingAttackedPriority_
+  commentId: Overload:InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority
+  nameWithType: IPostCardGettingAttacked.PostCardGettingAttackedPriority
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  name: RespondsToPostCardGettingAttacked(PlayableCard, PlayableCard)
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_RespondsToPostCardGettingAttacked_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked(DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
+  nameWithType: IPostCardGettingAttacked.RespondsToPostCardGettingAttacked(PlayableCard, PlayableCard)
+- uid: InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked*
+  name: RespondsToPostCardGettingAttacked
+  href: api/InscryptionAPI.Triggers.IPostCardGettingAttacked.html#InscryptionAPI_Triggers_IPostCardGettingAttacked_RespondsToPostCardGettingAttacked_
+  commentId: Overload:InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked
+  nameWithType: IPostCardGettingAttacked.RespondsToPostCardGettingAttacked
 - uid: InscryptionAPI.Triggers.IPreTakeDamage
   name: IPreTakeDamage
   href: api/InscryptionAPI.Triggers.IPreTakeDamage.html
@@ -21735,6 +21816,32 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase
   nameWithType: SlotAttackSlotPatches.DamageToDealThisPhase
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  name: TriggerCardGettingAttackedTriggers(PlayableCard, PlayableCard)
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerCardGettingAttackedTriggers_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_
+  commentId: M:InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers(DiskCardGame.PlayableCard, DiskCardGame.PlayableCard)
+  nameWithType: SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers(PlayableCard, PlayableCard)
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers*
+  name: TriggerCardGettingAttackedTriggers
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerCardGettingAttackedTriggers_
+  commentId: Overload:InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers
+  nameWithType: SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers(DiskCardGame.PlayableCard,DiskCardGame.CardSlot)
+  name: TriggerOnDirectDamageTriggers(PlayableCard, CardSlot)
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerOnDirectDamageTriggers_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_
+  commentId: M:InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers(DiskCardGame.PlayableCard,DiskCardGame.CardSlot)
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers(DiskCardGame.PlayableCard, DiskCardGame.CardSlot)
+  nameWithType: SlotAttackSlotPatches.TriggerOnDirectDamageTriggers(PlayableCard, CardSlot)
+- uid: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers*
+  name: TriggerOnDirectDamageTriggers
+  href: api/InscryptionAPI.Triggers.SlotAttackSlotPatches.html#InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerOnDirectDamageTriggers_
+  commentId: Overload:InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers
+  isSpec: "True"
+  fullName: InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers
+  nameWithType: SlotAttackSlotPatches.TriggerOnDirectDamageTriggers
 - uid: InscryptionAPI.Triggers.TakeDamagePatches
   name: TakeDamagePatches
   href: api/InscryptionAPI.Triggers.TakeDamagePatches.html

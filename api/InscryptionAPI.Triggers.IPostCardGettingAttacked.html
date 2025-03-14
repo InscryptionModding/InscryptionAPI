@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SlotAttackSlotPatches
+    <title>Interface IPostCardGettingAttacked
    | InscryptionAPI </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SlotAttackSlotPatches
+    <meta name="title" content="Interface IPostCardGettingAttacked
    | InscryptionAPI ">
     <meta name="generator" content="docfx 2.59.0.0">
     
@@ -69,34 +69,29 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked">
   
   
-  <h1 id="InscryptionAPI_Triggers_SlotAttackSlotPatches" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches" class="text-break">Class SlotAttackSlotPatches
+  <h1 id="InscryptionAPI_Triggers_IPostCardGettingAttacked" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked" class="text-break">Interface IPostCardGettingAttacked
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Expanded version of CardGettingAttacked trigger, executed before it, that includes the attacker as an argument</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SlotAttackSlotPatches</span></div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
-  <h5 id="InscryptionAPI_Triggers_SlotAttackSlotPatches_syntax">Syntax</h5>
+  <h5 id="InscryptionAPI_Triggers_IPostCardGettingAttacked_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class SlotAttackSlotPatches</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IPostCardGettingAttacked</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="InscryptionAPI_Triggers_SlotAttackSlotPatches_DamageToDealThisPhase_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase*"></a>
-  <h4 id="InscryptionAPI_Triggers_SlotAttackSlotPatches_DamageToDealThisPhase_DiskCardGame_CardSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.DamageToDealThisPhase(DiskCardGame.CardSlot,DiskCardGame.CardSlot)">DamageToDealThisPhase(CardSlot, CardSlot)</h4>
+  <a id="InscryptionAPI_Triggers_IPostCardGettingAttacked_OnPostCardGettingAttacked_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked*"></a>
+  <h4 id="InscryptionAPI_Triggers_IPostCardGettingAttacked_OnPostCardGettingAttacked_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.OnPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)">OnPostCardGettingAttacked(PlayableCard, PlayableCard)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerator OnPostCardGettingAttacked(PlayableCard target, PlayableCard attacker)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,13 +104,58 @@ public static class SlotAttackSlotPatches</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">attackingSlot</span></td>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">target</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">opposingSlot</span></td>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">attacker</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_IPostCardGettingAttacked_PostCardGettingAttackedPriority_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority*"></a>
+  <h4 id="InscryptionAPI_Triggers_IPostCardGettingAttacked_PostCardGettingAttackedPriority_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.PostCardGettingAttackedPriority(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)">PostCardGettingAttackedPriority(PlayableCard, PlayableCard)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PostCardGettingAttackedPriority(PlayableCard target, PlayableCard attacker)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">attacker</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -135,13 +175,13 @@ public static class SlotAttackSlotPatches</code></pre>
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerCardGettingAttackedTriggers_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers*"></a>
-  <h4 id="InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerCardGettingAttackedTriggers_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerCardGettingAttackedTriggers(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)">TriggerCardGettingAttackedTriggers(PlayableCard, PlayableCard)</h4>
+  <a id="InscryptionAPI_Triggers_IPostCardGettingAttacked_RespondsToPostCardGettingAttacked_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked*"></a>
+  <h4 id="InscryptionAPI_Triggers_IPostCardGettingAttacked_RespondsToPostCardGettingAttacked_DiskCardGame_PlayableCard_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.IPostCardGettingAttacked.RespondsToPostCardGettingAttacked(DiskCardGame.PlayableCard,DiskCardGame.PlayableCard)">RespondsToPostCardGettingAttacked(PlayableCard, PlayableCard)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerCardGettingAttackedTriggers(PlayableCard attacker, PlayableCard opposingCard)</code></pre>
+    <pre><code class="lang-csharp hljs">bool RespondsToPostCardGettingAttacked(PlayableCard target, PlayableCard attacker)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -155,12 +195,12 @@ public static class SlotAttackSlotPatches</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
+        <td><span class="parametername">target</span></td>
         <td></td>
       </tr>
       <tr>
         <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">opposingCard</span></td>
+        <td><span class="parametername">attacker</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -175,56 +215,15 @@ public static class SlotAttackSlotPatches</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerOnDirectDamageTriggers_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers*"></a>
-  <h4 id="InscryptionAPI_Triggers_SlotAttackSlotPatches_TriggerOnDirectDamageTriggers_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Triggers.SlotAttackSlotPatches.TriggerOnDirectDamageTriggers(DiskCardGame.PlayableCard,DiskCardGame.CardSlot)">TriggerOnDirectDamageTriggers(PlayableCard, CardSlot)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)</code></pre>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
-        <td><span class="parametername">attacker</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
-        <td><span class="parametername">opposingSlot</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
