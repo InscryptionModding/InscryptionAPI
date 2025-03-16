@@ -3880,6 +3880,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetAbilitiesFromAllMods
   nameWithType: CardExtensions.GetAbilitiesFromAllMods
+- uid: InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.CardInfo,DiskCardGame.Ability)
+  name: GetAbilityStacks(CardInfo, Ability)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilityStacks_DiskCardGame_CardInfo_DiskCardGame_Ability_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.CardInfo,DiskCardGame.Ability)
+  fullName: InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.CardInfo, DiskCardGame.Ability)
+  nameWithType: CardExtensions.GetAbilityStacks(CardInfo, Ability)
 - uid: InscryptionAPI.Card.CardExtensions.GetAbilityStacks(DiskCardGame.PlayableCard,DiskCardGame.Ability)
   name: GetAbilityStacks(PlayableCard, Ability)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetAbilityStacks_DiskCardGame_PlayableCard_DiskCardGame_Ability_
@@ -7793,6 +7799,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.DamageShieldBehaviour.AddShields
   nameWithType: DamageShieldBehaviour.AddShields
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.Awake
+  name: Awake()
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_Awake
+  commentId: M:InscryptionAPI.Card.DamageShieldBehaviour.Awake
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.Awake()
+  nameWithType: DamageShieldBehaviour.Awake()
+- uid: InscryptionAPI.Card.DamageShieldBehaviour.Awake*
+  name: Awake
+  href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_Awake_
+  commentId: Overload:InscryptionAPI.Card.DamageShieldBehaviour.Awake
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.DamageShieldBehaviour.Awake
+  nameWithType: DamageShieldBehaviour.Awake
 - uid: InscryptionAPI.Card.DamageShieldBehaviour.HasShields
   name: HasShields()
   href: api/InscryptionAPI.Card.DamageShieldBehaviour.html#InscryptionAPI_Card_DamageShieldBehaviour_HasShields
