@@ -305,6 +305,22 @@ public static partial class CardExtensions
     }
 
     /// <summary>
+    /// Gets the number of Ability stacks a card has.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="ability">The Ability to check for.</param>
+    /// <returns>The number of Ability stacks the card has.</returns>
+    public static int GetAbilityStacks(this CardInfo info, Ability ability)
+    {
+        int count = info.Abilities.Count(a => a == ability);
+        if (count == 0)
+            return 0;
+
+        // If it's not stackable, you get at most one
+        return AbilitiesUtil.GetInfo(ability).canStack ? count : 1;
+    }
+
+    /// <summary>
     /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
     /// </summary>
     /// <param name="playableCard">The PlayableCard to access.</param>
