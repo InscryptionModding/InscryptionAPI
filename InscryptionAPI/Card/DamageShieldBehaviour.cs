@@ -18,12 +18,17 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     public bool HasShields() => NumShields > 0;
 
     public bool initialised = false;
-    public virtual void Start()
+
+    public virtual void Awake()
     {
         if (base.Card != null)
             numShields = StartingNumShields;
 
         initialised = true;
+    }
+    public virtual void Start()
+    {
+
     }
 
     public virtual void AddShields(int amount, bool updateDisplay = true)
@@ -58,11 +63,15 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     }
     public virtual void ResetShields(bool updateDisplay)
     {
-        bool depleted = !HasShields();
+        int currentShields = NumShields;
         numShields = StartingNumShields;
         base.Card.Status.lostShield = false;
 
-        base.Card.Status.hiddenAbilities.RemoveAll(x => x == this.Ability);
+        for (int i = 0; i < numShields - currentShields; i++)
+        {
+            base.Card.Status.hiddenAbilities.Remove(this.Ability);
+        }
+
         if (updateDisplay)
         {
             base.Card.OnStatsChanged();

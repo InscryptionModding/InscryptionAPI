@@ -1,5 +1,10 @@
 # 2.23.1
 - Fixed non-CardModificationInfo shields not breaking
+- Fixed ShieldGeneratorItem not correclty updating visuals
+- Fixed DamageShieldBehaviours not initialising before being called
+- Added CardInfo.GetAbilityStacks()
+- Changed how DamageShieldBehaviour.ResetShield works to be more inline with how vanilla shields work
+- Removed some shield-reset-related patches
 
 # 2.23.0
 - Added 'GBC Vanilla Render' config to community patches (false by default) - makes GBC cards render with vanilla cost sprites
