@@ -1,3 +1,6 @@
+# 2.23.1
+- Fixed non-CardModificationInfo shields not breaking
+
 # 2.23.0
 - Added 'GBC Vanilla Render' config to community patches (false by default) - makes GBC cards render with vanilla cost sprites
 - Added 'Vanilla Stacking' config to community patches (false by default) - renders cards with only two (stacking) sigils as they appear in vanilla, eg Spore Mice and Sporedigger

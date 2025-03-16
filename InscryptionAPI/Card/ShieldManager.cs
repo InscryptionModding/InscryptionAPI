@@ -26,6 +26,7 @@ public static class ShieldManager
 
     public static IEnumerator TriggerBreakShield(PlayableCard target, int damage, PlayableCard attacker)
     {
+        InscryptionAPIPlugin.Logger.LogDebug("[TriggerBreakShield] Begin");
         BreakShield(target, damage, attacker);
 
         List<IShieldPreventedDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventedDamage>(false).ToList();
@@ -56,9 +57,11 @@ public static class ShieldManager
         DamageShieldBehaviour shield = Array.Find(target.GetComponents<DamageShieldBehaviour>(), x => x.HasShields());
         if (shield != null)
         {
+            InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] Found DamageShieldBehaviour");
             CardModificationInfo info = target.TemporaryMods.Find(x => x.abilities != null && x.abilities.Contains(shield.Ability));
             if (info != null)
             {
+                InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] CardModInfo found for behaviour");
                 target.RemoveTemporaryMod(info, false); // RemoveShields is called here in a patch
                 info.abilities.Remove(shield.Ability);
                 target.AddTemporaryMod(info);
@@ -71,6 +74,7 @@ public static class ShieldManager
         target.Anim.StrongNegationEffect();
         if (target.GetTotalShields() == 0) // if we removed the last shield
         {
+            InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] TotalShields == 0");
             target.Status.lostShield = true;
             if (target.Info.HasBrokenShieldPortrait())
                 target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
@@ -95,7 +99,10 @@ public static class ShieldManager
     /// <summary>
     /// The new version of PlayableCard.HasShield implementing the new shield logic.
     /// </summary>
-    public static bool NewHasShield(PlayableCard instance) => instance.GetTotalShields() > 0 && !instance.Status.lostShield;
+    public static bool NewHasShield(PlayableCard instance)
+    {
+        return instance.GetTotalShields() > 0 && !instance.Status.lostShield;
+    }
 
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
     private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result) => __result = NewHasShield(__instance);
@@ -247,7 +254,6 @@ public static class ShieldManager
             {
                 if (com.Ability.GetHideSingleStacks())
                 {
-                    card.AddShieldCount(1, Ability.DeathShield);
                     int shieldsLost = com.StartingNumShields - com.NumShields;
                     if (card.Status.hiddenAbilities.Count(x => x == com.Ability) < shieldsLost)
                     {

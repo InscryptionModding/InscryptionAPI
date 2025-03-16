@@ -319,13 +319,13 @@ public static class StackAbilityIcons
         AbilityInfo ai = AbilityManager.AllAbilityInfos.AbilityByID(ability);
         if (card != null)
         {
+            baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods/*.Where(x => !x.fromTotem && (!x.fromCardMerge || PatchPlugin.configMergeOnBottom.Value)).ToList()*/));
             if (ai.IsShieldAbility())
             {
                 count = card.GetShieldBehaviour(ability)?.NumShields;
             }
             else
             {
-                baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods/*.Where(x => !x.fromTotem && (!x.fromCardMerge || PatchPlugin.configMergeOnBottom.Value)).ToList()*/));
                 if (ai.GetHideSingleStacks())
                 {
                     for (int i = 0; i < card.Status.hiddenAbilities.Count(x => x == ability); i++)
@@ -344,7 +344,7 @@ public static class StackAbilityIcons
         if (count > 1) // we have a stack and need to add an override
         {
             if (PatchPlugin.doubleStackSplit.Value && count == 2 && count == baseAbilities.Count)
-                __instance.SetIcon(__instance.LoadIcon(info, ai, card != null && card.OpponentCard));//RenderSameSigilTwice(__instance, ai, info, card);
+                __instance.SetIcon(__instance.LoadIcon(info, ai, card != null && card.OpponentCard));
             else
                 __instance.SetIcon(PatchTexture(ability, (int)count));
         }
