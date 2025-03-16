@@ -18,12 +18,17 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     public bool HasShields() => NumShields > 0;
 
     public bool initialised = false;
-    public virtual void Start()
+
+    public virtual void Awake()
     {
         if (base.Card != null)
             numShields = StartingNumShields;
 
         initialised = true;
+    }
+    public virtual void Start()
+    {
+
     }
 
     public virtual void AddShields(int amount, bool updateDisplay = true)
@@ -40,13 +45,15 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     public virtual void RemoveShields(int amount, bool updateDisplay = true)
     {
         numShields -= amount;
-        if (base.Card.GetTotalShields() <= 0)
-            base.Card.Status.lostShield = true;
-
-        if (!Ability.GetHideSingleStacks() && !HasShields() && !base.Card.Status.hiddenAbilities.Contains(this.Ability))
+        if (!this.HasShields())
         {
-            base.Card.Status.hiddenAbilities.Add(this.Ability);
-            //Debug.Log("Add hidden single");
+            if (Ability.GetHideSingleStacks()) // visually reduce the number of shield stacks
+            {
+                for (int i = 0; i < amount; i++)
+                    base.Card.Status.hiddenAbilities.Add(this.Ability);
+            }
+            else if (!base.Card.Status.hiddenAbilities.Contains(this.Ability)) // hide the whole sigil
+                base.Card.Status.hiddenAbilities.Add(this.Ability);
         }
 
         if (updateDisplay)
@@ -56,11 +63,15 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     }
     public virtual void ResetShields(bool updateDisplay)
     {
-        bool depleted = !HasShields();
+        int currentShields = NumShields;
         numShields = StartingNumShields;
         base.Card.Status.lostShield = false;
 
-        base.Card.Status.hiddenAbilities.RemoveAll(x => x == this.Ability);
+        for (int i = 0; i < numShields - currentShields; i++)
+        {
+            base.Card.Status.hiddenAbilities.Remove(this.Ability);
+        }
+
         if (updateDisplay)
         {
             base.Card.OnStatsChanged();

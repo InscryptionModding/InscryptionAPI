@@ -23,9 +23,9 @@ public static class ShieldManager
     public static List<FullAbility> AllShieldAbilities { get; internal set; } = new(AllAbilities);
     public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
 
-
     public static IEnumerator TriggerBreakShield(PlayableCard target, int damage, PlayableCard attacker)
     {
+        //InscryptionAPIPlugin.Logger.LogDebug("[TriggerBreakShield] Begin");
         BreakShield(target, damage, attacker);
 
         List<IShieldPreventedDamage> shieldTriggers = CustomTriggerFinder.FindTriggersOnBoard<IShieldPreventedDamage>(false).ToList();
@@ -56,9 +56,11 @@ public static class ShieldManager
         DamageShieldBehaviour shield = Array.Find(target.GetComponents<DamageShieldBehaviour>(), x => x.HasShields());
         if (shield != null)
         {
+            //InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] Found DamageShieldBehaviour");
             CardModificationInfo info = target.TemporaryMods.Find(x => x.abilities != null && x.abilities.Contains(shield.Ability));
             if (info != null)
             {
+                //InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] CardModInfo found for behaviour");
                 target.RemoveTemporaryMod(info, false); // RemoveShields is called here in a patch
                 info.abilities.Remove(shield.Ability);
                 target.AddTemporaryMod(info);
@@ -71,6 +73,7 @@ public static class ShieldManager
         target.Anim.StrongNegationEffect();
         if (target.GetTotalShields() == 0) // if we removed the last shield
         {
+            //InscryptionAPIPlugin.Logger.LogDebug("[BreakShield] TotalShields == 0");
             target.Status.lostShield = true;
             if (target.Info.HasBrokenShieldPortrait())
                 target.SwitchToPortrait(target.Info.BrokenShieldPortrait());
@@ -85,20 +88,27 @@ public static class ShieldManager
         if (__instance is LatchDeathShield && card.HasShield())
             __result = true;
     }
+
     [HarmonyPrefix, HarmonyPatch(typeof(LatchDeathShield), nameof(LatchDeathShield.OnSuccessfullyLatched))]
     private static bool PreventShieldReset(PlayableCard target)
     {
-        target.UpdateFaceUpOnBoardEffects();
-        return false; // latch death shield doesn't reset shields
+        target.UpdateFaceUpOnBoardEffects(); // latch death shield doesn't reset shields
+        return false;
     }
 
     /// <summary>
-    /// The new version of PlayableCard.HasShield implementing the new shield logic.
+    /// Modified version of PlayableCard.HasShield that replaces the original method's result.
     /// </summary>
-    public static bool NewHasShield(PlayableCard instance) => instance.GetTotalShields() > 0 && !instance.Status.lostShield;
+    public static bool NewHasShield(PlayableCard instance)
+    {
+        return instance.GetTotalShields() > 0 && !instance.Status.lostShield;
+    }
 
     [HarmonyPostfix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.HasShield))]
-    private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result) => __result = NewHasShield(__instance);
+    private static void ReplaceHasShieldBool(PlayableCard __instance, ref bool __result)
+    {
+        __result = NewHasShield(__instance);
+    }
 
     [HarmonyPrefix, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.ResetShield), new Type[] { })]
     private static void ResetModShields(PlayableCard __instance) // runs before the base ResetShield logic
@@ -106,52 +116,9 @@ public static class ShieldManager
         foreach (DamageShieldBehaviour com in __instance.GetComponents<DamageShieldBehaviour>())
             com.ResetShields(false);
 
-        // if we're using the broken shield portrait, reset to the default portrait - if we're MudTurtle
+        // if we're using the broken shield portrait, reset to the default portrait
         if (__instance.Info.name == "MudTurtle" || (__instance.Info.BrokenShieldPortrait() != null && __instance.RenderInfo.portraitOverride == __instance.Info.BrokenShieldPortrait()))
             __instance.SwitchToDefaultPortrait();
-
-        __instance.Status.lostShield = false;
-    }
-
-    [HarmonyTranspiler, HarmonyPatch(typeof(ShieldGeneratorItem), nameof(ShieldGeneratorItem.ActivateSequence), MethodType.Enumerator)]
-    private static IEnumerable<CodeInstruction> DontResetOnActivate(IEnumerable<CodeInstruction> instructions)
-    {
-        List<CodeInstruction> codes = new(instructions);
-        int index = codes.FindIndex(x => x.operand?.ToString() == "DiskCardGame.BoardManager get_Instance()");
-        if (index > 0)
-        {
-            MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
-            codes.RemoveRange(index, 2);
-            codes.Insert(index, new(OpCodes.Callvirt, method));
-        }
-        return codes;
-    }
-    [HarmonyTranspiler, HarmonyPatch(typeof(ShieldGems), nameof(ShieldGems.OnResolveOnBoard), MethodType.Enumerator)]
-    private static IEnumerable<CodeInstruction> DontResetOnResolve(IEnumerable<CodeInstruction> instructions)
-    {
-        List<CodeInstruction> codes = new(instructions);
-        int index = codes.FindLastIndex(x => x.operand?.ToString() == "0.25") - 4;
-        if (index > 0)
-        {
-            MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
-            codes.RemoveRange(index, 2);
-            codes.Insert(index, new(OpCodes.Callvirt, method));
-        }
-        return codes;
-    }
-
-    [HarmonyTranspiler, HarmonyPatch(typeof(RandomCardGainsShieldEffect), nameof(RandomCardGainsShieldEffect.Execute), MethodType.Enumerator)]
-    private static IEnumerable<CodeInstruction> DontResetOnExecute(IEnumerable<CodeInstruction> instructions)
-    {
-        List<CodeInstruction> codes = new(instructions);
-        int index = codes.FindLastIndex(x => x.opcode == OpCodes.Newobj);
-        if (index > 0)
-        {
-            MethodBase method = AccessTools.Method(typeof(ShieldManager), nameof(ShieldManager.EmptyList));
-            codes.RemoveRange(index, 4);
-            codes.Insert(index, new(OpCodes.Callvirt, method));
-        }
-        return codes;
     }
 
     [HarmonyTranspiler, HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.UpdateFaceUpOnBoardEffects))]
@@ -209,7 +176,7 @@ public static class ShieldManager
         return codes;
     }
 
-    private static List<CardSlot> EmptyList() => new(); // for transpiler logic (why can't i just pass an empty list?)
+    private static List<CardSlot> EmptyList() => new(); // for transpiler logic
 
     private static List<Ability> HiddensOnlyRemoveStacks(List<Ability> abilities, List<Ability> hiddenAbilities)
     {
@@ -222,49 +189,42 @@ public static class ShieldManager
     }
     private static void CorrectHiddenAbilityRender(PlayableCard card)
     {
-        foreach (DamageShieldBehaviour com in card.GetComponents<DamageShieldBehaviour>().Where(x => x.initialised))
-        {
-            if (com.HasShields())
-            {
-                if (com.Ability.GetHideSingleStacks())
-                {
-                    // if there are more hidden shields than there should be
-                    if (card.Status.hiddenAbilities.Count(x => x == com.Ability) >= com.NumShields)
-                    {
-                        for (int i = 0; i < com.NumShields; i++)
-                        {
-                            card.Status.hiddenAbilities.Remove(com.Ability);
-                        }
-                    }
-                }
-                else
-                {
-                    card.Status.hiddenAbilities.Remove(com.Ability);
-                }
-                break;
-            }
-            else
-            {
-                if (com.Ability.GetHideSingleStacks())
-                {
-                    card.AddShieldCount(1, Ability.DeathShield);
-                    int shieldsLost = com.StartingNumShields - com.NumShields;
-                    if (card.Status.hiddenAbilities.Count(x => x == com.Ability) < shieldsLost)
-                    {
-                        for (int i = 0; i < shieldsLost; i++)
-                        {
-                            //Debug.Log($"{com.StartingNumShields} {com.NumShields} {shieldsLost} Add hidden");
-                            card.Status.hiddenAbilities.Add(com.Ability);
-                        }
-                    }
-                }
-                else if (!card.Status.hiddenAbilities.Contains(com.Ability))
-                {
-                    card.Status.hiddenAbilities.Add(com.Ability);
-                }
-                break;
-            }
-        }
+        //foreach (DamageShieldBehaviour com in card.GetComponents<DamageShieldBehaviour>().Where(x => x.initialised))
+        //{
+        //    if (com.HasShields())
+        //    {
+        //        if (com.Ability.GetHideSingleStacks())
+        //        {
+        //            // if there are more hidden shields than there should be
+        //            while (card.Status.hiddenAbilities.Count(x => x == com.Ability) > com.NumShields)
+        //            {
+        //                card.Status.hiddenAbilities.Remove(com.Ability);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            card.Status.hiddenAbilities.RemoveAll(x => x == com.Ability);
+        //        }
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        if (com.Ability.GetHideSingleStacks())
+        //        {
+        //            int shieldsLost = com.StartingNumShields - com.NumShields;
+        //            while (card.Status.hiddenAbilities.Count(x => x == com.Ability) < shieldsLost)
+        //            {
+        //                //Debug.Log($"{com.StartingNumShields} {com.NumShields} {shieldsLost} Add hidden");
+        //                card.Status.hiddenAbilities.Add(com.Ability);
+        //            }
+        //        }
+        //        else if (!card.Status.hiddenAbilities.Contains(com.Ability))
+        //        {
+        //            card.Status.hiddenAbilities.Add(com.Ability);
+        //        }
+        //        break;
+        //    }
+        //}
 
         if (card.Info.HasBrokenShieldPortrait() && card.RenderInfo.portraitOverride == card.Info.BrokenShieldPortrait() && card.HasShield())
         {
