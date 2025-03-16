@@ -319,19 +319,23 @@ public static class StackAbilityIcons
         AbilityInfo ai = AbilityManager.AllAbilityInfos.AbilityByID(ability);
         if (card != null)
         {
-            baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods/*.Where(x => !x.fromTotem && (!x.fromCardMerge || PatchPlugin.configMergeOnBottom.Value)).ToList()*/));
-            if (ai.GetHideSingleStacks())
-            {
-                for (int i = 0; i < card.Status.hiddenAbilities.Count(x => x == ability); i++)
-                {
-                    baseAbilities.Remove(ability);
-                }
-            }
-            else if (card.Status.hiddenAbilities.Contains(ability))
-                baseAbilities.RemoveAll(x => x == ability);
-
             if (ai.IsShieldAbility())
+            {
                 count = card.GetShieldBehaviour(ability)?.NumShields;
+            }
+            else
+            {
+                baseAbilities.AddRange(AbilitiesUtil.GetAbilitiesFromMods(card.TemporaryMods/*.Where(x => !x.fromTotem && (!x.fromCardMerge || PatchPlugin.configMergeOnBottom.Value)).ToList()*/));
+                if (ai.GetHideSingleStacks())
+                {
+                    for (int i = 0; i < card.Status.hiddenAbilities.Count(x => x == ability); i++)
+                    {
+                        baseAbilities.Remove(ability);
+                    }
+                }
+                else if (card.Status.hiddenAbilities.Contains(ability))
+                    baseAbilities.RemoveAll(x => x == ability);
+            }            
         }
 
         count ??= baseAbilities.Count(ab => ab == ability);

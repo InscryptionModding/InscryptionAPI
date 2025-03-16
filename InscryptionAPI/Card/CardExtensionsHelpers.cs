@@ -776,7 +776,10 @@ public static partial class CardExtensions
         // covers for a situation I discovered where you use a SpecialBattleSequencer's triggers to advance a boss fight
         // somehow you can end up with a null playablecard which breaks this bit here
         if (card == null)
+        {
+            InscryptionAPIPlugin.Logger.LogDebug("[GetTotalShields] Card is null, returning 0.");
             return 0;
+        }
 
         int totalShields = 0;
         List<Ability> distinct = new(); // keep track of non-stacking shield abilities so we don't add them again
@@ -792,6 +795,7 @@ public static partial class CardExtensions
             }
         }
 
+        //InscryptionAPIPlugin.Logger.LogDebug("[GetTotalShields] Total is " + totalShields);
         return totalShields;
     }
 

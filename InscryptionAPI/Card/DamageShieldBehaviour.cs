@@ -40,13 +40,15 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
     public virtual void RemoveShields(int amount, bool updateDisplay = true)
     {
         numShields -= amount;
-        if (base.Card.GetTotalShields() <= 0)
-            base.Card.Status.lostShield = true;
-
-        if (!Ability.GetHideSingleStacks() && !HasShields() && !base.Card.Status.hiddenAbilities.Contains(this.Ability))
+        if (!this.HasShields())
         {
-            base.Card.Status.hiddenAbilities.Add(this.Ability);
-            //Debug.Log("Add hidden single");
+            if (Ability.GetHideSingleStacks()) // visually reduce the number of shield stacks
+            {
+                for (int i = 0; i < amount; i++)
+                    base.Card.Status.hiddenAbilities.Add(this.Ability);
+            }
+            else if (!base.Card.Status.hiddenAbilities.Contains(this.Ability)) // hide the whole sigil
+                base.Card.Status.hiddenAbilities.Add(this.Ability);
         }
 
         if (updateDisplay)
