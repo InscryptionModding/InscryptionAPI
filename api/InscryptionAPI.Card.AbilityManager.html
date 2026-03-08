@@ -1,0 +1,704 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AbilityManager
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AbilityManager
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Card.AbilityManager">
+  
+  
+  <h1 id="InscryptionAPI_Card_AbilityManager" data-uid="InscryptionAPI.Card.AbilityManager" class="text-break">Class AbilityManager
+  </h1>
+  <div class="markdown level0 summary"><p>This manager class handles the creation and management of mod-added abilities (sigils).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">AbilityManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Card.html">InscryptionAPI.Card</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Card_AbilityManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HarmonyPatch]
+public static class AbilityManager</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="InscryptionAPI_Card_AbilityManager_BaseGameAbilities" data-uid="InscryptionAPI.Card.AbilityManager.BaseGameAbilities">BaseGameAbilities</h4>
+  <div class="markdown level1 summary"><p>All of the vanilla game&apos;s abilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyCollection&lt;AbilityManager.FullAbility&gt; BaseGameAbilities</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Card_AbilityManager_SIGILCOST" data-uid="InscryptionAPI.Card.AbilityManager.SIGILCOST">SIGILCOST</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string SIGILCOST = &quot;[sigilcost:&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="InscryptionAPI_Card_AbilityManager_AllAbilities_" data-uid="InscryptionAPI.Card.AbilityManager.AllAbilities*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_AllAbilities" data-uid="InscryptionAPI.Card.AbilityManager.AllAbilities">AllAbilities</h4>
+  <div class="markdown level1 summary"><p>The current processed list of all abilities in the game, including vanilla and mod-added abilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;AbilityManager.FullAbility&gt; AllAbilities { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_AllAbilityInfos_" data-uid="InscryptionAPI.Card.AbilityManager.AllAbilityInfos*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_AllAbilityInfos" data-uid="InscryptionAPI.Card.AbilityManager.AllAbilityInfos">AllAbilityInfos</h4>
+  <div class="markdown level1 summary"><p>The current processed list of all AbilityInfos in the game, including vanilla and mod-added abilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;AbilityInfo&gt; AllAbilityInfos { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AbilityInfo</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_Part2Modular_" data-uid="InscryptionAPI.Card.AbilityManager.Part2Modular*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Part2Modular" data-uid="InscryptionAPI.Card.AbilityManager.Part2Modular">Part2Modular</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityMetaCategory Part2Modular { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_" data-uid="InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_System_Collections_IEnumerable_HarmonyLib_CodeInstruction__" data-uid="InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable{HarmonyLib.CodeInstruction})">AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HarmonyTranspiler]
+[HarmonyPatch(typeof(AbilityIconInteractable), &quot;AssignAbility&quot;)]
+public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt; instructions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">HarmonyLib.CodeInstruction</span>&gt;</td>
+        <td><span class="parametername">instructions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">HarmonyLib.CodeInstruction</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_Add_" data-uid="InscryptionAPI.Card.AbilityManager.Add*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Add_System_String_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.Add(System.String,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)">Add(String, AbilityInfo, Type, Texture)</h4>
+  <div class="markdown level1 summary"><p>Creates a new ability and registers it to be able to be added to cards</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityManager.FullAbility Add(string guid, AbilityInfo info, Type behavior, Texture tex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td><p>The guid of the mod adding the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>An instance of AbilityInfo describing the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">behavior</span></td>
+        <td><p>A subclass of AbilityBehaviour that implements the logic for the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="parametername">tex</span></td>
+        <td><p>The ability icon as a 49x49 texture.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a></td>
+        <td><p>An instance of AbilityInfo describing the new ability.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="InscryptionAPI_Card_AbilityManager_Add_System_String_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The actual unique identifier for the new ability will be found in the &apos;ability&apos; field of 
+the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+always be assigned by the API.</p>
+<p><strong>NOTE</strong>: Even if you manually create an Ability identifier for your ability and attach it to the AbilityInfo 
+object before you pass it to the API, the API will <em>still</em> generate a unique ability ID for you, which may
+or may not be the same as the ID you created for yourself. As such, it is best practice to <em>not</em> set the 
+ablity ID yourself and leave it as its default value.</p>
+</div>
+  <a id="InscryptionAPI_Card_AbilityManager_New_" data-uid="InscryptionAPI.Card.AbilityManager.New*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_System_String_" data-uid="InscryptionAPI.Card.AbilityManager.New(System.String,System.String,System.String,Type,System.String)">New(String, String, String, Type, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a new ability and registers it to be able to be added to cards</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior, string pathToArt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td><p>The guid of the mod adding the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookName</span></td>
+        <td><p>The name of the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookDescription</span></td>
+        <td><p>The description as it appears in the game&apos;s rulebook.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">behavior</span></td>
+        <td><p>A subclass of AbilityBehaviour that implements the logic for the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathToArt</span></td>
+        <td><p>Path to the ability texture on disk.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><p>An instance of AbilityInfo describing the new ability.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The actual unique identifier for the new ability will be found in the &apos;ability&apos; field of 
+the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+always be assigned by the API.</p>
+</div>
+  <a id="InscryptionAPI_Card_AbilityManager_New_" data-uid="InscryptionAPI.Card.AbilityManager.New*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.New(System.String,System.String,System.String,Type,UnityEngine.Texture)">New(String, String, String, Type, Texture)</h4>
+  <div class="markdown level1 summary"><p>Creates a new ability and registers it to be able to be added to cards</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AbilityInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior, Texture tex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">guid</span></td>
+        <td><p>The guid of the mod adding the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookName</span></td>
+        <td><p>The name of the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">rulebookDescription</span></td>
+        <td><p>The description as it appears in the game&apos;s rulebook.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">behavior</span></td>
+        <td><p>A subclass of AbilityBehaviour that implements the logic for the ability.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="parametername">tex</span></td>
+        <td><p>The ability icon as a 49x49 texture.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><p>An instance of AbilityInfo describing the new ability.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_UnityEngine_Texture__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The actual unique identifier for the new ability will be found in the &apos;ability&apos; field of 
+the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
+always be assigned by the API.</p>
+</div>
+  <a id="InscryptionAPI_Card_AbilityManager_OriginalLoadAbilityIcon_" data-uid="InscryptionAPI.Card.AbilityManager.OriginalLoadAbilityIcon*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_OriginalLoadAbilityIcon_System_String_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityManager.OriginalLoadAbilityIcon(System.String,System.Boolean,System.Boolean)">OriginalLoadAbilityIcon(String, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HarmonyReversePatch(HarmonyReversePatchType.Original)]
+[HarmonyPatch(typeof(AbilitiesUtil), &quot;LoadAbilityIcon&quot;)]
+public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbility = false, bool something = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">abilityName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fillerAbility</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">something</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_Remove_" data-uid="InscryptionAPI.Card.AbilityManager.Remove*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Remove_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityManager.Remove(DiskCardGame.Ability)">Remove(Ability)</h4>
+  <div class="markdown level1 summary"><p>Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Remove(Ability id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The unique ID of the ability to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_Remove_" data-uid="InscryptionAPI.Card.AbilityManager.Remove*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Remove_InscryptionAPI_Card_AbilityManager_FullAbility_" data-uid="InscryptionAPI.Card.AbilityManager.Remove(InscryptionAPI.Card.AbilityManager.FullAbility)">Remove(AbilityManager.FullAbility)</h4>
+  <div class="markdown level1 summary"><p>Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Remove(AbilityManager.FullAbility ability)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a></td>
+        <td><span class="parametername">ability</span></td>
+        <td><p>The instance of the ability to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityManager_SyncAbilityList_" data-uid="InscryptionAPI.Card.AbilityManager.SyncAbilityList*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityManager_SyncAbilityList" data-uid="InscryptionAPI.Card.AbilityManager.SyncAbilityList">SyncAbilityList()</h4>
+  <div class="markdown level1 summary"><p>Resynchronizes the ablity list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SyncAbilityList()</code></pre>
+  </div>
+  <h5 id="InscryptionAPI_Card_AbilityManager_SyncAbilityList_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Most importantly, this re-executes all custom code that was added to the <a href="xref:InscryptionAPI.AbilityManager.ModifyAbilityList">ModifyAbilityList</a>
+event. If you are doing any sort of context-aware processing of the ability list, you may need to manually
+call this method in order to make sure that your code executes correctly. However, this automatically gets called
+every time that the game transitions from either the main menu into the base game, or whenever a new run is 
+started inside of Kaycee&apos;s Mod. Only in extreme edge cases should you need to manually call this.</p>
+</div>
+  <h3 id="events">Events
+  </h3>
+  <h4 id="InscryptionAPI_Card_AbilityManager_ModifyAbilityList" data-uid="InscryptionAPI.Card.AbilityManager.ModifyAbilityList">ModifyAbilityList</h4>
+  <div class="markdown level1 summary"><p>A hook for modders to add custom code to modify the ability list dynamically.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Func&lt;List&lt;AbilityManager.FullAbility&gt;, List&lt;AbilityManager.FullAbility&gt;&gt; ModifyAbilityList</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;, <span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="InscryptionAPI_Card_AbilityManager_ModifyAbilityList_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>There are two primary use cases for this hook:</p>
+<ul>
+<li>Making changes to abilities that may be added after your plugin initializes</li>
+<li>Making context-aware changes to abilities</li>
+</ul>
+<p>The way this operates is as follows:</p>
+<ol>
+<li>The AbilityManager makes a copy of all FullAbility objects. Note that unlike the similar code in CardManager, this is actually a <em>deep</em> copy of the AbilityInfo.</li>
+<li>The code in ModifyAbiltyList is executed on the copy of those abilities.</li>
+<li>The modified list becomes the game&apos;s new official list of abilities.</li>
+</ol>
+<p>The reason the abilities are cloned before processing is so that you can make any change to them you wish
+without affecting the original ability. This means that you do not need to try to track changes or remember
+what the original version of the ability looked like before you started changing it; the next time 
+<a href="xref:InscryptionAPI.AbilityManager.SyncAbilityList">SyncAbilityList</a> is called, all changes will be reverted
+and then re-applied.</p>
+<p>To use this, you need to add a delegate that accepts the current list of all abilities, then returns
+that same list back.</p>
+<pre><code class="lang-c#">AbilityManager.ModifyAbilityList += delegate(List&amp;lt;FullAbility&gt; abilities)
+{
+    // Add the rulebook metacategories to every single ability
+    foreach (var ability in abilities)
+        ability.info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part3Rulebook);
+    return abilities;
+}
+</code></pre></div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

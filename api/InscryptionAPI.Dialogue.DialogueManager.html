@@ -1,0 +1,750 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DialogueManager
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DialogueManager
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Dialogue.DialogueManager">
+  
+  
+  <h1 id="InscryptionAPI_Dialogue_DialogueManager" data-uid="InscryptionAPI.Dialogue.DialogueManager" class="text-break">Class DialogueManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DialogueManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Dialogue.html">InscryptionAPI.Dialogue</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Dialogue_DialogueManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class DialogueManager</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_ColorLookup" data-uid="InscryptionAPI.Dialogue.DialogueManager.ColorLookup">ColorLookup</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;string, Color&gt; ColorLookup</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_CustomDialogue" data-uid="InscryptionAPI.Dialogue.DialogueManager.CustomDialogue">CustomDialogue</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;DialogueManager.Dialogue&gt; CustomDialogue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.DialogueManager.Dialogue.html">DialogueManager.Dialogue</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_CustomDialogueColor" data-uid="InscryptionAPI.Dialogue.DialogueManager.CustomDialogueColor">CustomDialogueColor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;DialogueManager.DialogueColor&gt; CustomDialogueColor</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html">DialogueManager.DialogueColor</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_Add_" data-uid="InscryptionAPI.Dialogue.DialogueManager.Add*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_Add_System_String_DialogueEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.Add(System.String,DialogueEvent)">Add(String, DialogueEvent)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueManager.Dialogue Add(string pluginGUID, DialogueEvent dialogueEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td><span class="parametername">dialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Dialogue.DialogueManager.Dialogue.html">DialogueManager.Dialogue</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_AddColor_" data-uid="InscryptionAPI.Dialogue.DialogueManager.AddColor*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_AddColor_System_String_System_String_UnityEngine_Color_" data-uid="InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String,System.String,UnityEngine.Color)">AddColor(String, String, Color)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueManager.DialogueColor AddColor(string pluginGUID, string code, Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="parametername">color</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Dialogue.DialogueManager.DialogueColor.html">DialogueManager.DialogueColor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateEvent*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___DialogueEvent_MaxRepeatsBehaviour_DialogueEvent_Speaker_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}},DialogueEvent.MaxRepeatsBehaviour,DialogueEvent.Speaker)">GenerateEvent(String, String, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;, DialogueEvent.MaxRepeatsBehaviour, DialogueEvent.Speaker)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateEvent(string pluginGUID, string name, List&lt;CustomLine&gt; mainLines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
+        <td><span class="parametername">mainLines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
+        <td><span class="parametername">repeatLines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DialogueEvent.MaxRepeatsBehaviour</span></td>
+        <td><span class="parametername">afterMaxRepeats</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DialogueEvent.Speaker</span></td>
+        <td><span class="parametername">defaultSpeaker</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_DiskCardGame_RegionData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,DiskCardGame.RegionData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateRegionIntroductionEvent(String, RegionData, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, RegionData regionData, List&lt;CustomLine&gt; lines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="parametername">regionData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
+        <td><span class="parametername">lines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
+        <td><span class="parametername">repeatLines</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateRegionIntroductionEvent(String, String, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, string regionName, List&lt;CustomLine&gt; lines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">regionName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
+        <td><span class="parametername">lines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
+        <td><span class="parametername">repeatLines</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_System_String_InscryptionAPI_Pelts_PeltManager_PeltData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,InscryptionAPI.Pelts.PeltManager.PeltData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateTraderPeltsEvent(String, PeltManager.PeltData, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, PeltManager.PeltData peltData, List&lt;CustomLine&gt; lines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Pelts.PeltManager.PeltData.html">PeltManager.PeltData</a></td>
+        <td><span class="parametername">peltData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
+        <td><span class="parametername">lines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
+        <td><span class="parametername">repeatLines</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateTraderPeltsEvent_System_String_System_String_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateTraderPeltsEvent(System.String,System.String,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateTraderPeltsEvent(String, String, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, string peltTierName, List&lt;CustomLine&gt; lines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGUID</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">peltTierName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;</td>
+        <td><span class="parametername">lines</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="InscryptionAPI.Dialogue.CustomLine.html">CustomLine</a>&gt;&gt;</td>
+        <td><span class="parametername">repeatLines</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DialogueEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromAmbition_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromAmbition*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromAmbition" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromAmbition">GetStyleFromAmbition()</h4>
+  <div class="markdown level1 summary"><p>A method to grab the correct TextBox.Style based off the player&apos;s chosen ambition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TextBox.Style GetStyleFromAmbition()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><p>The corresponding TextBox.Style.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromTemple_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromTemple*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GetStyleFromTemple_CardTemple_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GetStyleFromTemple(CardTemple)">GetStyleFromTemple(CardTemple)</h4>
+  <div class="markdown level1 summary"><p>A quick method to convert a card&apos;s CardTemple into the respective TextBox.Style.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TextBox.Style GetStyleFromTemple(CardTemple temple)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardTemple</span></td>
+        <td><span class="parametername">temple</span></td>
+        <td><p>The CardTemple we want to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><p>The corresponding TextBox.Style.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe*"></a>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_DiskCardGame_TextDisplayer_MessageAdvanceMode_DiskCardGame_TextDisplayer_EventIntersectMode_GBC_DialogueSpeaker_GBC_TextBox_Style_GBC_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)">PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action&lt;DialogueEvent.Line&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A version of PlayDialogueEvent that can be used in the 3D Acts as well as Act 2.
+Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEvent method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator PlayDialogueEventSafe(string eventId, TextDisplayer.MessageAdvanceMode advanceMode = TextDisplayer.MessageAdvanceMode.Auto, TextDisplayer.EventIntersectMode intersectMode = TextDisplayer.EventIntersectMode.Wait, DialogueSpeaker speaker = null, TextBox.Style style = TextBox.Style.Neutral, TextBox.ScreenPosition screenPosition = TextBox.ScreenPosition.OppositeOfPlayer, string[] variableStrings = null, Action&lt;DialogueEvent.Line&gt; newLineCallback = null, bool adjustAudioVolume = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.TextDisplayer.MessageAdvanceMode</span></td>
+        <td><span class="parametername">advanceMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.TextDisplayer.EventIntersectMode</span></td>
+        <td><span class="parametername">intersectMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GBC.DialogueSpeaker</span></td>
+        <td><span class="parametername">speaker</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><span class="parametername">style</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">GBC.TextBox.ScreenPosition</span></td>
+        <td><span class="parametername">screenPosition</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">variableStrings</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">DialogueEvent.Line</span>&gt;</td>
+        <td><span class="parametername">newLineCallback</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">adjustAudioVolume</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

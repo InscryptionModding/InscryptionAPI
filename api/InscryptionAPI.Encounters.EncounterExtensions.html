@@ -1,0 +1,1488 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EncounterExtensions
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EncounterExtensions
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Encounters.EncounterExtensions">
+  
+  
+  <h1 id="InscryptionAPI_Encounters_EncounterExtensions" data-uid="InscryptionAPI.Encounters.EncounterExtensions" class="text-break">Class EncounterExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">EncounterExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Encounters.html">InscryptionAPI.Encounters</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Encounters_EncounterExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HarmonyPatch]
+public static class EncounterExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddDominantTribes_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddDominantTribes*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddDominantTribes__1___0_DiskCardGame_Tribe___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddDominantTribes``1(``0,DiskCardGame.Tribe[])">AddDominantTribes&lt;T&gt;(T, Tribe[])</h4>
+  <div class="markdown level1 summary"><p>Adds dominant tribes to this region.<br>
+The dominant tribes list determines the totems for this battle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddDominantTribes&lt;T&gt;(this T blueprint, params Tribe[] tribes)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.Tribe</span>[]</td>
+        <td><span class="parametername">tribes</span></td>
+        <td><p>The tribes to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddRandomReplacementCards_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddRandomReplacementCards*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddRandomReplacementCards__1___0_System_String___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddRandomReplacementCards``1(``0,System.String[])">AddRandomReplacementCards&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Adds random replacement cards to this region.<br>
+A card from this list is selected whenever a card is randomly replaced by <code>randomReplaceChance</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddRandomReplacementCards&lt;T&gt;(this T blueprint, params string[] cards)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">cards</span></td>
+        <td><p>The cards to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_DiskCardGame_EncounterBlueprintData_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,DiskCardGame.EncounterBlueprintData.CardBlueprint[])">AddTurn&lt;T&gt;(T, EncounterBlueprintData.CardBlueprint[])</h4>
+  <div class="markdown level1 summary"><p>Adds a new turn to the EncounterBlueprintData using the specified CardBlueprints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurn&lt;T&gt;(this T blueprint, params EncounterBlueprintData.CardBlueprint[] cards)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>[]</td>
+        <td><span class="parametername">cards</span></td>
+        <td><p>The CardBlurprints to add. If none are specified, creates an empty turn.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The same EncounterBlueprintData so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurn__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurn``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint})">AddTurn&lt;T&gt;(T, List&lt;EncounterBlueprintData.CardBlueprint&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a new turn to the EncounterBlueprintData.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurn&lt;T&gt;(this T blueprint, List&lt;EncounterBlueprintData.CardBlueprint&gt; turn = null)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">turn</span></td>
+        <td><p>The turn to add. If null, creates an empty turn.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The same EncounterBlueprintData so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurnMods__1___0_DiskCardGame_EncounterBlueprintData_TurnModBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurnMods``1(``0,DiskCardGame.EncounterBlueprintData.TurnModBlueprint[])">AddTurnMods&lt;T&gt;(T, EncounterBlueprintData.TurnModBlueprint[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurnMods&lt;T&gt;(this T blueprint, params EncounterBlueprintData.TurnModBlueprint[] turnMods)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.TurnModBlueprint</span>[]</td>
+        <td><span class="parametername">turnMods</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_DiskCardGame_EncounterBlueprintData_CardBlueprint____" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{DiskCardGame.EncounterBlueprintData.CardBlueprint}[])">AddTurns&lt;T&gt;(T, List&lt;EncounterBlueprintData.CardBlueprint&gt;[])</h4>
+  <div class="markdown level1 summary"><p>Adds new turns to the EncounterBlueprintData using the specified CardBlueprint Lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurns&lt;T&gt;(this T blueprint, params List&lt;EncounterBlueprintData.CardBlueprint&gt;[] turns)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;[]</td>
+        <td><span class="parametername">turns</span></td>
+        <td><p>The Lists of CardBlueprints to add to the EncounterBlueprintData.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The same EncounterBlueprintData so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_AddTurns__1___0_List_List_DiskCardGame_EncounterBlueprintData_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.AddTurns``1(``0,List{List{DiskCardGame.EncounterBlueprintData.CardBlueprint}})">AddTurns&lt;T&gt;(T, List&lt;List&lt;EncounterBlueprintData.CardBlueprint&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T AddTurns&lt;T&gt;(this T blueprint, List&lt;List&lt;EncounterBlueprintData.CardBlueprint&gt;&gt; turns)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;&gt;</td>
+        <td><span class="parametername">turns</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_CreateTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.CreateTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_CreateTurn__1___0_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.CreateTurn``1(``0)">CreateTurn&lt;T&gt;(T)</h4>
+  <div class="markdown level1 summary"><p>Creates a new turn for this encounter and returns the builder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TurnBuilder&lt;T&gt; CreateTurn&lt;T&gt;(this T blueprint)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.TurnBuilder-1.html">TurnBuilder</a>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurn_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurn(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32)">DuplicateTurn(List&lt;EncounterBlueprintData.CardBlueprint&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Duplicates a list representing a turn the specified number of times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt;[] DuplicateTurn(this List&lt;EncounterBlueprintData.CardBlueprint&gt; list, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The list to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How many times the list should be duplicated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;[]</td>
+        <td><p>An array containing the newly duplicated lists. Use with EncounterBlueprintData.AddTurns().</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_DuplicateTurns__1___0_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.DuplicateTurns``1(``0,System.Int32)">DuplicateTurns&lt;T&gt;(T, Int32)</h4>
+  <div class="markdown level1 summary"><p>Duplicates the contents of the turn plan into itself the specified number of times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T DuplicateTurns&lt;T&gt;(this T blueprint, int amount)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_GetTriggeringNPC_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_GetTriggeringNPC_GBC_GBCEncounterManager_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.GetTriggeringNPC(GBC.GBCEncounterManager)">GetTriggeringNPC(GBCEncounterManager)</h4>
+  <div class="markdown level1 summary"><p>Gets information about the NPC that triggered the current battle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CachedGCBNPCDescriptor GetTriggeringNPC(this GBCEncounterManager mgr)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GBC.GBCEncounterManager</span></td>
+        <td><span class="parametername">mgr</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.CachedGCBNPCDescriptor.html">CachedGCBNPCDescriptor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_OpponentById_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.OpponentById*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_OpponentById_System_Collections_IEnumerable_InscryptionAPI_Encounters_OpponentManager_FullOpponent__DiskCardGame_Opponent_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.OpponentById(System.Collections.IEnumerable{InscryptionAPI.Encounters.OpponentManager.FullOpponent},DiskCardGame.Opponent.Type)">OpponentById(IEnumerable&lt;OpponentManager.FullOpponent&gt;, Opponent.Type)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent OpponentById(this IEnumerable&lt;OpponentManager.FullOpponent&gt; opponents, Opponent.Type id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a>&gt;</td>
+        <td><span class="parametername">opponents</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.Opponent.Type</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.Int32,System.Int32)">SetDifficulty(EncounterBlueprintData.CardBlueprint, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the minimum and maximum difficulty values for this CardBlueprint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EncounterBlueprintData.CardBlueprint SetDifficulty(this EncounterBlueprintData.CardBlueprint card, int min, int max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The CardBlueprint to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum difficulty for this card to appear.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum difficulty for this card to appear at.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><p>The same CardBlueprint so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetDifficulty__1___0_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetDifficulty``1(``0,System.Int32,System.Int32)">SetDifficulty&lt;T&gt;(T, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the difficulty range of this encounter.<br>
+Difficulty is determined by the formula (6 * <code>tier</code>) + <code>battle#</code> + <code>modifier</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetDifficulty&lt;T&gt;(this T blueprint, int min, int max)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum difficulty.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum difficulty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetNewSequencer_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetNewSequencer*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetNewSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_System_String_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetNewSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent,System.String,System.String,Type)">SetNewSequencer(OpponentManager.FullOpponent, String, String, Type)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent SetNewSequencer(this OpponentManager.FullOpponent opp, string pluginGuid, string sequencerName, Type sequencerType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td><span class="parametername">opp</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pluginGuid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sequencerName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">sequencerType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetOpponent_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetOpponent*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetOpponent_InscryptionAPI_Encounters_OpponentManager_FullOpponent_Type_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetOpponent(InscryptionAPI.Encounters.OpponentManager.FullOpponent,Type)">SetOpponent(OpponentManager.FullOpponent, Type)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent SetOpponent(this OpponentManager.FullOpponent opp, Type opponentType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td><span class="parametername">opp</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">opponentType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetRedundantAbilities_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRedundantAbilities*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetRedundantAbilities__1___0_DiskCardGame_Ability___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRedundantAbilities``1(``0,DiskCardGame.Ability[])">SetRedundantAbilities&lt;T&gt;(T, Ability[])</h4>
+  <div class="markdown level1 summary"><p>Adds redundant abilities to this region.<br>
+Redundant abilities will not be used on totems for this encounter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetRedundantAbilities&lt;T&gt;(this T blueprint, params Ability[] abilities)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.Ability</span>[]</td>
+        <td><span class="parametername">abilities</span></td>
+        <td><p>The abilities to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetRegionSpecific_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetRegionSpecific__1___0_System_Boolean_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetRegionSpecific``1(``0,System.Boolean)">SetRegionSpecific&lt;T&gt;(T, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetRegionSpecific&lt;T&gt;(this T blueprint, bool enabled)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">enabled</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetReplacement*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetReplacement_DiskCardGame_EncounterBlueprintData_CardBlueprint_System_String_System_Int32_System_Boolean_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetReplacement(DiskCardGame.EncounterBlueprintData.CardBlueprint,System.String,System.Int32,System.Boolean)">SetReplacement(EncounterBlueprintData.CardBlueprint, String, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets whether what card the CardBlueprint will be replaced with if difficultyReplace == true, and what difficulty threshold it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EncounterBlueprintData.CardBlueprint SetReplacement(this EncounterBlueprintData.CardBlueprint blueprint, string replacementName, int requiredDifficulty = 0, bool replaceWithDifficulty = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td><p>The CardBlueprint to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">replacementName</span></td>
+        <td><p>The name of the card that will replace this card.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">requiredDifficulty</span></td>
+        <td><p>The minimum difficulty for the card to be replaced.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">replaceWithDifficulty</span></td>
+        <td><p>Whether this card will be replaced at certain difficulties.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><p>The same CardBlueprint so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetSequencer*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetSequencer_InscryptionAPI_Encounters_OpponentManager_FullOpponent_System_String_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetSequencer(InscryptionAPI.Encounters.OpponentManager.FullOpponent,System.String)">SetSequencer(OpponentManager.FullOpponent, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OpponentManager.FullOpponent SetSequencer(this OpponentManager.FullOpponent opp, string sequenceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td><span class="parametername">opp</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sequenceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetTurnDifficulty_List_DiskCardGame_EncounterBlueprintData_CardBlueprint__System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetTurnDifficulty(List{DiskCardGame.EncounterBlueprintData.CardBlueprint},System.Int32,System.Int32)">SetTurnDifficulty(List&lt;EncounterBlueprintData.CardBlueprint&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the difficulties of each CardBlueprint in the list to the specified values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; SetTurnDifficulty(this List&lt;EncounterBlueprintData.CardBlueprint&gt; list, int min, int max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="parametername">list</span></td>
+        <td><p>The list to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">min</span></td>
+        <td><p>The minimum difficulty.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">max</span></td>
+        <td><p>The maximum difficulty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><p>The same list so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SetUnlockedCardPrerequisites__1___0_System_String___" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SetUnlockedCardPrerequisites``1(``0,System.String[])">SetUnlockedCardPrerequisites&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetUnlockedCardPrerequisites&lt;T&gt;(this T blueprint, params string[] cards)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">cards</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties*"></a>
+  <h4 id="InscryptionAPI_Encounters_EncounterExtensions_SyncTurnDifficulties__1___0_System_Int32_System_Int32_" data-uid="InscryptionAPI.Encounters.EncounterExtensions.SyncTurnDifficulties``1(``0,System.Int32,System.Int32)">SyncTurnDifficulties&lt;T&gt;(T, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the difficulty values of all CardBlueprints in the turn plan to the same values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SyncTurnDifficulties&lt;T&gt;(this T blueprint, int minDifficulty, int maxDifficulty)
+    where T : EncounterBlueprintData</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">blueprint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minDifficulty</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxDifficulty</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Inscryption Modding Wiki | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Inscryption Modding Wiki | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="inscryption-modding-wiki">Inscryption Modding Wiki</h2>
+
+<hr>
+<p>Welcome to the modding wiki!  This document will help familiarise you with modding Inscryption using the Inscryption API.
+Here you will find in-depth information on the API&#39;s numerous features, both what they do and how you can use them.</p>
+<p>For a full list of API classes and members, or are looking for more technical information, you can look at the documentation section.</p>
+<h2 id="game-tweaks">Game Tweaks</h2>
+<hr>
+<p>Included with the API are a number of game changes for aiding with multi-Act support and further modding customisation.</p>
+<p>The API package also comes with a second DLL consisting of multiple community patches, either fixing bugs or providing QoL changes for the game.</p>
+<h3 id="card-cost-displays">Card Cost Displays</h3>
+<p>Cards in Acts 1 and 2 can now display multiple costs at the same time, and cards in Act 1 can now display Energy and Mox costs.</p>
+<h3 id="energy-drone-in-act-onekaycees-mod">Energy Drone in Act One/Kaycee&#39;s Mod</h3>
+<p>With the API installed, Act 3&#39;s energy management drone can be made available in Act 1 and in Kaycee&#39;s Mod. It will appear automatically if any cards with an energy or gem cost are in the Act 1 card pool, and can be forced to appear by modifying the configuration for the API.</p>
+<p>The energy and mox displays will appear on the battle scales by default; this can be changed in the configuration file.</p>
+<p>You can also force these drones to appear in different sections of the game by overriding the following values:</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.ResourceManagers;
+
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigEnergy = true; // Enables energy
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDrone = true; // Makes the drone appear
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigMox = true; // Enables Mox management
+EnergyDrone.ZoneConfigs[CardTemple.Nature].ConfigDroneMox = true; // Makes the Mox drone appear
+</code></pre><p>Currently, the only zones where these settings will have any effect are CardTemple.Nature (Leshy&#39;s cabin) and CardTemple.Undead (Grimora&#39;s cabin).</p>
+<h3 id="bones-display-in-act-three--p03-in-kaycees-mod">Bones Display in Act Three / P03 in Kaycee&#39;s Mod</h3>
+<p>With the API installed, a separate bones displayer can be made available in Act 3. It will appear automatically if any cards with a bones cost are in the Act 3 card pool, and can be forced to appear by modifying the configuration for the API. This displayer appears as a TV screen hanging on the resource drone below the Gems module.</p>
+<p>You can also force this to be active using code:</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.ResourceManagers;
+
+Act3BonesDisplayer.ForceBonesDisplayActive = true; // Forces the bones TV screen to be visible in act 3.
+</code></pre><p>If the bones TV screen is active, a bolt will also be dropped on top of each card that dies in-game (the same way that bone tokens are dropped on top of cards that die in Leshy&#39;s cabin).</p>
+<h3 id="deathshield-ability-behaviour">DeathShield Ability Behaviour</h3>
+<p>The API changes how DeathShield (aka Nano Armour/Armoured) functions, with the ability now being attached to a custom ability behaviour  &#39;APIDeathShield&#39; that inherits from DamageShieldBehaviour (more info further below).</p>
+<h2 id="extra-alternate-portraits">Extra Alternate Portraits</h2>
+<hr>
+<p>In Inscryption, there are some situations where a card&#39;s portrait is changed.
+SteelTrap, for example, changes the base card&#39;s portrait to the &#39;closed trap&#39; portrait, and Mud Turtle switches its portrait upon losing its shield.
+However, these cases are very limited; SteelTrap changes <em>all</em> cards to the closed trap portrait, even if it&#39;s not on the vanilla trap card;
+and only Mud Turtle can change its portrait upon losing its shield.</p>
+<p>So the API changes this. Each added CardInfo can now be assigned custom sprites specific to the effects of SteelTrap and losing a shield, using SetSteelTrapPortrait() and SetBrokenShieldPortrait() respectively.
+These are stored separately from a card&#39;s base portrait and alternate portrait, giving you greater freedom in what cards you can make.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Setter Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PixelAlternatePortrait</td>
+<td>The portrait used when calling SwitchToAlternatePortrait in Act 2.</td>
+<td>SetPixelAlternatePortrait</td>
+</tr>
+<tr>
+<td>SteelTrapPortrait</td>
+<td>The portrait used when the Steel Trap sigil activates.</td>
+<td>SetSteelTrapPortrait, SetEmissiveSteelTrapPortrait, SetPixelSteelTrapPortrait</td>
+</tr>
+<tr>
+<td>BrokenShieldPortrait</td>
+<td>The portrait used when this card has lost all of its shields.</td>
+<td>SetBrokenShieldPortrait, SetEmissiveBrokenShieldPortrait, SetPixelBrokenShieldPortrait</td>
+</tr>
+<tr>
+<td>SacrificablePortrait</td>
+<td>The portrait used when this card is on the board and the player is choosing sacrifices.</td>
+<td>SetSacrificablePortrait, SetEmissiveSacrificablePortrait, SetPixelSacrificablePortrait</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part2modular">Part2Modular</h2>
+<p>The API adds a custom AbilityMetaCategory called Part2Modular, accessible from the AbilityManager.</p>
+<p>This metacategory is used in the community patches to determine what sigils the Amorphous sigil can become while in Act 2, but is otherwise free for you to use.</p>
+<p>A number of vanilla sigils have been marked with this metacategory by default.</p>
+<h2 id="core-features">Core Features</h2>
+<hr>
+<h3 id="extending-enumerations">Extending Enumerations</h3>
+<p>The base game uses a number of hard-coded lists, called &#39;Enumerations&#39; or &#39;Enums&#39;, to manage behaviors. For example, the ability &quot;Brittle&quot; is assigned to a card using the enumerated value Ability.Brittle. We can expand these lists, but it requires care, and it is managed by the GuidManager class. This handles the creation of new enumerations and making sure those are handled consistently across mods.</p>
+<p>Lets say that you want to create a new story event. These are managed by the enumeration StoryEvent. To create a new story event, you should use this pattern to create a single static reference to that new value:</p>
+<pre><code class="lang-c#">public static readonly StoryEvent MyEvent = GuidManager.GetEnumValue&lt;StoryEvent&gt;(MyPlugin.guid, &quot;MyNewStoryEvent&quot;);
+</code></pre><p>GuidManager requires you to give it the GUID of your plugin as well as a friendly name for the value you want to create (the plugin GUID is required to avoid issues if multiple mods try to create a new value with the same name).</p>
+<p>If you want to get a value that was created by another mod (for example: you want to make a card that uses an ability created by another mod), you can follow this exact same pattern. You just need to know the plugin GUID for the mod that it is contained in:</p>
+<pre><code class="lang-c#">public static readonly Ability OtherAbility = GuidManager.GetEnumValue&lt;Ability&gt;(&quot;other.mod.plugin.guid&quot;, &quot;Ability Name&quot;);
+</code></pre><p>All of these values are stored in the modded save file.</p>
+<h3 id="custom-game-save-data">Custom Game Save Data</h3>
+<p>If your mod needs to save data, the ModdedSaveManager class is here to help. There are two chunks of extra save data that you can access here: &#39;SaveData&#39; (which persists across runs) and &#39;RunState&#39; (which is reset on every run). Note that these require you to pass in a GUID, which should be your mod&#39;s plugin GUID, and an arbitrary key, which you can select for each property to you want to save.</p>
+<p>The easiest way to use these helpers is to map them behind static properties, like so:</p>
+<pre><code class="lang-c#">public static int NumberOfItems
+{
+    get { return ModdedSaveManager.SaveData.GetValueAsInt(Plugin.PluginGuid, &quot;NumberOfItems&quot;); }
+    set { ModdedSaveManager.SaveData.SetValue(Plugin.PluginGuid, &quot;NumberOfItems&quot;, value); }
+}
+</code></pre><p>When written like this, the static property &quot;NumberOfItems&quot; now automatically syncs to the save file.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

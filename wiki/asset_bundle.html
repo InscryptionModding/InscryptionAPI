@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Asset Bundles | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Asset Bundles | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="asset-bundles">Asset Bundles</h2>
+
+<hr>
+<p>Asset bundles are how you can import your own models, textures, gameobjects and more into Inscryption.</p>
+<p>Think of them as fancy .zip&#39;s that are supported by Unity.</p>
+<h3 id="making-asset-bundles">Making Asset Bundles</h3>
+<ol>
+<li>Make a Unity project. Make sure you are using 2019.4.24f1 or your models will not show in-game.</li>
+<li>Install the AssetBundleBrowser package. (Window-&gt;Package Manager)</li>
+<li>Select the assets you want to be in the bundle (They need to be in the hierarchy, not in a scene!)</li>
+<li>At the bottom of the Inspector window you&#39;ll see a section labedled &quot;Asset Bundle&quot;</li>
+<li>Assign a new asset bundle name (example: testbundleexample)</li>
+<li>Build Asset bundles Window-&gt;AssetBundle Browser</li>
+<li>Go to the output path using file explorer</li>
+<li>There should be a file called &#39;testbundleexample&#39; in that folder (It will not have an extension!)</li>
+<li>Copy this file into your mod folder</li>
+</ol>
+<h3 id="loading-asset-bundles">Loading Asset Bundles</h3>
+<pre><code class="lang-csharp">if (AssetBundleHelper.TryGet&lt;GameObject&gt;(&quot;pathToBundleFile&quot;, &quot;nameOfPrefabInsideAssetBundle&quot;, out GameObject prefab))
+{
+    GameObject clone = GameObject.Instantiate(prefab);
+    // Do things with gameobject!
+}
+</code></pre><p>First parameter is the path to the asset bundle that we copied to your mod folder in #9.</p>
+<p>Second parameter is the name of the prefab or texture... etc that you changed to have the asset bundle name in #4.</p>
+<p>Third parameter is the result of taking the object out of the asset bundle.</p>
+<p><strong>NOTE</strong>: Getting a prefab from an asset bundle does not load it into the world. You need to clone it with Instantiate! </p>
+<p><strong>NOTE 2</strong>: If the GameObject is being created but the model isn&#39;t showing up in-game, make sure you are using Unity 2019.4.24f1 to build the asset bundle; the model will not show up otherwise!</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

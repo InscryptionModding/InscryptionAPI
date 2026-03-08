@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Custom Card Costs | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Custom Card Costs | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="custom-card-costs">Custom Card Costs</h2>
+
+<hr>
+<p>In Inscryption, the player will encounter four different resources as they play: Blood, Bones, Energy, and Mox/Gems.
+These resources are needed in order to play cards with the corresponding card cost, with most cards costing at least one of these four costs.
+With the API, it&#39;s possible to create cards that cost multiple types of resources, giving modders greater creativity when creating cards.</p>
+<p>There may come a time where the base costs don&#39;t meet your needs. Or maybe you just want to make a new cost.
+Regardless of reason, the API provides a few ways of creating a basic card cost using the CardCostManager.</p>
+<p>The community patches contain a TestCost class that implements many of the features this page will cover.</p>
+<h3 id="creating-a-new-cost">Creating a New Cost</h3>
+<p>To create a new card cost, you need to create a new class that inherits from the API&#39;s <a href="InscryptionAPI.CardCosts.CustomCardCost">CustomCardCost</a> class.</p>
+<p>The CustomCardCost class provides you with the basic functionality to ensure your cost works.
+Note that the API does not provide support for custom cost resources, so you will need to create the logic for it yourself through patching.</p>
+<p>Once you have created your cost&#39;s class, you need to register it with the API.
+An example for all this can be found below:</p>
+<pre><code class="lang-c#">// for simplicity, this cost replicates the logic by the energy cost
+public class MyCardCost : CustomCardCost
+{
+    // this is a required field, and should be equal to the name you pass into the API when registering your cost
+    public override string CostName =&gt; &quot;TestCost&quot;;
+
+    // whether or not this cost&#39;s price has been satisfied by the card
+    public override bool CostSatisfied(int cardCost, PlayableCard card)
+    {
+        // if the player has enough energy to pay the cost
+    // takes the vanilla energy cost into account
+        return cardCost &lt;= (ResourcesManager.Instance.PlayerEnergy - card.EnergyCost);
+    }
+
+    // the dialogue that&#39;s played when you try to play a card with this cost, and CostSatisfied is false
+    public override string CostUnsatisfiedHint(int cardCost, PlayableCard card)
+    {
+        return $&quot;Eat your greens aby. {card.Info.DisplayedNameLocalized}&quot;;
+    }
+
+    // this is called after a card with this cost resolves on the board
+    // if your cost spends a resource, this is where you&#39;d put that logic
+    public override IEnumerator OnPlayed(int cardCost, PlayableCard card)
+    {
+        // reduce the player&#39;s current energy by the card&#39;s cost
+        yield return ResourcesManager.Instance.SpendEnergy(cardCost);
+    }
+}
+
+public void AddCost()
+{
+    // when registering your card, you need to provide 2 Func&#39;s: one for grabbing the cost texture in the 3D Acts, and one for grabbing the pixel texture in Act 2
+    // if your cost is exclusive to one part of the game, you can pass in null for the appropriate Func.
+    CardCostManager.Register(&quot;api&quot;, &quot;TestCost&quot;, typeof(TestCost), TextureMethod, PixelTextureMethod);
+}
+</code></pre><p>When registering your cost, you can pass a static method for the Func&#39;s instead of creating a delegate.
+These methods MUST have 3 parameters types: int, CardInfo, PlayableCard; and return a Texture2D.</p>
+<p>The int parameter represents the card&#39;s cost, and the CardInfo and PlayableCard parameters represent the current CardInfo and PlayableCard being checked. Note that the PlayableCard parameter can be null</p>
+<pre><code class="lang-c#">public static Texture2D TextureMethod(int cardCost, CardInfo info, PlayableCard card)
+{
+    return TextureHelper.GetImageAsTexture($&quot;myCost_{cardCost}&quot;);
+}
+
+public static Texture2D PixelTextureMethod(int cardCost, CardInfo info, PlayableCard card)
+{
+    return TextureHelper.GetImageAsTexture($&quot;myCost_pixel_{cardCost}&quot;);
+
+    // if you want the API to handle adding stack numbers, you can instead provide a 7x8 texture like so:
+    // return Part2CardCostRender.CombineIconAndCount(cardCost, TextureHelper.GetImageAsTexture(&quot;myCost_pixel_7x8&quot;));
+}
+</code></pre><p>Card cost textures vary based on what part of the game the cost will be displayed in.
+For Act 1, textures must be 64x28. In Act 2 they can be 30x8 at maximum or 7x8 (see above). Act 3 has no set size but they should be no larger than 300x78.</p>
+<h3 id="negative-costs-cost-tier-and-turn-2-play">Negative Costs, Cost Tier, and Turn 2 Play</h3>
+<p>The API allows you to define whether or not negative cost values should be considered in the game.
+This is false by default, meaning negative costs on cards will be read as 0 by the API (the actual assigned value is not changed).</p>
+<p>You can use SetCanBeNegative to change this value, or directly modify the CanBeNegative field.</p>
+<p>Cost tier is an integer denoting how expensive a card is, with each cost having its own formula that adds to the tier.
+From example, the formula for Bones&#39; tier is (amount / 3), rounded down.</p>
+<p>By default, custom costs are not accounted when determining a card&#39;s cost tier;
+this can be fixed using SetCostTier to define the function to use.</p>
+<pre><code class="lang-c#">public static void Init()
+{
+    FullCardCost cost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost&quot;, typeof(TestCost), Texture3D, TexturePixel);
+
+    cost.SetCostTier(CostTier);
+}
+
+public static int CostTier(int amount)
+{
+    return Mathf.FloorToInt(amount / 2f);
+}
+</code></pre><p>A vital part of Inscryption&#39;s gameplay is the fair hand mechanic;
+when a battle starts, the game will give you at least one card that can be played immediately, as well as a card that can be played by the second turn.</p>
+<p>By default, when the game checks if a card with custom costs can be played by turn 2, it will return 2 - even if it can&#39;t be.</p>
+<p>To fix this, you&#39;ll need to set your cost&#39;s CanBePlayedByTurn2WithHand function (long name, I know):</p>
+<pre><code class="lang-c#">public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost&quot;, typeof(TestCost), Texture3D, TexturePixel);
+    fullCardCost.SetCanBePlayedByTurn2WithHand(CanBePlayed);
+}
+
+// amount is the card&#39;s cost amount, and hand is the list of cards in the player&#39;s hand
+public static bool CanBePlayed(int amount, CardInfo card, List&lt;CardInfo&gt; hand)
+{
+    // TestCost is just a copy of Energy, so any card that costs 2 or less will be playable by turn 2
+    return amount &lt;= 2;
+}
+</code></pre><h3 id="cost-choice-nodes">Cost Choice Nodes</h3>
+<p>If you want your cost to be chooseable in Act 1 at cost choice nodes, the API provides a method to do so:</p>
+<pre><code class="lang-c#">public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost&quot;, typeof(TestCost), Texture3D, TexturePixel);
+
+    // if true, assigns a custom ResourceType to the cost, letting it be found at cost choice nodes.
+    // rewardBack is the texture that will be displayed at the choice node, and is 125 x 190 in size
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBack: (Texture2D)ResourceBank.Get&lt;Texture&gt;(&quot;Art/Cards/RewardBacks/card_rewardback_bird&quot;));
+}
+</code></pre><p>Looking at the code above, you may be wondering what a ResourceType is.
+To put it simply, the ResourceType is used by the game to determine what costs will be offered to the player, and then is used to determine what cards the player can receive.</p>
+<h4 id="different-resource-amounts">Different Resource Amounts</h4>
+<p>Alongside a ResourceType, the game can further distinguish between different amounts of that resource when offering choices.
+By default, a custom cost at the choice node will give you any valid card with that cost, regardless of how many resources it needs.</p>
+<p>This is similar to how Bones and Energy are handled, but what if you want your cost to be handled like Blood?
+Being able to choose being a card that costs 1, 2, or 3 of your cost?
+Well, all you need to do is use a variant of SetFoundAtChoiceNodes like so:</p>
+<pre><code class="lang-c#">public static void Init()
+{
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost&quot;, typeof(TestCost), Texture3D, TexturePixel);
+
+    // in this version of the method, you must provide a Func instead of a Texture2D.
+    // this Func will be used to determine the correct rewardback texture to use for each different valid amount.
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBackFunc: GetRewardBack, 1, 2, 4);
+
+    // next time we go to a cost choice node, we may be able to choose between cards that cost 1, 2, or 4 TestCost.
+}
+</code></pre><p>Alternatively, you can set the FullCardCost object&#39;s &#39;ChoiceAmounts&#39; field to an integer array containing the amounts.</p>
+<h4 id="grouping-different-costs">Grouping Different Costs</h4>
+<p>In the event you&#39;re adding multiple custom costs to the game, you may want to group them all into a single choice.
+Maybe they&#39;re all related to each other, or you don&#39;t want to push out other choices at the node.
+Either way, the API offers this functionality.</p>
+<pre><code class="lang-c#">private void Example()
+{
+    FullCardCost cost = CardCostManager.Register(...);
+    cost.ChoiceAmounts = new int[] { 1, 4, 7 };
+}
+</code></pre><p>In order to group custom costs together, they must share the same ResourceType value.</p>
+<pre><code class="lang-c#">public static void Init()
+{
+    // firstly, we&#39;ll want to mark one of our costs as chooseable
+    CardCostManager.FullCardCost fullCardCost = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost&quot;, typeof(TestCost), Texture3D, TexturePixel);
+    fullCardCost.SetFoundAtChoiceNodes(isChoice: true, rewardBack: (Texture2D)ResourceBank.Get&lt;Texture&gt;(&quot;Art/Cards/RewardBacks/card_rewardback_bird&quot;));
+
+    // then when creating subsequent costs, we want to set their ResourceType to the same one being used by our first cost
+    CardCostManager.FullCardCost fullCardCost2 = CardCostManager.Register(InscryptionAPIPlugin.ModGUID, &quot;TestCost2&quot;, typeof(TestCost2), Texture3D2, TexturePixel2);
+    fullCardCost2.ResourceType = fullCardCost.ResourceType;
+}
+</code></pre><p>Note that grouped costs are incompatible with multiple-amount costs, meaning if one of the grouped costs has different possible choice amounts defined, they will be ignored.</p>
+<h3 id="adding-costs-to-cards">Adding Costs to Cards</h3>
+<p>Custom costs are added to cards using the API&#39;s extended properties system and can be accessed the same way.
+For clarity of purpose, the API provides some extension methods for setting a CardInfo&#39;s custom cost:</p>
+<pre><code class="lang-c#">public void AddCard()
+{
+    CardInfo info = CardManager.New(&quot;myMod&quot;, &quot;custom_card&quot;, &quot;Card&quot;, 1, 1);
+    info.SetCustomCost(&quot;TestCost&quot;, 1);
+
+    int cost = info.GetCustomCost(&quot;Test&quot;) // equal to 1
+}
+</code></pre><h3 id="custom-costs-for-death-cards">Custom Costs for Death Cards</h3>
+<p>Death cards aren&#39;t technically cards; they&#39;re card mods that are added to a template card.</p>
+<p>Because of this, simply adding an extended property to them won&#39;t work, since properties apply to ALL copies of the card.
+If you want to create a death card that uses a custom play cost, you&#39;ll need to create a new card and then add properties to that new CardInfo.</p>
+<p>Fortunately, the API&#39;s DeathCardManager is here to handle all this.
+CreateCustomDeathCard() will return a new CardInfo that will represent your custom death card, using the data from the CardModificationInfo you give it to set the card&#39;s name, stats, etc..</p>
+<pre><code class="lang-c#">private void AddCustomDeathCard()
+{
+    CardModificationInfo deathCardMod = new CardModificationInfo(2, 2)
+        .SetNameReplacement(&quot;Mabel&quot;).SetSingletonId(&quot;wstl_mabel&quot;)
+        .SetBonesCost(2).AddAbilities(Ability.SplitStrike)
+        .SetDeathCardPortrait(CompositeFigurine.FigurineType.SettlerWoman, 5, 2)
+        .AddCustomCostId(&quot;CustomCost&quot;, 1);
+
+    // you can then add your newly created death card to the list of default death card mods like so
+    DeathCardManager.AddDefaultDeathCard(deathCardMod);
+}
+</code></pre><h2 id="further-functionality">Further Functionality</h2>
+<p>In older versions of the API, adding custom costs (or their textures at least) was handled by the community patches.</p>
+<p>These methods still exist for use, and this section will go over how to use them to add cost textures the old way.</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+Part1CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;) ?? 0; // GetExtensionPropertyAsInt can return null, so remember to check for that
+    if (myCustomCost &gt; 0)
+        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}.png&quot;));
+}
+</code></pre><p>For adding custom costs to Act 2, you have two main ways of going about it:</p>
+<pre><code class="lang-c#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+// if you want the API to handle adding stack numbers, provide a - 7x8 - texture representing your cost&#39;s icon.
+Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost_pixel&quot;) ?? 0;
+    if (myCustomCost &gt; 0)
+    {
+        Texture2D customCostTexture = TextureHelper.GetImageAsTexture($&quot;custom_cost_pixel.png&quot;);
+        costs.Add(Part2CardCostRender.CombineIconAndCount(myCustomCost, customCostTexture));
+    }
+}
+
+// if you want more control over your cost&#39;s textures, or don&#39;t want to use stack numbers, provide a - 30x8 - texture for your custom cost.
+Part2CardCostRender.UpdateCardCost += delegate(CardInfo card, List&lt;Texture2D&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost_pixel&quot;) ?? 0;
+    if (myCustomCost &gt; 0)
+    {
+        costs.Add(TextureHelper.GetImageAsTexture($&quot;custom_cost_{myCustomCost}_pixel.png&quot;));
+    }
+}
+</code></pre><h3 id="act-3">Act 3</h3>
+<p>Card costs in Act 3 are a tad more complex since Act 3 cards display costs as 3D objects rather than simply flat textures.</p>
+<p>In practice, this means that you have more control over a cost&#39;s appearance than in other acts.</p>
+<p>There are two custom cost events to hook into:
+<code>Part3CardCostRender.UpdateCardCostSimple</code> provides a quick way to provide/modify the cost textures that will be rendered on the card.
+<code>Part3CardCostRender.UpdateCardCostComplex</code> provides more advanced functionality, letting you modify a custom cost&#39;s <code>GameObject</code> directly, allowing you to attach any arbitrary amount of further objects/components as you wish.</p>
+<h4 id="basic-card-cost">Basic Card Cost</h4>
+<p>If you just want to display a basic card cost, all you need to do is prepare an icon that represents a single unit of your custom cost. For example, if you are building a custom cost for currency, you need an icon that represents spending one currency (for example, a <code>$</code> symbol). The width and height of the icon are up to you, but keep in mind that they will be placed onto a region that is 300x73 pixels, so the height should not exceed 73 pixels, and the wider the icon is, the fewer will fit on the space.</p>
+<p>The <code>Part3CardCostRender.GetIconifiedCostTexture</code> helper method accepts one of these icons as well as a cost value and generates a pair of textures displaying that total cost. The first texture is the default texture (albedo) and the second is an emissive texture. If there is enough space in the 300x73 region to repeat the icon enough times to display the cost, it will do so. Otherwise, it will render a 7-segement display.</p>
+<p>In the &quot;currency cost&quot; example, where the icon is the <code>$</code> symbol:</p>
+<ul>
+<li>A cost of 3 would be rendered as <code>$$$</code></li>
+<li>A cost of 10 would be rendered as <code>$ x10</code></li>
+</ul>
+<p>From here, you just need to hook into the event. Each custom cost is represented by a <code>CustomCostRenderInfo</code> object, which holds the textures and game objects that will become the cost rendering on the card. Each of these objects needs a unique identifier so the can be found later. In this simple example, that identifier isn&#39;t particularly useful because we won&#39;t use the second part of the event, but it&#39;s still required.</p>
+<pre><code class="lang-C#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+
+MyIconTexture = TextureHelper.GetImageAsTexture(&quot;cost_icon.png&quot;);
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    int myCustomCost = card.GetExtensionPropertyAsInt(&quot;myCustomCardCost&quot;);
+    costs.add(new (&quot;MyCustomCost&quot;, Part3CardCostRender.GetIconifiedCostTexture(MyIconTexture, myCustomCost)));
+}
+</code></pre><h3 id="advanced-card-costs">Advanced Card Costs</h3>
+<p>You can also directly modify the card costs by adding new game objects to them, using the <code>UpdateCardCostComplex</code> event. This gives you complete creative freedom, but does require you to truly understand the Unity engine to be able to make it work.</p>
+<p>To do this, don&#39;t add any textures to the render info during the first event. You can then access the <code>GameObject</code> during the second event and do whatever you want:</p>
+<pre><code class="lang-C#">using InscryptionCommunityPatch.Card;
+using InscryptionAPI.Helpers;
+using UnityEngine;
+
+Part3CardCostRender.UpdateCardCostSimple += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    costs.add(new (&quot;MyCustomCost&quot;));
+}
+
+Part3CardCostRender.UpdateCardCostComplex += delegate(CardInfo card, List&lt;Part3CardCostRender.CustomCostRenderInfo&gt; costs)
+{
+    GameObject costObject = costs.Find(c =&gt; c.name.Equals(&quot;MyCustomCost&quot;)).CostContainer;
+    // Now I can add things to the cost object directly.
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

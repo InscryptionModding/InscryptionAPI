@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Triggers and Order of Operations | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Triggers and Order of Operations | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="triggers-and-order-of-operations">Triggers and Order of Operations</h2>
+
+<p>This article is for modders looking for specific information on the order triggers are called in various contexts.
+The information presented here is fairly technical and dry, and assumes you have an understanding of how Inscryption&#39;s code works.</p>
+<p>Triggers are listed in the order they are called, with the first entry being the first trigger called and the last entry being the last trigger called.</p>
+<p>Custom triggers start with the letter &#39;I&#39; and are implemented via interfaces, and the rest are vanilla triggers.</p>
+<h2 id="card-damage">Card Damage</h2>
+<p>Handled by <code>PlayableCard.TakeDamage</code>, <code>ShieldManager.TriggerBreakShield</code>, and <code>ShieldManager.BreakShield</code>.</p>
+<p>Cards with shields only call the first four triggers listed.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IModifyDamageTaken</td>
+<td style="text-align:left">Sets the damage amount to the returned value</td>
+</tr>
+<tr>
+<td style="text-align:left">IPreTakeDamage</td>
+<td style="text-align:left">Called before shields are checked</td>
+</tr>
+<tr>
+<td style="text-align:left">IShieldPreventedDamage</td>
+<td style="text-align:left">Only called when a card has a shield</td>
+</tr>
+<tr>
+<td style="text-align:left">IShieldPreventedDamageInHand</td>
+<td style="text-align:left">Only called when a card has a shield <br><br> Called on cards in the player&#39;s hand</td>
+</tr>
+<tr>
+<td style="text-align:left">OnTakeDamage</td>
+<td style="text-align:left">Called for cards without shields</td>
+</tr>
+<tr>
+<td style="text-align:left">OtherCardDealtDamage</td>
+<td style="text-align:left">Called after <code>PlayableCard.Die</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnOtherCardDealtDamageInHand</td>
+<td style="text-align:left">Called on card&#39;s in the player&#39;s hand</td>
+</tr>
+</tbody>
+</table>
+<h2 id="card-death">Card Death</h2>
+<p>Handled by <code>PlayableCard.Die</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OnPreDeathAnimation</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">OnOtherCardPreDeath</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnOtherCardPreDeathInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand</td>
+</tr>
+<tr>
+<td style="text-align:left">OnOtherCardDie</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnOtherCardDieInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand</td>
+</tr>
+</tbody>
+</table>
+<h2 id="card-drawing">Card Drawing</h2>
+<p>Handled by <code>PlayerHand.AddCardToHand</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OnDrawn</td>
+<td style="text-align:left">Called before a card is added to <code>cardsInHand</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OnOtherCardDrawn</td>
+<td style="text-align:left">Called before a card is added to <code>cardsInHand</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnAddedToHand</td>
+<td style="text-align:left">Called after a card is added to <code>cardsInHand</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOtherCardAddedToHand</td>
+<td style="text-align:left">Called after a card is added to <code>cardsInHand</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="card-playing">Card Playing</h2>
+<p>Handled by <code>BoardManager.TransitionAndResolveCreatedCard</code>, <code>BoardManager.ResolveCardOnBoard</code>, and <code>BoardManager.AssignCardToSlot</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OnOtherCardAssignedToSlot</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnCardAssignedToSlotContext</td>
+<td style="text-align:left">Provides information on new and old slot</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnOtherCardAssignedToSlotInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnCardAssignedToSlotNoResolve</td>
+<td style="text-align:left">Only called if assigned card was already resolved</td>
+</tr>
+<tr>
+<td style="text-align:left">OnResolveOnBoard</td>
+<td style="text-align:left">Called when a card is played from the hand or queue</td>
+</tr>
+<tr>
+<td style="text-align:left">OnOtherCardResolve</td>
+<td style="text-align:left">Called when a card is played from the hand or queue</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnOtherCardResolveInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand <br><br> Called when a card is played from the hand or queue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="combat-phase">Combat Phase</h2>
+<p>Handled by <code>CombatPhaseManager.DoCombatPhase</code>, <code>CombatPhaseManager.SlotAttackSequence</code>, and <code>CombatPhaseManager.SlotAttackSlot</code>.</p>
+<p><code>SlotAttackSequence</code> is called for every attacking card, then <code>SlotAttackSlot</code> is called for every time a card attacks.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IOnBellRun</td>
+<td style="text-align:left">Called before <code>DoCombatPhase</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPreSlotAttackSequence</td>
+<td style="text-align:left">Called before <code>SlotAttackSequence</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IGetAttackingSlots</td>
+<td style="text-align:left">Adds return value to current list of attacking slots, can modify current list within the method</td>
+</tr>
+<tr>
+<td style="text-align:left">ISetupAttackSequence</td>
+<td style="text-align:left">Replaces current list of targeted slots with return value<br><br>Called with priority <code>ReplacesDefaultOpposingSlot</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IGetOpposingSlots</td>
+<td style="text-align:left">Adds return value to current list of targeted slots, can modify current list within the method</td>
+</tr>
+<tr>
+<td style="text-align:left">ISetupAttackSequence</td>
+<td style="text-align:left">Replaces current list of targeted slots with return value<br><br>Called with priority <code>Normal</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISetupAttackSequence</td>
+<td style="text-align:left">Replaces current list of targeted slots with return value<br><br>Called with priority <code>BringsBackOpposingSlot</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISetupAttackSequence</td>
+<td style="text-align:left">Replaces current list of targeted slots with return value<br><br>Called with priority <code>PostAdditionModification</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OnSlotTargetedForAttack</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IModifyDirectDamage</td>
+<td style="text-align:left">Called only if direct damage is being dealt<br><br>Sets the damage being dealt to the returned value</td>
+</tr>
+<tr>
+<td style="text-align:left">OnDealDamageDirectly</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnCardDealtDamageDirectly</td>
+<td style="text-align:left">Called for every card on the board</td>
+</tr>
+<tr>
+<td style="text-align:left">OnCardGettingAttacked</td>
+<td style="text-align:left">Called only if a card is being attacked</td>
+</tr>
+<tr>
+<td style="text-align:left">IPostCardGettingAttacked</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPostSingularSlotAttackSlot</td>
+<td style="text-align:left">Called after <code>SlotAttackSlot</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OnAttackEnded</td>
+<td style="text-align:left">Called after all cards have finished attacking</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPostSlotAttackSequence</td>
+<td style="text-align:left">Called after <code>SlotAttackSequence</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="consumable-items">Consumable Items</h2>
+<p>Handled by <code>ConsumableItemSlot.ConsumeItem</code> and each ConsumableItem&#39;s <code>ActivateSequence</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IItemCanBeUsed</td>
+<td style="text-align:left">Can stop items from being used</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnItemPreventedFromUse</td>
+<td style="text-align:left">Called if <code>IItemCanBeUsed</code> stopped an item from being used</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPreItemUsed</td>
+<td style="text-align:left">Called before <code>ConsumeItem</code> and <code>ActivateSequence</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPostItemUsed</td>
+<td style="text-align:left">Called after <code>ConsumeItem</code> and <code>ActivateSequence</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="passive-stat-buffs">Passive Stat Buffs</h2>
+<p>Handled by <code>PlayableCard.GetPassiveAttackBuffs</code> and <code>PlayableCard.GetPassiveHealthBuffs</code>.</p>
+<p>These patches are called every frame.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IOnCardPassiveAttackBuffs</td>
+<td style="text-align:left">Sets attack buff to returned value</td>
+</tr>
+<tr>
+<td style="text-align:left">IPassiveAttackBuffs</td>
+<td style="text-align:left">Adds to attack buff with returned value</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IOnCardPassiveHealthBuffs</td>
+<td style="text-align:left">Sets health buff to returned value</td>
+</tr>
+<tr>
+<td style="text-align:left">IPassiveHealthBuffs</td>
+<td style="text-align:left">Adds to health buff with returned value</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scale-damage">Scale Damage</h2>
+<p>Handled by <code>LifeManager.ShowDamageSequence</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IOnPreScalesChangedRef</td>
+<td style="text-align:left">Modifies the damage being dealt and weights being added to the physical scale</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPreScalesChanged</td>
+<td style="text-align:left">Called before <code>ShowDamageSequence</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnPostScalesChanged</td>
+<td style="text-align:left">Called after <code>ShowDamageSequence</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="turn-sequence">Turn Sequence</h2>
+<p>Handled by <code>TurnManager.GameSequence</code>, <code>TurnManager.PlayerTurn</code>, <code>TurnManager.OpponentTurn</code>, <code>TurnManager.DoUpkeepPhase</code>.</p>
+<p>Triggers for the opponent&#39;s turn are not called if their turn is skipped.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Trigger</th>
+<th style="text-align:left">Additional information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OnUpkeep</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnUpkeepInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand</td>
+</tr>
+<tr>
+<td style="text-align:left">OnTurnEnd</td>
+<td style="text-align:left">Called after <code>DoCombatPhase</code></td>
+</tr>
+<tr>
+<td style="text-align:left">IOnTurnEndInQueue</td>
+<td style="text-align:left">Called on cards in the opponent&#39;s queue</td>
+</tr>
+<tr>
+<td style="text-align:left">IOnTurnEndInHand</td>
+<td style="text-align:left">Called on cards in the player&#39;s hand</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1756 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CustomTriggerFinder
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CustomTriggerFinder
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder">
+  
+  
+  <h1 id="InscryptionAPI_Triggers_CustomTriggerFinder" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder" class="text-break">Class CustomTriggerFinder
+  </h1>
+  <div class="markdown level0 summary"><p>Finds custom trigger recievers that exists on the board/in the hand
+Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.Card.IActivateWhenFacedown.html">IActivateWhenFacedown</a> to alter this default</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CustomTriggerFinder</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Triggers.html">InscryptionAPI.Triggers</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Triggers_CustomTriggerFinder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class CustomTriggerFinder</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_Call_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Call*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_Call__1_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Action___0__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Action{``0})">Call&lt;T&gt;(CardTriggerHandler, Func&lt;T, Boolean&gt;, Action&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls all triggers on a card trigger handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;TriggerReceiver&gt; Call&lt;T&gt;(this CardTriggerHandler self, Func&lt;T, bool&gt; respond, Action&lt;T&gt; call)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardTriggerHandler</span></td>
+        <td><span class="parametername">self</span></td>
+        <td><p>The card trigger handler to call.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">call</span></td>
+        <td><p>Call function that triggers the event you want to trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>&gt;</td>
+        <td><p>The list of all called triggers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_Call_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Call*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_Call__1_DiskCardGame_PlayableCard_Func___0_System_Boolean__Action___0__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Call``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Action{``0})">Call&lt;T&gt;(PlayableCard, Func&lt;T, Boolean&gt;, Action&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls all triggers on a card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;TriggerReceiver&gt; Call&lt;T&gt;(this PlayableCard self, Func&lt;T, bool&gt; respond, Action&lt;T&gt; call)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">self</span></td>
+        <td><p>The card to call.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">call</span></td>
+        <td><p>Call function that triggers the event you want to trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>&gt;</td>
+        <td><p>The list of all called triggers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CallAll_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallAll*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CallAll__1_System_Boolean_Func___0_System_Boolean__Action___0__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallAll``1(System.Boolean,Func{``0,System.Boolean},Action{``0})">CallAll&lt;T&gt;(Boolean, Func&lt;T, Boolean&gt;, Action&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls triggers from all cards, both on board and in hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;TriggerReceiver&gt; CallAll&lt;T&gt;(bool triggerFacedown, Func&lt;T, bool&gt; respond, Action&lt;T&gt; call)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">triggerFacedown</span></td>
+        <td><p>True if this should also call cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">call</span></td>
+        <td><p>Call function that triggers the event you want to trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>&gt;</td>
+        <td><p>The list of all called triggers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CallInHand_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CallInHand__1_Func___0_System_Boolean__Action___0__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallInHand``1(Func{``0,System.Boolean},Action{``0})">CallInHand&lt;T&gt;(Func&lt;T, Boolean&gt;, Action&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls triggers from all cards in hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;TriggerReceiver&gt; CallInHand&lt;T&gt;(Func&lt;T, bool&gt; respond, Action&lt;T&gt; call)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">call</span></td>
+        <td><p>Call function that triggers the event you want to trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>&gt;</td>
+        <td><p>The list of all called triggers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CallOnBoard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CallOnBoard__1_System_Boolean_Func___0_System_Boolean__Action___0__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CallOnBoard``1(System.Boolean,Func{``0,System.Boolean},Action{``0})">CallOnBoard&lt;T&gt;(Boolean, Func&lt;T, Boolean&gt;, Action&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls triggers from all cards on board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;TriggerReceiver&gt; CallOnBoard&lt;T&gt;(bool triggerFacedown, Func&lt;T, bool&gt; respond, Action&lt;T&gt; call)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">triggerFacedown</span></td>
+        <td><p>True if this should also call cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;T&gt;</td>
+        <td><span class="parametername">call</span></td>
+        <td><p>Call function that triggers the event you want to trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>&gt;</td>
+        <td><p>The list of all called triggers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectData_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectData*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectData__2_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Func___0___1__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,``1})">CollectData&lt;T, T2&gt;(CardTriggerHandler, Func&lt;T, Boolean&gt;, Func&lt;T, T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Collects data from all triggers on a card trigger handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;(TriggerReceiver, T2)&gt; CollectData&lt;T, T2&gt;(this CardTriggerHandler self, Func&lt;T, bool&gt; respond, Func&lt;T, T2&gt; collect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardTriggerHandler</span></td>
+        <td><span class="parametername">self</span></td>
+        <td><p>The trigger handler to collect from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, T2&gt;</td>
+        <td><span class="parametername">collect</span></td>
+        <td><p>Collect function that returns the information that will be collected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>, T2&gt;&gt;</td>
+        <td><p>The list of all collected information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>The object type to collect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectData_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectData*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectData__2_DiskCardGame_PlayableCard_Func___0_System_Boolean__Func___0___1__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectData``2(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,``1})">CollectData&lt;T, T2&gt;(PlayableCard, Func&lt;T, Boolean&gt;, Func&lt;T, T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Collects data from all triggers on a card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;(TriggerReceiver, T2)&gt; CollectData&lt;T, T2&gt;(this PlayableCard self, Func&lt;T, bool&gt; respond, Func&lt;T, T2&gt; collect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">self</span></td>
+        <td><p>The card to collect from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, T2&gt;</td>
+        <td><span class="parametername">collect</span></td>
+        <td><p>Collect function that returns the information that will be collected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>, T2&gt;&gt;</td>
+        <td><p>The list of all collected information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>The object type to collect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataAll_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataAll__2_System_Boolean_Func___0_System_Boolean__Func___0___1__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataAll``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})">CollectDataAll&lt;T, T2&gt;(Boolean, Func&lt;T, Boolean&gt;, Func&lt;T, T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Collects data from all cards, both in hand and on board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;(TriggerReceiver, T2)&gt; CollectDataAll&lt;T, T2&gt;(bool collectFromFacedown, Func&lt;T, bool&gt; respond, Func&lt;T, T2&gt; collect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collectFromFacedown</span></td>
+        <td><p>True if this should also collect from cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, T2&gt;</td>
+        <td><span class="parametername">collect</span></td>
+        <td><p>Collect function that returns the information that will be collected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>, T2&gt;&gt;</td>
+        <td><p>The list of all collected information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>The object type to collect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataInHand_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataInHand__2_Func___0_System_Boolean__Func___0___1__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataInHand``2(Func{``0,System.Boolean},Func{``0,``1})">CollectDataInHand&lt;T, T2&gt;(Func&lt;T, Boolean&gt;, Func&lt;T, T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Collects data from all cards in hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;(TriggerReceiver, T2)&gt; CollectDataInHand&lt;T, T2&gt;(Func&lt;T, bool&gt; respond, Func&lt;T, T2&gt; collect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, T2&gt;</td>
+        <td><span class="parametername">collect</span></td>
+        <td><p>Collect function that returns the information that will be collected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>, T2&gt;&gt;</td>
+        <td><p>The list of all collected information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>The object type to collect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataOnBoard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CollectDataOnBoard__2_System_Boolean_Func___0_System_Boolean__Func___0___1__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CollectDataOnBoard``2(System.Boolean,Func{``0,System.Boolean},Func{``0,``1})">CollectDataOnBoard&lt;T, T2&gt;(Boolean, Func&lt;T, Boolean&gt;, Func&lt;T, T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Collects data from all cards on board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;(TriggerReceiver, T2)&gt; CollectDataOnBoard&lt;T, T2&gt;(bool collectFromFacedown, Func&lt;T, bool&gt; respond, Func&lt;T, T2&gt; collect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">collectFromFacedown</span></td>
+        <td><p>True if this should also collect from cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, T2&gt;</td>
+        <td><span class="parametername">collect</span></td>
+        <td><p>Collect function that returns the information that will be collected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.TriggerReceiver</span>, T2&gt;&gt;</td>
+        <td><p>The list of all collected information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>The object type to collect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_DiskCardGame_TriggerReceiver_System_Collections_IEnumerator_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.CustomTriggerSequence(DiskCardGame.TriggerReceiver,System.Collections.IEnumerator)">CustomTriggerSequence(TriggerReceiver, IEnumerator)</h4>
+  <div class="markdown level1 summary"><p>Same as normal coroutine, but also handles stack size, number of triggers this battle and destruction of a receiver after activation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator CustomTriggerSequence(this TriggerReceiver receiver, IEnumerator triggerCoroutine)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.TriggerReceiver</span></td>
+        <td><span class="parametername">receiver</span></td>
+        <td><p>The receiver that is triggering.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="parametername">triggerCoroutine</span></td>
+        <td><p>The trigger coroutine called by that receiver.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers__1_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers``1(DiskCardGame.PlayableCard)">FindGlobalTriggers&lt;T&gt;(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Finds all trigger recievers, on the board and in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindGlobalTriggers&lt;T&gt;(PlayableCard excluding = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">excluding</span></td>
+        <td><p>Card to exclude from the hand search.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindGlobalTriggers__1_System_Boolean_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindGlobalTriggers``1(System.Boolean,DiskCardGame.PlayableCard)">FindGlobalTriggers&lt;T&gt;(Boolean, PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Finds all trigger recievers, on the board and in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindGlobalTriggers&lt;T&gt;(bool findFacedown, PlayableCard excluding = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">findFacedown</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">excluding</span></td>
+        <td><p>Card to exclude from the hand search.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInHand_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHand*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInHand__1" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHand``1">FindTriggersInHand&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Find all trigger recievers in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersInHand&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T in the hand.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInHandExcluding_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHandExcluding*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInHandExcluding__1_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInHandExcluding``1(DiskCardGame.PlayableCard)">FindTriggersInHandExcluding&lt;T&gt;(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Find all trigger recievers in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersInHandExcluding&lt;T&gt;(PlayableCard card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>Card to exclude from the search.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T in the hand.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInQueue_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersInQueue__1" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersInQueue``1">FindTriggersInQueue&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Finds all trigger recievers on a cards in the opponent&apos;s queue</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersInQueue&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T in the opponent&apos;s queue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of reciever to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard__1" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1">FindTriggersOnBoard&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>Find all trigger recievers in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersOnBoard&lt;T&gt;()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T in the hand.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnBoard__1_System_Boolean_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnBoard``1(System.Boolean)">FindTriggersOnBoard&lt;T&gt;(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Find all trigger recievers in the hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersOnBoard&lt;T&gt;(bool findFacedown)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">findFacedown</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T in the hand.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard__1_DiskCardGame_CardTriggerHandler_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard``1(DiskCardGame.CardTriggerHandler)">FindTriggersOnCard&lt;T&gt;(CardTriggerHandler)</h4>
+  <div class="markdown level1 summary"><p>Finds all trigger recievers on a card</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersOnCard&lt;T&gt;(this CardTriggerHandler card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardTriggerHandler</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The card to search.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T on the card.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of reciever to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_FindTriggersOnCard__1_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.FindTriggersOnCard``1(DiskCardGame.PlayableCard)">FindTriggersOnCard&lt;T&gt;(PlayableCard)</h4>
+  <div class="markdown level1 summary"><p>Finds all trigger recievers on a card</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; FindTriggersOnCard&lt;T&gt;(this PlayableCard card)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The card to search.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;T&gt;</td>
+        <td><p>All trigger recievers of type T on the card.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of reciever to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_Trigger_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Trigger*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_Trigger__1_DiskCardGame_CardTriggerHandler_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.CardTriggerHandler,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})">Trigger&lt;T&gt;(CardTriggerHandler, Func&lt;T, Boolean&gt;, Func&lt;T, IEnumerator&gt;)</h4>
+  <div class="markdown level1 summary"><p>Triggers the triggers of type T on a card trigger handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator Trigger&lt;T&gt;(this CardTriggerHandler handler, Func&lt;T, bool&gt; respond, Func&lt;T, IEnumerator&gt; trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardTriggerHandler</span></td>
+        <td><span class="parametername">handler</span></td>
+        <td><p>The card trigger handler to search for triggers.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Collections.IEnumerator</span>&gt;</td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger function that triggers the coroutine for the trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_Trigger_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Trigger*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_Trigger__1_DiskCardGame_PlayableCard_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.Trigger``1(DiskCardGame.PlayableCard,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})">Trigger&lt;T&gt;(PlayableCard, Func&lt;T, Boolean&gt;, Func&lt;T, IEnumerator&gt;)</h4>
+  <div class="markdown level1 summary"><p>Triggers the triggers of type T on a card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator Trigger&lt;T&gt;(this PlayableCard card, Func&lt;T, bool&gt; respond, Func&lt;T, IEnumerator&gt; trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">card</span></td>
+        <td><p>The card trigger handler to search for triggers.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Collections.IEnumerator</span>&gt;</td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger function that triggers the coroutine for the trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerAll_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerAll__1_System_Boolean_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerAll``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})">TriggerAll&lt;T&gt;(Boolean, Func&lt;T, Boolean&gt;, Func&lt;T, IEnumerator&gt;)</h4>
+  <div class="markdown level1 summary"><p>Triggers the triggers of type T on all cards, both in hand and on board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerAll&lt;T&gt;(bool triggerFacedown, Func&lt;T, bool&gt; respond, Func&lt;T, IEnumerator&gt; trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">triggerFacedown</span></td>
+        <td><p>True if this should also trigger cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Collections.IEnumerator</span>&gt;</td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger function that triggers the coroutine for the trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerInHand_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerInHand__1_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerInHand``1(Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})">TriggerInHand&lt;T&gt;(Func&lt;T, Boolean&gt;, Func&lt;T, IEnumerator&gt;)</h4>
+  <div class="markdown level1 summary"><p>Triggers the triggers of type T on all cards in hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerInHand&lt;T&gt;(Func&lt;T, bool&gt; respond, Func&lt;T, IEnumerator&gt; trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Collections.IEnumerator</span>&gt;</td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger function that triggers the coroutine for the trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerOnBoard_" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard*"></a>
+  <h4 id="InscryptionAPI_Triggers_CustomTriggerFinder_TriggerOnBoard__1_System_Boolean_Func___0_System_Boolean__Func___0_System_Collections_IEnumerator__" data-uid="InscryptionAPI.Triggers.CustomTriggerFinder.TriggerOnBoard``1(System.Boolean,Func{``0,System.Boolean},Func{``0,System.Collections.IEnumerator})">TriggerOnBoard&lt;T&gt;(Boolean, Func&lt;T, Boolean&gt;, Func&lt;T, IEnumerator&gt;)</h4>
+  <div class="markdown level1 summary"><p>Triggers the triggers of type T on all cards on board.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator TriggerOnBoard&lt;T&gt;(bool triggerFacedown, Func&lt;T, bool&gt; respond, Func&lt;T, IEnumerator&gt; trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">triggerFacedown</span></td>
+        <td><p>True if this should also trigger cards that are facedown, false otherwise.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">respond</span></td>
+        <td><p>Check function that needs to return true for a trigger to get triggered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;T, <span class="xref">System.Collections.IEnumerator</span>&gt;</td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger function that triggers the coroutine for the trigger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The trigger type to search for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

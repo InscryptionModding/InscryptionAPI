@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CardSlotExtensions
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CardSlotExtensions
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions">
+  
+  
+  <h1 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions" class="text-break">Class CardSlotExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CardSlotExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Helpers.Extensions.html">InscryptionAPI.Helpers.Extensions</a></h6>
+  <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
+  <h5 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class CardSlotExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">AssignCardToSlot(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Assign a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.AssignCardToSlot()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator AssignCardToSlot(this CardSlot slotToSpawnIn, PlayableCard playableCard, float transitionDuration = 0.1F, Action tweenCompleteCallback = null, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">transitionDuration</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">tweenCompleteCallback</span></td>
+        <td><p>An action to do after the assignment has completed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate the &apos;Trigger.OtherCardAssignedToSlot&apos; for the cards on board.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_DiskCardGame_CardSlot_DiskCardGame_CardInfo_System_Single_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot(DiskCardGame.CardSlot,DiskCardGame.CardInfo,System.Single,System.Boolean)">CreateCardInSlot(CardSlot, CardInfo, Single, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Create a card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.CreateCardInSlot()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator CreateCardInSlot(this CardSlot slotToSpawnIn, CardInfo cardInfo, float transitionLength = 0.1F, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="parametername">cardInfo</span></td>
+        <td><p>The CardInfo object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">transitionLength</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent(DiskCardGame.CardSlot,System.Boolean)">GetAdjacent(CardSlot, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardSlot GetAdjacent(this CardSlot cardSlot, bool adjacentOnLeft)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot that is being accessed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">adjacentOnLeft</span></td>
+        <td><p>Whether or not to retrieve the slot on the left.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><p>The list of card slots that is to the left and to the right. Results can be null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(DiskCardGame.CardSlot)">GetAdjacentCards(CardSlot)</h4>
+  <div class="markdown level1 summary"><p>Get the adjacent cards of the slot that is being accessed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;PlayableCard&gt; GetAdjacentCards(this CardSlot cardSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot that is being accessed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><p>The list of Playable Cards that is to the left and to the right of the this slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(DiskCardGame.CardSlot,System.Boolean)">GetAdjacentSlots(CardSlot, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;CardSlot&gt; GetAdjacentSlots(this CardSlot cardSlot, bool removeNulls = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot that is being accessed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeNulls</span></td>
+        <td><p>If true, remove slots that are null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><p>The list of card slots that is to the left and to the right.
+Results can be null unless removeNulls parameter is set to true.
+.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_DiskCardGame_CardSlot_System_String_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(DiskCardGame.CardSlot,System.String)">HasCard(CardSlot, String)</h4>
+  <div class="markdown level1 summary"><p>Check if the card in the slot has a specific card name.
+This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinct attribute to check the card against.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HasCard(this CardSlot cardSlot, string cardName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot to check.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cardName</span></td>
+        <td><p>The name of the card check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the slot has a card and that card has the specific cardName.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot(DiskCardGame.CardSlot)">IsOpponentSlot(CardSlot)</h4>
+  <div class="markdown level1 summary"><p>Check if the slot is an opponent&apos;s slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsOpponentSlot(this CardSlot cardSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">cardSlot</span></td>
+        <td><p>The slot to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the slot is not a player slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">ResolveCardOnBoard(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Resolve a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.ResolveCardOnBoard()</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerator ResolveCardOnBoard(this CardSlot slotToSpawnIn, PlayableCard playableCard, float tweenLength = 0.1F, Action landOnBoardCallback = null, bool resolveTriggers = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="parametername">slotToSpawnIn</span></td>
+        <td><p>The slot to spawn in.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="parametername">playableCard</span></td>
+        <td><p>The PlayableCard object to spawn in said slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">tweenLength</span></td>
+        <td><p>Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">landOnBoardCallback</span></td>
+        <td><p>An action to do after the assignment has completed, but before &apos;ResolveOnBoard&apos; triggers.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">resolveTriggers</span></td>
+        <td><p>Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>The enumeration of the card being placed in the slot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})">SelectCards(IEnumerable&lt;CardSlot&gt;, Predicate&lt;PlayableCard&gt;)</h4>
+  <div class="markdown level1 summary"><p>Retrieve all the PlayableCard objects from the collection of slots provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;PlayableCard&gt; SelectCards(this IEnumerable&lt;CardSlot&gt; slots, Predicate&lt;PlayableCard&gt; filterOnPredicate = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="parametername">slots</span></td>
+        <td><p>Collection of CardSlots.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Predicate</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><span class="parametername">filterOnPredicate</span></td>
+        <td><p>Predicate to filter each slot&apos;s playable card for a condition, if one exists.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><p>An IEnumerable of PlayableCard from the CardSlots sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots*"></a>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})">SelectOpenSlots(IEnumerable&lt;CardSlot&gt;, Predicate&lt;CardSlot&gt;)</h4>
+  <div class="markdown level1 summary"><p>Retrieve all the CardSlot objects that are not occupied by a PlayableCard object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;CardSlot&gt; SelectOpenSlots(this IEnumerable&lt;CardSlot&gt; slots, Predicate&lt;CardSlot&gt; filterOnPredicate = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="parametername">slots</span></td>
+        <td><p>Collection of CardSlots.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Predicate</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="parametername">filterOnPredicate</span></td>
+        <td><p>Predicate to test each slot for a condition.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><p>An IEnumerable of CardSlot that do not have occupying PlayableCards.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

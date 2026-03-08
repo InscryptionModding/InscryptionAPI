@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace InscryptionAPI.Triggers
+   | InscryptionAPI </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace InscryptionAPI.Triggers
+   | InscryptionAPI ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="Inscryption Modding API">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="InscryptionAPI.Triggers">
+  
+  <h1 id="InscryptionAPI_Triggers" data-uid="InscryptionAPI.Triggers" class="text-break">Namespace InscryptionAPI.Triggers
+  </h1>
+  <div class="markdown level0 summary"><p>Maintains the various custom interface and ability triggers added by the API.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.CustomTriggerFinder.html">CustomTriggerFinder</a></h4>
+      <section><p>Finds custom trigger recievers that exists on the board/in the hand
+Always excludes facedowns by default, use <a class="xref" href="InscryptionAPI.Card.IActivateWhenFacedown.html">IActivateWhenFacedown</a> to alter this default</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.DoCombatPhasePatches.html">DoCombatPhasePatches</a></h4>
+      <section></section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.SlotAttackSlotPatches.html">SlotAttackSlotPatches</a></h4>
+      <section></section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.TakeDamagePatches.html">TakeDamagePatches</a></h4>
+      <section></section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.ICardTakenDamageModifier.html">ICardTakenDamageModifier</a></h4>
+      <section><p>Data collection trigger that modifies the damage taken by any card.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IGetAttackingSlots.html">IGetAttackingSlots</a></h4>
+      <section><p>Used when changing what CardSlots are queued for attacking.
+Triggers before null and Powerless cards are removed, so no making empty slots attack and no making Attack-less cards attack.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IGetOpposingSlots.html">IGetOpposingSlots</a></h4>
+      <section><p>Run whenever a card is asked what its opposing slots are as part of the attack sequence</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IItemCanBeUsed.html">IItemCanBeUsed</a></h4>
+      <section><p>Data collection trigger that collects data about the usability of an item.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IModifyDamageTaken.html">IModifyDamageTaken</a></h4>
+      <section><p>Data collection trigger that modifies the damage taken by any card.
+Should be used instead of ICardTakenDamageModifier.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IModifyDirectDamage.html">IModifyDirectDamage</a></h4>
+      <section><p>Data collection trigger that modifies the damage taken when directly attacked.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnAddedToHand.html">IOnAddedToHand</a></h4>
+      <section><p>Trigger that is triggered when the card is drawn, but after it has been added to the list of cards in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnBellRung.html">IOnBellRung</a></h4>
+      <section><p>Trigger that is triggered after the combat phase starts.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardAssignedToSlotContext.html">IOnCardAssignedToSlotContext</a></h4>
+      <section><p>Trigger that is triggered after any card is assigned to a slot. The difference between this and normal OnOtherCardAssignedToSlot is that this trigger also provides information about the new and old slot.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardAssignedToSlotNoResolve.html">IOnCardAssignedToSlotNoResolve</a></h4>
+      <section><p>Trigger that is triggered after any card is assigned to a slot, but only if it was assigned to a slot before.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardDealtDamageDirectly.html">IOnCardDealtDamageDirectly</a></h4>
+      <section><p>Trigger that is triggered when a card deals direct damage.
+This is a replacement for the vanilla DealDamageDirectly trigger, which unlike the base-game trigger, triggers for all cards on the board and supplies more information.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardPassiveAttackBuffs.html">IOnCardPassiveAttackBuffs</a></h4>
+      <section><p>Data collection trigger that modifies the passive attack buffs of any card.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnCardPassiveHealthBuffs.html">IOnCardPassiveHealthBuffs</a></h4>
+      <section><p>Data collection trigger that modifies the passive health buffs of any card.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnItemPreventedFromUse.html">IOnItemPreventedFromUse</a></h4>
+      <section><p>Trigger that is triggered when an item is prevented from use using IItemCanBeUsed.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardAddedToHand.html">IOnOtherCardAddedToHand</a></h4>
+      <section><p>Trigger that is triggered when any card is drawn, but after it has been added to the list of cards in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardAssignedToSlotInHand.html">IOnOtherCardAssignedToSlotInHand</a></h4>
+      <section><p>Trigger that is triggered when any card is assigned to a slot, but unlike normal OnOtherCardAssignedToSlotInHand this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardDealtDamageInHand.html">IOnOtherCardDealtDamageInHand</a></h4>
+      <section><p>Trigger that is triggered when any card deals damage to another card, but unlike normal OnOtherCardDealtDamage this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardDieInHand.html">IOnOtherCardDieInHand</a></h4>
+      <section><p>Trigger that is triggered after any card dies, but unlike normal OnOtherCardDie this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardPreDeathInHand.html">IOnOtherCardPreDeathInHand</a></h4>
+      <section><p>Trigger that is triggered before any card dies, but unlike normal OnOtherCardPreDeath this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnOtherCardResolveInHand.html">IOnOtherCardResolveInHand</a></h4>
+      <section><p>Trigger that is triggered when any card gets played, but unlike normal OnOtherCardResolveOnBoard this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostItemUsed.html">IOnPostItemUsed</a></h4>
+      <section><p>Trigger that is triggered after any item is used.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostScalesChanged.html">IOnPostScalesChanged</a></h4>
+      <section><p>Trigger that is triggered after the scales are changed. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostSingularSlotAttackSlot.html">IOnPostSingularSlotAttackSlot</a></h4>
+      <section><p>Trigger that is triggered after a slot does an individual attack.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPostSlotAttackSequence.html">IOnPostSlotAttackSequence</a></h4>
+      <section><p>Trigger that is triggered after a slot does its attacks.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreItemUsed.html">IOnPreItemUsed</a></h4>
+      <section><p>Trigger that is triggered before any item is used.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreScalesChanged.html">IOnPreScalesChanged</a></h4>
+      <section><p>Trigger that is triggered before the scales are changed, after IOnPreScalesChangedRef. Also includes information about the original damage and side that the damage is added at, before those values potentially get changed by IOnPreScalesChangedRef.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreScalesChangedRef.html">IOnPreScalesChangedRef</a></h4>
+      <section><p>Data collection trigger that is triggered before the scales are changed, can be used to change the amount of damage added and to which side it&apos;s added.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnPreSlotAttackSequence.html">IOnPreSlotAttackSequence</a></h4>
+      <section><p>Trigger that is triggered before a slot does its attacks.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnTurnEndInHand.html">IOnTurnEndInHand</a></h4>
+      <section><p>Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnTurnEndInQueue.html">IOnTurnEndInQueue</a></h4>
+      <section><p>Trigger that is triggered when the turn ends, but unlike normal OnTurnEnd this one only works on cards in the opponent&apos;s queue.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IOnUpkeepInHand.html">IOnUpkeepInHand</a></h4>
+      <section><p>Trigger that is triggered each turn, but unlike normal OnUpkeep this one only works in hand.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IPassiveAttackBuff.html">IPassiveAttackBuff</a></h4>
+      <section><p>Used when a card wants to provide a passive buff to other cards on the board</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IPassiveHealthBuff.html">IPassiveHealthBuff</a></h4>
+      <section><p>Used when a card wants to provide a passive buff to other cards on the board</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IPostCardGettingAttacked.html">IPostCardGettingAttacked</a></h4>
+      <section><p>Expanded version of CardGettingAttacked trigger, executed after it, that includes the attacker as an argument</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IPreTakeDamage.html">IPreTakeDamage</a></h4>
+      <section><p>Trigger that is triggered right before a card takes damage.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.ISetupAttackSequence.html">ISetupAttackSequence</a></h4>
+      <section><p>Data collection trigger that collects data related to attacked slots.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IShieldPreventedDamage.html">IShieldPreventedDamage</a></h4>
+      <section><p>Trigger that is called after a shielded card was attacked and lost a shield.</p>
+</section>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.IShieldPreventedDamageInHand.html">IShieldPreventedDamageInHand</a></h4>
+      <section><p>Variant of IShieldPreventDamage that triggers for cards in the hand.</p>
+</section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="InscryptionAPI.Triggers.OpposingSlotTriggerPriority.html">OpposingSlotTriggerPriority</a></h4>
+      <section><p>Flag that tells IGetOpposingSlots when to trigger.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
