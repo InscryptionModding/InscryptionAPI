@@ -84,9 +84,9 @@ This is false by default, meaning negative costs on cards will be read as 0 by t
 You can use SetCanBeNegative to change this value, or directly modify the CanBeNegative field.
 
 Cost tier is an integer denoting how expensive a card is, with each cost having its own formula that adds to the tier.
-From example, the formula for Bones' tier is (amount / 3), rounded down.
+For example, the formula for Bones' tier is (amount / 3), rounded down.
 
-By default, custom costs are not accounted when determining a card's cost tier;
+By default, custom costs are not accounted for when determining a card's cost tier;
 this can be fixed using SetCostTier to define the function to use.
 
 ```c#
@@ -106,7 +106,7 @@ public static int CostTier(int amount)
 A vital part of Inscryption's gameplay is the fair hand mechanic;
 when a battle starts, the game will give you at least one card that can be played immediately, as well as a card that can be played by the second turn.
 
-By default, when the game checks if a card with custom costs can be played by turn 2, it will return 2 - even if it can't be.
+By default, when the game checks if a card with custom costs can be played by turn 2, it will return true - even if it can't be.
 
 To fix this, you'll need to set your cost's CanBePlayedByTurn2WithHand function (long name, I know):
 ```c#

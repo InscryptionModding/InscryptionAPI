@@ -1,3 +1,6 @@
+# 2.23.7
+- Fixed log spam due to inverted condition in CardExtensions.GemsCost
+
 # 2.23.6
 - Fixed card modifications added to a card's base ice cube card via CardInfo.SetIceCube being ignored
 - Fixed PlayableCard.CanPlay not consistently accounting for temporary mod cost adjustments

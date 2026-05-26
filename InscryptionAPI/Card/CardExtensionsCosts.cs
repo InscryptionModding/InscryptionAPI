@@ -78,7 +78,7 @@ public static partial class CardExtensions
     /// </summary>
     public static List<GemType> GemsCost(this PlayableCard card)
     {
-        if (card != null && card.Info != null) {
+        if (card == null || card.Info == null) {
             InscryptionAPIPlugin.Logger.LogWarning("[GemsCost] Couldn't find PlayableCard or CardInfo, returning empty list");
             return new();
         }
