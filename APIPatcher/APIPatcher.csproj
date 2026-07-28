@@ -10,13 +10,12 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <NoWarn>$(NoWarn);AD0001;CS0612;CS0618;Publicizer001</NoWarn>
+        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="BepInEx.BaseLib" Version="5.4.19" />
       <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
-      <PackageReference Include="MonoMod" Version="22.3.23.4" />
+      <PackageReference Include="MonoMod" Version="22.7.31.1" />
       <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
 
