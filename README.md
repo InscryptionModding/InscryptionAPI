@@ -263,4 +263,5 @@ Contributors and builders of API 2.0:
 - WhistleWind
 - Windows10CE
 - Keks307
-- ThinCreator3483
+- Creator/Chaosyr/SaxbyMod/The Stoat Lord/ThinCreator3483
+- stillrinny

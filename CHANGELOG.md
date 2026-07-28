@@ -1,3 +1,11 @@
+# 2.24.0
+* Implements the SteelTrapDeathPatch, which is made by Snowi and SpecialAPI.
+* Change to `netframework4.7.2` (closer to the Runtime netframework.)
+* Better NoWarns
+* Implement `GetSteelTrapPelt` and `SetSteelTrapPelt` card extensions
+* Upgrade to API 2.24.0
+* Add a Test Case related to the new patch.
+
 # 2.23.7
 - Fixed log spam due to inverted condition in CardExtensions.GemsCost
 
