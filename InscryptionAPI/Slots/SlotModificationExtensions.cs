@@ -15,9 +15,7 @@ namespace InscryptionAPI.Slots;
 /// <summary>
 /// Contains extension methods to simplify slot modification management
 /// </summary>
-public static class SlotModificationExtensions
-{
-
+public static class SlotModificationExtensions {
     public static Info InfoByID(this IEnumerable<Info> modInfos, ModificationType mod)
     {
         return modInfos.FirstOrDefault(x => x.ModificationType == mod);
@@ -84,9 +82,9 @@ public static class SlotModificationExtensions
     }
 
     /// <summary>
-    /// Clears the slot modification in this CardSlot, if one is present.
+    /// Sets the slot modification to 'no modification', effectively clearing/resetting the slot's modification.
     /// </summary>
-    /// <param name="slot">The slot to assign the modification to.</param>
+    /// <param name="slot">The slot to clear.</param>
     public static IEnumerator ClearSlotModification(this CardSlot slot) {
         yield return slot.SetSlotModification(ModificationType.NoModification);
     }
