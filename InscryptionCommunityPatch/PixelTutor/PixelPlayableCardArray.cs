@@ -158,13 +158,11 @@ public class PixelPlayableCardArray : ManagedBehaviour
     }
     private void CleanUpButtons()
     {
-        if (forwardButton.gameObject.active)
+        if (forwardButton.gameObject.activeSelf)
         {
             forwardButton.gameObject.SetActive(false);
             backButton.gameObject.SetActive(false);
         }
-        //Destroy(forwardButton.gameObject);
-        //Destroy(backButton.gameObject);
     }
     private void EnableButtons(bool enable)
     {
