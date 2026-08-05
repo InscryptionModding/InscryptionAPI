@@ -1,3 +1,14 @@
+# 2.24.0
+- Fixed Part2CardCostRender.UpdatePlayableCardCost not being invoked
+- Fixed Part2CardCostRender.UpdateVanillaPlayableCardCost not being invoked
+- Updated API and community patch target frameworks to `netframework4.7.2` (closer to the Runtime netframework.)
+- Updated community patch plugin's mod version to match the API's
+- Updated list of API contributors
+- Added ability to set custom card given by Steel Trap sigil (cr. Snowi and SpecialAPI)
+- Added `GetSteelTrapPelt` and `SetSteelTrapPelt` card extensions
+- Added debug mode cards for testing custom Steel Trap pelts
+- Added NoWarn property to API and community patch projects for AD0001, CS0612, CS0618, Publicizer001
+
 # 2.23.7
 - Fixed log spam due to inverted condition in CardExtensions.GemsCost
 
