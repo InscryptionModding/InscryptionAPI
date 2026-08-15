@@ -635,13 +635,13 @@ public static partial class CardExtensions
     }
     public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Sprite portrait)
     {
-        if (info.SteelTrapPortrait() == null)
+        if (info.SacrificablePortrait() == null)
             throw new InvalidOperationException($"Cannot set emissive portrait before setting the default sacrifice portrait!");
 
-        info.SteelTrapPortrait().RegisterEmissionForSprite(portrait);
+        info.SacrificablePortrait().RegisterEmissionForSprite(portrait);
         return info;
     }
-    public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SteelTrapPortrait().GetEmissionSprite();
+    public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SacrificablePortrait().GetEmissionSprite();
     #endregion
 
     /// <summary>
