@@ -20,7 +20,7 @@ public class PatchPlugin : BaseUnityPlugin
 {
     public const string ModGUID = "community.inscryption.patch";
     public const string ModName = "InscryptionCommunityPatch";
-    public const string ModVer = "1.0.0";
+    public const string ModVer = "2.24.0";
 
     internal static PatchPlugin Instance;
 
@@ -74,6 +74,7 @@ public class PatchPlugin : BaseUnityPlugin
         {
             ExecuteCommunityPatchTests.PrepareForTests();
             TestCost.Init();
+            DebugCards.CreateTestCards();
         }
 
         CommunityArtPatches.PatchCommunityArt();
