@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_CardCosts_CardCostManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class CardCostManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class CardCostManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -129,7 +128,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.HintsHandler.Hint</span></td>
+        <td><span class="xref">HintsHandler.Hint</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -162,7 +161,7 @@ public static class CardCostManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_CardCosts_CardCostManager_CostByBehaviour_" data-uid="InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_CostByBehaviour_System_Collections_IEnumerable_InscryptionAPI_CardCosts_CardCostManager_FullCardCost__Type_" data-uid="InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(System.Collections.IEnumerable{InscryptionAPI.CardCosts.CardCostManager.FullCardCost},Type)">CostByBehaviour(IEnumerable&lt;CardCostManager.FullCardCost&gt;, Type)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_CostByBehaviour_IEnumerable_InscryptionAPI_CardCosts_CardCostManager_FullCardCost__Type_" data-uid="InscryptionAPI.CardCosts.CardCostManager.CostByBehaviour(IEnumerable{InscryptionAPI.CardCosts.CardCostManager.FullCardCost},Type)">CostByBehaviour(IEnumerable&lt;CardCostManager.FullCardCost&gt;, Type)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -180,7 +179,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html">CardCostManager.FullCardCost</a>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.CardCosts.CardCostManager.FullCardCost.html">CardCostManager.FullCardCost</a>&gt;</td>
         <td><span class="parametername">customCosts</span></td>
         <td></td>
       </tr>
@@ -246,7 +245,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -296,7 +295,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -336,13 +335,13 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableMoxCard_" data-uid="InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableMoxCard_System_Int32_DiskCardGame_GemType_" data-uid="InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard(System.Int32,DiskCardGame.GemType)">GetRandomChoosableMoxCard(Int32, GemType)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_GetRandomChoosableMoxCard_System_Int32_GemType_" data-uid="InscryptionAPI.CardCosts.CardCostManager.GetRandomChoosableMoxCard(System.Int32,GemType)">GetRandomChoosableMoxCard(Int32, GemType)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -365,7 +364,7 @@ public static class CardCostManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.GemType</span></td>
+        <td><span class="xref">GemType</span></td>
         <td><span class="parametername">gem</span></td>
         <td></td>
       </tr>
@@ -381,7 +380,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -427,7 +426,7 @@ public static class CardCostManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_" data-uid="InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(DiskCardGame.PlayableCard)">NewGemsCostRequirementMet(PlayableCard)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_NewGemsCostRequirementMet_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CardCostManager.NewGemsCostRequirementMet(PlayableCard)">NewGemsCostRequirementMet(PlayableCard)</h4>
   <div class="markdown level1 summary"><p>A new method that overrides the result of PlayableCard.GemsCostRequirement. Override this if you want to modify GemsCostRequirementMet.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -446,7 +445,7 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">card</span></td>
         <td><p>The PlayableCard currently being checked.</p>
 </td>
@@ -470,7 +469,7 @@ public static class CardCostManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_PlaySelectedCardToSlot_" data-uid="InscryptionAPI.CardCosts.CardCostManager.PlaySelectedCardToSlot*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_PlaySelectedCardToSlot_DiskCardGame_PlayerHand_DiskCardGame_PlayableCard_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.CardCosts.CardCostManager.PlaySelectedCardToSlot(DiskCardGame.PlayerHand,DiskCardGame.PlayableCard,DiskCardGame.CardSlot)">PlaySelectedCardToSlot(PlayerHand, PlayableCard, CardSlot)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_PlaySelectedCardToSlot_PlayerHand_PlayableCard_CardSlot_" data-uid="InscryptionAPI.CardCosts.CardCostManager.PlaySelectedCardToSlot(PlayerHand,PlayableCard,CardSlot)">PlaySelectedCardToSlot(PlayerHand, PlayableCard, CardSlot)</h4>
   <div class="markdown level1 summary"><p>Does two things:
 1: Caches play costs before playing the card onto the board to prevent incorrect values being used should the card&apos;s CardInfo change.
 2: Implements support for custom cards&apos; OnPlay logic.</p>
@@ -491,19 +490,19 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayerHand</span></td>
+        <td><span class="xref">PlayerHand</span></td>
         <td><span class="parametername">instance</span></td>
         <td><p>The PlayerHand object.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">card</span></td>
         <td><p>The PlayableCard being played to the board.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">lastSelectedSlot</span></td>
         <td><p>The last selected slot, equals BoardManage.Instance.LastSelectedSlot by default.</p>
 </td>
@@ -520,13 +519,13 @@ public static class CardCostManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_Register_" data-uid="InscryptionAPI.CardCosts.CardCostManager.Register*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_Register_System_String_System_String_Type_Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__Func_System_Int32_DiskCardGame_CardInfo_DiskCardGame_PlayableCard_UnityEngine_Texture2D__" data-uid="InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,Type,Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D},Func{System.Int32,DiskCardGame.CardInfo,DiskCardGame.PlayableCard,UnityEngine.Texture2D})">Register(String, String, Type, Func&lt;Int32, CardInfo, PlayableCard, Texture2D&gt;, Func&lt;Int32, CardInfo, PlayableCard, Texture2D&gt;)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_Register_System_String_System_String_Type_Func_System_Int32_CardInfo_PlayableCard_Texture2D__Func_System_Int32_CardInfo_PlayableCard_Texture2D__" data-uid="InscryptionAPI.CardCosts.CardCostManager.Register(System.String,System.String,Type,Func{System.Int32,CardInfo,PlayableCard,Texture2D},Func{System.Int32,CardInfo,PlayableCard,Texture2D})">Register(String, String, Type, Func&lt;Int32, CardInfo, PlayableCard, Texture2D&gt;, Func&lt;Int32, CardInfo, PlayableCard, Texture2D&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -559,12 +558,12 @@ public static class CardCostManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">DiskCardGame.CardInfo</span>, <span class="xref">DiskCardGame.PlayableCard</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">CardInfo</span>, <span class="xref">PlayableCard</span>, <span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">getCostTexture</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">DiskCardGame.CardInfo</span>, <span class="xref">DiskCardGame.PlayableCard</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">CardInfo</span>, <span class="xref">PlayableCard</span>, <span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">getPixelCostTexture</span></td>
         <td></td>
       </tr>
@@ -635,7 +634,7 @@ public static class CardCostManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_SetCanBePlayedByTurn2WithHand_" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetCanBePlayedByTurn2WithHand_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_Func_System_Int32_DiskCardGame_CardInfo_List_DiskCardGame_CardInfo__System_Boolean__" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,DiskCardGame.CardInfo,List{DiskCardGame.CardInfo},System.Boolean})">SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func&lt;Int32, CardInfo, List&lt;CardInfo&gt;, Boolean&gt;)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetCanBePlayedByTurn2WithHand_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_Func_System_Int32_CardInfo_List_CardInfo__System_Boolean__" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetCanBePlayedByTurn2WithHand(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,Func{System.Int32,CardInfo,List{CardInfo},System.Boolean})">SetCanBePlayedByTurn2WithHand(CardCostManager.FullCardCost, Func&lt;Int32, CardInfo, List&lt;CardInfo&gt;, Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the function used to determine if a card with this cost can be played by the second turn</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -660,7 +659,7 @@ public static class CardCostManager</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">DiskCardGame.CardInfo</span>, <span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">CardInfo</span>, <span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;, <span class="xref">System.Boolean</span>&gt;</td>
         <td><span class="parametername">getCanBePlayedByTurn2WithHand</span></td>
         <td><p>CardInfo - current CardInfo ; List<cardinfo> - cards in player&apos;s hand.</cardinfo>.</p>
 </td>
@@ -785,7 +784,7 @@ For example, the cost tier for Bones is equal to (Bones / 3 ), rounded down to t
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_Func_System_Int32_UnityEngine_Texture__System_Int32___" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,Func{System.Int32,UnityEngine.Texture},System.Int32[])">SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func&lt;Int32, Texture&gt;, Int32[])</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_Func_System_Int32_Texture__System_Int32___" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,Func{System.Int32,Texture},System.Int32[])">SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Func&lt;Int32, Texture&gt;, Int32[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -813,7 +812,7 @@ For example, the cost tier for Bones is equal to (Bones / 3 ), rounded down to t
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a>&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">Texture</span>&gt;</td>
         <td><span class="parametername">rewardBackFunc</span></td>
         <td></td>
       </tr>
@@ -840,7 +839,7 @@ For example, the cost tier for Bones is equal to (Bones / 3 ), rounded down to t
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_UnityEngine_Texture_" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,UnityEngine.Texture)">SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Texture)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CardCostManager_SetFoundAtChoiceNodes_InscryptionAPI_CardCosts_CardCostManager_FullCardCost_System_Boolean_Texture_" data-uid="InscryptionAPI.CardCosts.CardCostManager.SetFoundAtChoiceNodes(InscryptionAPI.CardCosts.CardCostManager.FullCardCost,System.Boolean,Texture)">SetFoundAtChoiceNodes(CardCostManager.FullCardCost, Boolean, Texture)</h4>
   <div class="markdown level1 summary"><p>Sets the ResourceType and RewardBackTexture for this cost, allowing it to be selected at cost choice nodes in Act 1.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -871,7 +870,7 @@ For example, the cost tier for Bones is equal to (Bones / 3 ), rounded down to t
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">rewardBack</span></td>
         <td><p>The texture to use at the cost choice node.</p>
 </td>

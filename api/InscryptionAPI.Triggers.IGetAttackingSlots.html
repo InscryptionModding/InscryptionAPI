@@ -87,7 +87,7 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Triggers_IGetAttackingSlots_GetAttackingSlots_" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots*"></a>
-  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_GetAttackingSlots_System_Boolean_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})">GetAttackingSlots(Boolean, List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_GetAttackingSlots_System_Boolean_List_CardSlot__List_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.GetAttackingSlots(System.Boolean,List{CardSlot},List{CardSlot})">GetAttackingSlots(Boolean, List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"><p>Returns the new list of attacking CardSlots.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -112,13 +112,13 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">originalSlots</span></td>
         <td><p>The vanilla list of attacking CardSlots.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">currentSlots</span></td>
         <td><p>The current list of attacking CardSlots.</p>
 </td>
@@ -135,14 +135,14 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><p>The new list of attacking CardSlots.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Triggers_IGetAttackingSlots_RespondsToGetAttackingSlots_" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots*"></a>
-  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_RespondsToGetAttackingSlots_System_Boolean_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean,List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})">RespondsToGetAttackingSlots(Boolean, List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_RespondsToGetAttackingSlots_System_Boolean_List_CardSlot__List_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.RespondsToGetAttackingSlots(System.Boolean,List{CardSlot},List{CardSlot})">RespondsToGetAttackingSlots(Boolean, List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"><p>Returns true if this should modify the list of attacking CardSlots.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -167,13 +167,13 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">originalSlots</span></td>
         <td><p>The vanilla list of attacking CardSlots; a copy of the current attacker&apos;s side of the board.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">currentSlots</span></td>
         <td><p>The current list of attacking CardSlots, after modifications and the like.</p>
 </td>
@@ -197,7 +197,7 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
     </tbody>
   </table>
   <a id="InscryptionAPI_Triggers_IGetAttackingSlots_TriggerPriority_" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority*"></a>
-  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_TriggerPriority_System_Boolean_List_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean,List{DiskCardGame.CardSlot})">TriggerPriority(Boolean, List&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Triggers_IGetAttackingSlots_TriggerPriority_System_Boolean_List_CardSlot__" data-uid="InscryptionAPI.Triggers.IGetAttackingSlots.TriggerPriority(System.Boolean,List{CardSlot})">TriggerPriority(Boolean, List&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"><p>Trigger priority. Higher numbers trigger first.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -222,7 +222,7 @@ Triggers before null and Powerless cards are removed, so no making empty slots a
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">originalSlots</span></td>
         <td><p>The vanilla list of attacking CardSlots.</p>
 </td>

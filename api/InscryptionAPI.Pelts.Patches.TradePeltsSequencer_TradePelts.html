@@ -85,13 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public class TradePeltsSequencer_TradePelts</code></pre>
+    <pre><code class="lang-csharp hljs">public class TradePeltsSequencer_TradePelts : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_CentreCreateTradeCards_" data-uid="InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards*"></a>
-  <h4 id="InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_CentreCreateTradeCards_DiskCardGame_TradePeltsSequencer_List_DiskCardGame_CardInfo__System_Int32_System_Boolean_" data-uid="InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(DiskCardGame.TradePeltsSequencer,List{DiskCardGame.CardInfo},System.Int32,System.Boolean)">CentreCreateTradeCards(TradePeltsSequencer, List&lt;CardInfo&gt;, Int32, Boolean)</h4>
+  <h4 id="InscryptionAPI_Pelts_Patches_TradePeltsSequencer_TradePelts_CentreCreateTradeCards_TradePeltsSequencer_List_CardInfo__System_Int32_System_Boolean_" data-uid="InscryptionAPI.Pelts.Patches.TradePeltsSequencer_TradePelts.CentreCreateTradeCards(TradePeltsSequencer,List{CardInfo},System.Int32,System.Boolean)">CentreCreateTradeCards(TradePeltsSequencer, List&lt;CardInfo&gt;, Int32, Boolean)</h4>
   <div class="markdown level1 summary"><p>Centres trade cards when the amount offered isn&apos;t 4 or 8.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -110,12 +109,12 @@ public class TradePeltsSequencer_TradePelts</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.TradePeltsSequencer</span></td>
+        <td><span class="xref">TradePeltsSequencer</span></td>
         <td><span class="parametername">__instance</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;</td>
         <td><span class="parametername">cards</span></td>
         <td></td>
       </tr>
@@ -141,7 +140,7 @@ public class TradePeltsSequencer_TradePelts</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>

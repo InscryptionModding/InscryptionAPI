@@ -80,18 +80,13 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
-    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
-    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
-    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">SlotModificationManager</span></div>
+    <div class="level1"><span class="xref">SlotModificationManager</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Slots.html">InscryptionAPI.Slots</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Slots_SlotModificationManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public class SlotModificationManager : MonoBehaviour</code></pre>
+    <pre><code class="lang-csharp hljs">public class SlotModificationManager : MonoBehaviour</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -100,7 +95,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string SLOT_PAGEID = &quot;SlotModification_&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string SLOT_PAGEID = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -192,7 +187,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(UnityEngine.Texture2D)">BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromSpriteSheetTexture_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)">BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -210,7 +205,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">texture</span></td>
         <td></td>
       </tr>
@@ -226,13 +221,13 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">GBC.PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromTexture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromTexture_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture(UnityEngine.Texture2D)">BuildAct2SpriteSetFromTexture(Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_BuildAct2SpriteSetFromTexture_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.BuildAct2SpriteSetFromTexture(Texture2D)">BuildAct2SpriteSetFromTexture(Texture2D)</h4>
   <div class="markdown level1 summary"><p>Converts a single act 2 slot texture into a full collection of sprite sets by repeatedly recoloring the texture</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -251,7 +246,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">texture</span></td>
         <td></td>
       </tr>
@@ -267,7 +262,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">GBC.PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -328,7 +323,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Dictionary_CardTemple_UnityEngine_Texture2D__Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Dictionary{CardTemple,UnityEngine.Texture2D},Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Dictionary&lt;CardTemple, Texture2D&gt;, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Dictionary_CardTemple_Texture2D__Dictionary_PixelBoardSpriteSetter_BoardTheme_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Dictionary{CardTemple,Texture2D},Dictionary{PixelBoardSpriteSetter.BoardTheme,PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Dictionary&lt;CardTemple, Texture2D&gt;, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -365,13 +360,13 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">CardTemple</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">CardTemple</span>, <span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">slotTexture</span></td>
         <td><p>The 3D scene slot texture (154x226)</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">GBC.PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
         <td><span class="parametername">pixelBoardSlotSprites</span></td>
         <td></td>
       </tr>
@@ -394,7 +389,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D)">New(String, String, Type, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Texture2D)">New(String, String, Type, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Creates a new card slot modification</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -431,7 +426,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">slotTexture</span></td>
         <td><p>The 3D scene slot texture (154x226)</p>
 </td>
@@ -455,7 +450,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_Dictionary_GBC_PixelBoardSpriteSetter_BoardTheme_GBC_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,Dictionary{GBC.PixelBoardSpriteSetter.BoardTheme,GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Texture2D, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Texture2D_Dictionary_PixelBoardSpriteSetter_BoardTheme_PixelBoardSpriteSetter_BoardThemeSpriteSet__" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Texture2D,Dictionary{PixelBoardSpriteSetter.BoardTheme,PixelBoardSpriteSetter.BoardThemeSpriteSet})">New(String, String, Type, Texture2D, Dictionary&lt;PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -492,13 +487,13 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">slotTexture</span></td>
         <td><p>The 3D scene slot texture (154x226)</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">GBC.PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">GBC.PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">PixelBoardSpriteSetter.BoardTheme</span>, <span class="xref">PixelBoardSpriteSetter.BoardThemeSpriteSet</span>&gt;</td>
         <td><span class="parametername">pixelBoardSlotSprites</span></td>
         <td></td>
       </tr>
@@ -521,7 +516,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_New_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_UnityEngine_Texture2D_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,UnityEngine.Texture2D,UnityEngine.Texture2D)">New(String, String, Type, Texture2D, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_New_System_String_System_String_Type_Texture2D_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationManager.New(System.String,System.String,Type,Texture2D,Texture2D)">New(String, String, Type, Texture2D, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Creates a new card slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -558,13 +553,13 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">slotTexture</span></td>
         <td><p>The 3D scene slot texture (154x226).</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">pixelSlotTexture</span></td>
         <td><p>The 2D scene slot texture. If it is the size of a single slot (44x58) it will be color converted to match each theme. If it is the size of a slot sprite sheet (220x116) it will be sliced into individual sprites.</p>
 </td>
@@ -588,7 +583,7 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_List_UnityEngine_Texture__List_UnityEngine_Texture__" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,List{UnityEngine.Texture},List{UnityEngine.Texture})">OverrideDefaultSlotTexture(CardTemple, List&lt;Texture&gt;, List&lt;Texture&gt;)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_List_Texture__List_Texture__" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,List{Texture},List{Texture})">OverrideDefaultSlotTexture(CardTemple, List&lt;Texture&gt;, List&lt;Texture&gt;)</h4>
   <div class="markdown level1 summary"><p>Allows you to change the default slot texture for a given 3D scene</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -613,26 +608,26 @@ public class SlotModificationManager : MonoBehaviour</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Texture</span>&gt;</td>
         <td><span class="parametername">playerSlots</span></td>
         <td><p>Textures for each player slot. Null textures will be replaced with the game&apos;s default.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Texture</span>&gt;</td>
         <td><span class="parametername">opponentSlots</span></td>
         <td><p>Textures for each opponent slot. Null textures will be replaced with the game&apos;s default.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_List_UnityEngine_Texture__List_UnityEngine_Texture___remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_List_Texture__List_Texture___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This does not work for Act 2. The base game uses the <code>CardBattleNPC</code> to
 set default textures. It&apos;s possible that a future API update would allow for custom Act 2 
 NPCs, so this will deliberately not touch Act 2</p>
 </div>
   <a id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_UnityEngine_Texture_UnityEngine_Texture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,UnityEngine.Texture,UnityEngine.Texture)">OverrideDefaultSlotTexture(CardTemple, Texture, Texture)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_Texture_Texture_" data-uid="InscryptionAPI.Slots.SlotModificationManager.OverrideDefaultSlotTexture(CardTemple,Texture,Texture)">OverrideDefaultSlotTexture(CardTemple, Texture, Texture)</h4>
   <div class="markdown level1 summary"><p>Allows you to change the default slot texture for a given 3D scene</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -657,20 +652,20 @@ NPCs, so this will deliberately not touch Act 2</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">playerSlot</span></td>
         <td><p>Texture for each player slot. Null textures will be replaced with the game&apos;s default.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">opponentSlot</span></td>
         <td><p>Texture for each opponent slot. Null textures will be replaced with the game&apos;s default.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_UnityEngine_Texture_UnityEngine_Texture__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Slots_SlotModificationManager_OverrideDefaultSlotTexture_CardTemple_Texture_Texture__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This does not work for Act 2. The base game uses the <code>CardBattleNPC</code> to
 set default textures. It&apos;s possible that a future API update would allow for custom Act 2 
 NPCs, so this will deliberately not touch Act 2</p>

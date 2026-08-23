@@ -80,10 +80,7 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">DiskCardGame.MapElementData</span></div>
-    <div class="level2"><span class="xref">DiskCardGame.NodeData</span></div>
-    <div class="level3"><span class="xref">DiskCardGame.SpecialNodeData</span></div>
-    <div class="level4"><span class="xref">CustomNodeData</span></div>
+    <div class="level1"><span class="xref">CustomNodeData</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.Encounters.html">InscryptionAPI.Encounters</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
@@ -110,7 +107,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override List&lt;NodeData.SelectionCondition&gt; ForceGenerationConditions { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public override List&lt;SelectionCondition&gt; ForceGenerationConditions { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -122,13 +119,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">SelectionCondition</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.NodeData.ForceGenerationConditions</span></div>
   <a id="InscryptionAPI_Encounters_CustomNodeData_GenerationPrerequisiteConditions_" data-uid="InscryptionAPI.Encounters.CustomNodeData.GenerationPrerequisiteConditions*"></a>
   <h4 id="InscryptionAPI_Encounters_CustomNodeData_GenerationPrerequisiteConditions" data-uid="InscryptionAPI.Encounters.CustomNodeData.GenerationPrerequisiteConditions">GenerationPrerequisiteConditions</h4>
   <div class="markdown level1 summary"><p>All prerequisite conditions must return TRUE for the node to be eligible to be added to the map</p>
@@ -136,7 +131,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override List&lt;NodeData.SelectionCondition&gt; GenerationPrerequisiteConditions { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public override List&lt;SelectionCondition&gt; GenerationPrerequisiteConditions { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,13 +143,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">SelectionCondition</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.NodeData.GenerationPrerequisiteConditions</span></div>
   <a id="InscryptionAPI_Encounters_CustomNodeData_PrefabPath_" data-uid="InscryptionAPI.Encounters.CustomNodeData.PrefabPath*"></a>
   <h4 id="InscryptionAPI_Encounters_CustomNodeData_PrefabPath" data-uid="InscryptionAPI.Encounters.CustomNodeData.PrefabPath">PrefabPath</h4>
   <div class="markdown level1 summary"><p>This prefab path has been specially formatted to work with the custom patches created by the API.</p>
@@ -179,8 +172,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">DiskCardGame.NodeData.PrefabPath</span></div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Encounters_CustomNodeData_AddForceGenerationCondition_" data-uid="InscryptionAPI.Encounters.CustomNodeData.AddForceGenerationCondition*"></a>

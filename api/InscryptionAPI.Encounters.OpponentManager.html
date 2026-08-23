@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Encounters_OpponentManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class OpponentManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class OpponentManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -107,7 +106,7 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Encounters.OpponentManager.FullOpponent.html">OpponentManager.FullOpponent</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -155,7 +154,7 @@ public static class OpponentManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.Opponent.Type</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Opponent.Type</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -218,7 +217,7 @@ public static class OpponentManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_OpponentManager_Add_" data-uid="InscryptionAPI.Encounters.OpponentManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_Add_System_String_System_String_System_String_Type_List_UnityEngine_Texture2D__" data-uid="InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type,List{UnityEngine.Texture2D})">Add(String, String, String, Type, List&lt;Texture2D&gt;)</h4>
+  <h4 id="InscryptionAPI_Encounters_OpponentManager_Add_System_String_System_String_System_String_Type_List_Texture2D__" data-uid="InscryptionAPI.Encounters.OpponentManager.Add(System.String,System.String,System.String,Type,List{Texture2D})">Add(String, String, String, Type, List&lt;Texture2D&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -256,7 +255,7 @@ public static class OpponentManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">nodeAnimation</span></td>
         <td></td>
       </tr>
@@ -278,14 +277,12 @@ public static class OpponentManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_OpponentManager_OriginalGetSequencerIdForBoss_" data-uid="InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss*"></a>
-  <h4 id="InscryptionAPI_Encounters_OpponentManager_OriginalGetSequencerIdForBoss_DiskCardGame_Opponent_Type_" data-uid="InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss(DiskCardGame.Opponent.Type)">OriginalGetSequencerIdForBoss(Opponent.Type)</h4>
+  <h4 id="InscryptionAPI_Encounters_OpponentManager_OriginalGetSequencerIdForBoss_Opponent_Type_" data-uid="InscryptionAPI.Encounters.OpponentManager.OriginalGetSequencerIdForBoss(Opponent.Type)">OriginalGetSequencerIdForBoss(Opponent.Type)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyReversePatch(HarmonyReversePatchType.Original)]
-[HarmonyPatch(typeof(BossBattleSequencer), &quot;GetSequencerIdForBoss&quot;)]
-public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,7 +295,7 @@ public static string OriginalGetSequencerIdForBoss(Opponent.Type bossType)</code
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Opponent.Type</span></td>
+        <td><span class="xref">Opponent.Type</span></td>
         <td><span class="parametername">bossType</span></td>
         <td></td>
       </tr>

@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_PixelCard_GBCPackManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class GBCPackManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class GBCPackManager : object</code></pre>
   </div>
   <h3 id="events">Events
   </h3>
@@ -108,7 +107,7 @@ public static class GBCPackManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>

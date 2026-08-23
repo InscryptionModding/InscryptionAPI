@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Resource_ResourceBankManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class ResourceBankManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class ResourceBankManager : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
@@ -195,7 +195,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddAbilityIcon_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddAbilityIcon*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddAbilityIcon_System_String_System_String_UnityEngine_Texture_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddAbilityIcon(System.String,System.String,UnityEngine.Texture,System.Boolean)">AddAbilityIcon(String, String, Texture, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddAbilityIcon_System_String_System_String_Texture_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddAbilityIcon(System.String,System.String,Texture,System.Boolean)">AddAbilityIcon(String, String, Texture, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom Texture resource located at the path Inscryption uses to retrieve ability icons.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -226,7 +226,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">iconTexture</span></td>
         <td><p>The ability icon&apos;s texture.</p>
 </td>
@@ -255,7 +255,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddCardBattleIdleEvent_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddCardBattleIdleEvent*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddCardBattleIdleEvent_System_String_System_String_UnityEngine_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddCardBattleIdleEvent(System.String,System.String,UnityEngine.GameObject,System.Boolean)">AddCardBattleIdleEvent(String, String, GameObject, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddCardBattleIdleEvent_System_String_System_String_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddCardBattleIdleEvent(System.String,System.String,GameObject,System.Boolean)">AddCardBattleIdleEvent(String, String, GameObject, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom GameObject resource located at the path Inscryption uses to retrieve Prefabs when instantiating card battle idle events, eg, the spider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -286,7 +286,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">eventPrefab</span></td>
         <td><p>The GameObject for the CardBattleIdleEvent.</p>
 </td>
@@ -314,11 +314,11 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Resource_ResourceBankManager_AddCardBattleIdleEvent_System_String_System_String_UnityEngine_GameObject_System_Boolean__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Resource_ResourceBankManager_AddCardBattleIdleEvent_System_String_System_String_GameObject_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Note: Object must have a CardBattleIdleEvent component attached.</p>
 </div>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddDecal_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddDecal*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddDecal_System_String_System_String_UnityEngine_Texture_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddDecal(System.String,System.String,UnityEngine.Texture,System.Boolean)">AddDecal(String, String, Texture, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddDecal_System_String_System_String_Texture_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddDecal(System.String,System.String,Texture,System.Boolean)">AddDecal(String, String, Texture, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom Texture resource located at the path Inscryption uses to retrieve card decal textures.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -349,7 +349,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">decalTexture</span></td>
         <td><p>The decal texture.</p>
 </td>
@@ -378,7 +378,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddFirstPersonAnimation_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddFirstPersonAnimation*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddFirstPersonAnimation_System_String_System_String_UnityEngine_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddFirstPersonAnimation(System.String,System.String,UnityEngine.GameObject,System.Boolean)">AddFirstPersonAnimation(String, String, GameObject, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddFirstPersonAnimation_System_String_System_String_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddFirstPersonAnimation(System.String,System.String,GameObject,System.Boolean)">AddFirstPersonAnimation(String, String, GameObject, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom GameObject resource located at the path Inscryption uses to retrieve Prefabs when instantiating first person animations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -409,7 +409,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">animPrefab</span></td>
         <td><p>The table effect GameObject.</p>
 </td>
@@ -437,11 +437,11 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Resource_ResourceBankManager_AddFirstPersonAnimation_System_String_System_String_UnityEngine_GameObject_System_Boolean__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Resource_ResourceBankManager_AddFirstPersonAnimation_System_String_System_String_GameObject_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Note: The game checks the Prefab&apos;s children for the Animator and FirstPersonAnimatorObject.</p>
 </div>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddMapScenery_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddMapScenery*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddMapScenery_System_String_System_String_UnityEngine_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddMapScenery(System.String,System.String,UnityEngine.GameObject,System.Boolean)">AddMapScenery(String, String, GameObject, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddMapScenery_System_String_System_String_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddMapScenery(System.String,System.String,GameObject,System.Boolean)">AddMapScenery(String, String, GameObject, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom GameObject resource located at the path Inscryption uses to retrieve Prefabs when generating map scenery.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -472,7 +472,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">sceneryPrefab</span></td>
         <td><p>The map scenery GameObject.</p>
 </td>
@@ -501,7 +501,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddScaleWeightPrefab_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddScaleWeightPrefab*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddScaleWeightPrefab_System_String_System_String_UnityEngine_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddScaleWeightPrefab(System.String,System.String,UnityEngine.GameObject,System.Boolean)">AddScaleWeightPrefab(String, String, GameObject, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddScaleWeightPrefab_System_String_System_String_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddScaleWeightPrefab(System.String,System.String,GameObject,System.Boolean)">AddScaleWeightPrefab(String, String, GameObject, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom GameObject resource located at the path Inscryption uses to retrieve Prefabs when instantiating weights for the scales.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -532,7 +532,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">prefab</span></td>
         <td></td>
       </tr>
@@ -560,7 +560,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Resource_ResourceBankManager_AddTableEffect_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddTableEffect*"></a>
-  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddTableEffect_System_String_System_String_UnityEngine_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddTableEffect(System.String,System.String,UnityEngine.GameObject,System.Boolean)">AddTableEffect(String, String, GameObject, Boolean)</h4>
+  <h4 id="InscryptionAPI_Resource_ResourceBankManager_AddTableEffect_System_String_System_String_GameObject_System_Boolean_" data-uid="InscryptionAPI.Resource.ResourceBankManager.AddTableEffect(System.String,System.String,GameObject,System.Boolean)">AddTableEffect(String, String, GameObject, Boolean)</h4>
   <div class="markdown level1 summary"><p>Adds a custom GameObject resource located at the path Inscryption uses to retrieve Prefabs when instantiating table effects, ie, during boss fights.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -591,7 +591,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">tableEffectPrefab</span></td>
         <td><p>The table effect GameObject.</p>
 </td>

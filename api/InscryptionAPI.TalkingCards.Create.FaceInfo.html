@@ -86,17 +86,17 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_TalkingCards_Create_FaceInfo_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FaceInfo</code></pre>
+    <pre><code class="lang-csharp hljs">public class FaceInfo : object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="InscryptionAPI_TalkingCards_Create_FaceInfo__ctor_" data-uid="InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor*"></a>
-  <h4 id="InscryptionAPI_TalkingCards_Create_FaceInfo__ctor_System_Nullable_System_Single__System_String_System_Nullable_System_Single__System_String_" data-uid="InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor(System.Nullable{System.Single},System.String,System.Nullable{System.Single},System.String)">FaceInfo(Nullable&lt;Single&gt;, String, Nullable&lt;Single&gt;, String)</h4>
+  <h4 id="InscryptionAPI_TalkingCards_Create_FaceInfo__ctor_System_Nullable_System_Single__System_Nullable_System_String__System_Nullable_System_Single__System_Nullable_System_String__" data-uid="InscryptionAPI.TalkingCards.Create.FaceInfo.#ctor(System.Nullable{System.Single},System.Nullable{System.String},System.Nullable{System.Single},System.Nullable{System.String})">FaceInfo(Nullable&lt;Single&gt;, Nullable&lt;String&gt;, Nullable&lt;Single&gt;, Nullable&lt;String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FaceInfo(float? blinkRate = null, string voiceId = null, float? voiceSoundPitch = null, string customVoice = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public FaceInfo(float? blinkRate = null, string? voiceId = null, float? voiceSoundPitch = null, string? customVoice = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -114,7 +114,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">voiceId</span></td>
         <td></td>
       </tr>
@@ -124,7 +124,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">customVoice</span></td>
         <td></td>
       </tr>
@@ -163,7 +163,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string customVoice { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? customVoice { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -175,7 +175,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -187,7 +187,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string voiceId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? voiceId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -199,7 +199,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

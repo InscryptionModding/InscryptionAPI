@@ -85,13 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Encounters_NodeManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class NodeManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class NodeManager : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Encounters_NodeManager_Add_" data-uid="InscryptionAPI.Encounters.NodeManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_NodeManager_Add__1_UnityEngine_Texture2D___InscryptionAPI_Encounters_NodeManager_NodePosition_" data-uid="InscryptionAPI.Encounters.NodeManager.Add``1(UnityEngine.Texture2D[],InscryptionAPI.Encounters.NodeManager.NodePosition)">Add&lt;S&gt;(Texture2D[], NodeManager.NodePosition)</h4>
+  <h4 id="InscryptionAPI_Encounters_NodeManager_Add__1_Texture2D___InscryptionAPI_Encounters_NodeManager_NodePosition_" data-uid="InscryptionAPI.Encounters.NodeManager.Add``1(Texture2D[],InscryptionAPI.Encounters.NodeManager.NodePosition)">Add&lt;S&gt;(Texture2D[], NodeManager.NodePosition)</h4>
   <div class="markdown level1 summary"><p>Registers a new custom node and conditionally adds it to the map pool based on the nodeType</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -111,7 +110,7 @@ public static class NodeManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>[]</td>
+        <td><span class="xref">Texture2D</span>[]</td>
         <td><span class="parametername">animatedMapNode</span></td>
         <td><p>An array of exactly four textures containing the node&apos;s animation.</p>
 </td>
@@ -157,7 +156,7 @@ public static class NodeManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_NodeManager_Add_" data-uid="InscryptionAPI.Encounters.NodeManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_NodeManager_Add__2_UnityEngine_Texture2D___InscryptionAPI_Encounters_NodeManager_NodePosition_" data-uid="InscryptionAPI.Encounters.NodeManager.Add``2(UnityEngine.Texture2D[],InscryptionAPI.Encounters.NodeManager.NodePosition)">Add&lt;S, N&gt;(Texture2D[], NodeManager.NodePosition)</h4>
+  <h4 id="InscryptionAPI_Encounters_NodeManager_Add__2_Texture2D___InscryptionAPI_Encounters_NodeManager_NodePosition_" data-uid="InscryptionAPI.Encounters.NodeManager.Add``2(Texture2D[],InscryptionAPI.Encounters.NodeManager.NodePosition)">Add&lt;S, N&gt;(Texture2D[], NodeManager.NodePosition)</h4>
   <div class="markdown level1 summary"><p>Registers a new custom node and conditionally adds it to the map pool based on the nodeType</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -177,7 +176,7 @@ public static class NodeManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>[]</td>
+        <td><span class="xref">Texture2D</span>[]</td>
         <td><span class="parametername">animatedMapNode</span></td>
         <td><p>An array of exactly four textures containing the node&apos;s animation.</p>
 </td>

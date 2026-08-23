@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_DeathCardManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class DeathCardManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class DeathCardManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -95,7 +94,7 @@ public static class DeathCardManager</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string CardPrefix = &quot;apiDeathCard&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string CardPrefix = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -132,7 +131,7 @@ public static class DeathCardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -140,7 +139,7 @@ public static class DeathCardManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_DeathCardManager_AddDefaultDeathCard_" data-uid="InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard*"></a>
-  <h4 id="InscryptionAPI_Card_DeathCardManager_AddDefaultDeathCard_DiskCardGame_CardModificationInfo_System_Boolean_" data-uid="InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard(DiskCardGame.CardModificationInfo,System.Boolean)">AddDefaultDeathCard(CardModificationInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_DeathCardManager_AddDefaultDeathCard_CardModificationInfo_System_Boolean_" data-uid="InscryptionAPI.Card.DeathCardManager.AddDefaultDeathCard(CardModificationInfo,System.Boolean)">AddDefaultDeathCard(CardModificationInfo, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -158,7 +157,7 @@ public static class DeathCardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardModificationInfo</span></td>
+        <td><span class="xref">CardModificationInfo</span></td>
         <td><span class="parametername">deathCardMod</span></td>
         <td></td>
       </tr>
@@ -170,7 +169,7 @@ public static class DeathCardManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_DeathCardManager_GetAPIDeathCardName_" data-uid="InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName*"></a>
-  <h4 id="InscryptionAPI_Card_DeathCardManager_GetAPIDeathCardName_DiskCardGame_CardModificationInfo_System_Boolean_" data-uid="InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName(DiskCardGame.CardModificationInfo,System.Boolean)">GetAPIDeathCardName(CardModificationInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_DeathCardManager_GetAPIDeathCardName_CardModificationInfo_System_Boolean_" data-uid="InscryptionAPI.Card.DeathCardManager.GetAPIDeathCardName(CardModificationInfo,System.Boolean)">GetAPIDeathCardName(CardModificationInfo, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -188,7 +187,7 @@ public static class DeathCardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardModificationInfo</span></td>
+        <td><span class="xref">CardModificationInfo</span></td>
         <td><span class="parametername">mod</span></td>
         <td></td>
       </tr>

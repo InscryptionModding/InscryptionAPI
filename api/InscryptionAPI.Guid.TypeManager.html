@@ -85,13 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Guid_TypeManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class TypeManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class TypeManager : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Guid_TypeManager_GetModIdFromCallstack_" data-uid="InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack*"></a>
-  <h4 id="InscryptionAPI_Guid_TypeManager_GetModIdFromCallstack_System_Reflection_Assembly_" data-uid="InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(System.Reflection.Assembly)">GetModIdFromCallstack(Assembly)</h4>
+  <h4 id="InscryptionAPI_Guid_TypeManager_GetModIdFromCallstack_Assembly_" data-uid="InscryptionAPI.Guid.TypeManager.GetModIdFromCallstack(Assembly)">GetModIdFromCallstack(Assembly)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -109,7 +108,7 @@ public static class TypeManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Reflection.Assembly</span></td>
+        <td><span class="xref">Assembly</span></td>
         <td><span class="parametername">callingAssembly</span></td>
         <td></td>
       </tr>
@@ -136,8 +135,7 @@ public static class TypeManager</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyReversePatch(HarmonyReversePatchType.Original)]
-public static Type OriginalGetType(string nameSpace, string typeName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Type OriginalGetType(string nameSpace, string typeName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

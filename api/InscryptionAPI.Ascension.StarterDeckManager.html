@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Ascension_StarterDeckManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class StarterDeckManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class StarterDeckManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -107,7 +106,7 @@ public static class StarterDeckManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.StarterDeckInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">StarterDeckInfo</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -151,7 +150,7 @@ public static class StarterDeckManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html">StarterDeckManager.FullStarterDeck</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.html">StarterDeckManager.FullStarterDeck</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -159,7 +158,7 @@ public static class StarterDeckManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Ascension_StarterDeckManager_Add_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.Add*"></a>
-  <h4 id="InscryptionAPI_Ascension_StarterDeckManager_Add_System_String_DiskCardGame_StarterDeckInfo_System_Int32_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.Add(System.String,DiskCardGame.StarterDeckInfo,System.Int32)">Add(String, StarterDeckInfo, Int32)</h4>
+  <h4 id="InscryptionAPI_Ascension_StarterDeckManager_Add_System_String_StarterDeckInfo_System_Int32_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.Add(System.String,StarterDeckInfo,System.Int32)">Add(String, StarterDeckInfo, Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -182,7 +181,7 @@ public static class StarterDeckManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.StarterDeckInfo</span></td>
+        <td><span class="xref">StarterDeckInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -269,7 +268,7 @@ public static class StarterDeckManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Ascension_StarterDeckManager_New_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.New*"></a>
-  <h4 id="InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_UnityEngine_Texture2D_System_String___System_Int32_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,UnityEngine.Texture2D,System.String[],System.Int32)">New(String, String, Texture2D, String[], Int32)</h4>
+  <h4 id="InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_Texture2D_System_String___System_Int32_" data-uid="InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,Texture2D,System.String[],System.Int32)">New(String, String, Texture2D, String[], Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -297,7 +296,7 @@ public static class StarterDeckManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">iconTexture</span></td>
         <td></td>
       </tr>

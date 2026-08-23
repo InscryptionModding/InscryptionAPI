@@ -86,8 +86,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_TribeManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class TribeManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class TribeManager : object</code></pre>
   </div>
   <h5 id="InscryptionAPI_Card_TribeManager_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This manager can currently handle watermarking cards with tribes and having 
@@ -112,7 +111,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.TribeManager.TribeInfo.html">TribeManager.TribeInfo</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.TribeManager.TribeInfo.html">TribeManager.TribeInfo</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -134,7 +133,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">DiskCardGame.Tribe</span>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">Tribe</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -201,14 +200,14 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span></td>
+        <td><span class="xref">Tribe</span></td>
         <td><p>The unique identifier for the new tribe.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_TribeManager_Add_" data-uid="InscryptionAPI.Card.TribeManager.Add*"></a>
-  <h4 id="InscryptionAPI_Card_TribeManager_Add_System_String_System_String_UnityEngine_Texture2D_System_Boolean_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.TribeManager.Add(System.String,System.String,UnityEngine.Texture2D,System.Boolean,UnityEngine.Texture2D)">Add(String, String, Texture2D, Boolean, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Card_TribeManager_Add_System_String_System_String_Texture2D_System_Boolean_Texture2D_" data-uid="InscryptionAPI.Card.TribeManager.Add(System.String,System.String,Texture2D,System.Boolean,Texture2D)">Add(String, String, Texture2D, Boolean, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Adds a new tribe to the game.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -239,7 +238,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">tribeIcon</span></td>
         <td><p>The tribal icon that will appear as a watermark on all cards belonging to this tribe.</p>
 </td>
@@ -251,7 +250,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">choiceCardbackTexture</span></td>
         <td><p>The card back texture to display if the card appears in tribal choice nodes. If no texture is provided, a placeholder will be generated from the tribal icon.</p>
 </td>
@@ -268,14 +267,14 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span></td>
+        <td><span class="xref">Tribe</span></td>
         <td><p>The unique identifier for the new tribe.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_TribeManager_GetCustomTribeInfo_" data-uid="InscryptionAPI.Card.TribeManager.GetCustomTribeInfo*"></a>
-  <h4 id="InscryptionAPI_Card_TribeManager_GetCustomTribeInfo_DiskCardGame_Tribe_" data-uid="InscryptionAPI.Card.TribeManager.GetCustomTribeInfo(DiskCardGame.Tribe)">GetCustomTribeInfo(Tribe)</h4>
+  <h4 id="InscryptionAPI_Card_TribeManager_GetCustomTribeInfo_Tribe_" data-uid="InscryptionAPI.Card.TribeManager.GetCustomTribeInfo(Tribe)">GetCustomTribeInfo(Tribe)</h4>
   <div class="markdown level1 summary"><p>Retrieves the TribeInfo object associated with the given Tribe enum value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -294,7 +293,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span></td>
+        <td><span class="xref">Tribe</span></td>
         <td><span class="parametername">tribe</span></td>
         <td><p>Tribe to retrieve the TribeInfo of.</p>
 </td>
@@ -316,11 +315,11 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Card_TribeManager_GetCustomTribeInfo_DiskCardGame_Tribe__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Card_TribeManager_GetCustomTribeInfo_Tribe__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Only custom Tribes have an associated TribeInfo; returns null for vanilla Tribes.</p>
 </div>
   <a id="InscryptionAPI_Card_TribeManager_GetTribeIcon_" data-uid="InscryptionAPI.Card.TribeManager.GetTribeIcon*"></a>
-  <h4 id="InscryptionAPI_Card_TribeManager_GetTribeIcon_DiskCardGame_Tribe_System_Boolean_" data-uid="InscryptionAPI.Card.TribeManager.GetTribeIcon(DiskCardGame.Tribe,System.Boolean)">GetTribeIcon(Tribe, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_TribeManager_GetTribeIcon_Tribe_System_Boolean_" data-uid="InscryptionAPI.Card.TribeManager.GetTribeIcon(Tribe,System.Boolean)">GetTribeIcon(Tribe, Boolean)</h4>
   <div class="markdown level1 summary"><p>Returns the icon texture associated with the given Tribe.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -339,7 +338,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span></td>
+        <td><span class="xref">Tribe</span></td>
         <td><span class="parametername">tribe</span></td>
         <td><p>Tribe to get the icon of.</p>
 </td>
@@ -362,13 +361,13 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_TribeManager_IsCustomTribe_" data-uid="InscryptionAPI.Card.TribeManager.IsCustomTribe*"></a>
-  <h4 id="InscryptionAPI_Card_TribeManager_IsCustomTribe_DiskCardGame_Tribe_" data-uid="InscryptionAPI.Card.TribeManager.IsCustomTribe(DiskCardGame.Tribe)">IsCustomTribe(Tribe)</h4>
+  <h4 id="InscryptionAPI_Card_TribeManager_IsCustomTribe_Tribe_" data-uid="InscryptionAPI.Card.TribeManager.IsCustomTribe(Tribe)">IsCustomTribe(Tribe)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -386,7 +385,7 @@ them appear at tribal choice nodes. Totems are not currently supported.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span></td>
+        <td><span class="xref">Tribe</span></td>
         <td><span class="parametername">tribe</span></td>
         <td></td>
       </tr>

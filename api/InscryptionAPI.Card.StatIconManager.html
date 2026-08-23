@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_StatIconManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class StatIconManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class StatIconManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -107,7 +106,7 @@ public static class StatIconManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.StatIconManager.FullStatIcon.html">StatIconManager.FullStatIcon</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.StatIconManager.FullStatIcon.html">StatIconManager.FullStatIcon</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -132,7 +131,7 @@ public static class StatIconManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.StatIconInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">StatIconInfo</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -163,7 +162,7 @@ public static class StatIconManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_StatIconManager_Add_" data-uid="InscryptionAPI.Card.StatIconManager.Add*"></a>
-  <h4 id="InscryptionAPI_Card_StatIconManager_Add_System_String_DiskCardGame_StatIconInfo_Type_" data-uid="InscryptionAPI.Card.StatIconManager.Add(System.String,DiskCardGame.StatIconInfo,Type)">Add(String, StatIconInfo, Type)</h4>
+  <h4 id="InscryptionAPI_Card_StatIconManager_Add_System_String_StatIconInfo_Type_" data-uid="InscryptionAPI.Card.StatIconManager.Add(System.String,StatIconInfo,Type)">Add(String, StatIconInfo, Type)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -186,7 +185,7 @@ public static class StatIconManager</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -262,32 +261,7 @@ public static class StatIconManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_StatIconManager_Remove_" data-uid="InscryptionAPI.Card.StatIconManager.Remove*"></a>
-  <h4 id="InscryptionAPI_Card_StatIconManager_Remove_DiskCardGame_SpecialStatIcon_" data-uid="InscryptionAPI.Card.StatIconManager.Remove(DiskCardGame.SpecialStatIcon)">Remove(SpecialStatIcon)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Remove(SpecialStatIcon id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.SpecialStatIcon</span></td>
-        <td><span class="parametername">id</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -313,6 +287,31 @@ public static class StatIconManager</code></pre>
       <tr>
         <td><a class="xref" href="InscryptionAPI.Card.StatIconManager.FullStatIcon.html">StatIconManager.FullStatIcon</a></td>
         <td><span class="parametername">ability</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_StatIconManager_Remove_" data-uid="InscryptionAPI.Card.StatIconManager.Remove*"></a>
+  <h4 id="InscryptionAPI_Card_StatIconManager_Remove_SpecialStatIcon_" data-uid="InscryptionAPI.Card.StatIconManager.Remove(SpecialStatIcon)">Remove(SpecialStatIcon)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Remove(SpecialStatIcon id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SpecialStatIcon</span></td>
+        <td><span class="parametername">id</span></td>
         <td></td>
       </tr>
     </tbody>

@@ -86,7 +86,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Nodes_NewNodeManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class NewNodeManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class NewNodeManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -108,7 +108,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.NewNodeManager.FullNode.html">NewNodeManager.FullNode</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.NewNodeManager.FullNode.html">NewNodeManager.FullNode</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -116,13 +116,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Nodes_NewNodeManager_New_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New*"></a>
-  <h4 id="InscryptionAPI_Nodes_NewNodeManager_New_System_String_System_String_InscryptionAPI_Nodes_GenerationType_Type_List_UnityEngine_Texture2D__List_DiskCardGame_NodeData_SelectionCondition__List_DiskCardGame_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,Type,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)">New(String, String, GenerationType, Type, List&lt;Texture2D&gt;, List&lt;NodeData.SelectionCondition&gt;, List&lt;NodeData.SelectionCondition&gt;, Action&lt;CustomSpecialNodeData&gt;, Action&lt;CustomSpecialNodeData, MapNode2D&gt;, GameObject, GameObject)</h4>
+  <h4 id="InscryptionAPI_Nodes_NewNodeManager_New_System_String_System_String_InscryptionAPI_Nodes_GenerationType_Type_List_Texture2D__List_NodeData_SelectionCondition__List_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_MapNode2D__GameObject_GameObject_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New(System.String,System.String,InscryptionAPI.Nodes.GenerationType,Type,List{Texture2D},List{NodeData.SelectionCondition},List{NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,MapNode2D},GameObject,GameObject)">New(String, String, GenerationType, Type, List&lt;Texture2D&gt;, List&lt;NodeData.SelectionCondition&gt;, List&lt;NodeData.SelectionCondition&gt;, Action&lt;CustomSpecialNodeData&gt;, Action&lt;CustomSpecialNodeData, MapNode2D&gt;, GameObject, GameObject)</h4>
   <div class="markdown level1 summary"><p>Creates a new node.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static NewNodeManager.FullNode New(string guid, string name, GenerationType generationType = GenerationType.None, Type nodeSequencerType = null, List&lt;Texture2D&gt; nodeAnimation = null, List&lt;NodeData.SelectionCondition&gt; generationPrerequisites = null, List&lt;NodeData.SelectionCondition&gt; forceGenerationConditions = null, Action&lt;CustomSpecialNodeData&gt; onPreGeneration = null, Action&lt;CustomSpecialNodeData, MapNode2D&gt; onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static NewNodeManager.FullNode New(string guid, string name, GenerationType generationType = default(GenerationType), Type nodeSequencerType = null, List&lt;Texture2D&gt; nodeAnimation = null, List&lt;NodeData.SelectionCondition&gt; generationPrerequisites = null, List&lt;NodeData.SelectionCondition&gt; forceGenerationConditions = null, Action&lt;CustomSpecialNodeData&gt; onPreGeneration = null, Action&lt;CustomSpecialNodeData, MapNode2D&gt; onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,19 +159,19 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">nodeAnimation</span></td>
         <td><p>The animation frames for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">NodeData.SelectionCondition</span>&gt;</td>
         <td><span class="parametername">generationPrerequisites</span></td>
         <td><p>The generation prerequisites for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">NodeData.SelectionCondition</span>&gt;</td>
         <td><span class="parametername">forceGenerationConditions</span></td>
         <td><p>The force generation conditions for the node.</p>
 </td>
@@ -183,19 +183,19 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.CustomSpecialNodeData.html">CustomSpecialNodeData</a>, <span class="xref">DiskCardGame.MapNode2D</span>&gt;</td>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.CustomSpecialNodeData.html">CustomSpecialNodeData</a>, <span class="xref">MapNode2D</span>&gt;</td>
         <td><span class="parametername">onPostGeneration</span></td>
         <td><p>The action that triggers after the node object is added to the map.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">sequencerPrefab</span></td>
         <td><p>The sequencer prefab for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">nodePrefab</span></td>
         <td><p>The node object prefab for the node.</p>
 </td>
@@ -219,13 +219,13 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Nodes_NewNodeManager_New_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New*"></a>
-  <h4 id="InscryptionAPI_Nodes_NewNodeManager_New__1_System_String_System_String_InscryptionAPI_Nodes_GenerationType_List_UnityEngine_Texture2D__List_DiskCardGame_NodeData_SelectionCondition__List_DiskCardGame_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_DiskCardGame_MapNode2D__UnityEngine_GameObject_UnityEngine_GameObject_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,List{UnityEngine.Texture2D},List{DiskCardGame.NodeData.SelectionCondition},List{DiskCardGame.NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,DiskCardGame.MapNode2D},UnityEngine.GameObject,UnityEngine.GameObject)">New&lt;T&gt;(String, String, GenerationType, List&lt;Texture2D&gt;, List&lt;NodeData.SelectionCondition&gt;, List&lt;NodeData.SelectionCondition&gt;, Action&lt;CustomSpecialNodeData&gt;, Action&lt;CustomSpecialNodeData, MapNode2D&gt;, GameObject, GameObject)</h4>
+  <h4 id="InscryptionAPI_Nodes_NewNodeManager_New__1_System_String_System_String_InscryptionAPI_Nodes_GenerationType_List_Texture2D__List_NodeData_SelectionCondition__List_NodeData_SelectionCondition__Action_InscryptionAPI_Nodes_CustomSpecialNodeData__Action_InscryptionAPI_Nodes_CustomSpecialNodeData_MapNode2D__GameObject_GameObject_" data-uid="InscryptionAPI.Nodes.NewNodeManager.New``1(System.String,System.String,InscryptionAPI.Nodes.GenerationType,List{Texture2D},List{NodeData.SelectionCondition},List{NodeData.SelectionCondition},Action{InscryptionAPI.Nodes.CustomSpecialNodeData},Action{InscryptionAPI.Nodes.CustomSpecialNodeData,MapNode2D},GameObject,GameObject)">New&lt;T&gt;(String, String, GenerationType, List&lt;Texture2D&gt;, List&lt;NodeData.SelectionCondition&gt;, List&lt;NodeData.SelectionCondition&gt;, Action&lt;CustomSpecialNodeData&gt;, Action&lt;CustomSpecialNodeData, MapNode2D&gt;, GameObject, GameObject)</h4>
   <div class="markdown level1 summary"><p>Creates a new node.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static NewNodeManager.FullNode New&lt;T&gt;(string guid, string name, GenerationType generationType = GenerationType.None, List&lt;Texture2D&gt; nodeAnimation = null, List&lt;NodeData.SelectionCondition&gt; generationPrerequisites = null, List&lt;NodeData.SelectionCondition&gt; forceGenerationConditions = null, Action&lt;CustomSpecialNodeData&gt; onPreGeneration = null, Action&lt;CustomSpecialNodeData, MapNode2D&gt; onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null)
+    <pre><code class="lang-csharp hljs">public static NewNodeManager.FullNode New&lt;T&gt;(string guid, string name, GenerationType generationType = default(GenerationType), List&lt;Texture2D&gt; nodeAnimation = null, List&lt;NodeData.SelectionCondition&gt; generationPrerequisites = null, List&lt;NodeData.SelectionCondition&gt; forceGenerationConditions = null, Action&lt;CustomSpecialNodeData&gt; onPreGeneration = null, Action&lt;CustomSpecialNodeData, MapNode2D&gt; onPostGeneration = null, GameObject sequencerPrefab = null, GameObject nodePrefab = null)
     where T : ICustomNodeSequencer</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -257,19 +257,19 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">Texture2D</span>&gt;</td>
         <td><span class="parametername">nodeAnimation</span></td>
         <td><p>The animation frames for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">NodeData.SelectionCondition</span>&gt;</td>
         <td><span class="parametername">generationPrerequisites</span></td>
         <td><p>The generation prerequisites for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.NodeData.SelectionCondition</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">NodeData.SelectionCondition</span>&gt;</td>
         <td><span class="parametername">forceGenerationConditions</span></td>
         <td><p>The force generation conditions for the node.</p>
 </td>
@@ -281,19 +281,19 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.CustomSpecialNodeData.html">CustomSpecialNodeData</a>, <span class="xref">DiskCardGame.MapNode2D</span>&gt;</td>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="InscryptionAPI.Nodes.CustomSpecialNodeData.html">CustomSpecialNodeData</a>, <span class="xref">MapNode2D</span>&gt;</td>
         <td><span class="parametername">onPostGeneration</span></td>
         <td><p>The action that triggers after the node object is added to the map.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">sequencerPrefab</span></td>
         <td><p>The sequencer prefab for the node.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">nodePrefab</span></td>
         <td><p>The node object prefab for the node.</p>
 </td>

@@ -85,12 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Regions_RegionExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class RegionExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class RegionExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddBosses_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddBosses*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddBosses_DiskCardGame_RegionData_DiskCardGame_Opponent_Type___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddBosses(DiskCardGame.RegionData,DiskCardGame.Opponent.Type[])">AddBosses(RegionData, Opponent.Type[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddBosses_RegionData_Opponent_Type___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddBosses(RegionData,Opponent.Type[])">AddBosses(RegionData, Opponent.Type[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -108,12 +108,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.Opponent.Type</span>[]</td>
+        <td><span class="xref">Opponent.Type</span>[]</td>
         <td><span class="parametername">bosses</span></td>
         <td></td>
       </tr>
@@ -129,13 +129,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_DiskCardGame_RegionData_DiskCardGame_ConsumableItemData___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,DiskCardGame.ConsumableItemData[])">AddConsumableItems(RegionData, ConsumableItemData[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_RegionData_ConsumableItemData___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(RegionData,ConsumableItemData[])">AddConsumableItems(RegionData, ConsumableItemData[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -153,12 +153,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.ConsumableItemData</span>[]</td>
+        <td><span class="xref">ConsumableItemData</span>[]</td>
         <td><span class="parametername">consumables</span></td>
         <td></td>
       </tr>
@@ -174,13 +174,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_DiskCardGame_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(DiskCardGame.RegionData,System.String[])">AddConsumableItems(RegionData, String[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddConsumableItems_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddConsumableItems(RegionData,System.String[])">AddConsumableItems(RegionData, String[])</h4>
   <div class="markdown level1 summary"><p>Adds consumables to this region.<br>
 This only applies to consumables that are <code>regionSpecific</code>. Adding non-region-specific consumables will increase the probability of the consumable appearing.</p>
 </div>
@@ -200,7 +200,7 @@ This only applies to consumables that are <code>regionSpecific</code>. Adding no
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -222,13 +222,13 @@ This only applies to consumables that are <code>regionSpecific</code>. Adding no
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddDominantTribes_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddDominantTribes*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddDominantTribes_DiskCardGame_RegionData_DiskCardGame_Tribe___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(DiskCardGame.RegionData,DiskCardGame.Tribe[])">AddDominantTribes(RegionData, Tribe[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddDominantTribes_RegionData_Tribe___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddDominantTribes(RegionData,Tribe[])">AddDominantTribes(RegionData, Tribe[])</h4>
   <div class="markdown level1 summary"><p>Adds dominant tribes to this region.<br>
 One of three normal card choices is guaranteed to contain a card from the region&apos;s dominant tribes.<br>
 Every region must have at least one dominant tribe.</p>
@@ -249,12 +249,12 @@ Every region must have at least one dominant tribe.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.Tribe</span>[]</td>
+        <td><span class="xref">Tribe</span>[]</td>
         <td><span class="parametername">tribes</span></td>
         <td><p>The tribes to add.</p>
 </td>
@@ -271,13 +271,13 @@ Every region must have at least one dominant tribe.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddEncounters_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddEncounters*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddEncounters_DiskCardGame_RegionData_DiskCardGame_EncounterBlueprintData___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddEncounters(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData[])">AddEncounters(RegionData, EncounterBlueprintData[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddEncounters_RegionData_EncounterBlueprintData___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddEncounters(RegionData,EncounterBlueprintData[])">AddEncounters(RegionData, EncounterBlueprintData[])</h4>
   <div class="markdown level1 summary"><p>Adds normal (card battle node) encounters to this region.<br>
 Every region with battles needs at least one encounter.</p>
 </div>
@@ -297,12 +297,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData</span>[]</td>
+        <td><span class="xref">EncounterBlueprintData</span>[]</td>
         <td><span class="parametername">encounters</span></td>
         <td><p>The encounters to add.</p>
 </td>
@@ -319,13 +319,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddFillerScenery_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddFillerScenery*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddFillerScenery_DiskCardGame_RegionData_DiskCardGame_FillerSceneryEntry___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(DiskCardGame.RegionData,DiskCardGame.FillerSceneryEntry[])">AddFillerScenery(RegionData, FillerSceneryEntry[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddFillerScenery_RegionData_FillerSceneryEntry___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddFillerScenery(RegionData,FillerSceneryEntry[])">AddFillerScenery(RegionData, FillerSceneryEntry[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -343,12 +343,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.FillerSceneryEntry</span>[]</td>
+        <td><span class="xref">FillerSceneryEntry</span>[]</td>
         <td><span class="parametername">fillerScenery</span></td>
         <td></td>
       </tr>
@@ -364,13 +364,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddLikelyCards_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddLikelyCards*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddLikelyCards_DiskCardGame_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(DiskCardGame.RegionData,System.String[])">AddLikelyCards(RegionData, String[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddLikelyCards_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddLikelyCards(RegionData,System.String[])">AddLikelyCards(RegionData, String[])</h4>
   <div class="markdown level1 summary"><p>Adds likely cards to this region.<br>
 Likely cards require the <code>ChoiceNode</code> metacategory to appear.<br>
 One of three normal card choices is guaranteed to contain a card from the region&apos;s likely cards.</p>
@@ -391,7 +391,7 @@ One of three normal card choices is guaranteed to contain a card from the region
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -413,13 +413,13 @@ One of three normal card choices is guaranteed to contain a card from the region
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddScarceScenery_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddScarceScenery*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddScarceScenery_DiskCardGame_RegionData_DiskCardGame_ScarceSceneryEntry___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(DiskCardGame.RegionData,DiskCardGame.ScarceSceneryEntry[])">AddScarceScenery(RegionData, ScarceSceneryEntry[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddScarceScenery_RegionData_ScarceSceneryEntry___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddScarceScenery(RegionData,ScarceSceneryEntry[])">AddScarceScenery(RegionData, ScarceSceneryEntry[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -437,12 +437,12 @@ One of three normal card choices is guaranteed to contain a card from the region
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.ScarceSceneryEntry</span>[]</td>
+        <td><span class="xref">ScarceSceneryEntry</span>[]</td>
         <td><span class="parametername">scarceScenery</span></td>
         <td></td>
       </tr>
@@ -458,13 +458,13 @@ One of three normal card choices is guaranteed to contain a card from the region
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_AddTerrainCards_" data-uid="InscryptionAPI.Regions.RegionExtensions.AddTerrainCards*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddTerrainCards_DiskCardGame_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(DiskCardGame.RegionData,System.String[])">AddTerrainCards(RegionData, String[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_AddTerrainCards_RegionData_System_String___" data-uid="InscryptionAPI.Regions.RegionExtensions.AddTerrainCards(RegionData,System.String[])">AddTerrainCards(RegionData, String[])</h4>
   <div class="markdown level1 summary"><p>Adds terrain cards to this region.<br>
 Terrain cards require the <code>Terrain</code> trait to appear.<br>
 Every region must have at least one valid terrain card.</p>
@@ -485,7 +485,7 @@ Every region must have at least one valid terrain card.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -507,13 +507,13 @@ Every region must have at least one valid terrain card.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_Build_" data-uid="InscryptionAPI.Regions.RegionExtensions.Build*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_Build_DiskCardGame_RegionData_System_Boolean_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.Build(DiskCardGame.RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">Build(RegionData, Boolean, Boolean, Boolean, Boolean)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_Build_RegionData_System_Boolean_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.Build(RegionData,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">Build(RegionData, Boolean, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -531,7 +531,7 @@ Every region must have at least one valid terrain card.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -567,13 +567,13 @@ Every region must have at least one valid terrain card.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_CreateEncounter_" data-uid="InscryptionAPI.Regions.RegionExtensions.CreateEncounter*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_CreateEncounter_DiskCardGame_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.CreateEncounter(DiskCardGame.RegionData,System.String)">CreateEncounter(RegionData, String)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_CreateEncounter_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.CreateEncounter(RegionData,System.String)">CreateEncounter(RegionData, String)</h4>
   <div class="markdown level1 summary"><p>Creates a new encounter for this region and returns the builder.<br>
 Every region with battles needs at least one encounter.</p>
 </div>
@@ -593,7 +593,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -621,7 +621,7 @@ Every region with battles needs at least one encounter.</p>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_RegionByName_" data-uid="InscryptionAPI.Regions.RegionExtensions.RegionByName*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_RegionByName_IEnumerable_DiskCardGame_RegionData__System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable{DiskCardGame.RegionData},System.String)">RegionByName(IEnumerable&lt;RegionData&gt;, String)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_RegionByName_IEnumerable_RegionData__System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.RegionByName(IEnumerable{RegionData},System.String)">RegionByName(IEnumerable&lt;RegionData&gt;, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -639,7 +639,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">DiskCardGame.RegionData</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">RegionData</span>&gt;</td>
         <td><span class="parametername">regions</span></td>
         <td></td>
       </tr>
@@ -660,13 +660,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetAmbientLoopId_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetAmbientLoopId_DiskCardGame_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(DiskCardGame.RegionData,System.String)">SetAmbientLoopId(RegionData, String)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetAmbientLoopId_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetAmbientLoopId(RegionData,System.String)">SetAmbientLoopId(RegionData, String)</h4>
   <div class="markdown level1 summary"><p>Sets the music loop ID for this region.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -685,7 +685,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -707,13 +707,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetBoardColor_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBoardColor*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBoardColor_DiskCardGame_RegionData_UnityEngine_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBoardColor(DiskCardGame.RegionData,UnityEngine.Color)">SetBoardColor(RegionData, Color)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBoardColor_RegionData_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBoardColor(RegionData,Color)">SetBoardColor(RegionData, Color)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -731,12 +731,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">color</span></td>
         <td></td>
       </tr>
@@ -752,13 +752,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepCondition_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepCondition_DiskCardGame_RegionData_DiskCardGame_StoryEventCondition_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(DiskCardGame.RegionData,DiskCardGame.StoryEventCondition)">SetBossPrepCondition(RegionData, StoryEventCondition)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepCondition_RegionData_StoryEventCondition_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepCondition(RegionData,StoryEventCondition)">SetBossPrepCondition(RegionData, StoryEventCondition)</h4>
   <div class="markdown level1 summary"><p>Sets the boss prep encounter condition for this region. If this condition is not met, the &apos;boss prep encounter&apos; will not appear.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -777,12 +777,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.StoryEventCondition</span></td>
+        <td><span class="xref">StoryEventCondition</span></td>
         <td><span class="parametername">condition</span></td>
         <td><p>The condition that needs to be fulfilled.</p>
 </td>
@@ -799,13 +799,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepEncounter_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepEncounter_DiskCardGame_RegionData_DiskCardGame_EncounterBlueprintData_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(DiskCardGame.RegionData,DiskCardGame.EncounterBlueprintData)">SetBossPrepEncounter(RegionData, EncounterBlueprintData)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetBossPrepEncounter_RegionData_EncounterBlueprintData_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetBossPrepEncounter(RegionData,EncounterBlueprintData)">SetBossPrepEncounter(RegionData, EncounterBlueprintData)</h4>
   <div class="markdown level1 summary"><p>Sets the boss prep encounter for this region. The boss prep encounter is the final battle node in the region, before the boss.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -824,12 +824,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData</span></td>
+        <td><span class="xref">EncounterBlueprintData</span></td>
         <td><span class="parametername">encounter</span></td>
         <td><p>The encounter to set.</p>
 </td>
@@ -846,13 +846,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetCanAppearRandomly_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCanAppearRandomly*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetCanAppearRandomly_DiskCardGame_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCanAppearRandomly(DiskCardGame.RegionData,System.Boolean)">SetCanAppearRandomly(RegionData, Boolean)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetCanAppearRandomly_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCanAppearRandomly(RegionData,System.Boolean)">SetCanAppearRandomly(RegionData, Boolean)</h4>
   <div class="markdown level1 summary"><p>If the created region will be added to the pool of regions that can appear in a run.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -871,7 +871,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">data</span></td>
         <td><p>The RegionData for the region we are modifying.</p>
 </td>
@@ -894,14 +894,14 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><p>The same RegionData so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetCardsColor_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCardsColor*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetCardsColor_DiskCardGame_RegionData_UnityEngine_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCardsColor(DiskCardGame.RegionData,UnityEngine.Color)">SetCardsColor(RegionData, Color)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetCardsColor_RegionData_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetCardsColor(RegionData,Color)">SetCardsColor(RegionData, Color)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -919,12 +919,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">color</span></td>
         <td></td>
       </tr>
@@ -940,13 +940,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetDustParticlesEnabled_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetDustParticlesEnabled_DiskCardGame_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(DiskCardGame.RegionData,System.Boolean)">SetDustParticlesEnabled(RegionData, Boolean)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetDustParticlesEnabled_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetDustParticlesEnabled(RegionData,System.Boolean)">SetDustParticlesEnabled(RegionData, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -964,7 +964,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -985,13 +985,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetFogAlpha_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogAlpha*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogAlpha_DiskCardGame_RegionData_System_Single_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(DiskCardGame.RegionData,System.Single)">SetFogAlpha(RegionData, Single)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogAlpha_RegionData_System_Single_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogAlpha(RegionData,System.Single)">SetFogAlpha(RegionData, Single)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1009,7 +1009,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -1030,13 +1030,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetFogEnabled_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogEnabled*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogEnabled_DiskCardGame_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(DiskCardGame.RegionData,System.Boolean)">SetFogEnabled(RegionData, Boolean)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogEnabled_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogEnabled(RegionData,System.Boolean)">SetFogEnabled(RegionData, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1054,7 +1054,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -1075,13 +1075,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetFogProfile_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogProfile*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogProfile_DiskCardGame_RegionData_VolumetricFogAndMist_VolumetricFogProfile_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogProfile(DiskCardGame.RegionData,VolumetricFogAndMist.VolumetricFogProfile)">SetFogProfile(RegionData, VolumetricFogProfile)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetFogProfile_RegionData_VolumetricFogProfile_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetFogProfile(RegionData,VolumetricFogProfile)">SetFogProfile(RegionData, VolumetricFogProfile)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1099,12 +1099,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">VolumetricFogAndMist.VolumetricFogProfile</span></td>
+        <td><span class="xref">VolumetricFogProfile</span></td>
         <td><span class="parametername">fogProfile</span></td>
         <td></td>
       </tr>
@@ -1120,13 +1120,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetMapAlbedo_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapAlbedo_DiskCardGame_RegionData_UnityEngine_Texture_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(DiskCardGame.RegionData,UnityEngine.Texture)">SetMapAlbedo(RegionData, Texture)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapAlbedo_RegionData_Texture_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapAlbedo(RegionData,Texture)">SetMapAlbedo(RegionData, Texture)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1144,12 +1144,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">mapAlbedo</span></td>
         <td></td>
       </tr>
@@ -1165,13 +1165,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_DiskCardGame_RegionData_UnityEngine_Texture_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture)">SetMapEmission(RegionData, Texture)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_RegionData_Texture_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission(RegionData,Texture)">SetMapEmission(RegionData, Texture)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1189,12 +1189,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">texture</span></td>
         <td></td>
       </tr>
@@ -1210,13 +1210,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_DiskCardGame_RegionData_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission(DiskCardGame.RegionData,UnityEngine.Texture2D)">SetMapEmission(RegionData, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmission_RegionData_Texture2D_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmission(RegionData,Texture2D)">SetMapEmission(RegionData, Texture2D)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1234,12 +1234,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">texture</span></td>
         <td></td>
       </tr>
@@ -1255,13 +1255,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetMapEmissionColor_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmissionColor_DiskCardGame_RegionData_UnityEngine_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(DiskCardGame.RegionData,UnityEngine.Color)">SetMapEmissionColor(RegionData, Color)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapEmissionColor_RegionData_Color_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapEmissionColor(RegionData,Color)">SetMapEmissionColor(RegionData, Color)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1279,12 +1279,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">color</span></td>
         <td></td>
       </tr>
@@ -1300,13 +1300,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetMapParticlesPrefabs_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapParticlesPrefabs_DiskCardGame_RegionData_UnityEngine_GameObject___" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(DiskCardGame.RegionData,UnityEngine.GameObject[])">SetMapParticlesPrefabs(RegionData, GameObject[])</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetMapParticlesPrefabs_RegionData_GameObject___" data-uid="InscryptionAPI.Regions.RegionExtensions.SetMapParticlesPrefabs(RegionData,GameObject[])">SetMapParticlesPrefabs(RegionData, GameObject[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1324,12 +1324,12 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span>[]</td>
+        <td><span class="xref">GameObject</span>[]</td>
         <td><span class="parametername">particles</span></td>
         <td></td>
       </tr>
@@ -1345,13 +1345,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetName_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetName*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetName_DiskCardGame_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetName(DiskCardGame.RegionData,System.String)">SetName(RegionData, String)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetName_RegionData_System_String_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetName(RegionData,System.String)">SetName(RegionData, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1369,7 +1369,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -1390,13 +1390,13 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Regions_RegionExtensions_SetSilenceCabinAmbience_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience*"></a>
-  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetSilenceCabinAmbience_DiskCardGame_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(DiskCardGame.RegionData,System.Boolean)">SetSilenceCabinAmbience(RegionData, Boolean)</h4>
+  <h4 id="InscryptionAPI_Regions_RegionExtensions_SetSilenceCabinAmbience_RegionData_System_Boolean_" data-uid="InscryptionAPI.Regions.RegionExtensions.SetSilenceCabinAmbience(RegionData,System.Boolean)">SetSilenceCabinAmbience(RegionData, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1414,7 +1414,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">region</span></td>
         <td></td>
       </tr>
@@ -1435,7 +1435,7 @@ Every region with battles needs at least one encounter.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td></td>
       </tr>
     </tbody>

@@ -79,15 +79,7 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
-    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
-    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
-    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
-    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
-    <div class="level7"><span class="xref">DiskCardGame.TriggerReceiver</span></div>
-    <div class="level8"><span class="xref">DiskCardGame.AbilityBehaviour</span></div>
-    <div class="level9"><span class="xref">ExtendedAbilityBehaviour</span></div>
+    <div class="level1"><span class="xref">ExtendedAbilityBehaviour</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -100,8 +92,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -177,7 +168,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetOpposingSlots_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetOpposingSlots*"></a>
-  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetOpposingSlots_List_DiskCardGame_CardSlot__List_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetOpposingSlots(List{DiskCardGame.CardSlot},List{DiskCardGame.CardSlot})">GetOpposingSlots(List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetOpposingSlots_List_CardSlot__List_CardSlot__" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetOpposingSlots(List{CardSlot},List{CardSlot})">GetOpposingSlots(List&lt;CardSlot&gt;, List&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -195,12 +186,12 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">originalSlots</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">otherAddedSlots</span></td>
         <td></td>
       </tr>
@@ -216,13 +207,13 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveAttackBuff_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveAttackBuff*"></a>
-  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveAttackBuff_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveAttackBuff(DiskCardGame.PlayableCard)">GetPassiveAttackBuff(PlayableCard)</h4>
+  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveAttackBuff_PlayableCard_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveAttackBuff(PlayableCard)">GetPassiveAttackBuff(PlayableCard)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -240,7 +231,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">target</span></td>
         <td></td>
       </tr>
@@ -285,7 +276,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveHealthBuff_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveHealthBuff*"></a>
-  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveHealthBuff_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveHealthBuff(DiskCardGame.PlayableCard)">GetPassiveHealthBuff(PlayableCard)</h4>
+  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_GetPassiveHealthBuff_PlayableCard_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.GetPassiveHealthBuff(PlayableCard)">GetPassiveHealthBuff(PlayableCard)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -303,7 +294,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">target</span></td>
         <td></td>
       </tr>
@@ -434,7 +425,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_ExtendedAbilityBehaviour_ShouldTriggerWhenFaceDown_" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.ShouldTriggerWhenFaceDown*"></a>
-  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_ShouldTriggerWhenFaceDown_DiskCardGame_Trigger_System_Object___" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.ShouldTriggerWhenFaceDown(DiskCardGame.Trigger,System.Object[])">ShouldTriggerWhenFaceDown(Trigger, Object[])</h4>
+  <h4 id="InscryptionAPI_Card_ExtendedAbilityBehaviour_ShouldTriggerWhenFaceDown_Trigger_System_Object___" data-uid="InscryptionAPI.Card.ExtendedAbilityBehaviour.ShouldTriggerWhenFaceDown(Trigger,System.Object[])">ShouldTriggerWhenFaceDown(Trigger, Object[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -452,7 +443,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Trigger</span></td>
+        <td><span class="xref">Trigger</span></td>
         <td><span class="parametername">trigger</span></td>
         <td></td>
       </tr>
@@ -492,9 +483,6 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
       <a class="xref" href="InscryptionAPI.Triggers.IPassiveHealthBuff.html">IPassiveHealthBuff</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="InscryptionAPI.Triggers.CustomTriggerFinder.html#InscryptionAPI_Triggers_CustomTriggerFinder_CustomTriggerSequence_DiskCardGame_TriggerReceiver_System_Collections_IEnumerator_">CustomTriggerFinder.CustomTriggerSequence(TriggerReceiver, IEnumerator)</a>
-  </div>
   <div>
       <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>
   </div>

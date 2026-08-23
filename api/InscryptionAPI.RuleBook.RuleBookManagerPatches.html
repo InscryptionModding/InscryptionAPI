@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public class RuleBookManagerPatches</code></pre>
+    <pre><code class="lang-csharp hljs">public class RuleBookManagerPatches : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -95,7 +94,7 @@ public class RuleBookManagerPatches</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string API_ID = &quot;[API_&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string API_ID = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -115,7 +114,7 @@ public class RuleBookManagerPatches</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage*"></a>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_DiskCardGame_RuleBookPage_DiskCardGame_RuleBookPageInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(DiskCardGame.RuleBookPage,DiskCardGame.RuleBookPageInfo)">FillPage(RuleBookPage, RuleBookPageInfo)</h4>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookManagerPatches_FillPage_RuleBookPage_RuleBookPageInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookManagerPatches.FillPage(RuleBookPage,RuleBookPageInfo)">FillPage(RuleBookPage, RuleBookPageInfo)</h4>
   <div class="markdown level1 summary"><p>Expanded version of FillPage that accounts for custom rulebook sections.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -134,12 +133,12 @@ public class RuleBookManagerPatches</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.RuleBookPage</span></td>
+        <td><span class="xref">RuleBookPage</span></td>
         <td><span class="parametername">page</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.RuleBookPageInfo</span></td>
+        <td><span class="xref">RuleBookPageInfo</span></td>
         <td><span class="parametername">pageInfo</span></td>
         <td></td>
       </tr>

@@ -85,13 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Slots_SlotModificationExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class SlotModificationExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class SlotModificationExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_ClearSlotModification_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ClearSlotModification*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_ClearSlotModification_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ClearSlotModification(DiskCardGame.CardSlot)">ClearSlotModification(CardSlot)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_ClearSlotModification_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ClearSlotModification(CardSlot)">ClearSlotModification(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Clears the slot modification in this CardSlot, if one is present.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -110,7 +109,7 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slot</span></td>
         <td><p>The slot to assign the modification to.</p>
 </td>
@@ -127,13 +126,13 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_GetSlotModification_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_GetSlotModification_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification(DiskCardGame.CardSlot)">GetSlotModification(CardSlot)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_GetSlotModification_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.GetSlotModification(CardSlot)">GetSlotModification(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Gets the current modification of a slot</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -152,7 +151,7 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slot</span></td>
         <td></td>
       </tr>
@@ -174,7 +173,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.InfoByID*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_System_Collections_IEnumerable_InscryptionAPI_Slots_SlotModificationManager_Info__InscryptionAPI_Slots_SlotModificationManager_ModificationType_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(System.Collections.IEnumerable{InscryptionAPI.Slots.SlotModificationManager.Info},InscryptionAPI.Slots.SlotModificationManager.ModificationType)">InfoByID(IEnumerable&lt;SlotModificationManager.Info&gt;, SlotModificationManager.ModificationType)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_InfoByID_IEnumerable_InscryptionAPI_Slots_SlotModificationManager_Info__InscryptionAPI_Slots_SlotModificationManager_ModificationType_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.InfoByID(IEnumerable{InscryptionAPI.Slots.SlotModificationManager.Info},InscryptionAPI.Slots.SlotModificationManager.ModificationType)">InfoByID(IEnumerable&lt;SlotModificationManager.Info&gt;, SlotModificationManager.ModificationType)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -192,7 +191,7 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="InscryptionAPI.Slots.SlotModificationManager.Info.html">SlotModificationManager.Info</a>&gt;</td>
         <td><span class="parametername">modInfos</span></td>
         <td></td>
       </tr>
@@ -219,7 +218,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(DiskCardGame.CardSlot)">ResetSlotTexture(CardSlot)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_ResetSlotTexture_CardSlot_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.ResetSlotTexture(CardSlot)">ResetSlotTexture(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Resets a slot&apos;s texture back to the default texture for that slot based on the current act.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -238,14 +237,14 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slot</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_UnityEngine_Texture2D_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory___" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,UnityEngine.Texture2D,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])">SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory[])</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebook_InscryptionAPI_Slots_SlotModificationManager_ModificationType_System_String_System_String_Texture2D_InscryptionAPI_Slots_SlotModificationManager_ModificationMetaCategory___" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebook(InscryptionAPI.Slots.SlotModificationManager.ModificationType,System.String,System.String,Texture2D,InscryptionAPI.Slots.SlotModificationManager.ModificationMetaCategory[])">SetRulebook(SlotModificationManager.ModificationType, String, String, Texture2D, SlotModificationManager.ModificationMetaCategory[])</h4>
   <div class="markdown level1 summary"><p>Sets the rulebook description for a slot modification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -281,7 +280,7 @@ public static class SlotModificationExtensions</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">rulebookSprite</span></td>
         <td></td>
       </tr>
@@ -310,7 +309,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookGrimoraSprite_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookGrimoraSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)">SetRulebookGrimoraSprite(SlotModificationManager.ModificationType, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookGrimoraSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookGrimoraSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,Texture2D)">SetRulebookGrimoraSprite(SlotModificationManager.ModificationType, Texture2D)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -333,7 +332,7 @@ public static class SlotModificationExtensions</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">spriteTexture</span></td>
         <td></td>
       </tr>
@@ -355,7 +354,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookMagnificusSprite_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookMagnificusSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)">SetRulebookMagnificusSprite(SlotModificationManager.ModificationType, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookMagnificusSprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookMagnificusSprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,Texture2D)">SetRulebookMagnificusSprite(SlotModificationManager.ModificationType, Texture2D)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -378,7 +377,7 @@ public static class SlotModificationExtensions</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">spriteTexture</span></td>
         <td></td>
       </tr>
@@ -400,7 +399,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookP03Sprite_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookP03Sprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,UnityEngine.Texture2D)">SetRulebookP03Sprite(SlotModificationManager.ModificationType, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetRulebookP03Sprite_InscryptionAPI_Slots_SlotModificationManager_ModificationType_Texture2D_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetRulebookP03Sprite(InscryptionAPI.Slots.SlotModificationManager.ModificationType,Texture2D)">SetRulebookP03Sprite(SlotModificationManager.ModificationType, Texture2D)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -423,7 +422,7 @@ public static class SlotModificationExtensions</code></pre>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">spriteTexture</span></td>
         <td></td>
       </tr>
@@ -490,7 +489,7 @@ public static class SlotModificationExtensions</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification*"></a>
-  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_DiskCardGame_CardSlot_InscryptionAPI_Slots_SlotModificationManager_ModificationType_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(DiskCardGame.CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)">SetSlotModification(CardSlot, SlotModificationManager.ModificationType)</h4>
+  <h4 id="InscryptionAPI_Slots_SlotModificationExtensions_SetSlotModification_CardSlot_InscryptionAPI_Slots_SlotModificationManager_ModificationType_" data-uid="InscryptionAPI.Slots.SlotModificationExtensions.SetSlotModification(CardSlot,InscryptionAPI.Slots.SlotModificationManager.ModificationType)">SetSlotModification(CardSlot, SlotModificationManager.ModificationType)</h4>
   <div class="markdown level1 summary"><p>Assigns a new slot modification to a slot.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -509,7 +508,7 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slot</span></td>
         <td><p>The slot to assign the modification to.</p>
 </td>
@@ -532,7 +531,7 @@ public static class SlotModificationExtensions</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>

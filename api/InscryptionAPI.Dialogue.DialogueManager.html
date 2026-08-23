@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Dialogue_DialogueManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class DialogueManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class DialogueManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -106,7 +106,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">Color</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -203,7 +203,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Dialogue_DialogueManager_AddColor_" data-uid="InscryptionAPI.Dialogue.DialogueManager.AddColor*"></a>
-  <h4 id="InscryptionAPI_Dialogue_DialogueManager_AddColor_System_String_System_String_UnityEngine_Color_" data-uid="InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String,System.String,UnityEngine.Color)">AddColor(String, String, Color)</h4>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_AddColor_System_String_System_String_Color_" data-uid="InscryptionAPI.Dialogue.DialogueManager.AddColor(System.String,System.String,Color)">AddColor(String, String, Color)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -231,7 +231,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">color</span></td>
         <td></td>
       </tr>
@@ -258,7 +258,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateEvent(string pluginGUID, string name, List&lt;CustomLine&gt; mainLines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)</code></pre>
+    <pre><code class="lang-csharp hljs">public static DialogueEvent GenerateEvent(string pluginGUID, string name, List&lt;CustomLine&gt; mainLines, List&lt;List&lt;CustomLine&gt;&gt; repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats = null, DialogueEvent.Speaker defaultSpeaker = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -318,7 +318,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent*"></a>
-  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_DiskCardGame_RegionData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,DiskCardGame.RegionData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateRegionIntroductionEvent(String, RegionData, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_GenerateRegionIntroductionEvent_System_String_RegionData_List_InscryptionAPI_Dialogue_CustomLine__List_List_InscryptionAPI_Dialogue_CustomLine___" data-uid="InscryptionAPI.Dialogue.DialogueManager.GenerateRegionIntroductionEvent(System.String,RegionData,List{InscryptionAPI.Dialogue.CustomLine},List{List{InscryptionAPI.Dialogue.CustomLine}})">GenerateRegionIntroductionEvent(String, RegionData, List&lt;CustomLine&gt;, List&lt;List&lt;CustomLine&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -341,7 +341,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.RegionData</span></td>
+        <td><span class="xref">RegionData</span></td>
         <td><span class="parametername">regionData</span></td>
         <td></td>
       </tr>
@@ -556,7 +556,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><span class="xref">TextBox.Style</span></td>
         <td><p>The corresponding TextBox.Style.</p>
 </td>
       </tr>
@@ -599,21 +599,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><span class="xref">TextBox.Style</span></td>
         <td><p>The corresponding TextBox.Style.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe*"></a>
-  <h4 id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_DiskCardGame_TextDisplayer_MessageAdvanceMode_DiskCardGame_TextDisplayer_EventIntersectMode_GBC_DialogueSpeaker_GBC_TextBox_Style_GBC_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,DiskCardGame.TextDisplayer.MessageAdvanceMode,DiskCardGame.TextDisplayer.EventIntersectMode,GBC.DialogueSpeaker,GBC.TextBox.Style,GBC.TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)">PlayDialogueEventSafe(String, TextDisplayer.MessageAdvanceMode, TextDisplayer.EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action&lt;DialogueEvent.Line&gt;, Boolean)</h4>
+  <h4 id="InscryptionAPI_Dialogue_DialogueManager_PlayDialogueEventSafe_System_String_MessageAdvanceMode_EventIntersectMode_DialogueSpeaker_TextBox_Style_TextBox_ScreenPosition_System_String___Action_DialogueEvent_Line__System_Boolean_" data-uid="InscryptionAPI.Dialogue.DialogueManager.PlayDialogueEventSafe(System.String,MessageAdvanceMode,EventIntersectMode,DialogueSpeaker,TextBox.Style,TextBox.ScreenPosition,System.String[],Action{DialogueEvent.Line},System.Boolean)">PlayDialogueEventSafe(String, MessageAdvanceMode, EventIntersectMode, DialogueSpeaker, TextBox.Style, TextBox.ScreenPosition, String[], Action&lt;DialogueEvent.Line&gt;, Boolean)</h4>
   <div class="markdown level1 summary"><p>A version of PlayDialogueEvent that can be used in the 3D Acts as well as Act 2.
 Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEvent method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator PlayDialogueEventSafe(string eventId, TextDisplayer.MessageAdvanceMode advanceMode = TextDisplayer.MessageAdvanceMode.Auto, TextDisplayer.EventIntersectMode intersectMode = TextDisplayer.EventIntersectMode.Wait, DialogueSpeaker speaker = null, TextBox.Style style = TextBox.Style.Neutral, TextBox.ScreenPosition screenPosition = TextBox.ScreenPosition.OppositeOfPlayer, string[] variableStrings = null, Action&lt;DialogueEvent.Line&gt; newLineCallback = null, bool adjustAudioVolume = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerator PlayDialogueEventSafe(string eventId, MessageAdvanceMode advanceMode = null, EventIntersectMode intersectMode = null, DialogueSpeaker speaker = null, TextBox.Style style = null, TextBox.ScreenPosition screenPosition = null, string[] variableStrings = null, Action&lt;DialogueEvent.Line&gt; newLineCallback = null, bool adjustAudioVolume = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -631,27 +631,27 @@ Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEv
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.TextDisplayer.MessageAdvanceMode</span></td>
+        <td><span class="xref">MessageAdvanceMode</span></td>
         <td><span class="parametername">advanceMode</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.TextDisplayer.EventIntersectMode</span></td>
+        <td><span class="xref">EventIntersectMode</span></td>
         <td><span class="parametername">intersectMode</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">GBC.DialogueSpeaker</span></td>
+        <td><span class="xref">DialogueSpeaker</span></td>
         <td><span class="parametername">speaker</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">GBC.TextBox.Style</span></td>
+        <td><span class="xref">TextBox.Style</span></td>
         <td><span class="parametername">style</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">GBC.TextBox.ScreenPosition</span></td>
+        <td><span class="xref">TextBox.ScreenPosition</span></td>
         <td><span class="parametername">screenPosition</span></td>
         <td></td>
       </tr>
@@ -682,7 +682,7 @@ Effectively just adds a check for Act 2 and then runs the correct PlayDialogueEv
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>

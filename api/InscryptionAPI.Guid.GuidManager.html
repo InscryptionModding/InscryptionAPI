@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Guid_GuidManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class GuidManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class GuidManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -94,7 +94,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string MAX_DATA = &quot;maximumStoredValueForEnum&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string MAX_DATA = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,7 +116,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const int START_INDEX = 1000</code></pre>
+    <pre><code class="lang-csharp hljs">public const int START_INDEX = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -182,7 +182,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static T GetEnumValue&lt;T&gt;(string guid, string value)
-    where T : struct, Enum</code></pre>
+    where T : struct, System.Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -289,7 +289,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static List&lt;T&gt; GetValues&lt;T&gt;()
-    where T : struct, Enum</code></pre>
+    where T : struct, System.Enum</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -330,7 +330,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryGetGuidAndKeyEnumValue&lt;T&gt;(T value, out string guid, out string key)
-    where T : Enum</code></pre>
+    where T : System.Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

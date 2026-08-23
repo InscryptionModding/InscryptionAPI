@@ -86,8 +86,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Boons_BoonManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class BoonManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class BoonManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -109,7 +108,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">DiskCardGame.BoonData</span>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">BoonData</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -157,7 +156,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.BoonData</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">BoonData</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -188,7 +187,7 @@ public static class BoonManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_" data-uid="InscryptionAPI.Boons.BoonManager.AddRuleBookCategories*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_DiskCardGame_BoonData_Type_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(DiskCardGame.BoonData.Type,DiskCardGame.AbilityMetaCategory[])">AddRuleBookCategories(BoonData.Type, AbilityMetaCategory[])</h4>
+  <h4 id="InscryptionAPI_Boons_BoonManager_AddRuleBookCategories_BoonData_Type_AbilityMetaCategory___" data-uid="InscryptionAPI.Boons.BoonManager.AddRuleBookCategories(BoonData.Type,AbilityMetaCategory[])">AddRuleBookCategories(BoonData.Type, AbilityMetaCategory[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -206,12 +205,12 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><span class="parametername">boonType</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="xref">AbilityMetaCategory</span>[]</td>
         <td><span class="parametername">categories</span></td>
         <td></td>
       </tr>
@@ -227,13 +226,13 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Boons_BoonManager_GetFullBoon_" data-uid="InscryptionAPI.Boons.BoonManager.GetFullBoon*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonManager_GetFullBoon_DiskCardGame_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonManager.GetFullBoon(DiskCardGame.BoonData.Type)">GetFullBoon(BoonData.Type)</h4>
+  <h4 id="InscryptionAPI_Boons_BoonManager_GetFullBoon_BoonData_Type_" data-uid="InscryptionAPI.Boons.BoonManager.GetFullBoon(BoonData.Type)">GetFullBoon(BoonData.Type)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -251,7 +250,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><span class="parametername">boonType</span></td>
         <td></td>
       </tr>
@@ -357,14 +356,14 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><p>The unique identifier for this boon.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Boons_BoonManager_New_" data-uid="InscryptionAPI.Boons.BoonManager.New*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonManager_New_System_String_System_String_Type_System_String_UnityEngine_Texture_UnityEngine_Texture_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonManager.New(System.String,System.String,Type,System.String,UnityEngine.Texture,UnityEngine.Texture,System.Boolean,System.Boolean,System.Boolean)">New(String, String, Type, String, Texture, Texture, Boolean, Boolean, Boolean)</h4>
+  <h4 id="InscryptionAPI_Boons_BoonManager_New_System_String_System_String_Type_System_String_Texture_Texture_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonManager.New(System.String,System.String,Type,System.String,Texture,Texture,System.Boolean,System.Boolean,System.Boolean)">New(String, String, Type, String, Texture, Texture, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new boon and adds it to the list of boons the player can receive.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -407,13 +406,13 @@ public static class BoonManager</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>The icon that appears in the center of the card art and in the rulebook.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">cardArt</span></td>
         <td><p>The art that surrounds the boon.</p>
 </td>
@@ -448,7 +447,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><p>The unique identifier for this boon.</p>
 </td>
       </tr>
@@ -534,7 +533,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><p>The unique identifier for this boon.</p>
 </td>
       </tr>
@@ -557,7 +556,7 @@ public static class BoonManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Boons_BoonManager_New_" data-uid="InscryptionAPI.Boons.BoonManager.New*"></a>
-  <h4 id="InscryptionAPI_Boons_BoonManager_New__1_System_String_System_String_System_String_UnityEngine_Texture_UnityEngine_Texture_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonManager.New``1(System.String,System.String,System.String,UnityEngine.Texture,UnityEngine.Texture,System.Boolean,System.Boolean,System.Boolean)">New&lt;T&gt;(String, String, String, Texture, Texture, Boolean, Boolean, Boolean)</h4>
+  <h4 id="InscryptionAPI_Boons_BoonManager_New__1_System_String_System_String_System_String_Texture_Texture_System_Boolean_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Boons.BoonManager.New``1(System.String,System.String,System.String,Texture,Texture,System.Boolean,System.Boolean,System.Boolean)">New&lt;T&gt;(String, String, String, Texture, Texture, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Creates a new boon and adds it to the list of boons the player can receive.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -595,13 +594,13 @@ public static class BoonManager</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>The icon that appears in the center of the card art and in the rulebook.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">cardArt</span></td>
         <td><p>The art that surrounds the boon.</p>
 </td>
@@ -636,7 +635,7 @@ public static class BoonManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.BoonData.Type</span></td>
+        <td><span class="xref">BoonData.Type</span></td>
         <td><p>The unique identifier for this boon.</p>
 </td>
       </tr>

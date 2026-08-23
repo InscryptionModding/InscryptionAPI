@@ -86,8 +86,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_AbilityManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class AbilityManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AbilityManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -109,7 +108,7 @@ public static class AbilityManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<a class="xref" href="InscryptionAPI.Card.AbilityManager.FullAbility.html">AbilityManager.FullAbility</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -119,7 +118,7 @@ public static class AbilityManager</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string SIGILCOST = &quot;[sigilcost:&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string SIGILCOST = null</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -181,7 +180,7 @@ public static class AbilityManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.AbilityInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">AbilityInfo</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -204,7 +203,7 @@ public static class AbilityManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span></td>
+        <td><span class="xref">AbilityMetaCategory</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -212,14 +211,12 @@ public static class AbilityManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_" data-uid="InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_System_Collections_IEnumerable_HarmonyLib_CodeInstruction__" data-uid="InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(System.Collections.IEnumerable{HarmonyLib.CodeInstruction})">AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt;)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_AbilityIconInteractable_AssignAbility_IEnumerable_CodeInstruction__" data-uid="InscryptionAPI.Card.AbilityManager.AbilityIconInteractable_AssignAbility(IEnumerable{CodeInstruction})">AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyTranspiler]
-[HarmonyPatch(typeof(AbilityIconInteractable), &quot;AssignAbility&quot;)]
-public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt; instructions)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignAbility(IEnumerable&lt;CodeInstruction&gt; instructions)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -232,7 +229,7 @@ public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignA
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">HarmonyLib.CodeInstruction</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CodeInstruction</span>&gt;</td>
         <td><span class="parametername">instructions</span></td>
         <td></td>
       </tr>
@@ -248,13 +245,13 @@ public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignA
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">HarmonyLib.CodeInstruction</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CodeInstruction</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityManager_Add_" data-uid="InscryptionAPI.Card.AbilityManager.Add*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_Add_System_String_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.Add(System.String,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)">Add(String, AbilityInfo, Type, Texture)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Add_System_String_AbilityInfo_Type_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.Add(System.String,AbilityInfo,Type,Texture)">Add(String, AbilityInfo, Type, Texture)</h4>
   <div class="markdown level1 summary"><p>Creates a new ability and registers it to be able to be added to cards</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -279,7 +276,7 @@ public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignA
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>An instance of AbilityInfo describing the ability.</p>
 </td>
@@ -291,7 +288,7 @@ public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignA
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">tex</span></td>
         <td><p>The ability icon as a 49x49 texture.</p>
 </td>
@@ -314,7 +311,7 @@ public static IEnumerable&lt;CodeInstruction&gt; AbilityIconInteractable_AssignA
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Card_AbilityManager_Add_System_String_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Card_AbilityManager_Add_System_String_AbilityInfo_Type_Texture__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The actual unique identifier for the new ability will be found in the &apos;ability&apos; field of 
 the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
 always be assigned by the API.</p>
@@ -384,7 +381,7 @@ ablity ID yourself and leave it as its default value.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>An instance of AbilityInfo describing the new ability.</p>
 </td>
       </tr>
@@ -396,7 +393,7 @@ the returned AbilityInfo object. There is no way for the modder to create a spec
 always be assigned by the API.</p>
 </div>
   <a id="InscryptionAPI_Card_AbilityManager_New_" data-uid="InscryptionAPI.Card.AbilityManager.New*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.New(System.String,System.String,System.String,Type,UnityEngine.Texture)">New(String, String, String, Type, Texture)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.New(System.String,System.String,System.String,Type,Texture)">New(String, String, String, Type, Texture)</h4>
   <div class="markdown level1 summary"><p>Creates a new ability and registers it to be able to be added to cards</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -439,7 +436,7 @@ always be assigned by the API.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">tex</span></td>
         <td><p>The ability icon as a 49x49 texture.</p>
 </td>
@@ -456,13 +453,13 @@ always be assigned by the API.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>An instance of AbilityInfo describing the new ability.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_UnityEngine_Texture__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Card_AbilityManager_New_System_String_System_String_System_String_Type_Texture__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The actual unique identifier for the new ability will be found in the &apos;ability&apos; field of 
 the returned AbilityInfo object. There is no way for the modder to create a specific ability ID; it will
 always be assigned by the API.</p>
@@ -473,9 +470,7 @@ always be assigned by the API.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyReversePatch(HarmonyReversePatchType.Original)]
-[HarmonyPatch(typeof(AbilitiesUtil), &quot;LoadAbilityIcon&quot;)]
-public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbility = false, bool something = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbility = false, bool something = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -514,13 +509,13 @@ public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbi
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityManager_Remove_" data-uid="InscryptionAPI.Card.AbilityManager.Remove*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_Remove_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityManager.Remove(DiskCardGame.Ability)">Remove(Ability)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_Remove_Ability_" data-uid="InscryptionAPI.Card.AbilityManager.Remove(Ability)">Remove(Ability)</h4>
   <div class="markdown level1 summary"><p>Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -539,7 +534,7 @@ public static Texture OriginalLoadAbilityIcon(string abilityName, bool fillerAbi
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The unique ID of the ability to remove.</p>
 </td>

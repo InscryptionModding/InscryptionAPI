@@ -86,12 +86,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_AbilityManager_FullAbility_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FullAbility</code></pre>
+    <pre><code class="lang-csharp hljs">public class FullAbility : object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_DiskCardGame_Ability_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(DiskCardGame.Ability,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)">FullAbility(Ability, AbilityInfo, Type, Texture)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_Ability_AbilityInfo_Type_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(Ability,AbilityInfo,Type,Texture)">FullAbility(Ability, AbilityInfo, Type, Texture)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of FullAbility and registers its behaviour type with the <a href="InscryptionAPI.Guid.TypeManager">TypeManager</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -110,13 +110,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The unique ID for this ability.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The description object for this ability.</p>
 </td>
@@ -128,7 +128,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">texture</span></td>
         <td><p>A 49x49 texture  for the ability icon.</p>
 </td>
@@ -136,7 +136,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_System_String_DiskCardGame_Ability_DiskCardGame_AbilityInfo_Type_UnityEngine_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(System.String,DiskCardGame.Ability,DiskCardGame.AbilityInfo,Type,UnityEngine.Texture)">FullAbility(String, Ability, AbilityInfo, Type, Texture)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityManager_FullAbility__ctor_System_String_Ability_AbilityInfo_Type_Texture_" data-uid="InscryptionAPI.Card.AbilityManager.FullAbility.#ctor(System.String,Ability,AbilityInfo,Type,Texture)">FullAbility(String, Ability, AbilityInfo, Type, Texture)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of FullAbility and registers its behaviour type with the <a href="InscryptionAPI.Guid.TypeManager">TypeManager</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -161,13 +161,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The unique ID for this ability.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The description object for this ability.</p>
 </td>
@@ -179,7 +179,7 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td><span class="parametername">texture</span></td>
         <td><p>A 49x49 texture  for the ability icon.</p>
 </td>
@@ -229,7 +229,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -252,7 +252,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -352,7 +352,7 @@ Tuple.Item3 (string): the id that the API will match against to find the redirec
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -376,7 +376,7 @@ Tuple.Item3 (string): the id that the API will match against to find the redirec
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="xref">Texture</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -409,10 +409,10 @@ Tuple.Item3 (string): the id that the API will match against to find the redirec
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetIcon_InscryptionAPI_Card_AbilityManager_FullAbility_UnityEngine_Texture2D_">AbilityExtensions.SetIcon(AbilityManager.FullAbility, Texture2D)</a>
+      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetIcon_InscryptionAPI_Card_AbilityManager_FullAbility_Texture2D_">AbilityExtensions.SetIcon(AbilityManager.FullAbility, Texture2D)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_InscryptionAPI_Card_AbilityManager_FullAbility_UnityEngine_Texture2D_">AbilityExtensions.SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)</a>
+      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_InscryptionAPI_Card_AbilityManager_FullAbility_Texture2D_">AbilityExtensions.SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)</a>
   </div>
   <div>
       <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetGBCTriggerText_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_">AbilityExtensions.SetGBCTriggerText(AbilityManager.FullAbility, String)</a>
@@ -448,7 +448,7 @@ Tuple.Item3 (string): the id that the API will match against to find the redirec
       <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetFlipYIfOpponent_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_">AbilityExtensions.SetFlipYIfOpponent(AbilityManager.FullAbility, Boolean)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_UnityEngine_Color_">AbilityExtensions.SetHasColorOverride(AbilityManager.FullAbility, Boolean, Color)</a>
+      <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_Color_">AbilityExtensions.SetHasColorOverride(AbilityManager.FullAbility, Boolean, Color)</a>
   </div>
   <div>
       <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetKeywordAbility_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_">AbilityExtensions.SetKeywordAbility(AbilityManager.FullAbility, Boolean)</a>
@@ -469,22 +469,22 @@ Tuple.Item3 (string): the id that the API will match against to find the redirec
       <a class="xref" href="InscryptionAPI.Card.AbilityExtensions.html#InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_Object_">AbilityExtensions.SetExtendedProperty(AbilityManager.FullAbility, String, Object)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_Ability_UnityEngine_Color_">RuleBookRedirectExtensions.SetAbilityRedirect(AbilityManager.FullAbility, String, Ability, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetAbilityRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_Ability_Color_">RuleBookRedirectExtensions.SetAbilityRedirect(AbilityManager.FullAbility, String, Ability, Color)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_SpecialStatIcon_UnityEngine_Color_">RuleBookRedirectExtensions.SetStatIconRedirect(AbilityManager.FullAbility, String, SpecialStatIcon, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetStatIconRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_SpecialStatIcon_Color_">RuleBookRedirectExtensions.SetStatIconRedirect(AbilityManager.FullAbility, String, SpecialStatIcon, Color)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_DiskCardGame_BoonData_Type_UnityEngine_Color_">RuleBookRedirectExtensions.SetBoonRedirect(AbilityManager.FullAbility, String, BoonData.Type, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetBoonRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_BoonData_Type_Color_">RuleBookRedirectExtensions.SetBoonRedirect(AbilityManager.FullAbility, String, BoonData.Type, Color)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetItemRedirect(AbilityManager.FullAbility, String, String, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetItemRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_Color_">RuleBookRedirectExtensions.SetItemRedirect(AbilityManager.FullAbility, String, String, Color)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_UnityEngine_Color_">RuleBookRedirectExtensions.SetUniqueRedirect(AbilityManager.FullAbility, String, String, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetUniqueRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_System_String_Color_">RuleBookRedirectExtensions.SetUniqueRedirect(AbilityManager.FullAbility, String, String, Color)</a>
   </div>
   <div>
-      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_UnityEngine_Color_">RuleBookRedirectExtensions.SetSlotRedirect(AbilityManager.FullAbility, String, SlotModificationManager.ModificationType, Color)</a>
+      <a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectExtensions.html#InscryptionAPI_RuleBook_RuleBookRedirectExtensions_SetSlotRedirect_InscryptionAPI_Card_AbilityManager_FullAbility_System_String_InscryptionAPI_Slots_SlotModificationManager_ModificationType_Color_">RuleBookRedirectExtensions.SetSlotRedirect(AbilityManager.FullAbility, String, SlotModificationManager.ModificationType, Color)</a>
   </div>
   <div>
       <a class="xref" href="InscryptionAPI.Helpers.Extensions.ListExtensions.html#InscryptionAPI_Helpers_Extensions_ListExtensions_Repeat__1___0_System_Int32_">ListExtensions.Repeat&lt;T&gt;(T, Int32)</a>

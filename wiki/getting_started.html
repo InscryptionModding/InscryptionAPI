@@ -72,6 +72,7 @@
 
 <hr>
 <p>To begin, we&#39;ll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.</p>
+<p><strong>FOR LINUX AND STEAMDECK:</strong> Ensure that the game is set to run using <code>Proton</code> in he game settings on steam. Should be a setting like this: <code>Change launch behaviour</code> -&gt; <code>Proton</code>.</p>
 <h3 id="installing-with-a-mod-manager">Installing with a Mod Manager</h3>
 <ol>
 <li>Download and install <a href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager">Thunderstore Mod Manager</a>, <a href="https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/">Gale</a> or <a href="https://thunderstore.io/c/inscryption/p/ebkr/r2modman/">r2modman</a>.</li>
@@ -86,7 +87,7 @@
 </ul>
 <h3 id="installing-manually">Installing Manually</h3>
 <ol>
-<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.1902/">BepInEx</a> by pressing <code>Manual Download</code> and extract the contents into a folder. <strong>Do not extract into the game folder!</strong></li>
+<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.2305/">BepInEx</a> by pressing <code>Manual Download</code> and extract the contents into a folder. <strong>Do not extract into the game folder!</strong></li>
 <li>Move the contents of the <code>BepInExPack_Inscryption</code> folder into the game folder (where the game executable is; usually found here: <code>C:\Program Files (x86)\Steam\steamapps\common\Inscryption</code>).</li>
 <li>Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.</li>
 <li>Install <a href="https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/">MonoModLoader</a> and extract the contents into a folder.</li>
@@ -94,38 +95,36 @@
 <li>Install <a href="https://inscryption.thunderstore.io/package/API_dev/API/">Inscryption API</a> and extract the contents into a folder.</li>
 <li>Move the contents of the <code>plugins</code> folder into <code>BepInEx/plugins</code> and the contents of the <code>monomod</code> folder into the <code>BepInEx/monomod</code> folder.</li>
 <li>Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.</li>
-<li>For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a <code>BepInEx</code> folder within the zip instead drop the contents of that folder into the <code>BepInEx</code> root for the modding instance. EX;</li>
-</ol>
-<pre><code>BepInEx // These go within the BepInEx root folder
-|-- config
-|-- patchers
-|-- plugins
-|-- monomod
-|-- core
-plugins // Files within go into the created plugin subfolder that was created for the mod
-|-- Art
-|-- Scripts
-|-- MyMod.dll
-manifest.json     --|
-README.md           |-- These can be ignored but if you want to keep them put them in the plugin subfolder
-CHANGELOG.md        |--
-icon.png          --|
-</code></pre><ol>
+<li>For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a <code>BepInEx</code> folder within the zip instead drop the contents of that folder into the <code>BepInEx</code> root for the modding instance. EX;
+ <code>BepInEx // These go within the BepInEx root folder
+ |-- config
+ |-- patchers
+ |-- plugins
+ |-- monomod
+ |-- core
+ plugins // Files within go into the created plugin subfolder that was created for the mod
+ |-- Art
+ |-- Scripts
+ |-- MyMod.dll
+ manifest.json // Ignorable, but if kept, goes in plugin subfolder
+ README.md // Ignorable, but if kept, goes in plugin subfolder
+ CHANGELOG.md // Ignorable, but if kept, goes in plugin subfolder
+ icon.png // Ignorable, but if kept, goes in plugin subfolder</code></li>
 <li>Run the game once more and everything should be correct and working.</li>
 </ol>
 <h3 id="installing-manually-xbox-game-pass">Installing Manually (XBOX Game-Pass)</h3>
 <ol>
-<li>Install <a href="https://github.com/BepInEx/BepInEx/releases/tag/v5.4.21">BepInEx</a> by pressing <code>BepInEx_x64_5.4.21.0.zip</code> and extract the contents into a folder.</li>
-<li>Move the contents into the game folder (where the game executable is; usually found here: <code>C:\XboxGames\D30AC640-4EC1-4D15-96F3-384052F09699\Content</code>).</li>
-<li>Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading. (psst. Enable Logging in <code>BepInEx/config</code>)</li>
+<li>Install <a href="https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.2305/">BepInEx</a> by pressing <code>Manual Download</code> and extract the contents into a folder. <strong>Do not extract into the game folder!</strong></li>
+<li>Move the contents of the <code>BepInExPack_Inscryption</code> folder into the game folder (where the game executable is; usually found here: <code>C:\XboxGames\Inscryption\Content</code>).</li>
+<li>Install the following package: <a href="https://thunderstore.io/c/inscryption/p/CORE_API_TEAM/GamepassSilencio/">XboxSilencio</a>, this is a package which aims to solve frictions with XBOX Gamepass specific installations, such as HueyFS related errors.</li>
+<li>Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.</li>
 <li>Install <a href="https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/">MonoModLoader</a> and extract the contents into a folder.</li>
 <li>Move the contents of the <code>patchers</code> folder into <code>BepInEx/patchers</code> (If any of the mentioned BepInEx folders don&#39;t exist, just create them).</li>
 <li>Install <a href="https://inscryption.thunderstore.io/package/API_dev/API/">Inscryption API</a> and extract the contents into a folder.</li>
 <li>Move the contents of the <code>plugins</code> folder into <code>BepInEx/plugins</code> and the contents of the <code>monomod</code> folder into the <code>BepInEx/monomod</code> folder.</li>
 <li>Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.</li>
-<li>For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a <code>BepInEx</code> folder within the zip instead drop the contents of that folder into the <code>BepInEx</code> root for the modding instance. EX;</li>
-</ol>
-<pre><code>BepInEx // These go within the BepInEx root folder
+<li>For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a <code>BepInEx</code> folder within the zip instead drop the contents of that folder into the <code>BepInEx</code> root for the modding instance. EX;
+<code>BepInEx // These go within the BepInEx root folder
 |-- config
 |-- patchers
 |-- plugins
@@ -135,11 +134,10 @@ plugins // Files within go into the created plugin subfolder that was created fo
 |-- Art
 |-- Scripts
 |-- MyMod.dll
-manifest.json     --|
-README.md           |-- These can be ignored but if you want to keep them put them in the plugin subfolder
-CHANGELOG.md        |--
-icon.png          --|
-</code></pre><ol>
+manifest.json // Ignorable, but if kept, goes in plugin subfolder
+README.md // Ignorable, but if kept, goes in plugin subfolder
+CHANGELOG.md // Ignorable, but if kept, goes in plugin subfolder
+icon.png // Ignorable, but if kept, goes in plugin subfolder</code></li>
 <li>Run the game once more and everything should be correct and working.</li>
 </ol>
 <h3 id="installing-on-the-steam-deck">Installing on the Steam Deck</h3>

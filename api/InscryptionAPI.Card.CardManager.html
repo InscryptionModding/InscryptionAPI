@@ -85,8 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_CardManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HarmonyPatch]
-public static class CardManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class CardManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -108,7 +107,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">CardInfo</span>&gt;</td>
         <td><p>.</p>
 </td>
       </tr>
@@ -135,7 +134,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;</td>
         <td><p>.</p>
 </td>
       </tr>
@@ -144,7 +143,7 @@ public static class CardManager</code></pre>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_CardManager_Add_" data-uid="InscryptionAPI.Card.CardManager.Add*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_Add_System_String_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.Add(System.String,DiskCardGame.CardInfo)">Add(String, CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_Add_System_String_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.Add(System.String,CardInfo)">Add(String, CardInfo)</h4>
   <div class="markdown level1 summary"><p>Adds a new card to the card pool. If your card&apos;s name does not match your mod prefix, it will be updated to match.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -169,7 +168,7 @@ public static class CardManager</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">newCard</span></td>
         <td><p>The card to add.</p>
 </td>
@@ -177,7 +176,7 @@ public static class CardManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_BrokenShieldPortrait_" data-uid="InscryptionAPI.Card.CardManager.BrokenShieldPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_BrokenShieldPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.BrokenShieldPortrait(DiskCardGame.CardInfo)">BrokenShieldPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_BrokenShieldPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.BrokenShieldPortrait(CardInfo)">BrokenShieldPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -195,7 +194,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -211,13 +210,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_EmissiveBrokenShieldPortrait_" data-uid="InscryptionAPI.Card.CardManager.EmissiveBrokenShieldPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_EmissiveBrokenShieldPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveBrokenShieldPortrait(DiskCardGame.CardInfo)">EmissiveBrokenShieldPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_EmissiveBrokenShieldPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveBrokenShieldPortrait(CardInfo)">EmissiveBrokenShieldPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -235,7 +234,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -251,13 +250,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_EmissiveSacrificablePortrait_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSacrificablePortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_EmissiveSacrificablePortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSacrificablePortrait(DiskCardGame.CardInfo)">EmissiveSacrificablePortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_EmissiveSacrificablePortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSacrificablePortrait(CardInfo)">EmissiveSacrificablePortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -275,7 +274,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -291,13 +290,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_EmissiveSteelTrapPortrait_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSteelTrapPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_EmissiveSteelTrapPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSteelTrapPortrait(DiskCardGame.CardInfo)">EmissiveSteelTrapPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_EmissiveSteelTrapPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.EmissiveSteelTrapPortrait(CardInfo)">EmissiveSteelTrapPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -315,7 +314,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -331,13 +330,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_GetCardExtensionTable_" data-uid="InscryptionAPI.Card.CardManager.GetCardExtensionTable*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_GetCardExtensionTable_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.GetCardExtensionTable(DiskCardGame.CardInfo)">GetCardExtensionTable(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_GetCardExtensionTable_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.GetCardExtensionTable(CardInfo)">GetCardExtensionTable(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -355,7 +354,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -377,7 +376,7 @@ public static class CardManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_GetExtendedClass_" data-uid="InscryptionAPI.Card.CardManager.GetExtendedClass*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_GetExtendedClass__1_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.GetExtendedClass``1(DiskCardGame.CardInfo)">GetExtendedClass&lt;T&gt;(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_GetExtendedClass__1_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.GetExtendedClass``1(CardInfo)">GetExtendedClass&lt;T&gt;(CardInfo)</h4>
   <div class="markdown level1 summary"><p>Get a custom extension class that will exist on all clones of a card</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -397,7 +396,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td><p>Card to access.</p>
 </td>
@@ -437,7 +436,7 @@ public static class CardManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_LogCardInfo_" data-uid="InscryptionAPI.Card.CardManager.LogCardInfo*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_LogCardInfo_DiskCardGame_CardInfo_System_String_" data-uid="InscryptionAPI.Card.CardManager.LogCardInfo(DiskCardGame.CardInfo,System.String)">LogCardInfo(CardInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_LogCardInfo_CardInfo_System_String_" data-uid="InscryptionAPI.Card.CardManager.LogCardInfo(CardInfo,System.String)">LogCardInfo(CardInfo, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -455,7 +454,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -476,7 +475,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -548,14 +547,14 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><p>The newly created card&apos;s CardInfo.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_PixelAlternatePortrait_" data-uid="InscryptionAPI.Card.CardManager.PixelAlternatePortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_PixelAlternatePortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelAlternatePortrait(DiskCardGame.CardInfo)">PixelAlternatePortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_PixelAlternatePortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelAlternatePortrait(CardInfo)">PixelAlternatePortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -573,7 +572,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -589,13 +588,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_PixelBrokenShieldPortrait_" data-uid="InscryptionAPI.Card.CardManager.PixelBrokenShieldPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_PixelBrokenShieldPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelBrokenShieldPortrait(DiskCardGame.CardInfo)">PixelBrokenShieldPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_PixelBrokenShieldPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelBrokenShieldPortrait(CardInfo)">PixelBrokenShieldPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -613,7 +612,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -629,13 +628,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_PixelSacrificablePortrait_" data-uid="InscryptionAPI.Card.CardManager.PixelSacrificablePortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_PixelSacrificablePortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelSacrificablePortrait(DiskCardGame.CardInfo)">PixelSacrificablePortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_PixelSacrificablePortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelSacrificablePortrait(CardInfo)">PixelSacrificablePortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -653,7 +652,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -669,13 +668,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_PixelSteelTrapPortrait_" data-uid="InscryptionAPI.Card.CardManager.PixelSteelTrapPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_PixelSteelTrapPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelSteelTrapPortrait(DiskCardGame.CardInfo)">PixelSteelTrapPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_PixelSteelTrapPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.PixelSteelTrapPortrait(CardInfo)">PixelSteelTrapPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -693,7 +692,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -709,13 +708,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_Remove_" data-uid="InscryptionAPI.Card.CardManager.Remove*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_Remove_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.Remove(DiskCardGame.CardInfo)">Remove(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_Remove_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.Remove(CardInfo)">Remove(CardInfo)</h4>
   <div class="markdown level1 summary"><p>Removes a custom card from the card pool. Cannot be used to remove base game cards.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -734,7 +733,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td><p>The card to remove.</p>
 </td>
@@ -742,7 +741,7 @@ public static class CardManager</code></pre>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_SacrificablePortrait_" data-uid="InscryptionAPI.Card.CardManager.SacrificablePortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_SacrificablePortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.SacrificablePortrait(DiskCardGame.CardInfo)">SacrificablePortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_SacrificablePortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.SacrificablePortrait(CardInfo)">SacrificablePortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -760,7 +759,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -776,13 +775,13 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_CardManager_SteelTrapPortrait_" data-uid="InscryptionAPI.Card.CardManager.SteelTrapPortrait*"></a>
-  <h4 id="InscryptionAPI_Card_CardManager_SteelTrapPortrait_DiskCardGame_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.SteelTrapPortrait(DiskCardGame.CardInfo)">SteelTrapPortrait(CardInfo)</h4>
+  <h4 id="InscryptionAPI_Card_CardManager_SteelTrapPortrait_CardInfo_" data-uid="InscryptionAPI.Card.CardManager.SteelTrapPortrait(CardInfo)">SteelTrapPortrait(CardInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -800,7 +799,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">card</span></td>
         <td></td>
       </tr>
@@ -816,7 +815,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -850,7 +849,7 @@ public static class CardManager</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardInfo</span>&gt;&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">CardInfo</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>

@@ -80,14 +80,7 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
-    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
-    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
-    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
-    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
-    <div class="level7"><span class="xref">Singleton</span>&lt;<a class="xref" href="InscryptionAPI.RuleBook.RuleBookRedirectManager.html">RuleBookRedirectManager</a>&gt;</div>
-    <div class="level8"><span class="xref">RuleBookRedirectManager</span></div>
+    <div class="level1"><span class="xref">RuleBookRedirectManager</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.RuleBook.html">InscryptionAPI.RuleBook</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
@@ -114,7 +107,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">UnityEngine.GameObject</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">GameObject</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -136,7 +129,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">UnityEngine.GameObject</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">GameObject</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -202,7 +195,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="xref">Vector3</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -224,7 +217,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Transform.html">Transform</a></td>
+        <td><span class="xref">Transform</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -268,7 +261,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="xref">Vector3</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -290,7 +283,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Camera.html">Camera</a></td>
+        <td><span class="xref">Camera</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -312,7 +305,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Camera.html">Camera</a></td>
+        <td><span class="xref">Camera</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -328,7 +321,7 @@
     <pre><code class="lang-csharp hljs">public void ClearActiveInteractables()</code></pre>
   </div>
   <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject*"></a>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_UnityEngine_Vector3_UnityEngine_Vector3_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(UnityEngine.Vector3,UnityEngine.Vector3,System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)">CreateInteractableObject(Vector3, Vector3, String, RuleBookManager.RedirectInfo)</h4>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_CreateInteractableObject_Vector3_Vector3_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.CreateInteractableObject(Vector3,Vector3,System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo)">CreateInteractableObject(Vector3, Vector3, String, RuleBookManager.RedirectInfo)</h4>
   <div class="markdown level1 summary"><p>Creates and positions the actual interactable object using the provided position and collider vectors.
 The position is the world position relative to the rulebook.
 Translates worldPosition to a screenpoint relative to the rulebook then back to world space relative to the pixel (player) camera.</p>
@@ -349,12 +342,12 @@ Translates worldPosition to a screenpoint relative to the rulebook then back to 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="xref">Vector3</span></td>
         <td><span class="parametername">worldPosition</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="xref">Vector3</span></td>
         <td><span class="parametername">colliderSize</span></td>
         <td></td>
       </tr>
@@ -371,7 +364,7 @@ Translates worldPosition to a screenpoint relative to the rulebook then back to 
     </tbody>
   </table>
   <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces*"></a>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_TMPro_TMP_TextInfo_System_String_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMPro.TMP_TextInfo,System.String)">GetWordIndeces(TMP_TextInfo, String)</h4>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_GetWordIndeces_TMP_TextInfo_System_String_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.GetWordIndeces(TMP_TextInfo,System.String)">GetWordIndeces(TMP_TextInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets the indeces of every instance of every word in the key.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -390,7 +383,7 @@ Translates worldPosition to a screenpoint relative to the rulebook then back to 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TMPro.TMP_TextInfo</span></td>
+        <td><span class="xref">TMP_TextInfo</span></td>
         <td><span class="parametername">textInfo</span></td>
         <td></td>
       </tr>
@@ -417,7 +410,7 @@ Translates worldPosition to a screenpoint relative to the rulebook then back to 
     </tbody>
   </table>
   <a id="InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables*"></a>
-  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TMPro_TextMeshPro_UnityEngine_GameObject_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TMPro.TextMeshPro,UnityEngine.GameObject,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})">UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary&lt;String, RuleBookManager.RedirectInfo&gt;)</h4>
+  <h4 id="InscryptionAPI_RuleBook_RuleBookRedirectManager_UpdateActiveInteractables_TextMeshPro_GameObject_Dictionary_System_String_InscryptionAPI_RuleBook_RuleBookManager_RedirectInfo__" data-uid="InscryptionAPI.RuleBook.RuleBookRedirectManager.UpdateActiveInteractables(TextMeshPro,GameObject,Dictionary{System.String,InscryptionAPI.RuleBook.RuleBookManager.RedirectInfo})">UpdateActiveInteractables(TextMeshPro, GameObject, Dictionary&lt;String, RuleBookManager.RedirectInfo&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -435,12 +428,12 @@ Translates worldPosition to a screenpoint relative to the rulebook then back to 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TMPro.TextMeshPro</span></td>
+        <td><span class="xref">TextMeshPro</span></td>
         <td><span class="parametername">description</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="xref">GameObject</span></td>
         <td><span class="parametername">currentPageObj</span></td>
         <td></td>
       </tr>

@@ -85,10 +85,76 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Helpers_AssetBundleHelper_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AssetBundleHelper</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AssetBundleHelper : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet_" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet*"></a>
+  <h4 id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet__1_AssetBundle_System_String___0__" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet``1(AssetBundle,System.String,``0@)">TryGet&lt;T&gt;(AssetBundle, String, out T)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGet&lt;T&gt;(AssetBundle bundle, string prefabName, out T prefab)
+    where T : UnityObject</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AssetBundle</span></td>
+        <td><span class="parametername">bundle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">prefabName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">prefab</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet_" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet*"></a>
   <h4 id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet__1_System_Byte___System_String___0__" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet``1(System.Byte[],System.String,``0@)">TryGet&lt;T&gt;(Byte[], String, out T)</h4>
   <div class="markdown level1 summary"></div>
@@ -177,72 +243,6 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">pathToAssetBundle</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">prefabName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">prefab</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet_" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet*"></a>
-  <h4 id="InscryptionAPI_Helpers_AssetBundleHelper_TryGet__1_UnityEngine_AssetBundle_System_String___0__" data-uid="InscryptionAPI.Helpers.AssetBundleHelper.TryGet``1(UnityEngine.AssetBundle,System.String,``0@)">TryGet&lt;T&gt;(AssetBundle, String, out T)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool TryGet&lt;T&gt;(AssetBundle bundle, string prefabName, out T prefab)
-    where T : UnityObject</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/AssetBundle.html">AssetBundle</a></td>
-        <td><span class="parametername">bundle</span></td>
         <td></td>
       </tr>
       <tr>

@@ -85,12 +85,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class CardSlotExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class CardSlotExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">AssignCardToSlot(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_AssignCardToSlot_CardSlot_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.AssignCardToSlot(CardSlot,PlayableCard,System.Single,Action,System.Boolean)">AssignCardToSlot(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
   <div class="markdown level1 summary"><p>Assign a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.AssignCardToSlot()</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -109,13 +109,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slotToSpawnIn</span></td>
         <td><p>The slot to spawn in.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard object to spawn in said slot.</p>
 </td>
@@ -150,14 +150,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td><p>The enumeration of the card being placed in the slot.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_DiskCardGame_CardSlot_DiskCardGame_CardInfo_System_Single_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot(DiskCardGame.CardSlot,DiskCardGame.CardInfo,System.Single,System.Boolean)">CreateCardInSlot(CardSlot, CardInfo, Single, Boolean)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_CreateCardInSlot_CardSlot_CardInfo_System_Single_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.CreateCardInSlot(CardSlot,CardInfo,System.Single,System.Boolean)">CreateCardInSlot(CardSlot, CardInfo, Single, Boolean)</h4>
   <div class="markdown level1 summary"><p>Create a card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.CreateCardInSlot()</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -176,13 +176,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slotToSpawnIn</span></td>
         <td><p>The slot to spawn in.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.CardInfo</span></td>
+        <td><span class="xref">CardInfo</span></td>
         <td><span class="parametername">cardInfo</span></td>
         <td><p>The CardInfo object to spawn in said slot.</p>
 </td>
@@ -211,14 +211,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td><p>The enumeration of the card being placed in the slot.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent(DiskCardGame.CardSlot,System.Boolean)">GetAdjacent(CardSlot, Boolean)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacent_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacent(CardSlot,System.Boolean)">GetAdjacent(CardSlot, Boolean)</h4>
   <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -237,7 +237,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">cardSlot</span></td>
         <td><p>The slot that is being accessed.</p>
 </td>
@@ -260,14 +260,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><p>The list of card slots that is to the left and to the right. Results can be null.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(DiskCardGame.CardSlot)">GetAdjacentCards(CardSlot)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentCards_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentCards(CardSlot)">GetAdjacentCards(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Get the adjacent cards of the slot that is being accessed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -286,7 +286,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">cardSlot</span></td>
         <td><p>The slot that is being accessed.</p>
 </td>
@@ -303,14 +303,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">PlayableCard</span>&gt;</td>
         <td><p>The list of Playable Cards that is to the left and to the right of the this slot.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_DiskCardGame_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(DiskCardGame.CardSlot,System.Boolean)">GetAdjacentSlots(CardSlot, Boolean)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_GetAdjacentSlots_CardSlot_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.GetAdjacentSlots(CardSlot,System.Boolean)">GetAdjacentSlots(CardSlot, Boolean)</h4>
   <div class="markdown level1 summary"><p>Get the adjacent slots of the slot that is being accessed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -329,7 +329,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">cardSlot</span></td>
         <td><p>The slot that is being accessed.</p>
 </td>
@@ -352,7 +352,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><p>The list of card slots that is to the left and to the right.
 Results can be null unless removeNulls parameter is set to true.
 .</p>
@@ -361,7 +361,7 @@ Results can be null unless removeNulls parameter is set to true.
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_DiskCardGame_CardSlot_System_String_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(DiskCardGame.CardSlot,System.String)">HasCard(CardSlot, String)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_HasCard_CardSlot_System_String_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.HasCard(CardSlot,System.String)">HasCard(CardSlot, String)</h4>
   <div class="markdown level1 summary"><p>Check if the card in the slot has a specific card name.
 This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinct attribute to check the card against.</p>
 </div>
@@ -381,7 +381,7 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">cardSlot</span></td>
         <td><p>The slot to check.</p>
 </td>
@@ -411,7 +411,7 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_DiskCardGame_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot(DiskCardGame.CardSlot)">IsOpponentSlot(CardSlot)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_IsOpponentSlot_CardSlot_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.IsOpponentSlot(CardSlot)">IsOpponentSlot(CardSlot)</h4>
   <div class="markdown level1 summary"><p>Check if the slot is an opponent&apos;s slot.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -430,7 +430,7 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">cardSlot</span></td>
         <td><p>The slot to check.</p>
 </td>
@@ -454,7 +454,7 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_DiskCardGame_CardSlot_DiskCardGame_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(DiskCardGame.CardSlot,DiskCardGame.PlayableCard,System.Single,Action,System.Boolean)">ResolveCardOnBoard(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_ResolveCardOnBoard_CardSlot_PlayableCard_System_Single_Action_System_Boolean_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.ResolveCardOnBoard(CardSlot,PlayableCard,System.Single,Action,System.Boolean)">ResolveCardOnBoard(CardSlot, PlayableCard, Single, Action, Boolean)</h4>
   <div class="markdown level1 summary"><p>Resolve a playable card in a specific slot from the CardSlot object. A much more robust way that&apos;s the same as <code>yield return BoardManager.Instance.ResolveCardOnBoard()</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -473,13 +473,13 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.CardSlot</span></td>
+        <td><span class="xref">CardSlot</span></td>
         <td><span class="parametername">slotToSpawnIn</span></td>
         <td><p>The slot to spawn in.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard object to spawn in said slot.</p>
 </td>
@@ -514,14 +514,14 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td><p>The enumeration of the card being placed in the slot.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_PlayableCard__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.PlayableCard})">SelectCards(IEnumerable&lt;CardSlot&gt;, Predicate&lt;PlayableCard&gt;)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectCards_IEnumerable_CardSlot__Predicate_PlayableCard__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectCards(IEnumerable{CardSlot},Predicate{PlayableCard})">SelectCards(IEnumerable&lt;CardSlot&gt;, Predicate&lt;PlayableCard&gt;)</h4>
   <div class="markdown level1 summary"><p>Retrieve all the PlayableCard objects from the collection of slots provided.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -540,13 +540,13 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">slots</span></td>
         <td><p>Collection of CardSlots.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Predicate</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><span class="xref">Predicate</span>&lt;<span class="xref">PlayableCard</span>&gt;</td>
         <td><span class="parametername">filterOnPredicate</span></td>
         <td><p>Predicate to filter each slot&apos;s playable card for a condition, if one exists.</p>
 </td>
@@ -563,14 +563,14 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.PlayableCard</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">PlayableCard</span>&gt;</td>
         <td><p>An IEnumerable of PlayableCard from the CardSlots sequence.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots*"></a>
-  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_System_Collections_IEnumerable_DiskCardGame_CardSlot__Predicate_DiskCardGame_CardSlot__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(System.Collections.IEnumerable{DiskCardGame.CardSlot},Predicate{DiskCardGame.CardSlot})">SelectOpenSlots(IEnumerable&lt;CardSlot&gt;, Predicate&lt;CardSlot&gt;)</h4>
+  <h4 id="InscryptionAPI_Helpers_Extensions_CardSlotExtensions_SelectOpenSlots_IEnumerable_CardSlot__Predicate_CardSlot__" data-uid="InscryptionAPI.Helpers.Extensions.CardSlotExtensions.SelectOpenSlots(IEnumerable{CardSlot},Predicate{CardSlot})">SelectOpenSlots(IEnumerable&lt;CardSlot&gt;, Predicate&lt;CardSlot&gt;)</h4>
   <div class="markdown level1 summary"><p>Retrieve all the CardSlot objects that are not occupied by a PlayableCard object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -589,13 +589,13 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">slots</span></td>
         <td><p>Collection of CardSlots.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Predicate</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">Predicate</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><span class="parametername">filterOnPredicate</span></td>
         <td><p>Predicate to test each slot for a condition.</p>
 </td>
@@ -612,7 +612,7 @@ This is primarily useful if you don&apos;t have a Trait, Tribe, or other distinc
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerable</span>&lt;<span class="xref">DiskCardGame.CardSlot</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CardSlot</span>&gt;</td>
         <td><p>An IEnumerable of CardSlot that do not have occupying PlayableCards.</p>
 </td>
       </tr>

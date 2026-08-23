@@ -86,57 +86,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_TalkingCards_Create_EmotionData_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EmotionData</code></pre>
+    <pre><code class="lang-csharp hljs">public class EmotionData : object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor*"></a>
-  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_DiskCardGame_Emotion_System_String_System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})">EmotionData(Emotion, String, Nullable&lt;(String open, String closed)&gt;, Nullable&lt;(String open, String closed)&gt;, Nullable&lt;(String open, String closed)&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EmotionData(Emotion emotion, string face, (string open, string closed)? eyes, (string open, string closed)? mouth, (string open, string closed)? emission)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.Emotion</span></td>
-        <td><span class="parametername">emotion</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">face</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
-        <td><span class="parametername">eyes</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
-        <td><span class="parametername">mouth</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
-        <td><span class="parametername">emission</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor*"></a>
-  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_DiskCardGame_Emotion_UnityEngine_Sprite_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(DiskCardGame.Emotion,UnityEngine.Sprite,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim)">EmotionData(Emotion, Sprite, FaceAnim, FaceAnim, FaceAnim)</h4>
+  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_Emotion_Sprite_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_InscryptionAPI_TalkingCards_Create_FaceAnim_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(Emotion,Sprite,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim,InscryptionAPI.TalkingCards.Create.FaceAnim)">EmotionData(Emotion, Sprite, FaceAnim, FaceAnim, FaceAnim)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -154,12 +109,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Emotion</span></td>
+        <td><span class="xref">Emotion</span></td>
         <td><span class="parametername">emotion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td><span class="parametername">face</span></td>
         <td></td>
       </tr>
@@ -181,12 +136,12 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor*"></a>
-  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_System_String_System_String_System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___System_Nullable_System_ValueTuple_System_String_System_String___" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(System.String,System.String,System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String}})">EmotionData(String, String, Nullable&lt;(String open, String closed)&gt;, Nullable&lt;(String open, String closed)&gt;, Nullable&lt;(String open, String closed)&gt;)</h4>
+  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_Emotion_System_Nullable_System_String__System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(Emotion,System.Nullable{System.String},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}})">EmotionData(Emotion, Nullable&lt;String&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EmotionData(string emotion, string face, (string open, string closed)? eyes, (string open, string closed)? mouth, (string open, string closed)? emission)</code></pre>
+    <pre><code class="lang-csharp hljs">public EmotionData(Emotion emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, (string? open, string? closed)? emission)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -199,27 +154,72 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">Emotion</span></td>
         <td><span class="parametername">emotion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">face</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
         <td><span class="parametername">eyes</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
         <td><span class="parametername">mouth</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
+        <td><span class="parametername">emission</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor*"></a>
+  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData__ctor_System_Nullable_System_String__System_Nullable_System_String__System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____System_Nullable_System_ValueTuple_System_Nullable_System_String__System_Nullable_System_String____" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.#ctor(System.Nullable{System.String},System.Nullable{System.String},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}},System.Nullable{System.ValueTuple{System.Nullable{System.String},System.Nullable{System.String}}})">EmotionData(Nullable&lt;String&gt;, Nullable&lt;String&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;, Nullable&lt;(Nullable&lt;String&gt; open, Nullable&lt;String&gt; closed)&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmotionData(string? emotion, string? face, (string? open, string? closed)? eyes, (string? open, string? closed)? mouth, (string? open, string? closed)? emission)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">emotion</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">face</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
+        <td><span class="parametername">eyes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
+        <td><span class="parametername">mouth</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;&gt;&gt;</td>
         <td><span class="parametername">emission</span></td>
         <td></td>
       </tr>
@@ -270,7 +270,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Emotion</span></td>
+        <td><span class="xref">Emotion</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -318,7 +318,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a></td>
+        <td><span class="xref">Sprite</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -350,7 +350,7 @@
   <h3 id="operators">Operators
   </h3>
   <a id="InscryptionAPI_TalkingCards_Create_EmotionData_op_Implicit_" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit*"></a>
-  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData_op_Implicit_System_ValueTuple_DiskCardGame_Emotion_UnityEngine_Sprite___InscryptionAPI_TalkingCards_Create_EmotionData" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit(System.ValueTuple{DiskCardGame.Emotion,UnityEngine.Sprite})~InscryptionAPI.TalkingCards.Create.EmotionData">Implicit((Emotion emotion, Sprite sprite) to EmotionData)</h4>
+  <h4 id="InscryptionAPI_TalkingCards_Create_EmotionData_op_Implicit_System_ValueTuple_Emotion_Sprite___InscryptionAPI_TalkingCards_Create_EmotionData" data-uid="InscryptionAPI.TalkingCards.Create.EmotionData.op_Implicit(System.ValueTuple{Emotion,Sprite})~InscryptionAPI.TalkingCards.Create.EmotionData">Implicit((Emotion emotion, Sprite sprite) to EmotionData)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -368,7 +368,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">DiskCardGame.Emotion</span>, <a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Sprite.html">Sprite</a>&gt;</td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">Emotion</span>, <span class="xref">Sprite</span>&gt;</td>
         <td><span class="parametername">x</span></td>
         <td></td>
       </tr>

@@ -80,13 +80,7 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Object.html">Object</a></div>
-    <div class="level2"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Component.html">Component</a></div>
-    <div class="level3"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Behaviour.html">Behaviour</a></div>
-    <div class="level4"><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/MonoBehaviour.html">MonoBehaviour</a></div>
-    <div class="level5"><span class="xref">ManagedBehaviourBase</span></div>
-    <div class="level6"><span class="xref">ManagedBehaviour</span></div>
-    <div class="level7"><span class="xref">CustomCardCost</span></div>
+    <div class="level1"><span class="xref">CustomCardCost</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="InscryptionAPI.CardCosts.html">InscryptionAPI.CardCosts</a></h6>
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
@@ -170,7 +164,7 @@
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_CardCosts_CustomCardCost_CostSatisfied_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostSatisfied*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostSatisfied_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostSatisfied(System.Int32,DiskCardGame.PlayableCard)">CostSatisfied(Int32, PlayableCard)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostSatisfied_System_Int32_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostSatisfied(System.Int32,PlayableCard)">CostSatisfied(Int32, PlayableCard)</h4>
   <div class="markdown level1 summary"><p>Whether the current PlayableCard can be played.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -195,7 +189,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard currently being checked.</p>
 </td>
@@ -218,7 +212,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue(System.Int32,DiskCardGame.PlayableCard)">CostStatPointValue(Int32, PlayableCard)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostStatPointValue_System_Int32_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostStatPointValue(System.Int32,PlayableCard)">CostStatPointValue(Int32, PlayableCard)</h4>
   <div class="markdown level1 summary"><p>Represents how many stat points (SP) each cost value will give.
 For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 stat points.</p>
 <p>DOES NOT ACTUALLY AFFECT ANYTHING ON ITS OWN. You must provide the logic that reads and uses this value.</p>
@@ -245,7 +239,7 @@ For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 s
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard being checked.</p>
 </td>
@@ -269,7 +263,7 @@ For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 s
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CustomCardCost_CostUnsatisfiedHint_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostUnsatisfiedHint*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostUnsatisfiedHint_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostUnsatisfiedHint(System.Int32,DiskCardGame.PlayableCard)">CostUnsatisfiedHint(Int32, PlayableCard)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_CostUnsatisfiedHint_System_Int32_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.CostUnsatisfiedHint(System.Int32,PlayableCard)">CostUnsatisfiedHint(Int32, PlayableCard)</h4>
   <div class="markdown level1 summary"><p>The dialogue string that will be played when you cannot play a card with this custom cost.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -294,7 +288,7 @@ For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 s
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard currently being checked.</p>
 </td>
@@ -317,7 +311,7 @@ For example, Bones have a 1:1 ratio for cost to stats, eg, 4 Bones will give 4 s
     </tbody>
   </table>
   <a id="InscryptionAPI_CardCosts_CustomCardCost_OnPlayed_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.OnPlayed*"></a>
-  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_OnPlayed_System_Int32_DiskCardGame_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.OnPlayed(System.Int32,DiskCardGame.PlayableCard)">OnPlayed(Int32, PlayableCard)</h4>
+  <h4 id="InscryptionAPI_CardCosts_CustomCardCost_OnPlayed_System_Int32_PlayableCard_" data-uid="InscryptionAPI.CardCosts.CustomCardCost.OnPlayed(System.Int32,PlayableCard)">OnPlayed(Int32, PlayableCard)</h4>
   <div class="markdown level1 summary"><p>What the game should do when a card with this cost is played.
 Most common use case is implementing the logic for paying for this cost.</p>
 </div>
@@ -343,7 +337,7 @@ Most common use case is implementing the logic for paying for this cost.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.PlayableCard</span></td>
+        <td><span class="xref">PlayableCard</span></td>
         <td><span class="parametername">playableCard</span></td>
         <td><p>The PlayableCard currently being checked.</p>
 </td>
@@ -360,7 +354,7 @@ Most common use case is implementing the logic for paying for this cost.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><span class="xref">IEnumerator</span></td>
         <td></td>
       </tr>
     </tbody>

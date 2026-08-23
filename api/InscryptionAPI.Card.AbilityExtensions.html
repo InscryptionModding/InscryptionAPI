@@ -86,12 +86,12 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Card_AbilityExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AbilityExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AbilityExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_IEnumerable_DiskCardGame_AbilityInfo__DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{DiskCardGame.AbilityInfo},DiskCardGame.Ability)">AbilityByID(IEnumerable&lt;AbilityInfo&gt;, Ability)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_IEnumerable_AbilityInfo__Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{AbilityInfo},Ability)">AbilityByID(IEnumerable&lt;AbilityInfo&gt;, Ability)</h4>
   <div class="markdown level1 summary"><p>Gets an ability based on its unique identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -110,13 +110,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">DiskCardGame.AbilityInfo</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">AbilityInfo</span>&gt;</td>
         <td><span class="parametername">abilities</span></td>
         <td><p>The list of abiliites to search.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The unique ID of the ability.</p>
 </td>
@@ -133,14 +133,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The first ability with the given ID, or null if it was not found.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_IEnumerable_InscryptionAPI_Card_AbilityManager_FullAbility__DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},DiskCardGame.Ability)">AbilityByID(IEnumerable&lt;AbilityManager.FullAbility&gt;, Ability)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_AbilityByID_IEnumerable_InscryptionAPI_Card_AbilityManager_FullAbility__Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.AbilityByID(IEnumerable{InscryptionAPI.Card.AbilityManager.FullAbility},Ability)">AbilityByID(IEnumerable&lt;AbilityManager.FullAbility&gt;, Ability)</h4>
   <div class="markdown level1 summary"><p>Gets an ability based on its unique identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -165,7 +165,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The unique ID of the ability.</p>
 </td>
@@ -189,7 +189,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])">AddMetaCategories(AbilityInfo, AbilityMetaCategory[])</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_AbilityInfo_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(AbilityInfo,AbilityMetaCategory[])">AddMetaCategories(AbilityInfo, AbilityMetaCategory[])</h4>
   <div class="markdown level1 summary"><p>Adds one or more metacategories to the ability. Duplicate categories will not be added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -208,13 +208,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="xref">AbilityMetaCategory</span>[]</td>
         <td><span class="parametername">categories</span></td>
         <td><p>The metacategories to add.</p>
 </td>
@@ -231,14 +231,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_DiskCardGame_StatIconInfo_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(DiskCardGame.StatIconInfo,DiskCardGame.AbilityMetaCategory[])">AddMetaCategories(StatIconInfo, AbilityMetaCategory[])</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_AddMetaCategories_StatIconInfo_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.AddMetaCategories(StatIconInfo,AbilityMetaCategory[])">AddMetaCategories(StatIconInfo, AbilityMetaCategory[])</h4>
   <div class="markdown level1 summary"><p>Adds one or more metacategories to the stati icon. Duplicate categories will not be added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -257,13 +257,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of StatIconInfo.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="xref">AbilityMetaCategory</span>[]</td>
         <td><span class="parametername">categories</span></td>
         <td><p>The metacategories to add.</p>
 </td>
@@ -280,14 +280,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetBaseRulebookDescription_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetBaseRulebookDescription*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetBaseRulebookDescription_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetBaseRulebookDescription(DiskCardGame.AbilityInfo)">GetBaseRulebookDescription(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetBaseRulebookDescription_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetBaseRulebookDescription(AbilityInfo)">GetBaseRulebookDescription(AbilityInfo)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -305,7 +305,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -327,7 +327,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_DiskCardGame_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.Ability,System.String)">GetExtendedProperty(Ability, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(Ability,System.String)">GetExtendedProperty(Ability, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property value from the card.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -346,7 +346,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -376,7 +376,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(DiskCardGame.AbilityInfo,System.String)">GetExtendedProperty(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedProperty_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedProperty(AbilityInfo,System.String)">GetExtendedProperty(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property value from the card.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -395,7 +395,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -425,7 +425,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_DiskCardGame_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.Ability,System.String)">GetExtendedPropertyAsBool(Ability, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(Ability,System.String)">GetExtendedPropertyAsBool(Ability, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as a boolean (can be null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -444,7 +444,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -474,7 +474,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(DiskCardGame.AbilityInfo,System.String)">GetExtendedPropertyAsBool(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsBool_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsBool(AbilityInfo,System.String)">GetExtendedPropertyAsBool(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as a boolean (can be null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -493,7 +493,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -523,7 +523,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_DiskCardGame_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.Ability,System.String)">GetExtendedPropertyAsFloat(Ability, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(Ability,System.String)">GetExtendedPropertyAsFloat(Ability, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as a float (can by null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -542,7 +542,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -572,7 +572,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(DiskCardGame.AbilityInfo,System.String)">GetExtendedPropertyAsFloat(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsFloat_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsFloat(AbilityInfo,System.String)">GetExtendedPropertyAsFloat(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as a float (can by null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -591,7 +591,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -621,7 +621,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_DiskCardGame_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.Ability,System.String)">GetExtendedPropertyAsInt(Ability, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_Ability_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(Ability,System.String)">GetExtendedPropertyAsInt(Ability, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as an int (can by null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -640,7 +640,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -670,7 +670,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(DiskCardGame.AbilityInfo,System.String)">GetExtendedPropertyAsInt(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetExtendedPropertyAsInt_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetExtendedPropertyAsInt(AbilityInfo,System.String)">GetExtendedPropertyAsInt(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property as an int (can by null)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -689,7 +689,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -719,7 +719,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.Ability)">GetHideSingleStacks(Ability)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(Ability)">GetHideSingleStacks(Ability)</h4>
   <div class="markdown level1 summary"><p>Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -738,7 +738,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td></td>
       </tr>
@@ -761,7 +761,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(DiskCardGame.AbilityInfo)">GetHideSingleStacks(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetHideSingleStacks_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetHideSingleStacks(AbilityInfo)">GetHideSingleStacks(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -780,7 +780,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -804,7 +804,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_DiskCardGame_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.Ability)">GetTriggersOncePerStack(Ability)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(Ability)">GetTriggersOncePerStack(Ability)</h4>
   <div class="markdown level1 summary"><p>Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -823,7 +823,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.Ability</span></td>
+        <td><span class="xref">Ability</span></td>
         <td><span class="parametername">ability</span></td>
         <td></td>
       </tr>
@@ -846,7 +846,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(DiskCardGame.AbilityInfo)">GetTriggersOncePerStack(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_GetTriggersOncePerStack_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.GetTriggersOncePerStack(AbilityInfo)">GetTriggersOncePerStack(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -865,7 +865,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -889,7 +889,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategories*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory[])">HasMetaCategories(AbilityInfo, AbilityMetaCategory[])</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategories_AbilityInfo_AbilityMetaCategory___" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategories(AbilityInfo,AbilityMetaCategory[])">HasMetaCategories(AbilityInfo, AbilityMetaCategory[])</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -907,12 +907,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span>[]</td>
+        <td><span class="xref">AbilityMetaCategory</span>[]</td>
         <td><span class="parametername">categories</span></td>
         <td></td>
       </tr>
@@ -934,7 +934,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategory*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_DiskCardGame_AbilityInfo_DiskCardGame_AbilityMetaCategory_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(DiskCardGame.AbilityInfo,DiskCardGame.AbilityMetaCategory)">HasMetaCategory(AbilityInfo, AbilityMetaCategory)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_HasMetaCategory_AbilityInfo_AbilityMetaCategory_" data-uid="InscryptionAPI.Card.AbilityExtensions.HasMetaCategory(AbilityInfo,AbilityMetaCategory)">HasMetaCategory(AbilityInfo, AbilityMetaCategory)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -952,12 +952,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityMetaCategory</span></td>
+        <td><span class="xref">AbilityMetaCategory</span></td>
         <td><span class="parametername">category</span></td>
         <td></td>
       </tr>
@@ -979,7 +979,7 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_ResetDescription_" data-uid="InscryptionAPI.Card.AbilityExtensions.ResetDescription*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_ResetDescription_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.ResetDescription(DiskCardGame.AbilityInfo)">ResetDescription(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_ResetDescription_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.ResetDescription(AbilityInfo)">ResetDescription(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Resets the AbilityInfo&apos;s rulebook description to its vanilla version.
 Useful for anyone messing with altering descriptions.</p>
 </div>
@@ -999,7 +999,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1016,14 +1016,14 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_DiskCardGame_AbilityInfo_DialogueEvent_Line___" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue(DiskCardGame.AbilityInfo,DialogueEvent.Line[])">SetAbilityLearnedDialogue(AbilityInfo, DialogueEvent.Line[])</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_AbilityInfo_DialogueEvent_Line___" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue(AbilityInfo,DialogueEvent.Line[])">SetAbilityLearnedDialogue(AbilityInfo, DialogueEvent.Line[])</h4>
   <div class="markdown level1 summary"><p>Sets the text displayed when this ability is marked as learned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1042,7 +1042,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1065,14 +1065,14 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_DiskCardGame_AbilityInfo_System_String___" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue(DiskCardGame.AbilityInfo,System.String[])">SetAbilityLearnedDialogue(AbilityInfo, String[])</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAbilityLearnedDialogue_AbilityInfo_System_String___" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAbilityLearnedDialogue(AbilityInfo,System.String[])">SetAbilityLearnedDialogue(AbilityInfo, String[])</h4>
   <div class="markdown level1 summary"><p>Sets the text displayed when this ability is marked as learned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1091,7 +1091,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1114,14 +1114,14 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetActivated_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetActivated*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetActivated_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetActivated(DiskCardGame.AbilityInfo,System.Boolean)">SetActivated(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetActivated_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetActivated(AbilityInfo,System.Boolean)">SetActivated(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability is an activated ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1140,7 +1140,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1163,7 +1163,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -1219,7 +1219,7 @@ Useful for anyone messing with altering descriptions.</p>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetAppliesToStats_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAppliesToStats_DiskCardGame_StatIconInfo_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats(DiskCardGame.StatIconInfo,System.Boolean,System.Boolean)">SetAppliesToStats(StatIconInfo, Boolean, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetAppliesToStats_StatIconInfo_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetAppliesToStats(StatIconInfo,System.Boolean,System.Boolean)">SetAppliesToStats(StatIconInfo, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets the StatIconInfo&apos;s appliesToAttack and appliesToHealth fields. Note these fields don&apos;t make the stat icon affect the stat; you still need to implement that logic.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1238,7 +1238,7 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -1266,14 +1266,14 @@ Useful for anyone messing with altering descriptions.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetCanStack_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCanStack*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCanStack_DiskCardGame_AbilityInfo_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCanStack(DiskCardGame.AbilityInfo,System.Boolean,System.Boolean)">SetCanStack(AbilityInfo, Boolean, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCanStack_AbilityInfo_System_Boolean_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCanStack(AbilityInfo,System.Boolean,System.Boolean)">SetCanStack(AbilityInfo, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability can stack on a card, triggering once for each stack.
 Optional parameter for setting the ability to only trigger once per stack when a card evolves (only affects abilities that can stack).</p>
 </div>
@@ -1293,7 +1293,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1321,7 +1321,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -1383,7 +1383,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetConduit_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduit*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetConduit_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduit(DiskCardGame.AbilityInfo,System.Boolean)">SetConduit(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetConduit_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduit(AbilityInfo,System.Boolean)">SetConduit(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability is a conduit.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1402,7 +1402,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1425,7 +1425,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -1481,7 +1481,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetConduitCell_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduitCell*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetConduitCell_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduitCell(DiskCardGame.AbilityInfo,System.Boolean)">SetConduitCell(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetConduitCell_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetConduitCell(AbilityInfo,System.Boolean)">SetConduitCell(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability is a conduit cell.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1500,7 +1500,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1523,7 +1523,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -1579,7 +1579,7 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)">SetCustomFlippedTexture(AbilityInfo, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_AbilityInfo_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(AbilityInfo,Texture2D)">SetCustomFlippedTexture(AbilityInfo, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Sets the flipped texture for the ability (used when the ability belongs to the opponent).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1598,13 +1598,13 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The ability info to set the texture for.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 49x49 texture containing the icon.</p>
 </td>
@@ -1621,35 +1621,19 @@ Optional parameter for setting the ability to only trigger once per stack when a
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability info so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_DiskCardGame_AbilityInfo_UnityEngine_Texture2D__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_AbilityInfo_Texture2D__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
 ability, it will not have the required information to be able to process the texture, so an exception will be thrown
 if you try to do this to an instance of AbilityInfo that did not get processed through the API.</p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.InvalidOperationException</span></td>
-        <td><p>Thrown if the ability info has not yet been added to the AbilityManager</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_InscryptionAPI_Card_AbilityManager_FullAbility_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)">SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetCustomFlippedTexture_InscryptionAPI_Card_AbilityManager_FullAbility_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetCustomFlippedTexture(InscryptionAPI.Card.AbilityManager.FullAbility,Texture2D)">SetCustomFlippedTexture(AbilityManager.FullAbility, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Sets the flipped texture for the ability (used when the ability belongs to the opponent).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1674,7 +1658,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 49x49 texture containing the icon.</p>
 </td>
@@ -1682,7 +1666,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.AbilityInfo)">SetDefaultPart1Ability(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(AbilityInfo)">SetDefaultPart1Ability(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Helper method: automatically adds the Part1Modular and Part1Rulebook metacategories to the ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1701,7 +1685,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1718,14 +1702,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_DiskCardGame_StatIconInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(DiskCardGame.StatIconInfo)">SetDefaultPart1Ability(StatIconInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart1Ability_StatIconInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart1Ability(StatIconInfo)">SetDefaultPart1Ability(StatIconInfo)</h4>
   <div class="markdown level1 summary"><p>Helper method: automatically adds the Part1Rulebook metacategories to the stat icon.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1744,7 +1728,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of StatIconInfo.</p>
 </td>
@@ -1761,14 +1745,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same stati icon so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart2Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart2Ability*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart2Ability_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart2Ability(DiskCardGame.AbilityInfo)">SetDefaultPart2Ability(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart2Ability_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart2Ability(AbilityInfo)">SetDefaultPart2Ability(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Helper method: automatically adds the custom metacategory Part2Modular to the ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1787,7 +1771,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1804,14 +1788,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_DiskCardGame_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.AbilityInfo)">SetDefaultPart3Ability(AbilityInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_AbilityInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(AbilityInfo)">SetDefaultPart3Ability(AbilityInfo)</h4>
   <div class="markdown level1 summary"><p>Helper method: automatically adds the Part3Modular, Part3BuildACard, and Part3Rulebook metacategories to the ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1830,7 +1814,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -1847,14 +1831,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_DiskCardGame_StatIconInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(DiskCardGame.StatIconInfo)">SetDefaultPart3Ability(StatIconInfo)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetDefaultPart3Ability_StatIconInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetDefaultPart3Ability(StatIconInfo)">SetDefaultPart3Ability(StatIconInfo)</h4>
   <div class="markdown level1 summary"><p>Helper method: automatically adds the Part3Rulebook metacategories to the stat icon.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1873,7 +1857,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of StatIconInfo.</p>
 </td>
@@ -1890,14 +1874,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_DiskCardGame_AbilityInfo_System_String_System_Object_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(DiskCardGame.AbilityInfo,System.String,System.Object)">SetExtendedProperty(AbilityInfo, String, Object)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetExtendedProperty_AbilityInfo_System_String_System_Object_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetExtendedProperty(AbilityInfo,System.String,System.Object)">SetExtendedProperty(AbilityInfo, String, Object)</h4>
   <div class="markdown level1 summary"><p>Adds a custom property value to the AbilityInfo.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1916,7 +1900,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>Ability to access.</p>
 </td>
@@ -1945,7 +1929,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -2007,7 +1991,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetFlipYIfOpponent_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetFlipYIfOpponent*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetFlipYIfOpponent_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetFlipYIfOpponent(DiskCardGame.AbilityInfo,System.Boolean)">SetFlipYIfOpponent(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetFlipYIfOpponent_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetFlipYIfOpponent(AbilityInfo,System.Boolean)">SetFlipYIfOpponent(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability&apos;s icon should be flipped upside-down when it&apos;s on an opponent card.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2026,7 +2010,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2049,7 +2033,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -2104,7 +2088,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetGBCTriggerText_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetGBCTriggerText*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetGBCTriggerText_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetGBCTriggerText(DiskCardGame.AbilityInfo,System.String)">SetGBCTriggerText(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetGBCTriggerText_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetGBCTriggerText(AbilityInfo,System.String)">SetGBCTriggerText(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"><p>Sets the text displayed whenever OnAbilityTriggered is called by this ability in Act 2.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2123,7 +2107,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2146,7 +2130,7 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -2242,14 +2226,14 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_DiskCardGame_AbilityInfo_System_Boolean_UnityEngine_Color_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride(DiskCardGame.AbilityInfo,System.Boolean,UnityEngine.Color)">SetHasColorOverride(AbilityInfo, Boolean, Color)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_AbilityInfo_System_Boolean_Color_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride(AbilityInfo,System.Boolean,Color)">SetHasColorOverride(AbilityInfo, Boolean, Color)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability&apos;s icon&apos;s colour should be overridden, and what the override colour should be.
 The colour override only applies to the default ability icons; totem and merge icons are unaffected.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AbilityInfo SetHasColorOverride(this AbilityInfo abilityInfo, bool hasOverride, Color colorOverride = default(Color))</code></pre>
+    <pre><code class="lang-csharp hljs">public static AbilityInfo SetHasColorOverride(this AbilityInfo abilityInfo, bool hasOverride, Color colorOverride = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2262,7 +2246,7 @@ The colour override only applies to the default ability icons; totem and merge i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2274,7 +2258,7 @@ The colour override only applies to the default ability icons; totem and merge i
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">colorOverride</span></td>
         <td><p>The colour that will override the icon. Only applies if hasOverride is true.</p>
 </td>
@@ -2291,21 +2275,21 @@ The colour override only applies to the default ability icons; totem and merge i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_UnityEngine_Color_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride(InscryptionAPI.Card.AbilityManager.FullAbility,System.Boolean,UnityEngine.Color)">SetHasColorOverride(AbilityManager.FullAbility, Boolean, Color)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHasColorOverride_InscryptionAPI_Card_AbilityManager_FullAbility_System_Boolean_Color_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHasColorOverride(InscryptionAPI.Card.AbilityManager.FullAbility,System.Boolean,Color)">SetHasColorOverride(AbilityManager.FullAbility, Boolean, Color)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability&apos;s icon&apos;s colour should be overridden, and what the override colour should be.
 The colour override only applies to the default ability icons; totem and merge icons are unaffected.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AbilityManager.FullAbility SetHasColorOverride(this AbilityManager.FullAbility fullAbility, bool hasOverride, Color colorOverride = default(Color))</code></pre>
+    <pre><code class="lang-csharp hljs">public static AbilityManager.FullAbility SetHasColorOverride(this AbilityManager.FullAbility fullAbility, bool hasOverride, Color colorOverride = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2330,7 +2314,7 @@ The colour override only applies to the default ability icons; totem and merge i
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="xref">Color</span></td>
         <td><span class="parametername">colorOverride</span></td>
         <td><p>The colour that will override the icon. Only applies if hasOverride is true.</p>
 </td>
@@ -2354,7 +2338,7 @@ The colour override only applies to the default ability icons; totem and merge i
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetHideSingleStacks_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHideSingleStacks_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks(DiskCardGame.AbilityInfo,System.Boolean)">SetHideSingleStacks(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetHideSingleStacks_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetHideSingleStacks(AbilityInfo,System.Boolean)">SetHideSingleStacks(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets an ability to only have one stack of it be hidden whenever the ability is added to a card status&apos;s hiddenAbilities field.
 Adding the same ability to hiddenAbilities will hide more stacks. Only affects cards that can stack.</p>
 </div>
@@ -2374,7 +2358,7 @@ Adding the same ability to hiddenAbilities will hide more stacks. Only affects c
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2397,14 +2381,14 @@ Adding the same ability to hiddenAbilities will hide more stacks. Only affects c
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D)">SetIcon(AbilityInfo, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_AbilityInfo_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(AbilityInfo,Texture2D)">SetIcon(AbilityInfo, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Sets the icon texture for the ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2423,13 +2407,13 @@ Adding the same ability to hiddenAbilities will hide more stacks. Only affects c
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The ability info to set the texture for.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 49x49 texture containing the icon.</p>
 </td>
@@ -2446,145 +2430,19 @@ Adding the same ability to hiddenAbilities will hide more stacks. Only affects c
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability info so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D__remarks">Remarks</h5>
+  <h5 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_AbilityInfo_Texture2D__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
 ability, it will not have the required information to be able to process the texture, so an exception will be thrown
 if you try to do this to an instance of AbilityInfo that did not get processed through the API.</p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.InvalidOperationException</span></td>
-        <td><p>Thrown if the ability info has not yet been added to the AbilityManager</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_StatIconInfo_System_String_System_Nullable_UnityEngine_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})">SetIcon(StatIconInfo, String, Nullable&lt;FilterMode&gt;)</h4>
-  <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this stat icon when the card is in the player&apos;s hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
-        <td><span class="parametername">info</span></td>
-        <td><p>The instance of StatIconInfo.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">pathToArt</span></td>
-        <td><p>The path to a 49x49 texture containing the icon on disk.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/FilterMode.html">FilterMode</a>&gt;</td>
-        <td><span class="parametername">filterMode</span></td>
-        <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
-        <td><p>The same StatIconInfo so a chain can continue.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_DiskCardGame_StatIconInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})">SetIcon(StatIconInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
-  <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this stat icon when the card is in the player&apos;s hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
-        <td><span class="parametername">info</span></td>
-        <td><p>The instance of StatIconInfo.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
-        <td><span class="parametername">icon</span></td>
-        <td><p>A 49x49 texture containing the icon.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/FilterMode.html">FilterMode</a>&gt;</td>
-        <td><span class="parametername">filterMode</span></td>
-        <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
-        <td><p>The same StatIconInfo so a chain can continue.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_InscryptionAPI_Card_AbilityManager_FullAbility_UnityEngine_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,UnityEngine.Texture2D)">SetIcon(AbilityManager.FullAbility, Texture2D)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_InscryptionAPI_Card_AbilityManager_FullAbility_Texture2D_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(InscryptionAPI.Card.AbilityManager.FullAbility,Texture2D)">SetIcon(AbilityManager.FullAbility, Texture2D)</h4>
   <div class="markdown level1 summary"><p>Sets the icon texture for the ability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2609,15 +2467,125 @@ if you try to do this to an instance of AbilityInfo that did not get processed t
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 49x49 texture containing the icon.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_StatIconInfo_System_String_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(StatIconInfo,System.String,System.Nullable{FilterMode})">SetIcon(StatIconInfo, String, Nullable&lt;FilterMode&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this stat icon when the card is in the player&apos;s hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StatIconInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The instance of StatIconInfo.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathToArt</span></td>
+        <td><p>The path to a 49x49 texture containing the icon on disk.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
+        <td><span class="parametername">filterMode</span></td>
+        <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StatIconInfo</span></td>
+        <td><p>The same StatIconInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_AbilityExtensions_SetIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon*"></a>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetIcon_StatIconInfo_Texture2D_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetIcon(StatIconInfo,Texture2D,System.Nullable{FilterMode})">SetIcon(StatIconInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this stat icon when the card is in the player&apos;s hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StatIconInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The instance of StatIconInfo.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Texture2D</span></td>
+        <td><span class="parametername">icon</span></td>
+        <td><p>A 49x49 texture containing the icon.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
+        <td><span class="parametername">filterMode</span></td>
+        <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StatIconInfo</span></td>
+        <td><p>The same StatIconInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetKeywordAbility_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetKeywordAbility*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetKeywordAbility_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetKeywordAbility(DiskCardGame.AbilityInfo,System.Boolean)">SetKeywordAbility(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetKeywordAbility_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetKeywordAbility(AbilityInfo,System.Boolean)">SetKeywordAbility(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability&apos;s name should precede its description in Act 2.
 If false, only the ability&apos;s description will be shown.</p>
 </div>
@@ -2637,7 +2605,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2660,7 +2628,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -2757,7 +2725,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetOpponentUsable_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetOpponentUsable_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable(DiskCardGame.AbilityInfo,System.Boolean)">SetOpponentUsable(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetOpponentUsable_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetOpponentUsable(AbilityInfo,System.Boolean)">SetOpponentUsable(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability can be used by the opponent.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2776,7 +2744,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2799,7 +2767,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -2935,7 +2903,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetPassive_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPassive*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPassive_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPassive(DiskCardGame.AbilityInfo,System.Boolean)">SetPassive(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPassive_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPassive(AbilityInfo,System.Boolean)">SetPassive(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets whether or not the ability is passive (will not trigger).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2954,7 +2922,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -2977,7 +2945,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -3033,7 +3001,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetPixelAbilityIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelAbilityIcon_DiskCardGame_AbilityInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(DiskCardGame.AbilityInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})">SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelAbilityIcon_AbilityInfo_Texture2D_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelAbilityIcon(AbilityInfo,Texture2D,System.Nullable{FilterMode})">SetPixelAbilityIcon(AbilityInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this ability icon in Act 2.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3052,19 +3020,19 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 17x17 or 22x10 texture containing the icon; for regular and activated sigil icons respectively.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/FilterMode.html">FilterMode</a>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
         <td><span class="parametername">filterMode</span></td>
         <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
 </td>
@@ -3081,14 +3049,14 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same ability so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_DiskCardGame_StatIconInfo_System_String_System_Nullable_UnityEngine_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,System.String,System.Nullable{UnityEngine.FilterMode})">SetPixelIcon(StatIconInfo, String, Nullable&lt;FilterMode&gt;)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_StatIconInfo_System_String_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(StatIconInfo,System.String,System.Nullable{FilterMode})">SetPixelIcon(StatIconInfo, String, Nullable&lt;FilterMode&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -3106,7 +3074,7 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -3116,7 +3084,7 @@ If false, only the ability&apos;s description will be shown.</p>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/FilterMode.html">FilterMode</a>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
         <td><span class="parametername">filterMode</span></td>
         <td></td>
       </tr>
@@ -3132,13 +3100,13 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_DiskCardGame_StatIconInfo_UnityEngine_Texture2D_System_Nullable_UnityEngine_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(DiskCardGame.StatIconInfo,UnityEngine.Texture2D,System.Nullable{UnityEngine.FilterMode})">SetPixelIcon(StatIconInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPixelIcon_StatIconInfo_Texture2D_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPixelIcon(StatIconInfo,Texture2D,System.Nullable{FilterMode})">SetPixelIcon(StatIconInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
   <div class="markdown level1 summary"><p>Sets the icon that will be displayed for this stat icon when the card is in the player&apos;s hand in Act 2.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3157,19 +3125,19 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td><p>The instance of StatIconInfo.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="xref">Texture2D</span></td>
         <td><span class="parametername">icon</span></td>
         <td><p>A 16x8 texture containing the icon .</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/FilterMode.html">FilterMode</a>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
         <td><span class="parametername">filterMode</span></td>
         <td><p>The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</p>
 </td>
@@ -3186,14 +3154,14 @@ If false, only the ability&apos;s description will be shown.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetPowerlevel_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPowerlevel*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPowerlevel_DiskCardGame_AbilityInfo_System_Int32_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPowerlevel(DiskCardGame.AbilityInfo,System.Int32)">SetPowerlevel(AbilityInfo, Int32)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetPowerlevel_AbilityInfo_System_Int32_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetPowerlevel(AbilityInfo,System.Int32)">SetPowerlevel(AbilityInfo, Int32)</h4>
   <div class="markdown level1 summary"><p>Sets the power level of the ability, used in some game logic like determining the opponent totem&apos;s ability.
 Vanilla power levels range from -3 to 5, and values above or below are ignored in most cases.</p>
 </div>
@@ -3213,7 +3181,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -3236,7 +3204,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>
@@ -3293,7 +3261,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(DiskCardGame.AbilityInfo,System.String)">SetRulebookDescription(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookDescription_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookDescription(AbilityInfo,System.String)">SetRulebookDescription(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -3311,7 +3279,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td></td>
       </tr>
@@ -3332,7 +3300,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -3383,7 +3351,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_DiskCardGame_StatIconInfo_System_String_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(DiskCardGame.StatIconInfo,System.String,System.String)">SetRulebookInfo(StatIconInfo, String, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookInfo_StatIconInfo_System_String_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookInfo(StatIconInfo,System.String,System.String)">SetRulebookInfo(StatIconInfo, String, String)</h4>
   <div class="markdown level1 summary"><p>Set the StatIconInfo&apos;s rulebookName and rulebookDescription. Does not make the stat icon appear in the Rulebook.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3402,7 +3370,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
@@ -3428,14 +3396,14 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.StatIconInfo</span></td>
+        <td><span class="xref">StatIconInfo</span></td>
         <td><p>The same StatIconInfo so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetRulebookName_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookName*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookName_DiskCardGame_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookName(DiskCardGame.AbilityInfo,System.String)">SetRulebookName(AbilityInfo, String)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetRulebookName_AbilityInfo_System_String_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetRulebookName(AbilityInfo,System.String)">SetRulebookName(AbilityInfo, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -3453,7 +3421,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td></td>
       </tr>
@@ -3474,7 +3442,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -3525,7 +3493,7 @@ Vanilla power levels range from -3 to 5, and values above or below are ignored i
     </tbody>
   </table>
   <a id="InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack*"></a>
-  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_DiskCardGame_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(DiskCardGame.AbilityInfo,System.Boolean)">SetTriggersOncePerStack(AbilityInfo, Boolean)</h4>
+  <h4 id="InscryptionAPI_Card_AbilityExtensions_SetTriggersOncePerStack_AbilityInfo_System_Boolean_" data-uid="InscryptionAPI.Card.AbilityExtensions.SetTriggersOncePerStack(AbilityInfo,System.Boolean)">SetTriggersOncePerStack(AbilityInfo, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets the ability to only ever trigger once per stack. This prevents abilities from triggering twice per stack after a card evolves.
 This only affects cards that evolve into a card that possesses the same stackable ability (eg, default evolutions).</p>
 </div>
@@ -3545,7 +3513,7 @@ This only affects cards that evolve into a card that possesses the same stackabl
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><span class="parametername">abilityInfo</span></td>
         <td><p>The instance of AbilityInfo.</p>
 </td>
@@ -3568,7 +3536,7 @@ This only affects cards that evolve into a card that possesses the same stackabl
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.AbilityInfo</span></td>
+        <td><span class="xref">AbilityInfo</span></td>
         <td><p>The same AbilityInfo so a chain can continue.</p>
 </td>
       </tr>

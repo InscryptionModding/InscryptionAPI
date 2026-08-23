@@ -85,7 +85,7 @@
   <h6><strong>Assembly</strong>: InscryptionAPI.dll</h6>
   <h5 id="InscryptionAPI_Encounters_EncounterManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class EncounterManager</code></pre>
+    <pre><code class="lang-csharp hljs">public static class EncounterManager : object</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -107,7 +107,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData</span>&gt;</td>
+        <td><span class="xref">ReadOnlyCollection</span>&lt;<span class="xref">EncounterBlueprintData</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -129,7 +129,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.ObjectModel.ObservableCollection</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData</span>&gt;</td>
+        <td><span class="xref">ObservableCollection</span>&lt;<span class="xref">EncounterBlueprintData</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -155,7 +155,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">EncounterBlueprintData</span>&gt;</td>
         <td><p>.</p>
 </td>
       </tr>
@@ -164,7 +164,7 @@
   <h3 id="methods">Methods
   </h3>
   <a id="InscryptionAPI_Encounters_EncounterManager_Add_" data-uid="InscryptionAPI.Encounters.EncounterManager.Add*"></a>
-  <h4 id="InscryptionAPI_Encounters_EncounterManager_Add_DiskCardGame_EncounterBlueprintData_" data-uid="InscryptionAPI.Encounters.EncounterManager.Add(DiskCardGame.EncounterBlueprintData)">Add(EncounterBlueprintData)</h4>
+  <h4 id="InscryptionAPI_Encounters_EncounterManager_Add_EncounterBlueprintData_" data-uid="InscryptionAPI.Encounters.EncounterManager.Add(EncounterBlueprintData)">Add(EncounterBlueprintData)</h4>
   <div class="markdown level1 summary"><p>Adds a new encounter to the encounter pool.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -183,7 +183,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData</span></td>
+        <td><span class="xref">EncounterBlueprintData</span></td>
         <td><span class="parametername">newEncounter</span></td>
         <td><p>The encounter to add.</p>
 </td>
@@ -191,13 +191,13 @@
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn*"></a>
-  <h4 id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_DiskCardGame_EncounterBlueprintData_CardBlueprint_" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint)">CreateTurn(EncounterBlueprintData.CardBlueprint)</h4>
+  <h4 id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_CardBlueprint_" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn(CardBlueprint)">CreateTurn(CardBlueprint)</h4>
   <div class="markdown level1 summary"><p>Creates a new turn using the provided CardBlueprint.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; CreateTurn(EncounterBlueprintData.CardBlueprint card = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;CardBlueprint&gt; CreateTurn(CardBlueprint card = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,7 +210,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="xref">CardBlueprint</span></td>
         <td><span class="parametername">card</span></td>
         <td><p>The CardBlueprint that will be used this turn. If null, creates an empty turn.</p>
 </td>
@@ -227,20 +227,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardBlueprint</span>&gt;</td>
         <td><p>The newly created list so a chain can continue.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn*"></a>
-  <h4 id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_DiskCardGame_EncounterBlueprintData_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn(DiskCardGame.EncounterBlueprintData.CardBlueprint[])">CreateTurn(EncounterBlueprintData.CardBlueprint[])</h4>
+  <h4 id="InscryptionAPI_Encounters_EncounterManager_CreateTurn_CardBlueprint___" data-uid="InscryptionAPI.Encounters.EncounterManager.CreateTurn(CardBlueprint[])">CreateTurn(CardBlueprint[])</h4>
   <div class="markdown level1 summary"><p>Creates a new turn using the provided CardBlueprints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; CreateTurn(params EncounterBlueprintData.CardBlueprint[] cards)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;CardBlueprint&gt; CreateTurn(params CardBlueprint[] cards)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -253,7 +253,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>[]</td>
+        <td><span class="xref">CardBlueprint</span>[]</td>
         <td><span class="parametername">cards</span></td>
         <td><p>The CardBlueprints that will be used this turn.</p>
 </td>
@@ -270,7 +270,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardBlueprint</span>&gt;</td>
         <td><p>The newly created list so a chain can continue.</p>
 </td>
       </tr>
@@ -283,7 +283,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; CreateTurn(string cardName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;CardBlueprint&gt; CreateTurn(string cardName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -313,7 +313,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardBlueprint</span>&gt;</td>
         <td><p>The newly created list so a chain can continue.</p>
 </td>
       </tr>
@@ -326,7 +326,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static List&lt;EncounterBlueprintData.CardBlueprint&gt; CreateTurn(params string[] cardNames)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;CardBlueprint&gt; CreateTurn(params string[] cardNames)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -356,7 +356,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">CardBlueprint</span>&gt;</td>
         <td><p>The newly created list so a chain can continue.</p>
 </td>
       </tr>
@@ -405,7 +405,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData</span></td>
+        <td><span class="xref">EncounterBlueprintData</span></td>
         <td><p>The newly created card&apos;s CardInfo.</p>
 </td>
       </tr>
@@ -418,7 +418,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static EncounterBlueprintData.CardBlueprint NewCardBlueprint(string cardName, int randomReplaceChance = 0, bool difficultyReplace = false, int difficultyReplaceReq = 0, string replacement = null, int minDifficulty = 1, int maxDifficulty = 20)</code></pre>
+    <pre><code class="lang-csharp hljs">public static CardBlueprint NewCardBlueprint(string cardName, int randomReplaceChance = 0, bool difficultyReplace = false, int difficultyReplaceReq = 0, string replacement = null, int minDifficulty = 1, int maxDifficulty = 20)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -484,14 +484,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData.CardBlueprint</span></td>
+        <td><span class="xref">CardBlueprint</span></td>
         <td><p>The newly created CardBlueprint.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="InscryptionAPI_Encounters_EncounterManager_Remove_" data-uid="InscryptionAPI.Encounters.EncounterManager.Remove*"></a>
-  <h4 id="InscryptionAPI_Encounters_EncounterManager_Remove_DiskCardGame_EncounterBlueprintData_" data-uid="InscryptionAPI.Encounters.EncounterManager.Remove(DiskCardGame.EncounterBlueprintData)">Remove(EncounterBlueprintData)</h4>
+  <h4 id="InscryptionAPI_Encounters_EncounterManager_Remove_EncounterBlueprintData_" data-uid="InscryptionAPI.Encounters.EncounterManager.Remove(EncounterBlueprintData)">Remove(EncounterBlueprintData)</h4>
   <div class="markdown level1 summary"><p>Removes a custom encounter from the encounter pool. Cannot be used to remove base encounters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -510,7 +510,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DiskCardGame.EncounterBlueprintData</span></td>
+        <td><span class="xref">EncounterBlueprintData</span></td>
         <td><span class="parametername">encounter</span></td>
         <td><p>The encounter to remove.</p>
 </td>
@@ -546,7 +546,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">DiskCardGame.EncounterBlueprintData</span>&gt;&gt;</td>
+        <td><span class="xref">Func</span>&lt;<span class="xref">List</span>&lt;<span class="xref">EncounterBlueprintData</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">EncounterBlueprintData</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
