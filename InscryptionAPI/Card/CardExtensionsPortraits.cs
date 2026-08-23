@@ -331,6 +331,71 @@ public static partial class CardExtensions
     /// <summary>
     /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
     /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the card portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetLostTailPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set lost tail portrait without tail params being set first");
+
+        info.tailParams.SetLostTailPortrait(portrait, info);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, string pathToArt)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set emissive lost tail portrait without tail params being set first");
+
+        info.tailParams.SetEmissiveLostTailPortrait(pathToArt);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the card portrait.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set emissive lost tail portrait without tail params being set first");
+
+        info.tailParams.SetEmissiveLostTailPortrait(portrait, filterMode);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sprite containing the card portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
+    public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, Sprite portrait)
+    {
+        if (info.tailParams == null)
+            throw new InvalidOperationException("Cannot set emissive lost tail portrait without tail params being set first");
+
+        info.tailParams.SetEmissiveLostTailPortrait(portrait);
+
+        return info;
+    }
+
+    /// <summary>
+    /// Sets the card's lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.
+    /// </summary>
     /// <param name="info">Tail to access.</param>
     /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory).</param>
     /// <param name="owner">The card that the tail parameters belongs to.</param>
@@ -376,6 +441,46 @@ public static partial class CardExtensions
 
         return info;
     }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">Tail to access.</param>
+    /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
+    /// <returns>The same TailParams so a chain can continue.</returns>
+    public static TailParams SetEmissiveLostTailPortrait(this TailParams info, string pathToArt)
+    {
+        return info.SetEmissiveLostTailPortrait(TextureHelper.GetImageAsTexture(pathToArt));
+    }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">Tail to access.</param>
+    /// <param name="portrait">The texture containing the card portrait.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same TailParams so a chain can continue.</returns>
+    public static TailParams SetEmissiveLostTailPortrait(this TailParams info, Texture2D portrait, FilterMode? filterMode = null)
+    {
+        return info.SetEmissiveLostTailPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
+    }
+
+    /// <summary>
+    /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
+    /// </summary>
+    /// <param name="info">Tail to access.</param>
+    /// <param name="portrait">The sprite containing the card portrait.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same TailParams so a chain can continue.</returns>
+    public static TailParams SetEmissiveLostTailPortrait(this TailParams info, Sprite portrait)
+    {
+        if (info.tailLostPortrait == null)
+            throw new InvalidOperationException($"Cannot set the emissive portrait before setting the default lost tail portrait!");
+
+        info.tailLostPortrait.RegisterEmissionForSprite(portrait);
+        return info;
+    }
+    public static Sprite GetEmissiveTailLostPortrait(this TailParams info) => info.tailLostPortrait?.GetEmissionSprite();
 
     #endregion
 
@@ -635,13 +740,13 @@ public static partial class CardExtensions
     }
     public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Sprite portrait)
     {
-        if (info.SteelTrapPortrait() == null)
+        if (info.SacrificablePortrait() == null)
             throw new InvalidOperationException($"Cannot set emissive portrait before setting the default sacrifice portrait!");
 
-        info.SteelTrapPortrait().RegisterEmissionForSprite(portrait);
+        info.SacrificablePortrait().RegisterEmissionForSprite(portrait);
         return info;
     }
-    public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SteelTrapPortrait().GetEmissionSprite();
+    public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SacrificablePortrait().GetEmissionSprite();
     #endregion
 
     /// <summary>
