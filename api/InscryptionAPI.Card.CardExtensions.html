@@ -1981,6 +1981,46 @@ This function can be overridden if someone wants to inject new cost logic into a
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_GetEmissiveTailLostPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_GetEmissiveTailLostPortrait_TailParams_" data-uid="InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait(TailParams)">GetEmissiveTailLostPortrait(TailParams)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Sprite GetEmissiveTailLostPortrait(this TailParams info)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><span class="parametername">info</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Sprite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_GetExtendedProperty_" data-uid="InscryptionAPI.Card.CardExtensions.GetExtendedProperty*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_GetExtendedProperty_CardInfo_System_String_" data-uid="InscryptionAPI.Card.CardExtensions.GetExtendedProperty(CardInfo,System.String)">GetExtendedProperty(CardInfo, String)</h4>
   <div class="markdown level1 summary"><p>Gets a custom property value from the card.</p>
@@ -8319,6 +8359,312 @@ Act 1 uses Nature cards, Act 2 uses all Temples for each region, Act 3 uses Tech
       </tr>
     </tbody>
   </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_Sprite_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Sprite)">SetEmissiveLostTailPortrait(CardInfo, Sprite)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, Sprite portrait)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>CardInfo to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Sprite</span></td>
+        <td><span class="parametername">portrait</span></td>
+        <td><p>The sprite containing the card portrait.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_System_String_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,System.String)">SetEmissiveLostTailPortrait(CardInfo, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, string pathToArt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>CardInfo to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathToArt</span></td>
+        <td><p>The path to the .png file containing the portrait artwork (relative to the Plugins directory).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_Texture2D_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Texture2D,System.Nullable{FilterMode})">SetEmissiveLostTailPortrait(CardInfo, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetEmissiveLostTailPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>CardInfo to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Texture2D</span></td>
+        <td><span class="parametername">portrait</span></td>
+        <td><p>The texture containing the card portrait.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
+        <td><span class="parametername">filterMode</span></td>
+        <td><p>The filter mode for the texture, or null if no change.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_Sprite_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Sprite)">SetEmissiveLostTailPortrait(TailParams, Sprite)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TailParams SetEmissiveLostTailPortrait(this TailParams info, Sprite portrait)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>Tail to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Sprite</span></td>
+        <td><span class="parametername">portrait</span></td>
+        <td><p>The sprite containing the card portrait.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><p>The same TailParams so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_System_String_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,System.String)">SetEmissiveLostTailPortrait(TailParams, String)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TailParams SetEmissiveLostTailPortrait(this TailParams info, string pathToArt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>Tail to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pathToArt</span></td>
+        <td><p>The path to the .png file containing the artwork (relative to the Plugins directory).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><p>The same TailParams so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_Texture2D_System_Nullable_FilterMode__" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Texture2D,System.Nullable{FilterMode})">SetEmissiveLostTailPortrait(TailParams, Texture2D, Nullable&lt;FilterMode&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TailParams SetEmissiveLostTailPortrait(this TailParams info, Texture2D portrait, FilterMode? filterMode = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>Tail to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Texture2D</span></td>
+        <td><span class="parametername">portrait</span></td>
+        <td><p>The texture containing the card portrait.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">FilterMode</span>&gt;</td>
+        <td><span class="parametername">filterMode</span></td>
+        <td><p>The filter mode for the texture, or null if no change.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TailParams</span></td>
+        <td><p>The same TailParams so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="InscryptionAPI_Card_CardExtensions_SetEmissivePortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissivePortrait*"></a>
   <h4 id="InscryptionAPI_Card_CardExtensions_SetEmissivePortrait_CardInfo_Sprite_" data-uid="InscryptionAPI.Card.CardExtensions.SetEmissivePortrait(CardInfo,Sprite)">SetEmissivePortrait(CardInfo, Sprite)</h4>
   <div class="markdown level1 summary"><p>Sets the emissive portrait for the card. This can only be done after the default portrait has been set (SetPortrait).</p>
@@ -9321,6 +9667,55 @@ This function uses delayed loading to attach the ice cube to the card, so if the
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">CardModificationInfo</span>&gt;</td>
         <td><span class="parametername">mods</span></td>
         <td><p>A set of card mods to be applied to the ice cube contents.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><p>The same CardInfo so a chain can continue.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="InscryptionAPI_Card_CardExtensions_SetLostTailPortrait_" data-uid="InscryptionAPI.Card.CardExtensions.SetLostTailPortrait*"></a>
+  <h4 id="InscryptionAPI_Card_CardExtensions_SetLostTailPortrait_CardInfo_Sprite_" data-uid="InscryptionAPI.Card.CardExtensions.SetLostTailPortrait(CardInfo,Sprite)">SetLostTailPortrait(CardInfo, Sprite)</h4>
+  <div class="markdown level1 summary"><p>Sets the card&apos;s lost tail portrait. This portrait is used when the card has the TailOnHit ability and has dodged a hit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CardInfo SetLostTailPortrait(this CardInfo info, Sprite portrait)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardInfo</span></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>CardInfo to access.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Sprite</span></td>
+        <td><span class="parametername">portrait</span></td>
+        <td><p>The sprite containing the card portrait.</p>
 </td>
       </tr>
     </tbody>

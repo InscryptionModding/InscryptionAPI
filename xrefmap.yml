@@ -4264,6 +4264,19 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveSteelTrapPortrait
   nameWithType: CardExtensions.GetEmissiveSteelTrapPortrait
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait(TailParams)
+  name: GetEmissiveTailLostPortrait(TailParams)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveTailLostPortrait_TailParams_
+  commentId: M:InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait(TailParams)
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait(TailParams)
+  nameWithType: CardExtensions.GetEmissiveTailLostPortrait(TailParams)
+- uid: InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait*
+  name: GetEmissiveTailLostPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetEmissiveTailLostPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.GetEmissiveTailLostPortrait
+  nameWithType: CardExtensions.GetEmissiveTailLostPortrait
 - uid: InscryptionAPI.Card.CardExtensions.GetExtendedProperty(CardInfo,System.String)
   name: GetExtendedProperty(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_GetExtendedProperty_CardInfo_System_String_
@@ -5905,6 +5918,55 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveBrokenShieldPortrait
   nameWithType: CardExtensions.SetEmissiveBrokenShieldPortrait
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Sprite)
+  name: SetEmissiveLostTailPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Sprite)
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,System.String)
+  name: SetEmissiveLostTailPortrait(CardInfo, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo, System.String)
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(CardInfo, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Texture2D,System.Nullable{FilterMode})
+  name: SetEmissiveLostTailPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_CardInfo_Texture2D_System_Nullable_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo,Texture2D,System.Nullable{FilterMode})
+  name.vb: SetEmissiveLostTailPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Texture2D, System.Nullable<FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Texture2D, System.Nullable(Of FilterMode))
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetEmissiveLostTailPortrait(CardInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Sprite)
+  name: SetEmissiveLostTailPortrait(TailParams, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams, Sprite)
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(TailParams, Sprite)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,System.String)
+  name: SetEmissiveLostTailPortrait(TailParams, String)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_System_String_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,System.String)
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams, System.String)
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(TailParams, String)
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Texture2D,System.Nullable{FilterMode})
+  name: SetEmissiveLostTailPortrait(TailParams, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_TailParams_Texture2D_System_Nullable_FilterMode__
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams,Texture2D,System.Nullable{FilterMode})
+  name.vb: SetEmissiveLostTailPortrait(TailParams, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams, Texture2D, System.Nullable<FilterMode>)
+  fullName.vb: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait(TailParams, Texture2D, System.Nullable(Of FilterMode))
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait(TailParams, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: CardExtensions.SetEmissiveLostTailPortrait(TailParams, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait*
+  name: SetEmissiveLostTailPortrait
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissiveLostTailPortrait_
+  commentId: Overload:InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait
+  isSpec: "True"
+  fullName: InscryptionAPI.Card.CardExtensions.SetEmissiveLostTailPortrait
+  nameWithType: CardExtensions.SetEmissiveLostTailPortrait
 - uid: InscryptionAPI.Card.CardExtensions.SetEmissivePortrait(CardInfo,Sprite)
   name: SetEmissivePortrait(CardInfo, Sprite)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetEmissivePortrait_CardInfo_Sprite_
@@ -6132,6 +6194,12 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Card.CardExtensions.SetIceCube
   nameWithType: CardExtensions.SetIceCube
+- uid: InscryptionAPI.Card.CardExtensions.SetLostTailPortrait(CardInfo,Sprite)
+  name: SetLostTailPortrait(CardInfo, Sprite)
+  href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetLostTailPortrait_CardInfo_Sprite_
+  commentId: M:InscryptionAPI.Card.CardExtensions.SetLostTailPortrait(CardInfo,Sprite)
+  fullName: InscryptionAPI.Card.CardExtensions.SetLostTailPortrait(CardInfo, Sprite)
+  nameWithType: CardExtensions.SetLostTailPortrait(CardInfo, Sprite)
 - uid: InscryptionAPI.Card.CardExtensions.SetLostTailPortrait(CardInfo,System.String)
   name: SetLostTailPortrait(CardInfo, String)
   href: api/InscryptionAPI.Card.CardExtensions.html#InscryptionAPI_Card_CardExtensions_SetLostTailPortrait_CardInfo_System_String_
