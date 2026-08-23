@@ -243,4 +243,32 @@ public static partial class CardExtensions
     }
 
     #endregion
+    
+    #region SteelTrapPelt
+    /// <summary>
+    /// Set the Pelt that should be given when this card is slain by a trap.
+    /// </summary>
+    /// <param name="card">The Card this is being applied to.</param>
+    /// <param name="peltName">The Card to be given to the Player on Death by Trap</param>
+    public static void SetSteelTrapPelt(this PlayableCard card, string peltName) => SetSteelTrapPelt(card.Info, peltName);
+    /// <summary>
+    /// Get the Pelt that should be given when this card is slain by a trap.
+    /// </summary>
+    /// <param name="card">The Card this is being applied to.</param>
+    /// <returns>A string representing the Pelt that should be returned.</returns>
+    public static string GetSteelTrapPelt(this PlayableCard card) => GetSteelTrapPelt(card.Info);
+    /// <summary>
+    /// Set the Pelt that should be given when this card is slain by a trap.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo this is being applied to.</param>
+    /// <param name="peltName">The Card to be given to the Player on Death by Trap</param>
+    public static void SetSteelTrapPelt(this CardInfo cardInfo, string peltName) => cardInfo.SetExtendedProperty("SteelTrapPelt", peltName);
+    /// <summary>
+    /// Get the Pelt that should be given when this card is slain by a trap.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo this is being applied to.</param>
+    /// <returns>A string representing the Pelt that should be returned.</returns>
+    public static string GetSteelTrapPelt(this CardInfo cardInfo) => cardInfo.GetExtendedProperty("SteelTrapPelt");
+    
+    #endregion
 }

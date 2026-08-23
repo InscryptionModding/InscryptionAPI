@@ -160,6 +160,9 @@ public static class Part2CardCostRender
         // Call the event and allow others to modify the list of textures
         UpdateCardCost?.Invoke(cardInfo, costTextures);
         UpdateVanillaCardCost?.Invoke(cardInfo, costTextures);
+        UpdatePlayableCardCost?.Invoke(playableCard, costTextures);
+        UpdateVanillaPlayableCardCost?.Invoke(playableCard, costTextures);
+
         return costTextures;
     }
 
