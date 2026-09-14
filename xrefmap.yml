@@ -1591,6 +1591,66 @@ references:
   isSpec: "True"
   fullName: InscryptionAPI.Ascension.ChallengeManager.SyncChallengeList
   nameWithType: ChallengeManager.SyncChallengeList
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions
+  name: StarterDeckExtensions
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html
+  commentId: T:InscryptionAPI.Ascension.StarterDeckExtensions
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions
+  nameWithType: StarterDeckExtensions
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel(StarterDeckInfo)
+  name: GetUnlockLevel(StarterDeckInfo)
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_GetUnlockLevel_StarterDeckInfo_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel(StarterDeckInfo)
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel(StarterDeckInfo)
+  nameWithType: StarterDeckExtensions.GetUnlockLevel(StarterDeckInfo)
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel*
+  name: GetUnlockLevel
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_GetUnlockLevel_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.GetUnlockLevel
+  nameWithType: StarterDeckExtensions.GetUnlockLevel
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,Sprite)
+  name: SetIconTexture(StarterDeckInfo, Sprite)
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetIconTexture_StarterDeckInfo_Sprite_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,Sprite)
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Sprite)
+  nameWithType: StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Sprite)
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,System.String)
+  name: SetIconTexture(StarterDeckInfo, String)
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetIconTexture_StarterDeckInfo_System_String_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,System.String)
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo, System.String)
+  nameWithType: StarterDeckExtensions.SetIconTexture(StarterDeckInfo, String)
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,Texture2D,System.Nullable{FilterMode})
+  name: SetIconTexture(StarterDeckInfo, Texture2D, Nullable<FilterMode>)
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetIconTexture_StarterDeckInfo_Texture2D_System_Nullable_FilterMode__
+  commentId: M:InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo,Texture2D,System.Nullable{FilterMode})
+  name.vb: SetIconTexture(StarterDeckInfo, Texture2D, Nullable(Of FilterMode))
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Texture2D, System.Nullable<FilterMode>)
+  fullName.vb: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Texture2D, System.Nullable(Of FilterMode))
+  nameWithType: StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Texture2D, Nullable<FilterMode>)
+  nameWithType.vb: StarterDeckExtensions.SetIconTexture(StarterDeckInfo, Texture2D, Nullable(Of FilterMode))
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture*
+  name: SetIconTexture
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetIconTexture_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetIconTexture
+  nameWithType: StarterDeckExtensions.SetIconTexture
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel(StarterDeckInfo,System.Int32)
+  name: SetUnlockLevel(StarterDeckInfo, Int32)
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetUnlockLevel_StarterDeckInfo_System_Int32_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel(StarterDeckInfo,System.Int32)
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel(StarterDeckInfo, System.Int32)
+  nameWithType: StarterDeckExtensions.SetUnlockLevel(StarterDeckInfo, Int32)
+- uid: InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel*
+  name: SetUnlockLevel
+  href: api/InscryptionAPI.Ascension.StarterDeckExtensions.html#InscryptionAPI_Ascension_StarterDeckExtensions_SetUnlockLevel_
+  commentId: Overload:InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel
+  isSpec: "True"
+  fullName: InscryptionAPI.Ascension.StarterDeckExtensions.SetUnlockLevel
+  nameWithType: StarterDeckExtensions.SetUnlockLevel
 - uid: InscryptionAPI.Ascension.StarterDeckManager
   name: StarterDeckManager
   href: api/InscryptionAPI.Ascension.StarterDeckManager.html
@@ -1692,6 +1752,15 @@ references:
   commentId: E:InscryptionAPI.Ascension.StarterDeckManager.ModifyDeckList
   fullName: InscryptionAPI.Ascension.StarterDeckManager.ModifyDeckList
   nameWithType: StarterDeckManager.ModifyDeckList
+- uid: InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,System.String,System.String,System.String[],System.Int32)
+  name: New(String, String, String, String, String[], Int32)
+  href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_System_String_System_String_System_String___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,System.String,System.String,System.String[],System.Int32)
+  name.vb: New(String, String, String, String, String(), Int32)
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.New(System.String, System.String, System.String, System.String, System.String[], System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.StarterDeckManager.New(System.String, System.String, System.String, System.String, System.String(), System.Int32)
+  nameWithType: StarterDeckManager.New(String, String, String, String, String[], Int32)
+  nameWithType.vb: StarterDeckManager.New(String, String, String, String, String(), Int32)
 - uid: InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,System.String,System.String[],System.Int32)
   name: New(String, String, String, String[], Int32)
   href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_System_String_System_String___System_Int32_
@@ -1701,6 +1770,15 @@ references:
   fullName.vb: InscryptionAPI.Ascension.StarterDeckManager.New(System.String, System.String, System.String, System.String(), System.Int32)
   nameWithType: StarterDeckManager.New(String, String, String, String[], Int32)
   nameWithType.vb: StarterDeckManager.New(String, String, String, String(), Int32)
+- uid: InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,System.String,Texture2D,System.String[],System.Int32)
+  name: New(String, String, String, Texture2D, String[], Int32)
+  href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_System_String_Texture2D_System_String___System_Int32_
+  commentId: M:InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,System.String,Texture2D,System.String[],System.Int32)
+  name.vb: New(String, String, String, Texture2D, String(), Int32)
+  fullName: InscryptionAPI.Ascension.StarterDeckManager.New(System.String, System.String, System.String, Texture2D, System.String[], System.Int32)
+  fullName.vb: InscryptionAPI.Ascension.StarterDeckManager.New(System.String, System.String, System.String, Texture2D, System.String(), System.Int32)
+  nameWithType: StarterDeckManager.New(String, String, String, Texture2D, String[], Int32)
+  nameWithType.vb: StarterDeckManager.New(String, String, String, Texture2D, String(), Int32)
 - uid: InscryptionAPI.Ascension.StarterDeckManager.New(System.String,System.String,Texture2D,System.String[],System.Int32)
   name: New(String, String, Texture2D, String[], Int32)
   href: api/InscryptionAPI.Ascension.StarterDeckManager.html#InscryptionAPI_Ascension_StarterDeckManager_New_System_String_System_String_Texture2D_System_String___System_Int32_

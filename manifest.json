@@ -168,6 +168,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/InscryptionAPI.Ascension.StarterDeckExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/InscryptionAPI.Ascension.StarterDeckExtensions.html",
+          "hash": "qcl67KL/gUdsAB3CX7OEkmBRl/Sgdph6QDOH2X3Nl6I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/InscryptionAPI.Ascension.StarterDeckManager.FullStarterDeck.yml",
       "output": {
         ".html": {
@@ -184,7 +196,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.StarterDeckManager.html",
-          "hash": "sdtErgvVEggPsYrj6sAWxpFnB53hNYDwR8iZXhLjDX0="
+          "hash": "f6golS1wvFlzRS2n/e2zO2/DyU3uQg/xBA0s+ZwpWtk="
         }
       },
       "is_incremental": false,
@@ -208,7 +220,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Ascension.html",
-          "hash": "njlUq/zvdRCCEFrIqa5fiVOZI436uXpkNgYUfJKg9mQ="
+          "hash": "dW65DvJBO7KRCzQsEFLxMvc8taRZmsVvusccF0cGP+4="
         }
       },
       "is_incremental": false,
@@ -2317,7 +2329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/InscryptionAPI.Sound.html",
-          "hash": "Uf1wB1xJNFjF3X33dF2/FRvSvx0l6C0xUcqWeQ5FydU="
+          "hash": "eyRuDhWWIsP3as5W6tCZ0CZVE1PrrciH0O/3uI8akaE="
         }
       },
       "is_incremental": false,
@@ -3133,7 +3145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Uf6DAfLuE02dw6z3kH0mHn6glkuWJMJdmu+syx9UMCo="
+          "hash": "TtOMs9ATAW9GxfTugYuI1g8rHNBMv+fABktMrvLXwnk="
         }
       },
       "is_incremental": false,
@@ -3576,7 +3588,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 277,
+          "total_file_count": 278,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
