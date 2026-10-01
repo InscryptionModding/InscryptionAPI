@@ -54,6 +54,14 @@ target = "plugins/InscryptionCommunityPatch.pdb"
 source = "InscryptionCommunityPatch/bin/Release/InscryptionCommunityPatch.xml"
 target = "plugins/InscryptionCommunityPatch.xml"
 
+[[build.copy]]
+source = "CHANGELOG.md"
+target = "CHANGELOG.md"
+
+[[build.copy]]
+source = "LICENSE.md"
+target = "LICENSE.md"
+
 [publish]
 repository = "https://inscryption.thunderstore.io"
 communities = ["inscryption"]
