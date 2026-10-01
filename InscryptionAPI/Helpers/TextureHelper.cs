@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using BepInEx;
 using DiskCardGame;
 using HarmonyLib;
@@ -424,4 +425,104 @@ public static class TextureHelper
 
         return myTexture2D;
     }
+    
+    #region CustomAppearences
+    
+    /// <summary>
+    /// All Base Game Custom Appearance Items, these are handled by mods themselves, not by us.
+    /// </summary>
+    internal static Dictionary<string, Texture2D> BaseGameCustomAppearances = new  Dictionary<string, Texture2D>();
+    /// <summary>
+    /// All Base Game Custom Appearance Items, these are handled by mods themselves, not by us. This version is exposed publicly.
+    /// </summary>
+    public static ReadOnlyCollection<KeyValuePair<string, Texture2D>> BaseGameCustomAppearancesPublic => new ReadOnlyCollection<KeyValuePair<string, Texture2D>>(BaseGameCustomAppearances.ToList());
+    /// <summary>
+    /// All Modded Custom Appearance Items, these are handled by mods themselves, not by us.
+    /// </summary>
+    internal static Dictionary<string, Texture2D> ModdedCustomAppearancesDictionary = new Dictionary<string, Texture2D>();
+    /// <summary>
+    /// All Modded Custom Appearance Items, these are handled by mods themselves, not by us. This version is exposed publicly.
+    /// </summary>
+    public static ReadOnlyCollection<KeyValuePair<string, Texture2D>> ModdedCustomAppearancesDictionaryPublic => new ReadOnlyCollection<KeyValuePair<string, Texture2D>>(ModdedCustomAppearancesDictionary.ToList());
+    /// <summary>
+    /// All Custom Appearance Items, these are handled by mods themselves, not by us. This version is exposed publicly.
+    /// </summary>
+    public static ReadOnlyCollection<KeyValuePair<string, Texture2D>> CombinedCustomAppearancesDictionaryPublic => new ReadOnlyCollection<KeyValuePair<string, Texture2D>>(BaseGameCustomAppearancesPublic.Concat(ModdedCustomAppearancesDictionary).ToList());
+
+    /// <summary>
+    /// Initializes the Base Game Custom Appearances List
+    /// </summary>
+    internal static void InstantiateBaseGameCustomAppearances()
+    {
+        BaseGameCustomAppearances.Add("CardDecal_Blood1", GetImageAsTexture("decal_blood_1.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Blood2", GetImageAsTexture("decal_blood_2.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Blood3", GetImageAsTexture("decal_blood_3.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Blood4", GetImageAsTexture("decal_blood_4.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Child", GetImageAsTexture("decal_child.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Fungus", GetImageAsTexture("decal_fungus.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Smoke", GetImageAsTexture("decal_smoke.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_SmokeAbilityHole", GetImageAsTexture("decal_smoke_abilityhole.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk1", GetImageAsTexture("decal_snelk_1.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk2", GetImageAsTexture("decal_snelk_2.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk3", GetImageAsTexture("decal_snelk_3.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk4", GetImageAsTexture("decal_snelk_4.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk5", GetImageAsTexture("decal_snelk_5.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Snelk6", GetImageAsTexture("decal_snelk_6.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_SnelkMain", GetImageAsTexture("decal_snelk_main.png", InscryptionAPIPlugin.APIAssembly));
+        BaseGameCustomAppearances.Add("CardDecal_Stitches", GetImageAsTexture("decal_stitches.png", InscryptionAPIPlugin.APIAssembly));
+    }
+
+    /// <summary>
+    /// Utilize this function to add your Custom Appearance Into the Public Dictionaries.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="GUID">The GUID representing the mod in which the Appearance Came from.</param>
+    /// <param name="appearancesToAdd">A tuple representing the Appearence we want to add to the Dictionary.</param>
+    /// <returns>We error if any of the passed in fields are Null, and for strings if they are Whitespace as well.</returns>
+    public static void AddCustomAppearanceToDictionary(string type, string GUID, (string name, Texture2D texture2D)[] appearancesToAdd) 
+    {
+        foreach ((string name, Texture2D texture2D) in appearancesToAdd)
+        {
+            if (texture2D != null && (!name.IsNullOrWhiteSpace() && !type.IsNullOrWhiteSpace() && !GUID.IsNullOrWhiteSpace()))
+            {
+                ModdedCustomAppearancesDictionary.Add(type + "_" + GUID + "_" + name, texture2D);
+            }
+            else
+            {
+                InscryptionAPIPlugin.Logger.LogError($"Failed to add KVP {type + "_" + GUID + "_" + name} to dictionary.");
+                if (texture2D == null)
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Texture2D associated with {type + "_" + GUID + "_" + name} was null.");
+                    InscryptionAPIPlugin.Logger.LogError($"Ensure you are passing a non-null Texture2D.");
+                }
+                if (name.IsNullOrWhiteSpace())
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Name ({name}) associated with {type + "_" + GUID + "_" + name} was null.");
+                    InscryptionAPIPlugin.Logger.LogError($"Ensure you are passing a non-null or empty name.");
+                }
+                if (type.IsNullOrWhiteSpace())
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"Type ({type}) associated with {type + "_" + GUID + "_" + name} was null.");
+                    InscryptionAPIPlugin.Logger.LogError($"Ensure you are passing a non-null or empty type.");
+                }
+                if (GUID.IsNullOrWhiteSpace())
+                {
+                    InscryptionAPIPlugin.Logger.LogError($"GUID ({GUID}) associated with {type + "_" + GUID + "_" + name} was null.");
+                    InscryptionAPIPlugin.Logger.LogError($"Ensure you are passing a non-null or empty GUID.");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// A function that gets a Dictionary of all Custom Appearances associated with the passed in Type.
+    /// </summary>
+    /// <param name="type">A unique identifier in which you want to get a list of textures that are instantiated with. For example <c>CardDecal</c> for a Card's Decal.</param>
+    /// <returns>The results of <see cref="Enumerable.Where{TSource}(IEnumerable{TSource}, Func{TSource, bool})"/> with the check of <c>x.Key.StartsWith(type)</c>. We return in the form of a new <see cref="Dictionary{TKey, TValue}"/> containing KVPs from <see cref="CombinedCustomAppearancesDictionaryPublic"/>.</returns>
+    public static Dictionary<string, Texture2D> GetCustomAppearanceTypeFromDictionary(string type)
+    {
+        return CombinedCustomAppearancesDictionaryPublic.Where(x => x.Key.StartsWith(type)).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    #endregion
 }

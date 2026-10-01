@@ -1,19 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <TargetFramework>netframework4.7.2</TargetFramework>
+        <TargetFrameworks>netframework4.7.2</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
+        <AssemblyName>InscryptionCommunityPatch</AssemblyName>
+        <Description>The Community Patches For Inscryption which fixes a ton of bugs with the underlying game and adds some new functionality to it.</Description>
+        <Version>2.24.2</Version>
+        <Authors>Cyantist, IngoH, WhistleWind, Chaosyr and Contibutors</Authors>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>InscryptionCommunityPatch</RootNamespace>
+        <DebugType>full</DebugType>
+        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <IsPackable>false</IsPackable>
-        <LangVersion>latest</LangVersion>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugType>full</DebugType>
+        <SelfContained>true</SelfContained>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <Version>2.24.0</Version>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
     
     <ItemGroup>
@@ -35,4 +41,15 @@
       <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
 
+    <!--Net Framework References-->
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!--Cleanup Publish for our Build System-->
+    <Target Name="StripAllNuGetFromPublish" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.Extension)' == '.dll' and '%(ResolvedFileToPublish.RelativePath)' != 'InscryptionCommunityPatch.dll'" />
+        </ItemGroup>
+    </Target>
 </Project>

@@ -18,6 +18,7 @@ using InscryptionAPI.Slots;
 using InscryptionAPI.Totems;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using InscryptionAPI.Helpers;
 
 [assembly: InternalsVisibleTo("Assembly-CSharp")]
 [assembly: InternalsVisibleTo("Assembly-CSharp.APIPatcher.mm")]
@@ -69,6 +70,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     {
         Logger = base.Logger;
         Directory = Path.GetDirectoryName(Info.Location);
+        TextureHelper.InstantiateBaseGameCustomAppearances();
 
         HarmonyInstance.PatchAll(InscryptionAPIPlugin.APIAssembly);
     }
