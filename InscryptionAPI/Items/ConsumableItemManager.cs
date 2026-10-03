@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace InscryptionAPI.Items;
 
-
 public static class ConsumableItemManager
 {
     public class FullConsumableItemData

@@ -8,13 +8,14 @@ using UnityEngine;
 namespace InscryptionAPI.Helpers;
 
 /// <summary>
-/// This class contains a number of helper methods for managing textures.
+/// A Helper Set related to the <see cref="Texture2D"/> and <see cref="Sprite"/>.
 /// </summary>
+/// <remarks>This class contains a number of helper methods for managing textures.</remarks>
 [HarmonyPatch]
 public static class TextureHelper
 {
     /// <summary>
-    /// Thie is used to indicate what type of sprite you wish to create so that the appropriate size and pivot point can be determined.
+    /// This is used to indicate what type of sprite you wish to create so that the appropriate size and pivot point can be determined.
     /// </summary>
     public enum SpriteType : int
     {
@@ -22,76 +23,74 @@ public static class TextureHelper
         /// A card's portrait art in Act 1 or Act 3.
         /// </summary>
         CardPortrait = 0,
-
         /// <summary>
         /// A card's portrait art in Act 2.
         /// </summary>
         PixelPortrait = 1,
-
         /// <summary>
         /// An ability icon (sigil) in Act 2.
         /// </summary>
         PixelAbilityIcon = 2,
-
         /// <summary>
         /// A special stat icon in Act 2.
         /// </summary>
         PixelStatIcon = 3,
-
         /// <summary>
         /// A challenge skull displayed on the challenge UI during the setup of a Kaycee's Mod run.
         /// </summary>
         ChallengeIcon = 4,
-
         /// <summary>
         /// The texture that displays the card's cost in Act 1.
         /// </summary>
         CostDecal = 5,
-
         /// <summary>
         /// The large decal used to display multiple/hybrid card costs in Act 1.
         /// </summary>
         OversizedCostDecal = 6,
-
         /// <summary>
         /// The decal used to display card costs in Act 2, on the top-left of the card.
         /// </summary>
         Act2CostDecalLeft = 7,
-
         /// <summary>
         /// The decal used to display card costs in Act 2, on the top-right of the card.
         /// </summary>
         Act2CostDecalRight = 8,
-
         /// <summary>
         /// The starter deck icon displayed on the challenge UI during the setup on a Kaycee's Mod run.
         /// </summary>
         StarterDeckIcon = 9,
-
         /// <summary>
         /// The decal used by the API in Act 2, comprising the entire card's dimensions.
         /// </summary>
         PixelDecal = 10,
-
         /// <summary>
         /// An activated ability icon (sigil) in Act 2.
         /// </summary>
         PixelActivatedAbilityIcon = 11,
-
         /// <summary>
         /// The texture for a button in Act 2 (same kind of button used for the hammer and activated sigils).
         /// </summary>
         PixelStandardButton = 12,
-
+        /// <summary>
+        /// The texture for the Act 2 cost when it's on the Left.
+        /// </summary>
         Act2CostVanillaLeft = 13,
-
+        /// <summary>
+        /// The texture for a Act 2 cost when it's on the right.
+        /// </summary>
         Act2CostVanillaRight = 14
     };
-
+    /// <summary>
+    /// The Default Pivot to use across most Sprites.
+    /// </summary>
     private static Vector2 DEFAULT_PIVOT = new(0.5f, 0.5f);
-
+    /// <summary>
+    /// A Dictionary of <see cref="Sprite"/>, <see cref="Sprite"/> representing an Emission Mapping.
+    /// </summary>
     private static readonly Dictionary<Sprite, Sprite> emissionMap = new();
-
+    /// <summary>
+    /// A Dictionary of <see cref="SpriteType"/>, <see cref="Rect"/> used to define the Rectangular Area for a given Sprite Type.
+    /// </summary>
     private static readonly Dictionary<SpriteType, Rect> SPRITE_RECTS = new()
     {
         { SpriteType.CardPortrait, new Rect(0f, 0f, 114f, 94f) },
@@ -107,10 +106,12 @@ public static class TextureHelper
         { SpriteType.PixelDecal, new Rect(0f, 0f, 42f, 56f) },
         { SpriteType.PixelActivatedAbilityIcon, new Rect(0f, 0f, 22f, 10f) },
         { SpriteType.PixelStandardButton, new Rect(0f, 0f, 26f, 17f) },
-        { SpriteType.Act2CostVanillaLeft, new Rect(0f, 0f, 48f, 28f) }, // vanilla costs should have a creme border on the left and right so we don't need padding
+        { SpriteType.Act2CostVanillaLeft, new Rect(0f, 0f, 48f, 28f) },
         { SpriteType.Act2CostVanillaRight, new Rect(0f, 0f, 48f, 28f) }
     };
-
+    /// <summary>
+    /// A Dictionary of <see cref="SpriteType"/>, <see cref="Vector2"/> used to define the Pivot Point for a given Sprite Type.
+    /// </summary>
     private static readonly Dictionary<SpriteType, Vector2> SPRITE_PIVOTS = new()
     {
         { SpriteType.CardPortrait, DEFAULT_PIVOT },
@@ -252,6 +253,11 @@ public static class TextureHelper
         emissionMap[regularSprite] = emissionSprite;
     }
 
+    /// <summary>
+    /// A Function used to Get the Emission <see cref="Sprite"/> from the Card Portrait <see cref="Sprite"/> at first through the <see cref="emissionMap"/>, and if that fails, from the <see cref="ResourceBank"/>.
+    /// </summary>
+    /// <param name="sprite">The Card Portrait <see cref="Sprite"/>.</param>
+    /// <returns>An Emission <see cref="Sprite"/> associated with the passed Card Portrait <see cref="Sprite"/></returns>
     public static Sprite GetEmissionSprite(this Sprite sprite)
     {
         if (sprite == null)
@@ -259,7 +265,6 @@ public static class TextureHelper
 
         if (emissionMap.TryGetValue(sprite, out Sprite emission))
             return emission;
-
 
         string text = sprite.name + "_emission";
         emission = ResourceBank.Get<Sprite>("Art/Cards/Portraits/" + text);
@@ -315,6 +320,12 @@ public static class TextureHelper
                 emissionMap[alternatePortrait] = emissionMap[info.portraitTex];
     }
 
+    /// <summary>
+    /// A patch to <see cref="CardDisplayer3D.GetEmissivePortrait"/> to allow for usage of Custom Emissions instead.
+    /// </summary>
+    /// <param name="mainPortrait">The Card Portrait <see cref="Sprite"/>.</param>
+    /// <param name="__result">The returned result in this case the Emission <see cref="Sprite"/> associated with the Card Portrait <see cref="Sprite"/> within <see cref="emissionMap"/>, if not found it lets vanilla handle it normally.</param>
+    /// <returns>A false if the <see cref="emissionMap"/> contains an Emission correlated with the Card Portrait <see cref="Sprite"/>, otherwise false to let the game handle it.</returns>
     [HarmonyPatch(typeof(CardDisplayer3D), nameof(CardDisplayer3D.GetEmissivePortrait))]
     [HarmonyPrefix]
     private static bool GetCustomEmission(Sprite mainPortrait, ref Sprite __result)
@@ -330,9 +341,9 @@ public static class TextureHelper
     /// <summary>
     /// Reads the contents of an image file in an assembly and returns it as a byte array.
     /// </summary>
-    /// <param name="pathCardArt">The name of the art file stored as a resource in the assembly.</param>
+    /// <param name="filename">The name of the art file stored as a resource in the assembly.</param>
     /// <param name="target">The assembly to pull the art from.</param>
-    /// <returns>The contents of the file in pathCardArt as a byte array.</returns>
+    /// <returns>The contents of the file in filename as a byte array.</returns>
     public static byte[] GetResourceBytes(string filename, Assembly target)
     {
         string lowerKey = $".{filename.ToLowerInvariant()}";
@@ -354,14 +365,6 @@ public static class TextureHelper
     /// <summary>
     /// Combines multiple textures into one, using a tiled approach.
     /// </summary>
-    /// <remarks>
-    /// This helper has a very specific purpose. The pixels in <paramref>baseTexture</paramref> will be iteratively replaced with the pixels
-    /// in the <paramref>pieces</paramref> array. The X position for the i-th texture will be 
-    /// <paramref>xOffset</paramref> + <paramref>xStep</paramref> * i. The Y position for the i-th texture will be
-    /// <paramref>yOffset</paramref> + <paramref>yStep</paramref> * (<paramref>pieces</paramref>.Count - i - 1).
-    /// 
-    /// **Note**: <paramref>baseTexture</paramref> will be modified in-place!
-    /// </remarks>
     /// <param name="pieces">The individual textures to combine into the base texture.</param>
     /// <param name="baseTexture">The background texture for the combined texture.</param>
     /// <param name="xStep">Used to set the position for individual textures.</param>
@@ -369,6 +372,14 @@ public static class TextureHelper
     /// <param name="xOffset">Used to set the position for individual textures.</param>
     /// <param name="yOffset">Used to set the position for individual textures.</param>
     /// <returns>The modified texture (the same Texture references as <paramref>baseTexture</paramref>).</returns>
+    /// <remarks>
+    /// This helper has a very specific purpose. The pixels in <paramref name="baseTexture"/> will be iteratively replaced with the pixels
+    /// in the <paramref name="pieces"/> array. The X position for the i-th texture will be 
+    /// <paramref name="xOffset"/> + <paramref name="xStep"/> * i. The Y position for the i-th texture will be
+    /// <paramref name="yOffset"/> + <paramref name="yStep"/> * (<paramref name="pieces"/>.Count - i - 1).
+    /// 
+    /// <b>Note</b>: <paramref name="baseTexture"/> will be modified in-place!
+    /// </remarks>
     public static Texture2D CombineTextures(List<Texture2D> pieces, Texture2D baseTexture, int xStep = 0, int yStep = 0, int xOffset = 0, int yOffset = 0)
     {
         if (pieces != null)
@@ -387,42 +398,18 @@ public static class TextureHelper
     /// Creates an identical copy of a given texture
     /// </summary>
     /// <param name="texture">The texture to copy.</param>
+    /// <remarks>This code originates from <see href="https://web.archive.org/web/20231210210621/https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-"/></remarks>
     public static Texture2D DuplicateTexture(Texture2D texture)
     {
-        // https://support.unity.com/hc/en-us/articles/206486626-How-can-I-get-pixels-from-unreadable-textures-
-        // Create a temporary RenderTexture of the same size as the texture
-
-        RenderTexture tmp = RenderTexture.GetTemporary(
-                            texture.width,
-                            texture.height,
-                            0,
-                            RenderTextureFormat.Default,
-                            RenderTextureReadWrite.Linear);
-
-
-        // Blit the pixels on texture to the RenderTexture
+        RenderTexture tmp = RenderTexture.GetTemporary(texture.width, texture.height, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
         Graphics.Blit(texture, tmp);
-
-        // Backup the currently set RenderTexture
         RenderTexture previous = RenderTexture.active;
-
-        // Set the current RenderTexture to the temporary one we created
         RenderTexture.active = tmp;
-
-        // Create a new readable Texture2D to copy the pixels to it
-
         Texture2D myTexture2D = new(texture.width, texture.height);
-
-        // Copy the pixels from the RenderTexture to the new Texture
         myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
         myTexture2D.Apply();
-
-        // Reset the active RenderTexture
         RenderTexture.active = previous;
-
-        // Release the temporary RenderTexture
         RenderTexture.ReleaseTemporary(tmp);
-
         return myTexture2D;
     }
     
