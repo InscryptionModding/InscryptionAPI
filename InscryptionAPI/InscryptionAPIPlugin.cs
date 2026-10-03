@@ -60,15 +60,15 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     /// <summary>
     /// The Configuration for Overriding the Arrows within Kaycee's Mod Menu's.
     /// </summary>
-    public static ConfigEntry<bool> configOverrideArrows;
+    internal static ConfigEntry<bool> configOverrideArrows;
     /// <summary>
     /// The Configuration for determining whether the Order of Costs in a Cost Choice Node should be Randomized.
     /// </summary>
-    public static ConfigEntry<bool> configRandomCostChoiceOrder;
+    internal static ConfigEntry<bool> configRandomCostChoiceOrder;
     /// <summary>
     /// The Configuration for determining whether the Boss Scenery of Act 1/KCM should be hidden.
     /// </summary>
-    public static ConfigEntry<bool> configHideAct1BossScenery;
+    internal static ConfigEntry<bool> configHideAct1BossScenery;
     /// <summary>
     /// This Configuration is used for determining what Totem Top Model should be used in game.
     /// </summary>
