@@ -40,7 +40,7 @@ public class ActivatedAbilityHandler3D : ManagedBehaviour
                 }
             });
 
-        if (PatchPlugin.configFullDebug.Value)
+        if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
             PatchPlugin.Logger.LogDebug($"[Handler3D] Updated interactable list: [{interactables.Join(interactable => $"GO [{interactable.gameObject}] Ability [{interactable.Ability}]")}]");
     }
 
