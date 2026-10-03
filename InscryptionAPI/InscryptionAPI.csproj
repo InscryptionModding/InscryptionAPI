@@ -1,25 +1,62 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <TargetFramework>netframework4.7.2</TargetFramework>
+        <TargetFrameworks>netframework4.7.2</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
+        <AssemblyName>InscryptionAPI</AssemblyName>
+        <Description>The Core API for the game Inscryption.</Description>
+        <Version>2.24.2</Version>
+        <Authors>Cyantist, IngoH, WhistleWind, Chaosyr and Contibutors</Authors>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>InscryptionAPI</RootNamespace>
+        <DebugType>full</DebugType>
+        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <IsPackable>false</IsPackable>
-        <LangVersion>latest</LangVersion>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <DebugType>full</DebugType>
+        <SelfContained>true</SelfContained>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <Version>2.24.1</Version>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <None Remove="$(ProjectDir)\Assets\*" />
         <EmbeddedResource Include="$(ProjectDir)\Assets\*" />
+        <None Remove="Assets\BaseGameDecals\decal_blood_1.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_blood_1.png" />
+        <None Remove="Assets\BaseGameDecals\decal_blood_2.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_blood_2.png" />
+        <None Remove="Assets\BaseGameDecals\decal_blood_3.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_blood_3.png" />
+        <None Remove="Assets\BaseGameDecals\decal_blood_4.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_blood_4.png" />
+        <None Remove="Assets\BaseGameDecals\decal_child.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_child.png" />
+        <None Remove="Assets\BaseGameDecals\decal_fungus.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_fungus.png" />
+        <None Remove="Assets\BaseGameDecals\decal_smoke.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_smoke.png" />
+        <None Remove="Assets\BaseGameDecals\decal_smoke_abilityhole.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_smoke_abilityhole.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_1.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_1.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_2.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_2.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_3.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_3.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_4.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_4.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_5.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_5.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_6.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_6.png" />
+        <None Remove="Assets\BaseGameDecals\decal_snelk_main.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_snelk_main.png" />
+        <None Remove="Assets\BaseGameDecals\decal_stitches.png" />
+        <EmbeddedResource Include="Assets\BaseGameDecals\decal_stitches.png" />
     </ItemGroup>
     
     <ItemGroup>
@@ -40,4 +77,20 @@
         <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
         <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\BaseGameDecals\" />
+    </ItemGroup>
+
+    <!--Net Framework References-->
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!--Cleanup Publish for our Build System-->
+    <Target Name="StripAllNuGetFromPublish" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.Extension)' == '.dll' and '%(ResolvedFileToPublish.RelativePath)' != 'InscryptionAPI.dll'" />
+        </ItemGroup>
+    </Target>
 </Project>

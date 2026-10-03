@@ -1,16 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netframework4.7.2</TargetFramework>
+        <TargetFrameworks>netframework4.7.2</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86;win-arm64;linux-x64;linux-arm;linux-arm64;linux-musl-x64;linux-musl-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
+        <AssemblyName>Assembly-CSharp.APIPatcher.mm</AssemblyName>
+        <Description>The MonoMod Patcher for the Inscryption API.</Description>
+        <Version>2.24.2</Version>
+        <Authors>Cyantist, IngoH, WhistleWind, Chaosyr and Contibutors</Authors>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>Latest</LangVersion>
+        <RootNamespace>APIPatcher</RootNamespace>
+        <DebugType>full</DebugType>
+        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
-        <LangVersion>latest</LangVersion>
+        <IsPackable>false</IsPackable>
+        <SelfContained>true</SelfContained>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <TargetName>Assembly-CSharp.APIPatcher.mm</TargetName>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,4 +32,16 @@
     <ItemGroup>
       <ProjectReference Private="false" Include="..\InscryptionAPI\InscryptionAPI.csproj" />
     </ItemGroup>
+
+    <!--Net Framework References-->
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!--Cleanup Publish for our Build System-->
+    <Target Name="StripAllNuGetFromPublish" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.Extension)' == '.dll' and '%(ResolvedFileToPublish.RelativePath)' != 'Assembly-CSharp.APIPatcher.mm.dll'" />
+        </ItemGroup>
+    </Target>
 </Project>

@@ -27,7 +27,7 @@ public static class Part2CardCostRender
 
     public static event Action<PlayableCard, List<Texture2D>> UpdateVanillaPlayableCardCost;
 
-    public static bool RightAct2Cost => PatchPlugin.rightAct2Cost.Value;
+    public static bool RightAct2Cost => PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value;
 
     public static Sprite FinalVanillaCostSprite(
         PixelCardDisplayer display,

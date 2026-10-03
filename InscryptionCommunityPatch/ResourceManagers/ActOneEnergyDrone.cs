@@ -16,11 +16,11 @@ public static class EnergyDrone
     /// </summary>
     public class EnergyConfigInfo
     {
-        public bool ConfigEnergy { get; set; } = PoolHasEnergy || PatchPlugin.configEnergy.Value;
-        public bool ConfigShowDrone { get; set; } = PoolHasEnergy || PatchPlugin.configDrone.Value;
-        public bool ConfigDroneMox { get; set; } = PoolHasGems || PatchPlugin.configDroneMox.Value;
-        public bool ConfigMox { get; set; } = PoolHasGems || PatchPlugin.configMox.Value;
-        public bool ConfigDefaultDrone { get; set; } = PatchPlugin.configDefaultDrone.Value;
+        public bool ConfigEnergy { get; set; } = PoolHasEnergy || PatchPlugin.configEnergyPerMatchCleanUp.Value;
+        public bool ConfigShowDrone { get; set; } = PoolHasEnergy || PatchPlugin.configEnergyDrone.Value;
+        public bool ConfigDroneMox { get; set; } = PoolHasGems || PatchPlugin.configMoxDrone.Value;
+        public bool ConfigMox { get; set; } = PoolHasGems || PatchPlugin.configMoxPerMatchCleanup.Value;
+        public bool ConfigDefaultDrone { get; set; } = PatchPlugin.configUtilizeDefaultDrone.Value;
 
         /// <summary>
         /// Controls whether or not the Drone will appear. By default, will appear if there are obtainable Energy or Mox cards in the card pool (or the corresponding config value has been set).
@@ -119,7 +119,7 @@ public static class EnergyDrone
     private static IEnumerator AwakeDrone()
     {
         // pretty sure the drone can't be null in this method, but we'll check just in case
-        if (PatchPlugin.configFullDebug.Value)
+        if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
             PatchPlugin.Logger.LogDebug($"Awaking ResourceDrone, instance exists? {ResourceDrone.Instance != null}.");
 
         yield return new WaitForSeconds(1f);

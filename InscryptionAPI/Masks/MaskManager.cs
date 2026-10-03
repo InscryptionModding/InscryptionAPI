@@ -83,7 +83,7 @@ public static class MaskManager
     /// </summary>
     /// <param name="guid">GUID of your mod.</param>
     /// <param name="name">Name of the mask.</param>
-    /// <param name="maskType">The mask we want to add so we cna tell leshy to put on that specific mask.</param>
+    /// <param name="maskType">The mask we want to add so we can tell leshy to put on that specific mask.</param>
     /// <param name="modelType">The model the mask will use.</param>
     /// <param name="isOverride">.</param>
     /// <returns>.</returns>
