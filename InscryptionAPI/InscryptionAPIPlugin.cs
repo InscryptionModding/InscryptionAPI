@@ -189,7 +189,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configOverrideArrows = Config.Bind("Menus", "Override Arrows", false, "When true, forces the challenge screen arrows to appear at the top of the screen instead of the sides.");
         configRandomCostChoiceOrder = Config.Bind("Miscellaneous", "Randomise Cost Choice Order", false, "When true, randomises the order card cost choices are presented in Act 1.");
         configHideAct1BossScenery = Config.Bind("Optimization", "Hide Act 1 Scenery", false, "When true bosses will not spawn their scenery. (eg: Prospector's trees) This can improve performance on low-end machines.");
-        configEnableTraderCostTierBugDebugLogging = Config.Bind("Zebugging", "Enable Logging for Info related to the 'GenerateTradeCardsWithCostTier' method", false, "May be of use for debugging issues related to 'GenerateTradeCardsWithCostTier', by how much no clue. Set this to True to enable the Logging.");
+        configEnableTraderCostTierBugDebugLogging = Config.Bind("Zebugging", "Enable Logging for Info related to the \'GenerateTradeCardsWithCostTier\' method", false, "May be of use for debugging issues related to 'GenerateTradeCardsWithCostTier', by how much no clue. Set this to True to enable the Logging.");
     }
 
     /// <summary>
