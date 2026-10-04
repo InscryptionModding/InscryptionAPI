@@ -18,6 +18,7 @@ using InscryptionAPI.Slots;
 using InscryptionAPI.Totems;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 
@@ -77,6 +78,10 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
     /// This Configuration is used for determining what Item Model should be used in game.
     /// </summary>
     internal static ConfigEntry<ConsumableItemManager.ConsumableState> configCustomItemModelSelection;
+    /// <summary>
+    /// This Configuration is used for determining whether we should Log Debugging for the TraderCostTier Bug. 
+    /// </summary>
+    internal static ConfigEntry<bool> configEnableTraderCostTierBugDebugLogging;
 
     /// <summary>
     /// Prevents API 1.0.0 Versions from Loaing.
@@ -184,6 +189,7 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         configOverrideArrows = Config.Bind("Menus", "Override Arrows", false, "When true, forces the challenge screen arrows to appear at the top of the screen instead of the sides.");
         configRandomCostChoiceOrder = Config.Bind("Miscellaneous", "Randomise Cost Choice Order", false, "When true, randomises the order card cost choices are presented in Act 1.");
         configHideAct1BossScenery = Config.Bind("Optimization", "Hide Act 1 Scenery", false, "When true bosses will not spawn their scenery. (eg: Prospector's trees) This can improve performance on low-end machines.");
+        configEnableTraderCostTierBugDebugLogging = Config.Bind("Zebugging", "Enable Logging for Info related to the 'GenerateTradeCardsWithCostTier' method", false, "May be of use for debugging issues related to 'GenerateTradeCardsWithCostTier', by how much no clue. Set this to True to enable the Logging.");
     }
 
     /// <summary>
@@ -200,6 +206,267 @@ public class InscryptionAPIPlugin : BaseUnityPlugin
         PixelCardManager.Initialise();
         PeltManager.CreateDialogueEvents();
         Logger.LogDebug($"Inserted {DialogueManager.CustomDialogue.Count} dialogue event(s)!");
+        DebugLoggingForGenerateTradeCardsWithCostTier();
+    }
+
+    /// <summary>
+    /// A Function in which Logs some Debug related to 'GenerateTradeCardsWithCostTier'. There is more related Logging, this is just the Start of it.
+    /// </summary>
+    private void DebugLoggingForGenerateTradeCardsWithCostTier()
+    {
+        foreach (CardInfo info in CardLoader.LearnedCards)
+        {
+            if (configEnableTraderCostTierBugDebugLogging.Value)
+            {
+                if (info == null)
+                {
+                    Logger.LogError("CardLoader.LearnedCards contains a null CardInfo.");
+                    continue;
+                }
+
+                Logger.LogDebug($"===== CardInfo: {info.displayedName ?? info.name ?? "null"} =====");
+
+                Logger.LogDebug($"name: {info.name ?? "null"}");
+                Logger.LogDebug($"displayedName: {info.displayedName ?? "null"}");
+                Logger.LogDebug($"displayedNameLocId: {info.displayedNameLocId}");
+                Logger.LogDebug($"description: {info.description ?? "null"}");
+
+                Logger.LogDebug($"baseAttack: {info.baseAttack}");
+                Logger.LogDebug($"baseHealth: {info.baseHealth}");
+
+                Logger.LogDebug($"cost: {info.cost}");
+                Logger.LogDebug($"bonesCost: {info.bonesCost}");
+                Logger.LogDebug($"energyCost: {info.energyCost}");
+                Logger.LogDebug($"gemsCost: {string.Join(", ", info.gemsCost?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+
+                Logger.LogDebug($"cardComplexity: {info.cardComplexity}");
+                Logger.LogDebug($"temple: {info.temple}");
+                Logger.LogDebug($"onePerDeck: {info.onePerDeck}");
+                Logger.LogDebug($"hideAttackAndHealth: {info.hideAttackAndHealth}");
+
+                Logger.LogDebug($"metaCategories: {string.Join(", ", info.metaCategories?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+                Logger.LogDebug($"tribes: {string.Join(", ", info.tribes?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+                Logger.LogDebug($"traits: {string.Join(", ", info.traits?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+
+                Logger.LogDebug($"abilities: {string.Join(", ", info.abilities?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+                Logger.LogDebug($"ascensionAbilities: {string.Join(", ", info.ascensionAbilities?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+                Logger.LogDebug($"specialAbilities: {string.Join(", ", info.specialAbilities?.Select(x => GetGuidAndKey(x)) ?? Enumerable.Empty<string>())}");
+
+                LogAbilityInfos(info, "abilities", info.abilities);
+                LogAbilityInfos(info, "ascensionAbilities", info.ascensionAbilities);
+
+                Logger.LogDebug($"evolveParams: {GetEvolveParams(info.evolveParams)}");
+                Logger.LogDebug($"defaultEvolutionName: {info.defaultEvolutionName ?? "null"}");
+
+                Logger.LogDebug($"tailParams: {GetTailParams(info.tailParams)}");
+                Logger.LogDebug($"iceCubeParams: {GetIceCubeParams(info.iceCubeParams)}");
+
+                Logger.LogDebug($"flipPortraitForStrafe: {info.flipPortraitForStrafe}");
+
+                Logger.LogDebug($"specialStatIcon: {info.specialStatIcon}");
+                Logger.LogDebug($"boon: {info.boon}");
+
+                Logger.LogDebug($"mods: {info.mods?.Count ?? 0}");
+                Logger.LogDebug($"temporaryDecals: {info.temporaryDecals?.Count ?? 0}");
+                Logger.LogDebug($"get_decals: {info.get_decals?.Count ?? 0}");
+
+                Logger.LogDebug($"Calculated Attack: {info.Attack}");
+                Logger.LogDebug($"Calculated Health: {info.Health}");
+                Logger.LogDebug($"Calculated BloodCost: {info.BloodCost}");
+                Logger.LogDebug($"Calculated BonesCost: {info.BonesCost}");
+                Logger.LogDebug($"Calculated EnergyCost: {info.EnergyCost}");
+                Logger.LogDebug($"Calculated Gemified: {info.Gemified}");
+                Logger.LogDebug($"Calculated CostTier: {info.CostTier}");
+                Logger.LogDebug($"Calculated Sacrificable: {info.Sacrificable}");
+                Logger.LogDebug($"Calculated PowerLevel: {info.PowerLevel}");
+                Logger.LogDebug($"Calculated NumAbilities: {info.NumAbilities}");
+
+                Logger.LogDebug($"===== End CardInfo: {info.displayedName ?? info.name ?? "null"} =====");
+            }
+        }
+        LogTradeCardAbilityInfoIssues();
+    }
+    
+    /// <summary>
+    /// Gets a GUID and Key associated with a Type of Enum from the passed in Enum Value.
+    /// </summary>
+    /// <param name="value">The Enum we want to get the String Name of.</param>
+    /// <typeparam name="T">The Enum Type.</typeparam>
+    /// <returns>A String representing the Enum either via the GUID system or the Enum System.</returns>
+    private string GetGuidAndKey<T>(T value) where T : System.Enum
+    {
+        if (GuidManager.TryGetGuidAndKeyEnumValue(value, out string guid, out string key))
+            return $"{guid}_{key}";
+
+        return value.ToString();
+    }
+
+    /// <summary>
+    /// Gets the String Name and DisplayName from a CardInfo.
+    /// </summary>
+    /// <param name="card">The Card we want to get the DisplayName of.</param>
+    /// <returns>The Card Name and DisplayName of the passed in Card as a String.</returns>
+    private string GetCardName(CardInfo card)
+    {
+        if (card == null)
+            return "null";
+
+        return $"{card.name} ({card.DisplayedNameEnglish})";
+    }
+
+    /// <summary>
+    /// Gets the String version of the <see cref="EvolveParams"/>.
+    /// </summary>
+    /// <param name="evolveParams">The <see cref="EvolveParams"/> we want to turn into a String.</param>
+    /// <returns>The <see cref="EvolveParams"/> in the form of a String.</returns>
+    private string GetEvolveParams(EvolveParams evolveParams)
+    {
+        if (evolveParams == null)
+            return "null";
+
+        return $"turnsToEvolve={evolveParams.turnsToEvolve}, evolution={GetCardName(evolveParams.evolution)}";
+    }
+
+    /// <summary>
+    /// Gets the String version of the <see cref="TailParams"/>.
+    /// </summary>
+    /// <param name="tailParams">The <see cref="TailParams"/> we want to turn into a String.</param>
+    /// <returns>The <see cref="TailParams"/> in the form of a String.</returns>
+    private string GetTailParams(TailParams tailParams)
+    {
+        if (tailParams == null)
+            return "null";
+
+        return $"tail={GetCardName(tailParams.tail)}, tailLostPortrait={(tailParams.tailLostPortrait != null ? tailParams.tailLostPortrait.name : "null")}";
+    }
+
+    /// <summary>
+    /// Gets the String version of the <see cref="IceCubeParams"/>.
+    /// </summary>
+    /// <param name="iceCubeParams">The <see cref="IceCubeParams"/> we want to turn into a String.</param>
+    /// <returns>The <see cref="IceCubeParams"/> in the form of a String.</returns>
+    private string GetIceCubeParams(IceCubeParams iceCubeParams)
+    {
+        if (iceCubeParams == null)
+            return "null";
+
+        return $"creatureWithin={GetCardName(iceCubeParams.creatureWithin)}";
+    }
+    
+    /// <summary>
+    /// A function that allows us to Log Ability Infos.
+    /// </summary>
+    /// <param name="card">The Card in which bears the AbilityInfos.</param>
+    /// <param name="source">The Source of the AbilityInfos.</param>
+    /// <param name="abilities">The List of Abilities in which we want to Log.</param>
+    private void LogAbilityInfos(CardInfo card, string source, IEnumerable<Ability> abilities)
+    {
+        if (abilities == null)
+        {
+            Logger.LogDebug($"{source} AbilityInfo validation: null");
+            return;
+        }
+
+        foreach (Ability ability in abilities)
+        {
+            AbilityInfo abilityInfo = AbilitiesUtil.GetInfo(ability);
+            string abilityId = GetGuidAndKey(ability);
+
+            if (abilityInfo == null)
+            {
+                Logger.LogError($"MISSING AbilityInfo | " + $"card={GetCardName(card)} | " + $"source={source} | " + $"ability={abilityId} | " + $"rawValue={(int)ability}");
+                continue;
+            }
+
+            Logger.LogDebug($"AbilityInfo | " + $"card={GetCardName(card)} | " + $"source={source} | " + $"ability={abilityId} | " + $"rawValue={(int)ability} | " + $"opponentUsable={abilityInfo.opponentUsable} | " + $"passive={abilityInfo.passive} | " + $"activated={abilityInfo.activated} | " + $"powerLevel={abilityInfo.powerLevel} | " + $"canStack={abilityInfo.canStack} | " + $"conduit={abilityInfo.conduit} | " + $"conduitCell={abilityInfo.conduitCell} | " + $"keywordAbility={abilityInfo.keywordAbility} | " + $"rulebookName={abilityInfo.rulebookName ?? "null"}");
+        }
+    }
+
+    /// <summary>
+    /// A function we can run at Startup to try and Validate any Trade Issues that may arise from 'GenerateTradeCardsWithCostTier'. Logging is enabled via 'configEnableTraderCostTierBugDebugLogging'.
+    /// </summary>
+    private void LogTradeCardAbilityInfoIssues()
+    {
+        List<CardInfo> learnedCards = CardLoader.LearnedCards;
+
+        if (configEnableTraderCostTierBugDebugLogging.Value)
+        {
+            Logger.LogDebug($"Learned card count: {learnedCards.Count}");
+        }
+
+        foreach (CardInfo card in learnedCards)
+        {
+            if (card.temple != CardTemple.Nature)
+                continue;
+
+            int costTier;
+
+            try
+            {
+                costTier = card.CostTier;
+            }
+            catch (Exception ex)
+            {
+                if (configEnableTraderCostTierBugDebugLogging.Value)
+                {
+                    Logger.LogError($"Could not calculate CostTier | " + $"card={GetCardName(card)} | " + $"exception={ex}");
+                }
+                continue;
+            }
+
+            if (configEnableTraderCostTierBugDebugLogging.Value)
+            {
+                Logger.LogDebug($"Trade candidate | " + $"card={GetCardName(card)} | " + $"tier={costTier} | " + $"bloodCost={card.BloodCost} | " + $"bonesCost={card.BonesCost} | " + $"energyCost={card.EnergyCost} | " + $"abilitiesNull={card.abilities == null}");
+            }
+            
+            if (card.abilities == null)
+            {
+                if (configEnableTraderCostTierBugDebugLogging.Value)
+                {
+                    Logger.LogError($"NULL abilities list | " + $"card={GetCardName(card)} | " + $"tier={costTier}");
+                }
+                continue;
+            }
+
+            if (card.abilities.Count == 0)
+            {
+                if (configEnableTraderCostTierBugDebugLogging.Value)
+                {
+                    Logger.LogDebug($"Trade candidate has no abilities | " + $"card={GetCardName(card)} | " + $"tier={costTier}");
+                }
+                continue;
+            }
+
+            foreach (Ability ability in card.abilities)
+            {
+                if (configEnableTraderCostTierBugDebugLogging.Value)
+                {
+                    string abilityId = GetGuidAndKey(ability);
+                    AbilityInfo abilityInfo;
+
+                    try
+                    {
+                        abilityInfo = AbilitiesUtil.GetInfo(ability);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogError($"AbilitiesUtil.GetInfo threw | " + $"card={GetCardName(card)} | " + $"tier={costTier} | " + $"ability={abilityId} | " + $"rawValue={(int)ability} | " +
+                            $"exception={ex}");
+                        continue;
+                    }
+
+                    if (abilityInfo == null)
+                    {
+                        Logger.LogError($"TRADE CRASH CANDIDATE: Missing AbilityInfo | " + $"card={GetCardName(card)} | " + $"tier={costTier} | " + $"ability={abilityId} | " +
+                            $"rawValue={(int)ability} | " + $"reason=AbilitiesUtil.GetInfo returned null; " + $"vanilla code will dereference .opponentUsable");
+                        continue;
+                    }
+
+                    Logger.LogDebug($"Trade ability OK | " + $"card={GetCardName(card)} | " + $"tier={costTier} | " + $"ability={abilityId} | " + $"rawValue={(int)ability} | " +
+                        $"opponentUsable={abilityInfo.opponentUsable}");
+                }
+            }
+        }
     }
 
     /// <summary>
