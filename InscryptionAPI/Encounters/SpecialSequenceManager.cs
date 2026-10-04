@@ -11,7 +11,6 @@ public static class SpecialSequenceManager
     {
         public readonly string Id;
 
-        private Type _specialSequencer;
         public Type SpecialSequencer { get; private set; }
 
         public FullSpecialSequencer(string id, Type specialSequencer)

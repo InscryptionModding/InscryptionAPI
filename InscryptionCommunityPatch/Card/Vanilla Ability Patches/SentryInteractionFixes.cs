@@ -63,7 +63,7 @@ public class SentryInteractionFixes
                 // Check if the animation is paused then unpause it
                 if (instance.Card.Anim.Anim.speed == 0f)
                 {
-                    if (PatchPlugin.configFullDebug.Value)
+                    if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                         PatchPlugin.Logger.LogDebug($"{instance.Card} is frozen, unpausing animation.");
 
                     midCombat = true; // indicates that we need to restart the attack animation at the end of the sequence
