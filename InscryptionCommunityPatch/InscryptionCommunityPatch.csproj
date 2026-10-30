@@ -9,14 +9,13 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <DebugType>full</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <Version>2.24.0</Version>
     </PropertyGroup>
 
     <PropertyGroup>
         <NoWarn>$(NoWarn);AD0001;CS0612;CS8604;CS0252;CS0618;Harmony003;Publicizer001</NoWarn>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <EmbeddedResource Include="$(ProjectDir)\Assets\*.png" />
     </ItemGroup>
@@ -26,14 +25,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-        <PackageReference Include="BepInEx.Core" Version="5.4.21" GeneratePathProperty="true" />
-        <PackageReference Include="HarmonyX" Version="2.10.2" GeneratePathProperty="true" />
-        <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" GeneratePathProperty="true" />
-        <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" GeneratePathProperty="true" />
+        <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+        <PackageReference Include="HarmonyX" Version="2.10.2" />
+        <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
+        <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
     </ItemGroup>
 
 </Project>
