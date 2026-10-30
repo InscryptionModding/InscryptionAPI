@@ -1,7 +1,11 @@
+# 2.24.2
+- Added way to easily patch and modify the default bone gain when a player's card dies
+- Added class `DefaultBoneGainOnDeath` and methods `DefaultBoneGainOnDeath.ShouldDoDefaultBoneGain` and `DefaultBoneGainOnDeeath.DoDefaultBoneGain`
+
 # 2.24.1
-* Added Extensions for setting the IconTexture of a Starter Deck.
-* Added 2 Alternate Constructors for making a StarterDeck with a Display Name different from its Internal Name.
-* Added Getters and Setters for Starter Deck Unlock Level.
+- Added Extensions for setting the IconTexture of a Starter Deck.
+- Added 2 Alternate Constructors for making a StarterDeck with a Display Name different from its Internal Name.
+- Added Getters and Setters for Starter Deck Unlock Level.
 
 # 2.24.0
 - Fixed Part2CardCostRender.UpdatePlayableCardCost not being invoked
