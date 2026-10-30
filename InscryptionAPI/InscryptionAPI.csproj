@@ -10,6 +10,7 @@
         <DebugType>full</DebugType>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <Version>2.24.1</Version>
     </PropertyGroup>
 
@@ -35,9 +36,9 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="BepInEx.Core" Version="5.4.21" />
-        <PackageReference Include="HarmonyX" Version="2.10.2" />
-        <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
-        <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" />
+        <PackageReference Include="BepInEx.Core" Version="5.4.21" GeneratePathProperty="true" />
+        <PackageReference Include="HarmonyX" Version="2.10.2" GeneratePathProperty="true" />
+        <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" GeneratePathProperty="true" />
+        <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" GeneratePathProperty="true" />
     </ItemGroup>
 </Project>
