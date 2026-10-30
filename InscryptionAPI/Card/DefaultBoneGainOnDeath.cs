@@ -14,9 +14,14 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Class for handling exposing the bone-on-death behaviour present in the vanilla PlayableCard.Die method.
+/// Allows for modifying the default behaviour through Harmony patches.
+/// </summary>
 [HarmonyPatch]
 public class DefaultBoneGainOnDeath {
-    
+    // this method does not need XML documentation since it's purely internal to make the other two methods work.
+    // I also don't want to explain how transpilers work.
     [HarmonyTranspiler]
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Die), MethodType.Enumerator)]
     private static IEnumerable<CodeInstruction> InsertBoneMethodHook(IEnumerable<CodeInstruction> instructions)
@@ -117,6 +122,12 @@ public class DefaultBoneGainOnDeath {
         return codes;
     }
 
+    /// <summary>
+    /// Simple boolean check that by default replicates the vanilla check for whether a card should award a Bone on death.
+    /// </summary>
+    /// <param name="card">The PlayableCard that has died.</param>
+    /// <param name="slotBeforeDeath">The CardSlot of card.</param>
+    /// <returns>True if card should give a Bone (calls DoDefaultBoneGain).</returns>
     public static bool ShouldDoDefaultBoneGain(PlayableCard card, CardSlot slotBeforeDeath) {
         return slotBeforeDeath.IsPlayerSlot && !card.HasAbility(Ability.QuadrupleBones);
     }
