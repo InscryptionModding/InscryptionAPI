@@ -5,7 +5,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using UnityEngine;
 
-namespace InscryptionAPI.Card;
+namespace InscryptionAPI.Card.Patches;
 
 /// <summary>
 /// Patches the Steal Trap Death system to drop a differed pelt on the case the opposing card has the "SteelTrapPelt" extended property.

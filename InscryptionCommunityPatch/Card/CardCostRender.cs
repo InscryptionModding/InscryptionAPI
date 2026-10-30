@@ -78,16 +78,16 @@ public static class CardCostRender
         {
             __instance.costRenderer.sprite = FinalCostSprite(renderInfo.baseInfo, playableCard, TextureHelper.SpriteType.OversizedCostDecal, 28);
         }
-        else if (__instance is PixelCardDisplayer pixelDisplay && PatchPlugin.act2CostRender.Value)
+        else if (__instance is PixelCardDisplayer pixelDisplay && PatchPlugin.configUseAPIAct2CostRender.Value)
         {
-            if (PatchPlugin.act2VanillaStyle.Value)
+            if (PatchPlugin.configDisplayVanillaStyleAct2CostIcons.Value)
             {
-                __instance.costRenderer.sprite = Part2CardCostRender.FinalVanillaCostSprite(pixelDisplay, renderInfo.baseInfo, playableCard, !PatchPlugin.rightAct2Cost.Value);
+                __instance.costRenderer.sprite = Part2CardCostRender.FinalVanillaCostSprite(pixelDisplay, renderInfo.baseInfo, playableCard, !PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value);
             }
             else
             {
                 __instance.costRenderer.sprite = FinalCostSprite(renderInfo.baseInfo, playableCard,
-                    PatchPlugin.rightAct2Cost.Value ? TextureHelper.SpriteType.Act2CostDecalRight : TextureHelper.SpriteType.Act2CostDecalLeft, 8);
+                    PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value ? TextureHelper.SpriteType.Act2CostDecalRight : TextureHelper.SpriteType.Act2CostDecalLeft, 8);
             }
         }
     }
@@ -100,7 +100,7 @@ public static class CardCostRender
         {
             return false;
         }
-        if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value)
+        if (__instance is PixelCardDisplayer && PatchPlugin.configUseAPIAct2CostRender.Value)
         {
             return false;
         }

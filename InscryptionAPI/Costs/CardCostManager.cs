@@ -663,7 +663,7 @@ public static class CardCostManager
         while (list.Count > 3)
             list.RemoveAt(SeededRandom.Range(0, list.Count, randomSeed++));
 
-        if (InscryptionAPIPlugin.configRandomChoiceOrder.Value)
+        if (InscryptionAPIPlugin.configRandomCostChoiceOrder.Value)
             list = list.Randomize().ToList();
 
         __result = list;

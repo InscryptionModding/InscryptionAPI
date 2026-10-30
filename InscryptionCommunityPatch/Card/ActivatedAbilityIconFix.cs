@@ -30,7 +30,7 @@ public static class ActivatedAbilityIconFix
 
         if (abilityHandler3D.SafeIsUnityNull())
         {
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] Adding activated ability handler to card [{__instance.Info.displayedName}]");
 
             abilityHandler3D = __instance.gameObject.AddComponent<ActivatedAbilityHandler3D>();
@@ -38,7 +38,7 @@ public static class ActivatedAbilityIconFix
 
         if (!abilityHandler3D.SafeIsUnityNull() && __instance.AbilityIcons.abilityIcons != null)
         {
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] -> Resetting icon list for [{__instance.Info.displayedName}]");
 
             abilityHandler3D.UpdateInteractableList(__instance.AbilityIcons.abilityIcons);

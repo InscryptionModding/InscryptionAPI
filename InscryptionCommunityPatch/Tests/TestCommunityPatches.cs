@@ -27,7 +27,7 @@ public static class ExecuteCommunityPatchTests
     [HarmonyPostfix]
     private static void StartRunInTestMode(ref AscensionSaveData __instance)
     {
-        if (PatchPlugin.configTestState.Value)
+        if (PatchPlugin.configCommunityPatchTestingMode.Value)
         {
             List<Ability> testAbilityList = new() { Ability.Sharp, Ability.DebuffEnemy, Ability.CreateDams, Ability.DrawRabbits, Ability.Strafe, Ability.Deathtouch, Ability.DoubleStrike, Ability.Reach, Ability.BeesOnHit };
 

@@ -22,7 +22,7 @@ public class MergedSigilOnBottom
     {
         // If we are showing card modifications sigils on the bottom, we don't allow the
         // AppyAbilitiesToIcons method to do anything
-        if (PatchPlugin.configMergeOnBottom.Value && PatchPlugin.configRemovePatches.Value && iconMat == __instance.emissiveIconMat)
+        if (PatchPlugin.configMergeSigilsOnBottom.Value && PatchPlugin.configRemoveSigilPatchesFromCards.Value && iconMat == __instance.emissiveIconMat)
         {
             foreach (AbilityIconInteractable icon in icons) {
                 icon.gameObject.SetActive(false);
@@ -40,9 +40,9 @@ public class MergedSigilOnBottom
         // This is the first time that the default abilities list is used once it has been built
         // What we want to do is take all of the abilities from the merge group and move them to the default group
         // if the "show merged icons on bottom" setting is active.
-        if (PatchPlugin.configMergeOnBottom.Value) {
+        if (PatchPlugin.configMergeSigilsOnBottom.Value) {
             defaultAbilities.AddRange(mergeAbilities);
-            if (PatchPlugin.configRemovePatches.Value) {
+            if (PatchPlugin.configRemoveSigilPatchesFromCards.Value) {
                 mergeAbilities.Clear();
             }
         }
@@ -53,14 +53,14 @@ public class MergedSigilOnBottom
     [HarmonyPostfix]
     private static void RepositionAndRetextureMergedIcons_IfShowOnBottom(ref CardInfo info, ref AbilityInfo ability, ref AbilityIconInteractable __instance)
     {
-        if (PatchPlugin.configMergeOnBottom.Value && info != null && info.Mods.Count > 0) {
+        if (PatchPlugin.configMergeSigilsOnBottom.Value && info != null && info.Mods.Count > 0) {
             List<CardModificationInfo> MergeSigils = info.Mods.FindAll(x => x.fromCardMerge);
 
             if (MergeSigils.Count > 0) {
                 foreach (CardModificationInfo mod in MergeSigils) {
                     // if ability whose icon we're loading came from a card merge mod
                     if (mod.abilities.Contains(ability.ability) && (__instance.name == "AbilityIcon" || __instance.name == "DefaultIcons_1Ability")) {
-                        if (PatchPlugin.configRemovePatches.Value) {
+                        if (PatchPlugin.configRemoveSigilPatchesFromCards.Value) {
                             __instance.SetMaterial(Singleton<CardAbilityIcons>.Instance.totemIconMat);
                             if (__instance.GetComponentInParent<MeshRenderer>() != null)
                                 __instance.GetComponentInParent<MeshRenderer>().enabled = true;
