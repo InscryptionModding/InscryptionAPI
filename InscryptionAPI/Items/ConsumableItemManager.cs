@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace InscryptionAPI.Items;
 
-
 public static class ConsumableItemManager
 {
     public class FullConsumableItemData
@@ -238,7 +237,7 @@ public static class ConsumableItemManager
             if (!allFullItemDatas.Exists(x => x.itemData == itemData))
                 allFullItemDatas.Add(new(itemData));
         }
-        if (InscryptionAPIPlugin.configCustomItemTypes.Value == ConsumableState.Vanilla)
+        if (InscryptionAPIPlugin.configCustomItemModelSelection.Value == ConsumableState.Vanilla)
         {
             // Don't change any items!
             return;
@@ -258,7 +257,7 @@ public static class ConsumableItemManager
         }
 
         // Override vanilla items
-        if (InscryptionAPIPlugin.configCustomItemTypes.Value == ConsumableState.All)
+        if (InscryptionAPIPlugin.configCustomItemModelSelection.Value == ConsumableState.All)
         {
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItemsDatas)

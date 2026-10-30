@@ -80,7 +80,7 @@ public class MissingSquirrelTribeIconFix
             }
             if (tribe == Tribe.Squirrel)
             {
-                return PatchPlugin.configShowSquirrelTribeOnCards.Value;
+                return PatchPlugin.configCustomSquirrelTribeIconToShowOnCards.Value;
             }
 
             return true;

@@ -78,7 +78,7 @@ public class Act1LatchAbilityFix
         List<CardSlot> validTargets = BoardManager.Instance.AllSlotsCopy;
         validTargets.RemoveAll(slot => slot.Card == null || slot.Card.Dead || __state.CardHasLatchMod(slot.Card) || slot.Card == __state.Card);
 
-        if (PatchPlugin.configFullDebug.Value)
+        if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
         {
             PatchPlugin.Logger.LogDebug($"[LatchFix] Started death, latch name: [{__state.name}]");
             PatchPlugin.Logger.LogDebug("[LatchFix] Count of Valid Targets : " + validTargets.Count);
@@ -174,7 +174,7 @@ public class Act1LatchAbilityFix
             };
             mod.SetExtendedProperty("LatchMod", true);
 
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug($"[LatchFix] Selected card name [{selectedSlot.Card.name}]");
 
             selectedSlot.Card.AddTemporaryMod(mod);

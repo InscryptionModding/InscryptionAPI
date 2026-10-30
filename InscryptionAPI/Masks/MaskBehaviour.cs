@@ -101,7 +101,6 @@ public class MaskBehaviour : MonoBehaviour
 
     protected virtual void OverrideMetallic(MaterialOverride materialOverride, Material material)
     {
-
         material.SetFloat("_Metallic", materialOverride.Metallic.Value);
     }
 

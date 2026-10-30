@@ -205,7 +205,7 @@ public class PixelPlayableCardArray : ManagedBehaviour
         float multiplier = cardIndex - positionInRow;
 
         // when there are <7 cards, we need to centre them
-        if (PatchPlugin.act2TutorCenterRows.Value && cardsLeftToPlace > 0 && cardsLeftToPlace < cardsPerRow)
+        if (PatchPlugin.configCenterAct2TutorSelectionRows.Value && cardsLeftToPlace > 0 && cardsLeftToPlace < cardsPerRow)
         {
             anchor = centreAnchor;
             multiplier = cardIndex - positionInRow - (cardsLeftToPlace - 1) / 2f;

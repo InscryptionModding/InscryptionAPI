@@ -24,7 +24,7 @@ public static class TotemManager
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.Vanilla)
+            if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.Vanilla)
                 return instructions;
 
             // === We want to turn this
@@ -114,7 +114,7 @@ public static class TotemManager
                 __result = customTribeTotem?.Prefab ?? defaultTotemTop.Prefab;
                 return false;
             }
-            else if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.AllTribes)
+            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes)
             {
                 __result = defaultTotemTop.Prefab;
                 return false;
@@ -148,7 +148,7 @@ public static class TotemManager
                     return false;
                 }
             }
-            else if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.AllTribes)
+            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes)
             {
                 // All non-custom tribes will use the fallback model 
                 __result = CustomTotemTopID;
@@ -308,7 +308,7 @@ public static class TotemManager
     private static void Initialize()
     {
         // Don't change any totems!
-        if (InscryptionAPIPlugin.configCustomTotemTopTypes.Value == TotemTopState.Vanilla)
+        if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.Vanilla)
             return;
 
         if (defaultTotemTop == null)

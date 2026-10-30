@@ -10,7 +10,7 @@ internal class LeshyResetRedEyes
     [HarmonyPostfix, HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
     private static IEnumerator ResetLeshyEyes(IEnumerator enumerator, TurnManager __instance)
     {
-        if (!PatchPlugin.configResetEyes.Value || !SaveManager.SaveFile.IsPart1 || __instance.opponent == null)
+        if (!PatchPlugin.configResetEyesToNormalAfter8BearsFights.Value || !SaveManager.SaveFile.IsPart1 || __instance.opponent == null)
         {
             yield return enumerator;
             yield break;
