@@ -17,7 +17,7 @@ namespace InscryptionAPI.Card;
 [HarmonyPatch]
 public class DefaultBoneGainOnDeath {
     
-    [HarmonyTranspiler, ]
+    [HarmonyTranspiler]
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.Die), MethodType.Enumerator)]
     private static IEnumerable<CodeInstruction> InsertBoneMethodHook(IEnumerable<CodeInstruction> instructions)
     {
@@ -35,7 +35,6 @@ public class DefaultBoneGainOnDeath {
 
         // ===
         List<CodeInstruction> codes = new(instructions);
-        codes.LogCodeInscryptions();
 
         for (int i = 0; i < codes.Count; i++) {
             // there are two instances where this is true, but we only care about the first instance
@@ -115,7 +114,6 @@ public class DefaultBoneGainOnDeath {
             }
         }
 
-        codes.LogCodeInscryptions("after");
         return codes;
     }
 
