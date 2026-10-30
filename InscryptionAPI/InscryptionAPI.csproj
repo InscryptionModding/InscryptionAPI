@@ -58,7 +58,7 @@
         <None Remove="Assets\BaseGameDecals\decal_stitches.png" />
         <EmbeddedResource Include="Assets\BaseGameDecals\decal_stitches.png" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <!-- Talking Card Prefab -->
         <None Remove="$(ProjectDir)\TalkingCards\talkingcardgenericprefab" />

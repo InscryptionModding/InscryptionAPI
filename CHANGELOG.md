@@ -9,11 +9,13 @@
     - This comes with 5 new Dictionaries `BaseGameCustomAppearances` (Internal), `BaseGameCustomAppearancesPublic`, `ModdedCustomAppearancesDictionary` (Internal), `ModdedCustomAppearancesDictionaryPublic`, `CombinedCustomAppearancesDictionaryPublic`.
     - This system is stored under the `TextureHelper` class.
 * Improved In-Code Documentation via XML Comments.
+* Added a way to easily patch and modify the default bone gain when a player's card dies.
+* Added the following class: `DefaultBoneGainOnDeath` and the following methods within that class: `DefaultBoneGainOnDeath.ShouldDoDefaultBoneGain` and `DefaultBoneGainOnDeeath.DoDefaultBoneGain`
 
 # 2.24.1
-* Added Extensions for setting the IconTexture of a Starter Deck.
-* Added 2 Alternate Constructors for making a StarterDeck with a Display Name different from its Internal Name.
-* Added Getters and Setters for Starter Deck Unlock Level.
+- Added Extensions for setting the IconTexture of a Starter Deck.
+- Added 2 Alternate Constructors for making a StarterDeck with a Display Name different from its Internal Name.
+- Added Getters and Setters for Starter Deck Unlock Level.
 
 # 2.24.0
 - Fixed Part2CardCostRender.UpdatePlayableCardCost not being invoked
