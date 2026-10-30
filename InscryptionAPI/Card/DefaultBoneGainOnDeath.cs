@@ -129,12 +129,4 @@ public class DefaultBoneGainOnDeath {
     public static IEnumerator DoDefaultBoneGain(PlayableCard card, CardSlot slotBeforeDeath, int amount) {
         yield return Singleton<ResourcesManager>.Instance.AddBones(amount, slotBeforeDeath);
     }
-
-    public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
-    {
-        if (info == null)
-            InscryptionAPIPlugin.Logger.LogError("[CardLoader] Could not find CardInfo with name '" + cardInfoName + "'");
-
-        return info;
-    }
 }
