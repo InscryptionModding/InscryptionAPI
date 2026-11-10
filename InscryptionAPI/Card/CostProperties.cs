@@ -193,7 +193,7 @@ public static class CostProperties
 internal static class ChangeCardCostGetter
 {
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BloodCost), MethodType.Getter), HarmonyPrefix]
-    public static bool BloodCost(CardInfo __instance, ref int __result)
+    private static bool BloodCost(CardInfo __instance, ref int __result)
     {
         PlayableCard card = __instance.GetPlayableCard();
         //Debug.Log($"{card != null}");
@@ -202,7 +202,7 @@ internal static class ChangeCardCostGetter
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BonesCost), MethodType.Getter), HarmonyPrefix]
-    public static bool BoneCost(CardInfo __instance, ref int __result)
+    private static bool BoneCost(CardInfo __instance, ref int __result)
     {
         PlayableCard card = __instance.GetPlayableCard();
         if (card == null)
@@ -213,7 +213,7 @@ internal static class ChangeCardCostGetter
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), HarmonyPrefix]
-    public static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
+    private static bool GemsCost(CardInfo __instance, ref List<GemType> __result)
     {
         PlayableCard card = __instance.GetPlayableCard();
         __result = card?.GemsCost() ?? CostProperties.ImprovedGemsCost(__instance);
@@ -221,7 +221,7 @@ internal static class ChangeCardCostGetter
     }
 
     [HarmonyPatch(typeof(CardInfo), nameof(CardInfo.EnergyCost), MethodType.Getter), HarmonyPrefix]
-    public static bool EnergyCost(CardInfo __instance, ref int __result)
+    private static bool EnergyCost(CardInfo __instance, ref int __result)
     {
         PlayableCard card = __instance.GetPlayableCard();
         __result = card?.EnergyCost ?? CostProperties.OriginalEnergyCost(__instance);
@@ -229,7 +229,7 @@ internal static class ChangeCardCostGetter
     }
 
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.EnergyCost), MethodType.Getter), HarmonyPrefix]
-    public static bool DisableVanillaEnergyCost(PlayableCard __instance, ref int __result)
+    private static bool DisableVanillaEnergyCost(PlayableCard __instance, ref int __result)
     {
         // patch this to follow the same pattern as the other cost methods
         int energyCost = CostProperties.OriginalEnergyCost(__instance.Info);
