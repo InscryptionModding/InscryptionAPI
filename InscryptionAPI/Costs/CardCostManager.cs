@@ -13,6 +13,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.CardCosts;
 
+/// <summary>
+/// Class for managing custom card costs.
+/// </summary>
 [HarmonyPatch]
 public static class CardCostManager
 {
@@ -91,6 +94,11 @@ public static class CardCostManager
         /// </summary>
         public Func<int, Texture> GetRewardBackTexture = null;
 
+        /// <summary>
+        /// Texture used if this card can show up in a card cost choice node.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public Texture RewardBackTexture(int amount)
         {
             if (GetRewardBackTexture == null)
@@ -183,6 +191,10 @@ public static class CardCostManager
             TypeManager.Add(costName, costBehaviour);
         }
 
+        /// <summary>
+        /// Creates a deep clone of this FullCardCost.
+        /// </summary>
+        /// <returns>A new clone of this FullCardCost.</returns>
         public FullCardCost Clone()
         {
             FullCardCost retval = new(
@@ -202,18 +214,29 @@ public static class CardCostManager
             SyncCustomCostList();
         };
     }
-
+    /// <summary>
+    /// A list of all card costs registered with the API.
+    /// </summary>
     public static List<FullCardCost> AllCustomCosts { get; private set; } = new();
 
     internal readonly static ObservableCollection<FullCardCost> NewCosts = new();
 
+    /// <summary>
+    /// This event runs every time the card card list is resynced. By adding listeners to this event, you can modify card costs that have been added to the list after your mod was loaded.
+    /// </summary>
     public static event Func<List<FullCardCost>, List<FullCardCost>> ModifyCustomCostList;
 
     // you don't have the [colour] gem for that.
     // no [colour] gem on the table? then you can't play it.
     // you need at least one [colour] gem on the board in order to play that [card]
     // play the required [colour] gem... then you can play that.
+    /// <summary>
+    /// The Hint used to tell the player when they cannot play a card that costs multiple gems of the same colour.
+    /// </summary>
     public static HintsHandler.Hint notEnoughSameColourGemsHint = new("Hint_NotEnoughSameColourGemsHint", 2);
+    /// <summary>
+    /// The DialogueEvent that is played when a player cannot play a card that costs multiple gems of the same colour.
+    /// </summary>
     public static DialogueEvent notEnoghSameColourGemsEvent = DialogueManager.GenerateEvent(
         InscryptionAPIPlugin.ModGUID, "Hint_NotEnoughSameColourGemsHint",
                 new() { "You don't have enough [v:1] gems for that." },
@@ -223,16 +246,37 @@ public static class CardCostManager
                     new() { "You need more [v:1] gems on the board in order to play that [v:0]."},
                     new() { "Play the required [v:1] gems... then you can play that." }
                 });
+    /// <summary>
+    /// Re-executes events and rebuilds the card cost pool.
+    /// </summary>
     public static void SyncCustomCostList()
     {
         AllCustomCosts = NewCosts.Select(a => a.Clone()).ToList();
         AllCustomCosts = ModifyCustomCostList?.Invoke(AllCustomCosts) ?? AllCustomCosts;
     }
 
+    /// <summary>
+    /// Retrieves the FullCardCost object associated with the given CustomCardCost class Type.
+    /// </summary>
+    /// <param name="customCosts">Collection of FullCardCost objects to search through.</param>
+    /// <param name="costBehaviour">Type of the CustomCardCost to find the FUllCardCost object of.</param>
+    /// <returns>The FullCardCost associated with the given Type, or null if it cannot be found.</returns>
+    /// <remarks>
+    /// Intended to be used with the AllCustomCosts getter as a way of searching through all card costs added by the API.
+    /// </remarks>
     public static FullCardCost CostByBehaviour(this IEnumerable<FullCardCost> customCosts, Type costBehaviour)
     {
         return customCosts.FirstOrDefault(x => x.CostBehaviour == costBehaviour);
     }
+    /// <summary>
+    /// Registers a new custom card cost with the API.
+    /// </summary>
+    /// <param name="modGUID">The GUID of the mod adding this card cost.</param>
+    /// <param name="costName">The internal name of this card cost.</param>
+    /// <param name="costBehaviour">The type of the CustomCardCost class for this card cost.</param>
+    /// <param name="getCostTexture">The function used to determine what texture to display on cards with this cost.</param>
+    /// <param name="getPixelCostTexture">The function used to determine what pixel texture to display on cards with this cost.</param>
+    /// <returns>The FullCardCost object containing the new custom card cost's data.</returns>
     public static FullCardCost Register(string modGUID, string costName, Type costBehaviour,
         Func<int, CardInfo, PlayableCard, Texture2D> getCostTexture, Func<int, CardInfo, PlayableCard, Texture2D> getPixelCostTexture)
     {
