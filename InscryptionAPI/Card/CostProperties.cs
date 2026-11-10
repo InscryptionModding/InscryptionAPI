@@ -131,18 +131,58 @@ public static class CostProperties
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.EnergyCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalEnergyCost(CardInfo __instance) { return 0; }
 
+    /// <summary>
+    /// Determines whether or not Gemified should reduce the blood cost on a multicost card.
+    /// </summary>
+    /// <param name="card">The gemified PlayableCard we're checking.</param>
+    /// <param name="bloodCost">The PlayableCard's blood cost. Defaults to using the CardInfo's blood cost if null.</param>
+    /// <returns>True if Gemified should reduce the blood cost by 1.</returns>
+    /// <remarks>
+    /// Used for multicost cards to determine which cost Gemified should affect.
+    /// Priority from first choice to last: Energy, Bones, Mox, Blood
+    /// </remarks>
     public static bool ReduceGemifiedBlood(PlayableCard card, int? bloodCost = null)
     {
         return (bloodCost ?? OriginalBloodCost(card.Info)) > 0 && !ReduceGemifiedEnergy(card) && !ReduceGemifiedBones(card) && !ReduceGemifiedMox(card);
     }
+    /// <summary>
+    /// Determines whether or not Gemified should reduce the gems cost on a multicost card.
+    /// </summary>
+    /// <param name="card">The gemified PlayableCard we're checking.</param>
+    /// <param name="gemsCost">The PlayableCard's gems cost. Defaults to using the CardInfo's gems cost if null.</param>
+    /// <returns>True if Gemified should reduce the gems cost by 1.</returns>
+    /// <remarks>
+    /// Used for multicost cards to determine which cost Gemified should affect.
+    /// Priority from first choice to last: Energy, Bones, Mox, Blood
+    /// </remarks>
     public static bool ReduceGemifiedMox(PlayableCard card, List<GemType> gemsCost = null)
     {
         return (gemsCost?.Count ?? ImprovedGemsCost(card.Info).Count) > 0 && !ReduceGemifiedBones(card) && !ReduceGemifiedEnergy(card);
     }
+    /// <summary>
+    /// Determines whether or not Gemified should reduce the bone cost on a multicost card.
+    /// </summary>
+    /// <param name="card">The gemified PlayableCard we're checking.</param>
+    /// <param name="bonesCost">The PlayableCard's bone cost. Defaults to using the CardInfo's bone cost if null.</param>
+    /// <returns>True if Gemified should reduce the bone cost by 1.</returns>
+    /// <remarks>
+    /// Used for multicost cards to determine which cost Gemified should affect.
+    /// Priority from first choice to last: Energy, Bones, Mox, Blood
+    /// </remarks>
     public static bool ReduceGemifiedBones(PlayableCard card, int? bonesCost = null)
     {
         return (bonesCost ?? OriginalBonesCost(card.Info)) > 0 && !ReduceGemifiedEnergy(card);
     }
+    /// <summary>
+    /// Determines whether or not Gemified should reduce the energy cost on a multicost card.
+    /// </summary>
+    /// <param name="card">The gemified PlayableCard we're checking.</param>
+    /// <param name="energyCost">The PlayableCard's energy cost. Defaults to using the CardInfo's energy cost if null.</param>
+    /// <returns>True if Gemified should reduce the energy cost by 1.</returns>
+    /// <remarks>
+    /// Used for multicost cards to determine which cost Gemified should affect.
+    /// Priority from first choice to last: Energy, Bones, Mox, Blood
+    /// </remarks>
     public static bool ReduceGemifiedEnergy(PlayableCard card, int? energyCost = null)
     {
         return (energyCost ?? OriginalEnergyCost(card.Info)) > 0;
