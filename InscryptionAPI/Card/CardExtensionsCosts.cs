@@ -31,7 +31,7 @@ public static partial class CardExtensions
     /// </summary>
     public static int BloodCost(this PlayableCard card)
     {
-        //Debug.Log($"{card != null} {card?.Info != null} [{card?.GetType()}] {(card as DiskCardGame.Card)?.Info != null}");
+        //InscryptionAPIPlugin.Logger.LogInfo($"{card != null} {card?.Info != null} [{card?.GetType()}] {(card as DiskCardGame.Card)?.Info != null}");
         if (card != null && card.Info != null)
         {
             int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
@@ -42,6 +42,7 @@ public static partial class CardExtensions
             foreach (CardModificationInfo mod in card.TemporaryMods)
                 originalBloodCost += mod.bloodCostAdjustment;
 
+            //InscryptionAPIPlugin.Logger.LogInfo(originalBloodCost);
             return originalBloodCost;
         }
 

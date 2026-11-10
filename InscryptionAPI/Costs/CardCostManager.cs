@@ -2,8 +2,10 @@ using DiskCardGame;
 using GBC;
 using HarmonyLib;
 using InscryptionAPI.Card;
+using InscryptionAPI.Card.CostProperties;
 using InscryptionAPI.Dialogue;
 using InscryptionAPI.Guid;
+using InscryptionAPI.Helpers;
 using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -562,7 +564,19 @@ public static class CardCostManager
     private static IEnumerable<CodeInstruction> FixDialogueSoftlock(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> codes = new(instructions);
-        //codes.LogCodeInscryptions();
+        //codes.LogCodeInstructions();
+
+        // this part's for fixing blood cost nonsense I encountered when dealing with duplicate CardInfos
+        // it just changes the call to card.Info.BloodCost to card.BloodCost()
+        // and avoiding the janky dynamic cost find playablecard nonsenseseses
+        int bloodCostIdx = codes.FindIndex(x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == "Int32 get_BloodCost()");
+        if (bloodCostIdx > 0) {
+            bloodCostIdx--;
+            codes.RemoveRange(bloodCostIdx, 4);
+            MethodInfo playableCardBloodCost = AccessTools.Method(typeof(CardExtensions), nameof(CardExtensions.BloodCost),
+                new Type[] { typeof(PlayableCard) });
+            codes.Insert(bloodCostIdx, new CodeInstruction(OpCodes.Callvirt, playableCardBloodCost));
+        }
 
         int methodIndex = codes.FindIndex(x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == "System.Collections.IEnumerator PlayCardOnSlot(DiskCardGame.PlayableCard, DiskCardGame.CardSlot)");
         if (methodIndex > 0)
