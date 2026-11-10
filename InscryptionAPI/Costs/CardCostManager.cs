@@ -567,7 +567,7 @@ public static class CardCostManager
         //codes.LogCodeInstructions();
 
         // this part's for fixing blood cost nonsense I encountered when dealing with duplicate CardInfos
-        // it just changes the call to card.Info.BloodCost to card.BloodCost()
+        // it just changes the call from card.Info.BloodCost to card.BloodCost()
         // and avoiding the janky dynamic cost find playablecard nonsenseseses
         int bloodCostIdx = codes.FindIndex(x => x.opcode == OpCodes.Callvirt && x.operand.ToString() == "Int32 get_BloodCost()");
         if (bloodCostIdx > 0) {
