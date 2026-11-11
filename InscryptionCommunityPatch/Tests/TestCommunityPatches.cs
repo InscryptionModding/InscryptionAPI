@@ -6,11 +6,20 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Tests;
 
+/// <summary>
+/// The home of the Community Patch's Tests/
+/// </summary>
 [HarmonyPatch]
 public static class ExecuteCommunityPatchTests
 {
+    /// <summary>
+    /// The Boon associated with our Test Boon described in <see cref="SacrificeSquirrels"/>.
+    /// </summary>
     public static BoonData.Type TestBoon;
 
+    /// <summary>
+    /// This function prepares our Tests.
+    /// </summary>
     public static void PrepareForTests()
     {
         AbilityManager.BaseGameAbilities.AbilityByID(Ability.Sharp).Info.canStack = true;
@@ -23,6 +32,10 @@ public static class ExecuteCommunityPatchTests
         Resources.Load<Texture2D>("art/cards/boons/boonportraits/boon_startinggoat"), false, true, true);
     }
 
+    /// <summary>
+    /// This function patches in our Tests at the start of a New Ascension Run.
+    /// </summary>
+    /// <param name="__instance"></param>
     [HarmonyPatch(typeof(AscensionSaveData), nameof(AscensionSaveData.NewRun))]
     [HarmonyPostfix]
     private static void StartRunInTestMode(ref AscensionSaveData __instance)
