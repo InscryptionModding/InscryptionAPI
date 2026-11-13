@@ -1,6 +1,11 @@
 @font-face {
   font-family: 'DPComic';
-  src: url('fonts/dpcomic.ttf') format('ttf');
+  src: url('fonts/dpcomic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+:root {
+  --bs-font-sans-serif: 'DPComic', system-ui, -apple-system, sans-serif;
+  --bs-body-font-family: var(--bs-font-sans-serif);
 }

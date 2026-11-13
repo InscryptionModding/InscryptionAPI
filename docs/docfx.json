@@ -3,12 +3,31 @@
         {
             "src": [
                 {
-                    "files": ["**/*.csproj"],
-                    "exclude": ["**/bin/**", "**/obj/**"],
+                    "files": ["InscryptionAPI/InscryptionAPI.csproj"],
                     "src": "../"
                 }
             ],
             "dest": "api",
+            "filter": "filter.yml"
+        },
+        {
+            "src": [
+                {
+                    "files": ["InscryptionCommunityPatch/InscryptionCommunityPatch.csproj"],
+                    "src": "../"
+                }
+            ],
+            "dest": "community",
+            "filter": "filter.yml"
+        },
+        {
+            "src": [
+                {
+                    "files": ["APIPatcher/APIPatcher.csproj"],
+                    "src": "../"
+                }
+            ],
+            "dest": "apipatcher",
             "filter": "filter.yml"
         }
     ],
@@ -18,7 +37,7 @@
                 "files": ["README.md"]
             },
             {
-                "files": ["LICENSE"],
+                "files": ["LICENSE.md"],
                 "src": "../"
             },
             {
@@ -28,6 +47,12 @@
         "content": [
             {
                 "files": ["api/**.yml", "api/index.md"]
+            },
+            {
+                "files": ["community/**.yml", "community/index.md"]
+            },
+            {
+                "files": ["apipatcher/**.yml", "apipatcher/index.md"]
             },
             {
                 "files": ["wiki/toc.yml", "wiki/**.md"]
