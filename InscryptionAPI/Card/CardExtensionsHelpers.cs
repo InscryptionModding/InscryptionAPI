@@ -8,17 +8,17 @@ public static partial class CardExtensions
 {
     #region Ability
     /// <summary>
-    /// Checks if the CardModificationInfo does not have a specific Ability.
+    /// Checks if the <see cref="CardModificationInfo"/> does not have a specific Ability.
     /// </summary>
-    /// <param name="mod">CardModificationInfo to access.</param>
+    /// <param name="mod"><see cref="CardModificationInfo"/> to access.</param>
     /// <param name="ability">The ability to check for.</param>
     /// <returns>Returns true if the ability does not exist.</returns>
     public static bool LacksAbility(this CardModificationInfo mod, Ability ability) => !mod.HasAbility(ability);
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> does not have a specific Ability.
+    /// Checks if the <see cref="CardInfo"/> does not have a specific Ability.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="ability">The ability to check for.</param>
     /// <returns>Returns true if the ability does not exist.</returns>
     public static bool LacksAbility(this CardInfo cardInfo, Ability ability)
@@ -27,11 +27,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has all of the given Abilities.
+    /// Checks if the <see cref="CardInfo"/> has all of the given Abilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if cardInfo has all of the given Abilities.</returns>
+    /// <returns>Returns true if this card has all of the given Abilities.</returns>
     public static bool HasAllAbilities(this CardInfo cardInfo, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -43,11 +43,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has none of the specified Abilities.
+    /// Checks if the <see cref="CardInfo"/> has none of the specified Abilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if cardInfo has none of the given Abilities.</returns>
+    /// <returns>Returns true if this card has none of the given Abilities.</returns>
     public static bool LacksAllAbilities(this CardInfo cardInfo, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -59,11 +59,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has any of the specified Abilities.
+    /// Checks if the <see cref="CardInfo"/> has any of the specified Abilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if cardInfo has at least one of the given Abilities.</returns>
+    /// <returns>Returns true if this card has at least one of the given Abilities.</returns>
     public static bool HasAnyOfAbilities(this CardInfo cardInfo, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -77,11 +77,11 @@ public static partial class CardExtensions
 
     #region SpecialAbility
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has a specific SpecialTriggeredAbility.
+    /// Checks if the <see cref="CardInfo"/> has a specific SpecialTriggeredAbility.
     ///
-    /// A condensed version of `cardInfo.SpecialAbilities.Contains(ability)`.
+    /// An extension version of <c>cardInfo.SpecialAbilities.Contains(ability)</c>.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
     /// <returns>Returns true if the specialTriggeredAbility does exist.</returns>
     public static bool HasSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
@@ -90,9 +90,9 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> does not have a specific SpecialTriggeredAbility.
+    /// Checks if the <see cref="CardInfo"/> does not have a specific SpecialTriggeredAbility.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
     /// <returns>Returns true if the specialTriggeredAbility does not exist.</returns>
     public static bool LacksSpecialAbility(this CardInfo cardInfo, SpecialTriggeredAbility ability)
@@ -101,11 +101,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has all of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="CardInfo"/> has all of the specified SpecialTriggeredAbilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
-    /// <returns>Returns true if cardInfo has all of the specified SpecialTriggeredAbilities.</returns>
+    /// <returns>Returns true if this card has all of the specified SpecialTriggeredAbilities.</returns>
     public static bool HasAllSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
     {
         foreach (SpecialTriggeredAbility special in specialAbilities)
@@ -117,11 +117,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has none of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="CardInfo"/> has none of the specified SpecialTriggeredAbilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="specialAbilities">The SpecialTriggeredAbilitiess to check for.</param>
-    /// <returns>Returns true if cardInfo has none of the specified SpecialTriggeredAbilities.</returns>
+    /// <returns>Returns true if this card has none of the specified SpecialTriggeredAbilities.</returns>
     public static bool LacksAllSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
     {
         foreach (SpecialTriggeredAbility special in specialAbilities)
@@ -133,11 +133,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has any of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="CardInfo"/> has any of the specified SpecialTriggeredAbilities.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
-    /// <returns>Returns true if cardInfo has at least one of the specified SpecialTriggeredAbilities.</returns>
+    /// <returns>Returns true if this card has at least one of the specified SpecialTriggeredAbilities.</returns>
     public static bool HasAnyOfSpecialAbilities(this CardInfo cardInfo, params SpecialTriggeredAbility[] specialAbilities)
     {
         foreach (SpecialTriggeredAbility special in specialAbilities)
@@ -151,27 +151,27 @@ public static partial class CardExtensions
 
     #region Trait
     /// <summary>
-    /// Checks if the <c>CardInfo</c> does not belong to a specific Tribe.
+    /// Checks if the <see cref="CardInfo"/> does not belong to a specific Tribe.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="tribe">The tribe to check for.</param>
     /// <returns>Returns true if the card is not of the specified tribe.</returns>
     public static bool IsNotOfTribe(this CardInfo cardInfo, Tribe tribe) => !cardInfo.IsOfTribe(tribe);
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> does not have a specific Trait.
+    /// Checks if the <see cref="CardInfo"/> does not have a specific Trait.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="trait">The Trait to check for.</param>
     /// <returns>Returns true if the card is does not have the specified Trait.</returns>
     public static bool LacksTrait(this CardInfo cardInfo, Trait trait) => !cardInfo.HasTrait(trait);
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has all of the specified Traits.
+    /// Checks if the <see cref="CardInfo"/> has all of the specified Traits.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if cardInfo has all of the specified Traits.</returns>
+    /// <returns>Returns true if this card has all of the specified Traits.</returns>
     public static bool HasAllTraits(this CardInfo cardInfo, params Trait[] traits)
     {
         foreach (Trait trait in traits)
@@ -183,11 +183,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has none of the specified Traits.
+    /// Checks if the <see cref="CardInfo"/> has none of the specified Traits.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if cardInfo has none of the specified Traits.</returns>
+    /// <returns>Returns true if this card has none of the specified Traits.</returns>
     public static bool LacksAllTraits(this CardInfo cardInfo, params Trait[] traits)
     {
         foreach (Trait trait in traits)
@@ -199,11 +199,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has any of the specified Traits.
+    /// Checks if the <see cref="CardInfo"/> has any of the specified Traits.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if cardInfo has at least one of the specified Traits.</returns>
+    /// <returns>Returns true if this card has at least one of the specified Traits.</returns>
     public static bool HasAnyOfTraits(this CardInfo cardInfo, params Trait[] traits)
     {
         foreach (Trait trait in traits)
@@ -228,25 +228,25 @@ public static partial class CardExtensions
 
     #region CardMetaCategory
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has a specific CardMetaCategory.
+    /// Checks if the <see cref="CardInfo"/> has a specific CardMetaCategory.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="metaCategory">The CardMetaCategory to check for.</param>
     /// <returns>Returns true if the card is does not have the specified CardMetaCategory.</returns>
     public static bool HasCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory) => cardInfo.metaCategories.Contains(metaCategory);
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> does not have a specific CardMetaCategory.
+    /// Checks if the <see cref="CardInfo"/> does not have a specific CardMetaCategory.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="metaCategory">The CardMetaCategory to check for.</param>
     /// <returns>Returns true if the card is does not have the specified CardMetaCategory.</returns>
     public static bool LacksCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory) => !cardInfo.HasCardMetaCategory(metaCategory);
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has any of the specified CardMetaCategories.
+    /// Checks if the <see cref="CardInfo"/> has any of the specified CardMetaCategories.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="metaCategories">The CardMetaCategories to check for.</param>
     /// <returns>Returns true if the card has at least one of the specified CardMetaCategories.</returns>
     public static bool HasAnyOfCardMetaCategories(this CardInfo cardInfo, params CardMetaCategory[] metaCategories)
@@ -260,9 +260,9 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the <c>CardInfo</c> has none of the specified CardMetaCategories.
+    /// Checks if the <see cref="CardInfo"/> has none of the specified CardMetaCategories.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
     /// <param name="metaCategories">The CardMetaCategories to check for.</param>
     /// <returns>Returns true if the card has none of the specified CardMetaCategories.</returns>
     public static bool LacksAllCardMetaCategories(this CardInfo cardInfo, params CardMetaCategory[] metaCategories)
@@ -278,10 +278,10 @@ public static partial class CardExtensions
 
     #region PlayableCard
     /// <summary>
-    /// Gets the health adjustment given by a PlayableCard's Stat Icon.
+    /// Gets the health adjustment given by a <see cref="PlayableCard"/>'s stat icon.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
-    /// <returns>How much Health the Stat Icon gives.</returns>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>How much Health the stat icon gives.</returns>
     public static int GetStatIconHealthBuffs(this PlayableCard card)
     {
         int num = 0;
@@ -295,7 +295,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the number of Ability stacks a card has.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="ability">The Ability to check for.</param>
     /// <returns>The number of Ability stacks the card has.</returns>
     public static int GetAbilityStacks(this PlayableCard card, Ability ability)
@@ -315,7 +315,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the number of Ability stacks a card has.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to access.</param>
+    /// <param name="info">The <see cref="CardInfo"/> to access.</param>
     /// <param name="ability">The Ability to check for.</param>
     /// <returns>The number of Ability stacks the card has.</returns>
     public static int GetAbilityStacks(this CardInfo info, Ability ability)
@@ -329,10 +329,10 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Check if the other PlayableCard is on the same side of the board as this PlayableCard.
+    /// Check if the other <see cref="PlayableCard"/> is on the same side of the board as this <see cref="PlayableCard"/>.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <param name="otherCard">The other PlayableCard.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="otherCard">The other <see cref="PlayableCard"/> to check.</param>
     /// <returns>Returns true if both cards are on the board and both are on the opponent cards or both are player cards.</returns>
     public static bool OtherCardIsOnSameSide(this PlayableCard playableCard, PlayableCard otherCard)
     {
@@ -340,22 +340,22 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieve a list of all abilities that exist on the PlayableCard.
+    /// Retrieve a list of all abilities that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all Abilities from both TemporaryMods and from the underlying CardInfo object.
+    /// This will retrieve all Abilities from both <c>TemporaryMods</c> and from the underlying <see cref="CardInfo"/> object.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <returns>A list of Abilities from the PlayableCard and underlying CardInfo object.</returns>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>A list of Abilities from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
     public static List<Ability> AllAbilities(this PlayableCard playableCard)
     {
         return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
     }
     /// <summary>
-    /// A variant of PlayableCard.AllAbilities that can account for negated abilities in the PlayableCard's TemporaryMods.
+    /// A variant of <see cref="AllAbilities(PlayableCard)"/> that can account for negated abilities in the <see cref="PlayableCard"/>'s <c>TemporaryMods</c>.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <param name="accountForNegation">Whether or not to check TemporaryMods for negated abilities.</param>
-    /// <returns>A list of Abilities from the PlayableCard and underlying CardInfo object</returns>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="accountForNegation">Whether or not to check <c>TemporaryMods</c> for negated abilities.</param>
+    /// <returns>A list of Abilities from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object</returns>
     public static List<Ability> AllAbilities(this PlayableCard playableCard, bool accountForNegation)
     {
         List<Ability> retval = playableCard.AllAbilities();
@@ -373,24 +373,24 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieve a list of all CardModificationInfos that exist on the PlayableCard.
+    /// Retrieve a list of all CardModificationInfos that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all mods from TemporaryMods and the underlying CardInfo.Mods.
+    /// This will retrieve all mods from <c>TemporaryMods</c> and the underlying <c>CardInfo.Mods</c>.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <returns>A list of CardModificationInfos from the PlayableCard and underlying CardInfo object.</returns>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>A list of <see cref="CardModificationInfo"/>s from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
     public static List<CardModificationInfo> AllCardModificationInfos(this PlayableCard playableCard)
     {
         return playableCard.TemporaryMods.Concat(playableCard.Info.Mods).ToList();
     }
 
     /// <summary>
-    /// Removes the provided CardModificationInfo from the PlayableCard.
+    /// Removes the provided CardModificationInfo from the <see cref="PlayableCard"/>.
     ///
-    /// Searches both its TemporaryMods list and its CardInfo.Mods list.
+    /// Searches both its <c>TemporaryMods</c> list and its CardInfo.Mods list.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <param name="modToRemove">The CardModificationInfo object to remove.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="modToRemove">The <see cref="CardModificationInfo"/> object to remove.</param>
     /// <param name="updateDisplay">Whether or not to call OnStatsChanged after removing the card mod.</param>
     /// <returns>True if the mod was successfully removed or false if the mod was not removed or was null.</returns>
     public static bool RemoveCardModificationInfo(this PlayableCard playableCard, CardModificationInfo modToRemove, bool updateDisplay = true)
@@ -418,22 +418,22 @@ public static partial class CardExtensions
         return false;
     }
     /// <summary>
-    /// Retrieve a list of all special triggered abilities that exist on the PlayableCard.
+    /// Retrieve a list of all special triggered abilities that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all SpecialTriggeredAbility from both TemporaryMods and from the underlying CardInfo object.
+    /// This will retrieve all SpecialTriggeredAbility from both <c>TemporaryMods</c> and from the underlying <see cref="CardInfo"/> object.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <returns>A list of SpecialTriggeredAbility from the PlayableCard and underlying CardInfo object.</returns>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>A list of SpecialTriggeredAbility from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
     public static List<SpecialTriggeredAbility> AllSpecialAbilities(this PlayableCard playableCard)
     {
         return new List<SpecialTriggeredAbility>(playableCard.TemporaryMods.Concat(playableCard.Info.Mods).SelectMany(mod => mod.specialAbilities));
     }
 
     /// <summary>
-    /// Retrieve a list of Ability that exist in TemporaryMods and the underlying CardInfo.Mods lists.
+    /// Retrieve a list of Ability that exist in <c>TemporaryMods</c> and the underlying CardInfo.Mods lists.
     /// </summary>
-    /// <param name="playableCard">The PlayableCard to access.</param>
-    /// <returns>A list of Ability from the PlayableCard and underlying CardInfo object.</returns>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>A list of Ability from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
     public static List<Ability> GetAbilitiesFromAllMods(this PlayableCard playableCard)
     {
         return AbilitiesUtil.GetAbilitiesFromMods(playableCard.TemporaryMods.Concat(playableCard.Info.Mods).ToList());
@@ -442,7 +442,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Checks if the card has a specific Trait.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="trait">The trait to check for.</param>
     /// <returns>Returns true if the card has the specified trait.</returns>
     public static bool HasTrait(this PlayableCard playableCard, Trait trait) => playableCard.Info.HasTrait(trait);
@@ -450,47 +450,47 @@ public static partial class CardExtensions
     /// <summary>
     /// Checks if the card does not have a specific Trait.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="trait">The trait to check for.</param>
     /// <returns>Returns true if the card does not have the specified trait.</returns>
     public static bool LacksTrait(this PlayableCard playableCard, Trait trait) => playableCard.Info.LacksTrait(trait);
 
     /// <summary>
-    /// Checks if the PlayableCard has all of the specified Traits.
+    /// Checks if the <see cref="PlayableCard"/> has all of the specified Traits.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if playableCard has all of the specified Traits.</returns>
+    /// <returns>Returns true if <c>playableCard</c> has all of the specified Traits.</returns>
     public static bool HasAllTraits(this PlayableCard playableCard, params Trait[] traits) => playableCard.Info.HasAllTraits(traits);
 
     /// <summary>
-    /// Checks if the PlayableCard has none of the specified Traits.
+    /// Checks if the <see cref="PlayableCard"/> has none of the specified Traits.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if playableCard has none of the specified Traits.</returns>
+    /// <returns>Returns true if <c>playableCard</c> has none of the specified Traits.</returns>
     public static bool LacksAllTraits(this PlayableCard playableCard, params Trait[] traits) => playableCard.Info.LacksAllTraits(traits);
 
     /// <summary>
-    /// Checks if the PlayableCard has any of the specified Traits.
+    /// Checks if the <see cref="PlayableCard"/> has any of the specified Traits.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if playableCard has at least one of the specified Traits.</returns>
+    /// <returns>Returns true if this card has at least one of the specified Traits.</returns>
     public static bool HasAnyOfTraits(this PlayableCard playableCard, params Trait[] traits) => playableCard.Info.HasAnyOfTraits(traits);
 
     /// <summary>
-    /// Checks if the PlayableCard is of a specified Tribe.
+    /// Checks if the <see cref="PlayableCard"/> is of a specified Tribe.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="tribe">The tribe to check for.</param>
     /// <returns>Returns true if the card is of the specified tribe.</returns>
     public static bool IsOfTribe(this PlayableCard playableCard, Tribe tribe) => playableCard.Info.IsOfTribe(tribe);
 
     /// <summary>
-    /// Checks if the PlayableCard is not of a specified Tribe.
+    /// Checks if the <see cref="PlayableCard"/> is not of a specified Tribe.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="tribe">The tribe to check for.</param>
     /// <returns>Returns true if the card is not of the specified tribe.</returns>
     public static bool IsNotOfTribe(this PlayableCard playableCard, Tribe tribe) => playableCard.Info.IsNotOfTribe(tribe);
@@ -498,33 +498,33 @@ public static partial class CardExtensions
     /// <summary>
     /// Checks if the card is not null and not Dead.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <returns>Returns true if the card is not null or not Dead.</returns>
     public static bool NotDead(this PlayableCard playableCard) => playableCard && !playableCard.Dead;
 
     /// <summary>
     /// Checks if the card is not the opponent's card.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <returns>Returns true if card is not the opponent's card.</returns>
     public static bool IsPlayerCard(this PlayableCard playableCard) => !playableCard.OpponentCard;
 
     /// <summary>
-    /// Check the PlayableCard not having a specific Ability.
+    /// Check the <see cref="PlayableCard"/> not having a specific Ability.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="ability">The ability to check for.</param>
     /// <returns>Returns true if the ability does not exist.</returns>
     public static bool LacksAbility(this PlayableCard playableCard, Ability ability) => !playableCard.HasAbility(ability);
 
     /// <summary>
-    /// Check if the PlayableCard has all of the given abilities.
+    /// Check if the <see cref="PlayableCard"/> has all of the given abilities.
     ///
-    /// A condensed version of `CardInfo.HasAllAbilities`.
+    /// An extension version of <see cref="HasAllAbilities(CardInfo, Ability[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if playableCard has all of the given Abilities.</returns>
+    /// <returns>Returns true if the card has all of the given Abilities.</returns>
     public static bool HasAllAbilities(this PlayableCard playableCard, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -536,13 +536,13 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the PlayableCard has none of the specified Abilities.
+    /// Checks if the <see cref="PlayableCard"/> has none of the specified Abilities.
     ///
-    /// A condensed version of `CardInfo.LacksAllSpecialAbilities`.
+    /// An extension version of <see cref="LacksAllAbilities(CardInfo, Ability[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if playableCard has none of the given Abilities.</returns>
+    /// <returns>Returns true if this card has none of the given Abilities.</returns>
     public static bool LacksAllAbilities(this PlayableCard playableCard, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -554,13 +554,13 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Check if the PlayableCard has any of the specified Abilities.
+    /// Check if the <see cref="PlayableCard"/> has any of the specified Abilities.
     ///
-    /// A condensed version of `CardInfo.HasAnyOfAbilities`.
+    /// An extension version of <see cref="HasAnyOfAbilities(CardInfo, Ability[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="abilities">The Abilities to check for.</param>
-    /// <returns>Returns true if playableCard has at least one of the given Abilities.</returns>
+    /// <returns>Returns true if this card has at least one of the given Abilities.</returns>
     public static bool HasAnyOfAbilities(this PlayableCard playableCard, params Ability[] abilities)
     {
         foreach (Ability ability in abilities)
@@ -572,21 +572,21 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Check the PlayableCard not having a specific SpecialTriggeredAbility.
+    /// Check the <see cref="PlayableCard"/> not having a specific SpecialTriggeredAbility.
     ///
-    /// A condensed version of `!playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// An extension version of !<see cref="HasSpecialAbility(CardInfo, SpecialTriggeredAbility)"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
     /// <returns>Returns true if the specialTriggeredAbility does not exist.</returns>
     public static bool LacksSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability) => !playableCard.HasSpecialAbility(ability);
 
     /// <summary>
-    /// Check the PlayableCard having a specific SpecialTriggeredAbility.
+    /// Check the <see cref="PlayableCard"/> having a specific SpecialTriggeredAbility.
     ///
-    /// A condensed version of `playableCard.Info.SpecialAbilities.Contains(ability)`.
+    /// An extension version of <c>playableCard.Info.SpecialAbilities.Contains(ability)</c>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="ability">The specialTriggeredAbility to check for.</param>
     /// <returns>Returns true if the specialTriggeredAbility does exist.</returns>
     public static bool HasSpecialAbility(this PlayableCard playableCard, SpecialTriggeredAbility ability)
@@ -596,13 +596,13 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the PlayableCard has all of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="PlayableCard"/> has all of the specified SpecialTriggeredAbilities.
     ///
-    /// A condensed version of `CardInfo.HasAllSpecialAbilities`.
+    /// An extension version of <see cref="HasAllSpecialAbilities(CardInfo, SpecialTriggeredAbility[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
-    /// <returns>Returns true if playableCard has all of the specified SpecialTriggeredAbilities.</returns>
+    /// <returns>Returns true if this card has all of the specified SpecialTriggeredAbilities.</returns>
     public static bool HasAllSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
     {
         foreach (SpecialTriggeredAbility special in specialAbilities)
@@ -614,11 +614,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the PlayableCard has none of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="PlayableCard"/> has none of the specified SpecialTriggeredAbilities.
     ///
-    /// A condensed version of `CardInfo.LacksAllSpecialAbilities`.
+    /// An extension version of <see cref="LacksAllSpecialAbilities(CardInfo, SpecialTriggeredAbility[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="specialAbilities">The SpecialTriggeredAbilitiess to check for.</param>
     /// <returns>Returns true if playableCard has none of the specified SpecialTriggeredAbilities.</returns>
     public static bool LacksAllSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
@@ -632,12 +632,12 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the PlayableCard has any of the specified SpecialTriggeredAbilities.
+    /// Checks if the <see cref="PlayableCard"/> has any of the specified SpecialTriggeredAbilities.
     ///
-    /// A condensed version of `CardInfo.HasAnyOfSpecialAbilities`.
+    /// An extension version of <see cref="HasAnyOfSpecialAbilities(CardInfo, SpecialTriggeredAbility[])"/>.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
-    /// <param name="specialAbilities">The SpecialTriggeredAbilities to check for.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
+    /// <param name="specialAbilities">The special abilities to check for.</param>
     /// <returns>Returns true if playableCard has at least one of the specified SpecialTriggeredAbilities.</returns>
     public static bool HasAnyOfSpecialAbilities(this PlayableCard playableCard, params SpecialTriggeredAbility[] specialAbilities)
     {
@@ -650,35 +650,35 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Check if the PlayableCard has a card opposing it in the opposite slot.
+    /// Check if the <see cref="PlayableCard"/> has a card opposing it in the opposite slot.
     ///
-    /// Also acts as a null check if this PlayableCard is in a slot.
+    /// Also acts as a null check if this <see cref="PlayableCard"/> is in a slot.
     /// </summary>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <returns>Returns true if a card exists in the opposing slot.</returns>
     public static bool HasOpposingCard(this PlayableCard playableCard) => playableCard.Slot && playableCard.Slot.opposingSlot.Card;
 
     /// <summary>
-    /// Retrieve the CardSlot object that is opposing this PlayableCard.
+    /// Retrieve the CardSlot object that is opposing this <see cref="PlayableCard"/>.
     /// </summary>
     /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
-    /// <param name="playableCard">PlayableCard to access.</param>
-    /// <returns>The card slot opposite of this playableCard, otherwise return null.</returns>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
+    /// <returns>The card slot opposite of this <see cref="PlayableCard"/>, otherwise return null.</returns>
     public static CardSlot OpposingSlot(this PlayableCard playableCard) => playableCard.Slot ? playableCard.Slot.opposingSlot : null;
 
     /// <summary>
-    /// Retrieve the PlayableCard that is opposing this PlayableCard in the opposite slot.
+    /// Retrieve the <see cref="PlayableCard"/> that is opposing this <see cref="PlayableCard"/> in the opposite slot.
     /// </summary>
     /// <remarks>It is on the implementer to check if the returned value is not null</remarks>
-    /// <param name="playableCard">PlayableCard to access.</param>
+    /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <returns>The card in the opposing slot, otherwise return null.</returns>
     public static PlayableCard OpposingCard(this PlayableCard playableCard) => playableCard.OpposingSlot()?.Card;
 
     /// <summary>
-    /// Adds all given CardModificationInfos to a PlayableCard as temporary mods.
+    /// Adds all given <see cref="CardModificationInfo"/>s to a <see cref="PlayableCard"/> as temporary mods.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
-    /// <param name="mods">The collection of CardModificationInfos to add as temporary mods to the card.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="mods">The collection of <see cref="CardModificationInfo"/>s to add as temporary mods to the card.</param>
     public static void AddTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
     {
         foreach (CardModificationInfo mod in mods)
@@ -686,10 +686,10 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Removes all given CardModificationInfos from a PlayableCard's list of temporary mods.
+    /// Removes all given <see cref="CardModificationInfo"/>s from a <see cref="PlayableCard"/>'s list of temporary mods.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
-    /// <param name="mods">The collection of CardModificationInfos to remove from the card's temporary mods.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="mods">The collection of <see cref="CardModificationInfo"/>s to remove from the card's temporary mods.</param>
     public static void RemoveTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
     {
         foreach (CardModificationInfo mod in mods)
@@ -697,10 +697,10 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// A version of TransformIntoCard tailored to visually work on cards in the hand.
+    /// A version of <see cref="PlayableCard.TransformIntoCard(CardInfo, Action, Action)"/> tailored to visually work on cards in the hand.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
-    /// <param name="evolvedInfo">The <c>CardInfo</c> to change the card into.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="evolvedInfo">The <see cref="CardInfo"/> to change the card into.</param>
     /// <param name="preTransformCallback">An Action to invoke before the evolvedInfo is set.</param>
     /// <param name="onTransformedCallback">An Action to invoke after the evolvedInfo is set.</param>
     public static IEnumerator TransformIntoCardInHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
@@ -715,7 +715,7 @@ public static partial class CardExtensions
         AbilityManager.FixStackTriggers(card);
     }
     /// <summary>
-    /// A version of TransformIntoCardInHand that incorporates MoveCardAboveHand.
+    /// A version of <see cref="TransformIntoCardInHand(PlayableCard, CardInfo, Action, Action)"/> that incorporates <see cref="PlayerHand3D.MoveCardAboveHand(PlayableCard)"/>.
     /// </summary>
     public static IEnumerator TransformIntoCardAboveHand(this PlayableCard card, CardInfo evolvedInfo, Action onTransformedCallback = null, Action preTransformCallback = null)
     {
@@ -736,7 +736,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Increases the amount of shields the card has. Affects the internal counter; does not add or remove shield sigil stacks.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="amount">How many shields to add.</param>
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
     public static void AddShieldCount(this PlayableCard card, int amount, bool updateDisplay = true)
@@ -746,7 +746,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Increases the amount of shields a specific ability is currently giving.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="amount">How many shields to add.</param>
     /// <param name="ability">The shield-giving ability to add more shields to.</param>
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
@@ -761,7 +761,7 @@ public static partial class CardExtensions
         component.AddShields(amount, updateDisplay);
     }
     /// <summary>
-    /// Increases the amount of shields a specific ability's AbilityBehaviour is currently giving.
+    /// Increases the amount of shields a specific ability's <see cref="AbilityBehaviour"/> is currently giving.
     /// </summary>
     public static void AddShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
     {
@@ -769,9 +769,9 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Removes shields from the given PlayableCard.
+    /// Removes shields from the given <see cref="PlayableCard"/>.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="amount">How many shields to add.</param>
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
     public static void RemoveShieldCount(this PlayableCard card, int amount, bool updateDisplay = true)
@@ -781,7 +781,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Reduces the amount of shields a specific ability is currently giving.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="amount">How many shields to add.</param>
     /// <param name="ability">The shield-giving ability to remove shields from.</param>
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
@@ -799,7 +799,7 @@ public static partial class CardExtensions
     /// Reduces a card's shield count from a specific shield-giving ability.
     /// </summary>
     /// <typeparam name="T">The class of the ability to remove shield count from.</typeparam>
-    /// <param name="card">PlayableCard instance to remove shield from.</param>
+    /// <param name="card"><see cref="PlayableCard"/> instance to remove shield from.</param>
     /// <param name="amount">How many shields to remove.</param>
     /// <param name="updateDisplay">Whether or not to update the card's rendering.</param>
     public static void RemoveShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
@@ -810,7 +810,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the number of shields the target card has. Each shield negates one damaging hit.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>The number of shields the card has.</returns>
     public static int GetTotalShields(this PlayableCard card)
     {
@@ -841,11 +841,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieves the current value of a DamageShieldBehaviour's NumShield.
+    /// Retrieves the current value of a <see cref="DamageShieldBehaviour"/>'s NumShield.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="card"></param>
-    /// <returns>The current value of the DamageShieldBehaviour's NumShield.</returns>
+    /// <typeparam name="T">The <see cref="DamageShieldBehaviour"/> to access.</typeparam>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <returns>The current value of the <see cref="DamageShieldBehaviour"/>'s <c>NumShield</c>.</returns>
     public static int GetShieldCount<T>(this PlayableCard card) where T : DamageShieldBehaviour
     {
         T comp = card.GetComponent<T>();
@@ -853,11 +853,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieves the DamageShieldBehaviour component corresponding to the given Ability, or null if it does not exist.
+    /// Retrieves the <see cref="DamageShieldBehaviour"/> component corresponding to the given Ability, or null if it does not exist.
     /// </summary>
-    /// <param name="card"></param>
-    /// <param name="ability"></param>
-    /// <returns>The DamageShieldBehaviour component of the given Ability, or null if it does not exist.</returns>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
+    /// <param name="ability">The shield-giving ability to access.</param>
+    /// <returns>The <see cref="DamageShieldBehaviour"/> component of the given Ability, or null if it does not exist.</returns>
     public static DamageShieldBehaviour GetShieldBehaviour(this PlayableCard card, Ability ability)
     {
         Type type = ShieldManager.AllShieldAbilities.AbilityByID(ability)?.AbilityBehavior;
@@ -867,9 +867,9 @@ public static partial class CardExtensions
         return card.GetComponent(type) as DamageShieldBehaviour;
     }
     /// <summary>
-    /// A variant of ResetShield that only resets shields belonging is a certain ability.
+    /// An extension variant of <see cref="ResetShield"/> that only resets shields belonging is a certain ability.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="ability">The shield ability to look for.</param>
     public static void ResetShield(this PlayableCard card, Ability ability)
     {
@@ -891,16 +891,16 @@ public static partial class CardExtensions
         return ShieldManager.AllShieldInfos.AbilityByID(ability) != null;
     }
     /// <summary>
-    /// Determines whether the given AbilityInfo corresponds to a shield-giving ability.
+    /// Determines whether the given <see cref="AbilityInfo"/> corresponds to a shield-giving ability.
     /// </summary>
-    /// <param name="abilityInfo">The AbilityInfo for the ability to check.</param>
-    /// <returns>True if the AbilityInfo is for an ability that gives sigils using the API's features.</returns>
+    /// <param name="abilityInfo">The <see cref="AbilityInfo"/> for the ability to check.</param>
+    /// <returns>True if the <see cref="AbilityInfo"/> is for an ability that gives sigils using the API's features.</returns>
     public static bool IsShieldAbility(this AbilityInfo abilityInfo)
     {
         return ShieldManager.AllShieldInfos.Contains(abilityInfo);
     }
     /// <summary>
-    /// Returns whether or not the PlayableCard has an Ability that overrides DamageShieldBehaviour.
+    /// Returns whether or not the <see cref="PlayableCard"/> has an Ability that overrides <see cref="DamageShieldBehaviour"/>.
     /// </summary>
     /// <param name="card">The PlayableCard object to check.</param>
     public static bool HasShieldAbility(this PlayableCard card)
@@ -908,9 +908,9 @@ public static partial class CardExtensions
         return card.AllAbilities().Exists(x => x.IsShieldAbility());
     }
     /// <summary>
-    /// Returns whether or not the <c>CardInfo</c> has an Ability that overrides DamageShieldBehaviour.
+    /// Returns whether or not the <see cref="CardInfo"/> has an Ability that overrides <see cref="DamageShieldBehaviour"/>.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> object to check.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> object to check.</param>
     public static bool HasShieldAbility(this CardInfo cardInfo)
     {
         return cardInfo.Abilities.Exists(x => x.IsShieldAbility());
@@ -919,10 +919,10 @@ public static partial class CardExtensions
     #endregion
 
     /// <summary>
-    /// Spawns the <c>CardInfo</c> object to the player's hand.
+    /// Spawns the <see cref="CardInfo"/> object to the player's hand.
     /// </summary>
-    /// <param name="cardInfo"><c>CardInfo</c> to access.</param>
-    /// <param name="temporaryMods">The mods that will be added to the PlayableCard object.</param>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to access.</param>
+    /// <param name="temporaryMods">The mods that will be added to the <see cref="PlayableCard"/> object.</param>
     /// <param name="spawnOffset">The position of where the card will appear from. Default is a Vector3 of (0, 6, 1.5).</param>
     /// <param name="onDrawnTriggerDelay">The amount of time to wait before being added to the hand.</param>
     /// <param name="cardSpawnedCallback">
@@ -941,10 +941,10 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Creates a basic EncounterBlueprintData.CardBlueprint based off the <c>CardInfo</c> object.
+    /// Creates a basic <see cref="EncounterBlueprintData.CardBlueprint"/> based off the <see cref="CardInfo"/> object.
     /// </summary>
-    /// <param name="cardInfo">CardInfo to create the blueprint with.</param>
-    /// <returns>The CardBlueprint object that can be used when creating EncounterData.</returns>
+    /// <param name="cardInfo"><see cref="CardInfo"/> to create the blueprint with.</param>
+    /// <returns>The <c>CardBlueprint</c> object that can be used when creating <see cref="EncounterData"/>.</returns>
     public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
     {
         return new EncounterBlueprintData.CardBlueprint
