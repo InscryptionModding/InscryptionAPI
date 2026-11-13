@@ -16,7 +16,7 @@
     --bs-navbar-brand-font-size: 1.5rem;
 }
 
-.navbar-brand logo {
+.navbar-brand .logo {
     padding-right: 1.5rem;
 }
 
