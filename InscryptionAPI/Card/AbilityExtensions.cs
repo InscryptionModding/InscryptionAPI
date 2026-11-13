@@ -251,22 +251,44 @@ public static class AbilityExtensions
         fullAbility.Info.powerLevel = powerLevel;
         return fullAbility;
     }
-
+    /// <summary>
+    /// Sets the rulebook description for this ability.
+    /// </summary>
+    /// <param name="abilityInfo">The <see cref="AbilityInfo"/> to access.</param>
+    /// <param name="description">The ability's rulebook name.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetRulebookDescription(this AbilityInfo abilityInfo, string description)
     {
         abilityInfo.rulebookDescription = description;
         return abilityInfo;
     }
+    /// <summary>
+    /// Sets the rulebook description for this ability.
+    /// </summary>
+    /// <param name="fullAbility">The <see cref="FullAbility"/> to access.</param>
+    /// <param name="description">The ability's rulebook name.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetRulebookDescription(this FullAbility fullAbility, string description) {
         fullAbility.Info.rulebookDescription = description;
         return fullAbility;
     }
-
+    /// <summary>
+    /// Sets the rulebook name for this ability.
+    /// </summary>
+    /// <param name="abilityInfo">The <see cref="AbilityInfo"/> to access.</param>
+    /// <param name="name">The ability's rulebook name.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetRulebookName(this AbilityInfo abilityInfo, string name)
     {
         abilityInfo.rulebookName = name;
         return abilityInfo;
     }
+    /// <summary>
+    /// Sets the rulebook name for this ability.
+    /// </summary>
+    /// <param name="fullAbility">The <see cref="FullAbility"/> to access.</param>
+    /// <param name="name">The ability's rulebook name.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetRulebookName(this FullAbility fullAbility, string name) {
         fullAbility.Info.rulebookName = name;
         return fullAbility;
@@ -498,18 +520,38 @@ public static class AbilityExtensions
         return abilityInfo;
     }
 
+    /// <summary>
+    /// Marks the given ability as appearing in the rulebook during Act 1.
+    /// </summary>
+    /// <param name="full">The <see cref="FullAbility"/> to access.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetPart1Rulebook(this FullAbility full) {
         full.Info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook);
         return full;
     }
+    /// <summary>
+    /// Marks the given ability as appearing in the rulebook during Act 3.
+    /// </summary>
+    /// <param name="full">The <see cref="FullAbility"/> to access.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetPart3Rulebook(this FullAbility full) {
         full.Info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
         return full;
     }
+    /// <summary>
+    /// Marks the given ability as appearing in the rulebook during Grimora's act.
+    /// </summary>
+    /// <param name="full">The <see cref="FullAbility"/> to access.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetGrimoraRulebook(this FullAbility full) {
         full.Info.AddMetaCategories(AbilityMetaCategory.GrimoraRulebook);
         return full;
     }
+    /// <summary>
+    /// Marks the given ability as appearing in the rulebook during Magnificus's act.
+    /// </summary>
+    /// <param name="full">The <see cref="FullAbility"/> to access.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetMagnificusRulebook(this FullAbility full) {
         full.Info.AddMetaCategories(AbilityMetaCategory.MagnificusRulebook);
         return full;
@@ -545,10 +587,10 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null) {
         info.iconGraphic = icon;
         if (filterMode.HasValue)
@@ -559,10 +601,10 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <param name="pathToArt">The path to a 49x49 texture containing the icon on disk.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null) {
         info.iconGraphic = TextureHelper.GetImageAsTexture(pathToArt);
         if (filterMode.HasValue)
@@ -571,24 +613,24 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Set the StatIconInfo's rulebookName and rulebookDescription. Does not make the stat icon appear in the Rulebook.
+    /// Set the stat icon's rulebook name and description. Does not make the stat icon appear in the Rulebook.
     /// </summary>
-    /// <param name="info"></param>
-    /// <param name="rulebookName"></param>
-    /// <param name="rulebookDescription"></param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/></param>
+    /// <param name="rulebookName">The stat icon's rulebook name.</param>
+    /// <param name="rulebookDescription">The stat icon's rulebook description.</param>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetRulebookInfo(this StatIconInfo info, string rulebookName, string rulebookDescription = null) {
         info.rulebookName = rulebookName;
         info.rulebookDescription = rulebookDescription;
         return info;
     }
     /// <summary>
-    /// Sets the StatIconInfo's appliesToAttack and appliesToHealth fields. Note these fields don't make the stat icon affect the stat; you still need to implement that logic.
+    /// Sets the stat icon's <c>appliesToAttack</c> and <c>appliesToHealth</c> fields. Note these fields don't make the stat icon affect the stat; you still need to implement that logic.
     /// </summary>
-    /// <param name="info"></param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/></param>
     /// <param name="appliesToAttack">If the stat icon should cover a card's Power.</param>
     /// <param name="appliesToHealth">If the stat icon should cover a card's Health.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetAppliesToStats(this StatIconInfo info, bool appliesToAttack, bool appliesToHealth) {
         info.appliesToAttack = appliesToAttack;
         info.appliesToHealth = appliesToHealth;
@@ -598,14 +640,21 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in Act 2.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
-    /// <param name="icon">A 16x8 texture containing the icon .</param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
+    /// <param name="icon">A 16x8 texture containing the icon.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, Texture2D icon, FilterMode? filterMode = null) {
         info.pixelIconGraphic = TextureHelper.ConvertTexture(icon, TextureHelper.SpriteType.PixelStatIcon, filterMode ?? FilterMode.Point);
         return info;
     }
+    /// <summary>
+    /// Sets the icon that will be displayed for this stat icon when the card is in the player's hand in Act 2.
+    /// </summary>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
+    /// <param name="pathToArt">The file path to the 16x8 texture file containing the icon.</param>
+    /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetPixelIcon(this StatIconInfo info, string pathToArt, FilterMode? filterMode = null) {
         Texture2D tex = TextureHelper.GetImageAsTexture(pathToArt, filterMode ?? FilterMode.Point);
         info.pixelIconGraphic = TextureHelper.ConvertTexture(tex, TextureHelper.SpriteType.PixelStatIcon);
@@ -615,9 +664,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Adds one or more metacategories to the stati icon. Duplicate categories will not be added.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <param name="categories">The metacategories to add.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo AddMetaCategories(this StatIconInfo info, params AbilityMetaCategory[] categories) {
         info.metaCategories ??= new();
         foreach (var app in categories)
@@ -627,19 +676,19 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part1Rulebook metacategories to the stat icon.
+    /// Helper method: automatically adds the <c>Part1Rulebook</c> metacategory to the stat icon.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <returns>The same stati icon so a chain can continue.</returns>
     public static StatIconInfo SetDefaultPart1Ability(this StatIconInfo info) {
         return info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook);
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part3Rulebook metacategories to the stat icon.
+    /// Helper method: automatically adds the <c>Part3Rulebook</c> metacategory to the stat icon.
     /// </summary>
-    /// <param name="info">The instance of StatIconInfo.</param>
-    /// <returns>The same StatIconInfo so a chain can continue.</returns>
+    /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
+    /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
     public static StatIconInfo SetDefaultPart3Ability(this StatIconInfo info) {
         return info.AddMetaCategories(AbilityMetaCategory.Part3Rulebook);
     }
@@ -660,20 +709,20 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
+    /// Gets the value of <c>TriggersOncePerStack</c>. Returns false if <c>TriggersOncePerStack</c> has not been set.
     /// </summary>
-    /// <param name="abilityInfo">Ability to access.</param>
-    /// <returns>Whether double triggering is disabled.</returns>
+    /// <param name="ability">Ability to access.</param>
+    /// <returns>True if double triggering is enabled. False otherwise.</returns>
     public static bool GetTriggersOncePerStack(this Ability ability)
     {
         AbilityInfo abilityInfo = AllAbilityInfos.AbilityByID(ability);
         return abilityInfo.GetTriggersOncePerStack();
     }
     /// <summary>
-    /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
+    /// Gets the value of <c>TriggersOncePerStack</c>. Returns false if <c>TriggersOncePerStack</c> has not been set.
     /// </summary>
     /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
-    /// <returns>Whether double triggering is disabled.</returns>
+    /// <returns>True if double triggering is enabled. False otherwise.</returns>
     public static bool GetTriggersOncePerStack(this AbilityInfo abilityInfo)
     {
         return abilityInfo.GetExtendedPropertyAsBool("TriggersOncePerStack") ?? false;
@@ -695,19 +744,19 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// Gets the value of <c>HideSingleStacks</c>. Returns false if <c>HideSingleStacks</c> has not been set.
     /// </summary>
-    /// <param name="abilityInfo">Ability to access.</param>
-    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    /// <param name="ability">Ability to access.</param>
+    /// <returns>Whether single stacks of this ability will be hidden when added to <c>hiddenAbilities</c>.</returns>
     public static bool GetHideSingleStacks(this Ability ability)
     {
         return AllAbilityInfos.AbilityByID(ability).GetHideSingleStacks();
     }
     /// <summary>
-    /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
+    /// Gets the value of <c>HideSingleStacks</c>. Returns false if <c>HideSingleStacks</c> has not been set.
     /// </summary>
     /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
-    /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
+    /// <returns>Whether single stacks of this ability will be hidden when added to <c>hiddenAbilities</c>.</returns>
     public static bool GetHideSingleStacks(this AbilityInfo abilityInfo)
     {
         return abilityInfo.GetExtendedPropertyAsBool("HideSingleStacks") ?? false;
@@ -717,9 +766,9 @@ public static class AbilityExtensions
     #region ExtendedProperties
 
     /// <summary>
-    /// Adds a custom property value to the AbilityInfo.
+    /// Adds a custom property value to the <see cref="AbilityInfo"/>.
     /// </summary>
-    /// <param name="info">Ability to access.</param>
+    /// <param name="info"><see cref="AbilityInfo"/> to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
     /// <param name="value">The value of the property.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
@@ -729,9 +778,9 @@ public static class AbilityExtensions
         return info;
     }
     /// <summary>
-    /// Adds a custom property value to the FullAbility's AbilityInfo - intended as a shorthand for when modders are first adding abilities to the game.
+    /// Adds a custom property value to the <see cref="FullAbility"/>'s info field - intended as a shorthand for when modders are first adding abilities to the game.
     /// </summary>
-    /// <param name="fullAbility">FullAbility object to access.</param>
+    /// <param name="fullAbility"><see cref="FullAbility"/> object to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
     /// <param name="value">The value of the property.</param>
     /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
@@ -755,7 +804,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets a custom property value from the card.
     /// </summary>
-    /// <param name="info">Ability to access.</param>
+    /// <param name="info"><see cref="AbilityInfo"/> to access.</param>
     /// <param name="propertyName">The name of the property to get the value of.</param>
     /// <returns>The retrieved property if it exists.</returns>
     public static string GetExtendedProperty(this AbilityInfo info, string propertyName)
@@ -778,7 +827,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets a custom property as an int (can by null)
     /// </summary>
-    /// <param name="info">Ability to access.</param>
+    /// <param name="info"><see cref="AbilityInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int.</returns>
     public static int? GetExtendedPropertyAsInt(this AbilityInfo info, string propertyName)
@@ -801,7 +850,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets a custom property as a float (can by null)
     /// </summary>
-    /// <param name="info">Ability to access.</param>
+    /// <param name="info"><see cref="AbilityInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float.</returns>
     public static float? GetExtendedPropertyAsFloat(this AbilityInfo info, string propertyName)
@@ -824,7 +873,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets a custom property as a boolean (can be null)
     /// </summary>
-    /// <param name="info">Ability to access.</param>
+    /// <param name="info"><see cref="AbilityInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean.</returns>
     public static bool? GetExtendedPropertyAsBool(this AbilityInfo info, string propertyName)
