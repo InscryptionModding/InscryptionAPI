@@ -4,14 +4,28 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Class for handling custom death cards.
+/// </summary>
 [HarmonyPatch]
 public static class DeathCardManager
 {
+    /// <summary>
+    /// The prefix used by the API to demark custom death cards added through the DeathCardManager.
+    /// </summary>
     public const string CardPrefix = "apiDeathCard";
+    /// <summary>
+    /// A list of all API-added death cards
+    /// </summary>
     public static List<CardInfo> APIDeathCards => CardManager.AllCardsCopy.FindAll(x => x.ModPrefixIs(CardPrefix));
     private static readonly List<CardModificationInfo> NewDefaultDeathCards = new();
     private static readonly List<CardModificationInfo> NewAscensionDeathMods = new();
 
+    /// <summary>
+    /// Adds a death card to the list of default death cards available at the start of each run.
+    /// </summary>
+    /// <param name="deathCardMod">The CardModificationInfo containing the death card data.</param>
+    /// <param name="addToAscension">If true, will add deathCardMod to the list of ascension death cards rather than the default (Part 1) pool.</param>
     public static void AddDefaultDeathCard(CardModificationInfo deathCardMod, bool addToAscension = false)
     {
         if (addToAscension)
@@ -27,6 +41,12 @@ public static class DeathCardManager
             info.lostEye == compareAgainst.lostEye &&
             info.mouthIndex == compareAgainst.mouthIndex;
     }
+    /// <summary>
+    /// Gets the name of an API-added death card from the given CardModificationInfo. Can also create a new death card using the given CardModificationInfo.
+    /// </summary>
+    /// <param name="mod">The CardModificationInfo to access.</param>
+    /// <param name="createNewCard">Whether or not to create a new death card with the given name. Appends a number for duplicate card names.</param>
+    /// <returns>The internal name of the death card associated with the given CardModificationInfo.</returns>
     public static string GetAPIDeathCardName(CardModificationInfo mod, bool createNewCard = false)
     {
         string cleanId = mod.CleanId(); // use the clean singleton id to reduce chance of duplicate name
