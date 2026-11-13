@@ -11,27 +11,53 @@ namespace InscryptionAPI.Card;
 /// A custom class implementing shield-giving behaviour.
 /// With the most recent API versions, shield-giving sigils like DeathShield/Nano Armour/ Armoured can now stack and instead use a counter rather than a simple boolean.
 /// </summary>
-public abstract class DamageShieldBehaviour : AbilityBehaviour
-{
+public abstract class DamageShieldBehaviour : AbilityBehaviour {
+    /// <summary>
+    /// Field for modifying the number of shields this ability provides.
+    /// </summary>
     public int numShields; // modifiable version of NumShields
+    /// <summary>
+    /// Getter that returns the actual number of remaining shields this ability provides (no negative shields).
+    /// </summary>
     public int NumShields => Mathf.Max(0, numShields);
-    public abstract int StartingNumShields { get; } // how many shields this sigil will provide initially
+    /// <summary>
+    /// How many shields this sigil will provide when first added to a card.
+    /// </summary>
+    public abstract int StartingNumShields { get; }
+    /// <summary>
+    /// If this ability is providing any shields.
+    /// </summary>
+    /// <returns>True if this ability has at least one remaining shield.</returns>
     public bool HasShields() => NumShields > 0;
 
+    /// <summary>
+    /// For internal use: determines when the ability has called Awake and had its starting shields initialised.
+    /// </summary>
     public bool initialised = false;
 
+    /// <summary>
+    /// The base Awake method but made overrideable to avoid issues with setting the initial number of shields.
+    /// </summary>
     public virtual void Awake()
     {
-        if (base.Card != null)
-            numShields = StartingNumShields;
+        if (base.Card != null) {
+            ResetShields(true);
+        }
 
         initialised = true;
     }
+    /// <summary>
+    /// The base Start method but made overrideable.
+    /// </summary>
     public virtual void Start()
     {
 
     }
-
+    /// <summary>
+    /// Method for adding more shield count to this ability. Resets the loseShields Status boolean if the net shields are > 0.
+    /// </summary>
+    /// <param name="amount">How many more shields this ability should give.</param>
+    /// <param name="updateDisplay">Whether or not to update the card's render.</param>
     public virtual void AddShields(int amount, bool updateDisplay = true)
     {
         numShields += amount;
@@ -43,6 +69,11 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
             base.Card.OnStatsChanged();
         }
     }
+    /// <summary>
+    /// Method for removing shield count from this ability.
+    /// </summary>
+    /// <param name="amount">How many shields to remove from this ability.</param>
+    /// <param name="updateDisplay">Whether or not to update the card's render.</param>
     public virtual void RemoveShields(int amount, bool updateDisplay = true)
     {
         numShields -= amount;
@@ -62,6 +93,10 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
             base.Card.OnStatsChanged();
         }
     }
+    /// <summary>
+    /// Sets the current number of shields back to its starting value.
+    /// </summary>
+    /// <param name="updateDisplay"></param>
     public virtual void ResetShields(bool updateDisplay)
     {
         int currentShields = NumShields;
@@ -83,29 +118,92 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour
 /// <summary>
 /// A custom class combining [DamageShieldBehaviour](InscryptionAPI.Card.DamageShieldBehaviour) and [ExtendedActivatedBehaviour](InscryptionAPI.Card.ExtendedActivatedBehaviour).
 /// </summary>
-public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
-{
+public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
+    /// <summary>
+    /// Stores the total Blood activation cost modifier.
+    /// </summary>
     public int bloodCostMod;
+    /// <summary>
+    /// Stores the total Bones activation cost modifier.
+    /// </summary>
     public int bonesCostMod;
+    /// <summary>
+    /// Stores the total Energy activation cost modifier.
+    /// </summary>
     public int energyCostMod;
-    public List<GemType> gemsCostMod;
+    /// <summary>
+    /// Stores the total added Gems activation requirement modifier.
+    /// </summary>
+    public List<GemType> gemsCostMod = new();
+    /// <summary>
+    /// Stores the total removed Gems activation requirement modifier.
+    /// </summary>
+    public List<GemType> gemsCostRemovedMod = new();
+    /// <summary>
+    /// Stores the total Blood activation cost modifier.
+    /// </summary>
     public int healthCostMod;
 
-    public virtual int StartingBloodCost { get; }
-    public virtual int StartingBonesCost { get; }
-    public virtual int StartingEnergyCost { get; }
-    public virtual List<GemType> StartingGemsCost { get; }
+    /// <summary>
+    /// Initial amount of Blood needed to activate this ability.
+    /// </summary>
+    public virtual int StartingBloodCost { get; } = 0;
+    /// <summary>
+    /// Initial amount of Bones needed to activate this ability.
+    /// </summary>
+    public virtual int StartingBonesCost { get; } = 0;
+    /// <summary>
+    /// Initial amount of Energy needed to activate this ability.
+    /// </summary>
+    public virtual int StartingEnergyCost { get; } = 0;
+    /// <summary>
+    /// Initial types of Gems needed to activate this ability.
+    /// </summary>
+    public virtual List<GemType> StartingGemsCost { get; } = null;
+    /// <summary>
+    /// Initial amount of Health needed to activate this ability.
+    /// </summary>
     public virtual int StartingHealthCost { get; }
+    /// <summary>
+    /// Amount the Blood activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateBloodCostMod { get; set; }
+    /// <summary>
+    /// Amount the Bones activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateBonesCostMod { get; set; }
+    /// <summary>
+    /// Amount the Energy activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateEnergyCostMod { get; set; }
+    /// <summary>
+    /// What Gems are added to the activation requirement whenever this ability is activated.
+    /// </summary>
     public virtual List<GemType> OnActivateGemsCostMod { get; set; }
+    /// <summary>
+    /// What Gems are removed from the activation requirement whenever this ability is activated.
+    /// </summary>
     public virtual bool OnActivateGemsCostModRemovesGems { get; set; }
+    /// <summary>
+    /// Amount the Health activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateHealthCostMod { get; set; }
 
+    /// <summary>
+    /// How much Blood this ability currently costs to activate.
+    /// </summary>
     public int BloodCost => Mathf.Max(0, StartingBloodCost + bloodCostMod);
+    /// <summary>
+    /// How much Bones this ability currently costs to activate.
+    /// </summary>
     public int BonesCost => Mathf.Max(0, StartingBonesCost + bonesCostMod);
+    /// <summary>
+    /// How much Energy this ability currently costs to activate.
+    /// </summary>
     public int EnergyCost => Mathf.Max(0, StartingEnergyCost + energyCostMod);
+    /// <summary>
+    /// What Gems this ability currently requires to activate.
+    /// </summary>
     public List<GemType> GemsCost {
         get {
             List<GemType> retval = new();
@@ -113,24 +211,45 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
                 retval.AddRange(StartingGemsCost);
             }
             retval.AddRange(gemsCostMod);
+            foreach (GemType gem in gemsCostRemovedMod) {
+                retval.Remove(gem);
+            }
             return retval;
         }
     }
+    /// <summary>
+    /// How much Health this ability currently costs to activate.
+    /// </summary>
     public int HealthCost => Mathf.Max(0, StartingHealthCost + healthCostMod);
 
-    public Dictionary<CardInfo, CardSlot> currentSacrificedCardInfos = new();
+    /// <summary>
+    /// Dictionary of CardSlots that have been selected for sacrifices and the associated CardInfo.
+    /// </summary>
+    public Dictionary<CardSlot, CardInfo> currentSacrificedCardInfos = new();
 
-    public virtual bool RespondsToPostResolveOnBoard()
-    {
+    /// <summary>
+    /// Determines if the PostResolveOnBoard trigger should activate.
+    /// </summary>
+    /// <returns>True if PostResolveOnBoard should activate.</returns>
+    public virtual bool RespondsToPostResolveOnBoard() {
         return false;
     }
-    public virtual IEnumerator OnPostResolveOnBoard()
-    {
+    /// <summary>
+    /// Trigger that's called after card's with this ability resolve on the board.
+    /// Used since ResolveOnBoard is sealed to prevent the ability breaking.
+    /// </summary>
+    public virtual IEnumerator OnPostResolveOnBoard() {
         yield break;
     }
+    /// <summary>
+    /// If the ResolveOnBoard trigger should be called.
+    /// </summary>
+    /// <returns>True if it should be activated.</returns>
     public sealed override bool RespondsToResolveOnBoard() => RespondsToPostResolveOnBoard() || LearnMechanic();
-    public sealed override IEnumerator OnResolveOnBoard()
-    {
+    /// <summary>
+    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any PostResolveOnBoard logic.
+    /// </summary>
+    public sealed override IEnumerator OnResolveOnBoard() {
         if (LearnMechanic()) // Act 2 tutorial dialogue
         {
             yield return new WaitForSeconds(0.15f);
@@ -150,42 +269,44 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
         if (RespondsToPostResolveOnBoard())
             yield return OnPostResolveOnBoard();
     }
-
+    /// <summary>
+    /// Whetehr this ability should be triggered.
+    /// </summary>
+    /// <param name="ability">The ability being checked for activation.</param>
+    /// <returns>True if this ability is being checked for activation.</returns>
     public sealed override bool RespondsToActivatedAbility(Ability ability) => this.Ability == ability;
-    public sealed override IEnumerator OnActivatedAbility()
-    {
-        if (CanAfford() && CanActivate())
-        {
-            if (BloodCost > 0)
-            {
+    /// <summary>
+    /// The logic sequence for when this ability is activated.
+    /// Contains logic for paying activation costs.
+    /// </summary>
+    public sealed override IEnumerator OnActivatedAbility() {
+        if (CanAfford() && CanActivate()) {
+            if (BloodCost > 0) {
                 yield return ChooseSacrifices();
 
                 if (Singleton<BoardManager>.Instance.CancelledSacrifice)
                     yield break;
             }
 
-            if (HealthCost > 0)
-            {
+            if (HealthCost > 0) {
                 base.Card.Anim.LightNegationEffect();
                 base.Card.Status.damageTaken += HealthCost;
             }
 
-            if (EnergyCost > 0)
-            {
+            if (EnergyCost > 0) {
                 yield return Singleton<ResourcesManager>.Instance.SpendEnergy(EnergyCost);
-                if (Singleton<ConduitCircuitManager>.Instance != null)
-                {
+                if (Singleton<ConduitCircuitManager>.Instance != null) {
                     CardSlot cardSlot = Singleton<BoardManager>.Instance.GetSlots(getPlayerSlots: true).Find((CardSlot x) => x.Card != null && x.Card.HasAbility(Ability.ConduitEnergy));
-                    if (cardSlot != null)
-                    {
+                    if (cardSlot != null) {
                         ConduitEnergy component = cardSlot.Card.GetComponent<ConduitEnergy>();
                         if (component != null && component.CompletesCircuit())
                             yield return Singleton<ResourcesManager>.Instance.AddEnergy(EnergyCost);
                     }
                 }
             }
-            if (BonesCost > 0)
+            if (BonesCost > 0) {
                 yield return Singleton<ResourcesManager>.Instance.SpendBones(BonesCost);
+            }
 
             yield return new WaitForSeconds(0.1f);
             yield return base.PreSuccessfulTriggerSequence();
@@ -194,15 +315,13 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
 
             if (HealthCost > 0) // card still exists and has 0 Health
             {
-                if (base.Card && base.Card.Health <= 0 && !base.Card.Dead)
-                {
+                if (base.Card && base.Card.Health <= 0 && !base.Card.Dead) {
                     yield return base.Card.Die(true);
                     yield return PostActivate();
                     currentSacrificedCardInfos.Clear();
                     yield break;
                 }
             }
-
             int energyMod = OnActivateEnergyCostMod;
             int bonesMod = OnActivateBonesCostMod;
             List<GemType> gemsMod = OnActivateGemsCostMod;
@@ -229,22 +348,31 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
             yield return PostActivate();
             currentSacrificedCardInfos.Clear();
         }
-        else
-        {
+        else {
             base.Card.Anim.LightNegationEffect();
             AudioController.Instance.PlaySound2D("toneless_negate", MixerGroup.GBCSFX, 0.2f);
             yield return new WaitForSeconds(0.25f);
         }
     }
-    public virtual IEnumerator PostActivate()
-    {
+    /// <summary>
+    /// Sequence called after the ability finishes activation.
+    /// </summary>
+    /// <returns></returns>
+    public virtual IEnumerator PostActivate() {
         yield break;
     }
+    /// <summary>
+    /// Whether or not this ability can be activated.
+    /// </summary>
+    /// <returns>true if this ability can be activated.</returns>
     public virtual bool CanActivate() => true;
+    /// <summary>
+    /// Player-implemented sequence for what this ability will actually do when activated.
+    /// </summary>
+    /// <returns></returns>
     public abstract IEnumerator Activate();
 
-    private IEnumerator ChooseSacrifices()
-    {
+    private IEnumerator ChooseSacrifices() {
         BoardManager manager = Singleton<BoardManager>.Instance;
         List<CardSlot> validSlots = manager.GetCardSlots(
             !base.Card.OpponentCard, x => x.Card != null & x.Card != base.Card);
@@ -258,10 +386,8 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
         manager.CancelledSacrifice = false;
         manager.LastSacrificesInfo.Clear();
         manager.SetQueueSlotsEnabled(false);
-        foreach (CardSlot allSlot in manager.AllSlots.Where(x => x.Card != base.Card))
-        {
-            if (!allSlot.IsPlayerSlot || allSlot.Card == null)
-            {
+        foreach (CardSlot allSlot in manager.AllSlots.Where(x => x.Card != base.Card)) {
+            if (!allSlot.IsPlayerSlot || allSlot.Card == null) {
                 allSlot.SetEnabled(enabled: false);
                 allSlot.ShowState(HighlightedInteractable.State.NonInteractable);
             }
@@ -269,14 +395,12 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
                 allSlot.Card.Anim.SetShaking(true);
         }
         yield return manager.SetSacrificeMarkersShown(BloodCost);
-        while (manager.GetValueOfSacrifices(manager.currentSacrifices) < BloodCost && !manager.cancelledPlacementWithInput)
-        {
+        while (manager.GetValueOfSacrifices(manager.currentSacrifices) < BloodCost && !manager.cancelledPlacementWithInput) {
             manager.SetSacrificeMarkersValue(manager.currentSacrifices.Count);
             yield return new WaitForEndOfFrame();
         }
 
-        foreach (CardSlot allSlot2 in manager.AllSlots)
-        {
+        foreach (CardSlot allSlot2 in manager.AllSlots) {
             allSlot2.SetEnabled(false);
             if (allSlot2.IsPlayerSlot && allSlot2.Card != null)
                 allSlot2.Card.Anim.SetShaking(shaking: false);
@@ -285,14 +409,11 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
         foreach (CardSlot currentSacrifice in manager.currentSacrifices)
             manager.LastSacrificesInfo.Add(currentSacrifice.Card.Info);
 
-        if (manager.cancelledPlacementWithInput)
-        {
+        if (manager.cancelledPlacementWithInput) {
             manager.HideSacrificeMarkers();
 
-            foreach (CardSlot slot in manager.GetSlots(getPlayerSlots: true))
-            {
-                if (slot.Card != null)
-                {
+            foreach (CardSlot slot in manager.GetSlots(getPlayerSlots: true)) {
+                if (slot.Card != null) {
                     slot.Card.Anim.SetSacrificeHoverMarkerShown(false);
                     if (manager.currentSacrifices.Contains(slot))
                         slot.Card.Anim.SetMarkedForSacrifice(false);
@@ -302,25 +423,21 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
             Singleton<InteractionCursor>.Instance.ClearForcedCursorType();
             manager.CancelledSacrifice = true;
         }
-        else
-        {
+        else {
             manager.SetSacrificeMarkersValue(manager.GetValueOfSacrifices(manager.currentSacrifices));
             yield return new WaitForSeconds(0.2f);
             manager.HideSacrificeMarkers();
-            foreach (CardSlot currentSacrifice2 in manager.currentSacrifices)
-            {
-                if (currentSacrifice2.Card != null && !currentSacrifice2.Card.Dead)
-                {
+            foreach (CardSlot currentSacrifice2 in manager.currentSacrifices) {
+                if (currentSacrifice2.Card != null && !currentSacrifice2.Card.Dead) {
                     manager.SacrificesMadeThisTurn++;
-                    currentSacrificedCardInfos.Add(currentSacrifice2.Card.Info, currentSacrifice2);
+                    currentSacrificedCardInfos.Add(currentSacrifice2, currentSacrifice2.Card.Info);
                     yield return currentSacrifice2.Card.Sacrifice();
                     Singleton<ViewManager>.Instance.SwitchToView(manager.BoardView);
                 }
             }
         }
         manager.SetQueueSlotsEnabled(slotsEnabled: true);
-        foreach (CardSlot allSlot3 in manager.AllSlots)
-        {
+        foreach (CardSlot allSlot3 in manager.AllSlots) {
             allSlot3.SetEnabled(enabled: true);
             allSlot3.ShowState(HighlightedInteractable.State.Interactable);
         }
@@ -343,10 +460,8 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
         }
         return false;
     }
-
     private bool LearnMechanic() => SaveManager.SaveFile.IsPart2 && !ProgressionData.LearnedMechanic(MechanicsConcept.GBCActivatedAbilities);
-    private int SacrificeValue()
-    {
+    private int SacrificeValue() {
         return Singleton<BoardManager>.Instance.GetValueOfSacrifices(
             Singleton<BoardManager>.Instance.GetCardSlots(!base.Card.OpponentCard, x => x.Card != null && x.Card != base.Card));
     }
@@ -355,8 +470,13 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour
 /// <summary>
 /// A custom AbilityBehaviour that's attached to the DeathShield ability so it functions with the API's shield logic changes.
 /// </summary>
-public class APIDeathShield : DamageShieldBehaviour
-{
+public class APIDeathShield : DamageShieldBehaviour {
+    /// <summary>
+    /// This subclass's provided ability.
+    /// </summary>
     public override Ability Ability => Ability.DeathShield;
+    /// <summary>
+    /// Starting shields is equal to the number of stacks of Nano Armour/Armoured
+    /// </summary>
     public override int StartingNumShields => base.Card.GetAbilityStacks(Ability); // look ma, I stack!
 }
