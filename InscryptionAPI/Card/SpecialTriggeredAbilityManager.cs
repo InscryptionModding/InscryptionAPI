@@ -32,7 +32,7 @@ public static class SpecialTriggeredAbilityManager {
         public readonly Type AbilityBehaviour;
 
         /// <summary>
-        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">The unique ID for this special ability.</param>
         /// <param name="abilityBehaviour">A subclass of SpecialCardBehaviour that implements the logic for the ability.</param>
@@ -43,7 +43,7 @@ public static class SpecialTriggeredAbilityManager {
         }
 
         /// <summary>
-        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="guid">The GUID of the mod that added this.</param>
         /// <param name="name">The name of this special ability.</param>

@@ -54,7 +54,7 @@ public static class CardCostManager {
         /// <summary>
         /// Retrieves the correct texture corresponding to CardInfo's cost. Used in the 3D Acts (Act 1, Act 3, etc.).
         /// Parameters:
-        ///     int: how much of the custom cost the CardInfo/PlayableCard needs to be played.
+        ///     int: how much of the custom cost the <c>CardInfo</c>/PlayableCard needs to be played.
         ///     CardInfo: the base CardInfo of the current card.
         ///     PlayableCard: the PlayableCard possessing the base CardInfo. Can be null.
         /// Returns:
@@ -64,7 +64,7 @@ public static class CardCostManager {
         /// <summary>
         /// Retrieves the correct texture corresponding to CardInfo's cost. Used in Act 2.
         /// Parameters:
-        ///     int: how much of the custom cost the CardInfo/PlayableCard needs to be played.
+        ///     int: how much of the custom cost the <c>CardInfo</c>/PlayableCard needs to be played.
         ///     CardInfo: the base CardInfo of the current card.
         ///     PlayableCard: the PlayableCard possessing the base CardInfo. Can be null.
         /// Returns:
@@ -119,8 +119,8 @@ public static class CardCostManager {
 
             return GetCostTexture(amount, cardInfo, playableCard);
         }
-        /// <param name="amount">The cost value of the CardInfo being checked.</param>
-        /// <param name="cardInfo">The CardInfo being checked.</param>
+        /// <param name="amount">The cost value of the <c>CardInfo</c> being checked.</param>
+        /// <param name="cardInfo">The <c>CardInfo</c> being checked.</param>
         /// <param name="playableCard">The PlayableCard associated with the card. Can be null.</param>
         /// <returns>The texture for this cost based on the amount. Used in Act 2.</returns>
         public Texture2D PixelCostTexture(int amount, CardInfo cardInfo, PlayableCard playableCard)
@@ -139,8 +139,8 @@ public static class CardCostManager {
 
             return GetCostTier(amount);
         }
-        /// <param name="amount">The cost value of the CardInfo being checked.</param>
-        /// <param name="card">The CardInfo being checked.</param>
+        /// <param name="amount">The cost value of the <c>CardInfo</c> being checked.</param>
+        /// <param name="card">The <c>CardInfo</c> being checked.</param>
         /// <param name="hand">The list of other cards in the player's hand.</param>
         /// <returns>Whether or not the provided card can be played by turn 2.</returns>
         public bool CanBePlayedByTurn2WithHand(int amount, CardInfo card, List<CardInfo> hand)
@@ -152,7 +152,7 @@ public static class CardCostManager {
         }
 
         /// <summary>
-        /// Creates a new instance of FullCardCost and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullCardCost and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="modGUID">The GUID of the mod that added this.</param>
         /// <param name="costName">The unique id/name for this cost.</param>
@@ -189,7 +189,7 @@ public static class CardCostManager {
         }
 
         /// <summary>
-        /// Creates a new instance of FullCardCost and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullCardCost and registers its behaviour type with the <see cref="TypeManager"/>.
         /// Simplified version of the full constructor.
         /// </summary>
         /// <param name="modGUID">The GUID of the mod that added this.</param>
@@ -806,7 +806,7 @@ public static class CardCostManager {
     /// For use in the Act 1 card cost choice node.
     /// </summary>
     /// <param name="randomSeed">The random seed for the current run.</param>
-    /// <returns>The CardInfo of a valid Energy card, or null if none exists.</returns>
+    /// <returns>The <c>CardInfo</c> of a valid Energy card, or null if none exists.</returns>
     public static CardInfo GetRandomChoosableEnergyCard(int randomSeed)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature).FindAll(x => x.energyCost > 0);
@@ -818,7 +818,7 @@ public static class CardCostManager {
     /// </summary>
     /// <param name="randomSeed">The random seed for the current run.</param>
     /// <param name="gem">The gem colour valid cards must have to be valid.</param>
-    /// <returns>The CardInfo of a valid Gems card, or null if none exists.</returns>
+    /// <returns>The <c>CardInfo</c> of a valid Gems card, or null if none exists.</returns>
     public static CardInfo GetRandomChoosableMoxCard(int randomSeed, GemType gem)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature).FindAll(x => x.gemsCost.Count > 0 && x.gemsCost.Contains(gem));
@@ -831,7 +831,7 @@ public static class CardCostManager {
     /// </summary>
     /// <param name="randomSeed">The random seed for the current run.</param>
     /// <param name="customCosts">The List of custom costs to check for a random card for.</param>
-    /// <returns>The CardInfo of a valid custom cost card, or null if none exists.</returns>
+    /// <returns>The <c>CardInfo</c> of a valid custom cost card, or null if none exists.</returns>
     public static CardInfo GetRandomChoosableCustomCostCard(int randomSeed, List<FullCardCost> customCosts)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature)
@@ -849,7 +849,7 @@ public static class CardCostManager {
     /// <param name="randomSeed">The random seed for the current run.</param>
     /// <param name="customCost">The custom cost valid cards will have.</param>
     /// <param name="costAmounts">The collection of cost amounts to search for.</param>
-    /// <returns>The CardInfo of a valid card, or null if none exists.</returns>
+    /// <returns>The <c>CardInfo</c> of a valid card, or null if none exists.</returns>
     public static CardInfo GetRandomChoosableCustomCostCardWithAmounts(int randomSeed, FullCardCost customCost, params int[] costAmounts)
     {
         List<CardInfo> list = CardLoader.GetUnlockedCards(CardMetaCategory.ChoiceNode, CardTemple.Nature)

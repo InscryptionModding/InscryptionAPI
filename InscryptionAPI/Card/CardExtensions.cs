@@ -27,9 +27,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of abilities to the card. Abilities can be added multiple times.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="abilities">The abilities to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddAbilities(this CardInfo info, params Ability[] abilities)
     {
         info.abilities ??= new();
@@ -40,9 +40,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of appearance behaviors to the card. Duplicate appearance behaviors are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="appearances">The appearances to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
     {
         info.appearanceBehaviour ??= new();
@@ -55,9 +55,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of decals to the card. Duplicate decals are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="decals">The decals to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddDecal(this CardInfo info, params Texture[] decals)
     {
         info.decals ??= new();
@@ -71,9 +71,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of decals to the card. Duplicate decals are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="decals">The paths to the .png files containing the decals (relative to the Plugins directory).</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddDecal(this CardInfo info, params string[] decals)
     {
         return decals == null
@@ -85,9 +85,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of metacategories to the card. Duplicate metacategories are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="categories">The categories to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddMetaCategories(this CardInfo info, params CardMetaCategory[] categories)
     {
         info.metaCategories ??= new();
@@ -100,9 +100,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of special abilities to the card. Duplicate special abilities are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="abilities">The abilities to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
     {
         info.specialAbilities ??= new();
@@ -115,9 +115,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of traits to the card. Duplicate traits are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="traits">The traits to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddTraits(this CardInfo info, params Trait[] traits)
     {
         info.traits ??= new();
@@ -130,9 +130,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Adds any number of tribes to the card. Duplicate tribes are ignored.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="tribes">The tribes to add.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo AddTribes(this CardInfo info, params Tribe[] tribes)
     {
         info.tribes ??= new();
@@ -184,9 +184,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of special abilities from the card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="abilities">The special abilities to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveSpecialAbilities(this CardInfo info, params SpecialTriggeredAbility[] abilities)
     {
         if (info.specialAbilities?.Count > 0)
@@ -202,9 +202,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of special abilities from the card. Will remove one instance of each passed ability; multiple instances can be passed.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="abilities">The special abilities to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveSpecialAbilitiesSingle(this CardInfo info, params SpecialTriggeredAbility[] abilities)
     {
         if (info.specialAbilities?.Count > 0)
@@ -220,9 +220,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of appearance behaviors from the card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="appearances">The appearances to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveAppearances(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
     {
         if (info.appearanceBehaviour?.Count > 0)
@@ -238,9 +238,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of appearance behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="appearances">The appearances to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveAppearancesSingle(this CardInfo info, params CardAppearanceBehaviour.Appearance[] appearances)
     {
         if (info.appearanceBehaviour?.Count > 0)
@@ -256,9 +256,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of decals from the card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="decals">The decals to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveDecals(this CardInfo info, params Texture[] decals)
     {
         if (info.decals?.Count > 0)
@@ -274,9 +274,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of decals behaviors from the card. Will remove one instance of each passed decals; multiple instances can be passed.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="decals">The decals to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveDecalsSingle(this CardInfo info, params Texture[] decals)
     {
         if (info.decals?.Count > 0)
@@ -292,9 +292,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of metacategories from the card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="categories">The categories to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveMetaCategories(this CardInfo info, params CardMetaCategory[] categories)
     {
         if (info.metaCategories?.Count > 0)
@@ -310,9 +310,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of metacategories behaviors from the card. Will remove one instance of each passed appearance; multiple instances can be passed.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="categories">The categories to remove.</param>
-    /// <returns>The same CardInfo so a chain can continue.</returns>
+    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
     public static CardInfo RemoveMetaCategoriesSingle(this CardInfo info, params CardMetaCategory[] categories)
     {
         if (info.metaCategories?.Count > 0)
@@ -392,7 +392,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the GUID of the mod that created this card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <returns>The GUID of the mod that created this card or null if it wasn't found/is from the base game.</returns>
     public static string GetModTag(this CardInfo info) => info.GetExtendedProperty("CallStackModGUID");
 
@@ -402,16 +402,16 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the card name prefix for this card.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <returns>The mod prefix for this card, or null if it wasn't found/is from the base game.</returns>
     public static string GetModPrefix(this CardInfo info) => info.GetExtendedProperty("ModPrefix");
 
     /// <summary>
     /// Checks whether the card's mod prefix is equal to the given string.
     /// </summary>
-    /// <param name="info">CardInfo to access.</param>
+    /// <param name="info"><c>CardInfo</c> to access.</param>
     /// <param name="prefixToMatch">The prefix to check for.</param>
-    /// <returns>True if the CardInfo's mod prefix equals prefixToMatch.</returns>
+    /// <returns>True if the <c>CardInfo</c>'s mod prefix equals prefixToMatch.</returns>
     public static bool ModPrefixIs(this CardInfo info, string prefixToMatch) => info.GetExtendedProperty("ModPrefix") == prefixToMatch;
 
     #endregion

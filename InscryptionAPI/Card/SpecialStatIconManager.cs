@@ -57,7 +57,7 @@ public static class StatIconManager
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
         /// <summary>
-        /// Creates a new instance of FullStatIcon and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullStatIcon and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">The unique ID for this stat icon.</param>
         /// <param name="abilityId">The unique ID for this stat icon's associated special ability.</param>

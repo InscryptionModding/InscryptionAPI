@@ -81,8 +81,9 @@ public static class AbilityManager
 
         internal static ConditionalWeakTable<AbilityInfo, FullAbility> ReverseMapper = new();
 
+        // [TypeManager](InscryptionAPI.Guid.TypeManager)
         /// <summary>
-        /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullAbility and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">The unique ID for this ability.</param>
         /// <param name="info">The description object for this ability.</param>
@@ -94,7 +95,7 @@ public static class AbilityManager
         }
 
         /// <summary>
-        /// Creates a new instance of FullAbility and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullAbility and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="modGUID">The GUID of the mod that added this.</param>
         /// <param name="id">The unique ID for this ability.</param>

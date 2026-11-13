@@ -1,4 +1,4 @@
-﻿using DiskCardGame;
+using DiskCardGame;
 using System.Collections;
 
 namespace InscryptionAPI.Helpers.Extensions;
@@ -34,7 +34,7 @@ public static class CardSlotExtensions
     /// Create a card in a specific slot from the CardSlot object. A much more robust way that's the same as `yield return BoardManager.Instance.CreateCardInSlot()`.
     /// </summary>
     /// <param name="slotToSpawnIn">The slot to spawn in.</param>
-    /// <param name="cardInfo">The CardInfo object to spawn in said slot.</param>
+    /// <param name="cardInfo">The <c>CardInfo</c> object to spawn in said slot.</param>
     /// <param name="transitionLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
     /// <param name="resolveTriggers">Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</param>
     /// <returns>The enumeration of the card being placed in the slot.</returns>

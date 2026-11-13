@@ -335,15 +335,15 @@ public static class CardManager
     /// <summary>
     /// Retrieves the dictionary of card extended properties associated with the given CardInfo.
     /// </summary>
-    /// <param name="card">The CardInfo whose extended properties we wish to retrieve.</param>
+    /// <param name="card">The <c>CardInfo</c> whose extended properties we wish to retrieve.</param>
     /// <returns>The extension property dictionary for the given CardInfo. Creates and returns an empty dictionary if none exists.</returns>
     public static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
     internal static CardAltPortraits GetAltPortraits(this CardInfo card) => CardAlternatePortraits.GetOrCreateValue(card);
 
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's alternate portrait in Act 2 if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s alternate portrait in Act 2 if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the pixel alternate portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Pixel alternate portraits are added through the API; they are not a vanilla feature.
@@ -353,9 +353,9 @@ public static class CardManager
         return card.GetAltPortraits().PixelAlternatePortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait used when Steel Trap activates if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait used when Steel Trap activates if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the Steel Trap portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Steel Trap portraits are added through the API; they are not a vanilla feature.
@@ -365,9 +365,9 @@ public static class CardManager
         return card.GetAltPortraits().SteelTrapPortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait emission used when Steel Trap activates if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait emission used when Steel Trap activates if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the Steel Trap portrait emission or null if it doesn't exist.</returns>
     /// <remarks>
     /// Steel Trap portraits are added through the API; they are not a vanilla feature.
@@ -377,9 +377,9 @@ public static class CardManager
         return card.GetAltPortraits().SteelTrapPortrait.GetEmissionSprite();
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's Act 2 portrait used when Steel Trap activates if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s Act 2 portrait used when Steel Trap activates if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the pixel Steel Trap portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Pixel Steel Trap portraits are added through the API; they are not a vanilla feature.
@@ -389,9 +389,9 @@ public static class CardManager
         return card.GetAltPortraits().PixelSteelTrapPortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait used when a card's shield breaks if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait used when a card's shield breaks if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the broken shield portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Broken shield portraits are added through the API; they are not a vanilla feature.
@@ -401,9 +401,9 @@ public static class CardManager
         return card.GetAltPortraits().BrokenShieldPortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait emission used when a card's shield breaks if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait emission used when a card's shield breaks if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the broken shield portrait emission or null if it doesn't exist.</returns>
     /// <remarks>
     /// Broken shield portraits are added through the API; they are not a vanilla feature.
@@ -413,9 +413,9 @@ public static class CardManager
         return card.GetAltPortraits().BrokenShieldPortrait.GetEmissionSprite();
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's Act 2 portrait used when a card's shield breaks if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s Act 2 portrait used when a card's shield breaks if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the pixel broken shield portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Pixel broken shield portraits are added through the API; they are not a vanilla feature.
@@ -425,9 +425,9 @@ public static class CardManager
         return card.GetAltPortraits().PixelBrokenShieldPortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait used when a card on the board can be sacrificed if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait used when a card on the board can be sacrificed if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the sacrificable portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Sacrificable portraits are added through the API; they are not a vanilla feature.
@@ -437,9 +437,9 @@ public static class CardManager
         return card.GetAltPortraits().SacrificablePortrait;
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's portrait emission used when a card on the board can be sacrificed if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s portrait emission used when a card on the board can be sacrificed if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the sacrificable portrait emission or null if it doesn't exist.</returns>
     /// <remarks>
     /// Sacrificable portraits are added through the API; they are not a vanilla feature.
@@ -449,9 +449,9 @@ public static class CardManager
         return card.GetAltPortraits().SacrificablePortrait.GetEmissionSprite();
     }
     /// <summary>
-    /// Retrieves the Sprite for the CardInfo's Act 2 portrait used when a card on the board can be sacrificed if it exists.
+    /// Retrieves the Sprite for the <c>CardInfo</c>'s Act 2 portrait used when a card on the board can be sacrificed if it exists.
     /// </summary>
-    /// <param name="card">The CardInfo whose portrait we're retrieving.</param>
+    /// <param name="card">The <c>CardInfo</c> whose portrait we're retrieving.</param>
     /// <returns>The Sprite for the pixel sacrificable portrait or null if it doesn't exist.</returns>
     /// <remarks>
     /// Pixel sacrificable portraits are added through the API; they are not a vanilla feature.
@@ -611,8 +611,8 @@ public static class CardManager
     /// <summary>
     /// Adds a null check when calling GetCardByName. If the returned CardInfo is null, outputs a console log error.
     /// </summary>
-    /// <param name="info">The CardInfo being returned by GetCardByName.</param>
-    /// <param name="cardInfoName">The internal name of the CardInfo attempting to be retrieved.</param>
+    /// <param name="info">The <c>CardInfo</c> being returned by GetCardByName.</param>
+    /// <param name="cardInfoName">The internal name of the <c>CardInfo</c> attempting to be retrieved.</param>
     /// <returns>The return value of GetCardByName.</returns>
     public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
     {

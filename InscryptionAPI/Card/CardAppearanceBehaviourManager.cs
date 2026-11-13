@@ -24,7 +24,7 @@ public static class CardAppearanceBehaviourManager {
         /// </summary>
         public readonly Type AppearanceBehaviour;
         /// <summary>
-        /// Creates a new instance of FullCardAppearanceBehaviour and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// Creates a new instance of FullCardAppearanceBehaviour and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">Appearance enum id.</param>
         /// <param name="appearanceBehaviour">Type of the custom CardAppearanceBehaviour class.</param>

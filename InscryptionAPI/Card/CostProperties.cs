@@ -152,7 +152,7 @@ public static class CostProperties {
     /// Determines whether or not Gemified should reduce the blood cost on a multicost card.
     /// </summary>
     /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="bloodCost">The PlayableCard's blood cost. Defaults to using the CardInfo's blood cost if null.</param>
+    /// <param name="bloodCost">The PlayableCard's blood cost. Defaults to using the <c>CardInfo</c>'s blood cost if null.</param>
     /// <returns>True if Gemified should reduce the blood cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -166,7 +166,7 @@ public static class CostProperties {
     /// Determines whether or not Gemified should reduce the gems cost on a multicost card.
     /// </summary>
     /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="gemsCost">The PlayableCard's gems cost. Defaults to using the CardInfo's gems cost if null.</param>
+    /// <param name="gemsCost">The PlayableCard's gems cost. Defaults to using the <c>CardInfo</c>'s gems cost if null.</param>
     /// <returns>True if Gemified should reduce the gems cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -180,7 +180,7 @@ public static class CostProperties {
     /// Determines whether or not Gemified should reduce the bone cost on a multicost card.
     /// </summary>
     /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="bonesCost">The PlayableCard's bone cost. Defaults to using the CardInfo's bone cost if null.</param>
+    /// <param name="bonesCost">The PlayableCard's bone cost. Defaults to using the <c>CardInfo</c>'s bone cost if null.</param>
     /// <returns>True if Gemified should reduce the bone cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -194,7 +194,7 @@ public static class CostProperties {
     /// Determines whether or not Gemified should reduce the energy cost on a multicost card.
     /// </summary>
     /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="energyCost">The PlayableCard's energy cost. Defaults to using the CardInfo's energy cost if null.</param>
+    /// <param name="energyCost">The PlayableCard's energy cost. Defaults to using the <c>CardInfo</c>'s energy cost if null.</param>
     /// <returns>True if Gemified should reduce the energy cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -264,7 +264,7 @@ internal static class ChangeCardCostGetter
     //private static void GetCardInfoReferences(PlayableCard __instance) {
 
     //    // if this is a new PlayableCard being associated with the given CardInfo
-    //    // returns true if the CardInfo is in the table
+    //    // returns true if the <c>CardInfo</c> is in the table
     //    if (CostProperties.CardInfoToPlayableCardReferences.TryGetValue(__instance.Info, out List<WeakReference<PlayableCard>> connectedCards)) {
     //        PlayableCard card = null;
     //        for (int i = connectedCards.Count - 1; i >= 0; i--) {
@@ -302,7 +302,7 @@ internal static class AddRefreshBehaviourToCard
         refreshCostDisplay.playableCard = __instance;
 
         // if this is a new PlayableCard being associated with the given CardInfo
-        // returns true if the CardInfo is in the table
+        // returns true if the <c>CardInfo</c> is in the table
         if (CostProperties.CardInfoToCard.TryGetValue(__instance.Info, out List<WeakReference<PlayableCard>> cardList)) {
             PlayableCard card = null;
             for (int i = cardList.Count - 1; i >= 0; i--) {

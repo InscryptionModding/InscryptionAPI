@@ -29,8 +29,8 @@ public static class AbilityExtensions
     /// <summary>
     /// For internal use only.
     /// </summary>
-    /// <remarks>This is instance-based: it will use the CWT in AbilityManager to get the *instance* of FullAbility
-    /// that corresponds to this *instance* of AbilityInfo. If either of these are clones that may get GCd, then
+    /// <remarks>This is instance-based: it will use the CWT in <see cref="AbilityManager"/> to get the *instance* of <see cref="FullAbility"/>
+    /// that corresponds to this *instance* of <see cref="FullAbility"/>. If either of these are clones that may get GCd, then
     /// it would potentially be a mistake to use this helper. It should only be used internally when the implications
     /// are understood.</remarks>
     internal static FullAbility GetFullAbility(this AbilityInfo info)
@@ -42,6 +42,11 @@ public static class AbilityExtensions
         return retval;
     }
 
+    /// <summary>
+    /// Retrieves the original, unmodified rulebook description of the given <see cref="AbilityInfo"/>.
+    /// </summary>
+    /// <param name="info">The <see cref="AbilityInfo"/> to access.</param>
+    /// <returns>The original description for this ability.</returns>
     public static string GetBaseRulebookDescription(this AbilityInfo info)
     {
         FullAbility fullAbility = AllAbilities.Find(x => x.Info == info);
@@ -54,13 +59,13 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon texture for the ability.
     /// </summary>
-    /// <param name="info">The ability info to set the texture for.</param>
+    /// <param name="info">The <see cref="AbilityInfo"/> to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
-    /// <returns>The same ability info so a chain can continue.</returns>
-    /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
+    /// <exception cref="System.InvalidOperationException">Thrown if the <see cref="AbilityInfo"/> has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
+    /// if you try to do this to an instance of <see cref="AbilityInfo"/> that did not get processed through the API.</remarks>
     public static AbilityInfo SetIcon(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();
@@ -74,7 +79,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon texture for the ability.
     /// </summary>
-    /// <param name="info">The ability info to set the texture for.</param>
+    /// <param name="info">The <see cref="AbilityInfo"/> to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
     public static void SetIcon(this FullAbility info, Texture2D icon) {
         info.Texture = icon;
@@ -83,13 +88,13 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the flipped texture for the ability (used when the ability belongs to the opponent).
     /// </summary>
-    /// <param name="info">The ability info to set the texture for.</param>
+    /// <param name="info">The <see cref="AbilityInfo"/> to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
-    /// <returns>The same ability info so a chain can continue.</returns>
-    /// <exception cref="System.InvalidOperationException">Thrown if the ability info has not yet been added to the AbilityManager</exception>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
+    /// <exception cref="System.InvalidOperationException">Thrown if the <see cref="AbilityInfo"/> has not yet been added to the AbilityManager</exception>
     /// <remarks>You cannot do this unless the ability has been registered with the API. Unless the API knows about this
     /// ability, it will not have the required information to be able to process the texture, so an exception will be thrown
-    /// if you try to do this to an instance of AbilityInfo that did not get processed through the API.</remarks>
+    /// if you try to do this to an instance of <see cref="AbilityInfo"/> that did not get processed through the API.</remarks>
     public static AbilityInfo SetCustomFlippedTexture(this AbilityInfo info, Texture2D icon)
     {
         FullAbility ability = info.GetFullAbility();
@@ -103,7 +108,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the flipped texture for the ability (used when the ability belongs to the opponent).
     /// </summary>
-    /// <param name="info">The ability info to set the texture for.</param>
+    /// <param name="info">The <see cref="AbilityInfo"/> to set the texture for.</param>
     /// <param name="icon">A 49x49 texture containing the icon.</param>
     public static void SetCustomFlippedTexture(this FullAbility info, Texture2D icon)
     {
@@ -114,10 +119,10 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the icon that will be displayed for this ability icon in Act 2.
     /// </summary>
-    /// <param name="info">The instance of AbilityInfo.</param>
+    /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="icon">A 17x17 or 22x10 texture containing the icon; for regular and activated sigil icons respectively.</param>
     /// <param name="filterMode">The filter mode for the icon texture. Leave this at its default value unless you have a specific reason to change it.</param>
-    /// <returns>The same ability so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetPixelAbilityIcon(this AbilityInfo info, Texture2D icon, FilterMode? filterMode = null)
     {
         TextureHelper.SpriteType spriteType = icon.width == 22 ? TextureHelper.SpriteType.PixelActivatedAbilityIcon : TextureHelper.SpriteType.PixelAbilityIcon;
@@ -129,9 +134,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Adds one or more metacategories to the ability. Duplicate categories will not be added.
     /// </summary>
-    /// <param name="info">The instance of AbilityInfo.</param>
+    /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="categories">The metacategories to add.</param>
-    /// <returns>The same ability so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo AddMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
     {
         info.metaCategories ??= new();
@@ -142,27 +147,27 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the Part1Modular and Part1Rulebook metacategories to the ability.
+    /// Helper method: automatically adds the <c>Part1Modular</c> and <c>Part1Rulebook</c> metacategories to the ability.
     /// </summary>
-    /// <param name="info">The instance of AbilityInfo.</param>
-    /// <returns>The same ability so a chain can continue.</returns>
+    /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetDefaultPart1Ability(this AbilityInfo info)
     {
         return info.AddMetaCategories(AbilityMetaCategory.Part1Modular, AbilityMetaCategory.Part1Rulebook);
     }
 
     /// <summary>
-    /// Helper method: automatically adds the custom metacategory Part2Modular to the ability.
+    /// Helper method: automatically adds the custom metacategory <c>Part2Modular</c> to the ability.
     /// </summary>
-    /// <param name="info">The instance of AbilityInfo.</param>
-    /// <returns>The same ability so a chain can continue.</returns>
+    /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetDefaultPart2Ability(this AbilityInfo info) => info.AddMetaCategories(Part2Modular);
 
     /// <summary>
-    /// Helper method: automatically adds the Part3Modular, Part3BuildACard, and Part3Rulebook metacategories to the ability.
+    /// Helper method: automatically adds the <c>Part3Modular</c>, <c>Part3BuildACard</c>, and <c>Part3Rulebook</c> metacategories to the ability.
     /// </summary>
-    /// <param name="info">The instance of AbilityInfo.</param>
-    /// <returns>The same ability so a chain can continue.</returns>
+    /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetDefaultPart3Ability(this AbilityInfo info)
     {
         return info.AddMetaCategories(AbilityMetaCategory.Part3Modular, AbilityMetaCategory.Part3Rulebook, AbilityMetaCategory.Part3BuildACard);
@@ -171,9 +176,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the text displayed when this ability is marked as learned.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="lines">The text to display, represented by strings.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetAbilityLearnedDialogue(this AbilityInfo abilityInfo, params string[] lines)
     {
         if (lines.Length > 0)
@@ -190,9 +195,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets the text displayed when this ability is marked as learned.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
-    /// <param name="lines">The text to display, represented by DialogueEvent.Line's.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <param name="lines">The text to display, represented by <c>DialogueEvent.Line</c>'s.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetAbilityLearnedDialogue(this AbilityInfo abilityInfo, params DialogueEvent.Line[] lines)
     {
         if (lines.Length > 0)
@@ -202,22 +207,22 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the text displayed whenever OnAbilityTriggered is called by this ability in Act 2.
+    /// Sets the text displayed whenever <c>OnAbilityTriggered</c> is called by this ability in Act 2.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
-    /// <param name="triggerText">The text to display when OnAbilityTriggered is called.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <param name="triggerText">The text to display when <c>OnAbilityTriggered</c> is called.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetGBCTriggerText(this AbilityInfo abilityInfo, string triggerText)
     {
         abilityInfo.triggerText = triggerText;
         return abilityInfo;
     }
     /// <summary>
-    /// Sets the text displayed whenever OnAbilityTriggered is called by this ability in Act 2.
+    /// Sets the text displayed whenever <c>OnAbilityTriggered</c> is called by this ability in Act 2.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
-    /// <param name="triggerText">The text to display when OnAbilityTriggered is called.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
+    /// <param name="triggerText">The text to display when <c>OnAbilityTriggered</c> is called.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetGBCTriggerText(this FullAbility fullAbility, string triggerText) {
         fullAbility.Info.triggerText = triggerText;
         return fullAbility;
@@ -227,9 +232,9 @@ public static class AbilityExtensions
     /// Sets the power level of the ability, used in some game logic like determining the opponent totem's ability.
     /// Vanilla power levels range from -3 to 5, and values above or below are ignored in most cases.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="powerLevel">The ability's power level. Should be equal to or between -3 and 5.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetPowerlevel(this AbilityInfo abilityInfo, int powerLevel)
     {
         abilityInfo.powerLevel = powerLevel;
@@ -239,9 +244,9 @@ public static class AbilityExtensions
     /// Sets the power level of the ability, used in some game logic like determining the opponent totem's ability.
     /// Vanilla power levels range from -3 to 5, and values above or below are ignored in most cases.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="powerLevel">The ability's power level. Should be equal to or between -3 and 5.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetPowerlevel(this FullAbility fullAbility, int powerLevel) {
         fullAbility.Info.powerLevel = powerLevel;
         return fullAbility;
@@ -270,9 +275,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is an activated ability.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="activated">If the ability is activated.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetActivated(this AbilityInfo abilityInfo, bool activated = true)
     {
         abilityInfo.activated = activated;
@@ -281,9 +286,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is an activated ability.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="activated">If the ability is activated.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetActivated(this FullAbility fullAbility, bool activated = true) {
         fullAbility.Info.activated = activated;
         return fullAbility;
@@ -292,9 +297,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is passive (will not trigger).
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="passive">If the ability is passive.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetPassive(this AbilityInfo abilityInfo, bool passive = true)
     {
         abilityInfo.passive = passive;
@@ -303,9 +308,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is passive (will not trigger).
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="passive">If the ability is passive.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetPassive(this FullAbility fullAbility, bool passive = true) {
         fullAbility.Info.passive = passive;
         return fullAbility;
@@ -314,9 +319,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability can be used by the opponent.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="opponentUsable">If the ability is usable by the opponent.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetOpponentUsable(this AbilityInfo abilityInfo, bool opponentUsable = true)
     {
         abilityInfo.opponentUsable = opponentUsable;
@@ -325,9 +330,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability can be used by the opponent.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="opponentUsable">If the ability is usable by the opponent.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetOpponentUsable(this FullAbility fullAbility, bool opponentUsable = true) {
         fullAbility.Info.opponentUsable = opponentUsable;
         return fullAbility;
@@ -336,9 +341,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is a conduit.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="conduit">If the ability is a conduit.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetConduit(this AbilityInfo abilityInfo, bool conduit = true)
     {
         abilityInfo.conduit = conduit;
@@ -347,9 +352,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is a conduit.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="conduit">If the ability is a conduit.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetConduit(this FullAbility fullAbility, bool conduit = true) {
         fullAbility.Info.conduit = conduit;
         return fullAbility;
@@ -358,9 +363,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is a conduit cell.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="conduitCell">If the ability is a conduit cell.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetConduitCell(this AbilityInfo abilityInfo, bool conduitCell = true)
     {
         abilityInfo.conduitCell = conduitCell;
@@ -369,9 +374,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability is a conduit cell.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="conduitCell">If the ability is a conduit cell.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetConduitCell(this FullAbility fullAbility, bool conduitCell = true) {
         fullAbility.Info.conduitCell = conduitCell;
         return fullAbility;
@@ -381,9 +386,10 @@ public static class AbilityExtensions
     /// Sets whether or not the ability can stack on a card, triggering once for each stack.
     /// Optional parameter for setting the ability to only trigger once per stack when a card evolves (only affects abilities that can stack).
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="triggersOncePerStack">Whether or not to prevent double triggering.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <param name="canStack">If this ability should stack or not.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetCanStack(this AbilityInfo abilityInfo, bool canStack = true, bool triggersOncePerStack = false)
     {
         abilityInfo.canStack = canStack;
@@ -394,9 +400,10 @@ public static class AbilityExtensions
     /// Sets whether or not the ability can stack on a card, triggering once for each stack.
     /// Optional parameter for setting the ability to only trigger once per stack when a card evolves (only affects abilities that can stack).
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="triggersOncePerStack">Whether or not to prevent double triggering.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <param name="canStack">If this ability should stack or not.</param>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetCanStack(this FullAbility fullAbility, bool canStack = true, bool triggersOncePerStack = false) {
         fullAbility.Info.SetCanStack(canStack, triggersOncePerStack);
         return fullAbility;
@@ -405,9 +412,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability's icon should be flipped upside-down when it's on an opponent card.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="flipY">If the icon should be flipped.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetFlipYIfOpponent(this AbilityInfo abilityInfo, bool flipY = true)
     {
         abilityInfo.flipYIfOpponent = flipY;
@@ -416,9 +423,9 @@ public static class AbilityExtensions
     /// <summary>
     /// Sets whether or not the ability's icon should be flipped upside-down when it's on an opponent card.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="flipY">If the icon should be flipped.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetFlipYIfOpponent(this FullAbility fullAbility, bool flipY = true) {
         fullAbility.Info.SetFlipYIfOpponent(flipY);
         return fullAbility;
@@ -428,10 +435,10 @@ public static class AbilityExtensions
     /// Sets whether or not the ability's icon's colour should be overridden, and what the override colour should be.
     /// The colour override only applies to the default ability icons; totem and merge icons are unaffected.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="hasOverride">If the ability icon's colour should be overridden.</param>
     /// <param name="colorOverride">The colour that will override the icon. Only applies if hasOverride is true.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetHasColorOverride(this AbilityInfo abilityInfo, bool hasOverride, Color colorOverride = default)
     {
         abilityInfo.hasColorOverride = hasOverride;
@@ -445,10 +452,10 @@ public static class AbilityExtensions
     /// Sets whether or not the ability's icon's colour should be overridden, and what the override colour should be.
     /// The colour override only applies to the default ability icons; totem and merge icons are unaffected.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="hasOverride">If the ability icon's colour should be overridden.</param>
     /// <param name="colorOverride">The colour that will override the icon. Only applies if hasOverride is true.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetHasColorOverride(this FullAbility fullAbility, bool hasOverride, Color colorOverride = default) {
         fullAbility.Info.SetHasColorOverride(hasOverride, colorOverride);
         return fullAbility;
@@ -458,9 +465,9 @@ public static class AbilityExtensions
     /// Sets whether or not the ability's name should precede its description in Act 2.
     /// If false, only the ability's description will be shown.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="keyword">If the ability's name should precede its Act 2 description.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetKeywordAbility(this AbilityInfo abilityInfo, bool keyword = true)
     {
         abilityInfo.keywordAbility = keyword;
@@ -471,9 +478,9 @@ public static class AbilityExtensions
     /// Sets whether or not the ability's name should precede its description in Act 2.
     /// If false, only the ability's description will be shown.
     /// </summary>
-    /// <param name="fullAbility">The instance of FullAbility.</param>
+    /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
     /// <param name="keyword">If the ability's name should precede its Act 2 description.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetKeywordAbility(this FullAbility fullAbility, bool keyword = true) {
         fullAbility.Info.keywordAbility = keyword;
         return fullAbility;
@@ -483,8 +490,8 @@ public static class AbilityExtensions
     /// Resets the AbilityInfo's rulebook description to its vanilla version.
     /// Useful for anyone messing with altering descriptions.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo ResetDescription(this AbilityInfo abilityInfo)
     {
         abilityInfo.rulebookDescription = AllAbilities.AbilityByID(abilityInfo.ability).BaseRulebookDescription;
@@ -508,6 +515,12 @@ public static class AbilityExtensions
         return full;
     }
 
+    /// <summary>
+    /// Checks if the given <see cref="AbilityInfo"/> has all given metacategories.
+    /// </summary>
+    /// <param name="info">The <see cref="AbilityInfo"/> to access.</param>
+    /// <param name="categories">The metacategories to check for.</param>
+    /// <returns>True if this ability has all the given metacategory.</returns>
     public static bool HasMetaCategories(this AbilityInfo info, params AbilityMetaCategory[] categories)
     {
         foreach (AbilityMetaCategory app in categories)
@@ -517,6 +530,12 @@ public static class AbilityExtensions
         return true;
     }
 
+    /// <summary>
+    /// Checks if the given <see cref="AbilityInfo"/> has the given metacategory.
+    /// </summary>
+    /// <param name="info">The <see cref="AbilityInfo"/> to access.</param>
+    /// <param name="category">The metacategory to check for.</param>
+    /// <returns>True if this ability has the given metacategory.</returns>
     public static bool HasMetaCategory(this AbilityInfo info, AbilityMetaCategory category)
     {
         return info.metaCategories.Contains(category);
@@ -631,9 +650,9 @@ public static class AbilityExtensions
     /// Sets the ability to only ever trigger once per stack. This prevents abilities from triggering twice per stack after a card evolves.
     /// This only affects cards that evolve into a card that possesses the same stackable ability (eg, default evolutions).
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="triggersOncePerStack">Whether or not to prevent double triggering.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetTriggersOncePerStack(this AbilityInfo abilityInfo, bool triggersOncePerStack = true)
     {
         abilityInfo.SetExtendedProperty("TriggersOncePerStack", triggersOncePerStack);
@@ -653,7 +672,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets the value of TriggersOncePerStack. Returns false if TriggersOncePerStack has not been set.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <returns>Whether double triggering is disabled.</returns>
     public static bool GetTriggersOncePerStack(this AbilityInfo abilityInfo)
     {
@@ -666,9 +685,9 @@ public static class AbilityExtensions
     /// Sets an ability to only have one stack of it be hidden whenever the ability is added to a card status's hiddenAbilities field.
     /// Adding the same ability to hiddenAbilities will hide more stacks. Only affects cards that can stack.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <param name="hideSingleStacks">Whether all stacks of this ability will be hidden when added to hiddenAbilities.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetHideSingleStacks(this AbilityInfo abilityInfo, bool hideSingleStacks = true)
     {
         abilityInfo.SetExtendedProperty("HideSingleStacks", hideSingleStacks);
@@ -687,7 +706,7 @@ public static class AbilityExtensions
     /// <summary>
     /// Gets the value of HideSingleStacks. Returns false if HideSingleStacks has not been set.
     /// </summary>
-    /// <param name="abilityInfo">The instance of AbilityInfo.</param>
+    /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
     /// <returns>Whether single stacks of this ability will be hidden when added to hiddenAbilities.</returns>
     public static bool GetHideSingleStacks(this AbilityInfo abilityInfo)
     {
@@ -703,7 +722,7 @@ public static class AbilityExtensions
     /// <param name="info">Ability to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
     /// <param name="value">The value of the property.</param>
-    /// <returns>The same AbilityInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetExtendedProperty(this AbilityInfo info, string propertyName, object value)
     {
         info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
@@ -715,7 +734,7 @@ public static class AbilityExtensions
     /// <param name="fullAbility">FullAbility object to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
     /// <param name="value">The value of the property.</param>
-    /// <returns>The same FullAbility so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetExtendedProperty(this FullAbility fullAbility, string propertyName, object value)
     {
         fullAbility.Info.GetAbilityExtensionTable()[propertyName] = value?.ToString();
