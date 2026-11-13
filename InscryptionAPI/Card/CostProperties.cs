@@ -7,11 +7,18 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card.CostProperties;
 
+/// <summary>
+/// Class that handles dynamic costs on PlayableCards.
+/// </summary>
 [HarmonyPatch]
-public static class CostProperties
-{
-    public class RefreshCostMonoBehaviour : MonoBehaviour
-    {
+public static class CostProperties {
+    /// <summary>
+    /// Class that's attached to PlayableCard objects to ensure their costs are updated appropriately.
+    /// </summary>
+    public class RefreshCostMonoBehaviour : MonoBehaviour {
+        /// <summary>
+        /// PlayableCard instance this behaviour is attached to.
+        /// </summary>
         public PlayableCard playableCard;
         private int cachedBloodCost = -1, cachedBoneCost = -1;
         private readonly List<GemType> cachedGemsCost = new();
@@ -52,6 +59,13 @@ public static class CostProperties
             return refreshCost;
         }
 
+        /// <summary>
+        /// Determines if a card's list of Gem costs has been updated.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public bool GemsChanged<T>(List<T> a, List<T> b)
         {
             if (a.Count != b.Count)
@@ -67,11 +81,14 @@ public static class CostProperties
         }
     }
 
+    /// <summary>
+    /// A table that maps a CardInfo object to a list of weak references to every PlayableCard that uses that same CardInfo
+    /// </summary>
     public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToCard = new();
 
 
-    // a table that maps a CardInfo object to a list of weak references to every PlayableCard that uses that same CardInfo
-    public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToPlayableCardReferences = new();
+
+    //public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToPlayableCardReferences = new();
 
 
     /// <summary>
