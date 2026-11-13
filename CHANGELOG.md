@@ -16,6 +16,11 @@
 * Clean up Code formatting.
 * Fix casing of some variables.
 * Implement new Material Overrides to `MaterialOverride` related to changing `Metallic`, `Smoothness` and `Height` for consistency.
+* Add `OverrideQueuedBackground` to the `PixelCardBehaviours`.
+    * This is used for overriding the Queued Background of a card.
+* Upgraded the API's `.csproj`'s, and TCLI Build system.
+* Publicized the `_originalColor`, `_enterColor`, and `_selectedColor` used within `ActivatedAbilityIconInteractable` of the Community Patch.
+* Update the API to use Latest BepInEx.
 
 # 2.24.1
 * Added Extensions for setting the IconTexture of a Starter Deck.
