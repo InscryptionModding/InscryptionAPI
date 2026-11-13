@@ -1,9 +1,9 @@
 - name: Home
   href: index.md
-- name: Wiki
+- name: Modding Wiki
   href: wiki/
   homepage: wiki/index.md
-- name: API Documentation
+- name: Inscryption API Documentation
   href: api/
   homepage: api/index.md
 - name: Community Patch Documentation
