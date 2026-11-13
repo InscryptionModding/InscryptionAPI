@@ -5,8 +5,7 @@ using static InscryptionAPI.CardCosts.CardCostManager;
 
 namespace InscryptionAPI.Card;
 
-public static partial class CardExtensions
-{
+public static partial class CardExtensions {
     /// <summary>
     /// Adds a custom property value to the card.
     /// </summary>
@@ -86,6 +85,7 @@ public static partial class CardExtensions
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
+    /// <param name="affectedByTidalLock">Whether or not this card should be affected by Tidal Lock.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
     {
@@ -112,6 +112,7 @@ public static partial class CardExtensions
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
+    /// <param name="transformerCardId">The internal name of the card this card should transform into.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTransformerCardId(this CardInfo info, string transformerCardId)
     {
@@ -122,6 +123,12 @@ public static partial class CardExtensions
     #endregion
 
     #region Custom Costs
+    /// <summary>
+    /// Determines if the given CardInfo has the given custom card cost.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <param name="customCost">The custom card cost to check for.</param>
+    /// <returns>True if the CardInfo needs the given custom cost to be played.</returns>
 
     public static bool HasCustomCost(this CardInfo info, FullCardCost customCost) => info.GetCustomCost(customCost) != 0;
 
@@ -142,6 +149,13 @@ public static partial class CardExtensions
     /// <param name="amount">How much of the custom cost the CardInfo should need to be played.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, string costName, int amount) => info.SetExtendedProperty(costName, amount);
+    /// <summary>
+    /// A variant of SetExtendedProperty intended to be used to set properties representing custom costs. Primarily provided for clarity of purpose.
+    /// </summary>
+    /// <param name="info">The CardInfo to modify.</param>
+    /// <typeparam name="T">The class of the cost we want to set.</typeparam>
+    /// <param name="amount">How much of the custom cost the CardInfo should need to be played.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetCustomCost<T>(this CardInfo info, int amount) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
@@ -149,15 +163,37 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Variant of GetCustomCost that automatically retrieves the given cost's canBeNegative value.
+    /// Variant of GetCustomCost that automatically retrieves the given cost's canBeNegative value when retrieving the cost amount.
     /// </summary>
-    /// <param name="card"></param>
-    /// <param name="costName"></param>
-    /// <returns></returns>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="costName">The name of the custom card cost.</param>
+    /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCostAmount(this PlayableCard card, string costName) => card.Info.GetCustomCostAmount(costName);
+
+    /// <summary>
+    /// Variant of GetCustomCost that automatically retrieves the given cost's canBeNegative value when retrieving the cost amount.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo to access.</param>
+    /// <param name="costName">The name of the custom card cost.</param>
+    /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCostAmount(this CardInfo cardInfo, string costName) => cardInfo.GetCustomCost(costName, AllCustomCosts.Find(x => x.CostName == costName).CanBeNegative);
 
+    /// <summary>
+    /// Retrieves the given PlayableCard's custom card cost amount.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="costName">The name of the custom card cost.</param>
+    /// <param name="canBeNegative">Whether the card cost amount can be negative. If false, returns 0 for negative cost values.</param>
+    /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false) => card.Info.GetCustomCost(costName, canBeNegative);
+
+    /// <summary>
+    /// Retrieves the given CardInfo's custom card cost amount.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo to access.</param>
+    /// <param name="costName">The name of the custom card cost.</param>
+    /// <param name="canBeNegative">Whether the card cost amount can be negative. If false, returns 0 for negative cost values.</param>
+    /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCost(this CardInfo cardInfo, string costName, bool canBeNegative = false)
     {
         int retval = cardInfo.GetExtendedPropertyAsInt(costName) ?? 0;
@@ -171,39 +207,83 @@ public static partial class CardExtensions
         return retval;
     }
 
+    /// <summary>
+    /// Retrieves the custom card cost amount of the given class Type from the given PlayableCard.
+    /// </summary>
+    /// <typeparam name="T">The class of the card cost to check.</typeparam>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="canBeNegative">If the returned value can be negative. If false, returns 0 instead.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost<T>(this PlayableCard card, bool canBeNegative = false) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
         return card.Info.GetCustomCost(cost.CostName, canBeNegative);
     }
 
+    /// <summary>
+    /// Retrieves the custom card cost amount of the given class Type from the given CardInfo.
+    /// </summary>
+    /// <typeparam name="T">The class of the card cost to check.</typeparam>
+    /// <param name="cardInfo">The CardInfo to access.</param>
+    /// <param name="canBeNegative">If the returned value can be negative. If false, returns 0 instead.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost<T>(this CardInfo cardInfo, bool canBeNegative = false) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
         return cardInfo.GetCustomCost(cost.CostName, canBeNegative);
     }
 
+    /// <summary>
+    /// Retrieves the custom card cost amount of the given class Type from the given PlayableCard.
+    /// </summary>
+    /// <typeparam name="T">The class of the card cost to check.</typeparam>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCostAmount<T>(this PlayableCard card) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
         return card.GetCustomCost(cost);
     }
 
+    /// <summary>
+    /// Retrieves the custom card cost amount of the given class Type from the given CardInfo.
+    /// </summary>
+    /// <typeparam name="T">The class of the card cost to check.</typeparam>
+    /// <param name="cardInfo">The CardInfo to access.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCostAmount<T>(this CardInfo cardInfo) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
         return cardInfo.GetCustomCost(cost);
     }
 
+    /// <summary>
+    /// Retrieves the given custom card cost amount from the given PlayableCard.
+    /// Only returns negative values if the custom cost allows it.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="fullCardCost">The custom card cost to check for.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost(this PlayableCard card, FullCardCost fullCardCost)
     {
         return card.GetCustomCostAmount(fullCardCost.CostName);
     }
+    /// <summary>
+    /// Retrieves the given custom card cost amount from the given CardInfo.
+    /// Only returns negative values if the custom cost allows it.
+    /// </summary>
+    /// <param name="cardInfo">The CardInfo to access.</param>
+    /// <param name="fullCardCost">The custom card cost to check for.</param>
+    /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost(this CardInfo cardInfo, FullCardCost fullCardCost)
     {
         return cardInfo.GetCustomCostAmount(fullCardCost.CostName);
     }
-
+    /// <summary>
+    /// Retrieves all custom card costs from the given Card.
+    /// </summary>
+    /// <param name="card">The Card to access.</param>
+    /// <returns>A List of CustomCardCost objects for each custom cost the Card needs to be played.</returns>
     public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card)
     {
         try
@@ -227,6 +307,11 @@ public static partial class CardExtensions
         return new();
     }
 
+    /// <summary>
+    /// Retrieves all custom card costs from the given CardInfo.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>A List of CustomCardCost objects for each custom cost the CardInfo needs to be played.</returns>
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();
