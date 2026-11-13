@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// This patches in a conditional check as to whether or not the card has Boostable Stats or not.
+/// </summary>
 [HarmonyPatch]
 internal class CardStatBoostSequencerPatch
 {

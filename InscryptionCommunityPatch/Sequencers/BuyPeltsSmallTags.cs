@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// Patches in Smaller Price tags and a moved Price tag when either the <see cref="PatchPlugin.configDisplaySmallerPriceTags"/> and <see cref="PatchPlugin.configDisplayPriceTagsOnTheRight"/> are true respectively.
+/// </summary>
 [HarmonyPatch]
 internal class BuyPeltsSmallTags
 {
