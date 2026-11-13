@@ -204,6 +204,9 @@ public static class AbilityManager
     /// </remarks>
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
+    /// <summary>
+    /// Custom AbilityMetaCategory enum for marking an ability as modular in Part 2.
+    /// </summary>
     public static AbilityMetaCategory Part2Modular => GuidManager.GetEnumValue<AbilityMetaCategory>(InscryptionAPIPlugin.ModGUID, "Part2Modular");
     /// <summary>
     /// Resynchronizes the ablity list.
@@ -362,6 +365,9 @@ public static class AbilityManager
     }
 
     #region LoadAbilityIcon
+    /// <summary>
+    /// Reverse patch that provides access to the original, unmodified LoadAbilityIcon method.
+    /// </summary>
     [HarmonyReversePatch(HarmonyReversePatchType.Original)]
     [HarmonyPatch(typeof(AbilitiesUtil), nameof(AbilitiesUtil.LoadAbilityIcon))]
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -420,6 +426,10 @@ public static class AbilityManager
     }
 
     #region Rulebook Description
+    /// <summary>
+    /// Prefix string for activated sigils with dynamic activation costs.
+    /// Used by the API to determine what part of a sigil's description should be updated.
+    /// </summary>
     public const string SIGILCOST = "[sigilcost:";
     [HarmonyPostfix, HarmonyPatch(typeof(AbilityInfo), nameof(AbilityInfo.ParseAndTranslateDescription))]
     private static void CleanUpParsedDescription(ref string __result)
@@ -652,7 +662,7 @@ public static class AbilityManager
     }
 
     [HarmonyTranspiler, HarmonyPatch(typeof(AbilityIconInteractable), nameof(AbilityIconInteractable.AssignAbility))]
-    public static IEnumerable<CodeInstruction> AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> AbilityIconInteractable_AssignAbility(IEnumerable<CodeInstruction> instructions)
     {
         // === We want to turn this:
         // AbilityInfo info2 = AbilitiesUtil.GetInfo(ability);
