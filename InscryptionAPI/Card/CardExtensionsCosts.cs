@@ -31,7 +31,7 @@ public static partial class CardExtensions
     /// </summary>
     public static int BloodCost(this PlayableCard card)
     {
-        //Debug.Log($"{card != null} {card?.Info != null} [{card?.GetType()}] {(card as DiskCardGame.Card)?.Info != null}");
+        //InscryptionAPIPlugin.Logger.LogInfo($"{card != null} {card?.Info != null} [{card?.GetType()}] {(card as DiskCardGame.Card)?.Info != null}");
         if (card != null && card.Info != null)
         {
             int originalBloodCost = CostProperties.CostProperties.OriginalBloodCost(card.Info);
@@ -42,6 +42,7 @@ public static partial class CardExtensions
             foreach (CardModificationInfo mod in card.TemporaryMods)
                 originalBloodCost += mod.bloodCostAdjustment;
 
+            //InscryptionAPIPlugin.Logger.LogInfo(originalBloodCost);
             return originalBloodCost;
         }
 
@@ -105,11 +106,21 @@ public static partial class CardExtensions
         return gemsCost;
     }
 
+    /// <summary>
+    /// Checks if the given PlayableCard is gemified in either its CardInfo or TemporaryMods.
+    /// </summary>
+    /// <returns>True if the PlayableCard is gemified.</returns>
     public static bool IsGemified(this PlayableCard card) => card.Info.Gemified || card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);
+    /// <summary>
+    /// Determines if the given PlayableCard's owner possesses a blue gem. Works for the opponent and player.
+    /// </summary>
     public static bool OwnerHasBlueGem(this PlayableCard card)
     {
         return card.OpponentCard ? OpponentGemsManager.Instance.HasGem(GemType.Blue) : ResourcesManager.Instance.HasGem(GemType.Blue);
     }
+    /// <summary>
+    /// Whether or not the given PlayableCard is affected by a blue gem and should have its cost reduced.
+    /// </summary>
     public static bool IsUsingBlueGem(this PlayableCard card) => card.IsGemified() && card.OwnerHasBlueGem();
 
     /// <summary>

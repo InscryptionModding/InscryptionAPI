@@ -9,7 +9,7 @@ namespace InscryptionCommunityPatch.Card;
 [HarmonyPatch]
 internal class GiantCardEmissionAspectFix {
     /// <summary>
-    /// Changes the emissioner render camera's aspect ratio for Giant cards so emission texture don't appear stretched.
+    /// Changes the emission render camera's aspect ratio for Giant cards so emission texture don't appear stretched.
     /// Aspect number taken from the base texture renderer's aspect ratio.
     /// </summary>
     [HarmonyPostfix, HarmonyPatch(typeof(CardRenderCamera), nameof(CardRenderCamera.TryCreateCameraForLiveRender))]

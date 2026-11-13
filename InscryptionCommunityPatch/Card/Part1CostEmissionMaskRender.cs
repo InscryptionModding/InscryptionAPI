@@ -29,7 +29,7 @@ public class Part1CostEmissionMaskRender {
         }
         else {
             // disable if config is false ; otherwise toggle based on appearance of emissive portrait
-            result.gameObject.SetActive(PatchPlugin.configCostMask.Value && emissionEnabled);
+            result.gameObject.SetActive(PatchPlugin.configDisplayEmissionsUnderCostIcons.Value && emissionEnabled);
         }
 
         return result;

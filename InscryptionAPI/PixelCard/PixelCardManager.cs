@@ -91,8 +91,9 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
 
     private static void AddDecalToCard(in PixelCardDisplayer instance, PlayableCard playableCard)
     {
-        Transform cardElements = instance?.gameObject?.transform?.Find("CardElements");
-        if (cardElements == null)
+        Transform cardElements = instance?.cardElements?.transform;
+        Transform queuedCardElements = instance?.queuedCardElements?.transform;
+        if (cardElements == null || queuedCardElements == null)
             return;
 
         List<Transform> existingDecals = new();
@@ -139,6 +140,15 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
                 Sprite overridePortrait = pixelBehav.OverridePixelPortrait();
                 if (overridePortrait != null)
                     instance.SetPortrait(overridePortrait);
+                // override queued background
+                Sprite overrideQueuedBackground = pixelBehav.OverrideQueuedBackground();
+                if (overrideQueuedBackground != null)
+                {
+                    Transform queuedBackground = queuedCardElements.Find("QueuedBackground");
+                    SpriteRenderer component = queuedBackground?.GetComponent<SpriteRenderer>();
+                    if (component != null)
+                        component.sprite = overrideQueuedBackground;
+                }
             }
             UnityObject.Destroy(behav);
         }

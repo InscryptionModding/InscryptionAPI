@@ -4,6 +4,9 @@ using InscryptionAPI.Guid;
 
 namespace InscryptionCommunityPatch.Tests;
 
+/// <summary>
+/// This class adds some Debug Cards for testing the Steel Trap Death Patch in the Main API's functionality.
+/// </summary>
 public class DebugCards
 {
     /// <summary>

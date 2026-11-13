@@ -4,13 +4,17 @@ using System.Collections;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// This patch applies when <see cref="InscryptionCommunityPatch.PatchPlugin.configResetEyesToNormalAfter8BearsFights"/> is set to true.
+/// When set to true after the boss has been beat, it resets their eyes back to normal rather than remaining red.
+/// </summary>
 [HarmonyPatch]
 internal class LeshyResetRedEyes
 {
     [HarmonyPostfix, HarmonyPatch(typeof(TurnManager), nameof(TurnManager.CleanupPhase))]
     private static IEnumerator ResetLeshyEyes(IEnumerator enumerator, TurnManager __instance)
     {
-        if (!PatchPlugin.configResetEyes.Value || !SaveManager.SaveFile.IsPart1 || __instance.opponent == null)
+        if (!PatchPlugin.configResetEyesToNormalAfter8BearsFights.Value || !SaveManager.SaveFile.IsPart1 || __instance.opponent == null)
         {
             yield return enumerator;
             yield break;

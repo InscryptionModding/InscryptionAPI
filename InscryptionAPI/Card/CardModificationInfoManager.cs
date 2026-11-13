@@ -6,6 +6,10 @@ using System.Runtime.CompilerServices;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Class for managing special CardModificationInfos.
+/// These include persistent extended properties and custom costs.
+/// </summary>
 [HarmonyPatch]
 public static class CardModificationInfoManager
 {
@@ -69,6 +73,9 @@ public static class CardModificationInfoManager
 
         return exp.StringMap;
     }
+    /// <summary>
+    /// Re-executes events and rebuilds the special CardModificationInfo pool.
+    /// </summary>
     public static void SyncCardMods()
     {
         // Re-add persistent properties
