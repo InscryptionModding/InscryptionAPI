@@ -31,15 +31,15 @@ source = "InscryptionAPI/bin/Release/InscryptionAPI.xml"
 target = "plugins/InscryptionAPI.xml"
 
 [[build.copy]]
-source = "APIPatcher/bin/Release/Assembly-CSharp.APIPatcher.mm.dll"
+source = "InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.dll"
 target = "monomod/Assembly-CSharp.APIPatcher.mm.dll"
 
 [[build.copy]]
-source = "APIPatcher/bin/Release/Assembly-CSharp.APIPatcher.mm.pdb"
+source = "InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.pdb"
 target = "monomod/Assembly-CSharp.APIPatcher.mm.pdb"
 
 [[build.copy]]
-source = "APIPatcher/bin/Release/Assembly-CSharp.APIPatcher.mm.xml"
+source = "InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.xml"
 target = "monomod/Assembly-CSharp.APIPatcher.mm.xml"
 
 [[build.copy]]
