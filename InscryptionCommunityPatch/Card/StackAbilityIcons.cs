@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Adds Handling for Stacking Abilities of the same type.
+/// </summary>
 [HarmonyPatch]
 public static class StackAbilityIcons
 {
@@ -25,6 +28,7 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9.png", typeof(StackAbilityIcons).Assembly)
     };
+    
     private static readonly Texture2D[] MEDIUM_NUMBER_TEXTURES = new Texture2D[]
     {
         TextureHelper.GetImageAsTexture("Stack_0_med.png", typeof(StackAbilityIcons).Assembly),
@@ -38,6 +42,7 @@ public static class StackAbilityIcons
         TextureHelper.GetImageAsTexture("Stack_8_med.png", typeof(StackAbilityIcons).Assembly),
         TextureHelper.GetImageAsTexture("Stack_9_med.png", typeof(StackAbilityIcons).Assembly)
     };
+    
     private static readonly Sprite[] GBC_NUMBER_SPRITES = new Sprite[]
     {
         GetGBCNumberSprite(1),

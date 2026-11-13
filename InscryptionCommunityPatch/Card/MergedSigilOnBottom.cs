@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Makes it so that Merged Sigils are shown on the Bottom of the Card.
+/// </summary>
 [HarmonyPatch]
 public class MergedSigilOnBottom
 {

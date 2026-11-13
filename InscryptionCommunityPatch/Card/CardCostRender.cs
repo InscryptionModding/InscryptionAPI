@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Fixes the Rendering related to a Card's Cost.
+/// </summary>
 [HarmonyPatch]
 public static class CardCostRender
 {
@@ -32,10 +35,15 @@ public static class CardCostRender
         AssembledTextures.Add(key, texture);
         return texture;
     }
-
+    
     /// <summary>
     /// Creates a sprite that combines all of a card's play costs.
     /// </summary>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> in which to get the Card's Cost from.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> in which to get the Card's Cost from.</param>
+    /// <param name="spriteType">The type of Sprite we are trying to combine.</param>
+    /// <param name="yStep">The amount of spacing to use when combing a Card's Cost in the Vertical.</param>
+    /// <returns>A Combined Cost Sprite that is Vertically stacked.</returns>
     public static Sprite FinalCostSprite(CardInfo cardInfo, PlayableCard playableCard, TextureHelper.SpriteType spriteType, int yStep)
     {
         Texture2D baseTexture;
