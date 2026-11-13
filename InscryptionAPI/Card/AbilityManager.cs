@@ -354,7 +354,7 @@ public static class AbilityManager
     public static void Remove(Ability id) => NewAbilities.Remove(NewAbilities.FirstOrDefault(x => x.Id == id));
 
     /// <summary>
-    /// Removes an ability from the game based on ability ID. Can only remove mod-added abilities, not vanilla abilities.
+    /// Removes an ability from the game based on its FullAbility. Can only remove mod-added abilities, not vanilla abilities.
     /// </summary>
     /// <param name="ability">The instance of the ability to remove.</param>
     public static void Remove(FullAbility ability) => NewAbilities.Remove(ability);
