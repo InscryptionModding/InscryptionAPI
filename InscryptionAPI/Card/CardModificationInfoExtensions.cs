@@ -213,6 +213,13 @@ public static class CardModificationInfoExtensions
     /// </summary>
     /// <param name="mod">The CardModificationInfo object whose custom costs ID we want to clear.</param>
     /// <returns>The same CardModificationInfo so a chain can continue.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     public static CardModificationInfo ClearCustomCostsId(this CardModificationInfo mod)
     {
         string costs = GetCustomCostsIdString(mod);
@@ -340,6 +347,13 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <param name="costName">The name of the custom cost to search for.</param>
     /// <returns>True if the CardModification adds the given card cost.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static bool HasCustomCostId(this CardModificationInfo mod, string costName) => HasCustomCostsId(mod.singletonId) && mod.singletonId.Contains(costName);
 
@@ -349,6 +363,13 @@ public static class CardModificationInfoExtensions
     /// <param name="singletonId">The CardModificationInfo to access.</param>
     /// <param name="costName">The name of the custom cost to search for.</param>
     /// <returns>True if the string has the given card cost in its custom costs substring.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static bool HasCustomCostId(this string singletonId, string costName) => HasCustomCostsId(singletonId) && singletonId.Contains(costName);
 
@@ -357,6 +378,13 @@ public static class CardModificationInfoExtensions
     /// </summary>
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <returns>True if the CardModification adds any card costs.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static bool HasCustomCostsId(this CardModificationInfo mod) => !mod.singletonId.IsNullOrWhitespace() && mod.singletonId.Contains(CUSTOM_COSTS);
 
@@ -365,6 +393,13 @@ public static class CardModificationInfoExtensions
     /// </summary>
     /// <param name="singletonId">The CardModificationInfo to access.</param>
     /// <returns>True if the string has the custom costs substring.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static bool HasCustomCostsId(this string singletonId) => !singletonId.IsNullOrWhitespace() && singletonId.Contains(CUSTOM_COSTS);
 
@@ -374,7 +409,14 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <param name="costName"></param>
     /// <param name="value"></param>
-    /// <returns></returns>
+    /// <returns>The same CardModificationInfo so a chain can continue.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static CardModificationInfo SetCustomCostId(this CardModificationInfo mod, string costName, object value)
     {
@@ -414,6 +456,13 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <param name="costName">The name of the custom cost to find.</param>
     /// <returns>True if the CardModificationInfo uses the given custom cost. False otherwise;</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static bool HasCustomCost(this CardModificationInfo mod, string costName) => (mod.GetExtendedProperty(costName) ?? mod.GetCustomCostId(costName)) != null;
     /// <summary>
@@ -423,6 +472,13 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationinfo to access.</param>
     /// <param name="costName">The name of the custom cost to find.</param>
     /// <returns>The custom cost's play amount as an int.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static int GetCustomCost(this CardModificationInfo mod, string costName)
     {
@@ -434,6 +490,13 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <param name="costName">The name of the custom cost to find.</param>
     /// <returns>The string representation of the custom cost's play amount, or null if the custom cost ID is not present.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static string GetCustomCostId(this CardModificationInfo mod, string costName)
     {
@@ -459,6 +522,13 @@ public static class CardModificationInfoExtensions
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <param name="costName">Name of the custom cost to check for.</param>
     /// <returns>How much of the custom cost this CardModificationInfo needs, or 0 if the cost is not present.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static int GetCustomCostIdValue(this CardModificationInfo mod, string costName)
     {
@@ -473,6 +543,13 @@ public static class CardModificationInfoExtensions
     /// </summary>
     /// <param name="mod">The CardModificationInfo to access.</param>
     /// <returns>A List of all FullCardCosts the given CardModificationInfo adds to the attached card.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     // [Obsolete("Custom cost IDs on CardModInfos have been deprecated, please use the CardCostManager instead.")]
     public static List<CardCostManager.FullCardCost> GetCustomCostsFromMod(this CardModificationInfo mod)
     {
