@@ -8,4 +8,5 @@
 :root {
   --bs-font-sans-serif: 'DPComic', system-ui, -apple-system, sans-serif;
   --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-font-monospace: 'DPComic', system-ui, -apple-system, sans-serif;
 }
