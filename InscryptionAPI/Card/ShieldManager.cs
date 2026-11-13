@@ -18,9 +18,12 @@ namespace InscryptionAPI.Card;
 public static class ShieldManager
 {
     /// <summary>
-    /// A list of FullAbilities whose AbilityBehaviour overrides DamageShieldBehaviour.
+    /// A list of FullAbilities whose AbilityBehaviour inherits from DamageShieldBehaviour.
     /// </summary>
     public static List<FullAbility> AllShieldAbilities { get; internal set; } = new(AllAbilities);
+    /// <summary>
+    /// The current processed list of all AbilityInfos in the game that inherit from DamageShieldBehaviour.
+    /// </summary>
     public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
 
     /// <summary>
