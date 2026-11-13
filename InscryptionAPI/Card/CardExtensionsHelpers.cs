@@ -214,7 +214,15 @@ public static partial class CardExtensions
         return false;
     }
 
+    /// <summary>
+    /// Returns whether or not the given CardInfo has the Pelt Trait.
+    /// </summary>
     public static bool IsPelt(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Pelt);
+    /// <summary>
+    /// Returns whether or not the given CardInfo has the Terrain Trait.
+    /// </summary>
+    /// <param name="cardInfo"></param>
+    /// <returns></returns>
     public static bool IsTerrain(this CardInfo cardInfo) => cardInfo.HasTrait(Trait.Terrain);
     #endregion
 
@@ -223,7 +231,7 @@ public static partial class CardExtensions
     /// Checks if the CardInfo has a specific CardMetaCategory.
     /// </summary>
     /// <param name="cardInfo">CardInfo to access.</param>
-    /// <param name="trait">The CardMetaCategory to check for.</param>
+    /// <param name="metaCategory">The CardMetaCategory to check for.</param>
     /// <returns>Returns true if the card is does not have the specified CardMetaCategory.</returns>
     public static bool HasCardMetaCategory(this CardInfo cardInfo, CardMetaCategory metaCategory) => cardInfo.metaCategories.Contains(metaCategory);
 
@@ -307,7 +315,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Gets the number of Ability stacks a card has.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="info">The CardInfo to access.</param>
     /// <param name="ability">The Ability to check for.</param>
     /// <returns>The number of Ability stacks the card has.</returns>
     public static int GetAbilityStacks(this CardInfo info, Ability ability)
@@ -666,11 +674,22 @@ public static partial class CardExtensions
     /// <returns>The card in the opposing slot, otherwise return null.</returns>
     public static PlayableCard OpposingCard(this PlayableCard playableCard) => playableCard.OpposingSlot()?.Card;
 
+    /// <summary>
+    /// Adds all given CardModificationInfos to a PlayableCard as temporary mods.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="mods">The collection of CardModificationInfos to add as temporary mods to the card.</param>
     public static void AddTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
     {
         foreach (CardModificationInfo mod in mods)
             card.AddTemporaryMod(mod);
     }
+
+    /// <summary>
+    /// Removes all given CardModificationInfos from a PlayableCard's list of temporary mods.
+    /// </summary>
+    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="mods">The collection of CardModificationInfos to remove from the card's temporary mods.</param>
     public static void RemoveTemporaryMods(this PlayableCard card, params CardModificationInfo[] mods)
     {
         foreach (CardModificationInfo mod in mods)
@@ -750,11 +769,10 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Reduces the amount of shields a specific ability is currently giving.
+    /// Removes shields from the given PlayableCard.
     /// </summary>
     /// <param name="card">The PlayableCard to access.</param>
     /// <param name="amount">How many shields to add.</param>
-    /// <param name="ability">The shield-giving ability to add more shields to.</param>
     /// <param name="updateDisplay">Whether to update the card's display, meaning sigil stack numbers and any shield effects.</param>
     public static void RemoveShieldCount(this PlayableCard card, int amount, bool updateDisplay = true)
     {
@@ -777,6 +795,13 @@ public static partial class CardExtensions
         }
         component.RemoveShields(amount, updateDisplay);
     }
+    /// <summary>
+    /// Reduces a card's shield count from a specific shield-giving ability.
+    /// </summary>
+    /// <typeparam name="T">The class of the ability to remove shield count from.</typeparam>
+    /// <param name="card">PlayableCard instance to remove shield from.</param>
+    /// <param name="amount">How many shields to remove.</param>
+    /// <param name="updateDisplay">Whether or not to update the card's rendering.</param>
     public static void RemoveShieldCount<T>(this PlayableCard card, int amount, bool updateDisplay = true) where T : DamageShieldBehaviour
     {
         card.GetComponent<T>()?.RemoveShields(amount, updateDisplay);
@@ -856,10 +881,20 @@ public static partial class CardExtensions
         card.Status.lostShield = false;
     }
 
+    /// <summary>
+    /// Determines whether the given Ability enum id corresponds to a shield-giving ability.
+    /// </summary>
+    /// <param name="ability">The enum for the ability to check.</param>
+    /// <returns>True if the id is for an ability that gives sigils using the API's features.</returns>
     public static bool IsShieldAbility(this Ability ability)
     {
         return ShieldManager.AllShieldInfos.AbilityByID(ability) != null;
     }
+    /// <summary>
+    /// Determines whether the given AbilityInfo corresponds to a shield-giving ability.
+    /// </summary>
+    /// <param name="abilityInfo">The AbilityInfo for the ability to check.</param>
+    /// <returns>True if the AbilityInfo is for an ability that gives sigils using the API's features.</returns>
     public static bool IsShieldAbility(this AbilityInfo abilityInfo)
     {
         return ShieldManager.AllShieldInfos.Contains(abilityInfo);
