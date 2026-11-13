@@ -66,10 +66,15 @@ public class OpponentGemsManager : Singleton<OpponentGemsManager> {
                 foreach (GainGem gainGem in components)
                     opponentGems.Add(gainGem.Gem);
 
-                GainGemTriple[] components2 = slot.Card.GetComponents<GainGemTriple>();
-                for (int i = 0; i < components2.Length; i++)
+                GainMultipleGems[] components2 = slot.Card.GetComponents<GainMultipleGems>();
+                foreach (GainMultipleGems gainGems in components2) {
+                    opponentGems.AddRange(gainGems.Gems);
+                }
+
+                GainGemTriple[] components3 = slot.Card.GetComponents<GainGemTriple>();
+                for (int i = 0; i < components3.Length; i++)
                 {
-                    _ = components2[i];
+                    _ = components3[i];
                     opponentGems.Add(GemType.Green);
                     opponentGems.Add(GemType.Orange);
                     opponentGems.Add(GemType.Blue);
