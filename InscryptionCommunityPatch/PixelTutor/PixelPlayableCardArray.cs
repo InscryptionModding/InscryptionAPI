@@ -143,6 +143,7 @@ public class PixelPlayableCardArray : ManagedBehaviour
             cardSelectedCallback?.Invoke(selectedCard);
         }
     }
+    
     private void InitialiseButtons(List<CardInfo> cards, bool deckReview, bool forPositiveEffect)
     {
         if (forwardButton == null)
@@ -177,6 +178,7 @@ public class PixelPlayableCardArray : ManagedBehaviour
         backButton.gameObject.SetActive(false);
         EnableButtons(false);
     }
+    
     private void CleanUpButtons()
     {
         if (forwardButton.gameObject.activeSelf)
@@ -185,17 +187,20 @@ public class PixelPlayableCardArray : ManagedBehaviour
             backButton.gameObject.SetActive(false);
         }
     }
+    
     private void EnableButtons(bool enable)
     {
         forwardButton.SetEnabled(enable);
         backButton.SetEnabled(enable);
     }
+    
     private void OnChangePage(bool forwards, List<CardInfo> cards, bool deckReview, bool forPositiveEffect)
     {
         EnableButtons(false);
         SetCardsEnabled(enabled: false);
         base.StartCoroutine(ChangePage(forwards, cards, deckReview, forPositiveEffect));
     }
+    
     private IEnumerator ChangePage(bool forwards, List<CardInfo> cards, bool deckReview, bool forPositiveEffect)
     {
         yield return CleanUpCards();
@@ -209,6 +214,15 @@ public class PixelPlayableCardArray : ManagedBehaviour
         SetCardsEnabled(enabled: true);
         EnableButtons(true);
     }
+    
+    /// <summary>
+    /// A function used to get the card's position.
+    /// </summary>
+    /// <param name="cardIndex">The Index of the card we are after within the row of cards.</param>
+    /// <param name="cardsToPlace">The amount of cards to place in the row of cards.</param>
+    /// <param name="numRows">The number of rows on the screen.</param>
+    /// <param name="cardsPerRow">The amount of cards placed in the row of cards.</param>
+    /// <returns></returns>
     protected Vector3 GetCardPosition(int cardIndex, int cardsToPlace, int numRows, int cardsPerRow)
     {
         int cardRowIndex = Mathf.FloorToInt(cardIndex / cardsPerRow);
@@ -217,6 +231,7 @@ public class PixelPlayableCardArray : ManagedBehaviour
         float zPos = 0f + 0.01f * cardRowIndex;
         return new Vector3(xPos, yPos, zPos);
     }
+    
     private float GetXPos(int cardIndex, int cardRowIndex, int cardsToPlace, int cardsPerRow)
     {
         float cardGap = 0.41f;
@@ -234,6 +249,11 @@ public class PixelPlayableCardArray : ManagedBehaviour
 
         return anchor + cardGap * multiplier;
     }
+    
+    /// <summary>
+    /// An <see cref="IEnumerator"/> used to Clean Up the card's in the screen.
+    /// </summary>
+    /// <returns>The cleaned up menu and a switch back to the Board context.</returns>
     protected IEnumerator CleanUpCards()
     {
         List<PixelPlayableCard> list = new(displayedCards);
@@ -252,6 +272,15 @@ public class PixelPlayableCardArray : ManagedBehaviour
         SetBoardEnabled(true);
     }
 
+    /// <summary>
+    /// An <see cref="IEnumerator"/> related to the spawning and placement of card's to the screen.
+    /// </summary>
+    /// <param name="cards">The List of <see cref="CardInfo"/> to place into the Menu.</param>
+    /// <param name="numRows">The Number of Rows alloted to the Menu.</param>
+    /// <param name="pageIndex">The Index of the current Selection Screen's pages.</param>
+    /// <param name="isDeckReview">Whether or not after this was triggered we should go to the Deck for review.</param>
+    /// <param name="forPositiveEffect">Whether the special ability should use a Positive Effect when the card is shown in selection.</param>
+    /// <returns>The readied screen of cards to show in our selection.</returns>
     protected IEnumerator SpawnAndPlaceCards(List<CardInfo> cards, int numRows, int pageIndex, bool isDeckReview = false, bool forPositiveEffect = true)
     {
         if (numRows < 1) {
@@ -287,6 +316,11 @@ public class PixelPlayableCardArray : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the tweening of a card to the specified position.
+    /// </summary>
+    /// <param name="cardTransform">The Card Transform we want to tween.</param>
+    /// <param name="cardPos">The Vector3 related to where the Card is located.</param>
     protected void TweenInCard(Transform cardTransform, Vector3 cardPos)
     {
         cardTransform.localPosition = cardPos;

@@ -89,6 +89,12 @@ public static class Act2TutorFix
         yield return Singleton<CardSpawner>.Instance.SpawnCardToHand(selectedCard);
     }
 
+    /// <summary>
+    /// An <see cref="IEnumerator"/> called when selecting a card through the <see cref="Tutor"/> Ability in Act 2.
+    /// </summary>
+    /// <param name="instance">The current instance of the <see cref="Deck"/>.</param>
+    /// <param name="cardSelectedCallback">The call back used when a Card is Selected.</param>
+    /// <returns>The callback passed in triggered when a card is selected.</returns>
     public static IEnumerator ChoosePixelCard(Deck instance, Action<CardInfo> cardSelectedCallback)
     {
         PixelPlayableCard selectedCard = null;
