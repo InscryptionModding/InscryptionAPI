@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Manager class for handling stat icons.
+/// </summary>
 [HarmonyPatch]
 public static class StatIconManager
 {
@@ -22,11 +25,26 @@ public static class StatIconManager
         { SpecialStatIcon.SacrificesThisTurn, SpecialTriggeredAbility.SacrificesThisTurn }
     };
 
+    /// <summary>
+    /// A utility class that holds all of the required information about a stat icon in order to be able to use it in-game.
+    /// </summary>
     public class FullStatIcon
     {
+        /// <summary>
+        /// Enum ID for this stat icon.
+        /// </summary>
         public readonly SpecialStatIcon Id;
+        /// <summary>
+        /// Special ability enum ID for this stat icon.
+        /// </summary>
         public readonly SpecialTriggeredAbility AbilityId;
+        /// <summary>
+        /// The description object for this stat icon.
+        /// </summary>
         public readonly StatIconInfo Info;
+        /// <summary>
+        /// A subclass of VariableStatBehaviour that implements the logic for this stat icon.
+        /// </summary>
         public readonly Type VariableStatBehavior;
 
         /// <summary>
@@ -38,6 +56,13 @@ public static class StatIconManager
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
+        /// <summary>
+        /// Creates a new instance of FullStatIcon and registers its behaviour type with the [TypeManager](InscryptionAPI.Guid.TypeManager).
+        /// </summary>
+        /// <param name="id">The unique ID for this stat icon.</param>
+        /// <param name="abilityId">The unique ID for this stat icon's associated special ability.</param>
+        /// <param name="info">The description object for this ability.</param>
+        /// <param name="variableStatBehavior">A subclass of VariableStatBehaviour that implements the logic for the ability.</param>
         public FullStatIcon(SpecialStatIcon id, SpecialTriggeredAbility abilityId, StatIconInfo info, Type variableStatBehavior)
         {
             Id = id;
@@ -49,10 +74,19 @@ public static class StatIconManager
         }
     }
 
+    /// <summary>
+    /// All of the vanilla game's stat icons.
+    /// </summary>
     public readonly static ReadOnlyCollection<FullStatIcon> BaseGameStatIcons = new(GenBaseGameStatIconList());
     private readonly static ObservableCollection<FullStatIcon> NewStatIcons = new();
 
+    /// <summary>
+    /// The current processed list of all stat icons in the game, including vanilla and mod-added abilities.
+    /// </summary>
     public static List<FullStatIcon> AllStatIcons { get; private set; } = BaseGameStatIcons.ToList();
+    /// <summary>
+    /// The current processed list of all StatIconInfos in the game, including vanilla and mod-added abilities.
+    /// </summary>
     public static List<StatIconInfo> AllStatIconInfos { get; private set; } = BaseGameStatIcons.Select(x => x.Info).ToList();
 
     static StatIconManager()
@@ -95,6 +129,13 @@ public static class StatIconManager
         return baseGame;
     }
 
+    /// <summary>
+    /// Creates a new stat icon and registers it to be able to be added to cards
+    /// </summary>
+    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="info">An instance of StatIconInfo describing the ability.</param>
+    /// <param name="behavior">A subclass of VariableStatBehaviour that implements the logic for the stat icon.</param>
+    /// <returns>An instance of FullStatIcon containing all necessary data for the stat icon to work..</returns>
     public static FullStatIcon Add(string guid, StatIconInfo info, Type behavior)
     {
         // Register the special ability at the same time
@@ -107,6 +148,14 @@ public static class StatIconManager
         return full;
     }
 
+    ///     /// <summary>
+    /// Creates a new stat icon and registers it to be able to be added to cards
+    /// </summary>
+    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="rulebookName">The name of the stat icon when it appears in the Rulebook.</param>
+    /// <param name="rulebookDescription">The description of the stat icon when it appears in the Rulebook.</param>
+    /// <param name="behavior">A subclass of VariableStatBehaviour that implements the logic for the stat icon.</param>
+    /// <returns>An instance of StatIconInfo describing the new ability.</returns>
     public static StatIconInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior)
     {
         StatIconInfo info = ScriptableObject.CreateInstance<StatIconInfo>();
@@ -116,7 +165,15 @@ public static class StatIconManager
         return Add(guid, info, behavior).Info;
     }
 
+    /// <summary>
+    /// Removes a stat icon from the game based on stat icon ID. Can only remove mod-added stat icons, not vanilla stat icons.
+    /// </summary>
+    /// <param name="id">The unique ID of the stat icon to remove.</param>
     public static void Remove(SpecialStatIcon id) => NewStatIcons.Remove(NewStatIcons.FirstOrDefault(x => x.Id == id));
+    /// <summary>
+    /// Removes an stat icon from the game based on its FullStatIcon. Can only remove mod-added stat icons, not vanilla stat icons.
+    /// </summary>
+    /// <param name="ability">The instance of the ability to remove.</param>
     public static void Remove(FullStatIcon ability) => NewStatIcons.Remove(ability);
 
     [HarmonyPrefix]
