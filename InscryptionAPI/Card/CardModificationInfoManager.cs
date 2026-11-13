@@ -99,6 +99,11 @@ public static class CardModificationInfoManager
             }
         }
     }
+    /// <summary>
+    /// Retrieves all custom properties stored in the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to retrieve custom properties from.</param>
+    /// <returns>A List of all custom properties stored by the singleton ID.</returns>
     public static List<string> GetCustomPropertiesFromId(string singletonId)
     {
         List<string> propertiesList = new();
@@ -114,6 +119,15 @@ public static class CardModificationInfoManager
         }
         return propertiesList;
     }
+    /// <summary>
+    /// Retrieves all custom costs stored in the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to retrieve custom costs from.</param>
+    /// <returns>A List of all custom costs stored by the singleton ID.</returns>
+    /// <remarks>
+    /// With the improved system of adding custom costs using the [CardCostManager](InscryptionAPI.CardCosts.CardCostManager),
+    /// it's recommended to avoid using the custom costs ID system unless you want to do something akin to the vanilla CardModInfo cost adjustments.
+    /// </remarks>
     public static List<string> GetCustomCostsFromId(string singletonId)
     {
         List<string> costList = new();
@@ -131,7 +145,17 @@ public static class CardModificationInfoManager
         return costList;
     }
 
+    /// <summary>
+    /// Retrieves the custom properties substring from the given CardModificationInfo's singleton ID.
+    /// </summary>
+    /// <param name="mod">The CardModificationInfo to access.</param>
+    /// <returns>The custom properties substring or null if one doesn't exist.</returns>
     public static string GetCustomPropertiesIdString(CardModificationInfo mod) => mod.HasCustomPropertiesId() ? GetCustomPropertiesIdString(mod.singletonId) : null;
+    /// <summary>
+    /// Retrieves the custom properties substring from the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to access.</param>
+    /// <returns>The custom properties substring or null if one doesn't exist.</returns>
     public static string GetCustomPropertiesIdString(string singletonId)
     {
         if (!singletonId.HasCustomPropertiesId())
@@ -144,7 +168,31 @@ public static class CardModificationInfoManager
         return propertiesString.Substring(0, endOf + 1);
     }
 
+    /// <summary>
+    /// Retrieves the custom costs substring from the given CardModificationInfo's singleton ID.
+    /// </summary>
+    /// <param name="mod">The CardModificationInfo to access.</param>
+    /// <returns>The custom costs substring or null if one doesn't exist.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     public static string GetCustomCostsIdString(CardModificationInfo mod) => mod.HasCustomCostsId() ? GetCustomCostsIdString(mod.singletonId) : null;
+    /// <summary>
+    /// Retrieves the custom costs substring from the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to access.</param>
+    /// <returns>The custom costs substring or null if one doesn't exist.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using CardModificationInfos to add custom costs to cards. Instead use CardInfo.SetCustomCost and the much better [CardCostManager](InscryptionAPI.CardCosts.CardCostManager).
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and CardModificationInfos.
+    /// </b>
+    /// </remarks>
     public static string GetCustomCostsIdString(string singletonId)
     {
         if (!singletonId.HasCustomCostsId())
