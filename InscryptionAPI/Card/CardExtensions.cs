@@ -149,9 +149,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes all stacks of any number of abilities from the card.
     /// </summary>
-    /// <param name="info">Card to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="abilities">The abilities to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo RemoveAbilities(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
@@ -166,9 +166,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of abilities from the card. Will remove one instance of each passed ability; multiple instances can be passed.
     /// </summary>
-    /// <param name="info">Card to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="abilities">The abilities to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo RemoveAbilitiesSingle(this CardInfo info, params Ability[] abilities)
     {
         if (info.abilities?.Count > 0)
@@ -328,9 +328,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
-    /// <param name="info">Card to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="traits">The traits to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo RemoveTraits(this CardInfo info, params Trait[] traits)
     {
         if (info.traits?.Count > 0)
@@ -347,9 +347,9 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes any number of traits from the card.
     /// </summary>
-    /// <param name="info">Card to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="tribes">The tribes to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo RemoveTribes(this CardInfo info, params Tribe[] tribes)
     {
         if (info.traits?.Count > 0)
@@ -364,11 +364,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Removes any number of CardMetaCategories from the card.
+    /// Removes any number of metaategories from the card.
     /// </summary>
-    /// <param name="info">Card to access.</param>
-    /// <param name="cardMetaCategories">The CardMetaCategories to remove.</param>
-    /// <returns>The same card info so a chain can continue.</returns>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
+    /// <param name="cardMetaCategories">The metacategories to remove.</param>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo RemoveCardMetaCategories(this CardInfo info, params CardMetaCategory[] cardMetaCategories)
     {
         if (info.metaCategories?.Count > 0)
