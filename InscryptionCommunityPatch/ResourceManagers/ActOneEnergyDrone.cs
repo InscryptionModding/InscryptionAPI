@@ -118,7 +118,7 @@ public static class EnergyDrone
     public static bool PoolHasGems { get; private set; }
 
     /// <summary>
-    /// Determines whether or not a card is a part of the <see cref="targetTemple"/> and if they have the meta categories needed in order for them to show up.
+    /// Determines whether or not a card is a part of the targetted temple passed in through <c>targetTemple</c>, and if they have the meta categories needed in order for them to show up.
     /// </summary>
     /// <param name="info">The <see cref="CardInfo"/> of the card we are checking.</param>
     /// <param name="targetTemple">The temple in which we are targetting. Options are Nature -> <c>Act 1</c>, Undead -> <c>Grimora</c>, Wizard -> <c>Magnificus</c>.</param>

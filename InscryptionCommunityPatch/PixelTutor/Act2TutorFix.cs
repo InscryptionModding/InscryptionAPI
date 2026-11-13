@@ -7,7 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.PixelTutor;
 
-// fixes Tutor to work in Act 2
+/// <summary>
+/// Patches in our Act 2 <see cref="Tutor"/> related UI, that way it doesn't break when used in Act 2.
+/// </summary>
 [HarmonyPatch]
 public static class Act2TutorFix
 {

@@ -9,10 +9,19 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.PixelTutor;
 
+/// <summary>
+/// Handles the UI related to the Act 2 <see cref="Tutor"/> patched in by <see cref="Act2TutorFix"/>.
+/// </summary>
 public class PixelPlayableCardArray : ManagedBehaviour
 {
+    /// <summary>
+    /// The Selected Card, by default null.
+    /// </summary>
     public PixelPlayableCard selectedCard = null;
 
+    /// <summary>
+    /// The Cards to Display when <see cref="Tutor"/> is triggered in Act 2, by default an empty list.
+    /// </summary>
     public readonly List<PixelPlayableCard> displayedCards = new();
 
     private PixelPlayableCard gameObjectReference = null;
@@ -34,8 +43,14 @@ public class PixelPlayableCardArray : ManagedBehaviour
 
     private GamepadGridControl gamepadGrid;
 
-    public IEnumerator DisplayUntilCancelled(List<CardInfo> cards,
-        Func<bool> cancelCondition, Action cardsPlacedCallback = null)
+    /// <summary>
+    /// An <see cref="IEnumerator"/> used to make the Act 2 <see cref="Tutor"/> display show until it's cancelled, e.g. by a card being selected..
+    /// </summary>
+    /// <param name="cards">The cards available for selection.</param>
+    /// <param name="cancelCondition">The condition needed to cancel the screen showing when <see cref="Tutor"/> would be triggered.</param>
+    /// <param name="cardsPlacedCallback">The callback for when the card(s) has/have been placed.</param>
+    /// <returns>The Act 2 <see cref="Tutor"/> screen shown in game.</returns>
+    public IEnumerator DisplayUntilCancelled(List<CardInfo> cards, Func<bool> cancelCondition, Action cardsPlacedCallback = null)
     {
         //Debug.Log($"{cards.Exists(x => x == null)}");
         cards.RemoveAll(x => x == null);
@@ -58,9 +73,15 @@ public class PixelPlayableCardArray : ManagedBehaviour
         CleanUpButtons();
     }
 
-    public IEnumerator SelectPixelCardFrom(
-        List<CardInfo> cards, Action<PixelPlayableCard> cardSelectedCallback,
-        Func<bool> cancelCondition = null, bool forPositiveEffect = true)
+    /// <summary>
+    ///  An <see cref="IEnumerator"/> used to determine the selection for when the Act 2 <see cref="Tutor"/> is triggered.
+    /// </summary>
+    /// <param name="cards">The cards we want to show.</param>
+    /// <param name="cardSelectedCallback">The call back for when a Card has been selected.</param>
+    /// <param name="cancelCondition">The condition by which to cancel the Selection screen.</param>
+    /// <param name="forPositiveEffect">Whether the special ability should use a Positive Effect when the card is shown in selection.</param>
+    /// <returns>A selection screen of cards to be selected from.</returns>
+    public IEnumerator SelectPixelCardFrom(List<CardInfo> cards, Action<PixelPlayableCard> cardSelectedCallback, Func<bool> cancelCondition = null, bool forPositiveEffect = true)
     {
         //Debug.Log($"{cards.Exists(x => x == null)}");
         cards.RemoveAll(x => x == null);
