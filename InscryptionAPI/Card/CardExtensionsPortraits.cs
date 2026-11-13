@@ -40,6 +40,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Sets the cards portrait and emission at the same time.
     /// </summary>
+    /// <param name="info">The CardInfon to access.</param>
     /// <param name="portrait">The texture containing the card portrait.</param>
     /// <param name="emission">The texture containing the emission.</param>
     /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
@@ -202,6 +203,11 @@ public static partial class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Retrieves the given CardInfo's emissive portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no emissive portrait.</returns>
     public static Sprite GetEmissivePortrait(this CardInfo info) => info.portraitTex.GetEmissionSprite();
 
     /// <summary>
@@ -243,6 +249,11 @@ public static partial class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Retrives the given CardInfo's emissive alternate portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no emissive alternate portrait.</returns>
     public static Sprite GetEmissiveAltPortrait(this CardInfo info) => info.alternatePortrait.GetEmissionSprite();
 
     #endregion
@@ -287,6 +298,11 @@ public static partial class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Retrieves the given CardInfo's pixel portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no pixel portrait.</returns>
     public static Sprite GetPixelPortrait(this CardInfo info)
     {
         return info.pixelPortrait;
@@ -469,8 +485,7 @@ public static partial class CardExtensions
     /// Sets the emissive lost tail portrait for the card. This can only be done after the default lost tail portrait has been set (SetLostTailPortrait).
     /// </summary>
     /// <param name="info">Tail to access.</param>
-    /// <param name="portrait">The sprite containing the card portrait.</param>
-    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <param name="portrait">The Sprite containing the card portrait.</param>
     /// <returns>The same TailParams so a chain can continue.</returns>
     public static TailParams SetEmissiveLostTailPortrait(this TailParams info, Sprite portrait)
     {
@@ -480,6 +495,12 @@ public static partial class CardExtensions
         info.tailLostPortrait.RegisterEmissionForSprite(portrait);
         return info;
     }
+
+    /// <summary>
+    /// Retrieves the given CardInfo's emissive tail lost portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no emissive tail lost portrait.</returns>
     public static Sprite GetEmissiveTailLostPortrait(this TailParams info) => info.tailLostPortrait?.GetEmissionSprite();
 
     #endregion
@@ -521,6 +542,11 @@ public static partial class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Retrieves the given CardInfo's alternate Act 2 portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no alternate pixel portrait.</returns>
     public static Sprite GetPixelAlternatePortrait(this CardInfo info) => info.PixelAlternatePortrait();
     #endregion
 
@@ -536,11 +562,24 @@ public static partial class CardExtensions
         return info.SetSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
 
+    /// <summary>
+    /// Sets the card's alternate steep trap portrait. This portrait is only used when the Steel Trap ability triggers in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the card portrait.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
     }
 
+    /// <summary>
+    /// Sets the card's alternate steep trap portrait. This portrait is only used when the Steel Trap ability triggers in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The Sprite containing the card portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetSteelTrapPortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -571,6 +610,13 @@ public static partial class CardExtensions
     {
         return info.SetPixelSteelTrapPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
     }
+
+    /// <summary>
+    /// Sets the card's alternate steep trap portrait. This portrait is only used when the Steel Trap ability triggers in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The Sprite containing the card portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelSteelTrapPortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -590,10 +636,25 @@ public static partial class CardExtensions
     {
         return info.SetEmissiveSteelTrapPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the card's alternate steep trap portrait. This portrait is only used when the Steel Trap ability triggers in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The texture containing the card portrait.</param>
+    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveSteelTrapPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetEmissiveSteelTrapPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
     }
+
+    /// <summary>
+    /// Sets the card's alternate steep trap portrait. This portrait is only used when the Steel Trap ability triggers in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The Sprite containing the card portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveSteelTrapPortrait(this CardInfo info, Sprite portrait)
     {
         if (info.SteelTrapPortrait() == null)
@@ -602,12 +663,18 @@ public static partial class CardExtensions
         info.SteelTrapPortrait().RegisterEmissionForSprite(portrait);
         return info;
     }
+
+    /// <summary>
+    /// Retrieves the given CardInfo's emissive steel trap portrait.
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns>Null if there is no emissive steel trap portrait.</returns>
     public static Sprite GetEmissiveSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait()?.GetEmissionSprite();
     #endregion
 
     #region Shield Alt
     /// <summary>
-    /// Sets the card's alternate broken shield portrait. This portrait is only used when a card with a shield-giving sigil loses all its shields.
+    /// Sets the card's alternate broken shield portrait. This portrait is only used when a card with this CardInfo has its shield broken.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="pathToArt">The path to the .png file containing the portrait artwork (relative to the Plugins directory).</param>
@@ -616,10 +683,25 @@ public static partial class CardExtensions
     {
         return info.SetBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the card's broken shield portrait. This portrait is only used when a card with this CardInfo has its shield broken.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Texture.</param>
+    /// <param name="filterMode">Filter mode to apply to the texture in-game. Defaults to Point.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
     }
+
+    /// <summary>
+    /// Sets the card's broken shield portrait. This portrait is only used when a card with this CardInfo has its shield broken.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Portrait.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetBrokenShieldPortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -639,10 +721,25 @@ public static partial class CardExtensions
     {
         return info.SetPixelBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the card's broken shield portrait. This portrait is only used in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Texture.</param>
+    /// <param name="filterMode">Filter mode to apply to the texture in-game. Defaults to Point.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetPixelBrokenShieldPortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
     }
+
+    /// <summary>
+    /// Sets the card's broken shield portrait. This portrait is only used in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Sprite.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelBrokenShieldPortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -662,10 +759,25 @@ public static partial class CardExtensions
     {
         return info.SetEmissiveBrokenShieldPortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the emissive broken shield portrait for the card. This can only be done after the default broken shield portrait has been set (SetBrokenShieldPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Texture.</param>
+    /// <param name="filterMode">Filter mode to apply to the texture in-game. Defaults to Point.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveBrokenShieldPortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetEmissiveBrokenShieldPortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
     }
+
+    /// <summary>
+    /// Sets the emissive broken shield portrait for the card. This can only be done after the default broken shield portrait has been set (SetBrokenShieldPortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Sprite.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveBrokenShieldPortrait(this CardInfo info, Sprite portrait)
     {
         if (info.BrokenShieldPortrait() == null)
@@ -674,6 +786,12 @@ public static partial class CardExtensions
         info.BrokenShieldPortrait().RegisterEmissionForSprite(portrait);
         return info;
     }
+
+    /// <summary>
+    /// Retrieves the given CardInfo's emissive broken shield portrait.
+    /// </summary>
+    /// <param name="info">The CardInfo to access.</param>
+    /// <returns>Null if there is no emissive broken shield portrait.</returns>
     public static Sprite GetEmissiveBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait()?.GetEmissionSprite();
     #endregion
 
@@ -688,10 +806,23 @@ public static partial class CardExtensions
     {
         return info.SetSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+    /// <summary>
+    /// Sets the card's alternate sacricable portrait. This portrait is only used when a card with this CardInfo is on the board when the player is selecting sacrifices.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Texture.</param>
+    /// <param name="filterMode">Filter mode to apply to the texture in-game. Defaults to Point.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetSacrificablePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.CardPortrait, filterMode ?? default));
     }
+    /// <summary>
+    /// Sets the card's alternate sacricable portrait. This portrait is only used when a card with this CardInfo is on the board when the player is selecting sacrifices.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The sacrificable portrait's Sprite.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetSacrificablePortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -711,10 +842,25 @@ public static partial class CardExtensions
     {
         return info.SetPixelSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the card's pixel sacrificable portrait. This portrait is only used in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The card portrait's Texture.</param>
+    /// <param name="filterMode">The filter mode applied to the portrait in-game (defaults to Point).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetPixelSacrificablePortrait(portrait.ConvertTexture(TextureHelper.SpriteType.PixelPortrait, filterMode ?? default));
     }
+
+    /// <summary>
+    /// Sets the card's pixel sacrificable portrait. This portrait is only used in Act 2.
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The card portrait's Sprite.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPixelSacrificablePortrait(this CardInfo info, Sprite portrait)
     {
         if (!string.IsNullOrEmpty(info.name))
@@ -725,7 +871,7 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Sets the emissive sacrifcable portrait for the card. This can only be done after the sacrificable portrait has been set (SetSacrifablePortrait).
+    /// Sets the emissive sacrificable portrait for the card. This can only be done after the sacrificable portrait has been set (SetSacrifablePortrait).
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
@@ -734,10 +880,25 @@ public static partial class CardExtensions
     {
         return info.SetEmissiveSacrificablePortrait(TextureHelper.GetImageAsTexture(pathToArt));
     }
+
+    /// <summary>
+    /// Sets the emissive sacrificable portrait for the card. This can only be done after the sacrificable portrait has been set (SetSacrifablePortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The card portrait's Texture.</param>
+    /// <param name="filterMode">The filter mode applied to the portrait in-game (defaults to Point).</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetEmissiveSacrificablePortrait(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
     }
+
+    /// <summary>
+    /// Sets the emissive sacrificable portrait for the card. This can only be done after the sacrificable portrait has been set (SetSacrifablePortrait).
+    /// </summary>
+    /// <param name="info">CardInfo to access.</param>
+    /// <param name="portrait">The card portrait's Sprite.</param>
+    /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetEmissiveSacrificablePortrait(this CardInfo info, Sprite portrait)
     {
         if (info.SacrificablePortrait() == null)
@@ -746,6 +907,11 @@ public static partial class CardExtensions
         info.SacrificablePortrait().RegisterEmissionForSprite(portrait);
         return info;
     }
+    /// <summary>
+    /// Retrieves the given CardInfo's sacrificable portrait's emission.
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns>The CardInfo's emissive sacrificable portrait, or null if one doesn't exist.</returns>
     public static Sprite GetEmissiveSacrificablePortrait(this CardInfo info) => info.SacrificablePortrait().GetEmissionSprite();
     #endregion
 
@@ -761,13 +927,48 @@ public static partial class CardExtensions
         return info;
     }
 
+    /// <summary>
+    /// Returns whether or not the given PlayableCard's CardInfo has an alternate card portrait.
+    /// </summary>
     public static bool HasAlternatePortrait(this PlayableCard card) => card.Info.HasAlternatePortrait();
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate card portrait.
+    /// </summary>
     public static bool HasAlternatePortrait(this CardInfo info) => info.alternatePortrait != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Act 2 card portrait.
+    /// </summary>
     public static bool HasPixelAlternatePortrait(this CardInfo info) => info.PixelAlternatePortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Steel Trap card portrait for when Steel Trap triggers on a card.
+    /// </summary>
     public static bool HasSteelTrapPortrait(this CardInfo info) => info.SteelTrapPortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Act 2 card portrait for when Steel Trap triggers on a card.
+    /// </summary>
     public static bool HasPixelSteelTrapPortrait(this CardInfo info) => info.PixelSteelTrapPortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate card portrait for when a card's shield is broken.
+    /// </summary>
     public static bool HasBrokenShieldPortrait(this CardInfo info) => info.BrokenShieldPortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Act 2 card portrait for when a card's shield is broken.
+    /// </summary>
     public static bool HasPixelBrokenShieldPortrait(this CardInfo info) => info.PixelBrokenShieldPortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Act 2 card portrait for when a card can be sacrificed.
+    /// </summary>
     public static bool HasSacrificablePortrait(this CardInfo info) => info.SacrificablePortrait() != null;
+
+    /// <summary>
+    /// Returns whether or not the given CardInfo has an alternate Act 2 card portrait for when a card can be sacrificed.
+    /// </summary>
     public static bool HasPixelSacrificablePortrait(this CardInfo info) => info.PixelSacrificablePortrait() != null;
 }
