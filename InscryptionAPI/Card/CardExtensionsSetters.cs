@@ -261,6 +261,7 @@ public static partial class CardExtensions
     /// Adds the Terrain trait and background to this card, with the option to not use TerrainLayout.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
+    /// <param name="useTerrainLayout">Whether or not the CardInfo should be given the TerrainLayout appearance behaviour.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTerrain(this CardInfo info, bool useTerrainLayout)
     {
@@ -275,6 +276,7 @@ public static partial class CardExtensions
     /// Adds the Pelt trait and background to this card, and optionally adds the SpawnLice special ability.
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
+    /// <param name="spawnLice">Whether or not the given CardInfo should also spawn lice.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetPelt(this CardInfo info, bool spawnLice = true)
     {
@@ -453,8 +455,6 @@ public static partial class CardExtensions
     /// </summary>
     /// <param name="info">CardInfo to access.</param>
     /// <param name="tail">The card that will be generated as the "tail" when the first hit is dodged.</param>
-    /// <param name="tailLostPortrait">The texture containing the card portrait.</param>
-    /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
     /// <param name="mods">A set of card mods to be applied to the tail.</param>
     /// <returns>The same CardInfo so a chain can continue.</returns>
     public static CardInfo SetTail(this CardInfo info, CardInfo tail, IEnumerable<CardModificationInfo> mods = null)
