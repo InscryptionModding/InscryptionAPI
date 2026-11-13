@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Class containing a large number of helper extension methods for PlayableCard and CardInfo objects.
+/// </summary>
 public static partial class CardExtensions
 {
     /// <summary>
