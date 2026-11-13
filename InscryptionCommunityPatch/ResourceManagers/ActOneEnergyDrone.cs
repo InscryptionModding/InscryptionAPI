@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace InscryptionCommunityPatch.ResourceManagers;
 
+/// <summary>
+/// This patch handles information related to the Drone Configuration for Act 1.
+/// </summary>
 [HarmonyPatch]
 public static class EnergyDrone
 {
@@ -16,10 +19,25 @@ public static class EnergyDrone
     /// </summary>
     public class EnergyConfigInfo
     {
-        public bool ConfigEnergy { get; set; } = PoolHasEnergy || PatchPlugin.configEnergyPerMatchCleanUp.Value;
+        /// <summary>
+        /// Whether or not the Energy Drone should be shown.
+        /// </summary>
         public bool ConfigShowDrone { get; set; } = PoolHasEnergy || PatchPlugin.configEnergyDrone.Value;
+        /// <summary>
+        /// Whether or not the Energy Drone should be refreshed per match.
+        /// </summary>
+        public bool ConfigEnergy { get; set; } = PoolHasEnergy || PatchPlugin.configEnergyPerMatchCleanUp.Value;
+        /// <summary>
+        /// Whether or not the Mox Drone should be shown.
+        /// </summary>
         public bool ConfigDroneMox { get; set; } = PoolHasGems || PatchPlugin.configMoxDrone.Value;
+        /// <summary>
+        /// Whether or not the Mox Drone should be refreshed per match.
+        /// </summary>
         public bool ConfigMox { get; set; } = PoolHasGems || PatchPlugin.configMoxPerMatchCleanup.Value;
+        /// <summary>
+        /// Whether or not the Default Drone should be used.
+        /// </summary>
         public bool ConfigDefaultDrone { get; set; } = PatchPlugin.configUtilizeDefaultDrone.Value;
 
         /// <summary>
@@ -38,7 +56,12 @@ public static class EnergyDrone
         { CardTemple.Tech, new() },
         { CardTemple.Wizard, new() }
     };
-
+    
+    /// <summary>
+    /// Validator used to ensure a Scene can have the Drone or not.
+    /// </summary>
+    /// <param name="sceneName">The scene we are checking.</param>
+    /// <returns>True if the scene can have the drone, false otherwise.</returns>
     public static bool SceneCanHaveEnergyDrone(string sceneName)
     {
         string activeSceneName = sceneName.ToLowerInvariant();
@@ -48,6 +71,9 @@ public static class EnergyDrone
         return activeSceneName.Contains("magnificus") || activeSceneName.Contains("grimora");
     }
 
+    /// <summary>
+    /// Determines whether the current Scene can have the Drone or not. Verified via <see cref="SceneCanHaveEnergyDrone"/>.
+    /// </summary>
     public static bool CurrentSceneCanHaveEnergyDrone
     {
         get
@@ -61,7 +87,7 @@ public static class EnergyDrone
     }
 
     /// <summary>
-    /// Returns the EnergyConfigInfo object corresponding to the current Act.
+    /// Returns the <see cref="EnergyConfigInfo"/> object corresponding to the current Act.
     /// </summary>
     public static EnergyConfigInfo GetEnergyConfig()
     {
@@ -78,14 +104,26 @@ public static class EnergyDrone
     }
 
     /// <summary>
-    /// The EnergyConfigInfo for the current Act.
+    /// The <see cref="EnergyConfigInfo"/> for the current Act.
     /// </summary>
     private static EnergyConfigInfo EnergyConfig => GetEnergyConfig();
 
+    /// <summary>
+    /// Used to determine whether the current Card Pool has Energy or not.
+    /// </summary>
     public static bool PoolHasEnergy { get; private set; }
+    /// <summary>
+    /// Used to determine whether the current Card Pool has Mox or not.
+    /// </summary>
     public static bool PoolHasGems { get; private set; }
 
-    private static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
+    /// <summary>
+    /// Determines whether or not a card is a part of the <see cref="targetTemple"/> and if they have the meta categories needed in order for them to show up.
+    /// </summary>
+    /// <param name="info">The <see cref="CardInfo"/> of the card we are checking.</param>
+    /// <param name="targetTemple">The temple in which we are targetting. Options are Nature -> <c>Act 1</c>, Undead -> <c>Grimora</c>, Wizard -> <c>Magnificus</c>.</param>
+    /// <returns>True if the Card is part of one of the temples we are after, and if the card has any of the meta categories needed to show up in the given act, otherwise false.</returns>
+    public static bool CardIsVisible(this CardInfo info, CardTemple targetTemple)
     {
         // if the CardInfo can't appear in this part of the game - Act 1 = Nature, Grimora = Undead, Magnificus = Wizard
         if (info.temple != targetTemple)
@@ -132,6 +170,7 @@ public static class EnergyDrone
         else
             AttachDroneToScale();
     }
+    
     private static void AttachDroneToScale()
     {
         try
@@ -189,6 +228,7 @@ public static class EnergyDrone
 
         return false;
     }
+    
     [HarmonyPrefix, HarmonyPatch(typeof(ResourceDrone), nameof(ResourceDrone.UpdateCellAndGemColors))]
     private static bool DisableUpdateWhenNull()
     {
@@ -196,6 +236,7 @@ public static class EnergyDrone
             return false;
         return true;
     }
+    
     [HarmonyPatch(typeof(Part1ResourcesManager), nameof(Part1ResourcesManager.CleanUp))]
     [HarmonyPrefix]
     private static void Part1ResourcesManager_CleanUp(Part1ResourcesManager __instance)
