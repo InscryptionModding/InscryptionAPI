@@ -16,7 +16,7 @@
     --bs-navbar-brand-font-size: 1.5rem;
 }
 
-.navbar-brand .logo {
+#logo {
     padding-right: 1.5rem;
 }
 
@@ -34,4 +34,8 @@ body[data-yaml-mime="ManagedReference"] article h2.section, body[data-yaml-mime=
 
 b, strong {
     font-weight: normal;
+}
+
+.toc ul {
+    font-size: 20px !important;
 }
