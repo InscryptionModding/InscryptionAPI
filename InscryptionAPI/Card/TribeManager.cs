@@ -17,26 +17,44 @@ namespace InscryptionAPI.Card;
 public static class TribeManager
 {
     /// <summary>
-    /// The internal object used to store all relevant info about a Tribe.
-    /// guid - The mod GUID that added the Tribe.
-    /// name - The internal name of the Tribe.
-    /// tribe - The enum value corresponding to this Tribe.
-    /// icon - The sprite displayed on cards with this Tribe.
-    /// tribeChoice - Whether or not this Tribe can appear at card tribe choice nodes.
-    /// cardBack - The texture displayed at card tribe choice nodes. If null, the API will create one using the icon Sprite.
+    /// A utility class that holds all of the required information about a tribe in order to be able to use it in-game.
     /// </summary>
     public class TribeInfo {
+        /// <summary>
+        /// The guid of the mod that added this ability
+        /// </summary>
         public string guid;
+        /// <summary>
+        /// The name of this tribe
+        /// </summary>
         public string name;
+        /// <summary>
+        /// The unique ID for this tribe
+        /// </summary>
         public Tribe tribe;
+        /// <summary>
+        /// The Sprite displayed on cards of this tribe
+        /// </summary>
         public Sprite icon;
+        /// <summary>
+        /// Whether or not this tribe can appear in tribe card choice nodes.
+        /// </summary>
         public bool tribeChoice;
+        /// <summary>
+        /// The cardback texture displayed when this tribe appears in tribe card choice nodes. If null, the API will create one using the icon.
+        /// </summary>
         public Texture2D cardback;
     }
 
     private static readonly List<TribeInfo> tribes = new();
     private static readonly List<Tribe> tribeTypes = new();
+    /// <summary>
+    /// All modded TribeInfos added through the API.
+    /// </summary>
     public static readonly ReadOnlyCollection<TribeInfo> NewTribes = new(tribes);
+    /// <summary>
+    /// All modded tribe IDs added through the API.
+    /// </summary>
     public static readonly ReadOnlyCollection<Tribe> NewTribesTypes = new(tribeTypes);
 
     private static readonly Texture2D TribeIconMissing = TextureHelper.GetImageAsTexture("tribeicon_none.png", Assembly.GetExecutingAssembly());
@@ -75,13 +93,18 @@ public static class TribeManager
     /// <param name="name">The name of the tribe.</param>
     /// <param name="pathToTribeIcon">Path to the tribal icon that will appear as a watermark on all cards belonging to this tribe.</param>
     /// <param name="appearInTribeChoices">Indicates if the card should appear in tribal choice nodes.</param>
-    /// <param name="pathToChoiceCardbackTexture">Path to the card back texture to display if the card should appear in tribal choice nodes.</param>
+    /// <param name="pathToChoiceCardBackTexture">Path to the card back texture to display if the card should appear in tribal choice nodes.</param>
     /// <returns>The unique identifier for the new tribe.</returns>
     public static Tribe Add(string guid, string name, string pathToTribeIcon = null, bool appearInTribeChoices = false, string pathToChoiceCardBackTexture = null) {
         // Reason for 'is not null' is because if we pass 'null' to GetImageAsTexture, It will throw an exception.
         return Add(guid, name, pathToTribeIcon is not null ? TextureHelper.GetImageAsTexture(pathToTribeIcon) : null, appearInTribeChoices, pathToChoiceCardBackTexture is not null ? TextureHelper.GetImageAsTexture(pathToChoiceCardBackTexture) : null);
     }
 
+    /// <summary>
+    /// Determines if the given Tribe was added by a mod.
+    /// </summary>
+    /// <param name="tribe">The Tribe to check.</param>
+    /// <returns>True if tribe is not from the base game.</returns>
     public static bool IsCustomTribe(Tribe tribe) => tribeTypes.Contains(tribe);
 
     /// <summary>
