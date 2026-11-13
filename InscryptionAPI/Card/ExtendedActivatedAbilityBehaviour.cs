@@ -7,29 +7,96 @@ using System.Collections;
 using UnityEngine;
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// A version of ActivatedAbilityBehaviour that allows for the creation of activated abilities that cost Blood, Gems, or Health. Also supports dynamic activation costs.
+/// </summary>
 public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
 {
+    /// <summary>
+    /// Stores the total Blood activation cost modifier.
+    /// </summary>
     public int bloodCostMod;
+    /// <summary>
+    /// Stores the total Bones activation cost modifier.
+    /// </summary>
     public int bonesCostMod;
+    /// <summary>
+    /// Stores the total Energy activation cost modifier.
+    /// </summary>
     public int energyCostMod;
+    /// <summary>
+    /// Stores the total added Gems activation requirement modifier.
+    /// </summary>
     public List<GemType> gemsCostMod = new();
+    /// <summary>
+    /// Stores the total removed Gems activation requirement modifier.
+    /// </summary>
+    public List<GemType> gemsCostRemovedMod = new();
+    /// <summary>
+    /// Stores the total Blood activation cost modifier.
+    /// </summary>
     public int healthCostMod;
 
-    public virtual int StartingBloodCost { get; }
-    public virtual int StartingBonesCost { get; }
-    public virtual int StartingEnergyCost { get; }
-    public virtual List<GemType> StartingGemsCost { get; }
+    /// <summary>
+    /// Initial amount of Blood needed to activate this ability.
+    /// </summary>
+    public virtual int StartingBloodCost { get; } = 0;
+    /// <summary>
+    /// Initial amount of Bones needed to activate this ability.
+    /// </summary>
+    public virtual int StartingBonesCost { get; } = 0;
+    /// <summary>
+    /// Initial amount of Energy needed to activate this ability.
+    /// </summary>
+    public virtual int StartingEnergyCost { get; } = 0;
+    /// <summary>
+    /// Initial types of Gems needed to activate this ability.
+    /// </summary>
+    public virtual List<GemType> StartingGemsCost { get; } = null;
+    /// <summary>
+    /// Initial amount of Health needed to activate this ability.
+    /// </summary>
     public virtual int StartingHealthCost { get; }
+    /// <summary>
+    /// Amount the Blood activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateBloodCostMod { get; set; }
+    /// <summary>
+    /// Amount the Bones activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateBonesCostMod { get; set; }
+    /// <summary>
+    /// Amount the Energy activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateEnergyCostMod { get; set; }
+    /// <summary>
+    /// What Gems are added to the activation requirement whenever this ability is activated.
+    /// </summary>
     public virtual List<GemType> OnActivateGemsCostMod { get; set; }
+    /// <summary>
+    /// What Gems are removed from the activation requirement whenever this ability is activated.
+    /// </summary>
     public virtual bool OnActivateGemsCostModRemovesGems { get; set; }
+    /// <summary>
+    /// Amount the Health activation cost is modified whenever this ability is activated.
+    /// </summary>
     public virtual int OnActivateHealthCostMod { get; set; }
 
+    /// <summary>
+    /// How much Blood this ability currently costs to activate.
+    /// </summary>
     public int BloodCost => Mathf.Max(0, StartingBloodCost + bloodCostMod);
+    /// <summary>
+    /// How much Bones this ability currently costs to activate.
+    /// </summary>
     public int BonesCost => Mathf.Max(0, StartingBonesCost + bonesCostMod);
+    /// <summary>
+    /// How much Energy this ability currently costs to activate.
+    /// </summary>
     public int EnergyCost => Mathf.Max(0, StartingEnergyCost + energyCostMod);
+    /// <summary>
+    /// What Gems this ability currently requires to activate.
+    /// </summary>
     public List<GemType> GemsCost {
         get {
             List<GemType> retval = new();
@@ -37,22 +104,46 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
                 retval.AddRange(StartingGemsCost);
             }
             retval.AddRange(gemsCostMod);
+            foreach (GemType gem in gemsCostRemovedMod) {
+                retval.Remove(gem);
+            }
             return retval;
         }
     }
+    /// <summary>
+    /// How much Health this ability currently costs to activate.
+    /// </summary>
     public int HealthCost => Mathf.Max(0, StartingHealthCost + healthCostMod);
 
-    public Dictionary<CardInfo, CardSlot> currentSacrificedCardInfos = new();
+    /// <summary>
+    /// Dictionary of CardSlots that have been selected for sacrifices and the associated CardInfo.
+    /// </summary>
+    public Dictionary<CardSlot, CardInfo> currentSacrificedCardInfos = new();
 
+    /// <summary>
+    /// Determines if the PostResolveOnBoard trigger should activate.
+    /// </summary>
+    /// <returns>True if PostResolveOnBoard should activate.</returns>
     public virtual bool RespondsToPostResolveOnBoard()
     {
         return false;
     }
+    /// <summary>
+    /// Trigger that's called after card's with this ability resolve on the board.
+    /// Used since ResolveOnBoard is sealed to prevent the ability breaking.
+    /// </summary>
     public virtual IEnumerator OnPostResolveOnBoard()
     {
         yield break;
     }
+    /// <summary>
+    /// If the ResolveOnBoard trigger should be called.
+    /// </summary>
+    /// <returns>True if it should be activated.</returns>
     public sealed override bool RespondsToResolveOnBoard() => RespondsToPostResolveOnBoard() || LearnMechanic();
+    /// <summary>
+    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any PostResolveOnBoard logic.
+    /// </summary>
     public sealed override IEnumerator OnResolveOnBoard()
     {
         if (LearnMechanic()) // Act 2 tutorial dialogue
@@ -74,8 +165,16 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
         if (RespondsToPostResolveOnBoard())
             yield return OnPostResolveOnBoard();
     }
-
+    /// <summary>
+    /// Whetehr this ability should be triggered.
+    /// </summary>
+    /// <param name="ability">The ability being checked for activation.</param>
+    /// <returns>True if this ability is being checked for activation.</returns>
     public sealed override bool RespondsToActivatedAbility(Ability ability) => this.Ability == ability;
+    /// <summary>
+    /// The logic sequence for when this ability is activated.
+    /// Contains logic for paying activation costs.
+    /// </summary>
     public sealed override IEnumerator OnActivatedAbility()
     {
         if (CanAfford() && CanActivate())
@@ -160,11 +259,23 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
             yield return new WaitForSeconds(0.25f);
         }
     }
+    /// <summary>
+    /// Sequence called after the ability finishes activation.
+    /// </summary>
+    /// <returns></returns>
     public virtual IEnumerator PostActivate()
     {
         yield break;
     }
+    /// <summary>
+    /// Whether or not this ability can be activated.
+    /// </summary>
+    /// <returns>true if this ability can be activated.</returns>
     public virtual bool CanActivate() => true;
+    /// <summary>
+    /// Player-implemented sequence for what this ability will actually do when activated.
+    /// </summary>
+    /// <returns></returns>
     public abstract IEnumerator Activate();
 
     private IEnumerator ChooseSacrifices()
@@ -236,7 +347,7 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
                 if (currentSacrifice2.Card != null && !currentSacrifice2.Card.Dead)
                 {
                     manager.SacrificesMadeThisTurn++;
-                    currentSacrificedCardInfos.Add(currentSacrifice2.Card.Info, currentSacrifice2);
+                    currentSacrificedCardInfos.Add(currentSacrifice2, currentSacrifice2.Card.Info);
                     yield return currentSacrifice2.Card.Sacrifice();
                     Singleton<ViewManager>.Instance.SwitchToView(manager.BoardView);
                 }
