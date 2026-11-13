@@ -1,12 +1,37 @@
 @font-face {
-  font-family: 'DPComic';
-  src: url('fonts/dpcomic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'DPComic';
+    src: url('fonts/dpcomic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 :root {
-  --bs-font-sans-serif: 'DPComic', system-ui, -apple-system, sans-serif;
-  --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-font-monospace: 'DPComic', system-ui, -apple-system, sans-serif;
+    --bs-font-sans-serif: 'DPComic', system-ui, -apple-system, sans-serif;
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-font-monospace: 'DPComic', system-ui, -apple-system, sans-serif;
+}
+
+.navbar {
+    --bs-navbar-brand-margin-end: 2.5rem;
+    --bs-navbar-brand-font-size: 1.5rem;
+}
+
+.navbar-brand logo {
+    padding-right: 1.5rem;
+}
+
+.container, .container-fluid, .container-xxl {
+    --bs-gutter-x: 5rem;
+}
+
+:root, [data-bs-theme="light"] {
+    --bs-body-line-height: null;
+}
+
+body[data-yaml-mime="ManagedReference"] article h2.section, body[data-yaml-mime="ApiPage"] article h2.section {
+    margin-top: 1rem;
+}
+
+b, strong {
+    font-weight: normal;
 }
