@@ -6,4 +6,8 @@ bin/
 .vscode/
 *.user
 build/
-
+InscryptionAPI/GITHUB RELEASE/
+InscryptionAPI/GITHUB PRERELEASE/
+InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.dll
+InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.pdb
+InscryptionAPI/Thunderstore-Package-Elements/monomod/Assembly-CSharp.APIPatcher.mm.xml

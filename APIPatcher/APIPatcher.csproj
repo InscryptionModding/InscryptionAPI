@@ -21,6 +21,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <OutputPath>..\InscryptionAPI\Thunderstore-Package-Elements\monomod\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

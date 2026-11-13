@@ -23,6 +23,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <!-- Talking Card Prefab -->
+        <None Remove="$(ProjectDir)\TalkingCards\talkingcardgenericprefab" />
+        <EmbeddedResource Include="$(ProjectDir)\TalkingCards\talkingcardgenericprefab">
+            <LogicalName>TalkingCardGenericPrefab</LogicalName>
+        </EmbeddedResource>
+        <!-- Base Game Decals -->
         <None Remove="$(ProjectDir)\Assets\*" />
         <EmbeddedResource Include="$(ProjectDir)\Assets\*" />
         <None Remove="Assets\BaseGameDecals\decal_blood_1.png" />
@@ -60,14 +66,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <!-- Talking Card Prefab -->
-        <None Remove="$(ProjectDir)\TalkingCards\talkingcardgenericprefab" />
-        <EmbeddedResource Include="$(ProjectDir)\TalkingCards\talkingcardgenericprefab">
-            <LogicalName>TalkingCardGenericPrefab</LogicalName>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -93,4 +91,23 @@
             <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.Extension)' == '.dll' and '%(ResolvedFileToPublish.RelativePath)' != 'InscryptionAPI.dll'" />
         </ItemGroup>
     </Target>
+
+    <!--TS Build Setup-->
+    <PropertyGroup>
+        <!--Secondary CSProjs-->
+        <SecondaryCSProjLocations>"../InscryptionCommunityPatch/InscryptionCommunityPatch.csproj"</SecondaryCSProjLocations>
+        <!--Copy Locations-->
+        <BuildCopyLocations>Thunderstore-Package-Elements</BuildCopyLocations>
+        <BuildOutputLocations>plugins</BuildOutputLocations>
+        <CHANGELOGCopyLocation>..\CHANGELOG.md</CHANGELOGCopyLocation>
+        <READMECopyLocation>..\README.md</READMECopyLocation>
+        <LICENSECopyLocation>..\LICENSE.md</LICENSECopyLocation>
+        <ReleaseMode>Release</ReleaseMode>
+        <!--Thunderstore Manifest Properties-->
+        <ThunderstorePackageName>API</ThunderstorePackageName>
+        <ThunderstorePackageVersion>2.24.2</ThunderstorePackageVersion>
+        <ThunderstoreWebsiteURL>https://github.com/InscryptionModding/InscryptionAPI/</ThunderstoreWebsiteURL>
+        <ThunderstorePackageDescription>The de-facto standard core API for all Inscryption mods. This lets you create new cards, abilities, challenges, map nodes, starter decks, and more.</ThunderstorePackageDescription>
+        <ThunderstorePackageDependencyStrings>BepInEx-BepInExPack_Inscryption-5.4.2306;BepInEx-MonoMod_Loader_Inscryption-1.0.0</ThunderstorePackageDependencyStrings>
+    </PropertyGroup>
 </Project>
