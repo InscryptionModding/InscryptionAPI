@@ -608,6 +608,12 @@ public static class CardManager
         return codes;
     }
 
+    /// <summary>
+    /// Adds a null check when calling GetCardByName. If the returned CardInfo is null, outputs a console log error.
+    /// </summary>
+    /// <param name="info">The CardInfo being returned by GetCardByName.</param>
+    /// <param name="cardInfoName">The internal name of the CardInfo attempting to be retrieved.</param>
+    /// <returns>The return value of GetCardByName.</returns>
     public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
     {
         if (info == null)
