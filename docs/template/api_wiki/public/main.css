@@ -115,7 +115,10 @@ body[data-yaml-mime="ApiPage"] article h2.section {
     text-align: left;
 }
 
-h1, .h1 {
+html.api-documentation h1,
+html.api-documentation .h1,
+html.community-documentation h1,
+html.community-documentation .h1 {
     border-bottom: 1px solid currentColor;
     padding-bottom: 0.35rem;
 }
