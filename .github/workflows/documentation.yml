@@ -30,7 +30,23 @@ jobs:
                   chmod +x docfx/docfx
 
             - name: Generate documentation
-              run: ./docfx/docfx docs/docfx.json
+              env:
+                  REPOSITORY_OWNER: ${{ github.repository_owner }}
+                  REPOSITORY_NAME: ${{ github.event.repository.name }}
+              run: |
+                  if [ "$REPOSITORY_NAME" = "$REPOSITORY_OWNER.github.io" ]; then
+                      DOCFX_BASE_URL="https://${REPOSITORY_OWNER}.github.io/"
+                  else
+                      DOCFX_BASE_URL="https://${REPOSITORY_OWNER}.github.io/${REPOSITORY_NAME}/"
+                  fi
+
+                  jq --arg base "$DOCFX_BASE_URL" \
+                    '.build.globalMetadata._appBaseUrl = $base' \
+                    docs/docfx.json > docs/docfx.generated.json
+
+                  ./docfx/docfx docs/docfx.generated.json
+
+                  rm docs/docfx.generated.json
 
             - name: Checkout gh-pages
               uses: actions/checkout@v4
