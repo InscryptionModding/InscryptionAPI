@@ -47,3 +47,13 @@ code {
 .content {
     font-size: 20px !important;
 }
+
+body > header, body[data-layout="landing"] > header {
+    height: 90px;
+}
+
+body > footer, body[data-layout="landing"] > footer {
+    height: 90px;
+    display: flex;
+    align-items: stretch;
+}
