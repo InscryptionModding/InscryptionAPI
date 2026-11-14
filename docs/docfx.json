@@ -42,6 +42,9 @@
                 "files": ["**"],
                 "src": "../InscryptionCommunityPatch/Assets",
                 "dest": "resources/community/assets"
+            },
+            {
+                "files": ["DiscordIcon.png"]
             }
         ],
         "content": [
