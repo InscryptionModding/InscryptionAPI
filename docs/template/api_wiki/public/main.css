@@ -76,39 +76,18 @@ body > footer, body[data-layout="landing"] > footer {
 }
 
 .inheritance-level {
-  position: relative;
-  min-height: 1.25rem;
-  line-height: 1.25rem;
-  padding-left: 1.25rem;
+  line-height: 1.4;
+  padding-left: 0;
 }
 
 .inheritance-level::before {
-  content: "↳";
-  position: absolute;
-  left: 0;
+  content: "↳ ";
   opacity: 0.75;
 }
 
-.inheritance-level.level0 {
-  padding-left: 1.25rem;
-}
-
-.inheritance-level.level1 {
-  padding-left: 2.5rem;
-}
-
-.inheritance-level.level2 {
-  padding-left: 3.75rem;
-}
-
-.inheritance-level.level3 {
-  padding-left: 5rem;
-}
-
-.inheritance-level.level4 {
-  padding-left: 6.25rem;
-}
-
-.inheritance-level.level5 {
-  padding-left: 7.5rem;
-}
+.inheritance-level.level0 { padding-left: 0; }
+.inheritance-level.level1 { padding-left: 1.25rem; }
+.inheritance-level.level2 { padding-left: 2.5rem; }
+.inheritance-level.level3 { padding-left: 3.75rem; }
+.inheritance-level.level4 { padding-left: 5rem; }
+.inheritance-level.level5 { padding-left: 6.25rem; }
