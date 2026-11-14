@@ -14,7 +14,6 @@
 <div class="markdown conceptual">{{{conceptual}}}</div>
 
 {{#inClass}}
-{{#inheritance.0}}
 <div class="inheritance">
   <h5>{{__global.inheritance}}</h5>
 
@@ -24,11 +23,11 @@
       {{{specName.0.value}}}
     </div>
     {{/inheritance}}
-    
+
     <div class="inheritance-level" style="--inheritance-level: {{level}}">
       <span class="xref">{{name.0.value}}</span>
     </div>
-    
+
     {{#derivedClasses}}
     <div class="inheritance-level" style="--inheritance-level: {{index}}">
       {{{specName.0.value}}}
@@ -36,7 +35,6 @@
     {{/derivedClasses}}
   </div>
 </div>
-{{/inheritance.0}}
 {{/inClass}}
 
 {{#implements.0}}

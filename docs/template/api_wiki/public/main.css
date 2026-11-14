@@ -20,8 +20,16 @@
     padding-right: 1.5rem;
 }
 
+:root {
+    --page-gutter: clamp(1rem, 4vw, 5rem);
+}
+
 .container, .container-fluid, .container-xxl {
-    --bs-gutter-x: 5rem;
+    --bs-gutter-x: var(--page-gutter);
+}
+
+.container {
+    max-width: 100%;
 }
 
 body[data-yaml-mime="ManagedReference"] article h2.section, body[data-yaml-mime="ApiPage"] article h2.section {
