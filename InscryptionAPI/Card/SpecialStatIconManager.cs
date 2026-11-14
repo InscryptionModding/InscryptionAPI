@@ -148,7 +148,7 @@ public static class StatIconManager
         return full;
     }
 
-    ///     /// <summary>
+    /// <summary>
     /// Creates a new stat icon and registers it to be able to be added to cards
     /// </summary>
     /// <param name="guid">The guid of the mod adding the ability.</param>
