@@ -4,24 +4,24 @@ using System.Collections;
 namespace InscryptionAPI.Boons;
 
 /// <summary>
-/// Base class for all custom Boons
+/// Base class for all custom Boons.
 /// </summary>
 public class BoonBehaviour : NonCardTriggerReceiver
 {
     private static List<BoonBehaviour> instances;
 
     /// <summary>
-    /// The unique id for this boon
+    /// The unique id for this boon.
     /// </summary>
     public BoonManager.FullBoon boon { get; internal set; }
 
     /// <summary>
-    /// The instance number for this boon once instantiated
+    /// The instance number for this boon once instantiated.
     /// </summary>
     public int instanceNumber { get; internal set; }
 
     /// <summary>
-    /// Fires when the boon behavior starts up
+    /// Fires when the <see cref="BoonBehaviour"/> starts up.
     /// </summary>
     public void Start()
     {
@@ -32,7 +32,7 @@ public class BoonBehaviour : NonCardTriggerReceiver
     }
 
     /// <summary>
-    /// Fires when the boon behaviour is destroyed
+    /// Fires when the <see cref="BoonBehaviour"/> is destroyed.
     /// </summary>
     public new void OnDestroy()
     {
@@ -40,27 +40,27 @@ public class BoonBehaviour : NonCardTriggerReceiver
     }
 
     /// <summary>
-    /// Gets all active boon behaviours for the given boon type
+    /// Gets all active <see cref="BoonBehaviour"/>s for the given boon type.
     /// </summary>
     /// <param name="type">The boon type to search for.</param>
-    /// <returns>A list of all boon behaviours that are active in battle.</returns>
+    /// <returns>A list of all <see cref="BoonBehaviour"/>s that are active in battle.</returns>
     public static List<BoonBehaviour> FindInstancesOfType(BoonData.Type type)
     {
         return Instances.FindAll((x) => x.boon.boon.type == type);
     }
 
     /// <summary>
-    /// Gets the count of active boon behaviours for the given boon type
+    /// Gets the count of active <see cref="BoonBehaviour"/>s for the given boon type
     /// </summary>
     /// <param name="type">The boon type to search for.</param>
-    /// <returns>The count of all boon behaviours that are active in battle.</returns>
+    /// <returns>The count of all <see cref="BoonBehaviour"/>s that are active in battle.</returns>
     public static int CountInstancesOfType(BoonData.Type type)
     {
         return FindInstancesOfType(type).Count;
     }
 
     /// <summary>
-    /// Indicates if there are any active boon behaviours of the given type
+    /// Indicates if there are any active <see cref="BoonBehaviour"/>s of the given type
     /// </summary>
     /// <param name="type">The boon type to search for.</param>
     /// <returns>True if there is at least one boon of the given type; false otherwise.</returns>
