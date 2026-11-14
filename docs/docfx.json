@@ -87,7 +87,6 @@
         "template": [
             "default",
             "modern",
-            "template/darkfx",
             "template/api_wiki"
         ]
     }
