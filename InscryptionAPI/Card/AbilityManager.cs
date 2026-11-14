@@ -173,7 +173,8 @@ public static class AbilityManager
     /// <summary>
     /// A hook for modders to add custom code to modify the ability list dynamically.
     /// </summary>
-    /// <remarks>There are two primary use cases for this hook:
+    /// <remarks>
+    /// There are two primary use cases for this hook:
     /// 
     /// - Making changes to abilities that may be added after your plugin initializes
     /// - Making context-aware changes to abilities
@@ -193,7 +194,7 @@ public static class AbilityManager
     /// To use this, you need to add a delegate that accepts the current list of all abilities, then returns
     /// that same list back.
     /// 
-    /// <c>```c#
+    /// <code>
     /// AbilityManager.ModifyAbilityList += delegate(List&lt;FullAbility&gt; abilities)
     /// {
     ///     // Add the rulebook metacategories to every single ability
@@ -201,7 +202,7 @@ public static class AbilityManager
     ///         ability.info.AddMetaCategories(AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part3Rulebook);
     ///     return abilities;
     /// }
-    /// ```</c>
+    /// </code>
     /// </remarks>
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
