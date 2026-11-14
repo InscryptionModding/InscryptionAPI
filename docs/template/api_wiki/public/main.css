@@ -57,3 +57,7 @@ body > footer, body[data-layout="landing"] > footer {
     display: flex;
     align-items: stretch;
 }
+
+.affix {
+    font-size: 20px;
+}
