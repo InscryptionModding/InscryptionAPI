@@ -13,7 +13,7 @@
 }
 
 * {
-    border-width: 2px;
+    border-width: 4px !important;
 }
 
 b, strong {
@@ -123,4 +123,9 @@ h1, .h1 {
 h3, .h3 {
     border-bottom: 1px solid currentColor;
     padding-bottom: 0.35rem;
+}
+
+a.active {
+    font-style: italic;
+    text-decoration: underline;
 }
