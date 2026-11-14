@@ -49,11 +49,11 @@ code {
 }
 
 body > header, body[data-layout="landing"] > header {
-    height: 90px;
+    min-height: 90px;
 }
 
 body > footer, body[data-layout="landing"] > footer {
-    height: 90px;
+    min-height: 90px;
     display: flex;
     align-items: stretch;
 }
