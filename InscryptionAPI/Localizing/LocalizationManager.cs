@@ -50,7 +50,6 @@ public static partial class LocalizationManager
     public static Action<Language> OnLanguageLoaded = null;
 
     private static List<Language> AlreadyLoadedLanguages = new();
-    private static bool FontReplacementDataInitialized = false;
     private static List<CachedReplacement> TemporaryFontReplacements = new();
 
     static LocalizationManager()

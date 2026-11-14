@@ -7,7 +7,9 @@ using System.Reflection.Emit;
 
 namespace InscryptionCommunityPatch.Card;
 
-// Lets you add and remove decals via temporary mods
+/// <summary>
+/// Lets you add and remove decals via temporary mods
+/// </summary>
 [HarmonyPatch]
 internal class TempModDecalsFix
 {
@@ -22,6 +24,7 @@ internal class TempModDecalsFix
         if (cardModificationInfo != null)
             __instance.Info.Mods.Remove(cardModificationInfo);
     }
+    
     [HarmonyPatch(typeof(PlayableCard), nameof(PlayableCard.AddTemporaryMod))]
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> AddTemporaryDecalsWithDecals(IEnumerable<CodeInstruction> instructions)
@@ -50,6 +53,7 @@ internal class TempModDecalsFix
 
         return codes;
     }
+    
     private static void AddDecalIdsToMods(PlayableCard card, CardModificationInfo tempMod)
     {
         // only interested in adding decals, thank you very much

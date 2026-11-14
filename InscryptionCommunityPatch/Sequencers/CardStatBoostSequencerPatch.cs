@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// This patches in a conditional check as to whether or not the card has Boostable Stats or not.
+/// </summary>
 [HarmonyPatch]
 internal class CardStatBoostSequencerPatch
 {
@@ -127,7 +130,7 @@ internal class CardStatBoostSequencerPatch
         // if there aren't any valid cards, exit the sequence
         if (instance.GetValidCards(forAttackMod: attackMod).Count == 0)
         {
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug("Player has no cards that can be boosted at the campfire.");
             yield return new WaitForSeconds(0.5f);
             yield return Singleton<TextDisplayer>.Instance.ShowUntilInput("You have no creatures to warm.");

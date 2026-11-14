@@ -1,5 +1,6 @@
 ﻿using DiskCardGame;
 using HarmonyLib;
+using InscryptionAPI.Helpers;
 using InscryptionAPI.Items;
 using UnityEngine;
 

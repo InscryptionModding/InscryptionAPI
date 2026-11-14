@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
-public static class SacrificeTokensFix // Allows blood costs over 4 to work properly
+/// <summary>
+/// Allows blood costs over 4 to work properly
+/// </summary>
+public static class SacrificeTokensFix
 {
-    // modders can access this to change increase/decrease the amount of tokens added
+    /// <summary>
+    /// Modders can access this to change increase/decrease the amount of tokens added
+    /// </summary>
     public static int amountOfNewTokens = 20;
 
     [HarmonyPatch(typeof(BoardManager3D), nameof(BoardManager3D.Start))]

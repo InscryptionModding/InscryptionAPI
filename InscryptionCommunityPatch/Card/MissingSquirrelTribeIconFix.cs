@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Patches in the Missing Squirrel Tribe Icon.
+/// </summary>
 [HarmonyPatch]
 public class MissingSquirrelTribeIconFix
 {
@@ -80,7 +83,7 @@ public class MissingSquirrelTribeIconFix
             }
             if (tribe == Tribe.Squirrel)
             {
-                return PatchPlugin.configShowSquirrelTribeOnCards.Value;
+                return PatchPlugin.configCustomSquirrelTribeIconToShowOnCards.Value;
             }
 
             return true;

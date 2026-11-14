@@ -32,7 +32,7 @@ To begin, we'll go over how to install BepInEx, the framework all Inscryption mo
 **FOR LINUX AND STEAMDECK:** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
 ### Installing with a Mod Manager
-1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [Gale](https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/) or [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/).
+1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [Gale](https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/), [Pulsar](https://pulsarmods.com/) or [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/).
 2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/c/inscryption/p/BepInEx/BepInExPack_Inscryption/) page.
 3. Run the game via the mod manager.
 

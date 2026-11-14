@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace InscryptionAPI.Helpers.Extensions;
 
+/// <summary>
+/// An extensions class for the Card Slot.
+/// </summary>
 public static class CardSlotExtensions
 {
     /// <summary>
@@ -35,12 +38,7 @@ public static class CardSlotExtensions
     /// <param name="transitionLength">Time to transition the card to the slot. The longer the time, the longer it will take to be placed at the slot.</param>
     /// <param name="resolveTriggers">Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</param>
     /// <returns>The enumeration of the card being placed in the slot.</returns>
-    public static IEnumerator CreateCardInSlot(
-        this CardSlot slotToSpawnIn,
-        CardInfo cardInfo,
-        float transitionLength = 0.1f,
-        bool resolveTriggers = true
-    )
+    public static IEnumerator CreateCardInSlot(this CardSlot slotToSpawnIn, CardInfo cardInfo, float transitionLength = 0.1f, bool resolveTriggers = true)
     {
         yield return BoardManager.Instance.CreateCardInSlot(cardInfo, slotToSpawnIn, transitionLength, resolveTriggers);
     }
@@ -54,13 +52,7 @@ public static class CardSlotExtensions
     /// <param name="tweenCompleteCallback">An action to do after the assignment has completed.</param>
     /// <param name="resolveTriggers">Whether or not to activate the 'Trigger.OtherCardAssignedToSlot' for the cards on board.</param>
     /// <returns>The enumeration of the card being placed in the slot.</returns>
-    public static IEnumerator AssignCardToSlot(
-        this CardSlot slotToSpawnIn,
-        PlayableCard playableCard,
-        float transitionDuration = 0.1f,
-        Action tweenCompleteCallback = null,
-        bool resolveTriggers = true
-    )
+    public static IEnumerator AssignCardToSlot(this CardSlot slotToSpawnIn, PlayableCard playableCard, float transitionDuration = 0.1f, Action tweenCompleteCallback = null, bool resolveTriggers = true)
     {
         yield return BoardManager.Instance.AssignCardToSlot(playableCard, slotToSpawnIn, transitionDuration, tweenCompleteCallback, resolveTriggers);
     }
@@ -74,13 +66,7 @@ public static class CardSlotExtensions
     /// <param name="landOnBoardCallback">An action to do after the assignment has completed, but before 'ResolveOnBoard' triggers.</param>
     /// <param name="resolveTriggers">Whether or not to activate these triggers, in order: cards on board OtherCardAssignedToSlot, this card ResolveOnBoard, cards on board OtherCardResolve.</param>
     /// <returns>The enumeration of the card being placed in the slot.</returns>
-    public static IEnumerator ResolveCardOnBoard(
-        this CardSlot slotToSpawnIn,
-        PlayableCard playableCard,
-        float tweenLength = 0.1f,
-        Action landOnBoardCallback = null,
-        bool resolveTriggers = true
-    )
+    public static IEnumerator ResolveCardOnBoard(this CardSlot slotToSpawnIn, PlayableCard playableCard, float tweenLength = 0.1f, Action landOnBoardCallback = null, bool resolveTriggers = true)
     {
         yield return BoardManager.Instance.ResolveCardOnBoard(playableCard, slotToSpawnIn, tweenLength, landOnBoardCallback, resolveTriggers);
     }
@@ -128,9 +114,7 @@ public static class CardSlotExtensions
     /// <returns>An IEnumerable of PlayableCard from the CardSlots sequence.</returns>
     public static IEnumerable<PlayableCard> SelectCards(this IEnumerable<CardSlot> slots, Predicate<PlayableCard> filterOnPredicate = null)
     {
-        return slots
-            .Where(slot => slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot.Card)))
-            .Select(slot => slot.Card);
+        return slots.Where(slot => slot.Card && (filterOnPredicate == null || filterOnPredicate.Invoke(slot.Card))).Select(slot => slot.Card);
     }
 
     /// <summary>

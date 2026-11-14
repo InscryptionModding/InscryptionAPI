@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'DPComic';
+    src: url('fonts/dpcomic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bs-font-sans-serif: 'DPComic', system-ui, -apple-system, sans-serif;
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-font-monospace: 'DPComic', system-ui, -apple-system, sans-serif;
+    --page-gutter: clamp(1rem, 4vw, 5rem);
+}
+
+* {
+    border-width: 4px !important;
+}
+
+b, strong {
+    font-weight: normal;
+}
+
+code {
+    font-size: 18px !important;
+}
+
+:not(pre) > code {
+    background-color: var(--bs-tertiary-bg, #e9ecef);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+}
+
+.container, .container-fluid, .container-xxl {
+    width: 100%;
+    max-width: 100%;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    max-width: 100%;
+}
+
+body > header, body[data-layout="landing"] > header {
+    min-height: 90px;
+}
+
+body > footer, body[data-layout="landing"] > footer {
+    min-height: 90px;
+    display: flex;
+    align-items: stretch;
+}
+
+.navbar {
+    --bs-navbar-brand-margin-end: 2.5rem;
+    --bs-navbar-brand-font-size: 1.5rem;
+}
+
+#logo {
+    padding-right: 1.5rem;
+}
+
+.content {
+    font-size: 20px !important;
+}
+
+.toc ul {
+    font-size: 20px !important;
+}
+
+.affix {
+    font-size: 20px;
+}
+
+body[data-yaml-mime="ManagedReference"] article h2.section,
+body[data-yaml-mime="ApiPage"] article h2.section {
+    margin-top: 1rem;
+}
+
+.inheritance {
+    margin-bottom: 1rem;
+}
+
+.inheritance h5 {
+    margin-bottom: 0.35rem;
+}
+
+.inheritance-tree {
+    border-top: 1px solid currentColor;
+    padding-top: 0.35rem;
+}
+
+.inheritance-level {
+    line-height: 1.4;
+    padding-left: calc(var(--inheritance-level, 0) * 1.25rem);
+}
+
+.inheritance-level::before {
+    content: "↳ ";
+    opacity: 0.75;
+}
+
+.api-parameters, .api-returns, .api-type-parameters, .api-exceptions, .api-fields {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.api-parameters th, .api-returns th, .api-type-parameters th, .api-exceptions th, .api-fields th,
+.api-parameters td, .api-returns td, .api-type-parameters td, .api-exceptions td, .api-fields td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--bs-border-color, #444);
+    text-align: left;
+}
+
+html.api-documentation h1,
+html.api-documentation .h1,
+html.community-documentation h1,
+html.community-documentation .h1 {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.35rem;
+}
+
+html.api-documentation h3,
+html.api-documentation .h3,
+html.community-documentation h3,
+html.community-documentation .h3 {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.35rem;
+}
+
+a.active {
+    font-style: italic;
+    text-decoration: underline;
+}

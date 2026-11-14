@@ -412,4 +412,5 @@ public static partial class CardExtensions
     public static bool ModPrefixIs(this CardInfo info, string prefixToMatch) => info.GetExtendedProperty("ModPrefix") == prefixToMatch;
 
     #endregion
+
 }
