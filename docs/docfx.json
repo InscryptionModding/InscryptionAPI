@@ -32,6 +32,16 @@
             },
             {
                 "files": ["images/**", "logo.svg", "favicon.ico"]
+            },
+            {
+                "files": ["**"],
+                "src": "../InscryptionAPI/Assets",
+                "dest": "resources/api/assets"
+            },
+            {
+                "files": ["**"],
+                "src": "../InscryptionCommunityPatch/Assets",
+                "dest": "resources/community/assets"
             }
         ],
         "content": [
@@ -78,7 +88,6 @@
             "default",
             "modern",
             "template/darkfx",
-            "template/no_inherited_members",
             "template/api_wiki"
         ]
     }

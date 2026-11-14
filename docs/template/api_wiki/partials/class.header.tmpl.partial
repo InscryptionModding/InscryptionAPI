@@ -67,7 +67,7 @@
   {{__global.parameters}}
 </h5>
 
-<table class="table table-bordered table-striped table-condensed">
+<table class="api-parameters">
   <thead>
     <tr>
       <th>{{__global.type}}</th>
@@ -99,7 +99,7 @@
   {{__global.returns}}
 </h5>
 
-<table class="table table-bordered table-striped table-condensed">
+<table class="api-returns">
   <thead>
     <tr>
       <th>{{__global.type}}</th>
@@ -121,7 +121,7 @@
   {{__global.typeParameters}}
 </h5>
 
-<table class="table table-bordered table-striped table-condensed">
+<table class="api-type-parameters">
   <thead>
     <tr>
       <th>{{__global.name}}</th>

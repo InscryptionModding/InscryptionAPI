@@ -91,3 +91,16 @@ body > footer, body[data-layout="landing"] > footer {
 .inheritance-level.level3 { padding-left: 3.75rem; }
 .inheritance-level.level4 { padding-left: 5rem; }
 .inheritance-level.level5 { padding-left: 6.25rem; }
+
+.api-parameters, .api-returns {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.api-parameters th, .api-returns th, .api-type-parameters th
+.api-parameters td, .api-returns td, .api-type-parameters td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--bs-border-color, #444);
+  text-align: left;
+}
