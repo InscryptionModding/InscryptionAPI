@@ -89,14 +89,14 @@ body > footer, body[data-layout="landing"] > footer {
   opacity: 0.75;
 }
 
-.api-parameters, .api-returns, .api-type-parameters, .api-exceptions {
+.api-parameters, .api-returns, .api-type-parameters, .api-exceptions, .api-fields {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
 }
 
-.api-parameters th, .api-returns th, .api-type-parameters th, .api-exceptions th,
-.api-parameters td, .api-returns td, .api-type-parameters td, .api-exceptions td {
+.api-parameters th, .api-returns th, .api-type-parameters th, .api-exceptions th, .api-fields th,
+.api-parameters td, .api-returns td, .api-type-parameters td, .api-exceptions td, .api-fields td {
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--bs-border-color, #444);
   text-align: left;
