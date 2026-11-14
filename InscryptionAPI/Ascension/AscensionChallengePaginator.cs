@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 /// <summary>
-/// Class that handles adding displaying custom challenges in the challenge select screen.
+/// Class that handles adding displaying custom challenges and allows for multiple pages of challenges.
 /// </summary>
 public class AscensionChallengePaginator : MonoBehaviour {
     // not sure if this will break any mods but it's not being used or assigned to.
@@ -16,8 +16,8 @@ public class AscensionChallengePaginator : MonoBehaviour {
     /// <summary>
     /// Initialises the challenge screen, adding custom challenges and UI elements.
     /// </summary>
-    /// <param name="screen"></param>
-    /// <param name="transition"></param>
+    /// <param name="screen">The <see cref="AscensionChallengeScreen"/> to attach this paginator to.</param>
+    /// <param name="transition">The default transition object to use.</param>
     public void Initialize(AscensionChallengeScreen screen, AscensionMenuScreenTransition transition = null)
     {
         if (challengeObjectsForPages == null)
@@ -66,7 +66,7 @@ public class AscensionChallengePaginator : MonoBehaviour {
     /// Adds a new page of challenges to the list of pages.
     /// Pages contain (by default) up to 14 challenge icons. Excess challenges overflow onto new pages.
     /// </summary>
-    /// <param name="challengeInfos"></param>
+    /// <param name="challengeInfos"><see cref="AscensionChallengeInfo"/>s that will be displayed on this page.</param>
     public void AddPage(List<AscensionChallengeInfo> challengeInfos)
     {
         // create the challenge info for missingChallengeInfo challenges

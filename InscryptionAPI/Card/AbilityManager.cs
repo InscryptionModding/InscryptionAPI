@@ -33,33 +33,33 @@ public static class AbilityManager
     public class FullAbility
     {
         /// <summary>
-        /// The unique ID for this ability
+        /// The unique ID for this ability.
         /// </summary>
         public readonly Ability Id;
 
         /// <summary>
-        /// The guid of the mod that added this ability
+        /// The GUID of the mod that added this ability.
         /// </summary>
         public readonly string ModGUID;
 
         /// <summary>
-        /// The description object for this ability
+        /// The description object for this ability.
         /// </summary>        
         public readonly AbilityInfo Info;
 
         /// <summary>
-        /// A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability
+        /// A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability.
         /// </summary>
         public readonly Type AbilityBehavior;
 
         /// <summary>
-        /// A 49x49 texture for the ability icon
+        /// A 49x49 texture for the ability icon.
         /// </summary>
         /// <value></value>
         public Texture Texture { get; internal set; }
 
         /// <summary>
-        /// A 49x49 texture for the ability icon, used when the card belongs to the opponent
+        /// A 49x49 texture for the ability icon, used when the card belongs to the opponent.
         /// </summary>
         /// <value></value>
         public Texture CustomFlippedTexture { get; internal set; }
@@ -287,9 +287,9 @@ public static class AbilityManager
     }
 
     /// <summary>
-    /// Creates a new ability and registers it to be able to be added to cards
+    /// Creates a new ability and registers it to be able to be added to cards.
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="guid">The GUID of the mod adding the ability.</param>
     /// <param name="info">An instance of <see cref="AbilityInfo"/> describing the ability.</param>
     /// <param name="behavior">A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability.</param>
     /// <param name="tex">The ability icon as a 49x49 texture.</param>
@@ -314,7 +314,7 @@ public static class AbilityManager
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="guid">The GUID of the mod adding the ability.</param>
     /// <param name="rulebookName">The name of the ability.</param>
     /// <param name="rulebookDescription">The description as it appears in the game's rulebook.</param>
     /// <param name="behavior">A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability.</param>
@@ -331,7 +331,7 @@ public static class AbilityManager
     /// <summary>
     /// Creates a new ability and registers it to be able to be added to cards
     /// </summary>
-    /// <param name="guid">The guid of the mod adding the ability.</param>
+    /// <param name="guid">The GUID of the mod adding the ability.</param>
     /// <param name="rulebookName">The name of the ability.</param>
     /// <param name="rulebookDescription">The description as it appears in the game's rulebook.</param>
     /// <param name="behavior">A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability.</param>
