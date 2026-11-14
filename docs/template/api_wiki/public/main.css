@@ -12,6 +12,10 @@
     --page-gutter: clamp(1rem, 4vw, 5rem);
 }
 
+* {
+    border-width: 2px;
+}
+
 b, strong {
     font-weight: normal;
 }
@@ -27,7 +31,12 @@ code {
 }
 
 .container, .container-fluid, .container-xxl {
-    --bs-gutter-x: var(--page-gutter);
+    width: 100%;
+    max-width: 100%;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .container {
