@@ -61,3 +61,54 @@ body > footer, body[data-layout="landing"] > footer {
 .affix {
     font-size: 20px;
 }
+
+.inheritance {
+  margin-bottom: 1rem;
+}
+
+.inheritance h5 {
+  margin-bottom: 0.35rem;
+}
+
+.inheritance-tree {
+  border-top: 1px solid currentColor;
+  padding-top: 0.35rem;
+}
+
+.inheritance-level {
+  position: relative;
+  min-height: 1.25rem;
+  line-height: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.inheritance-level::before {
+  content: "↳";
+  position: absolute;
+  left: 0;
+  opacity: 0.75;
+}
+
+.inheritance-level.level0 {
+  padding-left: 1.25rem;
+}
+
+.inheritance-level.level1 {
+  padding-left: 2.5rem;
+}
+
+.inheritance-level.level2 {
+  padding-left: 3.75rem;
+}
+
+.inheritance-level.level3 {
+  padding-left: 5rem;
+}
+
+.inheritance-level.level4 {
+  padding-left: 6.25rem;
+}
+
+.inheritance-level.level5 {
+  padding-left: 7.5rem;
+}
