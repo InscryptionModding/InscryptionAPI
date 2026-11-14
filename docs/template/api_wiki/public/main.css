@@ -20,6 +20,12 @@ code {
     font-size: 18px !important;
 }
 
+:not(pre) > code {
+    background-color: var(--bs-tertiary-bg, #e9ecef);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+}
+
 .container, .container-fluid, .container-xxl {
     --bs-gutter-x: var(--page-gutter);
 }
