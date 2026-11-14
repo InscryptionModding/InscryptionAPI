@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// Class for handling exposing the bone-on-death behaviour present in the vanilla PlayableCard.Die method.
+/// Class for handling exposing the bone-on-death behaviour present in the vanilla <see cref="PlayableCard.Die(bool, PlayableCard, bool)"/> method.
 /// Allows for modifying the default behaviour through Harmony patches.
 /// </summary>
 [HarmonyPatch]
@@ -117,17 +117,17 @@ public class DefaultBoneGainOnDeath {
     /// <summary>
     /// Simple boolean check that by default replicates the vanilla check for whether a card should award a Bone on death.
     /// </summary>
-    /// <param name="card">The PlayableCard that has died.</param>
-    /// <param name="slotBeforeDeath">The CardSlot of card.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> that has died.</param>
+    /// <param name="slotBeforeDeath">The <see cref="CardSlot"/> of card.</param>
     /// <returns>True if card should give a Bone (calls DoDefaultBoneGain).</returns>
     public static bool ShouldDoDefaultBoneGain(PlayableCard card, CardSlot slotBeforeDeath) {
         return slotBeforeDeath.IsPlayerSlot && !card.HasAbility(Ability.QuadrupleBones);
     }
     /// <summary>
-    /// A simple call to ResourcesManager.AddBones, intended to give modders some more flexibility over the default death behaviour of player cards giving 1 Bone.
+    /// A simple call to <see cref="ResourcesManager.AddBones"/>, intended to give modders some more flexibility over the default death behaviour of player cards giving 1 Bone.
     /// </summary>
-    /// <param name="card">The PlayableCard that has died.</param>
-    /// <param name="slotBeforeDeath">The CardSlot of card.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> that has died.</param>
+    /// <param name="slotBeforeDeath">The <see cref="CardSlot"/> of card.</param>
     /// <param name="amount">How many Bones to drop whenever a player's card dies (default is 1).</param>
     public static IEnumerator DoDefaultBoneGain(PlayableCard card, CardSlot slotBeforeDeath, int amount) {
         yield return Singleton<ResourcesManager>.Instance.AddBones(amount, slotBeforeDeath);

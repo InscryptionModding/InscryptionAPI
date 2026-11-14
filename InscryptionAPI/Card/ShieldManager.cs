@@ -18,13 +18,16 @@ namespace InscryptionAPI.Card;
 public static class ShieldManager
 {
     /// <summary>
-    /// A list of FullAbilities whose AbilityBehaviour overrides DamageShieldBehaviour.
+    /// A list of FullAbilities whose <see cref="AbilityBehaviour"/> inherits from <see cref="DamageShieldBehaviour"/>.
     /// </summary>
     public static List<FullAbility> AllShieldAbilities { get; internal set; } = new(AllAbilities);
+    /// <summary>
+    /// The current processed list of all <see cref="AbilityInfo"/>s in the game that inherit from <see cref="DamageShieldBehaviour"/>.
+    /// </summary>
     public static List<AbilityInfo> AllShieldInfos { get; internal set; } = AllShieldAbilities.Select(x => x.Info).ToList();
 
     /// <summary>
-    /// IEnumerator method that wraps BreakShield. Also contains code for triggering IShieldPreventedDamage and IShieldPreventedDamageInHand.
+    /// IEnumerator method that wraps <see cref="BreakShield"/>. Also contains code for triggering <see cref="IShieldPreventedDamage"/> and <see cref="IShieldPreventedDamageInHand"/>.
     /// </summary>
     /// <param name="target">Card getting attacked.</param>
     /// <param name="damage">Damage being dealt.</param>
@@ -55,7 +58,7 @@ public static class ShieldManager
     }
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
-    /// This method is only called when damage > 0 and the target has a shield.
+    /// This method is only called when <c>damage</c> > 0 and the target has a shield.
     /// </summary>
     /// <param name="target">Card getting attacked.</param>
     /// <param name="damage">Damage being dealt.</param>
@@ -106,7 +109,7 @@ public static class ShieldManager
     }
 
     /// <summary>
-    /// Modified version of PlayableCard.HasShield that replaces the original method's result.
+    /// Modified version of <see cref="PlayableCard.HasShield"/> that replaces the original method's result.
     /// </summary>
     public static bool NewHasShield(PlayableCard instance)
     {

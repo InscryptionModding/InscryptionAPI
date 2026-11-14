@@ -7,11 +7,18 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card.CostProperties;
 
+/// <summary>
+/// Class that handles dynamic costs on <see cref="PlayableCard"/> objects.
+/// </summary>
 [HarmonyPatch]
-public static class CostProperties
-{
-    public class RefreshCostMonoBehaviour : MonoBehaviour
-    {
+public static class CostProperties {
+    /// <summary>
+    /// Class that's attached to <see cref="PlayableCard"/> objects to ensure their costs are updated appropriately.
+    /// </summary>
+    public class RefreshCostMonoBehaviour : MonoBehaviour {
+        /// <summary>
+        /// <see cref="PlayableCard"/> instance this behaviour is attached to.
+        /// </summary>
         public PlayableCard playableCard;
         private int cachedBloodCost = -1, cachedBoneCost = -1;
         private readonly List<GemType> cachedGemsCost = new();
@@ -52,6 +59,13 @@ public static class CostProperties
             return refreshCost;
         }
 
+        /// <summary>
+        /// Determines if a card's list of Gem costs has been updated.
+        /// </summary>
+        /// <typeparam name="T">GemType.</typeparam>
+        /// <param name="a">First list of gems.</param>
+        /// <param name="b">Second list of gems.</param>
+        /// <returns>True if <c>a</c> does not equal <c>b</c></returns>
         public bool GemsChanged<T>(List<T> a, List<T> b)
         {
             if (a.Count != b.Count)
@@ -67,41 +81,44 @@ public static class CostProperties
         }
     }
 
+    /// <summary>
+    /// A table that maps a <see cref="CardInfo"/> object to a list of weak references to every <see cref="PlayableCard"/> that uses that same <see cref="CardInfo"/>.
+    /// </summary>
     public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToCard = new();
 
 
-    // a table that maps a CardInfo object to a list of weak references to every PlayableCard that uses that same CardInfo
-    public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToPlayableCardReferences = new();
+    // duplicate of above, kept in case something breaks
+    //public static ConditionalWeakTable<CardInfo, List<WeakReference<PlayableCard>>> CardInfoToPlayableCardReferences = new();
 
 
     /// <summary>
-    /// ChangeCardCostGetter patches BloodCost so we can change the cost on the fly
+    /// <see cref="ChangeCardCostGetter"/> patches <see cref="CardInfo.BloodCost"/> so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
-    /// This method has a copy of all the code that CardInfo.BloodCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// This method has a copy of all the code that <see cref="CardInfo.BloodCost"/> had so it doesn't result in a StackOverflow and freezing the game when called.
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BloodCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalBloodCost(CardInfo __instance) { return 0; }
 
     /// <summary>
-    /// ChangeCardCostGetter patches BoneCost so we can change the cost on the fly
+    /// <see cref="ChangeCardCostGetter"/> patches <see cref="CardInfo.BonesCost"/> so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
-    /// This method has a copy of all the code that CardInfo.BoneCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// This method has a copy of all the code that <see cref="CardInfo.BonesCost"/> had so it doesn't result in a StackOverflow and freezing the game when called.
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.BonesCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalBonesCost(CardInfo __instance) { return 0; }
 
     /// <summary>
-    /// ChangeCardCostGetter patches GemsCost so we can change the cost on the fly
+    /// <see cref="ChangeCardCostGetter"/> patches <see cref="CardInfo.GemsCost"/> so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
-    /// This method has a copy of all the code that CardInfo.GemsCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// This method has a copy of all the code that <see cref="CardInfo.GemsCost"/> had so it doesn't result in a StackOverflow and freezing the game when called.
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.GemsCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
 
     /// <summary>
-    /// Improved version of CardInfo.GemsCost that accounts for addGemCost and RemovedGemsCost().
+    /// Improved version of <see cref="CardInfo.GemsCost"/> that accounts for <c>addGemCost</c> and <see cref="CardModificationInfoExtensions.RemovedGemsCosts(CardModificationInfo)"/>.
     /// </summary>
-    /// <remarks>For consistency's sake, it's recommended you use this method over OriginalGemsCost in most cases.</remarks>
+    /// <remarks>For consistency's sake, it's recommended you use this method over <see cref="OriginalGemsCost"/> in most cases.</remarks>
     /// <param name="instance"></param>
     public static List<GemType> ImprovedGemsCost(CardInfo instance)
     {
@@ -124,9 +141,9 @@ public static class CostProperties
     }
 
     /// <summary>
-    /// ChangeCardCostGetter patches EnergyCost so we can change the cost on the fly
+    /// <see cref="ChangeCardCostGetter"/> patches <see cref="CardInfo.EnergyCost"/> so we can change the cost on the fly
     /// This reverse patch gives us access to the original method without any changes.
-    /// This method has a copy of all the code that CardInfo.EnergyCost had so it doesn't result in a StackOverflow and freezing the game when called.
+    /// This method has a copy of all the code that <see cref="CardInfo.EnergyCost"/> had so it doesn't result in a StackOverflow and freezing the game when called.
     /// </summary>
     [HarmonyReversePatch, HarmonyPatch(typeof(CardInfo), nameof(CardInfo.EnergyCost), MethodType.Getter), MethodImpl(MethodImplOptions.NoInlining)]
     public static int OriginalEnergyCost(CardInfo __instance) { return 0; }
@@ -134,8 +151,8 @@ public static class CostProperties
     /// <summary>
     /// Determines whether or not Gemified should reduce the blood cost on a multicost card.
     /// </summary>
-    /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="bloodCost">The PlayableCard's blood cost. Defaults to using the CardInfo's blood cost if null.</param>
+    /// <param name="card">The gemified <see cref="PlayableCard"/> we're checking.</param>
+    /// <param name="bloodCost">The <see cref="PlayableCard"/>'s blood cost. Defaults to using the <see cref="CardInfo"/>'s blood cost if null.</param>
     /// <returns>True if Gemified should reduce the blood cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -148,8 +165,8 @@ public static class CostProperties
     /// <summary>
     /// Determines whether or not Gemified should reduce the gems cost on a multicost card.
     /// </summary>
-    /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="gemsCost">The PlayableCard's gems cost. Defaults to using the CardInfo's gems cost if null.</param>
+    /// <param name="card">The gemified <see cref="PlayableCard"/> we're checking.</param>
+    /// <param name="gemsCost">The <see cref="PlayableCard"/>'s gems cost. Defaults to using the <see cref="CardInfo"/>'s gems cost if null.</param>
     /// <returns>True if Gemified should reduce the gems cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -162,8 +179,8 @@ public static class CostProperties
     /// <summary>
     /// Determines whether or not Gemified should reduce the bone cost on a multicost card.
     /// </summary>
-    /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="bonesCost">The PlayableCard's bone cost. Defaults to using the CardInfo's bone cost if null.</param>
+    /// <param name="card">The gemified <see cref="PlayableCard"/> we're checking.</param>
+    /// <param name="bonesCost">The <see cref="PlayableCard"/>'s bone cost. Defaults to using the <see cref="CardInfo"/>'s bone cost if null.</param>
     /// <returns>True if Gemified should reduce the bone cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -176,8 +193,8 @@ public static class CostProperties
     /// <summary>
     /// Determines whether or not Gemified should reduce the energy cost on a multicost card.
     /// </summary>
-    /// <param name="card">The gemified PlayableCard we're checking.</param>
-    /// <param name="energyCost">The PlayableCard's energy cost. Defaults to using the CardInfo's energy cost if null.</param>
+    /// <param name="card">The gemified <see cref="PlayableCard"/> we're checking.</param>
+    /// <param name="energyCost">The <see cref="PlayableCard"/>'s energy cost. Defaults to using the <see cref="CardInfo"/>'s energy cost if null.</param>
     /// <returns>True if Gemified should reduce the energy cost by 1.</returns>
     /// <remarks>
     /// Used for multicost cards to determine which cost Gemified should affect.
@@ -247,7 +264,7 @@ internal static class ChangeCardCostGetter
     //private static void GetCardInfoReferences(PlayableCard __instance) {
 
     //    // if this is a new PlayableCard being associated with the given CardInfo
-    //    // returns true if the CardInfo is in the table
+    //    // returns true if the <see cref="CardInfo"/> is in the table
     //    if (CostProperties.CardInfoToPlayableCardReferences.TryGetValue(__instance.Info, out List<WeakReference<PlayableCard>> connectedCards)) {
     //        PlayableCard card = null;
     //        for (int i = connectedCards.Count - 1; i >= 0; i--) {
@@ -285,7 +302,7 @@ internal static class AddRefreshBehaviourToCard
         refreshCostDisplay.playableCard = __instance;
 
         // if this is a new PlayableCard being associated with the given CardInfo
-        // returns true if the CardInfo is in the table
+        // returns true if the <see cref="CardInfo"/> is in the table
         if (CostProperties.CardInfoToCard.TryGetValue(__instance.Info, out List<WeakReference<PlayableCard>> cardList)) {
             PlayableCard card = null;
             for (int i = cardList.Count - 1; i >= 0; i--) {

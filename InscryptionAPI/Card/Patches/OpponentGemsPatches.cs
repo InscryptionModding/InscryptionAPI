@@ -24,7 +24,21 @@ internal class OpponentGemsPatches
     private static void CleanUpOpponentGems() => Singleton<OpponentGemsManager>.Instance?.opponentGems.Clear();
 
     [HarmonyPostfix, HarmonyPatch(typeof(ResourcesManager), nameof(ResourcesManager.ForceGemsUpdate))]
-    private static void ForceOpponentGemsUpdate() => Singleton<OpponentGemsManager>.Instance?.ForceGemsUpdate();
+    private static void ForceOpponentGemsUpdate(ResourcesManager __instance) {
+        foreach (CardSlot slot in Singleton<BoardManager>.Instance.GetSlots(getPlayerSlots: true)) {
+            if (slot.Card != null && !slot.Card.Dead) {
+                GainMultipleGems[] components2 = slot.Card.GetComponents<GainMultipleGems>();
+                foreach (GainMultipleGems gainGems in components2) {
+                    __instance.gems.AddRange(gainGems.Gems);
+                }
+            }
+        }
+        for (int j = 0; j < 3; j++) {
+            __instance.SetGemOnImmediate((GemType)j, __instance.gems.Contains((GemType)j));
+        }
+
+        Singleton<OpponentGemsManager>.Instance?.ForceGemsUpdate();
+    }
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(FishHookGrab), nameof(FishHookGrab.PullHook))]

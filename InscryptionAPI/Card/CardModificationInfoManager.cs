@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// Class for managing special CardModificationInfos.
+/// Class for managing special <see cref="CardModificationInfo"/>s.
 /// These include persistent extended properties and custom costs.
 /// </summary>
 [HarmonyPatch]
@@ -27,7 +27,7 @@ public static class CardModificationInfoManager
     /// Get a custom extension class that will exist on all clones of a card
     /// </summary>
     /// <param name="card">Card to access.</param>
-    /// <typeparam name="T">The custom class</typeparam>
+    /// <typeparam name="T">The custom class.</typeparam>
     /// <returns>The instance of T for this card.</returns>
     public static T GetExtendedClass<T>(this CardModificationInfo card) where T : class, new()
     {
@@ -74,7 +74,7 @@ public static class CardModificationInfoManager
         return exp.StringMap;
     }
     /// <summary>
-    /// Re-executes events and rebuilds the special CardModificationInfo pool.
+    /// Re-executes events and rebuilds the special <see cref="CardModificationInfo"/> pool.
     /// </summary>
     public static void SyncCardMods()
     {
@@ -99,6 +99,11 @@ public static class CardModificationInfoManager
             }
         }
     }
+    /// <summary>
+    /// Retrieves all custom properties stored in the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to retrieve custom properties from.</param>
+    /// <returns>A List of all custom properties stored by the singleton ID.</returns>
     public static List<string> GetCustomPropertiesFromId(string singletonId)
     {
         List<string> propertiesList = new();
@@ -114,6 +119,18 @@ public static class CardModificationInfoManager
         }
         return propertiesList;
     }
+    /// <summary>
+    /// Retrieves all custom costs stored in the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to retrieve custom costs from.</param>
+    /// <returns>A List of all custom costs stored by the singleton ID.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using <see cref="CardModificationInfo"/>s to add custom costs to cards. Instead use <see cref="CardExtensions.SetCustomCost{T}(CardInfo, int)"/> and the much better <see cref="CardCostManager"/>.
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and <see cref="CardModificationInfo"/>s.
+    /// </b>
+    /// </remarks>
     public static List<string> GetCustomCostsFromId(string singletonId)
     {
         List<string> costList = new();
@@ -131,7 +148,17 @@ public static class CardModificationInfoManager
         return costList;
     }
 
+    /// <summary>
+    /// Retrieves the custom properties substring from the given <see cref="CardModificationInfo"/>'s singleton ID.
+    /// </summary>
+    /// <param name="mod">The <see cref="CardModificationInfo"/> to access.</param>
+    /// <returns>The custom properties substring or null if one doesn't exist.</returns>
     public static string GetCustomPropertiesIdString(CardModificationInfo mod) => mod.HasCustomPropertiesId() ? GetCustomPropertiesIdString(mod.singletonId) : null;
+    /// <summary>
+    /// Retrieves the custom properties substring from the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to access.</param>
+    /// <returns>The custom properties substring or null if one doesn't exist.</returns>
     public static string GetCustomPropertiesIdString(string singletonId)
     {
         if (!singletonId.HasCustomPropertiesId())
@@ -144,7 +171,31 @@ public static class CardModificationInfoManager
         return propertiesString.Substring(0, endOf + 1);
     }
 
+    /// <summary>
+    /// Retrieves the custom costs substring from the given <see cref="CardModificationInfo"/>'s singleton ID.
+    /// </summary>
+    /// <param name="mod">The <see cref="CardModificationInfo"/> to access.</param>
+    /// <returns>The custom costs substring or null if one doesn't exist.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using <see cref="CardModificationInfo"/>s to add custom costs to cards. Instead use <see cref="CardExtensions.SetCustomCost{T}(CardInfo, int)"/> and the much better <see cref="CardCostManager"/>.
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and <see cref="CardModificationInfo"/>s.
+    /// </b>
+    /// </remarks>
     public static string GetCustomCostsIdString(CardModificationInfo mod) => mod.HasCustomCostsId() ? GetCustomCostsIdString(mod.singletonId) : null;
+    /// <summary>
+    /// Retrieves the custom costs substring from the given singleton ID string.
+    /// </summary>
+    /// <param name="singletonId">The singleton ID string to access.</param>
+    /// <returns>The custom costs substring or null if one doesn't exist.</returns>
+    /// <remarks>
+    /// <b>
+    /// Avoid using <see cref="CardModificationInfo"/>s to add custom costs to cards. Instead use <see cref="CardExtensions.SetCustomCost{T}(CardInfo, int)"/> and the much better <see cref="CardCostManager"/>.
+    /// <br/><br/>
+    /// Only use this if you're trying to do cost adjustments like you can with vanilla costs and <see cref="CardModificationInfo"/>s.
+    /// </b>
+    /// </remarks>
     public static string GetCustomCostsIdString(string singletonId)
     {
         if (!singletonId.HasCustomCostsId())
@@ -158,7 +209,7 @@ public static class CardModificationInfoManager
     }
 
     /// <summary>
-    /// Retrieves the property name and associated value from the provided 'properties' string.
+    /// Retrieves the property name and associated value from the provided <c>properties</c> string.
     /// </summary>
     /// <param name="properties">A string representing all properties.</param>
     /// <param name="key">The property name to search for.</param>

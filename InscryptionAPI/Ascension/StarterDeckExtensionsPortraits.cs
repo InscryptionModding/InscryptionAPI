@@ -10,9 +10,9 @@ public static partial class StarterDeckExtensions
     /// <summary>
     /// Sets the icon texture for the starter deck.
     /// </summary>
-    /// <param name="info">StarterDeckInfo to access.</param>
+    /// <param name="info"><see cref="StarterDeckInfo"/> to access.</param>
     /// <param name="pathToArt">The path to the .png file containing the artwork (relative to the Plugins directory).</param>
-    /// <returns>The same StarterDeckInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StarterDeckInfo"/> so a chain can continue.</returns>
     public static StarterDeckInfo SetIconTexture(this StarterDeckInfo info, string pathToArt)
     {
         try
@@ -28,10 +28,10 @@ public static partial class StarterDeckExtensions
     /// <summary>
     /// Sets the icon texture for the starter deck.
     /// </summary>
-    /// <param name="info">StarterDeckInfo to access.</param>
+    /// <param name="info"><see cref="StarterDeckInfo"/> to access.</param>
     /// <param name="portrait">The texture containing the emission.</param>
     /// <param name="filterMode">The filter mode for the texture, or null if no change.</param>
-    /// <returns>The same StarterDeckInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StarterDeckInfo"/> so a chain can continue.</returns>
     public static StarterDeckInfo SetIconTexture(this StarterDeckInfo info, Texture2D portrait, FilterMode? filterMode = null)
     {
         return info.SetIconTexture(GetPortrait(portrait, TextureHelper.SpriteType.CardPortrait, filterMode));
@@ -40,9 +40,9 @@ public static partial class StarterDeckExtensions
     /// <summary>
     /// Sets the icon texture for the starter deck.
     /// </summary>
-    /// <param name="info">StarterDeckInfo to access.</param>
+    /// <param name="info"><see cref="StarterDeckInfo"/> to access.</param>
     /// <param name="sprite">The sprite containing the emission.</param>
-    /// <returns>The same StarterDeckInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="StarterDeckInfo"/> so a chain can continue.</returns>
     public static StarterDeckInfo SetIconTexture(this StarterDeckInfo info, Sprite sprite)
     {
         if (info.iconSprite == null)

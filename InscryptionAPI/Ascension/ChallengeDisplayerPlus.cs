@@ -5,8 +5,16 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
+/// <summary>
+/// Improved version of <see cref="AscensionChallengeDisplayer"/> that can handle custom challenges.
+/// </summary>
 public class ChallengeDisplayerPlus : ManagedBehaviour
 {
+    /// <summary>
+    /// Attempts to attach this class to the vanilla <see cref="AscensionChallengeDisplayer"/>.
+    /// </summary>
+    /// <param name="displayer">The vanilla displayer instance.</param>
+    /// <returns>The newly added API displayer.</returns>
     public static ChallengeDisplayerPlus TryAddChallengeDisplayerPlusToDisplayer(AscensionChallengeDisplayer displayer)
     {
         ChallengeDisplayerPlus plus = displayer.GetComponent<ChallengeDisplayerPlus>();
@@ -70,6 +78,10 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
         return plus;
     }
 
+    /// <summary>
+    /// Retrieves the best y position for anchoring footer text.
+    /// </summary>
+    /// <returns>The best available y-value.</returns>
     public float GetBestAvailableY()
     {
         float y = originalTitlePos;
@@ -84,8 +96,16 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
         return y;
     }
 
+    /// <summary>
+    /// A reference to the <see cref="AscensionChallengeDisplayer"/>.
+    /// </summary>
     public AscensionChallengeDisplayer displayer => GetComponent<AscensionChallengeDisplayer>();
 
+    /// <summary>
+    /// Displays the challenge icon for the given <see cref="AscensionChallengeInfo"/>.
+    /// </summary>
+    /// <param name="challengeInfo">The <see cref="AscensionChallengeInfo"/> to display.</param>
+    /// <param name="immediate">If the challenge should be displayed immediately or after a transition plays.</param>
     public void DisplayChallenge(AscensionChallengeInfo challengeInfo, bool immediate = false)
     {
         string dependency = "", incompatibility = "";
@@ -153,6 +173,12 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
         DisplayText(dependency, incompatibility, immediate);
     }
 
+    /// <summary>
+    /// Handles displaying the footer text that appears when hovering over a challenge icon.
+    /// </summary>
+    /// <param name="dependency">String that lists this challenge's dependencies.</param>
+    /// <param name="incompatibility">String that lists this challenge's incompatibiities.</param>
+    /// <param name="immediate">If the challenge should be displayed immediately or after a transition plays.</param>
     public void DisplayText(string dependency, string incompatibility, bool immediate = false)
     {
         float yOffset = (!string.IsNullOrEmpty(dependency) ? 0.11f : 0f) + (!string.IsNullOrEmpty(incompatibility) ? 0.11f : 0f);
@@ -217,12 +243,29 @@ public class ChallengeDisplayerPlus : ManagedBehaviour
     private float originalDescriptionPos;
     private float originalPointsPos;
 
-    public class PrefixedString
-    {
+    /// <summary>
+    /// Handles displaying challenge dependency strings when hovering over a challenge icon.
+    /// </summary>
+    public class PrefixedString {
+        /// <summary>
+        /// The full dependency string.
+        /// </summary>
         public string FullText => prefix + (number > 1 ? " (x" + number + ")" : "");
+        /// <summary>
+        /// The full dependency string with the number (if applicable) coloured red.
+        /// </summary>
         public string RedPrefixText => prefix + (number > 1 ? " [c:R](x" + number + ")[c]" : "");
+        /// <summary>
+        /// Prefix string for the dependency.
+        /// </summary>
         public string prefix;
+        /// <summary>
+        /// The dependency challenge's ID.
+        /// </summary>
         public AscensionChallenge challenge;
+        /// <summary>
+        /// How many of the given challenge are required.
+        /// </summary>
         public int number;
     }
 }

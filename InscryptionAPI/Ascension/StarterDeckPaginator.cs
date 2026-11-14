@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
+/// <summary>
+/// Class that handles adding displaying starter decks and allows for multiple pages of starter decks.
+/// </summary>
 public class StarterDeckPaginator : MonoBehaviour
 {
     private static Sprite noneDeckSprite;
@@ -15,7 +18,11 @@ public class StarterDeckPaginator : MonoBehaviour
         pageLength = screen.deckIcons.Count;
         this.screen = screen;
     }
-
+    /// <summary>
+    /// Adds a new page of starter decks to the list of pages.
+    /// Pages contain (by default) up to 8 starter deck. Excess decks overflow onto new pages.
+    /// </summary>
+    /// <param name="page"><see cref="StarterDeckInfo"/>s that will be displayed on this page.</param>
     public void AddPage(List<StarterDeckInfo> page)
     {
         if (page.Count < pageLength)
@@ -27,7 +34,9 @@ public class StarterDeckPaginator : MonoBehaviour
         }
         pages.Add(page);
     }
-
+    /// <summary>
+    /// Loads the next page. Wraps around to the first page if currently on the last page.
+    /// </summary>
     public void NextPage()
     {
         pageIndex++;
@@ -37,7 +46,9 @@ public class StarterDeckPaginator : MonoBehaviour
         }
         LoadPage(pages[pageIndex]);
     }
-
+    /// <summary>
+    /// Loads the previous page. Wraps around to the last page if currently on the first page.
+    /// </summary>
     public void PreviousPage()
     {
         pageIndex--;
@@ -48,6 +59,10 @@ public class StarterDeckPaginator : MonoBehaviour
         LoadPage(pages[pageIndex]);
     }
 
+    /// <summary>
+    /// Loads the challenge page at the given index.
+    /// </summary>
+    /// <param name="page">Index of the page to load.</param>
     public void LoadPage(List<StarterDeckInfo> page)
     {
         List<AscensionStarterDeckIcon> sorted = new List<AscensionStarterDeckIcon>(screen.deckIcons);
@@ -82,7 +97,9 @@ public class StarterDeckPaginator : MonoBehaviour
         }
         CommandLineTextDisplayer.PlayCommandLineClickSound();
     }
-
+    /// <summary>
+    /// Initialise the starter deck screen and pages whenever the starter deck screen is enabled.
+    /// </summary>
     public void OnEnable()
     {
         StarterDeckManager.SyncDeckList();
@@ -156,10 +173,29 @@ public class StarterDeckPaginator : MonoBehaviour
         LoadPage(pages[0]);
     }
 
+    /// <summary>
+    /// The UI interactable for moving to the previous page.
+    /// </summary>
     public GameObject leftArrow;
+    /// <summary>
+    /// The UI interactable for moving to the next page.
+    /// </summary>
     public GameObject rightArrow;
+    /// <summary>
+    /// The current page index. Determines what starter decks are currently displayed.
+    /// </summary>
     public int pageIndex;
+    /// <summary>
+    /// A List representing the entire collection of pages.
+    /// </summary>
     public List<List<StarterDeckInfo>> pages;
+    /// <summary>
+    /// How many decks are displayed on each page.
+    /// </summary>
     public int pageLength;
+
+    /// <summary>
+    /// Object that handles displaying starter decks.
+    /// </summary>
     public AscensionChooseStarterDeckScreen screen;
 }
