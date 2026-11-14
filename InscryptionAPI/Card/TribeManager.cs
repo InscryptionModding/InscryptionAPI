@@ -21,19 +21,19 @@ public static class TribeManager
     /// </summary>
     public class TribeInfo {
         /// <summary>
-        /// The guid of the mod that added this ability
+        /// The guid of the mod that added this ability.
         /// </summary>
         public string guid;
         /// <summary>
-        /// The name of this tribe
+        /// The name of this tribe.
         /// </summary>
         public string name;
         /// <summary>
-        /// The unique ID for this tribe
+        /// The unique ID for this tribe.
         /// </summary>
         public Tribe tribe;
         /// <summary>
-        /// The Sprite displayed on cards of this tribe
+        /// The Sprite displayed on cards of this tribe.
         /// </summary>
         public Sprite icon;
         /// <summary>
@@ -101,24 +101,24 @@ public static class TribeManager
     }
 
     /// <summary>
-    /// Determines if the given Tribe was added by a mod.
+    /// Determines if the given <see cref="Tribe"/> was added by a mod.
     /// </summary>
-    /// <param name="tribe">The Tribe to check.</param>
-    /// <returns>True if tribe is not from the base game.</returns>
+    /// <param name="tribe">The <see cref="Tribe"/> to check.</param>
+    /// <returns>True if <c>tribe</c> is not from the base game.</returns>
     public static bool IsCustomTribe(Tribe tribe) => tribeTypes.Contains(tribe);
 
     /// <summary>
-    /// Retrieves the TribeInfo object associated with the given Tribe enum value.
+    /// Retrieves the <see cref="TribeInfo"/> object associated with the given <see cref="Tribe"/> enum value.
     /// </summary>
-    /// <param name="tribe">Tribe to retrieve the TribeInfo of.</param>
-    /// <remarks>Only custom Tribes have an associated TribeInfo; returns null for vanilla Tribes.</remarks>
+    /// <param name="tribe">Tribe to retrieve the <see cref="TribeInfo"/> of.</param>
+    /// <remarks>Only custom tribes have an associated <see cref="TribeInfo"/>; returns null for vanilla tribes.</remarks>
     public static TribeInfo GetCustomTribeInfo(Tribe tribe) => tribes.Find(x => x.tribe == tribe);
 
     /// <summary>
-    /// Returns the icon texture associated with the given Tribe.
+    /// Returns the icon texture associated with the given <see cref="Tribe"/>.
     /// </summary>
-    /// <param name="tribe">Tribe to get the icon of.</param>
-    /// <param name="useMissingIconIfNull">If true, return the missing icon texure when the checked Tribe has no icon texture.</param>
+    /// <param name="tribe"><see cref="Tribe"/> to get the icon of.</param>
+    /// <param name="useMissingIconIfNull">If true, return the missing icon texure when the checked <see cref="Tribe"/> has no icon texture.</param>
     public static Texture2D GetTribeIcon(Tribe tribe, bool useMissingIconIfNull = true) {
         Texture2D texture2D = null;
         if (IsCustomTribe(tribe)) {

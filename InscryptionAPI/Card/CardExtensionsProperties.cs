@@ -9,10 +9,10 @@ public static partial class CardExtensions {
     /// <summary>
     /// Adds a custom property value to the card.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="propertyName">The name of the property to set.</param>
     /// <param name="value">The value of the property.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetExtendedProperty(this CardInfo info, string propertyName, object value)
     {
         info.GetCardExtensionTable()[propertyName] = value?.ToString();
@@ -22,7 +22,7 @@ public static partial class CardExtensions {
     /// <summary>
     /// Gets a custom property value from the card.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="propertyName">The name of the property to get the value of.</param>
     /// <returns>The custom property value as a string. If it doesn't exist, returns null.</returns>
     public static string GetExtendedProperty(this CardInfo info, string propertyName)
@@ -34,7 +34,7 @@ public static partial class CardExtensions {
     /// <summary>
     /// Gets a custom property as a nullable int.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as an int or null if it didn't exist or couldn't be parsed as int.</returns>
     public static int? GetExtendedPropertyAsInt(this CardInfo info, string propertyName)
@@ -46,7 +46,7 @@ public static partial class CardExtensions {
     /// <summary>
     /// Gets a custom property as a nullable float.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as a float or null if it didn't exist or couldn't be parsed as float.</returns>
     public static float? GetExtendedPropertyAsFloat(this CardInfo info, string propertyName)
@@ -58,7 +58,7 @@ public static partial class CardExtensions {
     /// <summary>
     /// Gets a custom property as a nullable boolean.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="propertyName">Property name to get value of.</param>
     /// <returns>Returns the value of the property as a boolean or null if it didn't exist or couldn't be parsed as boolean.</returns>
     public static bool? GetExtendedPropertyAsBool(this CardInfo info, string propertyName)
@@ -71,22 +71,22 @@ public static partial class CardExtensions {
     /// <summary>
     /// Checks if this card will be killed by the effect of Tidal Lock.
     /// </summary>
-    /// <param name="item">PlayableCard to access.</param>
+    /// <param name="item"><see cref="PlayableCard"/> to access.</param>
     /// <returns>True if the card is affected by Tidal Lock.</returns>
     public static bool IsAffectedByTidalLock(this PlayableCard item) => item.Info.IsAffectedByTidalLock();
     /// <summary>
     /// Checks if this card info will be killed by the effect of Tidal Lock.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <returns>True if the card info is affected by Tidal Lock.</returns>
     public static bool IsAffectedByTidalLock(this CardInfo info) => info.GetExtendedPropertyAsBool("AffectedByTidalLock") ?? false;
 
     /// <summary>
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="affectedByTidalLock">Whether or not this card should be affected by Tidal Lock.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetAffectedByTidalLock(this CardInfo info, bool affectedByTidalLock = true)
     {
         info.SetExtendedProperty("AffectedByTidalLock", affectedByTidalLock);
@@ -98,22 +98,22 @@ public static partial class CardExtensions {
     /// <summary>
     /// Gets the string value of the extended property TransformerCardId. Can be null.
     /// </summary>
-    /// <param name="item">PlayableCard to access.</param>
+    /// <param name="item"><see cref="PlayableCard"/> to access.</param>
     /// <returns>The string value of the extended property TransformerCardId.</returns>
     public static string GetTransformerCardId(this PlayableCard item) => item.Info.GetTransformerCardId();
     /// <summary>
     /// Gets the string value of the extended property TransformerCardId. Can be null.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <returns>The string value of the extended property TransformerCardId.</returns>
     public static string GetTransformerCardId(this CardInfo info) => info.GetExtendedProperty("TransformerCardId");
 
     /// <summary>
     /// Sets whether the card should be killed by Tidal Lock's effect.
     /// </summary>
-    /// <param name="info"><c>CardInfo</c> to access.</param>
+    /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="transformerCardId">The internal name of the card this card should transform into.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetTransformerCardId(this CardInfo info, string transformerCardId)
     {
         info.SetExtendedProperty("TransformerCardId", transformerCardId);
@@ -124,38 +124,38 @@ public static partial class CardExtensions {
 
     #region Custom Costs
     /// <summary>
-    /// Determines if the given CardInfo has the given custom card cost.
+    /// Determines if the given <see cref="CardInfo"/> has the given custom card cost.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to access.</param>
+    /// <param name="info">The <see cref="CardInfo"/> to access.</param>
     /// <param name="customCost">The custom card cost to check for.</param>
-    /// <returns>True if the <c>CardInfo</c> needs the given custom cost to be played.</returns>
+    /// <returns>True if the <see cref="CardInfo"/> needs the given custom cost to be played.</returns>
 
     public static bool HasCustomCost(this CardInfo info, FullCardCost customCost) => info.GetCustomCost(customCost) != 0;
 
     /// <summary>
-    /// Sets a card's custom cost property using the provided <c>FullCardCost</c> object as a reference.
+    /// Sets a card's custom cost property using the provided <see cref="FullCardCost"/> object as a reference.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to modify.</param>
-    /// <param name="customCost">The FullCardCost representing the cost we want to set.</param>
-    /// <param name="amount">How much of the custom cost the <c>CardInfo</c> should need to be played.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <param name="info">The <see cref="CardInfo"/> to modify.</param>
+    /// <param name="customCost">The <see cref="FullCardCost"/> representing the cost we want to set.</param>
+    /// <param name="amount">How much of the custom cost the <see cref="CardInfo"/> should need to be played.</param>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, FullCardCost customCost, int amount) => info.SetCustomCost(customCost.CostName, amount);
 
     /// <summary>
     /// A variant of <see cref="SetExtendedProperty(CardInfo, string, object)"/> intended to be used to set properties representing custom costs. Primarily provided for clarity of purpose.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to modify.</param>
+    /// <param name="info">The <see cref="CardInfo"/> to modify.</param>
     /// <param name="costName">The name of the cost we want to set.</param>
-    /// <param name="amount">How much of the custom cost the <c>CardInfo</c> should need to be played.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <param name="amount">How much of the custom cost the <see cref="CardInfo"/> should need to be played.</param>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetCustomCost(this CardInfo info, string costName, int amount) => info.SetExtendedProperty(costName, amount);
     /// <summary>
     /// A variant of <see cref="SetExtendedProperty(CardInfo, string, object)"/> intended to be used to set properties representing custom costs. Primarily provided for clarity of purpose.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to modify.</param>
-    /// <typeparam name="T">The class of the cost we want to set.</typeparam>
-    /// <param name="amount">How much of the custom cost the <c>CardInfo</c> should need to be played.</param>
-    /// <returns>The same <c>CardInfo</c> so a chain can continue.</returns>
+    /// <param name="info">The <see cref="CardInfo"/> to modify.</param>
+    /// <typeparam name="T">The <see cref="CustomCardCost"/> we want to set.</typeparam>
+    /// <param name="amount">How much of the custom cost the <see cref="CardInfo"/> should need to be played.</param>
+    /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetCustomCost<T>(this CardInfo info, int amount) where T : CustomCardCost
     {
         FullCardCost cost = CardCostManager.AllCustomCosts.Find(x => x.CostBehaviour == typeof(T));
@@ -165,7 +165,7 @@ public static partial class CardExtensions {
     /// <summary>
     /// Variant of <see cref="GetCustomCost(CardInfo, string, bool)"/> that automatically retrieves the given cost's <c>canBeNegative</c> value when retrieving the cost amount.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="costName">The name of the custom card cost.</param>
     /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCostAmount(this PlayableCard card, string costName) => card.Info.GetCustomCostAmount(costName);
@@ -173,24 +173,24 @@ public static partial class CardExtensions {
     /// <summary>
     /// Variant of <see cref="GetCustomCost(CardInfo, string, bool)"/> that automatically retrieves the given cost's <c>canBeNegative</c> value when retrieving the cost amount.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> to access.</param>
     /// <param name="costName">The name of the custom card cost.</param>
     /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCostAmount(this CardInfo cardInfo, string costName) => cardInfo.GetCustomCost(costName, AllCustomCosts.Find(x => x.CostName == costName).CanBeNegative);
 
     /// <summary>
-    /// Retrieves the given <c>PlayableCard</c>'s custom card cost amount.
+    /// Retrieves the given <see cref="PlayableCard"/>'s custom card cost amount.
     /// </summary>
-    /// <param name="card">The <c>PlayableCard</c> to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="costName">The name of the custom card cost.</param>
     /// <param name="canBeNegative">Whether the card cost amount can be negative. If false, returns 0 for negative cost values.</param>
     /// <returns>How much of the given cost is needed for the given card to be played.</returns>
     public static int GetCustomCost(this PlayableCard card, string costName, bool canBeNegative = false) => card.Info.GetCustomCost(costName, canBeNegative);
 
     /// <summary>
-    /// Retrieves the given CardInfo's custom card cost amount.
+    /// Retrieves the given <see cref="CardInfo"/>'s custom card cost amount.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> to access.</param>
     /// <param name="costName">The name of the custom card cost.</param>
     /// <param name="canBeNegative">Whether the card cost amount can be negative. If false, returns 0 for negative cost values.</param>
     /// <returns>How much of the given cost is needed for the given card to be played.</returns>
@@ -208,10 +208,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves the custom card cost amount of the given class Type from the given PlayableCard.
+    /// Retrieves the custom card cost amount of the given class Type from the given <see cref="PlayableCard"/>.
     /// </summary>
     /// <typeparam name="T">The class of the card cost to check.</typeparam>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="canBeNegative">If the returned value can be negative. If false, returns 0 instead.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost<T>(this PlayableCard card, bool canBeNegative = false) where T : CustomCardCost
@@ -221,10 +221,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves the custom card cost amount of the given class Type from the given CardInfo.
+    /// Retrieves the custom card cost amount of the given class Type from the given <see cref="CardInfo"/>.
     /// </summary>
     /// <typeparam name="T">The class of the card cost to check.</typeparam>
-    /// <param name="cardInfo">The <c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> to access.</param>
     /// <param name="canBeNegative">If the returned value can be negative. If false, returns 0 instead.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost<T>(this CardInfo cardInfo, bool canBeNegative = false) where T : CustomCardCost
@@ -234,10 +234,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves the custom card cost amount of the given class Type from the given PlayableCard.
+    /// Retrieves the custom card cost amount of the given class Type from the given <see cref="PlayableCard"/>.
     /// </summary>
     /// <typeparam name="T">The class of the card cost to check.</typeparam>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCostAmount<T>(this PlayableCard card) where T : CustomCardCost
     {
@@ -246,10 +246,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves the custom card cost amount of the given class Type from the given CardInfo.
+    /// Retrieves the custom card cost amount of the given class Type from the given <see cref="CardInfo"/>.
     /// </summary>
     /// <typeparam name="T">The class of the card cost to check.</typeparam>
-    /// <param name="cardInfo">The <c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> to access.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCostAmount<T>(this CardInfo cardInfo) where T : CustomCardCost
     {
@@ -258,10 +258,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves the given custom card cost amount from the given PlayableCard.
+    /// Retrieves the given custom card cost amount from the given <see cref="PlayableCard"/>.
     /// Only returns negative values if the custom cost allows it.
     /// </summary>
-    /// <param name="card">The PlayableCard to access.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="fullCardCost">The custom card cost to check for.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost(this PlayableCard card, FullCardCost fullCardCost)
@@ -269,10 +269,10 @@ public static partial class CardExtensions {
         return card.GetCustomCostAmount(fullCardCost.CostName);
     }
     /// <summary>
-    /// Retrieves the given custom card cost amount from the given CardInfo.
+    /// Retrieves the given custom card cost amount from the given <see cref="CardInfo"/>.
     /// Only returns negative values if the custom cost allows it.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> to access.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> to access.</param>
     /// <param name="fullCardCost">The custom card cost to check for.</param>
     /// <returns>The card cost amount this card costs.</returns>
     public static int GetCustomCost(this CardInfo cardInfo, FullCardCost fullCardCost)
@@ -280,10 +280,10 @@ public static partial class CardExtensions {
         return cardInfo.GetCustomCostAmount(fullCardCost.CostName);
     }
     /// <summary>
-    /// Retrieves all custom card costs from the given Card.
+    /// Retrieves all custom card costs from the given <see cref="DiskCardGame.Card"/>.
     /// </summary>
-    /// <param name="card">The Card to access.</param>
-    /// <returns>A List of CustomCardCost objects for each custom cost the Card needs to be played.</returns>
+    /// <param name="card">The <see cref="DiskCardGame.Card"/> to access.</param>
+    /// <returns>A List of <see cref="CustomCardCost"/> objects for each custom cost the <see cref="DiskCardGame.Card"/> needs to be played.</returns>
     public static List<CustomCardCost> GetCustomCardCosts(this DiskCardGame.Card card)
     {
         try
@@ -308,10 +308,10 @@ public static partial class CardExtensions {
     }
 
     /// <summary>
-    /// Retrieves all custom card costs from the given CardInfo.
+    /// Retrieves all custom card costs from the given <see cref="CardInfo"/>.
     /// </summary>
-    /// <param name="info">The <c>CardInfo</c> to access.</param>
-    /// <returns>A List of CustomCardCost objects for each custom cost the <c>CardInfo</c> needs to be played.</returns>
+    /// <param name="info">The <see cref="CardInfo"/> to access.</param>
+    /// <returns>A List of <see cref="CustomCardCost"/> objects for each custom cost the <see cref="CardInfo"/> needs to be played.</returns>
     public static List<FullCardCost> GetCustomCosts(this CardInfo info)
     {
         List<FullCardCost> costs = new();
@@ -331,27 +331,27 @@ public static partial class CardExtensions {
     
     #region SteelTrapPelt
     /// <summary>
-    /// Set the Pelt that should be given when this card is slain by a trap.
+    /// Set the pelt card that should be given when this card is killed by the <see cref="SteelTrap"/> ability.
     /// </summary>
-    /// <param name="card">The Card this is being applied to.</param>
-    /// <param name="peltName">The Card to be given to the Player on Death by Trap</param>
+    /// <param name="card">The card this is being applied to.</param>
+    /// <param name="peltName">The card to be given to the Player on Death by Trap</param>
     public static void SetSteelTrapPelt(this PlayableCard card, string peltName) => SetSteelTrapPelt(card.Info, peltName);
     /// <summary>
-    /// Get the Pelt that should be given when this card is slain by a trap.
+    /// Set the pelt card that should be given when this card is killed by the <see cref="SteelTrap"/> ability.
     /// </summary>
-    /// <param name="card">The Card this is being applied to.</param>
+    /// <param name="card">The card this is being applied to.</param>
     /// <returns>A string representing the Pelt that should be returned.</returns>
     public static string GetSteelTrapPelt(this PlayableCard card) => GetSteelTrapPelt(card.Info);
     /// <summary>
-    /// Set the Pelt that should be given when this card is slain by a trap.
+    /// Set the pelt card that should be given when this card is killed by the <see cref="SteelTrap"/> ability.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> this is being applied to.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> this is being applied to.</param>
     /// <param name="peltName">The Card to be given to the Player on Death by Trap</param>
     public static void SetSteelTrapPelt(this CardInfo cardInfo, string peltName) => cardInfo.SetExtendedProperty("SteelTrapPelt", peltName);
     /// <summary>
-    /// Get the Pelt that should be given when this card is slain by a trap.
+    /// Set the pelt card that should be given when this card is killed by the <see cref="SteelTrap"/> ability.
     /// </summary>
-    /// <param name="cardInfo">The <c>CardInfo</c> this is being applied to.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> this is being applied to.</param>
     /// <returns>A string representing the Pelt that should be returned.</returns>
     public static string GetSteelTrapPelt(this CardInfo cardInfo) => cardInfo.GetExtendedProperty("SteelTrapPelt");
     

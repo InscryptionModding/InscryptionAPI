@@ -15,11 +15,11 @@ public static class SpecialTriggeredAbilityManager {
     public class FullSpecialTriggeredAbility
     {
         /// <summary>
-        /// The unique ID for this special ability
+        /// The unique ID for this special ability.
         /// </summary>
         public readonly SpecialTriggeredAbility Id;
         /// <summary>
-        /// The guid of the mod that added this special ability
+        /// The guid of the mod that added this special ability.
         /// </summary>
         public readonly string ModGUID;
         /// <summary>
@@ -27,15 +27,15 @@ public static class SpecialTriggeredAbilityManager {
         /// </summary>
         public readonly string AbilityName;
         /// <summary>
-        /// A subclass of SpecialCardBehaviour that implements the logic for this special ability
+        /// A subclass of <see cref="SpecialCardBehaviour"/> that implements the logic for this special ability.
         /// </summary>
         public readonly Type AbilityBehaviour;
 
         /// <summary>
-        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the <see cref="TypeManager"/>.
+        /// Creates a new instance of <see cref="FullSpecialTriggeredAbility"/> and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">The unique ID for this special ability.</param>
-        /// <param name="abilityBehaviour">A subclass of SpecialCardBehaviour that implements the logic for the ability.</param>
+        /// <param name="abilityBehaviour">A subclass of <see cref="SpecialCardBehaviour"/> that implements the logic for the ability.</param>
         [Obsolete("Use the constructor that takes a guid parameter instead")]
         public FullSpecialTriggeredAbility(SpecialTriggeredAbility id, Type abilityBehaviour) : this(null, abilityBehaviour.ToString(), id, abilityBehaviour)
         {
@@ -43,12 +43,12 @@ public static class SpecialTriggeredAbilityManager {
         }
 
         /// <summary>
-        /// Creates a new instance of FullSpecialTriggeredAbility and registers its behaviour type with the <see cref="TypeManager"/>.
+        /// Creates a new instance of <see cref="FullSpecialTriggeredAbility"/> and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="guid">The GUID of the mod that added this.</param>
         /// <param name="name">The name of this special ability.</param>
         /// <param name="id">The unique ID for this special ability.</param>
-        /// <param name="abilityBehaviour">A subclass of SpecialCardBehaviour that implements the logic for the ability.</param>
+        /// <param name="abilityBehaviour">A subclass of <see cref="SpecialCardBehaviour"/> that implements the logic for the ability.</param>
         public FullSpecialTriggeredAbility(string guid, string name, SpecialTriggeredAbility id, Type abilityBehaviour)
         {
             Id = id;
@@ -96,7 +96,7 @@ public static class SpecialTriggeredAbilityManager {
     /// </summary>
     /// <param name="guid">The guid of the mod adding the special ability.</param>
     /// <param name="abilityName">The name of the special ability.</param>
-    /// <param name="behavior">A subclass of SpecialCardBehaviour that implements the logic for the ability.</param>
+    /// <param name="behavior">A subclass of <see cref="SpecialCardBehaviour"/> that implements the logic for the ability.</param>
     public static FullSpecialTriggeredAbility Add(string guid, string abilityName, Type behavior)
     {
         FullSpecialTriggeredAbility full = new(guid, abilityName, GuidManager.GetEnumValue<SpecialTriggeredAbility>(guid, abilityName), behavior);
@@ -110,7 +110,7 @@ public static class SpecialTriggeredAbilityManager {
     /// <param name="id">The unique ID of the special ability to remove.</param>
     public static void Remove(SpecialTriggeredAbility id) => NewSpecialTriggers.Remove(NewSpecialTriggers.FirstOrDefault(x => x.Id == id));
     /// <summary>
-    /// Removes a special ability from the game based on its FullSpecialTriggeredAbility. Can only remove mod-added special abilities, not vanilla ones.
+    /// Removes a special ability from the game based on its <see cref="FullSpecialTriggeredAbility"/>. Can only remove mod-added special abilities, not vanilla ones.
     /// </summary>
     /// <param name="ability">The instance of the ability to remove.</param>
     public static void Remove(FullSpecialTriggeredAbility ability) => NewSpecialTriggers.Remove(ability);

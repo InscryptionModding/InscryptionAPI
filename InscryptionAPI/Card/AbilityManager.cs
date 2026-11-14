@@ -4,7 +4,6 @@ using InscryptionAPI.Guid;
 using InscryptionAPI.Helpers;
 using InscryptionAPI.Helpers.Extensions;
 using InscryptionAPI.RuleBook;
-using Sirenix.Utilities;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;

@@ -43,26 +43,26 @@ public static class StatIconManager
         /// </summary>
         public readonly StatIconInfo Info;
         /// <summary>
-        /// A subclass of VariableStatBehaviour that implements the logic for this stat icon.
+        /// A subclass of <see cref="VariableStatBehaviour"/> that implements the logic for this stat icon.
         /// </summary>
         public readonly Type VariableStatBehavior;
 
         /// <summary>
         /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
         /// Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
+        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use <see cref="PageRangeType.Unique"/> if you want to redirect to a custom rulebook page using its pageId.
         /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
         /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
         /// <summary>
-        /// Creates a new instance of FullStatIcon and registers its behaviour type with the <see cref="TypeManager"/>.
+        /// Creates a new instance of <see cref="FullStatIcon"/> and registers its behaviour type with the <see cref="TypeManager"/>.
         /// </summary>
         /// <param name="id">The unique ID for this stat icon.</param>
         /// <param name="abilityId">The unique ID for this stat icon's associated special ability.</param>
         /// <param name="info">The description object for this ability.</param>
-        /// <param name="variableStatBehavior">A subclass of VariableStatBehaviour that implements the logic for the ability.</param>
+        /// <param name="variableStatBehavior">A subclass of <see cref="VariableStatBehaviour"/> that implements the logic for the ability.</param>
         public FullStatIcon(SpecialStatIcon id, SpecialTriggeredAbility abilityId, StatIconInfo info, Type variableStatBehavior)
         {
             Id = id;
@@ -85,7 +85,7 @@ public static class StatIconManager
     /// </summary>
     public static List<FullStatIcon> AllStatIcons { get; private set; } = BaseGameStatIcons.ToList();
     /// <summary>
-    /// The current processed list of all StatIconInfos in the game, including vanilla and mod-added abilities.
+    /// The current processed list of all <see cref="StatIconInfo"/>s in the game, including vanilla and mod-added abilities.
     /// </summary>
     public static List<StatIconInfo> AllStatIconInfos { get; private set; } = BaseGameStatIcons.Select(x => x.Info).ToList();
 
@@ -134,8 +134,8 @@ public static class StatIconManager
     /// </summary>
     /// <param name="guid">The guid of the mod adding the ability.</param>
     /// <param name="info">An instance of StatIconInfo describing the ability.</param>
-    /// <param name="behavior">A subclass of VariableStatBehaviour that implements the logic for the stat icon.</param>
-    /// <returns>An instance of FullStatIcon containing all necessary data for the stat icon to work..</returns>
+    /// <param name="behavior">A subclass of <see cref="VariableStatBehaviour"/> that implements the logic for the stat icon.</param>
+    /// <returns>An instance of <see cref="FullStatIcon"/> containing all necessary data for the stat icon to work.</returns>
     public static FullStatIcon Add(string guid, StatIconInfo info, Type behavior)
     {
         // Register the special ability at the same time
@@ -154,7 +154,7 @@ public static class StatIconManager
     /// <param name="guid">The guid of the mod adding the ability.</param>
     /// <param name="rulebookName">The name of the stat icon when it appears in the Rulebook.</param>
     /// <param name="rulebookDescription">The description of the stat icon when it appears in the Rulebook.</param>
-    /// <param name="behavior">A subclass of VariableStatBehaviour that implements the logic for the stat icon.</param>
+    /// <param name="behavior">A subclass of <see cref="VariableStatBehaviour"/> that implements the logic for the stat icon.</param>
     /// <returns>An instance of StatIconInfo describing the new ability.</returns>
     public static StatIconInfo New(string guid, string rulebookName, string rulebookDescription, Type behavior)
     {

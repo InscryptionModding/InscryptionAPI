@@ -364,7 +364,7 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Removes any number of metaategories from the card.
+    /// Removes any number of metacategories from the card.
     /// </summary>
     /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <param name="cardMetaCategories">The metacategories to remove.</param>

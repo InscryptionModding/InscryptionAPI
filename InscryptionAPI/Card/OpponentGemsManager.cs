@@ -24,17 +24,17 @@ public class OpponentGemsManager : Singleton<OpponentGemsManager> {
     /// <returns>True if the opponent owns at least one gem of the given type. False otherwise.</returns>
     public bool HasGem(GemType gem) => opponentGems.Contains(gem);
     /// <summary>
-    /// Adds a gem of the given type to the List of opponent-owned gems.
+    /// Adds a gem of the given type to the list of opponent-owned gems.
     /// </summary>
     /// <param name="gem">Type of gem to add to the opponent's possession.</param>
     public void AddGem(GemType gem) => opponentGems.Add(gem);
     /// <summary>
-    /// Removes a gem of the given type from the List of opponent-owned gems.
+    /// Removes a gem of the given type from the list of opponent-owned gems.
     /// </summary>
     /// <param name="gem">Type of gem to remove from the opponent's possession.</param>
     public void LoseGem(GemType gem) => opponentGems.Remove(gem);
     /// <summary>
-    /// Adds gems of the given types to the List of opponent-owned gems.
+    /// Adds gems of the given types to the list of opponent-owned gems.
     /// </summary>
     /// <param name="gems">Types of gems to add to the opponent's possession.</param>
     public void AddGems(params GemType[] gems)
@@ -43,7 +43,7 @@ public class OpponentGemsManager : Singleton<OpponentGemsManager> {
             opponentGems.Add(gem);
     }
     /// <summary>
-    /// Removes gems of the given types from the List of opponent-owned gems.
+    /// Removes gems of the given types from the list of opponent-owned gems.
     /// </summary>
     /// <param name="gems">Types of gems to remove from the opponent's possession.</param>
     public void LoseGems(params GemType[] gems)

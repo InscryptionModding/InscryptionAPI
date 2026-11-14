@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// Extended subclass of AbilityBehaviour that implements several custom API triggers.
+/// Extended subclass of <see cref="AbilityBehaviour"/> that implements several custom API triggers.
 /// </summary>
 [HarmonyPatch]
 public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingSlots, IActivateWhenFacedown, IPassiveAttackBuff, IPassiveHealthBuff
@@ -32,16 +32,16 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     public virtual bool ShouldTriggerCustomWhenFaceDown(Type customTrigger) => TriggerWhenFacedown;
 
     /// <summary>
-    /// Whether or not this ability should modify what CardSlots cards with this ability will target when attacking.
+    /// Whether or not this ability should modify what <see cref="CardSlot"/>s cards with this ability will target when attacking.
     /// </summary>
     /// <returns>True if this ability should modify the list of cards being added.</returns>
     public virtual bool RespondsToGetOpposingSlots() => false;
     /// <summary>
-    /// Gets an additional list of CardSlots that cards with this ability should target when attacking.
+    /// Gets an additional list of <see cref="CardSlot"/>s that cards with this ability should target when attacking.
     /// </summary>
-    /// <param name="originalSlots">List of CardSlots that were originally being targeted before custom abilities were applied.</param>
-    /// <param name="otherAddedSlots">Other CardSlots added by other abilities to the list of targeted slots.</param>
-    /// <returns>List of CardSlots that should be added to the list of targeted slots.</returns>
+    /// <param name="originalSlots">List of <see cref="CardSlot"/>s that were originally being targeted before custom abilities were applied.</param>
+    /// <param name="otherAddedSlots">Other <see cref="CardSlot"/>s added by other abilities to the list of targeted slots.</param>
+    /// <returns>List of <see cref="CardSlot"/>s that should be added to the list of targeted slots.</returns>
     public virtual List<CardSlot> GetOpposingSlots(List<CardSlot> originalSlots, List<CardSlot> otherAddedSlots) => new();
 
     /// <summary>
@@ -104,7 +104,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     /// <summary>
     /// Determines the passive attack buff given by this ability if one is given.
     /// </summary>
-    /// <param name="target">The PlayableCard current being checked.</param>
+    /// <param name="target">The <see cref="PlayableCard"/> current being checked.</param>
     /// <returns>The attack buff to give to the target card.</returns>
     public virtual int GetPassiveAttackBuff(PlayableCard target)
     {
@@ -125,7 +125,7 @@ public abstract class ExtendedAbilityBehaviour : AbilityBehaviour, IGetOpposingS
     /// <summary>
     /// Determines the passive health buff given by this ability if one is given.
     /// </summary>
-    /// <param name="target">The PlayableCard current being checked.</param>
+    /// <param name="target">The <see cref="PlayableCard"/> current being checked.</param>
     /// <returns>The health buff to give to the target card.</returns>
     public virtual int GetPassiveHealthBuff(PlayableCard target)
     {

@@ -9,7 +9,7 @@ namespace InscryptionAPI.Card;
 
 /// <summary>
 /// A custom class implementing shield-giving behaviour.
-/// With the most recent API versions, shield-giving sigils like DeathShield/Nano Armour/ Armoured can now stack and instead use a counter rather than a simple boolean.
+/// With the most recent API versions, shield-giving sigils like DeathShield/Nano Armour/Armoured can now stack and instead use a counter rather than a simple boolean.
 /// </summary>
 public abstract class DamageShieldBehaviour : AbilityBehaviour {
     /// <summary>
@@ -54,7 +54,7 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour {
 
     }
     /// <summary>
-    /// Method for adding more shield count to this ability. Resets the loseShields Status boolean if the net shields are > 0.
+    /// Method for adding more shield count to this ability. Resets the <c>loseShields</c> Status boolean if the net shields are > 0.
     /// </summary>
     /// <param name="amount">How many more shields this ability should give.</param>
     /// <param name="updateDisplay">Whether or not to update the card's render.</param>
@@ -116,7 +116,7 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour {
 }
 
 /// <summary>
-/// A custom class combining [DamageShieldBehaviour](InscryptionAPI.Card.DamageShieldBehaviour) and [ExtendedActivatedBehaviour](InscryptionAPI.Card.ExtendedActivatedBehaviour).
+/// A custom class combining <see cref="DamageShieldBehaviour"/> and <see cref="ExtendedActivatedAbilityBehaviour"/>.
 /// </summary>
 public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
     /// <summary>
@@ -223,31 +223,31 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
     public int HealthCost => Mathf.Max(0, StartingHealthCost + healthCostMod);
 
     /// <summary>
-    /// Dictionary of CardSlots that have been selected for sacrifices and the associated CardInfo.
+    /// Dictionary of CardSlots that have been selected for sacrifices and the associated <see cref="CardInfo"/>.
     /// </summary>
     public Dictionary<CardSlot, CardInfo> currentSacrificedCardInfos = new();
 
     /// <summary>
-    /// Determines if the PostResolveOnBoard trigger should activate.
+    /// Determines if the <see cref="OnPostResolveOnBoard"/> trigger should activate.
     /// </summary>
-    /// <returns>True if PostResolveOnBoard should activate.</returns>
+    /// <returns>True if <see cref="OnPostResolveOnBoard"/> should activate.</returns>
     public virtual bool RespondsToPostResolveOnBoard() {
         return false;
     }
     /// <summary>
     /// Trigger that's called after card's with this ability resolve on the board.
-    /// Used since ResolveOnBoard is sealed to prevent the ability breaking.
+    /// Used since <see cref="OnResolveOnBoard"/> is sealed to prevent the ability breaking.
     /// </summary>
     public virtual IEnumerator OnPostResolveOnBoard() {
         yield break;
     }
     /// <summary>
-    /// If the ResolveOnBoard trigger should be called.
+    /// If the <see cref="OnResolveOnBoard"/> trigger should be called.
     /// </summary>
     /// <returns>True if it should be activated.</returns>
     public sealed override bool RespondsToResolveOnBoard() => RespondsToPostResolveOnBoard() || LearnMechanic();
     /// <summary>
-    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any PostResolveOnBoard logic.
+    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any <see cref="OnPostResolveOnBoard"/> logic.
     /// </summary>
     public sealed override IEnumerator OnResolveOnBoard() {
         if (LearnMechanic()) // Act 2 tutorial dialogue
@@ -357,7 +357,6 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
     /// <summary>
     /// Sequence called after the ability finishes activation.
     /// </summary>
-    /// <returns></returns>
     public virtual IEnumerator PostActivate() {
         yield break;
     }
@@ -369,7 +368,6 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
     /// <summary>
     /// Player-implemented sequence for what this ability will actually do when activated.
     /// </summary>
-    /// <returns></returns>
     public abstract IEnumerator Activate();
 
     private IEnumerator ChooseSacrifices() {
@@ -468,7 +466,7 @@ public abstract class ActivatedDamageShieldBehaviour : DamageShieldBehaviour {
 }
 
 /// <summary>
-/// A custom AbilityBehaviour that's attached to the DeathShield ability so it functions with the API's shield logic changes.
+/// A custom <see cref="AbilityBehaviour"/> that's attached to the <see cref="Ability.DeathShield"/> ability so it functions with the API's shield logic changes.
 /// </summary>
 public class APIDeathShield : DamageShieldBehaviour {
     /// <summary>

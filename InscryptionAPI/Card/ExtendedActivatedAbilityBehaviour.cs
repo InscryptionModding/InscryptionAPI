@@ -8,7 +8,7 @@ using UnityEngine;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// A version of ActivatedAbilityBehaviour that allows for the creation of activated abilities that cost Blood, Gems, or Health. Also supports dynamic activation costs.
+/// A version of <see cref="ActivatedAbilityBehaviour"/> that allows for the creation of activated abilities that cost Blood, Gems, or Health. Also supports dynamic activation costs.
 /// </summary>
 public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
 {
@@ -116,33 +116,33 @@ public abstract class ExtendedActivatedAbilityBehaviour : AbilityBehaviour
     public int HealthCost => Mathf.Max(0, StartingHealthCost + healthCostMod);
 
     /// <summary>
-    /// Dictionary of CardSlots that have been selected for sacrifices and the associated CardInfo.
+    /// Dictionary of <see cref="CardSlot"/>s that have been selected for sacrifices and the associated CardInfo.
     /// </summary>
     public Dictionary<CardSlot, CardInfo> currentSacrificedCardInfos = new();
 
     /// <summary>
-    /// Determines if the PostResolveOnBoard trigger should activate.
+    /// Determines if <see cref="OnPostResolveOnBoard"/> should activate.
     /// </summary>
-    /// <returns>True if PostResolveOnBoard should activate.</returns>
+    /// <returns>True if <see cref="OnPostResolveOnBoard"/> should activate.</returns>
     public virtual bool RespondsToPostResolveOnBoard()
     {
         return false;
     }
     /// <summary>
     /// Trigger that's called after card's with this ability resolve on the board.
-    /// Used since ResolveOnBoard is sealed to prevent the ability breaking.
+    /// Used since <see cref="OnResolveOnBoard"/> is sealed to prevent the ability breaking.
     /// </summary>
     public virtual IEnumerator OnPostResolveOnBoard()
     {
         yield break;
     }
     /// <summary>
-    /// If the ResolveOnBoard trigger should be called.
+    /// If the <see cref="OnResolveOnBoard"/> trigger should be called.
     /// </summary>
     /// <returns>True if it should be activated.</returns>
     public sealed override bool RespondsToResolveOnBoard() => RespondsToPostResolveOnBoard() || LearnMechanic();
     /// <summary>
-    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any PostResolveOnBoard logic.
+    /// Runs the logic that teaches the player how activated abilities work in Act 2, plus any <see cref="OnPostResolveOnBoard"/> logic.
     /// </summary>
     public sealed override IEnumerator OnResolveOnBoard()
     {
