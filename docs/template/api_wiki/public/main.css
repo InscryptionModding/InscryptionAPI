@@ -91,3 +91,43 @@ body > footer, body[data-layout="landing"] > footer {
 .inheritance-level.level3 { padding-left: 3.75rem; }
 .inheritance-level.level4 { padding-left: 5rem; }
 .inheritance-level.level5 { padding-left: 6.25rem; }
+
+/* API Documentation Tables */
+table.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  border: 1px solid var(--bs-border-color, #777);
+}
+
+/* Table Headers */
+table.table thead th {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--bs-border-color, #777);
+  background-color: rgba(127, 127, 127, 0.12);
+}
+
+/* Table Cells */
+table.table tbody td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--bs-border-color, #777);
+  vertical-align: top;
+}
+
+/* Alternating Rows */
+table.table-striped tbody tr:nth-child(even) {
+  background-color: rgba(127, 127, 127, 0.06);
+}
+
+/* Parameter Names */
+table.table .parametername {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Table Hover */
+table.table tbody tr:hover {
+  background-color: rgba(127, 127, 127, 0.12);
+}
