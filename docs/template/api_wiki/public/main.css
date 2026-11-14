@@ -92,43 +92,9 @@ body > footer, body[data-layout="landing"] > footer {
 .inheritance-level.level4 { padding-left: 5rem; }
 .inheritance-level.level5 { padding-left: 6.25rem; }
 
-table.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  border-collapse: collapse;
-  border: 1px solid var(--bs-border-color, #777);
-}
-
-table.table thead th {
-  padding: 0.65rem 0.75rem;
-  text-align: left;
-  font-weight: 600;
-  border: 1px solid var(--bs-border-color, #777);
-  background-color: rgba(127, 127, 127, 0.12);
-}
-
-table.table tbody td {
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--bs-border-color, #777);
-  vertical-align: top;
-}
-
-table.table-striped tbody tr:nth-child(even) {
-  background-color: rgba(127, 127, 127, 0.06);
-}
-
-table.table .parametername {
-  font-family: monospace;
-  font-weight: 600;
-}
-
-table.table tbody tr:hover {
-  background-color: rgba(127, 127, 127, 0.12);
-}
-
 dl.parameters {
-    display: grid;
-    grid-template-columns: minmax(12rem, 35%) minmax(0, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     margin: 0 0 1rem;
     border: 1px solid var(--bs-border-color, #777);
     border-radius: 4px;
@@ -136,27 +102,23 @@ dl.parameters {
 }
 
 dl.parameters dt {
+    flex: 0 0 35%;
+    box-sizing: border-box;
     margin: 0;
     padding: 0.75rem;
     font-weight: 600;
     background-color: rgba(127, 127, 127, 0.12);
-    border-bottom: 1px solid var(--bs-border-color, #777);
+    border: 2px solid var(--bs-border-color, #777);
     overflow-wrap: anywhere;
 }
 
 dl.parameters dd {
+    flex: 1 1 65%;
+    box-sizing: border-box;
+    min-width: 0;
     margin: 0;
     padding: 0.75rem;
-    min-width: 0;
-    border-bottom: 1px solid var(--bs-border-color, #777);
-}
-
-dl.parameters dd p {
-    margin-bottom: 0;
-}
-
-dl.parameters dt code {
-    font-weight: 600;
+    border: 2px solid var(--bs-border-color, #777);
 }
 
 dl.parameters dt a.xref,
@@ -168,9 +130,4 @@ dl.parameters dt a,
 dl.parameters dt span,
 dl.parameters dt code {
     white-space: normal;
-}
-
-dl.parameters dt:nth-last-of-type(1),
-dl.parameters dd:last-of-type {
-    border-bottom: none;
 }
