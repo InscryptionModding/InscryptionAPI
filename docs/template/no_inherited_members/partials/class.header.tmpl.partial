@@ -67,27 +67,31 @@
   {{__global.parameters}}
 </h5>
 
-<dl class="parameters three-column">
-  <div class="dl-header">
-    <span>{{__global.name}}</span>
-    <span>{{__global.type}}</span>
-    <span>{{__global.description}}</span>
-  </div>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>{{__global.type}}</th>
+      <th>{{__global.name}}</th>
+      <th>{{__global.description}}</th>
+    </tr>
+  </thead>
 
-  {{#syntax.parameters}}
-  <div class="dl-row">
-    <dt>
-      <span class="parametername">{{{id}}}</span>
-    </dt>
-    <dd>
-      <span class="parameter-type">{{{type.specName.0.value}}}</span>
-    </dd>
-    <dd>
-      {{{description}}}
-    </dd>
-  </div>
-  {{/syntax.parameters}}
-</dl>
+  <tbody>
+{{/syntax.parameters.0}}
+
+{{#syntax.parameters}}
+    <tr>
+      <td>{{{type.specName.0.value}}}</td>
+      <td>
+        <span class="parametername">{{{id}}}</span>
+      </td>
+      <td>{{{description}}}</td>
+    </tr>
+{{/syntax.parameters}}
+
+{{#syntax.parameters.0}}
+  </tbody>
+</table>
 {{/syntax.parameters.0}}
 
 {{#syntax.return}}
@@ -95,21 +99,21 @@
   {{__global.returns}}
 </h5>
 
-<dl class="parameters two-column">
-  <div class="dl-header">
-    <span>{{__global.type}}</span>
-    <span>{{__global.description}}</span>
-  </div>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>{{__global.type}}</th>
+      <th>{{__global.description}}</th>
+    </tr>
+  </thead>
 
-  <div class="dl-row">
-    <dt>
-      <span class="parameter-type">{{{type.specName.0.value}}}</span>
-    </dt>
-    <dd>
-      {{{description}}}
-    </dd>
-  </div>
-</dl>
+  <tbody>
+    <tr>
+      <td>{{{type.specName.0.value}}}</td>
+      <td>{{{description}}}</td>
+    </tr>
+  </tbody>
+</table>
 {{/syntax.return}}
 
 {{#syntax.typeParameters.0}}
@@ -117,23 +121,29 @@
   {{__global.typeParameters}}
 </h5>
 
-<dl class="parameters two-column">
-  <div class="dl-header">
-    <span>{{__global.name}}</span>
-    <span>{{__global.description}}</span>
-  </div>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>{{__global.name}}</th>
+      <th>{{__global.description}}</th>
+    </tr>
+  </thead>
 
-  {{#syntax.typeParameters}}
-  <div class="dl-row">
-    <dt>
-      <span class="parametername">{{{id}}}</span>
-    </dt>
-    <dd>
-      {{{description}}}
-    </dd>
-  </div>
-  {{/syntax.typeParameters}}
-</dl>
+  <tbody>
+{{/syntax.typeParameters.0}}
+
+{{#syntax.typeParameters}}
+    <tr>
+      <td>
+        <span class="parametername">{{{id}}}</span>
+      </td>
+      <td>{{{description}}}</td>
+    </tr>
+{{/syntax.typeParameters}}
+
+{{#syntax.typeParameters.0}}
+  </tbody>
+</table>
 {{/syntax.typeParameters.0}}
 
 {{#remarks}}
