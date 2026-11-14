@@ -19,16 +19,6 @@
             ],
             "dest": "community",
             "filter": "filter.yml"
-        },
-        {
-            "src": [
-                {
-                    "files": ["APIPatcher/APIPatcher.csproj"],
-                    "src": "../"
-                }
-            ],
-            "dest": "apipatcher",
-            "filter": "filter.yml"
         }
     ],
     "build": {
@@ -50,9 +40,6 @@
             },
             {
                 "files": ["community/**.yml", "community/index.md"]
-            },
-            {
-                "files": ["apipatcher/**.yml", "apipatcher/index.md"]
             },
             {
                 "files": ["wiki/toc.yml", "wiki/**.md"]

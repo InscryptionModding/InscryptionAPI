@@ -6,9 +6,6 @@
 - name: Inscryption API Documentation
   href: api/
   homepage: api/index.md
-- name: Community Patch Documentation
+- name: Inscryption Community Patch Documentation
   href: community/
   homepage: community/index.md
-- name: APIPatcher Documentation
-  href: apipatcher/
-  homepage: apipatcher/index.md
