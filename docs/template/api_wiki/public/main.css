@@ -94,40 +94,69 @@ body > footer, body[data-layout="landing"] > footer {
 
 dl.parameters {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 0 0 1rem;
     border: 1px solid var(--bs-border-color, #777);
     border-radius: 4px;
     overflow: hidden;
 }
 
-dl.parameters dt {
-    flex: 0 0 35%;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0.75rem;
-    font-weight: 600;
-    background-color: rgba(127, 127, 127, 0.12);
-    border: 2px solid var(--bs-border-color, #777);
-    overflow-wrap: anywhere;
+dl.parameters .dl-header,
+dl.parameters .dl-row {
+    display: grid;
+    align-items: stretch;
 }
 
-dl.parameters dd {
-    flex: 1 1 65%;
-    box-sizing: border-box;
+dl.parameters.three-column .dl-header,
+dl.parameters.three-column .dl-row {
+    grid-template-columns: minmax(10rem, 20%) minmax(12rem, 25%) minmax(0, 1fr);
+}
+
+dl.parameters.two-column .dl-header,
+dl.parameters.two-column .dl-row {
+    grid-template-columns: minmax(10rem, 30%) minmax(0, 1fr);
+}
+
+dl.parameters .dl-header {
+    font-weight: bold;
+    border-bottom: 1px solid var(--bs-border-color, #777);
+    background: var(--bs-tertiary-bg, #eee);
+}
+
+dl.parameters .dl-header > span,
+dl.parameters .dl-row > dt,
+dl.parameters .dl-row > dd {
     min-width: 0;
     margin: 0;
-    padding: 0.75rem;
-    border: 2px solid var(--bs-border-color, #777);
+    padding: 0.5rem 0.75rem;
 }
 
-dl.parameters dt a.xref,
-dl.parameters dt span.xref {
+dl.parameters .dl-header > span:not(:last-child),
+dl.parameters .dl-row > *:not(:last-child) {
+    border-right: 1px solid var(--bs-border-color, #777);
+}
+
+dl.parameters .dl-row {
+    border-bottom: 1px solid var(--bs-border-color, #777);
+}
+
+dl.parameters .dl-row:last-child {
+    border-bottom: 0;
+}
+
+dl.parameters .dl-row:nth-child(even) {
+    background: var(--bs-secondary-bg, #f8f8f8);
+}
+
+dl.parameters .dl-row > dd {
     overflow-wrap: anywhere;
 }
 
-dl.parameters dt a,
-dl.parameters dt span,
-dl.parameters dt code {
-    white-space: normal;
+dl.parameters .parameter-type {
+    overflow-wrap: anywhere;
+}
+
+dl.parameters .dl-header > span {
+    display: flex;
+    align-items: center;
 }
