@@ -3,12 +3,21 @@
         {
             "src": [
                 {
-                    "files": ["**/*.csproj"],
-                    "exclude": ["**/bin/**", "**/obj/**"],
+                    "files": ["InscryptionAPI/InscryptionAPI.csproj"],
                     "src": "../"
                 }
             ],
             "dest": "api",
+            "filter": "filter.yml"
+        },
+        {
+            "src": [
+                {
+                    "files": ["InscryptionCommunityPatch/InscryptionCommunityPatch.csproj"],
+                    "src": "../"
+                }
+            ],
+            "dest": "community",
             "filter": "filter.yml"
         }
     ],
@@ -18,16 +27,29 @@
                 "files": ["README.md"]
             },
             {
-                "files": ["LICENSE"],
+                "files": ["LICENSE.md"],
                 "src": "../"
             },
             {
                 "files": ["images/**", "logo.svg", "favicon.ico"]
+            },
+            {
+                "files": ["**"],
+                "src": "../InscryptionAPI/Assets",
+                "dest": "resources/api/assets"
+            },
+            {
+                "files": ["**"],
+                "src": "../InscryptionCommunityPatch/Assets",
+                "dest": "resources/community/assets"
             }
         ],
         "content": [
             {
                 "files": ["api/**.yml", "api/index.md"]
+            },
+            {
+                "files": ["community/**.yml", "community/index.md"]
             },
             {
                 "files": ["wiki/toc.yml", "wiki/**.md"]
@@ -43,7 +65,7 @@
         ],
         "globalMetadata": {
             "_appTitle": "InscryptionAPI",
-            "_appName": "Inscryption Modding API",
+            "_appName": "Inscryption Modding Wiki",
             "_appLogoPath": "images/logo.svg",
             "_appFaviconPath": "images/favicon.ico",
 	        "_disableBreadcrumb": true, 
@@ -65,8 +87,7 @@
         "template": [
             "default",
             "modern",
-            "template/darkfx",
-            "template/no_inherited_members"
+            "template/api_wiki"
         ]
     }
 }
