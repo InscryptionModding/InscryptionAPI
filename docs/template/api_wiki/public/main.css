@@ -24,10 +24,6 @@
     --bs-gutter-x: 5rem;
 }
 
-:root, [data-bs-theme="light"] {
-    --bs-body-line-height: null;
-}
-
 body[data-yaml-mime="ManagedReference"] article h2.section, body[data-yaml-mime="ApiPage"] article h2.section {
     margin-top: 1rem;
 }
@@ -77,7 +73,7 @@ body > footer, body[data-layout="landing"] > footer {
 
 .inheritance-level {
   line-height: 1.4;
-  padding-left: 0;
+  padding-left: calc(var(--inheritance-level, 0) * 1.25rem);
 }
 
 .inheritance-level::before {
@@ -85,21 +81,14 @@ body > footer, body[data-layout="landing"] > footer {
   opacity: 0.75;
 }
 
-.inheritance-level.level0 { padding-left: 0; }
-.inheritance-level.level1 { padding-left: 1.25rem; }
-.inheritance-level.level2 { padding-left: 2.5rem; }
-.inheritance-level.level3 { padding-left: 3.75rem; }
-.inheritance-level.level4 { padding-left: 5rem; }
-.inheritance-level.level5 { padding-left: 6.25rem; }
-
-.api-parameters, .api-returns {
+.api-parameters, .api-returns, .api-type-parameters, .api-exceptions {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
 }
 
-.api-parameters th, .api-returns th, .api-type-parameters th,
-.api-parameters td, .api-returns td, .api-type-parameters td {
+.api-parameters th, .api-returns th, .api-type-parameters th, .api-exceptions th,
+.api-parameters td, .api-returns td, .api-type-parameters td, .api-exceptions td {
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--bs-border-color, #444);
   text-align: left;
