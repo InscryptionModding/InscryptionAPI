@@ -129,7 +129,7 @@
 {{/fieldValue}}
 
 {{#propertyValue}}
-<h4 class="section">{{__global.propertyValue}}</h4>
+<h4 class="section">{{__global.returns}}</h4>
 
 <table class="api-returns">
   <thead>
