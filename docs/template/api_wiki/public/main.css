@@ -110,3 +110,8 @@ h1, .h1 {
     border-bottom: 1px solid currentColor;
     padding-bottom: 0.35rem;
 }
+
+h3, .h3 {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.35rem;
+}
