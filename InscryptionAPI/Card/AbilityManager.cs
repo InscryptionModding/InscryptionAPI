@@ -175,25 +175,25 @@ public static class AbilityManager
     /// </summary>
     /// <remarks>
     /// There are two primary use cases for this hook:
-    /// 
+    /// <br/><br/>
     /// - Making changes to abilities that may be added after your plugin initializes
     /// - Making context-aware changes to abilities
-    /// 
+    /// <br/><br/>
     /// The way this operates is as follows:
-    /// 
+    /// <br/><br/>
     /// 1. The <see cref="AbilityManager"/> makes a copy of all <see cref="FullAbility"/> objects. Note that unlike the similar code in CardManager, this is actually a *deep* copy of the AbilityInfo.
     /// 2. The code in <see cref="ModifyAbilityList"/> is executed on the copy of those abilities.
     /// 3. The modified list becomes the game's new official list of abilities.
-    /// 
+    /// <br/><br/>
     /// The reason the abilities are cloned before processing is so that you can make any change to them you wish
     /// without affecting the original ability. This means that you do not need to try to track changes or remember
     /// what the original version of the ability looked like before you started changing it; the next time
     /// <see cref="SyncAbilityList"/> is called, all changes will be reverted
     /// and then re-applied.
-    /// 
+    /// <br/><br/>
     /// To use this, you need to add a delegate that accepts the current list of all abilities, then returns
     /// that same list back.
-    /// 
+    /// <br/><br/>
     /// <code>
     /// AbilityManager.ModifyAbilityList += delegate(List&lt;FullAbility&gt; abilities)
     /// {
@@ -214,7 +214,8 @@ public static class AbilityManager
     /// <summary>
     /// Resynchronizes the ablity list.
     /// </summary>
-    /// <remarks>Most importantly, this re-executes all custom code that was added to the <see cref="ModifyAbilityList"/>
+    /// <remarks>
+    /// Most importantly, this re-executes all custom code that was added to the <see cref="ModifyAbilityList"/>
     /// event. If you are doing any sort of context-aware processing of the ability list, you may need to manually
     /// call this method in order to make sure that your code executes correctly. However, this automatically gets called
     /// every time that the game transitions from either the main menu into the base game, or whenever a new run is 
