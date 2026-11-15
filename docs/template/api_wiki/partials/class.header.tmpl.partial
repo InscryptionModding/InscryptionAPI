@@ -66,6 +66,7 @@
 <h5 class="parameters">
   {{__global.parameters}}
 </h5>
+<p>The following are all of the parameters belonging to this Class.</p>
 
 <table class="api-parameters">
   <thead>
@@ -107,6 +108,8 @@
   {{__global.returns}}
 </h5>
 
+<p>The following are all of the returns belonging to this Class.</p>
+
 <table class="api-returns">
   <thead>
     <tr>
@@ -129,6 +132,8 @@
 <h5 class="typeParameters">
   {{__global.typeParameters}}
 </h5>
+
+<p>The following are all of the type parameters belonging to this Class.</p>
 
 <table class="api-type-parameters">
   <thead>

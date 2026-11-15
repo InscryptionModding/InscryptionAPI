@@ -29,6 +29,7 @@
 
 {{#syntax.parameters.0}}
 <h4 class="section">{{__global.parameters}}</h4>
+<p>The following are all of the parameters belonging to this Class Member.</p>
 
 <table class="api-parameters">
   <thead>
@@ -67,6 +68,7 @@
 {{#isMethod}}
 {{#syntax.return}}
 <h4 class="section">{{__global.returns}}</h4>
+<p>The following are all of the returns belonging to this Class Member.</p>
 
 <table class="api-returns">
   <thead>
@@ -88,6 +90,7 @@
 
 {{#syntax.typeParameters.0}}
 <h4 class="section">{{__global.typeParameters}}</h4>
+<p>The following are all of the type parameters belonging to this Class Member.</p>
 
 <table class="api-type-parameters">
   <thead>
@@ -117,6 +120,7 @@
 {{#inEnum}}
 {{#fieldValue}}
 <h4 class="section">{{__global.fieldValue}}</h4>
+<p>The following are all of the fields belonging to this Class Member.</p>
 
 <table class="api-returns">
   <thead>
@@ -137,7 +141,8 @@
 {{/inEnum}}
 
 {{#propertyValue}}
-<h4 class="section">{{__global.returns}}</h4>
+<h4 class="section">{{__global.propertyValue}}</h4>
+<p>The following are all of the value types belonging to this Class Member.</p>
 
 <table class="api-returns">
   <thead>
@@ -158,6 +163,7 @@
 
 {{#eventType}}
 <h4 class="section">{{__global.eventType}}</h4>
+<p>The following are all of the event types belonging to this Class Member.</p>
 
 <table class="api-returns">
   <thead>
@@ -192,6 +198,7 @@
 
 {{#exceptions.0}}
 <h4 class="section">{{__global.exceptions}}</h4>
+<p>The following are all of the exceptions belonging to this Class Member.</p>
 
 <table class="api-exceptions">
   <thead>
