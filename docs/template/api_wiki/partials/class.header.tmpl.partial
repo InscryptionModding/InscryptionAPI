@@ -10,12 +10,20 @@
   {{#assemblies.0}}<dl><dt>{{__global.assembly}}</dt><dd>{{assemblies.0}}.dll</dd></dl>{{/assemblies.0}}
 </div>
 
-<div class="markdown summary">{{{summary}}}</div>
-<div class="markdown conceptual">{{{conceptual}}}</div>
+<div class="markdown summary">
+  <p>A brief description of this type and its intended purpose.</p>
+  {{{summary}}}
+</div>
+
+<div class="markdown conceptual">
+  <p>Additional conceptual information explaining this type, its behavior, and how it should be used.</p>
+  {{{conceptual}}}
+</div>
 
 {{#inClass}}
 <div class="inheritance">
   <h5>{{__global.inheritance}}</h5>
+  <p>Displays the inheritance hierarchy of this class, including its base types and any types derived from it.</p>
 
   <div class="inheritance-tree">
     {{#inheritance}}
@@ -40,6 +48,7 @@
 {{#implements.0}}
 <div class="implements">
   <h5>{{__global.implements}}</h5>
+  <p>Lists the interfaces implemented by this type, defining the contracts it supports.</p>
 {{/implements.0}}
 
 {{#implements}}
@@ -56,6 +65,7 @@
 <h5 id="{{id}}_syntax">
   {{__global.syntax}}
 </h5>
+<p>Displays the declaration syntax for this type, including its name, modifiers, and other relevant declarations.</p>
 
 <div class="codewrapper">
   <pre><code class="lang-{{_lang}} hljs">{{syntax.content.0.value}}</code></pre>
@@ -66,7 +76,7 @@
 <h5 class="parameters">
   {{__global.parameters}}
 </h5>
-<p>The following are all of the parameters belonging to this Class.</p>
+<p>Lists the parameters accepted by this type's declaration, including their names, types, and descriptions.</p>
 
 <table class="api-parameters">
   <thead>
@@ -98,17 +108,11 @@
 </table>
 {{/syntax.parameters.0}}
 
-<div style="display:none">
-    DEBUG: isMethod={{isMethod}}
-</div>
-
-{{#isMethod}}
 {{#syntax.return}}
 <h5 class="returns">
   {{__global.returns}}
 </h5>
-
-<p>The following are all of the returns belonging to this Class.</p>
+<p>Describes the value returned by this type's declaration, including its type and purpose.</p>
 
 <table class="api-returns">
   <thead>
@@ -126,14 +130,13 @@
   </tbody>
 </table>
 {{/syntax.return}}
-{{/isMethod}}
 
 {{#syntax.typeParameters.0}}
 <h5 class="typeParameters">
   {{__global.typeParameters}}
 </h5>
 
-<p>The following are all of the type parameters belonging to this Class.</p>
+<p>Lists the generic type parameters declared by this type, including their names and descriptions.</p>
 
 <table class="api-type-parameters">
   <thead>
@@ -163,6 +166,7 @@
 {{#inheritedMembers.0}}
 <details class="typelist inheritedMembers">
   <summary>{{__global.inheritedMembers}} (Click me to Expand)</summary>
+  <p>Lists the members inherited from this type's base classes, providing access to functionality defined elsewhere in the inheritance hierarchy.</p>
   <div class="typelist-content">
 {{/inheritedMembers.0}}
 
@@ -185,6 +189,7 @@
 {{#extensionMethods.0}}
 <details class="typelist extensionMethods">
   <summary>{{__global.extensionMethods}} (Click me to Expand)</summary>
+  <p>Lists the extension methods available for this type, providing additional functionality through methods defined outside the type itself.</p>
   <div class="typelist-content">
 {{/extensionMethods.0}}
 
@@ -207,6 +212,7 @@
 {{#isEnum}}
 {{#children}}
 <h2 id="{{id}}">{{>partials/classSubtitle}}</h2>
+<p>Lists the enumeration members defined by this type, including their declared values and descriptions.</p>
 
 <table class="api-fields">
   <thead>
@@ -236,6 +242,7 @@
 
 {{#example.0}}
 <h2 id="{{id}}_examples">{{__global.examples}}</h2>
+<p>Provides practical usage examples demonstrating how this type can be implemented or used.</p>
 {{/example.0}}
 {{#example}}
 {{{.}}}
@@ -243,5 +250,6 @@
 
 {{#remarks}}
 <h2 id="{{id}}_remarks">{{__global.remarks}}</h2>
+<p>Provides additional information, implementation details, and considerations relevant to this type.</p>
 <div class="markdown level0 remarks">{{{remarks}}}</div>
 {{/remarks}}
