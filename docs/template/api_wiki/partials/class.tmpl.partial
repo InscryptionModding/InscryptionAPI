@@ -108,6 +108,7 @@
 </table>
 {{/syntax.typeParameters.0}}
 
+{{#inEnum}}
 {{#fieldValue}}
 <h4 class="section">{{__global.fieldValue}}</h4>
 
@@ -127,6 +128,7 @@
   </tbody>
 </table>
 {{/fieldValue}}
+{{/inEnum}}
 
 {{#propertyValue}}
 <h4 class="section">{{__global.returns}}</h4>
