@@ -217,162 +217,164 @@
                         </form>
                         {{/_enableSearch}}
 
-                        <div class="dropdown font-settings-menu">
-                            <button
-                                class="btn btn-outline-secondary border-0"
-                                type="button"
-                                id="font-settings-toggle"
-                                data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside"
-                                aria-expanded="false"
-                                aria-label="Font settings"
-                                title="Font settings"
-                            >
-                                <i class="bi bi-gear"></i>
-                            </button>
+                        <div class="navbar-settings">
+                            <div class="dropdown font-settings-menu">
+                                <button
+                                    class="btn btn-outline-secondary border-0"
+                                    type="button"
+                                    id="font-settings-toggle"
+                                    data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside"
+                                    aria-expanded="false"
+                                    aria-label="Font settings"
+                                    title="Font settings"
+                                >
+                                    <i class="bi bi-gear"></i>
+                                </button>
 
-                            <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="font-settings-toggle">
-                                <h6 class="dropdown-header">Font Settings</h6>
+                                <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="font-settings-toggle">
+                                    <h6 class="dropdown-header">Font Settings</h6>
 
-                                <div class="mb-3">
-                                    <label for="document-font-selector" class="form-label">
-                                        Document Font
-                                    </label>
+                                    <div class="mb-3">
+                                        <label for="document-font-selector" class="form-label">
+                                            Document Font
+                                        </label>
 
-                                    <select id="document-font-selector" class="form-select">
-                                        <option value="dpcomic">DPComic</option>
-                                        <option value="comic-sans">Comic Sans (Dyslexia)</option>
-                                        <option value="sans-serif">Sans Serif</option>
-                                        <option value="monospace">Monospace</option>
-                                        <option value="system">System</option>
-                                        <option value="custom">Custom...</option>
-                                    </select>
+                                        <select id="document-font-selector" class="form-select">
+                                            <option value="dpcomic">DPComic</option>
+                                            <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                            <option value="sans-serif">Sans Serif</option>
+                                            <option value="monospace">Monospace</option>
+                                            <option value="system">System</option>
+                                            <option value="custom">Custom...</option>
+                                        </select>
 
-                                    <input
-                                        id="document-font-custom"
-                                        class="form-control mt-2"
-                                        type="text"
-                                        placeholder="Installed font name"
-                                        autocomplete="off"
-                                        hidden
-                                    >
-                                </div>
+                                        <input
+                                            id="document-font-custom"
+                                            class="form-control mt-2"
+                                            type="text"
+                                            placeholder="Installed font name"
+                                            autocomplete="off"
+                                            hidden
+                                        >
+                                    </div>
 
-                                <div>
-                                    <label for="code-font-selector" class="form-label">
-                                        Code Font
-                                    </label>
+                                    <div>
+                                        <label for="code-font-selector" class="form-label">
+                                            Code Font
+                                        </label>
 
-                                    <select id="code-font-selector" class="form-select">
-                                        <option value="dpcomic">DPComic</option>
-                                        <option value="comic-sans">Comic Sans (Dyslexia)</option>
-                                        <option value="sans-serif">Sans Serif</option>
-                                        <option value="monospace">Monospace</option>
-                                        <option value="system">System</option>
-                                        <option value="custom">Custom...</option>
-                                    </select>
+                                        <select id="code-font-selector" class="form-select">
+                                            <option value="dpcomic">DPComic</option>
+                                            <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                            <option value="sans-serif">Sans Serif</option>
+                                            <option value="monospace">Monospace</option>
+                                            <option value="system">System</option>
+                                            <option value="custom">Custom...</option>
+                                        </select>
 
-                                    <input
-                                        id="code-font-custom"
-                                        class="form-control mt-2"
-                                        type="text"
-                                        placeholder="Installed font name"
-                                        autocomplete="off"
-                                        hidden
-                                    >
-                                </div>
+                                        <input
+                                            id="code-font-custom"
+                                            class="form-control mt-2"
+                                            type="text"
+                                            placeholder="Installed font name"
+                                            autocomplete="off"
+                                            hidden
+                                        >
+                                    </div>
 
-                                <hr>
+                                    <hr>
 
-                                <h6 class="dropdown-header">Reading Layout</h6>
+                                    <h6 class="dropdown-header">Reading Layout</h6>
 
-                                <div class="mb-3">
-                                    <label for="document-font-size" class="form-label">
-                                        Document Font Size
-                                        <output id="document-font-size-value">20px</output>
-                                    </label>
+                                    <div class="mb-3">
+                                        <label for="document-font-size" class="form-label">
+                                            Document Font Size
+                                            <output id="document-font-size-value">20px</output>
+                                        </label>
 
-                                    <input
-                                        id="document-font-size"
-                                        class="form-range"
-                                        type="range"
-                                        min="12"
-                                        max="32"
-                                        step="1"
-                                        value="20"
-                                    >
-                                </div>
+                                        <input
+                                            id="document-font-size"
+                                            class="form-range"
+                                            type="range"
+                                            min="12"
+                                            max="32"
+                                            step="1"
+                                            value="20"
+                                        >
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="code-font-size" class="form-label">
-                                        Code Font Size
-                                        <output id="code-font-size-value">18px</output>
-                                    </label>
+                                    <div class="mb-3">
+                                        <label for="code-font-size" class="form-label">
+                                            Code Font Size
+                                            <output id="code-font-size-value">18px</output>
+                                        </label>
 
-                                    <input
-                                        id="code-font-size"
-                                        class="form-range"
-                                        type="range"
-                                        min="10"
-                                        max="28"
-                                        step="1"
-                                        value="18"
-                                    >
-                                </div>
+                                        <input
+                                            id="code-font-size"
+                                            class="form-range"
+                                            type="range"
+                                            min="10"
+                                            max="28"
+                                            step="1"
+                                            value="18"
+                                        >
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="document-line-height" class="form-label">
-                                        Document Line Height
-                                        <output id="document-line-height-value">1.5</output>
-                                    </label>
+                                    <div class="mb-3">
+                                        <label for="document-line-height" class="form-label">
+                                            Document Line Height
+                                            <output id="document-line-height-value">1.5</output>
+                                        </label>
 
-                                    <input
-                                        id="document-line-height"
-                                        class="form-range"
-                                        type="range"
-                                        min="1"
-                                        max="2.5"
-                                        step="0.1"
-                                        value="1.5"
-                                    >
-                                </div>
+                                        <input
+                                            id="document-line-height"
+                                            class="form-range"
+                                            type="range"
+                                            min="1"
+                                            max="2.5"
+                                            step="0.1"
+                                            value="1.5"
+                                        >
+                                    </div>
 
-                                <div>
-                                    <label for="code-line-height" class="form-label">
-                                        Code Line Height
-                                        <output id="code-line-height-value">1.4</output>
-                                    </label>
+                                    <div>
+                                        <label for="code-line-height" class="form-label">
+                                            Code Line Height
+                                            <output id="code-line-height-value">1.4</output>
+                                        </label>
 
-                                    <input
-                                        id="code-line-height"
-                                        class="form-range"
-                                        type="range"
-                                        min="1"
-                                        max="2.5"
-                                        step="0.1"
-                                        value="1.4"
-                                    >
-                                </div>
+                                        <input
+                                            id="code-line-height"
+                                            class="form-range"
+                                            type="range"
+                                            min="1"
+                                            max="2.5"
+                                            step="0.1"
+                                            value="1.4"
+                                        >
+                                    </div>
 
-                                <hr>
+                                    <hr>
 
-                                <h6 class="dropdown-header">Heading Layout</h6>
+                                    <h6 class="dropdown-header">Heading Layout</h6>
 
-                                <div class="mb-3">
-                                    <label for="heading-line-height" class="form-label">
-                                        Heading Line Height
-                                        <output id="heading-line-height-value">1.2</output>
-                                    </label>
+                                    <div class="mb-3">
+                                        <label for="heading-line-height" class="form-label">
+                                            Heading Line Height
+                                            <output id="heading-line-height-value">1.2</output>
+                                        </label>
 
-                                    <input
-                                        id="heading-line-height"
-                                        class="form-range"
-                                        type="range"
-                                        min="1"
-                                        max="2"
-                                        step="0.1"
-                                        value="1.2"
-                                    >
+                                        <input
+                                            id="heading-line-height"
+                                            class="form-range"
+                                            type="range"
+                                            min="1"
+                                            max="2"
+                                            step="0.1"
+                                            value="1.2"
+                                        >
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -654,6 +656,39 @@
                 input.addEventListener('input', () => {
                     applyValue(Number(input.value));
                 });
+            });
+        })();
+    </script>
+
+    <script>
+        (() => {
+            const navbar = document.getElementById('navbar');
+            const settings = navbar?.querySelector('.navbar-settings');
+    
+            if (!navbar || !settings) return;
+    
+            function moveThemeSwitcher() {
+                const themeSwitcher = navbar.querySelector('form.icons');
+    
+                if (themeSwitcher && !settings.contains(themeSwitcher)) {
+                    settings.appendChild(themeSwitcher);
+                    return true;
+                }
+    
+                return false;
+            }
+    
+            if (moveThemeSwitcher()) return;
+    
+            const observer = new MutationObserver(() => {
+                if (moveThemeSwitcher()) {
+                    observer.disconnect();
+                }
+            });
+    
+            observer.observe(navbar, {
+                childList: true,
+                subtree: true
             });
         })();
     </script>
