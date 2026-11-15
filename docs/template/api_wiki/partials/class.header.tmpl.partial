@@ -151,7 +151,7 @@
 
 {{#inheritedMembers.0}}
 <details class="typelist inheritedMembers">
-  <summary>{{__global.inheritedMembers}}</summary>
+  <summary>{{__global.inheritedMembers}} (Click me to Expand)</summary>
   <div class="typelist-content">
 {{/inheritedMembers.0}}
 
@@ -173,7 +173,7 @@
 
 {{#extensionMethods.0}}
 <details class="typelist extensionMethods">
-  <summary>{{__global.extensionMethods}}</summary>
+  <summary>{{__global.extensionMethods}} (Click me to Expand)</summary>
   <div class="typelist-content">
 {{/extensionMethods.0}}
 
