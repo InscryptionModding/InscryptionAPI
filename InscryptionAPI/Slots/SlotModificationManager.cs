@@ -22,6 +22,9 @@ public class SlotModificationManager : MonoBehaviour
     /// </summary>
     public enum ModificationType
     {
+        /// <summary>
+        /// Default state, represents a slot with no modification attached.
+        /// </summary>
         NoModification = 0
     }
 
@@ -69,6 +72,9 @@ public class SlotModificationManager : MonoBehaviour
         /// The slot modification whose rulebook entry is also used by this slot modification.
         /// </summary>
         public ModificationType SharedRulebook { get; set; } = ModificationType.NoModification;
+        /// <summary>
+        /// The metacategories that determine what rulebooks this slot modiciation's rulebook entry should appear in, if any.
+        /// </summary>
         public List<ModificationMetaCategory> MetaCategories = new();
 
         /// <summary>
@@ -101,6 +107,19 @@ public class SlotModificationManager : MonoBehaviour
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="Info"/>.
+        /// </summary>
+        /// <param name="name">The name of the slot modification.</param>
+        /// <param name="modGuid">The GUID of the mod adding the slot modification.</param>
+        /// <param name="texture"></param>
+        /// <param name="pixelSprites">The sprites used for the slot modification in each region in Act 2.</param>
+        /// <param name="modType">The ID of the slot modification.</param>
+        /// <param name="behaviour">A subclass of <see cref="SlotModificationBehaviour"/> that implements the logic for the slot modification.</param>
+        /// <param name="rulebookName">The name of the slot modification in the rulebook.</param>
+        /// <param name="rulebookDescription">The description of the slot modification in the rulebook.</param>
+        /// <param name="rulebookSprite">The sprite of the slot modification in the rulebook.</param>
+        /// <param name="categories">The metacategories for what game acts this slot modification's rulebook entry should appear in.</param>
         public Info(string name, string modGuid,
             Dictionary<CardTemple, Texture2D> texture,
             Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelSprites,
@@ -119,6 +138,11 @@ public class SlotModificationManager : MonoBehaviour
             this.RulebookSprite = rulebookSprite;
             this.MetaCategories = categories;
         }
+
+        /// <summary>
+        /// Creates a deep clone of this object.
+        /// </summary>
+        /// <returns>The newly created deep clone.</returns>
         public Info Clone()
         {
             return new(
@@ -150,8 +174,17 @@ public class SlotModificationManager : MonoBehaviour
         new("NoModification", InscryptionAPIPlugin.ModGUID, null, null, ModificationType.NoModification, null, null, new())
     };*/
 
+    /// <summary>
+    /// The current processed list of all <see cref="Info"/> objects in the game, including vanilla and mod-added slot modifications.
+    /// </summary>
     public static List<Info> AllModificationInfos { get; private set; } = new();
+    /// <summary>
+    /// The current processed list of all slot modifications in the game, including vanilla and mod-added slot modification.
+    /// </summary>
     public static List<ModificationType> AllModificationTypes { get; private set; } = new();
+    /// <summary>
+    /// A hook for modders to add custom code to modify the slot modification list dynamically.
+    /// </summary>
 
     public static event Func<List<Info>, List<Info>> ModifySlotModificationList;
 
@@ -163,6 +196,9 @@ public class SlotModificationManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Resynchronizes the slot modification list.
+    /// </summary>
     public static void SyncSlotModificationList()
     {
         AllModificationInfos = AllSlotModifications.Select(x => x.Clone()).ToList();
@@ -193,11 +229,11 @@ public class SlotModificationManager : MonoBehaviour
     /// <summary>
     /// Creates a new card slot modification.
     /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification.</param>
+    /// <param name="modificationName">Reference name for the slot modification.</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot.</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226).</param>
+    /// <param name="pixelBoardSlotSprites">The 2D scene slot textures.</param>
     /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
     public static ModificationType New(string modGuid, string modificationName, Type behaviour, Dictionary<CardTemple, Texture2D> slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
     {
@@ -212,11 +248,11 @@ public class SlotModificationManager : MonoBehaviour
     /// <summary>
     /// Creates a new card slot modification.
     /// </summary>
-    /// <param name="modGuid">Unique ID for the mod creating the slot modification</param>
-    /// <param name="modificationName">Reference name for the slot modification</param>
-    /// <param name="behaviour">The class that controls the behavior for the new slot</param>
-    /// <param name="slotTexture">The 3D scene slot texture (154x226)</param>
-    /// <param name="slotPixelTexture">The 2D scene slot texture</param>
+    /// <param name="modGuid">Unique ID for the mod creating the slot modification.</param>
+    /// <param name="modificationName">Reference name for the slot modification.</param>
+    /// <param name="behaviour">The class that controls the behavior for the new slot.</param>
+    /// <param name="slotTexture">The 3D scene slot texture (154x226).</param>
+    /// <param name="pixelBoardSlotSprites">The 2D scene slot textures.</param>
     /// <returns>Unique identifier for the modification type; used to set the slot modification in the future</returns>
     public static ModificationType New(string modGuid, string modificationName, Type behaviour, Texture2D slotTexture, Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> pixelBoardSlotSprites)
     {
@@ -357,11 +393,12 @@ public class SlotModificationManager : MonoBehaviour
     /// <summary>
     /// Converts a sheet of act 2 slot textures into a full collection of sprite sets. READ THE DOCUMENTATION.
     /// </summary>
-    /// <param name="texture"></param>
+    /// <param name="texture">Spritesheet of pixel board slot textures.</param>
     /// <remarks>This expects a texture with 8 slot textures in it, arranged in either 2 or 4 rows of 5. Each slot texture is 44x58.
     /// The first/bottom-most row contains all of the the normal slot sprites and the second row contains all of the hover sprites.
     /// If you want the opponent sprites to be different, you have to provide 4 rows; the third row contains normal opponent slot sprites and the fourth row contains hovered opponent slot sprites.
     /// Each row must go in this order from left to right: Nature, Undead, Tech, Wizard, Finale.
+    /// </remarks>
     public static Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> BuildAct2SpriteSetFromSpriteSheetTexture(Texture2D texture)
     {
         Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> retval = new();
@@ -377,9 +414,9 @@ public class SlotModificationManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Converts a single act 2 slot texture into a full collection of sprite sets by repeatedly recoloring the texture
+    /// Converts a single act 2 slot texture into a full collection of sprite sets by repeatedly recoloring the texture.
     /// </summary>
-    /// <param name="texture"></param>
+    /// <param name="texture">Spritesheet of pixel board slot textures.</param>
     public static Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> BuildAct2SpriteSetFromTexture(Texture2D texture)
     {
         Dictionary<PixelBoardSpriteSetter.BoardTheme, PixelBoardSpriteSetter.BoardThemeSpriteSet> retval = new();
@@ -455,13 +492,25 @@ public class SlotModificationManager : MonoBehaviour
 
     /// <summary>
     /// Used to determine what Acts a modification's rulebook entry should appear in.
-    /// Values correspond to specific AbilityMetaCategory values.
+    /// Values of each enum correspond to specific <see cref="AbilityMetaCategory"/> values, allowing one-way conversion.
     /// </summary>
     public enum ModificationMetaCategory
     {
+        /// <summary>
+        /// Should appear in Act 1's rulebook.
+        /// </summary>
         Part1Rulebook = 0,
+        /// <summary>
+        /// Should appear in Act 3's rulebook.
+        /// </summary>
         Part3Rulebook = 2,
+        /// <summary>
+        /// Should appear in Grimora's rulebook.
+        /// </summary>
         GrimoraRulebook = 5,
+        /// <summary>
+        /// Should appear in Magnificus's rulebook.
+        /// </summary>
         MagnificusRulebook = 6
     }
 
@@ -561,6 +610,9 @@ public class SlotModificationManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Prefix header of page ids for slot modiciations.
+    /// </summary>
     public const string SLOT_PAGEID = "SlotModification_";
     private static Vector3 PART_3_SCALE = new(0.7f, 0.7f, 1f);
 
