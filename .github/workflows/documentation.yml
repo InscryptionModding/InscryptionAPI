@@ -44,7 +44,7 @@ jobs:
                     '.build.globalMetadata._appBaseUrl = $base' \
                     docs/docfx.json > docs/docfx.generated.json
 
-                  ./docfx/docfx docs/docfx.generated.json --exportViewModel
+                  ./docfx/docfx build docs/docfx.generated.json --exportViewModel --viewModelOutputFolder docs/_viewmodels
 
                   rm docs/docfx.generated.json
 
