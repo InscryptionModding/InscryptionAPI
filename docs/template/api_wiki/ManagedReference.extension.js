@@ -1,5 +1,4 @@
-
-exports.preTransform = function (model) {
+exports.postTransform = function (model) {
     setMemberFlags(model);
     return model;
 };
