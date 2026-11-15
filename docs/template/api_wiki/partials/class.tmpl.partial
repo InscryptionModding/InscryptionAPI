@@ -60,6 +60,10 @@
 </table>
 {{/syntax.parameters.0}}
 
+<div style="display:none">
+    DEBUG: isMethod={{isMethod}}
+</div>
+
 {{#isMethod}}
 {{#syntax.return}}
 <h4 class="section">{{__global.returns}}</h4>

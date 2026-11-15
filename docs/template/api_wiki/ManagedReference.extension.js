@@ -1,5 +1,9 @@
 exports.postTransform = function (model) {
+    console.log("ManagedReference.extension.js EXECUTED");
+    console.log("Root model: " + JSON.stringify(model));
+
     setMemberFlags(model);
+
     return model;
 };
 
