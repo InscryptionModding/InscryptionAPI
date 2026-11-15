@@ -60,7 +60,7 @@
 </table>
 {{/syntax.parameters.0}}
 
-{{#inMethod}}
+{{#isMethod}}
 {{#syntax.return}}
 <h4 class="section">{{__global.returns}}</h4>
 
@@ -80,7 +80,7 @@
   </tbody>
 </table>
 {{/syntax.return}}
-{{/inMethod}}
+{{/isMethod}}
 
 {{#syntax.typeParameters.0}}
 <h4 class="section">{{__global.typeParameters}}</h4>
