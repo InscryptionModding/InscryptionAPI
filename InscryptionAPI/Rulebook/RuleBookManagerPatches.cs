@@ -13,9 +13,15 @@ using static InscryptionAPI.RuleBook.RuleBookManager;
 
 namespace InscryptionAPI.RuleBook;
 
+/// <summary>
+/// Patcher class for making custom rulebook pages work.
+/// </summary>
 [HarmonyPatch]
 public class RuleBookManagerPatches
 {
+    /// <summary>
+    /// THe prefix string for handling API-created <c>pageId</c>s.
+    /// </summary>
     public const string API_ID = "[API_";
 
     [HarmonyPatch(typeof(RuleBookInfo), "ConstructPageData", new Type[] { typeof(AbilityMetaCategory) })]
