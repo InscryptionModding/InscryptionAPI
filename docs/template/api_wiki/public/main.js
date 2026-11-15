@@ -15,3 +15,7 @@ if (docUrl.includes('/community/')) {
 if (docUrl.includes('/wiki/')) {
     document.documentElement.classList.add('wiki-documentation');
 }
+
+if (docUrl.includes('/apiSpec/')) {
+    document.documentElement.classList.add('apispec-documentation');
+}
