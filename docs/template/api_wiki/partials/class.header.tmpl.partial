@@ -150,43 +150,47 @@
 {{/syntax.typeParameters.0}}
 
 {{#inheritedMembers.0}}
-<dl class="typelist inheritedMembers">
-  <dt>{{__global.inheritedMembers}}</dt>
-  <dd>
+<details class="typelist inheritedMembers">
+  <summary>{{__global.inheritedMembers}}</summary>
+  <div class="typelist-content">
 {{/inheritedMembers.0}}
+
 {{#inheritedMembers}}
-  <div>
-  {{#definition}}
-    <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  {{^definition}}
-    <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  </div>
+    <div>
+    {{#definition}}
+      <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
+    {{/definition}}
+    {{^definition}}
+      <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
+    {{/definition}}
+    </div>
 {{/inheritedMembers}}
+
 {{#inheritedMembers.0}}
-</dd>
-</dl>
+  </div>
+</details>
 {{/inheritedMembers.0}}
 
 {{#extensionMethods.0}}
-<dl class="typelist extensionMethods">
-  <dt>{{__global.extensionMethods}}</dt>
-  <dd>
+<details class="typelist extensionMethods">
+  <summary>{{__global.extensionMethods}}</summary>
+  <div class="typelist-content">
 {{/extensionMethods.0}}
+
 {{#extensionMethods}}
-<div>
-  {{#definition}}
-    <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
-  {{/definition}}
-  {{^definition}}
-    <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
-  {{/definition}}
-</div>
+    <div>
+    {{#definition}}
+      <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
+    {{/definition}}
+    {{^definition}}
+      <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
+    {{/definition}}
+    </div>
 {{/extensionMethods}}
+
 {{#extensionMethods.0}}
-</dd>
-</dl>
+  </div>
+</details>
 {{/extensionMethods.0}}
 
 {{#isEnum}}

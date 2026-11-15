@@ -366,3 +366,26 @@ a.active {
     font-style: italic;
     text-decoration: underline;
 }
+
+.typelist details {
+    margin-bottom: 1rem;
+}
+
+.typelist summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    user-select: none;
+}
+
+.typelist summary:hover {
+    text-decoration: underline;
+}
+
+.typelist-content {
+    padding: 0.5rem 0 0.5rem 1.25rem;
+}
+
+.typelist-content > div {
+    padding: 0.2rem 0;
+}
