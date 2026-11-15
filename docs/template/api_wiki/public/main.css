@@ -149,6 +149,11 @@ body > footer, body[data-layout="landing"] > footer {
     --bs-navbar-brand-font-size: 1.5rem;
 }
 
+.navbar-toggle-label {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 #navbar {
     display: flex;
     align-items: center;
