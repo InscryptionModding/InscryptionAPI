@@ -22,6 +22,9 @@
         }
     ],
     "build": {
+        "postProcessors": [
+            "ExtractSearchIndex"
+        ],
         "resource": [
             {
                 "files": ["README.md"]
