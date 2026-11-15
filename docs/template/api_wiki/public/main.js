@@ -4,14 +4,14 @@ export default {
 
 const docUrl = document.querySelector('meta[name="docfx:docurl"]')?.content || '';
 
-if (docUrl.includes('/docs/api/')) {
+if (docUrl.includes('/api/')) {
     document.documentElement.classList.add('api-documentation');
 }
 
-if (docUrl.includes('/docs/community/')) {
+if (docUrl.includes('/community/')) {
     document.documentElement.classList.add('community-documentation');
 }
 
-if (docUrl.includes('/docs/wiki/')) {
+if (docUrl.includes('/wiki/')) {
     document.documentElement.classList.add('wiki-documentation');
 }
