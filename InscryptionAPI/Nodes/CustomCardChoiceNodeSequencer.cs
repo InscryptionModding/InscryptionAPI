@@ -36,7 +36,7 @@ public abstract class CustomCardChoiceNodeSequencer : CardChoicesSequencer, ICus
     /// </summary>
     public virtual Quaternion DeckPileRotationOffset => Quaternion.identity;
     /// <summary>
-    /// True if deck pile should inherit PositionOffset and RotationOffset together with DeckPilePositionOffset and DeckPileRotationOffset. Defaults to false.
+    /// True if deck pile should inherit <c>PositionOffset</c> and <c>RotationOffset</c> together with <c>DeckPilePositionOffset</c> and <c>DeckPileRotationOffset</c>. Defaults to false.
     /// </summary>
     public virtual bool DeckPileInheritsOffsets => false;
     /// <summary>
