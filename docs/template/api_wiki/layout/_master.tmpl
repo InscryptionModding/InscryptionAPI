@@ -232,7 +232,7 @@
                                     <i class="bi bi-gear"></i>
                                 </button>
 
-                                <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="font-settings-toggle">
+                                <div class="dropdown-menu dropdown-menu-end p-3 font-settings-panel" aria-labelledby="font-settings-toggle">
                                     <h6 class="dropdown-header">Font Settings</h6>
 
                                     <div class="mb-3">
@@ -663,30 +663,30 @@
     <script>
         (() => {
             const navbar = document.getElementById('navbar');
-    
+
             if (!navbar) return;
-    
+
             function moveFontSettings() {
                 const fontSettings = navbar.querySelector('.font-settings-menu');
                 const themeSwitcher = navbar.querySelector('form.icons');
-    
+
                 if (!fontSettings || !themeSwitcher) return false;
-    
+
                 if (fontSettings.parentElement !== themeSwitcher) {
                     themeSwitcher.appendChild(fontSettings);
                 }
-    
+
                 return true;
             }
-    
+
             if (moveFontSettings()) return;
-    
+
             const observer = new MutationObserver(() => {
                 if (moveFontSettings()) {
                     observer.disconnect();
                 }
             });
-    
+
             observer.observe(navbar, {
                 childList: true,
                 subtree: true
