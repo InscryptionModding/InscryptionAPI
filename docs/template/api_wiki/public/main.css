@@ -178,6 +178,12 @@ body > footer, body[data-layout="landing"] > footer {
     align-items: center;
 }
 
+#navbar .dropdown-menu {
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
 @media (max-width: 767.98px) {
     #navpanel,
     #navbar {
@@ -226,11 +232,6 @@ body > footer, body[data-layout="landing"] > footer {
 
     #navbar form.icons > .dropdown > .dropdown-menu.show {
         display: block;
-    }
-
-    #navbar form.icons > .dropdown > .dropdown-menu {
-        max-height: calc(100dvh - 6rem);
-        overflow-y: auto;
     }
 }
 
