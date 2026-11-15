@@ -6,20 +6,49 @@ using UnityEngine;
 
 namespace InscryptionAPI.Localizing;
 
-public static partial class LocalizationManager
-{
+/// <summary>
+/// Manager class that handles the creation of custom language translations for the game.
+/// </summary>
+public static partial class LocalizationManager {
+    /// <summary>
+    /// A utility class that holds all of the required information about a language in order to use it in-game.
+    /// </summary>
     public class CustomLanguage
     {
+        /// <summary>
+        /// GUID of the mod adding this language.
+        /// </summary>
         public string PluginGUID;
+        /// <summary>
+        /// Name of this language.
+        /// </summary>
         public string LanguageName;
+        /// <summary>
+        /// 
+        /// </summary>
         public string LanguageCode; // For translating
+        /// <summary>
+        /// The file path to the string table used to translate words to this language.
+        /// </summary>
         public string PathToStringTable;
+        /// <summary>
+        /// Unique ID for this language.
+        /// </summary>
         public Language Language;
     }
 
+    /// <summary>
+    /// A utility class that holds all of the required information about a translation in order to use it in-game.
+    /// </summary>
     public class CustomTranslation
     {
+        /// <summary>
+        /// GUID of the mod adding this language.
+        /// </summary>
         public string PluginGUID;
+        /// <summary>
+        /// The description object for this translation.
+        /// </summary>  
         public Localization.Translation Translation;
     }
 
@@ -30,23 +59,55 @@ public static partial class LocalizationManager
     }
 
     /// <summary>
-    /// The list of Fonts used in Inscryption.
+    /// The list of Fonts used in Inscryption that have font replacements.
     /// </summary>
-    public enum FontReplacementType
-    {
+    public enum FontReplacementType {
+        /// <summary>
+        /// Standard font. Replaced with Dagger Square.
+        /// </summary>
         Liberation,
+        /// <summary>
+        /// Font used in Kaycee's Mod. Replaced with Chinese Pixel.
+        /// </summary>
         Marksman,
+        /// <summary>
+        /// Font used in Act 2. Replaced with JPScript.
+        /// </summary>
         Misc3D,
+        /// <summary>
+        /// Font used in Act 3. Replaced with JP Sans.
+        /// </summary>
         DaggerSquare,
+        /// <summary>
+        /// Leshy's speech font. Replaced with Vicious Hunger.
+        /// </summary>
         HeavyWeight
     }
 
+    /// <summary>
+    /// Array of all language names.
+    /// </summary>
     public static string[] AllLanguageNames = new string[] { };
+    /// <summary>
+    /// Array of all language button texts (the text that appears when switching language).
+    /// </summary>
     public static string[] AllLanguageButtonText = new string[] { };
 
-    public static List<CustomLanguage> AllLanguages = new();
-    public static List<CustomLanguage> NewLanguages = new();
-    public static List<CustomTranslation> CustomTranslations = new();
+    /// <summary>
+    /// All processed languages, including vanilla and mod-added.
+    /// </summary>
+    public static List<CustomLanguage> AllLanguages => new();
+    /// <summary>
+    /// All processed mod-added languages.
+    /// </summary>
+    public static List<CustomLanguage> NewLanguages => new();
+    /// <summary>
+    /// All processed mod-added translations.
+    /// </summary>
+    public static List<CustomTranslation> CustomTranslations => new();
+    /// <summary>
+    /// A hook for modders to add custom code to modify a language dynamically.
+    /// </summary>
     public static Action<Language> OnLanguageLoaded = null;
 
     private static List<Language> AlreadyLoadedLanguages = new();
@@ -86,6 +147,16 @@ public static partial class LocalizationManager
         }
     }
 
+    /// <summary>
+    /// Adds and registers a new language with the API for use in-game.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding the language.</param>
+    /// <param name="languageName">The name of the language.</param>
+    /// <param name="code">The language code for the language (eg., "en" for English, "fr" for French).</param>
+    /// <param name="resetButtonText">The text to display when setting the game's language.</param>
+    /// <param name="stringTablePath">The path to the CSV file containing the language's translation data.</param>
+    /// <param name="fontReplacements">List of fonts to use for this language.</param>
+    /// <returns>The unique ID for the created language.</returns>
     public static Language NewLanguage(string pluginGUID, string languageName, string code, string resetButtonText, string stringTablePath = null, List<FontReplacement> fontReplacements = null)
     {
         Language language = GuidManager.GetEnumValue<Language>(pluginGUID, languageName);
@@ -113,6 +184,11 @@ public static partial class LocalizationManager
         return language;
     }
 
+    /// <summary>
+    /// Adds a new <see cref="FontReplacement"/> for the given language.
+    /// </summary>
+    /// <param name="language">The language to add font replacements to.</param>
+    /// <param name="replacement">The description object for the font replacements, containing information on what fonts to replace and what font to replace them with.</param>
     public static void AddFontReplacement(Language language, FontReplacement replacement)
     {
         if (FontReplacementData.instance == null)
@@ -140,6 +216,13 @@ public static partial class LocalizationManager
         replacements.fontReplacements.Add(replacement);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="font"></param>
+    /// <param name="tmpFont"></param>
+    /// <returns></returns>
     public static FontReplacement GetFontReplacementForFont(FontReplacementType type, Font font = null, TMP_FontAsset tmpFont = null)
     {
         FontReplacement replacement;
@@ -282,6 +365,11 @@ public static partial class LocalizationManager
         return customTranslation;
     }
 
+    /// <summary>
+    /// Adds and registers a custom translation to be used in-game.
+    /// </summary>
+    /// <param name="translation">Translation object to register.</param>
+    /// <returns>The same <see cref="CustomTranslation"/>.</returns>
     public static CustomTranslation Add(CustomTranslation translation)
     {
         CustomTranslations.Add(translation);
@@ -292,6 +380,12 @@ public static partial class LocalizationManager
         return translation;
     }
 
+    /// <summary>
+    /// Retrieves a <see cref="CustomTranslation"/> using the translation's English string or its ID.
+    /// </summary>
+    /// <param name="englishText">The English string for the translation.</param>
+    /// <param name="id">The translation's ID. Used if the translation can't be found using its English string.</param>
+    /// <returns>The found <see cref="CustomTranslation"/> or null if it can't be found.</returns>
     public static CustomTranslation Get(string englishText, string id)
     {
         CustomTranslation translation = null;
@@ -375,6 +469,9 @@ public static partial class LocalizationManager
         return Language.NUM_LANGUAGES;
     }
 
+    /// <summary>
+    /// Exports all localisations to a CSV spreadhseet in the API DLL's directory.
+    /// </summary>
     public static void ExportAllToCSV()
     {
         // Exports all localisation to a spreadsheet in the APIs directory
@@ -412,6 +509,9 @@ public static partial class LocalizationManager
         InscryptionAPIPlugin.Logger.LogInfo($"Exported .csv file to {path}");
     }
 
+    /// <summary>
+    /// Obsolete; use <see cref="Translate(string, string, string, string, Language)"/> instead.
+    /// </summary>
     [Obsolete("Use Translate() instead")]
     public static CustomTranslation New(string pluginGUID, string id, string englishString, string translatedString, Language language)
     {
