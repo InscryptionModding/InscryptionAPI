@@ -8,7 +8,7 @@ using UnityEngine;
 namespace InscryptionAPI.Ascension;
 
 /// <summary>
-/// This manager class handles the creation and management of mod-added starter decks.
+/// Manager class that handles the creation and management of mod-added starter decks.
 /// </summary>
 [HarmonyPatch]
 public static class StarterDeckManager {

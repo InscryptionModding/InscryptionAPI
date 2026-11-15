@@ -12,7 +12,7 @@ using static InscryptionAPI.Card.AbilityManager;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// This manager class handles the logic for shields.
+/// Manager class that handles the logic for shields.
 /// </summary>
 [HarmonyPatch]
 public static class ShieldManager

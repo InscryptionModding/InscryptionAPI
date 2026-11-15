@@ -7,12 +7,18 @@ using static DiskCardGame.EncounterBlueprintData;
 
 namespace InscryptionAPI.Encounters;
 
+/// <summary>
+/// Manager class that handles the creation and management of mod-added encounters.
+/// </summary>
 public static class EncounterManager
 {
     /// <summary>
     /// All of the vanilla game's encounters.
     /// </summary>
     public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data"));
+    /// <summary>
+    /// All of the mod-added encounters.
+    /// </summary>
     public static readonly ObservableCollection<EncounterBlueprintData> NewEncounters = new();
 
     /// <summary>

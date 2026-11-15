@@ -8,25 +8,63 @@ using static DiskCardGame.TextDisplayer;
 
 namespace InscryptionAPI.Dialogue;
 
+/// <summary>
+/// Manager class for handling custom dialogue.
+/// </summary>
 public static class DialogueManager
 {
+    /// <summary>
+    /// Utility class that associates a custom <see cref="DialogueEvent"/> with the GUID of the mod that added it.
+    /// </summary>
     public class Dialogue
     {
+        /// <summary>
+        /// The actual dialogue data.
+        /// </summary>
         public DialogueEvent DialogueEvent;
+        /// <summary>
+        /// GUID of the mod that added this dialogue.
+        /// </summary>
         public string PluginGUID;
     }
 
-    public class DialogueColor
-    {
+    /// <summary>
+    /// Utility class for custom colour codes. Used in dialogue to colour text.
+    /// </summary>
+    public class DialogueColor {
+        /// <summary>
+        /// The custom colour.
+        /// </summary>
         public Color Color;
+        /// <summary>
+        /// The dialogue code used to colour text.
+        /// </summary>
         public string ColorCode;
+        /// <summary>
+        /// GUID of the mod that added this colour.
+        /// </summary>
         public string PluginGUID;
     }
 
+    /// <summary>
+    /// All custom dialogue added through the API.
+    /// </summary>
     public static List<Dialogue> CustomDialogue = new();
+    /// <summary>
+    /// All custom dialogue colours added through the API.
+    /// </summary>
     public static List<DialogueColor> CustomDialogueColor = new();
+    /// <summary>
+    /// Dictionary that matches custom colour codes to the correct colour.
+    /// </summary>
     public static Dictionary<string, Color> ColorLookup = new();
 
+    /// <summary>
+    /// Adds a new <see cref="DialogueEvent"/> to the API.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="dialogueEvent">The <see cref="DialogueEvent"/> to add.</param>
+    /// <returns>A <see cref="Dialogue"/> object containing the event and associated GUID.</returns>
     public static Dialogue Add(string pluginGUID, DialogueEvent dialogueEvent)
     {
         Dialogue dialogue = new()
@@ -44,6 +82,35 @@ public static class DialogueManager
         return dialogue;
     }
 
+    /// <summary>
+    /// Adds a new colour code that can be used in dialogue events to colour text.
+    /// <br/><br/>
+    /// Colour codes are in the following format:<br/>
+    /// <c>[c:{code}]{dialogue}[c:]</c>
+    /// <br/><br/>
+    /// Vanilla codes are:<c>
+    /// <br/>dB     - dark blue
+    /// <br/>g2     - gold
+    /// <br/>G      - gold
+    /// <br/>bG     - bright gold
+    /// <br/>bB     - bright blue
+    /// <br/>g3     - blue
+    /// <br/>B      - blue
+    /// <br/>brnO   - brown orange
+    /// <br/>O      - orange
+    /// <br/>bR     - bright red
+    /// <br/>dlGr   - dark lime green
+    /// <br/>lGr    - lime green
+    /// <br/>g1     - bright lime green
+    /// <br/>blGr   - bright lime green
+    /// <br/>dSG    - dark seafoam green
+    /// <br/>bSG    - glow seafom green
+    /// <br/>gray   - 40% gray</c>
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this colour.</param>
+    /// <param name="code">The dialogue code for using this colour in text.</param>
+    /// <param name="color">The colour associated with the code.</param>
+    /// <returns>The new colour's data object.</returns>
     public static DialogueColor AddColor(string pluginGUID, string code, Color color)
     {
         DialogueColor data = new()
@@ -57,6 +124,16 @@ public static class DialogueManager
         return data;
     }
 
+    /// <summary>
+    /// Creates a custom <see cref="DialogueEvent"/> and registers it with the API so it can be used in-game.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="name">Name of this event.</param>
+    /// <param name="mainLines">The dialogue to play when this event plays.</param>
+    /// <param name="repeatLines">The dialogue to play when entering an already-introduced region.</param>
+    /// <param name="afterMaxRepeats">How this event should handle repeat plays after all repeat dialogue has been exhausted.</param>
+    /// <param name="defaultSpeaker">The speaker ID for this event. Controls the font and voice used.</param>
+    /// <returns>The new <see cref="DialogueEvent"/>.</returns>
     public static DialogueEvent GenerateEvent(string pluginGUID, string name, List<CustomLine> mainLines, List<List<CustomLine>> repeatLines = null, DialogueEvent.MaxRepeatsBehaviour afterMaxRepeats =
         DialogueEvent.MaxRepeatsBehaviour.RandomDefinedRepeat, DialogueEvent.Speaker defaultSpeaker = DialogueEvent.Speaker.Single)
     {
@@ -72,19 +149,53 @@ public static class DialogueManager
         return ev;
     }
 
+    /// <summary>
+    /// Creates a new <see cref="DialogueEvent"/> with the correct prefix needed to make it play when trading the given pelt type.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="peltData"><see cref="PeltManager.PeltData"/> of the pelt this event plays for.</param>
+    /// <param name="lines">The dialogue to play when this event plays.</param>
+    /// <param name="repeatLines">The dialogue to play when entering an already-introduced region.</param>
+    /// <returns>A <see cref="DialogueEvent"/> for the given pelt's trade dialogue.</returns>
     public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, PeltManager.PeltData peltData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
     {
         return GenerateTraderPeltsEvent(pluginGUID, peltData.peltTierName ?? PeltManager.GetTierNameFromData(peltData), lines, repeatLines);
     }
+
+    /// <summary>
+    /// Creates a new <see cref="DialogueEvent"/> with the correct prefix needed to make it play when trading the given pelt type.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="peltTierName">Name of the pelt this event plays for.</param>
+    /// <param name="lines">The dialogue to play when this event plays.</param>
+    /// <param name="repeatLines">The dialogue to play when entering an already-introduced region.</param>
+    /// <returns>A <see cref="DialogueEvent"/> for the given pelt's trade dialogue.</returns>
     public static DialogueEvent GenerateTraderPeltsEvent(string pluginGUID, string peltTierName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
     {
         return GenerateEvent(pluginGUID, "TraderPelts" + peltTierName, lines, repeatLines);
     }
 
+    /// <summary>
+    /// Creates a new <see cref="DialogueEvent"/> with the correct prefix needed to make it play when entering a new region.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="regionData"><see cref="RegionData"/> of the region this event is for.</param>
+    /// <param name="lines">The dialogue to play when this event plays.</param>
+    /// <param name="repeatLines">The dialogue to play when entering an already-introduced region.</param>
+    /// <returns>A <see cref="DialogueEvent"/> for the given region introduction.</returns>
     public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, RegionData regionData, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
     {
         return GenerateRegionIntroductionEvent(pluginGUID, regionData.name, lines, repeatLines);
     }
+
+    /// <summary>
+    /// Creates a new <see cref="DialogueEvent"/> with the correct prefix needed to make it play when entering a new region.
+    /// </summary>
+    /// <param name="pluginGUID">GUID of the mod adding this event.</param>
+    /// <param name="regionName">Name of the region this event is introducing.</param>
+    /// <param name="lines">The dialogue to play when this event plays.</param>
+    /// <param name="repeatLines">The dialogue to play when entering an already-introduced region.</param>
+    /// <returns>A <see cref="DialogueEvent"/> for the given region introduction.</returns>
     public static DialogueEvent GenerateRegionIntroductionEvent(string pluginGUID, string regionName, List<CustomLine> lines, List<List<CustomLine>> repeatLines = null)
     {
         return GenerateEvent(pluginGUID, "Region" + regionName, lines, repeatLines);
@@ -146,9 +257,9 @@ public static class DialogueManager
 
     #region Patches
     [HarmonyPatch(typeof(DialogueDataUtil), nameof(DialogueDataUtil.ReadDialogueData), new System.Type[] { })]
-    public class DialogueDataUtil_ReadDialogueData
+    private class DialogueDataUtil_ReadDialogueData
     {
-        public static void Postfix()
+        private static void Postfix()
         {
             List<string> ids = DialogueDataUtil.data.events.Select((a) => a.id).ToList();
 
@@ -164,9 +275,9 @@ public static class DialogueManager
     }
 
     [HarmonyPatch(typeof(DialogueParser), nameof(DialogueParser.GetColorFromCode), new System.Type[] { typeof(string), typeof(Color) })]
-    public class DialogueParser_GetColorFromCode
+    private class DialogueParser_GetColorFromCode
     {
-        public static bool Prefix(DialogueParser __instance, string code, Color defaultColor, ref Color __result)
+        private static bool Prefix(DialogueParser __instance, string code, Color defaultColor, ref Color __result)
         {
             string stringValue = DialogueParser.GetStringValue(code, "c");
             if (ColorLookup.TryGetValue(stringValue, out Color value))

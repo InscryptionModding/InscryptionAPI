@@ -15,7 +15,7 @@ using UnityEngine;
 namespace InscryptionAPI.Card;
 
 /// <summary>
-/// This manager class handles the creation and management of mod-added abilities (sigils).
+/// Manager class that handles the creation and management of mod-added abilities (sigils).
 /// </summary>
 [HarmonyPatch]
 public static class AbilityManager
@@ -293,7 +293,7 @@ public static class AbilityManager
     /// <param name="info">An instance of <see cref="AbilityInfo"/> describing the ability.</param>
     /// <param name="behavior">A subclass of <see cref="AbilityBehaviour"/> that implements the logic for the ability.</param>
     /// <param name="tex">The ability icon as a 49x49 texture.</param>
-    /// <returns>An instance of <see cref="FullAbility"/> containing all this ability's data..</returns>
+    /// <returns>An instance of <see cref="FullAbility"/> containing all this ability's data.</returns>
     /// <remarks>The actual unique identifier for the new ability will be found in the 'ability' field of 
     /// the returned <see cref="AbilityInfo"/> object. There is no way for the modder to create a specific ability ID; it will
     /// always be assigned by the API.
