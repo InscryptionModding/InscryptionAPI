@@ -663,25 +663,26 @@
     <script>
         (() => {
             const navbar = document.getElementById('navbar');
-            const settings = navbar?.querySelector('.navbar-settings');
     
-            if (!navbar || !settings) return;
+            if (!navbar) return;
     
-            function moveThemeSwitcher() {
+            function moveFontSettings() {
+                const fontSettings = navbar.querySelector('.font-settings-menu');
                 const themeSwitcher = navbar.querySelector('form.icons');
     
-                if (themeSwitcher && !settings.contains(themeSwitcher)) {
-                    settings.appendChild(themeSwitcher);
-                    return true;
+                if (!fontSettings || !themeSwitcher) return false;
+    
+                if (fontSettings.parentElement !== themeSwitcher) {
+                    themeSwitcher.appendChild(fontSettings);
                 }
     
-                return false;
+                return true;
             }
     
-            if (moveThemeSwitcher()) return;
+            if (moveFontSettings()) return;
     
             const observer = new MutationObserver(() => {
-                if (moveThemeSwitcher()) {
+                if (moveFontSettings()) {
                     observer.disconnect();
                 }
             });

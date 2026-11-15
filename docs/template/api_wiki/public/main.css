@@ -165,21 +165,17 @@ body > footer, body[data-layout="landing"] > footer {
     flex: 0 0 auto;
 }
 
-.navbar-settings {
+#navbar form.icons {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     flex: 0 0 auto;
     gap: 0.25rem;
-    margin-left: auto;
+    margin: 0;
 }
 
-.navbar-settings > .dropdown,
-.navbar-settings form.icons,
-.navbar-settings form.icons .dropdown {
+#navbar form.icons .dropdown {
     display: flex;
     align-items: center;
-    margin: 0;
 }
 
 @media (max-width: 767.98px) {
@@ -199,12 +195,12 @@ body > footer, body[data-layout="landing"] > footer {
         width: 100%;
     }
 
-    .navbar-settings {
+    #navbar form.icons {
         align-self: flex-end;
         margin-left: auto;
     }
 
-    .navbar-settings .dropdown-menu {
+    #navbar .dropdown-menu {
         max-width: calc(100vw - 1.5rem);
         max-height: calc(100dvh - 6rem);
         overflow-y: auto;
