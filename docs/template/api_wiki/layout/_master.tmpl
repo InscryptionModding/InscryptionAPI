@@ -1,162 +1,347 @@
 {{!Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this file to you under the MIT license.}}
-{{!include(/^public/.*/)}}
+{{!include(/^public/.\*/)}}
 {{!include(favicon.ico)}}
 {{!include(logo.svg)}}
 <!DOCTYPE html>
 <html {{#_lang}}lang="{{_lang}}"{{/_lang}}>
-  <head>
+<head>
     <meta charset="utf-8">
+
     {{#redirect_url}}
-      <meta http-equiv="refresh" content="0;URL='{{redirect_url}}'">
+    <meta http-equiv="refresh" content="0;URL='{{redirect_url}}'">
     {{/redirect_url}}
+
     {{^redirect_url}}
-      <title>{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
-      {{#_description}}<meta name="description" content="{{_description}}">{{/_description}}
-      {{#description}}<meta name="description" content="{{description}}">{{/description}}
+    <title>{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}} {{#_appTitle}}| {{_appTitle}} {{/_appTitle}}">
 
-      <!-- Open Graph / Discord Embeds -->
-      <meta property="og:type" content="website">
-      <meta property="og:site_name" content="{{_appTitle}}">
-      <meta property="og:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}}">
-      {{#_description}}<meta property="og:description" content="{{_description}}">{{/_description}}
-      {{^_description}}{{#description}}<meta property="og:description" content="{{description}}">{{/description}}{{/_description}}
-      <meta property="og:image" content="{{_appBaseUrl}}DiscordIcon.png">
+    {{#_description}}
+    <meta name="description" content="{{_description}}">
+    {{/_description}}
 
-      <!-- Twitter / Large Preview -->
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}}">
-      {{#_description}}<meta name="twitter:description" content="{{_description}}">{{/_description}}
-      {{^_description}}{{#description}}<meta name="twitter:description" content="{{description}}">{{/description}}{{/_description}}
-      <meta name="twitter:image" content="{{_appBaseUrl}}DiscordIcon.png">
+    {{#description}}
+    <meta name="description" content="{{description}}">
+    {{/description}}
 
-      <link rel="icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
-      <link rel="stylesheet" href="{{_rel}}public/docfx.min.css">
-      <link rel="stylesheet" href="{{_rel}}public/main.css">
-      <meta name="docfx:navrel" content="{{_navRel}}">
-      <meta name="docfx:tocrel" content="{{_tocRel}}">
-      {{#_noindex}}<meta name="searchOption" content="noindex">{{/_noindex}}
-      {{#_enableSearch}}<meta name="docfx:rel" content="{{_rel}}">{{/_enableSearch}}
-      {{#_disableNewTab}}<meta name="docfx:disablenewtab" content="true">{{/_disableNewTab}}
-      {{#_disableTocFilter}}<meta name="docfx:disabletocfilter" content="true">{{/_disableTocFilter}}
-      {{#docurl}}<meta name="docfx:docurl" content="{{docurl}}">{{/docurl}}
-      <meta name="loc:inThisArticle" content="{{__global.inThisArticle}}">
-      <meta name="loc:searchResultsCount" content="{{__global.searchResultsCount}}">
-      <meta name="loc:searchNoResults" content="{{__global.searchNoResults}}">
-      <meta name="loc:tocFilter" content="{{__global.tocFilter}}">
-      <meta name="loc:nextArticle" content="{{__global.nextArticle}}">
-      <meta name="loc:prevArticle" content="{{__global.prevArticle}}">
-      <meta name="loc:themeLight" content="{{__global.themeLight}}">
-      <meta name="loc:themeDark" content="{{__global.themeDark}}">
-      <meta name="loc:themeAuto" content="{{__global.themeAuto}}">
-      <meta name="loc:changeTheme" content="{{__global.changeTheme}}">
-      <meta name="loc:copy" content="{{__global.copy}}">
-      <meta name="loc:downloadPdf" content="{{__global.downloadPdf}}">
+    <!-- Open Graph / Discord Embeds -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{_appTitle}}">
+    <meta property="og:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}}">
 
-      <script type="module" src="./{{_rel}}public/docfx.min.js"></script>
+    {{#_description}}
+    <meta property="og:description" content="{{_description}}">
+    {{/_description}}
 
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
+    {{^_description}}
+        {{#description}}
+        <meta property="og:description" content="{{description}}">
+        {{/description}}
+    {{/_description}}
 
-      {{#_googleAnalyticsTagId}}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{_googleAnalyticsTagId}}"></script>
-      <script>
+    <meta property="og:image" content="{{_appBaseUrl}}DiscordIcon.png">
+
+    <!-- Twitter / Large Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{#title}}{{title}}{{/title}}{{^title}}{{>partials/title}}{{/title}}">
+
+    {{#_description}}
+    <meta name="twitter:description" content="{{_description}}">
+    {{/_description}}
+
+    {{^_description}}
+        {{#description}}
+        <meta name="twitter:description" content="{{description}}">
+        {{/description}}
+    {{/_description}}
+
+    <meta name="twitter:image" content="{{_appBaseUrl}}DiscordIcon.png">
+
+    <link rel="icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
+    <link rel="stylesheet" href="{{_rel}}public/docfx.min.css">
+    <link rel="stylesheet" href="{{_rel}}public/main.css">
+
+    <meta name="docfx:navrel" content="{{_navRel}}">
+    <meta name="docfx:tocrel" content="{{_tocRel}}">
+
+    {{#_noindex}}
+    <meta name="searchOption" content="noindex">
+    {{/_noindex}}
+
+    {{#_enableSearch}}
+    <meta name="docfx:rel" content="{{_rel}}">
+    {{/_enableSearch}}
+
+    {{#_disableNewTab}}
+    <meta name="docfx:disablenewtab" content="true">
+    {{/_disableNewTab}}
+
+    {{#_disableTocFilter}}
+    <meta name="docfx:disabletocfilter" content="true">
+    {{/_disableTocFilter}}
+
+    {{#docurl}}
+    <meta name="docfx:docurl" content="{{docurl}}">
+    {{/docurl}}
+
+    <meta name="loc:inThisArticle" content="{{__global.inThisArticle}}">
+    <meta name="loc:searchResultsCount" content="{{__global.searchResultsCount}}">
+    <meta name="loc:searchNoResults" content="{{__global.searchNoResults}}">
+    <meta name="loc:tocFilter" content="{{__global.tocFilter}}">
+    <meta name="loc:nextArticle" content="{{__global.nextArticle}}">
+    <meta name="loc:prevArticle" content="{{__global.prevArticle}}">
+    <meta name="loc:themeLight" content="{{__global.themeLight}}">
+    <meta name="loc:themeDark" content="{{__global.themeDark}}">
+    <meta name="loc:themeAuto" content="{{__global.themeAuto}}">
+    <meta name="loc:changeTheme" content="{{__global.changeTheme}}">
+    <meta name="loc:copy" content="{{__global.copy}}">
+    <meta name="loc:downloadPdf" content="{{__global.downloadPdf}}">
+
+    <script type="module" src="./{{_rel}}public/docfx.min.js"></script>
+
+    <script>
+        const theme = localStorage.getItem('theme') || 'auto';
+
+        document.documentElement.setAttribute(
+            'data-bs-theme',
+            theme === 'auto'
+                ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                : theme
+        );
+    </script>
+
+    <script>
+        const root = document.documentElement;
+
+        const availableFonts = [
+            'dpcomic',
+            'comic-sans',
+            'sans-serif',
+            'monospace',
+            'system',
+            'custom'
+        ];
+
+        const documentFont = localStorage.getItem('docfx-document-font') || 'dpcomic';
+        const codeFont = localStorage.getItem('docfx-code-font') || 'dpcomic';
+
+        root.setAttribute(
+            'data-document-font',
+            availableFonts.includes(documentFont) ? documentFont : 'dpcomic'
+        );
+
+        root.setAttribute(
+            'data-code-font',
+            availableFonts.includes(codeFont) ? codeFont : 'dpcomic'
+        );
+
+        function restoreCustomFont(type) {
+            const font = localStorage.getItem(`docfx-${type}-font-custom`);
+
+            if (font && font.trim()) {
+                root.style.setProperty(
+                    `--${type}-font`,
+                    `${JSON.stringify(font.trim())}, system-ui, sans-serif`
+                );
+            }
+        }
+
+        if (documentFont === 'custom') {
+            restoreCustomFont('document');
+        }
+
+        if (codeFont === 'custom') {
+            restoreCustomFont('code');
+        }
+    </script>
+
+    {{#_googleAnalyticsTagId}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{_googleAnalyticsTagId}}"></script>
+
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
         gtag('config', '{{_googleAnalyticsTagId}}');
-      </script>
-      {{/_googleAnalyticsTagId}}
+    </script>
+    {{/_googleAnalyticsTagId}}
     {{/redirect_url}}
-  </head>
+</head>
 
-  {{^redirect_url}}
-  <body class="tex2jax_ignore" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
+{{^redirect_url}}
+<body class="tex2jax_ignore" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
     <header class="bg-body border-bottom">
-      {{^_disableNavbar}}
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="{{_appLogoUrl}}{{^_appLogoUrl}}{{_rel}}index.html{{/_appLogoUrl}}">
-            <img id="logo" class="svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}" >
-            {{_appName}}
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              {{#_enableSearch}}
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="{{__global.search}}" autocomplete="off" aria-label="Search">
-              </form>
-              {{/_enableSearch}}
+        {{^_disableNavbar}}
+        <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+            <div class="container-xxl flex-nowrap">
+                <a class="navbar-brand" href="{{_appLogoUrl}}{{^_appLogoUrl}}{{_rel}}index.html{{/_appLogoUrl}}">
+                    <img
+                        id="logo"
+                        class="svg"
+                        src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}"
+                        alt="{{_appName}}"
+                    >
+                    {{_appName}}
+                </a>
+
+                <button
+                    class="btn btn-lg d-md-none border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navpanel"
+                    aria-controls="navpanel"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <i class="bi bi-three-dots"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navpanel">
+                    <div id="navbar">
+                        {{#_enableSearch}}
+                        <form class="search" role="search" id="search">
+                            <i class="bi bi-search"></i>
+                            <input
+                                class="form-control"
+                                id="search-query"
+                                type="search"
+                                disabled
+                                placeholder="{{__global.search}}"
+                                autocomplete="off"
+                                aria-label="Search"
+                            >
+                        </form>
+                        {{/_enableSearch}}
+
+                        <div class="font-settings">
+                            <label for="document-font-selector">Document Font</label>
+
+                            <select id="document-font-selector" class="form-select">
+                                <option value="dpcomic">DPComic</option>
+                                <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                <option value="sans-serif">Sans Serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="system">System</option>
+                                <option value="custom">Custom...</option>
+                            </select>
+
+                            <input
+                                id="document-font-custom"
+                                class="form-control"
+                                type="text"
+                                placeholder="Installed font name"
+                                autocomplete="off"
+                                hidden
+                            >
+
+                            <label for="code-font-selector">Code Font</label>
+
+                            <select id="code-font-selector" class="form-select">
+                                <option value="dpcomic">DPComic</option>
+                                <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                <option value="sans-serif">Sans Serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="system">System</option>
+                                <option value="custom">Custom...</option>
+                            </select>
+
+                            <input
+                                id="code-font-custom"
+                                class="form-control"
+                                type="text"
+                                placeholder="Installed font name"
+                                autocomplete="off"
+                                hidden
+                            >
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </nav>
-      {{/_disableNavbar}}
+        </nav>
+        {{/_disableNavbar}}
     </header>
 
     <main class="container-xxl">
-      {{^_disableToc}}
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
+        {{^_disableToc}}
+        <div class="toc-offcanvas">
+            <div
+                class="offcanvas-md offcanvas-start"
+                tabindex="-1"
+                id="tocOffcanvas"
+                aria-labelledby="tocOffcanvasLabel"
+            >
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        data-bs-target="#tocOffcanvas"
+                        aria-label="Close"
+                    ></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <nav class="toc" id="toc"></nav>
+                </div>
+            </div>
         </div>
-      </div>
-      {{/_disableToc}}
+        {{/_disableToc}}
 
-      <div class="content">
-        <div class="actionbar">
-          {{^_disableToc}}
-          <button class="btn btn-lg border-0 d-md-none"
-              type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas"
-              aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-          {{/_disableToc}}
+        <div class="content">
+            <div class="actionbar">
+                {{^_disableToc}}
+                <button
+                    class="btn btn-lg border-0 d-md-none"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#tocOffcanvas"
+                    aria-controls="tocOffcanvas"
+                    aria-expanded="false"
+                    aria-label="Show table of contents"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+                {{/_disableToc}}
 
-          {{^_disableBreadcrumb}}
-          <nav id="breadcrumb"></nav>
-          {{/_disableBreadcrumb}}
+                {{^_disableBreadcrumb}}
+                <nav id="breadcrumb"></nav>
+                {{/_disableBreadcrumb}}
+            </div>
+
+            <article data-uid="{{uid}}">
+                {{!body}}
+            </article>
+
+            {{^_disableContribution}}
+            <div class="contribution d-print-none">
+                {{#sourceurl}}
+                <a href="{{sourceurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
+                {{/sourceurl}}
+
+                {{^sourceurl}}
+                    {{#docurl}}
+                    <a href="{{docurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
+                    {{/docurl}}
+                {{/sourceurl}}
+            </div>
+            {{/_disableContribution}}
+
+            {{^_disableNextArticle}}
+            <div class="next-article d-print-none border-top" id="nextArticle"></div>
+            {{/_disableNextArticle}}
         </div>
 
-        <article data-uid="{{uid}}">
-          {{!body}}
-        </article>
-
-        {{^_disableContribution}}
-        <div class="contribution d-print-none">
-          {{#sourceurl}}
-          <a href="{{sourceurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
-          {{/sourceurl}}
-          {{^sourceurl}}{{#docurl}}
-          <a href="{{docurl}}" class="edit-link">{{__global.improveThisDoc}}</a>
-          {{/docurl}}{{/sourceurl}}
+        {{^_disableAffix}}
+        <div class="affix">
+            <nav id="affix"></nav>
         </div>
-        {{/_disableContribution}}
-
-        {{^_disableNextArticle}}
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
-        {{/_disableNextArticle}}
-
-      </div>
-
-      {{^_disableAffix}}
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-      {{/_disableAffix}}
+        {{/_disableAffix}}
     </main>
 
     {{#_enableSearch}}
@@ -164,12 +349,99 @@
     {{/_enableSearch}}
 
     <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          {{{_appFooter}}}{{^_appFooter}}<span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>{{/_appFooter}}
+        <div class="container-xxl">
+            <div class="flex-fill">
+                {{{_appFooter}}}
+                {{^_appFooter}}
+                <span>
+                    Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+                </span>
+                {{/_appFooter}}
+            </div>
         </div>
-      </div>
     </footer>
-  </body>
-  {{/redirect_url}}
+
+    <script>
+        const fontSettings = [
+            {
+                type: 'document',
+                selector: document.getElementById('document-font-selector'),
+                input: document.getElementById('document-font-custom')
+            },
+            {
+                type: 'code',
+                selector: document.getElementById('code-font-selector'),
+                input: document.getElementById('code-font-custom')
+            }
+        ];
+
+        const root = document.documentElement;
+
+        function applyFont(type, font) {
+            const storageKey = `docfx-${type}-font`;
+
+            localStorage.setItem(storageKey, font);
+            root.setAttribute(`data-${type}-font`, font);
+
+            if (font !== 'custom') {
+                root.style.removeProperty(`--${type}-font`);
+                return;
+            }
+
+            const setting = fontSettings.find(setting => setting.type === type);
+            const customFont = setting?.input.value.trim() || '';
+
+            if (customFont && CSS.supports('font-family', JSON.stringify(customFont))) {
+                root.style.setProperty(
+                    `--${type}-font`,
+                    `${JSON.stringify(customFont)}, system-ui, sans-serif`
+                );
+
+                localStorage.setItem(`docfx-${type}-font-custom`, customFont);
+            } else {
+                root.style.setProperty(`--${type}-font`, 'system-ui, sans-serif');
+            }
+        }
+
+        fontSettings.forEach(setting => {
+            const { type, selector, input } = setting;
+
+            if (!selector || !input) return;
+
+            const storageKey = `docfx-${type}-font`;
+            const customStorageKey = `docfx-${type}-font-custom`;
+
+            const currentFont = localStorage.getItem(storageKey) || 'dpcomic';
+            const customFont = localStorage.getItem(customStorageKey) || '';
+
+            selector.value = currentFont;
+            input.value = customFont;
+
+            input.hidden = currentFont !== 'custom';
+
+            selector.addEventListener('change', () => {
+                const font = selector.value;
+
+                input.hidden = font !== 'custom';
+
+                applyFont(type, font);
+
+                if (font === 'custom') {
+                    input.focus();
+                }
+            });
+
+            input.addEventListener('input', () => {
+                const customFont = input.value.trim();
+
+                localStorage.setItem(customStorageKey, customFont);
+
+                if (selector.value === 'custom') {
+                    applyFont(type, 'custom');
+                }
+            });
+        });
+    </script>
+</body>
+{{/redirect_url}}
 </html>
