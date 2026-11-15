@@ -14,6 +14,20 @@
     --bs-font-sans-serif: var(--document-font);
     --bs-body-font-family: var(--document-font);
     --bs-font-monospace: var(--code-font);
+
+    --document-font-size: 20px;
+    --code-font-size: 18px;
+
+    --document-line-height: 1.5;
+    --code-line-height: 1.4;
+
+    --h1-font-size: 2.5em;
+    --h2-font-size: 2em;
+    --h3-font-size: 1.75em;
+    --h4-font-size: 1.5em;
+    --h5-font-size: 1.25em;
+    --h6-font-size: 1em;
+    --heading-line-height: 1.2;
 }
 
 html[data-document-font="dpcomic"] {
@@ -60,10 +74,6 @@ body {
     font-family: var(--document-font);
 }
 
-code, kbd, samp, pre {
-    font-family: var(--code-font);
-}
-
 .font-settings-menu {
     display: flex;
     align-items: center;
@@ -105,10 +115,6 @@ b, strong {
     font-weight: normal;
 }
 
-code {
-    font-size: 18px !important;
-}
-
 :not(pre) > code {
     background-color: var(--bs-tertiary-bg, #e9ecef);
     padding: 0.15em 0.35em;
@@ -148,15 +154,69 @@ body > footer, body[data-layout="landing"] > footer {
 }
 
 .content {
-    font-size: 20px !important;
+    font-size: var(--document-font-size) !important;
+    line-height: var(--document-line-height);
+}
+
+.content h1,
+.content .h1 {
+    font-size: var(--h1-font-size) !important;
+}
+
+.content h2,
+.content .h2 {
+    font-size: var(--h2-font-size) !important;
+}
+
+.content h3,
+.content .h3 {
+    font-size: var(--h3-font-size) !important;
+}
+
+.content h4,
+.content .h4 {
+    font-size: var(--h4-font-size) !important;
+}
+
+.content h5,
+.content .h5 {
+    font-size: var(--h5-font-size) !important;
+}
+
+.content h6,
+.content .h6 {
+    font-size: var(--h6-font-size) !important;
+}
+
+.content h1,
+.content .h1,
+.content h2,
+.content .h2,
+.content h3,
+.content .h3,
+.content h4,
+.content .h4,
+.content h5,
+.content .h5,
+.content h6,
+.content .h6 {
+    line-height: var(--heading-line-height);
 }
 
 .toc ul {
-    font-size: 20px !important;
+    font-size: var(--document-font-size) !important;
+    line-height: var(--document-line-height);
 }
 
 .affix {
-    font-size: 20px;
+    font-size: var(--document-font-size);
+    line-height: var(--document-line-height);
+}
+
+code, kbd, samp, pre, .hljs {
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height);
 }
 
 body[data-yaml-mime="ManagedReference"] article h2.section,
@@ -178,7 +238,7 @@ body[data-yaml-mime="ApiPage"] article h2.section {
 }
 
 .inheritance-level {
-    line-height: 1.4;
+    line-height: var(--document-line-height);
     padding-left: calc(var(--inheritance-level, 0) * 1.25rem);
 }
 
