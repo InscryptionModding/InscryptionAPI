@@ -220,16 +220,15 @@
                         <div class="navbar-settings">
                             <div class="dropdown font-settings-menu">
                                 <button
-                                    class="btn btn-outline-secondary border-0"
+                                    class="btn btn-lg d-md-none border-0"
                                     type="button"
-                                    id="font-settings-toggle"
-                                    data-bs-toggle="dropdown"
-                                    data-bs-auto-close="outside"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navpanel"
+                                    aria-controls="navpanel"
                                     aria-expanded="true"
-                                    aria-label="Font settings"
-                                    title="Font settings"
+                                    aria-label="Hide expanded navbar"
                                 >
-                                    <i class="bi bi-gear"></i>
+                                    <span class="navbar-toggle-label">Hide Expanded Navbar</span>
                                 </button>
 
                                 <div class="dropdown-menu dropdown-menu-end p-3 font-settings-panel" aria-labelledby="font-settings-toggle">
@@ -690,6 +689,26 @@
             observer.observe(navbar, {
                 childList: true,
                 subtree: true
+            });
+        })();
+    </script>
+
+    <script>
+        (() => {
+            const navPanel = document.getElementById('navpanel');
+            const toggleButton = document.querySelector('[data-bs-target="#navpanel"]');
+            const toggleLabel = toggleButton?.querySelector('.navbar-toggle-label');
+    
+            if (!navPanel || !toggleButton || !toggleLabel) return;
+    
+            navPanel.addEventListener('shown.bs.collapse', () => {
+                toggleLabel.textContent = 'Hide Expanded Navbar';
+                toggleButton.setAttribute('aria-label', 'Hide expanded navbar');
+            });
+    
+            navPanel.addEventListener('hidden.bs.collapse', () => {
+                toggleLabel.textContent = 'Show Expanded Navbar';
+                toggleButton.setAttribute('aria-label', 'Show expanded navbar');
             });
         })();
     </script>
