@@ -3,6 +3,9 @@ using static InscryptionAPI.Pelts.PeltManager;
 
 namespace InscryptionAPI.Pelts.Extensions;
 
+/// <summary>
+/// Utility class adding extensions to aid in creating new <see cref="PeltData"/> objects.
+/// </summary>
 public static class PeltExtensions
 {
     /// <summary>
@@ -61,7 +64,7 @@ public static class PeltExtensions
     /// Sets the function used to determine how this pelt's price will increase across a run.
     /// </summary>
     /// <param name="peltData">The PeltData to access.</param>
-    /// <param name="buyPriceFunc">The Func used to calculate the price increase.</param>
+    /// <param name="buyPriceAdjustment">The Func used to calculate the price increase.</param>
     /// <returns>The same PeltData so a chain can continue.</returns>
     public static PeltData SetBuyPriceAdjustment(this PeltData peltData, Func<int, int> buyPriceAdjustment)
     {
@@ -97,7 +100,7 @@ public static class PeltExtensions
     /// Sets the number of card choices the Trader will present to the player in exchange for this pelt.
     /// </summary>
     /// <param name="peltData">The PeltData to access.</param>
-    /// <param name="soldByTrapper">Whether the pelt should be sellable by the Trapper.</param>
+    /// <param name="numOfChoices">How many card choices the Trader should offer in exchange for this pelt.</param>
     /// <returns>The same PeltData so a chain can continue.</returns>
     public static PeltData SetNumberOfTraderChoices(this PeltData peltData, int numOfChoices)
     {
@@ -108,7 +111,7 @@ public static class PeltExtensions
     /// Sets the function used to determine what cards can be offered by the Trader in exchange for this pelt.
     /// </summary>
     /// <param name="peltData">The PeltData to access.</param>
-    /// <param name="getChoicesList">The Func that decides what cards can be offered.</param>
+    /// <param name="getCardChoices">The Func that decides what cards can be offered.</param>
     /// <returns>The same PeltData so a chain can continue.</returns>
     public static PeltData SetCardChoices(this PeltData peltData, Func<List<CardInfo>> getCardChoices)
     {
