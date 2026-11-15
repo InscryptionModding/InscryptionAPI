@@ -107,6 +107,21 @@ body {
     display: none !important;
 }
 
+@media (max-width: 767.98px) {
+    .font-settings-menu .dropdown-menu {
+        position: fixed !important;
+        top: auto !important;
+        right: 0.75rem !important;
+        left: 0.75rem !important;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+        max-height: calc(100dvh - 5rem);
+        overflow-y: auto;
+        transform: none !important;
+    }
+}
+
 * {
     border-width: 4px !important;
 }
