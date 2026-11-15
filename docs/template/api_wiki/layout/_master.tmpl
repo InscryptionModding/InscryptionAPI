@@ -217,46 +217,71 @@
                         </form>
                         {{/_enableSearch}}
 
-                        <div class="font-settings">
-                            <label for="document-font-selector">Document Font</label>
-
-                            <select id="document-font-selector" class="form-select">
-                                <option value="dpcomic">DPComic</option>
-                                <option value="comic-sans">Comic Sans (Dyslexia)</option>
-                                <option value="sans-serif">Sans Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="system">System</option>
-                                <option value="custom">Custom...</option>
-                            </select>
-
-                            <input
-                                id="document-font-custom"
-                                class="form-control"
-                                type="text"
-                                placeholder="Installed font name"
-                                autocomplete="off"
-                                hidden
+                        <div class="dropdown font-settings-menu">
+                            <button
+                                class="btn btn-outline-secondary border-0"
+                                type="button"
+                                id="font-settings-toggle"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside"
+                                aria-expanded="false"
+                                aria-label="Font settings"
+                                title="Font settings"
                             >
-
-                            <label for="code-font-selector">Code Font</label>
-
-                            <select id="code-font-selector" class="form-select">
-                                <option value="dpcomic">DPComic</option>
-                                <option value="comic-sans">Comic Sans (Dyslexia)</option>
-                                <option value="sans-serif">Sans Serif</option>
-                                <option value="monospace">Monospace</option>
-                                <option value="system">System</option>
-                                <option value="custom">Custom...</option>
-                            </select>
-
-                            <input
-                                id="code-font-custom"
-                                class="form-control"
-                                type="text"
-                                placeholder="Installed font name"
-                                autocomplete="off"
-                                hidden
-                            >
+                                <i class="bi bi-gear"></i>
+                            </button>
+                        
+                            <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="font-settings-toggle">
+                                <h6 class="dropdown-header">Font Settings</h6>
+                        
+                                <div class="mb-3">
+                                    <label for="document-font-selector" class="form-label">
+                                        Document Font
+                                    </label>
+                        
+                                    <select id="document-font-selector" class="form-select">
+                                        <option value="dpcomic">DPComic</option>
+                                        <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                                        <option value="monospace">Monospace</option>
+                                        <option value="system">System</option>
+                                        <option value="custom">Custom...</option>
+                                    </select>
+                        
+                                    <input
+                                        id="document-font-custom"
+                                        class="form-control mt-2"
+                                        type="text"
+                                        placeholder="Installed font name"
+                                        autocomplete="off"
+                                        hidden
+                                    >
+                                </div>
+                        
+                                <div>
+                                    <label for="code-font-selector" class="form-label">
+                                        Code Font
+                                    </label>
+                        
+                                    <select id="code-font-selector" class="form-select">
+                                        <option value="dpcomic">DPComic</option>
+                                        <option value="comic-sans">Comic Sans (Dyslexia)</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                                        <option value="monospace">Monospace</option>
+                                        <option value="system">System</option>
+                                        <option value="custom">Custom...</option>
+                                    </select>
+                        
+                                    <input
+                                        id="code-font-custom"
+                                        class="form-control mt-2"
+                                        type="text"
+                                        placeholder="Installed font name"
+                                        autocomplete="off"
+                                        hidden
+                                    >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

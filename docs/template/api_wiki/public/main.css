@@ -64,26 +64,36 @@ code, kbd, samp, pre {
     font-family: var(--code-font);
 }
 
-.font-settings {
+.font-settings-menu {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
 }
 
-.font-settings label {
-    white-space: nowrap;
+.font-settings-menu > button {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
 }
 
-.font-settings select {
-    width: auto;
-    min-width: 9rem;
+.font-settings-menu .dropdown-menu {
+    min-width: 18rem;
 }
 
-.font-settings input {
-    width: 12rem;
+.font-settings-menu .dropdown-header {
+    padding-left: 0;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-.font-settings [hidden] {
+.font-settings-menu .form-label {
+    margin-bottom: 0.35rem;
+}
+
+.font-settings-menu input,
+.font-settings-menu select {
+    width: 100%;
+}
+
+.font-settings-menu [hidden] {
     display: none !important;
 }
 
