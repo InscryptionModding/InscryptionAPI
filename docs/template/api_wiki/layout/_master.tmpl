@@ -235,6 +235,17 @@
                                 <div class="dropdown-menu dropdown-menu-end p-3 font-settings-panel" aria-labelledby="font-settings-toggle">
                                     <h6 class="dropdown-header">Font Settings</h6>
 
+                                    <hr>
+
+                                    <button
+                                        type="button"
+                                        id="reset-settings"
+                                        class="btn btn-outline-danger w-100"
+                                    >
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                        Reset Settings
+                                    </button>
+
                                     <div class="mb-3">
                                         <label for="document-font-selector" class="form-label">
                                             Document Font
@@ -710,6 +721,32 @@
             navPanel.addEventListener('hidden.bs.collapse', () => {
                 toggleLabel.textContent = 'Show Expanded Navbar';
                 toggleButton.setAttribute('aria-label', 'Show expanded navbar');
+            });
+        })();
+    </script>
+
+    <script>
+        (() => {
+            const resetButton = document.getElementById('reset-settings');
+    
+            if (!resetButton) return;
+    
+            resetButton.addEventListener('click', () => {
+                const keys = [
+                    'docfx-document-font',
+                    'docfx-document-font-custom',
+                    'docfx-code-font',
+                    'docfx-code-font-custom',
+                    'docfx-document-font-size',
+                    'docfx-code-font-size',
+                    'docfx-document-line-height',
+                    'docfx-code-line-height',
+                    'docfx-heading-line-height'
+                ];
+    
+                keys.forEach(key => localStorage.removeItem(key));
+    
+                window.location.reload();
             });
         })();
     </script>
