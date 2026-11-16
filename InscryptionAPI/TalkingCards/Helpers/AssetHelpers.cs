@@ -31,6 +31,11 @@ public static class AssetHelpers
     /// <returns>The name of the file at the given path, or null if one could not be found.</returns>
     public static string? GetFile(string file) => Directory.GetFiles(Paths.PluginPath, file, SearchOption.AllDirectories).FirstOrDefault();
 
+    /// <summary>
+    /// Creates a texture from the file located at the given file path and adds it to the <see cref="TextureCache"/>.
+    /// </summary>
+    /// <param name="path">Path to the texture file.</param>
+    /// <returns>The created texture or null if the path/file is invalid.</returns>
     public static Texture2D? MakeTexture(string? path)
     {
         if (path == null || path.IsWhiteSpace()) return null;
