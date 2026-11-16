@@ -83,29 +83,6 @@ public static class DialogueManager
     }
 
     /// <summary>
-    /// <list type="table">
-    ///     <item><term>B</term><description>blue</description></item>
-    ///     <item><term>bB</term><description>bright blue</description></item>
-    ///     <item><term>bG</term><description>bright gold</description></item>
-    ///     <item><term>blGr</term><description>bright lime green</description></item>
-    ///     <item><term>bR</term><description>bright red</description></item>
-    ///     <item><term>brnO</term><description>brown orange</description></item>
-    ///     <item><term>bSG</term><description>glow seafoam green (default Act 1 emission colour)</description></item>
-    ///     <item><term>dB</term><description>dark blue</description></item>
-    ///     <item><term>dlGr</term><description>dark lime green</description></item>
-    ///     <item><term>dSG</term><description>dark seafoam green</description></item>
-    ///     <item><term>G</term><description>gold</description></item>
-    ///     <item><term>g1</term><description>bright lime green</description></item>
-    ///     <item><term>g2</term><description>gold</description></item>
-    ///     <item><term>g3</term><description>blue</description></item>
-    ///     <item><term>gray</term><description>40% grey</description></item>
-    ///     <item><term>lGr</term><description>lime green</description></item>
-    ///     <item><term>O</term><description>orange</description></item>
-    /// </list>
-    /// </summary>
-    private static int iff;
-
-    /// <summary>
     /// Adds a new colour code that can be used in dialogue events to colour text.
     /// <br/><br/>
     /// Colour codes are in the following format:<br/>
