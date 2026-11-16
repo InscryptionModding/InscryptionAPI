@@ -311,7 +311,7 @@ public class AscensionChallengePaginator : MonoBehaviour {
     }
 
     /// <summary>
-    /// Creates the <c>leftArrow</c> and <c>rightArrow</c> UI elements for the challenge screen.
+    /// Creates the <see cref="leftArrow"/> and <see cref="rightArrow"/> UI elements for the challenge screen.
     /// Positioning is determined by the positions of the challenge icons.
     /// By default, the API tries to place the arrows on the left and right sides of the screen.
     /// If there isn't enough space due to screen resolution (or if the user has toggled the config option), the arrows are placed at the top of the screen instead.

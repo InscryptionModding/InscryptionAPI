@@ -441,9 +441,9 @@ public class SlotModificationManager : MonoBehaviour
     /// <param name="temple">Indicator for which scene/scrybe this should apply to</param>
     /// <param name="playerSlot">Texture for each player slot. Null textures will be replaced with the game's default.</param>
     /// <param name="opponentSlot">Texture for each opponent slot. Null textures will be replaced with the game's default.</param>
-    /// <remarks>This does not work for Act 2. The base game uses the <c>CardBattleNPC</c> to
+    /// <remarks>This does not work for Act 2. The base game uses the <see cref="CardBattleNPC"/> to
     /// set default textures. It's possible that a future API update would allow for custom Act 2 
-    /// NPCs, so this will deliberately not touch Act 2</remarks>
+    /// NPCs, so this will deliberately not touch Act 2.</remarks>
     public static void OverrideDefaultSlotTexture(CardTemple temple, Texture playerSlot, Texture opponentSlot)
     {
         OverrideDefaultSlotTexture(
@@ -459,9 +459,9 @@ public class SlotModificationManager : MonoBehaviour
     /// <param name="temple">Indicator for which scene/scrybe this should apply to</param>
     /// <param name="playerSlots">Textures for each player slot. Null textures will be replaced with the game's default.</param>
     /// <param name="opponentSlots">Textures for each opponent slot. Null textures will be replaced with the game's default.</param>
-    /// <remarks>This does not work for Act 2. The base game uses the <c>CardBattleNPC</c> to
+    /// <remarks>This does not work for Act 2. The base game uses the <see cref="CardBattleNPC"/> to
     /// set default textures. It's possible that a future API update would allow for custom Act 2 
-    /// NPCs, so this will deliberately not touch Act 2</remarks>
+    /// NPCs, so this will deliberately not touch Act 2.</remarks>
     public static void OverrideDefaultSlotTexture(CardTemple temple, List<Texture> playerSlots, List<Texture> opponentSlots)
     {
         if (playerSlots != null && playerSlots.Any(t => t != null))

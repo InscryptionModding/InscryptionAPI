@@ -58,7 +58,7 @@ public static class ShieldManager
     }
     /// <summary>
     /// The method used for when a shielded card is damaged. Includes extra parameters for modders looking to modify this further.
-    /// This method is only called when <c>damage</c> > 0 and the target has a shield.
+    /// This method is only called when <paramref name="damage"/> > 0 and the target has a shield.
     /// </summary>
     /// <param name="target">Card getting attacked.</param>
     /// <param name="damage">Damage being dealt.</param>

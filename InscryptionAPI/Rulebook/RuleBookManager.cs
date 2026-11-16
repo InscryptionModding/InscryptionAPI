@@ -392,7 +392,7 @@ public static class RuleBookManager
     }
 
     /// <summary>
-    /// Opens the rulebook to the page with the given <c>pageId</c>.
+    /// Opens the rulebook to the page with the given <paramref name="pageId"/>.
     /// </summary>
     /// <param name="instance"><see cref="Singleton&lt;RuleBookController>.Instance"/>.</param>
     /// <param name="pageId">The value to compare each rulebook pages' id against. If this starts with <c>[API_</c> then it will check against a page's unformatted id.</param>

@@ -342,7 +342,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Retrieve a list of all abilities that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all Abilities from both <c>TemporaryMods</c> and from the underlying <see cref="CardInfo"/> object.
+    /// This will retrieve all Abilities from both <see cref="PlayableCard.TemporaryMods"/> and from the underlying <see cref="CardInfo"/> object.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>A list of Abilities from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
@@ -351,10 +351,10 @@ public static partial class CardExtensions
         return playableCard.GetAbilitiesFromAllMods().Concat(playableCard.Info.Abilities).ToList();
     }
     /// <summary>
-    /// A variant of <see cref="AllAbilities(PlayableCard)"/> that can account for negated abilities in the <see cref="PlayableCard"/>'s <c>TemporaryMods</c>.
+    /// A variant of <see cref="AllAbilities(PlayableCard)"/> that can account for negated abilities in this card's <see cref="PlayableCard.TemporaryMods"/>.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
-    /// <param name="accountForNegation">Whether or not to check <c>TemporaryMods</c> for negated abilities.</param>
+    /// <param name="accountForNegation">Whether or not to check <see cref="PlayableCard.TemporaryMods"/> for negated abilities.</param>
     /// <returns>A list of Abilities from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object</returns>
     public static List<Ability> AllAbilities(this PlayableCard playableCard, bool accountForNegation)
     {
@@ -375,7 +375,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Retrieve a list of all CardModificationInfos that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all mods from <c>TemporaryMods</c> and the underlying <c>CardInfo.Mods</c>.
+    /// This will retrieve all mods from <see cref="PlayableCard.TemporaryMods"/> and the underlying <see cref="CardInfo.Mods"/>.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>A list of <see cref="CardModificationInfo"/>s from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
@@ -387,7 +387,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Removes the provided CardModificationInfo from the <see cref="PlayableCard"/>.
     ///
-    /// Searches both its <c>TemporaryMods</c> list and its CardInfo.Mods list.
+    /// Searches both its <see cref="PlayableCard.TemporaryMods"/> list and its CardInfo.Mods list.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
     /// <param name="modToRemove">The <see cref="CardModificationInfo"/> object to remove.</param>
@@ -420,7 +420,7 @@ public static partial class CardExtensions
     /// <summary>
     /// Retrieve a list of all special triggered abilities that exist on the <see cref="PlayableCard"/>.
     ///
-    /// This will retrieve all SpecialTriggeredAbility from both <c>TemporaryMods</c> and from the underlying <see cref="CardInfo"/> object.
+    /// This will retrieve all SpecialTriggeredAbility from both <see cref="PlayableCard.TemporaryMods"/> and from the underlying <see cref="CardInfo"/> object.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>A list of SpecialTriggeredAbility from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
@@ -430,7 +430,7 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieve a list of Ability that exist in <c>TemporaryMods</c> and the underlying CardInfo.Mods lists.
+    /// Retrieve a list of Ability that exist in <see cref="PlayableCard.TemporaryMods"/> and the underlying CardInfo.Mods lists.
     /// </summary>
     /// <param name="playableCard">The <see cref="PlayableCard"/> to access.</param>
     /// <returns>A list of Ability from the <see cref="PlayableCard"/> and underlying <see cref="CardInfo"/> object.</returns>
@@ -460,7 +460,7 @@ public static partial class CardExtensions
     /// </summary>
     /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if <c>playableCard</c> has all of the specified Traits.</returns>
+    /// <returns>Returns true if <see cref="PlayableCard"/> has all of the specified Traits.</returns>
     public static bool HasAllTraits(this PlayableCard playableCard, params Trait[] traits) => playableCard.Info.HasAllTraits(traits);
 
     /// <summary>
@@ -468,7 +468,7 @@ public static partial class CardExtensions
     /// </summary>
     /// <param name="playableCard"><see cref="PlayableCard"/> to access.</param>
     /// <param name="traits">The Traits to check for.</param>
-    /// <returns>Returns true if <c>playableCard</c> has none of the specified Traits.</returns>
+    /// <returns>Returns true if <see cref="PlayableCard"/> has none of the specified Traits.</returns>
     public static bool LacksAllTraits(this PlayableCard playableCard, params Trait[] traits) => playableCard.Info.LacksAllTraits(traits);
 
     /// <summary>
@@ -841,11 +841,11 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Retrieves the current value of a <see cref="DamageShieldBehaviour"/>'s NumShield.
+    /// Retrieves the current value of the shield behaviour's <see cref="DamageShieldBehaviour.NumShields"/>.
     /// </summary>
     /// <typeparam name="T">The <see cref="DamageShieldBehaviour"/> to access.</typeparam>
     /// <param name="card">The <see cref="PlayableCard"/> to access.</param>
-    /// <returns>The current value of the <see cref="DamageShieldBehaviour"/>'s <c>NumShield</c>.</returns>
+    /// <returns>The current value of the shield behaviour's <see cref="DamageShieldBehaviour.NumShields"/>.</returns>
     public static int GetShieldCount<T>(this PlayableCard card) where T : DamageShieldBehaviour
     {
         T comp = card.GetComponent<T>();
@@ -944,7 +944,7 @@ public static partial class CardExtensions
     /// Creates a basic <see cref="EncounterBlueprintData.CardBlueprint"/> based off the <see cref="CardInfo"/> object.
     /// </summary>
     /// <param name="cardInfo"><see cref="CardInfo"/> to create the blueprint with.</param>
-    /// <returns>The <c>CardBlueprint</c> object that can be used when creating <see cref="EncounterData"/>.</returns>
+    /// <returns>The <see cref="EncounterBlueprintData.CardBlueprint"/> object that can be used when creating <see cref="EncounterData"/>.</returns>
     public static EncounterBlueprintData.CardBlueprint CreateBlueprint(this CardInfo cardInfo)
     {
         return new EncounterBlueprintData.CardBlueprint

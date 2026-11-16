@@ -54,7 +54,7 @@ public abstract class DamageShieldBehaviour : AbilityBehaviour {
 
     }
     /// <summary>
-    /// Method for adding more shield count to this ability. Resets the <c>loseShields</c> Status boolean if the net shields are > 0.
+    /// Method for adding more shield count to this ability. Resets the <see cref="PlayableCardStatus.lostShield"/> if the net shields are > 0.
     /// </summary>
     /// <param name="amount">How many more shields this ability should give.</param>
     /// <param name="updateDisplay">Whether or not to update the card's render.</param>

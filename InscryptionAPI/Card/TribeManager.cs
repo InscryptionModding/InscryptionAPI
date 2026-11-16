@@ -104,7 +104,7 @@ public static class TribeManager
     /// Determines if the given <see cref="Tribe"/> was added by a mod.
     /// </summary>
     /// <param name="tribe">The <see cref="Tribe"/> to check.</param>
-    /// <returns>True if <c>tribe</c> is not from the base game.</returns>
+    /// <returns>True if <paramref name="tribe"/> is not from the base game.</returns>
     public static bool IsCustomTribe(Tribe tribe) => tribeTypes.Contains(tribe);
 
     /// <summary>

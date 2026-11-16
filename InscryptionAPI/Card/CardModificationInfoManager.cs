@@ -209,11 +209,11 @@ public static class CardModificationInfoManager
     }
 
     /// <summary>
-    /// Retrieves the property name and associated value from the provided <c>properties</c> string.
+    /// Retrieves the property name and associated value from the <paramref name="properties"/> string.
     /// </summary>
     /// <param name="properties">A string representing all properties.</param>
     /// <param name="key">The property name to search for.</param>
-    /// <returns>A string containing the key and the value separated by a comma like so: 'key,value'</returns>
+    /// <returns>A string containing the key and the value separated by a comma like so: <c>key,value</c></returns>
     public static string GetIdKeyPair(string properties, string key)
     {
         string retval = properties.Substring(properties.IndexOf(key + ","));

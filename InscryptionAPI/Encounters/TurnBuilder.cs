@@ -14,7 +14,7 @@ public class TurnBuilder<T> where T : EncounterBlueprintData
     internal List<CardBlueprint> cards;
 
     /// <summary>
-    /// Default constructor that populates <c>cards</c> with an empty list.
+    /// Default constructor that populates <see cref="cards"/> with an empty list.
     /// </summary>
     public TurnBuilder()
     {
@@ -45,11 +45,11 @@ public static class TurnExtensions
     /// <typeparam name="T">The <see cref="EncounterBlueprintData"/> type.</typeparam>
     /// <param name="turnBuilder">The <see cref="TurnBuilder{T}"/> to access.</param>
     /// <param name="card">The default card. Can be null for no card.</param>
-    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c>.</param>
+    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from <see cref="EncounterBlueprintData.randomReplacementCards"/>.</param>
     /// <param name="minDifficulty">The minimum difficulty for this card to appear.</param>
     /// <param name="maxDifficulty">The maximum difficulty for this card to appear.</param>
     /// <param name="difficultyReplace">Whether to replace this card when a certain difficulty threshold is met.</param>
-    /// <param name="difficultyReplaceReq">The difficulty threshold for the <c>replacement</c> card to be used instead.</param>
+    /// <param name="difficultyReplaceReq">The difficulty threshold for the <paramref name="replacement"/> card to be used instead.</param>
     /// <param name="replacement">The replacement card for the difficulty replacement.</param>
     public static TurnBuilder<T> AddCardBlueprint<T>(this TurnBuilder<T> turnBuilder, string card, int randomReplaceChance = 0,
         int minDifficulty = 1, int maxDifficulty = 20,

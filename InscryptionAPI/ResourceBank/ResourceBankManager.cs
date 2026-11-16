@@ -52,7 +52,7 @@ public static class ResourceBankManager {
     /// <param name="pluginGUID">The GUID of the mod adding the resource.</param>
     /// <param name="resource">The resource to add to the <see cref="ResourceBank"/>.</param>
     /// <param name="overrideExistingAsset">If the resource will override an existing resource asset.</param>
-    /// <returns>The <see cref="ResourceData"/> for the newly created resource, or null if <c>resource</c> is null.</returns>
+    /// <returns>The <see cref="ResourceData"/> for the newly created resource, or null if <paramref name="resource"/> is null.</returns>
     public static ResourceData Add(string pluginGUID, ResourceBank.Resource resource, bool overrideExistingAsset = false)
     {
         if (resource == null)

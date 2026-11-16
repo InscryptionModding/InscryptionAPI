@@ -61,7 +61,7 @@ public class PageTextInteractable : AlternateInputInteractable
     /// <summary>
     /// Logic for when this object is clicked on with the alternate select key (default right-click).
     /// <br/>
-    /// Locates and then flips to the page defined by the <c>redirectId</c>.
+    /// Locates and then flips to the page defined by <see cref="redirectId"/>.
     /// </summary>
     public override void OnAlternateSelectStarted()
     {

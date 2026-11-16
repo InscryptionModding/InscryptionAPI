@@ -25,7 +25,7 @@ public static class DeathCardManager
     /// Adds a death card to the list of default death cards available at the start of each run.
     /// </summary>
     /// <param name="deathCardMod">The <see cref="CardModificationInfo"/> containing the death card data.</param>
-    /// <param name="addToAscension">If true, will add <c>deathCardMod</c> to the list of ascension death cards rather than the default (Part 1) pool.</param>
+    /// <param name="addToAscension">If true, will add <paramref name="deathCardMod"/> to the list of ascension death cards rather than the default (Part 1) pool.</param>
     public static void AddDefaultDeathCard(CardModificationInfo deathCardMod, bool addToAscension = false)
     {
         if (addToAscension)

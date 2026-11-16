@@ -119,7 +119,7 @@ public static class EncounterExtensions
 
     /// <summary>
     /// Adds random replacement cards to this region.<br/>
-    /// A card from this list is selected whenever a card is randomly replaced by <c>randomReplaceChance</c>.
+    /// A card from this list is selected whenever a card is randomly replaced.
     /// </summary>
     /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
     /// <param name="cards">The cards to add.</param>
@@ -201,7 +201,7 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Sets whether what card the CardBlueprint will be replaced with if <c>difficultyReplace == true</c>, and what difficulty threshold it will be replaced.
+    /// Sets whether what card the CardBlueprint will be replaced with if <c><see cref="CardBlueprint.difficultyReplace"/> == true</c>, and what difficulty threshold it will be replaced.
     /// </summary>
     /// <param name="blueprint">The <see cref="CardBlueprint"/> to access.</param>
     /// <param name="replaceWithDifficulty">Whether this card will be replaced at certain difficulties.</param>

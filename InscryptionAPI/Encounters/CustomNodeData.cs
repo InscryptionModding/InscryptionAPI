@@ -32,7 +32,7 @@ public class CustomNodeData : SpecialNodeData
     public override List<SelectionCondition> ForceGenerationConditions => forceGenerationConditions;
 
     /// <summary>
-    /// Default constructor that populates <c>connectedNodes</c> with an empty list.
+    /// Default constructor that populates <see cref="NodeData.connectedNodes"/> with an empty list.
     /// </summary>
     public CustomNodeData()
     {

@@ -62,10 +62,10 @@ public static class CostProperties {
         /// <summary>
         /// Determines if a card's list of Gem costs has been updated.
         /// </summary>
-        /// <typeparam name="T">GemType.</typeparam>
+        /// <typeparam name="T"><see cref="GemType"/>.</typeparam>
         /// <param name="a">First list of gems.</param>
         /// <param name="b">Second list of gems.</param>
-        /// <returns>True if <c>a</c> does not equal <c>b</c></returns>
+        /// <returns>True if <paramref name="a"/> does not equal <paramref name="b"/>.</returns>
         public bool GemsChanged<T>(List<T> a, List<T> b)
         {
             if (a.Count != b.Count)
@@ -116,7 +116,7 @@ public static class CostProperties {
     public static List<GemType> OriginalGemsCost(CardInfo __instance) { return null; }
 
     /// <summary>
-    /// Improved version of <see cref="CardInfo.GemsCost"/> that accounts for <c>addGemCost</c> and <see cref="CardModificationInfoExtensions.RemovedGemsCosts(CardModificationInfo)"/>.
+    /// Improved version of <see cref="CardInfo.GemsCost"/> that accounts for <see cref="CardModificationInfo.addGemCost"/> and <see cref="CardModificationInfoExtensions.RemovedGemsCosts(CardModificationInfo)"/>.
     /// </summary>
     /// <remarks>For consistency's sake, it's recommended you use this method over <see cref="OriginalGemsCost"/> in most cases.</remarks>
     /// <param name="instance"></param>

@@ -387,7 +387,7 @@ public class NumChallengesOfTypeActive : NodeData.SelectionCondition
     /// </summary>
     public int numChallenges;
     /// <summary>
-    /// If this condition should be satisified when the number of active challenges is greater than <c>numChallenges</c>.
+    /// If this condition should be satisified when the number of active challenges is greater than <see cref="numChallenges"/>.
     /// <br/>
     /// If false, this condition checks for less-than-or-equal-to instead.
     /// </summary>
@@ -408,9 +408,9 @@ public class NumChallengesOfTypeActive : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>greaterThanNumActive</c> is true, this condition is satisfied when the number of active copies of <c>challenge >= numChallenges</c>
+    /// If <see cref="greaterThanNumActive"/> is true, this condition is satisfied when the number of active copies of <c><see cref="challenge"/> >= <see cref="numChallenges"/></c>
     /// <br/>
-    /// If <c>greaterThanNumActive</c> is false, this condition is satisfied when the number of active copies of <c>challenge &lt;= numChallenges</c>
+    /// If <see cref="greaterThanNumActive"/> is false, this condition is satisfied when the number of active copies of <c><see cref="challenge"/> &lt;= <see cref="numChallenges"/></c>
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
@@ -433,7 +433,7 @@ public class ChallengeIsActive : NodeData.SelectionCondition
     /// </summary>
     public AscensionChallenge challenge;
     /// <summary>
-    /// If this conditon requires <c>challenge</c> be excluded from the active list or not.
+    /// If this conditon requires <see cref="challenge"/> be excluded from the active list or not.
     /// </summary>
     public bool exclude;
 
@@ -450,9 +450,9 @@ public class ChallengeIsActive : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>exclude</c> is true, this condition is satisfied if <c>challenge</c> is not active.
+    /// If <see cref="exclude"/> is true, this condition is satisfied if <see cref="challenge"/> is not active.
     /// <br/>
-    /// If <c>exclude</c> is false, this condition is satisfied if <c>challenge</c> is active.
+    /// If <see cref="exclude"/> is false, this condition is satisfied if <see cref="challenge"/> is active.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>

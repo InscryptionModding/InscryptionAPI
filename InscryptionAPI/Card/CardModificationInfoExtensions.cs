@@ -196,7 +196,7 @@ public static class CardModificationInfoExtensions
     #region Singleton ID
 
     /// <summary>
-    /// Removes the custom properties field from a <see cref="CardModificationInfo"/>'s <c>singletonId</c>.
+    /// Removes the custom properties field from the <paramref name="mod"/>'s <see cref="CardModificationInfo.singletonId"/>.
     /// </summary>
     /// <param name="mod">The <see cref="CardModificationInfo"/> object whose properties we want to clear.</param>
     /// <returns>The same <see cref="CardModificationInfo"/> so a chain can continue.</returns>
@@ -209,7 +209,7 @@ public static class CardModificationInfoExtensions
         return mod;
     }
     /// <summary>
-    /// Removes the custom costs ID field from a <see cref="CardModificationInfo"/>'s <c>singletonId</c>.
+    /// Removes the custom costs ID field from the <paramref name="mod"/>'s <see cref="CardModificationInfo.singletonId"/>.
     /// </summary>
     /// <param name="mod">The <see cref="CardModificationInfo"/> object whose custom costs ID we want to clear.</param>
     /// <returns>The same <see cref="CardModificationInfo"/> so a chain can continue.</returns>

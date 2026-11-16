@@ -134,7 +134,7 @@ public static class ConsumableItemDataExtensions
     /// <param name="regionSpecific">If this item only appears in a specific region.</param>
     /// <returns>The same <see cref="ConsumableItemData"/> so a chain can continue.</returns>
     /// <remarks>
-    /// By default, <c>regionSpecific</c> being true just removes the item from the pool of region-specific items.
+    /// By default, <see cref="ConsumableItemData.regionSpecific"/> being true just removes the item from the pool of region-specific items.
     /// </remarks>
     public static ConsumableItemData SetRegionSpecific(this ConsumableItemData data, bool regionSpecific)
     {

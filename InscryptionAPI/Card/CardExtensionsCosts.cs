@@ -107,7 +107,7 @@ public static partial class CardExtensions
     }
 
     /// <summary>
-    /// Checks if the given <see cref="PlayableCard"/> is gemified in either its <see cref="CardInfo"/> or <c>TemporaryMods</c>.
+    /// Checks if the given <see cref="PlayableCard"/> is gemified in either its <see cref="CardInfo"/> or <see cref="PlayableCard.TemporaryMods"/>.
     /// </summary>
     /// <returns>True if this card is gemified.</returns>
     public static bool IsGemified(this PlayableCard card) => card.Info.Gemified || card.TemporaryMods.Exists((CardModificationInfo x) => x.gemify);

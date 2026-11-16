@@ -147,7 +147,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the <c>Part1Modular</c> and <c>Part1Rulebook</c> metacategories to the ability.
+    /// Helper method: automatically adds the <see cref="AbilityMetaCategory.Part1Modular"/> and <see cref="AbilityMetaCategory.Part1Rulebook"/> metacategories to the ability.
     /// </summary>
     /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
@@ -157,14 +157,14 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the custom metacategory <c>Part2Modular</c> to the ability.
+    /// Helper method: automatically adds the custom metacategory <see cref="Part2Modular"/> to the ability.
     /// </summary>
     /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetDefaultPart2Ability(this AbilityInfo info) => info.AddMetaCategories(Part2Modular);
 
     /// <summary>
-    /// Helper method: automatically adds the <c>Part3Modular</c>, <c>Part3BuildACard</c>, and <c>Part3Rulebook</c> metacategories to the ability.
+    /// Helper method: automatically adds the <see cref="AbilityMetaCategory.Part3Modular"/>, <see cref="AbilityMetaCategory.Part3BuildACard"/>, and <see cref="AbilityMetaCategory.Part3Rulebook"/> metacategories to the ability.
     /// </summary>
     /// <param name="info">The instance of <see cref="AbilityInfo"/>.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
@@ -196,7 +196,7 @@ public static class AbilityExtensions
     /// Sets the text displayed when this ability is marked as learned.
     /// </summary>
     /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
-    /// <param name="lines">The text to display, represented by <c>DialogueEvent.Line</c>'s.</param>
+    /// <param name="lines">The text to display, represented by <see cref="DialogueEvent.Line"/> objects.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetAbilityLearnedDialogue(this AbilityInfo abilityInfo, params DialogueEvent.Line[] lines)
     {
@@ -207,10 +207,10 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Sets the text displayed whenever <c>OnAbilityTriggered</c> is called by this ability in Act 2.
+    /// Sets the text displayed whenever <see cref="GBC.PixelPlayableCard.OnAbilityTriggered"/> is called by this ability in Act 2.
     /// </summary>
     /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
-    /// <param name="triggerText">The text to display when <c>OnAbilityTriggered</c> is called.</param>
+    /// <param name="triggerText">The text to display when <see cref="GBC.PixelPlayableCard.OnAbilityTriggered"/> is called.</param>
     /// <returns>The same <see cref="AbilityInfo"/> so a chain can continue.</returns>
     public static AbilityInfo SetGBCTriggerText(this AbilityInfo abilityInfo, string triggerText)
     {
@@ -218,10 +218,10 @@ public static class AbilityExtensions
         return abilityInfo;
     }
     /// <summary>
-    /// Sets the text displayed whenever <c>OnAbilityTriggered</c> is called by this ability in Act 2.
+    /// Sets the text displayed whenever <see cref="GBC.PixelPlayableCard.OnAbilityTriggered"/> is called by this ability in Act 2.
     /// </summary>
     /// <param name="fullAbility">The instance of <see cref="FullAbility"/>.</param>
-    /// <param name="triggerText">The text to display when <c>OnAbilityTriggered</c> is called.</param>
+    /// <param name="triggerText">The text to display when <see cref="GBC.PixelPlayableCard.OnAbilityTriggered"/> is called.</param>
     /// <returns>The same <see cref="FullAbility"/> so a chain can continue.</returns>
     public static FullAbility SetGBCTriggerText(this FullAbility fullAbility, string triggerText) {
         fullAbility.Info.triggerText = triggerText;
@@ -625,12 +625,15 @@ public static class AbilityExtensions
         return info;
     }
     /// <summary>
-    /// Sets the stat icon's <c>appliesToAttack</c> and <c>appliesToHealth</c> fields. Note these fields don't make the stat icon affect the stat; you still need to implement that logic.
+    /// Sets the stat icon's <see cref="StatIconInfo.appliesToAttack"/> and <see cref="StatIconInfo.appliesToHealth"/> fields.
     /// </summary>
     /// <param name="info">The instance of <see cref="StatIconInfo"/></param>
     /// <param name="appliesToAttack">If the stat icon should cover a card's Power.</param>
     /// <param name="appliesToHealth">If the stat icon should cover a card's Health.</param>
     /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
+    /// <remarks>
+    /// Note these fields don't make the stat icon affect the stat; you still need to implement that logic.
+    /// </remarks>
     public static StatIconInfo SetAppliesToStats(this StatIconInfo info, bool appliesToAttack, bool appliesToHealth) {
         info.appliesToAttack = appliesToAttack;
         info.appliesToHealth = appliesToHealth;
@@ -676,7 +679,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the <c>Part1Rulebook</c> metacategory to the stat icon.
+    /// Helper method: automatically adds the <see cref="AbilityMetaCategory.Part1Rulebook"/> metacategory to the stat icon.
     /// </summary>
     /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <returns>The same stati icon so a chain can continue.</returns>
@@ -685,7 +688,7 @@ public static class AbilityExtensions
     }
 
     /// <summary>
-    /// Helper method: automatically adds the <c>Part3Rulebook</c> metacategory to the stat icon.
+    /// Helper method: automatically adds the <see cref="AbilityMetaCategory.Part3Rulebook"/> metacategory to the stat icon.
     /// </summary>
     /// <param name="info">The instance of <see cref="StatIconInfo"/>.</param>
     /// <returns>The same <see cref="StatIconInfo"/> so a chain can continue.</returns>
@@ -747,7 +750,7 @@ public static class AbilityExtensions
     /// Gets the value of <c>HideSingleStacks</c>. Returns false if <c>HideSingleStacks</c> has not been set.
     /// </summary>
     /// <param name="ability">Ability to access.</param>
-    /// <returns>Whether single stacks of this ability will be hidden when added to <c>hiddenAbilities</c>.</returns>
+    /// <returns>Whether single stacks of this ability will be hidden when added to <see cref="PlayableCardStatus.hiddenAbilities"/>.</returns>
     public static bool GetHideSingleStacks(this Ability ability)
     {
         return AllAbilityInfos.AbilityByID(ability).GetHideSingleStacks();
@@ -756,7 +759,7 @@ public static class AbilityExtensions
     /// Gets the value of <c>HideSingleStacks</c>. Returns false if <c>HideSingleStacks</c> has not been set.
     /// </summary>
     /// <param name="abilityInfo">The instance of <see cref="AbilityInfo"/>.</param>
-    /// <returns>Whether single stacks of this ability will be hidden when added to <c>hiddenAbilities</c>.</returns>
+    /// <returns>Whether single stacks of this ability will be hidden when added to <see cref="PlayableCardStatus.hiddenAbilities"/>.</returns>
     public static bool GetHideSingleStacks(this AbilityInfo abilityInfo)
     {
         return abilityInfo.GetExtendedPropertyAsBool("HideSingleStacks") ?? false;

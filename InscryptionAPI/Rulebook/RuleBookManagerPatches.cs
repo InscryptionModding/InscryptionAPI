@@ -20,7 +20,7 @@ namespace InscryptionAPI.RuleBook;
 public class RuleBookManagerPatches
 {
     /// <summary>
-    /// THe prefix string for handling API-created <c>pageId</c>s.
+    /// The prefix string for handling API-created page IDs.
     /// </summary>
     public const string API_ID = "[API_";
 

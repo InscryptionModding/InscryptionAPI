@@ -21,7 +21,7 @@ public class Not : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>condition</c> is not satisfied, this returns true.
+    /// If <see cref="condition"/> is not satisfied, this returns true.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
@@ -54,7 +54,7 @@ public class And : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>condition2</c> and <c>condition2</c> are both true, this also returns true.
+    /// If <see cref="condition1"/> and <see cref="condition2"/> are both true, this also returns true.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
@@ -129,9 +129,9 @@ public class CustomPreviousNodesContent : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>doesContain</c> is true, return true if the previous nodes contain a node with the given <c>name</c> and <c>guid</c>.
+    /// If <see cref="doesContain"/> is true, return true if the previous nodes contain a node with the given <see cref="name"/> and <see cref="guid"/>.
     /// <br/><br/>
-    /// If <c>doesContain</c> is false, return true if the previous nodes do not contain a node with the given <c>name</c> and <c>guide</c>.
+    /// If <see cref="doesContain"/> is false, return true if the previous nodes do not contain a node with the given <see cref="name"/> and <see cref="guid"/>.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
@@ -152,7 +152,7 @@ public class CustomPreviousRowContent : NodeData.SelectionCondition
     private bool doesContain;
 
     /// <summary>
-    /// Creates an "CustomPreviousRowContent" selection condition and sets its target guid, name and required value.
+    /// Creates a <see cref="CustomPreviousRowContent"/> selection condition and sets its target guid, name and required value.
     /// </summary>
     /// <param name="guid">The mod guid of the node this selection condition will be looking for.</param>
     /// <param name="name">The name of the node this selection condition will be looking for.</param>
@@ -168,9 +168,9 @@ public class CustomPreviousRowContent : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>doesContain</c> is true, return true if the previous node row contains a node with the given <c>name</c> and <c>guid</c>.
+    /// If <see cref="doesContain"/> is true, return true if the previous node row contains a node with the given <see cref="name"/> and <see cref="guid"/>.
     /// <br/><br/>
-    /// If <c>doesContain</c> is false, return true if the previous node row does not contain a node with the given <c>name</c> and <c>guide</c>.
+    /// If <see cref="doesContain"/> is false, return true if the previous node row does not contain a node with the given <see cref="name"/> and <c>guide</c>.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
@@ -200,7 +200,7 @@ public class Func : NodeData.SelectionCondition
     /// <summary>
     /// Determines if this condition is satisfied and this node can be generated.
     /// <br/><br/>
-    /// If <c>func</c> is null, return true. Otherwise, call <c>func</c> and return its value.
+    /// If <see cref="func"/> is null, return true. Otherwise, call <see cref="func"/> and return its value.
     /// </summary>
     /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
     /// <param name="previousNodes">The nodes generated at the previous y-index.</param>

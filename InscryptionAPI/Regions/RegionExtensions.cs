@@ -36,9 +36,10 @@ public static class RegionExtensions
 
     /// <summary>
     /// Adds terrain cards to this region.<br/>
-    /// Terrain cards require the <c>Terrain</c> trait to appear.<br/>
+    /// Terrain cards require the <see cref="Terrain"/> trait to appear.<br/>
     /// Every region must have at least one valid terrain card.
     /// </summary>
+    /// <param name="region">The <see cref="RegionData"/> to access.</param>
     /// <param name="cards">The terrain cards to add.</param>
     public static RegionData AddTerrainCards(this RegionData region, params string[] cards)
     {
@@ -55,10 +56,11 @@ public static class RegionExtensions
     }
 
     /// <summary>
-    /// Adds likely cards to this region.<br/>
-    /// Likely cards require the <c>ChoiceNode</c> metacategory to appear.<br/>
+    /// Adds cards that are more likely to appear in this region's choice nodes.<br/>
+    /// Likely cards still require the <see cref="CardMetaCategory.ChoiceNode"/> metacategory.<br/>
     /// One of three normal card choices is guaranteed to contain a card from the region's likely cards.
     /// </summary>
+    /// <param name="region">The <see cref="RegionData"/> to access.</param>
     /// <param name="cards">The likely cards to add.</param>
     public static RegionData AddLikelyCards(this RegionData region, params string[] cards)
     {
@@ -76,7 +78,7 @@ public static class RegionExtensions
 
     /// <summary>
     /// Adds consumables to this region.<br/>
-    /// This only applies to consumables that are <c>regionSpecific</c>. Adding non-region-specific consumables will increase the probability of the consumable appearing.
+    /// This only applies to consumables that are <see cref="ConsumableItemData.regionSpecific"/>. Adding non-region-specific consumables will increase the probability of the consumable appearing.
     /// </summary>
     /// <param name="consumables">.</param>
     public static RegionData AddConsumableItems(this RegionData region, params string[] consumables)

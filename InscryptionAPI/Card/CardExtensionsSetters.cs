@@ -182,7 +182,7 @@ public static partial class CardExtensions
     #region MetaCategories
     /// <summary>
     /// Sets the card to behave as a "normal" card in Part 1.
-    /// The <c>CardTemple</c> is Nature and it will appear in choice nodes and trader nodes.
+    /// The <see cref="CardTemple"/> is Nature and it will appear in choice nodes and trader nodes.
     /// </summary>
     /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
@@ -199,7 +199,7 @@ public static partial class CardExtensions
 
     /// <summary>
     /// Sets the card to behave as a "normal" card in Part 3.
-    /// The <c>CardTemple</c> is Tech and it will appear in choice nodes and as a potential random card from GiftBot.
+    /// The <see cref="CardTemple"/> is Tech and it will appear in choice nodes and as a potential random card from GiftBot.
     /// </summary>
     /// <param name="info"><see cref="CardInfo"/> to access.</param>
     /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
@@ -647,7 +647,7 @@ public static partial class CardExtensions
 
     #region Bools
     /// <summary>
-    /// Sets the card's <c>onePerDeck</c> field, which controls whether the player can own multiple copies of it in their deck.
+    /// Sets the card's <see cref="CardInfo.onePerDeck"/> field, which controls whether the player can own multiple copies of it in their deck.
     /// </summary>
     /// <returns>The same <see cref="CardInfo"/> so a chain can continue.</returns>
     public static CardInfo SetOnePerDeck(this CardInfo info, bool onePerDeck = true)

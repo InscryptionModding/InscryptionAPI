@@ -80,7 +80,7 @@ public struct CustomLine
     /// </summary>
     public string specialInstruction = default;
     /// <summary>
-    /// The story condition that must be met if <c>storyConditionMustBemet</c> is true.
+    /// The story condition that must be met if <see cref="storyConditionMustBeMet"/> is true.
     /// </summary>
     public StoryEvent storyCondition = StoryEvent.BasicTutorialCompleted;
     /// <summary>

@@ -201,7 +201,7 @@ public static class AbilityManager
     public static event Func<List<FullAbility>, List<FullAbility>> ModifyAbilityList;
 
     /// <summary>
-    /// Custom <c>AbilityMetaCategory</c> enum for marking an ability as modular in Part 2.
+    /// Custom <see cref="AbilityMetaCategory"/> enum for marking an ability as modular in Part 2.
     /// </summary>
     public static AbilityMetaCategory Part2Modular => GuidManager.GetEnumValue<AbilityMetaCategory>(InscryptionAPIPlugin.ModGUID, "Part2Modular");
     // [ModifyAbilityList](xref:InscryptionAPI.AbilityManager.ModifyAbilityList)

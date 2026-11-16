@@ -172,7 +172,7 @@ public static class PeltManager
     /// Creates a new instance of CustomPeltData then adds it to the game.
     /// </summary>
     /// <param name="pluginGuid">GUID of the mod adding this pelt.</param>
-    /// <param name="peltCardInfo">The <c>CardInfo</c> for the actual pelt card.</param>
+    /// <param name="peltCardInfo">The <see cref="CardInfo"/> for the actual pelt card.</param>
     /// <param name="getCardChoices">The list of possible cards the Trader will offer for this pelt.</param>
     /// <param name="baseBuyPrice">The starting price of this pelt when buying from the Trapper.</param>
     /// <param name="extraAbilitiesToAdd">The number of extra sigils card choices will have when trading this pelt to the Trader.</param>
@@ -187,7 +187,7 @@ public static class PeltManager
     /// Creates a new instance of CustomPeltData then adds it to the game. Requires all parameter arguments be filled.
     /// </summary>
     /// <param name="pluginGuid">GUID of the mod adding this pelt.</param>
-    /// <param name="peltCardInfo">The <c>CardInfo</c> for the actual pelt card.</param>
+    /// <param name="peltCardInfo">The <see cref="CardInfo"/> for the actual pelt card.</param>
     /// <param name="getCardChoices">The list of possible cards the Trader will offer for this pelt.</param>
     /// <param name="baseBuyPrice">The starting price of this pelt when buying from the Trapper.</param>
     /// <param name="extraAbilitiesToAdd">The number of extra sigils card choices will have when trading this pelt to the Trader.</param>
@@ -325,7 +325,7 @@ public static class PeltManager
     /// Retrieves the tier name of the pelt.
     /// </summary>
     /// <param name="peltData">The <see cref="PeltData"/> to access.</param>
-    /// <returns>The tier name of the pelt. If <c>peltData</c> has no defined tier name, <see cref="GetTierNameFromPelt(string)"/> will be called and used instead.</returns>
+    /// <returns>The tier name of the pelt. If <paramref name="peltData"/> has no defined tier name, <see cref="GetTierNameFromPelt(string)"/> will be called and used instead.</returns>
     public static string GetTierNameFromData(PeltData peltData)
     {
         return peltData.peltTierName ?? GetTierNameFromPelt(peltData.peltCardName);
