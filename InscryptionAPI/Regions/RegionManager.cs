@@ -20,14 +20,16 @@ public static class RegionManager
     /// All vanilla map regions, reordered to match the general order they're encounter during the story.
     /// </summary>
     /// <remarks>
-    /// Order of regions in this collection:
-    /// <br/>Forest
-    /// <br/>Wetlands
-    /// <br/>Alpine
-    /// <br/>Midnight
-    /// <br/>Midnight_Ascension
-    /// <br/>Pirateville
-    /// <br/>!TEST_PART3
+    /// <list type="table">
+    ///     <listheader>Order of regions in <see cref="BaseGameRegions"/>:</listheader>
+    ///     <item><term>0</term><description>Forest</description></item>
+    ///     <item><term>1</term><description>Wetlands</description></item>
+    ///     <item><term>2</term><description>Alpine</description></item>
+    ///     <item><term>3</term><description>Midnight</description></item>
+    ///     <item><term>4</term><description>Midnight_Ascension</description></item>
+    ///     <item><term>5</term><description>Pirateville</description></item>
+    ///     <item><term>6</term><description>!TEST_PART3</description></item>
+    /// </list>
     /// </remarks>
     public static readonly ReadOnlyCollection<RegionData> BaseGameRegions = new(ReorderBaseRegions());
 
