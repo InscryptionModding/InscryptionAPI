@@ -30,6 +30,7 @@ public static class RuleBookManager
         public Color redirectTextColour;
         /// <summary>
         /// The ID of the page the hyperlink redirects to.
+        /// Eg., for ability redirects this will be the ability's id as a string.
         /// </summary>
         public string redirectPageId;
 
@@ -57,19 +58,15 @@ public static class RuleBookManager
         public RuleBookPageInfo parentPageInfo;
 
         /// <summary>
-        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
-        /// <br/>Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// <br/>Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use <see cref="PageRangeType.Unique"/> if you want to redirect to a custom rulebook page using its <c>pageId</c>.
-        /// <br/>Tuple.Item2 (Color): the colour the Key text will be recoloured to.
-        /// <br/>Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// Tracks all rulebook redirects that this custom rulebook page's description will have.
         /// </summary>
         public Dictionary<string, RedirectInfo> RulebookDescriptionRedirects = new();
 
         /// <summary>
-        /// Creates 
+        /// Creates a new instance of <see cref="RuleBookPageInfoExt"/>.
         /// </summary>
-        /// <param name="parentPageInfo"></param>
-        /// <param name="redirects"></param>
+        /// <param name="parentPageInfo">The <see cref="RuleBookPageInfo"/> that this instance will use as a prent reference.</param>
+        /// <param name="redirects">All redirects for this rulebook page, mapped to the text that will be hyperlinked.</param>
         public RuleBookPageInfoExt(RuleBookPageInfo parentPageInfo, Dictionary<string, RedirectInfo> redirects)
         {
             this.parentPageInfo = parentPageInfo;

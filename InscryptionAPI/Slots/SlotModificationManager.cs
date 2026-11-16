@@ -99,11 +99,7 @@ public class SlotModificationManager : MonoBehaviour
         public Type SlotBehaviour { get; internal set; }
 
         /// <summary>
-        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
-        /// <br/>Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// <br/>Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its <c>pageId</c>.
-        /// <br/>Tuple.Item2 (Color): the colour the Key text will be recoloured to.
-        /// <br/>Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// Tracks all rulebook redirects that this slot modification's description will have.
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
