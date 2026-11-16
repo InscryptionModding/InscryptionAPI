@@ -1,5 +1,9 @@
 #nullable enable
 namespace InscryptionAPI.TalkingCards.Helpers;
+
+/// <summary>
+/// Utility class adding new extensions to the <see cref="string"/> object.
+/// </summary>
 public static class StringExtensions
 {
     public static string SentenceCase(this string key)

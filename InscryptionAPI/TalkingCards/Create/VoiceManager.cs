@@ -20,7 +20,7 @@ internal static class VoiceManager
     private static bool IsInvalidVoiceId(string? id)
         => id == null || ValidVoiceIds.Contains(id);
 
-    public static bool Add(string? soundPath, string? id)
+    internal static bool Add(string? soundPath, string? id)
     {
         if (string.IsNullOrWhiteSpace(soundPath)) return false;
 
