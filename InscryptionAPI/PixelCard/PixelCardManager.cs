@@ -9,18 +9,43 @@ using UnityEngine.SceneManagement;
 
 namespace InscryptionAPI.PixelCard;
 
+/// <summary>
+/// Manager class for handling decals, custom appearances, and Gemified in Act 2.
+/// </summary>
 [HarmonyPatch]
 public static class PixelCardManager // code courtesy of Nevernamed and James/kelly
 {
+    /// <summary>
+    /// Utility class containing all data needed to apply decals to Act 2 cards.
+    /// </summary>
     public class PixelDecalData
     {
+        /// <summary>
+        /// The GUID of the mod adding this decal.
+        /// </summary>
         public string PluginGUID;
+        /// <summary>
+        /// The name of the texture.
+        /// </summary>
         public string TextureName;
+        /// <summary>
+        /// The texture of the decal that will be added to cards.
+        /// </summary>
         public Texture2D DecalTexture;
     }
 
+    /// <summary>
+    /// All mod-added Act 2 decals.
+    /// </summary>
     public static readonly List<PixelDecalData> CustomPixelDecals = new();
 
+    /// <summary>
+    /// Creates and registers a new decal with the API for use in Act 2.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding the decal.</param>
+    /// <param name="textureName">The name of the decal's texture.</param>
+    /// <param name="texture">The texture used for the decal.</param>
+    /// <returns>The <see cref="PixelDecalData"/> containing all data for the decal.</returns>
     public static PixelDecalData AddGBCDecal(string pluginGUID, string textureName, Texture2D texture)
     {
         PixelDecalData result = new()
@@ -195,9 +220,21 @@ public static class PixelCardManager // code courtesy of Nevernamed and James/ke
         return decal;
     }
 
+    /// <summary>
+    /// Sprite for the Gemified decal used with <see cref="PixelGemificationBorder"/>.
+    /// </summary>
     public static Sprite PixelGemifiedDecal;
+    /// <summary>
+    /// Sprite for the lit orange gem used in <see cref="PixelGemificationBorder"/>.
+    /// </summary>
     public static Sprite PixelGemifiedOrangeLit;
+    /// <summary>
+    /// Sprite for the lit blue gem used in <see cref="PixelGemificationBorder"/>.
+    /// </summary>
     public static Sprite PixelGemifiedBlueLit;
+    /// <summary>
+    /// Sprite for the lit green gem used in <see cref="PixelGemificationBorder"/>.
+    /// </summary>
     public static Sprite PixelGemifiedGreenLit;
 
     private class DecalIdentifier : MonoBehaviour { }

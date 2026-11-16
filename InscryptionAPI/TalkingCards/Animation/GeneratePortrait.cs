@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.TalkingCards.Animation;
 
+/// <summary>
+/// Helper class for creating talking card portraits.
+/// </summary>
 public static class GeneratePortrait
 {
     internal static AssetBundle? PortraitBundle;
@@ -16,17 +19,34 @@ public static class GeneratePortrait
     private static Transform? APIPortraits;
 
     #region FaceInfoDefault
+    /// <summary>
+    /// Default voice ID.
+    /// </summary>
     public const string VoiceId = "female1_voice";
+    /// <summary>
+    /// Default blink rate.
+    /// </summary>
     public const float BlinkRate = 1.5f;
+    /// <summary>
+    /// Default voice pitch.
+    /// </summary>
     public const float VoicePitch = 1f;
     #endregion
 
+    /// <summary>
+    /// ID for a dummy talking card special ability.
+    /// </summary>
     public static SpecialTriggeredAbility DialogueDummy = CreateDummyAbility();
 
     #region Sprites
-    public static readonly Sprite EmptyPortrait
-        = AssetHelpers.MakeSprite(AssetHelpers.EmptyAndTransparent());
+    /// <summary>
+    /// Sprite for an empty card portrait.
+    /// </summary>
+    public static readonly Sprite EmptyPortrait = AssetHelpers.MakeSprite(AssetHelpers.EmptyAndTransparent());
 
+    /// <summary>
+    /// Tuple containing two empty card portrait sprites.
+    /// </summary>
     public static readonly (Sprite, Sprite) EmptyPortraitTuple
         = (EmptyPortrait, EmptyPortrait);
     #endregion

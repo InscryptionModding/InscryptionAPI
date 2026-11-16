@@ -255,6 +255,9 @@ internal class BuyPeltsSequencer_CreatePelt
     }
 }
 
+/// <summary>
+/// Patcher class for modifying the <see cref="BuyPeltsSequencer.GiveFreePeltSequence"/> method.
+/// </summary>
 [HarmonyPatch]
 public class BuyPeltsSequencer_GiveFreePeltSequence
 {
@@ -283,5 +286,12 @@ public class BuyPeltsSequencer_GiveFreePeltSequence
         return codes;
     }
 
+    /// <summary>
+    /// New method for determining what free pelt card is given.
+    /// <br/>
+    /// Defaults to Hare Pelt and its return value does not change unless this is patched.
+    /// </summary>
+    /// <param name="currentFreeCard">The current value of this method.</param>
+    /// <returns>The card that the Trapper will give to the player for free.</returns>
     public static CardInfo ChangeFreeCard(CardInfo currentFreeCard) => CardLoader.GetCardByName("PeltHare");
 }

@@ -26,7 +26,7 @@ public static class BoonManager
         public BoonData boon;
 
         /// <summary>
-        /// A subclass of [BoonBehaviour](xref:InscryptionAPI.Boons.BoonBehaviour) that implements the boon's behaviour.
+        /// A subclass of <see cref="BoonBehaviour"/> that implements the boon's logic.
         /// </summary>
         public Type boonHandlerType;
 
@@ -40,14 +40,13 @@ public static class BoonManager
         /// </summary>
         public bool stacks;
 
+        /// <summary>
+        /// Metacategories for what rulebooks this boon should appear in.
+        /// </summary>
         public List<AbilityMetaCategory> metaCategories = new();
 
         /// <summary>
-        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
-        /// Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
-        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
-        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// Tracks all rulebook redirects that this boon's description will have.
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
     }
@@ -56,6 +55,10 @@ public static class BoonManager
     /// All boons that come as part of the vanilla game.
     /// </summary>
     public static readonly ReadOnlyCollection<BoonData> BaseGameBoons = new(Resources.LoadAll<BoonData>("Data/Boons"));
+
+    /// <summary>
+    /// All of the vanilla game's boons as <see cref="FullBoon"/> objects.
+    /// </summary>
     public static readonly List<FullBoon> FullBaseGameBoons = BaseGameBoons.Select(x => new FullBoon()
     {
         appearInRulebook = true,
@@ -66,6 +69,9 @@ public static class BoonManager
     }).ToList();
     internal static readonly ObservableCollection<FullBoon> NewBoons = new();
 
+    /// <summary>
+    /// The current processed list of all boons in the game, including vanilla and mod-added boons.
+    /// </summary>
     public static List<FullBoon> AllFullBoons { get; private set; } = new(FullBaseGameBoons);
 
     /// <summary>
@@ -163,6 +169,12 @@ public static class BoonManager
         return New<T>(guid, name, rulebookDescription, pathToIcon, pathToCardArt, stackable, appearInLeshyTrials, appearInRulebook);
     }
 
+    /// <summary>
+    /// Extension method for adding metacategories to a boon based on its ID.
+    /// </summary>
+    /// <param name="boonType">The boon ID.</param>
+    /// <param name="categories">Metacategories to add.</param>
+    /// <returns>The same Boon ID so a chain can continue.</returns>
     public static BoonData.Type AddRuleBookCategories(this BoonData.Type boonType, params AbilityMetaCategory[] categories)
     {
         FullBoon boon = boonType.GetFullBoon();
@@ -176,6 +188,11 @@ public static class BoonManager
         }
         return boonType;
     }
+    /// <summary>
+    /// Retrieves the <see cref="FullBoon"/> object associated with the given boon ID.
+    /// </summary>
+    /// <param name="boonType">The boon ID.</param>
+    /// <returns>The boon's <see cref="FullBoon"/> object, or null if not found.</returns>
     public static FullBoon GetFullBoon(this BoonData.Type boonType)
     {
         return AllFullBoons.Find(x => x.boon.type == boonType);

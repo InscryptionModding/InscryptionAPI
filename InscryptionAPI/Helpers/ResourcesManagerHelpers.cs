@@ -14,7 +14,7 @@ public static class ResourcesManagerHelpers
 {
     /// <summary>
     /// Removes a given amount of energy cells, which determines how much energy a player has available at the start of a turn.
-    /// Affected by 'ResourcesManager.preventNextEnergyLoss'.
+    /// Affected by value of <see cref="ResourcesManager.preventNextEnergyLoss"/>.
     /// </summary>
     /// <param name="instance">The current <see cref="ResourcesManager"/>.</param>
     /// <param name="amount">How many energy cells to close. Gets capped to the current number of open energy cells.</param>
@@ -24,11 +24,11 @@ public static class ResourcesManagerHelpers
     }
 
     /// <summary>
-    /// A variant of RemoveMaxEnergy that can bypass ResourcesManager.PreventNextEnergyLoss.
-    /// Affected by 'ResourcesManager.preventNextEnergyLoss'.
+    /// A variant of RemoveMaxEnergy that can bypass <see cref="ResourcesManager.PreventNextEnergyLoss"/>.
     /// </summary>
     /// <param name="instance">The current <see cref="ResourcesManager"/>.</param>
     /// <param name="amount">How many energy cells to close. Gets capped to the current number of open energy cells.</param>
+    /// <param name="preventable">If the the value of <see cref="ResourcesManager.preventNextEnergyLoss"/> should be respected.</param>
     public static IEnumerator RemoveMaxEnergy(this ResourcesManager instance, int amount, bool preventable)
     {
         if (preventable && instance.preventNextEnergyLoss)
