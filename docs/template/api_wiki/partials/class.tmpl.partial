@@ -181,9 +181,6 @@
 </div>
 {{/eventType}}
 
-
-{{/syntax}}
-
 {{#example.0}}
 <h4 class="section" id="{{id}}_examples">{{__global.examples}}</h4>
 <p>The following is a example of how you can use this member: </p>
