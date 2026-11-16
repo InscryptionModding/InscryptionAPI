@@ -19,24 +19,36 @@
   {{#sourceurl}}<a class="header-action link-secondary" title="View source" href="{{sourceurl}}"><i class="bi bi-code-slash"></i></a>{{/sourceurl}}
 </h3>
 
+{{#summary}}
 <div class="markdown level1 summary">
-  <p>A brief description of this member and its intended purpose.</p>
+  <h4>{{__global.summary}}</h4>
+  <p>The following is a breif description of what this member does, and what it is meant for: </p>
   {{{summary}}}
 </div>
+{{/summary}}
 
+{{#conceptual}}
 <div class="markdown level1 conceptual">
-  <p>Additional conceptual information explaining this member, its behavior, and how it should be used.</p>
+  <h4>{{__global.conceptual}}</h4>
+  <p>The following is some breif conceptual information on how this member should be used: </p>
   {{{conceptual}}}
 </div>
+{{/conceptual}}
 
 {{#syntax}}
+<h4 id="{{id}}_syntax">
+  {{__global.syntax}}
+</h4>
+<p>The following codeblock is the declaration syntax of this member found in the code: </p>
+
 <div class="codewrapper">
   <pre><code class="lang-{{_lang}} hljs">{{syntax.content.0.value}}</code></pre>
 </div>
+{{/syntax}}
 
 {{#syntax.parameters.0}}
 <h4 class="section">{{__global.parameters}}</h4>
-<p>Lists the parameters accepted by this member, including their names, types, and descriptions.</p>
+<p>The following table is a full list of parameters used by this member, in the form of <c>type, name | description</c> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-parameters">
   <thead>
@@ -70,7 +82,7 @@
 
 {{#syntax.return}}
 <h4 class="section">{{__global.returns}}</h4>
-<p>Describes the value returned by this member, including its type and purpose.</p>
+<p>The following table is a full list of returns used by this member, in the form of <c>type, name | description</c> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-returns">
   <thead>
@@ -91,7 +103,7 @@
 
 {{#syntax.typeParameters.0}}
 <h4 class="section">{{__global.typeParameters}}</h4>
-<p>Lists the generic type parameters declared by this member, including their names and descriptions.</p>
+<p>The following table is a full list of Type Parameters used by this member, in the form of <c>type, name | description</c> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-type-parameters">
   <thead>
@@ -121,9 +133,9 @@
 {{#inEnum}}
 {{#fieldValue}}
 <h4 class="section">{{__global.fieldValue}}</h4>
-<p>Specifies the constant value assigned to this enumeration member.</p>
+<p>The following table is a full list of enumerations used by this member, in the form of <c>name | description</c> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
-<table class="api-returns">
+<table class="api-fields">
   <thead>
     <tr>
       <th>{{__global.type}}</th>
@@ -143,7 +155,7 @@
 
 {{#propertyValue}}
 <h4 class="section">Property Value</h4>
-<p>Describes the value exposed by this property, including its type and purpose.</p>
+<p>The following is the type associated with this member: </p>
 
 <div class="property-value">
   <div class="parameter-type">
@@ -157,30 +169,24 @@
 
 {{#eventType}}
 <h4 class="section">{{__global.eventType}}</h4>
-<p>Identifies the delegate type used by this event and describes its purpose.</p>
+<p>The following is the event type associated with this member: </p>
 
-<table class="api-returns">
-  <thead>
-    <tr>
-      <th>{{__global.type}}</th>
-      <th>{{__global.description}}</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>{{{type.specName.0.value}}}</td>
-      <td>{{{description}}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="event-type">
+  <div class="parameter-type">
+    {{{type.specName.0.value}}}
+  </div>
+  <div class="markdown">
+    {{{description}}}
+  </div>
+</div>
 {{/eventType}}
+
 
 {{/syntax}}
 
 {{#example.0}}
 <h4 class="section" id="{{id}}_examples">{{__global.examples}}</h4>
-<p>Provides practical usage examples demonstrating how this member can be implemented or used.</p>
+<p>The following is a example of how you can use this member: </p>
 {{/example.0}}
 {{#example}}
 {{{.}}}
@@ -188,13 +194,13 @@
 
 {{#remarks}}
 <h4 class="section" id="{{id}}_remarks">{{__global.remarks}}</h4>
-<p>Provides additional information, implementation details, and considerations relevant to this member.</p>
+<p>The following is additional information related to this member: </p>
 <div class="markdown level1 remarks">{{{remarks}}}</div>
 {{/remarks}}
 
 {{#exceptions.0}}
 <h4 class="section">{{__global.exceptions}}</h4>
-<p>Lists the exceptions that may be thrown by this member and describes the conditions under which they occur.</p>
+<p>The following table is a full list of Exceptions used by this member, in the form of <c>type | description</c> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-exceptions">
   <thead>
@@ -223,7 +229,7 @@
 <dl class="typelist seealso">
   <dt>{{__global.seealso}}</dt>
   <dd>
-    <p>References related types, members, and external resources that provide additional information.</p>
+    <p>References in which have additional information related to how you can use this member, or functions and utilities that use this member: </p>
 {{/seealso.0}}
 {{#seealso}}
   {{#isCref}}
@@ -240,20 +246,3 @@
 
 {{/children}}
 {{/children}}
-
-{{#seealso.0}}
-<h2 id="seealso">{{__global.seealso}}</h2>
-<div class="seealso">
-  <p>References related types, members, and external resources that provide additional information.</p>
-{{/seealso.0}}
-{{#seealso}}
-  {{#isCref}}
-    <div>{{{type.specName.0.value}}}</div>
-  {{/isCref}}
-  {{^isCref}}
-    <div>{{{url}}}</div>
-  {{/isCref}}
-{{/seealso}}
-{{#seealso.0}}
-</div>
-{{/seealso.0}}
