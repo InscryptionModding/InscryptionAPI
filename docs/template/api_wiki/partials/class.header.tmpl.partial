@@ -207,18 +207,33 @@
   <summary>
     <h2 class="extensionMethods">Extension Methods (Click me to Expand)</h2>
   </summary>
-  <p>The following are methods in which you can use that act as extensions to this type: </p>
+  <p>The following are methods which can be used as extensions to this type:</p>
   <div class="typelist-content">
 {{/extensionMethods.0}}
 
 {{#extensionMethods}}
-    <div>
-    {{#definition}}
-      <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
-    {{/definition}}
-    {{^definition}}
-      <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
-    {{/definition}}
+    <div class="extension-method">
+      <div class="extension-method-header">
+        {{#definition}}
+          <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
+        {{/definition}}
+        {{^definition}}
+          <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
+        {{/definition}}
+      </div>
+
+      {{#definition}}
+        <xref uid="{{definition}}" template="partials/extensionMethod.summary.tmpl"/>
+      {{/definition}}
+      {{^definition}}
+        <xref uid="{{uid}}" template="partials/extensionMethod.summary.tmpl"/>
+      {{/definition}}
+
+      {{#specName.0.value}}
+      <div class="codewrapper">
+        <pre><code class="lang-csharp hljs">{{{specName.0.value}}}</code></pre>
+      </div>
+      {{/specName.0.value}}
     </div>
 {{/extensionMethods}}
 
