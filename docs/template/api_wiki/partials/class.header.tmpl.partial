@@ -212,13 +212,23 @@
 {{/extensionMethods.0}}
 
 {{#extensionMethods}}
-    <div>
-    {{#definition}}
-      <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
-    {{/definition}}
-    {{^definition}}
-      <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
-    {{/definition}}
+    <div class="extension-method">
+      <div class="extension-method-header">
+      {{#definition}}
+        <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
+      {{/definition}}
+      {{^definition}}
+        <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
+      {{/definition}}
+      </div>
+      {{#specName.0.value}}
+      <div class="codewrapper">
+        <pre><code class="lang-csharp hljs">{{{specName.0.value}}}</code></pre>
+      </div>
+      {{/specName.0.value}}
+      {{#summary}}
+      <div class="markdown level1 summary">{{{summary}}}</div>
+      {{/summary}}
     </div>
 {{/extensionMethods}}
 
