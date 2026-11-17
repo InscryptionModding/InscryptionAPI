@@ -222,7 +222,12 @@
         {{/definition}}
       </div>
 
-      <xref uid="{{.}}" template="partials/extensionMethod.summary.tmpl"/>
+      {{#definition}}
+        <xref uid="{{definition}}" template="partials/extensionMethod.summary.tmpl"/>
+      {{/definition}}
+      {{^definition}}
+        <xref uid="{{uid}}" template="partials/extensionMethod.summary.tmpl"/>
+      {{/definition}}
 
       {{#specName.0.value}}
       <div class="codewrapper">
