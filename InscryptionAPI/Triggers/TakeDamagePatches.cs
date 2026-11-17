@@ -7,10 +7,13 @@ using System.Reflection.Emit;
 
 namespace InscryptionAPI.Triggers;
 
-// Patches to TakeDamage that add some more triggers and multi-shield support
+/// <summary>
+/// Patches to TakeDamage that add some more triggers and multi-shield support.
+/// </summary>
 [HarmonyPatch]
-public static class TakeDamagePatches
+internal static class TakeDamagePatches
 {
+    // potential trigger for handling the hammer item.
     /*[HarmonyPostfix, HarmonyPatch(typeof(HammerItem), nameof(HammerItem.OnValidTargetSelected))]
     public static IEnumerator AddTakeDamageHammerTrigger(IEnumerator enumerator, HammerItem __instance, CardSlot targetSlot, GameObject firstPersonItem)
     {

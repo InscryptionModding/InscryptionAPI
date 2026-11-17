@@ -6,7 +6,7 @@ namespace InscryptionAPI.TalkingCards.Helpers;
 
 internal class CardHelpers
 {
-    public static CardInfo? Get(string name)
+    internal static CardInfo? Get(string name)
     {
         CardManager.SyncCardList();
         CardInfo? card;

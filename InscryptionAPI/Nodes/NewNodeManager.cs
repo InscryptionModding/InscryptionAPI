@@ -187,7 +187,7 @@ public static class NewNodeManager
         /// <summary>
         /// Sets the force generation conditions for this node.
         /// </summary>
-        /// <param name="newGenerationPrerequisites">New force generation conditions for this node.</param>
+        /// <param name="newForceGenerationConditions">New force generation conditions for this node.</param>
         /// <returns>This node, for method chaining purposes.</returns>
         public FullNode SetForceGenerationConditions(List<NodeData.SelectionCondition> newForceGenerationConditions)
         {
@@ -373,18 +373,48 @@ public static class NewNodeManager
 }
 
 #region SelectionConditions
+/// <summary>
+/// SelectionCondition for a node that prevents it from appearing unless a certain number of the given challenge is present.
+/// </summary>
 public class NumChallengesOfTypeActive : NodeData.SelectionCondition
 {
+    /// <summary>
+    /// The challenge ID that this condition will check for.
+    /// </summary>
     public AscensionChallenge challenge;
+    /// <summary>
+    /// The amount of this challenge that will be used in this condition's conditional.
+    /// </summary>
     public int numChallenges;
+    /// <summary>
+    /// If this condition should be satisified when the number of active challenges is greater than <see cref="numChallenges"/>.
+    /// <br/>
+    /// If false, this condition checks for less-than-or-equal-to instead.
+    /// </summary>
     public bool greaterThanNumActive;
 
+    /// <summary>
+    /// Creates a new instance of this selection condition.
+    /// </summary>
+    /// <param name="challenge">The challenge ID that this condition will check for.</param>
+    /// <param name="numChallenges">The amount of this challenge that will be used in this condition's conditional.</param>
+    /// <param name="greaterThanNumActive">If this condition should check for greater-than. If false, check less-than instead.</param>
     public NumChallengesOfTypeActive(AscensionChallenge challenge, int numChallenges, bool greaterThanNumActive)
     {
         this.challenge = challenge;
         this.numChallenges = numChallenges;
         this.greaterThanNumActive = greaterThanNumActive;
     }
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="greaterThanNumActive"/> is true, this condition is satisfied when the number of active copies of <c><see cref="challenge"/> >= <see cref="numChallenges"/></c>
+    /// <br/>
+    /// If <see cref="greaterThanNumActive"/> is false, this condition is satisfied when the number of active copies of <c><see cref="challenge"/> &lt;= <see cref="numChallenges"/></c>
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         if (greaterThanNumActive)
@@ -393,27 +423,47 @@ public class NumChallengesOfTypeActive : NodeData.SelectionCondition
         return this.numChallenges <= AscensionSaveData.Data.GetNumChallengesOfTypeActive(challenge);
     }
 }
+/// <summary>
+/// SelectionCondition for a node that prevents it from appearing unless the given challenge is active.
+/// </summary>
 public class ChallengeIsActive : NodeData.SelectionCondition
 {
+    /// <summary>
+    /// The challenge ID that this condition will check for.
+    /// </summary>
     public AscensionChallenge challenge;
+    /// <summary>
+    /// If this conditon requires <see cref="challenge"/> be excluded from the active list or not.
+    /// </summary>
     public bool exclude;
 
+    /// <summary>
+    /// Creates a new instance of this selection condition.
+    /// </summary>
+    /// <param name="challenge">The challenge ID that this condition will check for.</param>
+    /// <param name="exclude">If the challenge needs to be active in the run or not. If true, the challenge cannot be active.</param>
     public ChallengeIsActive(AscensionChallenge challenge, bool exclude)
     {
         this.challenge = challenge;
         this.exclude = exclude;
     }
+    /// <summary>
+    /// Determines if this condition is satisfied and this node can be generated.
+    /// <br/><br/>
+    /// If <see cref="exclude"/> is true, this condition is satisfied if <see cref="challenge"/> is not active.
+    /// <br/>
+    /// If <see cref="exclude"/> is false, this condition is satisfied if <see cref="challenge"/> is active.
+    /// </summary>
+    /// <param name="gridY">The y-index of this node. Higher values represent further nodes on the map.</param>
+    /// <param name="previousNodes">The nodes generated at the previous y-index.</param>
+    /// <returns>True if this node condition is satisfied and the node can be generated and added to the map.</returns>
     public override bool Satisfied(int gridY, List<NodeData> previousNodes)
     {
         bool flag = AscensionSaveData.Data.ChallengeIsActive(challenge);
-        if (!(flag && exclude))
-        {
-            if (!exclude)
-                return !flag;
-
-            return false;
+        if (exclude) {
+            return !flag;
         }
-        return true;
+        return flag;
     }
 }
 #endregion

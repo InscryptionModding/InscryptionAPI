@@ -39,7 +39,7 @@ public static class ListExtensions
     /// <param name="toRepeat">The Item in which we want to repeat.</param>
     /// <param name="times">The amount of times we want to repeat it.</param>
     /// <typeparam name="T">The type of <see cref="List{T}"/> we are operating on, for example <see cref="List{T}"/> where T is <see cref="string"/> would result in the Type being <see cref="string"/>.</typeparam>
-    /// <returns>A new <see cref="List{T}"/> of the item specified by <see cref="toRepeat"/> repeated for the amount of times specified by the <see cref="times"/> parameter.</returns>
+    /// <returns>A new <see cref="List{T}"/> of the item specified by <paramref name="toRepeat"/> repeated for the amount of times specified by the <paramref name="times"/> parameter.</returns>
     public static List<T> Repeat<T>(this T toRepeat, int times)
     {
         List<T> repeated = new();
@@ -68,8 +68,9 @@ public static class ListExtensions
     /// <summary>
     /// A function used to get a Seeded Random item from the <see cref="List{T}"/>.
     /// </summary>
-    /// <param name="list">The <see cref="List{T}"/> we are using to get a Seeded Random Item from.</param>
     /// <typeparam name="T">The type of <see cref="List{T}"/> we are operating on, for example <see cref="List{T}"/> where T is <see cref="string"/> would result in the Type being <see cref="string"/>.</typeparam>
+    /// <param name="list">The <see cref="List{T}"/> we are using to get a Seeded Random Item from.</param>
+    /// <param name="seed">Seed to use in the random generator.</param>
     /// <returns>A Seeded Random element from the passed <see cref="List{T}"/> using <see cref="DiskCardGame.SeededRandom.Range(System.Int32, System.Int32, System.Int32)"/></returns>
     public static T GetSeededRandom<T>(this List<T> list, int seed)
     {

@@ -6,12 +6,18 @@ using UnityEngine;
 
 namespace InscryptionAPI.Encounters;
 
+/// <summary>
+/// Old manager class for managing custom map nodes. Use NewNodeManager instead.
+/// </summary>
 [HarmonyPatch]
 [Obsolete("NodeManager is deprecated, use NewNodeManager instead.")]
 public static class NodeManager
 {
     private static List<NodeInfo> AllNodes = new();
 
+    /// <summary>
+    /// Flags for different types of generation.
+    /// </summary>
     [Flags]
     public enum NodePosition
     {
@@ -51,15 +57,39 @@ public static class NodeManager
         PostBoss = 32
     }
 
-    public class NodeInfo
-    {
+    /// <summary>
+    /// Represents a new node added by the API.
+    /// </summary>
+    [Obsolete("NodeManager is deprecated, use NewNodeManager instead.")]
+    public class NodeInfo {
+        /// <summary>
+        /// Animation frames for the node object on the map. If null or empty, the animation frames of the map object won't be affected.
+        /// </summary>
         public Texture2D[] animatedMapNode { get; set; }
+        /// <summary>
+        /// Flags that affect the way the node generates.
+        /// </summary>
         public NodePosition nodePosition { get; set; }
+        /// <summary>
+        /// Type for the node sequencer. If null, it will try to get the sequencer type from the sequencer prefab instead.
+        /// </summary>
         public Type sequencerType { get; set; }
+        /// <summary>
+        /// Type for the node data.
+        /// </summary>
         public Type nodeDataType { get; set; }
+        /// <summary>
+        /// Internal name of the node.
+        /// </summary>
         public string guid { get; internal set; }
+        /// <summary>
+        /// Guid of the mod this node came from.
+        /// </summary>
         public string ModGUID { get; internal set; }
 
+        /// <summary>
+        /// Creates a new node.
+        /// </summary>
         public CustomNodeData BuildNode()
         {
             CustomNodeData data = Activator.CreateInstance(this.nodeDataType) as CustomNodeData;

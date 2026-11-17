@@ -10,6 +10,9 @@ using static InscryptionAPI.Items.ConsumableItemManager;
 
 namespace InscryptionAPI.Items;
 
+/// <summary>
+/// Class containing patches to make custom items work.
+/// </summary>
 [HarmonyPatch]
 public static class ConsumableItemPatches
 {
@@ -125,12 +128,12 @@ public static class ConsumableItemPatches
 
         internal static ItemData currentItemData = null;
 
-        public static IEnumerable<MethodBase> TargetMethods()
+        private static IEnumerable<MethodBase> TargetMethods()
         {
             yield return AccessTools.Method(ConsumableItemSlot_ConsumeItem_Class, "MoveNext");
         }
 
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             // === We want to turn this
 
@@ -160,7 +163,7 @@ public static class ConsumableItemPatches
             return codes;
         }
 
-        public static void SwitchToView(ViewManager instance, View view, bool immediate, bool lockAfter)
+        private static void SwitchToView(ViewManager instance, View view, bool immediate, bool lockAfter)
         {
             if (currentItemData != null && currentItemData is ConsumableItemData itemData && itemData.CanActivateOutsideBattles())
             {
@@ -193,6 +196,13 @@ public static class ConsumableItemPatches
         return codes;
     }
 
+    /// <summary>
+    /// Modified version of <see cref="RuleBookInfo.ConstructPageData(AbilityMetaCategory)"/> specific to items that enables custom items to also appear in the rulebook.
+    /// </summary>
+    /// <param name="instance">Current instance of the rulebook's utility class that stores page data.</param>
+    /// <param name="pageRange">Reference to the rulebook prefab object used for constructed pages.</param>
+    /// <param name="metaCategory">Used to determine if an item's rulebook entry can appear in this act.</param>
+    /// <returns>A list of all constructed rulebook pages.</returns>
     public static List<RuleBookPageInfo> ConstructItemPages(RuleBookInfo instance, PageRangeInfo pageRange, AbilityMetaCategory metaCategory)
     {
         List<ConsumableItemData> allConsumables = ItemsUtil.AllConsumables;

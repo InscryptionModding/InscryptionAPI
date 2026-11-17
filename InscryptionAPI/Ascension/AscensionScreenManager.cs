@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Ascension;
 
+/// <summary>
+/// Manager class for handling custom menu screens in Kaycee's Mod.
+/// </summary>
 [HarmonyPatch]
 public static class AscensionScreenManager
 {
@@ -18,6 +21,10 @@ public static class AscensionScreenManager
 
     private static string challengeScreenHoverText = "START RUN";
 
+    /// <summary>
+    /// Creates a new ascension menu screen and registers it with the API.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public static void RegisterScreen<T>() where T : AscensionRunSetupScreenBase
     {
         registeredScreens.Add(typeof(T));
@@ -32,6 +39,9 @@ public static class AscensionScreenManager
             return sortAttr.preferredDirection;
     }
 
+    /// <summary>
+    /// Creates and initialises registered menu screens.
+    /// </summary>
     public static void InitializeAllScreens()
     {
         // Sort the screens

@@ -751,8 +751,23 @@ public interface IModifyDirectDamage
     /// <returns>True if this should modify the amount of damage taken when directly attacked.</returns>
     public bool RespondsToModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Modifies the damage value of a direct attack.
+    /// </summary>
+    /// <param name="target">The <see cref="CardSlot"/> being struck directly.</param>
+    /// <param name="damage">The current damage value.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> currently attacking.</param>
+    /// <param name="originalDamage">The original damage value before any modifications were made.</param>
+    /// <returns>The new direct damage value. Overrides the current one stored in <paramref name="damage"/>.</returns>
     public int OnModifyDirectDamage(CardSlot target, int damage, PlayableCard attacker, int originalDamage);
 
+    /// <summary>
+    /// Gets the priority for this trigger. Triggers with a higher priority will trigger first.
+    /// </summary>
+    /// <param name="target">The card slot targeted for the attack.</param>
+    /// <param name="damage">The current amount of damage to be delt.</param>
+    /// <param name="attacker">The attacking card.</param>
+    /// <returns>The trigger priority for this ability.</returns>
     public int TriggerPriority(CardSlot target, int damage, PlayableCard attacker);
 }
 
@@ -804,27 +819,92 @@ public interface IOnCardDealtDamageDirectly
 /// <summary>
 /// Trigger that is called after a shielded card was attacked and lost a shield.
 /// </summary>
+/// <remarks>
+/// Called after <see cref="IModifyDamageTaken"/>.
+/// </remarks>
 public interface IShieldPreventedDamage
 {
+    /// <summary>
+    /// If this trigger should activate when a shield blocks damage.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
+    /// <returns>True if this trigger should be activated.</returns>
     public bool RespondsToShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker);
+
+    /// <summary>
+    /// The logic for when this trigger is called and activated.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
     public IEnumerator OnShieldPreventedDamage(PlayableCard target, int damage, PlayableCard attacker);
+
+    /// <summary>
+    /// Gets the priority for this trigger. Triggers with a higher priority will trigger first.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
+    /// <returns>The trigger priority for this ability.</returns>
     public int ShieldPreventedDamagePriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 /// <summary>
 /// Variant of IShieldPreventDamage that triggers for cards in the hand.
 /// </summary>
-public interface IShieldPreventedDamageInHand
-{
+public interface IShieldPreventedDamageInHand {
+    /// <summary>
+    /// If this trigger should activate when a shield blocks damage.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
+    /// <returns>True if this trigger should be activated.</returns>
     public bool RespondsToShieldPreventedDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
+
+    /// <summary>
+    /// The logic for when this trigger is called and activated.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
     public IEnumerator OnShieldPreventedDamageInHand(PlayableCard target, int damage, PlayableCard attacker);
+
+    /// <summary>
+    /// Gets the priority for this trigger. Triggers with a higher priority will trigger first.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> whose shield blocked damage.</param>
+    /// <param name="damage">The damage that the <paramref name="attacker"/> would have ordinarily done.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that attacked <paramref name="target"/>.</param>
+    /// <returns>The trigger priority for this ability.</returns>
     public int ShieldPreventedDamageInHandPriority(PlayableCard target, int damage, PlayableCard attacker);
 }
 /// <summary>
-/// Expanded version of CardGettingAttacked trigger, executed after it, that includes the attacker as an argument
+/// Expanded version of CardGettingAttacked trigger, executed after it, that includes the attacker as an argument.
 /// </summary>
-public interface IPostCardGettingAttacked
-{
+public interface IPostCardGettingAttacked {
+    /// <summary>
+    /// If this trigger should activate when a card gets attacked.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> being targeted for attack.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that's attacking <paramref name="target"/>.</param>
+    /// <returns>True if this trigger should be activated.</returns>
     public bool RespondsToPostCardGettingAttacked(PlayableCard target, PlayableCard attacker);
+
+    /// <summary>
+    /// The logic for when this trigger is called and activated.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> being targeted for attack.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that's attacking <paramref name="target"/>.</param>
+    /// <returns>True if this trigger should be activated.</returns>
     public IEnumerator OnPostCardGettingAttacked(PlayableCard target, PlayableCard attacker);
+
+    /// <summary>
+    /// Gets the priority for this trigger. Triggers with a higher priority will trigger first.
+    /// </summary>
+    /// <param name="target">The <see cref="PlayableCard"/> being targeted for attack.</param>
+    /// <param name="attacker">The <see cref="PlayableCard"/> that's attacking <paramref name="target"/>.</param>
+    /// <returns>The trigger priority for this ability.</returns>
     public int PostCardGettingAttackedPriority(PlayableCard target, PlayableCard attacker);
 }

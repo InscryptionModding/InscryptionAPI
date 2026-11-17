@@ -9,208 +9,45 @@ using UnityEngine;
 
 namespace InscryptionAPI.Totems;
 
-public static class TotemManager
-{
-    internal enum TotemTopState
-    {
+/// <summary>
+/// Manager class for adding custom totem pieces through the API.
+/// </summary>
+public static class TotemManager {
+    internal enum TotemTopState {
         Vanilla,
         CustomTribes,
         AllTribes
     }
 
-    #region Patches
-    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new Type[] { typeof(BuildTotemNodeData), typeof(int) })]
-    private class ItemsUtil_AllConsumables
-    {
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.Vanilla)
-                return instructions;
-
-            // === We want to turn this
-
-            // List<Tribe> list = new()
-            // {
-            //     Tribe.Bird,
-            //     Tribe.Canine,
-            //     Tribe.Hooved,
-            //     Tribe.Insect,
-            //     Tribe.Reptile
-            // };
-
-            // === Into this
-
-            // List<Tribe> list = new()
-            // {
-            //     Tribe.Bird,
-            //     Tribe.Canine,
-            //     Tribe.Hooved,
-            //     Tribe.Insect,
-            //     Tribe.Reptile
-            // };
-            // ItemsUtil_AllConsumables.AddCustomTribesToList(list);
-
-            // ===
-
-
-            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-            for (int i = 0; i < codes.Count; i++)
-            {
-                if (codes[i].opcode == OpCodes.Newobj)
-                {
-                    // Make a new list
-                    for (int j = i + 1; i < codes.Count; j++)
-                    {
-                        if (codes[j].opcode == OpCodes.Stloc_0)
-                        {
-                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>) });
-
-                            // Stored the list
-                            codes.Insert(j + 1, new CodeInstruction(OpCodes.Ldloc_0));
-                            codes.Insert(j + 2, new CodeInstruction(OpCodes.Call, customMethod));
-                            return codes;
-                        }
-                    }
-                }
-            }
-
-            return codes;
-        }
-
-
-        public static void AddCustomTribesToList(List<Tribe> list)
-        {
-            list.AddRange(TribeManager.NewTribes.Where(x => x.tribeChoice).Select(x => x.tribe));
-            InscryptionAPIPlugin.Logger.LogDebug($"Total Tribes: {list.Count}");
-
-            List<CardInfo> cardsWithTribes = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
-            list.RemoveAll(x => !cardsWithTribes.Exists(ci => ci.IsOfTribe(x)));
-
-            InscryptionAPIPlugin.Logger.LogDebug($"Tribes with 1 Card: {list.Count}");
-        }
-    }
-
-    [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
-    private class ResourceBank_Awake
-    {
-        private static void Postfix(ResourceBank __instance)
-        {
-            // The resource bank has been cleared. refill it
-            if (ResourceBank.Get<GameObject>(CustomTotemTopResourcePath) == null)
-                Initialize();
-        }
-    }
-
-    [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[] { typeof(TotemTopData) })]
-    private class Totem_GetTopPiecePrefab
-    {
-        private static bool Prefix(TotemTopData data, ref GameObject __result)
-        {
-            if (TribeManager.IsCustomTribe(data.prerequisites.tribe))
-            {
-                CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == data.prerequisites.tribe);
-
-                // use the custom Totem top if it exists; otherwise use the default
-                __result = customTribeTotem?.Prefab ?? defaultTotemTop.Prefab;
-                return false;
-            }
-            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes)
-            {
-                __result = defaultTotemTop.Prefab;
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-    [HarmonyPatch(typeof(Totem), "SetData", new Type[] { typeof(ItemData) })]
-    private class Totem_SetData
-    {
-        private static void Postfix(Totem __instance, ItemData data)
-        {
-            __instance.topPieceParent.GetComponentInChildren<CompositeTotemPiece>().SetData(__instance.TotemItemData.top);
-        }
-    }
-
-    [HarmonyPatch(typeof(TotemTopData), "PrefabId", MethodType.Getter)]
-    private class TotemTopData_PrefabId
-    {
-        private static bool Prefix(TotemTopData __instance, ref string __result)
-        {
-            // Custom totem tops will always use the fallback UNLESS there is an override
-            if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe))
-            {
-                CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == __instance.prerequisites.tribe);
-                if (customTribeTotem == null)
-                {
-                    __result = CustomTotemTopID;
-                    return false;
-                }
-            }
-            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes)
-            {
-                // All non-custom tribes will use the fallback model 
-                __result = CustomTotemTopID;
-                return false;
-            }
-
-            return true;
-        }
+    /// <summary>
+    /// Utility class containing all data needed for custom totem tops to be used in-game.
+    /// </summary>
+    public class CustomTotemTop {
+        /// <summary>
+        /// Internal name of the totem top.
+        /// </summary>
+        public string Name;
+        /// <summary>
+        /// GUID of the mod adding the totem top.
+        /// </summary>
+        public string GUID;
+        /// <summary>
+        /// Subclass of <see cref="CompositeTotemPiece"/> implementing the logic for the totem top.
+        /// </summary>
+        public Type Type = typeof(CustomIconTotemTopPiece);
+        /// <summary>
+        /// The model prefab object for the totem top.
+        /// </summary>
+        public GameObject Prefab;
+        /// <summary>
+        /// ID of the tribe the totem top belongs to.
+        /// </summary>
+        public Tribe Tribe;
     }
 
     /// <summary>
-    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
-    /// This breaks the new totem sequence because it's not checking if the ability info exists.
-    /// So check that the ability info exists
+    /// Obsolete, use <see cref="NewTopPiece{T}(string, string, Tribe, GameObject)"/> instead.
     /// </summary>
-    [HarmonyPatch]
-    private class FixMissingAbilityInfo
-    {
-        public static IEnumerable<MethodBase> TargetMethods()
-        {
-            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__26_0");
-        }
-
-        public static bool Prefix(Ability x, ref bool __result)
-        {
-            if (!RunState.Run.totemBottoms.Contains(x))
-            {
-                AbilityInfo abilityInfo = AbilitiesUtil.GetInfo(x);
-                __result = abilityInfo != null && !abilityInfo.metaCategories.Contains(AbilityMetaCategory.Part1Modular);
-
-            }
-            else
-            {
-                __result = true;
-            }
-
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
-    /// This breaks the new totem sequence because it's not checking if the ability info exists.
-    /// So check that the ability info exists
-    /// </summary>
-    [HarmonyPatch]
-    private class FixMissingAbilityInfo2
-    {
-        // think this could be simplified but I ain't touching it
-        public static IEnumerable<MethodBase> TargetMethods()
-        {
-            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c__DisplayClass26_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
-            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__1");
-        }
-
-        private static bool Prefix(Ability x)
-        {
-            return AbilitiesUtil.GetInfo(x) != null;
-        }
-    }
-    #endregion
 
     [Obsolete("Deprecated. Use NewTopPiece<T> instead.")]
     public static CustomTotemTop NewTopPiece(string name, string guid, Tribe tribe, GameObject prefab = null)
@@ -230,6 +67,15 @@ public static class TotemManager
         });
     }
 
+    /// <summary>
+    /// Creates a new totem top and registers it for use in-game.
+    /// </summary>
+    /// <typeparam name="T">Subclass of <see cref="CompositeTotemPiece"/> implementing the logic for the totem top.</typeparam>
+    /// <param name="name">Internal name of the totem top.</param>
+    /// <param name="guid">GUID of the mod adding the totem top.</param>
+    /// <param name="tribe">ID of the tribe the totem top affects.</param>
+    /// <param name="prefab">Model prefab object for the totem top.</param>
+    /// <returns>An instance of <see cref="CustomTotemTop"/> describing the new totem top.</returns>
     public static CustomTotemTop NewTopPiece<T>(string name, string guid, Tribe tribe, GameObject prefab) where T : CompositeTotemPiece
     {
         if (prefab == null)
@@ -270,6 +116,9 @@ public static class TotemManager
     /// </summary>
     public static CustomTotemTop DefaultTotemTop => defaultTotemTop;
 
+    /// <summary>
+    /// Obsolete, use <see cref="SetDefaultTotemTop{T}(GameObject)"/> instead.
+    /// </summary>
     [Obsolete("Obsolete. Use SetDefaultTotemTop<T> instead to ensure the totem top is set up correctly.")]
     public static void SetDefaultTotemTop(GameObject gameObject)
     {
@@ -280,6 +129,11 @@ public static class TotemManager
         GameObject.DontDestroyOnLoad(gameObject);
     }
 
+    /// <summary>
+    /// Sets up the default totem top.
+    /// </summary>
+    /// <typeparam name="T">Subclass of <see cref="CompositeTotemPiece"/> implementing the logic for the totem top.</typeparam>
+    /// <param name="gameObject">Model prefab object for the totem top.</param>
     public static void SetDefaultTotemTop<T>(GameObject gameObject) where T : CompositeTotemPiece
     {
         if (defaultTotemTop == null)
@@ -357,12 +211,169 @@ public static class TotemManager
         UnityObject.DontDestroyOnLoad(prefab);
     }
 
-    public class CustomTotemTop
-    {
-        public string Name;
-        public string GUID;
-        public Type Type = typeof(CustomIconTotemTopPiece);
-        public GameObject Prefab;
-        public Tribe Tribe;
+    #region Patches
+    [HarmonyPatch(typeof(BuildTotemSequencer), "GenerateTotemChoices", new Type[] { typeof(BuildTotemNodeData), typeof(int) })]
+    private class ItemsUtil_AllConsumables {
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+            if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.Vanilla)
+                return instructions;
+
+            // === We want to turn this
+
+            // List<Tribe> list = new()
+            // {
+            //     Tribe.Bird,
+            //     Tribe.Canine,
+            //     Tribe.Hooved,
+            //     Tribe.Insect,
+            //     Tribe.Reptile
+            // };
+
+            // === Into this
+
+            // List<Tribe> list = new()
+            // {
+            //     Tribe.Bird,
+            //     Tribe.Canine,
+            //     Tribe.Hooved,
+            //     Tribe.Insect,
+            //     Tribe.Reptile
+            // };
+            // ItemsUtil_AllConsumables.AddCustomTribesToList(list);
+
+            // ===
+
+
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++) {
+                if (codes[i].opcode == OpCodes.Newobj) {
+                    // Make a new list
+                    for (int j = i + 1; i < codes.Count; j++) {
+                        if (codes[j].opcode == OpCodes.Stloc_0) {
+                            MethodInfo customMethod = AccessTools.Method(typeof(ItemsUtil_AllConsumables), nameof(AddCustomTribesToList), new Type[] { typeof(List<Tribe>) });
+
+                            // Stored the list
+                            codes.Insert(j + 1, new CodeInstruction(OpCodes.Ldloc_0));
+                            codes.Insert(j + 2, new CodeInstruction(OpCodes.Call, customMethod));
+                            return codes;
+                        }
+                    }
+                }
+            }
+
+            return codes;
+        }
+
+
+        public static void AddCustomTribesToList(List<Tribe> list) {
+            list.AddRange(TribeManager.NewTribes.Where(x => x.tribeChoice).Select(x => x.tribe));
+            InscryptionAPIPlugin.Logger.LogDebug($"Total Tribes: {list.Count}");
+
+            List<CardInfo> cardsWithTribes = CardManager.AllCardsCopy.FindAll(x => x.tribes.Count > 0);
+            list.RemoveAll(x => !cardsWithTribes.Exists(ci => ci.IsOfTribe(x)));
+
+            InscryptionAPIPlugin.Logger.LogDebug($"Tribes with 1 Card: {list.Count}");
+        }
     }
+
+    [HarmonyPatch(typeof(ResourceBank), "Awake", new Type[] { })]
+    private class ResourceBank_Awake {
+        private static void Postfix(ResourceBank __instance) {
+            // The resource bank has been cleared. refill it
+            if (ResourceBank.Get<GameObject>(CustomTotemTopResourcePath) == null)
+                Initialize();
+        }
+    }
+
+    [HarmonyPatch(typeof(Totem), "GetTopPiecePrefab", new Type[] { typeof(TotemTopData) })]
+    private class Totem_GetTopPiecePrefab {
+        private static bool Prefix(TotemTopData data, ref GameObject __result) {
+            if (TribeManager.IsCustomTribe(data.prerequisites.tribe)) {
+                CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == data.prerequisites.tribe);
+
+                // use the custom Totem top if it exists; otherwise use the default
+                __result = customTribeTotem?.Prefab ?? defaultTotemTop.Prefab;
+                return false;
+            }
+            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes) {
+                __result = defaultTotemTop.Prefab;
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(Totem), "SetData", new Type[] { typeof(ItemData) })]
+    private class Totem_SetData {
+        private static void Postfix(Totem __instance, ItemData data) {
+            __instance.topPieceParent.GetComponentInChildren<CompositeTotemPiece>().SetData(__instance.TotemItemData.top);
+        }
+    }
+
+    [HarmonyPatch(typeof(TotemTopData), "PrefabId", MethodType.Getter)]
+    private class TotemTopData_PrefabId {
+        private static bool Prefix(TotemTopData __instance, ref string __result) {
+            // Custom totem tops will always use the fallback UNLESS there is an override
+            if (TribeManager.IsCustomTribe(__instance.prerequisites.tribe)) {
+                CustomTotemTop customTribeTotem = totemTops.Find((a) => a.Tribe == __instance.prerequisites.tribe);
+                if (customTribeTotem == null) {
+                    __result = CustomTotemTopID;
+                    return false;
+                }
+            }
+            else if (InscryptionAPIPlugin.configCustomTotemTopModelSelection.Value == TotemTopState.AllTribes) {
+                // All non-custom tribes will use the fallback model 
+                __result = CustomTotemTopID;
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
+    /// This breaks the new totem sequence because it's not checking if the ability info exists.
+    /// So check that the ability info exists
+    /// </summary>
+    [HarmonyPatch]
+    private class FixMissingAbilityInfo {
+        public static IEnumerable<MethodBase> TargetMethods() {
+            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__26_0");
+        }
+
+        public static bool Prefix(Ability x, ref bool __result) {
+            if (!RunState.Run.totemBottoms.Contains(x)) {
+                AbilityInfo abilityInfo = AbilitiesUtil.GetInfo(x);
+                __result = abilityInfo != null && !abilityInfo.metaCategories.Contains(AbilityMetaCategory.Part1Modular);
+
+            }
+            else {
+                __result = true;
+            }
+
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// If someone added a mod with sigils then removed the mod. They have learned the ability but it no longer exists.
+    /// This breaks the new totem sequence because it's not checking if the ability info exists.
+    /// So check that the ability info exists
+    /// </summary>
+    [HarmonyPatch]
+    private class FixMissingAbilityInfo2 {
+        // think this could be simplified but I ain't touching it
+        public static IEnumerable<MethodBase> TargetMethods() {
+            var innerClass = Type.GetType("DiskCardGame.BuildTotemSequencer+<>c__DisplayClass26_0, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+            yield return AccessTools.Method(innerClass, "<GenerateTotemChoices>b__1");
+        }
+
+        private static bool Prefix(Ability x) {
+            return AbilitiesUtil.GetInfo(x) != null;
+        }
+    }
+    #endregion
 }
