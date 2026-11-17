@@ -67,8 +67,7 @@ function setMemberFlags(item, inheritedType) {
     // ---- Aggregates --------------------------------------------------------
     item.isType = (
         item.isClass ||
-        item.isEnum ||
-        item.isNamespace
+        item.isEnum
     );
 
     item.isMember = (
