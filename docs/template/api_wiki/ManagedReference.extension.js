@@ -1,7 +1,66 @@
 exports.postTransform = function (model) {
+    var uidLookup = {};
+    buildUidLookup(model, uidLookup);
+
     setMemberFlags(model);
+    setExtensionMethodSummaries(model, uidLookup);
+
     return model;
 };
+
+function buildUidLookup(item, lookup) {
+    if (!item || typeof item !== 'object') return;
+
+    if (item.uid) {
+        lookup[String(item.uid)] = item;
+    }
+
+    if (Array.isArray(item.children)) {
+        item.children.forEach(function (child) {
+            buildUidLookup(child, lookup);
+        });
+    }
+
+    if (Array.isArray(item.items)) {
+        item.items.forEach(function (child) {
+            buildUidLookup(child, lookup);
+        });
+    }
+}
+
+function setExtensionMethodSummaries(item, uidLookup) {
+    if (!item || typeof item !== 'object') return;
+
+    if (Array.isArray(item.extensionMethods)) {
+        item.extensionMethods.forEach(function (extensionMethod) {
+            if (!extensionMethod || typeof extensionMethod !== 'object') return;
+
+            var definitionUid = extensionMethod.definition || extensionMethod.uid;
+
+            if (!definitionUid) return;
+
+            var definition = uidLookup[String(definitionUid)];
+
+            if (!definition) return;
+
+            if (definition.summary) {
+                extensionMethod.summary = definition.summary;
+            }
+        });
+    }
+
+    if (Array.isArray(item.children)) {
+        item.children.forEach(function (child) {
+            setExtensionMethodSummaries(child, uidLookup);
+        });
+    }
+
+    if (Array.isArray(item.items)) {
+        item.items.forEach(function (child) {
+            setExtensionMethodSummaries(child, uidLookup);
+        });
+    }
+}
 
 function setMemberFlags(item, inheritedType) {
     if (!item || typeof item !== 'object') return;
