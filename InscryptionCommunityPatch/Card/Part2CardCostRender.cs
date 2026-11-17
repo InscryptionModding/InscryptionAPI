@@ -14,26 +14,40 @@ namespace InscryptionCommunityPatch.Card;
 /// </summary>
 public static class Part2CardCostRender
 {
+    /// <summary>
+    /// An Action of <see cref="CardInfo"/> to <see cref="List{Texture2D}"/> representing a card cost update.
+    /// </summary>
     public static event Action<CardInfo, List<Texture2D>> UpdateCardCost;
+    
     /// <summary>
     /// For textures that are 24 x 13 in size.
     /// </summary>
     public static event Action<CardInfo, List<Texture2D>> UpdateVanillaCardCost; // 24 x 13
 
+    /// <summary>
+    /// An Action of <see cref="CardInfo"/> to <see cref="List{Texture2D}"/> representing a playable card cost update.
+    /// </summary>
     public static event Action<PlayableCard, List<Texture2D>> UpdatePlayableCardCost;
+    
     /// <summary>
     /// For textures that are 24 x 13 in size.
     /// </summary>
-
     public static event Action<PlayableCard, List<Texture2D>> UpdateVanillaPlayableCardCost;
 
+    /// <summary>
+    /// Whether or not the Cost should be on the right in Act 2.
+    /// </summary>
     public static bool RightAct2Cost => PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value;
 
-    public static Sprite FinalVanillaCostSprite(
-        PixelCardDisplayer display,
-        CardInfo cardInfo,
-        PlayableCard playableCard,
-        bool leftOriented)
+    /// <summary>
+    /// Handles getting the Final Sprite for the Vanilla Cost of an Act 2 Card.
+    /// </summary>
+    /// <param name="display">The <see cref="PixelCardDisplayer"/> associated with the Card.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> we are targeting to apply the visual for..</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> representation of the <see cref="CardInfo"/>.</param>
+    /// <param name="leftOriented">Whether or not to apply the Cost Left/Right oriented. True means Left, False means Right.</param>
+    /// <returns>A <see cref="Sprite"/> representing the Act 2 Cost of the given card.</returns>
+    public static Sprite FinalVanillaCostSprite(PixelCardDisplayer display, CardInfo cardInfo, PlayableCard playableCard, bool leftOriented)
     {
         //PatchPlugin.Logger.LogDebug($"Use vanilla style");
 
@@ -75,14 +89,14 @@ public static class Part2CardCostRender
     }
 
     /// <summary>
-    /// A variant of TextureHelper.CombineTextures specifically designed for combining vanilla cost textures.
+    /// A variant of <see cref="TextureHelper.CombineTextures"/> specifically designed for combining vanilla cost textures.
     /// Each cost texture is assumed to be 13 pixels in height and UP TO 24 pixels in width, and this method compensates for any textures thinner than 24 px.
     /// </summary>
-    /// <param name="textures"></param>
-    /// <param name="baseTexture"></param>
-    /// <param name="leftOriented"></param>
-    /// <param name="yOffset"></param>
-    /// <returns></returns>
+    /// <param name="textures">The List of <see cref="Texture2D"/> to be combined.</param>
+    /// <param name="baseTexture">The base of the Combined texture, as a <see cref="Texture2D"/>.</param>
+    /// <param name="leftOriented">Whether or not to apply the Cost Left/Right oriented. True means Left, False means Right.</param>
+    /// <param name="yOffset">The Y Offset to use when combining the Textures.</param>
+    /// <returns>The <see cref="Texture2D"/> representing the combined texture of the Card's Cost.</returns>
     public static Texture2D CombineVanillaCostTextures(List<Texture2D> textures, Texture2D baseTexture, bool leftOriented, int yOffset)
     {
         if (textures != null)
@@ -103,6 +117,17 @@ public static class Part2CardCostRender
         return baseTexture;
     }
 
+    /// <summary>
+    /// This function handles getting the cost texture for the given card from the specified cost amounts that are passed into it.
+    /// </summary>
+    /// <param name="display">The <see cref="PixelCardDisplayer"/> representing the Card.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> representing the Card.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> representing the Playable Version of the Card.</param>
+    /// <param name="bloodCost">The amount of blood by which the card costs.</param>
+    /// <param name="bonesCost">The amount of bones by which the card costs.</param>
+    /// <param name="energyCost">The amount of energy by which the card costs.</param>
+    /// <param name="gemsCost">The Types of Gem's the card costs.</param>
+    /// <returns>A List of <see cref="Texture2D"/> representing the Cost Textures for the card.</returns>
     public static List<Texture2D> VanillaCostTextures(PixelCardDisplayer display, CardInfo cardInfo, PlayableCard playableCard, int bloodCost, int bonesCost, int energyCost, List<GemType> gemsCost)
     {
         List<Texture2D> costTextures = new();
