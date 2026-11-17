@@ -7,12 +7,18 @@ using static DiskCardGame.EncounterBlueprintData;
 
 namespace InscryptionAPI.Encounters;
 
+/// <summary>
+/// Manager class that handles the creation and management of mod-added encounters.
+/// </summary>
 public static class EncounterManager
 {
     /// <summary>
     /// All of the vanilla game's encounters.
     /// </summary>
     public static readonly ReadOnlyCollection<EncounterBlueprintData> BaseGameEncounters = new(Resources.LoadAll<EncounterBlueprintData>("Data"));
+    /// <summary>
+    /// All of the mod-added encounters.
+    /// </summary>
     public static readonly ObservableCollection<EncounterBlueprintData> NewEncounters = new();
 
     /// <summary>
@@ -108,16 +114,16 @@ public static class EncounterManager
     }
 
     /// <summary>
-    /// Creates a new CardBlueprint.
+    /// Creates a new <see cref="CardBlueprint"/>.
     /// </summary>
     /// <param name="cardName">The internal name of the card to use.</param>
-    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from the encounter's <c>randomReplacementCards</c>.</param>
+    /// <param name="randomReplaceChance">The integer probability of this card getting replaced by a card from  <see cref="EncounterBlueprintData.randomReplacementCards"/>.</param>
     /// <param name="difficultyReplace">Whether to replace this card when a certain difficulty threshold is met.</param>
-    /// <param name="difficultyReplaceReq">The difficulty threshold for the <c>replacement</c> card to be used instead.</param>
+    /// <param name="difficultyReplaceReq">The difficulty threshold for the <paramref name="replacement"/> card to be used instead.</param>
     /// <param name="replacement">The name of the replacement card for the difficulty replacement.</param>
     /// <param name="minDifficulty">The minimum difficulty for this card to appear.</param>
     /// <param name="maxDifficulty">The maximum difficulty for this card to appear.</param>
-    /// <returns>The newly created CardBlueprint.</returns>
+    /// <returns>The newly created <see cref="CardBlueprint"/>.</returns>
     public static CardBlueprint NewCardBlueprint(string cardName, int randomReplaceChance = 0,
         bool difficultyReplace = false, int difficultyReplaceReq = 0, string replacement = null,
         int minDifficulty = 1, int maxDifficulty = 20)

@@ -167,6 +167,9 @@ internal static class TradePeltsSequencer_GetTradeCardInfos
     }
 }
 
+/// <summary>
+/// Patcher class for modifying <see cref="TradePeltsSequencer.TradePelts"/>.
+/// </summary>
 [HarmonyPatch]
 public class TradePeltsSequencer_TradePelts
 {
@@ -258,6 +261,10 @@ public class TradePeltsSequencer_TradePelts
     private static readonly string Current = "System.Object <>2__current";
     private static readonly string GetTradeCardInfos = "System.Collections.Generic.List`1[DiskCardGame.CardInfo] GetTradeCardInfos(Int32, Boolean)";
 }
+
+/// <summary>
+/// Patcher clas for modifying <see cref="TradePeltsSequencer.CreatePeltCards(int)"/>.
+/// </summary>
 [HarmonyPatch]
 public class TradePeltsSequencer_CreatePeltCards
 {

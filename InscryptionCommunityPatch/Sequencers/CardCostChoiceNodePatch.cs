@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Sequencers;
 
+/// <summary>
+/// Patches in Our Cost Card Backs into the <see cref="CardSingleChoicesSequencer.GetCardbackTexture"/> function for Energy and Mox costs.
+/// </summary>
 [HarmonyPatch]
 internal static class ChoiceNodePatch
 {
@@ -21,5 +24,11 @@ internal static class ChoiceNodePatch
                 break;
         }
     }
-    public static string MoxTextureName(int index) => "moxCost" + (index switch { 1 => "Green", 2 => "Orange", 3 => "Blue", _ => "" }) + ".png";
+    
+    /// <summary>
+    /// Handles getting the correct Mox Texture Name for usage in the <see cref="CardSingleChoicesSequencer_GetCardbackTexture"/> patch.
+    /// </summary>
+    /// <param name="index">1 -> <c>Green</c>, 2 -> <c>Orange</c>, 3 -> <c>Blue</c>, otherwise -> <c>Empty</c></param>
+    /// <returns>A string texture name in the form of <c>moxCost{Color}.png</c></returns>
+    private static string MoxTextureName(int index) => "moxCost" + (index switch { 1 => "Green", 2 => "Orange", 3 => "Blue", _ => "" }) + ".png";
 }

@@ -3,6 +3,7 @@ using InscryptionAPI.Card;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use CardAppearanceBehaviourManager instead", true)]
 public class NewCardAppearanceBehaviour
 {
@@ -25,3 +26,4 @@ public class NewCardAppearanceBehaviour
         return backgroundBehaviour;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

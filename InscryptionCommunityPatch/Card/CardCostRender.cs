@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Fixes the Rendering related to a Card's Cost.
+/// </summary>
 [HarmonyPatch]
 public static class CardCostRender
 {
@@ -32,10 +35,15 @@ public static class CardCostRender
         AssembledTextures.Add(key, texture);
         return texture;
     }
-
+    
     /// <summary>
     /// Creates a sprite that combines all of a card's play costs.
     /// </summary>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> in which to get the Card's Cost from.</param>
+    /// <param name="playableCard">The <see cref="PlayableCard"/> in which to get the Card's Cost from.</param>
+    /// <param name="spriteType">The type of Sprite we are trying to combine.</param>
+    /// <param name="yStep">The amount of spacing to use when combing a Card's Cost in the Vertical.</param>
+    /// <returns>A Combined Cost Sprite that is Vertically stacked.</returns>
     public static Sprite FinalCostSprite(CardInfo cardInfo, PlayableCard playableCard, TextureHelper.SpriteType spriteType, int yStep)
     {
         Texture2D baseTexture;
@@ -78,16 +86,16 @@ public static class CardCostRender
         {
             __instance.costRenderer.sprite = FinalCostSprite(renderInfo.baseInfo, playableCard, TextureHelper.SpriteType.OversizedCostDecal, 28);
         }
-        else if (__instance is PixelCardDisplayer pixelDisplay && PatchPlugin.act2CostRender.Value)
+        else if (__instance is PixelCardDisplayer pixelDisplay && PatchPlugin.configUseAPIAct2CostRender.Value)
         {
-            if (PatchPlugin.act2VanillaStyle.Value)
+            if (PatchPlugin.configDisplayVanillaStyleAct2CostIcons.Value)
             {
-                __instance.costRenderer.sprite = Part2CardCostRender.FinalVanillaCostSprite(pixelDisplay, renderInfo.baseInfo, playableCard, !PatchPlugin.rightAct2Cost.Value);
+                __instance.costRenderer.sprite = Part2CardCostRender.FinalVanillaCostSprite(pixelDisplay, renderInfo.baseInfo, playableCard, !PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value);
             }
             else
             {
                 __instance.costRenderer.sprite = FinalCostSprite(renderInfo.baseInfo, playableCard,
-                    PatchPlugin.rightAct2Cost.Value ? TextureHelper.SpriteType.Act2CostDecalRight : TextureHelper.SpriteType.Act2CostDecalLeft, 8);
+                    PatchPlugin.configDisplayAct2CostInTheTopRightCorner.Value ? TextureHelper.SpriteType.Act2CostDecalRight : TextureHelper.SpriteType.Act2CostDecalLeft, 8);
             }
         }
     }
@@ -100,7 +108,7 @@ public static class CardCostRender
         {
             return false;
         }
-        if (__instance is PixelCardDisplayer && PatchPlugin.act2CostRender.Value)
+        if (__instance is PixelCardDisplayer && PatchPlugin.configUseAPIAct2CostRender.Value)
         {
             return false;
         }

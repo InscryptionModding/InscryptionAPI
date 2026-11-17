@@ -10,13 +10,33 @@ using UnityEngine.SceneManagement;
 
 namespace InscryptionCommunityPatch.ResourceManagers;
 
+/// <summary>
+/// This patch handles adding the Bones Displayer to the Drone.
+/// </summary>
 [HarmonyPatch]
 public static class Act3BonesDisplayer
 {
+    /// <summary>
+    /// A bool determining whether the Bones Displayer should be forced to active.
+    /// </summary>
     public static bool ForceBonesDisplayActive { get; set; } = false;
 
+    /// <summary>
+    /// A bool determining whether the Bones Displayer is active, namely when any one of the following are true;
+    /// <br/>
+    /// - <see cref="ForceBonesDisplayActive"/>
+    /// <br/>
+    /// - <see cref="PoolHasBones"/>
+    /// <br/>
+    /// - <see cref="PatchPlugin.configAct3Bones"/>
+    /// </summary>
     public static bool DisplayAct3Bones => ForceBonesDisplayActive || PoolHasBones || PatchPlugin.configAct3Bones.Value;
 
+    /// <summary>
+    /// Determines whether or not a card is a part of the Tech Temple, and whether it has a Meta Category that can show in Act 3.
+    /// </summary>
+    /// <param name="info">The <see cref="CardInfo"/> of the card we are checking.</param>
+    /// <returns>True if the card is a part of the Technology temple, and if the card has any of the meta categories needed to show up in the given act, otherwise false.</returns>
     private static bool CardIsVisible(this CardInfo info)
     {
         if (info.temple != CardTemple.Tech)
@@ -24,12 +44,17 @@ public static class Act3BonesDisplayer
 
         // Now we check metacategories
         // If the card's metacategories are set such that it can't actually appear, don't count it
-        return info.metaCategories.Exists((CardMetaCategory x) =>
-        x == CardMetaCategory.ChoiceNode || x == CardMetaCategory.Part3Random || x == CardMetaCategory.Rare);
+        return info.metaCategories.Exists((CardMetaCategory x) => x == CardMetaCategory.ChoiceNode || x == CardMetaCategory.Part3Random || x == CardMetaCategory.Rare);
     }
 
+    /// <summary>
+    /// Determines whether the Card Pool has any cards that cost Bones, verified with <see cref="CardIsVisible"/>.
+    /// </summary>
     public static bool PoolHasBones => CardManager.AllCardsCopy.Any(ci => ci.BonesCost > 0 && ci.CardIsVisible());
 
+    /// <summary>
+    /// Determines whether the current Scene can have the Bones Displayer or not.
+    /// </summary>
     public static bool SceneCanHaveBonesDisplayer
     {
         get

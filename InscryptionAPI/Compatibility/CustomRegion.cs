@@ -5,6 +5,7 @@ using VolumetricFogAndMist;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use RegionManager instead", true)]
 public class CustomRegion
 {
@@ -56,3 +57,4 @@ public class CustomRegion
     public Color? mapEmissionColor;
     public List<GameObject> mapParticlesPrefabs;
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

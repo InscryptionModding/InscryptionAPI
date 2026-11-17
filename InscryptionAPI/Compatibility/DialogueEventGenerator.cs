@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace InscryptionAPI.Helpers;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use DialogueManager instead")]
 public static class DialogueEventGenerator
 {
@@ -24,3 +25,4 @@ public static class DialogueEventGenerator
         return ev;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

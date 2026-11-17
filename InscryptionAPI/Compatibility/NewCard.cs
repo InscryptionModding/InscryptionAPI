@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use CardManager instead", true)]
 public static class NewCard
 {
@@ -142,3 +143,4 @@ public static class NewCard
             info.specialStatIcon = statId.statIconID;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

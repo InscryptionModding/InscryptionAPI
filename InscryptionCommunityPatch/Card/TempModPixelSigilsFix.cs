@@ -6,7 +6,9 @@ using System.Reflection.Emit;
 
 namespace InscryptionCommunityPatch.Card;
 
-// Lets you add and remove decals via temporary mods
+/// <summary>
+/// Lets you add and remove decals via temporary mods
+/// </summary>
 [HarmonyPatch]
 public class TempModPixelSigilsFix
 {
@@ -30,6 +32,12 @@ public class TempModPixelSigilsFix
         return codes;
     }
 
+    /// <summary>
+    /// This is used to Handle the Render of Temporary Sigils to the Card.
+    /// </summary>
+    /// <param name="info">The <see cref="CardInfo"/> of the Card we are trying to apply the temporary sigils to.</param>
+    /// <param name="card">The <see cref="PlayableCard"/> in which we want to apply the temporary sigils to.</param>
+    /// <returns>A list of Temporary Abilities after handling the rendering of them.</returns>
     public static List<Ability> RenderTemporarySigils(CardInfo info, PlayableCard card)
     {
         if (card == null)

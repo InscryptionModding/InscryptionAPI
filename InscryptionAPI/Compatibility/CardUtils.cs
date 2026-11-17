@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use CardManager and extension methods instead", true)]
 public static class CardUtils
 {
@@ -93,3 +94,4 @@ public static class CardUtils
         return TextureHelper.GetImageAsTexture(pathCardArt);
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

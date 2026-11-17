@@ -7,15 +7,39 @@ using static InscryptionAPI.Slots.SlotModificationManager;
 
 namespace InscryptionAPI.RuleBook;
 
-
+/// <summary>
+/// Manager class for adding hyperlinks to rulebook entries that redirect to other rulebook pages.
+/// </summary>
 public static class RuleBookManager
 {
+    /// <summary>
+    /// Utility class containing all the data needed to define redirects.
+    /// </summary>
     public class RedirectInfo
     {
+        /// <summary>
+        /// The page type and rulebook section this hyperlink will redirect to.
+        /// </summary>
+        /// <remarks>
+        /// If the hyperlink redirects to a custom section, use <see cref="PageRangeType.Unique"/>.
+        /// </remarks>
         public PageRangeType redirectType;
+        /// <summary>
+        /// What colour hyperlinked text should be to indicate that it's interactable.
+        /// </summary>
         public Color redirectTextColour;
+        /// <summary>
+        /// The ID of the page the hyperlink redirects to.
+        /// Eg., for ability redirects this will be the ability's id as a string.
+        /// </summary>
         public string redirectPageId;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="RedirectInfo"/>.
+        /// </summary>
+        /// <param name="redirectType"></param>
+        /// <param name="redirectTextColour"></param>
+        /// <param name="redirectPageId"></param>
         public RedirectInfo(PageRangeType redirectType, Color redirectTextColour, string redirectPageId)
         {
             this.redirectType = redirectType;
@@ -24,21 +48,25 @@ public static class RuleBookManager
         }
     }
     /// <summary>
-    /// A custom class that associates a RuleBookPageInfo object with a Dictionary of RuleBookDescriptionRedirects. Use if 
+    /// A custom class that associates a <see cref="RuleBookPageInfo"/> object with a Dictionary of <see cref="RedirectInfo"/>s. Use if 
     /// </summary>
     public class RuleBookPageInfoExt
     {
+        /// <summary>
+        /// The rulebook page that the redirects will be mapped to.
+        /// </summary>
         public RuleBookPageInfo parentPageInfo;
 
         /// <summary>
-        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
-        /// Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
-        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
-        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// Tracks all rulebook redirects that this custom rulebook page's description will have.
         /// </summary>
         public Dictionary<string, RedirectInfo> RulebookDescriptionRedirects = new();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="RuleBookPageInfoExt"/>.
+        /// </summary>
+        /// <param name="parentPageInfo">The <see cref="RuleBookPageInfo"/> that this instance will use as a prent reference.</param>
+        /// <param name="redirects">All redirects for this rulebook page, mapped to the text that will be hyperlinked.</param>
         public RuleBookPageInfoExt(RuleBookPageInfo parentPageInfo, Dictionary<string, RedirectInfo> redirects)
         {
             this.parentPageInfo = parentPageInfo;
@@ -46,7 +74,13 @@ public static class RuleBookManager
         }
     }
 
+    /// <summary>
+    /// All currently processed pages with redirects.
+    /// </summary>
     public static readonly List<RuleBookPageInfoExt> ConstructedPagesWithRedirects = new();
+    /// <summary>
+    /// All currently processed custom pages with redirects.
+    /// </summary>
     public static readonly List<RuleBookPageInfoExt> CustomRedirectPages = new();
 
     internal static void AddRedirectPage(RuleBookPageInfo pageInfo, Dictionary<string, RedirectInfo> redirects)
@@ -54,6 +88,9 @@ public static class RuleBookManager
         ConstructedPagesWithRedirects.Add(new(pageInfo, redirects));
     }
 
+    /// <summary>
+    /// Utility class containing all the data needed for a custom rulebook section.
+    /// </summary>
     public class FullRuleBookRangeInfo
     {
         /// <summary>
@@ -101,13 +138,51 @@ public static class RuleBookManager
         /// </summary>
         public Func<RuleBookInfo, PageRangeInfo, AbilityMetaCategory, List<RuleBookPageInfo>> CreatePagesFunc;
 
+        /// <summary>
+        /// Action that implements logic for constructing pages in this rulebook section.
+        /// </summary>
         public Action<RuleBookPage, string, object[]> FillPageAction;
 
+        /// <summary>
+        /// The starting page number of this section in its header.
+        /// </summary>
+        /// <param name="pages"></param>
+        /// <returns></returns>
         public int GetStartingNumber(List<RuleBookPageInfo> pages) => GetStartingNumberFunc(pages);
+        /// <summary>
+        /// Where in the rulebook this section should appear.
+        /// </summary>
+        /// <param name="currentPageRange">An existing rulebook section to use as a positional reference.</param>
+        /// <param name="pages">All pages being added to this section.</param>
+        /// <returns>The index of where in the rulebook this section is being inserted.</returns>
         public int GetInsertPosition(PageRangeInfo currentPageRange, List<RuleBookPageInfo> pages) => GetInsertPositionFunc(currentPageRange, pages);
+        /// <summary>
+        /// Method for creating the rulebook page objects used in this section.
+        /// </summary>
+        /// <param name="instance">The <see cref="RuleBookInfo"/> instance.</param>
+        /// <param name="currentPageRange">The section object that will be used as a template when creating pages.</param>
+        /// <param name="metaCategory">The metacategory indicating what game act this rulebook is for (Act 1, Act 3, Grimora, Magnificus).</param>
+        /// <returns></returns>
         public List<RuleBookPageInfo> CreatePages(RuleBookInfo instance, PageRangeInfo currentPageRange, AbilityMetaCategory metaCategory) => CreatePagesFunc(instance, currentPageRange, metaCategory);
+        /// <summary>
+        /// Method for filling in information on each rulebook page in this section.
+        /// </summary>
+        /// <param name="instance">The current page being filled.</param>
+        /// <param name="pageId">The ID of the page being filld.</param>
+        /// <param name="otherArgs">Various objects used to fill this page. Varies depending on the page template used in <see cref="CreatePages"/></param>
         public void FillRuleBookPage(RuleBookPage instance, string pageId, params object[] otherArgs) => FillPageAction(instance, pageId, otherArgs);
 
+        /// <summary>
+        /// Creates an instance of <see cref="FullRuleBookRangeInfo"/>.
+        /// </summary>
+        /// <param name="modGuid">The GUID of the mod adding this rulebook section.</param>
+        /// <param name="type">The rulebook style this section will use.</param>
+        /// <param name="headerPrefix">The prefix used at the start of this section's header. If null, uses <see cref="HeaderPrefixSimple(string)"/>"with numeral "I".</param>
+        /// <param name="subsectionName">The name of this rulebook section.</param>
+        /// <param name="getStartingNumberFunc">The function used to determine the initial number displayed in the page corner. If null, defaults to 1.</param>
+        /// <param name="getInsertPositionFunc">The function used to determine the index this section will be inserted into in the rulebook.</param>
+        /// <param name="createPagesFunc">The function used to create the pages in this section.</param>
+        /// <param name="fillPageAct">The action used to fill each constructed page in this section.</param>
         public FullRuleBookRangeInfo(
             string modGuid, PageRangeType type, string headerPrefix, string subsectionName,
             Func<List<RuleBookPageInfo>, int> getStartingNumberFunc,
@@ -125,6 +200,10 @@ public static class RuleBookManager
             this.FillPageAction = fillPageAct;
         }
 
+        /// <summary>
+        /// Creates a deep clone of this <see cref="FullRuleBookRangeInfo"/> object.
+        /// </summary>
+        /// <returns>The newly created deep clone.</returns>
         public FullRuleBookRangeInfo Clone()
         {
             return new(
@@ -139,7 +218,14 @@ public static class RuleBookManager
 
     internal readonly static ObservableCollection<FullRuleBookRangeInfo> NewRuleBookInfos = new();
 
+    /// <summary>
+    /// All currently process <see cref="FullRuleBookRangeInfo"/>s, including vanilla and mod-added.
+    /// </summary>
     public static List<FullRuleBookRangeInfo> AllRuleBookInfos { get; private set; }
+
+    /// <summary>
+    /// A hook for modders to add custom code to modify the rulebook sections list dynamically.
+    /// </summary>
     public static event Func<List<FullRuleBookRangeInfo>, List<FullRuleBookRangeInfo>> ModifyRuleBookInfos;
 
     static RuleBookManager()
@@ -150,6 +236,9 @@ public static class RuleBookManager
         };
     }
 
+    /// <summary>
+    /// Resynchronizes the custom rulebook sections list.
+    /// </summary>
     public static void SyncRuleBookList()
     {
         AllRuleBookInfos = NewRuleBookInfos.Select(x => x.Clone()).ToList();
@@ -157,17 +246,17 @@ public static class RuleBookManager
     }
 
     /// <summary>
-    /// Creates a custom rulebook range. Simplified version of the full New() method that only requires the minimumrequired parameters.
+    /// Creates a custom rulebook range. Simplified version of the full New() method that only requires the minimum required parameters.
     /// </summary>
-    /// <param name="modGuid">The GUID of the mod adding this FullRuleBookRangeInfo</param>
-    /// <param name="pageType">The PageRangeType we want to inherit from. This will determine the style of pages.</param>
+    /// <param name="modGuid">The GUID of the mod adding this <see cref="FullRuleBookRangeInfo"/>.</param>
+    /// <param name="pageType">The <see cref="PageRangeType"/> we want to inherit from. This will determine the style of pages.</param>
     /// <param name="subsectionName">The name of the rulebook subsection, eg. "Abilities" or "Boons".</param>
     /// <param name="getInsertPositionFunc">The Func to determine what index in the rulebook to insert a new section.</param>
-    /// <param name="createPagesFunc">The Func that is called to create the RuleBookPage objects that will be used to fill the rulebook.</param>
+    /// <param name="createPagesFunc">The Func that is called to create the <see cref="RuleBookPage"/> objects that will be used to fill the rulebook.</param>
     /// <param name="headerPrefix">The first half of the header that will appear on rulebook pages. Leave null to use the default prefix.</param>
     /// <param name="getStartingNumberFunc">The Func to determine the first page number in this range. Leave null to use the default starting number (1).</param>
     /// <param name="fillPageAction">The Action to call when filling in the data for each rulebook page.</param>
-    /// <returns>A new FullRuleBookRangeInfo containing the information to create a custom rulebook range.</returns>
+    /// <returns>A new <see cref="FullRuleBookRangeInfo"/> containing the information to create a custom rulebook range.</returns>
     public static FullRuleBookRangeInfo New(
     string modGuid,
     PageRangeType pageType,
@@ -220,47 +309,57 @@ public static class RuleBookManager
     /// </summary>
     /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
     /// <param name="action"></param>
-    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullRuleBookRangeInfo"/> so a chain can continue.</returns>
     public static FullRuleBookRangeInfo SetFillPage(this FullRuleBookRangeInfo info, Action<RuleBookPage, string, object[]> action)
     {
         info.FillPageAction = action;
         return info;
     }
     /// <summary>
-    /// Sets the HeaderPrefix for the provided FullRuleBookRangeInfo.
+    /// Sets the header prefix for the given <see cref="FullRuleBookRangeInfo"/>.
     /// </summary>
-    /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
+    /// <param name="info">The <see cref="FullRuleBookRangeInfo"/> we want to modify.</param>
     /// <param name="headerPrefix">The string we want our header prefix to become.</param>
     /// <remarks>
-    /// If you only want to modify the subsection numeral, use SetPrefixSimple instead.
+    /// If you only want to modify the subsection numeral, use <see cref="SetHeaderPrefixSimple"/> instead.
     /// </remarks>
-    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
+    /// <returns>The same <see cref="FullRuleBookRangeInfo"/> so a chain can continue.</returns>
     public static FullRuleBookRangeInfo SetHeaderPrefix(this FullRuleBookRangeInfo info, string headerPrefix)
     {
         info.HeaderPrefix = headerPrefix;
         return info;
     }
     /// <summary>
-    /// Sets the FullRuleBookRangeInfo's HeaderPrefix using the HeaderPrefixSimple method (see there more for information).
+    /// Sets the <see cref="FullRuleBookRangeInfo"/>'s <see cref="FullRuleBookRangeInfo.HeaderPrefix"/> using <see cref="HeaderPrefixSimple"/>.
     /// </summary>
-    /// <param name="info">The FullRuleBookRangeInfo we want to modify.</param>
-    /// <param name="romanNumeral">A string ideally representing a roman numeral, used for the subsection number.</param>
-    /// <returns>The same FullRuleBookRangeInfo so a chain can continue.</returns>
+    /// <param name="info">The <see cref="FullRuleBookRangeInfo"/> we want to modify.</param>
+    /// <param name="romanNumeral">A string representing a roman numeral, used for the subsection number.</param>
+    /// <returns>The same <see cref="FullRuleBookRangeInfo"/> so a chain can continue.</returns>
     public static FullRuleBookRangeInfo SetHeaderPrefixSimple(this FullRuleBookRangeInfo info, string romanNumeral)
     {
         info.HeaderPrefix = HeaderPrefixSimple(romanNumeral);
         return info;
     }
     /// <summary>
-    /// Creates a header prefix with the provided string using DEFAULT_HEADER_PREFIX as a template.
+    /// Creates a header prefix with the provided string using <see cref="DEFAULT_HEADER_PREFIX"/> as a template.
     /// </summary>
-    /// <param name="romanNumeral">A ideally representing a roman numeral for the subsection number.</param>
-    /// <returns>A fully formatted header in the format of "APPENDIX XII, SUBSECTION {0}", where {0} is romanNumeral.</returns>
+    /// <param name="romanNumeral">A representing a roman numeral for the subsection number.</param>
+    /// <returns>A fully formatted header in the format of <c>APPENDIX XII, SUBSECTION {0}</c>, where <c>{0}</c> is <c>romanNumeral</c>.</returns>
     public static string HeaderPrefixSimple(string romanNumeral) => string.Format(DEFAULT_HEADER_PREFIX, romanNumeral);
 
     private const string DEFAULT_HEADER_PREFIX = "APPENDIX XII, SUBSECTION {0}";
+
+    /// <summary>
+    /// Helper string for formatting coloured text in HTML.
+    /// </summary>
     public const string HTML_REPLACE_STRING = "<color=#{0}><u>{1}</u></color>";
 
+    /// <summary>
+    /// Parses the colours of redirects for the given rulebook description and modifies said description to display coloured text.
+    /// </summary>
+    /// <param name="dictionary">Dictionary of strings that will be made into hyperlinks that need to be recoloured.</param>
+    /// <param name="description">The rulebook description whose text will be recoloured in preparation for hyperlinks being added.</param>
+    /// <returns>The modified rulebook description with parsed colours.</returns>
     public static string ParseRedirectTextColours(Dictionary<string, RedirectInfo> dictionary, string description)
     {
         string desc = description;
@@ -293,10 +392,10 @@ public static class RuleBookManager
     }
 
     /// <summary>
-    /// Opens the rulebook to the page with the given pageId.
+    /// Opens the rulebook to the page with the given <paramref name="pageId"/>.
     /// </summary>
-    /// <param name="instance">RuleBookController.Instance.</param>
-    /// <param name="pageId">The value to compare each rulebook pages' id against. If this starts with "[API_" then it will check against a page's unformatted id.</param>
+    /// <param name="instance"><see cref="Singleton&lt;RuleBookController>.Instance"/>.</param>
+    /// <param name="pageId">The value to compare each rulebook pages' id against. If this starts with <c>[API_</c> then it will check against a page's unformatted id.</param>
     /// <param name="offsetView">Whether to offset the camera view down when opening the rulebook.</param>
     public static void OpenToCustomPage(this RuleBookController instance, string pageId, bool offsetView = false)
     {
@@ -311,13 +410,31 @@ public static class RuleBookManager
         instance.StartCoroutine(instance.flipper.FlipToPage(pageIndex, 0.2f));
     }
 
+    /// <summary>
+    /// If the given item should be added to the rulebook for the given game act.
+    /// </summary>
+    /// <param name="item">The <see cref="ConsumableItemData"/> to check.</param>
+    /// <param name="metaCategory">The metacategory for the current act.</param>
+    /// <returns>True if the item should be added to the rulebook.</returns>
     public static bool ItemShouldBeAdded(ConsumableItemData item, AbilityMetaCategory metaCategory)
     {
         return item.rulebookCategory == metaCategory || item.GetFullConsumableItemData()?.rulebookMetaCategories.Contains(metaCategory) == true;
     }
+    /// <summary>
+    /// If the given Boon should be added to the rulebook for the given game act.
+    /// </summary>
+    /// <param name="fullBoon">The Boon to check.</param>
+    /// <param name="metaCategory">The metacategory for the current act.</param>
+    /// <returns>True if the Boon should be added to the rulebook.</returns>
     public static bool BoonShouldBeAdded(FullBoon fullBoon, AbilityMetaCategory metaCategory)
     {
         return fullBoon?.boon?.icon != null && fullBoon.appearInRulebook && fullBoon.metaCategories.Contains(metaCategory);
     }
+    /// <summary>
+    /// If the given slot modification <see cref="Info"/> should be added to the rulebook for the given game act.
+    /// </summary>
+    /// <param name="info">The slot modification to check.</param>
+    /// <param name="category">The metacategory for the current act.</param>
+    /// <returns>True if the Boon should be added to the rulebook.</returns>
     public static bool SlotModShouldBeAdded(Info info, ModificationMetaCategory category) => info.RulebookName != null && info.MetaCategories.Contains(category);
 }

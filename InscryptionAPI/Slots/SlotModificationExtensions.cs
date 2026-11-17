@@ -11,11 +11,20 @@ using static InscryptionAPI.Slots.SlotModificationManager;
 
 namespace InscryptionAPI.Slots;
 
-[HarmonyPatch]
 /// <summary>
 /// Contains extension methods to simplify slot modification management
 /// </summary>
+[HarmonyPatch]
 public static class SlotModificationExtensions {
+    /// <summary>
+    /// Retrieves the <see cref="Info"/> of a slot modification using its ID.
+    /// </summary>
+    /// <param name="modInfos">Collection of <see cref="Info"/> slot modification objects to search for.</param>
+    /// <param name="mod">The ID of the slot modification.</param>
+    /// <returns>The <see cref="Info"/> corresponding with the given ID, or null if one couldn't be found.</returns>
+    /// <remarks>
+    /// Intended for use with <see cref="AllModificationInfos"/>.
+    /// </remarks>
     public static Info InfoByID(this IEnumerable<Info> modInfos, ModificationType mod)
     {
         return modInfos.FirstOrDefault(x => x.ModificationType == mod);
@@ -24,10 +33,12 @@ public static class SlotModificationExtensions {
     /// <summary>
     /// Sets the rulebook description for a slot modification.
     /// </summary>
-    /// <param name="mod">The ModificationType to add a rulebook description for.</param>
-    /// <param name="rulebookDescription">The rulebook description for the ModificationType.</param>
+    /// <param name="mod">The <see cref="ModificationType"/> to add a rulebook description for.</param>
+    /// <param name="rulebookName">The rulebook name for this slot modification.</param>
+    /// <param name="rulebookDescription">The rulebook description for the <see cref="ModificationType"/>.</param>
+    /// <param name="rulebookSprite">The sprite for the rulebook page representing this slot modification.</param>
     /// <param name="categories">What Acts the rulebook entry should appear in.</param>
-    /// <returns>The same ModificationType.</returns>
+    /// <returns>The same <see cref="ModificationType"/>.</returns>
     public static ModificationType SetRulebook(this ModificationType mod, string rulebookName, string rulebookDescription, Texture2D rulebookSprite, params ModificationMetaCategory[] categories)
     {
         Info info = AllSlotModifications.InfoByID(mod);
@@ -44,6 +55,12 @@ public static class SlotModificationExtensions {
         }
         return mod;
     }
+    /// <summary>
+    /// Sets the icon sprite to use in the Act 3 rulebook.
+    /// </summary>
+    /// <param name="mod">The <see cref="ModificationType"/> to access.</param>
+    /// <param name="spriteTexture">The texture to use.</param>
+    /// <returns>The same <see cref="ModificationType"/> so a chain can continue.</returns>
     public static ModificationType SetRulebookP03Sprite(this ModificationType mod, Texture2D spriteTexture)
     {
         Info info = AllSlotModifications.InfoByID(mod);
@@ -53,6 +70,12 @@ public static class SlotModificationExtensions {
         }
         return mod;
     }
+    /// <summary>
+    /// Sets the icon sprite to use in the Grimora rulebook.
+    /// </summary>
+    /// <param name="mod">The <see cref="ModificationType"/> to access.</param>
+    /// <param name="spriteTexture">The texture to use.</param>
+    /// <returns>The same <see cref="ModificationType"/> so a chain can continue.</returns>
     public static ModificationType SetRulebookGrimoraSprite(this ModificationType mod, Texture2D spriteTexture)
     {
         Info info = AllSlotModifications.InfoByID(mod);
@@ -62,6 +85,12 @@ public static class SlotModificationExtensions {
         }
         return mod;
     }
+    /// <summary>
+    /// Sets the icon sprite to use in the Magnificus rulebook.
+    /// </summary>
+    /// <param name="mod">The <see cref="ModificationType"/> to access.</param>
+    /// <param name="spriteTexture">The texture to use.</param>
+    /// <returns>The same <see cref="ModificationType"/> so a chain can continue.</returns>
     public static ModificationType SetRulebookMagnificusSprite(this ModificationType mod, Texture2D spriteTexture)
     {
         Info info = AllSlotModifications.InfoByID(mod);
@@ -71,6 +100,16 @@ public static class SlotModificationExtensions {
         }
         return mod;
     }
+    /// <summary>
+    /// Sets the shared rulebook for this <see cref="ModificationType"/>. This slot modification will use the rulebook name, description, and icon of the shared slot modification.
+    /// </summary>
+    /// <param name="mod">The <see cref="ModificationType"/> to access.</param>
+    /// <param name="sharedRulebookType">The <see cref="ModificationType"/> whose rulebook page this slot modification will use.</param>
+    /// <returns>The same <see cref="ModificationType"/> so a chain can continue.</returns>
+    /// <remarks>
+    /// Intended for use with slot modifications that are meant to be variations of the same core slot modification.
+    /// (eg., Burn 1, Burn 2, etc.)
+    /// </remarks>
     public static ModificationType SetSharedRulebook(this ModificationType mod, ModificationType sharedRulebookType)
     {
         Info info = AllSlotModifications.InfoByID(mod);
