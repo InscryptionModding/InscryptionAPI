@@ -249,7 +249,7 @@ body > footer, body[data-layout="landing"] > footer {
     padding-right: 1.5rem;
 }
 
-.content {
+.content, .facts {
     font-size: var(--document-font-size) !important;
     line-height: var(--document-line-height);
 }
@@ -309,7 +309,7 @@ body > footer, body[data-layout="landing"] > footer {
     line-height: var(--document-line-height);
 }
 
-code, kbd, samp, pre, .hljs {
+code, kbd, samp, pre, .hljs, .facts code {
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height);
