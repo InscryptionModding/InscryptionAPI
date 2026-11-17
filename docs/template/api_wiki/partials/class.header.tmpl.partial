@@ -6,16 +6,38 @@
 </h1>
 
 <div class="facts text-secondary">
-  <dl><dt>{{__global.namespace}}</dt><dd>{{{namespace.specName.0.value}}}</dd></dl>
-  {{#assemblies.0}}<dl><dt>{{__global.assembly}}</dt><dd>{{assemblies.0}}.dll</dd></dl>{{/assemblies.0}}
+    <dl>
+        <dt>{{__global.namespace}}</dt>
+        <dd><code>{{{namespace.specName.0.value}}}</code></dd>
+    </dl>
+    {{#assemblies.0}}
+    <dl>
+        <dt>{{__global.assembly}}</dt>
+        <dd><code>{{assemblies.0}}.dll</code></dd>
+    </dl>
+    {{/assemblies.0}}
 </div>
 
-<div class="markdown summary">{{{summary}}}</div>
-<div class="markdown conceptual">{{{conceptual}}}</div>
+{{#summary}}
+<div class="markdown summary">
+  <h2>Summary</h2>
+  <p>The following is a brief description of what this type does, and what it is meant for: </p>
+  {{{summary}}}
+</div>
+{{/summary}}
+
+{{#conceptual}}
+<div class="markdown conceptual">
+  <h2>Conceptual</h2>
+  <p>The following is some brief conceptual information on how this type should be used: </p>
+  {{{conceptual}}}
+</div>
+{{/conceptual}}
 
 {{#inClass}}
 <div class="inheritance">
-  <h5>{{__global.inheritance}}</h5>
+  <h2>Inheritance</h2>
+  <p>The following is the full inheritance tree for this type: </p>
 
   <div class="inheritance-tree">
     {{#inheritance}}
@@ -39,7 +61,8 @@
 
 {{#implements.0}}
 <div class="implements">
-  <h5>{{__global.implements}}</h5>
+  <h2>Implements</h2>
+  <p>The following are all of the interfaces implemented by this type: </p>
 {{/implements.0}}
 
 {{#implements}}
@@ -53,9 +76,10 @@
 {{/implements.0}}
 
 {{#syntax.content.0.value}}
-<h5 id="{{id}}_syntax">
-  {{__global.syntax}}
-</h5>
+<h2 id="{{id}}_syntax">
+  Syntax
+</h2>
+<p>The following codeblock is the declaration syntax of this type found in the code: </p>
 
 <div class="codewrapper">
   <pre><code class="lang-{{_lang}} hljs">{{syntax.content.0.value}}</code></pre>
@@ -63,9 +87,10 @@
 {{/syntax.content.0.value}}
 
 {{#syntax.parameters.0}}
-<h5 class="parameters">
-  {{__global.parameters}}
-</h5>
+<h2 class="parameters">
+  Parameters
+</h2>
+<p>The following table is a full list of parameters used by this type, in the form of <code>type, name | description</code> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-parameters">
   <thead>
@@ -98,9 +123,10 @@
 {{/syntax.parameters.0}}
 
 {{#syntax.return}}
-<h5 class="returns">
-  {{__global.returns}}
-</h5>
+<h2 class="returns">
+  Returns
+</h2>
+<p>The following table is a full list of returns used by this type, in the form of <code>type, name | description</code> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-returns">
   <thead>
@@ -120,9 +146,11 @@
 {{/syntax.return}}
 
 {{#syntax.typeParameters.0}}
-<h5 class="typeParameters">
-  {{__global.typeParameters}}
-</h5>
+<h2 class="typeParameters">
+  Type Parameters
+</h2>
+
+<p>The following table is a full list of Type Parameters used by this type, in the form of <code>type, name | description</code> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-type-parameters">
   <thead>
@@ -150,48 +178,59 @@
 {{/syntax.typeParameters.0}}
 
 {{#inheritedMembers.0}}
-<dl class="typelist inheritedMembers">
-  <dt>{{__global.inheritedMembers}}</dt>
-  <dd>
+<details class="typelist inheritedMembers">
+  <summary>
+    <h2 class="inheritedMembers">Inherited Members (Click me to Expand)</h2>
+  </summary>
+  <p>The following are inherited members derived from this type's inheritence: </p>
+  <div class="typelist-content">
 {{/inheritedMembers.0}}
+
 {{#inheritedMembers}}
-  <div>
-  {{#definition}}
-    <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  {{^definition}}
-    <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
-  {{/definition}}
-  </div>
+    <div>
+    {{#definition}}
+      <xref uid="{{definition}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
+    {{/definition}}
+    {{^definition}}
+      <xref uid="{{uid}}" text="{{nameWithType.0.value}}" alt="{{fullName.0.value}}"/>
+    {{/definition}}
+    </div>
 {{/inheritedMembers}}
+
 {{#inheritedMembers.0}}
-</dd>
-</dl>
+  </div>
+</details>
 {{/inheritedMembers.0}}
 
 {{#extensionMethods.0}}
-<dl class="typelist extensionMethods">
-  <dt>{{__global.extensionMethods}}</dt>
-  <dd>
+<details class="typelist extensionMethods">
+  <summary>
+    <h2 class="extensionMethods">Extension Methods (Click me to Expand)</h2>
+  </summary>
+  <p>The following are methods in which you can use that act as extensions to this type: </p>
+  <div class="typelist-content">
 {{/extensionMethods.0}}
+
 {{#extensionMethods}}
-<div>
-  {{#definition}}
-    <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
-  {{/definition}}
-  {{^definition}}
-    <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
-  {{/definition}}
-</div>
+    <div>
+    {{#definition}}
+      <xref uid="{{definition}}" altProperty="fullName" displayProperty="nameWithType"/>
+    {{/definition}}
+    {{^definition}}
+      <xref uid="{{uid}}" altProperty="fullName" displayProperty="nameWithType"/>
+    {{/definition}}
+    </div>
 {{/extensionMethods}}
+
 {{#extensionMethods.0}}
-</dd>
-</dl>
+  </div>
+</details>
 {{/extensionMethods.0}}
 
 {{#isEnum}}
 {{#children}}
 <h2 id="{{id}}">{{>partials/classSubtitle}}</h2>
+<p>The following table is a full list of enumerations used by this type, in the form of <code>name | description</code> for your ease of convenience, if you don't know what a given type is, you can click it and it will link to its definition at the associated documentation. The table is below: </p>
 
 <table class="api-fields">
   <thead>
@@ -220,13 +259,32 @@
 {{/isEnum}}
 
 {{#example.0}}
-<h2 id="{{id}}_examples">{{__global.examples}}</h2>
+<h2 id="{{id}}_examples">Examples</h2>
+<p>The following is an example of how you can use this type: </p>
 {{/example.0}}
 {{#example}}
 {{{.}}}
 {{/example}}
 
 {{#remarks}}
-<h2 id="{{id}}_remarks">{{__global.remarks}}</h2>
+<h2 id="{{id}}_remarks">Remarks</h2>
+<p>The following is additional information related to this type: </p>
 <div class="markdown level0 remarks">{{{remarks}}}</div>
 {{/remarks}}
+
+{{#seealso.0}}
+<h2 id="seealso">See Also</h2>
+<div class="seealso">
+  <p>References related types, members, and external resources that provide additional information.</p>
+{{/seealso.0}}
+{{#seealso}}
+  {{#isCref}}
+    <div>{{{type.specName.0.value}}}</div>
+  {{/isCref}}
+  {{^isCref}}
+    <div>{{{url}}}</div>
+  {{/isCref}}
+{{/seealso}}
+{{#seealso.0}}
+</div>
+{{/seealso.0}}
