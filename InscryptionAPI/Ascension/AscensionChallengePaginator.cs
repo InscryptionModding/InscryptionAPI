@@ -97,7 +97,7 @@ public class AscensionChallengePaginator : MonoBehaviour {
         int numBossesAdded = 0;
 
         // 14 = regular + boss * 2
-        Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {numBosses} | {bossStartingIndex}");
+        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {numBosses} | {bossStartingIndex}");
 
         for (int i = 0; i < 14; i++)
         {
@@ -130,10 +130,6 @@ public class AscensionChallengePaginator : MonoBehaviour {
                 GameObject newIcon = CreateIconGameObject(objectRef, i);
                 newPage.Add(newIcon);
             }
-
-            //if (newPage.Count >= numIcons) {
-            //    break;
-            //}
         }
 
         newPage.Sort((x, x2) => Mathf.RoundToInt(
@@ -313,7 +309,7 @@ public class AscensionChallengePaginator : MonoBehaviour {
                 }
             });
             pagesToAdd.Add(page.ConvertAll(x => x.Item2));
-            DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
+            //DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
         }
 
         challengeObjectsForPages.ForEach(x => x.RemoveAll(x => x == null));
