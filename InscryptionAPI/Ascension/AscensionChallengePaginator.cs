@@ -87,11 +87,17 @@ public class AscensionChallengePaginator : MonoBehaviour {
         int numIcons = Mathf.Min(14, challengeObjectsForPages[0].Count) - numBosses;
 
         // the list index when we begin adding boss icons
-        int bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
+        int bossStartingIndex;
+        if (numBosses == 0) {
+            bossStartingIndex = -1;
+        }
+        else {
+            bossStartingIndex = (1 + regularChallengeInfos.Count) / 2;
+        }
         int numBossesAdded = 0;
 
         // 14 = regular + boss * 2
-        //Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {numBosses} | {bossStartingIndex}");
+        Debug.Log($"NumIcons for Page: {numIcons}: {regularChallengeInfos.Count} {numBosses} | {bossStartingIndex}");
 
         for (int i = 0; i < 14; i++)
         {
@@ -124,6 +130,10 @@ public class AscensionChallengePaginator : MonoBehaviour {
                 GameObject newIcon = CreateIconGameObject(objectRef, i);
                 newPage.Add(newIcon);
             }
+
+            //if (newPage.Count >= numIcons) {
+            //    break;
+            //}
         }
 
         newPage.Sort((x, x2) => Mathf.RoundToInt(
@@ -271,17 +281,23 @@ public class AscensionChallengePaginator : MonoBehaviour {
         List<List<AscensionChallengeInfo>> pagesToAdd = new();
         while (challengesToAdd.Count > 0)
         {
+            int maxIcons = 14;
             List<(ChallengeManager.FullChallenge, AscensionChallengeInfo)> page = new();
-            for (int i = 0; i < 14; i++) // each page can have 14 icons max
-            {
-                if (challengesToAdd.Count > 0)
-                {
-                    page.Add(challengesToAdd.Last());
-                    if (challengesToAdd.Last().Item1.Boss) // boss icons take up a whole column
-                    {
-                        i++;
+            // each page can have 14 icons max
+            for (int i = 0; i < maxIcons; i++) {
+                if (challengesToAdd.Count > 0) {
+                    (ChallengeManager.FullChallenge, AscensionChallengeInfo) highestValChallenge = challengesToAdd.Last();
+
+
+                    // boss icons take up a whole column
+                    if (highestValChallenge.Item1.Boss) {
+                        maxIcons--;
                     }
-                    challengesToAdd.RemoveAt(challengesToAdd.Count - 1);
+
+                    if (i < maxIcons) {
+                        page.Add(highestValChallenge);
+                        challengesToAdd.Remove(highestValChallenge);
+                    }
                 }
             }
             // re-sort the page so boss challenges have the correct info
@@ -293,11 +309,11 @@ public class AscensionChallengePaginator : MonoBehaviour {
                 }
                 else
                 {
-                    return (x.Item1.UnlockLevel + (x2.Item1.Boss ? 0 : 0)) - (x2.Item1.UnlockLevel + (x.Item1.Boss ? 0 : 0));
+                    return (x.Item1.UnlockLevel) - (x2.Item1.UnlockLevel);
                 }
             });
             pagesToAdd.Add(page.ConvertAll(x => x.Item2));
-            //DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
+            DebugChallengePageArray(pagesToAdd.Count, null, page.ConvertAll(x => x.Item2));
         }
 
         challengeObjectsForPages.ForEach(x => x.RemoveAll(x => x == null));
