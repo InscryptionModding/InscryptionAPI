@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use CardManager instead", true)]
 public class CustomCard
 {
@@ -130,3 +131,4 @@ public class CustomCard
         return card;
     }
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
