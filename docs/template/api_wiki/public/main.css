@@ -95,6 +95,7 @@ body {
 
 .font-settings-menu .form-label {
     margin-bottom: 0.35rem;
+    font-size: 1.25rem;
 }
 
 .font-settings-menu input,
@@ -104,6 +105,12 @@ body {
 
 .font-settings-menu [hidden] {
     display: none !important;
+}
+
+#reset-settings {
+    font-size: 1.25rem;
+    font-weight: normal;
+    margin-bottom: 1.15rem;
 }
 
 * {
