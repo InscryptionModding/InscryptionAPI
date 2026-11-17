@@ -1,4 +1,11 @@
 exports.postTransform = function (model) {
+    if (model.extensionMethods && model.extensionMethods.length > 0) {
+        console.log(
+            "EXTENSION METHOD MODEL:",
+            JSON.stringify(model.extensionMethods[0], null, 2)
+        );
+    }
+
     setMemberFlags(model);
     return model;
 };
