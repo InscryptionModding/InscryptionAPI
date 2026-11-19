@@ -1,14 +1,7 @@
 using DiskCardGame;
 using HarmonyLib;
-using InscryptionAPI.Helpers;
-using InscryptionAPI.Triggers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace InscryptionAPI.Card;
