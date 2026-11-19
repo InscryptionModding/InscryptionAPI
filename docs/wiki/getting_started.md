@@ -1,3 +1,7 @@
+# Getting Started
+
+This article covers both getting started for users and modders. If you want to skip directly to either section, click the relavent section under `IN THIS ARTICLE`. If you want to change articles, you can do so on the Left side of the page, which is the Table Of Contents of our Wiki.
+
 ## Getting Started: Installation
 ---
 To begin, we'll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.
