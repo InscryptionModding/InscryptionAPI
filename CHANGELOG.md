@@ -21,6 +21,8 @@
 * Upgraded the API's `.csproj`'s, and TCLI Build system.
 * Publicized the `_originalColor`, `_enterColor`, and `_selectedColor` used within `ActivatedAbilityIconInteractable` of the Community Patch.
 * Update the API to use Latest BepInEx.
+* Bug Fix overlapping challenge icons.
+* Removed some Debug Logging.
 
 # 2.24.1
 * Added Extensions for setting the IconTexture of a Starter Deck.
