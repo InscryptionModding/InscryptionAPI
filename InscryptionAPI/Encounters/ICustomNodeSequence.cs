@@ -12,5 +12,5 @@ public interface ICustomNodeSequence
     /// </summary>
     /// <param name="nodeData">The node data object.</param>
     /// <returns>An enumeration of Unity events.</returns>
-    public IEnumerator ExecuteCustomSequence(CustomNodeData nodeData);
+    IEnumerator ExecuteCustomSequence(CustomNodeData nodeData);
 }

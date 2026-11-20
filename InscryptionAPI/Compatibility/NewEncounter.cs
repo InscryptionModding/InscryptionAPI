@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace APIPlugin;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 [Obsolete("Use EncounterManager instead", true)]
 public class NewEncounter
 {
@@ -106,3 +107,4 @@ public class NewEncounter
     public bool bossPrep;
     public EncounterBlueprintData encounterBlueprintData;
 }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

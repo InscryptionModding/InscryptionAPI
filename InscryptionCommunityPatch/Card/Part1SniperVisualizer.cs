@@ -3,12 +3,25 @@ using Pixelplacement;
 using UnityEngine;
 
 namespace InscryptionCommunityPatch.Card;
+
+/// <summary>
+/// Adds a Sniper Visualizer to Act 1.
+/// </summary>
 public class Part1SniperVisualizer : ManagedBehaviour
 {
+    /// <summary>
+    /// This function handles visualizing the Start of the Sniper Ability.
+    /// </summary>
+    /// <param name="sniperSlot">The <see cref="CardSlot"/> in which the Sniper is in.</param>
     public void VisualizeStartSniperAbility(CardSlot sniperSlot)
     {
     }
 
+    /// <summary>
+    /// This function handles visualizing the AIm of the Sniper Ability.
+    /// </summary>
+    /// <param name="sniperSlot">The <see cref="CardSlot"/> in which the Sniper is in.</param>
+    /// <param name="targetSlot">The <see cref="CardSlot"/> in which we are trying to target.</param>
     public void VisualizeAimSniperAbility(CardSlot sniperSlot, CardSlot targetSlot)
     {
         if (tempSniperIcon != null)
@@ -25,6 +38,10 @@ public class Part1SniperVisualizer : ManagedBehaviour
         tempSniperIcon = gameObject;
     }
 
+    /// <summary>
+    /// This function handles cleaning up the Target Icon.
+    /// </summary>
+    /// <param name="icon">The <see cref="GameObject"/> representing the Target Icon.</param>
     public void CleanUpTargetIcon(GameObject icon)
     {
         Tween.LocalScale(icon.transform, Vector3.zero, 0.1f, 0f, Tween.EaseIn, Tween.LoopType.None, null, delegate ()
@@ -33,6 +50,10 @@ public class Part1SniperVisualizer : ManagedBehaviour
         }, true);
     }
 
+    /// <summary>
+    /// Handles the Visualization of the Confirmation of the Sniper Ability.
+    /// </summary>
+    /// <param name="targetSlot">The <see cref="CardSlot"/> in which we are trying to target.</param>
     public void VisualizeConfirmSniperAbility(CardSlot targetSlot)
     {
         if (sniperIconPrefab == null)
@@ -49,6 +70,9 @@ public class Part1SniperVisualizer : ManagedBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the Visualization of the Clearing of the Sniper Ability
+    /// </summary>
     public void VisualizeClearSniperAbility()
     {
         sniperIcons.ForEach(delegate (GameObject x)
@@ -65,8 +89,10 @@ public class Part1SniperVisualizer : ManagedBehaviour
             tempSniperIcon = null;
         }
     }
-
-
+    
+    /// <summary>
+    /// A List <see cref="GameObject"/> representing the Sniper Icons.
+    /// </summary>
     public readonly List<GameObject> sniperIcons = new();
     private GameObject sniperIconPrefab;
     private GameObject tempSniperIcon;

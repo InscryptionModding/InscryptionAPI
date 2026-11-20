@@ -7,9 +7,9 @@ namespace InscryptionAPI.Pelts.Patches;
 internal class CardLoader_PeltNames
 {
     /// <summary>
-    /// Adds new pelts to be used everywhere in the game
+    /// Adds new pelts to be used everywhere in the game.
     /// </summary>
-    public static void Postfix(ref string[] __result)
+    private static void Postfix(ref string[] __result)
     {
         __result = PeltManager.AllPelts().Select((a) => a.peltCardName).ToArray();
     }

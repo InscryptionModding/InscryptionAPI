@@ -10,23 +10,35 @@ using UnityEngine;
 
 namespace InscryptionAPI.Items;
 
-
+/// <summary>
+/// Manager class that handles the creation and management of mod-added consumable items.
+/// </summary>
 public static class ConsumableItemManager
 {
+    /// <summary>
+    /// A utility class that holds all of the required information about an item in order to be able to use it in-game.
+    /// </summary>
     public class FullConsumableItemData
     {
+        /// <summary>
+        /// The description object for this item.
+        /// </summary>       
         public ConsumableItemData itemData;
 
         /// <summary>
-        /// Tracks all rulebook redirects that this ability's description will have. Explanation of the variables is as follows:
-        /// Key (string): the text that will be recoloured to indicate that it's clickable.
-        /// Tuple.Item1 (PageRangeType): the type of page the redirect will go to. Use PageRangeType.Unique if you want to redirect to a custom rulebook page using its pageId.
-        /// Tuple.Item2 (Color): the colour the Key text will be recoloured to.
-        /// Tuple.Item3 (string): the id that the API will match against to find the redirect page. Eg, for ability redirects this will be the Ability id as a string.
+        /// Tracks all rulebook redirects that this item's description will have.
         /// </summary>
         public Dictionary<string, RuleBookManager.RedirectInfo> RulebookDescriptionRedirects = new();
 
+        /// <summary>
+        /// Additional metacategories for this item if <see cref="ConsumableItemData.rulebookCategory"/> was not enough.
+        /// </summary>
         public List<AbilityMetaCategory> rulebookMetaCategories = new();
+
+        /// <summary>
+        /// Creates a new instance of <see cref="FullConsumableItemData"/>.
+        /// </summary>
+        /// <param name="data">The description object for this item.</param>
         public FullConsumableItemData(ConsumableItemData data)
         {
             this.itemData = data;
@@ -40,12 +52,26 @@ public static class ConsumableItemManager
         All
     }
 
-    public enum ModelType
-    {
+    /// <summary>
+    /// The different types of default item models added by the API.
+    /// </summary>
+    public enum ModelType {
+        /// <summary>
+        /// A simple rune object.
+        /// </summary>
         BasicRune = 1,
+        /// <summary>
+        /// A simple rune object covered in veins.
+        /// </summary>
         BasicRuneWithVeins = 2,
+        /// <summary>
+        /// A simple rune object that floats.
+        /// </summary>
         HoveringRune = 3,
-        CardInABottle = 4,
+        /// <summary>
+        /// The vanilla card in a bottle model (eg., Squirrel in a Bottle).
+        /// </summary>
+        CardInABottle = 4
     }
 
     private static Sprite cardinbottleSprite;
@@ -56,10 +82,23 @@ public static class ConsumableItemManager
     private static HashSet<ModelType> defaultModelTypes = new();
     internal static readonly List<ConsumableItemData> allNewItems = new();
     private static readonly List<ConsumableItemData> baseConsumableItemsDatas = new();
+    /// <summary>
+    /// All mod-added items.
+    /// </summary>
     public static ReadOnlyCollection<ConsumableItemData> NewConsumableItemDatas = new(allNewItems);
 
     internal static readonly List<FullConsumableItemData> allFullItemDatas = new();
 
+    /// <summary>
+    /// Creates a new item with a custom prefab and registers it to be able to be used in-game.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="rulebookName">The name of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookDescription">The description of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookSprite">The icon to display on this item's rulebook entry.</param>
+    /// <param name="itemType">A subclass of <see cref="ConsumableItem"/> that implements the logic for the item.</param>
+    /// <param name="prefab">The prefab object for this item's model.</param>
+    /// <returns>An instance of <see cref="ConsumableItemData"/> containing all this item's data.</returns>
     public static ConsumableItemData New(string pluginGUID,
         string rulebookName, string rulebookDescription,
         Texture2D rulebookSprite, Type itemType,
@@ -75,6 +114,16 @@ public static class ConsumableItemManager
         return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, modelType);
     }
 
+    /// <summary>
+    /// Creates a new item with a custom prefab and registers it to be able to be used in-game.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="rulebookName">The name of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookDescription">The description of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookSprite">The icon to display on this item's rulebook entry.</param>
+    /// <param name="itemType">A subclass of <see cref="ConsumableItem"/> that implements the logic for the item.</param>
+    /// <param name="resource">A helper object for retrieving the model prefab resource.</param>
+    /// <returns>An instance of <see cref="ConsumableItemData"/> containing all this item's data.</returns>
     public static ConsumableItemData New(string pluginGUID,
         string rulebookName, string rulebookDescription,
         Texture2D rulebookSprite, Type itemType,
@@ -84,6 +133,16 @@ public static class ConsumableItemManager
         return New(pluginGUID, rulebookName, rulebookDescription, rulebookSprite, itemType, registerPrefab);
     }
 
+    /// <summary>
+    /// Creates a new item with a default model and registers it to be able to be used in-game.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="rulebookName">The name of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookDescription">The description of this item as it appears in the rulebook.</param>
+    /// <param name="rulebookSprite">The icon to display on this item's rulebook entry.</param>
+    /// <param name="itemType">A subclass of <see cref="ConsumableItem"/> that implements the logic for the item.</param>
+    /// <param name="modelType">The ID of the default model this item should use.</param>
+    /// <returns>An instance of <see cref="ConsumableItemData"/> containing all this item's data.</returns>
     public static ConsumableItemData New(string pluginGUID,
         string rulebookName, string rulebookDescription,
         Texture2D rulebookSprite, Type itemType,
@@ -105,6 +164,13 @@ public static class ConsumableItemManager
         return Add(pluginGUID, data);
     }
 
+    /// <summary>
+    /// Creates a new item that provides a card when used (eg., Squirrel in a Bottle).
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="cardName">The internal name of the card contained in this item.</param>
+    /// <param name="rulebookTexture">The icon texture to display on this item's rulebook entry.</param>
+    /// <returns>An instance of <see cref="ConsumableItemData"/> containing all this item's data.</returns>
     public static ConsumableItemData NewCardInABottle(string pluginGUID, string cardName, Texture2D rulebookTexture = null)
     {
         CardInfo cardInfo = CardLoader.GetCardByName(cardName);
@@ -117,6 +183,13 @@ public static class ConsumableItemManager
         return NewCardInABottle(pluginGUID, cardInfo, rulebookTexture);
     }
 
+    /// <summary>
+    /// Creates a new item that provides a card when used (eg., Squirrel in a Bottle).
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="cardInfo">The <see cref="CardInfo"/> of the card contained in this item.</param>
+    /// <param name="rulebookTexture">The icon texture to display on this item's rulebook entry.</param>
+    /// <returns>An instance of <see cref="ConsumableItemData"/> containing all this item's data.</returns>
     public static ConsumableItemData NewCardInABottle(string pluginGUID, CardInfo cardInfo, Texture2D rulebookTexture = null)
     {
         if (cardInfo == null)
@@ -150,6 +223,12 @@ public static class ConsumableItemManager
         return Add(pluginGUID, data);
     }
 
+    /// <summary>
+    /// Registers a custom item with the API.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding this item.</param>
+    /// <param name="data">The <see cref="ConsumableItemData"/> to register.</param>
+    /// <returns>The same <see cref="ConsumableItemData"/> so a chain can continue.</returns>
     public static ConsumableItemData Add(string pluginGUID, ConsumableItemData data)
     {
         string name = pluginGUID + "_" + data.rulebookName;
@@ -162,6 +241,13 @@ public static class ConsumableItemManager
         return data;
     }
 
+    /// <summary>
+    /// Registers a custom prefab with the API for ease of use.
+    /// </summary>
+    /// <param name="pluginGUID">The GUID of the mod adding the prefab.</param>
+    /// <param name="rulebookName">The internal name of the prefab.</param>
+    /// <param name="resource">A helper object containing data on the prefab resource.</param>
+    /// <returns>The ID for the custom prefab.</returns>
     public static ModelType RegisterPrefab(string pluginGUID, string rulebookName, ConsumableItemResource resource)
     {
         ModelType type = GuidManager.GetEnumValue<ModelType>(pluginGUID, rulebookName);
@@ -238,7 +324,7 @@ public static class ConsumableItemManager
             if (!allFullItemDatas.Exists(x => x.itemData == itemData))
                 allFullItemDatas.Add(new(itemData));
         }
-        if (InscryptionAPIPlugin.configCustomItemTypes.Value == ConsumableState.Vanilla)
+        if (InscryptionAPIPlugin.configCustomItemModelSelection.Value == ConsumableState.Vanilla)
         {
             // Don't change any items!
             return;
@@ -258,7 +344,7 @@ public static class ConsumableItemManager
         }
 
         // Override vanilla items
-        if (InscryptionAPIPlugin.configCustomItemTypes.Value == ConsumableState.All)
+        if (InscryptionAPIPlugin.configCustomItemModelSelection.Value == ConsumableState.All)
         {
             // Change all base items to use the fallback model!
             foreach (ConsumableItemData data in baseConsumableItemsDatas)

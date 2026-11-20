@@ -4,13 +4,20 @@ using Sirenix.Utilities;
 
 namespace InscryptionCommunityPatch.Card;
 
+/// <summary>
+/// Fixes related to Activated Ability Icons.
+/// </summary>
 [HarmonyPatch]
 public static class ActivatedAbilityIconFix
 {
-    public static bool HasActivatedAbility(this PlayableCard card)
+    /// <summary>
+    /// A bool determining whether or not a card has an Activated Ability.
+    /// </summary>
+    /// <param name="card">The <see cref="PlayableCard"/> in which we want to see if it has a Activated Ability or not.</param>
+    /// <returns>True if the card has an Activated Ability, false otherwise.</returns>
+    private static bool HasActivatedAbility(this PlayableCard card)
     {
-        return card.Info.Abilities.Exists(elem => AbilitiesUtil.GetInfo(elem).activated)
-            || card.temporaryMods.Exists(elem => elem.abilities.Exists(elem2 => AbilitiesUtil.GetInfo(elem2).activated));
+        return card.Info.Abilities.Exists(elem => AbilitiesUtil.GetInfo(elem).activated) || card.temporaryMods.Exists(elem => elem.abilities.Exists(elem2 => AbilitiesUtil.GetInfo(elem2).activated));
 
     }
 
@@ -30,7 +37,7 @@ public static class ActivatedAbilityIconFix
 
         if (abilityHandler3D.SafeIsUnityNull())
         {
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] Adding activated ability handler to card [{__instance.Info.displayedName}]");
 
             abilityHandler3D = __instance.gameObject.AddComponent<ActivatedAbilityHandler3D>();
@@ -38,7 +45,7 @@ public static class ActivatedAbilityIconFix
 
         if (!abilityHandler3D.SafeIsUnityNull() && __instance.AbilityIcons.abilityIcons != null)
         {
-            if (PatchPlugin.configFullDebug.Value)
+            if (PatchPlugin.configDisplayCompleteDebugLogsInConsole.Value)
                 PatchPlugin.Logger.LogDebug($"[PlayableCard.OnStatsChanged] -> Resetting icon list for [{__instance.Info.displayedName}]");
 
             abilityHandler3D.UpdateInteractableList(__instance.AbilityIcons.abilityIcons);

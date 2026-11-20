@@ -13,6 +13,9 @@ using UnityEngine;
 
 namespace InscryptionAPI.Card;
 
+/// <summary>
+/// Class for managing adding, retrieving, tracking custom cards added via the API.
+/// </summary>
 [HarmonyPatch]
 public static class CardManager
 {
@@ -21,14 +24,50 @@ public static class CardManager
         public readonly Dictionary<Type, object> TypeMap = new();
         public readonly Dictionary<string, string> StringMap = new();
     }
+    /// <summary>
+    /// Class for storing the data for custom portrait sprites added via the API.
+    /// </summary>
+    /// <remarks>
+    /// Only tracks custom API portraits like sacrificable, steel trap, etc.
+    /// </remarks>
     public class CardAltPortraits
     {
+        /// <summary>
+        /// Portrait sprite used when calling <see cref="PlayableCard.SwitchToAlternatePortrait"/> in Act 2.
+        /// </summary>
         public Sprite PixelAlternatePortrait = null;
+        /// <summary>
+        /// Portrait sprite used when the <see cref="SteelTrap"/> sigil is triggered.
+        /// </summary>
+        /// <remarks>
+        /// Example: Leaping Trap
+        /// </remarks>
         public Sprite SteelTrapPortrait = null;
+        /// <summary>
+        /// Portrait sprite used when the <see cref="SteelTrap"/> sigil is triggered in Act 2.
+        /// </summary>
         public Sprite PixelSteelTrapPortrait = null;
+        /// <summary>
+        /// Portrait sprite used when a card's shield breaks.
+        /// </summary>
+        /// <remarks>
+        /// Example: Mud Turtle
+        /// </remarks>
         public Sprite BrokenShieldPortrait = null;
+        /// <summary>
+        /// Portrait sprite used when a card's shield breaks in Act 2.
+        /// </summary>
         public Sprite PixelBrokenShieldPortrait = null;
+        /// <summary>
+        /// Portrait sprite used when a card on the board can be chosen as a sacrifice.
+        /// </summary>
+        /// <remarks>
+        /// Example: Squirrel
+        /// </remarks>
         public Sprite SacrificablePortrait = null;
+        /// <summary>
+        /// Portrait sprite used when a card on the board can be chosen as a sacrifice in Act 2.
+        /// </summary>
         public Sprite PixelSacrificablePortrait = null;
     }
     private static readonly ConditionalWeakTable<CardInfo, CardExt> CardExtensionProperties = new();
@@ -37,7 +76,7 @@ public static class CardManager
     internal static readonly Dictionary<string, Func<bool, int, bool>> CustomCardUnlocks = new();
 
     /// <summary>
-    /// The set of cards that are in the base game
+    /// The set of cards that are in the base game.
     /// </summary>
     /// <returns>.</returns>
     public static readonly ReadOnlyCollection<CardInfo> BaseGameCards = new(GetBaseGameCards().ToList());
@@ -55,14 +94,16 @@ public static class CardManager
         foreach (CardInfo card in Resources.LoadAll<CardInfo>("Data/Cards"))
         {
             card.SetBaseGameCard(true);
-            if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit")
+            if (card.name == "Squirrel" || card.name == "AquaSquirrel" || card.name == "Rabbit") {
                 card.SetAffectedByTidalLock();
-            else if (card.name == "SkeletonParrot")
+            }
+            else if (card.name == "SkeletonParrot") {
                 card.AddTribes(Tribe.Bird);
-            else if (card.name == "MudTurtle")
+            }
+            else if (card.name == "MudTurtle") {
                 card.SetBrokenShieldPortrait(card.alternatePortrait);
-
-            yield return card;
+            }
+             yield return card;
         }
     }
 
@@ -200,7 +241,6 @@ public static class CardManager
     /// <summary>
     /// A copy of all cards in the card pool.
     /// </summary>
-    /// <returns>.</returns>
     public static List<CardInfo> AllCardsCopy { get; private set; } = BaseGameCards.ToList();
 
     /// <summary>
@@ -257,7 +297,7 @@ public static class CardManager
     /// <param name="attack">The Power of the card.</param>
     /// <param name="health">The Health of the card.</param>
     /// <param name="description">The spoken description when the card is first encountered.</param>
-    /// <returns>The newly created card's CardInfo.</returns>
+    /// <returns>The newly created card's <see cref="CardInfo"/>.</returns>
     public static CardInfo New(string modPrefix, string name, string displayName, int attack, int health, string description = default)
     {
         CardInfo retval = ScriptableObject.CreateInstance<CardInfo>();
@@ -292,47 +332,130 @@ public static class CardManager
         }
     }
 
+    /// <summary>
+    /// Retrieves the dictionary of card extended properties associated with the given <see cref="CardInfo"/>.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose extended properties we wish to retrieve.</param>
+    /// <returns>The extension property dictionary for the given <see cref="CardInfo"/>. Creates and returns an empty dictionary if none exists.</returns>
     public static Dictionary<string, string> GetCardExtensionTable(this CardInfo card) => CardExtensionProperties.GetOrCreateValue(card).StringMap;
     internal static CardAltPortraits GetAltPortraits(this CardInfo card) => CardAlternatePortraits.GetOrCreateValue(card);
 
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s alternate portrait in Act 2 if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the pixel alternate portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Pixel alternate portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite PixelAlternatePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelAlternatePortrait;
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait used when <see cref="SteelTrap"/> activates if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the steel trap portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Steel trap portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite SteelTrapPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().SteelTrapPortrait;
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait emission used when <see cref="SteelTrap"/> activates if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the steel trap portrait emission or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Steel trap portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite EmissiveSteelTrapPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().SteelTrapPortrait.GetEmissionSprite();
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s Act 2 portrait used when <see cref="SteelTrap"/> activates if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the pixel steel trap portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Pixel Steel trap portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite PixelSteelTrapPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelSteelTrapPortrait;
     }
-
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait used when a card's shield breaks if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the broken shield portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Broken shield portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite BrokenShieldPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().BrokenShieldPortrait;
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait emission used when a card's shield breaks if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the broken shield portrait emission or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Broken shield portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite EmissiveBrokenShieldPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().BrokenShieldPortrait.GetEmissionSprite();
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s Act 2 portrait used when a card's shield breaks if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the pixel broken shield portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Pixel broken shield portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite PixelBrokenShieldPortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelBrokenShieldPortrait;
     }
-
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait used when a card on the board can be sacrificed if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the sacrificable portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Sacrificable portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite SacrificablePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().SacrificablePortrait;
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s portrait emission used when a card on the board can be sacrificed if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the sacrificable portrait emission or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Sacrificable portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite EmissiveSacrificablePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().SacrificablePortrait.GetEmissionSprite();
     }
+    /// <summary>
+    /// Retrieves the <see cref="Sprite"/> for the <see cref="CardInfo"/>'s Act 2 portrait used when a card on the board can be sacrificed if it exists.
+    /// </summary>
+    /// <param name="card">The <see cref="CardInfo"/> whose portrait we're retrieving.</param>
+    /// <returns>The <see cref="Sprite"/> for the pixel sacrificable portrait or null if it doesn't exist.</returns>
+    /// <remarks>
+    /// Pixel sacrificable portraits are added through the API; they are not a vanilla feature.
+    /// </remarks>
     public static Sprite PixelSacrificablePortrait(this CardInfo card)
     {
         return card.GetAltPortraits().PixelSacrificablePortrait;
@@ -485,6 +608,12 @@ public static class CardManager
         return codes;
     }
 
+    /// <summary>
+    /// Adds a null check when calling <see cref="CardLoader.GetCardByName(string)"/>. If the returned <see cref="CardInfo"/> is null, outputs a console log error.
+    /// </summary>
+    /// <param name="info">The <see cref="CardInfo"/> being returned by <see cref="CardLoader.GetCardByName(string)"/>.</param>
+    /// <param name="cardInfoName">The internal name of the <see cref="CardInfo"/> attempting to be retrieved.</param>
+    /// <returns>The return value of <see cref="CardLoader.GetCardByName(string)"/>.</returns>
     public static CardInfo LogCardInfo(CardInfo info, string cardInfoName)
     {
         if (info == null)

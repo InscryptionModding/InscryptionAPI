@@ -8,27 +8,59 @@ using static DiskCardGame.EncounterBlueprintData;
 
 namespace InscryptionAPI.Encounters;
 
+/// <summary>
+/// Utility class that adds various extension methods to aid in easily creating new battle encounters and custom opponents.
+/// </summary>
 [HarmonyPatch]
 public static class EncounterExtensions
 {
     #region Opponent Extensions
+    /// <summary>
+    /// Retrieves the <see cref="OpponentManager.FullOpponent"/> that has the given ID.
+    /// </summary>
+    /// <param name="opponents">Collection of <see cref="OpponentManager.FullOpponent"/> objects to search through.</param>
+    /// <param name="id">The ID of the opponent.</param>
+    /// <returns>The <see cref="OpponentManager.FullOpponent"/> for this ID, or null if none exists.</returns>
+    /// <remarks>
+    /// Intended for use with <see cref="OpponentManager.AllOpponents"/>.
+    /// </remarks>
     public static OpponentManager.FullOpponent OpponentById(this IEnumerable<OpponentManager.FullOpponent> opponents, Opponent.Type id)
     {
         return opponents.FirstOrDefault(o => o.Id == id);
     }
 
+    /// <summary>
+    /// Sets the <see cref="Opponent"/> of this <see cref="OpponentManager.FullOpponent"/>.
+    /// </summary>
+    /// <param name="opp">The <see cref="OpponentManager.FullOpponent"/> to access.</param>
+    /// <param name="opponentType">The <see cref="Opponent"/> subclass that will be used in-game against this opponent.</param>
+    /// <returns>The same <see cref="OpponentManager.FullOpponent"/> so a chain can continue.</returns>
     public static OpponentManager.FullOpponent SetOpponent(this OpponentManager.FullOpponent opp, Type opponentType)
     {
         opp.Opponent = opponentType;
         return opp;
     }
 
+    /// <summary>
+    /// Sets the <see cref="SpecialBattleSequencer"/> for this <see cref="OpponentManager.FullOpponent"/>.
+    /// </summary>
+    /// <param name="opp">The <see cref="OpponentManager.FullOpponent"/> to access.</param>
+    /// <param name="sequenceId">The ID of the <see cref="SpecialBattleSequencer"/> this opponent uses, if any.</param>
+    /// <returns>The same <see cref="OpponentManager.FullOpponent"/> so a chain can continue.</returns>
     public static OpponentManager.FullOpponent SetSequencer(this OpponentManager.FullOpponent opp, string sequenceId)
     {
         opp.SpecialSequencerId = sequenceId;
         return opp;
     }
 
+    /// <summary>
+    /// Registers then sets the <see cref="SpecialBattleSequencer"/> for this <see cref="OpponentManager.FullOpponent"/>.
+    /// </summary>
+    /// <param name="opp">The <see cref="OpponentManager.FullOpponent"/> to access.</param>
+    /// <param name="pluginGuid">The GUID of the mod adding the special sequencer.</param>
+    /// <param name="sequencerName">The name of the <see cref="SpecialBattleSequencer"/> this opponent uses</param>
+    /// <param name="sequencerType">The <see cref="SpecialBattleSequencer"/> subclass that implements the sequencer's logic.</param>
+    /// <returns>The same <see cref="OpponentManager.FullOpponent"/> so a chain can continue.</returns>
     public static OpponentManager.FullOpponent SetNewSequencer(this OpponentManager.FullOpponent opp, string pluginGuid, string sequencerName, Type sequencerType)
     {
         var newSequencer = SpecialSequenceManager.Add(pluginGuid, sequencerName, sequencerType);
@@ -42,10 +74,12 @@ public static class EncounterExtensions
     #region Setters
     /// <summary>
     /// Sets the difficulty range of this encounter.<br/>
-    /// Difficulty is determined by the formula (6 * <c>tier</c>) + <c>battle#</c> + <c>modifier</c>.
+    /// Difficulty is determined by the formula: <code>(6 * tier) + battle # + modifier</code>
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
     /// <param name="min">The minimum difficulty.</param>
     /// <param name="max">The maximum difficulty.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T SetDifficulty<T>(this T blueprint, int min, int max) where T : EncounterBlueprintData
     {
         blueprint.minDifficulty = min;
@@ -57,7 +91,9 @@ public static class EncounterExtensions
     /// Adds dominant tribes to this region.<br/>
     /// The dominant tribes list determines the totems for this battle.
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
     /// <param name="tribes">The tribes to add.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddDominantTribes<T>(this T blueprint, params Tribe[] tribes) where T : EncounterBlueprintData
     {
         blueprint.dominantTribes ??= new();
@@ -68,6 +104,12 @@ public static class EncounterExtensions
         return blueprint;
     }
 
+    /// <summary>
+    /// Sets whether this blueprint is region specific.<br/>
+    /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="enabled">If this blueprint is specific to a region.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     [Obsolete("regionSpecific is unused.")]
     public static T SetRegionSpecific<T>(this T blueprint, bool enabled) where T : EncounterBlueprintData
     {
@@ -77,9 +119,11 @@ public static class EncounterExtensions
 
     /// <summary>
     /// Adds random replacement cards to this region.<br/>
-    /// A card from this list is selected whenever a card is randomly replaced by <c>randomReplaceChance</c>.
+    /// A card from this list is selected whenever a card is randomly replaced.
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
     /// <param name="cards">The cards to add.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddRandomReplacementCards<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
         blueprint.randomReplacementCards ??= new();
@@ -98,13 +142,21 @@ public static class EncounterExtensions
     /// Adds redundant abilities to this region.<br/>
     /// Redundant abilities will not be used on totems for this encounter.
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
     /// <param name="abilities">The abilities to add.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T SetRedundantAbilities<T>(this T blueprint, params Ability[] abilities) where T : EncounterBlueprintData
     {
         blueprint.redundantAbilities = abilities.ToList();
         return blueprint;
     }
 
+    /// <summary>
+    /// Sets the list of cards that must be unlocked before this encounter can be used.
+    /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="cards">The internal names of the prerequisite cards.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T SetUnlockedCardPrerequisites<T>(this T blueprint, params string[] cards) where T : EncounterBlueprintData
     {
         blueprint.unlockedCardPrerequisites ??= new();
@@ -117,6 +169,12 @@ public static class EncounterExtensions
         return blueprint;
     }
 
+    /// <summary>
+    /// Sets this blueprints list of <see cref="TurnModBlueprint"/>s. Vanilla mod blueprints are used to apply overclock in Act 3.
+    /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="turnMods">The <see cref="TurnModBlueprint"/>s to assign to this blueprint.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddTurnMods<T>(this T blueprint, params TurnModBlueprint[] turnMods) where T : EncounterBlueprintData
     {
         blueprint.turnMods = turnMods.ToList();
@@ -131,10 +189,10 @@ public static class EncounterExtensions
     /// <summary>
     /// Sets the minimum and maximum difficulty values for this CardBlueprint.
     /// </summary>
-    /// <param name="card">The CardBlueprint to access.</param>
+    /// <param name="card">The <see cref="CardBlueprint"/> to access.</param>
     /// <param name="min">The minimum difficulty for this card to appear.</param>
     /// <param name="max">The maximum difficulty for this card to appear at.</param>
-    /// <returns>The same CardBlueprint so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardBlueprint"/> so a chain can continue.</returns>
     public static CardBlueprint SetDifficulty(this CardBlueprint card, int min, int max)
     {
         card.minDifficulty = min;
@@ -143,13 +201,13 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Sets whether what card the CardBlueprint will be replaced with if difficultyReplace == true, and what difficulty threshold it will be replaced.
+    /// Sets whether what card the CardBlueprint will be replaced with if <c><see cref="CardBlueprint.difficultyReplace"/> == true</c>, and what difficulty threshold it will be replaced.
     /// </summary>
-    /// <param name="blueprint">The CardBlueprint to access.</param>
+    /// <param name="blueprint">The <see cref="CardBlueprint"/> to access.</param>
     /// <param name="replaceWithDifficulty">Whether this card will be replaced at certain difficulties.</param>
     /// <param name="replacementName">The name of the card that will replace this card.</param>
     /// <param name="requiredDifficulty">The minimum difficulty for the card to be replaced.</param>
-    /// <returns>The same CardBlueprint so a chain can continue.</returns>
+    /// <returns>The same <see cref="CardBlueprint"/> so a chain can continue.</returns>
     public static CardBlueprint SetReplacement(this CardBlueprint blueprint, string replacementName, int requiredDifficulty = 0, bool replaceWithDifficulty = true)
     {
         blueprint.difficultyReplace = replaceWithDifficulty;
@@ -159,7 +217,7 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Sets the difficulties of each CardBlueprint in the list to the specified values.
+    /// Sets the difficulties of each <see cref="CardBlueprint"/> in the list to the specified values.
     /// </summary>
     /// <param name="list">The list to access.</param>
     /// <param name="min">The minimum difficulty.</param>
@@ -179,7 +237,7 @@ public static class EncounterExtensions
     /// </summary>
     /// <param name="list">The list to access.</param>
     /// <param name="amount">How many times the list should be duplicated.</param>
-    /// <returns>An array containing the newly duplicated lists. Use with EncounterBlueprintData.AddTurns().</returns>
+    /// <returns>An array containing the newly duplicated lists. Use with <see cref="AddTurns{T}(T, List{CardBlueprint}[])"/>.</returns>
     public static List<CardBlueprint>[] DuplicateTurn(this List<CardBlueprint> list, int amount)
     {
         List<CardBlueprint>[] array = new List<CardBlueprint>[1 + amount];
@@ -203,10 +261,11 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Adds a new turn to the EncounterBlueprintData using the specified CardBlueprints.
+    /// Adds a new turn to the <see cref="EncounterBlueprintData"/> using the specified <see cref="CardBlueprint"/>s.
     /// </summary>
-    /// <param name="cards">The CardBlurprints to add. If none are specified, creates an empty turn.</param>
-    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="cards">The blueprints to add. If none are specified, creates an empty turn.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddTurn<T>(this T blueprint, params CardBlueprint[] cards) where T : EncounterBlueprintData
     {
         blueprint.AddTurn(cards?.ToList() ?? new());
@@ -214,10 +273,11 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Adds a new turn to the EncounterBlueprintData.
+    /// Adds a new turn to the <see cref="EncounterBlueprintData"/>.
     /// </summary>
-    /// <param name="turn">The turn to add. If null, creates an empty turn.</param>
-    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="turn">The blueprints to add. If none are specified, creates an empty turn.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddTurn<T>(this T blueprint, List<CardBlueprint> turn = null) where T : EncounterBlueprintData
     {
         blueprint.turns ??= new();
@@ -226,10 +286,11 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Adds new turns to the EncounterBlueprintData using the specified CardBlueprint Lists.
+    /// Adds new turns to the <see cref="EncounterBlueprintData"/> using the specified CardBlueprint Lists.
     /// </summary>
-    /// <param name="turns">The Lists of CardBlueprints to add to the EncounterBlueprintData.</param>
-    /// <returns>The same EncounterBlueprintData so a chain can continue.</returns>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="turns">Lists of blueprints to add to the <see cref="EncounterBlueprintData"/>. Each list represents a single turn.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddTurns<T>(this T blueprint, params List<CardBlueprint>[] turns) where T : EncounterBlueprintData
     {
         foreach (List<CardBlueprint> turn in turns)
@@ -238,6 +299,12 @@ public static class EncounterExtensions
         return blueprint;
     }
 
+    /// <summary>
+    /// Adds new turns to the <see cref="EncounterBlueprintData"/> using the specified CardBlueprint Lists.
+    /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="turns">Lists of blueprints to add to the <see cref="EncounterBlueprintData"/>. Each list represents a single turn.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T AddTurns<T>(this T blueprint, List<List<CardBlueprint>> turns) where T : EncounterBlueprintData
     {
         blueprint.turns ??= new();
@@ -250,6 +317,9 @@ public static class EncounterExtensions
     /// <summary>
     /// Duplicates the contents of the turn plan into itself the specified number of times.
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="amount">How many duplicates of this turn should be created.</param>
+    /// <returns>A copy of this blueprint.</returns>
     public static T DuplicateTurns<T>(this T blueprint, int amount) where T : EncounterBlueprintData
     {
         List<List<CardBlueprint>> plan = new();
@@ -266,6 +336,10 @@ public static class EncounterExtensions
     /// <summary>
     /// Sets the difficulty values of all CardBlueprints in the turn plan to the same values.
     /// </summary>
+    /// <param name="blueprint">The <see cref="EncounterBlueprintData"/> to add this turn to.</param>
+    /// <param name="minDifficulty">The minimum difficulty for this blueprint to appear.</param>
+    /// <param name="maxDifficulty">The maximum difficulty for this blueprint to appear at.</param>
+    /// <returns>The same <see cref="EncounterBlueprintData"/> so a chain can continue.</returns>
     public static T SyncTurnDifficulties<T>(this T blueprint, int minDifficulty, int maxDifficulty) where T : EncounterBlueprintData
     {
         foreach (List<CardBlueprint> turn in blueprint.turns)
@@ -296,7 +370,7 @@ public static class EncounterExtensions
     }
 
     /// <summary>
-    /// Gets information about the NPC that triggered the current battle
+    /// Gets information about the NPC that triggered the current battle.
     /// </summary>
     public static CachedGCBNPCDescriptor GetTriggeringNPC(this GBCEncounterManager mgr)
     {

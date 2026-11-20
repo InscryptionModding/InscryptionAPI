@@ -8,8 +8,11 @@ using System.Reflection.Emit;
 
 namespace InscryptionAPI.Triggers;
 
-// Inserts a null check for opposingSlot.Card after CardGettingAttacked is triggered
-// Tweaks the direct damage logic to subtract from DamageDealtThisPhase if the opposing and attacking are on the same side
+/// <summary>
+///  Inserts a null check for <c>opposingSlot.Card</c> after <see cref="Trigger.CardGettingAttacked"/> is triggered.
+///  <br/>
+///  Tweaks the direct damage logic to subtract from <see cref="CombatPhaseManager.DamageDealtThisPhase"/> if the opposing and attacking are on the same side.
+/// </summary>
 [HarmonyPatch]
 public static class SlotAttackSlotPatches
 {
@@ -25,6 +28,13 @@ public static class SlotAttackSlotPatches
 
     private static readonly MethodInfo method_GetCard = AccessTools.PropertyGetter(typeof(CardSlot), nameof(CardSlot.Card));
 
+    /// <summary>
+    /// Improved logic for calculating <see cref="CombatPhaseManager.DamageDealtThisPhase"/> that adds hooks for modifying it.
+    /// Also adds functionality negative damage values to work.
+    /// </summary>
+    /// <param name="attackingSlot">The <see cref="CardSlot"/> of the attacking card.</param>
+    /// <param name="opposingSlot">The <see cref="CardSlot"/> of the opposing card being attack.</param>
+    /// <returns>How much damage to increment <see cref="CombatPhaseManager.DamageDealtThisPhase"/> by.</returns>
     public static int DamageToDealThisPhase(CardSlot attackingSlot, CardSlot opposingSlot)
     {
         int originalDamage = attackingSlot.Card.Attack;
@@ -63,7 +73,11 @@ public static class SlotAttackSlotPatches
         return damage;
     }
 
-    // Trigger both the vanilla trigger and the new trigger
+    /// <summary>
+    /// Trigger both the vanilla <see cref="Trigger.DealDamageDirectly"/> trigger and the new <see cref="IOnCardDealtDamageDirectly"/> trigger.
+    /// </summary>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="opposingSlot">The <see cref="CardSlot"/> of the opposing card being attack.</param>
     public static IEnumerator TriggerOnDirectDamageTriggers(PlayableCard attacker, CardSlot opposingSlot)
     {
         int damage = CustomFields.Get<int>(attacker, modifiedAttackCustomField);
@@ -78,6 +92,11 @@ public static class SlotAttackSlotPatches
         yield return CustomTriggerFinder.TriggerAll<IOnCardDealtDamageDirectly>(false, x => x.RespondsToCardDealtDamageDirectly(attacker, opposingSlot, damage), x => x.OnCardDealtDamageDirectly(attacker, opposingSlot, damage));
     }
 
+    /// <summary>
+    /// Trigger both the vanilla <see cref="Trigger.CardGettingAttacked"/> trigger and the new <see cref="IPostCardGettingAttacked"/> trigger.
+    /// </summary>
+    /// <param name="attacker">The attacking card.</param>
+    /// <param name="opposingCard">The opposing card being attacked.</param>
     public static IEnumerator TriggerCardGettingAttackedTriggers(PlayableCard attacker, PlayableCard opposingCard)
     {
         yield return Singleton<GlobalTriggerHandler>.Instance.TriggerCardsOnBoard(Trigger.CardGettingAttacked, false, opposingCard);

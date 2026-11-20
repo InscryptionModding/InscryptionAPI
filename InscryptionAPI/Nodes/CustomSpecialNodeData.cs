@@ -5,16 +5,26 @@ using UnityEngine;
 
 namespace InscryptionAPI.Nodes;
 
+/// <summary>
+/// Subclass of <see cref="SpecialNodeData"/> that allows for custom node data to be used in-game.
+/// </summary>
 public class CustomSpecialNodeData : SpecialNodeData
 {
     internal static Texture2D mapeventmissing;
 
+    /// <summary>
+    /// Creates a new instance of <see cref="CustomSpecialNodeData"/> from the given <see cref="NewNodeManager.FullNode"/>.
+    /// </summary>
+    /// <param name="node">The <see cref="NewNodeManager.FullNode"/> to use for this node data.</param>
     public CustomSpecialNodeData(NewNodeManager.FullNode node)
     {
         name = node.name;
         guid = node.guid;
     }
 
+    /// <summary>
+    /// The resource path for this node data's node prefab object.
+    /// </summary>
     public override string PrefabPath
     {
         get
@@ -106,11 +116,23 @@ public class CustomSpecialNodeData : SpecialNodeData
         return default;
     }
 
+    /// <summary>
+    /// List of conditions needed before this node can be generated on the game map.
+    /// </summary>
     public override List<SelectionCondition> GenerationPrerequisiteConditions => Node?.generationPrerequisites ?? new();
 
+    /// <summary>
+    /// List of conditions that force this node to be generated on the game map.
+    /// </summary>
     public override List<SelectionCondition> ForceGenerationConditions => Node?.forceGenerationConditions ?? new();
 
     private readonly Dictionary<string, object> runtimeData = new();
+    /// <summary>
+    /// Internal name of the node.
+    /// </summary>
     public readonly string name;
+    /// <summary>
+    /// GUID of the mod adding this node.
+    /// </summary>
     public readonly string guid;
 }
