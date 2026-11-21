@@ -14,8 +14,16 @@ const getContentWidth = () => {
 
 const getNodeWidth = () => Math.max(180, Math.floor((getContentWidth() - 40) / 2));
 
-// These reach .nodeLabel/.edgeLabel and change measured label size, so a
-// re-render is required even though the article width stays put.
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+const readFontScale = () => {
+    const size = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--code-font-size')
+    );
+
+    return Number.isFinite(size) && size > 0 ? clamp(size / 18, 0.5, 1.6) : 1;
+};
+
 const LAYOUT_STYLE_VARS = ['--code-line-height', '--code-font-size', '--code-font'];
 const LAYOUT_ATTRS = ['data-code-font'];
 
@@ -34,11 +42,15 @@ const options = {
 
     get mermaid() {
         const width = getNodeWidth();
+        const scale = readFontScale();
 
         return {
             flowchart: {
-                minNodeWidth: width,
-                wrappingWidth: width
+                wrappingWidth: width,
+                minNodeWidth: Math.max(60, Math.round(110 * scale)),
+                padding: Math.max(4, Math.round(15 * scale)),
+                nodeSpacing: Math.max(12, Math.round(50 * scale)),
+                rankSpacing: Math.max(12, Math.round(50 * scale))
             }
         };
     },
@@ -102,7 +114,6 @@ const options = {
 
             lastWidth = articleWidth;
 
-            // docfx has not converted the code blocks yet; let it finish.
             if (article.querySelector('pre code.lang-mermaid')) {
                 schedule(force);
                 return;
@@ -163,7 +174,6 @@ const options = {
             attributeFilter: ['style', ...LAYOUT_ATTRS]
         });
 
-        // DPComic is a webfont; measurements taken before it loads are wrong.
         document.fonts?.ready.then(() => schedule(true));
     }
 };
