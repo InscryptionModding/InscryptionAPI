@@ -414,24 +414,35 @@ blockquote {
     padding-left: 0.5rem;
 }
 
-.nodeLabel {
+.nodeLabel,
+.nodeLabel p {
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
-    line-height: var(--code-line-height);
-    color: var(--bs-code-color);
+    line-height: var(--code-line-height) !important;
+    box-sizing: border-box;
 }
 
-.edgeLabel {
+.nodeLabel p {
+    color: var(--bs-code-color) !important;
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.edgeLabel,
+.edgeLabel p {
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
-    line-height: var(--code-line-height);
+    line-height: var(--code-line-height) !important;
+    box-sizing: border-box;
 }
 
 .edgeLabel p {
-    background-color: var(--bs-tertiary-bg, #e9ecef);
+    background: var(--bs-tertiary-bg, #e9ecef) !important;
+    color: var(--bs-code-color) !important;
     padding: 0.15em 0.35em;
     border-radius: 4px;
-    color: var(--bs-code-color);
+    margin: 0;
 }
 
 .mermaidTooltip {
@@ -439,7 +450,20 @@ blockquote {
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height);
     background-color: var(--bs-tertiary-bg, #e9ecef);
+    background: var(--bs-tertiary-bg, #e9ecef);
     padding: 0.15em 0.35em;
     border-radius: 4px;
     color: var(--bs-code-color);
+}
+
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon,
+.node path {
+    rx: 4px;
+    ry: 4px;
+    stroke: var(--bs-border-color, #444);
+    stroke-width: 4px;
+    fill: var(--bs-tertiary-bg, #e9ecef) !important
 }
