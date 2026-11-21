@@ -1,5 +1,5 @@
 items:
 - name: Getting Started (Users)
-  href: getting_started/users/toc.yml
+  href: users/toc.yml
 - name: Getting Started (Modders)
-  href: getting_started/modders/toc.yml
+  href: modders/toc.yml
