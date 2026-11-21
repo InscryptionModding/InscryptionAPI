@@ -140,11 +140,11 @@ b, strong {
 }
 
 body > header, body[data-layout="landing"] > header {
-    min-height: 90px;
+    min-height: 120px;
 }
 
 body > footer, body[data-layout="landing"] > footer {
-    min-height: 90px;
+    min-height: 120px;
     display: flex;
     align-items: stretch;
 }
