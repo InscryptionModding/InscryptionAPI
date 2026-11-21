@@ -402,3 +402,10 @@ a.active {
 .typelist-content > div {
     padding: 0.2rem 0;
 }
+
+blockquote {
+    border-left-style: solid;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+}
