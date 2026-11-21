@@ -14,12 +14,24 @@ const getContentWidth = () => {
 
 const getNodeWidth = () => Math.max(180, Math.floor((getContentWidth() - 40) / 2));
 
+// These reach .nodeLabel/.edgeLabel and change measured label size, so a
+// re-render is required even though the article width stays put.
+const LAYOUT_STYLE_VARS = ['--code-line-height', '--code-font-size', '--code-font'];
+const LAYOUT_ATTRS = ['data-code-font'];
+
+const readLayoutSignature = () => {
+    const root = document.documentElement;
+    const style = root.style;
+
+    return [
+        ...LAYOUT_STYLE_VARS.map(name => style.getPropertyValue(name)),
+        ...LAYOUT_ATTRS.map(name => root.getAttribute(name) || '')
+    ].join('|');
+};
+
 const options = {
     defaultTheme: 'dark',
 
-    // docfx does `const { mermaid } = await options()` then Object.assign()s it
-    // into initialize(), so these getters run once per render — the first
-    // render included. No patching, no ordering race.
     get mermaid() {
         const width = getNodeWidth();
 
@@ -43,8 +55,6 @@ const options = {
 
         let mermaidPromise;
 
-        // 'mermaid' is a bare specifier and there is no import map, so resolve
-        // the chunk docfx already loaded instead. Cached after first success.
         const loadMermaid = () => {
             mermaidPromise ??= (async () => {
                 const chunk = performance
@@ -62,13 +72,31 @@ const options = {
         };
 
         let lastWidth = article.clientWidth;
+        let lastSignature = readLayoutSignature();
         let timer = 0;
+        let pendingForce = false;
         let running = false;
 
-        const render = async () => {
+        const schedule = force => {
+            pendingForce ||= force;
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                const forced = pendingForce;
+                pendingForce = false;
+                render(forced);
+            }, 150);
+        };
+
+        const render = async force => {
+            if (running) {
+                schedule(force);
+                return;
+            }
+
             const articleWidth = article.clientWidth;
 
-            if (running || articleWidth === lastWidth) {
+            if (!force && articleWidth === lastWidth) {
                 return;
             }
 
@@ -76,7 +104,7 @@ const options = {
 
             // docfx has not converted the code blocks yet; let it finish.
             if (article.querySelector('pre code.lang-mermaid')) {
-                timer = setTimeout(render, 250);
+                schedule(force);
                 return;
             }
 
@@ -119,10 +147,24 @@ const options = {
             }
         };
 
-        new ResizeObserver(() => {
-            clearTimeout(timer);
-            timer = setTimeout(render, 150);
-        }).observe(article);
+        new ResizeObserver(() => schedule(false)).observe(article);
+
+        new MutationObserver(() => {
+            const signature = readLayoutSignature();
+
+            if (signature === lastSignature) {
+                return;
+            }
+
+            lastSignature = signature;
+            schedule(true);
+        }).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['style', ...LAYOUT_ATTRS]
+        });
+
+        // DPComic is a webfont; measurements taken before it loads are wrong.
+        document.fonts?.ready.then(() => schedule(true));
     }
 };
 
