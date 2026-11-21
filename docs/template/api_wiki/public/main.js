@@ -40,14 +40,13 @@ const readLayoutSignature = () => {
 const options = {
     defaultTheme: 'dark',
 
-    get mermaid() {
+get mermaid() {
         const width = getNodeWidth();
         const scale = readFontScale();
 
         return {
             flowchart: {
-                wrappingWidth: width,
-                minNodeWidth: Math.max(60, Math.round(110 * scale)),
+                wrappingWidth: Math.max(90, Math.min(width, Math.round(width * scale))),
                 padding: Math.max(4, Math.round(15 * scale)),
                 nodeSpacing: Math.max(12, Math.round(50 * scale)),
                 rankSpacing: Math.max(12, Math.round(50 * scale))
