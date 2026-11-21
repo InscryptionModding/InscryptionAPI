@@ -413,3 +413,30 @@ blockquote {
 .toc li > a {
     padding-left: 0.5rem;
 }
+
+.nodeLabel {
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height);
+}
+
+.edgeLabel {
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height);
+}
+
+.edgeLabel p {
+    background-color: var(--bs-tertiary-bg, #e9ecef);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+}
+
+.mermaidTooltip {
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height);
+    background-color: var(--bs-tertiary-bg, #e9ecef);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+}
