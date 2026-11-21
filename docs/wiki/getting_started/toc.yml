@@ -1,4 +1,6 @@
 items:
+- name: Getting Started
+  href: index.md
 - name: Getting Started (Users)
   href: users/toc.yml
 - name: Getting Started (Modders)
