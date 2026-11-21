@@ -33,7 +33,7 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable {
     /// </summary>
     public Color EnterColour {
         get {
-            Color enterCol = ModifyOnEnterColour?.Invoke(_enterColor, _playableCard) ?? _enterColor;
+            Color enterCol = ModifyOnEnterColour?.Invoke(_enterColor, Ability, _playableCard) ?? _enterColor;
             return Color.Lerp(_originalColor, enterCol, 0.5f);
         }
     }
@@ -44,7 +44,7 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable {
     /// </summary>
     public Color SelectedColour {
         get {
-            Color selectCol = ModifyOnEnterColour?.Invoke(_selectedColor, _playableCard) ?? _selectedColor;
+            Color selectCol = ModifyOnEnterColour?.Invoke(_selectedColor, Ability, _playableCard) ?? _selectedColor;
             return Color.Lerp(_originalColor, selectCol, 0.5f);
         }
     }
@@ -80,11 +80,12 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable {
     /// <list type="table">
     ///     <listheader>Arguments:</listheader>
     ///     <item><term><see cref="Color"/> defaultEnterCol</term><description>The default 'on enter' colour used by the API.</description></item>
+    ///     <item><term><see cref="DiskCardGame.Ability"/> ability</term><description>The ability for the activated icon being coloured.</description></item>
     ///     <item><term><see cref="PlayableCard"/> card</term><description>The card this ability icon's attached to. Can be null.</description></item>
     /// </list>
     /// Returns a <see cref="Color"/>.
     /// </remarks>
-    public static event Func<Color, PlayableCard, Color> ModifyOnEnterColour;
+    public static event Func<Color, Ability, PlayableCard, Color> ModifyOnEnterColour;
 
     /// <summary>
     /// Event that's called whenever the game gets <see cref="SelectedColour"/>. Allows modders to modify said colour.
@@ -93,11 +94,12 @@ public class ActivatedAbilityIconInteractable : MainInputInteractable {
     /// <list type="table">
     ///     <listheader>Arguments:</listheader>
     ///     <item><term><see cref="Color"/> defaultSelectCol</term><description>The default 'on select' colour used by the API.</description></item>
+    ///     <item><term><see cref="DiskCardGame.Ability"/> ability</term><description>The ability for the activated icon being coloured.</description></item>
     ///     <item><term><see cref="PlayableCard"/> card</term><description>The card this ability icon's attached to. Can be null.</description></item>
     /// </list>
     /// Returns a <see cref="Color"/>.
     /// </remarks>
-    public static event Func<Color, PlayableCard, Color> ModifyOnSelectColour;
+    public static event Func<Color, Ability, PlayableCard, Color> ModifyOnSelectColour;
 
     /// <summary>
     /// Assigns our new interactable to the passed-in Ability.
