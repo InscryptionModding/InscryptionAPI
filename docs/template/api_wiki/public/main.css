@@ -475,3 +475,20 @@ div.mermaidTooltip {
 .labelBkg {
     background: transparent !important;
 }
+
+/* Mermaid: Full-width diagrams */
+.mermaid,
+.mermaid svg {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.mermaid {
+    display: block;
+    overflow-x: auto;
+}
+
+.mermaid svg {
+    display: block;
+    height: auto !important;
+}
