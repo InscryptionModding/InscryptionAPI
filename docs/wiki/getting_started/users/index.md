@@ -4,8 +4,8 @@ The following are links to articles relavent for Users of the API. Namely coveri
 
 **FOR LINUX AND STEAMDECK:** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
-* [Installing With a Mod Manager](users/installing_with_a_mod_manager.md)
-* [Installing Manually on Windows (x86)](users/installing_manually_on_windows_x86.md)
-* [Installing Manually on Windows (x64)](users/installing_manually_on_windows_x64.md)
-* [Installing on The Steam Deck](users/installing_on_the_steam_deck.md)
-* [Installing on Mac & Linux](users/installing_on_mac_and_linux.md)
+* [Installing With a Mod Manager](installing_with_a_mod_manager.md)
+* [Installing Manually on Windows (x86)](installing_manually_on_windows_x86.md)
+* [Installing Manually on Windows (x64)](installing_manually_on_windows_x64.md)
+* [Installing on The Steam Deck](installing_on_the_steam_deck.md)
+* [Installing on Mac & Linux](installing_on_mac_and_linux.md)
