@@ -19,7 +19,8 @@
 * Add `OverrideQueuedBackground` to the `PixelCardBehaviours`.
     * This is used for overriding the Queued Background of a card.
 * Upgraded the API's `.csproj`'s, and TCLI Build system.
-* Publicized the `_originalColor`, `_enterColor`, and `_selectedColor` used within `ActivatedAbilityIconInteractable` of the Community Patch.
+* Fixed activated abilities outside Act 2 not updating their icon colours to indicate interactability
+* Added `ModifyOnEnterColour` and `ModifyOnSelectColour` event hooks to community patch's `ActivatedAbilityIconInteractable` class
 * Update the API to use Latest BepInEx.
 
 # 2.24.1
