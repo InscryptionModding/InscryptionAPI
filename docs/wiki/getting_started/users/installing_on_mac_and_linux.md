@@ -1,6 +1,6 @@
 # Installing on Mac & Linux
 
-**FOR LINUX:** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
+***FOR LINUX:*** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
 1. Follow the steps here first: <https://docs.bepinex.dev/articles/user_guide/installation/index.html>
 2. Next do steps 4-10 of the Manual Installation
