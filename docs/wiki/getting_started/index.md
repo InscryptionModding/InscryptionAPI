@@ -34,10 +34,10 @@ flowchart TD
     D -->|Visual Studio| D1["If this was your choice, let us navigate into the<br/>~~ API Project Setup Guide for Visual Studio ~~"]
     D -->|JetBrains Rider| D2["If this was your choice, let us navigate into the<br/>~~ API Project Setup Guide for JetBrains Rider ~~"]
 
-    click A1 "jsonloader_projects/index.html" "Open JSONLoader Branch"
-    click C1 "c_sharp_basics/index.html" "Open C# Basics Branch"
-    click D1 "api_projects_vs_edition/index.html" "Open Visual Studio Setup Guide"
-    click D2 "api_projects_rider_edition/index.html" "Open JetBrains Rider Setup Guide"
+    click A1 "modders/jsonloader_projects/index.html" "Open JSONLoader Branch"
+    click C1 "modders/c_sharp_basics/index.html" "Open C# Basics Branch"
+    click D1 "modders/api_projects_vs_edition/index.html" "Open Visual Studio Setup Guide"
+    click D2 "modders/api_projects_rider_edition/index.html" "Open JetBrains Rider Setup Guide"
 ```
 
 <details>
