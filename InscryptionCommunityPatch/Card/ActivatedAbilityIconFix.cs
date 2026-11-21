@@ -82,7 +82,7 @@ public static class ActivatedAbilityIconFix
     [HarmonyTranspiler, HarmonyPatch(typeof(CardAbilityIcons), nameof(CardAbilityIcons.SetColorOfDefaultIcons))]
     private static IEnumerable<CodeInstruction> FixActivatedIconSetColour(IEnumerable<CodeInstruction> instructions) {
         List<CodeInstruction> codes = new(instructions);
-        codes.LogCodeInstructions();
+
         CodeInstruction startCode = codes.Find(x => x.opcode == OpCodes.Stloc_S && x.operand.ToString() == "DiskCardGame.AbilityIconInteractable (4)");
         object operand = startCode.operand;
         int startIndex = codes.FindIndex(x => x.opcode == OpCodes.Stloc_S && x.operand.ToString() == "DiskCardGame.AbilityInfo (5)") - 2;
@@ -98,7 +98,6 @@ public static class ActivatedAbilityIconFix
         codes.Insert(startIndex, new(OpCodes.Ldarg_1));
         codes.Insert(startIndex, new(OpCodes.Ldloc_S, operand));
 
-        codes.LogCodeInstructions("post");
         return codes;
     }
 }
