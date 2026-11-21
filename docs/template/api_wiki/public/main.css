@@ -409,3 +409,7 @@ blockquote {
     border-top-style: none;
     border-bottom-style: none;
 }
+
+.toc li > a {
+    padding-left: 0.5rem;
+}
