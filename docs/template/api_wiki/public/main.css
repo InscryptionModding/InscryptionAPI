@@ -476,19 +476,14 @@ div.mermaidTooltip {
     background: transparent !important;
 }
 
-/* Mermaid: Full-width diagrams */
-.mermaid,
-.mermaid svg {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
 .mermaid {
+    width: 100%;
+    max-width: 100%;
     display: block;
     overflow-x: auto;
 }
 
 .mermaid svg {
     display: block;
-    height: auto !important;
+    max-width: 100%;
 }
