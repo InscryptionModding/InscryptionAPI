@@ -418,6 +418,7 @@ blockquote {
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height);
+    color: var(--bs-code-color);
 }
 
 .edgeLabel {
@@ -430,6 +431,7 @@ blockquote {
     background-color: var(--bs-tertiary-bg, #e9ecef);
     padding: 0.15em 0.35em;
     border-radius: 4px;
+    color: var(--bs-code-color);
 }
 
 .mermaidTooltip {
@@ -439,4 +441,5 @@ blockquote {
     background-color: var(--bs-tertiary-bg, #e9ecef);
     padding: 0.15em 0.35em;
     border-radius: 4px;
+    color: var(--bs-code-color);
 }
