@@ -10,3 +10,5 @@
 6. Enter Gaming Mode and check 'Force the use of a specific Steam Play compatibility tool' in the Properties menu under `Compatibility`.
 7. Go to the launch parameters and enter `WINEDLLOVERRIDES="winhttp.dll=n,b" %command%`.
 8. Open Inscryption. If everything was done correctly, you should see a console appear on your screen.
+
+___

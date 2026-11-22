@@ -1,4 +1,6 @@
-# API
+# Inscrytion API Package
+
+Hey there, welcome to the API Package, below you can find information about what this package contains, how you can contribute to it, as well as resources for getting started with modding for Inscryption.
 
 ## Inscryption API
 
@@ -25,319 +27,139 @@ It can currently create and modify:
 
 Additionally, a number of quality-of-life patches from the community are included with each release.
 
-## Getting Started: Installation
----
-To begin, we'll go over how to install BepInEx, the framework all Inscryption mods use.  This is a necessary step to playing modded Inscryption, so be sure to follow this carefully.
+___
 
-**FOR LINUX AND STEAMDECK:** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
+## Getting Started (Users)
 
-### Installing with a Mod Manager
-1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [Gale](https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/), [Pulsar](https://pulsarmods.com/) or [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/).
-2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/c/inscryption/p/BepInEx/BepInExPack_Inscryption/) page.
-3. Run the game via the mod manager.
+The following are links to articles relavent for Users of the API. Namely covering the topic of installation of mods for Inscryption that utilize the API. This also includes how to install BepInEx, the underlying framework for all Inscryption Mods, for all of the given scenarios the Articles tackle.
 
-If you have issues with Mod Managers head to one of these discords;
+***FOR LINUX AND STEAMDECK:*** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
-* **Thunderstore Support Discord:** [Here](https://discord.gg/Fbz54kQAxg)
-* **R2ModMan Support Discord:** [Here](https://discord.gg/R85wjqa4WN)
-* **Gale Mod Manager Support Discord:** [Here](https://discord.gg/sfuWXRfeTt)
+* [Installing With a Mod Manager](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_with_a_mod_manager.html)
+* [Installing Manually on Windows (x86)](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_manually_on_windows_x86.html)
+* [Installing Manually on Windows (x64)](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_manually_on_windows_x64.html)
+* [Installing on The Steam Deck](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_on_the_steam_deck.html)
+* [Installing on Mac & Linux](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_on_mac_and_linux.html)
 
-### Installing Manually
-1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.2305/) by pressing `Manual Download` and extract the contents into a folder. **Do not extract into the game folder!**
-2. Move the contents of the `BepInExPack_Inscryption` folder into the game folder (where the game executable is; usually found here: `C:\Program Files (x86)\Steam\steamapps\common\Inscryption`).
-3. Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.
-4. Install [MonoModLoader](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/) and extract the contents into a folder.
-5. Move the contents of the `patchers` folder into `BepInEx/patchers` (If any of the mentioned BepInEx folders don't exist, just create them).
-6. Install [Inscryption API](https://inscryption.thunderstore.io/package/API_dev/API/) and extract the contents into a folder.
-7. Move the contents of the `plugins` folder into `BepInEx/plugins` and the contents of the `monomod` folder into the `BepInEx/monomod` folder.
-8. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
-9. For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a `BepInEx` folder within the zip instead drop the contents of that folder into the `BepInEx` root for the modding instance. EX;
-    ```
-    BepInEx // These go within the BepInEx root folder
-    |-- config
-    |-- patchers
-    |-- plugins
-    |-- monomod
-    |-- core
-    plugins // Files within go into the created plugin subfolder that was created for the mod
-    |-- Art
-    |-- Scripts
-    |-- MyMod.dll
-    manifest.json // Ignorable, but if kept, goes in plugin subfolder
-    README.md // Ignorable, but if kept, goes in plugin subfolder
-    CHANGELOG.md // Ignorable, but if kept, goes in plugin subfolder
-    icon.png // Ignorable, but if kept, goes in plugin subfolder
-    ```
-10. Run the game once more and everything should be correct and working.
+___
 
-### Installing Manually (XBOX Game-Pass)
-1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.2305/) by pressing `Manual Download` and extract the contents into a folder. **Do not extract into the game folder!**
-2. Move the contents of the `BepInExPack_Inscryption` folder into the game folder (where the game executable is; usually found here: `C:\XboxGames\Inscryption\Content`).
-3. Install the following package: [XboxSilencio](https://thunderstore.io/c/inscryption/p/CORE_API_TEAM/GamepassSilencio/), this is a package which aims to solve frictions with XBOX Gamepass specific installations, such as HueyFS related errors.
-4. Run the game. If everything was done correctly, you will see the BepInEx console appear on your desktop. Close the game after it finishes loading.
-5. Install [MonoModLoader](https://inscryption.thunderstore.io/package/BepInEx/MonoMod_Loader_Inscryption/) and extract the contents into a folder.
-6. Move the contents of the `patchers` folder into `BepInEx/patchers` (If any of the mentioned BepInEx folders don't exist, just create them).
-7. Install [Inscryption API](https://inscryption.thunderstore.io/package/API_dev/API/) and extract the contents into a folder.
-8. Move the contents of the `plugins` folder into `BepInEx/plugins` and the contents of the `monomod` folder into the `BepInEx/monomod` folder.
-9. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
-10. For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a `BepInEx` folder within the zip instead drop the contents of that folder into the `BepInEx` root for the modding instance. EX;
-    ```
-    BepInEx // These go within the BepInEx root folder
-    |-- config
-    |-- patchers
-    |-- plugins
-    |-- monomod
-    |-- core
-    plugins // Files within go into the created plugin subfolder that was created for the mod
-    |-- Art
-    |-- Scripts
-    |-- MyMod.dll
-    manifest.json // Ignorable, but if kept, goes in plugin subfolder
-    README.md // Ignorable, but if kept, goes in plugin subfolder
-    CHANGELOG.md // Ignorable, but if kept, goes in plugin subfolder
-    icon.png // Ignorable, but if kept, goes in plugin subfolder
-    ```
-11. Run the game once more and everything should be correct and working.
+## Getting Started (Modders)
 
-### Installing on the Steam Deck
-1. Download [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/) on the Steam Deck's Desktop Mode and open it from its download using its `AppImage` file.
-2. Download the mods you plan on using and their dependencies.
-3. Go to the setting of the profile you are using for the mods and click `Browse Profile Folder`.
-4. Copy the BepInEx folder, then go to Steam and open Inscryption's Properties menu
-5. Go to `Installed Files` click `Browse` to open the folder containing Inscryption's local files; paste the BepInEx folder there.
-6. Enter Gaming Mode and check 'Force the use of a specific Steam Play compatibility tool' in the Properties menu under `Compatibility`.
-7. Go to the launch parameters and enter `WINEDLLOVERRIDES="winhttp.dll=n,b" %command%`.
-8. Open Inscryption. If everything was done correctly, you should see a console appear on your screen.
+So your interested in learning how to modify Inscryption? Well this section of our guide should come in really handy for you! Albeit if your a artist, a developer, or just passing by, we hope you find these guides of value.
 
-### Mac & Linux
-1. Follow the steps here first: <https://docs.bepinex.dev/articles/user_guide/installation/index.html>
-2. Next do steps 4-10 of the Manual Installation
-3. Your game should be setup for inscryption modding now
+First off let's get you to the right branch of the guides. Let's get some groundworks out of the way now. Based on the item below, you should be funneled to the level your after. *Note for the IDE Question, if you have familiarity with [IntelliJ Idea](https://www.jetbrains.com/idea/), you'll likely prefer Jetbrains Rider.*
 
-If you have any issues with Mac/Linux, Steam Deck, or Manual head over to the discord for this game:
+```mermaid
+flowchart TD
+    A["Are you trying to make a Simple Cardpack?"]
+    A --> A1["If this item applied to you, than let's head to the<br/>~~ JSONLoader Branch ~~<br/>Unless your willing to challenge yourself?<br/>If you want the challenge, follow the other tree!"]
 
-* **Inscryption Modding Discord:** [Here](https://discord.gg/ZQPvfKEpwM)
+    B["Are you after something more Complex in terms of your Project?"]
+    B --> C["Are you already familiar with C#?"]
 
-## Getting Started: Modding
----
-Modding Inscryption requires a knowledge of coding in C# or a similar programming language such as Java, and in many cases an understanding of how to patch the game using HarmonyPatch, which you can find the docs for [here](https://github.com/BepInEx/HarmonyX/wiki) for HarmonyX, and [here](https://harmony.pardeike.net/v2/articles/intro.html) for the underlying basic Harmony.
+    C -->|Yes| D["What is your preferred of the two? Visual Studio, or JetBrains Rider?"]
+    C -->|No| C1["If this was your case, than let's head into the<br/>~~ C# Basics Branch ~~</br>To get you familiar with the underlying concepts,<br/>and knowledge you will need in order to make your mod."]
 
-If you're unfamiliar with any of this, or just want to create cards and sigils, you can use [JSONLoader](https://inscryption.thunderstore.io/package/MADH95Mods/JSONCardLoader/), if you wish to avoid learning C#. 
+    D -->|Visual Studio| D1["If this was your choice, let us navigate into the<br/>~~ API Project Setup Guide for Visual Studio ~~"]
+    D -->|JetBrains Rider| D2["If this was your choice, let us navigate into the<br/>~~ API Project Setup Guide for JetBrains Rider ~~"]
 
-If your up for the task, a good entry point to learning C# is [this tutorial by freeCodeCamp.org](https://www.youtube.com/watch?v=GhQdlIFylQ8). It's around a 4 hour video, we'd advise you to tackle it in portions. One deviation from the video however, we are going to advise you to grab a thing called [JetBrains Rider](https://www.jetbrains.com/rider/), you'll specifically want the `Free for non-commerical use` version. If your familiar with the UX of [IntelliJ Idea](https://www.jetbrains.com/idea/) for Java based modding, than it should feel familiar to you.
-
-If at any point your confused while doing the tutorial, feel free to ask for help in [the discord](https://discord.gg/qEqtF29ZEt) specifically, the channel entitled `programming-help` will be your friend. Mind you help will not be immediate, but we will try and get help to you as soon as we are able.
-
-### Modding with JSONLoader
-> JSONLoader is a versatile mod that provides a more beginner-friendly way of creating new cards and abilities for Inscryption using JSON syntax, which is much simpler than C#. If you don't know the basics of JSON you can find a useful video on the subject [here](https://www.youtube.com/watch?v=iiADhChRriM).
-
-JSONLoader's official documentation can be found in the following places, note Nightly refers to the Beta version, and Stable refers to the Main-Line version.
-- Nightly GitHub Wiki: [GitHub Wiki](https://github.com/Chaosyr/JSONCardLoaderWiki/wiki)
-- Nightly Thunderstore Wiki: [Thunderstore Wiki](https://thunderstore.io/c/inscryption/p/MADH95Mods/JSON_and_CSV_Loader_Nightly/wiki)
-- Stable GitHub Wiki: [GitHub Wiki](https://github.com/MADH95/JSONLoader/wiki)
-- Stable Thunderstore Wiki: [Thunderstore Wiki](https://thunderstore.io/c/inscryption/p/MADH95Mods/JSONCardLoader/wiki)
-
-A video tutorial covering how to use JSONLoader in a basic form can be found [here](https://www.youtube.com/watch?v=grTSkpI4U7g). A more updated series of sorts by JamesGames can be found [here](https://youtube.com/playlist?list=PLy57qL2R3Z6NaRJKF4QBaBn6WH8Vztya9&si=npQ2ZxF4gHRXa0B3). If you at any point need any help with JSONLoader, you can ask your questions in [the discord](https://discord.gg/BNDVDA5Gvh), specifically the `jsonloader-help` channel.
-
-### Modding with C#
-
-First things first, in order to even make a mod for the game you will need a few things setup. First off if you haven't installed it yet, we reccomend getting a tool called [JetBrains Rider](https://www.jetbrains.com/rider/). This guide will follow the layout of this IDE. If you still want to use [Visual Studio](https://visualstudio.microsoft.com/) instead, no one is going to stop you, there will be a foldout below this guide with the setup for that IDE, note its a little outdated.
-
-#### JetBrains Rider Based Project Setups
-
-<details open>
-<summary>
-Click me to close
-</summary>
-
-Now that you have your IDE, we'll start by making our Project.
-
-1. Open up the IDE, than click on `New`, followed by `New Solution`.
-2. One the menu pops up select `Class Library` from the Left-Side panel.
-3. Next we want to fill in some fields
-    1. Where it says `Solution Name`, update the associated field to the name of your mod.
-    2. Next to that field theres a little thing that says `format`, click the drop down and change it to `sln`. 
-    3. Where it says `Target Framework`, select the dropdown and change it to `v4.7.2`. If it is not present, that means you don't have the SDK or Framework installed. 
-        1. First ensure the [Net10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) is installed, you'll want the `SDK` associated with your OS and Architecture. Note you will want to download an `Installer` not a `Binary`.
-        2. Now ensure the [Netframework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) is installed, you'll want the `Offline Installer` under `Build Apps` called the `Developer Pack`.
-    4. Ensure the `Language` is set to `C#`, and the Type is set to `Class Library`.
-4. Now press `Create`.
-
-Now we have your basic project setup, if you see a pop up about Microsoft Defender affecting the IDE click `Exclude folders`, this will allow the IDE to do its job much quicker than it would be able to otherwise.
-
-Alright now we'll need to make sure you have the NuGet Package sources you'll need for success. The following steps will guide you through the process.
-
-1. Right-Click on the `Solution`, hover over `Open In`, than select `Explorer`.
-2. Once open you should see the File Explorer opened to a folder containing an `sln` file with a name matching your Project's. 
-3. In this folder create a new text file, than open it in a text editor. Now enter the following into the text file:
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-      <packageSources>
-        <add key="BepInEx" value="https://nuget.bepinex.dev/v3/index.json" />
-        <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-        <add key="ts-nuget" value="https://nuget.windows10ce.com/nuget/v3/index.json" protocolVersion="3" />
-      </packageSources>
-    </configuration>
-    ```
-4. Save the file, and rename it to `NuGet.Config`.
-5. If you don't see the sources in your IDE, try following this short guide and try again: [File Explorer (Windows); JSONLoader Wiki](https://github.com/Chaosyr/JSONCardLoaderWiki/wiki/JSON-and-CSV-Loader-API-Documentation-%E2%80%90-JSON-Inscrybing#file-explorer-windows). Simply put, your windows might not of overwrote the file extension because your extensions are hidden by default.
-
-Now that we have this setup when you hit `All enabled feeds` under the `NuGet` menu found in the bottom of the left-hand toolbar, you should see 3 feeds, labeled `BepInEx`, `nuget.org`, and `ts-nuget`. Also ensure `Prerelease` is ticked on.
-
-Next up, press `Discover` under the `Packages` tab of the `NuGet` menu. Search up the following packages in the table below, than install the version specified to the solution, also ensure the source matches.
-
-| Package Name           |  Version   |      Source |
-| :--------------------- | :--------: | ----------: |
-| `BepInEx.Analyzers`    |   1.0.8    |   `BepInEx` |
-| `BepInEx.Core`         |   5.4.21   |   `BepInEx` |
-| `HarmonyX`             |   2.10.2   | `nuget.org` |
-| `Inscryption.GameLibs` | v1.9.0-r.0 |   `BepInEx` |
-| `UnityEngine.Modules`  | v2019.4.24 |   `BepInEx` |
-| `API_dev-API`          |   2.24.1   |  `ts-nuget` |
-
-If you need any other dependencies that are mods on Thunderstore, search up its package identifier in the NuGet Search, for example `Nevernamed-Nevernameds_Sigilarium`. You can get the package identifier by going to the mods page on the Thunderstore Website, such as: [Nevernameds Sigilarium](https://thunderstore.io/c/inscryption/p/Nevernamed/Nevernameds_Sigilarium/). Beneath the Download, Like and Report Buttons, there will be a string of text resembling `Team-Name-Version`. You'll want to copy that string and remove the version part of it, that is what you will put in the NuGet Search.
-
-</details>
-
-#### Visual Studio Based Project Setups
+    click A1 "https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/jsonloader_projects/index.html" "Open JSONLoader Branch"
+    click C1 "https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/c_sharp_basics/index.html" "Open C# Basics Branch"
+    click D1 "https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/api_projects_vs_edition/index.html" "Open Visual Studio Setup Guide"
+    click D2 "https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/api_projects_rider_edition/index.html" "Open JetBrains Rider Setup Guide"
+```
 
 <details>
 <summary>
-Click me to expand
+Plain-Text Version
 </summary>
 
-Now that you have your IDE, do the following to begin with. Your project's target framework needs to be `netstandard4.7.2`. Once your project's created, go to `Project > Manage NuGet Packages`. Click the dropdown menu for `Package source` and check that `BepInEx`, `nuget.org` and `ts-nuget` are there.
-
-If `BepInEx`, `nuget.org` or `ts-nuget` aren't an available source, we need to add them. There are two methods you can use to address this, the first of which is entirely within Visual Studio, the second of which is through file, which may be less complicated.
-
-<details>
-<summary>
-Via Package Source Configuration
-</summary>
-For each missing source you will want to do the following:
-
-1. Click on the `Gear` icon next to the package source selector. 
-2. Click the large green `Plus`.
-3. Set the fields to match what is shown in the below list:
-    - To add `BepInEx`, change the name to `BepInEx` and the source link to `https://nuget.bepinex.dev/v3/index.json`. 
-    - To add `nuget.org`, change the name to `nuget.org` and the source link to `https://api.nuget.org/v3/index.json`. 
-    - To add `ts-nuget`, change the name to `ts-nuget` and the source link to `https://nuget.windows10ce.com/nuget/v3/index.json`.
+1. Are you trying to make a Simple Cardpack?
+    - If this item applied to you, than let's head to the [JSONLoader Branch](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/jsonloader_projects/index.html) Unless your willing to challenge yourself?
+2. Are you after something more Complex in terms of your Project?
+    1. Are you already familiar with C#?
+        * If `Yes` was your choice:
+            1. What is your preferred of the two? Visual Studio, or JetBrains Rider?
+                * If `Visual Studio` was your choice:
+                    - If this was your choice, let us navigate into the [API Project Setup Guide for Visual Studio](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/api_projects_vs_edition/index.html).
+                * If `JetBrains Rider` was your choice:
+                    - If this was your choice, let us navigate into the [API Project Setup Guide for JetBrains Rider](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/api_projects_rider_edition/index.html).
+        * If `No` was your choice:
+            - If this was your case, than let's head into the [C# Basics Branch](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/modders/c_sharp_basics/index.html), to get you familiar with the underlying concepts and knowledge you will need in order to make your mod. 
 
 </details>
-
-<details>
-<summary>
-Via File
-</summary>
-
-1. Right-Click the `Solution` found at the top of the `Solution Explorer`.
-2. Click `Open Folder in File Explorer`.
-3. Once open you should see the File Explorer opened to a folder containing an `sln` file with a name matching your Project's. 
-4. In this folder create a new text file, than open it in a text editor. Now enter the following into the text file:
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <configuration>
-      <packageSources>
-        <add key="BepInEx" value="https://nuget.bepinex.dev/v3/index.json" />
-        <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-        <add key="ts-nuget" value="https://nuget.windows10ce.com/nuget/v3/index.json" protocolVersion="3" />
-      </packageSources>
-    </configuration>
-    ```
-5. Save the file, and rename it to `NuGet.Config`.
-6. If you don't see the sources in your IDE, try following this short guide and try again: [File Explorer (Windows); JSONLoader Wiki](https://github.com/Chaosyr/JSONCardLoaderWiki/wiki/JSON-and-CSV-Loader-API-Documentation-%E2%80%90-JSON-Inscrybing#file-explorer-windows). Simply put, your windows might not of overwrote the file extension because your extensions are hidden by default. If that fails try the `Via Package Source Configuration` method.
-
-</details>
-
-Now that we have this setup change the package source to  `All`. Also ensure `Prerelease` is ticked on.
-
-Next up, press `Browse` in the menu. Search up the following packages in the table below, than install the version specified to the solution, also ensure the source matches.
-
-| Package Name           |  Version   |      Source |
-| :--------------------- | :--------: | ----------: |
-| `BepInEx.Analyzers`    |   1.0.8    |   `BepInEx` |
-| `BepInEx.Core`         |   5.4.21   |   `BepInEx` |
-| `HarmonyX`             |   2.10.2   | `nuget.org` |
-| `Inscryption.GameLibs` | v1.9.0-r.0 |   `BepInEx` |
-| `UnityEngine.Modules`  | v2019.4.24 |   `BepInEx` |
-| `API_dev-API`          |   2.24.1   |  `ts-nuget` |
-
-If you need any other dependencies that are mods on Thunderstore, search up its package identifier in the NuGet Search, for example `Nevernamed-Nevernameds_Sigilarium`. You can get the package identifier by going to the mods page on the Thunderstore Website, such as: [Nevernameds Sigilarium](https://thunderstore.io/c/inscryption/p/Nevernamed/Nevernameds_Sigilarium/). Beneath the Download, Like and Report Buttons, there will be a string of text resembling `Team-Name-Version`. You'll want to copy that string and remove the version part of it, that is what you will put in the NuGet Search.
-
-</details>
-
-You are now ready to begin creating your mod! Some resources are provided below for you to use, including an example mod to look at for examples. Otherwise, continue reading this wiki.
 
 ### Modding Resources
-[Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
+- [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
+- [Inscryption Modding Wiki](https://inscryptionmodding.github.io/InscryptionAPI/wiki/)
+- [BepInEx documentation](https://docs.bepinex.dev/)
+- [Harmony patching article](https://harmony.pardeike.net/articles/patching.html)
+- [Example Mod using C#](https://github.com/debugman18/InscryptionExampleMod)
+- [Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)
 
-[BepInEx documentation](https://docs.bepinex.dev/)
-
-[Harmony patching article](https://harmony.pardeike.net/articles/patching.html)
-
-[Example Mod using C#](https://github.com/debugman18/InscryptionExampleMod)
-
-[Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)
-
-An example mod utilising this plugin can be found [here](https://github.com/debugman18/InscryptionExampleMod),
-and the modding wiki and documentation can be found [here](https://inscryptionmodding.github.io/InscryptionAPI/wiki/index.html).
+___
 
 ## Modded Save File
 With this API installed, an additional 'modded save file' will be created by the game. This file will be found in the 'BepInEx' subdirectory, and contains all save data created by mods that use this API. This file will not automatically be synced to the cloud by Steam.
 
-# Community Patches
+___
+
+## Community Patches
 The following patches from the Inscryption modding community have been included in this package to improve the overall quality-of-life for modding and compatibility.
 
-## SigilArtPatch by MADH95Mods
+### SigilArtPatch by MADH95Mods
 Fixes the art for abilities that previously only appeared in Act 2 so they appear correctly in Act 1 and Act 3
 
-## Conduit Attack Fix by MADH95Mods
+### Conduit Attack Fix by MADH95Mods
 Fixes the behavior of conduits so they function correctly in Act 1.
 
-## Activated Sigil Fix by MADH95Mods
+### Activated Sigil Fix by MADH95Mods
 Allows activated sigils to work correctly in Act 1 and Act 3 by clicking the sigil icon on the card.
 
-## AnthonysLatchFix by AnthonyPython
+### AnthonysLatchFix by AnthonyPython
 Fixes latch sigils to work in Act 1
 
-## Sigil Art Fix by Memez4Life
+### Sigil Art Fix by Memez4Life
 Allows up to 8 sigils to be displayed on cards and adds the option to display merged sigil stamps at the bottom of the card instead of over the artwork (see the config files for more information).
 
-## Visually Stackable Sigils by divisionbyz0rro
+### Visually Stackable Sigils by divisionbyz0rro
 Combines multiple instances of the same sigil on a single card into a single sigil with a number to free up space on the card.
 
-## Cost Render Fix by Void Slime
+### Cost Render Fix by Void Slime
 Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards
 
-## Cost Choice Node fix by Void Slime
+### Cost Choice Node fix by Void Slime
 If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in Act 1.
 
-## Sniper Sigil Fix by SpecialAPI
+### Sniper Sigil Fix by SpecialAPI
 Displays targets for attacks made with the sniper sigil in Act 1.
 
-## Act 1 Sentry Fixes by WhistleWind
+### Act 1 Sentry Fixes by WhistleWind
 Fixes a number of bugs caused by the Sentry ability being used in Act 1.
 
-## Multi-Act Sigil Compatibility Fixes by WhistleWind
+### Multi-Act Sigil Compatibility Fixes by WhistleWind
 Fixes a number of sigils to be usable in all Acts. Sigils include: Mental Gemnastics, Tidal Lock, Hoarder, Vessel Printer, Amorphous, Handy.
 
-## Fledgling Sigil Fixes by WhistleWind
+### Fledgling Sigil Fixes by WhistleWind
 Fixes Fledgling in Act 2 to show the correct number of turns until a card evolves, up to 3. Also changes its description to show the correct number of turns.
 
-## OverridePixelAbilityIcons by WhistleWind
+### OverridePixelAbilityIcons by WhistleWind
 Fixes the OverrideAbilityIcon method to work in Act 2.
 
-## Temporary Mod Fixes by WhistleWind
-- Fixes issues related to using temporary mods in Act 2 or to add custom decals
+### Temporary Mod Fixes by WhistleWind
+Fixes issues related to using temporary mods in Act 2 or to add custom decals
 
-# Using the API
+___
+
+## Using the API
 
 Inscryption API 2.0 tries to have you use the original game's objects as much as possible. For example, there are no more 'NewCard' and 'CustomCard' objects; instead, you are responsible to create CardInfo objects yourself and add them.
 
 The API does provide a number of helper methods to make this process simpler for you.
 
 For more information, please check out the wiki: [Here](https://inscryptionmodding.github.io/InscryptionAPI/wiki/), and if you need any help with anything related to the API send a message over in [Inscryption Modding Discord](https://discord.gg/QrJEF5Denm).
+
+___
 
 ## Contribution
 
@@ -349,6 +171,8 @@ Great! We're more than happy to accept help. Either make a pull request to the A
 
 ### Can I donate?
 Donations are totally not needed, this is a passion project before anything else.
+
+___
 
 ## Contributors
 Original version by cyantist
@@ -370,3 +194,5 @@ Contributors and builders of API 2.0:
 - Creator/Chaosyr/SaxbyMod/The Stoat Lord/ThinCreator3483
 - stillrinny
 - R3b00t3d-kawaii
+
+___

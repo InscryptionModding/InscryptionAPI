@@ -9,3 +9,5 @@
 If you have any issues with Mac/Linux, Steam Deck, or Manual head over to the discord for this game:
 
 * **Inscryption Modding Discord:** [Here](https://discord.gg/ZQPvfKEpwM)
+
+___

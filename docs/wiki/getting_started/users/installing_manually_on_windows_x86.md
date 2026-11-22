@@ -26,3 +26,5 @@
     icon.png // Ignorable, but if kept, goes in plugin subfolder
     ```
 10. Run the game once more and everything should be correct and working.
+
+___

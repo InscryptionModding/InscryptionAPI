@@ -9,3 +9,5 @@ If you have issues with Mod Managers head to one of these discords;
 * **Thunderstore Support Discord:** [Here](https://discord.gg/Fbz54kQAxg)
 * **R2ModMan Support Discord:** [Here](https://discord.gg/R85wjqa4WN)
 * **Gale Mod Manager Support Discord:** [Here](https://discord.gg/sfuWXRfeTt)
+
+___

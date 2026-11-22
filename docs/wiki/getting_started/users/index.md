@@ -9,3 +9,5 @@ The following are links to articles relavent for Users of the API. Namely coveri
 * [Installing Manually on Windows (x64)](installing_manually_on_windows_x64.md)
 * [Installing on The Steam Deck](installing_on_the_steam_deck.md)
 * [Installing on Mac & Linux](installing_on_mac_and_linux.md)
+
+___
