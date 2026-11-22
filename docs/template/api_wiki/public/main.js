@@ -46,6 +46,7 @@ get mermaid() {
 
         return {
             flowchart: {
+                useMaxWidth: false,
                 wrappingWidth: Math.max(90, Math.min(width, Math.round(width * scale))),
                 padding: Math.max(4, Math.round(15 * scale)),
                 nodeSpacing: Math.max(12, Math.round(50 * scale)),
