@@ -16,12 +16,12 @@ const getNodeWidth = () => Math.max(180, Math.floor((getContentWidth() - 40) / 2
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-const readFontScale = () => {
+const readCodeFontSize = () => {
     const size = parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue('--code-font-size')
     );
 
-    return Number.isFinite(size) && size > 0 ? clamp(size / 18, 0.5, 1.6) : 1;
+    return Number.isFinite(size) && size > 0 ? clamp(size, 8, 40) : 18;
 };
 
 const LAYOUT_STYLE_VARS = ['--code-line-height', '--code-font-size', '--code-font'];
@@ -40,11 +40,13 @@ const readLayoutSignature = () => {
 const options = {
     defaultTheme: 'dark',
 
-get mermaid() {
+    get mermaid() {
         const width = getNodeWidth();
-        const scale = readFontScale();
+        const size = readCodeFontSize();
+        const scale = clamp(size / 18, 0.5, 1.6);
 
         return {
+            themeVariables: { fontSize: `${size}px` },
             flowchart: {
                 useMaxWidth: false,
                 wrappingWidth: Math.max(90, Math.min(width, Math.round(width * scale))),
