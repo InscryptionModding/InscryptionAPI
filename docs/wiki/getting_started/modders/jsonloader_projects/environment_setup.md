@@ -164,3 +164,5 @@ The `Markdown File` is included in this for the purposes of making your packages
 ___
 
 Alright now that we have the environment setup, press `Next` to proceed into the [Basics of JSON](basics_of_json.md).
+
+___

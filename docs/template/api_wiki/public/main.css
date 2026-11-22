@@ -487,3 +487,41 @@ div.mermaidTooltip {
     display: block;
     max-width: 100% !important;
 }
+
+.next-article:has(div) {
+    margin-top: -1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: -2.2rem;
+}
+
+#nextArticle {
+    border-top: none;
+}
+
+body:not([data-search])[data-layout=""] > main > .content > .contribution, body:not([data-search])[data-layout=""] > main > .content > .next-article, body:not([data-search])[data-layout="conceptual"] > main > .content > .contribution, body:not([data-search])[data-layout="conceptual"] > main > .content > .next-article {
+    display: flex;
+    gap: 75rem;
+}
+
+.prev {
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    padding-left: 1.5rem;
+    border-radius: 4px;
+    background: var(--bs-tertiary-bg, #e9ecef);
+    color: var(--bs-code-color);
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height) !important;
+}
+
+.next {
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    padding-right: 1.5rem;
+    border-radius: 4px;
+    background: var(--bs-tertiary-bg, #e9ecef);
+    color: var(--bs-code-color);
+    font-family: var(--code-font);
+    font-size: var(--code-font-size) !important;
+    line-height: var(--code-line-height) !important;
+}
