@@ -1,6 +1,6 @@
-# Installing on The Steam Deck
+# Installing on the Steam Deck
 
-***FOR STEAMDECK:*** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
+***FOR STEAMDECK:*** Ensure that the game is set to run using `Proton` in the game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
 1. Download [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/) on the Steam Deck's Desktop Mode and open it from its download using its `AppImage` file.
 2. Download the mods you plan on using and their dependencies.

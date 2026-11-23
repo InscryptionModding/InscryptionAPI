@@ -1,4 +1,4 @@
-# Installing With a Mod Manager
+# Installing with a Mod Manager
 
 1. Download and install [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [Gale](https://thunderstore.io/c/inscryption/p/Kesomannen/GaleModManager/), [Pulsar](https://pulsarmods.com/) or [r2modman](https://thunderstore.io/c/inscryption/p/ebkr/r2modman/).
 2. Click the **Install with Mod Manager** button on the top of [BepInEx's](https://thunderstore.io/c/inscryption/p/BepInEx/BepInExPack_Inscryption/) page.

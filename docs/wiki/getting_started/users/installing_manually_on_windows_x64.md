@@ -1,4 +1,4 @@
-# Installing Manually on Windows (x64)
+# Installing Manually on Windows (X64)
 
 1. Install [BepInEx](https://thunderstore.io/package/download/BepInEx/BepInExPack_Inscryption/5.4.2305/) by pressing `Manual Download` and extract the contents into a folder. **Do not extract into the game folder!**
 2. Move the contents of the `BepInExPack_Inscryption` folder into the game folder (where the game executable is; usually found here: `C:\XboxGames\Inscryption\Content`).
@@ -9,7 +9,7 @@
 7. Install [Inscryption API](https://inscryption.thunderstore.io/package/API_dev/API/) and extract the contents into a folder.
 8. Move the contents of the `plugins` folder into `BepInEx/plugins` and the contents of the `monomod` folder into the `BepInEx/monomod` folder.
 9. Run the game again. If everything runs correctly, a message will appear in the console telling you that the API was loaded.
-10. For any additional mods create a new subfolder, it can be called anything and extract the zips archive into it and if there is a `BepInEx` folder within the zip instead drop the contents of that folder into the `BepInEx` root for the modding instance. EX;
+10. For any additional mods create a new subfolder. It can be called anything. Then, extract the zips archive into it. If there is a `BepInEx` folder within the zip instead drop the contents of that folder into the `BepInEx` root for the modding instance. EX;
     ```
     BepInEx // These go within the BepInEx root folder
     |-- config

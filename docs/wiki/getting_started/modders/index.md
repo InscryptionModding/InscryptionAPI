@@ -1,8 +1,8 @@
 # Getting Started (Modders)
 
-So your interested in learning how to modify Inscryption? Well this section of our guide should come in really handy for you! Albeit if your a artist, a developer, or just passing by, we hope you find these guides of value.
+So your interested in learning how to modify Inscryption? Well this section of our guide should come in really handy for you! Albeit if your an artist, a developer, or just passing by, we hope you find these guides of value.
 
-First off let's get you to the right branch of the guides. Let's get some groundworks out of the way now. Based on the item below, you should be funneled to the level your after. *Note for the IDE Question, if you have familiarity with [IntelliJ Idea](https://www.jetbrains.com/idea/), you'll likely prefer Jetbrains Rider.*
+First off let's get you to the right branch of the guides. Let's get some groundwork's out of the way now. Based on the item below, you should be funneled to the level your after. *Note for the IDE Question, if you have familiarity with [IntelliJ Idea](https://www.jetbrains.com/idea/), you'll likely prefer JetBrains Rider.*
 
 ```mermaid
 flowchart TD

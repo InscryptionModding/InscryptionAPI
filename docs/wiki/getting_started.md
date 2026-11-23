@@ -8,17 +8,6 @@ If your up for the task, a good entry point to learning C# is [this tutorial by 
 
 If at any point your confused while doing the tutorial, feel free to ask for help in [the discord](https://discord.gg/qEqtF29ZEt) specifically, the channel entitled `programming-help` will be your friend. Mind you help will not be immediate, but we will try and get help to you as soon as we are able.
 
-### Modding with JSONLoader
-> JSONLoader is a versatile mod that provides a more beginner-friendly way of creating new cards and abilities for Inscryption using JSON syntax, which is much simpler than C#. If you don't know the basics of JSON you can find a useful video on the subject [here](https://www.youtube.com/watch?v=iiADhChRriM).
-
-JSONLoader's official documentation can be found in the following places, note Nightly refers to the Beta version, and Stable refers to the Main-Line version.
-- Nightly GitHub Wiki: [GitHub Wiki](https://github.com/Chaosyr/JSONCardLoaderWiki/wiki)
-- Nightly Thunderstore Wiki: [Thunderstore Wiki](https://thunderstore.io/c/inscryption/p/MADH95Mods/JSON_and_CSV_Loader_Nightly/wiki)
-- Stable GitHub Wiki: [GitHub Wiki](https://github.com/MADH95/JSONLoader/wiki)
-- Stable Thunderstore Wiki: [Thunderstore Wiki](https://thunderstore.io/c/inscryption/p/MADH95Mods/JSONCardLoader/wiki)
-
-A video tutorial covering how to use JSONLoader in a basic form can be found [here](https://www.youtube.com/watch?v=grTSkpI4U7g). A more updated series of sorts by JamesGames can be found [here](https://youtube.com/playlist?list=PLy57qL2R3Z6NaRJKF4QBaBn6WH8Vztya9&si=npQ2ZxF4gHRXa0B3). If you at any point need any help with JSONLoader, you can ask your questions in [the discord](https://discord.gg/BNDVDA5Gvh), specifically the `jsonloader-help` channel.
-
 ### Modding with C#
 
 First things first, in order to even make a mod for the game you will need a few things setup. First off if you haven't installed it yet, we reccomend getting a tool called [JetBrains Rider](https://www.jetbrains.com/rider/). This guide will follow the layout of this IDE. If you still want to use [Visual Studio](https://visualstudio.microsoft.com/) instead, no one is going to stop you, there will be a foldout below this guide with the setup for that IDE, note its a little outdated.
@@ -148,14 +137,3 @@ If you need any other dependencies that are mods on Thunderstore, search up its 
 </details>
 
 You are now ready to begin creating your mod! Some resources are provided below for you to use, including an example mod to look at for examples. Otherwise, continue reading this wiki.
-
-### Modding Resources
-[Inscryption Modding Discord](https://discord.gg/QrJEF5Denm)
-
-[BepInEx documentation](https://docs.bepinex.dev/)
-
-[Harmony patching article](https://harmony.pardeike.net/articles/patching.html)
-
-[Example Mod using C#](https://github.com/debugman18/InscryptionExampleMod)
-
-[Vanilla and Modded Enumerations](https://github.com/SaxbyMod/SabyModEnums)

@@ -1,6 +1,6 @@
 # JSONLoader Projects
 
-So you wound up taking the JSONLoader route? Well first off you should learn what exactly JSONLoader is. JSONLoader and by extension CSVLoader, is a tool primarily targetted towards Artists, or new Developers looking to get into modding Inscryption. It is a fantastic gateway for new users due to how simple it is to use and learn. This set of guides will act as a way for you to learn how to use JSONLoader for your projects.
+So you wound up taking the JSONLoader route? Well first off you should learn what exactly JSONLoader is. JSONLoader and by extension CSVLoader, is a tool primarily targeted towards Artists, or new Developers looking to get into modding Inscryption. It is a fantastic gateway for new users due to how simple it is to use and learn. This set of guides will act as a way for you to learn how to use JSONLoader for your projects.
 
 ___
 

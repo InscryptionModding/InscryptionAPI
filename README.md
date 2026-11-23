@@ -31,9 +31,9 @@ ___
 
 ## Getting Started (Users)
 
-The following are links to articles relavent for Users of the API. Namely covering the topic of installation of mods for Inscryption that utilize the API. This also includes how to install BepInEx, the underlying framework for all Inscryption Mods, for all of the given scenarios the Articles tackle.
+The following are links to articles relevant for Users of the API. Namely covering the topic of installation of mods for Inscryption that utilize the API. This also includes how to install BepInEx, the underlying framework for all Inscryption Mods, for all the given scenarios the Articles tackle.
 
-***FOR LINUX AND STEAMDECK:*** Ensure that the game is set to run using `Proton` in he game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
+***FOR LINUX AND STEAMDECK:*** Ensure that the game is set to run using `Proton` in the game settings on steam. Should be a setting like this: `Change launch behaviour` -> `Proton`.
 
 * [Installing With a Mod Manager](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_with_a_mod_manager.html)
 * [Installing Manually on Windows (x86)](https://inscryptionmodding.github.io/InscryptionAPI/wiki/getting_started/users/installing_manually_on_windows_x86.html)
@@ -45,9 +45,9 @@ ___
 
 ## Getting Started (Modders)
 
-So your interested in learning how to modify Inscryption? Well this section of our guide should come in really handy for you! Albeit if your a artist, a developer, or just passing by, we hope you find these guides of value.
+So your interested in learning how to modify Inscryption? Well this section of our guide should come in really handy for you! Albeit if your an artist, a developer, or just passing by, we hope you find these guides of value.
 
-First off let's get you to the right branch of the guides. Let's get some groundworks out of the way now. Based on the item below, you should be funneled to the level your after. *Note for the IDE Question, if you have familiarity with [IntelliJ Idea](https://www.jetbrains.com/idea/), you'll likely prefer Jetbrains Rider.*
+First off let's get you to the right branch of the guides. Let's get some groundwork's out of the way now. Based on the item below, you should be funneled to the level your after. *Note for the IDE Question, if you have familiarity with [IntelliJ Idea](https://www.jetbrains.com/idea/), you'll likely prefer JetBrains Rider.*
 
 ```mermaid
 flowchart TD
@@ -128,7 +128,7 @@ Combines multiple instances of the same sigil on a single card into a single sig
 ### Cost Render Fix by Void Slime
 Displays hybrid cost cards correctly and makes energy and mox show up on act 1 cards
 
-### Cost Choice Node fix by Void Slime
+### Cost Choice Node Fix by Void Slime
 If energy/mox cards are in the Act 1 pool, energy and mox card choice nodes will be added to the cost choice node in Act 1.
 
 ### Sniper Sigil Fix by SpecialAPI

@@ -4,9 +4,9 @@ First off we need to get some initial setup for the JSONLoader environment out o
 
 ___
 
-## What do I need?
+## What Do I Need?
 
-First off you will need an Text Editor of some variety. A basic notepad can do the trick. However, if you want an easy to use system, which has syntax highlighting for both JSON and CSV, we reccomend grabbing either [Visual Studio Code](https://code.visualstudio.com/download) or [Visual Studio Code Insiders](https://code.visualstudio.com/insiders). There is also a plethora of other editors that could work too, such as [Notepad++](https://notepad-plus-plus.org/downloads/), or [Atom](https://atom-editor.cc/). Once you've got the given editor you want to use installed/setup, we can proceed to the next section.
+First off you will need a Text Editor of some variety. A basic notepad can do the trick. However, if you want an easy to use system, which has syntax highlighting for both JSON and CSV, we recommend grabbing either [Visual Studio Code](https://code.visualstudio.com/download) or [Visual Studio Code Insiders](https://code.visualstudio.com/insiders). There is also a plethora of other editors that could work too, such as [Notepad++](https://notepad-plus-plus.org/downloads/), or [Atom](https://atom-editor.cc/). Once you've got the given editor you want to use installed/setup, we can proceed to the next section.
 
 ___
 
@@ -21,17 +21,17 @@ If your not a `Windows` user, skip this section. But if you are a `Windows` user
 5. Under `Advanced Settings` toggle the following setting off, `Hide extensions for known file types`, followed by toggling on `Show hidden files, folders, and drives`, this one is less needed, but it may come in handy when looking for your `AppData` folder if it ever becomes needed.
 6. Now press `Apply to Folders` followed by `OK`.
 
-With that we are now set to proceed to the next section! If you ever find yourself unable to view your file extensions, just refollow the above steps to fix it.
+With that we are now set to proceed to the next section! If you ever find yourself unable to view your file extensions, just follow the above steps to fix it.
 
 ___
 
-## Fetching the Relavent Paths
+## Fetching the Relevant Paths
 
-Next up we'll want to grab a few paths to use as a quick reference. If you ever need them you can also come back here for where they are as well. Namely we'll need to navigate to your game or profile's `plugins` folder alot during development of your JSON/CSV Packs.
+Next up we'll want to grab a few paths to use as a quick reference. If you ever need them you can also come back here for where they are as well. Namely we'll need to navigate to your game or profile's `plugins` folder a lot during development of your JSON/CSV Packs.
 
 ### Mod Manager Installations
 
-For Mod Managers we need to navigate through the UI of the Mod Manager to navigate to the folder we'll need. Each of the following Sub Sections corrolates with a given Mod Manager that can be used with the game, that we are officially supported through.
+For Mod Managers we need to navigate through the UI of the Mod Manager to navigate to the folder we'll need. Each of the following Subsections correlates with a given Mod Manager that can be used with the game, that we are officially supported through.
 
 #### R2ModMan
 
@@ -63,7 +63,7 @@ For Thunderstore Mod Manager the process is pretty much the same as it would be 
 
 ### Manual Installations
 
-If your modding the game manually, first off refer to [Getting Started (Users)](../../users/index.md) for how to setup the basics. Make sure you have it setup correct otherwise the following steps won't align the greatest.
+If your modding the game manually, first off refer to [Getting Started (Users)](../../users/index.md) for how to set up the basics. Make sure you have it setup correct otherwise the following steps won't align the greatest.
 
 1. Navigate to Inscryption's local install folder
     * For XBOX Gamepass the path is roughly `C:\XboxGames\Inscryption\Content`, the drive may differ based on where you installed it to.
@@ -75,9 +75,9 @@ ___
 
 ## Adding the JSON/CSV Loader File Extensions to the Context Menu on Windows 11
 
-If your not on `Windows 11`, unfortunatly this won't be able to apply to you, but if you find anything similar for your OS we could include, feel free to let us know that way we can add it. Anyways, the following is a `Registry File` that you can use to add the File Type's needed for JSON/CSV Loader directly in your `New File` under the `Windows Context Menu`.
+If your not on `Windows 11`, unfortunately this won't be able to apply to you, but if you find anything similar for your OS we could include, feel free to let us know that way we can add it. Anyways, the following is a `Registry File` that you can use to add the File Type's needed for JSON/CSV Loader directly in your `New File` under the `Windows Context Menu`.
 
-So first of all your going to want to create a new file, namely a text file. You can use Notepad or one of the aforementioned text editors for JSON Editing to do this. Once your in the new file, you'll want to paste the following into it. You can copy it by pressing the `Clipboard` icon in the top right corner of the code box. Note you don't need to have [Visual Studio Code](https://code.visualstudio.com/download) to use this, that's namely there for the purpose of giving you pretty icons for the file types.
+So first of all your going to want to create a new file, namely a text file. You can use Notepad or one of the aforementioned text editors for JSON Editing to do this. Once your in the new file, you'll want to paste the following into it. You can copy it by pressing the `Clipboard` icon in the top right corner of the code box. Note you don't need to have [Visual Studio Code](https://code.visualstudio.com/download) to use this, that's namely there for the purpose of giving you pretty icons for the filetypes.
 
 ```ini
 Windows Registry Editor Version 5.00
@@ -155,7 +155,7 @@ Windows Registry Editor Version 5.00
 @="\"C:\\Users\\Chaos\\AppData\\Local\\Programs\\Microsoft VSCode\\a44adf7f53\\resources\\app\\resources\\win32\\html.ico\""
 ```
 
-Once you have that pasted into the new file, you'll want to save it as a `.reg` file, you can also rename it to hav the `.reg` extension as well. The files name itself does not matter. Once you have it saved as a `.reg` file all you need to do now is run it. Which you can either do via right click, or by double clicking the file. For it to apply you'll want to restart your Windows Explorer via Task Manager.
+Once you have that pasted into the new file, you'll want to save it as a `.reg` file, you can also rename it to have the `.reg` extension as well. The files name itself does not matter. Once you have it saved as a `.reg` file all you need to do now is run it. Which you can either do via right-click, or by double-clicking the file. For it to apply you'll want to restart your Windows Explorer via Task Manager.
 
 Now you should see the following File Type's appear when you go to make a new file: `Markdown File`, `CSV File`, `JSONLoader File`, `JSONLoader2 File`, `JSONLoader3 File`, and `JSON File`. The `JSONLoader(X) File` will be what you care about for current JSONLoader, namely the `JSONLoader2 File` for Stable, the rest are applicable for Nightly (including CSV). 
 
