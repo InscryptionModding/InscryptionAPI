@@ -105,6 +105,8 @@
     --h5-font-size: 1.20em;
     --h6-font-size: 1.00em;
     --heading-line-height: 1.2;
+    --heading-letter-spacing: 0px;
+    --heading-word-spacing: 0px;
 
     --document-letter-spacing: 0px;
     --document-word-spacing: 0px;
@@ -463,6 +465,8 @@ body > footer, body[data-layout="landing"] > footer {
 .content h6,
 .content .h6 {
     line-height: var(--heading-line-height);
+    letter-spacing: var(--heading-letter-spacing);
+    word-spacing: var(--heading-word-spacing);
 }
 
 .toc ul {
