@@ -5,11 +5,88 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'DPComic-Extended';
+    src: url('fonts/DPComic_Extended.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: '04b';
+    src: url('fonts/04B_30__.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Crumbled-Pixels';
+    src: url('fonts/Crumbled-Pixels.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Daggersquare';
+    src: url('fonts/DAGGERSQUARE.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Daggersquare-Oblique';
+    src: url('fonts/DAGGERSQUARE\ OBLIQUE.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Garbageschrift';
+    src: url('fonts/GARBAGES.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Heavyweight';
+    src: url('fonts/heavyweight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mail-Ray-Stuff';
+    src: url('fonts/mail\ ray\ stuff.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Marksman';
+    src: url('fonts/Marksman.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pony-Island';
+    src: url('fonts/pony-island.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Portmanteau';
+    src: url('fonts/Portmanteau\ Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --page-gutter: clamp(1rem, 4vw, 5rem);
 
-    --document-font: 'DPComic', system-ui, sans-serif;
-    --code-font: 'DPComic', system-ui, sans-serif;
+    --document-font: 'DPComic', 'DPComic-Extended', system-ui, sans-serif;
+    --code-font: 'DPComic', 'DPComic-Extended', system-ui, sans-serif;
 
     --bs-font-sans-serif: var(--document-font);
     --bs-body-font-family: var(--document-font);
@@ -28,10 +105,56 @@
     --h5-font-size: 1.20em;
     --h6-font-size: 1.00em;
     --heading-line-height: 1.2;
+
+    --document-letter-spacing: 0px;
+    --document-word-spacing: 0px;
+
+    --code-letter-spacing: 0px;
+    --code-word-spacing: 0px;
 }
 
 html[data-document-font="dpcomic"] {
-    --document-font: 'DPComic', system-ui, sans-serif;
+    --document-font: 'DPComic', 'DPComic-Extended', system-ui, sans-serif;
+}
+
+html[data-document-font="04b"] {
+    --document-font: '04b', sans-serif;
+}
+
+html[data-document-font="crumbled-pixels"] {
+    --document-font: 'Crumbled-Pixels', sans-serif;
+}
+
+html[data-document-font="daggersquare"] {
+    --document-font: 'Daggersquare', sans-serif;
+}
+
+html[data-document-font="daggersquare-oblique"] {
+    --document-font: 'Daggersquare-Oblique', sans-serif;
+}
+
+html[data-document-font="garbageschrift"] {
+    --document-font: 'Garbageschrift', sans-serif;
+}
+
+html[data-document-font="heavyweight"] {
+    --document-font: 'Heavyweight', sans-serif;
+}
+
+html[data-document-font="mail-ray-stuff"] {
+    --document-font: 'Mail-Ray-Stuff', sans-serif;
+}
+
+html[data-document-font="marksman"] {
+    --document-font: 'Marksman', sans-serif;
+}
+
+html[data-document-font="pony-island"] {
+    --document-font: 'Pony-Island', sans-serif;
+}
+
+html[data-document-font="portmanteau"] {
+    --document-font: 'Portmanteau', sans-serif;
 }
 
 html[data-document-font="comic-sans"] {
@@ -50,8 +173,49 @@ html[data-document-font="system"] {
     --document-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+
 html[data-code-font="dpcomic"] {
-    --code-font: 'DPComic', system-ui, sans-serif;
+    --code-font: 'DPComic', 'DPComic-Extended', system-ui, sans-serif;
+}
+
+html[data-code-font="04b"] {
+    --code-font: '04b', sans-serif;
+}
+
+html[data-code-font="crumbled-pixels"] {
+    --code-font: 'Crumbled-Pixels', sans-serif;
+}
+
+html[data-code-font="daggersquare"] {
+    --code-font: 'Daggersquare', sans-serif;
+}
+
+html[data-code-font="daggersquare-oblique"] {
+    --code-font: 'Daggersquare-Oblique', sans-serif;
+}
+
+html[data-code-font="garbageschrift"] {
+    --code-font: 'Garbageschrift', sans-serif;
+}
+
+html[data-code-font="heavyweight"] {
+    --code-font: 'Heavyweight', sans-serif;
+}
+
+html[data-code-font="mail-ray-stuff"] {
+    --code-font: 'Mail-Ray-Stuff', sans-serif;
+}
+
+html[data-code-font="marksman"] {
+    --code-font: 'Marksman', sans-serif;
+}
+
+html[data-code-font="pony-island"] {
+    --code-font: 'Pony-Island', sans-serif;
+}
+
+html[data-code-font="portmanteau"] {
+    --code-font: 'Portmanteau', sans-serif;
 }
 
 html[data-code-font="comic-sans"] {
@@ -252,6 +416,8 @@ body > footer, body[data-layout="landing"] > footer {
 .content, .facts {
     font-size: var(--document-font-size) !important;
     line-height: var(--document-line-height);
+    letter-spacing: var(--document-letter-spacing);
+    word-spacing: var(--document-word-spacing);
 }
 
 .content h1,
@@ -302,17 +468,23 @@ body > footer, body[data-layout="landing"] > footer {
 .toc ul {
     font-size: var(--document-font-size) !important;
     line-height: var(--document-line-height);
+    letter-spacing: var(--document-letter-spacing);
+    word-spacing: var(--document-word-spacing);
 }
 
 .affix {
     font-size: var(--document-font-size);
     line-height: var(--document-line-height);
+    letter-spacing: var(--document-letter-spacing);
+    word-spacing: var(--document-word-spacing);
 }
 
 code, kbd, samp, pre, .hljs, .facts code {
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height);
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
 }
 
 body[data-yaml-mime="ManagedReference"] article h2.section,
@@ -420,6 +592,8 @@ blockquote {
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height) !important;
     box-sizing: border-box;
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
 }
 
 .nodeLabel p {
@@ -435,6 +609,8 @@ blockquote {
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height) !important;
     box-sizing: border-box;
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
 }
 
 .edgeLabel p {
@@ -458,6 +634,8 @@ div.mermaidTooltip {
     border-radius: 4px;
     margin: 0;
     box-sizing: border-box;
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
 }
 
 .node rect,
@@ -489,19 +667,16 @@ div.mermaidTooltip {
 }
 
 .next-article:has(div) {
-    margin-top: -1.2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: -2.2rem;
+    padding: 1rem;
 }
 
 #nextArticle {
-    border-top: none;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
 }
 
 body:not([data-search])[data-layout=""] > main > .content > .contribution, body:not([data-search])[data-layout=""] > main > .content > .next-article, body:not([data-search])[data-layout="conceptual"] > main > .content > .contribution, body:not([data-search])[data-layout="conceptual"] > main > .content > .next-article {
     display: flex;
-    gap: 75rem;
+    justify-content: space-between;
 }
 
 .prev {
@@ -513,6 +688,9 @@ body:not([data-search])[data-layout=""] > main > .content > .contribution, body:
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height) !important;
+    padding-right: 2.5rem;
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
 }
 
 .next {
@@ -524,4 +702,23 @@ body:not([data-search])[data-layout=""] > main > .content > .contribution, body:
     font-family: var(--code-font);
     font-size: var(--code-font-size) !important;
     line-height: var(--code-line-height) !important;
+    padding-left: 2.5rem;
+    letter-spacing: var(--code-letter-spacing);
+    word-spacing: var(--code-word-spacing);
+}
+
+.next-article > div {
+    flex: none;
+}
+
+article {
+    margin-bottom: -3.5rem;
+}
+
+article::after {
+    content: "Below are the Quick Guide Navigation Buttons:";
+    display: block;
+    padding: 1rem;
+    border-top: 4px var(--bs-border-style) var(--bs-border-color);
+    text-align: center;
 }
